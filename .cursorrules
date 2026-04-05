@@ -1,0 +1,34 @@
+# Kurs na LDEK — Cursor Rules
+
+## Stack
+- Next.js 14 App Router, TypeScript strict mode
+- Tailwind CSS with custom config (brand colors, fonts)
+- Supabase for auth, database, realtime
+- Framer Motion for animations
+- Recharts for data visualization
+- Radix UI primitives for accessible components
+- Zustand for client state
+- ts-fsrs for spaced repetition
+
+## Design System
+- Background: #002A27, Cards: #1E3F44 / #1F4F5A
+- Gold accent: #C9A84C, Sage interactive: #367368
+- Fonts: DM Serif Display (headings), DM Sans (body), DM Mono (numbers)
+- Icons: lucide-react, 20px nav / 16px inline, monoline
+- Border radius: 14px cards, 8px buttons, 24px pills
+
+## Conventions
+- All UI text in Polish
+- Use server components by default, client components only when needed
+- Colocate components with their routes when possible
+- Use `cn()` helper (clsx + tailwind-merge) for conditional classes
+- Validate all API inputs with Zod schemas
+- Use Supabase RLS — never trust the client
+- Animations: subtle, 200-300ms, ease-out. No bouncy/elastic.
+- No emoji in UI. Lucide icons only.
+
+## File naming
+- Components: PascalCase (TopicCard.tsx)
+- Utilities: camelCase (calculateXp.ts)
+- Types: types.ts in each feature folder
+- Constants: SCREAMING_SNAKE in constants.ts

@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
-import { SesjaNaukiLink } from "@/features/shared/components/SesjaNaukiLink";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
@@ -134,7 +133,6 @@ export function SidebarPanel({
           icon={BookOpen}
           collapsed={collapsed && !mobile}
         />
-        <SesjaNaukiLink collapsed={collapsed && !mobile} />
         {SIDEBAR_NAV.map((item) => (
           <SidebarLink
             key={item.href}

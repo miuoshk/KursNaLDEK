@@ -15,7 +15,7 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const pathname = usePathname();
   const { dueReviewsCount } = useDashboardUser();
   const href =
-    dueReviewsCount > 0 ? "/sesja/new?mode=powtorka&count=10" : "/przedmioty";
+    dueReviewsCount > 0 ? "/sesja/new?mode=inteligentna&count=10" : "/przedmioty";
   const tooltip =
     dueReviewsCount > 0 ? "Sesja powtórkowa" : "Wybierz przedmiot";
 

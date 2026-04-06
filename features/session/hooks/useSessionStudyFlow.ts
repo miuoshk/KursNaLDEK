@@ -89,6 +89,7 @@ export function useSessionStudyFlow(
         confidence,
         timeSpentSeconds: timeSpentQuestion.current,
         questionOrder: s.currentIndex,
+        skipFsrs: mode === "przeglad",
       };
 
       const newAnswer: SessionAnswer = {

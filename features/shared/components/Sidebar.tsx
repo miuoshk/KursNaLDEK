@@ -15,8 +15,8 @@ export function Sidebar() {
   const toggle = useSidebarStore((s) => s.toggle);
   const mobileOpen = useSidebarStore((s) => s.mobileOpen);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
-  const forceSessionCollapsed =
-    pathname.startsWith("/sesja/") && !pathname.includes("/podsumowanie");
+  const isActiveSession =
+    /^\/sesja\/[^/]+$/.test(pathname ?? "");
 
   useEffect(() => {
     setMobileOpen(false);
@@ -48,7 +48,7 @@ export function Sidebar() {
   }
 
   const collapsed =
-    narrow || (forceSessionCollapsed ? true : collapsedFromStore);
+    narrow || (isActiveSession ? true : collapsedFromStore);
 
   return (
     <div className="flex shrink-0">

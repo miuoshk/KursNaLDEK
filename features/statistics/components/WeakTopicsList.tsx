@@ -33,7 +33,7 @@ export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
             {Math.round(t.accuracy * 100)}%
           </span>
           <Link
-            href={`/sesja/new?subject=${encodeURIComponent(t.subjectId)}&topic=${encodeURIComponent(t.topicId)}&mode=powtorka&count=10`}
+            href={`/sesja/new?subject=${encodeURIComponent(t.subjectId)}&topic=${encodeURIComponent(t.topicId)}&mode=inteligentna&count=10`}
             className="rounded-btn border border-brand-sage px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
           >
             Powtórz

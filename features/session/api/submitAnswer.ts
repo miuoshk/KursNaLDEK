@@ -12,6 +12,7 @@ const schema = z.object({
   confidence: z.enum(["nie_wiedzialem", "troche", "na_pewno"]).nullable(),
   timeSpentSeconds: z.number().int().min(0),
   questionOrder: z.number().int().min(0),
+  skipFsrs: z.boolean().optional(),
 });
 
 export type SubmitAnswerResult = { ok: true } | { ok: false; message: string };
@@ -102,15 +103,17 @@ export async function submitAnswer(
       }
     }
 
-    await persistUserProgressFsrs(
-      supabase,
-      user.id,
-      parsed.data.questionId,
-      existing as Record<string, unknown> | null,
-      parsed.data.isCorrect,
-      parsed.data.confidence,
-      !!prevAns,
-    );
+    if (!parsed.data.skipFsrs) {
+      await persistUserProgressFsrs(
+        supabase,
+        user.id,
+        parsed.data.questionId,
+        existing as Record<string, unknown> | null,
+        parsed.data.isCorrect,
+        parsed.data.confidence,
+        !!prevAns,
+      );
+    }
 
     const { data: agg } = await supabase
       .from("session_answers")

@@ -40,7 +40,7 @@ export function SessionTopBar({
           Pytanie {current + 1} / {total}
         </p>
 
-        {mode === "egzamin" && examElapsedSeconds !== null ? (
+        {examElapsedSeconds !== null ? (
           <p className="shrink-0 font-mono text-body-md text-primary">
             {formatClock(examElapsedSeconds)}
           </p>

@@ -1,4 +1,4 @@
-export type SessionMode = "nauka" | "egzamin" | "powtorka";
+export type SessionMode = "inteligentna" | "przeglad" | "katalog";
 
 export type Confidence = "nie_wiedzialem" | "troche" | "na_pewno";
 

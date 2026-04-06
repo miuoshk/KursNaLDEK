@@ -32,11 +32,12 @@ export function SessionStudyView({
 }: SessionStudyViewProps) {
   const sessionStart = useRef(Date.now());
   const timeSpentQuestion = useRef(0);
-  const [examSec, setExamSec] = useState(0);
+  const [timerSec, setTimerSec] = useState(0);
   const [endOpen, setEndOpen] = useState(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
   const { profile } = useDashboardData();
   const { streak } = useDashboardUser();
+  const isPrzeglad = mode === "przeglad";
 
   const s = useSession(questions, sessionId, mode);
   const qKey = s.currentQuestion?.id ?? "";
@@ -71,10 +72,9 @@ export function SessionStudyView({
   );
 
   useEffect(() => {
-    if (mode !== "egzamin") return;
-    const t = setInterval(() => setExamSec((x) => x + 1), 1000);
+    const t = setInterval(() => setTimerSec((x) => x + 1), 1000);
     return () => clearInterval(t);
-  }, [mode]);
+  }, []);
 
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
@@ -83,6 +83,11 @@ export function SessionStudyView({
     timeSpentQuestion.current = sw.pauseAndGetSeconds();
     s.checkAnswer();
   }, [s, sw]);
+
+  const handlePrzegladNext = useCallback(() => {
+    if (!s.currentQuestion || !s.selectedOptionId) return;
+    void handleConfidenceAndNext("na_pewno");
+  }, [s.currentQuestion, s.selectedOptionId, handleConfidenceAndNext]);
 
   const onConfidenceShortcut = useCallback(
     (c: Confidence) => {
@@ -100,8 +105,8 @@ export function SessionStudyView({
     selectOption: s.selectOption,
     onCheck: handleCheck,
     onGoPrevious: s.goToPrevious,
-    onConfidencePick: onConfidenceShortcut,
-    onContinueReview: s.goForwardFromReview,
+    onConfidencePick: isPrzeglad ? undefined : onConfidenceShortcut,
+    onContinueReview: isPrzeglad ? handlePrzegladNext : s.goForwardFromReview,
   });
 
   if (!s.currentQuestion) return null;
@@ -123,7 +128,7 @@ export function SessionStudyView({
         current={s.currentIndex}
         total={s.total}
         mode={mode}
-        examElapsedSeconds={mode === "egzamin" ? examSec : null}
+        examElapsedSeconds={timerSec}
         onEnd={() => setEndOpen(true)}
       />
       <SessionQuestionContent
@@ -133,11 +138,11 @@ export function SessionStudyView({
         selectedOptionId={s.selectedOptionId}
         isShowingFeedback={s.isShowingFeedback}
         isPastReadOnly={s.isPastReadOnly}
+        mode={mode}
         onSelectOption={s.selectOption}
         onCheck={handleCheck}
-        onConfidenceAndNext={(c) => {
-          void handleConfidenceAndNext(c);
-        }}
+        onConfidenceAndNext={(c) => void handleConfidenceAndNext(c)}
+        onPrzegladNext={handlePrzegladNext}
         onContinueReview={s.goForwardFromReview}
         onGoToPrevious={s.goToPrevious}
       />

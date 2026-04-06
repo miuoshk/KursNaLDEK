@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestions";
 import { startSession } from "@/features/session/api/startSession";
+import { CatalogView } from "@/features/session/components/CatalogView";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
 import type { SessionMode, SessionQuestion } from "@/features/session/types";
 
@@ -23,13 +24,13 @@ type Bootstrap =
     };
 
 function parseMode(v: string | null): SessionMode {
-  if (v === "egzamin" || v === "powtorka") return v;
-  return "nauka";
+  if (v === "przeglad" || v === "katalog") return v;
+  return "inteligentna";
 }
 
 function parseCount(v: string | null): number {
   const n = Number(v);
-  if (Number.isFinite(n) && n >= 1 && n <= 100) return Math.floor(n);
+  if (Number.isFinite(n) && n >= 1 && n <= 500) return Math.floor(n);
   return 10;
 }
 
@@ -56,6 +57,19 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         if (cancelled) return;
         if (!res.ok) {
           setBoot({ status: "error", message: res.message });
+          return;
+        }
+
+        if (mode === "katalog") {
+          setBoot({
+            status: "ready",
+            sessionId: res.sessionId,
+            subjectId: res.subject.id,
+            subjectName: res.subject.name,
+            subjectShortName: res.subject.short_name,
+            mode,
+            questions: res.questions,
+          });
           return;
         }
 
@@ -109,13 +123,19 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         return;
       }
 
+      const dbMode = loaded.mode as string;
+      const mappedMode: SessionMode =
+        dbMode === "nauka" ? "inteligentna" :
+        dbMode === "egzamin" ? "przeglad" :
+        (dbMode as SessionMode);
+
       setBoot({
         status: "ready",
         sessionId: loaded.sessionId,
         subjectId: loaded.subject.id,
         subjectName: loaded.subject.name,
         subjectShortName: loaded.subject.short_name,
-        mode: loaded.mode as SessionMode,
+        mode: mappedMode,
         questions: loaded.questions,
       });
     }
@@ -143,6 +163,15 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         <p className="font-heading text-heading-sm text-primary">Nie udało się uruchomić sesji</p>
         <p className="mt-2 font-body text-body-sm text-secondary">{boot.message}</p>
       </div>
+    );
+  }
+
+  if (boot.mode === "katalog") {
+    return (
+      <CatalogView
+        subjectName={boot.subjectName}
+        questions={boot.questions}
+      />
     );
   }
 

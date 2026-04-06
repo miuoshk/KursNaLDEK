@@ -8,8 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function DashboardContentArea({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isSessionStudy =
-    pathname.startsWith("/sesja/") && !pathname.includes("/podsumowanie");
+  const isSessionStudy = /^\/sesja\/[^/]+$/.test(pathname ?? "");
 
   return (
     <div className="flex min-h-0 min-w-0 flex-1 flex-col">

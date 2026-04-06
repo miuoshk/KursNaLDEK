@@ -90,9 +90,9 @@ export function StudyPreferencesSection({ profile }: Props) {
               onChange={(e) => setMode(e.target.value as SessionMode)}
               className={selectClass}
             >
-              <option value="nauka">Nauka</option>
-              <option value="egzamin">Egzamin</option>
-              <option value="powtorka">Powtórka</option>
+              <option value="inteligentna">Inteligentna sesja</option>
+              <option value="przeglad">Szybki przegląd</option>
+              <option value="katalog">Katalog pytań</option>
             </select>
             <ChevronDown
               className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"

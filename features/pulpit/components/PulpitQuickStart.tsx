@@ -17,7 +17,7 @@ export function PulpitQuickStart({ data }: { data: PulpitData }) {
             />
           </div>
           <Link
-            href={`/sesja/new?subject=${encodeURIComponent(data.lastSubjectId)}&mode=nauka&count=10`}
+            href={`/sesja/new?subject=${encodeURIComponent(data.lastSubjectId)}&mode=inteligentna&count=10`}
             className="mt-6 inline-flex rounded-btn bg-brand-gold px-5 py-2.5 font-body font-semibold text-brand-bg transition hover:brightness-110"
           >
             Rozpocznij sesję →

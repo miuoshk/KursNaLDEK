@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 
 const schema = z.object({
   daily_goal: z.coerce.number().int().min(5).max(100),
-  default_session_mode: z.enum(["nauka", "egzamin", "powtorka"]),
+  default_session_mode: z.enum(["inteligentna", "przeglad", "katalog"]),
   default_question_count: z.union([z.literal(10), z.literal(25), z.literal(50)]),
 });
 

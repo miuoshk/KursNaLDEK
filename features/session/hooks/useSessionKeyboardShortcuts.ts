@@ -13,7 +13,7 @@ type Args = {
   selectOption: (id: string) => void;
   onCheck: () => void;
   onGoPrevious: () => void;
-  onConfidencePick: (c: Confidence) => void;
+  onConfidencePick?: (c: Confidence) => void;
   onContinueReview: () => void;
 };
 
@@ -38,6 +38,13 @@ export function useSessionKeyboardShortcuts({
       if (isShowingFeedback) {
         if (isPastReadOnly) {
           if (e.key === "ArrowRight" || e.key === "Enter") {
+            e.preventDefault();
+            onContinueReview();
+          }
+          return;
+        }
+        if (!onConfidencePick) {
+          if (e.key === "Enter" || e.key === "ArrowRight") {
             e.preventDefault();
             onContinueReview();
           }

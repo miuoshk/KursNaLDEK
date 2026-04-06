@@ -21,10 +21,9 @@ import {
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
 
 const schema = z.object({
-  /** Puste = sesja mieszana (wszystkie przedmioty knnp). */
   subjectId: z.string().optional(),
-  mode: z.enum(["nauka", "egzamin", "powtorka"]),
-  count: z.coerce.number().min(1).max(100),
+  mode: z.enum(["inteligentna", "przeglad", "katalog"]),
+  count: z.coerce.number().min(1).max(500),
   topicId: z.string().min(1).optional(),
 });
 
@@ -104,10 +103,7 @@ export async function startSession(
         .eq("subject_id", subjectId);
       topicOkForDue = new Set((topicRowsForDue ?? []).map((t) => t.id as string));
       if (pool.length === 0) {
-        return {
-          ok: false,
-          message: "Brak aktywnych pytań w wybranym temacie.",
-        };
+        return { ok: false, message: "Brak aktywnych pytań w wybranym temacie." };
       }
     } else if (isMix) {
       pool = await fetchKnnpAllQuestionIds(supabase);
@@ -121,35 +117,14 @@ export async function startSession(
       topicOkForDue = new Set((topicRows ?? []).map((t) => t.id as string));
     }
 
-    if (mode === "powtorka") {
-      chosenIds = await fetchDueReviewQuestionIdsForTopics(
-        supabase,
-        user.id,
-        topicOkForDue,
-        count,
-        topicFilter,
-      );
-      if (chosenIds.length === 0) {
-        return {
-          ok: false,
-          message: isMix
-            ? "Nie masz zaległych powtórek. Wróć później lub wybierz tryb Nauka."
-            : "Nie masz zaległych powtórek z tego przedmiotu. Wróć później lub wybierz tryb Nauka.",
-        };
-      }
-    } else if (mode === "nauka") {
+    if (mode === "katalog") {
+      chosenIds = pool;
+    } else if (mode === "inteligentna") {
       const dueIds = await fetchDueReviewQuestionIdsForTopics(
-        supabase,
-        user.id,
-        topicOkForDue,
-        count,
-        topicFilter,
+        supabase, user.id, topicOkForDue, count, topicFilter,
       );
       const unseenIds = await fetchUnseenQuestionIds(
-        supabase,
-        user.id,
-        pool,
-        count,
+        supabase, user.id, pool, count,
       );
       chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
     } else {
@@ -159,12 +134,13 @@ export async function startSession(
     if (chosenIds.length === 0) {
       return {
         ok: false,
-        message:
-          "Brak pytań dla tego przedmiotu. Uruchom skrypt seed w Supabase.",
+        message: "Brak pytań dla tego przedmiotu. Uruchom skrypt seed w Supabase.",
       };
     }
 
-    chosenIds = chosenIds.slice(0, count);
+    if (mode !== "katalog") {
+      chosenIds = chosenIds.slice(0, count);
+    }
 
     const rows = await loadQuestionsByIdsOrdered(supabase, chosenIds);
     if (rows.length === 0) {
@@ -172,6 +148,19 @@ export async function startSession(
     }
 
     const questions = mapRowsToSessionQuestions(rows);
+
+    if (mode === "katalog") {
+      return {
+        ok: true,
+        sessionId: `katalog-${Date.now()}`,
+        subject: {
+          id: subjectId,
+          name: subjectRow?.name ?? "Przeglądanie",
+          short_name: subjectRow?.short_name ?? "",
+        },
+        questions,
+      };
+    }
 
     let insertSubjectId = subjectId;
     if (isMix && rows[0]) {
@@ -188,12 +177,14 @@ export async function startSession(
       if (t1?.subject_id) insertSubjectId = t1.subject_id as string;
     }
 
+    const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
+
     const { data: inserted, error: insErr } = await supabase
       .from("study_sessions")
       .insert({
         user_id: user.id,
         subject_id: insertSubjectId,
-        mode,
+        mode: dbMode,
         total_questions: questions.length,
         question_ids: chosenIds,
       })
@@ -204,8 +195,7 @@ export async function startSession(
       console.error("[startSession] insert session", insErr.message, insErr);
       return {
         ok: false,
-        message:
-          "Nie udało się utworzyć sesji. Upewnij się, że w bazie jest kolumna question_ids (skrypt scripts/seed-content.sql).",
+        message: "Nie udało się utworzyć sesji. Upewnij się, że w bazie jest kolumna question_ids.",
       };
     }
 

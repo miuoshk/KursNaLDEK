@@ -100,7 +100,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
         </p>
         {data.dueReviews > 0 ? (
           <Link
-            href="/sesja/new?mode=powtorka&count=10"
+            href="/sesja/new?mode=inteligentna&count=10"
             className="mt-3 inline-flex font-body text-body-sm text-brand-gold hover:underline"
           >
             Powtórz teraz →

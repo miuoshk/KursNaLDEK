@@ -8,7 +8,7 @@ import { SessionConfidenceBar } from "@/features/session/components/SessionConfi
 import { SessionQuestionActions } from "@/features/session/components/SessionQuestionActions";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
-import type { Confidence, SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
 type SessionQuestionContentProps = {
@@ -18,9 +18,11 @@ type SessionQuestionContentProps = {
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
   isPastReadOnly: boolean;
+  mode: SessionMode;
   onSelectOption: (id: string) => void;
   onCheck: () => void;
   onConfidenceAndNext: (c: Confidence) => void;
+  onPrzegladNext: () => void;
   onContinueReview: () => void;
   onGoToPrevious: () => void;
 };
@@ -32,14 +34,17 @@ export function SessionQuestionContent({
   selectedOptionId,
   isShowingFeedback,
   isPastReadOnly,
+  mode,
   onSelectOption,
   onCheck,
   onConfidenceAndNext,
+  onPrzegladNext,
   onContinueReview,
   onGoToPrevious,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
+  const isPrzeglad = mode === "przeglad";
 
   return (
     <>
@@ -88,7 +93,7 @@ export function SessionQuestionContent({
             >
               Sprawdź odpowiedź
             </button>
-            <SessionQuestionActions />
+            <SessionQuestionActions questionId={q.id} questionText={q.text} />
           </div>
         ) : (
           <motion.div
@@ -103,12 +108,21 @@ export function SessionQuestionContent({
               selectedOptionId={selectedOptionId!}
               isCorrect={isCorrect}
             />
-            <SessionQuestionActions />
+            <SessionQuestionActions questionId={q.id} questionText={q.text} />
+            {isPrzeglad && (
+              <button
+                type="button"
+                onClick={onPrzegladNext}
+                className="mt-6 w-full rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition hover:brightness-110"
+              >
+                Dalej
+              </button>
+            )}
           </motion.div>
         )}
       </div>
 
-      {isShowingFeedback ? (
+      {isShowingFeedback && !isPrzeglad ? (
         <SessionConfidenceBar
           current={currentIndex}
           total={total}

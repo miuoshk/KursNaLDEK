@@ -61,7 +61,8 @@ export async function loginAction(
   });
 
   if (error) {
-    return { error: "Nie udało się zalogować. Sprawdź dane i spróbuj ponownie." };
+    /* Tymczasowo: pełny komunikat Supabase do debugowania (usuń przed produkcją). */
+    return { error: error.message };
   }
 
   redirect("/");

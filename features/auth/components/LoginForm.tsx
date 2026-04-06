@@ -61,13 +61,13 @@ export function LoginForm() {
         />
       </div>
 
+      <SubmitButton />
+
       {state.error ? (
-        <p className="font-body text-body-sm text-[#F87171]" role="alert">
+        <p className="mt-3 font-body text-body-sm text-[#F87171]" role="alert">
           {state.error}
         </p>
       ) : null}
-
-      <SubmitButton />
     </form>
   );
 }

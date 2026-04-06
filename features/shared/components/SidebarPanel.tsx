@@ -4,7 +4,6 @@ import {
   Award,
   BarChart3,
   BookOpen,
-  Brain,
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
@@ -13,15 +12,13 @@ import {
 } from "lucide-react";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
+import { SesjaNaukiLink } from "@/features/shared/components/SesjaNaukiLink";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { formatStreak } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
-  { href: "/pulpit", label: "Pulpit", icon: LayoutDashboard },
-  { href: "/przedmioty", label: "Moje przedmioty", icon: BookOpen },
-  { href: "/sesja", label: "Sesja nauki", icon: Brain },
   { href: "/statystyki", label: "Statystyki", icon: BarChart3 },
   { href: "/osiagniecia", label: "Osiągnięcia", icon: Award },
   { href: "/ustawienia", label: "Ustawienia", icon: Settings },
@@ -125,6 +122,19 @@ export function SidebarPanel({
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-4" aria-label="Główna nawigacja">
+        <SidebarLink
+          href="/pulpit"
+          label="Pulpit"
+          icon={LayoutDashboard}
+          collapsed={collapsed && !mobile}
+        />
+        <SidebarLink
+          href="/przedmioty"
+          label="Moje przedmioty"
+          icon={BookOpen}
+          collapsed={collapsed && !mobile}
+        />
+        <SesjaNaukiLink collapsed={collapsed && !mobile} />
         {SIDEBAR_NAV.map((item) => (
           <SidebarLink
             key={item.href}

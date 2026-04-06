@@ -15,8 +15,8 @@ export function Sidebar() {
   const toggle = useSidebarStore((s) => s.toggle);
   const mobileOpen = useSidebarStore((s) => s.mobileOpen);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
-  const sessionStudyRoute =
-    pathname.startsWith("/sesja") && !pathname.includes("/podsumowanie");
+  const forceSessionCollapsed =
+    pathname.startsWith("/sesja/") && !pathname.includes("/podsumowanie");
 
   useEffect(() => {
     setMobileOpen(false);
@@ -47,7 +47,8 @@ export function Sidebar() {
     );
   }
 
-  const collapsed = narrow || collapsedFromStore || sessionStudyRoute;
+  const collapsed =
+    narrow || (forceSessionCollapsed ? true : collapsedFromStore);
 
   return (
     <div className="flex shrink-0">

@@ -37,7 +37,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
           icon={BarChart3}
           title="Brak danych do wyświetlenia"
           description="Odpowiedz na pytania, a tutaj pojawią się Twoje statystyki."
-          cta={{ href: "/sesja", label: "Rozpocznij pierwszą sesję →" }}
+          cta={{ href: "/przedmioty", label: "Rozpocznij pierwszą sesję →" }}
         />
       </div>
     );

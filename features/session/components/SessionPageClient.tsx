@@ -17,6 +17,7 @@ type Bootstrap =
       sessionId: string;
       subjectId: string;
       subjectName: string;
+      subjectShortName: string;
       mode: SessionMode;
       questions: SessionQuestion[];
     };
@@ -63,6 +64,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           JSON.stringify({
             subjectId: res.subject.id,
             subjectName: res.subject.name,
+            subjectShortName: res.subject.short_name,
             mode,
             questions: res.questions,
           }),
@@ -78,6 +80,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           const parsed = JSON.parse(raw) as {
             subjectId: string;
             subjectName: string;
+            subjectShortName?: string;
             mode: SessionMode;
             questions: SessionQuestion[];
           };
@@ -88,6 +91,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
               sessionId,
               subjectId: parsed.subjectId,
               subjectName: parsed.subjectName,
+              subjectShortName: parsed.subjectShortName ?? parsed.subjectName,
               mode: parsed.mode,
               questions: parsed.questions,
             });
@@ -110,6 +114,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         sessionId: loaded.sessionId,
         subjectId: loaded.subject.id,
         subjectName: loaded.subject.name,
+        subjectShortName: loaded.subject.short_name,
         mode: loaded.mode as SessionMode,
         questions: loaded.questions,
       });
@@ -144,7 +149,9 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   return (
     <SessionStudyView
       sessionId={boot.sessionId}
+      subjectId={boot.subjectId}
       subjectName={boot.subjectName}
+      subjectShortName={boot.subjectShortName}
       mode={boot.mode}
       questions={boot.questions}
     />

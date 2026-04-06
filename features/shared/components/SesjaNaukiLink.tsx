@@ -1,47 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import { Brain } from "lucide-react";
 import { usePathname } from "next/navigation";
-import type { LucideIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
 
-type SidebarLinkProps = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-  collapsed: boolean;
-};
-
-export function SidebarLink({
-  href,
-  label,
-  icon: Icon,
-  collapsed,
-}: SidebarLinkProps) {
+export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const pathname = usePathname();
+  const { dueReviewsCount } = useDashboardUser();
+  const href =
+    dueReviewsCount > 0 ? "/sesja/new?mode=powtorka&count=10" : "/przedmioty";
+  const tooltip =
+    dueReviewsCount > 0 ? "Sesja powtórkowa" : "Wybierz przedmiot";
+
+  const inSession =
+    pathname.startsWith("/sesja/") && !pathname.includes("/podsumowanie");
   const active =
-    href === "/pulpit"
-      ? pathname === "/pulpit" || pathname === "/pulpit/"
-      : href === "/przedmioty"
-        ? pathname === "/przedmioty" || pathname.startsWith("/przedmioty/")
-        : href === "/statystyki"
-          ? pathname === "/statystyki" || pathname.startsWith("/statystyki/")
-          : href === "/osiagniecia"
-            ? pathname === "/osiagniecia" ||
-              pathname.startsWith("/osiagniecia/")
-          : href === "/ustawienia"
-            ? pathname === "/ustawienia" ||
-              pathname.startsWith("/ustawienia/")
-            : pathname === href || pathname.startsWith(`${href}/`);
+    inSession ||
+    (!inSession &&
+      dueReviewsCount === 0 &&
+      (pathname === "/przedmioty" || pathname.startsWith("/przedmioty/")));
 
   const linkInner = (
     <>
-      <Icon
+      <Brain
         className={cn(
           "size-5 shrink-0 transition-colors duration-200 ease-out",
           active ? "text-brand-gold" : "text-secondary",
@@ -55,7 +43,7 @@ export function SidebarLink({
           collapsed && "sr-only",
         )}
       >
-        {label}
+        Sesja nauki
       </span>
     </>
   );
@@ -80,14 +68,28 @@ export function SidebarLink({
       prefetch
       className={linkClass}
       aria-current={active ? "page" : undefined}
-      title={collapsed ? label : undefined}
+      title={collapsed ? tooltip : undefined}
     >
       {linkInner}
     </Link>
   );
 
   if (!collapsed) {
-    return link;
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>{link}</TooltipTrigger>
+        <TooltipContent
+          side="right"
+          sideOffset={8}
+          className={cn(
+            "z-50 rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-2 py-1",
+            "font-body text-body-xs text-secondary shadow-lg",
+          )}
+        >
+          {tooltip}
+        </TooltipContent>
+      </Tooltip>
+    );
   }
 
   return (
@@ -101,7 +103,7 @@ export function SidebarLink({
           "font-body text-body-xs text-secondary shadow-lg",
         )}
       >
-        {label}
+        Sesja nauki — {tooltip}
       </TooltipContent>
     </Tooltip>
   );

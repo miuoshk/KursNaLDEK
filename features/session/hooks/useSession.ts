@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
+import type { SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
 export function useSession(
   initialQuestions: SessionQuestion[],
@@ -13,7 +13,6 @@ export function useSession(
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [isShowingFeedback, setIsShowingFeedback] = useState(false);
   const [answers, setAnswers] = useState<SessionAnswer[]>([]);
-  const [confidence, setConfidenceState] = useState<Confidence | null>(null);
   const [isPastReadOnly, setIsPastReadOnly] = useState(false);
 
   const currentQuestion = questions[currentIndex] ?? null;
@@ -32,15 +31,9 @@ export function useSession(
     setIsShowingFeedback(true);
   }, [currentQuestion, selectedOptionId, isPastReadOnly]);
 
-  const setConfidence = useCallback((c: Confidence) => {
-    if (isPastReadOnly) return;
-    setConfidenceState(c);
-  }, [isPastReadOnly]);
-
   const resetForNext = useCallback(() => {
     setSelectedOptionId(null);
     setIsShowingFeedback(false);
-    setConfidenceState(null);
     setIsPastReadOnly(false);
   }, []);
 
@@ -61,7 +54,6 @@ export function useSession(
     setCurrentIndex(prevIdx);
     setSelectedOptionId(prev.selectedOptionId);
     setIsShowingFeedback(true);
-    setConfidenceState(prev.confidence);
     setIsPastReadOnly(true);
   }, [currentIndex, isShowingFeedback, answers]);
 
@@ -75,11 +67,9 @@ export function useSession(
     if (nextA) {
       setSelectedOptionId(nextA.selectedOptionId);
       setIsShowingFeedback(true);
-      setConfidenceState(nextA.confidence);
     } else {
       setSelectedOptionId(null);
       setIsShowingFeedback(false);
-      setConfidenceState(null);
     }
   }, [isPastReadOnly, currentIndex, questions.length, answers]);
 
@@ -92,11 +82,9 @@ export function useSession(
     selectedOptionId,
     isShowingFeedback,
     answers,
-    confidence,
     isPastReadOnly,
     selectOption,
     checkAnswer,
-    setConfidence,
     completeCurrentAndGoNext,
     resetForNext,
     goToPrevious,

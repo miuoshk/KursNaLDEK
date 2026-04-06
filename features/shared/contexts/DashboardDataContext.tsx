@@ -8,6 +8,7 @@ export type DashboardProfileSnapshot = {
   current_streak: number | null;
   daily_goal: number | null;
   longest_streak: number | null;
+  xp: number | null;
 } | null;
 
 type DashboardDataValue = {

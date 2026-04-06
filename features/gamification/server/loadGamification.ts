@@ -27,21 +27,22 @@ export async function loadGamification(
 ): Promise<GamificationPayload> {
   const since = periodStart(leaderboardPeriod);
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("xp, current_streak, display_name")
-    .eq("id", userId)
-    .maybeSingle();
+  const [{ data: profile }, { data: uqp }] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("xp, current_streak, display_name")
+      .eq("id", userId)
+      .maybeSingle(),
+    supabase
+      .from("user_question_progress")
+      .select("times_answered, times_correct")
+      .eq("user_id", userId),
+  ]);
 
   const displayName = profile?.display_name ?? "Użytkownik";
   const initials = initialsFromName(displayName);
   const xp = profile?.xp ?? 0;
   const streak = profile?.current_streak ?? 0;
-
-  const { data: uqp } = await supabase
-    .from("user_question_progress")
-    .select("times_answered, times_correct")
-    .eq("user_id", userId);
 
   let totalAnswered = 0;
   let totalCorrect = 0;

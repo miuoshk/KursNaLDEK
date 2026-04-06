@@ -5,7 +5,6 @@ export function mobilePageTitle(pathname: string): string | null {
     if (pathname === "/przedmioty") return "Moje przedmioty";
     return "Przedmiot";
   }
-  if (pathname === "/sesja" || pathname === "/sesja/") return "Sesja nauki";
   if (pathname === "/statystyki") return "Statystyki";
   if (pathname === "/osiagniecia") return "Osiągnięcia";
   if (pathname === "/ustawienia") return "Ustawienia";

@@ -8,6 +8,9 @@ export function greetingName(
     const e = email?.trim();
     return e?.split("@")[0] ?? "Studencie";
   }
+  if (raw.toLowerCase() === "test") {
+    return "Student";
+  }
   if (raw.includes("@")) {
     return raw.split("@")[0]?.trim() || "Studencie";
   }

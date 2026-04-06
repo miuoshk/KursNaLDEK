@@ -42,7 +42,7 @@ export function PulpitRecentSessions({ sessions }: { sessions: PulpitRecentSessi
         {sessions.length === 0 ? (
           <li className="rounded-card bg-brand-card-1 p-4 font-body text-body-sm text-secondary">
             Nie masz jeszcze żadnych sesji.{" "}
-            <Link href="/sesja" className="text-brand-gold hover:underline">
+            <Link href="/przedmioty" className="text-brand-gold hover:underline">
               Rozpocznij naukę
             </Link>
             !

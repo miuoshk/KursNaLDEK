@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { loadSessionSummaryAction } from "@/features/session/api/loadSessionSummary";
 import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
+import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
 import { Skeleton } from "@/features/shared/components/Skeleton";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
-
-const storageKey = (id: string) => `session-summary-${id}`;
 
 export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   const router = useRouter();
@@ -16,14 +15,17 @@ export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
 
   useEffect(() => {
     const raw =
-      typeof window !== "undefined" ? sessionStorage.getItem(storageKey(sessionId)) : null;
+      typeof window !== "undefined"
+        ? sessionStorage.getItem(sessionSummaryStorageKey(sessionId))
+        : null;
     if (raw) {
       try {
         const parsed = JSON.parse(raw) as SessionSummaryData;
+        sessionStorage.removeItem(sessionSummaryStorageKey(sessionId));
         setSummary(parsed);
         return;
       } catch {
-        sessionStorage.removeItem(storageKey(sessionId));
+        sessionStorage.removeItem(sessionSummaryStorageKey(sessionId));
       }
     }
 

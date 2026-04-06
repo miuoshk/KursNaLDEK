@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import type { Confidence } from "@/features/session/types";
 import type { SessionQuestion } from "@/features/session/types";
 
 type Args = {
@@ -9,11 +10,11 @@ type Args = {
   isShowingFeedback: boolean;
   isPastReadOnly: boolean;
   selectedOptionId: string | null;
-  confidence: unknown;
   selectOption: (id: string) => void;
   onCheck: () => void;
   onGoPrevious: () => void;
-  onGoNext: () => void;
+  onConfidencePick: (c: Confidence) => void;
+  onContinueReview: () => void;
 };
 
 export function useSessionKeyboardShortcuts({
@@ -22,34 +23,52 @@ export function useSessionKeyboardShortcuts({
   isShowingFeedback,
   isPastReadOnly,
   selectedOptionId,
-  confidence,
   selectOption,
   onCheck,
   onGoPrevious,
-  onGoNext,
+  onConfidencePick,
+  onContinueReview,
 }: Args) {
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
-      const opts = currentQuestion?.options;
-      const canGoNext =
-        isPastReadOnly ||
-        (Boolean(isShowingFeedback && selectedOptionId && confidence !== null));
 
-      if (e.key === "ArrowLeft" && currentIndex > 0 && !isShowingFeedback) {
+      if (isShowingFeedback) {
+        if (isPastReadOnly) {
+          if (e.key === "ArrowRight" || e.key === "Enter") {
+            e.preventDefault();
+            onContinueReview();
+          }
+          return;
+        }
+        if (e.key === "1" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          onConfidencePick("nie_wiedzialem");
+          return;
+        }
+        if (e.key === "2" || e.key === "ArrowDown") {
+          e.preventDefault();
+          onConfidencePick("troche");
+          return;
+        }
+        if (e.key === "3" || e.key === "ArrowRight") {
+          e.preventDefault();
+          onConfidencePick("na_pewno");
+          return;
+        }
+        return;
+      }
+
+      if (e.key === "ArrowLeft" && currentIndex > 0) {
         e.preventDefault();
         onGoPrevious();
         return;
       }
-      if (e.key === "ArrowRight" && canGoNext) {
-        e.preventDefault();
-        onGoNext();
-        return;
-      }
 
-      if (!opts?.length || isShowingFeedback) return;
+      const opts = currentQuestion?.options;
+      if (!opts?.length) return;
       const k = e.key;
       if (k >= "1" && k <= "9") {
         const idx = Number(k) - 1;
@@ -72,10 +91,10 @@ export function useSessionKeyboardShortcuts({
     isShowingFeedback,
     isPastReadOnly,
     selectedOptionId,
-    confidence,
     selectOption,
     onCheck,
     onGoPrevious,
-    onGoNext,
+    onConfidencePick,
+    onContinueReview,
   ]);
 }

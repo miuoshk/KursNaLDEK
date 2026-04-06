@@ -1,0 +1,42 @@
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
+import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
+
+type PageProps = {
+  params: Promise<{ sessionId: string }>;
+};
+
+export default async function SessionSummaryPage({ params }: PageProps) {
+  const { sessionId } = await params;
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  const { data: session } = await supabase
+    .from("study_sessions")
+    .select("is_completed")
+    .eq("id", sessionId)
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (!session) {
+    redirect("/przedmioty");
+  }
+
+  if (!session.is_completed) {
+    redirect(`/sesja/${sessionId}`);
+  }
+
+  const summary = await buildSessionSummary(supabase, sessionId, user.id);
+  if (!summary) {
+    redirect("/przedmioty");
+  }
+
+  return <SessionSummaryClient summary={summary} />;
+}

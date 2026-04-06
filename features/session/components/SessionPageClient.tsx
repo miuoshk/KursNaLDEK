@@ -1,0 +1,161 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestions";
+import { startSession } from "@/features/session/api/startSession";
+import { SessionStudyView } from "@/features/session/components/SessionStudyView";
+import type { SessionMode, SessionQuestion } from "@/features/session/types";
+
+const CACHE_PREFIX = "kurs-session-";
+
+type Bootstrap =
+  | { status: "loading" }
+  | { status: "error"; message: string }
+  | {
+      status: "ready";
+      sessionId: string;
+      subjectId: string;
+      subjectName: string;
+      mode: SessionMode;
+      questions: SessionQuestion[];
+    };
+
+function parseMode(v: string | null): SessionMode {
+  if (v === "egzamin" || v === "powtorka") return v;
+  return "nauka";
+}
+
+function parseCount(v: string | null): number {
+  const n = Number(v);
+  if (Number.isFinite(n) && n >= 1 && n <= 100) return Math.floor(n);
+  return 10;
+}
+
+export function SessionPageClient({ sessionId }: { sessionId: string }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [boot, setBoot] = useState<Bootstrap>({ status: "loading" });
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function run() {
+      if (sessionId === "new") {
+        const subj = searchParams.get("subject") ?? "";
+        const mode = parseMode(searchParams.get("mode"));
+        const count = parseCount(searchParams.get("count"));
+
+        if (!subj) {
+          setBoot({
+            status: "error",
+            message: "Brak parametru przedmiotu (subject).",
+          });
+          return;
+        }
+
+        const topic = searchParams.get("topic") ?? undefined;
+        const res = await startSession({
+          subjectId: subj,
+          mode,
+          count,
+          topicId: topic,
+        });
+        if (cancelled) return;
+        if (!res.ok) {
+          setBoot({ status: "error", message: res.message });
+          return;
+        }
+
+        sessionStorage.setItem(
+          `${CACHE_PREFIX}${res.sessionId}`,
+          JSON.stringify({
+            subjectId: res.subject.id,
+            subjectName: res.subject.name,
+            mode,
+            questions: res.questions,
+          }),
+        );
+        router.replace(`/sesja/${res.sessionId}`);
+        return;
+      }
+
+      const cacheKey = `${CACHE_PREFIX}${sessionId}`;
+      const raw = sessionStorage.getItem(cacheKey);
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw) as {
+            subjectId: string;
+            subjectName: string;
+            mode: SessionMode;
+            questions: SessionQuestion[];
+          };
+          sessionStorage.removeItem(cacheKey);
+          if (!cancelled) {
+            setBoot({
+              status: "ready",
+              sessionId,
+              subjectId: parsed.subjectId,
+              subjectName: parsed.subjectName,
+              mode: parsed.mode,
+              questions: parsed.questions,
+            });
+          }
+          return;
+        } catch {
+          sessionStorage.removeItem(cacheKey);
+        }
+      }
+
+      const loaded = await loadSessionQuestions(sessionId);
+      if (cancelled) return;
+      if (!loaded.ok) {
+        setBoot({ status: "error", message: loaded.message });
+        return;
+      }
+
+      setBoot({
+        status: "ready",
+        sessionId: loaded.sessionId,
+        subjectId: loaded.subject.id,
+        subjectName: loaded.subject.name,
+        mode: loaded.mode as SessionMode,
+        questions: loaded.questions,
+      });
+    }
+
+    void run();
+    return () => {
+      cancelled = true;
+    };
+  }, [sessionId, router, searchParams]);
+
+  if (boot.status === "loading") {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center font-body text-body-md text-secondary">
+        Ładowanie sesji…
+      </div>
+    );
+  }
+
+  if (boot.status === "error") {
+    return (
+      <div
+        className="mx-auto max-w-md rounded-card border border-error/30 bg-brand-card-1 p-6 text-center"
+        role="alert"
+      >
+        <p className="font-heading text-heading-sm text-primary">Nie udało się uruchomić sesji</p>
+        <p className="mt-2 font-body text-body-sm text-secondary">{boot.message}</p>
+      </div>
+    );
+  }
+
+  return (
+    <SessionStudyView
+      sessionId={boot.sessionId}
+      subjectName={boot.subjectName}
+      mode={boot.mode}
+      questions={boot.questions}
+    />
+  );
+}

@@ -10,6 +10,8 @@ export type DashboardUserValue = {
   streak: number;
   displayName: string;
   initials: string;
+  /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */
+  testMode?: boolean;
 };
 
 const DashboardUserContext = createContext<DashboardUserValue | null>(null);

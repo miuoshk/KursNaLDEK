@@ -1,9 +1,16 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import type { AuthActionState } from "@/features/auth/types";
+import {
+  getTestModeCookieValue,
+  isTestModeCredentials,
+  TEST_MODE_COOKIE_NAME,
+  TEST_MODE_EMAIL,
+} from "@/lib/testMode";
 
 const loginSchema = z.object({
   email: z.string().email("Podaj poprawny adres e-mail."),
@@ -35,6 +42,18 @@ export async function loginAction(
     return { error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane logowania." };
   }
 
+  if (isTestModeCredentials(parsed.data.email, parsed.data.password)) {
+    const jar = await cookies();
+    jar.set(TEST_MODE_COOKIE_NAME, getTestModeCookieValue(), {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 14,
+      secure: process.env.NODE_ENV === "production",
+    });
+    redirect("/");
+  }
+
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
@@ -63,6 +82,10 @@ export async function registerAction(
     return { error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane rejestracji." };
   }
 
+  if (parsed.data.email.toLowerCase() === TEST_MODE_EMAIL.toLowerCase()) {
+    return { error: "Ten adres e-mail jest zarezerwowany do trybu testowego." };
+  }
+
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
@@ -82,6 +105,8 @@ export async function registerAction(
 }
 
 export async function logoutAction() {
+  const jar = await cookies();
+  jar.delete(TEST_MODE_COOKIE_NAME);
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/login");

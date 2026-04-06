@@ -16,6 +16,10 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
     prev != null ? Math.round((summary.accuracy - prev) * 100) : null;
   const improved = delta != null && delta > 0;
   const declined = delta != null && delta < 0;
+  const answered = summary.answers.length;
+  const planned = summary.totalQuestions;
+  const questionsLabel =
+    answered < planned ? `${answered} z ${planned} pytań` : `${planned} pytań`;
 
   return (
     <div className="rounded-card border-t-[3px] border-brand-gold bg-brand-card-1 p-8">
@@ -23,8 +27,8 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
         <div className="min-w-0 flex-1">
           <p className="font-heading text-heading-lg text-white">Sesja zakończona</p>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {summary.subjectName} · Tryb: {sessionModeLabel(summary.mode)} ·{" "}
-            {summary.totalQuestions} pytań · {formatSessionDuration(summary.durationSeconds)}
+            {summary.subjectName} · Tryb: {sessionModeLabel(summary.mode)} · {questionsLabel} ·{" "}
+            {formatSessionDuration(summary.durationSeconds)}
           </p>
         </div>
 
@@ -102,7 +106,7 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
           <li className="flex items-center gap-2">
             <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
             <span className="font-mono text-white">
-              Średnio na pytanie: {summary.avgTimePerQuestion}s
+              Średnio na pytanie: {formatSessionDuration(summary.avgTimePerQuestion)}
             </span>
           </li>
           <li className="flex items-center gap-2">

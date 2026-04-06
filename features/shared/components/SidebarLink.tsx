@@ -25,9 +25,11 @@ export function SidebarLink({
 }: SidebarLinkProps) {
   const pathname = usePathname();
   const active =
-    href === "/dashboard"
-      ? pathname === "/dashboard" || pathname === "/dashboard/"
-      : href === "/przedmioty"
+    href === "/pulpit"
+      ? pathname === "/pulpit" || pathname === "/pulpit/"
+      : href === "/sesja"
+        ? pathname === "/sesja" || pathname === "/sesja/" || pathname.startsWith("/sesja/")
+        : href === "/przedmioty"
         ? pathname === "/przedmioty" || pathname.startsWith("/przedmioty/")
         : href === "/statystyki"
           ? pathname === "/statystyki" || pathname.startsWith("/statystyki/")

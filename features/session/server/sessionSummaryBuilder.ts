@@ -138,11 +138,11 @@ export async function buildSessionSummary(
     });
   }
 
-  const total = session.total_questions ?? rows.length;
+  const totalPlan = session.total_questions ?? rows.length;
   const correct = session.correct_answers ?? 0;
-  const acc = total > 0 ? correct / total : 0;
-  const dur = session.duration_seconds ?? 0;
   const answered = rows.length;
+  const acc = answered > 0 ? correct / answered : 0;
+  const dur = session.duration_seconds ?? 0;
   const avg = answered > 0 ? Math.round(dur / answered) : 0;
 
   const newQuestionsCount = rows.filter(
@@ -164,7 +164,7 @@ export async function buildSessionSummary(
     subjectName: subject.name,
     subjectShortName: subject.short_name,
     mode: session.mode as SessionMode,
-    totalQuestions: total,
+    totalQuestions: totalPlan,
     correctAnswers: correct,
     accuracy: acc,
     durationSeconds: dur,

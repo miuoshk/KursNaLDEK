@@ -4,12 +4,14 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import type { SessionMode, SessionQuestion } from "@/features/session/types";
 import {
+  fetchKnnpAllQuestionIds,
+  fetchKnnpTopicIdSet,
   fetchSubjectQuestionIds,
   fetchTopicQuestionIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
 import {
-  fetchDueReviewQuestionIds,
+  fetchDueReviewQuestionIdsForTopics,
   fetchUnseenQuestionIds,
   mixNaukaQuestionIds,
 } from "@/features/session/server/sessionQuestionMix";
@@ -19,7 +21,8 @@ import {
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
 
 const schema = z.object({
-  subjectId: z.string().min(1),
+  /** Puste = sesja mieszana (wszystkie przedmioty knnp). */
+  subjectId: z.string().optional(),
   mode: z.enum(["nauka", "egzamin", "powtorka"]),
   count: z.coerce.number().min(1).max(100),
   topicId: z.string().min(1).optional(),
@@ -42,7 +45,10 @@ export async function startSession(
     return { ok: false, message: "Nieprawidłowe parametry sesji." };
   }
 
-  const { subjectId, mode, count, topicId } = parsed.data;
+  const rawSubject = parsed.data.subjectId?.trim() ?? "";
+  const isMix = rawSubject.length === 0;
+  const { mode, count, topicId } = parsed.data;
+  const subjectId = isMix ? "" : rawSubject;
 
   try {
     const supabase = await createClient();
@@ -55,20 +61,32 @@ export async function startSession(
       return { ok: false, message: "Musisz być zalogowany, aby rozpocząć sesję." };
     }
 
-    const { data: subject, error: subErr } = await supabase
-      .from("subjects")
-      .select("id, name, short_name")
-      .eq("id", subjectId)
-      .maybeSingle();
+    if (isMix && topicId) {
+      return {
+        ok: false,
+        message: "Sesja mieszana nie obsługuje filtra po pojedynczym temacie.",
+      };
+    }
 
-    if (subErr || !subject) {
-      return { ok: false, message: "Nie znaleziono przedmiotu." };
+    let subjectRow: { id: string; name: string; short_name: string } | null = null;
+    if (!isMix) {
+      const { data: subject, error: subErr } = await supabase
+        .from("subjects")
+        .select("id, name, short_name")
+        .eq("id", subjectId)
+        .maybeSingle();
+
+      if (subErr || !subject) {
+        return { ok: false, message: "Nie znaleziono przedmiotu." };
+      }
+      subjectRow = subject;
     }
 
     let chosenIds: string[] = [];
 
     let pool: string[];
     let topicFilter: Set<string> | undefined;
+    let topicOkForDue: Set<string>;
     if (topicId) {
       const { data: top, error: te } = await supabase
         .from("topics")
@@ -80,36 +98,50 @@ export async function startSession(
       }
       pool = await fetchTopicQuestionIds(supabase, topicId);
       topicFilter = new Set(pool);
+      const { data: topicRowsForDue } = await supabase
+        .from("topics")
+        .select("id")
+        .eq("subject_id", subjectId);
+      topicOkForDue = new Set((topicRowsForDue ?? []).map((t) => t.id as string));
       if (pool.length === 0) {
         return {
           ok: false,
           message: "Brak aktywnych pytań w wybranym temacie.",
         };
       }
+    } else if (isMix) {
+      pool = await fetchKnnpAllQuestionIds(supabase);
+      topicOkForDue = await fetchKnnpTopicIdSet(supabase);
     } else {
       pool = await fetchSubjectQuestionIds(supabase, subjectId);
+      const { data: topicRows } = await supabase
+        .from("topics")
+        .select("id")
+        .eq("subject_id", subjectId);
+      topicOkForDue = new Set((topicRows ?? []).map((t) => t.id as string));
     }
 
     if (mode === "powtorka") {
-      chosenIds = await fetchDueReviewQuestionIds(
+      chosenIds = await fetchDueReviewQuestionIdsForTopics(
         supabase,
         user.id,
-        subjectId,
+        topicOkForDue,
         count,
         topicFilter,
       );
       if (chosenIds.length === 0) {
         return {
           ok: false,
-          message:
-            "Nie masz zaległych powtórek z tego przedmiotu. Wróć później lub wybierz tryb Nauka.",
+          message: isMix
+            ? "Nie masz zaległych powtórek. Wróć później lub wybierz tryb Nauka."
+            : "Nie masz zaległych powtórek z tego przedmiotu. Wróć później lub wybierz tryb Nauka.",
         };
       }
     } else if (mode === "nauka") {
-      const dueIds = await fetchDueReviewQuestionIds(
+      const dueIds = await fetchDueReviewQuestionIdsForTopics(
         supabase,
         user.id,
-        subjectId,
+        topicOkForDue,
         count,
         topicFilter,
       );
@@ -141,11 +173,26 @@ export async function startSession(
 
     const questions = mapRowsToSessionQuestions(rows);
 
+    let insertSubjectId = subjectId;
+    if (isMix && rows[0]) {
+      const { data: q1 } = await supabase
+        .from("questions")
+        .select("topic_id")
+        .eq("id", rows[0].id)
+        .maybeSingle();
+      const { data: t1 } = await supabase
+        .from("topics")
+        .select("subject_id")
+        .eq("id", q1?.topic_id as string)
+        .maybeSingle();
+      if (t1?.subject_id) insertSubjectId = t1.subject_id as string;
+    }
+
     const { data: inserted, error: insErr } = await supabase
       .from("study_sessions")
       .insert({
         user_id: user.id,
-        subject_id: subjectId,
+        subject_id: insertSubjectId,
         mode,
         total_questions: questions.length,
         question_ids: chosenIds,
@@ -162,13 +209,19 @@ export async function startSession(
       };
     }
 
+    const { data: insertSubject } = await supabase
+      .from("subjects")
+      .select("id, name, short_name")
+      .eq("id", insertSubjectId)
+      .maybeSingle();
+
     return {
       ok: true,
       sessionId: inserted.id,
       subject: {
-        id: subject.id,
-        name: subject.name,
-        short_name: subject.short_name,
+        id: insertSubjectId,
+        name: isMix ? "Sesja mieszana" : (insertSubject?.name ?? subjectRow?.name ?? ""),
+        short_name: isMix ? "Mix" : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
       },
       questions,
     };

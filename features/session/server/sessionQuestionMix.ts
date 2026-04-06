@@ -4,18 +4,14 @@ import {
   shuffle,
 } from "@/features/session/server/questionSelection";
 
-export async function fetchDueReviewQuestionIds(
+/** Powtórki należące do tematów z `topicOk`. */
+export async function fetchDueReviewQuestionIdsForTopics(
   supabase: SupabaseClient,
   userId: string,
-  subjectId: string,
+  topicOk: Set<string>,
   limit: number,
   allowedIds?: Set<string>,
 ): Promise<string[]> {
-  const { data: topicRows } = await supabase
-    .from("topics")
-    .select("id")
-    .eq("subject_id", subjectId);
-  const topicOk = new Set((topicRows ?? []).map((t) => t.id as string));
   if (topicOk.size === 0) return [];
 
   const { data: dueRows } = await supabase
@@ -48,6 +44,27 @@ export async function fetchDueReviewQuestionIds(
     if (out.length >= limit) break;
   }
   return out;
+}
+
+export async function fetchDueReviewQuestionIds(
+  supabase: SupabaseClient,
+  userId: string,
+  subjectId: string,
+  limit: number,
+  allowedIds?: Set<string>,
+): Promise<string[]> {
+  const { data: topicRows } = await supabase
+    .from("topics")
+    .select("id")
+    .eq("subject_id", subjectId);
+  const topicOk = new Set((topicRows ?? []).map((t) => t.id as string));
+  return fetchDueReviewQuestionIdsForTopics(
+    supabase,
+    userId,
+    topicOk,
+    limit,
+    allowedIds,
+  );
 }
 
 export async function fetchUnseenQuestionIds(

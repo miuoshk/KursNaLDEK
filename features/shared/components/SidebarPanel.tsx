@@ -19,9 +19,9 @@ import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContex
 import { formatStreak } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
-  { href: "/dashboard", label: "Pulpit", icon: LayoutDashboard },
+  { href: "/pulpit", label: "Pulpit", icon: LayoutDashboard },
   { href: "/przedmioty", label: "Moje przedmioty", icon: BookOpen },
-  { href: "/dashboard/sesja-nauki", label: "Sesja nauki", icon: Brain },
+  { href: "/sesja", label: "Sesja nauki", icon: Brain },
   { href: "/statystyki", label: "Statystyki", icon: BarChart3 },
   { href: "/osiagniecia", label: "Osiągnięcia", icon: Award },
   { href: "/ustawienia", label: "Ustawienia", icon: Settings },

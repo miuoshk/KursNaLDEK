@@ -26,6 +26,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
   }
 
   const { subject, topics } = result;
+  const availableQuestionCount = topics.reduce((s, t) => s + t.question_count, 0);
 
   return (
     <div>
@@ -34,7 +35,10 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
 
       <div className="mt-8 space-y-8">
         <StatsRow />
-        <SmartSessionCTA subjectId={subject.id} />
+        <SmartSessionCTA
+          subjectId={subject.id}
+          availableQuestionCount={availableQuestionCount}
+        />
         <TopicGrid topics={topics} />
       </div>
     </div>

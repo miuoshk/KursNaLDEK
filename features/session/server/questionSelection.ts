@@ -55,3 +55,55 @@ export async function fetchTopicQuestionIds(
   }
   return (data ?? []).map((r) => r.id as string);
 }
+
+/** Wszystkie aktywne pytania z przedmiotów product=knnp (sesja mieszana). */
+export async function fetchKnnpAllQuestionIds(
+  supabase: SupabaseClient,
+): Promise<string[]> {
+  const { data: subjects, error: se } = await supabase
+    .from("subjects")
+    .select("id")
+    .eq("product", "knnp");
+  if (se) {
+    console.error("[fetchKnnpAllQuestionIds] subjects", se.message);
+    return [];
+  }
+  const subjectIds = (subjects ?? []).map((s) => s.id as string);
+  if (subjectIds.length === 0) return [];
+  const { data: topicRows, error: te } = await supabase
+    .from("topics")
+    .select("id")
+    .in("subject_id", subjectIds);
+  if (te) {
+    console.error("[fetchKnnpAllQuestionIds] topics", te.message);
+    return [];
+  }
+  const topicIds = (topicRows ?? []).map((t) => t.id as string);
+  if (topicIds.length === 0) return [];
+  const { data, error } = await supabase
+    .from("questions")
+    .select("id")
+    .in("topic_id", topicIds)
+    .eq("is_active", true);
+  if (error) {
+    console.error("[fetchKnnpAllQuestionIds] questions", error.message);
+    return [];
+  }
+  return (data ?? []).map((r) => r.id as string);
+}
+
+export async function fetchKnnpTopicIdSet(
+  supabase: SupabaseClient,
+): Promise<Set<string>> {
+  const { data: subjects } = await supabase
+    .from("subjects")
+    .select("id")
+    .eq("product", "knnp");
+  const subjectIds = (subjects ?? []).map((s) => s.id as string);
+  if (subjectIds.length === 0) return new Set();
+  const { data: topicRows } = await supabase
+    .from("topics")
+    .select("id")
+    .in("subject_id", subjectIds);
+  return new Set((topicRows ?? []).map((t) => t.id as string));
+}

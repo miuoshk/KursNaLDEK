@@ -42,21 +42,12 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
 
     async function run() {
       if (sessionId === "new") {
-        const subj = searchParams.get("subject") ?? "";
+        const subj = searchParams.get("subject")?.trim() ?? "";
         const mode = parseMode(searchParams.get("mode"));
         const count = parseCount(searchParams.get("count"));
-
-        if (!subj) {
-          setBoot({
-            status: "error",
-            message: "Brak parametru przedmiotu (subject).",
-          });
-          return;
-        }
-
         const topic = searchParams.get("topic") ?? undefined;
         const res = await startSession({
-          subjectId: subj,
+          subjectId: subj || undefined,
           mode,
           count,
           topicId: topic,

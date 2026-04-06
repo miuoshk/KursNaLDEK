@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
-import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
+import { SessionSummaryLoader } from "@/features/session/components/SessionSummaryLoader";
 
 type PageProps = {
   params: Promise<{ sessionId: string }>;
@@ -33,10 +32,5 @@ export default async function SessionSummaryPage({ params }: PageProps) {
     redirect(`/sesja/${sessionId}`);
   }
 
-  const summary = await buildSessionSummary(supabase, sessionId, user.id);
-  if (!summary) {
-    redirect("/przedmioty");
-  }
-
-  return <SessionSummaryClient summary={summary} />;
+  return <SessionSummaryLoader sessionId={sessionId} />;
 }

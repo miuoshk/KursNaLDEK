@@ -6,6 +6,7 @@ type SessionBottomBarProps = {
   current: number;
   total: number;
   canContinue: boolean;
+  isLastQuestion: boolean;
   onNext: () => void;
 };
 
@@ -13,6 +14,7 @@ export function SessionBottomBar({
   current,
   total,
   canContinue,
+  isLastQuestion,
   onNext,
 }: SessionBottomBarProps) {
   const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
@@ -39,13 +41,15 @@ export function SessionBottomBar({
         disabled={!canContinue}
         onClick={onNext}
         className={cn(
-          "min-w-0 flex-1 rounded-btn bg-brand-gold px-4 py-2.5 font-body font-semibold text-brand-bg transition duration-200 ease-out sm:flex-none sm:shrink-0 sm:px-6",
-          "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50",
+          "min-w-0 flex-1 rounded-btn px-4 py-2.5 font-body font-semibold transition duration-200 ease-out sm:flex-none sm:shrink-0 sm:px-6",
+          isLastQuestion
+            ? "bg-success text-brand-bg hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-success"
+            : "bg-brand-gold text-brand-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] hover:brightness-110",
+          "disabled:cursor-not-allowed disabled:opacity-50",
           "active:scale-[0.98]",
-          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
         )}
       >
-        Następne pytanie →
+        {isLastQuestion ? "Zakończ sesję" : "Następne pytanie →"}
       </button>
     </div>
   );

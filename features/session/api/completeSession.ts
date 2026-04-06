@@ -60,18 +60,29 @@ export async function completeSession(
       return { ok: true, summary };
     }
 
-    const { count: completedBefore } = await supabase
-      .from("study_sessions")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", user.id)
-      .eq("is_completed", true);
+    const [{ count: completedBefore }, { data: ansRowsRaw }, { data: profile }] =
+      await Promise.all([
+        supabase
+          .from("study_sessions")
+          .select("id", { count: "exact", head: true })
+          .eq("user_id", user.id)
+          .eq("is_completed", true),
+        supabase
+          .from("session_answers")
+          .select("question_id, is_correct, question_order, time_spent_seconds")
+          .eq("session_id", parsed.data.sessionId),
+        supabase
+          .from("profiles")
+          .select("xp, current_streak, longest_streak, last_active_date")
+          .eq("id", user.id)
+          .maybeSingle(),
+      ]);
+
+    if (!profile) {
+      return { ok: false, message: "Brak profilu użytkownika." };
+    }
 
     const isFirstSessionEver = (completedBefore ?? 0) === 0;
-
-    const { data: ansRowsRaw } = await supabase
-      .from("session_answers")
-      .select("question_id, is_correct, question_order")
-      .eq("session_id", parsed.data.sessionId);
 
     const ansRows = [...(ansRowsRaw ?? [])].sort(
       (a, b) => (a.question_order ?? 0) - (b.question_order ?? 0),
@@ -100,29 +111,14 @@ export async function completeSession(
       session.total_questions ?? ansRows.length,
     );
 
-    const { data: sumRow } = await supabase
-      .from("session_answers")
-      .select("time_spent_seconds")
-      .eq("session_id", parsed.data.sessionId);
-
     const sumDur =
-      (sumRow ?? []).reduce((s, r) => s + (r.time_spent_seconds ?? 0), 0) ||
+      ansRows.reduce((s, r) => s + (r.time_spent_seconds ?? 0), 0) ||
       parsed.data.durationSecondsFallback ||
       0;
 
-    const total = session.total_questions ?? 1;
+    const answeredCount = ansRows.length;
     const correct = session.correct_answers ?? 0;
-    const accuracy = total > 0 ? correct / total : 0;
-
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("xp, current_streak, longest_streak, last_active_date")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    if (!profile) {
-      return { ok: false, message: "Brak profilu użytkownika." };
-    }
+    const accuracy = answeredCount > 0 ? correct / answeredCount : 0;
 
     const { streak: newStreak } = nextStreakValues(
       profile.last_active_date as string | null,
@@ -130,60 +126,53 @@ export async function completeSession(
     );
     const newLongest = Math.max(newStreak, profile.longest_streak ?? 0);
 
-    const { error: upSess } = await supabase
-      .from("study_sessions")
-      .update({
-        is_completed: true,
-        completed_at: new Date().toISOString(),
-        accuracy,
-        duration_seconds: sumDur,
-        xp_earned: xpEarned,
-      })
-      .eq("id", session.id);
+    const [upSessRes, upProfRes] = await Promise.all([
+      supabase
+        .from("study_sessions")
+        .update({
+          is_completed: true,
+          completed_at: new Date().toISOString(),
+          accuracy,
+          duration_seconds: sumDur,
+          xp_earned: xpEarned,
+        })
+        .eq("id", session.id),
+      supabase
+        .from("profiles")
+        .update({
+          xp: (profile.xp ?? 0) + xpEarned,
+          current_streak: newStreak,
+          longest_streak: newLongest,
+          last_active_date: todayDateString(),
+        })
+        .eq("id", user.id),
+    ]);
 
-    if (upSess) {
-      console.error("[completeSession] study_sessions", upSess.message);
+    if (upSessRes.error) {
+      console.error("[completeSession] study_sessions", upSessRes.error.message);
       return { ok: false, message: "Nie udało się zamknąć sesji." };
     }
-
-    const { error: upProf } = await supabase
-      .from("profiles")
-      .update({
-        xp: (profile.xp ?? 0) + xpEarned,
-        current_streak: newStreak,
-        longest_streak: newLongest,
-        last_active_date: todayDateString(),
-      })
-      .eq("id", user.id);
-
-    if (upProf) {
-      console.error("[completeSession] profiles", upProf.message);
+    if (upProfRes.error) {
+      console.error("[completeSession] profiles", upProfRes.error.message);
       return { ok: false, message: "Nie udało się zaktualizować profilu." };
     }
 
-    const summary = await buildSessionSummary(
-      supabase,
-      parsed.data.sessionId,
-      user.id,
-    );
+    const [summary, profAfter] = await Promise.all([
+      buildSessionSummary(supabase, parsed.data.sessionId, user.id),
+      supabase.from("profiles").select("xp, current_streak").eq("id", user.id).single(),
+    ]);
+
     if (!summary) {
       return { ok: false, message: "Nie udało się zbudować podsumowania." };
     }
 
     summary.xpEarned = xpEarned;
-    summary.achievementUnlocked =
-      isFirstSessionEver ? "Pierwsza sesja" : null;
+    summary.achievementUnlocked = isFirstSessionEver ? "Pierwsza sesja" : null;
     summary.previousStreakDays = profile.current_streak ?? 0;
 
-    const { data: profAfter } = await supabase
-      .from("profiles")
-      .select("xp, current_streak")
-      .eq("id", user.id)
-      .single();
-
-    if (profAfter) {
-      summary.newXpTotal = profAfter.xp ?? summary.newXpTotal;
-      summary.newStreak = profAfter.current_streak ?? summary.newStreak;
+    if (profAfter.data) {
+      summary.newXpTotal = profAfter.data.xp ?? summary.newXpTotal;
+      summary.newStreak = profAfter.data.current_streak ?? summary.newStreak;
     }
 
     return { ok: true, summary };

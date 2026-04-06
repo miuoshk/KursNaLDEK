@@ -29,32 +29,48 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
     () => summary.answers.filter((a) => !a.isCorrect),
     [summary.answers],
   );
+  const totalSlots = summary.totalQuestions;
+  const answers = summary.answers;
 
   return (
     <section className="space-y-4">
       <h2 className="font-heading text-heading-sm text-primary">Przebieg sesji</h2>
       <div className="flex flex-wrap gap-1.5">
-        {summary.answers.map((a, i) => (
-          <Tooltip key={a.questionId}>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                className={cn(
-                  "flex size-8 items-center justify-center rounded-sm font-mono text-body-xs text-white/80",
-                  stripBg(a),
-                )}
-              >
-                {i + 1}
-              </button>
-            </TooltipTrigger>
-            <TooltipContent
-              side="top"
-              className="max-w-xs rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-3 py-2 font-body text-body-xs text-primary"
+        {Array.from({ length: totalSlots }, (_, i) => {
+          const a = answers[i];
+          if (a) {
+            return (
+              <Tooltip key={a.questionId}>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    className={cn(
+                      "flex size-8 items-center justify-center rounded-sm font-mono text-body-xs text-white/80",
+                      stripBg(a),
+                    )}
+                  >
+                    {i + 1}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="top"
+                  className="max-w-xs rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-3 py-2 font-body text-body-xs text-primary"
+                >
+                  {tooltipLine(i, a)}
+                </TooltipContent>
+              </Tooltip>
+            );
+          }
+          return (
+            <div
+              key={`empty-${i}`}
+              className="flex size-8 items-center justify-center rounded-sm border border-dashed border-[rgba(255,255,255,0.12)] font-mono text-body-xs text-muted"
+              aria-hidden
             >
-              {tooltipLine(i, a)}
-            </TooltipContent>
-          </Tooltip>
-        ))}
+              {i + 1}
+            </div>
+          );
+        })}
       </div>
       <div className="flex flex-wrap gap-4 font-body text-body-xs text-muted">
         <span className="inline-flex items-center gap-1.5">
@@ -68,6 +84,10 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
         <span className="inline-flex items-center gap-1.5">
           <span className="size-2 rounded-full bg-brand-gold" aria-hidden />
           Trafienie bez wiedzy
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="size-2 rounded-full border border-[rgba(255,255,255,0.2)]" aria-hidden />
+          Bez odpowiedzi
         </span>
       </div>
 

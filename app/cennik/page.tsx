@@ -9,7 +9,7 @@ export default function CennikPage() {
         podglądu.
       </p>
       <Link
-        href="/dashboard"
+        href="/pulpit"
         className="mt-8 inline-flex w-fit rounded-btn bg-brand-gold px-5 py-2.5 font-body font-semibold text-brand-bg transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
       >
         Wróć do pulpitu

@@ -1,16 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { completeSession } from "@/features/session/api/completeSession";
-import { submitAnswer } from "@/features/session/api/submitAnswer";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
 import { SessionSaveToast } from "@/features/session/components/SessionSaveToast";
 import { SessionTopBar } from "@/features/session/components/SessionTopBar";
+import { useQuestionStopwatch } from "@/features/session/hooks/useQuestionStopwatch";
+import { useSessionKeyboardShortcuts } from "@/features/session/hooks/useSessionKeyboardShortcuts";
 import { useSession } from "@/features/session/hooks/useSession";
-import { useTimer } from "@/features/session/hooks/useTimer";
-import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
+import { useSessionStudyFlow } from "@/features/session/hooks/useSessionStudyFlow";
+import type { SessionMode, SessionQuestion } from "@/features/session/types";
 
 type SessionStudyViewProps = {
   sessionId: string;
@@ -19,35 +18,41 @@ type SessionStudyViewProps = {
   questions: SessionQuestion[];
 };
 
-async function submitWithRetry(
-  payload: Parameters<typeof submitAnswer>[0],
-  retries = 3,
-) {
-  let last: Awaited<ReturnType<typeof submitAnswer>> | null = null;
-  for (let i = 0; i < retries; i++) {
-    last = await submitAnswer(payload);
-    if (last.ok) return last;
-    await new Promise((r) => setTimeout(r, 400 * (i + 1)));
-  }
-  return last ?? { ok: false as const, message: "Nie udało się zapisać odpowiedzi." };
-}
-
 export function SessionStudyView({
   sessionId,
   subjectName,
   mode,
   questions,
 }: SessionStudyViewProps) {
-  const router = useRouter();
   const sessionStart = useRef(Date.now());
   const timeSpentQuestion = useRef(0);
-  const questionStartedAtRef = useRef(Date.now());
-  const qTimer = useTimer();
   const [examSec, setExamSec] = useState(0);
   const [endOpen, setEndOpen] = useState(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
 
   const s = useSession(questions, sessionId, mode);
+  const qKey = s.currentQuestion?.id ?? "";
+  const sw = useQuestionStopwatch(qKey);
+
+  const closeEnd = useCallback(() => setEndOpen(false), []);
+
+  const { handleNext, handleEndConfirm } = useSessionStudyFlow(
+    sessionId,
+    questions,
+    {
+      isPastReadOnly: s.isPastReadOnly,
+      goForwardFromReview: s.goForwardFromReview,
+      currentQuestion: s.currentQuestion,
+      confidence: s.confidence,
+      selectedOptionId: s.selectedOptionId,
+      currentIndex: s.currentIndex,
+      completeCurrentAndGoNext: s.completeCurrentAndGoNext,
+    },
+    timeSpentQuestion,
+    sessionStart,
+    setSaveToast,
+    closeEnd,
+  );
 
   useEffect(() => {
     if (mode !== "egzamin") return;
@@ -55,91 +60,28 @@ export function SessionStudyView({
     return () => clearInterval(t);
   }, [mode]);
 
-  useEffect(() => {
-    if (!s.currentQuestion) return;
-    questionStartedAtRef.current = Date.now();
-    qTimer.reset();
-    qTimer.start();
-  }, [s.currentIndex, s.currentQuestion?.id, qTimer]);
-
-  useEffect(() => {
-    if (s.isShowingFeedback) qTimer.pause();
-  }, [s.isShowingFeedback, qTimer]);
-
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
   const handleCheck = useCallback(() => {
     if (!s.selectedOptionId) return;
-    timeSpentQuestion.current = Math.max(
-      0,
-      Math.floor((Date.now() - questionStartedAtRef.current) / 1000),
-    );
-    qTimer.pause();
+    timeSpentQuestion.current = sw.pauseAndGetSeconds();
     s.checkAnswer();
-  }, [s, qTimer]);
+  }, [s, sw]);
 
-  const handleEndConfirm = useCallback(async () => {
-    setEndOpen(false);
-    const dur = Math.floor((Date.now() - sessionStart.current) / 1000);
-    const comp = await completeSession({
-      sessionId,
-      durationSecondsFallback: dur,
-    });
-    if (!comp.ok) {
-      setSaveToast(comp.message);
-      return;
-    }
-    router.push(`/sesja/${sessionId}/podsumowanie`);
-  }, [sessionId, router]);
-
-  const handleNext = useCallback(async () => {
-    if (!s.currentQuestion || s.confidence === null || !s.selectedOptionId) return;
-    const isCorrect = s.selectedOptionId === s.currentQuestion.correctOptionId;
-    const isLast = s.currentIndex >= questions.length - 1;
-    const payload = {
-      sessionId,
-      questionId: s.currentQuestion.id,
-      selectedOptionId: s.selectedOptionId,
-      isCorrect,
-      confidence: s.confidence as Confidence,
-      timeSpentSeconds: timeSpentQuestion.current,
-      questionOrder: s.currentIndex,
-    };
-
-    if (!isLast) {
-      s.completeCurrentAndGoNext({
-        questionId: s.currentQuestion.id,
-        selectedOptionId: s.selectedOptionId,
-        isCorrect,
-        confidence: s.confidence,
-        timeSpentSeconds: timeSpentQuestion.current,
-      });
-      void submitWithRetry(payload).then((res) => {
-        if (!res.ok) {
-          setSaveToast(
-            "Nie udało się zapisać odpowiedzi. Spróbuj ponownie.",
-          );
-        }
-      });
-      return;
-    }
-
-    const res = await submitWithRetry(payload);
-    if (!res.ok) {
-      setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
-      return;
-    }
-    const dur = Math.floor((Date.now() - sessionStart.current) / 1000);
-    const comp = await completeSession({
-      sessionId,
-      durationSecondsFallback: dur,
-    });
-    if (!comp.ok) {
-      setSaveToast(comp.message);
-      return;
-    }
-    router.push(`/sesja/${sessionId}/podsumowanie`);
-  }, [s, questions.length, sessionId, router]);
+  useSessionKeyboardShortcuts({
+    currentQuestion: s.currentQuestion,
+    currentIndex: s.currentIndex,
+    isShowingFeedback: s.isShowingFeedback,
+    isPastReadOnly: s.isPastReadOnly,
+    selectedOptionId: s.selectedOptionId,
+    confidence: s.confidence,
+    selectOption: s.selectOption,
+    onCheck: handleCheck,
+    onGoPrevious: s.goToPrevious,
+    onGoNext: () => {
+      void handleNext();
+    },
+  });
 
   if (!s.currentQuestion) return null;
 
@@ -169,11 +111,13 @@ export function SessionStudyView({
         total={s.total}
         selectedOptionId={s.selectedOptionId}
         isShowingFeedback={s.isShowingFeedback}
+        isPastReadOnly={s.isPastReadOnly}
         confidence={s.confidence}
         onSelectOption={s.selectOption}
         onConfidence={s.setConfidence}
         onCheck={handleCheck}
         onNext={handleNext}
+        onGoToPrevious={s.goToPrevious}
       />
     </div>
   );

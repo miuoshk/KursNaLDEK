@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft } from "lucide-react";
 import { ConfidenceRating } from "@/features/session/components/ConfidenceRating";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
@@ -16,11 +17,13 @@ type SessionQuestionContentProps = {
   total: number;
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
+  isPastReadOnly: boolean;
   confidence: Confidence | null;
   onSelectOption: (id: string) => void;
   onConfidence: (c: Confidence) => void;
   onCheck: () => void;
   onNext: () => void;
+  onGoToPrevious: () => void;
 };
 
 export function SessionQuestionContent({
@@ -29,11 +32,13 @@ export function SessionQuestionContent({
   total,
   selectedOptionId,
   isShowingFeedback,
+  isPastReadOnly,
   confidence,
   onSelectOption,
   onConfidence,
   onCheck,
   onNext,
+  onGoToPrevious,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
@@ -53,7 +58,7 @@ export function SessionQuestionContent({
               <SessionQuestionOptions
                 q={q}
                 selectedOptionId={selectedOptionId}
-                isShowingFeedback={isShowingFeedback}
+                isShowingFeedback={isShowingFeedback || isPastReadOnly}
                 onSelectOption={onSelectOption}
               />
             </QuestionCard>
@@ -61,7 +66,17 @@ export function SessionQuestionContent({
         </AnimatePresence>
 
         {!isShowingFeedback ? (
-          <div className="mx-auto mt-8 w-full max-w-3xl">
+          <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">
+            {currentIndex > 0 ? (
+              <button
+                type="button"
+                onClick={onGoToPrevious}
+                className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors hover:text-white"
+              >
+                <ChevronLeft className="size-4 shrink-0" aria-hidden />
+                Poprzednie
+              </button>
+            ) : null}
             <button
               type="button"
               disabled={!selectedOptionId}
@@ -90,7 +105,7 @@ export function SessionQuestionContent({
             <ConfidenceRating
               value={confidence}
               onChange={onConfidence}
-              disabled={false}
+              disabled={isPastReadOnly}
             />
           </motion.div>
         )}
@@ -100,7 +115,8 @@ export function SessionQuestionContent({
         <SessionBottomBar
           current={currentIndex}
           total={total}
-          canContinue={confidence !== null}
+          canContinue={isPastReadOnly || confidence !== null}
+          isLastQuestion={currentIndex >= total - 1}
           onNext={onNext}
         />
       ) : null}

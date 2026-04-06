@@ -79,6 +79,7 @@ export function SidebarLink({
   const link = (
     <Link
       href={href}
+      prefetch
       className={linkClass}
       aria-current={active ? "page" : undefined}
       title={collapsed ? label : undefined}

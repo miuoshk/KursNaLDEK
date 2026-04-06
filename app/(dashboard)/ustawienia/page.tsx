@@ -21,15 +21,18 @@ export default async function UstawieniaPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { profile, email } = await loadSettings(supabase, user.id);
-  const badges = await loadAchievementPreview(supabase, user.id);
+  const email = user.email ?? null;
+  const [{ profile, email: resolvedEmail }, badges] = await Promise.all([
+    loadSettings(supabase, user.id, { email }),
+    loadAchievementPreview(supabase, user.id),
+  ]);
 
   return (
     <div className="mx-auto max-w-2xl">
       <SettingsBreadcrumb />
       <h1 className="font-heading text-heading-xl text-primary">Ustawienia</h1>
       <div className="mt-10">
-        <ProfileSection profile={profile} email={email} />
+        <ProfileSection profile={profile} email={resolvedEmail} />
       </div>
       <Divider />
       <SubscriptionSection profile={profile} />
@@ -38,7 +41,7 @@ export default async function UstawieniaPage() {
       <Divider />
       <NotificationsSection profile={profile} />
       <Divider />
-      <AccountSection email={email} />
+      <AccountSection email={resolvedEmail} />
       <Divider />
       <AchievementsBadgesPreview items={badges} />
     </div>

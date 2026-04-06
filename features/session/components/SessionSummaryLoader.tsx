@@ -21,7 +21,6 @@ export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
       try {
         const parsed = JSON.parse(raw) as SessionSummaryData;
         setSummary(parsed);
-        sessionStorage.removeItem(storageKey(sessionId));
         return;
       } catch {
         sessionStorage.removeItem(storageKey(sessionId));

@@ -54,40 +54,36 @@ export async function buildSessionSummary(
 
   if (se || !session) return null;
 
-  const { data: subject } = await supabase
-    .from("subjects")
-    .select("id, name, short_name")
-    .eq("id", session.subject_id as string)
-    .maybeSingle();
+  const subjId = session.subject_id as string;
+
+  const [subjectRes, profileRes, prevRes, ansRes] = await Promise.all([
+    supabase.from("subjects").select("id, name, short_name").eq("id", subjId).maybeSingle(),
+    supabase.from("profiles").select("xp, current_streak").eq("id", userId).maybeSingle(),
+    supabase
+      .from("study_sessions")
+      .select("accuracy")
+      .eq("user_id", userId)
+      .eq("subject_id", subjId)
+      .eq("is_completed", true)
+      .neq("id", sessionId)
+      .order("completed_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from("session_answers")
+      .select(
+        "question_id, selected_option_id, is_correct, confidence, time_spent_seconds, question_order, is_first_exposure",
+      )
+      .eq("session_id", sessionId)
+      .order("question_order", { ascending: true }),
+  ]);
+
+  const subject = subjectRes.data;
+  const profile = profileRes.data;
+  const prev = prevRes.data;
+  const rows = ansRes.data ?? [];
 
   if (!subject) return null;
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("xp, current_streak")
-    .eq("id", userId)
-    .maybeSingle();
-
-  const { data: prev } = await supabase
-    .from("study_sessions")
-    .select("accuracy")
-    .eq("user_id", userId)
-    .eq("subject_id", session.subject_id)
-    .eq("is_completed", true)
-    .neq("id", sessionId)
-    .order("completed_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
-  const { data: ansRows } = await supabase
-    .from("session_answers")
-    .select(
-      "question_id, selected_option_id, is_correct, confidence, time_spent_seconds, question_order, is_first_exposure",
-    )
-    .eq("session_id", sessionId)
-    .order("question_order", { ascending: true });
-
-  const rows = ansRows ?? [];
   const qids = [...new Set(rows.map((r) => r.question_id as string))];
 
   const { data: qmeta } = await supabase

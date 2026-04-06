@@ -24,24 +24,44 @@ export async function loadStatistics(
       ? null
       : new Date(Date.now() - days * 86400000).toISOString();
 
+  const heatmapSince = new Date(Date.now() - 30 * 86400000).toISOString();
+
   let sessQ = supabase
     .from("study_sessions")
     .select("completed_at, correct_answers, total_questions, duration_seconds")
     .eq("user_id", userId)
     .eq("is_completed", true);
   if (since) sessQ = sessQ.gte("completed_at", since);
-  const { data: sessions } = await sessQ;
-  const sessRows = sessions ?? [];
-  const byDay = sessionsByLocalDate(sessRows);
 
-  const heatmapSince = new Date(Date.now() - 30 * 86400000).toISOString();
-  const { data: heatSessions } = await supabase
+  const heatQ = supabase
     .from("study_sessions")
     .select("completed_at, correct_answers, total_questions, duration_seconds")
     .eq("user_id", userId)
     .eq("is_completed", true)
     .gte("completed_at", heatmapSince);
-  const heatmap = heatmap30(sessionsByLocalDate(heatSessions ?? []));
+
+  const uqpQ = supabase
+    .from("user_question_progress")
+    .select("question_id, times_answered, times_correct")
+    .eq("user_id", userId);
+
+  const profileQ = supabase
+    .from("profiles")
+    .select("xp, current_streak")
+    .eq("id", userId)
+    .maybeSingle();
+
+  const [sessionsRes, heatSessionsRes, uqpRes, profileRes] = await Promise.all([
+    sessQ,
+    heatQ,
+    uqpQ,
+    profileQ,
+  ]);
+
+  const sessRows = sessionsRes.data ?? [];
+  const byDay = sessionsByLocalDate(sessRows);
+
+  const heatmap = heatmap30(sessionsByLocalDate(heatSessionsRes.data ?? []));
 
   const trendDays = range === "all" ? 30 : Math.min(days ?? 30, 30);
   const accuracyTrend = buildAccuracyTrend(byDay, trendDays);
@@ -55,19 +75,11 @@ export async function loadStatistics(
     0,
   );
 
-  const { data: uqp } = await supabase
-    .from("user_question_progress")
-    .select("question_id, times_answered, times_correct")
-    .eq("user_id", userId);
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("xp, current_streak")
-    .eq("id", userId)
-    .maybeSingle();
+  const uqp = uqpRes.data ?? [];
+  const profile = profileRes.data;
 
   const { subjectMastery, weakTopics, predictedReadiness } =
-    await masteryFromUqp(supabase, uqp ?? []);
+    await masteryFromUqp(supabase, uqp);
 
   return {
     range,

@@ -1,5 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
+import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
+import { greetingName } from "@/lib/greetingName";
 
 export type PulpitRecentSession = {
   id: string;
@@ -37,16 +39,10 @@ export async function loadPulpit(): Promise<
       return { ok: false, message: "Brak aktywnej sesji." };
     }
 
-    const [
-      profileRes,
-      dueRes,
-      sessionsRes,
-    ] = await Promise.all([
-      supabase
-        .from("profiles")
-        .select("display_name, daily_goal, current_streak, longest_streak")
-        .eq("id", user.id)
-        .maybeSingle(),
+    const profile = await getProfileByUserId(user.id);
+    const displayName = greetingName(profile, user.email);
+
+    const [dueRes, sessionsRes, questionsToday] = await Promise.all([
       supabase
         .from("user_question_progress")
         .select("id", { count: "exact", head: true })
@@ -62,11 +58,10 @@ export async function loadPulpit(): Promise<
         .eq("is_completed", true)
         .order("completed_at", { ascending: false })
         .limit(3),
+      countSessionAnswersTodayWarsaw(supabase, user.id),
     ]);
 
-    const profile = profileRes.data;
     const dailyGoal = profile?.daily_goal ?? 25;
-    const questionsToday = await countSessionAnswersTodayWarsaw(supabase, user.id);
 
     const recentSessions: PulpitRecentSession[] = (sessionsRes.data ?? []).map(
       (row: Record<string, unknown>) => {
@@ -124,7 +119,7 @@ export async function loadPulpit(): Promise<
     return {
       ok: true,
       data: {
-        displayName: profile?.display_name ?? "Użytkownik",
+        displayName,
         dailyGoal,
         questionsToday,
         currentStreak: profile?.current_streak ?? 0,

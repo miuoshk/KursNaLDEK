@@ -7,6 +7,7 @@ const DEFAULT_MODE: SessionMode = "nauka";
 export async function loadSettings(
   supabase: SupabaseClient,
   userId: string,
+  options?: { email?: string | null },
 ): Promise<{ profile: SettingsProfile; email: string | null }> {
   const { data: profileRow } = await supabase
     .from("profiles")
@@ -16,8 +17,10 @@ export async function loadSettings(
     .eq("id", userId)
     .maybeSingle();
 
-  const { data: userData } = await supabase.auth.getUser();
-  const email = userData.user?.email ?? null;
+  const email =
+    options?.email !== undefined
+      ? options.email
+      : (await supabase.auth.getUser()).data.user?.email ?? null;
 
   const rawMode = profileRow?.default_session_mode as string | null;
   const mode: SessionMode =

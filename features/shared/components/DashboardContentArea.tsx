@@ -22,7 +22,7 @@ export function DashboardContentArea({ children }: { children: ReactNode }) {
       <main
         className={cn(
           "min-h-0 flex-1 overflow-y-auto bg-brand-bg",
-          !isSessionStudy && "p-4 sm:p-6 lg:p-8",
+          !isSessionStudy && "p-4 md:p-6 lg:p-8",
           isSessionStudy && "flex min-h-0 flex-1 flex-col p-0",
         )}
       >

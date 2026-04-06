@@ -3,8 +3,12 @@ import { DashboardContentArea } from "@/features/shared/components/DashboardCont
 import { DashboardProviders } from "@/features/shared/components/DashboardProviders";
 import { Sidebar } from "@/features/shared/components/Sidebar";
 import { DashboardBreadcrumbProvider } from "@/features/shared/contexts/DashboardBreadcrumbContext";
+import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataContext";
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
+import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { getDashboardYear } from "@/lib/dashboard/getDashboardYear";
+import { greetingName } from "@/lib/greetingName";
 import { initialsFromName } from "@/lib/initialsFromName";
 import { createClient } from "@/lib/supabase/server";
 import { isTestModeCookie, TEST_MODE_COOKIE_NAME } from "@/lib/testMode";
@@ -27,34 +31,52 @@ export default async function DashboardLayout({
 
   let displayName = "Użytkownik";
   let streak = 0;
+  let userEmail: string | null = null;
+  let profileSnapshot: {
+    display_name: string | null;
+    current_streak: number | null;
+    daily_goal: number | null;
+    longest_streak: number | null;
+  } | null = null;
+
   if (testMode) {
     displayName = "Tryb testowy";
     streak = 0;
   } else if (user) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("display_name, current_streak")
-      .eq("id", user.id)
-      .maybeSingle();
-    displayName = profile?.display_name ?? displayName;
-    streak = profile?.current_streak ?? 0;
+    userEmail = user.email ?? null;
+    const [profileRow] = await Promise.all([
+      getProfileByUserId(user.id),
+      getCachedKnnpCatalog(),
+    ]);
+    displayName = greetingName(profileRow, userEmail);
+    streak = profileRow?.current_streak ?? 0;
+    if (profileRow) {
+      profileSnapshot = {
+        display_name: profileRow.display_name,
+        current_streak: profileRow.current_streak,
+        daily_goal: profileRow.daily_goal,
+        longest_streak: profileRow.longest_streak,
+      };
+    }
   }
   const initials = initialsFromName(displayName);
 
   return (
     <DashboardProviders>
-      <DashboardTooltipProvider>
-        <DashboardBreadcrumbProvider year={year}>
-          <DashboardUserProvider
-            value={{ displayName, streak, initials, testMode: testMode || undefined }}
-          >
-            <div className="flex h-screen min-h-0 overflow-hidden bg-brand-bg">
-              <Sidebar />
-              <DashboardContentArea>{children}</DashboardContentArea>
-            </div>
-          </DashboardUserProvider>
-        </DashboardBreadcrumbProvider>
-      </DashboardTooltipProvider>
+      <DashboardDataProvider profile={profileSnapshot} userEmail={userEmail}>
+        <DashboardTooltipProvider>
+          <DashboardBreadcrumbProvider year={year}>
+            <DashboardUserProvider
+              value={{ displayName, streak, initials, testMode: testMode || undefined }}
+            >
+              <div className="flex h-screen min-h-0 overflow-hidden bg-brand-bg">
+                <Sidebar />
+                <DashboardContentArea>{children}</DashboardContentArea>
+              </div>
+            </DashboardUserProvider>
+          </DashboardBreadcrumbProvider>
+        </DashboardTooltipProvider>
+      </DashboardDataProvider>
     </DashboardProviders>
   );
 }

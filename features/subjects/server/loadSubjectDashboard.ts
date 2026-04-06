@@ -11,13 +11,23 @@ export async function loadSubjectDashboard(
   try {
     const supabase = await createClient();
 
-    const { data: subject, error: subjectError } = await supabase
-      .from("subjects")
-      .select(
-        "id, name, short_name, icon_name, year, track, product, display_order",
-      )
-      .eq("id", subjectId)
-      .maybeSingle();
+    const [subjectResult, topicsResult] = await Promise.all([
+      supabase
+        .from("subjects")
+        .select(
+          "id, name, short_name, icon_name, year, track, product, display_order",
+        )
+        .eq("id", subjectId)
+        .maybeSingle(),
+      supabase
+        .from("topics")
+        .select("id, subject_id, name, display_order, question_count")
+        .eq("subject_id", subjectId)
+        .order("display_order", { ascending: true }),
+    ]);
+
+    const { data: subject, error: subjectError } = subjectResult;
+    const { data: topicRows, error: topicsError } = topicsResult;
 
     if (subjectError) {
       console.error(
@@ -40,12 +50,6 @@ export async function loadSubjectDashboard(
         message: "Nie znaleziono przedmiotu.",
       };
     }
-
-    const { data: topicRows, error: topicsError } = await supabase
-      .from("topics")
-      .select("id, subject_id, name, display_order, question_count")
-      .eq("subject_id", subjectId)
-      .order("display_order", { ascending: true });
 
     if (topicsError) {
       console.error(

@@ -3,27 +3,19 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { OsceBreadcrumbSetter } from "@/features/osce/components/OsceBreadcrumbSetter";
 import { OsceExamTasksBox } from "@/features/osce/components/OsceExamTasksBox";
+import { TopicSession } from "@/features/osce/components/TopicSession";
+import { createOsceTopicSession } from "@/features/osce/server/createOsceTopicSession";
 import { loadOsceStation } from "@/features/osce/server/loadOsceStation";
+import { loadTopicSessionData } from "@/features/osce/server/loadTopicSessionData";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
-import { cn } from "@/lib/utils";
 
 type PageProps = {
   params: Promise<{ stationId: string; topicId: string }>;
 };
 
-function sessionHref(stationId: string, topicId: string, questionCount: number) {
-  const count = Math.min(50, Math.max(1, questionCount || 10));
-  const q = new URLSearchParams({
-    subject: stationId,
-    topic: topicId,
-    mode: "inteligentna",
-    count: String(count),
-  });
-  return `/sesja/new?${q.toString()}`;
-}
-
 export default async function OsceTopicSessionPage({ params }: PageProps) {
   const { stationId, topicId } = await params;
+
   const result = await loadOsceStation(stationId);
 
   if (!result.ok) {
@@ -41,20 +33,63 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     );
   }
 
-  const topic = result.topics.find((t) => t.id === topicId);
-  if (!topic) {
+  if (!result.topics.some((t) => t.id === topicId)) {
     notFound();
   }
 
+  const sessionData = await loadTopicSessionData(stationId, topicId);
+
+  if (!sessionData.ok) {
+    if (sessionData.kind === "not_found") {
+      notFound();
+    }
+    return (
+      <div>
+        <OsceBreadcrumbSetter second="Kurs na OSCE" />
+        <h1 className="font-heading text-heading-xl text-primary">Temat</h1>
+        <div className="mt-8">
+          <PrzedmiotyError message={sessionData.message} />
+        </div>
+      </div>
+    );
+  }
+
   const { station } = result;
-  const href = sessionHref(station.id, topic.id, topic.question_count);
-  const canStart = topic.question_count > 0;
+  const topicIndex = result.topics.findIndex((t) => t.id === topicId);
+  const nextTopicId =
+    topicIndex >= 0 && topicIndex + 1 < result.topics.length
+      ? result.topics[topicIndex + 1]!.id
+      : null;
+
+  let sessionId: string | null = null;
+  if (sessionData.questions.length > 0) {
+    const created = await createOsceTopicSession({
+      subjectId: stationId,
+      topicId,
+      totalQuestions: sessionData.questions.length,
+    });
+    if (!created.ok) {
+      return (
+        <div>
+          <OsceBreadcrumbSetter
+            second="Kurs na OSCE"
+            third={`${station.short_name} · ${sessionData.topicName}`}
+          />
+          <h1 className="font-heading text-heading-xl text-primary">{sessionData.topicName}</h1>
+          <div className="mt-8">
+            <PrzedmiotyError message={created.message} />
+          </div>
+        </div>
+      );
+    }
+    sessionId = created.sessionId;
+  }
 
   return (
     <div>
       <OsceBreadcrumbSetter
         second="Kurs na OSCE"
-        third={`${station.short_name} · ${topic.name}`}
+        third={`${station.short_name} · ${sessionData.topicName}`}
       />
 
       <Link
@@ -65,33 +100,32 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
         {station.short_name}
       </Link>
 
-      <h1 className="font-heading text-heading-xl text-primary">{topic.name}</h1>
+      <h1 className="font-heading text-heading-xl text-primary">{sessionData.topicName}</h1>
       <p className="mt-2 font-body text-body-md text-secondary">{station.name}</p>
 
       <div className="mt-8 space-y-8">
         <OsceExamTasksBox examTasks={station.exam_tasks} />
 
-        <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
-          <h2 className="font-heading text-heading-sm text-primary">Sesja pytań</h2>
-          <p className="mt-2 font-body text-body-sm text-secondary">
-            Rozpocznij inteligentną sesję z pytań przypisanych do tego tematu.
-          </p>
-          {canStart ? (
-            <Link
-              href={href}
-              className={cn(
-                "mt-6 inline-flex items-center justify-center rounded-btn bg-brand-gold px-6 py-3",
-                "font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110",
-              )}
-            >
-              Rozpocznij sesję
-            </Link>
-          ) : (
-            <p className="mt-4 font-body text-body-sm text-muted">
+        {sessionData.questions.length > 0 && sessionId ? (
+          <TopicSession
+            initialSessionId={sessionId}
+            stationId={stationId}
+            topicId={topicId}
+            topicName={sessionData.topicName}
+            stationShortName={station.short_name}
+            knowledgeCard={sessionData.knowledgeCard}
+            questions={sessionData.questions}
+            nextTopicId={nextTopicId}
+            stationHref={`/osce/${station.id}`}
+          />
+        ) : (
+          <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
+            <h2 className="font-heading text-heading-sm text-primary">Sesja pytań</h2>
+            <p className="mt-2 font-body text-body-sm text-secondary">
               Brak aktywnych pytań w tym temacie.
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import { completeSession } from "@/features/session/api/completeSession";
 import { submitAnswer } from "@/features/session/api/submitAnswer";
 import type {
@@ -13,8 +11,12 @@ import type {
 import { ConversionDrillQuestion } from "@/features/osce/components/ConversionDrillQuestion";
 import { ImageIdentifyQuestion } from "@/features/osce/components/ImageIdentifyQuestion";
 import type { ImageIdentifyAnswer } from "@/features/osce/components/ImageIdentifyQuestion";
+import { KnowledgeOverlay } from "@/features/osce/components/KnowledgeOverlay";
 import { OrderingQuestion } from "@/features/osce/components/OrderingQuestion";
 import { QuestionCard } from "@/features/osce/components/QuestionCard";
+import type { ResultRow } from "@/features/osce/components/TopicSessionSummary";
+import { TopicSessionIntro } from "@/features/osce/components/TopicSessionIntro";
+import { TopicSessionSummary } from "@/features/osce/components/TopicSessionSummary";
 import { createOsceTopicSession } from "@/features/osce/server/createOsceTopicSession";
 import { encodeTopicAnswerSelection } from "@/features/osce/lib/encodeTopicAnswer";
 import {
@@ -25,7 +27,6 @@ import {
   toOsceSingleChoice,
 } from "@/features/osce/lib/topicQuestionMappers";
 import type { TopicSessionQuestionRow } from "@/features/osce/types";
-import { cn } from "@/lib/utils";
 
 export type TopicSessionProps = {
   initialSessionId: string;
@@ -40,12 +41,6 @@ export type TopicSessionProps = {
 };
 
 type Phase = "intro" | "questions" | "summary";
-
-type ResultRow = {
-  questionId: string;
-  label: string;
-  isCorrect: boolean;
-};
 
 function truncateLabel(text: string, max = 96): string {
   const t = text.replace(/\s+/g, " ").trim();
@@ -224,13 +219,6 @@ export function TopicSession({
     [queue, current, index, persist, pushResult],
   );
 
-  const correctCount = useMemo(
-    () => results.filter((r) => r.isCorrect).length,
-    [results],
-  );
-  const pct =
-    results.length > 0 ? Math.round((correctCount / results.length) * 100) : 0;
-
   const wrongOnly = useMemo(() => {
     const wrong = new Set(results.filter((r) => !r.isCorrect).map((r) => r.questionId));
     return queue.filter((q) => wrong.has(q.id));
@@ -255,47 +243,6 @@ export function TopicSession({
 
   const nextTopicHref =
     nextTopicId != null ? `/osce/${stationId}/${nextTopicId}` : null;
-
-  const markdownBlock = (md: string) => (
-    <div
-      className={cn(
-        "font-body text-body-md leading-relaxed text-secondary",
-        "[&_a]:text-brand-sage [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-brand-gold",
-        "[&_p]:mt-3 [&_p:first-child]:mt-0",
-        "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6",
-        "[&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-6",
-        "[&_code]:rounded [&_code]:bg-white/10 [&_code]:px-1 [&_code]:font-mono [&_code]:text-body-sm",
-        "[&_strong]:font-semibold [&_strong]:text-primary",
-        "[&_h2]:mt-6 [&_h2]:font-heading [&_h2]:text-heading-sm [&_h2]:text-primary",
-        "[&_h3]:mt-4 [&_h3]:font-heading [&_h3]:text-body-lg [&_h3]:text-primary",
-      )}
-    >
-      <ReactMarkdown>{md}</ReactMarkdown>
-    </div>
-  );
-
-  const introBlock = (
-    <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
-      <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
-      {knowledgeCard && knowledgeCard.trim().length > 0 ? (
-        <div className="mt-4">{markdownBlock(knowledgeCard)}</div>
-      ) : (
-        <p className="mt-4 font-body text-body-sm text-secondary">
-          Brak karty wiedzy dla tego tematu. Możesz od razu przejść do pytań.
-        </p>
-      )}
-      <button
-        type="button"
-        onClick={() => {
-          setPhase("questions");
-          setShowKnowledgeOverlay(false);
-        }}
-        className="mt-8 w-full rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110 sm:w-auto"
-      >
-        Rozumiem, przejdź do pytań
-      </button>
-    </div>
-  );
 
   const questionBlock = (() => {
     if (!current) {
@@ -393,7 +340,13 @@ export function TopicSession({
       </div>
 
       {phase === "intro" && !retryMode ? (
-        introBlock
+        <TopicSessionIntro
+          knowledgeCard={knowledgeCard}
+          onStart={() => {
+            setPhase("questions");
+            setShowKnowledgeOverlay(false);
+          }}
+        />
       ) : phase === "questions" ? (
         <div>
           {total > 0 ? (
@@ -418,87 +371,20 @@ export function TopicSession({
           {current ? <div key={current.id}>{questionBlock}</div> : questionBlock}
         </div>
       ) : (
-        <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
-          <h2 className="font-heading text-heading-sm text-primary">Podsumowanie</h2>
-          <p className="mt-3 font-body text-body-lg text-secondary">
-            Wynik:{" "}
-            <span className="font-mono text-primary tabular-nums">
-              {correctCount} / {results.length}
-            </span>{" "}
-            prawidłowych ({pct}%)
-          </p>
-
-          <ul className="mt-6 space-y-2 border-t border-white/[0.06] pt-6">
-            {results.map((r) => (
-              <li
-                key={r.questionId}
-                className="flex gap-3 font-body text-body-sm text-secondary"
-              >
-                <span className="shrink-0 font-mono text-primary" aria-hidden>
-                  {r.isCorrect ? "✓" : "✗"}
-                </span>
-                <span>{r.label}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {wrongOnly.length > 0 ? (
-              <button
-                type="button"
-                onClick={() => void handleRetryWrong()}
-                className="rounded-btn border border-brand-sage/50 bg-transparent px-6 py-3 font-body font-semibold text-brand-sage transition hover:bg-brand-sage/10"
-              >
-                Powtórz błędne
-              </button>
-            ) : null}
-            {nextTopicHref ? (
-              <Link
-                href={nextTopicHref}
-                className="inline-flex items-center justify-center rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
-              >
-                Następny topik
-              </Link>
-            ) : null}
-            <Link
-              href={stationHref}
-              className="inline-flex items-center justify-center rounded-btn border border-white/[0.12] bg-transparent px-6 py-3 font-body font-semibold text-primary transition hover:bg-white/[0.06]"
-            >
-              Wróć do stacji
-            </Link>
-          </div>
-        </div>
+        <TopicSessionSummary
+          results={results}
+          onRetryWrong={handleRetryWrong}
+          hasWrong={wrongOnly.length > 0}
+          nextTopicHref={nextTopicHref}
+          stationHref={stationHref}
+        />
       )}
 
       {showKnowledgeOverlay ? (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-4 sm:items-center"
-          role="dialog"
-          aria-modal
-          aria-label="Karta wiedzy"
-        >
-          <div className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-card border border-[color:var(--border-subtle)] bg-brand-bg p-6 shadow-xl">
-            <div className="flex items-start justify-between gap-4">
-              <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
-              <button
-                type="button"
-                onClick={() => setShowKnowledgeOverlay(false)}
-                className="rounded-btn border border-white/[0.12] px-3 py-1.5 font-body text-body-sm text-secondary hover:bg-white/[0.06]"
-              >
-                Zamknij
-              </button>
-            </div>
-            <div className="mt-4">
-              {knowledgeCard && knowledgeCard.trim().length > 0 ? (
-                markdownBlock(knowledgeCard)
-              ) : (
-                <p className="font-body text-body-sm text-secondary">
-                  Brak karty wiedzy dla tego tematu.
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+        <KnowledgeOverlay
+          knowledgeCard={knowledgeCard}
+          onClose={() => setShowKnowledgeOverlay(false)}
+        />
       ) : null}
     </div>
   );

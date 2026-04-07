@@ -47,11 +47,12 @@ export default async function DashboardLayout({
     streak = 0;
   } else if (user) {
     userEmail = user.email ?? null;
-    const [profileRow, _, due] = await Promise.all([
+    const [profileRow, due] = await Promise.all([
       getProfileByUserId(user.id),
-      getCachedKnnpCatalog(),
       getDueReviewCount(supabase, user.id),
     ]);
+    const userTrack = profileRow?.current_track ?? "stomatologia";
+    await getCachedKnnpCatalog(userTrack);
     dueReviewsCount = due;
     displayName = greetingName(profileRow, userEmail);
     streak = profileRow?.current_streak ?? 0;

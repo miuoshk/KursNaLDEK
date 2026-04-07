@@ -45,16 +45,16 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       return { ok: false, message: "Brak aktywnej sesji. Zaloguj się ponownie." };
     }
 
-    const [catalog, profileRow] = await Promise.all([
-      getCachedKnnpCatalog(),
-      getProfileByUserId(user.id),
-    ]);
+    const profileRow = await getProfileByUserId(user.id);
+    const track = profileRow?.current_track ?? "stomatologia";
+
+    const catalog = await getCachedKnnpCatalog(track);
 
     let profile: ProfileForSubjects = { ...DEFAULT_PROFILE };
     if (profileRow) {
       profile = {
         current_year: profileRow.current_year ?? 1,
-        track: formatTrackLabel(profileRow.track ?? "stomatologia"),
+        track: formatTrackLabel(track),
       };
     } else {
       console.warn(

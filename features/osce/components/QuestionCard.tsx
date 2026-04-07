@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
 import { cn } from "@/lib/utils";
 
 export type OsceQuestionOption = { id: string; text: string };
@@ -16,6 +17,7 @@ export type OsceQuestionCardQuestion = {
   image_url?: string | null;
   question_type: string;
   timer_seconds?: number | null;
+  difficulty?: "latwe" | "srednie" | "trudne" | null;
 };
 
 function shuffleOptions<T>(items: T[]): T[] {
@@ -144,11 +146,8 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
     onAnswerRef.current(question.id, optionId, isCorrect);
   };
 
-  const optionSurfaceClass =
-    "flex w-full max-w-2xl items-center justify-center rounded-card border px-4 py-4 text-center font-body text-body-md leading-snug text-primary transition-colors duration-200 ease-out";
-
   return (
-    <div className="mx-auto w-full max-w-2xl bg-brand-bg">
+    <div className="mx-auto w-full max-w-3xl bg-brand-bg">
       {timerTotal != null ? (
         <TimerBar totalSeconds={timerTotal} remainingSeconds={remaining} />
       ) : null}
@@ -164,21 +163,34 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
         </div>
       ) : null}
 
-      <p className="font-body text-body-lg leading-relaxed text-primary">{question.text}</p>
+      {question.difficulty ? (
+        <div className="flex flex-wrap items-center gap-2">
+          <span
+            className={cn(
+              "rounded-pill px-3 py-1 font-body text-body-xs font-medium",
+              question.difficulty === "latwe" && "bg-success/10 text-success",
+              question.difficulty === "srednie" && "bg-brand-gold/10 text-brand-gold",
+              question.difficulty === "trudne" && "bg-error/10 text-error",
+            )}
+          >
+            {question.difficulty === "latwe" ? "Łatwe" : question.difficulty === "srednie" ? "Średnie" : "Trudne"}
+          </span>
+        </div>
+      ) : null}
 
-      <div className="mt-6 flex flex-col items-center gap-3">
-        {shuffledOptions.map((opt) => {
+      <p className="mt-6 font-body text-body-md leading-relaxed text-white md:text-body-lg">{question.text}</p>
+
+      <div className="mt-6 flex flex-col gap-3">
+        {shuffledOptions.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx);
           const isCorrect = opt.id === question.correct_option_id;
           const isSelected = selectedId === opt.id;
-          let surface = "border-brand-sage/50 bg-brand-card-1 hover:border-brand-sage hover:bg-brand-card-2";
+
+          let state: "default" | "correct" | "wrong" | "muted" = "default";
           if (revealed) {
-            if (isCorrect) {
-              surface = "border-success bg-success/10";
-            } else if (isSelected) {
-              surface = "border-error bg-error/10";
-            } else {
-              surface = "border-white/[0.06] bg-brand-card-1 opacity-80";
-            }
+            if (isCorrect) state = "correct";
+            else if (isSelected) state = "wrong";
+            else state = "muted";
           }
 
           return (
@@ -188,18 +200,36 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
               disabled={revealed}
               onClick={() => handleOptionClick(opt.id)}
               className={cn(
-                optionSurfaceClass,
-                "min-h-[5.5rem] w-full max-w-2xl font-normal",
-                surface,
+                "flex w-full items-start gap-4 rounded-card border p-4 text-left transition-all duration-200 ease-out",
+                state === "default" &&
+                  "border-[rgba(255,255,255,0.08)] bg-brand-card-1 hover:border-brand-sage/50",
+                state === "correct" && "border-success bg-success/10",
+                state === "wrong" && "border-error bg-error/10",
+                state === "muted" && "border-[rgba(255,255,255,0.06)] bg-brand-bg/40 opacity-50",
                 revealed && "cursor-default",
                 !revealed && "cursor-pointer",
               )}
             >
-              <span className="w-full hyphens-auto break-words">{opt.text}</span>
+              <span
+                className={cn(
+                  "flex size-8 shrink-0 items-center justify-center rounded-full border font-mono text-body-sm font-medium transition-colors duration-200",
+                  state === "default" && "border-[rgba(255,255,255,0.12)] bg-brand-bg text-secondary",
+                  state === "correct" && "border-success bg-success text-brand-bg",
+                  state === "wrong" && "border-error bg-error text-brand-bg",
+                  state === "muted" && "border-[rgba(255,255,255,0.1)] bg-brand-bg text-muted",
+                )}
+              >
+                {letter}
+              </span>
+              <span className="min-w-0 flex-1 hyphens-auto break-words font-body text-body-md text-primary">{opt.text}</span>
             </button>
           );
         })}
       </div>
+
+      {!revealed ? (
+        <QuestionFooterActions questionId={question.id} questionText={question.text} />
+      ) : null}
 
       <AnimatePresence>
         {revealed ? (
@@ -220,15 +250,18 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
       </AnimatePresence>
 
       {revealed ? (
-        <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            onClick={onNext}
-            className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
-          >
-            Następne pytanie
-          </button>
-        </div>
+        <>
+          <QuestionFooterActions questionId={question.id} questionText={question.text} />
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={onNext}
+              className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
+            >
+              Następne pytanie
+            </button>
+          </div>
+        </>
       ) : null}
     </div>
   );

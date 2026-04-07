@@ -10,6 +10,9 @@ DB_URL="${SUPABASE_DB_URL:?Ustaw SUPABASE_DB_URL}"
 echo "▸ Applying main schema..."
 psql "$DB_URL" -f supabase-schema.sql
 
+echo "▸ Seeding curriculum subjects..."
+psql "$DB_URL" -f scripts/seed-subjects-curriculum.sql
+
 echo "▸ Seeding content..."
 psql "$DB_URL" -f scripts/seed-content.sql
 

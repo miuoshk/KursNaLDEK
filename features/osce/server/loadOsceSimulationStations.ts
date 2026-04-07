@@ -1,3 +1,4 @@
+import { normalizeExamTasks } from "@/features/osce/lib/normalizeExamTasks";
 import type { OsceStation } from "@/features/osce/types";
 import { createClient } from "@/lib/supabase/server";
 
@@ -23,6 +24,6 @@ export async function loadOsceSimulationStations(
     short_name: row.short_name as string,
     display_order: (row.display_order as number) ?? 0,
     exam_day: (row.exam_day as number | null) ?? null,
-    exam_tasks: (row.exam_tasks as string | null) ?? null,
+    exam_tasks: normalizeExamTasks(row.exam_tasks),
   }));
 }

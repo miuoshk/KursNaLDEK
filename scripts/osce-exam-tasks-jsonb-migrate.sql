@@ -1,0 +1,10 @@
+-- Jeśli `exam_tasks` już istnieje jako TEXT z JSON-em w środku, możesz zmienić typ:
+-- ALTER TABLE subjects
+--   ALTER COLUMN exam_tasks TYPE JSONB
+--   USING CASE
+--     WHEN exam_tasks IS NULL OR trim(exam_tasks::text) = '' THEN NULL
+--     ELSE exam_tasks::jsonb
+--   END;
+--
+-- Przykładowa wartość w JSONB:
+-- [{"task":1,"description":"Opis pierwszego zadania"},{"task":2,"description":"Drugie"}]

@@ -4,7 +4,7 @@ export type OsceStation = {
   short_name: string;
   display_order: number;
   exam_day: number | null;
-  exam_tasks: string | null;
+  exam_tasks: { task: number; description: string }[] | null;
 };
 
 export type OsceTopic = {

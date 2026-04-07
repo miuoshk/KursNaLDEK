@@ -315,7 +315,7 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
 -- ============================================
 -- OSCE: kolumny stacji (uruchom na istniejącej bazie)
 -- ============================================
-ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_tasks TEXT;
+ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_tasks JSONB;
 ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_day INT;
 
 -- ============================================

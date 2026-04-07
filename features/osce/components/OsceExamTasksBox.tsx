@@ -1,11 +1,16 @@
 import { ClipboardList } from "lucide-react";
 
+type ExamTask = {
+  task: number;
+  description: string;
+};
+
 type OsceExamTasksBoxProps = {
-  examTasks: string | null;
+  examTasks: ExamTask[] | null;
 };
 
 export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
-  if (!examTasks?.trim()) {
+  if (!examTasks || examTasks.length === 0) {
     return null;
   }
 
@@ -21,10 +26,17 @@ export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
           aria-hidden
         />
         <div className="min-w-0 flex-1">
-          <h2 className="font-heading text-heading-sm text-brand-gold">Zadania na stacji</h2>
-          <div className="mt-3 whitespace-pre-wrap font-body text-body-sm text-secondary">
-            {examTasks.trim()}
-          </div>
+          <h2 className="font-heading text-heading-sm text-brand-gold">
+            Zadania na stacji
+          </h2>
+          <ul className="mt-3 space-y-2">
+            {examTasks.map((t) => (
+              <li key={t.task} className="font-body text-body-sm text-secondary">
+                <span className="font-semibold text-primary">Zadanie {t.task}:</span>{" "}
+                {t.description}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

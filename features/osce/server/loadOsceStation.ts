@@ -60,7 +60,7 @@ export async function loadOsceStation(stationId: string): Promise<LoadOsceStatio
       short_name: subject.short_name as string,
       display_order: (subject.display_order as number) ?? 0,
       exam_day: (subject.exam_day as number | null) ?? null,
-      exam_tasks: (subject.exam_tasks as string | null) ?? null,
+      exam_tasks: subject.exam_tasks ?? null,
     };
 
     const topics: OsceTopic[] = (topicRows ?? []).map((row) => ({

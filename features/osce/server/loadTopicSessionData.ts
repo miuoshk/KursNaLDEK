@@ -42,6 +42,7 @@ export async function loadTopicSessionData(
         .maybeSingle(),
       supabase
         .from("questions")
+        // timer_seconds, correct_order, learning_outcome itd. są w JSONB `extra`, nie jako kolumny w tabeli questions.
         .select(
           "id, text, options, correct_option_id, explanation, difficulty, image_url, is_active, question_type, extra",
         )

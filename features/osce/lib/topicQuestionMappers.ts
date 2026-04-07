@@ -33,11 +33,9 @@ export function toOsceSingleChoice(
 ): OsceQuestionCardQuestion | null {
   const options = parseOsceOptions(row.options);
   if (options.length === 0) return null;
-  const extra = row.extra ?? {};
+  const ts = row.timer_seconds;
   const timer =
-    typeof extra.timer_seconds === "number" && extra.timer_seconds > 0
-      ? extra.timer_seconds
-      : null;
+    typeof ts === "number" && ts > 0 ? ts : null;
   return {
     id: row.id,
     text: row.text,
@@ -51,15 +49,13 @@ export function toOsceSingleChoice(
 }
 
 export function toOsceOrdering(row: TopicSessionQuestionRow): OrderingQuestionData | null {
-  const extra = row.extra ?? {};
-  const co = extra.correct_order;
+  const co = row.correct_order;
   if (!Array.isArray(co) || !co.every((x) => typeof x === "string")) return null;
   const options = parseOsceOptions(row.options);
   if (options.length === 0) return null;
+  const ts = row.timer_seconds;
   const timer =
-    typeof extra.timer_seconds === "number" && extra.timer_seconds > 0
-      ? extra.timer_seconds
-      : null;
+    typeof ts === "number" && ts > 0 ? ts : null;
   return {
     id: row.id,
     text: row.text,
@@ -73,15 +69,11 @@ export function toOsceOrdering(row: TopicSessionQuestionRow): OrderingQuestionDa
 export function toOsceImageIdentify(
   row: TopicSessionQuestionRow,
 ): ImageIdentifyQuestionData | null {
-  const extra = row.extra ?? {};
-  const hotspots = extra.hotspots;
+  const hotspots = row.hotspots;
   if (!Array.isArray(hotspots) || hotspots.length === 0) return null;
-  const imageUrl =
-    (typeof extra.image_url === "string" && extra.image_url.length > 0
-      ? extra.image_url
-      : null) || row.image_url;
-  if (!imageUrl) return null;
-  const mode = extra.mode === "label" ? "label" : "identify";
+  const imageUrl = row.image_url;
+  if (!imageUrl || typeof imageUrl !== "string") return null;
+  const mode = row.identify_mode === "label" ? "label" : "identify";
   return {
     id: row.id,
     text: row.text,
@@ -95,7 +87,7 @@ export function toOsceImageIdentify(
 export function toOsceConversionItems(
   row: TopicSessionQuestionRow,
 ): ConversionDrillQuestionItem[] | null {
-  const raw = row.extra?.drill_questions;
+  const raw = row.drill_questions;
   if (!Array.isArray(raw) || raw.length === 0) return null;
   return raw as ConversionDrillQuestionItem[];
 }

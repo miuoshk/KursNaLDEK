@@ -4,6 +4,8 @@ import {
   OSCE_QUESTIONS_PER_TOPIC,
   OSCE_TOPICS_PER_STATION,
 } from "@/features/osce/constants/osceSimulation";
+import { mapRecordToTopicSessionQuestionRow } from "@/features/osce/server/mapTopicQuestionRow";
+import { OSCE_QUESTIONS_COLUMNS } from "@/features/osce/server/osceQuestionsSelect";
 import type { TopicSessionQuestionRow } from "@/features/osce/types";
 import { createClient } from "@/lib/supabase/server";
 
@@ -14,20 +16,6 @@ function shuffle<T>(items: T[]): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-function mapQuestionRow(row: Record<string, unknown>): TopicSessionQuestionRow {
-  return {
-    id: row.id as string,
-    text: row.text as string,
-    options: row.options,
-    correct_option_id: row.correct_option_id as string,
-    explanation: row.explanation as string,
-    difficulty: (row.difficulty as string | null) ?? null,
-    image_url: (row.image_url as string | null) ?? null,
-    question_type: (row.question_type as string | null) ?? null,
-    extra: (row.extra as Record<string, unknown> | null) ?? null,
-  };
 }
 
 /**
@@ -57,9 +45,7 @@ export async function fetchSimulationStationQuestions(
   for (const topicId of topicIds) {
     const { data: qRows, error: qe } = await supabase
       .from("questions")
-      .select(
-        "id, text, options, correct_option_id, explanation, difficulty, image_url, is_active, question_type, extra",
-      )
+      .select(OSCE_QUESTIONS_COLUMNS)
       .eq("topic_id", topicId)
       .eq("is_active", true);
 
@@ -70,7 +56,7 @@ export async function fetchSimulationStationQuestions(
       OSCE_QUESTIONS_PER_TOPIC,
     );
     for (const row of picked) {
-      out.push(mapQuestionRow(row));
+      out.push(mapRecordToTopicSessionQuestionRow(row));
     }
   }
 

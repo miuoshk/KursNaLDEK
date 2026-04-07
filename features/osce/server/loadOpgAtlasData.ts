@@ -13,12 +13,7 @@ const rawHotspotSchema = z.object({
   clinical_significance: z.string().optional(),
 });
 
-const extraSchema = z
-  .object({
-    hotspots: z.array(rawHotspotSchema).optional(),
-    image_url: z.string().optional(),
-  })
-  .passthrough();
+const hotspotsColumnSchema = z.array(rawHotspotSchema);
 
 export type LoadOpgAtlasResult =
   | { ok: true; panoramas: OpgAtlasPanorama[] }
@@ -42,7 +37,7 @@ export async function loadOpgAtlasData(): Promise<LoadOpgAtlasResult> {
 
     const { data: rows, error } = await supabase
       .from("questions")
-      .select("id, text, image_url, extra")
+      .select("id, text, image_url, hotspots")
       .eq("topic_id", OPG_ATLAS_TOPIC_ID)
       .eq("question_type", "image_identify")
       .eq("is_active", true)
@@ -59,20 +54,17 @@ export async function loadOpgAtlasData(): Promise<LoadOpgAtlasResult> {
     const panoramas: OpgAtlasPanorama[] = [];
 
     for (const row of rows ?? []) {
-      const extraParsed = extraSchema.safeParse(row.extra ?? {});
-      const extra = extraParsed.success ? extraParsed.data : null;
-
       const imageUrl =
-        (typeof row.image_url === "string" && row.image_url.length > 0
+        typeof row.image_url === "string" && row.image_url.length > 0
           ? row.image_url
-          : null) ||
-        (extra?.image_url && extra.image_url.length > 0 ? extra.image_url : null);
+          : null;
 
       if (!imageUrl) {
         continue;
       }
 
-      const rawHotspots = extra?.hotspots ?? [];
+      const parsed = hotspotsColumnSchema.safeParse(row.hotspots ?? []);
+      const rawHotspots = parsed.success ? parsed.data : [];
       const hotspots = rawHotspots.map(mapHotspot);
       hotspots.sort((a, b) => a.id.localeCompare(b.id, "pl"));
 

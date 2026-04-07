@@ -25,10 +25,19 @@ export type TopicSessionQuestionRow = {
   difficulty: string | null;
   image_url: string | null;
   question_type: string | null;
-  extra: Record<string, unknown> | null;
+  timer_seconds: number | null;
+  /** JSONB / tablica stringów — kolejność przy pytaniach typu ordering */
+  correct_order: unknown | null;
+  learning_outcome: string | null;
+  /** JSONB — image_identify / atlas OPG */
+  hotspots: unknown | null;
+  /** JSONB — conversion_drill */
+  drill_questions: unknown | null;
+  /** np. identify | label */
+  identify_mode: string | null;
 };
 
-/** Hotspot w atlasie OPG (mapowany z `questions.extra.hotspots` lub pytania image_identify). */
+/** Hotspot w atlasie OPG (kolumna `questions.hotspots` JSONB). */
 export type OpgAtlasHotspot = {
   id: string;
   x_percent: number;

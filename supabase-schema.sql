@@ -88,7 +88,12 @@ CREATE TABLE questions (
   image_url TEXT,
   is_active BOOLEAN DEFAULT true,
   question_type TEXT NOT NULL DEFAULT 'single_choice',
-  extra JSONB,
+  timer_seconds INTEGER,
+  correct_order JSONB,
+  learning_outcome TEXT,
+  hotspots JSONB,
+  drill_questions JSONB,
+  identify_mode TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

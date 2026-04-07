@@ -5,6 +5,11 @@ export function mobilePageTitle(pathname: string): string | null {
     if (pathname === "/przedmioty") return "Moje przedmioty";
     return "Przedmiot";
   }
+  if (pathname === "/osce" || pathname === "/osce/") return "Kurs na OSCE";
+  if (pathname.startsWith("/osce/")) {
+    if (pathname.startsWith("/osce/symulacja")) return "Symulacja OSCE";
+    return "OSCE";
+  }
   if (pathname === "/statystyki") return "Statystyki";
   if (pathname === "/osiagniecia") return "Osiągnięcia";
   if (pathname === "/ustawienia") return "Ustawienia";

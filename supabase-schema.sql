@@ -310,5 +310,11 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
   ('patologia', 'Patomorfologia', 'Patomorfologia', 'scan', 3, 'stomatologia', 'knnp', 10);
 
 -- ============================================
+-- OSCE: kolumny stacji (uruchom na istniejącej bazie)
+-- ============================================
+ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_tasks TEXT;
+ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_day INT;
+
+-- ============================================
 -- DONE! Schema ready.
 -- ============================================

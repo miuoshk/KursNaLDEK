@@ -9,12 +9,12 @@ ALTER TABLE study_sessions ADD COLUMN IF NOT EXISTS question_ids jsonb DEFAULT '
 
 -- Tematy: Biochemia
 INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
-  ('BIO-AA', 'biochemia', 'Aminokwasy i białka', 1, 5),
-  ('BIO-ENZ', 'biochemia', 'Enzymy i kinetyka enzymatyczna', 2, 5),
-  ('BIO-MET', 'biochemia', 'Metabolizm węglowodanów', 3, 5),
-  ('BIO-LIP', 'biochemia', 'Metabolizm lipidów', 4, 5),
-  ('BIO-ETC', 'biochemia', 'Łańcuch oddechowy i fosforylacja oksydacyjna', 5, 5),
-  ('BIO-NK', 'biochemia', 'Kwasy nukleinowe i replikacja DNA', 6, 5)
+  ('BIO-AA', 'stoma-biochemia', 'Aminokwasy i białka', 1, 5),
+  ('BIO-ENZ', 'stoma-biochemia', 'Enzymy i kinetyka enzymatyczna', 2, 5),
+  ('BIO-MET', 'stoma-biochemia', 'Metabolizm węglowodanów', 3, 5),
+  ('BIO-LIP', 'stoma-biochemia', 'Metabolizm lipidów', 4, 5),
+  ('BIO-ETC', 'stoma-biochemia', 'Łańcuch oddechowy i fosforylacja oksydacyjna', 5, 5),
+  ('BIO-NK', 'stoma-biochemia', 'Kwasy nukleinowe i replikacja DNA', 6, 5)
 ON CONFLICT (id) DO UPDATE SET
   name = EXCLUDED.name,
   display_order = EXCLUDED.display_order,
@@ -22,11 +22,11 @@ ON CONFLICT (id) DO UPDATE SET
 
 -- Tematy: Anatomia
 INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
-  ('ANA-CZA', 'anatomia', 'Czaszka i kości twarzoczaszki', 1, 5),
-  ('ANA-MIE', 'anatomia', 'Mięśnie żucia i mimiczne', 2, 5),
-  ('ANA-NAC', 'anatomia', 'Naczynia głowy i szyi', 3, 5),
-  ('ANA-NER', 'anatomia', 'Nerwy czaszkowe', 4, 5),
-  ('ANA-JAM', 'anatomia', 'Jama ustna i jej struktury', 5, 5)
+  ('ANA-CZA', 'stoma-anatomia', 'Czaszka i kości twarzoczaszki', 1, 5),
+  ('ANA-MIE', 'stoma-anatomia', 'Mięśnie żucia i mimiczne', 2, 5),
+  ('ANA-NAC', 'stoma-anatomia', 'Naczynia głowy i szyi', 3, 5),
+  ('ANA-NER', 'stoma-anatomia', 'Nerwy czaszkowe', 4, 5),
+  ('ANA-JAM', 'stoma-anatomia', 'Jama ustna i jej struktury', 5, 5)
 ON CONFLICT (id) DO UPDATE SET
   name = EXCLUDED.name,
   display_order = EXCLUDED.display_order,

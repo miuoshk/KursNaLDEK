@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, X } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -11,6 +10,9 @@ import {
   useState,
 } from "react";
 import { usePinchZoom } from "@/hooks/usePinchZoom";
+import { ImageHotspotOverlay } from "@/features/osce/components/ImageHotspotOverlay";
+import { ImageIdentifyForm } from "@/features/osce/components/ImageIdentifyForm";
+import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
 import { cn } from "@/lib/utils";
 
 export type ImageIdentifyHotspot = {
@@ -181,15 +183,6 @@ export function ImageIdentifyQuestion({
     else runCheckLabel();
   };
 
-  const isCorrectAt = (hid: string) => {
-    const h = hotspots.find((x) => x.id === hid);
-    if (!h) return false;
-    if (question.mode === "identify") {
-      return identifySelections[hid]?.trim() === h.correct_label;
-    }
-    return Boolean(labelOutcome[hid]);
-  };
-
   return (
     <div className="mx-auto w-full max-w-3xl bg-brand-bg">
       <p className="font-body text-body-lg leading-relaxed text-primary">{question.text}</p>
@@ -232,54 +225,15 @@ export function ImageIdentifyQuestion({
                 role="presentation"
               />
 
-              {sortedHotspots.map((h, i) => {
-                const showNum = true;
-                const correct = checked ? isCorrectAt(h.id) : null;
-                const dimPct = Math.min(100, h.radius_percent * 2);
-                const minPx = 44;
-                const sizeStyle =
-                  wrapperSize.w > 0
-                    ? {
-                        width: `${Math.max(minPx, (dimPct / 100) * wrapperSize.w)}px`,
-                        height: `${Math.max(minPx, (dimPct / 100) * wrapperSize.w)}px`,
-                      }
-                    : {
-                        width: `max(44px, ${dimPct}%)`,
-                        height: `max(44px, ${dimPct}%)`,
-                      };
-
-                return (
-                  <div
-                    key={h.id}
-                    className="pointer-events-none absolute flex items-center justify-center"
-                    style={{
-                      left: `${h.x_percent}%`,
-                      top: `${h.y_percent}%`,
-                      transform: "translate(-50%, -50%)",
-                      ...sizeStyle,
-                    }}
-                  >
-                    <div
-                      className={cn(
-                        "flex size-full items-center justify-center rounded-full border-2 border-dashed border-brand-gold/70 bg-brand-gold/10",
-                        "animate-pulse shadow-[0_0_0_4px_rgba(201,168,76,0.12)]",
-                        checked &&
-                          correct === true &&
-                          "border-success bg-success/15 shadow-[0_0_0_4px_rgba(74,222,128,0.2)]",
-                        checked &&
-                          correct === false &&
-                          "border-error bg-error/15 shadow-[0_0_0_4px_rgba(248,113,113,0.2)]",
-                      )}
-                    >
-                      {showNum ? (
-                        <span className="font-mono text-sm font-semibold tabular-nums text-brand-gold">
-                          {i + 1}
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                );
-              })}
+              <ImageHotspotOverlay
+                hotspots={hotspots}
+                wrapperSize={wrapperSize}
+                checked={checked}
+                identifySelections={identifySelections}
+                labelOutcome={labelOutcome}
+                mode={question.mode}
+                labelStep={labelStep}
+              />
             </div>
           </div>
         </div>
@@ -289,84 +243,23 @@ export function ImageIdentifyQuestion({
         Szczypanie: powiększenie. Podwójne tapnięcie: zoom / reset. Przeciąganie przy powiększeniu.
       </p>
 
-      {question.mode === "identify" ? (
-        <div className="mt-8 space-y-4">
-          {sortedHotspots.map((h, i) => (
-            <div
-              key={h.id}
-              className="flex flex-col gap-2 rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-4 sm:flex-row sm:items-center sm:gap-6"
-            >
-              <span className="shrink-0 font-mono text-body-sm text-brand-gold">
-                {i + 1}.
-              </span>
-              <label htmlFor={`${formId}-sel-${h.id}`} className="sr-only">
-                Wybór dla punktu {i + 1}
-              </label>
-              <select
-                id={`${formId}-sel-${h.id}`}
-                disabled={checked}
-                value={identifySelections[h.id] ?? ""}
-                onChange={(e) => handleIdentifyChange(h.id, e.target.value)}
-                className={cn(
-                  "w-full rounded-btn border border-brand-sage/40 bg-brand-bg px-3 py-2.5 font-body text-body-md text-primary",
-                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold",
-                  checked &&
-                    identifySelections[h.id]?.trim() === h.correct_label &&
-                    "border-success",
-                  checked &&
-                    identifySelections[h.id]?.trim() !== h.correct_label &&
-                    "border-error",
-                )}
-              >
-                <option value="">Wybierz nazwę…</option>
-                {labelOptions.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
-              {checked ? (
-                identifySelections[h.id]?.trim() === h.correct_label ? (
-                  <Check className="size-5 shrink-0 text-success" aria-label="Dobrze" />
-                ) : (
-                  <X className="size-5 shrink-0 text-error" aria-label="Źle" />
-                )
-              ) : null}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-6 font-body text-body-sm text-secondary">
-          {labelComplete && !checked ? (
-            <p className="text-brand-gold">Wszystkie punkty wskazane. Sprawdź odpowiedzi.</p>
-          ) : null}
-        </div>
-      )}
-
-      {!checked ? (
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={question.mode === "identify" ? false : !labelComplete}
-            className={cn(
-              "rounded-btn px-8 py-3 font-body text-body-md font-semibold transition duration-200 ease-out",
-              question.mode === "label" && !labelComplete
-                ? "cursor-not-allowed bg-white/10 text-muted"
-                : "bg-brand-gold text-brand-bg hover:brightness-110",
-            )}
-          >
-            Sprawdź
-          </button>
-          <button
-            type="button"
-            onClick={resetView}
-            className="rounded-btn border border-brand-sage/40 px-4 py-2 font-body text-body-sm text-brand-sage transition hover:bg-brand-sage/10"
-          >
-            Reset widoku
-          </button>
-        </div>
-      ) : null}
+      <ImageIdentifyForm
+        formId={formId}
+        questionId={question.id}
+        questionText={question.text}
+        hotspots={hotspots}
+        mode={question.mode}
+        labelOptions={labelOptions}
+        identifySelections={identifySelections}
+        labelStep={labelStep}
+        labelOutcome={labelOutcome}
+        checked={checked}
+        labelComplete={labelComplete}
+        onIdentifyChange={handleIdentifyChange}
+        onLabelSelect={() => {}}
+        onCheck={handleSubmit}
+        onResetView={resetView}
+      />
 
       <AnimatePresence>
         {checked ? (
@@ -390,6 +283,10 @@ export function ImageIdentifyQuestion({
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      {checked ? (
+        <QuestionFooterActions questionId={question.id} questionText={question.text} />
+      ) : null}
 
       {checked && onNext ? (
         <div className="mt-8 flex justify-center">

@@ -1,7 +1,7 @@
 # Kurs na LDEK — Cursor Rules
 
 ## Stack
-- Next.js 14 App Router, TypeScript strict mode
+- Next.js 16 App Router, TypeScript strict mode
 - Tailwind CSS with custom config (brand colors, fonts)
 - Supabase for auth, database, realtime
 - Framer Motion for animations

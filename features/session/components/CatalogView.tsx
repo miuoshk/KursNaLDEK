@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { FormattedExplanation } from "@/features/session/components/FormattedExplanation";
+import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 

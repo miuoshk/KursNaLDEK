@@ -2,7 +2,7 @@
 
 import { CheckCircle, XCircle } from "lucide-react";
 import type { SessionQuestion } from "@/features/session/types";
-import { FormattedExplanation } from "@/features/session/components/FormattedExplanation";
+import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import { cn } from "@/lib/utils";
 
 function letterForOption(q: SessionQuestion, optionId: string) {

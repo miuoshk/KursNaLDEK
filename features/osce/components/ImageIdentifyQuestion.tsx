@@ -12,6 +12,7 @@ import {
 import { usePinchZoom } from "@/hooks/usePinchZoom";
 import { ImageHotspotOverlay } from "@/features/osce/components/ImageHotspotOverlay";
 import { ImageIdentifyForm } from "@/features/osce/components/ImageIdentifyForm";
+import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
 import { cn } from "@/lib/utils";
 
@@ -275,9 +276,9 @@ export function ImageIdentifyQuestion({
                 className="rounded-card border border-white/[0.08] bg-brand-card-1 p-4"
               >
                 <p className="font-body text-body-xs text-muted">Punkt {h.correct_label}</p>
-                <p className="mt-1 whitespace-pre-wrap font-body text-body-sm text-secondary">
-                  {h.explanation}
-                </p>
+                <div className="mt-1">
+                  <FormattedExplanation text={h.explanation} />
+                </div>
               </div>
             ))}
           </motion.div>

@@ -24,6 +24,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
 import { useMobileViewport } from "@/features/shared/hooks/useMobileViewport";
 import { useCountdownTimer } from "@/features/osce/hooks/useCountdownTimer";
@@ -263,9 +264,9 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
             className="mt-8 rounded-card border border-white/[0.08] bg-brand-card-1 p-5"
           >
             <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienie</p>
-            <p className="mt-3 whitespace-pre-wrap font-body text-body-sm leading-relaxed text-secondary">
-              {question.explanation}
-            </p>
+            <div className="mt-3">
+              <FormattedExplanation text={question.explanation} />
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

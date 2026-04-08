@@ -52,7 +52,8 @@ export default async function DashboardLayout({
       getDueReviewCount(supabase, user.id),
     ]);
     const userTrack = profileRow?.current_track ?? "stomatologia";
-    await getCachedKnnpCatalog(userTrack);
+    const userYear = profileRow?.current_year ?? 1;
+    await getCachedKnnpCatalog(userTrack, userYear);
     dueReviewsCount = due;
     displayName = greetingName(profileRow, userEmail);
     streak = profileRow?.current_streak ?? 0;

@@ -19,7 +19,7 @@ export type KnnpCatalogRows = {
  * Katalog przedmiotów/tematów knnp — deduplikacja w obrębie żądania (React cache).
  * Nie używamy unstable_cache + createClient (cookies), bo to powoduje błędy SSR w Next.js.
  */
-export const getCachedKnnpCatalog = cache(async (track?: string, maxYear?: number): Promise<KnnpCatalogRows> => {
+export const getCachedKnnpCatalog = cache(async (track?: string, year?: number): Promise<KnnpCatalogRows> => {
   const supabase = await createClient();
   let query = supabase
     .from("subjects")
@@ -30,8 +30,8 @@ export const getCachedKnnpCatalog = cache(async (track?: string, maxYear?: numbe
   if (track) {
     query = query.eq("track", track);
   }
-  if (maxYear != null) {
-    query = query.lte("year", maxYear);
+  if (year != null) {
+    query = query.eq("year", year);
   }
   const { data: subjectRows, error: se } = await query
     .order("display_order", { ascending: true });

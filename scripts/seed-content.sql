@@ -32,6 +32,19 @@ ON CONFLICT (id) DO UPDATE SET
   display_order = EXCLUDED.display_order,
   question_count = EXCLUDED.question_count;
 
+-- Tematy: Mikrobiologia jamy ustnej
+INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
+  ('MJU-01', 'stoma-mikrobio-ju', 'Jama ustna jako środowisko bytowania drobnoustrojów', 1, 0),
+  ('MJU-02', 'stoma-mikrobio-ju', 'Dezynfekcja i sterylizacja w stomatologii', 2, 0),
+  ('MJU-03', 'stoma-mikrobio-ju', 'Stała mikroflora jamy ustnej: ziarniaki G(+), pałeczki G(+), bakterie nitkowate', 3, 0),
+  ('MJU-04', 'stoma-mikrobio-ju', 'Stała mikroflora jamy ustnej: ziarniaki G(-), pałeczki G(-), mikoplazmy, grzyby, wirusy, pierwotniaki', 4, 0),
+  ('MJU-05', 'stoma-mikrobio-ju', 'Przemiana materii bakterii jamy ustnej. Płytka nazębna', 5, 0),
+  ('MJU-06', 'stoma-mikrobio-ju', 'Próchnica zębów. Udział drobnoustrojów w chorobach przyzębia', 6, 0)
+ON CONFLICT (id) DO UPDATE SET
+  name = EXCLUDED.name,
+  display_order = EXCLUDED.display_order,
+  question_count = EXCLUDED.question_count;
+
 -- Przykładowe pytania (BIO-ETC, BIO-AA)
 INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanation, difficulty, source_exam, source_code) VALUES
 

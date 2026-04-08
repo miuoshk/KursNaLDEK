@@ -39,7 +39,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
           subjectId={subject.id}
           availableQuestionCount={availableQuestionCount}
         />
-        <TopicGrid topics={topics} />
+        <TopicGrid topics={topics} subjectId={subject.id} />
       </div>
     </div>
   );

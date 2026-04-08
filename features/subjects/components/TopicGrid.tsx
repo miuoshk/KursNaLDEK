@@ -4,9 +4,10 @@ import { TopicCard } from "@/features/subjects/components/TopicCard";
 
 type TopicGridProps = {
   topics: Topic[];
+  subjectId: string;
 };
 
-export function TopicGrid({ topics }: TopicGridProps) {
+export function TopicGrid({ topics, subjectId }: TopicGridProps) {
   return (
     <section>
       <div className="flex flex-wrap items-baseline justify-between gap-3">
@@ -27,7 +28,7 @@ export function TopicGrid({ topics }: TopicGridProps) {
       ) : (
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {topics.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} />
+            <TopicCard key={topic.id} topic={topic} subjectId={subjectId} />
           ))}
         </div>
       )}

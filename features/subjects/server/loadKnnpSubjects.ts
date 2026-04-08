@@ -48,7 +48,8 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
     const profileRow = await getProfileByUserId(user.id);
     const track = profileRow?.current_track ?? "stomatologia";
 
-    const catalog = await getCachedKnnpCatalog(track);
+    const currentYear = profileRow?.current_year ?? 1;
+    const catalog = await getCachedKnnpCatalog(track, currentYear);
 
     let profile: ProfileForSubjects = { ...DEFAULT_PROFILE };
     if (profileRow) {

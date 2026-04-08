@@ -15,6 +15,7 @@ export type LoadKnnpSubjectsResult =
       subjects: SubjectWithProgress[];
       profile: ProfileForSubjects;
       totalQuestionCount: number;
+      isSubscribed: boolean;
     }
   | { ok: false; message: string };
 
@@ -64,15 +65,19 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       );
     }
 
+    const isSubscribed =
+      profileRow?.subscription_status === "active" ||
+      profileRow?.subscription_status === "trialing";
+
     if (catalog.subjectRows.length === 0) {
       console.warn(
         "[loadKnnpSubjects] tabela subjects jest pusta dla product=knnp — uruchom seed SQL w Supabase.",
       );
-      return { ok: true, subjects: [], profile, totalQuestionCount: 0 };
+      return { ok: true, subjects: [], profile, totalQuestionCount: 0, isSubscribed };
     }
 
     const { subjects, totalQuestionCount } = buildKnnpSubjectsList(catalog);
-    return { ok: true, subjects, profile, totalQuestionCount };
+    return { ok: true, subjects, profile, totalQuestionCount, isSubscribed };
   } catch (e) {
     console.error("[loadKnnpSubjects] unexpected:", e);
     return {

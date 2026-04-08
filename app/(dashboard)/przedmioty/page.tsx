@@ -17,7 +17,7 @@ export default async function PrzedmiotyPage() {
     );
   }
 
-  const { subjects, profile, totalQuestionCount } = result;
+  const { subjects, profile, totalQuestionCount, isSubscribed } = result;
 
   return (
     <div>
@@ -33,7 +33,7 @@ export default async function PrzedmiotyPage() {
             Brak przedmiotów do wyświetlenia. Skontaktuj się z administratorem lub spróbuj później.
           </p>
         ) : (
-          <SubjectGrid subjects={subjects} />
+          <SubjectGrid subjects={subjects} isSubscribed={isSubscribed} />
         )}
       </div>
     </div>

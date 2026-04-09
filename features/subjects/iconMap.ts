@@ -4,6 +4,7 @@ import {
   BookOpen,
   Bone,
   Bug,
+  ClipboardCheck,
   Dna,
   FlaskConical,
   HeartPulse,
@@ -24,6 +25,7 @@ export const subjectIconMap: Record<string, LucideIcon> = {
   bug: Bug,
   pill: Pill,
   activity: Activity,
+  "clipboard-check": ClipboardCheck,
   scan: Scan,
 };
 

@@ -2,6 +2,7 @@ import type { SessionQuestion } from "@/features/session/types";
 
 export type QuestionRow = {
   id: string;
+  topic_id?: string | null;
   text: string;
   options: unknown;
   correct_option_id: string;
@@ -43,5 +44,6 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     difficulty: row.difficulty,
     sourceCode: row.source_code,
     topicName: topicLabel(row.topics),
+    topicId: row.topic_id ?? undefined,
   };
 }

@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
 import { nextStreakValues, todayDateString } from "@/features/session/server/sessionStreak";
-import { recalculateTopicMastery } from "@/features/session/lib/antares/recalculateTopicMastery";
+import { runCompleteSessionPostAntares } from "@/features/session/server/completeSessionPostAntares";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 const schema = z.object({
@@ -39,7 +39,7 @@ export async function completeSession(
     const { data: session, error: se } = await supabase
       .from("study_sessions")
       .select(
-        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed",
+        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed, started_at",
       )
       .eq("id", parsed.data.sessionId)
       .eq("user_id", user.id)
@@ -70,11 +70,13 @@ export async function completeSession(
           .eq("is_completed", true),
         supabase
           .from("session_answers")
-          .select("question_id, is_correct, question_order, time_spent_seconds")
+          .select(
+            "question_id, is_correct, question_order, time_spent_seconds, confidence, answered_at",
+          )
           .eq("session_id", parsed.data.sessionId),
         supabase
           .from("profiles")
-          .select("xp, current_streak, longest_streak, last_active_date")
+          .select("xp, current_streak, longest_streak, last_active_date, avg_session_hour")
           .eq("id", user.id)
           .maybeSingle(),
       ]);
@@ -158,6 +160,10 @@ export async function completeSession(
       return { ok: false, message: "Nie udało się zaktualizować profilu." };
     }
 
+    let postAntares: Awaited<
+      ReturnType<typeof runCompleteSessionPostAntares>
+    > = null;
+
     try {
       const { data: topicRows, error: topicErr } = await supabase
         .from("session_answers")
@@ -181,8 +187,94 @@ export async function completeSession(
         ),
       ];
 
-      await recalculateTopicMastery(supabase, user.id, affectedTopicIds);
+      const startedAt =
+        (session.started_at as string | null) ?? new Date().toISOString();
 
+      postAntares = await runCompleteSessionPostAntares(
+        supabase,
+        user.id,
+        session.id as string,
+        startedAt,
+        affectedTopicIds,
+        ansRows.map((a) => ({
+          question_id: a.question_id as string,
+          is_correct: Boolean(a.is_correct),
+          confidence: (a.confidence as string | null) ?? null,
+          time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
+          question_order: (a.question_order as number | null) ?? null,
+          answered_at: (a.answered_at as string | null) ?? null,
+        })),
+        answeredCount,
+      );
+    } catch (antaresErr) {
+      console.error("[completeSession] ANTARES post", antaresErr);
+    }
+
+    try {
+      const now = new Date();
+      const currentHour =
+        now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+      const rawOld = profile.avg_session_hour as number | null | undefined;
+      const oldAvg =
+        rawOld != null && Number.isFinite(Number(rawOld)) ? Number(rawOld) : null;
+      const newAvg =
+        oldAvg != null ? oldAvg * 0.8 + currentHour * 0.2 : currentHour;
+
+      const { error: avgHourErr } = await supabase
+        .from("profiles")
+        .update({ avg_session_hour: newAvg })
+        .eq("id", user.id);
+
+      if (avgHourErr) {
+        console.error("[completeSession] avg_session_hour", avgHourErr.message);
+      }
+    } catch (avgHourErr) {
+      console.error("[completeSession] avg_session_hour", avgHourErr);
+    }
+
+    try {
+      const t = Date.now();
+      const sevenDaysAgoIso = new Date(
+        t - 7 * 24 * 60 * 60 * 1000,
+      ).toISOString();
+      const fourteenDaysAgoIso = new Date(
+        t - 14 * 24 * 60 * 60 * 1000,
+      ).toISOString();
+
+      const [{ count: thisWeekCount }, { count: lastWeekCount }] =
+        await Promise.all([
+          supabase
+            .from("learning_events")
+            .select("id", { count: "exact", head: true })
+            .eq("user_id", user.id)
+            .eq("event_type", "answer")
+            .gte("created_at", sevenDaysAgoIso),
+          supabase
+            .from("learning_events")
+            .select("id", { count: "exact", head: true })
+            .eq("user_id", user.id)
+            .eq("event_type", "answer")
+            .gte("created_at", fourteenDaysAgoIso)
+            .lt("created_at", sevenDaysAgoIso),
+        ]);
+
+      const thisWeek = thisWeekCount ?? 0;
+      const lastWeek = lastWeekCount ?? 0;
+      const velocity = thisWeek / Math.max(lastWeek, 1);
+
+      const { error: velocityErr } = await supabase
+        .from("profiles")
+        .update({ learning_velocity: velocity })
+        .eq("id", user.id);
+
+      if (velocityErr) {
+        console.error("[completeSession] learning_velocity", velocityErr.message);
+      }
+    } catch (velocityErr) {
+      console.error("[completeSession] learning_velocity", velocityErr);
+    }
+
+    try {
       const { error: sessionEndErr } = await supabase
         .from("learning_events")
         .insert({
@@ -200,8 +292,8 @@ export async function completeSession(
       if (sessionEndErr) {
         throw sessionEndErr;
       }
-    } catch (antaresErr) {
-      console.error("[completeSession] ANTARES", antaresErr);
+    } catch (sessionEndErr) {
+      console.error("[completeSession] session_end event", sessionEndErr);
     }
 
     const [summary, profAfter] = await Promise.all([
@@ -220,6 +312,11 @@ export async function completeSession(
     if (profAfter.data) {
       summary.newXpTotal = profAfter.data.xp ?? summary.newXpTotal;
       summary.newStreak = profAfter.data.current_streak ?? summary.newStreak;
+    }
+
+    if (postAntares) {
+      summary.sessionInsights = postAntares.sessionInsights;
+      summary.examReadiness = postAntares.examReadiness;
     }
 
     return { ok: true, summary };

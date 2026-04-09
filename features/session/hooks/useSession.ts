@@ -8,7 +8,7 @@ export function useSession(
   sessionId: string,
   mode: SessionMode,
 ) {
-  const [questions] = useState(initialQuestions);
+  const [questions, setQuestions] = useState(initialQuestions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [isShowingFeedback, setIsShowingFeedback] = useState(false);
@@ -57,6 +57,16 @@ export function useSession(
     setIsPastReadOnly(true);
   }, [currentIndex, isShowingFeedback, answers]);
 
+  const replaceQuestionsFromIndex = useCallback(
+    (fromIndex: number, tail: SessionQuestion[]) => {
+      setQuestions((qs) => {
+        if (fromIndex < 0 || fromIndex > qs.length) return qs;
+        return [...qs.slice(0, fromIndex), ...tail];
+      });
+    },
+    [],
+  );
+
   const goForwardFromReview = useCallback(() => {
     if (!isPastReadOnly) return;
     const nextIdx = currentIndex + 1;
@@ -89,6 +99,7 @@ export function useSession(
     resetForNext,
     goToPrevious,
     goForwardFromReview,
+    replaceQuestionsFromIndex,
     isLast: currentIndex >= questions.length - 1,
     total: questions.length,
   };

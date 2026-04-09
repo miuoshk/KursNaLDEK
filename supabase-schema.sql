@@ -27,6 +27,11 @@ CREATE TABLE profiles (
   subscription_ends_at TIMESTAMPTZ,
   default_session_mode TEXT DEFAULT 'nauka',
   default_question_count INT DEFAULT 25,
+  exam_date TIMESTAMPTZ,
+  exam_readiness_score INT,
+  questions_answered_total INT DEFAULT 0,
+  avg_session_hour DOUBLE PRECISION,
+  learning_velocity DOUBLE PRECISION,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -146,7 +151,8 @@ CREATE TABLE study_sessions (
   xp_earned INT DEFAULT 0,
   started_at TIMESTAMPTZ DEFAULT NOW(),
   completed_at TIMESTAMPTZ,
-  is_completed BOOLEAN DEFAULT false
+  is_completed BOOLEAN DEFAULT false,
+  session_insights JSONB
 );
 
 CREATE TABLE session_answers (

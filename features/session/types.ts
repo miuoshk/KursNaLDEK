@@ -11,6 +11,8 @@ export interface SessionQuestion {
   difficulty: string;
   sourceCode: string | null;
   topicName: string;
+  /** Id tematu z bazy (ANTARES); opcjonalne dla starszych payloadów. */
+  topicId?: string;
 }
 
 export interface SessionState {

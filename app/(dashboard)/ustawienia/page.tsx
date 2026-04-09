@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { AccountSection } from "@/features/settings/components/AccountSection";
 import { AchievementsBadgesPreview } from "@/features/settings/components/AchievementsBadgesPreview";
+import { ExamDateSection } from "@/features/settings/components/ExamDateSection";
 import { NotificationsSection } from "@/features/settings/components/NotificationsSection";
 import { ProfileSection } from "@/features/settings/components/ProfileSection";
 import { SettingsBreadcrumb } from "@/features/settings/components/SettingsBreadcrumb";
@@ -34,6 +35,8 @@ export default async function UstawieniaPage() {
       <div className="mt-10">
         <ProfileSection profile={profile} email={resolvedEmail} />
       </div>
+      <Divider />
+      <ExamDateSection examDate={profile.exam_date} />
       <Divider />
       <SubscriptionSection profile={profile} />
       <Divider />

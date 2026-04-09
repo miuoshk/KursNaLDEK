@@ -5,6 +5,8 @@ export type SettingsProfile = {
   avatar_initials: string | null;
   current_track: string;
   current_year: number;
+  /** ISO 8601 (TIMESTAMPTZ) lub null */
+  exam_date: string | null;
   daily_goal: number;
   default_session_mode: SessionMode;
   default_question_count: number;

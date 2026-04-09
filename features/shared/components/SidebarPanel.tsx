@@ -6,7 +6,6 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
-  ClipboardCheck,
   LayoutDashboard,
   Settings,
   X,
@@ -132,12 +131,6 @@ export function SidebarPanel({
           href="/przedmioty"
           label="Moje przedmioty"
           icon={BookOpen}
-          collapsed={collapsed && !mobile}
-        />
-        <SidebarLink
-          href="/osce"
-          label="Kurs na OSCE"
-          icon={ClipboardCheck}
           collapsed={collapsed && !mobile}
         />
         {SIDEBAR_NAV.map((item) => (

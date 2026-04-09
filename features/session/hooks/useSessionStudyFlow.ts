@@ -108,11 +108,7 @@ export function useSessionStudyFlow(
         return;
       }
 
-      const res = await submitAnswerWithRetry(payload);
-      if (!res.ok) {
-        setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
-        return;
-      }
+      s.completeCurrentAndGoNext(newAnswer);
 
       const allAnswers = [...s.answers, newAnswer];
       const summary = buildClientSessionSummary({
@@ -126,8 +122,9 @@ export function useSessionStudyFlow(
         profileXp,
         profileStreak,
       });
-
       pushSummaryAndNavigate(summary);
+
+      void submitAnswerWithRetry(payload).catch(() => {});
       scheduleServerSessionComplete(sessionId, sessionStart.current);
     },
     [

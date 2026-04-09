@@ -5,9 +5,9 @@ import { ChevronLeft } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionConfidenceBar } from "@/features/session/components/SessionConfidenceBar";
-import { SessionQuestionActions } from "@/features/session/components/SessionQuestionActions";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
+import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,7 @@ type SessionQuestionContentProps = {
   onPrzegladNext: () => void;
   onContinueReview: () => void;
   onGoToPrevious: () => void;
+  submitting?: boolean;
 };
 
 export function SessionQuestionContent({
@@ -41,6 +42,7 @@ export function SessionQuestionContent({
   onPrzegladNext,
   onContinueReview,
   onGoToPrevious,
+  submitting,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
@@ -48,7 +50,7 @@ export function SessionQuestionContent({
 
   return (
     <>
-      <div className="mx-auto max-w-3xl flex-1 overflow-y-auto px-4 pb-40 pt-6 sm:px-8">
+      <div className="flex-1 overflow-y-auto px-4 pb-28 pt-6 sm:px-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={q.id}
@@ -69,7 +71,7 @@ export function SessionQuestionContent({
         </AnimatePresence>
 
         {!isShowingFeedback ? (
-          <div className="mt-8 space-y-4">
+          <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">
             {currentIndex > 0 ? (
               <button
                 type="button"
@@ -85,10 +87,8 @@ export function SessionQuestionContent({
               disabled={!selectedOptionId}
               onClick={onCheck}
               className={cn(
-                "w-full rounded-btn py-3.5 font-body text-body-md font-semibold transition duration-200 ease-out",
-                selectedOptionId
-                  ? "cursor-pointer bg-brand-gold text-brand-bg hover:brightness-110"
-                  : "cursor-not-allowed bg-brand-card-1 text-muted",
+                "w-full rounded-btn bg-brand-gold py-3.5 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out",
+                "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50",
               )}
             >
               Sprawdź odpowiedź
@@ -101,7 +101,7 @@ export function SessionQuestionContent({
             variants={feedbackVariants}
             initial="hidden"
             animate="visible"
-            className="mt-8"
+            className="mx-auto w-full max-w-3xl"
           >
             <FeedbackPanel
               question={q}
@@ -130,6 +130,7 @@ export function SessionQuestionContent({
           canGoPrevious={currentIndex > 0}
           onGoPrevious={onGoToPrevious}
           onConfidence={onConfidenceAndNext}
+          disabled={submitting}
           onContinueReview={onContinueReview}
         />
       ) : null}

@@ -12,6 +12,7 @@ type SessionConfidenceBarProps = {
   onGoPrevious: () => void;
   onConfidence: (c: Confidence) => void;
   onContinueReview: () => void;
+  disabled?: boolean;
 };
 
 export function SessionConfidenceBar({
@@ -22,6 +23,7 @@ export function SessionConfidenceBar({
   onGoPrevious,
   onConfidence,
   onContinueReview,
+  disabled,
 }: SessionConfidenceBarProps) {
   return (
     <div
@@ -74,22 +76,25 @@ export function SessionConfidenceBar({
             <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-end">
               <button
                 type="button"
+                disabled={disabled}
                 onClick={() => onConfidence("nie_wiedzialem")}
-                className="rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] sm:text-body-sm"
+                className="rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
               >
                 Nie wiedziałem
               </button>
               <button
                 type="button"
+                disabled={disabled}
                 onClick={() => onConfidence("troche")}
-                className="rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] sm:text-body-sm"
+                className="rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
               >
-                Trochę wiedziałem
+                {disabled ? "Zapisywanie..." : "Trochę wiedziałem"}
               </button>
               <button
                 type="button"
+                disabled={disabled}
                 onClick={() => onConfidence("na_pewno")}
-                className="rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] sm:text-body-sm"
+                className="rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
               >
                 Wiedziałem na pewno
               </button>

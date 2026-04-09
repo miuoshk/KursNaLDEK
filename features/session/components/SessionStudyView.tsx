@@ -43,6 +43,7 @@ export function SessionStudyView({
   const qKey = s.currentQuestion?.id ?? "";
   const sw = useQuestionStopwatch(qKey);
 
+  const [submitting, setSubmitting] = useState(false);
   const closeEnd = useCallback(() => setEndOpen(false), []);
 
   const { handleConfidenceAndNext, handleEndConfirm } = useSessionStudyFlow(
@@ -84,16 +85,26 @@ export function SessionStudyView({
     s.checkAnswer();
   }, [s, sw]);
 
+  const wrappedConfidenceAndNext = useCallback(
+    async (c: Confidence) => {
+      if (submitting) return;
+      setSubmitting(true);
+      await handleConfidenceAndNext(c);
+      setSubmitting(false);
+    },
+    [handleConfidenceAndNext, submitting],
+  );
+
   const handlePrzegladNext = useCallback(() => {
     if (!s.currentQuestion || !s.selectedOptionId) return;
-    void handleConfidenceAndNext("na_pewno");
-  }, [s.currentQuestion, s.selectedOptionId, handleConfidenceAndNext]);
+    void wrappedConfidenceAndNext("na_pewno");
+  }, [s.currentQuestion, s.selectedOptionId, wrappedConfidenceAndNext]);
 
   const onConfidenceShortcut = useCallback(
     (c: Confidence) => {
-      void handleConfidenceAndNext(c);
+      void wrappedConfidenceAndNext(c);
     },
-    [handleConfidenceAndNext],
+    [wrappedConfidenceAndNext],
   );
 
   useSessionKeyboardShortcuts({
@@ -141,7 +152,8 @@ export function SessionStudyView({
         mode={mode}
         onSelectOption={s.selectOption}
         onCheck={handleCheck}
-        onConfidenceAndNext={(c) => void handleConfidenceAndNext(c)}
+        onConfidenceAndNext={(c) => void wrappedConfidenceAndNext(c)}
+        submitting={submitting}
         onPrzegladNext={handlePrzegladNext}
         onContinueReview={s.goForwardFromReview}
         onGoToPrevious={s.goToPrevious}

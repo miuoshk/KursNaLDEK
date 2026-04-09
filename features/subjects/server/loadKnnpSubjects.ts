@@ -76,7 +76,27 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       return { ok: true, subjects: [], profile, totalQuestionCount: 0, isSubscribed };
     }
 
-    const { subjects, totalQuestionCount } = buildKnnpSubjectsList(catalog);
+    const { data: progressRows } = await supabase
+      .from("session_answers")
+      .select("question_id, questions!inner(topic_id, topics!inner(subject_id))")
+      .eq("is_correct", true)
+      .in(
+        "session_id",
+        (await supabase.from("study_sessions").select("id").eq("user_id", user.id)).data?.map(
+          (r) => r.id,
+        ) ?? [],
+      );
+
+    const answeredPerSubject = new Map<string, Set<string>>();
+    for (const row of progressRows ?? []) {
+      const q = row.questions as unknown as { topic_id: string; topics: { subject_id: string } } | null;
+      const subjectId = q?.topics?.subject_id;
+      if (!subjectId) continue;
+      if (!answeredPerSubject.has(subjectId)) answeredPerSubject.set(subjectId, new Set());
+      answeredPerSubject.get(subjectId)!.add(row.question_id);
+    }
+
+    const { subjects, totalQuestionCount } = buildKnnpSubjectsList(catalog, answeredPerSubject);
     return { ok: true, subjects, profile, totalQuestionCount, isSubscribed };
   } catch (e) {
     console.error("[loadKnnpSubjects] unexpected:", e);

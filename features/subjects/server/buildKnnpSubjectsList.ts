@@ -1,7 +1,10 @@
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
 
-export function buildKnnpSubjectsList(catalog: KnnpCatalogRows): {
+export function buildKnnpSubjectsList(
+  catalog: KnnpCatalogRows,
+  answeredPerSubject?: Map<string, Set<string>>,
+): {
   subjects: SubjectWithProgress[];
   totalQuestionCount: number;
 } {
@@ -33,7 +36,9 @@ export function buildKnnpSubjectsList(catalog: KnnpCatalogRows): {
       display_order: row.display_order ?? 0,
       question_count: questionCount,
       topic_count: topicCount,
-      mastery_percentage: 0,
+      mastery_percentage: questionCount > 0
+        ? Math.round((answeredPerSubject?.get(row.id)?.size ?? 0) / questionCount * 100)
+        : 0,
       last_studied_at: null,
       due_reviews: 0,
     };

@@ -71,48 +71,37 @@ export async function resetSubjectProgress(
 
     const sessionIds = (sessionRows ?? []).map((s) => s.id as string);
 
-    // Delete in parallel: session_answers, user_question_progress, topic_mastery_cache, learning_events, study_sessions
-    const ops: Promise<unknown>[] = [];
-
+    // Delete in parallel: session_answers, user_question_progress, topic_mastery_cache, study_sessions
     if (sessionIds.length > 0) {
-      ops.push(
-        supabase
-          .from("session_answers")
-          .delete()
-          .eq("user_id", user.id)
-          .in("session_id", sessionIds),
-      );
+      await supabase
+        .from("session_answers")
+        .delete()
+        .eq("user_id", user.id)
+        .in("session_id", sessionIds);
     }
 
-    if (questionIds.length > 0) {
-      ops.push(
-        supabase
-          .from("user_question_progress")
-          .delete()
-          .eq("user_id", user.id)
-          .in("question_id", questionIds),
-      );
-    }
-
-    ops.push(
+    await Promise.all([
+      questionIds.length > 0
+        ? supabase
+            .from("user_question_progress")
+            .delete()
+            .eq("user_id", user.id)
+            .in("question_id", questionIds)
+        : null,
       supabase
         .from("topic_mastery_cache")
         .delete()
         .eq("user_id", user.id)
         .in("topic_id", topicIds),
-    );
+    ]);
 
     if (sessionIds.length > 0) {
-      ops.push(
-        supabase
-          .from("study_sessions")
-          .delete()
-          .eq("user_id", user.id)
-          .eq("subject_id", subjectId),
-      );
+      await supabase
+        .from("study_sessions")
+        .delete()
+        .eq("user_id", user.id)
+        .eq("subject_id", subjectId);
     }
-
-    await Promise.all(ops);
 
     revalidatePath("/", "layout");
 

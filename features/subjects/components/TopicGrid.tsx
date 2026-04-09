@@ -1,9 +1,9 @@
 import { Filter } from "lucide-react";
-import type { Topic } from "@/features/subjects/types";
+import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { TopicCard } from "@/features/subjects/components/TopicCard";
 
 type TopicGridProps = {
-  topics: Topic[];
+  topics: TopicWithProgress[];
   subjectId: string;
 };
 

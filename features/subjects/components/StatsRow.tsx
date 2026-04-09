@@ -1,9 +1,10 @@
+import type { SubjectStats } from "@/features/subjects/server/loadSubjectDashboard";
+
 const RING_SIZE = 64;
 const R = 26;
 const C = 2 * Math.PI * R;
 
-function SubjectMasteryRing() {
-  const pct = 0;
+function SubjectMasteryRing({ pct }: { pct: number }) {
   const dash = (pct / 100) * C;
 
   return (
@@ -38,16 +39,22 @@ function SubjectMasteryRing() {
   );
 }
 
-export function StatsRow() {
+export function StatsRow({ stats }: { stats: SubjectStats }) {
+  const accPct = Math.round(stats.accuracy * 100);
+  const progressPct =
+    stats.totalQuestions > 0
+      ? Math.round((stats.answeredQuestions / stats.totalQuestions) * 100)
+      : 0;
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <div className="rounded-card bg-brand-card-1 p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
           Opanowanie przedmiotu
         </p>
-        <p className="mt-3 font-mono text-3xl text-brand-gold">0%</p>
+        <p className="mt-3 font-mono text-3xl text-brand-gold">{stats.masteryPct}%</p>
         <div className="mt-4 flex justify-center">
-          <SubjectMasteryRing />
+          <SubjectMasteryRing pct={stats.masteryPct} />
         </div>
         <p className="mt-3 text-center font-body text-body-xs text-muted">Łączny postęp</p>
       </div>
@@ -56,9 +63,14 @@ export function StatsRow() {
         <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
           Pytania rozwiązane
         </p>
-        <p className="mt-3 font-mono text-2xl text-primary">0 / 0</p>
+        <p className="mt-3 font-mono text-2xl text-primary">
+          {stats.answeredQuestions} / {stats.totalQuestions}
+        </p>
         <div className="mt-4 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.08)]">
-          <div className="h-full w-0 rounded-full bg-brand-gold" />
+          <div
+            className="h-full rounded-full bg-brand-gold transition-[width]"
+            style={{ width: `${progressPct}%` }}
+          />
         </div>
       </div>
 
@@ -66,8 +78,9 @@ export function StatsRow() {
         <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
           Trafność odpowiedzi
         </p>
-        <p className="mt-3 font-mono text-2xl text-primary">—</p>
-        <p className="mt-4 font-body text-body-xs text-muted">+0% w tym tyg.</p>
+        <p className="mt-3 font-mono text-2xl text-primary">
+          {stats.answeredQuestions > 0 ? `${accPct}%` : "—"}
+        </p>
       </div>
 
       <div className="rounded-card bg-brand-card-1 p-5">

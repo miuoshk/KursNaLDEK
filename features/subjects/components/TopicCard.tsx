@@ -1,9 +1,9 @@
 import Link from "next/link";
-import type { Topic } from "@/features/subjects/types";
+import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { cn } from "@/lib/utils";
 
 type TopicCardProps = {
-  topic: Topic;
+  topic: TopicWithProgress;
   subjectId: string;
 };
 
@@ -14,8 +14,9 @@ function fillClassForProgress(pct: number) {
 }
 
 export function TopicCard({ topic, subjectId }: TopicCardProps) {
-  const pct = 0;
   const total = topic.question_count;
+  const answered = topic.answered_count;
+  const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
   const hasQuestions = total > 0;
 
   const href = `/sesja/new?subject=${encodeURIComponent(subjectId)}&topic=${encodeURIComponent(topic.id)}&mode=inteligentna&count=50`;
@@ -35,7 +36,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
         />
       </div>
       <p className="mt-3 font-body text-body-xs text-muted">
-        {hasQuestions ? `0 / ${total} pytań` : "Brak pytań"}
+        {hasQuestions ? `${answered} / ${total} pytań` : "Brak pytań"}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">Ostatnio: —</p>

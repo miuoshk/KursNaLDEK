@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
@@ -160,141 +161,9 @@ export async function completeSession(
       return { ok: false, message: "Nie udało się zaktualizować profilu." };
     }
 
-    let postAntares: Awaited<
-      ReturnType<typeof runCompleteSessionPostAntares>
-    > = null;
-
-    try {
-      const { data: topicRows, error: topicErr } = await supabase
-        .from("session_answers")
-        .select("questions!inner(topic_id)")
-        .eq("session_id", parsed.data.sessionId);
-
-      if (topicErr) {
-        throw topicErr;
-      }
-
-      const affectedTopicIds = [
-        ...new Set(
-          (topicRows ?? [])
-            .map((r) => {
-              const q = r.questions as unknown as {
-                topic_id: string;
-              } | null;
-              return q?.topic_id;
-            })
-            .filter((id): id is string => Boolean(id)),
-        ),
-      ];
-
-      const startedAt =
-        (session.started_at as string | null) ?? new Date().toISOString();
-
-      postAntares = await runCompleteSessionPostAntares(
-        supabase,
-        user.id,
-        session.id as string,
-        startedAt,
-        affectedTopicIds,
-        ansRows.map((a) => ({
-          question_id: a.question_id as string,
-          is_correct: Boolean(a.is_correct),
-          confidence: (a.confidence as string | null) ?? null,
-          time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
-          question_order: (a.question_order as number | null) ?? null,
-          answered_at: (a.answered_at as string | null) ?? null,
-        })),
-        answeredCount,
-      );
-    } catch (antaresErr) {
-      console.error("[completeSession] ANTARES post", antaresErr);
-    }
-
-    try {
-      const now = new Date();
-      const currentHour =
-        now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
-      const rawOld = profile.avg_session_hour as number | null | undefined;
-      const oldAvg =
-        rawOld != null && Number.isFinite(Number(rawOld)) ? Number(rawOld) : null;
-      const newAvg =
-        oldAvg != null ? oldAvg * 0.8 + currentHour * 0.2 : currentHour;
-
-      const { error: avgHourErr } = await supabase
-        .from("profiles")
-        .update({ avg_session_hour: newAvg })
-        .eq("id", user.id);
-
-      if (avgHourErr) {
-        console.error("[completeSession] avg_session_hour", avgHourErr.message);
-      }
-    } catch (avgHourErr) {
-      console.error("[completeSession] avg_session_hour", avgHourErr);
-    }
-
-    try {
-      const t = Date.now();
-      const sevenDaysAgoIso = new Date(
-        t - 7 * 24 * 60 * 60 * 1000,
-      ).toISOString();
-      const fourteenDaysAgoIso = new Date(
-        t - 14 * 24 * 60 * 60 * 1000,
-      ).toISOString();
-
-      const [{ count: thisWeekCount }, { count: lastWeekCount }] =
-        await Promise.all([
-          supabase
-            .from("learning_events")
-            .select("id", { count: "exact", head: true })
-            .eq("user_id", user.id)
-            .eq("event_type", "answer")
-            .gte("created_at", sevenDaysAgoIso),
-          supabase
-            .from("learning_events")
-            .select("id", { count: "exact", head: true })
-            .eq("user_id", user.id)
-            .eq("event_type", "answer")
-            .gte("created_at", fourteenDaysAgoIso)
-            .lt("created_at", sevenDaysAgoIso),
-        ]);
-
-      const thisWeek = thisWeekCount ?? 0;
-      const lastWeek = lastWeekCount ?? 0;
-      const velocity = thisWeek / Math.max(lastWeek, 1);
-
-      const { error: velocityErr } = await supabase
-        .from("profiles")
-        .update({ learning_velocity: velocity })
-        .eq("id", user.id);
-
-      if (velocityErr) {
-        console.error("[completeSession] learning_velocity", velocityErr.message);
-      }
-    } catch (velocityErr) {
-      console.error("[completeSession] learning_velocity", velocityErr);
-    }
-
-    try {
-      const { error: sessionEndErr } = await supabase
-        .from("learning_events")
-        .insert({
-          user_id: user.id,
-          event_type: "session_end",
-          payload: {
-            session_id: parsed.data.sessionId,
-            accuracy,
-            duration_seconds: sumDur,
-            total_questions: session.total_questions ?? answeredCount,
-            correct_answers: correct,
-          },
-        });
-
-      if (sessionEndErr) {
-        throw sessionEndErr;
-      }
-    } catch (sessionEndErr) {
-      console.error("[completeSession] session_end event", sessionEndErr);
-    }
+    // ═══════════════════════════════════════════════════════════
+    // FAZA FAST — buduj summary i zwróć response natychmiast
+    // ═══════════════════════════════════════════════════════════
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
@@ -314,10 +183,137 @@ export async function completeSession(
       summary.newStreak = profAfter.data.current_streak ?? summary.newStreak;
     }
 
-    if (postAntares) {
-      summary.sessionInsights = postAntares.sessionInsights;
-      summary.examReadiness = postAntares.examReadiness;
-    }
+    // Purge client router cache so pulpit/subject pages fetch fresh data
+    revalidatePath("/", "layout");
+
+    // ═══════════════════════════════════════════════════════════
+    // FAZA BACKGROUND — fire-and-forget, po response
+    // recalculateTopicMastery, sessionInsights, examReadiness,
+    // avg_session_hour, learning_velocity, learning_event
+    // ═══════════════════════════════════════════════════════════
+
+    const bgStartedAt =
+      (session.started_at as string | null) ?? new Date().toISOString();
+    const bgAnsRows = ansRows.map((a) => ({
+      question_id: a.question_id as string,
+      is_correct: Boolean(a.is_correct),
+      confidence: (a.confidence as string | null) ?? null,
+      time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
+      question_order: (a.question_order as number | null) ?? null,
+      answered_at: (a.answered_at as string | null) ?? null,
+    }));
+    const bgSessionId = session.id as string;
+    const bgUserId = user.id;
+    const bgAvgSessionHour = profile.avg_session_hour as number | null | undefined;
+    const bgTotalQuestions = session.total_questions ?? answeredCount;
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    Promise.resolve().then(async () => {
+      try {
+        // 1. Affected topics → ANTARES post-processing
+        const { data: topicRows, error: topicErr } = await supabase
+          .from("session_answers")
+          .select("questions!inner(topic_id)")
+          .eq("session_id", bgSessionId);
+
+        if (topicErr) throw topicErr;
+
+        const affectedTopicIds = [
+          ...new Set(
+            (topicRows ?? [])
+              .map((r) => {
+                const q = r.questions as unknown as {
+                  topic_id: string;
+                } | null;
+                return q?.topic_id;
+              })
+              .filter((id): id is string => Boolean(id)),
+          ),
+        ];
+
+        await runCompleteSessionPostAntares(
+          supabase,
+          bgUserId,
+          bgSessionId,
+          bgStartedAt,
+          affectedTopicIds,
+          bgAnsRows,
+          answeredCount,
+        );
+
+        // 2. avg_session_hour
+        const now = new Date();
+        const currentHour =
+          now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+        const rawOld = bgAvgSessionHour;
+        const oldAvg =
+          rawOld != null && Number.isFinite(Number(rawOld))
+            ? Number(rawOld)
+            : null;
+        const newAvg =
+          oldAvg != null ? oldAvg * 0.8 + currentHour * 0.2 : currentHour;
+
+        await supabase
+          .from("profiles")
+          .update({ avg_session_hour: newAvg })
+          .eq("id", bgUserId);
+
+        // 3. learning_velocity
+        const t = Date.now();
+        const sevenDaysAgoIso = new Date(
+          t - 7 * 24 * 60 * 60 * 1000,
+        ).toISOString();
+        const fourteenDaysAgoIso = new Date(
+          t - 14 * 24 * 60 * 60 * 1000,
+        ).toISOString();
+
+        const [{ count: thisWeekCount }, { count: lastWeekCount }] =
+          await Promise.all([
+            supabase
+              .from("learning_events")
+              .select("id", { count: "exact", head: true })
+              .eq("user_id", bgUserId)
+              .eq("event_type", "answer")
+              .gte("created_at", sevenDaysAgoIso),
+            supabase
+              .from("learning_events")
+              .select("id", { count: "exact", head: true })
+              .eq("user_id", bgUserId)
+              .eq("event_type", "answer")
+              .gte("created_at", fourteenDaysAgoIso)
+              .lt("created_at", sevenDaysAgoIso),
+          ]);
+
+        const thisWeek = thisWeekCount ?? 0;
+        const lastWeek = lastWeekCount ?? 0;
+        const velocity =
+          lastWeek > 0
+            ? Math.min(5.0, Math.max(0.1, thisWeek / lastWeek))
+            : thisWeek > 0
+              ? 1.0
+              : 1.0;
+
+        await supabase
+          .from("profiles")
+          .update({ learning_velocity: velocity })
+          .eq("id", bgUserId);
+
+        // 4. learning_event "session_end"
+        await supabase.from("learning_events").insert({
+          user_id: bgUserId,
+          event_type: "session_end",
+          payload: {
+            session_id: bgSessionId,
+            accuracy,
+            duration_seconds: sumDur,
+            total_questions: bgTotalQuestions,
+            correct_answers: correct,
+          },
+        });
+      } catch (err) {
+        console.error("[ANTARES background]", err);
+      }
+    });
 
     return { ok: true, summary };
   } catch (e) {

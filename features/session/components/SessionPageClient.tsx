@@ -6,6 +6,7 @@ import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestion
 import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
+import { consumeRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
 import type { SessionMode, SessionQuestion } from "@/features/session/types";
 
 const CACHE_PREFIX = "kurs-session-";
@@ -48,11 +49,16 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         const mode = parseMode(searchParams.get("mode"));
         const count = parseCount(searchParams.get("count"));
         const topic = searchParams.get("topic") ?? undefined;
+
+        const retryKey = searchParams.get("retry") ?? undefined;
+        const retryIds = retryKey ? consumeRetryWrongIds(retryKey) : undefined;
+
         const res = await startSession({
           subjectId: subj || undefined,
           mode,
-          count,
+          count: retryIds ? retryIds.length : count,
           topicId: topic,
+          questionIds: retryIds ?? undefined,
         });
         if (cancelled) return;
         if (!res.ok) {

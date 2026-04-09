@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
+import { persistRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
-  const wrong = summary.answers.filter((a) => !a.isCorrect).length;
+  const router = useRouter();
+  const wrongIds = summary.answers
+    .filter((a) => !a.isCorrect)
+    .map((a) => a.questionId);
+
+  const handleRetryWrong = useCallback(() => {
+    const key = persistRetryWrongIds(wrongIds);
+    router.push(
+      `/sesja/new?subject=${encodeURIComponent(summary.subjectId)}&mode=inteligentna&count=${wrongIds.length}&retry=${encodeURIComponent(key)}`,
+    );
+  }, [wrongIds, summary.subjectId, router]);
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-4">
@@ -20,26 +28,14 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
         Rozpocznij kolejną sesję
       </Link>
 
-      {wrong > 0 ? (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <span className="inline-flex">
-              <button
-                type="button"
-                disabled
-                className="cursor-not-allowed rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage opacity-60"
-              >
-                Powtórz błędne pytania ({wrong})
-              </button>
-            </span>
-          </TooltipTrigger>
-          <TooltipContent
-            side="top"
-            className="max-w-xs rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-3 py-2 font-body text-body-xs text-primary"
-          >
-            Wkrótce
-          </TooltipContent>
-        </Tooltip>
+      {wrongIds.length > 0 ? (
+        <button
+          type="button"
+          onClick={handleRetryWrong}
+          className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold"
+        >
+          Powtórz błędne pytania ({wrongIds.length})
+        </button>
       ) : null}
 
       <Link

@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import type { MutableRefObject } from "react";
-import { completeSession } from "@/features/session/api/completeSession";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
 import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
@@ -70,19 +69,37 @@ export function useSessionStudyFlow(
     [sessionId, router],
   );
 
-  const handleEndConfirm = useCallback(async () => {
+  const handleEndConfirm = useCallback(() => {
     closeEndDialog();
-    const dur = Math.floor((Date.now() - sessionStart.current) / 1000);
-    const comp = await completeSession({
+
+    const summary = buildClientSessionSummary({
       sessionId,
-      durationSecondsFallback: dur,
+      subjectId,
+      subjectName,
+      subjectShortName,
+      mode,
+      questions,
+      answers: s.answers,
+      profileXp,
+      profileStreak,
     });
-    if (!comp.ok) {
-      setSaveToast(comp.message);
-      return;
-    }
-    pushSummaryAndNavigate(comp.summary);
-  }, [closeEndDialog, sessionId, pushSummaryAndNavigate, sessionStart, setSaveToast]);
+    pushSummaryAndNavigate(summary);
+
+    scheduleServerSessionComplete(sessionId, sessionStart.current);
+  }, [
+    closeEndDialog,
+    sessionId,
+    subjectId,
+    subjectName,
+    subjectShortName,
+    mode,
+    questions,
+    s.answers,
+    profileXp,
+    profileStreak,
+    pushSummaryAndNavigate,
+    sessionStart,
+  ]);
 
   const handleConfidenceAndNext = useCallback(
     async (confidence: Confidence) => {

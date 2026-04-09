@@ -26,6 +26,7 @@ const schema = z.object({
   mode: z.enum(["inteligentna", "przeglad", "katalog"]),
   count: z.coerce.number().min(1).max(500),
   topicId: z.string().min(1).optional(),
+  questionIds: z.array(z.string().uuid()).min(1).max(500).optional(),
 });
 
 export type StartSessionResult =
@@ -47,7 +48,7 @@ export async function startSession(
 
   const rawSubject = parsed.data.subjectId?.trim() ?? "";
   const isMix = rawSubject.length === 0;
-  const { mode, count, topicId } = parsed.data;
+  const { mode, count, topicId, questionIds: explicitIds } = parsed.data;
   const subjectId = isMix ? "" : rawSubject;
 
   try {
@@ -59,6 +60,67 @@ export async function startSession(
 
     if (authError || !user) {
       return { ok: false, message: "Musisz być zalogowany, aby rozpocząć sesję." };
+    }
+
+    // ── Explicit question IDs (e.g. retry wrong questions) ──
+    if (explicitIds && explicitIds.length > 0) {
+      const rows = await loadQuestionsByIdsOrdered(supabase, explicitIds);
+      if (rows.length === 0) {
+        return { ok: false, message: "Nie udało się wczytać treści pytań." };
+      }
+      const questions = mapRowsToSessionQuestions(rows);
+
+      // Resolve subject from first question
+      let resolvedSubjectId = subjectId;
+      if (!resolvedSubjectId && rows[0]) {
+        const { data: q1 } = await supabase
+          .from("questions")
+          .select("topic_id")
+          .eq("id", rows[0].id)
+          .maybeSingle();
+        if (q1?.topic_id) {
+          const { data: t1 } = await supabase
+            .from("topics")
+            .select("subject_id")
+            .eq("id", q1.topic_id as string)
+            .maybeSingle();
+          if (t1?.subject_id) resolvedSubjectId = t1.subject_id as string;
+        }
+      }
+
+      const { data: subjMeta } = await supabase
+        .from("subjects")
+        .select("id, name, short_name")
+        .eq("id", resolvedSubjectId)
+        .maybeSingle();
+
+      const { data: inserted, error: insErr } = await supabase
+        .from("study_sessions")
+        .insert({
+          user_id: user.id,
+          subject_id: resolvedSubjectId,
+          mode: "nauka",
+          total_questions: questions.length,
+          question_ids: explicitIds,
+        })
+        .select("id")
+        .single();
+
+      if (insErr) {
+        console.error("[startSession] insert retry session", insErr.message);
+        return { ok: false, message: "Nie udało się utworzyć sesji." };
+      }
+
+      return {
+        ok: true,
+        sessionId: inserted.id,
+        subject: {
+          id: resolvedSubjectId,
+          name: subjMeta?.name ?? "Powtórka",
+          short_name: subjMeta?.short_name ?? "",
+        },
+        questions,
+      };
     }
 
     if (isMix && topicId) {

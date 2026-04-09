@@ -134,7 +134,15 @@ export function SessionStudyView({
     onContinueReview: isPrzeglad ? handlePrzegladNext : s.goForwardFromReview,
   });
 
-  if (!s.currentQuestion) return null;
+  if (!s.currentQuestion) {
+    return (
+      <div className="flex min-h-0 flex-1 items-center justify-center">
+        <p className="font-body text-body-sm text-muted animate-pulse">
+          Przygotowywanie podsumowania…
+        </p>
+      </div>
+    );
+  }
 
   const q = s.currentQuestion;
 

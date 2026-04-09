@@ -10,6 +10,7 @@ import {
   fetchTopicQuestionIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
+import { buildAntaresInteligentnaSession } from "@/features/session/server/buildAntaresInteligentnaSession";
 import {
   fetchDueReviewQuestionIdsForTopics,
   fetchUnseenQuestionIds,
@@ -120,13 +121,32 @@ export async function startSession(
     if (mode === "katalog") {
       chosenIds = pool;
     } else if (mode === "inteligentna") {
-      const dueIds = await fetchDueReviewQuestionIdsForTopics(
-        supabase, user.id, topicOkForDue, count, topicFilter,
+      const antaresIds = await buildAntaresInteligentnaSession(
+        supabase,
+        user.id,
+        count,
+        pool,
+        topicOkForDue,
+        topicFilter,
       );
-      const unseenIds = await fetchUnseenQuestionIds(
-        supabase, user.id, pool, count,
-      );
-      chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
+      if (antaresIds.length > 0) {
+        chosenIds = antaresIds;
+      } else {
+        const dueIds = await fetchDueReviewQuestionIdsForTopics(
+          supabase,
+          user.id,
+          topicOkForDue,
+          count,
+          topicFilter,
+        );
+        const unseenIds = await fetchUnseenQuestionIds(
+          supabase,
+          user.id,
+          pool,
+          count,
+        );
+        chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
+      }
     } else {
       chosenIds = shuffle(pool).slice(0, count);
     }

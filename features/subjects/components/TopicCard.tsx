@@ -22,7 +22,12 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
 
   const inner = (
     <>
-      <h3 className="font-body text-body-md font-semibold text-primary">{topic.name}</h3>
+      <div className="flex items-center gap-2">
+        <h3 className="font-body text-body-md font-semibold text-primary">{topic.name}</h3>
+        {!hasQuestions && (
+          <span className="font-body text-body-xs text-brand-gold">Wkrótce</span>
+        )}
+      </div>
       <div className="mt-3 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
         <div
           className={cn("h-full rounded-full transition-[width]", fillClassForProgress(pct))}
@@ -30,7 +35,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
         />
       </div>
       <p className="mt-3 font-body text-body-xs text-muted">
-        0 / {total} pytań
+        {hasQuestions ? `0 / ${total} pytań` : "Brak pytań"}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">Ostatnio: —</p>

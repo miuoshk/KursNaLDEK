@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
 import { nextStreakValues, todayDateString } from "@/features/session/server/sessionStreak";
+import { recalculateTopicMastery } from "@/features/session/lib/antares/recalculateTopicMastery";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 const schema = z.object({
@@ -155,6 +156,52 @@ export async function completeSession(
     if (upProfRes.error) {
       console.error("[completeSession] profiles", upProfRes.error.message);
       return { ok: false, message: "Nie udało się zaktualizować profilu." };
+    }
+
+    try {
+      const { data: topicRows, error: topicErr } = await supabase
+        .from("session_answers")
+        .select("questions!inner(topic_id)")
+        .eq("session_id", parsed.data.sessionId);
+
+      if (topicErr) {
+        throw topicErr;
+      }
+
+      const affectedTopicIds = [
+        ...new Set(
+          (topicRows ?? [])
+            .map((r) => {
+              const q = r.questions as unknown as {
+                topic_id: string;
+              } | null;
+              return q?.topic_id;
+            })
+            .filter((id): id is string => Boolean(id)),
+        ),
+      ];
+
+      await recalculateTopicMastery(supabase, user.id, affectedTopicIds);
+
+      const { error: sessionEndErr } = await supabase
+        .from("learning_events")
+        .insert({
+          user_id: user.id,
+          event_type: "session_end",
+          payload: {
+            session_id: parsed.data.sessionId,
+            accuracy,
+            duration_seconds: sumDur,
+            total_questions: session.total_questions ?? answeredCount,
+            correct_answers: correct,
+          },
+        });
+
+      if (sessionEndErr) {
+        throw sessionEndErr;
+      }
+    } catch (antaresErr) {
+      console.error("[completeSession] ANTARES", antaresErr);
     }
 
     const [summary, profAfter] = await Promise.all([

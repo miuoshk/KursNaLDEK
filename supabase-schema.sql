@@ -119,6 +119,12 @@ CREATE TABLE user_question_progress (
   times_correct INT DEFAULT 0,
   last_answered_at TIMESTAMPTZ,
   last_confidence TEXT,
+  correct_streak INT DEFAULT 0,
+  wrong_streak INT DEFAULT 0,
+  is_leech BOOLEAN DEFAULT false,
+  leech_count INT DEFAULT 0,
+  avg_time_seconds FLOAT,
+  last_rating TEXT,
   UNIQUE(user_id, question_id)
 );
 
@@ -158,6 +164,41 @@ CREATE TABLE session_answers (
 );
 
 CREATE INDEX idx_session_answers_session ON session_answers(session_id);
+
+-- Log zdarzeń uczenia (ANTARES: odpowiedzi, leech, itd.)
+CREATE TABLE learning_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  event_type TEXT NOT NULL,
+  payload JSONB NOT NULL DEFAULT '{}',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_learning_events_user ON learning_events(user_id);
+CREATE INDEX idx_learning_events_type ON learning_events(event_type);
+
+-- Cache opanowania tematów (ANTARES — przeliczany po sesji)
+CREATE TABLE topic_mastery_cache (
+  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  topic_id TEXT NOT NULL REFERENCES topics(id) ON DELETE CASCADE,
+  total_questions INT NOT NULL DEFAULT 0,
+  seen INT NOT NULL DEFAULT 0,
+  coverage REAL NOT NULL DEFAULT 0,
+  total_answered INT NOT NULL DEFAULT 0,
+  total_correct INT NOT NULL DEFAULT 0,
+  accuracy REAL NOT NULL DEFAULT 0,
+  avg_retrievability REAL NOT NULL DEFAULT 0,
+  mastery_score REAL NOT NULL DEFAULT 0,
+  trend TEXT NOT NULL DEFAULT 'stable',
+  accuracy_last_7d REAL,
+  leech_count INT NOT NULL DEFAULT 0,
+  weakness_rank INT,
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  PRIMARY KEY (user_id, topic_id)
+);
+
+CREATE INDEX idx_tmc_user ON topic_mastery_cache(user_id);
+CREATE INDEX idx_tmc_mastery ON topic_mastery_cache(user_id, mastery_score);
 
 -- ============================================
 -- 5. GAMIFICATION
@@ -224,6 +265,8 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_question_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE study_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE session_answers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE learning_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE topic_mastery_cache ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_achievements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_challenge_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE question_discussions ENABLE ROW LEVEL SECURITY;
@@ -279,6 +322,18 @@ CREATE POLICY "Users own session_answers UPDATE"
   ON session_answers FOR UPDATE USING (
     session_id IN (SELECT id FROM study_sessions WHERE user_id = auth.uid())
   );
+
+CREATE POLICY "Users own learning_events SELECT"
+  ON learning_events FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users own learning_events INSERT"
+  ON learning_events FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users own topic_mastery_cache SELECT"
+  ON topic_mastery_cache FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users own topic_mastery_cache INSERT"
+  ON topic_mastery_cache FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users own topic_mastery_cache UPDATE"
+  ON topic_mastery_cache FOR UPDATE USING (auth.uid() = user_id);
 
 CREATE POLICY "Users own achievements SELECT"
   ON user_achievements FOR SELECT USING (auth.uid() = user_id);

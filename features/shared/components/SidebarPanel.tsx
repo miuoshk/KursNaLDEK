@@ -8,7 +8,6 @@ import {
   ChevronRight,
   LayoutDashboard,
   Settings,
-  Stethoscope,
   X,
 } from "lucide-react";
 import Link from "next/link";
@@ -139,12 +138,6 @@ export function SidebarPanel({
           href="/przedmioty"
           label="Moje przedmioty"
           icon={BookOpen}
-          collapsed={collapsed && !mobile}
-        />
-        <SidebarLink
-          href="/osce"
-          label="OSCE"
-          icon={Stethoscope}
           collapsed={collapsed && !mobile}
         />
         {SIDEBAR_NAV.map((item) => (

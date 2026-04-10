@@ -24,7 +24,7 @@ export function OrderingTimerBar({ totalSeconds, remainingSeconds }: TimerBarPro
           <Clock className="size-4 shrink-0 text-brand-gold" aria-hidden />
           Czas na ułożenie
         </span>
-        <span className="font-mono text-body-sm tabular-nums text-brand-gold">
+        <span className="font-body text-body-sm tabular-nums text-brand-gold">
           {remainingSeconds}s
         </span>
       </div>

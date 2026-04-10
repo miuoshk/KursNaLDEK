@@ -23,7 +23,7 @@ export function SessionQuestionOptions({
   onSelectOption,
 }: SessionQuestionOptionsProps) {
   return (
-    <motion.div variants={optionsContainerVariants} initial="hidden" animate="visible">
+    <motion.div variants={optionsContainerVariants} initial="hidden" animate="visible" className="space-y-3">
       {q.options.map((opt, i) => {
         const letter = String.fromCharCode(65 + i);
         const state = optionVisualState(

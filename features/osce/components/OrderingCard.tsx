@@ -70,7 +70,7 @@ export function OrderingCard({
     >
       <div
         className={cn(
-          "flex size-9 shrink-0 items-center justify-center rounded-btn border border-brand-gold/45 bg-background font-mono text-body-sm tabular-nums text-brand-gold",
+          "flex size-9 shrink-0 items-center justify-center rounded-btn border border-brand-gold/45 bg-background font-body text-body-sm tabular-nums text-brand-gold",
           checked && status === "correct" && "border-success text-success",
           checked && status === "wrong" && "border-error text-error",
         )}

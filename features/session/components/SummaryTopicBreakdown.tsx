@@ -35,7 +35,7 @@ export function SummaryTopicBreakdown({
                   style={{ width: `${Math.round(t.accuracy * 100)}%` }}
                 />
               </div>
-              <span className="font-mono text-body-sm text-secondary">
+              <span className="font-body text-body-sm text-secondary">
                 {t.correct} / {t.total} ({Math.round(t.accuracy * 100)}%)
               </span>
             </div>

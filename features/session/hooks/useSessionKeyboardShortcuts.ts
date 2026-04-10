@@ -30,47 +30,41 @@ export function useSessionKeyboardShortcuts({
   onContinueReview,
 }: Args) {
   useEffect(() => {
+    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!hasFinePointer) return;
+
     function onKeyDown(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      if (isShowingFeedback) {
-        if (isPastReadOnly) {
-          if (e.key === "ArrowRight" || e.key === "Enter") {
-            e.preventDefault();
-            onContinueReview();
-          }
-          return;
-        }
-        if (!onConfidencePick) {
-          if (e.key === "Enter" || e.key === "ArrowRight") {
-            e.preventDefault();
-            onContinueReview();
-          }
-          return;
-        }
-        if (e.key === "1" || e.key === "ArrowLeft") {
-          e.preventDefault();
-          onConfidencePick("nie_wiedzialem");
-          return;
-        }
-        if (e.key === "2" || e.key === "ArrowDown") {
-          e.preventDefault();
-          onConfidencePick("troche");
-          return;
-        }
-        if (e.key === "3" || e.key === "ArrowRight") {
-          e.preventDefault();
-          onConfidencePick("na_pewno");
-          return;
-        }
         return;
       }
 
       if (e.key === "ArrowLeft" && currentIndex > 0) {
         e.preventDefault();
         onGoPrevious();
+        return;
+      }
+
+      if (isShowingFeedback) {
+        if (e.key === "ArrowRight" || e.key === "Enter") {
+          e.preventDefault();
+          if (isPastReadOnly || !onConfidencePick) {
+            onContinueReview();
+          } else {
+            onConfidencePick("troche");
+          }
+          return;
+        }
+        if (onConfidencePick && !isPastReadOnly) {
+          if (e.key === "1") { e.preventDefault(); onConfidencePick("nie_wiedzialem"); return; }
+          if (e.key === "2") { e.preventDefault(); onConfidencePick("troche"); return; }
+          if (e.key === "3") { e.preventDefault(); onConfidencePick("na_pewno"); return; }
+        }
+        return;
+      }
+
+      if (e.key === "ArrowRight" && selectedOptionId) {
+        e.preventDefault();
+        onCheck();
         return;
       }
 

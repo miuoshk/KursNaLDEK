@@ -14,12 +14,12 @@ export function AdminMetricCard({ label, value, highlight }: AdminMetricCardProp
         highlight ? "border-brand-gold/30" : "border-border",
       )}
     >
-      <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+      <p className="font-body text-body-xs uppercase tracking-normal text-muted">
         {label}
       </p>
       <p
         className={cn(
-          "mt-2 font-mono text-heading-lg",
+          "mt-2 font-body text-heading-lg",
           highlight ? "text-brand-gold" : "text-primary",
         )}
       >

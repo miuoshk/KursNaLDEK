@@ -45,7 +45,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
                   <button
                     type="button"
                     className={cn(
-                      "flex size-8 items-center justify-center rounded-sm font-mono text-body-xs text-white/80",
+                      "flex size-8 items-center justify-center rounded-sm font-body text-body-xs text-white/80",
                       stripBg(a),
                     )}
                   >
@@ -64,7 +64,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
           return (
             <div
               key={`empty-${i}`}
-              className="flex size-8 items-center justify-center rounded-sm border border-dashed border-border font-mono text-body-xs text-muted"
+              className="flex size-8 items-center justify-center rounded-sm border border-dashed border-border font-body text-body-xs text-muted"
               aria-hidden
             >
               {i + 1}

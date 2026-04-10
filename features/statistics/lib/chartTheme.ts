@@ -12,5 +12,5 @@ export const statTooltipProps = {
 export const statAxisTick = {
   fill: "rgba(255,255,255,0.4)",
   fontSize: 11,
-  fontFamily: "var(--font-mono)",
+  fontFamily: "var(--font-body)",
 };

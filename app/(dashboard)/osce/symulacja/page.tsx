@@ -74,7 +74,7 @@ export default async function OsceSymulacjaPage() {
             <PrzedmiotyError message={histErr} />
             <p className="mt-2 font-body text-body-xs text-muted">
               Jeśli tabela nie istnieje, uruchom migrację SQL z pliku{" "}
-              <span className="font-mono">scripts/osce-simulation-schema.sql</span> w Supabase.
+              <span className="font-body">scripts/osce-simulation-schema.sql</span> w Supabase.
             </p>
           </div>
         ) : histOk && histOk.length > 0 ? (

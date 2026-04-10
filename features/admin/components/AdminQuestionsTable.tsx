@@ -98,7 +98,7 @@ export function AdminQuestionsTable({
                 key={q.id}
                 className="border-b border-border transition-colors hover:bg-white/[0.02]"
               >
-                <td className="px-3 py-3 font-mono text-body-xs text-secondary">
+                <td className="px-3 py-3 font-body text-body-xs text-secondary">
                   {q.id.slice(0, 8)}…
                 </td>
                 <td className="max-w-[140px] truncate px-3 py-3 font-body text-body-sm text-secondary">
@@ -119,10 +119,10 @@ export function AdminQuestionsTable({
                     {q.isActive ? "Tak" : "Nie"}
                   </span>
                 </td>
-                <td className="px-3 py-3 font-mono text-body-sm text-secondary">
+                <td className="px-3 py-3 font-body text-body-sm text-secondary">
                   {q.timesAnswered}
                 </td>
-                <td className="px-3 py-3 font-mono text-body-sm text-secondary">
+                <td className="px-3 py-3 font-body text-body-sm text-secondary">
                   {q.accuracy}%
                 </td>
                 <td className="px-3 py-3">
@@ -149,7 +149,7 @@ export function AdminQuestionsTable({
                 key={p}
                 href={`/admin/pytania?page=${p}${search ? `&search=${search}` : ""}`}
                 className={cn(
-                  "flex size-8 items-center justify-center rounded-btn font-mono text-body-xs transition-colors",
+                  "flex size-8 items-center justify-center rounded-btn font-body text-body-xs transition-colors",
                   p === page
                     ? "bg-brand-gold text-brand-bg"
                     : "bg-card text-secondary hover:text-white",

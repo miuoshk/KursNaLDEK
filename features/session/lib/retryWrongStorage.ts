@@ -10,6 +10,27 @@ export function persistRetryWrongIds(questionIds: string[]): string {
   return key;
 }
 
+/** Non-destructive read — safe to call multiple times (React strict mode). */
+export function peekRetryWrongIds(key: string): string[] | null {
+  try {
+    const raw = sessionStorage.getItem(key);
+    if (!raw) return null;
+    return JSON.parse(raw) as string[];
+  } catch {
+    return null;
+  }
+}
+
+/** Remove the persisted retry IDs after the session was successfully created. */
+export function removeRetryWrongIds(key: string): void {
+  try {
+    sessionStorage.removeItem(key);
+  } catch {
+    /* ignore */
+  }
+}
+
+/** @deprecated Use peekRetryWrongIds + removeRetryWrongIds for strict-mode safety. */
 export function consumeRetryWrongIds(key: string): string[] | null {
   try {
     const raw = sessionStorage.getItem(key);

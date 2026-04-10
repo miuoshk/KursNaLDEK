@@ -28,15 +28,17 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
         Rozpocznij kolejną sesję
       </Link>
 
-      {wrongIds.length > 0 ? (
+      <div className="relative">
         <button
           type="button"
           onClick={handleRetryWrong}
-          className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold"
+          disabled={wrongIds.length === 0}
+          title={wrongIds.length === 0 ? "Brak błędnych odpowiedzi" : undefined}
+          className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-sage disabled:hover:text-brand-sage"
         >
-          Powtórz błędne pytania ({wrongIds.length})
+          Powtórz błędne pytania{wrongIds.length > 0 ? ` (${wrongIds.length})` : ""}
         </button>
-      ) : null}
+      </div>
 
       <Link
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}

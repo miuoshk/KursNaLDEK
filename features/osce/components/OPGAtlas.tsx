@@ -59,7 +59,7 @@ function HotspotMarker({
         style={sizeStyle}
         aria-label={`Struktura ${index + 1}: ${hotspot.name}`}
       >
-        <span className="font-mono text-sm font-semibold tabular-nums text-brand-gold">
+        <span className="font-body text-sm font-semibold tabular-nums text-brand-gold">
           {index + 1}
         </span>
       </button>

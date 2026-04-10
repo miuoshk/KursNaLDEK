@@ -58,7 +58,7 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-mono text-4xl text-brand-gold">
+              <span className="font-body text-4xl text-brand-gold">
                 {Math.round(summary.accuracy * 100)}%
               </span>
             </div>
@@ -76,7 +76,7 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
                 {delta !== 0 && delta != null ? (
                   <span
                     className={cn(
-                      "inline-flex items-center gap-0.5 font-mono",
+                      "inline-flex items-center gap-0.5 font-body",
                       improved && "text-success",
                       declined && "text-error",
                       !improved && !declined && "text-muted",
@@ -99,13 +99,13 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
         <ul className="flex flex-col gap-3 text-body-sm lg:w-[260px]">
           <li className="flex items-center gap-2">
             <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-primary">
+            <span className="font-body text-primary">
               Czas: {formatSessionDuration(summary.durationSeconds)}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-primary">
+            <span className="font-body text-primary">
               Średnio na pytanie: {formatSessionDuration(summary.avgTimePerQuestion)}
             </span>
           </li>
@@ -117,19 +117,19 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
               )}
               aria-hidden
             />
-            <span className="font-mono text-primary">
+            <span className="font-body text-primary">
               Seria bez błędu: {summary.longestStreak}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Sparkles className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-primary">
+            <span className="font-body text-primary">
               Nowe pytania: {summary.newQuestionsCount}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <RotateCcw className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-primary">Powtórki: {summary.reviewCount}</span>
+            <span className="font-body text-primary">Powtórki: {summary.reviewCount}</span>
           </li>
         </ul>
       </div>

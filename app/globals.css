@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant pointer-fine (@media (pointer: fine));
+
 @theme {
   /* ── semantic surface tokens ── */
   --color-background: #002A27;
@@ -30,7 +32,6 @@
   /* ── fonts & radii ── */
   --font-heading: "DM Serif Display", serif;
   --font-body: "DM Sans", sans-serif;
-  --font-mono: "DM Mono", monospace;
   --radius-card: 14px;
   --radius-btn: 8px;
   --radius-pill: 24px;

@@ -38,7 +38,7 @@ export function PlayerCard({
     <div className="rounded-card border border-brand-gold/20 bg-card p-6">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_auto] lg:items-center">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start lg:flex-col">
-          <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-mono text-xl text-brand-gold">
+          <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-xl text-brand-gold">
             {initials}
           </div>
           <div className="min-w-0">
@@ -50,7 +50,7 @@ export function PlayerCard({
           </div>
         </div>
 
-        <div className="space-y-3 font-mono text-body-sm text-secondary">
+        <div className="space-y-3 font-body text-body-sm text-secondary">
           <p className="flex items-center gap-2">
             <MessageSquare className="size-4 shrink-0 text-brand-gold" aria-hidden />
             <span>{solvedLabel}</span>
@@ -69,10 +69,13 @@ export function PlayerCard({
           </p>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
+        <div className="mr-2 flex flex-col items-center gap-1.5 lg:items-end">
+          <p className="font-body text-body-xs uppercase tracking-wide text-brand-gold/60">
+            RANGA
+          </p>
           <div
             className={cn(
-              "flex size-20 items-center justify-center rounded-full border-2 font-mono text-2xl",
+              "flex size-20 items-center justify-center rounded-full border-2 font-heading text-2xl",
               rank.colorClass,
               "border-current",
             )}

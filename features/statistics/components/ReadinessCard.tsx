@@ -14,7 +14,7 @@ export function ReadinessCard({ data }: { data: StatisticsPayload }) {
       <p className="font-body text-body-xs font-medium uppercase tracking-wide text-secondary">
         Przewidywana gotowość
       </p>
-      <p className="mt-3 font-mono text-4xl text-brand-gold">
+      <p className="mt-3 font-body text-4xl text-brand-gold">
         {pct != null ? `${pct}%` : "—%"}
       </p>
       {pct != null ? (

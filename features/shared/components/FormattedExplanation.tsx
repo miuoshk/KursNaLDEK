@@ -52,7 +52,7 @@ function parseSegments(text: string): ReactNode[] {
       out.push(
         <code
           key={key++}
-          className="rounded px-1 py-0.5 font-mono text-[0.9em] text-brand-gold/90 bg-white/[0.06]"
+          className="rounded px-1 py-0.5 font-body text-[0.9em] text-brand-gold/90 bg-white/[0.06]"
         >
           {inner}
         </code>,

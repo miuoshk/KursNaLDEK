@@ -39,6 +39,15 @@ const DIFF_ORDER: Record<string, number> = {
   trudne: 3,
 };
 
+function shuffle<T>(items: T[]): T[] {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function normalizeDifficultyLabel(d: string): keyof typeof DIFF_ORDER {
   const x = d.trim().toLowerCase();
   if (x === "latwe" || x === "easy" || x === "łatwe") return "latwe";
@@ -75,7 +84,11 @@ export function interleaveByTopic(questions: RankedQuestion[]): RankedQuestion[]
     byTopic.set(q.topicId, list);
   }
 
-  const topicOrder = [...byTopic.keys()];
+  if (byTopic.size === 1) {
+    return shuffle(questions);
+  }
+
+  const topicOrder = shuffle([...byTopic.keys()]);
   const result: RankedQuestion[] = [];
   const total = questions.length;
 
@@ -108,13 +121,38 @@ export function interleaveByTopic(questions: RankedQuestion[]): RankedQuestion[]
 }
 
 /**
+ * Groups by difficulty rank, shuffles within each group, then concatenates
+ * in the requested order. Breaks deterministic same-difficulty ordering.
+ */
+function sortByDifficultyShuffled(
+  arr: RankedQuestion[],
+  ascending: boolean,
+): RankedQuestion[] {
+  const groups = new Map<number, RankedQuestion[]>();
+  for (const q of arr) {
+    const rank = difficultyRank(q.difficulty);
+    const list = groups.get(rank) ?? [];
+    list.push(q);
+    groups.set(rank, list);
+  }
+  const ranks = [...groups.keys()].sort((a, b) =>
+    ascending ? a - b : b - a,
+  );
+  const result: RankedQuestion[] = [];
+  for (const rank of ranks) {
+    result.push(...shuffle(groups.get(rank)!));
+  }
+  return result;
+}
+
+/**
  * Dostosowuje kolejność do krzywej trudności: rozgrzewka (łatwiejsze), rdzeń (cięższe),
- * schłodzenie (łagodniejsze zakończenie). Przy ≤ 5 pytaniach zwraca listę bez zmian.
+ * schłodzenie (łagodniejsze zakończenie). Przy ≤ 5 pytaniach losuje kolejność.
  */
 export function applyDifficultyCurve(questions: RankedQuestion[]): RankedQuestion[] {
   const n = questions.length;
   if (n <= 5) {
-    return [...questions];
+    return shuffle(questions);
   }
 
   const w = Math.floor(n * 0.2);
@@ -125,13 +163,11 @@ export function applyDifficultyCurve(questions: RankedQuestion[]): RankedQuestio
   const core = questions.slice(w, w + c);
   const cool = questions.slice(w + c, w + c + coolLen);
 
-  const sortEasyFirst = (arr: RankedQuestion[]) =>
-    [...arr].sort((a, b) => difficultyRank(a.difficulty) - difficultyRank(b.difficulty));
-
-  const sortHardFirst = (arr: RankedQuestion[]) =>
-    [...arr].sort((a, b) => difficultyRank(b.difficulty) - difficultyRank(a.difficulty));
-
-  return [...sortEasyFirst(warm), ...sortHardFirst(core), ...sortEasyFirst(cool)];
+  return [
+    ...sortByDifficultyShuffled(warm, true),
+    ...sortByDifficultyShuffled(core, false),
+    ...sortByDifficultyShuffled(cool, true),
+  ];
 }
 
 function dedupeByQuestionId(

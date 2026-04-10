@@ -263,7 +263,7 @@ export function ConversionDrillQuestion({
           </span>
           <span
             className={cn(
-              "font-mono text-body-lg tabular-nums",
+              "font-body text-body-lg tabular-nums",
               urgent ? "text-error" : "text-brand-gold",
             )}
           >

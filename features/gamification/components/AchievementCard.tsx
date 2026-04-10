@@ -72,7 +72,7 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
       <p className="mt-1 text-center text-body-xs text-secondary/90">{row.description}</p>
       {inProgress ? (
         <div className="mt-3">
-          <p className="mb-1 text-center font-mono text-body-xs text-muted">
+          <p className="mb-1 text-center font-body text-body-xs text-muted">
             {row.progress} / {row.targetValue}
           </p>
           <div className="h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">

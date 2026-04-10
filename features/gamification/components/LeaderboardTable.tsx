@@ -79,10 +79,10 @@ export function LeaderboardTable({
                     r.isCurrent && "border-l-[3px] border-l-brand-gold",
                   )}
                 >
-                  <td className="px-4 py-3 font-mono text-body-md text-primary">{r.rank}</td>
+                  <td className="px-4 py-3 font-body text-body-md text-primary">{r.rank}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-mono text-[10px] text-brand-gold">
+                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-[10px] text-brand-gold">
                         {r.initials}
                       </span>
                       <span className="font-body text-body-md text-primary">{r.displayName}</span>
@@ -91,12 +91,12 @@ export function LeaderboardTable({
                   <td className={cn("px-4 py-3 font-body text-body-md", r.rankColorClass)}>
                     {r.rankName}
                   </td>
-                  <td className="px-4 py-3 font-mono text-body-sm text-brand-gold">{r.xp}</td>
-                  <td className={cn("px-4 py-3 font-mono text-body-sm", accClass(r.accuracy))}>
+                  <td className="px-4 py-3 font-body text-body-sm text-brand-gold">{r.xp}</td>
+                  <td className={cn("px-4 py-3 font-body text-body-sm", accClass(r.accuracy))}>
                     {Math.round(r.accuracy * 100)}%
                   </td>
                   <td className="px-4 py-3">
-                    <span className="inline-flex items-center gap-1 font-mono text-body-sm text-primary">
+                    <span className="inline-flex items-center gap-1 font-body text-body-sm text-primary">
                       <Flame className="size-4 text-brand-gold" aria-hidden />
                       {r.streak}
                     </span>

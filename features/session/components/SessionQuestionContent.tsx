@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionConfidenceBar } from "@/features/session/components/SessionConfidenceBar";
@@ -87,8 +87,8 @@ export function SessionQuestionContent({
               disabled={!selectedOptionId}
               onClick={onCheck}
               className={cn(
-                "w-full rounded-btn bg-brand-gold py-3.5 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out",
-                "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50",
+                "w-full rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition duration-200 ease-out",
+                "hover:bg-[#4a9085] disabled:cursor-not-allowed disabled:opacity-50",
               )}
             >
               Sprawdź odpowiedź
@@ -109,13 +109,27 @@ export function SessionQuestionContent({
               isCorrect={isCorrect}
             />
             <SessionQuestionActions questionId={q.id} questionText={q.text} />
-            {isPrzeglad && (
+            {isPrzeglad ? (
               <button
                 type="button"
                 onClick={onPrzegladNext}
                 className="mt-6 w-full rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition hover:brightness-110"
               >
                 Dalej
+              </button>
+            ) : (
+              <button
+                type="button"
+                disabled={submitting}
+                onClick={() => onConfidenceAndNext("troche")}
+                className={cn(
+                  "mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition hover:brightness-110",
+                  "pointer-fine:hidden",
+                  "disabled:cursor-not-allowed disabled:opacity-50",
+                )}
+              >
+                Dalej
+                <ChevronRight className="size-4 shrink-0" aria-hidden />
               </button>
             )}
           </motion.div>

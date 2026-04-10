@@ -8,13 +8,13 @@ export function OverallProgress({ year, totalQuestions }: OverallProgressProps) 
     <div className="rounded-card bg-card border border-border p-6">
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div>
-          <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+          <p className="font-heading text-body-xs uppercase tracking-normal text-muted">
             Postęp ogólny roku {year}
           </p>
-          <p className="mt-2 font-mono text-3xl text-brand-gold">0%</p>
+          <p className="mt-2 font-body text-3xl text-brand-gold">0%</p>
         </div>
         <div className="text-left md:text-right">
-          <p className="font-mono text-lg text-secondary">
+          <p className="font-body text-lg text-secondary">
             0 / {totalQuestions}{" "}
             <span className="font-body text-body-sm text-muted">liczba pytań</span>
           </p>

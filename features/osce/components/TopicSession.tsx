@@ -355,7 +355,7 @@ export function TopicSession({
                 <span className="font-body text-body-sm text-secondary">
                   Pytanie {index + 1} z {total}
                 </span>
-                <span className="font-mono text-body-xs text-muted tabular-nums">
+                <span className="font-body text-body-xs text-muted tabular-nums">
                   {stationShortName} · {topicName}
                 </span>
               </div>

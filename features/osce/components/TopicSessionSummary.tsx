@@ -36,7 +36,7 @@ export function TopicSessionSummary({
       <h2 className="font-heading text-heading-sm text-primary">Podsumowanie</h2>
       <p className="mt-3 font-body text-body-lg text-secondary">
         Wynik:{" "}
-        <span className="font-mono text-primary tabular-nums">
+        <span className="font-body text-primary tabular-nums">
           {correctCount} / {results.length}
         </span>{" "}
         prawidłowych ({pct}%)
@@ -48,7 +48,7 @@ export function TopicSessionSummary({
             key={r.questionId}
             className="flex gap-3 font-body text-body-sm text-secondary"
           >
-            <span className="shrink-0 font-mono text-primary" aria-hidden>
+            <span className="shrink-0 font-body text-primary" aria-hidden>
               {r.isCorrect ? "✓" : "✗"}
             </span>
             <span>{r.label}</span>

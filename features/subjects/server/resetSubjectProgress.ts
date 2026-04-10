@@ -5,7 +5,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
 const schema = z.object({
-  subjectId: z.string().uuid(),
+  subjectId: z.string().min(1),
 });
 
 export type ResetSubjectProgressResult =

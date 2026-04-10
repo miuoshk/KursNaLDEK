@@ -24,7 +24,7 @@ export function RankTierTrack({ xp }: { xp: number }) {
             ) : null}
             <motion.div
               className={cn(
-                "relative z-[1] flex size-9 shrink-0 items-center justify-center rounded-full border-2 font-mono text-body-xs",
+                "relative z-[1] flex size-9 shrink-0 items-center justify-center rounded-full border-2 font-body text-body-xs",
                 i < idx && "border-brand-gold bg-brand-gold/20 text-brand-gold",
                 i === idx &&
                   "border-brand-gold bg-brand-gold/30 text-brand-gold shadow-[0_0_12px_rgba(201,168,76,0.35)]",
@@ -42,7 +42,7 @@ export function RankTierTrack({ xp }: { xp: number }) {
         {RANK_TIERS.map((r) => (
           <div key={r.id} className="w-[72px] text-center">
             <p className="font-body text-body-xs text-secondary">{r.name}</p>
-            <p className="mt-0.5 font-mono text-[10px] text-muted">
+            <p className="mt-0.5 font-body text-[10px] text-muted">
               {r.maxXp === Number.POSITIVE_INFINITY
                 ? `${r.minXp}+`
                 : `${r.minXp}–${r.maxXp}`}

@@ -6,7 +6,10 @@ import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestion
 import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
-import { consumeRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
+import {
+  peekRetryWrongIds,
+  removeRetryWrongIds,
+} from "@/features/session/lib/retryWrongStorage";
 import type { SessionMode, SessionQuestion } from "@/features/session/types";
 
 const CACHE_PREFIX = "kurs-session-";
@@ -51,7 +54,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         const topic = searchParams.get("topic") ?? undefined;
 
         const retryKey = searchParams.get("retry") ?? undefined;
-        const retryIds = retryKey ? consumeRetryWrongIds(retryKey) : undefined;
+        const retryIds = retryKey ? peekRetryWrongIds(retryKey) : undefined;
 
         const res = await startSession({
           subjectId: subj || undefined,
@@ -65,6 +68,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           setBoot({ status: "error", message: res.message });
           return;
         }
+
+        if (retryKey) removeRetryWrongIds(retryKey);
 
         if (mode === "katalog") {
           setBoot({

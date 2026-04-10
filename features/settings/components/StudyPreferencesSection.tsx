@@ -68,7 +68,7 @@ export function StudyPreferencesSection({ profile }: Props) {
             >
               <Minus className="size-4" aria-hidden />
             </button>
-            <span className="min-w-[7rem] font-mono text-body-lg text-primary">{goal} pytań</span>
+            <span className="min-w-[7rem] font-body text-body-lg text-primary">{goal} pytań</span>
             <button
               type="button"
               onClick={() => bump(5)}

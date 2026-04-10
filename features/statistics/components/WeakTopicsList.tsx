@@ -20,13 +20,13 @@ export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
           key={t.topicId}
           className="flex flex-wrap items-center gap-3 rounded-card border border-border bg-card px-4 py-3"
         >
-          <span className="font-mono text-body-sm text-muted">{i + 1}.</span>
+          <span className="font-body text-body-sm text-muted">{i + 1}.</span>
           <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">
             {t.topicName}
           </span>
           <span
             className={cn(
-              "font-mono text-body-sm",
+              "font-body text-body-sm",
               t.accuracy < 0.5 ? "text-error" : "text-secondary",
             )}
           >

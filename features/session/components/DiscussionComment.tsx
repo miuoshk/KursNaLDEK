@@ -34,7 +34,7 @@ export function DiscussionComment({ comment, onDelete }: DiscussionCommentProps)
       <div
         className={cn(
           "flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
-          "font-mono text-[10px] font-semibold text-brand-gold",
+          "font-body text-[10px] font-semibold text-brand-gold",
         )}
         aria-hidden
       >

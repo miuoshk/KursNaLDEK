@@ -29,7 +29,6 @@ const config: Config = {
       fontFamily: {
         heading: ["var(--font-heading)", "ui-serif", "Georgia", "serif"],
         body: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         card: "14px",

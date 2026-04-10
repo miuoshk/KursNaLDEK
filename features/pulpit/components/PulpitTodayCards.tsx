@@ -21,7 +21,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       <div className="rounded-card bg-card border border-border p-6">
-        <p className="font-body text-body-xs uppercase tracking-widest text-muted">Cel dzienny</p>
+        <p className="font-body text-body-xs uppercase tracking-normal text-muted">Cel dzienny</p>
         <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:items-start">
           <div className="relative size-12 shrink-0 sm:size-16">
             <svg
@@ -60,7 +60,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
                 strokeDashoffset={C_DESK * (1 - pct)}
               />
             </svg>
-            <span className="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-primary sm:text-body-sm">
+            <span className="absolute inset-0 flex items-center justify-center font-body text-[11px] text-primary sm:text-body-sm">
               {data.questionsToday} / {data.dailyGoal}
             </span>
           </div>
@@ -74,10 +74,10 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
       </div>
 
       <div className="rounded-card bg-card border border-border p-6">
-        <p className="font-body text-body-xs uppercase tracking-widest text-muted">Streak</p>
+        <p className="font-body text-body-xs uppercase tracking-normal text-muted">Streak</p>
         <div className="mt-4 flex items-center gap-2">
           <Flame className="size-8 text-brand-gold" aria-hidden />
-          <p className="font-mono text-2xl text-brand-gold">
+          <p className="font-body text-2xl text-brand-gold">
             {formatStreak(data.currentStreak)}
           </p>
         </div>
@@ -87,12 +87,12 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
       </div>
 
       <div className="rounded-card bg-card border border-border p-6">
-        <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+        <p className="font-body text-body-xs uppercase tracking-normal text-muted">
           Zaległe powtórki
         </p>
         <p
           className={cn(
-            "mt-4 font-mono text-2xl",
+            "mt-4 font-body text-2xl",
             data.dueReviews > 0 ? "text-warning" : "text-success",
           )}
         >

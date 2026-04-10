@@ -38,7 +38,7 @@ export function SessionTopBar({
         </span>
 
         <div className="min-w-0 flex-1">
-          <p className="font-mono text-body-sm text-secondary">
+          <p className="font-body text-body-sm text-secondary">
             Pytanie {current + 1} / {total}
           </p>
           <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
@@ -50,7 +50,7 @@ export function SessionTopBar({
         </div>
 
         {examElapsedSeconds !== null ? (
-          <p className="shrink-0 font-mono text-body-md text-primary">
+          <p className="shrink-0 font-body text-body-md text-primary">
             {formatClock(examElapsedSeconds)}
           </p>
         ) : null}

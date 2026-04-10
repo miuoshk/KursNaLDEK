@@ -10,7 +10,7 @@ export function DailyChallengeSection() {
           <p className="mt-2 font-body text-body-sm text-secondary">
             Odpowiedz na 15 pytań z biochemii z minimum 70% trafnością
           </p>
-          <p className="mt-4 font-mono text-body-xs text-muted">0 / 15 pytań</p>
+          <p className="mt-4 font-body text-body-xs text-muted">0 / 15 pytań</p>
           <div className="mt-1 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
             <div className="h-full w-0 rounded-full bg-brand-gold/70" />
           </div>
@@ -29,7 +29,7 @@ export function DailyChallengeSection() {
           <p className="mt-2 font-body text-body-sm text-secondary">
             Ukończ sesję z anatomii z co najmniej 10 pytaniami i 80% trafnością
           </p>
-          <p className="mt-4 font-mono text-body-xs text-muted">0 / 10 pytań</p>
+          <p className="mt-4 font-body text-body-xs text-muted">0 / 10 pytań</p>
           <div className="mt-1 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
             <div className="h-full w-0 rounded-full bg-brand-gold/70" />
           </div>

@@ -14,7 +14,7 @@ export function RankProgressBar({ xp }: { xp: number }) {
           style={{ width: `${percent}%` }}
         />
       </div>
-      <p className="mt-2 font-mono text-body-xs text-muted">
+      <p className="mt-2 font-body text-body-xs text-muted">
         {next
           ? `${current} / ${needed} XP do następnego poziomu`
           : "Maksymalny poziom rangi"}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
@@ -40,14 +40,14 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
         <p className="font-heading text-heading-sm text-primary">
           Katalog pytań — {subjectName}
         </p>
-        <p className="font-mono text-body-xs text-secondary">
+        <p className="font-body text-body-xs text-secondary">
           {index + 1} / {questions.length}
         </p>
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         <div className="min-h-0 flex-1 overflow-y-auto p-6 lg:p-8">
-          <p className="font-mono text-body-xs text-muted">{q.topicName}</p>
+          <p className="font-body text-body-xs text-muted">{q.topicName}</p>
           <p className="mt-4 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
             {q.text}
           </p>
@@ -65,7 +65,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
                       : "border-border bg-card text-secondary",
                   )}
                 >
-                  <span className="mr-2 font-mono font-semibold">{letter}.</span>
+                  <span className="mr-2 font-body font-semibold">{letter}.</span>
                   {opt.text}
                 </div>
               );
@@ -76,9 +76,11 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
               Poprawna odpowiedź: {correctOption.text}
             </p>
           )}
+
+          <CatalogExplanationMobile explanation={q.explanation} questionId={q.id} />
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto border-t border-border bg-card p-6 lg:border-l lg:border-t-0 lg:p-8">
+        <div className="hidden min-h-0 flex-1 overflow-y-auto border-l border-border bg-card p-8 lg:block">
           <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
           <div className="mt-3">
             <FormattedExplanation text={q.explanation} />
@@ -116,6 +118,45 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
   );
 }
 
+function CatalogExplanationMobile({
+  explanation,
+  questionId,
+}: {
+  explanation: string;
+  questionId: string;
+}) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [questionId]);
+
+  return (
+    <div className="mt-4 border-t border-white/10 pt-4 lg:hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-2 font-body text-body-sm font-medium text-primary transition-colors hover:text-brand-gold"
+        aria-expanded={open}
+      >
+        Wyjaśnienie
+        <ChevronDown
+          className={cn(
+            "size-4 shrink-0 text-secondary transition-transform duration-200",
+            open && "rotate-180",
+          )}
+          aria-hidden
+        />
+      </button>
+      {open && (
+        <div className="mt-3 animate-fade-in">
+          <FormattedExplanation text={explanation} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function CatalogQuestionNav({
   questions,
   currentIndex,
@@ -135,7 +176,7 @@ function CatalogQuestionNav({
           type="button"
           onClick={() => onSelect(i)}
           className={cn(
-            "flex size-8 items-center justify-center rounded-btn font-mono text-body-xs transition-colors",
+            "flex size-8 items-center justify-center rounded-btn font-body text-body-xs transition-colors",
             i === currentIndex
               ? "bg-brand-gold text-brand-bg font-semibold"
               : "bg-card text-secondary hover:text-primary",

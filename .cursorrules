@@ -13,7 +13,7 @@
 ## Design System
 - Background: #002A27, Cards: #1E3F44 / #1F4F5A
 - Gold accent: #C9A84C, Sage interactive: #367368
-- Fonts: DM Serif Display (headings), DM Sans (body), DM Mono (numbers)
+- Fonts: DM Serif Display (headings), DM Sans (body + all UI text)
 - Icons: lucide-react, 20px nav / 16px inline, monoline
 - Border radius: 14px cards, 8px buttons, 24px pills
 

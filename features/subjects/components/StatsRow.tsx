@@ -49,10 +49,10 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <div className="rounded-card border border-border bg-card p-5">
-        <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
+        <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           Opanowanie przedmiotu
         </p>
-        <p className="mt-3 font-mono text-3xl text-brand-gold">{stats.masteryPct}%</p>
+        <p className="mt-3 font-body text-3xl text-brand-gold">{stats.masteryPct}%</p>
         <div className="mt-4 flex justify-center">
           <SubjectMasteryRing pct={stats.masteryPct} />
         </div>
@@ -60,10 +60,10 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
       </div>
 
       <div className="rounded-card border border-border bg-card p-5">
-        <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
+        <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           Pytania rozwiązane
         </p>
-        <p className="mt-3 font-mono text-2xl text-primary">
+        <p className="mt-3 font-body text-2xl text-primary">
           {stats.answeredQuestions} / {stats.totalQuestions}
         </p>
         <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.08]">
@@ -75,19 +75,19 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
       </div>
 
       <div className="rounded-card border border-border bg-card p-5">
-        <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
+        <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           Trafność odpowiedzi
         </p>
-        <p className="mt-3 font-mono text-2xl text-primary">
+        <p className="mt-3 font-body text-2xl text-primary">
           {stats.answeredQuestions > 0 ? `${accPct}%` : "—"}
         </p>
       </div>
 
       <div className="rounded-card border border-border bg-card p-5">
-        <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
+        <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           Następna powtórka
         </p>
-        <p className="mt-3 font-mono text-lg text-muted">Brak danych</p>
+        <p className="mt-3 font-body text-lg text-muted">Brak danych</p>
       </div>
     </div>
   );

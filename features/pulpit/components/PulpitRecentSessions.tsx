@@ -58,7 +58,7 @@ export function PulpitRecentSessions({ sessions }: { sessions: PulpitRecentSessi
                   {s.subjectName} · {sessionModeLabel(s.mode as SessionMode)} · {formatWhen(s.completedAt)}
                 </p>
               </div>
-              <p className={cn("font-mono text-body-md", accColor(s.accuracy))}>
+              <p className={cn("font-body text-body-md", accColor(s.accuracy))}>
                 {s.accuracy != null ? `${Math.round(s.accuracy * 100)}%` : "—"}
               </p>
               <p className="font-body text-body-xs text-muted">

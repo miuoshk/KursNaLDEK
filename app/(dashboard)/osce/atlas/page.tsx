@@ -35,7 +35,7 @@ export default async function OpgAtlasPage() {
       <h1 className="font-heading text-heading-xl text-primary">Atlas OPG</h1>
       <p className="mt-2 max-w-2xl font-body text-body-md text-secondary">
         Interaktywne panoramy z oznaczeniami anatomicznymi. Dane pochodzą z bazy pytań (typ{" "}
-        <span className="font-mono text-body-sm text-muted">image_identify</span>) dla tematu morfologii
+        <span className="font-body text-body-sm text-muted">image_identify</span>) dla tematu morfologii
         struktur na zdjęciu pantomograficznym.
       </p>
 

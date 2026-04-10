@@ -10,6 +10,7 @@ import {
   Settings,
   X,
 } from "lucide-react";
+import Link from "next/link";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
@@ -97,24 +98,30 @@ export function SidebarPanel({
           collapsed && !mobile && "flex-col px-2",
         )}
       >
-        <div
+        <Link
+          href="/ustawienia"
           className={cn(
-            "flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-mono text-sm font-semibold text-brand-gold",
+            "flex min-w-0 flex-1 cursor-pointer items-center gap-2 transition-opacity duration-200 hover:opacity-80",
+            collapsed && !mobile && "flex-col",
           )}
-          aria-hidden
         >
-          {initials}
-        </div>
-        {(!collapsed || mobile) && (
-          <div className="min-w-0 flex-1">
-            <p className="truncate font-body text-body-md font-medium text-primary">
-              {displayName}
-            </p>
-            <p className="mt-0.5 font-body text-body-xs text-secondary">
-              Rok {year} · Stomatologia · {formatStreak(streak)}
-            </p>
+          <div
+            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-sm font-semibold text-brand-gold"
+            aria-hidden
+          >
+            {initials}
           </div>
-        )}
+          {(!collapsed || mobile) && (
+            <div className="min-w-0 flex-1">
+              <p className="truncate font-body text-body-md font-medium text-primary">
+                {displayName}
+              </p>
+              <p className="mt-0.5 font-body text-body-xs text-secondary">
+                Rok {year} · Stomatologia · {formatStreak(streak)}
+              </p>
+            </div>
+          )}
+        </Link>
         <div className={cn("shrink-0", collapsed && !mobile && "mt-1")}>
           <LogoutButton />
         </div>

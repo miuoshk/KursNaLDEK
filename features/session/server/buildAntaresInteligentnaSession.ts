@@ -6,6 +6,7 @@ import {
   type RetrievabilityInput,
 } from "@/features/session/lib/antares/retrievability";
 import { calculateDueUrgency } from "@/features/session/lib/antares/urgencyScore";
+import { shuffle } from "@/features/session/server/questionSelection";
 
 const MAX_DUE_CANDIDATES = 800;
 const MAX_UNSEEN_CANDIDATES = 800;
@@ -128,11 +129,13 @@ export async function buildAntaresInteligentnaSession(
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("daily_goal")
+    .select("daily_goal, exam_date")
     .eq("id", userId)
     .maybeSingle();
 
   const dailyGoal = Number(profile?.daily_goal ?? 25);
+  const examDateRaw = profile?.exam_date as string | null | undefined;
+  const examDate = examDateRaw ? new Date(examDateRaw) : null;
 
   const { data: cacheRows } = await supabase
     .from("topic_mastery_cache")
@@ -199,15 +202,18 @@ export async function buildAntaresInteligentnaSession(
 
     const rInput = rowToRetrievabilityInput(row);
     const rVal = getRetrievability(rInput, now);
+    const tid = m.topic_id;
     const urgency = calculateDueUrgency({
       retrievability: rVal,
       nextReviewAt: (row.next_review as string) ?? nowIso,
+      topicMasteryScore: topicMastery.get(tid) ?? 0.5,
+      isLeech: Boolean(row.is_leech),
       now,
     });
 
     dueRanked.push({
       questionId: qid,
-      topicId: m.topic_id,
+      topicId: tid,
       score: urgency,
       isLeech: Boolean(row.is_leech),
       difficulty: m.difficulty,
@@ -231,6 +237,8 @@ export async function buildAntaresInteligentnaSession(
     const urgency = calculateDueUrgency({
       retrievability: rVal,
       nextReviewAt: (row.next_review as string) ?? nowIso,
+      topicMasteryScore: topicMastery.get(m.topic_id) ?? 0.5,
+      isLeech: true,
       now,
     });
 
@@ -248,7 +256,7 @@ export async function buildAntaresInteligentnaSession(
   const accuracyLast20 = await fetchAccuracyLast20(supabase, userId);
 
   const unseenRanked: RankedQuestion[] = [];
-  for (const qid of unseenInPool.slice(0, MAX_UNSEEN_CANDIDATES)) {
+  for (const qid of shuffle(unseenInPool).slice(0, MAX_UNSEEN_CANDIDATES)) {
     if (!allowedQuestion(qid, meta, topicOkForDue, topicFilter)) continue;
     const m = meta.get(qid);
     if (!m) continue;
@@ -282,7 +290,7 @@ export async function buildAntaresInteligentnaSession(
     topicMastery,
     accuracyLast20,
     dailyGoal,
-    examDate: null,
+    examDate,
   });
 
   return composed.questionIds;

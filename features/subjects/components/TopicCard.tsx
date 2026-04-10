@@ -24,7 +24,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
   const inner = (
     <>
       <div className="flex items-center gap-2">
-        <h3 className="font-body text-body-md font-semibold text-primary">{topic.name}</h3>
+        <h3 className="font-heading text-body-md text-primary">{topic.name}</h3>
         {!hasQuestions && (
           <span className="font-body text-body-xs text-brand-gold">Wkrótce</span>
         )}
@@ -42,10 +42,10 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
         <p className="font-body text-body-xs text-muted">Ostatnio: —</p>
         <span
           className={cn(
-            "font-body text-body-sm font-medium transition-colors duration-200 ease-out",
+            "inline-flex items-center rounded-lg border px-3 py-1 font-body text-body-sm font-medium transition-colors duration-200 ease-out",
             hasQuestions
-              ? "text-brand-sage group-hover:text-brand-gold"
-              : "text-muted",
+              ? "border-brand-sage/40 text-brand-sage group-hover:bg-brand-sage/10"
+              : "border-transparent text-muted",
           )}
         >
           {hasQuestions ? "Rozpocznij" : "Wkrótce"}

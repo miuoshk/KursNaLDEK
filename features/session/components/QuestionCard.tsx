@@ -32,11 +32,11 @@ export function QuestionCard({ question, children }: QuestionCardProps) {
           {diff.label}
         </span>
         {question.sourceCode ? (
-          <span className="rounded-pill bg-white/[0.06] px-3 py-1 font-mono text-body-xs text-muted">
+          <span className="rounded-pill bg-white/[0.06] px-3 py-1 font-body text-body-xs text-muted">
             {question.sourceCode}
           </span>
         ) : null}
-        <span className="font-mono text-body-xs text-muted">{question.topicName}</span>
+        <span className="font-body text-body-xs text-muted">{question.topicName}</span>
       </div>
       <p className="mt-6 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
         {question.text}

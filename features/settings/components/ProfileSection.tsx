@@ -61,7 +61,7 @@ export function ProfileSection({ profile, email }: Props) {
     <section>
       <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">PROFIL</h2>
       <div className="mt-6 flex flex-wrap items-start gap-6">
-        <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-mono text-2xl text-brand-gold">
+        <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-2xl text-brand-gold">
           {displayInitials}
         </div>
         <button

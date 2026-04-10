@@ -19,7 +19,7 @@ features/shared/components/SidebarLink.tsx  — Individual nav link component
 ### Sidebar (left, 260px wide, collapsible to 64px):
 - Background: bg-brand-bg with a right border of rgba(255,255,255,0.06)
 - Top section: "Kurs na LDEK" wordmark in font-heading text-brand-gold, 16px
-- Below: user avatar circle (40px, bg-brand-accent-2, text-brand-gold, font-mono font-semibold) showing initials "MN" + name "Marek Nowak" + subtitle "ROK 2 · STOMATOLOGIA" in text-body-xs text-secondary
+- Below: user avatar circle (40px, bg-brand-accent-2, text-brand-gold, font-body font-semibold) showing initials "MN" + name "Marek Nowak" + subtitle "ROK 2 · STOMATOLOGIA" in text-body-xs text-secondary
 - Navigation items, each with a lucide-react icon (20px) + label:
   - Pulpit (LayoutDashboard icon)
   - Moje przedmioty (BookOpen icon)
@@ -39,7 +39,7 @@ features/shared/components/SidebarLink.tsx  — Individual nav link component
 - Right cluster:
   - Search trigger: Search icon + "Szukaj..." + kbd "Ctrl+K" badge, bg-brand-card-1, rounded-btn, text-secondary, ~200px wide
   - Notification bell icon (Bell from lucide), with optional gold dot
-  - Streak: Flame icon (text-brand-gold) + "14 dni" in font-mono text-brand-gold
+  - Streak: Flame icon (text-brand-gold) + "14 dni" in font-body text-brand-gold
   - User avatar circle (32px, same style as sidebar but smaller)
 
 ### Main content area:
@@ -51,7 +51,7 @@ features/shared/components/SidebarLink.tsx  — Individual nav link component
 ### General rules:
 - Use the cn() helper from lib/utils.ts for all conditional classes
 - Use lucide-react for ALL icons, monoline style
-- Font classes: font-heading for titles, font-body for text, font-mono for numbers
+- Font classes: font-heading for titles, font-body for all other text
 - All text in Polish
 - Use "use client" only where truly needed (sidebar collapse state, click handlers)
 - Dashboard layout should be a server component that imports client components

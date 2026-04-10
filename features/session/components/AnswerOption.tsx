@@ -28,7 +28,7 @@ export function AnswerOption({
         "flex w-full items-start gap-4 rounded-card border p-4 text-left transition-all duration-200 ease-out",
         state === "default" &&
           "border-border bg-card hover:border-brand-sage/50",
-        state === "selected" && "border-brand-gold bg-brand-gold/10",
+        state === "selected" && "border-brand-sage bg-brand-sage/10",
         state === "correct" && "border-success bg-success/10",
         state === "wrong" && "border-error bg-error/10",
         state === "muted" && "border-border bg-background/40 opacity-50",
@@ -37,9 +37,9 @@ export function AnswerOption({
     >
       <span
         className={cn(
-          "flex size-8 shrink-0 items-center justify-center rounded-full border font-mono text-body-sm font-medium transition-colors duration-200",
+          "flex size-8 shrink-0 items-center justify-center rounded-full border font-body text-body-sm font-medium transition-colors duration-200",
           state === "default" && "border-border bg-background text-secondary",
-          state === "selected" && "border-brand-gold bg-brand-gold text-brand-bg",
+          state === "selected" && "border-brand-sage bg-brand-sage text-white",
           state === "correct" && "border-success bg-success text-brand-bg",
           state === "wrong" && "border-error bg-error text-brand-bg",
           state === "muted" && "border-border bg-background text-muted",

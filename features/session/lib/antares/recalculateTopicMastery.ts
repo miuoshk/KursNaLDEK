@@ -185,6 +185,7 @@ export async function recalculateTopicMastery(
             mastery_score: masteryScore,
             trend,
             accuracy_last_7d: accuracyLast7d,
+            questions_last_7d: total7,
             leech_count: leechCount,
             updated_at: new Date().toISOString(),
           },

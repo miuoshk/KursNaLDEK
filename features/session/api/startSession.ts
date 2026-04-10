@@ -26,7 +26,7 @@ const schema = z.object({
   mode: z.enum(["inteligentna", "przeglad", "katalog"]),
   count: z.coerce.number().min(1).max(500),
   topicId: z.string().min(1).optional(),
-  questionIds: z.array(z.string().uuid()).min(1).max(500).optional(),
+  questionIds: z.array(z.string().min(1)).min(1).max(500).optional(),
 });
 
 export type StartSessionResult =

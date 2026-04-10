@@ -21,17 +21,17 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
             "size-5 shrink-0 transition-colors duration-200 ease-out",
             locked
               ? "grayscale text-secondary"
-              : "text-secondary group-hover:text-brand-gold",
+              : "text-secondary group-hover:text-brand-sage",
           )}
           aria-hidden
         />
         <div className="text-right">
-          <p className="font-mono text-lg text-secondary">{mastery}%</p>
+          <p className="font-body text-lg text-secondary">{mastery}%</p>
           <p className="font-body text-body-xs text-muted">Mistrzostwo</p>
         </div>
       </div>
 
-      <h2 className="mt-3 font-body text-body-lg font-semibold text-primary">
+      <h2 className="mt-3 font-heading text-body-lg text-primary">
         {subject.name}
       </h2>
 
@@ -49,8 +49,8 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">Ostatnio: —</p>
         {!locked && (
-          <span className="font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 ease-out group-hover:text-brand-gold">
-            Otwórz →
+          <span className="inline-flex items-center rounded-lg border border-brand-sage/40 px-3 py-1 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 ease-out group-hover:bg-brand-sage/10">
+            Otwórz
           </span>
         )}
       </div>

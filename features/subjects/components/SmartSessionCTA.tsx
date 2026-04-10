@@ -50,7 +50,7 @@ export function SmartSessionCTA({
     <div className="space-y-4">
       <h2 className="font-heading text-heading-md text-primary">Rozpocznij naukę</h2>
 
-      <div className="rounded-card border border-brand-gold/20 bg-card p-6">
+      <div className="rounded-card border border-brand-sage/20 bg-card p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
@@ -62,14 +62,14 @@ export function SmartSessionCTA({
           </div>
           <Link
             href={smartHref}
-            className="inline-flex shrink-0 items-center justify-center rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
+            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)]"
           >
             Rozpocznij sesję
           </Link>
         </div>
 
         <div className="mt-6 border-t border-border pt-4">
-          <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+          <p className="font-body text-body-xs uppercase tracking-normal text-muted">
             Liczba pytań
           </p>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ export function SmartSessionCTA({
                 className={cn(
                   "rounded-pill px-3 py-1 font-body text-body-sm transition-colors",
                   preset === n
-                    ? "bg-brand-gold font-medium text-brand-bg"
+                    ? "bg-brand-sage font-medium text-white"
                     : "cursor-pointer bg-card text-secondary hover:text-primary",
                 )}
               >
@@ -105,7 +105,7 @@ export function SmartSessionCTA({
           </p>
           <Link
             href={reviewHref}
-            className="mt-4 inline-flex items-center rounded-btn border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
+            className="mt-4 inline-flex items-center rounded-lg bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_12px_rgba(54,115,104,0.35)]"
           >
             Rozpocznij
           </Link>
@@ -120,7 +120,7 @@ export function SmartSessionCTA({
           </p>
           <Link
             href={catalogHref}
-            className="mt-4 inline-flex items-center font-body text-body-sm font-medium text-secondary transition-colors hover:text-primary"
+            className="mt-4 inline-flex items-center rounded-lg border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 hover:bg-brand-sage/10"
           >
             Przeglądaj
           </Link>

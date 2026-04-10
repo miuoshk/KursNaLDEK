@@ -24,7 +24,7 @@ export function calculateNewQuestionPriority(input: {
   const difficultyFit =
     1 - Math.abs(input.studentAccuracyLast20 - targetDiff);
 
-  const weaknessBoost = (1 - input.topicMasteryScore) * 0.4;
+  const weaknessBoost = 1 - input.topicMasteryScore;
 
   const raw =
     coverageUrgency * 0.4 +

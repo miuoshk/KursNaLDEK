@@ -11,7 +11,7 @@ export function SummaryXpCard({ summary }: { summary: SessionSummaryData }) {
 
   return (
     <div className="rounded-card border border-brand-gold/20 bg-card p-4">
-      <p className="font-mono text-body-md text-brand-gold">
+      <p className="font-body text-body-md text-brand-gold">
         +{summary.xpEarned} XP za tę sesję
       </p>
       <p className="mt-2 flex items-center gap-2 font-body text-body-sm text-secondary">

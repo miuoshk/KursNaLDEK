@@ -87,7 +87,7 @@ export function ImageHotspotOverlay({
               )}
             >
               {showNum ? (
-                <span className="font-mono text-sm font-semibold tabular-nums text-brand-gold">
+                <span className="font-body text-sm font-semibold tabular-nums text-brand-gold">
                   {i + 1}
                 </span>
               ) : null}

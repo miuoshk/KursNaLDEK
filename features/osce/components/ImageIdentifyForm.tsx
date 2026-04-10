@@ -59,7 +59,7 @@ export function ImageIdentifyForm({
               key={h.id}
               className="flex flex-col gap-2 rounded-card border border-border bg-card p-4 sm:flex-row sm:items-center sm:gap-6"
             >
-              <span className="shrink-0 font-mono text-body-sm text-brand-gold">
+              <span className="shrink-0 font-body text-body-sm text-brand-gold">
                 {i + 1}.
               </span>
               <label htmlFor={`${formId}-sel-${h.id}`} className="sr-only">

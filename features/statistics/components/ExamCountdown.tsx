@@ -14,7 +14,7 @@ export function ExamCountdown() {
       <p className="font-body text-body-xs font-medium uppercase tracking-wide text-secondary">
         Do sesji letniej 2026
       </p>
-      <p className="mt-3 font-mono text-4xl text-brand-gold">{days} dni</p>
+      <p className="mt-3 font-body text-4xl text-brand-gold">{days} dni</p>
       <p className="mt-1 font-body text-body-xs text-muted">15.06.2026</p>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.06]">
         <div

@@ -261,7 +261,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
             </p>
             <div
               className={cn(
-                "font-mono text-body-lg tabular-nums",
+                "font-body text-body-lg tabular-nums",
                 remainingSec <= 60 ? "text-error" : "text-brand-gold",
               )}
             >
@@ -319,7 +319,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
           >
             {feedback.passed ? "Stacja zaliczona" : "Stacja niezaliczona"}
           </p>
-          <p className="mt-2 font-mono text-body-lg text-secondary tabular-nums">{feedback.percent}%</p>
+          <p className="mt-2 font-body text-body-lg text-secondary tabular-nums">{feedback.percent}%</p>
           <p className="mt-6 font-body text-body-sm text-muted">Za chwilę następna stacja…</p>
         </motion.div>
       ) : null}
@@ -339,7 +339,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
                 {outcomes.map((o) => (
                   <tr key={o.stationId} className="border-b border-white/[0.06]">
                     <td className="px-4 py-3 text-primary">{o.shortName}</td>
-                    <td className="px-4 py-3 font-mono tabular-nums text-secondary">
+                    <td className="px-4 py-3 font-body tabular-nums text-secondary">
                       {o.correctCount}/{o.totalQuestions} ({o.percent}%)
                     </td>
                     <td className={cn("px-4 py-3", o.passed ? "text-success" : "text-error")}>
@@ -354,7 +354,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
           <div className="text-center">
             <p className="font-body text-body-md text-secondary">
               Średni wynik ze stacji:{" "}
-              <span className="font-mono text-primary tabular-nums">{overallPercent}%</span>
+              <span className="font-body text-primary tabular-nums">{overallPercent}%</span>
             </p>
             <AnimatePresence mode="wait">
               <motion.p

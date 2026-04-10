@@ -46,13 +46,13 @@ export function ConversionDrillSummaryPanel({
       <dl className="mt-6 space-y-4 font-body text-body-md text-secondary">
         <div className="flex justify-between gap-4">
           <dt>Wynik</dt>
-          <dd className="font-mono text-primary">
+          <dd className="font-body text-primary">
             {correct} / {list.length}
           </dd>
         </div>
         <div className="flex justify-between gap-4">
           <dt>Średni czas odpowiedzi</dt>
-          <dd className="font-mono text-primary">{averageMs} ms</dd>
+          <dd className="font-body text-primary">{averageMs} ms</dd>
         </div>
         <div className="flex flex-col gap-1">
           <dt>Najwolniejsze pytanie</dt>

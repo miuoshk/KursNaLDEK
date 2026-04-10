@@ -314,7 +314,7 @@ export async function runCompleteSessionPostAntares(
   const { data: allCache } = await supabase
     .from("topic_mastery_cache")
     .select(
-      "topic_id, total_questions, seen, coverage, total_answered, total_correct, accuracy, avg_retrievability, mastery_score, weakness_rank, trend, accuracy_last_7d, leech_count",
+      "topic_id, total_questions, seen, coverage, total_answered, total_correct, accuracy, avg_retrievability, mastery_score, weakness_rank, trend, accuracy_last_7d, questions_last_7d, leech_count",
     )
     .eq("user_id", userId);
 
@@ -355,7 +355,7 @@ export async function runCompleteSessionPostAntares(
       masteryScore: Number(r.mastery_score ?? 0),
       weaknessRank: Number(r.weakness_rank ?? 999),
       trend: tr,
-      questionsLast7d: 0,
+      questionsLast7d: Number(r.questions_last_7d ?? 0),
       accuracyLast7d:
         r.accuracy_last_7d != null ? Number(r.accuracy_last_7d) : null,
       leechCount: Number(r.leech_count ?? 0),

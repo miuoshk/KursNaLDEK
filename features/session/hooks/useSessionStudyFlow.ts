@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import type { MutableRefObject } from "react";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
@@ -13,7 +12,9 @@ import {
   sessionQuestionToRanked,
 } from "@/features/session/lib/antares/midSessionAdapter";
 import { submitAnswerWithRetry } from "@/features/session/lib/submitAnswerWithRetry";
+import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
+
 type SessionApi = {
   isPastReadOnly: boolean;
   goForwardFromReview: () => void;
@@ -49,8 +50,8 @@ export function useSessionStudyFlow(
   setSaveToast: (m: string | null) => void,
   closeEndDialog: () => void,
   antaresMid: AntaresMidOpts | null,
+  onComplete: (summary: SessionSummaryData) => void,
 ) {
-  const router = useRouter();
   const {
     sessionId,
     subjectId,
@@ -61,12 +62,13 @@ export function useSessionStudyFlow(
     profileStreak,
   } = meta;
 
-  const pushSummaryAndNavigate = useCallback(
-    (summary: import("@/features/session/summaryTypes").SessionSummaryData) => {
+  const finishSession = useCallback(
+    (summary: SessionSummaryData) => {
       persistSessionSummaryToStorage(sessionId, summary);
-      router.push(`/sesja/${sessionId}/podsumowanie`);
+      onComplete(summary);
+      scheduleServerSessionComplete(sessionId, sessionStart.current, onComplete);
     },
-    [sessionId, router],
+    [sessionId, sessionStart, onComplete],
   );
 
   const handleEndConfirm = useCallback(() => {
@@ -83,9 +85,7 @@ export function useSessionStudyFlow(
       profileXp,
       profileStreak,
     });
-    pushSummaryAndNavigate(summary);
-
-    scheduleServerSessionComplete(sessionId, sessionStart.current);
+    finishSession(summary);
   }, [
     closeEndDialog,
     sessionId,
@@ -97,8 +97,7 @@ export function useSessionStudyFlow(
     s.answers,
     profileXp,
     profileStreak,
-    pushSummaryAndNavigate,
-    sessionStart,
+    finishSession,
   ]);
 
   const handleConfidenceAndNext = useCallback(
@@ -186,10 +185,9 @@ export function useSessionStudyFlow(
         profileXp,
         profileStreak,
       });
-      pushSummaryAndNavigate(summary);
+      finishSession(summary);
 
       void submitAnswerWithRetry(payload).catch(() => {});
-      scheduleServerSessionComplete(sessionId, sessionStart.current);
     },
     [
       s,
@@ -201,9 +199,8 @@ export function useSessionStudyFlow(
       mode,
       profileXp,
       profileStreak,
-      pushSummaryAndNavigate,
+      finishSession,
       timeSpentQuestion,
-      sessionStart,
       setSaveToast,
       antaresMid,
     ],

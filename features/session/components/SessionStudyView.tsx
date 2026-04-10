@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
 import { SessionSaveToast } from "@/features/session/components/SessionSaveToast";
+import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
 import { SessionTopBar } from "@/features/session/components/SessionTopBar";
 import { useQuestionStopwatch } from "@/features/session/hooks/useQuestionStopwatch";
 import { useSessionKeyboardShortcuts } from "@/features/session/hooks/useSessionKeyboardShortcuts";
@@ -13,6 +14,7 @@ import { useSessionStudyFlow } from "@/features/session/hooks/useSessionStudyFlo
 import { useDashboardData } from "@/features/shared/contexts/DashboardDataContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
+import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
 
 type SessionStudyViewProps = {
@@ -42,6 +44,14 @@ export function SessionStudyView({
   const { profile } = useDashboardData();
   const { streak } = useDashboardUser();
   const isPrzeglad = mode === "przeglad";
+
+  const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
+  const completedRef = useRef(false);
+
+  const handleComplete = useCallback((summary: SessionSummaryData) => {
+    completedRef.current = true;
+    setCompletedSummary(summary);
+  }, []);
 
   const s = useSession(questions, sessionId, mode);
   const qKey = s.currentQuestion?.id ?? "";
@@ -84,12 +94,14 @@ export function SessionStudyView({
     mode === "inteligentna"
       ? { fatigueShownRef, onFatigueSuggestion }
       : null,
+    handleComplete,
   );
 
   useEffect(() => {
+    if (completedRef.current) return;
     const t = setInterval(() => setTimerSec((x) => x + 1), 1000);
     return () => clearInterval(t);
-  }, []);
+  }, [completedSummary]);
 
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
@@ -134,14 +146,12 @@ export function SessionStudyView({
     onContinueReview: isPrzeglad ? handlePrzegladNext : s.goForwardFromReview,
   });
 
+  if (completedSummary) {
+    return <SessionSummaryClient summary={completedSummary} />;
+  }
+
   if (!s.currentQuestion) {
-    return (
-      <div className="flex min-h-0 flex-1 items-center justify-center">
-        <p className="font-body text-body-sm text-muted animate-pulse">
-          Przygotowywanie podsumowania…
-        </p>
-      </div>
-    );
+    return null;
   }
 
   const q = s.currentQuestion;

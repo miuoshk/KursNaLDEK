@@ -51,7 +51,7 @@ function TimerBar({ totalSeconds, remainingSeconds }: TimerBarProps) {
           <Clock className="size-4 shrink-0 text-brand-gold" aria-hidden />
           Czas na odpowiedź
         </span>
-        <span className="font-mono text-body-sm tabular-nums text-brand-gold">
+        <span className="font-body text-body-sm tabular-nums text-brand-gold">
           {remainingSeconds}s
         </span>
       </div>
@@ -213,7 +213,7 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
             >
               <span
                 className={cn(
-                  "flex size-8 shrink-0 items-center justify-center rounded-full border font-mono text-body-sm font-medium transition-colors duration-200",
+                  "flex size-8 shrink-0 items-center justify-center rounded-full border font-body text-body-sm font-medium transition-colors duration-200",
                   state === "default" && "border-[rgba(255,255,255,0.12)] bg-background text-secondary",
                   state === "correct" && "border-success bg-success text-brand-bg",
                   state === "wrong" && "border-error bg-error text-brand-bg",

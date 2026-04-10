@@ -65,9 +65,8 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       );
     }
 
-    const isSubscribed =
-      profileRow?.subscription_status === "active" ||
-      profileRow?.subscription_status === "trialing";
+    // TODO: podpiąć Stripe — tymczasowo odblokowane dla wszystkich
+    const isSubscribed = true;
 
     if (catalog.subjectRows.length === 0) {
       console.warn(

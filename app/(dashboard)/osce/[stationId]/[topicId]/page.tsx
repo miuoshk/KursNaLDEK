@@ -119,7 +119,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
             stationHref={`/osce/${station.id}`}
           />
         ) : (
-          <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
+          <div className="rounded-card border border-border bg-card p-6">
             <h2 className="font-heading text-heading-sm text-primary">Sesja pytań</h2>
             <p className="mt-2 font-body text-body-sm text-secondary">
               Brak aktywnych pytań w tym temacie.

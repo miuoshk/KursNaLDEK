@@ -40,7 +40,7 @@ export function ConversionDrillSummaryPanel({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="mx-auto w-full max-w-lg rounded-card border border-brand-gold/35 bg-brand-card-1 p-6"
+      className="mx-auto w-full max-w-lg rounded-card border border-brand-gold/35 bg-card p-6"
     >
       <h2 className="font-heading text-heading-lg text-brand-gold">Koniec serii</h2>
       <dl className="mt-6 space-y-4 font-body text-body-md text-secondary">

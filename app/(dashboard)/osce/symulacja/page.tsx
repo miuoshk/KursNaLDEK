@@ -40,8 +40,8 @@ export default async function OsceSymulacjaPage() {
         <Link
           href="/osce/symulacja/1"
           className={cn(
-            "rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6 transition",
-            "hover:border-brand-sage/50 hover:bg-brand-card-2",
+            "rounded-card border border-border bg-card p-6 transition",
+            "hover:border-brand-sage/50 hover:bg-card-hover",
           )}
         >
           <h2 className="font-heading text-heading-sm text-primary">Dzień 1</h2>
@@ -54,8 +54,8 @@ export default async function OsceSymulacjaPage() {
         <Link
           href="/osce/symulacja/2"
           className={cn(
-            "rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6 transition",
-            "hover:border-brand-sage/50 hover:bg-brand-card-2",
+            "rounded-card border border-border bg-card p-6 transition",
+            "hover:border-brand-sage/50 hover:bg-card-hover",
           )}
         >
           <h2 className="font-heading text-heading-sm text-primary">Dzień 2</h2>
@@ -82,7 +82,7 @@ export default async function OsceSymulacjaPage() {
             {histOk.map((row) => (
               <li
                 key={row.id}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 px-4 py-3"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-card px-4 py-3"
               >
                 <div>
                   <p className="font-body text-body-sm text-primary">

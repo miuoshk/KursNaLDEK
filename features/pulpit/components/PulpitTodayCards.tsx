@@ -20,7 +20,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
 
   return (
     <div className="grid gap-4 md:grid-cols-3">
-      <div className="rounded-card bg-brand-card-1 p-6">
+      <div className="rounded-card bg-card border border-border p-6">
         <p className="font-body text-body-xs uppercase tracking-widest text-muted">Cel dzienny</p>
         <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:items-start">
           <div className="relative size-12 shrink-0 sm:size-16">
@@ -73,7 +73,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
         </div>
       </div>
 
-      <div className="rounded-card bg-brand-card-1 p-6">
+      <div className="rounded-card bg-card border border-border p-6">
         <p className="font-body text-body-xs uppercase tracking-widest text-muted">Streak</p>
         <div className="mt-4 flex items-center gap-2">
           <Flame className="size-8 text-brand-gold" aria-hidden />
@@ -86,7 +86,7 @@ export function PulpitTodayCards({ data }: { data: PulpitData }) {
         </p>
       </div>
 
-      <div className="rounded-card bg-brand-card-1 p-6">
+      <div className="rounded-card bg-card border border-border p-6">
         <p className="font-body text-body-xs uppercase tracking-widest text-muted">
           Zaległe powtórki
         </p>

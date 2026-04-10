@@ -40,7 +40,7 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
 
       <Link
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}
-        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-white"
+        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
       >
         Wróć do przedmiotu
       </Link>

@@ -7,7 +7,7 @@ import { useToast } from "@/features/shared/components/ToastProvider";
 import { cn } from "@/lib/utils";
 
 const inputClass =
-  "w-full max-w-xs rounded-btn border border-[rgba(255,255,255,0.1)] bg-brand-bg px-4 py-3 font-body text-white transition-colors focus:border-brand-gold focus:outline-none [color-scheme:dark]";
+  "w-full max-w-xs rounded-btn border border-border bg-background px-4 py-3 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none [color-scheme:dark]";
 
 type Props = {
   examDate: string | null;

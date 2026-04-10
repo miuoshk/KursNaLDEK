@@ -7,7 +7,7 @@ import type { StatisticsPayload } from "@/features/statistics/types";
 export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
   if (data.weakTopics.length === 0) {
     return (
-      <p className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6 font-body text-body-sm text-muted">
+      <p className="rounded-card border border-border bg-card p-6 font-body text-body-sm text-muted">
         Odpowiedz na więcej pytań, aby zidentyfikować słabe obszary.
       </p>
     );
@@ -18,7 +18,7 @@ export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
       {data.weakTopics.map((t, i) => (
         <li
           key={t.topicId}
-          className="flex flex-wrap items-center gap-3 rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 px-4 py-3"
+          className="flex flex-wrap items-center gap-3 rounded-card border border-border bg-card px-4 py-3"
         >
           <span className="font-mono text-body-sm text-muted">{i + 1}.</span>
           <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">

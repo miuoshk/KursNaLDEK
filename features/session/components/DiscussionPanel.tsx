@@ -60,14 +60,14 @@ export function DiscussionPanel({ questionId, open }: DiscussionPanelProps) {
           transition={{ duration: 0.25, ease: "easeOut" }}
           className="overflow-hidden"
         >
-          <div className="mt-4 rounded-card border border-[color:var(--border-subtle)] bg-brand-bg p-4">
+          <div className="mt-4 rounded-card border border-border bg-background p-4">
             <div className="flex gap-2">
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Dodaj komentarz..."
                 rows={2}
-                className="min-h-[60px] flex-1 resize-none rounded-btn border border-[color:var(--border-subtle)] bg-brand-bg px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
+                className="min-h-[60px] flex-1 resize-none rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
               />
               <button
                 type="button"

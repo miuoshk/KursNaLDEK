@@ -9,10 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: "#002A27",
+        sidebar: "#051615",
+        card: { DEFAULT: "#0a2322", hover: "#0d2b2a" },
+        border: "#163b39",
         brand: {
           bg: "#002A27",
-          "card-1": "#1E3F44",
-          "card-2": "#1F4F5A",
+          "card-1": "#0a2322",
+          "card-2": "#0d2b2a",
           accent: "#003932",
           "accent-2": "#274E34",
           sage: "#367368",

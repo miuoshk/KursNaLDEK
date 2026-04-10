@@ -9,7 +9,7 @@ import { useToast } from "@/features/shared/components/ToastProvider";
 import { initialsFromName } from "@/lib/initialsFromName";
 
 const selectClass =
-  "w-full appearance-none rounded-btn border border-[rgba(255,255,255,0.1)] bg-brand-bg px-4 py-3 pr-10 font-body text-white transition-colors focus:border-brand-gold focus:outline-none";
+  "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
 
 type Props = {
   profile: SettingsProfile;
@@ -85,7 +85,7 @@ export function ProfileSection({ profile, email }: Props) {
             id="dn"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1.5 w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-brand-bg px-4 py-3 font-body text-white transition-colors focus:border-brand-gold focus:outline-none"
+            className="mt-1.5 w-full rounded-btn border border-border bg-background px-4 py-3 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none"
           />
         </div>
         <div>
@@ -94,7 +94,7 @@ export function ProfileSection({ profile, email }: Props) {
             readOnly
             disabled
             value={email ?? ""}
-            className="mt-1.5 w-full cursor-not-allowed rounded-btn border border-[rgba(255,255,255,0.06)] bg-brand-card-2/50 px-4 py-3 font-body text-muted"
+            className="mt-1.5 w-full cursor-not-allowed rounded-btn border border-border bg-card-hover/50 px-4 py-3 font-body text-muted"
           />
         </div>
         <div>

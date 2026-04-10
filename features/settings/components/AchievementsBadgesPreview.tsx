@@ -20,7 +20,7 @@ export function AchievementsBadgesPreview({ items }: Props) {
                 "flex size-10 items-center justify-center rounded-full border-2",
                 item.unlocked
                   ? "border-brand-gold text-brand-gold"
-                  : "border-[rgba(255,255,255,0.12)] text-muted",
+                  : "border-border text-muted",
               )}
               aria-hidden
             >

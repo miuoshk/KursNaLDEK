@@ -66,7 +66,7 @@ export function AccountSection({ email }: Props) {
           <Dialog.Overlay className="fixed inset-0 z-[60] bg-black/60 data-[state=open]:animate-fade-in" />
           <Dialog.Content
             className={cn(
-              "fixed left-1/2 top-1/2 z-[61] w-[min(100vw-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-card border border-[rgba(255,255,255,0.1)] bg-brand-card-1 p-6 shadow-xl",
+              "fixed left-1/2 top-1/2 z-[61] w-[min(100vw-2rem,400px)] -translate-x-1/2 -translate-y-1/2 rounded-card border border-border bg-card p-6 shadow-xl",
               "focus:outline-none",
             )}
           >
@@ -88,7 +88,7 @@ export function AccountSection({ email }: Props) {
               <Dialog.Close asChild>
                 <button
                   type="button"
-                  className="rounded-btn border border-[rgba(255,255,255,0.15)] px-4 py-2 font-body text-body-sm text-primary transition hover:bg-white/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
+                  className="rounded-btn border border-border px-4 py-2 font-body text-body-sm text-primary transition hover:bg-white/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
                 >
                   Anuluj
                 </button>

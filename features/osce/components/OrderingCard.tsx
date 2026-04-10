@@ -48,7 +48,7 @@ export function OrderingCard({
       ? "border-success bg-success/10"
       : status === "wrong"
         ? "border-error bg-error/10"
-        : "border-brand-sage/45 bg-brand-card-1 hover:border-brand-gold/55";
+        : "border-brand-sage/45 bg-card hover:border-brand-gold/55";
 
   return (
     <motion.div
@@ -64,13 +64,13 @@ export function OrderingCard({
         "flex w-full max-w-2xl items-stretch gap-3 rounded-card border px-3 py-3 transition-colors duration-200 ease-out sm:px-4",
         surface,
         isDragging && "z-10 opacity-90 shadow-lg ring-2 ring-brand-gold/40",
-        !checked && "hover:bg-brand-card-2/80",
+        !checked && "hover:bg-card-hover/80",
       )}
       {...dragAttributes}
     >
       <div
         className={cn(
-          "flex size-9 shrink-0 items-center justify-center rounded-btn border border-brand-gold/45 bg-brand-bg font-mono text-body-sm tabular-nums text-brand-gold",
+          "flex size-9 shrink-0 items-center justify-center rounded-btn border border-brand-gold/45 bg-background font-mono text-body-sm tabular-nums text-brand-gold",
           checked && status === "correct" && "border-success text-success",
           checked && status === "wrong" && "border-error text-error",
         )}

@@ -53,7 +53,7 @@ export function AdminQuestionsTable({
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           placeholder="Szukaj po treści pytania…"
-          className="flex-1 rounded-btn border border-[color:var(--border-subtle)] bg-brand-bg px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted"
+          className="flex-1 rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted"
         />
         <button
           type="button"
@@ -65,10 +65,10 @@ export function AdminQuestionsTable({
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-card border border-[color:var(--border-subtle)]">
+      <div className="overflow-x-auto rounded-card border border-border">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-[color:var(--border-subtle)] bg-brand-card-1">
+            <tr className="border-b border-border bg-card">
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
                 ID
               </th>
@@ -96,7 +96,7 @@ export function AdminQuestionsTable({
             {questions.map((q) => (
               <tr
                 key={q.id}
-                className="border-b border-[color:var(--border-subtle)] transition-colors hover:bg-white/[0.02]"
+                className="border-b border-border transition-colors hover:bg-white/[0.02]"
               >
                 <td className="px-3 py-3 font-mono text-body-xs text-secondary">
                   {q.id.slice(0, 8)}…
@@ -152,7 +152,7 @@ export function AdminQuestionsTable({
                   "flex size-8 items-center justify-center rounded-btn font-mono text-body-xs transition-colors",
                   p === page
                     ? "bg-brand-gold text-brand-bg"
-                    : "bg-brand-card-1 text-secondary hover:text-white",
+                    : "bg-card text-secondary hover:text-white",
                 )}
               >
                 {p}

@@ -152,7 +152,7 @@ export function SessionStudyView({
         <div
           role="status"
           className={cn(
-            "fixed top-20 left-1/2 z-[60] flex max-w-md -translate-x-1/2 gap-3 rounded-card border border-gold/40 bg-brand-card-1 px-4 py-3 font-body text-body-sm text-primary shadow-lg",
+            "fixed top-20 left-1/2 z-[60] flex max-w-md -translate-x-1/2 gap-3 rounded-card border border-gold/40 bg-card px-4 py-3 font-body text-body-sm text-primary shadow-lg",
           )}
         >
           <p className="min-w-0 flex-1 leading-relaxed">{fatigueMessage}</p>

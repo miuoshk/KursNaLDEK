@@ -16,8 +16,8 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-[240px] shrink-0 flex-col border-r border-[color:var(--border-subtle)] bg-brand-bg">
-      <div className="flex h-14 shrink-0 items-center border-b border-[color:var(--border-subtle)] px-4">
+    <aside className="flex h-full w-[240px] shrink-0 flex-col border-r border-border bg-background">
+      <div className="flex h-14 shrink-0 items-center border-b border-border px-4">
         <p className="font-heading text-[15px] text-brand-gold">
           Kurs na LDEK — Admin
         </p>
@@ -46,7 +46,7 @@ export function AdminSidebar() {
           );
         })}
       </nav>
-      <div className="shrink-0 border-t border-[color:var(--border-subtle)] px-4 py-3">
+      <div className="shrink-0 border-t border-border px-4 py-3">
         <Link
           href="/pulpit"
           className="font-body text-body-xs text-muted transition-colors hover:text-white"

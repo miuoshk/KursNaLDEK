@@ -3,7 +3,7 @@ export function DailyChallengeSection() {
     <section>
       <h2 className="font-heading text-heading-md text-primary">Wyzwania</h2>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <article className="rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5">
+        <article className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-5">
           <h3 className="font-body text-body-md font-semibold text-primary">
             Wyzwanie dnia: Biochemia
           </h3>
@@ -22,7 +22,7 @@ export function DailyChallengeSection() {
           </div>
         </article>
 
-        <article className="rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5">
+        <article className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-5">
           <h3 className="font-body text-body-md font-semibold text-primary">
             Wyzwanie dnia: Anatomia
           </h3>

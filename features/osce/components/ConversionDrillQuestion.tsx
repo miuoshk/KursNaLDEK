@@ -244,13 +244,13 @@ export function ConversionDrillQuestion({
 
       <div
         className={cn(
-          "relative z-10 rounded-card border border-[color:var(--border-subtle)] bg-brand-bg p-4 sm:p-6",
+          "relative z-10 rounded-card border border-border bg-background p-4 sm:p-6",
           phase === "feedback" &&
             feedbackOk === true &&
-            "ring-2 ring-success/60 ring-offset-2 ring-offset-brand-bg",
+            "ring-2 ring-success/60 ring-offset-2 ring-offset-background",
           phase === "feedback" &&
             feedbackOk === false &&
-            "ring-2 ring-error/60 ring-offset-2 ring-offset-brand-bg",
+            "ring-2 ring-error/60 ring-offset-2 ring-offset-background",
         )}
       >
         <div className="mb-4 flex items-center justify-between gap-3">
@@ -300,8 +300,8 @@ export function ConversionDrillQuestion({
                 disabled={disabled}
                 onClick={() => handleSelect(opt.id)}
                 className={cn(
-                  "w-full rounded-btn border-2 border-brand-sage/45 bg-brand-card-1 px-4 py-4 text-left font-body text-body-lg leading-snug text-primary transition duration-200 ease-out",
-                  "min-h-[56px] hover:border-brand-gold hover:bg-brand-card-2 active:scale-[0.99]",
+                  "w-full rounded-btn border-2 border-brand-sage/45 bg-card px-4 py-4 text-left font-body text-body-lg leading-snug text-primary transition duration-200 ease-out",
+                  "min-h-[56px] hover:border-brand-gold hover:bg-card-hover active:scale-[0.99]",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold",
                   disabled && "cursor-default opacity-90",
                 )}

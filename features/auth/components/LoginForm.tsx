@@ -7,7 +7,7 @@ import { initialAuthActionState } from "@/features/auth/types";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
-  "w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-brand-bg px-4 py-3 font-body text-white placeholder:text-muted transition-colors duration-200 ease-out focus:border-brand-gold focus:outline-none";
+  "w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-background px-4 py-3 font-body text-white placeholder:text-muted transition-colors duration-200 ease-out focus:border-brand-gold focus:outline-none";
 
 function SubmitButton() {
   const { pending } = useFormStatus();

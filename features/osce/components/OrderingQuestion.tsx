@@ -214,7 +214,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
   );
 
   return (
-    <div className="mx-auto w-full max-w-2xl bg-brand-bg">
+    <div className="mx-auto w-full max-w-2xl bg-background">
       {timerTotal != null ? (
         <OrderingTimerBar totalSeconds={timerTotal} remainingSeconds={remaining} />
       ) : null}
@@ -261,7 +261,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mt-8 rounded-card border border-white/[0.08] bg-brand-card-1 p-5"
+            className="mt-8 rounded-card border border-white/[0.08] bg-card p-5"
           >
             <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienie</p>
             <div className="mt-3">

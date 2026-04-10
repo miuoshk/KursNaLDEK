@@ -40,7 +40,7 @@ export function PulpitRecentSessions({ sessions }: { sessions: PulpitRecentSessi
       <h2 className="font-heading text-heading-sm text-primary">Ostatnie sesje</h2>
       <ul className="mt-4 space-y-3">
         {sessions.length === 0 ? (
-          <li className="rounded-card bg-brand-card-1 p-4 font-body text-body-sm text-secondary">
+          <li className="rounded-card bg-card border border-border p-4 font-body text-body-sm text-secondary">
             Nie masz jeszcze żadnych sesji.{" "}
             <Link href="/przedmioty" className="text-brand-gold hover:underline">
               Rozpocznij naukę
@@ -51,7 +51,7 @@ export function PulpitRecentSessions({ sessions }: { sessions: PulpitRecentSessi
           sessions.map((s) => (
             <li
               key={s.id}
-              className="flex flex-col gap-2 rounded-card bg-brand-card-1 p-4 sm:flex-row sm:items-center sm:justify-between"
+              className="flex flex-col gap-2 rounded-card bg-card border border-border p-4 sm:flex-row sm:items-center sm:justify-between"
             >
               <div>
                 <p className="font-body text-body-sm text-primary">

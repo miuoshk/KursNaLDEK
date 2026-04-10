@@ -1,6 +1,6 @@
 export const statTooltipProps = {
   contentStyle: {
-    backgroundColor: "var(--color-brand-card-2)",
+    backgroundColor: "var(--color-card-hover)",
     border: "1px solid rgba(54, 115, 104, 0.2)",
     borderRadius: "8px",
     color: "#fff",

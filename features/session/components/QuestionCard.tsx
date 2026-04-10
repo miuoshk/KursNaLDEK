@@ -38,7 +38,7 @@ export function QuestionCard({ question, children }: QuestionCardProps) {
         ) : null}
         <span className="font-mono text-body-xs text-muted">{question.topicName}</span>
       </div>
-      <p className="mt-6 font-body text-body-md leading-relaxed text-white md:text-body-lg">
+      <p className="mt-6 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
         {question.text}
       </p>
       <div className="mt-6 flex flex-col gap-3">{children}</div>

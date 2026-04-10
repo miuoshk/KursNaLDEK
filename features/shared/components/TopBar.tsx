@@ -1,7 +1,7 @@
 "use client";
 
-import { Bell, ChevronRight, Flame, Menu, Search } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { Bell, ChevronLeft, ChevronRight, Flame, Menu, Search } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { formatStreak } from "@/lib/formatStreak";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
@@ -12,7 +12,9 @@ import { useSidebarStore } from "@/features/shared/stores/sidebarStore";
 
 export function TopBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isMobile = useMobileViewport();
+  const showBack = pathname !== "/";
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const { year, secondSegment, thirdSegment } = useDashboardBreadcrumb();
   const { streak, initials } = useDashboardUser();
@@ -23,10 +25,20 @@ export function TopBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-20 flex h-14 shrink-0 items-center justify-between gap-2 border-b border-[color:var(--border-subtle)] bg-brand-bg px-4 sm:gap-4 sm:px-6",
+        "sticky top-0 z-20 flex h-14 shrink-0 items-center justify-between gap-2 border-b border-border bg-sidebar px-4 sm:gap-4 sm:px-6",
       )}
     >
       <div className="flex min-w-0 flex-1 items-center gap-2">
+        {showBack ? (
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="shrink-0 rounded-lg p-1.5 text-secondary transition-colors hover:text-primary"
+            aria-label="Wstecz"
+          >
+            <ChevronLeft className="size-5" aria-hidden />
+          </button>
+        ) : null}
         {isMobile ? (
           <button
             type="button"
@@ -76,7 +88,7 @@ export function TopBar() {
         <button
           type="button"
           className={cn(
-            "flex h-9 w-9 items-center justify-center rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 text-secondary transition-colors duration-200 ease-out hover:bg-brand-card-2 sm:hidden",
+            "flex h-9 w-9 items-center justify-center rounded-btn border border-border bg-card text-secondary transition-colors duration-200 ease-out hover:bg-card-hover sm:hidden",
             "active:scale-[0.98]",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
           )}
@@ -87,8 +99,8 @@ export function TopBar() {
         <button
           type="button"
           className={cn(
-            "hidden h-9 w-[200px] items-center gap-2 rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-3 text-left transition-colors duration-200 ease-out",
-            "text-secondary hover:bg-brand-card-2 sm:flex",
+            "hidden h-9 w-[200px] items-center gap-2 rounded-btn border border-border bg-card px-3 text-left transition-colors duration-200 ease-out",
+            "text-secondary hover:bg-card-hover sm:flex",
             "active:scale-[0.98]",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
           )}
@@ -98,7 +110,7 @@ export function TopBar() {
           <span className="flex-1 font-body text-body-sm">Szukaj…</span>
           <kbd
             className={cn(
-              "hidden rounded border border-[color:var(--border-light)] bg-brand-bg px-1.5 py-0.5 font-mono text-[11px] text-muted lg:inline",
+              "hidden rounded border border-border bg-sidebar px-1.5 py-0.5 font-mono text-[11px] text-muted lg:inline",
             )}
           >
             Ctrl+K

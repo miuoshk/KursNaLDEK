@@ -31,9 +31,9 @@ export function SessionTopBar({
   const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[color:var(--border-subtle)] bg-brand-bg px-4 py-3 sm:px-6">
+    <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
       <div className="flex flex-wrap items-center gap-4">
-        <span className="shrink-0 rounded-pill bg-brand-card-1 px-4 py-1.5 font-body text-body-sm font-medium text-primary">
+        <span className="shrink-0 rounded-pill bg-card px-4 py-1.5 font-body text-body-sm font-medium text-primary">
           {subjectName}
         </span>
 
@@ -41,7 +41,7 @@ export function SessionTopBar({
           <p className="font-mono text-body-sm text-secondary">
             Pytanie {current + 1} / {total}
           </p>
-          <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.08)]">
+          <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
             <div
               className="h-full rounded-full bg-brand-gold transition-[width] duration-[400ms] ease-out"
               style={{ width: `${pct}%` }}

@@ -76,7 +76,7 @@ export function SessionQuestionContent({
               <button
                 type="button"
                 onClick={onGoToPrevious}
-                className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors hover:text-white"
+                className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors hover:text-primary"
               >
                 <ChevronLeft className="size-4 shrink-0" aria-hidden />
                 Poprzednie

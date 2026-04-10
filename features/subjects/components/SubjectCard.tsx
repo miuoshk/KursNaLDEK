@@ -31,7 +31,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         </div>
       </div>
 
-      <h2 className="mt-3 font-body text-body-lg font-semibold text-white">
+      <h2 className="mt-3 font-body text-body-lg font-semibold text-primary">
         {subject.name}
       </h2>
 
@@ -39,7 +39,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         {subject.question_count} pytań · {subject.topic_count} działów
       </p>
 
-      <div className="mt-4 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
+      <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.06]">
         <div
           className="h-full rounded-full bg-brand-gold/80 transition-[width] duration-200"
           style={{ width: `${mastery}%` }}
@@ -56,7 +56,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       </div>
 
       {locked && (
-        <div className="absolute inset-0 flex items-center justify-center rounded-card bg-brand-bg/60">
+        <div className="absolute inset-0 flex items-center justify-center rounded-card bg-background/60">
           <div className="flex flex-col items-center gap-2">
             <Lock className="size-5 text-secondary" aria-hidden />
             <span className="font-body text-body-xs text-muted">
@@ -72,7 +72,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
     return (
       <div
         className={cn(
-          "group relative block rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5",
+          "group relative block rounded-card border border-border bg-card p-5",
           "pointer-events-none opacity-60",
         )}
       >
@@ -85,7 +85,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
     <Link
       href={`/przedmioty/${subject.id}`}
       className={cn(
-        "group relative block rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5",
+        "group relative block rounded-card border border-border bg-card p-5",
         "cursor-pointer transition-all duration-200 ease-out",
         "hover:border-brand-sage/30",
       )}

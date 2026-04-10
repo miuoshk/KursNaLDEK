@@ -65,7 +65,7 @@ export default async function OsceStationPage({ params }: PageProps) {
                   <Link
                     href={`/osce/${station.id}/${topic.id}`}
                     className={cn(
-                      "flex h-full flex-col rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5",
+                      "flex h-full flex-col rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-5",
                       "transition-all duration-200 ease-out hover:border-brand-sage/35",
                     )}
                   >

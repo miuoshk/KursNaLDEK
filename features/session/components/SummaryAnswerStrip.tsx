@@ -54,7 +54,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
                 </TooltipTrigger>
                 <TooltipContent
                   side="top"
-                  className="max-w-xs rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-3 py-2 font-body text-body-xs text-primary"
+                  className="max-w-xs rounded-btn border border-border bg-card px-3 py-2 font-body text-body-xs text-primary"
                 >
                   {tooltipLine(i, a)}
                 </TooltipContent>
@@ -64,7 +64,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
           return (
             <div
               key={`empty-${i}`}
-              className="flex size-8 items-center justify-center rounded-sm border border-dashed border-[rgba(255,255,255,0.12)] font-mono text-body-xs text-muted"
+              className="flex size-8 items-center justify-center rounded-sm border border-dashed border-border font-mono text-body-xs text-muted"
               aria-hidden
             >
               {i + 1}
@@ -86,7 +86,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
           Trafienie bez wiedzy
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="size-2 rounded-full border border-[rgba(255,255,255,0.2)]" aria-hidden />
+          <span className="size-2 rounded-full border border-white/20" aria-hidden />
           Bez odpowiedzi
         </span>
       </div>
@@ -95,7 +95,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
         <label className="flex cursor-pointer items-center gap-2 font-body text-body-sm text-secondary">
           <input
             type="checkbox"
-            className="size-4 rounded border-[color:var(--border-subtle)] bg-brand-bg"
+            className="size-4 rounded border-border bg-background"
             checked={wrongOnly}
             onChange={(e) => setWrongOnly(e.target.checked)}
           />
@@ -104,7 +104,7 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
       </div>
 
       {wrongOnly && wrong.length > 0 ? (
-        <ul className="space-y-3 rounded-card border border-[color:var(--border-subtle)] bg-brand-bg/40 p-4">
+        <ul className="space-y-3 rounded-card border border-border bg-background/40 p-4">
           {wrong.map((a) => (
             <li key={a.questionId} className="font-body text-body-sm text-secondary">
               <p className="text-primary">{a.questionText}</p>

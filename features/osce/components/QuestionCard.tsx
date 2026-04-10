@@ -148,13 +148,13 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
   };
 
   return (
-    <div className="mx-auto w-full max-w-3xl bg-brand-bg">
+    <div className="mx-auto w-full max-w-3xl bg-background">
       {timerTotal != null ? (
         <TimerBar totalSeconds={timerTotal} remainingSeconds={remaining} />
       ) : null}
 
       {question.image_url ? (
-        <div className="relative mb-6 h-64 w-full overflow-hidden rounded-card border border-white/[0.06] bg-brand-card-1">
+        <div className="relative mb-6 h-64 w-full overflow-hidden rounded-card border border-white/[0.06] bg-card">
           {/* eslint-disable-next-line @next/next/no-img-element -- zewnętrzne URL (np. Supabase) bez domen w next.config */}
           <img
             src={question.image_url}
@@ -203,10 +203,10 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
               className={cn(
                 "flex w-full items-start gap-4 rounded-card border p-4 text-left transition-all duration-200 ease-out",
                 state === "default" &&
-                  "border-[rgba(255,255,255,0.08)] bg-brand-card-1 hover:border-brand-sage/50",
+                  "border-[rgba(255,255,255,0.08)] bg-card hover:border-brand-sage/50",
                 state === "correct" && "border-success bg-success/10",
                 state === "wrong" && "border-error bg-error/10",
-                state === "muted" && "border-[rgba(255,255,255,0.06)] bg-brand-bg/40 opacity-50",
+                state === "muted" && "border-[rgba(255,255,255,0.06)] bg-background/40 opacity-50",
                 revealed && "cursor-default",
                 !revealed && "cursor-pointer",
               )}
@@ -214,10 +214,10 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
               <span
                 className={cn(
                   "flex size-8 shrink-0 items-center justify-center rounded-full border font-mono text-body-sm font-medium transition-colors duration-200",
-                  state === "default" && "border-[rgba(255,255,255,0.12)] bg-brand-bg text-secondary",
+                  state === "default" && "border-[rgba(255,255,255,0.12)] bg-background text-secondary",
                   state === "correct" && "border-success bg-success text-brand-bg",
                   state === "wrong" && "border-error bg-error text-brand-bg",
-                  state === "muted" && "border-[rgba(255,255,255,0.1)] bg-brand-bg text-muted",
+                  state === "muted" && "border-[rgba(255,255,255,0.1)] bg-background text-muted",
                 )}
               >
                 {letter}
@@ -240,7 +240,7 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mt-8 rounded-card border border-white/[0.08] bg-brand-card-1 p-5"
+            className="mt-8 rounded-card border border-white/[0.08] bg-card p-5"
           >
             <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienie</p>
             <div className="mt-3">

@@ -330,7 +330,7 @@ export function TopicSession({
           <button
             type="button"
             onClick={() => setShowKnowledgeOverlay(true)}
-            className="pointer-events-auto inline-flex items-center gap-2 rounded-pill border border-brand-sage/40 bg-brand-card-1 px-3 py-2 font-body text-body-xs text-brand-sage transition hover:bg-brand-sage/10"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-pill border border-brand-sage/40 bg-card px-3 py-2 font-body text-body-xs text-brand-sage transition hover:bg-brand-sage/10"
             aria-label="Pokaż kartę wiedzy"
           >
             <BookOpen className="size-4 shrink-0" aria-hidden />

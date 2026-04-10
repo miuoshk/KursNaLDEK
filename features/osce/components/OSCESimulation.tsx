@@ -232,7 +232,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
   return (
     <div>
       {phase === "briefing" ? (
-        <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
+        <div className="rounded-card border border-border bg-card p-6">
           <h2 className="font-heading text-heading-sm text-primary">Przed startem</h2>
           <p className="mt-4 font-body text-body-md leading-relaxed text-secondary">
             Za chwilę rozpoczniesz symulację OSCE. Każda stacja ma 2 zadania. Próg zaliczenia: 60% z obu
@@ -308,7 +308,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-8 text-center"
+          className="rounded-card border border-border bg-card p-8 text-center"
         >
           <p className="font-heading text-heading-lg text-primary">{feedback.shortName}</p>
           <p
@@ -326,7 +326,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
 
       {phase === "final" ? (
         <div className="space-y-8">
-          <div className="overflow-x-auto rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1">
+          <div className="overflow-x-auto rounded-card border border-border bg-card">
             <table className="w-full min-w-[320px] border-collapse text-left font-body text-body-sm">
               <thead>
                 <tr className="border-b border-white/[0.08] text-secondary">

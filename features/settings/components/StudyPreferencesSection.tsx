@@ -8,7 +8,7 @@ import type { SessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
 
 const selectClass =
-  "w-full appearance-none rounded-btn border border-[rgba(255,255,255,0.1)] bg-brand-bg px-4 py-3 pr-10 font-body text-white transition-colors focus:border-brand-gold focus:outline-none";
+  "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
 
 type Props = { profile: SettingsProfile };
 
@@ -63,7 +63,7 @@ export function StudyPreferencesSection({ profile }: Props) {
             <button
               type="button"
               onClick={() => bump(-5)}
-              className="flex size-10 items-center justify-center rounded-btn bg-brand-card-1 text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
+              className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
               aria-label="Zmniejsz cel"
             >
               <Minus className="size-4" aria-hidden />
@@ -72,7 +72,7 @@ export function StudyPreferencesSection({ profile }: Props) {
             <button
               type="button"
               onClick={() => bump(5)}
-              className="flex size-10 items-center justify-center rounded-btn bg-brand-card-1 text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
+              className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
               aria-label="Zwiększ cel"
             >
               <Plus className="size-4" aria-hidden />

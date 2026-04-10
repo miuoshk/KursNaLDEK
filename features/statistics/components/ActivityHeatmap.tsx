@@ -26,7 +26,7 @@ export function ActivityHeatmap({
             key={c.date || `e-${i}`}
             title={c.date || undefined}
             className={cn(
-              "aspect-square max-h-8 rounded-sm border border-[color:var(--border-subtle)]",
+              "aspect-square max-h-8 rounded-sm border border-border",
               LEVELS[Math.min(4, Math.max(0, c.level))] ?? LEVELS[0],
             )}
           />

@@ -142,7 +142,7 @@ function PanoramaViewer({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="fixed inset-0 z-[80] flex flex-col bg-brand-bg"
+      className="fixed inset-0 z-[80] flex flex-col bg-background"
     >
       <header className="flex shrink-0 flex-wrap items-center gap-3 border-b border-white/[0.06] px-4 py-3">
         <button
@@ -239,7 +239,7 @@ function PanoramaViewer({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 48, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="fixed inset-x-0 bottom-0 z-[90] max-h-[min(70dvh,520px)] overflow-y-auto rounded-t-card border border-white/[0.08] bg-brand-card-1 p-5 shadow-2xl"
+              className="fixed inset-x-0 bottom-0 z-[90] max-h-[min(70dvh,520px)] overflow-y-auto rounded-t-card border border-white/[0.08] bg-card p-5 shadow-2xl"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -248,7 +248,7 @@ function PanoramaViewer({
                     {popupHotspot.description}
                   </p>
                   {popupHotspot.clinicalSignificance ? (
-                    <div className="mt-4 rounded-btn border border-white/[0.06] bg-brand-bg/80 p-4">
+                    <div className="mt-4 rounded-btn border border-white/[0.06] bg-background/80 p-4">
                       <p className="font-body text-body-xs font-medium uppercase tracking-wide text-muted">
                         Znaczenie kliniczne
                       </p>
@@ -315,7 +315,7 @@ export function OPGAtlas({ panoramas }: OPGAtlasProps) {
             <button
               type="button"
               onClick={() => setSelectedId(p.id)}
-              className="group w-full overflow-hidden rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 text-left transition hover:border-brand-sage/50 hover:bg-brand-card-2"
+              className="group w-full overflow-hidden rounded-card border border-border bg-card text-left transition hover:border-brand-sage/50 hover:bg-card-hover"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

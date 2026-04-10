@@ -23,7 +23,7 @@ export function SummaryTopicBreakdown({
         {summary.topicBreakdown.map((t) => (
           <li
             key={t.topicName}
-            className="rounded-card bg-brand-card-1 p-4"
+            className="rounded-card bg-card p-4"
           >
             <div className="flex flex-wrap items-center gap-4">
               <span className="min-w-0 flex-1 font-body text-body-md font-medium text-primary">

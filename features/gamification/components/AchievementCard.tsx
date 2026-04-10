@@ -29,7 +29,7 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
         initial={{ scale: 0.8, opacity: 0.9 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="rounded-card border border-brand-gold/30 bg-brand-card-1 p-4"
+        className="rounded-card border border-brand-gold/30 bg-card p-4"
       >
         <div className="flex justify-center">
           <Icon className="size-8 text-brand-gold" aria-hidden />
@@ -49,7 +49,7 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
 
   if (row.locked) {
     return (
-      <div className="rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-4 opacity-50">
+      <div className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-4 opacity-50">
         <div className="flex justify-center">
           <Lock className="size-8 text-muted" aria-hidden />
         </div>
@@ -62,7 +62,7 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
   }
 
   return (
-    <div className="rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-4">
+    <div className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-4">
       <div className="flex justify-center">
         <Icon className="size-8 text-secondary" aria-hidden />
       </div>

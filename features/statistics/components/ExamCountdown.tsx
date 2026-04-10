@@ -10,7 +10,7 @@ export function ExamCountdown() {
   const pct = Math.min(100, Math.round((1 - days / 365) * 100));
 
   return (
-    <div className="rounded-card bg-brand-card-1 p-6">
+    <div className="rounded-card bg-card p-6">
       <p className="font-body text-body-xs font-medium uppercase tracking-wide text-secondary">
         Do sesji letniej 2026
       </p>

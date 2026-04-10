@@ -163,7 +163,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   if (boot.status === "error") {
     return (
       <div
-        className="mx-auto max-w-md rounded-card border border-error/30 bg-brand-card-1 p-6 text-center"
+        className="mx-auto max-w-md rounded-card border border-error/30 bg-card p-6 text-center"
         role="alert"
       >
         <p className="font-heading text-heading-sm text-primary">Nie udało się uruchomić sesji</p>

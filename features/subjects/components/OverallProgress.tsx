@@ -5,7 +5,7 @@ type OverallProgressProps = {
 
 export function OverallProgress({ year, totalQuestions }: OverallProgressProps) {
   return (
-    <div className="rounded-card bg-brand-card-1 p-6">
+    <div className="rounded-card bg-card border border-border p-6">
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div>
           <p className="font-body text-body-xs uppercase tracking-widest text-muted">
@@ -22,9 +22,9 @@ export function OverallProgress({ year, totalQuestions }: OverallProgressProps) 
       </div>
 
       <div className="mt-6 flex gap-1">
-        <div className="h-2 flex-1 rounded-full bg-[rgba(255,255,255,0.12)]" />
-        <div className="h-2 flex-1 rounded-full bg-[rgba(255,255,255,0.12)]" />
-        <div className="h-2 flex-1 rounded-full bg-[rgba(255,255,255,0.12)]" />
+        <div className="h-2 flex-1 rounded-full bg-white/10" />
+        <div className="h-2 flex-1 rounded-full bg-white/10" />
+        <div className="h-2 flex-1 rounded-full bg-white/10" />
       </div>
 
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-body text-body-xs text-muted">
@@ -37,7 +37,7 @@ export function OverallProgress({ year, totalQuestions }: OverallProgressProps) 
           Powtórki
         </span>
         <span className="inline-flex items-center gap-2">
-          <span className="size-2 rounded-full bg-[rgba(255,255,255,0.2)]" aria-hidden />
+          <span className="size-2 rounded-full bg-white/20" aria-hidden />
           Do nauki
         </span>
       </div>

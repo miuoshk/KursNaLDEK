@@ -49,7 +49,7 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60 data-[state=open]:animate-in" />
         <Dialog.Content
           className={cn(
-            "fixed left-1/2 top-1/2 z-50 w-[min(100%,24rem)] -translate-x-1/2 -translate-y-1/2 rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6 shadow-lg",
+            "fixed left-1/2 top-1/2 z-50 w-[min(100%,24rem)] -translate-x-1/2 -translate-y-1/2 rounded-card border border-border bg-card p-6 shadow-lg",
           )}
         >
           <Dialog.Title className="font-heading text-heading-sm text-primary">

@@ -185,7 +185,7 @@ export function ImageIdentifyQuestion({
   };
 
   return (
-    <div className="mx-auto w-full max-w-3xl bg-brand-bg">
+    <div className="mx-auto w-full max-w-3xl bg-background">
       <p className="font-body text-body-lg leading-relaxed text-primary">{question.text}</p>
 
       {question.mode === "label" && !checked ? (
@@ -199,7 +199,7 @@ export function ImageIdentifyQuestion({
 
       <div
         ref={containerRef}
-        className="relative mt-6 max-h-[75vh] w-full overflow-hidden rounded-card border border-white/[0.08] bg-brand-card-1 touch-none select-none"
+        className="relative mt-6 max-h-[75vh] w-full overflow-hidden rounded-card border border-white/[0.08] bg-card touch-none select-none"
         style={{ touchAction: "none" }}
       >
         <div
@@ -273,7 +273,7 @@ export function ImageIdentifyQuestion({
             {sortedHotspots.map((h) => (
               <div
                 key={`exp-${h.id}`}
-                className="rounded-card border border-white/[0.08] bg-brand-card-1 p-4"
+                className="rounded-card border border-white/[0.08] bg-card p-4"
               >
                 <p className="font-body text-body-xs text-muted">Punkt {h.correct_label}</p>
                 <div className="mt-1">

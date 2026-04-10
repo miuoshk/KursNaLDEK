@@ -9,7 +9,7 @@ export type TopicSessionIntroProps = {
 
 export function TopicSessionIntro({ knowledgeCard, onStart }: TopicSessionIntroProps) {
   return (
-    <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
+    <div className="rounded-card border border-border bg-card p-6">
       <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
       {knowledgeCard && knowledgeCard.trim().length > 0 ? (
         <div className="mt-4">{markdownBlock(knowledgeCard)}</div>

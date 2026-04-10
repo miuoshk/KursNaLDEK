@@ -36,7 +36,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex shrink-0 items-center justify-between border-b border-[rgba(255,255,255,0.06)] bg-brand-bg px-4 py-3">
+      <div className="flex shrink-0 items-center justify-between border-b border-border bg-background px-4 py-3">
         <p className="font-heading text-heading-sm text-primary">
           Katalog pytań — {subjectName}
         </p>
@@ -48,7 +48,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         <div className="min-h-0 flex-1 overflow-y-auto p-6 lg:p-8">
           <p className="font-mono text-body-xs text-muted">{q.topicName}</p>
-          <p className="mt-4 font-body text-body-md leading-relaxed text-white md:text-body-lg">
+          <p className="mt-4 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
             {q.text}
           </p>
           <div className="mt-6 flex flex-col gap-2">
@@ -62,7 +62,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
                     "rounded-btn border px-4 py-3 font-body text-body-sm",
                     isCorrect
                       ? "border-success/30 bg-success/[0.08] text-success"
-                      : "border-[rgba(255,255,255,0.06)] bg-brand-card-1 text-secondary",
+                      : "border-border bg-card text-secondary",
                   )}
                 >
                   <span className="mr-2 font-mono font-semibold">{letter}.</span>
@@ -78,7 +78,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
           )}
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto border-t border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-6 lg:border-l lg:border-t-0 lg:p-8">
+        <div className="min-h-0 flex-1 overflow-y-auto border-t border-border bg-card p-6 lg:border-l lg:border-t-0 lg:p-8">
           <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
           <div className="mt-3">
             <FormattedExplanation text={q.explanation} />
@@ -92,12 +92,12 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
         onSelect={setIndex}
       />
 
-      <div className="flex shrink-0 items-center justify-between border-t border-[rgba(255,255,255,0.06)] bg-brand-bg px-4 py-3">
+      <div className="flex shrink-0 items-center justify-between border-t border-border bg-background px-4 py-3">
         <button
           type="button"
           onClick={goPrev}
           disabled={index === 0}
-          className="inline-flex items-center gap-1 rounded-btn px-4 py-2 font-body text-body-sm text-secondary transition-colors hover:text-white disabled:opacity-30"
+          className="inline-flex items-center gap-1 rounded-btn px-4 py-2 font-body text-body-sm text-secondary transition-colors hover:text-primary disabled:opacity-30"
         >
           <ChevronLeft className="size-4" aria-hidden />
           Poprzednie
@@ -128,7 +128,7 @@ function CatalogQuestionNav({
   if (questions.length <= 1) return null;
 
   return (
-    <div className="flex shrink-0 flex-wrap gap-1 border-t border-[rgba(255,255,255,0.06)] bg-brand-bg px-4 py-2">
+    <div className="flex shrink-0 flex-wrap gap-1 border-t border-border bg-background px-4 py-2">
       {questions.map((_, i) => (
         <button
           key={i}
@@ -138,7 +138,7 @@ function CatalogQuestionNav({
             "flex size-8 items-center justify-center rounded-btn font-mono text-body-xs transition-colors",
             i === currentIndex
               ? "bg-brand-gold text-brand-bg font-semibold"
-              : "bg-brand-card-1 text-secondary hover:text-white",
+              : "bg-card text-secondary hover:text-primary",
           )}
         >
           {i + 1}

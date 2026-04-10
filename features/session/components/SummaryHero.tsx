@@ -22,10 +22,10 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
     answered < planned ? `${answered} z ${planned} pytań` : `${planned} pytań`;
 
   return (
-    <div className="rounded-card border-t-[3px] border-brand-gold bg-brand-card-1 p-8">
+    <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
-          <p className="font-heading text-heading-lg text-white">Sesja zakończona</p>
+          <p className="font-heading text-heading-lg text-primary">Sesja zakończona</p>
           <p className="mt-2 font-body text-body-sm text-secondary">
             {summary.subjectName} · Tryb: {sessionModeLabel(summary.mode)} · {questionsLabel} ·{" "}
             {formatSessionDuration(summary.durationSeconds)}
@@ -99,13 +99,13 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
         <ul className="flex flex-col gap-3 text-body-sm lg:w-[260px]">
           <li className="flex items-center gap-2">
             <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-white">
+            <span className="font-mono text-primary">
               Czas: {formatSessionDuration(summary.durationSeconds)}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-white">
+            <span className="font-mono text-primary">
               Średnio na pytanie: {formatSessionDuration(summary.avgTimePerQuestion)}
             </span>
           </li>
@@ -117,19 +117,19 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
               )}
               aria-hidden
             />
-            <span className="font-mono text-white">
+            <span className="font-mono text-primary">
               Seria bez błędu: {summary.longestStreak}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Sparkles className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-white">
+            <span className="font-mono text-primary">
               Nowe pytania: {summary.newQuestionsCount}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <RotateCcw className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-mono text-white">Powtórki: {summary.reviewCount}</span>
+            <span className="font-mono text-primary">Powtórki: {summary.reviewCount}</span>
           </li>
         </ul>
       </div>

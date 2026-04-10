@@ -50,7 +50,7 @@ export function SmartSessionCTA({
     <div className="space-y-4">
       <h2 className="font-heading text-heading-md text-primary">Rozpocznij naukę</h2>
 
-      <div className="rounded-card border-l-[3px] border-brand-gold bg-brand-card-1 p-6">
+      <div className="rounded-card border border-brand-gold/20 bg-card p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
@@ -68,7 +68,7 @@ export function SmartSessionCTA({
           </Link>
         </div>
 
-        <div className="mt-6 border-t border-[color:var(--border-subtle)] pt-4">
+        <div className="mt-6 border-t border-border pt-4">
           <p className="font-body text-body-xs uppercase tracking-widest text-muted">
             Liczba pytań
           </p>
@@ -82,7 +82,7 @@ export function SmartSessionCTA({
                   "rounded-pill px-3 py-1 font-body text-body-sm transition-colors",
                   preset === n
                     ? "bg-brand-gold font-medium text-brand-bg"
-                    : "cursor-pointer bg-brand-card-1 text-secondary hover:text-white",
+                    : "cursor-pointer bg-card text-secondary hover:text-primary",
                 )}
               >
                 {n}
@@ -96,7 +96,7 @@ export function SmartSessionCTA({
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-5">
+        <div className="rounded-card border border-border bg-card p-5">
           <h3 className="font-body text-body-md font-semibold text-primary">
             Szybki przegląd
           </h3>
@@ -111,7 +111,7 @@ export function SmartSessionCTA({
           </Link>
         </div>
 
-        <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-5">
+        <div className="rounded-card border border-border bg-card p-5">
           <h3 className="font-body text-body-md font-semibold text-primary">
             Katalog pytań
           </h3>
@@ -120,7 +120,7 @@ export function SmartSessionCTA({
           </p>
           <Link
             href={catalogHref}
-            className="mt-4 inline-flex items-center font-body text-body-sm font-medium text-secondary transition-colors hover:text-white"
+            className="mt-4 inline-flex items-center font-body text-body-sm font-medium text-secondary transition-colors hover:text-primary"
           >
             Przeglądaj
           </Link>

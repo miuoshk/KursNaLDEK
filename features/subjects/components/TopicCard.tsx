@@ -29,7 +29,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
           <span className="font-body text-body-xs text-brand-gold">Wkrótce</span>
         )}
       </div>
-      <div className="mt-3 h-1 overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
+      <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/[0.06]">
         <div
           className={cn("h-full rounded-full transition-[width]", fillClassForProgress(pct))}
           style={{ width: `${pct}%` }}
@@ -57,7 +57,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
   if (!hasQuestions) {
     return (
       <div
-        className="rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5 opacity-50"
+        className="rounded-card border border-border bg-card p-5 opacity-50"
       >
         {inner}
       </div>
@@ -68,7 +68,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
     <Link
       href={href}
       className={cn(
-        "group block rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5",
+        "group block rounded-card border border-border bg-card p-5",
         "transition-all duration-200 ease-out hover:border-brand-sage/30",
       )}
     >

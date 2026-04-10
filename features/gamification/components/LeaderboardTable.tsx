@@ -34,7 +34,7 @@ export function LeaderboardTable({
         <h2 className="font-heading text-heading-md text-primary">
           Ranking — Nauki Podstawowe
         </h2>
-        <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-brand-card-2/50 p-1">
+        <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">
           {pills.map((p) => (
             <Link
               key={p.id}

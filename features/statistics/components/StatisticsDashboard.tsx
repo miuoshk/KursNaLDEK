@@ -58,7 +58,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
             Analiza postępów i predykcja wyniku końcowego
           </p>
         </div>
-        <div className="inline-flex rounded-pill bg-brand-card-1 p-1">
+        <div className="inline-flex rounded-pill bg-card p-1">
           {RANGES.map((r) => (
             <button
               key={r.key}
@@ -80,7 +80,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <ReadinessCard data={data} />
         <ExamCountdown />
-        <div className="rounded-card bg-brand-card-1 p-6">
+        <div className="rounded-card bg-card p-6">
           <p className="font-body text-body-xs font-medium uppercase tracking-wide text-secondary">
             Aktywność (30 dni)
           </p>
@@ -91,7 +91,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <section className="rounded-card bg-brand-card-1 p-6">
+        <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-heading-sm text-primary">
             Opanowanie dziedzin
           </h2>
@@ -99,7 +99,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
             <SubjectRadarChart data={data} />
           </div>
         </section>
-        <section className="rounded-card bg-brand-card-1 p-6">
+        <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-heading-sm text-primary">
             Czas nauki (godziny)
           </h2>
@@ -110,7 +110,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <section className="rounded-card bg-brand-card-1 p-6">
+        <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-heading-sm text-primary">
             Trend poprawności (30 dni)
           </h2>
@@ -118,7 +118,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
             <AccuracyTrendChart data={data} />
           </div>
         </section>
-        <section className="rounded-card bg-brand-card-1 p-6">
+        <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-heading-sm text-primary">
             Słabe ogniwa (top 5)
           </h2>

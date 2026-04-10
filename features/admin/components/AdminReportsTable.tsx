@@ -73,7 +73,7 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
               "rounded-pill px-3 py-1 font-body text-body-sm transition-colors",
               (currentStatus ?? "") === f.value
                 ? "bg-brand-gold text-brand-bg font-medium"
-                : "bg-brand-card-1 text-secondary hover:text-white",
+                : "bg-card text-secondary hover:text-white",
             )}
           >
             {f.label}
@@ -81,10 +81,10 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
         ))}
       </div>
 
-      <div className="overflow-x-auto rounded-card border border-[color:var(--border-subtle)]">
+      <div className="overflow-x-auto rounded-card border border-border">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-[color:var(--border-subtle)] bg-brand-card-1">
+            <tr className="border-b border-border bg-card">
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
                 Data
               </th>
@@ -118,7 +118,7 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
                 return (
                   <tr
                     key={r.id}
-                    className="border-b border-[color:var(--border-subtle)] transition-colors hover:bg-white/[0.02]"
+                    className="border-b border-border transition-colors hover:bg-white/[0.02]"
                   >
                     <td className="px-3 py-3 font-body text-body-xs text-secondary">
                       {formatDate(r.createdAt)}

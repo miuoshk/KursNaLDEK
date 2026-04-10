@@ -44,14 +44,14 @@ export function SidebarPanel({
     <aside
       aria-label="Kurs na LDEK — menu nawigacji"
       className={cn(
-        "flex h-full min-h-0 shrink-0 flex-col border-r border-[color:var(--border-subtle)] bg-brand-bg transition-[width] duration-200 ease-out",
+        "flex h-full min-h-0 shrink-0 flex-col border-r border-border bg-sidebar transition-[width] duration-200 ease-out",
         collapsed ? "w-16" : "w-[260px]",
         className,
       )}
     >
       <div
         className={cn(
-          "flex h-14 shrink-0 items-center border-b border-[color:var(--border-subtle)]",
+          "flex h-14 shrink-0 items-center border-b border-border",
           collapsed && !mobile ? "justify-end px-2" : "justify-between px-3",
         )}
       >
@@ -93,7 +93,7 @@ export function SidebarPanel({
 
       <div
         className={cn(
-          "flex shrink-0 items-center gap-2 border-b border-[color:var(--border-subtle)] px-4 py-4",
+          "flex shrink-0 items-center gap-2 border-b border-border px-4 py-4",
           collapsed && !mobile && "flex-col px-2",
         )}
       >

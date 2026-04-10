@@ -39,7 +39,7 @@ export default function RootLayout({
       lang="pl"
       className={`${dmSans.variable} ${dmSerifDisplay.variable} ${dmMono.variable}`}
     >
-      <body className="font-body bg-brand-bg text-white antialiased">
+      <body className="font-body bg-background text-primary antialiased">
         {children}
       </body>
     </html>

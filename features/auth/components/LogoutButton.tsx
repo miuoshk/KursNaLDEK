@@ -29,7 +29,7 @@ export function LogoutButton() {
           side="right"
           sideOffset={8}
           className={cn(
-            "z-50 rounded-btn border border-[color:var(--border-subtle)] bg-brand-card-1 px-2 py-1",
+            "z-50 rounded-btn border border-border bg-card px-2 py-1",
             "font-body text-body-xs text-secondary shadow-lg",
           )}
         >

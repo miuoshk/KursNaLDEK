@@ -3,7 +3,7 @@ import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 
 export function PulpitQuickStart({ data }: { data: PulpitData }) {
   return (
-    <section className="rounded-card border-l-[3px] border-brand-gold bg-brand-card-1 p-6">
+    <section className="rounded-card border border-brand-gold/20 bg-card p-6">
       <h2 className="font-heading text-heading-md text-primary">Kontynuuj naukę</h2>
       {data.lastSubjectId && data.lastSubjectName ? (
         <>

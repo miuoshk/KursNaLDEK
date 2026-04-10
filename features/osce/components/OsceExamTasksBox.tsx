@@ -16,7 +16,7 @@ export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
 
   return (
     <div
-      className="rounded-card border border-brand-sage/35 bg-brand-card-1 p-5"
+      className="rounded-card border border-brand-sage/35 bg-card p-5"
       role="region"
       aria-label="Zadania egzaminacyjne na stacji"
     >

@@ -35,7 +35,7 @@ export function PlayerCard({
         : `${totalQuestionsAnswered} pytań rozwiązanych`;
 
   return (
-    <div className="rounded-card border border-brand-gold/20 bg-brand-card-1 p-6">
+    <div className="rounded-card border border-brand-gold/20 bg-card p-6">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_auto] lg:items-center">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start lg:flex-col">
           <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-mono text-xl text-brand-gold">

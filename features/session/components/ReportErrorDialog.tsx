@@ -58,19 +58,19 @@ export function ReportErrorDialog({
         <Dialog.Content
           className={cn(
             "fixed left-1/2 top-1/2 z-50 w-[90vw] max-w-lg -translate-x-1/2 -translate-y-1/2",
-            "rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6 shadow-xl",
+            "rounded-card border border-border bg-card p-6 shadow-xl",
           )}
         >
           <div className="flex items-center justify-between">
             <Dialog.Title className="font-heading text-heading-sm text-primary">
               Zgłoś błąd w pytaniu
             </Dialog.Title>
-            <Dialog.Close className="rounded-btn p-1 text-secondary transition-colors hover:text-white">
+            <Dialog.Close className="rounded-btn p-1 text-secondary transition-colors hover:text-primary">
               <X className="size-4" aria-hidden />
             </Dialog.Close>
           </div>
 
-          <p className="mt-3 line-clamp-2 rounded-btn bg-brand-bg p-3 font-body text-body-xs text-secondary">
+          <p className="mt-3 line-clamp-2 rounded-btn bg-background p-3 font-body text-body-xs text-secondary">
             {questionText}
           </p>
 
@@ -81,7 +81,7 @@ export function ReportErrorDialog({
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className="mt-1 w-full rounded-btn border border-[color:var(--border-subtle)] bg-brand-bg px-3 py-2 font-body text-body-sm text-primary"
+              className="mt-1 w-full rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary"
             >
               {CATEGORIES.map((c) => (
                 <option key={c.value} value={c.value}>{c.label}</option>
@@ -98,7 +98,7 @@ export function ReportErrorDialog({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Opisz co jest nie tak (min. 10 znaków)..."
               rows={3}
-              className="mt-1 w-full resize-none rounded-btn border border-[color:var(--border-subtle)] bg-brand-bg px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
+              className="mt-1 w-full resize-none rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
             />
           </div>
 
@@ -107,7 +107,7 @@ export function ReportErrorDialog({
           )}
 
           <div className="mt-6 flex justify-end gap-3">
-            <Dialog.Close className="rounded-btn border border-[color:var(--border-subtle)] px-4 py-2 font-body text-body-sm text-secondary transition-colors hover:text-white">
+            <Dialog.Close className="rounded-btn border border-border px-4 py-2 font-body text-body-sm text-secondary transition-colors hover:text-primary">
               Anuluj
             </Dialog.Close>
             <button

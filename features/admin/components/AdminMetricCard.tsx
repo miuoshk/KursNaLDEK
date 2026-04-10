@@ -10,8 +10,8 @@ export function AdminMetricCard({ label, value, highlight }: AdminMetricCardProp
   return (
     <div
       className={cn(
-        "rounded-card border bg-brand-card-1 p-5",
-        highlight ? "border-brand-gold/30" : "border-[color:var(--border-subtle)]",
+        "rounded-card border bg-card p-5",
+        highlight ? "border-brand-gold/30" : "border-border",
       )}
     >
       <p className="font-body text-body-xs uppercase tracking-widest text-muted">

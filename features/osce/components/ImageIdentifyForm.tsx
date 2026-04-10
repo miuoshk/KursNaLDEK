@@ -57,7 +57,7 @@ export function ImageIdentifyForm({
           {sortedHotspots.map((h, i) => (
             <div
               key={h.id}
-              className="flex flex-col gap-2 rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-4 sm:flex-row sm:items-center sm:gap-6"
+              className="flex flex-col gap-2 rounded-card border border-border bg-card p-4 sm:flex-row sm:items-center sm:gap-6"
             >
               <span className="shrink-0 font-mono text-body-sm text-brand-gold">
                 {i + 1}.
@@ -71,7 +71,7 @@ export function ImageIdentifyForm({
                 value={identifySelections[h.id] ?? ""}
                 onChange={(e) => onIdentifyChange(h.id, e.target.value)}
                 className={cn(
-                  "w-full rounded-btn border border-brand-sage/40 bg-brand-bg px-3 py-2.5 font-body text-body-md text-primary",
+                  "w-full rounded-btn border border-brand-sage/40 bg-background px-3 py-2.5 font-body text-body-md text-primary",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold",
                   checked &&
                     identifySelections[h.id]?.trim() === h.correct_label &&

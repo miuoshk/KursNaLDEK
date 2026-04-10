@@ -83,7 +83,7 @@ export default async function DashboardLayout({
                 testMode: testMode || undefined,
               }}
             >
-              <div className="flex h-screen min-h-0 overflow-hidden bg-brand-bg">
+              <div className="flex h-screen min-h-0 overflow-hidden bg-background">
                 <Sidebar />
                 <DashboardContentArea>{children}</DashboardContentArea>
               </div>

@@ -32,7 +32,7 @@ export function TopicSessionSummary({
     results.length > 0 ? Math.round((correctCount / results.length) * 100) : 0;
 
   return (
-    <div className="rounded-card border border-[color:var(--border-subtle)] bg-brand-card-1 p-6">
+    <div className="rounded-card border border-border bg-card p-6">
       <h2 className="font-heading text-heading-sm text-primary">Podsumowanie</h2>
       <p className="mt-3 font-body text-body-lg text-secondary">
         Wynik:{" "}

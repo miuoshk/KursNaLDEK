@@ -28,7 +28,7 @@ export function SessionConfidenceBar({
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-40 border-t border-[rgba(255,255,255,0.06)] bg-brand-bg/95 px-4 py-3 backdrop-blur-sm",
+        "fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 backdrop-blur-sm",
       )}
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -37,7 +37,7 @@ export function SessionConfidenceBar({
             <button
               type="button"
               onClick={onGoPrevious}
-              className="inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-secondary transition-colors hover:text-white"
+              className="inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-secondary transition-colors hover:text-primary"
             >
               <ChevronLeft className="size-4 shrink-0" aria-hidden />
               Poprzednie

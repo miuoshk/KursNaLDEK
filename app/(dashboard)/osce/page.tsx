@@ -51,7 +51,7 @@ export default async function OsceListPage() {
                     <Link
                       href={`/osce/${station.id}`}
                       className={cn(
-                        "group flex flex-col rounded-card border border-[rgba(255,255,255,0.06)] bg-brand-card-1 p-5",
+                        "group flex flex-col rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-5",
                         "transition-all duration-200 ease-out hover:border-brand-sage/35",
                       )}
                     >

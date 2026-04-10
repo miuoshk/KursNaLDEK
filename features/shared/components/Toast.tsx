@@ -18,7 +18,7 @@ export function ToastItem({ id, message, variant, onDismiss }: ToastItemProps) {
       role="status"
       className={cn(
         "flex max-w-sm items-start gap-3 rounded-card border px-4 py-3 shadow-lg",
-        "border-[rgba(255,255,255,0.1)] bg-brand-card-2",
+        "border-[rgba(255,255,255,0.1)] bg-card-hover",
         variant === "success" && "border-success/30",
         variant === "error" && "border-error/30",
         variant === "info" && "border-brand-sage/30",

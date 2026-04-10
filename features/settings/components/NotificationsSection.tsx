@@ -41,7 +41,7 @@ export function NotificationsSection({ profile }: Props) {
             }}
             className={cn(
               "relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full p-0.5 transition-colors",
-              "bg-[rgba(255,255,255,0.1)] data-[state=checked]:bg-brand-gold",
+              "bg-white/10 data-[state=checked]:bg-brand-gold",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
             aria-label="Przypomnienie o powtórkach"
@@ -67,7 +67,7 @@ export function NotificationsSection({ profile }: Props) {
             }}
             className={cn(
               "relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full p-0.5 transition-colors",
-              "bg-[rgba(255,255,255,0.1)] data-[state=checked]:bg-brand-gold",
+              "bg-white/10 data-[state=checked]:bg-brand-gold",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
             aria-label="Raport tygodniowy"

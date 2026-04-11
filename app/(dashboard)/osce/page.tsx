@@ -52,7 +52,7 @@ export default async function OsceListPage() {
                 {group.title}
               </h2>
               <ul className="mt-6 grid list-none grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {group.stations.map((station, idx) => (
+                {group.stations.map((station) => (
                   <li key={station.id}>
                     <Link
                       href={`/osce/${station.id}`}
@@ -63,7 +63,7 @@ export default async function OsceListPage() {
                     >
                       <div className="flex items-start gap-4">
                         <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-sage/15 font-body text-body-sm font-bold text-brand-sage">
-                          {idx + 1}
+                          {station.display_order}
                         </span>
                         <div className="min-w-0 flex-1">
                           <span className="block font-body text-body-md font-semibold text-primary group-hover:text-brand-gold">

@@ -1,5 +1,24 @@
 import type { SubjectStats } from "@/features/subjects/server/loadSubjectDashboard";
 
+function formatNextReview(iso: string): string {
+  const target = new Date(iso);
+  const now = new Date();
+
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const targetDay = new Date(target.getFullYear(), target.getMonth(), target.getDate());
+  const diffDays = Math.round(
+    (targetDay.getTime() - todayStart.getTime()) / 86_400_000,
+  );
+
+  if (diffDays <= 0) return "Dziś";
+  if (diffDays === 1) return "Jutro";
+  if (diffDays <= 7) return `Za ${diffDays} dni`;
+  return targetDay.toLocaleDateString("pl-PL", {
+    day: "numeric",
+    month: "short",
+  });
+}
+
 const RING_SIZE = 64;
 const R = 26;
 const C = 2 * Math.PI * R;
@@ -87,7 +106,20 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           Następna powtórka
         </p>
-        <p className="mt-3 font-body text-lg text-muted">Brak danych</p>
+        {stats.nextReviewDate ? (
+          <>
+            <p className="mt-3 font-body text-2xl text-primary">
+              {formatNextReview(stats.nextReviewDate)}
+            </p>
+            {stats.dueCount > 0 && (
+              <p className="mt-2 font-body text-body-xs text-brand-gold">
+                {stats.dueCount} {stats.dueCount === 1 ? "pytanie" : stats.dueCount < 5 ? "pytania" : "pytań"} do powtórki
+              </p>
+            )}
+          </>
+        ) : (
+          <p className="mt-3 font-body text-lg text-muted">Brak zaplanowanych</p>
+        )}
       </div>
     </div>
   );

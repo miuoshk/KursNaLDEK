@@ -12,6 +12,8 @@ export type SubjectStats = {
   correctAnswers: number;
   accuracy: number;
   masteryPct: number;
+  nextReviewDate: string | null;
+  dueCount: number;
 };
 
 export type SubjectDashboardLoadResult =
@@ -82,8 +84,13 @@ export async function loadSubjectDashboard(
 
     const topicIds = (topicRows ?? []).map((t) => t.id as string);
 
-    // Fetch per-topic user progress in one query
-    const progressByTopic = new Map<string, { answered: number; correct: number }>();
+    const progressByTopic = new Map<
+      string,
+      { uniqueAnswered: number; totalAttempts: number; totalCorrect: number }
+    >();
+    let nextReviewDate: Date | null = null;
+    let dueCount = 0;
+
     if (user && topicIds.length > 0) {
       const { data: qRows } = await supabase
         .from("questions")
@@ -99,17 +106,33 @@ export async function loadSubjectDashboard(
       if (qids.length > 0) {
         const { data: uqpRows } = await supabase
           .from("user_question_progress")
-          .select("question_id, times_answered, times_correct")
+          .select("question_id, times_answered, times_correct, next_review, state")
           .eq("user_id", user.id)
           .in("question_id", qids);
 
+        const now = new Date();
         for (const r of uqpRows ?? []) {
           const tid = topicByQ.get(r.question_id as string);
           if (!tid) continue;
-          const cur = progressByTopic.get(tid) ?? { answered: 0, correct: 0 };
-          cur.answered += Number(r.times_answered ?? 0);
-          cur.correct += Number(r.times_correct ?? 0);
+          const timesAns = Number(r.times_answered ?? 0);
+          const timesCorr = Number(r.times_correct ?? 0);
+          const cur = progressByTopic.get(tid) ?? {
+            uniqueAnswered: 0,
+            totalAttempts: 0,
+            totalCorrect: 0,
+          };
+          if (timesAns > 0) cur.uniqueAnswered += 1;
+          cur.totalAttempts += timesAns;
+          cur.totalCorrect += timesCorr;
           progressByTopic.set(tid, cur);
+
+          const st = r.state as string | null;
+          const nr = r.next_review as string | null;
+          if (nr && (st === "review" || st === "relearning")) {
+            const nrDate = new Date(nr);
+            if (!nextReviewDate || nrDate < nextReviewDate) nextReviewDate = nrDate;
+            if (nrDate <= now) dueCount += 1;
+          }
         }
       }
     }
@@ -122,20 +145,25 @@ export async function loadSubjectDashboard(
         name: row.name,
         display_order: row.display_order ?? 0,
         question_count: row.question_count ?? 0,
-        answered_count: prog?.answered ?? 0,
-        correct_count: prog?.correct ?? 0,
+        answered_count: prog?.uniqueAnswered ?? 0,
+        correct_count: prog?.totalCorrect ?? 0,
       };
     });
 
     let totalQuestions = 0;
     let answeredQuestions = 0;
-    let correctAnswers = 0;
+    let totalAttempts = 0;
+    let totalCorrect = 0;
     for (const t of topics) {
       totalQuestions += t.question_count;
       answeredQuestions += t.answered_count;
-      correctAnswers += t.correct_count;
     }
-    const accuracy = answeredQuestions > 0 ? correctAnswers / answeredQuestions : 0;
+    for (const p of progressByTopic.values()) {
+      totalAttempts += p.totalAttempts;
+      totalCorrect += p.totalCorrect;
+    }
+    const correctAnswers = totalCorrect;
+    const accuracy = totalAttempts > 0 ? totalCorrect / totalAttempts : 0;
     const masteryPct = totalQuestions > 0
       ? Math.round((answeredQuestions > 0 ? accuracy : 0) * (Math.min(1, answeredQuestions / totalQuestions)) * 100)
       : 0;
@@ -144,7 +172,15 @@ export async function loadSubjectDashboard(
       ok: true,
       subject: subject as Subject,
       topics,
-      stats: { totalQuestions, answeredQuestions, correctAnswers, accuracy, masteryPct },
+      stats: {
+        totalQuestions,
+        answeredQuestions,
+        correctAnswers,
+        accuracy,
+        masteryPct,
+        nextReviewDate: nextReviewDate?.toISOString() ?? null,
+        dueCount,
+      },
     };
   } catch (e) {
     console.error("[loadSubjectDashboard] unexpected:", e);

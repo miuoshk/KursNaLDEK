@@ -21,6 +21,13 @@ export function SessionSummaryClient({ summary }: { summary: SessionSummaryData 
     };
   }, [summary.subjectName, setSecondSegment, setThirdSegment]);
 
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem(`session_${summary.sessionId}_completed`);
+      sessionStorage.removeItem(`kurs-session-${summary.sessionId}`);
+    } catch { /* SSR guard */ }
+  }, [summary.sessionId]);
+
   return (
     <div className="mx-auto w-full max-w-4xl space-y-10 pb-12">
       <SummaryHero summary={summary} />

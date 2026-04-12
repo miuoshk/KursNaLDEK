@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import type { MutableRefObject } from "react";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
 import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
@@ -62,8 +62,12 @@ export function useSessionStudyFlow(
     profileStreak,
   } = meta;
 
+  const finishingRef = useRef(false);
+
   const finishSession = useCallback(
     (summary: SessionSummaryData) => {
+      if (finishingRef.current) return;
+      finishingRef.current = true;
       persistSessionSummaryToStorage(sessionId, summary);
       onComplete(summary);
       scheduleServerSessionComplete(sessionId, sessionStart.current, onComplete);

@@ -47,6 +47,15 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
     let cancelled = false;
 
     async function run() {
+      if (sessionId !== "new") {
+        try {
+          if (sessionStorage.getItem(`session_${sessionId}_completed`)) {
+            router.replace(`/sesja/${sessionId}/podsumowanie`);
+            return;
+          }
+        } catch { /* SSR guard */ }
+      }
+
       if (sessionId === "new") {
         const subj = searchParams.get("subject")?.trim() ?? "";
         const mode = parseMode(searchParams.get("mode"));

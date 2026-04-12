@@ -44,13 +44,16 @@ export async function loadGamification(
   const xp = profile?.xp ?? 0;
   const streak = profile?.current_streak ?? 0;
 
-  let totalAnswered = 0;
+  let totalAttempts = 0;
   let totalCorrect = 0;
+  let uniqueAnswered = 0;
   for (const r of uqp ?? []) {
-    totalAnswered += r.times_answered ?? 0;
+    const ta = r.times_answered ?? 0;
+    totalAttempts += ta;
     totalCorrect += r.times_correct ?? 0;
+    if (ta > 0) uniqueAnswered += 1;
   }
-  const avgAccuracy = totalAnswered > 0 ? totalCorrect / totalAnswered : 0;
+  const avgAccuracy = totalAttempts > 0 ? totalCorrect / totalAttempts : 0;
 
   const { data: lifeSess } = await supabase
     .from("study_sessions")
@@ -102,8 +105,8 @@ export async function loadGamification(
       unlocked = (completedSessions ?? 0) >= 1;
     }
     if (def.id === "setka" || def.id === "tysiac") {
-      progress = Math.min(def.targetValue, totalAnswered);
-      unlocked = totalAnswered >= def.targetValue;
+      progress = Math.min(def.targetValue, totalAttempts);
+      unlocked = totalAttempts >= def.targetValue;
     }
     if (
       def.id === "tygodniowy-rytm" ||
@@ -148,7 +151,7 @@ export async function loadGamification(
     displayName,
     initials,
     streak,
-    totalQuestionsAnswered: totalAnswered,
+    totalQuestionsAnswered: uniqueAnswered,
     avgAccuracy,
     totalStudyMinutes,
     achievements,

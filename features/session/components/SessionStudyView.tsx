@@ -47,11 +47,18 @@ export function SessionStudyView({
 
   const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
   const completedRef = useRef(false);
+  const isCompleting = useRef(false);
 
   const handleComplete = useCallback((summary: SessionSummaryData) => {
+    if (!isCompleting.current) {
+      isCompleting.current = true;
+      try {
+        sessionStorage.setItem(`session_${sessionId}_completed`, "true");
+      } catch { /* SSR / quota */ }
+    }
     completedRef.current = true;
     setCompletedSummary(summary);
-  }, []);
+  }, [sessionId]);
 
   const s = useSession(questions, sessionId, mode);
   const qKey = s.currentQuestion?.id ?? "";

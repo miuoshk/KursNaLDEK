@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Stethoscope } from "lucide-react";
+import { SmilePlus } from "lucide-react";
 import { OverallProgress } from "@/features/subjects/components/OverallProgress";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectGrid } from "@/features/subjects/components/SubjectGrid";
@@ -47,7 +47,7 @@ export default async function PrzedmiotyPage() {
               href="/osce"
               className="group flex w-full items-start gap-4 rounded-2xl border border-[#C9A84C]/30 bg-[#002A27] p-6 transition-all duration-200 ease-out hover:border-[#C9A84C]/50"
             >
-              <Stethoscope
+              <SmilePlus
                 className="h-8 w-8 shrink-0 text-[#C9A84C]"
                 aria-hidden
               />

@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { OsceBreadcrumbSetter } from "@/features/osce/components/OsceBreadcrumbSetter";
 import { OsceExamTasksBox } from "@/features/osce/components/OsceExamTasksBox";
 import { TopicSession } from "@/features/osce/components/TopicSession";
-import { OPG_ATLAS_TOPIC_ID } from "@/features/osce/constants/opgAtlas";
+import { OPG_QUIZ_TOPIC_ID } from "@/features/osce/constants/opgAtlas";
 import { createOsceTopicSession } from "@/features/osce/server/createOsceTopicSession";
 import { loadOPGAtlas, loadOPGStructures } from "@/features/osce/server/loadOPGData";
 import { loadOsceStation } from "@/features/osce/server/loadOsceStation";
@@ -43,7 +43,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
   const { station } = result;
 
   // OPG quiz — dedicated interactive view
-  if (topicId === OPG_ATLAS_TOPIC_ID) {
+  if (topicId === OPG_QUIZ_TOPIC_ID) {
     const topicMeta = result.topics.find((t) => t.id === topicId);
     const topicName = topicMeta?.name ?? "Panorama (OPG)";
 

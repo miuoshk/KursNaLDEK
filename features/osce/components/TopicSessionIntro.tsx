@@ -10,13 +10,15 @@ export type TopicSessionIntroProps = {
 };
 
 export function TopicSessionIntro({ knowledgeCard, onStart }: TopicSessionIntroProps) {
-  const hasKnowledgeCard = Boolean(knowledgeCard && knowledgeCard.trim().length > 0);
+  const trimmedKnowledgeCard = knowledgeCard?.trim() ?? null;
+  const knowledgeCardContent = trimmedKnowledgeCard ?? "";
+  const hasKnowledgeCard = knowledgeCardContent.length > 0;
 
   return (
     <div className="rounded-card border border-border bg-card p-6">
       <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
       {hasKnowledgeCard ? (
-        <div className="mt-4">{markdownBlock(knowledgeCard)}</div>
+        <div className="mt-4">{markdownBlock(knowledgeCardContent)}</div>
       ) : (
         <div className="mt-4 rounded-xl border border-[#367368]/10 bg-[#367368]/5 p-6 text-center">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#367368]/10">

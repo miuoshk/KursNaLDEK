@@ -36,7 +36,7 @@ import {
 import type { TopicSessionQuestionRow } from "@/features/osce/types";
 import { cn } from "@/lib/utils";
 
-export type ExamTask = { task: number; description: string };
+export type ExamTask = { task_number: number; description: string };
 
 export type TopicSessionProps = {
   initialSessionId: string;
@@ -85,7 +85,9 @@ export function TopicSession({
   const [results, setResults] = useState<ResultRow[]>([]);
   const [retryMode, setRetryMode] = useState(false);
   const [timerSec, setTimerSec] = useState(0);
-  const [tasksExpanded, setTasksExpanded] = useState(false);
+  const [tasksExpanded, setTasksExpanded] = useState(
+    () => !(examTasks != null && examTasks.length > 0),
+  );
   const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
 
   const questionStartRef = useRef<number>(Date.now());
@@ -356,7 +358,8 @@ export function TopicSession({
     );
   })();
 
-  const hasExamTasks = examTasks != null && examTasks.length > 0;
+  const examTasksList = examTasks ?? [];
+  const hasExamTasks = examTasksList.length > 0;
   const pct = total > 0 ? Math.min(100, ((index + 1) / total) * 100) : 0;
 
   if (phase === "intro" && !retryMode) {
@@ -482,48 +485,58 @@ export function TopicSession({
       {/* Scrollable question area */}
       <div className="flex-1 overflow-y-auto px-4 pb-28 pt-6 sm:px-8">
         {/* Collapsible exam tasks */}
-        {hasExamTasks ? (
-          <div className="mx-auto mb-6 w-full max-w-3xl">
-            <button
-              type="button"
-              onClick={() => setTasksExpanded((v) => !v)}
-              className="flex w-full items-center gap-2 rounded-card border border-brand-sage/25 bg-card px-4 py-3 text-left transition hover:border-brand-sage/40"
-            >
-              <ClipboardList className="size-4 shrink-0 text-brand-gold" aria-hidden />
-              <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">
-                Zadania na stacji
-              </span>
-              <ChevronDown
-                className={cn(
-                  "size-4 shrink-0 text-muted transition-transform duration-200",
-                  tasksExpanded && "rotate-180",
-                )}
-                aria-hidden
-              />
-            </button>
-            <AnimatePresence initial={false}>
-              {tasksExpanded ? (
-                <motion.div
-                  key="tasks-content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="overflow-hidden"
-                >
-                  <ul className="space-y-2 px-4 pb-3 pt-3">
-                    {examTasks!.map((t) => (
-                      <li key={t.task} className="font-body text-body-sm text-secondary">
-                        <span className="font-semibold text-primary">Zadanie {t.task}:</span>{" "}
-                        {t.description}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
-        ) : null}
+        <div className="mx-auto mb-6 w-full max-w-3xl">
+          <button
+            type="button"
+            onClick={() => setTasksExpanded((v) => !v)}
+            className="flex w-full items-center gap-2 rounded-card border border-brand-sage/25 bg-card px-4 py-3 text-left transition hover:border-brand-sage/40"
+          >
+            <ClipboardList className="size-4 shrink-0 text-brand-gold" aria-hidden />
+            <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">
+              Zadania na stacji
+            </span>
+            <ChevronDown
+              className={cn(
+                "size-4 shrink-0 text-muted transition-transform duration-200",
+                tasksExpanded && "rotate-180",
+              )}
+              aria-hidden
+            />
+          </button>
+          <AnimatePresence initial={false}>
+            {tasksExpanded ? (
+              <motion.div
+                key="tasks-content"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="overflow-hidden"
+              >
+                <div className="rounded-card border border-gold/20 bg-brand-gold/5 px-4 pb-3 pt-3">
+                  {hasExamTasks ? (
+                    <ul className="space-y-2">
+                      {examTasksList.map((t, i) => {
+                        const n =
+                          Number.isFinite(t.task_number) && t.task_number > 0 ? t.task_number : i + 1;
+                        return (
+                          <li key={`${n}-${i}`} className="font-body text-body-sm text-secondary">
+                            <span className="font-semibold text-primary">Zadanie {n}:</span>{" "}
+                            {t.description}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : (
+                    <p className="font-body text-body-sm text-secondary">
+                      Zadania zostaną wkrótce uzupełnione
+                    </p>
+                  )}
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
 
         {/* Topic breadcrumb */}
         <div className="mx-auto mb-2 w-full max-w-3xl">

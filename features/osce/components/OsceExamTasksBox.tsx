@@ -1,7 +1,7 @@
 import { ClipboardList } from "lucide-react";
 
 type ExamTask = {
-  task: number;
+  task_number: number;
   description: string;
 };
 
@@ -10,13 +10,12 @@ type OsceExamTasksBoxProps = {
 };
 
 export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
-  if (!examTasks || examTasks.length === 0) {
-    return null;
-  }
+  const tasks = examTasks ?? [];
+  const hasTasks = tasks.length > 0;
 
   return (
     <div
-      className="rounded-card border border-brand-sage/35 bg-card p-5"
+      className="rounded-card border border-gold/20 bg-brand-gold/5 p-5"
       role="region"
       aria-label="Zadania egzaminacyjne na stacji"
     >
@@ -29,14 +28,23 @@ export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
           <h2 className="font-heading text-heading-sm text-brand-gold">
             Zadania na stacji
           </h2>
-          <ul className="mt-3 space-y-2">
-            {examTasks.map((t) => (
-              <li key={t.task} className="font-body text-body-sm text-secondary">
-                <span className="font-semibold text-primary">Zadanie {t.task}:</span>{" "}
-                {t.description}
-              </li>
-            ))}
-          </ul>
+          {hasTasks ? (
+            <ul className="mt-3 space-y-2">
+              {tasks.map((t, i) => {
+                const n = Number.isFinite(t.task_number) && t.task_number > 0 ? t.task_number : i + 1;
+                return (
+                  <li key={`${n}-${i}`} className="font-body text-body-sm text-secondary">
+                    <span className="font-semibold text-primary">Zadanie {n}:</span>{" "}
+                    {t.description}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p className="mt-3 font-body text-body-sm text-secondary">
+              Zadania zostaną wkrótce uzupełnione
+            </p>
+          )}
         </div>
       </div>
     </div>

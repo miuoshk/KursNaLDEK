@@ -6,6 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import { CheckCircle, XCircle } from "lucide-react";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { cn } from "@/lib/utils";
 
@@ -31,9 +32,53 @@ export function SummaryAnswerStrip({ summary }: { summary: SessionSummaryData })
   );
   const totalSlots = summary.totalQuestions;
   const answers = summary.answers;
+  const scorePercent = Math.round(summary.accuracy * 100);
+  const passThreshold = 60;
+  const isPassed = scorePercent >= passThreshold;
+  const missingPercent = Math.max(0, passThreshold - scorePercent);
+  const isOsceSession =
+    summary.mode === "osce_topic" || summary.mode.toLowerCase().includes("osce");
 
   return (
     <section className="space-y-4">
+      {isOsceSession ? (
+        <div
+          className={cn(
+            "rounded-lg border p-3",
+            isPassed
+              ? "border-green-500/20 bg-green-500/10"
+              : "border-red-500/20 bg-red-500/10",
+          )}
+        >
+          <div className="flex items-start gap-2">
+            {isPassed ? (
+              <CheckCircle className="mt-0.5 size-4 shrink-0 text-green-400" aria-hidden />
+            ) : (
+              <XCircle className="mt-0.5 size-4 shrink-0 text-red-400" aria-hidden />
+            )}
+            <div>
+              <p
+                className={cn(
+                  "font-body text-sm font-bold",
+                  isPassed ? "text-green-400" : "text-red-400",
+                )}
+              >
+                {isPassed ? "STACJA ZALICZONA" : "STACJA NIEZALICZONA"}
+              </p>
+              <p
+                className={cn(
+                  "mt-1 font-body text-xs",
+                  isPassed ? "text-green-400/60" : "text-red-400/60",
+                )}
+              >
+                {isPassed
+                  ? `Wynik ${scorePercent}% - próg zaliczenia: ${passThreshold}%`
+                  : `Wynik ${scorePercent}% - brakuje ${missingPercent}% do zaliczenia`}
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <h2 className="font-heading text-heading-sm text-primary">Przebieg sesji</h2>
       <div className="flex flex-wrap gap-1.5">
         {Array.from({ length: totalSlots }, (_, i) => {

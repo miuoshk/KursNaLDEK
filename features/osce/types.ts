@@ -4,7 +4,12 @@ export type OsceStation = {
   short_name: string;
   display_order: number;
   exam_day: number | null;
-  exam_tasks: { task: number; description: string }[] | null;
+  exam_tasks: { task_number: number; description: string }[] | null;
+  competencies: { code: string; description: string }[] | null;
+  pass_threshold: number | null;
+  exam_info: { format: string; tip: string; source?: string } | null;
+  question_count: number;
+  answered_questions: number;
 };
 
 export type OsceTopic = {

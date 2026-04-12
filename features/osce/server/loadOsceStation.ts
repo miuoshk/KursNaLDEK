@@ -1,3 +1,4 @@
+import { normalizeExamTasks } from "@/features/osce/lib/normalizeExamTasks";
 import { createClient } from "@/lib/supabase/server";
 import type { OsceStation, OsceTopic } from "@/features/osce/types";
 
@@ -13,7 +14,7 @@ export async function loadOsceStation(stationId: string): Promise<LoadOsceStatio
       supabase
         .from("subjects")
         .select(
-          "id, name, short_name, display_order, exam_day, exam_tasks, product",
+          "id, name, short_name, display_order, exam_day, exam_tasks, competencies, pass_threshold, exam_info, product",
         )
         .eq("id", stationId)
         .eq("product", "osce")
@@ -60,7 +61,12 @@ export async function loadOsceStation(stationId: string): Promise<LoadOsceStatio
       short_name: subject.short_name as string,
       display_order: (subject.display_order as number) ?? 0,
       exam_day: (subject.exam_day as number | null) ?? null,
-      exam_tasks: subject.exam_tasks ?? null,
+      exam_tasks: normalizeExamTasks(subject.exam_tasks),
+      competencies: (subject.competencies as OsceStation["competencies"]) ?? null,
+      pass_threshold: (subject.pass_threshold as number | null) ?? null,
+      exam_info: (subject.exam_info as OsceStation["exam_info"]) ?? null,
+      question_count: 0,
+      answered_questions: 0,
     };
 
     const topics: OsceTopic[] = (topicRows ?? []).map((row) => ({

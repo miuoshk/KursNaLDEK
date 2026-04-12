@@ -40,6 +40,7 @@ export default async function DashboardLayout({
     daily_goal: number | null;
     longest_streak: number | null;
     xp: number | null;
+    exam_date: string | null;
   } | null = null;
 
   if (testMode) {
@@ -64,6 +65,7 @@ export default async function DashboardLayout({
         daily_goal: profileRow.daily_goal,
         longest_streak: profileRow.longest_streak,
         xp: profileRow.xp ?? null,
+        exam_date: (profileRow.exam_date as string | null | undefined) ?? null,
       };
     }
   }

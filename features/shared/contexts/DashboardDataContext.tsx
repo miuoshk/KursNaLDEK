@@ -9,6 +9,7 @@ export type DashboardProfileSnapshot = {
   daily_goal: number | null;
   longest_streak: number | null;
   xp: number | null;
+  exam_date: string | null;
 } | null;
 
 type DashboardDataValue = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Stethoscope, ChevronRight } from "lucide-react";
+import { Stethoscope } from "lucide-react";
 import { OverallProgress } from "@/features/subjects/components/OverallProgress";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectGrid } from "@/features/subjects/components/SubjectGrid";
@@ -36,6 +36,37 @@ export default async function PrzedmiotyPage() {
           mastered={overallProgress.mastered}
           reviewing={overallProgress.reviewing}
         />
+
+        <section>
+          <h2 className="font-heading text-xl text-[#C9A84C]">Egzamin praktyczny OSCE</h2>
+          <p className="mt-2 font-body text-sm text-secondary">
+            7 stacji · 14 zadań · próg zaliczenia: 60% na stację
+          </p>
+          <div className="mt-4">
+            <Link
+              href="/osce"
+              className="group flex w-full items-start gap-4 rounded-2xl border border-[#C9A84C]/30 bg-[#002A27] p-6 transition-all duration-200 ease-out hover:border-[#C9A84C]/50"
+            >
+              <Stethoscope
+                className="h-8 w-8 shrink-0 text-[#C9A84C]"
+                aria-hidden
+              />
+              <div className="min-w-0 flex-1">
+                <p className="font-body text-base text-primary">
+                  Kurs na OSCE — Stacje, tematy i symulacje egzaminu praktycznego
+                </p>
+                <p className="mt-3 inline-flex rounded-full bg-[#367368]/20 px-3 py-1 font-body text-xs text-[#367368]">
+                  Dzień 1: 3 stacje · Dzień 2: 4 stacje
+                </p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        <div className="pt-2">
+          <h2 className="text-sm uppercase tracking-widest text-white/60">Nauki podstawowe</h2>
+        </div>
+
         {subjects.length === 0 ? (
           <p className="font-body text-body-md text-secondary">
             Brak przedmiotów do wyświetlenia. Skontaktuj się z administratorem lub spróbuj później.
@@ -43,31 +74,6 @@ export default async function PrzedmiotyPage() {
         ) : (
           <SubjectGrid subjects={subjects} isSubscribed={isSubscribed} />
         )}
-
-        <section className="mt-12">
-          <h2 className="font-heading text-2xl font-bold text-primary">Egzamin praktyczny</h2>
-          <div className="mt-4">
-            <Link
-              href="/osce"
-              className="group flex items-center gap-4 rounded-card border border-border bg-card p-5 transition-all duration-200 ease-out hover:border-brand-sage/30"
-            >
-              <Stethoscope
-                className="size-5 shrink-0 text-secondary transition-colors duration-200 group-hover:text-brand-sage"
-                aria-hidden
-              />
-              <div className="min-w-0 flex-1">
-                <h3 className="font-heading text-body-lg text-primary">OSCE</h3>
-                <p className="mt-1 font-body text-body-sm text-muted">
-                  Stacje, tematy i symulacje egzaminu praktycznego
-                </p>
-              </div>
-              <ChevronRight
-                className="size-5 shrink-0 text-secondary transition-colors duration-200 group-hover:text-brand-sage"
-                aria-hidden
-              />
-            </Link>
-          </div>
-        </section>
       </div>
     </div>
   );

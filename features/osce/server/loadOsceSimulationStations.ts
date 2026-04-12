@@ -8,7 +8,9 @@ export async function loadOsceSimulationStations(
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("subjects")
-    .select("id, name, short_name, display_order, exam_day, exam_tasks, product")
+    .select(
+      "id, name, short_name, display_order, exam_day, exam_tasks, competencies, pass_threshold, exam_info, product",
+    )
     .eq("product", "osce")
     .eq("exam_day", examDay)
     .order("display_order", { ascending: true });
@@ -25,5 +27,10 @@ export async function loadOsceSimulationStations(
     display_order: (row.display_order as number) ?? 0,
     exam_day: (row.exam_day as number | null) ?? null,
     exam_tasks: normalizeExamTasks(row.exam_tasks),
+    competencies: (row.competencies as OsceStation["competencies"]) ?? null,
+    pass_threshold: (row.pass_threshold as number | null) ?? null,
+    exam_info: (row.exam_info as OsceStation["exam_info"]) ?? null,
+    question_count: 0,
+    answered_questions: 0,
   }));
 }

@@ -76,7 +76,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
           ) : (
             <div className="rounded-card border border-border bg-card p-6">
               <p className="font-body text-body-sm text-secondary">
-                Dane atlasu OPG nie zostaly jeszcze skonfigurowane.
+                Dane atlasu OPG nie zostały jeszcze skonfigurowane.
               </p>
             </div>
           )}
@@ -168,9 +168,9 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
           />
         ) : (
           <div className="rounded-card border border-border bg-card p-6">
-            <h2 className="font-heading text-heading-sm text-primary">Sesja pytan</h2>
+            <h2 className="font-heading text-heading-sm text-primary">Sesja pytań</h2>
             <p className="mt-2 font-body text-body-sm text-secondary">
-              Brak aktywnych pytan w tym temacie.
+              Brak aktywnych pytań w tym temacie.
             </p>
           </div>
         )}

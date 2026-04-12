@@ -116,9 +116,9 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
         </div>
       </section>
 
-      {/* Ilosc pytan */}
+      {/* Ilość pytań */}
       <section>
-        <p style={sectionLabelStyle}>Ilosc pytan</p>
+        <p style={sectionLabelStyle}>Ilość pytań</p>
         <div style={{ display: 'flex', gap: 8 }}>
           {PRESET_COUNTS.map((n) => (
             <button
@@ -135,7 +135,7 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
             onClick={handleCustomToggle}
             style={chipStyle(isCustomCount)}
           >
-            Wlasne
+            Własne
           </button>
         </div>
 

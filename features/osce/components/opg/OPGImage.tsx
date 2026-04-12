@@ -20,7 +20,7 @@ export default function OPGImage({
     <div className="relative w-full">
       <img
         src={imageUrl}
-        alt="Zdjecie pantomograficzne"
+        alt="Zdjęcie pantomograficzne"
         className="block w-full rounded-lg"
         draggable={false}
       />

@@ -19,7 +19,7 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 /**
- * Losuje do OSCE_TOPICS_PER_STATION tematow stacji i po OSCE_QUESTIONS_PER_TOPIC pytan z kazdego.
+ * Losuje do OSCE_TOPICS_PER_STATION tematów stacji i po OSCE_QUESTIONS_PER_TOPIC pytań z każdego.
  */
 export async function fetchSimulationStationQuestions(
   stationId: string,

@@ -103,7 +103,7 @@ export default function OPGResultsSummary({
                       fontSize: 13,
                     }}
                   >
-                    Twoja odpowiedz: {answer.userInput}
+                    Twoja odpowiedź: {answer.userInput}
                   </p>
                 )}
               </div>
@@ -129,7 +129,7 @@ export default function OPGResultsSummary({
             cursor: 'pointer',
           }}
         >
-          Powtorz quiz
+          Powtórz quiz
         </button>
 
         <button
@@ -148,7 +148,7 @@ export default function OPGResultsSummary({
             cursor: wrongCount > 0 ? 'pointer' : 'default',
           }}
         >
-          Powtorz bledne ({wrongCount})
+          Powtórz błędne ({wrongCount})
         </button>
 
         <button
@@ -165,7 +165,7 @@ export default function OPGResultsSummary({
             cursor: 'pointer',
           }}
         >
-          Wroc do przedmiotow
+          Wróć do stacji
         </button>
       </div>
     </div>

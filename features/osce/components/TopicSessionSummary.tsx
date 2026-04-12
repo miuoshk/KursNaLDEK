@@ -71,7 +71,7 @@ export function TopicSessionSummary({
             href={nextTopicHref}
             className="inline-flex items-center justify-center rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Nastepny temat
+            Następny temat
           </Link>
         ) : null}
         <Link

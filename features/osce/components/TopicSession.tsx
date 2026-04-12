@@ -395,7 +395,7 @@ export function TopicSession({
                 href={nextTopicHref}
                 className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
               >
-                Nastepny temat
+                Następny temat
               </Link>
             ) : null}
             {wrongOnly.length > 0 ? (

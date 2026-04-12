@@ -42,7 +42,7 @@ export default function OPGTextInputPanel({
 
   const heading =
     question.direction === 'number_to_name'
-      ? `Struktura nr ${question.targetStructure.structure_number} — wpisz nazwe:`
+      ? `Struktura nr ${question.targetStructure.structure_number} — wpisz nazwę:`
       : `Wpisz numer struktury: ${question.targetStructure.name_pl}`
 
   function handleSubmit() {
@@ -68,7 +68,7 @@ export default function OPGTextInputPanel({
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={isInputLocked}
-        placeholder="Wpisz odpowiedz..."
+        placeholder="Wpisz odpowiedź..."
         style={{
           width: '100%',
           padding: 12,
@@ -103,7 +103,7 @@ export default function OPGTextInputPanel({
             isInputLocked || !inputValue.trim() ? 'default' : 'pointer',
         }}
       >
-        Sprawdz
+        Sprawdź
       </button>
 
       {feedback && (
@@ -115,18 +115,18 @@ export default function OPGTextInputPanel({
           {feedback.isCorrect && feedback.correctedTypo && (
             <>
               <p style={{ color: '#4ade80' }}>
-                Poprawnie! (literowka skorygowana)
+                Poprawnie! (literówka skorygowana)
               </p>
               <p style={{ color: 'rgba(201, 168, 76, 0.7)', marginTop: 4 }}>
-                Prawidlowa nazwa: {feedback.correctAnswer}
+                Prawidłowa nazwa: {feedback.correctAnswer}
               </p>
             </>
           )}
 
           {feedback.isClose && (
             <p style={{ color: '#C9A84C' }}>
-              Blisko! Sprobuj jeszcze raz ({attemptsLeft}{' '}
-              {attemptsLeft === 1 ? 'proba' : 'proby'})
+              Blisko! Spróbuj jeszcze raz ({attemptsLeft}{' '}
+              {attemptsLeft === 1 ? 'próba' : 'próby'})
             </p>
           )}
 
@@ -134,7 +134,7 @@ export default function OPGTextInputPanel({
             <>
               <p style={{ color: '#f87171' }}>Niepoprawnie.</p>
               <p style={{ color: 'rgba(201, 168, 76, 0.7)', marginTop: 4 }}>
-                Prawidlowa odpowiedz: {feedback.correctAnswer}
+                Prawidłowa odpowiedź: {feedback.correctAnswer}
               </p>
             </>
           )}

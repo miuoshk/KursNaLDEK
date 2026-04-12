@@ -1,9 +1,9 @@
 "use client";
 
-import { BookOpen } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { BookOpen, ChevronDown, ClipboardList, X } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { completeSession } from "@/features/session/api/completeSession";
-import { submitAnswer } from "@/features/session/api/submitAnswer";
 import type {
   ConversionDrillRoundResult,
   ConversionDrillSummary,
@@ -19,6 +19,13 @@ import { TopicSessionIntro } from "@/features/osce/components/TopicSessionIntro"
 import { TopicSessionSummary } from "@/features/osce/components/TopicSessionSummary";
 import { createOsceTopicSession } from "@/features/osce/server/createOsceTopicSession";
 import { encodeTopicAnswerSelection } from "@/features/osce/lib/encodeTopicAnswer";
+import { completeSession } from "@/features/session/api/completeSession";
+import { submitAnswer } from "@/features/session/api/submitAnswer";
+import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerStrip";
+import { SummaryHero } from "@/features/session/components/SummaryHero";
+import { SummaryTopicBreakdown } from "@/features/session/components/SummaryTopicBreakdown";
+import { SummaryXpCard } from "@/features/session/components/SummaryXpCard";
+import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import {
   resolveOsceQuestionKind,
   toOsceConversionItems,
@@ -27,6 +34,9 @@ import {
   toOsceSingleChoice,
 } from "@/features/osce/lib/topicQuestionMappers";
 import type { TopicSessionQuestionRow } from "@/features/osce/types";
+import { cn } from "@/lib/utils";
+
+export type ExamTask = { task: number; description: string };
 
 export type TopicSessionProps = {
   initialSessionId: string;
@@ -38,6 +48,7 @@ export type TopicSessionProps = {
   questions: TopicSessionQuestionRow[];
   nextTopicId: string | null;
   stationHref: string;
+  examTasks: ExamTask[] | null;
 };
 
 type Phase = "intro" | "questions" | "summary";
@@ -46,6 +57,12 @@ function truncateLabel(text: string, max = 96): string {
   const t = text.replace(/\s+/g, " ").trim();
   if (t.length <= max) return t;
   return `${t.slice(0, max - 1)}…`;
+}
+
+function formatClock(totalSeconds: number) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
 export function TopicSession({
@@ -58,6 +75,7 @@ export function TopicSession({
   questions: initialQuestions,
   nextTopicId,
   stationHref,
+  examTasks,
 }: TopicSessionProps) {
   const [phase, setPhase] = useState<Phase>("intro");
   const [showKnowledgeOverlay, setShowKnowledgeOverlay] = useState(false);
@@ -66,6 +84,9 @@ export function TopicSession({
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<ResultRow[]>([]);
   const [retryMode, setRetryMode] = useState(false);
+  const [timerSec, setTimerSec] = useState(0);
+  const [tasksExpanded, setTasksExpanded] = useState(false);
+  const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
 
   const questionStartRef = useRef<number>(Date.now());
   const completedRef = useRef(false);
@@ -93,10 +114,20 @@ export function TopicSession({
   useEffect(() => {
     if (phase !== "summary" || completedRef.current) return;
     completedRef.current = true;
-    void completeSession({ sessionId }).catch(() => {
-      completedRef.current = false;
-    });
-  }, [phase, sessionId]);
+    void completeSession({ sessionId, durationSecondsFallback: timerSec })
+      .then((res) => {
+        if (res.ok) setCompletedSummary(res.summary);
+      })
+      .catch(() => {
+        completedRef.current = false;
+      });
+  }, [phase, sessionId, timerSec]);
+
+  useEffect(() => {
+    if (phase !== "questions") return;
+    const t = setInterval(() => setTimerSec((x) => x + 1), 1000);
+    return () => clearInterval(t);
+  }, [phase]);
 
   const timeSpentSeconds = useCallback(() => {
     return Math.max(0, Math.round((Date.now() - questionStartRef.current) / 1000));
@@ -233,10 +264,12 @@ export function TopicSession({
     });
     if (!created.ok) return;
     completedRef.current = false;
+    setCompletedSummary(null);
     setSessionId(created.sessionId);
     setQueue(wrongOnly);
     setResults([]);
     setIndex(0);
+    setTimerSec(0);
     setRetryMode(true);
     setPhase("questions");
   }, [wrongOnly, stationId, topicId]);
@@ -323,23 +356,12 @@ export function TopicSession({
     );
   })();
 
-  return (
-    <div className="relative">
-      <div className="pointer-events-none absolute right-0 top-0 z-20 flex justify-end sm:right-0">
-        {phase === "questions" ? (
-          <button
-            type="button"
-            onClick={() => setShowKnowledgeOverlay(true)}
-            className="pointer-events-auto inline-flex items-center gap-2 rounded-pill border border-brand-sage/40 bg-card px-3 py-2 font-body text-body-xs text-brand-sage transition hover:bg-brand-sage/10"
-            aria-label="Pokaż kartę wiedzy"
-          >
-            <BookOpen className="size-4 shrink-0" aria-hidden />
-            Karta
-          </button>
-        ) : null}
-      </div>
+  const hasExamTasks = examTasks != null && examTasks.length > 0;
+  const pct = total > 0 ? Math.min(100, ((index + 1) / total) * 100) : 0;
 
-      {phase === "intro" && !retryMode ? (
+  if (phase === "intro" && !retryMode) {
+    return (
+      <>
         <TopicSessionIntro
           knowledgeCard={knowledgeCard}
           onStart={() => {
@@ -347,38 +369,188 @@ export function TopicSession({
             setShowKnowledgeOverlay(false);
           }}
         />
-      ) : phase === "questions" ? (
-        <div>
-          {total > 0 ? (
-            <div className="mb-6">
-              <div className="mb-2 flex items-center justify-between gap-3">
-                <span className="font-body text-body-sm text-secondary">
-                  Pytanie {index + 1} z {total}
-                </span>
-                <span className="font-body text-body-xs text-muted tabular-nums">
-                  {stationShortName} · {topicName}
-                </span>
-              </div>
-              <div className="h-2 w-full overflow-hidden rounded-pill bg-white/[0.08]">
-                <div
-                  className="h-full rounded-pill bg-brand-sage transition-[width] duration-200 ease-out"
-                  style={{ width: `${((index + 1) / total) * 100}%` }}
-                />
-              </div>
+        {showKnowledgeOverlay ? (
+          <KnowledgeOverlay
+            knowledgeCard={knowledgeCard}
+            onClose={() => setShowKnowledgeOverlay(false)}
+          />
+        ) : null}
+      </>
+    );
+  }
+
+  if (phase === "summary") {
+    if (completedSummary) {
+      return (
+        <div className="mx-auto w-full max-w-4xl space-y-10 pb-12">
+          <SummaryHero summary={completedSummary} />
+          <SummaryAnswerStrip summary={completedSummary} />
+          <SummaryTopicBreakdown summary={completedSummary} />
+          <SummaryXpCard summary={completedSummary} />
+
+          {/* OSCE-specific actions */}
+          <div className="flex flex-wrap items-center justify-end gap-4">
+            {nextTopicHref ? (
+              <Link
+                href={nextTopicHref}
+                className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
+              >
+                Następny topik
+              </Link>
+            ) : null}
+            {wrongOnly.length > 0 ? (
+              <button
+                type="button"
+                onClick={() => void handleRetryWrong()}
+                className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold"
+              >
+                Powtórz błędne ({wrongOnly.length})
+              </button>
+            ) : null}
+            <Link
+              href={stationHref}
+              className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
+            >
+              Wróć do stacji
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <TopicSessionSummary
+        results={results}
+        onRetryWrong={handleRetryWrong}
+        hasWrong={wrongOnly.length > 0}
+        nextTopicHref={nextTopicHref}
+        stationHref={stationHref}
+      />
+    );
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col bg-background">
+      {/* Top bar — matches SessionTopBar layout */}
+      <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="shrink-0 rounded-pill bg-card px-4 py-1.5 font-body text-body-sm font-medium text-primary">
+            {stationShortName}
+          </span>
+
+          <div className="min-w-0 flex-1">
+            <p className="font-body text-body-sm text-secondary">
+              Pytanie {index + 1} / {total}
+            </p>
+            <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
+              <div
+                className="h-full rounded-full bg-brand-gold transition-[width] duration-[400ms] ease-out"
+                style={{ width: `${pct}%` }}
+              />
             </div>
+          </div>
+
+          <p className="shrink-0 font-body text-body-md tabular-nums text-primary">
+            {formatClock(timerSec)}
+          </p>
+
+          {knowledgeCard ? (
+            <button
+              type="button"
+              onClick={() => setShowKnowledgeOverlay(true)}
+              className="inline-flex items-center gap-1.5 rounded-pill border border-brand-sage/40 bg-card px-3 py-1.5 font-body text-body-xs text-brand-sage transition hover:bg-brand-sage/10"
+              aria-label="Pokaż kartę wiedzy"
+            >
+              <BookOpen className="size-4 shrink-0" aria-hidden />
+              Karta
+            </button>
           ) : null}
 
-          {current ? <div key={current.id}>{questionBlock}</div> : questionBlock}
+          <a
+            href={stationHref}
+            className={cn(
+              "ml-auto inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-muted transition-colors duration-200 ease-out",
+              "hover:text-error",
+            )}
+          >
+            Zakończ
+            <X className="size-4" aria-hidden />
+          </a>
         </div>
-      ) : (
-        <TopicSessionSummary
-          results={results}
-          onRetryWrong={handleRetryWrong}
-          hasWrong={wrongOnly.length > 0}
-          nextTopicHref={nextTopicHref}
-          stationHref={stationHref}
-        />
-      )}
+      </header>
+
+      {/* Scrollable question area */}
+      <div className="flex-1 overflow-y-auto px-4 pb-28 pt-6 sm:px-8">
+        {/* Collapsible exam tasks */}
+        {hasExamTasks ? (
+          <div className="mx-auto mb-6 w-full max-w-3xl">
+            <button
+              type="button"
+              onClick={() => setTasksExpanded((v) => !v)}
+              className="flex w-full items-center gap-2 rounded-card border border-brand-sage/25 bg-card px-4 py-3 text-left transition hover:border-brand-sage/40"
+            >
+              <ClipboardList className="size-4 shrink-0 text-brand-gold" aria-hidden />
+              <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">
+                Zadania na stacji
+              </span>
+              <ChevronDown
+                className={cn(
+                  "size-4 shrink-0 text-muted transition-transform duration-200",
+                  tasksExpanded && "rotate-180",
+                )}
+                aria-hidden
+              />
+            </button>
+            <AnimatePresence initial={false}>
+              {tasksExpanded ? (
+                <motion.div
+                  key="tasks-content"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <ul className="space-y-2 px-4 pb-3 pt-3">
+                    {examTasks!.map((t) => (
+                      <li key={t.task} className="font-body text-body-sm text-secondary">
+                        <span className="font-semibold text-primary">Zadanie {t.task}:</span>{" "}
+                        {t.description}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+        ) : null}
+
+        {/* Topic breadcrumb */}
+        <div className="mx-auto mb-2 w-full max-w-3xl">
+          <span className="font-body text-body-xs text-muted">
+            {stationShortName} · {topicName}
+          </span>
+        </div>
+
+        {/* Question block */}
+        <div className="mx-auto w-full max-w-3xl">
+          {current ? (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                {questionBlock}
+              </motion.div>
+            </AnimatePresence>
+          ) : (
+            questionBlock
+          )}
+        </div>
+      </div>
 
       {showKnowledgeOverlay ? (
         <KnowledgeOverlay

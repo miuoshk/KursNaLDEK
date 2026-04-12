@@ -1,8 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SettingsProfile } from "@/features/settings/types";
-import type { SessionMode } from "@/features/session/types";
+import type { KnnpSessionMode } from "@/features/session/types";
 
-const DEFAULT_MODE: SessionMode = "inteligentna";
+const DEFAULT_MODE: KnnpSessionMode = "inteligentna";
 
 export async function loadSettings(
   supabase: SupabaseClient,
@@ -23,7 +23,7 @@ export async function loadSettings(
       : (await supabase.auth.getUser()).data.user?.email ?? null;
 
   const rawMode = profileRow?.default_session_mode as string | null;
-  const mode: SessionMode =
+  const mode: KnnpSessionMode =
     rawMode === "inteligentna" || rawMode === "przeglad" || rawMode === "katalog"
       ? rawMode
       : DEFAULT_MODE;

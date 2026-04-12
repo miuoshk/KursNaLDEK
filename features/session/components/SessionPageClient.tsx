@@ -10,7 +10,7 @@ import {
   peekRetryWrongIds,
   removeRetryWrongIds,
 } from "@/features/session/lib/retryWrongStorage";
-import type { SessionMode, SessionQuestion } from "@/features/session/types";
+import type { KnnpSessionMode, SessionQuestion } from "@/features/session/types";
 
 const CACHE_PREFIX = "kurs-session-";
 
@@ -23,11 +23,11 @@ type Bootstrap =
       subjectId: string;
       subjectName: string;
       subjectShortName: string;
-      mode: SessionMode;
+      mode: KnnpSessionMode;
       questions: SessionQuestion[];
     };
 
-function parseMode(v: string | null): SessionMode {
+function parseMode(v: string | null): KnnpSessionMode {
   if (v === "przeglad" || v === "katalog") return v;
   return "inteligentna";
 }
@@ -115,7 +115,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectId: string;
             subjectName: string;
             subjectShortName?: string;
-            mode: SessionMode;
+            mode: KnnpSessionMode;
             questions: SessionQuestion[];
           };
           sessionStorage.removeItem(cacheKey);
@@ -144,10 +144,10 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       }
 
       const dbMode = loaded.mode as string;
-      const mappedMode: SessionMode =
+      const mappedMode: KnnpSessionMode =
         dbMode === "nauka" ? "inteligentna" :
         dbMode === "egzamin" ? "przeglad" :
-        (dbMode as SessionMode);
+        (dbMode as KnnpSessionMode);
 
       setBoot({
         status: "ready",

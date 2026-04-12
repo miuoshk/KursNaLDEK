@@ -1,4 +1,5 @@
-export type SessionMode = "inteligentna" | "przeglad" | "katalog";
+export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
+export type SessionMode = KnnpSessionMode | "osce_topic";
 
 export type Confidence = "nie_wiedzialem" | "troche" | "na_pewno";
 

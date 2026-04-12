@@ -4,7 +4,7 @@ import { ChevronDown, Minus, Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { updateStudyPreferences } from "@/features/settings/api/updateStudyPreferences";
 import type { SettingsProfile } from "@/features/settings/types";
-import type { SessionMode } from "@/features/session/types";
+import type { KnnpSessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
 
 const selectClass =
@@ -20,7 +20,7 @@ function normalizeCount(n: number): 10 | 25 | 50 {
 export function StudyPreferencesSection({ profile }: Props) {
   const { toast } = useToast();
   const [goal, setGoal] = useState(profile.daily_goal);
-  const [mode, setMode] = useState<SessionMode>(profile.default_session_mode);
+  const [mode, setMode] = useState<KnnpSessionMode>(profile.default_session_mode);
   const [count, setCount] = useState<10 | 25 | 50>(normalizeCount(profile.default_question_count));
   const [savedFlash, setSavedFlash] = useState(false);
   const skip = useRef(true);
@@ -87,7 +87,7 @@ export function StudyPreferencesSection({ profile }: Props) {
             <select
               id="sm"
               value={mode}
-              onChange={(e) => setMode(e.target.value as SessionMode)}
+              onChange={(e) => setMode(e.target.value as KnnpSessionMode)}
               className={selectClass}
             >
               <option value="inteligentna">Inteligentna sesja</option>

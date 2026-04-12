@@ -1,4 +1,4 @@
-import type { SessionMode } from "@/features/session/types";
+import type { KnnpSessionMode } from "@/features/session/types";
 
 export type SettingsProfile = {
   display_name: string;
@@ -8,7 +8,7 @@ export type SettingsProfile = {
   /** ISO 8601 (TIMESTAMPTZ) lub null */
   exam_date: string | null;
   daily_goal: number;
-  default_session_mode: SessionMode;
+  default_session_mode: KnnpSessionMode;
   default_question_count: number;
   notifications_reviews: boolean;
   notifications_weekly: boolean;

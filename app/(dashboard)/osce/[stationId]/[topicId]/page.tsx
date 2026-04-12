@@ -117,6 +117,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
             questions={sessionData.questions}
             nextTopicId={nextTopicId}
             stationHref={`/osce/${station.id}`}
+            examTasks={station.exam_tasks}
           />
         ) : (
           <div className="rounded-card border border-border bg-card p-6">

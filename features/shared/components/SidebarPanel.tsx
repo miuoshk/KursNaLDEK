@@ -15,7 +15,6 @@ import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
-import { useDashboardData } from "@/features/shared/contexts/DashboardDataContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { formatStreak } from "@/lib/formatStreak";
 
@@ -39,17 +38,8 @@ export function SidebarPanel({
   className,
 }: SidebarPanelProps) {
   const { year } = useDashboardBreadcrumb();
-  const { profile } = useDashboardData();
   const { streak, displayName, initials } = useDashboardUser();
   const mobile = Boolean(onCloseMobile);
-  const examDate = profile?.exam_date ?? null;
-  const daysUntilExam = examDate
-    ? Math.ceil(
-        (new Date(examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24),
-      )
-    : null;
-  const showExamBadge =
-    daysUntilExam !== null && Number.isFinite(daysUntilExam);
 
   return (
     <aside
@@ -150,21 +140,6 @@ export function SidebarPanel({
           icon={BookOpen}
           collapsed={collapsed && !mobile}
         />
-        {(!collapsed || mobile) && (
-          <div className="mt-0.5 px-3">
-            <Link
-              href="/osce"
-              className="inline-flex items-center gap-1.5 rounded-md px-1 py-0.5 font-body text-[11px] text-secondary transition-colors duration-200 hover:text-primary"
-            >
-              <span>OSCE</span>
-              {showExamBadge ? (
-                <span className="rounded-full bg-[#C9A84C]/10 px-1.5 py-0.5 text-[10px] text-[#C9A84C]">
-                  {daysUntilExam} dni
-                </span>
-              ) : null}
-            </Link>
-          </div>
-        )}
         {SIDEBAR_NAV.map((item) => (
           <SidebarLink
             key={item.href}

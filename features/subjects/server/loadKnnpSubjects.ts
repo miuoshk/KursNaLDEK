@@ -9,12 +9,19 @@ export type ProfileForSubjects = {
   track: string;
 };
 
+export type OverallProgressData = {
+  answered: number;
+  mastered: number;
+  reviewing: number;
+};
+
 export type LoadKnnpSubjectsResult =
   | {
       ok: true;
       subjects: SubjectWithProgress[];
       profile: ProfileForSubjects;
       totalQuestionCount: number;
+      overallProgress: OverallProgressData;
       isSubscribed: boolean;
     }
   | { ok: false; message: string };
@@ -72,31 +79,98 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       console.warn(
         "[loadKnnpSubjects] tabela subjects jest pusta dla product=knnp — uruchom seed SQL w Supabase.",
       );
-      return { ok: true, subjects: [], profile, totalQuestionCount: 0, isSubscribed };
+      return {
+        ok: true,
+        subjects: [],
+        profile,
+        totalQuestionCount: 0,
+        overallProgress: { answered: 0, mastered: 0, reviewing: 0 },
+        isSubscribed,
+      };
     }
 
-    const { data: progressRows } = await supabase
-      .from("session_answers")
-      .select("question_id, questions!inner(topic_id, topics!inner(subject_id))")
-      .eq("is_correct", true)
-      .in(
-        "session_id",
-        (await supabase.from("study_sessions").select("id").eq("user_id", user.id)).data?.map(
-          (r) => r.id,
-        ) ?? [],
-      );
+    const topicToSubject = new Map<string, string>();
+    for (const t of catalog.topicRows) {
+      topicToSubject.set(t.id, t.subject_id);
+    }
+    const topicIds = catalog.topicRows.map((t) => t.id);
 
     const answeredPerSubject = new Map<string, Set<string>>();
-    for (const row of progressRows ?? []) {
-      const q = row.questions as unknown as { topic_id: string; topics: { subject_id: string } } | null;
-      const subjectId = q?.topics?.subject_id;
-      if (!subjectId) continue;
-      if (!answeredPerSubject.has(subjectId)) answeredPerSubject.set(subjectId, new Set());
-      answeredPerSubject.get(subjectId)!.add(row.question_id);
+    let overallMastered = 0;
+    let overallAnswered = 0;
+
+    if (topicIds.length > 0) {
+      const { data: qRows } = await supabase
+        .from("questions")
+        .select("id, topic_id")
+        .in("topic_id", topicIds)
+        .eq("is_active", true);
+
+      const questionToSubject = new Map<string, string>();
+      for (const q of qRows ?? []) {
+        const subjectId = topicToSubject.get(q.topic_id as string);
+        if (subjectId) questionToSubject.set(q.id as string, subjectId);
+      }
+
+      const qids = (qRows ?? []).map((q) => q.id as string);
+      if (qids.length > 0) {
+        const { data: uqpRows } = await supabase
+          .from("user_question_progress")
+          .select("question_id, state, times_answered")
+          .eq("user_id", user.id)
+          .in("question_id", qids);
+
+        for (const row of uqpRows ?? []) {
+          if (Number(row.times_answered ?? 0) === 0) continue;
+
+          const subjectId = questionToSubject.get(row.question_id as string);
+          if (!subjectId) continue;
+
+          if (!answeredPerSubject.has(subjectId)) answeredPerSubject.set(subjectId, new Set());
+          answeredPerSubject.get(subjectId)!.add(row.question_id as string);
+
+          overallAnswered += 1;
+          if ((row.state as string) === "review") overallMastered += 1;
+        }
+      }
     }
 
-    const { subjects, totalQuestionCount } = buildKnnpSubjectsList(catalog, answeredPerSubject);
-    return { ok: true, subjects, profile, totalQuestionCount, isSubscribed };
+    const subjectIds = catalog.subjectRows.map((s) => s.id);
+    const lastStudiedPerSubject = new Map<string, string>();
+
+    if (subjectIds.length > 0) {
+      const { data: sessionRows } = await supabase
+        .from("study_sessions")
+        .select("subject_id, started_at")
+        .eq("user_id", user.id)
+        .in("subject_id", subjectIds)
+        .order("started_at", { ascending: false });
+
+      for (const row of sessionRows ?? []) {
+        const sid = row.subject_id as string;
+        if (!lastStudiedPerSubject.has(sid)) {
+          lastStudiedPerSubject.set(sid, row.started_at as string);
+        }
+      }
+    }
+
+    const { subjects, totalQuestionCount } = buildKnnpSubjectsList(
+      catalog,
+      answeredPerSubject,
+      lastStudiedPerSubject,
+    );
+    return {
+      ok: true,
+      subjects,
+      profile,
+      totalQuestionCount,
+      overallProgress: {
+        answered: overallAnswered,
+        mastered: overallMastered,
+        reviewing: overallAnswered - overallMastered,
+      },
+      isSubscribed,
+    };
   } catch (e) {
     console.error("[loadKnnpSubjects] unexpected:", e);
     return {

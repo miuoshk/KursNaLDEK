@@ -11,7 +11,7 @@ export default async function PrzedmiotyPage() {
   if (!result.ok) {
     return (
       <div>
-        <h1 className="font-heading text-heading-xl text-primary">Moje przedmioty</h1>
+        <h1 className="font-heading text-3xl font-bold text-primary">Moje przedmioty</h1>
         <div className="mt-8">
           <PrzedmiotyError message={result.message} />
         </div>
@@ -19,17 +19,23 @@ export default async function PrzedmiotyPage() {
     );
   }
 
-  const { subjects, profile, totalQuestionCount, isSubscribed } = result;
+  const { subjects, profile, totalQuestionCount, overallProgress, isSubscribed } = result;
 
   return (
     <div>
-      <h1 className="font-heading text-heading-xl text-primary">Moje przedmioty</h1>
-      <p className="mt-2 font-body text-body-md text-secondary">
+      <h1 className="font-heading text-3xl font-bold text-primary">Moje przedmioty</h1>
+      <p className="mt-2 font-body text-lg text-secondary">
         Rok {profile.current_year} · {profile.track}
       </p>
 
       <div className="mt-8 space-y-8">
-        <OverallProgress year={profile.current_year} totalQuestions={totalQuestionCount} />
+        <OverallProgress
+          year={profile.current_year}
+          totalQuestions={totalQuestionCount}
+          answered={overallProgress.answered}
+          mastered={overallProgress.mastered}
+          reviewing={overallProgress.reviewing}
+        />
         {subjects.length === 0 ? (
           <p className="font-body text-body-md text-secondary">
             Brak przedmiotów do wyświetlenia. Skontaktuj się z administratorem lub spróbuj później.
@@ -38,8 +44,8 @@ export default async function PrzedmiotyPage() {
           <SubjectGrid subjects={subjects} isSubscribed={isSubscribed} />
         )}
 
-        <section>
-          <h2 className="font-heading text-heading-md text-primary">Egzamin praktyczny</h2>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-primary">Egzamin praktyczny</h2>
           <div className="mt-4">
             <Link
               href="/osce"

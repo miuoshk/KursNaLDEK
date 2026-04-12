@@ -12,7 +12,7 @@ export type KnnpCatalogRows = {
     product: string;
     display_order: number | null;
   }[];
-  topicRows: { subject_id: string; question_count: number | null }[];
+  topicRows: { id: string; subject_id: string; question_count: number | null }[];
 };
 
 /**
@@ -43,7 +43,7 @@ export const getCachedKnnpCatalog = cache(async (track?: string, year?: number):
   if (ids.length === 0) return { subjectRows: [], topicRows: [] };
   const { data: topicRows, error: te } = await supabase
     .from("topics")
-    .select("subject_id, question_count")
+    .select("id, subject_id, question_count")
     .in("subject_id", ids);
   if (te) {
     console.error("[getCachedKnnpCatalog] topics:", te.message);

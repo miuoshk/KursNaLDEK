@@ -37,7 +37,15 @@ function accColor(a: number | null): string {
 export function PulpitRecentSessions({ sessions }: { sessions: PulpitRecentSession[] }) {
   return (
     <section>
-      <h2 className="font-heading text-heading-sm text-primary">Ostatnie sesje</h2>
+      <div className="flex items-center justify-between gap-4">
+        <h2 className="font-heading text-xl font-bold text-primary">Historia sesji</h2>
+        <Link
+          href="/statystyki"
+          className="font-body text-sm text-brand-gold transition-colors hover:underline"
+        >
+          Zobacz wszystkie →
+        </Link>
+      </div>
       <ul className="mt-4 space-y-3">
         {sessions.length === 0 ? (
           <li className="rounded-card bg-card border border-border p-4 font-body text-body-sm text-secondary">

@@ -1,6 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
+import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
+import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
+import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
 import { greetingName } from "@/lib/greetingName";
 
 export type PulpitRecentSession = {
@@ -20,6 +23,11 @@ export type PulpitData = {
   currentStreak: number;
   longestStreak: number;
   dueReviews: number;
+  xp: number;
+  rankTier: string;
+  activityDays: ActivityDay[];
+  progressHistory: ProgressPoint[];
+  weakPoints: WeakPoint[];
   lastSubjectId: string | null;
   lastSubjectName: string | null;
   lastSubjectMasteryPct: number;
@@ -42,7 +50,7 @@ export async function loadPulpit(): Promise<
     const profile = await getProfileByUserId(user.id);
     const displayName = greetingName(profile, user.email);
 
-    const [dueRes, sessionsRes, questionsToday] = await Promise.all([
+    const [dueRes, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints] = await Promise.all([
       supabase
         .from("user_question_progress")
         .select("id", { count: "exact", head: true })
@@ -59,6 +67,9 @@ export async function loadPulpit(): Promise<
         .order("completed_at", { ascending: false })
         .limit(3),
       countSessionAnswersTodayWarsaw(supabase, user.id),
+      loadActivityHeatmap(supabase, user.id),
+      loadProgressHistory(supabase, user.id),
+      loadWeakPoints(supabase, user.id),
     ]);
 
     const dailyGoal = profile?.daily_goal ?? 25;
@@ -125,6 +136,11 @@ export async function loadPulpit(): Promise<
         currentStreak: profile?.current_streak ?? 0,
         longestStreak: profile?.longest_streak ?? 0,
         dueReviews: dueRes.count ?? 0,
+        xp: profile?.xp ?? 0,
+        rankTier: profile?.rank_tier ?? "praktykant",
+        activityDays,
+        progressHistory,
+        weakPoints,
         lastSubjectId,
         lastSubjectName,
         lastSubjectMasteryPct,

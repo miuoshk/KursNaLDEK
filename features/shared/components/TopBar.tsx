@@ -42,10 +42,6 @@ function NotificationBell() {
         aria-expanded={open}
       >
         <Bell className="size-5" aria-hidden />
-        <span
-          className="absolute right-2 top-2 size-1.5 rounded-full bg-brand-gold"
-          aria-hidden
-        />
       </button>
 
       {open && (

@@ -1,30 +1,58 @@
 type OverallProgressProps = {
   year: number;
   totalQuestions: number;
+  answered: number;
+  mastered: number;
+  reviewing: number;
 };
 
-export function OverallProgress({ year, totalQuestions }: OverallProgressProps) {
+export function OverallProgress({
+  year,
+  totalQuestions,
+  answered,
+  mastered,
+  reviewing,
+}: OverallProgressProps) {
+  const percentage =
+    totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
+
+  const masteredPct =
+    totalQuestions > 0 ? (mastered / totalQuestions) * 100 : 0;
+  const reviewingPct =
+    totalQuestions > 0 ? (reviewing / totalQuestions) * 100 : 0;
+
   return (
-    <div className="rounded-card bg-card border border-border p-6">
+    <div className="rounded-card border border-border bg-card p-6">
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div>
-          <p className="font-heading text-body-xs uppercase tracking-normal text-muted">
+          <p className="font-body text-sm uppercase tracking-widest text-secondary">
             Postęp ogólny roku {year}
           </p>
-          <p className="mt-2 font-body text-3xl text-brand-gold">0%</p>
+          <p className="mt-2 font-body text-3xl text-brand-gold">{percentage}%</p>
         </div>
         <div className="text-left md:text-right">
           <p className="font-body text-lg text-secondary">
-            0 / {totalQuestions}{" "}
+            {answered} / {totalQuestions}{" "}
             <span className="font-body text-body-sm text-muted">liczba pytań</span>
           </p>
         </div>
       </div>
 
-      <div className="mt-6 flex gap-1">
-        <div className="h-2 flex-1 rounded-full bg-white/10" />
-        <div className="h-2 flex-1 rounded-full bg-white/10" />
-        <div className="h-2 flex-1 rounded-full bg-white/10" />
+      <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
+        <div className="flex h-full">
+          {masteredPct > 0 && (
+            <div
+              className="h-full bg-success transition-[width] duration-300 ease-out"
+              style={{ width: `${masteredPct}%` }}
+            />
+          )}
+          {reviewingPct > 0 && (
+            <div
+              className="h-full bg-brand-gold transition-[width] duration-300 ease-out"
+              style={{ width: `${reviewingPct}%` }}
+            />
+          )}
+        </div>
       </div>
 
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-body text-body-xs text-muted">

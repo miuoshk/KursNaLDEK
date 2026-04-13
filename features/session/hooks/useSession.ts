@@ -78,6 +78,9 @@ export function useSession(
     [],
   );
 
+  const isWaitingForConfidence =
+    isShowingFeedback && currentQuestion != null && !(currentQuestion.id in answeredMap);
+
   return {
     sessionId,
     mode,
@@ -89,6 +92,7 @@ export function useSession(
     answers: answeredList,
     answeredMap,
     isCurrentAnswered,
+    isWaitingForConfidence,
     answeredCount,
     allAnswered,
     selectAndCheck,

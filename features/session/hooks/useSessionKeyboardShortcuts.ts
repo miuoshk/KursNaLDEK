@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import type { SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionQuestion } from "@/features/session/types";
 
 type Args = {
   currentQuestion: SessionQuestion | null;
@@ -9,9 +9,12 @@ type Args = {
   total: number;
   isShowingFeedback: boolean;
   isCurrentAnswered: boolean;
+  isWaitingForConfidence: boolean;
+  isPrzeglad: boolean;
   selectAndCheck: (optionId: string) => void;
   onNext: () => void;
   onPrevious: () => void;
+  onConfidencePick: (c: Confidence) => void;
 };
 
 export function useSessionKeyboardShortcuts({
@@ -20,9 +23,12 @@ export function useSessionKeyboardShortcuts({
   total,
   isShowingFeedback,
   isCurrentAnswered,
+  isWaitingForConfidence,
+  isPrzeglad,
   selectAndCheck,
   onNext,
   onPrevious,
+  onConfidencePick,
 }: Args) {
   useEffect(() => {
     const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
@@ -36,6 +42,13 @@ export function useSessionKeyboardShortcuts({
       if (e.key === "ArrowLeft" && currentIndex > 0) {
         e.preventDefault();
         onPrevious();
+        return;
+      }
+
+      if (isWaitingForConfidence && !isPrzeglad) {
+        if (e.key === "1") { e.preventDefault(); onConfidencePick("nie_wiedzialem"); return; }
+        if (e.key === "2") { e.preventDefault(); onConfidencePick("troche"); return; }
+        if (e.key === "3") { e.preventDefault(); onConfidencePick("na_pewno"); return; }
         return;
       }
 
@@ -69,8 +82,11 @@ export function useSessionKeyboardShortcuts({
     total,
     isShowingFeedback,
     isCurrentAnswered,
+    isWaitingForConfidence,
+    isPrzeglad,
     selectAndCheck,
     onNext,
     onPrevious,
+    onConfidencePick,
   ]);
 }

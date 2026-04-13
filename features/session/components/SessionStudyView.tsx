@@ -15,7 +15,7 @@ import { useDashboardData } from "@/features/shared/contexts/DashboardDataContex
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
-import type { SessionMode, SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
 
 type SessionStudyViewProps = {
   sessionId: string;
@@ -43,6 +43,7 @@ export function SessionStudyView({
   const fatigueShownRef = useRef(false);
   const { profile } = useDashboardData();
   const { streak } = useDashboardUser();
+  const isPrzeglad = mode === "przeglad";
 
   const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
   const completedRef = useRef(false);
@@ -63,6 +64,7 @@ export function SessionStudyView({
   const qKey = s.currentQuestion?.id ?? "";
   const sw = useQuestionStopwatch(qKey);
 
+  const [submitting, setSubmitting] = useState(false);
   const closeEnd = useCallback(() => setEndOpen(false), []);
 
   const onFatigueSuggestion = useCallback((message: string) => {
@@ -71,10 +73,11 @@ export function SessionStudyView({
 
   const dismissFatigue = useCallback(() => setFatigueMessage(null), []);
 
-  const { handleAnswerSelected, handleNavigateNext, handleEndConfirm } = useSessionStudyFlow(
+  const { handleSubmitWithConfidence, handleNavigateNext, handleEndConfirm } = useSessionStudyFlow(
     s.questions,
     {
       currentQuestion: s.currentQuestion,
+      selectedOptionId: s.selectedOptionId,
       currentIndex: s.currentIndex,
       answers: s.answers,
       answeredMap: s.answeredMap,
@@ -117,9 +120,28 @@ export function SessionStudyView({
       if (s.isCurrentAnswered || s.isShowingFeedback) return;
       timeSpentQuestion.current = sw.pauseAndGetSeconds();
       s.selectAndCheck(optionId);
-      handleAnswerSelected(optionId);
+      if (isPrzeglad) {
+        handleSubmitWithConfidence("na_pewno");
+      }
     },
-    [s, sw, handleAnswerSelected],
+    [s, sw, isPrzeglad, handleSubmitWithConfidence],
+  );
+
+  const wrappedConfidencePick = useCallback(
+    async (c: Confidence) => {
+      if (submitting) return;
+      setSubmitting(true);
+      handleSubmitWithConfidence(c);
+      setSubmitting(false);
+    },
+    [handleSubmitWithConfidence, submitting],
+  );
+
+  const onConfidenceShortcut = useCallback(
+    (c: Confidence) => {
+      void wrappedConfidencePick(c);
+    },
+    [wrappedConfidencePick],
   );
 
   useSessionKeyboardShortcuts({
@@ -128,9 +150,12 @@ export function SessionStudyView({
     total: s.total,
     isShowingFeedback: s.isShowingFeedback,
     isCurrentAnswered: s.isCurrentAnswered,
+    isWaitingForConfidence: s.isWaitingForConfidence,
+    isPrzeglad,
     selectAndCheck: handleSelectOption,
     onNext: handleNavigateNext,
     onPrevious: s.goToPrevious,
+    onConfidencePick: onConfidenceShortcut,
   });
 
   if (completedSummary) {
@@ -186,8 +211,12 @@ export function SessionStudyView({
         selectedOptionId={s.selectedOptionId}
         isShowingFeedback={s.isShowingFeedback}
         isCurrentAnswered={s.isCurrentAnswered}
+        isWaitingForConfidence={s.isWaitingForConfidence}
         allAnswered={s.allAnswered}
+        isPrzeglad={isPrzeglad}
+        submitting={submitting}
         onSelectOption={handleSelectOption}
+        onConfidencePick={(c) => void wrappedConfidencePick(c)}
         onNext={handleNavigateNext}
         onPrevious={s.goToPrevious}
       />

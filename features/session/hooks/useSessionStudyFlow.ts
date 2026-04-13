@@ -17,6 +17,7 @@ import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/
 
 type SessionApi = {
   currentQuestion: SessionQuestion | null;
+  selectedOptionId: string | null;
   currentIndex: number;
   answers: SessionAnswer[];
   answeredMap: Record<string, SessionAnswer>;
@@ -98,12 +99,12 @@ export function useSessionStudyFlow(
     [sessionId, subjectId, subjectName, subjectShortName, mode, questions, profileXp, profileStreak],
   );
 
-  const handleAnswerSelected = useCallback(
-    (optionId: string) => {
-      if (!s.currentQuestion || s.isCurrentAnswered) return;
+  const handleSubmitWithConfidence = useCallback(
+    (confidence: Confidence) => {
+      if (!s.currentQuestion || s.isCurrentAnswered || !s.selectedOptionId) return;
 
+      const optionId = s.selectedOptionId;
       const isCorrect = optionId === s.currentQuestion.correctOptionId;
-      const confidence: Confidence = isCorrect ? "na_pewno" : "nie_wiedzialem";
 
       const newAnswer: SessionAnswer = {
         questionId: s.currentQuestion.id,
@@ -183,5 +184,5 @@ export function useSessionStudyFlow(
     finishSession(buildSummary(s.answeredMap));
   }, [closeEndDialog, s.answeredMap, finishSession, buildSummary]);
 
-  return { handleAnswerSelected, handleNavigateNext, handleEndConfirm };
+  return { handleSubmitWithConfidence, handleNavigateNext, handleEndConfirm };
 }

@@ -7,7 +7,7 @@ import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
-import type { SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
 type SessionQuestionContentProps = {
@@ -17,8 +17,12 @@ type SessionQuestionContentProps = {
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
   isCurrentAnswered: boolean;
+  isWaitingForConfidence: boolean;
   allAnswered: boolean;
+  isPrzeglad: boolean;
+  submitting?: boolean;
   onSelectOption: (id: string) => void;
+  onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onPrevious: () => void;
 };
@@ -30,14 +34,21 @@ export function SessionQuestionContent({
   selectedOptionId,
   isShowingFeedback,
   isCurrentAnswered,
+  isWaitingForConfidence,
   allAnswered,
+  isPrzeglad,
+  submitting,
   onSelectOption,
+  onConfidencePick,
   onNext,
   onPrevious,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
   const isLast = currentIndex >= total - 1;
+
+  const showConfidenceBar = isWaitingForConfidence && !isPrzeglad;
+  const canNavigateNext = !showConfidenceBar && (isLast ? allAnswered || isShowingFeedback : true);
 
   let nextLabel = "Następne";
   if (allAnswered) {
@@ -82,6 +93,48 @@ export function SessionQuestionContent({
               isCorrect={isCorrect}
             />
             <SessionQuestionActions questionId={q.id} questionText={q.text} />
+
+            {showConfidenceBar ? (
+              <div className="mt-6 flex flex-col items-center gap-3">
+                <p className="font-body text-body-xs text-secondary">
+                  Jak dobrze znałeś odpowiedź?
+                </p>
+                <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
+                  <button
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => onConfidencePick("nie_wiedzialem")}
+                    className="flex-1 rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                  >
+                    Nie wiedziałem
+                  </button>
+                  <button
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => onConfidencePick("troche")}
+                    className="flex-1 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                  >
+                    {submitting ? "Zapisywanie..." : "Trochę wiedziałem"}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => onConfidencePick("na_pewno")}
+                    className="flex-1 rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                  >
+                    Wiedziałem na pewno
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => onConfidencePick("troche")}
+                  className="font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Pomiń ocenę
+                </button>
+              </div>
+            ) : null}
           </motion.div>
         ) : (
           <div className="mx-auto mt-8 w-full max-w-3xl">
@@ -112,7 +165,7 @@ export function SessionQuestionContent({
 
           <button
             type="button"
-            disabled={isLast && !allAnswered && !isShowingFeedback}
+            disabled={!canNavigateNext}
             onClick={onNext}
             className={cn(
               "inline-flex items-center gap-1.5 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition",

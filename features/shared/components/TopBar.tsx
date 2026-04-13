@@ -68,7 +68,8 @@ export function TopBar() {
   const pathname = usePathname();
   const router = useRouter();
   const isMobile = useMobileViewport();
-  const showBack = pathname !== "/";
+  const mainRoutes = new Set(["/", "/pulpit", "/przedmioty", "/osce", "/statystyki", "/osiagniecia", "/ustawienia"]);
+  const showBack = !mainRoutes.has(pathname);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const { year, secondSegment, thirdSegment } = useDashboardBreadcrumb();
   const { streak, initials } = useDashboardUser();

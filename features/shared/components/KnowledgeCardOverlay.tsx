@@ -32,7 +32,7 @@ export function KnowledgeCardOverlay({
       onClick={onClose}
     >
       <div
-        className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-card border border-border bg-background p-6 shadow-xl"
+        className="max-h-[85vh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-card border border-border bg-background p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">

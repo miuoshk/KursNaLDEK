@@ -150,8 +150,8 @@ export function SessionQuestionContent({
             disabled={currentIndex <= 0}
             onClick={onPrevious}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-btn px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
-              "hover:bg-white/5 hover:text-primary",
+              "inline-flex items-center gap-1.5 rounded-btn border border-border px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
+              "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
               "disabled:pointer-events-none disabled:opacity-30",
             )}
           >
@@ -168,15 +168,14 @@ export function SessionQuestionContent({
             disabled={!canNavigateNext}
             onClick={onNext}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition",
-              allAnswered
-                ? "bg-brand-gold text-brand-bg hover:brightness-110"
-                : "bg-brand-sage text-white hover:bg-[#4a9085]",
+              "inline-flex items-center gap-1.5 rounded-btn border border-border px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
+              "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
+              allAnswered && "border-brand-gold/40 text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold",
               "disabled:pointer-events-none disabled:opacity-30",
             )}
           >
             {nextLabel}
-            {!allAnswered && <ChevronRight className="size-4 shrink-0" aria-hidden />}
+            <ChevronRight className="size-4 shrink-0" aria-hidden />
           </button>
         </div>
       </div>

@@ -131,7 +131,7 @@ export function SessionStudyView({
     async (c: Confidence) => {
       if (submitting) return;
       setSubmitting(true);
-      handleSubmitWithConfidence(c);
+      handleSubmitWithConfidence(c, { advance: true });
       setSubmitting(false);
     },
     [handleSubmitWithConfidence, submitting],

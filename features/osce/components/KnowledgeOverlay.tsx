@@ -15,7 +15,7 @@ export function KnowledgeOverlay({ knowledgeCard, onClose }: KnowledgeOverlayPro
       aria-modal
       aria-label="Karta wiedzy"
     >
-      <div className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-card border border-border bg-background p-6 shadow-xl">
+      <div className="max-h-[85vh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-card border border-border bg-background p-6 shadow-xl">
         <div className="flex items-start justify-between gap-4">
           <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
           <button

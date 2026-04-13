@@ -100,14 +100,15 @@ export function useSessionStudyFlow(
   );
 
   const handleSubmitWithConfidence = useCallback(
-    (confidence: Confidence) => {
+    (confidence: Confidence, { advance = false }: { advance?: boolean } = {}) => {
       if (!s.currentQuestion || s.isCurrentAnswered || !s.selectedOptionId) return;
 
       const optionId = s.selectedOptionId;
-      const isCorrect = optionId === s.currentQuestion.correctOptionId;
+      const currentQ = s.currentQuestion;
+      const isCorrect = optionId === currentQ.correctOptionId;
 
       const newAnswer: SessionAnswer = {
-        questionId: s.currentQuestion.id,
+        questionId: currentQ.id,
         selectedOptionId: optionId,
         isCorrect,
         confidence,
@@ -118,7 +119,7 @@ export function useSessionStudyFlow(
 
       void submitAnswerWithRetry({
         sessionId,
-        questionId: s.currentQuestion.id,
+        questionId: currentQ.id,
         selectedOptionId: optionId,
         isCorrect,
         confidence,
@@ -159,8 +160,27 @@ export function useSessionStudyFlow(
           }
         }
       }
+
+      if (!advance) return;
+
+      const newAnsweredCount = Object.keys(s.answeredMap).length + 1;
+      if (newAnsweredCount >= questions.length) {
+        const fullMap = { ...s.answeredMap, [newAnswer.questionId]: newAnswer };
+        finishSession(buildSummary(fullMap));
+        return;
+      }
+
+      const advanced = s.goToNext();
+      if (!advanced) {
+        const firstUnanswered = questions.findIndex(
+          (q) => q.id !== currentQ.id && !(q.id in s.answeredMap),
+        );
+        if (firstUnanswered >= 0) {
+          s.navigateToIndex(firstUnanswered);
+        }
+      }
     },
-    [s, questions, sessionId, mode, timeSpentQuestion, setSaveToast, antaresMid],
+    [s, questions, sessionId, mode, timeSpentQuestion, setSaveToast, antaresMid, finishSession, buildSummary],
   );
 
   const handleNavigateNext = useCallback(() => {

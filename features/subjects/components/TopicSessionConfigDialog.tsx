@@ -7,6 +7,7 @@ import {
   BookOpen,
   ChevronRight,
   FileText,
+  Infinity as InfinityIcon,
   LayoutGrid,
   Lightbulb,
   X,
@@ -78,6 +79,9 @@ export function TopicSessionConfigDialog({
   const reviewHref = buildHref(subjectId, topicId, "przeglad", finalCount);
   const catalogHref = buildHref(subjectId, topicId, "katalog", 500);
 
+  const altCardClass =
+    "flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25";
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
@@ -131,7 +135,7 @@ export function TopicSessionConfigDialog({
             <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-stretch">
               {/* Left column — Hero card */}
               <div className="lg:flex lg:flex-col">
-                <div className="relative flex h-full flex-col rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
+                <div className="relative flex flex-col rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4 lg:h-full">
                   <span className="absolute -top-2 right-3 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
                     Rekomendowane
                   </span>
@@ -175,16 +179,17 @@ export function TopicSessionConfigDialog({
                         setCustomCount("");
                       }}
                       className={cn(
-                        "flex h-7 cursor-pointer items-center justify-center rounded-pill border px-3 font-body text-body-sm transition-colors",
+                        "flex h-7 min-w-[36px] cursor-pointer items-center justify-center rounded-pill border px-1.5 transition-colors",
                         preset === "all"
-                          ? "border-brand-sage bg-brand-sage font-semibold text-white"
+                          ? "border-brand-sage bg-brand-sage text-white"
                           : "border-border bg-transparent text-secondary",
                       )}
                     >
-                      Max
+                      <InfinityIcon className="size-4" aria-hidden />
                     </button>
                     <input
                       type="number"
+                      inputMode="numeric"
                       min={1}
                       max={totalQuestions}
                       placeholder="..."
@@ -203,10 +208,10 @@ export function TopicSessionConfigDialog({
                     </span>
                   </div>
 
-                  {/* CTA — mt-auto pushes it to the bottom on desktop */}
+                  {/* CTA — lg:mt-auto pushes to bottom only on desktop */}
                   <Link
                     href={smartHref}
-                    className="mt-auto block w-full rounded-btn bg-brand-sage pt-3.5 pb-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085]"
+                    className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] lg:mt-auto lg:pt-3.5"
                   >
                     Rozpocznij sesję
                   </Link>
@@ -214,20 +219,16 @@ export function TopicSessionConfigDialog({
               </div>
 
               {/* Right column (desktop) / below hero (mobile) */}
-              <div className="flex flex-col gap-3 lg:gap-3">
+              <div className="flex flex-col gap-3">
                 {/* Section label */}
-                <p className="mt-4 mb-2.5 font-body text-body-xs uppercase tracking-normal text-muted lg:mt-0 lg:mb-0">
+                <p className="mt-4 mb-0 font-body text-body-xs uppercase tracking-normal text-muted lg:mt-0">
                   Inne tryby
                 </p>
 
-                {/* Alt mode cards — layout depends on knowledge card presence */}
                 {hasKnowledgeCard ? (
                   <>
                     <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3">
-                      <Link
-                        href={reviewHref}
-                        className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                      >
+                      <Link href={reviewHref} className={altCardClass}>
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <FileText className="size-4 text-muted" aria-hidden />
                         </div>
@@ -242,10 +243,7 @@ export function TopicSessionConfigDialog({
                         </span>
                       </Link>
 
-                      <Link
-                        href={catalogHref}
-                        className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                      >
+                      <Link href={catalogHref} className={altCardClass}>
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <LayoutGrid className="size-4 text-muted" aria-hidden />
                         </div>
@@ -261,7 +259,7 @@ export function TopicSessionConfigDialog({
                       </Link>
                     </div>
 
-                    {/* Knowledge card bar — pushed to bottom */}
+                    {/* Knowledge card bar */}
                     <button
                       type="button"
                       onClick={() => {
@@ -288,11 +286,8 @@ export function TopicSessionConfigDialog({
                     </button>
                   </>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3 lg:flex-1 lg:grid-rows-2">
-                    <Link
-                      href={reviewHref}
-                      className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                    >
+                  <div className="grid grid-cols-2 gap-2.5 lg:flex lg:flex-1 lg:flex-col lg:gap-3">
+                    <Link href={reviewHref} className={cn(altCardClass, "lg:flex-1")}>
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
@@ -307,10 +302,7 @@ export function TopicSessionConfigDialog({
                       </span>
                     </Link>
 
-                    <Link
-                      href={catalogHref}
-                      className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                    >
+                    <Link href={catalogHref} className={cn(altCardClass, "lg:flex-1")}>
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <LayoutGrid className="size-4 text-muted" aria-hidden />
                       </div>

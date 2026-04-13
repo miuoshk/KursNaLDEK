@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
 export function useSession(
@@ -12,50 +12,61 @@ export function useSession(
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [isShowingFeedback, setIsShowingFeedback] = useState(false);
-  const [answers, setAnswers] = useState<SessionAnswer[]>([]);
-  const [isPastReadOnly, setIsPastReadOnly] = useState(false);
+  const [answeredList, setAnsweredList] = useState<SessionAnswer[]>([]);
 
   const currentQuestion = questions[currentIndex] ?? null;
 
-  const selectOption = useCallback(
+  const answeredMap = useMemo(() => {
+    const m: Record<string, SessionAnswer> = {};
+    for (const a of answeredList) m[a.questionId] = a;
+    return m;
+  }, [answeredList]);
+
+  const isCurrentAnswered = currentQuestion != null && currentQuestion.id in answeredMap;
+  const answeredCount = Object.keys(answeredMap).length;
+  const allAnswered = answeredCount >= questions.length;
+
+  const selectAndCheck = useCallback(
     (optionId: string) => {
-      if (isShowingFeedback || isPastReadOnly) return;
+      if (isShowingFeedback || isCurrentAnswered) return;
       setSelectedOptionId(optionId);
+      setIsShowingFeedback(true);
     },
-    [isShowingFeedback, isPastReadOnly],
+    [isShowingFeedback, isCurrentAnswered],
   );
 
-  const checkAnswer = useCallback(() => {
-    if (isPastReadOnly) return;
-    if (!currentQuestion || !selectedOptionId) return;
-    setIsShowingFeedback(true);
-  }, [currentQuestion, selectedOptionId, isPastReadOnly]);
-
-  const resetForNext = useCallback(() => {
-    setSelectedOptionId(null);
-    setIsShowingFeedback(false);
-    setIsPastReadOnly(false);
+  const recordAnswer = useCallback((answer: SessionAnswer) => {
+    setAnsweredList((prev) => [...prev, answer]);
   }, []);
 
-  const completeCurrentAndGoNext = useCallback(
-    (answer: SessionAnswer) => {
-      setAnswers((a) => [...a, answer]);
-      resetForNext();
-      setCurrentIndex((i) => i + 1);
+  const navigateToIndex = useCallback(
+    (idx: number) => {
+      if (idx < 0 || idx >= questions.length) return;
+      const q = questions[idx];
+      if (!q) return;
+      const existing = answeredMap[q.id];
+      setCurrentIndex(idx);
+      if (existing) {
+        setSelectedOptionId(existing.selectedOptionId);
+        setIsShowingFeedback(true);
+      } else {
+        setSelectedOptionId(null);
+        setIsShowingFeedback(false);
+      }
     },
-    [resetForNext],
+    [questions, answeredMap],
   );
 
+  const goToNext = useCallback(() => {
+    if (currentIndex >= questions.length - 1) return false;
+    navigateToIndex(currentIndex + 1);
+    return true;
+  }, [currentIndex, questions.length, navigateToIndex]);
+
   const goToPrevious = useCallback(() => {
-    if (currentIndex <= 0 || isShowingFeedback) return;
-    const prevIdx = currentIndex - 1;
-    const prev = answers[prevIdx];
-    if (!prev) return;
-    setCurrentIndex(prevIdx);
-    setSelectedOptionId(prev.selectedOptionId);
-    setIsShowingFeedback(true);
-    setIsPastReadOnly(true);
-  }, [currentIndex, isShowingFeedback, answers]);
+    if (currentIndex <= 0) return;
+    navigateToIndex(currentIndex - 1);
+  }, [currentIndex, navigateToIndex]);
 
   const replaceQuestionsFromIndex = useCallback(
     (fromIndex: number, tail: SessionQuestion[]) => {
@@ -67,22 +78,6 @@ export function useSession(
     [],
   );
 
-  const goForwardFromReview = useCallback(() => {
-    if (!isPastReadOnly) return;
-    const nextIdx = currentIndex + 1;
-    setIsPastReadOnly(false);
-    if (nextIdx >= questions.length) return;
-    setCurrentIndex(nextIdx);
-    const nextA = answers[nextIdx];
-    if (nextA) {
-      setSelectedOptionId(nextA.selectedOptionId);
-      setIsShowingFeedback(true);
-    } else {
-      setSelectedOptionId(null);
-      setIsShowingFeedback(false);
-    }
-  }, [isPastReadOnly, currentIndex, questions.length, answers]);
-
   return {
     sessionId,
     mode,
@@ -91,14 +86,16 @@ export function useSession(
     currentQuestion,
     selectedOptionId,
     isShowingFeedback,
-    answers,
-    isPastReadOnly,
-    selectOption,
-    checkAnswer,
-    completeCurrentAndGoNext,
-    resetForNext,
+    answers: answeredList,
+    answeredMap,
+    isCurrentAnswered,
+    answeredCount,
+    allAnswered,
+    selectAndCheck,
+    recordAnswer,
+    goToNext,
     goToPrevious,
-    goForwardFromReview,
+    navigateToIndex,
     replaceQuestionsFromIndex,
     isLast: currentIndex >= questions.length - 1,
     total: questions.length,

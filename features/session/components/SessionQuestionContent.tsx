@@ -4,11 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
-import { SessionConfidenceBar } from "@/features/session/components/SessionConfidenceBar";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
-import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
+import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
 type SessionQuestionContentProps = {
@@ -17,15 +16,11 @@ type SessionQuestionContentProps = {
   total: number;
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
-  isPastReadOnly: boolean;
-  mode: SessionMode;
+  isCurrentAnswered: boolean;
+  allAnswered: boolean;
   onSelectOption: (id: string) => void;
-  onCheck: () => void;
-  onConfidenceAndNext: (c: Confidence) => void;
-  onPrzegladNext: () => void;
-  onContinueReview: () => void;
-  onGoToPrevious: () => void;
-  submitting?: boolean;
+  onNext: () => void;
+  onPrevious: () => void;
 };
 
 export function SessionQuestionContent({
@@ -34,19 +29,22 @@ export function SessionQuestionContent({
   total,
   selectedOptionId,
   isShowingFeedback,
-  isPastReadOnly,
-  mode,
+  isCurrentAnswered,
+  allAnswered,
   onSelectOption,
-  onCheck,
-  onConfidenceAndNext,
-  onPrzegladNext,
-  onContinueReview,
-  onGoToPrevious,
-  submitting,
+  onNext,
+  onPrevious,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
-  const isPrzeglad = mode === "przeglad";
+  const isLast = currentIndex >= total - 1;
+
+  let nextLabel = "Następne";
+  if (allAnswered) {
+    nextLabel = "Zakończ sesję";
+  } else if (!isShowingFeedback && !isCurrentAnswered) {
+    nextLabel = "Pomiń";
+  }
 
   return (
     <>
@@ -63,39 +61,14 @@ export function SessionQuestionContent({
               <SessionQuestionOptions
                 q={q}
                 selectedOptionId={selectedOptionId}
-                isShowingFeedback={isShowingFeedback || isPastReadOnly}
+                isShowingFeedback={isShowingFeedback || isCurrentAnswered}
                 onSelectOption={onSelectOption}
               />
             </QuestionCard>
           </motion.div>
         </AnimatePresence>
 
-        {!isShowingFeedback ? (
-          <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">
-            {currentIndex > 0 ? (
-              <button
-                type="button"
-                onClick={onGoToPrevious}
-                className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors hover:text-primary"
-              >
-                <ChevronLeft className="size-4 shrink-0" aria-hidden />
-                Poprzednie
-              </button>
-            ) : null}
-            <button
-              type="button"
-              disabled={!selectedOptionId}
-              onClick={onCheck}
-              className={cn(
-                "w-full rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition duration-200 ease-out",
-                "hover:bg-[#4a9085] disabled:cursor-not-allowed disabled:opacity-50",
-              )}
-            >
-              Sprawdź odpowiedź
-            </button>
-            <SessionQuestionActions questionId={q.id} questionText={q.text} />
-          </div>
-        ) : (
+        {isShowingFeedback ? (
           <motion.div
             key={`fb-${q.id}`}
             variants={feedbackVariants}
@@ -109,45 +82,51 @@ export function SessionQuestionContent({
               isCorrect={isCorrect}
             />
             <SessionQuestionActions questionId={q.id} questionText={q.text} />
-            {isPrzeglad ? (
-              <button
-                type="button"
-                onClick={onPrzegladNext}
-                className="mt-6 w-full rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition hover:brightness-110"
-              >
-                Dalej
-              </button>
-            ) : (
-              <button
-                type="button"
-                disabled={submitting}
-                onClick={() => onConfidenceAndNext("troche")}
-                className={cn(
-                  "mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-btn bg-brand-sage py-3.5 font-body text-body-md font-semibold text-white transition hover:brightness-110",
-                  "pointer-fine:hidden",
-                  "disabled:cursor-not-allowed disabled:opacity-50",
-                )}
-              >
-                Dalej
-                <ChevronRight className="size-4 shrink-0" aria-hidden />
-              </button>
-            )}
           </motion.div>
+        ) : (
+          <div className="mx-auto mt-8 w-full max-w-3xl">
+            <SessionQuestionActions questionId={q.id} questionText={q.text} />
+          </div>
         )}
       </div>
 
-      {isShowingFeedback && !isPrzeglad ? (
-        <SessionConfidenceBar
-          current={currentIndex}
-          total={total}
-          isPastReadOnly={isPastReadOnly}
-          canGoPrevious={currentIndex > 0}
-          onGoPrevious={onGoToPrevious}
-          onConfidence={onConfidenceAndNext}
-          disabled={submitting}
-          onContinueReview={onContinueReview}
-        />
-      ) : null}
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-3xl items-center justify-between">
+          <button
+            type="button"
+            disabled={currentIndex <= 0}
+            onClick={onPrevious}
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-btn px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
+              "hover:bg-white/5 hover:text-primary",
+              "disabled:pointer-events-none disabled:opacity-30",
+            )}
+          >
+            <ChevronLeft className="size-4 shrink-0" aria-hidden />
+            Poprzednie
+          </button>
+
+          <p className="font-body text-body-xs text-secondary">
+            {currentIndex + 1} / {total}
+          </p>
+
+          <button
+            type="button"
+            disabled={isLast && !allAnswered && !isShowingFeedback}
+            onClick={onNext}
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition",
+              allAnswered
+                ? "bg-brand-gold text-brand-bg hover:brightness-110"
+                : "bg-brand-sage text-white hover:bg-[#4a9085]",
+              "disabled:pointer-events-none disabled:opacity-30",
+            )}
+          >
+            {nextLabel}
+            {!allAnswered && <ChevronRight className="size-4 shrink-0" aria-hidden />}
+          </button>
+        </div>
+      </div>
     </>
   );
 }

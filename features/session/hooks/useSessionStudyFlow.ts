@@ -16,13 +16,15 @@ import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
 type SessionApi = {
-  isPastReadOnly: boolean;
-  goForwardFromReview: () => void;
   currentQuestion: SessionQuestion | null;
-  selectedOptionId: string | null;
   currentIndex: number;
   answers: SessionAnswer[];
-  completeCurrentAndGoNext: (a: SessionAnswer) => void;
+  answeredMap: Record<string, SessionAnswer>;
+  isCurrentAnswered: boolean;
+  allAnswered: boolean;
+  recordAnswer: (a: SessionAnswer) => void;
+  goToNext: () => boolean;
+  navigateToIndex: (idx: number) => void;
   replaceQuestionsFromIndex: (fromIndex: number, tail: SessionQuestion[]) => void;
 };
 
@@ -75,77 +77,64 @@ export function useSessionStudyFlow(
     [sessionId, sessionStart, onComplete],
   );
 
-  const handleEndConfirm = useCallback(() => {
-    closeEndDialog();
+  const buildSummary = useCallback(
+    (answeredMap: Record<string, SessionAnswer>) => {
+      const answersOrdered = questions
+        .map((q) => answeredMap[q.id])
+        .filter((a): a is SessionAnswer => a != null);
 
-    const summary = buildClientSessionSummary({
-      sessionId,
-      subjectId,
-      subjectName,
-      subjectShortName,
-      mode,
-      questions,
-      answers: s.answers,
-      profileXp,
-      profileStreak,
-    });
-    finishSession(summary);
-  }, [
-    closeEndDialog,
-    sessionId,
-    subjectId,
-    subjectName,
-    subjectShortName,
-    mode,
-    questions,
-    s.answers,
-    profileXp,
-    profileStreak,
-    finishSession,
-  ]);
+      return buildClientSessionSummary({
+        sessionId,
+        subjectId,
+        subjectName,
+        subjectShortName,
+        mode,
+        questions,
+        answers: answersOrdered,
+        profileXp,
+        profileStreak,
+      });
+    },
+    [sessionId, subjectId, subjectName, subjectShortName, mode, questions, profileXp, profileStreak],
+  );
 
-  const handleConfidenceAndNext = useCallback(
-    async (confidence: Confidence) => {
-      if (s.isPastReadOnly) {
-        s.goForwardFromReview();
-        return;
-      }
-      if (!s.currentQuestion || !s.selectedOptionId) return;
+  const handleAnswerSelected = useCallback(
+    (optionId: string) => {
+      if (!s.currentQuestion || s.isCurrentAnswered) return;
 
-      const isCorrect = s.selectedOptionId === s.currentQuestion.correctOptionId;
-      const isLast = s.currentIndex >= questions.length - 1;
-      const payload = {
+      const isCorrect = optionId === s.currentQuestion.correctOptionId;
+      const confidence: Confidence = isCorrect ? "na_pewno" : "nie_wiedzialem";
+
+      const newAnswer: SessionAnswer = {
+        questionId: s.currentQuestion.id,
+        selectedOptionId: optionId,
+        isCorrect,
+        confidence,
+        timeSpentSeconds: timeSpentQuestion.current,
+      };
+
+      s.recordAnswer(newAnswer);
+
+      void submitAnswerWithRetry({
         sessionId,
         questionId: s.currentQuestion.id,
-        selectedOptionId: s.selectedOptionId,
+        selectedOptionId: optionId,
         isCorrect,
         confidence,
         timeSpentSeconds: timeSpentQuestion.current,
         questionOrder: s.currentIndex,
         skipFsrs: mode === "przeglad",
-      };
+      }).then((res) => {
+        if (!res.ok) setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
+      });
 
-      const newAnswer: SessionAnswer = {
-        questionId: s.currentQuestion.id,
-        selectedOptionId: s.selectedOptionId,
-        isCorrect,
-        confidence,
-        timeSpentSeconds: timeSpentQuestion.current,
-      };
-
-      if (!isLast) {
+      if (mode === "inteligentna" && antaresMid) {
         const nextIdx = s.currentIndex + 1;
-        const newAnswers = [...s.answers, newAnswer];
-        s.completeCurrentAndGoNext(newAnswer);
-
-        if (
-          mode === "inteligentna" &&
-          antaresMid &&
-          nextIdx < questions.length
-        ) {
+        if (nextIdx < questions.length) {
           const tail = questions.slice(nextIdx);
           if (tail.length > 0) {
-            const answeredSoFar = newAnswers.map((a) => ({
+            const allAnswers = [...s.answers, newAnswer];
+            const answeredSoFar = allAnswers.map((a) => ({
               isCorrect: a.isCorrect,
               confidence: a.confidence ?? "",
               timeSeconds: a.timeSpentSeconds,
@@ -168,47 +157,31 @@ export function useSessionStudyFlow(
             }
           }
         }
-
-        void submitAnswerWithRetry(payload).then((res) => {
-          if (!res.ok) setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
-        });
-        return;
       }
-
-      s.completeCurrentAndGoNext(newAnswer);
-
-      const allAnswers = [...s.answers, newAnswer];
-      const summary = buildClientSessionSummary({
-        sessionId,
-        subjectId,
-        subjectName,
-        subjectShortName,
-        mode,
-        questions,
-        answers: allAnswers,
-        profileXp,
-        profileStreak,
-      });
-
-      await submitAnswerWithRetry(payload).catch(() => {});
-      finishSession(summary);
     },
-    [
-      s,
-      questions,
-      sessionId,
-      subjectId,
-      subjectName,
-      subjectShortName,
-      mode,
-      profileXp,
-      profileStreak,
-      finishSession,
-      timeSpentQuestion,
-      setSaveToast,
-      antaresMid,
-    ],
+    [s, questions, sessionId, mode, timeSpentQuestion, setSaveToast, antaresMid],
   );
 
-  return { handleConfidenceAndNext, handleEndConfirm };
+  const handleNavigateNext = useCallback(() => {
+    const currentAnsweredCount = Object.keys(s.answeredMap).length;
+    if (currentAnsweredCount >= questions.length) {
+      finishSession(buildSummary(s.answeredMap));
+      return;
+    }
+
+    const advanced = s.goToNext();
+    if (!advanced) {
+      const firstUnanswered = questions.findIndex((q) => !(q.id in s.answeredMap));
+      if (firstUnanswered >= 0) {
+        s.navigateToIndex(firstUnanswered);
+      }
+    }
+  }, [s, questions, finishSession, buildSummary]);
+
+  const handleEndConfirm = useCallback(() => {
+    closeEndDialog();
+    finishSession(buildSummary(s.answeredMap));
+  }, [closeEndDialog, s.answeredMap, finishSession, buildSummary]);
+
+  return { handleAnswerSelected, handleNavigateNext, handleEndConfirm };
 }

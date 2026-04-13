@@ -15,7 +15,7 @@ import { useDashboardData } from "@/features/shared/contexts/DashboardDataContex
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
-import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
+import type { SessionMode, SessionQuestion } from "@/features/session/types";
 
 type SessionStudyViewProps = {
   sessionId: string;
@@ -43,7 +43,6 @@ export function SessionStudyView({
   const fatigueShownRef = useRef(false);
   const { profile } = useDashboardData();
   const { streak } = useDashboardUser();
-  const isPrzeglad = mode === "przeglad";
 
   const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
   const completedRef = useRef(false);
@@ -64,7 +63,6 @@ export function SessionStudyView({
   const qKey = s.currentQuestion?.id ?? "";
   const sw = useQuestionStopwatch(qKey);
 
-  const [submitting, setSubmitting] = useState(false);
   const closeEnd = useCallback(() => setEndOpen(false), []);
 
   const onFatigueSuggestion = useCallback((message: string) => {
@@ -73,16 +71,18 @@ export function SessionStudyView({
 
   const dismissFatigue = useCallback(() => setFatigueMessage(null), []);
 
-  const { handleConfidenceAndNext, handleEndConfirm } = useSessionStudyFlow(
+  const { handleAnswerSelected, handleNavigateNext, handleEndConfirm } = useSessionStudyFlow(
     s.questions,
     {
-      isPastReadOnly: s.isPastReadOnly,
-      goForwardFromReview: s.goForwardFromReview,
       currentQuestion: s.currentQuestion,
-      selectedOptionId: s.selectedOptionId,
       currentIndex: s.currentIndex,
       answers: s.answers,
-      completeCurrentAndGoNext: s.completeCurrentAndGoNext,
+      answeredMap: s.answeredMap,
+      isCurrentAnswered: s.isCurrentAnswered,
+      allAnswered: s.allAnswered,
+      recordAnswer: s.recordAnswer,
+      goToNext: s.goToNext,
+      navigateToIndex: s.navigateToIndex,
       replaceQuestionsFromIndex: s.replaceQuestionsFromIndex,
     },
     {
@@ -112,45 +112,25 @@ export function SessionStudyView({
 
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
-  const handleCheck = useCallback(() => {
-    if (!s.selectedOptionId) return;
-    timeSpentQuestion.current = sw.pauseAndGetSeconds();
-    s.checkAnswer();
-  }, [s, sw]);
-
-  const wrappedConfidenceAndNext = useCallback(
-    async (c: Confidence) => {
-      if (submitting) return;
-      setSubmitting(true);
-      await handleConfidenceAndNext(c);
-      setSubmitting(false);
+  const handleSelectOption = useCallback(
+    (optionId: string) => {
+      if (s.isCurrentAnswered || s.isShowingFeedback) return;
+      timeSpentQuestion.current = sw.pauseAndGetSeconds();
+      s.selectAndCheck(optionId);
+      handleAnswerSelected(optionId);
     },
-    [handleConfidenceAndNext, submitting],
-  );
-
-  const handlePrzegladNext = useCallback(() => {
-    if (!s.currentQuestion || !s.selectedOptionId) return;
-    void wrappedConfidenceAndNext("na_pewno");
-  }, [s.currentQuestion, s.selectedOptionId, wrappedConfidenceAndNext]);
-
-  const onConfidenceShortcut = useCallback(
-    (c: Confidence) => {
-      void wrappedConfidenceAndNext(c);
-    },
-    [wrappedConfidenceAndNext],
+    [s, sw, handleAnswerSelected],
   );
 
   useSessionKeyboardShortcuts({
     currentQuestion: s.currentQuestion,
     currentIndex: s.currentIndex,
+    total: s.total,
     isShowingFeedback: s.isShowingFeedback,
-    isPastReadOnly: s.isPastReadOnly,
-    selectedOptionId: s.selectedOptionId,
-    selectOption: s.selectOption,
-    onCheck: handleCheck,
-    onGoPrevious: s.goToPrevious,
-    onConfidencePick: isPrzeglad ? undefined : onConfidenceShortcut,
-    onContinueReview: isPrzeglad ? handlePrzegladNext : s.goForwardFromReview,
+    isCurrentAnswered: s.isCurrentAnswered,
+    selectAndCheck: handleSelectOption,
+    onNext: handleNavigateNext,
+    onPrevious: s.goToPrevious,
   });
 
   if (completedSummary) {
@@ -187,7 +167,7 @@ export function SessionStudyView({
       <SessionEndDialog
         open={endOpen}
         onOpenChange={setEndOpen}
-        answeredCount={s.answers.length}
+        answeredCount={s.answeredCount}
         totalQuestions={s.total}
         onConfirm={handleEndConfirm}
       />
@@ -205,15 +185,11 @@ export function SessionStudyView({
         total={s.total}
         selectedOptionId={s.selectedOptionId}
         isShowingFeedback={s.isShowingFeedback}
-        isPastReadOnly={s.isPastReadOnly}
-        mode={mode}
-        onSelectOption={s.selectOption}
-        onCheck={handleCheck}
-        onConfidenceAndNext={(c) => void wrappedConfidenceAndNext(c)}
-        submitting={submitting}
-        onPrzegladNext={handlePrzegladNext}
-        onContinueReview={s.goForwardFromReview}
-        onGoToPrevious={s.goToPrevious}
+        isCurrentAnswered={s.isCurrentAnswered}
+        allAnswered={s.allAnswered}
+        onSelectOption={handleSelectOption}
+        onNext={handleNavigateNext}
+        onPrevious={s.goToPrevious}
       />
     </div>
   );

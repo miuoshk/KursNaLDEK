@@ -5,8 +5,11 @@ import type { SessionSummaryData } from "@/features/session/summaryTypes";
 /**
  * Fire-and-forget server completion. When the server returns an enriched
  * summary (ANTARES insights, XP, streak, etc.), calls `onEnrich` so the
- * already-visible client summary can be updated in-place, then swaps the
- * URL to the permanent summary page via `replaceState`.
+ * already-visible client summary can be updated in-place.
+ *
+ * We intentionally do NOT change the browser URL here — the summary is
+ * already rendered client-side via React state in SessionStudyView. The
+ * permanent `/podsumowanie` URL will be used when revisiting the session.
  */
 export function scheduleServerSessionComplete(
   sessionId: string,
@@ -19,13 +22,6 @@ export function scheduleServerSessionComplete(
       if (comp.ok) {
         persistSessionSummaryToStorage(sessionId, comp.summary);
         onEnrich?.(comp.summary);
-        if (typeof window !== "undefined") {
-          window.history.replaceState(
-            null,
-            "",
-            `/sesja/${sessionId}/podsumowanie`,
-          );
-        }
       }
     })
     .catch(console.error);

@@ -189,9 +189,9 @@ export function useSessionStudyFlow(
         profileXp,
         profileStreak,
       });
-      finishSession(summary);
 
-      void submitAnswerWithRetry(payload).catch(() => {});
+      await submitAnswerWithRetry(payload).catch(() => {});
+      finishSession(summary);
     },
     [
       s,

@@ -23,8 +23,17 @@ export function SessionSummaryClient({ summary }: { summary: SessionSummaryData 
 
   useEffect(() => {
     try {
-      sessionStorage.removeItem(`session_${summary.sessionId}_completed`);
+      // Remove bootstrap cache immediately — no longer needed.
       sessionStorage.removeItem(`kurs-session-${summary.sessionId}`);
+      // Delay clearing the completed flag so that if a revalidation
+      // re-renders SessionPageClient, the guard still redirects to
+      // the summary instead of re-bootstrapping the session.
+      const t = setTimeout(() => {
+        try {
+          sessionStorage.removeItem(`session_${summary.sessionId}_completed`);
+        } catch { /* SSR guard */ }
+      }, 30_000);
+      return () => clearTimeout(t);
     } catch { /* SSR guard */ }
   }, [summary.sessionId]);
 

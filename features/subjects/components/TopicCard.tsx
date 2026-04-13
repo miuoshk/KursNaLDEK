@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
+import { TopicSessionModal } from "@/features/subjects/components/TopicSessionModal";
 import { cn } from "@/lib/utils";
 
 type TopicCardProps = {
@@ -20,6 +20,7 @@ function fillClassForProgress(pct: number) {
 
 export function TopicCard({ topic, subjectId }: TopicCardProps) {
   const [showCard, setShowCard] = useState(false);
+  const [showSessionModal, setShowSessionModal] = useState(false);
 
   const total = topic.question_count;
   const answered = topic.answered_count;
@@ -27,8 +28,6 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
   const hasQuestions = total > 0;
   const hasKnowledgeCard =
     topic.knowledge_card != null && topic.knowledge_card.trim().length > 0;
-
-  const href = `/sesja/new?subject=${encodeURIComponent(subjectId)}&topic=${encodeURIComponent(topic.id)}&mode=inteligentna&count=50`;
 
   const inner = (
     <>
@@ -45,7 +44,6 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
           <button
             type="button"
             onClick={(e) => {
-              e.preventDefault();
               e.stopPropagation();
               setShowCard(true);
             }}
@@ -95,15 +93,24 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
 
   return (
     <>
-      <Link
-        href={href}
+      <button
+        type="button"
+        onClick={() => setShowSessionModal(true)}
         className={cn(
-          "group block rounded-card border border-border bg-card p-5",
+          "group block w-full rounded-card border border-border bg-card p-5 text-left",
           "transition-all duration-200 ease-out hover:border-brand-sage/30",
         )}
       >
         {inner}
-      </Link>
+      </button>
+      <TopicSessionModal
+        open={showSessionModal}
+        onOpenChange={setShowSessionModal}
+        topicId={topic.id}
+        topicName={topic.name}
+        subjectId={subjectId}
+        availableQuestionCount={total}
+      />
       {showCard && hasKnowledgeCard && (
         <KnowledgeCardOverlay
           knowledgeCard={topic.knowledge_card!}

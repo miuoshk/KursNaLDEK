@@ -171,8 +171,11 @@ export async function completeSession(
       summary.newStreak = profAfter.data.current_streak ?? summary.newStreak;
     }
 
-    // Purge client router cache so pulpit/subject pages fetch fresh data
-    revalidatePath("/", "layout");
+    // Purge client router cache for dashboard/subject pages only.
+    // Avoid revalidating the root layout — that would re-render the
+    // active session page and destroy client-side summary state.
+    revalidatePath("/przedmioty", "layout");
+    revalidatePath("/pulpit", "page");
 
     // ═══════════════════════════════════════════════════════════
     // FAZA BACKGROUND — fire-and-forget, po response

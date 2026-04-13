@@ -3,7 +3,6 @@ export type RankedQuestion = {
   topicId: string;
   score: number;
   isLeech: boolean;
-  difficulty: string;
   retrievability?: number;
 };
 
@@ -27,17 +26,10 @@ export type ComposedSession = {
   metadata: {
     avgTopicMastery: number;
     estimatedDuration: number;
-    difficultyDistribution: { easy: number; medium: number; hard: number };
   };
 };
 
 type PoolTag = "due" | "unseen";
-
-const DIFF_ORDER: Record<string, number> = {
-  latwe: 1,
-  srednie: 2,
-  trudne: 3,
-};
 
 function shuffle<T>(items: T[]): T[] {
   const a = [...items];
@@ -46,17 +38,6 @@ function shuffle<T>(items: T[]): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-function normalizeDifficultyLabel(d: string): keyof typeof DIFF_ORDER {
-  const x = d.trim().toLowerCase();
-  if (x === "latwe" || x === "easy" || x === "łatwe") return "latwe";
-  if (x === "trudne" || x === "hard") return "trudne";
-  return "srednie";
-}
-
-function difficultyRank(d: string): number {
-  return DIFF_ORDER[normalizeDifficultyLabel(d)] ?? 2;
 }
 
 /**
@@ -118,56 +99,6 @@ export function interleaveByTopic(questions: RankedQuestion[]): RankedQuestion[]
   }
 
   return result;
-}
-
-/**
- * Groups by difficulty rank, shuffles within each group, then concatenates
- * in the requested order. Breaks deterministic same-difficulty ordering.
- */
-function sortByDifficultyShuffled(
-  arr: RankedQuestion[],
-  ascending: boolean,
-): RankedQuestion[] {
-  const groups = new Map<number, RankedQuestion[]>();
-  for (const q of arr) {
-    const rank = difficultyRank(q.difficulty);
-    const list = groups.get(rank) ?? [];
-    list.push(q);
-    groups.set(rank, list);
-  }
-  const ranks = [...groups.keys()].sort((a, b) =>
-    ascending ? a - b : b - a,
-  );
-  const result: RankedQuestion[] = [];
-  for (const rank of ranks) {
-    result.push(...shuffle(groups.get(rank)!));
-  }
-  return result;
-}
-
-/**
- * Dostosowuje kolejność do krzywej trudności: rozgrzewka (łatwiejsze), rdzeń (cięższe),
- * schłodzenie (łagodniejsze zakończenie). Przy ≤ 5 pytaniach losuje kolejność.
- */
-export function applyDifficultyCurve(questions: RankedQuestion[]): RankedQuestion[] {
-  const n = questions.length;
-  if (n <= 5) {
-    return shuffle(questions);
-  }
-
-  const w = Math.floor(n * 0.2);
-  const c = Math.floor(n * 0.6);
-  const coolLen = n - w - c;
-
-  const warm = questions.slice(0, w);
-  const core = questions.slice(w, w + c);
-  const cool = questions.slice(w + c, w + c + coolLen);
-
-  return [
-    ...sortByDifficultyShuffled(warm, true),
-    ...sortByDifficultyShuffled(core, false),
-    ...sortByDifficultyShuffled(cool, true),
-  ];
 }
 
 function dedupeByQuestionId(
@@ -281,8 +212,7 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   const mergedQs = merged.map((m) => m.q);
   const sourceById = new Map(merged.map((m) => [m.q.questionId, m.tag] as const));
 
-  let interleaved = interleaveByTopic(mergedQs);
-  interleaved = applyDifficultyCurve(interleaved);
+  const interleaved = interleaveByTopic(mergedQs);
 
   const questionIds = interleaved.map((q) => q.questionId);
 
@@ -294,14 +224,6 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
       sum += topicMastery.get(tid) ?? 0;
     }
     avgTopicMastery = sum / topicIdsInSession.length;
-  }
-
-  const difficultyDistribution = { easy: 0, medium: 0, hard: 0 };
-  for (const q of interleaved) {
-    const lab = normalizeDifficultyLabel(q.difficulty);
-    if (lab === "latwe") difficultyDistribution.easy += 1;
-    else if (lab === "trudne") difficultyDistribution.hard += 1;
-    else difficultyDistribution.medium += 1;
   }
 
   const dueReviews = interleaved.filter(
@@ -318,7 +240,6 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     metadata: {
       avgTopicMastery,
       estimatedDuration: count * 15,
-      difficultyDistribution,
     },
   };
 }

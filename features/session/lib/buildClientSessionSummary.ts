@@ -60,13 +60,9 @@ export function buildClientSessionSummary(
   const durationSeconds = answers.reduce((s, a) => s + a.timeSpentSeconds, 0);
   const avgTimePerQuestion = n > 0 ? Math.round(durationSeconds / n) : 0;
 
-  const forXp = answers.map((a) => {
-    const q = questions.find((x) => x.id === a.questionId);
-    return {
-      is_correct: a.isCorrect,
-      difficulty: q?.difficulty ?? "srednie",
-    };
-  });
+  const forXp = answers.map((a) => ({
+    is_correct: a.isCorrect,
+  }));
   const xpEarned = computeSessionXp(forXp, questions.length);
 
   const topicMap = new Map<string, { c: number; t: number }>();

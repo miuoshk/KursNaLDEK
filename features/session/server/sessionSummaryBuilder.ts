@@ -88,7 +88,7 @@ export async function buildSessionSummary(
 
   const { data: qmeta } = await supabase
     .from("questions")
-    .select("id, text, correct_option_id, difficulty, options, topics ( name )")
+    .select("id, text, correct_option_id, options, topics ( name )")
     .in("id", qids.length ? qids : ["__none__"]);
 
   const qById = new Map(
@@ -97,7 +97,6 @@ export async function buildSessionSummary(
       {
         text: q.text as string,
         correct: q.correct_option_id as string,
-        difficulty: q.difficulty as string,
         options: q.options,
         topic: topicNameFromJoin(
           q.topics as { name: string } | { name: string }[] | null,

@@ -4,7 +4,6 @@ export type AdminQuestion = {
   id: string;
   topicName: string;
   text: string;
-  difficulty: string;
   isActive: boolean;
   timesAnswered: number;
   accuracy: number;
@@ -27,7 +26,7 @@ export async function loadAdminQuestions(params: {
 
   let query = supabase
     .from("questions")
-    .select("id, text, difficulty, is_active, topic_id, topics(name, subject_id)", {
+    .select("id, text, is_active, topic_id, topics(name, subject_id)", {
       count: "exact",
     })
     .order("id", { ascending: true })
@@ -81,7 +80,6 @@ export async function loadAdminQuestions(params: {
       id: r.id as string,
       topicName: topic?.name ?? "—",
       text: r.text as string,
-      difficulty: r.difficulty as string,
       isActive: (r.is_active as boolean) ?? true,
       timesAnswered: answered,
       accuracy: answered > 0 ? Math.round((correct / answered) * 100) : 0,

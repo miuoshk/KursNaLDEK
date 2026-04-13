@@ -7,7 +7,6 @@ export type QuestionRow = {
   options: unknown;
   correct_option_id: string;
   explanation: string;
-  difficulty: string;
   source_code: string | null;
   topics: { name: string } | { name: string }[] | null;
 };
@@ -41,7 +40,6 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     options: shuffleArray(options),
     correctOptionId: row.correct_option_id,
     explanation: row.explanation,
-    difficulty: row.difficulty,
     sourceCode: row.source_code,
     topicName: topicLabel(row.topics),
     topicId: row.topic_id ?? undefined,

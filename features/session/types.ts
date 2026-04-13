@@ -9,7 +9,6 @@ export interface SessionQuestion {
   options: { id: string; text: string }[];
   correctOptionId: string;
   explanation: string;
-  difficulty: string;
   sourceCode: string | null;
   topicName: string;
   /** Id tematu z bazy (ANTARES); opcjonalne dla starszych payloadów. */

@@ -15,7 +15,6 @@ export function mapRecordToTopicSessionQuestionRow(
     options: row.options,
     correct_option_id: row.correct_option_id as string,
     explanation: row.explanation as string,
-    difficulty: (row.difficulty as string | null) ?? null,
     image_url: (row.image_url as string | null) ?? null,
     question_type: (row.question_type as string | null) ?? null,
     timer_seconds: timerSeconds,

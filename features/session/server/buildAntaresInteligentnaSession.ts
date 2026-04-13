@@ -50,21 +50,20 @@ function rowToRetrievabilityInput(row: {
 async function fetchQuestionsMeta(
   supabase: SupabaseClient,
   ids: string[],
-): Promise<Map<string, { topic_id: string; difficulty: string }>> {
-  const out = new Map<string, { topic_id: string; difficulty: string }>();
+): Promise<Map<string, { topic_id: string }>> {
+  const out = new Map<string, { topic_id: string }>();
   if (ids.length === 0) return out;
   const chunk = 200;
   for (let i = 0; i < ids.length; i += chunk) {
     const slice = ids.slice(i, i + chunk);
     const { data: rows } = await supabase
       .from("questions")
-      .select("id, topic_id, difficulty")
+      .select("id, topic_id")
       .in("id", slice)
       .eq("is_active", true);
     for (const r of rows ?? []) {
       out.set(r.id as string, {
         topic_id: r.topic_id as string,
-        difficulty: String(r.difficulty ?? "srednie"),
       });
     }
   }
@@ -73,7 +72,7 @@ async function fetchQuestionsMeta(
 
 function allowedQuestion(
   qid: string,
-  meta: Map<string, { topic_id: string; difficulty: string }>,
+  meta: Map<string, { topic_id: string }>,
   topicOkForDue: Set<string>,
   topicFilter: Set<string> | undefined,
 ): boolean {
@@ -216,7 +215,6 @@ export async function buildAntaresInteligentnaSession(
       topicId: tid,
       score: urgency,
       isLeech: Boolean(row.is_leech),
-      difficulty: m.difficulty,
       retrievability: rVal,
     });
   }
@@ -247,7 +245,6 @@ export async function buildAntaresInteligentnaSession(
       topicId: m.topic_id,
       score: urgency,
       isLeech: true,
-      difficulty: m.difficulty,
       retrievability: rVal,
     });
   }
@@ -267,8 +264,6 @@ export async function buildAntaresInteligentnaSession(
     const priority = calculateNewQuestionPriority({
       topicMasteryScore: mastery,
       topicCoverageRatio: coverageRatio,
-      questionDifficulty: m.difficulty,
-      studentAccuracyLast20: accuracyLast20,
     });
 
     unseenRanked.push({
@@ -276,7 +271,6 @@ export async function buildAntaresInteligentnaSession(
       topicId: tid,
       score: priority,
       isLeech: false,
-      difficulty: m.difficulty,
     });
   }
   unseenRanked.sort((a, b) => b.score - a.score);

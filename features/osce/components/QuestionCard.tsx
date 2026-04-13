@@ -18,7 +18,6 @@ export type OsceQuestionCardQuestion = {
   image_url?: string | null;
   question_type: string;
   timer_seconds?: number | null;
-  difficulty?: "latwe" | "srednie" | "trudne" | null;
 };
 
 function shuffleOptions<T>(items: T[]): T[] {
@@ -161,21 +160,6 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
             alt=""
             className="h-full w-full object-contain"
           />
-        </div>
-      ) : null}
-
-      {question.difficulty ? (
-        <div className="flex flex-wrap items-center gap-2">
-          <span
-            className={cn(
-              "rounded-pill px-3 py-1 font-body text-body-xs font-medium",
-              question.difficulty === "latwe" && "bg-success/10 text-success",
-              question.difficulty === "srednie" && "bg-brand-gold/10 text-brand-gold",
-              question.difficulty === "trudne" && "bg-error/10 text-error",
-            )}
-          >
-            {question.difficulty === "latwe" ? "Łatwe" : question.difficulty === "srednie" ? "Średnie" : "Trudne"}
-          </span>
         </div>
       ) : null}
 

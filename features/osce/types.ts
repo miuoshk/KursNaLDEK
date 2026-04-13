@@ -27,7 +27,6 @@ export type TopicSessionQuestionRow = {
   options: unknown;
   correct_option_id: string;
   explanation: string;
-  difficulty: string | null;
   image_url: string | null;
   question_type: string | null;
   timer_seconds: number | null;

@@ -14,19 +14,6 @@ export type LoadTopicSessionDataResult =
     }
   | { ok: false; kind: "not_found" | "error"; message: string };
 
-const DIFF_RANK: Record<string, number> = {
-  latwe: 0,
-  łatwe: 0,
-  srednie: 1,
-  średnie: 1,
-  trudne: 2,
-};
-
-function difficultyRank(d: string | null | undefined): number {
-  if (!d) return 99;
-  const k = d.trim().toLowerCase();
-  return DIFF_RANK[k] ?? 99;
-}
 
 export async function loadTopicSessionData(
   stationId: string,
@@ -77,12 +64,7 @@ export async function loadTopicSessionData(
     const rows = (qRows ?? []).map((r) =>
       mapRecordToTopicSessionQuestionRow(r as Record<string, unknown>),
     );
-    const sorted = [...rows].sort((a, b) => {
-      const da = difficultyRank(a.difficulty);
-      const db = difficultyRank(b.difficulty);
-      if (da !== db) return da - db;
-      return a.id.localeCompare(b.id);
-    });
+    const sorted = [...rows].sort((a, b) => a.id.localeCompare(b.id));
 
     return {
       ok: true,

@@ -94,20 +94,8 @@ export async function completeSession(
 
     const qids = [...new Set(ansRows.map((a) => a.question_id as string))];
 
-    let diffRows: { id: string; difficulty: string }[] = [];
-    if (qids.length > 0) {
-      const { data } = await supabase
-        .from("questions")
-        .select("id, difficulty")
-        .in("id", qids);
-      diffRows = (data ?? []) as { id: string; difficulty: string }[];
-    }
-
-    const diffById = new Map(diffRows.map((d) => [d.id, d.difficulty]));
-
     const forXp = ansRows.map((a) => ({
       is_correct: a.is_correct as boolean,
-      difficulty: diffById.get(a.question_id as string) ?? "srednie",
     }));
 
     const xpEarned = computeSessionXp(

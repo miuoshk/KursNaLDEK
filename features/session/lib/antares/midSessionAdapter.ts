@@ -11,13 +11,7 @@ export type SessionState = {
   remainingQuestions: RankedQuestion[];
 };
 
-/**
- * `RankedQuestion` z polami pomocniczymi ustawianymi przez {@link adaptRemainingQuestions}.
- */
-export type RankedQuestionWithAdaptFlags = RankedQuestion & {
-  _needsEasierSwap?: boolean;
-  _needsHarderSwap?: boolean;
-};
+export type RankedQuestionWithAdaptFlags = RankedQuestion;
 
 /** Mapuje pytanie z UI na model rankingu ANTARES. */
 export function sessionQuestionToRanked(q: SessionQuestion): RankedQuestion {
@@ -26,22 +20,7 @@ export function sessionQuestionToRanked(q: SessionQuestion): RankedQuestion {
     topicId: q.topicId ?? q.topicName,
     score: 0,
     isLeech: false,
-    difficulty: q.difficulty,
   };
-}
-
-function rankDiff(d: string): number {
-  const x = normalizeDifficulty(d);
-  if (x === "latwe") return 1;
-  if (x === "srednie") return 2;
-  return 3;
-}
-
-function normalizeDifficulty(d: string): "latwe" | "srednie" | "trudne" {
-  const x = d.trim().toLowerCase();
-  if (x === "latwe" || x === "easy" || x === "łatwe") return "latwe";
-  if (x === "trudne" || x === "hard") return "trudne";
-  return "srednie";
 }
 
 function accuracyOf(
@@ -61,100 +40,26 @@ function avgTime(
 }
 
 /**
- * Dostosowuje listę pozostałych pytań: w trybie „flow” (70–85% trafności w ostatnich 5)
- * kolejność i trudność pozostają bez zmian; przy zbyt niskiej lub zbyt wysokiej trafności
- * oznacza pytania do potencjalnej podmiany na łatwiejsze / trudniejsze.
- *
- * Wynik to tablica `RankedQuestion` z opcjonalnymi polami `_needsEasierSwap` / `_needsHarderSwap`.
+ * Zwraca pozostale pytania bez zmian (bez kategorii trudnosci adaptacja nie jest mozliwa).
  */
 export function adaptRemainingQuestions(
   state: SessionState,
 ): RankedQuestionWithAdaptFlags[] {
-  const last = state.answeredSoFar.slice(-5);
-  if (last.length < 5) {
-    return state.remainingQuestions.map((q) => ({ ...q }));
-  }
-
-  const recentAccuracy = accuracyOf(last);
-
-  if (recentAccuracy >= 0.7 && recentAccuracy <= 0.85) {
-    return state.remainingQuestions.map((q) => ({ ...q }));
-  }
-
-  if (recentAccuracy < 0.5) {
-    return state.remainingQuestions.map((q) => {
-      const lab = normalizeDifficulty(q.difficulty);
-      return {
-        ...q,
-        _needsEasierSwap: lab === "trudne",
-      };
-    });
-  }
-
-  if (recentAccuracy > 0.9) {
-    return state.remainingQuestions.map((q) => {
-      const lab = normalizeDifficulty(q.difficulty);
-      return {
-        ...q,
-        _needsHarderSwap: lab === "latwe",
-      };
-    });
-  }
-
   return state.remainingQuestions.map((q) => ({ ...q }));
 }
 
 /**
- * Podmienia kolejność pozostałych pytań: dla flag łatwiej/trudniej szuka odpowiedniego kandydata
- * dalej w liście i zamienia miejscami; gdy brak lepszego dopasowania — lista bez zmian.
+ * Zwraca pozostale pytania bez zmian (bez kategorii trudnosci adaptacja nie jest mozliwa).
  */
 export function applyDifficultySwapsToRemaining(
   remaining: SessionQuestion[],
-  adapted: RankedQuestionWithAdaptFlags[],
+  _adapted: RankedQuestionWithAdaptFlags[],
 ): SessionQuestion[] {
-  if (remaining.length !== adapted.length) {
-    return [...remaining];
-  }
-  const out = remaining.map((q) => ({ ...q }));
-  for (let i = 0; i < out.length; i++) {
-    const a = adapted[i];
-    if (a._needsEasierSwap) {
-      let bestJ = -1;
-      let bestRank = rankDiff(out[i].difficulty);
-      for (let j = i + 1; j < out.length; j++) {
-        const r = rankDiff(out[j].difficulty);
-        if (r < bestRank) {
-          bestRank = r;
-          bestJ = j;
-        }
-      }
-      if (bestJ >= 0) {
-        const t = out[i];
-        out[i] = out[bestJ];
-        out[bestJ] = t;
-      }
-    } else if (a._needsHarderSwap) {
-      let bestJ = -1;
-      let bestRank = rankDiff(out[i].difficulty);
-      for (let j = i + 1; j < out.length; j++) {
-        const r = rankDiff(out[j].difficulty);
-        if (r > bestRank) {
-          bestRank = r;
-          bestJ = j;
-        }
-      }
-      if (bestJ >= 0) {
-        const t = out[i];
-        out[i] = out[bestJ];
-        out[bestJ] = t;
-      }
-    }
-  }
-  return out;
+  return [...remaining];
 }
 
 /**
- * Wykrywa spadek formy (zmęczenie) na podstawie pierwszych vs ostatnich odpowiedzi w sesji.
+ * Wykrywa spadek formy (zmeczenie) na podstawie pierwszych vs ostatnich odpowiedzi w sesji.
  */
 export function detectFatigue(
   answers: SessionState["answeredSoFar"],
@@ -180,7 +85,7 @@ export function detectFatigue(
   return {
     isFatigued: fatigued,
     suggestion: fatigued
-      ? "Twoja skuteczność spada — rozważ przerwę. Lepiej 2 krótkie sesje niż 1 długa."
+      ? "Twoja skutecznosc spada \u2014 rozwaz przerwe. Lepiej 2 krotkie sesje niz 1 dluga."
       : null,
   };
 }

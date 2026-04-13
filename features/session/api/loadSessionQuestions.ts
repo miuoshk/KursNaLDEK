@@ -70,7 +70,7 @@ export async function loadSessionQuestions(
     const { data: rows, error: qe } = await supabase
       .from("questions")
       .select(
-        "id, text, options, correct_option_id, explanation, difficulty, source_code, topics ( name )",
+        "id, text, options, correct_option_id, explanation, source_code, topics ( name )",
       )
       .in("id", ids);
 

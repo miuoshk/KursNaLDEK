@@ -79,7 +79,6 @@ const editQuestionSchema = z.object({
   questionId: z.string().min(1),
   text: z.string().min(1).optional(),
   explanation: z.string().optional(),
-  difficulty: z.string().optional(),
 });
 
 export async function editQuestion(
@@ -93,7 +92,6 @@ export async function editQuestion(
   const updates: Record<string, unknown> = {};
   if (parsed.data.text) updates.text = parsed.data.text;
   if (parsed.data.explanation) updates.explanation = parsed.data.explanation;
-  if (parsed.data.difficulty) updates.difficulty = parsed.data.difficulty;
 
   if (Object.keys(updates).length === 0) {
     return { ok: false as const, message: "Brak zmian." };

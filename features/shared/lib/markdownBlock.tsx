@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
 
 export function markdownBlock(md: string) {
@@ -14,9 +15,14 @@ export function markdownBlock(md: string) {
         "[&_strong]:font-semibold [&_strong]:text-primary",
         "[&_h2]:mt-6 [&_h2]:font-heading [&_h2]:text-heading-sm [&_h2]:text-primary",
         "[&_h3]:mt-4 [&_h3]:font-heading [&_h3]:text-body-lg [&_h3]:text-primary",
+        "[&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse",
+        "[&_th]:border [&_th]:border-white/[0.12] [&_th]:bg-white/[0.04] [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:font-semibold [&_th]:text-primary",
+        "[&_td]:border [&_td]:border-white/[0.12] [&_td]:px-3 [&_td]:py-2",
+        "[&_tr:hover]:bg-white/[0.02]",
+        "[&_del]:text-muted [&_del]:line-through",
       )}
     >
-      <ReactMarkdown>{md}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{md}</ReactMarkdown>
     </div>
   );
 }

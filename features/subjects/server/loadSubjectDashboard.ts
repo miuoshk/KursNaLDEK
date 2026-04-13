@@ -4,6 +4,7 @@ import type { Subject, Topic } from "@/features/subjects/types";
 export type TopicWithProgress = Topic & {
   answered_count: number;
   correct_count: number;
+  knowledge_card: string | null;
 };
 
 export type SubjectStats = {
@@ -39,7 +40,7 @@ export async function loadSubjectDashboard(
         .maybeSingle(),
       supabase
         .from("topics")
-        .select("id, subject_id, name, display_order, question_count")
+        .select("id, subject_id, name, display_order, question_count, knowledge_card")
         .eq("subject_id", subjectId)
         .order("display_order", { ascending: true }),
     ]);
@@ -147,6 +148,7 @@ export async function loadSubjectDashboard(
         question_count: row.question_count ?? 0,
         answered_count: prog?.uniqueAnswered ?? 0,
         correct_count: prog?.totalCorrect ?? 0,
+        knowledge_card: (row.knowledge_card as string | null) ?? null,
       };
     });
 

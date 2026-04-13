@@ -55,6 +55,8 @@ export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProp
         topicName={selectedTopic?.name ?? ""}
         totalQuestions={selectedTopic?.question_count ?? 0}
         answeredQuestions={selectedTopic?.answered_count ?? 0}
+        // TODO: load knowledge_card availability from topics table and pass here
+        hasKnowledgeCard={false}
       />
     </section>
   );

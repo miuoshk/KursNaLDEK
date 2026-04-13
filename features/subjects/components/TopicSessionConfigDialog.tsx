@@ -22,6 +22,7 @@ type TopicSessionConfigDialogProps = {
   topicName: string;
   totalQuestions: number;
   answeredQuestions: number;
+  hasKnowledgeCard?: boolean;
 };
 
 const PRESETS = [10, 25, 50] as const;
@@ -51,6 +52,7 @@ export function TopicSessionConfigDialog({
   topicName,
   totalQuestions,
   answeredQuestions,
+  hasKnowledgeCard = false,
 }: TopicSessionConfigDialogProps) {
   const [preset, setPreset] = useState<PresetValue>(25);
   const [customCount, setCustomCount] = useState("");
@@ -106,7 +108,7 @@ export function TopicSessionConfigDialog({
             <p className="font-body text-body-xs text-muted">
               {subjectShortName}
             </p>
-            <p className="font-heading text-heading-sm text-primary">
+            <p className="font-heading text-heading-sm text-primary lg:text-heading-md">
               Wybierz tryb nauki
             </p>
 
@@ -126,12 +128,10 @@ export function TopicSessionConfigDialog({
 
           {/* Body */}
           <div className="px-5 py-4 lg:px-7 lg:py-5">
-            {/* Desktop: two-column layout */}
-            <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-start">
-              {/* Left column / Hero card */}
-              <div>
-                {/* Hero: Inteligentna sesja */}
-                <div className="relative rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-stretch">
+              {/* Left column — Hero card */}
+              <div className="lg:flex lg:flex-col">
+                <div className="relative flex h-full flex-col rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
                   <span className="absolute -top-2 right-3 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
                     Rekomendowane
                   </span>
@@ -175,13 +175,13 @@ export function TopicSessionConfigDialog({
                         setCustomCount("");
                       }}
                       className={cn(
-                        "flex h-7 min-w-[36px] cursor-pointer items-center justify-center rounded-pill border px-1.5 font-body text-body-sm transition-colors",
+                        "flex h-7 cursor-pointer items-center justify-center rounded-pill border px-3 font-body text-body-sm transition-colors",
                         preset === "all"
                           ? "border-brand-sage bg-brand-sage font-semibold text-white"
                           : "border-border bg-transparent text-secondary",
                       )}
                     >
-                      ∞
+                      Max
                     </button>
                     <input
                       type="number"
@@ -203,10 +203,10 @@ export function TopicSessionConfigDialog({
                     </span>
                   </div>
 
-                  {/* CTA */}
+                  {/* CTA — mt-auto pushes it to the bottom on desktop */}
                   <Link
                     href={smartHref}
-                    className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085]"
+                    className="mt-auto block w-full rounded-btn bg-brand-sage pt-3.5 pb-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085]"
                   >
                     Rozpocznij sesję
                   </Link>
@@ -214,76 +214,118 @@ export function TopicSessionConfigDialog({
               </div>
 
               {/* Right column (desktop) / below hero (mobile) */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 lg:gap-3">
                 {/* Section label */}
                 <p className="mt-4 mb-2.5 font-body text-body-xs uppercase tracking-normal text-muted lg:mt-0 lg:mb-0">
                   Inne tryby
                 </p>
 
-                {/* Alt mode cards */}
-                <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3">
-                  <Link
-                    href={reviewHref}
-                    className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                  >
-                    <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
-                      <FileText className="size-4 text-muted" aria-hidden />
-                    </div>
-                    <h4 className="font-body text-body-sm font-medium text-primary">
-                      Nauka klasyczna
-                    </h4>
-                    <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                      Pytania w losowej kolejności, bez algorytmu powtórek
-                    </p>
-                    <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
-                      Rozpocznij
-                    </span>
-                  </Link>
+                {/* Alt mode cards — layout depends on knowledge card presence */}
+                {hasKnowledgeCard ? (
+                  <>
+                    <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3">
+                      <Link
+                        href={reviewHref}
+                        className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
+                      >
+                        <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                          <FileText className="size-4 text-muted" aria-hidden />
+                        </div>
+                        <h4 className="font-body text-body-sm font-medium text-primary">
+                          Nauka klasyczna
+                        </h4>
+                        <p className="mt-1 font-body text-[11px] leading-snug text-muted">
+                          Pytania w losowej kolejności, bez algorytmu powtórek
+                        </p>
+                        <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                          Rozpocznij
+                        </span>
+                      </Link>
 
-                  <Link
-                    href={catalogHref}
-                    className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
-                  >
-                    <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
-                      <LayoutGrid className="size-4 text-muted" aria-hidden />
+                      <Link
+                        href={catalogHref}
+                        className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
+                      >
+                        <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                          <LayoutGrid className="size-4 text-muted" aria-hidden />
+                        </div>
+                        <h4 className="font-body text-body-sm font-medium text-primary">
+                          Katalog pytań
+                        </h4>
+                        <p className="mt-1 font-body text-[11px] leading-snug text-muted">
+                          Przeglądaj pytania i wyjaśnienia
+                        </p>
+                        <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                          Przeglądaj
+                        </span>
+                      </Link>
                     </div>
-                    <h4 className="font-body text-body-sm font-medium text-primary">
-                      Katalog pytań
-                    </h4>
-                    <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                      Przeglądaj pytania i wyjaśnienia
-                    </p>
-                    <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
-                      Przeglądaj
-                    </span>
-                  </Link>
-                </div>
 
-                {/* Knowledge card bar */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    /* TODO: open knowledge card overlay */
-                  }}
-                  className="mt-3 flex items-center gap-2.5 rounded-[10px] border border-brand-gold/15 bg-brand-gold/[0.06] px-3.5 py-3 transition-colors hover:border-brand-gold/30 lg:mt-0"
-                >
-                  <BookOpen
-                    className="size-[18px] shrink-0 text-brand-gold"
-                    aria-hidden
-                  />
-                  <div className="min-w-0 flex-1 text-left">
-                    <h5 className="font-body text-body-sm font-medium text-primary">
-                      Karta wiedzy
-                    </h5>
-                    <span className="font-body text-[11px] text-muted">
-                      Teoria i kluczowe pojęcia
-                    </span>
+                    {/* Knowledge card bar — pushed to bottom */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        /* TODO: open knowledge card overlay */
+                      }}
+                      className="mt-auto flex items-center gap-2.5 rounded-[10px] border border-brand-gold/15 bg-brand-gold/[0.06] px-3.5 py-3 transition-colors hover:border-brand-gold/30"
+                    >
+                      <BookOpen
+                        className="size-[18px] shrink-0 text-brand-gold"
+                        aria-hidden
+                      />
+                      <div className="min-w-0 flex-1 text-left">
+                        <h5 className="font-body text-body-sm font-medium text-primary">
+                          Karta wiedzy
+                        </h5>
+                        <span className="font-body text-[11px] text-muted">
+                          Teoria i kluczowe pojęcia
+                        </span>
+                      </div>
+                      <ChevronRight
+                        className="size-4 shrink-0 text-brand-gold"
+                        aria-hidden
+                      />
+                    </button>
+                  </>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3 lg:flex-1 lg:grid-rows-2">
+                    <Link
+                      href={reviewHref}
+                      className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
+                    >
+                      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                        <FileText className="size-4 text-muted" aria-hidden />
+                      </div>
+                      <h4 className="font-body text-body-sm font-medium text-primary">
+                        Nauka klasyczna
+                      </h4>
+                      <p className="mt-1 font-body text-[11px] leading-snug text-muted">
+                        Pytania w losowej kolejności, bez algorytmu powtórek
+                      </p>
+                      <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                        Rozpocznij
+                      </span>
+                    </Link>
+
+                    <Link
+                      href={catalogHref}
+                      className="flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25"
+                    >
+                      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                        <LayoutGrid className="size-4 text-muted" aria-hidden />
+                      </div>
+                      <h4 className="font-body text-body-sm font-medium text-primary">
+                        Katalog pytań
+                      </h4>
+                      <p className="mt-1 font-body text-[11px] leading-snug text-muted">
+                        Przeglądaj pytania i wyjaśnienia
+                      </p>
+                      <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                        Przeglądaj
+                      </span>
+                    </Link>
                   </div>
-                  <ChevronRight
-                    className="size-4 shrink-0 text-brand-gold"
-                    aria-hidden
-                  />
-                </button>
+                )}
               </div>
             </div>
           </div>

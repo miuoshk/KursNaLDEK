@@ -40,7 +40,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
           subjectId={subject.id}
           availableQuestionCount={availableQuestionCount}
         />
-        <TopicGrid topics={topics} subjectId={subject.id} />
+        <TopicGrid topics={topics} subjectId={subject.id} subjectShortName={subject.short_name} />
 
         <div className="flex justify-end pt-4">
           <ResetSubjectProgress

@@ -4,12 +4,11 @@ import { useState } from "react";
 import { BookOpen } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
-import { TopicSessionModal } from "@/features/subjects/components/TopicSessionModal";
 import { cn } from "@/lib/utils";
 
 type TopicCardProps = {
   topic: TopicWithProgress;
-  subjectId: string;
+  onSelect: (topic: TopicWithProgress) => void;
 };
 
 function fillClassForProgress(pct: number) {
@@ -18,9 +17,8 @@ function fillClassForProgress(pct: number) {
   return "bg-success";
 }
 
-export function TopicCard({ topic, subjectId }: TopicCardProps) {
+export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const [showCard, setShowCard] = useState(false);
-  const [showSessionModal, setShowSessionModal] = useState(false);
 
   const total = topic.question_count;
   const answered = topic.answered_count;
@@ -95,7 +93,7 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
     <>
       <button
         type="button"
-        onClick={() => setShowSessionModal(true)}
+        onClick={() => onSelect(topic)}
         className={cn(
           "group block w-full rounded-card border border-border bg-card p-5 text-left",
           "transition-all duration-200 ease-out hover:border-brand-sage/30",
@@ -103,14 +101,6 @@ export function TopicCard({ topic, subjectId }: TopicCardProps) {
       >
         {inner}
       </button>
-      <TopicSessionModal
-        open={showSessionModal}
-        onOpenChange={setShowSessionModal}
-        topicId={topic.id}
-        topicName={topic.name}
-        subjectId={subjectId}
-        availableQuestionCount={total}
-      />
       {showCard && hasKnowledgeCard && (
         <KnowledgeCardOverlay
           knowledgeCard={topic.knowledge_card!}

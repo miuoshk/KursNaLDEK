@@ -2,7 +2,7 @@
 
 import { CheckCircle, XCircle } from "lucide-react";
 import type { SessionQuestion } from "@/features/session/types";
-import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
+import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { cn } from "@/lib/utils";
 
 function letterForOption(q: SessionQuestion, optionId: string) {
@@ -46,7 +46,7 @@ export function FeedbackPanel({
       <div className="rounded-card bg-card p-5">
         <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
         <div className="mt-3">
-          <FormattedExplanation text={question.explanation} />
+          {markdownBlock(question.explanation)}
         </div>
       </div>
     </div>

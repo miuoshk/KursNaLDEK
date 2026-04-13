@@ -5,6 +5,7 @@ import { Filter } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { TopicCard } from "@/features/subjects/components/TopicCard";
 import { TopicSessionConfigDialog } from "@/features/subjects/components/TopicSessionConfigDialog";
+import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
 
 type TopicGridProps = {
   topics: TopicWithProgress[];
@@ -14,6 +15,7 @@ type TopicGridProps = {
 
 export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProps) {
   const [selectedTopic, setSelectedTopic] = useState<TopicWithProgress | null>(null);
+  const [knowledgeCardTopic, setKnowledgeCardTopic] = useState<TopicWithProgress | null>(null);
 
   return (
     <section>
@@ -59,7 +61,18 @@ export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProp
           selectedTopic?.knowledge_card != null &&
           selectedTopic.knowledge_card.trim().length > 0
         }
+        onOpenKnowledgeCard={() => {
+          if (selectedTopic) setKnowledgeCardTopic(selectedTopic);
+        }}
       />
+
+      {knowledgeCardTopic?.knowledge_card && (
+        <KnowledgeCardOverlay
+          knowledgeCard={knowledgeCardTopic.knowledge_card}
+          topicName={knowledgeCardTopic.name}
+          onClose={() => setKnowledgeCardTopic(null)}
+        />
+      )}
     </section>
   );
 }

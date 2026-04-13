@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
+import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -83,7 +83,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
         <div className="hidden min-h-0 flex-1 overflow-y-auto border-l border-border bg-card p-8 lg:block">
           <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
           <div className="mt-3">
-            <FormattedExplanation text={q.explanation} />
+            {markdownBlock(q.explanation)}
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@ function CatalogExplanationMobile({
       </button>
       {open && (
         <div className="mt-3 animate-fade-in">
-          <FormattedExplanation text={explanation} />
+          {markdownBlock(explanation)}
         </div>
       )}
     </div>

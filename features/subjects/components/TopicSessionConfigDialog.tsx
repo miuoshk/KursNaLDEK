@@ -24,6 +24,7 @@ type TopicSessionConfigDialogProps = {
   totalQuestions: number;
   answeredQuestions: number;
   hasKnowledgeCard?: boolean;
+  onOpenKnowledgeCard?: () => void;
 };
 
 const PRESETS = [10, 25, 50] as const;
@@ -54,6 +55,7 @@ export function TopicSessionConfigDialog({
   totalQuestions,
   answeredQuestions,
   hasKnowledgeCard = false,
+  onOpenKnowledgeCard,
 }: TopicSessionConfigDialogProps) {
   const [preset, setPreset] = useState<PresetValue>(25);
   const [customCount, setCustomCount] = useState("");
@@ -263,7 +265,8 @@ export function TopicSessionConfigDialog({
                     <button
                       type="button"
                       onClick={() => {
-                        /* TODO: open knowledge card overlay */
+                        onOpenChange(false);
+                        onOpenKnowledgeCard?.();
                       }}
                       className="mt-auto flex items-center gap-2.5 rounded-[10px] border border-brand-gold/15 bg-brand-gold/[0.06] px-3.5 py-3 transition-colors hover:border-brand-gold/30"
                     >

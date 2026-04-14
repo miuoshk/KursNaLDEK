@@ -96,6 +96,11 @@ export function RegisterForm() {
           {state.error}
         </p>
       ) : null}
+      {state.info ? (
+        <p className="font-body text-body-sm text-brand-gold" role="status">
+          {state.info}
+        </p>
+      ) : null}
 
       <SubmitButton />
     </form>

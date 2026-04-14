@@ -32,75 +32,18 @@ export async function resetSubjectProgress(
     }
 
     const { subjectId } = parsed.data;
+    const { error: resetError } = await supabase.rpc("reset_subject_progress", {
+      p_subject_id: subjectId,
+    });
 
-    // Get all topic IDs for this subject
-    const { data: topicRows, error: topicErr } = await supabase
-      .from("topics")
-      .select("id")
-      .eq("subject_id", subjectId);
-
-    if (topicErr) {
-      console.error("[resetSubjectProgress] topics", topicErr.message);
-      return { ok: false, message: "Nie udało się pobrać tematów." };
-    }
-
-    const topicIds = (topicRows ?? []).map((t) => t.id as string);
-    if (topicIds.length === 0) {
-      return { ok: true };
-    }
-
-    // Get all question IDs for these topics
-    const { data: qRows, error: qErr } = await supabase
-      .from("questions")
-      .select("id")
-      .in("topic_id", topicIds);
-
-    if (qErr) {
-      console.error("[resetSubjectProgress] questions", qErr.message);
-      return { ok: false, message: "Nie udało się pobrać pytań." };
-    }
-
-    const questionIds = (qRows ?? []).map((q) => q.id as string);
-
-    // Get all session IDs for this subject
-    const { data: sessionRows } = await supabase
-      .from("study_sessions")
-      .select("id")
-      .eq("user_id", user.id)
-      .eq("subject_id", subjectId);
-
-    const sessionIds = (sessionRows ?? []).map((s) => s.id as string);
-
-    // Delete in parallel: session_answers, user_question_progress, topic_mastery_cache, study_sessions
-    if (sessionIds.length > 0) {
-      await supabase
-        .from("session_answers")
-        .delete()
-        .eq("user_id", user.id)
-        .in("session_id", sessionIds);
-    }
-
-    await Promise.all([
-      questionIds.length > 0
-        ? supabase
-            .from("user_question_progress")
-            .delete()
-            .eq("user_id", user.id)
-            .in("question_id", questionIds)
-        : null,
-      supabase
-        .from("topic_mastery_cache")
-        .delete()
-        .eq("user_id", user.id)
-        .in("topic_id", topicIds),
-    ]);
-
-    if (sessionIds.length > 0) {
-      await supabase
-        .from("study_sessions")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("subject_id", subjectId);
+    if (resetError) {
+      console.error(
+        "[resetSubjectProgress] reset_subject_progress RPC",
+        resetError.message,
+        resetError.code,
+        resetError.details,
+      );
+      return { ok: false, message: "Nie udało się wyzerować postępu." };
     }
 
     revalidatePath("/", "layout");

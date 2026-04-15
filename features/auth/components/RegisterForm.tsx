@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 
 const inputClassName =
   "w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-background px-4 py-3 font-body text-white placeholder:text-muted transition-colors duration-200 ease-out focus:border-brand-gold focus:outline-none";
+const selectClassName =
+  "w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-background px-4 py-3 font-body text-white transition-colors duration-200 ease-out focus:border-brand-gold focus:outline-none";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -44,6 +46,24 @@ export function RegisterForm() {
           className={inputClassName}
           placeholder="Jan Kowalski"
         />
+      </div>
+
+      <div>
+        <label htmlFor="nick" className="mb-2 block font-body text-body-sm text-secondary">
+          Nick
+        </label>
+        <input
+          id="nick"
+          name="nick"
+          type="text"
+          required
+          autoComplete="nickname"
+          className={inputClassName}
+          placeholder="np. medicjan"
+        />
+        <p className="mt-1 font-body text-body-xs text-muted">
+          Nick jest widoczny w rankingu i można go później zmienić w ustawieniach.
+        </p>
       </div>
 
       <div>
@@ -89,6 +109,33 @@ export function RegisterForm() {
           className={inputClassName}
           placeholder="••••••••"
         />
+      </div>
+
+      <div>
+        <label htmlFor="currentTrack" className="mb-2 block font-body text-body-sm text-secondary">
+          Kierunek
+        </label>
+        <select id="currentTrack" name="currentTrack" required className={selectClassName} defaultValue="">
+          <option value="" disabled>
+            Wybierz kierunek
+          </option>
+          <option value="stomatologia">Stomatologia</option>
+          <option value="lekarski">Lekarski</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="currentYear" className="mb-2 block font-body text-body-sm text-secondary">
+          Rok studiów
+        </label>
+        <select id="currentYear" name="currentYear" required className={selectClassName} defaultValue="">
+          <option value="" disabled>
+            Wybierz rok
+          </option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
 
       {state.error ? (

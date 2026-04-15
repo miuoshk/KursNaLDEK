@@ -30,7 +30,7 @@ export async function loadGamification(
   const [{ data: profile }, { data: uqp }] = await Promise.all([
     supabase
       .from("profiles")
-      .select("xp, current_streak, display_name")
+      .select("xp, current_streak, nick, display_name")
       .eq("id", userId)
       .maybeSingle(),
     supabase
@@ -39,7 +39,7 @@ export async function loadGamification(
       .eq("user_id", userId),
   ]);
 
-  const displayName = profile?.display_name ?? "Użytkownik";
+  const displayName = profile?.nick ?? profile?.display_name ?? "Użytkownik";
   const initials = initialsFromName(displayName);
   const xp = profile?.xp ?? 0;
   const streak = profile?.current_streak ?? 0;

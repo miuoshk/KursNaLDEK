@@ -8,6 +8,8 @@
 -- ============================================
 CREATE TABLE profiles (
   id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  full_name TEXT NOT NULL,
+  nick TEXT NOT NULL,
   display_name TEXT NOT NULL,
   avatar_initials TEXT,
   current_year INT DEFAULT 1,
@@ -36,16 +38,59 @@ CREATE TABLE profiles (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+CREATE UNIQUE INDEX profiles_nick_lower_unique ON profiles ((LOWER(nick)));
+ALTER TABLE profiles
+  ADD CONSTRAINT profiles_full_name_not_blank CHECK (LENGTH(TRIM(full_name)) > 0),
+  ADD CONSTRAINT profiles_nick_not_blank CHECK (LENGTH(TRIM(nick)) > 0);
+
 -- Auto-create profile on signup
 CREATE OR REPLACE FUNCTION handle_new_user()
 RETURNS TRIGGER AS $$
+DECLARE
+  full_name_value TEXT;
+  nick_value TEXT;
+  email_local_part TEXT;
+  year_value INT;
+  track_value TEXT;
 BEGIN
-  INSERT INTO public.profiles (id, display_name, avatar_initials)
+  email_local_part := SPLIT_PART(COALESCE(NEW.email, ''), '@', 1);
+  full_name_value := NULLIF(
+    TRIM(COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'display_name', '')),
+    ''
+  );
+  IF full_name_value IS NULL THEN
+    full_name_value := email_local_part;
+  END IF;
+
+  nick_value := NULLIF(
+    TRIM(COALESCE(NEW.raw_user_meta_data->>'nick', NEW.raw_user_meta_data->>'display_name', email_local_part)),
+    ''
+  );
+  IF nick_value IS NULL THEN
+    nick_value := CONCAT('user_', LEFT(NEW.id::TEXT, 8));
+  END IF;
+
+  IF (NEW.raw_user_meta_data->>'current_year') ~ '^[1-3]$' THEN
+    year_value := (NEW.raw_user_meta_data->>'current_year')::INT;
+  ELSE
+    year_value := 1;
+  END IF;
+  track_value := CASE
+    WHEN NEW.raw_user_meta_data->>'current_track' IN ('stomatologia', 'lekarski')
+      THEN NEW.raw_user_meta_data->>'current_track'
+    ELSE 'stomatologia'
+  END;
+
+  INSERT INTO public.profiles (id, full_name, nick, display_name, avatar_initials, current_track, current_year)
   VALUES (
     NEW.id,
-    COALESCE(NEW.raw_user_meta_data->>'display_name', NEW.email),
-    UPPER(LEFT(COALESCE(NEW.raw_user_meta_data->>'display_name', NEW.email), 1) ||
-          LEFT(SPLIT_PART(COALESCE(NEW.raw_user_meta_data->>'display_name', NEW.email), ' ', 2), 1))
+    full_name_value,
+    nick_value,
+    nick_value,
+    UPPER(LEFT(full_name_value, 1) ||
+          LEFT(SPLIT_PART(full_name_value, ' ', 2), 1)),
+    track_value,
+    year_value
   );
   RETURN NEW;
 END;
@@ -54,6 +99,23 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION handle_new_user();
+
+CREATE OR REPLACE FUNCTION prevent_full_name_mutation()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF TG_OP = 'UPDATE' AND NEW.full_name IS DISTINCT FROM OLD.full_name THEN
+    RAISE EXCEPTION 'full_name nie może być zmienione po rejestracji.';
+  END IF;
+  IF NEW.full_name IS NULL OR LENGTH(TRIM(NEW.full_name)) = 0 THEN
+    RAISE EXCEPTION 'full_name jest wymagane.';
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER prevent_full_name_mutation_on_profiles
+  BEFORE UPDATE ON profiles
+  FOR EACH ROW EXECUTE FUNCTION prevent_full_name_mutation();
 
 -- ============================================
 -- 2. CONTENT STRUCTURE

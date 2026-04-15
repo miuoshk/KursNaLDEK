@@ -19,7 +19,7 @@ type Props = {
 export function ProfileSection({ profile, email }: Props) {
   const router = useRouter();
   const { toast } = useToast();
-  const [name, setName] = useState(profile.display_name);
+  const [nick, setNick] = useState(profile.nick);
   const [track, setTrack] = useState(profile.current_track);
   const [year, setYear] = useState(String(profile.current_year));
   const [initials, setInitials] = useState(profile.avatar_initials ?? "");
@@ -27,19 +27,19 @@ export function ProfileSection({ profile, email }: Props) {
 
   const dirty = useMemo(() => {
     return (
-      name !== profile.display_name ||
+      nick !== profile.nick ||
       track !== profile.current_track ||
       year !== String(profile.current_year) ||
       initials !== (profile.avatar_initials ?? "")
     );
-  }, [name, track, year, initials, profile]);
+  }, [nick, track, year, initials, profile]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!dirty) return;
     setSaving(true);
     const res = await updateProfile({
-      display_name: name.trim(),
+      nick: nick.trim(),
       current_track: track === "lekarski" ? "lekarski" : "stomatologia",
       current_year: Number(year),
       avatar_initials: initials.trim() || null,
@@ -52,7 +52,7 @@ export function ProfileSection({ profile, email }: Props) {
   }
 
   const displayInitials = (
-    initials.trim() || initialsFromName(name || profile.display_name)
+    initials.trim() || initialsFromName(nick || profile.nick)
   )
     .slice(0, 4)
     .toUpperCase();
@@ -83,8 +83,23 @@ export function ProfileSection({ profile, email }: Props) {
           </label>
           <input
             id="dn"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={profile.full_name}
+            readOnly
+            disabled
+            className="mt-1.5 w-full cursor-not-allowed rounded-btn border border-border bg-card-hover/50 px-4 py-3 font-body text-muted"
+          />
+          <p className="mt-1 font-body text-body-xs text-muted">
+            Imię i nazwisko jest wymagane przy rejestracji i nie podlega edycji.
+          </p>
+        </div>
+        <div>
+          <label htmlFor="nick" className="font-body text-body-sm text-secondary">
+            Nick (ranking)
+          </label>
+          <input
+            id="nick"
+            value={nick}
+            onChange={(e) => setNick(e.target.value)}
             className="mt-1.5 w-full rounded-btn border border-border bg-background px-4 py-3 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none"
           />
         </div>

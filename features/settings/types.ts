@@ -1,7 +1,8 @@
 import type { KnnpSessionMode } from "@/features/session/types";
 
 export type SettingsProfile = {
-  display_name: string;
+  full_name: string;
+  nick: string;
   avatar_initials: string | null;
   current_track: string;
   current_year: number;

@@ -20,10 +20,29 @@ const loginSchema = z.object({
 
 const registerSchema = z
   .object({
-    fullName: z.string().min(2, "Podaj imię i nazwisko."),
+    fullName: z
+      .string()
+      .trim()
+      .min(2, "Podaj imię i nazwisko.")
+      .max(120, "Imię i nazwisko jest za długie."),
+    nick: z
+      .string()
+      .trim()
+      .min(3, "Nick musi mieć co najmniej 3 znaki.")
+      .max(32, "Nick może mieć maksymalnie 32 znaki.")
+      .regex(
+        /^[A-Za-z0-9._-]+$/,
+        "Nick może zawierać tylko litery, cyfry oraz znaki . _ -",
+      ),
     email: z.string().email("Podaj poprawny adres e-mail."),
     password: z.string().min(6, "Hasło musi mieć co najmniej 6 znaków."),
     confirmPassword: z.string().min(6, "Powtórz hasło."),
+    currentTrack: z
+      .string()
+      .refine((value): value is "stomatologia" | "lekarski" => {
+        return value === "stomatologia" || value === "lekarski";
+      }, { message: "Wybierz kierunek studiów." }),
+    currentYear: z.coerce.number().int().min(1, "Wybierz rok studiów.").max(3, "Wybierz rok studiów."),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Hasła muszą być takie same.",
@@ -80,6 +99,12 @@ function mapRegisterErrorMessage(
   if (normalized.includes("already registered") || normalized.includes("already exists")) {
     return "Ten adres e-mail jest już zajęty.";
   }
+  if (
+    normalized.includes("profiles_nick_lower_unique") ||
+    (normalized.includes("duplicate key value") && normalized.includes("nick"))
+  ) {
+    return "Ten nick jest już zajęty.";
+  }
   if (normalized.includes("password")) {
     return "Hasło nie spełnia wymagań bezpieczeństwa.";
   }
@@ -98,9 +123,12 @@ export async function registerAction(
 ): Promise<AuthActionState> {
   const parsed = registerSchema.safeParse({
     fullName: formData.get("fullName"),
+    nick: formData.get("nick"),
     email: formData.get("email"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
+    currentTrack: formData.get("currentTrack"),
+    currentYear: formData.get("currentYear"),
   });
 
   if (!parsed.success) {
@@ -127,7 +155,11 @@ export async function registerAction(
     options: {
       emailRedirectTo: `${origin}/login`,
       data: {
-        display_name: parsed.data.fullName,
+        full_name: parsed.data.fullName,
+        nick: parsed.data.nick,
+        display_name: parsed.data.nick,
+        current_track: parsed.data.currentTrack,
+        current_year: parsed.data.currentYear,
       },
     },
   });
@@ -141,7 +173,7 @@ export async function registerAction(
       emailDomain: trimmedEmail.split("@")[1] ?? null,
     });
     return {
-      error: `${mapRegisterErrorMessage(error.message, detailedCode)} (debug: ${detailedCode ?? "brak_kodu"})`,
+      error: mapRegisterErrorMessage(error.message, detailedCode),
       info: null,
     };
   }

@@ -66,6 +66,14 @@ export function useSessionStudyFlow(
   } = meta;
 
   const finishingRef = useRef(false);
+  const pendingSavesRef = useRef<Set<Promise<unknown>>>(new Set());
+
+  const trackPendingSave = useCallback((promise: Promise<unknown>) => {
+    pendingSavesRef.current.add(promise);
+    void promise.finally(() => {
+      pendingSavesRef.current.delete(promise);
+    });
+  }, []);
 
   const finishSession = useCallback(
     (summary: SessionSummaryData) => {
@@ -73,7 +81,15 @@ export function useSessionStudyFlow(
       finishingRef.current = true;
       persistSessionSummaryToStorage(sessionId, summary);
       onComplete(summary);
-      scheduleServerSessionComplete(sessionId, sessionStart.current, onComplete);
+      const pending = Array.from(pendingSavesRef.current);
+      if (pending.length === 0) {
+        scheduleServerSessionComplete(sessionId, sessionStart.current);
+        return;
+      }
+
+      void Promise.allSettled(pending).then(() => {
+        scheduleServerSessionComplete(sessionId, sessionStart.current);
+      });
     },
     [sessionId, sessionStart, onComplete],
   );
@@ -117,7 +133,7 @@ export function useSessionStudyFlow(
 
       s.recordAnswer(newAnswer);
 
-      void submitAnswerWithRetry({
+      const savePromise = submitAnswerWithRetry({
         sessionId,
         questionId: currentQ.id,
         selectedOptionId: optionId,
@@ -129,6 +145,7 @@ export function useSessionStudyFlow(
       }).then((res) => {
         if (!res.ok) setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
       });
+      trackPendingSave(savePromise);
 
       if (mode === "inteligentna" && antaresMid) {
         const nextIdx = s.currentIndex + 1;
@@ -180,7 +197,18 @@ export function useSessionStudyFlow(
         }
       }
     },
-    [s, questions, sessionId, mode, timeSpentQuestion, setSaveToast, antaresMid, finishSession, buildSummary],
+    [
+      s,
+      questions,
+      sessionId,
+      mode,
+      timeSpentQuestion,
+      setSaveToast,
+      antaresMid,
+      finishSession,
+      buildSummary,
+      trackPendingSave,
+    ],
   );
 
   const handleNavigateNext = useCallback(() => {

@@ -79,9 +79,6 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $$
 BEGIN
-  IF TG_OP = 'UPDATE' AND NEW.full_name IS DISTINCT FROM OLD.full_name THEN
-    RAISE EXCEPTION 'full_name nie może być zmienione po rejestracji.';
-  END IF;
   IF NEW.full_name IS NULL OR LENGTH(TRIM(NEW.full_name)) = 0 THEN
     RAISE EXCEPTION 'full_name jest wymagane.';
   END IF;

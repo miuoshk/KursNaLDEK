@@ -316,7 +316,6 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
 
           <CatalogExplanationMobile
             explanation={q.explanation}
-            questionId={q.id}
             isAlwaysVisible={isStudyMode}
             isLocked={!isStudyMode && !isExamAnswered}
             key={`${q.id}-${isStudyMode ? "study" : "exam"}`}

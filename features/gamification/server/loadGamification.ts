@@ -3,6 +3,7 @@ import { ACHIEVEMENTS } from "@/features/gamification/lib/achievements-config";
 import { getCurrentRank } from "@/features/gamification/lib/ranks";
 import type { GamificationPayload, LeaderboardRow } from "@/features/gamification/types";
 import { initialsFromName } from "@/lib/initialsFromName";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 function periodStart(p: "7" | "30" | "all"): string | null {
   if (p === "all") return null;
@@ -19,6 +20,97 @@ const TRACKED_IDS = new Set([
   "miesieczna-dyscyplina",
   "kwartalna-konsekwencja",
 ]);
+
+const LEADERBOARD_LIMIT = 50;
+
+function rankRows(rows: LeaderboardRow[]): LeaderboardRow[] {
+  return rows
+    .sort((a, b) => {
+      if (b.xp !== a.xp) return b.xp - a.xp;
+      if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+      if (b.streak !== a.streak) return b.streak - a.streak;
+      return a.displayName.localeCompare(b.displayName, "pl");
+    })
+    .map((row, index) => ({ ...row, rank: index + 1 }));
+}
+
+async function loadLeaderboardRows(
+  userId: string,
+  leaderboardPeriod: "7" | "30" | "all",
+): Promise<LeaderboardRow[]> {
+  try {
+    const admin = createAdminClient();
+    const [{ data: profileRows, error: profileError }, { data: sessionRows, error: sessionsError }] =
+      await Promise.all([
+        admin
+          .from("profiles")
+          .select("id, nick, display_name, xp, current_streak")
+          .order("xp", { ascending: false }),
+        admin
+          .from("study_sessions")
+          .select("user_id, xp_earned, correct_answers, total_questions")
+          .eq("is_completed", true)
+          .gte("completed_at", periodStart(leaderboardPeriod) ?? "1970-01-01T00:00:00.000Z"),
+      ]);
+
+    if (profileError || sessionsError || !profileRows) {
+      return [];
+    }
+
+    const periodAgg = new Map<string, { xp: number; correct: number; total: number }>();
+    for (const row of sessionRows ?? []) {
+      const key = row.user_id as string;
+      const current = periodAgg.get(key) ?? { xp: 0, correct: 0, total: 0 };
+      current.xp += row.xp_earned ?? 0;
+      current.correct += row.correct_answers ?? 0;
+      current.total += row.total_questions ?? 0;
+      periodAgg.set(key, current);
+    }
+
+    const baseRows: LeaderboardRow[] = profileRows.map((profile) => {
+      const id = profile.id as string;
+      const agg = periodAgg.get(id);
+      const isAllTime = leaderboardPeriod === "all";
+      const xp = isAllTime ? profile.xp ?? 0 : agg?.xp ?? 0;
+      const accuracy =
+        (agg?.total ?? 0) > 0 ? (agg?.correct ?? 0) / (agg?.total ?? 0) : 0;
+      const displayName =
+        (profile.nick as string | null) ??
+        (profile.display_name as string | null) ??
+        "Użytkownik";
+      const tier = getCurrentRank(profile.xp ?? 0);
+
+      return {
+        rank: 0,
+        userId: id,
+        displayName,
+        initials: initialsFromName(displayName),
+        rankName: tier.name,
+        rankColorClass: tier.colorClass,
+        xp,
+        accuracy,
+        streak: profile.current_streak ?? 0,
+        isCurrent: id === userId,
+      };
+    });
+
+    const ranked = rankRows(baseRows);
+    const topRows = ranked.slice(0, LEADERBOARD_LIMIT);
+    const hasCurrentUser = topRows.some((row) => row.userId === userId);
+    if (hasCurrentUser) {
+      return topRows;
+    }
+
+    const currentUserRow = ranked.find((row) => row.userId === userId);
+    if (!currentUserRow) {
+      return topRows;
+    }
+    return [...topRows, currentUserRow];
+  } catch {
+    // Brak service role w środowisku lub chwilowy błąd DB: zachowujemy fallback na "ja".
+    return [];
+  }
+}
 
 export async function loadGamification(
   supabase: SupabaseClient,
@@ -146,6 +238,8 @@ export async function loadGamification(
     isCurrent: true,
   };
 
+  const leaderboardRows = await loadLeaderboardRows(userId, leaderboardPeriod);
+
   return {
     xp,
     displayName,
@@ -155,7 +249,7 @@ export async function loadGamification(
     avgAccuracy,
     totalStudyMinutes,
     achievements,
-    leaderboard: [lbRow],
+    leaderboard: leaderboardRows.length > 0 ? leaderboardRows : [lbRow],
     leaderboardPeriod,
   };
 }

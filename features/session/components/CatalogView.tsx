@@ -181,18 +181,24 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex shrink-0 items-center justify-between border-b border-border bg-background px-4 py-3">
-        <div>
-          <p className="font-heading text-heading-sm text-primary">Katalog pytań</p>
-          <p className="font-body text-body-xs text-muted">{subjectName}</p>
+      <div className="shrink-0 border-b border-border bg-background px-4 py-3">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-heading text-heading-sm text-primary">Katalog pytań</p>
+            <p className="line-clamp-2 font-body text-body-xs text-muted sm:line-clamp-1">
+              {subjectName}
+            </p>
+          </div>
+          <p className="shrink-0 rounded-pill border border-border bg-card px-2.5 py-1 font-body text-body-xs text-secondary">
+            {currentNavPosition >= 0 ? currentNavPosition + 1 : 0} / {navigationIndexes.length}
+          </p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 rounded-pill border border-border bg-card p-1">
+        <div className="mt-3 flex items-center gap-1 rounded-pill border border-border bg-card p-1 sm:w-fit">
             <button
               type="button"
               onClick={() => setMode("nauka")}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
+                "inline-flex flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors sm:flex-none",
                 isStudyMode
                   ? "bg-brand-sage text-white"
                   : "text-secondary hover:text-primary",
@@ -205,7 +211,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
               type="button"
               onClick={() => setMode("egzamin")}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
+                "inline-flex flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors sm:flex-none",
                 !isStudyMode
                   ? "bg-brand-gold text-brand-bg"
                   : "text-secondary hover:text-primary",
@@ -214,10 +220,6 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
               <EyeOff className="size-3.5" aria-hidden />
               Tryb egzaminacyjny
             </button>
-          </div>
-          <p className="font-body text-body-xs text-secondary">
-            {currentNavPosition >= 0 ? currentNavPosition + 1 : 0} / {navigationIndexes.length}
-          </p>
         </div>
       </div>
 
@@ -252,7 +254,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-        <div className="min-h-0 flex-1 overflow-y-auto p-6 lg:p-8">
+        <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           {navigationIndexes.length === 0 ? (
             <div className="rounded-card border border-border bg-card p-6 text-center">
               <p className="font-heading text-heading-sm text-primary">Brak wyników</p>
@@ -438,22 +440,24 @@ function CatalogQuestionNav({
   if (questionIndexes.length <= 1) return null;
 
   return (
-    <div className="flex shrink-0 flex-wrap gap-1 border-t border-border bg-background px-4 py-2">
-      {questionIndexes.map((questionIndex, i) => (
-        <button
-          key={questionIndex}
-          type="button"
-          onClick={() => onSelect(questionIndex)}
-          className={cn(
-            "flex size-8 items-center justify-center rounded-btn font-body text-body-xs transition-colors",
-            questionIndex === currentIndex
-              ? "bg-brand-gold text-brand-bg font-semibold"
-              : "bg-card text-secondary hover:text-primary",
-          )}
-        >
-          {i + 1}
-        </button>
-      ))}
+    <div className="shrink-0 border-t border-border bg-background px-3 py-2 sm:px-4">
+      <div className="flex gap-1 overflow-x-auto pb-1 lg:flex-wrap lg:overflow-visible">
+        {questionIndexes.map((questionIndex, i) => (
+          <button
+            key={questionIndex}
+            type="button"
+            onClick={() => onSelect(questionIndex)}
+            className={cn(
+              "flex size-8 shrink-0 items-center justify-center rounded-btn font-body text-body-xs transition-colors",
+              questionIndex === currentIndex
+                ? "bg-brand-gold text-brand-bg font-semibold"
+                : "bg-card text-secondary hover:text-primary",
+            )}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

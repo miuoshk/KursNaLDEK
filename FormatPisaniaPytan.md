@@ -198,11 +198,26 @@ UPDATE public.topics t
 ## 6. ZASADY MERYTORYCZNE (skrócone)
 
 - Jedno jasne pytanie, bez podwójnych negacji.
-- 5 opcji (A–E) wiarygodnych, podobnej długości.
+- 5 opcji (A–E) wiarygodnych, podobnej długości, **każda opcja samodzielna**.
 - Wyjaśnienie: **dlaczego** poprawna jest poprawna **i dlaczego** główne dystraktory są błędne (2–5 zdań).
 - Terminy polskie + łaciński odpowiednik w nawiasie tam gdzie to ma sens.
 - Bez emoji w `explanation` (renderer nie obsługuje).
 - Tabel markdown / backticków unikaj — wszystko ma być czystym tekstem.
+
+### 6.1 ZAKAZANE typy opcji (auto-deaktywacja w bazie)
+
+**Nie pisz opcji odwołujących się do innych liter.** Te pytania są wycinane z puli przez migrację `deactivate_combinatorial_questions`:
+
+| Wzorzec opcji                          | Przykład                            | Dlaczego źle                                          |
+|----------------------------------------|-------------------------------------|-------------------------------------------------------|
+| `[A-E] i [A-E]`                        | „A i B"                             | UI nie gwarantuje stałej kolejności liter             |
+| `prawidłowe [A-E] i [A-E]`             | „prawidłowe A i C"                  | jak wyżej                                             |
+| `[A-E], [A-E] i [A-E]`                 | „A, B i C"                          | jak wyżej                                             |
+| `wszystkie prawidłowe/poprawne/powyższe` | „wszystkie prawidłowe"            | meta-opcja, nie testuje wiedzy                        |
+| `żadne/żadna z powyższych`             | „żadne z powyższych"                | meta-opcja                                            |
+| `tylko [A-E]`                          | „tylko A"                           | jak wyżej                                             |
+
+**Co zamiast:** napisz 5 samodzielnych opcji, jedna z nich poprawna. Jeśli treść wymusza odpowiedź wielokrotną — przepisz pytanie tak, by jedna jednoznaczna odpowiedź była poprawna.
 
 ---
 

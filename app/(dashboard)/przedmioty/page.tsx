@@ -4,8 +4,10 @@ import { OverallProgress } from "@/features/subjects/components/OverallProgress"
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectGrid } from "@/features/subjects/components/SubjectGrid";
 import { loadKnnpSubjectsData } from "@/features/subjects/server/loadKnnpSubjects";
+import { requireCurrentSelectionAccessOrRedirect } from "@/features/access/server/guards";
 
 export default async function PrzedmiotyPage() {
+  await requireCurrentSelectionAccessOrRedirect();
   const result = await loadKnnpSubjectsData();
 
   if (!result.ok) {
@@ -74,6 +76,20 @@ export default async function PrzedmiotyPage() {
         ) : (
           <SubjectGrid subjects={subjects} isSubscribed={isSubscribed} />
         )}
+
+        {!isSubscribed ? (
+          <div className="rounded-card border border-brand-gold/30 bg-brand-gold/10 p-4">
+            <p className="font-body text-body-sm text-brand-gold">
+              Ten rok nie jest jeszcze aktywny. Wybierz opcję i opłać dostęp w panelu wyboru roku.
+            </p>
+            <Link
+              href="/wybor-roku"
+              className="mt-3 inline-flex rounded-btn border border-brand-gold/40 px-4 py-2 font-body text-body-sm text-brand-gold transition hover:bg-brand-gold/10"
+            >
+              Przejdź do wyboru roku
+            </Link>
+          </div>
+        ) : null}
       </div>
     </div>
   );

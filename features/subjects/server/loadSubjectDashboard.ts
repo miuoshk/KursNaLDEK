@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
+import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -67,6 +68,18 @@ export async function loadSubjectDashboard(
         ok: false,
         kind: "not_found",
         message: "Nie znaleziono przedmiotu.",
+      };
+    }
+
+    const canAccessSubject = await hasAccessForSubjectSelection(
+      (subject.track as string) ?? "stomatologia",
+      (subject.year as number) ?? 1,
+    );
+    if (!canAccessSubject) {
+      return {
+        ok: false,
+        kind: "error",
+        message: "Ten rok jest zablokowany. Wybierz lub opłać dostęp w panelu wyboru roku.",
       };
     }
 

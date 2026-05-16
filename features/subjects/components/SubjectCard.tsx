@@ -101,7 +101,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
           <div className="flex flex-col items-center gap-2">
             <Lock className="size-5 text-secondary" aria-hidden />
             <span className="font-body text-body-xs text-muted">
-              Dostępne w abonamencie
+              Dostęp wymaga płatności
             </span>
           </div>
         </div>

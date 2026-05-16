@@ -3,6 +3,8 @@ import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { buildKnnpSubjectsList } from "@/features/subjects/server/buildKnnpSubjectsList";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 export type ProfileForSubjects = {
   current_year: number;
@@ -33,7 +35,7 @@ const DEFAULT_PROFILE: ProfileForSubjects = {
 
 function formatTrackLabel(track: string): string {
   if (!track) return DEFAULT_PROFILE.track;
-  return track.charAt(0).toUpperCase() + track.slice(1);
+  return track === "lekarski" ? "Lekarski" : "Stomatologia";
 }
 
 export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
@@ -54,9 +56,8 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
     }
 
     const profileRow = await getProfileByUserId(user.id);
-    const track = profileRow?.current_track ?? "stomatologia";
-
-    const currentYear = profileRow?.current_year ?? 1;
+    const track = normalizeTrack(profileRow?.current_track);
+    const currentYear = normalizeYear(profileRow?.current_year);
     const catalog = await getCachedKnnpCatalog(track, currentYear);
 
     let profile: ProfileForSubjects = { ...DEFAULT_PROFILE };
@@ -72,8 +73,7 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       );
     }
 
-    // TODO: podpiąć Stripe — tymczasowo odblokowane dla wszystkich
-    const isSubscribed = true;
+    const isSubscribed = await hasActiveEntitlementForSelection(user.id, track, currentYear);
 
     if (catalog.subjectRows.length === 0) {
       console.warn(

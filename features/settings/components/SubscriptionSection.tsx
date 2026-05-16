@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
+import { createBillingPortalSessionAction } from "@/features/access/actions";
 import type { SettingsProfile } from "@/features/settings/types";
 import { cn } from "@/lib/utils";
 
@@ -34,13 +35,14 @@ export function SubscriptionSection({ profile }: Props) {
           )}
         </div>
         {active && profile.stripe_customer_id ? (
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="inline-flex font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
-          >
-            Zarządzaj subskrypcją →
-          </a>
+          <form action={createBillingPortalSessionAction}>
+            <button
+              type="submit"
+              className="inline-flex font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+            >
+              Zarządzaj subskrypcją →
+            </button>
+          </form>
         ) : (
           <Link
             href="/cennik"

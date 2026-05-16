@@ -34,8 +34,10 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
   const isAuthRoute = pathname === "/login" || pathname === "/register";
+  const isWebhookRoute = pathname === "/api/stripe/webhook";
+  const isPublicRoot = pathname === "/";
 
-  if (!effectiveSession && !isAuthRoute) {
+  if (!effectiveSession && !isAuthRoute && !isWebhookRoute && !isPublicRoot) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

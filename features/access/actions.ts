@@ -153,6 +153,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
       cancel_url: `${origin}/wybor-roku?status=cancel`,
       customer: profileResult.data?.stripe_customer_id ?? undefined,
       customer_email: profileResult.data?.stripe_customer_id ? undefined : user.email ?? undefined,
+      allow_promotion_codes: true,
       metadata: {
         user_id: user.id,
         track: parsed.data.track,

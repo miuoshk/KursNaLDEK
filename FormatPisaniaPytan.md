@@ -204,20 +204,43 @@ UPDATE public.topics t
 - Bez emoji w `explanation` (renderer nie obsługuje).
 - Tabel markdown / backticków unikaj — wszystko ma być czystym tekstem.
 
-### 6.1 ZAKAZANE typy opcji (auto-deaktywacja w bazie)
+### 6.1 OPCJE KOMBINATORYCZNE — DOZWOLONE, ale z zachowaniem porządku
 
-**Nie pisz opcji odwołujących się do innych liter.** Te pytania są wycinane z puli przez migrację `deactivate_combinatorial_questions`:
+Pytania w stylu LDEK z opcjami typu „prawidłowe A i C", „wszystkie prawidłowe", „A, B i C" **są dozwolone**. UI od commita `2d4de0d` serwuje opcje w **oryginalnej kolejności z bazy** (bez shuffle), więc pozycja w UI dokładnie pokrywa się z `id` opcji w bazie:
 
-| Wzorzec opcji                          | Przykład                            | Dlaczego źle                                          |
-|----------------------------------------|-------------------------------------|-------------------------------------------------------|
-| `[A-E] i [A-E]`                        | „A i B"                             | UI nie gwarantuje stałej kolejności liter             |
-| `prawidłowe [A-E] i [A-E]`             | „prawidłowe A i C"                  | jak wyżej                                             |
-| `[A-E], [A-E] i [A-E]`                 | „A, B i C"                          | jak wyżej                                             |
-| `wszystkie prawidłowe/poprawne/powyższe` | „wszystkie prawidłowe"            | meta-opcja, nie testuje wiedzy                        |
-| `żadne/żadna z powyższych`             | „żadne z powyższych"                | meta-opcja                                            |
-| `tylko [A-E]`                          | „tylko A"                           | jak wyżej                                             |
+| Pozycja UI | `option.id` w bazie | Co widzi user                |
+|------------|---------------------|------------------------------|
+| A          | `"a"`               | tekst opcji `a`              |
+| B          | `"b"`               | tekst opcji `b`              |
+| C          | `"c"`               | tekst opcji `c`              |
+| D          | `"d"`               | tekst opcji `d`              |
+| E          | `"e"`               | tekst opcji `e`              |
 
-**Co zamiast:** napisz 5 samodzielnych opcji, jedna z nich poprawna. Jeśli treść wymusza odpowiedź wielokrotną — przepisz pytanie tak, by jedna jednoznaczna odpowiedź była poprawna.
+**Twarda zasada dla bota:**
+
+- **Zawsze** wstawiaj opcje do `options` w kolejności `a → b → c → d → e`. Nigdy `[{id:"c"…}, {id:"a"…}…]` — to złamie odniesienia w opcjach typu „A i C".
+- **Zawsze** sprawdź, że jeśli któraś opcja zawiera referencję do litery (np. „prawidłowe A i C"), to dosłownie chodzi o opcję `a` i `c` z tej samej tablicy.
+- `correct_option_id` to ZAWSZE `id` opcji w bazie (np. `"d"`), nie pozycja.
+
+Przykład poprawny:
+
+```json
+[
+  {"id":"a","text":"Leży w dole zażuchwowym"},
+  {"id":"b","text":"Jej przewód znajduje się w dnie jamy ustnej"},
+  {"id":"c","text":"Jej przewód znajduje się w przedsionku jamy ustnej"},
+  {"id":"d","text":"Prawidłowe A i B"},
+  {"id":"e","text":"Prawidłowe A i C"}
+]
+```
+`correct_option_id: "e"` → user widzi „E. Prawidłowe A i C" i wybiera E. Pozycja UI „A" to opcja `a` (Leży w dole zażuchwowym), pozycja UI „C" to opcja `c` (Jej przewód… przedsionku) → wszystko spójne.
+
+Akceptowalne meta-opcje:
+- „A i B", „A i C", „B i D", itd.
+- „A, B i C" / „A, B, C i D"
+- „Wszystkie prawidłowe" / „Wszystkie powyższe" / „Wszystkie odpowiedzi prawidłowe"
+- „Żadne z powyższych" / „Żadna z powyższych"
+- „Tylko A" / „Tylko B i C"
 
 ---
 

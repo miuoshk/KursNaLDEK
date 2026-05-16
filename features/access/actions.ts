@@ -16,6 +16,10 @@ async function getOriginFromHeaders() {
   return `${proto}://${host}`;
 }
 
+function redirectSelectionError() {
+  redirect("/wybor-roku?status=error");
+}
+
 async function getUserOrThrow() {
   const supabase = await createClient();
   const {
@@ -30,86 +34,99 @@ async function getUserOrThrow() {
 }
 
 export async function activateFreeTestYearAction(formData: FormData) {
-  const parsed = selectionSchema.safeParse({
-    track: formData.get("track"),
-    year: formData.get("year"),
-  });
-  if (!parsed.success) {
-    throw new Error("Nieprawidłowy wybór kierunku lub roku.");
+  try {
+    const parsed = selectionSchema.safeParse({
+      track: formData.get("track"),
+      year: formData.get("year"),
+    });
+    if (!parsed.success) {
+      return redirectSelectionError();
+    }
+    if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+      return redirectSelectionError();
+    }
+
+    const { user, supabase } = await getUserOrThrow();
+    await grantFreeTestEntitlement({
+      userId: user.id,
+      track: parsed.data.track,
+      year: parsed.data.year,
+    });
+
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        current_track: parsed.data.track,
+        current_year: parsed.data.year,
+      })
+      .eq("id", user.id);
+
+    if (profileError) {
+      console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
+      return redirectSelectionError();
+    }
+
+    redirect("/pulpit");
+  } catch (error) {
+    console.error("[activateFreeTestYearAction] failed", error);
+    redirectSelectionError();
   }
-  if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-    throw new Error("Darmowy dostęp jest dostępny tylko dla Stomatologia rok 2.");
-  }
-
-  const { user, supabase } = await getUserOrThrow();
-  await grantFreeTestEntitlement({
-    userId: user.id,
-    track: parsed.data.track,
-    year: parsed.data.year,
-  });
-
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .update({
-      current_track: parsed.data.track,
-      current_year: parsed.data.year,
-    })
-    .eq("id", user.id);
-
-  if (profileError) {
-    throw new Error(`Nie udało się zapisać wyboru roku: ${profileError.message}`);
-  }
-
-  redirect("/pulpit");
 }
 
 export async function createCheckoutSessionAction(formData: FormData) {
-  const parsed = selectionSchema.safeParse({
-    track: formData.get("track"),
-    year: formData.get("year"),
-  });
-  if (!parsed.success) {
-    throw new Error("Nieprawidłowy wybór kierunku lub roku.");
+  try {
+    const parsed = selectionSchema.safeParse({
+      track: formData.get("track"),
+      year: formData.get("year"),
+    });
+    if (!parsed.success) {
+      return redirectSelectionError();
+    }
+
+    if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+      redirect("/wybor-roku");
+    }
+
+    const { user, supabase } = await getUserOrThrow();
+    const origin = await getOriginFromHeaders();
+    const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
+    const stripe = getStripeServerClient();
+
+    const profileResult = await supabase
+      .from("profiles")
+      .select("stripe_customer_id")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (profileResult.error) {
+      console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
+      return redirectSelectionError();
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${origin}/wybor-roku?status=success`,
+      cancel_url: `${origin}/wybor-roku?status=cancel`,
+      customer: profileResult.data?.stripe_customer_id ?? undefined,
+      customer_email: profileResult.data?.stripe_customer_id ? undefined : user.email ?? undefined,
+      metadata: {
+        user_id: user.id,
+        track: parsed.data.track,
+        year: String(parsed.data.year),
+      },
+    });
+
+    if (!session.url) {
+      console.error("[createCheckoutSessionAction] missing checkout url");
+      return redirectSelectionError();
+    }
+
+    redirect(session.url);
+  } catch (error) {
+    console.error("[createCheckoutSessionAction] failed", error);
+    redirectSelectionError();
   }
-
-  if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-    redirect("/wybor-roku");
-  }
-
-  const { user, supabase } = await getUserOrThrow();
-  const origin = await getOriginFromHeaders();
-  const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
-  const stripe = getStripeServerClient();
-
-  const profileResult = await supabase
-    .from("profiles")
-    .select("stripe_customer_id")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (profileResult.error) {
-    throw new Error(`Nie udało się odczytać profilu: ${profileResult.error.message}`);
-  }
-
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    line_items: [{ price: priceId, quantity: 1 }],
-    success_url: `${origin}/wybor-roku?status=success`,
-    cancel_url: `${origin}/wybor-roku?status=cancel`,
-    customer: profileResult.data?.stripe_customer_id ?? undefined,
-    customer_email: profileResult.data?.stripe_customer_id ? undefined : user.email ?? undefined,
-    metadata: {
-      user_id: user.id,
-      track: parsed.data.track,
-      year: String(parsed.data.year),
-    },
-  });
-
-  if (!session.url) {
-    throw new Error("Stripe nie zwrócił adresu Checkout.");
-  }
-
-  redirect(session.url);
 }
 
 export async function createBillingPortalSessionAction() {

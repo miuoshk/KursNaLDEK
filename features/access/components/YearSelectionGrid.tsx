@@ -21,10 +21,10 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
         const title = `${formatTrackLabel(option.track)} · rok ${option.year}`;
         const ctaLabel = option.isFreeTest
           ? option.isUnlocked
-            ? "Dostęp aktywny"
+            ? "Przejdź do pulpitu"
             : "Aktywuj i przejdź do pulpitu"
           : option.isUnlocked
-            ? "Dostęp aktywny"
+            ? "Przejdź do pulpitu"
             : "Przejdź do płatności";
 
         return (
@@ -59,25 +59,31 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
               </span>
             </div>
 
-            <form action={option.isFreeTest ? activateFreeAction : checkoutAction} className="mt-5">
-              <input type="hidden" name="track" value={option.track} />
-              <input type="hidden" name="year" value={String(option.year)} />
-              <button
-                type="submit"
-                disabled={option.isUnlocked}
-                className={cn(
-                  "inline-flex w-full items-center justify-center gap-2 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition duration-200 ease-out",
-                  option.isUnlocked
-                    ? "cursor-not-allowed bg-white/10 text-secondary"
-                    : option.isFreeTest
+            {option.isUnlocked ? (
+              <a
+                href="/pulpit"
+                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-btn bg-white/10 px-4 py-2.5 font-body text-body-sm font-semibold text-primary transition duration-200 ease-out hover:bg-white/15"
+              >
+                {ctaLabel}
+              </a>
+            ) : (
+              <form action={option.isFreeTest ? activateFreeAction : checkoutAction} className="mt-5">
+                <input type="hidden" name="track" value={option.track} />
+                <input type="hidden" name="year" value={String(option.year)} />
+                <button
+                  type="submit"
+                  className={cn(
+                    "inline-flex w-full items-center justify-center gap-2 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition duration-200 ease-out",
+                    option.isFreeTest
                       ? "bg-brand-sage text-white hover:brightness-110"
                       : "bg-brand-gold text-brand-bg hover:brightness-110",
-                )}
-              >
-                {!option.isFreeTest && !option.isUnlocked ? <CreditCard className="h-4 w-4" /> : null}
-                {ctaLabel}
-              </button>
-            </form>
+                  )}
+                >
+                  {!option.isFreeTest ? <CreditCard className="h-4 w-4" /> : null}
+                  {ctaLabel}
+                </button>
+              </form>
+            )}
           </article>
         );
       })}

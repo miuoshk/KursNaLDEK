@@ -65,6 +65,11 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
             Płatność została anulowana. Możesz wrócić do wyboru i spróbować ponownie.
           </p>
         ) : null}
+        {status === "error" ? (
+          <p className="mt-3 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-2 font-body text-body-sm text-[#F87171]">
+            Nie udało się rozpocząć procesu płatności lub aktywacji. Spróbuj ponownie za chwilę.
+          </p>
+        ) : null}
         {status === "pending" ? (
           <p className="mt-3 rounded-btn border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 font-body text-body-sm text-brand-gold">
             Oczekujemy na webhook Stripe. Odśwież aktywację za kilka sekund.

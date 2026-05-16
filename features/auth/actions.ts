@@ -12,6 +12,7 @@ import {
   TEST_MODE_COOKIE_NAME,
   TEST_MODE_EMAIL,
 } from "@/lib/testMode";
+import { isRegistrationOpen } from "@/lib/registrationWindow";
 
 const loginSchema = z.object({
   email: z.string().email("Podaj poprawny adres e-mail."),
@@ -121,6 +122,13 @@ export async function registerAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  if (!isRegistrationOpen()) {
+    return {
+      error: "Rejestracja jest tymczasowo wyłączona do 17 maja 2026, godz. 21:00.",
+      info: null,
+    };
+  }
+
   const parsed = registerSchema.safeParse({
     fullName: formData.get("fullName"),
     nick: formData.get("nick"),

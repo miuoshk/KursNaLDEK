@@ -45,6 +45,21 @@ function buildHref(
   return `/sesja/new?${q.toString()}`;
 }
 
+function resolveCount(
+  preset: PresetValue,
+  custom: string,
+  totalQuestions: number,
+  fallback: number,
+): number {
+  if (preset === "all") return totalQuestions;
+  const parsed = parseInt(custom, 10);
+  if (custom && !Number.isNaN(parsed) && parsed >= 1 && parsed <= totalQuestions) {
+    return parsed;
+  }
+  if (typeof preset === "number") return preset;
+  return fallback;
+}
+
 export function TopicSessionConfigDialog({
   open,
   onOpenChange,
@@ -57,29 +72,29 @@ export function TopicSessionConfigDialog({
   hasKnowledgeCard = false,
   onOpenKnowledgeCard,
 }: TopicSessionConfigDialogProps) {
-  const [preset, setPreset] = useState<PresetValue>(25);
-  const [customCount, setCustomCount] = useState("");
+  const [smartPreset, setSmartPreset] = useState<PresetValue>(25);
+  const [smartCustom, setSmartCustom] = useState("");
+  const [reviewPreset, setReviewPreset] = useState<PresetValue>(25);
+  const [reviewCustom, setReviewCustom] = useState("");
 
   const progressPct =
     totalQuestions > 0
       ? Math.round((answeredQuestions / totalQuestions) * 100)
       : 0;
 
-  function getFinalCount() {
-    if (preset === "all") return totalQuestions;
-    const parsed = parseInt(customCount, 10);
-    if (customCount && !Number.isNaN(parsed) && parsed >= 1 && parsed <= totalQuestions) {
-      return parsed;
-    }
-    if (typeof preset === "number") return preset;
-    return 25;
-  }
+  const maxQ = Math.max(1, totalQuestions);
+  const smartFinalCount = Math.min(
+    resolveCount(smartPreset, smartCustom, totalQuestions, 25),
+    maxQ,
+  );
+  const reviewFinalCount = Math.min(
+    resolveCount(reviewPreset, reviewCustom, totalQuestions, 25),
+    maxQ,
+  );
 
-  const finalCount = Math.min(getFinalCount(), Math.max(1, totalQuestions));
-
-  const smartHref = buildHref(subjectId, topicId, "inteligentna", finalCount);
-  const reviewHref = buildHref(subjectId, topicId, "przeglad", finalCount);
-  const catalogHref = buildHref(subjectId, topicId, "katalog", 500);
+  const smartHref = buildHref(subjectId, topicId, "inteligentna", smartFinalCount);
+  const reviewHref = buildHref(subjectId, topicId, "przeglad", reviewFinalCount);
+  const catalogHref = buildHref(subjectId, topicId, "katalog", 5000);
 
   const altCardClass =
     "flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25";
@@ -154,61 +169,15 @@ export function TopicSessionConfigDialog({
                     zaplanuje powtórki
                   </p>
 
-                  {/* Count pills */}
-                  <div className="mt-3.5 flex flex-wrap items-center gap-1.5 border-t border-white/[0.06] pt-3">
-                    {PRESETS.map((n) => (
-                      <button
-                        key={n}
-                        type="button"
-                        onClick={() => {
-                          setPreset(n);
-                          setCustomCount("");
-                        }}
-                        className={cn(
-                          "flex h-7 min-w-[36px] cursor-pointer items-center justify-center rounded-pill border px-1.5 font-body text-body-sm transition-colors",
-                          preset === n
-                            ? "border-brand-sage bg-brand-sage font-semibold text-white"
-                            : "border-border bg-transparent text-secondary",
-                        )}
-                      >
-                        {n}
-                      </button>
-                    ))}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPreset("all");
-                        setCustomCount("");
-                      }}
-                      className={cn(
-                        "flex h-7 min-w-[36px] cursor-pointer items-center justify-center rounded-pill border px-1.5 transition-colors",
-                        preset === "all"
-                          ? "border-brand-sage bg-brand-sage text-white"
-                          : "border-border bg-transparent text-secondary",
-                      )}
-                    >
-                      <InfinityIcon className="size-4" aria-hidden />
-                    </button>
-                    <input
-                      type="number"
-                      inputMode="numeric"
-                      min={1}
-                      max={totalQuestions}
-                      placeholder="..."
-                      value={customCount}
-                      onChange={(e) => {
-                        setCustomCount(e.target.value);
-                        setPreset(null);
-                      }}
-                      onFocus={() => {
-                        if (!customCount) setPreset(null);
-                      }}
-                      className="h-7 w-[52px] rounded-pill border border-border bg-white/[0.03] text-center font-body text-body-sm text-primary outline-none placeholder:text-muted focus:border-brand-sage"
-                    />
-                    <span className="ml-auto font-body text-body-xs text-muted">
-                      pytań
-                    </span>
-                  </div>
+                  {/* Count pills for Inteligentna */}
+                  <CountPills
+                    preset={smartPreset}
+                    custom={smartCustom}
+                    totalQuestions={totalQuestions}
+                    onPresetChange={setSmartPreset}
+                    onCustomChange={setSmartCustom}
+                    className="mt-3.5 border-t border-white/[0.06] pt-3"
+                  />
 
                   {/* CTA — lg:mt-auto pushes to bottom only on desktop */}
                   <Link
@@ -229,8 +198,8 @@ export function TopicSessionConfigDialog({
 
                 {hasKnowledgeCard ? (
                   <>
-                    <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-1 lg:gap-3">
-                      <Link href={reviewHref} className={altCardClass}>
+                    <div className="grid grid-cols-1 gap-2.5 lg:grid-cols-1 lg:gap-3">
+                      <div className={altCardClass}>
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <FileText className="size-4 text-muted" aria-hidden />
                         </div>
@@ -240,10 +209,22 @@ export function TopicSessionConfigDialog({
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
                           Pytania w losowej kolejności, bez algorytmu powtórek
                         </p>
-                        <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                        <CountPills
+                          preset={reviewPreset}
+                          custom={reviewCustom}
+                          totalQuestions={totalQuestions}
+                          onPresetChange={setReviewPreset}
+                          onCustomChange={setReviewCustom}
+                          className="mt-2.5 border-t border-white/[0.06] pt-2.5"
+                          compact
+                        />
+                        <Link
+                          href={reviewHref}
+                          className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
+                        >
                           Rozpocznij
-                        </span>
-                      </Link>
+                        </Link>
+                      </div>
 
                       <Link href={catalogHref} className={altCardClass}>
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
@@ -289,8 +270,8 @@ export function TopicSessionConfigDialog({
                     </button>
                   </>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2.5 lg:flex lg:flex-1 lg:flex-col lg:gap-3">
-                    <Link href={reviewHref} className={cn(altCardClass, "lg:flex-1")}>
+                  <div className="grid grid-cols-1 gap-2.5 lg:flex lg:flex-1 lg:flex-col lg:gap-3">
+                    <div className={cn(altCardClass, "lg:flex-1")}>
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
@@ -300,10 +281,22 @@ export function TopicSessionConfigDialog({
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">
                         Pytania w losowej kolejności, bez algorytmu powtórek
                       </p>
-                      <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
+                      <CountPills
+                        preset={reviewPreset}
+                        custom={reviewCustom}
+                        totalQuestions={totalQuestions}
+                        onPresetChange={setReviewPreset}
+                        onCustomChange={setReviewCustom}
+                        className="mt-2.5 border-t border-white/[0.06] pt-2.5"
+                        compact
+                      />
+                      <Link
+                        href={reviewHref}
+                        className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
+                      >
                         Rozpocznij
-                      </span>
-                    </Link>
+                      </Link>
+                    </div>
 
                     <Link href={catalogHref} className={cn(altCardClass, "lg:flex-1")}>
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
@@ -327,5 +320,91 @@ export function TopicSessionConfigDialog({
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
+  );
+}
+
+type CountPillsProps = {
+  preset: PresetValue;
+  custom: string;
+  totalQuestions: number;
+  onPresetChange: (p: PresetValue) => void;
+  onCustomChange: (v: string) => void;
+  className?: string;
+  compact?: boolean;
+};
+
+function CountPills({
+  preset,
+  custom,
+  totalQuestions,
+  onPresetChange,
+  onCustomChange,
+  className,
+  compact = false,
+}: CountPillsProps) {
+  const sizeClass = compact
+    ? "h-6 min-w-[32px] px-1.5 text-[12px]"
+    : "h-7 min-w-[36px] px-1.5 text-body-sm";
+  const inputSizeClass = compact ? "h-6 w-[44px] text-[12px]" : "h-7 w-[52px] text-body-sm";
+
+  return (
+    <div className={cn("flex flex-wrap items-center gap-1.5", className)}>
+      {PRESETS.map((n) => (
+        <button
+          key={n}
+          type="button"
+          onClick={() => {
+            onPresetChange(n);
+            onCustomChange("");
+          }}
+          className={cn(
+            "flex cursor-pointer items-center justify-center rounded-pill border font-body transition-colors",
+            sizeClass,
+            preset === n
+              ? "border-brand-sage bg-brand-sage font-semibold text-white"
+              : "border-border bg-transparent text-secondary",
+          )}
+        >
+          {n}
+        </button>
+      ))}
+      <button
+        type="button"
+        onClick={() => {
+          onPresetChange("all");
+          onCustomChange("");
+        }}
+        className={cn(
+          "flex cursor-pointer items-center justify-center rounded-pill border transition-colors",
+          sizeClass,
+          preset === "all"
+            ? "border-brand-sage bg-brand-sage text-white"
+            : "border-border bg-transparent text-secondary",
+        )}
+        aria-label="Wszystkie pytania"
+      >
+        <InfinityIcon className={compact ? "size-3.5" : "size-4"} aria-hidden />
+      </button>
+      <input
+        type="number"
+        inputMode="numeric"
+        min={1}
+        max={totalQuestions}
+        placeholder="..."
+        value={custom}
+        onChange={(e) => {
+          onCustomChange(e.target.value);
+          onPresetChange(null);
+        }}
+        onFocus={() => {
+          if (!custom) onPresetChange(null);
+        }}
+        className={cn(
+          "rounded-pill border border-border bg-white/[0.03] text-center font-body text-primary outline-none placeholder:text-muted focus:border-brand-sage",
+          inputSizeClass,
+        )}
+      />
+      <span className="ml-auto font-body text-body-xs text-muted">pytań</span>
+    </div>
   );
 }

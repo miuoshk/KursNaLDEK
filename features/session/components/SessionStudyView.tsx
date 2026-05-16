@@ -215,6 +215,9 @@ export function SessionStudyView({
         allAnswered={s.allAnswered}
         isPrzeglad={isPrzeglad}
         submitting={submitting}
+        questions={s.questions}
+        answeredMap={s.answeredMap}
+        onJumpTo={s.navigateToIndex}
         onSelectOption={handleSelectOption}
         onConfidencePick={(c) => void wrappedConfidencePick(c)}
         onNext={handleNavigateNext}

@@ -24,9 +24,9 @@ import {
 const schema = z.object({
   subjectId: z.string().optional(),
   mode: z.enum(["inteligentna", "przeglad", "katalog"]),
-  count: z.coerce.number().min(1).max(500),
+  count: z.coerce.number().min(1).max(5000),
   topicId: z.string().min(1).optional(),
-  questionIds: z.array(z.string().min(1)).min(1).max(500).optional(),
+  questionIds: z.array(z.string().min(1)).min(1).max(5000).optional(),
 });
 
 export type StartSessionResult =

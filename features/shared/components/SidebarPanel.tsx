@@ -11,11 +11,13 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { useMemo } from "react";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
+import { pickSlogan, SIDEBAR_SLOGANS } from "@/features/shared/lib/slogans";
 import { formatStreak } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
@@ -40,6 +42,7 @@ export function SidebarPanel({
   const { year } = useDashboardBreadcrumb();
   const { streak, displayName, initials } = useDashboardUser();
   const mobile = Boolean(onCloseMobile);
+  const slogan = useMemo(() => pickSlogan(SIDEBAR_SLOGANS), []);
 
   return (
     <aside
@@ -153,7 +156,7 @@ export function SidebarPanel({
 
       {(!collapsed || mobile) && (
         <p className="shrink-0 px-4 pb-6 font-body text-body-xs italic text-muted">
-          Każde pytanie przybliża Cię do celu.
+          {slogan}
         </p>
       )}
     </aside>

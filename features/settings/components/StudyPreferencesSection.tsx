@@ -91,7 +91,7 @@ export function StudyPreferencesSection({ profile }: Props) {
               className={selectClass}
             >
               <option value="inteligentna">Inteligentna sesja</option>
-              <option value="przeglad">Szybki przegląd</option>
+              <option value="przeglad">Nauka klasyczna</option>
               <option value="katalog">Katalog pytań</option>
             </select>
             <ChevronDown

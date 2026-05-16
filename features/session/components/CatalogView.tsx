@@ -2,12 +2,8 @@
 
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import {
-  Check,
-  ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Eye,
-  EyeOff,
   Search,
   X,
 } from "lucide-react";
@@ -19,8 +15,6 @@ type CatalogViewProps = {
   subjectName: string;
   questions: SessionQuestion[];
 };
-
-type CatalogMode = "nauka" | "egzamin";
 
 function normalizeSearchText(value: string): string {
   return value
@@ -99,11 +93,7 @@ function highlightText(value: string, query: string): ReactNode {
 
 export function CatalogView({ subjectName, questions }: CatalogViewProps) {
   const [index, setIndex] = useState(0);
-  const [mode, setMode] = useState<CatalogMode>("nauka");
   const [searchValue, setSearchValue] = useState("");
-  const [selectedOptionByQuestion, setSelectedOptionByQuestion] = useState<
-    Record<string, string | undefined>
-  >({});
   const normalizedSearch = normalizeSearchText(searchValue);
 
   const filteredIndexes = useMemo(() => {
@@ -149,35 +139,7 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
 
   if (!q) return null;
 
-  const isStudyMode = mode === "nauka";
-  const selectedOptionId = selectedOptionByQuestion[q.id] ?? null;
-  const isExamAnswered = selectedOptionId !== null;
   const correctOption = q.options.find((o) => o.id === q.correctOptionId);
-
-  function onSelectExamOption(optionId: string) {
-    if (isStudyMode) return;
-
-    setSelectedOptionByQuestion((prev) => {
-      const current = prev[q.id] ?? null;
-      if (current === optionId) {
-        const next = { ...prev };
-        delete next[q.id];
-        return next;
-      }
-      return { ...prev, [q.id]: optionId };
-    });
-  }
-
-  function optionState(optionId: string): "default" | "correct" | "wrong" | "muted" {
-    if (isStudyMode) {
-      return optionId === q.correctOptionId ? "correct" : "default";
-    }
-
-    if (!selectedOptionId) return "default";
-    if (optionId === q.correctOptionId) return "correct";
-    if (optionId === selectedOptionId) return "wrong";
-    return "muted";
-  }
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -192,34 +154,6 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
           <p className="shrink-0 rounded-pill border border-border bg-card px-2.5 py-1 font-body text-body-xs text-secondary">
             {currentNavPosition >= 0 ? currentNavPosition + 1 : 0} / {navigationIndexes.length}
           </p>
-        </div>
-        <div className="mt-3 flex items-center gap-1 rounded-pill border border-border bg-card p-1 sm:w-fit">
-            <button
-              type="button"
-              onClick={() => setMode("nauka")}
-              className={cn(
-                "inline-flex flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors sm:flex-none",
-                isStudyMode
-                  ? "bg-brand-sage text-white"
-                  : "text-secondary hover:text-primary",
-              )}
-            >
-              <Eye className="size-3.5" aria-hidden />
-              Tryb nauki
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("egzamin")}
-              className={cn(
-                "inline-flex flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors sm:flex-none",
-                !isStudyMode
-                  ? "bg-brand-gold text-brand-bg"
-                  : "text-secondary hover:text-primary",
-              )}
-            >
-              <EyeOff className="size-3.5" aria-hidden />
-              Tryb egzaminacyjny
-            </button>
         </div>
       </div>
 
@@ -265,63 +199,39 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
           ) : null}
           {navigationIndexes.length === 0 ? null : (
             <>
-          <p className="font-body text-body-xs text-muted">{q.topicName}</p>
-          <p className="mt-4 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
-            {highlightText(q.text, searchValue)}
-          </p>
-          <div className="mt-6 flex flex-col gap-2">
-            {q.options.map((opt, i) => {
-              const letter = String.fromCharCode(65 + i);
-              const state = optionState(opt.id);
-              return (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => onSelectExamOption(opt.id)}
-                  disabled={isStudyMode}
-                  className={cn(
-                    "flex w-full items-center gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm transition-colors",
-                    state === "default" &&
-                      "border-border bg-card text-secondary hover:border-brand-sage/30",
-                    state === "correct" && "border-success/30 bg-success/[0.08] text-success",
-                    state === "wrong" && "border-error/35 bg-error/[0.08] text-error",
-                    state === "muted" && "border-border bg-card text-muted",
-                    isStudyMode && "cursor-default",
-                  )}
-                >
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-background/70 text-body-xs font-semibold text-muted">
-                    {letter}
-                  </span>
-                  <span className="min-w-0 flex-1">{highlightText(opt.text, searchValue)}</span>
-                  {!isStudyMode && isExamAnswered && opt.id === q.correctOptionId ? (
-                    <span className="inline-flex shrink-0 items-center gap-1 text-body-xs font-semibold text-success">
-                      <Check className="size-3.5" aria-hidden />
-                      POPRAWNA
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
-          {isStudyMode && correctOption && (
-            <p className="mt-4 font-body text-body-sm text-success">
-              Poprawna odpowiedź: {highlightText(correctOption.text, searchValue)}
-            </p>
-          )}
-          {!isStudyMode ? (
-            <p className="mt-4 font-body text-body-xs text-muted">
-              {isExamAnswered
-                ? "Kliknij ponownie wybraną odpowiedź, aby ją schować."
-                : "Kliknij odpowiedź, aby sprawdzić wynik (bez zapisu do rankingu)."}
-            </p>
-          ) : null}
+              <p className="font-body text-body-xs text-muted">{q.topicName}</p>
+              <p className="mt-4 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
+                {highlightText(q.text, searchValue)}
+              </p>
+              <div className="mt-6 flex flex-col gap-2">
+                {q.options.map((opt, i) => {
+                  const letter = String.fromCharCode(65 + i);
+                  const isCorrect = opt.id === q.correctOptionId;
+                  return (
+                    <div
+                      key={opt.id}
+                      className={cn(
+                        "flex w-full items-center gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm",
+                        isCorrect
+                          ? "border-success/30 bg-success/[0.08] text-success"
+                          : "border-border bg-card text-secondary",
+                      )}
+                    >
+                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-background/70 text-body-xs font-semibold text-muted">
+                        {letter}
+                      </span>
+                      <span className="min-w-0 flex-1">{highlightText(opt.text, searchValue)}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              {correctOption && (
+                <p className="mt-4 font-body text-body-sm text-success">
+                  Poprawna odpowiedź: {highlightText(correctOption.text, searchValue)}
+                </p>
+              )}
 
-          <CatalogExplanationMobile
-            explanation={q.explanation}
-            isAlwaysVisible={isStudyMode}
-            isLocked={!isStudyMode && !isExamAnswered}
-            key={`${q.id}-${isStudyMode ? "study" : "exam"}`}
-          />
+              <CatalogExplanationMobile explanation={q.explanation} key={q.id} />
             </>
           )}
         </div>
@@ -332,12 +242,8 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
             <p className="mt-3 font-body text-body-sm text-muted">
               Wybierz inną frazę, aby wyświetlić pytanie i wyjaśnienie.
             </p>
-          ) : isStudyMode || isExamAnswered ? (
-            <div className="mt-3">{markdownBlock(q.explanation)}</div>
           ) : (
-            <p className="mt-3 font-body text-body-sm text-muted">
-              Odpowiedz na pytanie, aby odkryć wyjaśnienie.
-            </p>
+            <div className="mt-3">{markdownBlock(q.explanation)}</div>
           )}
         </div>
       </div>
@@ -375,55 +281,11 @@ export function CatalogView({ subjectName, questions }: CatalogViewProps) {
   );
 }
 
-function CatalogExplanationMobile({
-  explanation,
-  isAlwaysVisible,
-  isLocked,
-}: {
-  explanation: string;
-  isAlwaysVisible: boolean;
-  isLocked: boolean;
-}) {
-  const [manualOpen, setManualOpen] = useState(false);
-  const open = isAlwaysVisible ? true : !isLocked && manualOpen;
-
-  if (isAlwaysVisible) {
-    return (
-      <div className="mt-4 border-t border-white/10 pt-4 lg:hidden">
-        <p className="font-body text-body-sm font-medium text-primary">Wyjaśnienie</p>
-        <div className="mt-3">{markdownBlock(explanation)}</div>
-      </div>
-    );
-  }
-
+function CatalogExplanationMobile({ explanation }: { explanation: string }) {
   return (
     <div className="mt-4 border-t border-white/10 pt-4 lg:hidden">
-      <button
-        type="button"
-        onClick={() => setManualOpen((v) => !v)}
-        disabled={isLocked}
-        className="flex w-full items-center justify-between gap-2 font-body text-body-sm font-medium text-primary transition-colors hover:text-brand-gold"
-        aria-expanded={open}
-      >
-        Wyjaśnienie
-        <ChevronDown
-          className={cn(
-            "size-4 shrink-0 text-secondary transition-transform duration-200",
-            open && "rotate-180",
-          )}
-          aria-hidden
-        />
-      </button>
-      {isLocked ? (
-        <p className="mt-3 font-body text-body-xs text-muted">
-          Odpowiedz na pytanie, aby odkryć wyjaśnienie.
-        </p>
-      ) : null}
-      {open && !isLocked && (
-        <div className="mt-3 animate-fade-in">
-          {markdownBlock(explanation)}
-        </div>
-      )}
+      <p className="font-body text-body-sm font-medium text-primary">Wyjaśnienie</p>
+      <div className="mt-3">{markdownBlock(explanation)}</div>
     </div>
   );
 }

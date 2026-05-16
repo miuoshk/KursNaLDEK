@@ -4,10 +4,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
+import { SessionProgressSquares } from "@/features/session/components/SessionProgressSquares";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
-import type { Confidence, SessionQuestion } from "@/features/session/types";
+import type {
+  Confidence,
+  SessionAnswer,
+  SessionQuestion,
+} from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
 type SessionQuestionContentProps = {
@@ -21,6 +26,9 @@ type SessionQuestionContentProps = {
   allAnswered: boolean;
   isPrzeglad: boolean;
   submitting?: boolean;
+  questions?: SessionQuestion[];
+  answeredMap?: Record<string, SessionAnswer>;
+  onJumpTo?: (idx: number) => void;
   onSelectOption: (id: string) => void;
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
@@ -38,6 +46,9 @@ export function SessionQuestionContent({
   allAnswered,
   isPrzeglad,
   submitting,
+  questions,
+  answeredMap,
+  onJumpTo,
   onSelectOption,
   onConfidencePick,
   onNext,
@@ -48,14 +59,20 @@ export function SessionQuestionContent({
   const isLast = currentIndex >= total - 1;
 
   const showConfidenceBar = isWaitingForConfidence && !isPrzeglad;
-  const canNavigateNext = !showConfidenceBar && (isLast ? allAnswered || isShowingFeedback : true);
+  const canEndPrzeglad = isPrzeglad && isLast;
+  const canNavigateNext =
+    !showConfidenceBar &&
+    (isLast ? allAnswered || isShowingFeedback || canEndPrzeglad : true);
 
   let nextLabel = "Następne";
-  if (allAnswered) {
+  if (allAnswered || canEndPrzeglad) {
     nextLabel = "Zakończ sesję";
   } else if (!isShowingFeedback && !isCurrentAnswered) {
     nextLabel = "Pomiń";
   }
+
+  const showSquares =
+    isPrzeglad && questions != null && answeredMap != null && questions.length > 0;
 
   return (
     <>
@@ -144,6 +161,16 @@ export function SessionQuestionContent({
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 backdrop-blur-sm">
+        {showSquares ? (
+          <div className="mx-auto mb-2 max-w-3xl">
+            <SessionProgressSquares
+              questions={questions!}
+              answeredMap={answeredMap!}
+              currentIndex={currentIndex}
+              onJumpTo={onJumpTo}
+            />
+          </div>
+        ) : null}
         <div className="mx-auto flex max-w-3xl items-center justify-between">
           <button
             type="button"
@@ -170,7 +197,8 @@ export function SessionQuestionContent({
             className={cn(
               "inline-flex items-center gap-1.5 rounded-btn border border-border px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
               "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
-              allAnswered && "border-brand-gold/40 text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold",
+              (allAnswered || canEndPrzeglad) &&
+                "border-brand-gold/40 text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold",
               "disabled:pointer-events-none disabled:opacity-30",
             )}
           >

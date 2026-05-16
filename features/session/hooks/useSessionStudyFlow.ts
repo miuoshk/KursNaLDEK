@@ -220,12 +220,16 @@ export function useSessionStudyFlow(
 
     const advanced = s.goToNext();
     if (!advanced) {
+      if (mode === "przeglad") {
+        finishSession(buildSummary(s.answeredMap));
+        return;
+      }
       const firstUnanswered = questions.findIndex((q) => !(q.id in s.answeredMap));
       if (firstUnanswered >= 0) {
         s.navigateToIndex(firstUnanswered);
       }
     }
-  }, [s, questions, finishSession, buildSummary]);
+  }, [s, questions, mode, finishSession, buildSummary]);
 
   const handleEndConfirm = useCallback(() => {
     closeEndDialog();

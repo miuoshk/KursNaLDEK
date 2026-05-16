@@ -2,7 +2,6 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { grantFreeTestEntitlement } from "@/features/access/server/grantFreeTestEntitlement";
@@ -17,11 +16,7 @@ async function getOriginFromHeaders() {
   return `${proto}://${host}`;
 }
 
-function redirectSelectionError() {
-  redirect("/wybor-roku?status=error");
-}
-
-async function getUserOrThrow() {
+async function getUserOrNull() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -29,7 +24,7 @@ async function getUserOrThrow() {
   } = await supabase.auth.getUser();
 
   if (error || !user) {
-    throw new Error("Brak aktywnej sesji użytkownika.");
+    return { user: null, supabase };
   }
   return { user, supabase };
 }
@@ -40,30 +35,44 @@ export async function activateFreeTestYearAction(formData: FormData) {
     year: formData.get("year"),
   });
   if (!parsed.success) {
-    return redirectSelectionError();
+    redirect("/wybor-roku?status=error");
   }
   if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-    return redirectSelectionError();
+    redirect("/wybor-roku?status=error");
   }
 
-  const { user, supabase } = await getUserOrThrow();
-  await grantFreeTestEntitlement({
-    userId: user.id,
-    track: parsed.data.track,
-    year: parsed.data.year,
-  });
+  const { user, supabase } = await getUserOrNull();
+  if (!user) {
+    redirect("/login");
+  }
 
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .update({
-      current_track: parsed.data.track,
-      current_year: parsed.data.year,
-    })
-    .eq("id", user.id);
+  let activationFailed = false;
+  try {
+    await grantFreeTestEntitlement({
+      userId: user.id,
+      track: parsed.data.track,
+      year: parsed.data.year,
+    });
 
-  if (profileError) {
-    console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
-    return redirectSelectionError();
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        current_track: parsed.data.track,
+        current_year: parsed.data.year,
+      })
+      .eq("id", user.id);
+
+    if (profileError) {
+      console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
+      activationFailed = true;
+    }
+  } catch (error) {
+    console.error("[activateFreeTestYearAction] failed", error);
+    activationFailed = true;
+  }
+
+  if (activationFailed) {
+    redirect("/wybor-roku?status=error");
   }
 
   redirect("/pulpit");
@@ -75,30 +84,34 @@ export async function createCheckoutSessionAction(formData: FormData) {
     year: formData.get("year"),
   });
   if (!parsed.success) {
-    return redirectSelectionError();
+    redirect("/wybor-roku?status=error");
   }
 
   if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
     redirect("/wybor-roku");
   }
 
-  const { user, supabase } = await getUserOrThrow();
-  const origin = await getOriginFromHeaders();
-  const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
-  const stripe = getStripeServerClient();
-
-  const profileResult = await supabase
-    .from("profiles")
-    .select("stripe_customer_id")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (profileResult.error) {
-    console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
-    return redirectSelectionError();
+  const { user, supabase } = await getUserOrNull();
+  if (!user) {
+    redirect("/login");
   }
 
+  let checkoutUrl: string | null = null;
   try {
+    const origin = await getOriginFromHeaders();
+    const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
+    const stripe = getStripeServerClient();
+
+    const profileResult = await supabase
+      .from("profiles")
+      .select("stripe_customer_id")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (profileResult.error) {
+      console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
@@ -113,51 +126,72 @@ export async function createCheckoutSessionAction(formData: FormData) {
       },
     });
 
-    if (!session.url) {
+    checkoutUrl = session.url ?? null;
+    if (!checkoutUrl) {
       console.error("[createCheckoutSessionAction] missing checkout url");
-      return redirectSelectionError();
     }
-
-    redirect(session.url);
   } catch (error) {
-    if (isRedirectError(error)) {
-      throw error;
-    }
-    console.error("[createCheckoutSessionAction] failed", error);
-    redirectSelectionError();
+    console.error("[createCheckoutSessionAction] stripe call failed", error);
   }
+
+  if (!checkoutUrl) {
+    redirect("/wybor-roku?status=error");
+  }
+
+  redirect(checkoutUrl);
 }
 
 export async function createBillingPortalSessionAction() {
-  const { user, supabase } = await getUserOrThrow();
-  const origin = await getOriginFromHeaders();
-  const stripe = getStripeServerClient();
-
-  const profileResult = await supabase
-    .from("profiles")
-    .select("stripe_customer_id")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (profileResult.error) {
-    throw new Error(`Nie udało się odczytać profilu: ${profileResult.error.message}`);
+  const { user, supabase } = await getUserOrNull();
+  if (!user) {
+    redirect("/login");
   }
 
-  const customerId = profileResult.data?.stripe_customer_id;
-  if (!customerId) {
+  let portalUrl: string | null = null;
+  let needsCheckout = false;
+
+  try {
+    const origin = await getOriginFromHeaders();
+    const stripe = getStripeServerClient();
+
+    const profileResult = await supabase
+      .from("profiles")
+      .select("stripe_customer_id")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    if (profileResult.error) {
+      console.error("[createBillingPortalSessionAction] profile read failed", profileResult.error.message);
+    }
+
+    const customerId = profileResult.data?.stripe_customer_id ?? null;
+    if (!customerId) {
+      needsCheckout = true;
+    } else {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: customerId,
+        return_url: `${origin}/ustawienia`,
+      });
+      portalUrl = session.url ?? null;
+    }
+  } catch (error) {
+    console.error("[createBillingPortalSessionAction] stripe call failed", error);
+  }
+
+  if (needsCheckout) {
     redirect("/cennik");
   }
-
-  const session = await stripe.billingPortal.sessions.create({
-    customer: customerId,
-    return_url: `${origin}/ustawienia`,
-  });
-
-  redirect(session.url);
+  if (!portalUrl) {
+    redirect("/ustawienia?billing=error");
+  }
+  redirect(portalUrl);
 }
 
 export async function completeCheckoutActivationAction() {
-  const { user } = await getUserOrThrow();
+  const { user } = await getUserOrNull();
+  if (!user) {
+    redirect("/login");
+  }
   const hasAccess = await hasAnyActiveEntitlement(user.id);
 
   if (hasAccess) {

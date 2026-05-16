@@ -12,8 +12,6 @@ export function getStripeServerClient() {
     throw new Error("Brak STRIPE_SECRET_KEY w zmiennych środowiskowych.");
   }
 
-  stripeClient = new Stripe(secretKey, {
-    apiVersion: "2026-04-22.dahlia",
-  });
+  stripeClient = new Stripe(secretKey);
   return stripeClient;
 }

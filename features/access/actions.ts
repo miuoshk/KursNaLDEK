@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { grantFreeTestEntitlement } from "@/features/access/server/grantFreeTestEntitlement";
@@ -34,75 +35,70 @@ async function getUserOrThrow() {
 }
 
 export async function activateFreeTestYearAction(formData: FormData) {
-  try {
-    const parsed = selectionSchema.safeParse({
-      track: formData.get("track"),
-      year: formData.get("year"),
-    });
-    if (!parsed.success) {
-      return redirectSelectionError();
-    }
-    if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-      return redirectSelectionError();
-    }
-
-    const { user, supabase } = await getUserOrThrow();
-    await grantFreeTestEntitlement({
-      userId: user.id,
-      track: parsed.data.track,
-      year: parsed.data.year,
-    });
-
-    const { error: profileError } = await supabase
-      .from("profiles")
-      .update({
-        current_track: parsed.data.track,
-        current_year: parsed.data.year,
-      })
-      .eq("id", user.id);
-
-    if (profileError) {
-      console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
-      return redirectSelectionError();
-    }
-
-    redirect("/pulpit");
-  } catch (error) {
-    console.error("[activateFreeTestYearAction] failed", error);
-    redirectSelectionError();
+  const parsed = selectionSchema.safeParse({
+    track: formData.get("track"),
+    year: formData.get("year"),
+  });
+  if (!parsed.success) {
+    return redirectSelectionError();
   }
+  if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+    return redirectSelectionError();
+  }
+
+  const { user, supabase } = await getUserOrThrow();
+  await grantFreeTestEntitlement({
+    userId: user.id,
+    track: parsed.data.track,
+    year: parsed.data.year,
+  });
+
+  const { error: profileError } = await supabase
+    .from("profiles")
+    .update({
+      current_track: parsed.data.track,
+      current_year: parsed.data.year,
+    })
+    .eq("id", user.id);
+
+  if (profileError) {
+    console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
+    return redirectSelectionError();
+  }
+
+  redirect("/pulpit");
 }
 
 export async function createCheckoutSessionAction(formData: FormData) {
+  const parsed = selectionSchema.safeParse({
+    track: formData.get("track"),
+    year: formData.get("year"),
+  });
+  if (!parsed.success) {
+    return redirectSelectionError();
+  }
+
+  if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+    redirect("/wybor-roku");
+  }
+
+  const { user, supabase } = await getUserOrThrow();
+  const origin = await getOriginFromHeaders();
+  const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
+  const stripe = getStripeServerClient();
+
+  const profileResult = await supabase
+    .from("profiles")
+    .select("stripe_customer_id")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (profileResult.error) {
+    console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
+    return redirectSelectionError();
+  }
+
   try {
-    const parsed = selectionSchema.safeParse({
-      track: formData.get("track"),
-      year: formData.get("year"),
-    });
-    if (!parsed.success) {
-      return redirectSelectionError();
-    }
-
-    if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-      redirect("/wybor-roku");
-    }
-
-    const { user, supabase } = await getUserOrThrow();
-    const origin = await getOriginFromHeaders();
-    const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
-    const stripe = getStripeServerClient();
-
-    const profileResult = await supabase
-      .from("profiles")
-      .select("stripe_customer_id")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    if (profileResult.error) {
-      console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
-      return redirectSelectionError();
-    }
-
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
@@ -124,6 +120,9 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
     redirect(session.url);
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     console.error("[createCheckoutSessionAction] failed", error);
     redirectSelectionError();
   }

@@ -9,6 +9,23 @@ import { getStripePriceId } from "@/features/access/lib/stripePrices";
 import { isFreeTestSelection, selectionSchema } from "@/features/access/lib/studyAccess";
 import { hasAnyActiveEntitlement } from "@/features/access/server/entitlements";
 
+type ErrorReason =
+  | "invalid-selection"
+  | "free-only-stoma2"
+  | "no-session"
+  | "stripe-missing-secret"
+  | "stripe-missing-price"
+  | "stripe-call-failed"
+  | "stripe-no-url"
+  | "supabase-profile-read"
+  | "supabase-profile-update"
+  | "entitlement-grant-failed"
+  | "unknown";
+
+function errorRedirectUrl(reason: ErrorReason): string {
+  return `/wybor-roku?status=error&reason=${reason}`;
+}
+
 async function getOriginFromHeaders() {
   const h = await headers();
   const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
@@ -35,10 +52,10 @@ export async function activateFreeTestYearAction(formData: FormData) {
     year: formData.get("year"),
   });
   if (!parsed.success) {
-    redirect("/wybor-roku?status=error");
+    redirect(errorRedirectUrl("invalid-selection"));
   }
   if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
-    redirect("/wybor-roku?status=error");
+    redirect(errorRedirectUrl("free-only-stoma2"));
   }
 
   const { user, supabase } = await getUserOrNull();
@@ -46,7 +63,7 @@ export async function activateFreeTestYearAction(formData: FormData) {
     redirect("/login");
   }
 
-  let activationFailed = false;
+  let failureReason: ErrorReason | null = null;
   try {
     await grantFreeTestEntitlement({
       userId: user.id,
@@ -64,15 +81,15 @@ export async function activateFreeTestYearAction(formData: FormData) {
 
     if (profileError) {
       console.error("[activateFreeTestYearAction] profile update failed", profileError.message);
-      activationFailed = true;
+      failureReason = "supabase-profile-update";
     }
   } catch (error) {
     console.error("[activateFreeTestYearAction] failed", error);
-    activationFailed = true;
+    failureReason = "entitlement-grant-failed";
   }
 
-  if (activationFailed) {
-    redirect("/wybor-roku?status=error");
+  if (failureReason) {
+    redirect(errorRedirectUrl(failureReason));
   }
 
   redirect("/pulpit");
@@ -84,7 +101,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
     year: formData.get("year"),
   });
   if (!parsed.success) {
-    redirect("/wybor-roku?status=error");
+    redirect(errorRedirectUrl("invalid-selection"));
   }
 
   if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
@@ -97,9 +114,24 @@ export async function createCheckoutSessionAction(formData: FormData) {
   }
 
   let checkoutUrl: string | null = null;
+  let failureReason: ErrorReason | null = null;
+
   try {
+    if (!process.env.STRIPE_SECRET_KEY) {
+      failureReason = "stripe-missing-secret";
+      throw new Error("STRIPE_SECRET_KEY env not configured");
+    }
+
+    let priceId: string;
+    try {
+      priceId = getStripePriceId(parsed.data.track, parsed.data.year);
+    } catch (priceError) {
+      console.error("[createCheckoutSessionAction] price lookup failed", priceError);
+      failureReason = "stripe-missing-price";
+      throw priceError;
+    }
+
     const origin = await getOriginFromHeaders();
-    const priceId = getStripePriceId(parsed.data.track, parsed.data.year);
     const stripe = getStripeServerClient();
 
     const profileResult = await supabase
@@ -110,6 +142,8 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
     if (profileResult.error) {
       console.error("[createCheckoutSessionAction] profile read failed", profileResult.error.message);
+      failureReason = "supabase-profile-read";
+      throw profileResult.error;
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -129,13 +163,17 @@ export async function createCheckoutSessionAction(formData: FormData) {
     checkoutUrl = session.url ?? null;
     if (!checkoutUrl) {
       console.error("[createCheckoutSessionAction] missing checkout url");
+      failureReason = "stripe-no-url";
     }
   } catch (error) {
     console.error("[createCheckoutSessionAction] stripe call failed", error);
+    if (!failureReason) {
+      failureReason = "stripe-call-failed";
+    }
   }
 
   if (!checkoutUrl) {
-    redirect("/wybor-roku?status=error");
+    redirect(errorRedirectUrl(failureReason ?? "unknown"));
   }
 
   redirect(checkoutUrl);

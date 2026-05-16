@@ -12,7 +12,25 @@ import { YearSelectionGrid } from "@/features/access/components/YearSelectionGri
 
 type SearchParams = Promise<{
   status?: string;
+  reason?: string;
 }>;
+
+const ERROR_REASON_LABELS: Record<string, string> = {
+  "invalid-selection": "Nieprawidłowy wybór kierunku/roku.",
+  "free-only-stoma2": "Darmowy dostęp tylko dla Stomatologia rok 2.",
+  "no-session": "Sesja wygasła, zaloguj się ponownie.",
+  "stripe-missing-secret":
+    "Stripe nie jest skonfigurowany na serwerze (brak STRIPE_SECRET_KEY w env hostingu).",
+  "stripe-missing-price":
+    "Brak skonfigurowanej ceny Stripe dla wybranego roku (sprawdź STRIPE_PRICE_* w env hostingu).",
+  "stripe-call-failed":
+    "Stripe odrzucił zapytanie. Sprawdź czy klucz i price ID są z tego samego trybu (test/live) i czy price jest aktywny.",
+  "stripe-no-url": "Stripe nie zwrócił adresu Checkout. Spróbuj ponownie.",
+  "supabase-profile-read": "Nie udało się odczytać profilu z bazy.",
+  "supabase-profile-update": "Nie udało się zapisać wyboru roku w profilu.",
+  "entitlement-grant-failed": "Nie udało się zapisać dostępu w bazie.",
+  unknown: "Nieznany błąd. Sprawdź logi serwera.",
+};
 
 export default async function WyborRokuPage(props: { searchParams: SearchParams }) {
   const supabase = await createClient();
@@ -46,6 +64,7 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
 
   const hasAnyEntitlement = entitlements.length > 0;
   const status = params.status;
+  const reasonLabel = params.reason ? ERROR_REASON_LABELS[params.reason] ?? null : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl">
@@ -66,9 +85,17 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
           </p>
         ) : null}
         {status === "error" ? (
-          <p className="mt-3 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-2 font-body text-body-sm text-[#F87171]">
-            Nie udało się rozpocząć procesu płatności lub aktywacji. Spróbuj ponownie za chwilę.
-          </p>
+          <div className="mt-3 space-y-1 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-2">
+            <p className="font-body text-body-sm text-[#F87171]">
+              Nie udało się rozpocząć procesu płatności lub aktywacji.
+            </p>
+            {reasonLabel ? (
+              <p className="font-body text-body-xs text-[#F87171]/90">Powód: {reasonLabel}</p>
+            ) : null}
+            {params.reason ? (
+              <p className="font-body text-body-xs text-[#F87171]/70">Kod: {params.reason}</p>
+            ) : null}
+          </div>
         ) : null}
         {status === "pending" ? (
           <p className="mt-3 rounded-btn border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 font-body text-body-sm text-brand-gold">

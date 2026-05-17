@@ -10,6 +10,11 @@ import {
   fetchTopicQuestionIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
+import {
+  getAnatomyPeerTopicId,
+  getSubjectScopeIds,
+  isSubjectInScope,
+} from "@/features/session/server/sharedSubjects";
 import { buildAntaresInteligentnaSession } from "@/features/session/server/buildAntaresInteligentnaSession";
 import {
   fetchDueReviewQuestionIdsForTopics,
@@ -155,15 +160,29 @@ export async function startSession(
         .select("subject_id")
         .eq("id", topicId)
         .maybeSingle();
-      if (te || !top || top.subject_id !== subjectId) {
+      if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
         return { ok: false, message: "Nieprawidłowy temat dla tego przedmiotu." };
       }
-      pool = await fetchTopicQuestionIds(supabase, topicId);
+      const topicIdsForPool = [topicId];
+      const peerTopicId = getAnatomyPeerTopicId(topicId);
+      if (peerTopicId) {
+        const { data: peerTopic } = await supabase
+          .from("topics")
+          .select("id")
+          .eq("id", peerTopicId)
+          .maybeSingle();
+        if (peerTopic?.id) topicIdsForPool.push(peerTopic.id as string);
+      }
+
+      const pooledByTopic = await Promise.all(
+        topicIdsForPool.map((id) => fetchTopicQuestionIds(supabase, id)),
+      );
+      pool = pooledByTopic.flat();
       topicFilter = new Set(pool);
       const { data: topicRowsForDue } = await supabase
         .from("topics")
         .select("id")
-        .eq("subject_id", subjectId);
+        .in("subject_id", getSubjectScopeIds(subjectId));
       topicOkForDue = new Set((topicRowsForDue ?? []).map((t) => t.id as string));
       if (pool.length === 0) {
         return { ok: false, message: "Brak aktywnych pytań w wybranym temacie." };

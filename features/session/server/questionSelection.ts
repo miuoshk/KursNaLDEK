@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 
 export function shuffle<T>(items: T[]): T[] {
   const a = [...items];
@@ -13,10 +14,11 @@ export async function fetchSubjectQuestionIds(
   supabase: SupabaseClient,
   subjectId: string,
 ): Promise<string[]> {
+  const subjectScopeIds = getSubjectScopeIds(subjectId);
   const { data: topicRows, error: te } = await supabase
     .from("topics")
     .select("id")
-    .eq("subject_id", subjectId);
+    .in("subject_id", subjectScopeIds);
 
   if (te) {
     console.error("[fetchSubjectQuestionIds] topics", te.message);

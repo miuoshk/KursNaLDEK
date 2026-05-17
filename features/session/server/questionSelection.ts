@@ -32,25 +32,13 @@ export async function fetchSubjectQuestionIds(
     .from("questions")
     .select("id")
     .in("topic_id", topicIds)
-    .or("is_active.eq.true,is_active.is.null");
+    .eq("is_active", true);
 
   if (error) {
     console.error("[fetchSubjectQuestionIds] questions", error.message);
     return [];
   }
-  const ids = (data ?? []).map((r) => r.id as string);
-  if (ids.length > 0) return ids;
-
-  // Fallback: old rows may have inconsistent `is_active` values.
-  const { data: fallbackData, error: fallbackError } = await supabase
-    .from("questions")
-    .select("id")
-    .in("topic_id", topicIds);
-  if (fallbackError) {
-    console.error("[fetchSubjectQuestionIds] questions fallback", fallbackError.message);
-    return [];
-  }
-  return (fallbackData ?? []).map((r) => r.id as string);
+  return (data ?? []).map((r) => r.id as string);
 }
 
 export async function fetchTopicQuestionIds(
@@ -61,24 +49,13 @@ export async function fetchTopicQuestionIds(
     .from("questions")
     .select("id")
     .eq("topic_id", topicId)
-    .or("is_active.eq.true,is_active.is.null");
+    .eq("is_active", true);
 
   if (error) {
     console.error("[fetchTopicQuestionIds]", error.message);
     return [];
   }
-  const ids = (data ?? []).map((r) => r.id as string);
-  if (ids.length > 0) return ids;
-
-  const { data: fallbackData, error: fallbackError } = await supabase
-    .from("questions")
-    .select("id")
-    .eq("topic_id", topicId);
-  if (fallbackError) {
-    console.error("[fetchTopicQuestionIds] fallback", fallbackError.message);
-    return [];
-  }
-  return (fallbackData ?? []).map((r) => r.id as string);
+  return (data ?? []).map((r) => r.id as string);
 }
 
 /** Wszystkie aktywne pytania z przedmiotów product=knnp (sesja mieszana). */
@@ -109,7 +86,7 @@ export async function fetchKnnpAllQuestionIds(
     .from("questions")
     .select("id")
     .in("topic_id", topicIds)
-    .or("is_active.eq.true,is_active.is.null");
+    .eq("is_active", true);
   if (error) {
     console.error("[fetchKnnpAllQuestionIds] questions", error.message);
     return [];

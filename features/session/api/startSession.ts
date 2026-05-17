@@ -192,21 +192,6 @@ export async function startSession(
       topicOkForDue = await fetchKnnpTopicIdSet(supabase);
     } else {
       pool = await fetchSubjectQuestionIds(supabase, subjectId);
-      if (pool.length === 0) {
-        const subjectScopeIds = getSubjectScopeIds(subjectId);
-        const { data: fallbackTopics } = await supabase
-          .from("topics")
-          .select("id")
-          .in("subject_id", subjectScopeIds);
-        const fallbackTopicIds = (fallbackTopics ?? []).map((t) => t.id as string);
-        if (fallbackTopicIds.length > 0) {
-          const { data: fallbackQuestions } = await supabase
-            .from("questions")
-            .select("id")
-            .in("topic_id", fallbackTopicIds);
-          pool = (fallbackQuestions ?? []).map((q) => q.id as string);
-        }
-      }
       const { data: topicRows } = await supabase
         .from("topics")
         .select("id")

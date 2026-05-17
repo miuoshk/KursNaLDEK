@@ -116,10 +116,21 @@ export function useSessionStudyFlow(
   );
 
   const handleSubmitWithConfidence = useCallback(
-    (confidence: Confidence, { advance = false }: { advance?: boolean } = {}) => {
-      if (!s.currentQuestion || s.isCurrentAnswered || !s.selectedOptionId) return;
+    (
+      confidence: Confidence,
+      {
+        advance = false,
+        optionIdOverride,
+      }: { advance?: boolean; optionIdOverride?: string } = {},
+    ) => {
+      if (!s.currentQuestion || s.isCurrentAnswered) return;
 
-      const optionId = s.selectedOptionId;
+      // `s.selectedOptionId` is read from the closure of the current render and
+      // can lag behind `selectAndCheck()` when both run in the same tick (the
+      // przeglad auto-submit flow). Accept an explicit override to avoid that
+      // stale-state race.
+      const optionId = optionIdOverride ?? s.selectedOptionId;
+      if (!optionId) return;
       const currentQ = s.currentQuestion;
       const isCorrect = optionId === currentQ.correctOptionId;
 

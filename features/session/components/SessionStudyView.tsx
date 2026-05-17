@@ -121,7 +121,7 @@ export function SessionStudyView({
       timeSpentQuestion.current = sw.pauseAndGetSeconds();
       s.selectAndCheck(optionId);
       if (isPrzeglad) {
-        handleSubmitWithConfidence("na_pewno");
+        handleSubmitWithConfidence("na_pewno", { optionIdOverride: optionId });
       }
     },
     [s, sw, isPrzeglad, handleSubmitWithConfidence],

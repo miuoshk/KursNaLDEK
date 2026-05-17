@@ -1,153 +1,89 @@
 # Format pytań — Socjologia medycyny (1 rok stomatologii)
 
-> Companion do `FormatPisaniaPytan.md`. Sekcje 1, 2 (struktura `questions`), 4 (template SQL), 5 (checklista), 6 (zasady merytoryczne / opcje kombinatoryczne) z głównego docu obowiązują **bez zmian**. Ten plik definiuje wyłącznie tematy/etykiety specyficzne dla `stoma-socjologia` oraz konwencje batchowania.
+> Companion do `FormatPisaniaPytan.md`. Zasady opcji A–E, kolejność `id`, opcje kombinatoryczne, escape-owanie apostrofów, struktura tabel — **identyczne**. Ten plik jest **wzorem SQL** dla LLM-a (Claude / inny bot) konwertującego surowy materiał egzaminacyjny do batcha pytań w Supabase.
 
 ---
 
-## 1. SUBJECT
+## 1. CO JUŻ JEST W BAZIE
 
-| Pole              | Wartość                                                   |
-|-------------------|-----------------------------------------------------------|
-| `subjects.id`     | `stoma-socjologia`                                        |
-| `name`            | Socjologia medycyny                                       |
-| `short_name`      | Socjologia                                                |
-| `icon_name`       | `users`                                                   |
-| `year`            | `1`                                                       |
-| `track`           | `stomatologia`                                            |
-| `product`         | `knnp`                                                    |
-| `display_order`   | `7`                                                       |
+Tylko sam subject:
 
-Rekord wstawiony migracją `scripts/2026-05-17-add-socjologia-medycyny-stoma-y1.sql`.
+| Pole              | Wartość                |
+|-------------------|------------------------|
+| `subjects.id`     | `stoma-socjologia`     |
+| `name`            | Socjologia medycyny    |
+| `short_name`      | Socjologia             |
+| `icon_name`       | `users`                |
+| `year`            | `1`                    |
+| `track`           | `stomatologia`         |
+| `display_order`   | `7`                    |
 
----
-
-## 2. TOPIKI (istnieją w bazie, `question_count = 0`)
-
-| `topic_id` | Nazwa                                                                       | `display_order` |
-|------------|-----------------------------------------------------------------------------|-----------------|
-| `SOC-WPR`  | Wprowadzenie do socjologii medycyny                                         | 1               |
-| `SOC-ZDR`  | Zdrowie i choroba jako kategorie społeczne                                  | 2               |
-| `SOC-ROL`  | Role społeczne lekarza i pacjenta                                           | 3               |
-| `SOC-KOM`  | Komunikacja lekarz–pacjent                                                  | 4               |
-| `SOC-ZAW`  | Profesja lekarska i instytucje opieki zdrowotnej                            | 5               |
-| `SOC-DET`  | Społeczne determinanty zdrowia                                              | 6               |
-| `SOC-NIE`  | Nierówności w zdrowiu i dostęp do opieki                                    | 7               |
-| `SOC-ETK`  | Etyka, bioetyka i prawa pacjenta                                            | 8               |
-| `SOC-PRZ`  | Choroba przewlekła, niepełnosprawność, stygmatyzacja                        | 9               |
-| `SOC-UMI`  | Umieranie, śmierć i opieka paliatywna                                       | 10              |
-| `SOC-STM`  | Stomatologia społeczna (lęk, dostęp, komunikacja w gabinecie)               | 11              |
-
-### Konwencja `id` pytania
-
-`soc-{topic-suffix}-{NNN}`, np. `soc-wpr-001`, `soc-kom-014`. Małe litery, numeracja trzycyfrowa z zerami wiodącymi (jak Anatomia).
+**Topików w tej chwili nie ma żadnych.** Każdy topik powstaje razem z pierwszym batchem pytań do niego — na podstawie **realnego materiału źródłowego** (program nauczania uczelni / pytania egzaminacyjne / kolokwia), a nie zgadywania.
 
 ---
 
-## 3. `theme_label` — kontrolowana lista dla `stoma-socjologia`
+## 2. KONWENCJA NAZW
 
-Wpisuj **dokładnie** taki ciąg jak na liście (case-sensitive, polskie znaki). Jeden `theme_label` na pytanie. Jeśli treść jest na granicy lub nie pasuje do żadnej etykiety → `NULL`.
+### `topics.id`
 
-```
-1.  Pojęcia podstawowe socjologii medycyny
-2.  Zdrowie i choroba jako konstrukty społeczne
-3.  Role społeczne w medycynie
-4.  Komunikacja i relacja terapeutyczna
-5.  Profesja i instytucje medyczne
-6.  Społeczne determinanty zdrowia
-7.  Nierówności w zdrowiu
-8.  Etyka, bioetyka, prawa pacjenta
-9.  Niepełnosprawność i stygmatyzacja
-10. Choroba przewlekła i opieka długoterminowa
-11. Umieranie, śmierć i żałoba
-12. Stomatologia społeczna
+`SOC-XXX` — 3-4 wielkie litery, dobierane z nazwy topiku. Trzymaj się tej samej etykiety we wszystkich pytaniach jednego topiku. Przykład decyzyjny:
+
+| Nazwa topiku z materiału                                  | `topic_id` |
+|-----------------------------------------------------------|------------|
+| „Komunikacja lekarz–pacjent"                              | `SOC-KOM`  |
+| „Etyka i bioetyka lekarska"                               | `SOC-ETK`  |
+| „Rola chorego wg Parsonsa"                                | `SOC-ROL`  |
+
+Jeśli to **pierwszy** batch w nowym topiku → najpierw wstaw rekord w `topics` (krok 3 niżej), dopiero potem pytania.
+
+### `questions.id`
+
+`soc-{topic-suffix}-{NNN}` — małe litery, trzycyfrowa numeracja z zerami wiodącymi.
+
+| Przykład         | Co to                                          |
+|------------------|------------------------------------------------|
+| `soc-kom-001`    | Socjologia · Komunikacja · pytanie 1           |
+| `soc-etk-014`    | Socjologia · Etyka · pytanie 14                |
+
+Pierwsze pytanie w topiku numerowane `…-001`. Sprawdź `MAX(id)` w bazie zanim wgrasz kolejny batch:
+
+```sql
+SELECT id FROM public.questions WHERE topic_id = 'SOC-KOM' ORDER BY id DESC LIMIT 1;
 ```
 
-### Mapowanie pomocnicze (topic → najczęstszy `theme_label`)
-
-| `topic_id` | Domyślnie idzie do `theme_label`                                                                                                            |
-|------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| `SOC-WPR`  | `Pojęcia podstawowe socjologii medycyny`                                                                                                    |
-| `SOC-ZDR`  | `Zdrowie i choroba jako konstrukty społeczne`                                                                                               |
-| `SOC-ROL`  | `Role społeczne w medycynie`                                                                                                                |
-| `SOC-KOM`  | `Komunikacja i relacja terapeutyczna`                                                                                                       |
-| `SOC-ZAW`  | `Profesja i instytucje medyczne`                                                                                                            |
-| `SOC-DET`  | `Społeczne determinanty zdrowia`                                                                                                            |
-| `SOC-NIE`  | `Nierówności w zdrowiu`                                                                                                                     |
-| `SOC-ETK`  | `Etyka, bioetyka, prawa pacjenta`                                                                                                           |
-| `SOC-PRZ`  | `Niepełnosprawność i stygmatyzacja` lub `Choroba przewlekła i opieka długoterminowa` (zależnie od tego, na czym ogniskuje się pytanie)      |
-| `SOC-UMI`  | `Umieranie, śmierć i żałoba`                                                                                                                |
-| `SOC-STM`  | `Stomatologia społeczna`                                                                                                                    |
-
-> Reguła rozstrzygająca: jeśli pytanie testuje **definicję / pojęcie** → wybierz etykietę najściślej pasującą do pojęcia. Jeśli testuje **kontekst praktyczny w gabinecie stomatologicznym** → `Stomatologia społeczna`.
-
 ---
 
-## 4. `subtheme_label` — wąski podtemat (wolny tekst)
-
-Krótka fraza rzeczownikowa (1–4 słowa), zaczynająca się z **wielkiej litery**. **Węższa** niż `topic_id`. Jeśli już użyłeś frazy w batchu, trzymaj się jej dalej (case-sensitive).
-
-### Przykłady
-
-| `topic_id` | `subtheme_label`                                                                                                            |
-|------------|-----------------------------------------------------------------------------------------------------------------------------|
-| `SOC-WPR`  | `Definicja przedmiotu`, `Metody badawcze`, `Socjologia ogólna a medyczna`, `Paradygmaty teoretyczne`                        |
-| `SOC-ZDR`  | `Definicja WHO`, `Model biomedyczny`, `Model biopsychospołeczny`, `Choroba a chorowanie`, `Salutogeneza`                    |
-| `SOC-ROL`  | `Rola chorego (Parsons)`, `Rola lekarza`, `Paternalizm`, `Model partnerski`, `Compliance i adherence`                       |
-| `SOC-KOM`  | `Wywiad lekarski`, `Komunikacja niewerbalna`, `Przekazywanie złych wiadomości`, `Świadoma zgoda`, `Model SPIKES`            |
-| `SOC-ZAW`  | `Profesjonalizacja`, `Kodeks etyki lekarskiej`, `NFZ i prywatna opieka`, `Hierarchia w szpitalu`, `Korporacjonizm`          |
-| `SOC-DET`  | `Status socjoekonomiczny`, `Wykształcenie a zdrowie`, `Środowisko pracy`, `Sieci wsparcia`, `Determinanty kulturowe`        |
-| `SOC-NIE`  | `Gradient społeczny zdrowia`, `Black Report`, `Marmot`, `Dostęp do opieki`, `Bariery finansowe`                             |
-| `SOC-ETK`  | `Autonomia pacjenta`, `Świadoma zgoda`, `Tajemnica lekarska`, `Komitet bioetyczny`, `Konflikt interesów`                    |
-| `SOC-PRZ`  | `Stygma Goffmana`, `Tożsamość zepsuta`, `Wykluczenie społeczne`, `Modele niepełnosprawności`                                |
-| `SOC-UMI`  | `Etapy umierania (Kübler-Ross)`, `Hospicjum`, `Opieka paliatywna`, `Eutanazja`, `DNR`, `Żałoba`                              |
-| `SOC-STM`  | `Lęk dentystyczny`, `Skala Corah`, `Komunikacja z dzieckiem`, `Wstyd o uzębienie`, `Bariera kosztowa stomatologii`          |
-
----
-
-## 5. `batch_label` — etykieta zestawu
-
-Format: `e_smed_<rok>/<termin>`, np. `e_smed_2025/1`, `e_smed_2024/2`, `e_smed_kol1`, `NULL`.
-
-Małe litery, podkreślnik, slash przed numerem terminu. Cały batch importu wpisuje **jedną** wartość `batch_label`. Brak (`NULL`) = pytanie autorskie, w UI „Wszystkie".
-
----
-
-## 6. `learning_outcome` (opcjonalne)
-
-Dla socjologii w polskim curriculum najczęściej kody z grupy `F` (np. `F.W1`, `F.W12`, `F.U3` — wiedza / umiejętności społeczne). Wpisuj jeśli jest znany; w przeciwnym razie `NULL`.
-
----
-
-## 7. SZABLON SQL — BATCH PYTAŃ (kopiuj-wklej do Supabase SQL Editor)
+## 3. WZÓR SQL — pełny batch (kopiuj-wklej do Supabase SQL Editor)
 
 ```sql
 -- ============================================================
--- BATCH: e_smed_2025/1  ·  stoma-socjologia
--- Author: <bot>            Date: 2026-05-17
--- Topic:  SOC-KOM (Komunikacja lekarz–pacjent)
+-- BATCH: <batch_label>  ·  stoma-socjologia
+-- Topic: <SOC-XXX> (<pełna nazwa topiku>)
+-- Author: Claude                Date: YYYY-MM-DD
+-- Źródło: <skąd pytania — egzamin / kolokwium / podręcznik>
 -- ============================================================
 
+-- 3.1 TOPIK — uruchom tylko przy PIERWSZYM batchu na ten topic_id.
+-- Idempotentne: ON CONFLICT aktualizuje nazwę/kolejność.
+INSERT INTO public.topics
+  (id, subject_id, name, display_order, question_count)
+VALUES
+  ('SOC-KOM', 'stoma-socjologia',
+   'Komunikacja lekarz–pacjent',
+   4, 0)
+ON CONFLICT (id) DO UPDATE SET
+  subject_id    = EXCLUDED.subject_id,
+  name          = EXCLUDED.name,
+  display_order = EXCLUDED.display_order;
+  -- question_count celowo nie ruszamy — przeliczy go UPDATE niżej.
+
+-- 3.2 PYTANIA. Każdy rekord oddzielony przecinkiem, OSTATNI kropką-średnikiem.
 INSERT INTO public.questions
   (id, topic_id, text, options, correct_option_id, explanation,
-   theme_label, subtheme_label, batch_label)
+   theme_label, subtheme_label, batch_label, learning_outcome)
 VALUES
 
 ('soc-kom-001', 'SOC-KOM',
- 'Model komunikacji SPIKES służy przede wszystkim do:',
- '[
-   {"id":"a","text":"Diagnostyki różnicowej bólu w klatce piersiowej"},
-   {"id":"b","text":"Przekazywania pacjentowi złych wiadomości w sposób uporządkowany"},
-   {"id":"c","text":"Oceny ryzyka samobójczego u pacjenta z depresją"},
-   {"id":"d","text":"Wywiadu zawodowego u kandydatów do pracy"},
-   {"id":"e","text":"Strukturyzacji konsultacji telefonicznych w POZ"}
- ]'::jsonb,
- 'b',
- 'Akronim SPIKES (Setting, Perception, Invitation, Knowledge, Emotions, Strategy/Summary) został zaproponowany przez Buckmana i Baile''a jako sześcioetapowy model przekazywania pacjentowi złych wiadomości (np. rozpoznania choroby nowotworowej). Krok S to przygotowanie warunków rozmowy, P — ustalenie co pacjent już wie, I — sprawdzenie ile chce wiedzieć, K — komunikat główny, E — reakcja na emocje, S — plan dalszego postępowania.',
- 'Komunikacja i relacja terapeutyczna',
- 'Model SPIKES',
- 'e_smed_2025/1'),
-
-('soc-kom-002', 'SOC-KOM',
  'Świadoma zgoda pacjenta na zabieg stomatologiczny wymaga, aby pacjent:',
  '[
    {"id":"a","text":"Podpisał formularz przed konsultacją"},
@@ -157,15 +93,23 @@ VALUES
    {"id":"e","text":"Prawidłowe A i D"}
  ]'::jsonb,
  'b',
- 'Świadoma zgoda (informed consent) opiera się na czterech warunkach: (1) dobrowolność (brak przymusu), (2) kompetencja decyzyjna pacjenta (rozumienie sytuacji), (3) ujawnienie istotnych informacji przez lekarza (rodzaj zabiegu, ryzyko, alternatywy, prognoza bez interwencji), (4) wyraźne wyrażenie zgody. Sama podpisana karta nie wystarcza, jeśli pacjent nie rozumiał lub był pod przymusem.',
- 'Komunikacja i relacja terapeutyczna',
- 'Świadoma zgoda',
- 'e_smed_2025/1');
+ 'Świadoma zgoda (informed consent) opiera się na czterech warunkach: (1) dobrowolność (brak przymusu), (2) kompetencja decyzyjna pacjenta (rozumienie sytuacji), (3) ujawnienie istotnych informacji przez lekarza (rodzaj zabiegu, ryzyko, alternatywy, prognoza bez interwencji), (4) wyraźne wyrażenie zgody. Sam podpis na formularzu nie wystarcza, jeśli pacjent nie rozumiał lub działał pod przymusem.',
+ NULL, NULL, NULL, NULL),
 
--- ============================================================
--- PO WSZYSTKICH INSERTACH — przelicz licznik na topiku
--- ============================================================
+('soc-kom-002', 'SOC-KOM',
+ 'Akronim SPIKES w komunikacji medycznej oznacza model:',
+ '[
+   {"id":"a","text":"Wywiadu zawodowego u kandydatów do pracy"},
+   {"id":"b","text":"Przekazywania pacjentowi złych wiadomości w sześciu krokach"},
+   {"id":"c","text":"Diagnostyki różnicowej bólu w klatce piersiowej"},
+   {"id":"d","text":"Triage''u w SOR"},
+   {"id":"e","text":"Oceny ryzyka samobójczego"}
+ ]'::jsonb,
+ 'b',
+ 'SPIKES (Setting, Perception, Invitation, Knowledge, Emotions, Strategy/Summary) to sześcioetapowy model przekazywania pacjentowi złych wiadomości, zaproponowany przez Buckmana i Baile''a. Etap S — przygotowanie warunków rozmowy, P — sprawdzenie co pacjent już wie, I — ustalenie ile chce wiedzieć, K — komunikat główny, E — reakcja na emocje, S — plan dalszego postępowania.',
+ NULL, NULL, NULL, NULL);
 
+-- 3.3 PRZELICZ LICZNIK NA TOPIKU — bez tego karta pokaże stary licznik.
 UPDATE public.topics t
    SET question_count = sub.cnt
   FROM (
@@ -177,25 +121,43 @@ UPDATE public.topics t
  WHERE t.id = sub.topic_id;
 ```
 
-> **KRYTYCZNE:** ostatni `INSERT` w sekcji `VALUES` ma **kropkę i średnik na końcu**, a NIE przecinek.
+> **KRYTYCZNE:** ostatni `INSERT` w `VALUES` kończy się `);`, pozostałe `),`. Apostrof w treści/wyjaśnieniu jako `''` (dwa apostrofy), nigdy `\'`.
 
 ---
 
-## 8. CHECKLISTA PRZED `RUN` (przypomnienie)
+## 4. POLA, KTÓRE LLM MA WYPEŁNIĆ
 
-- [ ] Każde `id` pytania jest unikalne i pasuje do `soc-{topic}-{NNN}`.
-- [ ] `topic_id` istnieje (SOC-WPR / SOC-ZDR / SOC-ROL / SOC-KOM / SOC-ZAW / SOC-DET / SOC-NIE / SOC-ETK / SOC-PRZ / SOC-UMI / SOC-STM).
-- [ ] `options` to JSONB w kolejności `a → b → c → d → e` (zob. § 6.1 głównego docu).
+| Pole                 | Wymagane | Co tam wpisać                                                                                                                            |
+|----------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                 | TAK      | `soc-{topic}-{NNN}`, unikalne, numeracja od pierwszego wolnego w topiku.                                                                 |
+| `topic_id`           | TAK      | `SOC-XXX` — istniejące lub nowo-wstawione w kroku 3.1.                                                                                    |
+| `text`               | TAK      | Treść pytania, jedno zdanie pytajne lub stwierdzenie do dokończenia. Bez markdownu.                                                       |
+| `options`            | TAK      | JSONB array w kolejności `a → b → c → d → e`. Każda opcja samodzielna. Patrz § 6.1 głównego docu (opcje kombinatoryczne).                  |
+| `correct_option_id`  | TAK      | `id` poprawnej opcji (`a`/`b`/`c`/`d`/`e`).                                                                                                |
+| `explanation`        | TAK      | 2–5 zdań: dlaczego poprawna jest poprawna i dlaczego główne dystraktory są błędne.                                                        |
+| `theme_label`        | NIE      | `NULL` na razie — etykiety motywów dla socjologii zostaną dopisane jak zbierzemy więcej batchy i wyłoni się sensowna lista.                |
+| `subtheme_label`     | NIE      | `NULL` na razie z tego samego powodu. Później krótka fraza rzeczownikowa, węższa niż `topic_id`.                                          |
+| `batch_label`        | NIE      | `NULL` lub `e_smed_<rok>/<termin>` (np. `e_smed_2025/1`, `e_smed_kol1`). Cały batch ma JEDNĄ wartość.                                       |
+| `learning_outcome`   | NIE      | `NULL` lub kod efektu kształcenia z curriculum (zwykle `F.W*` / `F.U*` dla socjologii). Wpisuj tylko jeśli wynika to ze źródła.            |
+
+Wszystkie inne kolumny (`is_active`, `question_type`, `difficulty`, ...) mają sensowne defaulty na poziomie tabeli — nie podawaj ich.
+
+---
+
+## 5. CHECKLISTA PRZED `RUN`
+
+- [ ] `topic_id` istnieje (krok 3.1 wykonany lub topik już był w bazie).
+- [ ] Każde `id` pytania jest unikalne (`SELECT id FROM questions WHERE id IN (...)` zwraca pustkę).
+- [ ] Numeracja `NNN` ciągła i bez luk od poprzedniego batcha.
+- [ ] `options` w kolejności `a → b → c → d → e`, każda samodzielna.
 - [ ] `correct_option_id` matchuje jedno z `id` w `options`.
-- [ ] Apostrofy w `text`/`explanation` są **podwojone** (`it''s`, nie `it's`).
-- [ ] `theme_label` (jeśli wpisany) jest **dokładnie** z listy § 3.
-- [ ] `subtheme_label` jest węższy niż `topic_id`.
-- [ ] `batch_label` w formacie `e_smed_<rok>/<termin>` albo `NULL`.
-- [ ] Ostatni rekord w `VALUES` zakończony `);`.
-- [ ] UPDATE na `topics.question_count` po batchu — bez tego karta przedmiotu pokaże zły licznik.
+- [ ] Apostrofy w `text`/`explanation` **podwojone** (`it''s`, `Baile''a`).
+- [ ] Polskie znaki zachowane (ą, ę, ć, ś, ź, ż, ó, ł, ń).
+- [ ] Ostatni rekord w `VALUES` zakończony `);`, pozostałe `),`.
+- [ ] UPDATE `topics.question_count` po batchu (krok 3.3) — bez tego karta pokaże zły licznik.
 
 ---
 
-## 9. STAN OBECNY W BAZIE
+## 6. JEŚLI MASZ WĄTPLIWOŚCI
 
-`stoma-socjologia` jest aktywny (`topic_count = 11`), ale `question_count = 0` w każdym topiku — karta na `/przedmioty` renderuje się jako aktywna z `0%` Mistrzostwa, a próba uruchomienia sesji bez pytań zwróci „Brak pytań dla tego przedmiotu". Po pierwszym batchu pytań + UPDATE liczników wszystko zaskoczy bez deploya.
+Wszystko, czego TUTAJ nie ma — apostrofy, kolejność opcji, opcje kombinatoryczne, ogólne zasady merytoryczne pytań — jest w **`FormatPisaniaPytan.md`** (sekcje 1–2, 4–6). Ten plik to wyłącznie socjologia-specific overlay.

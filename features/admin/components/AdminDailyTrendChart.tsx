@@ -45,13 +45,21 @@ export function AdminDailyTrendChart({ data }: AdminDailyTrendChartProps) {
           <YAxis tick={statAxisTick} tickLine={false} axisLine={false} />
           <Tooltip
             {...statTooltipProps}
-            formatter={(value: number, name: string) => {
-              if (name === "studyHours") return [`${value} h`, "Czas nauki"];
-              if (name === "avgAccuracy") return [`${value}%`, "Śr. poprawność"];
-              if (name === "sessions") return [value, "Sesje"];
-              if (name === "users") return [value, "Aktywni użytkownicy"];
-              if (name === "questions") return [value, "Rozwiązane pytania"];
-              return [value, name];
+            formatter={(value, name) => {
+              const numericValue =
+                typeof value === "number"
+                  ? value
+                  : typeof value === "string"
+                    ? Number(value)
+                    : NaN;
+              const safeValue = Number.isFinite(numericValue) ? numericValue : 0;
+
+              if (name === "studyHours") return [`${safeValue} h`, "Czas nauki"];
+              if (name === "avgAccuracy") return [`${safeValue}%`, "Śr. poprawność"];
+              if (name === "sessions") return [safeValue, "Sesje"];
+              if (name === "users") return [safeValue, "Aktywni użytkownicy"];
+              if (name === "questions") return [safeValue, "Rozwiązane pytania"];
+              return [safeValue, String(name)];
             }}
           />
           <Legend />

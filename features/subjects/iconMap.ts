@@ -8,9 +8,11 @@ import {
   Dna,
   FlaskConical,
   HeartPulse,
+  Languages,
   Microscope,
   Pill,
   Scan,
+  Users,
   Zap,
 } from "lucide-react";
 
@@ -27,6 +29,8 @@ export const subjectIconMap: Record<string, LucideIcon> = {
   activity: Activity,
   "clipboard-check": ClipboardCheck,
   scan: Scan,
+  languages: Languages,
+  users: Users,
 };
 
 export function getSubjectIcon(iconName: string): LucideIcon {

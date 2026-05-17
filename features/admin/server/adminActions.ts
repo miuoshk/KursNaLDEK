@@ -14,7 +14,9 @@ async function requireAdmin() {
     .select("role")
     .eq("id", user.id)
     .single();
-  if (profile?.role !== "admin") throw new Error("Forbidden");
+  if (!(profile?.role === "admin" || profile?.role === "moderator")) {
+    throw new Error("Forbidden");
+  }
   return { supabase, userId: user.id };
 }
 

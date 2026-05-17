@@ -24,7 +24,7 @@ export default async function AdminLayout({
     .eq("id", user.id)
     .single();
 
-  if (profile?.role !== "admin") {
+  if (!(profile?.role === "admin" || profile?.role === "moderator")) {
     redirect("/pulpit");
   }
 

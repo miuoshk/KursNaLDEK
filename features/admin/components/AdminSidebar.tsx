@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlertTriangle, BarChart3, FileText, Users } from "lucide-react";
+import { AlertTriangle, BarChart3, FileText, MessageSquare, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: BarChart3 },
   { href: "/admin/pytania", label: "Pytania", icon: FileText },
   { href: "/admin/bledy", label: "Zgłoszenia błędów", icon: AlertTriangle },
+  { href: "/admin/dyskusje", label: "Dyskusje", icon: MessageSquare },
   { href: "/admin/uzytkownicy", label: "Użytkownicy", icon: Users },
 ] as const;
 

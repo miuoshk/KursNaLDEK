@@ -10,24 +10,25 @@ import type { DiscussionComment as CommentType } from "@/features/session/api/lo
 type DiscussionPanelProps = {
   questionId: string;
   open: boolean;
+  onCountChange?: (count: number) => void;
 };
 
-export function DiscussionPanel({ questionId, open }: DiscussionPanelProps) {
+export function DiscussionPanel({ questionId, open, onCountChange }: DiscussionPanelProps) {
   const [comments, setComments] = useState<CommentType[]>([]);
-  const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [posting, setPosting] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (!open || loaded) return;
-    setLoading(true);
     void loadDiscussion(questionId).then((res) => {
-      if (res.ok) setComments(res.comments);
-      setLoading(false);
+      if (res.ok) {
+        setComments(res.comments);
+        onCountChange?.(res.total);
+      }
       setLoaded(true);
     });
-  }, [open, questionId, loaded]);
+  }, [open, questionId, loaded, onCountChange]);
 
   const handlePost = useCallback(async () => {
     if (!text.trim() || posting) return;
@@ -44,10 +45,14 @@ export function DiscussionPanel({ questionId, open }: DiscussionPanelProps) {
     async (id: string) => {
       const res = await deleteComment(id);
       if (res.ok) {
-        setComments((prev) => prev.filter((c) => c.id !== id));
+        setComments((prev) => {
+          const next = prev.filter((c) => c.id !== id);
+          onCountChange?.(next.length);
+          return next;
+        });
       }
     },
-    [],
+    [onCountChange],
   );
 
   return (
@@ -79,7 +84,7 @@ export function DiscussionPanel({ questionId, open }: DiscussionPanelProps) {
               </button>
             </div>
 
-            {loading ? (
+            {open && !loaded ? (
               <p className="mt-4 font-body text-body-sm text-muted">Ładowanie…</p>
             ) : comments.length === 0 ? (
               <p className="mt-4 font-body text-body-sm text-muted">

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import { AdminSidebar } from "@/features/admin/components/AdminSidebar";
+import { getAdminAccessContext } from "@/features/admin/server/adminAuth";
 
 export const dynamic = "force-dynamic";
 
@@ -9,22 +9,12 @@ export default async function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
+  const ctx = await getAdminAccessContext();
+  if (!ctx.user) {
     redirect("/login");
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!(profile?.role === "admin" || profile?.role === "moderator")) {
+  if (!ctx.allowed) {
     redirect("/pulpit");
   }
 

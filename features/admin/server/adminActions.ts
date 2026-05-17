@@ -2,22 +2,12 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { requireAdminAccess } from "@/features/admin/server/adminAuth";
 
 async function requireAdmin() {
+  const access = await requireAdminAccess();
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) throw new Error("Unauthorized");
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-  if (!(profile?.role === "admin" || profile?.role === "moderator")) {
-    throw new Error("Forbidden");
-  }
-  return { supabase, userId: user.id };
+  return { supabase, userId: access.user.id };
 }
 
 const resolveSchema = z.object({

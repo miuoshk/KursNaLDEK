@@ -4,6 +4,7 @@ import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQu
 import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
 import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
 import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
+import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { greetingName } from "@/lib/greetingName";
 
 export type PulpitRecentSession = {
@@ -102,7 +103,7 @@ export async function loadPulpit(): Promise<
       const { data: topicRows } = await supabase
         .from("topics")
         .select("id")
-        .eq("subject_id", sid);
+        .in("subject_id", getSubjectScopeIds(sid));
       const topicIds = (topicRows ?? []).map((t) => t.id as string);
       if (topicIds.length > 0) {
         const { data: qrows } = await supabase

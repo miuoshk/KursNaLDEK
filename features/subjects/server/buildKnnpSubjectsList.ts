@@ -1,5 +1,6 @@
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
+import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 
 const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
 
@@ -12,6 +13,7 @@ export function buildKnnpSubjectsList(
   totalQuestionCount: number;
 } {
   const { subjectRows, topicRows } = catalog;
+  // Per-subject agregaty: liczba topiców i suma pytań (po cached `question_count`).
   const agg = new Map<string, { topicCount: number; questionSum: number }>();
   for (const row of topicRows ?? []) {
     const sid = row.subject_id as string;
@@ -27,9 +29,19 @@ export function buildKnnpSubjectsList(
 
   let totalQuestionCount = 0;
   const subjects: SubjectWithProgress[] = knnpRows.map((row) => {
-    const a = agg.get(row.id);
-    const questionCount = a?.questionSum ?? 0;
-    const topicCount = a?.topicCount ?? 0;
+    const scope = getSubjectScopeIds(row.id);
+    // Liczba pytań: suma po wszystkich subjectach ze scope (anatomia: native + peer).
+    let questionCount = 0;
+    for (const peerId of scope) {
+      questionCount += agg.get(peerId)?.questionSum ?? 0;
+    }
+    // Topiki dla UI: tylko native (peer-topiki to ta sama "rodzina" tematów).
+    const topicCount = agg.get(row.id)?.topicCount ?? 0;
+    // Postęp: sumujemy unikalne pytania odpowiedziane ze wszystkich peerów.
+    let answeredUnique = 0;
+    for (const peerId of scope) {
+      answeredUnique += answeredPerSubject?.get(peerId)?.size ?? 0;
+    }
     totalQuestionCount += questionCount;
 
     return {
@@ -44,7 +56,7 @@ export function buildKnnpSubjectsList(
       question_count: questionCount,
       topic_count: topicCount,
       mastery_percentage: questionCount > 0
-        ? Math.round((answeredPerSubject?.get(row.id)?.size ?? 0) / questionCount * 100)
+        ? Math.round((answeredUnique / questionCount) * 100)
         : 0,
       last_studied_at: lastStudiedPerSubject?.get(row.id) ?? null,
       due_reviews: 0,

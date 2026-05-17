@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { loginAction } from "@/features/auth/actions";
+import { ResendConfirmationButton } from "@/features/auth/components/ResendConfirmationButton";
 import { initialAuthActionState } from "@/features/auth/types";
 import { cn } from "@/lib/utils";
 
@@ -64,9 +65,14 @@ export function LoginForm() {
       <SubmitButton />
 
       {state.error ? (
-        <p className="mt-3 font-body text-body-sm text-[#F87171]" role="alert">
-          {state.error}
-        </p>
+        <div className="mt-3 space-y-2">
+          <p className="font-body text-body-sm text-[#F87171]" role="alert">
+            {state.error}
+          </p>
+          {state.resendEmail ? (
+            <ResendConfirmationButton email={state.resendEmail} />
+          ) : null}
+        </div>
       ) : null}
     </form>
   );

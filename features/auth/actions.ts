@@ -85,37 +85,97 @@ export async function loginAction(
   });
 
   if (error) {
-    /* Tymczasowo: pełny komunikat Supabase do debugowania (usuń przed produkcją). */
-    return { error: error.message, info: null };
+    const detailedCode = (error as { code?: string | null }).code ?? null;
+    const mapped = mapLoginErrorMessage(error.message, detailedCode);
+    return {
+      error: mapped.message,
+      info: null,
+      resendEmail: mapped.offerResend ? parsed.data.email : null,
+    };
   }
 
   redirect("/");
 }
 
+type MappedRegisterError = {
+  message: string;
+  /** Gdy true, formularz pokaże przycisk "Wyślij ponownie link potwierdzający". */
+  offerResend: boolean;
+};
+
 function mapRegisterErrorMessage(
   message: string,
   code?: string | null,
-): string {
+): MappedRegisterError {
   const normalized = message.toLowerCase();
   if (normalized.includes("already registered") || normalized.includes("already exists")) {
-    return "Ten adres e-mail jest już zajęty.";
+    return {
+      message:
+        "Ten adres e-mail jest już zajęty. Jeśli to Ty, sprawdź skrzynkę (i spam) — być może masz już link aktywacyjny. Jeśli wygasł, kliknij poniżej, żeby wysłać nowy.",
+      offerResend: true,
+    };
   }
   if (
     normalized.includes("profiles_nick_lower_unique") ||
     (normalized.includes("duplicate key value") && normalized.includes("nick"))
   ) {
-    return "Ten nick jest już zajęty.";
+    return { message: "Ten nick jest już zajęty.", offerResend: false };
   }
   if (normalized.includes("password")) {
-    return "Hasło nie spełnia wymagań bezpieczeństwa.";
+    return {
+      message: "Hasło nie spełnia wymagań bezpieczeństwa.",
+      offerResend: false,
+    };
   }
   if (normalized.includes("invalid email") || normalized.includes("email address")) {
-    return "Podaj poprawny adres e-mail.";
+    return { message: "Podaj poprawny adres e-mail.", offerResend: false };
   }
-  if (normalized.includes("rate limit") || code === "over_email_send_rate_limit") {
-    return "Za dużo prób rejestracji. Spróbuj ponownie za chwilę.";
+  if (
+    normalized.includes("email rate limit") ||
+    normalized.includes("rate limit") ||
+    code === "over_email_send_rate_limit"
+  ) {
+    return {
+      message:
+        "Chwilowo wyczerpaliśmy limit wysyłki maili (ten sam adres mógł już dostać link). Sprawdź skrzynkę i spam — jeśli link nie dotarł, kliknij poniżej, żeby spróbować ponownie za moment.",
+      offerResend: true,
+    };
   }
-  return "Nie udało się założyć konta. Spróbuj ponownie.";
+  return {
+    message: "Nie udało się założyć konta. Spróbuj ponownie.",
+    offerResend: false,
+  };
+}
+
+function mapLoginErrorMessage(
+  message: string,
+  code?: string | null,
+): MappedRegisterError {
+  const normalized = message.toLowerCase();
+  if (
+    normalized.includes("email not confirmed") ||
+    code === "email_not_confirmed"
+  ) {
+    return {
+      message:
+        "Twój adres e-mail nie został jeszcze potwierdzony. Sprawdź skrzynkę (i spam). Jeśli link nie dotarł, wyślij go ponownie.",
+      offerResend: true,
+    };
+  }
+  if (
+    normalized.includes("invalid login credentials") ||
+    normalized.includes("invalid email or password") ||
+    code === "invalid_credentials"
+  ) {
+    return {
+      message: "Niepoprawny e-mail lub hasło.",
+      offerResend: false,
+    };
+  }
+  return {
+    message,
+    offerResend: false,
+  };
 }
 
 export async function registerAction(
@@ -180,9 +240,11 @@ export async function registerAction(
       status: error.status,
       emailDomain: trimmedEmail.split("@")[1] ?? null,
     });
+    const mapped = mapRegisterErrorMessage(error.message, detailedCode);
     return {
-      error: mapRegisterErrorMessage(error.message, detailedCode),
+      error: mapped.message,
       info: null,
+      resendEmail: mapped.offerResend ? trimmedEmail : null,
     };
   }
 
@@ -190,6 +252,80 @@ export async function registerAction(
     error: null,
     info:
       "Konto utworzone. Sprawdź skrzynkę e-mail i potwierdź adres, a następnie zaloguj się.",
+    resendEmail: null,
+  };
+}
+
+const resendSchema = z.object({
+  email: z.string().email("Podaj poprawny adres e-mail."),
+});
+
+/**
+ * Wysyła ponownie link potwierdzający rejestrację. Używane gdy użytkownik
+ * widzi błąd "e-mail już zajęty" (niepotwierdzony) albo "email not
+ * confirmed" przy logowaniu, oraz gdy domyślny mail rejestracyjny się
+ * zgubił. Wewnętrznie wywołuje `supabase.auth.resend({ type: 'signup' })`
+ * — Supabase debouncuje to po stronie Auth (`signup_confirmation.period`),
+ * więc bezpieczne do wystawienia bez własnego rate-limitu.
+ */
+export async function resendConfirmationAction(
+  _prevState: AuthActionState,
+  formData: FormData,
+): Promise<AuthActionState> {
+  const parsed = resendSchema.safeParse({ email: formData.get("email") });
+  if (!parsed.success) {
+    return {
+      error: parsed.error.issues[0]?.message ?? "Nieprawidłowy adres e-mail.",
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  const supabase = await createClient();
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? "http";
+  const origin = `${proto}://${host}`;
+
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email: parsed.data.email,
+    options: {
+      emailRedirectTo: `${origin}/login`,
+    },
+  });
+
+  if (error) {
+    const detailedCode = (error as { code?: string | null }).code ?? null;
+    console.error("[resendConfirmationAction] resend failed", {
+      message: error.message,
+      code: detailedCode,
+      status: error.status,
+    });
+    const normalized = error.message.toLowerCase();
+    if (
+      normalized.includes("email rate limit") ||
+      normalized.includes("rate limit") ||
+      detailedCode === "over_email_send_rate_limit"
+    ) {
+      return {
+        error:
+          "Chwilowo wyczerpaliśmy limit wysyłki maili — spróbuj ponownie za kilka minut.",
+        info: null,
+        resendEmail: parsed.data.email,
+      };
+    }
+    return {
+      error: "Nie udało się wysłać linku. Spróbuj ponownie za chwilę.",
+      info: null,
+      resendEmail: parsed.data.email,
+    };
+  }
+
+  return {
+    error: null,
+    info: `Wysłaliśmy nowy link potwierdzający na ${parsed.data.email}. Sprawdź skrzynkę (i spam).`,
+    resendEmail: null,
   };
 }
 

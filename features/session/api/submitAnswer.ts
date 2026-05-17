@@ -162,17 +162,21 @@ export async function submitAnswer(
       }
     }
 
-    if (!parsed.data.skipFsrs) {
-      await persistUserProgressFsrs(
-        supabase,
-        user.id,
-        parsed.data.questionId,
-        existing as Record<string, unknown> | null,
-        parsed.data.isCorrect,
-        parsed.data.confidence,
-        !!prevAns,
-      );
-    }
+    // Always persist the per-question progress row — the dashboard
+    // "Mistrzostwo" tile, topic mastery cache, leech detector, and the
+    // ANTARES retrievability pipeline all key off `user_question_progress`.
+    // `skipFsrs` (used by Nauka klasyczna / przeglad) suppresses only the
+    // FSRS scheduling fields, never the answered/correct counters.
+    await persistUserProgressFsrs(
+      supabase,
+      user.id,
+      parsed.data.questionId,
+      existing as Record<string, unknown> | null,
+      parsed.data.isCorrect,
+      parsed.data.confidence,
+      !!prevAns,
+      !!parsed.data.skipFsrs,
+    );
 
     if (!prevAns) {
       try {

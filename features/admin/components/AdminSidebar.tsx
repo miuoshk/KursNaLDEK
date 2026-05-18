@@ -10,6 +10,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FileText,
+  History,
   MessageSquare,
   ShieldCheck,
   Users,
@@ -58,6 +59,7 @@ const NAV_ITEMS: readonly NavItem[] = [
     badgeTitle: "Nowe dyskusje (24h)",
   },
   { href: "/admin/uzytkownicy", label: "Użytkownicy", icon: Users },
+  { href: "/admin/historia-pytan", label: "Historia zmian", icon: History },
 ] as const;
 
 export type AdminSidebarBadgeValues = {

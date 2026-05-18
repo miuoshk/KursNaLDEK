@@ -4,18 +4,33 @@ import { useCallback, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
   ChevronLeft,
   ChevronRight,
   Pencil,
   Search as SearchIcon,
 } from "lucide-react";
 import { toggleQuestionActive } from "@/features/admin/server/adminActions";
-import type { AdminQuestion } from "@/features/admin/server/loadAdminQuestions";
+import type {
+  AdminQuestion,
+  AdminQuestionSortBy,
+  SortDir,
+} from "@/features/admin/server/loadAdminQuestions";
 import { AdminEditQuestionDialog } from "@/features/admin/components/AdminEditQuestionDialog";
 import { cn } from "@/lib/utils";
 
 type SearchIn = "text" | "explanation" | "both";
 type ActiveFilter = "all" | "active" | "inactive";
+
+const SORT_LABEL: Record<AdminQuestionSortBy, string> = {
+  id: "ID",
+  topic: "Temat",
+  isActive: "Aktywne",
+  timesAnswered: "Odpowiedzi",
+  accuracy: "Trafność",
+};
 
 type AdminQuestionsTableProps = {
   questions: AdminQuestion[];
@@ -74,6 +89,23 @@ export function AdminQuestionsTable({
     const v = searchParams.get("active");
     return v === "active" || v === "inactive" ? v : "all";
   })();
+  const currentSortBy = ((): AdminQuestionSortBy => {
+    const v = searchParams.get("sortBy");
+    if (
+      v === "id" ||
+      v === "topic" ||
+      v === "isActive" ||
+      v === "timesAnswered" ||
+      v === "accuracy"
+    ) {
+      return v;
+    }
+    return "id";
+  })();
+  const currentSortDir = ((): SortDir => {
+    const v = searchParams.get("sortDir");
+    return v === "desc" ? "desc" : "asc";
+  })();
 
   const [search, setSearch] = useState(currentSearch);
   const [searchIn, setSearchIn] = useState<SearchIn>(currentSearchIn);
@@ -87,6 +119,8 @@ export function AdminQuestionsTable({
       search?: string;
       searchIn?: SearchIn;
       active?: ActiveFilter;
+      sortBy?: AdminQuestionSortBy;
+      sortDir?: SortDir;
       page?: number;
     }) => {
       const params = new URLSearchParams(searchParams);
@@ -102,13 +136,34 @@ export function AdminQuestionsTable({
       if (nextActive !== "all") params.set("active", nextActive);
       else params.delete("active");
 
+      const nextSortBy = next.sortBy ?? currentSortBy;
+      if (nextSortBy !== "id") params.set("sortBy", nextSortBy);
+      else params.delete("sortBy");
+
+      const nextSortDir = next.sortDir ?? currentSortDir;
+      if (nextSortDir !== "asc") params.set("sortDir", nextSortDir);
+      else params.delete("sortDir");
+
       params.set("page", String(next.page ?? 1));
 
       startTransition(() => {
         router.push(`/admin/pytania?${params.toString()}`);
       });
     },
-    [router, searchParams, search, searchIn, activeFilter],
+    [router, searchParams, search, searchIn, activeFilter, currentSortBy, currentSortDir],
+  );
+
+  const handleSort = useCallback(
+    (column: AdminQuestionSortBy) => {
+      let nextDir: SortDir = "asc";
+      if (currentSortBy === column) {
+        nextDir = currentSortDir === "asc" ? "desc" : "asc";
+      } else if (column === "timesAnswered" || column === "accuracy") {
+        nextDir = "desc";
+      }
+      pushQuery({ sortBy: column, sortDir: nextDir, page: 1 });
+    },
+    [currentSortBy, currentSortDir, pushQuery],
   );
 
   const handleSearch = useCallback(() => {
@@ -232,7 +287,7 @@ export function AdminQuestionsTable({
         </span>
         {currentSearch && (
           <span>
-            Filtr: „{currentSearch}" ({searchIn === "text"
+            Filtr: „{currentSearch}” ({searchIn === "text"
               ? "treść"
               : searchIn === "explanation"
                 ? "wyjaśnienie"
@@ -245,13 +300,39 @@ export function AdminQuestionsTable({
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-border bg-card">
-              <Th>ID</Th>
-              <Th>Temat</Th>
+              <SortableTh
+                sortBy="id"
+                currentSortBy={currentSortBy}
+                currentSortDir={currentSortDir}
+                onSort={handleSort}
+              />
+              <SortableTh
+                sortBy="topic"
+                currentSortBy={currentSortBy}
+                currentSortDir={currentSortDir}
+                onSort={handleSort}
+              />
               <Th className="min-w-[260px]">Treść</Th>
               <Th className="min-w-[200px]">Wyjaśnienie</Th>
-              <Th>Aktywne</Th>
-              <Th>Odp.</Th>
-              <Th>Trafność</Th>
+              <SortableTh
+                sortBy="isActive"
+                currentSortBy={currentSortBy}
+                currentSortDir={currentSortDir}
+                onSort={handleSort}
+              />
+              <SortableTh
+                sortBy="timesAnswered"
+                currentSortBy={currentSortBy}
+                currentSortDir={currentSortDir}
+                onSort={handleSort}
+                shortLabel="Odp."
+              />
+              <SortableTh
+                sortBy="accuracy"
+                currentSortBy={currentSortBy}
+                currentSortDir={currentSortDir}
+                onSort={handleSort}
+              />
               <Th className="text-right">Akcje</Th>
             </tr>
           </thead>
@@ -427,6 +508,52 @@ function Th({
       )}
     >
       {children}
+    </th>
+  );
+}
+
+function SortableTh({
+  sortBy,
+  currentSortBy,
+  currentSortDir,
+  onSort,
+  shortLabel,
+}: {
+  sortBy: AdminQuestionSortBy;
+  currentSortBy: AdminQuestionSortBy;
+  currentSortDir: SortDir;
+  onSort: (column: AdminQuestionSortBy) => void;
+  shortLabel?: string;
+}) {
+  const isActive = sortBy === currentSortBy;
+  const Icon = isActive
+    ? currentSortDir === "asc"
+      ? ArrowUp
+      : ArrowDown
+    : ArrowUpDown;
+  return (
+    <th
+      className="px-3 py-3 font-body text-body-xs uppercase tracking-widest"
+      aria-sort={
+        isActive
+          ? currentSortDir === "asc"
+            ? "ascending"
+            : "descending"
+          : "none"
+      }
+    >
+      <button
+        type="button"
+        onClick={() => onSort(sortBy)}
+        className={cn(
+          "inline-flex items-center gap-1 transition-colors",
+          isActive ? "text-brand-gold" : "text-muted hover:text-white",
+        )}
+        aria-label={`Sortuj po ${SORT_LABEL[sortBy]}`}
+      >
+        <span>{shortLabel ?? SORT_LABEL[sortBy]}</span>
+        <Icon className="size-3" aria-hidden />
+      </button>
     </th>
   );
 }

@@ -17,11 +17,24 @@ export type LoadAdminQuestionsResult = {
 };
 
 export type AdminQuestionActiveFilter = "all" | "active" | "inactive";
+export type AdminQuestionSortBy =
+  | "id"
+  | "topic"
+  | "isActive"
+  | "timesAnswered"
+  | "accuracy";
+export type SortDir = "asc" | "desc";
 
 function escapeOrPattern(value: string): string {
   // Supabase .or() używa przecinka jako separatora — usuwamy go z zapytania.
   return value.replace(/,/g, " ").replace(/%/g, "");
 }
+
+const DB_SORT_COLUMN: Partial<Record<AdminQuestionSortBy, string>> = {
+  id: "id",
+  topic: "topic_id",
+  isActive: "is_active",
+};
 
 export async function loadAdminQuestions(params: {
   page: number;
@@ -30,6 +43,8 @@ export async function loadAdminQuestions(params: {
   search?: string;
   searchIn?: "text" | "explanation" | "both";
   active?: AdminQuestionActiveFilter;
+  sortBy?: AdminQuestionSortBy;
+  sortDir?: SortDir;
 }): Promise<LoadAdminQuestionsResult> {
   const supabase = await createClient();
   const {
@@ -39,8 +54,11 @@ export async function loadAdminQuestions(params: {
     search,
     searchIn = "both",
     active = "all",
+    sortBy = "id",
+    sortDir = "asc",
   } = params;
   const offset = (page - 1) * perPage;
+  const usesStatSort = sortBy === "timesAnswered" || sortBy === "accuracy";
 
   let query = supabase
     .from("questions")
@@ -79,7 +97,18 @@ export async function loadAdminQuestions(params: {
     }
   }
 
-  query = query.order("id", { ascending: true }).range(offset, offset + perPage - 1);
+  // Dla sortowania po kolumnach DB — używamy `.order` + `.range`.
+  // Dla sortowania po statystykach (timesAnswered, accuracy) — fetchujemy
+  // wszystkie wiersze pasujące do filtrów (do limitu 2000) i sortujemy w app.
+  if (!usesStatSort) {
+    const column = DB_SORT_COLUMN[sortBy] ?? "id";
+    query = query
+      .order(column, { ascending: sortDir === "asc" })
+      .order("id", { ascending: true })
+      .range(offset, offset + perPage - 1);
+  } else {
+    query = query.order("id", { ascending: true }).limit(2000);
+  }
 
   const { data: rows, count, error } = await query;
 
@@ -88,8 +117,8 @@ export async function loadAdminQuestions(params: {
     return { questions: [], total: 0 };
   }
 
-  const filtered = rows ?? [];
-  const qIds = filtered.map((r) => r.id as string);
+  const allRows = rows ?? [];
+  const qIds = allRows.map((r) => r.id as string);
 
   const statsMap = new Map<string, { answered: number; correct: number }>();
   if (qIds.length > 0) {
@@ -109,7 +138,7 @@ export async function loadAdminQuestions(params: {
     }
   }
 
-  const questions: AdminQuestion[] = filtered.map((r) => {
+  const mapped: AdminQuestion[] = allRows.map((r) => {
     const topic = r.topics as unknown as { name: string; subject_id: string } | null;
     const stats = statsMap.get(r.id as string);
     const answered = stats?.answered ?? 0;
@@ -129,5 +158,21 @@ export async function loadAdminQuestions(params: {
     };
   });
 
-  return { questions, total: count ?? 0 };
+  if (usesStatSort) {
+    const dir = sortDir === "asc" ? 1 : -1;
+    mapped.sort((a, b) => {
+      if (sortBy === "timesAnswered") {
+        if (a.timesAnswered !== b.timesAnswered) {
+          return (a.timesAnswered - b.timesAnswered) * dir;
+        }
+      } else {
+        if (a.accuracy !== b.accuracy) return (a.accuracy - b.accuracy) * dir;
+      }
+      return a.id.localeCompare(b.id);
+    });
+    const sliced = mapped.slice(offset, offset + perPage);
+    return { questions: sliced, total: count ?? mapped.length };
+  }
+
+  return { questions: mapped, total: count ?? 0 };
 }

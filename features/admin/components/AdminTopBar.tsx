@@ -10,6 +10,7 @@ import {
   ChevronRight,
   ExternalLink,
   FileText,
+  History,
   Menu,
   MessageSquare,
   ShieldCheck,
@@ -35,6 +36,7 @@ const SECTION_META: Record<string, { label: string; icon: LucideIcon }> = {
   bledy: { label: "Zgłoszenia błędów", icon: AlertTriangle },
   dyskusje: { label: "Dyskusje", icon: MessageSquare },
   uzytkownicy: { label: "Użytkownicy", icon: Users },
+  "historia-pytan": { label: "Historia zmian", icon: History },
 };
 
 function buildCrumbs(pathname: string): Crumb[] {

@@ -8,6 +8,7 @@ import { setUserRole } from "@/features/admin/server/adminActions";
 import type {
   AdminUserRow,
   AdminUserRole,
+  AdminUserTrack,
 } from "@/features/admin/server/loadAdminUsers";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +24,13 @@ const ROLE_OPTIONS: ReadonlyArray<{ value: AdminUserRole; label: string }> = [
   { value: "moderator", label: "Moderator" },
   { value: "student", label: "Student" },
 ];
+
+function trackShort(track: string | null): string {
+  if (track === "lekarski") return "LEK";
+  if (track === "stomatologia") return "STOMA";
+  if (!track) return "—";
+  return track.toUpperCase();
+}
 
 function roleBadge(role: AdminUserRole) {
   switch (role) {
@@ -62,6 +70,10 @@ type AdminUsersTableProps = {
   canEditRoles: boolean;
   currentSearch: string;
   currentRole: AdminUserRole | "";
+  currentTrack: AdminUserTrack;
+  currentYear: number | null;
+  availableTracks: Array<{ value: AdminUserTrack; label: string; count: number }>;
+  availableYears: Array<{ value: number; count: number }>;
 };
 
 export function AdminUsersTable({
@@ -70,6 +82,10 @@ export function AdminUsersTable({
   canEditRoles,
   currentSearch,
   currentRole,
+  currentTrack,
+  currentYear,
+  availableTracks,
+  availableYears,
 }: AdminUsersTableProps) {
   const router = useRouter();
   const [search, setSearch] = useState(currentSearch);
@@ -83,16 +99,34 @@ export function AdminUsersTable({
     return result;
   }, [users]);
 
+  const buildHref = useCallback(
+    (next: {
+      q?: string;
+      role?: AdminUserRole | "";
+      track?: AdminUserTrack;
+      year?: number | null;
+    }) => {
+      const params = new URLSearchParams();
+      const q = next.q !== undefined ? next.q : currentSearch;
+      const role = next.role !== undefined ? next.role : currentRole;
+      const track = next.track !== undefined ? next.track : currentTrack;
+      const year = next.year !== undefined ? next.year : currentYear;
+      if (q && q.trim()) params.set("q", q.trim());
+      if (role) params.set("role", role);
+      if (track) params.set("track", track);
+      if (year !== null && year !== undefined) params.set("year", String(year));
+      const qs = params.toString();
+      return qs ? `/admin/uzytkownicy?${qs}` : "/admin/uzytkownicy";
+    },
+    [currentSearch, currentRole, currentTrack, currentYear],
+  );
+
   const handleSearchSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const params = new URLSearchParams();
-      if (search.trim()) params.set("q", search.trim());
-      if (currentRole) params.set("role", currentRole);
-      const qs = params.toString();
-      router.push(qs ? `/admin/uzytkownicy?${qs}` : "/admin/uzytkownicy");
+      router.push(buildHref({ q: search }));
     },
-    [search, currentRole, router],
+    [search, router, buildHref],
   );
 
   const handleRoleChange = useCallback(
@@ -130,46 +164,135 @@ export function AdminUsersTable({
         <SummaryCard label="Studenci" value={stats.student} />
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
-        {ROLE_FILTERS.map((f) => {
-          const params = new URLSearchParams();
-          if (currentSearch) params.set("q", currentSearch);
-          if (f.value) params.set("role", f.value);
-          const href = params.toString()
-            ? `/admin/uzytkownicy?${params.toString()}`
-            : "/admin/uzytkownicy";
-          const active = (currentRole ?? "") === f.value;
-          return (
+      <div className="flex flex-col gap-3 rounded-card border border-border bg-card p-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <form onSubmit={handleSearchSubmit} className="flex flex-1 items-center gap-2">
+            <input
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Szukaj po nazwie lub e-mailu"
+              className="flex-1 rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="rounded-btn bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition-colors hover:bg-brand-sage/90"
+            >
+              Szukaj
+            </button>
+          </form>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-body text-body-xs uppercase tracking-widest text-muted">
+            Rola:
+          </span>
+          {ROLE_FILTERS.map((f) => {
+            const active = (currentRole ?? "") === f.value;
+            return (
+              <Link
+                key={f.value || "all"}
+                href={buildHref({ role: f.value })}
+                className={cn(
+                  "rounded-pill px-3 py-1 font-body text-body-xs transition-colors",
+                  active
+                    ? "bg-brand-gold text-brand-bg font-medium"
+                    : "bg-background text-secondary hover:text-white",
+                )}
+              >
+                {f.label}
+              </Link>
+            );
+          })}
+        </div>
+
+        {availableTracks.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-body text-body-xs uppercase tracking-widest text-muted">
+              Kierunek:
+            </span>
             <Link
-              key={f.value || "all"}
-              href={href}
+              href={buildHref({ track: "" })}
               className={cn(
-                "rounded-pill px-3 py-1 font-body text-body-sm transition-colors",
-                active
-                  ? "bg-brand-gold text-brand-bg font-medium"
-                  : "bg-card text-secondary hover:text-white",
+                "rounded-pill px-3 py-1 font-body text-body-xs transition-colors",
+                currentTrack === ""
+                  ? "bg-brand-sage text-white font-medium"
+                  : "bg-background text-secondary hover:text-white",
               )}
             >
-              {f.label}
+              Wszystkie
             </Link>
-          );
-        })}
+            {availableTracks.map((track) => {
+              const active = currentTrack === track.value;
+              return (
+                <Link
+                  key={track.value}
+                  href={buildHref({ track: track.value })}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 rounded-pill px-3 py-1 font-body text-body-xs transition-colors",
+                    active
+                      ? "bg-brand-sage text-white font-medium"
+                      : "bg-background text-secondary hover:text-white",
+                  )}
+                >
+                  {track.label}
+                  <span
+                    className={cn(
+                      "rounded-full px-1.5 font-body text-[10px] tabular-nums",
+                      active ? "bg-white/20 text-white" : "bg-white/5 text-muted",
+                    )}
+                  >
+                    {track.count}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        )}
 
-        <form onSubmit={handleSearchSubmit} className="ml-auto flex items-center gap-2">
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Szukaj po nazwie lub e-mailu"
-            className="w-[260px] rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-gold focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="rounded-btn bg-brand-sage px-3 py-1.5 font-body text-body-sm font-medium text-white transition-colors hover:bg-brand-sage/90"
-          >
-            Szukaj
-          </button>
-        </form>
+        {availableYears.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-body text-body-xs uppercase tracking-widest text-muted">
+              Rok:
+            </span>
+            <Link
+              href={buildHref({ year: null })}
+              className={cn(
+                "rounded-pill px-3 py-1 font-body text-body-xs transition-colors",
+                currentYear === null
+                  ? "bg-brand-gold text-brand-bg font-medium"
+                  : "bg-background text-secondary hover:text-white",
+              )}
+            >
+              Wszystkie
+            </Link>
+            {availableYears.map((year) => {
+              const active = currentYear === year.value;
+              return (
+                <Link
+                  key={year.value}
+                  href={buildHref({ year: year.value })}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 rounded-pill px-3 py-1 font-body text-body-xs transition-colors",
+                    active
+                      ? "bg-brand-gold text-brand-bg font-medium"
+                      : "bg-background text-secondary hover:text-white",
+                  )}
+                >
+                  Rok {year.value}
+                  <span
+                    className={cn(
+                      "rounded-full px-1.5 font-body text-[10px] tabular-nums",
+                      active ? "bg-black/20 text-brand-bg" : "bg-white/5 text-muted",
+                    )}
+                  >
+                    {year.count}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {errorMsg && (
@@ -191,9 +314,11 @@ export function AdminUsersTable({
               <Th>Użytkownik</Th>
               <Th>E-mail</Th>
               <Th>Rola</Th>
-              <Th>Rok / Status</Th>
+              <Th>Kierunek</Th>
+              <Th>Rok</Th>
+              <Th>Subskrypcja</Th>
               <Th>Dołączył</Th>
-              <Th>Ostatnie logowanie</Th>
+              <Th>Ost. logowanie</Th>
               {canEditRoles && <Th className="text-right">Akcja</Th>}
             </tr>
           </thead>
@@ -201,7 +326,7 @@ export function AdminUsersTable({
             {users.length === 0 ? (
               <tr>
                 <td
-                  colSpan={canEditRoles ? 7 : 6}
+                  colSpan={canEditRoles ? 9 : 8}
                   className="px-3 py-8 text-center font-body text-body-sm text-muted"
                 >
                   Brak użytkowników spełniających kryteria.
@@ -213,6 +338,7 @@ export function AdminUsersTable({
                 const BadgeIcon = badge.Icon;
                 const isSelf = user.id === currentUserId;
                 const isUpdating = pendingId === user.id;
+                const subPill = user.subscriptionStatus === "active";
                 return (
                   <tr
                     key={user.id}
@@ -247,11 +373,36 @@ export function AdminUsersTable({
                         {badge.label}
                       </span>
                     </td>
-                    <td className="px-3 py-3 font-body text-body-xs text-secondary">
-                      <div>{user.currentYear ? `Rok ${user.currentYear}` : "—"}</div>
-                      <div className="text-muted">
-                        {user.subscriptionStatus ?? "brak subskrypcji"}
-                      </div>
+                    <td className="px-3 py-3">
+                      <span
+                        className={cn(
+                          "rounded-pill px-2 py-0.5 font-body text-body-xs",
+                          user.track === "lekarski"
+                            ? "bg-brand-sage/20 text-brand-sage"
+                            : user.track === "stomatologia"
+                              ? "bg-brand-gold/15 text-brand-gold"
+                              : "bg-white/5 text-muted",
+                        )}
+                      >
+                        {trackShort(user.track)}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
+                      {user.currentYear ? `${user.currentYear}` : "—"}
+                    </td>
+                    <td className="px-3 py-3">
+                      <span
+                        className={cn(
+                          "rounded-pill px-2 py-0.5 font-body text-body-xs",
+                          subPill
+                            ? "bg-success/15 text-success"
+                            : user.subscriptionStatus
+                              ? "bg-white/5 text-muted"
+                              : "bg-error/10 text-error",
+                        )}
+                      >
+                        {user.subscriptionStatus ?? "brak"}
+                      </span>
                     </td>
                     <td className="px-3 py-3 font-body text-body-xs text-secondary">
                       {formatDate(user.createdAt)}

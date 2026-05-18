@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { isValidEmoji } from "@/lib/emoji";
 import { createClient } from "@/lib/supabase/server";
 
 const schema = z.object({
@@ -14,6 +15,14 @@ const schema = z.object({
   current_track: z.enum(["stomatologia", "lekarski"]),
   current_year: z.coerce.number().int().min(1).max(3),
   avatar_initials: z.string().max(4).optional().nullable(),
+  avatar_emoji: z
+    .string()
+    .trim()
+    .refine((value) => value === "" || isValidEmoji(value), {
+      message: "Wybierz dokładnie jedno emoji.",
+    })
+    .optional()
+    .nullable(),
 });
 
 export type UpdateProfileResult = { ok: true } | { ok: false; message: string };
@@ -30,6 +39,8 @@ export async function updateProfile(input: z.infer<typeof schema>): Promise<Upda
   if (!user) return { ok: false, message: "Brak sesji." };
 
   const initials = parsed.data.avatar_initials?.trim() || null;
+  const emojiRaw = parsed.data.avatar_emoji?.trim() || null;
+  const emoji = emojiRaw && isValidEmoji(emojiRaw) ? emojiRaw : null;
 
   const { error } = await supabase
     .from("profiles")
@@ -39,6 +50,7 @@ export async function updateProfile(input: z.infer<typeof schema>): Promise<Upda
       current_track: parsed.data.current_track,
       current_year: parsed.data.current_year,
       avatar_initials: initials,
+      avatar_emoji: emoji,
       updated_at: new Date().toISOString(),
     })
     .eq("id", user.id);

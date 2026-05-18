@@ -13,6 +13,7 @@ import {
   TEST_MODE_EMAIL,
 } from "@/lib/testMode";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
+import { isValidEmoji } from "@/lib/emoji";
 
 const loginSchema = z.object({
   email: z.string().email("Podaj poprawny adres e-mail."),
@@ -44,6 +45,10 @@ const registerSchema = z
         return value === "stomatologia" || value === "lekarski";
       }, { message: "Wybierz kierunek studiów." }),
     currentYear: z.coerce.number().int().min(1, "Wybierz rok studiów.").max(3, "Wybierz rok studiów."),
+    avatarEmoji: z
+      .string()
+      .trim()
+      .refine(isValidEmoji, "Wybierz dokładnie jedno emoji jako avatar."),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Hasła muszą być takie same.",
@@ -197,6 +202,7 @@ export async function registerAction(
     confirmPassword: formData.get("confirmPassword"),
     currentTrack: formData.get("currentTrack"),
     currentYear: formData.get("currentYear"),
+    avatarEmoji: formData.get("avatarEmoji"),
   });
 
   if (!parsed.success) {
@@ -228,6 +234,7 @@ export async function registerAction(
         display_name: parsed.data.nick,
         current_track: parsed.data.currentTrack,
         current_year: parsed.data.currentYear,
+        avatar_emoji: parsed.data.avatarEmoji,
       },
     },
   });
@@ -335,4 +342,166 @@ export async function logoutAction() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/login");
+}
+
+const forgotPasswordSchema = z.object({
+  email: z.string().trim().email("Podaj poprawny adres e-mail."),
+});
+
+function mapResetEmailError(message: string, code?: string | null): string {
+  const normalized = message.toLowerCase();
+  if (
+    normalized.includes("rate limit") ||
+    code === "over_email_send_rate_limit"
+  ) {
+    return "Chwilowo wyczerpaliśmy limit wysyłki maili — spróbuj ponownie za kilka minut.";
+  }
+  return "Nie udało się wysłać linku. Spróbuj ponownie za chwilę.";
+}
+
+/**
+ * Wysyła e-mail z linkiem do resetu hasła. Z punktu widzenia UI zawsze
+ * zwracamy tę samą wiadomość sukcesu (niezależnie czy adres istnieje),
+ * żeby nie ujawniać listy użytkowników. Link prowadzi przez
+ * `/auth/callback?next=/reset-password`, gdzie token PKCE jest wymieniany
+ * na sesję, a użytkownik trafia na ekran ustawiania nowego hasła.
+ */
+export async function requestPasswordResetAction(
+  _prevState: AuthActionState,
+  formData: FormData,
+): Promise<AuthActionState> {
+  const parsed = forgotPasswordSchema.safeParse({ email: formData.get("email") });
+  if (!parsed.success) {
+    return {
+      error: parsed.error.issues[0]?.message ?? "Nieprawidłowy adres e-mail.",
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  const trimmedEmail = parsed.data.email.trim();
+
+  if (trimmedEmail.toLowerCase() === TEST_MODE_EMAIL.toLowerCase()) {
+    return {
+      error:
+        "Ten adres e-mail jest zarezerwowany do trybu testowego i nie ma własnego hasła.",
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  const supabase = await createClient();
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? "http";
+  const origin = `${proto}://${host}`;
+
+  const { error } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
+    redirectTo: `${origin}/auth/callback?next=/reset-password`,
+  });
+
+  if (error) {
+    const detailedCode = (error as { code?: string | null }).code ?? null;
+    console.error("[requestPasswordResetAction] resetPasswordForEmail failed", {
+      message: error.message,
+      code: detailedCode,
+      status: error.status,
+    });
+    return {
+      error: mapResetEmailError(error.message, detailedCode),
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  return {
+    error: null,
+    info: `Jeśli konto z adresem ${trimmedEmail} istnieje, wysłaliśmy na nie link do resetu hasła. Sprawdź skrzynkę (i spam).`,
+    resendEmail: null,
+  };
+}
+
+const updatePasswordSchema = z
+  .object({
+    password: z.string().min(6, "Hasło musi mieć co najmniej 6 znaków."),
+    confirmPassword: z.string().min(6, "Powtórz nowe hasło."),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Hasła muszą być takie same.",
+    path: ["confirmPassword"],
+  });
+
+function mapUpdatePasswordError(message: string): string {
+  const normalized = message.toLowerCase();
+  if (
+    normalized.includes("same as the old password") ||
+    normalized.includes("new password should be different")
+  ) {
+    return "Nowe hasło musi różnić się od poprzedniego.";
+  }
+  if (normalized.includes("password") && normalized.includes("weak")) {
+    return "Hasło nie spełnia wymagań bezpieczeństwa.";
+  }
+  if (
+    normalized.includes("auth session missing") ||
+    normalized.includes("not authenticated")
+  ) {
+    return "Link do resetu wygasł. Poproś o nowy w sekcji „Nie pamiętasz hasła?”.";
+  }
+  return "Nie udało się zaktualizować hasła. Spróbuj ponownie.";
+}
+
+/**
+ * Ustawia nowe hasło. Wymaga aktywnej sesji utworzonej przez `/auth/callback`
+ * (wymiana kodu PKCE z linka z e-maila). Po sukcesie wylogowujemy
+ * użytkownika, żeby wymusić ponowne zalogowanie z nowym hasłem — to też
+ * unieważnia sesję recovery na innych urządzeniach.
+ */
+export async function updatePasswordAction(
+  _prevState: AuthActionState,
+  formData: FormData,
+): Promise<AuthActionState> {
+  const parsed = updatePasswordSchema.safeParse({
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
+  });
+
+  if (!parsed.success) {
+    return {
+      error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane.",
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  const supabase = await createClient();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData.user) {
+    return {
+      error: "Link do resetu wygasł. Poproś o nowy w sekcji „Nie pamiętasz hasła?”.",
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  const { error } = await supabase.auth.updateUser({
+    password: parsed.data.password,
+  });
+
+  if (error) {
+    const detailedCode = (error as { code?: string | null }).code ?? null;
+    console.error("[updatePasswordAction] updateUser failed", {
+      message: error.message,
+      code: detailedCode,
+      status: error.status,
+    });
+    return {
+      error: mapUpdatePasswordError(error.message),
+      info: null,
+      resendEmail: null,
+    };
+  }
+
+  await supabase.auth.signOut();
+  redirect("/login?reset=success");
 }

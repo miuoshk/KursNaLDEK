@@ -12,6 +12,7 @@ CREATE TABLE profiles (
   nick TEXT NOT NULL,
   display_name TEXT NOT NULL,
   avatar_initials TEXT,
+  avatar_emoji TEXT,
   current_year INT DEFAULT 1,
   current_track TEXT DEFAULT 'stomatologia',
   current_product TEXT DEFAULT 'knnp', -- knnp | ldek

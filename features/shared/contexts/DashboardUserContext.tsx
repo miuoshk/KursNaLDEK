@@ -10,6 +10,8 @@ export type DashboardUserValue = {
   streak: number;
   displayName: string;
   initials: string;
+  /** Emoji wybrane przez użytkownika; null = pokazujemy `initials`. */
+  avatarEmoji: string | null;
   /** Liczba pytań z terminem powtórki (next_review <= teraz). */
   dueReviewsCount: number;
   /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */

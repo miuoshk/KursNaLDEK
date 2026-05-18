@@ -10,6 +10,7 @@ export function PlayerCard({
   xp,
   displayName,
   initials,
+  avatarEmoji,
   streak,
   totalQuestionsAnswered,
   avgAccuracy,
@@ -19,6 +20,7 @@ export function PlayerCard({
   | "xp"
   | "displayName"
   | "initials"
+  | "avatarEmoji"
   | "streak"
   | "totalQuestionsAnswered"
   | "avgAccuracy"
@@ -38,8 +40,13 @@ export function PlayerCard({
     <div className="rounded-card border border-brand-gold/20 bg-card p-6">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_auto] lg:items-center">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start lg:flex-col">
-          <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-xl text-brand-gold">
-            {initials}
+          <div
+            className={cn(
+              "flex size-16 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
+              avatarEmoji ? "text-3xl" : "font-body text-xl text-brand-gold",
+            )}
+          >
+            {avatarEmoji ?? initials}
           </div>
           <div className="min-w-0">
             <h2 className="font-heading text-heading-md text-primary">{displayName}</h2>

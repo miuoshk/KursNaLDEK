@@ -4,6 +4,7 @@ export type SettingsProfile = {
   full_name: string;
   nick: string;
   avatar_initials: string | null;
+  avatar_emoji: string | null;
   current_track: string;
   current_year: number;
   /** ISO 8601 (TIMESTAMPTZ) lub null */

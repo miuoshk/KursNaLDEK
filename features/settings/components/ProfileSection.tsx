@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { updateProfile } from "@/features/settings/api/updateProfile";
 import type { SettingsProfile } from "@/features/settings/types";
+import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { useToast } from "@/features/shared/components/ToastProvider";
+import { isValidEmoji } from "@/lib/emoji";
 import { initialsFromName } from "@/lib/initialsFromName";
 
 const selectClass =
@@ -22,7 +24,7 @@ export function ProfileSection({ profile, email }: Props) {
   const [nick, setNick] = useState(profile.nick);
   const [track, setTrack] = useState(profile.current_track);
   const [year, setYear] = useState(String(profile.current_year));
-  const [initials, setInitials] = useState(profile.avatar_initials ?? "");
+  const [avatarEmoji, setAvatarEmoji] = useState(profile.avatar_emoji ?? "");
   const [saving, setSaving] = useState(false);
 
   const dirty = useMemo(() => {
@@ -30,19 +32,27 @@ export function ProfileSection({ profile, email }: Props) {
       nick !== profile.nick ||
       track !== profile.current_track ||
       year !== String(profile.current_year) ||
-      initials !== (profile.avatar_initials ?? "")
+      avatarEmoji !== (profile.avatar_emoji ?? "")
     );
-  }, [nick, track, year, initials, profile]);
+  }, [nick, track, year, avatarEmoji, profile]);
+
+  const trimmedEmoji = avatarEmoji.trim();
+  const emojiValid = trimmedEmoji.length === 0 || isValidEmoji(trimmedEmoji);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!dirty) return;
+    if (!emojiValid) {
+      toast("Wybierz dokładnie jedno emoji lub zostaw pole puste.", "error");
+      return;
+    }
     setSaving(true);
     const res = await updateProfile({
       nick: nick.trim(),
       current_track: track === "lekarski" ? "lekarski" : "stomatologia",
       current_year: Number(year),
-      avatar_initials: initials.trim() || null,
+      avatar_initials: profile.avatar_initials ?? null,
+      avatar_emoji: trimmedEmoji ? trimmedEmoji : null,
     });
     setSaving(false);
     if (res.ok) {
@@ -51,29 +61,33 @@ export function ProfileSection({ profile, email }: Props) {
     } else toast(res.message, "error");
   }
 
-  const displayInitials = (
-    initials.trim() || initialsFromName(nick || profile.nick)
+  const fallbackInitials = (
+    profile.avatar_initials?.trim() ||
+    initialsFromName(profile.full_name || profile.nick)
   )
     .slice(0, 4)
     .toUpperCase();
+  const previewEmoji = trimmedEmoji && isValidEmoji(trimmedEmoji) ? trimmedEmoji : null;
 
   return (
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">Profil</h2>
-      <div className="mt-6 flex flex-wrap items-start gap-6">
-        <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-2xl text-brand-gold">
-          {displayInitials}
-        </div>
-        <button
-          type="button"
-          className="font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
-          onClick={() => {
-            const n = window.prompt("Inicjały (max 4 znaki)", initials);
-            if (n != null) setInitials(n.slice(0, 4));
-          }}
+      <div className="mt-6 flex flex-wrap items-center gap-6">
+        <div
+          className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-3xl text-brand-gold"
+          aria-hidden
         >
-          Zmień inicjały
-        </button>
+          {previewEmoji ?? fallbackInitials}
+        </div>
+        <div className="min-w-0 flex-1">
+          <EmojiInput
+            name="avatar_emoji_settings"
+            label="Twój avatar (emoji)"
+            value={avatarEmoji}
+            onChange={setAvatarEmoji}
+            helper="Otwórz systemowy picker emoji (⌃⌘Space na Mac, Win+. na Windows, klawiatura emoji w telefonie) i wybierz dowolny symbol."
+          />
+        </div>
       </div>
 
       <form onSubmit={onSubmit} className="mt-8 space-y-5">
@@ -150,7 +164,7 @@ export function ProfileSection({ profile, email }: Props) {
         </div>
         <button
           type="submit"
-          disabled={!dirty || saving}
+          disabled={!dirty || saving || !emojiValid}
           className="rounded-btn bg-brand-gold px-6 py-2.5 font-semibold text-brand-bg transition-colors hover:brightness-110 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-40"
         >
           Zapisz zmiany

@@ -72,7 +72,7 @@ export function TopBar() {
   const showBack = !mainRoutes.has(pathname);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const { year, secondSegment, thirdSegment } = useDashboardBreadcrumb();
-  const { streak, initials } = useDashboardUser();
+  const { streak, initials, avatarEmoji } = useDashboardUser();
   const pathFallback = mobilePageTitle(pathname);
   const mobileTitle =
     thirdSegment ?? secondSegment ?? pathFallback ?? `Rok ${year}`;
@@ -182,10 +182,15 @@ export function TopBar() {
         </div>
 
         <div
-          className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-xs font-semibold text-brand-gold"
+          className={cn(
+            "flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
+            avatarEmoji
+              ? "text-lg"
+              : "font-body text-xs font-semibold text-brand-gold",
+          )}
           aria-hidden
         >
-          {initials}
+          {avatarEmoji ?? initials}
         </div>
       </div>
     </header>

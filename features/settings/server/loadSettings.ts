@@ -12,7 +12,7 @@ export async function loadSettings(
   const { data: profileRow } = await supabase
     .from("profiles")
     .select(
-      "full_name, nick, display_name, avatar_initials, current_track, current_year, exam_date, daily_goal, default_session_mode, default_question_count, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
+      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, exam_date, daily_goal, default_session_mode, default_question_count, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
     )
     .eq("id", userId)
     .maybeSingle();
@@ -35,6 +35,7 @@ export async function loadSettings(
     full_name: profileRow?.full_name ?? profileRow?.display_name ?? "Użytkownik",
     nick: profileRow?.nick ?? profileRow?.display_name ?? "uzytkownik",
     avatar_initials: profileRow?.avatar_initials ?? null,
+    avatar_emoji: (profileRow?.avatar_emoji as string | null | undefined) ?? null,
     current_track: profileRow?.current_track ?? "stomatologia",
     current_year: profileRow?.current_year ?? 1,
     exam_date: (profileRow?.exam_date as string | null | undefined) ?? null,

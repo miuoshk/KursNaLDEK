@@ -34,6 +34,7 @@ export default async function DashboardLayout({
   let streak = 0;
   let dueReviewsCount = 0;
   let userEmail: string | null = null;
+  let avatarEmoji: string | null = null;
   let profileSnapshot: {
     display_name: string | null;
     current_streak: number | null;
@@ -58,6 +59,8 @@ export default async function DashboardLayout({
     dueReviewsCount = due;
     displayName = greetingName(profileRow, userEmail);
     streak = profileRow?.current_streak ?? 0;
+    avatarEmoji =
+      (profileRow as { avatar_emoji?: string | null } | null)?.avatar_emoji ?? null;
     if (profileRow) {
       profileSnapshot = {
         display_name: profileRow.display_name,
@@ -81,6 +84,7 @@ export default async function DashboardLayout({
                 displayName,
                 streak,
                 initials,
+                avatarEmoji,
                 dueReviewsCount,
                 testMode: testMode || undefined,
               }}

@@ -1,10 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { registerAction } from "@/features/auth/actions";
 import { ResendConfirmationButton } from "@/features/auth/components/ResendConfirmationButton";
 import { initialAuthActionState } from "@/features/auth/types";
+import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
@@ -31,6 +32,7 @@ function SubmitButton() {
 
 export function RegisterForm() {
   const [state, formAction] = useActionState(registerAction, initialAuthActionState);
+  const [avatarEmoji, setAvatarEmoji] = useState("");
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
@@ -48,6 +50,15 @@ export function RegisterForm() {
           placeholder="Jan Kowalski"
         />
       </div>
+
+      <EmojiInput
+        name="avatarEmoji"
+        required
+        value={avatarEmoji}
+        onChange={setAvatarEmoji}
+        label="Twój avatar"
+        helper="Wybierz dowolne emoji z systemowej klawiatury — będzie widoczne w rankingu i na pasku bocznym."
+      />
 
       <div>
         <label htmlFor="nick" className="mb-2 block font-body text-body-sm text-secondary">

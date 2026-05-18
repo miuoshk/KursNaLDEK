@@ -82,8 +82,16 @@ export function LeaderboardTable({
                   <td className="px-4 py-3 font-body text-body-md text-primary">{r.rank}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-[10px] text-brand-gold">
-                        {r.initials}
+                      <span
+                        className={cn(
+                          "flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
+                          r.avatarEmoji
+                            ? "text-base leading-none"
+                            : "font-body text-[10px] text-brand-gold",
+                        )}
+                        aria-hidden
+                      >
+                        {r.avatarEmoji ?? r.initials}
                       </span>
                       <span className="font-body text-body-md text-primary">{r.displayName}</span>
                     </div>

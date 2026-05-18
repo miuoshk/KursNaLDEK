@@ -43,6 +43,7 @@ export default async function OsiagnieciaPage({
         xp={data.xp}
         displayName={data.displayName}
         initials={data.initials}
+        avatarEmoji={data.avatarEmoji}
         streak={data.streak}
         totalQuestionsAnswered={data.totalQuestionsAnswered}
         avgAccuracy={data.avgAccuracy}

@@ -18,6 +18,7 @@ export type LeaderboardRow = {
   userId: string;
   displayName: string;
   initials: string;
+  avatarEmoji: string | null;
   rankName: string;
   rankColorClass: string;
   xp: number;
@@ -30,6 +31,7 @@ export type GamificationPayload = {
   xp: number;
   displayName: string;
   initials: string;
+  avatarEmoji: string | null;
   streak: number;
   totalQuestionsAnswered: number;
   avgAccuracy: number;

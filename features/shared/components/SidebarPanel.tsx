@@ -40,7 +40,7 @@ export function SidebarPanel({
   className,
 }: SidebarPanelProps) {
   const { year } = useDashboardBreadcrumb();
-  const { streak, displayName, initials } = useDashboardUser();
+  const { streak, displayName, initials, avatarEmoji } = useDashboardUser();
   const mobile = Boolean(onCloseMobile);
   const slogan = useMemo(() => pickSlogan(SIDEBAR_SLOGANS), []);
 
@@ -109,10 +109,15 @@ export function SidebarPanel({
           )}
         >
           <div
-            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-sm font-semibold text-brand-gold"
+            className={cn(
+              "flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
+              avatarEmoji
+                ? "text-xl"
+                : "font-body text-sm font-semibold text-brand-gold",
+            )}
             aria-hidden
           >
-            {initials}
+            {avatarEmoji ?? initials}
           </div>
           {(!collapsed || mobile) && (
             <div className="min-w-0 flex-1">

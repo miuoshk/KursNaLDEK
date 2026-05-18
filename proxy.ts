@@ -34,10 +34,21 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
   const isAuthRoute = pathname === "/login" || pathname === "/register";
+  // `/forgot-password` musi być dostępny bez sesji (użytkownik zapomniał hasła),
+  // `/auth/callback` wymienia kod PKCE z e-maila zanim sesja jeszcze istnieje.
+  // `/reset-password` celowo *nie* jest tu — wymaga sesji utworzonej przez callback.
+  const isPasswordRecoveryRoute =
+    pathname === "/forgot-password" || pathname === "/auth/callback";
   const isWebhookRoute = pathname === "/api/stripe/webhook";
   const isPublicRoot = pathname === "/";
 
-  if (!effectiveSession && !isAuthRoute && !isWebhookRoute && !isPublicRoot) {
+  if (
+    !effectiveSession &&
+    !isAuthRoute &&
+    !isPasswordRecoveryRoute &&
+    !isWebhookRoute &&
+    !isPublicRoot
+  ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

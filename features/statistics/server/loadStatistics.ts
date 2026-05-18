@@ -51,12 +51,12 @@ export async function loadStatistics(
     .eq("id", userId)
     .maybeSingle();
 
-  const [sessionsRes, heatSessionsRes, uqpRes, profileRes] = await Promise.all([
-    sessQ,
-    heatQ,
-    uqpQ,
-    profileQ,
-  ]);
+  const percentileQ = supabase.rpc("get_readiness_percentile", {
+    p_user_id: userId,
+  });
+
+  const [sessionsRes, heatSessionsRes, uqpRes, profileRes, percentileRes] =
+    await Promise.all([sessQ, heatQ, uqpQ, profileQ, percentileQ]);
 
   const sessRows = sessionsRes.data ?? [];
   const byDay = sessionsByLocalDate(sessRows);
@@ -81,6 +81,23 @@ export async function loadStatistics(
   const { subjectMastery, weakTopics, predictedReadiness } =
     await masteryFromUqp(supabase, uqp);
 
+  const peerRow = Array.isArray(percentileRes.data)
+    ? (percentileRes.data[0] as
+        | {
+            cohort_size: number | null;
+            user_attempts: number | null;
+            percentile: number | string | null;
+          }
+        | undefined)
+    : undefined;
+  const peerPercentileRaw = peerRow?.percentile ?? null;
+  const peerPercentile =
+    peerPercentileRaw == null
+      ? null
+      : typeof peerPercentileRaw === "string"
+        ? Number(peerPercentileRaw)
+        : peerPercentileRaw;
+
   return {
     range,
     accuracyTrend,
@@ -89,6 +106,9 @@ export async function loadStatistics(
     weakTopics,
     predictedReadiness,
     readinessMargin: 0.05,
+    peerPercentile: Number.isFinite(peerPercentile) ? peerPercentile : null,
+    peerCohortSize: peerRow?.cohort_size ?? 0,
+    peerUserAttempts: peerRow?.user_attempts ?? 0,
     totalQuestionsAnswered,
     totalStudyMinutes,
     currentStreak: profile?.current_streak ?? 0,

@@ -18,6 +18,9 @@ export interface StatisticsPayload {
   }[];
   predictedReadiness: number | null;
   readinessMargin: number;
+  peerPercentile: number | null;
+  peerCohortSize: number;
+  peerUserAttempts: number;
   totalQuestionsAnswered: number;
   totalStudyMinutes: number;
   currentStreak: number;

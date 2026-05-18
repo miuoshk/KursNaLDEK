@@ -2,6 +2,26 @@
 
 import type { StatisticsPayload } from "@/features/statistics/types";
 
+const MIN_USER_ATTEMPTS = 20;
+const MIN_COHORT_SIZE = 5;
+
+function peerLabel(data: StatisticsPayload): string {
+  if (data.peerPercentile != null) {
+    const rounded = Math.round(data.peerPercentile);
+    return `Lepszy od ${rounded}% użytkowników w Twojej kohorcie`;
+  }
+  if (data.peerUserAttempts < MIN_USER_ATTEMPTS) {
+    const remaining = MIN_USER_ATTEMPTS - data.peerUserAttempts;
+    return `Rozwiąż jeszcze ${remaining} ${
+      remaining === 1 ? "pytanie" : "pytań"
+    }, żeby porównać z innymi`;
+  }
+  if (data.peerCohortSize < MIN_COHORT_SIZE) {
+    return "Za mało osób w Twojej kohorcie, żeby porównać";
+  }
+  return "Porównanie z innymi niedostępne";
+}
+
 export function ReadinessCard({ data }: { data: StatisticsPayload }) {
   const pct =
     data.predictedReadiness != null
@@ -22,9 +42,7 @@ export function ReadinessCard({ data }: { data: StatisticsPayload }) {
       ) : (
         <p className="mt-1 font-body text-body-xs text-muted">Brak danych</p>
       )}
-      <p className="mt-4 font-body text-body-xs text-muted">
-        Lepszy od X% użytkowników — Niedostępne
-      </p>
+      <p className="mt-4 font-body text-body-xs text-muted">{peerLabel(data)}</p>
     </div>
   );
 }

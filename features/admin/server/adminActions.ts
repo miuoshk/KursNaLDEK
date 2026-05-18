@@ -4,6 +4,12 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { requireAdminAccess } from "@/features/admin/server/adminAuth";
+import {
+  loadAdminQuestionDetail,
+  loadQuestionEdits,
+  type AdminQuestionDetail,
+  type QuestionEditLogEntry,
+} from "@/features/admin/server/loadAdminQuestionDetail";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -113,6 +119,186 @@ export async function editQuestion(
   }
 
   return { ok: true as const };
+}
+
+const optionSchema = z.object({
+  id: z.string().min(1).max(8),
+  text: z.string().min(1).max(2000),
+});
+
+const updateQuestionSchema = z.object({
+  questionId: z.string().min(1),
+  reportId: z.string().uuid().optional(),
+  text: z.string().min(1).max(4000),
+  options: z.array(optionSchema).min(2).max(8),
+  correctOptionId: z.string().min(1).max(8),
+  explanation: z.string().min(1).max(8000),
+  isActive: z.boolean(),
+  sourceExam: z.string().max(120).nullable(),
+  sourceCode: z.string().max(120).nullable(),
+  imageUrl: z.string().max(500).nullable(),
+  topicId: z.string().max(120).nullable(),
+  themeLabel: z.string().max(200).nullable(),
+  subthemeLabel: z.string().max(200).nullable(),
+  batchLabel: z.string().max(200).nullable(),
+  learningOutcome: z.string().max(500).nullable(),
+});
+
+type UpdateQuestionInput = z.infer<typeof updateQuestionSchema>;
+
+function diffQuestion(
+  before: AdminQuestionDetail,
+  after: UpdateQuestionInput,
+): Record<string, { before: unknown; after: unknown }> {
+  const changes: Record<string, { before: unknown; after: unknown }> = {};
+  const compare = (
+    field: string,
+    a: unknown,
+    b: unknown,
+    deep = false,
+  ) => {
+    const equal = deep
+      ? JSON.stringify(a) === JSON.stringify(b)
+      : a === b;
+    if (!equal) changes[field] = { before: a, after: b };
+  };
+
+  compare("text", before.text, after.text);
+  compare("options", before.options, after.options, true);
+  compare("correct_option_id", before.correctOptionId, after.correctOptionId);
+  compare("explanation", before.explanation, after.explanation);
+  compare("is_active", before.isActive, after.isActive);
+  compare("source_exam", before.sourceExam, after.sourceExam);
+  compare("source_code", before.sourceCode, after.sourceCode);
+  compare("image_url", before.imageUrl, after.imageUrl);
+  compare("topic_id", before.topicId, after.topicId);
+  compare("theme_label", before.themeLabel, after.themeLabel);
+  compare("subtheme_label", before.subthemeLabel, after.subthemeLabel);
+  compare("batch_label", before.batchLabel, after.batchLabel);
+  compare("learning_outcome", before.learningOutcome, after.learningOutcome);
+
+  return changes;
+}
+
+export async function updateQuestionFull(raw: UpdateQuestionInput) {
+  const parsed = updateQuestionSchema.safeParse(raw);
+  if (!parsed.success) {
+    return {
+      ok: false as const,
+      message: "Nieprawidłowe dane formularza pytania.",
+    };
+  }
+
+  const optionIds = parsed.data.options.map((opt) => opt.id);
+  const uniqueIds = new Set(optionIds);
+  if (uniqueIds.size !== optionIds.length) {
+    return {
+      ok: false as const,
+      message: "Identyfikatory opcji muszą być unikalne (A–E).",
+    };
+  }
+  if (!uniqueIds.has(parsed.data.correctOptionId)) {
+    return {
+      ok: false as const,
+      message: "Poprawna odpowiedź musi wskazywać jedną z opcji.",
+    };
+  }
+
+  let ctx;
+  try {
+    ctx = await requireAdmin();
+  } catch {
+    return {
+      ok: false as const,
+      message: "Brak uprawnień do edycji pytania.",
+    };
+  }
+
+  const before = await loadAdminQuestionDetail(parsed.data.questionId);
+  if (!before) {
+    return {
+      ok: false as const,
+      message: "Nie znaleziono pytania.",
+    };
+  }
+
+  const changes = diffQuestion(before, parsed.data);
+  if (Object.keys(changes).length === 0) {
+    return {
+      ok: true as const,
+      message: "Brak zmian — nie zapisano.",
+      changedFields: [] as string[],
+    };
+  }
+
+  const { error: updateError } = await ctx.supabase
+    .from("questions")
+    .update({
+      text: parsed.data.text,
+      options: parsed.data.options,
+      correct_option_id: parsed.data.correctOptionId,
+      explanation: parsed.data.explanation,
+      is_active: parsed.data.isActive,
+      source_exam: parsed.data.sourceExam,
+      source_code: parsed.data.sourceCode,
+      image_url: parsed.data.imageUrl,
+      topic_id: parsed.data.topicId,
+      theme_label: parsed.data.themeLabel,
+      subtheme_label: parsed.data.subthemeLabel,
+      batch_label: parsed.data.batchLabel,
+      learning_outcome: parsed.data.learningOutcome,
+    })
+    .eq("id", parsed.data.questionId);
+
+  if (updateError) {
+    console.error("[updateQuestionFull] update", updateError.message);
+    return {
+      ok: false as const,
+      message: "Nie udało się zapisać pytania.",
+    };
+  }
+
+  const { error: auditError } = await ctx.supabase
+    .from("question_edits")
+    .insert({
+      question_id: parsed.data.questionId,
+      editor_id: ctx.userId,
+      editor_role: ctx.role ?? "admin",
+      report_id: parsed.data.reportId ?? null,
+      changes,
+    });
+
+  if (auditError) {
+    console.error("[updateQuestionFull] audit", auditError.message);
+    // Update przeszedł — audit fail nie cofa zmian, ale zgłaszamy do logów.
+  }
+
+  return {
+    ok: true as const,
+    changedFields: Object.keys(changes),
+  };
+}
+
+export async function fetchQuestionForAdmin(questionId: string): Promise<
+  | { ok: true; question: AdminQuestionDetail; history: QuestionEditLogEntry[] }
+  | { ok: false; message: string }
+> {
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false, message: "Brak uprawnień." };
+  }
+
+  const [question, history] = await Promise.all([
+    loadAdminQuestionDetail(questionId),
+    loadQuestionEdits(questionId),
+  ]);
+
+  if (!question) {
+    return { ok: false, message: "Nie znaleziono pytania." };
+  }
+
+  return { ok: true, question, history };
 }
 
 const setUserRoleSchema = z.object({

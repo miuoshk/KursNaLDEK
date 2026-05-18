@@ -20,7 +20,7 @@ export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProp
   return (
     <section>
       <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h2 className="font-heading text-heading-sm text-primary">Tematy</h2>
+        <h2 className="font-heading text-xl font-bold text-primary">Tematy</h2>
         <button
           type="button"
           className="inline-flex items-center gap-1.5 font-body text-body-xs text-muted transition-colors hover:text-secondary"

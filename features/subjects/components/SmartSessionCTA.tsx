@@ -70,7 +70,7 @@ export function SmartSessionCTA({
 
   return (
     <div className="space-y-4">
-      <h2 className="font-heading text-heading-md text-primary">Rozpocznij naukę</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Rozpocznij naukę</h2>
 
       <div className="rounded-card border border-brand-sage/20 bg-card p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">

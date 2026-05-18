@@ -32,7 +32,9 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
   return (
     <div>
       <BreadcrumbSubjectSegment shortName={subject.short_name} />
-      <h1 className="font-heading text-heading-xl text-primary">{subject.name}</h1>
+      <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+        {subject.name}
+      </h1>
 
       <div className="mt-8 space-y-8">
         <StatsRow stats={stats} />

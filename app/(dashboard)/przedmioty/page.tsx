@@ -13,7 +13,9 @@ export default async function PrzedmiotyPage() {
   if (!result.ok) {
     return (
       <div>
-        <h1 className="font-heading text-3xl font-bold text-primary">Moje przedmioty</h1>
+        <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+          Moje przedmioty
+        </h1>
         <div className="mt-8">
           <PrzedmiotyError message={result.message} />
         </div>
@@ -26,10 +28,14 @@ export default async function PrzedmiotyPage() {
 
   return (
     <div>
-      <h1 className="font-heading text-3xl font-bold text-primary">Moje przedmioty</h1>
-      <p className="mt-2 font-body text-lg text-secondary">
-        Rok {profile.current_year} · {profile.track}
-      </p>
+      <header>
+        <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+          Moje przedmioty
+        </h1>
+        <p className="mt-1 font-body text-sm text-secondary">
+          Rok {profile.current_year} · {profile.track}
+        </p>
+      </header>
 
       <div className="mt-8 space-y-8">
         <OverallProgress
@@ -42,8 +48,10 @@ export default async function PrzedmiotyPage() {
 
         {showOsceSection ? (
           <section>
-            <h2 className="font-heading text-xl text-[#C9A84C]">Egzamin praktyczny OSCE</h2>
-            <p className="mt-2 font-body text-sm text-secondary">
+            <h2 className="font-heading text-xl font-bold text-brand-gold">
+              Egzamin praktyczny OSCE
+            </h2>
+            <p className="mt-1 font-body text-sm text-secondary">
               7 stacji · 14 zadań · próg zaliczenia: 60% na stację
             </p>
             <div className="mt-4">
@@ -69,9 +77,9 @@ export default async function PrzedmiotyPage() {
         ) : null}
 
         {showOsceSection ? (
-          <div className="pt-2">
-            <h2 className="text-sm uppercase tracking-widest text-white/60">Nauki podstawowe</h2>
-          </div>
+          <h2 className="font-heading text-xl font-bold text-primary">
+            Nauki podstawowe
+          </h2>
         ) : null}
 
         {subjects.length === 0 ? (

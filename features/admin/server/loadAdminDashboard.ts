@@ -1,41 +1,198 @@
 import { createClient } from "@/lib/supabase/server";
 
+export type TrackKey = "lekarski" | "stomatologia" | "inny";
+
+export type AdminUserSegment = {
+  track: TrackKey;
+  year: number | null;
+  label: string;
+  count: number;
+  activeLast7d: number;
+  activeLast30d: number;
+  avgXp: number;
+  avgStreak: number;
+};
+
+export type AdminHourBucket = {
+  hour: number;
+  sessions: number;
+  questions: number;
+  avgAccuracy: number;
+};
+
+export type AdminDayOfWeekBucket = {
+  dow: number;
+  label: string;
+  sessions: number;
+  questions: number;
+  avgAccuracy: number;
+};
+
+export type AdminHeatmapCell = {
+  dow: number;
+  hour: number;
+  sessions: number;
+  intensity: number;
+};
+
+export type AdminSubjectPopularity = {
+  subjectId: string;
+  subjectName: string;
+  track: string | null;
+  year: number | null;
+  sessions: number;
+  questions: number;
+  avgAccuracy: number;
+};
+
+export type AdminTrackPerformance = {
+  track: TrackKey;
+  year: number | null;
+  label: string;
+  sessions: number;
+  questions: number;
+  avgAccuracy: number;
+  avgSessionMin: number;
+};
+
+export type AdminEngagement = {
+  veryActive: number;
+  active: number;
+  inactive: number;
+  neverStarted: number;
+  totalUsers: number;
+};
+
+export type AdminSubscriptionSlice = {
+  status: string;
+  label: string;
+  count: number;
+};
+
+export type AdminDailyTrendPoint = {
+  date: string;
+  sessions: number;
+  users: number;
+  questions: number;
+  studyHours: number;
+  avgAccuracy: number;
+};
+
+export type AdminRegistrationsPoint = {
+  date: string;
+  registrations: number;
+};
+
+export type AdminModeBenchmark = {
+  mode: string;
+  sessions: number;
+  sharePct: number;
+  avgAccuracy: number;
+  avgDurationMin: number;
+};
+
+export type AdminUserBenchmark = {
+  userId: string;
+  displayName: string;
+  track: string | null;
+  year: number | null;
+  sessions: number;
+  questions: number;
+  studyHours: number;
+  avgAccuracy: number;
+};
+
 export type AdminDashboardData = {
   totalQuestions: number;
   totalUsers: number;
+  paidUsers: number;
   pendingReports: number;
+
   sessionsToday: number;
   sessionsLast7d: number;
+  sessionsLast30d: number;
   answeredQuestionsLast7d: number;
+  answeredQuestionsLast30d: number;
   completedTestsLast7d: number;
+
   averageAccuracyLast7d: number;
+  averageAccuracyLast30d: number;
   studyHoursLast7d: number;
+  studyHoursLast30d: number;
   averageSessionMinutesLast7d: number;
+
   uniqueActiveUsersLast7d: number;
+  uniqueActiveUsersLast30d: number;
+
+  newRegistrationsLast7d: number;
+  newRegistrationsLast30d: number;
+
+  peakHour: { hour: number; sessions: number } | null;
+  peakDayOfWeek: { dow: number; label: string; sessions: number } | null;
+
   topUser: { displayName: string; sessionCount: number } | null;
-  modeBreakdownLast7d: Array<{
-    mode: string;
-    sessions: number;
-    sharePct: number;
-    avgAccuracy: number;
-    avgDurationMin: number;
-  }>;
-  dailyTrendLast14d: Array<{
-    date: string;
-    sessions: number;
-    users: number;
-    questions: number;
-    studyHours: number;
-    avgAccuracy: number;
-  }>;
-  userBenchmarksLast30d: Array<{
-    userId: string;
-    displayName: string;
-    sessions: number;
-    questions: number;
-    studyHours: number;
-    avgAccuracy: number;
-  }>;
+
+  userSegments: AdminUserSegment[];
+  hourOfDayLast30d: AdminHourBucket[];
+  dayOfWeekLast30d: AdminDayOfWeekBucket[];
+  heatmapLast30d: AdminHeatmapCell[];
+  heatmapMaxSessions: number;
+  subjectPopularityLast30d: AdminSubjectPopularity[];
+  trackPerformanceLast30d: AdminTrackPerformance[];
+  engagementLast30d: AdminEngagement;
+  subscriptionBreakdown: AdminSubscriptionSlice[];
+  registrationsLast30d: AdminRegistrationsPoint[];
+  modeBreakdownLast7d: AdminModeBenchmark[];
+  dailyTrendLast14d: AdminDailyTrendPoint[];
+  userBenchmarksLast30d: AdminUserBenchmark[];
+};
+
+const DOW_LABELS = ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "Sb"];
+const TRACK_LABEL: Record<TrackKey, string> = {
+  lekarski: "Lekarski",
+  stomatologia: "Stomatologia",
+  inny: "Inny",
+};
+
+function normalizeTrack(value: unknown): TrackKey {
+  if (value === "lekarski" || value === "stomatologia") return value;
+  return "inny";
+}
+
+function trackYearLabel(track: TrackKey, year: number | null): string {
+  const trackShort =
+    track === "lekarski" ? "LEK" : track === "stomatologia" ? "STOMA" : "—";
+  return year ? `${year} ${trackShort}` : trackShort;
+}
+
+function dowFromIso(iso: string): number {
+  return new Date(iso).getDay();
+}
+
+function hourFromIso(iso: string): number {
+  return new Date(iso).getHours();
+}
+
+function safeAccuracy(row: SessionRow): number {
+  const explicit = row.accuracy;
+  if (typeof explicit === "number") return explicit;
+  const totalQ = row.total_questions ?? 0;
+  const correctQ = row.correct_answers ?? 0;
+  return totalQ > 0 ? correctQ / totalQ : 0;
+}
+
+type SessionRow = {
+  id: string;
+  user_id: string | null;
+  subject_id: string | null;
+  mode: string | null;
+  total_questions: number | null;
+  correct_answers: number | null;
+  accuracy: number | null;
+  duration_seconds: number | null;
+  started_at: string | null;
+  completed_at: string | null;
+  is_completed: boolean | null;
 };
 
 export async function loadAdminDashboard(): Promise<AdminDashboardData> {
@@ -49,9 +206,22 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   const since14d = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const since30d = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
 
-  const [questionsRes, usersRes, reportsRes, sessionsTodayRes, sessions7dRes, sessions30dRes] = await Promise.all([
+  const [
+    questionsRes,
+    usersRes,
+    paidUsersRes,
+    reportsRes,
+    sessionsTodayRes,
+    sessions30dRes,
+    profilesRes,
+    subjectsRes,
+  ] = await Promise.all([
     supabase.from("questions").select("id", { count: "exact", head: true }),
     supabase.from("profiles").select("id", { count: "exact", head: true }),
+    supabase
+      .from("profiles")
+      .select("id", { count: "exact", head: true })
+      .eq("subscription_status", "active"),
     supabase
       .from("error_reports")
       .select("id", { count: "exact", head: true })
@@ -63,238 +233,577 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     supabase
       .from("study_sessions")
       .select(
-        "id, user_id, mode, total_questions, correct_answers, duration_seconds, accuracy, started_at, completed_at, is_completed",
-      )
-      .gte("started_at", since7d),
-    supabase
-      .from("study_sessions")
-      .select(
-        "id, user_id, mode, total_questions, correct_answers, duration_seconds, accuracy, started_at, completed_at, is_completed",
+        "id, user_id, subject_id, mode, total_questions, correct_answers, duration_seconds, accuracy, started_at, completed_at, is_completed",
       )
       .gte("started_at", since30d),
+    supabase
+      .from("profiles")
+      .select(
+        "id, display_name, current_track, current_year, xp, current_streak, subscription_status, created_at",
+      ),
+    supabase.from("subjects").select("id, name, track, year"),
   ]);
 
-  const { data: topUserRow } = await supabase
-    .from("study_sessions")
-    .select("user_id")
-    .gte("started_at", todayIso)
-    .limit(500);
+  const sessions30d = (sessions30dRes.data ?? []) as SessionRow[];
+  const profiles = profilesRes.data ?? [];
+  const subjects = subjectsRes.data ?? [];
 
-  let topUser: AdminDashboardData["topUser"] = null;
-  if (topUserRow && topUserRow.length > 0) {
-    const counts = new Map<string, number>();
-    for (const r of topUserRow) {
-      const uid = r.user_id as string;
-      counts.set(uid, (counts.get(uid) ?? 0) + 1);
-    }
-    let maxUid = "";
-    let maxCount = 0;
-    for (const [uid, c] of counts) {
-      if (c > maxCount) {
-        maxUid = uid;
-        maxCount = c;
-      }
-    }
-    if (maxUid) {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("display_name")
-        .eq("id", maxUid)
-        .maybeSingle();
-      topUser = {
-        displayName: (profile?.display_name as string) ?? "Nieznany",
-        sessionCount: maxCount,
-      };
-    }
+  const subjectMap = new Map<
+    string,
+    { name: string; track: string | null; year: number | null }
+  >();
+  for (const s of subjects) {
+    subjectMap.set(s.id as string, {
+      name: (s.name as string) ?? (s.id as string),
+      track: (s.track as string | null) ?? null,
+      year: (s.year as number | null) ?? null,
+    });
   }
 
-  const sessions7d = sessions7dRes.data ?? [];
-  const sessions30d = sessions30dRes.data ?? [];
+  const profileMap = new Map<
+    string,
+    {
+      displayName: string;
+      track: TrackKey;
+      year: number | null;
+      xp: number;
+      streak: number;
+      subscription: string | null;
+      createdAt: string | null;
+    }
+  >();
+  for (const p of profiles) {
+    profileMap.set(p.id as string, {
+      displayName: ((p.display_name as string | null) ?? "Użytkownik") || "Użytkownik",
+      track: normalizeTrack(p.current_track),
+      year: (p.current_year as number | null) ?? null,
+      xp: (p.xp as number | null) ?? 0,
+      streak: (p.current_streak as number | null) ?? 0,
+      subscription: (p.subscription_status as string | null) ?? null,
+      createdAt: (p.created_at as string | null) ?? null,
+    });
+  }
+
+  const sessions7d = sessions30d.filter(
+    (row) =>
+      row.started_at !== null && new Date(row.started_at).getTime() >= new Date(since7d).getTime(),
+  );
+
   const sessionsLast7d = sessions7d.length;
+  const sessionsLast30d = sessions30d.length;
+
   const answeredQuestionsLast7d = sessions7d.reduce(
-    (sum, row) => sum + ((row.total_questions as number | null) ?? 0),
+    (sum, row) => sum + (row.total_questions ?? 0),
+    0,
+  );
+  const answeredQuestionsLast30d = sessions30d.reduce(
+    (sum, row) => sum + (row.total_questions ?? 0),
     0,
   );
   const completedTestsLast7d = sessions7d.filter(
-    (row) =>
-      (row.is_completed as boolean | null) === true ||
-      (row.completed_at as string | null) !== null,
+    (row) => row.is_completed === true || row.completed_at !== null,
   ).length;
+
   const totalDurationSec7d = sessions7d.reduce(
-    (sum, row) => sum + ((row.duration_seconds as number | null) ?? 0),
+    (sum, row) => sum + (row.duration_seconds ?? 0),
+    0,
+  );
+  const totalDurationSec30d = sessions30d.reduce(
+    (sum, row) => sum + (row.duration_seconds ?? 0),
     0,
   );
   const studyHoursLast7d = Number((totalDurationSec7d / 3600).toFixed(1));
+  const studyHoursLast30d = Number((totalDurationSec30d / 3600).toFixed(1));
   const averageSessionMinutesLast7d =
-    sessionsLast7d > 0 ? Number(((totalDurationSec7d / 60) / sessionsLast7d).toFixed(1)) : 0;
+    sessionsLast7d > 0
+      ? Number(((totalDurationSec7d / 60) / sessionsLast7d).toFixed(1))
+      : 0;
 
-  const totalAccuracy7d = sessions7d.reduce((sum, row) => {
-    const explicit = row.accuracy as number | null;
-    if (typeof explicit === "number") return sum + explicit;
-    const totalQ = (row.total_questions as number | null) ?? 0;
-    const correctQ = (row.correct_answers as number | null) ?? 0;
-    return sum + (totalQ > 0 ? correctQ / totalQ : 0);
-  }, 0);
+  const totalAccuracy7d = sessions7d.reduce((sum, row) => sum + safeAccuracy(row), 0);
   const averageAccuracyLast7d =
-    sessionsLast7d > 0 ? Number(((totalAccuracy7d / sessionsLast7d) * 100).toFixed(1)) : 0;
+    sessionsLast7d > 0
+      ? Number(((totalAccuracy7d / sessionsLast7d) * 100).toFixed(1))
+      : 0;
+  const totalAccuracy30d = sessions30d.reduce((sum, row) => sum + safeAccuracy(row), 0);
+  const averageAccuracyLast30d =
+    sessionsLast30d > 0
+      ? Number(((totalAccuracy30d / sessionsLast30d) * 100).toFixed(1))
+      : 0;
 
   const activeUsersSet7d = new Set<string>();
+  const activeUsersSet30d = new Set<string>();
+  const userSessionCounts30d = new Map<string, number>();
+  for (const row of sessions30d) {
+    if (!row.user_id) continue;
+    activeUsersSet30d.add(row.user_id);
+    userSessionCounts30d.set(
+      row.user_id,
+      (userSessionCounts30d.get(row.user_id) ?? 0) + 1,
+    );
+  }
   for (const row of sessions7d) {
-    const userId = row.user_id as string | null;
-    if (userId) activeUsersSet7d.add(userId);
+    if (row.user_id) activeUsersSet7d.add(row.user_id);
   }
   const uniqueActiveUsersLast7d = activeUsersSet7d.size;
+  const uniqueActiveUsersLast30d = activeUsersSet30d.size;
 
-  const modeMap = new Map<string, {
-    sessions: number;
-    totalAccuracy: number;
-    totalDurationSec: number;
-  }>();
-  for (const row of sessions7d) {
-    const mode = ((row.mode as string | null) ?? "nieznany").toLowerCase();
-    const totalQ = (row.total_questions as number | null) ?? 0;
-    const correctQ = (row.correct_answers as number | null) ?? 0;
-    const acc =
-      typeof (row.accuracy as number | null) === "number"
-        ? (row.accuracy as number)
-        : totalQ > 0
-          ? correctQ / totalQ
-          : 0;
-    const prev = modeMap.get(mode) ?? { sessions: 0, totalAccuracy: 0, totalDurationSec: 0 };
-    prev.sessions += 1;
-    prev.totalAccuracy += acc;
-    prev.totalDurationSec += (row.duration_seconds as number | null) ?? 0;
-    modeMap.set(mode, prev);
+  let topUser: AdminDashboardData["topUser"] = null;
+  let topUid = "";
+  let topCount = 0;
+  for (const [uid, c] of userSessionCounts30d) {
+    if (c > topCount) {
+      topCount = c;
+      topUid = uid;
+    }
+  }
+  if (topUid) {
+    const profile = profileMap.get(topUid);
+    topUser = {
+      displayName: profile?.displayName ?? "Użytkownik",
+      sessionCount: topCount,
+    };
   }
 
-  const modeBreakdownLast7d = Array.from(modeMap.entries())
+  const newRegistrationsLast7d = profiles.filter((p) => {
+    const created = p.created_at as string | null;
+    return created !== null && new Date(created).getTime() >= new Date(since7d).getTime();
+  }).length;
+  const newRegistrationsLast30d = profiles.filter((p) => {
+    const created = p.created_at as string | null;
+    return created !== null && new Date(created).getTime() >= new Date(since30d).getTime();
+  }).length;
+
+  const segmentBuckets = new Map<
+    string,
+    AdminUserSegment & { activeIds7: Set<string>; activeIds30: Set<string> }
+  >();
+  for (const [uid, profile] of profileMap) {
+    const key = `${profile.track}|${profile.year ?? "-"}`;
+    const bucket = segmentBuckets.get(key) ?? {
+      track: profile.track,
+      year: profile.year,
+      label: trackYearLabel(profile.track, profile.year),
+      count: 0,
+      activeLast7d: 0,
+      activeLast30d: 0,
+      avgXp: 0,
+      avgStreak: 0,
+      activeIds7: new Set<string>(),
+      activeIds30: new Set<string>(),
+    };
+    bucket.count += 1;
+    bucket.avgXp += profile.xp;
+    bucket.avgStreak += profile.streak;
+    if (activeUsersSet7d.has(uid)) bucket.activeIds7.add(uid);
+    if (activeUsersSet30d.has(uid)) bucket.activeIds30.add(uid);
+    segmentBuckets.set(key, bucket);
+  }
+  const userSegments: AdminUserSegment[] = Array.from(segmentBuckets.values())
+    .map((b) => ({
+      track: b.track,
+      year: b.year,
+      label: b.label,
+      count: b.count,
+      activeLast7d: b.activeIds7.size,
+      activeLast30d: b.activeIds30.size,
+      avgXp: b.count > 0 ? Math.round(b.avgXp / b.count) : 0,
+      avgStreak: b.count > 0 ? Math.round((b.avgStreak / b.count) * 10) / 10 : 0,
+    }))
+    .sort((a, b) => {
+      if (a.track !== b.track) return TRACK_LABEL[a.track].localeCompare(TRACK_LABEL[b.track]);
+      return (a.year ?? 99) - (b.year ?? 99);
+    });
+
+  const hourBuckets = new Map<
+    number,
+    { sessions: number; questions: number; accSum: number }
+  >();
+  const dowBuckets = new Map<
+    number,
+    { sessions: number; questions: number; accSum: number }
+  >();
+  const heatmapMap = new Map<string, number>();
+
+  for (const row of sessions30d) {
+    if (!row.started_at) continue;
+    const hour = hourFromIso(row.started_at);
+    const dow = dowFromIso(row.started_at);
+    const acc = safeAccuracy(row);
+    const totalQ = row.total_questions ?? 0;
+
+    const h = hourBuckets.get(hour) ?? { sessions: 0, questions: 0, accSum: 0 };
+    h.sessions += 1;
+    h.questions += totalQ;
+    h.accSum += acc;
+    hourBuckets.set(hour, h);
+
+    const d = dowBuckets.get(dow) ?? { sessions: 0, questions: 0, accSum: 0 };
+    d.sessions += 1;
+    d.questions += totalQ;
+    d.accSum += acc;
+    dowBuckets.set(dow, d);
+
+    const key = `${dow}-${hour}`;
+    heatmapMap.set(key, (heatmapMap.get(key) ?? 0) + 1);
+  }
+
+  const hourOfDayLast30d: AdminHourBucket[] = Array.from({ length: 24 }, (_, hour) => {
+    const stats = hourBuckets.get(hour);
+    return {
+      hour,
+      sessions: stats?.sessions ?? 0,
+      questions: stats?.questions ?? 0,
+      avgAccuracy:
+        stats && stats.sessions > 0
+          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          : 0,
+    };
+  });
+
+  const dayOfWeekLast30d: AdminDayOfWeekBucket[] = Array.from({ length: 7 }, (_, idx) => {
+    const dow = (idx + 1) % 7; // Pn=1..Nd=0 -> ułożone Pn..Nd
+    const stats = dowBuckets.get(dow);
+    return {
+      dow,
+      label: DOW_LABELS[dow]!,
+      sessions: stats?.sessions ?? 0,
+      questions: stats?.questions ?? 0,
+      avgAccuracy:
+        stats && stats.sessions > 0
+          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          : 0,
+    };
+  });
+
+  let heatmapMaxSessions = 0;
+  for (const v of heatmapMap.values()) {
+    if (v > heatmapMaxSessions) heatmapMaxSessions = v;
+  }
+  const heatmapLast30d: AdminHeatmapCell[] = [];
+  for (let dowIdx = 0; dowIdx < 7; dowIdx += 1) {
+    const dow = (dowIdx + 1) % 7;
+    for (let hour = 0; hour < 24; hour += 1) {
+      const sessions = heatmapMap.get(`${dow}-${hour}`) ?? 0;
+      const intensity =
+        heatmapMaxSessions > 0 ? sessions / heatmapMaxSessions : 0;
+      heatmapLast30d.push({ dow, hour, sessions, intensity });
+    }
+  }
+
+  let peakHour: AdminDashboardData["peakHour"] = null;
+  for (const bucket of hourOfDayLast30d) {
+    if (!peakHour || bucket.sessions > peakHour.sessions) {
+      peakHour = { hour: bucket.hour, sessions: bucket.sessions };
+    }
+  }
+  if (peakHour && peakHour.sessions === 0) peakHour = null;
+
+  let peakDayOfWeek: AdminDashboardData["peakDayOfWeek"] = null;
+  for (const bucket of dayOfWeekLast30d) {
+    if (!peakDayOfWeek || bucket.sessions > peakDayOfWeek.sessions) {
+      peakDayOfWeek = {
+        dow: bucket.dow,
+        label: bucket.label,
+        sessions: bucket.sessions,
+      };
+    }
+  }
+  if (peakDayOfWeek && peakDayOfWeek.sessions === 0) peakDayOfWeek = null;
+
+  const subjectMap30 = new Map<
+    string,
+    { sessions: number; questions: number; accSum: number }
+  >();
+  for (const row of sessions30d) {
+    if (!row.subject_id) continue;
+    const s = subjectMap30.get(row.subject_id) ?? { sessions: 0, questions: 0, accSum: 0 };
+    s.sessions += 1;
+    s.questions += row.total_questions ?? 0;
+    s.accSum += safeAccuracy(row);
+    subjectMap30.set(row.subject_id, s);
+  }
+  const subjectPopularityLast30d: AdminSubjectPopularity[] = Array.from(
+    subjectMap30.entries(),
+  )
+    .map(([subjectId, stats]) => {
+      const meta = subjectMap.get(subjectId);
+      return {
+        subjectId,
+        subjectName: meta?.name ?? subjectId,
+        track: meta?.track ?? null,
+        year: meta?.year ?? null,
+        sessions: stats.sessions,
+        questions: stats.questions,
+        avgAccuracy:
+          stats.sessions > 0
+            ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+            : 0,
+      };
+    })
+    .sort((a, b) => b.sessions - a.sessions)
+    .slice(0, 10);
+
+  const trackPerfMap = new Map<
+    string,
+    {
+      track: TrackKey;
+      year: number | null;
+      sessions: number;
+      questions: number;
+      accSum: number;
+      durationSec: number;
+    }
+  >();
+  for (const row of sessions30d) {
+    if (!row.user_id) continue;
+    const profile = profileMap.get(row.user_id);
+    if (!profile) continue;
+    const key = `${profile.track}|${profile.year ?? "-"}`;
+    const stats = trackPerfMap.get(key) ?? {
+      track: profile.track,
+      year: profile.year,
+      sessions: 0,
+      questions: 0,
+      accSum: 0,
+      durationSec: 0,
+    };
+    stats.sessions += 1;
+    stats.questions += row.total_questions ?? 0;
+    stats.accSum += safeAccuracy(row);
+    stats.durationSec += row.duration_seconds ?? 0;
+    trackPerfMap.set(key, stats);
+  }
+  const trackPerformanceLast30d: AdminTrackPerformance[] = Array.from(
+    trackPerfMap.values(),
+  )
+    .map((stats) => ({
+      track: stats.track,
+      year: stats.year,
+      label: trackYearLabel(stats.track, stats.year),
+      sessions: stats.sessions,
+      questions: stats.questions,
+      avgAccuracy:
+        stats.sessions > 0
+          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          : 0,
+      avgSessionMin:
+        stats.sessions > 0
+          ? Number(((stats.durationSec / 60) / stats.sessions).toFixed(1))
+          : 0,
+    }))
+    .sort((a, b) => {
+      if (a.track !== b.track) return TRACK_LABEL[a.track].localeCompare(TRACK_LABEL[b.track]);
+      return (a.year ?? 99) - (b.year ?? 99);
+    });
+
+  const subscriptionCounter = new Map<string, number>();
+  for (const profile of profileMap.values()) {
+    const status = profile.subscription ?? "brak";
+    subscriptionCounter.set(status, (subscriptionCounter.get(status) ?? 0) + 1);
+  }
+  const subscriptionBreakdown: AdminSubscriptionSlice[] = Array.from(
+    subscriptionCounter.entries(),
+  )
+    .map(([status, count]) => ({
+      status,
+      label:
+        status === "active"
+          ? "Aktywne"
+          : status === "inactive"
+            ? "Nieaktywne"
+            : status === "brak"
+              ? "Brak danych"
+              : status,
+      count,
+    }))
+    .sort((a, b) => b.count - a.count);
+
+  const veryActiveThreshold = 5;
+  let veryActive = 0;
+  let active = 0;
+  let inactive = 0;
+  let neverStarted = 0;
+  for (const uid of profileMap.keys()) {
+    const c = userSessionCounts30d.get(uid) ?? 0;
+    if (c >= veryActiveThreshold) veryActive += 1;
+    else if (c >= 1) active += 1;
+    else if (activeUsersSet30d.has(uid)) inactive += 1;
+    else neverStarted += 1;
+  }
+  const totalUsersFromMap = profileMap.size;
+  const engagementLast30d: AdminEngagement = {
+    veryActive,
+    active,
+    inactive,
+    neverStarted,
+    totalUsers: totalUsersFromMap,
+  };
+
+  const registrationsMap = new Map<string, number>();
+  for (const profile of profileMap.values()) {
+    const created = profile.createdAt;
+    if (!created) continue;
+    if (new Date(created).getTime() < new Date(since30d).getTime()) continue;
+    const day = created.slice(0, 10);
+    registrationsMap.set(day, (registrationsMap.get(day) ?? 0) + 1);
+  }
+  const registrationsLast30d: AdminRegistrationsPoint[] = [];
+  for (let i = 29; i >= 0; i -= 1) {
+    const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+    const day = d.toISOString().slice(0, 10);
+    registrationsLast30d.push({
+      date: day,
+      registrations: registrationsMap.get(day) ?? 0,
+    });
+  }
+
+  const modeMap = new Map<
+    string,
+    { sessions: number; accSum: number; durationSec: number }
+  >();
+  for (const row of sessions7d) {
+    const mode = ((row.mode as string | null) ?? "nieznany").toLowerCase();
+    const stats = modeMap.get(mode) ?? { sessions: 0, accSum: 0, durationSec: 0 };
+    stats.sessions += 1;
+    stats.accSum += safeAccuracy(row);
+    stats.durationSec += row.duration_seconds ?? 0;
+    modeMap.set(mode, stats);
+  }
+  const modeBreakdownLast7d: AdminModeBenchmark[] = Array.from(modeMap.entries())
     .map(([mode, stats]) => ({
       mode,
       sessions: stats.sessions,
-      sharePct: sessionsLast7d > 0 ? Number(((stats.sessions / sessionsLast7d) * 100).toFixed(1)) : 0,
-      avgAccuracy: stats.sessions > 0 ? Number(((stats.totalAccuracy / stats.sessions) * 100).toFixed(1)) : 0,
-      avgDurationMin: stats.sessions > 0 ? Number(((stats.totalDurationSec / 60) / stats.sessions).toFixed(1)) : 0,
+      sharePct:
+        sessionsLast7d > 0
+          ? Number(((stats.sessions / sessionsLast7d) * 100).toFixed(1))
+          : 0,
+      avgAccuracy:
+        stats.sessions > 0
+          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          : 0,
+      avgDurationMin:
+        stats.sessions > 0
+          ? Number(((stats.durationSec / 60) / stats.sessions).toFixed(1))
+          : 0,
     }))
     .sort((a, b) => b.sessions - a.sessions);
 
-  const trendMap = new Map<string, {
-    sessions: number;
-    users: Set<string>;
-    questions: number;
-    durationSec: number;
-    accuracySum: number;
-  }>();
+  const trendMap = new Map<
+    string,
+    {
+      sessions: number;
+      users: Set<string>;
+      questions: number;
+      durationSec: number;
+      accSum: number;
+    }
+  >();
   for (const row of sessions30d) {
-    const startedAt = row.started_at as string | null;
-    if (!startedAt) continue;
-    if (new Date(startedAt).getTime() < new Date(since14d).getTime()) continue;
-    const day = startedAt.slice(0, 10);
-    const totalQ = (row.total_questions as number | null) ?? 0;
-    const correctQ = (row.correct_answers as number | null) ?? 0;
-    const acc =
-      typeof (row.accuracy as number | null) === "number"
-        ? (row.accuracy as number)
-        : totalQ > 0
-          ? correctQ / totalQ
-          : 0;
-
+    if (!row.started_at) continue;
+    if (new Date(row.started_at).getTime() < new Date(since14d).getTime()) continue;
+    const day = row.started_at.slice(0, 10);
     const current = trendMap.get(day) ?? {
       sessions: 0,
       users: new Set<string>(),
       questions: 0,
       durationSec: 0,
-      accuracySum: 0,
+      accSum: 0,
     };
     current.sessions += 1;
-    const userId = row.user_id as string | null;
-    if (userId) current.users.add(userId);
-    current.questions += totalQ;
-    current.durationSec += (row.duration_seconds as number | null) ?? 0;
-    current.accuracySum += acc;
+    if (row.user_id) current.users.add(row.user_id);
+    current.questions += row.total_questions ?? 0;
+    current.durationSec += row.duration_seconds ?? 0;
+    current.accSum += safeAccuracy(row);
     trendMap.set(day, current);
   }
-
-  const dailyTrendLast14d = Array.from(trendMap.entries())
+  const dailyTrendLast14d: AdminDailyTrendPoint[] = Array.from(trendMap.entries())
     .map(([date, stats]) => ({
       date,
       sessions: stats.sessions,
       users: stats.users.size,
       questions: stats.questions,
       studyHours: Number((stats.durationSec / 3600).toFixed(1)),
-      avgAccuracy: stats.sessions > 0 ? Number(((stats.accuracySum / stats.sessions) * 100).toFixed(1)) : 0,
+      avgAccuracy:
+        stats.sessions > 0
+          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          : 0,
     }))
     .sort((a, b) => a.date.localeCompare(b.date));
 
-  const userBenchMap = new Map<string, {
-    sessions: number;
-    questions: number;
-    durationSec: number;
-    accuracySum: number;
-  }>();
+  const userBenchMap = new Map<
+    string,
+    { sessions: number; questions: number; durationSec: number; accSum: number }
+  >();
   for (const row of sessions30d) {
-    const userId = row.user_id as string | null;
-    if (!userId) continue;
-    const totalQ = (row.total_questions as number | null) ?? 0;
-    const correctQ = (row.correct_answers as number | null) ?? 0;
-    const acc =
-      typeof (row.accuracy as number | null) === "number"
-        ? (row.accuracy as number)
-        : totalQ > 0
-          ? correctQ / totalQ
-          : 0;
-    const current = userBenchMap.get(userId) ?? {
+    if (!row.user_id) continue;
+    const stats = userBenchMap.get(row.user_id) ?? {
       sessions: 0,
       questions: 0,
       durationSec: 0,
-      accuracySum: 0,
+      accSum: 0,
     };
-    current.sessions += 1;
-    current.questions += totalQ;
-    current.durationSec += (row.duration_seconds as number | null) ?? 0;
-    current.accuracySum += acc;
-    userBenchMap.set(userId, current);
+    stats.sessions += 1;
+    stats.questions += row.total_questions ?? 0;
+    stats.durationSec += row.duration_seconds ?? 0;
+    stats.accSum += safeAccuracy(row);
+    userBenchMap.set(row.user_id, stats);
   }
-
-  const benchmarkUserIds = Array.from(userBenchMap.keys());
-  const profileNameMap = new Map<string, string>();
-  if (benchmarkUserIds.length > 0) {
-    const { data: profileRows } = await supabase
-      .from("profiles")
-      .select("id, display_name")
-      .in("id", benchmarkUserIds);
-    for (const row of profileRows ?? []) {
-      profileNameMap.set(row.id as string, (row.display_name as string | null) ?? "Użytkownik");
-    }
-  }
-
-  const userBenchmarksLast30d = Array.from(userBenchMap.entries())
-    .map(([userId, stats]) => ({
-      userId,
-      displayName: profileNameMap.get(userId) ?? "Użytkownik",
-      sessions: stats.sessions,
-      questions: stats.questions,
-      studyHours: Number((stats.durationSec / 3600).toFixed(1)),
-      avgAccuracy: stats.sessions > 0 ? Number(((stats.accuracySum / stats.sessions) * 100).toFixed(1)) : 0,
-    }))
+  const userBenchmarksLast30d: AdminUserBenchmark[] = Array.from(userBenchMap.entries())
+    .map(([userId, stats]) => {
+      const profile = profileMap.get(userId);
+      return {
+        userId,
+        displayName: profile?.displayName ?? "Użytkownik",
+        track: profile ? TRACK_LABEL[profile.track] : null,
+        year: profile?.year ?? null,
+        sessions: stats.sessions,
+        questions: stats.questions,
+        studyHours: Number((stats.durationSec / 3600).toFixed(1)),
+        avgAccuracy:
+          stats.sessions > 0
+            ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+            : 0,
+      };
+    })
     .sort((a, b) => {
       if (b.sessions !== a.sessions) return b.sessions - a.sessions;
       return b.studyHours - a.studyHours;
     })
-    .slice(0, 12);
+    .slice(0, 15);
 
   return {
     totalQuestions: questionsRes.count ?? 0,
     totalUsers: usersRes.count ?? 0,
+    paidUsers: paidUsersRes.count ?? 0,
     pendingReports: reportsRes.count ?? 0,
     sessionsToday: sessionsTodayRes.count ?? 0,
     sessionsLast7d,
+    sessionsLast30d,
     answeredQuestionsLast7d,
+    answeredQuestionsLast30d,
     completedTestsLast7d,
     averageAccuracyLast7d,
+    averageAccuracyLast30d,
     studyHoursLast7d,
+    studyHoursLast30d,
     averageSessionMinutesLast7d,
     uniqueActiveUsersLast7d,
+    uniqueActiveUsersLast30d,
+    newRegistrationsLast7d,
+    newRegistrationsLast30d,
+    peakHour,
+    peakDayOfWeek,
     topUser,
+    userSegments,
+    hourOfDayLast30d,
+    dayOfWeekLast30d,
+    heatmapLast30d,
+    heatmapMaxSessions,
+    subjectPopularityLast30d,
+    trackPerformanceLast30d,
+    engagementLast30d,
+    subscriptionBreakdown,
+    registrationsLast30d,
     modeBreakdownLast7d,
     dailyTrendLast14d,
     userBenchmarksLast30d,

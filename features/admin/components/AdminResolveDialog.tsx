@@ -110,7 +110,7 @@ export function AdminResolveDialog({
             </Dialog.Close>
           </header>
 
-          <div className="flex-1 overflow-y-auto px-5 py-4">
+          <div className="flex-1 overflow-y-auto px-5 py-4 [overflow-anchor:none]">
             <section className="rounded-card border border-border bg-background/60 p-3">
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <InfoBlock label="Kategoria" value={report.category} />

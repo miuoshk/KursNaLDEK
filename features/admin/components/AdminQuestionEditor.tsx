@@ -208,7 +208,7 @@ export function AdminQuestionEditor({
   }, [state, question.id, reportId, onSaved]);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex min-w-0 flex-col gap-4">
       <div className="grid grid-cols-3 gap-2 rounded-btn bg-background/60 px-3 py-2 text-body-xs text-secondary">
         <Meta label="ID" value={question.id} />
         <Meta label="Typ" value={question.questionType ?? "—"} />
@@ -239,7 +239,11 @@ export function AdminQuestionEditor({
             </button>
           )}
         </div>
-        <div className="flex flex-col gap-2">
+        <div
+          className="flex flex-col gap-2"
+          role="radiogroup"
+          aria-label="Poprawna odpowiedź"
+        >
           {state.options.map((opt) => {
             const isCorrect = opt.id === state.correctOptionId;
             return (
@@ -252,34 +256,33 @@ export function AdminQuestionEditor({
                     : "border-border bg-background",
                 )}
               >
-                <label
-                  className={cn(
-                    "mt-1 flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded-full font-body text-body-xs font-medium uppercase",
-                    isCorrect
-                      ? "bg-success text-brand-bg"
-                      : "bg-card text-secondary",
-                  )}
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={isCorrect}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setState((p) => ({ ...p, correctOptionId: opt.id }));
+                  }}
                   title={
                     isCorrect ? "Aktualnie poprawna" : "Oznacz jako poprawną"
                   }
+                  className={cn(
+                    "mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
+                    "font-body text-body-xs font-medium uppercase",
+                    "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60",
+                    isCorrect
+                      ? "bg-success text-brand-bg"
+                      : "bg-card text-secondary hover:bg-white/10",
+                  )}
                 >
-                  <input
-                    type="radio"
-                    name="correct-option"
-                    value={opt.id}
-                    checked={isCorrect}
-                    onChange={() =>
-                      setState((p) => ({ ...p, correctOptionId: opt.id }))
-                    }
-                    className="sr-only"
-                  />
                   {opt.id.toUpperCase()}
-                </label>
+                </button>
                 <textarea
                   value={opt.text}
                   onChange={(e) => updateOption(opt.id, e.target.value)}
                   rows={2}
-                  className="flex-1 resize-none rounded-btn border border-border bg-background px-2 py-1.5 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
+                  className="min-w-0 flex-1 resize-none rounded-btn border border-border bg-background px-2 py-1.5 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
                 />
                 {state.options.length > 2 && (
                   <button

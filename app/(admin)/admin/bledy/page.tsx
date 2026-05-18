@@ -11,7 +11,9 @@ export default async function AdminReportsPage({ searchParams }: PageProps) {
 
   return (
     <div>
-      <h1 className="font-heading text-heading-xl text-primary">Zgłoszenia błędów</h1>
+      <h1 className="font-heading text-heading-lg text-primary sm:text-heading-xl">
+        Zgłoszenia błędów
+      </h1>
       <AdminReportsTable reports={reports} currentStatus={sp.status} />
     </div>
   );

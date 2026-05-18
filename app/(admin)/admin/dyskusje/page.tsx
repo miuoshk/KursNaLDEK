@@ -11,7 +11,9 @@ export default async function AdminDiscussionsPage({ searchParams }: PageProps) 
 
   return (
     <div>
-      <h1 className="font-heading text-heading-xl text-primary">Dyskusje pod pytaniami</h1>
+      <h1 className="font-heading text-heading-lg text-primary sm:text-heading-xl">
+        Dyskusje pod pytaniami
+      </h1>
       <AdminDiscussionsTable rows={rows} currentSearch={sp.search} />
     </div>
   );

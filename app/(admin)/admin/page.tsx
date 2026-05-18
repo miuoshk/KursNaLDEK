@@ -44,10 +44,12 @@ export default async function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-10">
       <header>
-        <h1 className="font-heading text-heading-xl text-primary">Panel admina</h1>
+        <h1 className="font-heading text-heading-lg text-primary sm:text-heading-xl">
+          Przegląd produktu
+        </h1>
         <p className="mt-2 font-body text-body-sm text-secondary">
-          Pełny przegląd produktu: kto i kiedy się uczy, jak wypadają poszczególne
-          kierunki, oraz benchmarki jakości i zaangażowania.
+          Kto i kiedy się uczy, jak wypadają poszczególne kierunki, oraz benchmarki
+          jakości i zaangażowania.
         </p>
       </header>
 

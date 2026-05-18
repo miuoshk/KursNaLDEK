@@ -40,7 +40,9 @@ export default async function AdminQuestionsPage({ searchParams }: PageProps) {
 
   return (
     <div>
-      <h1 className="font-heading text-heading-xl text-primary">Zarządzanie pytaniami</h1>
+      <h1 className="font-heading text-heading-lg text-primary sm:text-heading-xl">
+        Zarządzanie pytaniami
+      </h1>
       <p className="mt-2 font-body text-body-sm text-secondary">
         Przeglądaj, edytuj i wyłączaj pytania. Wyszukiwarka obsługuje też
         słowa kluczowe w wyjaśnieniach (np. „kreatynina", „znieczulenie miejscowe").

@@ -31,7 +31,7 @@ export function LeaderboardTable({
   return (
     <section>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="font-heading text-heading-md text-primary">
+        <h2 className="font-heading text-xl font-bold text-primary">
           Ranking — Nauki Podstawowe
         </h2>
         <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">

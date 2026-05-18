@@ -26,7 +26,7 @@ export function NotificationsSection({ profile }: Props) {
 
   return (
     <section>
-      <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">POWIADOMIENIA</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Powiadomienia</h2>
       <ul className="mt-6 space-y-6">
         <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>

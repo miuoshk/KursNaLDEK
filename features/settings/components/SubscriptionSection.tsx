@@ -17,7 +17,7 @@ export function SubscriptionSection({ profile }: Props) {
 
   return (
     <section>
-      <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">SUBSKRYPCJA</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Subskrypcja</h2>
       <div className="mt-6 space-y-4">
         <div className="flex flex-wrap items-center gap-3">
           <span

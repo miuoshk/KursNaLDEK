@@ -11,10 +11,6 @@ import { loadAchievementPreview } from "@/features/settings/server/loadAchieveme
 import { loadSettings } from "@/features/settings/server/loadSettings";
 import { createClient } from "@/lib/supabase/server";
 
-function Divider() {
-  return <div className="border-t border-[rgba(255,255,255,0.06)] py-8" />;
-}
-
 export default async function UstawieniaPage() {
   const supabase = await createClient();
   const {
@@ -29,23 +25,22 @@ export default async function UstawieniaPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-2xl space-y-8">
       <SettingsBreadcrumb />
-      <h1 className="font-heading text-heading-xl text-primary">Ustawienia</h1>
-      <div className="mt-10">
-        <ProfileSection profile={profile} email={resolvedEmail} />
-      </div>
-      <Divider />
+      <header>
+        <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+          Ustawienia
+        </h1>
+        <p className="mt-1 font-body text-sm text-secondary">
+          Zarządzaj profilem, planem nauki i kontem.
+        </p>
+      </header>
+      <ProfileSection profile={profile} email={resolvedEmail} />
       <ExamDateSection examDate={profile.exam_date} />
-      <Divider />
       <SubscriptionSection profile={profile} />
-      <Divider />
       <StudyPreferencesSection profile={profile} />
-      <Divider />
       <NotificationsSection profile={profile} />
-      <Divider />
       <AccountSection email={resolvedEmail} />
-      <Divider />
       <AchievementsBadgesPreview items={badges} />
     </div>
   );

@@ -38,7 +38,7 @@ export function AccountSection({ email }: Props) {
 
   return (
     <section>
-      <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">KONTO</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Konto</h2>
       <div className="mt-6 space-y-4">
         <button
           type="button"

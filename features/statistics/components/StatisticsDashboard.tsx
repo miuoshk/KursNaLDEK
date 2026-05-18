@@ -26,13 +26,15 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
 
   if (data.totalQuestionsAnswered === 0) {
     return (
-      <div className="space-y-10">
-        <div>
-          <h1 className="font-heading text-heading-xl text-primary">Statystyki</h1>
-          <p className="mt-2 font-body text-body-md text-secondary">
+      <div className="space-y-8">
+        <header>
+          <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+            Statystyki
+          </h1>
+          <p className="mt-1 font-body text-sm text-secondary">
             Analiza postępów i predykcja wyniku końcowego
           </p>
-        </div>
+        </header>
         <EmptyState
           icon={BarChart3}
           title="Brak danych do wyświetlenia"
@@ -50,11 +52,13 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
   };
 
   return (
-    <div className="space-y-10">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div className="space-y-8">
+      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="font-heading text-heading-xl text-primary">Statystyki</h1>
-          <p className="mt-2 font-body text-body-md text-secondary">
+          <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+            Statystyki
+          </h1>
+          <p className="mt-1 font-body text-sm text-secondary">
             Analiza postępów i predykcja wyniku końcowego
           </p>
         </div>
@@ -75,7 +79,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
             </button>
           ))}
         </div>
-      </div>
+      </header>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <ReadinessCard data={data} />
@@ -92,7 +96,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-card bg-card p-6">
-          <h2 className="font-heading text-heading-sm text-primary">
+          <h2 className="font-heading text-xl font-bold text-primary">
             Opanowanie dziedzin
           </h2>
           <div className="mt-4">
@@ -100,7 +104,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
           </div>
         </section>
         <section className="rounded-card bg-card p-6">
-          <h2 className="font-heading text-heading-sm text-primary">
+          <h2 className="font-heading text-xl font-bold text-primary">
             Czas nauki (godziny)
           </h2>
           <div className="mt-4">
@@ -111,7 +115,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-card bg-card p-6">
-          <h2 className="font-heading text-heading-sm text-primary">
+          <h2 className="font-heading text-xl font-bold text-primary">
             Trend poprawności (30 dni)
           </h2>
           <div className="mt-4">
@@ -119,7 +123,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
           </div>
         </section>
         <section className="rounded-card bg-card p-6">
-          <h2 className="font-heading text-heading-sm text-primary">
+          <h2 className="font-heading text-xl font-bold text-primary">
             Słabe ogniwa (top 5)
           </h2>
           <div className="mt-4">

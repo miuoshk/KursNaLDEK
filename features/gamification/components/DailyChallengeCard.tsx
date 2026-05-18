@@ -1,7 +1,7 @@
 export function DailyChallengeSection() {
   return (
     <section>
-      <h2 className="font-heading text-heading-md text-primary">Wyzwania</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Wyzwania</h2>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <article className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-5">
           <h3 className="font-body text-body-md font-semibold text-primary">

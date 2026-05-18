@@ -51,7 +51,7 @@ export function StudyPreferencesSection({ profile }: Props) {
   return (
     <section>
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">NAUKA</h2>
+        <h2 className="font-heading text-xl font-bold text-primary">Nauka</h2>
         {savedFlash ? (
           <span className="font-body text-body-xs text-brand-sage">Zapisano</span>
         ) : null}

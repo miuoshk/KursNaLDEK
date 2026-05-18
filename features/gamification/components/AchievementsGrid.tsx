@@ -7,7 +7,7 @@ export function AchievementsGrid({ achievements }: { achievements: AchievementRo
 
   return (
     <section>
-      <h2 className="font-heading text-heading-md text-primary">Osiągnięcia</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Osiągnięcia</h2>
       <p className="mt-1 font-body text-body-sm text-muted">
         {unlocked} / {total} odblokowanych
       </p>

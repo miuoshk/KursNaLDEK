@@ -29,13 +29,15 @@ export default async function OsiagnieciaPage({
   const data = await loadGamification(supabase, user.id, period);
 
   return (
-    <div className="space-y-10">
-      <div>
-        <h1 className="font-heading text-heading-xl text-primary">Osiągnięcia</h1>
-        <p className="mt-2 font-body text-body-md text-secondary">
+    <div className="space-y-8">
+      <header>
+        <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
+          Osiągnięcia
+        </h1>
+        <p className="mt-1 font-body text-sm text-secondary">
           Rangi, XP i Twój postęp w nauce.
         </p>
-      </div>
+      </header>
 
       <PlayerCard
         xp={data.xp}

@@ -9,7 +9,7 @@ type Props = { items: BadgePreviewItem[] };
 export function AchievementsBadgesPreview({ items }: Props) {
   return (
     <section>
-      <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">OSIĄGNIĘCIA</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Osiągnięcia</h2>
       <div className="mt-6 grid grid-cols-6 gap-3 sm:max-w-md">
         {items.map((item) => {
           const Icon = achievementLucide(item.icon);

@@ -79,9 +79,7 @@ export function ExamDateSection({ examDate }: Props) {
 
   return (
     <section>
-      <h2 className="text-body-xs font-medium uppercase tracking-widest text-muted">
-        EGZAMIN
-      </h2>
+      <h2 className="font-heading text-xl font-bold text-primary">Egzamin</h2>
       <div className="mt-6 space-y-2">
         <label htmlFor="exam-date" className="font-body text-body-sm text-secondary">
           Kiedy masz egzamin?

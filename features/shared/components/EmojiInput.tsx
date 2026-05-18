@@ -92,7 +92,7 @@ export function EmojiInput({
           type="text"
           inputMode="text"
           autoComplete="off"
-          maxLength={16}
+          maxLength={64}
           required={required}
           disabled={disabled}
           value={current}

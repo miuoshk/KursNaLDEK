@@ -33,6 +33,7 @@ import { AdminTrackPerformanceChart } from "@/features/admin/components/AdminTra
 import { AdminEngagementCard } from "@/features/admin/components/AdminEngagementCard";
 import { AdminSubscriptionDonut } from "@/features/admin/components/AdminSubscriptionDonut";
 import { AdminRegistrationsTrendChart } from "@/features/admin/components/AdminRegistrationsTrendChart";
+import { AdminTrendChart } from "@/features/admin/components/AdminTrendChart";
 
 function formatHour(h: number): string {
   return `${h.toString().padStart(2, "0")}:00`;
@@ -131,6 +132,21 @@ export default async function AdminDashboardPage() {
             tone={data.pendingReports > 0 ? "warning" : "neutral"}
             hint="Wymagają reakcji admina"
           />
+        </div>
+      </section>
+
+      <section>
+        <SectionHeader
+          title="Trendy — filtruj kierunkiem, rokiem i zakresem"
+          subtitle="Każdy wykres ma własne kontrolki; dane na żywo z bazy"
+        />
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+          <AdminTrendChart metric="sessions" />
+          <AdminTrendChart metric="time" />
+          <AdminTrendChart metric="answers" />
+          <AdminTrendChart metric="users" />
+          <AdminTrendChart metric="questions" />
+          <AdminTrendChart metric="accuracy" />
         </div>
       </section>
 

@@ -52,7 +52,17 @@ export function useSessionKeyboardShortcuts({
         return;
       }
 
-      if (e.key === "ArrowRight" || e.key === "Enter") {
+      if (e.key === "ArrowRight") {
+        if (currentIndex >= total - 1 && !(isShowingFeedback || isCurrentAnswered)) {
+          // Na ostatnim pytaniu bez odpowiedzi nie pomijamy — niech użytkownik wybierze albo zakończy świadomie.
+          return;
+        }
+        e.preventDefault();
+        onNext();
+        return;
+      }
+
+      if (e.key === "Enter") {
         if (isShowingFeedback || isCurrentAnswered) {
           e.preventDefault();
           onNext();

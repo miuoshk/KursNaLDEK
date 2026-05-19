@@ -8,8 +8,11 @@ import { setUserRole } from "@/features/admin/server/adminActions";
 import type {
   AdminUserRow,
   AdminUserRole,
+  AdminUserSortBy,
+  AdminUserSortDir,
   AdminUserTrack,
 } from "@/features/admin/server/loadAdminUsers";
+import { ChevronDown, ChevronUp, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ROLE_FILTERS: ReadonlyArray<{ value: AdminUserRole | ""; label: string }> = [
@@ -72,6 +75,8 @@ type AdminUsersTableProps = {
   currentRole: AdminUserRole | "";
   currentTrack: AdminUserTrack;
   currentYear: number | null;
+  currentSortBy: AdminUserSortBy;
+  currentSortDir: AdminUserSortDir;
   availableTracks: Array<{ value: AdminUserTrack; label: string; count: number }>;
   availableYears: Array<{ value: number; count: number }>;
 };
@@ -84,6 +89,8 @@ export function AdminUsersTable({
   currentRole,
   currentTrack,
   currentYear,
+  currentSortBy,
+  currentSortDir,
   availableTracks,
   availableYears,
 }: AdminUsersTableProps) {
@@ -105,20 +112,35 @@ export function AdminUsersTable({
       role?: AdminUserRole | "";
       track?: AdminUserTrack;
       year?: number | null;
+      sortBy?: AdminUserSortBy;
+      sortDir?: AdminUserSortDir;
     }) => {
       const params = new URLSearchParams();
       const q = next.q !== undefined ? next.q : currentSearch;
       const role = next.role !== undefined ? next.role : currentRole;
       const track = next.track !== undefined ? next.track : currentTrack;
       const year = next.year !== undefined ? next.year : currentYear;
+      const sortBy = next.sortBy !== undefined ? next.sortBy : currentSortBy;
+      const sortDir = next.sortDir !== undefined ? next.sortDir : currentSortDir;
       if (q && q.trim()) params.set("q", q.trim());
       if (role) params.set("role", role);
       if (track) params.set("track", track);
       if (year !== null && year !== undefined) params.set("year", String(year));
+      if (sortBy && sortBy !== "createdAt") params.set("sortBy", sortBy);
+      if (sortDir && sortDir !== "desc") params.set("sortDir", sortDir);
       const qs = params.toString();
       return qs ? `/admin/uzytkownicy?${qs}` : "/admin/uzytkownicy";
     },
-    [currentSearch, currentRole, currentTrack, currentYear],
+    [currentSearch, currentRole, currentTrack, currentYear, currentSortBy, currentSortDir],
+  );
+
+  const sortHref = useCallback(
+    (field: AdminUserSortBy) => {
+      const isActive = currentSortBy === field;
+      const nextDir: AdminUserSortDir = isActive && currentSortDir === "asc" ? "desc" : "asc";
+      return buildHref({ sortBy: field, sortDir: nextDir });
+    },
+    [buildHref, currentSortBy, currentSortDir],
   );
 
   const handleSearchSubmit = useCallback(
@@ -311,14 +333,62 @@ export function AdminUsersTable({
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-border bg-card">
-              <Th>Użytkownik</Th>
-              <Th>E-mail</Th>
-              <Th>Rola</Th>
-              <Th>Kierunek</Th>
-              <Th>Rok</Th>
-              <Th>Subskrypcja</Th>
-              <Th>Dołączył</Th>
-              <Th>Ost. logowanie</Th>
+              <SortableTh
+                label="Użytkownik"
+                field="displayName"
+                href={sortHref("displayName")}
+                isActive={currentSortBy === "displayName"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="E-mail"
+                field="email"
+                href={sortHref("email")}
+                isActive={currentSortBy === "email"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Rola"
+                field="role"
+                href={sortHref("role")}
+                isActive={currentSortBy === "role"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Kierunek"
+                field="track"
+                href={sortHref("track")}
+                isActive={currentSortBy === "track"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Rok"
+                field="currentYear"
+                href={sortHref("currentYear")}
+                isActive={currentSortBy === "currentYear"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Subskrypcja"
+                field="subscriptionStatus"
+                href={sortHref("subscriptionStatus")}
+                isActive={currentSortBy === "subscriptionStatus"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Dołączył"
+                field="createdAt"
+                href={sortHref("createdAt")}
+                isActive={currentSortBy === "createdAt"}
+                dir={currentSortDir}
+              />
+              <SortableTh
+                label="Ost. logowanie"
+                field="lastSignInAt"
+                href={sortHref("lastSignInAt")}
+                isActive={currentSortBy === "lastSignInAt"}
+                dir={currentSortDir}
+              />
               {canEditRoles && <Th className="text-right">Akcja</Th>}
             </tr>
           </thead>
@@ -473,6 +543,43 @@ function Th({
       )}
     >
       {children}
+    </th>
+  );
+}
+
+function SortableTh({
+  label,
+  href,
+  isActive,
+  dir,
+}: {
+  label: string;
+  field: AdminUserSortBy;
+  href: string;
+  isActive: boolean;
+  dir: AdminUserSortDir;
+}) {
+  return (
+    <th className="px-3 py-3">
+      <Link
+        href={href}
+        className={cn(
+          "group inline-flex items-center gap-1 font-body text-body-xs uppercase tracking-widest transition-colors",
+          isActive ? "text-primary" : "text-muted hover:text-secondary",
+        )}
+        aria-sort={isActive ? (dir === "asc" ? "ascending" : "descending") : "none"}
+      >
+        <span>{label}</span>
+        {isActive ? (
+          dir === "asc" ? (
+            <ChevronUp className="h-3 w-3" />
+          ) : (
+            <ChevronDown className="h-3 w-3" />
+          )
+        ) : (
+          <ChevronsUpDown className="h-3 w-3 opacity-60 transition-opacity group-hover:opacity-100" />
+        )}
+      </Link>
     </th>
   );
 }

@@ -1,11 +1,17 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { resolveReport } from "@/features/admin/server/adminActions";
-import type { AdminReport } from "@/features/admin/server/loadAdminReports";
+import type {
+  AdminReport,
+  AdminReportFacets,
+  AdminReportSortBy,
+  SortDirection,
+} from "@/features/admin/server/loadAdminReports";
 import { AdminResolveDialog } from "@/features/admin/components/AdminResolveDialog";
+import { AdminSortableHeader } from "@/features/admin/components/AdminSortableHeader";
 import { cn } from "@/lib/utils";
 
 const STATUS_FILTERS = [
@@ -39,13 +45,36 @@ function formatDate(iso: string) {
   });
 }
 
-type AdminReportsTableProps = {
+function trackLabel(track: string | null) {
+  if (track === "lekarski") return "Lekarski";
+  if (track === "stomatologia") return "Stomatologia";
+  return track ?? "—";
+}
+
+type Props = {
   reports: AdminReport[];
+  facets: AdminReportFacets;
   currentStatus?: string;
+  currentTrack?: string;
+  currentYear?: number;
+  currentSubject?: string;
+  currentSortBy: AdminReportSortBy;
+  currentSortDir: SortDirection;
 };
 
-export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableProps) {
+export function AdminReportsTable({
+  reports,
+  facets,
+  currentStatus,
+  currentTrack,
+  currentYear,
+  currentSubject,
+  currentSortBy,
+  currentSortDir,
+}: Props) {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [resolving, setResolving] = useState<AdminReport | null>(null);
 
   const handleResolve = useCallback(
@@ -62,13 +91,42 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
     [resolving, router],
   );
 
+  const navigateWith = useCallback(
+    (mutate: (params: URLSearchParams) => void) => {
+      const params = new URLSearchParams(searchParams?.toString() ?? "");
+      mutate(params);
+      const qs = params.toString();
+      router.push(qs ? `${pathname}?${qs}` : pathname);
+    },
+    [pathname, router, searchParams],
+  );
+
+  const yearOptions = useMemo(() => {
+    const scoped = currentTrack
+      ? facets.subjects.filter((s) => s.track === currentTrack)
+      : facets.subjects;
+    return Array.from(new Set(scoped.map((s) => s.year))).sort((a, b) => a - b);
+  }, [facets.subjects, currentTrack]);
+
+  const subjectOptions = useMemo(() => {
+    return facets.subjects
+      .filter((s) => (currentTrack ? s.track === currentTrack : true))
+      .filter((s) => (currentYear != null ? s.year === currentYear : true));
+  }, [facets.subjects, currentTrack, currentYear]);
+
   return (
     <div className="mt-6">
       <div className="mb-4 flex flex-wrap gap-2">
         {STATUS_FILTERS.map((f) => (
-          <Link
+          <button
             key={f.value}
-            href={f.value ? `/admin/bledy?status=${f.value}` : "/admin/bledy"}
+            type="button"
+            onClick={() =>
+              navigateWith((p) => {
+                if (f.value) p.set("status", f.value);
+                else p.delete("status");
+              })
+            }
             className={cn(
               "rounded-pill px-3 py-1 font-body text-body-sm transition-colors",
               (currentStatus ?? "") === f.value
@@ -77,25 +135,123 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
             )}
           >
             {f.label}
-          </Link>
+          </button>
         ))}
+      </div>
+
+      <div className="mb-4 grid gap-3 sm:grid-cols-3">
+        <div>
+          <label className="font-body text-body-xs uppercase tracking-widest text-muted">
+            Kierunek
+          </label>
+          <select
+            value={currentTrack ?? ""}
+            onChange={(e) =>
+              navigateWith((p) => {
+                if (e.target.value) p.set("track", e.target.value);
+                else p.delete("track");
+                p.delete("year");
+                p.delete("subject");
+              })
+            }
+            className="mt-1 w-full rounded-btn border border-border bg-card px-3 py-2 font-body text-body-sm text-primary"
+          >
+            <option value="">Wszystkie</option>
+            {facets.tracks.map((t) => (
+              <option key={t} value={t}>
+                {trackLabel(t)}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="font-body text-body-xs uppercase tracking-widest text-muted">
+            Rok
+          </label>
+          <select
+            value={currentYear != null ? String(currentYear) : ""}
+            onChange={(e) =>
+              navigateWith((p) => {
+                if (e.target.value) p.set("year", e.target.value);
+                else p.delete("year");
+                p.delete("subject");
+              })
+            }
+            className="mt-1 w-full rounded-btn border border-border bg-card px-3 py-2 font-body text-body-sm text-primary"
+          >
+            <option value="">Wszystkie</option>
+            {yearOptions.map((y) => (
+              <option key={y} value={y}>
+                Rok {y}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="font-body text-body-xs uppercase tracking-widest text-muted">
+            Przedmiot
+          </label>
+          <select
+            value={currentSubject ?? ""}
+            onChange={(e) =>
+              navigateWith((p) => {
+                if (e.target.value) p.set("subject", e.target.value);
+                else p.delete("subject");
+              })
+            }
+            className="mt-1 w-full rounded-btn border border-border bg-card px-3 py-2 font-body text-body-sm text-primary"
+          >
+            <option value="">Wszystkie</option>
+            {subjectOptions.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="overflow-x-auto rounded-card border border-border">
         <table className="w-full text-left">
           <thead>
             <tr className="border-b border-border bg-card">
-              <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
-                Data
+              <th className="px-3 py-3">
+                <AdminSortableHeader
+                  label="Data"
+                  field="createdAt"
+                  currentSortBy={currentSortBy}
+                  currentSortDir={currentSortDir}
+                />
               </th>
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
                 Pytanie
               </th>
-              <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
-                Kategoria
+              <th className="px-3 py-3">
+                <AdminSortableHeader
+                  label="Przedmiot"
+                  field="subject"
+                  currentSortBy={currentSortBy}
+                  currentSortDir={currentSortDir}
+                />
               </th>
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
-                Status
+                Rok / kierunek
+              </th>
+              <th className="px-3 py-3">
+                <AdminSortableHeader
+                  label="Kategoria"
+                  field="category"
+                  currentSortBy={currentSortBy}
+                  currentSortDir={currentSortDir}
+                />
+              </th>
+              <th className="px-3 py-3">
+                <AdminSortableHeader
+                  label="Status"
+                  field="status"
+                  currentSortBy={currentSortBy}
+                  currentSortDir={currentSortDir}
+                />
               </th>
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
                 Użytkownik
@@ -108,7 +264,7 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
           <tbody>
             {reports.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-3 py-8 text-center font-body text-body-sm text-muted">
+                <td colSpan={8} className="px-3 py-8 text-center font-body text-body-sm text-muted">
                   Brak zgłoszeń
                 </td>
               </tr>
@@ -126,6 +282,12 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
                     <td className="max-w-[250px] truncate px-3 py-3 font-body text-body-sm text-primary">
                       {r.questionTextShort}
                     </td>
+                    <td className="px-3 py-3 font-body text-body-sm text-secondary">
+                      {r.subjectName ?? "—"}
+                    </td>
+                    <td className="px-3 py-3 font-body text-body-xs text-secondary">
+                      {r.year != null ? `Rok ${r.year}` : "—"} · {trackLabel(r.track)}
+                    </td>
                     <td className="px-3 py-3 font-body text-body-xs text-secondary">
                       {r.category}
                     </td>
@@ -138,13 +300,21 @@ export function AdminReportsTable({ reports, currentStatus }: AdminReportsTableP
                       {r.userName}
                     </td>
                     <td className="px-3 py-3">
-                      <button
-                        type="button"
-                        onClick={() => setResolving(r)}
-                        className="font-body text-body-xs text-brand-gold transition-colors hover:text-white"
-                      >
-                        Rozpatrz
-                      </button>
+                      <div className="flex flex-col gap-1">
+                        <button
+                          type="button"
+                          onClick={() => setResolving(r)}
+                          className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
+                        >
+                          Rozpatrz
+                        </button>
+                        <Link
+                          href={`/admin/pytania?q=${encodeURIComponent(r.questionId)}`}
+                          className="font-body text-body-xs text-secondary transition-colors hover:text-white"
+                        >
+                          Pytanie →
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 );

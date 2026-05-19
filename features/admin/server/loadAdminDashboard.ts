@@ -95,10 +95,29 @@ export type AdminUserBenchmark = {
   userId: string;
   displayName: string;
   track: string | null;
+  trackKey: TrackKey | null;
   year: number | null;
   sessions: number;
   questions: number;
   studyHours: number;
+  avgAccuracy: number;
+  totalPlatformMinutes: number;
+  totalTestMinutes: number;
+  avgTestDurationMinutes: number;
+};
+
+export type AdminCohortBenchmark = {
+  trackKey: TrackKey;
+  trackLabel: string;
+  year: number | null;
+  label: string;
+  headcount: number;
+  activeCount: number;
+  paidCount: number;
+  paidPct: number;
+  avgPlatformMinutes: number;
+  avgTestMinutes: number;
+  avgTestDurationMinutes: number;
   avgAccuracy: number;
 };
 
@@ -145,6 +164,7 @@ export type AdminDashboardData = {
   modeBreakdownLast7d: AdminModeBenchmark[];
   dailyTrendLast14d: AdminDailyTrendPoint[];
   userBenchmarksLast30d: AdminUserBenchmark[];
+  cohortBenchmarksLast30d: AdminCohortBenchmark[];
 };
 
 const DOW_LABELS = ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "Sb"];
@@ -730,9 +750,18 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     }))
     .sort((a, b) => a.date.localeCompare(b.date));
 
+  const TEST_MODES = new Set(["inteligentna", "przeglad", "osce_topic"]);
+
   const userBenchMap = new Map<
     string,
-    { sessions: number; questions: number; durationSec: number; accSum: number }
+    {
+      sessions: number;
+      questions: number;
+      durationSec: number;
+      accSum: number;
+      testSessions: number;
+      testDurationSec: number;
+    }
   >();
   for (const row of sessions30d) {
     if (!row.user_id) continue;
@@ -741,20 +770,34 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       questions: 0,
       durationSec: 0,
       accSum: 0,
+      testSessions: 0,
+      testDurationSec: 0,
     };
     stats.sessions += 1;
     stats.questions += row.total_questions ?? 0;
     stats.durationSec += row.duration_seconds ?? 0;
     stats.accSum += safeAccuracy(row);
+    const modeKey = ((row.mode as string | null) ?? "").toLowerCase();
+    if (TEST_MODES.has(modeKey)) {
+      stats.testSessions += 1;
+      stats.testDurationSec += row.duration_seconds ?? 0;
+    }
     userBenchMap.set(row.user_id, stats);
   }
   const userBenchmarksLast30d: AdminUserBenchmark[] = Array.from(userBenchMap.entries())
     .map(([userId, stats]) => {
       const profile = profileMap.get(userId);
+      const totalPlatformMinutes = Number((stats.durationSec / 60).toFixed(1));
+      const totalTestMinutes = Number((stats.testDurationSec / 60).toFixed(1));
+      const avgTestDurationMinutes =
+        stats.testSessions > 0
+          ? Number(((stats.testDurationSec / 60) / stats.testSessions).toFixed(1))
+          : 0;
       return {
         userId,
         displayName: profile?.displayName ?? "Użytkownik",
         track: profile ? TRACK_LABEL[profile.track] : null,
+        trackKey: profile?.track ?? null,
         year: profile?.year ?? null,
         sessions: stats.sessions,
         questions: stats.questions,
@@ -763,13 +806,94 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
           stats.sessions > 0
             ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
             : 0,
+        totalPlatformMinutes,
+        totalTestMinutes,
+        avgTestDurationMinutes,
       };
     })
     .sort((a, b) => {
       if (b.sessions !== a.sessions) return b.sessions - a.sessions;
       return b.studyHours - a.studyHours;
+    });
+
+  const cohortAggMap = new Map<
+    string,
+    {
+      trackKey: TrackKey;
+      year: number | null;
+      headcount: number;
+      activeCount: number;
+      paidCount: number;
+      platformSec: number;
+      testSec: number;
+      testSessions: number;
+      accSum: number;
+      accCount: number;
+    }
+  >();
+  for (const [uid, profile] of profileMap) {
+    const key = `${profile.track}|${profile.year ?? "-"}`;
+    const bucket = cohortAggMap.get(key) ?? {
+      trackKey: profile.track,
+      year: profile.year,
+      headcount: 0,
+      activeCount: 0,
+      paidCount: 0,
+      platformSec: 0,
+      testSec: 0,
+      testSessions: 0,
+      accSum: 0,
+      accCount: 0,
+    };
+    bucket.headcount += 1;
+    if (activeUsersSet30d.has(uid)) bucket.activeCount += 1;
+    if (profile.subscription === "active") bucket.paidCount += 1;
+    const stats = userBenchMap.get(uid);
+    if (stats) {
+      bucket.platformSec += stats.durationSec;
+      bucket.testSec += stats.testDurationSec;
+      bucket.testSessions += stats.testSessions;
+      bucket.accSum += stats.accSum;
+      bucket.accCount += stats.sessions;
+    }
+    cohortAggMap.set(key, bucket);
+  }
+  const cohortBenchmarksLast30d: AdminCohortBenchmark[] = Array.from(
+    cohortAggMap.values(),
+  )
+    .map((bucket) => {
+      const headcount = bucket.headcount;
+      const activeOrAll = bucket.activeCount > 0 ? bucket.activeCount : Math.max(headcount, 1);
+      return {
+        trackKey: bucket.trackKey,
+        trackLabel: TRACK_LABEL[bucket.trackKey],
+        year: bucket.year,
+        label: trackYearLabel(bucket.trackKey, bucket.year),
+        headcount,
+        activeCount: bucket.activeCount,
+        paidCount: bucket.paidCount,
+        paidPct:
+          headcount > 0
+            ? Number(((bucket.paidCount / headcount) * 100).toFixed(1))
+            : 0,
+        avgPlatformMinutes: Number(((bucket.platformSec / 60) / activeOrAll).toFixed(1)),
+        avgTestMinutes: Number(((bucket.testSec / 60) / activeOrAll).toFixed(1)),
+        avgTestDurationMinutes:
+          bucket.testSessions > 0
+            ? Number(((bucket.testSec / 60) / bucket.testSessions).toFixed(1))
+            : 0,
+        avgAccuracy:
+          bucket.accCount > 0
+            ? Number(((bucket.accSum / bucket.accCount) * 100).toFixed(1))
+            : 0,
+      };
     })
-    .slice(0, 15);
+    .sort((a, b) => {
+      if (a.trackKey !== b.trackKey) {
+        return TRACK_LABEL[a.trackKey].localeCompare(TRACK_LABEL[b.trackKey]);
+      }
+      return (a.year ?? 99) - (b.year ?? 99);
+    });
 
   return {
     totalQuestions: questionsRes.count ?? 0,
@@ -807,5 +931,6 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     modeBreakdownLast7d,
     dailyTrendLast14d,
     userBenchmarksLast30d,
+    cohortBenchmarksLast30d,
   };
 }

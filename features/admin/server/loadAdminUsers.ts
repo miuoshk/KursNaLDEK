@@ -17,9 +17,30 @@ export type AdminUserRow = {
   subscriptionStatus: string | null;
 };
 
+export type AdminUserSortBy =
+  | "displayName"
+  | "email"
+  | "role"
+  | "track"
+  | "currentYear"
+  | "subscriptionStatus"
+  | "createdAt"
+  | "lastSignInAt";
+
+export type AdminUserSortDir = "asc" | "desc";
+
 function normalizeRole(value: unknown): AdminUserRole {
   if (value === "admin" || value === "moderator") return value;
   return "student";
+}
+
+function cmp(a: string | number | null, b: string | number | null, dir: AdminUserSortDir): number {
+  const dirMul = dir === "asc" ? 1 : -1;
+  if (a == null && b == null) return 0;
+  if (a == null) return 1;
+  if (b == null) return -1;
+  if (typeof a === "number" && typeof b === "number") return (a - b) * dirMul;
+  return String(a).localeCompare(String(b), "pl", { numeric: true, sensitivity: "base" }) * dirMul;
 }
 
 /**
@@ -33,6 +54,8 @@ export async function loadAdminUsers(params?: {
   role?: AdminUserRole | "";
   track?: AdminUserTrack;
   year?: number | null;
+  sortBy?: AdminUserSortBy;
+  sortDir?: AdminUserSortDir;
 }): Promise<AdminUserRow[]> {
   const supabase = await createClient();
 
@@ -99,7 +122,7 @@ export async function loadAdminUsers(params?: {
   const trackFilter = params?.track;
   const yearFilter = params?.year ?? null;
 
-  return rows.filter((row) => {
+  const filtered = rows.filter((row) => {
     if (roleFilter && row.role !== roleFilter) return false;
     if (trackFilter) {
       if (trackFilter === "inny") {
@@ -113,6 +136,33 @@ export async function loadAdminUsers(params?: {
     return [row.displayName, row.fullName ?? "", row.email ?? "", row.id]
       .some((value) => value.toLowerCase().includes(search));
   });
+
+  const sortBy: AdminUserSortBy = params?.sortBy ?? "createdAt";
+  const sortDir: AdminUserSortDir = params?.sortDir ?? "desc";
+
+  filtered.sort((a, b) => {
+    switch (sortBy) {
+      case "displayName":
+        return cmp(a.displayName, b.displayName, sortDir);
+      case "email":
+        return cmp(a.email, b.email, sortDir);
+      case "role":
+        return cmp(a.role, b.role, sortDir);
+      case "track":
+        return cmp(a.track, b.track, sortDir);
+      case "currentYear":
+        return cmp(a.currentYear, b.currentYear, sortDir);
+      case "subscriptionStatus":
+        return cmp(a.subscriptionStatus, b.subscriptionStatus, sortDir);
+      case "lastSignInAt":
+        return cmp(a.lastSignInAt, b.lastSignInAt, sortDir);
+      case "createdAt":
+      default:
+        return cmp(a.createdAt, b.createdAt, sortDir);
+    }
+  });
+
+  return filtered;
 }
 
 /**

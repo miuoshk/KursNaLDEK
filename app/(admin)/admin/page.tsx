@@ -1,22 +1,29 @@
 import {
   Activity,
   AlertTriangle,
+  Banknote,
   BookOpen,
   Calendar,
   Clock,
   CreditCard,
   FileText,
   GraduationCap,
+  Percent,
   TrendingUp,
   Users,
   UserPlus,
   Zap,
 } from "lucide-react";
 import { loadAdminDashboard } from "@/features/admin/server/loadAdminDashboard";
+import { loadAdminFinance } from "@/features/admin/server/loadAdminFinance";
 import { AdminKpiCard } from "@/features/admin/components/AdminKpiCard";
+import { AdminFinanceKpiRow } from "@/features/admin/components/AdminFinanceKpiRow";
+import { AdminMrrTrendChart } from "@/features/admin/components/AdminMrrTrendChart";
+import { AdminPaidPctTable } from "@/features/admin/components/AdminPaidPctTable";
 import { AdminDailyTrendChart } from "@/features/admin/components/AdminDailyTrendChart";
 import { AdminModeBenchmarkTable } from "@/features/admin/components/AdminModeBenchmarkTable";
 import { AdminUserBenchmarkTable } from "@/features/admin/components/AdminUserBenchmarkTable";
+import { AdminCohortBenchmarkTable } from "@/features/admin/components/AdminCohortBenchmarkTable";
 import { AdminUserSegmentChart } from "@/features/admin/components/AdminUserSegmentChart";
 import { AdminHourDayHeatmap } from "@/features/admin/components/AdminHourDayHeatmap";
 import { AdminHourOfDayChart } from "@/features/admin/components/AdminHourOfDayChart";
@@ -32,7 +39,10 @@ function formatHour(h: number): string {
 }
 
 export default async function AdminDashboardPage() {
-  const data = await loadAdminDashboard();
+  const [data, finance] = await Promise.all([
+    loadAdminDashboard(),
+    loadAdminFinance(),
+  ]);
 
   const peakHourLabel = data.peakHour
     ? `${formatHour(data.peakHour.hour)} (${data.peakHour.sessions} sesji)`
@@ -44,10 +54,10 @@ export default async function AdminDashboardPage() {
   return (
     <div className="flex flex-col gap-10">
       <header>
-        <h1 className="font-heading text-[32px] leading-[1.15] text-primary sm:text-[40px]">
+        <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
           Przegląd produktu
         </h1>
-        <p className="mt-3 font-body text-body-md text-secondary">
+        <p className="mt-1 font-body text-sm text-secondary">
           Kto i kiedy się uczy, jak wypadają poszczególne kierunki, oraz benchmarki
           jakości i zaangażowania.
         </p>
@@ -238,8 +248,47 @@ export default async function AdminDashboardPage() {
 
       <section>
         <SectionHeader
+          title="Finanse"
+          subtitle="Dane na żywo ze Stripe — przychody, ARPU i konwersja na płatne"
+        />
+        <div className="space-y-4">
+          <AdminFinanceKpiRow data={finance} />
+          {finance.available && (
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+              <ChartCard
+                title="Przychód miesięczny (12 mies.)"
+                subtitle="Brutto z udanych płatności"
+                icon={Banknote}
+              >
+                <AdminMrrTrendChart
+                  data={finance.monthlyRevenue}
+                  currency={finance.currency}
+                />
+              </ChartCard>
+              <ChartCard
+                title="% płacących w kohortach"
+                subtitle="Aktywne entitlement / wszyscy w danym roku i kierunku"
+                icon={Percent}
+              >
+                <AdminPaidPctTable rows={finance.cohorts} />
+              </ChartCard>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section>
+        <SectionHeader
+          title="Kohorty: kierunek × rok"
+          subtitle="Średni czas na platformie, na testach i % aktywnych subskrypcji (30 dni)"
+        />
+        <AdminCohortBenchmarkTable rows={data.cohortBenchmarksLast30d} />
+      </section>
+
+      <section>
+        <SectionHeader
           title="Top użytkownicy"
-          subtitle="Ranking aktywności i jakości w ciągu 30 dni"
+          subtitle="Ranking aktywności i jakości w ciągu 30 dni — sortuj kolumnami, filtruj kierunkiem i rokiem"
           icon={FileText}
         />
         <AdminUserBenchmarkTable rows={data.userBenchmarksLast30d} />
@@ -260,7 +309,7 @@ function SectionHeader({
   return (
     <div className="mb-4 flex items-end justify-between gap-3">
       <div>
-        <h2 className="font-heading text-heading-md text-primary">{title}</h2>
+        <h2 className="font-heading text-xl font-bold text-primary">{title}</h2>
         {subtitle && (
           <p className="mt-1 font-body text-body-xs text-muted">{subtitle}</p>
         )}

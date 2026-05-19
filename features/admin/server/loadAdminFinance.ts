@@ -1,6 +1,5 @@
 import "server-only";
 
-import { unstable_cache } from "next/cache";
 import type Stripe from "stripe";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { createClient } from "@/lib/supabase/server";
@@ -81,6 +80,40 @@ function emptyResult(reason: string): AdminFinanceData {
     paidConversionPct: 0,
     fetchedAtIso: new Date().toISOString(),
   };
+}
+
+type StripeAggregates = {
+  revenueLast7d: number;
+  revenueLast30d: number;
+  revenueLast365d: number;
+  paymentsLast30d: number;
+  paymentsLast365d: number;
+  refundsLast30d: number;
+  averageOrderValue: number;
+  monthlyRevenue: AdminFinanceMonthlyPoint[];
+  currency: string;
+};
+
+const STRIPE_CACHE_TTL_MS = 60_000;
+let stripeCache: { value: StripeAggregates | null; expiresAt: number } | null = null;
+let stripeInflight: Promise<StripeAggregates | null> | null = null;
+
+async function getStripeAggregatesCached(): Promise<StripeAggregates | null> {
+  const now = Date.now();
+  if (stripeCache && stripeCache.expiresAt > now) {
+    return stripeCache.value;
+  }
+  if (stripeInflight) return stripeInflight;
+  stripeInflight = (async () => {
+    try {
+      const value = await collectStripeAggregates();
+      stripeCache = { value, expiresAt: Date.now() + STRIPE_CACHE_TTL_MS };
+      return value;
+    } finally {
+      stripeInflight = null;
+    }
+  })();
+  return stripeInflight;
 }
 
 async function collectStripeAggregates(): Promise<{
@@ -286,9 +319,9 @@ async function collectEntitlementCohorts(): Promise<{
   };
 }
 
-async function loadAdminFinanceInternal(): Promise<AdminFinanceData> {
+export async function loadAdminFinance(): Promise<AdminFinanceData> {
   const [stripeAgg, cohortAgg] = await Promise.all([
-    collectStripeAggregates(),
+    getStripeAggregatesCached(),
     collectEntitlementCohorts(),
   ]);
 
@@ -330,8 +363,3 @@ async function loadAdminFinanceInternal(): Promise<AdminFinanceData> {
     fetchedAtIso: new Date().toISOString(),
   };
 }
-
-export const loadAdminFinance = unstable_cache(loadAdminFinanceInternal, ["admin-finance"], {
-  revalidate: 60,
-  tags: ["admin-finance"],
-});

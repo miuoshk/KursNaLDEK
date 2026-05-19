@@ -49,7 +49,7 @@ async function loadLeaderboardRows(
     let profilesQ = admin
       .from("profiles")
       .select(
-        "id, nick, display_name, avatar_emoji, xp, current_streak, current_year",
+        "id, nick, display_name, avatar_emoji, xp, current_streak, current_year, last_seen_at",
       )
       .order("xp", { ascending: false });
     if (scope === "year" && currentYear != null) {
@@ -120,6 +120,8 @@ async function loadLeaderboardRows(
         accuracy,
         streak: profile.current_streak ?? 0,
         questionsAnswered: uniqueAnsweredByUser.get(id) ?? 0,
+        lastSeenAt:
+          (profile as { last_seen_at?: string | null }).last_seen_at ?? null,
         isCurrent: id === userId,
       };
     });
@@ -273,6 +275,7 @@ export async function loadGamification(
     accuracy: lbAcc,
     streak,
     questionsAnswered: uniqueAnswered,
+    lastSeenAt: new Date().toISOString(),
     isCurrent: true,
   };
 

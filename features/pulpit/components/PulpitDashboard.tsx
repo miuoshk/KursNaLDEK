@@ -49,8 +49,20 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
             {getGreeting()}
           </p>
         </div>
-        <div className="hidden shrink-0 text-right md:block">
+        <div className="hidden shrink-0 flex-col items-end gap-2 md:flex">
           <p className="font-body text-sm text-secondary">{todayLabel}</p>
+          {data.activeUsersNow > 0 ? (
+            <span
+              className="inline-flex items-center gap-2 rounded-pill border border-success/20 bg-success/[0.08] px-3 py-1 font-body text-body-xs text-success"
+              title="Liczba użytkowników aktywnych w ostatnich 5 minutach"
+            >
+              <span className="relative inline-flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/70 opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-success" />
+              </span>
+              {data.activeUsersNow} {data.activeUsersNow === 1 ? "osoba uczy się" : "osób uczy się"} teraz
+            </span>
+          ) : null}
         </div>
       </header>
 

@@ -7,6 +7,7 @@ import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataC
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
 import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { pingPresence } from "@/features/shared/server/pingPresence";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { getDashboardYear } from "@/lib/dashboard/getDashboardYear";
@@ -51,6 +52,7 @@ export default async function DashboardLayout({
     streak = 0;
   } else if (user) {
     userEmail = user.email ?? null;
+    void pingPresence();
     const [profileRow, due] = await Promise.all([
       getProfileByUserId(user.id),
       getDueReviewCount(supabase, user.id),

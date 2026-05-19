@@ -6,6 +6,15 @@ import type {
 } from "@/features/gamification/types";
 import { cn } from "@/lib/utils";
 
+const ONLINE_WINDOW_MS = 5 * 60 * 1000;
+
+function isOnline(lastSeenIso: string | null): boolean {
+  if (!lastSeenIso) return false;
+  const t = Date.parse(lastSeenIso);
+  if (!Number.isFinite(t)) return false;
+  return Date.now() - t < ONLINE_WINDOW_MS;
+}
+
 const ROW_TINT: Record<number, string> = {
   1: "bg-[rgba(201,168,76,0.08)]",
   2: "bg-[rgba(192,192,192,0.06)]",
@@ -138,16 +147,27 @@ export function LeaderboardTable({
                   <td className="px-4 py-3 font-body text-body-md text-primary">{r.rank}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span
-                        className={cn(
-                          "flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
-                          r.avatarEmoji
-                            ? "text-base leading-none"
-                            : "font-body text-[10px] text-brand-gold",
-                        )}
-                        aria-hidden
-                      >
-                        {r.avatarEmoji ?? r.initials}
+                      <span className="relative inline-flex shrink-0">
+                        <span
+                          className={cn(
+                            "flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-accent-2",
+                            r.avatarEmoji
+                              ? "text-base leading-none"
+                              : "font-body text-[10px] text-brand-gold",
+                          )}
+                          aria-hidden
+                        >
+                          {r.avatarEmoji ?? r.initials}
+                        </span>
+                        {isOnline(r.lastSeenAt) ? (
+                          <span
+                            className="absolute -bottom-0.5 -right-0.5 inline-flex size-2.5 items-center justify-center"
+                            title="Aktywny teraz"
+                          >
+                            <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/70 opacity-60" />
+                            <span className="relative inline-flex size-2 rounded-full border border-card bg-success" />
+                          </span>
+                        ) : null}
                       </span>
                       <span className="font-body text-body-md text-primary">{r.displayName}</span>
                     </div>

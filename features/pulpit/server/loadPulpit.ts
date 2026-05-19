@@ -33,6 +33,8 @@ export type PulpitData = {
   lastSubjectName: string | null;
   lastSubjectMasteryPct: number;
   recentSessions: PulpitRecentSession[];
+  /** Liczba innych userów aktywnych w ciągu ostatnich 5 minut (heartbeat). */
+  activeUsersNow: number;
 };
 
 export async function loadPulpit(): Promise<
@@ -51,7 +53,8 @@ export async function loadPulpit(): Promise<
     const profile = await getProfileByUserId(user.id);
     const displayName = greetingName(profile, user.email);
 
-    const [dueRes, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints] = await Promise.all([
+    const onlineWindowIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+    const [dueRes, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints, activeNowRes] = await Promise.all([
       supabase
         .from("user_question_progress")
         .select("id", { count: "exact", head: true })
@@ -71,6 +74,11 @@ export async function loadPulpit(): Promise<
       loadActivityHeatmap(supabase, user.id),
       loadProgressHistory(supabase, user.id),
       loadWeakPoints(supabase, user.id),
+      supabase
+        .from("profiles")
+        .select("id", { count: "exact", head: true })
+        .gte("last_seen_at", onlineWindowIso)
+        .neq("id", user.id),
     ]);
 
     const dailyGoal = profile?.daily_goal ?? 25;
@@ -146,6 +154,7 @@ export async function loadPulpit(): Promise<
         lastSubjectName,
         lastSubjectMasteryPct,
         recentSessions,
+        activeUsersNow: activeNowRes.count ?? 0,
       },
     };
   } catch (e) {

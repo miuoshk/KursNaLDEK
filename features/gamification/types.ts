@@ -25,6 +25,8 @@ export type LeaderboardRow = {
   accuracy: number;
   streak: number;
   questionsAnswered: number;
+  /** ISO string ostatniego ping'a (last_seen_at); null gdy user nigdy nie był online. */
+  lastSeenAt: string | null;
   isCurrent: boolean;
 };
 

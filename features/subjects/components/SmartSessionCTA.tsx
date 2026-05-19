@@ -109,7 +109,7 @@ export function SmartSessionCTA({
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
-          <h3 className="font-body text-body-md font-semibold text-primary">
+          <h3 className="font-heading text-heading-sm text-primary">
             Nauka klasyczna
           </h3>
           <p className="mt-1 font-body text-body-sm text-secondary">
@@ -139,7 +139,7 @@ export function SmartSessionCTA({
         </div>
 
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
-          <h3 className="font-body text-body-md font-semibold text-primary">
+          <h3 className="font-heading text-heading-sm text-primary">
             Katalog pytań
           </h3>
           <p className="mt-1 font-body text-body-sm text-secondary">

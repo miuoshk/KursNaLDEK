@@ -24,8 +24,11 @@ export type LeaderboardRow = {
   xp: number;
   accuracy: number;
   streak: number;
+  questionsAnswered: number;
   isCurrent: boolean;
 };
+
+export type LeaderboardScope = "all" | "year";
 
 export type GamificationPayload = {
   xp: number;
@@ -39,4 +42,7 @@ export type GamificationPayload = {
   achievements: AchievementRow[];
   leaderboard: LeaderboardRow[];
   leaderboardPeriod: "7" | "30" | "all";
+  leaderboardScope: LeaderboardScope;
+  /** Rok studiów aktualnego usera; potrzebny do etykiety filtra "Mój rok" */
+  currentYear: number | null;
 };

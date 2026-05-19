@@ -7,26 +7,34 @@ import { loadGamification } from "@/features/gamification/server/loadGamificatio
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
+import type { LeaderboardScope } from "@/features/gamification/types";
+
 function parseLb(v: string | string[] | undefined): "7" | "30" | "all" {
   const raw = Array.isArray(v) ? v[0] : v;
   if (raw === "7" || raw === "30" || raw === "all") return raw;
   return "30";
 }
 
+function parseScope(v: string | string[] | undefined): LeaderboardScope {
+  const raw = Array.isArray(v) ? v[0] : v;
+  return raw === "year" ? "year" : "all";
+}
+
 export default async function OsiagnieciaPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lb?: string | string[] }>;
+  searchParams: Promise<{ lb?: string | string[]; scope?: string | string[] }>;
 }) {
   const sp = await searchParams;
   const period = parseLb(sp.lb);
+  const scope = parseScope(sp.scope);
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const data = await loadGamification(supabase, user.id, period);
+  const data = await loadGamification(supabase, user.id, period, scope);
 
   return (
     <div className="space-y-8">
@@ -54,7 +62,12 @@ export default async function OsiagnieciaPage({
 
       <AchievementsGrid achievements={data.achievements} />
 
-      <LeaderboardTable rows={data.leaderboard} period={data.leaderboardPeriod} />
+      <LeaderboardTable
+        rows={data.leaderboard}
+        period={data.leaderboardPeriod}
+        scope={data.leaderboardScope}
+        currentYear={data.currentYear}
+      />
 
       <DailyChallengeSection />
     </div>

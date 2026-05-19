@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Flame } from "lucide-react";
-import type { LeaderboardRow } from "@/features/gamification/types";
+import type {
+  LeaderboardRow,
+  LeaderboardScope,
+} from "@/features/gamification/types";
 import { cn } from "@/lib/utils";
 
 const ROW_TINT: Record<number, string> = {
@@ -15,56 +18,109 @@ function accClass(acc: number): string {
   return "text-error";
 }
 
+function buildHref(
+  period: "7" | "30" | "all",
+  scope: LeaderboardScope,
+): string {
+  const params = new URLSearchParams();
+  if (period !== "30") params.set("lb", period);
+  if (scope !== "all") params.set("scope", scope);
+  const qs = params.toString();
+  return qs ? `/osiagniecia?${qs}` : "/osiagniecia";
+}
+
 export function LeaderboardTable({
   rows,
   period,
+  scope,
+  currentYear,
 }: {
   rows: LeaderboardRow[];
   period: "7" | "30" | "all";
+  scope: LeaderboardScope;
+  currentYear: number | null;
 }) {
-  const pills: { id: "7" | "30" | "all"; label: string }[] = [
+  const periodPills: { id: "7" | "30" | "all"; label: string }[] = [
     { id: "7", label: "7 dni" },
     { id: "30", label: "30 dni" },
     { id: "all", label: "Wszystko" },
   ];
 
+  const scopePills: { id: LeaderboardScope; label: string; disabled?: boolean }[] = [
+    {
+      id: "year",
+      label: currentYear != null ? `Mój rok (${currentYear})` : "Mój rok",
+      disabled: currentYear == null,
+    },
+    { id: "all", label: "Wszyscy" },
+  ];
+
   return (
     <section>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="font-heading text-xl font-bold text-primary">
-          Ranking — Nauki Podstawowe
-        </h2>
-        <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">
-          {pills.map((p) => (
-            <Link
-              key={p.id}
-              href={p.id === "30" ? "/osiagniecia" : `/osiagniecia?lb=${p.id}`}
-              className={cn(
-                "rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
-                period === p.id
-                  ? "bg-brand-gold/15 text-brand-gold"
-                  : "text-secondary hover:text-primary",
-              )}
-            >
-              {p.label}
-            </Link>
-          ))}
+        <h2 className="font-heading text-xl font-bold text-primary">Ranking</h2>
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">
+            {scopePills.map((p) =>
+              p.disabled ? (
+                <span
+                  key={p.id}
+                  title="Ustaw rok studiów w profilu, aby filtrować po roczniku"
+                  className="cursor-not-allowed rounded-pill px-3 py-1.5 font-body text-body-xs text-muted/60"
+                >
+                  {p.label}
+                </span>
+              ) : (
+                <Link
+                  key={p.id}
+                  href={buildHref(period, p.id)}
+                  className={cn(
+                    "rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
+                    scope === p.id
+                      ? "bg-brand-gold/15 text-brand-gold"
+                      : "text-secondary hover:text-primary",
+                  )}
+                >
+                  {p.label}
+                </Link>
+              ),
+            )}
+          </div>
+          <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">
+            {periodPills.map((p) => (
+              <Link
+                key={p.id}
+                href={buildHref(p.id, scope)}
+                className={cn(
+                  "rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
+                  period === p.id
+                    ? "bg-brand-gold/15 text-brand-gold"
+                    : "text-secondary hover:text-primary",
+                )}
+              >
+                {p.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
       {rows.length === 0 ? (
         <p className="mt-6 font-body text-body-md text-secondary">
-          Brak danych do rankingu. Rozwiązuj pytania, aby się tu pojawić.
+          {scope === "year"
+            ? "Brak innych użytkowników z Twojego roku. Wracaj tu wkrótce."
+            : "Brak danych do rankingu. Rozwiązuj pytania, aby się tu pojawić."}
         </p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-card border border-[rgba(255,255,255,0.06)]">
-          <table className="w-full min-w-[520px] border-collapse text-left">
+          <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
               <tr className="border-b border-[rgba(255,255,255,0.08)] font-body text-body-xs text-muted">
                 <th className="px-4 py-3 font-medium">#</th>
                 <th className="px-4 py-3 font-medium">Użytkownik</th>
                 <th className="px-4 py-3 font-medium">Poziom</th>
                 <th className="px-4 py-3 font-medium">XP (okres)</th>
+                <th className="px-4 py-3 font-medium">Pytania</th>
                 <th className="px-4 py-3 font-medium">Trafność</th>
                 <th className="px-4 py-3 font-medium">Streak</th>
               </tr>
@@ -100,6 +156,9 @@ export function LeaderboardTable({
                     {r.rankName}
                   </td>
                   <td className="px-4 py-3 font-body text-body-sm text-brand-gold">{r.xp}</td>
+                  <td className="px-4 py-3 font-body text-body-sm text-secondary">
+                    {r.questionsAnswered}
+                  </td>
                   <td className={cn("px-4 py-3 font-body text-body-sm", accClass(r.accuracy))}>
                     {Math.round(r.accuracy * 100)}%
                   </td>

@@ -1,7 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { ACHIEVEMENTS } from "@/features/gamification/lib/achievements-config";
 import { getCurrentRank } from "@/features/gamification/lib/ranks";
-import type { GamificationPayload, LeaderboardRow } from "@/features/gamification/types";
+import type {
+  GamificationPayload,
+  LeaderboardRow,
+  LeaderboardScope,
+} from "@/features/gamification/types";
 import { initialsFromName } from "@/lib/initialsFromName";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -37,23 +41,37 @@ function rankRows(rows: LeaderboardRow[]): LeaderboardRow[] {
 async function loadLeaderboardRows(
   userId: string,
   leaderboardPeriod: "7" | "30" | "all",
+  scope: LeaderboardScope,
+  currentYear: number | null,
 ): Promise<LeaderboardRow[]> {
   try {
     const admin = createAdminClient();
-    const [{ data: profileRows, error: profileError }, { data: sessionRows, error: sessionsError }] =
-      await Promise.all([
-        admin
-          .from("profiles")
-          .select("id, nick, display_name, avatar_emoji, xp, current_streak")
-          .order("xp", { ascending: false }),
-        admin
-          .from("study_sessions")
-          .select("user_id, xp_earned, correct_answers, total_questions")
-          .eq("is_completed", true)
-          .gte("completed_at", periodStart(leaderboardPeriod) ?? "1970-01-01T00:00:00.000Z"),
-      ]);
+    let profilesQ = admin
+      .from("profiles")
+      .select(
+        "id, nick, display_name, avatar_emoji, xp, current_streak, current_year",
+      )
+      .order("xp", { ascending: false });
+    if (scope === "year" && currentYear != null) {
+      profilesQ = profilesQ.eq("current_year", currentYear);
+    }
+    const [
+      { data: profileRows, error: profileError },
+      { data: sessionRows, error: sessionsError },
+      { data: uqpRows, error: uqpError },
+    ] = await Promise.all([
+      profilesQ,
+      admin
+        .from("study_sessions")
+        .select("user_id, xp_earned, correct_answers, total_questions")
+        .eq("is_completed", true)
+        .gte("completed_at", periodStart(leaderboardPeriod) ?? "1970-01-01T00:00:00.000Z"),
+      admin
+        .from("user_question_progress")
+        .select("user_id, times_answered"),
+    ]);
 
-    if (profileError || sessionsError || !profileRows) {
+    if (profileError || sessionsError || uqpError || !profileRows) {
       return [];
     }
 
@@ -65,6 +83,16 @@ async function loadLeaderboardRows(
       current.correct += row.correct_answers ?? 0;
       current.total += row.total_questions ?? 0;
       periodAgg.set(key, current);
+    }
+
+    // Unikalne pytania przerobione = liczba wierszy user_question_progress
+    // z times_answered > 0 (jedno pytanie = jeden wiersz).
+    const uniqueAnsweredByUser = new Map<string, number>();
+    for (const row of uqpRows ?? []) {
+      const uid = row.user_id as string;
+      const times = (row.times_answered as number | null) ?? 0;
+      if (times <= 0) continue;
+      uniqueAnsweredByUser.set(uid, (uniqueAnsweredByUser.get(uid) ?? 0) + 1);
     }
 
     const baseRows: LeaderboardRow[] = profileRows.map((profile) => {
@@ -91,6 +119,7 @@ async function loadLeaderboardRows(
         xp,
         accuracy,
         streak: profile.current_streak ?? 0,
+        questionsAnswered: uniqueAnsweredByUser.get(id) ?? 0,
         isCurrent: id === userId,
       };
     });
@@ -117,13 +146,14 @@ export async function loadGamification(
   supabase: SupabaseClient,
   userId: string,
   leaderboardPeriod: "7" | "30" | "all" = "30",
+  leaderboardScope: LeaderboardScope = "all",
 ): Promise<GamificationPayload> {
   const since = periodStart(leaderboardPeriod);
 
   const [{ data: profile }, { data: uqp }] = await Promise.all([
     supabase
       .from("profiles")
-      .select("xp, current_streak, nick, display_name, avatar_emoji")
+      .select("xp, current_streak, nick, display_name, avatar_emoji, current_year")
       .eq("id", userId)
       .maybeSingle(),
     supabase
@@ -131,6 +161,9 @@ export async function loadGamification(
       .select("times_answered, times_correct")
       .eq("user_id", userId),
   ]);
+
+  const currentYear =
+    (profile as { current_year?: number | null } | null)?.current_year ?? null;
 
   const displayName = profile?.nick ?? profile?.display_name ?? "Użytkownik";
   const initials = initialsFromName(displayName);
@@ -239,10 +272,19 @@ export async function loadGamification(
     xp: lbXp,
     accuracy: lbAcc,
     streak,
+    questionsAnswered: uniqueAnswered,
     isCurrent: true,
   };
 
-  const leaderboardRows = await loadLeaderboardRows(userId, leaderboardPeriod);
+  const effectiveScope: LeaderboardScope =
+    leaderboardScope === "year" && currentYear != null ? "year" : "all";
+
+  const leaderboardRows = await loadLeaderboardRows(
+    userId,
+    leaderboardPeriod,
+    effectiveScope,
+    currentYear,
+  );
 
   return {
     xp,
@@ -256,5 +298,7 @@ export async function loadGamification(
     achievements,
     leaderboard: leaderboardRows.length > 0 ? leaderboardRows : [lbRow],
     leaderboardPeriod,
+    leaderboardScope: effectiveScope,
+    currentYear,
   };
 }

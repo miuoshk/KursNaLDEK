@@ -161,7 +161,7 @@ export function TopicSessionConfigDialog({
                     <Lightbulb className="size-5 text-success" aria-hidden />
                   </div>
 
-                  <h3 className="font-body text-body-md font-semibold text-primary">
+                  <h3 className="font-heading text-heading-sm text-primary">
                     Inteligentna sesja
                   </h3>
                   <p className="mt-1 font-body text-body-sm text-secondary">
@@ -203,7 +203,7 @@ export function TopicSessionConfigDialog({
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <FileText className="size-4 text-muted" aria-hidden />
                         </div>
-                        <h4 className="font-body text-body-sm font-medium text-primary">
+                        <h4 className="font-heading text-body-md font-bold text-primary">
                           Nauka klasyczna
                         </h4>
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
@@ -230,7 +230,7 @@ export function TopicSessionConfigDialog({
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <LayoutGrid className="size-4 text-muted" aria-hidden />
                         </div>
-                        <h4 className="font-body text-body-sm font-medium text-primary">
+                        <h4 className="font-heading text-body-md font-bold text-primary">
                           Katalog pytań
                         </h4>
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
@@ -275,7 +275,7 @@ export function TopicSessionConfigDialog({
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
-                      <h4 className="font-body text-body-sm font-medium text-primary">
+                      <h4 className="font-heading text-body-md font-bold text-primary">
                         Nauka klasyczna
                       </h4>
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">
@@ -302,7 +302,7 @@ export function TopicSessionConfigDialog({
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <LayoutGrid className="size-4 text-muted" aria-hidden />
                       </div>
-                      <h4 className="font-body text-body-sm font-medium text-primary">
+                      <h4 className="font-heading text-body-md font-bold text-primary">
                         Katalog pytań
                       </h4>
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">

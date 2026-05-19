@@ -3,7 +3,6 @@
 import {
   Award,
   BarChart3,
-  Bookmark,
   BookOpen,
   ChevronLeft,
   ChevronRight,
@@ -24,7 +23,6 @@ import { formatStreak } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
   { href: "/statystyki", label: "Statystyki", icon: BarChart3 },
-  { href: "/zapisane", label: "Zapisane", icon: Bookmark },
   { href: "/osiagniecia", label: "Osiągnięcia", icon: Award },
   { href: "/ustawienia", label: "Ustawienia", icon: Settings },
 ] as const;

@@ -1,14 +1,31 @@
 import Link from "next/link";
-import { SmilePlus } from "lucide-react";
+import { Bookmark, ChevronRight, SmilePlus } from "lucide-react";
 import { OverallProgress } from "@/features/subjects/components/OverallProgress";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectGrid } from "@/features/subjects/components/SubjectGrid";
 import { loadKnnpSubjectsData } from "@/features/subjects/server/loadKnnpSubjects";
 import { requireCurrentSelectionAccessOrRedirect } from "@/features/access/server/guards";
+import { createClient } from "@/lib/supabase/server";
+
+async function getSavedQuestionsCount(): Promise<number> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return 0;
+  const { count } = await supabase
+    .from("saved_questions")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id);
+  return count ?? 0;
+}
 
 export default async function PrzedmiotyPage() {
   await requireCurrentSelectionAccessOrRedirect();
-  const result = await loadKnnpSubjectsData();
+  const [result, savedCount] = await Promise.all([
+    loadKnnpSubjectsData(),
+    getSavedQuestionsCount(),
+  ]);
 
   if (!result.ok) {
     return (
@@ -45,6 +62,31 @@ export default async function PrzedmiotyPage() {
           mastered={overallProgress.mastered}
           reviewing={overallProgress.reviewing}
         />
+
+        <Link
+          href="/zapisane"
+          className="group flex items-center gap-4 rounded-card border border-border bg-card p-4 transition-colors hover:border-brand-gold/40"
+        >
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-btn bg-brand-gold/10">
+            <Bookmark className="size-5 text-brand-gold" aria-hidden />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-heading text-body-md font-bold text-primary">
+              Zapisane pytania
+            </p>
+            <p className="mt-0.5 font-body text-body-xs text-muted">
+              {savedCount === 0
+                ? "Nic jeszcze nie zapisałeś — w sesji lub katalogu kliknij ikonę zakładki."
+                : savedCount === 1
+                  ? "1 pytanie w Twojej kolekcji powtórek"
+                  : `${savedCount} ${savedCount >= 2 && savedCount <= 4 ? "pytania" : "pytań"} w Twojej kolekcji powtórek`}
+            </p>
+          </div>
+          <ChevronRight
+            className="size-4 shrink-0 text-muted transition-colors group-hover:text-brand-gold"
+            aria-hidden
+          />
+        </Link>
 
         {showOsceSection ? (
           <section>

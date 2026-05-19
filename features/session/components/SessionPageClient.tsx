@@ -187,10 +187,12 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   }
 
   if (boot.mode === "katalog") {
+    const initialQuestionId = searchParams.get("q") ?? undefined;
     return (
       <CatalogView
         subjectName={boot.subjectName}
         questions={boot.questions}
+        initialQuestionId={initialQuestionId}
       />
     );
   }

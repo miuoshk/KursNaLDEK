@@ -17,6 +17,11 @@ import { cn } from "@/lib/utils";
 type CatalogViewProps = {
   subjectName: string;
   questions: SessionQuestion[];
+  /**
+   * Opcjonalny ID pytania do otwarcia od razu (np. deep-link z zakładki "Zapisane").
+   * Jeśli pytanie istnieje na liście, zostanie odsłonięte automatycznie.
+   */
+  initialQuestionId?: string;
 };
 
 function normalizeSearchText(value: string): string {
@@ -94,10 +99,26 @@ function highlightText(value: string, query: string): ReactNode {
   return <>{parts}</>;
 }
 
-export function CatalogView({ subjectName, questions }: CatalogViewProps) {
-  const [index, setIndex] = useState(0);
+export function CatalogView({
+  subjectName,
+  questions,
+  initialQuestionId,
+}: CatalogViewProps) {
+  const initialIndex = useMemo(() => {
+    if (!initialQuestionId) return 0;
+    const i = questions.findIndex((q) => q.id === initialQuestionId);
+    return i >= 0 ? i : 0;
+  }, [initialQuestionId, questions]);
+  const [index, setIndex] = useState(initialIndex);
   const [searchValue, setSearchValue] = useState("");
-  const [revealedIds, setRevealedIds] = useState<Set<string>>(() => new Set());
+  const [revealedIds, setRevealedIds] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    if (initialQuestionId) {
+      const found = questions.find((q) => q.id === initialQuestionId);
+      if (found) initial.add(found.id);
+    }
+    return initial;
+  });
   const normalizedSearch = normalizeSearchText(searchValue);
 
   const filteredIndexes = useMemo(() => {

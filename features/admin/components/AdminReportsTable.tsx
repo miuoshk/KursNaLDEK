@@ -38,11 +38,17 @@ function statusBadge(status: string) {
 }
 
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("pl-PL", {
+  const d = new Date(iso);
+  const date = d.toLocaleDateString("pl-PL", {
     day: "numeric",
     month: "short",
     year: "numeric",
   });
+  const time = d.toLocaleTimeString("pl-PL", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return { date, time };
 }
 
 function trackLabel(track: string | null) {
@@ -277,7 +283,17 @@ export function AdminReportsTable({
                     className="border-b border-border transition-colors hover:bg-white/[0.02]"
                   >
                     <td className="px-3 py-3 font-body text-body-xs text-secondary">
-                      {formatDate(r.createdAt)}
+                      {(() => {
+                        const { date, time } = formatDate(r.createdAt);
+                        return (
+                          <>
+                            <span className="whitespace-nowrap">{date}</span>
+                            <span className="ml-1 whitespace-nowrap text-muted">
+                              · {time}
+                            </span>
+                          </>
+                        );
+                      })()}
                     </td>
                     <td className="max-w-[250px] truncate px-3 py-3 font-body text-body-sm text-primary">
                       {r.questionTextShort}

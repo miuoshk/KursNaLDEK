@@ -5,6 +5,7 @@ import { Sidebar } from "@/features/shared/components/Sidebar";
 import { DashboardBreadcrumbProvider } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataContext";
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
+import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
@@ -35,6 +36,7 @@ export default async function DashboardLayout({
   let dueReviewsCount = 0;
   let userEmail: string | null = null;
   let avatarEmoji: string | null = null;
+  let currentTrack: "stomatologia" | "lekarski" = "stomatologia";
   let profileSnapshot: {
     display_name: string | null;
     current_streak: number | null;
@@ -55,6 +57,7 @@ export default async function DashboardLayout({
     ]);
     const userTrack = profileRow?.current_track ?? "stomatologia";
     const userYear = profileRow?.current_year ?? 1;
+    currentTrack = normalizeTrack(userTrack);
     await getCachedKnnpCatalog(userTrack, userYear);
     dueReviewsCount = due;
     displayName = greetingName(profileRow, userEmail);
@@ -85,6 +88,7 @@ export default async function DashboardLayout({
                 streak,
                 initials,
                 avatarEmoji,
+                currentTrack,
                 dueReviewsCount,
                 testMode: testMode || undefined,
               }}

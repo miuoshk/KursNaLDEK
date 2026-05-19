@@ -12,6 +12,8 @@ export type DashboardUserValue = {
   initials: string;
   /** Emoji wybrane przez użytkownika; null = pokazujemy `initials`. */
   avatarEmoji: string | null;
+  /** "stomatologia" | "lekarski" — kierunek z profilu, używany w sidebarze. */
+  currentTrack: "stomatologia" | "lekarski";
   /** Liczba pytań z terminem powtórki (next_review <= teraz). */
   dueReviewsCount: number;
   /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */

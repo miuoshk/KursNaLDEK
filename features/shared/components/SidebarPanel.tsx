@@ -18,6 +18,7 @@ import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { pickSlogan, SIDEBAR_SLOGANS } from "@/features/shared/lib/slogans";
+import { formatTrackLabel } from "@/features/access/lib/studyAccess";
 import { formatStreak } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
@@ -40,7 +41,9 @@ export function SidebarPanel({
   className,
 }: SidebarPanelProps) {
   const { year } = useDashboardBreadcrumb();
-  const { streak, displayName, initials, avatarEmoji } = useDashboardUser();
+  const { streak, displayName, initials, avatarEmoji, currentTrack } =
+    useDashboardUser();
+  const trackLabel = formatTrackLabel(currentTrack);
   const mobile = Boolean(onCloseMobile);
   const slogan = useMemo(() => pickSlogan(SIDEBAR_SLOGANS), []);
 
@@ -125,7 +128,7 @@ export function SidebarPanel({
                 {displayName}
               </p>
               <p className="mt-0.5 font-body text-body-xs text-secondary">
-                Rok {year} · Stomatologia · {formatStreak(streak)}
+                Rok {year} · {trackLabel} · {formatStreak(streak)}
               </p>
             </div>
           )}

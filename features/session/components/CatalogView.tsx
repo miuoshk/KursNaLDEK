@@ -2,10 +2,12 @@
 
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import {
+  BookOpenText,
   ChevronLeft,
   ChevronRight,
   Eye,
   EyeOff,
+  List,
   Search,
   X,
 } from "lucide-react";
@@ -119,6 +121,8 @@ export function CatalogView({
     }
     return initial;
   });
+  const [listOpen, setListOpen] = useState(false);
+  const [explainOpen, setExplainOpen] = useState(false);
   const normalizedSearch = normalizeSearchText(searchValue);
 
   const filteredIndexes = useMemo(() => {
@@ -169,6 +173,14 @@ export function CatalogView({
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        if (listOpen || explainOpen) {
+          e.preventDefault();
+          setListOpen(false);
+          setExplainOpen(false);
+        }
+        return;
+      }
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
@@ -189,27 +201,50 @@ export function CatalogView({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goPrev, goNext, toggleReveal]);
+  }, [goPrev, goNext, toggleReveal, listOpen, explainOpen]);
 
   if (!q) return null;
 
   const correctOption = q.options.find((o) => o.id === q.correctOptionId);
 
+  function handleSelectFromList(i: number) {
+    setIndex(i);
+    setListOpen(false);
+  }
+
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="shrink-0 border-b border-border bg-background px-4 py-4 sm:px-6">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <h1 className="font-heading text-xl font-bold text-primary md:text-2xl">
+      <div className="shrink-0 border-b border-border bg-background px-4 py-3 sm:px-6">
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="truncate font-heading text-xl font-bold text-primary md:text-2xl">
               Katalog pytań
             </h1>
-            <p className="line-clamp-2 mt-1 font-body text-body-xs text-secondary sm:line-clamp-1">
-              {subjectName} · tryb egzaminacyjny: kliknij <em>Pokaż odpowiedź</em>, aby odsłonić poprawną opcję i wyjaśnienie.
+            <p className="truncate font-body text-body-xs text-secondary">
+              {subjectName}
             </p>
           </div>
-          <p className="shrink-0 rounded-pill border border-border bg-card px-2.5 py-1 font-body text-body-xs text-secondary">
-            {currentNavPosition >= 0 ? currentNavPosition + 1 : 0} / {navigationIndexes.length}
-          </p>
+          <button
+            type="button"
+            onClick={() => setListOpen(true)}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary"
+            aria-label="Pokaż listę pytań"
+          >
+            <List className="size-3.5" aria-hidden />
+            <span className="hidden sm:inline">Lista</span>
+            <span className="font-mono">
+              {currentNavPosition >= 0 ? currentNavPosition + 1 : 0}/{navigationIndexes.length}
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setExplainOpen(true)}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary lg:hidden"
+            aria-label="Pokaż wyjaśnienie"
+          >
+            <BookOpenText className="size-3.5" aria-hidden />
+            <span className="hidden sm:inline">Wyjaśnienie</span>
+          </button>
         </div>
       </div>
 
@@ -238,12 +273,6 @@ export function CatalogView({
             </button>
           ) : null}
         </label>
-        <p className="mt-2 font-body text-body-xs text-muted">
-          Wyniki: {navigationIndexes.length} z {questions.length}
-          <span className="ml-2 text-muted/80">
-            · skróty: ← → nawigacja, spacja lub R = odsłoń / ukryj
-          </span>
-        </p>
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
@@ -327,7 +356,7 @@ export function CatalogView({
                     </p>
                   ) : (
                     <p className="font-body text-body-xs text-muted">
-                      Skrót: spacja lub R
+                      ← → nawigacja · spacja/R odsłoń
                     </p>
                   )}
                 </div>
@@ -336,12 +365,6 @@ export function CatalogView({
               <div className="mt-6">
                 <SessionQuestionActions questionId={q.id} questionText={q.text} />
               </div>
-
-              <CatalogExplanationMobile
-                explanation={q.explanation}
-                revealed={isRevealed}
-                key={q.id}
-              />
             </div>
           )}
         </div>
@@ -364,12 +387,6 @@ export function CatalogView({
           )}
         </aside>
       </div>
-
-      <CatalogQuestionNav
-        questionIndexes={navigationIndexes}
-        currentIndex={index}
-        onSelect={setIndex}
-      />
 
       <div className="flex shrink-0 items-center justify-between border-t border-border bg-background px-4 py-3 sm:px-6">
         <button
@@ -397,63 +414,172 @@ export function CatalogView({
           <ChevronRight className="size-4" aria-hidden />
         </button>
       </div>
+
+      <CatalogQuestionListDrawer
+        open={listOpen}
+        onClose={() => setListOpen(false)}
+        questions={questions}
+        questionIndexes={navigationIndexes}
+        currentIndex={index}
+        onSelect={handleSelectFromList}
+        searchValue={searchValue}
+      />
+
+      <CatalogExplanationDrawer
+        open={explainOpen}
+        onClose={() => setExplainOpen(false)}
+        explanation={q.explanation}
+        revealed={isRevealed}
+        onToggleReveal={() => {
+          toggleReveal();
+        }}
+      />
     </div>
   );
 }
 
-function CatalogExplanationMobile({
-  explanation,
-  revealed,
-}: {
-  explanation: string;
-  revealed: boolean;
-}) {
-  return (
-    <div className="mt-6 border-t border-white/10 pt-4 lg:hidden">
-      <p className="font-heading text-lg font-bold text-primary">Wyjaśnienie</p>
-      {revealed ? (
-        <div className="mt-3">{markdownBlock(explanation)}</div>
-      ) : (
-        <div className="mt-3 flex items-center gap-2 rounded-card border border-dashed border-border bg-background/40 p-4 text-center">
-          <EyeOff className="size-4 text-muted" aria-hidden />
-          <p className="font-body text-body-xs text-muted">
-            Ukryte. Kliknij <em>Pokaż odpowiedź</em>, aby zobaczyć.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function CatalogQuestionNav({
+function CatalogQuestionListDrawer({
+  open,
+  onClose,
+  questions,
   questionIndexes,
   currentIndex,
   onSelect,
+  searchValue,
 }: {
+  open: boolean;
+  onClose: () => void;
+  questions: SessionQuestion[];
   questionIndexes: number[];
   currentIndex: number;
   onSelect: (i: number) => void;
+  searchValue: string;
 }) {
-  if (questionIndexes.length <= 1) return null;
-
+  if (!open) return null;
   return (
-    <div className="shrink-0 border-t border-border bg-background px-3 py-2 sm:px-4">
-      <div className="flex gap-1 overflow-x-auto pb-1 lg:flex-wrap lg:overflow-visible">
-        {questionIndexes.map((questionIndex, i) => (
+    <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
+      <button
+        type="button"
+        aria-label="Zamknij listę pytań"
+        onClick={onClose}
+        className="flex-1 bg-black/60"
+      />
+      <div className="flex h-full w-full max-w-md flex-col border-l border-border bg-card shadow-2xl sm:w-[420px]">
+        <header className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
+          <div className="min-w-0">
+            <h2 className="font-heading text-lg font-bold text-primary">Lista pytań</h2>
+            <p className="font-body text-body-xs text-muted">
+              {questionIndexes.length} {searchValue ? "wyników" : "pytań"} · #{currentIndex + 1} aktywne
+            </p>
+          </div>
           <button
-            key={questionIndex}
             type="button"
-            onClick={() => onSelect(questionIndex)}
-            className={cn(
-              "flex size-8 shrink-0 items-center justify-center rounded-btn font-body text-body-xs transition-colors",
-              questionIndex === currentIndex
-                ? "bg-brand-gold text-brand-bg font-semibold"
-                : "bg-card text-secondary hover:text-primary",
-            )}
+            onClick={onClose}
+            className="inline-flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/5 hover:text-primary"
+            aria-label="Zamknij"
           >
-            {i + 1}
+            <X className="size-4" aria-hidden />
           </button>
-        ))}
+        </header>
+        <ol className="min-h-0 flex-1 overflow-y-auto px-2 py-2">
+          {questionIndexes.map((qIdx, i) => {
+            const item = questions[qIdx];
+            if (!item) return null;
+            const isActive = qIdx === currentIndex;
+            return (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  onClick={() => onSelect(qIdx)}
+                  className={cn(
+                    "flex w-full items-start gap-3 rounded-btn px-3 py-2.5 text-left transition-colors",
+                    isActive
+                      ? "bg-brand-gold/10 text-primary"
+                      : "text-secondary hover:bg-white/[0.03] hover:text-primary",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "shrink-0 rounded-pill px-2 py-0.5 font-body text-[10px] font-semibold",
+                      isActive
+                        ? "bg-brand-gold text-brand-bg"
+                        : "bg-background/60 text-muted",
+                    )}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <p className="line-clamp-1 font-body text-body-xs uppercase tracking-wider text-muted">
+                      {item.topicName}
+                    </p>
+                    <p className="line-clamp-2 mt-0.5 font-body text-body-sm">
+                      {item.text}
+                    </p>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+function CatalogExplanationDrawer({
+  open,
+  onClose,
+  explanation,
+  revealed,
+  onToggleReveal,
+}: {
+  open: boolean;
+  onClose: () => void;
+  explanation: string;
+  revealed: boolean;
+  onToggleReveal: () => void;
+}) {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex lg:hidden" role="dialog" aria-modal="true">
+      <button
+        type="button"
+        aria-label="Zamknij wyjaśnienie"
+        onClick={onClose}
+        className="flex-1 bg-black/60"
+      />
+      <div className="flex h-full w-full max-w-md flex-col border-l border-border bg-card shadow-2xl sm:w-[420px]">
+        <header className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
+          <h2 className="font-heading text-lg font-bold text-primary">Wyjaśnienie</h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/5 hover:text-primary"
+            aria-label="Zamknij"
+          >
+            <X className="size-4" aria-hidden />
+          </button>
+        </header>
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+          {revealed ? (
+            markdownBlock(explanation)
+          ) : (
+            <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
+              <EyeOff className="size-6 text-muted" aria-hidden />
+              <p className="font-body text-body-sm text-muted">
+                Wyjaśnienie jest ukryte.
+              </p>
+              <button
+                type="button"
+                onClick={onToggleReveal}
+                className="mt-1 inline-flex items-center gap-2 rounded-btn bg-brand-gold px-4 py-2 font-body text-body-sm font-medium text-brand-bg transition-colors hover:brightness-110"
+              >
+                <Eye className="size-4" aria-hidden />
+                Pokaż odpowiedź
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

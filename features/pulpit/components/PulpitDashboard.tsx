@@ -8,6 +8,7 @@ import { PulpitQuickStart } from "@/features/pulpit/components/PulpitQuickStart"
 import { PulpitRecentSessions } from "@/features/pulpit/components/PulpitRecentSessions";
 import { PulpitTodayCards } from "@/features/pulpit/components/PulpitTodayCards";
 import { WeakPoints } from "@/features/pulpit/components/WeakPoints";
+import { pluralizePolish, verbUczyPolish } from "@/lib/pluralizePolish";
 
 const DATE_FMT = new Intl.DateTimeFormat("pl-PL", {
   weekday: "long",
@@ -60,7 +61,9 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/70 opacity-60" />
                 <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
-              {data.activeUsersNow} {data.activeUsersNow === 1 ? "osoba uczy się" : "osób uczy się"} teraz
+              {data.activeUsersNow}{" "}
+              {pluralizePolish(data.activeUsersNow, ["osoba", "osoby", "osób"])}{" "}
+              {verbUczyPolish(data.activeUsersNow)} się teraz
             </span>
           ) : null}
         </div>

@@ -11,7 +11,6 @@ import {
   ChevronRight,
   FileText,
   History,
-  LineChart,
   MessageSquare,
   ShieldCheck,
   Users,
@@ -60,7 +59,6 @@ const NAV_ITEMS: readonly NavItem[] = [
     badgeTitle: "Nowe dyskusje (24h)",
   },
   { href: "/admin/uzytkownicy", label: "Użytkownicy", icon: Users },
-  { href: "/admin/inwestor", label: "Inwestor", icon: LineChart },
   { href: "/admin/historia-pytan", label: "Historia zmian", icon: History },
 ] as const;
 

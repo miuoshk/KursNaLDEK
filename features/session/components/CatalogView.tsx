@@ -1,14 +1,20 @@
 "use client";
 
-import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   BookOpenText,
-  ChevronLeft,
-  ChevronRight,
-  Eye,
-  EyeOff,
-  List,
+  Check,
+  GraduationCap,
   Search,
+  Sparkles,
+  RotateCcw,
   X,
 } from "lucide-react";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
@@ -16,12 +22,14 @@ import { SessionQuestionActions } from "@/features/shared/components/QuestionFoo
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
+type CatalogMode = "nauka" | "egzamin";
+const MODE_STORAGE_KEY = "catalog-mode";
+
 type CatalogViewProps = {
   subjectName: string;
   questions: SessionQuestion[];
   /**
    * Opcjonalny ID pytania do otwarcia od razu (np. deep-link z zakładki "Zapisane").
-   * Jeśli pytanie istnieje na liście, zostanie odsłonięte automatycznie.
    */
   initialQuestionId?: string;
 };
@@ -111,18 +119,30 @@ export function CatalogView({
     const i = questions.findIndex((q) => q.id === initialQuestionId);
     return i >= 0 ? i : 0;
   }, [initialQuestionId, questions]);
+
   const [index, setIndex] = useState(initialIndex);
   const [searchValue, setSearchValue] = useState("");
-  const [revealedIds, setRevealedIds] = useState<Set<string>>(() => {
-    const initial = new Set<string>();
-    if (initialQuestionId) {
-      const found = questions.find((q) => q.id === initialQuestionId);
-      if (found) initial.add(found.id);
-    }
-    return initial;
-  });
-  const [listOpen, setListOpen] = useState(false);
+  const [mode, setMode] = useState<CatalogMode>("nauka");
+  const [selectedByQ, setSelectedByQ] = useState<Record<string, string>>({});
   const [explainOpen, setExplainOpen] = useState(false);
+
+  // Tryb zapamiętujemy w localStorage — uczy się tak samo na każdym
+  // przedmiocie i przy następnym wejściu user dostaje swój wybór.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem(MODE_STORAGE_KEY);
+    if (stored === "nauka" || stored === "egzamin") {
+      setMode(stored);
+    }
+  }, []);
+
+  const updateMode = useCallback((next: CatalogMode) => {
+    setMode(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(MODE_STORAGE_KEY, next);
+    }
+  }, []);
+
   const normalizedSearch = normalizeSearchText(searchValue);
 
   const filteredIndexes = useMemo(() => {
@@ -140,10 +160,13 @@ export function CatalogView({
   }, [normalizedSearch, questions]);
 
   const navigationIndexes = filteredIndexes;
-  const activeIndex = navigationIndexes.includes(index) ? index : (navigationIndexes[0] ?? 0);
+  const activeIndex = navigationIndexes.includes(index)
+    ? index
+    : (navigationIndexes[0] ?? 0);
   const currentNavPosition = navigationIndexes.indexOf(activeIndex);
   const q = questions[activeIndex];
-  const isRevealed = q ? revealedIds.has(q.id) : false;
+  const selectedOptionId = q ? selectedByQ[q.id] : undefined;
+  const isRevealed = mode === "nauka" || Boolean(selectedOptionId);
 
   const goPrev = useCallback(() => {
     if (navigationIndexes.length === 0) return;
@@ -151,6 +174,7 @@ export function CatalogView({
     const prevPosition = Math.max(0, safePosition - 1);
     setIndex(navigationIndexes[prevPosition] ?? 0);
   }, [currentNavPosition, navigationIndexes]);
+
   const goNext = useCallback(() => {
     if (navigationIndexes.length === 0) return;
     const safePosition = currentNavPosition >= 0 ? currentNavPosition : 0;
@@ -158,15 +182,23 @@ export function CatalogView({
     setIndex(navigationIndexes[nextPosition] ?? 0);
   }, [currentNavPosition, navigationIndexes]);
 
-  const toggleReveal = useCallback(() => {
+  const selectOption = useCallback(
+    (optionId: string) => {
+      if (!q || mode !== "egzamin") return;
+      setSelectedByQ((prev) => {
+        if (prev[q.id] === optionId) return prev;
+        return { ...prev, [q.id]: optionId };
+      });
+    },
+    [q, mode],
+  );
+
+  const resetSelection = useCallback(() => {
     if (!q) return;
-    setRevealedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(q.id)) {
-        next.delete(q.id);
-      } else {
-        next.add(q.id);
-      }
+    setSelectedByQ((prev) => {
+      if (prev[q.id] == null) return prev;
+      const next = { ...prev };
+      delete next[q.id];
       return next;
     });
   }, [q]);
@@ -174,14 +206,16 @@ export function CatalogView({
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        if (listOpen || explainOpen) {
+        if (explainOpen) {
           e.preventDefault();
-          setListOpen(false);
           setExplainOpen(false);
         }
         return;
       }
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
         return;
       }
       if (e.key === "ArrowLeft") {
@@ -192,25 +226,13 @@ export function CatalogView({
       if (e.key === "ArrowRight") {
         e.preventDefault();
         goNext();
-        return;
-      }
-      if (e.key === " " || e.key.toLowerCase() === "r") {
-        e.preventDefault();
-        toggleReveal();
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goPrev, goNext, toggleReveal, listOpen, explainOpen]);
+  }, [goPrev, goNext, explainOpen]);
 
   if (!q) return null;
-
-  const correctOption = q.options.find((o) => o.id === q.correctOptionId);
-
-  function handleSelectFromList(i: number) {
-    setIndex(i);
-    setListOpen(false);
-  }
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -224,18 +246,7 @@ export function CatalogView({
               {subjectName}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => setListOpen(true)}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary"
-            aria-label="Pokaż listę pytań"
-          >
-            <List className="size-3.5" aria-hidden />
-            <span className="hidden sm:inline">Lista</span>
-            <span className="font-mono">
-              {currentNavPosition >= 0 ? currentNavPosition + 1 : 0}/{navigationIndexes.length}
-            </span>
-          </button>
+          <ModePills value={mode} onChange={updateMode} />
           <button
             type="button"
             onClick={() => setExplainOpen(true)}
@@ -298,68 +309,86 @@ export function CatalogView({
                   {q.options.map((opt, i) => {
                     const letter = String.fromCharCode(65 + i);
                     const isCorrect = opt.id === q.correctOptionId;
-                    const showCorrect = isRevealed && isCorrect;
-                    return (
-                      <div
-                        key={opt.id}
-                        className={cn(
-                          "flex w-full items-start gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm transition-colors duration-200",
-                          showCorrect
-                            ? "border-success/30 bg-success/[0.08] text-success"
-                            : "border-border bg-background/50 text-secondary",
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            "flex size-6 shrink-0 items-center justify-center rounded-full border text-body-xs font-semibold",
-                            showCorrect
-                              ? "border-success/30 bg-success/10 text-success"
-                              : "border-border bg-background/70 text-muted",
-                          )}
-                        >
-                          {letter}
-                        </span>
+                    const isSelected = selectedOptionId === opt.id;
+                    const showAsCorrect = isRevealed && isCorrect;
+                    const showAsWrong =
+                      mode === "egzamin" && isSelected && !isCorrect;
+                    const interactive =
+                      mode === "egzamin" && !selectedOptionId;
+
+                    const commonClass = cn(
+                      "flex w-full items-start gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm transition-colors duration-200",
+                      showAsCorrect
+                        ? "border-success/30 bg-success/[0.08] text-success"
+                        : showAsWrong
+                          ? "border-error/40 bg-error/[0.08] text-error"
+                          : "border-border bg-background/50 text-secondary",
+                      interactive &&
+                        "cursor-pointer hover:border-brand-gold/40 hover:text-primary",
+                    );
+
+                    const badgeClass = cn(
+                      "flex size-6 shrink-0 items-center justify-center rounded-full border text-body-xs font-semibold",
+                      showAsCorrect
+                        ? "border-success/30 bg-success/10 text-success"
+                        : showAsWrong
+                          ? "border-error/40 bg-error/10 text-error"
+                          : "border-border bg-background/70 text-muted",
+                    );
+
+                    const content = (
+                      <>
+                        <span className={badgeClass}>{letter}</span>
                         <span className="min-w-0 flex-1">
                           {highlightText(opt.text, searchValue)}
                         </span>
+                        {showAsCorrect ? (
+                          <Check
+                            className="size-4 shrink-0 text-success"
+                            aria-hidden
+                          />
+                        ) : showAsWrong ? (
+                          <X
+                            className="size-4 shrink-0 text-error"
+                            aria-hidden
+                          />
+                        ) : null}
+                      </>
+                    );
+
+                    if (interactive) {
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={() => selectOption(opt.id)}
+                          className={commonClass}
+                        >
+                          {content}
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <div key={opt.id} className={commonClass}>
+                        {content}
                       </div>
                     );
                   })}
                 </div>
 
-                <div className="mt-5 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <button
-                    type="button"
-                    onClick={toggleReveal}
-                    className={cn(
-                      "inline-flex items-center justify-center gap-2 rounded-btn px-4 py-2 font-body text-body-sm font-medium transition-colors",
-                      isRevealed
-                        ? "border border-border bg-card text-secondary hover:text-primary"
-                        : "bg-brand-gold text-brand-bg hover:brightness-110",
-                    )}
-                  >
-                    {isRevealed ? (
-                      <>
-                        <EyeOff className="size-4" aria-hidden />
-                        Ukryj odpowiedź
-                      </>
-                    ) : (
-                      <>
-                        <Eye className="size-4" aria-hidden />
-                        Pokaż odpowiedź
-                      </>
-                    )}
-                  </button>
-                  {isRevealed && correctOption ? (
-                    <p className="font-body text-body-sm text-success">
-                      Poprawna: {highlightText(correctOption.text, searchValue)}
-                    </p>
-                  ) : (
-                    <p className="font-body text-body-xs text-muted">
-                      ← → nawigacja · spacja/R odsłoń
-                    </p>
-                  )}
-                </div>
+                {mode === "egzamin" && selectedOptionId ? (
+                  <div className="mt-5">
+                    <button
+                      type="button"
+                      onClick={resetSelection}
+                      className="inline-flex items-center gap-2 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary"
+                    >
+                      <RotateCcw className="size-3.5" aria-hidden />
+                      Spróbuj ponownie
+                    </button>
+                  </div>
+                ) : null}
               </article>
 
               <div className="mt-6">
@@ -379,50 +408,22 @@ export function CatalogView({
             <div className="mt-3">{markdownBlock(q.explanation)}</div>
           ) : (
             <div className="mt-6 flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
-              <EyeOff className="size-6 text-muted" aria-hidden />
+              <Sparkles className="size-6 text-muted" aria-hidden />
               <p className="font-body text-body-sm text-muted">
-                Wyjaśnienie jest ukryte. Kliknij <em>Pokaż odpowiedź</em>, aby je zobaczyć.
+                Wybierz odpowiedź, aby zobaczyć wyjaśnienie.
               </p>
             </div>
           )}
         </aside>
       </div>
 
-      <div className="flex shrink-0 items-center justify-between border-t border-border bg-background px-4 py-3 sm:px-6">
-        <button
-          type="button"
-          onClick={goPrev}
-          disabled={navigationIndexes.length === 0 || currentNavPosition <= 0}
-          className="inline-flex items-center gap-1 rounded-btn px-4 py-2 font-body text-body-sm text-secondary transition-colors hover:text-primary disabled:opacity-30"
-        >
-          <ChevronLeft className="size-4" aria-hidden />
-          Poprzednie
-        </button>
-        <p className="font-body text-body-xs text-muted">
-          {currentNavPosition >= 0 ? currentNavPosition + 1 : 0} / {navigationIndexes.length}
-        </p>
-        <button
-          type="button"
-          onClick={goNext}
-          disabled={
-            navigationIndexes.length === 0 ||
-            currentNavPosition >= navigationIndexes.length - 1
-          }
-          className="inline-flex items-center gap-1 rounded-btn bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition-colors hover:brightness-110 disabled:opacity-30"
-        >
-          Następne
-          <ChevronRight className="size-4" aria-hidden />
-        </button>
-      </div>
-
-      <CatalogQuestionListDrawer
-        open={listOpen}
-        onClose={() => setListOpen(false)}
+      <CatalogBottomNav
         questions={questions}
         questionIndexes={navigationIndexes}
-        currentIndex={index}
-        onSelect={handleSelectFromList}
-        searchValue={searchValue}
+        currentIndex={activeIndex}
+        onSelect={setIndex}
+        selectedByQ={selectedByQ}
+        mode={mode}
       />
 
       <CatalogExplanationDrawer
@@ -430,97 +431,138 @@ export function CatalogView({
         onClose={() => setExplainOpen(false)}
         explanation={q.explanation}
         revealed={isRevealed}
-        onToggleReveal={() => {
-          toggleReveal();
-        }}
+        mode={mode}
       />
     </div>
   );
 }
 
-function CatalogQuestionListDrawer({
-  open,
-  onClose,
+function ModePills({
+  value,
+  onChange,
+}: {
+  value: CatalogMode;
+  onChange: (next: CatalogMode) => void;
+}) {
+  return (
+    <div className="inline-flex shrink-0 items-center gap-1 rounded-pill border border-border bg-card-hover/40 p-1">
+      <ModeButton
+        active={value === "nauka"}
+        onClick={() => onChange("nauka")}
+        icon={<BookOpenText className="size-3.5" aria-hidden />}
+        label="Nauka"
+        title="Tryb nauki — odpowiedzi i wyjaśnienia widoczne od razu"
+      />
+      <ModeButton
+        active={value === "egzamin"}
+        onClick={() => onChange("egzamin")}
+        icon={<GraduationCap className="size-3.5" aria-hidden />}
+        label="Egzamin"
+        title="Tryb egzaminacyjny — wyjaśnienie po wybraniu odpowiedzi"
+      />
+    </div>
+  );
+}
+
+function ModeButton({
+  active,
+  onClick,
+  icon,
+  label,
+  title,
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: ReactNode;
+  label: string;
+  title: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      title={title}
+      aria-pressed={active}
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-pill px-2.5 py-1 font-body text-[11px] font-medium transition-colors",
+        active
+          ? "bg-brand-gold/15 text-brand-gold"
+          : "text-secondary hover:text-primary",
+      )}
+    >
+      {icon}
+      <span className="hidden sm:inline">{label}</span>
+    </button>
+  );
+}
+
+function CatalogBottomNav({
   questions,
   questionIndexes,
   currentIndex,
   onSelect,
-  searchValue,
+  selectedByQ,
+  mode,
 }: {
-  open: boolean;
-  onClose: () => void;
   questions: SessionQuestion[];
   questionIndexes: number[];
   currentIndex: number;
   onSelect: (i: number) => void;
-  searchValue: string;
+  selectedByQ: Record<string, string>;
+  mode: CatalogMode;
 }) {
-  if (!open) return null;
+  const activeRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (activeRef.current) {
+      activeRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [currentIndex]);
+
+  if (questionIndexes.length <= 1) return null;
+
   return (
-    <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
-      <button
-        type="button"
-        aria-label="Zamknij listę pytań"
-        onClick={onClose}
-        className="flex-1 bg-black/60"
-      />
-      <div className="flex h-full w-full max-w-md flex-col border-l border-border bg-card shadow-2xl sm:w-[420px]">
-        <header className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
-          <div className="min-w-0">
-            <h2 className="font-heading text-lg font-bold text-primary">Lista pytań</h2>
-            <p className="font-body text-body-xs text-muted">
-              {questionIndexes.length} {searchValue ? "wyników" : "pytań"} · #{currentIndex + 1} aktywne
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/5 hover:text-primary"
-            aria-label="Zamknij"
-          >
-            <X className="size-4" aria-hidden />
-          </button>
-        </header>
-        <ol className="min-h-0 flex-1 overflow-y-auto px-2 py-2">
-          {questionIndexes.map((qIdx, i) => {
-            const item = questions[qIdx];
-            if (!item) return null;
-            const isActive = qIdx === currentIndex;
-            return (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => onSelect(qIdx)}
-                  className={cn(
-                    "flex w-full items-start gap-3 rounded-btn px-3 py-2.5 text-left transition-colors",
-                    isActive
-                      ? "bg-brand-gold/10 text-primary"
-                      : "text-secondary hover:bg-white/[0.03] hover:text-primary",
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "shrink-0 rounded-pill px-2 py-0.5 font-body text-[10px] font-semibold",
-                      isActive
-                        ? "bg-brand-gold text-brand-bg"
-                        : "bg-background/60 text-muted",
-                    )}
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <p className="line-clamp-1 font-body text-body-xs uppercase tracking-wider text-muted">
-                      {item.topicName}
-                    </p>
-                    <p className="line-clamp-2 mt-0.5 font-body text-body-sm">
-                      {item.text}
-                    </p>
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ol>
+    <div className="shrink-0 border-t border-border bg-card/40">
+      <div
+        className="flex gap-1.5 overflow-x-auto px-3 py-2.5"
+        style={{ scrollbarWidth: "thin" }}
+      >
+        {questionIndexes.map((qIdx, i) => {
+          const item = questions[qIdx];
+          if (!item) return null;
+          const isActive = qIdx === currentIndex;
+          const chosen = selectedByQ[item.id];
+          const isAnswered = chosen != null && mode === "egzamin";
+          const isCorrect =
+            isAnswered && chosen === item.correctOptionId;
+          const isWrong = isAnswered && !isCorrect;
+          return (
+            <button
+              key={item.id}
+              ref={isActive ? activeRef : null}
+              type="button"
+              onClick={() => onSelect(qIdx)}
+              aria-label={`Pytanie ${i + 1}`}
+              aria-current={isActive ? "true" : undefined}
+              className={cn(
+                "inline-flex size-9 shrink-0 items-center justify-center rounded-btn border font-body text-body-xs transition-colors",
+                isActive
+                  ? "border-brand-gold bg-brand-gold text-brand-bg font-semibold shadow-[0_0_0_2px_rgba(201,168,76,0.18)]"
+                  : isCorrect
+                    ? "border-success/40 bg-success/10 text-success hover:brightness-110"
+                    : isWrong
+                      ? "border-error/40 bg-error/10 text-error hover:brightness-110"
+                      : "border-border bg-card text-secondary hover:border-brand-gold/40 hover:text-primary",
+              )}
+            >
+              {i + 1}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -531,13 +573,13 @@ function CatalogExplanationDrawer({
   onClose,
   explanation,
   revealed,
-  onToggleReveal,
+  mode,
 }: {
   open: boolean;
   onClose: () => void;
   explanation: string;
   revealed: boolean;
-  onToggleReveal: () => void;
+  mode: CatalogMode;
 }) {
   if (!open) return null;
   return (
@@ -565,18 +607,12 @@ function CatalogExplanationDrawer({
             markdownBlock(explanation)
           ) : (
             <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
-              <EyeOff className="size-6 text-muted" aria-hidden />
+              <Sparkles className="size-6 text-muted" aria-hidden />
               <p className="font-body text-body-sm text-muted">
-                Wyjaśnienie jest ukryte.
+                {mode === "egzamin"
+                  ? "Wybierz odpowiedź, aby zobaczyć wyjaśnienie."
+                  : "Wyjaśnienie pojawi się, gdy włączysz tryb nauki."}
               </p>
-              <button
-                type="button"
-                onClick={onToggleReveal}
-                className="mt-1 inline-flex items-center gap-2 rounded-btn bg-brand-gold px-4 py-2 font-body text-body-sm font-medium text-brand-bg transition-colors hover:brightness-110"
-              >
-                <Eye className="size-4" aria-hidden />
-                Pokaż odpowiedź
-              </button>
             </div>
           )}
         </div>

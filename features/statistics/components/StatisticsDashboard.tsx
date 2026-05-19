@@ -10,6 +10,7 @@ import { ReadinessCard } from "@/features/statistics/components/ReadinessCard";
 import { StudyTimeChart } from "@/features/statistics/components/StudyTimeChart";
 import { SubjectRadarChart } from "@/features/statistics/components/SubjectRadarChart";
 import { WeakTopicsList } from "@/features/statistics/components/WeakTopicsList";
+import { SessionHistoryList } from "@/features/shared/components/SessionHistoryList";
 import type { StatisticsPayload, TimeRangeKey } from "@/features/statistics/types";
 import { cn } from "@/lib/utils";
 
@@ -131,6 +132,22 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
           </div>
         </section>
       </div>
+
+      <section>
+        <h2 className="font-heading text-xl font-bold text-primary">
+          Historia sesji
+        </h2>
+        <p className="mt-1 font-body text-sm text-secondary">
+          Ostatnie ukończone sesje. Kliknij, aby zobaczyć podsumowanie i odpowiedzi.
+        </p>
+        <div className="mt-4">
+          <SessionHistoryList
+            sessions={data.recentSessions}
+            emptyText="Brak ukończonych sesji w tym okresie."
+            emptyAction={{ href: "/przedmioty", label: "Rozpocznij sesję" }}
+          />
+        </div>
+      </section>
 
       <p className="font-body text-body-xs text-muted">
         Łącznie pytań w wybranym okresie: {data.totalQuestionsAnswered} · Czas nauki:{" "}

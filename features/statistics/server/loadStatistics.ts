@@ -55,8 +55,24 @@ export async function loadStatistics(
     p_user_id: userId,
   });
 
-  const [sessionsRes, heatSessionsRes, uqpRes, profileRes, percentileRes] =
-    await Promise.all([sessQ, heatQ, uqpQ, profileQ, percentileQ]);
+  const recentSessionsQ = supabase
+    .from("study_sessions")
+    .select(
+      "id, mode, completed_at, accuracy, total_questions, duration_seconds, subjects ( name )",
+    )
+    .eq("user_id", userId)
+    .eq("is_completed", true)
+    .order("completed_at", { ascending: false })
+    .limit(20);
+
+  const [
+    sessionsRes,
+    heatSessionsRes,
+    uqpRes,
+    profileRes,
+    percentileRes,
+    recentSessionsRes,
+  ] = await Promise.all([sessQ, heatQ, uqpQ, profileQ, percentileQ, recentSessionsQ]);
 
   const sessRows = sessionsRes.data ?? [];
   const byDay = sessionsByLocalDate(sessRows);
@@ -98,6 +114,22 @@ export async function loadStatistics(
         ? Number(peerPercentileRaw)
         : peerPercentileRaw;
 
+  const recentSessions = (recentSessionsRes.data ?? []).map(
+    (row: Record<string, unknown>) => {
+      const sub = row.subjects as { name: string } | { name: string }[] | null;
+      const name = Array.isArray(sub) ? sub[0]?.name : sub?.name;
+      return {
+        id: row.id as string,
+        subjectName: (name as string) ?? "Przedmiot",
+        mode: (row.mode as string) ?? "inteligentna",
+        completedAt: row.completed_at as string,
+        accuracy: (row.accuracy as number | null) ?? null,
+        totalQuestions: (row.total_questions as number | null) ?? 0,
+        durationSeconds: (row.duration_seconds as number | null) ?? null,
+      };
+    },
+  );
+
   return {
     range,
     accuracyTrend,
@@ -114,5 +146,6 @@ export async function loadStatistics(
     currentStreak: profile?.current_streak ?? 0,
     xp: profile?.xp ?? 0,
     heatmap,
+    recentSessions,
   };
 }

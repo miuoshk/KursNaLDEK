@@ -26,4 +26,13 @@ export interface StatisticsPayload {
   currentStreak: number;
   xp: number;
   heatmap: { date: string; level: number }[];
+  recentSessions: {
+    id: string;
+    subjectName: string;
+    mode: string;
+    completedAt: string;
+    accuracy: number | null;
+    totalQuestions: number;
+    durationSeconds: number | null;
+  }[];
 }

@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { normalizeTrack, normalizeYear, trackSchema, yearSchema } from "@/features/access/lib/studyAccess";
+import { upsertChargeFromWebhook } from "@/features/admin/server/stripePaymentsRepo";
+import { ADMIN_FINANCE_CACHE_TAG } from "@/features/admin/server/loadAdminFinance";
 
 export const runtime = "nodejs";
 
@@ -29,13 +32,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Nieprawidłowa sygnatura." }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
-    try {
+  try {
+    if (event.type === "checkout.session.completed") {
       await handleCheckoutCompleted(event.data.object as Stripe.Checkout.Session);
-    } catch (error) {
-      console.error("[stripe-webhook] checkout.session.completed failed", error);
-      return NextResponse.json({ error: "Błąd przetwarzania webhooka." }, { status: 500 });
+    } else if (
+      event.type === "charge.succeeded" ||
+      event.type === "charge.updated" ||
+      event.type === "charge.refunded" ||
+      event.type === "charge.failed"
+    ) {
+      await upsertChargeFromWebhook(event.data.object as Stripe.Charge);
+      revalidateTag(ADMIN_FINANCE_CACHE_TAG, "max");
     }
+  } catch (error) {
+    console.error(`[stripe-webhook] ${event.type} failed`, error);
+    return NextResponse.json({ error: "Błąd przetwarzania webhooka." }, { status: 500 });
   }
 
   return NextResponse.json({ received: true });

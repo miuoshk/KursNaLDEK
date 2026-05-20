@@ -1,4 +1,12 @@
-import { createClient } from "@/lib/supabase/server";
+import "server-only";
+
+import {
+  getAllErrorReports,
+  getAllProfiles,
+  getAllSubjects,
+  getStudySessionsLast90d,
+  getTotalQuestionsCount,
+} from "@/features/admin/server/loadAdminShared";
 
 export type TrackKey = "lekarski" | "stomatologia" | "inny";
 
@@ -216,57 +224,42 @@ type SessionRow = {
 };
 
 export async function loadAdminDashboard(): Promise<AdminDashboardData> {
-  const supabase = await createClient();
-
   const now = new Date();
   const startOfToday = new Date(now);
   startOfToday.setHours(0, 0, 0, 0);
-  const todayIso = startOfToday.toISOString();
+  const todayMs = startOfToday.getTime();
   const since7d = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
   const since14d = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString();
   const since30d = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+  const since30dMs = new Date(since30d).getTime();
 
-  const [
-    questionsRes,
-    usersRes,
-    paidUsersRes,
-    reportsRes,
-    sessionsTodayRes,
-    sessions30dRes,
-    profilesRes,
-    subjectsRes,
-  ] = await Promise.all([
-    supabase.from("questions").select("id", { count: "exact", head: true }),
-    supabase.from("profiles").select("id", { count: "exact", head: true }),
-    supabase
-      .from("profiles")
-      .select("id", { count: "exact", head: true })
-      .eq("subscription_status", "active"),
-    supabase
-      .from("error_reports")
-      .select("id", { count: "exact", head: true })
-      .eq("status", "pending"),
-    supabase
-      .from("study_sessions")
-      .select("id", { count: "exact", head: true })
-      .gte("started_at", todayIso),
-    supabase
-      .from("study_sessions")
-      .select(
-        "id, user_id, subject_id, mode, total_questions, correct_answers, duration_seconds, accuracy, started_at, completed_at, is_completed",
-      )
-      .gte("started_at", since30d),
-    supabase
-      .from("profiles")
-      .select(
-        "id, display_name, current_track, current_year, xp, current_streak, subscription_status, created_at",
-      ),
-    supabase.from("subjects").select("id, name, track, year"),
-  ]);
+  const [totalQuestions, allSessions, allProfiles, allSubjects, allReports] =
+    await Promise.all([
+      getTotalQuestionsCount(),
+      getStudySessionsLast90d(),
+      getAllProfiles(),
+      getAllSubjects(),
+      getAllErrorReports(),
+    ]);
 
-  const sessions30d = (sessions30dRes.data ?? []) as SessionRow[];
-  const profiles = profilesRes.data ?? [];
-  const subjects = subjectsRes.data ?? [];
+  const sessions30d = allSessions.filter((row) => {
+    if (!row.started_at) return false;
+    return new Date(row.started_at).getTime() >= since30dMs;
+  }) as SessionRow[];
+
+  const profiles = allProfiles;
+  const subjects = allSubjects;
+
+  const sessionsToday = allSessions.filter((row) => {
+    if (!row.started_at) return false;
+    return new Date(row.started_at).getTime() >= todayMs;
+  }).length;
+
+  const paidUsers = profiles.filter(
+    (p) => p.subscription_status === "active",
+  ).length;
+
+  const pendingReports = allReports.filter((r) => r.status === "pending").length;
 
   const subjectMap = new Map<
     string,
@@ -896,11 +889,11 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     });
 
   return {
-    totalQuestions: questionsRes.count ?? 0,
-    totalUsers: usersRes.count ?? 0,
-    paidUsers: paidUsersRes.count ?? 0,
-    pendingReports: reportsRes.count ?? 0,
-    sessionsToday: sessionsTodayRes.count ?? 0,
+    totalQuestions,
+    totalUsers: profiles.length,
+    paidUsers,
+    pendingReports,
+    sessionsToday,
     sessionsLast7d,
     sessionsLast30d,
     answeredQuestionsLast7d,

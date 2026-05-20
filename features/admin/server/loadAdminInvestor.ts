@@ -1,6 +1,12 @@
 import "server-only";
 
-import { createClient } from "@/lib/supabase/server";
+import {
+  getAllEntitlements,
+  getAllErrorReports,
+  getAllProfiles,
+  getAllSubjects,
+  getStudySessionsLast90d,
+} from "@/features/admin/server/loadAdminShared";
 
 export type GrowthPoint = {
   date: string;
@@ -89,34 +95,17 @@ function safeAccuracy(row: SessionRow): number {
 }
 
 export async function loadAdminInvestor(): Promise<AdminInvestorData> {
-  const supabase = await createClient();
   const now = Date.now();
-  const since90Iso = new Date(now - 90 * MS.day).toISOString();
 
-  const [sessionsRes, profilesRes, subjectsRes, entitlementsRes, reportsRes] = await Promise.all([
-    supabase
-      .from("study_sessions")
-      .select(
-        "user_id, total_questions, correct_answers, duration_seconds, started_at, mode, accuracy, subject_id",
-      )
-      .gte("started_at", since90Iso),
-    supabase
-      .from("profiles")
-      .select("id, current_track, current_year, current_streak, created_at, subscription_status"),
-    supabase.from("subjects").select("id, name, track, year"),
-    supabase
-      .from("user_year_entitlements")
-      .select("user_id, track, year, access_type, active, granted_at"),
-    supabase
-      .from("error_reports")
-      .select("id, status, created_at, resolved_at"),
+  const [sessionsRaw, profiles, subjects, entitlements, reports] = await Promise.all([
+    getStudySessionsLast90d(),
+    getAllProfiles(),
+    getAllSubjects(),
+    getAllEntitlements(),
+    getAllErrorReports(),
   ]);
 
-  const sessions = (sessionsRes.data ?? []) as SessionRow[];
-  const profiles = profilesRes.data ?? [];
-  const subjects = subjectsRes.data ?? [];
-  const entitlements = entitlementsRes.data ?? [];
-  const reports = reportsRes.data ?? [];
+  const sessions = sessionsRaw as SessionRow[];
 
   const subjectMap = new Map<string, { name: string; track: string | null; year: number | null }>();
   for (const s of subjects) {

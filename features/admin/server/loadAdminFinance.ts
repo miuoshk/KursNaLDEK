@@ -1,15 +1,24 @@
 import "server-only";
 
-import type Stripe from "stripe";
-import { getStripeServerClient } from "@/lib/stripe/server";
-import { createClient } from "@/lib/supabase/server";
+import { cache } from "react";
+import { after } from "next/server";
+import { revalidateTag, unstable_cache } from "next/cache";
+import { createAdminClient } from "@/lib/supabase/admin";
+import {
+  getAllEntitlements,
+  getAllProfiles,
+} from "@/features/admin/server/loadAdminShared";
+import { backfillStripePayments } from "@/features/admin/server/stripeBackfill";
+import { countRecentPayments } from "@/features/admin/server/stripePaymentsRepo";
 
 const MONTHLY_BUCKETS = 12;
+const CACHE_REVALIDATE_SECONDS = 300;
+export const ADMIN_FINANCE_CACHE_TAG = "admin-finance";
 
 export type AdminFinanceMonthlyPoint = {
-  monthIso: string; // YYYY-MM
-  label: string; // np. "maj 2026"
-  grossRevenue: number; // PLN
+  monthIso: string;
+  label: string;
+  grossRevenue: number;
   successfulPayments: number;
   refunds: number;
 };
@@ -61,27 +70,6 @@ function monthLabel(year: number, monthIdx: number): string {
   return `${MONTH_NAMES[monthIdx] ?? ""} ${year}`;
 }
 
-function emptyResult(reason: string): AdminFinanceData {
-  return {
-    available: false,
-    reason,
-    currency: "pln",
-    revenueLast7d: 0,
-    revenueLast30d: 0,
-    revenueLast365d: 0,
-    paymentsLast30d: 0,
-    paymentsLast365d: 0,
-    refundsLast30d: 0,
-    averageOrderValue: 0,
-    arpu30d: 0,
-    paidActiveTotal: 0,
-    monthlyRevenue: [],
-    cohorts: [],
-    paidConversionPct: 0,
-    fetchedAtIso: new Date().toISOString(),
-  };
-}
-
 type StripeAggregates = {
   revenueLast7d: number;
   revenueLast30d: number;
@@ -92,53 +80,70 @@ type StripeAggregates = {
   averageOrderValue: number;
   monthlyRevenue: AdminFinanceMonthlyPoint[];
   currency: string;
+  totalRows: number;
 };
 
-const STRIPE_CACHE_TTL_MS = 60_000;
-let stripeCache: { value: StripeAggregates | null; expiresAt: number } | null = null;
-let stripeInflight: Promise<StripeAggregates | null> | null = null;
+type PaymentRow = {
+  amount: number;
+  amount_refunded: number;
+  currency: string;
+  status: string;
+  refunded: boolean;
+  stripe_created_at: string;
+};
 
-async function getStripeAggregatesCached(): Promise<StripeAggregates | null> {
-  const now = Date.now();
-  if (stripeCache && stripeCache.expiresAt > now) {
-    return stripeCache.value;
-  }
-  if (stripeInflight) return stripeInflight;
-  stripeInflight = (async () => {
-    try {
-      const value = await collectStripeAggregates();
-      stripeCache = { value, expiresAt: Date.now() + STRIPE_CACHE_TTL_MS };
-      return value;
-    } finally {
-      stripeInflight = null;
-    }
-  })();
-  return stripeInflight;
+function emptyAggregates(): StripeAggregates {
+  return {
+    revenueLast7d: 0,
+    revenueLast30d: 0,
+    revenueLast365d: 0,
+    paymentsLast30d: 0,
+    paymentsLast365d: 0,
+    refundsLast30d: 0,
+    averageOrderValue: 0,
+    monthlyRevenue: [],
+    currency: "pln",
+    totalRows: 0,
+  };
 }
 
-async function collectStripeAggregates(): Promise<{
-  revenueLast7d: number;
-  revenueLast30d: number;
-  revenueLast365d: number;
-  paymentsLast30d: number;
-  paymentsLast365d: number;
-  refundsLast30d: number;
-  averageOrderValue: number;
-  monthlyRevenue: AdminFinanceMonthlyPoint[];
-  currency: string;
-} | null> {
-  let stripe: Stripe;
-  try {
-    stripe = getStripeServerClient();
-  } catch (e) {
-    console.error("[loadAdminFinance] Stripe client error", e);
-    return null;
+/**
+ * Czyta z lokalnej tabeli `stripe_payments` i agreguje wartości KPI.
+ * Tabela jest karmiona webhookiem + endpointem /api/admin/stripe-backfill.
+ *
+ * Owinięte w `unstable_cache` z tagiem `admin-finance` — webhook i backfill
+ * wywołują `revalidateTag(ADMIN_FINANCE_CACHE_TAG)`, więc agregaty są
+ * natychmiast świeże po zmianie, a w międzyczasie strony serwujemy z cache.
+ */
+async function readStripeAggregatesFromTable(): Promise<StripeAggregates> {
+  const admin = createAdminClient();
+  const now = Date.now();
+  const since365Iso = new Date(now - 365 * 86400000).toISOString();
+  const since30Ms = now - 30 * 86400000;
+  const since7Ms = now - 7 * 86400000;
+
+  // Stronicowanie po 1000, dopóki PostgREST zwraca pełną stronę.
+  const PAGE = 1000;
+  const rows: PaymentRow[] = [];
+  for (let offset = 0; ; offset += PAGE) {
+    const { data, error } = await admin
+      .from("stripe_payments")
+      .select("amount, amount_refunded, currency, status, refunded, stripe_created_at")
+      .gte("stripe_created_at", since365Iso)
+      .order("stripe_created_at", { ascending: false })
+      .range(offset, offset + PAGE - 1);
+    if (error) {
+      console.error("[loadAdminFinance] read error", error.message);
+      break;
+    }
+    const batch = (data ?? []) as PaymentRow[];
+    rows.push(...batch);
+    if (batch.length < PAGE) break;
   }
 
-  const now = Date.now();
-  const since365 = Math.floor((now - 365 * 86400000) / 1000);
-  const since30 = Math.floor((now - 30 * 86400000) / 1000);
-  const since7 = Math.floor((now - 7 * 86400000) / 1000);
+  if (rows.length === 0) {
+    return emptyAggregates();
+  }
 
   let revenueLast7d = 0;
   let revenueLast30d = 0;
@@ -149,57 +154,48 @@ async function collectStripeAggregates(): Promise<{
   let currency = "pln";
   const monthlyMap = new Map<string, AdminFinanceMonthlyPoint>();
 
-  try {
-    for await (const charge of stripe.charges.list({
-      created: { gte: since365 },
-      limit: 100,
-    })) {
-      const createdSec = charge.created;
-      if (charge.refunded || charge.status !== "succeeded") {
-        if (charge.amount_refunded > 0 && createdSec >= since30) {
-          refundsLast30d += charge.amount_refunded;
-        }
-        continue;
-      }
-      const amount = charge.amount;
-      if (charge.currency) currency = charge.currency;
-      const date = new Date(createdSec * 1000);
-      const monthIso = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
-      const label = monthLabel(date.getUTCFullYear(), date.getUTCMonth());
-      const bucket = monthlyMap.get(monthIso) ?? {
-        monthIso,
-        label,
-        grossRevenue: 0,
-        successfulPayments: 0,
-        refunds: 0,
-      };
-      bucket.grossRevenue += amount;
-      bucket.successfulPayments += 1;
-      if (charge.amount_refunded > 0) {
-        bucket.refunds += charge.amount_refunded;
-      }
-      monthlyMap.set(monthIso, bucket);
+  for (const row of rows) {
+    const createdMs = new Date(row.stripe_created_at).getTime();
+    const isSucceeded = row.status === "succeeded" && !row.refunded;
+    const amount = row.amount ?? 0;
+    if (row.currency) currency = row.currency;
 
-      revenueLast365d += amount;
-      paymentsLast365d += 1;
-      if (createdSec >= since30) {
-        revenueLast30d += amount;
-        paymentsLast30d += 1;
-        if (charge.amount_refunded > 0) {
-          refundsLast30d += charge.amount_refunded;
-        }
+    if (!isSucceeded) {
+      if ((row.amount_refunded ?? 0) > 0 && createdMs >= since30Ms) {
+        refundsLast30d += row.amount_refunded;
       }
-      if (createdSec >= since7) {
-        revenueLast7d += amount;
+      continue;
+    }
+
+    const date = new Date(createdMs);
+    const monthIso = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
+    const bucket = monthlyMap.get(monthIso) ?? {
+      monthIso,
+      label: monthLabel(date.getUTCFullYear(), date.getUTCMonth()),
+      grossRevenue: 0,
+      successfulPayments: 0,
+      refunds: 0,
+    };
+    bucket.grossRevenue += amount;
+    bucket.successfulPayments += 1;
+    if ((row.amount_refunded ?? 0) > 0) {
+      bucket.refunds += row.amount_refunded;
+    }
+    monthlyMap.set(monthIso, bucket);
+
+    revenueLast365d += amount;
+    paymentsLast365d += 1;
+    if (createdMs >= since30Ms) {
+      revenueLast30d += amount;
+      paymentsLast30d += 1;
+      if ((row.amount_refunded ?? 0) > 0) {
+        refundsLast30d += row.amount_refunded;
       }
     }
-  } catch (e) {
-    console.error("[loadAdminFinance] Stripe charges.list error", e);
-    return null;
+    if (createdMs >= since7Ms) {
+      revenueLast7d += amount;
+    }
   }
-
-  const averageOrderValue =
-    paymentsLast30d > 0 ? Math.round(revenueLast30d / paymentsLast30d) : 0;
 
   const months: AdminFinanceMonthlyPoint[] = [];
   for (let i = MONTHLY_BUCKETS - 1; i >= 0; i -= 1) {
@@ -219,7 +215,9 @@ async function collectStripeAggregates(): Promise<{
     );
   }
 
-  const toCurrencyUnits = (amount: number) => Math.round(amount) / 100;
+  const toCurrencyUnits = (a: number) => Math.round(a) / 100;
+  const averageOrderValue =
+    paymentsLast30d > 0 ? Math.round(revenueLast30d / paymentsLast30d) : 0;
 
   return {
     revenueLast7d: toCurrencyUnits(revenueLast7d),
@@ -235,21 +233,30 @@ async function collectStripeAggregates(): Promise<{
       refunds: toCurrencyUnits(m.refunds),
     })),
     currency,
+    totalRows: rows.length,
   };
 }
 
-async function collectEntitlementCohorts(): Promise<{
+const getCachedStripeAggregates = unstable_cache(
+  readStripeAggregatesFromTable,
+  ["admin-finance-aggregates-v1"],
+  { revalidate: CACHE_REVALIDATE_SECONDS, tags: [ADMIN_FINANCE_CACHE_TAG] },
+);
+
+/**
+ * Liczy kohorty „% płacących” na podstawie profili i `user_year_entitlements`.
+ * Korzysta z dwóch współdzielonych loaderów (`react.cache`), więc nie wykonuje
+ * dodatkowych zapytań jeśli `loadAdminDashboard` / `loadAdminInvestor` już je
+ * wywołały w tym żądaniu.
+ */
+const collectEntitlementCohorts = cache(async (): Promise<{
   cohorts: AdminFinanceCohortRow[];
   paidActiveTotal: number;
   totalUsers: number;
-}> {
-  const supabase = await createClient();
-
-  const [{ data: entitlements }, { data: profiles }] = await Promise.all([
-    supabase
-      .from("user_year_entitlements")
-      .select("user_id, track, year, access_type, active"),
-    supabase.from("profiles").select("id, current_track, current_year"),
+}> => {
+  const [entitlements, profiles] = await Promise.all([
+    getAllEntitlements(),
+    getAllProfiles(),
   ]);
 
   const cohortMap = new Map<
@@ -262,9 +269,9 @@ async function collectEntitlementCohorts(): Promise<{
     }
   >();
 
-  for (const profile of profiles ?? []) {
+  for (const profile of profiles) {
     const track = profile.current_track === "lekarski" ? "lekarski" : "stomatologia";
-    const year = (profile.current_year as number | null) ?? null;
+    const year = profile.current_year ?? null;
     if (!year) continue;
     const key = `${track}|${year}`;
     const bucket = cohortMap.get(key) ?? {
@@ -278,7 +285,7 @@ async function collectEntitlementCohorts(): Promise<{
   }
 
   const allPaidUsers = new Set<string>();
-  for (const row of entitlements ?? []) {
+  for (const row of entitlements) {
     if (row.access_type !== "paid" || row.active !== true) continue;
     const track = row.track === "lekarski" ? "lekarski" : "stomatologia";
     const year = Number(row.year);
@@ -290,8 +297,8 @@ async function collectEntitlementCohorts(): Promise<{
       totalUsers: 0,
       paidUserIds: new Set<string>(),
     };
-    bucket.paidUserIds.add(row.user_id as string);
-    allPaidUsers.add(row.user_id as string);
+    bucket.paidUserIds.add(row.user_id);
+    allPaidUsers.add(row.user_id);
     cohortMap.set(key, bucket);
   }
 
@@ -315,46 +322,92 @@ async function collectEntitlementCohorts(): Promise<{
   return {
     cohorts,
     paidActiveTotal: allPaidUsers.size,
-    totalUsers: (profiles ?? []).length,
+    totalUsers: profiles.length,
   };
+});
+
+let backfillScheduled = false;
+function maybeScheduleBackfill(stripeAvailable: boolean) {
+  if (backfillScheduled) return;
+  if (!stripeAvailable) return;
+  if (!process.env.STRIPE_SECRET_KEY) return;
+  backfillScheduled = true;
+  after(async () => {
+    try {
+      const fresh = await countRecentPayments(365);
+      if (fresh > 0) return; // ktoś zdążył wpaść z webhookiem — nic nie rób
+      console.info("[loadAdminFinance] running lazy backfill (last 365d)");
+      const res = await backfillStripePayments(365);
+      if (res.ok && res.written > 0) {
+        revalidateTag(ADMIN_FINANCE_CACHE_TAG, "max");
+        console.info(`[loadAdminFinance] backfill wrote ${res.written} rows`);
+      } else if (!res.ok) {
+        console.error("[loadAdminFinance] backfill failed", res.reason);
+      }
+    } catch (e) {
+      console.error("[loadAdminFinance] backfill threw", e);
+    } finally {
+      backfillScheduled = false;
+    }
+  });
 }
 
 export async function loadAdminFinance(): Promise<AdminFinanceData> {
-  const [stripeAgg, cohortAgg] = await Promise.all([
-    getStripeAggregatesCached(),
+  const [aggregates, cohortAgg] = await Promise.all([
+    getCachedStripeAggregates(),
     collectEntitlementCohorts(),
   ]);
 
-  if (!stripeAgg) {
+  const stripeAvailable = aggregates.totalRows > 0;
+  const baseAvailable = stripeAvailable;
+
+  const arpu30d =
+    cohortAgg.paidActiveTotal > 0
+      ? Number((aggregates.revenueLast30d / cohortAgg.paidActiveTotal).toFixed(2))
+      : 0;
+
+  if (!baseAvailable) {
+    // Tabela pusta — zaplanuj backfill w tle (jeśli możliwy) i pokaż info.
+    maybeScheduleBackfill(true);
     return {
-      ...emptyResult("Stripe niedostępne — brakuje klucza STRIPE_SECRET_KEY lub błąd API."),
-      cohorts: cohortAgg.cohorts,
+      available: false,
+      reason:
+        process.env.STRIPE_SECRET_KEY
+          ? "Trwa synchronizacja danych Stripe — odśwież panel za chwilę."
+          : "Stripe niedostępne — brakuje klucza STRIPE_SECRET_KEY.",
+      currency: aggregates.currency,
+      revenueLast7d: 0,
+      revenueLast30d: 0,
+      revenueLast365d: 0,
+      paymentsLast30d: 0,
+      paymentsLast365d: 0,
+      refundsLast30d: 0,
+      averageOrderValue: 0,
+      arpu30d: 0,
       paidActiveTotal: cohortAgg.paidActiveTotal,
+      monthlyRevenue: [],
+      cohorts: cohortAgg.cohorts,
       paidConversionPct:
         cohortAgg.totalUsers > 0
           ? Number(((cohortAgg.paidActiveTotal / cohortAgg.totalUsers) * 100).toFixed(1))
           : 0,
+      fetchedAtIso: new Date().toISOString(),
     };
   }
 
-  const arpu30d =
-    cohortAgg.paidActiveTotal > 0
-      ? Number((stripeAgg.revenueLast30d / cohortAgg.paidActiveTotal).toFixed(2))
-      : 0;
-
   return {
     available: true,
-    currency: stripeAgg.currency,
-    revenueLast7d: stripeAgg.revenueLast7d,
-    revenueLast30d: stripeAgg.revenueLast30d,
-    revenueLast365d: stripeAgg.revenueLast365d,
-    paymentsLast30d: stripeAgg.paymentsLast30d,
-    paymentsLast365d: stripeAgg.paymentsLast365d,
-    refundsLast30d: stripeAgg.refundsLast30d,
-    averageOrderValue: stripeAgg.averageOrderValue,
+    currency: aggregates.currency,
+    revenueLast7d: aggregates.revenueLast7d,
+    revenueLast30d: aggregates.revenueLast30d,
+    revenueLast365d: aggregates.revenueLast365d,
+    paymentsLast30d: aggregates.paymentsLast30d,
+    paymentsLast365d: aggregates.paymentsLast365d,
+    refundsLast30d: aggregates.refundsLast30d,
+    averageOrderValue: aggregates.averageOrderValue,
     arpu30d,
     paidActiveTotal: cohortAgg.paidActiveTotal,
-    monthlyRevenue: stripeAgg.monthlyRevenue,
+    monthlyRevenue: aggregates.monthlyRevenue,
     cohorts: cohortAgg.cohorts,
     paidConversionPct:
       cohortAgg.totalUsers > 0

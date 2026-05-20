@@ -47,12 +47,15 @@ CREATE INDEX IF NOT EXISTS idx_stripe_payments_user
 
 -- Trigger: bump synced_at on update.
 CREATE OR REPLACE FUNCTION public.set_stripe_payments_synced_at()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, public
+AS $$
 BEGIN
   NEW.synced_at := NOW();
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$;
 
 DROP TRIGGER IF EXISTS trg_stripe_payments_synced_at ON public.stripe_payments;
 CREATE TRIGGER trg_stripe_payments_synced_at

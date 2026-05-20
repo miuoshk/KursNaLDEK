@@ -58,19 +58,37 @@ export async function fetchTopicQuestionIds(
   return (data ?? []).map((r) => r.id as string);
 }
 
+/**
+ * Subject IDs z `product=knnp` zawężone do bieżącego (track, year) usera —
+ * sesja mieszana / powtórka bez wskazania przedmiotu nie ma prawa złapać
+ * pytań z roku/kierunku, do którego user obecnie nie ma dostępu.
+ *
+ * Gdy `track`/`year` nie zostaną podane, fallback do wszystkich KNNP
+ * (zachowuje wsteczną kompatybilność dla starego kodu i testów).
+ */
+async function fetchScopedKnnpSubjectIds(
+  supabase: SupabaseClient,
+  track?: string,
+  year?: number,
+): Promise<string[]> {
+  let query = supabase.from("subjects").select("id").eq("product", "knnp");
+  if (track) query = query.eq("track", track);
+  if (year != null) query = query.eq("year", year);
+  const { data, error } = await query;
+  if (error) {
+    console.error("[fetchScopedKnnpSubjectIds]", error.message);
+    return [];
+  }
+  return (data ?? []).map((s) => s.id as string);
+}
+
 /** Wszystkie aktywne pytania z przedmiotów product=knnp (sesja mieszana). */
 export async function fetchKnnpAllQuestionIds(
   supabase: SupabaseClient,
+  track?: string,
+  year?: number,
 ): Promise<string[]> {
-  const { data: subjects, error: se } = await supabase
-    .from("subjects")
-    .select("id")
-    .eq("product", "knnp");
-  if (se) {
-    console.error("[fetchKnnpAllQuestionIds] subjects", se.message);
-    return [];
-  }
-  const subjectIds = (subjects ?? []).map((s) => s.id as string);
+  const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return [];
   const { data: topicRows, error: te } = await supabase
     .from("topics")
@@ -96,12 +114,10 @@ export async function fetchKnnpAllQuestionIds(
 
 export async function fetchKnnpTopicIdSet(
   supabase: SupabaseClient,
+  track?: string,
+  year?: number,
 ): Promise<Set<string>> {
-  const { data: subjects } = await supabase
-    .from("subjects")
-    .select("id")
-    .eq("product", "knnp");
-  const subjectIds = (subjects ?? []).map((s) => s.id as string);
+  const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return new Set();
   const { data: topicRows } = await supabase
     .from("topics")

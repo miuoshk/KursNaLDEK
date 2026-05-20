@@ -53,15 +53,14 @@ export default async function DashboardLayout({
   } else if (user) {
     userEmail = user.email ?? null;
     void pingPresence();
-    const [profileRow, due] = await Promise.all([
-      getProfileByUserId(user.id),
-      getDueReviewCount(supabase, user.id),
-    ]);
+    const profileRow = await getProfileByUserId(user.id);
     const userTrack = profileRow?.current_track ?? "stomatologia";
     const userYear = profileRow?.current_year ?? 1;
     currentTrack = normalizeTrack(userTrack);
+    // Prerozgrzewamy katalog (track, year) — `getDueReviewCount` zaraz go
+    // wczyta z tego samego React cache (jedno żądanie, bez duplikacji).
     await getCachedKnnpCatalog(userTrack, userYear);
-    dueReviewsCount = due;
+    dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
     displayName = greetingName(profileRow, userEmail);
     streak = profileRow?.current_streak ?? 0;
     avatarEmoji =

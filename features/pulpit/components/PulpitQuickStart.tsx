@@ -39,7 +39,7 @@ function ReviewCard({
   hasDue: boolean;
 }) {
   const reviewHref = lastSubjectId
-    ? `/sesja/new?subjectId=${encodeURIComponent(lastSubjectId)}&mode=inteligentna`
+    ? `/sesja/new?subject=${encodeURIComponent(lastSubjectId)}&mode=inteligentna&count=10`
     : "/sesja/new?mode=inteligentna&count=10";
 
   return (

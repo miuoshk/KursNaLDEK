@@ -25,6 +25,8 @@ import {
   loadQuestionsByIdsOrdered,
   mapRowsToSessionQuestions,
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
+import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
+import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 const schema = z.object({
   subjectId: z.string().optional(),
@@ -188,8 +190,14 @@ export async function startSession(
         return { ok: false, message: "Brak aktywnych pytań w wybranym temacie." };
       }
     } else if (isMix) {
-      pool = await fetchKnnpAllQuestionIds(supabase);
-      topicOkForDue = await fetchKnnpTopicIdSet(supabase);
+      // Sesja mieszana / domyślna powtórka: zawężamy pulę do bieżącego
+      // (track, year) usera, żeby studentka rok 3 farmy nie dostała pytań
+      // z anatomii z poprzednich lat.
+      const profile = await getProfileByUserId(user.id);
+      const track = normalizeTrack(profile?.current_track);
+      const year = normalizeYear(profile?.current_year);
+      pool = await fetchKnnpAllQuestionIds(supabase, track, year);
+      topicOkForDue = await fetchKnnpTopicIdSet(supabase, track, year);
     } else {
       pool = await fetchSubjectQuestionIds(supabase, subjectId);
       const { data: topicRows } = await supabase

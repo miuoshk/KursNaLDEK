@@ -51,14 +51,13 @@ export function SessionStudyView({
   const completedRef = useRef(false);
   const isCompleting = useRef(false);
 
-  // Zakonczenie sesji: zapisujemy flag completed + delegujemy renderowanie
-  // podsumowania do dedykowanej route `/sesja/{id}/podsumowanie`. Dzieki temu
-  // layout dashboardu (sidebar, TopBar) od razu przechodzi z trybu "study"
-  // do trybu "podsumowanie" - bez flash z ukrytym paskiem bocznym.
-  //
-  // `persistSessionSummaryToStorage` jest juz wywolane w `useSessionStudyFlow`
-  // PRZED tym callbackiem, wiec `SessionSummaryLoader` na nowej route wczyta
-  // dane synchronicznie z sessionStorage - render jest natychmiastowy.
+  const handleCompleting = useCallback(() => {
+    completedRef.current = true;
+    setHasCompleted(true);
+  }, []);
+
+  // Nawigacja dopiero po completeSession (w useSessionStudyFlow) — DB ma
+  // is_completed=true zanim serwerowy guard na /podsumowanie się odpali.
   const handleComplete = useCallback((_summary: SessionSummaryData) => {
     if (!isCompleting.current) {
       isCompleting.current = true;
@@ -66,8 +65,6 @@ export function SessionStudyView({
         sessionStorage.setItem(`session_${sessionId}_completed`, "true");
       } catch { /* SSR / quota */ }
     }
-    completedRef.current = true;
-    setHasCompleted(true);
     router.replace(`/sesja/${sessionId}/podsumowanie`);
   }, [router, sessionId]);
 
@@ -115,6 +112,7 @@ export function SessionStudyView({
     mode === "inteligentna"
       ? { fatigueShownRef, onFatigueSuggestion }
       : null,
+    handleCompleting,
     handleComplete,
   );
 

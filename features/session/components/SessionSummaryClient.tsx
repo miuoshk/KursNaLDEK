@@ -8,6 +8,7 @@ import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerS
 import { SummaryHero } from "@/features/session/components/SummaryHero";
 import { SummaryTopicBreakdown } from "@/features/session/components/SummaryTopicBreakdown";
 import { SummaryXpCard } from "@/features/session/components/SummaryXpCard";
+import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
 
 export function SessionSummaryClient({ summary }: { summary: SessionSummaryData }) {
   const { setSecondSegment, setThirdSegment } = useDashboardBreadcrumb();
@@ -23,14 +24,11 @@ export function SessionSummaryClient({ summary }: { summary: SessionSummaryData 
 
   useEffect(() => {
     try {
-      // Remove bootstrap cache immediately — no longer needed.
       sessionStorage.removeItem(`kurs-session-${summary.sessionId}`);
-      // Delay clearing the completed flag so that if a revalidation
-      // re-renders SessionPageClient, the guard still redirects to
-      // the summary instead of re-bootstrapping the session.
       const t = setTimeout(() => {
         try {
           sessionStorage.removeItem(`session_${summary.sessionId}_completed`);
+          sessionStorage.removeItem(sessionSummaryStorageKey(summary.sessionId));
         } catch { /* SSR guard */ }
       }, 30_000);
       return () => clearTimeout(t);

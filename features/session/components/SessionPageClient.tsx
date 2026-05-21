@@ -7,6 +7,7 @@ import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
 import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
+import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
 import {
   peekRetryWrongIds,
   removeRetryWrongIds,

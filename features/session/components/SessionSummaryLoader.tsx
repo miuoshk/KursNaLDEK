@@ -8,10 +8,6 @@ import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryS
 import { Skeleton } from "@/features/shared/components/Skeleton";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
-// Inicjalny odczyt sessionStorage robimy synchronicznie w `useState` initializer,
-// zeby pierwszy render zawieral juz pelne podsumowanie (gdy klient przyszedl
-// tu prosto z ekranu sesji - dane sa w storage). Eliminuje to flash skeletonu
-// miedzy router.replace a hydratacja danych.
 function readCachedSummary(sessionId: string): SessionSummaryData | null {
   if (typeof window === "undefined") return null;
   try {
@@ -31,22 +27,13 @@ export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Cache hit - czyscimy go (jednorazowy uzytek) i konczymy.
-    if (summary) {
-      try {
-        sessionStorage.removeItem(sessionSummaryStorageKey(sessionId));
-      } catch { /* SSR / quota */ }
-      return;
-    }
+    if (summary) return;
 
     void loadSessionSummaryAction(sessionId).then((r) => {
       if (r.ok) setSummary(r.summary);
       else setError(r.message);
     });
-    // intencjonalnie tylko sessionId - summary z initializer'a jest stabilne
-    // i nie chcemy retriggerowac fetchu po jego ustawieniu
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId]);
+  }, [sessionId, summary]);
 
   useEffect(() => {
     if (error) router.replace("/przedmioty");

@@ -2,8 +2,8 @@
 
 import { useCallback, useRef } from "react";
 import type { MutableRefObject } from "react";
+import { completeSession } from "@/features/session/api/completeSession";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
-import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
 import {
   adaptRemainingQuestions,
@@ -53,6 +53,9 @@ export function useSessionStudyFlow(
   setSaveToast: (m: string | null) => void,
   closeEndDialog: () => void,
   antaresMid: AntaresMidOpts | null,
+  /** Wywoływane natychmiast — pokaż ekran ładowania podsumowania. */
+  onCompleting: () => void,
+  /** Wywoływane po zapisie sesji w DB — nawigacja na /podsumowanie. */
   onComplete: (summary: SessionSummaryData) => void,
 ) {
   const {
@@ -80,18 +83,33 @@ export function useSessionStudyFlow(
       if (finishingRef.current) return;
       finishingRef.current = true;
       persistSessionSummaryToStorage(sessionId, summary);
-      onComplete(summary);
-      const pending = Array.from(pendingSavesRef.current);
-      if (pending.length === 0) {
-        scheduleServerSessionComplete(sessionId, sessionStart.current);
-        return;
-      }
+      onCompleting();
 
-      void Promise.allSettled(pending).then(() => {
-        scheduleServerSessionComplete(sessionId, sessionStart.current);
-      });
+      void (async () => {
+        const pending = Array.from(pendingSavesRef.current);
+        if (pending.length > 0) {
+          await Promise.allSettled(pending);
+        }
+
+        const dur = Math.floor((Date.now() - sessionStart.current) / 1000);
+        let finalSummary = summary;
+        try {
+          const comp = await completeSession({
+            sessionId,
+            durationSecondsFallback: dur,
+          });
+          if (comp.ok) {
+            finalSummary = comp.summary;
+            persistSessionSummaryToStorage(sessionId, comp.summary);
+          }
+        } catch (err) {
+          console.error("[finishSession] completeSession", err);
+        }
+
+        onComplete(finalSummary);
+      })();
     },
-    [sessionId, sessionStart, onComplete],
+    [sessionId, sessionStart, onCompleting, onComplete],
   );
 
   const buildSummary = useCallback(

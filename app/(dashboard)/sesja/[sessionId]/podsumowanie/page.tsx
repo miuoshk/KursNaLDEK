@@ -28,9 +28,8 @@ export default async function SessionSummaryPage({ params }: PageProps) {
     redirect("/przedmioty");
   }
 
-  if (!session.is_completed) {
-    redirect(`/sesja/${sessionId}`);
-  }
-
+  // Nie przekierowuj z powrotem na /sesja/{id} gdy is_completed=false.
+  // Klient moze tu trafic tuż po zakonczeniu (race) — dane sa w sessionStorage,
+  // a redirect ping-pong powodowal migotanie sidebara i utrate cache (404).
   return <SessionSummaryLoader sessionId={sessionId} />;
 }

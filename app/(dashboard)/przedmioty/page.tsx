@@ -41,7 +41,7 @@ export default async function PrzedmiotyPage() {
   }
 
   const { subjects, profile, totalQuestionCount, overallProgress, isSubscribed } = result;
-  const showOsceSection = profile.track === "Stomatologia" && profile.current_year === 2;
+  const showOsceSection = false;
 
   return (
     <div>

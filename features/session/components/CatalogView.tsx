@@ -124,7 +124,6 @@ export function CatalogView({
   const [searchValue, setSearchValue] = useState("");
   const [mode, setMode] = useState<CatalogMode>("nauka");
   const [selectedByQ, setSelectedByQ] = useState<Record<string, string>>({});
-  const [explainOpen, setExplainOpen] = useState(false);
 
   // Tryb zapamiętujemy w localStorage — uczy się tak samo na każdym
   // przedmiocie i przy następnym wejściu user dostaje swój wybór.
@@ -205,13 +204,6 @@ export function CatalogView({
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        if (explainOpen) {
-          e.preventDefault();
-          setExplainOpen(false);
-        }
-        return;
-      }
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
@@ -230,7 +222,7 @@ export function CatalogView({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [goPrev, goNext, explainOpen]);
+  }, [goPrev, goNext]);
 
   if (!q) return null;
 
@@ -247,15 +239,6 @@ export function CatalogView({
             </p>
           </div>
           <ModePills value={mode} onChange={updateMode} />
-          <button
-            type="button"
-            onClick={() => setExplainOpen(true)}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary lg:hidden"
-            aria-label="Pokaż wyjaśnienie"
-          >
-            <BookOpenText className="size-3.5" aria-hidden />
-            <span className="hidden sm:inline">Wyjaśnienie</span>
-          </button>
         </div>
       </div>
 
@@ -391,6 +374,12 @@ export function CatalogView({
                 ) : null}
               </article>
 
+              <CatalogExplanationPanel
+                className="mt-6 lg:hidden"
+                explanation={q.explanation}
+                revealed={isRevealed}
+              />
+
               <div className="mt-6">
                 <SessionQuestionActions questionId={q.id} questionText={q.text} />
               </div>
@@ -399,21 +388,10 @@ export function CatalogView({
         </div>
 
         <aside className="hidden min-h-0 w-full max-w-md shrink-0 overflow-y-auto border-l border-border bg-card p-6 lg:block xl:p-8">
-          <h3 className="font-heading text-xl font-bold text-primary">Wyjaśnienie</h3>
-          {navigationIndexes.length === 0 ? (
-            <p className="mt-3 font-body text-body-sm text-muted">
-              Wybierz inną frazę, aby wyświetlić pytanie i wyjaśnienie.
-            </p>
-          ) : isRevealed ? (
-            <div className="mt-3">{markdownBlock(q.explanation)}</div>
-          ) : (
-            <div className="mt-6 flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
-              <Sparkles className="size-6 text-muted" aria-hidden />
-              <p className="font-body text-body-sm text-muted">
-                Wybierz odpowiedź, aby zobaczyć wyjaśnienie.
-              </p>
-            </div>
-          )}
+          <CatalogExplanationPanel
+            explanation={q.explanation}
+            revealed={isRevealed}
+          />
         </aside>
       </div>
 
@@ -426,13 +404,6 @@ export function CatalogView({
         mode={mode}
       />
 
-      <CatalogExplanationDrawer
-        open={explainOpen}
-        onClose={() => setExplainOpen(false)}
-        explanation={q.explanation}
-        revealed={isRevealed}
-        mode={mode}
-      />
     </div>
   );
 }
@@ -568,55 +539,30 @@ function CatalogBottomNav({
   );
 }
 
-function CatalogExplanationDrawer({
-  open,
-  onClose,
+function CatalogExplanationPanel({
   explanation,
   revealed,
-  mode,
+  className,
 }: {
-  open: boolean;
-  onClose: () => void;
   explanation: string;
   revealed: boolean;
-  mode: CatalogMode;
+  className?: string;
 }) {
-  if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex lg:hidden" role="dialog" aria-modal="true">
-      <button
-        type="button"
-        aria-label="Zamknij wyjaśnienie"
-        onClick={onClose}
-        className="flex-1 bg-black/60"
-      />
-      <div className="flex h-full w-full max-w-md flex-col border-l border-border bg-card shadow-2xl sm:w-[420px]">
-        <header className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
-          <h2 className="font-heading text-lg font-bold text-primary">Wyjaśnienie</h2>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/5 hover:text-primary"
-            aria-label="Zamknij"
-          >
-            <X className="size-4" aria-hidden />
-          </button>
-        </header>
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
-          {revealed ? (
-            markdownBlock(explanation)
-          ) : (
-            <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
-              <Sparkles className="size-6 text-muted" aria-hidden />
-              <p className="font-body text-body-sm text-muted">
-                {mode === "egzamin"
-                  ? "Wybierz odpowiedź, aby zobaczyć wyjaśnienie."
-                  : "Wyjaśnienie pojawi się, gdy włączysz tryb nauki."}
-              </p>
-            </div>
-          )}
+    <section className={className}>
+      <h3 className="font-heading text-xl font-bold text-primary">Wyjaśnienie</h3>
+      {revealed ? (
+        <div className="mt-3 rounded-card border border-border bg-card p-4 sm:p-5">
+          {markdownBlock(explanation)}
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className="mt-3 flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
+          <Sparkles className="size-6 text-muted" aria-hidden />
+          <p className="font-body text-body-sm text-muted">
+            Wybierz odpowiedź, aby zobaczyć wyjaśnienie.
+          </p>
+        </div>
+      )}
+    </section>
   );
 }

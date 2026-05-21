@@ -10,6 +10,7 @@ export interface SessionQuestion {
   correctOptionId: string;
   explanation: string;
   sourceCode: string | null;
+  imageUrl?: string | null;
   topicName: string;
   /** Id tematu z bazy (ANTARES); opcjonalne dla starszych payloadów. */
   topicId?: string;

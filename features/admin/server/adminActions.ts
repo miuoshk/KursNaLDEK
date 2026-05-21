@@ -136,7 +136,7 @@ const updateQuestionSchema = z.object({
   isActive: z.boolean(),
   sourceExam: z.string().max(120).nullable(),
   sourceCode: z.string().max(120).nullable(),
-  imageUrl: z.string().max(500).nullable(),
+  imageUrl: z.string().max(2048).nullable(),
   topicId: z.string().max(120).nullable(),
   themeLabel: z.string().max(200).nullable(),
   subthemeLabel: z.string().max(200).nullable(),

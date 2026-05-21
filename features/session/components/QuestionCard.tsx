@@ -19,6 +19,16 @@ export function QuestionCard({ question, children }: QuestionCardProps) {
         ) : null}
         <span className="font-body text-body-xs text-muted">{question.topicName}</span>
       </div>
+      {question.imageUrl ? (
+        <div className="relative mt-6 h-64 w-full overflow-hidden rounded-card border border-border bg-card">
+          {/* eslint-disable-next-line @next/next/no-img-element -- zewnętrzne URL (Supabase Storage) */}
+          <img
+            src={question.imageUrl}
+            alt=""
+            className="h-full w-full object-contain"
+          />
+        </div>
+      ) : null}
       <p className="mt-6 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
         {question.text}
       </p>

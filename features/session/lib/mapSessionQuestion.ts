@@ -8,6 +8,7 @@ export type QuestionRow = {
   correct_option_id: string;
   explanation: string;
   source_code: string | null;
+  image_url?: string | null;
   topics: { name: string } | { name: string }[] | null;
 };
 
@@ -32,6 +33,7 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     correctOptionId: row.correct_option_id,
     explanation: row.explanation,
     sourceCode: row.source_code,
+    imageUrl: row.image_url ?? null,
     topicName: topicLabel(row.topics),
     topicId: row.topic_id ?? undefined,
   };

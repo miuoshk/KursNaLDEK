@@ -284,6 +284,16 @@ export function CatalogView({
                 <p className="font-body text-body-xs uppercase tracking-widest text-muted">
                   {q.topicName}
                 </p>
+                {q.imageUrl ? (
+                  <div className="relative mt-4 h-56 w-full overflow-hidden rounded-card border border-border bg-background/50 sm:h-64">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- zewnętrzne URL (Supabase Storage) */}
+                    <img
+                      src={q.imageUrl}
+                      alt=""
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                ) : null}
                 <p className="mt-3 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
                   {highlightText(q.text, searchValue)}
                 </p>

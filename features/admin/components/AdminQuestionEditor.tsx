@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState, useTransition } from "react";
 import { Check, Loader2, Plus, RotateCcw, Trash2 } from "lucide-react";
 import { updateQuestionFull } from "@/features/admin/server/adminActions";
+import { AdminQuestionImageField } from "@/features/admin/components/AdminQuestionImageField";
 import type {
   AdminQuestionDetail,
   AdminQuestionOption,
@@ -345,16 +346,11 @@ export function AdminQuestionEditor({
             className={inputClass}
           />
         </Field>
-        <Field label="URL obrazu">
-          <input
-            type="text"
-            value={state.imageUrl}
-            onChange={(e) =>
-              setState((p) => ({ ...p, imageUrl: e.target.value }))
-            }
-            className={inputClass}
-          />
-        </Field>
+        <AdminQuestionImageField
+          questionId={question.id}
+          value={state.imageUrl}
+          onChange={(imageUrl) => setState((p) => ({ ...p, imageUrl }))}
+        />
         <Field label="Theme label">
           <input
             type="text"

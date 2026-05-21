@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { cn } from "@/lib/utils";
+import { formatQuestionsCount } from "@/lib/pluralizePolish";
 
 export function PulpitQuickStart({ data }: { data: PulpitData }) {
   const hasDue = data.dueReviews > 0;
@@ -57,7 +58,7 @@ function ReviewCard({
             Powtórki na dziś
           </p>
           <p className="mt-3 font-heading text-3xl font-bold text-brand-gold">
-            {dueReviews} pytań
+            {formatQuestionsCount(dueReviews)}
           </p>
           <p className="mt-2 font-body text-sm text-secondary">
             Algorytm ANTARES zaplanował te powtórki na podstawie Twojego tempa

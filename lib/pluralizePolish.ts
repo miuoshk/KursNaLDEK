@@ -30,3 +30,41 @@ export function pluralizePolish(
 export function verbUczyPolish(count: number): string {
   return pluralizePolish(count, ["uczy", "uczą", "uczy"]);
 }
+
+/**
+ * Odmienia słowo "pytanie" zgodnie z liczbą (bez prefiksu liczby).
+ * - 1 → "pytanie"
+ * - 2/3/4 → "pytania"
+ * - 0, 5+, 11–14 → "pytań"
+ */
+export function pytaniaForm(count: number): string {
+  return pluralizePolish(count, ["pytanie", "pytania", "pytań"]);
+}
+
+/**
+ * Zwraca pełny string "{count} pytanie|pytania|pytań".
+ * Najczęściej używany helper w UI.
+ */
+export function formatQuestionsCount(count: number): string {
+  return `${count} ${pytaniaForm(count)}`;
+}
+
+/**
+ * Odmienia słowo "powtórka" zgodnie z liczbą.
+ * - 1 → "powtórka"
+ * - 2/3/4 → "powtórki"
+ * - 0, 5+, 11–14 → "powtórek"
+ */
+export function powtorkaForm(count: number): string {
+  return pluralizePolish(count, ["powtórka", "powtórki", "powtórek"]);
+}
+
+/**
+ * Odmienia słowo "dział" zgodnie z liczbą.
+ * - 1 → "dział"
+ * - 2/3/4 → "działy"
+ * - 0, 5+, 11–14 → "działów"
+ */
+export function dzialForm(count: number): string {
+  return pluralizePolish(count, ["dział", "działy", "działów"]);
+}

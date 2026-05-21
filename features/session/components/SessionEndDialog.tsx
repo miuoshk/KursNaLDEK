@@ -2,6 +2,7 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 type SessionEndDialogProps = {
   open: boolean;
@@ -32,7 +33,7 @@ export function SessionEndDialog({
           </Dialog.Title>
           <Dialog.Description className="mt-2 font-body text-body-sm text-secondary">
             Czy na pewno chcesz zakończyć? Odpowiedziałeś na {answeredCount} z{" "}
-            {totalQuestions} pytań.
+            {totalQuestions} {pytaniaForm(totalQuestions)}.
           </Dialog.Description>
           <div className="mt-6 flex justify-end gap-3">
             <Dialog.Close asChild>

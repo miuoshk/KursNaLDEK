@@ -5,6 +5,7 @@ import type { GamificationPayload } from "@/features/gamification/types";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { formatStreak } from "@/lib/formatStreak";
 import { cn } from "@/lib/utils";
+import { pluralizePolish } from "@/lib/pluralizePolish";
 
 export function PlayerCard({
   xp,
@@ -29,12 +30,17 @@ export function PlayerCard({
   const rank = getCurrentRank(xp);
   const pct = Math.round(avgAccuracy * 100);
   const studySeconds = totalStudyMinutes * 60;
-  const solvedLabel =
-    totalQuestionsAnswered === 1
-      ? "1 pytanie rozwiązane"
-      : totalQuestionsAnswered >= 2 && totalQuestionsAnswered <= 4
-        ? `${totalQuestionsAnswered} pytania rozwiązane`
-        : `${totalQuestionsAnswered} pytań rozwiązanych`;
+  const solvedNoun = pluralizePolish(totalQuestionsAnswered, [
+    "pytanie",
+    "pytania",
+    "pytań",
+  ]);
+  const solvedAdj = pluralizePolish(totalQuestionsAnswered, [
+    "rozwiązane",
+    "rozwiązane",
+    "rozwiązanych",
+  ]);
+  const solvedLabel = `${totalQuestionsAnswered} ${solvedNoun} ${solvedAdj}`;
 
   return (
     <div className="rounded-card border border-brand-gold/20 bg-card p-6">

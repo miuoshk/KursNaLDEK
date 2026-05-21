@@ -20,6 +20,7 @@ import type {
 } from "@/features/admin/server/loadAdminQuestions";
 import { AdminEditQuestionDialog } from "@/features/admin/components/AdminEditQuestionDialog";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 type SearchIn = "text" | "explanation" | "both";
 type ActiveFilter = "all" | "active" | "inactive";
@@ -283,7 +284,7 @@ export function AdminQuestionsTable({
 
       <div className="mt-3 flex items-center justify-between font-body text-body-xs text-muted">
         <span>
-          Pokazuję {showingFrom}–{showingTo} z {total} pytań
+          Pokazuję {showingFrom}–{showingTo} z {total} {pytaniaForm(total)}
         </span>
         {currentSearch && (
           <span>

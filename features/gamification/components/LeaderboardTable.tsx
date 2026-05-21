@@ -35,7 +35,8 @@ function buildHref(
   if (period !== "30") params.set("lb", period);
   if (scope !== "all") params.set("scope", scope);
   const qs = params.toString();
-  return qs ? `/osiagniecia?${qs}` : "/osiagniecia";
+  const base = `/osiagniecia${qs ? `?${qs}` : ""}`;
+  return `${base}#ranking`;
 }
 
 export function LeaderboardTable({
@@ -65,7 +66,7 @@ export function LeaderboardTable({
   ];
 
   return (
-    <section>
+    <section id="ranking" className="scroll-mt-20">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <h2 className="font-heading text-xl font-bold text-primary">Ranking</h2>
         <div className="flex flex-wrap items-center gap-2">
@@ -83,6 +84,7 @@ export function LeaderboardTable({
                 <Link
                   key={p.id}
                   href={buildHref(period, p.id)}
+                  scroll={false}
                   className={cn(
                     "rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
                     scope === p.id
@@ -100,6 +102,7 @@ export function LeaderboardTable({
               <Link
                 key={p.id}
                 href={buildHref(p.id, scope)}
+                scroll={false}
                 className={cn(
                   "rounded-pill px-3 py-1.5 font-body text-body-xs transition-colors",
                   period === p.id

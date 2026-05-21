@@ -6,6 +6,7 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import type { ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const WEEKS = 13;
 const DAY_LABELS: [number, string][] = [[0, "Pn"], [2, "Śr"], [4, "Pt"]];
@@ -181,7 +182,7 @@ export function ActivityHeatmap({ activityDays }: Props) {
         {/* Footer */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
           <p className="font-body text-sm text-secondary">
-            {totalQuestions} pytań w ostatnich 13 tygodniach
+            {totalQuestions} {pytaniaForm(totalQuestions)} w ostatnich 13 tygodniach
           </p>
           <div className="flex items-center gap-1.5">
             <span className="font-body text-[10px] text-secondary">Mniej</span>
@@ -202,7 +203,7 @@ export function ActivityHeatmap({ activityDays }: Props) {
 function HeatmapCell({ cell }: { cell: CellData }) {
   const label =
     cell.count > 0
-      ? `${TOOLTIP_FMT.format(cell.date)} — ${cell.count} pytań`
+      ? `${TOOLTIP_FMT.format(cell.date)} — ${cell.count} ${pytaniaForm(cell.count)}`
       : `${TOOLTIP_FMT.format(cell.date)} — brak aktywności`;
 
   return (

@@ -6,9 +6,64 @@ import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const R = 52;
 const C = 2 * Math.PI * R;
+
+/**
+ * Dynamiczny nagłówek + jednolinijkowy komentarz, dobrany do (accuracy, delta).
+ * Cel: zamiast suchego "Sesja zakończona" dostajemy emocjonalny feedback,
+ * spójny z motywem marki (dyskretny, bez emoji). Pomaga utrwalić nawyk -
+ * pochwała przy progresie, łagodne reframing przy spadkach.
+ */
+function pickHeadline(
+  accuracy: number,
+  delta: number | null,
+): { title: string; subtitle: string } {
+  const pct = Math.round(accuracy * 100);
+
+  if (pct === 100) {
+    return {
+      title: "Komplet!",
+      subtitle: "Wszystkie odpowiedzi poprawne. Świetna robota.",
+    };
+  }
+  if (pct >= 90) {
+    return {
+      title: "Niemal idealnie",
+      subtitle: "Wyjątkowo wysoka skuteczność.",
+    };
+  }
+  if (delta != null && delta >= 15) {
+    return {
+      title: "Wyraźny postęp",
+      subtitle: `O ${delta} punktów lepiej niż ostatnio. To się utrwala.`,
+    };
+  }
+  if (pct >= 75) {
+    return {
+      title: "Solidna sesja",
+      subtitle: "Materiał masz pod kontrolą — czas na trudniejsze pytania.",
+    };
+  }
+  if (pct >= 50) {
+    return {
+      title: "Sesja zakończona",
+      subtitle: "Solidna podstawa — przejrzyj błędy i wracaj jutro.",
+    };
+  }
+  if (delta != null && delta <= -10) {
+    return {
+      title: "Trudniejszy materiał",
+      subtitle: "Spadek skuteczności — warto wrócić do podstaw tego działu.",
+    };
+  }
+  return {
+    title: "Sesja zakończona",
+    subtitle: "Każda runda przybliża Cię do mistrzostwa. Powtórka pomoże.",
+  };
+}
 
 export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
   const prev = summary.previousAccuracy;
@@ -19,15 +74,22 @@ export function SummaryHero({ summary }: { summary: SessionSummaryData }) {
   const answered = summary.answers.length;
   const planned = summary.totalQuestions;
   const questionsLabel =
-    answered < planned ? `${answered} z ${planned} pytań` : `${planned} pytań`;
+    answered < planned
+      ? `${answered} z ${planned} ${pytaniaForm(planned)}`
+      : `${planned} ${pytaniaForm(planned)}`;
+  const { title, subtitle } = pickHeadline(summary.accuracy, delta);
 
   return (
     <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
-          <p className="font-heading text-heading-lg text-primary">Sesja zakończona</p>
-          <p className="mt-2 font-body text-body-sm text-secondary">
-            {summary.subjectName} · Tryb: {sessionModeLabel(summary.mode)} · {questionsLabel} ·{" "}
+          <p className="font-body text-body-xs uppercase tracking-[0.2em] text-brand-gold/80">
+            Sesja zakończona
+          </p>
+          <p className="mt-2 font-heading text-heading-lg text-primary">{title}</p>
+          <p className="mt-1.5 font-body text-body-md text-secondary">{subtitle}</p>
+          <p className="mt-4 font-body text-body-xs text-muted">
+            {summary.subjectName} · {sessionModeLabel(summary.mode)} · {questionsLabel} ·{" "}
             {formatSessionDuration(summary.durationSeconds)}
           </p>
         </div>

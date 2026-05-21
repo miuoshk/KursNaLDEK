@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/server";
+import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionPageClient } from "@/features/session/components/SessionPageClient";
 
 type PageProps = {
@@ -31,13 +32,7 @@ export default async function SesjaPage({ params }: PageProps) {
   }
 
   return (
-    <Suspense
-      fallback={
-        <div className="flex min-h-[40vh] items-center justify-center font-body text-body-md text-secondary">
-          Ładowanie sesji…
-        </div>
-      }
-    >
+    <Suspense fallback={<SessionLoadingScreen />}>
       <SessionPageClient sessionId={sessionId} />
     </Suspense>
   );

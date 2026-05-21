@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestions";
 import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
+import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
 import {
   peekRetryWrongIds,
@@ -167,11 +168,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   }, [sessionId, router, searchParams]);
 
   if (boot.status === "loading") {
-    return (
-      <div className="flex min-h-[40vh] items-center justify-center font-body text-body-md text-secondary">
-        Ładowanie sesji…
-      </div>
-    );
+    return <SessionLoadingScreen />;
   }
 
   if (boot.status === "error") {

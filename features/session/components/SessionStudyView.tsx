@@ -1,11 +1,12 @@
 "use client";
 
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
+import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
 import { SessionSaveToast } from "@/features/session/components/SessionSaveToast";
-import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
 import { SessionTopBar } from "@/features/session/components/SessionTopBar";
 import { useQuestionStopwatch } from "@/features/session/hooks/useQuestionStopwatch";
 import { useSessionKeyboardShortcuts } from "@/features/session/hooks/useSessionKeyboardShortcuts";
@@ -45,11 +46,20 @@ export function SessionStudyView({
   const { streak } = useDashboardUser();
   const isPrzeglad = mode === "przeglad";
 
-  const [completedSummary, setCompletedSummary] = useState<SessionSummaryData | null>(null);
+  const router = useRouter();
+  const [hasCompleted, setHasCompleted] = useState(false);
   const completedRef = useRef(false);
   const isCompleting = useRef(false);
 
-  const handleComplete = useCallback((summary: SessionSummaryData) => {
+  // Zakonczenie sesji: zapisujemy flag completed + delegujemy renderowanie
+  // podsumowania do dedykowanej route `/sesja/{id}/podsumowanie`. Dzieki temu
+  // layout dashboardu (sidebar, TopBar) od razu przechodzi z trybu "study"
+  // do trybu "podsumowanie" - bez flash z ukrytym paskiem bocznym.
+  //
+  // `persistSessionSummaryToStorage` jest juz wywolane w `useSessionStudyFlow`
+  // PRZED tym callbackiem, wiec `SessionSummaryLoader` na nowej route wczyta
+  // dane synchronicznie z sessionStorage - render jest natychmiastowy.
+  const handleComplete = useCallback((_summary: SessionSummaryData) => {
     if (!isCompleting.current) {
       isCompleting.current = true;
       try {
@@ -57,8 +67,9 @@ export function SessionStudyView({
       } catch { /* SSR / quota */ }
     }
     completedRef.current = true;
-    setCompletedSummary(summary);
-  }, [sessionId]);
+    setHasCompleted(true);
+    router.replace(`/sesja/${sessionId}/podsumowanie`);
+  }, [router, sessionId]);
 
   const s = useSession(questions, sessionId, mode);
   const qKey = s.currentQuestion?.id ?? "";
@@ -111,7 +122,7 @@ export function SessionStudyView({
     if (completedRef.current) return;
     const t = setInterval(() => setTimerSec((x) => x + 1), 1000);
     return () => clearInterval(t);
-  }, [completedSummary]);
+  }, [hasCompleted]);
 
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
@@ -158,8 +169,11 @@ export function SessionStudyView({
     onConfidencePick: onConfidenceShortcut,
   });
 
-  if (completedSummary) {
-    return <SessionSummaryClient summary={completedSummary} />;
+  // Po wywolaniu router.replace nawigacja na /podsumowanie jest asynchroniczna
+  // (potrzebny RSC roundtrip). W tym oknie pokazujemy spojny ekran loading w
+  // stylu aplikacji zamiast bialego flash lub starego pytania.
+  if (hasCompleted) {
+    return <SessionLoadingScreen />;
   }
 
   if (!s.currentQuestion) {

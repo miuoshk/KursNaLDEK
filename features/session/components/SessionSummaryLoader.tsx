@@ -8,31 +8,44 @@ import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryS
 import { Skeleton } from "@/features/shared/components/Skeleton";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
+// Inicjalny odczyt sessionStorage robimy synchronicznie w `useState` initializer,
+// zeby pierwszy render zawieral juz pelne podsumowanie (gdy klient przyszedl
+// tu prosto z ekranu sesji - dane sa w storage). Eliminuje to flash skeletonu
+// miedzy router.replace a hydratacja danych.
+function readCachedSummary(sessionId: string): SessionSummaryData | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem(sessionSummaryStorageKey(sessionId));
+    if (!raw) return null;
+    return JSON.parse(raw) as SessionSummaryData;
+  } catch {
+    return null;
+  }
+}
+
 export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   const router = useRouter();
-  const [summary, setSummary] = useState<SessionSummaryData | null>(null);
+  const [summary, setSummary] = useState<SessionSummaryData | null>(() =>
+    readCachedSummary(sessionId),
+  );
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const raw =
-      typeof window !== "undefined"
-        ? sessionStorage.getItem(sessionSummaryStorageKey(sessionId))
-        : null;
-    if (raw) {
+    // Cache hit - czyscimy go (jednorazowy uzytek) i konczymy.
+    if (summary) {
       try {
-        const parsed = JSON.parse(raw) as SessionSummaryData;
         sessionStorage.removeItem(sessionSummaryStorageKey(sessionId));
-        setSummary(parsed);
-        return;
-      } catch {
-        sessionStorage.removeItem(sessionSummaryStorageKey(sessionId));
-      }
+      } catch { /* SSR / quota */ }
+      return;
     }
 
     void loadSessionSummaryAction(sessionId).then((r) => {
       if (r.ok) setSummary(r.summary);
       else setError(r.message);
     });
+    // intencjonalnie tylko sessionId - summary z initializer'a jest stabilne
+    // i nie chcemy retriggerowac fetchu po jego ustawieniu
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId]);
 
   useEffect(() => {
@@ -50,8 +63,8 @@ export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   if (!summary) {
     return (
       <div className="mx-auto max-w-4xl space-y-6 py-4">
-        <Skeleton variant="text" className="h-10 w-64" />
-        <Skeleton variant="card" className="h-48 w-full" />
+        <Skeleton variant="card" className="h-48 w-full border-t-[3px] border-brand-gold/30" />
+        <Skeleton variant="card" className="h-40 w-full" />
         <Skeleton variant="card" className="h-32 w-full" />
       </div>
     );

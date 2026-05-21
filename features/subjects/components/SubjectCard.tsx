@@ -3,6 +3,7 @@ import { Clock, Lock } from "lucide-react";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getSubjectIcon } from "@/features/subjects/iconMap";
 import { cn } from "@/lib/utils";
+import { pytaniaForm, dzialForm } from "@/lib/pluralizePolish";
 
 type SubjectCardProps = {
   subject: SubjectWithProgress;
@@ -68,7 +69,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         </p>
       ) : (
         <p className="mt-2 font-body text-body-sm text-muted">
-          {subject.question_count} pytań · {subject.topic_count} działów
+          {subject.question_count} {pytaniaForm(subject.question_count)} · {subject.topic_count} {dzialForm(subject.topic_count)}
         </p>
       )}
 

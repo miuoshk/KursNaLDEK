@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { formatStreak } from "@/lib/formatStreak";
+import { CommandPalette } from "@/features/shared/components/CommandPalette";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { useMobileViewport } from "@/features/shared/hooks/useMobileViewport";
@@ -76,6 +77,33 @@ export function TopBar() {
   const pathFallback = mobilePageTitle(pathname);
   const mobileTitle =
     thirdSegment ?? secondSegment ?? pathFallback ?? `Rok ${year}`;
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const openPalette = useCallback(() => setPaletteOpen(true), []);
+
+  // Globalny skrot Cmd/Ctrl+K - dziala na kazdej stronie dashboardu.
+  // Ignorujemy wewnatrz input/textarea/contentEditable, zeby nie kolidowac
+  // z formularzami i edytorami.
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        const t = e.target as HTMLElement | null;
+        const tag = t?.tagName;
+        const editable = t?.isContentEditable;
+        if (
+          tag === "INPUT" ||
+          tag === "TEXTAREA" ||
+          tag === "SELECT" ||
+          editable
+        ) {
+          return;
+        }
+        e.preventDefault();
+        setPaletteOpen((v) => !v);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <header
@@ -142,6 +170,7 @@ export function TopBar() {
       <div className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-4">
         <button
           type="button"
+          onClick={openPalette}
           className={cn(
             "flex h-9 w-9 items-center justify-center rounded-btn border border-border bg-card text-secondary transition-colors duration-200 ease-out hover:bg-card-hover sm:hidden",
             "active:scale-[0.98]",
@@ -153,6 +182,7 @@ export function TopBar() {
         </button>
         <button
           type="button"
+          onClick={openPalette}
           className={cn(
             "hidden h-9 w-[200px] items-center gap-2 rounded-btn border border-border bg-card px-3 text-left transition-colors duration-200 ease-out",
             "text-secondary hover:bg-card-hover sm:flex",
@@ -171,6 +201,8 @@ export function TopBar() {
             Ctrl+K
           </kbd>
         </button>
+
+        <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
 
         <NotificationBell />
 

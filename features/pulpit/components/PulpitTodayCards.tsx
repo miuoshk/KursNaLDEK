@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { getCurrentRank, getNextRank, getXpProgress } from "@/features/gamification/lib/ranks";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const RING_R = 48;
 const RING_C = 2 * Math.PI * RING_R;
@@ -91,7 +92,7 @@ function DailyGoalCard({ data, index }: { data: PulpitData; index: number }) {
         <p className="font-body text-sm text-secondary">
           {goalDone
             ? "Cel osiągnięty!"
-            : `${data.questionsToday} / ${data.dailyGoal} pytań`}
+            : `${data.questionsToday} / ${data.dailyGoal} ${pytaniaForm(data.dailyGoal)}`}
         </p>
       </div>
     </CardShell>

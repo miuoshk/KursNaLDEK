@@ -28,7 +28,7 @@ function buildCatalogHref(item: SavedQuestionItem): string | null {
     count: "5000",
     q: item.questionId,
   });
-  return `/sesja?${params.toString()}`;
+  return `/sesja/new?${params.toString()}`;
 }
 
 export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {

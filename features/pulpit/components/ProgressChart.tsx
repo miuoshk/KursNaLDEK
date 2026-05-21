@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import type { ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const DATE_FMT = new Intl.DateTimeFormat("pl-PL", {
   day: "numeric",
@@ -42,7 +43,7 @@ function CustomTooltip({
         Trafność: <span className="text-brand-gold">{p.avgAccuracy}%</span>
       </p>
       <p className="font-body text-xs text-secondary">
-        {p.totalQuestions} pytań
+        {p.totalQuestions} {pytaniaForm(p.totalQuestions)}
       </p>
     </div>
   );

@@ -5,6 +5,7 @@ import { BookOpen } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 type TopicCardProps = {
   topic: TopicWithProgress;
@@ -63,7 +64,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         />
       </div>
       <p className="mt-3 font-body text-body-xs text-muted">
-        {hasQuestions ? `${answered} / ${total} pytań` : "Brak pytań"}
+        {hasQuestions ? `${answered} / ${total} ${pytaniaForm(total)}` : "Brak pytań"}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">Ostatnio: —</p>

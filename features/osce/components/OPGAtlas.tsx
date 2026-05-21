@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, X } from "lucide-react";
-import { Root as SwitchRoot, Thumb as SwitchThumb } from "@radix-ui/react-switch";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { OpgAtlasHotspot, OpgAtlasPanorama } from "@/features/osce/types";
+import { Toggle } from "@/features/shared/components/Toggle";
 import { usePinchZoom } from "@/hooks/usePinchZoom";
 import { cn } from "@/lib/utils";
 
@@ -160,23 +160,11 @@ function PanoramaViewer({
           <span className="font-body text-body-xs text-secondary">
             {showNames ? "Ukryj nazwy" : "Pokaż wszystkie nazwy"}
           </span>
-          <SwitchRoot
+          <Toggle
             checked={showNames}
             onCheckedChange={onShowNamesChange}
-            className={cn(
-              "relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full p-0.5 transition-colors",
-              "bg-[rgba(255,255,255,0.1)] data-[state=checked]:bg-brand-gold",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
-            )}
             aria-label={showNames ? "Ukryj nazwy struktur" : "Pokaż wszystkie nazwy"}
-          >
-            <SwitchThumb
-              className={cn(
-                "block size-5 rounded-full bg-white shadow transition-transform duration-200",
-                "translate-x-0 will-change-transform data-[state=checked]:translate-x-[22px]",
-              )}
-            />
-          </SwitchRoot>
+          />
           <span className="hidden font-body text-body-xs text-muted sm:inline">
             {showNames ? "Tryb nauki" : "Tryb sprawdzania"}
           </span>

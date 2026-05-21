@@ -6,6 +6,7 @@ import { updateStudyPreferences } from "@/features/settings/api/updateStudyPrefe
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const selectClass =
   "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
@@ -68,7 +69,7 @@ export function StudyPreferencesSection({ profile }: Props) {
             >
               <Minus className="size-4" aria-hidden />
             </button>
-            <span className="min-w-[7rem] font-body text-body-lg text-primary">{goal} pytań</span>
+            <span className="min-w-[7rem] font-body text-body-lg text-primary">{goal} {pytaniaForm(goal)}</span>
             <button
               type="button"
               onClick={() => bump(5)}

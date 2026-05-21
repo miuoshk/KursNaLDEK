@@ -3,6 +3,7 @@ import { formatSessionDuration } from "@/features/session/lib/formatSessionDurat
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
 import type { SessionMode } from "@/features/session/types";
 import { cn } from "@/lib/utils";
+import { pytaniaForm } from "@/lib/pluralizePolish";
 
 export type SessionHistoryItem = {
   id: string;
@@ -92,7 +93,7 @@ export function SessionHistoryList({
               {s.accuracy != null ? `${Math.round(s.accuracy * 100)}%` : "—"}
             </p>
             <p className="font-body text-body-xs text-muted">
-              {s.totalQuestions} pytań
+              {s.totalQuestions} {pytaniaForm(s.totalQuestions)}
               {s.durationSeconds != null ? ` · ${formatSessionDuration(s.durationSeconds)}` : ""}
             </p>
           </Link>

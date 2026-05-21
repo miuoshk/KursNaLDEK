@@ -448,9 +448,7 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
 
 -- Rok 3
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
-  ('stoma-pediatria',    'Pediatria',                 'Pediatria',     'baby',           3, 'stomatologia', 'knnp', 13),
-  ('stoma-chirurgia',    'Chirurgia',                 'Chirurgia',     'scissors',       3, 'stomatologia', 'knnp', 14),
-  ('stoma-farmakologia', 'Farmakologia',              'Farmakologia',  'pill',           3, 'stomatologia', 'knnp', 15);
+  ('stoma-farmakologia', 'Farmakologia',              'Farmakologia',  'pill',           3, 'stomatologia', 'knnp', 13);
 
 -- LEKARSKI (track = 'lekarski', product = 'knnp')
 
@@ -459,7 +457,8 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
   ('lek-anatomia',       'Anatomia',                  'Anatomia',      'bone',           1, 'lekarski', 'knnp', 1),
   ('lek-biofizyka',      'Biofizyka',                 'Biofizyka',     'zap',            1, 'lekarski', 'knnp', 2),
   ('lek-histologia',     'Histologia i embriologia',  'Histologia',    'microscope',     1, 'lekarski', 'knnp', 3),
-  ('lek-biologia-mol',   'Biologia molekularna',      'Bio. mol.',     'dna',            1, 'lekarski', 'knnp', 4);
+  ('lek-biologia-mol',   'Biologia molekularna',      'Bio. mol.',     'dna',            1, 'lekarski', 'knnp', 4),
+  ('lek-prof-humanizm',  'Profesjonalizm i humanizm w medycynie', 'Prof. human.', 'users', 1, 'lekarski', 'knnp', 5);
 
 -- Rok 2
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES

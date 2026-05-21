@@ -32,14 +32,42 @@ ON CONFLICT (id) DO UPDATE SET
   display_order = EXCLUDED.display_order,
   question_count = EXCLUDED.question_count;
 
--- Tematy: Mikrobiologia jamy ustnej
+-- Tematy: Mikrobiologia jamy ustnej (rok 2 stomatologia)
+-- Pełna lista i kolejność: scripts/2026-05-21-stoma-y2-mikrobio-ju-topics.sql
 INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
-  ('MJU-01', 'stoma-mikrobio-ju', 'Jama ustna jako środowisko bytowania drobnoustrojów', 1, 0),
-  ('MJU-02', 'stoma-mikrobio-ju', 'Dezynfekcja i sterylizacja w stomatologii', 2, 0),
-  ('MJU-03', 'stoma-mikrobio-ju', 'Stała mikroflora jamy ustnej: ziarniaki G(+), pałeczki G(+), bakterie nitkowate', 3, 0),
-  ('MJU-04', 'stoma-mikrobio-ju', 'Stała mikroflora jamy ustnej: ziarniaki G(-), pałeczki G(-), mikoplazmy, grzyby, wirusy, pierwotniaki', 4, 0),
-  ('MJU-05', 'stoma-mikrobio-ju', 'Przemiana materii bakterii jamy ustnej. Płytka nazębna', 5, 0),
-  ('MJU-06', 'stoma-mikrobio-ju', 'Próchnica zębów. Udział drobnoustrojów w chorobach przyzębia', 6, 0)
+  ('MJU-C01', 'stoma-mikrobio-ju', 'Ćwiczenie 1 — Ekosystem JU, ślina, mechanizmy obronne', 1, 0),
+  ('MJU-C02', 'stoma-mikrobio-ju', 'Ćwiczenie 2 — Dezynfekcja i sterylizacja w stomatologii', 2, 0),
+  ('MJU-KZ1', 'stoma-mikrobio-ju', 'Kolokwium Zbiorcze I — Zaliczenia ćwiczeń 1 i 2', 3, 0),
+  ('MJU-C03', 'stoma-mikrobio-ju', 'Ćwiczenie 3 — Czynniki wzrostu, taksonomia, ziarniaki i pałeczki G(+)', 4, 0),
+  ('MJU-C04', 'stoma-mikrobio-ju', 'Ćwiczenie 4 — Flora JU, kolonizacja, patogeny', 5, 0),
+  ('MJU-C05', 'stoma-mikrobio-ju', 'Ćwiczenie 5 — Adhezja, metabolizm, płytka nazębna', 6, 0),
+  ('MJU-C06', 'stoma-mikrobio-ju', 'Ćwiczenie 6 — Próchnica, choroby przyzębia, zakażenia krzyżowe', 7, 0),
+  ('MJU-KZ2', 'stoma-mikrobio-ju', 'Kolokwium Zbiorcze II — Zaliczenia ćwiczeń 3, 4 i 5', 8, 0),
+  ('MJU-ZAL', 'stoma-mikrobio-ju', 'Zaliczenie całościowe', 9, 0)
+ON CONFLICT (id) DO UPDATE SET
+  name = EXCLUDED.name,
+  display_order = EXCLUDED.display_order,
+  question_count = EXCLUDED.question_count;
+
+-- Tematy: Farmakologia (stomatologia, rok 3)
+INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
+  ('FARM-01', 'stoma-farmakologia', 'Farmakodynamika, farmakokinetyka i interakcje leków', 1, 0),
+  ('FARM-02', 'stoma-farmakologia', 'Autakoidy (aminowe, peptydowe, purynowe, gazowe, lipidowe)', 2, 0),
+  ('FARM-03', 'stoma-farmakologia', 'NLPZ, leczenie RZS i dny moczanowej. Opioidowe leki przeciwbólowe', 3, 0),
+  ('FARM-04', 'stoma-farmakologia', 'Leki autonomicznego układu nerwowego', 4, 0),
+  ('FARM-05', 'stoma-farmakologia', 'Płytki krwi, leki przeciwkrzepliwe, leczenie niedokrwistości', 5, 0),
+  ('FARM-06', 'stoma-farmakologia', 'Leki moczopędne. Układ krążenia cz. I – nadciśnienie tętnicze i płucne', 6, 0),
+  ('FARM-07', 'stoma-farmakologia', 'Układ krążenia cz. II – HF, dławica, OZW, antyarytmiczne, hipolipemizujące', 7, 0),
+  ('FARM-08', 'stoma-farmakologia', 'Leki psychotropowe – przeciwdepresyjne, anksjolityczne, neuroleptyczne', 8, 0),
+  ('FARM-09', 'stoma-farmakologia', 'OUN i obwodowy UN – znieczulenie miejscowe i ogólne, miorelaksacja, leki nasenne', 9, 0),
+  ('FARM-10', 'stoma-farmakologia', 'Leki przeciwpadaczkowe, zespoły otępienne, choroba Parkinsona', 10, 0),
+  ('FARM-11', 'stoma-farmakologia', 'Witaminy, biopierwiastki i suplementy diety', 11, 0),
+  ('FARM-12', 'stoma-farmakologia', 'Układ oddechowy – wykrztuśne, przeciwkaszlowe, astma, POChP', 12, 0),
+  ('FARM-13', 'stoma-farmakologia', 'Leki przeciwbakteryjne i środki odkażające. Farmakobiologia infekcji', 13, 0),
+  ('FARM-14', 'stoma-farmakologia', 'Leki przeciwwirusowe, przeciwgrzybicze i przeciwpasożytnicze. Medycyna podróży', 14, 0),
+  ('FARM-15', 'stoma-farmakologia', 'Leki układu pokarmowego', 15, 0),
+  ('FARM-16', 'stoma-farmakologia', 'Hormony – podwzgórze, przysadka, tarczyca, kora nadnerczy, hormony płciowe', 16, 0),
+  ('FARM-17', 'stoma-farmakologia', 'Metabolizm wapnia, homeostaza węglowodanowa, leczenie otyłości', 17, 0)
 ON CONFLICT (id) DO UPDATE SET
   name = EXCLUDED.name,
   display_order = EXCLUDED.display_order,

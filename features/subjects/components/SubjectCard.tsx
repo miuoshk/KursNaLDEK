@@ -31,8 +31,11 @@ function formatLastStudied(iso: string | null): string {
 export function SubjectCard({ subject, locked }: SubjectCardProps) {
   const Icon = getSubjectIcon(subject.icon_name);
   const mastery = subject.mastery_percentage;
-  const comingSoon = subject.question_count === 0 && subject.topic_count === 0;
-  const isDisabled = locked || comingSoon;
+  /** Brak aktywnych pytań (w tym gdy wszystkie są zdezaktywowane w adminie). */
+  const noActiveQuestions = subject.question_count === 0;
+  /** Pusty przedmiot — jeszcze bez struktury tematów. */
+  const contentInPrep = noActiveQuestions && subject.topic_count === 0;
+  const isDisabled = locked || noActiveQuestions;
 
   const content = (
     <>
@@ -46,10 +49,14 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
           )}
           aria-hidden
         />
-        {comingSoon ? (
+        {noActiveQuestions ? (
           <div className="flex items-center gap-1.5 text-right">
-            <Clock className="size-3.5 text-muted" aria-hidden />
-            <p className="font-body text-body-sm text-muted">Wkrótce</p>
+            {contentInPrep && (
+              <Clock className="size-3.5 text-muted" aria-hidden />
+            )}
+            <p className="font-body text-body-sm text-muted">
+              {contentInPrep ? "Wkrótce" : "Niedostępne"}
+            </p>
           </div>
         ) : (
           <div className="text-right">
@@ -63,9 +70,11 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         {subject.name}
       </h2>
 
-      {comingSoon ? (
+      {noActiveQuestions ? (
         <p className="mt-2 font-body text-body-sm text-muted">
-          Wkrótce dostępne
+          {contentInPrep
+            ? "Wkrótce dostępne"
+            : "Brak aktywnych pytań"}
         </p>
       ) : (
         <p className="mt-2 font-body text-body-sm text-muted">
@@ -73,7 +82,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         </p>
       )}
 
-      {!comingSoon && (
+      {!noActiveQuestions && (
         <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.06]">
           <div
             className="h-full rounded-full bg-brand-gold/80 transition-[width] duration-200"
@@ -82,9 +91,16 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         </div>
       )}
 
-      <div className={cn("mt-4 flex items-center justify-between gap-2", comingSoon && "mt-auto pt-4")}>
-        {comingSoon ? (
-          <p className="font-body text-body-xs text-muted">Treści w przygotowaniu</p>
+      <div
+        className={cn(
+          "mt-4 flex items-center justify-between gap-2",
+          noActiveQuestions && "mt-auto pt-4",
+        )}
+      >
+        {noActiveQuestions ? (
+          <p className="font-body text-body-xs text-muted">
+            {contentInPrep ? "Treści w przygotowaniu" : "Pytania wyłączone w panelu"}
+          </p>
         ) : (
           <p className="font-body text-body-xs text-muted">
             Ostatnio: {formatLastStudied(subject.last_studied_at)}
@@ -97,7 +113,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         )}
       </div>
 
-      {locked && !comingSoon && (
+      {locked && !noActiveQuestions && (
         <div className="absolute inset-0 flex items-center justify-center rounded-card bg-background/60">
           <div className="flex flex-col items-center gap-2">
             <Lock className="size-5 text-secondary" aria-hidden />

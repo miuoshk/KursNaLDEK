@@ -20,6 +20,14 @@ const CANONICAL_SHARED_SUBJECTS: CanonicalSharedSubject[] = [
     canonicalId: "biofizyka",
     trackSubjectIds: ["stoma-biofizyka", "lek-biofizyka"],
   },
+  {
+    canonicalId: "fizjologia",
+    trackSubjectIds: ["stoma-fizjologia", "lek-fizjologia"],
+  },
+  {
+    canonicalId: "mikrobiologia",
+    trackSubjectIds: ["stoma-mikrobio", "lek-mikrobio"],
+  },
 ];
 
 const SHARED_ANATOMY_SUBJECT_IDS = ["stoma-anatomia", "lek-anatomia"] as const;

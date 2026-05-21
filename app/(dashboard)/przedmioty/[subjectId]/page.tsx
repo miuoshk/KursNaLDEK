@@ -38,10 +38,16 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
 
       <div className="mt-8 space-y-8">
         <StatsRow stats={stats} />
-        <SmartSessionCTA
-          subjectId={subject.id}
-          availableQuestionCount={availableQuestionCount}
-        />
+        {availableQuestionCount > 0 ? (
+          <SmartSessionCTA
+            subjectId={subject.id}
+            availableQuestionCount={availableQuestionCount}
+          />
+        ) : (
+          <p className="font-body text-body-sm text-muted">
+            Brak aktywnych pytań w tym przedmiocie.
+          </p>
+        )}
         <TopicGrid topics={topics} subjectId={subject.id} subjectShortName={subject.short_name} />
 
         <div className="flex justify-end pt-4">

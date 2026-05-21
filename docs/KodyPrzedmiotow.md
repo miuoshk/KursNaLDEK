@@ -87,15 +87,27 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 | `stoma-patologia`   | Patomorfologia                | —             |
 | `stoma-osce`        | OSCE                          | —             |
 | `stoma-biochemia`   | Biochemia                     | `BIO-`        |
-| `stoma-fizjologia`  | Fizjologia                    | —             |
-| `stoma-mikrobio`    | Mikrobiologia                 | —             |
+| `stoma-fizjologia`  | Fizjologia                    | `PHYS-`       | Treść w `fizjologia` (shared) |
+| `stoma-mikrobio`    | Mikrobiologia                 | `MICRO-`      | Treść w `mikrobiologia` (shared) |
 | `stoma-mikrobio-ju` | Mikrobiologia jamy ustnej     | `MJU-`        |
 
-**Mikrobiologia JU — tematy:**
+**Mikrobiologia JU — tematy (`topics.id`):**
 
-| ID       | Nazwa (skrót) |
-|----------|----------------|
-| `MJU-01` … `MJU-06` | Patrz `seed-content.sql` |
+| ID        | Nazwa |
+|-----------|-------|
+| `MJU-C01` | Ćwiczenie 1 — Ekosystem JU, ślina, mechanizmy obronne |
+| `MJU-C02` | Ćwiczenie 2 — Dezynfekcja i sterylizacja w stomatologii |
+| `MJU-KZ1` | Kolokwium Zbiorcze I — Zaliczenia ćwiczeń 1 i 2 |
+| `MJU-C03` | Ćwiczenie 3 — Czynniki wzrostu, taksonomia, ziarniaki i pałeczki G(+) |
+| `MJU-C04` | Ćwiczenie 4 — Flora JU, kolonizacja, patogeny |
+| `MJU-C05` | Ćwiczenie 5 — Adhezja, metabolizm, płytka nazębna |
+| `MJU-C06` | Ćwiczenie 6 — Próchnica, choroby przyzębia, zakażenia krzyżowe |
+| `MJU-KZ2` | Kolokwium Zbiorcze II — Zaliczenia ćwiczeń 3, 4 i 5 |
+| `MJU-ZAL` | Zaliczenie całościowe |
+
+Prefiks `id` pytania: `mju-c01-`, `mju-kz1-`, `mju-zal-` (małe litery). Kolejność UI: `display_order` w `scripts/2026-05-21-stoma-y2-mikrobio-ju-topics.sql`.
+
+**Zaliczenie całościowe (jeden worek):** `FormatPisaniaPytan-MikrobiologiaJU-Zaliczenie.md` — wszystkie pytania tylko do `MJU-ZAL`, bez mapowania na ćwiczenia.
 
 ### Rok 3
 
@@ -115,13 +127,14 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 | 1   | `lek-biofizyka`        | Biofizyka            | Treść w `biofizyka` (shared) |
 | 1   | `lek-histologia`       | Histologia           | Treść w `histologia` (shared) |
 | 1   | `lek-biologia-mol`     | Biologia molekularna |
+| 1   | `lek-prof-humanizm`    | Profesjonalizm i humanizm w medycynie | `PHUM-` | Jeden temat: `PHUM-ZAL` — patrz `FormatPisaniaPytan-ProfesjonalizmHumanizm.md` |
 | 2   | `lek-biochemia`        | Biochemia            |
-| 2   | `lek-fizjologia`       | Fizjologia           |
+| 2   | `lek-fizjologia`       | Fizjologia           | Treść w `fizjologia` (shared) |
 | 2   | `lek-angielski`        | Język angielski      |
 | 2   | `lek-immunologia`      | Immunologia          |
 | 3   | `lek-patofizjologia`   | Patofizjologia       |
 | 3   | `lek-farmakologia`     | Farmakologia         |
-| 3   | `lek-mikrobio`         | Mikrobiologia        |
+| 3   | `lek-mikrobio`         | Mikrobiologia        | Treść w `mikrobiologia` (shared) |
 
 Topiki dla lekarskiego — do uzupełnienia przy pierwszym batchu (wzorzec jak `SOC-` / `FARM-`).
 

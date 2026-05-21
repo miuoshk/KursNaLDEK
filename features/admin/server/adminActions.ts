@@ -10,6 +10,7 @@ import {
   type AdminQuestionDetail,
   type QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
+import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -73,6 +74,19 @@ export async function toggleQuestionActive(
 
   const { supabase } = await requireAdmin();
 
+  const { data: row, error: fetchError } = await supabase
+    .from("questions")
+    .select("topic_id")
+    .eq("id", parsed.data.questionId)
+    .maybeSingle();
+
+  if (fetchError || !row?.topic_id) {
+    console.error("[toggleQuestionActive] fetch", fetchError?.message);
+    return { ok: false as const, message: "Nie znaleziono pytania." };
+  }
+
+  const topicId = row.topic_id as string;
+
   const { error } = await supabase
     .from("questions")
     .update({ is_active: parsed.data.isActive })
@@ -81,6 +95,13 @@ export async function toggleQuestionActive(
   if (error) {
     console.error("[toggleQuestionActive]", error.message);
     return { ok: false as const, message: "Nie udało się zaktualizować pytania." };
+  }
+
+  try {
+    const admin = createAdminClient();
+    await syncTopicQuestionCounts(admin, [topicId]);
+  } catch (e) {
+    console.error("[toggleQuestionActive] sync count", e);
   }
 
   return { ok: true as const };
@@ -256,6 +277,23 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
       ok: false as const,
       message: "Nie udało się zapisać pytania.",
     };
+  }
+
+  const topicsToSync: string[] = [];
+  if ("topic_id" in changes && before.topicId) topicsToSync.push(before.topicId);
+  if ("topic_id" in changes && parsed.data.topicId) {
+    topicsToSync.push(parsed.data.topicId);
+  } else if ("is_active" in changes && (before.topicId ?? parsed.data.topicId)) {
+    topicsToSync.push(before.topicId ?? parsed.data.topicId!);
+  }
+
+  if (topicsToSync.length > 0) {
+    try {
+      const admin = createAdminClient();
+      await syncTopicQuestionCounts(admin, topicsToSync);
+    } catch (e) {
+      console.error("[updateQuestionFull] sync count", e);
+    }
   }
 
   const { error: auditError } = await ctx.supabase

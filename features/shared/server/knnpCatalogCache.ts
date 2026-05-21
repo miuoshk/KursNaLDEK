@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
-import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
+import { expandTopicSubjectIdsForCatalog } from "@/features/session/server/sharedSubjects";
 
 export type KnnpCatalogRows = {
   subjectRows: {
@@ -42,16 +42,12 @@ export const getCachedKnnpCatalog = cache(async (track?: string, year?: number):
   }
   const ids = (subjectRows ?? []).map((s) => s.id);
   if (ids.length === 0) return { subjectRows: [], topicRows: [] };
-  // Dla subjectów współdzielonych między kierunkami (np. anatomia) dociągamy
-  // też topiki peer-subjectu, żeby agregaty (liczba pytań) były pełne.
-  const topicSubjectIds = new Set<string>(ids);
-  for (const sid of ids) {
-    for (const peer of getSubjectScopeIds(sid)) topicSubjectIds.add(peer);
-  }
+  // Dociągamy topiki z kanonicznych repozytoriów (histologia) i peerów (anatomia).
+  const topicSubjectIds = expandTopicSubjectIdsForCatalog(ids);
   const { data: topicRows, error: te } = await supabase
     .from("topics")
     .select("id, subject_id, question_count")
-    .in("subject_id", Array.from(topicSubjectIds));
+    .in("subject_id", topicSubjectIds);
   if (te) {
     console.error("[getCachedKnnpCatalog] topics:", te.message);
     return { subjectRows: subjectRows as KnnpCatalogRows["subjectRows"], topicRows: [] };

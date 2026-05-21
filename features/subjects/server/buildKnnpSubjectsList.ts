@@ -1,6 +1,9 @@
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
-import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
+import {
+  getSubjectScopeIds,
+  getTopicDisplaySubjectIds,
+} from "@/features/session/server/sharedSubjects";
 
 const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
 
@@ -35,8 +38,11 @@ export function buildKnnpSubjectsList(
     for (const peerId of scope) {
       questionCount += agg.get(peerId)?.questionSum ?? 0;
     }
-    // Topiki dla UI: tylko native (peer-topiki to ta sama "rodzina" tematów).
-    const topicCount = agg.get(row.id)?.topicCount ?? 0;
+    // Topiki dla UI: kanoniczny subject albo native (peer-topiki to ta sama "rodzina").
+    let topicCount = 0;
+    for (const displayId of getTopicDisplaySubjectIds(row.id)) {
+      topicCount += agg.get(displayId)?.topicCount ?? 0;
+    }
     // Postęp: sumujemy unikalne pytania odpowiedziane ze wszystkich peerów.
     let answeredUnique = 0;
     for (const peerId of scope) {

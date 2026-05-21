@@ -3,6 +3,7 @@ import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 import {
   getSubjectScopeIds,
+  getTopicDisplaySubjectIds,
   getTopicFamilyKey,
 } from "@/features/session/server/sharedSubjects";
 
@@ -36,6 +37,7 @@ export async function loadSubjectDashboard(
     } = await supabase.auth.getUser();
 
     const scopeSubjectIds = getSubjectScopeIds(subjectId);
+    const displaySubjectIds = new Set(getTopicDisplaySubjectIds(subjectId));
     const [subjectResult, topicsResult] = await Promise.all([
       supabase
         .from("subjects")
@@ -53,10 +55,16 @@ export async function loadSubjectDashboard(
 
     const { data: subject, error: subjectError } = subjectResult;
     const { data: allTopicRows, error: topicsError } = topicsResult;
-    // Native topiki to topiki należące do bieżącego subjectu; peer topiki
-    // (drugi kierunek dla anatomii) służą tylko do agregacji pul pytań.
-    const topicRows = (allTopicRows ?? []).filter((row) => row.subject_id === subjectId);
-    const peerTopicRows = (allTopicRows ?? []).filter((row) => row.subject_id !== subjectId);
+    // Topiki UI: kanoniczny subject (histologia) albo native (anatomia).
+    // Peer topiki (drugi kierunek dla anatomii) służą tylko do agregacji pul pytań.
+    const topicRows = (allTopicRows ?? []).filter((row) =>
+      displaySubjectIds.has(row.subject_id as string),
+    );
+    const peerTopicRows = (allTopicRows ?? []).filter(
+      (row) =>
+        !displaySubjectIds.has(row.subject_id as string) &&
+        scopeSubjectIds.includes(row.subject_id as string),
+    );
 
     if (subjectError) {
       console.error(
@@ -188,7 +196,7 @@ export async function loadSubjectDashboard(
       const peerCount = peerSubjectQuestionCountByNativeTopic.get(row.id as string) ?? 0;
       return {
         id: row.id,
-        subject_id: row.subject_id,
+        subject_id: subjectId,
         name: row.name,
         display_order: row.display_order ?? 0,
         question_count: nativeCount + peerCount,

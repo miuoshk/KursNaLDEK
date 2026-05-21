@@ -18,8 +18,10 @@ type PageProps = {
   }>;
 };
 
-function normalizeSearchIn(value: string | undefined): "text" | "explanation" | "both" {
-  if (value === "text" || value === "explanation") return value;
+function normalizeSearchIn(
+  value: string | undefined,
+): "text" | "explanation" | "id" | "both" {
+  if (value === "text" || value === "explanation" || value === "id") return value;
   return "both";
 }
 
@@ -67,10 +69,9 @@ export default async function AdminQuestionsPage({ searchParams }: PageProps) {
         Zarządzanie pytaniami
       </h1>
       <p className="mt-3 font-body text-body-md text-secondary">
-        Przeglądaj, edytuj i wyłączaj pytania. Wyszukiwarka obsługuje też
-        słowa kluczowe w wyjaśnieniach (np. „kreatynina”, „znieczulenie
-        miejscowe”). Tabelę można sortować po dowolnej kolumnie z ikoną
-        strzałki.
+        Przeglądaj, edytuj i wyłączaj pytania. Wyszukiwarka obsługuje treść,
+        wyjaśnienie i ID pytania (np. „biof-07-001”, „kreatynina”). Tabelę można
+        sortować po dowolnej kolumnie z ikoną strzałki.
       </p>
       <AdminQuestionsTable
         questions={result.questions}

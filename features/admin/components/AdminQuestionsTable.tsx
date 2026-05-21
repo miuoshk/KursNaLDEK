@@ -22,7 +22,7 @@ import { AdminEditQuestionDialog } from "@/features/admin/components/AdminEditQu
 import { cn } from "@/lib/utils";
 import { pytaniaForm } from "@/lib/pluralizePolish";
 
-type SearchIn = "text" | "explanation" | "both";
+type SearchIn = "text" | "explanation" | "id" | "both";
 type ActiveFilter = "all" | "active" | "inactive";
 
 const SORT_LABEL: Record<AdminQuestionSortBy, string> = {
@@ -41,10 +41,24 @@ type AdminQuestionsTableProps = {
 };
 
 const SEARCH_IN_OPTIONS: ReadonlyArray<{ value: SearchIn; label: string }> = [
-  { value: "both", label: "Treść + wyjaśnienie" },
+  { value: "both", label: "Treść + wyjaśnienie + ID" },
   { value: "text", label: "Tylko treść" },
   { value: "explanation", label: "Tylko wyjaśnienie" },
+  { value: "id", label: "Tylko ID" },
 ];
+
+function searchInLabel(value: SearchIn): string {
+  switch (value) {
+    case "text":
+      return "treść";
+    case "explanation":
+      return "wyjaśnienie";
+    case "id":
+      return "ID";
+    default:
+      return "treść + wyjaśnienie + ID";
+  }
+}
 
 const ACTIVE_OPTIONS: ReadonlyArray<{ value: ActiveFilter; label: string }> = [
   { value: "all", label: "Wszystkie" },
@@ -84,7 +98,7 @@ export function AdminQuestionsTable({
   const currentSearch = searchParams.get("search") ?? "";
   const currentSearchIn = ((): SearchIn => {
     const v = searchParams.get("searchIn");
-    return v === "text" || v === "explanation" ? v : "both";
+    return v === "text" || v === "explanation" || v === "id" ? v : "both";
   })();
   const currentActive = ((): ActiveFilter => {
     const v = searchParams.get("active");
@@ -213,7 +227,11 @@ export function AdminQuestionsTable({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder={'Szukaj słów kluczowych… (np. „diagnoza różnicowa")'}
+              placeholder={
+                searchIn === "id"
+                  ? "Szukaj po ID pytania… (np. biof-07-001)"
+                  : 'Szukaj… (treść, wyjaśnienie lub ID, np. „biof-07-001")'
+              }
               className="w-full rounded-btn border border-border bg-background pl-9 pr-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
             />
           </div>
@@ -288,11 +306,7 @@ export function AdminQuestionsTable({
         </span>
         {currentSearch && (
           <span>
-            Filtr: „{currentSearch}” ({searchIn === "text"
-              ? "treść"
-              : searchIn === "explanation"
-                ? "wyjaśnienie"
-                : "treść + wyjaśnienie"})
+            Filtr: „{currentSearch}” ({searchInLabel(currentSearchIn)})
           </span>
         )}
       </div>
@@ -354,7 +368,7 @@ export function AdminQuestionsTable({
                   className="border-b border-border transition-colors hover:bg-white/[0.02]"
                 >
                   <td className="px-3 py-3 font-body text-body-xs text-secondary">
-                    <span title={q.id}>{q.id}</span>
+                    <span title={q.id}>{highlight(q.id, currentSearch)}</span>
                   </td>
                   <td className="max-w-[140px] truncate px-3 py-3 font-body text-body-sm text-secondary">
                     {q.topicName}

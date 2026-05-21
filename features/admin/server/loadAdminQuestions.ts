@@ -41,7 +41,7 @@ export async function loadAdminQuestions(params: {
   perPage: number;
   subjectId?: string;
   search?: string;
-  searchIn?: "text" | "explanation" | "both";
+  searchIn?: "text" | "explanation" | "id" | "both";
   active?: AdminQuestionActiveFilter;
   sortBy?: AdminQuestionSortBy;
   sortDir?: SortDir;
@@ -92,8 +92,12 @@ export async function loadAdminQuestions(params: {
       query = query.ilike("text", pattern);
     } else if (searchIn === "explanation") {
       query = query.ilike("explanation", pattern);
+    } else if (searchIn === "id") {
+      query = query.ilike("id", pattern);
     } else {
-      query = query.or(`text.ilike.${pattern},explanation.ilike.${pattern}`);
+      query = query.or(
+        `text.ilike.${pattern},explanation.ilike.${pattern},id.ilike.${pattern}`,
+      );
     }
   }
 

@@ -17,7 +17,7 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kurs na LDEK — Platforma do nauki",
+  title: "Kurs na LDEK - Inteligentna nauka",
   description:
     "Adaptacyjna platforma przygotowująca do egzaminów medycznych. Wiesz więcej niż godzinę temu. Jeszcze jedno pytanie?",
 };

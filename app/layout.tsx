@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   applicationName: "Kurs na LDEK",
   description:
-    "Adaptacyjna platforma przygotowująca do egzaminów medycznych. Wiesz więcej niż godzinę temu. Jeszcze jedno pytanie?",
+    "Inteligentna nauka do KNNP i LDEK. Adaptacyjne powtórki, sesje i katalog pytań dopasowany do Ciebie.",
 };
 
 export default function RootLayout({

@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "normalize-lists": "node scripts/normalize-question-list-format.mjs --dry-run",
-    "normalize-lists:apply": "node scripts/normalize-question-list-format.mjs --apply"
+    "normalize-lists:apply": "node scripts/normalize-question-list-format.mjs --apply",
+    "revert-explanation-lists": "node scripts/revert-explanation-list-format.mjs --dry-run",
+    "revert-explanation-lists:apply": "node scripts/revert-explanation-list-format.mjs --apply"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

@@ -1,5 +1,6 @@
 /**
- * Łamie inline listy w treści pytania/wyjaśnienia (wzorce z kolokwiów / zaliczeń):
+ * Łamie inline listy w treści pytania (wzorce z kolokwiów / zaliczeń).
+ * Nie stosować do explanation — tylko questions.text.
  * 1. … 2. … | 1) … 2) … | a) … b) … | I) … II) …
  *
  * Nie dotyka options JSONB. Wymaga min. 2 punktów tego samego typu w polu.
@@ -127,15 +128,48 @@ export function normalizeQuestionListText(text: string): string {
   return s.replace(/\n{3,}/g, "\n\n").trim();
 }
 
-export function normalizeQuestionListFields(row: {
+/** Tylko `text` — explanation bez zmian. */
+export function normalizeQuestionTextField(text: string): {
   text: string;
-  explanation: string;
-}): { text: string; explanation: string; changed: boolean } {
-  const text = normalizeQuestionListText(row.text);
-  const explanation = normalizeQuestionListText(row.explanation);
-  return {
-    text,
-    explanation,
-    changed: text !== row.text || explanation !== row.explanation,
-  };
+  changed: boolean;
+} {
+  const normalized = normalizeQuestionListText(text);
+  return { text: normalized, changed: normalized !== text };
+}
+
+/**
+ * Odwrotność normalizeQuestionListText — skleja listy z powrotem w jedną linię.
+ * Używać tylko do cofania masowej migracji na explanation.
+ */
+export function denormalizeQuestionListText(text: string): string {
+  if (!text?.trim()) return text;
+
+  let s = text.replace(/\r\n/g, "\n");
+
+  s = s.replace(
+    /\n\n(Grupy|Prawidłowe|Temperatury|Opcje|Wskazówki):/gi,
+    ". $1:",
+  );
+  s = s.replace(/;\n([a-z])\)\s*/gi, "; $1) ");
+  s = s.replace(
+    /:\n+(?=\d{1,2}\.\s|\d{1,2}\)\s|[a-z]\)\s|[IVX]{1,4}\)\s)/gi,
+    ": ",
+  );
+  s = s.replace(
+    /([.!?])\n\n(?=[A-ZĄĆĘŁŃÓŚŹŻ])/gu,
+    "$1 ",
+  );
+  s = s.replace(/\n+(?=\b[IVX]{1,4}\)\s+)/gi, " ");
+  s = s.replace(/\n+(?=(?<!\d)\d{1,2}\)\s+)/g, " ");
+  s = s.replace(/\n+(?=(?<![a-zA-Z])[a-z]\)\s+)/gi, " ");
+  s = s.replace(/\n+(?=(?<!\d)(?<![\d.])\d{1,2}\.\s+)/g, " ");
+
+  return s.replace(/  +/g, " ").replace(/\n +/g, "\n").trim();
+}
+
+/** Czy explanation wygląda na przetworzone przez normalize — bezpieczny revert. */
+export function canRevertExplanationListFormat(explanation: string): boolean {
+  const reverted = denormalizeQuestionListText(explanation);
+  if (reverted === explanation) return false;
+  return normalizeQuestionListText(reverted) === explanation;
 }

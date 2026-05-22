@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 /**
- * Normalizacja inline list — tylko questions.text (nie explanation)
+ * Cofa łamanie list na questions.explanation (masowa migracja normalize-lists).
+ * Bezpieczny revert tylko gdy normalize(denormalize(x)) === x.
  *
- *   node scripts/normalize-question-list-format.mjs --dry-run
- *   node scripts/normalize-question-list-format.mjs --apply
- *
- * Wymaga: NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (np. z .env.local)
+ *   node scripts/revert-explanation-list-format.mjs --dry-run
+ *   node scripts/revert-explanation-list-format.mjs --apply
  */
 
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import { createClient } from "@supabase/supabase-js";
 
-// —— logika zsynchronizowana z lib/content/normalizeQuestionListText.ts ——
+// —— zsynchronizowane z lib/content/normalizeQuestionListText.ts ——
 
 const PAREN_ENUM = /\([\da-zA-Z]+[-–][\da-zA-Z]*$/;
 
@@ -65,7 +64,6 @@ function breakAfterColonIntro(text) {
   const hasArabicParen = (s.match(/(?<!\d)(\d{1,2})\)\s+/g) ?? []).length >= 2;
   const hasLetter = (s.match(/(?<![a-zA-Z])([a-z])\)\s+/gi) ?? []).length >= 2;
   const hasRoman = (s.match(/\b([IVX]{1,4})\)\s+/gi) ?? []).length >= 2;
-
   if (hasArabicDot) s = s.replace(/:\s+(?=\d{1,2}\.\s)/g, ":\n");
   if (hasArabicParen) s = s.replace(/:\s+(?=\d{1,2}\)\s)/g, ":\n");
   if (hasLetter) s = s.replace(/:\s+(?=[a-z]\)\s)/gi, ":\n");
@@ -82,9 +80,7 @@ function breakAfterListBlock(text) {
     (match, punct, sp, offset, whole) => {
       const lineStart = whole.lastIndexOf("\n", offset - 1) + 1;
       const segment = whole.slice(lineStart, offset);
-      if (!LIST_MARKER_IN_SEGMENT.test(segment)) {
-        return match;
-      }
+      if (!LIST_MARKER_IN_SEGMENT.test(segment)) return match;
       return `${punct}\n\n`;
     },
   );
@@ -104,7 +100,6 @@ function breakLabeledSublist(text) {
 
 function normalizeQuestionListText(text) {
   if (!text?.trim() || text.length < 25) return text;
-
   let s = text.replace(/\r\n/g, "\n");
   s = breakSemicolonLetterItems(s);
   s = breakAfterColonIntro(s);
@@ -115,6 +110,30 @@ function normalizeQuestionListText(text) {
   s = breakSeries(s, /(?<!\d)(?<![\d.])(\d{1,2})\.\s+/g, 2);
   s = breakAfterListBlock(s);
   return s.replace(/\n{3,}/g, "\n\n").trim();
+}
+
+function denormalizeQuestionListText(text) {
+  if (!text?.trim()) return text;
+  let s = text.replace(/\r\n/g, "\n");
+  s = s.replace(/\n\n(Grupy|Prawidłowe|Temperatury|Opcje|Wskazówki):/gi, ". $1:");
+  s = s.replace(/;\n([a-z])\)\s*/gi, "; $1) ");
+  s = s.replace(
+    /:\n+(?=\d{1,2}\.\s|\d{1,2}\)\s|[a-z]\)\s|[IVX]{1,4}\)\s)/gi,
+    ": ",
+  );
+  s = s.replace(/([.!?])\n\n(?=[A-ZĄĆĘŁŃÓŚŹŻ])/gu, "$1 ");
+  s = s.replace(/\n+(?=\b[IVX]{1,4}\)\s+)/gi, " ");
+  s = s.replace(/\n+(?=(?<!\d)\d{1,2}\)\s+)/g, " ");
+  s = s.replace(/\n+(?=(?<![a-zA-Z])[a-z]\)\s+)/gi, " ");
+  s = s.replace(/\n+(?=(?<!\d)(?<![\d.])\d{1,2}\.\s+)/g, " ");
+  return s.replace(/  +/g, " ").replace(/\n +/g, "\n").trim();
+}
+
+function canRevert(explanation) {
+  const reverted = denormalizeQuestionListText(explanation);
+  if (reverted === explanation) return null;
+  if (normalizeQuestionListText(reverted) !== explanation) return null;
+  return reverted;
 }
 
 // —— env ——
@@ -136,30 +155,7 @@ function loadEnvLocal() {
   }
 }
 
-async function fetchAllQuestions(supabase) {
-  const rows = [];
-  const page = 500;
-  let from = 0;
-  while (true) {
-    const { data, error } = await supabase
-      .from("questions")
-      .select("id, text, explanation")
-      .range(from, from + page - 1);
-    if (error) throw error;
-    if (!data?.length) break;
-    rows.push(...data);
-    if (data.length < page) break;
-    from += page;
-  }
-  return rows;
-}
-
-// —— main ——
-
-const args = process.argv.slice(2);
-const apply = args.includes("--apply");
-const dryRun = args.includes("--dry-run") || !apply;
-
+const apply = process.argv.includes("--apply");
 loadEnvLocal();
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -171,45 +167,52 @@ if (!url || !key) {
 
 const supabase = createClient(url, key);
 
-const rows = await fetchAllQuestions(supabase);
-const changes = [];
-
-for (const row of rows) {
-  const text = normalizeQuestionListText(row.text);
-  if (text !== row.text) {
-    changes.push({ id: row.id, text, beforeText: row.text });
-  }
+const rows = [];
+const page = 500;
+let from = 0;
+while (true) {
+  const { data, error } = await supabase
+    .from("questions")
+    .select("id, explanation")
+    .range(from, from + page - 1);
+  if (error) throw error;
+  if (!data?.length) break;
+  rows.push(...data);
+  if (data.length < page) break;
+  from += page;
 }
 
-console.log(`Przeskanowano: ${rows.length}, do zmiany: ${changes.length}`);
+const changes = [];
+for (const row of rows) {
+  const reverted = canRevert(row.explanation ?? "");
+  if (reverted) changes.push({ id: row.id, explanation: reverted });
+}
+
+console.log(`Przeskanowano: ${rows.length}, do cofnięcia: ${changes.length}`);
 
 if (changes.length > 0) {
-  console.log("\nPrzykłady (max 5):");
-  for (const c of changes.slice(0, 5)) {
+  console.log("\nPrzykłady (max 3):");
+  for (const c of changes.slice(0, 3)) {
+    const before = rows.find((r) => r.id === c.id)?.explanation ?? "";
     console.log(`\n--- ${c.id} ---`);
-    console.log("PRZED:", c.beforeText.slice(0, 220).replace(/\n/g, " ↵ "));
-    console.log("PO:   ", c.text.slice(0, 280).replace(/\n/g, " ↵ "));
+    console.log("PRZED:", before.slice(0, 180).replace(/\n/g, " ↵ "));
+    console.log("PO:   ", c.explanation.slice(0, 180));
   }
 }
 
-if (dryRun) {
-  console.log("\nDry-run — bez zapisu. Uruchom z --apply aby zapisać.");
+if (!apply) {
+  console.log("\nDry-run. Uruchom z --apply aby zapisać.");
   process.exit(0);
 }
 
 let ok = 0;
-let err = 0;
 for (const c of changes) {
   const { error } = await supabase
     .from("questions")
-    .update({ text: c.text })
+    .update({ explanation: c.explanation })
     .eq("id", c.id);
-  if (error) {
-    console.error(c.id, error.message);
-    err += 1;
-  } else {
-    ok += 1;
-  }
+  if (error) console.error(c.id, error.message);
+  else ok += 1;
 }
 
-console.log(`\nZapisano: ${ok}, błędy: ${err}`);
+console.log(`\nCofnięto explanation: ${ok}`);

@@ -21,7 +21,7 @@ export function markdownBlock(md: string) {
   return (
     <div
       className={cn(
-        "font-body text-body-md leading-relaxed text-secondary",
+        "whitespace-pre-wrap font-body text-body-md leading-relaxed text-secondary",
         "[&_a]:text-brand-sage [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-brand-gold",
         "[&_p]:mt-3 [&_p:first-child]:mt-0",
         "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6",

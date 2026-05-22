@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "normalize-lists": "node scripts/normalize-question-list-format.mjs --dry-run",
+    "normalize-lists:apply": "node scripts/normalize-question-list-format.mjs --apply"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

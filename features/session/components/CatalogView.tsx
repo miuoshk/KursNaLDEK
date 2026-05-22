@@ -294,7 +294,7 @@ export function CatalogView({
                     />
                   </div>
                 ) : null}
-                <p className="mt-3 font-body text-body-md leading-relaxed text-primary md:text-body-lg">
+                <p className="mt-3 whitespace-pre-wrap font-body text-body-md leading-relaxed text-primary md:text-body-lg">
                   {highlightText(q.text, searchValue)}
                 </p>
 

@@ -37,8 +37,6 @@ export type PulpitData = {
   lastSubjectMasteryPct: number;
   /** Ostatnia liczba pytań z konfiguracji sesji (10, 25, custom…). */
   preferredSessionCount: number;
-  /** Wynik gotowości egzaminowej 0–100 (ANTARES), null gdy brak danych. */
-  examReadinessScore: number | null;
   recentSessions: PulpitRecentSession[];
   /** Liczba innych userów aktywnych w ciągu ostatnich 5 minut (heartbeat). */
   activeUsersNow: number;
@@ -87,11 +85,6 @@ export async function loadPulpit(): Promise<
 
     const dailyGoal = profile?.daily_goal ?? 25;
     const preferredSessionCount = getPreferredSessionCount(profile);
-    const examReadinessRaw = profile?.exam_readiness_score as number | null | undefined;
-    const examReadinessScore =
-      examReadinessRaw != null && Number.isFinite(Number(examReadinessRaw))
-        ? Math.round(Number(examReadinessRaw))
-        : null;
 
     const recentSessions: PulpitRecentSession[] = (sessionsRes.data ?? []).map(
       (row: Record<string, unknown>) => {
@@ -164,7 +157,6 @@ export async function loadPulpit(): Promise<
         lastSubjectName,
         lastSubjectMasteryPct,
         preferredSessionCount,
-        examReadinessScore,
         recentSessions,
         activeUsersNow: activeNowRes.count ?? 0,
       },

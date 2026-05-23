@@ -65,6 +65,9 @@ export function LeaderboardTable({
     { id: "all", label: "Wszyscy" },
   ];
 
+  const periodLabel =
+    period === "7" ? "7 dni" : period === "30" ? "30 dni" : "łącznie";
+
   return (
     <section id="ranking" className="scroll-mt-20">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -130,9 +133,11 @@ export function LeaderboardTable({
               <tr className="border-b border-[rgba(255,255,255,0.08)] font-body text-body-xs text-muted">
                 <th className="px-4 py-3 font-medium">#</th>
                 <th className="px-4 py-3 font-medium">Użytkownik</th>
-                <th className="px-4 py-3 font-medium">Poziom</th>
-                <th className="px-4 py-3 font-medium">XP (okres)</th>
-                <th className="px-4 py-3 font-medium">Pytania</th>
+                <th className="px-4 py-3 font-medium" title="Ranga z łącznego XP">
+                  Poziom
+                </th>
+                <th className="px-4 py-3 font-medium">XP ({periodLabel})</th>
+                <th className="px-4 py-3 font-medium">Pytania ({periodLabel})</th>
                 <th className="px-4 py-3 font-medium">Trafność</th>
                 <th className="px-4 py-3 font-medium">Streak</th>
               </tr>

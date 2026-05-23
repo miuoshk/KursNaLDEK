@@ -46,85 +46,88 @@ async function loadLeaderboardRows(
 ): Promise<LeaderboardRow[]> {
   try {
     const admin = createAdminClient();
+    const since = periodStart(leaderboardPeriod);
+
+    const { data: statsRows, error: statsError } = await admin.rpc(
+      "leaderboard_period_stats",
+      { p_since: since },
+    );
+
+    if (statsError || !statsRows?.length) {
+      return [];
+    }
+
+    const statsByUser = new Map<
+      string,
+      { xp: number; correct: number; total: number }
+    >();
+    for (const row of statsRows) {
+      statsByUser.set(row.user_id as string, {
+        xp: Number(row.period_xp ?? 0),
+        correct: Number(row.period_correct ?? 0),
+        total: Number(row.period_total ?? 0),
+      });
+    }
+
+    const activeUserIds = [...statsByUser.keys()];
+    if (!activeUserIds.includes(userId)) {
+      activeUserIds.push(userId);
+    }
+
     let profilesQ = admin
       .from("profiles")
       .select(
         "id, nick, display_name, avatar_emoji, xp, current_streak, current_year, last_seen_at",
       )
-      .order("xp", { ascending: false });
+      .in("id", activeUserIds);
+
     if (scope === "year" && currentYear != null) {
       profilesQ = profilesQ.eq("current_year", currentYear);
     }
-    const [
-      { data: profileRows, error: profileError },
-      { data: sessionRows, error: sessionsError },
-      { data: uqpRows, error: uqpError },
-    ] = await Promise.all([
-      profilesQ,
-      admin
-        .from("study_sessions")
-        .select("user_id, xp_earned, correct_answers, total_questions")
-        .eq("is_completed", true)
-        .gte("completed_at", periodStart(leaderboardPeriod) ?? "1970-01-01T00:00:00.000Z"),
-      admin
-        .from("user_question_progress")
-        .select("user_id, times_answered"),
-    ]);
 
-    if (profileError || sessionsError || uqpError || !profileRows) {
+    const { data: profileRows, error: profileError } = await profilesQ;
+
+    if (profileError || !profileRows?.length) {
       return [];
     }
 
-    const periodAgg = new Map<string, { xp: number; correct: number; total: number }>();
-    for (const row of sessionRows ?? []) {
-      const key = row.user_id as string;
-      const current = periodAgg.get(key) ?? { xp: 0, correct: 0, total: 0 };
-      current.xp += row.xp_earned ?? 0;
-      current.correct += row.correct_answers ?? 0;
-      current.total += row.total_questions ?? 0;
-      periodAgg.set(key, current);
-    }
+    const isAllTime = leaderboardPeriod === "all";
 
-    // Unikalne pytania przerobione = liczba wierszy user_question_progress
-    // z times_answered > 0 (jedno pytanie = jeden wiersz).
-    const uniqueAnsweredByUser = new Map<string, number>();
-    for (const row of uqpRows ?? []) {
-      const uid = row.user_id as string;
-      const times = (row.times_answered as number | null) ?? 0;
-      if (times <= 0) continue;
-      uniqueAnsweredByUser.set(uid, (uniqueAnsweredByUser.get(uid) ?? 0) + 1);
-    }
+    const baseRows: LeaderboardRow[] = profileRows
+      .map((profile) => {
+        const id = profile.id as string;
+        const agg = statsByUser.get(id);
+        if (!agg || agg.total <= 0) {
+          return null;
+        }
 
-    const baseRows: LeaderboardRow[] = profileRows.map((profile) => {
-      const id = profile.id as string;
-      const agg = periodAgg.get(id);
-      const isAllTime = leaderboardPeriod === "all";
-      const xp = isAllTime ? profile.xp ?? 0 : agg?.xp ?? 0;
-      const accuracy =
-        (agg?.total ?? 0) > 0 ? (agg?.correct ?? 0) / (agg?.total ?? 0) : 0;
-      const displayName =
-        (profile.nick as string | null) ??
-        (profile.display_name as string | null) ??
-        "Użytkownik";
-      const tier = getCurrentRank(profile.xp ?? 0);
+        const lifetimeXp = profile.xp ?? 0;
+        const xp = isAllTime ? lifetimeXp : agg.xp;
+        const accuracy = agg.total > 0 ? agg.correct / agg.total : 0;
+        const displayName =
+          (profile.nick as string | null) ??
+          (profile.display_name as string | null) ??
+          "Użytkownik";
+        const tier = getCurrentRank(lifetimeXp);
 
-      return {
-        rank: 0,
-        userId: id,
-        displayName,
-        initials: initialsFromName(displayName),
-        avatarEmoji: (profile.avatar_emoji as string | null | undefined) ?? null,
-        rankName: tier.name,
-        rankColorClass: tier.colorClass,
-        xp,
-        accuracy,
-        streak: profile.current_streak ?? 0,
-        questionsAnswered: uniqueAnsweredByUser.get(id) ?? 0,
-        lastSeenAt:
-          (profile as { last_seen_at?: string | null }).last_seen_at ?? null,
-        isCurrent: id === userId,
-      };
-    });
+        return {
+          rank: 0,
+          userId: id,
+          displayName,
+          initials: initialsFromName(displayName),
+          avatarEmoji: (profile.avatar_emoji as string | null | undefined) ?? null,
+          rankName: tier.name,
+          rankColorClass: tier.colorClass,
+          xp,
+          accuracy,
+          streak: profile.current_streak ?? 0,
+          questionsAnswered: agg.total,
+          lastSeenAt:
+            (profile as { last_seen_at?: string | null }).last_seen_at ?? null,
+          isCurrent: id === userId,
+        };
+      })
+      .filter((row): row is LeaderboardRow => row != null);
 
     const ranked = rankRows(baseRows);
     const topRows = ranked.slice(0, LEADERBOARD_LIMIT);
@@ -139,7 +142,6 @@ async function loadLeaderboardRows(
     }
     return [...topRows, currentUserRow];
   } catch {
-    // Brak service role w środowisku lub chwilowy błąd DB: zachowujemy fallback na "ja".
     return [];
   }
 }

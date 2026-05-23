@@ -16,6 +16,7 @@ import {
   clampSessionCount,
   DEFAULT_SESSION_COUNT,
 } from "@/features/session/lib/sessionCount";
+import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
 import type { KnnpSessionMode, SessionQuestion } from "@/features/session/types";
 
 const CACHE_PREFIX = "kurs-session-";
@@ -30,6 +31,7 @@ type Bootstrap =
       subjectName: string;
       subjectShortName: string;
       mode: KnnpSessionMode;
+      topicId?: string;
       questions: SessionQuestion[];
       reserveQuestions: SessionQuestion[];
     };
@@ -95,6 +97,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectName: res.subject.name,
             subjectShortName: res.subject.short_name,
             mode,
+            topicId: topic,
             questions: res.questions,
             reserveQuestions: [],
           });
@@ -108,6 +111,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectName: res.subject.name,
             subjectShortName: res.subject.short_name,
             mode,
+            topicId: topic,
             questions: res.questions,
             reserveQuestions: res.reserveQuestions ?? [],
           }),
@@ -125,6 +129,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectName: string;
             subjectShortName?: string;
             mode: KnnpSessionMode;
+            topicId?: string;
             questions: SessionQuestion[];
             reserveQuestions?: SessionQuestion[];
           };
@@ -137,6 +142,11 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
               subjectName: parsed.subjectName,
               subjectShortName: parsed.subjectShortName ?? parsed.subjectName,
               mode: parsed.mode,
+              topicId:
+                parsed.topicId ??
+                inferSessionTopicId(
+                  parsed.questions.map((q) => q.topicId ?? "").filter(Boolean),
+                ),
               questions: parsed.questions,
               reserveQuestions: parsed.reserveQuestions ?? [],
             });
@@ -167,6 +177,9 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         subjectName: loaded.subject.name,
         subjectShortName: loaded.subject.short_name,
         mode: mappedMode,
+        topicId: inferSessionTopicId(
+          loaded.questions.map((q) => q.topicId ?? "").filter(Boolean),
+        ),
         questions: loaded.questions,
         reserveQuestions: loaded.reserveQuestions ?? [],
       });
@@ -212,6 +225,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       subjectName={boot.subjectName}
       subjectShortName={boot.subjectShortName}
       mode={boot.mode}
+      topicId={boot.topicId}
       questions={boot.questions}
       reserveQuestions={boot.reserveQuestions}
     />

@@ -36,6 +36,7 @@ type FlowMeta = {
   subjectName: string;
   subjectShortName: string;
   mode: SessionMode;
+  topicId?: string;
   profileXp: number | null;
   profileStreak: number;
 };
@@ -66,6 +67,7 @@ export function useSessionStudyFlow(
     subjectName,
     subjectShortName,
     mode,
+    topicId,
     profileXp,
     profileStreak,
   } = meta;
@@ -101,8 +103,11 @@ export function useSessionStudyFlow(
             durationSecondsFallback: dur,
           });
           if (comp.ok) {
-            finalSummary = comp.summary;
-            persistSessionSummaryToStorage(sessionId, comp.summary);
+            finalSummary = {
+              ...comp.summary,
+              topicId: comp.summary.topicId ?? summary.topicId,
+            };
+            persistSessionSummaryToStorage(sessionId, finalSummary);
           }
         } catch (err) {
           console.error("[finishSession] completeSession", err);
@@ -126,13 +131,14 @@ export function useSessionStudyFlow(
         subjectName,
         subjectShortName,
         mode,
+        topicId,
         questions,
         answers: answersOrdered,
         profileXp,
         profileStreak,
       });
     },
-    [sessionId, subjectId, subjectName, subjectShortName, mode, questions, profileXp, profileStreak],
+    [sessionId, subjectId, subjectName, subjectShortName, mode, topicId, questions, profileXp, profileStreak],
   );
 
   const handleSubmitWithConfidence = useCallback(

@@ -13,21 +13,29 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
     .filter((a) => !a.isCorrect)
     .map((a) => a.questionId);
 
+  const nextSessionHref = buildSessionStartHref({
+    subject: summary.subjectId,
+    topic: summary.topicId,
+    mode: "inteligentna",
+    count: summary.totalQuestions,
+  });
+
   const handleRetryWrong = useCallback(() => {
     const key = persistRetryWrongIds(wrongIds);
-    router.push(
-      `/sesja/new?subject=${encodeURIComponent(summary.subjectId)}&mode=inteligentna&count=${wrongIds.length}&retry=${encodeURIComponent(key)}`,
-    );
-  }, [wrongIds, summary.subjectId, router]);
+    const q = new URLSearchParams({
+      subject: summary.subjectId,
+      mode: "inteligentna",
+      count: String(wrongIds.length),
+      retry: key,
+    });
+    if (summary.topicId) q.set("topic", summary.topicId);
+    router.push(`/sesja/new?${q.toString()}`);
+  }, [wrongIds, summary.subjectId, summary.topicId, router]);
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-4">
       <Link
-        href={buildSessionStartHref({
-          subject: summary.subjectId,
-          mode: "inteligentna",
-          count: summary.totalQuestions,
-        })}
+        href={nextSessionHref}
         className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
       >
         Rozpocznij kolejną sesję

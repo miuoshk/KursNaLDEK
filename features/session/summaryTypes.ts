@@ -68,6 +68,8 @@ export interface SessionSummaryData {
   reviewCount: number;
   achievementUnlocked: string | null;
   subjectId: string;
+  /** Temat sesji (gdy start z `?topic=`) — przenoszony na „kolejną sesję”. */
+  topicId?: string;
   /** Uzupełniane przy `completeSession` (ANTARES). */
   sessionInsights?: SessionInsightsPayload;
   examReadiness?: ExamReadinessSnapshot;

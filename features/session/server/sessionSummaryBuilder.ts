@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionMode } from "@/features/session/types";
 import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSessionInsights";
+import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
 
 const TRUNC = 80;
 
@@ -89,8 +90,11 @@ export async function buildSessionSummary(
 
   const { data: qmeta } = await supabase
     .from("questions")
-    .select("id, text, correct_option_id, options, topics ( name )")
+    .select("id, text, correct_option_id, options, topic_id, topics ( name )")
     .in("id", qids.length ? qids : ["__none__"]);
+
+  const questionTopicIds = (qmeta ?? []).map((q) => q.topic_id as string);
+  const topicId = inferSessionTopicId(questionTopicIds);
 
   const qById = new Map(
     (qmeta ?? []).map((q) => [
@@ -191,6 +195,7 @@ export async function buildSessionSummary(
     reviewCount,
     achievementUnlocked: null,
     subjectId: subject.id,
+    topicId,
     sessionInsights: sessionInsights ?? undefined,
     examReadiness: examReadiness ?? undefined,
   };

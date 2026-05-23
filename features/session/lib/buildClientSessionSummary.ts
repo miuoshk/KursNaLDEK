@@ -33,6 +33,7 @@ export type BuildClientSessionSummaryInput = {
   subjectName: string;
   subjectShortName: string;
   mode: SessionMode;
+  topicId?: string;
   questions: SessionQuestion[];
   answers: SessionAnswer[];
   profileXp: number | null;
@@ -48,6 +49,7 @@ export function buildClientSessionSummary(
     subjectName,
     subjectShortName,
     mode,
+    topicId,
     questions,
     answers,
     profileXp,
@@ -123,5 +125,6 @@ export function buildClientSessionSummary(
     reviewCount: 0,
     achievementUnlocked: null,
     subjectId,
+    topicId,
   };
 }

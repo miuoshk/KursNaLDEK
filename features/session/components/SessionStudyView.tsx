@@ -24,6 +24,7 @@ type SessionStudyViewProps = {
   subjectName: string;
   subjectShortName: string;
   mode: SessionMode;
+  topicId?: string;
   questions: SessionQuestion[];
   reserveQuestions?: SessionQuestion[];
 };
@@ -34,6 +35,7 @@ export function SessionStudyView({
   subjectName,
   subjectShortName,
   mode,
+  topicId,
   questions,
   reserveQuestions = [],
 }: SessionStudyViewProps) {
@@ -105,6 +107,7 @@ export function SessionStudyView({
       subjectName,
       subjectShortName,
       mode,
+      topicId,
       profileXp: profile?.xp ?? null,
       profileStreak: streak,
     },

@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState, useTransition } from "react";
 import { Check, Loader2, Plus, RotateCcw, Trash2 } from "lucide-react";
 import { updateQuestionFull } from "@/features/admin/server/adminActions";
 import { AdminQuestionImageField } from "@/features/admin/components/AdminQuestionImageField";
+import { MarkdownExplanationEditor } from "@/features/admin/components/MarkdownExplanationEditor";
 import type {
   AdminQuestionDetail,
   AdminQuestionOption,
@@ -302,16 +303,10 @@ export function AdminQuestionEditor({
         </div>
       </div>
 
-      <Field label="Wyjaśnienie">
-        <textarea
-          value={state.explanation}
-          onChange={(e) =>
-            setState((p) => ({ ...p, explanation: e.target.value }))
-          }
-          rows={4}
-          className={inputClass}
-        />
-      </Field>
+      <MarkdownExplanationEditor
+        value={state.explanation}
+        onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
+      />
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Field label="Termin egzaminu (source_exam)">

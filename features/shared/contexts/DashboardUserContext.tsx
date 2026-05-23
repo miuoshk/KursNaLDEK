@@ -16,6 +16,8 @@ export type DashboardUserValue = {
   currentTrack: "stomatologia" | "lekarski";
   /** Liczba pytań z terminem powtórki (next_review <= teraz). */
   dueReviewsCount: number;
+  /** Ostatnia liczba pytań z konfiguracji sesji (10, 25, custom…). */
+  preferredSessionCount: number;
   /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */
   testMode?: boolean;
 };

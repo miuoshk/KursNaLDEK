@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
+import { getDueReviewsPerSubject } from "@/lib/dashboard/getDueReviewsPerSubject";
 import { buildKnnpSubjectsList } from "@/features/subjects/server/buildKnnpSubjectsList";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
@@ -154,10 +155,17 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       }
     }
 
+    const dueReviewsPerSubject = await getDueReviewsPerSubject(
+      supabase,
+      user.id,
+      catalog,
+    );
+
     const { subjects, totalQuestionCount } = buildKnnpSubjectsList(
       catalog,
       answeredPerSubject,
       lastStudiedPerSubject,
+      dueReviewsPerSubject,
     );
     return {
       ok: true,

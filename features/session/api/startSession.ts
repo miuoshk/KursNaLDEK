@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import type { SessionMode, SessionQuestion } from "@/features/session/types";
+import type { SessionMode, SessionQuestion, SessionQuestionMeta } from "@/features/session/types";
 import {
   fetchKnnpAllQuestionIds,
   fetchKnnpTopicIdSet,
@@ -16,6 +16,9 @@ import {
   isSubjectInScope,
 } from "@/features/session/server/sharedSubjects";
 import { buildAntaresInteligentnaSession } from "@/features/session/server/buildAntaresInteligentnaSession";
+import { fetchSessionQuestionMeta } from "@/features/session/server/fetchSessionQuestionMeta";
+import { attachAntaresMetaToQuestions } from "@/features/session/lib/antares/questionMeta";
+import { buildFallbackReserveIds } from "@/features/session/lib/antares/reservePool";
 import {
   fetchDueReviewQuestionIdsForTopics,
   fetchUnseenQuestionIds,
@@ -25,6 +28,7 @@ import {
   loadQuestionsByIdsOrdered,
   mapRowsToSessionQuestions,
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
+import { persistLastSessionQuestionCount } from "@/features/session/server/persistLastSessionQuestionCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
@@ -42,6 +46,8 @@ export type StartSessionResult =
       sessionId: string;
       subject: { id: string; name: string; short_name: string };
       questions: SessionQuestion[];
+      /** Pula zapasowa (tylko inteligentna) — podmiany w trakcie sesji. */
+      reserveQuestions?: SessionQuestion[];
     }
   | { ok: false; message: string };
 
@@ -75,7 +81,13 @@ export async function startSession(
       if (rows.length === 0) {
         return { ok: false, message: "Nie udało się wczytać treści pytań." };
       }
-      const questions = mapRowsToSessionQuestions(rows);
+      const questions =
+        mode === "inteligentna"
+          ? attachAntaresMetaToQuestions(
+              mapRowsToSessionQuestions(rows),
+              await fetchSessionQuestionMeta(supabase, user.id, explicitIds),
+            )
+          : mapRowsToSessionQuestions(rows);
 
       // Resolve subject from first question
       let resolvedSubjectId = subjectId;
@@ -152,6 +164,8 @@ export async function startSession(
     }
 
     let chosenIds: string[] = [];
+    let reserveIds: string[] = [];
+    let antaresMeta = new Map<string, SessionQuestionMeta>();
 
     let pool: string[];
     let topicFilter: Set<string> | undefined;
@@ -210,7 +224,7 @@ export async function startSession(
     if (mode === "katalog") {
       chosenIds = pool;
     } else if (mode === "inteligentna") {
-      const antaresIds = await buildAntaresInteligentnaSession(
+      const antares = await buildAntaresInteligentnaSession(
         supabase,
         user.id,
         count,
@@ -218,8 +232,10 @@ export async function startSession(
         topicOkForDue,
         topicFilter,
       );
-      if (antaresIds.length > 0) {
-        chosenIds = antaresIds;
+      if (antares.questionIds.length > 0) {
+        chosenIds = antares.questionIds;
+        reserveIds = antares.reserveIds;
+        antaresMeta = antares.metaByQuestionId;
       } else {
         const dueIds = await fetchDueReviewQuestionIdsForTopics(
           supabase,
@@ -235,6 +251,12 @@ export async function startSession(
           count,
         );
         chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
+        reserveIds = buildFallbackReserveIds(count, chosenIds, pool);
+        antaresMeta = await fetchSessionQuestionMeta(
+          supabase,
+          user.id,
+          [...chosenIds, ...reserveIds],
+        );
       }
     } else {
       chosenIds = shuffle(pool).slice(0, count);
@@ -256,7 +278,24 @@ export async function startSession(
       return { ok: false, message: "Nie udało się wczytać treści pytań." };
     }
 
-    const questions = mapRowsToSessionQuestions(rows);
+    const questions =
+      mode === "inteligentna"
+        ? attachAntaresMetaToQuestions(
+            mapRowsToSessionQuestions(rows),
+            antaresMeta,
+          )
+        : mapRowsToSessionQuestions(rows);
+
+    let reserveQuestions: SessionQuestion[] = [];
+    if (mode === "inteligentna" && reserveIds.length > 0) {
+      const reserveRows = await loadQuestionsByIdsOrdered(supabase, reserveIds);
+      if (reserveRows.length > 0) {
+        reserveQuestions = attachAntaresMetaToQuestions(
+          mapRowsToSessionQuestions(reserveRows),
+          antaresMeta,
+        );
+      }
+    }
 
     if (mode === "katalog") {
       return {
@@ -296,6 +335,7 @@ export async function startSession(
         mode: dbMode,
         total_questions: questions.length,
         question_ids: chosenIds,
+        reserve_question_ids: reserveIds,
       })
       .select("id")
       .single();
@@ -307,6 +347,8 @@ export async function startSession(
         message: "Nie udało się utworzyć sesji. Upewnij się, że w bazie jest kolumna question_ids.",
       };
     }
+
+    void persistLastSessionQuestionCount(supabase, user.id, count);
 
     const { data: insertSubject } = await supabase
       .from("subjects")
@@ -323,6 +365,8 @@ export async function startSession(
         short_name: isMix ? "Mix" : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
       },
       questions,
+      reserveQuestions:
+        reserveQuestions.length > 0 ? reserveQuestions : undefined,
     };
   } catch (e) {
     console.error("[startSession]", e);

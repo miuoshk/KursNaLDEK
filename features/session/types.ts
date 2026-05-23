@@ -3,6 +3,17 @@ export type SessionMode = KnnpSessionMode | "osce_topic";
 
 export type Confidence = "nie_wiedzialem" | "troche" | "na_pewno";
 
+/** Stan karty pytania u usera — przekazywany do sesji (ANTARES). */
+export type SessionQuestionMeta = {
+  retrievability: number;
+  fsrsDifficulty: number;
+  isLeech: boolean;
+  isNew: boolean;
+  priorAccuracy: number | null;
+  avgTimeSeconds: number | null;
+  topicMastery: number;
+};
+
 export interface SessionQuestion {
   id: string;
   text: string;
@@ -14,6 +25,8 @@ export interface SessionQuestion {
   topicName: string;
   /** Id tematu z bazy (ANTARES); opcjonalne dla starszych payloadów. */
   topicId?: string;
+  /** Metadane ANTARES per user; tylko tryb inteligentna. */
+  antares?: SessionQuestionMeta;
 }
 
 export interface SessionState {

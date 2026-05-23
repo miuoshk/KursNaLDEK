@@ -36,6 +36,7 @@ export async function updateStudyPreferences(
       daily_goal: parsed.data.daily_goal,
       default_session_mode: parsed.data.default_session_mode,
       default_question_count: parsed.data.default_question_count,
+      last_session_question_count: parsed.data.default_question_count,
       updated_at: new Date().toISOString(),
     })
     .eq("id", user.id);

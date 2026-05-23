@@ -6,6 +6,8 @@ import {
   mapRowToSessionQuestion,
   type QuestionRow,
 } from "@/features/session/lib/mapSessionQuestion";
+import { attachAntaresMetaToQuestions } from "@/features/session/lib/antares/questionMeta";
+import { fetchSessionQuestionMeta } from "@/features/session/server/fetchSessionQuestionMeta";
 import type { SessionQuestion } from "@/features/session/types";
 
 const schema = z.string().uuid();
@@ -17,6 +19,7 @@ export type LoadSessionQuestionsResult =
       subject: { id: string; name: string; short_name: string };
       mode: string;
       questions: SessionQuestion[];
+      reserveQuestions?: SessionQuestion[];
     }
   | { ok: false; message: string };
 
@@ -41,7 +44,7 @@ export async function loadSessionQuestions(
 
     const { data: session, error: se } = await supabase
       .from("study_sessions")
-      .select("id, user_id, subject_id, mode, question_ids")
+      .select("id, user_id, subject_id, mode, question_ids, reserve_question_ids")
       .eq("id", sessionId.data)
       .maybeSingle();
 
@@ -70,7 +73,7 @@ export async function loadSessionQuestions(
     const { data: rows, error: qe } = await supabase
       .from("questions")
       .select(
-        "id, text, options, correct_option_id, explanation, source_code, image_url, topics ( name )",
+        "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, topics ( name )",
       )
       .in("id", ids);
 
@@ -81,13 +84,47 @@ export async function loadSessionQuestions(
 
     const byId = new Map((rows ?? []).map((r) => [r.id as string, r as QuestionRow]));
     const ordered = ids.map((id) => byId.get(id)).filter(Boolean) as QuestionRow[];
+    let questions: SessionQuestion[] = ordered.map(mapRowToSessionQuestion);
+    const reserveIds = (session.reserve_question_ids as string[] | null) ?? [];
+    let reserveQuestions: SessionQuestion[] | undefined;
+
+    if (session.mode === "nauka") {
+      const meta = await fetchSessionQuestionMeta(supabase, user.id, [
+        ...ids,
+        ...reserveIds,
+      ]);
+      questions = attachAntaresMetaToQuestions(questions, meta);
+
+      if (reserveIds.length > 0) {
+        const { data: reserveRows, error: rqErr } = await supabase
+          .from("questions")
+          .select(
+            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, topics ( name )",
+          )
+          .in("id", reserveIds);
+
+        if (!rqErr && reserveRows?.length) {
+          const reserveById = new Map(
+            reserveRows.map((r) => [r.id as string, r as QuestionRow]),
+          );
+          const orderedReserve = reserveIds
+            .map((id) => reserveById.get(id))
+            .filter(Boolean) as QuestionRow[];
+          reserveQuestions = attachAntaresMetaToQuestions(
+            orderedReserve.map(mapRowToSessionQuestion),
+            meta,
+          );
+        }
+      }
+    }
 
     return {
       ok: true,
       sessionId: session.id,
       subject,
       mode: session.mode as string,
-      questions: ordered.map(mapRowToSessionQuestion),
+      questions,
+      reserveQuestions,
     };
   } catch (e) {
     console.error("[loadSessionQuestions]", e);

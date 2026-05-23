@@ -3,20 +3,26 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Infinity as InfinityIcon } from "lucide-react";
+import {
+  SESSION_COUNT_PRESETS,
+  sessionCountToPickerState,
+} from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 
-const PRESETS = [10, 25, 50] as const;
+const PRESETS = SESSION_COUNT_PRESETS;
 type PresetValue = (typeof PRESETS)[number] | "all" | null;
 
 type SmartSessionCTAProps = {
   subjectId: string;
   availableQuestionCount: number;
+  initialSessionCount: number;
 };
 
 function resolveCount(
   preset: PresetValue,
   custom: string,
   maxQ: number,
+  fallback: number,
 ): number {
   if (preset === "all") return Math.max(1, maxQ);
   const parsed = parseInt(custom, 10);
@@ -24,22 +30,39 @@ function resolveCount(
     return parsed;
   }
   if (typeof preset === "number") return Math.min(preset, Math.max(1, maxQ));
-  return Math.min(10, Math.max(1, maxQ));
+  return Math.min(fallback, Math.max(1, maxQ));
 }
 
 export function SmartSessionCTA({
   subjectId,
   availableQuestionCount,
+  initialSessionCount,
 }: SmartSessionCTAProps) {
   const maxQ = Math.max(1, availableQuestionCount);
+  const smartInitial = sessionCountToPickerState(
+    Math.min(initialSessionCount, maxQ),
+  );
+  const reviewInitial = sessionCountToPickerState(
+    Math.min(initialSessionCount, maxQ),
+  );
 
-  const [smartPreset, setSmartPreset] = useState<PresetValue>(10);
-  const [smartCustom, setSmartCustom] = useState("");
-  const [reviewPreset, setReviewPreset] = useState<PresetValue>(10);
-  const [reviewCustom, setReviewCustom] = useState("");
+  const [smartPreset, setSmartPreset] = useState<PresetValue>(smartInitial.preset);
+  const [smartCustom, setSmartCustom] = useState(smartInitial.custom);
+  const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
+  const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
 
-  const smartCount = resolveCount(smartPreset, smartCustom, maxQ);
-  const reviewCount = resolveCount(reviewPreset, reviewCustom, maxQ);
+  const smartCount = resolveCount(
+    smartPreset,
+    smartCustom,
+    maxQ,
+    Math.min(initialSessionCount, maxQ),
+  );
+  const reviewCount = resolveCount(
+    reviewPreset,
+    reviewCustom,
+    maxQ,
+    Math.min(initialSessionCount, maxQ),
+  );
 
   const smartHref = useMemo(() => {
     const q = new URLSearchParams({

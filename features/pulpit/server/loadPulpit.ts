@@ -5,6 +5,7 @@ import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQu
 import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
 import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
 import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
+import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { greetingName } from "@/lib/greetingName";
@@ -34,6 +35,10 @@ export type PulpitData = {
   lastSubjectId: string | null;
   lastSubjectName: string | null;
   lastSubjectMasteryPct: number;
+  /** Ostatnia liczba pytań z konfiguracji sesji (10, 25, custom…). */
+  preferredSessionCount: number;
+  /** Wynik gotowości egzaminowej 0–100 (ANTARES), null gdy brak danych. */
+  examReadinessScore: number | null;
   recentSessions: PulpitRecentSession[];
   /** Liczba innych userów aktywnych w ciągu ostatnich 5 minut (heartbeat). */
   activeUsersNow: number;
@@ -81,6 +86,12 @@ export async function loadPulpit(): Promise<
     ]);
 
     const dailyGoal = profile?.daily_goal ?? 25;
+    const preferredSessionCount = getPreferredSessionCount(profile);
+    const examReadinessRaw = profile?.exam_readiness_score as number | null | undefined;
+    const examReadinessScore =
+      examReadinessRaw != null && Number.isFinite(Number(examReadinessRaw))
+        ? Math.round(Number(examReadinessRaw))
+        : null;
 
     const recentSessions: PulpitRecentSession[] = (sessionsRes.data ?? []).map(
       (row: Record<string, unknown>) => {
@@ -152,6 +163,8 @@ export async function loadPulpit(): Promise<
         lastSubjectId,
         lastSubjectName,
         lastSubjectMasteryPct,
+        preferredSessionCount,
+        examReadinessScore,
         recentSessions,
         activeUsersNow: activeNowRes.count ?? 0,
       },

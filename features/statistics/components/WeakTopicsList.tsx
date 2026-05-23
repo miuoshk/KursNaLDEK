@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
+import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 import type { StatisticsPayload } from "@/features/statistics/types";
 
 export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
+  const { preferredSessionCount } = useDashboardUser();
   if (data.weakTopics.length === 0) {
     return (
       <p className="rounded-card border border-border bg-card p-6 font-body text-body-sm text-muted">
@@ -33,7 +36,12 @@ export function WeakTopicsList({ data }: { data: StatisticsPayload }) {
             {Math.round(t.accuracy * 100)}%
           </span>
           <Link
-            href={`/sesja/new?subject=${encodeURIComponent(t.subjectId)}&topic=${encodeURIComponent(t.topicId)}&mode=inteligentna&count=10`}
+            href={buildSessionStartHref({
+              subject: t.subjectId,
+              topic: t.topicId,
+              mode: "inteligentna",
+              count: preferredSessionCount,
+            })}
             className="rounded-btn border border-brand-sage px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
           >
             Powtórz

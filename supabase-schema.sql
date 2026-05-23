@@ -30,6 +30,7 @@ CREATE TABLE profiles (
   subscription_ends_at TIMESTAMPTZ,
   default_session_mode TEXT DEFAULT 'nauka',
   default_question_count INT DEFAULT 25,
+  last_session_question_count INT DEFAULT 25,
   exam_date TIMESTAMPTZ,
   exam_readiness_score INT,
   questions_answered_total INT DEFAULT 0,

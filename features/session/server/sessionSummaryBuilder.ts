@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionMode } from "@/features/session/types";
+import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSessionInsights";
 
 const TRUNC = 80;
 
@@ -46,7 +47,7 @@ export async function buildSessionSummary(
   const { data: session, error: se } = await supabase
     .from("study_sessions")
     .select(
-      "id, user_id, subject_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed",
+      "id, user_id, subject_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights",
     )
     .eq("id", sessionId)
     .eq("user_id", userId)
@@ -154,11 +155,23 @@ export async function buildSessionSummary(
     }))
     .sort((a, b) => a.accuracy - b.accuracy);
 
+  const dbMode = session.mode as string;
+  const mappedMode: SessionMode =
+    dbMode === "nauka"
+      ? "inteligentna"
+      : dbMode === "egzamin"
+        ? "przeglad"
+        : (dbMode as SessionMode);
+
+  const { sessionInsights, examReadiness } = parseStoredSessionInsights(
+    session.session_insights,
+  );
+
   return {
     sessionId,
     subjectName: subject.name,
     subjectShortName: subject.short_name,
-    mode: session.mode as SessionMode,
+    mode: mappedMode,
     totalQuestions: totalPlan,
     correctAnswers: correct,
     accuracy: acc,
@@ -178,5 +191,7 @@ export async function buildSessionSummary(
     reviewCount,
     achievementUnlocked: null,
     subjectId: subject.id,
+    sessionInsights: sessionInsights ?? undefined,
+    examReadiness: examReadiness ?? undefined,
   };
 }

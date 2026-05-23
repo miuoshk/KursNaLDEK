@@ -406,7 +406,10 @@ export async function runCompleteSessionPostAntares(
   await supabase
     .from("study_sessions")
     .update({
-      session_insights: sessionInsights as unknown as Record<string, unknown>,
+      session_insights: {
+        ...sessionInsights,
+        examReadiness,
+      } as unknown as Record<string, unknown>,
     })
     .eq("id", sessionId)
     .eq("user_id", userId);

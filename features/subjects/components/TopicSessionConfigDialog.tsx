@@ -12,6 +12,10 @@ import {
   Lightbulb,
   X,
 } from "lucide-react";
+import {
+  SESSION_COUNT_PRESETS,
+  sessionCountToPickerState,
+} from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 
 type TopicSessionConfigDialogProps = {
@@ -23,11 +27,12 @@ type TopicSessionConfigDialogProps = {
   topicName: string;
   totalQuestions: number;
   answeredQuestions: number;
+  initialSessionCount: number;
   hasKnowledgeCard?: boolean;
   onOpenKnowledgeCard?: () => void;
 };
 
-const PRESETS = [10, 25, 50] as const;
+const PRESETS = SESSION_COUNT_PRESETS;
 type PresetValue = (typeof PRESETS)[number] | "all" | null;
 
 function buildHref(
@@ -69,26 +74,31 @@ export function TopicSessionConfigDialog({
   topicName,
   totalQuestions,
   answeredQuestions,
+  initialSessionCount,
   hasKnowledgeCard = false,
   onOpenKnowledgeCard,
 }: TopicSessionConfigDialogProps) {
-  const [smartPreset, setSmartPreset] = useState<PresetValue>(25);
-  const [smartCustom, setSmartCustom] = useState("");
-  const [reviewPreset, setReviewPreset] = useState<PresetValue>(25);
-  const [reviewCustom, setReviewCustom] = useState("");
+  const maxQ = Math.max(1, totalQuestions);
+  const countFallback = Math.min(initialSessionCount, maxQ);
+  const smartInitial = sessionCountToPickerState(countFallback);
+  const reviewInitial = sessionCountToPickerState(countFallback);
+
+  const [smartPreset, setSmartPreset] = useState<PresetValue>(smartInitial.preset);
+  const [smartCustom, setSmartCustom] = useState(smartInitial.custom);
+  const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
+  const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
 
   const progressPct =
     totalQuestions > 0
       ? Math.round((answeredQuestions / totalQuestions) * 100)
       : 0;
 
-  const maxQ = Math.max(1, totalQuestions);
   const smartFinalCount = Math.min(
-    resolveCount(smartPreset, smartCustom, totalQuestions, 25),
+    resolveCount(smartPreset, smartCustom, totalQuestions, countFallback),
     maxQ,
   );
   const reviewFinalCount = Math.min(
-    resolveCount(reviewPreset, reviewCustom, totalQuestions, 25),
+    resolveCount(reviewPreset, reviewCustom, totalQuestions, countFallback),
     maxQ,
   );
 

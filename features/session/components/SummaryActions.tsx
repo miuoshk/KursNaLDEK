@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import { persistRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
@@ -22,7 +23,11 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
   return (
     <div className="flex flex-wrap items-center justify-end gap-4">
       <Link
-        href={`/sesja/new?subject=${encodeURIComponent(summary.subjectId)}&mode=inteligentna&count=10`}
+        href={buildSessionStartHref({
+          subject: summary.subjectId,
+          mode: "inteligentna",
+          count: summary.totalQuestions,
+        })}
         className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
       >
         Rozpocznij kolejną sesję

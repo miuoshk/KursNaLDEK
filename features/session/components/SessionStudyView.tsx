@@ -25,6 +25,7 @@ type SessionStudyViewProps = {
   subjectShortName: string;
   mode: SessionMode;
   questions: SessionQuestion[];
+  reserveQuestions?: SessionQuestion[];
 };
 
 export function SessionStudyView({
@@ -34,9 +35,11 @@ export function SessionStudyView({
   subjectShortName,
   mode,
   questions,
+  reserveQuestions = [],
 }: SessionStudyViewProps) {
   const sessionStart = useRef(Date.now());
   const timeSpentQuestion = useRef(0);
+  const reserveRef = useRef<SessionQuestion[]>(reserveQuestions);
   const [timerSec, setTimerSec] = useState(0);
   const [endOpen, setEndOpen] = useState(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
@@ -112,6 +115,7 @@ export function SessionStudyView({
     mode === "inteligentna"
       ? { fatigueShownRef, onFatigueSuggestion }
       : null,
+    reserveRef,
     handleCompleting,
     handleComplete,
   );

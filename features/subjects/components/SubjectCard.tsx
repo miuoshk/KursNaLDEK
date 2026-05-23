@@ -62,6 +62,11 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
           <div className="text-right">
             <p className="font-body text-lg text-secondary">{mastery}%</p>
             <p className="font-body text-body-xs text-muted">Mistrzostwo</p>
+            {subject.due_reviews > 0 ? (
+              <p className="mt-1 font-body text-body-xs font-medium text-brand-gold">
+                {subject.due_reviews} powt.
+              </p>
+            ) : null}
           </div>
         )}
       </div>
@@ -76,11 +81,17 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
             ? "Wkrótce dostępne"
             : "Brak aktywnych pytań"}
         </p>
-      ) : (
-        <p className="mt-2 font-body text-body-sm text-muted">
-          {subject.question_count} {pytaniaForm(subject.question_count)} · {subject.topic_count} {dzialForm(subject.topic_count)}
-        </p>
-      )}
+        ) : (
+          <p className="mt-2 font-body text-body-sm text-muted">
+            {subject.question_count} {pytaniaForm(subject.question_count)} · {subject.topic_count} {dzialForm(subject.topic_count)}
+            {subject.due_reviews > 0 ? (
+              <span className="text-brand-gold">
+                {" "}
+                · {subject.due_reviews} do powtórki
+              </span>
+            ) : null}
+          </p>
+        )}
 
       {!noActiveQuestions && (
         <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.06]">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { cn } from "@/lib/utils";
 import { formatQuestionsCount } from "@/lib/pluralizePolish";
@@ -18,6 +19,7 @@ export function PulpitQuickStart({ data }: { data: PulpitData }) {
           dueReviews={data.dueReviews}
           lastSubjectId={data.lastSubjectId}
           hasDue={hasDue}
+          sessionCount={data.preferredSessionCount}
         />
         <ContinueCard
           hasHistory={hasHistory}
@@ -34,14 +36,18 @@ function ReviewCard({
   dueReviews,
   lastSubjectId,
   hasDue,
+  sessionCount,
 }: {
   dueReviews: number;
   lastSubjectId: string | null;
   hasDue: boolean;
+  sessionCount: number;
 }) {
-  const reviewHref = lastSubjectId
-    ? `/sesja/new?subject=${encodeURIComponent(lastSubjectId)}&mode=inteligentna&count=10`
-    : "/sesja/new?mode=inteligentna&count=10";
+  const reviewHref = buildSessionStartHref({
+    subject: lastSubjectId ?? undefined,
+    mode: "inteligentna",
+    count: sessionCount,
+  });
 
   return (
     <div

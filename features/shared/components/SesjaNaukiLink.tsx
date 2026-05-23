@@ -9,13 +9,16 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
+import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 
 export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const pathname = usePathname();
-  const { dueReviewsCount } = useDashboardUser();
+  const { dueReviewsCount, preferredSessionCount } = useDashboardUser();
   const href =
-    dueReviewsCount > 0 ? "/sesja/new?mode=inteligentna&count=10" : "/przedmioty";
+    dueReviewsCount > 0
+      ? buildSessionStartHref({ mode: "inteligentna", count: preferredSessionCount })
+      : "/przedmioty";
   const tooltip =
     dueReviewsCount > 0 ? "Sesja powtórkowa" : "Wybierz przedmiot";
 

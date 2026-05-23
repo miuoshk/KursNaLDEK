@@ -6,6 +6,7 @@ import { ActivityHeatmap } from "@/features/pulpit/components/ActivityHeatmap";
 import { ProgressChart } from "@/features/pulpit/components/ProgressChart";
 import { PulpitQuickStart } from "@/features/pulpit/components/PulpitQuickStart";
 import { PulpitRecentSessions } from "@/features/pulpit/components/PulpitRecentSessions";
+import { PulpitStudyPlan } from "@/features/pulpit/components/PulpitStudyPlan";
 import { PulpitTodayCards } from "@/features/pulpit/components/PulpitTodayCards";
 import { WeakPoints } from "@/features/pulpit/components/WeakPoints";
 import { pluralizePolish, verbUczyPolish } from "@/lib/pluralizePolish";
@@ -70,6 +71,7 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
       </header>
 
       <PulpitTodayCards data={data} />
+      <PulpitStudyPlan data={data} />
       <PulpitQuickStart data={data} />
       <ActivityHeatmap activityDays={data.activityDays} />
       <ProgressChart progressHistory={data.progressHistory} />

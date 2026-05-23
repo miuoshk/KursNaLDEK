@@ -11,6 +11,7 @@ export function buildKnnpSubjectsList(
   catalog: KnnpCatalogRows,
   answeredPerSubject?: Map<string, Set<string>>,
   lastStudiedPerSubject?: Map<string, string>,
+  dueReviewsPerSubject?: Map<string, number>,
 ): {
   subjects: SubjectWithProgress[];
   totalQuestionCount: number;
@@ -65,7 +66,7 @@ export function buildKnnpSubjectsList(
         ? Math.round((answeredUnique / questionCount) * 100)
         : 0,
       last_studied_at: lastStudiedPerSubject?.get(row.id) ?? null,
-      due_reviews: 0,
+      due_reviews: dueReviewsPerSubject?.get(row.id) ?? 0,
     };
   });
 

@@ -1,9 +1,13 @@
+import type { SessionQuestionMeta } from "@/features/session/types";
+import { personalEaseScore } from "@/features/session/lib/antares/questionMeta";
+
 export type RankedQuestion = {
   questionId: string;
   topicId: string;
   score: number;
   isLeech: boolean;
   retrievability?: number;
+  antares?: SessionQuestionMeta;
 };
 
 export type SessionComposerInput = {
@@ -17,6 +21,7 @@ export type SessionComposerInput = {
   topicMastery: Map<string, number>;
   accuracyLast20: number;
   dailyGoal: number;
+  questionsToday: number;
   examDate: Date | null;
 };
 
@@ -142,6 +147,44 @@ function fillShortage(
   return out.slice(0, target);
 }
 
+function personalEase(
+  q: RankedQuestion,
+  topicMastery: Map<string, number>,
+): number {
+  if (q.antares) return personalEaseScore(q.antares);
+  const r = q.retrievability ?? 0;
+  const tm = topicMastery.get(q.topicId) ?? 0.5;
+  return r * 0.6 + tm * 0.4 - (q.isLeech ? 0.15 : 0);
+}
+
+/**
+ * Układa sesję: rozgrzewka (łatwiejsze dla usera) → rdzeń (pilne) → schłodzenie (umiarkowane).
+ */
+export function applyPersonalizedCurve(
+  questions: RankedQuestion[],
+  topicMastery: Map<string, number>,
+): RankedQuestion[] {
+  if (questions.length <= 3) return [...questions];
+
+  const n = questions.length;
+  const warmEnd = Math.max(1, Math.ceil(n * 0.2));
+  const coolStart = Math.max(warmEnd + 1, Math.floor(n * 0.8));
+
+  const warm = [...questions.slice(0, warmEnd)].sort(
+    (a, b) => personalEase(b, topicMastery) - personalEase(a, topicMastery),
+  );
+  const core = [...questions.slice(warmEnd, coolStart)].sort(
+    (a, b) => b.score - a.score,
+  );
+  const cool = [...questions.slice(coolStart)].sort((a, b) => {
+    const easeA = personalEase(a, topicMastery);
+    const easeB = personalEase(b, topicMastery);
+    return easeB - easeA;
+  });
+
+  return [...warm, ...core, ...cool];
+}
+
 /**
  * Buduje listę identyfikatorów pytań i metadane sesji na podstawie pul due / nowe / leech
  * oraz progów czasu do egzaminu.
@@ -153,6 +196,9 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     unseenQuestions,
     leechQuestions,
     topicMastery,
+    accuracyLast20,
+    dailyGoal,
+    questionsToday,
     examDate,
   } = input;
 
@@ -173,6 +219,18 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   }
 
   dueRatio = Math.min(0.95, Math.max(0.1, dueRatio));
+
+  if (accuracyLast20 < 0.5) {
+    dueRatio = Math.min(0.95, dueRatio + 0.15);
+  } else if (accuracyLast20 > 0.8) {
+    dueRatio = Math.max(0.1, dueRatio - 0.1);
+  }
+
+  if (questionsToday >= dailyGoal) {
+    dueRatio = Math.min(0.95, dueRatio + 0.1);
+  } else if (questionsToday + count < dailyGoal * 0.5) {
+    dueRatio = Math.max(0.1, dueRatio - 0.05);
+  }
 
   let nDue = Math.round(count * dueRatio);
   let nNew = count - nDue;
@@ -213,10 +271,11 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   const sourceById = new Map(merged.map((m) => [m.q.questionId, m.tag] as const));
 
   const interleaved = interleaveByTopic(mergedQs);
+  const curved = applyPersonalizedCurve(interleaved, topicMastery);
 
-  const questionIds = interleaved.map((q) => q.questionId);
+  const questionIds = curved.map((q) => q.questionId);
 
-  const topicIdsInSession = [...new Set(interleaved.map((q) => q.topicId))];
+  const topicIdsInSession = [...new Set(curved.map((q) => q.topicId))];
   let avgTopicMastery = 0;
   if (topicIdsInSession.length > 0) {
     let sum = 0;
@@ -226,13 +285,13 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     avgTopicMastery = sum / topicIdsInSession.length;
   }
 
-  const dueReviews = interleaved.filter(
+  const dueReviews = curved.filter(
     (q) => sourceById.get(q.questionId) === "due",
   ).length;
-  const newQuestions = interleaved.filter(
+  const newQuestions = curved.filter(
     (q) => sourceById.get(q.questionId) === "unseen",
   ).length;
-  const leeches = interleaved.filter((q) => q.isLeech).length;
+  const leeches = curved.filter((q) => q.isLeech).length;
 
   return {
     questionIds,

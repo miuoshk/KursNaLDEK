@@ -11,9 +11,15 @@ type TopicGridProps = {
   topics: TopicWithProgress[];
   subjectId: string;
   subjectShortName: string;
+  initialSessionCount: number;
 };
 
-export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProps) {
+export function TopicGrid({
+  topics,
+  subjectId,
+  subjectShortName,
+  initialSessionCount,
+}: TopicGridProps) {
   const [selectedTopic, setSelectedTopic] = useState<TopicWithProgress | null>(null);
   const [knowledgeCardTopic, setKnowledgeCardTopic] = useState<TopicWithProgress | null>(null);
 
@@ -57,6 +63,7 @@ export function TopicGrid({ topics, subjectId, subjectShortName }: TopicGridProp
         topicName={selectedTopic?.name ?? ""}
         totalQuestions={selectedTopic?.question_count ?? 0}
         answeredQuestions={selectedTopic?.answered_count ?? 0}
+        initialSessionCount={initialSessionCount}
         hasKnowledgeCard={
           selectedTopic?.knowledge_card != null &&
           selectedTopic.knowledge_card.trim().length > 0

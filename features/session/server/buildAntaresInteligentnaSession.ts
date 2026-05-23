@@ -1,15 +1,34 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { calculateNewQuestionPriority } from "@/features/session/lib/antares/newQuestionPriority";
-import { composeSession, type RankedQuestion } from "@/features/session/lib/antares/sessionComposer";
+import {
+  buildQuestionMeta,
+  defaultQuestionMeta,
+} from "@/features/session/lib/antares/questionMeta";
+import {
+  composeSession,
+  type RankedQuestion,
+} from "@/features/session/lib/antares/sessionComposer";
 import {
   getRetrievability,
   type RetrievabilityInput,
 } from "@/features/session/lib/antares/retrievability";
 import { calculateDueUrgency } from "@/features/session/lib/antares/urgencyScore";
+import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
 import { shuffle } from "@/features/session/server/questionSelection";
+import type { SessionQuestionMeta } from "@/features/session/types";
+import {
+  buildReserveQuestionIds,
+  mergeRankedUnique,
+} from "@/features/session/lib/antares/reservePool";
 
 const MAX_DUE_CANDIDATES = 800;
 const MAX_UNSEEN_CANDIDATES = 800;
+
+export type AntaresSessionBuildResult = {
+  questionIds: string[];
+  reserveIds: string[];
+  metaByQuestionId: Map<string, SessionQuestionMeta>;
+};
 
 function toRetrieverState(s: string): RetrievabilityInput["state"] {
   if (
@@ -110,6 +129,20 @@ async function fetchAccuracyLast20(
   return correct / list.length;
 }
 
+function metaFromRankedMap(
+  questionIds: string[],
+  rankedById: Map<string, RankedQuestion>,
+): Map<string, SessionQuestionMeta> {
+  const out = new Map<string, SessionQuestionMeta>();
+  for (const id of questionIds) {
+    const ranked = rankedById.get(id);
+    if (ranked?.antares) {
+      out.set(id, ranked.antares);
+    }
+  }
+  return out;
+}
+
 /**
  * Buduje listę identyfikatorów pytań dla trybu inteligentna (ANTARES).
  * Zwraca pustą tablicę, gdy brak danych do kompozycji — wtedy `startSession` może użyć fallbacku.
@@ -121,16 +154,26 @@ export async function buildAntaresInteligentnaSession(
   pool: string[],
   topicOkForDue: Set<string>,
   topicFilter: Set<string> | undefined,
-): Promise<string[]> {
+): Promise<AntaresSessionBuildResult> {
+  const empty: AntaresSessionBuildResult = {
+    questionIds: [],
+    reserveIds: [],
+    metaByQuestionId: new Map(),
+  };
+
   const poolSet = new Set(pool);
   const now = new Date();
   const nowIso = now.toISOString();
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("daily_goal, exam_date")
-    .eq("id", userId)
-    .maybeSingle();
+  const [{ data: profile }, questionsToday, accuracyLast20] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("daily_goal, exam_date")
+      .eq("id", userId)
+      .maybeSingle(),
+    countSessionAnswersTodayWarsaw(supabase, userId),
+    fetchAccuracyLast20(supabase, userId),
+  ]);
 
   const dailyGoal = Number(profile?.daily_goal ?? 25);
   const examDateRaw = profile?.exam_date as string | null | undefined;
@@ -158,7 +201,7 @@ export async function buildAntaresInteligentnaSession(
   const { data: dueRows } = await supabase
     .from("user_question_progress")
     .select(
-      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, is_leech",
+      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, is_leech, times_answered, times_correct, avg_time_seconds",
     )
     .eq("user_id", userId)
     .lte("next_review", nowIso)
@@ -168,7 +211,7 @@ export async function buildAntaresInteligentnaSession(
   const { data: leechRows } = await supabase
     .from("user_question_progress")
     .select(
-      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, is_leech",
+      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, is_leech, times_answered, times_correct, avg_time_seconds",
     )
     .eq("user_id", userId)
     .eq("is_leech", true);
@@ -190,6 +233,7 @@ export async function buildAntaresInteligentnaSession(
   ];
 
   const meta = await fetchQuestionsMeta(supabase, allCandidateIds);
+  const rankedById = new Map<string, RankedQuestion>();
 
   const dueRanked: RankedQuestion[] = [];
   for (const row of dueRows ?? []) {
@@ -202,21 +246,37 @@ export async function buildAntaresInteligentnaSession(
     const rInput = rowToRetrievabilityInput(row);
     const rVal = getRetrievability(rInput, now);
     const tid = m.topic_id;
+    const tm = topicMastery.get(tid) ?? 0.5;
     const urgency = calculateDueUrgency({
       retrievability: rVal,
       nextReviewAt: (row.next_review as string) ?? nowIso,
-      topicMasteryScore: topicMastery.get(tid) ?? 0.5,
+      topicMasteryScore: tm,
       isLeech: Boolean(row.is_leech),
       now,
     });
 
-    dueRanked.push({
+    const antares = buildQuestionMeta({
+      retrievability: rVal,
+      fsrsDifficulty: Number(row.difficulty_rating ?? 0.3),
+      isLeech: Boolean(row.is_leech),
+      isNew: false,
+      timesAnswered: Number(row.times_answered ?? 0),
+      timesCorrect: Number(row.times_correct ?? 0),
+      avgTimeSeconds:
+        row.avg_time_seconds != null ? Number(row.avg_time_seconds) : null,
+      topicMastery: tm,
+    });
+
+    const ranked: RankedQuestion = {
       questionId: qid,
       topicId: tid,
       score: urgency,
       isLeech: Boolean(row.is_leech),
       retrievability: rVal,
-    });
+      antares,
+    };
+    dueRanked.push(ranked);
+    rankedById.set(qid, ranked);
   }
 
   dueRanked.sort((a, b) => b.score - a.score);
@@ -232,25 +292,40 @@ export async function buildAntaresInteligentnaSession(
 
     const rInput = rowToRetrievabilityInput(row);
     const rVal = getRetrievability(rInput, now);
+    const tid = m.topic_id;
+    const tm = topicMastery.get(tid) ?? 0.5;
     const urgency = calculateDueUrgency({
       retrievability: rVal,
       nextReviewAt: (row.next_review as string) ?? nowIso,
-      topicMasteryScore: topicMastery.get(m.topic_id) ?? 0.5,
+      topicMasteryScore: tm,
       isLeech: true,
       now,
     });
 
-    leechRanked.push({
+    const antares = buildQuestionMeta({
+      retrievability: rVal,
+      fsrsDifficulty: Number(row.difficulty_rating ?? 0.3),
+      isLeech: true,
+      isNew: false,
+      timesAnswered: Number(row.times_answered ?? 0),
+      timesCorrect: Number(row.times_correct ?? 0),
+      avgTimeSeconds:
+        row.avg_time_seconds != null ? Number(row.avg_time_seconds) : null,
+      topicMastery: tm,
+    });
+
+    const ranked: RankedQuestion = {
       questionId: qid,
-      topicId: m.topic_id,
+      topicId: tid,
       score: urgency,
       isLeech: true,
       retrievability: rVal,
-    });
+      antares,
+    };
+    leechRanked.push(ranked);
+    rankedById.set(qid, ranked);
   }
   leechRanked.sort((a, b) => b.score - a.score);
-
-  const accuracyLast20 = await fetchAccuracyLast20(supabase, userId);
 
   const unseenRanked: RankedQuestion[] = [];
   for (const qid of shuffle(unseenInPool).slice(0, MAX_UNSEEN_CANDIDATES)) {
@@ -266,12 +341,17 @@ export async function buildAntaresInteligentnaSession(
       topicCoverageRatio: coverageRatio,
     });
 
-    unseenRanked.push({
+    const antares = defaultQuestionMeta(mastery);
+    const ranked: RankedQuestion = {
       questionId: qid,
       topicId: tid,
       score: priority,
       isLeech: false,
-    });
+      retrievability: 0,
+      antares,
+    };
+    unseenRanked.push(ranked);
+    rankedById.set(qid, ranked);
   }
   unseenRanked.sort((a, b) => b.score - a.score);
 
@@ -284,8 +364,27 @@ export async function buildAntaresInteligentnaSession(
     topicMastery,
     accuracyLast20,
     dailyGoal,
+    questionsToday,
     examDate,
   });
 
-  return composed.questionIds;
+  if (composed.questionIds.length === 0) return empty;
+
+  const allRanked = mergeRankedUnique([
+    dueSorted,
+    unseenRanked,
+    leechRanked,
+  ]);
+  const reserveIds = buildReserveQuestionIds(
+    count,
+    composed.questionIds,
+    allRanked,
+  );
+
+  const metaIds = [...composed.questionIds, ...reserveIds];
+  return {
+    questionIds: composed.questionIds,
+    reserveIds,
+    metaByQuestionId: metaFromRankedMap(metaIds, rankedById),
+  };
 }

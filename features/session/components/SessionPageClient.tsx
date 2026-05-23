@@ -12,6 +12,10 @@ import {
   peekRetryWrongIds,
   removeRetryWrongIds,
 } from "@/features/session/lib/retryWrongStorage";
+import {
+  clampSessionCount,
+  DEFAULT_SESSION_COUNT,
+} from "@/features/session/lib/sessionCount";
 import type { KnnpSessionMode, SessionQuestion } from "@/features/session/types";
 
 const CACHE_PREFIX = "kurs-session-";
@@ -27,6 +31,7 @@ type Bootstrap =
       subjectShortName: string;
       mode: KnnpSessionMode;
       questions: SessionQuestion[];
+      reserveQuestions: SessionQuestion[];
     };
 
 function parseMode(v: string | null): KnnpSessionMode {
@@ -36,8 +41,8 @@ function parseMode(v: string | null): KnnpSessionMode {
 
 function parseCount(v: string | null): number {
   const n = Number(v);
-  if (Number.isFinite(n) && n >= 1 && n <= 500) return Math.floor(n);
-  return 10;
+  if (Number.isFinite(n) && n >= 1) return clampSessionCount(n);
+  return DEFAULT_SESSION_COUNT;
 }
 
 export function SessionPageClient({ sessionId }: { sessionId: string }) {
@@ -91,6 +96,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectShortName: res.subject.short_name,
             mode,
             questions: res.questions,
+            reserveQuestions: [],
           });
           return;
         }
@@ -103,6 +109,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectShortName: res.subject.short_name,
             mode,
             questions: res.questions,
+            reserveQuestions: res.reserveQuestions ?? [],
           }),
         );
         router.replace(`/sesja/${res.sessionId}`);
@@ -119,6 +126,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectShortName?: string;
             mode: KnnpSessionMode;
             questions: SessionQuestion[];
+            reserveQuestions?: SessionQuestion[];
           };
           sessionStorage.removeItem(cacheKey);
           if (!cancelled) {
@@ -130,6 +138,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
               subjectShortName: parsed.subjectShortName ?? parsed.subjectName,
               mode: parsed.mode,
               questions: parsed.questions,
+              reserveQuestions: parsed.reserveQuestions ?? [],
             });
           }
           return;
@@ -159,6 +168,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         subjectShortName: loaded.subject.short_name,
         mode: mappedMode,
         questions: loaded.questions,
+        reserveQuestions: loaded.reserveQuestions ?? [],
       });
     }
 
@@ -203,6 +213,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       subjectShortName={boot.subjectShortName}
       mode={boot.mode}
       questions={boot.questions}
+      reserveQuestions={boot.reserveQuestions}
     />
   );
 }

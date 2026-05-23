@@ -5,6 +5,7 @@ import type { MutableRefObject } from "react";
 import { completeSession } from "@/features/session/api/completeSession";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
+import { applyReserveSwap } from "@/features/session/lib/antares/reservePool";
 import {
   adaptRemainingQuestions,
   applyDifficultySwapsToRemaining,
@@ -53,6 +54,7 @@ export function useSessionStudyFlow(
   setSaveToast: (m: string | null) => void,
   closeEndDialog: () => void,
   antaresMid: AntaresMidOpts | null,
+  reserveRef: MutableRefObject<SessionQuestion[]>,
   /** Wywoływane natychmiast — pokaż ekran ładowania podsumowania. */
   onCompleting: () => void,
   /** Wywoływane po zapisie sesji w DB — nawigacja na /podsumowanie. */
@@ -192,7 +194,13 @@ export function useSessionStudyFlow(
               remainingQuestions: tail.map(sessionQuestionToRanked),
             });
             const swapped = applyDifficultySwapsToRemaining(tail, adapted);
-            s.replaceQuestionsFromIndex(nextIdx, swapped);
+            const reserveSwap = applyReserveSwap(
+              swapped,
+              reserveRef.current,
+              answeredSoFar,
+            );
+            reserveRef.current = reserveSwap.reserve;
+            s.replaceQuestionsFromIndex(nextIdx, reserveSwap.tail);
 
             const fatigue = detectFatigue(answeredSoFar);
             if (
@@ -234,6 +242,7 @@ export function useSessionStudyFlow(
       timeSpentQuestion,
       setSaveToast,
       antaresMid,
+      reserveRef,
       finishSession,
       buildSummary,
       trackPendingSave,

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CheckCircle, Flame } from "lucide-react";
 import { motion } from "framer-motion";
+import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { getCurrentRank, getNextRank, getXpProgress } from "@/features/gamification/lib/ranks";
 import { cn } from "@/lib/utils";
@@ -156,7 +157,10 @@ function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
       <p className={cn("font-heading text-4xl font-bold", numColor)}>{d}</p>
       {d > 0 ? (
         <Link
-          href="/sesja/new?mode=inteligentna&count=10"
+          href={buildSessionStartHref({
+            mode: "inteligentna",
+            count: data.preferredSessionCount,
+          })}
           className="mt-3 inline-flex items-center rounded-btn border border-brand-gold/40 px-3 py-1 font-body text-body-sm font-medium text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
         >
           Powtórz

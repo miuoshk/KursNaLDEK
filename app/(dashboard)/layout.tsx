@@ -5,6 +5,7 @@ import { Sidebar } from "@/features/shared/components/Sidebar";
 import { DashboardBreadcrumbProvider } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataContext";
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
+import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { pingPresence } from "@/features/shared/server/pingPresence";
@@ -35,6 +36,7 @@ export default async function DashboardLayout({
   let displayName = "Użytkownik";
   let streak = 0;
   let dueReviewsCount = 0;
+  let preferredSessionCount = 25;
   let userEmail: string | null = null;
   let avatarEmoji: string | null = null;
   let currentTrack: "stomatologia" | "lekarski" = "stomatologia";
@@ -61,6 +63,7 @@ export default async function DashboardLayout({
     // wczyta z tego samego React cache (jedno żądanie, bez duplikacji).
     await getCachedKnnpCatalog(userTrack, userYear);
     dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
+    preferredSessionCount = getPreferredSessionCount(profileRow);
     displayName = greetingName(profileRow, userEmail);
     streak = profileRow?.current_streak ?? 0;
     avatarEmoji =
@@ -91,6 +94,7 @@ export default async function DashboardLayout({
                 avatarEmoji,
                 currentTrack,
                 dueReviewsCount,
+                preferredSessionCount,
                 testMode: testMode || undefined,
               }}
             >

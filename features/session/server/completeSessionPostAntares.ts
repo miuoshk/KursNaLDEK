@@ -403,7 +403,7 @@ export async function runCompleteSessionPostAntares(
     dailyRecommendation: exam.dailyRecommendation,
   };
 
-  await supabase
+  const { error: insightsErr } = await supabase
     .from("study_sessions")
     .update({
       session_insights: {
@@ -414,13 +414,27 @@ export async function runCompleteSessionPostAntares(
     .eq("id", sessionId)
     .eq("user_id", userId);
 
-  await supabase
+  if (insightsErr) {
+    console.error(
+      "[postAntares] session_insights update",
+      insightsErr.message,
+      insightsErr,
+    );
+    throw insightsErr;
+  }
+
+  const { error: profileErr } = await supabase
     .from("profiles")
     .update({
       exam_readiness_score: exam.score,
       questions_answered_total: questionsAnsweredTotal,
     })
     .eq("id", userId);
+
+  if (profileErr) {
+    console.error("[postAntares] profile update", profileErr.message, profileErr);
+    throw profileErr;
+  }
 
   return { sessionInsights, examReadiness };
 }

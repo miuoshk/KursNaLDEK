@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 type Props = {
   summary: SessionSummaryData;
   loading?: boolean;
+  failed?: boolean;
+  onRetry?: () => void;
 };
 
 function InsightRow({
@@ -32,22 +34,31 @@ function InsightRow({
   );
 }
 
-export function SummaryInsightsSection({ summary, loading }: Props) {
+export function SummaryInsightsSection({
+  summary,
+  loading,
+  failed,
+  onRetry,
+}: Props) {
   const insights = summary.sessionInsights;
   const readiness = summary.examReadiness;
   const showInteligentna = summary.mode === "inteligentna";
 
   if (!showInteligentna) return null;
 
-  const hasContent =
+  const hasTips =
     insights?.nextSessionFocus ||
     insights?.calibrationTip ||
     insights?.fatigueWarning ||
     (insights?.leechesHit?.length ?? 0) > 0 ||
-    (insights?.retrievabilityGain ?? 0) > 0.01 ||
-    readiness;
+    (insights?.retrievabilityGain ?? 0) > 0.01;
 
-  if (!hasContent && !loading) return null;
+  const hasContent = Boolean(readiness || insights || loading || failed);
+
+  if (!hasContent) return null;
+
+  const showAccuracyFallback =
+    insights != null && !hasTips && !readiness && !loading && !failed;
 
   return (
     <section className="rounded-card border border-border bg-card p-6">
@@ -63,14 +74,37 @@ export function SummaryInsightsSection({ summary, loading }: Props) {
         ) : null}
       </div>
 
-      {loading && !hasContent ? (
+      {loading && !readiness && !insights ? (
         <div className="mt-4 space-y-2">
           <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
           <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
         </div>
+      ) : failed ? (
+        <div className="mt-4">
+          <p className="font-body text-body-sm text-secondary">
+            Nie udało się wczytać analizy. Spróbuj ponownie za chwilę.
+          </p>
+          {onRetry ? (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="mt-3 rounded-button bg-brand-sage px-4 py-2 font-body text-body-sm text-primary transition-opacity hover:opacity-90"
+            >
+              Odśwież analizę
+            </button>
+          ) : null}
+        </div>
       ) : (
         <div className="mt-4 grid gap-6 lg:grid-cols-2">
           <ul className="space-y-3">
+            {showAccuracyFallback ? (
+              <InsightRow icon={TrendingUp} accent="sage">
+                Trafność w tej sesji: {Math.round((insights!.accuracy ?? summary.accuracy) * 100)}%
+                {insights!.avgTimeSeconds > 0
+                  ? ` · średnio ${Math.round(insights!.avgTimeSeconds)} s na pytanie`
+                  : null}
+              </InsightRow>
+            ) : null}
             {insights?.nextSessionFocus ? (
               <InsightRow icon={Target} accent="sage">
                 {insights.nextSessionFocus}

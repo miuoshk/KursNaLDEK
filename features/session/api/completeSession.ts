@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
@@ -150,8 +151,56 @@ export async function completeSession(
     }
 
     // ═══════════════════════════════════════════════════════════
-    // FAZA FAST — buduj summary i zwróć response natychmiast
+    // ANTARES — synchronicznie (serverless ucina fire-and-forget)
+    // mastery, sessionInsights, examReadiness → potem summary z DB
     // ═══════════════════════════════════════════════════════════
+
+    const sessionStartedAt =
+      (session.started_at as string | null) ?? new Date().toISOString();
+    const postAnsRows = ansRows.map((a) => ({
+      question_id: a.question_id as string,
+      is_correct: Boolean(a.is_correct),
+      confidence: (a.confidence as string | null) ?? null,
+      time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
+      question_order: (a.question_order as number | null) ?? null,
+      answered_at: (a.answered_at as string | null) ?? null,
+    }));
+
+    if (postAnsRows.length > 0) {
+      try {
+        const { data: topicRows, error: topicErr } = await supabase
+          .from("session_answers")
+          .select("questions!inner(topic_id)")
+          .eq("session_id", session.id);
+
+        if (topicErr) throw topicErr;
+
+        const affectedTopicIds = [
+          ...new Set(
+            (topicRows ?? [])
+              .map((r) => {
+                const q = r.questions as unknown as {
+                  topic_id: string;
+                } | null;
+                return q?.topic_id;
+              })
+              .filter((id): id is string => Boolean(id)),
+          ),
+        ];
+
+        await runCompleteSessionPostAntares(
+          supabase,
+          user.id,
+          session.id as string,
+          sessionStartedAt,
+          affectedTopicIds,
+          postAnsRows,
+          answeredCount,
+        );
+      } catch (err) {
+        console.error("[completeSession] postAntares", err);
+      }
+    }
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
@@ -171,68 +220,21 @@ export async function completeSession(
       summary.newStreak = profAfter.data.current_streak ?? summary.newStreak;
     }
 
-    // Purge client router cache for dashboard/subject pages only.
-    // Avoid revalidating the root layout — that would re-render the
-    // active session page and destroy client-side summary state.
     revalidatePath("/przedmioty", "layout");
     revalidatePath("/pulpit", "page");
 
     // ═══════════════════════════════════════════════════════════
-    // FAZA BACKGROUND — fire-and-forget, po response
-    // recalculateTopicMastery, sessionInsights, examReadiness,
+    // FAZA BACKGROUND — po response (next/after), nie blokuje UI
     // avg_session_hour, learning_velocity, learning_event
     // ═══════════════════════════════════════════════════════════
 
-    const bgStartedAt =
-      (session.started_at as string | null) ?? new Date().toISOString();
-    const bgAnsRows = ansRows.map((a) => ({
-      question_id: a.question_id as string,
-      is_correct: Boolean(a.is_correct),
-      confidence: (a.confidence as string | null) ?? null,
-      time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
-      question_order: (a.question_order as number | null) ?? null,
-      answered_at: (a.answered_at as string | null) ?? null,
-    }));
     const bgSessionId = session.id as string;
     const bgUserId = user.id;
     const bgAvgSessionHour = profile.avg_session_hour as number | null | undefined;
     const bgTotalQuestions = session.total_questions ?? answeredCount;
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Promise.resolve().then(async () => {
+    after(async () => {
       try {
-        // 1. Affected topics → ANTARES post-processing
-        const { data: topicRows, error: topicErr } = await supabase
-          .from("session_answers")
-          .select("questions!inner(topic_id)")
-          .eq("session_id", bgSessionId);
-
-        if (topicErr) throw topicErr;
-
-        const affectedTopicIds = [
-          ...new Set(
-            (topicRows ?? [])
-              .map((r) => {
-                const q = r.questions as unknown as {
-                  topic_id: string;
-                } | null;
-                return q?.topic_id;
-              })
-              .filter((id): id is string => Boolean(id)),
-          ),
-        ];
-
-        await runCompleteSessionPostAntares(
-          supabase,
-          bgUserId,
-          bgSessionId,
-          bgStartedAt,
-          affectedTopicIds,
-          bgAnsRows,
-          answeredCount,
-        );
-
-        // 2. avg_session_hour
         const now = new Date();
         const currentHour =
           now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
@@ -249,7 +251,6 @@ export async function completeSession(
           .update({ avg_session_hour: newAvg })
           .eq("id", bgUserId);
 
-        // 3. learning_velocity
         const t = Date.now();
         const sevenDaysAgoIso = new Date(
           t - 7 * 24 * 60 * 60 * 1000,
@@ -289,7 +290,6 @@ export async function completeSession(
           .update({ learning_velocity: velocity })
           .eq("id", bgUserId);
 
-        // 4. learning_event "session_end"
         await supabase.from("learning_events").insert({
           user_id: bgUserId,
           event_type: "session_end",
@@ -302,7 +302,7 @@ export async function completeSession(
           },
         });
       } catch (err) {
-        console.error("[ANTARES background]", err);
+        console.error("[completeSession background]", err);
       }
     });
 

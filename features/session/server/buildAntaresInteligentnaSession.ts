@@ -12,6 +12,10 @@ import {
   getRetrievability,
   type RetrievabilityInput,
 } from "@/features/session/lib/antares/retrievability";
+import {
+  normalizeTopicMasteryRow,
+  TOPIC_MASTERY_CACHE_SELECT,
+} from "@/features/session/lib/antares/topicMasteryCacheDb";
 import { calculateDueUrgency } from "@/features/session/lib/antares/urgencyScore";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
 import { shuffle } from "@/features/session/server/questionSelection";
@@ -181,21 +185,15 @@ export async function buildAntaresInteligentnaSession(
 
   const { data: cacheRows } = await supabase
     .from("topic_mastery_cache")
-    .select("topic_id, mastery_score, coverage, total_questions, seen")
+    .select(TOPIC_MASTERY_CACHE_SELECT)
     .eq("user_id", userId);
 
   const topicMastery = new Map<string, number>();
   const topicCoverage = new Map<string, number>();
-  for (const r of cacheRows ?? []) {
-    const tid = r.topic_id as string;
-    topicMastery.set(tid, Number(r.mastery_score ?? 0));
-    const cov =
-      r.coverage != null
-        ? Number(r.coverage)
-        : Number(r.total_questions ?? 0) > 0
-          ? Number(r.seen ?? 0) / Number(r.total_questions)
-          : 0;
-    topicCoverage.set(tid, Math.min(1, Math.max(0, cov)));
+  for (const raw of cacheRows ?? []) {
+    const r = normalizeTopicMasteryRow(raw as Record<string, unknown>);
+    topicMastery.set(r.topic_id, r.mastery_score);
+    topicCoverage.set(r.topic_id, r.coverage);
   }
 
   const { data: dueRows } = await supabase

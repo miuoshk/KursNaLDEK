@@ -22,11 +22,13 @@ export type ExamReadinessInput = {
   examDate: Date | null;
   questionsAnsweredTotal: number;
   daysActive: number;
+  /** Trafność bieżącej sesji — wzmacnia wstępną ocenę przy małej liczbie danych. */
+  sessionAccuracy?: number;
 };
 
 /** Wynik obliczenia gotowości egzaminacyjnej. */
 export type ExamReadinessResult = {
-  /** Wynik 0–100: ważona średnia opanowania z karą za niskie pokrycie. */
+  /** Wynik 0–100: opanowanie × pokrycie materiału, z korektą pewności. */
   score: number;
   /** Krótka etykieta opisowa dla użytkownika. */
   verdict: string;
@@ -61,50 +63,90 @@ function remainingQuestionsTotal(topics: TopicKnowledgeState[]): number {
   return s;
 }
 
+function coveragePenalty(globalCoverage: number): number {
+  if (globalCoverage >= 0.65) return 1;
+  if (globalCoverage >= 0.35) return 0.55 + (globalCoverage - 0.35) * (0.45 / 0.3);
+  return 0.25 + (globalCoverage / 0.35) * 0.3;
+}
+
+function baseVerdict(score: number): string {
+  if (score >= 85) return "Zdasz z marszu";
+  if (score >= 70) return "Dobrze rokuje";
+  if (score >= 50) return "W połowie drogi";
+  if (score >= 25) return "Dużo do nadrobienia";
+  return "Na początku drogi";
+}
+
 /**
- * Szacuje „gotowość egzaminacyjną” na podstawie stanu tematów, terminu egzaminu
- * oraz ogólnej aktywności (pytania łącznie, dni aktywności).
+ * Szacuje gotowość egzaminacyjną na podstawie cache tematów, aktywności
+ * i (opcjonalnie) trafności bieżącej sesji.
  *
- * **Wynik punktowy:** `avgMastery` (średnia ważona `masteryScore`, wagi = `totalQuestions`)
- * mnożona przez `coveragePenalty` (gdy średnie pokrycie &lt; 0,5: `avgCoverage / 0,5`, inaczej 1),
- * następnie skalowana do 0–100.
+ * **Wynik:** średnia ważona `masteryScore` po tematach, które user widział,
+ * × kara za niskie pokrycie materiału w cache, z wstępną kalibracją przy &lt;50 odpowiedziach.
  */
 export function calculateExamReadiness(
   input: ExamReadinessInput,
   now = new Date(),
 ): ExamReadinessResult {
-  const { topicStates, examDate, questionsAnsweredTotal, daysActive } = input;
+  const {
+    topicStates,
+    examDate,
+    questionsAnsweredTotal,
+    daysActive,
+    sessionAccuracy,
+  } = input;
 
-  if (topicStates.length === 0) {
+  const engaged = topicStates.filter((t) => t.seenQuestions > 0);
+
+  if (engaged.length === 0) {
+    if (questionsAnsweredTotal >= 5 && sessionAccuracy != null) {
+      const bootstrap = Math.round(
+        Math.min(45, sessionAccuracy * 100 * Math.min(1, questionsAnsweredTotal / 80)),
+      );
+      return {
+        score: bootstrap,
+        verdict: "Wstępna ocena — kontynuuj naukę",
+        weakestTopics: [],
+        estimatedReadyDate: null,
+        dailyRecommendation: 25,
+      };
+    }
     return {
       score: 0,
-      verdict: "Brak danych",
+      verdict: "Za mało danych — ukończ kilka sesji",
       weakestTopics: [],
       estimatedReadyDate: null,
       dailyRecommendation: 25,
     };
   }
 
-  const avgMastery = weightedAverage(topicStates, (t) => t.masteryScore);
-  const avgCoverage = weightedAverage(topicStates, (t) => t.coverageRatio);
+  const avgMastery = weightedAverage(engaged, (t) => t.masteryScore);
 
-  const coveragePenalty = avgCoverage < 0.5 ? avgCoverage / 0.5 : 1.0;
-  const score = Math.round(
-    Math.min(1, Math.max(0, avgMastery * coveragePenalty)) * 100,
+  const totalSeen = topicStates.reduce((s, t) => s + t.seenQuestions, 0);
+  const totalPool = topicStates.reduce((s, t) => s + t.totalQuestions, 0);
+  const globalCoverage = totalPool > 0 ? totalSeen / totalPool : 0;
+
+  let score = Math.round(
+    Math.min(1, Math.max(0, avgMastery * coveragePenalty(globalCoverage))) * 100,
   );
 
-  let verdict: string;
-  if (score >= 85) {
-    verdict = "Zdasz z marszu";
-  } else if (score >= 70) {
-    verdict = "Dobrze rokuje";
-  } else if (score >= 50) {
-    verdict = "W połowie drogi";
-  } else {
-    verdict = "Dużo do nadrobienia";
+  const isPreliminary = questionsAnsweredTotal < 50;
+  if (isPreliminary && sessionAccuracy != null) {
+    const sessionPct = Math.round(sessionAccuracy * 100);
+    const blend = Math.min(1, questionsAnsweredTotal / 50);
+    score = Math.round(score * blend + sessionPct * (1 - blend) * 0.35);
   }
 
-  const weakestTopics = [...topicStates]
+  score = Math.min(100, Math.max(0, score));
+
+  let verdict = baseVerdict(score);
+  if (globalCoverage < 0.2 && score > 0) {
+    verdict = `Małe pokrycie materiału — ${verdict.toLowerCase()}`;
+  } else if (isPreliminary) {
+    verdict = `Wstępna ocena: ${verdict.toLowerCase()}`;
+  }
+
+  const weakestTopics = [...engaged]
     .sort((a, b) => a.masteryScore - b.masteryScore)
     .slice(0, 3)
     .map((t) => t.topicId);

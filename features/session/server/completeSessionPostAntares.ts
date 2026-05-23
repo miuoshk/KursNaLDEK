@@ -12,6 +12,10 @@ import type { SessionAnswerData, SessionInsights } from "@/features/session/lib/
 import { generateSessionInsights } from "@/features/session/lib/antares/sessionInsights";
 import { recalculateTopicMastery } from "@/features/session/lib/antares/recalculateTopicMastery";
 import type { SessionInsightsPayload } from "@/features/session/summaryTypes";
+import {
+  normalizeTopicMasteryRow,
+  TOPIC_MASTERY_CACHE_SELECT,
+} from "@/features/session/lib/antares/topicMasteryCacheDb";
 
 type AnswerRow = {
   question_id: string;
@@ -313,9 +317,7 @@ export async function runCompleteSessionPostAntares(
 
   const { data: allCache } = await supabase
     .from("topic_mastery_cache")
-    .select(
-      "topic_id, total_questions, seen, coverage, total_answered, total_correct, accuracy, avg_retrievability, mastery_score, weakness_rank, trend, accuracy_last_7d, questions_last_7d, leech_count",
-    )
+    .select(TOPIC_MASTERY_CACHE_SELECT)
     .eq("user_id", userId);
 
   const cacheTopicIds = (allCache ?? []).map((r) => r.topic_id as string);
@@ -335,10 +337,11 @@ export async function runCompleteSessionPostAntares(
     ]),
   );
 
-  const topicStates: TopicKnowledgeState[] = (allCache ?? []).map((r) => {
-    const tid = r.topic_id as string;
+  const topicStates: TopicKnowledgeState[] = (allCache ?? []).map((raw) => {
+    const r = normalizeTopicMasteryRow(raw as Record<string, unknown>);
+    const tid = r.topic_id;
     const meta = metaByT.get(tid);
-    const trend = r.trend as string;
+    const trend = r.trend;
     const tr: TopicKnowledgeState["trend"] =
       trend === "improving" || trend === "declining" || trend === "stable"
         ? trend
@@ -347,18 +350,17 @@ export async function runCompleteSessionPostAntares(
       topicId: tid,
       subjectId: meta?.subject_id ?? "",
       topicName: meta?.name ?? tid,
-      totalQuestions: Number(r.total_questions ?? 0),
-      seenQuestions: Number(r.seen ?? 0),
-      coverageRatio: Number(r.coverage ?? 0),
-      accuracy: Number(r.accuracy ?? 0),
-      avgRetrievability: Number(r.avg_retrievability ?? 0),
-      masteryScore: Number(r.mastery_score ?? 0),
-      weaknessRank: Number(r.weakness_rank ?? 999),
+      totalQuestions: r.total_questions,
+      seenQuestions: r.seen,
+      coverageRatio: r.coverage,
+      accuracy: r.accuracy,
+      avgRetrievability: r.avg_retrievability,
+      masteryScore: r.mastery_score,
+      weaknessRank: r.weakness_rank ?? 999,
       trend: tr,
-      questionsLast7d: Number(r.questions_last_7d ?? 0),
-      accuracyLast7d:
-        r.accuracy_last_7d != null ? Number(r.accuracy_last_7d) : null,
-      leechCount: Number(r.leech_count ?? 0),
+      questionsLast7d: r.questions_last_7d,
+      accuracyLast7d: r.accuracy_last_7d,
+      leechCount: r.leech_count,
     };
   });
 
@@ -391,6 +393,7 @@ export async function runCompleteSessionPostAntares(
     examDate,
     questionsAnsweredTotal,
     daysActive: Math.max(1, daysActive),
+    sessionAccuracy: sessionInsights.accuracy,
   });
 
   const examReadiness = {

@@ -3,6 +3,7 @@ import {
   getRetrievability,
   type RetrievabilityInput,
 } from "./retrievability";
+import { toTopicMasteryUpsert } from "./topicMasteryCacheDb";
 
 type ProgressRow = {
   stability: unknown;
@@ -172,9 +173,7 @@ export async function recalculateTopicMastery(
       const { error: upsertErr } = await supabase
         .from("topic_mastery_cache")
         .upsert(
-          {
-            user_id: userId,
-            topic_id: topicId,
+          toTopicMasteryUpsert(userId, topicId, {
             total_questions: totalQuestions,
             seen,
             coverage,
@@ -187,8 +186,8 @@ export async function recalculateTopicMastery(
             accuracy_last_7d: accuracyLast7d,
             questions_last_7d: total7,
             leech_count: leechCount,
-            updated_at: new Date().toISOString(),
-          },
+            weakness_rank: null,
+          }),
           { onConflict: "user_id,topic_id" },
         );
 

@@ -6,7 +6,6 @@ import { loadSessionAntaresInsights } from "@/features/session/api/loadSessionAn
 import { SummaryActions } from "@/features/session/components/SummaryActions";
 import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerStrip";
 import { SummaryHero } from "@/features/session/components/SummaryHero";
-import { SummaryInsightsSection } from "@/features/session/components/SummaryInsightsSection";
 import { SummaryTopicBreakdown } from "@/features/session/components/SummaryTopicBreakdown";
 import { SummaryXpCard } from "@/features/session/components/SummaryXpCard";
 import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
@@ -139,12 +138,11 @@ export function SessionSummaryClient({
 
   return (
     <div className="mx-auto w-full max-w-4xl space-y-10 pb-12">
-      <SummaryHero summary={summary} />
-      <SummaryInsightsSection
+      <SummaryHero
         summary={summary}
-        loading={insightsLoading}
-        failed={insightsFailed}
-        onRetry={() => void fetchInsights()}
+        insightsLoading={insightsLoading}
+        insightsFailed={insightsFailed}
+        onInsightsRetry={() => void fetchInsights()}
       />
       <SummaryAnswerStrip summary={summary} />
       <SummaryTopicBreakdown summary={summary} />

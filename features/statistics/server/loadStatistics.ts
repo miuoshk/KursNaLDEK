@@ -6,6 +6,11 @@ import {
   sessionsByLocalDate,
 } from "@/features/statistics/server/computeAggregates";
 import { masteryFromUqp } from "@/features/statistics/server/masteryFromUqp";
+import {
+  isReadinessCacheStale,
+  readinessFromProfile,
+  refreshReadinessPercentileCache,
+} from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { StatisticsPayload, TimeRangeKey } from "@/features/statistics/types";
 
 function rangeToDays(r: TimeRangeKey): number | null {
@@ -47,13 +52,11 @@ export async function loadStatistics(
 
   const profileQ = supabase
     .from("profiles")
-    .select("xp, current_streak")
+    .select(
+      "xp, current_streak, readiness_percentile, readiness_cohort_size, readiness_user_attempts, readiness_computed_at",
+    )
     .eq("id", userId)
     .maybeSingle();
-
-  const percentileQ = supabase.rpc("get_readiness_percentile", {
-    p_user_id: userId,
-  });
 
   const recentSessionsQ = supabase
     .from("study_sessions")
@@ -65,14 +68,8 @@ export async function loadStatistics(
     .order("completed_at", { ascending: false })
     .limit(20);
 
-  const [
-    sessionsRes,
-    heatSessionsRes,
-    uqpRes,
-    profileRes,
-    percentileRes,
-    recentSessionsRes,
-  ] = await Promise.all([sessQ, heatQ, uqpQ, profileQ, percentileQ, recentSessionsQ]);
+  const [sessionsRes, heatSessionsRes, uqpRes, profileRes, recentSessionsRes] =
+    await Promise.all([sessQ, heatQ, uqpQ, profileQ, recentSessionsQ]);
 
   const sessRows = sessionsRes.data ?? [];
   const byDay = sessionsByLocalDate(sessRows);
@@ -94,25 +91,16 @@ export async function loadStatistics(
   const uqp = uqpRes.data ?? [];
   const profile = profileRes.data;
 
+  let readinessPeer = readinessFromProfile(profile);
+  if (
+    !readinessPeer ||
+    isReadinessCacheStale(profile?.readiness_computed_at)
+  ) {
+    readinessPeer = await refreshReadinessPercentileCache(supabase, userId);
+  }
+
   const { subjectMastery, weakTopics, predictedReadiness } =
     await masteryFromUqp(supabase, uqp);
-
-  const peerRow = Array.isArray(percentileRes.data)
-    ? (percentileRes.data[0] as
-        | {
-            cohort_size: number | null;
-            user_attempts: number | null;
-            percentile: number | string | null;
-          }
-        | undefined)
-    : undefined;
-  const peerPercentileRaw = peerRow?.percentile ?? null;
-  const peerPercentile =
-    peerPercentileRaw == null
-      ? null
-      : typeof peerPercentileRaw === "string"
-        ? Number(peerPercentileRaw)
-        : peerPercentileRaw;
 
   const recentSessions = (recentSessionsRes.data ?? []).map(
     (row: Record<string, unknown>) => {
@@ -138,9 +126,9 @@ export async function loadStatistics(
     weakTopics,
     predictedReadiness,
     readinessMargin: 0.05,
-    peerPercentile: Number.isFinite(peerPercentile) ? peerPercentile : null,
-    peerCohortSize: peerRow?.cohort_size ?? 0,
-    peerUserAttempts: peerRow?.user_attempts ?? 0,
+    peerPercentile: readinessPeer.peerPercentile,
+    peerCohortSize: readinessPeer.peerCohortSize,
+    peerUserAttempts: readinessPeer.peerUserAttempts,
     totalQuestionsAnswered,
     totalStudyMinutes,
     currentStreak: profile?.current_streak ?? 0,

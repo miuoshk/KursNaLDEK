@@ -16,6 +16,10 @@ import {
   normalizeTopicMasteryRow,
   TOPIC_MASTERY_CACHE_SELECT,
 } from "@/features/session/lib/antares/topicMasteryCacheDb";
+import { computeReadinessPercentile } from "@/features/statistics/server/refreshReadinessPercentileCache";
+
+/** Ile historii eventów wczytać przed sesją (findPrevR / retrievability). */
+const LEARNING_EVENTS_LOOKBACK_DAYS = 180;
 
 type AnswerRow = {
   question_id: string;
@@ -168,6 +172,22 @@ export async function runCompleteSessionPostAntares(
 
   const qids = [...new Set(ansRows.map((a) => a.question_id as string))];
 
+  const sessionStartMs = new Date(sessionStartedAt).getTime();
+  let sessionEndMs = sessionStartMs;
+  for (const a of ansRows) {
+    if (a.answered_at) {
+      sessionEndMs = Math.max(
+        sessionEndMs,
+        new Date(a.answered_at as string).getTime(),
+      );
+    }
+  }
+  const eventsFromIso = new Date(
+    sessionStartMs - LEARNING_EVENTS_LOOKBACK_DAYS * 24 * 3600 * 1000,
+  ).toISOString();
+  /** Bufor na opóźnienie zapisu eventu w submitAnswer. */
+  const eventsToIso = new Date(sessionEndMs + 120_000).toISOString();
+
   const [{ data: qRows }, { data: uqpRows }, { data: learnRows }, { data: leechEv }] =
     await Promise.all([
       supabase.from("questions").select("id, topic_id").in("id", qids),
@@ -183,8 +203,9 @@ export async function runCompleteSessionPostAntares(
         .select("created_at, payload")
         .eq("user_id", userId)
         .eq("event_type", "answer")
-        .order("created_at", { ascending: true })
-        .limit(5000),
+        .gte("created_at", eventsFromIso)
+        .lte("created_at", eventsToIso)
+        .order("created_at", { ascending: true }),
       supabase
         .from("learning_events")
         .select("payload, created_at")
@@ -208,8 +229,6 @@ export async function runCompleteSessionPostAntares(
     }))
     .filter((e) => e.p?.question_id && qids.includes(e.p.question_id))
     .sort((a, b) => a.t - b.t);
-
-  const sessionStart = new Date(sessionStartedAt).getTime();
 
   function findPrevR(qid: string, beforeT: number): number {
     let r = 0;
@@ -251,7 +270,7 @@ export async function runCompleteSessionPostAntares(
     let bestDelta = Infinity;
     for (const e of allAnswerEvents) {
       if (e.p.question_id !== qid) continue;
-      if (e.t < sessionStart - 120_000) continue;
+      if (e.t < sessionStartMs - 120_000) continue;
       const d = Math.abs(e.t - answeredAt);
       if (d < bestDelta) {
         bestDelta = d;
@@ -426,11 +445,17 @@ export async function runCompleteSessionPostAntares(
     throw insightsErr;
   }
 
+  const readinessCache = await computeReadinessPercentile(supabase, userId);
+
   const { error: profileErr } = await supabase
     .from("profiles")
     .update({
       exam_readiness_score: exam.score,
       questions_answered_total: questionsAnsweredTotal,
+      readiness_percentile: readinessCache.peerPercentile,
+      readiness_cohort_size: readinessCache.peerCohortSize,
+      readiness_user_attempts: readinessCache.peerUserAttempts,
+      readiness_computed_at: new Date().toISOString(),
     })
     .eq("id", userId);
 

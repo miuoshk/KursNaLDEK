@@ -2,14 +2,9 @@
 
 import { CheckCircle, XCircle } from "lucide-react";
 import type { SessionQuestion } from "@/features/session/types";
+import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { cn } from "@/lib/utils";
-
-function letterForOption(q: SessionQuestion, optionId: string) {
-  const idx = q.options.findIndex((o) => o.id === optionId);
-  if (idx < 0) return "?";
-  return String.fromCharCode(65 + idx);
-}
 
 type FeedbackPanelProps = {
   question: SessionQuestion;
@@ -22,8 +17,18 @@ export function FeedbackPanel({
   selectedOptionId,
   isCorrect,
 }: FeedbackPanelProps) {
-  const yourLetter = letterForOption(question, selectedOptionId);
-  const correctLetter = letterForOption(question, question.correctOptionId);
+  const yourLetter = sessionOptionLetter(
+    question.id,
+    question.options,
+    selectedOptionId,
+    question.disableOptionShuffle,
+  );
+  const correctLetter = sessionOptionLetter(
+    question.id,
+    question.options,
+    question.correctOptionId,
+    question.disableOptionShuffle,
+  );
 
   return (
     <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">

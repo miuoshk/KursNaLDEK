@@ -163,6 +163,7 @@ const updateQuestionSchema = z.object({
   subthemeLabel: z.string().max(200).nullable(),
   batchLabel: z.string().max(200).nullable(),
   learningOutcome: z.string().max(500).nullable(),
+  disableOptionShuffle: z.boolean(),
 });
 
 type UpdateQuestionInput = z.infer<typeof updateQuestionSchema>;
@@ -197,6 +198,11 @@ function diffQuestion(
   compare("subtheme_label", before.subthemeLabel, after.subthemeLabel);
   compare("batch_label", before.batchLabel, after.batchLabel);
   compare("learning_outcome", before.learningOutcome, after.learningOutcome);
+  compare(
+    "disable_option_shuffle",
+    before.disableOptionShuffle,
+    after.disableOptionShuffle,
+  );
 
   return changes;
 }
@@ -268,6 +274,7 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
       subtheme_label: parsed.data.subthemeLabel,
       batch_label: parsed.data.batchLabel,
       learning_outcome: parsed.data.learningOutcome,
+      disable_option_shuffle: parsed.data.disableOptionShuffle,
     })
     .eq("id", parsed.data.questionId);
 

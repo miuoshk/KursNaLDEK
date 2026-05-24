@@ -21,6 +21,7 @@ export type AdminQuestionDetail = {
   subthemeLabel: string | null;
   batchLabel: string | null;
   learningOutcome: string | null;
+  disableOptionShuffle: boolean;
 };
 
 function normalizeOptions(raw: unknown): AdminQuestionOption[] {
@@ -45,7 +46,7 @@ export async function loadAdminQuestionDetail(
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome",
+      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle",
     )
     .eq("id", questionId)
     .maybeSingle();
@@ -73,6 +74,7 @@ export async function loadAdminQuestionDetail(
     subthemeLabel: (data.subtheme_label as string | null) ?? null,
     batchLabel: (data.batch_label as string | null) ?? null,
     learningOutcome: (data.learning_outcome as string | null) ?? null,
+    disableOptionShuffle: (data.disable_option_shuffle as boolean | null) === true,
   };
 }
 

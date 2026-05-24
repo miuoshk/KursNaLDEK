@@ -33,6 +33,7 @@ type EditableState = {
   subthemeLabel: string;
   batchLabel: string;
   learningOutcome: string;
+  disableOptionShuffle: boolean;
 };
 
 function toState(q: AdminQuestionDetail): EditableState {
@@ -50,6 +51,7 @@ function toState(q: AdminQuestionDetail): EditableState {
     subthemeLabel: q.subthemeLabel ?? "",
     batchLabel: q.batchLabel ?? "",
     learningOutcome: q.learningOutcome ?? "",
+    disableOptionShuffle: q.disableOptionShuffle,
   };
 }
 
@@ -184,6 +186,7 @@ export function AdminQuestionEditor({
       subthemeLabel: emptyToNull(state.subthemeLabel),
       batchLabel: emptyToNull(state.batchLabel),
       learningOutcome: emptyToNull(state.learningOutcome),
+      disableOptionShuffle: state.disableOptionShuffle,
     });
     setIsSaving(false);
 
@@ -386,6 +389,28 @@ export function AdminQuestionEditor({
             className={inputClass}
           />
         </Field>
+      </div>
+
+      <div className="flex flex-col gap-2 rounded-btn border border-border bg-background/60 px-3 py-2">
+        <label className="flex items-center gap-2 font-body text-body-sm text-primary">
+          <input
+            type="checkbox"
+            checked={state.disableOptionShuffle}
+            onChange={(e) =>
+              setState((p) => ({
+                ...p,
+                disableOptionShuffle: e.target.checked,
+              }))
+            }
+            className="size-4 accent-brand-sage"
+          />
+          Zablokuj mieszanie opcji (A–E) w sesji
+        </label>
+        <p className="font-body text-body-xs text-muted">
+          Opcje pozostają w kolejności z bazy. Włącz, gdy pytanie ma meta-opcje
+          (np. „A i B", „wszystkie prawidłowe"), których automatyczna detekcja
+          nie wychwyciła.
+        </p>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-btn border border-border bg-background/60 px-3 py-2">

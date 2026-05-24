@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
+import { orderSessionOptions } from "@/features/session/lib/sessionOptionOrder";
 
 type Args = {
   currentQuestion: SessionQuestion | null;
@@ -30,6 +31,18 @@ export function useSessionKeyboardShortcuts({
   onPrevious,
   onConfidencePick,
 }: Args) {
+  const displayOptions = useMemo(
+    () =>
+      currentQuestion
+        ? orderSessionOptions(
+            currentQuestion.id,
+            currentQuestion.options,
+            currentQuestion.disableOptionShuffle,
+          )
+        : [],
+    [currentQuestion],
+  );
+
   useEffect(() => {
     const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
     if (!hasFinePointer) return;
@@ -71,12 +84,11 @@ export function useSessionKeyboardShortcuts({
       }
 
       if (!isShowingFeedback && !isCurrentAnswered) {
-        const opts = currentQuestion?.options;
-        if (!opts?.length) return;
+        if (!displayOptions.length) return;
         const k = e.key;
         if (k >= "1" && k <= "9") {
           const idx = Number(k) - 1;
-          const opt = opts[idx];
+          const opt = displayOptions[idx];
           if (opt) {
             e.preventDefault();
             selectAndCheck(opt.id);
@@ -87,7 +99,7 @@ export function useSessionKeyboardShortcuts({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [
-    currentQuestion,
+    displayOptions,
     currentIndex,
     total,
     isShowingFeedback,

@@ -27,6 +27,8 @@ export interface SessionQuestion {
   topicId?: string;
   /** Metadane ANTARES per user; tylko tryb inteligentna. */
   antares?: SessionQuestionMeta;
+  /** Ręczny zakaz shuffle opcji (admin) lub wykryta kombinatoryka — opcje w stałej kolejności. */
+  disableOptionShuffle?: boolean;
 }
 
 export interface SessionState {

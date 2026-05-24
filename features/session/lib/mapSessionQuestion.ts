@@ -9,6 +9,7 @@ export type QuestionRow = {
   explanation: string;
   source_code: string | null;
   image_url?: string | null;
+  disable_option_shuffle?: boolean | null;
   topics: { name: string } | { name: string }[] | null;
 };
 
@@ -36,5 +37,6 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     imageUrl: row.image_url ?? null,
     topicName: topicLabel(row.topics),
     topicId: row.topic_id ?? undefined,
+    disableOptionShuffle: row.disable_option_shuffle === true,
   };
 }

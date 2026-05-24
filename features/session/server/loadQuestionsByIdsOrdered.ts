@@ -12,7 +12,7 @@ export async function loadQuestionsByIdsOrdered(
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, topics ( name )",
+      "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics ( name )",
     )
     .in("id", ids)
     .eq("is_active", true);

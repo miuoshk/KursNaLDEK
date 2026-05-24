@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { AnswerOption } from "@/features/session/components/AnswerOption";
+import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import {
   optionVariants,
   optionsContainerVariants,
@@ -22,9 +23,15 @@ export function SessionQuestionOptions({
   isShowingFeedback,
   onSelectOption,
 }: SessionQuestionOptionsProps) {
+  const displayOptions = useSessionOptionOrder(
+    q.id,
+    q.options,
+    q.disableOptionShuffle,
+  );
+
   return (
     <motion.div variants={optionsContainerVariants} initial="hidden" animate="visible" className="space-y-3">
-      {q.options.map((opt, i) => {
+      {displayOptions.map((opt, i) => {
         const letter = String.fromCharCode(65 + i);
         const state = optionVisualState(
           opt.id,

@@ -4,15 +4,16 @@ import { useMemo } from "react";
 import {
   orderSessionOptions,
   type SessionOption,
+  type SessionOptionOrderContext,
 } from "@/features/session/lib/sessionOptionOrder";
 
 export function useSessionOptionOrder(
   questionId: string,
   options: SessionOption[],
-  disableOptionShuffle = false,
+  ctx: SessionOptionOrderContext = {},
 ) {
   return useMemo(
-    () => orderSessionOptions(questionId, options, disableOptionShuffle),
-    [questionId, options, disableOptionShuffle],
+    () => orderSessionOptions(questionId, options, ctx),
+    [questionId, options, ctx.disableOptionShuffle, ctx.explanation],
   );
 }

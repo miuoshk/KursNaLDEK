@@ -17,17 +17,21 @@ export function FeedbackPanel({
   selectedOptionId,
   isCorrect,
 }: FeedbackPanelProps) {
+  const orderCtx = {
+    disableOptionShuffle: question.disableOptionShuffle,
+    explanation: question.explanation,
+  };
   const yourLetter = sessionOptionLetter(
     question.id,
     question.options,
     selectedOptionId,
-    question.disableOptionShuffle,
+    orderCtx,
   );
   const correctLetter = sessionOptionLetter(
     question.id,
     question.options,
     question.correctOptionId,
-    question.disableOptionShuffle,
+    orderCtx,
   );
 
   return (

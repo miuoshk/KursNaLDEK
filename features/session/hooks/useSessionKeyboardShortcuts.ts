@@ -34,11 +34,10 @@ export function useSessionKeyboardShortcuts({
   const displayOptions = useMemo(
     () =>
       currentQuestion
-        ? orderSessionOptions(
-            currentQuestion.id,
-            currentQuestion.options,
-            currentQuestion.disableOptionShuffle,
-          )
+        ? orderSessionOptions(currentQuestion.id, currentQuestion.options, {
+            disableOptionShuffle: currentQuestion.disableOptionShuffle,
+            explanation: currentQuestion.explanation,
+          })
         : [],
     [currentQuestion],
   );

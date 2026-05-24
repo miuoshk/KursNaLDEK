@@ -23,11 +23,10 @@ export function SessionQuestionOptions({
   isShowingFeedback,
   onSelectOption,
 }: SessionQuestionOptionsProps) {
-  const displayOptions = useSessionOptionOrder(
-    q.id,
-    q.options,
-    q.disableOptionShuffle,
-  );
+  const displayOptions = useSessionOptionOrder(q.id, q.options, {
+    disableOptionShuffle: q.disableOptionShuffle,
+    explanation: q.explanation,
+  });
 
   return (
     <motion.div variants={optionsContainerVariants} initial="hidden" animate="visible" className="space-y-3">

@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --import tsx --test features/access/lib/studyAccess.spec.ts features/session/lib/sessionOptionOrder.spec.ts",
+    "test:supabase": "node --import tsx scripts/test-option-shuffle-supabase.mjs",
     "normalize-lists": "node scripts/normalize-question-list-format.mjs --dry-run",
     "normalize-lists:apply": "node scripts/normalize-question-list-format.mjs --apply",
     "revert-explanation-lists": "node scripts/revert-explanation-list-format.mjs --dry-run",
@@ -51,6 +53,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "tailwindcss": "^4",
+    "tsx": "^4.22.3",
     "typescript": "^5"
   }
 }

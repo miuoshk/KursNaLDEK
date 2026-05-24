@@ -408,8 +408,8 @@ export function AdminQuestionEditor({
         </label>
         <p className="font-body text-body-xs text-muted">
           Opcje pozostają w kolejności z bazy. Włącz, gdy pytanie ma meta-opcje
-          (np. „A i B", „wszystkie prawidłowe"), których automatyczna detekcja
-          nie wychwyciła.
+          (np. „A i B", „wszystkie prawidłowe"), odwołania (A)–(E) w wyjaśnieniu
+          lub inne przypadki, których automatyczna detekcja nie wychwyciła.
         </p>
       </div>
 

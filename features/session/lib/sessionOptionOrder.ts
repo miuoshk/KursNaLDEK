@@ -1,6 +1,22 @@
 import { hasCombinatorialOptions } from "@/features/session/lib/combinatorialOptions";
+import { hasFixedOptionLetterRefsInExplanation } from "@/features/session/lib/explanationOptionRefs";
 
 export type SessionOption = { id: string; text: string };
+
+export type SessionOptionOrderContext = {
+  disableOptionShuffle?: boolean;
+  explanation?: string;
+};
+
+export function shouldKeepFixedOptionOrder(
+  options: SessionOption[],
+  ctx: SessionOptionOrderContext = {},
+): boolean {
+  if (ctx.disableOptionShuffle) return true;
+  if (hasCombinatorialOptions(options)) return true;
+  if (hasFixedOptionLetterRefsInExplanation(ctx.explanation ?? "")) return true;
+  return false;
+}
 
 function hashSeed(seed: string): number {
   let h = 2166136261;
@@ -33,16 +49,16 @@ function seededShuffle<T>(items: T[], seed: string): T[] {
 }
 
 /**
- * Kolejność opcji w sesji KNNP: shuffle, chyba że pytanie ma meta-opcje
- * (np. „prawidłowe A i C", „wszystkie fałszywe") — wtedy zostaje kolejność z bazy.
+ * Kolejność opcji w sesji KNNP: shuffle, chyba że meta-opcje, odwołania (A)–(E)
+ * w wyjaśnieniu lub ręczny zakaz admina — wtedy kolejność z bazy.
  */
 export function orderSessionOptions(
   questionId: string,
   options: SessionOption[],
-  disableOptionShuffle = false,
+  ctx: SessionOptionOrderContext = {},
 ): SessionOption[] {
   if (options.length <= 1) return options;
-  if (disableOptionShuffle || hasCombinatorialOptions(options)) return options;
+  if (shouldKeepFixedOptionOrder(options, ctx)) return options;
   return seededShuffle(options, questionId);
 }
 
@@ -50,13 +66,9 @@ export function sessionOptionLetter(
   questionId: string,
   options: SessionOption[],
   optionId: string,
-  disableOptionShuffle = false,
+  ctx: SessionOptionOrderContext = {},
 ): string {
-  const ordered = orderSessionOptions(
-    questionId,
-    options,
-    disableOptionShuffle,
-  );
+  const ordered = orderSessionOptions(questionId, options, ctx);
   const idx = ordered.findIndex((opt) => opt.id === optionId);
   if (idx < 0) return "?";
   return String.fromCharCode(65 + idx);

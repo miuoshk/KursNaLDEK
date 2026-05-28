@@ -18,7 +18,7 @@ UPDATE public.topics
 SET subject_id = 'farmakologia'
 WHERE subject_id = 'stoma-farmakologia';
 
--- Osierocony dział dodany po migracji (np. FARM-18).
+-- Działy dodane po migracji na powłoce stoma-farmakologia — przenieś na kanon.
 UPDATE public.topics
 SET subject_id = 'farmakologia'
-WHERE id = 'FARM-18' AND subject_id = 'stoma-farmakologia';
+WHERE id IN ('FARM-18', 'FARM-19') AND subject_id = 'stoma-farmakologia';

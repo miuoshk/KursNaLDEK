@@ -1,5 +1,7 @@
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
+import { normalizeTrack } from "@/features/access/lib/studyAccess";
+import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import { expandTopicSubjectIdsForCatalog } from "@/features/session/server/sharedSubjects";
 
 export type KnnpCatalogRows = {
@@ -13,7 +15,12 @@ export type KnnpCatalogRows = {
     product: string;
     display_order: number | null;
   }[];
-  topicRows: { id: string; subject_id: string; question_count: number | null }[];
+  topicRows: {
+    id: string;
+    subject_id: string;
+    question_count: number | null;
+    tracks?: string[] | null;
+  }[];
 };
 
 /**
@@ -44,16 +51,20 @@ export const getCachedKnnpCatalog = cache(async (track?: string, year?: number):
   if (ids.length === 0) return { subjectRows: [], topicRows: [] };
   // Dociągamy topiki z kanonicznych repozytoriów (histologia, anatomia, …).
   const topicSubjectIds = expandTopicSubjectIdsForCatalog(ids);
-  const { data: topicRows, error: te } = await supabase
+  const { data: rawTopicRows, error: te } = await supabase
     .from("topics")
-    .select("id, subject_id, question_count")
+    .select("id, subject_id, question_count, tracks")
     .in("subject_id", topicSubjectIds);
   if (te) {
     console.error("[getCachedKnnpCatalog] topics:", te.message);
     return { subjectRows: subjectRows as KnnpCatalogRows["subjectRows"], topicRows: [] };
   }
+  const topicRows =
+    track != null
+      ? filterTopicsForTrack(rawTopicRows ?? [], normalizeTrack(track))
+      : (rawTopicRows ?? []);
   return {
     subjectRows: subjectRows as KnnpCatalogRows["subjectRows"],
-    topicRows: topicRows ?? [],
+    topicRows,
   };
 });

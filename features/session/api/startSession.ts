@@ -3,13 +3,16 @@
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import type { SessionMode, SessionQuestion, SessionQuestionMeta } from "@/features/session/types";
+import { isTopicVisibleForTrack } from "@/lib/content/topicTrackVisibility";
 import {
   fetchKnnpAllQuestionIds,
   fetchKnnpTopicIdSet,
   fetchSubjectQuestionIds,
   fetchTopicQuestionIds,
+  fetchVisibleTopicIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
+import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import {
   getSubjectScopeIds,
   isSubjectInScope,
@@ -149,10 +152,11 @@ export async function startSession(
     }
 
     let subjectRow: { id: string; name: string; short_name: string } | null = null;
+    let subjectTrack: StudyTrack = "stomatologia";
     if (!isMix) {
       const { data: subject, error: subErr } = await supabase
         .from("subjects")
-        .select("id, name, short_name")
+        .select("id, name, short_name, track")
         .eq("id", subjectId)
         .maybeSingle();
 
@@ -160,6 +164,7 @@ export async function startSession(
         return { ok: false, message: "Nie znaleziono przedmiotu." };
       }
       subjectRow = subject;
+      subjectTrack = normalizeTrack(subject.track as string);
     }
 
     let chosenIds: string[] = [];
@@ -172,19 +177,24 @@ export async function startSession(
     if (topicId) {
       const { data: top, error: te } = await supabase
         .from("topics")
-        .select("subject_id")
+        .select("subject_id, tracks")
         .eq("id", topicId)
         .maybeSingle();
       if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
         return { ok: false, message: "Nieprawidłowy temat dla tego przedmiotu." };
       }
+      if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
+        return { ok: false, message: "Ten temat nie jest dostępny na Twoim kierunku." };
+      }
       pool = await fetchTopicQuestionIds(supabase, topicId);
       topicFilter = new Set(pool);
-      const { data: topicRowsForDue } = await supabase
-        .from("topics")
-        .select("id")
-        .in("subject_id", getSubjectScopeIds(subjectId));
-      topicOkForDue = new Set((topicRowsForDue ?? []).map((t) => t.id as string));
+      topicOkForDue = new Set(
+        await fetchVisibleTopicIds(
+          supabase,
+          getSubjectScopeIds(subjectId),
+          subjectTrack,
+        ),
+      );
       if (pool.length === 0) {
         return { ok: false, message: "Brak aktywnych pytań w wybranym temacie." };
       }
@@ -198,12 +208,14 @@ export async function startSession(
       pool = await fetchKnnpAllQuestionIds(supabase, track, year);
       topicOkForDue = await fetchKnnpTopicIdSet(supabase, track, year);
     } else {
-      pool = await fetchSubjectQuestionIds(supabase, subjectId);
-      const { data: topicRows } = await supabase
-        .from("topics")
-        .select("id")
-        .in("subject_id", getSubjectScopeIds(subjectId));
-      topicOkForDue = new Set((topicRows ?? []).map((t) => t.id as string));
+      pool = await fetchSubjectQuestionIds(supabase, subjectId, subjectTrack);
+      topicOkForDue = new Set(
+        await fetchVisibleTopicIds(
+          supabase,
+          getSubjectScopeIds(subjectId),
+          subjectTrack,
+        ),
+      );
     }
 
     if (mode === "katalog") {

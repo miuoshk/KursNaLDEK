@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
+import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 
 export type TopicWithProgress = Topic & {
@@ -43,14 +45,15 @@ export async function loadSubjectDashboard(
         .maybeSingle(),
       supabase
         .from("topics")
-        .select("id, subject_id, name, display_order, question_count, knowledge_card")
+        .select(
+          "id, subject_id, name, display_order, question_count, knowledge_card, tracks",
+        )
         .in("subject_id", displaySubjectIds)
         .order("display_order", { ascending: true }),
     ]);
 
     const { data: subject, error: subjectError } = subjectResult;
     const { data: allTopicRows, error: topicsError } = topicsResult;
-    const topicRows = allTopicRows ?? [];
 
     if (subjectError) {
       console.error(
@@ -98,6 +101,9 @@ export async function loadSubjectDashboard(
         message: "Nie udało się wczytać tematów. Spróbuj ponownie później.",
       };
     }
+
+    const viewerTrack = normalizeTrack(subject.track as string) as StudyTrack;
+    const topicRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack);
 
     const allTopicIds = topicRows.map((t) => t.id as string);
 

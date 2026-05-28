@@ -1,8 +1,31 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { StudyTrack } from "@/features/access/lib/studyAccess";
+import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import {
   expandTopicSubjectIdsForCatalog,
   getSubjectScopeIds,
 } from "@/features/session/server/sharedSubjects";
+
+export async function fetchVisibleTopicIds(
+  supabase: SupabaseClient,
+  subjectScopeIds: string[],
+  track?: StudyTrack,
+): Promise<string[]> {
+  const { data: topicRows, error: te } = await supabase
+    .from("topics")
+    .select("id, tracks")
+    .in("subject_id", subjectScopeIds);
+
+  if (te) {
+    console.error("[fetchVisibleTopicIds] topics", te.message);
+    return [];
+  }
+
+  const visible = track
+    ? filterTopicsForTrack(topicRows ?? [], track)
+    : (topicRows ?? []);
+  return visible.map((t) => t.id as string);
+}
 
 export function shuffle<T>(items: T[]): T[] {
   const a = [...items];
@@ -16,19 +39,10 @@ export function shuffle<T>(items: T[]): T[] {
 export async function fetchSubjectQuestionIds(
   supabase: SupabaseClient,
   subjectId: string,
+  track?: StudyTrack,
 ): Promise<string[]> {
   const subjectScopeIds = getSubjectScopeIds(subjectId);
-  const { data: topicRows, error: te } = await supabase
-    .from("topics")
-    .select("id")
-    .in("subject_id", subjectScopeIds);
-
-  if (te) {
-    console.error("[fetchSubjectQuestionIds] topics", te.message);
-    return [];
-  }
-
-  const topicIds = (topicRows ?? []).map((t) => t.id);
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectScopeIds, track);
   if (topicIds.length === 0) return [];
 
   const { data, error } = await supabase
@@ -94,15 +108,9 @@ export async function fetchKnnpAllQuestionIds(
 ): Promise<string[]> {
   const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return [];
-  const { data: topicRows, error: te } = await supabase
-    .from("topics")
-    .select("id")
-    .in("subject_id", subjectIds);
-  if (te) {
-    console.error("[fetchKnnpAllQuestionIds] topics", te.message);
-    return [];
-  }
-  const topicIds = (topicRows ?? []).map((t) => t.id as string);
+  const studyTrack = track as StudyTrack | undefined;
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectIds, studyTrack);
+  if (topicIds.length === 0) return [];
   if (topicIds.length === 0) return [];
   const { data, error } = await supabase
     .from("questions")
@@ -123,9 +131,7 @@ export async function fetchKnnpTopicIdSet(
 ): Promise<Set<string>> {
   const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return new Set();
-  const { data: topicRows } = await supabase
-    .from("topics")
-    .select("id")
-    .in("subject_id", subjectIds);
-  return new Set((topicRows ?? []).map((t) => t.id as string));
+  const studyTrack = track as StudyTrack | undefined;
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectIds, studyTrack);
+  return new Set(topicIds);
 }

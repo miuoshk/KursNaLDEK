@@ -258,24 +258,26 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     };
   }
 
+  const fullUpdatePayload = {
+    text: parsed.data.text,
+    options: parsed.data.options,
+    correct_option_id: parsed.data.correctOptionId,
+    explanation: parsed.data.explanation,
+    is_active: parsed.data.isActive,
+    source_exam: parsed.data.sourceExam,
+    source_code: parsed.data.sourceCode,
+    image_url: parsed.data.imageUrl,
+    topic_id: parsed.data.topicId,
+    theme_label: parsed.data.themeLabel,
+    subtheme_label: parsed.data.subthemeLabel,
+    batch_label: parsed.data.batchLabel,
+    learning_outcome: parsed.data.learningOutcome,
+    disable_option_shuffle: parsed.data.disableOptionShuffle,
+  };
+
   const { error: updateError } = await ctx.supabase
     .from("questions")
-    .update({
-      text: parsed.data.text,
-      options: parsed.data.options,
-      correct_option_id: parsed.data.correctOptionId,
-      explanation: parsed.data.explanation,
-      is_active: parsed.data.isActive,
-      source_exam: parsed.data.sourceExam,
-      source_code: parsed.data.sourceCode,
-      image_url: parsed.data.imageUrl,
-      topic_id: parsed.data.topicId,
-      theme_label: parsed.data.themeLabel,
-      subtheme_label: parsed.data.subthemeLabel,
-      batch_label: parsed.data.batchLabel,
-      learning_outcome: parsed.data.learningOutcome,
-      disable_option_shuffle: parsed.data.disableOptionShuffle,
-    })
+    .update(fullUpdatePayload)
     .eq("id", parsed.data.questionId);
 
   if (updateError) {

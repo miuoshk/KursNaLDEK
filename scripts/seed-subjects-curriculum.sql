@@ -33,6 +33,11 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-farmakologia', 'Farmakologia',              'Farmakologia',  'pill',           3, 'stomatologia', 'knnp', 13);
 
+-- Wspólne repozytorium treści (farmakologia)
+INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
+  ('farmakologia',       'Farmakologia',              'Farmakologia',  'pill',           3, 'shared',       'knnp', 99)
+ON CONFLICT (id) DO NOTHING;
+
 -- ============================================
 -- LEKARSKI (track = 'lekarski', product = 'knnp')
 -- ============================================

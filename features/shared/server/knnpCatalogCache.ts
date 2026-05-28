@@ -42,7 +42,7 @@ export const getCachedKnnpCatalog = cache(async (track?: string, year?: number):
   }
   const ids = (subjectRows ?? []).map((s) => s.id);
   if (ids.length === 0) return { subjectRows: [], topicRows: [] };
-  // Dociągamy topiki z kanonicznych repozytoriów (histologia) i peerów (anatomia).
+  // Dociągamy topiki z kanonicznych repozytoriów (histologia, anatomia, …).
   const topicSubjectIds = expandTopicSubjectIdsForCatalog(ids);
   const { data: topicRows, error: te } = await supabase
     .from("topics")

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -125,9 +125,16 @@ export function AdminQuestionsTable({
   const [search, setSearch] = useState(currentSearch);
   const [searchIn, setSearchIn] = useState<SearchIn>(currentSearchIn);
   const [activeFilter, setActiveFilter] = useState<ActiveFilter>(currentActive);
+  const openQuestionFromUrl = searchParams.get("q")?.trim() ?? "";
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const totalPages = Math.max(1, Math.ceil(total / perPage));
+
+  useEffect(() => {
+    if (openQuestionFromUrl) {
+      setEditingId(openQuestionFromUrl);
+    }
+  }, [openQuestionFromUrl]);
 
   const pushQuery = useCallback(
     (next: {

@@ -4,7 +4,6 @@ import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 import {
   getSubjectScopeIds,
   getTopicDisplaySubjectIds,
-  getTopicFamilyKey,
 } from "@/features/session/server/sharedSubjects";
 
 export type TopicWithProgress = Topic & {
@@ -55,15 +54,8 @@ export async function loadSubjectDashboard(
 
     const { data: subject, error: subjectError } = subjectResult;
     const { data: allTopicRows, error: topicsError } = topicsResult;
-    // Topiki UI: kanoniczny subject (histologia) albo native (anatomia).
-    // Peer topiki (drugi kierunek dla anatomii) służą tylko do agregacji pul pytań.
     const topicRows = (allTopicRows ?? []).filter((row) =>
       displaySubjectIds.has(row.subject_id as string),
-    );
-    const peerTopicRows = (allTopicRows ?? []).filter(
-      (row) =>
-        !displaySubjectIds.has(row.subject_id as string) &&
-        scopeSubjectIds.includes(row.subject_id as string),
     );
 
     if (subjectError) {
@@ -113,24 +105,7 @@ export async function loadSubjectDashboard(
       };
     }
 
-    const allTopicIds = (allTopicRows ?? []).map((t) => t.id as string);
-    // Peer-topiki (drugi kierunek) wpadają do tej samej "rodziny" co topic
-    // native — wszystkie ich pytania i postęp dolicza się do native topica,
-    // żeby UI lekarski/stoma widzieli ten sam pool.
-    const familyToNativeTopicId = new Map<string, string>();
-    for (const row of topicRows) {
-      familyToNativeTopicId.set(getTopicFamilyKey(row.id as string), row.id as string);
-    }
-    const peerSubjectQuestionCountByNativeTopic = new Map<string, number>();
-    for (const row of peerTopicRows) {
-      const native = familyToNativeTopicId.get(getTopicFamilyKey(row.id as string));
-      if (!native) continue;
-      peerSubjectQuestionCountByNativeTopic.set(
-        native,
-        (peerSubjectQuestionCountByNativeTopic.get(native) ?? 0) +
-          Number(row.question_count ?? 0),
-      );
-    }
+    const allTopicIds = topicRows.map((t) => t.id as string);
 
     const progressByTopic = new Map<
       string,
@@ -147,14 +122,6 @@ export async function loadSubjectDashboard(
         .eq("is_active", true);
 
       const qids = (qRows ?? []).map((q) => q.id as string);
-      // Mapowanie question_id -> native_topic_id (peer-topic question też
-      // trafia do native topica, żeby postęp był liczony zbiorczo).
-      const nativeTopicByQ = new Map<string, string>();
-      for (const q of qRows ?? []) {
-        const tid = q.topic_id as string;
-        const native = familyToNativeTopicId.get(getTopicFamilyKey(tid));
-        if (native) nativeTopicByQ.set(q.id as string, native);
-      }
 
       if (qids.length > 0) {
         const { data: uqpRows } = await supabase
@@ -165,7 +132,9 @@ export async function loadSubjectDashboard(
 
         const now = new Date();
         for (const r of uqpRows ?? []) {
-          const tid = nativeTopicByQ.get(r.question_id as string);
+          const tid = (qRows ?? []).find((q) => q.id === r.question_id)?.topic_id as
+            | string
+            | undefined;
           if (!tid) continue;
           const timesAns = Number(r.times_answered ?? 0);
           const timesCorr = Number(r.times_correct ?? 0);
@@ -192,14 +161,12 @@ export async function loadSubjectDashboard(
 
     const topics: TopicWithProgress[] = topicRows.map((row) => {
       const prog = progressByTopic.get(row.id as string);
-      const nativeCount = Number(row.question_count ?? 0);
-      const peerCount = peerSubjectQuestionCountByNativeTopic.get(row.id as string) ?? 0;
       return {
         id: row.id,
         subject_id: subjectId,
         name: row.name,
         display_order: row.display_order ?? 0,
-        question_count: nativeCount + peerCount,
+        question_count: Number(row.question_count ?? 0),
         answered_count: prog?.uniqueAnswered ?? 0,
         correct_count: prog?.totalCorrect ?? 0,
         knowledge_card: (row.knowledge_card as string | null) ?? null,

@@ -11,7 +11,6 @@ import {
   shuffle,
 } from "@/features/session/server/questionSelection";
 import {
-  getAnatomyPeerTopicId,
   getSubjectScopeIds,
   isSubjectInScope,
 } from "@/features/session/server/sharedSubjects";
@@ -179,21 +178,7 @@ export async function startSession(
       if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
         return { ok: false, message: "Nieprawidłowy temat dla tego przedmiotu." };
       }
-      const topicIdsForPool = [topicId];
-      const peerTopicId = getAnatomyPeerTopicId(topicId);
-      if (peerTopicId) {
-        const { data: peerTopic } = await supabase
-          .from("topics")
-          .select("id")
-          .eq("id", peerTopicId)
-          .maybeSingle();
-        if (peerTopic?.id) topicIdsForPool.push(peerTopic.id as string);
-      }
-
-      const pooledByTopic = await Promise.all(
-        topicIdsForPool.map((id) => fetchTopicQuestionIds(supabase, id)),
-      );
-      pool = pooledByTopic.flat();
+      pool = await fetchTopicQuestionIds(supabase, topicId);
       topicFilter = new Set(pool);
       const { data: topicRowsForDue } = await supabase
         .from("topics")

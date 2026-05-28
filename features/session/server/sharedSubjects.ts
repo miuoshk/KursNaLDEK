@@ -2,9 +2,6 @@
 //
 // Model kanoniczny: jeden `canonicalId` trzyma całą treść (topics + questions),
 // a track-specific ID (`stoma-*`, `lek-*`) to powłoka UI / entitlement.
-//
-// Legacy anatomia: treść w dwóch subjectach (`stoma-anatomia`, `lek-anatomia`)
-// z parami tematów `ANA-XXX` ↔ `LEK-ANA-XXX` — migracja do `anatomia` w toku.
 
 type CanonicalSharedSubject = {
   canonicalId: string;
@@ -12,6 +9,10 @@ type CanonicalSharedSubject = {
 };
 
 const CANONICAL_SHARED_SUBJECTS: CanonicalSharedSubject[] = [
+  {
+    canonicalId: "anatomia",
+    trackSubjectIds: ["stoma-anatomia", "lek-anatomia"],
+  },
   {
     canonicalId: "histologia",
     trackSubjectIds: ["stoma-histologia", "lek-histologia"],
@@ -28,14 +29,11 @@ const CANONICAL_SHARED_SUBJECTS: CanonicalSharedSubject[] = [
     canonicalId: "mikrobiologia",
     trackSubjectIds: ["stoma-mikrobio", "lek-mikrobio"],
   },
+  {
+    canonicalId: "farmakologia",
+    trackSubjectIds: ["stoma-farmakologia", "lek-farmakologia"],
+  },
 ];
-
-const SHARED_ANATOMY_SUBJECT_IDS = ["stoma-anatomia", "lek-anatomia"] as const;
-type SharedAnatomySubjectId = (typeof SHARED_ANATOMY_SUBJECT_IDS)[number];
-
-function isSharedAnatomySubject(subjectId: string): subjectId is SharedAnatomySubjectId {
-  return (SHARED_ANATOMY_SUBJECT_IDS as readonly string[]).includes(subjectId);
-}
 
 function findCanonicalShared(subjectId: string): CanonicalSharedSubject | null {
   return (
@@ -54,9 +52,6 @@ export function getSubjectScopeIds(subjectId: string): string[] {
       canonical.canonicalId,
       ...canonical.trackSubjectIds.filter((id) => id !== canonical.canonicalId),
     ];
-  }
-  if (isSharedAnatomySubject(subjectId)) {
-    return [...SHARED_ANATOMY_SUBJECT_IDS];
   }
   return [subjectId];
 }
@@ -82,26 +77,9 @@ export function getTopicDisplaySubjectIds(subjectId: string): string[] {
 }
 
 export function hasSharedScope(subjectId: string): boolean {
-  return findCanonicalShared(subjectId) !== null || isSharedAnatomySubject(subjectId);
+  return findCanonicalShared(subjectId) !== null;
 }
 
 export function isSubjectInScope(subjectId: string, candidateSubjectId: string): boolean {
   return getSubjectScopeIds(subjectId).includes(candidateSubjectId);
-}
-
-export function getAnatomyPeerTopicId(topicId: string): string | null {
-  if (topicId.startsWith("LEK-ANA-")) {
-    return topicId.replace(/^LEK-ANA-/, "ANA-");
-  }
-  if (topicId.startsWith("ANA-")) {
-    return `LEK-${topicId}`;
-  }
-  return null;
-}
-
-// Klucz "rodziny" tematu — jednakowy dla `ANA-CZA` i `LEK-ANA-CZA`,
-// żeby można było po nim grupować topiki z obu subjectów.
-export function getTopicFamilyKey(topicId: string): string {
-  if (topicId.startsWith("LEK-ANA-")) return topicId.slice("LEK-".length);
-  return topicId;
 }

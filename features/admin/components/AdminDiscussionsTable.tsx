@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useState, useTransition } from "react";
-import { Trash2 } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink, Trash2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { adminDeleteDiscussionComment } from "@/features/admin/server/adminDiscussionActions";
 import type { AdminDiscussionRow } from "@/features/admin/server/loadAdminDiscussions";
@@ -115,14 +116,23 @@ export function AdminDiscussionsTable({
                   </td>
                   <td className="px-3 py-3 font-body text-body-sm text-secondary">{row.userName}</td>
                   <td className="px-3 py-3">
-                    <button
-                      type="button"
-                      onClick={() => void handleDelete(row.id)}
-                      className="inline-flex items-center gap-1 font-body text-body-xs text-error transition-colors hover:text-white"
-                    >
-                      <Trash2 className="size-3.5" aria-hidden />
-                      Usuń
-                    </button>
+                    <div className="flex flex-col gap-1">
+                      <Link
+                        href={`/admin/pytania?q=${encodeURIComponent(row.questionId)}`}
+                        className="inline-flex items-center gap-1 font-body text-body-xs text-brand-gold transition-colors hover:text-white"
+                      >
+                        <ExternalLink className="size-3.5 shrink-0" aria-hidden />
+                        Otwórz pytanie
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => void handleDelete(row.id)}
+                        className="inline-flex items-center gap-1 font-body text-body-xs text-error transition-colors hover:text-white"
+                      >
+                        <Trash2 className="size-3.5" aria-hidden />
+                        Usuń
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))

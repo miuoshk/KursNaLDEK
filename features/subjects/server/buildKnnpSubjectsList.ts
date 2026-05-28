@@ -1,9 +1,6 @@
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
-import {
-  getSubjectScopeIds,
-  getTopicDisplaySubjectIds,
-} from "@/features/session/server/sharedSubjects";
+import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 
 const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
 
@@ -33,22 +30,15 @@ export function buildKnnpSubjectsList(
 
   let totalQuestionCount = 0;
   const subjects: SubjectWithProgress[] = knnpRows.map((row) => {
-    const scope = getSubjectScopeIds(row.id);
-    // Liczba pytań: suma po wszystkich subjectach ze scope (anatomia: native + peer).
+    // Liczba pytań i działów: wyłącznie kanoniczne repozytorium treści (np. farmakologia).
     let questionCount = 0;
-    for (const peerId of scope) {
-      questionCount += agg.get(peerId)?.questionSum ?? 0;
-    }
-    // Topiki dla UI: kanoniczny subject albo native (peer-topiki to ta sama "rodzina").
     let topicCount = 0;
     for (const displayId of getTopicDisplaySubjectIds(row.id)) {
-      topicCount += agg.get(displayId)?.topicCount ?? 0;
+      const bucket = agg.get(displayId);
+      questionCount += bucket?.questionSum ?? 0;
+      topicCount += bucket?.topicCount ?? 0;
     }
-    // Postęp: sumujemy unikalne pytania odpowiedziane ze wszystkich peerów.
-    let answeredUnique = 0;
-    for (const peerId of scope) {
-      answeredUnique += answeredPerSubject?.get(peerId)?.size ?? 0;
-    }
+    const answeredUnique = answeredPerSubject?.get(row.id)?.size ?? 0;
     totalQuestionCount += questionCount;
 
     return {

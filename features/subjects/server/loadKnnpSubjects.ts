@@ -4,6 +4,7 @@ import { getDueReviewsPerSubject } from "@/lib/dashboard/getDueReviewsPerSubject
 import { buildKnnpSubjectsList } from "@/features/subjects/server/buildKnnpSubjectsList";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
@@ -124,11 +125,15 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
         for (const row of uqpRows ?? []) {
           if (Number(row.times_answered ?? 0) === 0) continue;
 
-          const subjectId = questionToSubject.get(row.question_id as string);
-          if (!subjectId) continue;
+          const contentSubjectId = questionToSubject.get(row.question_id as string);
+          if (!contentSubjectId) continue;
 
-          if (!answeredPerSubject.has(subjectId)) answeredPerSubject.set(subjectId, new Set());
-          answeredPerSubject.get(subjectId)!.add(row.question_id as string);
+          for (const shellId of getTrackShellsForContentSubject(contentSubjectId)) {
+            if (!answeredPerSubject.has(shellId)) {
+              answeredPerSubject.set(shellId, new Set());
+            }
+            answeredPerSubject.get(shellId)!.add(row.question_id as string);
+          }
 
           overallAnswered += 1;
           if ((row.state as string) === "review") overallMastered += 1;

@@ -1,5 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
+import {
+  expandTopicSubjectIdsForCatalog,
+  getSubjectScopeIds,
+} from "@/features/session/server/sharedSubjects";
 
 export function shuffle<T>(items: T[]): T[] {
   const a = [...items];
@@ -79,7 +82,8 @@ async function fetchScopedKnnpSubjectIds(
     console.error("[fetchScopedKnnpSubjectIds]", error.message);
     return [];
   }
-  return (data ?? []).map((s) => s.id as string);
+  const shellIds = (data ?? []).map((s) => s.id as string);
+  return expandTopicSubjectIdsForCatalog(shellIds);
 }
 
 /** Wszystkie aktywne pytania z przedmiotów product=knnp (sesja mieszana). */

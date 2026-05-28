@@ -17,3 +17,8 @@ ON CONFLICT (id) DO NOTHING;
 UPDATE public.topics
 SET subject_id = 'farmakologia'
 WHERE subject_id = 'stoma-farmakologia';
+
+-- Osierocony dział dodany po migracji (np. FARM-18).
+UPDATE public.topics
+SET subject_id = 'farmakologia'
+WHERE id = 'FARM-18' AND subject_id = 'stoma-farmakologia';

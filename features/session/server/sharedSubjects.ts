@@ -83,3 +83,10 @@ export function hasSharedScope(subjectId: string): boolean {
 export function isSubjectInScope(subjectId: string, candidateSubjectId: string): boolean {
   return getSubjectScopeIds(subjectId).includes(candidateSubjectId);
 }
+
+/** Powłoki UI (stoma-*, lek-*) dla treści trzymanego pod subjectem kanonicznym. */
+export function getTrackShellsForContentSubject(contentSubjectId: string): string[] {
+  const canonical = findCanonicalShared(contentSubjectId);
+  if (canonical) return [...canonical.trackSubjectIds];
+  return [contentSubjectId];
+}

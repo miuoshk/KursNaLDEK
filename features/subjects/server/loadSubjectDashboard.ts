@@ -1,10 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
-import {
-  getSubjectScopeIds,
-  getTopicDisplaySubjectIds,
-} from "@/features/session/server/sharedSubjects";
+import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -35,8 +32,7 @@ export async function loadSubjectDashboard(
       data: { user },
     } = await supabase.auth.getUser();
 
-    const scopeSubjectIds = getSubjectScopeIds(subjectId);
-    const displaySubjectIds = new Set(getTopicDisplaySubjectIds(subjectId));
+    const displaySubjectIds = getTopicDisplaySubjectIds(subjectId);
     const [subjectResult, topicsResult] = await Promise.all([
       supabase
         .from("subjects")
@@ -48,15 +44,13 @@ export async function loadSubjectDashboard(
       supabase
         .from("topics")
         .select("id, subject_id, name, display_order, question_count, knowledge_card")
-        .in("subject_id", scopeSubjectIds)
+        .in("subject_id", displaySubjectIds)
         .order("display_order", { ascending: true }),
     ]);
 
     const { data: subject, error: subjectError } = subjectResult;
     const { data: allTopicRows, error: topicsError } = topicsResult;
-    const topicRows = (allTopicRows ?? []).filter((row) =>
-      displaySubjectIds.has(row.subject_id as string),
-    );
+    const topicRows = allTopicRows ?? [];
 
     if (subjectError) {
       console.error(

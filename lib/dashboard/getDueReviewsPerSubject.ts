@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
-import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
+import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 
 /**
  * Liczba pytań due (next_review <= teraz) per przedmiot kanoniczny,
@@ -43,25 +43,24 @@ export async function getDueReviewsPerSubject(
     return out;
   }
 
-  const nativeCount = new Map<string, number>();
+  const shellDueCount = new Map<string, number>();
   for (const row of dueRows ?? []) {
     const qid = row.question_id as string;
     const topicId = (qRows ?? []).find((q) => q.id === qid)?.topic_id as
       | string
       | undefined;
     if (!topicId) continue;
-    const sid = topicToSubject.get(topicId);
-    if (!sid) continue;
-    nativeCount.set(sid, (nativeCount.get(sid) ?? 0) + 1);
+    const contentSubjectId = topicToSubject.get(topicId);
+    if (!contentSubjectId) continue;
+    for (const shellId of getTrackShellsForContentSubject(contentSubjectId)) {
+      shellDueCount.set(shellId, (shellDueCount.get(shellId) ?? 0) + 1);
+    }
   }
 
   for (const subjectRow of catalog.subjectRows) {
-    const canonicalId = subjectRow.id as string;
-    let sum = 0;
-    for (const peerId of getSubjectScopeIds(canonicalId)) {
-      sum += nativeCount.get(peerId) ?? 0;
-    }
-    if (sum > 0) out.set(canonicalId, sum);
+    const shellId = subjectRow.id as string;
+    const sum = shellDueCount.get(shellId) ?? 0;
+    if (sum > 0) out.set(shellId, sum);
   }
 
   return out;

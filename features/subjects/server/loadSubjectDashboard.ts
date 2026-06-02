@@ -2,10 +2,11 @@ import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import {
-  filterTopicsForTrack,
-  questionTracksOrFilter,
-} from "@/lib/content/topicTrackVisibility";
+  countQuestionsByTopic,
+  fetchActiveQuestionsForTopics,
+} from "@/lib/content/fetchActiveQuestionsForTopics";
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 
 export type TopicWithProgress = Topic & {
@@ -120,32 +121,44 @@ export async function loadSubjectDashboard(
     const visibleCountByTopic = new Map<string, number>();
 
     if (user && allTopicIds.length > 0) {
-      const { data: qRows } = await supabase
-        .from("questions")
-        .select("id, topic_id")
-        .in("topic_id", allTopicIds)
-        .eq("is_active", true)
-        .or(questionTracksOrFilter(viewerTrack));
-
-      for (const q of qRows ?? []) {
-        const tid = q.topic_id as string;
-        visibleCountByTopic.set(tid, (visibleCountByTopic.get(tid) ?? 0) + 1);
+      const qRows = await fetchActiveQuestionsForTopics(
+        supabase,
+        allTopicIds,
+        viewerTrack,
+      );
+      for (const [tid, count] of countQuestionsByTopic(qRows)) {
+        visibleCountByTopic.set(tid, count);
       }
 
-      const qids = (qRows ?? []).map((q) => q.id as string);
+      const qids = qRows.map((q) => q.id);
 
       if (qids.length > 0) {
-        const { data: uqpRows } = await supabase
-          .from("user_question_progress")
-          .select("question_id, times_answered, times_correct, next_review, state")
-          .eq("user_id", user.id)
-          .in("question_id", qids);
+        const UQP_CHUNK = 200;
+        type UqpRow = {
+          question_id: string;
+          times_answered: number | null;
+          times_correct: number | null;
+          next_review: string | null;
+          state: string | null;
+        };
+        const uqpRows: UqpRow[] = [];
+        for (let i = 0; i < qids.length; i += UQP_CHUNK) {
+          const chunk = qids.slice(i, i + UQP_CHUNK);
+          const { data, error: uqpErr } = await supabase
+            .from("user_question_progress")
+            .select("question_id, times_answered, times_correct, next_review, state")
+            .eq("user_id", user.id)
+            .in("question_id", chunk);
+          if (uqpErr) {
+            console.error("[loadSubjectDashboard] uqp:", uqpErr.message);
+            break;
+          }
+          uqpRows.push(...((data ?? []) as UqpRow[]));
+        }
 
         const now = new Date();
-        for (const r of uqpRows ?? []) {
-          const tid = (qRows ?? []).find((q) => q.id === r.question_id)?.topic_id as
-            | string
-            | undefined;
+        for (const r of uqpRows) {
+          const tid = qRows.find((q) => q.id === r.question_id)?.topic_id;
           if (!tid) continue;
           const timesAns = Number(r.times_answered ?? 0);
           const timesCorr = Number(r.times_correct ?? 0);

@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
-import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 
 /**
@@ -39,26 +39,31 @@ export async function getDueReviewCount(
   if (topicIds.length === 0) return 0;
 
   const studyTrack = normalizeTrack(track) as StudyTrack;
-  const { data: qRows } = await supabase
-    .from("questions")
-    .select("id")
-    .in("topic_id", topicIds)
-    .eq("is_active", true)
-    .or(questionTracksOrFilter(studyTrack));
-  const questionIds = (qRows ?? []).map((q) => q.id as string);
+  const qRows = await fetchActiveQuestionsForTopics(
+    supabase,
+    topicIds,
+    studyTrack,
+  );
+  const questionIds = qRows.map((q) => q.id);
   if (questionIds.length === 0) return 0;
 
-  const { count, error } = await supabase
-    .from("user_question_progress")
-    .select("id", { count: "exact", head: true })
-    .eq("user_id", userId)
-    .not("next_review", "is", null)
-    .lte("next_review", nowIso)
-    .in("question_id", questionIds);
+  const IN_CHUNK = 200;
+  let total = 0;
+  for (let i = 0; i < questionIds.length; i += IN_CHUNK) {
+    const chunk = questionIds.slice(i, i + IN_CHUNK);
+    const { count, error } = await supabase
+      .from("user_question_progress")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .not("next_review", "is", null)
+      .lte("next_review", nowIso)
+      .in("question_id", chunk);
 
-  if (error) {
-    console.error("[getDueReviewCount]", error.message);
-    return 0;
+    if (error) {
+      console.error("[getDueReviewCount]", error.message);
+      return total;
+    }
+    total += count ?? 0;
   }
-  return count ?? 0;
+  return total;
 }

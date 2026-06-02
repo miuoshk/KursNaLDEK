@@ -11,7 +11,10 @@ import {
   normalizeYear,
   type StudyTrack,
 } from "@/features/access/lib/studyAccess";
-import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import {
+  countQuestionsByTopic,
+  fetchActiveQuestionsForTopics,
+} from "@/lib/content/fetchActiveQuestionsForTopics";
 
 export type ProfileForSubjects = {
   current_year: number;
@@ -109,30 +112,44 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
     const visibleCountByTopic = new Map<string, number>();
 
     if (topicIds.length > 0) {
-      const { data: qRows } = await supabase
-        .from("questions")
-        .select("id, topic_id")
-        .in("topic_id", topicIds)
-        .eq("is_active", true)
-        .or(questionTracksOrFilter(studyTrack));
-
-      const questionToSubject = new Map<string, string>();
-      for (const q of qRows ?? []) {
-        const tid = q.topic_id as string;
-        visibleCountByTopic.set(tid, (visibleCountByTopic.get(tid) ?? 0) + 1);
-        const subjectId = topicToSubject.get(tid);
-        if (subjectId) questionToSubject.set(q.id as string, subjectId);
+      const qRows = await fetchActiveQuestionsForTopics(
+        supabase,
+        topicIds,
+        studyTrack,
+      );
+      for (const [tid, count] of countQuestionsByTopic(qRows)) {
+        visibleCountByTopic.set(tid, count);
       }
 
-      const qids = (qRows ?? []).map((q) => q.id as string);
-      if (qids.length > 0) {
-        const { data: uqpRows } = await supabase
-          .from("user_question_progress")
-          .select("question_id, state, times_answered")
-          .eq("user_id", user.id)
-          .in("question_id", qids);
+      const questionToSubject = new Map<string, string>();
+      for (const q of qRows) {
+        const subjectId = topicToSubject.get(q.topic_id);
+        if (subjectId) questionToSubject.set(q.id, subjectId);
+      }
 
-        for (const row of uqpRows ?? []) {
+      const qids = qRows.map((q) => q.id);
+      if (qids.length > 0) {
+        const UQP_CHUNK = 200;
+        const uqpRows: {
+          question_id: string;
+          state: string;
+          times_answered: number | null;
+        }[] = [];
+        for (let i = 0; i < qids.length; i += UQP_CHUNK) {
+          const chunk = qids.slice(i, i + UQP_CHUNK);
+          const { data, error: uqpErr } = await supabase
+            .from("user_question_progress")
+            .select("question_id, state, times_answered")
+            .eq("user_id", user.id)
+            .in("question_id", chunk);
+          if (uqpErr) {
+            console.error("[loadKnnpSubjects] uqp:", uqpErr.message);
+            break;
+          }
+          uqpRows.push(...((data ?? []) as typeof uqpRows));
+        }
+
+        for (const row of uqpRows) {
           if (Number(row.times_answered ?? 0) === 0) continue;
 
           const contentSubjectId = questionToSubject.get(row.question_id as string);

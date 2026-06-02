@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
-import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import {
   getRetrievability,
   type RetrievabilityInput,
@@ -85,18 +85,12 @@ export async function recalculateTopicMastery(
     const sessionIds = (userSessions ?? []).map((s) => s.id);
 
     for (const topicId of uniqueTopics) {
-      const { data: topicQuestions, error: qErr } = await supabase
-        .from("questions")
-        .select("id")
-        .eq("topic_id", topicId)
-        .eq("is_active", true)
-        .or(questionTracksOrFilter(track));
-
-      if (qErr) {
-        throw qErr;
-      }
-
-      const questionIds = (topicQuestions ?? []).map((q) => q.id);
+      const topicQuestions = await fetchActiveQuestionsForTopics(
+        supabase,
+        [topicId],
+        track,
+      );
+      const questionIds = topicQuestions.map((q) => q.id);
       const totalQuestions = questionIds.length;
 
       let progressRows: ProgressRow[] = [];

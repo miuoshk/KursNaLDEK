@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
-import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 
@@ -24,36 +24,39 @@ export async function getDueReviewsPerSubject(
   }
 
   const studyTrack = normalizeTrack(track) as StudyTrack;
-  const { data: qRows } = await supabase
-    .from("questions")
-    .select("id, topic_id")
-    .in("topic_id", topicIds)
-    .eq("is_active", true)
-    .or(questionTracksOrFilter(studyTrack));
+  const qRows = await fetchActiveQuestionsForTopics(
+    supabase,
+    topicIds,
+    studyTrack,
+  );
 
-  const questionIds = (qRows ?? []).map((q) => q.id as string);
+  const questionIds = qRows.map((q) => q.id);
   if (questionIds.length === 0) return out;
 
   const nowIso = new Date().toISOString();
-  const { data: dueRows, error } = await supabase
-    .from("user_question_progress")
-    .select("question_id")
-    .eq("user_id", userId)
-    .not("next_review", "is", null)
-    .lte("next_review", nowIso)
-    .in("question_id", questionIds);
+  const dueRows: { question_id: string }[] = [];
+  const IN_CHUNK = 200;
+  for (let i = 0; i < questionIds.length; i += IN_CHUNK) {
+    const chunk = questionIds.slice(i, i + IN_CHUNK);
+    const { data, error } = await supabase
+      .from("user_question_progress")
+      .select("question_id")
+      .eq("user_id", userId)
+      .not("next_review", "is", null)
+      .lte("next_review", nowIso)
+      .in("question_id", chunk);
 
-  if (error) {
-    console.error("[getDueReviewsPerSubject]", error.message);
-    return out;
+    if (error) {
+      console.error("[getDueReviewsPerSubject]", error.message);
+      return out;
+    }
+    dueRows.push(...((data ?? []) as typeof dueRows));
   }
 
   const shellDueCount = new Map<string, number>();
   for (const row of dueRows ?? []) {
     const qid = row.question_id as string;
-    const topicId = (qRows ?? []).find((q) => q.id === qid)?.topic_id as
-      | string
-      | undefined;
+    const topicId = qRows.find((q) => q.id === qid)?.topic_id;
     if (!topicId) continue;
     const contentSubjectId = topicToSubject.get(topicId);
     if (!contentSubjectId) continue;

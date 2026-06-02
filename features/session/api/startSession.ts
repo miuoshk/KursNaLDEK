@@ -77,9 +77,22 @@ export async function startSession(
       return { ok: false, message: "Musisz być zalogowany, aby rozpocząć sesję." };
     }
 
+    const profile = await getProfileByUserId(user.id);
+    let viewerTrack: StudyTrack = normalizeTrack(profile?.current_track);
+
     // ── Explicit question IDs (e.g. retry wrong questions) ──
     if (explicitIds && explicitIds.length > 0) {
-      const rows = await loadQuestionsByIdsOrdered(supabase, explicitIds);
+      if (subjectId) {
+        const { data: subTrack } = await supabase
+          .from("subjects")
+          .select("track")
+          .eq("id", subjectId)
+          .maybeSingle();
+        if (subTrack?.track) {
+          viewerTrack = normalizeTrack(subTrack.track as string);
+        }
+      }
+      const rows = await loadQuestionsByIdsOrdered(supabase, explicitIds, viewerTrack);
       if (rows.length === 0) {
         return { ok: false, message: "Nie udało się wczytać treści pytań." };
       }
@@ -165,6 +178,7 @@ export async function startSession(
       }
       subjectRow = subject;
       subjectTrack = normalizeTrack(subject.track as string);
+      viewerTrack = subjectTrack;
     }
 
     let chosenIds: string[] = [];
@@ -186,7 +200,7 @@ export async function startSession(
       if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
         return { ok: false, message: "Ten temat nie jest dostępny na Twoim kierunku." };
       }
-      pool = await fetchTopicQuestionIds(supabase, topicId);
+      pool = await fetchTopicQuestionIds(supabase, topicId, viewerTrack);
       topicFilter = new Set(pool);
       topicOkForDue = new Set(
         await fetchVisibleTopicIds(
@@ -202,9 +216,9 @@ export async function startSession(
       // Sesja mieszana / domyślna powtórka: zawężamy pulę do bieżącego
       // (track, year) usera, żeby studentka rok 3 farmy nie dostała pytań
       // z anatomii z poprzednich lat.
-      const profile = await getProfileByUserId(user.id);
       const track = normalizeTrack(profile?.current_track);
       const year = normalizeYear(profile?.current_year);
+      viewerTrack = track;
       pool = await fetchKnnpAllQuestionIds(supabase, track, year);
       topicOkForDue = await fetchKnnpTopicIdSet(supabase, track, year);
     } else {
@@ -228,6 +242,7 @@ export async function startSession(
         pool,
         topicOkForDue,
         topicFilter,
+        viewerTrack,
       );
       if (antares.questionIds.length > 0) {
         chosenIds = antares.questionIds;
@@ -238,6 +253,7 @@ export async function startSession(
           supabase,
           user.id,
           topicOkForDue,
+          viewerTrack,
           count,
           topicFilter,
         );
@@ -270,7 +286,7 @@ export async function startSession(
       chosenIds = chosenIds.slice(0, count);
     }
 
-    const rows = await loadQuestionsByIdsOrdered(supabase, chosenIds);
+    const rows = await loadQuestionsByIdsOrdered(supabase, chosenIds, viewerTrack);
     if (rows.length === 0) {
       return { ok: false, message: "Nie udało się wczytać treści pytań." };
     }
@@ -285,7 +301,11 @@ export async function startSession(
 
     let reserveQuestions: SessionQuestion[] = [];
     if (mode === "inteligentna" && reserveIds.length > 0) {
-      const reserveRows = await loadQuestionsByIdsOrdered(supabase, reserveIds);
+      const reserveRows = await loadQuestionsByIdsOrdered(
+        supabase,
+        reserveIds,
+        viewerTrack,
+      );
       if (reserveRows.length > 0) {
         reserveQuestions = attachAntaresMetaToQuestions(
           mapRowsToSessionQuestions(reserveRows),

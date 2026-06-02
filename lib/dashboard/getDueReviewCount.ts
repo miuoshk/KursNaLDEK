@@ -1,4 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 
 /**
@@ -36,11 +38,13 @@ export async function getDueReviewCount(
   const topicIds = catalog.topicRows.map((t) => t.id);
   if (topicIds.length === 0) return 0;
 
+  const studyTrack = normalizeTrack(track) as StudyTrack;
   const { data: qRows } = await supabase
     .from("questions")
     .select("id")
     .in("topic_id", topicIds)
-    .eq("is_active", true);
+    .eq("is_active", true)
+    .or(questionTracksOrFilter(studyTrack));
   const questionIds = (qRows ?? []).map((q) => q.id as string);
   if (questionIds.length === 0) return 0;
 

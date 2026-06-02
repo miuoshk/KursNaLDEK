@@ -10,7 +10,9 @@ import {
 } from "@/features/session/lib/antares/retrievability";
 import type { SessionAnswerData, SessionInsights } from "@/features/session/lib/antares/sessionInsights";
 import { generateSessionInsights } from "@/features/session/lib/antares/sessionInsights";
+import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { recalculateTopicMastery } from "@/features/session/lib/antares/recalculateTopicMastery";
+import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import type { SessionInsightsPayload } from "@/features/session/summaryTypes";
 import {
   normalizeTopicMasteryRow,
@@ -162,7 +164,9 @@ export async function runCompleteSessionPostAntares(
     affectedTopicIds,
   );
 
-  await recalculateTopicMastery(supabase, userId, affectedTopicIds);
+  const profileRow = await getProfileByUserId(userId);
+  const viewerTrack = normalizeTrack(profileRow?.current_track);
+  await recalculateTopicMastery(supabase, userId, affectedTopicIds, viewerTrack);
 
   const masteryAfter = await fetchMasteryMap(
     supabase,

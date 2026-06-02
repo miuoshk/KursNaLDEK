@@ -2,7 +2,10 @@ import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
-import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
+import {
+  filterTopicsForTrack,
+  questionTracksOrFilter,
+} from "@/lib/content/topicTrackVisibility";
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 
 export type TopicWithProgress = Topic & {
@@ -114,12 +117,20 @@ export async function loadSubjectDashboard(
     let nextReviewDate: Date | null = null;
     let dueCount = 0;
 
+    const visibleCountByTopic = new Map<string, number>();
+
     if (user && allTopicIds.length > 0) {
       const { data: qRows } = await supabase
         .from("questions")
         .select("id, topic_id")
         .in("topic_id", allTopicIds)
-        .eq("is_active", true);
+        .eq("is_active", true)
+        .or(questionTracksOrFilter(viewerTrack));
+
+      for (const q of qRows ?? []) {
+        const tid = q.topic_id as string;
+        visibleCountByTopic.set(tid, (visibleCountByTopic.get(tid) ?? 0) + 1);
+      }
 
       const qids = (qRows ?? []).map((q) => q.id as string);
 
@@ -166,7 +177,7 @@ export async function loadSubjectDashboard(
         subject_id: subjectId,
         name: row.name,
         display_order: row.display_order ?? 0,
-        question_count: Number(row.question_count ?? 0),
+        question_count: visibleCountByTopic.get(row.id as string) ?? 0,
         answered_count: prog?.uniqueAnswered ?? 0,
         correct_count: prog?.totalCorrect ?? 0,
         knowledge_card: (row.knowledge_card as string | null) ?? null,

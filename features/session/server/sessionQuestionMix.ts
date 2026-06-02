@@ -1,14 +1,18 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { StudyTrack } from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import {
-  fetchSubjectQuestionIds,
+  fetchVisibleTopicIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
+import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 
 /** Powtórki należące do tematów z `topicOk`. */
 export async function fetchDueReviewQuestionIdsForTopics(
   supabase: SupabaseClient,
   userId: string,
   topicOk: Set<string>,
+  track: StudyTrack,
   limit: number,
   allowedIds?: Set<string>,
 ): Promise<string[]> {
@@ -28,7 +32,8 @@ export async function fetchDueReviewQuestionIdsForTopics(
   const { data: qMeta } = await supabase
     .from("questions")
     .select("id, topic_id")
-    .in("id", ids);
+    .in("id", ids)
+    .or(questionTracksOrFilter(track));
 
   const allowed = new Set(
     (qMeta ?? [])
@@ -50,18 +55,21 @@ export async function fetchDueReviewQuestionIds(
   supabase: SupabaseClient,
   userId: string,
   subjectId: string,
+  track: StudyTrack,
   limit: number,
   allowedIds?: Set<string>,
 ): Promise<string[]> {
-  const { data: topicRows } = await supabase
-    .from("topics")
-    .select("id")
-    .eq("subject_id", subjectId);
-  const topicOk = new Set((topicRows ?? []).map((t) => t.id as string));
+  const topicIds = await fetchVisibleTopicIds(
+    supabase,
+    getSubjectScopeIds(subjectId),
+    track,
+  );
+  const topicOk = new Set(topicIds);
   return fetchDueReviewQuestionIdsForTopics(
     supabase,
     userId,
     topicOk,
+    track,
     limit,
     allowedIds,
   );

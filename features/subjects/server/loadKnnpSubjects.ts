@@ -6,7 +6,12 @@ import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import {
+  normalizeTrack,
+  normalizeYear,
+  type StudyTrack,
+} from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 
 export type ProfileForSubjects = {
   current_year: number;
@@ -59,6 +64,7 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
 
     const profileRow = await getProfileByUserId(user.id);
     const track = normalizeTrack(profileRow?.current_track);
+    const studyTrack = track as StudyTrack;
     const currentYear = normalizeYear(profileRow?.current_year);
     const catalog = await getCachedKnnpCatalog(track, currentYear);
 
@@ -100,17 +106,21 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
     const answeredPerSubject = new Map<string, Set<string>>();
     let overallMastered = 0;
     let overallAnswered = 0;
+    const visibleCountByTopic = new Map<string, number>();
 
     if (topicIds.length > 0) {
       const { data: qRows } = await supabase
         .from("questions")
         .select("id, topic_id")
         .in("topic_id", topicIds)
-        .eq("is_active", true);
+        .eq("is_active", true)
+        .or(questionTracksOrFilter(studyTrack));
 
       const questionToSubject = new Map<string, string>();
       for (const q of qRows ?? []) {
-        const subjectId = topicToSubject.get(q.topic_id as string);
+        const tid = q.topic_id as string;
+        visibleCountByTopic.set(tid, (visibleCountByTopic.get(tid) ?? 0) + 1);
+        const subjectId = topicToSubject.get(tid);
         if (subjectId) questionToSubject.set(q.id as string, subjectId);
       }
 
@@ -164,10 +174,19 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       supabase,
       user.id,
       catalog,
+      track,
     );
 
+    const catalogForCounts = {
+      ...catalog,
+      topicRows: catalog.topicRows.map((t) => ({
+        ...t,
+        question_count: visibleCountByTopic.get(t.id) ?? 0,
+      })),
+    };
+
     const { subjects, totalQuestionCount } = buildKnnpSubjectsList(
-      catalog,
+      catalogForCounts,
       answeredPerSubject,
       lastStudiedPerSubject,
       dueReviewsPerSubject,

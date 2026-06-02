@@ -1,4 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 
@@ -10,6 +12,7 @@ export async function getDueReviewsPerSubject(
   supabase: SupabaseClient,
   userId: string,
   catalog: KnnpCatalogRows,
+  track: string,
 ): Promise<Map<string, number>> {
   const out = new Map<string, number>();
   const topicIds = catalog.topicRows.map((t) => t.id);
@@ -20,11 +23,13 @@ export async function getDueReviewsPerSubject(
     topicToSubject.set(t.id, t.subject_id);
   }
 
+  const studyTrack = normalizeTrack(track) as StudyTrack;
   const { data: qRows } = await supabase
     .from("questions")
     .select("id, topic_id")
     .in("topic_id", topicIds)
-    .eq("is_active", true);
+    .eq("is_active", true)
+    .or(questionTracksOrFilter(studyTrack));
 
   const questionIds = (qRows ?? []).map((q) => q.id as string);
   if (questionIds.length === 0) return out;

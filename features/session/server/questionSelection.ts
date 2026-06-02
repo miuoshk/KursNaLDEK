@@ -1,6 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
-import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
+import {
+  filterTopicsForTrack,
+  questionTracksOrFilter,
+} from "@/lib/content/topicTrackVisibility";
 import {
   expandTopicSubjectIdsForCatalog,
   getSubjectScopeIds,
@@ -45,11 +48,15 @@ export async function fetchSubjectQuestionIds(
   const topicIds = await fetchVisibleTopicIds(supabase, subjectScopeIds, track);
   if (topicIds.length === 0) return [];
 
-  const { data, error } = await supabase
+  let query = supabase
     .from("questions")
     .select("id")
     .in("topic_id", topicIds)
     .eq("is_active", true);
+  if (track) {
+    query = query.or(questionTracksOrFilter(track));
+  }
+  const { data, error } = await query;
 
   if (error) {
     console.error("[fetchSubjectQuestionIds] questions", error.message);
@@ -61,12 +68,14 @@ export async function fetchSubjectQuestionIds(
 export async function fetchTopicQuestionIds(
   supabase: SupabaseClient,
   topicId: string,
+  track: StudyTrack,
 ): Promise<string[]> {
   const { data, error } = await supabase
     .from("questions")
     .select("id")
     .eq("topic_id", topicId)
-    .eq("is_active", true);
+    .eq("is_active", true)
+    .or(questionTracksOrFilter(track));
 
   if (error) {
     console.error("[fetchTopicQuestionIds]", error.message);
@@ -111,12 +120,15 @@ export async function fetchKnnpAllQuestionIds(
   const studyTrack = track as StudyTrack | undefined;
   const topicIds = await fetchVisibleTopicIds(supabase, subjectIds, studyTrack);
   if (topicIds.length === 0) return [];
-  if (topicIds.length === 0) return [];
-  const { data, error } = await supabase
+  let query = supabase
     .from("questions")
     .select("id")
     .in("topic_id", topicIds)
     .eq("is_active", true);
+  if (studyTrack) {
+    query = query.or(questionTracksOrFilter(studyTrack));
+  }
+  const { data, error } = await query;
   if (error) {
     console.error("[fetchKnnpAllQuestionIds] questions", error.message);
     return [];

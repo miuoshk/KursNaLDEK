@@ -1,4 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { StudyTrack } from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import { calculateNewQuestionPriority } from "@/features/session/lib/antares/newQuestionPriority";
 import {
   buildQuestionMeta,
@@ -73,6 +75,7 @@ function rowToRetrievabilityInput(row: {
 async function fetchQuestionsMeta(
   supabase: SupabaseClient,
   ids: string[],
+  track: StudyTrack,
 ): Promise<Map<string, { topic_id: string }>> {
   const out = new Map<string, { topic_id: string }>();
   if (ids.length === 0) return out;
@@ -83,7 +86,8 @@ async function fetchQuestionsMeta(
       .from("questions")
       .select("id, topic_id")
       .in("id", slice)
-      .eq("is_active", true);
+      .eq("is_active", true)
+      .or(questionTracksOrFilter(track));
     for (const r of rows ?? []) {
       out.set(r.id as string, {
         topic_id: r.topic_id as string,
@@ -158,6 +162,7 @@ export async function buildAntaresInteligentnaSession(
   pool: string[],
   topicOkForDue: Set<string>,
   topicFilter: Set<string> | undefined,
+  track: StudyTrack,
 ): Promise<AntaresSessionBuildResult> {
   const empty: AntaresSessionBuildResult = {
     questionIds: [],
@@ -230,7 +235,7 @@ export async function buildAntaresInteligentnaSession(
     ]),
   ];
 
-  const meta = await fetchQuestionsMeta(supabase, allCandidateIds);
+  const meta = await fetchQuestionsMeta(supabase, allCandidateIds, track);
   const rankedById = new Map<string, RankedQuestion>();
 
   const dueRanked: RankedQuestion[] = [];

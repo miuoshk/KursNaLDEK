@@ -1,4 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { StudyTrack } from "@/features/access/lib/studyAccess";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import {
   getRetrievability,
   type RetrievabilityInput,
@@ -59,6 +61,7 @@ export async function recalculateTopicMastery(
   supabase: SupabaseClient,
   userId: string,
   affectedTopicIds: string[],
+  track: StudyTrack,
 ): Promise<void> {
   try {
     const uniqueTopics = [...new Set(affectedTopicIds)];
@@ -86,7 +89,8 @@ export async function recalculateTopicMastery(
         .from("questions")
         .select("id")
         .eq("topic_id", topicId)
-        .eq("is_active", true);
+        .eq("is_active", true)
+        .or(questionTracksOrFilter(track));
 
       if (qErr) {
         throw qErr;

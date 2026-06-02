@@ -1,7 +1,8 @@
 # Kody przedmiotów i tematów — KNNP
 
 > Słownik ID używanych w Supabase (`subjects`, `topics`, `questions`).  
-> Uniwersalny format wpisywania pytań: **`FormatPisaniaPytan.md`** (w katalogu głównym repo).
+> Uniwersalny format wpisywania pytań: **`FormatPisaniaPytan.md`** (w katalogu głównym repo).  
+> Konwersja TXT → SQL w Claude: **`ClaudePrompt-TXT-na-SQL.md`**.
 
 ---
 
@@ -53,7 +54,7 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 |----------------------|-------------------------------|---------------|-------|
 | `stoma-anatomia`     | Anatomia                      | `ANA-`        | Topiki w `seed-content.sql` |
 | `stoma-angielski`    | Język angielski medyczny      | —             | Topiki do zdefiniowania |
-| `stoma-histologia`   | Histologia i embriologia      | —             | Treść w `histologia` (shared) |
+| `stoma-histologia`   | Histologia i embriologia      | `HIST-`       | Treść w `histologia` (shared). STOMA-only: `topics.tracks = '{stomatologia}'` — patrz `FormatPisaniaPytan-PoHistologii-Stoma.md` |
 | `stoma-biofizyka`    | Biofizyka                     | `BIOF-`       | Treść w `biofizyka` (shared) |
 | `stoma-biologia`     | Biologia z genetyką           | —             | |
 | `stoma-chemia`       | Chemia medyczna               | —             | |
@@ -111,11 +112,14 @@ Prefiks `id` pytania: `mju-c01-`, `mju-kz1-`, `mju-zal-` (małe litery). Kolejno
 
 ### Rok 3
 
-| `subjects.id`          | Nazwa        | Skrót topików |
-|------------------------|--------------|---------------|
-| `stoma-farmakologia`   | Farmakologia | `FARM-`       |
+| `subjects.id`            | Nazwa             | Skrót topików |
+|------------------------|-------------------|---------------|
+| `stoma-farmakologia`   | Farmakologia      | `FARM-`       |
+| `stoma-zakazne`        | Choroby zakaźne   | `CHZ-`        |
 
 **Farmakologia — tematy (`FARM-01` … `FARM-17`):** pełna lista w `FormatPisaniaPytan-Farmakologia.md`.
+
+**Choroby zakaźne — tematy:** `CHZ-01`…`CHZ-23` (+ `CHZ-ZAL`), mapowanie z handover Zenit (`TEMAT_NR`). Import: `FormatPisaniaPytan-ChorobyZakazne.md`, ID pytań `ZAKSTO-zRRRR-X-{global}`. Seed: `scripts/2026-05-28-zakazne-topics-23.sql`.
 
 ---
 
@@ -163,6 +167,10 @@ Typy OSCE (`ordering`, `image_identify`, …) — tylko `stoma-osce` / stacje OS
 | `scripts/seed-subjects-curriculum.sql` | Pełna lista przedmiotów (uwaga: kasuje `subjects`) |
 | `scripts/seed-content.sql` | Tematy + przykładowe pytania |
 | `scripts/2026-05-19-stoma-y3-farmakologia-topics.sql` | Rok 3 stoma: tylko farma + FARM-01…17 |
+| `scripts/2026-05-28-stoma-y3-choroby-zakazne.sql` | STOMA r.3: przedmiot + działy CHZ |
+| `scripts/2026-05-28-topics-tracks.sql` | Kolumna `topics.tracks` (kierunek: STOMA / LEK) |
+| `FormatPisaniaPytan-PoHistologii-Stoma.md` | Import po histologii, batchy tylko stomatologia |
+| `exports/histologia-i-po-histologii-katalog.md` | Katalog działów HIST / BIOF ze stanu bazy |
 | `scripts/sync-topic-question-counts.sql` | Przeliczenie `question_count` |
 
 Po każdym batchu pytań uruchom UPDATE licznika (wzór w `FormatPisaniaPytan.md` §4).

@@ -6,6 +6,8 @@ import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/
 import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
 import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
+import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import { fetchVisibleTopicIds } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { greetingName } from "@/lib/greetingName";
@@ -111,16 +113,18 @@ export async function loadPulpit(): Promise<
     if (sid) {
       lastSubjectId = sid;
       lastSubjectName = recentSessions[0]?.subjectName ?? null;
-      const { data: topicRows } = await supabase
-        .from("topics")
-        .select("id")
-        .in("subject_id", getSubjectScopeIds(sid));
-      const topicIds = (topicRows ?? []).map((t) => t.id as string);
+      const topicIds = await fetchVisibleTopicIds(
+        supabase,
+        getSubjectScopeIds(sid),
+        track,
+      );
       if (topicIds.length > 0) {
         const { data: qrows } = await supabase
           .from("questions")
           .select("id")
-          .in("topic_id", topicIds);
+          .in("topic_id", topicIds)
+          .eq("is_active", true)
+          .or(questionTracksOrFilter(track));
         const qids = (qrows ?? []).map((q) => q.id as string);
         if (qids.length > 0) {
           const { data: uqp } = await supabase

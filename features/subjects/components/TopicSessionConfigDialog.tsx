@@ -217,7 +217,7 @@ export function TopicSessionConfigDialog({
                           Nauka klasyczna
                         </h4>
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                          Pytania w losowej kolejności, bez algorytmu powtórek
+                          Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
                         </p>
                         <CountPills
                           preset={reviewPreset}
@@ -289,7 +289,7 @@ export function TopicSessionConfigDialog({
                         Nauka klasyczna
                       </h4>
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                        Pytania w losowej kolejności, bez algorytmu powtórek
+                        Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
                       </p>
                       <CountPills
                         preset={reviewPreset}

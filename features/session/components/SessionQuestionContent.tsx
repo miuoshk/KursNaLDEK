@@ -8,6 +8,8 @@ import { SessionProgressSquares } from "@/features/session/components/SessionPro
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
+import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
+import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type {
   Confidence,
   SessionAnswer,
@@ -74,8 +76,27 @@ export function SessionQuestionContent({
   const showSquares =
     isPrzeglad && questions != null && answeredMap != null && questions.length > 0;
 
+  const canGoPrevious = currentIndex > 0;
+  const canGoNextTouch =
+    !showConfidenceBar &&
+    (isLast ? allAnswered || isShowingFeedback || canEndPrzeglad : true);
+
+  const { touchNavActive, onEdgePrevious, onEdgeNext } = useTouchEdgeNavigation({
+    onPrevious,
+    onNext,
+    canPrevious: canGoPrevious,
+    canNext: canGoNextTouch,
+  });
+
   return (
     <>
+      <SessionEdgeTapZones
+        active={touchNavActive}
+        canPrevious={canGoPrevious}
+        canNext={canGoNextTouch}
+        onPrevious={onEdgePrevious}
+        onNext={onEdgeNext}
+      />
       <div className="flex-1 overflow-y-auto px-4 pb-28 pt-6 sm:px-8">
         <AnimatePresence mode="wait">
           <motion.div

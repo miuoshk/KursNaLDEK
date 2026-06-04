@@ -74,12 +74,16 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         const retryKey = searchParams.get("retry") ?? undefined;
         const retryIds = retryKey ? peekRetryWrongIds(retryKey) : undefined;
 
+        const focusQuestionId = searchParams.get("q")?.trim() || undefined;
+
         const res = await startSession({
           subjectId: subj || undefined,
           mode,
           count: retryIds ? retryIds.length : count,
           topicId: topic,
           questionIds: retryIds ?? undefined,
+          focusQuestionId:
+            mode === "katalog" ? focusQuestionId : undefined,
         });
         if (cancelled) return;
         if (!res.ok) {

@@ -136,7 +136,7 @@ export function SmartSessionCTA({
             Nauka klasyczna
           </h3>
           <p className="mt-1 font-body text-body-sm text-secondary">
-            Pytania bez algorytmu powtórek — traktuj jako zabawę
+            Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
           </p>
 
           <div className="mt-4 border-t border-border pt-3">

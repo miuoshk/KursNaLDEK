@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
+import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
+import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -122,6 +124,12 @@ export function CatalogView({
 
   const [index, setIndex] = useState(initialIndex);
   const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    if (!initialQuestionId) return;
+    const i = questions.findIndex((q) => q.id === initialQuestionId);
+    if (i >= 0) setIndex(i);
+  }, [initialQuestionId, questions]);
   const [mode, setMode] = useState<CatalogMode>("nauka");
   const [selectedByQ, setSelectedByQ] = useState<Record<string, string>>({});
 
@@ -181,6 +189,18 @@ export function CatalogView({
     setIndex(navigationIndexes[nextPosition] ?? 0);
   }, [currentNavPosition, navigationIndexes]);
 
+  const canGoPrev = currentNavPosition > 0;
+  const canGoNext =
+    navigationIndexes.length > 0 &&
+    currentNavPosition < navigationIndexes.length - 1;
+
+  const { touchNavActive, onEdgePrevious, onEdgeNext } = useTouchEdgeNavigation({
+    onPrevious: goPrev,
+    onNext: goNext,
+    canPrevious: canGoPrev,
+    canNext: canGoNext,
+  });
+
   const selectOption = useCallback(
     (optionId: string) => {
       if (!q || mode !== "egzamin") return;
@@ -228,6 +248,13 @@ export function CatalogView({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
+      <SessionEdgeTapZones
+        active={touchNavActive}
+        canPrevious={canGoPrev}
+        canNext={canGoNext}
+        onPrevious={onEdgePrevious}
+        onNext={onEdgeNext}
+      />
       <div className="shrink-0 border-b border-border bg-background px-4 py-3 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">

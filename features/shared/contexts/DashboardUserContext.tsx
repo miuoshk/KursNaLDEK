@@ -18,6 +18,10 @@ export type DashboardUserValue = {
   dueReviewsCount: number;
   /** Ostatnia liczba pytań z konfiguracji sesji (10, 25, custom…). */
   preferredSessionCount: number;
+  /** Zegar czasu sesji w pasku nauki (domyślnie włączony). */
+  showSessionTimer: boolean;
+  /** Lista tematów źródłowych w pasku sesji (domyślnie włączona). */
+  showSessionTopics: boolean;
   /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */
   testMode?: boolean;
 };

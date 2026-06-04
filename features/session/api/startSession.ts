@@ -40,6 +40,8 @@ const schema = z.object({
   count: z.coerce.number().min(1).max(5000),
   topicId: z.string().min(1).optional(),
   questionIds: z.array(z.string().min(1)).min(1).max(5000).optional(),
+  /** Deep-link z zakładek / zapisanych — pytanie musi trafić do katalogu nawet poza pulą track. */
+  focusQuestionId: z.string().min(1).optional(),
 });
 
 export type StartSessionResult =
@@ -63,7 +65,8 @@ export async function startSession(
 
   const rawSubject = parsed.data.subjectId?.trim() ?? "";
   const isMix = rawSubject.length === 0;
-  const { mode, count, topicId, questionIds: explicitIds } = parsed.data;
+  const { mode, count, topicId, questionIds: explicitIds, focusQuestionId } =
+    parsed.data;
   const subjectId = isMix ? "" : rawSubject;
 
   try {
@@ -234,6 +237,19 @@ export async function startSession(
 
     if (mode === "katalog") {
       chosenIds = pool;
+      if (focusQuestionId && !chosenIds.includes(focusQuestionId)) {
+        const extra = await loadQuestionsByIdsOrdered(
+          supabase,
+          [focusQuestionId],
+          viewerTrack,
+        );
+        if (extra.length > 0) {
+          chosenIds = [
+            focusQuestionId,
+            ...chosenIds.filter((id) => id !== focusQuestionId),
+          ];
+        }
+      }
     } else if (mode === "inteligentna") {
       const antares = await buildAntaresInteligentnaSession(
         supabase,

@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
 import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
@@ -48,7 +48,17 @@ export function SessionStudyView({
   const [fatigueMessage, setFatigueMessage] = useState<string | null>(null);
   const fatigueShownRef = useRef(false);
   const { profile } = useDashboardData();
-  const { streak } = useDashboardUser();
+  const { streak, showSessionTimer, showSessionTopics } = useDashboardUser();
+
+  const sessionTopicNames = useMemo(() => {
+    if (!showSessionTopics) return undefined;
+    const names = new Set<string>();
+    for (const item of questions) {
+      const n = item.topicName?.trim();
+      if (n && n !== "Temat") names.add(n);
+    }
+    return [...names].sort((a, b) => a.localeCompare(b, "pl"));
+  }, [questions, showSessionTopics]);
   const isPrzeglad = mode === "przeglad";
 
   const router = useRouter();
@@ -220,7 +230,8 @@ export function SessionStudyView({
         current={s.currentIndex}
         total={s.total}
         mode={mode}
-        examElapsedSeconds={timerSec}
+        examElapsedSeconds={showSessionTimer ? timerSec : null}
+        sessionTopicNames={sessionTopicNames}
         onEnd={() => setEndOpen(true)}
       />
       <SessionQuestionContent

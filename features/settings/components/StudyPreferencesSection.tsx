@@ -6,6 +6,7 @@ import { updateStudyPreferences } from "@/features/settings/api/updateStudyPrefe
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
+import { Toggle } from "@/features/shared/components/Toggle";
 import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const selectClass =
@@ -23,6 +24,8 @@ export function StudyPreferencesSection({ profile }: Props) {
   const [goal, setGoal] = useState(profile.daily_goal);
   const [mode, setMode] = useState<KnnpSessionMode>(profile.default_session_mode);
   const [count, setCount] = useState<10 | 25 | 50>(normalizeCount(profile.default_question_count));
+  const [showTimer, setShowTimer] = useState(profile.show_session_timer);
+  const [showTopics, setShowTopics] = useState(profile.show_session_topics);
   const [savedFlash, setSavedFlash] = useState(false);
   const skip = useRef(true);
 
@@ -36,6 +39,8 @@ export function StudyPreferencesSection({ profile }: Props) {
         daily_goal: goal,
         default_session_mode: mode,
         default_question_count: count,
+        show_session_timer: showTimer,
+        show_session_topics: showTopics,
       });
       if (res.ok) {
         setSavedFlash(true);
@@ -43,7 +48,7 @@ export function StudyPreferencesSection({ profile }: Props) {
       } else toast(res.message, "error");
     }, 500);
     return () => clearTimeout(t);
-  }, [goal, mode, count, toast]);
+  }, [goal, mode, count, showTimer, showTopics, toast]);
 
   function bump(delta: number) {
     setGoal((g) => Math.min(100, Math.max(5, Math.round((g + delta) / 5) * 5)));
@@ -101,6 +106,38 @@ export function StudyPreferencesSection({ profile }: Props) {
             />
           </div>
         </div>
+        <ul className="space-y-5 border-t border-border pt-6">
+          <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p id="show-timer-label" className="font-body text-body-sm text-primary">
+                Czas sesji podczas nauki
+              </p>
+              <p className="font-body text-body-xs text-muted">
+                Zegar w górnym pasku aktywnej sesji
+              </p>
+            </div>
+            <Toggle
+              checked={showTimer}
+              onCheckedChange={setShowTimer}
+              aria-labelledby="show-timer-label"
+            />
+          </li>
+          <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p id="show-topics-label" className="font-body text-body-sm text-primary">
+                Tematy w sesji
+              </p>
+              <p className="font-body text-body-xs text-muted">
+                Z jakich działów pochodzą pytania w bieżącej sesji
+              </p>
+            </div>
+            <Toggle
+              checked={showTopics}
+              onCheckedChange={setShowTopics}
+              aria-labelledby="show-topics-label"
+            />
+          </li>
+        </ul>
         <div>
           <label htmlFor="qc" className="font-body text-body-sm text-secondary">
             Domyślna liczba pytań

@@ -17,6 +17,8 @@ type SessionTopBarProps = {
   /** Nieużywane w UI; zostawione dla zgodności z rodzajem sesji. */
   mode: SessionMode;
   examElapsedSeconds: number | null;
+  /** Unikalne nazwy tematów w bieżącej sesji (gdy włączone w ustawieniach). */
+  sessionTopicNames?: string[];
   onEnd: () => void;
 };
 
@@ -26,12 +28,22 @@ export function SessionTopBar({
   total,
   mode: _mode,
   examElapsedSeconds,
+  sessionTopicNames,
   onEnd,
 }: SessionTopBarProps) {
   const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
+  const topicsLine =
+    sessionTopicNames && sessionTopicNames.length > 0
+      ? sessionTopicNames.join(" · ")
+      : null;
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
+      {topicsLine ? (
+        <p className="mb-2 line-clamp-2 font-body text-body-xs text-muted" title={topicsLine}>
+          Tematy: {topicsLine}
+        </p>
+      ) : null}
       <div className="flex flex-wrap items-center gap-4">
         <span className="shrink-0 rounded-pill bg-card px-4 py-1.5 font-body text-body-sm font-medium text-primary">
           {subjectName}

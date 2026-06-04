@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Bookmark, ArrowRight, Loader2 } from "lucide-react";
 import type { SavedQuestionItem } from "@/features/saved/server/loadSavedQuestions";
 import { toggleBookmark } from "@/features/session/api/toggleBookmark";
+import { resolveCatalogSubjectId } from "@/features/session/lib/resolveCatalogSubjectId";
+import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
 
 function formatWhen(iso: string): string {
@@ -20,10 +22,14 @@ function formatWhen(iso: string): string {
   }
 }
 
-function buildCatalogHref(item: SavedQuestionItem): string | null {
+function buildCatalogHref(
+  item: SavedQuestionItem,
+  track: "stomatologia" | "lekarski",
+): string | null {
   if (!item.subjectId) return null;
+  const subject = resolveCatalogSubjectId(item.subjectId, track);
   const params = new URLSearchParams({
-    subject: item.subjectId,
+    subject,
     mode: "katalog",
     count: "5000",
     q: item.questionId,
@@ -32,6 +38,7 @@ function buildCatalogHref(item: SavedQuestionItem): string | null {
 }
 
 export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
+  const { currentTrack } = useDashboardUser();
   const [rows, setRows] = useState(items);
   const [pending, startTransition] = useTransition();
   const [busyId, setBusyId] = useState<string | null>(null);
@@ -74,7 +81,7 @@ export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
   return (
     <ul className="space-y-3">
       {rows.map((item) => {
-        const catalogHref = buildCatalogHref(item);
+        const catalogHref = buildCatalogHref(item, currentTrack);
         const isBusy = busyId === item.questionId && pending;
         return (
           <li

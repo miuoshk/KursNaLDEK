@@ -12,6 +12,8 @@ export type SettingsProfile = {
   daily_goal: number;
   default_session_mode: KnnpSessionMode;
   default_question_count: number;
+  show_session_timer: boolean;
+  show_session_topics: boolean;
   notifications_reviews: boolean;
   notifications_weekly: boolean;
   subscription_status: string | null;

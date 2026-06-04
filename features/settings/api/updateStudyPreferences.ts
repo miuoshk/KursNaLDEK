@@ -8,6 +8,8 @@ const schema = z.object({
   daily_goal: z.coerce.number().int().min(5).max(100),
   default_session_mode: z.enum(["inteligentna", "przeglad", "katalog"]),
   default_question_count: z.union([z.literal(10), z.literal(25), z.literal(50)]),
+  show_session_timer: z.boolean().optional(),
+  show_session_topics: z.boolean().optional(),
 });
 
 function roundGoal(n: number): number {
@@ -30,15 +32,23 @@ export async function updateStudyPreferences(
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, message: "Brak sesji." };
 
+  const patch: Record<string, unknown> = {
+    daily_goal: parsed.data.daily_goal,
+    default_session_mode: parsed.data.default_session_mode,
+    default_question_count: parsed.data.default_question_count,
+    last_session_question_count: parsed.data.default_question_count,
+    updated_at: new Date().toISOString(),
+  };
+  if (parsed.data.show_session_timer !== undefined) {
+    patch.show_session_timer = parsed.data.show_session_timer;
+  }
+  if (parsed.data.show_session_topics !== undefined) {
+    patch.show_session_topics = parsed.data.show_session_topics;
+  }
+
   const { error } = await supabase
     .from("profiles")
-    .update({
-      daily_goal: parsed.data.daily_goal,
-      default_session_mode: parsed.data.default_session_mode,
-      default_question_count: parsed.data.default_question_count,
-      last_session_question_count: parsed.data.default_question_count,
-      updated_at: new Date().toISOString(),
-    })
+    .update(patch)
     .eq("id", user.id);
 
   if (error) {

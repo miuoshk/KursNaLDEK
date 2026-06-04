@@ -48,6 +48,8 @@ export default async function DashboardLayout({
     xp: number | null;
     exam_date: string | null;
   } | null = null;
+  let showSessionTimer = true;
+  let showSessionTopics = true;
 
   if (testMode) {
     displayName = "Tryb testowy";
@@ -77,6 +79,10 @@ export default async function DashboardLayout({
         xp: profileRow.xp ?? null,
         exam_date: (profileRow.exam_date as string | null | undefined) ?? null,
       };
+      showSessionTimer =
+        (profileRow as { show_session_timer?: boolean }).show_session_timer ?? true;
+      showSessionTopics =
+        (profileRow as { show_session_topics?: boolean }).show_session_topics ?? true;
     }
   }
   const initials = initialsFromName(displayName);
@@ -95,6 +101,8 @@ export default async function DashboardLayout({
                 currentTrack,
                 dueReviewsCount,
                 preferredSessionCount,
+                showSessionTimer,
+                showSessionTopics,
                 testMode: testMode || undefined,
               }}
             >

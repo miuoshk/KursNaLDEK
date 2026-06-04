@@ -26,6 +26,7 @@ import {
   fetchUnseenQuestionIds,
   mixNaukaQuestionIds,
 } from "@/features/session/server/sessionQuestionMix";
+import { placeFocusQuestionFirst } from "@/features/session/lib/placeFocusQuestionFirst";
 import {
   loadQuestionsByIdsOrdered,
   mapRowsToSessionQuestions,
@@ -237,18 +238,11 @@ export async function startSession(
 
     if (mode === "katalog") {
       chosenIds = pool;
-      if (focusQuestionId && !chosenIds.includes(focusQuestionId)) {
-        const extra = await loadQuestionsByIdsOrdered(
-          supabase,
-          [focusQuestionId],
-          viewerTrack,
-        );
-        if (extra.length > 0) {
-          chosenIds = [
-            focusQuestionId,
-            ...chosenIds.filter((id) => id !== focusQuestionId),
-          ];
-        }
+      if (focusQuestionId) {
+        chosenIds = [
+          focusQuestionId,
+          ...chosenIds.filter((id) => id !== focusQuestionId),
+        ];
       }
     } else if (mode === "inteligentna") {
       const antares = await buildAntaresInteligentnaSession(
@@ -307,13 +301,29 @@ export async function startSession(
       return { ok: false, message: "Nie udało się wczytać treści pytań." };
     }
 
-    const questions =
+    let questions =
       mode === "inteligentna"
         ? attachAntaresMetaToQuestions(
             mapRowsToSessionQuestions(rows),
             antaresMeta,
           )
         : mapRowsToSessionQuestions(rows);
+
+    if (mode === "katalog" && focusQuestionId) {
+      if (!questions.some((q) => q.id === focusQuestionId)) {
+        const extraRows = await loadQuestionsByIdsOrdered(
+          supabase,
+          [focusQuestionId],
+        );
+        if (extraRows.length > 0) {
+          questions = [
+            mapRowsToSessionQuestions(extraRows)[0],
+            ...questions,
+          ];
+        }
+      }
+      questions = placeFocusQuestionFirst(questions, focusQuestionId);
+    }
 
     let reserveQuestions: SessionQuestion[] = [];
     if (mode === "inteligentna" && reserveIds.length > 0) {

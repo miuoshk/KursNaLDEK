@@ -122,7 +122,7 @@ export function CatalogView({
     return i >= 0 ? i : 0;
   }, [initialQuestionId, questions]);
 
-  const [index, setIndex] = useState(initialIndex);
+  const [index, setIndex] = useState(() => initialIndex);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
@@ -130,6 +130,10 @@ export function CatalogView({
     const i = questions.findIndex((q) => q.id === initialQuestionId);
     if (i >= 0) setIndex(i);
   }, [initialQuestionId, questions]);
+
+  useEffect(() => {
+    setIndex(initialIndex);
+  }, [initialIndex]);
   const [mode, setMode] = useState<CatalogMode>("nauka");
   const [selectedByQ, setSelectedByQ] = useState<Record<string, string>>({});
 

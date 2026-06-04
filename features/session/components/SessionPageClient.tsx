@@ -34,6 +34,8 @@ type Bootstrap =
       topicId?: string;
       questions: SessionQuestion[];
       reserveQuestions: SessionQuestion[];
+      /** Deep-link do katalogu (param `q`) — trzymany w stanie, nie tylko w URL. */
+      initialQuestionId?: string;
     };
 
 function parseMode(v: string | null): KnnpSessionMode {
@@ -51,9 +53,13 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [boot, setBoot] = useState<Bootstrap>({ status: "loading" });
+  const searchKey = searchParams.toString();
 
   useEffect(() => {
     let cancelled = false;
+    if (sessionId === "new") {
+      setBoot({ status: "loading" });
+    }
 
     async function run() {
       if (sessionId !== "new") {
@@ -104,6 +110,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             topicId: topic,
             questions: res.questions,
             reserveQuestions: [],
+            initialQuestionId: focusQuestionId,
           });
           return;
         }
@@ -193,7 +200,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
     return () => {
       cancelled = true;
     };
-  }, [sessionId, router, searchParams]);
+  }, [sessionId, router, searchKey]);
 
   if (boot.status === "loading") {
     return <SessionLoadingScreen />;
@@ -212,12 +219,12 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
   }
 
   if (boot.mode === "katalog") {
-    const initialQuestionId = searchParams.get("q") ?? undefined;
     return (
       <CatalogView
+        key={`${boot.subjectId}-${boot.initialQuestionId ?? "catalog"}`}
         subjectName={boot.subjectName}
         questions={boot.questions}
-        initialQuestionId={initialQuestionId}
+        initialQuestionId={boot.initialQuestionId}
       />
     );
   }

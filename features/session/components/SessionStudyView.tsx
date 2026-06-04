@@ -252,6 +252,7 @@ export function SessionStudyView({
         onConfidencePick={(c) => void wrappedConfidencePick(c)}
         onNext={handleNavigateNext}
         onPrevious={s.goToPrevious}
+        showTopicName={showSessionTopics}
       />
     </div>
   );

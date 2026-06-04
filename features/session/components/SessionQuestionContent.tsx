@@ -35,6 +35,7 @@ type SessionQuestionContentProps = {
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onPrevious: () => void;
+  showTopicName?: boolean;
 };
 
 export function SessionQuestionContent({
@@ -55,6 +56,7 @@ export function SessionQuestionContent({
   onConfidencePick,
   onNext,
   onPrevious,
+  showTopicName = true,
 }: SessionQuestionContentProps) {
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
@@ -106,7 +108,7 @@ export function SessionQuestionContent({
             animate="center"
             exit="exit"
           >
-            <QuestionCard question={q}>
+            <QuestionCard question={q} showTopicName={showTopicName}>
               <SessionQuestionOptions
                 q={q}
                 selectedOptionId={selectedOptionId}

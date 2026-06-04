@@ -6,9 +6,20 @@ import type { SessionQuestion } from "@/features/session/types";
 type QuestionCardProps = {
   question: SessionQuestion;
   children: ReactNode;
+  /** Nazwa działu nad pytaniem (Ustawienia → Tematy w sesji). */
+  showTopicName?: boolean;
 };
 
-export function QuestionCard({ question, children }: QuestionCardProps) {
+export function QuestionCard({
+  question,
+  children,
+  showTopicName = true,
+}: QuestionCardProps) {
+  const topicLabel =
+    showTopicName && question.topicName && question.topicName !== "Temat"
+      ? question.topicName
+      : null;
+
   return (
     <div className="mx-auto w-full max-w-3xl">
       <div className="flex flex-wrap items-center gap-2">
@@ -17,7 +28,9 @@ export function QuestionCard({ question, children }: QuestionCardProps) {
             {question.sourceCode}
           </span>
         ) : null}
-        <span className="font-body text-body-xs text-muted">{question.topicName}</span>
+        {topicLabel ? (
+          <span className="font-body text-body-xs text-muted">{topicLabel}</span>
+        ) : null}
       </div>
       {question.imageUrl ? (
         <div className="relative mt-6 h-64 w-full overflow-hidden rounded-card border border-border bg-card">

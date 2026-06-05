@@ -27,7 +27,7 @@ export function AdminUserSegmentChart({ segments }: AdminUserSegmentChartProps) 
     value: s.count,
     color: PALETTE[i % PALETTE.length],
     activeLast30d: s.activeLast30d,
-    avgXp: s.avgXp,
+    avgCompletedTestsPerUser: s.avgCompletedTestsPerUser,
   }));
 
   return (
@@ -73,10 +73,10 @@ export function AdminUserSegmentChart({ segments }: AdminUserSegmentChartProps) 
             <tr className="border-b border-border bg-card">
               <Th>Segment</Th>
               <Th>Liczba</Th>
+              <Th>%Total</Th>
               <Th>%</Th>
               <Th>Akt. 30d</Th>
-              <Th>Śr. XP</Th>
-              <Th>Śr. streak</Th>
+              <Th>Śr. testów / user</Th>
             </tr>
           </thead>
           <tbody>
@@ -110,6 +110,16 @@ export function AdminUserSegmentChart({ segments }: AdminUserSegmentChartProps) 
                     <td className="px-3 py-2 font-body text-body-sm text-secondary tabular-nums">
                       {s.count}
                     </td>
+                    <td
+                      className={cn(
+                        "px-3 py-2 font-body text-body-sm tabular-nums",
+                        s.pctOfYearCapacity != null && s.pctOfYearCapacity >= 10
+                          ? "text-brand-gold"
+                          : "text-muted",
+                      )}
+                    >
+                      {s.pctOfYearCapacity != null ? `${s.pctOfYearCapacity}%` : "—"}
+                    </td>
                     <td className="px-3 py-2 font-body text-body-sm text-secondary tabular-nums">
                       {pct}%
                     </td>
@@ -117,10 +127,7 @@ export function AdminUserSegmentChart({ segments }: AdminUserSegmentChartProps) 
                       {s.activeLast30d}
                     </td>
                     <td className="px-3 py-2 font-body text-body-sm text-secondary tabular-nums">
-                      {s.avgXp}
-                    </td>
-                    <td className="px-3 py-2 font-body text-body-sm text-secondary tabular-nums">
-                      {s.avgStreak}
+                      {s.avgCompletedTestsPerUser}
                     </td>
                   </tr>
                 );

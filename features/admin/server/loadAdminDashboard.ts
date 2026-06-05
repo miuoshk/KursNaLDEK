@@ -17,10 +17,18 @@ export type AdminUserSegment = {
   year: number | null;
   label: string;
   count: number;
+  /** Zarejestrowani / roczna liczebność rocznika na kierunku (LEK 288, STOMA 120). */
+  pctOfYearCapacity: number | null;
   activeLast7d: number;
   activeLast30d: number;
-  avgXp: number;
-  avgStreak: number;
+  /** Ukończone sesje (testy) w 30 dniach / liczba userów w segmencie. */
+  avgCompletedTestsPerUser: number;
+};
+
+/** Szacowana liczebność rocznika na kierunku (do %Total). */
+const YEAR_COHORT_CAPACITY: Record<Exclude<TrackKey, "inny">, number> = {
+  lekarski: 288,
+  stomatologia: 120,
 };
 
 export type AdminHourBucket = {
@@ -416,9 +424,23 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     return created !== null && new Date(created).getTime() >= new Date(since30d).getTime();
   }).length;
 
+  const userCompletedTests30d = new Map<string, number>();
+  for (const row of sessions30d) {
+    if (!row.user_id) continue;
+    if (row.is_completed !== true && row.completed_at === null) continue;
+    userCompletedTests30d.set(
+      row.user_id,
+      (userCompletedTests30d.get(row.user_id) ?? 0) + 1,
+    );
+  }
+
   const segmentBuckets = new Map<
     string,
-    AdminUserSegment & { activeIds7: Set<string>; activeIds30: Set<string> }
+    AdminUserSegment & {
+      activeIds7: Set<string>;
+      activeIds30: Set<string>;
+      completedTestsSum: number;
+    }
   >();
   for (const [uid, profile] of profileMap) {
     const key = `${profile.track}|${profile.year ?? "-"}`;
@@ -427,31 +449,44 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       year: profile.year,
       label: trackYearLabel(profile.track, profile.year),
       count: 0,
+      pctOfYearCapacity: null,
       activeLast7d: 0,
       activeLast30d: 0,
-      avgXp: 0,
-      avgStreak: 0,
+      avgCompletedTestsPerUser: 0,
       activeIds7: new Set<string>(),
       activeIds30: new Set<string>(),
+      completedTestsSum: 0,
     };
     bucket.count += 1;
-    bucket.avgXp += profile.xp;
-    bucket.avgStreak += profile.streak;
+    bucket.completedTestsSum += userCompletedTests30d.get(uid) ?? 0;
     if (activeUsersSet7d.has(uid)) bucket.activeIds7.add(uid);
     if (activeUsersSet30d.has(uid)) bucket.activeIds30.add(uid);
     segmentBuckets.set(key, bucket);
   }
   const userSegments: AdminUserSegment[] = Array.from(segmentBuckets.values())
-    .map((b) => ({
-      track: b.track,
-      year: b.year,
-      label: b.label,
-      count: b.count,
-      activeLast7d: b.activeIds7.size,
-      activeLast30d: b.activeIds30.size,
-      avgXp: b.count > 0 ? Math.round(b.avgXp / b.count) : 0,
-      avgStreak: b.count > 0 ? Math.round((b.avgStreak / b.count) * 10) / 10 : 0,
-    }))
+    .map((b) => {
+      const capacity =
+        b.track === "lekarski" || b.track === "stomatologia"
+          ? YEAR_COHORT_CAPACITY[b.track]
+          : null;
+      const pctOfYearCapacity =
+        capacity && b.year != null
+          ? Number(((b.count / capacity) * 100).toFixed(1))
+          : null;
+      return {
+        track: b.track,
+        year: b.year,
+        label: b.label,
+        count: b.count,
+        pctOfYearCapacity,
+        activeLast7d: b.activeIds7.size,
+        activeLast30d: b.activeIds30.size,
+        avgCompletedTestsPerUser:
+          b.count > 0
+            ? Number((b.completedTestsSum / b.count).toFixed(1))
+            : 0,
+      };
+    })
     .sort((a, b) => {
       if (a.track !== b.track) return TRACK_LABEL[a.track].localeCompare(TRACK_LABEL[b.track]);
       return (a.year ?? 99) - (b.year ?? 99);

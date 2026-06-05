@@ -1,16 +1,31 @@
 import type { LucideIcon } from "lucide-react";
+import {
+  formatAdminCount,
+  formatAdminDelta,
+  formatAdminHours,
+} from "@/features/admin/lib/formatAdminMetric";
 import { cn } from "@/lib/utils";
 
 type Tone = "neutral" | "gold" | "sage" | "success" | "warning" | "error";
 
+type ValueFormat = "count" | "hours" | "text";
+
 type AdminKpiCardProps = {
   label: string;
   value: string | number;
+  valueFormat?: ValueFormat;
   icon: LucideIcon;
   tone?: Tone;
   hint?: string;
-  delta?: { value: number; label: string } | null;
+  delta?: { value: number; label: string; decimals?: number } | null;
 };
+
+function formatValue(value: string | number, format: ValueFormat): string {
+  if (typeof value === "string") return value;
+  if (format === "hours") return formatAdminHours(value);
+  if (format === "count") return formatAdminCount(value);
+  return String(value);
+}
 
 const toneIconBg: Record<Tone, string> = {
   neutral: "bg-white/5 text-secondary",
@@ -42,11 +57,13 @@ const toneValueColor: Record<Tone, string> = {
 export function AdminKpiCard({
   label,
   value,
+  valueFormat = "text",
   icon: Icon,
   tone = "neutral",
   hint,
   delta,
 }: AdminKpiCardProps) {
+  const displayValue = formatValue(value, valueFormat);
   return (
     <div
       className={cn(
@@ -72,8 +89,7 @@ export function AdminKpiCard({
                 : "bg-error/15 text-error",
             )}
           >
-            {delta.value >= 0 ? "+" : ""}
-            {delta.value}
+            {formatAdminDelta(delta.value, delta.decimals ?? 0)}
             {delta.label ? ` ${delta.label}` : ""}
           </span>
         )}
@@ -88,7 +104,7 @@ export function AdminKpiCard({
             toneValueColor[tone],
           )}
         >
-          {value}
+          {displayValue}
         </p>
         {hint && (
           <p className="mt-1 font-body text-body-xs text-muted">{hint}</p>

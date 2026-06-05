@@ -34,6 +34,7 @@ import {
 import { persistLastSessionQuestionCount } from "@/features/session/server/persistLastSessionQuestionCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
 
 const schema = z.object({
   subjectId: z.string().optional(),
@@ -183,6 +184,9 @@ export async function startSession(
       subjectRow = subject;
       subjectTrack = normalizeTrack(subject.track as string);
       viewerTrack = subjectTrack;
+      if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
+        return { ok: false, message: "Nie znaleziono przedmiotu." };
+      }
     }
 
     let chosenIds: string[] = [];

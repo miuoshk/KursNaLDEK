@@ -440,7 +440,7 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
   ('stoma-biologia',     'Biologia z genetyką',       'Biologia',      'dna',            1, 'stomatologia', 'knnp', 5),
   ('stoma-chemia',       'Chemia medyczna',           'Chemia',        'flask-conical',  1, 'stomatologia', 'knnp', 6);
 
--- Rok 2
+-- Rok 2 (stoma-biochemia / stoma-fizjologia ukryte w UI — patrz catalogSubjectVisibility.ts)
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-patologia',    'Patomorfologia',            'Patologia',     'scan',           2, 'stomatologia', 'knnp', 7),
   ('stoma-osce',         'OSCE',                      'OSCE',          'clipboard-check', 2, 'stomatologia', 'knnp', 8),

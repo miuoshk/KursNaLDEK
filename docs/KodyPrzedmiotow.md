@@ -60,7 +60,7 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 | `stoma-chemia`       | Chemia medyczna               | —             | |
 | `stoma-socjologia`   | Socjologia medycyny           | `SOC-`        | Patrz `FormatPisaniaPytan-Socjologia.md` |
 
-**Anatomia — tematy (`topics.id`):**
+**Anatomia — tematy (`topics.id`, kanon `anatomia`, oba kierunki):**
 
 | ID        | Nazwa |
 |-----------|-------|
@@ -69,8 +69,29 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 | `ANA-NAC` | Naczynia głowy i szyi |
 | `ANA-NER` | Nerwy czaszkowe |
 | `ANA-JAM` | Jama ustna i jej struktury |
+| `ANA-OUN` | Ośrodkowy układ nerwowy |
+| `ANA-OBW` | Nerwy obwodowe i sploty |
+| `ANA-KON` | Anatomia kończyn |
+| `ANA-TUL` | Anatomia tułowia |
+| `ANA-TRZ` | Trzewia (serce, płuca, jelita, UP) |
+| `ANA-ZAL` | Zaliczenie końcowe |
 
-**Biochemia — tematy:**
+Prefiks `id` pytania zaliczenia: `ana-zal-`. Kafelek **Zaliczenie końcowe** jest ostatni na liście tematów (`display_order` 11).
+
+### Rok 2
+
+| `subjects.id`       | Nazwa                         | Skrót topików |
+|---------------------|-------------------------------|---------------|
+| `stoma-patologia`   | Patomorfologia                | —             |
+| `stoma-osce`        | OSCE                          | —             |
+| `stoma-biochemia`   | Biochemia                     | `BIO-`        | **Ukryte w UI** (`catalogSubjectVisibility.ts`) |
+| `stoma-fizjologia`  | Fizjologia                    | `PHYS-`       | **Ukryte w UI**; treść w `fizjologia` (shared) |
+| `stoma-mikrobio`    | Mikrobiologia                 | `MICRO-`      | Treść w `mikrobiologia` (shared) |
+| `stoma-mikrobio-ju` | Mikrobiologia jamy ustnej     | `MJU-`        |
+
+`stoma-biochemia` i `stoma-fizjologia` zostają w DB (plan na przyszły rok), ale nie są widoczne na stomatologii — STOMA r.2 jest darmowy, a współdzielona treść nie może omijać paywalla LEK r.2.
+
+**Biochemia (`stoma-biochemia`) — tematy:**
 
 | ID        | Nazwa |
 |-----------|-------|
@@ -80,17 +101,6 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 | `BIO-LIP` | Metabolizm lipidów |
 | `BIO-ETC` | Łańcuch oddechowy i fosforylacja oksydacyjna |
 | `BIO-NK`  | Kwasy nukleinowe i replikacja DNA |
-
-### Rok 2
-
-| `subjects.id`       | Nazwa                         | Skrót topików |
-|---------------------|-------------------------------|---------------|
-| `stoma-patologia`   | Patomorfologia                | —             |
-| `stoma-osce`        | OSCE                          | —             |
-| `stoma-biochemia`   | Biochemia                     | `BIO-`        |
-| `stoma-fizjologia`  | Fizjologia                    | `PHYS-`       | Treść w `fizjologia` (shared) |
-| `stoma-mikrobio`    | Mikrobiologia                 | `MICRO-`      | Treść w `mikrobiologia` (shared) |
-| `stoma-mikrobio-ju` | Mikrobiologia jamy ustnej     | `MJU-`        |
 
 **Mikrobiologia JU — tematy (`topics.id`):**
 
@@ -132,7 +142,7 @@ Prefiks `id` pytania: `mju-c01-`, `mju-kz1-`, `mju-zal-` (małe litery). Kolejno
 | 1   | `lek-histologia`       | Histologia           | Treść w `histologia` (shared) |
 | 1   | `lek-biologia-mol`     | Biologia molekularna |
 | 1   | `lek-prof-humanizm`    | Profesjonalizm i humanizm w medycynie | `PHUM-` | Jeden temat: `PHUM-ZAL` — patrz `FormatPisaniaPytan-ProfesjonalizmHumanizm.md` |
-| 2   | `lek-biochemia`        | Biochemia            |
+| 2   | `lek-biochemia`        | Biochemia            | `BIO-` |
 | 2   | `lek-fizjologia`       | Fizjologia           | Treść w `fizjologia` (shared) |
 | 2   | `lek-angielski`        | Język angielski      |
 | 2   | `lek-immunologia`      | Immunologia          |

@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
 import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
 import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import {
   countQuestionsByTopic,
@@ -74,6 +75,15 @@ export async function loadSubjectDashboard(
     }
 
     if (!subject) {
+      return {
+        ok: false,
+        kind: "not_found",
+        message: "Nie znaleziono przedmiotu.",
+      };
+    }
+
+    const subjectTrack = normalizeTrack(subject.track as string);
+    if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
       return {
         ok: false,
         kind: "not_found",

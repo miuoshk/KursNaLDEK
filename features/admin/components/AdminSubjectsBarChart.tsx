@@ -61,9 +61,20 @@ export function AdminSubjectsBarChart({ data }: AdminSubjectsBarChartProps) {
           />
           <Tooltip
             {...statTooltipProps}
-            formatter={(value, name) => {
+            formatter={(value, name, item) => {
               const v = typeof value === "number" ? value : Number(value) || 0;
-              if (name === "sessions") return [v, "Sesje"];
+              if (name === "sessions") {
+                const breakdown = item.payload.trackBreakdown as
+                  | { track: string; sessions: number }[]
+                  | undefined;
+                if (breakdown && breakdown.length > 0) {
+                  const detail = breakdown
+                    .map((b) => `${b.track}: ${b.sessions}`)
+                    .join(", ");
+                  return [`${v} (${detail})`, "Sesje"];
+                }
+                return [v, "Sesje"];
+              }
               if (name === "questions") return [v, "Pytania"];
               if (name === "avgAccuracy") return [`${v}%`, "Śr. poprawność"];
               return [v, String(name)];

@@ -24,8 +24,6 @@ type SortField =
   | "sessions"
   | "questions"
   | "totalPlatformMinutes"
-  | "totalTestMinutes"
-  | "avgTestDurationMinutes"
   | "avgAccuracy";
 
 type SortDir = "asc" | "desc";
@@ -132,15 +130,13 @@ export function AdminUserBenchmarkTable({ rows }: Props) {
               <SortableTh label="Sesje (30d)" field="sessions" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
               <SortableTh label="Pytania" field="questions" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
               <SortableTh label="Czas na platformie" field="totalPlatformMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
-              <SortableTh label="Czas na testach" field="totalTestMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
-              <SortableTh label="Śr. czas testu" field="avgTestDurationMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
               <SortableTh label="Śr. poprawność" field="avgAccuracy" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
             </tr>
           </thead>
           <tbody>
             {visible.length === 0 ? (
               <tr>
-                <td colSpan={8} className="px-3 py-8 text-center font-body text-body-sm text-muted">
+                <td colSpan={6} className="px-3 py-8 text-center font-body text-body-sm text-muted">
                   Brak danych użytkowników dla wybranych filtrów.
                 </td>
               </tr>
@@ -176,12 +172,6 @@ export function AdminUserBenchmarkTable({ rows }: Props) {
                   </td>
                   <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
                     {formatMinutes(row.totalPlatformMinutes)}
-                  </td>
-                  <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
-                    {formatMinutes(row.totalTestMinutes)}
-                  </td>
-                  <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
-                    {row.avgTestDurationMinutes ? `${row.avgTestDurationMinutes} min` : "—"}
                   </td>
                   <td
                     className={cn(

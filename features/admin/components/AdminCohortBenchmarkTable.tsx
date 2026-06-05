@@ -11,8 +11,6 @@ type SortField =
   | "activeCount"
   | "paidPct"
   | "avgPlatformMinutes"
-  | "avgTestMinutes"
-  | "avgTestDurationMinutes"
   | "avgAccuracy";
 
 type SortDir = "asc" | "desc";
@@ -52,15 +50,13 @@ export function AdminCohortBenchmarkTable({ rows }: { rows: AdminCohortBenchmark
             <SortableTh label="Aktywni (30d)" field="activeCount" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
             <SortableTh label="Aktywne suby" field="paidPct" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
             <SortableTh label="Śr. czas / user" field="avgPlatformMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
-            <SortableTh label="Śr. czas testów" field="avgTestMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
-            <SortableTh label="Śr. czas testu" field="avgTestDurationMinutes" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
             <SortableTh label="Śr. poprawność" field="avgAccuracy" sortBy={sortBy} sortDir={sortDir} onClick={toggleSort} />
           </tr>
         </thead>
         <tbody>
           {sorted.length === 0 ? (
             <tr>
-              <td colSpan={8} className="px-3 py-8 text-center font-body text-body-sm text-muted">
+                <td colSpan={6} className="px-3 py-8 text-center font-body text-body-sm text-muted">
                 Brak danych kohort.
               </td>
             </tr>
@@ -88,12 +84,6 @@ export function AdminCohortBenchmarkTable({ rows }: { rows: AdminCohortBenchmark
                 </td>
                 <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
                   {formatMinutes(row.avgPlatformMinutes)}
-                </td>
-                <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
-                  {formatMinutes(row.avgTestMinutes)}
-                </td>
-                <td className="px-3 py-3 font-body text-body-sm text-secondary tabular-nums">
-                  {row.avgTestDurationMinutes ? `${row.avgTestDurationMinutes} min` : "—"}
                 </td>
                 <td
                   className={cn(

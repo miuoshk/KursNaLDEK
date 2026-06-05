@@ -78,6 +78,7 @@ export type SharedProfileRow = {
 export type SharedSubjectRow = {
   id: string;
   name: string | null;
+  short_name: string | null;
   track: string | null;
   year: number | null;
 };
@@ -148,7 +149,7 @@ export const getAllSubjects = cache(async (): Promise<SharedSubjectRow[]> => {
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("subjects")
-    .select("id, name, track, year");
+    .select("id, name, short_name, track, year");
   if (error) {
     console.error("[loadAdminShared] subjects error", error.message);
     return [];

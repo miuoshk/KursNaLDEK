@@ -1,4 +1,43 @@
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+
+const STATS_PAGE_SIZE = 1000;
+
+async function fetchQuestionStatsAggregate(
+  questionIds: string[],
+): Promise<Map<string, { answered: number; correct: number }>> {
+  const statsMap = new Map<string, { answered: number; correct: number }>();
+  if (questionIds.length === 0) return statsMap;
+
+  const admin = createAdminClient();
+  let offset = 0;
+  while (true) {
+    const { data, error } = await admin
+      .from("user_question_progress")
+      .select("question_id, times_answered, times_correct")
+      .in("question_id", questionIds)
+      .range(offset, offset + STATS_PAGE_SIZE - 1);
+
+    if (error) {
+      console.error("[loadAdminQuestions] stats", error.message);
+      break;
+    }
+
+    const batch = data ?? [];
+    for (const s of batch) {
+      const qid = s.question_id as string;
+      const existing = statsMap.get(qid) ?? { answered: 0, correct: 0 };
+      existing.answered += (s.times_answered as number) ?? 0;
+      existing.correct += (s.times_correct as number) ?? 0;
+      statsMap.set(qid, existing);
+    }
+
+    if (batch.length < STATS_PAGE_SIZE) break;
+    offset += STATS_PAGE_SIZE;
+  }
+
+  return statsMap;
+}
 
 export type AdminQuestion = {
   id: string;
@@ -124,23 +163,8 @@ export async function loadAdminQuestions(params: {
   const allRows = rows ?? [];
   const qIds = allRows.map((r) => r.id as string);
 
-  const statsMap = new Map<string, { answered: number; correct: number }>();
-  if (qIds.length > 0) {
-    const { data: statsRows } = await supabase
-      .from("user_question_progress")
-      .select("question_id, times_answered, times_correct")
-      .in("question_id", qIds);
-
-    if (statsRows) {
-      for (const s of statsRows) {
-        const qid = s.question_id as string;
-        const existing = statsMap.get(qid) ?? { answered: 0, correct: 0 };
-        existing.answered += (s.times_answered as number) ?? 0;
-        existing.correct += (s.times_correct as number) ?? 0;
-        statsMap.set(qid, existing);
-      }
-    }
-  }
+  // RLS na user_question_progress zwraca tylko własny postęp — agregujemy service-role.
+  const statsMap = await fetchQuestionStatsAggregate(qIds);
 
   const mapped: AdminQuestion[] = allRows.map((r) => {
     const topic = r.topics as unknown as { name: string; subject_id: string } | null;

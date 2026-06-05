@@ -182,7 +182,7 @@ export async function DashboardSections() {
       <section>
         <SectionHeader
           title="Co najpopularniejsze"
-          subtitle="Top 10 przedmiotów według liczby sesji (30 dni)"
+          subtitle="Top 10 przedmiotów wg sesji (30 dni) — scalone po nazwie (LEK + STOMA)"
         />
         <div className="rounded-card border border-border bg-card p-5">
           <AdminSubjectsBarChart data={data.subjectPopularityLast30d} />
@@ -247,7 +247,7 @@ export async function DashboardSections() {
       <section>
         <SectionHeader
           title="Kohorty: kierunek × rok"
-          subtitle="Średni czas na platformie, na testach i % aktywnych subskrypcji (30 dni)"
+          subtitle="Średni czas na platformie i % aktywnych subskrypcji (30 dni)"
         />
         <AdminCohortBenchmarkTable rows={data.cohortBenchmarksLast30d} />
       </section>

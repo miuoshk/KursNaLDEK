@@ -8,6 +8,7 @@ import {
   getStudySessionsLast90d,
   getTotalQuestionsCount,
 } from "@/features/admin/server/loadAdminShared";
+import { mergeSubjectPopularityByShortName } from "@/features/admin/server/mergeSubjectPopularity";
 
 export type TrackKey = "lekarski" | "stomatologia" | "inny";
 
@@ -45,13 +46,12 @@ export type AdminHeatmapCell = {
 };
 
 export type AdminSubjectPopularity = {
-  subjectId: string;
+  groupKey: string;
   subjectName: string;
-  track: string | null;
-  year: number | null;
   sessions: number;
   questions: number;
   avgAccuracy: number;
+  trackBreakdown: { track: string; sessions: number }[];
 };
 
 export type AdminTrackPerformance = {
@@ -285,11 +285,13 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
 
   const subjectMap = new Map<
     string,
-    { name: string; track: string | null; year: number | null }
+    { name: string; shortName: string; track: string | null; year: number | null }
   >();
   for (const s of subjects) {
+    const name = (s.name as string) ?? (s.id as string);
     subjectMap.set(s.id as string, {
-      name: (s.name as string) ?? (s.id as string),
+      name,
+      shortName: ((s.short_name as string | null) ?? name).trim(),
       track: (s.track as string | null) ?? null,
       year: (s.year as number | null) ?? null,
     });
@@ -563,26 +565,23 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     s.accSum += safeAccuracy(row);
     subjectMap30.set(row.subject_id, s);
   }
-  const subjectPopularityLast30d: AdminSubjectPopularity[] = Array.from(
-    subjectMap30.entries(),
-  )
-    .map(([subjectId, stats]) => {
-      const meta = subjectMap.get(subjectId);
-      return {
-        subjectId,
-        subjectName: meta?.name ?? subjectId,
-        track: meta?.track ?? null,
-        year: meta?.year ?? null,
-        sessions: stats.sessions,
-        questions: stats.questions,
-        avgAccuracy:
-          stats.sessions > 0
-            ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
-            : 0,
-      };
-    })
-    .sort((a, b) => b.sessions - a.sessions)
-    .slice(0, 10);
+  const subjectPopularityLast30d: AdminSubjectPopularity[] =
+    mergeSubjectPopularityByShortName(
+      Array.from(subjectMap30.entries()).map(([subjectId, stats]) => {
+        const meta = subjectMap.get(subjectId);
+        return {
+          subjectId,
+          subjectName: meta?.name ?? subjectId,
+          shortName: meta?.shortName ?? subjectId,
+          track: meta?.track ?? null,
+          year: meta?.year ?? null,
+          sessions: stats.sessions,
+          questions: stats.questions,
+          accSum: stats.accSum,
+        };
+      }),
+      10,
+    );
 
   const trackPerfMap = new Map<
     string,

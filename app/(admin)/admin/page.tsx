@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { AdminCohortSubjectChart } from "@/features/admin/components/AdminCohortSubjectChart";
 import { AdminTrendChart } from "@/features/admin/components/AdminTrendChart";
 import { DashboardSections } from "@/features/admin/components/sections/DashboardSections";
 import { FinanceSection } from "@/features/admin/components/sections/FinanceSection";
@@ -38,7 +39,7 @@ export default function AdminDashboardPage() {
           <AdminTrendChart metric="time" />
           <AdminTrendChart metric="answers" />
           <AdminTrendChart metric="users" />
-          <AdminTrendChart metric="questions" />
+          <AdminCohortSubjectChart />
           <AdminTrendChart metric="accuracy" />
         </div>
       </section>

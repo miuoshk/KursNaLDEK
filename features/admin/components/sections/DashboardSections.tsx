@@ -33,6 +33,12 @@ function formatHour(h: number): string {
   return `${h.toString().padStart(2, "0")}:00`;
 }
 
+function weekOverWeekDelta(current: number, previous: number): { value: number; label: string } | null {
+  if (current === 0 && previous === 0) return null;
+  const delta = current - previous;
+  return { value: delta, label: "vs poprz. tydz." };
+}
+
 export async function DashboardSections() {
   const data = await loadAdminDashboard();
 
@@ -65,6 +71,10 @@ export async function DashboardSections() {
             icon={Activity}
             tone="sage"
             hint={`${data.uniqueActiveUsersLast30d} aktywnych w 30 dniach`}
+            delta={weekOverWeekDelta(
+              data.uniqueActiveUsersLast7d,
+              data.uniqueActiveUsersPrev7d,
+            )}
           />
           <AdminKpiCard
             label="Sesje (7 dni)"
@@ -72,12 +82,17 @@ export async function DashboardSections() {
             icon={Zap}
             tone="gold"
             hint={`${data.sessionsToday} dzisiaj`}
+            delta={weekOverWeekDelta(data.sessionsLast7d, data.sessionsPrev7d)}
           />
           <AdminKpiCard
-            label="Pytania rozwiązane (7d)"
+            label="Odpowiedzi (7d)"
             value={data.answeredQuestionsLast7d}
             icon={BookOpen}
             hint={`${data.answeredQuestionsLast30d} w 30 dniach`}
+            delta={weekOverWeekDelta(
+              data.answeredQuestionsLast7d,
+              data.answeredQuestionsPrev7d,
+            )}
           />
           <AdminKpiCard
             label="Śr. poprawność (7d)"
@@ -98,6 +113,7 @@ export async function DashboardSections() {
             icon={Clock}
             tone="sage"
             hint={`${data.studyHoursLast30d} h w 30 dniach`}
+            delta={weekOverWeekDelta(data.studyHoursLast7d, data.studyHoursPrev7d)}
           />
           <AdminKpiCard
             label="Szczyt aktywności"

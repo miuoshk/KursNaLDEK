@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useState, useTransition } from "react";
-import Link from "next/link";
-import { ExternalLink, Trash2 } from "lucide-react";
+import { ExternalLink, MessageSquare, Pencil, Trash2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { adminDeleteDiscussionComment } from "@/features/admin/server/adminDiscussionActions";
 import type { AdminDiscussionRow } from "@/features/admin/server/loadAdminDiscussions";
+import { AdminDiscussionPreviewDialog } from "@/features/admin/components/AdminDiscussionPreviewDialog";
+import { AdminEditQuestionDialog } from "@/features/admin/components/AdminEditQuestionDialog";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleString("pl-PL", {
@@ -30,6 +31,8 @@ export function AdminDiscussionsTable({
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(currentSearch ?? "");
   const [isPending, startTransition] = useTransition();
+  const [previewQuestionId, setPreviewQuestionId] = useState<string | null>(null);
+  const [editingQuestionId, setEditingQuestionId] = useState<string | null>(null);
 
   const handleSearch = useCallback(() => {
     startTransition(() => {
@@ -50,6 +53,11 @@ export function AdminDiscussionsTable({
     [router],
   );
 
+  const openQuestionEditor = useCallback((questionId: string) => {
+    setPreviewQuestionId(null);
+    setEditingQuestionId(questionId);
+  }, []);
+
   return (
     <div className="mt-6">
       <div className="mb-4 flex items-center gap-3">
@@ -58,7 +66,7 @@ export function AdminDiscussionsTable({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          placeholder="Szukaj po treści, pytaniu lub autorze…"
+          placeholder="Szukaj po treści, pytaniu, ID lub autorze…"
           className="flex-1 rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted"
         />
         <button
@@ -88,7 +96,7 @@ export function AdminDiscussionsTable({
                 Autor
               </th>
               <th className="px-3 py-3 font-body text-body-xs uppercase tracking-widest text-muted">
-                Akcja
+                Akcje
               </th>
             </tr>
           </thead>
@@ -108,29 +116,64 @@ export function AdminDiscussionsTable({
                   <td className="whitespace-nowrap px-3 py-3 font-body text-body-xs text-secondary">
                     {formatDate(row.createdAt)}
                   </td>
-                  <td className="max-w-[300px] truncate px-3 py-3 font-body text-body-sm text-primary">
-                    {row.questionTextShort}
+                  <td className="max-w-[300px] px-3 py-3 font-body text-body-sm text-primary">
+                    <button
+                      type="button"
+                      onClick={() => openQuestionEditor(row.questionId)}
+                      className="block max-w-full truncate text-left text-brand-gold transition-colors hover:text-white"
+                      title={row.questionTextShort}
+                    >
+                      {row.questionTextShort}
+                    </button>
+                    <span className="mt-0.5 block font-body text-body-xs text-muted">
+                      {row.questionId}
+                    </span>
                   </td>
-                  <td className="max-w-[520px] truncate px-3 py-3 font-body text-body-sm text-secondary">
-                    {row.content}
+                  <td className="max-w-[520px] px-3 py-3 font-body text-body-sm text-secondary">
+                    <button
+                      type="button"
+                      onClick={() => setPreviewQuestionId(row.questionId)}
+                      className="block max-w-full truncate text-left transition-colors hover:text-primary"
+                      title={row.content}
+                    >
+                      {row.content}
+                    </button>
                   </td>
                   <td className="px-3 py-3 font-body text-body-sm text-secondary">{row.userName}</td>
                   <td className="px-3 py-3">
                     <div className="flex flex-col gap-1">
-                      <Link
-                        href={`/admin/pytania?q=${encodeURIComponent(row.questionId)}`}
+                      <button
+                        type="button"
+                        onClick={() => setPreviewQuestionId(row.questionId)}
+                        className="inline-flex items-center gap-1 font-body text-body-xs text-brand-sage transition-colors hover:text-white"
+                      >
+                        <MessageSquare className="size-3.5 shrink-0" aria-hidden />
+                        Podejrzyj dyskusję
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => openQuestionEditor(row.questionId)}
                         className="inline-flex items-center gap-1 font-body text-body-xs text-brand-gold transition-colors hover:text-white"
                       >
+                        <Pencil className="size-3.5 shrink-0" aria-hidden />
+                        Edytuj pytanie
+                      </button>
+                      <a
+                        href={`/admin/pytania?q=${encodeURIComponent(row.questionId)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-body text-body-xs text-secondary transition-colors hover:text-white"
+                      >
                         <ExternalLink className="size-3.5 shrink-0" aria-hidden />
-                        Otwórz pytanie
-                      </Link>
+                        Otwórz w nowej karcie
+                      </a>
                       <button
                         type="button"
                         onClick={() => void handleDelete(row.id)}
                         className="inline-flex items-center gap-1 font-body text-body-xs text-error transition-colors hover:text-white"
                       >
                         <Trash2 className="size-3.5" aria-hidden />
-                        Usuń
+                        Usuń komentarz
                       </button>
                     </div>
                   </td>
@@ -140,6 +183,24 @@ export function AdminDiscussionsTable({
           </tbody>
         </table>
       </div>
+
+      <AdminDiscussionPreviewDialog
+        questionId={previewQuestionId}
+        open={previewQuestionId !== null}
+        onOpenChange={(open) => {
+          if (!open) setPreviewQuestionId(null);
+        }}
+        onOpenQuestion={openQuestionEditor}
+      />
+
+      <AdminEditQuestionDialog
+        questionId={editingQuestionId}
+        open={editingQuestionId !== null}
+        onOpenChange={(open) => {
+          if (!open) setEditingQuestionId(null);
+        }}
+        onSaved={() => router.refresh()}
+      />
     </div>
   );
 }

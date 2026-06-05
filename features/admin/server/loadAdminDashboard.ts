@@ -4,6 +4,7 @@ import {
   getAllErrorReports,
   getAllProfiles,
   getAllSubjects,
+  getSessionAnswersCountSince,
   getStudySessionsLast90d,
   getTotalQuestionsCount,
 } from "@/features/admin/server/loadAdminShared";
@@ -140,16 +141,21 @@ export type AdminDashboardData = {
   sessionsLast30d: number;
   answeredQuestionsLast7d: number;
   answeredQuestionsLast30d: number;
+  answeredQuestionsPrev7d: number;
   completedTestsLast7d: number;
 
   averageAccuracyLast7d: number;
   averageAccuracyLast30d: number;
   studyHoursLast7d: number;
   studyHoursLast30d: number;
+  studyHoursPrev7d: number;
   averageSessionMinutesLast7d: number;
 
   uniqueActiveUsersLast7d: number;
   uniqueActiveUsersLast30d: number;
+  uniqueActiveUsersPrev7d: number;
+
+  sessionsPrev7d: number;
 
   newRegistrationsLast7d: number;
   newRegistrationsLast30d: number;
@@ -229,18 +235,34 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   startOfToday.setHours(0, 0, 0, 0);
   const todayMs = startOfToday.getTime();
   const since7d = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+  const since7dMs = new Date(since7d).getTime();
   const since14d = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString();
+  const since14dMs = new Date(since14d).getTime();
   const since30d = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
   const since30dMs = new Date(since30d).getTime();
 
-  const [totalQuestions, allSessions, allProfiles, allSubjects, allReports] =
-    await Promise.all([
-      getTotalQuestionsCount(),
-      getStudySessionsLast90d(),
-      getAllProfiles(),
-      getAllSubjects(),
-      getAllErrorReports(),
-    ]);
+  const [
+    totalQuestions,
+    allSessions,
+    allProfiles,
+    allSubjects,
+    allReports,
+    answersCount7d,
+    answersCount30d,
+    answersCount14d,
+  ] = await Promise.all([
+    getTotalQuestionsCount(),
+    getStudySessionsLast90d(),
+    getAllProfiles(),
+    getAllSubjects(),
+    getAllErrorReports(),
+    getSessionAnswersCountSince(since7d),
+    getSessionAnswersCountSince(since30d),
+    getSessionAnswersCountSince(since14d),
+  ]);
+  const answeredQuestionsLast7d = answersCount7d;
+  const answeredQuestionsLast30d = answersCount30d;
+  const answeredQuestionsPrev7d = Math.max(0, answersCount14d - answersCount7d);
 
   const sessions30d = allSessions.filter((row) => {
     if (!row.started_at) return false;
@@ -298,21 +320,17 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   }
 
   const sessions7d = sessions30d.filter(
-    (row) =>
-      row.started_at !== null && new Date(row.started_at).getTime() >= new Date(since7d).getTime(),
+    (row) => row.started_at !== null && new Date(row.started_at).getTime() >= since7dMs,
   );
+  const sessionsInPrev7d = sessions30d.filter((row) => {
+    if (!row.started_at) return false;
+    const t = new Date(row.started_at).getTime();
+    return t >= since14dMs && t < since7dMs;
+  });
 
   const sessionsLast7d = sessions7d.length;
   const sessionsLast30d = sessions30d.length;
-
-  const answeredQuestionsLast7d = sessions7d.reduce(
-    (sum, row) => sum + (row.total_questions ?? 0),
-    0,
-  );
-  const answeredQuestionsLast30d = sessions30d.reduce(
-    (sum, row) => sum + (row.total_questions ?? 0),
-    0,
-  );
+  const sessionsPrev7d = sessionsInPrev7d.length;
   const completedTestsLast7d = sessions7d.filter(
     (row) => row.is_completed === true || row.completed_at !== null,
   ).length;
@@ -325,8 +343,13 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     (sum, row) => sum + (row.duration_seconds ?? 0),
     0,
   );
+  const totalDurationSecPrev7d = sessionsInPrev7d.reduce(
+    (sum, row) => sum + (row.duration_seconds ?? 0),
+    0,
+  );
   const studyHoursLast7d = Number((totalDurationSec7d / 3600).toFixed(1));
   const studyHoursLast30d = Number((totalDurationSec30d / 3600).toFixed(1));
+  const studyHoursPrev7d = Number((totalDurationSecPrev7d / 3600).toFixed(1));
   const averageSessionMinutesLast7d =
     sessionsLast7d > 0
       ? Number(((totalDurationSec7d / 60) / sessionsLast7d).toFixed(1))
@@ -345,6 +368,7 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
 
   const activeUsersSet7d = new Set<string>();
   const activeUsersSet30d = new Set<string>();
+  const activeUsersSetPrev7d = new Set<string>();
   const userSessionCounts30d = new Map<string, number>();
   for (const row of sessions30d) {
     if (!row.user_id) continue;
@@ -357,8 +381,12 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   for (const row of sessions7d) {
     if (row.user_id) activeUsersSet7d.add(row.user_id);
   }
+  for (const row of sessionsInPrev7d) {
+    if (row.user_id) activeUsersSetPrev7d.add(row.user_id);
+  }
   const uniqueActiveUsersLast7d = activeUsersSet7d.size;
   const uniqueActiveUsersLast30d = activeUsersSet30d.size;
+  const uniqueActiveUsersPrev7d = activeUsersSetPrev7d.size;
 
   let topUser: AdminDashboardData["topUser"] = null;
   let topUid = "";
@@ -729,19 +757,23 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     current.accSum += safeAccuracy(row);
     trendMap.set(day, current);
   }
-  const dailyTrendLast14d: AdminDailyTrendPoint[] = Array.from(trendMap.entries())
-    .map(([date, stats]) => ({
-      date,
-      sessions: stats.sessions,
-      users: stats.users.size,
-      questions: stats.questions,
-      studyHours: Number((stats.durationSec / 3600).toFixed(1)),
+  const dailyTrendLast14d: AdminDailyTrendPoint[] = [];
+  for (let i = 13; i >= 0; i -= 1) {
+    const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+    const day = d.toISOString().slice(0, 10);
+    const stats = trendMap.get(day);
+    dailyTrendLast14d.push({
+      date: day,
+      sessions: stats?.sessions ?? 0,
+      users: stats?.users.size ?? 0,
+      questions: stats?.questions ?? 0,
+      studyHours: Number(((stats?.durationSec ?? 0) / 3600).toFixed(1)),
       avgAccuracy:
-        stats.sessions > 0
+        stats && stats.sessions > 0
           ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
           : 0,
-    }))
-    .sort((a, b) => a.date.localeCompare(b.date));
+    });
+  }
 
   const TEST_MODES = new Set(["inteligentna", "przeglad", "osce_topic"]);
 
@@ -898,14 +930,18 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     sessionsLast30d,
     answeredQuestionsLast7d,
     answeredQuestionsLast30d,
+    answeredQuestionsPrev7d,
     completedTestsLast7d,
     averageAccuracyLast7d,
     averageAccuracyLast30d,
     studyHoursLast7d,
     studyHoursLast30d,
+    studyHoursPrev7d,
     averageSessionMinutesLast7d,
     uniqueActiveUsersLast7d,
     uniqueActiveUsersLast30d,
+    uniqueActiveUsersPrev7d,
+    sessionsPrev7d,
     newRegistrationsLast7d,
     newRegistrationsLast30d,
     peakHour,

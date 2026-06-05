@@ -21,6 +21,33 @@ import { createAdminClient } from "@/lib/supabase/admin";
  */
 
 const MS_DAY = 86400000;
+const PAGE_SIZE = 1000;
+
+type PaginatedResult<T> = {
+  data: T[] | null;
+  error: { message: string } | null;
+};
+
+/** Supabase/PostgREST zwraca domyślnie max 1000 wierszy — paginujemy do końca. */
+async function fetchAllPaginated<T>(
+  label: string,
+  buildQuery: (from: number, to: number) => Promise<PaginatedResult<T>>,
+): Promise<T[]> {
+  const all: T[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await buildQuery(offset, offset + PAGE_SIZE - 1);
+    if (error) {
+      console.error(`[loadAdminShared] ${label}`, error.message);
+      break;
+    }
+    const batch = data ?? [];
+    all.push(...batch);
+    if (batch.length < PAGE_SIZE) break;
+    offset += PAGE_SIZE;
+  }
+  return all;
+}
 
 export type SharedSessionRow = {
   id: string;
@@ -75,18 +102,33 @@ export type SharedErrorReportRow = {
 export const getStudySessionsLast90d = cache(async (): Promise<SharedSessionRow[]> => {
   const admin = createAdminClient();
   const since90Iso = new Date(Date.now() - 90 * MS_DAY).toISOString();
-  const { data, error } = await admin
-    .from("study_sessions")
-    .select(
-      "id, user_id, subject_id, mode, total_questions, correct_answers, accuracy, duration_seconds, started_at, completed_at, is_completed",
-    )
-    .gte("started_at", since90Iso);
-  if (error) {
-    console.error("[loadAdminShared] study_sessions error", error.message);
-    return [];
-  }
-  return (data ?? []) as SharedSessionRow[];
+  return fetchAllPaginated<SharedSessionRow>("study_sessions", async (from, to) =>
+    admin
+      .from("study_sessions")
+      .select(
+        "id, user_id, subject_id, mode, total_questions, correct_answers, accuracy, duration_seconds, started_at, completed_at, is_completed",
+      )
+      .gte("started_at", since90Iso)
+      .order("started_at", { ascending: true })
+      .range(from, to),
+  );
 });
+
+/** Liczba faktycznych odpowiedzi (session_answers) od podanej daty. */
+export const getSessionAnswersCountSince = cache(
+  async (sinceIso: string): Promise<number> => {
+    const admin = createAdminClient();
+    const { count, error } = await admin
+      .from("session_answers")
+      .select("id", { count: "exact", head: true })
+      .gte("answered_at", sinceIso);
+    if (error) {
+      console.error("[loadAdminShared] session_answers count", error.message);
+      return 0;
+    }
+    return count ?? 0;
+  },
+);
 
 export const getAllProfiles = cache(async (): Promise<SharedProfileRow[]> => {
   const admin = createAdminClient();

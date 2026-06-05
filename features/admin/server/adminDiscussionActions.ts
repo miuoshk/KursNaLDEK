@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { requireAdminAccess } from "@/features/admin/server/adminAuth";
+import { loadAdminDiscussionThread } from "@/features/admin/server/loadAdminDiscussions";
 
 async function requireAdminOrModerator() {
   await requireAdminAccess();
@@ -34,4 +35,25 @@ export async function adminDeleteDiscussionComment(
   }
 
   return { ok: true as const };
+}
+
+const threadSchema = z.object({
+  questionId: z.string().min(1),
+});
+
+export async function fetchAdminDiscussionThread(
+  raw: z.infer<typeof threadSchema>,
+) {
+  const parsed = threadSchema.safeParse(raw);
+  if (!parsed.success) {
+    return { ok: false as const, message: "Nieprawidłowe dane." };
+  }
+
+  await requireAdminAccess();
+  const thread = await loadAdminDiscussionThread(parsed.data.questionId);
+  if (!thread) {
+    return { ok: false as const, message: "Nie znaleziono pytania lub dyskusji." };
+  }
+
+  return { ok: true as const, thread };
 }

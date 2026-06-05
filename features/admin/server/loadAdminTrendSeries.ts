@@ -1,6 +1,31 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+const PAGE_SIZE = 1000;
+
+async function fetchAllPaginated<T>(
+  label: string,
+  buildQuery: (from: number, to: number) => Promise<{
+    data: T[] | null;
+    error: { message: string } | null;
+  }>,
+): Promise<T[]> {
+  const all: T[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await buildQuery(offset, offset + PAGE_SIZE - 1);
+    if (error) {
+      console.error(`[loadAdminTrendSeries] ${label}`, error.message);
+      break;
+    }
+    const batch = data ?? [];
+    all.push(...batch);
+    if (batch.length < PAGE_SIZE) break;
+    offset += PAGE_SIZE;
+  }
+  return all;
+}
+
 export type AdminTrendMetric =
   | "sessions"
   | "time"
@@ -118,9 +143,12 @@ export async function loadAdminTrendSeries(
       .eq("is_completed", true)
       .gte("completed_at", sinceIso);
     if (userScope) q = q.in("user_id", userScope);
-    const { data } = await q;
+    const data = await fetchAllPaginated<{ user_id: string; completed_at: string | null }>(
+      "study_sessions/users",
+      async (from, to) => q.order("completed_at", { ascending: true }).range(from, to),
+    );
     const dailySets = new Map<string, Set<string>>();
-    for (const row of data ?? []) {
+    for (const row of data) {
       const ca = row.completed_at as string | null;
       if (!ca) continue;
       const k = dayKey(new Date(ca));
@@ -154,15 +182,22 @@ export async function loadAdminTrendSeries(
     if (userScope) {
       answersQ = answersQ.in("study_sessions.user_id", userScope);
     }
-    const { data } = await answersQ;
+    const data = await fetchAllPaginated<{
+      question_id: string;
+      answered_at: string | null;
+      study_sessions: { user_id?: string } | { user_id?: string }[] | null;
+    }>("session_answers/questions", async (from, to) =>
+      answersQ.order("answered_at", { ascending: true }).range(from, to),
+    );
     const dailyPairs = new Map<string, Set<string>>();
     const allPairs = new Set<string>();
-    for (const row of data ?? []) {
+    for (const row of data) {
       const at = row.answered_at as string | null;
       if (!at) continue;
       const k = dayKey(new Date(at));
       if (!buckets.has(k)) continue;
-      const ss = row.study_sessions as { user_id?: string } | null;
+      const ssRaw = row.study_sessions;
+      const ss = Array.isArray(ssRaw) ? ssRaw[0] : ssRaw;
       const userId = ss?.user_id;
       if (!userId) continue;
       const pair = `${userId}|${row.question_id}`;
@@ -189,15 +224,24 @@ export async function loadAdminTrendSeries(
     .eq("is_completed", true)
     .gte("completed_at", sinceIso);
   if (userScope) q = q.in("user_id", userScope);
-  const { data } = await q;
+  const data = await fetchAllPaginated<{
+    user_id: string;
+    completed_at: string | null;
+    duration_seconds: number | null;
+    total_questions: number | null;
+    accuracy: number | null;
+    correct_answers: number | null;
+  }>("study_sessions/metrics", async (from, to) =>
+    q.order("completed_at", { ascending: true }).range(from, to),
+  );
 
   if (params.metric === "accuracy") {
     const dailyCorrect = new Map<string, number>();
     const dailyTotal = new Map<string, number>();
     let totalCorrect = 0;
     let totalTotal = 0;
-    for (const row of data ?? []) {
-      const ca = row.completed_at as string | null;
+    for (const row of data) {
+      const ca = row.completed_at;
       if (!ca) continue;
       const k = dayKey(new Date(ca));
       if (!buckets.has(k)) continue;
@@ -222,8 +266,8 @@ export async function loadAdminTrendSeries(
   }
 
   let total = 0;
-  for (const row of data ?? []) {
-    const ca = row.completed_at as string | null;
+  for (const row of data) {
+    const ca = row.completed_at;
     if (!ca) continue;
     const k = dayKey(new Date(ca));
     if (!buckets.has(k)) continue;

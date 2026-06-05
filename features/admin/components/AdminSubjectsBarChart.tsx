@@ -17,6 +17,14 @@ type AdminSubjectsBarChartProps = {
 };
 
 export function AdminSubjectsBarChart({ data }: AdminSubjectsBarChartProps) {
+  if (data.length === 0) {
+    return (
+      <p className="py-8 text-center font-body text-body-sm text-muted">
+        Brak sesji z przypisanym przedmiotem w ostatnich 30 dniach.
+      </p>
+    );
+  }
+
   const chartData = data.map((d) => ({
     ...d,
     label:

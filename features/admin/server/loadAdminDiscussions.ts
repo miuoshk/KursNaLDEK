@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export type AdminDiscussionRow = {
   id: string;
@@ -9,14 +9,29 @@ export type AdminDiscussionRow = {
   createdAt: string;
 };
 
+export type AdminDiscussionThreadComment = {
+  id: string;
+  content: string;
+  userName: string;
+  createdAt: string;
+  upvotes: number;
+};
+
+export type AdminDiscussionThread = {
+  questionId: string;
+  questionText: string;
+  comments: AdminDiscussionThreadComment[];
+};
+
 export async function loadAdminDiscussions(params: {
   search?: string;
 }): Promise<AdminDiscussionRow[]> {
-  const supabase = await createClient();
+  const supabase = createAdminClient();
 
   const { data: rows, error } = await supabase
     .from("question_discussions")
     .select("id, question_id, content, created_at, user_id, profiles(display_name), questions(text)")
+    .eq("is_deleted", false)
     .order("created_at", { ascending: false })
     .limit(300);
 
@@ -44,8 +59,44 @@ export async function loadAdminDiscussions(params: {
   if (!normalizedSearch) return baseRows;
 
   return baseRows.filter((row) =>
-    [row.content, row.questionTextShort, row.userName].some((value) =>
+    [row.content, row.questionTextShort, row.userName, row.questionId].some((value) =>
       value.toLowerCase().includes(normalizedSearch),
     ),
   );
+}
+
+export async function loadAdminDiscussionThread(
+  questionId: string,
+): Promise<AdminDiscussionThread | null> {
+  const supabase = createAdminClient();
+
+  const [{ data: question, error: qErr }, { data: rows, error: dErr }] = await Promise.all([
+    supabase.from("questions").select("text").eq("id", questionId).maybeSingle(),
+    supabase
+      .from("question_discussions")
+      .select("id, content, created_at, upvotes, profiles(display_name)")
+      .eq("question_id", questionId)
+      .eq("is_deleted", false)
+      .order("created_at", { ascending: true }),
+  ]);
+
+  if (qErr || dErr || !question) {
+    console.error("[loadAdminDiscussionThread]", qErr?.message ?? dErr?.message);
+    return null;
+  }
+
+  return {
+    questionId,
+    questionText: (question.text as string) ?? "",
+    comments: (rows ?? []).map((r) => {
+      const profile = r.profiles as unknown as { display_name: string | null } | null;
+      return {
+        id: r.id as string,
+        content: r.content as string,
+        userName: profile?.display_name ?? "Anonimowy",
+        createdAt: r.created_at as string,
+        upvotes: (r.upvotes as number) ?? 0,
+      };
+    }),
+  };
 }

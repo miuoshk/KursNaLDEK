@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { attachQuestionReportCounts } from "@/features/admin/lib/groupAdminReports";
 
 export type AdminReport = {
   id: string;
@@ -15,9 +16,16 @@ export type AdminReport = {
   subjectName: string | null;
   track: string | null;
   year: number | null;
+  questionReportCount: number;
+  questionPendingCount: number;
 };
 
-export type AdminReportSortBy = "createdAt" | "status" | "category" | "subject";
+export type AdminReportSortBy =
+  | "createdAt"
+  | "status"
+  | "category"
+  | "subject"
+  | "reportCount";
 export type SortDirection = "asc" | "desc";
 
 export type AdminReportsParams = {
@@ -147,7 +155,7 @@ export async function loadAdminReports(
     return [];
   }
 
-  const mapped: AdminReport[] = (rows ?? []).map((r) => {
+  const mapped = (rows ?? []).map((r) => {
     const profile = r.profiles as { display_name: string | null } | null;
     const question = r.questions as
       | {
@@ -194,9 +202,10 @@ export async function loadAdminReports(
     };
   });
 
-  // Client-side sort for derived fields (subject name) where needed.
+  const withCounts = attachQuestionReportCounts(mapped);
+
   if (sortBy === "subject") {
-    mapped.sort((a, b) => {
+    withCounts.sort((a, b) => {
       const an = a.subjectName ?? "";
       const bn = b.subjectName ?? "";
       const cmp = an.localeCompare(bn, "pl");
@@ -204,5 +213,15 @@ export async function loadAdminReports(
     });
   }
 
-  return mapped;
+  if (sortBy === "reportCount") {
+    withCounts.sort((a, b) => {
+      const cmp = a.questionReportCount - b.questionReportCount;
+      if (cmp !== 0) return ascending ? cmp : -cmp;
+      return (
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+    });
+  }
+
+  return withCounts;
 }

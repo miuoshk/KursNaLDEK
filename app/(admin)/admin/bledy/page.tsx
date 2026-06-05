@@ -14,10 +14,17 @@ type PageProps = {
     subject?: string;
     sortBy?: string;
     sortDir?: string;
+    view?: string;
   }>;
 };
 
-const VALID_SORT: AdminReportSortBy[] = ["createdAt", "status", "category", "subject"];
+const VALID_SORT: AdminReportSortBy[] = [
+  "createdAt",
+  "status",
+  "category",
+  "subject",
+  "reportCount",
+];
 
 function parseSortBy(value: string | undefined): AdminReportSortBy {
   return VALID_SORT.includes(value as AdminReportSortBy)
@@ -54,7 +61,7 @@ export default async function AdminReportsPage({ searchParams }: PageProps) {
           Zgłoszenia błędów
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">
-          Domyślnie posortowane od najnowszych. Filtruj kierunkiem, rokiem i przedmiotem.
+          Skrzynka lub grupowanie po pytaniu z historią zgłoszeń. Domyślnie od najnowszych.
         </p>
       </header>
       <AdminReportsTable
@@ -66,6 +73,7 @@ export default async function AdminReportsPage({ searchParams }: PageProps) {
         currentSubject={sp.subject}
         currentSortBy={sortBy}
         currentSortDir={sortDir}
+        currentView={sp.view === "grouped" ? "grouped" : "inbox"}
       />
     </div>
   );

@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ExternalLink, Loader2, X } from "lucide-react";
 import { fetchQuestionForAdmin } from "@/features/admin/server/adminActions";
+import { AdminReportHistoryPanel } from "@/features/admin/components/AdminReportHistoryPanel";
+import { reportStatusLabel } from "@/features/admin/lib/adminReportStatus";
 import type { AdminReport } from "@/features/admin/server/loadAdminReports";
 import type {
   AdminQuestionDetail,
@@ -14,6 +16,7 @@ import { cn } from "@/lib/utils";
 
 type AdminResolveDialogProps = {
   report: AdminReport;
+  questionReports?: AdminReport[];
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onResolve: (
@@ -30,6 +33,7 @@ type LoadState =
 
 export function AdminResolveDialog({
   report,
+  questionReports = [],
   open,
   onOpenChange,
   onResolve,
@@ -117,7 +121,7 @@ export function AdminResolveDialog({
                 <InfoBlock label="Zgłosił" value={report.userName} />
                 <InfoBlock
                   label="Status"
-                  value={statusLabel(report.status)}
+                  value={reportStatusLabel(report.status)}
                 />
               </div>
               <div className="mt-3">
@@ -129,6 +133,23 @@ export function AdminResolveDialog({
                 </p>
               </div>
             </section>
+
+            {questionReports.length > 1 ? (
+              <section className="mt-4 rounded-card border border-border bg-card p-4">
+                <h3 className="font-heading text-heading-sm text-primary">
+                  Historia zgłoszeń tego pytania ({questionReports.length})
+                </h3>
+                <p className="mt-1 font-body text-body-xs text-muted">
+                  Wszystkie zgłoszenia i wcześniejsze rozstrzygnięcia — kontekst przed decyzją.
+                </p>
+                <div className="mt-3">
+                  <AdminReportHistoryPanel
+                    reports={questionReports}
+                    highlightReportId={report.id}
+                  />
+                </div>
+              </section>
+            ) : null}
 
             <section className="mt-4 rounded-card border border-border bg-card p-4">
               <div className="mb-3 flex items-center justify-between">
@@ -217,21 +238,6 @@ export function AdminResolveDialog({
       </Dialog.Portal>
     </Dialog.Root>
   );
-}
-
-function statusLabel(status: string): string {
-  switch (status) {
-    case "pending":
-      return "Oczekuje";
-    case "reviewed":
-      return "Przeglądnięte";
-    case "resolved":
-      return "Rozwiązane";
-    case "rejected":
-      return "Odrzucone";
-    default:
-      return status;
-  }
 }
 
 function InfoBlock({ label, value }: { label: string; value: string }) {

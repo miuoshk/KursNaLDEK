@@ -19,7 +19,6 @@ export const STUDY_OPTIONS: StudyOption[] = [
   { track: "stomatologia", year: 2, label: "Stomatologia · rok 2", isFreeTest: true },
   { track: "stomatologia", year: 3, label: "Stomatologia · rok 3", isFreeTest: false },
   { track: "lekarski", year: 1, label: "Lekarski · rok 1", isFreeTest: false },
-  { track: "lekarski", year: 3, label: "Lekarski · rok 3", isFreeTest: false },
 ];
 
 export const trackSchema = z.enum(STUDY_TRACKS);
@@ -44,7 +43,10 @@ export function isFreeTestSelection(track: StudyTrack, year: StudyYear): boolean
 }
 
 /** Nowe rejestracje i checkout Stripe — zamknięte dla tych opcji. */
-export const CLOSED_REGISTRATION_OPTIONS = new Set<string>([optionKey("lekarski", 2)]);
+export const CLOSED_REGISTRATION_OPTIONS = new Set<string>([
+  optionKey("lekarski", 2),
+  optionKey("lekarski", 3),
+]);
 
 export function isRegistrationClosedForSelection(track: StudyTrack, year: StudyYear): boolean {
   return CLOSED_REGISTRATION_OPTIONS.has(optionKey(track, year));

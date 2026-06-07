@@ -17,10 +17,20 @@ describe("studyAccess rules", () => {
     assert.equal(free[0]?.year, 2);
   });
 
-  it("does not offer lekarski year 2 in selectable options", () => {
-    const lek2 = STUDY_OPTIONS.find((o) => o.track === "lekarski" && o.year === 2);
-    assert.equal(lek2, undefined);
-    assert.equal(STUDY_OPTIONS.length, 5);
+  it("does not offer lekarski year 2 or 3 in selectable options", () => {
+    assert.equal(
+      STUDY_OPTIONS.find((o) => o.track === "lekarski" && o.year === 2),
+      undefined,
+    );
+    assert.equal(
+      STUDY_OPTIONS.find((o) => o.track === "lekarski" && o.year === 3),
+      undefined,
+    );
+    assert.equal(STUDY_OPTIONS.length, 4);
+    assert.equal(
+      STUDY_OPTIONS.filter((o) => o.track === "lekarski").length,
+      1,
+    );
   });
 
   it("accepts only allowed selection values", () => {
@@ -46,10 +56,11 @@ describe("studyAccess rules", () => {
     assert.equal(isFreeTestSelection("lekarski", 2), false);
   });
 
-  it("closes registration only for lekarski year 2", () => {
+  it("closes registration for lekarski years 2 and 3", () => {
     assert.equal(isRegistrationClosedForSelection("lekarski", 2), true);
+    assert.equal(isRegistrationClosedForSelection("lekarski", 3), true);
     assert.equal(isRegistrationClosedForSelection("lekarski", 1), false);
-    assert.equal(isRegistrationClosedForSelection("lekarski", 3), false);
     assert.equal(isRegistrationClosedForSelection("stomatologia", 2), false);
+    assert.equal(isRegistrationClosedForSelection("stomatologia", 3), false);
   });
 });

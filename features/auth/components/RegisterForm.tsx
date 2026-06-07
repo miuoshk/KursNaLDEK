@@ -35,7 +35,10 @@ export function RegisterForm() {
   const [state, formAction] = useActionState(registerAction, initialAuthActionState);
   const [avatarEmoji, setAvatarEmoji] = useState("");
   const [currentTrack, setCurrentTrack] = useState<"" | "stomatologia" | "lekarski">("");
-  const lekYear2Closed = currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 2);
+  const lekYear2Closed =
+    currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 2);
+  const lekYear3Closed =
+    currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 3);
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
@@ -158,9 +161,11 @@ export function RegisterForm() {
           <option value="2" disabled={lekYear2Closed}>
             2
           </option>
-          <option value="3">3</option>
+          <option value="3" disabled={lekYear3Closed}>
+            3
+          </option>
         </select>
-        {lekYear2Closed ? (
+        {lekYear2Closed || lekYear3Closed ? (
           <p className="mt-1 font-body text-body-xs text-muted">Rejestracja zamknięta.</p>
         ) : null}
       </div>

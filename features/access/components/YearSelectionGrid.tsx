@@ -8,6 +8,7 @@ type Props = {
     StudyOption & {
       isSelected: boolean;
       isUnlocked: boolean;
+      isRegistrationClosed: boolean;
     }
   >;
   activateFreeAction: (formData: FormData) => Promise<void>;
@@ -66,6 +67,10 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
               >
                 {ctaLabel}
               </a>
+            ) : option.isRegistrationClosed ? (
+              <p className="mt-5 rounded-btn border border-white/15 bg-white/5 px-4 py-2.5 text-center font-body text-body-sm text-secondary">
+                Rejestracja zamknięta.
+              </p>
             ) : (
               <form action={option.isFreeTest ? activateFreeAction : checkoutAction} className="mt-5">
                 <input type="hidden" name="track" value={option.track} />

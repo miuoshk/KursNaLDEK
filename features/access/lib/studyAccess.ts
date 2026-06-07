@@ -44,6 +44,13 @@ export function isFreeTestSelection(track: StudyTrack, year: StudyYear): boolean
   return track === "stomatologia" && year === 2;
 }
 
+/** Nowe rejestracje i checkout Stripe — zamknięte dla tych opcji. */
+export const CLOSED_REGISTRATION_OPTIONS = new Set<string>([optionKey("lekarski", 2)]);
+
+export function isRegistrationClosedForSelection(track: StudyTrack, year: StudyYear): boolean {
+  return CLOSED_REGISTRATION_OPTIONS.has(optionKey(track, year));
+}
+
 export function formatTrackLabel(track: StudyTrack): string {
   return track === "lekarski" ? "Lekarski" : "Stomatologia";
 }

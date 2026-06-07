@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { STUDY_OPTIONS, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { STUDY_OPTIONS, isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { listActiveEntitlementsByUserId } from "@/features/access/server/entitlements";
 import {
   activateFreeTestYearAction,
@@ -18,6 +18,7 @@ type SearchParams = Promise<{
 const ERROR_REASON_LABELS: Record<string, string> = {
   "invalid-selection": "Nieprawidłowy wybór kierunku/roku.",
   "free-only-stoma2": "Darmowy dostęp tylko dla Stomatologia rok 2.",
+  "registration-closed": "Rejestracja zamknięta.",
   "no-session": "Sesja wygasła, zaloguj się ponownie.",
   "stripe-missing-secret":
     "Stripe nie jest skonfigurowany na serwerze (brak STRIPE_SECRET_KEY w env hostingu).",
@@ -59,6 +60,7 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
       ...option,
       isSelected: option.track === selectedTrack && option.year === selectedYear,
       isUnlocked: unlockedKeys.has(key),
+      isRegistrationClosed: isRegistrationClosedForSelection(option.track, option.year),
     };
   });
 

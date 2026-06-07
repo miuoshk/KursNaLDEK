@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { registerAction } from "@/features/auth/actions";
 import { ResendConfirmationButton } from "@/features/auth/components/ResendConfirmationButton";
 import { initialAuthActionState } from "@/features/auth/types";
+import { isRegistrationClosedForSelection } from "@/features/access/lib/studyAccess";
 import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +34,8 @@ function SubmitButton() {
 export function RegisterForm() {
   const [state, formAction] = useActionState(registerAction, initialAuthActionState);
   const [avatarEmoji, setAvatarEmoji] = useState("");
+  const [currentTrack, setCurrentTrack] = useState<"" | "stomatologia" | "lekarski">("");
+  const lekYear2Closed = currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 2);
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
@@ -127,7 +130,14 @@ export function RegisterForm() {
         <label htmlFor="currentTrack" className="mb-2 block font-body text-body-sm text-secondary">
           Kierunek
         </label>
-        <select id="currentTrack" name="currentTrack" required className={selectClassName} defaultValue="">
+        <select
+          id="currentTrack"
+          name="currentTrack"
+          required
+          className={selectClassName}
+          defaultValue=""
+          onChange={(event) => setCurrentTrack(event.target.value as "" | "stomatologia" | "lekarski")}
+        >
           <option value="" disabled>
             Wybierz kierunek
           </option>
@@ -145,9 +155,14 @@ export function RegisterForm() {
             Wybierz rok
           </option>
           <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="2" disabled={lekYear2Closed}>
+            2
+          </option>
           <option value="3">3</option>
         </select>
+        {lekYear2Closed ? (
+          <p className="mt-1 font-body text-body-xs text-muted">Rejestracja zamknięta.</p>
+        ) : null}
       </div>
 
       {state.error ? (

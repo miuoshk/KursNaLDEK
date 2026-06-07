@@ -6,12 +6,13 @@ import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { grantFreeTestEntitlement } from "@/features/access/server/grantFreeTestEntitlement";
 import { getStripePriceId } from "@/features/access/lib/stripePrices";
-import { isFreeTestSelection, selectionSchema } from "@/features/access/lib/studyAccess";
+import { isFreeTestSelection, isRegistrationClosedForSelection, selectionSchema } from "@/features/access/lib/studyAccess";
 import { hasAnyActiveEntitlement } from "@/features/access/server/entitlements";
 
 type ErrorReason =
   | "invalid-selection"
   | "free-only-stoma2"
+  | "registration-closed"
   | "no-session"
   | "stripe-missing-secret"
   | "stripe-missing-price"
@@ -106,6 +107,10 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
   if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
     redirect("/wybor-roku");
+  }
+
+  if (isRegistrationClosedForSelection(parsed.data.track, parsed.data.year)) {
+    redirect(errorRedirectUrl("registration-closed"));
   }
 
   const { user, supabase } = await getUserOrNull();

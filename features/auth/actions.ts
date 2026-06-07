@@ -13,6 +13,7 @@ import {
   TEST_MODE_EMAIL,
 } from "@/lib/testMode";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
+import { isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { isValidEmoji } from "@/lib/emoji";
 
 const loginSchema = z.object({
@@ -214,6 +215,15 @@ export async function registerAction(
 
   if (parsed.data.email.toLowerCase() === TEST_MODE_EMAIL.toLowerCase()) {
     return { error: "Ten adres e-mail jest zarezerwowany do trybu testowego.", info: null };
+  }
+
+  const track = normalizeTrack(parsed.data.currentTrack);
+  const year = normalizeYear(parsed.data.currentYear);
+  if (isRegistrationClosedForSelection(track, year)) {
+    return {
+      error: "Rejestracja zamknięta.",
+      info: null,
+    };
   }
 
   const supabase = await createClient();

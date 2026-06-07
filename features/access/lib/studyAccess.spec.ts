@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   STUDY_OPTIONS,
   isFreeTestSelection,
+  isRegistrationClosedForSelection,
   normalizeTrack,
   normalizeYear,
   selectionSchema,
@@ -37,5 +38,12 @@ describe("studyAccess rules", () => {
     assert.equal(isFreeTestSelection("stomatologia", 2), true);
     assert.equal(isFreeTestSelection("stomatologia", 1), false);
     assert.equal(isFreeTestSelection("lekarski", 2), false);
+  });
+
+  it("closes registration only for lekarski year 2", () => {
+    assert.equal(isRegistrationClosedForSelection("lekarski", 2), true);
+    assert.equal(isRegistrationClosedForSelection("lekarski", 1), false);
+    assert.equal(isRegistrationClosedForSelection("lekarski", 3), false);
+    assert.equal(isRegistrationClosedForSelection("stomatologia", 2), false);
   });
 });

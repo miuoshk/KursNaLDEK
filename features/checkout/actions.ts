@@ -12,17 +12,11 @@ import {
 } from "@/features/access/lib/studyAccess";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
-import {
-  CONSUMER_CONSENT_FIELD,
-  isConsumerConsentAccepted,
-} from "@/features/checkout/constants/consentText";
-import { logConsumerConsent } from "@/features/checkout/server/logConsumerConsent";
+import { buildStripeTermsAcceptanceMessage } from "@/features/checkout/constants/consentText";
 
 type CheckoutErrorReason =
   | "invalid-selection"
   | "registration-closed"
-  | "consent-required"
-  | "consent-log-failed"
   | "no-session"
   | "stripe-missing-secret"
   | "stripe-missing-price"
@@ -59,10 +53,6 @@ export async function createCheckoutSessionAction(formData: FormData) {
     redirect(checkoutErrorUrl("registration-closed"));
   }
 
-  if (!isConsumerConsentAccepted(formData.get(CONSUMER_CONSENT_FIELD))) {
-    redirect(checkoutErrorUrl("consent-required"));
-  }
-
   const supabase = await createClient();
   const {
     data: { user },
@@ -75,11 +65,6 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
   if (await isUserAccessRevoked(user.id)) {
     redirect(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`);
-  }
-
-  const consentResult = await logConsumerConsent(supabase, user.id);
-  if (!consentResult.ok) {
-    redirect(checkoutErrorUrl("consent-log-failed"));
   }
 
   let checkoutUrl: string | null = null;
@@ -123,6 +108,14 @@ export async function createCheckoutSessionAction(formData: FormData) {
       customer: profileResult.data?.stripe_customer_id ?? undefined,
       customer_email: profileResult.data?.stripe_customer_id ? undefined : user.email ?? undefined,
       allow_promotion_codes: true,
+      consent_collection: {
+        terms_of_service: "required",
+      },
+      custom_text: {
+        terms_of_service_acceptance: {
+          message: buildStripeTermsAcceptanceMessage(origin),
+        },
+      },
       metadata: {
         user_id: user.id,
         track: parsed.data.track,

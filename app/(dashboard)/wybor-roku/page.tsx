@@ -22,8 +22,6 @@ const ERROR_REASON_LABELS: Record<string, string> = {
   "invalid-selection": "Nieprawidłowy wybór kierunku/roku.",
   "free-only-stoma2": "Darmowy dostęp tylko dla Stomatologia rok 2.",
   "registration-closed": "Rejestracja zamknięta.",
-  "consent-required": "Zaznacz wymaganą zgodę przed przejściem do płatności.",
-  "consent-log-failed": "Nie udało się zapisać zgody. Spróbuj ponownie.",
   "no-session": "Sesja wygasła, zaloguj się ponownie.",
   "stripe-missing-secret":
     "Stripe nie jest skonfigurowany na serwerze (brak STRIPE_SECRET_KEY w env hostingu).",

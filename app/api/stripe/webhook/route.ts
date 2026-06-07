@@ -6,6 +6,7 @@ import { getStripeServerClient } from "@/lib/stripe/server";
 import { normalizeTrack, normalizeYear, trackSchema, yearSchema } from "@/features/access/lib/studyAccess";
 import { upsertChargeFromWebhook } from "@/features/admin/server/stripePaymentsRepo";
 import { ADMIN_FINANCE_CACHE_TAG } from "@/features/admin/server/loadAdminFinance";
+import { logConsumerConsent } from "@/features/checkout/server/logConsumerConsent";
 
 export const runtime = "nodejs";
 
@@ -61,6 +62,10 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     throw new Error("Brak wymaganych metadanych user_id/track/year.");
   }
 
+  if (session.consent?.terms_of_service !== "accepted") {
+    throw new Error("Brak akceptacji regulaminu w sesji Stripe Checkout.");
+  }
+
   const parsedTrack = trackSchema.safeParse(rawTrack);
   const parsedYear = yearSchema.safeParse(rawYear);
   if (!parsedTrack.success || !parsedYear.success) {
@@ -103,5 +108,10 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 
   if (profileError) {
     throw new Error(`Profile update failed: ${profileError.message}`);
+  }
+
+  const consentResult = await logConsumerConsent(admin, userId);
+  if (!consentResult.ok) {
+    throw new Error(`Consent log failed: ${consentResult.message}`);
   }
 }

@@ -7,6 +7,7 @@ import { ResendConfirmationButton } from "@/features/auth/components/ResendConfi
 import { initialAuthActionState } from "@/features/auth/types";
 import { isRegistrationClosedForSelection } from "@/features/access/lib/studyAccess";
 import { EmojiInput } from "@/features/shared/components/EmojiInput";
+import { RegisterLegalNotice } from "@/features/legal/components/RegisterLegalNotice";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
@@ -186,6 +187,7 @@ export function RegisterForm() {
         </p>
       ) : null}
 
+      <RegisterLegalNotice />
       <SubmitButton />
     </form>
   );

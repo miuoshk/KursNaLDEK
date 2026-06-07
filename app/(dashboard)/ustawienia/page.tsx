@@ -9,6 +9,7 @@ import { StudyPreferencesSection } from "@/features/settings/components/StudyPre
 import { SubscriptionSection } from "@/features/settings/components/SubscriptionSection";
 import { loadAchievementPreview } from "@/features/settings/server/loadAchievementPreview";
 import { loadSettings } from "@/features/settings/server/loadSettings";
+import { LegalFooterLinks } from "@/features/legal/components/LegalFooterLinks";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function UstawieniaPage() {
@@ -42,6 +43,7 @@ export default async function UstawieniaPage() {
       <NotificationsSection profile={profile} />
       <AccountSection email={resolvedEmail} />
       <AchievementsBadgesPreview items={badges} />
+      <LegalFooterLinks />
     </div>
   );
 }

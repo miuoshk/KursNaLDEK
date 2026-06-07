@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { CONSUMER_WITHDRAWAL_WAIVER_TEXT } from "@/features/checkout/constants/consentText";
+import { LEGAL_DOCUMENTS } from "@/features/legal/constants";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -28,7 +29,7 @@ export function ConsentCheckbox({ checked, onChange, disabled }: Props) {
       <span className="font-body text-xs leading-relaxed text-neutral-400">
         {CONSUMER_WITHDRAWAL_WAIVER_TEXT}{" "}
         <Link
-          href="/regulamin"
+          href={LEGAL_DOCUMENTS.regulamin.href}
           target="_blank"
           rel="noopener noreferrer"
           className="text-brand-sage underline underline-offset-2 hover:text-brand-gold"

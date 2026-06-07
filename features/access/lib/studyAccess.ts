@@ -19,7 +19,6 @@ export const STUDY_OPTIONS: StudyOption[] = [
   { track: "stomatologia", year: 2, label: "Stomatologia · rok 2", isFreeTest: true },
   { track: "stomatologia", year: 3, label: "Stomatologia · rok 3", isFreeTest: false },
   { track: "lekarski", year: 1, label: "Lekarski · rok 1", isFreeTest: false },
-  { track: "lekarski", year: 2, label: "Lekarski · rok 2", isFreeTest: false },
   { track: "lekarski", year: 3, label: "Lekarski · rok 3", isFreeTest: false },
 ];
 

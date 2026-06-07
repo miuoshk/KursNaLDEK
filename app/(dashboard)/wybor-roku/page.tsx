@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { STUDY_OPTIONS, isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { STUDY_OPTIONS, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { listActiveEntitlementsByUserId } from "@/features/access/server/entitlements";
 import {
   activateFreeTestYearAction,
@@ -60,7 +60,7 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
       ...option,
       isSelected: option.track === selectedTrack && option.year === selectedYear,
       isUnlocked: unlockedKeys.has(key),
-      isRegistrationClosed: isRegistrationClosedForSelection(option.track, option.year),
+      isRegistrationClosed: false,
     };
   });
 

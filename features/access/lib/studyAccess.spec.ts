@@ -17,6 +17,12 @@ describe("studyAccess rules", () => {
     assert.equal(free[0]?.year, 2);
   });
 
+  it("does not offer lekarski year 2 in selectable options", () => {
+    const lek2 = STUDY_OPTIONS.find((o) => o.track === "lekarski" && o.year === 2);
+    assert.equal(lek2, undefined);
+    assert.equal(STUDY_OPTIONS.length, 5);
+  });
+
   it("accepts only allowed selection values", () => {
     const ok = selectionSchema.safeParse({ track: "lekarski", year: "3" });
     const badTrack = selectionSchema.safeParse({ track: "farmacja", year: "2" });

@@ -7,6 +7,8 @@ import type { StudyTrack } from "@/features/access/lib/studyAccess";
 export const HIDDEN_STOMA_CATALOG_SUBJECT_IDS = new Set([
   "stoma-biochemia",
   "stoma-fizjologia",
+  "stoma-mikrobio",
+  "stoma-mikrobio-ju",
 ]);
 
 export function isCatalogSubjectHidden(

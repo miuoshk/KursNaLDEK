@@ -14,6 +14,7 @@ import {
 } from "@/lib/testMode";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
 import { isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { assertAccountNotBlocked, ACCOUNT_BLOCKED_MESSAGE } from "@/lib/auth/accountBan";
 import { isValidEmoji } from "@/lib/emoji";
 
 const loginSchema = z.object({
@@ -84,6 +85,11 @@ export async function loginAction(
     redirect("/");
   }
 
+  const { blocked, ip } = await assertAccountNotBlocked({ email: parsed.data.email });
+  if (blocked) {
+    return { error: ACCOUNT_BLOCKED_MESSAGE, info: null };
+  }
+
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
@@ -98,6 +104,15 @@ export async function loginAction(
       info: null,
       resendEmail: mapped.offerResend ? parsed.data.email : null,
     };
+  }
+
+  if (ip) {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      await supabase.from("profiles").update({ last_login_ip: ip }).eq("id", user.id);
+    }
   }
 
   redirect("/");
@@ -224,6 +239,11 @@ export async function registerAction(
       error: "Rejestracja zamknięta.",
       info: null,
     };
+  }
+
+  const { blocked } = await assertAccountNotBlocked({ email: parsed.data.email });
+  if (blocked) {
+    return { error: ACCOUNT_BLOCKED_MESSAGE, info: null };
   }
 
   const supabase = await createClient();

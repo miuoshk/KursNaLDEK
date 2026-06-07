@@ -3,8 +3,8 @@
 import { useCallback, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, ShieldAlert, User as UserIcon, Loader2 } from "lucide-react";
-import { setUserRole } from "@/features/admin/server/adminActions";
+import { ShieldCheck, ShieldAlert, User as UserIcon, Loader2, Ban, ShieldOff } from "lucide-react";
+import { setUserRole, banUser, unbanUser } from "@/features/admin/server/adminActions";
 import type {
   AdminUserRow,
   AdminUserRole,
@@ -168,6 +168,50 @@ export function AdminUsersTable({
       if (!result.ok) {
         setErrorMsg(result.message ?? "Nie udało się zmienić roli.");
         return;
+      }
+
+      startTransition(() => {
+        router.refresh();
+      });
+    },
+    [router],
+  );
+
+  const handleBanToggle = useCallback(
+    async (user: AdminUserRow) => {
+      if (user.isBanned) {
+        const confirmed = window.confirm(
+          `Odbanować użytkownika „${user.displayName}"? E-mail wróci na białą listę.`,
+        );
+        if (!confirmed) return;
+
+        setErrorMsg(null);
+        setPendingId(user.id);
+        const result = await unbanUser({ userId: user.id });
+        setPendingId(null);
+
+        if (!result.ok) {
+          setErrorMsg(result.message ?? "Nie udało się odbanować użytkownika.");
+          return;
+        }
+      } else {
+        const ipNote = user.lastLoginIp
+          ? `\n\nZostanie też zablokowane ostatnie IP: ${user.lastLoginIp}.`
+          : "\n\nBrak zapisanego IP — zbanowany zostanie tylko e-mail.";
+        const confirmed = window.confirm(
+          `Zbanować użytkownika „${user.displayName}" (${user.email ?? "brak e-maila"})?${ipNote}\n\nUżytkownik zostanie wylogowany.`,
+        );
+        if (!confirmed) return;
+
+        setErrorMsg(null);
+        setPendingId(user.id);
+        const result = await banUser({ userId: user.id, includeIp: true });
+        setPendingId(null);
+
+        if (!result.ok) {
+          setErrorMsg(result.message ?? "Nie udało się zbanować użytkownika.");
+          return;
+        }
       }
 
       startTransition(() => {
@@ -389,6 +433,7 @@ export function AdminUsersTable({
                 isActive={currentSortBy === "lastSignInAt"}
                 dir={currentSortDir}
               />
+              <Th>Status</Th>
               {canEditRoles && <Th className="text-right">Akcja</Th>}
             </tr>
           </thead>
@@ -396,7 +441,7 @@ export function AdminUsersTable({
             {users.length === 0 ? (
               <tr>
                 <td
-                  colSpan={canEditRoles ? 9 : 8}
+                  colSpan={canEditRoles ? 10 : 9}
                   className="px-3 py-8 text-center font-body text-body-sm text-muted"
                 >
                   Brak użytkowników spełniających kryteria.
@@ -412,7 +457,10 @@ export function AdminUsersTable({
                 return (
                   <tr
                     key={user.id}
-                    className="border-b border-border transition-colors hover:bg-white/[0.02]"
+                    className={cn(
+                      "border-b border-border transition-colors hover:bg-white/[0.02]",
+                      user.isBanned && "bg-error/5",
+                    )}
                   >
                     <td className="px-3 py-3">
                       <div className="font-body text-body-sm font-medium text-primary">
@@ -480,6 +528,18 @@ export function AdminUsersTable({
                     <td className="px-3 py-3 font-body text-body-xs text-secondary">
                       {formatDate(user.lastSignInAt)}
                     </td>
+                    <td className="px-3 py-3">
+                      {user.isBanned ? (
+                        <span className="inline-flex items-center gap-1 rounded-pill bg-error/15 px-2 py-0.5 font-body text-body-xs text-error">
+                          <Ban className="size-3" aria-hidden />
+                          Zbanowany
+                        </span>
+                      ) : (
+                        <span className="rounded-pill bg-white/5 px-2 py-0.5 font-body text-body-xs text-muted">
+                          Aktywny
+                        </span>
+                      )}
+                    </td>
                     {canEditRoles && (
                       <td className="px-3 py-3 text-right">
                         <div className="inline-flex items-center gap-2">
@@ -489,9 +549,40 @@ export function AdminUsersTable({
                               aria-hidden
                             />
                           ) : null}
+                          <button
+                            type="button"
+                            disabled={isSelf || isUpdating}
+                            onClick={() => handleBanToggle(user)}
+                            className={cn(
+                              "inline-flex items-center gap-1 rounded-btn border px-2 py-1 font-body text-body-xs transition-colors",
+                              user.isBanned
+                                ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
+                                : "border-error/40 text-error hover:bg-error/10",
+                              (isSelf || isUpdating) && "cursor-not-allowed opacity-60",
+                            )}
+                            title={
+                              isSelf
+                                ? "Nie możesz zbanować własnego konta"
+                                : user.isBanned
+                                  ? "Odbanuj użytkownika"
+                                  : "Zbanuj użytkownika"
+                            }
+                          >
+                            {user.isBanned ? (
+                              <>
+                                <ShieldOff className="size-3" aria-hidden />
+                                Odbanuj
+                              </>
+                            ) : (
+                              <>
+                                <Ban className="size-3" aria-hidden />
+                                Zbanuj
+                              </>
+                            )}
+                          </button>
                           <select
                             value={user.role}
-                            disabled={isSelf || isUpdating}
+                            disabled={isSelf || isUpdating || user.isBanned}
                             onChange={(e) =>
                               handleRoleChange(
                                 user,
@@ -501,11 +592,15 @@ export function AdminUsersTable({
                             className={cn(
                               "rounded-btn border border-border bg-card px-2 py-1 font-body text-body-xs text-primary",
                               "focus:border-brand-gold focus:outline-none",
-                              (isSelf || isUpdating) &&
+                              (isSelf || isUpdating || user.isBanned) &&
                                 "cursor-not-allowed opacity-60",
                             )}
                             title={
-                              isSelf ? "Nie możesz zmienić własnej roli" : undefined
+                              isSelf
+                                ? "Nie możesz zmienić własnej roli"
+                                : user.isBanned
+                                  ? "Najpierw odbanuj użytkownika"
+                                  : undefined
                             }
                           >
                             {ROLE_OPTIONS.map((opt) => (

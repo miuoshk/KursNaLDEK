@@ -15,6 +15,9 @@ export type AdminUserRow = {
   lastSignInAt: string | null;
   currentYear: number | null;
   subscriptionStatus: string | null;
+  isBanned: boolean;
+  bannedIp: string | null;
+  lastLoginIp: string | null;
 };
 
 export type AdminUserSortBy =
@@ -62,7 +65,7 @@ export async function loadAdminUsers(params?: {
   const { data: profileRows, error } = await supabase
     .from("profiles")
     .select(
-      "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at",
+      "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at, last_login_ip",
     )
     .order("created_at", { ascending: false })
     .limit(500);
@@ -101,19 +104,53 @@ export async function loadAdminUsers(params?: {
     console.error("[loadAdminUsers] admin client error", e);
   }
 
+  const bannedByUserId = new Map<string, string | null>();
+  const bannedEmails = new Set<string>();
+
+  try {
+    const admin = createAdminClient();
+    const { data: banRows, error: banError } = await admin
+      .from("account_bans")
+      .select("user_id, email, ip_address")
+      .is("revoked_at", null);
+
+    if (banError) {
+      console.error("[loadAdminUsers] account_bans", banError.message);
+    } else {
+      for (const row of banRows ?? []) {
+        const email = ((row.email as string | null) ?? "").trim().toLowerCase();
+        if (email) bannedEmails.add(email);
+        const userId = row.user_id as string | null;
+        if (userId) {
+          bannedByUserId.set(userId, (row.ip_address as string | null) ?? null);
+        }
+      }
+    }
+  } catch (e) {
+    console.error("[loadAdminUsers] ban lookup error", e);
+  }
+
   const rows: AdminUserRow[] = (profileRows ?? []).map((r) => {
     const auth = emailMap.get(r.id as string);
+    const email = auth?.email ?? null;
+    const emailKey = email?.trim().toLowerCase() ?? "";
+    const isBanned =
+      bannedByUserId.has(r.id as string) ||
+      (emailKey.length > 0 && bannedEmails.has(emailKey));
     return {
       id: r.id as string,
       displayName: ((r.display_name as string | null) ?? "").trim() || "Bez nazwy",
       fullName: (r.full_name as string | null) ?? null,
-      email: auth?.email ?? null,
+      email,
       role: normalizeRole(r.role),
       track: (r.current_track as string | null) ?? null,
       createdAt: (r.created_at as string | null) ?? null,
       lastSignInAt: auth?.lastSignInAt ?? null,
       currentYear: (r.current_year as number | null) ?? null,
       subscriptionStatus: (r.subscription_status as string | null) ?? null,
+      isBanned,
+      bannedIp: bannedByUserId.get(r.id as string) ?? null,
+      lastLoginIp: (r.last_login_ip as string | null) ?? null,
     };
   });
 

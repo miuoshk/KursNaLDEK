@@ -405,3 +405,114 @@ export async function setUserRole(
 
   return { ok: true as const };
 }
+
+const banUserSchema = z.object({
+  userId: z.string().uuid(),
+  reason: z.string().max(500).optional(),
+  includeIp: z.boolean().optional(),
+});
+
+export async function banUser(raw: z.infer<typeof banUserSchema>) {
+  const parsed = banUserSchema.safeParse(raw);
+  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+
+  let ctx;
+  try {
+    ctx = await requireSuperAdmin();
+  } catch {
+    return { ok: false as const, message: "Tylko admin może banować użytkowników." };
+  }
+
+  if (parsed.data.userId === ctx.userId) {
+    return { ok: false as const, message: "Nie możesz zbanować własnego konta." };
+  }
+
+  try {
+    const admin = createAdminClient();
+
+    const { data: authData, error: authError } = await admin.auth.admin.getUserById(
+      parsed.data.userId,
+    );
+    if (authError || !authData.user?.email) {
+      console.error("[banUser] getUserById", authError?.message);
+      return { ok: false as const, message: "Nie znaleziono użytkownika." };
+    }
+
+    const email = authData.user.email.trim().toLowerCase();
+
+    const { data: existingBan } = await admin
+      .from("account_bans")
+      .select("id")
+      .is("revoked_at", null)
+      .ilike("email", email)
+      .maybeSingle();
+
+    if (existingBan) {
+      return { ok: false as const, message: "Ten użytkownik jest już zbanowany." };
+    }
+
+    let ipAddress: string | null = null;
+    if (parsed.data.includeIp !== false) {
+      const { data: profile } = await admin
+        .from("profiles")
+        .select("last_login_ip")
+        .eq("id", parsed.data.userId)
+        .maybeSingle();
+      ipAddress = (profile?.last_login_ip as string | null)?.trim() || null;
+    }
+
+    const { error: insertError } = await admin.from("account_bans").insert({
+      email,
+      ip_address: ipAddress,
+      user_id: parsed.data.userId,
+      reason: parsed.data.reason?.trim() || null,
+      banned_by: ctx.userId,
+    });
+
+    if (insertError) {
+      console.error("[banUser] insert", insertError.message);
+      return { ok: false as const, message: "Nie udało się dodać bana." };
+    }
+
+    await admin.auth.admin.signOut(parsed.data.userId, "global");
+  } catch (e) {
+    console.error("[banUser]", e);
+    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+  }
+
+  return { ok: true as const };
+}
+
+const unbanUserSchema = z.object({
+  userId: z.string().uuid(),
+});
+
+export async function unbanUser(raw: z.infer<typeof unbanUserSchema>) {
+  const parsed = unbanUserSchema.safeParse(raw);
+  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+
+  try {
+    await requireSuperAdmin();
+  } catch {
+    return { ok: false as const, message: "Tylko admin może odbanować użytkowników." };
+  }
+
+  try {
+    const admin = createAdminClient();
+    const { error } = await admin
+      .from("account_bans")
+      .update({ revoked_at: new Date().toISOString() })
+      .eq("user_id", parsed.data.userId)
+      .is("revoked_at", null);
+
+    if (error) {
+      console.error("[unbanUser]", error.message);
+      return { ok: false as const, message: "Nie udało się odbanować użytkownika." };
+    }
+  } catch (e) {
+    console.error("[unbanUser]", e);
+    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+  }
+
+  return { ok: true as const };
+}

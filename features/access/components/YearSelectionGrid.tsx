@@ -1,6 +1,7 @@
-import { Lock, FlaskConical, CreditCard } from "lucide-react";
+import { Lock, FlaskConical } from "lucide-react";
 import type { StudyOption } from "@/features/access/lib/studyAccess";
 import { formatTrackLabel } from "@/features/access/lib/studyAccess";
+import { CheckoutPaymentForm } from "@/features/checkout/components/CheckoutPaymentForm";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -71,23 +72,24 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
               <p className="mt-5 rounded-btn border border-white/15 bg-white/5 px-4 py-2.5 text-center font-body text-body-sm text-secondary">
                 Rejestracja zamknięta.
               </p>
-            ) : (
-              <form action={option.isFreeTest ? activateFreeAction : checkoutAction} className="mt-5">
+            ) : option.isFreeTest ? (
+              <form action={activateFreeAction} className="mt-5">
                 <input type="hidden" name="track" value={option.track} />
                 <input type="hidden" name="year" value={String(option.year)} />
                 <button
                   type="submit"
-                  className={cn(
-                    "inline-flex w-full items-center justify-center gap-2 rounded-btn px-4 py-2.5 font-body text-body-sm font-semibold transition duration-200 ease-out",
-                    option.isFreeTest
-                      ? "bg-brand-sage text-white hover:brightness-110"
-                      : "bg-brand-gold text-brand-bg hover:brightness-110",
-                  )}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-btn bg-brand-sage px-4 py-2.5 font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:brightness-110"
                 >
-                  {!option.isFreeTest ? <CreditCard className="h-4 w-4" /> : null}
                   {ctaLabel}
                 </button>
               </form>
+            ) : (
+              <CheckoutPaymentForm
+                track={option.track}
+                year={option.year}
+                ctaLabel={ctaLabel}
+                checkoutAction={checkoutAction}
+              />
             )}
           </article>
         );

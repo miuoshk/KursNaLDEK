@@ -18,6 +18,8 @@ export type AdminUserRow = {
   isBanned: boolean;
   bannedIp: string | null;
   lastLoginIp: string | null;
+  accessRevoked: boolean;
+  hasActiveEntitlement: boolean;
 };
 
 export type AdminUserSortBy =
@@ -65,7 +67,7 @@ export async function loadAdminUsers(params?: {
   const { data: profileRows, error } = await supabase
     .from("profiles")
     .select(
-      "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at, last_login_ip",
+      "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at, last_login_ip, access_revoked_at",
     )
     .order("created_at", { ascending: false })
     .limit(500);
@@ -106,6 +108,7 @@ export async function loadAdminUsers(params?: {
 
   const bannedByUserId = new Map<string, string | null>();
   const bannedEmails = new Set<string>();
+  const usersWithActiveEntitlement = new Set<string>();
 
   try {
     const admin = createAdminClient();
@@ -124,6 +127,20 @@ export async function loadAdminUsers(params?: {
         if (userId) {
           bannedByUserId.set(userId, (row.ip_address as string | null) ?? null);
         }
+      }
+    }
+
+    const { data: entitlementRows, error: entitlementError } = await admin
+      .from("user_year_entitlements")
+      .select("user_id")
+      .eq("active", true);
+
+    if (entitlementError) {
+      console.error("[loadAdminUsers] entitlements", entitlementError.message);
+    } else {
+      for (const row of entitlementRows ?? []) {
+        const userId = row.user_id as string | null;
+        if (userId) usersWithActiveEntitlement.add(userId);
       }
     }
   } catch (e) {
@@ -151,6 +168,8 @@ export async function loadAdminUsers(params?: {
       isBanned,
       bannedIp: bannedByUserId.get(r.id as string) ?? null,
       lastLoginIp: (r.last_login_ip as string | null) ?? null,
+      accessRevoked: Boolean(r.access_revoked_at),
+      hasActiveEntitlement: usersWithActiveEntitlement.has(r.id as string),
     };
   });
 

@@ -6,6 +6,9 @@ import { createClient } from "@/lib/supabase/server";
 export const ACCOUNT_BLOCKED_MESSAGE =
   "Konto zostało zablokowane. Skontaktuj się z administratorem.";
 
+export const LOGIN_BLOCKED_QUERY = "blocked";
+export const ACCESS_REVOKED_QUERY = "revoked";
+
 export async function getClientIpFromHeaders(): Promise<string | null> {
   const h = await headers();
   const forwarded = h.get("x-forwarded-for");

@@ -11,6 +11,7 @@ import {
   type QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
+import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -512,6 +513,77 @@ export async function unbanUser(raw: z.infer<typeof unbanUserSchema>) {
   } catch (e) {
     console.error("[unbanUser]", e);
     return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+  }
+
+  return { ok: true as const };
+}
+
+const revokeAccessSchema = z.object({
+  userId: z.string().uuid(),
+});
+
+export async function revokeUserAccess(raw: z.infer<typeof revokeAccessSchema>) {
+  const parsed = revokeAccessSchema.safeParse(raw);
+  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+
+  let ctx;
+  try {
+    ctx = await requireSuperAdmin();
+  } catch {
+    return { ok: false as const, message: "Tylko admin może odbierać dostęp." };
+  }
+
+  if (parsed.data.userId === ctx.userId) {
+    return { ok: false as const, message: "Nie możesz odebrać dostępu własnemu kontu." };
+  }
+
+  try {
+    const admin = createAdminClient();
+    await revokeAllEntitlementsForUser(parsed.data.userId);
+
+    const { error: profileError } = await admin
+      .from("profiles")
+      .update({ access_revoked_at: new Date().toISOString() })
+      .eq("id", parsed.data.userId);
+
+    if (profileError) {
+      console.error("[revokeUserAccess] profile", profileError.message);
+      return { ok: false as const, message: "Nie udało się oznaczyć konta jako bez dostępu." };
+    }
+
+    await admin.auth.admin.signOut(parsed.data.userId, "global");
+  } catch (e) {
+    console.error("[revokeUserAccess]", e);
+    return { ok: false as const, message: "Nie udało się odebrać dostępu." };
+  }
+
+  return { ok: true as const };
+}
+
+export async function restoreUserAccess(raw: z.infer<typeof revokeAccessSchema>) {
+  const parsed = revokeAccessSchema.safeParse(raw);
+  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+
+  try {
+    await requireSuperAdmin();
+  } catch {
+    return { ok: false as const, message: "Tylko admin może przywracać możliwość dostępu." };
+  }
+
+  try {
+    const admin = createAdminClient();
+    const { error } = await admin
+      .from("profiles")
+      .update({ access_revoked_at: null })
+      .eq("id", parsed.data.userId);
+
+    if (error) {
+      console.error("[restoreUserAccess]", error.message);
+      return { ok: false as const, message: "Nie udało się przywrócić możliwości dostępu." };
+    }
+  } catch (e) {
+    console.error("[restoreUserAccess]", e);
+    return { ok: false as const, message: "Nie udało się przywrócić możliwości dostępu." };
   }
 
   return { ok: true as const };

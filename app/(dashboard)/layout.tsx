@@ -18,7 +18,7 @@ import { createClient } from "@/lib/supabase/server";
 import { isTestModeCookie, TEST_MODE_COOKIE_NAME } from "@/lib/testMode";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { assertAccountNotBlocked } from "@/lib/auth/accountBan";
+import { assertAccountNotBlocked, LOGIN_BLOCKED_QUERY } from "@/lib/auth/accountBan";
 
 export const dynamic = "force-dynamic";
 
@@ -60,7 +60,7 @@ export default async function DashboardLayout({
     const { blocked } = await assertAccountNotBlocked({ email: user.email });
     if (blocked) {
       await supabase.auth.signOut();
-      redirect("/login");
+      redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
     }
 
     userEmail = user.email ?? null;

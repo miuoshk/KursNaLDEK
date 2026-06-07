@@ -3,8 +3,8 @@
 import { useCallback, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, ShieldAlert, User as UserIcon, Loader2, Ban, ShieldOff } from "lucide-react";
-import { setUserRole, banUser, unbanUser } from "@/features/admin/server/adminActions";
+import { ShieldCheck, ShieldAlert, User as UserIcon, Loader2, Ban, ShieldOff, CircleOff, RotateCcw } from "lucide-react";
+import { setUserRole, banUser, unbanUser, revokeUserAccess, restoreUserAccess } from "@/features/admin/server/adminActions";
 import type {
   AdminUserRow,
   AdminUserRole,
@@ -210,6 +210,47 @@ export function AdminUsersTable({
 
         if (!result.ok) {
           setErrorMsg(result.message ?? "Nie udało się zbanować użytkownika.");
+          return;
+        }
+      }
+
+      startTransition(() => {
+        router.refresh();
+      });
+    },
+    [router],
+  );
+
+  const handleAccessToggle = useCallback(
+    async (user: AdminUserRow) => {
+      if (user.accessRevoked) {
+        const confirmed = window.confirm(
+          `Przywrócić możliwość uzyskania dostępu dla „${user.displayName}"? Nie przywraca automatycznie płatności — użytkownik będzie mógł ponownie wybrać rok.`,
+        );
+        if (!confirmed) return;
+
+        setErrorMsg(null);
+        setPendingId(user.id);
+        const result = await restoreUserAccess({ userId: user.id });
+        setPendingId(null);
+
+        if (!result.ok) {
+          setErrorMsg(result.message ?? "Nie udało się przywrócić dostępu.");
+          return;
+        }
+      } else {
+        const confirmed = window.confirm(
+          `Odebrać dostęp użytkownikowi „${user.displayName}"? Straci aktywne uprawnienia i zobaczy komunikat o braku dostępu.`,
+        );
+        if (!confirmed) return;
+
+        setErrorMsg(null);
+        setPendingId(user.id);
+        const result = await revokeUserAccess({ userId: user.id });
+        setPendingId(null);
+
+        if (!result.ok) {
+          setErrorMsg(result.message ?? "Nie udało się odebrać dostępu.");
           return;
         }
       }
@@ -460,6 +501,7 @@ export function AdminUsersTable({
                     className={cn(
                       "border-b border-border transition-colors hover:bg-white/[0.02]",
                       user.isBanned && "bg-error/5",
+                      user.accessRevoked && !user.isBanned && "bg-brand-gold/5",
                     )}
                   >
                     <td className="px-3 py-3">
@@ -534,9 +576,18 @@ export function AdminUsersTable({
                           <Ban className="size-3" aria-hidden />
                           Zbanowany
                         </span>
+                      ) : user.accessRevoked ? (
+                        <span className="inline-flex items-center gap-1 rounded-pill bg-brand-gold/15 px-2 py-0.5 font-body text-body-xs text-brand-gold">
+                          <CircleOff className="size-3" aria-hidden />
+                          Bez dostępu
+                        </span>
+                      ) : user.hasActiveEntitlement ? (
+                        <span className="rounded-pill bg-success/15 px-2 py-0.5 font-body text-body-xs text-success">
+                          Aktywny
+                        </span>
                       ) : (
                         <span className="rounded-pill bg-white/5 px-2 py-0.5 font-body text-body-xs text-muted">
-                          Aktywny
+                          Brak płatności
                         </span>
                       )}
                     </td>
@@ -577,6 +628,40 @@ export function AdminUsersTable({
                               <>
                                 <Ban className="size-3" aria-hidden />
                                 Zbanuj
+                              </>
+                            )}
+                          </button>
+                          <button
+                            type="button"
+                            disabled={isSelf || isUpdating || user.isBanned}
+                            onClick={() => handleAccessToggle(user)}
+                            className={cn(
+                              "inline-flex items-center gap-1 rounded-btn border px-2 py-1 font-body text-body-xs transition-colors",
+                              user.accessRevoked
+                                ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
+                                : "border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10",
+                              (isSelf || isUpdating || user.isBanned) &&
+                                "cursor-not-allowed opacity-60",
+                            )}
+                            title={
+                              isSelf
+                                ? "Nie możesz odebrać dostępu własnemu kontu"
+                                : user.isBanned
+                                  ? "Najpierw odbanuj użytkownika"
+                                  : user.accessRevoked
+                                    ? "Przywróć możliwość dostępu"
+                                    : "Odbierz dostęp"
+                            }
+                          >
+                            {user.accessRevoked ? (
+                              <>
+                                <RotateCcw className="size-3" aria-hidden />
+                                Przywróć
+                              </>
+                            ) : (
+                              <>
+                                <CircleOff className="size-3" aria-hidden />
+                                Odbierz
                               </>
                             )}
                           </button>

@@ -9,10 +9,13 @@ import {
   createCheckoutSessionAction,
 } from "@/features/access/actions";
 import { YearSelectionGrid } from "@/features/access/components/YearSelectionGrid";
+import { isUserAccessRevoked, ACCESS_REVOKED_MESSAGE } from "@/lib/auth/accessRevocation";
+import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
 type SearchParams = Promise<{
   status?: string;
   reason?: string;
+  revoked?: string;
 }>;
 
 const ERROR_REASON_LABELS: Record<string, string> = {
@@ -44,10 +47,11 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
     redirect("/login");
   }
 
-  const [profile, entitlements, params] = await Promise.all([
+  const [profile, entitlements, params, accessRevoked] = await Promise.all([
     getProfileByUserId(user.id),
     listActiveEntitlementsByUserId(user.id),
     props.searchParams,
+    isUserAccessRevoked(user.id),
   ]);
 
   const selectedTrack = normalizeTrack(profile?.current_track);
@@ -66,7 +70,19 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
 
   const hasAnyEntitlement = entitlements.length > 0;
   const status = params.status;
+  const showAccessRevoked = accessRevoked || params.revoked === "1";
   const reasonLabel = params.reason ? ERROR_REASON_LABELS[params.reason] ?? null : null;
+
+  if (showAccessRevoked) {
+    return (
+      <div className="mx-auto w-full max-w-2xl">
+        <h1 className="font-heading text-3xl font-bold text-primary">Brak dostępu</h1>
+        <p className="mt-4 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-3 font-body text-body-md text-[#F87171]">
+          {ACCESS_REVOKED_MESSAGE}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto w-full max-w-6xl">

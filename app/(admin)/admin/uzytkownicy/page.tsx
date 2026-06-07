@@ -83,8 +83,9 @@ export default async function AdminUsersPage({ searchParams }: PageProps) {
           Użytkownicy
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">
-          Zarządzaj rolami, banami i filtruj listę po kierunku oraz roku studiów. Zmiana ról
-          i banowanie wymaga roli <span className="text-brand-gold">admin</span>.
+          Zarządzaj rolami, banami, odbiorem dostępu i filtruj listę po kierunku oraz roku studiów.
+          Zmiana ról, banowanie i odbiór dostępu wymaga roli{" "}
+          <span className="text-brand-gold">admin</span>.
         </p>
       </header>
 

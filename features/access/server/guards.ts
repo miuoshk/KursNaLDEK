@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { hasAnyActiveEntitlement, hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
+import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
+import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 import { isTestModeCookie, TEST_MODE_COOKIE_NAME } from "@/lib/testMode";
 
 async function isTestModeEnabled() {
@@ -24,6 +26,10 @@ export async function requireAnyEntitlementOrRedirect() {
 
   if (!user) {
     redirect("/login");
+  }
+
+  if (await isUserAccessRevoked(user.id)) {
+    redirect(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`);
   }
 
   const hasAny = await hasAnyActiveEntitlement(user.id);
@@ -53,6 +59,10 @@ export async function requireCurrentSelectionAccessOrRedirect() {
 
   if (!user) {
     redirect("/login");
+  }
+
+  if (await isUserAccessRevoked(user.id)) {
+    redirect(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`);
   }
 
   const current = await loadCurrentSelectionAccess(user.id);

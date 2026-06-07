@@ -8,6 +8,8 @@ import { grantFreeTestEntitlement } from "@/features/access/server/grantFreeTest
 import { getStripePriceId } from "@/features/access/lib/stripePrices";
 import { isFreeTestSelection, isRegistrationClosedForSelection, selectionSchema } from "@/features/access/lib/studyAccess";
 import { hasAnyActiveEntitlement } from "@/features/access/server/entitlements";
+import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
+import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
 type ErrorReason =
   | "invalid-selection"
@@ -47,6 +49,12 @@ async function getUserOrNull() {
   return { user, supabase };
 }
 
+async function redirectIfAccessRevoked(userId: string) {
+  if (await isUserAccessRevoked(userId)) {
+    redirect(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`);
+  }
+}
+
 export async function activateFreeTestYearAction(formData: FormData) {
   const parsed = selectionSchema.safeParse({
     track: formData.get("track"),
@@ -63,6 +71,7 @@ export async function activateFreeTestYearAction(formData: FormData) {
   if (!user) {
     redirect("/login");
   }
+  await redirectIfAccessRevoked(user.id);
 
   let failureReason: ErrorReason | null = null;
   try {
@@ -117,6 +126,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
   if (!user) {
     redirect("/login");
   }
+  await redirectIfAccessRevoked(user.id);
 
   let checkoutUrl: string | null = null;
   let failureReason: ErrorReason | null = null;

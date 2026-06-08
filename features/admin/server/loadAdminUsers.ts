@@ -48,6 +48,71 @@ function cmp(a: string | number | null, b: string | number | null, dir: AdminUse
   return String(a).localeCompare(String(b), "pl", { numeric: true, sensitivity: "base" }) * dirMul;
 }
 
+const PROFILE_PAGE_SIZE = 1000;
+const AUTH_USERS_PAGE_SIZE = 1000;
+
+const PROFILE_SELECT =
+  "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at, last_login_ip, access_revoked_at";
+
+async function fetchAllProfiles(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+): Promise<Array<Record<string, unknown>>> {
+  const all: Array<Record<string, unknown>> = [];
+  let offset = 0;
+
+  while (true) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select(PROFILE_SELECT)
+      .order("created_at", { ascending: false })
+      .range(offset, offset + PROFILE_PAGE_SIZE - 1);
+
+    if (error) {
+      console.error("[loadAdminUsers] profiles", error.message);
+      break;
+    }
+
+    const batch = data ?? [];
+    all.push(...batch);
+    if (batch.length < PROFILE_PAGE_SIZE) break;
+    offset += PROFILE_PAGE_SIZE;
+  }
+
+  return all;
+}
+
+async function fetchAllAuthUsers(
+  admin: ReturnType<typeof createAdminClient>,
+): Promise<Map<string, { email: string | null; lastSignInAt: string | null }>> {
+  const emailMap = new Map<string, { email: string | null; lastSignInAt: string | null }>();
+  let page = 1;
+
+  while (true) {
+    const { data, error: authError } = await admin.auth.admin.listUsers({
+      page,
+      perPage: AUTH_USERS_PAGE_SIZE,
+    });
+
+    if (authError) {
+      console.error("[loadAdminUsers] auth.listUsers", authError.message);
+      break;
+    }
+
+    const users = data?.users ?? [];
+    for (const u of users) {
+      emailMap.set(u.id, {
+        email: u.email ?? null,
+        lastSignInAt: u.last_sign_in_at ?? null,
+      });
+    }
+
+    if (users.length < AUTH_USERS_PAGE_SIZE) break;
+    page += 1;
+  }
+
+  return emailMap;
+}
+
 /**
  * Zwraca listę użytkowników do widoku /admin/uzytkownicy.
  *
@@ -64,44 +129,13 @@ export async function loadAdminUsers(params?: {
 }): Promise<AdminUserRow[]> {
   const supabase = await createClient();
 
-  const { data: profileRows, error } = await supabase
-    .from("profiles")
-    .select(
-      "id, display_name, full_name, role, current_track, current_year, subscription_status, created_at, last_login_ip, access_revoked_at",
-    )
-    .order("created_at", { ascending: false })
-    .limit(500);
+  const profileRows = await fetchAllProfiles(supabase);
 
-  if (error) {
-    console.error("[loadAdminUsers]", error.message);
-    return [];
-  }
-
-  const emailMap = new Map<string, { email: string | null; lastSignInAt: string | null }>();
+  let emailMap = new Map<string, { email: string | null; lastSignInAt: string | null }>();
 
   try {
     const admin = createAdminClient();
-    let page = 1;
-    const perPage = 200;
-    while (page <= 10) {
-      const { data, error: authError } = await admin.auth.admin.listUsers({
-        page,
-        perPage,
-      });
-      if (authError) {
-        console.error("[loadAdminUsers] auth.listUsers", authError.message);
-        break;
-      }
-      const users = data?.users ?? [];
-      for (const u of users) {
-        emailMap.set(u.id, {
-          email: u.email ?? null,
-          lastSignInAt: u.last_sign_in_at ?? null,
-        });
-      }
-      if (users.length < perPage) break;
-      page += 1;
-    }
+    emailMap = await fetchAllAuthUsers(admin);
   } catch (e) {
     console.error("[loadAdminUsers] admin client error", e);
   }
@@ -147,7 +181,7 @@ export async function loadAdminUsers(params?: {
     console.error("[loadAdminUsers] ban lookup error", e);
   }
 
-  const rows: AdminUserRow[] = (profileRows ?? []).map((r) => {
+  const rows: AdminUserRow[] = profileRows.map((r) => {
     const auth = emailMap.get(r.id as string);
     const email = auth?.email ?? null;
     const emailKey = email?.trim().toLowerCase() ?? "";
@@ -231,11 +265,28 @@ export async function loadAdminUserFacets(): Promise<{
   years: Array<{ value: number; count: number }>;
 }> {
   const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("profiles")
-    .select("current_track, current_year");
+  const allRows: Array<{ current_track: unknown; current_year: unknown }> = [];
+  let offset = 0;
 
-  if (error || !data) {
+  while (true) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("current_track, current_year")
+      .range(offset, offset + PROFILE_PAGE_SIZE - 1);
+
+    if (error || !data) {
+      if (error) console.error("[loadAdminUserFacets]", error.message);
+      return { tracks: [], years: [] };
+    }
+
+    allRows.push(...data);
+    if (data.length < PROFILE_PAGE_SIZE) break;
+    offset += PROFILE_PAGE_SIZE;
+  }
+
+  const data = allRows;
+
+  if (!data.length) {
     return { tracks: [], years: [] };
   }
 

@@ -12,7 +12,7 @@ import type {
   QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { AdminQuestionEditor } from "@/features/admin/components/AdminQuestionEditor";
-import { CopyQuestionButton } from "@/features/admin/components/CopyQuestionButton";
+import { CopyQuestionActions } from "@/features/admin/components/CopyQuestionActions";
 import { cn } from "@/lib/utils";
 
 type AdminResolveDialogProps = {
@@ -157,9 +157,12 @@ export function AdminResolveDialog({
                 <h3 className="font-heading text-heading-sm text-primary">
                   Pytanie
                 </h3>
-                <div className="flex flex-wrap items-center justify-end gap-3">
+                <div className="flex flex-col items-end gap-2">
                   {report.questionId ? (
-                    <CopyQuestionButton questionId={report.questionId} />
+                    <CopyQuestionActions
+                      questionId={report.questionId}
+                      report={{ description: report.description }}
+                    />
                   ) : null}
                   {report.questionId && (
                     <a

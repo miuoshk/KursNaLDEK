@@ -12,7 +12,7 @@ import {
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
 import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
-import { formatQuestionCopyText } from "@/features/admin/lib/formatQuestionCopyText";
+import { formatQuestionCopyText, formatQuestionCopyWithReportText } from "@/features/admin/lib/formatQuestionCopyText";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -350,20 +350,10 @@ export async function fetchQuestionForAdmin(questionId: string): Promise<
   return { ok: true, question, history };
 }
 
-export async function fetchQuestionCopyText(questionId: string): Promise<
-  { ok: true; text: string } | { ok: false; message: string }
-> {
-  try {
-    await requireAdminAccess();
-  } catch {
-    return { ok: false, message: "Brak uprawnień." };
-  }
-
+async function loadQuestionCopyPayload(questionId: string) {
   const supabase = await createClient();
   const question = await loadAdminQuestionDetail(questionId);
-  if (!question) {
-    return { ok: false, message: "Nie znaleziono pytania." };
-  }
+  if (!question) return null;
 
   let subjectName = "—";
   let topicName = "—";
@@ -386,16 +376,56 @@ export async function fetchQuestionCopyText(questionId: string): Promise<
   }
 
   return {
+    subjectName,
+    topicName,
+    text: question.text,
+    options: question.options,
+    correctOptionId: question.correctOptionId,
+    explanation: question.explanation,
+    questionType: question.questionType,
+  };
+}
+
+export async function fetchQuestionCopyText(questionId: string): Promise<
+  { ok: true; text: string } | { ok: false; message: string }
+> {
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false, message: "Brak uprawnień." };
+  }
+
+  const payload = await loadQuestionCopyPayload(questionId);
+  if (!payload) {
+    return { ok: false, message: "Nie znaleziono pytania." };
+  }
+
+  return {
     ok: true,
-    text: formatQuestionCopyText({
-      subjectName,
-      topicName,
-      text: question.text,
-      options: question.options,
-      correctOptionId: question.correctOptionId,
-      explanation: question.explanation,
-      questionType: question.questionType,
-    }),
+    text: formatQuestionCopyText(payload),
+  };
+}
+
+export async function fetchQuestionCopyTextWithReport(
+  questionId: string,
+  report: {
+    description: string;
+  },
+): Promise<{ ok: true; text: string } | { ok: false; message: string }> {
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false, message: "Brak uprawnień." };
+  }
+
+  const payload = await loadQuestionCopyPayload(questionId);
+  if (!payload) {
+    return { ok: false, message: "Nie znaleziono pytania." };
+  }
+
+  return {
+    ok: true,
+    text: formatQuestionCopyWithReportText(payload, report),
   };
 }
 

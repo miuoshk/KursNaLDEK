@@ -46,3 +46,16 @@ export function formatQuestionCopyText(input: QuestionCopyInput): string {
     `Wyjaśnienie: ${input.explanation || "—"}`,
   ].join("\n\n");
 }
+
+export type QuestionReportCopyInput = {
+  description: string;
+};
+
+export function formatQuestionCopyWithReportText(
+  question: QuestionCopyInput,
+  report: QuestionReportCopyInput,
+): string {
+  const questionBlock = formatQuestionCopyText(question);
+  const description = report.description.trim() || "—";
+  return `${questionBlock}\n\nBłąd zgłoszony przez użytkownika:\n${description}`;
+}

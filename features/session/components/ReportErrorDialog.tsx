@@ -21,6 +21,7 @@ type ReportErrorDialogProps = {
   questionText: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  hideExplanationCategory?: boolean;
 };
 
 export function ReportErrorDialog({
@@ -28,7 +29,11 @@ export function ReportErrorDialog({
   questionText,
   open,
   onOpenChange,
+  hideExplanationCategory = false,
 }: ReportErrorDialogProps) {
+  const categories = hideExplanationCategory
+    ? CATEGORIES.filter((c) => c.value !== "explanation")
+    : CATEGORIES;
   const [category, setCategory] = useState<Category>("wrong_answer");
   const [description, setDescription] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -83,7 +88,7 @@ export function ReportErrorDialog({
               onChange={(e) => setCategory(e.target.value as Category)}
               className="mt-1 w-full rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary"
             >
-              {CATEGORIES.map((c) => (
+              {categories.map((c) => (
                 <option key={c.value} value={c.value}>{c.label}</option>
               ))}
             </select>

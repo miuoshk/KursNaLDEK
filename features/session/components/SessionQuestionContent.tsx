@@ -8,6 +8,7 @@ import { SessionProgressSquares } from "@/features/session/components/SessionPro
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type {
@@ -36,6 +37,7 @@ type SessionQuestionContentProps = {
   onNext: () => void;
   onPrevious: () => void;
   showTopicName?: boolean;
+  subjectId: string;
 };
 
 export function SessionQuestionContent({
@@ -57,7 +59,9 @@ export function SessionQuestionContent({
   onNext,
   onPrevious,
   showTopicName = true,
+  subjectId,
 }: SessionQuestionContentProps) {
+  const hideExplanation = isExplanationHiddenForSubject(subjectId);
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
   const isLast = currentIndex >= total - 1;
@@ -131,8 +135,13 @@ export function SessionQuestionContent({
               question={q}
               selectedOptionId={selectedOptionId!}
               isCorrect={isCorrect}
+              hideExplanation={hideExplanation}
             />
-            <SessionQuestionActions questionId={q.id} questionText={q.text} />
+            <SessionQuestionActions
+              questionId={q.id}
+              questionText={q.text}
+              subjectId={subjectId}
+            />
 
             {showConfidenceBar ? (
               <div className="mt-6 flex flex-col items-center gap-3">
@@ -178,7 +187,11 @@ export function SessionQuestionContent({
           </motion.div>
         ) : (
           <div className="mx-auto mt-8 w-full max-w-3xl">
-            <SessionQuestionActions questionId={q.id} questionText={q.text} />
+            <SessionQuestionActions
+              questionId={q.id}
+              questionText={q.text}
+              subjectId={subjectId}
+            />
           </div>
         )}
       </div>

@@ -10,12 +10,14 @@ type FeedbackPanelProps = {
   question: SessionQuestion;
   selectedOptionId: string;
   isCorrect: boolean;
+  hideExplanation?: boolean;
 };
 
 export function FeedbackPanel({
   question,
   selectedOptionId,
   isCorrect,
+  hideExplanation = false,
 }: FeedbackPanelProps) {
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
@@ -52,12 +54,14 @@ export function FeedbackPanel({
       <p className="font-body text-body-sm text-secondary">
         Twoja odpowiedź: {yourLetter} · Poprawna: {correctLetter}
       </p>
-      <div className="rounded-card bg-card p-5">
-        <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
-        <div className="mt-3">
-          {markdownBlock(question.explanation)}
+      {!hideExplanation ? (
+        <div className="rounded-card bg-card p-5">
+          <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
+          <div className="mt-3">
+            {markdownBlock(question.explanation)}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

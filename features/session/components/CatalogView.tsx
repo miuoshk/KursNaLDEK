@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type { SessionQuestion } from "@/features/session/types";
@@ -28,6 +29,7 @@ type CatalogMode = "nauka" | "egzamin";
 const MODE_STORAGE_KEY = "catalog-mode";
 
 type CatalogViewProps = {
+  subjectId: string;
   subjectName: string;
   questions: SessionQuestion[];
   /**
@@ -112,10 +114,12 @@ function highlightText(value: string, query: string): ReactNode {
 }
 
 export function CatalogView({
+  subjectId,
   subjectName,
   questions,
   initialQuestionId,
 }: CatalogViewProps) {
+  const hideExplanation = isExplanationHiddenForSubject(subjectId);
   const initialIndex = useMemo(() => {
     if (!initialQuestionId) return 0;
     const i = questions.findIndex((q) => q.id === initialQuestionId);
@@ -415,25 +419,33 @@ export function CatalogView({
                 ) : null}
               </article>
 
-              <CatalogExplanationPanel
-                className="mt-6 lg:hidden"
-                explanation={q.explanation}
-                revealed={isRevealed}
-              />
+              {!hideExplanation ? (
+                <CatalogExplanationPanel
+                  className="mt-6 lg:hidden"
+                  explanation={q.explanation}
+                  revealed={isRevealed}
+                />
+              ) : null}
 
               <div className="mt-6">
-                <SessionQuestionActions questionId={q.id} questionText={q.text} />
+                <SessionQuestionActions
+                  questionId={q.id}
+                  questionText={q.text}
+                  subjectId={subjectId}
+                />
               </div>
             </div>
           )}
         </div>
 
-        <aside className="hidden min-h-0 w-full max-w-md shrink-0 overflow-y-auto border-l border-border bg-card p-6 lg:block xl:p-8">
-          <CatalogExplanationPanel
-            explanation={q.explanation}
-            revealed={isRevealed}
-          />
-        </aside>
+        {!hideExplanation ? (
+          <aside className="hidden min-h-0 w-full max-w-md shrink-0 overflow-y-auto border-l border-border bg-card p-6 lg:block xl:p-8">
+            <CatalogExplanationPanel
+              explanation={q.explanation}
+              revealed={isRevealed}
+            />
+          </aside>
+        ) : null}
       </div>
 
       <CatalogBottomNav

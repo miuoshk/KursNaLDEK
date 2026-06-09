@@ -253,6 +253,7 @@ export function SessionStudyView({
         onNext={handleNavigateNext}
         onPrevious={s.goToPrevious}
         showTopicName={showSessionTopics}
+        subjectId={subjectId}
       />
     </div>
   );

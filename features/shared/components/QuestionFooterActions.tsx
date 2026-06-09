@@ -7,6 +7,7 @@ import { isQuestionSaved } from "@/features/session/api/isQuestionSaved";
 import { ReportErrorDialog } from "@/features/session/components/ReportErrorDialog";
 import { DiscussionPanel } from "@/features/session/components/DiscussionPanel";
 import { loadDiscussion } from "@/features/session/api/loadDiscussion";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 
 export type QuestionFooterActionsProps = {
   /** Id pytania (np. do zgłoszenia błędu / dyskusji). */
@@ -15,6 +16,8 @@ export type QuestionFooterActionsProps = {
   questionText?: string;
   /** Liczba wpisów w dyskusji — domyślnie 0. */
   discussionCount?: number;
+  /** Ukrywa kategorię „błąd w wyjaśnieniu” (np. angielski medyczny STOMA r.1). */
+  subjectId?: string;
 };
 
 /**
@@ -24,7 +27,11 @@ export function QuestionFooterActions({
   questionId,
   questionText = "",
   discussionCount = 0,
+  subjectId,
 }: QuestionFooterActionsProps) {
+  const hideExplanationCategory = subjectId
+    ? isExplanationHiddenForSubject(subjectId)
+    : false;
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
@@ -100,6 +107,7 @@ export function QuestionFooterActions({
             questionText={questionText}
             open={reportOpen}
             onOpenChange={setReportOpen}
+            hideExplanationCategory={hideExplanationCategory}
           />
           <DiscussionPanel
             key={`discussion-${questionId}`}

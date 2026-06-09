@@ -17,6 +17,17 @@ export type LoadDiscussionResult =
   | { ok: true; comments: DiscussionComment[]; total: number }
   | { ok: false; message: string };
 
+function resolvePublicDisplayName(profile: {
+  display_name: string | null;
+  nick: string | null;
+}): string {
+  const display = profile.display_name?.trim();
+  if (display) return display;
+  const nick = profile.nick?.trim();
+  if (nick) return nick;
+  return "Użytkownik";
+}
+
 export async function loadDiscussion(
   questionId: string,
 ): Promise<LoadDiscussionResult> {
@@ -30,7 +41,7 @@ export async function loadDiscussion(
 
     const { data: rows, error } = await supabase
       .from("question_discussions")
-      .select("id, user_id, content, upvotes, created_at, profiles(display_name)")
+      .select("id, user_id, content, upvotes, created_at")
       .eq("question_id", questionId)
       .order("created_at", { ascending: false })
       .limit(50);
@@ -40,19 +51,42 @@ export async function loadDiscussion(
       return { ok: false, message: "Nie udało się wczytać dyskusji." };
     }
 
-    const comments: DiscussionComment[] = (rows ?? []).map((r) => {
-      const profile = r.profiles as unknown as { display_name: string | null } | null;
-      return {
-        id: r.id as string,
-        userId: r.user_id as string,
-        displayName: profile?.display_name ?? "Anonimowy",
-        content: r.content as string,
-        upvotes: (r.upvotes as number) ?? 0,
-        hasUpvoted: false,
-        isOwn: userId ? r.user_id === userId : false,
-        createdAt: r.created_at as string,
-      };
-    });
+    const authorIds = [
+      ...new Set((rows ?? []).map((r) => r.user_id as string).filter(Boolean)),
+    ];
+
+    const displayNames = new Map<string, string>();
+    if (authorIds.length > 0) {
+      const { data: profiles, error: profileError } = await supabase
+        .from("public_profiles")
+        .select("id, display_name, nick")
+        .in("id", authorIds);
+
+      if (profileError) {
+        console.error("[loadDiscussion] public_profiles", profileError.message);
+      } else {
+        for (const profile of profiles ?? []) {
+          displayNames.set(
+            profile.id as string,
+            resolvePublicDisplayName({
+              display_name: profile.display_name as string | null,
+              nick: profile.nick as string | null,
+            }),
+          );
+        }
+      }
+    }
+
+    const comments: DiscussionComment[] = (rows ?? []).map((r) => ({
+      id: r.id as string,
+      userId: r.user_id as string,
+      displayName: displayNames.get(r.user_id as string) ?? "Użytkownik",
+      content: r.content as string,
+      upvotes: (r.upvotes as number) ?? 0,
+      hasUpvoted: false,
+      isOwn: userId ? r.user_id === userId : false,
+      createdAt: r.created_at as string,
+    }));
 
     return { ok: true, comments, total: comments.length };
   } catch (e) {

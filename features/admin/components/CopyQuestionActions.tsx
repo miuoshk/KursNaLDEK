@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Check, Copy, Loader2 } from "lucide-react";
 import {
   fetchQuestionCopyText,
   fetchQuestionCopyTextWithReport,
 } from "@/features/admin/server/adminActions";
+import { copyTextAfterAsyncFetch, copyTextToClipboard } from "@/lib/copyToClipboard";
 import { cn } from "@/lib/utils";
 
 type CopyMode = "question" | "withReport";
@@ -25,57 +26,128 @@ export function CopyQuestionActions({
   const [state, setState] = useState<"idle" | "loading" | "copied" | "error">(
     "idle",
   );
+  const [prefetchState, setPrefetchState] = useState<
+    "idle" | "loading" | "ready" | "error"
+  >("idle");
+  const cacheRef = useRef<{ question?: string; withReport?: string }>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    cacheRef.current = {};
+    setPrefetchState("loading");
+
+    void Promise.all([
+      fetchQuestionCopyText(questionId),
+      fetchQuestionCopyTextWithReport(questionId, report),
+    ]).then(([plainRes, reportRes]) => {
+      if (cancelled) return;
+      if (!plainRes.ok || !reportRes.ok) {
+        setPrefetchState("error");
+        return;
+      }
+      cacheRef.current = {
+        question: plainRes.text,
+        withReport: reportRes.text,
+      };
+      setPrefetchState("ready");
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [questionId, report.description]);
+
+  const resetSoon = useCallback(() => {
+    window.setTimeout(() => {
+      setState("idle");
+      setActiveMode(null);
+    }, 2000);
+  }, []);
 
   const handleCopy = useCallback(
-    async (mode: CopyMode) => {
+    (mode: CopyMode) => {
       if (state === "loading") return;
       setActiveMode(mode);
       setState("loading");
-      try {
+
+      const cached =
+        mode === "question"
+          ? cacheRef.current.question
+          : cacheRef.current.withReport;
+
+      const fetchText = async (): Promise<string> => {
+        if (cached) return cached;
         const res =
           mode === "question"
             ? await fetchQuestionCopyText(questionId)
             : await fetchQuestionCopyTextWithReport(questionId, report);
         if (!res.ok) {
-          setState("error");
-          return;
+          throw new Error(res.message);
         }
-        await navigator.clipboard.writeText(res.text);
-        setState("copied");
-        window.setTimeout(() => {
-          setState("idle");
-          setActiveMode(null);
-        }, 2000);
-      } catch {
-        setState("error");
-        window.setTimeout(() => {
-          setState("idle");
-          setActiveMode(null);
-        }, 2500);
-      }
+        return res.text;
+      };
+
+      void (async () => {
+        try {
+          const copied = cached
+            ? await copyTextToClipboard(cached)
+            : await copyTextAfterAsyncFetch(fetchText);
+
+          if (!copied) {
+            setState("error");
+            window.setTimeout(() => {
+              setState("idle");
+              setActiveMode(null);
+            }, 2500);
+            return;
+          }
+
+          setState("copied");
+          resetSoon();
+        } catch {
+          setState("error");
+          window.setTimeout(() => {
+            setState("idle");
+            setActiveMode(null);
+          }, 2500);
+        }
+      })();
     },
-    [questionId, report, state],
+    [questionId, report, resetSoon, state],
   );
 
+  const disabled = state === "loading" || prefetchState === "loading";
+
   return (
-    <div className="flex flex-wrap items-center justify-end gap-2">
-      <CopyActionButton
-        label="Kopiuj pytanie"
-        copiedLabel="Skopiowano pytanie"
-        mode="question"
-        activeMode={activeMode}
-        state={state}
-        onCopy={handleCopy}
-      />
-      <CopyActionButton
-        label="Kopiuj ze zgłoszeniem"
-        copiedLabel="Skopiowano ze zgłoszeniem"
-        mode="withReport"
-        activeMode={activeMode}
-        state={state}
-        onCopy={handleCopy}
-        variant="gold"
-      />
+    <div className="flex flex-col items-end gap-1">
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        <CopyActionButton
+          label="Kopiuj pytanie"
+          copiedLabel="Skopiowano pytanie"
+          mode="question"
+          activeMode={activeMode}
+          state={state}
+          disabled={disabled}
+          onCopy={handleCopy}
+        />
+        <CopyActionButton
+          label="Kopiuj ze zgłoszeniem"
+          copiedLabel="Skopiowano ze zgłoszeniem"
+          mode="withReport"
+          activeMode={activeMode}
+          state={state}
+          disabled={disabled}
+          onCopy={handleCopy}
+          variant="gold"
+        />
+      </div>
+      {prefetchState === "loading" ? (
+        <p className="font-body text-body-xs text-muted">Przygotowuję tekst…</p>
+      ) : prefetchState === "error" ? (
+        <p className="font-body text-body-xs text-error">
+          Nie udało się wczytać treści — spróbuj ponownie za chwilę
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -86,6 +158,7 @@ function CopyActionButton({
   mode,
   activeMode,
   state,
+  disabled,
   onCopy,
   variant = "default",
 }: {
@@ -94,6 +167,7 @@ function CopyActionButton({
   mode: CopyMode;
   activeMode: CopyMode | null;
   state: "idle" | "loading" | "copied" | "error";
+  disabled: boolean;
   onCopy: (mode: CopyMode) => void;
   variant?: "default" | "gold";
 }) {
@@ -113,10 +187,10 @@ function CopyActionButton({
   return (
     <button
       type="button"
-      onClick={() => void onCopy(mode)}
-      disabled={state === "loading"}
+      onClick={() => onCopy(mode)}
+      disabled={disabled}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-btn border px-3 py-1.5 font-body text-body-xs transition-colors",
+        "inline-flex items-center gap-1.5 rounded-btn border px-3 py-1.5 font-body text-body-xs transition-colors disabled:cursor-not-allowed disabled:opacity-50",
         copied
           ? "border-success/30 bg-success/10 text-success"
           : errored

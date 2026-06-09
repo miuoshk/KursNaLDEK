@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment, useCallback, useMemo, useState } from "react";
-import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { resolveReport } from "@/features/admin/server/adminActions";
@@ -510,21 +509,13 @@ function InboxReportsTable({
                       {r.userName}
                     </td>
                     <td className="px-3 py-3">
-                      <div className="flex flex-col gap-1">
-                        <button
-                          type="button"
-                          onClick={() => onResolve(r)}
-                          className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
-                        >
-                          Rozpatrz
-                        </button>
-                        <Link
-                          href={`/admin/pytania?q=${encodeURIComponent(r.questionId)}`}
-                          className="font-body text-body-xs text-secondary transition-colors hover:text-white"
-                        >
-                          Pytanie →
-                        </Link>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onResolve(r)}
+                        className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
+                      >
+                        Rozpatrz
+                      </button>
                     </td>
                   </tr>
                   {expanded && canExpand ? (
@@ -674,31 +665,23 @@ function GroupedReportsTable({
                         : "—"}
                     </td>
                     <td className="px-3 py-3">
-                      <div className="flex flex-col gap-1">
-                        {latestPending ? (
-                          <button
-                            type="button"
-                            onClick={() => onResolve(latestPending)}
-                            className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
-                          >
-                            Rozpatrz oczekujące
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => onResolve(latest)}
-                            className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
-                          >
-                            Rozpatrz ostatnie
-                          </button>
-                        )}
-                        <Link
-                          href={`/admin/pytania?q=${encodeURIComponent(g.questionId)}`}
-                          className="font-body text-body-xs text-secondary transition-colors hover:text-white"
+                      {latestPending ? (
+                        <button
+                          type="button"
+                          onClick={() => onResolve(latestPending)}
+                          className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
                         >
-                          Pytanie →
-                        </Link>
-                      </div>
+                          Rozpatrz oczekujące
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => onResolve(latest)}
+                          className="text-left font-body text-body-xs text-brand-gold transition-colors hover:text-white"
+                        >
+                          Rozpatrz ostatnie
+                        </button>
+                      )}
                     </td>
                   </tr>
                   {expanded ? (

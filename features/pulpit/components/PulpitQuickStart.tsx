@@ -17,7 +17,7 @@ export function PulpitQuickStart({ data }: { data: PulpitData }) {
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         <ReviewCard
           dueReviews={data.dueReviews}
-          lastSubjectId={data.lastSubjectId}
+          dueSubjects={data.dueSubjects}
           hasDue={hasDue}
           sessionCount={data.preferredSessionCount}
         />
@@ -34,19 +34,20 @@ export function PulpitQuickStart({ data }: { data: PulpitData }) {
 
 function ReviewCard({
   dueReviews,
-  lastSubjectId,
+  dueSubjects,
   hasDue,
   sessionCount,
 }: {
   dueReviews: number;
-  lastSubjectId: string | null;
+  dueSubjects: PulpitData["dueSubjects"];
   hasDue: boolean;
   sessionCount: number;
 }) {
-  const reviewHref = buildSessionStartHref({
-    subject: lastSubjectId ?? undefined,
+  const reviewCount = Math.min(sessionCount, dueReviews);
+  const allDueHref = buildSessionStartHref({
     mode: "inteligentna",
-    count: sessionCount,
+    count: reviewCount,
+    focus: "due",
   });
 
   return (
@@ -67,15 +68,45 @@ function ReviewCard({
             {formatQuestionsCount(dueReviews)}
           </p>
           <p className="mt-2 font-body text-sm text-secondary">
-            Algorytm ANTARES zaplanował te powtórki na podstawie Twojego tempa
-            nauki
+            Tylko zaplanowane powtórki — bez losowych nowych pytań
           </p>
           <Link
-            href={reviewHref}
-            className="mt-auto inline-flex w-full items-center justify-center rounded-xl bg-brand-gold px-6 py-3 pt-6 font-body font-semibold text-background transition-all duration-200 ease-out hover:brightness-110"
+            href={allDueHref}
+            className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-brand-gold px-6 py-3 font-body font-semibold text-background transition-all duration-200 ease-out hover:brightness-110"
           >
-            Rozpocznij powtórkę
+            Wszystkie powtórki ({reviewCount})
           </Link>
+          {dueSubjects.length > 0 ? (
+            <div className="mt-4 border-t border-border pt-4">
+              <p className="font-body text-xs uppercase tracking-widest text-muted">
+                Według przedmiotu
+              </p>
+              <ul className="mt-2 space-y-1">
+                {dueSubjects.map((subject) => {
+                  const subjectCount = Math.min(sessionCount, subject.count);
+                  const href = buildSessionStartHref({
+                    subject: subject.id,
+                    mode: "inteligentna",
+                    count: subjectCount,
+                    focus: "due",
+                  });
+                  return (
+                    <li key={subject.id}>
+                      <Link
+                        href={href}
+                        className="flex items-center justify-between rounded-lg px-2 py-1.5 font-body text-sm text-secondary transition-colors duration-200 ease-out hover:bg-white/[0.04] hover:text-primary"
+                      >
+                        <span className="truncate pr-2">{subject.name}</span>
+                        <span className="shrink-0 font-medium text-brand-gold">
+                          {subject.count}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
         </>
       ) : (
         <>

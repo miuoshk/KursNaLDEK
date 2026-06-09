@@ -44,6 +44,8 @@ const schema = z.object({
   questionIds: z.array(z.string().min(1)).min(1).max(5000).optional(),
   /** Deep-link z zakładek / zapisanych — pytanie musi trafić do katalogu nawet poza pulą track. */
   focusQuestionId: z.string().min(1).optional(),
+  /** Sesja powtórkowa — wyłącznie pytania z terminem <= teraz. */
+  focus: z.enum(["due"]).optional(),
 });
 
 export type StartSessionResult =
@@ -67,8 +69,14 @@ export async function startSession(
 
   const rawSubject = parsed.data.subjectId?.trim() ?? "";
   const isMix = rawSubject.length === 0;
-  const { mode, count, topicId, questionIds: explicitIds, focusQuestionId } =
-    parsed.data;
+  const {
+    mode,
+    count,
+    topicId,
+    questionIds: explicitIds,
+    focusQuestionId,
+    focus,
+  } = parsed.data;
   const subjectId = isMix ? "" : rawSubject;
 
   try {
@@ -248,6 +256,29 @@ export async function startSession(
           ...chosenIds.filter((id) => id !== focusQuestionId),
         ];
       }
+    } else if (mode === "inteligentna" && focus === "due") {
+      const dueIds = await fetchDueReviewQuestionIdsForTopics(
+        supabase,
+        user.id,
+        topicOkForDue,
+        viewerTrack,
+        count,
+        topicFilter,
+      );
+      if (dueIds.length === 0) {
+        return {
+          ok: false,
+          message: isMix
+            ? "Brak pytań do powtórki. Jesteś na bieżąco!"
+            : "Brak pytań do powtórki w tym przedmiocie.",
+        };
+      }
+      chosenIds = dueIds.slice(0, count);
+      antaresMeta = await fetchSessionQuestionMeta(
+        supabase,
+        user.id,
+        chosenIds,
+      );
     } else if (mode === "inteligentna") {
       const antares = await buildAntaresInteligentnaSession(
         supabase,

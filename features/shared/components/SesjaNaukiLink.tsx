@@ -17,7 +17,11 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const { dueReviewsCount, preferredSessionCount } = useDashboardUser();
   const href =
     dueReviewsCount > 0
-      ? buildSessionStartHref({ mode: "inteligentna", count: preferredSessionCount })
+      ? buildSessionStartHref({
+          mode: "inteligentna",
+          count: Math.min(preferredSessionCount, dueReviewsCount),
+          focus: "due",
+        })
       : "/przedmioty";
   const tooltip =
     dueReviewsCount > 0 ? "Sesja powtórkowa" : "Wybierz przedmiot";

@@ -56,6 +56,8 @@ export type SessionStartParams = {
   mode?: string;
   count?: number;
   retry?: string;
+  /** Tylko zaplanowane powtórki (next_review <= teraz), bez nowych pytań. */
+  focus?: "due";
 };
 
 export function buildSessionStartHref(params: SessionStartParams = {}): string {
@@ -65,6 +67,7 @@ export function buildSessionStartHref(params: SessionStartParams = {}): string {
   q.set("mode", params.mode ?? "inteligentna");
   q.set("count", String(clampSessionCount(params.count ?? DEFAULT_SESSION_COUNT)));
   if (params.retry) q.set("retry", params.retry);
+  if (params.focus === "due") q.set("focus", "due");
   return `/sesja/new?${q.toString()}`;
 }
 

@@ -16,6 +16,7 @@ type SmartSessionCTAProps = {
   subjectId: string;
   availableQuestionCount: number;
   initialSessionCount: number;
+  dueCount?: number;
 };
 
 function resolveCount(
@@ -37,6 +38,7 @@ export function SmartSessionCTA({
   subjectId,
   availableQuestionCount,
   initialSessionCount,
+  dueCount = 0,
 }: SmartSessionCTAProps) {
   const maxQ = Math.max(1, availableQuestionCount);
   const smartInitial = sessionCountToPickerState(
@@ -82,6 +84,16 @@ export function SmartSessionCTA({
     return `/sesja/new?${q.toString()}`;
   }, [subjectId, reviewCount]);
 
+  const dueReviewHref = useMemo(() => {
+    const q = new URLSearchParams({
+      subject: subjectId,
+      mode: "inteligentna",
+      count: String(Math.max(1, Math.min(smartCount, dueCount))),
+      focus: "due",
+    });
+    return `/sesja/new?${q.toString()}`;
+  }, [subjectId, dueCount, smartCount]);
+
   const catalogHref = useMemo(() => {
     const q = new URLSearchParams({
       subject: subjectId,
@@ -112,6 +124,31 @@ export function SmartSessionCTA({
             Rozpocznij sesję
           </Link>
         </div>
+
+        {dueCount > 0 ? (
+          <div className="mt-4 flex flex-col gap-3 rounded-lg border border-brand-gold/20 bg-brand-gold/[0.04] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-body text-body-sm font-medium text-primary">
+                Zaplanowane powtórki
+              </p>
+              <p className="mt-0.5 font-body text-body-xs text-secondary">
+                {dueCount}{" "}
+                {dueCount === 1
+                  ? "pytanie czeka"
+                  : dueCount < 5
+                    ? "pytania czekają"
+                    : "pytań czeka"}{" "}
+                — tylko powtórki, bez nowych
+              </p>
+            </div>
+            <Link
+              href={dueReviewHref}
+              className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110"
+            >
+              Powtórz ({Math.min(smartCount, dueCount)})
+            </Link>
+          </div>
+        ) : null}
 
         <div className="mt-6 border-t border-border pt-4">
           <p className="font-body text-body-xs uppercase tracking-normal text-muted">

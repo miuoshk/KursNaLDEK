@@ -11,6 +11,14 @@ import { fetchVisibleTopicIds } from "@/features/session/server/questionSelectio
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { greetingName } from "@/lib/greetingName";
+import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { getDueReviewsPerSubject } from "@/lib/dashboard/getDueReviewsPerSubject";
+
+export type PulpitDueSubject = {
+  id: string;
+  name: string;
+  count: number;
+};
 
 export type PulpitRecentSession = {
   id: string;
@@ -29,6 +37,8 @@ export type PulpitData = {
   currentStreak: number;
   longestStreak: number;
   dueReviews: number;
+  /** Przedmioty z co najmniej jedną zaplanowaną powtórką. */
+  dueSubjects: PulpitDueSubject[];
   xp: number;
   rankTier: string;
   activityDays: ActivityDay[];
@@ -63,8 +73,10 @@ export async function loadPulpit(): Promise<
     const year = normalizeYear(profile?.current_year);
 
     const onlineWindowIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
-    const [dueReviews, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints, activeNowRes] = await Promise.all([
+    const catalog = await getCachedKnnpCatalog(track, year);
+    const [dueReviews, dueReviewsPerSubject, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints, activeNowRes] = await Promise.all([
       getDueReviewCount(supabase, user.id, track, year),
+      getDueReviewsPerSubject(supabase, user.id, catalog, track),
       supabase
         .from("study_sessions")
         .select(
@@ -87,6 +99,15 @@ export async function loadPulpit(): Promise<
 
     const dailyGoal = profile?.daily_goal ?? 25;
     const preferredSessionCount = getPreferredSessionCount(profile);
+
+    const dueSubjects: PulpitDueSubject[] = catalog.subjectRows
+      .map((row) => ({
+        id: row.id,
+        name: row.name,
+        count: dueReviewsPerSubject.get(row.id) ?? 0,
+      }))
+      .filter((s) => s.count > 0)
+      .sort((a, b) => b.count - a.count);
 
     const recentSessions: PulpitRecentSession[] = (sessionsRes.data ?? []).map(
       (row: Record<string, unknown>) => {
@@ -147,6 +168,7 @@ export async function loadPulpit(): Promise<
         currentStreak: profile?.current_streak ?? 0,
         longestStreak: profile?.longest_streak ?? 0,
         dueReviews,
+        dueSubjects,
         xp: profile?.xp ?? 0,
         rankTier: profile?.rank_tier ?? "praktykant",
         activityDays,

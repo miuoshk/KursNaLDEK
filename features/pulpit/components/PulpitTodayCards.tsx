@@ -152,6 +152,8 @@ function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
         ? "text-brand-gold"
         : "text-[#E5A855]";
 
+  const reviewCount = Math.min(data.preferredSessionCount, d);
+
   return (
     <CardShell label="Powtórki" index={index}>
       <p className={cn("font-heading text-4xl font-bold", numColor)}>{d}</p>
@@ -159,11 +161,12 @@ function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
         <Link
           href={buildSessionStartHref({
             mode: "inteligentna",
-            count: data.preferredSessionCount,
+            count: reviewCount,
+            focus: "due",
           })}
           className="mt-3 inline-flex items-center rounded-btn border border-brand-gold/40 px-3 py-1 font-body text-body-sm font-medium text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
         >
-          Powtórz
+          Powtórz ({reviewCount})
         </Link>
       ) : (
         <div className="mt-3 flex items-center gap-1.5">

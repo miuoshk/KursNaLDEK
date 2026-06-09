@@ -82,6 +82,9 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
 
         const focusQuestionId = searchParams.get("q")?.trim() || undefined;
 
+        const sessionFocus =
+          searchParams.get("focus") === "due" ? ("due" as const) : undefined;
+
         const res = await startSession({
           subjectId: subj || undefined,
           mode,
@@ -90,6 +93,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           questionIds: retryIds ?? undefined,
           focusQuestionId:
             mode === "katalog" ? focusQuestionId : undefined,
+          focus: sessionFocus,
         });
         if (cancelled) return;
         if (!res.ok) {

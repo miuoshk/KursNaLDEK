@@ -53,6 +53,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
             subjectId={subject.id}
             availableQuestionCount={availableQuestionCount}
             initialSessionCount={initialSessionCount}
+            dueCount={stats.dueCount}
           />
         ) : (
           <p className="font-body text-body-sm text-muted">

@@ -12,6 +12,7 @@ import type {
   QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { AdminQuestionEditor } from "@/features/admin/components/AdminQuestionEditor";
+import { CopyQuestionButton } from "@/features/admin/components/CopyQuestionButton";
 import { cn } from "@/lib/utils";
 
 type AdminResolveDialogProps = {
@@ -152,21 +153,26 @@ export function AdminResolveDialog({
             ) : null}
 
             <section className="mt-4 rounded-card border border-border bg-card p-4">
-              <div className="mb-3 flex items-center justify-between">
+              <div className="mb-3 flex items-center justify-between gap-3">
                 <h3 className="font-heading text-heading-sm text-primary">
                   Pytanie
                 </h3>
-                {report.questionId && (
-                  <a
-                    href={`/admin/pytania?search=${encodeURIComponent(report.questionId)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-body text-body-xs text-brand-gold transition-colors hover:text-white"
-                  >
-                    Otwórz w liście pytań
-                    <ExternalLink className="size-3" aria-hidden />
-                  </a>
-                )}
+                <div className="flex flex-wrap items-center justify-end gap-3">
+                  {report.questionId ? (
+                    <CopyQuestionButton questionId={report.questionId} />
+                  ) : null}
+                  {report.questionId && (
+                    <a
+                      href={`/admin/pytania?search=${encodeURIComponent(report.questionId)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 font-body text-body-xs text-brand-gold transition-colors hover:text-white"
+                    >
+                      Otwórz w liście pytań
+                      <ExternalLink className="size-3" aria-hidden />
+                    </a>
+                  )}
+                </div>
               </div>
 
               {loadState.status === "loading" && (

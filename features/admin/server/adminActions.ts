@@ -12,6 +12,7 @@ import {
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
 import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
+import { formatQuestionCopyText } from "@/features/admin/lib/formatQuestionCopyText";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -347,6 +348,55 @@ export async function fetchQuestionForAdmin(questionId: string): Promise<
   }
 
   return { ok: true, question, history };
+}
+
+export async function fetchQuestionCopyText(questionId: string): Promise<
+  { ok: true; text: string } | { ok: false; message: string }
+> {
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false, message: "Brak uprawnień." };
+  }
+
+  const supabase = await createClient();
+  const question = await loadAdminQuestionDetail(questionId);
+  if (!question) {
+    return { ok: false, message: "Nie znaleziono pytania." };
+  }
+
+  let subjectName = "—";
+  let topicName = "—";
+
+  if (question.topicId) {
+    const { data: topicRow } = await supabase
+      .from("topics")
+      .select("name, subjects(name)")
+      .eq("id", question.topicId)
+      .maybeSingle();
+
+    topicName = (topicRow?.name as string | null)?.trim() || "—";
+    const subjectNode = topicRow?.subjects as
+      | { name: string }
+      | { name: string }[]
+      | null;
+    subjectName =
+      (Array.isArray(subjectNode) ? subjectNode[0]?.name : subjectNode?.name)?.trim() ||
+      "—";
+  }
+
+  return {
+    ok: true,
+    text: formatQuestionCopyText({
+      subjectName,
+      topicName,
+      text: question.text,
+      options: question.options,
+      correctOptionId: question.correctOptionId,
+      explanation: question.explanation,
+      questionType: question.questionType,
+    }),
+  };
 }
 
 const setUserRoleSchema = z.object({

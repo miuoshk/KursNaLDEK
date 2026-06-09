@@ -13,6 +13,7 @@ import type {
 } from "@/features/admin/server/loadAdminReports";
 import { AdminResolveDialog } from "@/features/admin/components/AdminResolveDialog";
 import { AdminReportHistoryPanel } from "@/features/admin/components/AdminReportHistoryPanel";
+import { CopyQuestionButton } from "@/features/admin/components/CopyQuestionButton";
 import { AdminSortableHeader } from "@/features/admin/components/AdminSortableHeader";
 import { reportStatusBadge } from "@/features/admin/lib/adminReportStatus";
 import {
@@ -524,6 +525,7 @@ function InboxReportsTable({
                         >
                           Pytanie →
                         </Link>
+                        <CopyQuestionButton questionId={r.questionId} />
                       </div>
                     </td>
                   </tr>
@@ -698,6 +700,7 @@ function GroupedReportsTable({
                         >
                           Pytanie →
                         </Link>
+                        <CopyQuestionButton questionId={g.questionId} />
                       </div>
                     </td>
                   </tr>

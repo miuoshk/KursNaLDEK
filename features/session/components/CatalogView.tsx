@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
+import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
@@ -329,9 +330,11 @@ export function CatalogView({
                     />
                   </div>
                 ) : null}
-                <p className="mt-3 whitespace-pre-wrap font-body text-body-md leading-relaxed text-primary md:text-body-lg">
-                  {highlightText(q.text, searchValue)}
-                </p>
+                <QuestionTextContent
+                  text={q.text}
+                  className="mt-3 text-body-md md:text-body-lg"
+                  renderSegment={(segment) => highlightText(segment, searchValue)}
+                />
 
                 <div className="mt-6 flex flex-col gap-2">
                   {q.options.map((opt, i) => {

@@ -8,6 +8,7 @@ import {
   fetchAdminDiscussionThread,
 } from "@/features/admin/server/adminDiscussionActions";
 import type { AdminDiscussionThread } from "@/features/admin/server/loadAdminDiscussions";
+import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 import { cn } from "@/lib/utils";
 
 type AdminDiscussionPreviewDialogProps = {
@@ -163,9 +164,10 @@ export function AdminDiscussionPreviewDialog({
                   <p className="font-body text-body-xs uppercase tracking-widest text-muted">
                     Pytanie (widok użytkownika)
                   </p>
-                  <p className="mt-2 whitespace-pre-wrap font-body text-body-md leading-relaxed text-primary">
-                    {loadState.thread.questionText}
-                  </p>
+                  <QuestionTextContent
+                    text={loadState.thread.questionText}
+                    className="mt-2 text-body-md"
+                  />
                   {loadState.thread.options.length > 0 && (
                     <ul className="mt-4 space-y-2">
                       {loadState.thread.options.map((opt) => (

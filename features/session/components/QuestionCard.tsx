@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import type { SessionQuestion } from "@/features/session/types";
+import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 
 type QuestionCardProps = {
   question: SessionQuestion;
@@ -42,9 +43,10 @@ export function QuestionCard({
           />
         </div>
       ) : null}
-      <p className="mt-6 whitespace-pre-wrap font-body text-body-md leading-relaxed text-primary md:text-body-lg">
-        {question.text}
-      </p>
+      <QuestionTextContent
+        text={question.text}
+        className="mt-6 text-body-md md:text-body-lg"
+      />
       <div className="mt-6 flex flex-col gap-3">{children}</div>
     </div>
   );

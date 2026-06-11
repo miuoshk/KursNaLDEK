@@ -668,3 +668,72 @@ export async function restoreUserAccess(raw: z.infer<typeof revokeAccessSchema>)
 
   return { ok: true as const };
 }
+
+const deleteUserSchema = z.object({
+  userId: z.string().uuid(),
+});
+
+/** Trwałe usunięcie konta z Auth; komentarze/zgłoszenia zostają jako „Użytkownik”. */
+export async function adminDeleteUserAccount(raw: z.infer<typeof deleteUserSchema>) {
+  const parsed = deleteUserSchema.safeParse(raw);
+  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+
+  let ctx;
+  try {
+    ctx = await requireSuperAdmin();
+  } catch {
+    return { ok: false as const, message: "Tylko admin może usuwać konta." };
+  }
+
+  if (parsed.data.userId === ctx.userId) {
+    return { ok: false as const, message: "Nie możesz usunąć własnego konta z panelu admina." };
+  }
+
+  try {
+    const admin = createAdminClient();
+
+    const { data: profile, error: profileError } = await admin
+      .from("profiles")
+      .select("role")
+      .eq("id", parsed.data.userId)
+      .maybeSingle();
+
+    if (profileError || !profile) {
+      console.error("[adminDeleteUserAccount] profile", profileError?.message);
+      return { ok: false as const, message: "Nie znaleziono użytkownika." };
+    }
+
+    const role = profile.role as string | null;
+    if (role === "admin" || role === "moderator") {
+      return {
+        ok: false as const,
+        message: "Nie można usunąć konta admina ani moderatora.",
+      };
+    }
+
+    await revokeAllEntitlementsForUser(parsed.data.userId);
+
+    await admin
+      .from("question_discussions")
+      .update({ user_id: null })
+      .eq("user_id", parsed.data.userId);
+
+    await admin
+      .from("error_reports")
+      .update({ user_id: null })
+      .eq("user_id", parsed.data.userId);
+
+    await admin.auth.admin.signOut(parsed.data.userId, "global");
+
+    const { error: deleteError } = await admin.auth.admin.deleteUser(parsed.data.userId);
+    if (deleteError) {
+      console.error("[adminDeleteUserAccount] deleteUser", deleteError.message);
+      return { ok: false as const, message: "Nie udało się usunąć konta." };
+    }
+  } catch (e) {
+    console.error("[adminDeleteUserAccount]", e);
+    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+  }
+
+  return { ok: true as const };
+}

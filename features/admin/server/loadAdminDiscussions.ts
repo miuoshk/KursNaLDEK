@@ -72,7 +72,7 @@ export async function loadAdminDiscussions(params: {
       questionId: r.question_id as string,
       questionTextShort: text.length > 90 ? `${text.slice(0, 90)}…` : text,
       content: r.content as string,
-      userName: profile?.display_name ?? "Anonimowy",
+      userName: profile?.display_name ?? "Użytkownik",
       createdAt: r.created_at as string,
     };
   });
@@ -132,7 +132,7 @@ export async function loadAdminDiscussionThread(
       return {
         id: r.id as string,
         content: r.content as string,
-        userName: profile?.display_name ?? "Anonimowy",
+        userName: profile?.display_name ?? "Użytkownik",
         createdAt: r.created_at as string,
         upvotes: (r.upvotes as number) ?? 0,
       };

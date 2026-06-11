@@ -3,8 +3,16 @@
 import { useCallback, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, ShieldAlert, User as UserIcon, Loader2, Ban, ShieldOff, CircleOff, RotateCcw } from "lucide-react";
-import { setUserRole, banUser, unbanUser, revokeUserAccess, restoreUserAccess } from "@/features/admin/server/adminActions";
+import { ShieldCheck, ShieldAlert, User as UserIcon, Ban, CircleOff } from "lucide-react";
+import {
+  setUserRole,
+  banUser,
+  unbanUser,
+  revokeUserAccess,
+  restoreUserAccess,
+  adminDeleteUserAccount,
+} from "@/features/admin/server/adminActions";
+import { AdminUserActionsMenu } from "@/features/admin/components/AdminUserActionsMenu";
 import type {
   AdminUserRow,
   AdminUserRole,
@@ -253,6 +261,30 @@ export function AdminUsersTable({
           setErrorMsg(result.message ?? "Nie udało się odebrać dostępu.");
           return;
         }
+      }
+
+      startTransition(() => {
+        router.refresh();
+      });
+    },
+    [router],
+  );
+
+  const handleDeleteAccount = useCallback(
+    async (user: AdminUserRow) => {
+      const confirmed = window.confirm(
+        `Trwale usunąć konto „${user.displayName}" (${user.email ?? "brak e-maila"})?\n\nKomentarze i zgłoszenia zostaną w systemie jako „Użytkownik”. Postęp nauki i sesje zostaną skasowane. Tej operacji nie da się cofnąć.`,
+      );
+      if (!confirmed) return;
+
+      setErrorMsg(null);
+      setPendingId(user.id);
+      const result = await adminDeleteUserAccount({ userId: user.id });
+      setPendingId(null);
+
+      if (!result.ok) {
+        setErrorMsg(result.message ?? "Nie udało się usunąć konta.");
+        return;
       }
 
       startTransition(() => {
@@ -593,78 +625,7 @@ export function AdminUsersTable({
                     </td>
                     {canEditRoles && (
                       <td className="px-3 py-3 text-right">
-                        <div className="inline-flex items-center gap-2">
-                          {isUpdating || (isPending && pendingId === user.id) ? (
-                            <Loader2
-                              className="size-3.5 animate-spin text-brand-gold"
-                              aria-hidden
-                            />
-                          ) : null}
-                          <button
-                            type="button"
-                            disabled={isSelf || isUpdating}
-                            onClick={() => handleBanToggle(user)}
-                            className={cn(
-                              "inline-flex items-center gap-1 rounded-btn border px-2 py-1 font-body text-body-xs transition-colors",
-                              user.isBanned
-                                ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
-                                : "border-error/40 text-error hover:bg-error/10",
-                              (isSelf || isUpdating) && "cursor-not-allowed opacity-60",
-                            )}
-                            title={
-                              isSelf
-                                ? "Nie możesz zbanować własnego konta"
-                                : user.isBanned
-                                  ? "Odbanuj użytkownika"
-                                  : "Zbanuj użytkownika"
-                            }
-                          >
-                            {user.isBanned ? (
-                              <>
-                                <ShieldOff className="size-3" aria-hidden />
-                                Odbanuj
-                              </>
-                            ) : (
-                              <>
-                                <Ban className="size-3" aria-hidden />
-                                Zbanuj
-                              </>
-                            )}
-                          </button>
-                          <button
-                            type="button"
-                            disabled={isSelf || isUpdating || user.isBanned}
-                            onClick={() => handleAccessToggle(user)}
-                            className={cn(
-                              "inline-flex items-center gap-1 rounded-btn border px-2 py-1 font-body text-body-xs transition-colors",
-                              user.accessRevoked
-                                ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
-                                : "border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10",
-                              (isSelf || isUpdating || user.isBanned) &&
-                                "cursor-not-allowed opacity-60",
-                            )}
-                            title={
-                              isSelf
-                                ? "Nie możesz odebrać dostępu własnemu kontu"
-                                : user.isBanned
-                                  ? "Najpierw odbanuj użytkownika"
-                                  : user.accessRevoked
-                                    ? "Przywróć możliwość dostępu"
-                                    : "Odbierz dostęp"
-                            }
-                          >
-                            {user.accessRevoked ? (
-                              <>
-                                <RotateCcw className="size-3" aria-hidden />
-                                Przywróć
-                              </>
-                            ) : (
-                              <>
-                                <CircleOff className="size-3" aria-hidden />
-                                Odbierz
-                              </>
-                            )}
-                          </button>
+                        <div className="inline-flex items-center justify-end gap-2">
                           <select
                             value={user.role}
                             disabled={isSelf || isUpdating || user.isBanned}
@@ -694,6 +655,14 @@ export function AdminUsersTable({
                               </option>
                             ))}
                           </select>
+                          <AdminUserActionsMenu
+                            user={user}
+                            isSelf={isSelf}
+                            isUpdating={isUpdating}
+                            onBanToggle={handleBanToggle}
+                            onAccessToggle={handleAccessToggle}
+                            onDelete={handleDeleteAccount}
+                          />
                         </div>
                       </td>
                     )}

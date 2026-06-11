@@ -34,6 +34,9 @@ function collectMatchIndices(text: string, re: RegExp): number[] {
   for (const m of text.matchAll(global)) {
     if (m.index === undefined) continue;
     if (isParenRangeBefore(text, m.index)) continue;
+    const prev = m.index > 0 ? text[m.index - 1] : "";
+    // **(1) …** — nie łamać numeracji w nawiasie tuż po boldzie
+    if (prev === "(" || prev === "*") continue;
     indices.push(m.index);
   }
   return indices;
@@ -60,6 +63,7 @@ function breakAfterColonIntro(text: string): string {
   const hasArabicParen = (s.match(/(?<!\d)(\d{1,2})\)\s+/g) ?? []).length >= 2;
   const hasLetter = (s.match(/(?<![a-zA-Z])([a-z])\)\s+/gi) ?? []).length >= 2;
   const hasRoman = (s.match(/\b([IVX]{1,4})\)\s+/gi) ?? []).length >= 2;
+  const hasRomanDot = (s.match(/\b([IVX]{1,4})\.\s+/gi) ?? []).length >= 2;
 
   if (hasArabicDot) {
     s = s.replace(/:\s+(?=\d{1,2}\.\s)/g, ":\n");
@@ -73,20 +77,28 @@ function breakAfterColonIntro(text: string): string {
   if (hasRoman) {
     s = s.replace(/:\s+(?=[IVX]{1,4}\)\s)/gi, ":\n");
   }
+  if (hasRomanDot) {
+    s = s.replace(/:\s+(?=[IVX]{1,4}\.\s)/gi, ":\n");
+  }
   return s;
 }
 
 const LIST_MARKER_IN_SEGMENT =
-  /\b[IVX]{1,4}\)|(?<!\d)(\d{1,2})[.)]|(?<![a-zA-Z])([a-z])\)/i;
+  /\b[IVX]{1,4}[.)]|(?<!\d)(\d{1,2})[.)]|(?<![a-zA-Z])([a-z])\)/i;
 
 /** Po ostatnim punkcie listy — enter przed dalszym tekstem (np. „Grupy:”, „Prawidłowe”). */
 function breakAfterListBlock(text: string): string {
   return text.replace(
     /([.!?;])([ \t]+)(?=[A-ZĄĆĘŁŃÓŚŹŻ])/gu,
-    (match, punct, sp, offset, whole) => {
+    (match, punct, _sp, offset, whole) => {
       const lineStart = whole.lastIndexOf("\n", offset - 1) + 1;
       const segment = whole.slice(lineStart, offset);
-      if (!LIST_MARKER_IN_SEGMENT.test(segment)) {
+      const tail = segment.split(";").pop()?.trim() ?? segment.trim();
+      // Tylko gdy ostatnia klauzula wygląda jak punkt listy (nie np. „(krok 3)”).
+      if (!/^(\d{1,2}[.)]|[a-z]\)|[IVX]{1,4}[.)])/i.test(tail)) {
+        return match;
+      }
+      if (!LIST_MARKER_IN_SEGMENT.test(tail)) {
         return match;
       }
       return `${punct}\n\n`;
@@ -119,6 +131,7 @@ export function normalizeQuestionListText(text: string): string {
 
   // Kolejność: rzymskie → 1) → a) → 1. (arabskie z kropką najbardziej podatne na fałszywe trafienia)
   s = breakSeries(s, /\b([IVX]{1,4})\)\s+/gi, 2);
+  s = breakSeries(s, /\b([IVX]{1,4})\.\s+/gi, 2);
   s = breakSeries(s, /(?<!\d)(\d{1,2})\)\s+/g, 2);
   s = breakSeries(s, /(?<![a-zA-Z])([a-z])\)\s+/gi, 2);
   s = breakSeries(s, /(?<!\d)(?<![\d.])(\d{1,2})\.\s+/g, 2);
@@ -165,6 +178,23 @@ export function denormalizeQuestionListText(text: string): string {
   s = s.replace(/\n+(?=(?<!\d)(?<![\d.])\d{1,2}\.\s+)/g, " ");
 
   return s.replace(/  +/g, " ").replace(/\n +/g, "\n").trim();
+}
+
+/**
+ * Naprawia uszkodzenia explanation po błędnej masowej normalizacji list
+ * (np. **(\n1) → **(1), **\n2. → **2., rozbite warianty A-E po średniku).
+ */
+export function repairExplanationListDamage(text: string): string {
+  if (!text?.trim()) return text;
+
+  let s = text.replace(/\r\n/g, "\n");
+  s = s.replace(/\*\*\(\s*\n\s*(\d{1,2})\)/g, "**($1)");
+  s = s.replace(/\*\*\(\s*\n\s*([A-E])\)/g, "**($1)");
+  s = s.replace(/\*\*\(\s*\n\s*(\d{1,2})\./g, "**$1.");
+  s = s.replace(/\*\*\s*\n\s*(\d{1,2})\.\s+/g, "**$1. ");
+  s = s.replace(/\*\*\s*\n\s*(\d{1,2})\)\s+/g, "**$1) ");
+  s = s.replace(/;\s*\n\s*\n\s*([A-E])\s*—/g, "; $1 —");
+  return s;
 }
 
 /** Czy explanation wygląda na przetworzone przez normalize — bezpieczny revert. */

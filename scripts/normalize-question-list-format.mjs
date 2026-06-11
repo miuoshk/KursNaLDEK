@@ -65,16 +65,18 @@ function breakAfterColonIntro(text) {
   const hasArabicParen = (s.match(/(?<!\d)(\d{1,2})\)\s+/g) ?? []).length >= 2;
   const hasLetter = (s.match(/(?<![a-zA-Z])([a-z])\)\s+/gi) ?? []).length >= 2;
   const hasRoman = (s.match(/\b([IVX]{1,4})\)\s+/gi) ?? []).length >= 2;
+  const hasRomanDot = (s.match(/\b([IVX]{1,4})\.\s+/gi) ?? []).length >= 2;
 
   if (hasArabicDot) s = s.replace(/:\s+(?=\d{1,2}\.\s)/g, ":\n");
   if (hasArabicParen) s = s.replace(/:\s+(?=\d{1,2}\)\s)/g, ":\n");
   if (hasLetter) s = s.replace(/:\s+(?=[a-z]\)\s)/gi, ":\n");
   if (hasRoman) s = s.replace(/:\s+(?=[IVX]{1,4}\)\s)/gi, ":\n");
+  if (hasRomanDot) s = s.replace(/:\s+(?=[IVX]{1,4}\.\s)/gi, ":\n");
   return s;
 }
 
 const LIST_MARKER_IN_SEGMENT =
-  /\b[IVX]{1,4}\)|(?<!\d)(\d{1,2})[.)]|(?<![a-zA-Z])([a-z])\)/i;
+  /\b[IVX]{1,4}[.)]|(?<!\d)(\d{1,2})[.)]|(?<![a-zA-Z])([a-z])\)/i;
 
 function breakAfterListBlock(text) {
   return text.replace(
@@ -110,6 +112,7 @@ function normalizeQuestionListText(text) {
   s = breakAfterColonIntro(s);
   s = breakLabeledSublist(s);
   s = breakSeries(s, /\b([IVX]{1,4})\)\s+/gi, 2);
+  s = breakSeries(s, /\b([IVX]{1,4})\.\s+/gi, 2);
   s = breakSeries(s, /(?<!\d)(\d{1,2})\)\s+/g, 2);
   s = breakSeries(s, /(?<![a-zA-Z])([a-z])\)\s+/gi, 2);
   s = breakSeries(s, /(?<!\d)(?<![\d.])(\d{1,2})\.\s+/g, 2);

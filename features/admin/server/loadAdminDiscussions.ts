@@ -17,11 +17,33 @@ export type AdminDiscussionThreadComment = {
   upvotes: number;
 };
 
+export type AdminDiscussionThreadOption = {
+  id: string;
+  text: string;
+};
+
 export type AdminDiscussionThread = {
   questionId: string;
   questionText: string;
+  options: AdminDiscussionThreadOption[];
+  subjectLabel: string | null;
+  topicName: string | null;
   comments: AdminDiscussionThreadComment[];
 };
+
+function normalizeOptions(raw: unknown): AdminDiscussionThreadOption[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return null;
+      const obj = entry as Record<string, unknown>;
+      const id = typeof obj.id === "string" ? obj.id : null;
+      const text = typeof obj.text === "string" ? obj.text : "";
+      if (!id) return null;
+      return { id, text };
+    })
+    .filter((entry): entry is AdminDiscussionThreadOption => entry !== null);
+}
 
 export async function loadAdminDiscussions(params: {
   search?: string;
@@ -71,7 +93,11 @@ export async function loadAdminDiscussionThread(
   const supabase = createAdminClient();
 
   const [{ data: question, error: qErr }, { data: rows, error: dErr }] = await Promise.all([
-    supabase.from("questions").select("text").eq("id", questionId).maybeSingle(),
+    supabase
+      .from("questions")
+      .select("text, options, topics(name, subjects(name, track, year))")
+      .eq("id", questionId)
+      .maybeSingle(),
     supabase
       .from("question_discussions")
       .select("id, content, created_at, upvotes, profiles(display_name)")
@@ -85,9 +111,22 @@ export async function loadAdminDiscussionThread(
     return null;
   }
 
+  const topic = question.topics as unknown as {
+    name: string | null;
+    subjects: { name: string | null; track: string | null; year: number | null } | null;
+  } | null;
+  const subject = topic?.subjects;
+  const subjectLabel =
+    subject?.name && subject.year
+      ? `${subject.name} · rok ${subject.year}${subject.track === "lekarski" ? " · lekarski" : subject.track === "stomatologia" ? " · stomatologia" : ""}`
+      : subject?.name ?? null;
+
   return {
     questionId,
     questionText: (question.text as string) ?? "",
+    options: normalizeOptions(question.options),
+    subjectLabel,
+    topicName: topic?.name ?? null,
     comments: (rows ?? []).map((r) => {
       const profile = r.profiles as unknown as { display_name: string | null } | null;
       return {

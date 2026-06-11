@@ -57,3 +57,37 @@ export async function fetchAdminDiscussionThread(
 
   return { ok: true as const, thread };
 }
+
+const postCommentSchema = z.object({
+  questionId: z.string().min(1),
+  content: z.string().min(1).max(2000),
+});
+
+export async function adminPostDiscussionComment(
+  raw: z.infer<typeof postCommentSchema>,
+) {
+  const parsed = postCommentSchema.safeParse(raw);
+  if (!parsed.success) {
+    return { ok: false as const, message: "Treść komentarza jest wymagana." };
+  }
+
+  const { user } = await requireAdminAccess();
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("question_discussions")
+    .insert({
+      question_id: parsed.data.questionId,
+      user_id: user.id,
+      content: parsed.data.content.trim(),
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error("[adminPostDiscussionComment]", error.message);
+    return { ok: false as const, message: "Nie udało się dodać komentarza." };
+  }
+
+  return { ok: true as const, commentId: data.id as string };
+}

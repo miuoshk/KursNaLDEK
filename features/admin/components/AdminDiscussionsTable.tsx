@@ -32,7 +32,15 @@ export function AdminDiscussionsTable({
   const [search, setSearch] = useState(currentSearch ?? "");
   const [isPending, startTransition] = useTransition();
   const [previewQuestionId, setPreviewQuestionId] = useState<string | null>(null);
+  const [previewHighlightCommentId, setPreviewHighlightCommentId] = useState<string | null>(
+    null,
+  );
   const [editingQuestionId, setEditingQuestionId] = useState<string | null>(null);
+
+  const openDiscussion = useCallback((questionId: string, commentId?: string) => {
+    setPreviewQuestionId(questionId);
+    setPreviewHighlightCommentId(commentId ?? null);
+  }, []);
 
   const handleSearch = useCallback(() => {
     startTransition(() => {
@@ -55,11 +63,18 @@ export function AdminDiscussionsTable({
 
   const openQuestionEditor = useCallback((questionId: string) => {
     setPreviewQuestionId(null);
+    setPreviewHighlightCommentId(null);
     setEditingQuestionId(questionId);
   }, []);
 
   return (
-    <div className="mt-6">
+    <>
+      <p className="mt-2 max-w-3xl font-body text-body-sm text-secondary">
+        Kliknij komentarz lub „Otwórz wątek”, żeby zobaczyć pełne pytanie ze wszystkimi
+        odpowiedziami i odpisać bez zmiany roku czy kierunku w profilu.
+      </p>
+
+      <div className="mt-6">
       <div className="mb-4 flex items-center gap-3">
         <input
           type="text"
@@ -132,7 +147,7 @@ export function AdminDiscussionsTable({
                   <td className="max-w-[520px] px-3 py-3 font-body text-body-sm text-secondary">
                     <button
                       type="button"
-                      onClick={() => setPreviewQuestionId(row.questionId)}
+                      onClick={() => openDiscussion(row.questionId, row.id)}
                       className="block max-w-full truncate text-left transition-colors hover:text-primary"
                       title={row.content}
                     >
@@ -144,11 +159,11 @@ export function AdminDiscussionsTable({
                     <div className="flex flex-col gap-1">
                       <button
                         type="button"
-                        onClick={() => setPreviewQuestionId(row.questionId)}
+                        onClick={() => openDiscussion(row.questionId, row.id)}
                         className="inline-flex items-center gap-1 font-body text-body-xs text-brand-sage transition-colors hover:text-white"
                       >
                         <MessageSquare className="size-3.5 shrink-0" aria-hidden />
-                        Podejrzyj dyskusję
+                        Otwórz wątek
                       </button>
                       <button
                         type="button"
@@ -186,11 +201,16 @@ export function AdminDiscussionsTable({
 
       <AdminDiscussionPreviewDialog
         questionId={previewQuestionId}
+        highlightCommentId={previewHighlightCommentId}
         open={previewQuestionId !== null}
         onOpenChange={(open) => {
-          if (!open) setPreviewQuestionId(null);
+          if (!open) {
+            setPreviewQuestionId(null);
+            setPreviewHighlightCommentId(null);
+          }
         }}
         onOpenQuestion={openQuestionEditor}
+        onCommentPosted={() => router.refresh()}
       />
 
       <AdminEditQuestionDialog
@@ -202,5 +222,6 @@ export function AdminDiscussionsTable({
         onSaved={() => router.refresh()}
       />
     </div>
+    </>
   );
 }

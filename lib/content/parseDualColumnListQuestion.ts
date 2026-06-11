@@ -31,6 +31,25 @@ const LIST_LINE =
 
 function parseListLine(line: string): ParsedLine | null {
   const trimmed = line.trim();
+
+  const dashArabic = trimmed.match(/^(\d{1,2})\s*-\s+(.+)$/);
+  if (dashArabic) {
+    return {
+      family: "arabic",
+      marker: `${dashArabic[1]} -`,
+      body: cleanItemBody(dashArabic[2] ?? ""),
+    };
+  }
+
+  const dashRoman = trimmed.match(/^([IVX]{1,4})\s*-\s+(.+)$/i);
+  if (dashRoman) {
+    return {
+      family: "roman",
+      marker: `${dashRoman[1]} -`,
+      body: cleanItemBody(dashRoman[2] ?? ""),
+    };
+  }
+
   const match = trimmed.match(LIST_LINE);
   if (!match) return null;
 
@@ -59,7 +78,52 @@ function cleanItemBody(body: string): string {
   return body
     .replace(/\s+z:\s*$/i, "")
     .replace(/;\s*$/, "")
+    .replace(/:\s*$/, "")
     .trim();
+}
+
+/** Jednolinijkowe „połącz w pary” ze średnikami → wielolinijkowe listy. */
+function expandInlinePairingLists(text: string): string {
+  if (!/połącz\s+w\s+par/i.test(text)) return text;
+
+  const compact = text
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join(" ");
+
+  if (!compact.includes(";")) return text;
+
+  const listLineCount = compact
+    .split(/\s*;\s*/)
+    .filter((segment) => parseListLine(segment.replace(/^(?:oraz|i)\s*:\s*/i, ""))).length;
+
+  if (listLineCount < 4) return text;
+
+  const INLINE_SEGMENT =
+    /^(?:(Połącz[^:;]+?):\s*)?(?:(?:oraz|i)\s*:\s*)?(?:(\d{1,2})|([IVX]{1,4}))\s*-\s*(.+)$/i;
+
+  const lines: string[] = [];
+
+  for (const rawSegment of compact.split(/\s*;\s*/)) {
+    const segment = rawSegment.trim();
+    if (!segment) continue;
+
+    const match = segment.match(INLINE_SEGMENT);
+    if (!match) continue;
+
+    const [, intro, arabic, roman, body] = match;
+    if (intro && lines.length === 0) {
+      lines.push(intro.trim().endsWith(":") ? intro.trim() : `${intro.trim()}:`);
+    }
+
+    const marker = arabic ?? roman;
+    if (!marker || !body) continue;
+    lines.push(`${marker} - ${body.trim()}`);
+  }
+
+  return lines.length >= 4 ? lines.join("\n") : text;
 }
 
 function normalizeIntroFooter(lines: string[]): string | null {
@@ -81,7 +145,8 @@ function preferLeftColumn(
 export function parseDualColumnListQuestion(text: string): ParsedQuestionText {
   if (!text?.trim()) return { kind: "plain", text: text ?? "" };
 
-  const lines = text.replace(/\r\n/g, "\n").split("\n");
+  const normalizedText = expandInlinePairingLists(text);
+  const lines = normalizedText.replace(/\r\n/g, "\n").split("\n");
   const introLines: string[] = [];
   const footerLines: string[] = [];
   const groups: Array<{ family: ListFamily; items: QuestionListItem[] }> = [];

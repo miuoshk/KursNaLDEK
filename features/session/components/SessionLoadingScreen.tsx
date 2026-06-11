@@ -1,20 +1,39 @@
 "use client";
 
-import { useMemo } from "react";
-import { pickSlogan, SESSION_LOADING_SLOGANS } from "@/features/shared/lib/slogans";
+import { useEffect, useState } from "react";
+import { SESSION_LOADING_SLOGANS } from "@/features/shared/lib/slogans";
+
+/** Co ile ms zmienia się motto na ekranie ładowania. */
+const ROTATE_INTERVAL_MS = 3000;
 
 /**
  * Ekran ładowania sesji - zamiast surowego "Ładowanie sesji..." pokazuje
- * losowe motto z `SESSION_LOADING_SLOGANS` plus pulsujące kropki w kolorze
+ * motta z `SESSION_LOADING_SLOGANS` plus pulsujące kropki w kolorze
  * brand-gold. Trzyma "vibe" marki i daje użytkownikowi micro-moment do
  * przygotowania się przed rozpoczęciem pytań (efekt "ostatniego słowa
  * przed lock-inem").
  *
+ * Motto startuje od losowego i rotuje co `ROTATE_INTERVAL_MS`, więc przy
+ * dłuższym ładowaniu użytkownik widzi kilka różnych tekstów. Każda zmiana
+ * remountuje <p> przez `key`, co retriggeruje animację `animate-fade-in`.
+ *
  * Cała animacja jest czysto CSS (keyframes z tailwind.config + delay
- * inline), brak zewnętrznych bibliotek - render w <200ms.
+ * inline), brak zewnętrznych bibliotek.
  */
 export function SessionLoadingScreen() {
-  const slogan = useMemo(() => pickSlogan(SESSION_LOADING_SLOGANS), []);
+  const [index, setIndex] = useState(() =>
+    Math.floor(Math.random() * SESSION_LOADING_SLOGANS.length),
+  );
+
+  useEffect(() => {
+    if (SESSION_LOADING_SLOGANS.length <= 1) return;
+    const id = setInterval(() => {
+      setIndex((prev) => (prev + 1) % SESSION_LOADING_SLOGANS.length);
+    }, ROTATE_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const slogan = SESSION_LOADING_SLOGANS[index] ?? SESSION_LOADING_SLOGANS[0];
 
   return (
     <div
@@ -26,22 +45,25 @@ export function SessionLoadingScreen() {
         Przygotowuję sesję
       </p>
 
-      <p className="mt-6 max-w-md animate-fade-in font-heading text-2xl font-bold text-primary md:text-3xl">
+      <p
+        key={index}
+        className="mt-6 max-w-md animate-fade-in font-heading text-2xl font-bold text-primary md:text-3xl"
+      >
         {slogan}
       </p>
 
       <div className="mt-8 flex items-center gap-2" aria-hidden>
         <span
-          className="inline-block size-2.5 rounded-full bg-brand-gold animate-pulse-gold"
+          className="inline-block size-2.5 rounded-full bg-brand-gold animate-bounce-dot"
           style={{ animationDelay: "0ms" }}
         />
         <span
-          className="inline-block size-2.5 rounded-full bg-brand-gold animate-pulse-gold"
-          style={{ animationDelay: "200ms" }}
+          className="inline-block size-2.5 rounded-full bg-brand-gold animate-bounce-dot"
+          style={{ animationDelay: "160ms" }}
         />
         <span
-          className="inline-block size-2.5 rounded-full bg-brand-gold animate-pulse-gold"
-          style={{ animationDelay: "400ms" }}
+          className="inline-block size-2.5 rounded-full bg-brand-gold animate-bounce-dot"
+          style={{ animationDelay: "320ms" }}
         />
       </div>
 

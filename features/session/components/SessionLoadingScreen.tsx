@@ -1,36 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SESSION_LOADING_SLOGANS } from "@/features/shared/lib/slogans";
 
-/** Co ile ms zmienia się motto na ekranie ładowania. */
-const ROTATE_INTERVAL_MS = 3000;
+/** Jak długo pokazujemy jedno motto, zanim zaczniemy fade do następnego. */
+const ROTATE_INTERVAL_MS = 5000;
+/** Czas trwania fade out / fade in (musi pasować do duration-500 niżej). */
+const FADE_MS = 500;
 
 /**
  * Ekran ładowania sesji - zamiast surowego "Ładowanie sesji..." pokazuje
- * motta z `SESSION_LOADING_SLOGANS` plus pulsujące kropki w kolorze
+ * motta z `SESSION_LOADING_SLOGANS` plus podskakujące kropki w kolorze
  * brand-gold. Trzyma "vibe" marki i daje użytkownikowi micro-moment do
  * przygotowania się przed rozpoczęciem pytań (efekt "ostatniego słowa
  * przed lock-inem").
  *
- * Motto startuje od losowego i rotuje co `ROTATE_INTERVAL_MS`, więc przy
- * dłuższym ładowaniu użytkownik widzi kilka różnych tekstów. Każda zmiana
- * remountuje <p> przez `key`, co retriggeruje animację `animate-fade-in`.
- *
- * Cała animacja jest czysto CSS (keyframes z tailwind.config + delay
- * inline), brak zewnętrznych bibliotek.
+ * Motto startuje od losowego i rotuje co `ROTATE_INTERVAL_MS` z płynnym
+ * crossfade (opacity 1 -> 0 -> podmiana tekstu -> 0 -> 1), dzięki czemu
+ * zmiana jest spokojna, nie skokowa.
  */
 export function SessionLoadingScreen() {
   const [index, setIndex] = useState(() =>
     Math.floor(Math.random() * SESSION_LOADING_SLOGANS.length),
   );
+  const [visible, setVisible] = useState(true);
+  const swapTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (SESSION_LOADING_SLOGANS.length <= 1) return;
     const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % SESSION_LOADING_SLOGANS.length);
+      setVisible(false);
+      swapTimeout.current = setTimeout(() => {
+        setIndex((prev) => (prev + 1) % SESSION_LOADING_SLOGANS.length);
+        setVisible(true);
+      }, FADE_MS);
     }, ROTATE_INTERVAL_MS);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      if (swapTimeout.current) clearTimeout(swapTimeout.current);
+    };
   }, []);
 
   const slogan = SESSION_LOADING_SLOGANS[index] ?? SESSION_LOADING_SLOGANS[0];
@@ -46,8 +54,9 @@ export function SessionLoadingScreen() {
       </p>
 
       <p
-        key={index}
-        className="mt-6 max-w-md animate-fade-in font-heading text-2xl font-bold text-primary md:text-3xl"
+        className={`mt-6 max-w-md font-heading text-2xl font-bold text-primary transition-opacity duration-500 ease-out md:text-3xl ${
+          visible ? "opacity-100" : "opacity-0"
+        }`}
       >
         {slogan}
       </p>

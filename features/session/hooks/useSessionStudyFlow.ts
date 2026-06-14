@@ -105,7 +105,7 @@ export function useSessionStudyFlow(
           if (comp.ok) {
             finalSummary = {
               ...comp.summary,
-              topicId: comp.summary.topicId ?? summary.topicId,
+              topicId: summary.topicId ?? comp.summary.topicId,
             };
             persistSessionSummaryToStorage(sessionId, finalSummary);
           }

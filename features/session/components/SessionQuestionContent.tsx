@@ -80,7 +80,7 @@ export function SessionQuestionContent({
   }
 
   const showSquares =
-    isPrzeglad && questions != null && answeredMap != null && questions.length > 0;
+    questions != null && answeredMap != null && questions.length > 0;
 
   const canGoPrevious = currentIndex > 0;
   const canGoNextTouch =

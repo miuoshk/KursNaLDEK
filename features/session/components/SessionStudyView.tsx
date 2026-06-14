@@ -59,6 +59,20 @@ export function SessionStudyView({
     }
     return [...names].sort((a, b) => a.localeCompare(b, "pl"));
   }, [questions, showSessionTopics]);
+
+  const selectedTopicName = useMemo(() => {
+    if (!topicId) return undefined;
+    const fromMatch = questions.find((q) => q.topicId === topicId)?.topicName?.trim();
+    if (fromMatch && fromMatch !== "Temat") return fromMatch;
+    const names = [
+      ...new Set(
+        questions
+          .map((q) => q.topicName?.trim())
+          .filter((n): n is string => Boolean(n && n !== "Temat")),
+      ),
+    ];
+    return names.length === 1 ? names[0] : undefined;
+  }, [topicId, questions]);
   const isPrzeglad = mode === "przeglad";
 
   const router = useRouter();
@@ -231,6 +245,7 @@ export function SessionStudyView({
         total={s.total}
         mode={mode}
         examElapsedSeconds={showSessionTimer ? timerSec : null}
+        selectedTopicName={selectedTopicName}
         sessionTopicNames={sessionTopicNames}
         onEnd={() => setEndOpen(true)}
       />

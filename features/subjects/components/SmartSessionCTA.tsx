@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Infinity as InfinityIcon } from "lucide-react";
 import {
   SESSION_COUNT_PRESETS,
+  resolveSessionPickerCount,
   sessionCountToPickerState,
 } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
@@ -18,21 +19,6 @@ type SmartSessionCTAProps = {
   initialSessionCount: number;
   dueCount?: number;
 };
-
-function resolveCount(
-  preset: PresetValue,
-  custom: string,
-  maxQ: number,
-  fallback: number,
-): number {
-  if (preset === "all") return Math.max(1, maxQ);
-  const parsed = parseInt(custom, 10);
-  if (custom && !Number.isNaN(parsed) && parsed >= 1 && parsed <= maxQ) {
-    return parsed;
-  }
-  if (typeof preset === "number") return Math.min(preset, Math.max(1, maxQ));
-  return Math.min(fallback, Math.max(1, maxQ));
-}
 
 export function SmartSessionCTA({
   subjectId,
@@ -53,13 +39,13 @@ export function SmartSessionCTA({
   const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
   const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
 
-  const smartCount = resolveCount(
+  const smartCount = resolveSessionPickerCount(
     smartPreset,
     smartCustom,
     maxQ,
     Math.min(initialSessionCount, maxQ),
   );
-  const reviewCount = resolveCount(
+  const reviewCount = resolveSessionPickerCount(
     reviewPreset,
     reviewCustom,
     maxQ,

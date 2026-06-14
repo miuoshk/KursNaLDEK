@@ -141,12 +141,15 @@ export async function startSession(
         .eq("id", resolvedSubjectId)
         .maybeSingle();
 
+      const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
+
       const { data: inserted, error: insErr } = await supabase
         .from("study_sessions")
         .insert({
           user_id: user.id,
           subject_id: resolvedSubjectId,
-          mode: "nauka",
+          topic_id: topicId ?? null,
+          mode: dbMode,
           total_questions: questions.length,
           question_ids: explicitIds,
         })
@@ -410,6 +413,7 @@ export async function startSession(
       .insert({
         user_id: user.id,
         subject_id: insertSubjectId,
+        topic_id: topicId ?? null,
         mode: dbMode,
         total_questions: questions.length,
         question_ids: chosenIds,

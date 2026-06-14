@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import {
   SESSION_COUNT_PRESETS,
+  resolveSessionPickerCount,
   sessionCountToPickerState,
 } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
@@ -50,21 +51,6 @@ function buildHref(
   return `/sesja/new?${q.toString()}`;
 }
 
-function resolveCount(
-  preset: PresetValue,
-  custom: string,
-  totalQuestions: number,
-  fallback: number,
-): number {
-  if (preset === "all") return totalQuestions;
-  const parsed = parseInt(custom, 10);
-  if (custom && !Number.isNaN(parsed) && parsed >= 1 && parsed <= totalQuestions) {
-    return parsed;
-  }
-  if (typeof preset === "number") return preset;
-  return fallback;
-}
-
 export function TopicSessionConfigDialog({
   open,
   onOpenChange,
@@ -93,13 +79,17 @@ export function TopicSessionConfigDialog({
       ? Math.round((answeredQuestions / totalQuestions) * 100)
       : 0;
 
-  const smartFinalCount = Math.min(
-    resolveCount(smartPreset, smartCustom, totalQuestions, countFallback),
+  const smartFinalCount = resolveSessionPickerCount(
+    smartPreset,
+    smartCustom,
     maxQ,
+    countFallback,
   );
-  const reviewFinalCount = Math.min(
-    resolveCount(reviewPreset, reviewCustom, totalQuestions, countFallback),
+  const reviewFinalCount = resolveSessionPickerCount(
+    reviewPreset,
+    reviewCustom,
     maxQ,
+    countFallback,
   );
 
   const smartHref = buildHref(subjectId, topicId, "inteligentna", smartFinalCount);
@@ -135,11 +125,13 @@ export function TopicSessionConfigDialog({
 
           {/* Header */}
           <div className="px-5 pt-5 pb-0 lg:px-7 lg:pt-6">
-            <Dialog.Title className="sr-only">{topicName}</Dialog.Title>
             <p className="font-body text-body-xs text-muted">
               {subjectShortName}
             </p>
-            <p className="font-heading text-heading-sm text-primary lg:text-heading-md">
+            <Dialog.Title className="font-heading text-heading-sm text-primary lg:text-heading-md">
+              {topicName}
+            </Dialog.Title>
+            <p className="mt-0.5 font-body text-body-sm text-secondary">
               Wybierz tryb nauki
             </p>
 

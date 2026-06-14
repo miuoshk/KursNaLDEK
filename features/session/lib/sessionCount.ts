@@ -84,3 +84,30 @@ export function sessionCountToPickerState(count: number): CountPickerState {
   }
   return { preset: null, custom: String(clamped) };
 }
+
+type PickerPreset = SessionCountPreset | "all" | null;
+
+/** Liczba pytań z pickera preset/custom — custom liczy się tylko gdy preset === null. */
+export function resolveSessionPickerCount(
+  preset: PickerPreset,
+  custom: string,
+  maxQ: number,
+  fallback: number,
+): number {
+  const cappedMax = Math.max(1, maxQ);
+  if (preset === "all") return cappedMax;
+  if (typeof preset === "number") {
+    return Math.min(preset, cappedMax);
+  }
+  const parsed = parseInt(custom, 10);
+  if (
+    preset === null &&
+    custom &&
+    !Number.isNaN(parsed) &&
+    parsed >= 1 &&
+    parsed <= cappedMax
+  ) {
+    return parsed;
+  }
+  return Math.min(fallback, cappedMax);
+}

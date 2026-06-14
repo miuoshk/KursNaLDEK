@@ -48,7 +48,7 @@ export async function buildSessionSummary(
   const { data: session, error: se } = await supabase
     .from("study_sessions")
     .select(
-      "id, user_id, subject_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights",
+      "id, user_id, subject_id, topic_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights",
     )
     .eq("id", sessionId)
     .eq("user_id", userId)
@@ -94,7 +94,9 @@ export async function buildSessionSummary(
     .in("id", qids.length ? qids : ["__none__"]);
 
   const questionTopicIds = (qmeta ?? []).map((q) => q.topic_id as string);
-  const topicId = inferSessionTopicId(questionTopicIds);
+  const topicId =
+    (session.topic_id as string | null) ??
+    inferSessionTopicId(questionTopicIds);
 
   const qById = new Map(
     (qmeta ?? []).map((q) => [

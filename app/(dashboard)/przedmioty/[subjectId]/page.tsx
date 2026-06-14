@@ -30,7 +30,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
   }
 
   const { subject, topics, stats } = result;
-  const availableQuestionCount = topics.reduce((s, t) => s + t.question_count, 0);
+  const availableQuestionCount = stats.totalQuestions;
 
   const supabase = await createClient();
   const {

@@ -16,7 +16,7 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
   const nextSessionHref = buildSessionStartHref({
     subject: summary.subjectId,
     topic: summary.topicId,
-    mode: "inteligentna",
+    mode: summary.mode,
     count: summary.totalQuestions,
   });
 
@@ -24,13 +24,13 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
     const key = persistRetryWrongIds(wrongIds);
     const q = new URLSearchParams({
       subject: summary.subjectId,
-      mode: "inteligentna",
+      mode: summary.mode,
       count: String(wrongIds.length),
       retry: key,
     });
     if (summary.topicId) q.set("topic", summary.topicId);
     router.push(`/sesja/new?${q.toString()}`);
-  }, [wrongIds, summary.subjectId, summary.topicId, router]);
+  }, [wrongIds, summary.subjectId, summary.topicId, summary.mode, router]);
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-4">

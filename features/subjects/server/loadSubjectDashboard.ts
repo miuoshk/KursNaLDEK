@@ -9,6 +9,7 @@ import {
   fetchActiveQuestionsForTopics,
 } from "@/lib/content/fetchActiveQuestionsForTopics";
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
+import { isGeneratedTopicId } from "@/features/session/server/questionSelection";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -212,6 +213,7 @@ export async function loadSubjectDashboard(
     let totalAttempts = 0;
     let totalCorrect = 0;
     for (const t of topics) {
+      if (isGeneratedTopicId(t.id)) continue;
       totalQuestions += t.question_count;
       answeredQuestions += t.answered_count;
     }

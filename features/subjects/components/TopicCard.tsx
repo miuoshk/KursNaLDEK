@@ -25,6 +25,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const answered = topic.answered_count;
   const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
   const hasQuestions = total > 0;
+  const isGeneratedTopic = topic.name.includes("(generowane)");
   const hasKnowledgeCard =
     topic.knowledge_card != null && topic.knowledge_card.trim().length > 0;
 
@@ -37,6 +38,11 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         {!hasQuestions && (
           <span className="font-body text-body-xs text-brand-gold">
             Wkrótce
+          </span>
+        )}
+        {isGeneratedTopic && hasQuestions && (
+          <span className="rounded-pill border border-brand-gold/30 px-2 py-0.5 font-body text-[10px] font-medium uppercase tracking-wide text-brand-gold">
+            Generowane
           </span>
         )}
         {hasKnowledgeCard && (
@@ -96,8 +102,11 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         type="button"
         onClick={() => onSelect(topic)}
         className={cn(
-          "group block w-full rounded-card border border-border bg-card p-5 text-left",
-          "transition-all duration-200 ease-out hover:border-brand-sage/30",
+          "group block w-full rounded-card border bg-card p-5 text-left",
+          "transition-all duration-200 ease-out",
+          isGeneratedTopic
+            ? "border-dashed border-brand-gold/25 hover:border-brand-gold/45"
+            : "border-border hover:border-brand-sage/30",
         )}
       >
         {inner}

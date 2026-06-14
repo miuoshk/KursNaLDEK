@@ -17,6 +17,8 @@ type SessionTopBarProps = {
   /** Nieużywane w UI; zostawione dla zgodności z rodzajem sesji. */
   mode: SessionMode;
   examElapsedSeconds: number | null;
+  /** Wybrany temat sesji (z kafelka / URL) — zawsze widoczny. */
+  selectedTopicName?: string;
   /** Unikalne nazwy tematów w bieżącej sesji (gdy włączone w ustawieniach). */
   sessionTopicNames?: string[];
   onEnd: () => void;
@@ -28,6 +30,7 @@ export function SessionTopBar({
   total,
   mode: _mode,
   examElapsedSeconds,
+  selectedTopicName,
   sessionTopicNames,
   onEnd,
 }: SessionTopBarProps) {
@@ -39,7 +42,12 @@ export function SessionTopBar({
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
-      {topicsLine ? (
+      {selectedTopicName ? (
+        <p className="mb-2 font-body text-body-sm font-medium text-brand-gold">
+          Temat: {selectedTopicName}
+        </p>
+      ) : null}
+      {topicsLine && !selectedTopicName ? (
         <p className="mb-2 line-clamp-2 font-body text-body-xs text-muted" title={topicsLine}>
           Tematy: {topicsLine}
         </p>

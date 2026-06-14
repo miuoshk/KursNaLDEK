@@ -1,6 +1,5 @@
 "use client";
 
-import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
@@ -14,7 +13,6 @@ import { useSession } from "@/features/session/hooks/useSession";
 import { useSessionStudyFlow } from "@/features/session/hooks/useSessionStudyFlow";
 import { useDashboardData } from "@/features/shared/contexts/DashboardDataContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
-import { cn } from "@/lib/utils";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionMode, SessionQuestion } from "@/features/session/types";
 
@@ -45,8 +43,6 @@ export function SessionStudyView({
   const [timerSec, setTimerSec] = useState(0);
   const [endOpen, setEndOpen] = useState(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
-  const [fatigueMessage, setFatigueMessage] = useState<string | null>(null);
-  const fatigueShownRef = useRef(false);
   const { profile } = useDashboardData();
   const { streak, showSessionTimer, showSessionTopics } = useDashboardUser();
 
@@ -104,12 +100,6 @@ export function SessionStudyView({
   const [submitting, setSubmitting] = useState(false);
   const closeEnd = useCallback(() => setEndOpen(false), []);
 
-  const onFatigueSuggestion = useCallback((message: string) => {
-    setFatigueMessage(message);
-  }, []);
-
-  const dismissFatigue = useCallback(() => setFatigueMessage(null), []);
-
   const { handleSubmitWithConfidence, handleNavigateNext, handleEndConfirm } = useSessionStudyFlow(
     s.questions,
     {
@@ -139,9 +129,6 @@ export function SessionStudyView({
     sessionStart,
     setSaveToast,
     closeEnd,
-    mode === "inteligentna"
-      ? { fatigueShownRef, onFatigueSuggestion }
-      : null,
     reserveRef,
     handleCompleting,
     handleComplete,
@@ -213,24 +200,6 @@ export function SessionStudyView({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      {fatigueMessage ? (
-        <div
-          role="status"
-          className={cn(
-            "fixed top-20 left-1/2 z-[60] flex max-w-md -translate-x-1/2 gap-3 rounded-card border border-gold/40 bg-card px-4 py-3 font-body text-body-sm text-primary shadow-lg",
-          )}
-        >
-          <p className="min-w-0 flex-1 leading-relaxed">{fatigueMessage}</p>
-          <button
-            type="button"
-            onClick={dismissFatigue}
-            className="shrink-0 rounded-button p-1 text-primary/80 transition-colors hover:bg-white/5 hover:text-primary"
-            aria-label="Zamknij"
-          >
-            <X className="h-4 w-4" strokeWidth={2} />
-          </button>
-        </div>
-      ) : null}
       <SessionSaveToast message={saveToast} onDismiss={dismissToast} />
       <SessionEndDialog
         open={endOpen}

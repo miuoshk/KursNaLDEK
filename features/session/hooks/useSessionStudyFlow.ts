@@ -9,7 +9,6 @@ import { applyReserveSwap } from "@/features/session/lib/antares/reservePool";
 import {
   adaptRemainingQuestions,
   applyDifficultySwapsToRemaining,
-  detectFatigue,
   sessionQuestionToRanked,
 } from "@/features/session/lib/antares/midSessionAdapter";
 import { submitAnswerWithRetry } from "@/features/session/lib/submitAnswerWithRetry";
@@ -41,10 +40,6 @@ type FlowMeta = {
   profileStreak: number;
 };
 
-type AntaresMidOpts = {
-  fatigueShownRef: MutableRefObject<boolean>;
-  onFatigueSuggestion: (message: string) => void;
-};
 
 export function useSessionStudyFlow(
   questions: SessionQuestion[],
@@ -54,7 +49,6 @@ export function useSessionStudyFlow(
   sessionStart: MutableRefObject<number>,
   setSaveToast: (m: string | null) => void,
   closeEndDialog: () => void,
-  antaresMid: AntaresMidOpts | null,
   reserveRef: MutableRefObject<SessionQuestion[]>,
   /** Wywoływane natychmiast — pokaż ekran ładowania podsumowania. */
   onCompleting: () => void,
@@ -184,7 +178,7 @@ export function useSessionStudyFlow(
       });
       trackPendingSave(savePromise);
 
-      if (mode === "inteligentna" && antaresMid) {
+      if (mode === "inteligentna") {
         const nextIdx = s.currentIndex + 1;
         if (nextIdx < questions.length) {
           const tail = questions.slice(nextIdx);
@@ -207,16 +201,6 @@ export function useSessionStudyFlow(
             );
             reserveRef.current = reserveSwap.reserve;
             s.replaceQuestionsFromIndex(nextIdx, reserveSwap.tail);
-
-            const fatigue = detectFatigue(answeredSoFar);
-            if (
-              fatigue.isFatigued &&
-              fatigue.suggestion &&
-              !antaresMid.fatigueShownRef.current
-            ) {
-              antaresMid.fatigueShownRef.current = true;
-              antaresMid.onFatigueSuggestion(fatigue.suggestion);
-            }
           }
         }
       }
@@ -247,7 +231,6 @@ export function useSessionStudyFlow(
       mode,
       timeSpentQuestion,
       setSaveToast,
-      antaresMid,
       reserveRef,
       finishSession,
       buildSummary,

@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { SessionAnswer, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -16,11 +17,50 @@ export function SessionProgressSquares({
   currentIndex,
   onJumpTo,
 }: SessionProgressSquaresProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
+  const [overflows, setOverflows] = useState(false);
+
+  const checkOverflow = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setOverflows(el.scrollWidth > el.clientWidth + 1);
+  }, []);
+
+  useEffect(() => {
+    itemRefs.current.length = questions.length;
+    checkOverflow();
+  }, [questions.length, checkOverflow]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(checkOverflow);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [checkOverflow]);
+
+  useEffect(() => {
+    if (!overflows) return;
+    const node = itemRefs.current[currentIndex];
+    node?.scrollIntoView({
+      inline: "center",
+      block: "nearest",
+      behavior: "smooth",
+    });
+  }, [currentIndex, overflows]);
+
   if (questions.length === 0) return null;
 
   return (
     <div
-      className="flex max-w-full gap-1 overflow-x-auto py-0.5"
+      ref={scrollRef}
+      className={cn(
+        "flex max-w-full gap-1 py-0.5",
+        overflows
+          ? "overflow-x-auto scroll-smooth [scrollbar-width:thin]"
+          : "justify-center overflow-hidden",
+      )}
       role="list"
       aria-label="Postęp w sesji"
     >
@@ -43,6 +83,9 @@ export function SessionProgressSquares({
         return (
           <Component
             key={q.id}
+            ref={(el: HTMLButtonElement | HTMLDivElement | null) => {
+              itemRefs.current[idx] = el;
+            }}
             type={clickable ? "button" : undefined}
             onClick={clickable ? () => onJumpTo!(idx) : undefined}
             aria-label={ariaLabel}

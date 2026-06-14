@@ -25,7 +25,8 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const answered = topic.answered_count;
   const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
   const hasQuestions = total > 0;
-  const isGeneratedTopic = topic.name.includes("(generowane)");
+  const isGeneratedTopic =
+    topic.id.endsWith("-GEN") || topic.name.includes("(generowane)");
   const hasKnowledgeCard =
     topic.knowledge_card != null && topic.knowledge_card.trim().length > 0;
 

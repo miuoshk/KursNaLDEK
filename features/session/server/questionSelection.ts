@@ -7,15 +7,6 @@ import {
   getSubjectScopeIds,
 } from "@/features/session/server/sharedSubjects";
 
-/** Tematy „(generowane)” — osobny kafelek, nie wchodzą w sesję całego przedmiotu. */
-export function isGeneratedTopicId(topicId: string): boolean {
-  return topicId.endsWith("-GEN");
-}
-
-export function excludeGeneratedTopicIds(topicIds: string[]): string[] {
-  return topicIds.filter((id) => !isGeneratedTopicId(id));
-}
-
 export async function fetchVisibleTopicIds(
   supabase: SupabaseClient,
   subjectScopeIds: string[],
@@ -52,9 +43,7 @@ export async function fetchSubjectQuestionIds(
   track?: StudyTrack,
 ): Promise<string[]> {
   const subjectScopeIds = getSubjectScopeIds(subjectId);
-  const topicIds = excludeGeneratedTopicIds(
-    await fetchVisibleTopicIds(supabase, subjectScopeIds, track),
-  );
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectScopeIds, track);
   if (topicIds.length === 0) return [];
 
   const rows = await fetchActiveQuestionsForTopics(supabase, topicIds, track);
@@ -104,9 +93,7 @@ export async function fetchKnnpAllQuestionIds(
   const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return [];
   const studyTrack = track as StudyTrack | undefined;
-  const topicIds = excludeGeneratedTopicIds(
-    await fetchVisibleTopicIds(supabase, subjectIds, studyTrack),
-  );
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectIds, studyTrack);
   if (topicIds.length === 0) return [];
   const rows = await fetchActiveQuestionsForTopics(
     supabase,
@@ -124,8 +111,6 @@ export async function fetchKnnpTopicIdSet(
   const subjectIds = await fetchScopedKnnpSubjectIds(supabase, track, year);
   if (subjectIds.length === 0) return new Set();
   const studyTrack = track as StudyTrack | undefined;
-  const topicIds = excludeGeneratedTopicIds(
-    await fetchVisibleTopicIds(supabase, subjectIds, studyTrack),
-  );
+  const topicIds = await fetchVisibleTopicIds(supabase, subjectIds, studyTrack);
   return new Set(topicIds);
 }

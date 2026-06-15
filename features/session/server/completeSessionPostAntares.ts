@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase/admin";
 import type { CalibrationData } from "@/features/session/lib/antares/confidenceCalibration";
 import {
   calculateExamReadiness,
@@ -451,7 +452,8 @@ export async function runCompleteSessionPostAntares(
 
   const readinessCache = await computeReadinessPercentile(supabase, userId);
 
-  const { error: profileErr } = await supabase
+  const admin = createAdminClient();
+  const { error: profileErr } = await admin
     .from("profiles")
     .update({
       exam_readiness_score: exam.score,

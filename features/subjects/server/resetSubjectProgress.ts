@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
 const schema = z.object({
@@ -32,7 +33,9 @@ export async function resetSubjectProgress(
     }
 
     const { subjectId } = parsed.data;
-    const { error: resetError } = await supabase.rpc("reset_subject_progress", {
+    const admin = createAdminClient();
+    const { error: resetError } = await admin.rpc("reset_subject_progress_for_user", {
+      p_user_id: user.id,
       p_subject_id: subjectId,
     });
 

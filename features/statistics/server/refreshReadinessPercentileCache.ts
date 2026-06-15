@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export type ReadinessPercentileCache = {
   peerPercentile: number | null;
@@ -58,7 +59,8 @@ export async function refreshReadinessPercentileCache(
 ): Promise<ReadinessPercentileCache> {
   const parsed = await computeReadinessPercentile(supabase, userId);
 
-  const { error: updateErr } = await supabase
+  const admin = createAdminClient();
+  const { error: updateErr } = await admin
     .from("profiles")
     .update({
       readiness_percentile: parsed.peerPercentile,

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 import { z } from "zod";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
@@ -119,6 +120,7 @@ export async function completeSession(
     );
     const newLongest = Math.max(newStreak, profile.longest_streak ?? 0);
 
+    const admin = createAdminClient();
     const [upSessRes, upProfRes] = await Promise.all([
       supabase
         .from("study_sessions")
@@ -130,7 +132,7 @@ export async function completeSession(
           xp_earned: xpEarned,
         })
         .eq("id", session.id),
-      supabase
+      admin
         .from("profiles")
         .update({
           xp: (profile.xp ?? 0) + xpEarned,
@@ -235,6 +237,7 @@ export async function completeSession(
 
     after(async () => {
       try {
+        const bgAdmin = createAdminClient();
         const now = new Date();
         const currentHour =
           now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
@@ -246,7 +249,7 @@ export async function completeSession(
         const newAvg =
           oldAvg != null ? oldAvg * 0.8 + currentHour * 0.2 : currentHour;
 
-        await supabase
+        await bgAdmin
           .from("profiles")
           .update({ avg_session_hour: newAvg })
           .eq("id", bgUserId);
@@ -285,7 +288,7 @@ export async function completeSession(
               ? 1.0
               : 1.0;
 
-        await supabase
+        await bgAdmin
           .from("profiles")
           .update({ learning_velocity: velocity })
           .eq("id", bgUserId);

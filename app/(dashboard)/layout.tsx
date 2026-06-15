@@ -15,8 +15,6 @@ import { getDashboardYear } from "@/lib/dashboard/getDashboardYear";
 import { greetingName } from "@/lib/greetingName";
 import { initialsFromName } from "@/lib/initialsFromName";
 import { createClient } from "@/lib/supabase/server";
-import { isTestModeCookie, TEST_MODE_COOKIE_NAME } from "@/lib/testMode";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { assertAccountNotBlocked, LOGIN_BLOCKED_QUERY } from "@/lib/auth/accountBan";
 
@@ -28,20 +26,35 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const year = await getDashboardYear();
-  const jar = await cookies();
-  const testMode = isTestModeCookie(jar.get(TEST_MODE_COOKIE_NAME)?.value);
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  let displayName = "Użytkownik";
-  let streak = 0;
-  let dueReviewsCount = 0;
-  let preferredSessionCount = 25;
-  let userEmail: string | null = null;
-  let avatarEmoji: string | null = null;
-  let currentTrack: "stomatologia" | "lekarski" = "stomatologia";
+  if (!user) {
+    redirect("/login");
+  }
+
+  const { blocked } = await assertAccountNotBlocked({ email: user.email });
+  if (blocked) {
+    await supabase.auth.signOut();
+    redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
+  }
+
+  void pingPresence();
+  const userEmail = user.email ?? null;
+  const profileRow = await getProfileByUserId(user.id);
+  const userTrack = profileRow?.current_track ?? "stomatologia";
+  const userYear = profileRow?.current_year ?? 1;
+  const currentTrack = normalizeTrack(userTrack);
+  await getCachedKnnpCatalog(userTrack, userYear);
+  const dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
+  const preferredSessionCount = getPreferredSessionCount(profileRow);
+  const displayName = greetingName(profileRow, userEmail);
+  const streak = profileRow?.current_streak ?? 0;
+  const avatarEmoji =
+    (profileRow as { avatar_emoji?: string | null } | null)?.avatar_emoji ?? null;
+
   let profileSnapshot: {
     display_name: string | null;
     current_streak: number | null;
@@ -53,46 +66,21 @@ export default async function DashboardLayout({
   let showSessionTimer = true;
   let showSessionTopics = true;
 
-  if (testMode) {
-    displayName = "Tryb testowy";
-    streak = 0;
-  } else if (user) {
-    const { blocked } = await assertAccountNotBlocked({ email: user.email });
-    if (blocked) {
-      await supabase.auth.signOut();
-      redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
-    }
-
-    userEmail = user.email ?? null;
-    void pingPresence();
-    const profileRow = await getProfileByUserId(user.id);
-    const userTrack = profileRow?.current_track ?? "stomatologia";
-    const userYear = profileRow?.current_year ?? 1;
-    currentTrack = normalizeTrack(userTrack);
-    // Prerozgrzewamy katalog (track, year) — `getDueReviewCount` zaraz go
-    // wczyta z tego samego React cache (jedno żądanie, bez duplikacji).
-    await getCachedKnnpCatalog(userTrack, userYear);
-    dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
-    preferredSessionCount = getPreferredSessionCount(profileRow);
-    displayName = greetingName(profileRow, userEmail);
-    streak = profileRow?.current_streak ?? 0;
-    avatarEmoji =
-      (profileRow as { avatar_emoji?: string | null } | null)?.avatar_emoji ?? null;
-    if (profileRow) {
-      profileSnapshot = {
-        display_name: profileRow.display_name,
-        current_streak: profileRow.current_streak,
-        daily_goal: profileRow.daily_goal,
-        longest_streak: profileRow.longest_streak,
-        xp: profileRow.xp ?? null,
-        exam_date: (profileRow.exam_date as string | null | undefined) ?? null,
-      };
-      showSessionTimer =
-        (profileRow as { show_session_timer?: boolean }).show_session_timer ?? true;
-      showSessionTopics =
-        (profileRow as { show_session_topics?: boolean }).show_session_topics ?? true;
-    }
+  if (profileRow) {
+    profileSnapshot = {
+      display_name: profileRow.display_name,
+      current_streak: profileRow.current_streak,
+      daily_goal: profileRow.daily_goal,
+      longest_streak: profileRow.longest_streak,
+      xp: profileRow.xp ?? null,
+      exam_date: (profileRow.exam_date as string | null | undefined) ?? null,
+    };
+    showSessionTimer =
+      (profileRow as { show_session_timer?: boolean }).show_session_timer ?? true;
+    showSessionTopics =
+      (profileRow as { show_session_topics?: boolean }).show_session_topics ?? true;
   }
+
   const initials = initialsFromName(displayName);
 
   return (
@@ -111,7 +99,6 @@ export default async function DashboardLayout({
                 preferredSessionCount,
                 showSessionTimer,
                 showSessionTopics,
-                testMode: testMode || undefined,
               }}
             >
               <div className="flex h-screen min-h-0 overflow-hidden bg-background">

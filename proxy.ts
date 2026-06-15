@@ -1,6 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { isTestModeCookie } from "@/lib/testMode";
 
 /** Auth + redirects. Next.js 16 uses `proxy.ts` (see upgrading/version-16). */
 export async function proxy(request: NextRequest) {
@@ -26,11 +25,8 @@ export async function proxy(request: NextRequest) {
   );
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  const testMode = isTestModeCookie(request.cookies.get("kurs_test_mode")?.value);
-  const effectiveSession = Boolean(session || testMode);
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
   const isAuthRoute = pathname === "/login" || pathname === "/register";
@@ -43,7 +39,7 @@ export async function proxy(request: NextRequest) {
   const isPublicRoot = pathname === "/";
 
   if (
-    !effectiveSession &&
+    !user &&
     !isAuthRoute &&
     !isPasswordRecoveryRoute &&
     !isWebhookRoute &&
@@ -52,7 +48,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (effectiveSession && isAuthRoute) {
+  if (user && isAuthRoute) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 

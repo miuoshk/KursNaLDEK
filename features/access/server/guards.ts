@@ -1,24 +1,13 @@
 import "server-only";
 
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { hasAnyActiveEntitlement, hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
-import { isTestModeCookie, TEST_MODE_COOKIE_NAME } from "@/lib/testMode";
-
-async function isTestModeEnabled() {
-  const jar = await cookies();
-  return isTestModeCookie(jar.get(TEST_MODE_COOKIE_NAME)?.value);
-}
 
 export async function requireAnyEntitlementOrRedirect() {
-  if (await isTestModeEnabled()) {
-    return null;
-  }
-
   const supabase = await createClient();
   const {
     data: { user },
@@ -41,17 +30,6 @@ export async function requireAnyEntitlementOrRedirect() {
 }
 
 export async function requireCurrentSelectionAccessOrRedirect() {
-  if (await isTestModeEnabled()) {
-    return {
-      user: null,
-      current: {
-        track: "stomatologia" as const,
-        year: 2 as const,
-        hasAccess: true,
-      },
-    };
-  }
-
   const supabase = await createClient();
   const {
     data: { user },
@@ -74,10 +52,6 @@ export async function requireCurrentSelectionAccessOrRedirect() {
 }
 
 export async function hasAccessForSubjectSelection(track: string, year: number): Promise<boolean> {
-  if (await isTestModeEnabled()) {
-    return true;
-  }
-
   const supabase = await createClient();
   const {
     data: { user },

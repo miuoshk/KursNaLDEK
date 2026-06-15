@@ -36,7 +36,8 @@ export async function isAccountBlocked(params: {
 
   if (error) {
     console.error("[isAccountBlocked]", error.message);
-    return false;
+    // Fail-closed: przy błędzie DB nie wpuszczamy — bezpieczniej niż omijanie bana.
+    return true;
   }
 
   return data === true;

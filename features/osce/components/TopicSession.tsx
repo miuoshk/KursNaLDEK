@@ -169,7 +169,6 @@ export function TopicSession({
         sessionId,
         questionId: input.questionId,
         selectedOptionId,
-        isCorrect: input.isCorrect,
         confidence: input.isCorrect ? "na_pewno" : "nie_wiedzialem",
         timeSpentSeconds: timeSpentSeconds(),
         questionOrder: input.order,

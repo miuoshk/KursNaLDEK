@@ -168,7 +168,6 @@ export function useSessionStudyFlow(
         sessionId,
         questionId: currentQ.id,
         selectedOptionId: optionId,
-        isCorrect,
         confidence,
         timeSpentSeconds: timeSpentQuestion.current,
         questionOrder: s.currentIndex,

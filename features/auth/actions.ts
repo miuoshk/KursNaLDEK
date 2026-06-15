@@ -1,21 +1,19 @@
 "use server";
 
 import { headers } from "next/headers";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import type { AuthActionState } from "@/features/auth/types";
-import {
-  getTestModeCookieValue,
-  isTestModeCredentials,
-  TEST_MODE_COOKIE_NAME,
-  TEST_MODE_EMAIL,
-} from "@/lib/testMode";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
 import { isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
-import { assertAccountNotBlocked, ACCOUNT_BLOCKED_MESSAGE } from "@/lib/auth/accountBan";
+import {
+  assertAccountNotBlocked,
+  ACCOUNT_BLOCKED_MESSAGE,
+  getClientIpFromHeaders,
+} from "@/lib/auth/accountBan";
 import { isValidEmoji } from "@/lib/emoji";
+import { assertAuthRateLimit, AUTH_RATE_LIMIT_MESSAGE } from "@/lib/security/rateLimit";
 
 const loginSchema = z.object({
   email: z.string().email("Podaj poprawny adres e-mail."),
@@ -73,19 +71,17 @@ export async function loginAction(
     };
   }
 
-  if (isTestModeCredentials(parsed.data.email, parsed.data.password)) {
-    const jar = await cookies();
-    jar.set(TEST_MODE_COOKIE_NAME, getTestModeCookieValue(), {
-      httpOnly: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 14,
-      secure: process.env.NODE_ENV === "production",
-    });
-    redirect("/");
+  const ip = await getClientIpFromHeaders();
+  const rateLimit = assertAuthRateLimit({
+    action: "login",
+    ip,
+    email: parsed.data.email,
+  });
+  if (rateLimit.blocked) {
+    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null };
   }
 
-  const { blocked, ip } = await assertAccountNotBlocked({ email: parsed.data.email });
+  const { blocked } = await assertAccountNotBlocked({ email: parsed.data.email, ip });
   if (blocked) {
     return { error: ACCOUNT_BLOCKED_MESSAGE, info: null };
   }
@@ -228,8 +224,14 @@ export async function registerAction(
     };
   }
 
-  if (parsed.data.email.toLowerCase() === TEST_MODE_EMAIL.toLowerCase()) {
-    return { error: "Ten adres e-mail jest zarezerwowany do trybu testowego.", info: null };
+  const ip = await getClientIpFromHeaders();
+  const rateLimit = assertAuthRateLimit({
+    action: "register",
+    ip,
+    email: parsed.data.email,
+  });
+  if (rateLimit.blocked) {
+    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null };
   }
 
   const track = normalizeTrack(parsed.data.currentTrack);
@@ -318,6 +320,16 @@ export async function resendConfirmationAction(
     };
   }
 
+  const ip = await getClientIpFromHeaders();
+  const rateLimit = assertAuthRateLimit({
+    action: "resend-confirmation",
+    ip,
+    email: parsed.data.email,
+  });
+  if (rateLimit.blocked) {
+    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null, resendEmail: parsed.data.email };
+  }
+
   const supabase = await createClient();
   const h = await headers();
   const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
@@ -367,8 +379,6 @@ export async function resendConfirmationAction(
 }
 
 export async function logoutAction() {
-  const jar = await cookies();
-  jar.delete(TEST_MODE_COOKIE_NAME);
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/login");
@@ -411,13 +421,14 @@ export async function requestPasswordResetAction(
 
   const trimmedEmail = parsed.data.email.trim();
 
-  if (trimmedEmail.toLowerCase() === TEST_MODE_EMAIL.toLowerCase()) {
-    return {
-      error:
-        "Ten adres e-mail jest zarezerwowany do trybu testowego i nie ma własnego hasła.",
-      info: null,
-      resendEmail: null,
-    };
+  const ip = await getClientIpFromHeaders();
+  const rateLimit = assertAuthRateLimit({
+    action: "password-reset",
+    ip,
+    email: trimmedEmail,
+  });
+  if (rateLimit.blocked) {
+    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null, resendEmail: null };
   }
 
   const supabase = await createClient();

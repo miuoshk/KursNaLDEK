@@ -30,7 +30,6 @@ function formatNotificationDate(iso: string): string {
 }
 
 function NotificationBell() {
-  const { testMode } = useDashboardUser();
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState<ReportNotification[]>([]);
   const [unreadIds, setUnreadIds] = useState<string[]>([]);
@@ -38,11 +37,6 @@ function NotificationBell() {
   const ref = useRef<HTMLDivElement>(null);
 
   const refreshNotifications = useCallback(async () => {
-    if (testMode) {
-      setNotifications([]);
-      setUnreadIds([]);
-      return;
-    }
     setLoading(true);
     try {
       const [all, unread] = await Promise.all([
@@ -54,7 +48,7 @@ function NotificationBell() {
     } finally {
       setLoading(false);
     }
-  }, [testMode]);
+  }, []);
 
   useEffect(() => {
     void refreshNotifications();

@@ -22,8 +22,6 @@ export type DashboardUserValue = {
   showSessionTimer: boolean;
   /** Lista tematów źródłowych w pasku sesji (domyślnie włączona). */
   showSessionTopics: boolean;
-  /** Sesja bez JWT Supabase — dane w bazie mogą być niedostępne (RLS). */
-  testMode?: boolean;
 };
 
 const DashboardUserContext = createContext<DashboardUserValue | null>(null);

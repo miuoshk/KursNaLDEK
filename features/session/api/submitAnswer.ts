@@ -16,7 +16,6 @@ const schema = z.object({
   sessionId: z.string().uuid(),
   questionId: z.string().min(1),
   selectedOptionId: z.string().min(1),
-  isCorrect: z.boolean(),
   confidence: z.enum(["nie_wiedzialem", "troche", "na_pewno"]).nullable(),
   timeSpentSeconds: z.number().int().min(0).optional(),
   questionOrder: z.number().int().min(0),
@@ -105,6 +104,18 @@ export async function submitAnswer(
       return { ok: false, message: "Sesja nie została znaleziona." };
     }
 
+    const { data: questionRow, error: questionError } = await supabase
+      .from("questions")
+      .select("correct_option_id")
+      .eq("id", parsed.data.questionId)
+      .maybeSingle();
+
+    if (questionError || !questionRow?.correct_option_id) {
+      return { ok: false, message: "Nie znaleziono pytania." };
+    }
+
+    const isCorrect = questionRow.correct_option_id === parsed.data.selectedOptionId;
+
     const { data: prevAns } = await supabase
       .from("session_answers")
       .select("id")
@@ -128,7 +139,7 @@ export async function submitAnswer(
       session_id: parsed.data.sessionId,
       question_id: parsed.data.questionId,
       selected_option_id: parsed.data.selectedOptionId,
-      is_correct: parsed.data.isCorrect,
+      is_correct: isCorrect,
       confidence: parsed.data.confidence,
       time_spent_seconds: parsed.data.timeSpentSeconds ?? 0,
       question_order: parsed.data.questionOrder,
@@ -172,7 +183,7 @@ export async function submitAnswer(
       user.id,
       parsed.data.questionId,
       existing as Record<string, unknown> | null,
-      parsed.data.isCorrect,
+      isCorrect,
       parsed.data.confidence,
       !!prevAns,
       !!parsed.data.skipFsrs,
@@ -198,8 +209,8 @@ export async function submitAnswer(
 
         const oldCorrect = Number(progressRow.correct_streak ?? 0);
         const oldWrong = Number(progressRow.wrong_streak ?? 0);
-        const newCorrectStreak = parsed.data.isCorrect ? oldCorrect + 1 : 0;
-        const newWrongStreak = parsed.data.isCorrect ? 0 : oldWrong + 1;
+        const newCorrectStreak = isCorrect ? oldCorrect + 1 : 0;
+        const newWrongStreak = isCorrect ? 0 : oldWrong + 1;
 
         const wasLeech = Boolean(progressRow.is_leech);
         const currentLeechCount = Number(progressRow.leech_count ?? 0);
@@ -224,7 +235,7 @@ export async function submitAnswer(
             : null;
 
         const fsConf = (parsed.data.confidence ?? "troche") as Confidence;
-        const grade = confidenceToRating(parsed.data.isCorrect, fsConf);
+        const grade = confidenceToRating(isCorrect, fsConf);
         const lastRating = gradeToLastRatingLabel(grade);
 
         const progressAntaresUpdate: Record<string, unknown> = {
@@ -253,7 +264,7 @@ export async function submitAnswer(
 
         const answerPayload: Record<string, unknown> = {
           question_id: parsed.data.questionId,
-          is_correct: parsed.data.isCorrect,
+          is_correct: isCorrect,
           confidence: parsed.data.confidence,
           retrievability,
         };

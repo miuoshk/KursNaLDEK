@@ -15,7 +15,8 @@ export async function isUserAccessRevoked(userId: string): Promise<boolean> {
 
   if (error) {
     console.error("[isUserAccessRevoked]", error.message);
-    return false;
+    // Fail-closed: brak odczytu profilu = traktuj jak odebrany dostęp.
+    return true;
   }
 
   return Boolean(data?.access_revoked_at);

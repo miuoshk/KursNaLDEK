@@ -54,7 +54,12 @@
     "justNow": "just now",
     "minutesAgo": "{minutes} min ago",
     "hoursAgo": "{hours} h ago",
-    "daysAgo": "{days} days ago"
+    "daysAgo": "{days} days ago",
+    "somethingWentWrong": "Something went wrong",
+    "backToDashboard": "Back to dashboard",
+    "legacyDashboardWelcome": "Welcome to the main dashboard.",
+    "legacyStudyModeSoon": "Study mode coming soon.",
+    "legacyHabitsSoon": "Habit tracking coming soon."
   },
   "nav": {
     "sidebarAriaLabel": "Kurs na LDEK — navigation menu",
@@ -73,7 +78,11 @@
     "commandPaletteAchievementsHint": "Ranks · leaderboard · badges",
     "commandPaletteSavedHint": "Your bookmarks",
     "commandPaletteSettingsHint": "Profile · notifications · preferences",
-    "commandPaletteSubjectHint": "Subject · Year {year} · {shortName}"
+    "commandPaletteSubjectHint": "Subject · Year {year} · {shortName}",
+    "studySession": "Study session",
+    "reviewSession": "Review session",
+    "chooseSubject": "Choose a subject",
+    "studySessionTooltip": "Study session — {hint}"
   },
   "auth": {
     "logout": "Log out",
@@ -99,6 +108,12 @@
     "nickPlaceholder": "e.g. medicjan",
     "nickHelper": "Your nickname is visible in the leaderboard and can be changed later in settings.",
     "confirmPassword": "Confirm password",
+    "course": "Choose the course you're interested in",
+    "coursePlaceholder": "Select course",
+    "courseKnnp": "Basic sciences (students in years 1, 2, 3)",
+    "courseLdek": "LDEK (Medical-Dental Final Exam)",
+    "courseLdew": "LDEW (Medical-Dental Verification Exam)",
+    "coursePreparing": "This course is in preparation — coming soon.",
     "track": "Track",
     "trackPlaceholder": "Select track",
     "trackStomatologia": "Dentistry",
@@ -109,12 +124,22 @@
     "resendConfirmation": "Resend confirmation link",
     "registrationReopened": "Registration has reopened.",
     "registrationCountdownMessage": "Registration for new participants returns on May 17, 2026 at 9:00 PM.",
-    "registerLegalNotice": "By clicking \"Create account\", you accept the {regulaminLink} and {privacyLink}.",
+    "registerLegalNotice": "By clicking \"Create account\", you accept the <regulaminLink></regulaminLink> and <privacyLink></privacyLink>.",
     "registerLegalRegulaminLinkText": "Terms of service",
     "registerLegalPrivacyLinkText": "Privacy and cookies policy",
     "infoAccountCreated": "Account created. Check your email and confirm your address, then log in.",
     "infoResendConfirmationSent": "We sent a new confirmation link to {email}. Check your inbox (and spam).",
-    "infoPasswordResetSent": "If an account with {email} exists, we sent a password reset link. Check your inbox (and spam)."
+    "infoPasswordResetSent": "If an account with {email} exists, we sent a password reset link. Check your inbox (and spam).",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Sign up",
+    "hasAccount": "Already have an account?",
+    "backToLogin": "Back to login",
+    "rememberPassword": "Remember your password?",
+    "passwordChangedLogin": "Password changed. Sign in with your new password.",
+    "linkExpiredTitle": "Link expired",
+    "linkExpiredBody": "Your password reset link has expired or was already used. Request a new link and try again.",
+    "sendNewLink": "Send a new link",
+    "resetPasswordIntro": "Enter a new password for {email}. After saving, you will sign in with the new password."
   },
   "errors": {
     "invalidLoginData": "Invalid login details.",
@@ -131,6 +156,8 @@
     "nickMinLength": "Nickname must be at least 3 characters.",
     "nickMaxLength": "Nickname can be at most 32 characters.",
     "nickInvalidChars": "Nickname can only contain letters, numbers, and . _ -",
+    "courseRequired": "Choose the course you're interested in.",
+    "coursePreparing": "This course is in preparation — coming soon.",
     "trackRequired": "Select your study track.",
     "studyYearRequired": "Select your study year.",
     "avatarEmojiInvalid": "Select exactly one emoji as your avatar.",
@@ -152,7 +179,10 @@
     "updatePasswordFailed": "Could not update password. Try again.",
     "noSession": "No session.",
     "saveFailed": "Could not save.",
-    "mustLogin": "You must be logged in."
+    "mustLogin": "You must be logged in.",
+    "linkInvalid": "This link is invalid. Request a new password reset link.",
+    "linkExpired": "The password reset link has expired. Request a new one and try again.",
+    "invalidLocale": "Invalid language."
   },
   "slogans": {
     "default": "You know more than an hour ago. One more question?",
@@ -434,8 +464,8 @@
     "weakPointsNone": "Great job! You have no weak points."
   },
   "session": {
-      "loadingSession": "Loading session…",
-      "redirecting": "Redirecting…",
+    "loadingSession": "Loading session…",
+    "redirecting": "Redirecting…",
     "loading": "Loading…",
     "topicDefault": "Topic",
     "topicLabel": "Topic: {name}",
@@ -864,18 +894,54 @@
       "empty": "Start studying to earn achievements!",
       "locked": "???",
       "items": {
-        "pierwsza-sesja": { "name": "First session", "description": "Complete your first study session" },
-        "setka": { "name": "Century", "description": "Answer 100 questions" },
-        "tysiac": { "name": "Thousand questions", "description": "Answer 1000 questions" },
-        "maraton": { "name": "Marathon", "description": "Answer 100 questions in one day" },
-        "perfekcyjna-sesja": { "name": "Perfect session", "description": "Score 100% in a session with at least 25 questions" },
-        "snajper": { "name": "Sniper", "description": "Maintain 90%+ accuracy for 7 consecutive days" },
-        "tygodniowy-rytm": { "name": "Weekly rhythm", "description": "Maintain a streak for 7 days" },
-        "miesieczna-dyscyplina": { "name": "Monthly discipline", "description": "Maintain a streak for 30 days" },
-        "kwartalna-konsekwencja": { "name": "Quarterly consistency", "description": "Maintain a streak for 90 days" },
-        "wszechstronny": { "name": "Well-rounded", "description": "Reach 50% mastery in all subjects" },
-        "nocny-maratonczyk": { "name": "Night runner", "description": "Answer 50 questions after 10 PM" },
-        "wczesny-ptak": { "name": "Early bird", "description": "Study before 6 AM" }
+        "pierwsza-sesja": {
+          "name": "First session",
+          "description": "Complete your first study session"
+        },
+        "setka": {
+          "name": "Century",
+          "description": "Answer 100 questions"
+        },
+        "tysiac": {
+          "name": "Thousand questions",
+          "description": "Answer 1000 questions"
+        },
+        "maraton": {
+          "name": "Marathon",
+          "description": "Answer 100 questions in one day"
+        },
+        "perfekcyjna-sesja": {
+          "name": "Perfect session",
+          "description": "Score 100% in a session with at least 25 questions"
+        },
+        "snajper": {
+          "name": "Sniper",
+          "description": "Maintain 90%+ accuracy for 7 consecutive days"
+        },
+        "tygodniowy-rytm": {
+          "name": "Weekly rhythm",
+          "description": "Maintain a streak for 7 days"
+        },
+        "miesieczna-dyscyplina": {
+          "name": "Monthly discipline",
+          "description": "Maintain a streak for 30 days"
+        },
+        "kwartalna-konsekwencja": {
+          "name": "Quarterly consistency",
+          "description": "Maintain a streak for 90 days"
+        },
+        "wszechstronny": {
+          "name": "Well-rounded",
+          "description": "Reach 50% mastery in all subjects"
+        },
+        "nocny-maratonczyk": {
+          "name": "Night runner",
+          "description": "Answer 50 questions after 10 PM"
+        },
+        "wczesny-ptak": {
+          "name": "Early bird",
+          "description": "Study before 6 AM"
+        }
       }
     },
     "leaderboard": {

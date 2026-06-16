@@ -16,14 +16,14 @@ const inputClassName =
 const selectClassName =
   "w-full rounded-btn border border-[rgba(255,255,255,0.1)] bg-background px-4 py-3 font-body text-white transition-colors duration-200 ease-out focus:border-brand-gold focus:outline-none";
 
-function SubmitButton() {
+function SubmitButton({ disabled = false }: { disabled?: boolean }) {
   const { pending } = useFormStatus();
   const t = useTranslations("auth");
 
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className={cn(
         "w-full rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out",
         "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70",
@@ -34,12 +34,17 @@ function SubmitButton() {
   );
 }
 
+type CourseType = "" | "knnp" | "ldek" | "ldew";
+
 export function RegisterForm() {
   const t = useTranslations("auth");
   const tCommon = useTranslations("common");
   const [state, formAction] = useActionState(registerAction, initialAuthActionState);
   const [avatarEmoji, setAvatarEmoji] = useState("");
+  const [courseType, setCourseType] = useState<CourseType>("");
   const [currentTrack, setCurrentTrack] = useState<"" | "stomatologia" | "lekarski">("");
+  const isBasicSciences = courseType === "knnp";
+  const isCoursePreparing = courseType === "ldek" || courseType === "ldew";
   const lekYear2Closed =
     currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 2);
   const lekYear3Closed =
@@ -135,45 +140,79 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label htmlFor="currentTrack" className="mb-2 block font-body text-body-sm text-secondary">
-          {t("track")}
+        <label htmlFor="courseType" className="mb-2 block font-body text-body-sm text-secondary">
+          {t("course")}
         </label>
         <select
-          id="currentTrack"
-          name="currentTrack"
+          id="courseType"
+          name="courseType"
           required
           className={selectClassName}
           defaultValue=""
-          onChange={(event) => setCurrentTrack(event.target.value as "" | "stomatologia" | "lekarski")}
+          onChange={(event) => setCourseType(event.target.value as CourseType)}
         >
           <option value="" disabled>
-            {t("trackPlaceholder")}
+            {t("coursePlaceholder")}
           </option>
-          <option value="stomatologia">{t("trackStomatologia")}</option>
-          <option value="lekarski">{t("trackLekarski")}</option>
+          <option value="knnp">{t("courseKnnp")}</option>
+          <option value="ldek">{t("courseLdek")}</option>
+          <option value="ldew">{t("courseLdew")}</option>
         </select>
       </div>
 
-      <div>
-        <label htmlFor="currentYear" className="mb-2 block font-body text-body-sm text-secondary">
-          {t("studyYear")}
-        </label>
-        <select id="currentYear" name="currentYear" required className={selectClassName} defaultValue="">
-          <option value="" disabled>
-            {t("studyYearPlaceholder")}
-          </option>
-          <option value="1">1</option>
-          <option value="2" disabled={lekYear2Closed}>
-            2
-          </option>
-          <option value="3" disabled={lekYear3Closed}>
-            3
-          </option>
-        </select>
-        {lekYear2Closed || lekYear3Closed ? (
-          <p className="mt-1 font-body text-body-xs text-muted">{t("registrationClosed")}</p>
-        ) : null}
-      </div>
+      {isCoursePreparing ? (
+        <p
+          className="rounded-btn border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.08)] px-4 py-3 font-body text-body-sm text-brand-gold"
+          role="status"
+        >
+          {t("coursePreparing")}
+        </p>
+      ) : null}
+
+      {isBasicSciences ? (
+        <>
+          <div>
+            <label htmlFor="currentTrack" className="mb-2 block font-body text-body-sm text-secondary">
+              {t("track")}
+            </label>
+            <select
+              id="currentTrack"
+              name="currentTrack"
+              required
+              className={selectClassName}
+              defaultValue=""
+              onChange={(event) => setCurrentTrack(event.target.value as "" | "stomatologia" | "lekarski")}
+            >
+              <option value="" disabled>
+                {t("trackPlaceholder")}
+              </option>
+              <option value="stomatologia">{t("trackStomatologia")}</option>
+              <option value="lekarski">{t("trackLekarski")}</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="currentYear" className="mb-2 block font-body text-body-sm text-secondary">
+              {t("studyYear")}
+            </label>
+            <select id="currentYear" name="currentYear" required className={selectClassName} defaultValue="">
+              <option value="" disabled>
+                {t("studyYearPlaceholder")}
+              </option>
+              <option value="1">1</option>
+              <option value="2" disabled={lekYear2Closed}>
+                2
+              </option>
+              <option value="3" disabled={lekYear3Closed}>
+                3
+              </option>
+            </select>
+            {lekYear2Closed || lekYear3Closed ? (
+              <p className="mt-1 font-body text-body-xs text-muted">{t("registrationClosed")}</p>
+            ) : null}
+          </div>
+        </>
+      ) : null}
 
       {state.error ? (
         <div className="space-y-2">
@@ -192,7 +231,7 @@ export function RegisterForm() {
       ) : null}
 
       <RegisterLegalNotice />
-      <SubmitButton />
+      <SubmitButton disabled={isCoursePreparing} />
     </form>
   );
 }

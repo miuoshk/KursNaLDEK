@@ -37,16 +37,29 @@ const registerSchema = z
     email: z.string().email("emailInvalid"),
     password: z.string().min(6, "passwordMinLength"),
     confirmPassword: z.string().min(6, "confirmPasswordRequired"),
-    currentTrack: z
+    courseType: z
       .string()
-      .refine((value): value is "stomatologia" | "lekarski" => {
-        return value === "stomatologia" || value === "lekarski";
-      }, { message: "trackRequired" }),
-    currentYear: z.coerce.number().int().min(1, "studyYearRequired").max(3, "studyYearRequired"),
+      .refine((value): value is "knnp" | "ldek" | "ldew" => {
+        return value === "knnp" || value === "ldek" || value === "ldew";
+      }, { message: "courseRequired" }),
+    currentTrack: z.string().nullish(),
+    currentYear: z.preprocess(
+      (value) => (value === null || value === undefined || value === "" ? undefined : value),
+      z.coerce.number().int().optional(),
+    ),
     avatarEmoji: z
       .string()
       .trim()
       .refine(isValidEmoji, "avatarEmojiInvalid"),
+  })
+  .superRefine((data, ctx) => {
+    if (data.courseType !== "knnp") return;
+    if (data.currentTrack !== "stomatologia" && data.currentTrack !== "lekarski") {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "trackRequired", path: ["currentTrack"] });
+    }
+    if (data.currentYear === undefined || data.currentYear < 1 || data.currentYear > 3) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "studyYearRequired", path: ["currentYear"] });
+    }
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "passwordsMustMatch",
@@ -226,6 +239,7 @@ export async function registerAction(
     email: formData.get("email"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
+    courseType: formData.get("courseType"),
     currentTrack: formData.get("currentTrack"),
     currentYear: formData.get("currentYear"),
     avatarEmoji: formData.get("avatarEmoji"),
@@ -235,6 +249,13 @@ export async function registerAction(
     const key = parsed.error.issues[0]?.message ?? "invalidRegisterData";
     return {
       error: translateErrorKey(tErrors, key),
+      info: null,
+    };
+  }
+
+  if (parsed.data.courseType !== "knnp") {
+    return {
+      error: translateErrorKey(tErrors, "coursePreparing"),
       info: null,
     };
   }
@@ -279,8 +300,9 @@ export async function registerAction(
         full_name: parsed.data.fullName,
         nick: parsed.data.nick,
         display_name: parsed.data.nick,
-        current_track: parsed.data.currentTrack,
-        current_year: parsed.data.currentYear,
+        current_product: parsed.data.courseType,
+        current_track: track,
+        current_year: year,
         avatar_emoji: parsed.data.avatarEmoji,
       },
     },

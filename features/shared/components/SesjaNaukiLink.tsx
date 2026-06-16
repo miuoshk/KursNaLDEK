@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Brain } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Tooltip,
   TooltipContent,
@@ -13,6 +14,7 @@ import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 
 export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
+  const t = useTranslations("nav");
   const pathname = usePathname();
   const { dueReviewsCount, preferredSessionCount } = useDashboardUser();
   const href =
@@ -24,7 +26,7 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
         })
       : "/przedmioty";
   const tooltip =
-    dueReviewsCount > 0 ? "Sesja powtórkowa" : "Wybierz przedmiot";
+    dueReviewsCount > 0 ? t("reviewSession") : t("chooseSubject");
 
   const inSession =
     pathname.startsWith("/sesja/") && !pathname.includes("/podsumowanie");
@@ -50,7 +52,7 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
           collapsed && "sr-only",
         )}
       >
-        Sesja nauki
+        {t("studySession")}
       </span>
     </>
   );
@@ -110,7 +112,7 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
           "font-body text-body-xs text-secondary shadow-lg",
         )}
       >
-        Sesja nauki — {tooltip}
+        {t("studySessionTooltip", { hint: tooltip })}
       </TooltipContent>
     </Tooltip>
   );

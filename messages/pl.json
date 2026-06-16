@@ -54,7 +54,12 @@
     "justNow": "przed chwilą",
     "minutesAgo": "{minutes} min temu",
     "hoursAgo": "{hours} godz. temu",
-    "daysAgo": "{days} dni temu"
+    "daysAgo": "{days} dni temu",
+    "somethingWentWrong": "Coś poszło nie tak",
+    "backToDashboard": "Wróć do pulpitu",
+    "legacyDashboardWelcome": "Witaj w panelu głównym.",
+    "legacyStudyModeSoon": "Tryb nauki wkrótce.",
+    "legacyHabitsSoon": "Śledzenie nawyków wkrótce."
   },
   "nav": {
     "sidebarAriaLabel": "Kurs na LDEK — menu nawigacji",
@@ -73,7 +78,11 @@
     "commandPaletteAchievementsHint": "Rangi · ranking · odznaki",
     "commandPaletteSavedHint": "Twoje zakładki",
     "commandPaletteSettingsHint": "Profil · powiadomienia · preferencje",
-    "commandPaletteSubjectHint": "Przedmiot · Rok {year} · {shortName}"
+    "commandPaletteSubjectHint": "Przedmiot · Rok {year} · {shortName}",
+    "studySession": "Sesja nauki",
+    "reviewSession": "Sesja powtórkowa",
+    "chooseSubject": "Wybierz przedmiot",
+    "studySessionTooltip": "Sesja nauki — {hint}"
   },
   "auth": {
     "logout": "Wyloguj się",
@@ -99,6 +108,12 @@
     "nickPlaceholder": "np. medicjan",
     "nickHelper": "Nick jest widoczny w rankingu i można go później zmienić w ustawieniach.",
     "confirmPassword": "Powtórz hasło",
+    "course": "Wybierz interesujący Cię kurs",
+    "coursePlaceholder": "Wybierz kurs",
+    "courseKnnp": "Nauki podstawowe (studenci 1, 2, 3 rok)",
+    "courseLdek": "LDEK (Lekarsko-Dentystyczny Egzamin Końcowy)",
+    "courseLdew": "LDEW (Lekarsko-Dentystyczny Egzamin Weryfikacyjny)",
+    "coursePreparing": "Ten kurs jest w przygotowaniu — wkrótce dostępny.",
     "track": "Kierunek",
     "trackPlaceholder": "Wybierz kierunek",
     "trackStomatologia": "Stomatologia",
@@ -109,12 +124,22 @@
     "resendConfirmation": "Wyślij link potwierdzający ponownie",
     "registrationReopened": "Rejestracja została ponownie otwarta.",
     "registrationCountdownMessage": "Rejestracja nowych uczestników wróci 17 maja 2026 o 21:00.",
-    "registerLegalNotice": "Klikając „Załóż konto”, akceptujesz {regulaminLink} oraz {privacyLink}.",
+    "registerLegalNotice": "Klikając „Załóż konto”, akceptujesz <regulaminLink></regulaminLink> oraz <privacyLink></privacyLink>.",
     "registerLegalRegulaminLinkText": "Regulamin",
     "registerLegalPrivacyLinkText": "Politykę prywatności i cookies",
     "infoAccountCreated": "Konto utworzone. Sprawdź skrzynkę e-mail i potwierdź adres, a następnie zaloguj się.",
     "infoResendConfirmationSent": "Wysłaliśmy nowy link potwierdzający na {email}. Sprawdź skrzynkę (i spam).",
-    "infoPasswordResetSent": "Jeśli konto z adresem {email} istnieje, wysłaliśmy na nie link do resetu hasła. Sprawdź skrzynkę (i spam)."
+    "infoPasswordResetSent": "Jeśli konto z adresem {email} istnieje, wysłaliśmy na nie link do resetu hasła. Sprawdź skrzynkę (i spam).",
+    "noAccount": "Nie masz konta?",
+    "registerLink": "Zarejestruj się",
+    "hasAccount": "Masz już konto?",
+    "backToLogin": "Wróć do logowania",
+    "rememberPassword": "Pamiętasz już hasło?",
+    "passwordChangedLogin": "Hasło zostało zmienione. Zaloguj się nowym hasłem.",
+    "linkExpiredTitle": "Link wygasł",
+    "linkExpiredBody": "Twój link do resetu hasła wygasł lub został już użyty. Poproś o nowy link i spróbuj ponownie.",
+    "sendNewLink": "Wyślij nowy link",
+    "resetPasswordIntro": "Wpisz nowe hasło dla konta {email}. Po zapisaniu zalogujesz się ponownie z nowym hasłem."
   },
   "errors": {
     "invalidLoginData": "Nieprawidłowe dane logowania.",
@@ -131,6 +156,8 @@
     "nickMinLength": "Nick musi mieć co najmniej 3 znaki.",
     "nickMaxLength": "Nick może mieć maksymalnie 32 znaki.",
     "nickInvalidChars": "Nick może zawierać tylko litery, cyfry oraz znaki . _ -",
+    "courseRequired": "Wybierz interesujący Cię kurs.",
+    "coursePreparing": "Ten kurs jest w przygotowaniu — wkrótce dostępny.",
     "trackRequired": "Wybierz kierunek studiów.",
     "studyYearRequired": "Wybierz rok studiów.",
     "avatarEmojiInvalid": "Wybierz dokładnie jedno emoji jako avatar.",
@@ -152,7 +179,10 @@
     "updatePasswordFailed": "Nie udało się zaktualizować hasła. Spróbuj ponownie.",
     "noSession": "Brak sesji.",
     "saveFailed": "Nie udało się zapisać.",
-    "mustLogin": "Musisz być zalogowany."
+    "mustLogin": "Musisz być zalogowany.",
+    "linkInvalid": "Ten link jest nieprawidłowy. Poproś o nowy link do resetu hasła.",
+    "linkExpired": "Link do resetu hasła wygasł. Poproś o nowy i spróbuj ponownie.",
+    "invalidLocale": "Nieprawidłowy język."
   },
   "slogans": {
     "default": "Wiesz więcej niż godzinę temu. Jeszcze jedno pytanie?",
@@ -764,8 +794,8 @@
     }
   },
   "session": {
-      "loadingSession": "Ładowanie sesji…",
-      "redirecting": "Przekierowanie…",
+    "loadingSession": "Ładowanie sesji…",
+    "redirecting": "Przekierowanie…",
     "loading": "Ładowanie…",
     "topicDefault": "Temat",
     "topicLabel": "Temat: {name}",

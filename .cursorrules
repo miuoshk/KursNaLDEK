@@ -18,7 +18,8 @@
 - Border radius: 14px cards, 8px buttons, 24px pills
 
 ## Conventions
-- All UI text in Polish
+- All user-facing UI text via next-intl (`messages/*.json`); default locale `pl`, also `uk`, `ru`, `en`
+- Admin panel (`/admin/*`) stays Polish-only — no i18n migration there
 - Use server components by default, client components only when needed
 - Colocate components with their routes when possible
 - Use `cn()` helper (clsx + tailwind-merge) for conditional classes

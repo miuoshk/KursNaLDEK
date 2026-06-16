@@ -15,7 +15,8 @@ CREATE TABLE profiles (
   avatar_emoji TEXT,
   current_year INT DEFAULT 1,
   current_track TEXT DEFAULT 'stomatologia',
-  current_product TEXT DEFAULT 'knnp', -- knnp | ldek
+  current_product TEXT DEFAULT 'knnp', -- knnp | ldek | ldew
+  locale TEXT NOT NULL DEFAULT 'pl' CHECK (locale IN ('pl', 'uk', 'ru', 'en')),
   daily_goal INT DEFAULT 25,
   xp INT DEFAULT 0,
   current_streak INT DEFAULT 0,
@@ -56,6 +57,7 @@ DECLARE
   email_local_part TEXT;
   year_value INT;
   track_value TEXT;
+  product_value TEXT;
 BEGIN
   email_local_part := SPLIT_PART(COALESCE(NEW.email, ''), '@', 1);
   full_name_value := NULLIF(
@@ -84,8 +86,13 @@ BEGIN
       THEN NEW.raw_user_meta_data->>'current_track'
     ELSE 'stomatologia'
   END;
+  product_value := CASE
+    WHEN NEW.raw_user_meta_data->>'current_product' IN ('knnp', 'ldek', 'ldew')
+      THEN NEW.raw_user_meta_data->>'current_product'
+    ELSE 'knnp'
+  END;
 
-  INSERT INTO public.profiles (id, full_name, nick, display_name, avatar_initials, current_track, current_year)
+  INSERT INTO public.profiles (id, full_name, nick, display_name, avatar_initials, current_track, current_year, current_product)
   VALUES (
     NEW.id,
     full_name_value,
@@ -94,7 +101,8 @@ BEGIN
     UPPER(LEFT(full_name_value, 1) ||
           LEFT(SPLIT_PART(full_name_value, ' ', 2), 1)),
     track_value,
-    year_value
+    year_value,
+    product_value
   );
   RETURN NEW;
 END;

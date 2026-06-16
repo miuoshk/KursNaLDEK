@@ -1,0 +1,1627 @@
+{
+  "batchLabel": "e_anat_sto_2025/2",
+  "sourceFile": "/Users/miuoshk/Downloads/anatsto_batch_e2025_2.sql",
+  "batchCount": 100,
+  "dbAnaActive": 710,
+  "anatstoAlreadyInDb": 51,
+  "internalCut": [],
+  "exactDbCount": 17,
+  "nearDbCount": 70,
+  "keyConflictCount": 19,
+  "freshCount": 13,
+  "recommendedCut": [
+    "ANATSTO-489",
+    "ANATSTO-490",
+    "ANATSTO-491",
+    "ANATSTO-492",
+    "ANATSTO-494",
+    "ANATSTO-495",
+    "ANATSTO-496",
+    "ANATSTO-497",
+    "ANATSTO-498",
+    "ANATSTO-499",
+    "ANATSTO-500",
+    "ANATSTO-501",
+    "ANATSTO-502",
+    "ANATSTO-503",
+    "ANATSTO-504",
+    "ANATSTO-506",
+    "ANATSTO-508",
+    "ANATSTO-410",
+    "ANATSTO-412",
+    "ANATSTO-414",
+    "ANATSTO-415",
+    "ANATSTO-419",
+    "ANATSTO-420",
+    "ANATSTO-421",
+    "ANATSTO-422",
+    "ANATSTO-423",
+    "ANATSTO-424",
+    "ANATSTO-425",
+    "ANATSTO-426",
+    "ANATSTO-427",
+    "ANATSTO-428",
+    "ANATSTO-429",
+    "ANATSTO-431",
+    "ANATSTO-432",
+    "ANATSTO-433",
+    "ANATSTO-434",
+    "ANATSTO-435",
+    "ANATSTO-436",
+    "ANATSTO-437",
+    "ANATSTO-438",
+    "ANATSTO-439",
+    "ANATSTO-441",
+    "ANATSTO-442",
+    "ANATSTO-444",
+    "ANATSTO-446",
+    "ANATSTO-447",
+    "ANATSTO-448",
+    "ANATSTO-449",
+    "ANATSTO-451",
+    "ANATSTO-452",
+    "ANATSTO-453",
+    "ANATSTO-454",
+    "ANATSTO-455",
+    "ANATSTO-457",
+    "ANATSTO-458",
+    "ANATSTO-459",
+    "ANATSTO-460",
+    "ANATSTO-461",
+    "ANATSTO-462",
+    "ANATSTO-463",
+    "ANATSTO-464",
+    "ANATSTO-465",
+    "ANATSTO-466",
+    "ANATSTO-467",
+    "ANATSTO-468",
+    "ANATSTO-469",
+    "ANATSTO-470",
+    "ANATSTO-471",
+    "ANATSTO-472",
+    "ANATSTO-473",
+    "ANATSTO-474",
+    "ANATSTO-475",
+    "ANATSTO-476",
+    "ANATSTO-477",
+    "ANATSTO-478",
+    "ANATSTO-479",
+    "ANATSTO-480",
+    "ANATSTO-481",
+    "ANATSTO-482",
+    "ANATSTO-483",
+    "ANATSTO-484",
+    "ANATSTO-485",
+    "ANATSTO-486",
+    "ANATSTO-487",
+    "ANATSTO-488",
+    "ANATSTO-493",
+    "ANATSTO-505"
+  ],
+  "exactDb": [
+    {
+      "srccode": "ANATSTO-489",
+      "topic": "ANA-TUL",
+      "text": "Żyła nieparzysta uchodzi do:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-tul-008",
+          "topic_id": "ANA-TUL",
+          "correct": "c",
+          "source_code": "ANAT-e2025-2-116"
+        },
+        {
+          "id": "ana-tul-031",
+          "topic_id": "ANA-TUL",
+          "correct": "c",
+          "source_code": "ANAT-e2024-2-356"
+        },
+        {
+          "id": "ana-tul-039",
+          "topic_id": "ANA-TUL",
+          "correct": "a",
+          "source_code": "ANAT-e2023-2-487"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-490",
+      "topic": "ANA-KON",
+      "text": "Żyła odłokciowa i odpromieniowa biegną wzdłuż:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-kon-015",
+          "topic_id": "ANA-KON",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-117"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-491",
+      "topic": "ANA-NAC",
+      "text": "Zatoka esowata uchodzi do:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-oun-018",
+          "topic_id": "ANA-OUN",
+          "correct": "e",
+          "source_code": "ANAT-e2025-2-118"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-492",
+      "topic": "ANA-CZA",
+      "text": "Przewód nosowo-łzowy uchodzi do:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-cza-012",
+          "topic_id": "ANA-CZA",
+          "correct": "b",
+          "source_code": "ANAT-e2025-2-119"
+        },
+        {
+          "id": "ana-cza-006",
+          "topic_id": "ANA-CZA",
+          "correct": "b",
+          "source_code": "ANAT-e2025-1-075"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-494",
+      "topic": "ANA-KON",
+      "text": "Staw biodrowy jest stawem:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-kon-016",
+          "topic_id": "ANA-KON",
+          "correct": "e",
+          "source_code": "ANAT-e2025-2-121"
+        },
+        {
+          "id": "ana-kon-053",
+          "topic_id": "ANA-KON",
+          "correct": "e",
+          "source_code": "ANAT-e2024-2-361"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-495",
+      "topic": "ANA-KON",
+      "text": "Ruch nawracania i odwracania przedramienia odbywają się w stawach:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-kon-054",
+          "topic_id": "ANA-KON",
+          "correct": "e",
+          "source_code": "ANAT-e2024-2-362"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-496",
+      "topic": "ANA-CZA",
+      "text": "Szew wieńcowy oddziela:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-cza-013",
+          "topic_id": "ANA-CZA",
+          "correct": "e",
+          "source_code": "ANAT-e2025-2-123"
+        },
+        {
+          "id": "ana-cza-028",
+          "topic_id": "ANA-CZA",
+          "correct": "e",
+          "source_code": "ANAT-e2024-2-363"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-497",
+      "topic": "ANA-CZA",
+      "text": "Ujście przewodu słuchowego wewnętrznego znajduje się:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-cza-014",
+          "topic_id": "ANA-CZA",
+          "correct": "b",
+          "source_code": "ANAT-e2025-2-124"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-498",
+      "topic": "ANA-JAM",
+      "text": "Podniebienie kostne składa się z:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-cza-015",
+          "topic_id": "ANA-CZA",
+          "correct": "e",
+          "source_code": "ANAT-e2025-2-125"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-499",
+      "topic": "ANA-KON",
+      "text": "Mięsień dwugłowy uda działa w ten sposób, że:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-kon-022",
+          "topic_id": "ANA-KON",
+          "correct": "d",
+          "source_code": "ANAT-e2025-2-156"
+        },
+        {
+          "id": "ana-kon-008",
+          "topic_id": "ANA-KON",
+          "correct": "c",
+          "source_code": "ANAT-e2025-1-070"
+        },
+        {
+          "id": "ana-kon-035",
+          "topic_id": "ANA-KON",
+          "correct": "c",
+          "source_code": "ANAT-e2024-1-249"
+        },
+        {
+          "id": "ana-kon-055",
+          "topic_id": "ANA-KON",
+          "correct": "d",
+          "source_code": "ANAT-e2024-2-366"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-500",
+      "topic": "ANA-TRZ",
+      "text": "Moczowód leży na mięśniu:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-045",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-157"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-501",
+      "topic": "ANA-TRZ",
+      "text": "Cewka moczowa męska składa się kolejno z następujących części:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-trz-046",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2025-2-158"
+        },
+        {
+          "id": "ana-trz-113",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2024-2-368"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-502",
+      "topic": "ANA-TRZ",
+      "text": "Wzgórek nasienny znajduje się:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-047",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-159"
+        },
+        {
+          "id": "ana-trz-157",
+          "topic_id": "ANA-TRZ",
+          "correct": "c",
+          "source_code": "ANAT-e2023-2-496"
+        },
+        {
+          "id": "ana-trz-114",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2024-2-369"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-503",
+      "topic": "ANA-TRZ",
+      "text": "Kolejne odcinki moczowodu to:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-048",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-160"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-504",
+      "topic": "ANA-KON",
+      "text": "W skład kośćca ręki wchodzi:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-kon-031",
+          "topic_id": "ANA-KON",
+          "correct": "e",
+          "source_code": "ANAT-e2024-1-228"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-506",
+      "topic": "ANA-OBW",
+      "text": "Nerw zasłonowy:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-obw-017",
+          "topic_id": "ANA-OBW",
+          "correct": "b",
+          "source_code": "ANAT-e2025-2-163"
+        },
+        {
+          "id": "ana-obw-034",
+          "topic_id": "ANA-OBW",
+          "correct": "b",
+          "source_code": "ANAT-e2024-2-373"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-508",
+      "topic": "ANA-CZA",
+      "text": "Skrzydło mniejsze kości klinowej stanowi element:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-cza-010",
+          "topic_id": "ANA-CZA",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-113"
+        }
+      ]
+    }
+  ],
+  "nearDb": [
+    {
+      "srccode": "ANATSTO-410",
+      "topic": "ANA-TUL",
+      "text": "Spojenie łonowe wzmacniają więzadła",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-tul-010",
+        "topic_id": "ANA-TUL",
+        "text": "Spojenie łonowe wzmacniają więzadła:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-412",
+      "topic": "ANA-TUL",
+      "text": "Ścianę dolną kanału pachwinowego tworzy",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-tul-019",
+        "topic_id": "ANA-TUL",
+        "text": "Ścianę dolną kanału pachwinowego tworzy:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-414",
+      "topic": "ANA-OBW",
+      "text": "Nerw pośladkowy dolny unerwia",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-012",
+        "topic_id": "ANA-OBW",
+        "text": "Nerw pośladkowy dolny unerwia:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-415",
+      "topic": "ANA-TRZ",
+      "text": "Miedniczka nerkowa leży w zatoce nerkowej",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-036",
+        "topic_id": "ANA-TRZ",
+        "text": "Miedniczka nerkowa leży w zatoce nerkowej:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-419",
+      "topic": "ANA-TRZ",
+      "text": "Tętnice żołądkowe krótkie",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-088",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnice żołądkowe krótkie:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-420",
+      "topic": "ANA-NER",
+      "text": "Splot bębenkowy powstaje między innymi z połączenia",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-013",
+        "topic_id": "ANA-NER",
+        "text": "Splot bębenkowy powstaje między innymi z połączenia:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-421",
+      "topic": "ANA-TRZ",
+      "text": "Wzdłuż krzywizny mniejszej żołądka przebiega",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-050",
+        "topic_id": "ANA-TRZ",
+        "text": "Wzdłuż krzywizny mniejszej żołądka przebiega:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-422",
+      "topic": "ANA-TRZ",
+      "text": "Naturalne krzywizny cewki moczowej męskiej to",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-051",
+        "topic_id": "ANA-TRZ",
+        "text": "Naturalne krzywizny cewki moczowej męskiej to:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-423",
+      "topic": "ANA-TRZ",
+      "text": "Gałęzi międzykomorowej tylnej towarzyszy",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-052",
+        "topic_id": "ANA-TRZ",
+        "text": "Gałęzi międzykomorowej tylnej towarzyszy:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-424",
+      "topic": "ANA-KON",
+      "text": "Tętnica podkolanowa dzieli się na",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-kon-046",
+        "topic_id": "ANA-KON",
+        "text": "Tętnica podkolanowa dzieli się na:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-425",
+      "topic": "ANA-TUL",
+      "text": "Przewód piersiowy leży",
+      "correct": "e",
+      "sim": "substring",
+      "match": {
+        "id": "ana-tul-013",
+        "topic_id": "ANA-TUL",
+        "text": "Przewód piersiowy leży w:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-426",
+      "topic": "ANA-NAC",
+      "text": "Napięcie warg głosowych jest głównie regulowane przez pracę",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-mie-005",
+        "topic_id": "ANA-MIE",
+        "text": "Napięcie warg głosowych jest głównie regulowane przez pracę:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-427",
+      "topic": "ANA-NER",
+      "text": "Nerw XI opuszcza czaszkę przez",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-014",
+        "topic_id": "ANA-NER",
+        "text": "Nerw XI opuszcza czaszkę przez:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-428",
+      "topic": "ANA-TUL",
+      "text": "Naturalną krzywizną kręgosłupa jest",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-tul-014",
+        "topic_id": "ANA-TUL",
+        "text": "Naturalną krzywizną kręgosłupa jest:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-429",
+      "topic": "ANA-TUL",
+      "text": "Powięź nasienna zewnętrzna to przedłużenie",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-058",
+        "topic_id": "ANA-TRZ",
+        "text": "Powięź nasienna zewnętrzna to przedłużenie:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-431",
+      "topic": "ANA-TUL",
+      "text": "Przez kanał pachwinowy u kobiet przechodzi",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-061",
+        "topic_id": "ANA-TRZ",
+        "text": "Przez kanał pachwinowy u kobiet przechodzi:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-432",
+      "topic": "ANA-CZA",
+      "text": "Ujście zatoki szczękowej znajduje się",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-cza-016",
+        "topic_id": "ANA-CZA",
+        "text": "Ujście zatoki szczękowej znajduje się:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-433",
+      "topic": "ANA-NAC",
+      "text": "Tętnica szczękowa",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-nac-029",
+        "topic_id": "ANA-NAC",
+        "text": "Tętnica szczękowa:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-434",
+      "topic": "ANA-TRZ",
+      "text": "Śródsierdzie",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-tul-029",
+        "topic_id": "ANA-TUL",
+        "text": "Śródsierdzie:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-435",
+      "topic": "ANA-NER",
+      "text": "Małżowinę nosową dolną unerwia",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-039",
+        "topic_id": "ANA-NER",
+        "text": "Małżowinę nosową dolną unerwia:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-436",
+      "topic": "ANA-TRZ",
+      "text": "Tętnica żołądkowa prawa jest gałęzią",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-060",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnica żołądkowa prawa jest gałęzią:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-437",
+      "topic": "ANA-KON",
+      "text": "Do guza kulszowego przyczepia się",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-kon-027",
+        "topic_id": "ANA-KON",
+        "text": "Do guza kulszowego przyczepia się:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-438",
+      "topic": "ANA-NAC",
+      "text": "Brzusiec dolny mięśnia łopatkowo-gnykowego unerwiony jest przez",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-020",
+        "topic_id": "ANA-OBW",
+        "text": "Brzusiec dolny mięśnia łopatkowo-gnykowego unerwiony jest przez:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-439",
+      "topic": "ANA-OUN",
+      "text": "Zakręt przedśrodkowy i część przednią płacika okołośrodkowego zawiera ośrodki",
+      "correct": "c",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-oun-020",
+        "topic_id": "ANA-OUN",
+        "text": "Zakręt przedśrodkowy i część przednia płacika okołośrodkowego zawiera ośrodki:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-441",
+      "topic": "ANA-NER",
+      "text": "Włókna smakowe nerwu językowo-gardłowego unerwiają",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-010",
+        "topic_id": "ANA-NER",
+        "text": "Włókna smakowe nerwu językowo-gardłowego unerwiają:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-442",
+      "topic": "ANA-NAC",
+      "text": "Nerw krtaniowy dolny unerwia",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-011",
+        "topic_id": "ANA-NER",
+        "text": "Nerw krtaniowy dolny unerwia:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-444",
+      "topic": "ANA-NER",
+      "text": "Zwój uszny powstaje z",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-012",
+        "topic_id": "ANA-NER",
+        "text": "Zwój uszny powstaje z:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-446",
+      "topic": "ANA-OUN",
+      "text": "Opona twarda rdzenia kręgowego",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-oun-054",
+        "topic_id": "ANA-OUN",
+        "text": "Opona twarda rdzenia kręgowego:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-447",
+      "topic": "ANA-TUL",
+      "text": "Trójkąt grasiczy",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-093",
+        "topic_id": "ANA-TRZ",
+        "text": "Trójkąt grasiczy:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-448",
+      "topic": "ANA-TRZ",
+      "text": "Ściana tylna przedsionka prawego zawiera",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-044",
+        "topic_id": "ANA-TRZ",
+        "text": "Ściana tylna przedsionka prawego zawiera:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-449",
+      "topic": "ANA-TRZ",
+      "text": "W ścianie tylnej torby sieciowej występuje",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-095",
+        "topic_id": "ANA-TRZ",
+        "text": "W ścianie tylnej torby sieciowej występuje:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-451",
+      "topic": "ANA-TRZ",
+      "text": "Ujście zewnętrzne cewki moczowej żeńskiej znajduje się",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-074",
+        "topic_id": "ANA-TRZ",
+        "text": "Ujście zewnętrzne cewki moczowej żeńskiej znajduje się:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-452",
+      "topic": "ANA-NER",
+      "text": "Nerw skrzydłowy przyśrodkowy",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-008",
+        "topic_id": "ANA-NER",
+        "text": "Nerw skrzydłowy przyśrodkowy:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-453",
+      "topic": "ANA-CZA",
+      "text": "Przez otwór okrągły przechodzi",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-cza-025",
+        "topic_id": "ANA-CZA",
+        "text": "Przez otwór okrągły przechodzi:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-454",
+      "topic": "ANA-TUL",
+      "text": "Przez otwór żyły głównej w przeponie oprócz żyły głównej dolnej przebiegają",
+      "correct": "e",
+      "sim": "substring",
+      "match": {
+        "id": "ana-tul-007",
+        "topic_id": "ANA-TUL",
+        "text": "Przez otwór żyły głównej w przeponie oprócz żyły głównej dolnej przebiega:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-455",
+      "topic": "ANA-NER",
+      "text": "Sploty przełykowe tworzą",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-010",
+        "topic_id": "ANA-OBW",
+        "text": "Sploty przełykowe tworzą:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-457",
+      "topic": "ANA-CZA",
+      "text": "Ograniczenie wejścia przedniego do kostnej części jamy nosowej stanowi",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-cza-011",
+        "topic_id": "ANA-CZA",
+        "text": "Ograniczenie wejścia przedniego do kostnej części jamy nosowej stanowi:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-458",
+      "topic": "ANA-OBW",
+      "text": "Splot lędźwiowy leży",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-011",
+        "topic_id": "ANA-OBW",
+        "text": "Splot lędźwiowy leży:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-459",
+      "topic": "ANA-TRZ",
+      "text": "Do elementów szkieletu serca należą",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-098",
+        "topic_id": "ANA-TRZ",
+        "text": "Do elementów szkieletu serca należą:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-460",
+      "topic": "ANA-TRZ",
+      "text": "Prawidłowy rytm serca wynosi",
+      "correct": "e",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-trz-029",
+        "topic_id": "ANA-TRZ",
+        "text": "Prawidłowy rytm serca osoby dorosłej wynosi:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-461",
+      "topic": "ANA-OUN",
+      "text": "Przegroda przezroczysta",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-oun-017",
+        "topic_id": "ANA-OUN",
+        "text": "Przegroda przezroczysta:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-462",
+      "topic": "ANA-TRZ",
+      "text": "Zastawkę trójdzielną osłuchujemy",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-030",
+        "topic_id": "ANA-TRZ",
+        "text": "Zastawkę trójdzielną osłuchujemy:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-463",
+      "topic": "ANA-KON",
+      "text": "Żyła odstrzałkowa (mała odpiszczelowa) uchodzi do",
+      "correct": "e",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-kon-013",
+        "topic_id": "ANA-KON",
+        "text": "Żyła odstrzałkowa uchodzi do:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-464",
+      "topic": "ANA-NAC",
+      "text": "Żyła twarzowa rozpoczyna się jako",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-nac-007",
+        "topic_id": "ANA-NAC",
+        "text": "Żyła twarzowa rozpoczyna się jako:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-465",
+      "topic": "ANA-OBW",
+      "text": "Splot szyjny",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-031",
+        "topic_id": "ANA-OBW",
+        "text": "Splot szyjny:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-466",
+      "topic": "ANA-TRZ",
+      "text": "Wyrostek robaczkowy",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-031",
+        "topic_id": "ANA-TRZ",
+        "text": "Wyrostek robaczkowy:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-467",
+      "topic": "ANA-TRZ",
+      "text": "Żyły jądrowe uchodzą",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-032",
+        "topic_id": "ANA-TRZ",
+        "text": "Żyły jądrowe uchodzą:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-468",
+      "topic": "ANA-CZA",
+      "text": "Ścianę przednią dołu skrzydłowo-podniebiennego budują",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-cza-009",
+        "topic_id": "ANA-CZA",
+        "text": "Ścianę przednią dołu skrzydłowo-podniebiennego budują:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-469",
+      "topic": "ANA-TRZ",
+      "text": "Ściana przednia przedsionka prawego zawiera",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-141",
+        "topic_id": "ANA-TRZ",
+        "text": "Ściana przednia przedsionka prawego zawiera:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-470",
+      "topic": "ANA-NAC",
+      "text": "Tętnica tarczowa dolna odchodzi od",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-nac-017",
+        "topic_id": "ANA-NAC",
+        "text": "Tętnica tarczowa dolna odchodzi od:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-471",
+      "topic": "ANA-KON",
+      "text": "Tętnica główna kciuka jest gałęzią",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-kon-051",
+        "topic_id": "ANA-KON",
+        "text": "Tętnica główna kciuka jest gałęzią:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-472",
+      "topic": "ANA-TUL",
+      "text": "Tętnice piersiowe wewnętrzne są gałęziami",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-103",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnice piersiowe wewnętrzne są gałęziami:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-473",
+      "topic": "ANA-TRZ",
+      "text": "Tętnice płucne",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-104",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnice płucne:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-474",
+      "topic": "ANA-NAC",
+      "text": "Tętnica szczękowa przebiega przez",
+      "correct": "e",
+      "sim": "substring",
+      "match": {
+        "id": "ana-nac-009",
+        "topic_id": "ANA-NAC",
+        "text": "Tętnica szczękowa:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-475",
+      "topic": "ANA-OUN",
+      "text": "Wzgórek nerwu twarzowego",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-oun-057",
+        "topic_id": "ANA-OUN",
+        "text": "Wzgórek nerwu twarzowego:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-476",
+      "topic": "ANA-NAC",
+      "text": "Szczelina przednia mięśni pochyłych zawiera",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-nac-019",
+        "topic_id": "ANA-NAC",
+        "text": "Szczelina przednia mięśni pochyłych zawiera:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-477",
+      "topic": "ANA-TRZ",
+      "text": "Tętnica nadnerczowa górna jest gałęzią",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-040",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnica nadnerczowa górna jest gałęzią:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-478",
+      "topic": "ANA-TRZ",
+      "text": "Żołądek",
+      "correct": "d",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-177",
+        "topic_id": "ANA-TRZ",
+        "text": "Żołądek:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-479",
+      "topic": "ANA-KON",
+      "text": "Mięśnie grupy bocznej przedramienia są unerwione przez",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-obw-019",
+        "topic_id": "ANA-OBW",
+        "text": "Mięśnie grupy bocznej przedramienia są unerwione przez:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-480",
+      "topic": "ANA-TRZ",
+      "text": "We wnęce płuca lewego najwyżej leży",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-053",
+        "topic_id": "ANA-TRZ",
+        "text": "We wnęce płuca lewego najwyżej leży:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-481",
+      "topic": "ANA-TUL",
+      "text": "Gałęzie osierdziowe odchodzą od",
+      "correct": "c",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-160",
+        "topic_id": "ANA-TRZ",
+        "text": "Gałęzie osierdziowe odchodzą od:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-482",
+      "topic": "ANA-KON",
+      "text": "Mięsień trójgłowy ramienia",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-kon-025",
+        "topic_id": "ANA-KON",
+        "text": "Mięsień trójgłowy ramienia:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-483",
+      "topic": "ANA-TRZ",
+      "text": "Powięź nerkowa",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-055",
+        "topic_id": "ANA-TRZ",
+        "text": "Powięź nerkowa:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-484",
+      "topic": "ANA-NER",
+      "text": "Gałęziami nerwu podjęzykowego są",
+      "correct": "d",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-ner-015",
+        "topic_id": "ANA-NER",
+        "text": "Gałęziami n. podjęzykowego są:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-485",
+      "topic": "ANA-OUN",
+      "text": "Ramiona wzgórków dolnych",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-oun-047",
+        "topic_id": "ANA-OUN",
+        "text": "Ramiona wzgórków dolnych:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-486",
+      "topic": "ANA-TRZ",
+      "text": "Tętnica okrężnicza lewa jest gałęzią",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-056",
+        "topic_id": "ANA-TRZ",
+        "text": "Tętnica okrężnicza lewa jest gałęzią:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATSTO-487",
+      "topic": "ANA-NER",
+      "text": "Korzeń przywspółczulny zwoju skrzydłowo-podniebiennego pochodzi z",
+      "correct": "b",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-ner-035",
+        "topic_id": "ANA-NER",
+        "text": "Korzeń przywspółczulny zwoju skrzydłowo-podniebiennego pochodzi z:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATSTO-488",
+      "topic": "ANA-TUL",
+      "text": "Zachyłki żebrowo-śródpiersiowe przednie",
+      "correct": "e",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-214",
+        "topic_id": "ANA-TRZ",
+        "text": "Zachyłki żebrowo-śródpiersiowe przednie:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-493",
+      "topic": "ANA-TRZ",
+      "text": "Do pozostałości krążenia płodowego nie należy:",
+      "correct": "a",
+      "sim": "exact_norm",
+      "match": {
+        "id": "ana-trz-035",
+        "topic_id": "ANA-TRZ",
+        "text": "Do pozostałości krążenia płodowego NIE należy:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATSTO-505",
+      "topic": "ANA-OBW",
+      "text": "Nerw promieniowy odchodzi z:",
+      "correct": "e",
+      "sim": "substring",
+      "match": {
+        "id": "ana-obw-016",
+        "topic_id": "ANA-OBW",
+        "text": "Nerw promieniowy odchodzi:",
+        "correct": "e"
+      }
+    }
+  ],
+  "keyConflict": [
+    {
+      "srccode": "ANATSTO-412",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-tul-019",
+          "correct": "b"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-419",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-trz-088",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-429",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-058",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-431",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-061",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-435",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-ner-039",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-437",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-kon-027",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-446",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-oun-054",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-449",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-095",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-459",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-trz-098",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-469",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-trz-141",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-473",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-104",
+          "correct": "b"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-474",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-nac-009",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-478",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-trz-177",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-481",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-trz-160",
+          "correct": "a"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-488",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-trz-214",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-489",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-tul-008",
+          "correct": "c"
+        },
+        {
+          "id": "ana-tul-031",
+          "correct": "c"
+        },
+        {
+          "id": "ana-tul-039",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-499",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-kon-022",
+          "correct": "d"
+        },
+        {
+          "id": "ana-kon-008",
+          "correct": "c"
+        },
+        {
+          "id": "ana-kon-035",
+          "correct": "c"
+        },
+        {
+          "id": "ana-kon-055",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-502",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-047",
+          "correct": "a"
+        },
+        {
+          "id": "ana-trz-157",
+          "correct": "c"
+        },
+        {
+          "id": "ana-trz-114",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-504",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-kon-031",
+          "correct": "e"
+        }
+      ]
+    }
+  ],
+  "fresh": [
+    {
+      "srccode": "ANATSTO-409",
+      "topic": "ANA-CZA",
+      "text": "Ściana górna jamy bębenkowej leży"
+    },
+    {
+      "srccode": "ANATSTO-411",
+      "topic": "ANA-TRZ",
+      "text": "Brodawka dwunastnicza większa jest ujściem"
+    },
+    {
+      "srccode": "ANATSTO-413",
+      "topic": "ANA-OUN",
+      "text": "Jądro IV nerwu czaszkowego leży"
+    },
+    {
+      "srccode": "ANATSTO-416",
+      "topic": "ANA-NER",
+      "text": "Źródła włókien przywspółczulnych dla przełyku to"
+    },
+    {
+      "srccode": "ANATSTO-417",
+      "topic": "ANA-NER",
+      "text": "Ruchowe komórki nerwu IX leżą w"
+    },
+    {
+      "srccode": "ANATSTO-418",
+      "topic": "ANA-OUN",
+      "text": "Ścianę boczną rogu przedniego komory bocznej ogranicza"
+    },
+    {
+      "srccode": "ANATSTO-430",
+      "topic": "ANA-NAC",
+      "text": "Zawartości trójkąta tętnicy szyjnej nie stanowi"
+    },
+    {
+      "srccode": "ANATSTO-440",
+      "topic": "ANA-TRZ",
+      "text": "Część brzuszna moczowodu"
+    },
+    {
+      "srccode": "ANATSTO-443",
+      "topic": "ANA-NAC",
+      "text": "Ścianę tylną trójkąta tętnicy językowej (Pirogowa) stanowi"
+    },
+    {
+      "srccode": "ANATSTO-445",
+      "topic": "ANA-CZA",
+      "text": "Elementy kości klinowej wchodzą w skład"
+    },
+    {
+      "srccode": "ANATSTO-450",
+      "topic": "ANA-MIE",
+      "text": "Przyczepy początkowe mięśnia skrzydłowego przyśrodkowego znajdują się"
+    },
+    {
+      "srccode": "ANATSTO-456",
+      "topic": "ANA-NER",
+      "text": "Jądro ślinowe górne to"
+    },
+    {
+      "srccode": "ANATSTO-507",
+      "topic": "ANA-NER",
+      "text": "W trójkącie tętnicy szyjnej znajdują się gałęzie nerwów czaszkowych:"
+    }
+  ]
+}

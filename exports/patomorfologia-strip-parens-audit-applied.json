@@ -1,0 +1,2888 @@
+{
+  "subjectId": "stoma-patologia",
+  "scanned": 577,
+  "questionsChanged": 60,
+  "optionsStripped": 113,
+  "changes": [
+    {
+      "id": "pat-kra-038",
+      "topic_id": "PAT-KRA",
+      "before": [
+        {
+          "id": "a",
+          "text": "krwiak uciskający otaczające tkanki"
+        },
+        {
+          "id": "b",
+          "text": "wstrząs hipowolemiczny"
+        },
+        {
+          "id": "c",
+          "text": "ognisko krwotoczne z martwicą tkanki"
+        },
+        {
+          "id": "d",
+          "text": "nasiąkanie krwią (imbibicja) tkanek"
+        },
+        {
+          "id": "e",
+          "text": "późniejsze odkładanie hemosyderyny"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "krwiak uciskający otaczające tkanki"
+        },
+        {
+          "id": "b",
+          "text": "wstrząs hipowolemiczny"
+        },
+        {
+          "id": "c",
+          "text": "ognisko krwotoczne z martwicą tkanki"
+        },
+        {
+          "id": "d",
+          "text": "nasiąkanie krwią tkanek"
+        },
+        {
+          "id": "e",
+          "text": "późniejsze odkładanie hemosyderyny"
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-047",
+      "topic_id": "PAT-KRA",
+      "before": [
+        {
+          "id": "a",
+          "text": "organizacja przez ziarninę"
+        },
+        {
+          "id": "b",
+          "text": "zwapnienie (powstanie kamienia żylnego)"
+        },
+        {
+          "id": "c",
+          "text": "rozmiękczenie i fragmentacja z zatorowością"
+        },
+        {
+          "id": "d",
+          "text": "rekanalizacja"
+        },
+        {
+          "id": "e",
+          "text": "przekształcenie w gruczolaka"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "organizacja przez ziarninę"
+        },
+        {
+          "id": "b",
+          "text": "zwapnienie"
+        },
+        {
+          "id": "c",
+          "text": "rozmiękczenie i fragmentacja z zatorowością"
+        },
+        {
+          "id": "d",
+          "text": "rekanalizacja"
+        },
+        {
+          "id": "e",
+          "text": "przekształcenie w gruczolaka"
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-051",
+      "topic_id": "PAT-KRA",
+      "before": [
+        {
+          "id": "a",
+          "text": "blizna łącznotkankowa wypełniająca ubytek"
+        },
+        {
+          "id": "b",
+          "text": "zwapniały guz"
+        },
+        {
+          "id": "c",
+          "text": "jama poudarowa (torbiel) otoczona glejozą"
+        },
+        {
+          "id": "d",
+          "text": "ropień mózgu"
+        },
+        {
+          "id": "e",
+          "text": "pełna odbudowa neuronów"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "blizna łącznotkankowa wypełniająca ubytek"
+        },
+        {
+          "id": "b",
+          "text": "zwapniały guz"
+        },
+        {
+          "id": "c",
+          "text": "jama poudarowa otoczona glejozą"
+        },
+        {
+          "id": "d",
+          "text": "ropień mózgu"
+        },
+        {
+          "id": "e",
+          "text": "pełna odbudowa neuronów"
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-077",
+      "topic_id": "PAT-KRA-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "rozległe, płaskie podbiegnięcia krwawe (sińce)"
+        },
+        {
+          "id": "b",
+          "text": "drobne, punkcikowate krwawienia śródskórne lub śluzówkowe"
+        },
+        {
+          "id": "c",
+          "text": "nagromadzenie krwi w jamie ciała"
+        },
+        {
+          "id": "d",
+          "text": "ucieczka krwi w pełnym składzie poza obręb całego organizmu"
+        },
+        {
+          "id": "e",
+          "text": "brunatne złogi żelaza w makrofagach"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rozległe, płaskie podbiegnięcia krwawe"
+        },
+        {
+          "id": "b",
+          "text": "drobne, punkcikowate krwawienia śródskórne lub śluzówkowe"
+        },
+        {
+          "id": "c",
+          "text": "nagromadzenie krwi w jamie ciała"
+        },
+        {
+          "id": "d",
+          "text": "ucieczka krwi w pełnym składzie poza obręb całego organizmu"
+        },
+        {
+          "id": "e",
+          "text": "brunatne złogi żelaza w makrofagach"
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-080",
+      "topic_id": "PAT-KRA-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "wcześniej chorobowo zmieniona ściana naczynia lub serca (tętniak, żylak) pęka pod wpływem ciśnienia"
+        },
+        {
+          "id": "b",
+          "text": "dochodzi do mechanicznego przerwania ciągłości powłok ciała"
+        },
+        {
+          "id": "c",
+          "text": "prawidłową ścianę naczynia uszkadza sąsiadujący proces nowotworowy lub wrzodziejący"
+        },
+        {
+          "id": "d",
+          "text": "krew przenika przez naczynia włosowate w warunkach niedotlenienia"
+        },
+        {
+          "id": "e",
+          "text": "materiał zatorowy zamyka światło tętnicy doprowadzającej krew"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "wcześniej chorobowo zmieniona ściana naczynia lub serca pęka pod wpływem ciśnienia"
+        },
+        {
+          "id": "b",
+          "text": "dochodzi do mechanicznego przerwania ciągłości powłok ciała"
+        },
+        {
+          "id": "c",
+          "text": "prawidłową ścianę naczynia uszkadza sąsiadujący proces nowotworowy lub wrzodziejący"
+        },
+        {
+          "id": "d",
+          "text": "krew przenika przez naczynia włosowate w warunkach niedotlenienia"
+        },
+        {
+          "id": "e",
+          "text": "materiał zatorowy zamyka światło tętnicy doprowadzającej krew"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-007",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "czerniak"
+        },
+        {
+          "id": "b",
+          "text": "rogowiak kolczystokomórkowy (keratoacanthoma)"
+        },
+        {
+          "id": "c",
+          "text": "kiła (zmiana pierwotna)"
+        },
+        {
+          "id": "d",
+          "text": "rak podstawnokomórkowy skóry"
+        },
+        {
+          "id": "e",
+          "text": "rak kolczystokomórkowy skóry"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "czerniak"
+        },
+        {
+          "id": "b",
+          "text": "rogowiak kolczystokomórkowy"
+        },
+        {
+          "id": "c",
+          "text": "kiła"
+        },
+        {
+          "id": "d",
+          "text": "rak podstawnokomórkowy skóry"
+        },
+        {
+          "id": "e",
+          "text": "rak kolczystokomórkowy skóry"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-008",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "zawsze masywny krwotok z odbytu w początkowym stadium"
+        },
+        {
+          "id": "b",
+          "text": "wyłącznie objawy ogólne bez zmian rytmu wypróżnień"
+        },
+        {
+          "id": "c",
+          "text": "żółtaczka mechaniczna jako pierwszy objaw"
+        },
+        {
+          "id": "d",
+          "text": "wodobrzusze niezależnie od lokalizacji guza"
+        },
+        {
+          "id": "e",
+          "text": "prawa połowa (początkowa) - niedokrwistość; lewa połowa (końcowa) - zaburzenia defekacji"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "zawsze masywny krwotok z odbytu w początkowym stadium"
+        },
+        {
+          "id": "b",
+          "text": "wyłącznie objawy ogólne bez zmian rytmu wypróżnień"
+        },
+        {
+          "id": "c",
+          "text": "żółtaczka mechaniczna jako pierwszy objaw"
+        },
+        {
+          "id": "d",
+          "text": "wodobrzusze niezależnie od lokalizacji guza"
+        },
+        {
+          "id": "e",
+          "text": "prawa połowa - niedokrwistość; lewa połowa - zaburzenia defekacji"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-009",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "Guz jajnika będący przerzutem gruczolakoraka przewodu pokarmowego (typowo żołądka)"
+        },
+        {
+          "id": "b",
+          "text": "Pierwotny rak surowiczy jajnika"
+        },
+        {
+          "id": "c",
+          "text": "Łagodny potworniak dojrzały jajnika"
+        },
+        {
+          "id": "d",
+          "text": "Włókniak jajnika"
+        },
+        {
+          "id": "e",
+          "text": "Przerzut czerniaka do jajnika"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Guz jajnika będący przerzutem gruczolakoraka przewodu pokarmowego"
+        },
+        {
+          "id": "b",
+          "text": "Pierwotny rak surowiczy jajnika"
+        },
+        {
+          "id": "c",
+          "text": "Łagodny potworniak dojrzały jajnika"
+        },
+        {
+          "id": "d",
+          "text": "Włókniak jajnika"
+        },
+        {
+          "id": "e",
+          "text": "Przerzut czerniaka do jajnika"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-011",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "Nowotwór łagodny nabłonka okrywającego (pokrywającego)"
+        },
+        {
+          "id": "b",
+          "text": "Nowotwór złośliwy nabłonka gruczołowego"
+        },
+        {
+          "id": "c",
+          "text": "Nowotwór złośliwy nabłonka okrywającego"
+        },
+        {
+          "id": "d",
+          "text": "Nowotwór łagodny nabłonka gruczołowego"
+        },
+        {
+          "id": "e",
+          "text": "Nowotwór miejscowo złośliwy nabłonka"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Nowotwór łagodny nabłonka okrywającego"
+        },
+        {
+          "id": "b",
+          "text": "Nowotwór złośliwy nabłonka gruczołowego"
+        },
+        {
+          "id": "c",
+          "text": "Nowotwór złośliwy nabłonka okrywającego"
+        },
+        {
+          "id": "d",
+          "text": "Nowotwór łagodny nabłonka gruczołowego"
+        },
+        {
+          "id": "e",
+          "text": "Nowotwór miejscowo złośliwy nabłonka"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-012",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "Czerniak"
+        },
+        {
+          "id": "b",
+          "text": "Kiła (zmiana pierwotna)"
+        },
+        {
+          "id": "c",
+          "text": "Brodawczak płaskonabłonkowy"
+        },
+        {
+          "id": "d",
+          "text": "Rak podstawnokomórkowy skóry"
+        },
+        {
+          "id": "e",
+          "text": "Naczyniak młodzieńczy"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Czerniak"
+        },
+        {
+          "id": "b",
+          "text": "Kiła"
+        },
+        {
+          "id": "c",
+          "text": "Brodawczak płaskonabłonkowy"
+        },
+        {
+          "id": "d",
+          "text": "Rak podstawnokomórkowy skóry"
+        },
+        {
+          "id": "e",
+          "text": "Naczyniak młodzieńczy"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-038",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "rak płuca"
+        },
+        {
+          "id": "b",
+          "text": "rak stercza (gruczołu krokowego)"
+        },
+        {
+          "id": "c",
+          "text": "rak żołądka"
+        },
+        {
+          "id": "d",
+          "text": "rak jelita grubego"
+        },
+        {
+          "id": "e",
+          "text": "rak pęcherza moczowego"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rak płuca"
+        },
+        {
+          "id": "b",
+          "text": "rak stercza"
+        },
+        {
+          "id": "c",
+          "text": "rak żołądka"
+        },
+        {
+          "id": "d",
+          "text": "rak jelita grubego"
+        },
+        {
+          "id": "e",
+          "text": "rak pęcherza moczowego"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-039",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "brodawczak wewnątrzprzewodowy"
+        },
+        {
+          "id": "b",
+          "text": "gruczolakowłókniak (fibroadenoma)"
+        },
+        {
+          "id": "c",
+          "text": "tłuszczak"
+        },
+        {
+          "id": "d",
+          "text": "rak przewodowy in situ"
+        },
+        {
+          "id": "e",
+          "text": "torbiel prosta"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "brodawczak wewnątrzprzewodowy"
+        },
+        {
+          "id": "b",
+          "text": "gruczolakowłókniak"
+        },
+        {
+          "id": "c",
+          "text": "tłuszczak"
+        },
+        {
+          "id": "d",
+          "text": "rak przewodowy in situ"
+        },
+        {
+          "id": "e",
+          "text": "torbiel prosta"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-040",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "mięsak gładkokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "rak płaskonabłonkowy"
+        },
+        {
+          "id": "c",
+          "text": "rakowiak (guz neuroendokrynny)"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak"
+        },
+        {
+          "id": "e",
+          "text": "gruczolakorak (adenocarcinoma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "mięsak gładkokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "rak płaskonabłonkowy"
+        },
+        {
+          "id": "c",
+          "text": "rakowiak"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak"
+        },
+        {
+          "id": "e",
+          "text": "gruczolakorak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-044",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "w ocenie stopnia zaawansowania klinicznego (staging) bierze się pod uwagę nasilenie martwicy w guzie"
+        },
+        {
+          "id": "b",
+          "text": "staging ocenia kliniczne zaawansowanie nowotworu"
+        },
+        {
+          "id": "c",
+          "text": "skala TNM uwzględnia guz, węzły chłonne i przerzuty odległe"
+        },
+        {
+          "id": "d",
+          "text": "grading ocenia stopień zróżnicowania histologicznego"
+        },
+        {
+          "id": "e",
+          "text": "stopień zaawansowania ma znaczenie rokownicze"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "w ocenie stopnia zaawansowania klinicznego bierze się pod uwagę nasilenie martwicy w guzie"
+        },
+        {
+          "id": "b",
+          "text": "staging ocenia kliniczne zaawansowanie nowotworu"
+        },
+        {
+          "id": "c",
+          "text": "skala TNM uwzględnia guz, węzły chłonne i przerzuty odległe"
+        },
+        {
+          "id": "d",
+          "text": "grading ocenia stopień zróżnicowania histologicznego"
+        },
+        {
+          "id": "e",
+          "text": "stopień zaawansowania ma znaczenie rokownicze"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-045",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "rak płaskonabłonkowy"
+        },
+        {
+          "id": "b",
+          "text": "rakowiak (guz neuroendokrynny)"
+        },
+        {
+          "id": "c",
+          "text": "gruczolakorak (adenocarcinoma)"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak"
+        },
+        {
+          "id": "e",
+          "text": "mięsak gładkokomórkowy"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rak płaskonabłonkowy"
+        },
+        {
+          "id": "b",
+          "text": "rakowiak"
+        },
+        {
+          "id": "c",
+          "text": "gruczolakorak"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak"
+        },
+        {
+          "id": "e",
+          "text": "mięsak gładkokomórkowy"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-047",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "rak drobnokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "rak płaskonabłonkowy centralny"
+        },
+        {
+          "id": "c",
+          "text": "rak oskrzelikowo-pęcherzykowy (gruczolakorak typu lepidic)"
+        },
+        {
+          "id": "d",
+          "text": "rakowiak typowy"
+        },
+        {
+          "id": "e",
+          "text": "międzybłoniak opłucnej"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rak drobnokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "rak płaskonabłonkowy centralny"
+        },
+        {
+          "id": "c",
+          "text": "rak oskrzelikowo-pęcherzykowy"
+        },
+        {
+          "id": "d",
+          "text": "rakowiak typowy"
+        },
+        {
+          "id": "e",
+          "text": "międzybłoniak opłucnej"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-049",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "złagodniały włókniakogruczolak piersi"
+        },
+        {
+          "id": "b",
+          "text": "rak zrazikowy piersi nienaciekający (in situ), nieprzekraczający błony podstawnej"
+        },
+        {
+          "id": "c",
+          "text": "naciekający rak przewodowy"
+        },
+        {
+          "id": "d",
+          "text": "zwykła zmiana włóknisto-torbielowata"
+        },
+        {
+          "id": "e",
+          "text": "tłuszczak piersi"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "złagodniały włókniakogruczolak piersi"
+        },
+        {
+          "id": "b",
+          "text": "rak zrazikowy piersi nienaciekający, nieprzekraczający błony podstawnej"
+        },
+        {
+          "id": "c",
+          "text": "naciekający rak przewodowy"
+        },
+        {
+          "id": "d",
+          "text": "zwykła zmiana włóknisto-torbielowata"
+        },
+        {
+          "id": "e",
+          "text": "tłuszczak piersi"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-050",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "mammografia"
+        },
+        {
+          "id": "b",
+          "text": "USG piersi"
+        },
+        {
+          "id": "c",
+          "text": "biopsja (badanie histopatologiczne)"
+        },
+        {
+          "id": "d",
+          "text": "termografia"
+        },
+        {
+          "id": "e",
+          "text": "badanie palpacyjne"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "mammografia"
+        },
+        {
+          "id": "b",
+          "text": "USG piersi"
+        },
+        {
+          "id": "c",
+          "text": "biopsja"
+        },
+        {
+          "id": "d",
+          "text": "termografia"
+        },
+        {
+          "id": "e",
+          "text": "badanie palpacyjne"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-051",
+      "topic_id": "PAT-NABL",
+      "before": [
+        {
+          "id": "a",
+          "text": "zawsze jest zmianą złośliwą wymagającą natychmiastowej radioterapii"
+        },
+        {
+          "id": "b",
+          "text": "występuje wyłącznie u dzieci"
+        },
+        {
+          "id": "c",
+          "text": "nigdy nie wymaga oceny histologicznej"
+        },
+        {
+          "id": "d",
+          "text": "jest zawsze przerzutem do tarczycy"
+        },
+        {
+          "id": "e",
+          "text": "może być elementem wola guzkowego, gruczolakiem (łagodnym) albo rakiem pęcherzykowym (złośliwym)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "zawsze jest zmianą złośliwą wymagającą natychmiastowej radioterapii"
+        },
+        {
+          "id": "b",
+          "text": "występuje wyłącznie u dzieci"
+        },
+        {
+          "id": "c",
+          "text": "nigdy nie wymaga oceny histologicznej"
+        },
+        {
+          "id": "d",
+          "text": "jest zawsze przerzutem do tarczycy"
+        },
+        {
+          "id": "e",
+          "text": "może być elementem wola guzkowego, gruczolakiem albo rakiem pęcherzykowym"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-059",
+      "topic_id": "PAT-NABL-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "złogi amyloidu otoczone naciekiem zapalnym"
+        },
+        {
+          "id": "b",
+          "text": "koncentryczne zwapnienia w podścielisku guza (ciałka piaszczakowate)"
+        },
+        {
+          "id": "c",
+          "text": "koncentryczne zwijki z mas rogowych w centrum gniazd nabłonkowych"
+        },
+        {
+          "id": "d",
+          "text": "gniazda komórek bazaloidnych z palisadą obwodową"
+        },
+        {
+          "id": "e",
+          "text": "torbielowate przestrzenie wypełnione śluzem"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "złogi amyloidu otoczone naciekiem zapalnym"
+        },
+        {
+          "id": "b",
+          "text": "koncentryczne zwapnienia w podścielisku guza"
+        },
+        {
+          "id": "c",
+          "text": "koncentryczne zwijki z mas rogowych w centrum gniazd nabłonkowych"
+        },
+        {
+          "id": "d",
+          "text": "gniazda komórek bazaloidnych z palisadą obwodową"
+        },
+        {
+          "id": "e",
+          "text": "torbielowate przestrzenie wypełnione śluzem"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-073",
+      "topic_id": "PAT-NABL-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "wielowarstwowego nabłonka przejściowego wyściełającego miedniczkę nerkową i moczowód"
+        },
+        {
+          "id": "b",
+          "text": "nabłonka cewek nerkowych, różnicując się w kierunku kanalików proksymalnych"
+        },
+        {
+          "id": "c",
+          "text": "komórek kłębuszka nerkowego (podocytów)"
+        },
+        {
+          "id": "d",
+          "text": "komórek aparatu przykłębuszkowego"
+        },
+        {
+          "id": "e",
+          "text": "torebki włóknistej nerki"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "wielowarstwowego nabłonka przejściowego wyściełającego miedniczkę nerkową i moczowód"
+        },
+        {
+          "id": "b",
+          "text": "nabłonka cewek nerkowych, różnicując się w kierunku kanalików proksymalnych"
+        },
+        {
+          "id": "c",
+          "text": "komórek kłębuszka nerkowego"
+        },
+        {
+          "id": "d",
+          "text": "komórek aparatu przykłębuszkowego"
+        },
+        {
+          "id": "e",
+          "text": "torebki włóknistej nerki"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-078",
+      "topic_id": "PAT-NABL-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "chromogranina A jako jedyny marker"
+        },
+        {
+          "id": "b",
+          "text": "antygen karcynoembrionalny (CEA)"
+        },
+        {
+          "id": "c",
+          "text": "kalcytonina"
+        },
+        {
+          "id": "d",
+          "text": "fosfataza zasadowa łożyskowa (PLAP) oraz LDH"
+        },
+        {
+          "id": "e",
+          "text": "α-fetoproteina (AFP) podwyższona w 100% przypadków nasieniaka"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "chromogranina A jako jedyny marker"
+        },
+        {
+          "id": "b",
+          "text": "antygen karcynoembrionalny"
+        },
+        {
+          "id": "c",
+          "text": "kalcytonina"
+        },
+        {
+          "id": "d",
+          "text": "fosfataza zasadowa łożyskowa oraz LDH"
+        },
+        {
+          "id": "e",
+          "text": "α-fetoproteina podwyższona w 100% przypadków nasieniaka"
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-083",
+      "topic_id": "PAT-NABL-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "rak rdzeniasty o litym utkaniu z naciekiem limfocytarnym"
+        },
+        {
+          "id": "b",
+          "text": "rak przewodowy (NST, niesklasyfikowany inaczej)"
+        },
+        {
+          "id": "c",
+          "text": "rak zrazikowy"
+        },
+        {
+          "id": "d",
+          "text": "rak cewkowy"
+        },
+        {
+          "id": "e",
+          "text": "rak śluzowy (koloidowy)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rak rdzeniasty o litym utkaniu z naciekiem limfocytarnym"
+        },
+        {
+          "id": "b",
+          "text": "rak przewodowy"
+        },
+        {
+          "id": "c",
+          "text": "rak zrazikowy"
+        },
+        {
+          "id": "d",
+          "text": "rak cewkowy"
+        },
+        {
+          "id": "e",
+          "text": "rak śluzowy"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-004",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "chłoniaki to nowotwory złośliwe układu chłonnego"
+        },
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na nieziarnicze i ziarniczego (ziarnica złośliwa)"
+        },
+        {
+          "id": "c",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "d",
+          "text": "chłoniaki nie są nienowotworowymi zmianami rozrostowymi układu chłonnego"
+        },
+        {
+          "id": "e",
+          "text": "chłoniak ziarniczy to chłoniak Hodgkina"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "chłoniaki to nowotwory złośliwe układu chłonnego"
+        },
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na nieziarnicze i ziarniczego"
+        },
+        {
+          "id": "c",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "d",
+          "text": "chłoniaki nie są nienowotworowymi zmianami rozrostowymi układu chłonnego"
+        },
+        {
+          "id": "e",
+          "text": "chłoniak ziarniczy to chłoniak Hodgkina"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-006",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak (osteosarcoma)"
+        },
+        {
+          "id": "b",
+          "text": "nerwiak zarodkowy (neuroblastoma)"
+        },
+        {
+          "id": "c",
+          "text": "białaczka (ostra białaczka limfoblastyczna)"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak Hodgkina"
+        },
+        {
+          "id": "e",
+          "text": "siatkówczak (retinoblastoma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak"
+        },
+        {
+          "id": "b",
+          "text": "nerwiak zarodkowy"
+        },
+        {
+          "id": "c",
+          "text": "białaczka"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak Hodgkina"
+        },
+        {
+          "id": "e",
+          "text": "siatkówczak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-009",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "Wywodzi się z komórek układu chłonnego (limfocytów)"
+        },
+        {
+          "id": "b",
+          "text": "Jest nowotworem łagodnym"
+        },
+        {
+          "id": "c",
+          "text": "Dzieli się na ziarnicze (Hodgkina) i nieziarnicze"
+        },
+        {
+          "id": "d",
+          "text": "Niektóre postacie wiążą się z zakażeniem wirusem Epsteina-Barr"
+        },
+        {
+          "id": "e",
+          "text": "Może być przyczyną amyloidozy wtórnej (amyloid AL)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Wywodzi się z komórek układu chłonnego"
+        },
+        {
+          "id": "b",
+          "text": "Jest nowotworem łagodnym"
+        },
+        {
+          "id": "c",
+          "text": "Dzieli się na ziarnicze i nieziarnicze"
+        },
+        {
+          "id": "d",
+          "text": "Niektóre postacie wiążą się z zakażeniem wirusem Epsteina-Barr"
+        },
+        {
+          "id": "e",
+          "text": "Może być przyczyną amyloidozy wtórnej"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-010",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "Maziówczak złośliwy (sarcoma synoviale)"
+        },
+        {
+          "id": "b",
+          "text": "Kostniakomięsak (osteosarcoma)"
+        },
+        {
+          "id": "c",
+          "text": "Tłuszczakomięsak (liposarcoma)"
+        },
+        {
+          "id": "d",
+          "text": "Włókniakomięsak (fibrosarcoma)"
+        },
+        {
+          "id": "e",
+          "text": "Włóknisty histiocytoma złośliwy (MFH)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Maziówczak złośliwy"
+        },
+        {
+          "id": "b",
+          "text": "Kostniakomięsak"
+        },
+        {
+          "id": "c",
+          "text": "Tłuszczakomięsak"
+        },
+        {
+          "id": "d",
+          "text": "Włókniakomięsak"
+        },
+        {
+          "id": "e",
+          "text": "Włóknisty histiocytoma złośliwy"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-028",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "jest łagodnym nowotworem germinalnym (zarodkowym), rozwijającym się z komórek trofoblastu"
+        },
+        {
+          "id": "b",
+          "text": "jego rozwój poprzedzony bywa zaśniadem groniastym, poronieniem, prawidłową ciążą i porodem oraz ciążą pozamaciczną"
+        },
+        {
+          "id": "c",
+          "text": "powoduje podwyższenie poziomu beta-HCG"
+        },
+        {
+          "id": "d",
+          "text": "B i C"
+        },
+        {
+          "id": "e",
+          "text": "A, B, C"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "jest łagodnym nowotworem germinalnym, rozwijającym się z komórek trofoblastu"
+        },
+        {
+          "id": "b",
+          "text": "jego rozwój poprzedzony bywa zaśniadem groniastym, poronieniem, prawidłową ciążą i porodem oraz ciążą pozamaciczną"
+        },
+        {
+          "id": "c",
+          "text": "powoduje podwyższenie poziomu beta-HCG"
+        },
+        {
+          "id": "d",
+          "text": "B i C"
+        },
+        {
+          "id": "e",
+          "text": "A, B, C"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-032",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "rak piersi (breast carcinoma)"
+        },
+        {
+          "id": "b",
+          "text": "naczyniak (haemangioma)"
+        },
+        {
+          "id": "c",
+          "text": "mięśniak gładkokomórkowy (leiomyoma)"
+        },
+        {
+          "id": "d",
+          "text": "tłuszczak (lipoma)"
+        },
+        {
+          "id": "e",
+          "text": "brak prawidłowej odpowiedzi"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rak piersi"
+        },
+        {
+          "id": "b",
+          "text": "naczyniak"
+        },
+        {
+          "id": "c",
+          "text": "mięśniak gładkokomórkowy"
+        },
+        {
+          "id": "d",
+          "text": "tłuszczak"
+        },
+        {
+          "id": "e",
+          "text": "brak prawidłowej odpowiedzi"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-033",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "chłoniaki to nowotwory złośliwe układu chłonnego"
+        },
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na chłoniaki nieziarnicze i chłoniaka ziarniczego (ziarnica złośliwa)"
+        },
+        {
+          "id": "c",
+          "text": "chłoniaki nie są zmianami rozrostowymi układu chłonnego o charakterze nienowotworowym"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "e",
+          "text": "chłoniak ziarniczy to chłoniak Hodgkina"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "chłoniaki to nowotwory złośliwe układu chłonnego"
+        },
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na chłoniaki nieziarnicze i chłoniaka ziarniczego"
+        },
+        {
+          "id": "c",
+          "text": "chłoniaki nie są zmianami rozrostowymi układu chłonnego o charakterze nienowotworowym"
+        },
+        {
+          "id": "d",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "e",
+          "text": "chłoniak ziarniczy to chłoniak Hodgkina"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-040",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "wywodzą się z komórek limfoidalnych"
+        },
+        {
+          "id": "b",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "c",
+          "text": "dzielą się na ziarnicze (Hodgkina) i nieziarnicze"
+        },
+        {
+          "id": "d",
+          "text": "mogą zajmować węzły chłonne i lokalizacje pozawęzłowe"
+        },
+        {
+          "id": "e",
+          "text": "są nowotworami złośliwymi"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "wywodzą się z komórek limfoidalnych"
+        },
+        {
+          "id": "b",
+          "text": "chłoniak to nowotwór łagodny układu chłonnego"
+        },
+        {
+          "id": "c",
+          "text": "dzielą się na ziarnicze i nieziarnicze"
+        },
+        {
+          "id": "d",
+          "text": "mogą zajmować węzły chłonne i lokalizacje pozawęzłowe"
+        },
+        {
+          "id": "e",
+          "text": "są nowotworami złośliwymi"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-042",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "mięśniak gładkokomórkowy (leiomyoma)"
+        },
+        {
+          "id": "b",
+          "text": "tłuszczak (lipoma)"
+        },
+        {
+          "id": "c",
+          "text": "naczyniak (haemangioma)"
+        },
+        {
+          "id": "d",
+          "text": "włókniak (fibroma)"
+        },
+        {
+          "id": "e",
+          "text": "nerwiak (neurinoma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "mięśniak gładkokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "tłuszczak"
+        },
+        {
+          "id": "c",
+          "text": "naczyniak"
+        },
+        {
+          "id": "d",
+          "text": "włókniak"
+        },
+        {
+          "id": "e",
+          "text": "nerwiak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-046",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "tłuszczak (lipoma)"
+        },
+        {
+          "id": "b",
+          "text": "włókniakomięsak (fibrosarcoma)"
+        },
+        {
+          "id": "c",
+          "text": "włókniak (fibroma)"
+        },
+        {
+          "id": "d",
+          "text": "kostniak (osteoma)"
+        },
+        {
+          "id": "e",
+          "text": "naczyniak (haemangioma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "tłuszczak"
+        },
+        {
+          "id": "b",
+          "text": "włókniakomięsak"
+        },
+        {
+          "id": "c",
+          "text": "włókniak"
+        },
+        {
+          "id": "d",
+          "text": "kostniak"
+        },
+        {
+          "id": "e",
+          "text": "naczyniak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-047",
+      "topic_id": "PAT-NIEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "mięśniakomięsak prążkowanokomórkowy (rhabdomyosarcoma)"
+        },
+        {
+          "id": "b",
+          "text": "kostniakomięsak (osteosarcoma)"
+        },
+        {
+          "id": "c",
+          "text": "maziówczak złośliwy (synovial sarcoma)"
+        },
+        {
+          "id": "d",
+          "text": "mięsak Ewinga"
+        },
+        {
+          "id": "e",
+          "text": "tłuszczakomięsak (liposarcoma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "mięśniakomięsak prążkowanokomórkowy"
+        },
+        {
+          "id": "b",
+          "text": "kostniakomięsak"
+        },
+        {
+          "id": "c",
+          "text": "maziówczak złośliwy"
+        },
+        {
+          "id": "d",
+          "text": "mięsak Ewinga"
+        },
+        {
+          "id": "e",
+          "text": "tłuszczakomięsak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-063",
+      "topic_id": "PAT-NIEN-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "estrogeny i progesteron"
+        },
+        {
+          "id": "b",
+          "text": "androgeny (testosteron i DHT)"
+        },
+        {
+          "id": "c",
+          "text": "hormony tarczycy"
+        },
+        {
+          "id": "d",
+          "text": "kortyzol i aldosteron"
+        },
+        {
+          "id": "e",
+          "text": "insulinę i glukagon"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "estrogeny i progesteron"
+        },
+        {
+          "id": "b",
+          "text": "androgeny"
+        },
+        {
+          "id": "c",
+          "text": "hormony tarczycy"
+        },
+        {
+          "id": "d",
+          "text": "kortyzol i aldosteron"
+        },
+        {
+          "id": "e",
+          "text": "insulinę i glukagon"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-069",
+      "topic_id": "PAT-NIEN-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak (osteosarcoma)"
+        },
+        {
+          "id": "b",
+          "text": "guzowaty włókniakomięsak skóry (dermatofibrosarcoma protuberans)"
+        },
+        {
+          "id": "c",
+          "text": "tłuszczakomięsak (liposarcoma)"
+        },
+        {
+          "id": "d",
+          "text": "mięśniakomięsak z komórek mięśni poprzecznie prążkowanych (rhabdomyosarcoma)"
+        },
+        {
+          "id": "e",
+          "text": "chrzęstniakomięsak (chondrosarcoma)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak"
+        },
+        {
+          "id": "b",
+          "text": "guzowaty włókniakomięsak skóry"
+        },
+        {
+          "id": "c",
+          "text": "tłuszczakomięsak"
+        },
+        {
+          "id": "d",
+          "text": "mięśniakomięsak z komórek mięśni poprzecznie prążkowanych"
+        },
+        {
+          "id": "e",
+          "text": "chrzęstniakomięsak"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-086",
+      "topic_id": "PAT-NIEN-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "T (80–90% przypadków)"
+        },
+        {
+          "id": "b",
+          "text": "B (80–90% przypadków)"
+        },
+        {
+          "id": "c",
+          "text": "NK (większość przypadków)"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie z makrofagów"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie z komórek tucznych"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "T"
+        },
+        {
+          "id": "b",
+          "text": "B"
+        },
+        {
+          "id": "c",
+          "text": "NK"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie z makrofagów"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie z komórek tucznych"
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-095",
+      "topic_id": "PAT-NIEN-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "ostra białaczka limfoblastyczna (ALL)"
+        },
+        {
+          "id": "b",
+          "text": "ostra białaczka szpikowa (AML)"
+        },
+        {
+          "id": "c",
+          "text": "przewlekła białaczka limfatyczna (CLL)"
+        },
+        {
+          "id": "d",
+          "text": "przewlekła białaczka szpikowa (CML)"
+        },
+        {
+          "id": "e",
+          "text": "białaczka włochatokomórkowa"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "ostra białaczka limfoblastyczna"
+        },
+        {
+          "id": "b",
+          "text": "ostra białaczka szpikowa"
+        },
+        {
+          "id": "c",
+          "text": "przewlekła białaczka limfatyczna"
+        },
+        {
+          "id": "d",
+          "text": "przewlekła białaczka szpikowa"
+        },
+        {
+          "id": "e",
+          "text": "białaczka włochatokomórkowa"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-025",
+      "topic_id": "PAT-POST",
+      "before": [
+        {
+          "id": "a",
+          "text": "martwica skrzepowa"
+        },
+        {
+          "id": "b",
+          "text": "zanik"
+        },
+        {
+          "id": "c",
+          "text": "metaplazja"
+        },
+        {
+          "id": "d",
+          "text": "rozrost (hyperplasia)"
+        },
+        {
+          "id": "e",
+          "text": "dysplazja dużego stopnia"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "martwica skrzepowa"
+        },
+        {
+          "id": "b",
+          "text": "zanik"
+        },
+        {
+          "id": "c",
+          "text": "metaplazja"
+        },
+        {
+          "id": "d",
+          "text": "rozrost"
+        },
+        {
+          "id": "e",
+          "text": "dysplazja dużego stopnia"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-026",
+      "topic_id": "PAT-POST",
+      "before": [
+        {
+          "id": "a",
+          "text": "obrzęk podścieliska"
+        },
+        {
+          "id": "b",
+          "text": "rozrost nabłonka endometrium"
+        },
+        {
+          "id": "c",
+          "text": "zanik mięśniówki"
+        },
+        {
+          "id": "d",
+          "text": "metaplazja płaskonabłonkowa"
+        },
+        {
+          "id": "e",
+          "text": "przerost mięśni gładkich macicy (myometrium)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "obrzęk podścieliska"
+        },
+        {
+          "id": "b",
+          "text": "rozrost nabłonka endometrium"
+        },
+        {
+          "id": "c",
+          "text": "zanik mięśniówki"
+        },
+        {
+          "id": "d",
+          "text": "metaplazja płaskonabłonkowa"
+        },
+        {
+          "id": "e",
+          "text": "przerost mięśni gładkich macicy"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-031",
+      "topic_id": "PAT-POST",
+      "before": [
+        {
+          "id": "a",
+          "text": "rana jest rozległa i zakażona"
+        },
+        {
+          "id": "b",
+          "text": "ubytek tkanki goi się przez ziarninowanie z dużą blizną"
+        },
+        {
+          "id": "c",
+          "text": "dochodzi do rozległej martwicy z wytworzeniem ziarniny"
+        },
+        {
+          "id": "d",
+          "text": "w ranie utrzymuje się przewlekłe ropienie"
+        },
+        {
+          "id": "e",
+          "text": "rana jest kłuta, cięta, czysta (niezakażona), o przylegających brzegach"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rana jest rozległa i zakażona"
+        },
+        {
+          "id": "b",
+          "text": "ubytek tkanki goi się przez ziarninowanie z dużą blizną"
+        },
+        {
+          "id": "c",
+          "text": "dochodzi do rozległej martwicy z wytworzeniem ziarniny"
+        },
+        {
+          "id": "d",
+          "text": "w ranie utrzymuje się przewlekłe ropienie"
+        },
+        {
+          "id": "e",
+          "text": "rana jest kłuta, cięta, czysta, o przylegających brzegach"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-033",
+      "topic_id": "PAT-POST",
+      "before": [
+        {
+          "id": "a",
+          "text": "poniżej 10 mm (<10 mm)"
+        },
+        {
+          "id": "b",
+          "text": "10–20 mm"
+        },
+        {
+          "id": "c",
+          "text": "20–40 mm"
+        },
+        {
+          "id": "d",
+          "text": "powyżej 40 mm"
+        },
+        {
+          "id": "e",
+          "text": "powyżej 100 mm"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "poniżej 10 mm"
+        },
+        {
+          "id": "b",
+          "text": "10–20 mm"
+        },
+        {
+          "id": "c",
+          "text": "20–40 mm"
+        },
+        {
+          "id": "d",
+          "text": "powyżej 40 mm"
+        },
+        {
+          "id": "e",
+          "text": "powyżej 100 mm"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-034",
+      "topic_id": "PAT-POST",
+      "before": [
+        {
+          "id": "a",
+          "text": "tkanka wraca w pełni do stanu wyjściowego (budowy i funkcji)"
+        },
+        {
+          "id": "b",
+          "text": "zniszczona tkanka o małej zdolności odnowy zostaje zastąpiona tkanką łączną (blizną)"
+        },
+        {
+          "id": "c",
+          "text": "dochodzi do nadmiernego zwiększenia liczby komórek narządu"
+        },
+        {
+          "id": "d",
+          "text": "komórki gromadzą tłuszcz w cytoplazmie"
+        },
+        {
+          "id": "e",
+          "text": "pojawia się nowotwór w miejscu ubytku"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "tkanka wraca w pełni do stanu wyjściowego"
+        },
+        {
+          "id": "b",
+          "text": "zniszczona tkanka o małej zdolności odnowy zostaje zastąpiona tkanką łączną"
+        },
+        {
+          "id": "c",
+          "text": "dochodzi do nadmiernego zwiększenia liczby komórek narządu"
+        },
+        {
+          "id": "d",
+          "text": "komórki gromadzą tłuszcz w cytoplazmie"
+        },
+        {
+          "id": "e",
+          "text": "pojawia się nowotwór w miejscu ubytku"
+        }
+      ]
+    },
+    {
+      "id": "pat-post-057",
+      "topic_id": "PAT-POST-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "cytomegalii (CMV)"
+        },
+        {
+          "id": "b",
+          "text": "HPV, najczęściej typami 16 i 18"
+        },
+        {
+          "id": "c",
+          "text": "opryszczki HSV typu 2"
+        },
+        {
+          "id": "d",
+          "text": "HPV, najczęściej typami 6 i 11"
+        },
+        {
+          "id": "e",
+          "text": "Epsteina-Barr (EBV)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "cytomegalii"
+        },
+        {
+          "id": "b",
+          "text": "HPV, najczęściej typami 16 i 18"
+        },
+        {
+          "id": "c",
+          "text": "opryszczki HSV typu 2"
+        },
+        {
+          "id": "d",
+          "text": "HPV, najczęściej typami 6 i 11"
+        },
+        {
+          "id": "e",
+          "text": "Epsteina-Barr"
+        }
+      ]
+    },
+    {
+      "id": "pat-przed-050",
+      "topic_id": "PAT-PRZED-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "znamię barwnikowe dysplastyczne (atypowe)"
+        },
+        {
+          "id": "b",
+          "text": "każde zwykłe znamię barwnikowe skórne"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie znamię barwnikowe brzeżne (junctional)"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie znamię barwnikowe złożone"
+        },
+        {
+          "id": "e",
+          "text": "żadne znamię nie wiąże się z ryzykiem czerniaka"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "znamię barwnikowe dysplastyczne"
+        },
+        {
+          "id": "b",
+          "text": "każde zwykłe znamię barwnikowe skórne"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie znamię barwnikowe brzeżne"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie znamię barwnikowe złożone"
+        },
+        {
+          "id": "e",
+          "text": "żadne znamię nie wiąże się z ryzykiem czerniaka"
+        }
+      ]
+    },
+    {
+      "id": "pat-wst-064",
+      "topic_id": "PAT-WST-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "wielowarstwowy płaski rogowaciejący"
+        },
+        {
+          "id": "b",
+          "text": "przejściowy wielowarstwowy (urotelium)"
+        },
+        {
+          "id": "c",
+          "text": "gruczołowy walcowaty z rąbkiem szczoteczkowym"
+        },
+        {
+          "id": "d",
+          "text": "sześcienny lub płaski"
+        },
+        {
+          "id": "e",
+          "text": "migawkowy wielorzędowy"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "wielowarstwowy płaski rogowaciejący"
+        },
+        {
+          "id": "b",
+          "text": "przejściowy wielowarstwowy"
+        },
+        {
+          "id": "c",
+          "text": "gruczołowy walcowaty z rąbkiem szczoteczkowym"
+        },
+        {
+          "id": "d",
+          "text": "sześcienny lub płaski"
+        },
+        {
+          "id": "e",
+          "text": "migawkowy wielorzędowy"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-010",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "Ropniak (empyema)"
+        },
+        {
+          "id": "b",
+          "text": "Ropień (abscessus)"
+        },
+        {
+          "id": "c",
+          "text": "Ropowica (phlegmone)"
+        },
+        {
+          "id": "d",
+          "text": "Czyrak (furunculus)"
+        },
+        {
+          "id": "e",
+          "text": "Przetoka (fistula)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Ropniak"
+        },
+        {
+          "id": "b",
+          "text": "Ropień"
+        },
+        {
+          "id": "c",
+          "text": "Ropowica"
+        },
+        {
+          "id": "d",
+          "text": "Czyrak"
+        },
+        {
+          "id": "e",
+          "text": "Przetoka"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-016",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "Anemia"
+        },
+        {
+          "id": "b",
+          "text": "Zaczerwienienie (rubor)"
+        },
+        {
+          "id": "c",
+          "text": "Ocieplenie (calor)"
+        },
+        {
+          "id": "d",
+          "text": "Ból (dolor)"
+        },
+        {
+          "id": "e",
+          "text": "Obrzęk (tumor)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "Anemia"
+        },
+        {
+          "id": "b",
+          "text": "Zaczerwienienie"
+        },
+        {
+          "id": "c",
+          "text": "Ocieplenie"
+        },
+        {
+          "id": "d",
+          "text": "Ból"
+        },
+        {
+          "id": "e",
+          "text": "Obrzęk"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-021",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "antykoagulant tocznia"
+        },
+        {
+          "id": "b",
+          "text": "czynnik reumatoidalny (RF)"
+        },
+        {
+          "id": "c",
+          "text": "przeciwciała przeciwko cytrulinowanym antygenom (anty-CCP)"
+        },
+        {
+          "id": "d",
+          "text": "antygen HLA-B27"
+        },
+        {
+          "id": "e",
+          "text": "przeciwciała anty-Jo 1"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "antykoagulant tocznia"
+        },
+        {
+          "id": "b",
+          "text": "czynnik reumatoidalny"
+        },
+        {
+          "id": "c",
+          "text": "przeciwciała przeciwko cytrulinowanym antygenom"
+        },
+        {
+          "id": "d",
+          "text": "antygen HLA-B27"
+        },
+        {
+          "id": "e",
+          "text": "przeciwciała anty-Jo 1"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-029",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "czynnik reumatoidalny (RF)"
+        },
+        {
+          "id": "b",
+          "text": "przeciwciała anty-SS-A i anty-SS-B"
+        },
+        {
+          "id": "c",
+          "text": "przeciwciała typu ANCA"
+        },
+        {
+          "id": "d",
+          "text": "przeciwciała anty-dsDNA"
+        },
+        {
+          "id": "e",
+          "text": "przeciwciała anty-Jo 1"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "czynnik reumatoidalny"
+        },
+        {
+          "id": "b",
+          "text": "przeciwciała anty-SS-A i anty-SS-B"
+        },
+        {
+          "id": "c",
+          "text": "przeciwciała typu ANCA"
+        },
+        {
+          "id": "d",
+          "text": "przeciwciała anty-dsDNA"
+        },
+        {
+          "id": "e",
+          "text": "przeciwciała anty-Jo 1"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-032",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "ropień płuca"
+        },
+        {
+          "id": "b",
+          "text": "serowaciejące zapalenie płuc"
+        },
+        {
+          "id": "c",
+          "text": "płatowe włóknikowe zapalenie płuc"
+        },
+        {
+          "id": "d",
+          "text": "śródmiąższowe zapalenie płuc (tzw. plazmatycznokomórkowe)"
+        },
+        {
+          "id": "e",
+          "text": "zawał krwotoczny płuca"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "ropień płuca"
+        },
+        {
+          "id": "b",
+          "text": "serowaciejące zapalenie płuc"
+        },
+        {
+          "id": "c",
+          "text": "płatowe włóknikowe zapalenie płuc"
+        },
+        {
+          "id": "d",
+          "text": "śródmiąższowe zapalenie płuc"
+        },
+        {
+          "id": "e",
+          "text": "zawał krwotoczny płuca"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-036",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "przewlekłe limfocytarne zapalenie tarczycy o podłożu autoimmunologicznym"
+        },
+        {
+          "id": "b",
+          "text": "nowotwór złośliwy tarczycy z komórek C"
+        },
+        {
+          "id": "c",
+          "text": "ostre ropne zapalenie tarczycy o etiologii bakteryjnej"
+        },
+        {
+          "id": "d",
+          "text": "wole spowodowane wyłącznie niedoborem jodu w diecie"
+        },
+        {
+          "id": "e",
+          "text": "nadczynność tarczycy z wytrzeszczem (choroba Gravesa-Basedowa)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "przewlekłe limfocytarne zapalenie tarczycy o podłożu autoimmunologicznym"
+        },
+        {
+          "id": "b",
+          "text": "nowotwór złośliwy tarczycy z komórek C"
+        },
+        {
+          "id": "c",
+          "text": "ostre ropne zapalenie tarczycy o etiologii bakteryjnej"
+        },
+        {
+          "id": "d",
+          "text": "wole spowodowane wyłącznie niedoborem jodu w diecie"
+        },
+        {
+          "id": "e",
+          "text": "nadczynność tarczycy z wytrzeszczem"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-038",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "rozlane ropne zapalenie tkanki łącznej"
+        },
+        {
+          "id": "b",
+          "text": "ograniczone nagromadzenie ropy w tkance z jej zniszczeniem (ropień)"
+        },
+        {
+          "id": "c",
+          "text": "nagromadzenie ropy w istniejącej jamie ciała lub narządzie jamistym"
+        },
+        {
+          "id": "d",
+          "text": "pęcherz wypełniony surowiczym płynem"
+        },
+        {
+          "id": "e",
+          "text": "martwica skrzepowa z wytworzeniem strupa"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "rozlane ropne zapalenie tkanki łącznej"
+        },
+        {
+          "id": "b",
+          "text": "ograniczone nagromadzenie ropy w tkance z jej zniszczeniem"
+        },
+        {
+          "id": "c",
+          "text": "nagromadzenie ropy w istniejącej jamie ciała lub narządzie jamistym"
+        },
+        {
+          "id": "d",
+          "text": "pęcherz wypełniony surowiczym płynem"
+        },
+        {
+          "id": "e",
+          "text": "martwica skrzepowa z wytworzeniem strupa"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-040",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "płatowego włóknikowego zapalenia"
+        },
+        {
+          "id": "b",
+          "text": "śródmiąższowego plazmatycznokomórkowego zapalenia"
+        },
+        {
+          "id": "c",
+          "text": "ziarniniakowego zapalenia z martwicą serowatą"
+        },
+        {
+          "id": "d",
+          "text": "odoskrzelowego zapalenia płuc (bronchopneumonia)"
+        },
+        {
+          "id": "e",
+          "text": "zachłystowego zapalenia płuc"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "płatowego włóknikowego zapalenia"
+        },
+        {
+          "id": "b",
+          "text": "śródmiąższowego plazmatycznokomórkowego zapalenia"
+        },
+        {
+          "id": "c",
+          "text": "ziarniniakowego zapalenia z martwicą serowatą"
+        },
+        {
+          "id": "d",
+          "text": "odoskrzelowego zapalenia płuc"
+        },
+        {
+          "id": "e",
+          "text": "zachłystowego zapalenia płuc"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-041",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "w gruźlicy obecna jest martwica serowata, w sarkoidozie jej brak (z tendencją do włóknienia)"
+        },
+        {
+          "id": "b",
+          "text": "w gruźlicy brak komórek olbrzymich, w sarkoidozie są liczne"
+        },
+        {
+          "id": "c",
+          "text": "w gruźlicy ziarniniaki są bezkomórkowe, w sarkoidozie bogatokomórkowe"
+        },
+        {
+          "id": "d",
+          "text": "w sarkoidozie zawsze obecne są prątki kwasooporne"
+        },
+        {
+          "id": "e",
+          "text": "w gruźlicy nie występują komórki nabłonkowate"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "w gruźlicy obecna jest martwica serowata, w sarkoidozie jej brak"
+        },
+        {
+          "id": "b",
+          "text": "w gruźlicy brak komórek olbrzymich, w sarkoidozie są liczne"
+        },
+        {
+          "id": "c",
+          "text": "w gruźlicy ziarniniaki są bezkomórkowe, w sarkoidozie bogatokomórkowe"
+        },
+        {
+          "id": "d",
+          "text": "w sarkoidozie zawsze obecne są prątki kwasooporne"
+        },
+        {
+          "id": "e",
+          "text": "w gruźlicy nie występują komórki nabłonkowate"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-042",
+      "topic_id": "PAT-ZAP",
+      "before": [
+        {
+          "id": "a",
+          "text": "wrodzona dwupłatkowa zastawka aortalna"
+        },
+        {
+          "id": "b",
+          "text": "bakteryjne zapalenie wsierdzia"
+        },
+        {
+          "id": "c",
+          "text": "zwyrodnienie śluzakowate zastawki"
+        },
+        {
+          "id": "d",
+          "text": "reumatyczne zapalenie wsierdzia (gorączka reumatyczna)"
+        },
+        {
+          "id": "e",
+          "text": "zawał mięśnia sercowego"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "wrodzona dwupłatkowa zastawka aortalna"
+        },
+        {
+          "id": "b",
+          "text": "bakteryjne zapalenie wsierdzia"
+        },
+        {
+          "id": "c",
+          "text": "zwyrodnienie śluzakowate zastawki"
+        },
+        {
+          "id": "d",
+          "text": "reumatyczne zapalenie wsierdzia"
+        },
+        {
+          "id": "e",
+          "text": "zawał mięśnia sercowego"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-055",
+      "topic_id": "PAT-ZAP-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "obrzęk (tumor)"
+        },
+        {
+          "id": "b",
+          "text": "zaczerwienienie (rubor)"
+        },
+        {
+          "id": "c",
+          "text": "miejscowe ocieplenie skóry (calor)"
+        },
+        {
+          "id": "d",
+          "text": "niedokrwistość (anaemia)"
+        },
+        {
+          "id": "e",
+          "text": "ból (dolor)"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "obrzęk"
+        },
+        {
+          "id": "b",
+          "text": "zaczerwienienie"
+        },
+        {
+          "id": "c",
+          "text": "miejscowe ocieplenie skóry"
+        },
+        {
+          "id": "d",
+          "text": "niedokrwistość"
+        },
+        {
+          "id": "e",
+          "text": "ból"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-056",
+      "topic_id": "PAT-ZAP-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "granulocyt obojętnochłonny, czyli neutrofil"
+        },
+        {
+          "id": "b",
+          "text": "limfocyt"
+        },
+        {
+          "id": "c",
+          "text": "plazmocyt"
+        },
+        {
+          "id": "d",
+          "text": "makrofag"
+        },
+        {
+          "id": "e",
+          "text": "komórka tuczna (mastocyt) bogata w histaminę"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "granulocyt obojętnochłonny, czyli neutrofil"
+        },
+        {
+          "id": "b",
+          "text": "limfocyt"
+        },
+        {
+          "id": "c",
+          "text": "plazmocyt"
+        },
+        {
+          "id": "d",
+          "text": "makrofag"
+        },
+        {
+          "id": "e",
+          "text": "komórka tuczna bogata w histaminę"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-062",
+      "topic_id": "PAT-ZAP-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "niedrożność światła wyrostka, najczęściej przez masy lub kamienie kałowe"
+        },
+        {
+          "id": "b",
+          "text": "reakcja autoimmunologiczna przeciw błonie śluzowej"
+        },
+        {
+          "id": "c",
+          "text": "zakażenie wirusem brodawczaka ludzkiego (HPV)"
+        },
+        {
+          "id": "d",
+          "text": "przewlekły niedobór witaminy C"
+        },
+        {
+          "id": "e",
+          "text": "rozległa metaplazja płaskonabłonkowa nabłonka gruczołowego jelita grubego"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "niedrożność światła wyrostka, najczęściej przez masy lub kamienie kałowe"
+        },
+        {
+          "id": "b",
+          "text": "reakcja autoimmunologiczna przeciw błonie śluzowej"
+        },
+        {
+          "id": "c",
+          "text": "zakażenie wirusem brodawczaka ludzkiego"
+        },
+        {
+          "id": "d",
+          "text": "przewlekły niedobór witaminy C"
+        },
+        {
+          "id": "e",
+          "text": "rozległa metaplazja płaskonabłonkowa nabłonka gruczołowego jelita grubego"
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-089",
+      "topic_id": "PAT-ZAP-GEN",
+      "before": [
+        {
+          "id": "a",
+          "text": "pierwotną"
+        },
+        {
+          "id": "b",
+          "text": "popierwotną (wtórną)"
+        },
+        {
+          "id": "c",
+          "text": "prosówkową"
+        },
+        {
+          "id": "d",
+          "text": "pozapłucną"
+        },
+        {
+          "id": "e",
+          "text": "jamistą"
+        }
+      ],
+      "after": [
+        {
+          "id": "a",
+          "text": "pierwotną"
+        },
+        {
+          "id": "b",
+          "text": "popierwotną"
+        },
+        {
+          "id": "c",
+          "text": "prosówkową"
+        },
+        {
+          "id": "d",
+          "text": "pozapłucną"
+        },
+        {
+          "id": "e",
+          "text": "jamistą"
+        }
+      ]
+    }
+  ]
+}

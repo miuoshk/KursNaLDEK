@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-psy-gen-001",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, empatia w kontakcie z chorym jest definiowana przede wszystkim jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "umiejętność współodczuwania i rozumienia stanu oraz szerszej psychologicznej sytuacji drugiego człowieka"
+      },
+      {
+        "id": "b",
+        "text": "wyłącznie afektywne zarażenie się emocjami pacjenta bez komponentu poznawczego"
+      },
+      {
+        "id": "c",
+        "text": "technika perswazji nakłaniająca pacjenta do zmiany zachowań zdrowotnych"
+      },
+      {
+        "id": "d",
+        "text": "zdolność do obiektywnej, beznamiętnej oceny objawów pacjenta"
+      },
+      {
+        "id": "e",
+        "text": "stała dyspozycja osobowościowa niezależna od relacji z pacjentem"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Prezentacja ujmuje **empatię** jako zdolność współodczuwania i rozumienia stanu (czy szerzej sytuacji psychologicznej) drugiej osoby oraz dostrzegania i interpretowania oznak jej emocji, myśli, motywów i celów. Łączy więc komponent **emocjonalny** i **poznawczy**, a nie samo afektywne zarażenie emocjami bez rozumienia. To **podstawowy czynnik** kształtowania dobrego kontaktu z chorym, zrozumienia i zaspokojenia jego potrzeb **biopsychospołecznych**; chroni też przed powielaniem schematów i rutyną w kontaktach.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-002",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji im wyższe umiejętności empatyczne lekarza, tym:",
+    "options": [
+      {
+        "id": "a",
+        "text": "większy dystans emocjonalny wobec pacjenta i mniejsze ryzyko wypalenia"
+      },
+      {
+        "id": "b",
+        "text": "silniejsza tendencja do powielania utrwalonych schematów w kontakcie"
+      },
+      {
+        "id": "c",
+        "text": "mniejsza precyzja diagnozy, bo emocje zaburzają obiektywizm"
+      },
+      {
+        "id": "d",
+        "text": "właściwszy, lepiej dopasowany rodzaj relacji z pacjentem w sferze werbalnej i niewerbalnej"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie lepsza komunikacja werbalna, bez wpływu na niewerbalną"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Slajd wprost wiąże wyższe **umiejętności empatyczne** z właściwszym, lepiej dopasowanym rodzajem relacji rozwijanej z pacjentem — przejawiającym się zarówno w **komunikacji werbalnej, jak i niewerbalnej**. Empatia dodatkowo **chroni przed powielaniem schematów i rutyną**, więc teza o nasileniu schematów jest jej odwrotnością. Wyższa empatia sprzyja też trafniejszej diagnozie i pełniejszemu kontaktowi, zatem rzekomy spadek precyzji diagnozy przeczy modelowi empatii klinicznej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-003",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W akronimie NURSE opisującym empatyczną reakcję, litera \"N\" (Naming) oznacza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nazywanie i odzwierciedlanie emocji pacjenta (\"Wydaje się pani zmartwiona...\")"
+      },
+      {
+        "id": "b",
+        "text": "zachęcanie pacjenta do rozwinięcia wypowiedzi i eksplorowania obaw"
+      },
+      {
+        "id": "c",
+        "text": "wyrażanie szacunku i uznania dla wysiłku pacjenta"
+      },
+      {
+        "id": "d",
+        "text": "deklarację wsparcia i obecności przy pacjencie w trakcie leczenia"
+      },
+      {
+        "id": "e",
+        "text": "okazywanie zrozumienia trudności sytuacji pacjenta"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "W modelu **NURSE** (Naming, Understanding, Respecting, Supporting, Exploring) **Naming** to nazywanie emocji pacjenta, np. „Wydaje się pani zmartwiona (tym, że)…”, „Zastanawiam się, czy odczuwa pan złość”. Pozostałe litery to: **U**nderstanding (rozumienie trudności), **R**especting (szacunek dla wysiłku), **S**upporting (wsparcie i obecność), **E**xploring (dopytywanie o obawy). Mnemonik: **NURSE** = pielęgniarka, która kolejno nazywa, rozumie, szanuje, wspiera i dopytuje.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-004",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Sformułowanie \"Będę z Panem podczas leczenia, niezależnie od tego, co się stanie\" odpowiada w modelu NURSE komponentowi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Naming"
+      },
+      {
+        "id": "b",
+        "text": "Understanding"
+      },
+      {
+        "id": "c",
+        "text": "Respecting"
+      },
+      {
+        "id": "d",
+        "text": "Supporting"
+      },
+      {
+        "id": "e",
+        "text": "Exploring"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Deklaracja trwania przy pacjencie i pytanie „Proszę powiedzieć, jak mogę pomóc” to **Supporting** (wspieranie) — wyrażenie gotowości pomocy, obecności i partnerstwa w trudnej sytuacji. Należy odróżnić je od **Respecting** (uznanie wysiłku: „To musi wymagać olbrzymiego wysiłku”) oraz **Exploring** (dopytywanie o obawy i emocje). W modelu **NURSE** to litera **S** — klasyczna pułapka mylona z szacunkiem i eksplorowaniem. Marker wsparcia: zapewnienie o obecności i pomocy niezależnie od przebiegu leczenia.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-005",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z Tabelą 1 (komponenty empatii wg Morse i in.), zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego innych osób to komponent:",
+    "options": [
+      {
+        "id": "a",
+        "text": "moralny"
+      },
+      {
+        "id": "b",
+        "text": "poznawczy"
+      },
+      {
+        "id": "c",
+        "text": "behawioralny"
+      },
+      {
+        "id": "d",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "e",
+        "text": "interakcyjny"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Wg **Morse i in. (1992)** komponent **emocjonalny** to zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego/emocji innych (inaczej: empatia „surowa”, naturalna, afektywna). Komponent **moralny** to wewnętrzna altruistyczna siła motywująca do empatii; **poznawczy** — rozpoznawanie i rozumienie uczuć; **behawioralny** — komunikacyjna odpowiedź przekazująca zrozumienie. Klasyczne rozróżnienie czterech komponentów.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-006",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W modelu Morse i in. komponent, który jest \"wewnętrzną altruistyczną siłą motywującą do stosowania empatii w praktyce\", to komponent:",
+    "options": [
+      {
+        "id": "a",
+        "text": "moralny"
+      },
+      {
+        "id": "b",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "c",
+        "text": "poznawczy"
+      },
+      {
+        "id": "d",
+        "text": "behawioralny"
+      },
+      {
+        "id": "e",
+        "text": "afektywny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Komponent **moralny** opisano jako wewnętrzną altruistyczną siłę motywującą do „wprowadzenia empatii w czyn” (inne określenia: moralna predyspozycja, skłonność i dyspozycja empatyczna). To on stanowi sam **motyw** działania empatycznego, a nie samo doświadczanie emocji (komponent emocjonalny) czy komunikacyjna ekspresja zrozumienia (komponent behawioralny). W tabeli przypisany m.in. autorom Hogan 1969 i Buber 1973. Marker komponentu moralnego: altruistyczna motywacja do bycia empatycznym w praktyce.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-007",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Który komponent empatii wg Morse i in. określany jest jako \"umiejętność, której można się nauczyć i jest mierzalna\", bazująca na naturalnych zdolnościach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "b",
+        "text": "moralny"
+      },
+      {
+        "id": "c",
+        "text": "behawioralny"
+      },
+      {
+        "id": "d",
+        "text": "poznawczy"
+      },
+      {
+        "id": "e",
+        "text": "interakcyjny"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W założeniach tabeli komponent **poznawczy** opisano jako tę część empatii, która jest **umiejętnością wyuczalną i mierzalną**, bazującą na naturalnych zdolnościach — terapeuta potrafi zrozumieć doświadczenia pacjenta bardziej obiektywnie niż sam pacjent. To odróżnia go od komponentu **emocjonalnego**, ujmowanego jako naturalny, wrodzony potencjał dojrzewający z wiekiem. Kluczowe rozróżnienie: poznawczy = trenowalny.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-008",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z modelem wpływu empatii klinicznej na skuteczność terapii (Ryc. 2), do skutków empatii po stronie LEKARZA należy m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zmniejszony poziom niepokoju i frustracji"
+      },
+      {
+        "id": "b",
+        "text": "wyższe poczucie kontroli nad chorobą"
+      },
+      {
+        "id": "c",
+        "text": "rzadsze stany depresyjne i lepsze stosowanie się do zaleceń"
+      },
+      {
+        "id": "d",
+        "text": "niższy poziom wypalenia zawodowego i mniejsza presja czasu"
+      },
+      {
+        "id": "e",
+        "text": "poczucie bycia wysłuchanym i docenionym jako jednostka"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W modelu (wg Neumann i in. 2009, Squier 1990) po stronie **lekarza** empatyczna komunikacja daje większe zadowolenie z pracy, **niższy poziom wypalenia zawodowego**, mniejsze prawdopodobieństwo depresji i mniejszą presję czasu. Pozostałe opcje (poczucie kontroli nad chorobą, mniejszy niepokój, rzadsze stany depresyjne pacjenta, bycie wysłuchanym) opisują skutki po stronie **pacjenta** — to klasyczne pomieszanie dwóch kolumn modelu wpływu empatii klinicznej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-009",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji kluczowa różnica między słyszeniem a słuchaniem polega na tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "słyszenie jest bierne, a słuchanie jest procesem aktywnym"
+      },
+      {
+        "id": "b",
+        "text": "słyszenie jest procesem aktywnym, a słuchanie biernym"
+      },
+      {
+        "id": "c",
+        "text": "oba są procesami biernymi, różnią się tylko intencją"
+      },
+      {
+        "id": "d",
+        "text": "słuchanie dotyczy tylko treści, a słyszenie tylko emocji"
+      },
+      {
+        "id": "e",
+        "text": "słyszenie wymaga kontaktu wzrokowego, a słuchanie nie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Slajd akcentuje hasłowo: **„Słyszenie jest bierne, a słuchanie jest procesem aktywnym”**. Słuchanie wymaga wysiłku zrozumienia treści i uczuć, podtrzymywania kontaktu wzrokowego, dopytywania, nieoceniania, niedoradzania oraz wychwytywania powracających tematów i wątków. To fundament aktywnego słuchania — odróżnienie bierne/aktywne jest tu pytaniem rozpoznającym rozumienie podstawowej definicji. Marker: słuchanie jako świadomy, angażujący proces, nie bierny odbiór bodźców akustycznych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-010",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z opisem aktywnego słuchania w prezentacji, zalecany kontakt wzrokowy oraz dystans interpersonalny wynoszą odpowiednio:",
+    "options": [
+      {
+        "id": "a",
+        "text": "40-60% czasu rozmowy oraz 40-120 cm"
+      },
+      {
+        "id": "b",
+        "text": "20-40% czasu rozmowy oraz 10-40 cm"
+      },
+      {
+        "id": "c",
+        "text": "60-80% czasu rozmowy oraz 120-200 cm"
+      },
+      {
+        "id": "d",
+        "text": "100% czasu rozmowy oraz 40-60 cm"
+      },
+      {
+        "id": "e",
+        "text": "40-60% czasu rozmowy oraz 120-360 cm"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Prezentacja podaje konkretne parametry aktywnego słuchania: **kontakt wzrokowy 40-60% czasu rozmowy** oraz **dystans 40-120 cm**. Do tego dochodzą: otwarta postawa ciała, potakiwanie głową i zwroty zachęcające do kontynuowania wypowiedzi (mhm, tak, rozumiem). Te wartości liczbowe to typowy „twardy fakt” egzaminacyjny — pozostałe warianty celowo modyfikują zakresy procentowe i centymetrowe, by sprawdzić zapamiętanie dokładnych przedziałów. Marker: 40-60% kontaktu wzrokowego, 40-120 cm dystansu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-011",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź \"O ile dobrze cię rozumiem, to...\" lub \"Chcesz powiedzieć, że...\" jest przykładem którego narzędzia aktywnego słuchania?",
+    "options": [
+      {
+        "id": "a",
+        "text": "potwierdzenia odbioru informacji"
+      },
+      {
+        "id": "b",
+        "text": "uściślania wypowiedzi"
+      },
+      {
+        "id": "c",
+        "text": "odzwierciedlania uczuć"
+      },
+      {
+        "id": "d",
+        "text": "parafrazowania"
+      },
+      {
+        "id": "e",
+        "text": "zadawania pytań otwartych"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Parafrazowanie** to powtórzenie sensu wypowiedzi własnymi słowami: „O ile dobrze cię rozumiem…”, „Chodzi o to, że…”, „Czyli…”. Należy odróżnić je od **odzwierciedlania uczuć** („Odnoszę wrażenie, że rozmowa wywołuje napięcie”) oraz **uściślania** wypowiedzi („Co ma pani konkretnie na myśli?”). Parafraza dotyczy **treści** poznawczej przekazu, a odzwierciedlenie — **emocji** rozmówcy; to klasyczna para mylonych narzędzi aktywnego słuchania. Marker parafrazy: oddanie sensu treści własnymi słowami.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-012",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź lekarza \"Odnoszę wrażenie, że rozmowa o tym wywołuje w Pani napięcie\" to przykład:",
+    "options": [
+      {
+        "id": "a",
+        "text": "parafrazowania treści"
+      },
+      {
+        "id": "b",
+        "text": "uściślania wypowiedzi"
+      },
+      {
+        "id": "c",
+        "text": "odzwierciedlania uczuć"
+      },
+      {
+        "id": "d",
+        "text": "potwierdzenia odbioru informacji"
+      },
+      {
+        "id": "e",
+        "text": "moralizowania"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Odzwierciedlanie uczuć** polega na nazwaniu emocji dostrzeżonej u rozmówcy („Odnoszę wrażenie, że rozmowa o tym wywołuje napięcie”). Różni się od **parafrazy**, która oddaje treść poznawczą wypowiedzi własnymi słowami, oraz od **uściślania**, które dopytuje o doprecyzowanie. To narzędzie blisko spokrewnione z komponentem **Naming** z modelu NURSE — oba nazywają stan emocjonalny pacjenta. Marker odzwierciedlania: skupienie na emocji rozmówcy, a nie na samej treści jego wypowiedzi.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-013",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z definicją w prezentacji, styl życia to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "charakterystyczna dla jednostek i grup konfiguracja codziennych zachowań w wybranych sferach aktywności życiowej"
+      },
+      {
+        "id": "b",
+        "text": "wyłącznie zespół zachowań zdrowotnych podejmowanych pod nadzorem lekarza"
+      },
+      {
+        "id": "c",
+        "text": "jednorazowa decyzja o zmianie nawyków zdrowotnych"
+      },
+      {
+        "id": "d",
+        "text": "wrodzony, niezmienny wzorzec reagowania na chorobę"
+      },
+      {
+        "id": "e",
+        "text": "ogół postaw politycznych i ekonomicznych jednostki"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Definicja (za Kasperek 1999, Jawłowska 1978, Siciński 1976): styl życia to **charakterystyczna dla jednostek i grup konfiguracja codziennych zachowań** w wybranych sferach (odżywianie, używki, aktywność fizyczna, sen, profilaktyka, kontakty interpersonalne). Cechą **immanentną** są zachowania podejmowane z pewną **regularnością**. To nie jednorazowa decyzja ani wrodzony wzorzec, lecz stała tendencja w wyborze określonych wartości, czynności i przedmiotów charakteryzująca daną osobę lub grupę.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-014",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Postawa prozdrowotna w prezentacji składa się z trzech komponentów. Komponent odnoszący się do poziomu wiedzy na temat zdrowia i zdrowego stylu życia to komponent:",
+    "options": [
+      {
+        "id": "a",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "b",
+        "text": "behawioralny"
+      },
+      {
+        "id": "c",
+        "text": "poznawczy"
+      },
+      {
+        "id": "d",
+        "text": "motywacyjny"
+      },
+      {
+        "id": "e",
+        "text": "somatyczny"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Postawa prozdrowotna obejmuje komponent **poznawczy** (poziom wiedzy o zdrowiu i zachowaniach zdrowotnych), **emocjonalny** (stosunek, zaangażowanie i motywacja do zdobywania informacji oraz działań) i **behawioralny** (zespół codziennych zachowań — pro- lub antyzdrowotnych). Trójpodział wiedza-emocje-zachowanie to klasyczna struktura postawy; tu pytanie sprawdza przypisanie „wiedzy” do komponentu poznawczego.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-015",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Transteoretyczny Model Zmiany, opisany w prezentacji, został opracowany przez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Jamesa Prochaskę i Carla DiClemente"
+      },
+      {
+        "id": "b",
+        "text": "Williama Millera i Stephena Rollnicka"
+      },
+      {
+        "id": "c",
+        "text": "Richarda Lazarusa i Susan Folkman"
+      },
+      {
+        "id": "d",
+        "text": "Christinę Maslach i Ayalę Pines"
+      },
+      {
+        "id": "e",
+        "text": "Marshalla Rosenberga i Thomasa Gordona"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Transteoretyczny Model Zmiany (TTM)** opracowali **James O. Prochaska i Carlo C. DiClemente** w latach 80. XX wieku, zakładając, że zmiana zachowania to proces przez różne etapy, podkreślający znaczenie motywacji i gotowości. Dystraktory to autorzy innych koncepcji z prezentacji: Miller/Rollnick (dialog motywujący), Lazarus/Folkman (stres), Maslach (wypalenie) — klasyczne przypisywanie teorii do autora.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-016",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Pacjent mówi: \"Palenie jest moim najlepszym przyjacielem, całe życie tak palę, to nie może być przyczyną\". Który etap Transteoretycznego Modelu Zmiany to ilustruje?",
+    "options": [
+      {
+        "id": "a",
+        "text": "kontemplacja"
+      },
+      {
+        "id": "b",
+        "text": "przygotowanie"
+      },
+      {
+        "id": "c",
+        "text": "prekontemplacja"
+      },
+      {
+        "id": "d",
+        "text": "działanie"
+      },
+      {
+        "id": "e",
+        "text": "podtrzymanie"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Silne stwierdzenia **antyzmianowe** („palenie jest moim przyjacielem”, „to nie może być przyczyną”) to cecha **prekontemplacji** — osoba nie jest świadoma problemu lub nie ma gotowości do działania i broni dotychczasowego zachowania. Należy odróżnić ją od **kontemplacji**, w której pacjent jest ambiwalentny (podaje argumenty zarówno za, jak i przeciw zmianie). Brak ambiwalencji połączony z obroną status quo wskazuje na prekontemplację (Etap I). Marker: brak dostrzegania problemu, obrona obecnego zachowania.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-017",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź \"Uwielbiam chodzić do baru ze znajomymi, mimo że naprawdę boli mnie wtedy gardło. Tęsknię za śpiewaniem\" najlepiej ilustruje etap:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kontemplacji"
+      },
+      {
+        "id": "b",
+        "text": "prekontemplacji"
+      },
+      {
+        "id": "c",
+        "text": "przygotowania"
+      },
+      {
+        "id": "d",
+        "text": "działania"
+      },
+      {
+        "id": "e",
+        "text": "podtrzymania"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Kontemplacja** charakteryzuje się **ambiwalencją** — pacjent wyraża opinie zarówno za, jak i przeciw zmianie („uwielbiam… mimo że boli”). To odróżnia ją od **prekontemplacji** (brak dostrzegania problemu, obrona status quo) i **przygotowania** (pojawia się już zobowiązanie: „chcę nad tym popracować”). Sygnałem kontemplacji jest współwystępowanie korzyści i kosztów obecnego zachowania w jednej wypowiedzi. Marker: dostrzeżenie problemu, ale wciąż obecna niepewność i wahanie wobec zmiany.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-018",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Ustne deklaracje typu \"Chcę nad tym popracować\" lub \"Muszę to zrobić teraz\" wskazują w TTM na fazę:",
+    "options": [
+      {
+        "id": "a",
+        "text": "prekontemplacji"
+      },
+      {
+        "id": "b",
+        "text": "kontemplacji"
+      },
+      {
+        "id": "c",
+        "text": "przygotowania"
+      },
+      {
+        "id": "d",
+        "text": "podtrzymania"
+      },
+      {
+        "id": "e",
+        "text": "nawrotu"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W fazie **przygotowania** pojawia się **zobowiązanie do zmiany** — ustne oświadczenia o zobowiązaniu („Chcę nad tym popracować”, „Muszę to zrobić teraz”, „cieszę się na naukę lepszej techniki”). Odróżnia ją to od **kontemplacji** (wciąż ambiwalencja, bez zobowiązania) oraz **działania** (już realne wdrażanie zmiany w życie). Kluczowy marker przygotowania: wyraźna deklaracja zobowiązania do zmiany, ale jeszcze przed podjęciem samego działania — to etap planowania i gotowości.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-019",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wielopoziomowa definicja dialogu motywującego (Miller, Rollnick) jako \"skoncentrowany na osobie sposób pomagania w odniesieniu do powszechnego problemu ambiwalencji wobec zmiany\" to definicja:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dla praktyka pragmatyka"
+      },
+      {
+        "id": "b",
+        "text": "dla laika"
+      },
+      {
+        "id": "c",
+        "text": "techniczna"
+      },
+      {
+        "id": "d",
+        "text": "filozoficzna"
+      },
+      {
+        "id": "e",
+        "text": "neurobiologiczna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "W trójpoziomowej definicji DM (Miller, Rollnick 2014): definicja **dla laika** akcentuje współpracujący styl umacniający motywację; definicja **dla praktyka pragmatyka** (\"po co stosować?\") to skoncentrowany na osobie sposób pomagania wobec **ambiwalencji wobec zmiany**; definicja **techniczna** (\"jak działa?\") podkreśla język zmiany. Pytanie sprawdza rozróżnienie trzech poziomów po słowie-kluczu „ambiwalencja”.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-020",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją dialog motywujący stworzono m.in. przy wykorzystaniu humanistycznego podejścia, którego autorem jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Carl Rogers"
+      },
+      {
+        "id": "b",
+        "text": "Marshall Rosenberg"
+      },
+      {
+        "id": "c",
+        "text": "Thomas Gordon"
+      },
+      {
+        "id": "d",
+        "text": "Hans Selye"
+      },
+      {
+        "id": "e",
+        "text": "Aaron Antonovsky"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "DM stworzono przy wykorzystaniu **humanistycznego podejścia Carla Rogersa** (partnerskie traktowanie klienta, atmosfera empatii, **bezwarunkowy szacunek** niezależnie od doświadczenia osoby), transteoretycznego modelu Prochaski i DiClemente oraz wieloletnich badań (Match Project 1992). Rogers jest też przywoływany w filozofii DM przy akceptacji. Klasyczne przypisanie „bezwarunkowej akceptacji” do Rogersa.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-021",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W filozofii dialogu motywującego zasada \"PARTNERSTWO\" (partnership) oznacza przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "równą relację opartą na współpracy, raczej odkrywanie niż upominanie, oraz unikanie pułapki bycia ekspertem"
+      },
+      {
+        "id": "b",
+        "text": "skupienie się na deficytach i brakach klienta, aby go \"naprawić\""
+      },
+      {
+        "id": "c",
+        "text": "całkowitą akceptację osoby przy jednoczesnym poparciu każdego jej zachowania"
+      },
+      {
+        "id": "d",
+        "text": "aktywne działanie dla dobra klienta i okazywanie troski"
+      },
+      {
+        "id": "e",
+        "text": "konfrontowanie klienta z konsekwencjami jego zachowań"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Partnerstwo** w filozofii DM to równa relacja oparta na współpracy: odkrywanie i badanie zamiast upominania, zainteresowanie i wsparcie zamiast perswazji i sporu oraz **unikanie pułapki bycia ekspertem**. Należy odróżnić je od **akceptacji** (uznanie wartości osoby, lecz nie poparcie każdego zachowania), **współczucia** (aktywne działanie dla dobra) i **wywoływania** (odkrywanie zasobów i mocnych stron, a nie skupianie się na deficytach, by „naprawić” klienta).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-022",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Element filozofii DM polegający na \"odkrywaniu zasobów i mocnych stron, zamiast skupienia na deficytach i brakach, aby naprawić klienta\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "partnerstwo"
+      },
+      {
+        "id": "b",
+        "text": "akceptacja"
+      },
+      {
+        "id": "c",
+        "text": "współczucie"
+      },
+      {
+        "id": "d",
+        "text": "wywoływanie (evocation)"
+      },
+      {
+        "id": "e",
+        "text": "ukierunkowywanie"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Wywoływanie (evocation)** w filozofii DM to odkrywanie **zasobów i mocnych stron** klienta zamiast koncentracji na deficytach i \"naprawianiu\" go. Zakłada, że motywacja i rozwiązania tkwią w samym kliencie. Należy odróżnić od **wywoływania jako procesu** DM (jednego z czterech procesów) — tu chodzi o zasadę filozoficzną. Wspólny rdzeń: czerpanie z wnętrza klienta, nie wkładanie z zewnątrz.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-023",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W filozofii DM akceptacja (acceptance) rozumiana jest, za Rogersem, jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wspieranie autonomii, uznanie bezwzględnej wartości osoby, zrozumienie i dowartościowanie"
+      },
+      {
+        "id": "b",
+        "text": "bezwarunkowe poparcie dla wszystkich zachowań klienta"
+      },
+      {
+        "id": "c",
+        "text": "aktywne działanie dla dobra klienta i odpowiedź na jego potrzeby"
+      },
+      {
+        "id": "d",
+        "text": "odkrywanie mocnych stron zamiast deficytów"
+      },
+      {
+        "id": "e",
+        "text": "równa relacja oparta na współpracy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Akceptacja** w DM (za Rogersem) to wspieranie **autonomii**, uznanie **bezwzględnej wartości osoby**, zrozumienie i dowartościowanie — co prezentacja wprost odróżnia od poparcia dla zachowania (bezwarunkowe poparcie każdego czynu to klasyczna pułapka). Działanie dla dobra klienta opisuje **współczucie**, odkrywanie mocnych stron — **wywoływanie**, a równa relacja oparta na współpracy — **partnerstwo**. Akceptacja osoby nie jest tożsama z akceptacją każdego jej czynu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-024",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród czterech procesów dialogu motywującego proces polegający na \"tworzeniu atmosfery współpracy i okazywaniu szacunku i zaufania, w którym lekarz jest partnerem, nie przeciwnikiem\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "angażowanie"
+      },
+      {
+        "id": "b",
+        "text": "ukierunkowywanie"
+      },
+      {
+        "id": "c",
+        "text": "wywoływanie"
+      },
+      {
+        "id": "d",
+        "text": "planowanie"
+      },
+      {
+        "id": "e",
+        "text": "parafrazowanie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Angażowanie** to pierwszy z czterech procesów DM: tworzenie atmosfery współpracy wzmacniającej gotowość klienta, okazywanie szacunku i zaufania, odwoływanie się do systemu wartości pacjenta oraz bycie partnerem, a nie przeciwnikiem. Kolejność procesów to: **angażowanie → ukierunkowywanie → wywoływanie → planowanie**. To proces budujący relację terapeutyczną, poprzedzający ustalanie kierunku zmiany. Marker angażowania: budowanie zaufania i partnerstwa na początku kontaktu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-025",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Który z czterech procesów DM opisano jako \"ciągły proces poszukiwania i podtrzymywania kierunku\", w którym to pacjent decyduje, czy i jak dąży do zmiany?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ukierunkowywanie"
+      },
+      {
+        "id": "b",
+        "text": "angażowanie"
+      },
+      {
+        "id": "c",
+        "text": "wywoływanie"
+      },
+      {
+        "id": "d",
+        "text": "planowanie"
+      },
+      {
+        "id": "e",
+        "text": "podtrzymanie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Ukierunkowywanie** to ciągły proces poszukiwania i podtrzymywania kierunku, w którym **to pacjent decyduje**, czy i jak dąży do zmiany — nie można mu tego prawa odebrać; celem nie zawsze jest udzielenie porady, lecz wspieranie procesu zmiany. Należy odróżnić je od **wywoływania** (wzmacnianie wewnętrznej motywacji) i **planowania** (konkretne działanie i krok). Marker ukierunkowywania: utrzymanie wspólnie ustalonego kierunku przy poszanowaniu autonomii pacjenta.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

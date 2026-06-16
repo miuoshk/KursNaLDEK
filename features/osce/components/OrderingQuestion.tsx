@@ -16,6 +16,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   useCallback,
   useEffect,
@@ -70,6 +71,8 @@ function positionStatuses(
 }
 
 export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestionProps) {
+  const t = useTranslations("osce");
+  const tCommon = useTranslations("common");
   const dndDomId = useId();
   const onAnswerRef = useRef(onAnswer);
   useEffect(() => {
@@ -169,7 +172,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
   const correctPlace = (optionId: string) => question.correct_order.indexOf(optionId) + 1;
 
   const list = (
-    <ul className="flex w-full max-w-2xl flex-col items-center gap-3" aria-label="Kolejność elementów">
+    <ul className="flex w-full max-w-2xl flex-col items-center gap-3" aria-label={t("orderingListAria")}>
       {order.map((id, index) => {
         const opt = optionsById.get(id);
         if (!opt) return null;
@@ -246,7 +249,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
               onClick={handleCheck}
               className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
             >
-              Sprawdź
+              {tCommon("check")}
             </button>
           </div>
           <QuestionFooterActions questionId={question.id} questionText={question.text} />
@@ -263,7 +266,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="mt-8 rounded-card border border-white/[0.08] bg-card p-5"
           >
-            <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienie</p>
+            <p className="font-heading text-heading-sm text-brand-gold">{tCommon("explanation")}</p>
             <div className="mt-3">
               <FormattedExplanation text={question.explanation} />
             </div>
@@ -282,7 +285,7 @@ export function OrderingQuestion({ question, onAnswer, onNext }: OrderingQuestio
             onClick={onNext}
             className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Następne pytanie
+            {t("nextQuestion")}
           </button>
         </div>
       ) : null}

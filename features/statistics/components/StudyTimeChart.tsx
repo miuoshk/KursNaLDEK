@@ -1,7 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
-import { pl } from "date-fns/locale";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Bar,
   BarChart,
@@ -14,13 +14,18 @@ import {
 } from "recharts";
 import { statAxisTick, statTooltipProps } from "@/features/statistics/lib/chartTheme";
 import type { StatisticsPayload } from "@/features/statistics/types";
+import type { AppLocale } from "@/i18n/config";
+import { getDateFnsLocale } from "@/lib/i18n/dateFnsLocale";
 
 export function StudyTimeChart({ data }: { data: StatisticsPayload }) {
+  const t = useTranslations("statistics");
+  const locale = useLocale() as AppLocale;
+  const dateLocale = getDateFnsLocale(locale);
   const today = format(new Date(), "yyyy-MM-dd");
   const chartData = data.studyTimePerDay.map((d) => ({
     ...d,
     hours: d.minutes / 60,
-    label: format(parseISO(d.date), "EEE", { locale: pl }),
+    label: format(parseISO(d.date), "EEE", { locale: dateLocale }),
     isToday: d.date === today,
   }));
 
@@ -36,11 +41,11 @@ export function StudyTimeChart({ data }: { data: StatisticsPayload }) {
             tick={statAxisTick}
             tickLine={false}
             axisLine={false}
-            tickFormatter={(v) => `${v}h`}
+            tickFormatter={(v) => t("studyTime.hoursFormat", { value: v })}
           />
           <Tooltip
             {...statTooltipProps}
-            formatter={(v) => [`${Number(v ?? 0).toFixed(2)} h`, "Czas"]}
+            formatter={(v) => [`${Number(v ?? 0).toFixed(2)} h`, t("studyTime.tooltipLabel")]}
           />
           <Bar dataKey="hours" radius={[4, 4, 0, 0]}>
             {chartData.map((entry) => (

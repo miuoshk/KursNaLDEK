@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type {
   ConversionDrillQuestionItem,
   ConversionDrillRoundResult,
@@ -18,6 +19,7 @@ export function ConversionDrillSummaryPanel({
   questions,
   onContinue,
 }: ConversionDrillSummaryPanelProps) {
+  const t = useTranslations("osce");
   const list = results;
   const correct = list.filter((x) => x.isCorrect).length;
   const times = list.map((x) => x.elapsedMs);
@@ -42,20 +44,20 @@ export function ConversionDrillSummaryPanel({
       transition={{ duration: 0.25, ease: "easeOut" }}
       className="mx-auto w-full max-w-lg rounded-card border border-brand-gold/35 bg-card p-6"
     >
-      <h2 className="font-heading text-heading-lg text-brand-gold">Koniec serii</h2>
+      <h2 className="font-heading text-heading-lg text-brand-gold">{t("drillSeriesEnd")}</h2>
       <dl className="mt-6 space-y-4 font-body text-body-md text-secondary">
         <div className="flex justify-between gap-4">
-          <dt>Wynik</dt>
+          <dt>{t("drillScore")}</dt>
           <dd className="font-body text-primary">
             {correct} / {list.length}
           </dd>
         </div>
         <div className="flex justify-between gap-4">
-          <dt>Średni czas odpowiedzi</dt>
+          <dt>{t("drillAvgTime")}</dt>
           <dd className="font-body text-primary">{averageMs} ms</dd>
         </div>
         <div className="flex flex-col gap-1">
-          <dt>Najwolniejsze pytanie</dt>
+          <dt>{t("drillSlowest")}</dt>
           <dd className="text-left font-body text-body-sm leading-snug text-primary">
             {slowest ? (
               <>
@@ -75,7 +77,7 @@ export function ConversionDrillSummaryPanel({
             onClick={onContinue}
             className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Następne pytanie
+            {t("nextQuestion")}
           </button>
         </div>
       ) : null}

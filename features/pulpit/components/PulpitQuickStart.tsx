@@ -1,18 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { cn } from "@/lib/utils";
-import { formatQuestionsCount } from "@/lib/pluralizePolish";
 
 export function PulpitQuickStart({ data }: { data: PulpitData }) {
+  const t = useTranslations("pulpit");
+  const tCommon = useTranslations("common");
   const hasDue = data.dueReviews > 0;
   const hasHistory = !!data.lastSubjectId && !!data.lastSubjectName;
 
   return (
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">
-        Rozpocznij naukę
+        {t("startLearning")}
       </h2>
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         <ReviewCard
@@ -20,12 +24,15 @@ export function PulpitQuickStart({ data }: { data: PulpitData }) {
           dueSubjects={data.dueSubjects}
           hasDue={hasDue}
           sessionCount={data.preferredSessionCount}
+          t={t}
+          tCommon={tCommon}
         />
         <ContinueCard
           hasHistory={hasHistory}
           lastSubjectId={data.lastSubjectId}
           lastSubjectName={data.lastSubjectName}
           lastSubjectMasteryPct={data.lastSubjectMasteryPct}
+          t={t}
         />
       </div>
     </section>
@@ -37,11 +44,15 @@ function ReviewCard({
   dueSubjects,
   hasDue,
   sessionCount,
+  t,
+  tCommon,
 }: {
   dueReviews: number;
   dueSubjects: PulpitData["dueSubjects"];
   hasDue: boolean;
   sessionCount: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+  tCommon: ReturnType<typeof useTranslations<"common">>;
 }) {
   const reviewCount = Math.min(sessionCount, dueReviews);
   const allDueHref = buildSessionStartHref({
@@ -62,24 +73,24 @@ function ReviewCard({
       {hasDue ? (
         <>
           <p className="font-heading text-lg font-bold text-primary">
-            Powtórki na dziś
+            {t("reviewsToday")}
           </p>
           <p className="mt-3 font-heading text-3xl font-bold text-brand-gold">
-            {formatQuestionsCount(dueReviews)}
+            {tCommon("questionsCount", { count: dueReviews })}
           </p>
           <p className="mt-2 font-body text-sm text-secondary">
-            Tylko zaplanowane powtórki — bez losowych nowych pytań
+            {t("reviewsTodayHint")}
           </p>
           <Link
             href={allDueHref}
             className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-brand-gold px-6 py-3 font-body font-semibold text-background transition-all duration-200 ease-out hover:brightness-110"
           >
-            Wszystkie powtórki ({reviewCount})
+            {t("allReviews", { count: reviewCount })}
           </Link>
           {dueSubjects.length > 0 ? (
             <div className="mt-4 border-t border-border pt-4">
               <p className="font-body text-xs uppercase tracking-widest text-muted">
-                Według przedmiotu
+                {t("bySubject")}
               </p>
               <ul className="mt-2 space-y-1">
                 {dueSubjects.map((subject) => {
@@ -111,14 +122,14 @@ function ReviewCard({
       ) : (
         <>
           <p className="font-heading text-lg font-bold text-primary">
-            Powtórki
+            {t("reviews")}
           </p>
           <div className="mt-4 flex items-center gap-2">
             <CheckCircle className="size-5 text-secondary" aria-hidden />
-            <p className="font-body text-lg text-primary">Jesteś na bieżąco!</p>
+            <p className="font-body text-lg text-primary">{t("reviewsCaughtUp")}</p>
           </div>
           <p className="mt-2 font-body text-sm text-secondary">
-            Następna powtórka pojawi się po kolejnych sesjach
+            {t("nextReviewHint")}
           </p>
         </>
       )}
@@ -131,18 +142,20 @@ function ContinueCard({
   lastSubjectId,
   lastSubjectName,
   lastSubjectMasteryPct,
+  t,
 }: {
   hasHistory: boolean;
   lastSubjectId: string | null;
   lastSubjectName: string | null;
   lastSubjectMasteryPct: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
 }) {
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6">
       {hasHistory ? (
         <>
           <p className="font-heading text-lg font-bold text-primary">
-            Kontynuuj
+            {t("continue")}
           </p>
           <p className="mt-3 font-heading text-xl text-primary">
             {lastSubjectName}
@@ -154,28 +167,28 @@ function ContinueCard({
             />
           </div>
           <p className="mt-2 font-body text-sm text-secondary">
-            {lastSubjectMasteryPct}% opanowania
+            {t("masteryPercent", { percent: lastSubjectMasteryPct })}
           </p>
           <Link
             href={`/przedmioty/${lastSubjectId}`}
             className="mt-auto inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 pt-6 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
           >
-            Rozpocznij sesję
+            {t("startSession")}
           </Link>
         </>
       ) : (
         <>
           <p className="font-heading text-lg font-bold text-primary">
-            Kontynuuj
+            {t("continue")}
           </p>
           <p className="mt-3 font-body text-sm text-secondary">
-            Wybierz przedmiot i zacznij swoją pierwszą sesję!
+            {t("chooseSubjectHint")}
           </p>
           <Link
             href="/przedmioty"
             className="mt-auto inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 pt-6 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
           >
-            Przeglądaj przedmioty
+            {t("browseSubjects")}
           </Link>
         </>
       )}

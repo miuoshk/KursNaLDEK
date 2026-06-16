@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { AccountSection } from "@/features/settings/components/AccountSection";
 import { AchievementsBadgesPreview } from "@/features/settings/components/AchievementsBadgesPreview";
 import { ExamDateSection } from "@/features/settings/components/ExamDateSection";
+import { LanguageSection } from "@/features/settings/components/LanguageSection";
 import { NotificationsSection } from "@/features/settings/components/NotificationsSection";
 import { ProfileSection } from "@/features/settings/components/ProfileSection";
 import { SettingsBreadcrumb } from "@/features/settings/components/SettingsBreadcrumb";
@@ -13,6 +15,7 @@ import { LegalFooterLinks } from "@/features/legal/components/LegalFooterLinks";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function UstawieniaPage() {
+  const t = await getTranslations("settings");
   const supabase = await createClient();
   const {
     data: { user },
@@ -30,12 +33,11 @@ export default async function UstawieniaPage() {
       <SettingsBreadcrumb />
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-          Ustawienia
+          {t("page.title")}
         </h1>
-        <p className="mt-1 font-body text-sm text-secondary">
-          Zarządzaj profilem, planem nauki i kontem.
-        </p>
+        <p className="mt-1 font-body text-sm text-secondary">{t("page.subtitle")}</p>
       </header>
+      <LanguageSection />
       <ProfileSection profile={profile} email={resolvedEmail} />
       <ExamDateSection examDate={profile.exam_date} />
       <SubscriptionSection profile={profile} />

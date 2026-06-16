@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   Area,
   AreaChart,
@@ -13,6 +14,7 @@ import { statAxisTick, statTooltipProps } from "@/features/statistics/lib/chartT
 import type { StatisticsPayload } from "@/features/statistics/types";
 
 export function AccuracyTrendChart({ data }: { data: StatisticsPayload }) {
+  const t = useTranslations("statistics");
   const chartData = data.accuracyTrend.map((d) => ({
     ...d,
     pct: Math.round(d.accuracy * 100),
@@ -38,7 +40,7 @@ export function AccuracyTrendChart({ data }: { data: StatisticsPayload }) {
           />
           <Tooltip
             {...statTooltipProps}
-            formatter={(v) => [`${Number(v ?? 0)}%`, "Poprawność"]}
+            formatter={(v) => [`${Number(v ?? 0)}%`, t("accuracyTrend.tooltipLabel")]}
           />
           <Area
             type="monotone"

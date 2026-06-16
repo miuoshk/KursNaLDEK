@@ -1,0 +1,746 @@
+{
+  "batchLabel": "e_anat_sto_2023/2",
+  "sourceFile": "/Users/miuoshk/Downloads/anatsto_batch_e2023_2.sql",
+  "batchCount": 97,
+  "dbAnaActive": 710,
+  "anatstoAlreadyInDb": 51,
+  "internalCut": [],
+  "exactDbCount": 9,
+  "nearDbCount": 3,
+  "keyConflictCount": 8,
+  "freshCount": 85,
+  "recommendedCut": [
+    "ANATSTO-639",
+    "ANATSTO-642",
+    "ANATSTO-644",
+    "ANATSTO-656",
+    "ANATSTO-659",
+    "ANATSTO-673",
+    "ANATSTO-686",
+    "ANATSTO-690",
+    "ANATSTO-701",
+    "ANATSTO-620",
+    "ANATSTO-629",
+    "ANATSTO-640"
+  ],
+  "exactDb": [
+    {
+      "srccode": "ANATSTO-639",
+      "topic": "ANA-MIE",
+      "text": "Brzusiec przedni mięśnia dwubrzuścowego unerwiony jest przez:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-ner-030",
+          "topic_id": "ANA-NER",
+          "correct": "a",
+          "source_code": "ANAT-e2023-1-416"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-642",
+      "topic": "ANA-TRZ",
+      "text": "Gałąź międzykomorowa przednia odchodzi od:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-090",
+          "topic_id": "ANA-TRZ",
+          "correct": "c",
+          "source_code": "ANAT-e2024-2-302"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-644",
+      "topic": "ANA-TRZ",
+      "text": "Do gałęzi trzewnych nieparzystych aorty brzusznej zaliczamy:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-162",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2023-2-517"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-656",
+      "topic": "ANA-OBW",
+      "text": "Nerw zasłonowy:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-obw-017",
+          "topic_id": "ANA-OBW",
+          "correct": "b",
+          "source_code": "ANAT-e2025-2-163"
+        },
+        {
+          "id": "ana-obw-034",
+          "topic_id": "ANA-OBW",
+          "correct": "b",
+          "source_code": "ANAT-e2024-2-373"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-659",
+      "topic": "ANA-TRZ",
+      "text": "Wzgórek nasienny znajduje się:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-trz-047",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2025-2-159"
+        },
+        {
+          "id": "ana-trz-157",
+          "topic_id": "ANA-TRZ",
+          "correct": "c",
+          "source_code": "ANAT-e2023-2-496"
+        },
+        {
+          "id": "ana-trz-114",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2024-2-369"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-673",
+      "topic": "ANA-NAC",
+      "text": "Kąt żylny powstaje z połączenia:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-nac-002",
+          "topic_id": "ANA-NAC",
+          "correct": "c",
+          "source_code": "ANAT-e2025-1-020"
+        },
+        {
+          "id": "ana-nac-016",
+          "topic_id": "ANA-NAC",
+          "correct": "c",
+          "source_code": "ANAT-e2024-1-258"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-686",
+      "topic": "ANA-CZA",
+      "text": "Zatoka szczękowa uchodzi do:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-cza-027",
+          "topic_id": "ANA-CZA",
+          "correct": "c",
+          "source_code": "ANAT-e2024-2-359"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-690",
+      "topic": "ANA-CZA",
+      "text": "Szew wieńcowy łączy:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-cza-017",
+          "topic_id": "ANA-CZA",
+          "correct": "a",
+          "source_code": "ANAT-e2024-1-232"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-701",
+      "topic": "ANA-NER",
+      "text": "Nerw bloczkowy (IV) unerwia:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-ner-006",
+          "topic_id": "ANA-NER",
+          "correct": "a",
+          "source_code": "ANAT-e2025-1-085"
+        }
+      ]
+    }
+  ],
+  "nearDb": [
+    {
+      "srccode": "ANATSTO-620",
+      "topic": "ANA-TRZ",
+      "text": "Wymień części cewki moczowej męskiej w kolejności od ujścia wewnętrznego do zewnętrznego:",
+      "correct": "a",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-trz-176",
+        "topic_id": "ANA-TRZ",
+        "text": "Części cewki moczowej męskiej (od ujścia wewnętrznego do zewnętrznego) to:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATSTO-629",
+      "topic": "ANA-OBW",
+      "text": "Splot szyjny składa się z gałęzi brzusznych nerwów rdzeniowych:",
+      "correct": "a",
+      "sim": "substring",
+      "match": {
+        "id": "ana-obw-009",
+        "topic_id": "ANA-OBW",
+        "text": "Splot szyjny:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATSTO-640",
+      "topic": "ANA-NAC",
+      "text": "Unaczynienie tętnicze tarczycy pochodzi od:",
+      "correct": "e",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-nac-022",
+        "topic_id": "ANA-NAC",
+        "text": "Unaczynienie tarczycy pochodzi od:",
+        "correct": "e"
+      }
+    }
+  ],
+  "keyConflict": [
+    {
+      "srccode": "ANATSTO-620",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-176",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-629",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-obw-009",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATSTO-639",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-ner-030",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-642",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-090",
+          "correct": "c"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-656",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-obw-017",
+          "correct": "b"
+        },
+        {
+          "id": "ana-obw-034",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-659",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-047",
+          "correct": "a"
+        },
+        {
+          "id": "ana-trz-157",
+          "correct": "c"
+        },
+        {
+          "id": "ana-trz-114",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-673",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-nac-002",
+          "correct": "c"
+        },
+        {
+          "id": "ana-nac-016",
+          "correct": "c"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATSTO-686",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-cza-027",
+          "correct": "c"
+        }
+      ]
+    }
+  ],
+  "fresh": [
+    {
+      "srccode": "ANATSTO-609",
+      "topic": "ANA-TRZ",
+      "text": "Czym jest zachyłek opłucnej?"
+    },
+    {
+      "srccode": "ANATSTO-610",
+      "topic": "ANA-CZA",
+      "text": "Dół zażuchwowy jest ograniczony:"
+    },
+    {
+      "srccode": "ANATSTO-611",
+      "topic": "ANA-NAC",
+      "text": "Czym jest ograniczona przestrzeń przygardłowa z tyłu?"
+    },
+    {
+      "srccode": "ANATSTO-612",
+      "topic": "ANA-TRZ",
+      "text": "Jaki jest najgłębszy zachyłek opłucnej?"
+    },
+    {
+      "srccode": "ANATSTO-613",
+      "topic": "ANA-NAC",
+      "text": "Do przednich gałęzi tętnicy szyjnej zewnętrznej należy:"
+    },
+    {
+      "srccode": "ANATSTO-614",
+      "topic": "ANA-NAC",
+      "text": "Co tworzy kąt żylny?"
+    },
+    {
+      "srccode": "ANATSTO-615",
+      "topic": "ANA-TRZ",
+      "text": "Co tworzy przewód żółciowy wspólny?"
+    },
+    {
+      "srccode": "ANATSTO-616",
+      "topic": "ANA-TRZ",
+      "text": "Co znajduje się w świetle komory prawej serca?"
+    },
+    {
+      "srccode": "ANATSTO-617",
+      "topic": "ANA-OUN",
+      "text": "Która odpowiedź zawiera wyłącznie pęcherzyki wtórne mózgowia?"
+    },
+    {
+      "srccode": "ANATSTO-618",
+      "topic": "ANA-NAC",
+      "text": "Na jakie naczynia dzieli się tętnica podstawna mózgu?"
+    },
+    {
+      "srccode": "ANATSTO-619",
+      "topic": "ANA-TRZ",
+      "text": "Co tworzy przewód żółciowy wspólny (wariant pytania)?"
+    },
+    {
+      "srccode": "ANATSTO-621",
+      "topic": "ANA-TRZ",
+      "text": "Przodozgięcie macicy (anteflexio) to kąt pomiędzy:"
+    },
+    {
+      "srccode": "ANATSTO-622",
+      "topic": "ANA-TRZ",
+      "text": "Prawidłową kolejność odcinków jajowodu od macicy do jajnika przedstawia:"
+    },
+    {
+      "srccode": "ANATSTO-623",
+      "topic": "ANA-TRZ",
+      "text": "Gdzie uchodzi przewód trzustkowy główny (Wirsunga)?"
+    },
+    {
+      "srccode": "ANATSTO-624",
+      "topic": "ANA-NER",
+      "text": "Droga słuchowa to droga:"
+    },
+    {
+      "srccode": "ANATSTO-625",
+      "topic": "ANA-NER",
+      "text": "Jakie mięśnie unerwia ruchowo nerw dodatkowy (XI)?"
+    },
+    {
+      "srccode": "ANATSTO-626",
+      "topic": "ANA-OUN",
+      "text": "Za co odpowiada droga rdzeniowo-wzgórzowa boczna?"
+    },
+    {
+      "srccode": "ANATSTO-627",
+      "topic": "ANA-NAC",
+      "text": "Do jakiego trójkąta szyi należy nerw dodatkowy (XI)?"
+    },
+    {
+      "srccode": "ANATSTO-628",
+      "topic": "ANA-TRZ",
+      "text": "Gdzie jest zlokalizowane śródpiersie przednie?"
+    },
+    {
+      "srccode": "ANATSTO-630",
+      "topic": "ANA-OUN",
+      "text": "Jak nazywa się część drogi piramidowej z włóknami biegnącymi do jąder nerwów czaszkowych?"
+    },
+    {
+      "srccode": "ANATSTO-631",
+      "topic": "ANA-OUN",
+      "text": "Jak nazywa się część drogi piramidowej biegnąca do rdzenia kręgowego?"
+    },
+    {
+      "srccode": "ANATSTO-632",
+      "topic": "ANA-NAC",
+      "text": "Gdzie uchodzi przewód piersiowy?"
+    },
+    {
+      "srccode": "ANATSTO-633",
+      "topic": "ANA-JAM",
+      "text": "Jaki nerw unerwia czuciowo (czucie ogólne) tylną 1/3 języka?"
+    },
+    {
+      "srccode": "ANATSTO-634",
+      "topic": "ANA-JAM",
+      "text": "Jaki nerw unerwia czuciowo (czucie ogólne) przednie 2/3 języka?"
+    },
+    {
+      "srccode": "ANATSTO-635",
+      "topic": "ANA-JAM",
+      "text": "Jaki nerw odpowiada za unerwienie smakowe przednich 2/3 języka?"
+    },
+    {
+      "srccode": "ANATSTO-636",
+      "topic": "ANA-JAM",
+      "text": "Jaki nerw odpowiada za unerwienie smakowe tylnej 1/3 języka?"
+    },
+    {
+      "srccode": "ANATSTO-637",
+      "topic": "ANA-TRZ",
+      "text": "Gałęzie trzewne parzyste aorty brzusznej to:"
+    },
+    {
+      "srccode": "ANATSTO-638",
+      "topic": "ANA-OUN",
+      "text": "Dno komory III układu komorowego mózgu tworzy:"
+    },
+    {
+      "srccode": "ANATSTO-641",
+      "topic": "ANA-NAC",
+      "text": "Z czego tworzy się tętnica podstawna?"
+    },
+    {
+      "srccode": "ANATSTO-643",
+      "topic": "ANA-TUL",
+      "text": "Jaki jest główny kierunek odpływu chłonki z sutka?"
+    },
+    {
+      "srccode": "ANATSTO-645",
+      "topic": "ANA-TRZ",
+      "text": "Co biegnie razem z przełykiem przez rozwór przełykowy przepony?"
+    },
+    {
+      "srccode": "ANATSTO-646",
+      "topic": "ANA-TRZ",
+      "text": "Przebieg nerwów błędnych w śródpiersiu charakteryzuje się tym, że:"
+    },
+    {
+      "srccode": "ANATSTO-647",
+      "topic": "ANA-NER",
+      "text": "Jaki nerw unerwia ruchowo przedni brzusiec mięśnia dwubrzuścowego?"
+    },
+    {
+      "srccode": "ANATSTO-648",
+      "topic": "ANA-NER",
+      "text": "Do obszaru unerwienia czuciowego nerwu ocznego (V1) należy:"
+    },
+    {
+      "srccode": "ANATSTO-649",
+      "topic": "ANA-OUN",
+      "text": "Strop komory III tworzą kolejno (od dołu):"
+    },
+    {
+      "srccode": "ANATSTO-650",
+      "topic": "ANA-KON",
+      "text": "Które głowy mięśnia trójgłowego ramienia działają na staw ramienny, a które tylko na łokciowy?"
+    },
+    {
+      "srccode": "ANATSTO-651",
+      "topic": "ANA-KON",
+      "text": "Troczek zginaczy w stosunku do kanału nadgarstka:"
+    },
+    {
+      "srccode": "ANATSTO-652",
+      "topic": "ANA-KON",
+      "text": "Nerw pośrodkowy unerwia czuciowo skórę dłoniowej powierzchni:"
+    },
+    {
+      "srccode": "ANATSTO-653",
+      "topic": "ANA-OBW",
+      "text": "Przy porażeniu jakiego nerwu nie da się wykonać czynnego prostowania w stawie kolanowym?"
+    },
+    {
+      "srccode": "ANATSTO-654",
+      "topic": "ANA-OBW",
+      "text": "Dodatni objaw Trendelenburga występuje w porażeniu:"
+    },
+    {
+      "srccode": "ANATSTO-655",
+      "topic": "ANA-OUN",
+      "text": "Rogi tylne rdzenia kręgowego to rogi:"
+    },
+    {
+      "srccode": "ANATSTO-657",
+      "topic": "ANA-NER",
+      "text": "Nerwy węchowe (I) wchodzą do jamy czaszki przez:"
+    },
+    {
+      "srccode": "ANATSTO-658",
+      "topic": "ANA-JAM",
+      "text": "Przewód ślinianki podżuchwowej (Whartona) uchodzi:"
+    },
+    {
+      "srccode": "ANATSTO-660",
+      "topic": "ANA-NER",
+      "text": "Gdzie znajduje się jądro ruchowe nerwu twarzowego (VII)?"
+    },
+    {
+      "srccode": "ANATSTO-661",
+      "topic": "ANA-NAC",
+      "text": "Nieparzystym naczyniem tętniczym mózgu jest:"
+    },
+    {
+      "srccode": "ANATSTO-662",
+      "topic": "ANA-TRZ",
+      "text": "Dwunastnica jest unaczyniona przez gałęzie:"
+    },
+    {
+      "srccode": "ANATSTO-663",
+      "topic": "ANA-NER",
+      "text": "Porażenie nerwu okoruchowego (III) objawia się:"
+    },
+    {
+      "srccode": "ANATSTO-664",
+      "topic": "ANA-TRZ",
+      "text": "Jakie jest położenie esicy względem otrzewnej?"
+    },
+    {
+      "srccode": "ANATSTO-665",
+      "topic": "ANA-TRZ",
+      "text": "Mięśniówka komór i przedsionków serca:"
+    },
+    {
+      "srccode": "ANATSTO-666",
+      "topic": "ANA-TRZ",
+      "text": "Krążenie oboczne w okolicy odbytnicy prowadzi krew z układu wrotnego do układu żyły głównej dolnej przez:"
+    },
+    {
+      "srccode": "ANATSTO-667",
+      "topic": "ANA-OUN",
+      "text": "Blaszka (przegroda) przezroczysta ogranicza komorę boczną:"
+    },
+    {
+      "srccode": "ANATSTO-668",
+      "topic": "ANA-OBW",
+      "text": "Nerw potyliczny mniejszy ma charakter:"
+    },
+    {
+      "srccode": "ANATSTO-669",
+      "topic": "ANA-NAC",
+      "text": "Dolną część błony włóknisto-sprężystej krtani stanowi:"
+    },
+    {
+      "srccode": "ANATSTO-670",
+      "topic": "ANA-NAC",
+      "text": "Mięśniem rozszerzającym szparę głośni jest:"
+    },
+    {
+      "srccode": "ANATSTO-671",
+      "topic": "ANA-OUN",
+      "text": "Przez wstęgę boczną przebiega droga:"
+    },
+    {
+      "srccode": "ANATSTO-672",
+      "topic": "ANA-TRZ",
+      "text": "Oskrzele główne lewe dzieli się na oskrzela płatowe:"
+    },
+    {
+      "srccode": "ANATSTO-674",
+      "topic": "ANA-OBW",
+      "text": "Mięsień równoległoboczny unerwia (gałąź krótka splotu ramiennego):"
+    },
+    {
+      "srccode": "ANATSTO-675",
+      "topic": "ANA-NAC",
+      "text": "Zawartością dołu zażuchwowego jest m.in.:"
+    },
+    {
+      "srccode": "ANATSTO-676",
+      "topic": "ANA-NAC",
+      "text": "Tętnica podobojczykowa w stosunku do mięśni pochyłych przebiega:"
+    },
+    {
+      "srccode": "ANATSTO-677",
+      "topic": "ANA-NAC",
+      "text": "Przewód piersiowy uchodzi do:"
+    },
+    {
+      "srccode": "ANATSTO-678",
+      "topic": "ANA-NER",
+      "text": "Nerw podoczodołowy jest gałęzią nerwu:"
+    },
+    {
+      "srccode": "ANATSTO-679",
+      "topic": "ANA-TRZ",
+      "text": "Moczowód u kobiety w stosunku do tętnicy macicznej:"
+    },
+    {
+      "srccode": "ANATSTO-680",
+      "topic": "ANA-NAC",
+      "text": "Której z wymienionych gałęzi NIE oddaje tętnica szyjna zewnętrzna?"
+    },
+    {
+      "srccode": "ANATSTO-681",
+      "topic": "ANA-NER",
+      "text": "Wyłącznie czuciowymi nerwami czaszkowymi są nerwy:"
+    },
+    {
+      "srccode": "ANATSTO-682",
+      "topic": "ANA-TRZ",
+      "text": "Która warstwa ściany serca tworzy zastawki?"
+    },
+    {
+      "srccode": "ANATSTO-683",
+      "topic": "ANA-OUN",
+      "text": "Spoidło uzdeczek należy do:"
+    },
+    {
+      "srccode": "ANATSTO-684",
+      "topic": "ANA-OBW",
+      "text": "Korzeń przyśrodkowy nerwu pośrodkowego pochodzi od:"
+    },
+    {
+      "srccode": "ANATSTO-685",
+      "topic": "ANA-OUN",
+      "text": "Droga rdzeniowo-wzgórzowa boczna przewodzi:"
+    },
+    {
+      "srccode": "ANATSTO-687",
+      "topic": "ANA-CZA",
+      "text": "Przewód słuchowy wewnętrzny przebiega w obrębie:"
+    },
+    {
+      "srccode": "ANATSTO-688",
+      "topic": "ANA-KON",
+      "text": "W co przechodzi tętnica udowa po przejściu przez kanał przywodzicieli?"
+    },
+    {
+      "srccode": "ANATSTO-689",
+      "topic": "ANA-JAM",
+      "text": "Podniebienie kostne tworzą:"
+    },
+    {
+      "srccode": "ANATSTO-691",
+      "topic": "ANA-TUL",
+      "text": "Żyła główna dolna powstaje z połączenia:"
+    },
+    {
+      "srccode": "ANATSTO-692",
+      "topic": "ANA-TRZ",
+      "text": "Gałęziami aorty piersiowej (zstępującej) są:"
+    },
+    {
+      "srccode": "ANATSTO-693",
+      "topic": "ANA-OUN",
+      "text": "Ciało kolankowate boczne jest stacją przekaźnikową drogi:"
+    },
+    {
+      "srccode": "ANATSTO-694",
+      "topic": "ANA-NAC",
+      "text": "Na szyjce żuchwy (do tyłu od niej) przebiega naczynie:"
+    },
+    {
+      "srccode": "ANATSTO-695",
+      "topic": "ANA-KON",
+      "text": "Z ilu kości składa się kościec ręki (nadgarstek, śródręcze, palce)?"
+    },
+    {
+      "srccode": "ANATSTO-696",
+      "topic": "ANA-NAC",
+      "text": "Mięsień łopatkowo-gnykowy (brzusiec dolny) ogranicza od góry trójkąt:"
+    },
+    {
+      "srccode": "ANATSTO-697",
+      "topic": "ANA-NAC",
+      "text": "Przyśrodkowo przestrzeń przygardłową ogranicza:"
+    },
+    {
+      "srccode": "ANATSTO-698",
+      "topic": "ANA-NAC",
+      "text": "Tętnica krtaniowa górna jest gałęzią:"
+    },
+    {
+      "srccode": "ANATSTO-699",
+      "topic": "ANA-OUN",
+      "text": "Jądro dwuznaczne jest jądrem ruchowym wspólnym dla nerwów:"
+    },
+    {
+      "srccode": "ANATSTO-700",
+      "topic": "ANA-NAC",
+      "text": "Tętnica podobojczykowa przechodzi przez:"
+    },
+    {
+      "srccode": "ANATSTO-702",
+      "topic": "ANA-NER",
+      "text": "Włókna przywspółczulne nerwu okoruchowego (III) przełączają się w:"
+    },
+    {
+      "srccode": "ANATSTO-703",
+      "topic": "ANA-NER",
+      "text": "Który z wymienionych nerwów czaszkowych zawiera włókna przywspółczulne?"
+    },
+    {
+      "srccode": "ANATSTO-704",
+      "topic": "ANA-NAC",
+      "text": "Zachyłki gruszkowate znajdują się:"
+    },
+    {
+      "srccode": "ANATSTO-705",
+      "topic": "ANA-OBW",
+      "text": "Splot ramienny tworzą gałęzie brzuszne nerwów rdzeniowych:"
+    }
+  ]
+}

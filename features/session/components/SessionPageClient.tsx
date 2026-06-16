@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { loadSessionQuestions } from "@/features/session/api/loadSessionQuestions";
 import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
@@ -50,6 +51,7 @@ function parseCount(v: string | null): number {
 }
 
 export function SessionPageClient({ sessionId }: { sessionId: string }) {
+  const t = useTranslations("session");
   const router = useRouter();
   const searchParams = useSearchParams();
   const [boot, setBoot] = useState<Bootstrap>({ status: "loading" });
@@ -216,7 +218,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         className="mx-auto max-w-md rounded-card border border-error/30 bg-card p-6 text-center"
         role="alert"
       >
-        <p className="font-heading text-heading-sm text-primary">Nie udało się uruchomić sesji</p>
+        <p className="font-heading text-heading-sm text-primary">{t("startFailedTitle")}</p>
         <p className="mt-2 font-body text-body-sm text-secondary">{boot.message}</p>
       </div>
     );

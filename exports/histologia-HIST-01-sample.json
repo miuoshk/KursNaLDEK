@@ -1,0 +1,494 @@
+{
+  "exportedAt": "2026-06-02T15:09:32.565Z",
+  "subject": {
+    "id": "histologia",
+    "name": "Histologia i embriologia"
+  },
+  "topic": {
+    "id": "HIST-01",
+    "name": "Metody badawcze"
+  },
+  "count": 15,
+  "questions": [
+    {
+      "id": "HIST-01-001",
+      "text": "Nowotwory łagodne — wskaż prawidłowe stwierdzenie:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mogą niszczyć otaczające tkanki poprzez ucisk"
+        },
+        {
+          "id": "b",
+          "text": "Naciekają otaczające tkanki"
+        },
+        {
+          "id": "c",
+          "text": "Są źródłem przerzutów"
+        },
+        {
+          "id": "d",
+          "text": "A, C"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "Mogą niszczyć otaczające tkanki poprzez ucisk",
+      "explanation": "**Nowotwory łagodne (benign)** charakteryzują się: **dobrze odgraniczoną** (często otorebkowaną) strukturą, **wzrostem rozprężliwym (ekspansywnym)** — uciskają i przemieszczają otaczające tkanki, ale **nie naciekają**; **wysokim zróżnicowaniem** (mała atypia jądrowa); **niskim indeksem mitotycznym**; **brakiem przerzutów**. Mogą jednak **niszczyć ucisk**: gruczolak przysadki → ucisk skrzyżowania wzrokowego → ślepota dwuskroniowa; oponiak → ucisk mózgu; mięśniak macicy → ucisk pęcherza. **Złośliwe**: wzrost naciekający, słabe zróżnicowanie, anizokarioza, hiperchromazja, nieprawidłowe mitozy, **przerzuty**. Nazewnictwo: łagodne — sufiks **-oma** (adenoma, fibroma); złośliwe nabłonkowe — **rak (carcinoma)**, mezenchymalne — **mięsak (sarcoma)**.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2023 sesja 1",
+      "sourceCode": "HISLEK-e2023-1-282"
+    },
+    {
+      "id": "HIST-01-002",
+      "text": "Wybierz prawidłową kombinację procesów obserwowanych w komórce nowotworowej: [1] Aktywacja procesu apoptozy [2] Przyspieszone starzenie się komórki [3] Samowystarczalność w zakresie sygnałów wzrostowych [4] Unikanie angiogenezy [5] Zdolność do inwazji",
+      "options": [
+        {
+          "id": "a",
+          "text": "1, 4"
+        },
+        {
+          "id": "b",
+          "text": "1, 2, 3"
+        },
+        {
+          "id": "c",
+          "text": "2, 3, 5"
+        },
+        {
+          "id": "d",
+          "text": "2, 5"
+        },
+        {
+          "id": "e",
+          "text": "3, 5"
+        }
+      ],
+      "correctOptionId": "e",
+      "correctAnswerText": "3, 5",
+      "explanation": "**Hallmarks of Cancer** (Hanahan & Weinberg): **( 1) samowystarczalność w sygnałach wzrostowych** (mutacje aktywujące RAS, BRAF, HER2, MYC); **( 2) niewrażliwość na sygnały antyproliferacyjne** (utrata RB, TP53, APC); **( 3) ucieczka od apoptozy** (NIE jej aktywacja! — nadekspresja BCL2, utrata TP53); **( 4) nieograniczony potencjał replikacyjny** (aktywacja telomerazy → unikanie senescencji, NIE przyspieszone starzenie!); **( 5) indukowanie angiogenezy** (NIE unikanie! — VEGF); **( 6) inwazja i przerzutowanie** (utrata E-kadheryny, EMT, MMP). Z listy pytania poprawne są tylko **3 (samowystarczalność) i 5 (inwazja)**; 1, 2, 4 są **przeciwieństwami** prawdziwych hallmarks → klucz **E (3,5)**. Klinicznie: inhibitory VEGF (bevacizumab), inhibitory checkpoint (PD-1/PD-L1), BH3-mimetyki (venetoklaks — ucieczka od apoptozy).",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2023 sesja 1",
+      "sourceCode": "HISLEK-e2023-1-283"
+    },
+    {
+      "id": "HIST-01-003",
+      "text": "Barwienie AB-PAS jest pomocne w diagnostyce:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metaplazji jelitowej"
+        },
+        {
+          "id": "b",
+          "text": "Przełyku Barretta"
+        },
+        {
+          "id": "c",
+          "text": "Metaplazji płaskonabłonkowej"
+        },
+        {
+          "id": "d",
+          "text": "A, B"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "correctOptionId": "d",
+      "correctAnswerText": "A, B",
+      "explanation": "**AB-PAS** łączy **Alcian Blue (AB, pH 2,5)** — barwi **kwaśne mucyny** (sialomucyny, sulfomucyny) na **niebiesko** — z **PAS** — barwi **obojętne mucyny** i glikoproteiny na **różowo/purpurowo**. Zastosowanie diagnostyczne: **metaplazja jelitowa** żołądka — komórki kubkowe z kwaśnymi mucynami (AB+) w nabłonku żołądkowym → stan przedrakowy raka gruczołowego żołądka; **przełyk Barretta** — metaplazja jelitowa nabłonka przełyku (walcowaty z komórkami kubkowymi AB+) → stan przedrakowy **gruczolakoraka przełyku** (powiązany z GERD). **Metaplazja płaskonabłonkowa** (tchawica u palaczy, szyjka macicy) — AB-PAS mało użyteczne (lepiej HE, p63, CK5/6). Klinicznie: nadzór endoskopowy z AB-PAS standardem w monitorowaniu przełyku Barretta.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2023 sesja 1",
+      "sourceCode": "HISLEK-e2023-1-284"
+    },
+    {
+      "id": "HIST-01-004",
+      "text": "Do barwień histochemicznych uwidaczniających błony podstawne możemy zaliczyć:",
+      "options": [
+        {
+          "id": "a",
+          "text": "PAS"
+        },
+        {
+          "id": "b",
+          "text": "Srebrzenie"
+        },
+        {
+          "id": "c",
+          "text": "Ziehl Neelsena"
+        },
+        {
+          "id": "d",
+          "text": "A, B"
+        },
+        {
+          "id": "e",
+          "text": "B, C"
+        }
+      ],
+      "correctOptionId": "d",
+      "correctAnswerText": "A, B",
+      "explanation": "**Błona podstawna (BM)** — cienka warstwa macierzy zewnątrzkomórkowej między nabłonkiem/śródbłonkiem/mięśniem a tkanką łączną; składa się z **blaszki podstawnej** (laminina, kolagen IV, nidogen, perlecan) + **blaszki retikularnej** (kolagen III, fibronektyna). Barwienia diagnostyczne: **PAS (Periodic Acid-Schiff)** — barwi **glikoproteiny** (kwas nadjodowy → aldehydy → reakcja Schiffa → fioletowo-różowy kolor); BM jest **silnie PAS-dodatnia** (obfite proteoglikany); **srebrzenie** (impregnacja srebrem, np. metoda Reticulin, Gomori, Jones) — uwidacznia **włókna retikulinowe (kolagen III)** w blaszce retikularnej BM oraz w zrębach narządów limfatycznych — czarne na różowym tle. **Ziehl-Neelsen** — barwienie **kwasoodporne** dla **mykobakterii** (M. tuberculosis) — czerwone pałeczki, opiera się na woskach kwasu mikolowego; **nie ma związku z błonami podstawnymi** → C błędne. Klinicznie: **PAS-srebro (PAS-Jones)** — standard w **biopsjach nerki** (GBM, mezangium); pogrubienie GBM w nefropatii cukrzycowej.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2023 sesja 1",
+      "sourceCode": "HISLEK-e2023-1-296"
+    },
+    {
+      "id": "HIST-01-005",
+      "text": "Prawidłowa analiza w konwencjonalnej transmisyjnej mikroskopii elektronowej jest możliwa dzięki utrwaleniu tkanki przy użyciu:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Etanolu"
+        },
+        {
+          "id": "b",
+          "text": "Acetonu"
+        },
+        {
+          "id": "c",
+          "text": "Formaliny"
+        },
+        {
+          "id": "d",
+          "text": "Aldehydu glutarowego"
+        },
+        {
+          "id": "e",
+          "text": "Parafiny"
+        }
+      ],
+      "correctOptionId": "d",
+      "correctAnswerText": "Aldehydu glutarowego",
+      "explanation": "**Aldehyd glutarowy (glutaraldehyde, GA, 2-3%)** — **STANDARDOWY utrwalacz dla TEM** (transmisyjna mikroskopia elektronowa). Dialdehyd (5C, 2 grupy CHO) → **sieciuje białka** przez wiązania z grupami aminowymi lizyny → doskonale zachowuje **ultrastrukturę** (organelle, błony, cytoszkielet). Protokół TEM: **(1) GA 2-3% w PB lub kakodylanowym** (~2-4h, 4°C; mała próbka ~1 mm³ — słaba penetracja!); **(2) utrwalanie wtórne 1% OsO₄** (tetratlenek osmu — doskonały kontrast elektronowy dla błon lipidowych); **(3) odwadnianie szeregowe etanolami**; **(4) zatopienie w żywicy epoksydowej** (Epon, Spurr); **(5) cięcie ultramikrotomem** (skrawki ~60-90 nm); **(6) kontrastowanie**: octan uranylu + cytrynian ołowiu; **(7) obrazowanie w TEM**. **Pozostałe FAŁSZYWE**: A — etanol to **odwadniacz** (krok 3); B — aceton to odwadniacz/zamiennik; C — **formalina** to standard dla **mikroskopii świetlnej (LM)** (histopatologia rutynowa H&E), gorsza ultrastruktura; E — **parafina** to medium zatapiające dla LM.\n\nKlinicznie: TEM standard dla diagnozowania glomerulopatii, dyskinezji rzęsek, mitochondriopatii, chorób spichrzeniowych.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2022 sesja 1",
+      "sourceCode": "HISLEK-e2022-1-417"
+    },
+    {
+      "id": "HIST-01-006",
+      "text": "Kwaśne hydrolazy są enzymami charakterystycznymi dla:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lizosomów"
+        },
+        {
+          "id": "b",
+          "text": "Mitochondriów"
+        },
+        {
+          "id": "c",
+          "text": "Retikulum endoplazmatycznego gładkiego"
+        },
+        {
+          "id": "d",
+          "text": "Aparatu Golgiego"
+        },
+        {
+          "id": "e",
+          "text": "Jądra komórkowego"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "Lizosomów",
+      "explanation": "**Klucz A** — **lizosomy**: jednoboranowe organella; >60 rodzajów **kwaśnych hydrolaz** (katepsyny B/D/L/S, lipazy, glikozydazy, sulfatazy, nukleazy) optymalnie aktywnych w pH ~5.0 (H⁺-ATPaza V-typ w błonie). Hydrolazy: RER → Golgi → mannoza-6-fosforan → lizosomy. Funkcje: autofagia, heterofagia (fagolizosomy), apoptoza. Klinicznie: **LSD** (choroby lizosomalne spichrzeniowe) — Gaucher (β-glukocerebrozydaza), Fabry, Tay-Sachs, Niemann-Pick; leczenie ERT.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2020 sesja 1",
+      "sourceCode": "HISLEK-e2020-1-510"
+    },
+    {
+      "id": "HIST-01-007",
+      "text": "W czym bierze udział cytochrom P450:",
+      "options": [
+        {
+          "id": "a",
+          "text": "β-oksydacja kwasów tłuszczowych"
+        },
+        {
+          "id": "b",
+          "text": "Detoksykacja (faza I metabolizmu ksenobiotyków)"
+        },
+        {
+          "id": "c",
+          "text": "Brak poprawnej odpowiedzi"
+        },
+        {
+          "id": "d",
+          "text": "Wytwarzanie ATP (oksydatywna fosforylacja)"
+        },
+        {
+          "id": "e",
+          "text": "W błonie wewnętrznej mitochondrium"
+        }
+      ],
+      "correctOptionId": "b",
+      "correctAnswerText": "Detoksykacja (faza I metabolizmu ksenobiotyków)",
+      "explanation": "**Klucz B** — **cytochrom P450 (CYP450)** = nadrodzina enzymów heminowych w **sER** (siateczka gładka); faza I metabolizmu ksenobiotyków: oksydacja, redukcja, hydroliza, dealkilacja → grupy polarne dla ułatwienia wydalania. Główne: CYP3A4 (~30% leków!), CYP2D6 (kodein, TCA, SSRI), CYP2C9 (warfaryna!), CYP2C19 (klopidogrel, PPI), CYP1A2, CYP2E1 (alkohol, paracetamol). **A** = mitochondria; **D** = kompleksy oddechowe mit.; **E** = loc. ATP-synazy. Klinicznie: induktory (rifampicyna, fenytoina, karbamazepina, CBZ, St. John's Wort) → ↓ poziomów innych leków; inhibitory (ketokonazol, erytromycyna, grapefruit → CYP3A 4) → toksyczność. NAPQI z paracetamolu (CYP2E 1) → antydot: NAC.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-585"
+    },
+    {
+      "id": "HIST-01-008",
+      "text": "Reakcja immunohistochemiczna polega przede wszystkim na:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wykrywaniu obecności i lokalizacji antygenów w tkance"
+        },
+        {
+          "id": "b",
+          "text": "Wykrywaniu DNA genowego"
+        },
+        {
+          "id": "c",
+          "text": "Hybrydyzacji mRNA"
+        },
+        {
+          "id": "d",
+          "text": "Detekcji aktywności enzymów"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "Wykrywaniu obecności i lokalizacji antygenów w tkance",
+      "explanation": "**Klucz A** — **IHC (immunohistochemia)** = wykrywanie **obecności i lokalizacji antygenów** (białek, glikoprotein) w tkankach utrwalonych za pomocą **specyficznych przeciwciał** (monoklonalnych lub poliklonalnych) + chromogen (DAB, brąz) lub fluorescencja (IHF). Techniki: bezpośrednia (Ab-chromogen); pośrednia (primary + secondary Ab + amplifikacja przez streptawidyna-biotyna lub polimery). Klinicznie: IHC kluczowa w patologii nowotworowej (CD20 = B-cell lymphoma;\n\nCD3 = T-cell;\n\nTTF-1 = płuco/tarczyca;\n\nER/PR/HER2 = rak piersi;\n\nPSA = prostata; chromogranina = neuroendokrynne;\n\nS100 = melanocyt).",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-653"
+    },
+    {
+      "id": "HIST-01-009",
+      "text": "1 nm to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "10 Å (angstremów)"
+        },
+        {
+          "id": "b",
+          "text": "1 Å"
+        },
+        {
+          "id": "c",
+          "text": "100 Å"
+        },
+        {
+          "id": "d",
+          "text": "100 pm"
+        },
+        {
+          "id": "e",
+          "text": "10 pm"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "10 Å (angstremów)",
+      "explanation": "**Klucz A** — jednostki: 1 nm = 10 Å (angstremów); 1 Å = 0.1 nm = 100 pm.\n\nKontekst mikroskopowy: LM (mikroskop świetlny) rozdzielczość ~200 nm;\n\nTEM ~0.1-1 nm;\n\nSEM ~5-10 nm;\n\nAFM submolekularny.\n\nTypowe rozmiary: błona komórkowa ~7.5 nm; rybosom ~25 nm; mitochondrium ~0.5-2 µm; komórka jądrzasta ~10-100 µm; erytrocyt ~8 µm. 1 µm = 1000 nm; 1 nm = 10 Å = 1000 pm.\n\nKlinicznie: rozdzielczość TEM kluczowa w diagnostyce patologii ultrastrukturalnej (GBM, PCD, śródbłonek).",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-654"
+    },
+    {
+      "id": "HIST-01-010",
+      "text": "Reakcja immunohistochemiczna zwiazana jest z:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wykrywaniem kwasnych hydrolaz"
+        },
+        {
+          "id": "b",
+          "text": "Dzialaniem antygenow i systemow lacznikowych"
+        },
+        {
+          "id": "c",
+          "text": "Wykrywaniem grup funkcyjnych bialek"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "correctOptionId": "b",
+      "correctAnswerText": "Dzialaniem antygenow i systemow lacznikowych",
+      "explanation": "**[FLAGA MERYTORYCZNA] Klucz B** — IHC związana z **działaniem antygenów** (epitopy rozpoznawane przez Ab) + **systemów łącznikowych** (linker systems: streptawidyna-biotyna-peroksydaza, polymeric HRP systemy, tyramide amplification) → wzmocnienie sygnału + detekcja. Różni się od Q653 (który pytał \"przede wszystkim = wykrywanie antygenów\"); tu \"związana jest z\" → system Ab-antygen + łącznikowy. Klinicznie: IHC diagnostyczna = złoty standard identyfikacji nowotworów (CD marker panel), infekcji (CMV IHC), autoimmun (IgG4 IHC w IgG4-RD), prionów (PrPsc IHC), amiloidu (kongo czerwień → IHC anty-amyloid).",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-688"
+    },
+    {
+      "id": "HIST-01-011",
+      "text": "Barwienie na blony podstawne:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Trichrom Massona"
+        },
+        {
+          "id": "b",
+          "text": "PAS (Periodic Acid-Schiff)"
+        },
+        {
+          "id": "c",
+          "text": "Blek Alciana"
+        },
+        {
+          "id": "d",
+          "text": "Sudan III"
+        },
+        {
+          "id": "e",
+          "text": "Barwienie metodą Ziehl-Neelsen"
+        }
+      ],
+      "correctOptionId": "b",
+      "correctAnswerText": "PAS (Periodic Acid-Schiff)",
+      "explanation": "**Klucz B** — **PAS (Periodic Acid-Schiff)** = barwi glikoprotein + proteoglikany + polisacharydy (wiązania 1,2-diol → kwas podjodziowy → aldehydy → fuksyna Schiffa → różowo/purpurowo). Błony podstawne (BM) bogate w glikoproteiny (kolagen IV + lamininy + glikozylowane) → **intensywnie PAS-dodatnie**. PAS barwi też: glikogen (komórki wątroby, neutrofile), śluz (kubkowe), grzyby (Aspergillus, Candida, PCP), siatkówkę (segmenty zewn. fotoreceptorów). **Trichrom Massona** = kolagen (niebieski/zielony) vs mięśnie (czerwone) → włóknienie. **Błękit Alciana** = kwaśne mukopolisacharydy, proteoglikany (np. chrząstka, mesotelium). Klinicznie: GBM (Q607) = PAS-intensywna; diabetic nephropathy = pogrubiona PAS+ BM kłębuszka. **Sudan III** - wybarwianie tłuszczu. **Ziehl-Neelsen** - barwienie prątków kwasoopornych.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-689"
+    },
+    {
+      "id": "HIST-01-012",
+      "text": "Co to jest immunohistochemia?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Barwienie z wykorzystaniem przeciwciał w celu wykrywania antygenów w preparacie"
+        },
+        {
+          "id": "b",
+          "text": "Barwienie z wykorzystaniem soli srebra"
+        },
+        {
+          "id": "c",
+          "text": "Barwienie błon podstawnych metodą PAS"
+        },
+        {
+          "id": "d",
+          "text": "Barwienie lipidów barwnikami tłuszczowymi"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "Barwienie z wykorzystaniem przeciwciał w celu wykrywania antygenów w preparacie",
+      "explanation": "**Immunohistochemia (IHC)** to technika histologiczna wykorzystująca **swoiste przeciwciała** (mono- lub poliklonalne) do **wykrywania konkretnych antygenów (białek)** w skrawkach tkankowych. Mechanizm: przeciwciało pierwotne wiąże antygen → wizualizacja przez znacznik (fluorochrom — IF, enzym — peroksydaza HRP → DAB brązowe barwienie, złoto koloidalne — ME). **Metoda pośrednia** z przeciwciałem wtórnym sprzężonym z HRP — najczęstsza. Wymaga antigen retrieval (bufor cytrynianowy, gotowanie). Zastosowania: diagnostyka onkologiczna (CK dla nabłonka, vimentin dla mezenchymy, CD20/CD3 dla limfocytów, Ki67 dla proliferacji, ER/PR/HER2 dla raka piersi), różnicowanie nowotworów, identyfikacja patogenów. **Barwienie srebrem** — włókna retikulinowe, neurony. **PAS** — glikokoniugaty, błony podstawne. **Sudan** — lipidy. Klucz A jednoznaczny.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-743"
+    },
+    {
+      "id": "HIST-01-013",
+      "text": "Metoda histochemicznego barwienia błony podstawnej to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metoda PAS"
+        },
+        {
+          "id": "b",
+          "text": "Metoda Ziehla-Neelsena"
+        },
+        {
+          "id": "c",
+          "text": "Barwienie hematoksyliną i eozyną"
+        },
+        {
+          "id": "d",
+          "text": "Barwienie Sudanem"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "correctOptionId": "a",
+      "correctAnswerText": "Metoda PAS",
+      "explanation": "**Metoda PAS (Periodic Acid-Schiff)** — barwienie histochemiczne wykrywające **glikokoniugaty** zawierające **wicynalne grupy hydroksylowe (1,2-diole)**. Mechanizm: kwas nadjodowy utlenia diole do aldehydów → odczynnik Schiffa → **fioletowo-różowe (magenta) wybarwienie**. PAS barwi: **błony podstawne** (laminina, kolagen IV — glikoproteiny; diagnostyka nefropatii), **glikogen** (trawienie diastazą znosi PAS → PAS-D dla różnicowania), **śluz** w gruczołach, **glikoproteiny** membranowe. Klinika: diagnostyka **chorób kłębuszkowych nerek** (pogrubienie błony podstawnej w cukrzycy), **choroba Whipple'a** (PAS+ makrofagi w jelicie), **glikogenozy** (PAS+ złogi w hepatocytach). **Ziehl-Neelsen** — prątki kwasooporne (gruźlica; barwnik karbolfuksyna, odbarwianie HCl-alkoholem, kontrastowanie błękitem metylenowym). **H&E** — rutynowe. **Sudan** — lipidy w mrożonych skrawkach. Klucz A jednoznaczny.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-744"
+    },
+    {
+      "id": "HIST-01-014",
+      "text": "Wskaż poprawne zestawienie organelli komórkowych z ich funkcją:",
+      "options": [
+        {
+          "id": "a",
+          "text": "lizosomy — detoksykacja"
+        },
+        {
+          "id": "b",
+          "text": "aparat Golgiego — katabolizm lipidów"
+        },
+        {
+          "id": "c",
+          "text": "siateczka śródplazmatyczna gładka — synteza sterydów"
+        },
+        {
+          "id": "d",
+          "text": "peroksysomy — degradacja białek proteolitycznych"
+        },
+        {
+          "id": "e",
+          "text": "mitochondria — reakcje glikolizy"
+        }
+      ],
+      "correctOptionId": "c",
+      "correctAnswerText": "siateczka śródplazmatyczna gładka — synteza sterydów",
+      "explanation": "**Siateczka śródplazmatyczna gładka (SER)** to organelle błoniaste **bez rybosomów**, kluczowe dla **syntezy lipidów i steroidów**. Zawiera enzymy steroidogenezy (CYP P450) — szczególnie obfita w **komórkach Leydiga** (testosteron), **korze nadnerczy** (kortyzol, aldosteron), **ciałku żółtym** (progesteron/estrogeny). SER pełni też funkcje: **detoksykacja** ksenobiotyków (hepatocyty — CYP P450), **magazynowanie Ca²⁺** (siateczka sarkoplazmatyczna). Pozostałe: **lizosomy** — degradacja (nie detoksykacja = SER) (A); **Golgi** — modyfikacja i sortowanie białek/lipidów, nie katabolizm (B); **peroksysomy** — degradacja **długich kwasów tłuszczowych**, neutralizacja H₂O₂ (D błąd — nie białek); **mitochondria** — cykl Krebsa, OXPHOS, glikoliza jest w cytozolu (E błąd). Klucz: C.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-788"
+    },
+    {
+      "id": "HIST-01-015",
+      "text": "Za ruch rzęsek odpowiada:",
+      "options": [
+        {
+          "id": "a",
+          "text": "kalmodulina"
+        },
+        {
+          "id": "b",
+          "text": "miozyna"
+        },
+        {
+          "id": "c",
+          "text": "aktyna"
+        },
+        {
+          "id": "d",
+          "text": "dyneina"
+        },
+        {
+          "id": "e",
+          "text": "neksyna"
+        }
+      ],
+      "correctOptionId": "d",
+      "correctAnswerText": "dyneina",
+      "explanation": "**Dyneina aksonemalna** to **silnik molekularny rzęsek i wici** — ATP-zależne ślizganie sąsiadujących dubletów mikrotubul w **aksonemie** o strukturze **9+2** (9 dubletów obwodowych + 1 dublet centralny). **Ramiona dyneinowe** (zewnętrzne i wewnętrzne) przyczepione do mikrotubuli A sięgają do mikrotubuli B sąsiedniego dubletu; zmiana konformacji po hydrolizie ATP → ślizg → wygięcie rzęski. **Neksyna** ( E) — białko NEC łączące sąsiadujące dublety, ogranicza ślizg i przekształca go w wygięcie. Defekty dyneiny → **pierwotna dyskineza rzęsek (PCD)**, **zespół Kartagenera** (situs inversus + bezpłodność + przewlekłe zapalenia dróg oddechowych). **Miozyna** ( B) — mięśnie, transport pęcherzyków. **Aktyna** ( C) — mikrokosmki, lamellipodia. **Kalmodulina** ( A) — białko Ca-wiążące. Klucz: D.",
+      "batchLabel": null,
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-817"
+    }
+  ]
+}

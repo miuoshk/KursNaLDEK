@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Infinity as InfinityIcon } from "lucide-react";
 import {
   SESSION_COUNT_PRESETS,
+  getSessionCountLabels,
   resolveSessionPickerCount,
   sessionCountToPickerState,
 } from "@/features/session/lib/sessionCount";
@@ -26,6 +28,9 @@ export function SmartSessionCTA({
   initialSessionCount,
   dueCount = 0,
 }: SmartSessionCTAProps) {
+  const t = useTranslations("subjects");
+  const tSession = useTranslations("session");
+  const { questionsShort, allQuestionsAriaLabel } = getSessionCountLabels(tSession);
   const maxQ = Math.max(1, availableQuestionCount);
   const smartInitial = sessionCountToPickerState(
     Math.min(initialSessionCount, maxQ),
@@ -91,23 +96,23 @@ export function SmartSessionCTA({
 
   return (
     <div className="space-y-4">
-      <h2 className="font-heading text-xl font-bold text-primary">Rozpocznij naukę</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">{t("startLearning")}</h2>
 
       <div className="rounded-card border border-brand-sage/20 bg-card p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
-              Inteligentna sesja
+              {t("smartSession")}
             </h3>
             <p className="mt-2 font-body text-body-sm text-secondary">
-              Algorytm dobierze pytania i zaplanuje powtórki na podstawie Twojej wiedzy
+              {t("smartSessionDesc")}
             </p>
           </div>
           <Link
             href={smartHref}
             className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)]"
           >
-            Rozpocznij sesję
+            {t("startSession")}
           </Link>
         </div>
 
@@ -115,30 +120,30 @@ export function SmartSessionCTA({
           <div className="mt-4 flex flex-col gap-3 rounded-lg border border-brand-gold/20 bg-brand-gold/[0.04] p-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-body text-body-sm font-medium text-primary">
-                Zaplanowane powtórki
+                {t("scheduledReviews")}
               </p>
               <p className="mt-0.5 font-body text-body-xs text-secondary">
                 {dueCount}{" "}
                 {dueCount === 1
-                  ? "pytanie czeka"
+                  ? t("dueWaitingOne")
                   : dueCount < 5
-                    ? "pytania czekają"
-                    : "pytań czeka"}{" "}
-                — tylko powtórki, bez nowych
+                    ? t("dueWaitingFew")
+                    : t("dueWaitingMany")}{" "}
+                {t("dueReviewsOnly")}
               </p>
             </div>
             <Link
               href={dueReviewHref}
               className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110"
             >
-              Powtórz ({Math.min(smartCount, dueCount)})
+              {t("reviewButton", { count: Math.min(smartCount, dueCount) })}
             </Link>
           </div>
         ) : null}
 
         <div className="mt-6 border-t border-border pt-4">
           <p className="font-body text-body-xs uppercase tracking-normal text-muted">
-            Liczba pytań
+            {t("questionCount")}
           </p>
           <PresetPicker
             preset={smartPreset}
@@ -146,9 +151,11 @@ export function SmartSessionCTA({
             maxQ={maxQ}
             onPresetChange={setSmartPreset}
             onCustomChange={setSmartCustom}
+            questionsShort={questionsShort}
+            allQuestionsAriaLabel={allQuestionsAriaLabel}
           />
           <p className="mt-2 font-body text-body-xs text-muted">
-            Dostępnych pytań: {availableQuestionCount}
+            {t("availableQuestions", { count: availableQuestionCount })}
           </p>
         </div>
       </div>
@@ -156,15 +163,15 @@ export function SmartSessionCTA({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
           <h3 className="font-heading text-heading-sm text-primary">
-            Nauka klasyczna
+            {t("classicLearning")}
           </h3>
           <p className="mt-1 font-body text-body-sm text-secondary">
-            Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
+            {t("classicLearningDesc")}
           </p>
 
           <div className="mt-4 border-t border-border pt-3">
             <p className="font-body text-body-xs uppercase tracking-normal text-muted">
-              Liczba pytań
+              {t("questionCount")}
             </p>
             <PresetPicker
               preset={reviewPreset}
@@ -173,6 +180,8 @@ export function SmartSessionCTA({
               onPresetChange={setReviewPreset}
               onCustomChange={setReviewCustom}
               compact
+              questionsShort={questionsShort}
+              allQuestionsAriaLabel={allQuestionsAriaLabel}
             />
           </div>
 
@@ -180,22 +189,22 @@ export function SmartSessionCTA({
             href={reviewHref}
             className="mt-4 inline-flex items-center self-start rounded-lg bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_12px_rgba(54,115,104,0.35)]"
           >
-            Rozpocznij
+            {t("start")}
           </Link>
         </div>
 
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
           <h3 className="font-heading text-heading-sm text-primary">
-            Katalog pytań
+            {t("questionCatalog")}
           </h3>
           <p className="mt-1 font-body text-body-sm text-secondary">
-            Przeglądaj wszystkie pytania i wyjaśnienia
+            {t("questionCatalogDesc")}
           </p>
           <Link
             href={catalogHref}
             className="mt-auto inline-flex items-center self-start rounded-lg border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 hover:bg-brand-sage/10"
           >
-            Przeglądaj
+            {t("browse")}
           </Link>
         </div>
       </div>
@@ -210,6 +219,8 @@ type PresetPickerProps = {
   onPresetChange: (p: PresetValue) => void;
   onCustomChange: (v: string) => void;
   compact?: boolean;
+  questionsShort: string;
+  allQuestionsAriaLabel: string;
 };
 
 function PresetPicker({
@@ -219,6 +230,8 @@ function PresetPicker({
   onPresetChange,
   onCustomChange,
   compact = false,
+  questionsShort,
+  allQuestionsAriaLabel,
 }: PresetPickerProps) {
   const pillClass = compact
     ? "flex h-7 min-w-[36px] items-center justify-center rounded-pill border px-1.5 font-body text-body-sm transition-colors"
@@ -258,7 +271,7 @@ function PresetPicker({
             ? "border-brand-sage bg-brand-sage text-white"
             : "border-border bg-transparent text-secondary hover:text-primary",
         )}
-        aria-label="Wszystkie pytania"
+        aria-label={allQuestionsAriaLabel}
       >
         <InfinityIcon className="size-4" aria-hidden />
       </button>
@@ -281,7 +294,7 @@ function PresetPicker({
           compact ? "h-7 w-[52px]" : "h-8 w-[56px]",
         )}
       />
-      <span className="ml-auto font-body text-body-xs text-muted">pytań</span>
+      <span className="ml-auto font-body text-body-xs text-muted">{questionsShort}</span>
     </div>
   );
 }

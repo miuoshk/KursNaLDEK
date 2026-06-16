@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedExplanation } from "@/features/shared/components/FormattedExplanation";
 import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
 import { cn } from "@/lib/utils";
@@ -35,6 +36,7 @@ type TimerBarProps = {
 };
 
 function TimerBar({ totalSeconds, remainingSeconds }: TimerBarProps) {
+  const t = useTranslations("osce");
   const ratio = totalSeconds > 0 ? Math.max(0, remainingSeconds / totalSeconds) : 0;
 
   return (
@@ -43,12 +45,12 @@ function TimerBar({ totalSeconds, remainingSeconds }: TimerBarProps) {
       role="timer"
       aria-live="polite"
       aria-atomic
-      aria-label={`Pozostały czas: ${remainingSeconds} sekund`}
+      aria-label={t("timeRemainingSeconds", { seconds: remainingSeconds })}
     >
       <div className="mb-2 flex items-center justify-between gap-3">
         <span className="inline-flex items-center gap-1.5 font-body text-body-xs text-secondary">
           <Clock className="size-4 shrink-0 text-brand-gold" aria-hidden />
-          Czas na odpowiedź
+          {t("timeToAnswer")}
         </span>
         <span className="font-body text-body-sm tabular-nums text-brand-gold">
           {remainingSeconds}s
@@ -74,6 +76,8 @@ export type OsceQuestionCardProps = {
 };
 
 export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardProps) {
+  const t = useTranslations("osce");
+  const tCommon = useTranslations("common");
   const onAnswerRef = useRef(onAnswer);
 
   useEffect(() => {
@@ -226,7 +230,7 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="mt-8 rounded-card border border-white/[0.08] bg-card p-5"
           >
-            <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienie</p>
+            <p className="font-heading text-heading-sm text-brand-gold">{tCommon("explanation")}</p>
             <div className="mt-3">
               <FormattedExplanation text={question.explanation} />
             </div>
@@ -243,7 +247,7 @@ export function QuestionCard({ question, onAnswer, onNext }: OsceQuestionCardPro
               onClick={onNext}
               className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
             >
-              Następne pytanie
+              {t("nextQuestion")}
             </button>
           </div>
         </>

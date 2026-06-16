@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-101",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który model systemu ochrony zdrowia zakłada finansowanie opieki głównie z podatków, państwową własność placówek i traktowanie zdrowia jako prawa obywatelskiego, a nie towaru?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Model Beveridge'a"
+      },
+      {
+        "id": "b",
+        "text": "Model Bismarcka"
+      },
+      {
+        "id": "c",
+        "text": "Model liberalny (rynkowy)"
+      },
+      {
+        "id": "d",
+        "text": "Model mieszany"
+      },
+      {
+        "id": "e",
+        "text": "Model rezydualny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Model **Beveridge'a** finansowany jest z **ogólnych podatków**, placówki są w większości **państwowe**, a pacjent nie płaci w momencie świadczenia. Zapoczątkowany przez **Williama Beveridge'a** (raport z 1942 r.), dał początek brytyjskiemu **NHS**. Kluczowa zasada: **uniwersalność** i zdrowie jako **prawo**, nie produkt. Różni się od modelu **Bismarcka**, który opiera się na obowiązkowych składkach pracownik-pracodawca, nie na podatkach.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-102",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Kto i w którym roku wprowadził pierwszy obowiązkowy system ubezpieczeń zdrowotnych finansowany ze składek pracowników i pracodawców?",
+    "options": [
+      {
+        "id": "a",
+        "text": "William Beveridge w 1942 r."
+      },
+      {
+        "id": "b",
+        "text": "Otto von Bismarck w 1883 r."
+      },
+      {
+        "id": "c",
+        "text": "Otto von Bismarck w 1942 r."
+      },
+      {
+        "id": "d",
+        "text": "William Beveridge w 1883 r."
+      },
+      {
+        "id": "e",
+        "text": "Rudolf Virchow w 1848 r."
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Model ubezpieczeniowy wprowadził kanclerz **Otto von Bismarck** w Niemczech w **1883 r.** Oparty był na **obowiązkowych składkach** dzielonych między pracowników i pracodawców, z niezależnymi ubezpieczycielami (kasy chorych). Mnemonik: **B**ismarck = **B**ezpieczenie (składki), **B**everidge = **B**udżet (podatki). Beveridge działał dużo później (raport 1942 r.), więc daty i nazwiska bywają mylone — kluczowe jest skojarzenie składki↔Bismarck.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-103",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jednym z politycznych motywów wprowadzenia przez Bismarcka ubezpieczeń zdrowotnych było:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Spełnienie wymogów Unii Europejskiej"
+      },
+      {
+        "id": "b",
+        "text": "Realizacja postulatów raportu Beveridge'a"
+      },
+      {
+        "id": "c",
+        "text": "Przeciwdziałanie rosnącym wpływom ruchów socjalistycznych i stabilizacja władzy"
+      },
+      {
+        "id": "d",
+        "text": "Prywatyzacja istniejących kas chorych"
+      },
+      {
+        "id": "e",
+        "text": "Wprowadzenie modelu rynkowego konkurencji"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Bismarck wprowadził ubezpieczenia w ramach polityki **\"żelaznej ręki\"**, by skonsolidować władzę i **ograniczyć wpływy socjalistów**, którzy domagali się reform socjalnych. Zaspokojenie żądań klasy robotniczej miało **zminimalizować ryzyko rewolucji**. To klasyczny przykład reformy socjalnej o motywacji politycznej — zabezpieczenie społeczne jako narzędzie stabilizacji państwa w dobie rewolucji przemysłowej i urbanizacji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-104",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który kraj jest najczęściej przywoływanym przykładem liberalnego (rynkowego) modelu ochrony zdrowia, gdzie opieka traktowana jest jako towar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wielka Brytania"
+      },
+      {
+        "id": "b",
+        "text": "Niemcy"
+      },
+      {
+        "id": "c",
+        "text": "Szwecja"
+      },
+      {
+        "id": "d",
+        "text": "Stany Zjednoczone"
+      },
+      {
+        "id": "e",
+        "text": "Kanada"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Stany Zjednoczone** są modelowym przykładem systemu **liberalnego (rynkowego)**, gdzie dominują **prywatne ubezpieczenia** i prywatni świadczeniodawcy, a państwo ma minimalną rolę. Opieka jest **towarem**, dostęp zależy od zdolności finansowej. Dystraktory to kraje Beveridge'a (Wlk. Brytania, Szwecja, Kanada) lub Bismarcka (Niemcy). Szwajcaria też ma elementy rynkowe, ale z obowiązkowym ubezpieczeniem i dotacjami państwa.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-105",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który typ systemu ochrony zdrowia funkcjonuje współcześnie w Polsce?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Czysto publiczny model Beveridge'a"
+      },
+      {
+        "id": "b",
+        "text": "Czysto liberalny model rynkowy"
+      },
+      {
+        "id": "c",
+        "text": "Model w pełni prywatnych ubezpieczeń obowiązkowych"
+      },
+      {
+        "id": "d",
+        "text": "Model rezydualny oparty wyłącznie na pomocy społecznej"
+      },
+      {
+        "id": "e",
+        "text": "Model mieszany, z dominującą rolą publicznego NFZ i rosnącym sektorem prywatnym"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Polska ma **model mieszany**: dominuje publiczne finansowanie przez **NFZ** (powołany w **1999 r.**), ale rośnie rola sektora prywatnego. Łączy elementy publiczne (składka zdrowotna) i prywatne (płatności bezpośrednie, ubezpieczenia komercyjne). Problemy: długie kolejki, niedofinansowanie (wydatki poniżej średniej UE), nierówności miasto-wieś. Model mieszany występuje też m.in. we Francji i Australii. Mieszany model próbuje łączyć dostępność publiczną z elastycznością prywatną.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-106",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W którym roku powołano w Polsce Narodowy Fundusz Zdrowia (NFZ), przechodząc na model ubezpieczeniowy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1999"
+      },
+      {
+        "id": "b",
+        "text": "1950"
+      },
+      {
+        "id": "c",
+        "text": "1989"
+      },
+      {
+        "id": "d",
+        "text": "2004"
+      },
+      {
+        "id": "e",
+        "text": "1918"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**NFZ** powołano w **1999 r.** jako centralną instytucję finansującą ochronę zdrowia, co oznaczało przejście na **model ubezpieczeniowy** po transformacji ustrojowej. Daty do rozróżnienia: **1950** — powszechne ubezpieczenie w PRL (opieka z budżetu państwa, lekarze jako pracownicy państwowi); **1989** — początek transformacji; **1918** — budowa systemu w II RP. NFZ zastąpił wcześniejsze Kasy Chorych. Mnogość dat (1950, 1989, 1999) czyni to pytanie podatnym na pomyłki.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-107",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jak nazywa się publiczne, obowiązkowe ubezpieczenie zdrowotne w niemieckim systemie ochrony zdrowia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "PKV (Private Krankenversicherung)"
+      },
+      {
+        "id": "b",
+        "text": "GKV (Gesetzliche Krankenversicherung)"
+      },
+      {
+        "id": "c",
+        "text": "NHS (National Health Service)"
+      },
+      {
+        "id": "d",
+        "text": "NFZ (Narodowy Fundusz Zdrowia)"
+      },
+      {
+        "id": "e",
+        "text": "HMO (Health Maintenance Organization)"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**GKV** (Gesetzliche Krankenversicherung) to niemieckie **publiczne, obowiązkowe** ubezpieczenie zdrowotne, solidarnościowe — składki zależą od dochodów (osoby zarabiające więcej płacą więcej). **PKV** (Private Krankenversicherung) to ubezpieczenie **prywatne** dla osób o wyższych dochodach i samozatrudnionych, gdzie składka zależy od zakresu i wieku. Składki w GKV stanowią ok. 14-15% dochodu brutto. Rozróżnienie GKV/PKV to klucz do zrozumienia niemieckiego dualizmu ubezpieczeń.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-108",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która cecha jest typową WADĄ modelu Beveridge'a wymienianą w materiale?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wysokie koszty administracyjne prywatnych ubezpieczeń"
+      },
+      {
+        "id": "b",
+        "text": "Brak powszechnego dostępu do opieki"
+      },
+      {
+        "id": "c",
+        "text": "Przeciążenie systemu i długie kolejki przy ograniczonych zasobach publicznych"
+      },
+      {
+        "id": "d",
+        "text": "Całkowity brak roli państwa"
+      },
+      {
+        "id": "e",
+        "text": "Uzależnienie dostępu wyłącznie od dochodów pacjenta"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Typową wadą modelu **Beveridge'a** jest **przeciążenie systemu** — przy dużej populacji i ograniczonych zasobach publicznych powstają **długie kolejki**. Inne wady: mniejsza innowacyjność, zależność od decyzji politycznych, wysoka presja podatkowa. Dystraktory A i E opisują wady modelu **liberalnego** (koszty administracyjne ubezpieczeń, dostęp zależny od dochodu), a nie Beveridge'a, który gwarantuje powszechny dostęp.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-109",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W okresie PRL, w 1950 roku, kluczową zmianą w polskim systemie ochrony zdrowia było:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Powołanie Narodowego Funduszu Zdrowia"
+      },
+      {
+        "id": "b",
+        "text": "Wprowadzenie modelu Bismarcka ze składkami"
+      },
+      {
+        "id": "c",
+        "text": "Prywatyzacja szpitali"
+      },
+      {
+        "id": "d",
+        "text": "Wprowadzenie powszechnego ubezpieczenia zdrowotnego finansowanego z budżetu państwa"
+      },
+      {
+        "id": "e",
+        "text": "Likwidacja państwowego systemu szpitali"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W **1950 r.** w PRL wprowadzono **powszechne ubezpieczenie zdrowotne**, dzięki czemu opieka stała się dostępna dla wszystkich obywateli, **finansowana z budżetu państwa**. Utworzono państwowy system szpitali i przychodni, a lekarze stali się **pracownikami państwowymi**. Model ten zbliżony był do rozwiązań typu Beveridge'a (budżet, nie składki). NFZ i model składkowy pojawiły się dopiero po transformacji (1999 r.).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-110",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który zabór w XIX wieku wprowadził system ubezpieczeń zdrowotnych obejmujący głównie robotników oraz instytucje kontroli sanitarno-epidemiologicznej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zabór rosyjski"
+      },
+      {
+        "id": "b",
+        "text": "Żaden — system powstał dopiero w II RP"
+      },
+      {
+        "id": "c",
+        "text": "Zabór austriacki"
+      },
+      {
+        "id": "d",
+        "text": "Wszystkie trzy w równym stopniu"
+      },
+      {
+        "id": "e",
+        "text": "Zabór pruski"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "W **zaborze pruskim** wprowadzono **system ubezpieczeń zdrowotnych** obejmujący głównie **robotników** oraz instytucje kontroli **sanitarno-epidemiologicznej** — odzwierciedlał on bismarckowskie reformy z Niemiec. **Zabór austriacki** też rozwijał ubezpieczenia, ale ograniczone do wybranych grup. **Zabór rosyjski** miał system najsłabiej rozwinięty z ograniczonym dostępem do opieki. Różnice wynikały z polityki socjalnej zaborców.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-111",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która z poniższych jest charakterystyczną cechą społeczną modelu liberalnego ochrony zdrowia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Indywidualna odpowiedzialność za zdrowie i traktowanie opieki jako towaru"
+      },
+      {
+        "id": "b",
+        "text": "Powszechne poczucie solidarności społecznej w zdrowiu"
+      },
+      {
+        "id": "c",
+        "text": "Pełna równość dostępu niezależnie od dochodów"
+      },
+      {
+        "id": "d",
+        "text": "Dominacja państwowych placówek"
+      },
+      {
+        "id": "e",
+        "text": "Brak roli organizacji charytatywnych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Model liberalny promuje **indywidualną odpowiedzialność za zdrowie** — każdy odpowiada za siebie poprzez styl życia i wykupienie ubezpieczenia. Opieka traktowana jest jako **towar**, nie prawo obywatelskie. Brakuje powszechnej **solidarności społecznej** (która cechuje modele Beveridge'a i Bismarcka). Lukę dla najuboższych próbują wypełniać **organizacje non-profit i charytatywne**. Skutek: nierówności w dostępie zależne od statusu majątkowego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-112",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zjawisko \"błędnego koła wykluczenia zdrowotnego\" opisane w materiale polega na tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pacjenci bogaci nadużywają systemu publicznego"
+      },
+      {
+        "id": "b",
+        "text": "Czynniki ekonomiczne pogarszają zdrowie, a złe zdrowie utrudnia poprawę sytuacji życiowej"
+      },
+      {
+        "id": "c",
+        "text": "Nadmiar profilaktyki prowadzi do hipochondrii"
+      },
+      {
+        "id": "d",
+        "text": "Lekarze odmawiają leczenia osób ubogich"
+      },
+      {
+        "id": "e",
+        "text": "Prywatne ubezpieczenia zwiększają dostępność dla wszystkich"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Błędne koło wykluczenia zdrowotnego**: trudna sytuacja ekonomiczna (przewlekły stres, niższa samoocena, rezygnacja z profilaktyki i terapii) **pogarsza zdrowie**, a pogorszone zdrowie **utrudnia poprawę sytuacji życiowej** (np. pracy zawodowej), co dalej pogłębia ubóstwo. Mechanizm samonapędzający się, łączący aspekt materialny i psychologiczny ubóstwa. To kluczowe pojęcie pokazujące sprzężenie zwrotne między biedą a chorobą.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-113",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Pojęcie \"wykluczenia komunikacyjnego i terytorialnego\" w dostępie do opieki zdrowotnej odnosi się przede wszystkim do:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Barier językowych u imigrantów"
+      },
+      {
+        "id": "b",
+        "text": "Braku dostępu do internetu i telemedycyny"
+      },
+      {
+        "id": "c",
+        "text": "Utrudnionego dostępu mieszkańców wsi i małych miejscowości do specjalistów oraz kosztów dojazdu"
+      },
+      {
+        "id": "d",
+        "text": "Cenzury informacji medycznej"
+      },
+      {
+        "id": "e",
+        "text": "Wykluczenia osób niesłyszących"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Wykluczenie komunikacyjne i terytorialne** dotyczy mieszkańców **obszarów wiejskich i małych miejscowości**, którzy mają utrudniony dostęp do specjalistów i zaawansowanej diagnostyki. Konieczność pokonywania **znacznych odległości** generuje dodatkowe koszty (transport, nocleg), często nieosiągalne. Brak infrastruktury komunikacyjnej i ograniczony dostęp do informacji zdrowotnej potęgują **wykluczenie zdrowotne**. Łączy się z sytuacją ekonomiczną pacjenta.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-114",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, \"ukryte koszty profilaktyki\" obejmują przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie cenę samego badania"
+      },
+      {
+        "id": "b",
+        "text": "Koszty zakupu prywatnego ubezpieczenia"
+      },
+      {
+        "id": "c",
+        "text": "Podatki na NFZ"
+      },
+      {
+        "id": "d",
+        "text": "Transport, utracone dochody z powodu nieobecności w pracy, koszty opieki nad dziećmi"
+      },
+      {
+        "id": "e",
+        "text": "Opłaty za rejestrację w przychodni"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Ukryte koszty profilaktyki** to wydatki towarzyszące nawet **bezpłatnemu** badaniu: **transport** do placówki (zwłaszcza na wsi), **utracone dochody** z powodu nieobecności w pracy (brak elastycznego grafiku), oraz **koszty opieki** nad dziećmi/seniorami w czasie wizyty. Pokazują, że \"darmowe\" świadczenie wcale nie jest bezkosztowe dla pacjenta o niskich dochodach — to istotna bariera nieoczywista na pierwszy rzut oka.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-115",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Dlaczego osoby w trudnej sytuacji finansowej szczególnie często rezygnują właśnie z profilaktyki (a nie z leczenia ostrego)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bo profilaktyka jest zawsze droższa niż leczenie"
+      },
+      {
+        "id": "b",
+        "text": "Bo profilaktyka wymaga hospitalizacji"
+      },
+      {
+        "id": "c",
+        "text": "Bo profilaktyka jest zakazana dla osób ubogich"
+      },
+      {
+        "id": "d",
+        "text": "Bo NFZ nie refunduje żadnej profilaktyki"
+      },
+      {
+        "id": "e",
+        "text": "Bo korzyści z profilaktyki są odroczone w czasie, więc ustępują doraźnym potrzebom"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Profilaktyka ma charakter **prewencyjny**, więc jej korzyści są **odroczone w czasie**. Osoby w trudnej sytuacji materialnej, zmuszone wybierać między bieżącymi potrzebami (jedzenie, opłaty) a inwestycją w odległą korzyść, **odkładają działania profilaktyczne** na rzecz potrzeb doraźnych. Dochodzi do tego niska świadomość ekonomiczna — pacjenci nie dostrzegają, że profilaktyka daje oszczędności długoterminowe. To mechanizm priorytetyzacji potrzeb pilnych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-116",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Stygmatyzacja związana z ubóstwem w kontekście zdrowotnym przejawia się tym, że osoby o niższym statusie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Unikają wizyt i programów profilaktycznych z obawy przed oceną i poczuciem, że to \"luksus\" dla bogatszych"
+      },
+      {
+        "id": "b",
+        "text": "Otrzymują lepszą opiekę z powodu współczucia personelu"
+      },
+      {
+        "id": "c",
+        "text": "Mają zawsze pierwszeństwo w kolejkach"
+      },
+      {
+        "id": "d",
+        "text": "Są automatycznie obejmowane prywatnym ubezpieczeniem"
+      },
+      {
+        "id": "e",
+        "text": "Korzystają częściej z innowacyjnych terapii"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Stygmatyzacja ubóstwa** sprawia, że osoby o niższym statusie społecznym mogą **unikać wizyt** u lekarza i programów profilaktycznych ze **strachu przed oceną** lub braku poczucia przynależności do \"społeczności zdrowotnej\". Profilaktyka bywa postrzegana jako **\"luksus\" dla bogatszych**. Wstyd związany z ubóstwem prowadzi do opóźnionych diagnoz. To bariera **psychospołeczna**, nie tylko czysto finansowa — pokazuje społeczny wymiar nierówności zdrowotnych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-117",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jak stres finansowy wpływa na skuteczność terapii według materiału?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nie ma żadnego wpływu na proces terapeutyczny"
+      },
+      {
+        "id": "b",
+        "text": "Obniża zdolność koncentracji i zaangażowania, może prowadzić do nawrotów chorób psychicznych"
+      },
+      {
+        "id": "c",
+        "text": "Poprawia koncentrację pacjenta na leczeniu"
+      },
+      {
+        "id": "d",
+        "text": "Zwiększa motywację do kontynuowania terapii"
+      },
+      {
+        "id": "e",
+        "text": "Dotyczy wyłącznie terapii chirurgicznych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Stres finansowy** jest jednym z głównych źródeł przewlekłego stresu. W terapii **obniża zdolność koncentracji** i zaangażowania pacjenta (uwaga pochłonięta kwestiami materialnymi), utrudnia realizację zaleceń, obniża jakość życia. Może prowadzić do **nawrotów chorób psychicznych** (depresja, lęki) i pogorszenia stanu fizycznego, **zmniejszając skuteczność terapii**. Powstaje sprzężenie: bieda → stres → gorsze wyniki leczenia → wyższe koszty.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-118",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zjawisko \"nierówności terapeutycznych\" wynikających z nierówności finansowych polega na tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wszyscy pacjenci mają identyczny dostęp do terapii"
+      },
+      {
+        "id": "b",
+        "text": "Terapie innowacyjne są tańsze od standardowych"
+      },
+      {
+        "id": "c",
+        "text": "Tylko część pacjentów może skorzystać z innowacyjnych, kosztownych terapii nieobjętych refundacją"
+      },
+      {
+        "id": "d",
+        "text": "Państwo refunduje wszystkie terapie genowe"
+      },
+      {
+        "id": "e",
+        "text": "Nierówności dotyczą tylko diagnostyki, nie terapii"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Nierówności terapeutyczne** powstają, gdy postęp medyczny (immunoterapia, terapie biologiczne, genowe) oferuje skuteczne, ale **bardzo kosztowne** metody, często **nieobjęte refundacją**. W efekcie tylko **część pacjentów** — zamożniejszych — może z nich skorzystać. Nierówności **finansowe** przekładają się więc bezpośrednio na nierówności w **dostępie do ratujących życie terapii**. To jedna z najostrzejszych form wykluczenia zdrowotnego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-119",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, niskie wynagrodzenia personelu medycznego wpływają na proces diagnostyczny przede wszystkim poprzez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zwiększenie liczby zlecanych badań"
+      },
+      {
+        "id": "b",
+        "text": "Wydłużenie czasu konsultacji każdego pacjenta"
+      },
+      {
+        "id": "c",
+        "text": "Poprawę jakości diagnostyki"
+      },
+      {
+        "id": "d",
+        "text": "Wypalenie zawodowe, skrócenie czasu na pacjenta i ryzyko przeoczenia objawów"
+      },
+      {
+        "id": "e",
+        "text": "Brak wpływu na jakość opieki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Niskie wynagrodzenia prowadzą do **wypalenia zawodowego** personelu i niedoboru kadr. Przeciążony lekarz **skraca czas** poświęcany pacjentowi, co zwiększa ryzyko **przeoczenia istotnych objawów** i zaniedbania analizy wyników. Skutkuje to mniejszą dokładnością diagnostyki, opóźnieniami i decyzjami o ograniczeniu zakresu badań. Migracja zawodowa kadr za granicę dodatkowo pogłębia deficyt specjalistów — to systemowy efekt niedofinansowania.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-120",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który mechanizm najlepiej ilustruje \"mentalność tańszych opcji\" u pacjentów z ograniczeniami finansowymi?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wybór najdroższej dostępnej terapii dla pewności"
+      },
+      {
+        "id": "b",
+        "text": "Domaganie się wyłącznie terapii innowacyjnych"
+      },
+      {
+        "id": "c",
+        "text": "Rezygnacja z jakiegokolwiek leczenia"
+      },
+      {
+        "id": "d",
+        "text": "Korzystanie wyłącznie z prywatnej opieki"
+      },
+      {
+        "id": "e",
+        "text": "Wybór tańszych, mniej skutecznych lub niesprawdzonych terapii, co grozi gorszymi wynikami"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Mentalność \"tańszych opcji\"** to wybieranie przez pacjentów z ograniczeniami finansowymi **tańszych, mniej skutecznych** rozwiązań zdrowotnych, w tym **niesprawdzonych lub niezatwierdzonych terapii**, które nie gwarantują rezultatów. W krótkim okresie oszczędza to środki, ale długoterminowo może prowadzić do pogorszenia zdrowia i **wyższych kosztów** leczenia powikłań. Wiąże się z brakiem edukacji finansowej i nieumiejętnością oceny koszt-efekt.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-121",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który z poniższych elementów NIE jest wymieniany jako główny element systemu ochrony zdrowia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Giełda papierów wartościowych"
+      },
+      {
+        "id": "b",
+        "text": "Personel medyczny"
+      },
+      {
+        "id": "c",
+        "text": "Finansowanie (składki, podatki, ubezpieczenia)"
+      },
+      {
+        "id": "d",
+        "text": "Placówki medyczne (szpitale, przychodnie)"
+      },
+      {
+        "id": "e",
+        "text": "Instytucje zarządzające i regulujące (np. Ministerstwo Zdrowia, NFZ)"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Główne elementy systemu ochrony zdrowia to: **placówki medyczne**, **personel medyczny**, **finansowanie** (składki, podatki, ubezpieczenia prywatne), **instytucje zarządzające i regulujące** (Ministerstwo Zdrowia, NFZ, WHO) oraz **pacjenci**. **Giełda papierów wartościowych** nie jest elementem systemu. To pytanie typu \"który NIE należy\" — wszystkie dystraktory to realne elementy systemu, a kluczem jest pojęcie spoza definicji systemu ochrony zdrowia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-122",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Szwajcarski system ochrony zdrowia, mimo rynkowego charakteru, różni się od czysto liberalnego tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Jest finansowany wyłącznie z podatków"
+      },
+      {
+        "id": "b",
+        "text": "Opiera się na obowiązkowym prywatnym ubezpieczeniu z podstawowym pakietem i dotacjami państwa dla osób o niskich dochodach"
+      },
+      {
+        "id": "c",
+        "text": "Całkowicie wyklucza sektor prywatny"
+      },
+      {
+        "id": "d",
+        "text": "Nie dopuszcza konkurencji ubezpieczycieli"
+      },
+      {
+        "id": "e",
+        "text": "Jest identyczny z brytyjskim NHS"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Szwajcaria** opiera się na **obowiązkowym prywatnym ubezpieczeniu** — ubezpieczyciele konkurują, ale muszą oferować **podstawowy pakiet** usług, a państwo **dotuje ubezpieczenia** osób o niskich dochodach. To odróżnia ją od czysto liberalnego modelu USA (gdzie ubezpieczenie bywa dobrowolne, bez gwarantowanego pakietu). Szwajcaria łączy mechanizmy rynkowe z elementami solidarnościowymi i regulacją państwową — model rynkowy z korektą.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-123",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która grupa najczęściej korzysta z prywatnego ubezpieczenia PKV w niemieckim systemie ochrony zdrowia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie osoby bezrobotne"
+      },
+      {
+        "id": "b",
+        "text": "Wyłącznie emeryci"
+      },
+      {
+        "id": "c",
+        "text": "Osoby o wyższych dochodach, samozatrudnieni i pracownicy państwowi"
+      },
+      {
+        "id": "d",
+        "text": "Tylko imigranci"
+      },
+      {
+        "id": "e",
+        "text": "Wszyscy obywatele obowiązkowo"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**PKV** (prywatne ubezpieczenie) w Niemczech dostępne jest głównie dla osób o **wyższych dochodach** (powyżej progu obowiązku GKV), **samozatrudnionych** oraz **pracowników państwowych** (urzędników). W odróżnieniu od solidarnościowego GKV, składki PKV zależą od **zakresu ubezpieczenia i wieku**, nie od dochodu. To rodzi pewne nierówności — zamożniejsi mają szybszy dostęp do specjalistów i wyższy standard usług. To źródło częściowych nierówności w skądinąd solidarnościowym systemie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-124",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Co oznacza solidarnościowy charakter publicznego ubezpieczenia GKV w Niemczech?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wszyscy płacą identyczną kwotę składki"
+      },
+      {
+        "id": "b",
+        "text": "Ubezpieczenie jest dobrowolne"
+      },
+      {
+        "id": "c",
+        "text": "Składki płaci wyłącznie pracodawca"
+      },
+      {
+        "id": "d",
+        "text": "Osoby zarabiające więcej płacą wyższe składki, finansując dostęp dla mniej zarabiających"
+      },
+      {
+        "id": "e",
+        "text": "Dostęp zależy od wysokości wpłaconej składki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Solidarnościowy** charakter GKV oznacza, że składki naliczane są **proporcjonalnie do dochodów** — osoby **zarabiające więcej płacą wyższe składki**, ale zakres świadczeń jest taki sam dla wszystkich. Bogatsi współfinansują więc dostęp uboższych. To przeciwieństwo zasady ekwiwalentności (gdzie świadczenie zależy od wpłaty), charakterystycznej dla ubezpieczeń prywatnych. Solidaryzm to fundament modelu bismarckowskiego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-125",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które wyzwanie demograficzne jest wspólnym, kluczowym problemem ekonomicznym dla systemów ochrony zdrowia Niemiec i Polski?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gwałtowny przyrost naturalny"
+      },
+      {
+        "id": "b",
+        "text": "Spadek kosztów leczenia"
+      },
+      {
+        "id": "c",
+        "text": "Brak imigracji"
+      },
+      {
+        "id": "d",
+        "text": "Nadmiar lekarzy specjalistów"
+      },
+      {
+        "id": "e",
+        "text": "Starzenie się społeczeństwa i wzrost zapotrzebowania na opiekę długoterminową"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Zarówno Niemcy, jak i Polska zmagają się ze **starzeniem się społeczeństwa** — wzrost liczby osób 65+ generuje rosnące zapotrzebowanie na **opiekę geriatryczną, rehabilitację i opiekę długoterminową**, co podnosi koszty i obciąża finansowo system. W Polsce dochodzą do tego braki kadrowe i migracja zawodowa lekarzy. To jedno z najpoważniejszych długofalowych wyzwań ekonomicznych obu systemów. Demografia jest więc wspólnym mianownikiem presji kosztowej obu krajów.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

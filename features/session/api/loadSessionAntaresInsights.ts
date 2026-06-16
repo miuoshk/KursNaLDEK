@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSessionInsights";
@@ -22,9 +23,10 @@ export type LoadSessionAntaresInsightsResult =
 export async function loadSessionAntaresInsights(
   sessionIdRaw: string,
 ): Promise<LoadSessionAntaresInsightsResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(sessionIdRaw);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowy identyfikator sesji." };
+    return { ok: false, message: t("errors.invalidSessionId") };
   }
 
   try {
@@ -35,7 +37,7 @@ export async function loadSessionAntaresInsights(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Brak sesji." };
+      return { ok: false, message: t("errors.noSession") };
     }
 
     const { data: session, error: se } = await supabase
@@ -46,7 +48,7 @@ export async function loadSessionAntaresInsights(
       .maybeSingle();
 
     if (se || !session) {
-      return { ok: false, message: "Sesja nie została znaleziona." };
+      return { ok: false, message: t("errors.sessionNotFound") };
     }
 
     const { sessionInsights, examReadiness } = parseStoredSessionInsights(
@@ -63,6 +65,6 @@ export async function loadSessionAntaresInsights(
     };
   } catch (e) {
     console.error("[loadSessionAntaresInsights]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

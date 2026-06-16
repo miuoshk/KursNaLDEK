@@ -2,6 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { updateProfile } from "@/features/settings/api/updateProfile";
 import type { SettingsProfile } from "@/features/settings/types";
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export function ProfileSection({ profile, email }: Props) {
+  const t = useTranslations("settings");
   const router = useRouter();
   const { toast } = useToast();
   const [nick, setNick] = useState(profile.nick);
@@ -43,7 +45,7 @@ export function ProfileSection({ profile, email }: Props) {
     e.preventDefault();
     if (!dirty) return;
     if (!emojiValid) {
-      toast("Wybierz dokładnie jedno emoji lub zostaw pole puste.", "error");
+      toast(t("profile.emojiInvalid"), "error");
       return;
     }
     setSaving(true);
@@ -56,7 +58,7 @@ export function ProfileSection({ profile, email }: Props) {
     });
     setSaving(false);
     if (res.ok) {
-      toast("Zmiany zapisane", "success");
+      toast(t("profile.saved"), "success");
       router.refresh();
     } else toast(res.message, "error");
   }
@@ -71,7 +73,7 @@ export function ProfileSection({ profile, email }: Props) {
 
   return (
     <section>
-      <h2 className="font-heading text-xl font-bold text-primary">Profil</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">{t("profile.title")}</h2>
       <div className="mt-6 flex flex-wrap items-center gap-6">
         <div
           className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-3xl text-brand-gold"
@@ -82,10 +84,10 @@ export function ProfileSection({ profile, email }: Props) {
         <div className="min-w-0 flex-1">
           <EmojiInput
             name="avatar_emoji_settings"
-            label="Twój avatar (emoji)"
+            label={t("profile.avatarLabel")}
             value={avatarEmoji}
             onChange={setAvatarEmoji}
-            helper="Otwórz systemowy picker emoji (⌃⌘Space na Mac, Win+. na Windows, klawiatura emoji w telefonie) i wybierz dowolny symbol."
+            helper={t("profile.avatarHelper")}
           />
         </div>
       </div>
@@ -93,7 +95,7 @@ export function ProfileSection({ profile, email }: Props) {
       <form onSubmit={onSubmit} className="mt-8 space-y-5">
         <div>
           <label htmlFor="dn" className="font-body text-body-sm text-secondary">
-            Imię i nazwisko
+            {t("profile.fullName")}
           </label>
           <input
             id="dn"
@@ -103,12 +105,12 @@ export function ProfileSection({ profile, email }: Props) {
             className="mt-1.5 w-full cursor-not-allowed rounded-btn border border-border bg-card-hover/50 px-4 py-3 font-body text-muted"
           />
           <p className="mt-1 font-body text-body-xs text-muted">
-            Imię i nazwisko jest wymagane przy rejestracji i nie podlega edycji.
+            {t("profile.fullNameReadonly")}
           </p>
         </div>
         <div>
           <label htmlFor="nick" className="font-body text-body-sm text-secondary">
-            Nick (ranking)
+            {t("profile.nick")}
           </label>
           <input
             id="nick"
@@ -118,7 +120,7 @@ export function ProfileSection({ profile, email }: Props) {
           />
         </div>
         <div>
-          <span className="font-body text-body-sm text-secondary">Email</span>
+          <span className="font-body text-body-sm text-secondary">{t("profile.email")}</span>
           <input
             readOnly
             disabled
@@ -128,7 +130,7 @@ export function ProfileSection({ profile, email }: Props) {
         </div>
         <div>
           <label htmlFor="tr" className="font-body text-body-sm text-secondary">
-            Ścieżka
+            {t("profile.track")}
           </label>
           <div className="relative mt-1.5">
             <select
@@ -137,8 +139,8 @@ export function ProfileSection({ profile, email }: Props) {
               onChange={(e) => setTrack(e.target.value)}
               className={selectClass}
             >
-              <option value="stomatologia">Stomatologia</option>
-              <option value="lekarski">Lekarski</option>
+              <option value="stomatologia">{t("profile.trackStomatologia")}</option>
+              <option value="lekarski">{t("profile.trackLekarski")}</option>
             </select>
             <ChevronDown
               className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
@@ -148,7 +150,7 @@ export function ProfileSection({ profile, email }: Props) {
         </div>
         <div>
           <label htmlFor="yr" className="font-body text-body-sm text-secondary">
-            Rok studiów
+            {t("profile.studyYear")}
           </label>
           <div className="relative mt-1.5">
             <select id="yr" value={year} onChange={(e) => setYear(e.target.value)} className={selectClass}>
@@ -167,7 +169,7 @@ export function ProfileSection({ profile, email }: Props) {
           disabled={!dirty || saving || !emojiValid}
           className="rounded-btn bg-brand-gold px-6 py-2.5 font-semibold text-brand-bg transition-colors hover:brightness-110 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-40"
         >
-          Zapisz zmiany
+          {t("profile.saveChanges")}
         </button>
       </form>
     </section>

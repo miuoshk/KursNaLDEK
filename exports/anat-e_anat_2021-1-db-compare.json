@@ -1,0 +1,2216 @@
+{
+  "batchLabel": "e_anat_2021/1",
+  "sourceFile": "/Users/miuoshk/Downloads/anatlek_batch_e2021_1.sql",
+  "sourcePrefix": "ANATLEK",
+  "batchCount": 256,
+  "dbAnaActive": 808,
+  "sameSourceAlreadyInDb": 0,
+  "internalCut": [],
+  "exactDbCount": 30,
+  "nearDbCount": 16,
+  "keyConflictCount": 35,
+  "freshCount": 210,
+  "recommendedCut": [
+    "ANATLEK-12",
+    "ANATLEK-18",
+    "ANATLEK-26",
+    "ANATLEK-41",
+    "ANATLEK-42",
+    "ANATLEK-53",
+    "ANATLEK-64",
+    "ANATLEK-75",
+    "ANATLEK-77",
+    "ANATLEK-79",
+    "ANATLEK-80",
+    "ANATLEK-86",
+    "ANATLEK-87",
+    "ANATLEK-99",
+    "ANATLEK-100",
+    "ANATLEK-111",
+    "ANATLEK-120",
+    "ANATLEK-125",
+    "ANATLEK-131",
+    "ANATLEK-132",
+    "ANATLEK-135",
+    "ANATLEK-144",
+    "ANATLEK-150",
+    "ANATLEK-160",
+    "ANATLEK-161",
+    "ANATLEK-178",
+    "ANATLEK-180",
+    "ANATLEK-182",
+    "ANATLEK-194",
+    "ANATLEK-238",
+    "ANATLEK-33",
+    "ANATLEK-58",
+    "ANATLEK-73",
+    "ANATLEK-130",
+    "ANATLEK-143",
+    "ANATLEK-147",
+    "ANATLEK-149",
+    "ANATLEK-162",
+    "ANATLEK-166",
+    "ANATLEK-170",
+    "ANATLEK-173",
+    "ANATLEK-174",
+    "ANATLEK-176",
+    "ANATLEK-198",
+    "ANATLEK-215",
+    "ANATLEK-236"
+  ],
+  "exactDb": [
+    {
+      "srccode": "ANATLEK-12",
+      "topic": "ANA-TRZ",
+      "text": "Jaka jest średnia liczba chrząstek budujących tchawicę?",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-trz-192",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-590"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-18",
+      "topic": "ANA-KON",
+      "text": "Brzeg przyśrodkowy trójkąta udowego tworzy:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-kon-080",
+          "topic_id": "ANA-KON",
+          "correct": "b",
+          "source_code": "ANAT-e2022-1-575"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-26",
+      "topic": "ANA-TRZ",
+      "text": "Osklepek opłucnej:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-trz-199",
+          "topic_id": "ANA-TRZ",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-613"
+        },
+        {
+          "id": "ana-trz-138",
+          "topic_id": "ANA-TRZ",
+          "correct": "b",
+          "source_code": "ANAT-e2023-1-415"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-41",
+      "topic": "ANA-JAM",
+      "text": "Nerw językowy unerwia:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-ner-031",
+          "topic_id": "ANA-NER",
+          "correct": "c",
+          "source_code": "ANAT-e2023-1-418"
+        },
+        {
+          "id": "ana-ner-044",
+          "topic_id": "ANA-NER",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-607"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-42",
+      "topic": "ANA-TRZ",
+      "text": "Odbytnica:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-trz-128",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2023-1-393"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-53",
+      "topic": "ANA-OUN",
+      "text": "Do pierwotnych pęcherzyków mózgowych zaliczamy:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-oun-061",
+          "topic_id": "ANA-OUN",
+          "correct": "c",
+          "source_code": "ANAT-e2023-2-494"
+        },
+        {
+          "id": "ana-oun-074",
+          "topic_id": "ANA-OUN",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-583"
+        },
+        {
+          "id": "ana-oun-052",
+          "topic_id": "ANA-OUN",
+          "correct": "c",
+          "source_code": "ANAT-e2023-1-409"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-64",
+      "topic": "ANA-OUN",
+      "text": "Na płacik okołośrodkowy składają się:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-oun-076",
+          "topic_id": "ANA-OUN",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-605"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-75",
+      "topic": "ANA-NAC",
+      "text": "Czynnością mięśnia pierścienno-nalewkowego tylnego jest:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-mie-012",
+          "topic_id": "ANA-MIE",
+          "correct": "b",
+          "source_code": "ANAT-e2023-1-406"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-77",
+      "topic": "ANA-TRZ",
+      "text": "Strukturą przedsionkową najlepiej widoczną na przedniej powierzchni serca jest/są:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-trz-206",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-637"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-79",
+      "topic": "ANA-NAC",
+      "text": "Mięśniem rozszerzającym szparę głośni jest:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-nac-057",
+          "topic_id": "ANA-NAC",
+          "correct": "a",
+          "source_code": "ANATSTO-670"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-80",
+      "topic": "ANA-OBW",
+      "text": "Splot szyjny powstaje z gałęzi następujących nerwów:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-obw-063",
+          "topic_id": "ANA-OBW",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-633"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-86",
+      "topic": "ANA-JAM",
+      "text": "Ślinianka przyuszna:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-jam-001",
+          "topic_id": "ANA-JAM",
+          "correct": "e",
+          "source_code": "ANAT-e2025-1-009"
+        },
+        {
+          "id": "ana-jam-002",
+          "topic_id": "ANA-JAM",
+          "correct": "e",
+          "source_code": "ANAT-e2024-1-285"
+        },
+        {
+          "id": "ana-jam-007",
+          "topic_id": "ANA-JAM",
+          "correct": "a",
+          "source_code": "ANAT-e2023-2-506"
+        },
+        {
+          "id": "ana-jam-011",
+          "topic_id": "ANA-JAM",
+          "correct": "b",
+          "source_code": "ANAT-e2022-1-632"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-87",
+      "topic": "ANA-CZA",
+      "text": "Przez otwór kolcowy przechodzi gałąź oponowa od:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-cza-041",
+          "topic_id": "ANA-CZA",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-620"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-99",
+      "topic": "ANA-TRZ",
+      "text": "Lokalizację szlaków międzywęzłowych podaje odpowiedź:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-196",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-599"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-100",
+      "topic": "ANA-NER",
+      "text": "Nerwy unerwiające mięśnie poruszające gałką oczną wychodzą z jamy czaszki przez:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-ner-046",
+          "topic_id": "ANA-NER",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-611"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-111",
+      "topic": "ANA-TRZ",
+      "text": "Przełyk w stosunku do tchawicy leży:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-trz-201",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-622"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-120",
+      "topic": "ANA-KON",
+      "text": "Utrudnienie określenia wewnątrzstawowego położenia głowy kości ramiennej przy pomocy wymacywania spowodowane jest pokryciem przez mięsień:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-kon-088",
+          "topic_id": "ANA-KON",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-648"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-125",
+      "topic": "ANA-TRZ",
+      "text": "Tętnice płucne dzielą się na:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-trz-207",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-641"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-131",
+      "topic": "ANA-TUL",
+      "text": "Lokalizację węzła zatokowo-przedsionkowego podaje odpowiedź:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-trz-197",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-600"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-132",
+      "topic": "ANA-NAC",
+      "text": "Unaczynienie krtani pochodzi od:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-nac-039",
+          "topic_id": "ANA-NAC",
+          "correct": "e",
+          "source_code": "ANAT-e2022-1-646"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-135",
+      "topic": "ANA-TRZ",
+      "text": "Fałdy błony śluzowej pęcherza moczowego:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-trz-189",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-586"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-144",
+      "topic": "ANA-TRZ",
+      "text": "Nerki:",
+      "correct": "a",
+      "matches": [
+        {
+          "id": "ana-trz-092",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2024-2-315"
+        },
+        {
+          "id": "ana-trz-139",
+          "topic_id": "ANA-TRZ",
+          "correct": "e",
+          "source_code": "ANAT-e2023-1-419"
+        },
+        {
+          "id": "ana-trz-154",
+          "topic_id": "ANA-TRZ",
+          "correct": "b",
+          "source_code": "ANAT-e2023-2-483"
+        },
+        {
+          "id": "ana-trz-198",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-606"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-150",
+      "topic": "ANA-TRZ",
+      "text": "Przewód żółciowy wspólny powstaje z połączenia:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-trz-005",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2025-1-012"
+        },
+        {
+          "id": "ana-trz-078",
+          "topic_id": "ANA-TRZ",
+          "correct": "d",
+          "source_code": "ANAT-e2024-1-274"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-160",
+      "topic": "ANA-TUL",
+      "text": "Boczne ograniczenie otworu górnego klatki piersiowej stanowi:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-tul-045",
+          "topic_id": "ANA-TUL",
+          "correct": "b",
+          "source_code": "ANAT-e2022-1-573"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-161",
+      "topic": "ANA-OUN",
+      "text": "Podstawową jednostką budulcowo-czynnościową układu nerwowego jest:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-oun-078",
+          "topic_id": "ANA-OUN",
+          "correct": "b",
+          "source_code": "ANAT-e2022-1-615"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-178",
+      "topic": "ANA-TUL",
+      "text": "Ścianę tylną kanału pachwinowego tworzy:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-tul-026",
+          "topic_id": "ANA-TUL",
+          "correct": "c",
+          "source_code": "ANAT-e2024-2-291"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-180",
+      "topic": "ANA-KON",
+      "text": "Kostka boczna i przyśrodkowa tworzą panewkę dla stawu:",
+      "correct": "d",
+      "matches": [
+        {
+          "id": "ana-kon-082",
+          "topic_id": "ANA-KON",
+          "correct": "d",
+          "source_code": "ANAT-e2022-1-593"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-182",
+      "topic": "ANA-TRZ",
+      "text": "Stawami krtani są:",
+      "correct": "e",
+      "matches": [
+        {
+          "id": "ana-mie-020",
+          "topic_id": "ANA-MIE",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-636"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-194",
+      "topic": "ANA-TRZ",
+      "text": "Wnęka nerki:",
+      "correct": "b",
+      "matches": [
+        {
+          "id": "ana-trz-212",
+          "topic_id": "ANA-TRZ",
+          "correct": "a",
+          "source_code": "ANAT-e2022-1-658"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-238",
+      "topic": "ANA-OUN",
+      "text": "Jednym z głównych zadań móżdżku jest:",
+      "correct": "c",
+      "matches": [
+        {
+          "id": "ana-oun-075",
+          "topic_id": "ANA-OUN",
+          "correct": "c",
+          "source_code": "ANAT-e2022-1-592"
+        }
+      ]
+    }
+  ],
+  "nearDb": [
+    {
+      "srccode": "ANATLEK-33",
+      "topic": "ANA-MIE",
+      "text": "Unerwienie: nerw VII. Unaczynienie tętnicze: tętnica twarzowa, tętnica szyjna wstępująca i tętnica poprzeczna szyi. Którego z mięśni szyi dotyczy opis?",
+      "correct": "c",
+      "sim": "substring",
+      "match": {
+        "id": "ana-nac-018",
+        "topic_id": "ANA-NAC",
+        "text": "Tętnica twarzowa:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATLEK-58",
+      "topic": "ANA-TUL",
+      "text": "Sprzężna zewnętrzna miednicy to:",
+      "correct": "a",
+      "sim": "substring",
+      "match": {
+        "id": "ana-tul-032",
+        "topic_id": "ANA-TUL",
+        "text": "Sprzężna zewnętrzna:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-73",
+      "topic": "ANA-NAC",
+      "text": "Wyłącznie chrząstki nieparzyste krtani wymienione zostały w odpowiedzi:",
+      "correct": "c",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-mie-014",
+        "topic_id": "ANA-MIE",
+        "text": "Wyłącznie chrząstki parzyste krtani wymienione zostały w odpowiedzi:",
+        "correct": "e"
+      }
+    },
+    {
+      "srccode": "ANATLEK-130",
+      "topic": "ANA-CZA",
+      "text": "W otworze rylcowo-sutkowym przebiega jednoimienna/jednoimienny:",
+      "correct": "b",
+      "sim": "substring",
+      "match": {
+        "id": "ana-ner-028",
+        "topic_id": "ANA-NER",
+        "text": "W otworze rylcowo-sutkowym przebiega:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATLEK-143",
+      "topic": "ANA-KON",
+      "text": "Wskaż prawidłową odpowiedź dotyczącą żyły odstrzałkowej (małej żyły odpiszczelowej):",
+      "correct": "c",
+      "sim": "substring",
+      "match": {
+        "id": "ana-kon-089",
+        "topic_id": "ANA-KON",
+        "text": "Wskaż prawidłową odpowiedź dotyczącą żyły odstrzałkowej:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATLEK-147",
+      "topic": "ANA-TRZ",
+      "text": "Komórki sitowe tylne uchodzą zwykle do:",
+      "correct": "e",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-cza-020",
+        "topic_id": "ANA-CZA",
+        "text": "Komórki sitowe tylne uchodzą do:",
+        "correct": "b"
+      }
+    },
+    {
+      "srccode": "ANATLEK-149",
+      "topic": "ANA-KON",
+      "text": "Żyła odstrzałkowa (mała żyła odpiszczelowa) uchodzi zazwyczaj do:",
+      "correct": "d",
+      "sim": "substring",
+      "match": {
+        "id": "ana-kon-065",
+        "topic_id": "ANA-KON",
+        "text": "Żyła odpiszczelowa:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-162",
+      "topic": "ANA-NER",
+      "text": "Ślinianka przyuszna jest unerwiona wydzielniczo przez nerw:",
+      "correct": "e",
+      "sim": "substring",
+      "match": {
+        "id": "ana-ner-001",
+        "topic_id": "ANA-NER",
+        "text": "Ślinianka przyuszna jest unerwiona wydzielniczo przez:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-166",
+      "topic": "ANA-KON",
+      "text": "Troczek zginaczy:",
+      "correct": "b",
+      "sim": "substring",
+      "match": {
+        "id": "ana-kon-102",
+        "topic_id": "ANA-KON",
+        "text": "Troczek zginaczy w stosunku do kanału nadgarstka:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-170",
+      "topic": "ANA-NER",
+      "text": "Nerw okoruchowy:",
+      "correct": "a",
+      "sim": "substring",
+      "match": {
+        "id": "ana-ner-050",
+        "topic_id": "ANA-NER",
+        "text": "Nerw okoruchowy nie unerwia mięśnia:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATLEK-173",
+      "topic": "ANA-CZA",
+      "text": "Z poniżej podanych, przez otwór owalny przechodzi:",
+      "correct": "b",
+      "sim": "substring",
+      "match": {
+        "id": "ana-cza-032",
+        "topic_id": "ANA-CZA",
+        "text": "Przez otwór owalny przechodzi:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-174",
+      "topic": "ANA-OBW",
+      "text": "Splot słoneczny w większej części zlokalizowany jest wokół:",
+      "correct": "b",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-obw-064",
+        "topic_id": "ANA-OBW",
+        "text": "Splot słoneczny (trzewny) w większej części zlokalizowany jest wokół:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATLEK-176",
+      "topic": "ANA-NAC",
+      "text": "W szczelinie przedniej mięśni pochyłych przebiegają:",
+      "correct": "b",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-nac-041",
+        "topic_id": "ANA-NAC",
+        "text": "W szczelinie przedniej mm. pochyłych przebiegają:",
+        "correct": "c"
+      }
+    },
+    {
+      "srccode": "ANATLEK-198",
+      "topic": "ANA-KON",
+      "text": "Mięsień dwugłowy uda:",
+      "correct": "d",
+      "sim": "substring",
+      "match": {
+        "id": "ana-kon-022",
+        "topic_id": "ANA-KON",
+        "text": "Mięsień dwugłowy uda działa w ten sposób, że:",
+        "correct": "d"
+      }
+    },
+    {
+      "srccode": "ANATLEK-215",
+      "topic": "ANA-TRZ",
+      "text": "Podział jamy brzusznej na piętra górne i dolne ustalany jest przez położenie:",
+      "correct": "a",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-tul-046",
+        "topic_id": "ANA-TUL",
+        "text": "Podział jamy brzusznej na części (piętra) górne i dolne ustalany jest przez położenie:",
+        "correct": "a"
+      }
+    },
+    {
+      "srccode": "ANATLEK-236",
+      "topic": "ANA-KON",
+      "text": "Mięsień ramienny działa na staw:",
+      "correct": "c",
+      "sim": "fuzzy",
+      "match": {
+        "id": "ana-kon-032",
+        "topic_id": "ANA-KON",
+        "text": "Staw ramienny to staw:",
+        "correct": "e"
+      }
+    }
+  ],
+  "keyConflict": [
+    {
+      "srccode": "ANATLEK-18",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-kon-080",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-26",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-199",
+          "correct": "c"
+        },
+        {
+          "id": "ana-trz-138",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-33",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-nac-018",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-42",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-trz-128",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-53",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-oun-061",
+          "correct": "c"
+        },
+        {
+          "id": "ana-oun-074",
+          "correct": "c"
+        },
+        {
+          "id": "ana-oun-052",
+          "correct": "c"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-64",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-oun-076",
+          "correct": "c"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-73",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-mie-014",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-75",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-mie-012",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-80",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-obw-063",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-86",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-jam-001",
+          "correct": "e"
+        },
+        {
+          "id": "ana-jam-002",
+          "correct": "e"
+        },
+        {
+          "id": "ana-jam-007",
+          "correct": "a"
+        },
+        {
+          "id": "ana-jam-011",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-99",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-196",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-100",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-ner-046",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-111",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-trz-201",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-120",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-kon-088",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-125",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-trz-207",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-130",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-ner-028",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-131",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-trz-197",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-132",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-nac-039",
+          "correct": "e"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-135",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-trz-189",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-143",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-kon-089",
+          "correct": "b"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-144",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-trz-092",
+          "correct": "a"
+        },
+        {
+          "id": "ana-trz-139",
+          "correct": "e"
+        },
+        {
+          "id": "ana-trz-154",
+          "correct": "b"
+        },
+        {
+          "id": "ana-trz-198",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-147",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-cza-020",
+          "correct": "b"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-149",
+      "batchCorrect": "d",
+      "db": [
+        {
+          "id": "ana-kon-065",
+          "correct": "a"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-150",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-005",
+          "correct": "d"
+        },
+        {
+          "id": "ana-trz-078",
+          "correct": "d"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-161",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-oun-078",
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-162",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-ner-001",
+          "correct": "a"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-166",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-kon-102",
+          "correct": "a"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-170",
+      "batchCorrect": "a",
+      "db": [
+        {
+          "id": "ana-ner-050",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-173",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-cza-032",
+          "correct": "a"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-174",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-obw-064",
+          "correct": "d"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-176",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-nac-041",
+          "correct": "c"
+        }
+      ],
+      "near": true
+    },
+    {
+      "srccode": "ANATLEK-178",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-tul-026",
+          "correct": "c"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-182",
+      "batchCorrect": "e",
+      "db": [
+        {
+          "id": "ana-mie-020",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-194",
+      "batchCorrect": "b",
+      "db": [
+        {
+          "id": "ana-trz-212",
+          "correct": "a"
+        }
+      ]
+    },
+    {
+      "srccode": "ANATLEK-236",
+      "batchCorrect": "c",
+      "db": [
+        {
+          "id": "ana-kon-032",
+          "correct": "e"
+        }
+      ],
+      "near": true
+    }
+  ],
+  "fresh": [
+    {
+      "srccode": "ANATLEK-1",
+      "topic": "ANA-TRZ",
+      "text": "Układ przewodzący serca należy do:"
+    },
+    {
+      "srccode": "ANATLEK-2",
+      "topic": "ANA-NAC",
+      "text": "Mięśnie podgnykowe unerwione są głównie przez:"
+    },
+    {
+      "srccode": "ANATLEK-3",
+      "topic": "ANA-OBW",
+      "text": "Mięśniem „przewodnikiem” (towarzyszącym) dla nerwu dodatkowego na szyi jest mięsień:"
+    },
+    {
+      "srccode": "ANATLEK-4",
+      "topic": "ANA-KON",
+      "text": "Kanał kostno-mięśniowy dla nerwu łokciowego tworzą:"
+    },
+    {
+      "srccode": "ANATLEK-5",
+      "topic": "ANA-KON",
+      "text": "Nerw pośrodkowy układa się w stosunku do tętnicy ramiennej:"
+    },
+    {
+      "srccode": "ANATLEK-6",
+      "topic": "ANA-NER",
+      "text": "Przez otwór rylcowo-sutkowy przechodzi nerw czaszkowy:"
+    },
+    {
+      "srccode": "ANATLEK-7",
+      "topic": "ANA-TRZ",
+      "text": "Znajduje się w odległości około 50 cm od miejsca przejścia jelita cienkiego w jelito grube. Występuje jedynie u części populacji. Objawem stanu zapalnego zlokalizowanego w tej okolicy mogą być krwawienia do przewodu pokarmowego. W razie appendektomii usuwa się tę strukturę wraz z wyrostkiem robaczkowym. O czym mowa?"
+    },
+    {
+      "srccode": "ANATLEK-8",
+      "topic": "ANA-NAC",
+      "text": "Szpara głośni składa się z części:"
+    },
+    {
+      "srccode": "ANATLEK-9",
+      "topic": "ANA-NAC",
+      "text": "W szczelinie przedniej mięśni pochyłych znajduje/znajdują się:"
+    },
+    {
+      "srccode": "ANATLEK-10",
+      "topic": "ANA-TRZ",
+      "text": "Więzadło żołądkowo-okrężnicze jest częścią:"
+    },
+    {
+      "srccode": "ANATLEK-11",
+      "topic": "ANA-CZA",
+      "text": "Płynotok z ucha i zaburzenia równowagi mogą być wynikiem uszkodzenia kości:"
+    },
+    {
+      "srccode": "ANATLEK-13",
+      "topic": "ANA-OBW",
+      "text": "Gałąź udowa nerwu płciowo-udowego przechodzi na udo przez:"
+    },
+    {
+      "srccode": "ANATLEK-14",
+      "topic": "ANA-TRZ",
+      "text": "Część dolną odcinka brzusznego moczowodu krzyżuje od przodu nerw:"
+    },
+    {
+      "srccode": "ANATLEK-15",
+      "topic": "ANA-KON",
+      "text": "Przyczep końcowy ścięgna mięśnia strzałkowego długiego znajduje się na:"
+    },
+    {
+      "srccode": "ANATLEK-16",
+      "topic": "ANA-OBW",
+      "text": "Nerw strzałkowy głęboki:"
+    },
+    {
+      "srccode": "ANATLEK-17",
+      "topic": "ANA-TUL",
+      "text": "Naczyniem zaopatrującym powłoki brzuszne, ale pochodzącym od tętnic górnej części ciała, jest:"
+    },
+    {
+      "srccode": "ANATLEK-19",
+      "topic": "ANA-KON",
+      "text": "Mięśnie bliźniacze biegną:"
+    },
+    {
+      "srccode": "ANATLEK-20",
+      "topic": "ANA-KON",
+      "text": "Wyniosłość promieniową nadgarstka tworzy/tworzą:"
+    },
+    {
+      "srccode": "ANATLEK-21",
+      "topic": "ANA-CZA",
+      "text": "Zagłębienie błony bębenkowej zwane pępkiem sąsiaduje od strony wewnętrznej z:"
+    },
+    {
+      "srccode": "ANATLEK-22",
+      "topic": "ANA-TRZ",
+      "text": "W przestrzeni pomiędzy głową trzustki a częścią zstępującą dwunastnicy przebiega:"
+    },
+    {
+      "srccode": "ANATLEK-23",
+      "topic": "ANA-TRZ",
+      "text": "Opłucna ścienna składa się z wszystkich wymienionych części, z wyjątkiem:"
+    },
+    {
+      "srccode": "ANATLEK-24",
+      "topic": "ANA-OUN",
+      "text": "Wstęga rdzeniowa dochodzi do jądra:"
+    },
+    {
+      "srccode": "ANATLEK-25",
+      "topic": "ANA-OUN",
+      "text": "Z podanych odpowiedzi wybierz tę, która zawiera jedynie elementy wchodzące w skład śródmózgowia (1 – półkule mózgu, 2 – podwzgórze, 3 – pokrywa, 4 – rdzeń przedłużony, 5 – spoidło sklepienia, 6 – konary mózgu, 7 – wzgórzomózgowie, 8 – spoidło przednie, 9 – ciało modzelowate, 10 – niskowzgórze, 11 – móżdżek, 12 – most):"
+    },
+    {
+      "srccode": "ANATLEK-27",
+      "topic": "ANA-OUN",
+      "text": "Zwoje pnia współczulnego są zwojami:"
+    },
+    {
+      "srccode": "ANATLEK-28",
+      "topic": "ANA-NAC",
+      "text": "Jedyną gałęzią tętnicy szyjnej wewnętrznej mającą istotny udział w unaczynieniu części głowy innych niż mózgowie jest:"
+    },
+    {
+      "srccode": "ANATLEK-29",
+      "topic": "ANA-TRZ",
+      "text": "Gałęziami aorty wstępującej są:"
+    },
+    {
+      "srccode": "ANATLEK-30",
+      "topic": "ANA-OBW",
+      "text": "Ile par nerwów szyjnych łączy się obustronnie z rdzeniem kręgowym?"
+    },
+    {
+      "srccode": "ANATLEK-31",
+      "topic": "ANA-TRZ",
+      "text": "Jakie części żołądka są miejscem przyczepu sieci otrzewnej?"
+    },
+    {
+      "srccode": "ANATLEK-32",
+      "topic": "ANA-KON",
+      "text": "Na przedramieniu mięśnie prostowniki znajdują się w komorze/komorach:"
+    },
+    {
+      "srccode": "ANATLEK-34",
+      "topic": "ANA-NAC",
+      "text": "Wspólnym przyczepem końcowym mięśni zwieraczy gardła jest:"
+    },
+    {
+      "srccode": "ANATLEK-35",
+      "topic": "ANA-JAM",
+      "text": "Przestrzeń przygardłowa jest ograniczona przyśrodkowo przez:"
+    },
+    {
+      "srccode": "ANATLEK-36",
+      "topic": "ANA-TRZ",
+      "text": "Najgłębszym zachyłkiem jamy opłucnej jest zachyłek:"
+    },
+    {
+      "srccode": "ANATLEK-37",
+      "topic": "ANA-OUN",
+      "text": "Do części robaka móżdżku nie należy:"
+    },
+    {
+      "srccode": "ANATLEK-38",
+      "topic": "ANA-TRZ",
+      "text": "Zatoka wieńcowa uchodzi do:"
+    },
+    {
+      "srccode": "ANATLEK-39",
+      "topic": "ANA-TRZ",
+      "text": "Gałąź zaopatrująca jajnik od tętnicy macicznej biegnie w:"
+    },
+    {
+      "srccode": "ANATLEK-40",
+      "topic": "ANA-TRZ",
+      "text": "Serce z zewnątrz pokryte jest:"
+    },
+    {
+      "srccode": "ANATLEK-43",
+      "topic": "ANA-KON",
+      "text": "Przyczep dystalny mięśnia trójgłowego ramienia znajduje się:"
+    },
+    {
+      "srccode": "ANATLEK-44",
+      "topic": "ANA-TRZ",
+      "text": "Która z wymienionych struktur anatomicznych nie znajduje się w śródpiersiu tylnym?"
+    },
+    {
+      "srccode": "ANATLEK-45",
+      "topic": "ANA-OBW",
+      "text": "Nerw przeponowy, poza przeponą, unerwia:"
+    },
+    {
+      "srccode": "ANATLEK-46",
+      "topic": "ANA-KON",
+      "text": "Mięsień dźwigacz łopatki pociąga łopatkę do góry oraz:"
+    },
+    {
+      "srccode": "ANATLEK-47",
+      "topic": "ANA-TRZ",
+      "text": "Tętnica mięśnia dźwigacza jądra, nasieniowód z tętnicą nasieniowodu, splot wiciowaty oraz tętnica jądrowa biegną:"
+    },
+    {
+      "srccode": "ANATLEK-48",
+      "topic": "ANA-NAC",
+      "text": "W skład pęczka naczyniowo-nerwowego szyi wchodzą:"
+    },
+    {
+      "srccode": "ANATLEK-49",
+      "topic": "ANA-CZA",
+      "text": "Zatoka czołowa uchodzi do:"
+    },
+    {
+      "srccode": "ANATLEK-50",
+      "topic": "ANA-NAC",
+      "text": "Jedynym rozwieraczem szpary głośni jest:"
+    },
+    {
+      "srccode": "ANATLEK-51",
+      "topic": "ANA-TRZ",
+      "text": "Z jakich części składa się przegroda międzykomorowa?"
+    },
+    {
+      "srccode": "ANATLEK-52",
+      "topic": "ANA-MIE",
+      "text": "Cofanie żuchwy w stawie skroniowo-żuchwowym wywołują:"
+    },
+    {
+      "srccode": "ANATLEK-54",
+      "topic": "ANA-CZA",
+      "text": "Której ściany nie posiada jama nosowa?"
+    },
+    {
+      "srccode": "ANATLEK-55",
+      "topic": "ANA-OUN",
+      "text": "Włókna drogi korowo-jądrowej przechodzą przez:"
+    },
+    {
+      "srccode": "ANATLEK-56",
+      "topic": "ANA-TRZ",
+      "text": "Tętnicy międzykomorowej przedniej towarzyszy:"
+    },
+    {
+      "srccode": "ANATLEK-57",
+      "topic": "ANA-OUN",
+      "text": "Podłużne bruzdy rdzenia kręgowego zaznaczają podział powierzchni rdzenia kręgowego na:"
+    },
+    {
+      "srccode": "ANATLEK-59",
+      "topic": "ANA-KON",
+      "text": "Wspólną głowę początkową ze wspólnym przyczepem początkowym posiadają:"
+    },
+    {
+      "srccode": "ANATLEK-60",
+      "topic": "ANA-KON",
+      "text": "Gałęziami końcowymi tętnicy ramiennej są tętnice:"
+    },
+    {
+      "srccode": "ANATLEK-61",
+      "topic": "ANA-TUL",
+      "text": "Do dróg odpływu chłonki z sutka zaliczamy:"
+    },
+    {
+      "srccode": "ANATLEK-62",
+      "topic": "ANA-CZA",
+      "text": "Zjawisko akomodacji zachodzi głównie dzięki:"
+    },
+    {
+      "srccode": "ANATLEK-63",
+      "topic": "ANA-OBW",
+      "text": "Splot ramienny powstaje zwykle z gałęzi następujących nerwów:"
+    },
+    {
+      "srccode": "ANATLEK-65",
+      "topic": "ANA-TRZ",
+      "text": "Do gałęzi ściennych tętnicy biodrowej wewnętrznej nie należy:"
+    },
+    {
+      "srccode": "ANATLEK-66",
+      "topic": "ANA-NER",
+      "text": "Mięsień rylcowo-gardłowy unerwia:"
+    },
+    {
+      "srccode": "ANATLEK-67",
+      "topic": "ANA-TRZ",
+      "text": "Strukturami ograniczającymi krążenie czynnościowe płuc w rozwoju płodowym są:"
+    },
+    {
+      "srccode": "ANATLEK-68",
+      "topic": "ANA-OUN",
+      "text": "Drugi neuron drogi czucia interoceptywnego tworzą komórki znajdujące się w:"
+    },
+    {
+      "srccode": "ANATLEK-69",
+      "topic": "ANA-TRZ",
+      "text": "W topografii płuc i opłucnej różnica w lokalizacji obu struktur (granic dolnych), jeśli chodzi o odległość między nimi, wynosi zwykle:"
+    },
+    {
+      "srccode": "ANATLEK-70",
+      "topic": "ANA-TUL",
+      "text": "Pęczek naczyniowo-nerwowy przestrzeni międzyżebrowej zawiera, w kolejności od żebra (od góry):"
+    },
+    {
+      "srccode": "ANATLEK-71",
+      "topic": "ANA-KON",
+      "text": "Ruchy możliwe do wykonania w stawie kolanowym to:"
+    },
+    {
+      "srccode": "ANATLEK-72",
+      "topic": "ANA-OUN",
+      "text": "Rdzeń kręgowy u człowieka kończy się zwykle na wysokości:"
+    },
+    {
+      "srccode": "ANATLEK-74",
+      "topic": "ANA-TRZ",
+      "text": "W której części tchawicy występuje głównie błona, bez części chrzęstnych?"
+    },
+    {
+      "srccode": "ANATLEK-76",
+      "topic": "ANA-TRZ",
+      "text": "Miejscem zejścia się bruzd międzykomorowych jest:"
+    },
+    {
+      "srccode": "ANATLEK-78",
+      "topic": "ANA-MIE",
+      "text": "Jedynym mięśniem żucia zlokalizowanym zewnętrznie od żuchwy jest:"
+    },
+    {
+      "srccode": "ANATLEK-81",
+      "topic": "ANA-NER",
+      "text": "Nerw krtaniowy wsteczny prawy w klatce piersiowej przebiega:"
+    },
+    {
+      "srccode": "ANATLEK-82",
+      "topic": "ANA-KON",
+      "text": "Do pierścienia (stożka) rotatorów nie należy:"
+    },
+    {
+      "srccode": "ANATLEK-83",
+      "topic": "ANA-NAC",
+      "text": "Tętnica podstawna biegnie w:"
+    },
+    {
+      "srccode": "ANATLEK-84",
+      "topic": "ANA-TRZ",
+      "text": "Do głównych dopływów tworzących żyłę wrotną należy:"
+    },
+    {
+      "srccode": "ANATLEK-85",
+      "topic": "ANA-TRZ",
+      "text": "Dwa główne spływy żył ciała to:"
+    },
+    {
+      "srccode": "ANATLEK-88",
+      "topic": "ANA-CZA",
+      "text": "Do przewodu nosowego górnego uchodzi/uchodzą:"
+    },
+    {
+      "srccode": "ANATLEK-89",
+      "topic": "ANA-KON",
+      "text": "Która z części mięśnia naramiennego odpowiada za odwodzenie kończyny górnej w początkowym zakresie ruchu?"
+    },
+    {
+      "srccode": "ANATLEK-90",
+      "topic": "ANA-KON",
+      "text": "Prawidłowy rozkład przybliżonego udziału kości w tworzeniu panewki stawu biodrowego przedstawia odpowiedź:"
+    },
+    {
+      "srccode": "ANATLEK-91",
+      "topic": "ANA-NER",
+      "text": "Pierwszy neuron nerwu węchowego znajduje się w:"
+    },
+    {
+      "srccode": "ANATLEK-92",
+      "topic": "ANA-OUN",
+      "text": "Sznur tylny rdzenia kręgowego składa się z:"
+    },
+    {
+      "srccode": "ANATLEK-93",
+      "topic": "ANA-OUN",
+      "text": "Drogi rdzeniowo-wzgórzowe przebiegają w:"
+    },
+    {
+      "srccode": "ANATLEK-94",
+      "topic": "ANA-JAM",
+      "text": "Zwój nerwowy w trójkącie podżuchwowym tworzony jest przez nerw:"
+    },
+    {
+      "srccode": "ANATLEK-95",
+      "topic": "ANA-TRZ",
+      "text": "Struktury mocujące płatki zastawek przedsionkowo-komorowych:"
+    },
+    {
+      "srccode": "ANATLEK-96",
+      "topic": "ANA-KON",
+      "text": "Rozcięgno mięśnia dwugłowego ramienia wzmacnia:"
+    },
+    {
+      "srccode": "ANATLEK-97",
+      "topic": "ANA-TRZ",
+      "text": "Najcieńszym elementem przegrody międzyprzedsionkowej jest:"
+    },
+    {
+      "srccode": "ANATLEK-98",
+      "topic": "ANA-TRZ",
+      "text": "Która z odpowiedzi prawidłowo wymienia elementy składowe szkieletu włóknistego serca?"
+    },
+    {
+      "srccode": "ANATLEK-101",
+      "topic": "ANA-JAM",
+      "text": "W skład splotu zębowego górnego wchodzą:"
+    },
+    {
+      "srccode": "ANATLEK-102",
+      "topic": "ANA-CZA",
+      "text": "Do przewodu nosowego dolnego uchodzi:"
+    },
+    {
+      "srccode": "ANATLEK-103",
+      "topic": "ANA-TRZ",
+      "text": "Rzut koniuszka serca znajduje się:"
+    },
+    {
+      "srccode": "ANATLEK-104",
+      "topic": "ANA-NER",
+      "text": "Zwój uszny:"
+    },
+    {
+      "srccode": "ANATLEK-105",
+      "topic": "ANA-KON",
+      "text": "Staw Lisfranca to:"
+    },
+    {
+      "srccode": "ANATLEK-106",
+      "topic": "ANA-NER",
+      "text": "Nerw szczękowy:"
+    },
+    {
+      "srccode": "ANATLEK-107",
+      "topic": "ANA-TRZ",
+      "text": "Zatoka poprzeczna osierdzia:"
+    },
+    {
+      "srccode": "ANATLEK-108",
+      "topic": "ANA-TUL",
+      "text": "Najpóźniej zrastająca się nasada kości długiej występuje w:"
+    },
+    {
+      "srccode": "ANATLEK-109",
+      "topic": "ANA-KON",
+      "text": "Staw promieniowo-nadgarstkowy jest stawem:"
+    },
+    {
+      "srccode": "ANATLEK-110",
+      "topic": "ANA-TRZ",
+      "text": "Śródpiersie tylne zlokalizowane jest pomiędzy:"
+    },
+    {
+      "srccode": "ANATLEK-112",
+      "topic": "ANA-NAC",
+      "text": "Do przodu od małżowiny usznej nie przebiega/nie przebiegają:"
+    },
+    {
+      "srccode": "ANATLEK-113",
+      "topic": "ANA-TRZ",
+      "text": "W płucu lewym szczelina skośna oddziela od siebie płaty:"
+    },
+    {
+      "srccode": "ANATLEK-114",
+      "topic": "ANA-OUN",
+      "text": "Włókna przedzwojowe układu współczulnego odchodzą od następujących segmentów rdzenia kręgowego:"
+    },
+    {
+      "srccode": "ANATLEK-115",
+      "topic": "ANA-KON",
+      "text": "Na guzie piętowym znajduje się przyczep końcowy mięśnia:"
+    },
+    {
+      "srccode": "ANATLEK-116",
+      "topic": "ANA-TRZ",
+      "text": "W śródpiersiu górnym tchawica i przełyk od strony prawej krzyżowane są przez:"
+    },
+    {
+      "srccode": "ANATLEK-117",
+      "topic": "ANA-NAC",
+      "text": "Kora powierzchni przyśrodkowej kresomózgowia jest unaczyniana przez tętnice mózgu:"
+    },
+    {
+      "srccode": "ANATLEK-118",
+      "topic": "ANA-TUL",
+      "text": "Podstawowym kierunkiem odpływu chłonki z sutka jest kierunek:"
+    },
+    {
+      "srccode": "ANATLEK-119",
+      "topic": "ANA-NAC",
+      "text": "Tętnica piersiowa wewnętrzna najczęściej odchodzi od:"
+    },
+    {
+      "srccode": "ANATLEK-121",
+      "topic": "ANA-TRZ",
+      "text": "Nozdrza przednie są ograniczone przez:"
+    },
+    {
+      "srccode": "ANATLEK-122",
+      "topic": "ANA-NER",
+      "text": "Który z poniższych nerwów nie należy do części ruchowej nerwu trójdzielnego (V)?"
+    },
+    {
+      "srccode": "ANATLEK-123",
+      "topic": "ANA-TUL",
+      "text": "W rozwoju płodowym zastawka żyły głównej dolnej kieruje krew na:"
+    },
+    {
+      "srccode": "ANATLEK-124",
+      "topic": "ANA-KON",
+      "text": "Ścięgno końcowe mięśnia piersiowego mniejszego przyczepia się do:"
+    },
+    {
+      "srccode": "ANATLEK-126",
+      "topic": "ANA-TUL",
+      "text": "Zastawka mitralna składa się z płatków:"
+    },
+    {
+      "srccode": "ANATLEK-127",
+      "topic": "ANA-TRZ",
+      "text": "Pozostałością po płodowym przewodzie Arancjusza (przewód żylny) jest u dorosłego:"
+    },
+    {
+      "srccode": "ANATLEK-128",
+      "topic": "ANA-KON",
+      "text": "Która odpowiedź prawidłowo łączy część mięśnia naramiennego z jej przyczepem początkowym?"
+    },
+    {
+      "srccode": "ANATLEK-129",
+      "topic": "ANA-OUN",
+      "text": "Korowy ośrodek czucia dla zębów i dziąseł znajduje się w:"
+    },
+    {
+      "srccode": "ANATLEK-133",
+      "topic": "ANA-OBW",
+      "text": "Splot podbrzuszny dolny:"
+    },
+    {
+      "srccode": "ANATLEK-134",
+      "topic": "ANA-NAC",
+      "text": "Głównym naczyniem tętniczym zaopatrującym mózgowie jest:"
+    },
+    {
+      "srccode": "ANATLEK-136",
+      "topic": "ANA-KON",
+      "text": "Mięśnie mające przyczep początkowy na guzie kulszowym, a końcowy na kłykciu przyśrodkowym kości piszczelowej i głowie strzałki to:"
+    },
+    {
+      "srccode": "ANATLEK-137",
+      "topic": "ANA-MIE",
+      "text": "Przyczep końcowy mięśnia rylcowo-gnykowego jest zwykle przeszywany lub krzyżowany przez ścięgno innego mięśnia związanego z kością gnykową. Którego?"
+    },
+    {
+      "srccode": "ANATLEK-138",
+      "topic": "ANA-NAC",
+      "text": "Żyła głęboka twarzy to bezpośrednie połączenie żyły twarzowej z:"
+    },
+    {
+      "srccode": "ANATLEK-139",
+      "topic": "ANA-TUL",
+      "text": "Pozostałością po płodowym otworze owalnym jest u dorosłego:"
+    },
+    {
+      "srccode": "ANATLEK-140",
+      "topic": "ANA-TRZ",
+      "text": "Do ucha środkowego nie należy:"
+    },
+    {
+      "srccode": "ANATLEK-141",
+      "topic": "ANA-MIE",
+      "text": "Mięsień rylcowo-gnykowy unerwia:"
+    },
+    {
+      "srccode": "ANATLEK-142",
+      "topic": "ANA-TUL",
+      "text": "Znajduje się w jednej trzeciej odległości pomiędzy pępkiem a prawym kolcem biodrowym przednim górnym. Opis ten odnosi się do:"
+    },
+    {
+      "srccode": "ANATLEK-145",
+      "topic": "ANA-TRZ",
+      "text": "W stosunku do jamy otrzewnej dwunastnica jest położona:"
+    },
+    {
+      "srccode": "ANATLEK-146",
+      "topic": "ANA-CZA",
+      "text": "Ile jest głównych chrząstek nosa zewnętrznego?"
+    },
+    {
+      "srccode": "ANATLEK-148",
+      "topic": "ANA-KON",
+      "text": "Mięsień napinacz powięzi szerokiej:"
+    },
+    {
+      "srccode": "ANATLEK-151",
+      "topic": "ANA-NAC",
+      "text": "Do węzłów chłonnych pachowych zaliczamy:"
+    },
+    {
+      "srccode": "ANATLEK-152",
+      "topic": "ANA-TUL",
+      "text": "Z podanych wybierz odpowiedź zawierającą jedynie gałęzie aorty wstępującej (I – t. wieńcowa prawa, II – t. wieńcowa lewa, III – gałęzie oskrzelowe, IV – pień ramienno-głowowy, V – tt. przeponowe górne, VI – t. szyjna wspólna lewa, VII – gałęzie przełykowe, VIII – tt. międzyżebrowe tylne, IX – t. podobojczykowa lewa, X – gałęzie śródpiersiowe, XI – tt. międzyżebrowe przednie, XII – gałęzie osierdziowe):"
+    },
+    {
+      "srccode": "ANATLEK-153",
+      "topic": "ANA-TUL",
+      "text": "Ujścia których żył nie znajdują się u zdrowego człowieka w przedsionku prawym?"
+    },
+    {
+      "srccode": "ANATLEK-154",
+      "topic": "ANA-NER",
+      "text": "Który z nerwów odpowiada za poruszanie językiem?"
+    },
+    {
+      "srccode": "ANATLEK-155",
+      "topic": "ANA-OUN",
+      "text": "Drogi rdzeniowo-mózgowe:"
+    },
+    {
+      "srccode": "ANATLEK-156",
+      "topic": "ANA-TRZ",
+      "text": "Które stwierdzenie dotyczące pęcherza moczowego jest nieprawdziwe?"
+    },
+    {
+      "srccode": "ANATLEK-157",
+      "topic": "ANA-OBW",
+      "text": "W przebiegu nerwu sromowego znajdują się włókna:"
+    },
+    {
+      "srccode": "ANATLEK-158",
+      "topic": "ANA-TUL",
+      "text": "Wymiar międzygrzebieniowy miednicy u kobiet wynosi około:"
+    },
+    {
+      "srccode": "ANATLEK-159",
+      "topic": "ANA-TRZ",
+      "text": "Odgałęzieniami pnia trzewnego są:"
+    },
+    {
+      "srccode": "ANATLEK-163",
+      "topic": "ANA-NER",
+      "text": "Prawidłowe zestawienie gałęzi nerwu trójdzielnego z otworami, przez które opuszczają czaszkę, to:"
+    },
+    {
+      "srccode": "ANATLEK-164",
+      "topic": "ANA-TRZ",
+      "text": "Najniżej położone miejsce zachyłka żebrowo-przeponowego leży w linii:"
+    },
+    {
+      "srccode": "ANATLEK-165",
+      "topic": "ANA-MIE",
+      "text": "Do okolicy bocznej powierzchownej twarzy nie należy:"
+    },
+    {
+      "srccode": "ANATLEK-167",
+      "topic": "ANA-KON",
+      "text": "Które twierdzenie dotyczące trójkąta udowego jest nieprawdziwe?"
+    },
+    {
+      "srccode": "ANATLEK-168",
+      "topic": "ANA-OUN",
+      "text": "Prawdziwe stwierdzenie o rdzeniu kręgowym:"
+    },
+    {
+      "srccode": "ANATLEK-169",
+      "topic": "ANA-TUL",
+      "text": "Łącznikiem pomiędzy żyłą główną górną a dolną w klatce piersiowej jest zwykle:"
+    },
+    {
+      "srccode": "ANATLEK-171",
+      "topic": "ANA-TRZ",
+      "text": "W czasie opróżniania pęcherza moczowego moczowód jest zamykany przez:"
+    },
+    {
+      "srccode": "ANATLEK-172",
+      "topic": "ANA-OUN",
+      "text": "Istota szara rdzenia kręgowego na przekroju poprzecznym ma kształt litery:"
+    },
+    {
+      "srccode": "ANATLEK-175",
+      "topic": "ANA-NER",
+      "text": "Jądra ruchowe nerwu trójdzielnego znajdują się w:"
+    },
+    {
+      "srccode": "ANATLEK-177",
+      "topic": "ANA-OUN",
+      "text": "Wybierz odpowiedź zawierającą jedynie elementy wchodzące w skład międzymózgowia (1 – półkule mózgu, 2 – podwzgórze, 3 – pokrywa, 4 – rdzeń przedłużony, 5 – spoidło sklepienia, 6 – konary mózgu, 7 – wzgórzomózgowie, 8 – spoidło przednie, 9 – ciało modzelowate, 10 – niskowzgórze, 11 – móżdżek, 12 – most):"
+    },
+    {
+      "srccode": "ANATLEK-179",
+      "topic": "ANA-TRZ",
+      "text": "Podczas cewnikowania starszego mężczyzny kolega po kilku próbach zmienia cewnik na coraz węższy. W jakim odcinku cewki moczowej zlokalizowany był najpewniej problem utrudniający wprowadzenie cewnika?"
+    },
+    {
+      "srccode": "ANATLEK-181",
+      "topic": "ANA-CZA",
+      "text": "Dół skrzydłowo-podniebienny łączy się:"
+    },
+    {
+      "srccode": "ANATLEK-183",
+      "topic": "ANA-OBW",
+      "text": "Splot słoneczny to nazwa zwyczajowa:"
+    },
+    {
+      "srccode": "ANATLEK-184",
+      "topic": "ANA-TUL",
+      "text": "Koronę serca stanowią:"
+    },
+    {
+      "srccode": "ANATLEK-185",
+      "topic": "ANA-TUL",
+      "text": "Zastawka pnia płucnego składa się z płatków:"
+    },
+    {
+      "srccode": "ANATLEK-186",
+      "topic": "ANA-KON",
+      "text": "Który z poniższych mięśni obraca ramię do wewnątrz?"
+    },
+    {
+      "srccode": "ANATLEK-187",
+      "topic": "ANA-OBW",
+      "text": "Stawy biodrowy, kolanowy i skokowo-goleniowy unerwiane są przez nerw:"
+    },
+    {
+      "srccode": "ANATLEK-188",
+      "topic": "ANA-OBW",
+      "text": "Mięsień piersiowy większy jest unerwiony przez:"
+    },
+    {
+      "srccode": "ANATLEK-189",
+      "topic": "ANA-OUN",
+      "text": "Drugi neuron drogi czucia proprioceptywnego (świadomego) tworzą komórki znajdujące się w:"
+    },
+    {
+      "srccode": "ANATLEK-190",
+      "topic": "ANA-NAC",
+      "text": "Mięsień mostkowo-gnykowy ogranicza trójkąt tarczowy szyi:"
+    },
+    {
+      "srccode": "ANATLEK-191",
+      "topic": "ANA-MIE",
+      "text": "Przestrzeń (dół) zażuchwowy jest położona:"
+    },
+    {
+      "srccode": "ANATLEK-192",
+      "topic": "ANA-KON",
+      "text": "Opuszcza ramię, przywodzi je, zgina i rotuje do wewnątrz z jednoczesnym pociąganiem łopatki w dół. O którym mięśniu wpływającym na ruchy kończyny górnej, ale nietopograficznie do niej nienależącym, mowa?"
+    },
+    {
+      "srccode": "ANATLEK-193",
+      "topic": "ANA-NAC",
+      "text": "Trójkąt tętnicy szyjnej ograniczają:"
+    },
+    {
+      "srccode": "ANATLEK-195",
+      "topic": "ANA-TRZ",
+      "text": "Na której powierzchni płuca znajduje się wnęka płuca?"
+    },
+    {
+      "srccode": "ANATLEK-196",
+      "topic": "ANA-CZA",
+      "text": "Z poniżej podanych, przez otwór wielki czaszki przechodzi:"
+    },
+    {
+      "srccode": "ANATLEK-197",
+      "topic": "ANA-OUN",
+      "text": "Dwa największe zbiorniki podpajęczynówkowe to:"
+    },
+    {
+      "srccode": "ANATLEK-199",
+      "topic": "ANA-TRZ",
+      "text": "Szczelina (granica) skośna płuca krzyżuje 4. przestrzeń międzyżebrową w linii:"
+    },
+    {
+      "srccode": "ANATLEK-200",
+      "topic": "ANA-OUN",
+      "text": "Róg przedni rdzenia kręgowego:"
+    },
+    {
+      "srccode": "ANATLEK-201",
+      "topic": "ANA-CZA",
+      "text": "Z poniżej podanych, przez szczelinę oczodołową górną przechodzi:"
+    },
+    {
+      "srccode": "ANATLEK-202",
+      "topic": "ANA-TUL",
+      "text": "Wskaż twierdzenie fałszywe:"
+    },
+    {
+      "srccode": "ANATLEK-203",
+      "topic": "ANA-OBW",
+      "text": "Główną grupą unerwianą przez pętlę szyjną są mięśnie:"
+    },
+    {
+      "srccode": "ANATLEK-204",
+      "topic": "ANA-TRZ",
+      "text": "Zachyłek klinowo-sitowy znajduje się:"
+    },
+    {
+      "srccode": "ANATLEK-205",
+      "topic": "ANA-CZA",
+      "text": "Szczelina oczodołowa dolna zawiera:"
+    },
+    {
+      "srccode": "ANATLEK-206",
+      "topic": "ANA-OBW",
+      "text": "Które mięśnie są unerwione przez nerw mięśniowo-skórny?"
+    },
+    {
+      "srccode": "ANATLEK-207",
+      "topic": "ANA-OUN",
+      "text": "Skorupa (łupina) jest to:"
+    },
+    {
+      "srccode": "ANATLEK-208",
+      "topic": "ANA-OUN",
+      "text": "Wybierz odpowiedź zawierającą jedynie elementy wchodzące w skład kresomózgowia (1 – półkule mózgu, 2 – podwzgórze, 3 – pokrywa, 4 – rdzeń przedłużony, 5 – spoidło sklepienia, 6 – konary mózgu, 7 – wzgórzomózgowie, 8 – spoidło przednie, 9 – ciało modzelowate, 10 – niskowzgórze, 11 – móżdżek, 12 – most):"
+    },
+    {
+      "srccode": "ANATLEK-209",
+      "topic": "ANA-OUN",
+      "text": "Wybierz odpowiedź zawierającą jedynie elementy wchodzące w skład tyłomózgowia wtórnego (1 – półkule mózgu, 2 – podwzgórze, 3 – pokrywa, 4 – rdzeń przedłużony, 5 – spoidło sklepienia, 6 – konary mózgu, 7 – wzgórzomózgowie, 8 – spoidło przednie, 9 – ciało modzelowate, 10 – niskowzgórze, 11 – móżdżek, 12 – most):"
+    },
+    {
+      "srccode": "ANATLEK-210",
+      "topic": "ANA-TUL",
+      "text": "Poprzez zespolenie przełykowe krew z układu wrotnego trafia do:"
+    },
+    {
+      "srccode": "ANATLEK-211",
+      "topic": "ANA-OBW",
+      "text": "Pień dolny splotu ramiennego powstaje:"
+    },
+    {
+      "srccode": "ANATLEK-212",
+      "topic": "ANA-NAC",
+      "text": "Gałęzie końcowe tętnicy szyjnej zewnętrznej odchodzą w:"
+    },
+    {
+      "srccode": "ANATLEK-213",
+      "topic": "ANA-NAC",
+      "text": "Najsilniejszą gałęzią tętnicy podobojczykowej jest:"
+    },
+    {
+      "srccode": "ANATLEK-214",
+      "topic": "ANA-OUN",
+      "text": "Skrzyżowanie włókien dróg korowo-rdzeniowych następuje w:"
+    },
+    {
+      "srccode": "ANATLEK-216",
+      "topic": "ANA-KON",
+      "text": "Unaczynienie kończyn jest zwykle realizowane w postaci schematu:"
+    },
+    {
+      "srccode": "ANATLEK-217",
+      "topic": "ANA-TUL",
+      "text": "Miejsca osłuchiwania zastawek serca (przy fizjologicznym położeniu) prawidłowo przedstawia odpowiedź:"
+    },
+    {
+      "srccode": "ANATLEK-218",
+      "topic": "ANA-NER",
+      "text": "Unerwienie języka:"
+    },
+    {
+      "srccode": "ANATLEK-219",
+      "topic": "ANA-CZA",
+      "text": "W kanale wzrokowym, poza nerwem wzrokowym, przebiega:"
+    },
+    {
+      "srccode": "ANATLEK-220",
+      "topic": "ANA-KON",
+      "text": "Wyniosłość łokciową nadgarstka tworzy/tworzą:"
+    },
+    {
+      "srccode": "ANATLEK-221",
+      "topic": "ANA-OBW",
+      "text": "Nerw uszny wielki jest nerwem:"
+    },
+    {
+      "srccode": "ANATLEK-222",
+      "topic": "ANA-TRZ",
+      "text": "Różnicą pomiędzy jelitem czczym a krętym nie jest:"
+    },
+    {
+      "srccode": "ANATLEK-223",
+      "topic": "ANA-KON",
+      "text": "Teoretyczny zakres ruchów w tym stawie zbliżony jest do kulistego, ale praktycznie przypomina staw płaski. Ma krążek stawowy dzielący jamę na piętro górno-boczne i dolno-przyśrodkowe, wzmacniają go silne więzadła. O jakim stawie mowa?"
+    },
+    {
+      "srccode": "ANATLEK-224",
+      "topic": "ANA-NER",
+      "text": "Z którego nerwu czaszkowego włókna autonomiczne przedzwojowe otrzymuje zwój rzęskowy?"
+    },
+    {
+      "srccode": "ANATLEK-225",
+      "topic": "ANA-OBW",
+      "text": "„Ręka błogosławiąca\" i „ręka małpia\" występują w przebiegu porażenia nerwu:"
+    },
+    {
+      "srccode": "ANATLEK-226",
+      "topic": "ANA-KON",
+      "text": "Wcięcie łopatki zamykane jest przez:"
+    },
+    {
+      "srccode": "ANATLEK-227",
+      "topic": "ANA-TUL",
+      "text": "Zastawka przedsionkowo-komorowa prawa jest:"
+    },
+    {
+      "srccode": "ANATLEK-228",
+      "topic": "ANA-TUL",
+      "text": "Układ wrotny to układ naczyniowy:"
+    },
+    {
+      "srccode": "ANATLEK-229",
+      "topic": "ANA-TRZ",
+      "text": "Więzadło podstawowe (kardynalne) stanowi rusztowanie dla:"
+    },
+    {
+      "srccode": "ANATLEK-230",
+      "topic": "ANA-OUN",
+      "text": "Komora III układu komorowego mózgu otoczona jest przez:"
+    },
+    {
+      "srccode": "ANATLEK-231",
+      "topic": "ANA-TUL",
+      "text": "Unaczynienie żylne wielu narządów jamy brzusznej i miednicy ma postać:"
+    },
+    {
+      "srccode": "ANATLEK-232",
+      "topic": "ANA-OUN",
+      "text": "Struktury tworzące brzuszną część rdzenia przedłużonego to:"
+    },
+    {
+      "srccode": "ANATLEK-233",
+      "topic": "ANA-KON",
+      "text": "Która odpowiedź przedstawia mięsień warstwy II grupy przedniej przedramienia? (I – zginacz łokciowy nadgarstka, II – dłoniowy długi, III – nawrotny czworoboczny, IV – zginacz długi kciuka, V – zginacz głęboki palców, VI – zginacz powierzchowny palców, VII – zginacz promieniowy nadgarstka, VIII – nawrotny obły)"
+    },
+    {
+      "srccode": "ANATLEK-234",
+      "topic": "ANA-TUL",
+      "text": "Żyła główna dolna, przechodząc przez przeponę, wchodzi do śródpiersia na poziomie trzonu kręgu:"
+    },
+    {
+      "srccode": "ANATLEK-235",
+      "topic": "ANA-OBW",
+      "text": "Za zginanie w stawie łokciowym odpowiedzialne są mięśnie unerwiane przez nerw pochodzący z korzenia:"
+    },
+    {
+      "srccode": "ANATLEK-237",
+      "topic": "ANA-NER",
+      "text": "Gałęzie sercowe przywspółczulne odchodzą od:"
+    },
+    {
+      "srccode": "ANATLEK-239",
+      "topic": "ANA-MIE",
+      "text": "Unoszenie żuchwy w stawie skroniowo-żuchwowym wywołują:"
+    },
+    {
+      "srccode": "ANATLEK-240",
+      "topic": "ANA-OUN",
+      "text": "Płatem kresomózgowia niewidocznym z zewnątrz, przysłoniętym przez pozostałe płaty, jest:"
+    },
+    {
+      "srccode": "ANATLEK-241",
+      "topic": "ANA-KON",
+      "text": "Wskaż element, który nie bierze udziału w tworzeniu sklepienia stawu ramiennego:"
+    },
+    {
+      "srccode": "ANATLEK-242",
+      "topic": "ANA-NAC",
+      "text": "Gałęziami końcowymi tętnicy szyjnej zewnętrznej są:"
+    },
+    {
+      "srccode": "ANATLEK-243",
+      "topic": "ANA-TUL",
+      "text": "Cieśń aorty leży pomiędzy:"
+    },
+    {
+      "srccode": "ANATLEK-244",
+      "topic": "ANA-OUN",
+      "text": "Z którą częścią mózgu utrzymują połączenia struktury układu limbicznego?"
+    },
+    {
+      "srccode": "ANATLEK-245",
+      "topic": "ANA-OUN",
+      "text": "Komora boczna łączy się z komorą trzecią:"
+    },
+    {
+      "srccode": "ANATLEK-246",
+      "topic": "ANA-TUL",
+      "text": "Zatoka wieńcowa jest to:"
+    },
+    {
+      "srccode": "ANATLEK-247",
+      "topic": "ANA-TRZ",
+      "text": "Krtań leży zwykle na wysokości następujących kręgów:"
+    },
+    {
+      "srccode": "ANATLEK-248",
+      "topic": "ANA-KON",
+      "text": "Nieprawdą jest, że żyła odłokciowa:"
+    },
+    {
+      "srccode": "ANATLEK-249",
+      "topic": "ANA-NAC",
+      "text": "Głównym spływem żylnym głowy i szyi jest:"
+    },
+    {
+      "srccode": "ANATLEK-250",
+      "topic": "ANA-KON",
+      "text": "Na guzku większym kości ramiennej przyczep końcowy posiada/posiadają:"
+    },
+    {
+      "srccode": "ANATLEK-251",
+      "topic": "ANA-KON",
+      "text": "Na której powierzchni kości ramiennej znajduje się bruzda dla nerwu promieniowego?"
+    },
+    {
+      "srccode": "ANATLEK-252",
+      "topic": "ANA-TUL",
+      "text": "Z poniższych odpowiedzi wybierz odpowiedź zawierającą struktury unaczyniane jedynie przez lewą tętnicę wieńcową:"
+    },
+    {
+      "srccode": "ANATLEK-253",
+      "topic": "ANA-NER",
+      "text": "Nerw odwodzący unerwia:"
+    },
+    {
+      "srccode": "ANATLEK-254",
+      "topic": "ANA-TRZ",
+      "text": "Która z małżowin nosowych nie występuje u człowieka?"
+    },
+    {
+      "srccode": "ANATLEK-255",
+      "topic": "ANA-NER",
+      "text": "U 22-letniego pacjenta po przebytym zapaleniu ucha środkowego po stronie lewej wystąpiło tożstronne porażenie mięśni mimicznych twarzy. Powikłaniem postępu procesu chorobowego było uszkodzenie którego z nerwów?"
+    },
+    {
+      "srccode": "ANATLEK-256",
+      "topic": "ANA-KON",
+      "text": "Która z odpowiedzi przedstawia mięśnie warstwy I grupy przedniej mięśni przedramienia? I – m. zginacz łokciowy nadgarstka, II – m. dłoniowy długi, III – m. nawrotny czworoboczny, IV – m. zginacz długi kciuka, V – m. zginacz głęboki palców, VI – m. zginacz powierzchowny palców, VII – m. zginacz promieniowy nadgarstka, VIII – m. nawrotny obły"
+    }
+  ]
+}

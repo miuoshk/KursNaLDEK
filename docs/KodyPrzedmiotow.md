@@ -141,7 +141,7 @@ Prefiks `id` pytania: `mju-c01-`, `mju-kz1-`, `mju-zal-` (małe litery). Kolejno
 | 1   | `lek-biofizyka`        | Biofizyka            | Treść w `biofizyka` (shared) |
 | 1   | `lek-histologia`       | Histologia           | Treść w `histologia` (shared) |
 | 1   | `lek-biologia-mol`     | Biologia molekularna |
-| 1   | `lek-prof-humanizm`    | Profesjonalizm i humanizm w medycynie | `PHUM-` | Jeden temat: `PHUM-ZAL` — patrz `FormatPisaniaPytan-ProfesjonalizmHumanizm.md` |
+| 1   | `lek-prof-humanizm`    | Profesjonalizm i humanizm w medycynie | `PHUM-` | `PHUM-ZAL` (zaliczenie) + `PHUM-PSY-GEN`, `PHUM-SOC-GEN`, `PHUM-PRO-GEN` (generowane) — patrz `FormatPisaniaPytan-ProfesjonalizmHumanizm.md` i `exports/prof-humanizm-gen-claude-handover.md` |
 | 2   | `lek-biochemia`        | Biochemia            | `BIO-` |
 | 2   | `lek-fizjologia`       | Fizjologia           | Treść w `fizjologia` (shared) |
 | 2   | `lek-angielski`        | Język angielski      |

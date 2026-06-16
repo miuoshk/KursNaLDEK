@@ -1,22 +1,29 @@
+import type { useTranslations } from "next-intl";
 import type { ReportNotificationStatus } from "@/features/notifications/types";
 
-export function reportVerdictLabel(status: ReportNotificationStatus): string {
+type NotificationsTranslator = ReturnType<typeof useTranslations<"notifications">>;
+
+export function reportVerdictLabel(
+  t: NotificationsTranslator,
+  status: ReportNotificationStatus,
+): string {
   switch (status) {
     case "resolved":
-      return "Zgłoszenie rozwiązane";
+      return t("verdict.resolved");
     case "rejected":
-      return "Zgłoszenie odrzucone";
+      return t("verdict.rejected");
     case "reviewed":
-      return "Zgłoszenie przeglądnięte";
+      return t("verdict.reviewed");
     default:
-      return "Zgłoszenie rozpatrzone";
+      return t("verdict.default");
   }
 }
 
 export function reportVerdictDescription(
+  t: NotificationsTranslator,
   status: ReportNotificationStatus,
   category: string,
 ): string {
-  const verdict = reportVerdictLabel(status).toLowerCase();
-  return `${verdict} · ${category}`;
+  const verdict = reportVerdictLabel(t, status).toLowerCase();
+  return t("verdictDescription", { verdict, category });
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ClipboardList } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import type { OsceStation } from "@/features/osce/types";
 import { cn } from "@/lib/utils";
 
@@ -14,19 +15,27 @@ function truncateTaskDescription(value: string, max = 80): string {
   return `${trimmed.slice(0, max - 1).trimEnd()}…`;
 }
 
-function formatTask(station: OsceStation, index: number): string {
-  const description = station.exam_tasks?.[index]?.description;
-  if (!description) return "Wkrótce";
-  return truncateTaskDescription(description, 80);
-}
+export async function OsceStationCard({
+  station,
+  fullWidthOnLarge = false,
+}: OsceStationCardProps) {
+  const t = await getTranslations("osce");
 
-function getProgressPercent(station: OsceStation): number {
-  if (station.question_count <= 0) return 0;
-  return Math.min(100, Math.round(station.answered_questions / station.question_count * 100));
-}
+  function formatTask(index: number): string {
+    const description = station.exam_tasks?.[index]?.description;
+    if (!description) return t("soon");
+    return truncateTaskDescription(description, 80);
+  }
 
-export function OsceStationCard({ station, fullWidthOnLarge = false }: OsceStationCardProps) {
-  const progressPercent = getProgressPercent(station);
+  function getProgressPercent(): number {
+    if (station.question_count <= 0) return 0;
+    return Math.min(
+      100,
+      Math.round((station.answered_questions / station.question_count) * 100),
+    );
+  }
+
+  const progressPercent = getProgressPercent();
   const competencyCodes = station.competencies?.map((item) => item.code).filter(Boolean) ?? [];
 
   return (
@@ -50,7 +59,10 @@ export function OsceStationCard({ station, fullWidthOnLarge = false }: OsceStati
             >
               <ClipboardList className="mt-0.5 size-3 shrink-0 text-white/40" aria-hidden />
               <p className="font-body text-xs text-white/40">
-                Zadanie {index + 1}: {formatTask(station, index)}
+                {t("taskLabel", {
+                  number: index + 1,
+                  description: formatTask(index),
+                })}
               </p>
             </div>
           ))}
@@ -58,7 +70,9 @@ export function OsceStationCard({ station, fullWidthOnLarge = false }: OsceStati
 
         <div className="mt-4">
           <div className="mb-1.5 flex items-center justify-between gap-2">
-            <p className="font-body text-[11px] uppercase tracking-wide text-white/50">Postęp</p>
+            <p className="font-body text-[11px] uppercase tracking-wide text-white/50">
+              {t("progress")}
+            </p>
             <p className="font-body text-[11px] text-white/50">
               {station.answered_questions}/{station.question_count} ({progressPercent}%)
             </p>
@@ -88,7 +102,7 @@ export function OsceStationCard({ station, fullWidthOnLarge = false }: OsceStati
           href={`/osce/${station.id}`}
           className="mt-5 inline-flex font-body text-sm font-medium text-[#C9A84C] transition-opacity hover:opacity-80"
         >
-          Otwórz stację →
+          {t("openStation")}
         </Link>
       </article>
     </li>

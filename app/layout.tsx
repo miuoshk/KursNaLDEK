@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { getLocale, getTranslations } from "next-intl/server";
+import { IntlProvider } from "@/features/shared/components/IntlProvider";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -16,28 +18,29 @@ const dmSerifDisplay = DM_Serif_Display({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Kurs na LDEK — Inteligentna nauka",
-    absolute: "Kurs na LDEK — Inteligentna nauka",
-  },
-  applicationName: "Kurs na LDEK",
-  description:
-    "Nauka, która się dostosowuje do Ciebie. Adaptacyjna platforma do egzaminów medycznych. Każde pytanie przybliża Cię do celu.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("common");
+  return {
+    title: {
+      default: t("metadataTitle"),
+      absolute: t("metadataTitle"),
+    },
+    applicationName: t("appName"),
+    description: t("metadataDescription"),
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html
-      lang="pl"
-      className={`${dmSans.variable} ${dmSerifDisplay.variable}`}
-    >
+    <html lang={locale} className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
       <body className="font-body bg-background text-primary antialiased">
-        {children}
+        <IntlProvider>{children}</IntlProvider>
       </body>
     </html>
   );

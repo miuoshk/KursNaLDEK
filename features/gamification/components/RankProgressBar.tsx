@@ -1,8 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { getNextRank, getXpProgress } from "@/features/gamification/lib/ranks";
 
 export function RankProgressBar({ xp }: { xp: number }) {
+  const t = useTranslations("gamification");
   const { current, needed, percent } = getXpProgress(xp);
   const next = getNextRank(xp);
 
@@ -16,8 +18,8 @@ export function RankProgressBar({ xp }: { xp: number }) {
       </div>
       <p className="mt-2 font-body text-body-xs text-muted">
         {next
-          ? `${current} / ${needed} XP do następnego poziomu`
-          : "Maksymalny poziom rangi"}
+          ? t("rankProgress.toNextLevel", { current, needed })
+          : t("rankProgress.maxLevel")}
       </p>
     </div>
   );

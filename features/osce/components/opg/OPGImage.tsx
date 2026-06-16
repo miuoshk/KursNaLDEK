@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import type { OPGStructure } from '../../lib/opg/types'
 
@@ -16,11 +17,13 @@ export default function OPGImage({
   activeStructureNumber,
   showNumbers,
 }: OPGImageProps) {
+  const t = useTranslations('osce')
+
   return (
     <div className="relative w-full">
       <img
         src={imageUrl}
-        alt="Zdjęcie pantomograficzne"
+        alt={t('opgPantomographicAlt')}
         className="block w-full rounded-lg"
         draggable={false}
       />

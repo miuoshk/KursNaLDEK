@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { LEGAL_DOCUMENTS } from "@/features/legal/constants";
 
-export function LegalFooterLinks() {
+export async function LegalFooterLinks() {
+  const t = await getTranslations("common");
+
   return (
     <footer className="border-t border-white/10 pt-6 text-center">
       <p className="font-body text-xs text-muted">
@@ -11,7 +14,7 @@ export function LegalFooterLinks() {
           rel="noopener noreferrer"
           className="underline underline-offset-2 transition hover:text-secondary"
         >
-          Regulamin
+          {t("legalRegulamin")}
         </Link>
         <span className="mx-2 text-white/20">·</span>
         <Link
@@ -20,7 +23,7 @@ export function LegalFooterLinks() {
           rel="noopener noreferrer"
           className="underline underline-offset-2 transition hover:text-secondary"
         >
-          Polityka prywatności i cookies
+          {t("legalPrivacyPolicy")}
         </Link>
       </p>
     </footer>

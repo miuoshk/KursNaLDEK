@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
@@ -11,12 +12,13 @@ export type LoadSessionSummaryResult =
 export async function loadSessionSummaryAction(
   sessionId: string,
 ): Promise<LoadSessionSummaryResult> {
+  const t = await getTranslations("session");
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    return { ok: false, message: "Brak sesji." };
+    return { ok: false, message: t("errors.noSession") };
   }
 
   const { data: row } = await supabase
@@ -27,12 +29,12 @@ export async function loadSessionSummaryAction(
     .maybeSingle();
 
   if (!row?.is_completed) {
-    return { ok: false, message: "Sesja nie jest zakończona." };
+    return { ok: false, message: t("errors.sessionNotCompleted") };
   }
 
   const summary = await buildSessionSummary(supabase, sessionId, user.id);
   if (!summary) {
-    return { ok: false, message: "Brak podsumowania." };
+    return { ok: false, message: t("errors.summaryMissing") };
   }
   return { ok: true, summary };
 }

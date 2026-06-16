@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import type { OPGAnswer, OPGQuestion } from '../../lib/opg/types'
 
 interface OPGResultsSummaryProps {
@@ -17,6 +18,7 @@ export default function OPGResultsSummary({
   onRetryWrong,
   onBack,
 }: OPGResultsSummaryProps) {
+  const t = useTranslations('osce')
   const total = answers.length
   const correct = answers.filter((a) => a.isCorrect).length
   const wrongCount = total - correct
@@ -32,7 +34,6 @@ export default function OPGResultsSummary({
 
   return (
     <div>
-      {/* Hero */}
       <div
         style={{
           textAlign: 'center',
@@ -57,11 +58,10 @@ export default function OPGResultsSummary({
             color: 'rgba(255, 255, 255, 0.6)',
           }}
         >
-          {correct} z {total} poprawnych
+          {t('opgScoreSummary', { correct, total })}
         </p>
       </div>
 
-      {/* Lista pytan */}
       <div style={{ marginBottom: 24 }}>
         {answers.map((answer) => {
           const question = questionMap.get(answer.questionId)
@@ -103,7 +103,7 @@ export default function OPGResultsSummary({
                       fontSize: 13,
                     }}
                   >
-                    Twoja odpowiedź: {answer.userInput}
+                    {t('opgYourAnswer', { answer: answer.userInput })}
                   </p>
                 )}
               </div>
@@ -112,7 +112,6 @@ export default function OPGResultsSummary({
         })}
       </div>
 
-      {/* Przyciski */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <button
           type="button"
@@ -129,7 +128,7 @@ export default function OPGResultsSummary({
             cursor: 'pointer',
           }}
         >
-          Powtórz quiz
+          {t('opgRetryQuiz')}
         </button>
 
         <button
@@ -148,7 +147,7 @@ export default function OPGResultsSummary({
             cursor: wrongCount > 0 ? 'pointer' : 'default',
           }}
         >
-          Powtórz błędne ({wrongCount})
+          {t('retryWrongCount', { count: wrongCount })}
         </button>
 
         <button
@@ -165,7 +164,7 @@ export default function OPGResultsSummary({
             cursor: 'pointer',
           }}
         >
-          Wróć do stacji
+          {t('backToStation')}
         </button>
       </div>
     </div>

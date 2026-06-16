@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   useCallback,
   useEffect,
@@ -47,57 +48,6 @@ type SubjectTarget = {
 
 type Target = NavTarget | SubjectTarget;
 
-const STATIC_NAV: NavTarget[] = [
-  {
-    type: "nav",
-    id: "nav-pulpit",
-    label: "Pulpit",
-    hint: "Strona główna · postęp · powtórki",
-    href: "/pulpit",
-    icon: LayoutDashboard,
-  },
-  {
-    type: "nav",
-    id: "nav-przedmioty",
-    label: "Moje przedmioty",
-    hint: "Lista wszystkich przedmiotów roku",
-    href: "/przedmioty",
-    icon: BookOpen,
-  },
-  {
-    type: "nav",
-    id: "nav-statystyki",
-    label: "Statystyki",
-    hint: "Trafność · czasy · trudne tematy",
-    href: "/statystyki",
-    icon: BarChart3,
-  },
-  {
-    type: "nav",
-    id: "nav-osiagniecia",
-    label: "Osiągnięcia",
-    hint: "Rangi · ranking · odznaki",
-    href: "/osiagniecia",
-    icon: Award,
-  },
-  {
-    type: "nav",
-    id: "nav-zapisane",
-    label: "Zapisane pytania",
-    hint: "Twoje zakładki",
-    href: "/zapisane",
-    icon: Bookmark,
-  },
-  {
-    type: "nav",
-    id: "nav-ustawienia",
-    label: "Ustawienia",
-    hint: "Profil · powiadomienia · preferencje",
-    href: "/ustawienia",
-    icon: Settings,
-  },
-];
-
 function normalize(s: string): string {
   return s
     .toLowerCase()
@@ -111,6 +61,8 @@ type CommandPaletteProps = {
 };
 
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [subjects, setSubjects] = useState<SearchSubjectItem[]>([]);
@@ -119,7 +71,60 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Lazy load - dopiero przy pierwszym otwarciu palety dociagamy katalog.
+  const staticNav = useMemo<NavTarget[]>(
+    () => [
+      {
+        type: "nav",
+        id: "nav-pulpit",
+        label: tNav("dashboard"),
+        hint: tNav("commandPaletteDashboardHint"),
+        href: "/pulpit",
+        icon: LayoutDashboard,
+      },
+      {
+        type: "nav",
+        id: "nav-przedmioty",
+        label: tNav("mySubjects"),
+        hint: tNav("commandPaletteSubjectsHint"),
+        href: "/przedmioty",
+        icon: BookOpen,
+      },
+      {
+        type: "nav",
+        id: "nav-statystyki",
+        label: tNav("statistics"),
+        hint: tNav("commandPaletteStatisticsHint"),
+        href: "/statystyki",
+        icon: BarChart3,
+      },
+      {
+        type: "nav",
+        id: "nav-osiagniecia",
+        label: tNav("achievements"),
+        hint: tNav("commandPaletteAchievementsHint"),
+        href: "/osiagniecia",
+        icon: Award,
+      },
+      {
+        type: "nav",
+        id: "nav-zapisane",
+        label: tNav("savedQuestions"),
+        hint: tNav("commandPaletteSavedHint"),
+        href: "/zapisane",
+        icon: Bookmark,
+      },
+      {
+        type: "nav",
+        id: "nav-ustawienia",
+        label: tNav("settings"),
+        hint: tNav("commandPaletteSettingsHint"),
+        href: "/ustawienia",
+        icon: Settings,
+      },
+    ],
+    [tNav],
+  );
+
   useEffect(() => {
     if (!open || subjectsLoaded) return;
     let cancelled = false;
@@ -146,17 +151,20 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
       type: "subject",
       id: `subj-${s.id}`,
       label: s.name,
-      hint: `Przedmiot · Rok ${s.year} · ${s.shortName}`,
+      hint: tNav("commandPaletteSubjectHint", {
+        year: s.year,
+        shortName: s.shortName,
+      }),
       href: `/przedmioty/${s.id}`,
       icon: Compass,
     }));
-    const all: Target[] = [...STATIC_NAV, ...subjectTargets];
+    const all: Target[] = [...staticNav, ...subjectTargets];
     if (!q) return all;
     return all.filter((t) => {
       const haystack = normalize(`${t.label} ${t.hint}`);
       return haystack.includes(q);
     });
-  }, [query, subjects]);
+  }, [query, subjects, staticNav, tNav]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -187,7 +195,6 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
     [activeIndex, targets, select],
   );
 
-  // Auto-scroll aktywnego elementu w widoczny obszar.
   useEffect(() => {
     if (!listRef.current) return;
     const el = listRef.current.querySelector<HTMLElement>(
@@ -214,9 +221,9 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
           }}
           onKeyDown={onKeyDown}
         >
-          <Dialog.Title className="sr-only">Szukaj w aplikacji</Dialog.Title>
+          <Dialog.Title className="sr-only">{tCommon("searchInApp")}</Dialog.Title>
           <Dialog.Description className="sr-only">
-            Wpisz nazwę przedmiotu lub strony, by szybko przejść.
+            {tCommon("searchDescription")}
           </Dialog.Description>
 
           <div className="flex items-center gap-3 border-b border-border px-4 py-3">
@@ -226,7 +233,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj przedmiotu lub strony…"
+              placeholder={tCommon("searchPlaceholder")}
               className={cn(
                 "min-w-0 flex-1 bg-transparent font-body text-body-md text-primary",
                 "placeholder:text-muted focus:outline-none",
@@ -240,7 +247,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
             <Dialog.Close asChild>
               <button
                 type="button"
-                aria-label="Zamknij"
+                aria-label={tCommon("close")}
                 className="flex size-7 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.06] hover:text-primary sm:hidden"
               >
                 <X className="size-4" aria-hidden />
@@ -252,11 +259,11 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
             ref={listRef}
             className="max-h-[55vh] overflow-y-auto py-2"
             role="listbox"
-            aria-label="Wyniki"
+            aria-label={tCommon("results")}
           >
             {targets.length === 0 ? (
               <p className="px-4 py-6 text-center font-body text-body-sm text-muted">
-                Brak wyników dla „{query}".
+                {tCommon("noResultsForQuery", { query })}
               </p>
             ) : (
               <ul>
@@ -315,11 +322,9 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
             <span className="hidden sm:inline">
               <kbd className="rounded border border-border bg-card px-1 py-px text-[10px]">↑</kbd>{" "}
               <kbd className="rounded border border-border bg-card px-1 py-px text-[10px]">↓</kbd>{" "}
-              nawiguj
+              {tCommon("navigate")}
             </span>
-            <span>
-              {targets.length} {targets.length === 1 ? "wynik" : "wyników"}
-            </span>
+            <span>{tCommon("resultsCount", { count: targets.length })}</span>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

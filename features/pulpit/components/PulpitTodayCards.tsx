@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { CheckCircle, Flame } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { getCurrentRank, getNextRank, getXpProgress } from "@/features/gamification/lib/ranks";
+import { formatStreakI18n } from "@/lib/formatStreak";
 import { cn } from "@/lib/utils";
-import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const RING_R = 48;
 const RING_C = 2 * Math.PI * RING_R;
@@ -43,12 +44,20 @@ function CardShell({
   );
 }
 
-function DailyGoalCard({ data, index }: { data: PulpitData; index: number }) {
+function DailyGoalCard({
+  data,
+  index,
+  t,
+}: {
+  data: PulpitData;
+  index: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+}) {
   const goalDone = data.questionsToday >= data.dailyGoal;
   const pct = ringPct(data.questionsToday, data.dailyGoal);
 
   return (
-    <CardShell label="Cel dzienny" index={index}>
+    <CardShell label={t("dailyGoal")} index={index}>
       <div className="flex flex-col items-center gap-2">
         <div className="relative size-[120px]">
           <svg
@@ -92,15 +101,28 @@ function DailyGoalCard({ data, index }: { data: PulpitData; index: number }) {
         </div>
         <p className="font-body text-sm text-secondary">
           {goalDone
-            ? "Cel osiągnięty!"
-            : `${data.questionsToday} / ${data.dailyGoal} ${pytaniaForm(data.dailyGoal)}`}
+            ? t("goalReached")
+            : t("dailyGoalProgress", {
+                done: data.questionsToday,
+                goal: data.dailyGoal,
+              })}
         </p>
       </div>
     </CardShell>
   );
 }
 
-function StreakCard({ data, index }: { data: PulpitData; index: number }) {
+function StreakCard({
+  data,
+  index,
+  t,
+  tCommon,
+}: {
+  data: PulpitData;
+  index: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+  tCommon: ReturnType<typeof useTranslations<"common">>;
+}) {
   const s = data.currentStreak;
   const flameColor =
     s === 0
@@ -110,7 +132,7 @@ function StreakCard({ data, index }: { data: PulpitData; index: number }) {
         : "text-brand-gold";
 
   return (
-    <CardShell label="Streak" index={index}>
+    <CardShell label={t("streak")} index={index}>
       <div className="flex items-center gap-3">
         <Flame
           className={cn("size-9 shrink-0", flameColor)}
@@ -136,14 +158,24 @@ function StreakCard({ data, index }: { data: PulpitData; index: number }) {
       </div>
       <p className="mt-3 font-body text-xs text-secondary">
         {s === 0
-          ? "Zacznij nową serię!"
-          : `Rekord: ${data.longestStreak} dni`}
+          ? t("startNewStreak")
+          : t("recordStreak", {
+              streak: formatStreakI18n(tCommon, data.longestStreak),
+            })}
       </p>
     </CardShell>
   );
 }
 
-function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
+function ReviewCard({
+  data,
+  index,
+  t,
+}: {
+  data: PulpitData;
+  index: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+}) {
   const d = data.dueReviews;
   const numColor =
     d === 0
@@ -155,7 +187,7 @@ function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
   const reviewCount = Math.min(data.preferredSessionCount, d);
 
   return (
-    <CardShell label="Powtórki" index={index}>
+    <CardShell label={t("reviews")} index={index}>
       <p className={cn("font-heading text-4xl font-bold", numColor)}>{d}</p>
       {d > 0 ? (
         <Link
@@ -166,27 +198,36 @@ function ReviewCard({ data, index }: { data: PulpitData; index: number }) {
           })}
           className="mt-3 inline-flex items-center rounded-btn border border-brand-gold/40 px-3 py-1 font-body text-body-sm font-medium text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
         >
-          Powtórz ({reviewCount})
+          {t("reviewAction", { count: reviewCount })}
         </Link>
       ) : (
         <div className="mt-3 flex items-center gap-1.5">
           <CheckCircle className="size-4 text-secondary" aria-hidden />
-          <p className="font-body text-sm text-secondary">Na bieżąco!</p>
+          <p className="font-body text-sm text-secondary">{t("reviewsUpToDate")}</p>
         </div>
       )}
     </CardShell>
   );
 }
 
-function RankCard({ data, index }: { data: PulpitData; index: number }) {
+function RankCard({
+  data,
+  index,
+  t,
+}: {
+  data: PulpitData;
+  index: number;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+}) {
+  const tGamification = useTranslations("gamification");
   const rank = getCurrentRank(data.xp);
   const next = getNextRank(data.xp);
   const progress = getXpProgress(data.xp);
 
   return (
-    <CardShell label="Ranga" index={index}>
+    <CardShell label={t("rank")} index={index}>
       <p className="font-heading text-lg font-bold text-brand-gold">
-        {rank.name}
+        {tGamification(`ranks.${rank.id}`)}
       </p>
       <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10">
         <div
@@ -196,20 +237,27 @@ function RankCard({ data, index }: { data: PulpitData; index: number }) {
       </div>
       <p className="mt-2 font-body text-xs text-secondary">
         {next
-          ? `${progress.current} / ${progress.needed} XP do ${next.name}`
-          : `${data.xp} XP — najwyższa ranga!`}
+          ? t("rankProgress", {
+              current: progress.current,
+              needed: progress.needed,
+              next: tGamification(`ranks.${next.id}`),
+            })
+          : t("rankMax", { xp: data.xp })}
       </p>
     </CardShell>
   );
 }
 
 export function PulpitTodayCards({ data }: { data: PulpitData }) {
+  const t = useTranslations("pulpit");
+  const tCommon = useTranslations("common");
+
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      <DailyGoalCard data={data} index={0} />
-      <StreakCard data={data} index={1} />
-      <ReviewCard data={data} index={2} />
-      <RankCard data={data} index={3} />
+      <DailyGoalCard data={data} index={0} t={t} />
+      <StreakCard data={data} index={1} t={t} tCommon={tCommon} />
+      <ReviewCard data={data} index={2} t={t} />
+      <RankCard data={data} index={3} t={t} />
     </div>
   );
 }

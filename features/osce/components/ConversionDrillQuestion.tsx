@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ConversionDrillSummaryPanel } from "@/features/osce/components/ConversionDrillSummaryPanel";
 import { playBuzz, playDing } from "@/features/osce/lib/osceAudio";
@@ -70,6 +71,7 @@ export function ConversionDrillQuestion({
   onContinueAfterDrill,
   soundEnabled = true,
 }: ConversionDrillQuestionProps) {
+  const t = useTranslations("osce");
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("running");
   const [feedbackOk, setFeedbackOk] = useState<boolean | null>(null);
@@ -209,7 +211,7 @@ export function ConversionDrillQuestion({
 
   if (!questions.length) {
     return (
-      <p className="font-body text-body-md text-muted">Brak pytań w serii.</p>
+      <p className="font-body text-body-md text-muted">{t("noQuestionsInSeries")}</p>
     );
   }
 
@@ -259,7 +261,7 @@ export function ConversionDrillQuestion({
               className={cn("size-4 shrink-0", urgent ? "text-error" : "text-brand-gold")}
               aria-hidden
             />
-            {phase === "running" ? "Czas" : "Koniec rundy"}
+            {phase === "running" ? t("drillTime") : t("drillRoundEnd")}
           </span>
           <span
             className={cn(

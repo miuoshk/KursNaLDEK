@@ -1,6 +1,6 @@
 # Format pytań — Profesjonalizm i humanizm w medycynie · Zaliczenie końcowe
 
-> **Jeden worek.** Wszystkie pytania trafiają do **jednego** `topic_id`: `PHUM-ZAL`. Bot **nie tworzy** innych tematów i **nie mapuje** materiału na działy programowe.
+> **Zaliczenie końcowe = jeden worek:** pytania z arkuszy / egzaminu trafiają do **`PHUM-ZAL`**. Batche **generowane** (psychologia, socjologia, profesjonalizm) → osobne tematy `PHUM-*-GEN` — patrz **`exports/prof-humanizm-gen-claude-handover.md`**.
 >
 > Zasady opcji A–E, kolejność w JSONB, apostrofy `''`, opcje kombinatoryczne — jak w `FormatPisaniaPytan.md`.
 
@@ -33,7 +33,7 @@
 
 **Czego bot NIE robi:**
 
-- Nie dodaje innych `topics.id` (np. etyka, komunikacja, humanizm — wszystko idzie do `PHUM-ZAL`).
+- Nie dodaje tematów `-GEN` ani nie wrzuca pytań generowanych do `PHUM-ZAL` (to osobne kafelki — handover generowanych).
 - Nie przypisuje pytań do innych przedmiotów (`stoma-*`, inne `lek-*`).
 - Nie używa `theme_label` z anatomii (`subtheme_label` = `NULL`).
 
@@ -177,5 +177,5 @@ UPDATE public.topics t
 ## 8. Kontekst w aplikacji
 
 - Widoczny **tylko** na kierunku **lekarski**, **rok 1** (entitlement roku).
-- W UI jeden kafelek tematu: **Zaliczenie końcowe**.
-- Sesja = pula pytań z `topic_id = 'PHUM-ZAL'`.
+- W UI: **Zaliczenie końcowe** (`PHUM-ZAL`) + 3 kafelki generowane (`PHUM-PSY-GEN`, `PHUM-SOC-GEN`, `PHUM-PRO-GEN`).
+- Sesja całego przedmiotu = pula bez `-GEN`; sesja z kafelka = wybrany temat.

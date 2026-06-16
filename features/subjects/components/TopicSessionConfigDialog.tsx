@@ -3,6 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   BookOpen,
   ChevronRight,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react";
 import {
   SESSION_COUNT_PRESETS,
+  getSessionCountLabels,
   resolveSessionPickerCount,
   sessionCountToPickerState,
 } from "@/features/session/lib/sessionCount";
@@ -64,6 +66,10 @@ export function TopicSessionConfigDialog({
   hasKnowledgeCard = false,
   onOpenKnowledgeCard,
 }: TopicSessionConfigDialogProps) {
+  const t = useTranslations("subjects");
+  const tSession = useTranslations("session");
+  const tCommon = useTranslations("common");
+  const { questionsShort, allQuestionsAriaLabel } = getSessionCountLabels(tSession);
   const maxQ = Math.max(1, totalQuestions);
   const countFallback = Math.min(initialSessionCount, maxQ);
   const smartInitial = sessionCountToPickerState(countFallback);
@@ -118,7 +124,7 @@ export function TopicSessionConfigDialog({
           {/* Close button */}
           <Dialog.Close
             className="absolute right-3.5 top-3.5 flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.06] text-muted transition-colors hover:text-primary"
-            aria-label="Zamknij"
+            aria-label={tCommon("close")}
           >
             <X className="size-3.5" aria-hidden />
           </Dialog.Close>
@@ -132,7 +138,7 @@ export function TopicSessionConfigDialog({
               {topicName}
             </Dialog.Title>
             <p className="mt-0.5 font-body text-body-sm text-secondary">
-              Wybierz tryb nauki
+              {t("chooseStudyMode")}
             </p>
 
             {/* Progress bar */}
@@ -156,7 +162,7 @@ export function TopicSessionConfigDialog({
               <div className="lg:flex lg:flex-col">
                 <div className="relative flex flex-col rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4 lg:h-full">
                   <span className="absolute -top-2 right-3 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
-                    Rekomendowane
+                    {t("recommended")}
                   </span>
 
                   <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-[10px] bg-brand-sage/25">
@@ -164,11 +170,10 @@ export function TopicSessionConfigDialog({
                   </div>
 
                   <h3 className="font-heading text-heading-sm text-primary">
-                    Inteligentna sesja
+                    {t("smartSession")}
                   </h3>
                   <p className="mt-1 font-body text-body-sm text-secondary">
-                    Algorytm dobierze pytania na podstawie Twojej wiedzy i
-                    zaplanuje powtórki
+                    {t("smartSessionTopicDesc")}
                   </p>
 
                   {/* Count pills for Inteligentna */}
@@ -179,6 +184,8 @@ export function TopicSessionConfigDialog({
                     onPresetChange={setSmartPreset}
                     onCustomChange={setSmartCustom}
                     className="mt-3.5 border-t border-white/[0.06] pt-3"
+                    questionsShort={questionsShort}
+                    allQuestionsAriaLabel={allQuestionsAriaLabel}
                   />
 
                   {/* CTA — lg:mt-auto pushes to bottom only on desktop */}
@@ -186,7 +193,7 @@ export function TopicSessionConfigDialog({
                     href={smartHref}
                     className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] lg:mt-auto lg:pt-3.5"
                   >
-                    Rozpocznij sesję
+                    {t("startSession")}
                   </Link>
                 </div>
               </div>
@@ -195,7 +202,7 @@ export function TopicSessionConfigDialog({
               <div className="flex flex-col gap-3">
                 {/* Section label */}
                 <p className="mt-4 mb-0 font-body text-body-xs uppercase tracking-normal text-muted lg:mt-0">
-                  Inne tryby
+                  {t("otherModes")}
                 </p>
 
                 {hasKnowledgeCard ? (
@@ -206,10 +213,10 @@ export function TopicSessionConfigDialog({
                           <FileText className="size-4 text-muted" aria-hidden />
                         </div>
                         <h4 className="font-heading text-body-md font-bold text-primary">
-                          Nauka klasyczna
+                          {t("classicLearning")}
                         </h4>
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                          Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
+                          {t("classicLearningDesc")}
                         </p>
                         <CountPills
                           preset={reviewPreset}
@@ -219,12 +226,14 @@ export function TopicSessionConfigDialog({
                           onCustomChange={setReviewCustom}
                           className="mt-2.5 border-t border-white/[0.06] pt-2.5"
                           compact
+                          questionsShort={questionsShort}
+                          allQuestionsAriaLabel={allQuestionsAriaLabel}
                         />
                         <Link
                           href={reviewHref}
                           className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
                         >
-                          Rozpocznij
+                          {t("start")}
                         </Link>
                       </div>
 
@@ -233,13 +242,13 @@ export function TopicSessionConfigDialog({
                           <LayoutGrid className="size-4 text-muted" aria-hidden />
                         </div>
                         <h4 className="font-heading text-body-md font-bold text-primary">
-                          Katalog pytań
+                          {t("questionCatalog")}
                         </h4>
                         <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                          Przeglądaj pytania i wyjaśnienia
+                          {t("catalogBrowseShort")}
                         </p>
                         <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
-                          Przeglądaj
+                          {t("browse")}
                         </span>
                       </Link>
                     </div>
@@ -259,10 +268,10 @@ export function TopicSessionConfigDialog({
                       />
                       <div className="min-w-0 flex-1 text-left">
                         <h5 className="font-body text-body-sm font-medium text-primary">
-                          Karta wiedzy
+                          {t("knowledgeCard")}
                         </h5>
                         <span className="font-body text-[11px] text-muted">
-                          Teoria i kluczowe pojęcia
+                          {t("knowledgeCardTheory")}
                         </span>
                       </div>
                       <ChevronRight
@@ -278,10 +287,10 @@ export function TopicSessionConfigDialog({
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
                       <h4 className="font-heading text-body-md font-bold text-primary">
-                        Nauka klasyczna
+                        {t("classicLearning")}
                       </h4>
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                        Rozwiązuj pytania bez algorytmu powtórek i oceny trudności
+                        {t("classicLearningDesc")}
                       </p>
                       <CountPills
                         preset={reviewPreset}
@@ -291,12 +300,14 @@ export function TopicSessionConfigDialog({
                         onCustomChange={setReviewCustom}
                         className="mt-2.5 border-t border-white/[0.06] pt-2.5"
                         compact
+                        questionsShort={questionsShort}
+                        allQuestionsAriaLabel={allQuestionsAriaLabel}
                       />
                       <Link
                         href={reviewHref}
                         className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
                       >
-                        Rozpocznij
+                        {t("start")}
                       </Link>
                     </div>
 
@@ -305,13 +316,13 @@ export function TopicSessionConfigDialog({
                         <LayoutGrid className="size-4 text-muted" aria-hidden />
                       </div>
                       <h4 className="font-heading text-body-md font-bold text-primary">
-                        Katalog pytań
+                        {t("questionCatalog")}
                       </h4>
                       <p className="mt-1 font-body text-[11px] leading-snug text-muted">
-                        Przeglądaj pytania i wyjaśnienia
+                        {t("catalogBrowseShort")}
                       </p>
                       <span className="mt-auto pt-2.5 font-body text-body-xs font-medium text-brand-sage">
-                        Przeglądaj
+                        {t("browse")}
                       </span>
                     </Link>
                   </div>
@@ -333,6 +344,8 @@ type CountPillsProps = {
   onCustomChange: (v: string) => void;
   className?: string;
   compact?: boolean;
+  questionsShort: string;
+  allQuestionsAriaLabel: string;
 };
 
 function CountPills({
@@ -343,6 +356,8 @@ function CountPills({
   onCustomChange,
   className,
   compact = false,
+  questionsShort,
+  allQuestionsAriaLabel,
 }: CountPillsProps) {
   const sizeClass = compact
     ? "h-6 min-w-[32px] px-1.5 text-[12px]"
@@ -383,7 +398,7 @@ function CountPills({
             ? "border-brand-sage bg-brand-sage text-white"
             : "border-border bg-transparent text-secondary",
         )}
-        aria-label="Wszystkie pytania"
+        aria-label={allQuestionsAriaLabel}
       >
         <InfinityIcon className={compact ? "size-3.5" : "size-4"} aria-hidden />
       </button>
@@ -406,7 +421,7 @@ function CountPills({
           inputSizeClass,
         )}
       />
-      <span className="ml-auto font-body text-body-xs text-muted">pytań</span>
+      <span className="ml-auto font-body text-body-xs text-muted">{questionsShort}</span>
     </div>
   );
 }

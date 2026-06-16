@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 interface OPGQuizProgressProps {
   currentIndex: number
   totalQuestions: number
@@ -11,6 +13,7 @@ export default function OPGQuizProgress({
   totalQuestions,
   correctCount,
 }: OPGQuizProgressProps) {
+  const t = useTranslations('osce')
   const progressPct =
     totalQuestions > 0 ? (currentIndex / totalQuestions) * 100 : 0
 
@@ -29,7 +32,7 @@ export default function OPGQuizProgress({
           {currentIndex + 1}/{totalQuestions}
         </span>
         <span style={{ color: correctCount > 0 ? '#4ade80' : 'inherit' }}>
-          {correctCount} poprawnych
+          {t('opgCorrectCount', { count: correctCount })}
         </span>
       </div>
 

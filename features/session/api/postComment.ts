@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
@@ -15,9 +16,10 @@ export type PostCommentResult =
 export async function postComment(
   raw: z.infer<typeof schema>,
 ): Promise<PostCommentResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { ok: false, message: "Treść komentarza jest wymagana." };
+    return { ok: false, message: t("errors.commentRequired") };
   }
 
   try {
@@ -28,7 +30,7 @@ export async function postComment(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Musisz być zalogowany." };
+      return { ok: false, message: t("errors.mustLogin") };
     }
 
     const { data, error } = await supabase
@@ -43,26 +45,27 @@ export async function postComment(
 
     if (error) {
       console.error("[postComment]", error.message);
-      return { ok: false, message: "Nie udało się dodać komentarza." };
+      return { ok: false, message: t("errors.addCommentFailed") };
     }
 
     return { ok: true, commentId: data.id as string };
   } catch (e) {
     console.error("[postComment]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }
 
 export type DeleteCommentResult = { ok: true } | { ok: false; message: string };
 
 export async function deleteComment(commentId: string): Promise<DeleteCommentResult> {
+  const t = await getTranslations("session");
   try {
     const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user) return { ok: false, message: "Musisz być zalogowany." };
+    if (!user) return { ok: false, message: t("errors.mustLogin") };
 
     const { error } = await supabase
       .from("question_discussions")
@@ -72,12 +75,12 @@ export async function deleteComment(commentId: string): Promise<DeleteCommentRes
 
     if (error) {
       console.error("[deleteComment]", error.message);
-      return { ok: false, message: "Nie udało się usunąć komentarza." };
+      return { ok: false, message: t("errors.deleteCommentFailed") };
     }
 
     return { ok: true };
   } catch (e) {
     console.error("[deleteComment]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

@@ -1,5 +1,7 @@
 import { format, subDays } from "date-fns";
-import { pl } from "date-fns/locale";
+import type { Locale } from "date-fns";
+import type { AppLocale } from "@/i18n/config";
+import { getDateFnsLocale } from "@/lib/i18n/dateFnsLocale";
 
 type SessionRow = {
   completed_at: string;
@@ -54,8 +56,10 @@ export function buildStudyTimeLast14(
   return out;
 }
 
-export function weekdayShortPl(d: Date) {
-  return format(d, "EEE", { locale: pl });
+export function weekdayShort(d: Date, locale: AppLocale | Locale = "pl") {
+  const dateLocale =
+    typeof locale === "string" ? getDateFnsLocale(locale) : locale;
+  return format(d, "EEE", { locale: dateLocale });
 }
 
 export function heatmap30(

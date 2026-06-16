@@ -1,6 +1,11 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { SubjectStats } from "@/features/subjects/server/loadSubjectDashboard";
 
-function formatNextReview(iso: string): string {
+function formatNextReview(
+  iso: string,
+  t: (key: "todayShort" | "tomorrow" | "inDays", values?: { count?: number }) => string,
+  locale: string,
+): string {
   const target = new Date(iso);
   const now = new Date();
 
@@ -10,10 +15,10 @@ function formatNextReview(iso: string): string {
     (targetDay.getTime() - todayStart.getTime()) / 86_400_000,
   );
 
-  if (diffDays <= 0) return "Dziś";
-  if (diffDays === 1) return "Jutro";
-  if (diffDays <= 7) return `Za ${diffDays} dni`;
-  return targetDay.toLocaleDateString("pl-PL", {
+  if (diffDays <= 0) return t("todayShort");
+  if (diffDays === 1) return t("tomorrow");
+  if (diffDays <= 7) return t("inDays", { count: diffDays });
+  return targetDay.toLocaleDateString(locale, {
     day: "numeric",
     month: "short",
   });
@@ -58,7 +63,10 @@ function SubjectMasteryRing({ pct }: { pct: number }) {
   );
 }
 
-export function StatsRow({ stats }: { stats: SubjectStats }) {
+export async function StatsRow({ stats }: { stats: SubjectStats }) {
+  const t = await getTranslations("subjects");
+  const tCommon = await getTranslations("common");
+  const locale = await getLocale();
   const accPct = Math.round(stats.accuracy * 100);
   const progressPct =
     stats.totalQuestions > 0
@@ -69,18 +77,18 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <div className="rounded-card border border-border bg-card p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
-          Opanowanie przedmiotu
+          {t("subjectMastery")}
         </p>
         <p className="mt-3 font-body text-3xl text-brand-gold">{stats.masteryPct}%</p>
         <div className="mt-4 flex justify-center">
           <SubjectMasteryRing pct={stats.masteryPct} />
         </div>
-        <p className="mt-3 text-center font-body text-body-xs text-muted">Łączny postęp</p>
+        <p className="mt-3 text-center font-body text-body-xs text-muted">{t("totalProgress")}</p>
       </div>
 
       <div className="rounded-card border border-border bg-card p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
-          Pytania rozwiązane
+          {t("questionsAnswered")}
         </p>
         <p className="mt-3 font-body text-2xl text-primary">
           {stats.answeredQuestions} / {stats.totalQuestions}
@@ -95,7 +103,7 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
 
       <div className="rounded-card border border-border bg-card p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
-          Trafność odpowiedzi
+          {t("answerAccuracy")}
         </p>
         <p className="mt-3 font-body text-2xl text-primary">
           {stats.answeredQuestions > 0 ? `${accPct}%` : "—"}
@@ -104,21 +112,24 @@ export function StatsRow({ stats }: { stats: SubjectStats }) {
 
       <div className="rounded-card border border-border bg-card p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
-          Następna powtórka
+          {t("nextReview")}
         </p>
         {stats.nextReviewDate ? (
           <>
             <p className="mt-3 font-body text-2xl text-primary">
-              {formatNextReview(stats.nextReviewDate)}
+              {formatNextReview(stats.nextReviewDate, t, locale)}
             </p>
             {stats.dueCount > 0 && (
               <p className="mt-2 font-body text-body-xs text-brand-gold">
-                {stats.dueCount} {stats.dueCount === 1 ? "pytanie" : stats.dueCount < 5 ? "pytania" : "pytań"} do powtórki
+                {t("dueForReviewCount", {
+                  count: stats.dueCount,
+                  questionsLabel: tCommon("questionsCount", { count: stats.dueCount }),
+                })}
               </p>
             )}
           </>
         ) : (
-          <p className="mt-3 font-body text-lg text-muted">Brak zaplanowanych</p>
+          <p className="mt-3 font-body text-lg text-muted">{t("noScheduledReviews")}</p>
         )}
       </div>
     </div>

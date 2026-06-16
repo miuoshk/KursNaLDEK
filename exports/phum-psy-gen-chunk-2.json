@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-psy-gen-026",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Proces DM, którego istotą jest \"wywoływanie i wzmacnianie wewnętrznej motywacji do zmiany oraz wzmacnianie wiary we własną skuteczność\", to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "angażowanie"
+      },
+      {
+        "id": "b",
+        "text": "ukierunkowywanie"
+      },
+      {
+        "id": "c",
+        "text": "wywoływanie"
+      },
+      {
+        "id": "d",
+        "text": "planowanie"
+      },
+      {
+        "id": "e",
+        "text": "ewokacja behawioralna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Wywoływanie** (trzeci proces DM) to wywoływanie i wzmacnianie **wewnętrznej motywacji** do zmiany, wzmacnianie **wiary we własną skuteczność** (poczucia sprawczości) i dochodzenie do własnej koncepcji zmiany pacjenta. Pytania pomocnicze dotyczą \"języka zmiany\" i własnych argumentów osoby. Odróżnij od planowania (konkretny następny krok) — wywoływanie buduje motywację, planowanie ją operacjonalizuje.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-027",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Czwarty proces DM, obejmujący \"zarówno rozwijanie zobowiązania do zmiany, jak i sformułowanie konkretnego działania\", to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "angażowanie"
+      },
+      {
+        "id": "b",
+        "text": "ukierunkowywanie"
+      },
+      {
+        "id": "c",
+        "text": "wywoływanie"
+      },
+      {
+        "id": "d",
+        "text": "planowanie"
+      },
+      {
+        "id": "e",
+        "text": "podtrzymywanie"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Planowanie** to ostatni z czterech procesów DM: obejmuje rozwijanie zobowiązania do zmiany oraz sformułowanie konkretnego działania. Kluczowa zasada brzmi: plan należy **wydobywać, nie przepisywać** („czy pamiętam, żeby nie przepisywać planu, ale go wydobywać?”), a informacji udzielać za pozwoleniem osoby. Proces ten wieńczy sekwencję angażowanie → ukierunkowywanie → wywoływanie → planowanie. Marker planowania: wspólne tworzenie konkretnego, należącego do pacjenta planu działania.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-028",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z koncepcją wypalenia przytoczoną w prezentacji (Ayala Pines, \"Aby się wypalić trzeba zapłonąć\"), wypalenie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dotyczy głównie osób od początku niezaangażowanych i znudzonych pracą"
+      },
+      {
+        "id": "b",
+        "text": "jest tożsame ze zwykłym zmęczeniem i zniechęceniem"
+      },
+      {
+        "id": "c",
+        "text": "jest końcowym etapem procesu, u początku którego było wysokie zaangażowanie i motywacja"
+      },
+      {
+        "id": "d",
+        "text": "pojawia się natychmiast po wyborze niesatysfakcjonującego zawodu"
+      },
+      {
+        "id": "e",
+        "text": "występuje wyłącznie u osób bez wykształcenia kierunkowego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wg **Ayali Pines** wypalenie to **końcowy etap procesu**, u początku którego było wysokie zaangażowanie i motywacja — „aby się wypalić, trzeba zapłonąć”. Występuje zwykle u osób o **wysokim poziomie motywacji** i początkowym silnym zaangażowaniu w pracę. Prezentacja wprost ostrzega, by **nie mylić wypalenia ze zmęczeniem i zniechęceniem**, których źródłem jest najczęściej wybór niesatysfakcjonującego zawodu — to istotna pułapka różnicowania.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-029",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Trójwymiarowa koncepcja wypalenia zawodowego (Christina Maslach) obejmuje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyczerpanie emocjonalne, depersonalizację i obniżone poczucie dokonań osobistych"
+      },
+      {
+        "id": "b",
+        "text": "mobilizację, rozstrój i destrukcję"
+      },
+      {
+        "id": "c",
+        "text": "stadium alarmu, odporności i wyczerpania"
+      },
+      {
+        "id": "d",
+        "text": "hiperstres, hipostres i dystres"
+      },
+      {
+        "id": "e",
+        "text": "prekontemplację, kontemplację i działanie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wg **Christiny Maslach** wypalenie to psychologiczny zespół **wyczerpania emocjonalnego, depersonalizacji i obniżonego poczucia dokonań osobistych**, który może wystąpić u osób pracujących z innymi ludźmi. Pozostałe triady w prezentacji należą do innych autorów: fazy stresu (mobilizacja, rozstrój, destrukcja) — Reykowski; stadia GAS (alarm, odporność, wyczerpanie) — Selye; typy stresu (hiperstres, hipostres, dystres) — Grzegorzewska. Klasyczne przypisanie triady wypalenia do Maslach.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-030",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "\"Postrzeganie pacjentów jako przypadki, utrata poczucia ich indywidualności, emocjonalny dystans i brak współczucia\" to objawy którego wymiaru wypalenia wg Maslach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "depersonalizacji"
+      },
+      {
+        "id": "b",
+        "text": "wyczerpania emocjonalnego"
+      },
+      {
+        "id": "c",
+        "text": "obniżenia zadowolenia z osiągnięć zawodowych"
+      },
+      {
+        "id": "d",
+        "text": "stadium odporności"
+      },
+      {
+        "id": "e",
+        "text": "fazy mobilizacji"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Depersonalizacja** to utrata osobistego zaangażowania, emocjonalny dystans wobec pacjentów, brak empatii i współczucia oraz postrzeganie pacjentów jako \"przypadki\" z utratą poczucia ich indywidualności. Odróżnij od **wyczerpania emocjonalnego** (ciągłe zmęczenie, brak energii) i **obniżenia poczucia dokonań** (brak satysfakcji, wątpliwości co do kompetencji). Marker depersonalizacji: przedmiotowe traktowanie podopiecznych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-031",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według 6 czynników sprzyjających wypaleniu wg Ch. Maslach i P. Davis-Laack, \"konflikt wartości\" oznacza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nadmierne obciążenie pracą wykraczające poza możliwości jednostki"
+      },
+      {
+        "id": "b",
+        "text": "utratę kontroli i braku wpływu na wykonywaną pracę"
+      },
+      {
+        "id": "c",
+        "text": "sprzeczność między zasadami organizacji a indywidualnymi przekonaniami jednostki"
+      },
+      {
+        "id": "d",
+        "text": "brak sprawiedliwości w podziale obowiązków"
+      },
+      {
+        "id": "e",
+        "text": "niedostateczne wynagrodzenie i uznanie"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wśród 6 czynników wg **Maslach i Davis-Laack** **konflikt wartości** to sprzeczność między **zasadami organizacji a indywidualnymi przekonaniami** jednostki. Pozostałe czynniki to: nadmierne obciążenie pracą, utrata kontroli i wpływu na pracę, niedostateczne wynagrodzenie i uznanie, utrata wspólnotowości oraz brak sprawiedliwości w podziale obowiązków. Pytanie sprawdza precyzyjne przypisanie definicji do jednego z sześciu czynników sprzyjających wypaleniu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-032",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według faz wypalenia zawodowego wg APA, faza określana jako \"coraz więcej wysiłku, coraz mniej efektu\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "miesiąc miodowy"
+      },
+      {
+        "id": "b",
+        "text": "przebudzenie"
+      },
+      {
+        "id": "c",
+        "text": "szorstkość"
+      },
+      {
+        "id": "d",
+        "text": "wypalenie pełnoobjawowe"
+      },
+      {
+        "id": "e",
+        "text": "odradzanie się"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W fazach wypalenia wg **APA**: **miesiąc miodowy** (zauroczenie pracą), **przebudzenie** (pierwsze rysy, próby kompensacji pracą), **szorstkość** (**coraz więcej wysiłku, coraz mniej efektu**), **wypalenie pełnoobjawowe** (wyczerpanie, depresja, pustka, ucieczka od pracy), **odradzanie się** (leczenie). Marker szorstkości: rozjazd między nakładem a rezultatem. Mnemonik kolejności: miód → budzik → szorstko → wypalenie → odrodzenie.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-033",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według głównych symptomów wypalenia w płaszczyźnie indywidualnej (za Tucholska, 2003), do objawów KOGNITYWNYCH zalicza się m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "depresyjność, płaczliwość, lękliwość"
+      },
+      {
+        "id": "b",
+        "text": "bóle głowy, zaburzenia snu, zmianę wagi"
+      },
+      {
+        "id": "c",
+        "text": "niską samoocenę, poczucie winy, myśli samobójcze, sztywność myślenia"
+      },
+      {
+        "id": "d",
+        "text": "impulsywność, odkładanie spraw, wzrost spożycia używek"
+      },
+      {
+        "id": "e",
+        "text": "utratę idealizmu i gorliwości"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W płaszczyźnie indywidualnej objawy **kognitywne** to m.in. bezradność, poczucie osaczenia, niska samoocena, poczucie winy, **myśli samobójcze**, zaburzenia pamięci i koncentracji, sztywność myślenia, trudność w podejmowaniu decyzji. Pozostałe kategorie to: afektywne (depresyjność, płaczliwość, lękliwość), somatyczne (bóle głowy, zaburzenia snu, zmiana wagi), behawioralne (impulsywność, używki) i motywacyjne (utrata idealizmu i gorliwości). Pytanie różnicuje pięć kategorii symptomów.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-034",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją (Bilska, 2004) wypalenie zawodowe rozwija się pod wpływem trzech grup czynników:",
+    "options": [
+      {
+        "id": "a",
+        "text": "indywidualnych, interpersonalnych i organizacyjnych"
+      },
+      {
+        "id": "b",
+        "text": "fizycznych, chemicznych i biologicznych"
+      },
+      {
+        "id": "c",
+        "text": "poznawczych, emocjonalnych i behawioralnych"
+      },
+      {
+        "id": "d",
+        "text": "afektywnych, somatycznych i motywacyjnych"
+      },
+      {
+        "id": "e",
+        "text": "środowiskowych, osobowych i społecznych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wg **Bilskiej (2004)** wypalenie rozwija się pod wpływem trzech grup czynników: **indywidualnych, interpersonalnych i organizacyjnych** — przy czym prezentacja zaznacza, że nie istnieje uniwersalna koncepcja przyczyn wypalenia. Te same trzy płaszczyzny porządkują tabele symptomów Tucholskiej (indywidualna, interpersonalna, organizacyjna). Dystraktor C/D to kategorie symptomów, nie grupy czynników przyczynowych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-035",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Hans Selye jest w prezentacji określany jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "twórca koncepcji salutogenezy"
+      },
+      {
+        "id": "b",
+        "text": "autor poznawczo-transakcyjnego paradygmatu stresu"
+      },
+      {
+        "id": "c",
+        "text": "ojciec koncepcji stresu, który jako pierwszy wprowadził pojęcie stresu do nauki"
+      },
+      {
+        "id": "d",
+        "text": "twórca modelu dialogu motywującego"
+      },
+      {
+        "id": "e",
+        "text": "autor trójwymiarowej koncepcji wypalenia"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Hans Selye** (1907-1982), lekarz, fizjopatolog i endokrynolog, to **ojciec koncepcji stresu** — jako pierwszy wprowadził pojęcie stresu do nauki, a jego badania zrewolucjonizowały rozumienie reakcji organizmu na bodźce. Zdefiniował stres jako **niespecyficzną reakcję** organizmu na stawiane mu wymagania. Poznawczo-transakcyjny paradygmat stresu stworzyli Lazarus i Folkman, a trójwymiarową koncepcję wypalenia — Maslach. Selye pozostaje pionierem badań nad stresem.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-036",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W Ogólnym Zespole Adaptacyjnym (GAS) wg Selyego stadium, w którym \"organizm opiera się czynnikom stresogennym, utrzymując mobilizację wysoko powyżej normy\", to stadium:",
+    "options": [
+      {
+        "id": "a",
+        "text": "alarmu"
+      },
+      {
+        "id": "b",
+        "text": "szoku"
+      },
+      {
+        "id": "c",
+        "text": "odporności"
+      },
+      {
+        "id": "d",
+        "text": "wyczerpania"
+      },
+      {
+        "id": "e",
+        "text": "przeciwdziałania szokowi"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "GAS Selyego ma trzy stadia: **alarmu** (dzieli się na fazę szoku i przeciwdziałania szokowi), **odporności** (organizm opiera się stresorom, utrzymując **mobilizację powyżej normy**) oraz **wyczerpania** (spadek odporności, poddanie się, wzrost katecholamin i kortykosteroidów). Reakcję tę Selye nazwał **nieswoistą** (niespecyficzną). Marker stadium odporności to utrzymana wysoka mobilizacja organizmu; dopiero wyczerpanie oznacza załamanie obrony i wyczerpanie rezerw adaptacyjnych organizmu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-037",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według M.K. Grzegorzewskiej (odwołującej się do Selyego) typ stresu określany jako \"stadium przedstresowe\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "hipostres"
+      },
+      {
+        "id": "b",
+        "text": "hiperstres"
+      },
+      {
+        "id": "c",
+        "text": "dystres"
+      },
+      {
+        "id": "d",
+        "text": "eustres"
+      },
+      {
+        "id": "e",
+        "text": "distres adaptacyjny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Grzegorzewska wskazuje cztery typy stresu: **hiperstres** (stres nadmierny), **hipostres** (stadium **przedstresowe**), **dystres** (stres negatywny) oraz **eustres** (stres pozytywny). Podkreśla, że „stres” nie powinien być automatycznie uważany za pojęcie negatywne — może oznaczać dodatni bodziec pobudzający organizm do działania. Pułapka egzaminacyjna: hipostres to nie to samo co dystres; przedrostek „hipo” oznacza „poniżej/przed”, a nie „zły”. Marker hipostresu: stan przedstresowy, poniżej progu właściwego stresu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-038",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Poznawczo-transakcyjny paradygmat stresu (Lazarus, Folkman, 1984) definiuje stres jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "określoną relację między osobą a otoczeniem, ocenianą przez osobę jako obciążająca lub przekraczająca jej zasoby i zagrażająca dobrostanowi"
+      },
+      {
+        "id": "b",
+        "text": "niespecyficzną reakcję organizmu na stawiane mu wymagania"
+      },
+      {
+        "id": "c",
+        "text": "stan zaburzonej równowagi wyłącznie fizjologicznej"
+      },
+      {
+        "id": "d",
+        "text": "końcowy etap procesu zaangażowania zawodowego"
+      },
+      {
+        "id": "e",
+        "text": "dodatni bodziec pobudzający organizm do działania"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wg **Lazarusa i Folkman (1984)** stres to **określona relacja między osobą a otoczeniem**, oceniana przez osobę jako obciążająca lub przekraczająca jej zasoby i zagrażająca dobrostanowi. Kluczowa jest **subiektywna ocena** podmiotu (ocena pierwotna i wtórna). Dystraktor A to definicja Selyego (reakcja organizmu) — istota różnicy: Lazarus akcentuje relację i ocenę poznawczą, nie samą reakcję fizjologiczną.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-039",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W modelu Lazarusa i Folkman ocena pierwotna odpowiada na pytanie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "\"Co mogę teraz zrobić?\""
+      },
+      {
+        "id": "b",
+        "text": "\"Czy skoncentrować się na problemie czy na emocjach?\""
+      },
+      {
+        "id": "c",
+        "text": "\"Czy sytuacja się zmieniła? Czy czuję się lepiej?\""
+      },
+      {
+        "id": "d",
+        "text": "\"Jakie mam zasoby zaradcze?\""
+      },
+      {
+        "id": "e",
+        "text": "\"Czy ma to dla mnie znaczenie? Jakie?\""
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Ocena pierwotna** odpowiada na pytanie **„Czy ma to dla mnie znaczenie? Jakie?”** — klasyfikuje sytuację jako pozbawioną znaczenia, jako wyzwanie, zagrożenie, stratę/szkodę lub korzyść. **Ocena wtórna** („Co mogę teraz zrobić?”) dotyczy natomiast oszacowania zasobów zaradczych. Pytanie o to, czy sytuacja się zmieniła, należy do oceny powtórnej. Sekwencja: stresor → ocena pierwotna → ocena wtórna → radzenie sobie → wyniki → ponowna ocena. Marker oceny pierwotnej: ustalenie znaczenia sytuacji dla podmiotu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-040",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W ocenie pierwotnej (Lazarus, Folkman) ocena dotycząca sytuacji, w której \"możliwe są zarówno straty, jak i korzyści\", a której towarzyszą emocje negatywne i pozytywne (nadzieja, zapał), to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "krzywda/strata"
+      },
+      {
+        "id": "b",
+        "text": "zagrożenie"
+      },
+      {
+        "id": "c",
+        "text": "wyzwanie"
+      },
+      {
+        "id": "d",
+        "text": "brak znaczenia"
+      },
+      {
+        "id": "e",
+        "text": "szkoda dokonana"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Wyzwanie** to ocena sytuacji, gdy możliwe są **zarówno straty, jak i korzyści** — pojawiają się emocje negatywne (strach, lęk) i pozytywne (**nadzieja, zapał, podniecenie**). Odróżnij od **zagrożenia** (szkody przewidywane w przyszłości, dominują strach i lęk) i **krzywdy/straty** (szkoda już dokonana, towarzyszą żal, złość, smutek). Marker wyzwania: współwystępowanie emocji pozytywnych i negatywnych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-041",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji optymistyczna ocena wtórna dotycząca możliwości własnego działania może:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zmienić ocenę pierwotną z wyzwania na zagrożenie i obniżyć poczucie kontroli"
+      },
+      {
+        "id": "b",
+        "text": "zwiększyć poziom stresu i utrudnić radzenie sobie"
+      },
+      {
+        "id": "c",
+        "text": "całkowicie wyeliminować potrzebę radzenia sobie ze stresem"
+      },
+      {
+        "id": "d",
+        "text": "prowadzić wyłącznie do skoncentrowania się na emocjach"
+      },
+      {
+        "id": "e",
+        "text": "zmienić ocenę pierwotną z zagrożenia na wyzwanie, zwiększyć poczucie kontroli i zmobilizować do działania"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Optymistyczna ocena wtórna** możliwości własnego działania może zmienić ocenę pierwotną z **zagrożenia na wyzwanie**, zwiększyć **poczucie kontroli** i zmobilizować do działania. Ocena **pesymistyczna** działa odwrotnie — wyzwanie bywa uznane za zagrożenie, co podnosi poziom stresu i utrudnia radzenie sobie. Folkman uzupełniła koncepcję o rolę **emocji pozytywnych** w radzeniu sobie, które występują nawet w sytuacjach wysoce stresogennych obok emocji negatywnych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-042",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W trzech fazach stresu psychologicznego wg J. Reykowskiego faza, w której \"sprawniej przebiegają procesy spostrzegania i myślenia, reakcje są szybsze i bardziej intensywne, a zachowanie zmienia się adekwatnie do wymagań\", to faza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "rozstroju"
+      },
+      {
+        "id": "b",
+        "text": "destrukcji"
+      },
+      {
+        "id": "c",
+        "text": "mobilizacji"
+      },
+      {
+        "id": "d",
+        "text": "odporności"
+      },
+      {
+        "id": "e",
+        "text": "wyczerpania"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wg **Reykowskiego** faza **mobilizacji** to aktywacja procesów psychologicznych: sprawniejsze spostrzeganie i myślenie, szybsze i intensywniejsze reakcje, adekwatna zmiana zachowania — człowiek skupia uwagę na zadaniu, próbując zmniejszyć stres. To faza adaptacyjna, poprzedzająca **rozstrój** (spadek sprawności) i **destrukcję** (załamanie). Nie mylić ze stadiami GAS Selyego (odporność/wyczerpanie).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-043",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Faza stresu wg Reykowskiego, w której \"obniża się poziom czynności psychicznych, pojawiają się czynności stereotypowe, obsesyjne trzymanie się pomysłów, a irracjonalna strona natury bierze górę nad racjonalnością\", to faza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "mobilizacji"
+      },
+      {
+        "id": "b",
+        "text": "odporności"
+      },
+      {
+        "id": "c",
+        "text": "destrukcji"
+      },
+      {
+        "id": "d",
+        "text": "alarmu"
+      },
+      {
+        "id": "e",
+        "text": "rozstroju"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Faza **rozstroju** (wg Reykowskiego) pojawia się wskutek przedłużającego się stresu: obniża się poziom czynności psychicznych — trudności w koncentracji, myśleniu logicznym, przewidywaniu skutków; pojawiają się **czynności stereotypowe**, syndrom bezradności, emocje (lęk, złość, depresja) wymykają się spod kontroli. Odróżnij od **destrukcji**, gdzie żadna czynność nie jest już wykonywana poprawnie (\"załamanie\", stan kryzysu).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-044",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W fazie destrukcji wg Reykowskiego prezentacja zwraca UWAGĘ, że osoba może:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sprawniej i szybciej wykonywać zadania"
+      },
+      {
+        "id": "b",
+        "text": "w pełni racjonalnie oceniać sytuację"
+      },
+      {
+        "id": "c",
+        "text": "utrzymywać mobilizację powyżej normy bez objawów"
+      },
+      {
+        "id": "d",
+        "text": "doświadczać wyłącznie emocji pozytywnych"
+      },
+      {
+        "id": "e",
+        "text": "na pozór wydawać się bardzo spokojna, bo jest zahamowana, odczuwając jednocześnie bardzo silne emocje"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "W fazie **destrukcji** żadna czynność nie jest wykonywana poprawnie: niezdolność do oceny sytuacji, gwałtowny spadek motywacji, rezygnacja, \"stan kryzysu\". UWAGA z prezentacji: osoba może **na pozór wydawać się spokojna, bo jest zahamowana** (nieruchomieje), odczuwając przy tym bardzo silne emocje (niepokój, panikę, rozpacz) ze zmianami fizjologicznymi. To kontrintuicyjny marker — pozorny spokój maskuje głęboki kryzys.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-045",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją \"Czym jest komunikacja\", termin \"komunikowanie\" wywodzi się z łacińskich słów, wśród których \"communicare\" oznacza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wspólność, poczucie łączności"
+      },
+      {
+        "id": "b",
+        "text": "wymiana, łączność, rozmowa"
+      },
+      {
+        "id": "c",
+        "text": "uczynić wspólnym, połączyć"
+      },
+      {
+        "id": "d",
+        "text": "nadawanie i odbieranie sygnałów"
+      },
+      {
+        "id": "e",
+        "text": "porozumienie bez przemocy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Termin \"komunikowanie\" wywodzi się z łacińskich: **communicare** (uczynić wspólnym, połączyć), **communicatio** (wymiana, łączność, rozmowa) oraz **communio** (wspólność, poczucie łączności). Definicja medyczna (Nęcki 1996): komunikacja to wymiana sygnałów werbalnych, wokalnych i niewerbalnych w określonym kontekście dla lepszego współdziałania. Dystraktor A to communio, B to communicatio.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-046",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z charakterystyką w prezentacji, komunikacja niewerbalna w odróżnieniu od werbalnej:",
+    "options": [
+      {
+        "id": "a",
+        "text": "przebiega głównie na poziomie intelektualnym i ma charakter nieciągły"
+      },
+      {
+        "id": "b",
+        "text": "toczy się według ścisłych zasad gramatycznych"
+      },
+      {
+        "id": "c",
+        "text": "przebiega głównie na poziomie emocjonalnym, często nieuświadomiony, i charakteryzuje się ciągłością"
+      },
+      {
+        "id": "d",
+        "text": "jest zawsze w pełni świadoma i kontrolowana"
+      },
+      {
+        "id": "e",
+        "text": "nie dostarcza kontekstu do interpretacji wypowiedzi"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Komunikacja **niewerbalna** przebiega głównie na poziomie **emocjonalnym**, często **nieuświadomiony** sposób, obejmuje zachowania towarzyszące wypowiedziom, dostarcza kontekstu i charakteryzuje się **ciągłością** (kanał niewerbalny jest stale otwarty). Komunikacja **werbalna** działa na poziomie intelektualnym, jest nieciągła (pauzy, milczenie) i podlega zasadom gramatycznym. W praktyce \"nie można się nie komunikować\".",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-047",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród rodzajów komunikatów werbalnych \"wypowiedzi, które oprócz komunikatu werbalnego zawierają jeszcze komunikat ukryty (np. dobrze sobie wyglądasz)\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "polecenia i instrukcje"
+      },
+      {
+        "id": "b",
+        "text": "pytania i informacje"
+      },
+      {
+        "id": "c",
+        "text": "komunikowanie emocji"
+      },
+      {
+        "id": "d",
+        "text": "metakomunikaty"
+      },
+      {
+        "id": "e",
+        "text": "parafrazy"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Metakomunikaty** to wypowiedzi, które poza komunikatem werbalnym zawierają **komunikat ukryty** (np. \"dobrze sobie wyglądasz\"). Pozostałe rodzaje komunikatów werbalnych: polecenia/instrukcje (zalecenia lekarskie), pytania/informacje (zbieranie danych i przekazywanie wiedzy), komunikowanie emocji (słowne wyrażanie uczuć). Marker metakomunikatu: drugie, niejawne dno przekazu obok treści dosłownej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-048",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród trzech cech komunikacji niewerbalnej wymienionych w prezentacji znajduje się \"automatyzm\", który oznacza, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kanał niewerbalny jest stale otwarty"
+      },
+      {
+        "id": "b",
+        "text": "komunikacja niewerbalna zastępuje werbalną"
+      },
+      {
+        "id": "c",
+        "text": "komunikacja niewerbalna dotyczy wyłącznie przeszłości"
+      },
+      {
+        "id": "d",
+        "text": "sygnały niewerbalne są zawsze planowane i celowe"
+      },
+      {
+        "id": "e",
+        "text": "odbieranie i wysyłanie sygnałów niewerbalnych przebiega w znacznym stopniu poza świadomością, w sposób zautomatyzowany"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Trzy cechy komunikacji niewerbalnej to: **ciągłość** (kanał niewerbalny jest stale otwarty), **automatyzm** (odbieranie i wysyłanie sygnałów przebiega w znacznym stopniu **poza świadomością**, w sposób zautomatyzowany) oraz **teraźniejszość** (dotyczy tego, co dzieje się „tu i teraz”, co czyni ją skuteczniejszą we wspieraniu kontaktów interpersonalnych). Marker automatyzmu to nieświadomość i mimowolność sygnałów — przeczy temu twierdzenie, że są zawsze planowane i celowe.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-049",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W modelu \"Cztery warunki skutecznego słuchania\" słuchanie polegające na \"zahamowaniu tendencji do przedwczesnej oceny i formułowania wniosków\" to słuchanie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "aktywne"
+      },
+      {
+        "id": "b",
+        "text": "empatyczne"
+      },
+      {
+        "id": "c",
+        "text": "świadome"
+      },
+      {
+        "id": "d",
+        "text": "otwarte"
+      },
+      {
+        "id": "e",
+        "text": "refleksyjne"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W modelu czterech warunków skutecznego słuchania: **aktywne** (starania o pełne zrozumienie treści i znaczenia), **empatyczne** (nastawienie obejmujące perspektywę rozmówcy), **świadome** (wychwytywanie niespójności w wypowiedzi i sygnałach) i **otwarte** (**zahamowanie tendencji do przedwczesnej oceny** i formułowania wniosków). Marker otwartości: powstrzymanie pochopnego osądu — łączy się z zasadą \"nie oceniaj\".",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-050",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród 12 barier komunikacyjnych wg Thomasa Gordona wypowiedź \"Na pańskim miejscu zrobiłbym to tak...\" to przykład bariery:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nakazów i poleceń"
+      },
+      {
+        "id": "b",
+        "text": "moralizowania"
+      },
+      {
+        "id": "c",
+        "text": "doradzania i sugerowania"
+      },
+      {
+        "id": "d",
+        "text": "pouczania"
+      },
+      {
+        "id": "e",
+        "text": "krytykowania"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Doradzanie i sugerowanie** (\"Na pańskim miejscu zrobiłbym to tak…\") odbiera pacjentowi **autonomię** i możliwość samodzielnego podejmowania decyzji. Odróżnij od **nakazów** (\"musi pan natychmiast…\", opór), **moralizowania** (\"jak pan może szkodzić dzieciom\", poczucie winy) i **pouczania** (\"ile razy mówiłem…\", traktuje jak dziecko). Marker doradzania: gotowe rozwiązanie narzucone z pozycji \"ja wiem lepiej\".",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

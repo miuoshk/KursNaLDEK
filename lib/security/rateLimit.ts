@@ -32,15 +32,14 @@ export function consumeRateLimit(
   return { allowed: true };
 }
 
-export const AUTH_RATE_LIMIT_MESSAGE =
-  "Zbyt wiele prób. Odczekaj chwilę i spróbuj ponownie.";
+export const AUTH_RATE_LIMIT_MESSAGE_KEY = "rateLimitExceeded" as const;
 
 /** Klucze per IP + per e-mail — ogranicza zarówno skanowanie haseł, jak i flood z jednego IP. */
 export function assertAuthRateLimit(params: {
   action: string;
   ip: string | null;
   email?: string | null;
-}): { blocked: false } | { blocked: true; message: string } {
+}): { blocked: false } | { blocked: true; messageKey: typeof AUTH_RATE_LIMIT_MESSAGE_KEY } {
   const ipKey = params.ip?.trim() || "unknown-ip";
   const emailKey = params.email?.trim().toLowerCase();
 
@@ -59,7 +58,7 @@ export function assertAuthRateLimit(params: {
   for (const check of checks) {
     const result = consumeRateLimit(check.key, check.limit, check.windowMs);
     if (!result.allowed) {
-      return { blocked: true, message: AUTH_RATE_LIMIT_MESSAGE };
+      return { blocked: true, messageKey: AUTH_RATE_LIMIT_MESSAGE_KEY };
     }
   }
 

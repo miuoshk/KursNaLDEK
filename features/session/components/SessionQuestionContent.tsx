@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
@@ -61,6 +62,7 @@ export function SessionQuestionContent({
   showTopicName = true,
   subjectId,
 }: SessionQuestionContentProps) {
+  const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
@@ -72,11 +74,11 @@ export function SessionQuestionContent({
     !showConfidenceBar &&
     (isLast ? allAnswered || isShowingFeedback || canEndPrzeglad : true);
 
-  let nextLabel = "Następne";
+  let nextLabel = t("next");
   if (allAnswered || canEndPrzeglad) {
-    nextLabel = "Zakończ sesję";
+    nextLabel = t("endSession");
   } else if (!isShowingFeedback && !isCurrentAnswered) {
-    nextLabel = "Pomiń";
+    nextLabel = t("skip");
   }
 
   const showSquares =
@@ -146,7 +148,7 @@ export function SessionQuestionContent({
             {showConfidenceBar ? (
               <div className="mt-6 flex flex-col items-center gap-3">
                 <p className="font-body text-body-xs text-secondary">
-                  Jak dobrze znałeś odpowiedź?
+                  {t("howWellKnown")}
                 </p>
                 <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
                   <button
@@ -155,7 +157,7 @@ export function SessionQuestionContent({
                     onClick={() => onConfidencePick("nie_wiedzialem")}
                     className="flex-1 rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                   >
-                    Nie wiedziałem
+                    {t("didNotKnow")}
                   </button>
                   <button
                     type="button"
@@ -163,7 +165,7 @@ export function SessionQuestionContent({
                     onClick={() => onConfidencePick("troche")}
                     className="flex-1 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                   >
-                    {submitting ? "Zapisywanie..." : "Trochę wiedziałem"}
+                    {submitting ? t("saving") : t("knewSomewhat")}
                   </button>
                   <button
                     type="button"
@@ -171,7 +173,7 @@ export function SessionQuestionContent({
                     onClick={() => onConfidencePick("na_pewno")}
                     className="flex-1 rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                   >
-                    Wiedziałem na pewno
+                    {t("knewForSure")}
                   </button>
                 </div>
                 <button
@@ -180,7 +182,7 @@ export function SessionQuestionContent({
                   onClick={() => onConfidencePick("troche")}
                   className="font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Pomiń ocenę
+                  {t("skipRating")}
                 </button>
               </div>
             ) : null}
@@ -219,11 +221,11 @@ export function SessionQuestionContent({
             )}
           >
             <ChevronLeft className="size-4 shrink-0" aria-hidden />
-            Poprzednie
+            {t("previous")}
           </button>
 
           <p className="font-body text-body-xs text-secondary">
-            {currentIndex + 1} / {total}
+            {t("questionProgress", { current: currentIndex + 1, total })}
           </p>
 
           <button

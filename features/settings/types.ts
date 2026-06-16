@@ -1,4 +1,5 @@
 import type { KnnpSessionMode } from "@/features/session/types";
+import type { AppLocale } from "@/i18n/config";
 
 export type SettingsProfile = {
   full_name: string;
@@ -7,6 +8,7 @@ export type SettingsProfile = {
   avatar_emoji: string | null;
   current_track: string;
   current_year: number;
+  locale: AppLocale;
   /** ISO 8601 (TIMESTAMPTZ) lub null */
   exam_date: string | null;
   daily_goal: number;

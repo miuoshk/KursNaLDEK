@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-001",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który teoretyk jest autorem funkcjonalnej koncepcji zdrowia, definiującej zdrowie jako zdolność jednostki do pełnienia przypisanych ról społecznych, a chorobę jako stan utrudniający funkcjonowanie w społeczeństwie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Talcott Parsons"
+      },
+      {
+        "id": "b",
+        "text": "Eliot Freidson"
+      },
+      {
+        "id": "c",
+        "text": "Erving Goffman"
+      },
+      {
+        "id": "d",
+        "text": "Aaron Antonovsky"
+      },
+      {
+        "id": "e",
+        "text": "Magdalena Sokołowska"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Talcott Parsons** stworzył najbardziej znaną **definicję funkcjonalną** zdrowia: zdrowie to zdolność do pełnienia przypisanych **ról społecznych**, a choroba to stan utrudniający lub uniemożliwiający funkcjonowanie. Ujęcie to przełamało paradygmat **biomedyczny** i zapoczątkowało **model socjomedyczny** (problem zdrowotny nie istnieje, dopóki jednostka wypełnia role). **Freidson** rozwinął typologię dewiacji, **Goffman** zajmował się piętnem.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-002",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zgodnie z koncepcją Talcotta Parsonsa choroba stanowi formę:",
+    "options": [
+      {
+        "id": "a",
+        "text": "piętna społecznego"
+      },
+      {
+        "id": "b",
+        "text": "salutogenezy"
+      },
+      {
+        "id": "c",
+        "text": "dewiacji społecznej"
+      },
+      {
+        "id": "d",
+        "text": "roli przypisanej biologicznie"
+      },
+      {
+        "id": "e",
+        "text": "normy gatunkowej"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wg **Parsonsa** choroba to typ zachowania **dewiacyjnego** (dewiacja społeczna). Chory nie wywiązuje się z nałożonych zadań, a więc nie przestrzega norm sprawności fizycznej i psychicznej, co czyni jego stan **zagrożeniem dla grupy**. Choroba jest jedną ze specyficznych ról społecznych, charakteryzującą się zakłóceniem możliwości wykonywania innych ról zgodnych ze społecznymi oczekiwaniami.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-003",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które stwierdzenie NIE jest cechą choroby jako roli społecznej według Talcotta Parsonsa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Chory ma prawo być zwolniony z pełnienia normalnych ról i zadań"
+      },
+      {
+        "id": "b",
+        "text": "Osoba chora nie jest odpowiedzialna za swój stan"
+      },
+      {
+        "id": "c",
+        "text": "Chory ma obowiązek szukania kompetentnej pomocy i współpracy w leczeniu"
+      },
+      {
+        "id": "d",
+        "text": "Przezwyciężenie choroby jest możliwe przez samą decyzję o wyzdrowieniu"
+      },
+      {
+        "id": "e",
+        "text": "Osoba chora powinna uważać swój stan za niepożądany"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Wg **Parsonsa** wyzdrowienie przez samą decyzję jest **niemożliwe** — postawa chęci powrotu do zdrowia jest niezbędna, ale **niewystarczająca**; wymaga zabiegów terapeutycznych. Pozostałe cechy są prawdziwe: zwolnienie z ról, brak odpowiedzialności za stan, obowiązek uznania stanu za niepożądany oraz obowiązek szukania kompetentnej pomocy i współpracy. To klasyczna pułapka — odpowiedź D odwraca sens oryginalnej cechy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-004",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Eliot Freidson wyróżnił w pojęciu choroby dwa rodzaje dewiacji. Dewiacja, w której choroba \"nakazuje\" przyjęcie nowych ról społecznych (np. ciężki przebieg zmuszający do podjęcia roli chorego), to dewiacja:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pierwotna"
+      },
+      {
+        "id": "b",
+        "text": "autoteliczna"
+      },
+      {
+        "id": "c",
+        "text": "funkcjonalna"
+      },
+      {
+        "id": "d",
+        "text": "instrumentalna"
+      },
+      {
+        "id": "e",
+        "text": "wtórna"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wg **Eliota Freidsona** dewiacja **wtórna** to sytuacja, gdy choroba nakazuje przyjęcie **nowych ról społecznych** (ciężki przebieg zmusza do roli chorego). Dewiacja **pierwotna** jedynie modyfikuje sposób pełnienia normalnych ról. Freidson wskazał, że najważniejsze cechy choroby to: możliwość wyleczenia, czas trwania, wywoływane **piętno społeczne** oraz stopień niezdolności do odgrywania ról.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-005",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według klasyfikacji Eliota Freidsona dewiacja pierwotna w pojęciu choroby oznacza, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "choroba zmusza do przyjęcia roli społecznej chorego"
+      },
+      {
+        "id": "b",
+        "text": "zakłócenia w stanie zdrowia modyfikują wyłącznie sposób pełnienia normalnych ról społecznych"
+      },
+      {
+        "id": "c",
+        "text": "chory zostaje trwale napiętnowany przez społeczeństwo"
+      },
+      {
+        "id": "d",
+        "text": "choroba prowadzi do izolacji i degradacji społecznej"
+      },
+      {
+        "id": "e",
+        "text": "następuje całkowita utrata wszystkich ról społecznych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Dewiacja **pierwotna** wg **Freidsona** to taka, w której zakłócenia w stanie zdrowia jedynie **modyfikują sposób pełnienia normalnych ról** społecznych — nie wymuszają przyjęcia nowej roli chorego. Przyjęcie nowej roli to cecha dewiacji **wtórnej** (odp. A). Piętnowanie i degradacja należą do teorii **naznaczenia społecznego** (etykietyzacji), nie do samego rozróżnienia pierwotna/wtórna.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-006",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Kto jest autorem definicji piętna jako \"określenia odnoszącego się do każdego stanu, atrybutu lub cechy, która określa jednostkę jako gorszą pod względem kulturowym\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Magdalena Sokołowska"
+      },
+      {
+        "id": "b",
+        "text": "Eliot Freidson"
+      },
+      {
+        "id": "c",
+        "text": "Talcott Parsons"
+      },
+      {
+        "id": "d",
+        "text": "Robert Cialdini"
+      },
+      {
+        "id": "e",
+        "text": "Philip Zimbardo"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "W materiale definicję **piętna (stigma)** jako stanu/atrybutu określającego jednostkę jako **gorszą pod względem kulturowym** przypisano prof. **Magdalenie Sokołowskiej**. To ona sformułowała też tezę, że zdrowia nie da się określić w sposób uniwersalny i statyczny, w oderwaniu od konkretnych warunków społecznych i środowiskowych. Pojęcie piętna w szerszej socjologii kojarzone jest z **Goffmanem**, ale w tym skrypcie cytowana jest Sokołowska.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-007",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które z poniższych NIE należy do czynników wpływających na stopień i charakter stygmatyzacji chorego wymienionych w materiale?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zakres domniemanej winy chorego za swój stan"
+      },
+      {
+        "id": "b",
+        "text": "Widoczność kalectwa"
+      },
+      {
+        "id": "c",
+        "text": "Wysokość dochodów chorego"
+      },
+      {
+        "id": "d",
+        "text": "Nieodwracalność kalectwa"
+      },
+      {
+        "id": "e",
+        "text": "Nieprzewidywalność zachowań społecznych chorego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Czynniki wpływające na **stygmatyzację** wg materiału to: zakres **domniemanej winy** chorego (np. AIDS, skutki alkoholizmu), **widoczność kalectwa** (np. zniekształcenie twarzy), **nieprzewidywalność zachowań** (choroby psychiczne) oraz **nieodwracalność kalectwa**. Wysokość dochodów nie figuruje na tej liście — to dystraktor z obszaru statusu społeczno-ekonomicznego, nie samej stygmatyzacji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-008",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Pojęcie dewiacji omawiane w kategoriach reakcji społecznej (piętnowanie, degradacja, izolowanie, nadanie charakterystycznej nazwy) związane jest z teorią:",
+    "options": [
+      {
+        "id": "a",
+        "text": "salutogenezy"
+      },
+      {
+        "id": "b",
+        "text": "wyuczonej bezradności"
+      },
+      {
+        "id": "c",
+        "text": "społecznego uczenia się"
+      },
+      {
+        "id": "d",
+        "text": "naznaczenia społecznego (etykietyzowania)"
+      },
+      {
+        "id": "e",
+        "text": "dysonansu poznawczego"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Reakcja społeczna w postaci **piętnowania dewianta, degradacji społecznej, izolowania, nadania charakterystycznej nazwy** i przypisania pozycji wiąże się z **teorią naznaczenia społecznego** (etykietyzowania, stygmatyzacji). Teoria **społecznego uczenia się** dotyczy uczenia zachowań przez obserwację i naśladownictwo (np. międzypokoleniowy przekaz przemocy) — to częsta pułapka egzaminacyjna.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-009",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Definicja WHO z 1946 roku, głosząca że \"zdrowie jest pełnią fizycznego, psychicznego i społecznego dobrostanu człowieka, a nie tylko brakiem choroby lub niepełnosprawności\", reprezentuje typ definicji:",
+    "options": [
+      {
+        "id": "a",
+        "text": "czysto biologicznej"
+      },
+      {
+        "id": "b",
+        "text": "czysto funkcjonalnej"
+      },
+      {
+        "id": "c",
+        "text": "socjomedycznej Parsonsa"
+      },
+      {
+        "id": "d",
+        "text": "behawioralnej"
+      },
+      {
+        "id": "e",
+        "text": "biologiczno-funkcjonalnej"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Definicja **WHO z 1946 r.** to klasyczny przykład definicji **biologiczno-funkcjonalnej**, która dąży do syntezy wcześniejszych ujęć i wzbogaca je o wymiar **doświadczeń psychicznych**. Definiuje zdrowie przez **dobrostan** (fizyczny, psychiczny, społeczny), łącząc zdolność funkcjonowania w środowisku z adaptacją do czynników stresogennych. Definicje czysto biologiczne pomijają sferę pozabiologiczną.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-010",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Definicje, które ujmują zdrowie i chorobę jako stany somatyczne doświadczalne zmysłowo i empirycznie mierzalne za pomocą obiektywnych parametrów medycznych, bez odniesienia do pozabiologicznej sfery funkcjonowania, to definicje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "funkcjonalne"
+      },
+      {
+        "id": "b",
+        "text": "biologiczne"
+      },
+      {
+        "id": "c",
+        "text": "biologiczno-funkcjonalne"
+      },
+      {
+        "id": "d",
+        "text": "socjomedyczne"
+      },
+      {
+        "id": "e",
+        "text": "kulturowe"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Definicje **biologiczne** ujmują zdrowie i chorobę jako **stany somatyczne**, doświadczalne zmysłowo i **empirycznie mierzalne** obiektywnymi parametrami medycznymi. Cechą wyróżniającą jest **brak odniesienia** do pozabiologicznej (psychicznej, społecznej) sfery funkcjonowania. Definicje **funkcjonalne** ujmują zdrowie przez pryzmat zdolności do uczestnictwa w życiu społecznym (np. ujęcie Parsonsa).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-011",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Na światowej konferencji poświęconej promocji zdrowia, na której uznano zdrowie za \"zdolność do produktywnego, sensownego i twórczego życia w sferze społecznej i ekonomicznej\" i nadano mu rangę podstawowego prawa ludzkiego, odbyła się w roku 1978 w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ałma Acie"
+      },
+      {
+        "id": "b",
+        "text": "Ottawie"
+      },
+      {
+        "id": "c",
+        "text": "Genewie"
+      },
+      {
+        "id": "d",
+        "text": "Helsinkach"
+      },
+      {
+        "id": "e",
+        "text": "Adelajdzie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Konferencja w **Ałma Acie w 1978 roku** zaaprobowała **model socjomedyczny** Parsonsa, uznając zdrowie za zdolność do **produktywnego, sensownego i twórczego życia** w sferze społecznej i ekonomicznej oraz nadając mu rangę jednego z podstawowych **praw ludzkich**. Ałma-Ata jest historycznie wiązana z koncepcją podstawowej opieki zdrowotnej (Primary Health Care).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-012",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wśród sześciu wymiarów dobrostanu zdrowia wymiar definiowany jako \"rozumienie wartości życia, spokój ducha, posiadanie systemu wartości\" to wymiar:",
+    "options": [
+      {
+        "id": "a",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "b",
+        "text": "intelektualny"
+      },
+      {
+        "id": "c",
+        "text": "duchowy"
+      },
+      {
+        "id": "d",
+        "text": "społeczny"
+      },
+      {
+        "id": "e",
+        "text": "zawodowy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wymiar **duchowy** dobrostanu obejmuje **rozumienie wartości życia, spokój ducha i posiadanie systemu wartości**. Należy go odróżnić od wymiaru **emocjonalnego** (wyrażanie i panowanie nad uczuciami) oraz **intelektualnego** (kreatywność, rozwijanie wiedzy). Pozostałe wymiary to: fizyczny, społeczny i zawodowy. Łącznie tworzą sześciowymiarowy model dobrostanu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-013",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według danych przytoczonych w materiale, badania epidemiologiczne dotyczące różnic zdrowotnych między płciami wykazały, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "mężczyźni chorują częściej, ale kobiety umierają wcześniej"
+      },
+      {
+        "id": "b",
+        "text": "mężczyźni częściej korzystają z usług medycznych"
+      },
+      {
+        "id": "c",
+        "text": "kobiety i mężczyźni chorują z taką samą częstością"
+      },
+      {
+        "id": "d",
+        "text": "kobiety chorują częściej, ale mężczyźni umierają wcześniej"
+      },
+      {
+        "id": "e",
+        "text": "kobiety żyją krócej niż mężczyźni"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Badania epidemiologiczne wykazały, że **kobiety chorują częściej niż mężczyźni, ale mężczyźni umierają wcześniej**. Wskaźniki zachorowalności, absencji, korzystania z usług medycznych i stosowania leków są **wyższe u kobiet**. Kobiety chorują na schorzenia o lżejszym przebiegu (nieprowadzące bezpośrednio do zgonu), mężczyźni — na choroby bezpośrednio kończące się zgonem. To zjawisko **nadumieralności mężczyzn**.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-014",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które z poniższych NIE należy do hipotez wyjaśniających zjawisko nadumieralności mężczyzn wymienionych w materiale?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Genetycznie uwarunkowane różnice między płciami"
+      },
+      {
+        "id": "b",
+        "text": "Różnice w dominującym typie reakcji emocjonalnych"
+      },
+      {
+        "id": "c",
+        "text": "Większy udział mężczyzn w wypadkach komunikacyjnych"
+      },
+      {
+        "id": "d",
+        "text": "Częstsze uleganie nałogom przez mężczyzn"
+      },
+      {
+        "id": "e",
+        "text": "Częstsze korzystanie przez mężczyzn z usług medycznych"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Hipotezy **nadumieralności mężczyzn** obejmują: różnice **genetyczne**, różnice w **reakcjach emocjonalnych**, trudniejsze warunki pracy, większy udział w **wypadkach komunikacyjnych** i częstsze **uleganie nałogom**. Mężczyźni korzystają z usług medycznych **rzadziej** niż kobiety (to kobiety częściej kontaktują się z lekarzem), więc odp. E jest błędna — odwraca rzeczywistą zależność.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-015",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zgodnie z materiałem, w odniesieniu do stanu cywilnego i zdrowia, zawarcie związku małżeńskiego z punktu widzenia utrzymania zdrowia jest bardziej korzystne dla:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kobiet, bo zyskują wsparcie emocjonalne"
+      },
+      {
+        "id": "b",
+        "text": "mężczyzn, bo daje zabezpieczenie regularnego trybu życia i pomocy w razie choroby"
+      },
+      {
+        "id": "c",
+        "text": "obu płci w równym stopniu"
+      },
+      {
+        "id": "d",
+        "text": "kobiet, bo zmniejsza ich obciążenie funkcjami"
+      },
+      {
+        "id": "e",
+        "text": "osób owdowiałych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Stan małżeński jest **bardziej korzystny dla mężczyzn**, gdyż daje zabezpieczenie **regularnego trybu życia** i pomocy w razie choroby; uważa się, że mężczyźni mniej niż kobiety są zdolni samodzielnie zapewnić sobie te wyznaczniki. Kobieta zamężna jest natomiast **bardziej obciążona** różnymi funkcjami, co nie pozostaje bez wpływu na jej zdrowie. Posiadanie rodziny szczególnie u mężczyzn zmniejsza ryzyko zgonu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-016",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zdrowie jako wartość \"sama w sobie\", ceniona niezależnie od jej praktycznej użyteczności, jest określane mianem wartości:",
+    "options": [
+      {
+        "id": "a",
+        "text": "autotelicznej"
+      },
+      {
+        "id": "b",
+        "text": "instrumentalnej"
+      },
+      {
+        "id": "c",
+        "text": "funkcjonalnej"
+      },
+      {
+        "id": "d",
+        "text": "socjopatogennej"
+      },
+      {
+        "id": "e",
+        "text": "adaptacyjnej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Zdrowie jako **wartość autoteliczna** to wartość **sama w sobie**, ceniona dla niej samej. Materiał podkreśla, że zdrowie plasuje się wysoko zarówno jako wartość autoteliczna, jak i **instrumentalna** (środek do osiągania innych celów). Rozróżnienie autoteliczne/instrumentalne to klasyczna para pojęć aksjologicznych — autoteliczne = cel sam w sobie, instrumentalne = środek.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-017",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, czynniki społeczne SZCZEGÓLNIE predysponujące do występowania chorób to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "industrializacja, urbanizacja, migracje, płeć"
+      },
+      {
+        "id": "b",
+        "text": "wiek, płeć, wykształcenie, zawód"
+      },
+      {
+        "id": "c",
+        "text": "ubóstwo lub niski status ekonomiczny, samotność, migracje, bezrobocie"
+      },
+      {
+        "id": "d",
+        "text": "warunki materialno-bytowe, system kształcenia, struktura rodziny"
+      },
+      {
+        "id": "e",
+        "text": "organizm biologiczny, styl życia, środowisko, opieka zdrowotna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Czynniki społeczne **szczególnie predysponujące** do chorób to: **ubóstwo/niski status ekonomiczny, samotność, migracje, bezrobocie**. Trzeba je odróżnić od szerszej listy czynników mogących wpływać na zdrowie (wiek, płeć, wykształcenie, zawód, urbanizacja itd.) oraz od czterech głównych grup warunkujących stan zdrowia (organizm biologiczny, styl życia, środowisko, opieka zdrowotna). Pytanie celuje w wąską, \"szczególną\" listę.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-018",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W podziale zależności wynikającej z choroby, zależność będąca \"efektem przyjaźni, sympatii czy miłości ze strony otoczenia\" to zależność:",
+    "options": [
+      {
+        "id": "a",
+        "text": "fizyczna"
+      },
+      {
+        "id": "b",
+        "text": "rytualna"
+      },
+      {
+        "id": "c",
+        "text": "instrumentalna"
+      },
+      {
+        "id": "d",
+        "text": "psychiczna"
+      },
+      {
+        "id": "e",
+        "text": "funkcjonalna"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Zależność **psychiczna** jest efektem **przyjaźni, sympatii czy miłości** ze strony otoczenia. Zależność **fizyczna** oznacza, że pomoc i wsparcie innych warunkują samą **egzystencję** chorego. Zależność uruchamia stosunki społeczne oparte na **rytualizacji**, **etykietyzacji** i **izolacji**. Oba rodzaje zależności są postrzegane jako zasadniczy element jakości życia przewlekle chorych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-019",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zgodnie z materiałem, w aspekcie zdrowia psychicznego w zależności od płci, u mężczyzn częściej niż u kobiet występują:",
+    "options": [
+      {
+        "id": "a",
+        "text": "objawy depresji i zaburzenia jedzenia"
+      },
+      {
+        "id": "b",
+        "text": "stany niezrównoważenia i zaburzenia psychosomatyczne"
+      },
+      {
+        "id": "c",
+        "text": "smutek i przygnębienie"
+      },
+      {
+        "id": "d",
+        "text": "bezsenność i drażliwość"
+      },
+      {
+        "id": "e",
+        "text": "psychozy, zaburzenia osobowości i choroby wynikające z uzależnień"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "U **mężczyzn** częstsze są **psychozy, zaburzenia osobowości** oraz choroby wynikające z **uzależnień**. U **kobiet** natomiast częściej występują objawy **depresji**, stany niezrównoważenia, zaburzenia jedzenia (w wyniku stresu) i zaburzenia psychosomatyczne; kobiety gorzej oceniają też swoje samopoczucie psychiczne. To klasyczne zróżnicowanie zdrowia psychicznego wg płci.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-020",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału liczba istniejących definicji zdrowia wynosi około:",
+    "options": [
+      {
+        "id": "a",
+        "text": "12"
+      },
+      {
+        "id": "b",
+        "text": "120"
+      },
+      {
+        "id": "c",
+        "text": "60"
+      },
+      {
+        "id": "d",
+        "text": "200"
+      },
+      {
+        "id": "e",
+        "text": "500"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W materiale podano, że istnieje około **120 definicji zdrowia**, bazujących na różnych, często odmiennych płaszczyznach: **biologicznej, psychicznej i społecznej**. Tak duża liczba definicji wynika z tego, że pojęcia zdrowia i choroby są silnie **zabarwione kulturowo** i zależą od celów, okoliczności oraz intencji ich twórców, a także od uwarunkowań historyczno-czasowych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-021",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa społeczna obejmuje trzy główne składniki. Składnik obejmujący przekonania, wiedzę i opinie jednostki o danym obiekcie to składnik:",
+    "options": [
+      {
+        "id": "a",
+        "text": "poznawczy"
+      },
+      {
+        "id": "b",
+        "text": "behawioralny"
+      },
+      {
+        "id": "c",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "d",
+        "text": "motywacyjny"
+      },
+      {
+        "id": "e",
+        "text": "aksjologiczny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Składnik **poznawczy** postawy to **przekonania, wiedza i opinie** jednostki o obiekcie. Składnik **emocjonalny** to uczucia (lęk, złość, sympatia), a składnik **behawioralny** to skłonności do działań (pomoc, unikanie). Mnemonik: postawa = **myślę–czuję–działam** (poznawczy–emocjonalny–behawioralny). To trójkomponentowy model postawy, klasyczny dla psychologii społecznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-022",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Skłonność jednostki do podejmowania określonych działań wobec obiektu postawy (np. pomoc innym, unikanie pewnych grup) to składnik postawy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "poznawczy"
+      },
+      {
+        "id": "b",
+        "text": "emocjonalny"
+      },
+      {
+        "id": "c",
+        "text": "behawioralny"
+      },
+      {
+        "id": "d",
+        "text": "kulturowy"
+      },
+      {
+        "id": "e",
+        "text": "instrumentalny"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Składnik **behawioralny** postawy to **skłonność do podejmowania określonych działań** wobec obiektu — np. pomaganie innym czy unikanie pewnych grup. Odróżnia się go od składnika **poznawczego** (wiedza, przekonania) i **emocjonalnego** (uczucia). Behawioralny dotyczy gotowości do **zachowania**, nie samego myślenia czy odczuwania — to częsta pułapka przy rozróżnianiu komponentów.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-023",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Nadmierne uogólnienie, przypisywanie takich samych cech każdej jednostce będącej członkiem danej grupy, bez uwzględnienia rzeczywistych różnic między jej członkami, to definicja:",
+    "options": [
+      {
+        "id": "a",
+        "text": "uprzedzenia"
+      },
+      {
+        "id": "b",
+        "text": "dyskryminacji"
+      },
+      {
+        "id": "c",
+        "text": "stygmatyzacji"
+      },
+      {
+        "id": "d",
+        "text": "stereotypu"
+      },
+      {
+        "id": "e",
+        "text": "piętna"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Stereotyp** to **nadmierne uogólnienie** — przypisywanie takich samych cech każdemu członkowi grupy bez uwzględnienia rzeczywistych różnic, zwykle z negatywną konotacją. Większość stereotypów nie opiera się na doświadczeniu, lecz na zasłyszanych opiniach. Należy go odróżnić od **uprzedzenia** (postawa awersji/wrogości) i **dyskryminacji** (nierówne traktowanie) — to trzy powiązane, ale odrębne pojęcia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-024",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa nacechowana głównie awersją lub wrogością wobec jednostki lub grupy, będąca wyuczoną antypatią opartą na błędnej generalizacji, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stereotyp"
+      },
+      {
+        "id": "b",
+        "text": "dehumanizacja"
+      },
+      {
+        "id": "c",
+        "text": "dyskryminacja"
+      },
+      {
+        "id": "d",
+        "text": "stygmatyzacja"
+      },
+      {
+        "id": "e",
+        "text": "uprzedzenie"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Uprzedzenie** to postawa nacechowana **awersją lub wrogością** wobec jednostki lub grupy — wyuczona antypatia oparta na błędnej generalizacji, pozbawiona obiektywnych przesłanek. Różni się od **stereotypu** (uogólnione przekonanie poznawcze) tym, że ma charakter **emocjonalno-postawowy**, oraz od **dyskryminacji**, która jest już konkretnym **działaniem** (nierównym traktowaniem).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-025",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Nierówne traktowanie konkretnych jednostek lub grup społecznych przez odmawianie im udziału w przywilejach czy władzy, oparte na uprzedzeniach, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stereotyp"
+      },
+      {
+        "id": "b",
+        "text": "dyskryminacja"
+      },
+      {
+        "id": "c",
+        "text": "uprzedzenie"
+      },
+      {
+        "id": "d",
+        "text": "stygmatyzacja"
+      },
+      {
+        "id": "e",
+        "text": "marginalizacja"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Dyskryminacja** to **nierówne traktowanie** jednostek lub grup przez odmawianie im udziału w przywilejach czy władzy, oparte na uprzedzeniach i pewnych rzeczywistych lub domniemanych cechach. Kluczowa różnica: stereotyp to **przekonanie**, uprzedzenie to **nastawienie** (emocja/postawa), a dyskryminacja to **działanie** (konkretne zachowanie). Te trzy zjawiska wzajemnie się nakładają i pogłębiają.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

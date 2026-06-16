@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { isValidEmoji } from "@/lib/emoji";
@@ -19,7 +20,7 @@ const schema = z.object({
     .string()
     .trim()
     .refine((value) => value === "" || isValidEmoji(value), {
-      message: "Wybierz dokładnie jedno emoji.",
+      message: "avatarEmojiInvalid",
     })
     .optional()
     .nullable(),
@@ -28,15 +29,17 @@ const schema = z.object({
 export type UpdateProfileResult = { ok: true } | { ok: false; message: string };
 
 export async function updateProfile(input: z.infer<typeof schema>): Promise<UpdateProfileResult> {
+  const tSettings = await getTranslations("settings");
+  const tErrors = await getTranslations("errors");
   const parsed = schema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane formularza." };
+    return { ok: false, message: tSettings("errors.invalidFormData") };
   }
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return { ok: false, message: "Brak sesji." };
+  if (!user) return { ok: false, message: tErrors("noSession") };
 
   const initials = parsed.data.avatar_initials?.trim() || null;
   const emojiRaw = parsed.data.avatar_emoji?.trim() || null;
@@ -61,9 +64,9 @@ export async function updateProfile(input: z.infer<typeof schema>): Promise<Upda
       (typeof error.message === "string" &&
         error.message.toLowerCase().includes("profiles_nick_lower_unique"))
     ) {
-      return { ok: false, message: "Ten nick jest już zajęty." };
+      return { ok: false, message: tErrors("nickTaken") };
     }
-    return { ok: false, message: "Nie udało się zapisać profilu." };
+    return { ok: false, message: tSettings("errors.profileSaveFailed") };
   }
   revalidatePath("/", "layout");
   return { ok: true };

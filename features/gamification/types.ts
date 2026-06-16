@@ -1,7 +1,5 @@
 export type AchievementRow = {
   id: string;
-  name: string;
-  description: string;
   icon: string;
   category: string;
   targetValue: number;
@@ -19,7 +17,7 @@ export type LeaderboardRow = {
   displayName: string;
   initials: string;
   avatarEmoji: string | null;
-  rankName: string;
+  rankTierId: string;
   rankColorClass: string;
   xp: number;
   accuracy: number;

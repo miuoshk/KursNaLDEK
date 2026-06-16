@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { BookOpen, Trophy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
 import { cn } from "@/lib/utils";
 
@@ -15,17 +18,19 @@ type Props = {
 };
 
 export function WeakPoints({ weakPoints, hasAnySessions }: Props) {
+  const t = useTranslations("pulpit");
+
   return (
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">
-        Słabe punkty
+        {t("weakPoints")}
       </h2>
       <p className="mt-1 font-body text-sm text-secondary">
-        Tematy, które warto powtórzyć
+        {t("weakPointsHint")}
       </p>
 
       {weakPoints.length === 0 ? (
-        <EmptyState hasAnySessions={hasAnySessions} />
+        <EmptyState hasAnySessions={hasAnySessions} t={t} />
       ) : (
         <div className="mt-4 flex flex-col gap-3">
           {weakPoints.map((wp) => (
@@ -61,7 +66,7 @@ export function WeakPoints({ weakPoints, hasAnySessions }: Props) {
                 href={`/przedmioty/${wp.subjectId}?topic=${wp.topicId}`}
                 className="shrink-0 rounded-lg bg-white/[0.06] px-3 py-1.5 font-body text-xs font-medium text-secondary transition-colors duration-200 ease-out hover:bg-white/10 hover:text-primary"
               >
-                Ćwicz
+                {t("practice")}
               </Link>
             </div>
           ))}
@@ -71,13 +76,19 @@ export function WeakPoints({ weakPoints, hasAnySessions }: Props) {
   );
 }
 
-function EmptyState({ hasAnySessions }: { hasAnySessions: boolean }) {
+function EmptyState({
+  hasAnySessions,
+  t,
+}: {
+  hasAnySessions: boolean;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+}) {
   if (!hasAnySessions) {
     return (
       <div className="mt-4 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card py-12">
         <BookOpen className="size-6 text-secondary" aria-hidden />
         <p className="font-body text-sm text-secondary">
-          Odpowiedz na kilka pytań, a pokażemy Ci co warto powtórzyć.
+          {t("weakPointsEmpty")}
         </p>
       </div>
     );
@@ -87,7 +98,7 @@ function EmptyState({ hasAnySessions }: { hasAnySessions: boolean }) {
     <div className="mt-4 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card py-12">
       <Trophy className="size-6 text-brand-gold" aria-hidden />
       <p className="font-body text-sm text-secondary">
-        Świetna robota! Nie masz słabych punktów.
+        {t("weakPointsNone")}
       </p>
     </div>
   );

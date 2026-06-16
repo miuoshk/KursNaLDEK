@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Bookmark, ChevronRight, SmilePlus } from "lucide-react";
 import { OverallProgress } from "@/features/subjects/components/OverallProgress";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
@@ -22,6 +23,9 @@ async function getSavedQuestionsCount(): Promise<number> {
 
 export default async function PrzedmiotyPage() {
   await requireCurrentSelectionAccessOrRedirect();
+  const t = await getTranslations("subjects");
+  const tAccess = await getTranslations("access");
+  const tCommon = await getTranslations("common");
   const [result, savedCount] = await Promise.all([
     loadKnnpSubjectsData(),
     getSavedQuestionsCount(),
@@ -31,7 +35,7 @@ export default async function PrzedmiotyPage() {
     return (
       <div>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-          Moje przedmioty
+          {t("mySubjects")}
         </h1>
         <div className="mt-8">
           <PrzedmiotyError message={result.message} />
@@ -42,15 +46,19 @@ export default async function PrzedmiotyPage() {
 
   const { subjects, profile, totalQuestionCount, overallProgress, isSubscribed } = result;
   const showOsceSection = false;
+  const trackLabel =
+    profile.track === "Lekarski"
+      ? tAccess("trackLekarski")
+      : tAccess("trackStomatologia");
 
   return (
     <div>
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-          Moje przedmioty
+          {t("mySubjects")}
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">
-          Rok {profile.current_year} · {profile.track}
+          {t("yearTrackLine", { year: profile.current_year, track: trackLabel })}
         </p>
       </header>
 
@@ -72,14 +80,17 @@ export default async function PrzedmiotyPage() {
           </div>
           <div className="min-w-0 flex-1">
             <p className="font-heading text-body-md font-bold text-primary">
-              Zapisane pytania
+              {t("savedQuestions")}
             </p>
             <p className="mt-0.5 font-body text-body-xs text-muted">
               {savedCount === 0
-                ? "Nic jeszcze nie zapisałeś — w sesji lub katalogu kliknij ikonę zakładki."
+                ? t("savedEmptyHint")
                 : savedCount === 1
-                  ? "1 pytanie w Twojej kolekcji powtórek"
-                  : `${savedCount} ${savedCount >= 2 && savedCount <= 4 ? "pytania" : "pytań"} w Twojej kolekcji powtórek`}
+                  ? t("savedOneInCollection")
+                  : t("savedManyInCollection", {
+                      count: savedCount,
+                      questionsLabel: tCommon("questionsCount", { count: savedCount }),
+                    })}
             </p>
           </div>
           <ChevronRight
@@ -91,10 +102,10 @@ export default async function PrzedmiotyPage() {
         {showOsceSection ? (
           <section>
             <h2 className="font-heading text-xl font-bold text-brand-gold">
-              Egzamin praktyczny OSCE
+              {t("osceSectionTitle")}
             </h2>
             <p className="mt-1 font-body text-sm text-secondary">
-              7 stacji · 14 zadań · próg zaliczenia: 60% na stację
+              {t("osceSectionSubtitle")}
             </p>
             <div className="mt-4">
               <Link
@@ -107,10 +118,10 @@ export default async function PrzedmiotyPage() {
                 />
                 <div className="min-w-0 flex-1">
                   <p className="font-body text-base text-primary">
-                    Kurs na OSCE — Stacje, tematy i symulacje egzaminu praktycznego
+                    {t("osceCourseTitle")}
                   </p>
                   <p className="mt-3 inline-flex rounded-full bg-[#367368]/20 px-3 py-1 font-body text-xs text-[#367368]">
-                    Dzień 1: 3 stacje · Dzień 2: 4 stacje
+                    {t("osceDaysBadge")}
                   </p>
                 </div>
               </Link>
@@ -120,13 +131,13 @@ export default async function PrzedmiotyPage() {
 
         {showOsceSection ? (
           <h2 className="font-heading text-xl font-bold text-primary">
-            Nauki podstawowe
+            {t("basicSciences")}
           </h2>
         ) : null}
 
         {subjects.length === 0 ? (
           <p className="font-body text-body-md text-secondary">
-            Brak przedmiotów do wyświetlenia. Skontaktuj się z administratorem lub spróbuj później.
+            {t("noSubjects")}
           </p>
         ) : (
           <SubjectGrid subjects={subjects} isSubscribed={isSubscribed} />
@@ -135,13 +146,13 @@ export default async function PrzedmiotyPage() {
         {!isSubscribed ? (
           <div className="rounded-card border border-brand-gold/30 bg-brand-gold/10 p-4">
             <p className="font-body text-body-sm text-brand-gold">
-              Ten rok nie jest jeszcze aktywny. Wybierz opcję i opłać dostęp w panelu wyboru roku.
+              {t("yearNotActive")}
             </p>
             <Link
               href="/wybor-roku"
               className="mt-3 inline-flex rounded-btn border border-brand-gold/40 px-4 py-2 font-body text-body-sm text-brand-gold transition hover:bg-brand-gold/10"
             >
-              Przejdź do wyboru roku
+              {t("goToYearSelection")}
             </Link>
           </div>
         ) : null}

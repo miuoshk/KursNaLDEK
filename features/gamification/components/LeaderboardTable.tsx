@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Flame } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type {
   LeaderboardRow,
   LeaderboardScope,
@@ -50,35 +53,44 @@ export function LeaderboardTable({
   scope: LeaderboardScope;
   currentYear: number | null;
 }) {
+  const t = useTranslations("gamification");
+
   const periodPills: { id: "7" | "30" | "all"; label: string }[] = [
-    { id: "7", label: "7 dni" },
-    { id: "30", label: "30 dni" },
-    { id: "all", label: "Wszystko" },
+    { id: "7", label: t("leaderboard.period7") },
+    { id: "30", label: t("leaderboard.period30") },
+    { id: "all", label: t("leaderboard.periodAll") },
   ];
 
   const scopePills: { id: LeaderboardScope; label: string; disabled?: boolean }[] = [
     {
       id: "year",
-      label: currentYear != null ? `Mój rok (${currentYear})` : "Mój rok",
+      label:
+        currentYear != null
+          ? t("leaderboard.scopeYear", { year: currentYear })
+          : t("leaderboard.scopeYearFallback"),
       disabled: currentYear == null,
     },
-    { id: "all", label: "Wszyscy" },
+    { id: "all", label: t("leaderboard.scopeAll") },
   ];
 
   const periodLabel =
-    period === "7" ? "7 dni" : period === "30" ? "30 dni" : "łącznie";
+    period === "7"
+      ? t("leaderboard.periodLabel7")
+      : period === "30"
+        ? t("leaderboard.periodLabel30")
+        : t("leaderboard.periodLabelAll");
 
   return (
     <section id="ranking" className="scroll-mt-20">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="font-heading text-xl font-bold text-primary">Ranking</h2>
+        <h2 className="font-heading text-xl font-bold text-primary">{t("leaderboard.title")}</h2>
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex flex-wrap gap-1 rounded-pill border border-[rgba(255,255,255,0.08)] bg-card-hover/50 p-1">
             {scopePills.map((p) =>
               p.disabled ? (
                 <span
                   key={p.id}
-                  title="Ustaw rok studiów w profilu, aby filtrować po roczniku"
+                  title={t("leaderboard.scopeYearDisabledTitle")}
                   className="cursor-not-allowed rounded-pill px-3 py-1.5 font-body text-body-xs text-muted/60"
                 >
                   {p.label}
@@ -123,23 +135,23 @@ export function LeaderboardTable({
       {rows.length === 0 ? (
         <p className="mt-6 font-body text-body-md text-secondary">
           {scope === "year"
-            ? "Brak innych użytkowników z Twojego roku. Wracaj tu wkrótce."
-            : "Brak danych do rankingu. Rozwiązuj pytania, aby się tu pojawić."}
+            ? t("leaderboard.emptyYear")
+            : t("leaderboard.emptyAll")}
         </p>
       ) : (
         <div className="mt-6 overflow-x-auto rounded-card border border-[rgba(255,255,255,0.06)]">
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
               <tr className="border-b border-[rgba(255,255,255,0.08)] font-body text-body-xs text-muted">
-                <th className="px-4 py-3 font-medium">#</th>
-                <th className="px-4 py-3 font-medium">Użytkownik</th>
-                <th className="px-4 py-3 font-medium" title="Ranga z łącznego XP">
-                  Poziom
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colRank")}</th>
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colUser")}</th>
+                <th className="px-4 py-3 font-medium" title={t("leaderboard.colLevelTitle")}>
+                  {t("leaderboard.colLevel")}
                 </th>
-                <th className="px-4 py-3 font-medium">XP ({periodLabel})</th>
-                <th className="px-4 py-3 font-medium">Pytania ({periodLabel})</th>
-                <th className="px-4 py-3 font-medium">Trafność</th>
-                <th className="px-4 py-3 font-medium">Streak</th>
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colXp", { period: periodLabel })}</th>
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colQuestions", { period: periodLabel })}</th>
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colAccuracy")}</th>
+                <th className="px-4 py-3 font-medium">{t("leaderboard.colStreak")}</th>
               </tr>
             </thead>
             <tbody>
@@ -170,7 +182,7 @@ export function LeaderboardTable({
                         {isOnline(r.lastSeenAt) ? (
                           <span
                             className="absolute -bottom-0.5 -right-0.5 inline-flex size-2.5 items-center justify-center"
-                            title="Aktywny teraz"
+                            title={t("leaderboard.onlineNow")}
                           >
                             <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/70 opacity-60" />
                             <span className="relative inline-flex size-2 rounded-full border border-card bg-success" />
@@ -181,7 +193,7 @@ export function LeaderboardTable({
                     </div>
                   </td>
                   <td className={cn("px-4 py-3 font-body text-body-md", r.rankColorClass)}>
-                    {r.rankName}
+                    {t(`ranks.${r.rankTierId}`)}
                   </td>
                   <td className="px-4 py-3 font-body text-body-sm text-brand-gold">{r.xp}</td>
                   <td className="px-4 py-3 font-body text-body-sm text-secondary">

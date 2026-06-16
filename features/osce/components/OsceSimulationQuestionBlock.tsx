@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { ConversionDrillSummary } from "@/features/osce/components/ConversionDrillQuestion";
 import { ConversionDrillQuestion } from "@/features/osce/components/ConversionDrillQuestion";
 import { ImageIdentifyQuestion } from "@/features/osce/components/ImageIdentifyQuestion";
@@ -22,6 +23,7 @@ type Props = {
 };
 
 export function OsceSimulationQuestionBlock({ row, onRecordAnswer, onNext }: Props) {
+  const t = useTranslations("osce");
   const kind = resolveOsceQuestionKind(row);
 
   if (kind === "ordering") {
@@ -29,7 +31,7 @@ export function OsceSimulationQuestionBlock({ row, onRecordAnswer, onNext }: Pro
     if (!o) {
       return (
         <p className="font-body text-body-md text-error">
-          Nie można wyświetlić pytania (porządkowanie).
+          {t("errorOrdering")}
         </p>
       );
     }
@@ -49,7 +51,7 @@ export function OsceSimulationQuestionBlock({ row, onRecordAnswer, onNext }: Pro
     if (!img) {
       return (
         <p className="font-body text-body-md text-error">
-          Nie można wyświetlić pytania (obraz).
+          {t("errorImage")}
         </p>
       );
     }
@@ -70,7 +72,7 @@ export function OsceSimulationQuestionBlock({ row, onRecordAnswer, onNext }: Pro
     if (!drills) {
       return (
         <p className="font-body text-body-md text-error">
-          Nie można wyświetlić serii konwersji.
+          {t("errorConversion")}
         </p>
       );
     }
@@ -91,7 +93,7 @@ export function OsceSimulationQuestionBlock({ row, onRecordAnswer, onNext }: Pro
   if (!sc) {
     return (
       <p className="font-body text-body-md text-error">
-        Nie można wyświetlić pytania (brak opcji).
+        {t("errorNoOptionsShort")}
       </p>
     );
   }

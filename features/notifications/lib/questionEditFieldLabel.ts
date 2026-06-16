@@ -1,24 +1,33 @@
-const FIELD_LABEL: Record<string, string> = {
-  text: "treść pytania",
-  options: "opcje odpowiedzi",
-  correct_option_id: "poprawna odpowiedź",
-  explanation: "wyjaśnienie",
-  is_active: "aktywność",
-  source_exam: "termin egzaminu",
-  source_code: "numer pytania",
-  image_url: "obraz",
-  topic_id: "temat",
-  theme_label: "theme label",
-  subtheme_label: "subtheme label",
-  batch_label: "batch label",
-  learning_outcome: "learning outcome",
+import type { useTranslations } from "next-intl";
+
+type NotificationsTranslator = ReturnType<typeof useTranslations<"notifications">>;
+
+const FIELD_KEYS: Record<string, keyof IntlMessages["notifications"]["fields"]> = {
+  text: "text",
+  options: "options",
+  correct_option_id: "correct_option_id",
+  explanation: "explanation",
+  is_active: "is_active",
+  source_exam: "source_exam",
+  source_code: "source_code",
+  image_url: "image_url",
+  topic_id: "topic_id",
+  theme_label: "theme_label",
+  subtheme_label: "subtheme_label",
+  batch_label: "batch_label",
+  learning_outcome: "learning_outcome",
 };
 
-export function questionEditFieldLabel(field: string): string {
-  return FIELD_LABEL[field] ?? field;
+export function questionEditFieldLabel(t: NotificationsTranslator, field: string): string {
+  const key = FIELD_KEYS[field];
+  if (key) return t(`fields.${key}`);
+  return field;
 }
 
-export function formatChangedFieldsList(fields: string[]): string {
+export function formatChangedFieldsList(
+  t: NotificationsTranslator,
+  fields: string[],
+): string {
   if (fields.length === 0) return "";
-  return fields.map(questionEditFieldLabel).join(", ");
+  return fields.map((field) => questionEditFieldLabel(t, field)).join(", ");
 }

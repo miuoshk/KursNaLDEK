@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-psy-gen-076",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z definicją medyczną komunikacji (Nęcki 1996) przytoczoną w prezentacji, komunikacja to wymiana sygnałów:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie werbalnych, w sposób świadomy"
+      },
+      {
+        "id": "b",
+        "text": "zachodząca jedynie w relacji lekarz-pacjent"
+      },
+      {
+        "id": "c",
+        "text": "tylko niewerbalnych, poza świadomością"
+      },
+      {
+        "id": "d",
+        "text": "werbalnych, wokalnych i niewerbalnych podejmowana w określonym kontekście dla osiągnięcia lepszego współdziałania"
+      },
+      {
+        "id": "e",
+        "text": "ograniczonych do treści medycznej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Definicja medyczna (**Nęcki 1996**): komunikacja to wymiana sygnałów **werbalnych, wokalnych i niewerbalnych** podejmowana w określonym kontekście w celu osiągnięcia **lepszego współdziałania**. Z punktu widzenia teorii komunikacji wszystko, co podlega spostrzeganiu w wyglądzie i zachowaniu innych, jest dla nas komunikatem. Trójpodział sygnałów (werbalne/wokalne/niewerbalne) to istota definicji.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-077",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród funkcji komunikatów werbalnych prezentacja wymienia \"regulowanie\", które oznacza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "określanie i etykietowanie rzeczy, myśli i doświadczeń"
+      },
+      {
+        "id": "b",
+        "text": "ocenianie rzeczy i doświadczeń w celu wyrażenia opinii"
+      },
+      {
+        "id": "c",
+        "text": "regulowanie stosunków między ludźmi przez kreowanie komunikatów jedno- lub dwuznacznych"
+      },
+      {
+        "id": "d",
+        "text": "dzielenie się doświadczeniami i przeżyciami"
+      },
+      {
+        "id": "e",
+        "text": "dostarczanie kontekstu przez ton głosu"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Funkcje komunikatów werbalnych: **nazywanie** (określanie, etykietowanie), **ocenianie** (wyrażanie opinii), **dzielenie się** (doświadczeniami, przeżyciami) oraz **regulowanie** (regulowanie stosunków między ludźmi przez kreowanie komunikatów **jedno- lub dwuznacznych**). Dystraktor E dotyczy funkcji niewerbalnych (ton głosu). Marker regulowania: zarządzanie relacją międzyludzką, nie samym opisem rzeczywistości.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-078",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród funkcji komunikatów niewerbalnych prezentacja wymienia \"dostarczanie kontekstu\", polegające na:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sygnalizowaniu nastawienia do rozmówcy i tematu"
+      },
+      {
+        "id": "b",
+        "text": "wyrażaniu stanów emocjonalnych przez postawę ciała"
+      },
+      {
+        "id": "c",
+        "text": "zachęcaniu do kontynuowania wypowiedzi przez potakiwanie"
+      },
+      {
+        "id": "d",
+        "text": "uzupełnianiu lub modyfikowaniu znaczenia słów poprzez ton głosu i mimikę"
+      },
+      {
+        "id": "e",
+        "text": "nazywaniu i etykietowaniu doświadczeń"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Funkcje komunikatów niewerbalnych: komunikowanie emocji (mimika, postawa ciała), **dostarczanie kontekstu** (uzupełnianie lub modyfikowanie znaczenia słów przez **ton głosu i mimikę**), wyrażanie postaw (nastawienie do rozmówcy i tematu) oraz podtrzymywanie rozmowy (potakiwanie, gesty). Dystraktor E to funkcja werbalna (nazywanie). Marker: ton głosu/mimika zmieniające sens wypowiedzi werbalnej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-079",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, reakcję organizmu na stres Selye nazwał reakcją:",
+    "options": [
+      {
+        "id": "a",
+        "text": "swoistą"
+      },
+      {
+        "id": "b",
+        "text": "poznawczą"
+      },
+      {
+        "id": "c",
+        "text": "transakcyjną"
+      },
+      {
+        "id": "d",
+        "text": "nieswoistą (niespecyficzną)"
+      },
+      {
+        "id": "e",
+        "text": "salutogenetyczną"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Reakcję na stres Selye nazwał reakcją **nieswoistą (niespecyficzną)** — obejmuje ona fizjologiczne zmiany w organizmie, takie jak powiększenie gruczołów nadnerczy, zmniejszenie grasicy oraz powstawanie wrzodów żołądka i dwunastnicy. \"Nieswoistość\" oznacza, że organizm reaguje podobnie niezależnie od rodzaju stresora. To kluczowy termin Selyego, odróżniający jego ujęcie od poznawczego (Lazarus).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-080",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, ocena wtórna w modelu Lazarusa i Folkman jest zapoczątkowana wówczas, gdy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pojawia się jakikolwiek bodziec ze środowiska"
+      },
+      {
+        "id": "b",
+        "text": "zakończono proces radzenia sobie"
+      },
+      {
+        "id": "c",
+        "text": "organizm osiąga stadium wyczerpania"
+      },
+      {
+        "id": "d",
+        "text": "w ocenie pierwotnej relacja z otoczeniem została uznana za stresową, i dotyczy możliwości usunięcia przyczyny stresu lub złagodzenia skutków"
+      },
+      {
+        "id": "e",
+        "text": "emocje pozytywne przeważą nad negatywnymi"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Ocena wtórna** jest zapoczątkowana wówczas, gdy w **ocenie pierwotnej** relacja z otoczeniem została uznana za **stresową** — dotyczy możliwości usunięcia przyczyny stresu lub złagodzenia skutków oraz analizy własnych zasobów zaradczych. Oba procesy oceny są ze sobą **sprzężone i wzajemnie się wpływają**. Ocena wtórna to punkt wyjścia do aktywności ukierunkowanej na zmianę transakcji stresowej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-081",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją (Wilczek-Rużyczka), w płaszczyźnie INTERPERSONALNEJ wypalenia do objawów behawioralnych zalicza się m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "depresyjność i płaczliwość"
+      },
+      {
+        "id": "b",
+        "text": "agresję wobec podopiecznych, izolację społeczną, dystansowanie się i zrywanie więzi ze współpracownikami"
+      },
+      {
+        "id": "c",
+        "text": "bóle głowy i zaburzenia snu"
+      },
+      {
+        "id": "d",
+        "text": "utratę satysfakcji zawodowej"
+      },
+      {
+        "id": "e",
+        "text": "spadek efektywności działań organizacyjnych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W płaszczyźnie **interpersonalnej** objawy **behawioralne** wypalenia to m.in.: **agresja wobec podopiecznych**, izolacja społeczna, wycofanie, konflikty w pracy i w domu, **dystansowanie się** do podopiecznych, szufladkowanie, niechęć do pomocy, automatyzm zachowania i **zrywanie więzi ze współpracownikami**. Depresyjność i płaczliwość należą do objawów afektywnych płaszczyzny indywidualnej, a bóle głowy do somatycznych; utrata satysfakcji i spadek efektywności — do płaszczyzny organizacyjnej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-082",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W płaszczyźnie ORGANIZACYJNEJ wypalenia (Wilczek-Rużyczka) objawem kognitywnym jest m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "utrata satysfakcji zawodowej"
+      },
+      {
+        "id": "b",
+        "text": "cynizm oraz utrata zaufania do współpracowników i władz zwierzchnich"
+      },
+      {
+        "id": "c",
+        "text": "spadek motywacji do pracy"
+      },
+      {
+        "id": "d",
+        "text": "skracanie czasu pracy"
+      },
+      {
+        "id": "e",
+        "text": "spadek jakości pracy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W płaszczyźnie **organizacyjnej** objawy **kognitywne** to **cynizm** oraz **utrata zaufania do współpracowników i władz zwierzchnich**. Objaw afektywny tej płaszczyzny to utrata satysfakcji zawodowej; behawioralne to spadek efektywności i jakości pracy, absencje, skracanie czasu pracy i kontaktu z podopiecznymi; motywacyjne to spadek motywacji, niechęć do pójścia do pracy, spadek inicjatywy. Pytanie sprawdza rozróżnienie kategorii objawów w obrębie płaszczyzny organizacyjnej.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-083",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z badaniami z 2020 r. w Wielkiej Brytanii (przytoczonymi w prezentacji), najważniejszym czynnikiem powodującym wypalenie wśród lekarzy w ocenie badanych był:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zbyt wiele biurokracji"
+      },
+      {
+        "id": "b",
+        "text": "brak szacunku ze strony pracowników administracyjnych, kierownictwa oraz współpracowników (41%)"
+      },
+      {
+        "id": "c",
+        "text": "spędzanie wielu godzin w pracy"
+      },
+      {
+        "id": "d",
+        "text": "niewystarczająca płaca/nagroda"
+      },
+      {
+        "id": "e",
+        "text": "brak kontroli/autonomii"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Wg badań z **2020 r. w Wielkiej Brytanii** najważniejszym czynnikiem wypalenia w ocenie lekarzy był **brak szacunku** ze strony pracowników administracyjnych, kierownictwa i współpracowników (**41%**), następnie zbyt wiele biurokracji (39%), spędzanie wielu godzin w pracy (38%), brak kontroli/autonomii (32%). Pytanie sprawdza zapamiętanie czynnika o najwyższym odsetku — brak szacunku, nie biurokracja.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-084",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją \"Czym jest stres\", określenie stresu jako \"niespecyficznej reakcji organizmu na stawianie mu fizycznych i psychicznych wymagań\" odpowiada ujęciu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "relacyjnemu (transakcyjnemu)"
+      },
+      {
+        "id": "b",
+        "text": "reakcji organizmu (w duchu Selyego)"
+      },
+      {
+        "id": "c",
+        "text": "poznawczemu Lazarusa"
+      },
+      {
+        "id": "d",
+        "text": "salutogenetycznemu"
+      },
+      {
+        "id": "e",
+        "text": "behawioralnemu"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Ujęcie stresu jako **niespecyficznej reakcji organizmu** na stawiane mu fizyczne i psychiczne wymagania odpowiada koncepcji **Selyego** (reakcja organizmu). Prezentacja podaje też inne ujęcia: stan napięcia, sytuacja trudna (nadmiernie obciążająca system samoregulacyjny), reakcja na zagrożenie. Odróżnij od ujęcia **relacyjnego** Lazarusa (stres jako relacja osoba-otoczenie oceniana subiektywnie) — to dwa różne paradygmaty.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-085",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, w modelu radzenia sobie ze stresem wg Lazarusa i Folkman po ocenie wtórnej następuje radzenie sobie, które może być skoncentrowane na:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ocenie pierwotnej lub powtórnej"
+      },
+      {
+        "id": "b",
+        "text": "problemie lub na emocjach"
+      },
+      {
+        "id": "c",
+        "text": "zasobach środowiskowych lub osobowych"
+      },
+      {
+        "id": "d",
+        "text": "stresorach środowiskowych lub fizjologicznych"
+      },
+      {
+        "id": "e",
+        "text": "mobilizacji lub destrukcji"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W modelu Lazarusa i Folkman po ocenie wtórnej („Co mogę teraz zrobić?”) następuje **radzenie sobie**, które może być skoncentrowane na **problemie** lub na **emocjach**. Prowadzi to do określonych wyników, a następnie do powtórnej oceny sytuacji („Czy sytuacja się zmieniła? Czy czuję się lepiej?”). Dwie strategie radzenia sobie — skoncentrowana na problemie (problem-focused) oraz na emocjach (emotion-focused) — to klasyczne rozróżnienie tego transakcyjnego modelu stresu. Marker: wybór między działaniem na problem a regulacją emocji.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-086",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Sformułowanie empatyczne \"To naprawdę musi wymagać olbrzymiego wysiłku\" oraz \"Jestem pod wrażeniem, jak dobrze radzi sobie Pan z leczeniem\" odpowiada w modelu NURSE komponentowi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Naming"
+      },
+      {
+        "id": "b",
+        "text": "Understanding"
+      },
+      {
+        "id": "c",
+        "text": "Respecting"
+      },
+      {
+        "id": "d",
+        "text": "Supporting"
+      },
+      {
+        "id": "e",
+        "text": "Exploring"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Respecting** (R) to wyrażanie szacunku i uznania dla wysiłku i postawy pacjenta: „To naprawdę musi wymagać olbrzymiego wysiłku”, „Jestem pod wrażeniem, jak dobrze radzi sobie Pan z leczeniem”. Odróżnij od **Understanding** (okazanie zrozumienia trudności: „To jest dla Pana bardzo trudne”) i **Supporting** (deklaracja wsparcia). Marker Respecting: docenienie, komplement wobec wysiłku pacjenta.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-087",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź \"Proszę opowiedzieć mi więcej o swoich obawach dotyczących działań niepożądanych leczenia\" odpowiada w modelu NURSE komponentowi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Naming"
+      },
+      {
+        "id": "b",
+        "text": "Understanding"
+      },
+      {
+        "id": "c",
+        "text": "Respecting"
+      },
+      {
+        "id": "d",
+        "text": "Supporting"
+      },
+      {
+        "id": "e",
+        "text": "Exploring"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Exploring** (E) to zachęcanie pacjenta do rozwinięcia i pogłębienia tematu: „Proszę opowiedzieć mi więcej o swoich obawach…”, „Wspomniał Pan, że boi się o reakcję dzieci — czy może mi Pan coś więcej powiedzieć?”. To eksplorowanie obaw i emocji pacjenta, otwierające przestrzeń na dalsze informacje. Należy odróżnić je od **Understanding**, które jedynie sygnalizuje zrozumienie sytuacji bez dopytywania. Exploring to ostatnia litera akronimu **NURSE**; jego marker to dopytywanie i poszerzanie wypowiedzi pacjenta.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-088",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, empatia (poza współodczuwaniem) obejmuje także zdolność do:",
+    "options": [
+      {
+        "id": "a",
+        "text": "obiektywnej oceny objawów bez uwzględniania emocji pacjenta"
+      },
+      {
+        "id": "b",
+        "text": "dostrzeżenia i zinterpretowania oznak emocji doświadczanych przez drugą osobę oraz rozumienia jej myśli, motywów i celów"
+      },
+      {
+        "id": "c",
+        "text": "narzucania pacjentowi własnego punktu widzenia"
+      },
+      {
+        "id": "d",
+        "text": "utrzymywania pełnego dystansu emocjonalnego"
+      },
+      {
+        "id": "e",
+        "text": "stawiania diagnozy wyłącznie na podstawie badań laboratoryjnych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Prezentacja definiuje empatię również jako **zdolność dostrzeżenia i zinterpretowania oznak emocji** doświadczanych przez drugą osobę oraz rozumienia jej **myśli, motywów i celów** — to komponent poznawczy empatii dopełniający współodczuwanie. Empatia jest podstawowym czynnikiem kształtowania dobrego kontaktu z chorym i zaspokajania jego potrzeb biopsychospołecznych — nie zaś utrzymywania pełnego dystansu emocjonalnego czy narzucania pacjentowi własnego punktu widzenia, co byłoby jej zaprzeczeniem.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-089",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, sformułowanie \"Jeśli dobrze rozumiem, martwi się Pan, jak leczenie wpłynie na Pana\" odpowiada w modelu NURSE komponentowi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Naming"
+      },
+      {
+        "id": "b",
+        "text": "Understanding"
+      },
+      {
+        "id": "c",
+        "text": "Respecting"
+      },
+      {
+        "id": "d",
+        "text": "Supporting"
+      },
+      {
+        "id": "e",
+        "text": "Exploring"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Understanding** (U) to okazanie zrozumienia perspektywy i trudności pacjenta: „Jeśli dobrze rozumiem, martwi się Pan, jak leczenie wpłynie na Pana”, „To jest dla Pana bardzo trudne”, „Nie potrafię sobie wyobrazić, jak to jest”. Odróżnij od **Naming** (nazwanie emocji: „Wydaje się pani zmartwiona”) — Understanding sygnalizuje pojęcie sytuacji pacjenta, często z parafrazą („jeśli dobrze rozumiem…”).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-090",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, w niemowlęctwie obecność matki jest szczególnie istotna, ponieważ jej nieobecność:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nie ma znaczenia dla dziecka do 3 roku życia"
+      },
+      {
+        "id": "b",
+        "text": "do 18 miesiąca życia wiąże się z przeżywaniem sytuacji jako utraty, gdyż dziecko nie ma jeszcze wykształconej wewnętrznej reprezentacji matki"
+      },
+      {
+        "id": "c",
+        "text": "powoduje natychmiastowe rozumienie czasowości rozstania"
+      },
+      {
+        "id": "d",
+        "text": "jest obojętna emocjonalnie dla starszego niemowlęcia"
+      },
+      {
+        "id": "e",
+        "text": "dotyczy wyłącznie dzieci po 3 roku życia"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Obecność matki jest istotna zwłaszcza **do 18 miesiąca życia**, gdyż jej nieobecność wiąże się z przeżywaniem sytuacji jako **utraty** — dziecko nie ma jeszcze wykształconej **wewnętrznej reprezentacji matki**. W okresie od 3 m.ż. do 3 r.ż. trudna jest separacja z matką, bo stanowi ona źródło poczucia bezpieczeństwa. Stres może być zmniejszany przez obecność bliskiej osoby i stały zespół medyczny.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-091",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją \"Empatia w praktyce medycznej\", empatyczna komunikacja umożliwia lekarzowi przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "skrócenie wizyty kosztem zrozumienia pacjenta"
+      },
+      {
+        "id": "b",
+        "text": "bardziej precyzyjne diagnozowanie i proponowanie terapii uwzględniającej indywidualne potrzeby pacjenta"
+      },
+      {
+        "id": "c",
+        "text": "utrzymanie pacjenta jedynie jako \"przypadku medycznego\""
+      },
+      {
+        "id": "d",
+        "text": "unikanie aktywnego słuchania"
+      },
+      {
+        "id": "e",
+        "text": "ograniczenie relacji do komunikacji niewerbalnej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Lekarz, który potrafi wyrazić empatię, może **bardziej precyzyjnie diagnozować i proponować terapie**, uwzględniając **indywidualne potrzeby pacjenta** — dzięki czemu leczenie staje się bardziej efektywne. Empatia pozwala postrzegać pacjenta jako jednostkę, a nie tylko „przypadek medyczny”, co jest odwrotnością przedmiotowego traktowania. Empatyczna komunikacja nie polega też na skracaniu wizyty kosztem zrozumienia, lecz opiera się na **aktywnym słuchaniu** i skupieniu na potrzebach chorego.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-092",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji styl życia warunkowany jest przyjęciem określonej postawy wobec zdrowia i przejawia się przede wszystkim w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie wrodzonych predyspozycjach genetycznych"
+      },
+      {
+        "id": "b",
+        "text": "podejmowaniu lub zaniechaniu zachowań prozdrowotnych, stanowiących jeden z komponentów postawy prozdrowotnej"
+      },
+      {
+        "id": "c",
+        "text": "jednorazowej decyzji o zmianie diety"
+      },
+      {
+        "id": "d",
+        "text": "czynnikach wyłącznie obiektywnych, niezależnych od jednostki"
+      },
+      {
+        "id": "e",
+        "text": "przekonaniach politycznych jednostki"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Styl życia jest warunkowany **przyjęciem określonej postawy wobec zdrowia** (prozdrowotnej lub antyzdrowotnej) i jej odzwierciedleniem; przejawia się przede wszystkim w **podejmowaniu lub zaniechaniu zachowań prozdrowotnych**, które stanowią jeden z **komponentów postawy prozdrowotnej**. Na styl życia wpływają czynniki subiektywne (przekonania, wartości) i obiektywne (środowisko, sytuacja społeczno-ekonomiczna) — nie tylko jedne z nich.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-093",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W Transteoretycznym Modelu Zmiany etap, na którym \"celem jest wprowadzenie zmiany w problemie, który chcesz rozwiązać\", to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stadium przedrefleksyjne"
+      },
+      {
+        "id": "b",
+        "text": "refleksja"
+      },
+      {
+        "id": "c",
+        "text": "przygotowania"
+      },
+      {
+        "id": "d",
+        "text": "działanie"
+      },
+      {
+        "id": "e",
+        "text": "utrwalanie"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W cyklu TTM (Prochaska, DiClemente): stadium przedrefleksyjne → refleksja (rozważanie zmiany) → przygotowania (szukanie rozwiązań, planowanie) → **działanie** (celem jest **wprowadzenie zmiany** w problemie) → utrwalanie (utrzymanie zmian, brak nawrotów) → ewentualny nawrót. Działanie to etap realnego wdrożenia zmiany, po fazie przygotowań, a przed utrwalaniem. Marker: aktywne wprowadzanie zmiany.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-094",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź pacjenta \"Wiem, co robić, gdy stracę koncentrację na tonie głosu\" odpowiada w Transteoretycznym Modelu Zmiany etapowi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "prekontemplacji"
+      },
+      {
+        "id": "b",
+        "text": "kontemplacji"
+      },
+      {
+        "id": "c",
+        "text": "przygotowania"
+      },
+      {
+        "id": "d",
+        "text": "działania"
+      },
+      {
+        "id": "e",
+        "text": "podtrzymania/nawrotów"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wypowiedź \"Wiem, co robić, gdy stracę koncentrację…\" wskazuje na etap **podtrzymania/nawrotów** (Etap V) — pacjent dysponuje już strategiami radzenia sobie z trudnościami i zapobiegania nawrotom utrwalonej zmiany. Odróżnij od **działania** (samo wdrażanie zmiany: \"zacząłem mówić ciszej\"). Marker podtrzymania: gotowe procedury na sytuacje ryzyka nawrotu, świadczące o utrwalonej zmianie.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-095",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, definicja dialogu motywującego \"dla laika\" akcentuje, że DM to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "skoncentrowany na osobie sposób pomagania wobec ambiwalencji"
+      },
+      {
+        "id": "b",
+        "text": "oparty na współpracy styl rozmowy służący umocnieniu u osoby jej własnej motywacji i zobowiązania do zmiany"
+      },
+      {
+        "id": "c",
+        "text": "oparty na współpracy, zorientowany na cel sposób komunikowania zwracający uwagę na język zmiany"
+      },
+      {
+        "id": "d",
+        "text": "metoda perswazji oparta na autorytecie eksperta"
+      },
+      {
+        "id": "e",
+        "text": "technika konfrontacji z konsekwencjami zachowania"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Definicja **dla laika** („Co to jest DM?”) akcentuje, że dialog motywujący to **oparty na współpracy styl rozmowy** służący **umocnieniu u osoby jej własnej motywacji i zobowiązania do zmiany** (Miller, Rollnick 2014, s. 12). Definicja dla praktyka pragmatyka opisuje DM jako skoncentrowany na osobie sposób pomagania wobec ambiwalencji, a definicja techniczna podkreśla język zmiany. Pytanie sprawdza rozróżnienie trzech poziomów definicji po charakterystycznym sformułowaniu o stylu rozmowy.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-096",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, aktywne słuchanie cechuje przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ocenianie wypowiedzi rozmówcy w celu jej korekty"
+      },
+      {
+        "id": "b",
+        "text": "szacunek i pozytywne nastawienie do rozmówcy, obejmujące zachowania werbalne i niewerbalne"
+      },
+      {
+        "id": "c",
+        "text": "przerywanie wypowiedzi w celu przyspieszenia rozmowy"
+      },
+      {
+        "id": "d",
+        "text": "koncentracja wyłącznie na treści, z pominięciem emocji"
+      },
+      {
+        "id": "e",
+        "text": "unikanie kontaktu wzrokowego dla zachowania dystansu"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Aktywne słuchanie to starania o pełne zrozumienie treści i znaczenia przekazu rozmówcy; cechuje je **szacunek i pozytywne nastawienie** do rozmówcy oraz obejmuje zachowania **werbalne i niewerbalne** (kontakt wzrokowy, otwarta postawa, potakiwanie, zwroty zachęcające). Zasada \"nie oceniaj\" (slajd 7) jest sprzeczna z dystraktorem A. Marker: zrozumienie + szacunek + sygnały werbalne i niewerbalne.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-097",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród zasad słuchania (slajd \"SŁUCHANIE\") prezentacja podaje m.in.: \"Nie oceniaj\", uzasadniając to tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ocena przyspiesza zrozumienie rozmówcy"
+      },
+      {
+        "id": "b",
+        "text": "wypowiedzi oceniające wywołują potrzebę obrony"
+      },
+      {
+        "id": "c",
+        "text": "ocena jest warunkiem empatii"
+      },
+      {
+        "id": "d",
+        "text": "ocenianie zwiększa zaufanie pacjenta"
+      },
+      {
+        "id": "e",
+        "text": "ocena zastępuje parafrazowanie"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Wśród zasad słuchania prezentacja podaje: „Nie oceniaj — **wypowiedzi oceniające wywołują potrzebę obrony**”. To uzasadnienie wiąże się z warunkiem słuchania **otwartego** (zahamowanie przedwczesnej oceny i formułowania wniosków) oraz z barierami komunikacyjnymi Gordona (krytykowanie, interpretowanie). Ocena uruchamia mechanizm obronny i zamyka rozmówcę, dlatego nie przyspiesza zrozumienia ani nie buduje zaufania. Marker: ocena → potrzeba obrony → zamknięcie kontaktu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-098",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród korzyści komunikacji NVC prezentacja wymienia m.in. \"rozwiązywanie konfliktów\", polegające na:",
+    "options": [
+      {
+        "id": "a",
+        "text": "eliminowaniu wszelkich różnic zdań przez perswazję"
+      },
+      {
+        "id": "b",
+        "text": "umożliwieniu skutecznego radzenia sobie z konfliktami i trudnościami komunikacyjnymi"
+      },
+      {
+        "id": "c",
+        "text": "narzucaniu wspólnego rozwiązania przez stronę silniejszą"
+      },
+      {
+        "id": "d",
+        "text": "unikaniu konfrontacji za wszelką cenę"
+      },
+      {
+        "id": "e",
+        "text": "stosowaniu kar i nagród w sporze"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Wśród korzyści NVC: poprawa relacji interpersonalnych, **rozwiązywanie konfliktów** (umożliwia **skuteczne radzenie sobie z konfliktami i trudnościami komunikacyjnymi** przez tworzenie wspólnych rozwiązań), lepsze zrozumienie siebie i innych oraz tworzenie atmosfery wzajemnego szacunku. NVC zachęca do głębszego zrozumienia siebie i innych oraz budowania więzi opartych na szacunku i empatii — nie do perswazji czy unikania (dystraktory).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-099",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, faza wypalenia wg APA określana jako \"miesiąc miodowy\" oznacza:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dostrzeżenie pierwszych rys i próby kompensacji pracą"
+      },
+      {
+        "id": "b",
+        "text": "zauroczenie pracą i pełną satysfakcję"
+      },
+      {
+        "id": "c",
+        "text": "coraz więcej wysiłku przy coraz mniejszym efekcie"
+      },
+      {
+        "id": "d",
+        "text": "wyczerpanie, depresję i ucieczkę od pracy"
+      },
+      {
+        "id": "e",
+        "text": "etap leczenia i odradzania się"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W fazach wypalenia wg **APA** „miesiąc miodowy” to **zauroczenie pracą i pełna satysfakcja** — początkowy entuzjazm, zgodny z tezą Pines, że „aby się wypalić, trzeba zapłonąć”. Kolejne fazy to: przebudzenie (pierwsze rysy, kompensacja pracą), szorstkość (coraz więcej wysiłku, coraz mniej efektu), wypalenie pełnoobjawowe (wyczerpanie, depresja, ucieczka od pracy) i odradzanie się (leczenie). Pytanie sprawdza przypisanie opisu do pierwszej, entuzjastycznej fazy procesu wypalenia.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-100",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji, w wieku szkolnym (6-12 lat) do kluczowych osiągnięć rozwojowych w sferze poznawczej należy m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "egocentryzm mowy i myślenia"
+      },
+      {
+        "id": "b",
+        "text": "odróżnianie fantazji od rzeczywistości oraz trwałość i dowolność uwagi i pamięci"
+      },
+      {
+        "id": "c",
+        "text": "rozwój stałości obiektu i lęku przed separacją"
+      },
+      {
+        "id": "d",
+        "text": "pojęcie abstrakcyjne choroby"
+      },
+      {
+        "id": "e",
+        "text": "emocjonalna niezależność od rodziców"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W **wieku szkolnym (6-12 lat)** osiągnięcia rozwoju **poznawczego** to: myślenie logiczne, **odróżnianie fantazji od rzeczywistości**, **trwałość i dowolność uwagi i pamięci**, aktywność poznawcza oraz orientacja w przestrzeni i schemacie własnego ciała. Egocentryzm mowy i myślenia opisuje wiek przedszkolny, stałość obiektu i lęk separacyjny — niemowlęctwo, a abstrakcyjne pojęcie choroby i niezależność emocjonalna — adolescencję. Marker szkolny: logika, odróżnianie fantazji od realności i dowolna uwaga.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

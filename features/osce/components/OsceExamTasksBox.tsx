@@ -1,4 +1,7 @@
+"use client";
+
 import { ClipboardList } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type ExamTask = {
   task_number: number;
@@ -10,6 +13,7 @@ type OsceExamTasksBoxProps = {
 };
 
 export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
+  const t = useTranslations("osce");
   const tasks = examTasks ?? [];
   const hasTasks = tasks.length > 0;
 
@@ -17,7 +21,7 @@ export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
     <div
       className="rounded-card border border-gold/20 bg-brand-gold/5 p-5"
       role="region"
-      aria-label="Zadania egzaminacyjne na stacji"
+      aria-label={t("examTasksRegion")}
     >
       <div className="flex items-start gap-3">
         <ClipboardList
@@ -26,23 +30,25 @@ export function OsceExamTasksBox({ examTasks }: OsceExamTasksBoxProps) {
         />
         <div className="min-w-0 flex-1">
           <h2 className="font-heading text-heading-sm text-brand-gold">
-            Zadania na stacji
+            {t("stationTasksHeading")}
           </h2>
           {hasTasks ? (
             <ul className="mt-3 space-y-2">
-              {tasks.map((t, i) => {
-                const n = Number.isFinite(t.task_number) && t.task_number > 0 ? t.task_number : i + 1;
+              {tasks.map((task, i) => {
+                const n =
+                  Number.isFinite(task.task_number) && task.task_number > 0
+                    ? task.task_number
+                    : i + 1;
                 return (
                   <li key={`${n}-${i}`} className="font-body text-body-sm text-secondary">
-                    <span className="font-semibold text-primary">Zadanie {n}:</span>{" "}
-                    {t.description}
+                    {t("taskLabel", { number: n, description: task.description })}
                   </li>
                 );
               })}
             </ul>
           ) : (
             <p className="mt-3 font-body text-body-sm text-secondary">
-              Zadania zostaną wkrótce uzupełnione
+              {t("stationTasksPending")}
             </p>
           )}
         </div>

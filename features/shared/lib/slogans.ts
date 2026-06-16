@@ -1,43 +1,48 @@
-export const SIDEBAR_SLOGANS = [
-  "Wiesz więcej niż godzinę temu.",
-  "Właśnie budujesz kliniczne myślenie.",
-  "Uczysz się skuteczniej, niż Ci się wydaje.",
-  "Wiesz więcej niż godzinę temu. Jeszcze jedno pytanie?",
-] as const;
+export type SloganPool = "sidebar" | "auth" | "sessionLoading";
 
-export const AUTH_SLOGANS = [
-  "Jeszcze jedno pytanie?",
-  "Jedno pytanie więcej nie zaszkodzi.",
-  "Wiesz więcej niż godzinę temu.",
-  "Uczysz się skuteczniej, niż Ci się wydaje.",
-] as const;
+const SLOGAN_POOL_KEYS = {
+  sidebar: [
+    "knowMoreThanHourAgo",
+    "buildingClinicalThinking",
+    "learningEffectively",
+    "knowMorePlusOne",
+  ],
+  auth: [
+    "oneMoreQuestion",
+    "oneMoreWontHurt",
+    "knowMoreThanHourAgo",
+    "learningEffectively",
+  ],
+  sessionLoading: [
+    "oneMoreQuestion",
+    "oneMoreAndDone",
+    "oneMoreWontHurt",
+    "knowMoreThanMomentAgo",
+    "eachQuestionCloser",
+    "futureSelfThanks",
+    "hardTodayObviousTomorrow",
+    "diagnosisStartsWithQuestion",
+    "nextMinutesForYou",
+    "consistencyDoesWork",
+    "disciplineBehindSuccess",
+    "moreTodayThanYesterday",
+    "shortSessionCounts",
+    "memoryWhenYouReturn",
+    "doingForFutureSelf",
+    "progressNeedNotBeLoud",
+    "calmButConsistent",
+    "eachRepetitionReinforces",
+  ],
+} as const satisfies Record<SloganPool, readonly string[]>;
 
-export const SESSION_LOADING_SLOGANS = [
-  "Jeszcze jedno pytanie?",
-  "Jeszcze jedno pytanie i kończysz? Nie tym razem.",
-  "Jedno pytanie więcej nie zaszkodzi.",
-  "Wiesz więcej niż przed chwilą.",
-  "Każde pytanie to jeden krok bliżej.",
-  "Twoja przyszła wersja Ci podziękuje.",
-  "To, co dziś trudne, jutro będzie oczywiste.",
-  "Diagnoza zaczyna się od dobrego pytania.",
-  "Następne kilka minut tylko dla Ciebie i wiedzy.",
-  "Konsekwencja robi tu całą robotę.",
-  "Za każdym sukcesem w Twoim życiu stoi dyscyplina.",
-  "Dziś trochę więcej niż wczoraj.",
-  "Krótka sesja też się liczy.",
-  "Pamięć działa, kiedy do niej wracasz.",
-  "Robisz to dla siebie z przyszłości.",
-  "Postęp nie musi być głośny.",
-  "Spokojnie, ale konsekwentnie.",
-  "Każde powtórzenie coś utrwala.",
-] as const;
+export type SlogansTranslator = (key: string) => string;
 
-export const DEFAULT_SLOGAN =
-  "Wiesz więcej niż godzinę temu. Jeszcze jedno pytanie?";
+export function getSloganPool(t: SlogansTranslator, pool: SloganPool): string[] {
+  return SLOGAN_POOL_KEYS[pool].map((key) => t(`${pool}.${key}`));
+}
 
-export function pickSlogan<T extends readonly string[]>(pool: T): T[number] {
-  if (pool.length === 0) return DEFAULT_SLOGAN as T[number];
+export function pickSlogan(pool: readonly string[], fallback = ""): string {
+  if (pool.length === 0) return fallback;
   const idx = Math.floor(Math.random() * pool.length);
-  return (pool[idx] ?? pool[0]) as T[number];
+  return pool[idx] ?? pool[0] ?? fallback;
 }

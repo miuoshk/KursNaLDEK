@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { isValidEmoji } from "@/lib/emoji";
 import { cn } from "@/lib/utils";
 
@@ -14,22 +15,23 @@ type EmojiInputProps = {
   label?: string;
   hint?: string;
   disabled?: boolean;
-  /** Renderowane pod inputem; nadpisuje domyślny hint platformowy. */
   helper?: React.ReactNode;
 };
 
-function detectPlatformHint(): string {
+function detectPlatformHint(
+  t: ReturnType<typeof useTranslations<"shared">>,
+): string {
   if (typeof navigator === "undefined") {
-    return "Naciśnij ⌃⌘Space (Mac) / Win+. (Windows) — albo użyj emoji-klawiatury w telefonie.";
+    return t("emojiInput.hintGeneric");
   }
   const ua = navigator.userAgent;
   if (/Mac|iPhone|iPad/.test(ua)) {
-    return "Naciśnij ⌃⌘Space (Mac) — albo użyj emoji-klawiatury w telefonie.";
+    return t("emojiInput.hintMac");
   }
   if (/Windows/.test(ua)) {
-    return "Naciśnij Win + . żeby otworzyć systemowy picker emoji.";
+    return t("emojiInput.hintWindows");
   }
-  return "Otwórz systemową klawiaturę emoji i wstaw jeden symbol.";
+  return t("emojiInput.hintDefault");
 }
 
 export function EmojiInput({
@@ -39,26 +41,26 @@ export function EmojiInput({
   defaultValue,
   onChange,
   required,
-  label = "Avatar (emoji)",
+  label,
   hint,
   disabled,
   helper,
 }: EmojiInputProps) {
+  const t = useTranslations("shared");
   const controlled = value !== undefined;
   const [internal, setInternal] = useState(defaultValue ?? "");
   const current = controlled ? (value ?? "") : internal;
   const [touched, setTouched] = useState(false);
-  const [platformHint, setPlatformHint] = useState<string>(
-    "Otwórz systemową klawiaturę emoji i wstaw jeden symbol.",
-  );
+  const [platformHint, setPlatformHint] = useState<string>(t("emojiInput.hintDefault"));
 
   useEffect(() => {
-    setPlatformHint(detectPlatformHint());
-  }, []);
+    setPlatformHint(detectPlatformHint(t));
+  }, [t]);
 
   const valid = useMemo(() => isValidEmoji(current), [current]);
   const showError = touched && current.length > 0 && !valid;
   const inputId = id ?? `emoji-${name}`;
+  const resolvedLabel = label ?? t("emojiInput.label");
 
   function update(next: string) {
     if (!controlled) setInternal(next);
@@ -71,7 +73,7 @@ export function EmojiInput({
         htmlFor={inputId}
         className="mb-2 block font-body text-body-sm text-secondary"
       >
-        {label}
+        {resolvedLabel}
         {required ? <span className="ml-1 text-brand-gold">*</span> : null}
       </label>
       <div className="flex items-center gap-3">
@@ -118,7 +120,7 @@ export function EmojiInput({
         )}
       >
         {showError
-          ? "Wybierz dokładnie jedno emoji."
+          ? t("emojiInput.error")
           : (helper ?? hint ?? platformHint)}
       </p>
     </div>

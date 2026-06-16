@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   useCallback,
   useEffect,
@@ -67,6 +68,7 @@ export function ImageIdentifyQuestion({
   onAnswer,
   onNext,
 }: ImageIdentifyQuestionProps) {
+  const t = useTranslations("osce");
   const formId = useId();
   const { containerRef, contentRef, contentStyle, resetView } = usePinchZoom({
     minScale: 1,
@@ -190,10 +192,12 @@ export function ImageIdentifyQuestion({
 
       {question.mode === "label" && !checked ? (
         <p className="mt-2 font-body text-body-sm text-secondary">
-          Kolejno wskaż na obrazie:{" "}
-          <span className="font-medium text-brand-gold">
-            punkt {Math.min(labelStep + 1, sortedHotspots.length)} / {sortedHotspots.length}
-          </span>
+          {t("labelOnImage", {
+            progress: t("labelProgress", {
+              current: Math.min(labelStep + 1, sortedHotspots.length),
+              total: sortedHotspots.length,
+            }),
+          })}
         </p>
       ) : null}
 
@@ -241,7 +245,7 @@ export function ImageIdentifyQuestion({
       </div>
 
       <p className="mt-2 font-body text-body-xs text-muted">
-        Szczypanie: powiększenie. Podwójne tapnięcie: zoom / reset. Przeciąganie przy powiększeniu.
+        {t("pinchZoomHint")}
       </p>
 
       <ImageIdentifyForm
@@ -269,13 +273,15 @@ export function ImageIdentifyQuestion({
             animate={{ opacity: 1, y: 0 }}
             className="mt-8 space-y-4"
           >
-            <p className="font-heading text-heading-sm text-brand-gold">Wyjaśnienia</p>
+            <p className="font-heading text-heading-sm text-brand-gold">{t("explanations")}</p>
             {sortedHotspots.map((h) => (
               <div
                 key={`exp-${h.id}`}
                 className="rounded-card border border-white/[0.08] bg-card p-4"
               >
-                <p className="font-body text-body-xs text-muted">Punkt {h.correct_label}</p>
+                <p className="font-body text-body-xs text-muted">
+                  {t("hotspotPoint", { label: h.correct_label })}
+                </p>
                 <div className="mt-1">
                   <FormattedExplanation text={h.explanation} />
                 </div>
@@ -296,7 +302,7 @@ export function ImageIdentifyQuestion({
             onClick={onNext}
             className="rounded-btn bg-brand-gold px-8 py-3 font-body text-body-md font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Następne pytanie
+            {t("nextQuestion")}
           </button>
         </div>
       ) : null}

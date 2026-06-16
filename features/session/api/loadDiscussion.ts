@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 
 export type DiscussionComment = {
@@ -17,20 +18,24 @@ export type LoadDiscussionResult =
   | { ok: true; comments: DiscussionComment[]; total: number }
   | { ok: false; message: string };
 
-function resolvePublicDisplayName(profile: {
-  display_name: string | null;
-  nick: string | null;
-}): string {
+function resolvePublicDisplayName(
+  profile: {
+    display_name: string | null;
+    nick: string | null;
+  },
+  anonymousLabel: string,
+): string {
   const display = profile.display_name?.trim();
   if (display) return display;
   const nick = profile.nick?.trim();
   if (nick) return nick;
-  return "Użytkownik";
+  return anonymousLabel;
 }
 
 export async function loadDiscussion(
   questionId: string,
 ): Promise<LoadDiscussionResult> {
+  const t = await getTranslations("session");
   try {
     const supabase = await createClient();
     const {
@@ -48,7 +53,7 @@ export async function loadDiscussion(
 
     if (error) {
       console.error("[loadDiscussion]", error.message);
-      return { ok: false, message: "Nie udało się wczytać dyskusji." };
+      return { ok: false, message: t("errors.loadDiscussionFailed") };
     }
 
     const authorIds = [
@@ -68,10 +73,13 @@ export async function loadDiscussion(
         for (const profile of profiles ?? []) {
           displayNames.set(
             profile.id as string,
-            resolvePublicDisplayName({
-              display_name: profile.display_name as string | null,
-              nick: profile.nick as string | null,
-            }),
+            resolvePublicDisplayName(
+              {
+                display_name: profile.display_name as string | null,
+                nick: profile.nick as string | null,
+              },
+              t("discussionAnonymous"),
+            ),
           );
         }
       }
@@ -80,7 +88,7 @@ export async function loadDiscussion(
     const comments: DiscussionComment[] = (rows ?? []).map((r) => ({
       id: r.id as string,
       userId: r.user_id as string,
-      displayName: displayNames.get(r.user_id as string) ?? "Użytkownik",
+      displayName: displayNames.get(r.user_id as string) ?? t("discussionAnonymous"),
       content: r.content as string,
       upvotes: (r.upvotes as number) ?? 0,
       hasUpvoted: false,
@@ -91,6 +99,6 @@ export async function loadDiscussion(
     return { ok: true, comments, total: comments.length };
   } catch (e) {
     console.error("[loadDiscussion]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

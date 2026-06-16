@@ -111,3 +111,14 @@ export function resolveSessionPickerCount(
   }
   return Math.min(fallback, cappedMax);
 }
+
+export type SessionCountTranslator = (
+  key: "questionsShort" | "allQuestionsAriaLabel",
+) => string;
+
+export function getSessionCountLabels(t: SessionCountTranslator) {
+  return {
+    questionsShort: t("questionsShort"),
+    allQuestionsAriaLabel: t("allQuestionsAriaLabel"),
+  };
+}

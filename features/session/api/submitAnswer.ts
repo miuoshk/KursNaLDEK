@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { Rating, type Grade } from "ts-fsrs";
 import { createClient } from "@/lib/supabase/server";
@@ -78,9 +79,10 @@ function rowToRetrievabilityInput(row: {
 export async function submitAnswer(
   raw: z.infer<typeof schema>,
 ): Promise<SubmitAnswerResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane odpowiedzi." };
+    return { ok: false, message: t("errors.invalidAnswerData") };
   }
 
   try {
@@ -91,7 +93,7 @@ export async function submitAnswer(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Brak sesji logowania." };
+      return { ok: false, message: t("errors.noAuthSession") };
     }
 
     const { data: session, error: se } = await supabase
@@ -101,7 +103,7 @@ export async function submitAnswer(
       .maybeSingle();
 
     if (se || !session || session.user_id !== user.id) {
-      return { ok: false, message: "Sesja nie została znaleziona." };
+      return { ok: false, message: t("errors.sessionNotFound") };
     }
 
     const { data: questionRow, error: questionError } = await supabase
@@ -111,7 +113,7 @@ export async function submitAnswer(
       .maybeSingle();
 
     if (questionError || !questionRow?.correct_option_id) {
-      return { ok: false, message: "Nie znaleziono pytania." };
+      return { ok: false, message: t("errors.questionNotFound") };
     }
 
     const isCorrect = questionRow.correct_option_id === parsed.data.selectedOptionId;
@@ -161,7 +163,7 @@ export async function submitAnswer(
         .eq("id", prevAns.id);
       if (upErr) {
         console.error("[submitAnswer] session_answers update", upErr.message);
-        return { ok: false, message: "Nie udało się zapisać odpowiedzi." };
+        return { ok: false, message: t("errors.saveAnswerFailed") };
       }
     } else {
       const { error: insErr } = await supabase
@@ -169,7 +171,7 @@ export async function submitAnswer(
         .insert(insertRow);
       if (insErr) {
         console.error("[submitAnswer] session_answers insert", insErr.message);
-        return { ok: false, message: "Nie udało się zapisać odpowiedzi." };
+        return { ok: false, message: t("errors.saveAnswerFailed") };
       }
     }
 
@@ -326,12 +328,12 @@ export async function submitAnswer(
 
     if (sessErr) {
       console.error("[submitAnswer] study_sessions", sessErr.message);
-      return { ok: false, message: "Nie udało się zaktualizować sesji." };
+      return { ok: false, message: t("errors.updateSessionFailed") };
     }
 
     return { ok: true };
   } catch (e) {
     console.error("[submitAnswer]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

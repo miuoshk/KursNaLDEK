@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { OpgAtlasHotspot, OpgAtlasPanorama } from "@/features/osce/types";
 import { Toggle } from "@/features/shared/components/Toggle";
@@ -25,6 +26,7 @@ function HotspotMarker({
   wrapperSize: { w: number; h: number };
   onOpen: () => void;
 }) {
+  const t = useTranslations("osce");
   const dimPct = Math.min(100, hotspot.radius_percent * 2);
   const minPx = 44;
   const sizeStyle =
@@ -57,7 +59,7 @@ function HotspotMarker({
         }}
         className="pointer-events-auto flex size-full min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-dashed border-brand-gold/80 bg-brand-gold/15 shadow-[0_0_0_4px_rgba(201,168,76,0.15)] animate-pulse outline-none transition hover:bg-brand-gold/25 focus-visible:ring-2 focus-visible:ring-brand-gold"
         style={sizeStyle}
-        aria-label={`Struktura ${index + 1}: ${hotspot.name}`}
+        aria-label={t("opgStructureLabel", { number: index + 1, name: hotspot.name })}
       >
         <span className="font-body text-sm font-semibold tabular-nums text-brand-gold">
           {index + 1}
@@ -88,6 +90,8 @@ function PanoramaViewer({
   onShowNamesChange: (v: boolean) => void;
   onClose: () => void;
 }) {
+  const t = useTranslations("osce");
+  const tCommon = useTranslations("common");
   const titleId = useId();
   const { containerRef, contentRef, contentStyle, resetView } = usePinchZoom({
     minScale: 1,
@@ -151,22 +155,22 @@ function PanoramaViewer({
           className="inline-flex items-center gap-2 rounded-btn border border-brand-sage/40 px-3 py-2 font-body text-body-sm text-brand-sage transition hover:bg-brand-sage/10"
         >
           <ArrowLeft className="size-4 shrink-0" aria-hidden />
-          Lista panoram
+          {t("opgPanoramaList")}
         </button>
         <h2 id={titleId} className="min-w-0 flex-1 font-heading text-heading-sm text-primary">
           {panorama.title}
         </h2>
         <div className="flex w-full shrink-0 items-center justify-end gap-3 sm:w-auto">
           <span className="font-body text-body-xs text-secondary">
-            {showNames ? "Ukryj nazwy" : "Pokaż wszystkie nazwy"}
+            {showNames ? t("opgHideNames") : t("opgShowAllNames")}
           </span>
           <Toggle
             checked={showNames}
             onCheckedChange={onShowNamesChange}
-            aria-label={showNames ? "Ukryj nazwy struktur" : "Pokaż wszystkie nazwy"}
+            aria-label={showNames ? t("opgHideNamesAria") : t("opgShowAllNamesAria")}
           />
           <span className="hidden font-body text-body-xs text-muted sm:inline">
-            {showNames ? "Tryb nauki" : "Tryb sprawdzania"}
+            {showNames ? t("opgStudyMode") : t("opgTestMode")}
           </span>
         </div>
       </header>
@@ -206,7 +210,7 @@ function PanoramaViewer({
       </div>
 
       <p className="shrink-0 px-4 py-2 font-body text-body-xs text-muted">
-        Szczypanie: powiększenie. Podwójne tapnięcie: zoom / reset. Kliknij numer, aby zobaczyć opis.
+        {t("opgPinchHint")}
       </p>
 
       <AnimatePresence>
@@ -218,7 +222,7 @@ function PanoramaViewer({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[85] bg-black/55"
-              aria-label="Zamknij panel"
+              aria-label={t("opgClosePanel")}
               onClick={() => setPopupHotspot(null)}
             />
             <motion.div
@@ -238,7 +242,7 @@ function PanoramaViewer({
                   {popupHotspot.clinicalSignificance ? (
                     <div className="mt-4 rounded-btn border border-white/[0.06] bg-background/80 p-4">
                       <p className="font-body text-body-xs font-medium uppercase tracking-wide text-muted">
-                        Znaczenie kliniczne
+                        {t("opgClinicalSignificance")}
                       </p>
                       <p className="mt-2 font-body text-body-sm leading-relaxed text-secondary">
                         {popupHotspot.clinicalSignificance}
@@ -250,7 +254,7 @@ function PanoramaViewer({
                   type="button"
                   onClick={() => setPopupHotspot(null)}
                   className="shrink-0 rounded-btn border border-white/[0.1] p-2 text-secondary hover:bg-white/[0.06]"
-                  aria-label="Zamknij"
+                  aria-label={tCommon("close")}
                 >
                   <X className="size-5" />
                 </button>
@@ -264,6 +268,7 @@ function PanoramaViewer({
 }
 
 export function OPGAtlas({ panoramas }: OPGAtlasProps) {
+  const t = useTranslations("osce");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [showNames, setShowNames] = useState(true);
 
@@ -286,7 +291,7 @@ export function OPGAtlas({ panoramas }: OPGAtlasProps) {
   if (panoramas.length === 0) {
     return (
       <p className="font-body text-body-md text-secondary">
-        Brak panoram w atlasie. Dodaj pytania typu „image_identify” w temacie morfologii OPG lub skontaktuj się z administratorem.
+        {t("opgNoPanoramas")}
       </p>
     );
   }
@@ -294,7 +299,7 @@ export function OPGAtlas({ panoramas }: OPGAtlasProps) {
   return (
     <div>
       <p className="mb-6 font-body text-body-sm text-secondary">
-        Wybierz panoramę, aby przejść do widoku z hotspotami. W panoramie możesz przełączać widoczność nazw oraz powiększać obraz gestem szczypania.
+        {t("opgAtlasHint")}
       </p>
 
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -318,7 +323,7 @@ export function OPGAtlas({ panoramas }: OPGAtlasProps) {
                   {p.title}
                 </p>
                 <p className="mt-1 font-body text-body-xs text-muted">
-                  Liczba punktów: {p.hotspots.length}
+                  {t("opgHotspotsCount", { count: p.hotspots.length })}
                 </p>
               </div>
             </button>

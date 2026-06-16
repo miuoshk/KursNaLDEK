@@ -11,11 +11,11 @@ import {
   TrendingDown,
   TrendingUp,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
 import { cn } from "@/lib/utils";
-import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const R = 52;
 const C = 2 * Math.PI * R;
@@ -27,51 +27,57 @@ type Props = {
   onInsightsRetry?: () => void;
 };
 
+type SummaryTranslator = (
+  key: string,
+  values?: Record<string, string | number>,
+) => string;
+
 function pickHeadline(
   accuracy: number,
   delta: number | null,
+  t: SummaryTranslator,
 ): { title: string; subtitle: string } {
   const pct = Math.round(accuracy * 100);
 
   if (pct === 100) {
     return {
-      title: "Komplet!",
-      subtitle: "Wszystkie odpowiedzi poprawne. Świetna robota.",
+      title: t("summaryHeadlinePerfectTitle"),
+      subtitle: t("summaryHeadlinePerfectSubtitle"),
     };
   }
   if (pct >= 90) {
     return {
-      title: "Niemal idealnie",
-      subtitle: "Wyjątkowo wysoka skuteczność.",
+      title: t("summaryHeadlineExcellentTitle"),
+      subtitle: t("summaryHeadlineExcellentSubtitle"),
     };
   }
   if (delta != null && delta >= 15) {
     return {
-      title: "Wyraźny postęp",
-      subtitle: `O ${delta} punktów lepiej niż ostatnio. To się utrwala.`,
+      title: t("summaryHeadlineProgressTitle"),
+      subtitle: t("summaryHeadlineProgressSubtitle", { delta }),
     };
   }
   if (pct >= 75) {
     return {
-      title: "Solidna sesja",
-      subtitle: "Materiał masz pod kontrolą — czas na trudniejsze pytania.",
+      title: t("summaryHeadlineSolidTitle"),
+      subtitle: t("summaryHeadlineSolidSubtitle"),
     };
   }
   if (pct >= 50) {
     return {
-      title: "Dobra robota",
-      subtitle: "Solidna podstawa — przejrzyj błędy i wracaj jutro.",
+      title: t("summaryHeadlineGoodTitle"),
+      subtitle: t("summaryHeadlineGoodSubtitle"),
     };
   }
   if (delta != null && delta <= -10) {
     return {
-      title: "Trudniejszy materiał",
-      subtitle: "Spadek skuteczności — warto wrócić do podstaw tego działu.",
+      title: t("summaryHeadlineHardTitle"),
+      subtitle: t("summaryHeadlineHardSubtitle"),
     };
   }
   return {
-    title: "Trzymaj tempo",
-    subtitle: "Każda runda przybliża Cię do mistrzostwa. Powtórka pomoże.",
+    title: t("summaryHeadlineKeepTitle"),
+    subtitle: t("summaryHeadlineKeepSubtitle"),
   };
 }
 
@@ -101,6 +107,8 @@ function SummaryInteligentnaFooter({
   failed?: boolean;
   onRetry?: () => void;
 }) {
+  const t = useTranslations("session");
+  const tCommon = useTranslations("common");
   const insights = summary.sessionInsights;
   const readiness = summary.examReadiness;
 
@@ -108,10 +116,12 @@ function SummaryInteligentnaFooter({
     insights?.calibrationTip,
     insights?.fatigueWarning,
     (insights?.leechesHit?.length ?? 0) > 0
-      ? `Pijawki w tej sesji: ${insights!.leechesHit.length} — warto powtórzyć je osobno.`
+      ? t("summaryLeeches", { count: insights!.leechesHit.length })
       : null,
     (insights?.retrievabilityGain ?? 0) > 0.01
-      ? `Siła zapamiętania w sesji: +${Math.round((insights!.retrievabilityGain ?? 0) * 100)}%`
+      ? t("summaryRetrievability", {
+          percent: Math.round((insights!.retrievabilityGain ?? 0) * 100),
+        })
       : null,
   ].filter(Boolean) as string[];
 
@@ -125,14 +135,14 @@ function SummaryInteligentnaFooter({
     <div className="mt-8 border-t border-white/[0.08] pt-6">
       {loading && !readiness && tips.length === 0 ? (
         <div className="space-y-2">
-          <p className="font-body text-body-xs text-muted">Przeliczam wskazówki…</p>
+          <p className="font-body text-body-xs text-muted">{t("summaryRecalculating")}</p>
           <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
           <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
         </div>
       ) : failed && !readiness && tips.length === 0 ? (
         <div>
           <p className="font-body text-body-sm text-secondary">
-            Nie udało się wczytać wskazówek. Spróbuj ponownie za chwilę.
+            {t("summaryInsightsFailed")}
           </p>
           {onRetry ? (
             <button
@@ -140,7 +150,7 @@ function SummaryInteligentnaFooter({
               onClick={onRetry}
               className="mt-3 rounded-button bg-brand-sage px-4 py-2 font-body text-body-sm text-primary transition-opacity hover:opacity-90"
             >
-              Odśwież
+              {tCommon("refresh")}
             </button>
           ) : null}
         </div>
@@ -156,14 +166,14 @@ function SummaryInteligentnaFooter({
               ) : null}
               {(insights?.leechesHit?.length ?? 0) > 0 ? (
                 <InsightRow icon={RotateCcw}>
-                  Pijawki w tej sesji: {insights!.leechesHit.length} — warto powtórzyć
-                  je osobno.
+                  {t("summaryLeeches", { count: insights!.leechesHit.length })}
                 </InsightRow>
               ) : null}
               {(insights?.retrievabilityGain ?? 0) > 0.01 ? (
                 <InsightRow icon={TrendingUp}>
-                  Siła zapamiętania w sesji: +
-                  {Math.round((insights!.retrievabilityGain ?? 0) * 100)}%
+                  {t("summaryRetrievability", {
+                    percent: Math.round((insights!.retrievabilityGain ?? 0) * 100),
+                  })}
                 </InsightRow>
               ) : null}
             </ul>
@@ -174,7 +184,7 @@ function SummaryInteligentnaFooter({
           {readiness ? (
             <div className="rounded-lg border border-brand-gold/20 bg-brand-gold/[0.04] p-4 lg:justify-self-end lg:w-full">
               <p className="font-body text-body-xs uppercase tracking-widest text-brand-gold/80">
-                Gotowość egzaminacyjna
+                {t("summaryExamReadiness")}
               </p>
               <p className="mt-2 font-heading text-3xl font-bold text-brand-gold">
                 {Math.round(readiness.score)}%
@@ -183,7 +193,7 @@ function SummaryInteligentnaFooter({
                 {readiness.verdict}
               </p>
               <p className="mt-3 font-body text-body-xs text-muted">
-                Rekomendacja: ok. {readiness.dailyRecommendation} pytań dziennie
+                {t("summaryDailyRecommendation", { count: readiness.dailyRecommendation })}
               </p>
             </div>
           ) : null}
@@ -199,6 +209,8 @@ export function SummaryHero({
   insightsFailed,
   onInsightsRetry,
 }: Props) {
+  const t = useTranslations("session");
+  const tCommon = useTranslations("common");
   const prev = summary.previousAccuracy;
   const delta =
     prev != null ? Math.round((summary.accuracy - prev) * 100) : null;
@@ -206,11 +218,13 @@ export function SummaryHero({
   const declined = delta != null && delta < 0;
   const answered = summary.answers.length;
   const planned = summary.totalQuestions;
-  const questionsLabel =
-    answered < planned
-      ? `${answered} z ${planned} ${pytaniaForm(planned)}`
-      : `${planned} ${pytaniaForm(planned)}`;
-  const { title, subtitle } = pickHeadline(summary.accuracy, delta);
+  const questionsLabel = tCommon("questionsCount", { count: planned });
+  const questionsLine = t("summaryQuestionsOf", {
+    answered: answered < planned ? answered : planned,
+    total: planned,
+    questionsLabel,
+  });
+  const { title, subtitle } = pickHeadline(summary.accuracy, delta, t);
 
   return (
     <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
@@ -219,7 +233,7 @@ export function SummaryHero({
           <h1 className="font-heading text-heading-lg text-primary">{title}</h1>
           <p className="mt-1.5 font-body text-body-md text-secondary">{subtitle}</p>
           <p className="mt-4 font-body text-body-xs text-muted">
-            {summary.subjectName} · {sessionModeLabel(summary.mode)} · {questionsLabel} ·{" "}
+            {summary.subjectName} · {sessionModeLabel(summary.mode, t)} · {questionsLine} ·{" "}
             {formatSessionDuration(summary.durationSeconds)}
           </p>
         </div>
@@ -256,14 +270,14 @@ export function SummaryHero({
             </div>
           </div>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            Poprawnych odpowiedzi
+            {t("summaryCorrectAnswers")}
           </p>
           <div className="mt-2 flex items-center gap-1 font-body text-body-xs">
             {prev == null ? (
-              <span className="text-muted">Pierwsza sesja z tego przedmiotu</span>
+              <span className="text-muted">{t("summaryFirstSessionSubject")}</span>
             ) : (
               <>
-                <span className="text-secondary">Poprzednia sesja: </span>
+                <span className="text-secondary">{t("summaryPreviousSession")} </span>
                 <span className="text-secondary">{Math.round(prev * 100)}%</span>
                 {delta !== 0 && delta != null ? (
                   <span
@@ -292,13 +306,15 @@ export function SummaryHero({
           <li className="flex items-center gap-2">
             <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
             <span className="font-body text-primary">
-              Czas: {formatSessionDuration(summary.durationSeconds)}
+              {t("summaryTime", { duration: formatSessionDuration(summary.durationSeconds) })}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
             <span className="font-body text-primary">
-              Średnio na pytanie: {formatSessionDuration(summary.avgTimePerQuestion)}
+              {t("summaryAvgPerQuestion", {
+                duration: formatSessionDuration(summary.avgTimePerQuestion),
+              })}
             </span>
           </li>
           <li className="flex items-center gap-2">
@@ -310,18 +326,20 @@ export function SummaryHero({
               aria-hidden
             />
             <span className="font-body text-primary">
-              Seria bez błędu: {summary.longestStreak}
+              {t("summaryLongestStreak", { count: summary.longestStreak })}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <Sparkles className="size-4 shrink-0 text-secondary" aria-hidden />
             <span className="font-body text-primary">
-              Nowe pytania: {summary.newQuestionsCount}
+              {t("summaryNewQuestions", { count: summary.newQuestionsCount })}
             </span>
           </li>
           <li className="flex items-center gap-2">
             <RotateCcw className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-body text-primary">Powtórki: {summary.reviewCount}</span>
+            <span className="font-body text-primary">
+              {t("summaryReviews", { count: summary.reviewCount })}
+            </span>
           </li>
         </ul>
       </div>

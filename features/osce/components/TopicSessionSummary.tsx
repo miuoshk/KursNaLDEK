@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 
 export type ResultRow = {
@@ -24,6 +25,7 @@ export function TopicSessionSummary({
   nextTopicHref,
   stationHref,
 }: TopicSessionSummaryProps) {
+  const t = useTranslations("osce");
   const correctCount = useMemo(
     () => results.filter((r) => r.isCorrect).length,
     [results],
@@ -33,13 +35,13 @@ export function TopicSessionSummary({
 
   return (
     <div className="rounded-card border border-border bg-card p-6">
-      <h2 className="font-heading text-heading-sm text-primary">Podsumowanie</h2>
+      <h2 className="font-heading text-heading-sm text-primary">{t("summary")}</h2>
       <p className="mt-3 font-body text-body-lg text-secondary">
-        Wynik:{" "}
-        <span className="font-body text-primary tabular-nums">
-          {correctCount} / {results.length}
-        </span>{" "}
-        prawidłowych ({pct}%)
+        {t("summaryScore", {
+          correct: correctCount,
+          total: results.length,
+          percent: pct,
+        })}
       </p>
 
       <ul className="mt-6 space-y-2 border-t border-white/[0.06] pt-6">
@@ -63,7 +65,7 @@ export function TopicSessionSummary({
             onClick={() => void onRetryWrong()}
             className="rounded-btn border border-brand-sage/50 bg-transparent px-6 py-3 font-body font-semibold text-brand-sage transition hover:bg-brand-sage/10"
           >
-            Powtórz błędne
+            {t("retryWrong")}
           </button>
         ) : null}
         {nextTopicHref ? (
@@ -71,14 +73,14 @@ export function TopicSessionSummary({
             href={nextTopicHref}
             className="inline-flex items-center justify-center rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Następny temat
+            {t("nextTopic")}
           </Link>
         ) : null}
         <Link
           href={stationHref}
           className="inline-flex items-center justify-center rounded-btn border border-white/[0.12] bg-transparent px-6 py-3 font-body font-semibold text-primary transition hover:bg-white/[0.06]"
         >
-          Wróć do stacji
+          {t("backToStation")}
         </Link>
       </div>
     </div>

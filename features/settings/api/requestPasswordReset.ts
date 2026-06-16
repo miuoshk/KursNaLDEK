@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 
@@ -8,8 +9,10 @@ export type PasswordResetResult =
   | { ok: false; message: string };
 
 export async function requestPasswordReset(email: string): Promise<PasswordResetResult> {
+  const tSettings = await getTranslations("settings");
+  const tErrors = await getTranslations("errors");
   if (!email?.includes("@")) {
-    return { ok: false, message: "Nieprawidłowy adres e-mail." };
+    return { ok: false, message: tErrors("invalidEmail") };
   }
   const supabase = await createClient();
   const h = await headers();
@@ -22,7 +25,7 @@ export async function requestPasswordReset(email: string): Promise<PasswordReset
   });
 
   if (error) {
-    return { ok: false, message: "Nie udało się wysłać wiadomości. Spróbuj ponownie." };
+    return { ok: false, message: tSettings("errors.passwordResetSendFailed") };
   }
   return { ok: true };
 }

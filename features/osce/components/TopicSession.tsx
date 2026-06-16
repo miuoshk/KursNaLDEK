@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { BookOpen, ChevronDown, ClipboardList, X } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   ConversionDrillRoundResult,
@@ -77,6 +78,7 @@ export function TopicSession({
   stationHref,
   examTasks,
 }: TopicSessionProps) {
+  const t = useTranslations("osce");
   const [phase, setPhase] = useState<Phase>("intro");
   const [showKnowledgeOverlay, setShowKnowledgeOverlay] = useState(false);
   const [sessionId, setSessionId] = useState(initialSessionId);
@@ -281,7 +283,7 @@ export function TopicSession({
   const questionBlock = (() => {
     if (!current) {
       return (
-        <p className="font-body text-body-md text-muted">Brak pytań w kolejce.</p>
+        <p className="font-body text-body-md text-muted">{t("noQuestionsInQueue")}</p>
       );
     }
 
@@ -290,7 +292,7 @@ export function TopicSession({
       if (!o) {
         return (
           <p className="font-body text-body-md text-error">
-            Nie można wyświetlić pytania typu porządkowanie (niepełne dane).
+            {t("errorOrderingIncomplete")}
           </p>
         );
       }
@@ -308,7 +310,7 @@ export function TopicSession({
       if (!img) {
         return (
           <p className="font-body text-body-md text-error">
-            Nie można wyświetlić pytania z obrazem (niepełne dane).
+            {t("errorImageIncomplete")}
           </p>
         );
       }
@@ -326,7 +328,7 @@ export function TopicSession({
       if (!drills) {
         return (
           <p className="font-body text-body-md text-error">
-            Nie można wyświetlić serii konwersji (niepełne dane).
+            {t("errorConversionIncomplete")}
           </p>
         );
       }
@@ -344,7 +346,7 @@ export function TopicSession({
     if (!sc) {
       return (
         <p className="font-body text-body-md text-error">
-          Nie można wyświetlić pytania (brak opcji odpowiedzi).
+          {t("errorNoOptions")}
         </p>
       );
     }
@@ -397,7 +399,7 @@ export function TopicSession({
                 href={nextTopicHref}
                 className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
               >
-                Następny temat
+                {t("nextTopic")}
               </Link>
             ) : null}
             {wrongOnly.length > 0 ? (
@@ -406,14 +408,14 @@ export function TopicSession({
                 onClick={() => void handleRetryWrong()}
                 className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold"
               >
-                Powtórz błędne ({wrongOnly.length})
+                {t("retryWrongCount", { count: wrongOnly.length })}
               </button>
             ) : null}
             <Link
               href={stationHref}
               className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
             >
-              Wróć do stacji
+              {t("backToStation")}
             </Link>
           </div>
         </div>
@@ -442,7 +444,7 @@ export function TopicSession({
 
           <div className="min-w-0 flex-1">
             <p className="font-body text-body-sm text-secondary">
-              Pytanie {index + 1} / {total}
+              {t("questionProgress", { current: index + 1, total })}
             </p>
             <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
               <div
@@ -461,10 +463,10 @@ export function TopicSession({
               type="button"
               onClick={() => setShowKnowledgeOverlay(true)}
               className="inline-flex items-center gap-1.5 rounded-pill border border-brand-sage/40 bg-card px-3 py-1.5 font-body text-body-xs text-brand-sage transition hover:bg-brand-sage/10"
-              aria-label="Pokaż kartę wiedzy"
+              aria-label={t("showKnowledgeCard")}
             >
               <BookOpen className="size-4 shrink-0" aria-hidden />
-              Karta
+              {t("knowledgeCardShort")}
             </button>
           ) : null}
 
@@ -475,7 +477,7 @@ export function TopicSession({
               "hover:text-error",
             )}
           >
-            Zakończ
+            {t("finishSession")}
             <X className="size-4" aria-hidden />
           </a>
         </div>
@@ -492,7 +494,7 @@ export function TopicSession({
           >
             <ClipboardList className="size-4 shrink-0 text-brand-gold" aria-hidden />
             <span className="min-w-0 flex-1 font-body text-body-sm font-medium text-primary">
-              Zadania na stacji
+              {t("stationTasksHeading")}
             </span>
             <ChevronDown
               className={cn(
@@ -515,20 +517,19 @@ export function TopicSession({
                 <div className="rounded-card border border-gold/20 bg-brand-gold/5 px-4 pb-3 pt-3">
                   {hasExamTasks ? (
                     <ul className="space-y-2">
-                      {examTasksList.map((t, i) => {
+                      {examTasksList.map((task, i) => {
                         const n =
-                          Number.isFinite(t.task_number) && t.task_number > 0 ? t.task_number : i + 1;
+                          Number.isFinite(task.task_number) && task.task_number > 0 ? task.task_number : i + 1;
                         return (
                           <li key={`${n}-${i}`} className="font-body text-body-sm text-secondary">
-                            <span className="font-semibold text-primary">Zadanie {n}:</span>{" "}
-                            {t.description}
+                            {t("taskLabel", { number: n, description: task.description })}
                           </li>
                         );
                       })}
                     </ul>
                   ) : (
                     <p className="font-body text-body-sm text-secondary">
-                      Zadania zostaną wkrótce uzupełnione
+                      {t("stationTasksPending")}
                     </p>
                   )}
                 </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ChevronRight, Info, Lightbulb } from "lucide-react";
 import { OsceBreadcrumbSetter } from "@/features/osce/components/OsceBreadcrumbSetter";
@@ -12,6 +13,8 @@ type PageProps = {
 };
 
 export default async function OsceStationPage({ params }: PageProps) {
+  const t = await getTranslations("osce");
+  const tCommon = await getTranslations("common");
   const { stationId } = await params;
   const result = await loadOsceStation(stationId);
 
@@ -21,8 +24,8 @@ export default async function OsceStationPage({ params }: PageProps) {
     }
     return (
       <div>
-        <OsceBreadcrumbSetter second="Kurs na OSCE" third={stationId} />
-        <h1 className="font-heading text-heading-xl text-primary">Stacja OSCE</h1>
+        <OsceBreadcrumbSetter second={t("courseTitle")} third={stationId} />
+        <h1 className="font-heading text-heading-xl text-primary">{t("stationTitle")}</h1>
         <div className="mt-8">
           <PrzedmiotyError message={result.message} />
         </div>
@@ -35,20 +38,20 @@ export default async function OsceStationPage({ params }: PageProps) {
 
   return (
     <div>
-      <OsceBreadcrumbSetter second="Kurs na OSCE" third={station.short_name} />
+      <OsceBreadcrumbSetter second={t("courseTitle")} third={station.short_name} />
 
       <Link
         href="/osce"
         className="mb-6 inline-flex items-center gap-2 font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold"
       >
         <ArrowLeft className="size-4" aria-hidden />
-        Lista stacji
+        {t("stationListLink")}
       </Link>
 
       <h1 className="font-heading text-heading-xl text-primary">{station.name}</h1>
       <p className="mt-2 font-body text-body-md text-secondary">{station.short_name}</p>
       <span className="mt-3 inline-flex rounded-full bg-[#367368]/10 px-2 py-1 font-body text-xs text-[#367368]">
-        Próg zaliczenia: {passThreshold}%
+        {t("passThreshold", { threshold: passThreshold })}
       </span>
 
       <div className="mt-8 space-y-10">
@@ -60,7 +63,7 @@ export default async function OsceStationPage({ params }: PageProps) {
               id="osce-competencies-heading"
               className="font-body text-sm font-medium text-[#C9A84C]"
             >
-              Efekty kształcenia sprawdzane na tej stacji
+              {t("competenciesHeading")}
             </h2>
             <ul className="mt-4 grid list-none grid-cols-1 gap-3 md:grid-cols-2">
               {station.competencies.map((competency, index) => (
@@ -83,7 +86,8 @@ export default async function OsceStationPage({ params }: PageProps) {
                 <Info className="mt-0.5 size-4 shrink-0 text-[#C9A84C]" aria-hidden />
                 <div className="space-y-1.5">
                   <p className="font-body text-sm text-white/80">
-                    Format: <span className="text-white">{station.exam_info.format}</span>
+                    {t("examInfoFormat")}{" "}
+                    <span className="text-white">{station.exam_info.format}</span>
                   </p>
                   <p className="inline-flex items-start gap-1.5 font-body text-sm text-[#C9A84C]/80">
                     <Lightbulb className="mt-0.5 size-4 shrink-0" aria-hidden />
@@ -91,7 +95,7 @@ export default async function OsceStationPage({ params }: PageProps) {
                   </p>
                   {station.exam_info.source ? (
                     <p className="font-body text-xs text-white/30">
-                      Źródło: {station.exam_info.source}
+                      {t("examInfoSource", { source: station.exam_info.source })}
                     </p>
                   ) : null}
                 </div>
@@ -102,11 +106,11 @@ export default async function OsceStationPage({ params }: PageProps) {
 
         <section aria-labelledby="osce-topics-heading">
           <h2 id="osce-topics-heading" className="font-heading text-heading-md text-primary">
-            Tematy
+            {t("topicsHeading")}
           </h2>
           {topics.length === 0 ? (
             <p className="mt-6 font-body text-body-md text-muted">
-              Brak tematów. Tematy zostaną dodane wkrótce.
+              {t("noTopics")}
             </p>
           ) : (
             <ul className="mt-6 grid list-none grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -123,11 +127,10 @@ export default async function OsceStationPage({ params }: PageProps) {
                       {topic.name}
                     </span>
                     <span className="mt-2 font-body text-body-xs text-muted">
-                      {topic.question_count}{" "}
-                      {topic.question_count === 1 ? "pytanie" : "pytań"}
+                      {tCommon("questionsCount", { count: topic.question_count })}
                     </span>
                     <span className="mt-4 inline-flex items-center gap-1 font-body text-body-sm font-medium text-brand-sage">
-                      Sesja pytań
+                      {t("questionSession")}
                       <ChevronRight className="size-4" aria-hidden />
                     </span>
                   </Link>

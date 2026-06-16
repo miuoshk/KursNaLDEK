@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 import { updatePasswordAction } from "@/features/auth/actions";
 import { initialAuthActionState } from "@/features/auth/types";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,7 @@ const inputClassName =
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("auth");
 
   return (
     <button
@@ -21,12 +23,14 @@ function SubmitButton() {
         "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70",
       )}
     >
-      {pending ? "Zapisywanie..." : "Ustaw nowe hasło"}
+      {pending ? t("resetPasswordPending") : t("resetPasswordTitle")}
     </button>
   );
 }
 
 export function ResetPasswordForm() {
+  const t = useTranslations("auth");
+  const tCommon = useTranslations("common");
   const [state, formAction] = useActionState(
     updatePasswordAction,
     initialAuthActionState,
@@ -39,7 +43,7 @@ export function ResetPasswordForm() {
           htmlFor="password"
           className="mb-2 block font-body text-body-sm text-secondary"
         >
-          Nowe hasło
+          {t("newPassword")}
         </label>
         <input
           id="password"
@@ -49,7 +53,7 @@ export function ResetPasswordForm() {
           minLength={6}
           autoComplete="new-password"
           className={inputClassName}
-          placeholder="••••••••"
+          placeholder={tCommon("passwordPlaceholder")}
         />
       </div>
 
@@ -58,7 +62,7 @@ export function ResetPasswordForm() {
           htmlFor="confirmPassword"
           className="mb-2 block font-body text-body-sm text-secondary"
         >
-          Powtórz nowe hasło
+          {t("confirmNewPassword")}
         </label>
         <input
           id="confirmPassword"
@@ -68,7 +72,7 @@ export function ResetPasswordForm() {
           minLength={6}
           autoComplete="new-password"
           className={inputClassName}
-          placeholder="••••••••"
+          placeholder={tCommon("passwordPlaceholder")}
         />
       </div>
 

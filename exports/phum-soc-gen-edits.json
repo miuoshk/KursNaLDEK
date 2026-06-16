@@ -1,0 +1,5230 @@
+{
+  "label": "phum-soc-gen-length-fix-2026-06-13",
+  "edits": [
+    {
+      "id": "phum-soc-gen-001",
+      "options": [
+        {
+          "id": "a",
+          "text": "Talcott Parsons — autor funkcjonalnej koncepcji zdrowia opartej na pełnieniu ról społecznych"
+        },
+        {
+          "id": "b",
+          "text": "Eliot Freidson — twórca typologii dewiacji pierwotnej i wtórnej w ujęciu socjologii medycyny"
+        },
+        {
+          "id": "c",
+          "text": "Erving Goffman — badacz interakcji w instytucjach totalnych i mechanizmów piętna społecznego"
+        },
+        {
+          "id": "d",
+          "text": "Aaron Antonovsky — autor koncepcji salutogenezy i poczucia koherencji w ochronie zdrowia"
+        },
+        {
+          "id": "e",
+          "text": "Magdalena Sokołowska — polska socjolożka medycyny, autorka definicji piętna w materiale kursu"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-002",
+      "options": [
+        {
+          "id": "a",
+          "text": "piętna społecznego nakładanego na jednostkę przez otoczenie w reakcji na chorobę"
+        },
+        {
+          "id": "b",
+          "text": "salutogenezy — procesu budowania zasobów ochronnych wobec czynników patogennych"
+        },
+        {
+          "id": "c",
+          "text": "dewiacji społecznej — odchylenia od norm sprawności fizycznej i pełnienia ról"
+        },
+        {
+          "id": "d",
+          "text": "roli przypisanej biologicznie, niezależnej od oczekiwań i norm funkcjonowania społecznego"
+        },
+        {
+          "id": "e",
+          "text": "normy gatunkowej determinującej zachowanie zdrowotne wyłącznie przez uwarunkowania biologiczne"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-003",
+      "options": [
+        {
+          "id": "a",
+          "text": "Chory ma prawo być zwolniony z pełnienia normalnych ról i codziennych obowiązków społecznych"
+        },
+        {
+          "id": "b",
+          "text": "Osoba chora nie ponosi odpowiedzialności moralnej za własny stan zdrowia i jego przyczyny"
+        },
+        {
+          "id": "c",
+          "text": "Chory ma obowiązek szukać kompetentnej pomocy medycznej i współpracować w procesie leczenia"
+        },
+        {
+          "id": "d",
+          "text": "Przezwyciężenie choroby jest możliwe wyłącznie przez samą wolę i decyzję o wyzdrowieniu"
+        },
+        {
+          "id": "e",
+          "text": "Osoba chora powinna traktować swój stan jako niepożądany i dążyć do powrotu do zdrowia"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-004",
+      "options": [
+        {
+          "id": "a",
+          "text": "pierwotna — gdy choroba jedynie modyfikuje sposób pełnienia dotychczasowych ról społecznych"
+        },
+        {
+          "id": "b",
+          "text": "autoteliczna — gdy choroba staje się celem samym w sobie, niezależnym od funkcji społecznych"
+        },
+        {
+          "id": "c",
+          "text": "funkcjonalna — gdy choroba wzmacnia stabilność systemu poprzez tymczasowe zwolnienie z ról"
+        },
+        {
+          "id": "d",
+          "text": "instrumentalna — gdy choroba służy osiąganiu korzyści materialnych lub unikaniu obowiązków"
+        },
+        {
+          "id": "e",
+          "text": "wtórna — gdy choroba nakazuje przyjęcie nowej roli chorego w miejsce dotychczasowych ról"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-005",
+      "options": [
+        {
+          "id": "a",
+          "text": "choroba zmusza pacjenta do całkowitego przyjęcia nowej roli społecznej chorego w grupie"
+        },
+        {
+          "id": "b",
+          "text": "zakłócenia zdrowotne modyfikują sposób pełnienia dotychczasowych ról społecznych"
+        },
+        {
+          "id": "c",
+          "text": "chory zostaje trwale napiętnowany przez społeczeństwo z powodu widocznego kalectwa"
+        },
+        {
+          "id": "d",
+          "text": "choroba prowadzi do izolacji chorego i degradacji jego pozycji w strukturze społecznej"
+        },
+        {
+          "id": "e",
+          "text": "następuje całkowita utrata wszystkich ról społecznych i wykluczenie z życia zbiorowego"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-006",
+      "options": [
+        {
+          "id": "a",
+          "text": "Magdalena Sokołowska — autorka cytowanej w materiale definicji piętna jako atrybutu kulturowego"
+        },
+        {
+          "id": "b",
+          "text": "Eliot Freidson — amerykański socjolog medycyny, twórca typologii dewiacji pierwotnej i wtórnej"
+        },
+        {
+          "id": "c",
+          "text": "Talcott Parsons — autor koncepcji roli chorego i funkcjonalnej definicji zdrowia i choroby"
+        },
+        {
+          "id": "d",
+          "text": "Robert Cialdini — psycholog społeczny badający wpływ i zasady postępowania w relacjach międzyludzkich"
+        },
+        {
+          "id": "e",
+          "text": "Philip Zimbardo — psycholog znany z badań nad rolą sytuacji w zachowaniu jednostki w grupie"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-007",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zakres domniemanej winy chorego za swój stan — np. przy AIDS lub skutkach alkoholizmu"
+        },
+        {
+          "id": "b",
+          "text": "Widoczność kalectwa — stopień, w jakim niepełnosprawność jest dostrzegalna dla otoczenia"
+        },
+        {
+          "id": "c",
+          "text": "Wysokość dochodów chorego — poziom zarobków i majątku wpływający na dostęp do opieki"
+        },
+        {
+          "id": "d",
+          "text": "Nieodwracalność kalectwa — trwałość i nieuleczalność widocznych skutków choroby"
+        },
+        {
+          "id": "e",
+          "text": "Nieprzewidywalność zachowań chorego — niestabilność emocjonalna i społeczna, np. w chorobach psychicznych"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-008",
+      "options": [
+        {
+          "id": "a",
+          "text": "salutogenezy — koncentrującej się na czynnikach wzmacniających zdrowie, poczuciu koherencji i odporności"
+        },
+        {
+          "id": "b",
+          "text": "wyuczonej bezradności — opisującej rezygnację jednostki po wielokrotnych niepowodzeniach w radzeniu sobie"
+        },
+        {
+          "id": "c",
+          "text": "społecznego uczenia się — wyjaśniającej zachowania przez obserwację, naśladownictwo i wzorce grupowe"
+        },
+        {
+          "id": "d",
+          "text": "naznaczenia społecznego (etykietyzowania) — obejmującej piętnowanie, degradację i izolowanie dewianta"
+        },
+        {
+          "id": "e",
+          "text": "dysonansu poznawczego — wywołanego sprzecznością między przekonaniami a zachowaniem jednostki"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-009",
+      "options": [
+        {
+          "id": "a",
+          "text": "czysto biologicznej — ograniczającej zdrowie do braku patologii somatycznej mierzalnej obiektywnie"
+        },
+        {
+          "id": "b",
+          "text": "czysto funkcjonalnej — definiującej zdrowie wyłącznie przez zdolność do pełnienia ról społecznych"
+        },
+        {
+          "id": "c",
+          "text": "socjomedycznej Parsonsa — wiążącej zdrowie z pełnieniem przypisanych ról w strukturze społecznej"
+        },
+        {
+          "id": "d",
+          "text": "behawioralnej — opartej na obserwowalnych nawykach zdrowotnych bez wymiaru dobrostanu psychicznego"
+        },
+        {
+          "id": "e",
+          "text": "biologiczno-funkcjonalnej — łączącej dobrostan fizyczny, psychiczny i społeczny w jednej definicji"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-010",
+      "options": [
+        {
+          "id": "a",
+          "text": "funkcjonalne — ujmujące zdrowie przez zdolność do uczestnictwa w życiu społecznym i pełnienia ról"
+        },
+        {
+          "id": "b",
+          "text": "biologiczne — ujmujące zdrowie jako stan somatyczny mierzalny parametrami medycyny, bez wymiaru psychicznego"
+        },
+        {
+          "id": "c",
+          "text": "biologiczno-funkcjonalne — syntetyzujące parametry somatyczne z dobrostanem psychicznym i społecznym"
+        },
+        {
+          "id": "d",
+          "text": "socjomedyczne — wiążące zdrowie z pełnieniem ról społecznych i normami funkcjonowania w grupie"
+        },
+        {
+          "id": "e",
+          "text": "kulturowe — ujmujące zdrowie i chorobę jako konstrukty zależne od norm, wartości i wzorców danej społeczności"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-011",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ałma Acie — gdzie WHO uznało zdrowie za prawo człowieka i zdolność do twórczego życia społecznego"
+        },
+        {
+          "id": "b",
+          "text": "Ottawie — gdzie przyjęto Kartę zdrowia promocji opartą na determinantach zdrowia społecznego"
+        },
+        {
+          "id": "c",
+          "text": "Genewie — gdzie WHO po raz pierwszy ogłosiło definicję zdrowia z 1946 roku w pełni dobrostanu"
+        },
+        {
+          "id": "d",
+          "text": "Helsinkach — gdzie ustalono etyczne zasady badań na ludziach i ochrony uczestników badań"
+        },
+        {
+          "id": "e",
+          "text": "Adelajdzie — gdzie opracowano deklarację o prawach pacjenta i uczestnictwie w decyzjach medycznych"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-012",
+      "options": [
+        {
+          "id": "a",
+          "text": "emocjonalny — obejmujący wyrażanie uczuć, panowanie nad emocjami i stabilność nastroju w codziennym życiu"
+        },
+        {
+          "id": "b",
+          "text": "intelektualny — obejmujący kreatywność, rozwijanie wiedzy i zdolność do rozwiązywania problemów"
+        },
+        {
+          "id": "c",
+          "text": "duchowy — obejmujący rozumienie wartości życia, spokój ducha i posiadanie spójnego systemu wartości"
+        },
+        {
+          "id": "d",
+          "text": "społeczny — obejmujący jakość relacji interpersonalnych, poczucie przynależności i wsparcia grupy"
+        },
+        {
+          "id": "e",
+          "text": "zawodowy — obejmujący satysfakcję z pracy, rozwój kariery i równowagę między obowiązkami a życiem prywatnym"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-013",
+      "options": [
+        {
+          "id": "a",
+          "text": "mężczyźni chorują częściej niż kobiety, lecz kobiety umierają wcześniej z powodu cięższych schorzeń"
+        },
+        {
+          "id": "b",
+          "text": "mężczyźni częściej korzystają z usług medycznych i leczą schorzenia we wczesnym stadium"
+        },
+        {
+          "id": "c",
+          "text": "kobiety i mężczyźni chorują z taką samą częstością, różniąc się wyłącznie typem schorzeń somatycznych"
+        },
+        {
+          "id": "d",
+          "text": "kobiety chorują częściej niż mężczyźni, lecz to mężczyźni umierają wcześniej z tych powodów"
+        },
+        {
+          "id": "e",
+          "text": "kobiety żyją krócej niż mężczyźni, mimo niższej zachorowalności na choroby prowadzące do zgonu"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-014",
+      "options": [
+        {
+          "id": "a",
+          "text": "Genetycznie uwarunkowane różnice między płciami wpływające na podatność na wybrane choroby"
+        },
+        {
+          "id": "b",
+          "text": "Różnice w dominującym typie reakcji emocjonalnych i strategiach radzenia sobie ze stresem"
+        },
+        {
+          "id": "c",
+          "text": "Większy udział mężczyzn w wypadkach komunikacyjnych i zawodowych o wysokim ryzyku urazu"
+        },
+        {
+          "id": "d",
+          "text": "Częstsze uleganie nałogom przez mężczyzn, w tym paleniu tytoniu i nadmiernemu spożyciu alkoholu"
+        },
+        {
+          "id": "e",
+          "text": "Częstsze korzystanie przez mężczyzn z usług medycznych i profilaktyki w porównaniu z kobietami"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-015",
+      "options": [
+        {
+          "id": "a",
+          "text": "kobiet, ponieważ małżeństwo daje im stabilne wsparcie emocjonalne i zmniejsza obciążenie domowe"
+        },
+        {
+          "id": "b",
+          "text": "mężczyzn, ponieważ związek zapewnia regularny tryb życia i pomoc w razie choroby"
+        },
+        {
+          "id": "c",
+          "text": "obu płci w równym stopniu, ponieważ korzyści zdrowotne małżeństwa są symetryczne dla partnerów"
+        },
+        {
+          "id": "d",
+          "text": "kobiet, ponieważ małżeństwo zmniejsza liczbę pełnionych przez nie ról społecznych i obowiązków"
+        },
+        {
+          "id": "e",
+          "text": "osób owdowiałych, ponieważ utrata partnera wzmacnia samodzielność i odporność psychofizyczną"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-016",
+      "options": [
+        {
+          "id": "a",
+          "text": "autotelicznej — cenionej dla niej samej, niezależnie od praktycznej użyteczności w osiąganiu celów"
+        },
+        {
+          "id": "b",
+          "text": "instrumentalnej — traktowanej jako środek do realizacji innych celów życiowych i zawodowych"
+        },
+        {
+          "id": "c",
+          "text": "funkcjonalnej — ocenianej według zdolności do pełnienia ról społecznych i codziennego funkcjonowania"
+        },
+        {
+          "id": "d",
+          "text": "socjopatogennej — rozumianej jako skutek patogennych warunków społecznych i stresu środowiskowego"
+        },
+        {
+          "id": "e",
+          "text": "adaptacyjnej — mierzonej wyłącznie zdolnością organizmu do przystosowania się do czynników stresogennych"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-017",
+      "options": [
+        {
+          "id": "a",
+          "text": "industrializacja, urbanizacja, migracje i płeć — jako ogólne czynniki strukturalne wpływające na zdrowie"
+        },
+        {
+          "id": "b",
+          "text": "wiek, płeć, wykształcenie i zawód — jako demograficzne determinanty różnic zdrowotnych w populacji"
+        },
+        {
+          "id": "c",
+          "text": "ubóstwo lub niski status ekonomiczny, samotność, migracje i bezrobocie — szczególnie predysponujące do chorób"
+        },
+        {
+          "id": "d",
+          "text": "warunki materialno-bytowe, system kształcenia i struktura rodziny — jako tło społeczne jednostki"
+        },
+        {
+          "id": "e",
+          "text": "organizm biologiczny, styl życia, środowisko i opieka zdrowotna — jako cztery główne grupy warunkujące zdrowie"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-018",
+      "options": [
+        {
+          "id": "a",
+          "text": "fizyczna — gdy pomoc innych warunkuje samą egzystencję chorego i podstawowe funkcje życiowe"
+        },
+        {
+          "id": "b",
+          "text": "rytualna — gdy otoczenie okazuje wsparcie w ustalonych, ceremonialnych formach kontaktu społecznego"
+        },
+        {
+          "id": "c",
+          "text": "instrumentalna — gdy wsparcie ma charakter praktyczny, np. w załatwianiu spraw codziennych chorego"
+        },
+        {
+          "id": "d",
+          "text": "psychiczna — gdy wsparcie wynika z przyjaźni, sympatii lub miłości ze strony najbliższego otoczenia"
+        },
+        {
+          "id": "e",
+          "text": "funkcjonalna — gdy chory zależy od innych w zakresie pełnienia dotychczasowych ról społecznych"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-019",
+      "options": [
+        {
+          "id": "a",
+          "text": "objawy depresji i zaburzenia jedzenia — typowe raczej dla kobiet w reakcji na stres i presję społeczną"
+        },
+        {
+          "id": "b",
+          "text": "stany niezrównoważenia i zaburzenia psychosomatyczne — częściej diagnozowane u kobiet niż u mężczyzn"
+        },
+        {
+          "id": "c",
+          "text": "smutek i przygnębienie — dominujące u kobiet, podczas gdy mężczyźni częściej maskują te stany"
+        },
+        {
+          "id": "d",
+          "text": "bezsenność i drażliwość — równomiernie rozkładające się między płciami bez istotnych różnic"
+        },
+        {
+          "id": "e",
+          "text": "psychozy, zaburzenia osobowości i choroby wynikające z uzależnień — częstsze u mężczyzn niż u kobiet"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-020",
+      "options": [
+        {
+          "id": "a",
+          "text": "około 12 definicji — reprezentujących wyłącznie wąskie, biologiczne ujęcia stanu zdrowia człowieka"
+        },
+        {
+          "id": "b",
+          "text": "około 120 definicji — bazujących na różnych płaszczyznach biologicznej, psychicznej i społecznej"
+        },
+        {
+          "id": "c",
+          "text": "około 60 definicji — powstałych głównie w okresie międzywojennym i tuż po II wojnie światowej"
+        },
+        {
+          "id": "d",
+          "text": "około 200 definicji — obejmujących wyłącznie ujęcia funkcjonalne i socjomedyczne zdrowia publicznego"
+        },
+        {
+          "id": "e",
+          "text": "około 500 definicji — uwzględniających wszystkie warianty językowe i regionalne interpretacje pojęcia zdrowia"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-021",
+      "options": [
+        {
+          "id": "a",
+          "text": "poznawczy — obejmujący przekonania, wiedzę i opinie jednostki na temat danego obiektu postawy"
+        },
+        {
+          "id": "b",
+          "text": "behawioralny — obejmujący skłonność do podejmowania określonych działań wobec obiektu postawy"
+        },
+        {
+          "id": "c",
+          "text": "emocjonalny — obejmujący uczucia wobec obiektu, np. lęk, złość, sympatię lub awersję wobec grupy"
+        },
+        {
+          "id": "d",
+          "text": "motywacyjny — obejmujący wewnętrzne impulsy i cele kierujące zachowaniem jednostki wobec obiektu"
+        },
+        {
+          "id": "e",
+          "text": "aksjologiczny — obejmujący hierarchię wartości i norm moralnych stojących za oceną obiektu postawy"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-022",
+      "options": [
+        {
+          "id": "a",
+          "text": "poznawczy — obejmujący przekonania, wiedzę i opinie jednostki na temat danego obiektu postawy"
+        },
+        {
+          "id": "b",
+          "text": "emocjonalny — obejmujący uczucia wobec obiektu, np. lęk, złość, sympatię lub awersję wobec grupy"
+        },
+        {
+          "id": "c",
+          "text": "behawioralny — obejmujący skłonność do działań wobec obiektu postawy, np. pomocy lub unikania"
+        },
+        {
+          "id": "d",
+          "text": "kulturowy — obejmujący wpływ norm i wzorców społecznych na sposób oceny i reagowania na obiekt"
+        },
+        {
+          "id": "e",
+          "text": "instrumentalny — obejmujący ocenę obiektu postawy przez pryzmat korzyści i strat dla jednostki"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-023",
+      "options": [
+        {
+          "id": "a",
+          "text": "uprzedzenia — postawy awersji lub wrogości wobec grupy oparte na błędnej generalizacji doświadczeń"
+        },
+        {
+          "id": "b",
+          "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"
+        },
+        {
+          "id": "c",
+          "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"
+        },
+        {
+          "id": "d",
+          "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"
+        },
+        {
+          "id": "e",
+          "text": "piętna — atrybutu lub cechy określającej jednostkę jako gorszą pod względem kulturowym w oczach otoczenia"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-024",
+      "options": [
+        {
+          "id": "a",
+          "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"
+        },
+        {
+          "id": "b",
+          "text": "dehumanizacji — traktowania jednostki lub grupy jako całkowicie pozbawionej godności i człowieczeństwa"
+        },
+        {
+          "id": "c",
+          "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"
+        },
+        {
+          "id": "d",
+          "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"
+        },
+        {
+          "id": "e",
+          "text": "uprzedzenia — postawy awersji lub wrogości wobec grupy opartej na błędnej generalizacji doświadczeń"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-025",
+      "options": [
+        {
+          "id": "a",
+          "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"
+        },
+        {
+          "id": "b",
+          "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"
+        },
+        {
+          "id": "c",
+          "text": "uprzedzenia — postawy nacechowanej awersją lub wrogością wobec grupy, opartej na błędnej generalizacji"
+        },
+        {
+          "id": "d",
+          "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"
+        },
+        {
+          "id": "e",
+          "text": "marginalizacji — procesu wypychania grup na obrzeża społeczeństwa bez bezpośredniego odmawiania przywilejów"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-026",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa paternalistyczna — troska z przejmowaniem decyzji w czyimś interesie"
+        },
+        {
+          "id": "b",
+          "text": "postawa litościowa — współczucie i traktowanie osoby głównie jako obiektu pomocy"
+        },
+        {
+          "id": "c",
+          "text": "postawa wykluczająca — odrzucanie, stygmatyzacja i marginalizacja osób z niepełnosprawnością i ich potrzeb"
+        },
+        {
+          "id": "d",
+          "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"
+        },
+        {
+          "id": "e",
+          "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-027",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"
+        },
+        {
+          "id": "b",
+          "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"
+        },
+        {
+          "id": "c",
+          "text": "postawa litościowa — współczucie i traktowanie osoby głównie jako obiektu pomocy"
+        },
+        {
+          "id": "d",
+          "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"
+        },
+        {
+          "id": "e",
+          "text": "postawa inkluzywna — pełna integracja z przebudową środowiska i struktur społecznych"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-028",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"
+        },
+        {
+          "id": "b",
+          "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"
+        },
+        {
+          "id": "c",
+          "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"
+        },
+        {
+          "id": "d",
+          "text": "postawa aktywistyczna — kampanie, protesty i zmiany prawne na rzecz modelu społecznego"
+        },
+        {
+          "id": "e",
+          "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-029",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"
+        },
+        {
+          "id": "b",
+          "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"
+        },
+        {
+          "id": "c",
+          "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"
+        },
+        {
+          "id": "d",
+          "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"
+        },
+        {
+          "id": "e",
+          "text": "postawa neutralna — brak silnych opinii, poszanowanie praw bez inicjatywy integracyjnej"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-030",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"
+        },
+        {
+          "id": "b",
+          "text": "postawa inkluzywna — integracja z przebudową środowiska, systemów i struktur społecznych"
+        },
+        {
+          "id": "c",
+          "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"
+        },
+        {
+          "id": "d",
+          "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"
+        },
+        {
+          "id": "e",
+          "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-031",
+      "options": [
+        {
+          "id": "a",
+          "text": "ageizm — dyskryminacja ze względu na wiek z negatywnym postrzeganiem starości"
+        },
+        {
+          "id": "b",
+          "text": "stygmatyzacja — piętnowanie i społeczne odrzucenie z powodu cech odbiegających od normy"
+        },
+        {
+          "id": "c",
+          "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielności osoby"
+        },
+        {
+          "id": "d",
+          "text": "marginalizacja — wypychanie na obrzeża społeczeństwa i ograniczanie uczestnictwa w życiu zbiorowym"
+        },
+        {
+          "id": "e",
+          "text": "dehumanizacja — odbieranie podmiotowości i traktowanie osoby jak obiektu bez prawa decyzji"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-032",
+      "options": [
+        {
+          "id": "a",
+          "text": "stygmatyzacja — piętnowanie i społeczne odrzucenie z powodu cech odbiegających od normy"
+        },
+        {
+          "id": "b",
+          "text": "izolacja społeczna — fizyczne i emocjonalne odcięcie od kontaktów i uczestnictwa w życiu zbiorowym"
+        },
+        {
+          "id": "c",
+          "text": "dehumanizacja — traktowanie osób jak obiektów pomocy pozbawionych prawa decydowania o życiu"
+        },
+        {
+          "id": "d",
+          "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielności osoby"
+        },
+        {
+          "id": "e",
+          "text": "marginalizacja — wypychanie na obrzeża społeczeństwa i ograniczanie uczestnictwa w życiu zbiorowym"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-033",
+      "options": [
+        {
+          "id": "a",
+          "text": "dyskryminacja → uprzedzenia → stereotypy — najpierw działanie, potem nastawienie, na końcu przekonanie"
+        },
+        {
+          "id": "b",
+          "text": "stygmatyzacja → stereotypy → uprzedzenia — piętnowanie poprzedza przekonania i nastawienia emocjonalne"
+        },
+        {
+          "id": "c",
+          "text": "uprzedzenia → stereotypy → dyskryminacja — nastawienie poprzedza przekonania i przejawy behawioralne"
+        },
+        {
+          "id": "d",
+          "text": "stereotypy → uprzedzenia → dyskryminacja — przekonania prowadzą do nastawień, a te do działań"
+        },
+        {
+          "id": "e",
+          "text": "dyskryminacja → stereotypy → uprzedzenia — działanie poprzedza utrwalanie przekonań i nastawień"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-034",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"
+        },
+        {
+          "id": "b",
+          "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"
+        },
+        {
+          "id": "c",
+          "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"
+        },
+        {
+          "id": "d",
+          "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"
+        },
+        {
+          "id": "e",
+          "text": "postawa integracyjna — pełne włączenie z równymi szansami i różnorodnością jako wartością"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-035",
+      "options": [
+        {
+          "id": "a",
+          "text": "stereotyp negatywny — utrwalający wykluczenie, uprzedzenia i marginalizację osoby z niepełnosprawnością"
+        },
+        {
+          "id": "b",
+          "text": "stereotyp pozytywny — chwalący odwagę i siłę, lecz redukujący pełną osobowość do jednej cechy"
+        },
+        {
+          "id": "c",
+          "text": "stereotyp neutralny — pozornie obojętny, lecz bez realnego wpływu na proces integracji społecznej"
+        },
+        {
+          "id": "d",
+          "text": "stereotyp paternalistyczny — oparty na troskliwym przejmowaniu decyzji w imię dobra osoby"
+        },
+        {
+          "id": "e",
+          "text": "stereotyp dehumanizujący — odbierający podmiotowość i traktujący osobę wyłącznie jak obiekt pomocy"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-036",
+      "options": [
+        {
+          "id": "a",
+          "text": "predyspozycje genetyczne — wrodzone uwarunkowania biologiczne determinujące postawy społeczne"
+        },
+        {
+          "id": "b",
+          "text": "wpływ rodziny i wychowania — kształtowanie postaw w środowisku domowym od najmłodszych lat"
+        },
+        {
+          "id": "c",
+          "text": "media i kultura masowa — przekazy stereotypów i norm społecznych przez filmy, reklamy i internet"
+        },
+        {
+          "id": "d",
+          "text": "doświadczenia życiowe — osobiste przeżycia kontaktów z osobami z niepełnosprawnością lub seniorami"
+        },
+        {
+          "id": "e",
+          "text": "grupy rówieśnicze — presja grupy rówieśniczej i wymiana norm w relacjach rówieśniczych"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-037",
+      "options": [
+        {
+          "id": "a",
+          "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"
+        },
+        {
+          "id": "b",
+          "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"
+        },
+        {
+          "id": "c",
+          "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"
+        },
+        {
+          "id": "d",
+          "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"
+        },
+        {
+          "id": "e",
+          "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-038",
+      "options": [
+        {
+          "id": "a",
+          "text": "przemoc fizyczna — bicie, popychanie i inne działania powodujące uszkodzenie ciała osoby starszej"
+        },
+        {
+          "id": "b",
+          "text": "przemoc psychiczna — upokarzanie, izolacja, zastraszanie i kontrolowanie emocjonalne seniora"
+        },
+        {
+          "id": "c",
+          "text": "zaniedbanie — brak opieki, niewłaściwe warunki życia i odmawianie niezbędnej pomocy medycznej"
+        },
+        {
+          "id": "d",
+          "text": "przemoc ekonomiczna — wykorzystywanie finansowe i zmuszanie seniora do przekazania majątku"
+        },
+        {
+          "id": "e",
+          "text": "przemoc seksualna — wymuszanie kontaktów seksualnych lub niedozwolonych dotyków wobec osoby starszej"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-039",
+      "options": [
+        {
+          "id": "a",
+          "text": "ageizm w miejscu pracy — dyskryminacja wiekowa utrudniająca zatrudnienie i rozwój zawodowy seniorów"
+        },
+        {
+          "id": "b",
+          "text": "brak zrozumienia potrzeb cyfrowych — wykluczenie z usług online przez nieznajomość technologii"
+        },
+        {
+          "id": "c",
+          "text": "przemoc ekonomiczna — wykorzystywanie finansowe i ograniczanie dostępu do własnych środków seniora"
+        },
+        {
+          "id": "d",
+          "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielnych decyzji osoby starszej"
+        },
+        {
+          "id": "e",
+          "text": "izolacja społeczna — samotność powodująca przyspieszone starzenie mózgu i wyższą śmiertelność"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-040",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie zmianę przepisów prawnych — bez edukacji, doświadczeń i perswazji społecznej"
+        },
+        {
+          "id": "b",
+          "text": "doświadczenia, edukację lub działania perswazyjne — kontakt, wiedza i przekonywanie społeczne"
+        },
+        {
+          "id": "c",
+          "text": "predyspozycje wrodzone — stałe cechy osobowości niepodatne na wpływ otoczenia i uczenia się"
+        },
+        {
+          "id": "d",
+          "text": "izolację od obiektu postawy — unikanie kontaktu utrwalające stereotypy zamiast je przełamywać"
+        },
+        {
+          "id": "e",
+          "text": "wzmacnianie stereotypów — utrwalanie uproszczonych przekonań zamiast ich kwestionowania i zmiany"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-041",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elisabeth Kübler-Ross — autorka pięcioetapowego modelu żałoby (DABDA)"
+        },
+        {
+          "id": "b",
+          "text": "Talcott Parsons — autor teorii ról społecznych i funkcjonalizmu w socjologii medycyny"
+        },
+        {
+          "id": "c",
+          "text": "Eliot Freidson — badacz profesjonalizmu lekarskiego i autonomii zawodu medycznego"
+        },
+        {
+          "id": "d",
+          "text": "Aaron Antonovsky — twórca koncepcji salutogenezy i poczucia koherencji w zdrowiu"
+        },
+        {
+          "id": "e",
+          "text": "Erving Goffman — autor koncepcji stygmatu i analizy interakcji społecznych w chorobie"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-042",
+      "options": [
+        {
+          "id": "a",
+          "text": "zaprzeczenia — odrzucanie faktu śmierci i brak gotowości do zaakceptowania rzeczywistości"
+        },
+        {
+          "id": "b",
+          "text": "gniewu — emocjonalna reakcja na niesprawiedliwość utraty i odczucie bezradności wobec losu"
+        },
+        {
+          "id": "c",
+          "text": "targowania się — próby cofnięcia śmierci typu Gdybym zrobił coś inaczej, może by się udało"
+        },
+        {
+          "id": "d",
+          "text": "depresji — głęboki smutek, pustka i wycofanie po uświadomieniu sobie nieuchronności straty"
+        },
+        {
+          "id": "e",
+          "text": "akceptacji — pogodzenie się z utratą i gotowość do funkcjonowania mimo trwałej przemiany życia"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-043",
+      "options": [
+        {
+          "id": "a",
+          "text": "zaprzeczenie — czasowe odcięcie się od rzeczywistości i niedopuszczanie faktu do świadomości"
+        },
+        {
+          "id": "b",
+          "text": "racjonalizacja — szukanie logicznych uzasadnień trudnej sytuacji w obliczu nadchodzącej śmierci"
+        },
+        {
+          "id": "c",
+          "text": "sublimacja — przekierowanie napięcia emocjonalnego na akceptowalne formy działania i aktywności"
+        },
+        {
+          "id": "d",
+          "text": "projekcja — przenoszenie trudnych emocji, np. złości lub bezsilności, na osoby trzecie"
+        },
+        {
+          "id": "e",
+          "text": "regresja — powrót do wcześniejszych, mniej dojrzałych form radzenia sobie ze stresem i lękiem"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-044",
+      "options": [
+        {
+          "id": "a",
+          "text": "projekcja — przenoszenie trudnych emocji, np. złości lub bezsilności, na osoby trzecie"
+        },
+        {
+          "id": "b",
+          "text": "zaprzeczenie — czasowe odcięcie się od rzeczywistości i niedopuszczanie faktu do świadomości"
+        },
+        {
+          "id": "c",
+          "text": "wyparcie — nieświadome usuwanie z pamięci bolesnych treści bez pełnej akceptacji faktów"
+        },
+        {
+          "id": "d",
+          "text": "kompensacja — przesuwanie energii emocjonalnej na inne obszary życia w celu ochrony psychiki"
+        },
+        {
+          "id": "e",
+          "text": "racjonalizacja — szukanie logicznych uzasadnień trudnej sytuacji przed nadchodzącą śmiercią"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-045",
+      "options": [
+        {
+          "id": "a",
+          "text": "funkcja emocjonalno-ekspresyjna — zaspokajanie potrzeb uczuciowych i dbanie o równowagę osobowości"
+        },
+        {
+          "id": "b",
+          "text": "funkcja socjalizacyjna — wprowadzenie dziecka w kulturę społeczeństwa i przygotowanie do ról społecznych"
+        },
+        {
+          "id": "c",
+          "text": "funkcja prawno-kontrolna — wzajemne nadzorowanie postępowania w celu zapobiegania odstępstwom od norm"
+        },
+        {
+          "id": "d",
+          "text": "funkcja opiekuńczo-zabezpieczająca — zaspokajanie podstawowych potrzeb materialnych i ochrona bezpieczeństwa"
+        },
+        {
+          "id": "e",
+          "text": "funkcja klasowa — wyznaczanie pozycji społecznej rodziny w strukturze i hierarchii społeczeństwa"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-046",
+      "options": [
+        {
+          "id": "a",
+          "text": "funkcja prawno-kontrolna — wzajemne nadzorowanie postępowania w celu zapobiegania odstępstwom od norm"
+        },
+        {
+          "id": "b",
+          "text": "funkcja socjalizacyjna — wprowadzenie dziecka w kulturę społeczeństwa i przygotowanie do ról społecznych"
+        },
+        {
+          "id": "c",
+          "text": "funkcja klasowa — wyznaczanie pozycji społecznej rodziny w strukturze i hierarchii społeczeństwa"
+        },
+        {
+          "id": "d",
+          "text": "funkcja opiekuńczo-zabezpieczająca — zaspokajanie podstawowych potrzeb materialnych i ochrona bezpieczeństwa"
+        },
+        {
+          "id": "e",
+          "text": "funkcja kulturalna — przekazywanie tradycji, norm i wartości charakterystycznych dla danej wspólnoty"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-047",
+      "options": [
+        {
+          "id": "a",
+          "text": "wsparcie emocjonalne — okazywanie miłości, empatii i opieki w relacji z bliską osobą chorej"
+        },
+        {
+          "id": "b",
+          "text": "wsparcie informacyjne — udzielanie wiedzy i wskazówek pomagających rozwiązać konkretny problem"
+        },
+        {
+          "id": "c",
+          "text": "wsparcie instrumentalne — praktyczna pomoc i wyręczanie w codziennych zadaniach osoby"
+        },
+        {
+          "id": "d",
+          "text": "wsparcie oceniające — informacja zwrotna oceniająca zachowanie i motywująca do dalszych działań"
+        },
+        {
+          "id": "e",
+          "text": "wsparcie duchowe — wspieranie w wierze, sensie życia i radzeniu sobie z cierpieniem duchowym"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-048",
+      "options": [
+        {
+          "id": "a",
+          "text": "taki sam — brak istotnej różnicy między grupą samotnych a mieszkańcami z rodziną po zawale"
+        },
+        {
+          "id": "b",
+          "text": "czterokrotnie wyższy — czterokrotne ryzyko zgonu u pacjentów samotnych w porównaniu z innymi"
+        },
+        {
+          "id": "c",
+          "text": "dwukrotnie niższy — połowa ryzyka zgonu u samotnych w stosunku do osób mieszkających z rodziną"
+        },
+        {
+          "id": "d",
+          "text": "dwukrotnie wyższy — podwojone ryzyko zgonu u pacjentów samotnych w porównaniu z rodziną"
+        },
+        {
+          "id": "e",
+          "text": "nieznacznie niższy — niewielka przewaga przeżywalności u samotnych, lecz bez dużej różnicy statystycznej"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-049",
+      "options": [
+        {
+          "id": "a",
+          "text": "biomedycznego — redukującego zdrowie do procesów biologicznych i patologii organizmu"
+        },
+        {
+          "id": "b",
+          "text": "paternalistycznego — opartego na decyzjach lekarza w imię dobra pacjenta bez pełnej autonomii"
+        },
+        {
+          "id": "c",
+          "text": "patogenetycznego — koncentrującego się na czynnikach chorobotwórczych i mechanizmach powstawania choroby"
+        },
+        {
+          "id": "d",
+          "text": "salutogenetycznego — skupionego na zasobach zdrowia i poczuciu koherencji według Antonovsky'ego"
+        },
+        {
+          "id": "e",
+          "text": "socjoekologicznego — uwzględniającego środowisko społeczne i rolę nieprofesjonalnych systemów opieki"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-050",
+      "options": [
+        {
+          "id": "a",
+          "text": "podstawowej opieki zdrowotnej — formalnego systemu POZ z lekarzem rodzinnym i pielęgniarką"
+        },
+        {
+          "id": "b",
+          "text": "samoopieki — niesformalizowanych działań rodziny, sąsiadów i bliskich podczas choroby"
+        },
+        {
+          "id": "c",
+          "text": "opieki paliatywnej — specjalistycznej opieki nad pacjentem w terminalnej fazie choroby"
+        },
+        {
+          "id": "d",
+          "text": "opieki długoterminowej — instytucjonalnej lub domowej opieki nad osobą przewlekle zależną"
+        },
+        {
+          "id": "e",
+          "text": "medykalizacji — rozszerzania zakresu problemów społecznych definiowanych i leczonych medycznie"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-051",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Znaczenie systemu opieki zdrowotnej dla funkcjonowania rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Znaczenie rodziny w sytuacji choroby któregoś z jej członków"
+        },
+        {
+          "id": "c",
+          "text": "Znaczenie choroby członka rodziny dla jej codziennego funkcjonowania"
+        },
+        {
+          "id": "d",
+          "text": "Znaczenie rodziny dla zdrowia i dobrostanu jej członków"
+        },
+        {
+          "id": "e",
+          "text": "Wszystkie wymienione aspekty należą do tej triady rodzina–zdrowie"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-052",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pośredni — uruchomienie zasobów rodziny w celu opanowania sytuacji choroby"
+        },
+        {
+          "id": "b",
+          "text": "Instrumentalny — zapewnienie chorego praktycznej pomocy w codziennych czynnościach"
+        },
+        {
+          "id": "c",
+          "text": "Bezpośredni — włączenie chorego w strukturę rodziny i jego integracja w niej"
+        },
+        {
+          "id": "d",
+          "text": "Instytucjonalny — przekazanie opieki nad chorym do systemu formalnej opieki"
+        },
+        {
+          "id": "e",
+          "text": "Oceniający — ocena postępów leczenia i zachowania chorego przez rodzinę"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-053",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "W fazie terminalnej choroby — gdy rodzina przygotowuje się do utraty bliskiej osoby i żałoby"
+        },
+        {
+          "id": "b",
+          "text": "W okresie rehabilitacji — gdy chory wraca do częściowej samodzielności"
+        },
+        {
+          "id": "c",
+          "text": "Dopiero po wyleczeniu — gdy choroba ustępuje i życie wraca do normy"
+        },
+        {
+          "id": "d",
+          "text": "W pierwszym, najtrudniejszym etapie choroby — gdy rodzina przebudowuje organizację życia"
+        },
+        {
+          "id": "e",
+          "text": "W fazie przewlekłej stabilizacji — gdy choroba trwa długo, ale jej przebieg jest przewidywalny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-054",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zasoby materialne — dochody, warunki mieszkaniowe i dostęp do opieki medycznej"
+        },
+        {
+          "id": "b",
+          "text": "Zasoby instytucjonalne — formalne wsparcie ze strony szpitali, OPS i fundacji"
+        },
+        {
+          "id": "c",
+          "text": "Zasoby czasowe — ilość wolnego czasu członków rodziny na opiekę nad chorym"
+        },
+        {
+          "id": "d",
+          "text": "Zasoby ludzkie — wiek, liczba i stan zdrowia członków rodziny"
+        },
+        {
+          "id": "e",
+          "text": "Zasoby kulturowe — wiedza, umiejętności, wzory zachowania, wartości i normy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-055",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Przypominanie chorego o istnieniu rzeczywistości innej niż choroba czy szpital"
+        },
+        {
+          "id": "b",
+          "text": "Wykonywanie czynności pielęgnacyjno-leczniczych wobec chorego członka rodziny"
+        },
+        {
+          "id": "c",
+          "text": "Powstrzymywanie chorego przed ograniczaniem tożsamości wyłącznie do roli pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "Podtrzymywanie społecznej tożsamości chorego w kontaktach z otoczeniem"
+        },
+        {
+          "id": "e",
+          "text": "Ułatwianie porozumienia między światem choroby a światem codziennym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-056",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sam pacjent i jego rodzina stawiają pierwszą diagnozę, od której zależy dalsze postępowanie"
+        },
+        {
+          "id": "b",
+          "text": "Rodzina zawsze wymaga hospitalizacji chorego — to obowiązek każdego członka rodziny w sytuacji choroby"
+        },
+        {
+          "id": "c",
+          "text": "Rodzina nie powinna uczestniczyć w decyzjach medycznych — to wyłączna kompetencja lekarza prowadzącego"
+        },
+        {
+          "id": "d",
+          "text": "Tylko lekarz może ocenić objawy chorobowe — rodzina nie posiada kompetencji diagnostycznych w ocenie stanu"
+        },
+        {
+          "id": "e",
+          "text": "Rodzina jest zawsze przeszkodą w leczeniu — jej interwencje systematycznie pogarszają wyniki terapii chorego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-057",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pracą zawodową — obowiązkami służbowymi, karierą zawodową i odpowiedzialnością zawodową członka rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Dobrami materialnymi — posiadaniem majątku, standardem życia i dostępem do zasobów materialnych rodziny"
+        },
+        {
+          "id": "c",
+          "text": "Rodziną rozumianą jako wartość — lojalnością wobec bliskich i obowiązkami rodzinnymi"
+        },
+        {
+          "id": "d",
+          "text": "Rozrywką — czasem wolnym, hobby i aktywnościami rekreacyjnymi członków rodziny"
+        },
+        {
+          "id": "e",
+          "text": "Religią — wierzeniami religijnymi i praktykami duchowymi członków rodziny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-058",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wspólne wartości i zadania — cele i obowiązki wiążące wszystkich członków rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Świadomość odrębności — poczucie granic między rodziną a otaczającym światem"
+        },
+        {
+          "id": "c",
+          "text": "Struktura ról, pozycji i władzy — podział obowiązków i hierarchia w rodzinie"
+        },
+        {
+          "id": "d",
+          "text": "Całkowita niezależność od norm społecznych — brak wpływu otoczenia na funkcjonowanie rodziny"
+        },
+        {
+          "id": "e",
+          "text": "System stosunków uregulowanych instytucjonalnie — małżeństwo, pokrewieństwo, powinowactwo i adopcja"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-059",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyłącznie opiekę medyczną pacjentowi — bez wsparcia emocjonalnego dla jego bliskich"
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie wsparcie finansowe rodzinie — pokrycie kosztów leczenia i opieki domowej"
+        },
+        {
+          "id": "c",
+          "text": "Zastąpienie rodziny w całości — przejęcie wszystkich obowiązków opiekuńczych przez hospicjum"
+        },
+        {
+          "id": "d",
+          "text": "Jedynie wsparcie religijne — duchową opiekę kapelana bez interwencji medycznej"
+        },
+        {
+          "id": "e",
+          "text": "Opiekę medyczną pacjentowi oraz wsparcie emocjonalne jego bliskim w procesie umierania"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-060",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Medykalizacja — przekształcanie problemów społecznych i emocjonalnych w kwestie medyczne"
+        },
+        {
+          "id": "b",
+          "text": "Wypalenie opiekunów — wyczerpanie emocjonalne i fizyczne głównego opiekuna w długim leczeniu"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia lub instytucji"
+        },
+        {
+          "id": "d",
+          "text": "Somatyzacja — przejawianie stresu i lęku w postaci objawów somatycznych bez przyczyny organicznej"
+        },
+        {
+          "id": "e",
+          "text": "Dysonans opiekuńczy — rozbieżność między oczekiwaniami opiekuna a możliwościami chorego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-061",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zaniedbanie — długotrwałe niepodejmowanie działań zapewniających podstawowe potrzeby zależnego"
+        },
+        {
+          "id": "b",
+          "text": "Przemoc ekonomiczna — kontrolowanie dostępu do pieniędzy, kont bankowych i zasobów materialnych ofiary"
+        },
+        {
+          "id": "c",
+          "text": "Przemoc psychiczna — systematyczne poniżanie, groźby i manipulacja emocjonalna ofiary"
+        },
+        {
+          "id": "d",
+          "text": "Przemoc społeczna — izolowanie ofiary od rodziny, przyjaciół i wspólnoty lokalnej"
+        },
+        {
+          "id": "e",
+          "text": "Przemoc werbalna — agresja słowna, krzyki, obelgi i publiczne upokarzanie ofiary"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-062",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Teoria naznaczenia społecznego — przypisywanie etykiet wpływających na tożsamość i zachowanie"
+        },
+        {
+          "id": "b",
+          "text": "Teoria dewiacji Parsonsa — choroba jako rola społeczna wymagająca zwolnienia z obowiązków"
+        },
+        {
+          "id": "c",
+          "text": "Teoria społecznego uczenia się — uczenie zachowań przez obserwację i naśladownictwo modeli"
+        },
+        {
+          "id": "d",
+          "text": "Teoria salutogenezy — czynniki wzmacniające odporność psychiczną i poczucie sensu życia"
+        },
+        {
+          "id": "e",
+          "text": "Teoria dysonansu poznawczego — napięcie między przekonaniami a zachowaniem wymuszające zmianę"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-063",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dysonans poznawczy — napięcie między przekonaniami a doświadczeniem wymuszające racjonalizację"
+        },
+        {
+          "id": "b",
+          "text": "Racjonalizacja — logiczne uzasadnianie niedopuszczalnych zachowań sprawcy przemocy"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia na zgłoszenie"
+        },
+        {
+          "id": "d",
+          "text": "Wyuczona bezradność — utrata wiary w możliwość zmiany sytuacji i brak zgłaszania przemocy"
+        },
+        {
+          "id": "e",
+          "text": "Projekcja — przypisywanie innym własnych nieakceptowanych uczuć, myśli i impulsów"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-064",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Art. 207 k.k. — znęcanie się ze szczególnym okrucieństwem (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "b",
+          "text": "Art. 197 k.k. — zgwałcenie kwalifikowane (przestępstwo z katalogu art. 240 § 1)"
+        },
+        {
+          "id": "c",
+          "text": "Art. 156 k.k. — spowodowanie ciężkiego uszczerbku na zdrowiu (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "d",
+          "text": "Art. 148 k.k. — zabójstwo (przestępstwo z katalogu art. 240 § 1 k.k.)"
+        },
+        {
+          "id": "e",
+          "text": "Art. 240 § 1 k.k. — obowiązek zawiadomienia organów ścigania o przestępstwie z katalogu"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-065",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Art. 148 k.k. — zabójstwo (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "b",
+          "text": "Art. 207 k.k. — znęcanie się (w tym ze szczególnym okrucieństwem, § 3)"
+        },
+        {
+          "id": "c",
+          "text": "Art. 197 k.k. — zgwałcenie (w tym kwalifikowane, § 3–4)"
+        },
+        {
+          "id": "d",
+          "text": "Art. 156 k.k. — spowodowanie ciężkiego uszczerbku na zdrowiu"
+        },
+        {
+          "id": "e",
+          "text": "Art. 240 k.k. — obowiązek zawiadomienia organów ścigania o przestępstwie z katalogu"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-066",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Procedura Niebieskiej Karty — wszczęcie bez zgody ofiary, współpraca z policją, OPS i sądem"
+        },
+        {
+          "id": "b",
+          "text": "Procedura nakazu opuszczenia mieszkania — natychmiastowe wydalenie sprawcy z lokalu mieszkalnego"
+        },
+        {
+          "id": "c",
+          "text": "Procedura ubezwłasnowolnienia — ograniczenie zdolności prawnej ofiary przemocy domowej"
+        },
+        {
+          "id": "d",
+          "text": "Procedura interdyscyplinarna sądowa — postępowanie dyscyplinarne wobec lekarza sprawcy"
+        },
+        {
+          "id": "e",
+          "text": "Procedura mediacji rodzinnej — dobrowolne porozumienie między ofiarą a sprawcą przemocy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-067",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bezwzględny, sankcjonowany karą pozbawienia wolności — jak obowiązek z art. 240 k.k."
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie etyczny, bez żadnych konsekwencji — tylko zalecenie Kodeksu Etyki Lekarskiej"
+        },
+        {
+          "id": "c",
+          "text": "Społeczny — bez kary za niezawiadomienie, ale z możliwością odpowiedzialności zawodowej"
+        },
+        {
+          "id": "d",
+          "text": "Zależny wyłącznie od zgody pacjenta — lekarz nie może działać bez zgody ofiary przemocy"
+        },
+        {
+          "id": "e",
+          "text": "Ograniczony do przypadków przemocy fizycznej — nie obejmuje przemocy psychicznej ani ekonomicznej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-068",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pacjent jest osobą dorosłą — tajemnica lekarska obowiązuje bez względu na wiek pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "Minęło 30 dni od zdarzenia — upływ czasu zwalnia lekarza z obowiązku zachowania tajemnicy"
+        },
+        {
+          "id": "c",
+          "text": "Sprawca jest członkiem rodziny — bliskość relacji uzasadnia ujawnienie informacji o przemocy"
+        },
+        {
+          "id": "d",
+          "text": "Istnieje bezpośrednie zagrożenie życia lub zdrowia — pacjenta lub innej osoby"
+        },
+        {
+          "id": "e",
+          "text": "Pacjent odmawia leczenia — lekarz może ujawnić informacje, by wymusić podjęcie terapii"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-069",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dzieci — ze względu na zależność od opiekunów i ograniczoną zdolność do obrony"
+        },
+        {
+          "id": "b",
+          "text": "Osoby starsze — ze względu na fizyczną słabość i często ograniczoną mobilność"
+        },
+        {
+          "id": "c",
+          "text": "Osoby z niepełnosprawnościami — ze względu na zależność od opiekunów i barierę komunikacyjną"
+        },
+        {
+          "id": "d",
+          "text": "Migranci i uchodźcy — ze względu na barierę językową i brak sieci wsparcia społecznego"
+        },
+        {
+          "id": "e",
+          "text": "Osoby o wysokim statusie społeczno-ekonomicznym — wysoki status jako czynnik ryzyka przemocy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-070",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Werbalna — agresja słowna, krzyki, obelgi, publiczne upokarzanie i groźby wobec ofiary przemocy"
+        },
+        {
+          "id": "b",
+          "text": "Technologiczna — wykorzystanie internetu i mediów społecznościowych do nękania i szpiegowania"
+        },
+        {
+          "id": "c",
+          "text": "Społeczna — izolowanie ofiary od rodziny, przyjaciół i wspólnoty lokalnej"
+        },
+        {
+          "id": "d",
+          "text": "Psychiczna — systematyczne poniżanie, groźby i manipulacja emocjonalna ofiary"
+        },
+        {
+          "id": "e",
+          "text": "Ekonomiczna — kontrolowanie dostępu do pieniędzy i zasobów materialnych ofiary"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-071",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patriarchalna — oparta na dominacji mężczyzny i podporządkowaniu kobiety w rodzinie"
+        },
+        {
+          "id": "b",
+          "text": "Indywidualistyczna — priorytet osobistych celów nad obowiązkami wobec rodziny i wspólnoty"
+        },
+        {
+          "id": "c",
+          "text": "Kolektywistyczna — priorytet dobra grupy i rodziny nad indywidualnymi potrzebami członków"
+        },
+        {
+          "id": "d",
+          "text": "Egalitarna — równość płci i współdzielenie władzy w relacjach rodzinnych i społecznych"
+        },
+        {
+          "id": "e",
+          "text": "Matriarchalna — oparta na dominacji kobiety i podporządkowaniu mężczyzny w strukturze rodziny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-072",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lekarz jest zobowiązany do prowadzenia dochodzenia w sprawie przemocy — jak funkcjonariusz policji"
+        },
+        {
+          "id": "b",
+          "text": "Lekarz powinien samodzielnie ukarać sprawcę — w ramach swojej roli zawodowej i etycznej"
+        },
+        {
+          "id": "c",
+          "text": "Lekarz nie prowadzi dochodzenia, lecz reaguje na dowody i kieruje pacjenta do instytucji"
+        },
+        {
+          "id": "d",
+          "text": "Lekarz może ujawniać informacje o przemocy bez żadnych ograniczeń — bez zgody pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Lekarz nie ma żadnej roli w rozpoznawaniu przemocy — to wyłączna kompetencja organów ścigania"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-073",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyuczona bezradność — utrata wiary w możliwość zmiany sytuacji przez izolowaną ofiarę"
+        },
+        {
+          "id": "b",
+          "text": "Dysonans rodzinny — rozbieżność między oficjalnym obrazem rodziny a rzeczywistością przemocy"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia na ujawnienie przemocy"
+        },
+        {
+          "id": "d",
+          "text": "\"Cisza rodzinna\" — milczenie wokół przemocy, gdy przemoc jest tematem tabu w rodzinie"
+        },
+        {
+          "id": "e",
+          "text": "Dehumanizacja — traktowanie ofiary przemocy jak przedmiotu, a nie podmiotu z prawami"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-074",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stygmatyzacja pierwotna — negatywna etykieta przypisana ofierze już przy pierwszym kontakcie"
+        },
+        {
+          "id": "b",
+          "text": "Medykalizacja — przekształcanie problemów społecznych w kwestie medyczne i psychiatryczne"
+        },
+        {
+          "id": "c",
+          "text": "Projekcja medialna — nadawanie ofierze cech, których nie posiada, w relacjach prasowych"
+        },
+        {
+          "id": "d",
+          "text": "Dehumanizacja — przedstawianie ofiary w sposób pozbawiający ją godności, podmiotowości i prawa do głosu"
+        },
+        {
+          "id": "e",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez sensacyjny sposób relacjonowania w mediach"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-075",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kontakty społeczne rzeczywiście nie istnieją — brak formalnych relacji z innymi ludźmi"
+        },
+        {
+          "id": "b",
+          "text": "Osoba czuje się samotna i odizolowana, mimo że formalnie otaczają ją inni ludzie"
+        },
+        {
+          "id": "c",
+          "text": "Izolacja jest narzucona przez instytucje — np. szpital, areszt lub placówka opiekuńcza"
+        },
+        {
+          "id": "d",
+          "text": "Izolacja wynika wyłącznie z pandemii — ograniczenia epidemiologiczne jako jedyne źródło"
+        },
+        {
+          "id": "e",
+          "text": "Izolacja dotyczy tylko osób starszych — wiek zaawansowany jako warunek izolacji społecznej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-076",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "psychiczna — niszcząca samoocenę poprzez wyzwiska, poniżanie, groźby i manipulację"
+        },
+        {
+          "id": "b",
+          "text": "fizyczna — polegająca na bezpośrednim użyciu siły fizycznej wobec ciała ofiary"
+        },
+        {
+          "id": "c",
+          "text": "ekonomiczna — polegająca na kontroli finansów i ograniczaniu dostępu do środków"
+        },
+        {
+          "id": "d",
+          "text": "technologiczna — wykorzystująca media cyfrowe do nękania, inwigilacji i szantażu"
+        },
+        {
+          "id": "e",
+          "text": "seksualna — wymuszająca kontakt lub zachowania o charakterze seksualnym wobec ofiary"
+        }
+      ],
+      "explanation": "Przemoc **psychiczna** niszczy **poczucie własnej wartości** ofiary: wyzwiska, poniżanie, manipulacja, groźby, zastraszanie, izolowanie. Należy ją odróżnić od przemocy **werbalnej** (sama agresja słowna) i **ekonomicznej** (kontrola finansowa). Przemoc psychiczna jest trudniejsza do zidentyfikowania niż fizyczna, bo nie pozostawia widocznych śladów, a „kultura milczenia” sprzyja jej ukrywaniu."
+    },
+    {
+      "id": "phum-soc-gen-077",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "akceptacja kar cielesnych jako normy wychowawczej w rodzinie i społeczeństwie"
+        },
+        {
+          "id": "b",
+          "text": "stres ekonomiczny i presja materialna obniżająca poczucie bezpieczeństwa w rodzinie"
+        },
+        {
+          "id": "c",
+          "text": "uzależnienia od alkoholu lub narkotyków osłabiające samokontrolę sprawcy przemocy"
+        },
+        {
+          "id": "d",
+          "text": "wyuczone wzorce agresji przekazywane między pokoleniami w rodzinie i otoczeniu"
+        },
+        {
+          "id": "e",
+          "text": "izolacja społeczna ograniczająca kontakty rodziny ze wspierającym otoczeniem zewnętrznym"
+        }
+      ],
+      "explanation": "**Uzależnienia** (alkohol, narkotyki) są często **katalizatorem przemocy** fizycznej — nadużywanie substancji **zmniejsza samokontrolę** i zwiększa skłonność do agresji. To jeden z czterech wymienionych uwarunkowań przemocy fizycznej, obok akceptacji kar cielesnych, stresu/presji ekonomicznej oraz wyuczonych zachowań. Uzależnienie nie jest „przyczyną” w sensie deterministycznym, lecz czynnikiem nasilającym agresję."
+    },
+    {
+      "id": "phum-soc-gen-078",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie mężczyźni dorośli, niezależnie od wieku, statusu i sytuacji rodzinnej"
+        },
+        {
+          "id": "b",
+          "text": "osoby o wysokim statusie społecznym z łatwym dostępem do zasobów materialnych"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie osoby w wieku późnej starości, powyżej siedemdziesięciu lat życia"
+        },
+        {
+          "id": "d",
+          "text": "kobiety i dzieci, choć ofiarami przemocy domowej bywają także mężczyźni"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie osoby z niepełnosprawnościami wymagające stałej opieki ze strony bliskich"
+        }
+      ],
+      "explanation": "Choć przemoc domowa dotyczy zarówno kobiet, jak i mężczyzn, statystyki pokazują, że **kobiety oraz dzieci częściej** stają się ofiarami przemocy domowej. Wiąże się to z uwarunkowaniami patriarchalnymi, nierównościami płciowymi i zależnością ekonomiczną. Materiał zaznacza jednak, że mężczyźni również bywają ofiarami, a stereotypy płciowe utrudniają im przyznanie się („to niemęskie”)."
+    },
+    {
+      "id": "phum-soc-gen-079",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niebieska Karta — procedura interwencyjna wobec ofiar przemocy w rodzinie, nie NGO"
+        },
+        {
+          "id": "b",
+          "text": "Amnesty International — organizacja monitorująca łamanie praw człowieka na świecie"
+        },
+        {
+          "id": "c",
+          "text": "Czerwony Krzyż — organizacja humanitarna udzielająca pierwszej pomocy poszkodowanym"
+        },
+        {
+          "id": "d",
+          "text": "Caritas — organizacja kościelna wspierająca osoby w trudnej sytuacji materialnej"
+        },
+        {
+          "id": "e",
+          "text": "Niebieska Linia — NGO oferująca pomoc telefoniczną i wsparcie ofiarom przemocy"
+        }
+      ],
+      "explanation": "**Niebieska Linia** to organizacja pozarządowa oferująca **pomoc telefoniczną i wsparcie** ofiarom przemocy. Należy odróżnić ją od **Niebieskiej Karty**, która jest **procedurą** interwencyjną (a nie organizacją). Wśród instytucji pomocowych materiał wymienia: policję (interwencje), ośrodki interwencji kryzysowej (pomoc psychologiczna, prawna, schronienie) oraz NGO takie jak Niebieska Linia."
+    },
+    {
+      "id": "phum-soc-gen-080",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "dokumentowania obrażeń — opis lokalizacji, czasu powstania i mechanizmu urazu"
+        },
+        {
+          "id": "b",
+          "text": "zbierania wywiadu medycznego — delikatne, konkretne pytania bez tonu oskarżycielskiego"
+        },
+        {
+          "id": "c",
+          "text": "skierowania do służb — informowanie ofiary o dostępnych formach wsparcia instytucjonalnego"
+        },
+        {
+          "id": "d",
+          "text": "edukacji i prewencji — rozmowa o czynnikach ryzyka przemocy w relacji partnerskiej"
+        },
+        {
+          "id": "e",
+          "text": "wszczęcia Niebieskiej Karty — uruchomienie procedury interwencyjnej wobec sprawcy"
+        }
+      ],
+      "explanation": "Zadawanie pytań o okoliczności obrażeń **w sposób delikatny, ale konkretny, bez oskarżycielskiego tonu** to element **zbierania wywiadu medycznego**. Pacjenci często podają zmyślone przyczyny obrażeń, dlatego sposób prowadzenia wywiadu jest kluczowy. Należy go odróżnić od **dokumentowania** (notowanie lokalizacji, czasu i przyczyn obrażeń jako dowodów) oraz **skierowania do służb** (informowanie o dostępnych formach pomocy)."
+    },
+    {
+      "id": "phum-soc-gen-081",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Świadków Jehowy — zakaz transfuzji krwi z powodów religijnych w sytuacji zagrożenia życia"
+        },
+        {
+          "id": "b",
+          "text": "islamu — zakaz spożywania wieprzowiny i wpływ postu ramadanu na styl życia wiernych"
+        },
+        {
+          "id": "c",
+          "text": "katolicyzmu — obowiązek posłuchania władzy kościelnej w kwestiach moralnych i etycznych"
+        },
+        {
+          "id": "d",
+          "text": "judaizmu — przestrzeganie kaszrus i wpływ szabatowych ograniczeń na codzienne funkcjonowanie"
+        },
+        {
+          "id": "e",
+          "text": "buddyzmu — dążenie do uwolnienia od pragnień i redukcja cierpienia poprzez medytację"
+        }
+      ],
+      "explanation": "Materiał wskazuje **Świadków Jehowy** jako przykład wyznania, w którym mogą występować zasady dotyczące **zakazu transfuzji krwi**, co ma poważne konsekwencje zdrowotne przy potrzebie takiej procedury. To ilustracja wpływu **wyznania** na decyzje pacjentów o korzystaniu z usług medycznych. Innym przykładem religijnego wpływu na zdrowie jest zakaz spożywania wieprzowiny w islamie (wpływ na dietę)."
+    },
+    {
+      "id": "phum-soc-gen-082",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "choroby serca — w tym nadciśnienie tętnicze i zaburzenia rytmu serca"
+        },
+        {
+          "id": "b",
+          "text": "depresja — nawracające obniżenie nastroju utrudniające codzienne funkcjonowanie"
+        },
+        {
+          "id": "c",
+          "text": "daltonizm — wrodzone zaburzenie widzenia barw niezwiązane ze stresem społecznym"
+        },
+        {
+          "id": "d",
+          "text": "cukrzyca typu 2 — zaburzenia metaboliczne nasilające się przy przewlekłym stresie"
+        },
+        {
+          "id": "e",
+          "text": "zaburzenia lękowe — uogólnione lęki i napady paniki w odpowiedzi na stresory"
+        }
+      ],
+      "explanation": "Przewlekły stres wynikający z trudności rodzinnych, konfliktów, marginalizacji czy przemocy jest powiązany z **chorobami serca, depresją, zaburzeniami lękowymi, nadciśnieniem i cukrzycą typu 2**. **Daltonizm** to wrodzone zaburzenie widzenia barw uwarunkowane genetycznie — nie ma związku ze stresem społecznym. To dystraktor spoza kategorii chorób stresozależnych."
+    },
+    {
+      "id": "phum-soc-gen-083",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "pracownicy biurowi — narażeni głównie na monotonię pracy przy komputerze i siedzący tryb"
+        },
+        {
+          "id": "b",
+          "text": "nauczyciele — narażeni na wypalenie wynikające z presji oceniania, nadprogramu pracy i konfliktów"
+        },
+        {
+          "id": "c",
+          "text": "rolnicy — narażeni na izolację zawodową i ciężkie warunki pracy fizycznej na polu"
+        },
+        {
+          "id": "d",
+          "text": "pracownicy służb ratunkowych — narażeni na PTSD po ekspozycji na traumatyczne zdarzenia"
+        },
+        {
+          "id": "e",
+          "text": "sprzedawcy — narażeni na stres wynikający z presji celów sprzedażowych i obsługi klienta"
+        }
+      ],
+      "explanation": "**PTSD** (zespół stresu pourazowego) jest wymieniany jako specyficzne schorzenie zagrażające **pracownikom służb ratunkowych** — w ramach zawodów wysokiego ryzyka (służby mundurowe, medyczne, miejsca o dużym stresie). To ilustracja długotrwałych skutków negatywnego środowiska pracy na zdrowie psychiczne. Praca w zawodach wysokiego ryzyka może prowadzić do specyficznych chorób zawodowych."
+    },
+    {
+      "id": "phum-soc-gen-084",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "wiek, płeć i stan cywilny — cechy demograficzne jednostki w populacji"
+        },
+        {
+          "id": "b",
+          "text": "warunki mieszkaniowe, dieta i aktywność fizyczna — elementy stylu życia jednostki"
+        },
+        {
+          "id": "c",
+          "text": "religia, narodowość i pochodzenie — cechy identyfikacji kulturowej i etnicznej"
+        },
+        {
+          "id": "d",
+          "text": "miejsce zamieszkania, migracje i bezrobocie — zmienne środowiska i rynku pracy"
+        },
+        {
+          "id": "e",
+          "text": "zawód, wykształcenie i dochód — trzy składniki statusu społeczno-ekonomicznego"
+        }
+      ],
+      "explanation": "Status społeczno-ekonomiczny określają: **zawód** (prestiż, możliwość kontroli, udział w decyzjach), **wykształcenie** (sposób postrzegania zdrowia, świadomość zagrożeń) i **dochód** (wpływ na warunki mieszkaniowe i życiowe). Osoby z niższych klas odznaczają się wyższą umieralnością i krótszym trwaniem życia. Zależność klasy społecznej i zdrowia zauważono już w XIX w. (Anglia, Francja)."
+    },
+    {
+      "id": "phum-soc-gen-085",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie poziomy — bez zmiany położenia w hierarchii społecznej jednostki"
+        },
+        {
+          "id": "b",
+          "text": "poziomy i pionowy — awans lub degradacja oraz zmiana na równorzędnym poziomie"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie pionowy — ograniczony do awansu społecznego w górę lub w dół"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie geograficzny — dotyczący migracji między regionami kraju lub świata"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie zawodowy — ograniczony do zmiany miejsca pracy bez wpływu na status"
+        }
+      ],
+      "explanation": "**Ruchliwość społeczna** wymieniona wśród czynników społecznych warunkujących stan zdrowia może mieć charakter **poziomy i pionowy**. Ruchliwość pozioma to zmiana pozycji bez zmiany statusu (np. zmiana zawodu na równorzędny), pionowa to awans lub degradacja w hierarchii społecznej. Oba typy mobilności mogą wiązać się ze stresem adaptacyjnym wpływającym na zdrowie."
+    },
+    {
+      "id": "phum-soc-gen-086",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "nierówność społeczna — nierówny dostęp do dóbr ze względu na pozycję w strukturze"
+        },
+        {
+          "id": "b",
+          "text": "stratyfikacja wiekowa — podział społeczeństwa według przedziałów etapów życia jednostki"
+        },
+        {
+          "id": "c",
+          "text": "ruchliwość społeczna — zmiana położenia jednostki w hierarchii społeczno-ekonomicznej"
+        },
+        {
+          "id": "d",
+          "text": "dewiacja społeczna — zachowania odbiegające od norm i oczekiwań zbiorowości"
+        },
+        {
+          "id": "e",
+          "text": "marginalizacja — wykluczanie grup lub jednostek z pełnego udziału w życiu społecznym"
+        }
+      ],
+      "explanation": "**Nierówność społeczna** to stan, w którym jednostka lub grupa z powodu **pozycji społecznej** użytkuje cenione społecznie dobra **w stopniu większym** niż inne. Cechy społeczne (posiadanie, wykształcenie, zawód) są podłożem powstawania klas i warstw — części struktury społeczeństwa i źródła nierówności. Struktura społeczna warunkuje szanse życiowe, w tym zapadalność na choroby."
+    },
+    {
+      "id": "phum-soc-gen-087",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "wczesne niemowlęctwo (do 1 r.ż.) — okres największej śmiertelności i chorób wrodzonych"
+        },
+        {
+          "id": "b",
+          "text": "dzieciństwo (1–14 lat) — okres wzrostu, rozwoju i chorób zakaźnych charakterystycznych dla wieku"
+        },
+        {
+          "id": "c",
+          "text": "dojrzałość (25–64 lata) — okres nasilenia nowotworów, chorób układu krążenia i wylewów"
+        },
+        {
+          "id": "d",
+          "text": "młodość (15–24 lata) — okres wypadków, urazów i ryzykownych zachowań związanych z eksploracją"
+        },
+        {
+          "id": "e",
+          "text": "wiek starszy (65+) — okres dominacji chorób przewlekłych układu krążenia, nerwowego i stawów"
+        }
+      ],
+      "explanation": "**Dojrzałość (25-64 lata)** to okres nasilenia chorób **nowotworowych, układu krążenia, wylewów, chorób umysłowych**, niepełnosprawności, a także wypadków w pracy i drogowych. Wiążą się też z nadużywaniem alkoholu, zmianami w rolach społecznych i dużą ruchliwością zawodową. Wiek starszy (65+) wiąże się głównie z chorobami układu krążenia, nerwowego i reumatycznymi."
+    },
+    {
+      "id": "phum-soc-gen-088",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "warunki ekonomiczne i przynależne prawa — wskaźniki obiektywne statusu osoby starszej"
+        },
+        {
+          "id": "b",
+          "text": "liczba posiadanych dóbr materialnych — wskaźnik obiektywnego poziomu zasobów majątkowych"
+        },
+        {
+          "id": "c",
+          "text": "stan zdrowia mierzony parametrami medycznymi — wskaźnik obiektywnej sprawności biologicznej"
+        },
+        {
+          "id": "d",
+          "text": "satysfakcja z miejsca w układach społecznych i kontrola nad własnym życiem — subiektywny"
+        },
+        {
+          "id": "e",
+          "text": "poziom wykształcenia formalnego — wskaźnik obiektywnego kapitału humanistycznego jednostki"
+        }
+      ],
+      "explanation": "Wskaźniki **subiektywne** statusu osoby starszej to: **stopień satysfakcji** z zajmowanego miejsca w układach społecznych, udział w podejmowaniu decyzji oraz **możliwość kontroli nad własnym życiem**. Wskaźniki **obiektywne** dotyczą przynależnych praw, warunków ekonomicznych, stopnia uczestnictwa w grupach i zmian w stanie zdrowia. Rozróżnienie obiektywne/subiektywne jest kluczowe dla oceny jakości życia w starości."
+    },
+    {
+      "id": "phum-soc-gen-089",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "mężczyźni ok. 70 lat, kobiety ok. 78 lat — wartości zbliżone do lat 90. ubiegłego wieku"
+        },
+        {
+          "id": "b",
+          "text": "mężczyźni ok. 68 lat, kobiety ok. 76 lat — poniżej aktualnych danych GUS z roku 2023"
+        },
+        {
+          "id": "c",
+          "text": "mężczyźni ok. 78 lat, kobiety ok. 85 lat — przeszacowane względem polskiej średniej 2023 r."
+        },
+        {
+          "id": "d",
+          "text": "mężczyźni ok. 72 lata, kobiety ok. 80 lat — nieco niższe od rzeczywistej średniej w 2023 r."
+        },
+        {
+          "id": "e",
+          "text": "mężczyźni ok. 74,7 lat, kobiety ok. 82 lata — dane GUS dla Polski w roku 2023"
+        }
+      ],
+      "explanation": "Wg materiału przeciętne trwanie życia w Polsce w 2023 r. wynosiło: **mężczyźni 74,7 lat, kobiety 82 lata**. W większości krajów rozwiniętych kobiety żyją około **7 lat dłużej** niż mężczyźni, co jednak nie oznacza lepszego zdrowia — stan zdrowia kobiet jest gorszy (więcej chorób przewlekłych o lżejszym przebiegu). To ilustracja **paradoksu płci** w zdrowiu: kobiety żyją dłużej, ale w gorszym zdrowiu."
+    },
+    {
+      "id": "phum-soc-gen-090",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "uwarunkowań wyłącznie genetycznych — biologicznej predyspozycji do silniejszych więzi emocjonalnych"
+        },
+        {
+          "id": "b",
+          "text": "pełnienia ról opiekuńczych, wspierania innych i troszczenia się o więcej osób w otoczeniu"
+        },
+        {
+          "id": "c",
+          "text": "wyższego statusu ekonomicznego kobiet w porównaniu z mężczyznami w tej samej grupie wiekowej"
+        },
+        {
+          "id": "d",
+          "text": "mniejszej liczby obowiązków rodzinnych i mniejszego obciążenia opieką nad bliskimi"
+        },
+        {
+          "id": "e",
+          "text": "rzadszych kontaktów z lekarzem i niższej frekwencji w programach profilaktycznych"
+        }
+      ],
+      "explanation": "Silniejsze więzi emocjonalne kobiet wynikają z **pełnienia kobiecych ról**, udzielania wsparcia innym i troszczenia się o **większą liczbę osób**. Kobiety odpowiadają za potrzeby zdrowotne rodziny i sprawują opiekę w razie choroby. Istotne jest też wychowanie i socjalizacja przygotowująca do roli matki. Nieformalne więzi (rodzina, przyjaciele, sąsiedzi) stanowią barierę ochronną przed zdrowotnymi konsekwencjami stresu."
+    },
+    {
+      "id": "phum-soc-gen-091",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "historyczny — zmieniający się wraz z normami zbiorowości i sytuacją społeczną danej epoki"
+        },
+        {
+          "id": "b",
+          "text": "uniwersalny i statyczny — identyczny we wszystkich kulturach niezależnie od kontekstu"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie biologiczny i niezmienny — oparty na stałych parametrach funkcji organizmu"
+        },
+        {
+          "id": "d",
+          "text": "zależny tylko od osiągnięć medycyny — bez wpływu norm kulturowych i zwyczajów społecznych"
+        },
+        {
+          "id": "e",
+          "text": "niezależny od środowiska społecznego — określany wyłącznie przez kryteria indywidualne jednostki"
+        }
+      ],
+      "explanation": "Wg prof. **M. Sokołowskiej** kryteria zdrowia są **historyczne**, zmieniają się wraz z sytuacją społeczną, warunkami środowiskowymi oraz normami i zwyczajami zbiorowości. Słowa „zdrowie” i „choroba” **nie mogą być precyzowane uniwersalnie czy statycznie** — mają sens tylko w odniesieniu do określonej osoby w określonym środowisku fizycznym i społecznym. To podkreśla społeczno-kulturowe uwarunkowanie pojęć zdrowia."
+    },
+    {
+      "id": "phum-soc-gen-092",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "obojętne dla ryzyka zgonu — małżeństwo nie wpływa na śmiertelność osób w wieku starszym"
+        },
+        {
+          "id": "b",
+          "text": "szkodliwe — zwiększające ryzyko zgonu przez konflikty i stres w relacji małżeńskiej"
+        },
+        {
+          "id": "c",
+          "text": "ochronne — obniżające ryzyko zgonu dzięki wsparciu partnera i większej sieci kontaktów"
+        },
+        {
+          "id": "d",
+          "text": "istotne tylko dla kobiet — bez wpływu na długowieczność mężczyzn pozostających w związku"
+        },
+        {
+          "id": "e",
+          "text": "istotne tylko przy chorobach zakaźnych — bez znaczenia przy chorobach przewlekłych i nowotworach"
+        }
+      ],
+      "explanation": "Pozostawanie w związku małżeńskim w wieku starszym ma oddziaływanie **ochronne** — obniża ryzyko zgonu. To pozytywny efekt **wsparcia społecznego** ze strony partnera i rodziny: redukcja zachowań antyzdrowotnych, wzmacnianie zasobów zdrowia i lepsza opieka w razie choroby. Osoby starsze w związkach mają zwykle bardziej rozbudowane kontakty społeczne i lepszą sytuację materialną."
+    },
+    {
+      "id": "phum-soc-gen-093",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "picie alkoholu w ilościach szkodliwych dla zdrowia i zwiększających ryzyko urazów"
+        },
+        {
+          "id": "b",
+          "text": "palenie tytoniu i narażenie organizmu na substancje dymiące i toksyczne z papierosów"
+        },
+        {
+          "id": "c",
+          "text": "uprawianie niebezpiecznych sportów ekstremalnych i podejmowanie ryzykownych aktywności"
+        },
+        {
+          "id": "d",
+          "text": "częstsze korzystanie z badań profilaktycznych i kontaktów z lekarzem pierwszego kontaktu"
+        },
+        {
+          "id": "e",
+          "text": "nadwaga i nadmierna masa ciała zwiększająca ryzyko chorób metabolicznych i sercowo-naczyniowych"
+        }
+      ],
+      "explanation": "Domeną mężczyzn są zachowania **antyzdrowotne**: picie alkoholu, palenie papierosów, **nadwaga, niebezpieczne sporty**, częstotliwość i jakość używania samochodów. **Częstsze korzystanie z badań profilaktycznych** to zachowanie **prozdrowotne** — i to kobiety częściej kontaktują się z lekarzem oraz korzystają z profilaktyki. Odp. D odwraca rzeczywistą zależność płciową."
+    },
+    {
+      "id": "phum-soc-gen-094",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "obiektywna patologiczna zmiana w organizmie wykrywalna w badaniach laboratoryjnych"
+        },
+        {
+          "id": "b",
+          "text": "indywidualna interpretacja symptomów przez chorego i subiektywne odczuwanie dolegliwości"
+        },
+        {
+          "id": "c",
+          "text": "dewiacja pierwotna — zachowanie sprzeczne z normami przed nadaniem etykiety medycznej"
+        },
+        {
+          "id": "d",
+          "text": "czysto biologiczny wymiar — redukcja choroby do procesów fizjologicznych bez kontekstu społecznego"
+        },
+        {
+          "id": "e",
+          "text": "społeczny wymiar — tożsamość chorego i etykieta wpływająca na traktowanie przez otoczenie"
+        }
+      ],
+      "explanation": "Trzeci obszar choroby to **społeczna tożsamość** — udział ludzi **uznanych przez innych za chorych** lub publicznie określających się jako chorzy, czego konsekwencją jest **etykieta „chory”** i odmienne traktowanie niż osób zdrowych. Pozostałe dwa obszary to: obiektywna **patologiczna zmiana** w organizmie oraz **indywidualna interpretacja** symptomów (samopoczucie). To trójwymiarowe ujęcie choroby (biologiczne, subiektywne, społeczne)."
+    },
+    {
+      "id": "phum-soc-gen-095",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "zysków — polepszenie statusu, sprawności, liczby relacji i zasobów społecznych w starości"
+        },
+        {
+          "id": "b",
+          "text": "strat — utrata ról, zasobów, partnera i niezależności przeważająca nad korzyściami wieku"
+        },
+        {
+          "id": "c",
+          "text": "neutralny — równowaga zysków i strat bez przewagi jednego typu zmian w okresie starości"
+        },
+        {
+          "id": "d",
+          "text": "wyłącznie biologiczny — ograniczony do spadku funkcji organizmu bez wpływu społecznego"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie ekonomiczny — dotyczący wyłącznie pogorszenia sytuacji materialnej emerytów"
+        }
+      ],
+      "explanation": "Zmiany w starszym wieku mają głównie charakter **strat**, rzadko zysków. Obejmują: pogorszenie **statusu ekonomicznego**, obniżenie sprawności fizycznej i psychicznej, wycofywanie się z aktywności (w tym pracy), **utratę małżonka**, kurczenie się znaczących relacji i utratę niezależności. Dotyczą też utraty ról społecznych, władzy, poczucia bezpieczeństwa i własnej wartości — to bilans przeważnie ujemny."
+    },
+    {
+      "id": "phum-soc-gen-096",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "wypalenie zawodowe — skutek przewlekłego stresu w pracy obniżający jakość życia i zdrowie"
+        },
+        {
+          "id": "b",
+          "text": "PTSD — zespół stresu pourazowego po ekspozycji na traumatyczne zdarzenie w pracy lub życiu"
+        },
+        {
+          "id": "c",
+          "text": "mobbing — systematyczne nękanie i wykluczanie pracownika w relacjach zawodowych z otoczeniem"
+        },
+        {
+          "id": "d",
+          "text": "dysonans poznawczy — rozbieżność między przekonaniami a zachowaniem powodująca napięcie wewnętrzne"
+        },
+        {
+          "id": "e",
+          "text": "somatyzacja — przeniesienie problemów psychicznych na objawy somatyczne bez organicznej przyczyny"
+        }
+      ],
+      "explanation": "**Wypalenie zawodowe** jest częstym wynikiem nadmiernego, chronicznego **stresu w pracy**, prowadzącym do obniżenia jakości życia i pogorszenia zdrowia psychicznego. Należy je odróżnić od **mobbingu** (przemoc/nękanie w relacjach pracowniczych) oraz **PTSD** (skutek traumy). Czynnikiem ochronnym przed wypaleniem jest wysokiej jakości **wsparcie społeczne** ze strony współpracowników."
+    },
+    {
+      "id": "phum-soc-gen-097",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "tradycyjno-ludowe — poszukiwanie pomocy u znachorów, uzdrowicieli i stosowanie medycyny ludowej"
+        },
+        {
+          "id": "b",
+          "text": "szamanistyczne — leczenie przez rytuały duchowe i pośrednictwo szamana w odzyskaniu równowagi"
+        },
+        {
+          "id": "c",
+          "text": "medyczne — choroba jako problem biologiczny wymagający interwencji diagnostycznej i leczenia"
+        },
+        {
+          "id": "d",
+          "text": "religijno-duchowe — choroba jako kara za grzechy lub test wiary wymagający modlitwy i pokuty"
+        },
+        {
+          "id": "e",
+          "text": "fatalistyczne — akceptacja choroby jako nieuniknionego losu bez prób aktywnego leczenia"
+        }
+      ],
+      "explanation": "W społeczeństwach **zachodnich** dominuje podejście **medyczne**, traktujące chorobę jako **problem biologiczny wymagający leczenia**. W niektórych kulturach choroba bywa postrzegana jako kara za grzechy lub test, a w kulturach tradycyjnych istnieje większa tendencja do szukania pomocy u **szamanów, uzdrowicieli** czy stosowania medycyny ludowej. To ilustracja kulturowego zróżnicowania postaw wobec choroby."
+    },
+    {
+      "id": "phum-soc-gen-098",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie budynek użyteczności publicznej — fizyczny obiekt bez norm i reguł zachowań"
+        },
+        {
+          "id": "b",
+          "text": "tymczasowe zrzeszenie osób — luźna grupa bez utrwalonych wzorców i kontroli społecznej"
+        },
+        {
+          "id": "c",
+          "text": "nieformalna grupa przyjaciół — oparta na sympatii bez uregulowanego zaspokajania potrzeb zbiorowości"
+        },
+        {
+          "id": "d",
+          "text": "trwały układ społeczno-kulturowy zaspokajający potrzeby zbiorowości wg norm i kontroli społecznej"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie organizacja państwowa — instytucja formalna bez elementu wspólnoty i kultury"
+        }
+      ],
+      "explanation": "**Instytucja społeczna** to stosunkowo **trwały układ społeczno-kulturowy** zaspokajający wyodrębnione potrzeby zbiorowości i jednostek w sposób **uregulowany**, podlegający **kontroli społecznej i normom**. Instytucje to powtarzalne, utrwalone sposoby zachowania, wzorce, reguły i rytuały, które czynią świat interakcji **przewidywalnym**. Rodzina może być rozpatrywana zarówno jako grupa społeczna, jak i jako instytucja."
+    },
+    {
+      "id": "phum-soc-gen-099",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "wzmacnianie więzi społecznych — redukcja samotności seniorów przez regularne kontakty międzypokoleniowe"
+        },
+        {
+          "id": "b",
+          "text": "wykluczenie cyfrowe — pogłębianie braku dostępu osób starszych do technologii informacyjnych"
+        },
+        {
+          "id": "c",
+          "text": "zmiana stereotypów — przełamywanie uprzedzeń wiekowych w obu kierunkach między pokoleniami"
+        },
+        {
+          "id": "d",
+          "text": "zwiększenie aktywności fizycznej — wspólne ćwiczenia i ruch jako element integracji międzypokoleniowej"
+        },
+        {
+          "id": "e",
+          "text": "wzajemne uczenie się — wymiana wiedzy, doświadczenia i umiejętności między młodszymi a starszymi"
+        }
+      ],
+      "explanation": "**Wzajemne uczenie się** to korzyść integracji międzypokoleniowej, w której osoby starsze dzielą się **wiedzą i doświadczeniem** (tradycje, mądrość życiowa), a młodsze wprowadzają je w świat **nowych technologii** i współczesnych trendów. Inne korzyści to: zmiana stereotypów, zwiększenie aktywności fizycznej/psychicznej oraz wzmacnianie więzi społecznych (walka z samotnością seniorów). Wymiana ma charakter dwukierunkowy."
+    },
+    {
+      "id": "phum-soc-gen-100",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "osoby o wysokim statusie ekonomicznym — z łatwym dostępem do prywatnej opieki i specjalistów"
+        },
+        {
+          "id": "b",
+          "text": "imigranci i mniejszości etniczne — narażeni na barierę językową, dyskryminację i brak akceptacji"
+        },
+        {
+          "id": "c",
+          "text": "osoby młode — z mniejszym doświadczeniem w orientacji w systemie opieki zdrowotnej kraju"
+        },
+        {
+          "id": "d",
+          "text": "mieszkańcy dużych miast — z lepszą dostępnością placówek i specjalistów medycznych"
+        },
+        {
+          "id": "e",
+          "text": "osoby z wyższym wykształceniem — lepiej radzące sobie z nawigacją w publicznym systemie ochrony zdrowia"
+        }
+      ],
+      "explanation": "**Imigranci i mniejszości etniczne** mogą doświadczać trudności w dostępie do opieki zdrowotnej z powodu **bariery językowej, dyskryminacji lub braku akceptacji**. Dodatkowo adaptacja do nowego środowiska wiąże się z przewlekłym stresem negatywnie wpływającym na zdrowie. Materiał podkreśla potrzebę **wrażliwości kulturowej** personelu medycznego i dążenia do równości w dostępie do opieki zdrowotnej."
+    },
+    {
+      "id": "phum-soc-gen-101",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Model Beveridge'a — finansowanie podatkowe, państwowe placówki, zdrowie jako prawo obywatelskie"
+        },
+        {
+          "id": "b",
+          "text": "Model Bismarcka — obowiązkowe składki pracownik-pracodawca, niezależne kasy chorych i finansowanie opieki"
+        },
+        {
+          "id": "c",
+          "text": "Model liberalny (rynkowy) — dominacja prywatnych ubezpieczeń, traktowanie opieki jako towaru na rynku"
+        },
+        {
+          "id": "d",
+          "text": "Model mieszany — łączenie finansowania publicznego ze współistniejącym sektorem prywatnym i komercyjnym"
+        },
+        {
+          "id": "e",
+          "text": "Model rezydualny — minimalna rola państwa, opieka tylko dla najuboższych w ramach pomocy społecznej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-102",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "William Beveridge — autor raportu z 1942 r. o uniwersalnym systemie finansowanym wyłącznie z podatków państwowych"
+        },
+        {
+          "id": "b",
+          "text": "Otto von Bismarck — w 1883 r. wprowadził pierwszy obowiązkowy system ubezpieczeń ze składek pracowników"
+        },
+        {
+          "id": "c",
+          "text": "Otto von Bismarck — w 1942 r. opracował reformę brytyjskiego NHS finansowanego podatkowo z budżetu państwa"
+        },
+        {
+          "id": "d",
+          "text": "William Beveridge — w 1883 r. stworzył niemieckie kasy chorych oparte na składkach pracownik-pracodawca"
+        },
+        {
+          "id": "e",
+          "text": "Rudolf Virchow — w 1848 r. zaproponował powszechną opiekę z budżetu państwa w zaborze pruskim"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-103",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Spełnienie wymogów Unii Europejskiej dotyczących jednolitego rynku ubezpieczeń zdrowotnych w państwach członkowskich"
+        },
+        {
+          "id": "b",
+          "text": "Realizacja postulatów raportu Beveridge'a z 1942 r. o uniwersalnym systemie podatkowym w Wielkiej Brytanii"
+        },
+        {
+          "id": "c",
+          "text": "Przeciwdziałanie rosnącym wpływom ruchów socjalistycznych i stabilizacja władzy poprzez reformy socjalne"
+        },
+        {
+          "id": "d",
+          "text": "Prywatyzacja istniejących kas chorych i przekazanie organizacji opieki wyłącznie sektorowi komercyjnemu"
+        },
+        {
+          "id": "e",
+          "text": "Wprowadzenie modelu rynkowej konkurencji ubezpieczycieli bez regulacji państwa i obowiązku solidarnościowego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-104",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wielka Brytania — klasyczny przykład modelu Beveridge'a z NHS finansowanym z podatków i państwowymi placówkami"
+        },
+        {
+          "id": "b",
+          "text": "Niemcy — model Bismarcka oparty na obowiązkowych składkach zdrowotnych i niezależnych kasach chorych"
+        },
+        {
+          "id": "c",
+          "text": "Szwecja — nordycki system publiczny z silną rolą państwa, wysokimi podatkami i powszechnym dostępem"
+        },
+        {
+          "id": "d",
+          "text": "Stany Zjednoczone — model liberalny z dominacją prywatnych ubezpieczeń i traktowaniem opieki jako towaru"
+        },
+        {
+          "id": "e",
+          "text": "Kanada — system publiczno-prywatny z uniwersalnym ubezpieczeniem provincialnym i elementami solidarności"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-105",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Czysto publiczny model Beveridge'a — wyłącznie finansowanie podatkowe bez udziału sektora prywatnego w opiece"
+        },
+        {
+          "id": "b",
+          "text": "Czysto liberalny model rynkowy — opieka jako towar bez publicznego ubezpieczenia obowiązkowego dla obywateli"
+        },
+        {
+          "id": "c",
+          "text": "Model w pełni prywatnych ubezpieczeń obowiązkowych bez roli instytucji publicznych finansujących świadczenia"
+        },
+        {
+          "id": "d",
+          "text": "Model rezydualny — państwo interweniuje wyłącznie w pomocy społecznej dla najuboższych, reszta na rynku"
+        },
+        {
+          "id": "e",
+          "text": "Model mieszany — dominacja publicznego NFZ przy rosnącym sektorze prywatnym i płatnościach bezpośrednich"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-106",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "1999 — rok powołania NFZ i przejścia na model ubezpieczeniowy po transformacji ustrojowej w Polsce"
+        },
+        {
+          "id": "b",
+          "text": "1950 — wprowadzenie powszechnego ubezpieczenia z budżetu państwa w okresie PRL i państwowych szpitali"
+        },
+        {
+          "id": "c",
+          "text": "1989 — rozpoczęcie transformacji ustrojowej i pierwszych reform strukturalnych systemu ochrony zdrowia"
+        },
+        {
+          "id": "d",
+          "text": "2004 — rok wejścia Polski do UE i harmonizacji przepisów dotyczących transgranicznej opieki zdrowotnej"
+        },
+        {
+          "id": "e",
+          "text": "1918 — odrodzenie państwa i początek budowy systemu opieki zdrowotnej w II Rzeczypospolitej Polskiej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-107",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "PKV (Private Krankenversicherung) — prywatne ubezpieczenie dla osób z wyższymi dochodami i samozatrudnionych"
+        },
+        {
+          "id": "b",
+          "text": "GKV (Gesetzliche Krankenversicherung) — publiczne, obowiązkowe ubezpieczenie solidarnościowe w Niemczech"
+        },
+        {
+          "id": "c",
+          "text": "NHS (National Health Service) — brytyjski system publiczny finansowany z podatków państwowych i uniwersalny"
+        },
+        {
+          "id": "d",
+          "text": "NFZ (Narodowy Fundusz Zdrowia) — polska instytucja finansująca opiekę ze składki zdrowotnej i budżetu"
+        },
+        {
+          "id": "e",
+          "text": "HMO (Health Maintenance Organization) — amerykański model zarządzanej opieki zdrowotnej w sektorze prywatnym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-108",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wysokie koszty administracyjne prywatnych ubezpieczeń — typowa wada modelu liberalnego, nie publicznego Beveridge'a"
+        },
+        {
+          "id": "b",
+          "text": "Brak powszechnego dostępu do opieki — cecha modelu rynkowego, gdzie dostęp zależy od zdolności finansowej"
+        },
+        {
+          "id": "c",
+          "text": "Przeciążenie systemu i długie kolejki przy ograniczonych zasobach publicznych finansowanych podatkowo"
+        },
+        {
+          "id": "d",
+          "text": "Całkowity brak roli państwa w finansowaniu i organizacji opieki zdrowotnej obywateli państwa"
+        },
+        {
+          "id": "e",
+          "text": "Uzależnienie dostępu wyłącznie od dochodów pacjenta — wada modelu liberalnego, nie uniwersalnego publicznego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-109",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Powołanie Narodowego Funduszu Zdrowia i przejście na model składkowy ubezpieczeniowy finansowany ze składek"
+        },
+        {
+          "id": "b",
+          "text": "Wprowadzenie modelu Bismarcka ze składkami pracownik-pracodawca w latach pięćdziesiątych XX wieku w PRL"
+        },
+        {
+          "id": "c",
+          "text": "Prywatyzacja szpitali i przekazanie organizacji opieki wyłącznie sektorowi komercyjnemu i prywatnemu"
+        },
+        {
+          "id": "d",
+          "text": "Wprowadzenie powszechnego ubezpieczenia zdrowotnego finansowanego z budżetu państwa w 1950 r."
+        },
+        {
+          "id": "e",
+          "text": "Likwidacja państwowego systemu szpitali w ramach gospodarczych reform transformacyjnych lat dziewięćdziesiątych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-110",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zabór rosyjski — najsłabiej rozwinięty system opieki z ograniczonym dostępem do lekarzy i placówek medycznych"
+        },
+        {
+          "id": "b",
+          "text": "Żaden — system ubezpieczeń zdrowotnych powstał dopiero w II RP po odzyskaniu niepodległości w 1918 r."
+        },
+        {
+          "id": "c",
+          "text": "Zabór austriacki — ubezpieczenia ograniczone do wybranych grup zawodowych bez powszechnego charakteru"
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie trzy w równym stopniu — jednolity system ubezpieczeń i opieki we wszystkich zaborach na ziemiach polskich"
+        },
+        {
+          "id": "e",
+          "text": "Zabór pruski — ubezpieczenia robotników i instytucje sanitarne według bismarckowskich reform socjalnych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-111",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Indywidualna odpowiedzialność za zdrowie i traktowanie opieki medycznej jako towaru na rynku"
+        },
+        {
+          "id": "b",
+          "text": "Powszechne poczucie solidarności społecznej w zdrowiu — cecha modeli Bismarcka i Beveridge'a, nie liberalnego"
+        },
+        {
+          "id": "c",
+          "text": "Pełna równość dostępu do opieki niezależnie od dochodów — cecha systemów uniwersalnych finansowanych publicznie"
+        },
+        {
+          "id": "d",
+          "text": "Dominacja państwowych placówek i finansowanie z podatków — typowe cechy modelu Beveridge'a w Europie"
+        },
+        {
+          "id": "e",
+          "text": "Brak roli organizacji charytatywnych — w modelu liberalnym NGO często wypełniają luki w dostępie do opieki"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-112",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pacjenci zamożni nadużywają systemu publicznego kosztem osób o niższych dochodach i ograniczonych zasobach"
+        },
+        {
+          "id": "b",
+          "text": "Czynniki ekonomiczne pogarszają zdrowie, a złe zdrowie utrudnia poprawę sytuacji materialnej i zawodowej"
+        },
+        {
+          "id": "c",
+          "text": "Nadmiar profilaktyki prowadzi do hipochondrii i nieuzasadnionego obciążenia systemu opieki zdrowotnej"
+        },
+        {
+          "id": "d",
+          "text": "Lekarze odmawiają leczenia osób ubogich z powodu braku prywatnego ubezpieczenia i niskich dochodów"
+        },
+        {
+          "id": "e",
+          "text": "Prywatne ubezpieczenia zwiększają dostępność opieki dla wszystkich grup społecznych bez wykluczeń finansowych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-113",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bariery językowe u imigrantów utrudniające komunikację z personelem medycznym w placówkach publicznych"
+        },
+        {
+          "id": "b",
+          "text": "Brak dostępu do internetu i telemedycyny w obszarach miejskich z dobrze rozwiniętą infrastrukturą cyfrową"
+        },
+        {
+          "id": "c",
+          "text": "Utrudniony dostęp mieszkańców wsi i małych miejscowości do specjalistów oraz koszty i czas dojazdu"
+        },
+        {
+          "id": "d",
+          "text": "Cenzura informacji medycznej przez instytucje państwowe ograniczająca edukację zdrowotną obywateli"
+        },
+        {
+          "id": "e",
+          "text": "Wykluczenie osób niesłyszących z powodu braku tłumaczy języka migowego w placówkach medycznych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-114",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyłącznie bezpośrednia cena badania profilaktycznego, bez uwzględnienia kosztów pośrednich towarzyszących wizycie"
+        },
+        {
+          "id": "b",
+          "text": "Koszty zakupu prywatnego ubezpieczenia zdrowotnego obejmującego badania kontrolne i profilaktykę specjalistyczną"
+        },
+        {
+          "id": "c",
+          "text": "Podatki i składki na NFZ finansujące publiczny system profilaktyki w ramach obowiązkowego ubezpieczenia"
+        },
+        {
+          "id": "d",
+          "text": "Transport, utracone dochody z powodu nieobecności w pracy oraz koszty opieki nad dziećmi i seniorami"
+        },
+        {
+          "id": "e",
+          "text": "Opłaty rejestracyjne w przychodni POZ oraz dodatkowe koszty badań poza podstawowym pakietem refundowanym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-115",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Profilaktyka jest zawsze droższa niż leczenie ostrego schorzenia wymagającego hospitalizacji i intensywnej terapii"
+        },
+        {
+          "id": "b",
+          "text": "Profilaktyka wymaga hospitalizacji i długiego pobytu w placówce medycznej, co generuje wysokie koszty bezpośrednie"
+        },
+        {
+          "id": "c",
+          "text": "Profilaktyka jest zakazana przepisami dla osób ubogich korzystających z pomocy społecznej i świadczeń socjalnych"
+        },
+        {
+          "id": "d",
+          "text": "NFZ nie refunduje żadnej profilaktyki — wszystkie badania kontrolne i programy prewencyjne są w pełni płatne"
+        },
+        {
+          "id": "e",
+          "text": "Korzyści profilaktyki są odroczone w czasie, więc ustępują doraźnym potrzebom materialnym i bieżącym wydatkom"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-116",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unikanie wizyt i programów profilaktycznych z obawy przed oceną i postrzeganiem profilaktyki jako luksusu bogatych"
+        },
+        {
+          "id": "b",
+          "text": "Lepsza opieka z powodu współczucia personelu wobec osób o niższym statusie społecznym w publicznych placówkach medycznych"
+        },
+        {
+          "id": "c",
+          "text": "Pierwszeństwo w kolejkach do specjalistów dzięki preferencjom socjalnym, ulgom i programom wsparcia dla osób ubogich"
+        },
+        {
+          "id": "d",
+          "text": "Automatyczne objęcie prywatnym ubezpieczeniem zdrowotnym przez państwo bez względu na dochody"
+        },
+        {
+          "id": "e",
+          "text": "Częstsze korzystanie z innowacyjnych terapii dzięki programom wsparcia finansowego dla osób ubogich"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-117",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Brak wpływu stresu finansowego na proces terapeutyczny, współpracę z lekarzem i realizację zaleceń medycznych"
+        },
+        {
+          "id": "b",
+          "text": "Obniżenie zdolności koncentracji i zaangażowania, możliwe nawroty chorób psychicznych i pogorszenie wyników"
+        },
+        {
+          "id": "c",
+          "text": "Poprawa koncentracji pacjenta na leczeniu dzięki motywacji do szybkiego powrotu do pracy i stabilizacji dochodów"
+        },
+        {
+          "id": "d",
+          "text": "Zwiększenie motywacji do kontynuowania terapii w obliczu presji materialnej i obawy o utratę źródła utrzymania"
+        },
+        {
+          "id": "e",
+          "text": "Wpływ dotyczy wyłącznie terapii chirurgicznych, nie obejmuje psychoterapii, farmakoterapii ani rehabilitacji"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-118",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identyczny dostęp wszystkich pacjentów do terapii niezależnie od statusu majątkowego i wysokości dochodów"
+        },
+        {
+          "id": "b",
+          "text": "Tańsze koszty terapii innowacyjnych w porównaniu ze standardowymi metodami leczenia w publicznym systemie"
+        },
+        {
+          "id": "c",
+          "text": "Dostęp do kosztownych terapii innowacyjnych poza refundacją tylko dla części pacjentów z wyższymi dochodami"
+        },
+        {
+          "id": "d",
+          "text": "Państwo refunduje wszystkie terapie genowe i biologiczne w ramach publicznego systemu ochrony zdrowia"
+        },
+        {
+          "id": "e",
+          "text": "Nierówności dotyczą wyłącznie diagnostyki laboratoryjnej, nie wyboru metod terapeutycznych i leków specjalistycznych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-119",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zwiększenie liczby zlecanych badań diagnostycznych w celu podwyższenia dochodów lekarza z kontraktów z NFZ"
+        },
+        {
+          "id": "b",
+          "text": "Wydłużenie czasu każdej konsultacji dzięki mniejszemu obciążeniu grafikiem pracy i lepszej organizacji placówki"
+        },
+        {
+          "id": "c",
+          "text": "Poprawa jakości diagnostyki dzięki większej motywacji do staranności w pracy i ciągłemu doskonaleniu zawodowemu"
+        },
+        {
+          "id": "d",
+          "text": "Wypalenie zawodowe, skrócenie czasu poświęcanego pacjentowi i ryzyko przeoczenia istotnych objawów klinicznych"
+        },
+        {
+          "id": "e",
+          "text": "Brak wpływu wynagrodzeń na jakość opieki — decyduje wyłącznie etyka zawodowa i osobista odpowiedzialność lekarza"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-120",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wybór najdroższej dostępnej terapii dla pewności skuteczności i bezpieczeństwa leczenia mimo znacznych ograniczeń budżetu rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Domaganie się wyłącznie terapii innowacyjnych bez względu na koszty, refundację NFZ i realną dostępność w systemie"
+        },
+        {
+          "id": "c",
+          "text": "Całkowita rezygnacja z jakiegokolwiek leczenia z powodu braku środków finansowych i braku wsparcia społecznego"
+        },
+        {
+          "id": "d",
+          "text": "Korzystanie wyłącznie z prywatnej opieki pomimo ograniczeń budżetowych rodziny i braku ubezpieczenia komercyjnego"
+        },
+        {
+          "id": "e",
+          "text": "Wybór tańszych, mniej skutecznych lub niesprawdzonych terapii grożących gorszymi wynikami leczenia i powikłaniami"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-121",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Giełda papierów wartościowych — instytucja rynku kapitałowego niebędąca elementem systemu ochrony zdrowia"
+        },
+        {
+          "id": "b",
+          "text": "Personel medyczny — lekarze, pielęgniarki, położne i inni specjaliści bezpośrednio świadczący usługi zdrowotne"
+        },
+        {
+          "id": "c",
+          "text": "Finansowanie — składki zdrowotne, podatki, ubezpieczenia prywatne i środki przekazywane z budżetu państwa"
+        },
+        {
+          "id": "d",
+          "text": "Placówki medyczne — szpitale, przychodnie POZ, ośrodki specjalistyczne i centra diagnostyczno-lecznicze"
+        },
+        {
+          "id": "e",
+          "text": "Instytucje zarządzające i regulujące — Ministerstwo Zdrowia, NFZ, organy nadzoru, inspekcja sanitarna i kontrola"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-122",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Finansowanie wyłącznie z podatków ogólnych bez roli prywatnych ubezpieczycieli i konkurencji rynkowej"
+        },
+        {
+          "id": "b",
+          "text": "Obowiązkowe prywatne ubezpieczenie z podstawowym pakietem i dotacjami państwa dla osób o niskich dochodach"
+        },
+        {
+          "id": "c",
+          "text": "Całkowite wykluczenie sektora prywatnego z organizacji, finansowania i świadczenia opieki zdrowotnej obywateli"
+        },
+        {
+          "id": "d",
+          "text": "Brak konkurencji między ubezpieczycielami — monopol państwowy na ubezpieczenia zdrowotne wszystkich obywateli kraju"
+        },
+        {
+          "id": "e",
+          "text": "System identyczny z brytyjskim NHS — finansowanie podatkowe, państwowe placówki, brak prywatnych składek i konkurencji"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-123",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyłącznie osoby bezrobotne zarejestrowane w urzędzie pracy korzystające ze świadczeń prywatnego PKV"
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie emeryci przechodzący automatycznie z publicznego GKV na prywatne PKV po osiągnięciu wieku emerytalnego"
+        },
+        {
+          "id": "c",
+          "text": "Osoby o wyższych dochodach, samozatrudnieni oraz wybrani pracownicy sfery publicznej i urzędnicy państwowi"
+        },
+        {
+          "id": "d",
+          "text": "Tylko imigranci bez statusu rezydenta korzystający z prywatnych ubezpieczeń zdrowotnych zamiast GKV"
+        },
+        {
+          "id": "e",
+          "text": "Wszyscy obywatele Niemiec obowiązkowo objęci PKV zamiast publicznego, solidarnościowego ubezpieczenia GKV"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-124",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wszyscy płacą identyczną kwotę składki zdrowotnej niezależnie od dochodów, wieku i sytuacji rodzinnej"
+        },
+        {
+          "id": "b",
+          "text": "Ubezpieczenie GKV jest dobrowolne — każdy obywatel decyduje samodzielnie o przystąpieniu do publicznego systemu"
+        },
+        {
+          "id": "c",
+          "text": "Składki zdrowotne płaci wyłącznie pracodawca bez udziału pracownika w finansowaniu opieki medycznej"
+        },
+        {
+          "id": "d",
+          "text": "Osoby zarabiające więcej płacą wyższe składki, finansując tym samym dostęp osób mniej zarabiających"
+        },
+        {
+          "id": "e",
+          "text": "Dostęp do świadczeń zależy od wysokości wpłaconej składki — zasada ekwiwalentności typowa dla ubezpieczeń prywatnych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-125",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gwałtowny przyrost naturalny generujący rosnącą liczbę młodych wymagających opieki pediatrycznej i edukacyjnej"
+        },
+        {
+          "id": "b",
+          "text": "Spadek kosztów leczenia dzięki postępowi technologicznemu, efektywności systemu i optymalizacji wydatków publicznych"
+        },
+        {
+          "id": "c",
+          "text": "Całkowity brak imigracji personelu medycznego — hipotetyczny scenariusz, nie wspólny problem Niemiec i Polski"
+        },
+        {
+          "id": "d",
+          "text": "Nadmiar lekarzy specjalistów powodujący nierówności w rozdziale świadczeń i konkurencję między placówkami"
+        },
+        {
+          "id": "e",
+          "text": "Starzenie się społeczeństwa i wzrost zapotrzebowania na opiekę geriatryczną oraz długoterminową"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-126",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Polska utrzymuje wydatki na zdrowie poniżej średniej unijnej w relacji do PKB"
+        },
+        {
+          "id": "b",
+          "text": "przewyższają średnią OECD i zbliżają się do poziomu wydatków Niemiec"
+        },
+        {
+          "id": "c",
+          "text": "są najwyższe wśród państw Unii Europejskiej mierzone udziałem w PKB"
+        },
+        {
+          "id": "d",
+          "text": "dorównują średniej światowej dzięki dynamicznemu wzrostowi składek NFZ"
+        },
+        {
+          "id": "e",
+          "text": "w całości finansowane ze środków prywatnych ubezpieczycieli bez dotacji publicznych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-127",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "całkowitej prywatyzacji publicznego systemu ochrony zdrowia i likwidacji NFZ"
+        },
+        {
+          "id": "b",
+          "text": "reorganizacji placówek i zarządzania siecią świadczeń szpitalnych"
+        },
+        {
+          "id": "c",
+          "text": "wprowadzenia modelu ubezpieczeniowego opartego wyłącznie na sektorze prywatnym"
+        },
+        {
+          "id": "d",
+          "text": "zniesienia obowiązkowej składki zdrowotnej finansowanej z dochodów pracowników"
+        },
+        {
+          "id": "e",
+          "text": "liberalizacji rynku medycznego z pełnym wycofaniem państwa z kontraktowania usług"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-128",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "nadmiaru personelu medycznego przekraczającego zapotrzebowanie systemów opieki"
+        },
+        {
+          "id": "b",
+          "text": "skrócenia kolejek do specjalistów poniżej standardów krajów rozwiniętych"
+        },
+        {
+          "id": "c",
+          "text": "rosnących kosztów terapii i leków obciążających budżety państw i ubezpieczycieli"
+        },
+        {
+          "id": "d",
+          "text": "całkowitego wyeliminowania biurokracji w procesie finansowania świadczeń zdrowotnych"
+        },
+        {
+          "id": "e",
+          "text": "spadku zapotrzebowania na opiekę wynikającego z młodniejących struktur demograficznych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-129",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "pełnej gotowości wszystkich systemów na skalę globalną bez istotnych słabości organizacyjnych"
+        },
+        {
+          "id": "b",
+          "text": "zbędności profilaktyki zdrowotnej po udowodnieniu skuteczności szczepionek przeciw COVID-19"
+        },
+        {
+          "id": "c",
+          "text": "całkowitego zniknięcia biurokracji dzięki uproszczeniu procedur w pierwszej fali pandemii"
+        },
+        {
+          "id": "d",
+          "text": "małej elastyczności, braków kadrowych i niedostatków w dostępie do opieki medycznej"
+        },
+        {
+          "id": "e",
+          "text": "trwałego spadku kosztów leczenia chorób zakaźnych we wszystkich krajach rozwiniętych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-130",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "legalnej sekcji zwłok przestępców wykonywanej w celach edukacyjnych i sądowych"
+        },
+        {
+          "id": "b",
+          "text": "obserwacji rentgenowskiej struktur wewnętrznych ciała w ramach badań diagnostycznych"
+        },
+        {
+          "id": "c",
+          "text": "wiwisekcji zwierząt prowadzonej systematycznie w celu opisu narządów i układów"
+        },
+        {
+          "id": "d",
+          "text": "tłumaczenia greckich tekstów medycznych na język hieroglificzny w świątyniach"
+        },
+        {
+          "id": "e",
+          "text": "procesu mumifikacji ciał i przygotowania zmarłych do pochówku w tradycji religijnej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-131",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Papirus Edwin Smitha — najstarszy egipski opis urazów, ran i zabiegów chirurgicznych"
+        },
+        {
+          "id": "b",
+          "text": "Papirus Ebersa — zielnik ziołowy z opisami chorób wewnętrznych i magicznych metod"
+        },
+        {
+          "id": "c",
+          "text": "Papirus Kahuna — tekst medyczny z wysp Pacyfiku opisujący masaż i terapię manualną"
+        },
+        {
+          "id": "d",
+          "text": "Kodeks Hammurabiego — mezopotamski zbiór praw regulujący odpowiedzialność lekarzy"
+        },
+        {
+          "id": "e",
+          "text": "Corpus Hippocraticum — grecki zbiór traktatów o teorii humoralnej i etyce lekarskiej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-132",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Papirus Ebersa — egipski zielnik opisujący receptury ziołowe i rytuały lecznicze"
+        },
+        {
+          "id": "b",
+          "text": "Kodeks Hammurabiego — prawa regulujące wynagrodzenia i kary za błędy lekarzy"
+        },
+        {
+          "id": "c",
+          "text": "Prawa Solona — ateńskie ustawy regulujące praktykę medyczną w polis greckich"
+        },
+        {
+          "id": "d",
+          "text": "Corpus Iuris Civilis — bizantyjski kodeks prawa cywilnego Justyniana Wielkiego"
+        },
+        {
+          "id": "e",
+          "text": "Canon Medicinae — arabski podręcznik Awicenny systematyzujący wiedzę medyczną"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-133",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Galen — rzymski lekarz rozwijający teorię humoralną na podstawie wiwisekcji zwierząt"
+        },
+        {
+          "id": "b",
+          "text": "Asklepiades z Bitynii — twórca szkoły metodystów odrzucającej teorię humoralną"
+        },
+        {
+          "id": "c",
+          "text": "Hipokrates z Kos — „ojciec medycyny”, autor zasady naturalizmu w leczeniu chorób"
+        },
+        {
+          "id": "d",
+          "text": "Awicenna (Ibn Sina) — autor „Kanonu medycyny” używanego w Europie do XVII w."
+        },
+        {
+          "id": "e",
+          "text": "Imhotep — egipski lekarz i architekt czczonego później niemal jak bóstwo uzdrawiające"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-134",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "krwią (sanguis) — humorem serca, wiosny i temperamentu sangwinicznego"
+        },
+        {
+          "id": "b",
+          "text": "żółtą żółcią (chole) — humorem wątroby, lata i temperamentu cholerycznego"
+        },
+        {
+          "id": "c",
+          "text": "flegmą (phlegma) — humorem mózgu, zimy i temperamentu flegmatycznego"
+        },
+        {
+          "id": "d",
+          "text": "czarną żółcią (melanchole) — humorem śledziony i temperamentu melancholijnego"
+        },
+        {
+          "id": "e",
+          "text": "limfą — płynem odpornościowym nieuwzględnianym w klasycznej teorii czterech humorów"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-135",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "bimaristanami — arabskimi szpitalami publicznymi z oddziałami specjalistycznymi"
+        },
+        {
+          "id": "b",
+          "text": "liceami — greckimi ośrodkami edukacji filozoficznej bez funkcji leczniczej"
+        },
+        {
+          "id": "c",
+          "text": "termani — rzymskimi łaźniami służącymi higienie i relaksowi społeczeństwa"
+        },
+        {
+          "id": "d",
+          "text": "gimnazjonami — miejscami ćwiczeń fizycznych i wychowania młodzieży w Grecji"
+        },
+        {
+          "id": "e",
+          "text": "asklepionami — świątyniami Asklepiosa pełniącymi funkcję pierwszych szpitali"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-136",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Galen — Grek z Pergamonu, badacz anatomii zwierząt, autorytet medyczny do renesansu"
+        },
+        {
+          "id": "b",
+          "text": "Asklepiades z Bitynii — rzymianin promujący łagodne metody leczenia bez teorii humoralnej"
+        },
+        {
+          "id": "c",
+          "text": "Celsus — rzymski encyklopedysta opisujący objawy zapalenia w dziele De Medicina"
+        },
+        {
+          "id": "d",
+          "text": "Hipokrates — grecki lekarz z Kos wprowadzający naturalistyczne ujęcie przyczyn chorób"
+        },
+        {
+          "id": "e",
+          "text": "Dioskorydes — autor greckiego zielnika opisującego właściwości lecznicze roślin i minerałów"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-137",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "febris, tussis, dyspnoe, cyanosis — objawy oddechowe: gorączka, kaszel, duszność, sinica"
+        },
+        {
+          "id": "b",
+          "text": "rubor, tumor, calor, dolor — tetrada objawów zapalenia opisana przez Celsusa"
+        },
+        {
+          "id": "c",
+          "text": "pallor, frigor, sopor, stupor — bladość, dreszcze, senność i otępienie"
+        },
+        {
+          "id": "d",
+          "text": "sanguis, chole, melanchole, phlegma — cztery soki ustrojowe teorii humoralnej"
+        },
+        {
+          "id": "e",
+          "text": "caput, cor, hepar, ren — głowa, serce, wątroba i nerka jako organy docelowe"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-138",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "szkoły dogmatycznej opartej na teorii humoralnej Hipokratesa i tekstach Galena"
+        },
+        {
+          "id": "b",
+          "text": "chirurgii wojskowej specjalizującej się w leczeniu ran i amputacji na froncie"
+        },
+        {
+          "id": "c",
+          "text": "szkoły metodystów — łagodnego holizmu odrzucającego teorię humoralną"
+        },
+        {
+          "id": "d",
+          "text": "medycyny anatomicznej opartej na sekcji zwłok ludzkich w szkołach rzymskich"
+        },
+        {
+          "id": "e",
+          "text": "teorii krążenia płucnego opisanej przed Harveyem przez arabskich uczonych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-139",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Al-Razi (Rhazes) — autor Kitab al-Hawi, pionier diagnostyki różnicowej ospę–odra"
+        },
+        {
+          "id": "b",
+          "text": "Al-Zahrawi (Abulcasis) — twórca Al-Tasrif, uważany za ojca nowożytnej chirurgii"
+        },
+        {
+          "id": "c",
+          "text": "Ibn al-Nafis — opis małego obiegu krwi wyprzedzający Harveya o niemal 400 lat"
+        },
+        {
+          "id": "d",
+          "text": "Awicenna (Ibn Sina) — autor „Kanonu medycyny” używanego w Europie do XVII w."
+        },
+        {
+          "id": "e",
+          "text": "Hunayn ibn Ishaq — tłumacz dzieł Galena i Hipokratesa w Domu Mądrości w Bagdadzie"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-140",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Awicenna (Ibn Sina) — autor systematycznego „Kanonu medycyny” stosowanego w Europie"
+        },
+        {
+          "id": "b",
+          "text": "Al-Razi (Rhazes) — empiryczny diagnosta odróżniający ospę od odry w praktyce klinicznej"
+        },
+        {
+          "id": "c",
+          "text": "Al-Zahrawi (Abulcasis) — chirurg opisujący narzędzia i techniki w traktacie Al-Tasrif"
+        },
+        {
+          "id": "d",
+          "text": "Galen — rzymski autorytet medycyny opierający anatomię na wiwisekcji zwierząt"
+        },
+        {
+          "id": "e",
+          "text": "Ibn al-Nafis — opis małego obiegu krwi wyprzedzający Williama Harveya o ~400 lat"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-141",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "ojca nowożytnej chirurgii — autora Al-Tasrif opisującego narzędzia i techniki"
+        },
+        {
+          "id": "b",
+          "text": "ojca teorii humoralnej — twórcy koncepcji czterech soków ustrojowych w medycynie"
+        },
+        {
+          "id": "c",
+          "text": "pierwszego tłumacza Hipokratesa na arabski w Domu Mądrości w Bagdadzie"
+        },
+        {
+          "id": "d",
+          "text": "twórcy pierwszego uniwersytetu medycznego w średniowiecznej Europie zachodniej"
+        },
+        {
+          "id": "e",
+          "text": "odkrywcy krążenia płucnego opisanego ponownie przez Williama Harveya w XVII w."
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-142",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "asklepionami — greckimi świątyniami Asklepiosa z senem asklepiadyjskim i rytuałami"
+        },
+        {
+          "id": "b",
+          "text": "bimaristanami — arabskimi szpitalami publicznymi dostępnymi niezależnie od wyznania"
+        },
+        {
+          "id": "c",
+          "text": "termani — rzymskimi łaźniami służącymi higienie publicznej bez opieki chorych"
+        },
+        {
+          "id": "d",
+          "text": "hospicjami — średniowiecznymi domami opieki nad umierającymi pod auspicjami Kościoła"
+        },
+        {
+          "id": "e",
+          "text": "lazaretami — placówkami kwarantanny dla chorych na choroby zakaźne w portach morskich"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-143",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "opisał krążenie płucne — mały obieg krwi wyprzedzający odkrycie Williama Harveya"
+        },
+        {
+          "id": "b",
+          "text": "stworzył przysięgę lekarską — etyczny kodeks zobowiązań lekarza wobec pacjenta"
+        },
+        {
+          "id": "c",
+          "text": "odróżnił ospę od odry — wczesny przykład diagnostyki różnicowej chorób zakaźnych"
+        },
+        {
+          "id": "d",
+          "text": "przeprowadził pierwszą transplantację narządu u człowieka w Bagdadzie w IX wieku"
+        },
+        {
+          "id": "e",
+          "text": "wynalazł mikroskop optyczny umożliwiający obserwację drobnoustrojów w materiale klinicznym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-144",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uniwersytet w Bolonii — założony 1088 r., późniejszy pionier publicznych sekcji zwłok"
+        },
+        {
+          "id": "b",
+          "text": "Uniwersytet Paryski — ośrodek medycyny galenistycznej z wydziałem od ok. 1215 r."
+        },
+        {
+          "id": "c",
+          "text": "Uniwersytet w Montpellier — szkoła medycyny arabsko-galenicznej w południowej Francji"
+        },
+        {
+          "id": "d",
+          "text": "Szkoła Medyczna w Salerno — najstarsza szkoła medyczna średniowiecznej Europie"
+        },
+        {
+          "id": "e",
+          "text": "Uniwersytet Oksfordzki — angielski ośrodek studiów medycznych rozwijający się od XII w."
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-145",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Salerno — najstarsza szkoła medyczna łącząca tradycje grecką, arabską i żydowską"
+        },
+        {
+          "id": "b",
+          "text": "Montpellier — ośrodek medycyny galenistycznej w południowej Francji od XIII wieku"
+        },
+        {
+          "id": "c",
+          "text": "Paryż — wiodący uniwersytet z wydziałem medycznym rozwijającym anatomię teoretyczną"
+        },
+        {
+          "id": "d",
+          "text": "Oksford — angielski uniwersytet kształcący lekarzy głównie z tekstów Galena i Awicenny"
+        },
+        {
+          "id": "e",
+          "text": "Bolonia — pionier publicznych sekcji zwłok od XIV wieku w nauczaniu anatomicznym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-146",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Domem Mądrości (Bayt al-Hikma) — ośrodkiem tłumaczeń dzieł greckich, perskich i indyjskich"
+        },
+        {
+          "id": "b",
+          "text": "bimaristanem — arabskim szpitalem publicznym z oddziałami specjalistycznymi i nauką kliniczną"
+        },
+        {
+          "id": "c",
+          "text": "asklepionem — grecką świątynią Asklepiosa łączącą kult z praktyką leczniczą"
+        },
+        {
+          "id": "d",
+          "text": "Scholą Salernitaną — najstarszą szkołą medyczną średniowiecznej Europy zachodniej"
+        },
+        {
+          "id": "e",
+          "text": "Kanonem Medicinae — arabskim podręcznikiem Awicenny stosowanym na uniwersytetach europejskich"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-147",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie zaburzenia biochemicznego wymagającego interwencji laboratoryjnej i farmakologicznej"
+        },
+        {
+          "id": "b",
+          "text": "kary za grzechy lub testu duchowego leczonego modlitwą, pokutą i sakramentami"
+        },
+        {
+          "id": "c",
+          "text": "skutku działania mikroorganizmów rozpoznawanych dopiero w erze mikroskopii i bakteriologii"
+        },
+        {
+          "id": "d",
+          "text": "zjawiska czysto genetycznego dziedziczonego w linii rodowej bez wpływu czynników społecznych"
+        },
+        {
+          "id": "e",
+          "text": "efektu nierównowagi atomów opisywanej przez atomistów greckich jako przyczyna chorób ciała"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-148",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "pacjent był aktywnym, równorzędnym uczestnikiem decyzji terapeutycznych i planu leczenia"
+        },
+        {
+          "id": "b",
+          "text": "obowiązywała pełna koncepcja praw pacjenta obejmująca świadomą zgodę na każdy zabieg"
+        },
+        {
+          "id": "c",
+          "text": "relacja była paternalistyczna — lekarz decydował, pacjent miał ufać jako „obiekt”"
+        },
+        {
+          "id": "d",
+          "text": "pacjent swobodnie wybierał spośród konkurujących terapii dostępnych na rynku medycznym"
+        },
+        {
+          "id": "e",
+          "text": "pacjenci podpisywali dokumenty świadomej zgody przed każdą interwencją terapeutyczną"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-149",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "uważani za elitę akademicką cieszącą się najwyższym prestiżem w hierarchii zawodowej"
+        },
+        {
+          "id": "b",
+          "text": "całkowicie zakazani przez prawo kościelne ze względu na ryzyko profanacji ciała ludzkiego"
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie duchowni pełniący funkcję opieki nad chorymi w klasztorach i szpitalach"
+        },
+        {
+          "id": "d",
+          "text": "traktowani jako rzemieślnicy wykonujący zabiegi mechaniczne o niższym statusie"
+        },
+        {
+          "id": "e",
+          "text": "jedyni uprawnieni do nauczania medycyny na uniwersytetach zamiast lekarzy-teoretyków"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-150",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie kapłana bez wiedzy medycznej, ograniczonego do funkcji rytualnych w świątyni"
+        },
+        {
+          "id": "b",
+          "text": "rzymskiego chirurga wojskowego specjalizującego się w leczeniu ran na froncie legionów"
+        },
+        {
+          "id": "c",
+          "text": "greckiego filozofa naturalnego badającego przyczyny chorób w szkole ateńskiej"
+        },
+        {
+          "id": "d",
+          "text": "babilońskiego prawodawcy autorstwa przepisów dotyczących odpowiedzialności lekarzy"
+        },
+        {
+          "id": "e",
+          "text": "lekarza, architekta i doradcy faraona Djosera, później czczonego niemal jak bóstwo"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-151",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyłącznie brak edukacji żywieniowej, bez wpływu ceny produktów i czasu na gotowanie"
+        },
+        {
+          "id": "b",
+          "text": "Obowiązek korzystania z diet refundowanych przez NFZ, które są droższe od żywności przetworzonej"
+        },
+        {
+          "id": "c",
+          "text": "Wyższa cena świeżych produktów oraz czas potrzebny na przygotowanie zdrowych posiłków"
+        },
+        {
+          "id": "d",
+          "text": "Brak sklepów spożywczych w rejonach o niskich dochodach, uniemożliwiający zakup jakiejkolwiek żywności"
+        },
+        {
+          "id": "e",
+          "text": "Wyższe składki ubezpieczeniowe obciążające gospodarstwa domowe o niskich dochodach"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-152",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Są mniej narażone na choroby dietozależne niż dzieci z rodzin o wyższych dochodach"
+        },
+        {
+          "id": "b",
+          "text": "Mają szerszy dostęp do płatnych zajęć sportowych i prywatnej profilaktyki zdrowotnej"
+        },
+        {
+          "id": "c",
+          "text": "Nie odczuwają skutków nierówności zdrowotnych dzięki powszechnemu ubezpieczeniu NFZ"
+        },
+        {
+          "id": "d",
+          "text": "Są bardziej narażone na otyłość, cukrzycę typu 2 i utrwalanie niezdrowych nawyków międzypokoleniowo"
+        },
+        {
+          "id": "e",
+          "text": "Częściej korzystają z bezpłatnych programów profilaktycznych niż rówieśnicy z zamożniejszych rodzin"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-153",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wszystkie badania diagnostyczne są wykonywane natychmiast, niezależnie od pilności wskazań klinicznych"
+        },
+        {
+          "id": "b",
+          "text": "Pierwszeństwo mają pacjenci z pilniejszymi potrzebami, a mniej pilni czekają dłużej na diagnostykę"
+        },
+        {
+          "id": "c",
+          "text": "Kolejność badań ustalana jest losowo, bez uwzględnienia stanu zdrowia i wskazań medycznych"
+        },
+        {
+          "id": "d",
+          "text": "Dostęp do diagnostyki ograniczony jest wyłącznie do pacjentów korzystających z opieki prywatnej"
+        },
+        {
+          "id": "e",
+          "text": "Priorytetyzacja dotyczy wyłącznie leczenia szpitalnego, nie wpływając na czas oczekiwania na badania"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-154",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pacjent zawsze wybiera najskuteczniejsze terapie, znając pełen zakres możliwości refundacji NFZ"
+        },
+        {
+          "id": "b",
+          "text": "Pacjent dysponuje pełną wiedzą o wszystkich ubezpieczeniach i programach wsparcia finansowego"
+        },
+        {
+          "id": "c",
+          "text": "Pacjent nie ponosi żadnych kosztów leczenia dzięki powszechnemu ubezpieczeniu zdrowotnemu"
+        },
+        {
+          "id": "d",
+          "text": "Edukacja finansowa nie wpływa na decyzje diagnostyczne, bo koszty leczenia są zawsze przejrzyste"
+        },
+        {
+          "id": "e",
+          "text": "Pacjent rezygnuje z badań lub wybiera tańsze opcje, nie znając refundacji i relacji koszt-efekt"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-155",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nadmierne finansowanie profilaktyki kosztem leczenia zaawansowanych schorzeń w systemie publicznym"
+        },
+        {
+          "id": "b",
+          "text": "Prewencja jest zawsze droższa niż leczenie choroby w stadium zaawansowanym w długim horyzoncie"
+        },
+        {
+          "id": "c",
+          "text": "Skupienie polityki na leczeniu ogranicza finansowanie wczesnej diagnostyki i profilaktyki"
+        },
+        {
+          "id": "d",
+          "text": "Równe finansowanie prewencji i leczenia zawsze gwarantuje wczesne wykrycie każdej choroby"
+        },
+        {
+          "id": "e",
+          "text": "Całkowita rezygnacja z leczenia na rzecz wyłącznie programów profilaktycznych w ochronie zdrowia"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-156",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Podstawowe szczepienia obowiązkowe w kalendarzu szczepień ochrony zdrowia, w pełni refundowane przez NFZ"
+        },
+        {
+          "id": "b",
+          "text": "Terapie genowe, immunoterapie i nowe leki biologiczne o wysokich kosztach i ograniczonej refundacji"
+        },
+        {
+          "id": "c",
+          "text": "Standardowe badania laboratoryjne krwi wykonywane w podstawowej opiece zdrowotnej"
+        },
+        {
+          "id": "d",
+          "text": "Konsultacje internistyczne w przychodni POZ w ramach ubezpieczenia zdrowotnego"
+        },
+        {
+          "id": "e",
+          "text": "Pomiar ciśnienia tętniczego podczas wizyty profilaktycznej u lekarza rodzinnego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-157",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zawsze w pełni zastępują profesjonalną terapię indywidualną prowadzoną przez specjalistę psychiatry"
+        },
+        {
+          "id": "b",
+          "text": "Są droższe od długotrwałej terapii prywatnej prowadzonej przez psychoterapeutę"
+        },
+        {
+          "id": "c",
+          "text": "Są refundowane w całości przez NFZ jako równoważne standardowej terapii szpitalnej"
+        },
+        {
+          "id": "d",
+          "text": "Są bardziej dostępne finansowo, lecz nie zawsze wystarczają przy złożonych problemach zdrowotnych"
+        },
+        {
+          "id": "e",
+          "text": "Są zakazane w polskim systemie ochrony zdrowia jako formy samoleczenia bez nadzoru lekarza"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-158",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "W modelu bez uniwersalnej opieki zdrowotnej, np. w systemie amerykańskim opartym na ubezpieczeniach prywatnych"
+        },
+        {
+          "id": "b",
+          "text": "W modelu Beveridge'a z powszechnym dostępem finansowanym z podatków, np. w Wielkiej Brytanii i krajach skandynawskich"
+        },
+        {
+          "id": "c",
+          "text": "W modelu Bismarcka opartym na obowiązkowych składkach ubezpieczeniowych, np. w Niemczech"
+        },
+        {
+          "id": "d",
+          "text": "W czysto publicznym modelu skandynawskim z szerokim pakietem świadczeń bezpłatnych"
+        },
+        {
+          "id": "e",
+          "text": "W polskim modelu mieszanym łączącym finansowanie publiczne z opcją opieki prywatnej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-159",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Atomistyczna — oparta na podziale ciała na nierozerwalne cząstki materii (atomy)"
+        },
+        {
+          "id": "b",
+          "text": "Mikrobiologiczna — zakładająca rolę drobnoustrojów w powstawaniu i rozprzestrzenianiu chorób"
+        },
+        {
+          "id": "c",
+          "text": "Humoralna — oparta na równowadze czterech soków ustrojowych (humorów)"
+        },
+        {
+          "id": "d",
+          "text": "Komórkowa — budująca wiedzę medyczną na strukturze i funkcji komórki jako jednostki życia"
+        },
+        {
+          "id": "e",
+          "text": "Pulsacyjna — wiążąca zdrowie z rytmem tętna i przepływu krwi w układzie żylnym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-160",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Klasztory gromadziły, przepisywały i przechowywały antyczne traktaty medyczne"
+        },
+        {
+          "id": "b",
+          "text": "Zakonnicy zakładali szpitale i udzielali opieki chorym w ramach misji chrześcijańskiej"
+        },
+        {
+          "id": "c",
+          "text": "Religijne podejście do ciała ograniczało rozwój chirurgii poprzez zakaz sekcji zwłok"
+        },
+        {
+          "id": "d",
+          "text": "Mnisi uprawiali zioła i prowadzili ogrody lecznicze przy klasztorach i szpitalach"
+        },
+        {
+          "id": "e",
+          "text": "Kościół promował rutynowe publiczne sekcje zwłok już od wczesnego średniowiecza"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-161",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Marcello Malpighi — ojciec anatomii mikroskopowej, odkrywca naczyń włosowatych w płucach żaby"
+        },
+        {
+          "id": "b",
+          "text": "Andreas Vesalius — autor „De humani corporis fabrica” (1543), ojciec nowoczesnej anatomii"
+        },
+        {
+          "id": "c",
+          "text": "William Harvey — odkrywca zamkniętego krążenia krwi opisanego w „De motu cordis” (1628)"
+        },
+        {
+          "id": "d",
+          "text": "Giovanni Morgagni — twórca anatomii patologicznej łączącej objawy ze zmianami w sekcji"
+        },
+        {
+          "id": "e",
+          "text": "Ambroise Paré — renesansowy chirurg wprowadzający ligatury zamiast kauteryzacji ran"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-162",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Przypalanie ran wrzącym olejem i rozżarzonym żelazem (kauteryzacja) jako standardowe tamowanie krwotoków"
+        },
+        {
+          "id": "b",
+          "text": "Wprowadzenie kwasu karbolowego do dezynfekcji ran i narzędzi chirurgicznych przed zabiegiem"
+        },
+        {
+          "id": "c",
+          "text": "Mycie rąk roztworem chloru przed zabiegiem w celu zapobiegania gorączce połogowej"
+        },
+        {
+          "id": "d",
+          "text": "Podwiązywanie naczyń krwionośnych (ligatury) zamiast wypalania żelazem przy tamowaniu krwotoków"
+        },
+        {
+          "id": "e",
+          "text": "Zakładanie wchłanialnych szwów katgutowych z jelit zwierzęcych jako podstawowa metoda szycia ran"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-163",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Girolamo Fracastoro — autor „De contagione” (1546) i koncepcji „seminaria contagionis”"
+        },
+        {
+          "id": "b",
+          "text": "Paracelsus — prekursor iatrochemii, autor maksymy „tylko dawka czyni truciznę”"
+        },
+        {
+          "id": "c",
+          "text": "Leonard Fuchs — botanik i autor herbarza opisującego rośliny lecznicze renesansu"
+        },
+        {
+          "id": "d",
+          "text": "Andreas Vesalius — anatom oparty na sekcjach zwłok, autor „De humani corporis fabrica”"
+        },
+        {
+          "id": "e",
+          "text": "Marcello Malpighi — mikroskopista, odkrywca naczyń włosowatych uzupełniających teorię krążenia"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-164",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dioskurides — autor antycznego herbarza „De Materia Medica” opisującego rośliny lecznicze"
+        },
+        {
+          "id": "b",
+          "text": "Franciscus Sylvius — holenderski jatrochemik XVII w. badający chemię procesów życiowych"
+        },
+        {
+          "id": "c",
+          "text": "Jan Baptist van Helmont — prekursor biochemii, badacz procesów fermentacji i gazów"
+        },
+        {
+          "id": "d",
+          "text": "Galen — lekarz antyczny, systematyzator teorii humoralnej i farmakologii opartej na ziołach i humorach"
+        },
+        {
+          "id": "e",
+          "text": "Paracelsus — wprowadził minerały i związki chemiczne do terapii oraz zasadę toksykologiczną o dawce"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-165",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Marcello Malpighi — odkrywca naczyń włosowatych w płucach żaby (1661)"
+        },
+        {
+          "id": "b",
+          "text": "Santorio Santorio — pionier medycyny ilościowej, badacz „niewidzialnej perspiracji”"
+        },
+        {
+          "id": "c",
+          "text": "William Harvey — autor „De motu cordis” (1628) opisujący zamknięte krążenie krwi"
+        },
+        {
+          "id": "d",
+          "text": "Thomas Sydenham — „angielski Hipokrates”, zwolennik obserwacji klinicznej objawów"
+        },
+        {
+          "id": "e",
+          "text": "Robert Hooke — mikroskopista, autor „Micrographia” wprowadzający termin „komórka”"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-166",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Antoni van Leeuwenhoek — odkrywca „animalcules” (jednokomórkowców) obserwowanych mikroskopem własnej konstrukcji"
+        },
+        {
+          "id": "b",
+          "text": "Robert Hooke — angielski mikroskopista, autor „Micrographia” i terminu „komórka”"
+        },
+        {
+          "id": "c",
+          "text": "Franciscus Sylvius — jatrochemik, badacz fermentacji i procesów chemicznych w organizmie"
+        },
+        {
+          "id": "d",
+          "text": "Giovanni Morgagni — twórca anatomii patologicznej łączącej objawy ze zmianami w sekcji"
+        },
+        {
+          "id": "e",
+          "text": "Marcello Malpighi — ojciec anatomii mikroskopowej, pierwszy zaobserwował naczynia włosowate w płucach żaby"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-167",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Robert Hooke — angielski mikroskopista opisujący komórki korka w dziele „Micrographia” (1665), wprowadzający termin „komórka”"
+        },
+        {
+          "id": "b",
+          "text": "Antoni van Leeuwenhoek — holenderski samouk obserwujący „animalcules” mikroskopami własnej konstrukcji"
+        },
+        {
+          "id": "c",
+          "text": "Jan Baptist van Helmont — flamandzki uczony, prekursor badań biochemicznych nad fermentacją"
+        },
+        {
+          "id": "d",
+          "text": "Marcello Malpighi — włoski anatom, odkrywca naczyń włosowatych w płucach żaby (1661)"
+        },
+        {
+          "id": "e",
+          "text": "Martinus Beijerinck — mikrobiolog przełomu XIX/XX w. badający wirusy i filtrację bakterii"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-168",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nacisku na obserwację kliniczną objawów zamiast wyłącznie teorii humoralnej i spekulacji"
+        },
+        {
+          "id": "b",
+          "text": "Wprowadzenia pierwszego szczepienia przeciw ospie prawdziwej krowianką u ośmiolatka (1796)"
+        },
+        {
+          "id": "c",
+          "text": "Sformułowania zasady „omnis cellula e cellula” dotyczącej powstawania komórek z komórek"
+        },
+        {
+          "id": "d",
+          "text": "Odkrycia naczyń włosowatych pod mikroskopem, dopełniającego teorię krążenia krwi Harveya"
+        },
+        {
+          "id": "e",
+          "text": "Pomiarów ilościowych przemiany materii i „niewidzialnej perspiracji” w badaniach metabolicznych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-169",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Franciscus Sylvius — holenderski jatrochemik XVII w. badający fermentację i chemię życia"
+        },
+        {
+          "id": "b",
+          "text": "Marcello Malpighi — ojciec anatomii mikroskopowej, badacz naczyń włosowatych i struktur nerek"
+        },
+        {
+          "id": "c",
+          "text": "Giovanni Morgagni — twórca anatomii patologicznej wiążącej objawy ze zmianami w sekcji zwłok"
+        },
+        {
+          "id": "d",
+          "text": "Santorio Santorio — wprowadził pojęcie „niewidzialnej perspiracji” i zapoczątkował badanie metabolizmu"
+        },
+        {
+          "id": "e",
+          "text": "Jan Baptist van Helmont — prekursor biochemii, badacz gazów i procesów fermentacji w organizmie człowieka"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-170",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "John Locke — empirysta, autor koncepcji umysłu jako „czystej tablicy” (tabula rasa)"
+        },
+        {
+          "id": "b",
+          "text": "David Hume — sceptyk empiryczny, badacz źródeł wiedzy i mechanizmów skojarzeń idei"
+        },
+        {
+          "id": "c",
+          "text": "René Descartes (Kartezjusz) — dualizm ciała i duszy, postrzeganie ciała jako maszyny"
+        },
+        {
+          "id": "d",
+          "text": "Jean-Jacques Rousseau — filozof podkreślający wpływ cywilizacji i nierówności na człowieka"
+        },
+        {
+          "id": "e",
+          "text": "Thomas Sydenham — lekarz angielski, zwolennik obserwacji klinicznej objawów nad teorią"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-171",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nowoczesnej anatomii patologicznej — powiązania objawów klinicznych ze zmianami w sekcji zwłok"
+        },
+        {
+          "id": "b",
+          "text": "Nowoczesnej fizjologii eksperymentalnej — badań pobudliwości mięśni i wrażliwości nerwów"
+        },
+        {
+          "id": "c",
+          "text": "Immunologii — pierwszego skutecznego szczepienia przeciw ospie prawdziwej krowianką"
+        },
+        {
+          "id": "d",
+          "text": "Anatomii mikroskopowej i histologii — obserwacji struktur niewidocznych gołym okiem"
+        },
+        {
+          "id": "e",
+          "text": "Nowoczesnej psychiatrii — humanitarnego uwolnienia chorych psychicznie z łańcuchów w Paryżu (1793)"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-172",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kurczliwość serca i elastyczność naczyń krwionośnych w reakcji na bodźce hemodynamiczne"
+        },
+        {
+          "id": "b",
+          "text": "Przewodnictwo nerwowe i opór tkankowy w przekazywaniu impulsów elektrycznych"
+        },
+        {
+          "id": "c",
+          "text": "Wydzielanie wewnętrzne i zewnętrzne gruczołów w regulacji funkcji organizmu"
+        },
+        {
+          "id": "d",
+          "text": "Metabolizm tlenowy i beztlenowy w komórkach podczas wysiłku i spoczynku"
+        },
+        {
+          "id": "e",
+          "text": "Pobudliwość mięśni i wrażliwość nerwów jako odrębne właściwości tkanek"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-173",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Osłabionego wirusa ospy prawdziwej podawanego podskórnie w ramach pierwszego szczepienia"
+        },
+        {
+          "id": "b",
+          "text": "Materiału z krost ospy krowiej (krowianki) pobranego od chorej na ospę krowią"
+        },
+        {
+          "id": "c",
+          "text": "Surowicy ozdrowieńców po przebyciu ospy prawdziwej, zawierającej przeciwciała ochronne"
+        },
+        {
+          "id": "d",
+          "text": "Riketsji hodowanych we wszach według metody Rudolfa Weigla stosowanej przy tyfusie"
+        },
+        {
+          "id": "e",
+          "text": "Inaktywowanej szczepionki z hodowli tkankowej przygotowanej w warunkach laboratoryjnych"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-174",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jean-Étienne Esquirol — uczeń Pinela, wprowadził pojęcie monomanii w klasyfikacji zaburzeń"
+        },
+        {
+          "id": "b",
+          "text": "Sigmund Freud — twórca psychoanalizy i teorii nieświadomości w leczeniu zaburzeń psychicznych"
+        },
+        {
+          "id": "c",
+          "text": "Władysław Biegański — polski psychiatra, autor prac z zakresu patologii umysłowej"
+        },
+        {
+          "id": "d",
+          "text": "Philippe Pinel — uwolnił chorych psychicznie z łańcuchów i wprowadził humanitarne metody (1793)"
+        },
+        {
+          "id": "e",
+          "text": "Carl Rogers — psycholog XX w., twórca terapii skoncentrowanej na pacjencie i empatii bezwarunkowej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-175",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Maszyny podlegającej wyłącznie prawom mechaniki i fizyki, bez wpływu doświadczenia"
+        },
+        {
+          "id": "b",
+          "text": "Zbioru idei wrodzonych, danych z góry i niezależnych od doświadczenia zmysłowego"
+        },
+        {
+          "id": "c",
+          "text": "„Czystej tablicy” (tabula rasa) kształtowanej przez doświadczenia, w tym społeczne"
+        },
+        {
+          "id": "d",
+          "text": "Równowagi czterech humorów ustrojowych determinującej temperament i podatność na choroby"
+        },
+        {
+          "id": "e",
+          "text": "Odbicia układu gwiazd i planet wpływającego na temperament i predyspozycje zdrowotne"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-176",
+      "options": [
+        {
+          "id": "a",
+          "text": "Obalenie teorii samorództwa doświadczeniem ze szyjką kolby łabędziowej w latach 60. XIX w."
+        },
+        {
+          "id": "b",
+          "text": "Opracowanie termicznej pasteryzacji mleka, wina i innych płynów jako metody konserwacji"
+        },
+        {
+          "id": "c",
+          "text": "Sformułowanie czterech postulatów łączących konkretny drobnoustrój z chorobą"
+        },
+        {
+          "id": "d",
+          "text": "Opracowanie inaktywowanej szczepionki przeciw wściekliźnie zastosowanej u chłopca w 1885 r."
+        },
+        {
+          "id": "e",
+          "text": "Opracowanie szczepionki ochronnej przeciw wąglikowi, zademonstrowanej publicznie w 1881 r."
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-177",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cholerę — za którą Koch zidentyfikował bakterię Vibrio cholerae w Indiach (1883)"
+        },
+        {
+          "id": "b",
+          "text": "Wąglika — pierwsze udowodnienie, że konkretna bakteria wywołuje chorobę (1876)"
+        },
+        {
+          "id": "c",
+          "text": "Gruźlicę — prątek, za którego odkrycie Koch otrzymał Nagrodę Nobla w 1905 r."
+        },
+        {
+          "id": "d",
+          "text": "Tyfus plamisty — chorobę, dla której Weigl w Lwowie opracował szczepionkę na bazie wszy"
+        },
+        {
+          "id": "e",
+          "text": "Wściekliznę — chorobę, wobec której Pasteur w 1885 r. zastosował pierwszą szczepionkę"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-178",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kwas karbolowy (fenol) stosowany przez Listera do odkażania ran i narzędzi chirurgicznych"
+        },
+        {
+          "id": "b",
+          "text": "Eter wprowadzony jako środek znieczulający podczas publicznej operacji chirurgicznej (1846)"
+        },
+        {
+          "id": "c",
+          "text": "Niewidzialne zarazki rozprzestrzeniające się drogą powietrzną jako przyczynę epidemii"
+        },
+        {
+          "id": "d",
+          "text": "Związek między brakiem higieny rąk lekarzy a wysoką śmiertelnością po porodach"
+        },
+        {
+          "id": "e",
+          "text": "Zasadę, że każda komórka powstaje wyłącznie z istniejącej wcześniej komórki (1855)"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-179",
+      "options": [
+        {
+          "id": "a",
+          "text": "Robert Hooke — autor terminu komórka, obserwacje korka dębowego pod mikroskopem (1665)"
+        },
+        {
+          "id": "b",
+          "text": "Theodor Schwann — współtwórca teorii komórkowej o budowie organizmów żywych"
+        },
+        {
+          "id": "c",
+          "text": "Marcello Malpighi — badacz mikroskopijnych struktur tkanek i narządów w XVII w."
+        },
+        {
+          "id": "d",
+          "text": "Rudolf Virchow — autor omnis cellula e cellula, ojciec patologii komórkowej"
+        },
+        {
+          "id": "e",
+          "text": "Louis Pasteur — mikrobiolog, obalenie samorództwa i twórca metody pasteryzacji"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-180",
+      "options": [
+        {
+          "id": "a",
+          "text": "Carl Köller — wprowadził kokainę do znieczulenia miejscowego w okulistyce (1884)"
+        },
+        {
+          "id": "b",
+          "text": "James Young Simpson — spopularyzował chloroform w położnictwie od 1847 r."
+        },
+        {
+          "id": "c",
+          "text": "William Morton — zademonstrował publicznie znieczulenie eterem w szpitalu w Bostonie (1846)"
+        },
+        {
+          "id": "d",
+          "text": "René Laennec — wynalazca stetoskopu z 1816 r. i pionier auskultacji w medycynie"
+        },
+        {
+          "id": "e",
+          "text": "Edwin Chadwick — autor raportu sanitarnego z 1842 r. i reform zdrowia publicznego"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-181",
+      "options": [
+        {
+          "id": "a",
+          "text": "Maria Skłodowska-Curie — odkrywczyni polonu i radu, pionierka radioterapii nowotworów"
+        },
+        {
+          "id": "b",
+          "text": "Clara Barton — założycielka Amerykańskiego Czerwonego Krzyża i pielęgniarka wojenna"
+        },
+        {
+          "id": "c",
+          "text": "Florence Nightingale — reformatorka pielęgniarstwa, obniżenie śmiertelności w Scutari z 42% do 2%"
+        },
+        {
+          "id": "d",
+          "text": "Mary Seacole — jamaicko-brytyjska uzdrowicielka w Krymie, współczesna Nightingale"
+        },
+        {
+          "id": "e",
+          "text": "Edith Cavell — brytyjska pielęgniarka stracona przez Niemców za pomoc rannym alianckim podczas I wojny"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-182",
+      "options": [
+        {
+          "id": "a",
+          "text": "Loi de 1838 o opiece nad chorymi psychicznie we Francji (Esquirol, Pinel)"
+        },
+        {
+          "id": "b",
+          "text": "Ustawę o obowiązkowych szczepieniach przeciw ospie wielkiej w Wielkiej Brytanii (1840)"
+        },
+        {
+          "id": "c",
+          "text": "Ustawę powołującą Narodową Służbę Zdrowia NHS w Wielkiej Brytanii (1948, Bevan)"
+        },
+        {
+          "id": "d",
+          "text": "Bismarckowską ustawę o obowiązkowym ubezpieczeniu zdrowotnym w Niemczech (1883)"
+        },
+        {
+          "id": "e",
+          "text": "Public Health Act z 1848 r. regulującą lokalne organy zdrowia, wodociągi i kanalizację"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-183",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rudolf Virchow — patolog komórkowy i polityk, autor cytatu o medycynie jako nauce społecznej"
+        },
+        {
+          "id": "b",
+          "text": "Edwin Chadwick — autor raportu sanitarnego z 1842 r. i reform zdrowia publicznego"
+        },
+        {
+          "id": "c",
+          "text": "Louis Pasteur — mikrobiolog, obalenie samorództwa, szczepionki przeciw wąglikowi i wściekliźnie"
+        },
+        {
+          "id": "d",
+          "text": "Otto von Bismarck — kanclerz, twórca pierwszego obowiązkowego ubezpieczenia zdrowotnego"
+        },
+        {
+          "id": "e",
+          "text": "Florence Nightingale — reformatorka pielęgniarstwa, statystyka, obniżenie śmiertelności w Scutari"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-184",
+      "options": [
+        {
+          "id": "a",
+          "text": "James Young Simpson — spopularyzował chloroform w położnictwie od 1847 r."
+        },
+        {
+          "id": "b",
+          "text": "Carl Köller — zastosował kokainę do znieczulenia miejscowego w okulistyce (1884)"
+        },
+        {
+          "id": "c",
+          "text": "John Collins Warren — chirurg, który wykonał operację pod eterem w szpitalu w Bostonie"
+        },
+        {
+          "id": "d",
+          "text": "William Morton — amerykański stomatolog, publiczne znieczulenie eterem w 1846 r."
+        },
+        {
+          "id": "e",
+          "text": "Horace Wells — pionier znieczulenia podtlenkiem azotu, mentor Mortona w stomatologii"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-185",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eteru — ogólnego znieczulenia zademonstrowanego publicznie przez Mortona w 1846 r."
+        },
+        {
+          "id": "b",
+          "text": "Kokainy — znieczulenia miejscowego wprowadzonego przez Köllera w okulistyce (1884)"
+        },
+        {
+          "id": "c",
+          "text": "Podtlenku azotu — środka testowanego przez Horace'a Wellsa przed operacjami stomatologicznymi"
+        },
+        {
+          "id": "d",
+          "text": "Morfiny — opioidu stosowanego później w analgezji, lecz nie wprowadzonego przez Simpsona"
+        },
+        {
+          "id": "e",
+          "text": "Chloroformu — środka spopularyzowanego przez Simpsona w położnictwie od 1847 r."
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-186",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eteru — ogólnego znieczulenia zademonstrowanego publicznie przez Mortona w 1846 r."
+        },
+        {
+          "id": "b",
+          "text": "Kokainy — pierwszego skutecznego znieczulenia miejscowego w chirurgii oka (1884)"
+        },
+        {
+          "id": "c",
+          "text": "Chloroformu — środka wprowadzonego przez Simpsona do znieczuleń w położnictwie (1847)"
+        },
+        {
+          "id": "d",
+          "text": "Lidokainy — syntetycznego anestetyku miejscowego wprowadzonego dopiero w XX w."
+        },
+        {
+          "id": "e",
+          "text": "Prokainy — bezpieczniejszego zamiennika kokainy opracowanego przez Einhorna (1905)"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-187",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monomanii — zaburzenia ograniczonego do jednej sfery przy zachowanej ogólnej sprawności"
+        },
+        {
+          "id": "b",
+          "text": "Tabula rasa — pustej tablicy umysłu według Locke'a, bez wrodzonej treści poznawczej"
+        },
+        {
+          "id": "c",
+          "text": "Nieświadomości — kluczowego pojęcia psychoanalizy wprowadzonego przez Freuda"
+        },
+        {
+          "id": "d",
+          "text": "Psychopatii — pojęcia rozwijanego m.in. przez polskiego psychiatrę Władysława Biegańskiego na przełomie wieków"
+        },
+        {
+          "id": "e",
+          "text": "Schizofrenii — terminu wprowadzonego przez Bleulera na początku XX w."
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-188",
+      "options": [
+        {
+          "id": "a",
+          "text": "Penicylinę — antybiotyk z pleśni Penicillium notatum hamujący wzrost bakterii (1928)"
+        },
+        {
+          "id": "b",
+          "text": "Pierwszą szczepionkę przeciwwirusową — żywą, atenuowaną, opracowaną przez Jennera i Pasteura"
+        },
+        {
+          "id": "c",
+          "text": "Sulfonamidy — syntetyczne leki przeciwbakteryjne wprowadzone masowo w latach 30. XX w."
+        },
+        {
+          "id": "d",
+          "text": "Lizozym — enzym bakteriobójczy we łzach, który Fleming badał równolegle z penicyliną"
+        },
+        {
+          "id": "e",
+          "text": "Streptomycynę — antybiotyk odkryty przez Waksmana, skuteczny m.in. przeciw gruźlicy (1943)"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-189",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gregor Mendel i Thomas Morgan — prawa dziedziczenia i genetyka chromosomowa"
+        },
+        {
+          "id": "b",
+          "text": "Paul Berg i Walter Gilbert — pionierzy inżynierii genetycznej i sekwencjonowania DNA"
+        },
+        {
+          "id": "c",
+          "text": "Frederick Sanger i Frederick Griffith — sekwencjonowanie białek i transformacji bakterii pneumokoków"
+        },
+        {
+          "id": "d",
+          "text": "Oswald Avery i Erwin Chargaff — dowód roli DNA i reguły zawartości nukleotydów"
+        },
+        {
+          "id": "e",
+          "text": "James Watson i Francis Crick — model podwójnej helisy DNA (1953)"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-190",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thomas Hunt Morgan — geny na chromosomach, badania na muchach owocówkach"
+        },
+        {
+          "id": "b",
+          "text": "Gregor Watson — fikcyjna para łącząca Mendla z twórcą modelu helisy DNA"
+        },
+        {
+          "id": "c",
+          "text": "Gregor Mendel — prawa dziedziczenia z doświadczeń na grochu w Opawie"
+        },
+        {
+          "id": "d",
+          "text": "Francis Crick — współtwórca modelu podwójnej helisy DNA w Cambridge (1953)"
+        },
+        {
+          "id": "e",
+          "text": "Hugo de Vries — rediscovery Mendla, teoria mutacji i saltacji w genetyce"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-191",
+      "options": [
+        {
+          "id": "a",
+          "text": "Joseph Murray — pierwsza udana transplantacja nerki między bliźniakami jednojajowymi (1954)"
+        },
+        {
+          "id": "b",
+          "text": "Zbigniew Religa — pierwsza udana transplantacja serca w Polsce, Zabrze 1985 r."
+        },
+        {
+          "id": "c",
+          "text": "Edward Donnall Thomas — pierwszy przeszczep szpiku kostnego u człowieka (1956)"
+        },
+        {
+          "id": "d",
+          "text": "Christiaan Barnard — pierwsza udana transplantacja serca u człowieka na świecie (1967)"
+        },
+        {
+          "id": "e",
+          "text": "Norman Shumway — pionierskie badania przeszczepów serca poprzedzające sukces Barnarda"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-192",
+      "options": [
+        {
+          "id": "a",
+          "text": "Christiaan Barnard — pierwsza udana transplantacja serca u człowieka na świecie w Kapsztadzie (1967)"
+        },
+        {
+          "id": "b",
+          "text": "Edward Donnall Thomas — pierwszy przeszczep szpiku kostnego u człowieka (1956)"
+        },
+        {
+          "id": "c",
+          "text": "Thomas Starzl — pionier transplantacji wątroby i rozwoju immunosupresji w XX w."
+        },
+        {
+          "id": "d",
+          "text": "Alexis Carrel — techniki chirurgii naczyniowej i eksperymentalne przeszczepy narządów"
+        },
+        {
+          "id": "e",
+          "text": "Joseph Murray — pierwsza udana transplantacja nerki między bliźniakami jednojajowymi (1954)"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-193",
+      "options": [
+        {
+          "id": "a",
+          "text": "Christiaan Barnard — pierwsza transplantacja serca u człowieka na świecie w RPA (1967)"
+        },
+        {
+          "id": "b",
+          "text": "Jan Mikulicz-Radecki — pionier polskiej chirurgii jamy brzusznej, aseptyki, endoskopii i chirurgii klatki piersiowej"
+        },
+        {
+          "id": "c",
+          "text": "Zbigniew Religa — pierwsza udana transplantacja serca w Polsce, Zabrze (1985)"
+        },
+        {
+          "id": "d",
+          "text": "Ludwik Rydygier — pierwsza planowa resekcja żołądka z powodu nowotworu na świecie (1880)"
+        },
+        {
+          "id": "e",
+          "text": "Wojciech Oczko — renesansowy nadworny medyk, ojciec polskiej wenerologii i balneologii"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-194",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rudolf Weigl — szczepionka przeciw tyfusowi plamistemu na bazie hodowli riketsji we wszy"
+        },
+        {
+          "id": "b",
+          "text": "Kazimierz Funk — twórca pojęcia witaminy, badania beri-beri i niedoborów odżywczych"
+        },
+        {
+          "id": "c",
+          "text": "Hilary Koprowski — doustna, żywa, atenuowana szczepionka przeciw polio w latach 50. XX w."
+        },
+        {
+          "id": "d",
+          "text": "Józef Struś — renesansowy medyk, pionier pulsologii i badań nad tętnem"
+        },
+        {
+          "id": "e",
+          "text": "Maciej z Miechowa — autor Chronica Polonorum, pionier polskiej higieny i epidemiologii"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-195",
+      "options": [
+        {
+          "id": "a",
+          "text": "Antybiotyk — termin upowszechniony po odkryciu penicyliny przez Fleminga (1928)"
+        },
+        {
+          "id": "b",
+          "text": "Hormon — pojęcie opracowane przez Baylissa i Starlinga przy badaniu sekretyny (1902)"
+        },
+        {
+          "id": "c",
+          "text": "Antygen — cząsteczka rozpoznawana przez układ immunologiczny jako obca"
+        },
+        {
+          "id": "d",
+          "text": "Enzym — katalizator biochemiczny, termin od greckiego in fermentatio (w fermentacji)"
+        },
+        {
+          "id": "e",
+          "text": "Witamina — termin wprowadzony przez Funke w 1912 r. (łac. vita + amina)"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-196",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hilary Koprowski — doustna, żywa, atenuowana szczepionka przeciw polio (lata 50.)"
+        },
+        {
+          "id": "b",
+          "text": "Rudolf Weigl — szczepionka przeciw tyfusowi plamistemu opracowana na bazie karmicieli wszy w Lwowie"
+        },
+        {
+          "id": "c",
+          "text": "Jonas Salk — inaktywowana szczepionka przeciw polio podawana domięśniowo (1955)"
+        },
+        {
+          "id": "d",
+          "text": "Albert Sabin — doustna szczepionka atenuowana, powszechniejsza od lat 60. XX w."
+        },
+        {
+          "id": "e",
+          "text": "Zbigniew Religa — polski kardiochirurg, pierwsza transplantacja serca w Zabrzu (1985)"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-197",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planową resekcję żołądka z powodu nowotworu — pierwszą na świecie (1880, Lwów)"
+        },
+        {
+          "id": "b",
+          "text": "Pierwszą transplantację serca u człowieka — przeprowadzoną przez Barnarda w RPA (1967)"
+        },
+        {
+          "id": "c",
+          "text": "Operację w znieczuleniu eterowym — zademonstrowaną przez Mortona i Warrena (1846)"
+        },
+        {
+          "id": "d",
+          "text": "Pierwszą antyseptyczną operację jamy brzusznej z użyciem fenolu — metodę Listera"
+        },
+        {
+          "id": "e",
+          "text": "Szczepionkę przeciw wściekliźnie u człowieka — zastosowaną przez Pasteura (1885)"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-198",
+      "options": [
+        {
+          "id": "a",
+          "text": "Józef Struś — medyk renesansowy, pionier pulsologii i badań nad tętnem"
+        },
+        {
+          "id": "b",
+          "text": "Maciej z Miechowa — autor traktatu o higienie i dzieła Chronica Polonorum"
+        },
+        {
+          "id": "c",
+          "text": "Tytus Chałubiński — propagator klimatoterapii górskiej, rozwój sanatoriów w Zakopanem"
+        },
+        {
+          "id": "d",
+          "text": "Wojciech Oczko — nadworny medyk, wenerologia, traktat Cieplice (1578)"
+        },
+        {
+          "id": "e",
+          "text": "Władysław Biegański — polski psychiatra, autor pojęcia psychopatii i klasyfikacji zaburzeń"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-199",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wody mineralne i kąpiele cieplicowe — tradycja balneologiczna od czasów Oczka"
+        },
+        {
+          "id": "b",
+          "text": "Klimat górski i pobyt w Tatrach (Zakopane) w leczeniu gruźlicy i chorób płuc"
+        },
+        {
+          "id": "c",
+          "text": "Terapię radioizotopem jodu-131 — leczenie nadczynności i nowotworów tarczycy"
+        },
+        {
+          "id": "d",
+          "text": "Szczepienia BCG przeciw prątkowi gruźlicy — szczepionka Calmette'a i Guérina"
+        },
+        {
+          "id": "e",
+          "text": "Antyseptykę kwasem karbolowym — metoda Listera rozwijająca idee Semmelweisa"
+        }
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-200",
+      "options": [
+        {
+          "id": "a",
+          "text": "Odkrycie penicyliny — Fleming, pierwszy skuteczny antybiotyk hamujący bakterie (1928)"
+        },
+        {
+          "id": "b",
+          "text": "Odkrycie promieni X — Roentgen, przełom w diagnostyce obrazowej (1895)"
+        },
+        {
+          "id": "c",
+          "text": "Odkrycie pierwiastków promieniotwórczych polonu i radu — podstawa radioterapii"
+        },
+        {
+          "id": "d",
+          "text": "Model podwójnej helisy DNA — Watson i Crick, fundament biologii molekularnej (1953)"
+        },
+        {
+          "id": "e",
+          "text": "Postulaty wiążące drobnoustrój z chorobą — Robert Koch, era medycyny laboratoryjnej"
+        }
+      ],
+      "correct_option_id": "c"
+    }
+  ]
+}

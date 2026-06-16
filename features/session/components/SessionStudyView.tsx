@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
 import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
@@ -37,6 +38,8 @@ export function SessionStudyView({
   questions,
   reserveQuestions = [],
 }: SessionStudyViewProps) {
+  const t = useTranslations("session");
+  const topicDefault = t("topicDefault");
   const sessionStart = useRef(Date.now());
   const timeSpentQuestion = useRef(0);
   const reserveRef = useRef<SessionQuestion[]>(reserveQuestions);
@@ -51,24 +54,24 @@ export function SessionStudyView({
     const names = new Set<string>();
     for (const item of questions) {
       const n = item.topicName?.trim();
-      if (n && n !== "Temat") names.add(n);
+      if (n && n !== topicDefault) names.add(n);
     }
     return [...names].sort((a, b) => a.localeCompare(b, "pl"));
-  }, [questions, showSessionTopics]);
+  }, [questions, showSessionTopics, topicDefault]);
 
   const selectedTopicName = useMemo(() => {
     if (!topicId) return undefined;
     const fromMatch = questions.find((q) => q.topicId === topicId)?.topicName?.trim();
-    if (fromMatch && fromMatch !== "Temat") return fromMatch;
+    if (fromMatch && fromMatch !== topicDefault) return fromMatch;
     const names = [
       ...new Set(
         questions
           .map((q) => q.topicName?.trim())
-          .filter((n): n is string => Boolean(n && n !== "Temat")),
+          .filter((n): n is string => Boolean(n && n !== topicDefault)),
       ),
     ];
     return names.length === 1 ? names[0] : undefined;
-  }, [topicId, questions]);
+  }, [topicId, questions, topicDefault]);
   const isPrzeglad = mode === "przeglad";
 
   const router = useRouter();

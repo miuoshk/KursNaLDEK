@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   title: string;
   pdfPath: string;
 };
 
-export function LegalDocumentPage({ title, pdfPath }: Props) {
+export async function LegalDocumentPage({ title, pdfPath }: Props) {
+  const t = await getTranslations("common");
+
   return (
     <div className="mx-auto flex min-h-screen max-w-4xl flex-col px-4 py-10 md:px-6">
       <header className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -14,7 +17,7 @@ export function LegalDocumentPage({ title, pdfPath }: Props) {
             href="/login"
             className="font-body text-body-xs text-muted transition hover:text-secondary"
           >
-            ← Wróć
+            {t("legalBack")}
           </Link>
           <h1 className="mt-2 font-heading text-2xl font-bold text-primary md:text-3xl">
             {title}
@@ -26,7 +29,7 @@ export function LegalDocumentPage({ title, pdfPath }: Props) {
           rel="noopener noreferrer"
           className="inline-flex w-fit rounded-btn border border-white/15 bg-white/5 px-4 py-2 font-body text-body-sm text-primary transition hover:bg-white/10"
         >
-          Otwórz PDF w nowej karcie
+          {t("legalOpenPdfNewTab")}
         </a>
       </header>
 

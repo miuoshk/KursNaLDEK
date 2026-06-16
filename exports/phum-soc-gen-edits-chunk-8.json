@@ -1,0 +1,280 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-8",
+  "edits": [
+    {
+      "id": "phum-soc-gen-176",
+      "options": [
+        {"id": "a", "text": "Obalenie teorii samorództwa doświadczeniem ze szyjką kolby łabędziowej w latach 60. XIX w."},
+        {"id": "b", "text": "Opracowanie termicznej pasteryzacji mleka, wina i innych płynów jako metody konserwacji"},
+        {"id": "c", "text": "Sformułowanie czterech postulatów łączących konkretny drobnoustrój z chorobą"},
+        {"id": "d", "text": "Opracowanie inaktywowanej szczepionki przeciw wściekliźnie zastosowanej u chłopca w 1885 r."},
+        {"id": "e", "text": "Opracowanie szczepionki ochronnej przeciw wąglikowi, zademonstrowanej publicznie w 1881 r."}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-177",
+      "options": [
+        {"id": "a", "text": "Cholerę — za którą Koch zidentyfikował bakterię Vibrio cholerae w Indiach (1883)"},
+        {"id": "b", "text": "Wąglika — pierwsze udowodnienie, że konkretna bakteria wywołuje chorobę (1876)"},
+        {"id": "c", "text": "Gruźlicę — prątek, za którego odkrycie Koch otrzymał Nagrodę Nobla w 1905 r."},
+        {"id": "d", "text": "Tyfus plamisty — chorobę, dla której Weigl w Lwowie opracował szczepionkę na bazie wszy"},
+        {"id": "e", "text": "Wściekliznę — chorobę, wobec której Pasteur w 1885 r. zastosował pierwszą szczepionkę"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-178",
+      "options": [
+        {"id": "a", "text": "Kwas karbolowy (fenol) stosowany przez Listera do odkażania ran i narzędzi chirurgicznych"},
+        {"id": "b", "text": "Eter wprowadzony jako środek znieczulający podczas publicznej operacji chirurgicznej (1846)"},
+        {"id": "c", "text": "Niewidzialne zarazki rozprzestrzeniające się drogą powietrzną jako przyczynę epidemii"},
+        {"id": "d", "text": "Związek między brakiem higieny rąk lekarzy a wysoką śmiertelnością po porodach"},
+        {"id": "e", "text": "Zasadę, że każda komórka powstaje wyłącznie z istniejącej wcześniej komórki (1855)"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-179",
+      "options": [
+        {"id": "a", "text": "Robert Hooke — autor terminu komórka, obserwacje korka dębowego pod mikroskopem (1665)"},
+        {"id": "b", "text": "Theodor Schwann — współtwórca teorii komórkowej o budowie organizmów żywych"},
+        {"id": "c", "text": "Marcello Malpighi — badacz mikroskopijnych struktur tkanek i narządów w XVII w."},
+        {"id": "d", "text": "Rudolf Virchow — autor omnis cellula e cellula, ojciec patologii komórkowej"},
+        {"id": "e", "text": "Louis Pasteur — mikrobiolog, obalenie samorództwa i twórca metody pasteryzacji"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-180",
+      "options": [
+        {"id": "a", "text": "Carl Köller — wprowadził kokainę do znieczulenia miejscowego w okulistyce (1884)"},
+        {"id": "b", "text": "James Young Simpson — spopularyzował chloroform w położnictwie od 1847 r."},
+        {"id": "c", "text": "William Morton — zademonstrował publicznie znieczulenie eterem w szpitalu w Bostonie (1846)"},
+        {"id": "d", "text": "René Laennec — wynalazca stetoskopu z 1816 r. i pionier auskultacji w medycynie"},
+        {"id": "e", "text": "Edwin Chadwick — autor raportu sanitarnego z 1842 r. i reform zdrowia publicznego"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-181",
+      "options": [
+        {"id": "a", "text": "Maria Skłodowska-Curie — odkrywczyni polonu i radu, pionierka radioterapii nowotworów"},
+        {"id": "b", "text": "Clara Barton — założycielka Amerykańskiego Czerwonego Krzyża i pielęgniarka wojenna"},
+        {"id": "c", "text": "Florence Nightingale — reformatorka pielęgniarstwa, obniżenie śmiertelności w Scutari z 42% do 2%"},
+        {"id": "d", "text": "Mary Seacole — jamaicko-brytyjska uzdrowicielka w Krymie, współczesna Nightingale"},
+        {"id": "e", "text": "Edith Cavell — brytyjska pielęgniarka stracona przez Niemców za pomoc rannym alianckim podczas I wojny"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-182",
+      "options": [
+        {"id": "a", "text": "Loi de 1838 o opiece nad chorymi psychicznie we Francji (Esquirol, Pinel)"},
+        {"id": "b", "text": "Ustawę o obowiązkowych szczepieniach przeciw ospie wielkiej w Wielkiej Brytanii (1840)"},
+        {"id": "c", "text": "Ustawę powołującą Narodową Służbę Zdrowia NHS w Wielkiej Brytanii (1948, Bevan)"},
+        {"id": "d", "text": "Bismarckowską ustawę o obowiązkowym ubezpieczeniu zdrowotnym w Niemczech (1883)"},
+        {"id": "e", "text": "Public Health Act z 1848 r. regulującą lokalne organy zdrowia, wodociągi i kanalizację"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-183",
+      "options": [
+        {"id": "a", "text": "Rudolf Virchow — patolog komórkowy i polityk, autor cytatu o medycynie jako nauce społecznej"},
+        {"id": "b", "text": "Edwin Chadwick — autor raportu sanitarnego z 1842 r. i reform zdrowia publicznego"},
+        {"id": "c", "text": "Louis Pasteur — mikrobiolog, obalenie samorództwa, szczepionki przeciw wąglikowi i wściekliźnie"},
+        {"id": "d", "text": "Otto von Bismarck — kanclerz, twórca pierwszego obowiązkowego ubezpieczenia zdrowotnego"},
+        {"id": "e", "text": "Florence Nightingale — reformatorka pielęgniarstwa, statystyka, obniżenie śmiertelności w Scutari"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-184",
+      "options": [
+        {"id": "a", "text": "James Young Simpson — spopularyzował chloroform w położnictwie od 1847 r."},
+        {"id": "b", "text": "Carl Köller — zastosował kokainę do znieczulenia miejscowego w okulistyce (1884)"},
+        {"id": "c", "text": "John Collins Warren — chirurg, który wykonał operację pod eterem w szpitalu w Bostonie"},
+        {"id": "d", "text": "William Morton — amerykański stomatolog, publiczne znieczulenie eterem w 1846 r."},
+        {"id": "e", "text": "Horace Wells — pionier znieczulenia podtlenkiem azotu, mentor Mortona w stomatologii"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-185",
+      "options": [
+        {"id": "a", "text": "Eteru — ogólnego znieczulenia zademonstrowanego publicznie przez Mortona w 1846 r."},
+        {"id": "b", "text": "Kokainy — znieczulenia miejscowego wprowadzonego przez Köllera w okulistyce (1884)"},
+        {"id": "c", "text": "Podtlenku azotu — środka testowanego przez Horace'a Wellsa przed operacjami stomatologicznymi"},
+        {"id": "d", "text": "Morfiny — opioidu stosowanego później w analgezji, lecz nie wprowadzonego przez Simpsona"},
+        {"id": "e", "text": "Chloroformu — środka spopularyzowanego przez Simpsona w położnictwie od 1847 r."}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-186",
+      "options": [
+        {"id": "a", "text": "Eteru — ogólnego znieczulenia zademonstrowanego publicznie przez Mortona w 1846 r."},
+        {"id": "b", "text": "Kokainy — pierwszego skutecznego znieczulenia miejscowego w chirurgii oka (1884)"},
+        {"id": "c", "text": "Chloroformu — środka wprowadzonego przez Simpsona do znieczuleń w położnictwie (1847)"},
+        {"id": "d", "text": "Lidokainy — syntetycznego anestetyku miejscowego wprowadzonego dopiero w XX w."},
+        {"id": "e", "text": "Prokainy — bezpieczniejszego zamiennika kokainy opracowanego przez Einhorna (1905)"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-187",
+      "options": [
+        {"id": "a", "text": "Monomanii — zaburzenia ograniczonego do jednej sfery przy zachowanej ogólnej sprawności"},
+        {"id": "b", "text": "Tabula rasa — pustej tablicy umysłu według Locke'a, bez wrodzonej treści poznawczej"},
+        {"id": "c", "text": "Nieświadomości — kluczowego pojęcia psychoanalizy wprowadzonego przez Freuda"},
+        {"id": "d", "text": "Psychopatii — pojęcia rozwijanego m.in. przez polskiego psychiatrę Władysława Biegańskiego na przełomie wieków"},
+        {"id": "e", "text": "Schizofrenii — terminu wprowadzonego przez Bleulera na początku XX w."}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-188",
+      "options": [
+        {"id": "a", "text": "Penicylinę — antybiotyk z pleśni Penicillium notatum hamujący wzrost bakterii (1928)"},
+        {"id": "b", "text": "Pierwszą szczepionkę przeciwwirusową — żywą, atenuowaną, opracowaną przez Jennera i Pasteura"},
+        {"id": "c", "text": "Sulfonamidy — syntetyczne leki przeciwbakteryjne wprowadzone masowo w latach 30. XX w."},
+        {"id": "d", "text": "Lizozym — enzym bakteriobójczy we łzach, który Fleming badał równolegle z penicyliną"},
+        {"id": "e", "text": "Streptomycynę — antybiotyk odkryty przez Waksmana, skuteczny m.in. przeciw gruźlicy (1943)"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-189",
+      "options": [
+        {"id": "a", "text": "Gregor Mendel i Thomas Morgan — prawa dziedziczenia i genetyka chromosomowa"},
+        {"id": "b", "text": "Paul Berg i Walter Gilbert — pionierzy inżynierii genetycznej i sekwencjonowania DNA"},
+        {"id": "c", "text": "Frederick Sanger i Frederick Griffith — sekwencjonowanie białek i transformacji bakterii pneumokoków"},
+        {"id": "d", "text": "Oswald Avery i Erwin Chargaff — dowód roli DNA i reguły zawartości nukleotydów"},
+        {"id": "e", "text": "James Watson i Francis Crick — model podwójnej helisy DNA (1953)"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-190",
+      "options": [
+        {"id": "a", "text": "Thomas Hunt Morgan — geny na chromosomach, badania na muchach owocówkach"},
+        {"id": "b", "text": "Gregor Watson — fikcyjna para łącząca Mendla z twórcą modelu helisy DNA"},
+        {"id": "c", "text": "Gregor Mendel — prawa dziedziczenia z doświadczeń na grochu w Opawie"},
+        {"id": "d", "text": "Francis Crick — współtwórca modelu podwójnej helisy DNA w Cambridge (1953)"},
+        {"id": "e", "text": "Hugo de Vries — rediscovery Mendla, teoria mutacji i saltacji w genetyce"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-191",
+      "options": [
+        {"id": "a", "text": "Joseph Murray — pierwsza udana transplantacja nerki między bliźniakami jednojajowymi (1954)"},
+        {"id": "b", "text": "Zbigniew Religa — pierwsza udana transplantacja serca w Polsce, Zabrze 1985 r."},
+        {"id": "c", "text": "Edward Donnall Thomas — pierwszy przeszczep szpiku kostnego u człowieka (1956)"},
+        {"id": "d", "text": "Christiaan Barnard — pierwsza udana transplantacja serca u człowieka na świecie (1967)"},
+        {"id": "e", "text": "Norman Shumway — pionierskie badania przeszczepów serca poprzedzające sukces Barnarda"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-192",
+      "options": [
+        {"id": "a", "text": "Christiaan Barnard — pierwsza udana transplantacja serca u człowieka na świecie w Kapsztadzie (1967)"},
+        {"id": "b", "text": "Edward Donnall Thomas — pierwszy przeszczep szpiku kostnego u człowieka (1956)"},
+        {"id": "c", "text": "Thomas Starzl — pionier transplantacji wątroby i rozwoju immunosupresji w XX w."},
+        {"id": "d", "text": "Alexis Carrel — techniki chirurgii naczyniowej i eksperymentalne przeszczepy narządów"},
+        {"id": "e", "text": "Joseph Murray — pierwsza udana transplantacja nerki między bliźniakami jednojajowymi (1954)"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-193",
+      "options": [
+        {"id": "a", "text": "Christiaan Barnard — pierwsza transplantacja serca u człowieka na świecie w RPA (1967)"},
+        {"id": "b", "text": "Jan Mikulicz-Radecki — pionier polskiej chirurgii jamy brzusznej, aseptyki, endoskopii i chirurgii klatki piersiowej"},
+        {"id": "c", "text": "Zbigniew Religa — pierwsza udana transplantacja serca w Polsce, Zabrze (1985)"},
+        {"id": "d", "text": "Ludwik Rydygier — pierwsza planowa resekcja żołądka z powodu nowotworu na świecie (1880)"},
+        {"id": "e", "text": "Wojciech Oczko — renesansowy nadworny medyk, ojciec polskiej wenerologii i balneologii"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-194",
+      "options": [
+        {"id": "a", "text": "Rudolf Weigl — szczepionka przeciw tyfusowi plamistemu na bazie hodowli riketsji we wszy"},
+        {"id": "b", "text": "Kazimierz Funk — twórca pojęcia witaminy, badania beri-beri i niedoborów odżywczych"},
+        {"id": "c", "text": "Hilary Koprowski — doustna, żywa, atenuowana szczepionka przeciw polio w latach 50. XX w."},
+        {"id": "d", "text": "Józef Struś — renesansowy medyk, pionier pulsologii i badań nad tętnem"},
+        {"id": "e", "text": "Maciej z Miechowa — autor Chronica Polonorum, pionier polskiej higieny i epidemiologii"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-195",
+      "options": [
+        {"id": "a", "text": "Antybiotyk — termin upowszechniony po odkryciu penicyliny przez Fleminga (1928)"},
+        {"id": "b", "text": "Hormon — pojęcie opracowane przez Baylissa i Starlinga przy badaniu sekretyny (1902)"},
+        {"id": "c", "text": "Antygen — cząsteczka rozpoznawana przez układ immunologiczny jako obca"},
+        {"id": "d", "text": "Enzym — katalizator biochemiczny, termin od greckiego in fermentatio (w fermentacji)"},
+        {"id": "e", "text": "Witamina — termin wprowadzony przez Funke w 1912 r. (łac. vita + amina)"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-196",
+      "options": [
+        {"id": "a", "text": "Hilary Koprowski — doustna, żywa, atenuowana szczepionka przeciw polio (lata 50.)"},
+        {"id": "b", "text": "Rudolf Weigl — szczepionka przeciw tyfusowi plamistemu opracowana na bazie karmicieli wszy w Lwowie"},
+        {"id": "c", "text": "Jonas Salk — inaktywowana szczepionka przeciw polio podawana domięśniowo (1955)"},
+        {"id": "d", "text": "Albert Sabin — doustna szczepionka atenuowana, powszechniejsza od lat 60. XX w."},
+        {"id": "e", "text": "Zbigniew Religa — polski kardiochirurg, pierwsza transplantacja serca w Zabrzu (1985)"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-197",
+      "options": [
+        {"id": "a", "text": "Planową resekcję żołądka z powodu nowotworu — pierwszą na świecie (1880, Lwów)"},
+        {"id": "b", "text": "Pierwszą transplantację serca u człowieka — przeprowadzoną przez Barnarda w RPA (1967)"},
+        {"id": "c", "text": "Operację w znieczuleniu eterowym — zademonstrowaną przez Mortona i Warrena (1846)"},
+        {"id": "d", "text": "Pierwszą antyseptyczną operację jamy brzusznej z użyciem fenolu — metodę Listera"},
+        {"id": "e", "text": "Szczepionkę przeciw wściekliźnie u człowieka — zastosowaną przez Pasteura (1885)"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-198",
+      "options": [
+        {"id": "a", "text": "Józef Struś — medyk renesansowy, pionier pulsologii i badań nad tętnem"},
+        {"id": "b", "text": "Maciej z Miechowa — autor traktatu o higienie i dzieła Chronica Polonorum"},
+        {"id": "c", "text": "Tytus Chałubiński — propagator klimatoterapii górskiej, rozwój sanatoriów w Zakopanem"},
+        {"id": "d", "text": "Wojciech Oczko — nadworny medyk, wenerologia, traktat Cieplice (1578)"},
+        {"id": "e", "text": "Władysław Biegański — polski psychiatra, autor pojęcia psychopatii i klasyfikacji zaburzeń"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-199",
+      "options": [
+        {"id": "a", "text": "Wody mineralne i kąpiele cieplicowe — tradycja balneologiczna od czasów Oczka"},
+        {"id": "b", "text": "Klimat górski i pobyt w Tatrach (Zakopane) w leczeniu gruźlicy i chorób płuc"},
+        {"id": "c", "text": "Terapię radioizotopem jodu-131 — leczenie nadczynności i nowotworów tarczycy"},
+        {"id": "d", "text": "Szczepienia BCG przeciw prątkowi gruźlicy — szczepionka Calmette'a i Guérina"},
+        {"id": "e", "text": "Antyseptykę kwasem karbolowym — metoda Listera rozwijająca idee Semmelweisa"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-200",
+      "options": [
+        {"id": "a", "text": "Odkrycie penicyliny — Fleming, pierwszy skuteczny antybiotyk hamujący bakterie (1928)"},
+        {"id": "b", "text": "Odkrycie promieni X — Roentgen, przełom w diagnostyce obrazowej (1895)"},
+        {"id": "c", "text": "Odkrycie pierwiastków promieniotwórczych polonu i radu — podstawa radioterapii"},
+        {"id": "d", "text": "Model podwójnej helisy DNA — Watson i Crick, fundament biologii molekularnej (1953)"},
+        {"id": "e", "text": "Postulaty wiążące drobnoustrój z chorobą — Robert Koch, era medycyny laboratoryjnej"}
+      ],
+      "correct_option_id": "c"
+    }
+  ]
+}

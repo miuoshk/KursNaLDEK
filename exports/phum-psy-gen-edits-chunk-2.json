@@ -1,0 +1,280 @@
+{
+  "label": "phum-psy-gen-length-fix-chunk-2",
+  "edits": [
+    {
+      "id": "phum-psy-gen-026",
+      "options": [
+        { "id": "a", "text": "proces budowania relacji oparty na otwartości, szacunku i partnerskiej współpracy" },
+        { "id": "b", "text": "proces poszukiwania i wzmacniania argumentów zmiany po stronie pacjenta" },
+        { "id": "c", "text": "proces wzmacniania motywacji wewnętrznej i wiary we własną skuteczność" },
+        { "id": "d", "text": "proces opracowania konkretnego planu działania i zobowiązania pacjenta do zmiany" },
+        { "id": "e", "text": "proces demonstracji pożądanego zachowania przez terapeutę podczas wizyty pacjenta" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-027",
+      "options": [
+        { "id": "a", "text": "proces budowania relacji oparty na szacunku i partnerskiej współpracy z pacjentem" },
+        { "id": "b", "text": "proces wydobywania argumentów zmiany oraz poszukiwania języka zmiany u pacjenta" },
+        { "id": "c", "text": "proces wzmacniania wewnętrznej motywacji i poczucia sprawczości pacjenta" },
+        { "id": "d", "text": "proces rozwijania zobowiązania do zmiany i sformułowania konkretnego działania" },
+        { "id": "e", "text": "proces utrzymywania wprowadzonych zmian i zapobiegania nawrotom do wcześniejszego zachowania" }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-028",
+      "options": [
+        { "id": "a", "text": "dotyczy głównie osób od początku niezaangażowanych i znudzonych wykonywaną pracą zawodową" },
+        { "id": "b", "text": "jest tożsame ze zwykłym zmęczeniem i przejściowym zniechęceniem do codziennych obowiązków" },
+        { "id": "c", "text": "jest końcowym etapem procesu, który początkowo obejmował wysokie zaangażowanie i motywację" },
+        { "id": "d", "text": "pojawia się natychmiast po wyborze zawodu, który od razu okazuje się rozczarowujący" },
+        { "id": "e", "text": "występuje wyłącznie u osób bez odpowiedniego wykształcenia kierunkowego w dziedzinie medycyny" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-029",
+      "options": [
+        { "id": "a", "text": "wyczerpanie emocjonalne, depersonalizację oraz obniżone poczucie dokonań osobistych" },
+        { "id": "b", "text": "mobilizację psychiczną, rozstrój funkcjonowania oraz destrukcję dostępnych zasobów osobistych" },
+        { "id": "c", "text": "stadium alarmu organizmu, stadium odporności adaptacyjnej oraz stadium wyczerpania" },
+        { "id": "d", "text": "hiperstres przekraczający możliwości, hipostres oraz dystres naruszający równowagę organizmu" },
+        { "id": "e", "text": "prekontemplację zmiany zachowania, kontemplację jej korzyści oraz wdrażanie działania" }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-030",
+      "options": [
+        { "id": "a", "text": "depersonalizacji polegającej na traktowaniu pacjentów jak przypadków i emocjonalnym dystansie" },
+        { "id": "b", "text": "wyczerpania emocjonalnego polegającego na chronicznym zmęczeniu i braku energii do pracy" },
+        { "id": "c", "text": "obniżenia dokonań polegającego na braku satysfakcji z pracy i wątpliwościach co do kompetencji" },
+        { "id": "d", "text": "stadium odporności polegającego na utrzymaniu wysokiej mobilizacji organizmu wobec stresorów" },
+        { "id": "e", "text": "fazy mobilizacji polegającej na aktywizacji procesów psychicznych i szybszych reakcjach na stres" }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-031",
+      "options": [
+        { "id": "a", "text": "nadmierne obciążenie pracą wykraczające poza możliwości adaptacyjne jednostki" },
+        { "id": "b", "text": "utrata kontroli nad wykonywaną pracą i brak realnego wpływu na jej organizację" },
+        { "id": "c", "text": "sprzeczność między zasadami organizacji a indywidualnymi przekonaniami jednostki" },
+        { "id": "d", "text": "brak sprawiedliwości w podziale obowiązków, nagród i uznania w zespole pracy" },
+        { "id": "e", "text": "niedostateczne wynagrodzenie finansowe i brak uznania za wkład w pracę zespołową" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-032",
+      "options": [
+        { "id": "a", "text": "miesiąc miodowy jako faza początkowego zauroczenia pracą i entuzjazmu zawodowego" },
+        { "id": "b", "text": "przebudzenie jako faza pierwszych rys wypalenia i prób kompensacji przez więcej pracy" },
+        { "id": "c", "text": "szorstkość jako faza opisana słowami: coraz więcej wysiłku przy coraz mniejszym efekcie" },
+        { "id": "d", "text": "wypalenie pełnoobjawowe jako faza wyczerpania, depresji i ucieczki od obowiązków zawodowych" },
+        { "id": "e", "text": "odradzanie się jako faza leczenia, regeneracji i powrotu do równowagi po kryzysie wypalenia" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-033",
+      "options": [
+        { "id": "a", "text": "objawy afektywne obejmujące depresyjność, płaczliwość, lękliwość, wahania nastroju i lęk wobec pracy" },
+        { "id": "b", "text": "objawy somatyczne obejmujące bóle głowy, zaburzenia snu, zmianę wagi i zaburzenia koncentracji" },
+        { "id": "c", "text": "objawy kognitywne obejmujące niską samoocenę, poczucie winy, myśli samobójcze i sztywność myślenia" },
+        { "id": "d", "text": "objawy behawioralne obejmujące impulsywność, odkładanie spraw, wzrost używek i wycofywanie się" },
+        { "id": "e", "text": "objawy motywacyjne obejmujące utratę idealizmu, gorliwości, poczucia sensu i wiary w sens pracy zawodowej" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-034",
+      "options": [
+        { "id": "a", "text": "czynniki indywidualne, interpersonalne oraz organizacyjne sprzyjające wypaleniu zawodowemu" },
+        { "id": "b", "text": "czynniki fizyczne, chemiczne oraz biologiczne obciążające organizm w środowisku pracy zawodowej" },
+        { "id": "c", "text": "czynniki poznawcze, emocjonalne oraz behawioralne objawiające się w symptomach wypalenia" },
+        { "id": "d", "text": "czynniki afektywne, somatyczne oraz motywacyjne opisujące symptomy wypalenia u osoby" },
+        { "id": "e", "text": "czynniki środowiskowe, osobowościowe oraz społeczne wpływające na adaptację do pracy" }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-035",
+      "options": [
+        { "id": "a", "text": "twórca koncepcji salutogenezy i autora modelu zasobów odpornościowych człowieka" },
+        { "id": "b", "text": "autor poznawczo-transakcyjnego paradygmatu stresu opartego na subiektywnej ocenie sytuacji" },
+        { "id": "c", "text": "ojciec koncepcji stresu, który jako pierwszy wprowadził to pojęcie do nauki medycznej" },
+        { "id": "d", "text": "twórca modelu dialogu motywującego opartego na czterech procesach zmiany zachowania" },
+        { "id": "e", "text": "autor trójwymiarowej koncepcji wypalenia zawodowego opartej na pracy z innymi ludźmi" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-036",
+      "options": [
+        { "id": "a", "text": "alarmu, w którym organizm reaguje szokiem lub przeciwdziała niemu w fazie początkowej reakcji" },
+        { "id": "b", "text": "szoku, w którym organizm jest zaskoczony bodźcem i traci chwilowo równowagę wewnętrzną" },
+        { "id": "c", "text": "odporności, w którym organizm opiera się stresorom, utrzymując mobilizację powyżej normy" },
+        { "id": "d", "text": "wyczerpania, w którym spada odporność organizmu i pojawia się poddanie się stresorom" },
+        { "id": "e", "text": "przeciwdziałania szokowi, w którym organizm próbuje przywrócić równowagę po bodźcu" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-037",
+      "options": [
+        { "id": "a", "text": "hipostres rozumiany jako stadium przedstresowe, poniżej progu właściwej reakcji organizmu" },
+        { "id": "b", "text": "hiperstres rozumiany jako nadmierne obciążenie przekraczające możliwości adaptacyjne jednostki" },
+        { "id": "c", "text": "dystres rozumiany jako negatywny stres naruszający równowagę i dobrostan jednostki" },
+        { "id": "d", "text": "eustres rozumiany jako pozytywny stres pobudzający organizm do konstruktywnego działania" },
+        { "id": "e", "text": "distres adaptacyjny rozumiany jako przedłużona reakcja na chroniczne źródła napięcia psychicznego" }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-038",
+      "options": [
+        { "id": "a", "text": "relację osoba–środowisko ocenianą jako przekraczającą zasoby i zagrażającą dobrostanowi" },
+        { "id": "b", "text": "niespecyficzną reakcję organizmu na wymagania stawiane przez otoczenie zewnętrzne i bodźce" },
+        { "id": "c", "text": "stan zaburzonej równowagi wyłącznie na poziomie fizjologicznym bez subiektywnej oceny poznawczej" },
+        { "id": "d", "text": "końcowy etap procesu zaangażowania zawodowego po wcześniejszym wysokim motywowaniu do pracy" },
+        { "id": "e", "text": "dodatni bodziec pobudzający organizm do działania bez zagrożenia dla jego dobrostanu psychicznego" }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-039",
+      "options": [
+        { "id": "a", "text": "pytanie oceny wtórnej brzmiące: Co mogę teraz zrobić w tej sytuacji?" },
+        { "id": "b", "text": "pytanie strategii radzenia sobie: Skoncentrować się na problemie czy na emocjach?" },
+        { "id": "c", "text": "pytanie oceny powtórnej brzmiące: Czy sytuacja się zmieniła i czy czuję się lepiej?" },
+        { "id": "d", "text": "pytanie oceny zasobów brzmiące: Jakie mam dostępne zasoby zaradcze w tej sytuacji?" },
+        { "id": "e", "text": "pytanie oceny pierwotnej brzmiące: Czy to ma dla mnie znaczenie i jakie?" }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-040",
+      "options": [
+        { "id": "a", "text": "krzywdy lub straty, gdy szkoda już nastąpiła i towarzyszą żal, złość lub smutek" },
+        { "id": "b", "text": "zagrożenia, gdy przewidywane są przyszłe straty i dominują lęk oraz strach" },
+        { "id": "c", "text": "wyzwania, gdy możliwe są zarówno straty, jak i korzyści oraz nadzieja i zapał" },
+        { "id": "d", "text": "braku znaczenia, gdy sytuacja nie jest uznawana za istotną dla podmiotu" },
+        { "id": "e", "text": "szkody dokonanej, gdy strata jest już pewna i pojawia się rezygnacja oraz bezradność" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-041",
+      "options": [
+        { "id": "a", "text": "zmienić ocenę pierwotną z wyzwania na zagrożenie i istotnie obniżyć poczucie kontroli nad sytuacją" },
+        { "id": "b", "text": "zwiększyć poziom odczuwanego stresu i utrudnić skuteczne radzenie sobie ze stresem" },
+        { "id": "c", "text": "całkowicie wyeliminować potrzebę stosowania strategii radzenia sobie ze stresem" },
+        { "id": "d", "text": "prowadzić wyłącznie do skupienia się na emocjach zamiast na rozwiązaniu problemu" },
+        { "id": "e", "text": "zmienić ocenę z zagrożenia na wyzwanie, wzmacniając kontrolę i mobilizację do działania" }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-042",
+      "options": [
+        { "id": "a", "text": "rozstroju, w którym spada sprawność psychiczna i pojawiają się zachowania stereotypowe" },
+        { "id": "b", "text": "destrukcji, w której żadna czynność nie jest już wykonywana w sposób poprawny" },
+        { "id": "c", "text": "mobilizacji, w której sprawniej przebiegają spostrzeganie, myślenie i szybsze reakcje" },
+        { "id": "d", "text": "odporności organizmu, w którym utrzymywana jest wysoka mobilizacja fizjologiczna" },
+        { "id": "e", "text": "wyczerpania adaptacyjnego, w którym organizm traci zdolność do skutecznej obrony" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-043",
+      "options": [
+        { "id": "a", "text": "mobilizacji z aktywizacją procesów psychicznych i szybszymi reakcjami na stresor" },
+        { "id": "b", "text": "odporności organizmu z utrzymaną wysoką mobilizacją wobec czynników stresogennych" },
+        { "id": "c", "text": "destrukcji, w której dochodzi do całkowitego załamania i niemożności poprawnego działania" },
+        { "id": "d", "text": "alarmu w reakcji ogólnoadaptacyjnej, gdy organizm reaguje na nowy bodziec stresowy" },
+        { "id": "e", "text": "rozstroju z obniżeniem czynności psychicznych, stereotypami i dominacją emocji" }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-044",
+      "options": [
+        { "id": "a", "text": "sprawniej i szybciej wykonywać zadania dzięki przejściowej mobilizacji psychicznej i pobudzeniu" },
+        { "id": "b", "text": "w pełni racjonalnie oceniać sytuację i przewidywać konsekwencje swoich działań" },
+        { "id": "c", "text": "utrzymywać mobilizację powyżej normy bez widocznych objawów kryzysu, rezygnacji lub załamania" },
+        { "id": "d", "text": "doświadczać wyłącznie emocji pozytywnych mimo obecności silnych bodźców stresowych" },
+        { "id": "e", "text": "na pozór wydawać się spokojną z powodu zahamowania, odczuwając przy tym silne emocje" }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-045",
+      "options": [
+        { "id": "a", "text": "communio, co oznacza wspólność i poczucie łączności między uczestnikami kontaktu" },
+        { "id": "b", "text": "communicatio, co oznacza wymianę, łączność i rozmowę między nadawcą a odbiorcą" },
+        { "id": "c", "text": "communicare, co oznacza uczynić wspólnym, połączyć lub zestawić ze sobą uczestników" },
+        { "id": "d", "text": "transmittere, co oznacza nadawanie i odbieranie sygnałów w ustalonym kanale komunikacji" },
+        { "id": "e", "text": "concordia, co oznacza porozumienie i zgodę osiąganą bez użycia przemocy w dialogu" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-046",
+      "options": [
+        { "id": "a", "text": "przebiega głównie na poziomie intelektualnym, ma charakter nieciągły i podlega gramatyce" },
+        { "id": "b", "text": "toczy się według ścisłych zasad gramatycznych i jest w pełni świadoma oraz kontrolowana" },
+        { "id": "c", "text": "przebiega na poziomie emocjonalnym, bywa nieuświadomiona i charakteryzuje się ciągłością" },
+        { "id": "d", "text": "jest zawsze w pełni świadoma, kontrolowana i nie dostarcza kontekstu do interpretacji słów" },
+        { "id": "e", "text": "nie dostarcza kontekstu do wypowiedzi werbalnych i zastępuje kanał słowny w relacji" }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-047",
+      "options": [
+        { "id": "a", "text": "polecenia i instrukcje służące przekazywaniu zaleceń oraz oczekiwanych działań pacjenta" },
+        { "id": "b", "text": "pytania i informacje służące zbieraniu danych oraz przekazywaniu wiedzy medycznej" },
+        { "id": "c", "text": "komunikowanie emocji polegające na słownym wyrażaniu uczuć i stanów wewnętrznych" },
+        { "id": "d", "text": "metakomunikaty zawierające oprócz treści dosłownej także ukryty, niejawny komunikat" },
+        { "id": "e", "text": "parafrazy polegające na powtarzaniu i potwierdzaniu treści wypowiedzi rozmówcy" }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-048",
+      "options": [
+        { "id": "a", "text": "ciągłość oznacza, że kanał niewerbalny pozostaje stale otwarty podczas interakcji" },
+        { "id": "b", "text": "zastępowanie oznacza, że komunikacja niewerbalna całkowicie zastępuje werbalną treść" },
+        { "id": "c", "text": "retrospektywa oznacza, że komunikacja niewerbalna dotyczy wyłącznie przeszłych wydarzeń" },
+        { "id": "d", "text": "planowość oznacza, że sygnały niewerbalne są zawsze świadomie planowane i celowe" },
+        { "id": "e", "text": "automatyzm oznacza, że sygnały niewerbalne są wysyłane głównie poza świadomością" }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-049",
+      "options": [
+        { "id": "a", "text": "słuchanie aktywne polegające na dążeniu do pełnego zrozumienia treści i znaczenia wypowiedzi" },
+        { "id": "b", "text": "słuchanie empatyczne polegające na przyjęciu perspektywy rozmówcy i jego doświadczenia" },
+        { "id": "c", "text": "słuchanie świadome polegające na wychwytywaniu niespójności między słowami a sygnałami" },
+        { "id": "d", "text": "słuchanie otwarte polegające na zahamowaniu tendencji do przedwczesnej oceny i wniosków" },
+        { "id": "e", "text": "słuchanie refleksyjne polegające na analizie własnych reakcji emocjonalnych podczas rozmowy" }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-050",
+      "options": [
+        { "id": "a", "text": "nakazów i poleceń narzucających rozwiązanie i budzących opór u rozmówcy" },
+        { "id": "b", "text": "moralizowania wywołującego poczucie winy przez ocenę etyczną zachowania pacjenta" },
+        { "id": "c", "text": "doradzania i sugerowania gotowego rozwiązania z pozycji autorytetu i wiedzy eksperta" },
+        { "id": "d", "text": "pouczania traktującego rozmówcę jak osobę niedojrzałą wymagającą ciągłej kontroli i nadzoru" },
+        { "id": "e", "text": "krytykowania skupiającego się na negatywnej ocenie osoby zamiast na jej problemie" }
+      ],
+      "correct_option_id": "c"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-6",
+  "edits": [
+    {
+      "id": "phum-soc-gen-126",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Polska utrzymuje wydatki na zdrowie poniżej średniej unijnej w relacji do PKB"},
+        {"id": "b", "text": "przewyższają średnią OECD i zbliżają się do poziomu wydatków Niemiec"},
+        {"id": "c", "text": "są najwyższe wśród państw Unii Europejskiej mierzone udziałem w PKB"},
+        {"id": "d", "text": "dorównują średniej światowej dzięki dynamicznemu wzrostowi składek NFZ"},
+        {"id": "e", "text": "w całości finansowane ze środków prywatnych ubezpieczycieli bez dotacji publicznych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-127",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "całkowitej prywatyzacji publicznego systemu ochrony zdrowia i likwidacji NFZ"},
+        {"id": "b", "text": "reorganizacji placówek i zarządzania siecią świadczeń szpitalnych"},
+        {"id": "c", "text": "wprowadzenia modelu ubezpieczeniowego opartego wyłącznie na sektorze prywatnym"},
+        {"id": "d", "text": "zniesienia obowiązkowej składki zdrowotnej finansowanej z dochodów pracowników"},
+        {"id": "e", "text": "liberalizacji rynku medycznego z pełnym wycofaniem państwa z kontraktowania usług"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-128",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "nadmiaru personelu medycznego przekraczającego zapotrzebowanie systemów opieki"},
+        {"id": "b", "text": "skrócenia kolejek do specjalistów poniżej standardów krajów rozwiniętych"},
+        {"id": "c", "text": "rosnących kosztów terapii i leków obciążających budżety państw i ubezpieczycieli"},
+        {"id": "d", "text": "całkowitego wyeliminowania biurokracji w procesie finansowania świadczeń zdrowotnych"},
+        {"id": "e", "text": "spadku zapotrzebowania na opiekę wynikającego z młodniejących struktur demograficznych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-129",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "pełnej gotowości wszystkich systemów na skalę globalną bez istotnych słabości organizacyjnych"},
+        {"id": "b", "text": "zbędności profilaktyki zdrowotnej po udowodnieniu skuteczności szczepionek przeciw COVID-19"},
+        {"id": "c", "text": "całkowitego zniknięcia biurokracji dzięki uproszczeniu procedur w pierwszej fali pandemii"},
+        {"id": "d", "text": "małej elastyczności, braków kadrowych i niedostatków w dostępie do opieki medycznej"},
+        {"id": "e", "text": "trwałego spadku kosztów leczenia chorób zakaźnych we wszystkich krajach rozwiniętych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-130",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "legalnej sekcji zwłok przestępców wykonywanej w celach edukacyjnych i sądowych"},
+        {"id": "b", "text": "obserwacji rentgenowskiej struktur wewnętrznych ciała w ramach badań diagnostycznych"},
+        {"id": "c", "text": "wiwisekcji zwierząt prowadzonej systematycznie w celu opisu narządów i układów"},
+        {"id": "d", "text": "tłumaczenia greckich tekstów medycznych na język hieroglificzny w świątyniach"},
+        {"id": "e", "text": "procesu mumifikacji ciał i przygotowania zmarłych do pochówku w tradycji religijnej"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-131",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Papirus Edwin Smitha — najstarszy egipski opis urazów, ran i zabiegów chirurgicznych"},
+        {"id": "b", "text": "Papirus Ebersa — zielnik ziołowy z opisami chorób wewnętrznych i magicznych metod"},
+        {"id": "c", "text": "Papirus Kahuna — tekst medyczny z wysp Pacyfiku opisujący masaż i terapię manualną"},
+        {"id": "d", "text": "Kodeks Hammurabiego — mezopotamski zbiór praw regulujący odpowiedzialność lekarzy"},
+        {"id": "e", "text": "Corpus Hippocraticum — grecki zbiór traktatów o teorii humoralnej i etyce lekarskiej"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-132",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "Papirus Ebersa — egipski zielnik opisujący receptury ziołowe i rytuały lecznicze"},
+        {"id": "b", "text": "Kodeks Hammurabiego — prawa regulujące wynagrodzenia i kary za błędy lekarzy"},
+        {"id": "c", "text": "Prawa Solona — ateńskie ustawy regulujące praktykę medyczną w polis greckich"},
+        {"id": "d", "text": "Corpus Iuris Civilis — bizantyjski kodeks prawa cywilnego Justyniana Wielkiego"},
+        {"id": "e", "text": "Canon Medicinae — arabski podręcznik Awicenny systematyzujący wiedzę medyczną"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-133",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Galen — rzymski lekarz rozwijający teorię humoralną na podstawie wiwisekcji zwierząt"},
+        {"id": "b", "text": "Asklepiades z Bitynii — twórca szkoły metodystów odrzucającej teorię humoralną"},
+        {"id": "c", "text": "Hipokrates z Kos — „ojciec medycyny”, autor zasady naturalizmu w leczeniu chorób"},
+        {"id": "d", "text": "Awicenna (Ibn Sina) — autor „Kanonu medycyny” używanego w Europie do XVII w."},
+        {"id": "e", "text": "Imhotep — egipski lekarz i architekt czczonego później niemal jak bóstwo uzdrawiające"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-134",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "krwią (sanguis) — humorem serca, wiosny i temperamentu sangwinicznego"},
+        {"id": "b", "text": "żółtą żółcią (chole) — humorem wątroby, lata i temperamentu cholerycznego"},
+        {"id": "c", "text": "flegmą (phlegma) — humorem mózgu, zimy i temperamentu flegmatycznego"},
+        {"id": "d", "text": "czarną żółcią (melanchole) — humorem śledziony i temperamentu melancholijnego"},
+        {"id": "e", "text": "limfą — płynem odpornościowym nieuwzględnianym w klasycznej teorii czterech humorów"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-135",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "bimaristanami — arabskimi szpitalami publicznymi z oddziałami specjalistycznymi"},
+        {"id": "b", "text": "liceami — greckimi ośrodkami edukacji filozoficznej bez funkcji leczniczej"},
+        {"id": "c", "text": "termani — rzymskimi łaźniami służącymi higienie i relaksowi społeczeństwa"},
+        {"id": "d", "text": "gimnazjonami — miejscami ćwiczeń fizycznych i wychowania młodzieży w Grecji"},
+        {"id": "e", "text": "asklepionami — świątyniami Asklepiosa pełniącymi funkcję pierwszych szpitali"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-136",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Galen — Grek z Pergamonu, badacz anatomii zwierząt, autorytet medyczny do renesansu"},
+        {"id": "b", "text": "Asklepiades z Bitynii — rzymianin promujący łagodne metody leczenia bez teorii humoralnej"},
+        {"id": "c", "text": "Celsus — rzymski encyklopedysta opisujący objawy zapalenia w dziele De Medicina"},
+        {"id": "d", "text": "Hipokrates — grecki lekarz z Kos wprowadzający naturalistyczne ujęcie przyczyn chorób"},
+        {"id": "e", "text": "Dioskorydes — autor greckiego zielnika opisującego właściwości lecznicze roślin i minerałów"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-137",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "febris, tussis, dyspnoe, cyanosis — objawy oddechowe: gorączka, kaszel, duszność, sinica"},
+        {"id": "b", "text": "rubor, tumor, calor, dolor — tetrada objawów zapalenia opisana przez Celsusa"},
+        {"id": "c", "text": "pallor, frigor, sopor, stupor — bladość, dreszcze, senność i otępienie"},
+        {"id": "d", "text": "sanguis, chole, melanchole, phlegma — cztery soki ustrojowe teorii humoralnej"},
+        {"id": "e", "text": "caput, cor, hepar, ren — głowa, serce, wątroba i nerka jako organy docelowe"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-138",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "szkoły dogmatycznej opartej na teorii humoralnej Hipokratesa i tekstach Galena"},
+        {"id": "b", "text": "chirurgii wojskowej specjalizującej się w leczeniu ran i amputacji na froncie"},
+        {"id": "c", "text": "szkoły metodystów — łagodnego holizmu odrzucającego teorię humoralną"},
+        {"id": "d", "text": "medycyny anatomicznej opartej na sekcji zwłok ludzkich w szkołach rzymskich"},
+        {"id": "e", "text": "teorii krążenia płucnego opisanej przed Harveyem przez arabskich uczonych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-139",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Al-Razi (Rhazes) — autor Kitab al-Hawi, pionier diagnostyki różnicowej ospę–odra"},
+        {"id": "b", "text": "Al-Zahrawi (Abulcasis) — twórca Al-Tasrif, uważany za ojca nowożytnej chirurgii"},
+        {"id": "c", "text": "Ibn al-Nafis — opis małego obiegu krwi wyprzedzający Harveya o niemal 400 lat"},
+        {"id": "d", "text": "Awicenna (Ibn Sina) — autor „Kanonu medycyny” używanego w Europie do XVII w."},
+        {"id": "e", "text": "Hunayn ibn Ishaq — tłumacz dzieł Galena i Hipokratesa w Domu Mądrości w Bagdadzie"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-140",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Awicenna (Ibn Sina) — autor systematycznego „Kanonu medycyny” stosowanego w Europie"},
+        {"id": "b", "text": "Al-Razi (Rhazes) — empiryczny diagnosta odróżniający ospę od odry w praktyce klinicznej"},
+        {"id": "c", "text": "Al-Zahrawi (Abulcasis) — chirurg opisujący narzędzia i techniki w traktacie Al-Tasrif"},
+        {"id": "d", "text": "Galen — rzymski autorytet medycyny opierający anatomię na wiwisekcji zwierząt"},
+        {"id": "e", "text": "Ibn al-Nafis — opis małego obiegu krwi wyprzedzający Williama Harveya o ~400 lat"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-141",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "ojca nowożytnej chirurgii — autora Al-Tasrif opisującego narzędzia i techniki"},
+        {"id": "b", "text": "ojca teorii humoralnej — twórcy koncepcji czterech soków ustrojowych w medycynie"},
+        {"id": "c", "text": "pierwszego tłumacza Hipokratesa na arabski w Domu Mądrości w Bagdadzie"},
+        {"id": "d", "text": "twórcy pierwszego uniwersytetu medycznego w średniowiecznej Europie zachodniej"},
+        {"id": "e", "text": "odkrywcy krążenia płucnego opisanego ponownie przez Williama Harveya w XVII w."}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-142",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "asklepionami — greckimi świątyniami Asklepiosa z senem asklepiadyjskim i rytuałami"},
+        {"id": "b", "text": "bimaristanami — arabskimi szpitalami publicznymi dostępnymi niezależnie od wyznania"},
+        {"id": "c", "text": "termani — rzymskimi łaźniami służącymi higienie publicznej bez opieki chorych"},
+        {"id": "d", "text": "hospicjami — średniowiecznymi domami opieki nad umierającymi pod auspicjami Kościoła"},
+        {"id": "e", "text": "lazaretami — placówkami kwarantanny dla chorych na choroby zakaźne w portach morskich"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-143",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "opisał krążenie płucne — mały obieg krwi wyprzedzający odkrycie Williama Harveya"},
+        {"id": "b", "text": "stworzył przysięgę lekarską — etyczny kodeks zobowiązań lekarza wobec pacjenta"},
+        {"id": "c", "text": "odróżnił ospę od odry — wczesny przykład diagnostyki różnicowej chorób zakaźnych"},
+        {"id": "d", "text": "przeprowadził pierwszą transplantację narządu u człowieka w Bagdadzie w IX wieku"},
+        {"id": "e", "text": "wynalazł mikroskop optyczny umożliwiający obserwację drobnoustrojów w materiale klinicznym"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-144",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Uniwersytet w Bolonii — założony 1088 r., późniejszy pionier publicznych sekcji zwłok"},
+        {"id": "b", "text": "Uniwersytet Paryski — ośrodek medycyny galenistycznej z wydziałem od ok. 1215 r."},
+        {"id": "c", "text": "Uniwersytet w Montpellier — szkoła medycyny arabsko-galenicznej w południowej Francji"},
+        {"id": "d", "text": "Szkoła Medyczna w Salerno — najstarsza szkoła medyczna średniowiecznej Europie"},
+        {"id": "e", "text": "Uniwersytet Oksfordzki — angielski ośrodek studiów medycznych rozwijający się od XII w."}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-145",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Salerno — najstarsza szkoła medyczna łącząca tradycje grecką, arabską i żydowską"},
+        {"id": "b", "text": "Montpellier — ośrodek medycyny galenistycznej w południowej Francji od XIII wieku"},
+        {"id": "c", "text": "Paryż — wiodący uniwersytet z wydziałem medycznym rozwijającym anatomię teoretyczną"},
+        {"id": "d", "text": "Oksford — angielski uniwersytet kształcący lekarzy głównie z tekstów Galena i Awicenny"},
+        {"id": "e", "text": "Bolonia — pionier publicznych sekcji zwłok od XIV wieku w nauczaniu anatomicznym"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-146",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Domem Mądrości (Bayt al-Hikma) — ośrodkiem tłumaczeń dzieł greckich, perskich i indyjskich"},
+        {"id": "b", "text": "bimaristanem — arabskim szpitalem publicznym z oddziałami specjalistycznymi i nauką kliniczną"},
+        {"id": "c", "text": "asklepionem — grecką świątynią Asklepiosa łączącą kult z praktyką leczniczą"},
+        {"id": "d", "text": "Scholą Salernitaną — najstarszą szkołą medyczną średniowiecznej Europy zachodniej"},
+        {"id": "e", "text": "Kanonem Medicinae — arabskim podręcznikiem Awicenny stosowanym na uniwersytetach europejskich"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-147",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "wyłącznie zaburzenia biochemicznego wymagającego interwencji laboratoryjnej i farmakologicznej"},
+        {"id": "b", "text": "kary za grzechy lub testu duchowego leczonego modlitwą, pokutą i sakramentami"},
+        {"id": "c", "text": "skutku działania mikroorganizmów rozpoznawanych dopiero w erze mikroskopii i bakteriologii"},
+        {"id": "d", "text": "zjawiska czysto genetycznego dziedziczonego w linii rodowej bez wpływu czynników społecznych"},
+        {"id": "e", "text": "efektu nierównowagi atomów opisywanej przez atomistów greckich jako przyczyna chorób ciała"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-148",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "pacjent był aktywnym, równorzędnym uczestnikiem decyzji terapeutycznych i planu leczenia"},
+        {"id": "b", "text": "obowiązywała pełna koncepcja praw pacjenta obejmująca świadomą zgodę na każdy zabieg"},
+        {"id": "c", "text": "relacja była paternalistyczna — lekarz decydował, pacjent miał ufać jako „obiekt”"},
+        {"id": "d", "text": "pacjent swobodnie wybierał spośród konkurujących terapii dostępnych na rynku medycznym"},
+        {"id": "e", "text": "pacjenci podpisywali dokumenty świadomej zgody przed każdą interwencją terapeutyczną"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-149",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "uważani za elitę akademicką cieszącą się najwyższym prestiżem w hierarchii zawodowej"},
+        {"id": "b", "text": "całkowicie zakazani przez prawo kościelne ze względu na ryzyko profanacji ciała ludzkiego"},
+        {"id": "c", "text": "wyłącznie duchowni pełniący funkcję opieki nad chorymi w klasztorach i szpitalach"},
+        {"id": "d", "text": "traktowani jako rzemieślnicy wykonujący zabiegi mechaniczne o niższym statusie"},
+        {"id": "e", "text": "jedyni uprawnieni do nauczania medycyny na uniwersytetach zamiast lekarzy-teoretyków"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-150",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "wyłącznie kapłana bez wiedzy medycznej, ograniczonego do funkcji rytualnych w świątyni"},
+        {"id": "b", "text": "rzymskiego chirurga wojskowego specjalizującego się w leczeniu ran na froncie legionów"},
+        {"id": "c", "text": "greckiego filozofa naturalnego badającego przyczyny chorób w szkole ateńskiej"},
+        {"id": "d", "text": "babilońskiego prawodawcy autorstwa przepisów dotyczących odpowiedzialności lekarzy"},
+        {"id": "e", "text": "lekarza, architekta i doradcy faraona Djosera, później czczonego niemal jak bóstwo"}
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import type { SessionQuestion } from "@/features/session/types";
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 
@@ -16,8 +17,10 @@ export function QuestionCard({
   children,
   showTopicName = true,
 }: QuestionCardProps) {
+  const t = useTranslations("session");
+  const topicDefault = t("topicDefault");
   const topicLabel =
-    showTopicName && question.topicName && question.topicName !== "Temat"
+    showTopicName && question.topicName && question.topicName !== topicDefault
       ? question.topicName
       : null;
 

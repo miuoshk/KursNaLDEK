@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState, useRef, useEffect } from 'react'
 import type { OPGQuestion } from '../../lib/opg/types'
 
@@ -25,6 +26,8 @@ export default function OPGTextInputPanel({
   attemptsLeft,
   disabled,
 }: OPGTextInputPanelProps) {
+  const t = useTranslations('osce')
+  const tCommon = useTranslations('common')
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -42,8 +45,12 @@ export default function OPGTextInputPanel({
 
   const heading =
     question.direction === 'number_to_name'
-      ? `Struktura nr ${question.targetStructure.structure_number} — wpisz nazwę:`
-      : `Wpisz numer struktury: ${question.targetStructure.name_pl}`
+      ? t('opgStructureNumberPrompt', {
+          number: question.targetStructure.structure_number,
+        })
+      : t('opgEnterStructureNumber', {
+          name: question.targetStructure.name_pl,
+        })
 
   function handleSubmit() {
     const trimmed = inputValue.trim()
@@ -68,7 +75,7 @@ export default function OPGTextInputPanel({
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={isInputLocked}
-        placeholder="Wpisz odpowiedź..."
+        placeholder={t('opgAnswerPlaceholder')}
         style={{
           width: '100%',
           padding: 12,
@@ -103,38 +110,35 @@ export default function OPGTextInputPanel({
             isInputLocked || !inputValue.trim() ? 'default' : 'pointer',
         }}
       >
-        Sprawdź
+        {tCommon('check')}
       </button>
 
       {feedback && (
         <div style={{ marginTop: 12, fontSize: 14, lineHeight: 1.5 }}>
           {feedback.isCorrect && !feedback.correctedTypo && (
-            <p style={{ color: '#4ade80' }}>Poprawnie!</p>
+            <p style={{ color: '#4ade80' }}>{t('opgCorrect')}</p>
           )}
 
           {feedback.isCorrect && feedback.correctedTypo && (
             <>
-              <p style={{ color: '#4ade80' }}>
-                Poprawnie! (literówka skorygowana)
-              </p>
+              <p style={{ color: '#4ade80' }}>{t('opgCorrectTypo')}</p>
               <p style={{ color: 'rgba(201, 168, 76, 0.7)', marginTop: 4 }}>
-                Prawidłowa nazwa: {feedback.correctAnswer}
+                {t('opgCorrectName', { name: feedback.correctAnswer })}
               </p>
             </>
           )}
 
           {feedback.isClose && (
             <p style={{ color: '#C9A84C' }}>
-              Blisko! Spróbuj jeszcze raz ({attemptsLeft}{' '}
-              {attemptsLeft === 1 ? 'próba' : 'próby'})
+              {t('opgClose', { attempts: attemptsLeft })}
             </p>
           )}
 
           {!feedback.isCorrect && !feedback.isClose && (
             <>
-              <p style={{ color: '#f87171' }}>Niepoprawnie.</p>
+              <p style={{ color: '#f87171' }}>{t('opgIncorrect')}</p>
               <p style={{ color: 'rgba(201, 168, 76, 0.7)', marginTop: 4 }}>
-                Prawidłowa odpowiedź: {feedback.correctAnswer}
+                {t('opgCorrectAnswer', { answer: feedback.correctAnswer })}
               </p>
             </>
           )}

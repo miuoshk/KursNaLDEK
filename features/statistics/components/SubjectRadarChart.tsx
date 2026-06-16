@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -14,6 +15,7 @@ import { statAxisTick, statTooltipProps } from "@/features/statistics/lib/chartT
 import type { StatisticsPayload } from "@/features/statistics/types";
 
 export function SubjectRadarChart({ data }: { data: StatisticsPayload }) {
+  const t = useTranslations("statistics");
   const [outerRadius, setOuterRadius] = useState("70%");
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -39,7 +41,7 @@ export function SubjectRadarChart({ data }: { data: StatisticsPayload }) {
           <PolarAngleAxis dataKey="name" tick={statAxisTick} tickLine={false} />
           <Tooltip {...statTooltipProps} />
           <Radar
-            name="Opanowanie"
+            name={t("mastery.radarName")}
             dataKey="mastery"
             stroke="#C9A84C"
             fill="#C9A84C"
@@ -51,7 +53,7 @@ export function SubjectRadarChart({ data }: { data: StatisticsPayload }) {
       </ResponsiveContainer>
       {showEmptyHint ? (
         <p className="mt-2 text-center font-body text-body-sm text-muted">
-          Odpowiadaj na pytania, aby widzieć postęp.
+          {t("mastery.emptyHint")}
         </p>
       ) : null}
     </div>

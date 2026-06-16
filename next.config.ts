@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const tailwindPkg = path.join(projectRoot, "node_modules", "tailwindcss");
@@ -18,7 +21,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com",
-  "frame-src https://js.stripe.com https://hooks.stripe.com",
+  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -52,8 +55,13 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Regulamin / polityka — osadzane w iframe na stronach publicznych (rejestracja).
+      {
+        source: "/legal/:path*",
+        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
+      },
     ];
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-psy-gen-051",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Bariera komunikacyjna wg Gordona polegająca na wypowiedzi \"Tacy pacjenci jak pan nigdy nie stosują się do zaleceń\" to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "krytykowanie"
+      },
+      {
+        "id": "b",
+        "text": "pocieszanie"
+      },
+      {
+        "id": "c",
+        "text": "moralizowanie"
+      },
+      {
+        "id": "d",
+        "text": "pouczanie"
+      },
+      {
+        "id": "e",
+        "text": "interpretowanie i diagnozowanie"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Interpretowanie i diagnozowanie** (\"Tacy pacjenci jak pan nigdy nie stosują się do zaleceń\") **szufladkuje i stereotypizuje** pacjenta. Odróżnij od **krytykowania** (obwinianie: \"jak pan mógł nie zauważyć objawów\") i **wydawania ocen pozytywnych** (\"bardzo dobrze, że nie zadaje pan głupich pytań\" — ukryta krytyka, protekcjonalność). Marker interpretowania: przypisanie pacjenta do z góry przyjętej kategorii.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-052",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wypowiedź \"Proszę nie płakać, wszystko będzie dobrze\", wg 12 barier Gordona, stanowi barierę określaną jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wydawanie ocen pozytywnych"
+      },
+      {
+        "id": "b",
+        "text": "pouczanie"
+      },
+      {
+        "id": "c",
+        "text": "odwracanie uwagi i ironizowanie"
+      },
+      {
+        "id": "d",
+        "text": "interpretowanie"
+      },
+      {
+        "id": "e",
+        "text": "pocieszanie i uspokajanie"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Pocieszanie i uspokajanie** (\"Proszę nie płakać, wszystko będzie dobrze\") **bagatelizuje uczucia** pacjenta. Należy odróżnić od **wydawania ocen pozytywnych** (zawiera ukrytą krytykę i protekcjonalność) i **odwracania uwagi, sarkazmu, ironizowania** (żartowanie w nieodpowiednim momencie odbierane jako brak empatii). Marker pocieszania: pozornie wspierająca fraza, która jednak unieważnia emocję.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-053",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Twórcą metody Porozumienia bez Przemocy (NVC) opisanej w prezentacji jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Carl Rogers"
+      },
+      {
+        "id": "b",
+        "text": "Thomas Gordon"
+      },
+      {
+        "id": "c",
+        "text": "Marshall Rosenberg"
+      },
+      {
+        "id": "d",
+        "text": "William Miller"
+      },
+      {
+        "id": "e",
+        "text": "Jacek Reykowski"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Twórcą **NVC** (Nonviolent Communication, Porozumienie bez Przemocy) jest **Marshall Rosenberg**. Stworzył **model 4 kroków** sprzyjający nauce nowego sposobu porozumiewania się, oparty na łączeniu obserwacji (faktów), uczuć i potrzeb oraz formułowaniu jasnej, konstruktywnej prośby. Dystraktory to autorzy innych koncepcji z prezentacji (Gordon — bariery, Miller — DM, Rogers — podejście humanistyczne).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-054",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Model 4 kroków NVC wg Rosenberga obejmuje, w prawidłowej kolejności:",
+    "options": [
+      {
+        "id": "a",
+        "text": "uczucie, obserwacja, prośba, potrzeba"
+      },
+      {
+        "id": "b",
+        "text": "uczucie, potrzeba, obserwacja, prośba"
+      },
+      {
+        "id": "c",
+        "text": "potrzeba, prośba, obserwacja, uczucie"
+      },
+      {
+        "id": "d",
+        "text": "obserwacja, prośba, uczucie, potrzeba"
+      },
+      {
+        "id": "e",
+        "text": "obserwacja, uczucie, potrzeba, prośba"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Model 4 kroków NVC: **1. obserwacja, 2. uczucie, 3. potrzeba, 4. prośba**. Opiera się na łączeniu obserwacji-faktów, świadomym wyrażeniu uczuć i potrzeb oraz sformułowaniu jasnej, konstruktywnej prośby; celem jest kontakt zaspokajający potrzeby obu stron. Kolejność jest istotna egzaminacyjnie: od faktu, przez emocję i potrzebę, do prośby. Mnemonik: OUPP (Obserwuję → Uczucie → Potrzeba → Prośba).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-055",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "W symbolice NVC \"język żyrafy\" (język serca) charakteryzuje się tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jest przepełniony oceną, krytyką, porównywaniem i analizowaniem"
+      },
+      {
+        "id": "b",
+        "text": "posługuje się etykietami, stereotypami i uogólnieniami"
+      },
+      {
+        "id": "c",
+        "text": "jest językiem uczuć i potrzeb, mówi o sobie i o tym, co się czuje, odnosi się z szacunkiem i empatią"
+      },
+      {
+        "id": "d",
+        "text": "straszy karami i kusi nagrodami"
+      },
+      {
+        "id": "e",
+        "text": "oczekuje, że inni spełnią jego żądania"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Język żyrafy** (język serca, współczujący) to język **uczuć i potrzeb** — żyrafa mówi o sobie i o tym, co czuje, nastawia się na słuchanie i bycie usłyszaną, dociera do swoich i cudzych potrzeb (zaspokojonych i niezaspokojonych), wyraża siebie jasno i szczerze, mówi „nie”, gdy myśli „nie”, i odnosi się z **szacunkiem i empatią**. Pozostałe opisy (ocena, krytyka, etykiety, stereotypy, kary i nagrody, żądania) charakteryzują **język szakala** — jego przeciwieństwo.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-056",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Słowa \"musisz\", \"powinieneś\", \"to twój obowiązek\" w symbolice NVC to najczęstsze hasła:",
+    "options": [
+      {
+        "id": "a",
+        "text": "żyrafy"
+      },
+      {
+        "id": "b",
+        "text": "terapeuty stosującego parafrazę"
+      },
+      {
+        "id": "c",
+        "text": "lekarza empatycznego"
+      },
+      {
+        "id": "d",
+        "text": "pacjenta w fazie działania"
+      },
+      {
+        "id": "e",
+        "text": "szakala"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Język szakala** jest przepełniony oceną, krytyką, porównywaniem; posługuje się etykietami, stereotypami i uogólnieniami, straszy karami lub kusi nagrodami i **oczekuje, że inni spełnią jego żądania**. Najczęstsze hasła szakala to **\"musisz\", \"powinieneś\", \"to twój obowiązek\"**. To przeciwieństwo żyrafy mówiącej o własnych uczuciach i potrzebach. Marker szakala: język powinności i przymusu.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-057",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, słowo \"bez przemocy\" w nazwie NVC wynika z tego, że metoda:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zakazuje wszelkich form krytyki pod groźbą kary"
+      },
+      {
+        "id": "b",
+        "text": "eliminuje komunikację niewerbalną"
+      },
+      {
+        "id": "c",
+        "text": "dotyczy wyłącznie sytuacji przemocy fizycznej w placówce medycznej"
+      },
+      {
+        "id": "d",
+        "text": "opiera się na perswazji i nakłanianiu do zmiany"
+      },
+      {
+        "id": "e",
+        "text": "umożliwia nawiązanie kontaktu opartego na wzajemnym szacunku i zrozumieniu, zaspokajając potrzeby w sposób pokojowy"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "NVC to metoda umożliwiająca nawiązanie kontaktu opartego na **wzajemnym szacunku i zrozumieniu**, co zaspokaja potrzeby rozmówców w **sposób pokojowy** — stąd w nazwie słowa \"bez przemocy\". Intencją wypowiedzi jest porozumienie uwzględniające potrzeby obu stron. Korzyści NVC: poprawa relacji interpersonalnych, rozwiązywanie konfliktów, lepsze zrozumienie siebie i innych, atmosfera wzajemnego szacunku.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-058",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z danymi przytoczonymi w prezentacji (Dialog motywujący w pracy lekarza POZ), wyniki badań wskazują, że ponad 50% pacjentów z chorobami przewlekłymi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stosuje się w pełni do zaleceń lekarskich"
+      },
+      {
+        "id": "b",
+        "text": "zgłasza się na wizyty kontrolne regularnie"
+      },
+      {
+        "id": "c",
+        "text": "rezygnuje całkowicie z leczenia"
+      },
+      {
+        "id": "d",
+        "text": "stosuje wyłącznie metody niefarmakologiczne"
+      },
+      {
+        "id": "e",
+        "text": "nie przestrzega zaleceń"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wyniki międzynarodowych badań wskazują, że **ponad 50% pacjentów** z chorobami przewlekłymi **nie przestrzega zaleceń** lekarskich. Wśród pacjentów z chorobą wieńcową zaledwie 21% realizuje zalecany schemat dawkowania niezbędnych leków. Tak niski poziom adherencji stanowi tło dla zastosowania **dialogu motywującego** w pracy lekarza POZ — metoda ta ma wzmacniać wewnętrzną motywację pacjenta do przestrzegania zaleceń i trwałej zmiany zachowań zdrowotnych. Marker: nieprzestrzeganie zaleceń jako powszechny problem.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-059",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, dialog motywujący stworzono m.in. w oparciu o transteoretyczny model zmiany Prochaskiego i DiClemente, ponieważ podkreśla on:",
+    "options": [
+      {
+        "id": "a",
+        "text": "znaczenie bezwarunkowego szacunku wobec klienta"
+      },
+      {
+        "id": "b",
+        "text": "konieczność stosowania perswazji"
+      },
+      {
+        "id": "c",
+        "text": "rolę nieświadomych mechanizmów obronnych"
+      },
+      {
+        "id": "d",
+        "text": "wpływ czynników biologicznych na zachowanie"
+      },
+      {
+        "id": "e",
+        "text": "duże znaczenie stadium zmiany klienta"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "DM stworzono z wykorzystaniem **transteoretycznego modelu zmiany** Prochaskiego i DiClemente, który podkreśla **duże znaczenie stadium zmiany klienta** (prekontemplacja, kontemplacja itd.). Dystraktor A opisuje wkład humanistycznego podejścia Rogersa, nie TTM. Połączenie: Rogers daje atmosferę akceptacji, TTM — dopasowanie do etapu gotowości, badania (Match Project) — podstawę empiryczną.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-060",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, korzyści ze stosowania wywiadu motywującego obejmują m.in. \"zmniejszenie ryzyka nawrotów\". Polega ono na:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wprowadzeniu zdrowych nawyków i regularnej kontroli zmniejszających ryzyko nawrotów chorób, np. serca i udaru"
+      },
+      {
+        "id": "b",
+        "text": "całkowitym wyleczeniu choroby przewlekłej"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie poprawie komunikacji werbalnej"
+      },
+      {
+        "id": "d",
+        "text": "zwiększeniu liczby przepisywanych leków"
+      },
+      {
+        "id": "e",
+        "text": "skróceniu czasu wizyty lekarskiej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wśród korzyści wywiadu motywującego prezentacja wymienia: zwiększoną motywację pacjenta, lepsze wyniki leczenia, **zmniejszenie ryzyka nawrotów** (wprowadzenie zdrowych nawyków i regularna kontrola zmniejszają ryzyko nawrotów chorób, np. **serca i udaru**) oraz usprawnienie komunikacji i wzmocnienie zaufania. To korzyść zdrowotna związana z trwałą zmianą stylu życia, nie z samą komunikacją.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-061",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród źródeł stresu zawodowego lekarzy (Tobiasz-Adamczyk, 2002) wymieniono m.in. konflikt polegający na:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sprzeczności między zasadami organizacji a przekonaniami jednostki"
+      },
+      {
+        "id": "b",
+        "text": "konflikcie między językiem żyrafy a szakala"
+      },
+      {
+        "id": "c",
+        "text": "rozbieżności między wiedzą medyczną a wiedzą pacjenta"
+      },
+      {
+        "id": "d",
+        "text": "niezgodności między oceną pierwotną a wtórną"
+      },
+      {
+        "id": "e",
+        "text": "konflikcie między rolą pełnioną w życiu zawodowym a rolą w życiu prywatnym"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wśród źródeł stresu zawodowego lekarzy (**Tobiasz-Adamczyk 2002**) wymieniono m.in.: codzienne ryzyko obcowania ze śmiercią, pracę w ciągłym napięciu, **konflikt między rolą w życiu zawodowym a rolą w życiu prywatnym**, przytłoczenie odpowiedzialnością za zdrowie i życie pacjenta, niewystarczające wsparcie. Dystraktor A opisuje konflikt wartości z modelu wypalenia Maslach — inny kontekst.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-062",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją (Ryc. 2, model empatii klinicznej), do skutków terapii po stronie PACJENTA należy m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "niższy poziom wypalenia zawodowego"
+      },
+      {
+        "id": "b",
+        "text": "mniejsza presja czasu"
+      },
+      {
+        "id": "c",
+        "text": "uruchomienie efektu placebo i wzmocnienie systemu immunologicznego"
+      },
+      {
+        "id": "d",
+        "text": "większe zadowolenie z pracy zawodowej"
+      },
+      {
+        "id": "e",
+        "text": "mniejsze prawdopodobieństwo depresji u lekarza"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W modelu wpływu empatii klinicznej skutki terapii po stronie **pacjenta** to m.in.: poprawa zdrowia i samopoczucia, większa skuteczność leczenia, skrócenie hospitalizacji, **wzmocnienie systemu immunologicznego**, mniejsza ilość zażywanych leków i **uruchomienie efektu placebo**. Niższy poziom wypalenia, mniejsza presja czasu, większe zadowolenie z pracy i mniejsze ryzyko depresji to skutki po stronie **lekarza** — model rozróżnia obie ścieżki. Empatia działa więc także na poziomie biologicznym pacjenta.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-063",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród kluczowych kamieni milowych małego dziecka (niemowlęctwo) prezentacja wymienia \"krytyczny okres przywiązania\", którego istotą jest to, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dziecko rozwija egocentryzm mowy i myślenia"
+      },
+      {
+        "id": "b",
+        "text": "dziecko osiąga emocjonalną niezależność od rodziców"
+      },
+      {
+        "id": "c",
+        "text": "dziecko rozróżnia dobro i zło"
+      },
+      {
+        "id": "d",
+        "text": "pojawia się stadium przedoperacyjne Piageta"
+      },
+      {
+        "id": "e",
+        "text": "bezpieczna więź rodzic-dziecko sprzyja zaufaniu i zdrowemu rozwojowi"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wśród kamieni milowych niemowlęcia: poznawanie świata przez kontakt **sensomotoryczny**, pojawienie się emocji, rozwój **stałości obiektu** i lęku przed separacją, **krytyczny okres przywiązania** (bezpieczna więź rodzic-dziecko sprzyja **zaufaniu i zdrowemu rozwojowi**) oraz początek dźwięków i słów do komunikacji. Egocentryzm mowy i stadium przedoperacyjne Piageta opisują wiek przedszkolny, a emocjonalna niezależność — adolescencję. Marker: bezpieczna więź jako fundament zaufania do świata.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-064",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji, lęk separacyjny (przed rozstaniem z opiekunem), przed obcymi ludźmi oraz przed głośnymi dźwiękami to lęki traktowane jako rozwojowo oczekiwane:",
+    "options": [
+      {
+        "id": "a",
+        "text": "w średnim dzieciństwie (wiek przedszkolny)"
+      },
+      {
+        "id": "b",
+        "text": "w wieku szkolnym"
+      },
+      {
+        "id": "c",
+        "text": "we wczesnym dzieciństwie (niemowlęctwie)"
+      },
+      {
+        "id": "d",
+        "text": "w wieku dorastania"
+      },
+      {
+        "id": "e",
+        "text": "w okresie prenatalnym"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "We **wczesnym dzieciństwie** rozwojowo oczekiwane są lęki: **separacyjny** (przed rozstaniem z opiekunem), przed obcymi ludźmi, przed upadkiem, bodźcami bólowymi, **głośnymi dźwiękami** (syrena, odkurzacz, grzmot) oraz przed nieoczekiwanymi zmianami w otoczeniu. Odróżnij od lęków średniego dzieciństwa (zwierzęta, ciemność, wyimaginowane postacie) i szkolnych (niepowodzenie, krytyka). Marker: lęk separacyjny = wczesne dzieciństwo.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-065",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Lęki przed wyimaginowanymi, nadnaturalnymi postaciami (potwory, wiedźmy, duchy) określane jako \"lęk przed symbolami\" są charakterystyczne dla:",
+    "options": [
+      {
+        "id": "a",
+        "text": "niemowlęctwa"
+      },
+      {
+        "id": "b",
+        "text": "wczesnej dorosłości"
+      },
+      {
+        "id": "c",
+        "text": "wieku szkolnego"
+      },
+      {
+        "id": "d",
+        "text": "wieku dorastania"
+      },
+      {
+        "id": "e",
+        "text": "średniego dzieciństwa (wieku przedszkolnego)"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Lęki **średniego dzieciństwa** (wiek przedszkolny): przed zwierzętami, ciemnością, **wyimaginowanymi nadnaturalnymi postaciami** (potwory, wiedźmy, duchy) — czyli **lęk przed symbolami**, przed złymi ludźmi (porywaczami), niebezpiecznymi sytuacjami nagłośnionymi medialnie, wizytą u lekarza i pozostaniem samemu. Towarzyszy temu egocentryzm mowy/myślenia i stadium przedoperacyjne Piageta. Marker: lęk przed wyobrażonymi istotami.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-066",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji w średnim dzieciństwie (wiek przedszkolny) charakterystycznym osiągnięciem rozwojowym jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "emocjonalna niezależność od rodziców i zakochiwanie się"
+      },
+      {
+        "id": "b",
+        "text": "odroczona gratyfikacja i maskowanie agresji"
+      },
+      {
+        "id": "c",
+        "text": "pojęcie abstrakcyjne choroby"
+      },
+      {
+        "id": "d",
+        "text": "rozpatrywanie śmierci w kategoriach lęku egzystencjalnego"
+      },
+      {
+        "id": "e",
+        "text": "egocentryzm mowy i myślenia oraz stadium przedoperacyjne Piageta"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Osiągnięcia rozwojowe **wieku przedszkolnego**: **egocentryzm mowy i myślenia**, nasilone kontakty z rówieśnikami, poczucie autonomii i kontroli, samokontrola, **stadium przedoperacyjne Piageta**, trening czystości, rozróżnianie dobra i zła, używanie wyobraźni i zabaw opartych na udawaniu. Emocjonalna niezależność i zakochiwanie się oraz abstrakcyjne i egzystencjalne ujęcie choroby dotyczą adolescencji, a odroczona gratyfikacja — wieku szkolnego. Marker: stadium przedoperacyjne = przedszkole.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-067",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją \"Wiek rozwojowy a funkcjonowanie psychospołeczne w obliczu choroby somatycznej\", do 3-4 roku życia dzieci:",
+    "options": [
+      {
+        "id": "a",
+        "text": "rozumieją chorobę jako pojęcie abstrakcyjne"
+      },
+      {
+        "id": "b",
+        "text": "w pełni rozumieją czasowość nieobecności rodziców"
+      },
+      {
+        "id": "c",
+        "text": "rozpatrują śmierć w kategoriach lęku egzystencjalnego"
+      },
+      {
+        "id": "d",
+        "text": "postrzegają chorobę jako proces nieodwracalny i powszechny"
+      },
+      {
+        "id": "e",
+        "text": "nie rozumieją choroby, przeżywają oddzielnie każdy epizod (separacja, ból, procedury); przy niepoddawaniu się interwencjom czują się zdrowe"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Do **3-4 r.ż.** dzieci **nie rozumieją choroby**, przeżywają oddzielnie każdy epizod (separacja, procedury medyczne, ból, ograniczenia aktywności); świadomość choroby jest bardzo zmienna, a przy niepoddawaniu się interwencjom medycznym **czują się zdrowe**. Obecność matki jest istotna zwłaszcza do 18 m.ż. Abstrakcyjne pojęcie choroby, lęk egzystencjalny czy ujmowanie śmierci jako procesu nieodwracalnego i powszechnego dotyczą starszych dzieci i nastolatków. Marker: brak rozumienia choroby, epizodyczność.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-068",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, dziecko w wieku przedszkolnym hospitalizowane może postrzegać swoją chorobę lub konieczność operacji jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "proces nieodwracalny i powszechny"
+      },
+      {
+        "id": "b",
+        "text": "subiektywne cierpienie wymagające negocjacji"
+      },
+      {
+        "id": "c",
+        "text": "zjawisko czysto abstrakcyjne"
+      },
+      {
+        "id": "d",
+        "text": "lęk egzystencjalny"
+      },
+      {
+        "id": "e",
+        "text": "karę za złe uczynki"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Dziecko w **wieku przedszkolnym** lepiej znosi odseparowanie od matki i rozumie czasowość nieobecności rodziców, ale może postrzegać chorobę/operację jako **karę za złe uczynki** — np. dzieci z cukrzycą wierzą, że choroba wynika z nadmiaru słodyczy, a z wadami serca — że uszkodziły narząd przez nadmierną zabawę. Dzieci z astmą mogą zgłaszać lęk przed śmiercią. Marker: magiczne, karzące rozumienie choroby.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-069",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, przekonanie o powszechności śmierci pojawia się u dziecka:",
+    "options": [
+      {
+        "id": "a",
+        "text": "do 3 roku życia"
+      },
+      {
+        "id": "b",
+        "text": "w 7 roku życia jako proces nieodwracalny, ale niepowszechny"
+      },
+      {
+        "id": "c",
+        "text": "od 9 roku życia"
+      },
+      {
+        "id": "d",
+        "text": "dopiero w wieku dorastania"
+      },
+      {
+        "id": "e",
+        "text": "w okresie prenatalnym"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "U dziecka chorego w wieku szkolnym: w **7 r.ż.** śmierć postrzegana jest jako proces **nieodwracalny, ale niepowszechny**, natomiast **od 9 r.ż.** pojawia się przekonanie o **powszechności** śmierci. Starsze dziecko rozróżnia choroby fizyczne od psychicznych i wiąże ból z emocjami. Pytanie sprawdza precyzyjne przypisanie wieku — kluczowa różnica: 7 r.ż. (nieodwracalność) vs 9 r.ż. (powszechność).",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-070",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, \"pojęcie abstrakcyjne choroby\" oraz \"rozpatrywanie śmierci i choroby w kategoriach lęku egzystencjalnego\" są charakterystyczne dla:",
+    "options": [
+      {
+        "id": "a",
+        "text": "niemowlęcia"
+      },
+      {
+        "id": "b",
+        "text": "dziecka w wieku przedszkolnym"
+      },
+      {
+        "id": "c",
+        "text": "dziecka w wieku wczesnoszkolnym"
+      },
+      {
+        "id": "d",
+        "text": "chorującego nastolatka (wiek dorastania)"
+      },
+      {
+        "id": "e",
+        "text": "dziecka do 3 roku życia"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Chorujący nastolatek** operuje **abstrakcyjnym pojęciem choroby**, ma przekonanie o możliwości wpływu na chorobę przez czynniki zewnętrzne i wewnętrzne, rozpatruje śmierć i chorobę w kategoriach **lęku egzystencjalnego** oraz uznaje subiektywność cierpienia. Wiek 13-15 lat to najtrudniejszy okres zmagania z chorobą przewlekłą (bunt, negacja, nowe potrzeby). Marker: abstrakcyjne i egzystencjalne ujęcie choroby.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-071",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Zgodnie z prezentacją, w odniesieniu do funkcjonowania niemowlęcia w obliczu choroby, \"zespół dziecka zranionego\" występuje u dzieci, które:",
+    "options": [
+      {
+        "id": "a",
+        "text": "w wieku przedszkolnym postrzegają chorobę jako karę"
+      },
+      {
+        "id": "b",
+        "text": "w adolescencji przeżywają lęk egzystencjalny"
+      },
+      {
+        "id": "c",
+        "text": "od 9 roku życia rozumieją powszechność śmierci"
+      },
+      {
+        "id": "d",
+        "text": "w pierwszym roku życia doświadczyły zagrożenia życia, co może objawiać się silnym, biernym przywiązaniem wobec matki"
+      },
+      {
+        "id": "e",
+        "text": "do 3 miesiąca życia reagują zmianą rytmu snu"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Zespół dziecka zranionego** występuje u dzieci, które w **pierwszym roku życia doświadczyły zagrożenia życia** — odseparowanie od rodziców w czasie budowania zaufania do świata może objawiać się **silnym, biernym przywiązaniem wobec matki**. Niemowlęctwo to czas budowania zaufania do świata. Marker: wczesne zagrożenie życia + bierne, lękowe przywiązanie. Dystraktory dotyczą innych etapów rozwojowych.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-072",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród cech wieku dorastania prezentacja wymienia m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "egocentryzm mowy i myślenia"
+      },
+      {
+        "id": "b",
+        "text": "lęk separacyjny przed rozstaniem z opiekunem"
+      },
+      {
+        "id": "c",
+        "text": "poszukiwanie doznań i stymulacji, wzmożoną podatność na sugestię oraz lęk przed dezaprobatą"
+      },
+      {
+        "id": "d",
+        "text": "trening czystości i stadium przedoperacyjne Piageta"
+      },
+      {
+        "id": "e",
+        "text": "brak rozumienia czasowości nieobecności rodziców"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W **wieku dorastania** prezentacja wymienia: coraz ważniejsze i zażylsze relacje z rówieśnikami, uczenie się ról społecznych związanych z płcią, sporadyczne łamanie prawa, **poszukiwanie doznań i stymulacji**, **wzmożoną podatność na sugestię**, eksperymenty (np. z pogranicza magii i realności) oraz **lęk przed dezaprobatą**. Egocentryzm mowy, trening czystości i stadium przedoperacyjne opisują wiek przedszkolny, a lęk separacyjny — wczesne dzieciństwo. Marker dorastania: stymulacja + lęk przed dezaprobatą grupy.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-073",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według normy społeczno-emocjonalnej w wieku szkolnym, zgodnie z prezentacją:",
+    "options": [
+      {
+        "id": "a",
+        "text": "agresja społeczna dominuje u chłopców, a fizyczna u dziewcząt"
+      },
+      {
+        "id": "b",
+        "text": "brak jest zdolności do odroczonej gratyfikacji"
+      },
+      {
+        "id": "c",
+        "text": "dzieci nie potrafią jeszcze rozpoznawać i nazywać uczuć"
+      },
+      {
+        "id": "d",
+        "text": "maskowanie agresji, przy czym agresja społeczna występuje głównie u dziewcząt, a fizyczna u chłopców"
+      },
+      {
+        "id": "e",
+        "text": "rozstawanie się z rodzicami zawsze wywołuje silny lęk"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Norma społeczno-emocjonalna w **wieku szkolnym**: spędzanie czasu z rówieśnikami tej samej płci (rywalizacja u chłopców, współpraca u dziewcząt), **maskowanie agresji** — agresja **społeczna głównie u dziewcząt**, **fizyczna u chłopców**, rozstawanie z rodzicami bez lęku, **odroczona gratyfikacja**, skuteczna kontrola emocjonalna oraz rozpoznawanie i nazywanie uczuć. Marker: dziewczęta — agresja społeczna, chłopcy — fizyczna.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-074",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Wśród lęków normatywnych w wieku szkolnym prezentacja wymienia przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "lęk separacyjny i lęk przed obcymi"
+      },
+      {
+        "id": "b",
+        "text": "lęk przed głośnymi dźwiękami i upadkiem"
+      },
+      {
+        "id": "c",
+        "text": "lęk przed nadnaturalnymi postaciami (potwory, duchy)"
+      },
+      {
+        "id": "d",
+        "text": "lęk przed niepowodzeniem/porażką (np. przed sprawdzianem, egzaminem) oraz przed brakiem akceptacji i krytyką"
+      },
+      {
+        "id": "e",
+        "text": "lęk egzystencjalny przed nieuchronnością śmierci"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Lęki normatywne wieku szkolnego**: przed **niepowodzeniem/porażką** (w osiągnięciach szkolnych, przed odpowiedzią, sprawdzianem, egzaminem), przed **brakiem akceptacji i krytyką** innych (obawa przed zawstydzeniem w sytuacji ekspozycji) oraz przed zranieniem lub śmiercią. Lęk separacyjny i przed obcymi należą do wczesnego dzieciństwa, a lęk przed nadnaturalnymi postaciami (potwory, duchy) — do średniego dzieciństwa. Marker szkolny: lęk przed porażką i oceną społeczną w sytuacji ekspozycji.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-psy-gen-075",
+    "topic_id": "PHUM-PSY-GEN",
+    "text": "Według prezentacji \"Norma społeczno-emocjonalna w adolescencji\" obejmuje m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pojawienie się egocentryzmu mowy"
+      },
+      {
+        "id": "b",
+        "text": "trening czystości"
+      },
+      {
+        "id": "c",
+        "text": "rozwój stałości obiektu i lęku przed separacją"
+      },
+      {
+        "id": "d",
+        "text": "nasilenie konfliktów rodzinnych związanych z rosnącą potrzebą autonomii oraz uczuciowe angażowanie się (zakochiwanie)"
+      },
+      {
+        "id": "e",
+        "text": "brak zdolności nazywania emocji"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Norma społeczno-emocjonalna w **adolescencji**: wzrost samokontroli, umiejętność wyrażania i nazywania większości emocji, **wahania nastrojów, pesymizm, drażliwość**, **nasilenie konfliktów rodzinnych** związanych z rosnącą **potrzebą autonomii**, osiąganie emocjonalnej niezależności i **uczuciowe angażowanie się** (zakochiwanie). Dystraktory dotyczą wcześniejszych etapów. Marker adolescencji: autonomia + konflikty rodzinne + zakochiwanie.",
+    "batch_label": "gen_phum_psy_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

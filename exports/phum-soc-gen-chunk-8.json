@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-176",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Francuskiego chemika i mikrobiologa Louisa Pasteura (1822–1895) uważa się za ojca teorii drobnoustrojów. Które z poniższych NIE jest jego osiągnięciem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Obalenie teorii samorództwa eksperymentem z kolbą łabędziową"
+      },
+      {
+        "id": "b",
+        "text": "Opracowanie metody pasteryzacji"
+      },
+      {
+        "id": "c",
+        "text": "Sformułowanie czterech postulatów wiążących drobnoustrój z chorobą"
+      },
+      {
+        "id": "d",
+        "text": "Opracowanie skutecznej szczepionki przeciw wściekliźnie u człowieka (1885)"
+      },
+      {
+        "id": "e",
+        "text": "Opracowanie skutecznej szczepionki ochronnej przeciw wąglikowi (1881)"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Postulaty** (cztery kryteria wiążące konkretny drobnoustrój z chorobą) sformułował **Robert Koch**, nie Pasteur. **Pasteur** obalił samorództwo (kolba łabędziowa), opracował **pasteryzację** oraz szczepionki przeciw **wąglikowi** (1881) i **wściekliźnie** (1885, chłopiec pokąsany przez psa). Łatwa pułapka egzaminacyjna: Pasteur vs Koch – postulaty zawsze Koch. Pasteur dał też naukowe uzasadnienie odkażania ran i narzędzi, rozwijane przez Listera.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-177",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Niemiecki lekarz Robert Koch (1843–1910) otrzymał Nagrodę Nobla w 1905 r. za odkrycie bakterii wywołującej:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cholerę"
+      },
+      {
+        "id": "b",
+        "text": "Wąglika"
+      },
+      {
+        "id": "c",
+        "text": "Gruźlicę"
+      },
+      {
+        "id": "d",
+        "text": "Tyfus plamisty"
+      },
+      {
+        "id": "e",
+        "text": "Wściekliznę"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Robert Koch** dostał Nobla (1905) za odkrycie **prątka gruźlicy** (1882). Wcześniej zidentyfikował bakterię **wąglika** (1876 – pierwszy dowód związku drobnoustroju z chorobą), a w 1883 r. – bakterię **cholery**. Sformułował też **postulaty Kocha**. Tyfus plamisty wiąże się z **Weiglem** (szczepionka), wścieklizna z **Pasteurem**. Kolejność: wąglik → gruźlica → cholera. Jego prace zapoczątkowały erę nowoczesnej medycyny laboratoryjnej opartej na dowodach.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-178",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Węgierski lekarz Ignaz Semmelweis (1818–1865) zapisał się jako pionier prewencji zakażeń dzięki odkryciu, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kwas karbolowy (fenol) dezynfekuje rany, narzędzia i ręce lekarzy"
+      },
+      {
+        "id": "b",
+        "text": "Eter może być stosowany jako środek znieczulający"
+      },
+      {
+        "id": "c",
+        "text": "Choroby zakaźne przenoszą niewidzialne zarazki rozsiewane w powietrzu"
+      },
+      {
+        "id": "d",
+        "text": "Mycie rąk przez lekarzy znacząco zmniejsza śmiertelność pacjentów"
+      },
+      {
+        "id": "e",
+        "text": "Każda komórka pochodzi od innej komórki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Ignaz Semmelweis** odkrył, że **mycie rąk** przez lekarzy drastycznie obniża śmiertelność (zwłaszcza gorączki połogowej) – choć początkowo odrzucony. Jego idee rozwinął **Joseph Lister**, wprowadzając **kwas karbolowy (fenol)** do antyseptyki. Eter to **Morton**, zarazki – **Fracastoro**, \"omnis cellula\" – **Virchow**. Klasyczna para: Semmelweis (mycie rąk) → Lister (antyseptyka chemiczna). Jego odkrycia, początkowo odrzucone, później potwierdzono i rozwinięto w erze aseptyki.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-179",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zasada \"omnis cellula e cellula\" (\"każda komórka pochodzi od innej komórki\"), fundament patologii komórkowej, pochodzi od:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Roberta Hooke'a"
+      },
+      {
+        "id": "b",
+        "text": "Theodora Schwanna"
+      },
+      {
+        "id": "c",
+        "text": "Marcella Malpighiego"
+      },
+      {
+        "id": "d",
+        "text": "Rudolfa Virchowa"
+      },
+      {
+        "id": "e",
+        "text": "Louisa Pasteura"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Rudolf Virchow** (1821–1902), ojciec **patologii komórkowej**, sformułował w 1855 r. zasadę **\"omnis cellula e cellula\"** i wykazał, że każda choroba ma podłoże w określonych komórkach/tkankach (dzieło \"Die Cellularpathologie\", 1858). Słynął też z tezy \"medycyna to nauka społeczna\". **Hooke** ukuł termin \"komórka\", **Malpighi** badał struktury mikroskopowe, **Pasteur** – drobnoustroje. Umożliwił rozwój medycyny laboratoryjnej, diagnostyki obrazowej i medycyny sądowej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-180",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wynalazcą stetoskopu (1816), który zrewolucjonizował osłuchiwanie (auskultację), był francuski lekarz:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Carl Köller"
+      },
+      {
+        "id": "b",
+        "text": "James Young Simpson"
+      },
+      {
+        "id": "c",
+        "text": "William Morton"
+      },
+      {
+        "id": "d",
+        "text": "René Laennec"
+      },
+      {
+        "id": "e",
+        "text": "Edwin Chadwick"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**René Laennec** (1781–1826) w 1816 r. w szpitalu Necker zwinął arkusz papieru w rurkę, tworząc pierwszy **stetoskop** (gr. stethos – pierś, skopein – badać) i rozwijając **auskultację** jako element badania fizykalnego. **Köller** wprowadził kokainę do znieczulenia oka, **Simpson** – chloroform, **Morton** – eter, **Chadwick** zajmował się zdrowiem publicznym. Stetoskop stał się symbolem zawodu lekarza i fundamentem nowoczesnej medycyny klinicznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-181",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Brytyjska pielęgniarka, statystyk i reformatorka, uznawana za twórczynię nowoczesnego pielęgniarstwa, która zredukowała śmiertelność w szpitalu w Scutari z 42% do 2%, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Maria Skłodowska-Curie"
+      },
+      {
+        "id": "b",
+        "text": "Clara Barton"
+      },
+      {
+        "id": "c",
+        "text": "Florence Nightingale"
+      },
+      {
+        "id": "d",
+        "text": "Florence Chadwick"
+      },
+      {
+        "id": "e",
+        "text": "Mary Seacole"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Florence Nightingale** (1820–1910) podczas wojny krymskiej w **Scutari** wprowadziła zasady sanitarne (mycie rąk, dezynfekcja, wietrzenie, segregacja), obniżając śmiertelność z **42% do 2%**. Posługiwała się statystyką (diagramy różowe), a w 1860 r. założyła pierwszą szkołę pielęgniarstwa przy Szpitalu św. Tomasza. Podkreślała holistyczne ujęcie pacjenta – fizyczne, psychiczne i społeczne. Pielęgniarstwo stało się dzięki niej szanowanym zawodem z misją i jasnymi kompetencjami.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-182",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Brytyjski urzędnik Edwin Chadwick opublikował w 1842 r. raport o stanie sanitarnym ludności pracującej, który przyczynił się do uchwalenia w 1848 r.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Loi de 1838 o opiece nad chorymi psychicznie"
+      },
+      {
+        "id": "b",
+        "text": "Ustawy o obowiązkowych szczepieniach przeciw ospie"
+      },
+      {
+        "id": "c",
+        "text": "Ustawy powołującej Narodową Służbę Zdrowia (NHS)"
+      },
+      {
+        "id": "d",
+        "text": "Ustawy bismarckowskiej o ubezpieczeniu zdrowotnym"
+      },
+      {
+        "id": "e",
+        "text": "Public Health Act (Ustawy o zdrowiu publicznym)"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Raport **Edwina Chadwicka** (1842) \"Report on the Sanitary Condition of the Labouring Population\" wstrząsnął opinią publiczną i doprowadził do **Public Health Act** (1848) – jednego z pierwszych aktów regulujących zdrowie publiczne (lokalne rady zdrowia, wodociągi, kanalizacja). **Loi de 1838** dotyczyła psychiatrii (Esquirol), **NHS** powstała w 1948, model **bismarckowski** – w Niemczech. Chadwick dowodził, że poprawa sanitarna obniża śmiertelność i zwiększa produktywność.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-183",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Któremu uczonemu przypisuje się twierdzenie \"Medycyna to nauka społeczna, a polityka to medycyna na wielką skalę\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Rudolf Virchow"
+      },
+      {
+        "id": "b",
+        "text": "Edwin Chadwick"
+      },
+      {
+        "id": "c",
+        "text": "Louis Pasteur"
+      },
+      {
+        "id": "d",
+        "text": "Otto von Bismarck"
+      },
+      {
+        "id": "e",
+        "text": "Florence Nightingale"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Rudolf Virchow**, oprócz patologii komórkowej, był społecznikiem i politykiem; twierdził, że zdrowie zależy od warunków społecznych, ekonomicznych i edukacyjnych, formułując myśl, że **\"medycyna to nauka społeczna, a polityka to medycyna na wielką skalę\"**. To kluczowy cytat dla socjologii medycyny. **Chadwick** to raporty sanitarne, **Bismarck** – ubezpieczenia, **Nightingale** – pielęgniarstwo. Ten cytat oddaje społeczny wymiar zdrowia i jest fundamentalny dla socjologii medycyny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-184",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W 1846 r. po raz pierwszy publicznie zademonstrowano użycie eteru jako środka znieczulającego podczas operacji. Dokonał tego amerykański stomatolog:",
+    "options": [
+      {
+        "id": "a",
+        "text": "James Young Simpson"
+      },
+      {
+        "id": "b",
+        "text": "Carl Köller"
+      },
+      {
+        "id": "c",
+        "text": "John Collins Warren"
+      },
+      {
+        "id": "d",
+        "text": "William Morton"
+      },
+      {
+        "id": "e",
+        "text": "Horace Wells"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**William Morton** (1819–1868), amerykański stomatolog, w 1846 r. publicznie zademonstrował **eter** jako środek znieczulający (operację wykonał chirurg John Collins Warren). Zapoczątkowało to erę anestezji chirurgicznej. **Simpson** spopularyzował **chloroform** (1847, poród), **Köller** – **kokainę** w chirurgii oka (1884). Eter = Morton, chloroform = Simpson, kokaina = Köller. Wydarzenie z 1846 r. uznano za historyczny przełom, otwierając erę anestezji chirurgicznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-185",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Szkocki lekarz i położnik James Young Simpson (1811–1870) wsławił się spopularyzowaniem znieczulenia za pomocą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Eteru"
+      },
+      {
+        "id": "b",
+        "text": "Kokainy"
+      },
+      {
+        "id": "c",
+        "text": "Podtlenku azotu"
+      },
+      {
+        "id": "d",
+        "text": "Morfiny"
+      },
+      {
+        "id": "e",
+        "text": "Chloroformu"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**James Young Simpson** spopularyzował **chloroform** (pierwsze użycie 1847 podczas porodu) – działał szybciej niż eter. Mimo oporu środowisk religijnych (\"ból porodowy to boska kara\") przełomem była akceptacja po zastosowaniu chloroformu przez **królową Wiktorię** w 1853 r. **Morton** to eter, **Köller** – kokaina. Mnemonik: SimpsonChloroform – obie z \"C/S\" w parze położniczej. Utorował drogę do mniej bolesnych operacji i rozwoju anestezjologii jako odrębnej dziedziny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-186",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Austriacki okulista Carl Köller w 1884 r. jako pierwszy zastosował w chirurgii oka znieczulenie miejscowe za pomocą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Eteru"
+      },
+      {
+        "id": "b",
+        "text": "Kokainy"
+      },
+      {
+        "id": "c",
+        "text": "Chloroformu"
+      },
+      {
+        "id": "d",
+        "text": "Lidokainy"
+      },
+      {
+        "id": "e",
+        "text": "Prokainy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Carl Köller** (1857–1944) w 1884 r. użył **kokainy** do znieczulenia miejscowego w chirurgii oka – pokazał, że można wyłączyć czucie w jednej części ciała bez usypiania pacjenta. Ujawnione później działanie uzależniające kokainy skłoniło do poszukiwania bezpieczniejszych anestetyków (np. prokaina, lidokaina – późniejsze). Eter to Morton, chloroform – Simpson. Jego odkrycie zrewolucjonizowało operacje oka i otworzyło drogę do mikrochirurgii.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-187",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Francuski psychiatra Jean-Étienne Esquirol (1772–1840), uczeń Pinela, wprowadził do nauki pojęcie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Monomanii"
+      },
+      {
+        "id": "b",
+        "text": "Tabula rasa"
+      },
+      {
+        "id": "c",
+        "text": "Nieświadomości"
+      },
+      {
+        "id": "d",
+        "text": "Psychopatii"
+      },
+      {
+        "id": "e",
+        "text": "Schizofrenii"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Jean-Étienne Esquirol**, uczeń **Pinela**, wprowadził pojęcie **\"monomanii\"** – zaburzenia ograniczonego do jednej sfery myślenia/emocji przy zachowaniu ogólnego rozsądku. Udoskonalił klasyfikację chorób psychicznych; jego raporty doprowadziły do **Loi de 1838**. \"Tabula rasa\" to Locke, \"nieświadomość\" – Freud, \"psychopatia\" rozwijał polski lekarz **Biegański**. Esquirol udoskonalił klasyfikację chorób psychicznych zapoczątkowaną przez Pinela.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-188",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W 1928 r. szkocki bakteriolog Alexander Fleming dokonał przełomowego odkrycia, zauważając, że pleśń Penicillium notatum hamuje wzrost bakterii. Odkrył tym samym:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Penicylinę – pierwszy skuteczny antybiotyk"
+      },
+      {
+        "id": "b",
+        "text": "Pierwszą szczepionkę przeciwwirusową"
+      },
+      {
+        "id": "c",
+        "text": "Sulfonamidy"
+      },
+      {
+        "id": "d",
+        "text": "Lizozym jako enzym bakteriobójczy"
+      },
+      {
+        "id": "e",
+        "text": "Streptomycynę"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Alexander Fleming** (1881–1955) w 1928 r. odkrył **penicylinę** – pierwszy skuteczny antybiotyk – obserwując, że pleśń **Penicillium notatum** hamuje wzrost bakterii. Penicylina, szeroko wdrożona w czasie II wojny światowej, uratowała miliony istnień (zapalenie płuc, gruźlica, sepsa). To początek ery antybiotyków, która zrewolucjonizowała leczenie zakażeń bakteryjnych. Przed penicyliną infekcje bakteryjne były jedną z głównych przyczyn zgonów na świecie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-189",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Model podwójnej helisy DNA zaproponowali w 1953 r., opierając się m.in. na zdjęciach rentgenowskich Rosalind Franklin:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Gregor Mendel i Thomas Morgan"
+      },
+      {
+        "id": "b",
+        "text": "Paul Berg i Walter Gilbert"
+      },
+      {
+        "id": "c",
+        "text": "Frederick Sanger i Frederick Griffith"
+      },
+      {
+        "id": "d",
+        "text": "Oswald Avery i Erwin Chargaff"
+      },
+      {
+        "id": "e",
+        "text": "James Watson i Francis Crick"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "W 1953 r. **James Watson** (1928–2023) i **Francis Crick** (1916–2004) zaproponowali model **podwójnej helisy DNA**, korzystając z fotografii rentgenowskich **Rosalind Franklin**. To fundament biologii molekularnej. **Mendel** odkrył prawa dziedziczenia (XIX w.), **Morgan** – że geny leżą na chromosomach, **Berg/Gilbert/Sanger** rozwinęli inżynierię genetyczną i sekwencjonowanie. Struktura DNA stała się kluczem do biologii molekularnej i medycyny precyzyjnej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-190",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Austriacki zakonnik, który prowadząc doświadczenia na grochu odkrył podstawowe prawa dziedziczenia cech, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Thomas Hunt Morgan"
+      },
+      {
+        "id": "b",
+        "text": "Gregor Watson"
+      },
+      {
+        "id": "c",
+        "text": "Gregor Mendel"
+      },
+      {
+        "id": "d",
+        "text": "Francis Crick"
+      },
+      {
+        "id": "e",
+        "text": "Hugo de Vries"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Gregor Mendel**, austriacki zakonnik, dzięki skrupulatnym doświadczeniom na **grochu** odkrył podstawowe **prawa dziedziczenia** (prawa Mendla), na lata zapomniane, a potem przypomniane na początku XX w. **Morgan** udowodnił, że geny leżą na chromosomach. **Watson i Crick** opisali strukturę DNA. Mendel = groch = prawa dziedziczenia – klasyczne skojarzenie egzaminacyjne. Jego prace, długo zapomniane, przypomniano na początku XX w., gdy rozwijano genetykę.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-191",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Pierwszą udaną transplantację serca na świecie (1967) wykonał południowoafrykański kardiochirurg:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Joseph Murray"
+      },
+      {
+        "id": "b",
+        "text": "Zbigniew Religa"
+      },
+      {
+        "id": "c",
+        "text": "Edward Donnall Thomas"
+      },
+      {
+        "id": "d",
+        "text": "Christiaan Barnard"
+      },
+      {
+        "id": "e",
+        "text": "Norman Shumway"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Christiaan Barnard** (1922–2001) wykonał w 1967 r. pierwszą udaną **transplantację serca**. Wcześniej, w 1954 r., **Joseph Murray** przeprowadził pierwszy udany przeszczep **nerki** (między bliźniakami jednojajowymi). **Thomas** dokonał pierwszego przeszczepu **szpiku** (1956). **Religa** wykonał pierwszą transplantację serca w **Polsce** (1985) – to inne pytanie, uważać na rozróżnienie świat/Polska. Leki immunosupresyjne znacznie zwiększyły szanse na powodzenie i przeżycie po przeszczepie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-192",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Pierwszą udaną transplantację nerki (1954), między bliźniakami jednojajowymi, przeprowadził amerykański lekarz:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Christiaan Barnard"
+      },
+      {
+        "id": "b",
+        "text": "Edward Donnall Thomas"
+      },
+      {
+        "id": "c",
+        "text": "Thomas Starzl"
+      },
+      {
+        "id": "d",
+        "text": "Alexis Carrel"
+      },
+      {
+        "id": "e",
+        "text": "Joseph Murray"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Joseph Murray** (1919–2012) w 1954 r. wykonał pierwszą udaną transplantację **nerki** między **bliźniakami jednojajowymi** (brak odrzutu dzięki zgodności genetycznej). **Barnard** – serce (1967), **Thomas** – szpik (1956). Wprowadzenie leków immunosupresyjnych zwiększyło szanse na powodzenie przeszczepów. Nerka = Murray, serce = Barnard, szpik = Thomas. Zgodność genetyczna bliźniąt eliminowała odrzut, co przesądziło o sukcesie zabiegu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-193",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "5 listopada 1985 r. w Zabrzu dokonano pierwszej w Polsce udanej transplantacji serca. Kto przeprowadził ten zabieg?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Christiaan Barnard"
+      },
+      {
+        "id": "b",
+        "text": "Jan Mikulicz-Radecki"
+      },
+      {
+        "id": "c",
+        "text": "Zbigniew Religa"
+      },
+      {
+        "id": "d",
+        "text": "Ludwik Rydygier"
+      },
+      {
+        "id": "e",
+        "text": "Wojciech Oczko"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Zbigniew Religa** (1938–2009), pionier polskiej kardiochirurgii, 5 listopada 1985 r. w Zabrzu dokonał **pierwszej w Polsce udanej transplantacji serca** (pacjent Tadeusz Żytkiewicz). Stworzył ośrodek kardiochirurgiczny w Zabrzu i prowadził prace nad polskim sztucznym sercem. Uwaga: **Barnard** wykonał pierwszą transplantację serca na **świecie** (1967) – rozróżnienie świat/Polska to klasyczna pułapka. Dzięki psychofarmakologii wielu pacjentów mogło wrócić ze szpitali do życia społecznego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-194",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Twórcą pierwszej skutecznej szczepionki przeciw tyfusowi plamistemu, opartej na hodowli riketsji we wnętrznościach wszy, był polski uczony:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Rudolf Weigl"
+      },
+      {
+        "id": "b",
+        "text": "Kazimierz Funk"
+      },
+      {
+        "id": "c",
+        "text": "Hilary Koprowski"
+      },
+      {
+        "id": "d",
+        "text": "Józef Struś"
+      },
+      {
+        "id": "e",
+        "text": "Maciej z Miechowa"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Rudolf Weigl** (1883–1957) stworzył pierwszą skuteczną szczepionkę przeciw **tyfusowi plamistemu**, opracowując hodowlę **riketsji** we wnętrznościach zakażonych wszy (tzw. \"karmiciele wszy\"). Uważany za pioniera polskiej **wakcynologii**. W czasie II wojny ratował Żydów i Polaków, zatrudniając ich jako karmicieli. **Koprowski** – szczepionka przeciw polio, **Funk** – witaminy. Jego teoria otworzyła drogę do traktowania pacjenta jako osoby z historią i przeżyciami.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-195",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Polski biochemik Kazimierz Funk (1884–1967) przeszedł do historii jako odkrywca i twórca pojęcia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Antybiotyku"
+      },
+      {
+        "id": "b",
+        "text": "Hormonu"
+      },
+      {
+        "id": "c",
+        "text": "Antygenu"
+      },
+      {
+        "id": "d",
+        "text": "Enzymu"
+      },
+      {
+        "id": "e",
+        "text": "Witaminy"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Kazimierz Funk** wyizolował z otrębów ryżowych związek zapobiegający chorobie **beri-beri** i w 1912 r. nazwał go **\"witaminą\"** (łac. vita – życie + amina, bo pierwsza zawierała grupę aminową). Powiązał niedobory z chorobami: beri-beri (B1), pelagra (niacyna), szkorbut (wit. C), krzywica (wit. D). Pionier nauki o żywieniu. Mnemonik: Funk = vita + amina = witamina. Przypisanie nazwiska do nurtu (Rogers/Skinner/Beck/Freud) to typowe pytanie rozróżniające.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-196",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Polski immunolog i wirusolog, który w latach 50. XX w. opracował pierwszą doustną, żywą, atenuowaną szczepionkę przeciw polio, wyprzedzając Salka i Sabina, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hilary Koprowski"
+      },
+      {
+        "id": "b",
+        "text": "Rudolf Weigl"
+      },
+      {
+        "id": "c",
+        "text": "Jonas Salk"
+      },
+      {
+        "id": "d",
+        "text": "Albert Sabin"
+      },
+      {
+        "id": "e",
+        "text": "Zbigniew Religa"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Hilary Koprowski** (1916–2013) opracował pierwszą **doustną, żywą, atenuowaną szczepionkę przeciw polio**, wyprzedzając **Salka** (inaktywowana) i **Sabina**. Pierwszy przetestował ją na sobie i współpracownikach; w Polsce (1959–1960) zaszczepiono ok. 9 mln dzieci. Uwaga: Koprowski (doustna, atenuowana) vs Salk (iniekcyjna, inaktywowana) – częsta pułapka. Dzięki kryteriom diagnostycznym psychiatra przestał być wyłącznie diagnostą intuicyjnym.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-197",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Ludwik Rydygier (1850–1920) zapisał się w historii chirurgii jako pierwszy lekarz na świecie, który w 1880 r. wykonał:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Planową resekcję żołądka z powodu nowotworu"
+      },
+      {
+        "id": "b",
+        "text": "Pierwszą transplantację serca"
+      },
+      {
+        "id": "c",
+        "text": "Pierwszą operację w znieczuleniu eterowym"
+      },
+      {
+        "id": "d",
+        "text": "Pierwszą antyseptyczną operację jamy brzusznej"
+      },
+      {
+        "id": "e",
+        "text": "Pierwszą szczepionkę przeciw wściekliźnie"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Ludwik Rydygier** jako pierwszy na świecie wykonał (1880, Lwów) **planową resekcję żołądka** z powodu nowotworu – jedno z przełomowych wydarzeń w historii chirurgii. Opracował techniki operacji żołądka i wrzodów; uznawany za twórcę nowoczesnej polskiej chirurgii. Nie mylić z **Mikuliczem-Radeckim**, również pionierem chirurgii jamy brzusznej i aseptyki. Model składkowy Bismarcka kontrastuje z finansowanym z podatków modelem Beveridge'a.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-198",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który polski lekarz Renesansu, nadworny medyk Stefana Batorego i Zygmunta III Wazy, uznawany jest za ojca polskiej wenerologii i balneologii (dzieło \"Cieplice\", 1578)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Józef Struś"
+      },
+      {
+        "id": "b",
+        "text": "Maciej z Miechowa"
+      },
+      {
+        "id": "c",
+        "text": "Tytus Chałubiński"
+      },
+      {
+        "id": "d",
+        "text": "Wojciech Oczko"
+      },
+      {
+        "id": "e",
+        "text": "Władysław Biegański"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Wojciech Oczko** (1537–1599), nadworny medyk Batorego i Zygmunta III Wazy, to ojciec polskiej **wenerologii** i **balneologii**; w \"Cieplicach\" (1578, pierwsza polska książka o wodach leczniczych) sklasyfikował polskie źródła mineralne. Autor maksymy \"Ruch zastąpi prawie każdy lek...\". **Struś** – pulsologia, **Maciej z Miechowa** – higiena, **Chałubiński** – klimat górski. Podobne rozwiązania wprowadziły potem kraje skandynawskie, Kanada i Australia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-199",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Tytus Chałubiński (1820–1889) odegrał kluczową rolę w rozwoju polskiej medycyny, propagując jako metodę leczenia (zwłaszcza gruźlicy):",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wody mineralne i kąpiele cieplicowe"
+      },
+      {
+        "id": "b",
+        "text": "Klimat górski i pobyt w Tatrach (Zakopane)"
+      },
+      {
+        "id": "c",
+        "text": "Terapię izotopem jodu-131"
+      },
+      {
+        "id": "d",
+        "text": "Szczepienia przeciw prątkowi gruźlicy"
+      },
+      {
+        "id": "e",
+        "text": "Antyseptykę kwasem karbolowym"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Tytus Chałubiński** jako jeden z pierwszych traktował **klimat górski** jako metodę leczenia chorób płucnych, zwłaszcza **gruźlicy**, przyczyniając się do rozwoju **Zakopanego** i sanatoriów w Tatrach. Autor \"O chorobach w górach\". Wody lecznicze to domena **Oczki** (balneologia), szczepienia – Pasteur/Koch, antyseptyka – Lister. EBM wprowadziła wytyczne kliniczne i systematyczną analizę skuteczności terapii medycznych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-200",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Maria Skłodowska-Curie, mimo że nie była lekarzem, wpłynęła fundamentalnie na medycynę. Które jej odkrycie dało początek rozwojowi radioterapii nowotworów?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Odkrycie penicyliny"
+      },
+      {
+        "id": "b",
+        "text": "Odkrycie promieni X"
+      },
+      {
+        "id": "c",
+        "text": "Odkrycie pierwiastków promieniotwórczych (polonu i radu)"
+      },
+      {
+        "id": "d",
+        "text": "Odkrycie struktury podwójnej helisy DNA"
+      },
+      {
+        "id": "e",
+        "text": "Sformułowanie czterech postulatów dotyczących drobnoustrojów chorobotwórczych"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Maria Skłodowska-Curie** (1867–1934), badając promieniotwórczość z **Pierre'em Curie** i **Henri Becquerelem**, odkryła **polon i rad** – co stało się podstawą rozwoju **radioterapii** nowotworów. Promienie X odkrył **Roentgen** (1895), penicylinę – **Fleming**, strukturę DNA – **Watson i Crick**, postulaty – **Koch**. Choć nie była lekarzem, jej odkrycia miały fundamentalne znaczenie medyczne. Pandemia uwidoczniła konieczność globalnej współpracy w badaniach i dystrybucji szczepionek.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

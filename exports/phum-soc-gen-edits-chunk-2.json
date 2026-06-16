@@ -1,0 +1,280 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-2",
+  "edits": [
+    {
+      "id": "phum-soc-gen-026",
+      "options": [
+        {"id": "a", "text": "postawa paternalistyczna — troska z przejmowaniem decyzji w czyimś interesie"},
+        {"id": "b", "text": "postawa litościowa — współczucie i traktowanie osoby głównie jako obiektu pomocy"},
+        {"id": "c", "text": "postawa wykluczająca — odrzucanie, stygmatyzacja i marginalizacja osób z niepełnosprawnością i ich potrzeb"},
+        {"id": "d", "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"},
+        {"id": "e", "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-027",
+      "options": [
+        {"id": "a", "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"},
+        {"id": "b", "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"},
+        {"id": "c", "text": "postawa litościowa — współczucie i traktowanie osoby głównie jako obiektu pomocy"},
+        {"id": "d", "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"},
+        {"id": "e", "text": "postawa inkluzywna — pełna integracja z przebudową środowiska i struktur społecznych"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-028",
+      "options": [
+        {"id": "a", "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"},
+        {"id": "b", "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"},
+        {"id": "c", "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"},
+        {"id": "d", "text": "postawa aktywistyczna — kampanie, protesty i zmiany prawne na rzecz modelu społecznego"},
+        {"id": "e", "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-029",
+      "options": [
+        {"id": "a", "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"},
+        {"id": "b", "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"},
+        {"id": "c", "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"},
+        {"id": "d", "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"},
+        {"id": "e", "text": "postawa neutralna — brak silnych opinii, poszanowanie praw bez inicjatywy integracyjnej"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-030",
+      "options": [
+        {"id": "a", "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"},
+        {"id": "b", "text": "postawa inkluzywna — integracja z przebudową środowiska, systemów i struktur społecznych"},
+        {"id": "c", "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"},
+        {"id": "d", "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"},
+        {"id": "e", "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-031",
+      "options": [
+        {"id": "a", "text": "ageizm — dyskryminacja ze względu na wiek z negatywnym postrzeganiem starości"},
+        {"id": "b", "text": "stygmatyzacja — piętnowanie i społeczne odrzucenie z powodu cech odbiegających od normy"},
+        {"id": "c", "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielności osoby"},
+        {"id": "d", "text": "marginalizacja — wypychanie na obrzeża społeczeństwa i ograniczanie uczestnictwa w życiu zbiorowym"},
+        {"id": "e", "text": "dehumanizacja — odbieranie podmiotowości i traktowanie osoby jak obiektu bez prawa decyzji"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-032",
+      "options": [
+        {"id": "a", "text": "stygmatyzacja — piętnowanie i społeczne odrzucenie z powodu cech odbiegających od normy"},
+        {"id": "b", "text": "izolacja społeczna — fizyczne i emocjonalne odcięcie od kontaktów i uczestnictwa w życiu zbiorowym"},
+        {"id": "c", "text": "dehumanizacja — traktowanie osób jak obiektów pomocy pozbawionych prawa decydowania o życiu"},
+        {"id": "d", "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielności osoby"},
+        {"id": "e", "text": "marginalizacja — wypychanie na obrzeża społeczeństwa i ograniczanie uczestnictwa w życiu zbiorowym"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-033",
+      "options": [
+        {"id": "a", "text": "dyskryminacja → uprzedzenia → stereotypy — najpierw działanie, potem nastawienie, na końcu przekonanie"},
+        {"id": "b", "text": "stygmatyzacja → stereotypy → uprzedzenia — piętnowanie poprzedza przekonania i nastawienia emocjonalne"},
+        {"id": "c", "text": "uprzedzenia → stereotypy → dyskryminacja — nastawienie poprzedza przekonania i przejawy behawioralne"},
+        {"id": "d", "text": "stereotypy → uprzedzenia → dyskryminacja — przekonania prowadzą do nastawień, a te do działań"},
+        {"id": "e", "text": "dyskryminacja → stereotypy → uprzedzenia — działanie poprzedza utrwalanie przekonań i nastawień"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-034",
+      "options": [
+        {"id": "a", "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"},
+        {"id": "b", "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"},
+        {"id": "c", "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"},
+        {"id": "d", "text": "postawa litościowa — współczucie utrwalające stereotyp biednej ofiary i obiektu pomocy"},
+        {"id": "e", "text": "postawa integracyjna — pełne włączenie z równymi szansami i różnorodnością jako wartością"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-035",
+      "options": [
+        {"id": "a", "text": "stereotyp negatywny — utrwalający wykluczenie, uprzedzenia i marginalizację osoby z niepełnosprawnością"},
+        {"id": "b", "text": "stereotyp pozytywny — chwalący odwagę i siłę, lecz redukujący pełną osobowość do jednej cechy"},
+        {"id": "c", "text": "stereotyp neutralny — pozornie obojętny, lecz bez realnego wpływu na proces integracji społecznej"},
+        {"id": "d", "text": "stereotyp paternalistyczny — oparty na troskliwym przejmowaniu decyzji w imię dobra osoby"},
+        {"id": "e", "text": "stereotyp dehumanizujący — odbierający podmiotowość i traktujący osobę wyłącznie jak obiekt pomocy"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-036",
+      "options": [
+        {"id": "a", "text": "predyspozycje genetyczne — wrodzone uwarunkowania biologiczne determinujące postawy społeczne"},
+        {"id": "b", "text": "wpływ rodziny i wychowania — kształtowanie postaw w środowisku domowym od najmłodszych lat"},
+        {"id": "c", "text": "media i kultura masowa — przekazy stereotypów i norm społecznych przez filmy, reklamy i internet"},
+        {"id": "d", "text": "doświadczenia życiowe — osobiste przeżycia kontaktów z osobami z niepełnosprawnością lub seniorami"},
+        {"id": "e", "text": "grupy rówieśnicze — presja grupy rówieśniczej i wymiana norm w relacjach rówieśniczych"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-037",
+      "options": [
+        {"id": "a", "text": "postawa integracyjna — pełne włączenie z równymi szansami dostępu do zasobów społecznych"},
+        {"id": "b", "text": "postawa aktywistyczna — zorganizowana walka o prawa poprzez kampanie i zmiany prawne"},
+        {"id": "c", "text": "postawa humanitarna — szacunek, empatia i wsparcie oparte na godności każdej osoby"},
+        {"id": "d", "text": "postawa neutralna — brak emocjonalnego zaangażowania przy formalnym poszanowaniu praw"},
+        {"id": "e", "text": "postawa paternalistyczna — przejmowanie decyzji w imię dobra, ograniczające autonomię osoby"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-038",
+      "options": [
+        {"id": "a", "text": "przemoc fizyczna — bicie, popychanie i inne działania powodujące uszkodzenie ciała osoby starszej"},
+        {"id": "b", "text": "przemoc psychiczna — upokarzanie, izolacja, zastraszanie i kontrolowanie emocjonalne seniora"},
+        {"id": "c", "text": "zaniedbanie — brak opieki, niewłaściwe warunki życia i odmawianie niezbędnej pomocy medycznej"},
+        {"id": "d", "text": "przemoc ekonomiczna — wykorzystywanie finansowe i zmuszanie seniora do przekazania majątku"},
+        {"id": "e", "text": "przemoc seksualna — wymuszanie kontaktów seksualnych lub niedozwolonych dotyków wobec osoby starszej"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-039",
+      "options": [
+        {"id": "a", "text": "ageizm w miejscu pracy — dyskryminacja wiekowa utrudniająca zatrudnienie i rozwój zawodowy seniorów"},
+        {"id": "b", "text": "brak zrozumienia potrzeb cyfrowych — wykluczenie z usług online przez nieznajomość technologii"},
+        {"id": "c", "text": "przemoc ekonomiczna — wykorzystywanie finansowe i ograniczanie dostępu do własnych środków seniora"},
+        {"id": "d", "text": "paternalizm — troska przekładająca się na ograniczanie autonomii i samodzielnych decyzji osoby starszej"},
+        {"id": "e", "text": "izolacja społeczna — samotność powodująca przyspieszone starzenie mózgu i wyższą śmiertelność"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-040",
+      "options": [
+        {"id": "a", "text": "wyłącznie zmianę przepisów prawnych — bez edukacji, doświadczeń i perswazji społecznej"},
+        {"id": "b", "text": "doświadczenia, edukację lub działania perswazyjne — kontakt, wiedza i przekonywanie społeczne"},
+        {"id": "c", "text": "predyspozycje wrodzone — stałe cechy osobowości niepodatne na wpływ otoczenia i uczenia się"},
+        {"id": "d", "text": "izolację od obiektu postawy — unikanie kontaktu utrwalające stereotypy zamiast je przełamywać"},
+        {"id": "e", "text": "wzmacnianie stereotypów — utrwalanie uproszczonych przekonań zamiast ich kwestionowania i zmiany"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-041",
+      "options": [
+        {"id": "a", "text": "Elisabeth Kübler-Ross — autorka pięcioetapowego modelu żałoby (DABDA)"},
+        {"id": "b", "text": "Talcott Parsons — autor teorii ról społecznych i funkcjonalizmu w socjologii medycyny"},
+        {"id": "c", "text": "Eliot Freidson — badacz profesjonalizmu lekarskiego i autonomii zawodu medycznego"},
+        {"id": "d", "text": "Aaron Antonovsky — twórca koncepcji salutogenezy i poczucia koherencji w zdrowiu"},
+        {"id": "e", "text": "Erving Goffman — autor koncepcji stygmatu i analizy interakcji społecznych w chorobie"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-042",
+      "options": [
+        {"id": "a", "text": "zaprzeczenia — odrzucanie faktu śmierci i brak gotowości do zaakceptowania rzeczywistości"},
+        {"id": "b", "text": "gniewu — emocjonalna reakcja na niesprawiedliwość utraty i odczucie bezradności wobec losu"},
+        {"id": "c", "text": "targowania się — próby cofnięcia śmierci typu Gdybym zrobił coś inaczej, może by się udało"},
+        {"id": "d", "text": "depresji — głęboki smutek, pustka i wycofanie po uświadomieniu sobie nieuchronności straty"},
+        {"id": "e", "text": "akceptacji — pogodzenie się z utratą i gotowość do funkcjonowania mimo trwałej przemiany życia"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-043",
+      "options": [
+        {"id": "a", "text": "zaprzeczenie — czasowe odcięcie się od rzeczywistości i niedopuszczanie faktu do świadomości"},
+        {"id": "b", "text": "racjonalizacja — szukanie logicznych uzasadnień trudnej sytuacji w obliczu nadchodzącej śmierci"},
+        {"id": "c", "text": "sublimacja — przekierowanie napięcia emocjonalnego na akceptowalne formy działania i aktywności"},
+        {"id": "d", "text": "projekcja — przenoszenie trudnych emocji, np. złości lub bezsilności, na osoby trzecie"},
+        {"id": "e", "text": "regresja — powrót do wcześniejszych, mniej dojrzałych form radzenia sobie ze stresem i lękiem"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-044",
+      "options": [
+        {"id": "a", "text": "projekcja — przenoszenie trudnych emocji, np. złości lub bezsilności, na osoby trzecie"},
+        {"id": "b", "text": "zaprzeczenie — czasowe odcięcie się od rzeczywistości i niedopuszczanie faktu do świadomości"},
+        {"id": "c", "text": "wyparcie — nieświadome usuwanie z pamięci bolesnych treści bez pełnej akceptacji faktów"},
+        {"id": "d", "text": "kompensacja — przesuwanie energii emocjonalnej na inne obszary życia w celu ochrony psychiki"},
+        {"id": "e", "text": "racjonalizacja — szukanie logicznych uzasadnień trudnej sytuacji przed nadchodzącą śmiercią"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-045",
+      "options": [
+        {"id": "a", "text": "funkcja emocjonalno-ekspresyjna — zaspokajanie potrzeb uczuciowych i dbanie o równowagę osobowości"},
+        {"id": "b", "text": "funkcja socjalizacyjna — wprowadzenie dziecka w kulturę społeczeństwa i przygotowanie do ról społecznych"},
+        {"id": "c", "text": "funkcja prawno-kontrolna — wzajemne nadzorowanie postępowania w celu zapobiegania odstępstwom od norm"},
+        {"id": "d", "text": "funkcja opiekuńczo-zabezpieczająca — zaspokajanie podstawowych potrzeb materialnych i ochrona bezpieczeństwa"},
+        {"id": "e", "text": "funkcja klasowa — wyznaczanie pozycji społecznej rodziny w strukturze i hierarchii społeczeństwa"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-046",
+      "options": [
+        {"id": "a", "text": "funkcja prawno-kontrolna — wzajemne nadzorowanie postępowania w celu zapobiegania odstępstwom od norm"},
+        {"id": "b", "text": "funkcja socjalizacyjna — wprowadzenie dziecka w kulturę społeczeństwa i przygotowanie do ról społecznych"},
+        {"id": "c", "text": "funkcja klasowa — wyznaczanie pozycji społecznej rodziny w strukturze i hierarchii społeczeństwa"},
+        {"id": "d", "text": "funkcja opiekuńczo-zabezpieczająca — zaspokajanie podstawowych potrzeb materialnych i ochrona bezpieczeństwa"},
+        {"id": "e", "text": "funkcja kulturalna — przekazywanie tradycji, norm i wartości charakterystycznych dla danej wspólnoty"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-047",
+      "options": [
+        {"id": "a", "text": "wsparcie emocjonalne — okazywanie miłości, empatii i opieki w relacji z bliską osobą chorej"},
+        {"id": "b", "text": "wsparcie informacyjne — udzielanie wiedzy i wskazówek pomagających rozwiązać konkretny problem"},
+        {"id": "c", "text": "wsparcie instrumentalne — praktyczna pomoc i wyręczanie w codziennych zadaniach osoby"},
+        {"id": "d", "text": "wsparcie oceniające — informacja zwrotna oceniająca zachowanie i motywująca do dalszych działań"},
+        {"id": "e", "text": "wsparcie duchowe — wspieranie w wierze, sensie życia i radzeniu sobie z cierpieniem duchowym"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-048",
+      "options": [
+        {"id": "a", "text": "taki sam — brak istotnej różnicy między grupą samotnych a mieszkańcami z rodziną po zawale"},
+        {"id": "b", "text": "czterokrotnie wyższy — czterokrotne ryzyko zgonu u pacjentów samotnych w porównaniu z innymi"},
+        {"id": "c", "text": "dwukrotnie niższy — połowa ryzyka zgonu u samotnych w stosunku do osób mieszkających z rodziną"},
+        {"id": "d", "text": "dwukrotnie wyższy — podwojone ryzyko zgonu u pacjentów samotnych w porównaniu z rodziną"},
+        {"id": "e", "text": "nieznacznie niższy — niewielka przewaga przeżywalności u samotnych, lecz bez dużej różnicy statystycznej"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-049",
+      "options": [
+        {"id": "a", "text": "biomedycznego — redukującego zdrowie do procesów biologicznych i patologii organizmu"},
+        {"id": "b", "text": "paternalistycznego — opartego na decyzjach lekarza w imię dobra pacjenta bez pełnej autonomii"},
+        {"id": "c", "text": "patogenetycznego — koncentrującego się na czynnikach chorobotwórczych i mechanizmach powstawania choroby"},
+        {"id": "d", "text": "salutogenetycznego — skupionego na zasobach zdrowia i poczuciu koherencji według Antonovsky'ego"},
+        {"id": "e", "text": "socjoekologicznego — uwzględniającego środowisko społeczne i rolę nieprofesjonalnych systemów opieki"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-050",
+      "options": [
+        {"id": "a", "text": "podstawowej opieki zdrowotnej — formalnego systemu POZ z lekarzem rodzinnym i pielęgniarką"},
+        {"id": "b", "text": "samoopieki — niesformalizowanych działań rodziny, sąsiadów i bliskich podczas choroby"},
+        {"id": "c", "text": "opieki paliatywnej — specjalistycznej opieki nad pacjentem w terminalnej fazie choroby"},
+        {"id": "d", "text": "opieki długoterminowej — instytucjonalnej lub domowej opieki nad osobą przewlekle zależną"},
+        {"id": "e", "text": "medykalizacji — rozszerzania zakresu problemów społecznych definiowanych i leczonych medycznie"}
+      ],
+      "correct_option_id": "b"
+    }
+  ]
+}

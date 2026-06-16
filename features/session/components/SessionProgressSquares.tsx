@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { SessionAnswer, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ export function SessionProgressSquares({
   currentIndex,
   onJumpTo,
 }: SessionProgressSquaresProps) {
+  const t = useTranslations("session");
   const scrollRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const [overflows, setOverflows] = useState(false);
@@ -62,7 +64,7 @@ export function SessionProgressSquares({
           : "justify-center overflow-hidden",
       )}
       role="list"
-      aria-label="Postęp w sesji"
+      aria-label={t("sessionProgressAria")}
     >
       {questions.map((q, idx) => {
         const answer = answeredMap[q.id];
@@ -74,11 +76,10 @@ export function SessionProgressSquares({
         const clickable = typeof onJumpTo === "function";
         const Component = clickable ? "button" : "div";
 
-        let ariaLabel = `Pytanie ${idx + 1}`;
-        if (isCorrect) ariaLabel += " — poprawna";
-        else if (isWrong) ariaLabel += " — błędna";
-        else if (isCurrent) ariaLabel += " — aktualne";
-        else ariaLabel += " — nieodpowiedziane";
+        let ariaLabel = t("catalogQuestionAria", { number: idx + 1 });
+        if (isCorrect) ariaLabel += t("progressSquareCorrect");
+        else if (isWrong) ariaLabel += t("progressSquareWrong");
+        else ariaLabel += t("progressSquareUnanswered");
 
         return (
           <Component

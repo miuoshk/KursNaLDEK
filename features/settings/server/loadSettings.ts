@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
+import { defaultLocale, isAppLocale } from "@/i18n/config";
 
 const DEFAULT_MODE: KnnpSessionMode = "inteligentna";
 
@@ -12,7 +13,7 @@ export async function loadSettings(
   const { data: profileRow } = await supabase
     .from("profiles")
     .select(
-      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
+      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
     )
     .eq("id", userId)
     .maybeSingle();
@@ -38,6 +39,7 @@ export async function loadSettings(
     avatar_emoji: (profileRow?.avatar_emoji as string | null | undefined) ?? null,
     current_track: profileRow?.current_track ?? "stomatologia",
     current_year: profileRow?.current_year ?? 1,
+    locale: isAppLocale(profileRow?.locale) ? profileRow.locale : defaultLocale,
     exam_date: (profileRow?.exam_date as string | null | undefined) ?? null,
     daily_goal: profileRow?.daily_goal ?? 25,
     default_session_mode: mode,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { getRegistrationRemainingMs } from "@/lib/registrationWindow";
 
 function formatRemaining(ms: number): string {
@@ -21,6 +22,7 @@ function formatRemaining(ms: number): string {
 }
 
 export function RegistrationCountdown() {
+  const t = useTranslations("auth");
   const [remainingMs, setRemainingMs] = useState<number>(() => getRegistrationRemainingMs());
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export function RegistrationCountdown() {
   if (remainingMs <= 0) {
     return (
       <p className="mt-4 rounded-card border border-brand-sage/40 bg-brand-sage/10 px-4 py-3 font-body text-body-sm text-secondary">
-        Rejestracja została ponownie otwarta.
+        {t("registrationReopened")}
       </p>
     );
   }
@@ -44,7 +46,7 @@ export function RegistrationCountdown() {
   return (
     <div className="mt-4 rounded-card border border-brand-gold/40 bg-brand-gold/10 px-4 py-3">
       <p className="font-body text-body-sm text-secondary">
-        Rejestracja nowych uczestników wróci 17 maja 2026 o 21:00.
+        {t("registrationCountdownMessage")}
       </p>
       <p className="mt-2 font-body text-body-md font-semibold text-brand-gold">{formatted}</p>
     </div>

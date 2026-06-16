@@ -5,3 +5,12 @@ export function formatStreak(days: number): string {
   if (days >= 2 && days <= 4) return `${days} dni`;
   return `${days} dni`;
 }
+
+type StreakTranslator = (
+  key: "streakFormat",
+  values: { count: number },
+) => string;
+
+export function formatStreakI18n(t: StreakTranslator, count: number): string {
+  return t("streakFormat", { count });
+}

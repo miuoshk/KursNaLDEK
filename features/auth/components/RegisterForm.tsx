@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 import { registerAction } from "@/features/auth/actions";
 import { ResendConfirmationButton } from "@/features/auth/components/ResendConfirmationButton";
 import { initialAuthActionState } from "@/features/auth/types";
@@ -17,6 +18,7 @@ const selectClassName =
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("auth");
 
   return (
     <button
@@ -27,12 +29,14 @@ function SubmitButton() {
         "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70",
       )}
     >
-      {pending ? "Tworzenie konta..." : "Załóż konto"}
+      {pending ? t("registerPending") : t("register")}
     </button>
   );
 }
 
 export function RegisterForm() {
+  const t = useTranslations("auth");
+  const tCommon = useTranslations("common");
   const [state, formAction] = useActionState(registerAction, initialAuthActionState);
   const [avatarEmoji, setAvatarEmoji] = useState("");
   const [currentTrack, setCurrentTrack] = useState<"" | "stomatologia" | "lekarski">("");
@@ -45,7 +49,7 @@ export function RegisterForm() {
     <form action={formAction} className="mt-6 space-y-4">
       <div>
         <label htmlFor="fullName" className="mb-2 block font-body text-body-sm text-secondary">
-          Imię i nazwisko
+          {t("fullName")}
         </label>
         <input
           id="fullName"
@@ -54,7 +58,7 @@ export function RegisterForm() {
           required
           autoComplete="name"
           className={inputClassName}
-          placeholder="Jan Kowalski"
+          placeholder={t("fullNamePlaceholder")}
         />
       </div>
 
@@ -63,13 +67,13 @@ export function RegisterForm() {
         required
         value={avatarEmoji}
         onChange={setAvatarEmoji}
-        label="Twój avatar"
-        helper="Wybierz dowolne emoji z systemowej klawiatury — będzie widoczne w rankingu i na pasku bocznym."
+        label={t("avatarLabel")}
+        helper={t("avatarHelper")}
       />
 
       <div>
         <label htmlFor="nick" className="mb-2 block font-body text-body-sm text-secondary">
-          Nick
+          {t("nick")}
         </label>
         <input
           id="nick"
@@ -78,16 +82,16 @@ export function RegisterForm() {
           required
           autoComplete="nickname"
           className={inputClassName}
-          placeholder="np. medicjan"
+          placeholder={t("nickPlaceholder")}
         />
         <p className="mt-1 font-body text-body-xs text-muted">
-          Nick jest widoczny w rankingu i można go później zmienić w ustawieniach.
+          {t("nickHelper")}
         </p>
       </div>
 
       <div>
         <label htmlFor="email" className="mb-2 block font-body text-body-sm text-secondary">
-          Email
+          {t("email")}
         </label>
         <input
           id="email"
@@ -96,13 +100,13 @@ export function RegisterForm() {
           required
           autoComplete="email"
           className={inputClassName}
-          placeholder="twoj@email.pl"
+          placeholder={tCommon("emailPlaceholder")}
         />
       </div>
 
       <div>
         <label htmlFor="password" className="mb-2 block font-body text-body-sm text-secondary">
-          Hasło
+          {t("password")}
         </label>
         <input
           id="password"
@@ -111,13 +115,13 @@ export function RegisterForm() {
           required
           autoComplete="new-password"
           className={inputClassName}
-          placeholder="••••••••"
+          placeholder={tCommon("passwordPlaceholder")}
         />
       </div>
 
       <div>
         <label htmlFor="confirmPassword" className="mb-2 block font-body text-body-sm text-secondary">
-          Powtórz hasło
+          {t("confirmPassword")}
         </label>
         <input
           id="confirmPassword"
@@ -126,13 +130,13 @@ export function RegisterForm() {
           required
           autoComplete="new-password"
           className={inputClassName}
-          placeholder="••••••••"
+          placeholder={tCommon("passwordPlaceholder")}
         />
       </div>
 
       <div>
         <label htmlFor="currentTrack" className="mb-2 block font-body text-body-sm text-secondary">
-          Kierunek
+          {t("track")}
         </label>
         <select
           id="currentTrack"
@@ -143,20 +147,20 @@ export function RegisterForm() {
           onChange={(event) => setCurrentTrack(event.target.value as "" | "stomatologia" | "lekarski")}
         >
           <option value="" disabled>
-            Wybierz kierunek
+            {t("trackPlaceholder")}
           </option>
-          <option value="stomatologia">Stomatologia</option>
-          <option value="lekarski">Lekarski</option>
+          <option value="stomatologia">{t("trackStomatologia")}</option>
+          <option value="lekarski">{t("trackLekarski")}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="currentYear" className="mb-2 block font-body text-body-sm text-secondary">
-          Rok studiów
+          {t("studyYear")}
         </label>
         <select id="currentYear" name="currentYear" required className={selectClassName} defaultValue="">
           <option value="" disabled>
-            Wybierz rok
+            {t("studyYearPlaceholder")}
           </option>
           <option value="1">1</option>
           <option value="2" disabled={lekYear2Closed}>
@@ -167,7 +171,7 @@ export function RegisterForm() {
           </option>
         </select>
         {lekYear2Closed || lekYear3Closed ? (
-          <p className="mt-1 font-body text-body-xs text-muted">Rejestracja zamknięta.</p>
+          <p className="mt-1 font-body text-body-xs text-muted">{t("registrationClosed")}</p>
         ) : null}
       </div>
 

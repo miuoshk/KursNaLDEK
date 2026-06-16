@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { Lock } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { achievementLucide } from "@/features/gamification/lib/achievementIcons";
 import type { BadgePreviewItem } from "@/features/settings/server/loadAchievementPreview";
 import { cn } from "@/lib/utils";
 
 type Props = { items: BadgePreviewItem[] };
 
-export function AchievementsBadgesPreview({ items }: Props) {
+export async function AchievementsBadgesPreview({ items }: Props) {
+  const t = await getTranslations("settings");
   return (
     <section>
-      <h2 className="font-heading text-xl font-bold text-primary">Osiągnięcia</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">{t("achievementsPreview.title")}</h2>
       <div className="mt-6 grid grid-cols-6 gap-3 sm:max-w-md">
         {items.map((item) => {
           const Icon = achievementLucide(item.icon);
@@ -37,7 +39,7 @@ export function AchievementsBadgesPreview({ items }: Props) {
         href="/osiagniecia"
         className="mt-4 inline-block font-body text-body-sm text-brand-sage transition hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
       >
-        Zobacz wszystkie osiągnięcia →
+        {t("achievementsPreview.viewAll")}
       </Link>
     </section>
   );

@@ -1,37 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { SESSION_LOADING_SLOGANS } from "@/features/shared/lib/slogans";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import { getSloganPool } from "@/features/shared/lib/slogans";
 
 /** Jak długo pokazujemy jedno motto, zanim zaczniemy fade do następnego. */
 const ROTATE_INTERVAL_MS = 5000;
 /** Czas trwania fade out / fade in (musi pasować do duration-500 niżej). */
 const FADE_MS = 500;
 
-/**
- * Ekran ładowania sesji - zamiast surowego "Ładowanie sesji..." pokazuje
- * motta z `SESSION_LOADING_SLOGANS` plus podskakujące kropki w kolorze
- * brand-gold. Trzyma "vibe" marki i daje użytkownikowi micro-moment do
- * przygotowania się przed rozpoczęciem pytań (efekt "ostatniego słowa
- * przed lock-inem").
- *
- * Motto startuje od losowego i rotuje co `ROTATE_INTERVAL_MS` z płynnym
- * crossfade (opacity 1 -> 0 -> podmiana tekstu -> 0 -> 1), dzięki czemu
- * zmiana jest spokojna, nie skokowa.
- */
 export function SessionLoadingScreen() {
+  const tSlogans = useTranslations("slogans");
+  const tSession = useTranslations("session");
+  const slogans = useMemo(() => getSloganPool(tSlogans, "sessionLoading"), [tSlogans]);
   const [index, setIndex] = useState(() =>
-    Math.floor(Math.random() * SESSION_LOADING_SLOGANS.length),
+    Math.floor(Math.random() * Math.max(1, slogans.length)),
   );
   const [visible, setVisible] = useState(true);
   const swapTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (SESSION_LOADING_SLOGANS.length <= 1) return;
+    if (slogans.length <= 1) return;
     const id = setInterval(() => {
       setVisible(false);
       swapTimeout.current = setTimeout(() => {
-        setIndex((prev) => (prev + 1) % SESSION_LOADING_SLOGANS.length);
+        setIndex((prev) => (prev + 1) % slogans.length);
         setVisible(true);
       }, FADE_MS);
     }, ROTATE_INTERVAL_MS);
@@ -39,9 +32,9 @@ export function SessionLoadingScreen() {
       clearInterval(id);
       if (swapTimeout.current) clearTimeout(swapTimeout.current);
     };
-  }, []);
+  }, [slogans.length]);
 
-  const slogan = SESSION_LOADING_SLOGANS[index] ?? SESSION_LOADING_SLOGANS[0];
+  const slogan = slogans[index] ?? slogans[0] ?? tSlogans("default");
 
   return (
     <div
@@ -76,7 +69,7 @@ export function SessionLoadingScreen() {
         />
       </div>
 
-      <span className="sr-only">Ładowanie sesji…</span>
+      <span className="sr-only">{tSession("loadingSession")}</span>
     </div>
   );
 }

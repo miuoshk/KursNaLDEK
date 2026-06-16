@@ -1,6 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { SessionMode } from "@/features/session/types";
 
@@ -34,6 +35,7 @@ export function SessionTopBar({
   sessionTopicNames,
   onEnd,
 }: SessionTopBarProps) {
+  const t = useTranslations("session");
   const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
   const topicsLine =
     sessionTopicNames && sessionTopicNames.length > 0
@@ -44,12 +46,12 @@ export function SessionTopBar({
     <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
       {selectedTopicName ? (
         <p className="mb-2 font-body text-body-sm font-medium text-brand-gold">
-          Temat: {selectedTopicName}
+          {t("topicLabel", { name: selectedTopicName })}
         </p>
       ) : null}
       {topicsLine && !selectedTopicName ? (
         <p className="mb-2 line-clamp-2 font-body text-body-xs text-muted" title={topicsLine}>
-          Tematy: {topicsLine}
+          {t("topicsLabel", { names: topicsLine })}
         </p>
       ) : null}
       <div className="flex flex-wrap items-center gap-4">
@@ -59,7 +61,7 @@ export function SessionTopBar({
 
         <div className="min-w-0 flex-1">
           <p className="font-body text-body-sm tabular-nums text-secondary">
-            Pytanie {current + 1} / {total}
+            {t("questionProgress", { current: current + 1, total })}
           </p>
           <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
             <div
@@ -72,7 +74,7 @@ export function SessionTopBar({
         {examElapsedSeconds !== null ? (
           <p
             className="min-w-[4.5ch] shrink-0 text-right font-body text-body-md tabular-nums text-primary"
-            aria-label="Czas sesji"
+            aria-label={t("sessionTimeAria")}
           >
             {formatClock(examElapsedSeconds)}
           </p>
@@ -86,7 +88,7 @@ export function SessionTopBar({
             "hover:text-error",
           )}
         >
-          Zakończ sesję
+          {t("endSession")}
           <X className="size-4" aria-hidden />
         </button>
       </div>

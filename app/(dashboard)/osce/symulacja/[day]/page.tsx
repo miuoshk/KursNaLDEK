@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { OSCESimulation } from "@/features/osce/components/OSCESimulation";
@@ -11,6 +12,7 @@ type PageProps = {
 };
 
 export default async function OsceSimulationDayPage({ params, searchParams }: PageProps) {
+  const t = await getTranslations("osce");
   const { day: dayStr } = await params;
   const { only: onlyParam } = await searchParams;
 
@@ -31,17 +33,19 @@ export default async function OsceSimulationDayPage({ params, searchParams }: Pa
   if (stations.length === 0) {
     return (
       <div>
-        <OsceBreadcrumbSetter second="Kurs na OSCE" third="Symulacja" />
+        <OsceBreadcrumbSetter second={t("courseTitle")} third={t("simulationShort")} />
         <Link
           href="/osce/symulacja"
           className="mb-6 inline-flex items-center gap-2 font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold"
         >
           <ArrowLeft className="size-4" aria-hidden />
-          Symulacja OSCE
+          {t("simulation")}
         </Link>
-        <h1 className="font-heading text-heading-xl text-primary">Symulacja — dzień {day}</h1>
+        <h1 className="font-heading text-heading-xl text-primary">
+          {t("simulationDayTitle", { day })}
+        </h1>
         <p className="mt-4 font-body text-body-md text-secondary">
-          Brak stacji do wyświetlenia (filtr lub brak danych w bazie).
+          {t("noStationsFiltered")}
         </p>
       </div>
     );
@@ -49,21 +53,28 @@ export default async function OsceSimulationDayPage({ params, searchParams }: Pa
 
   return (
     <div>
-      <OsceBreadcrumbSetter second="Kurs na OSCE" third={`Symulacja · dzień ${day}`} />
+      <OsceBreadcrumbSetter
+        second={t("courseTitle")}
+        third={t("simulationBreadcrumb", { day })}
+      />
 
       <Link
         href="/osce/symulacja"
         className="mb-6 inline-flex items-center gap-2 font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold"
       >
         <ArrowLeft className="size-4" aria-hidden />
-        Symulacja OSCE
+        {t("simulation")}
       </Link>
 
-      <h1 className="font-heading text-heading-xl text-primary">Symulacja OSCE — dzień {day}</h1>
+      <h1 className="font-heading text-heading-xl text-primary">
+        {t("simulationDayFullTitle", { day })}
+      </h1>
       <p className="mt-2 font-body text-body-md text-secondary">
-        {stations.length}{" "}
-        {stations.length === 1 ? "stacja" : stations.length < 5 ? "stacje" : "stacji"} w tej sesji
-        {onlyIds.length > 0 ? " (tylko wybrane)" : ""}.
+        {t("sessionStationsCount", {
+          count: stations.length,
+          selectedSuffix:
+            onlyIds.length > 0 ? t("sessionStationsSelectedSuffix") : "",
+        })}
       </p>
 
       <div className="mt-10">

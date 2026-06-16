@@ -1,0 +1,4582 @@
+# Mikrobiologia jamy ustnej · Zaliczenie całościowe
+
+Wyeksportowano: 2026-05-24T22:59:49.473Z
+Liczba pytań: 245
+
+## mju-zal-001
+
+Przyporządkuj do każdego z niżej wymienionych etapów monitorowania procesu sterylizacji (1-5) testy kontrolne (a-e):
+1) kontrola ekspozycji
+2) kontrola biologiczna
+3) kontrola pakietu
+4) kontrola techniczna sterylizatora
+5) kontrola czystości pakietowanych narzędzi.
+
+Dostępne testy:
+a) wydruki rejestratora cyklu
+b) taśmy wskaźnikowe
+c) wskaźniki chemiczne
+d) testy oznaczające pozostałości białek
+e) wskaźniki z organizmem wzorcowym.
+
+Prawidłowe zestawienie to:
+
+- [ ] **A.** 1-e, 2-d, 3-c, 4-b, 5-a
+- [ ] **B.** 1-e, 2-d, 3-c, 4-a, 5-b
+- [ ] **C.** 1-a, 2-e, 3-d, 4-b, 5-c
+- [✓] **D.** 1-b, 2-e, 3-c, 4-a, 5-d
+- [ ] **E.** 1-c, 2-a, 3-e, 4-b, 5-d
+
+**Poprawna odpowiedź:** D — 1-b, 2-e, 3-c, 4-a, 5-d
+
+**Wyjaśnienie:**
+
+**Pełna mapa kontroli sterylizacji:** **1→b** *Kontrola ekspozycji* — **taśmy wskaźnikowe** (typ 1 wg EN ISO 11140) na zewnątrz pakietu, zmieniają kolor po nagrzaniu → potwierdzają tylko, że pakiet „był w autoklawie". **2→e** *Kontrola biologiczna* — **wskaźniki z organizmem wzorcowym** (przetrwalniki *Geobacillus stearothermophilus* dla pary, *Bacillus atrophaeus* dla EO/ciepła suchego); jedyna metoda potwierdzająca **biobójczość**. **3→c** *Kontrola pakietu* — **wskaźniki chemiczne** wewnątrz pakietu (typ 3-6), oceniają warunki w środku ładunku. **4→a** *Kontrola techniczna sterylizatora* — **wydruki rejestratora cyklu** (T, p, czas) → parametry fizyczne. **5→d** *Czystość narzędzi przed pakowaniem* — **testy białkowe** (ninhydrynowy, OPA) wykrywają pozostałości biologiczne po myciu. Klucz mnemoniczny: ekspozycja = z zewnątrz, biologia = przetrwalnik, pakiet = wewnątrz, technika = wydruk, czystość = białko.
+
+---
+
+## mju-zal-002
+
+Które z poniższych określeń niewłaściwie charakteryzuje wskaźnik biologiczny do kontroli wsadu?
+
+- [ ] **A.** wskaźnik biologiczny to nośnik zaszczepiony przetrwalnikami szczepu wzorcowego
+- [✓] **B.** wskaźnik biologiczny to nośnik zaszczepiony komórkami szczepu wzorcowego
+- [ ] **C.** szczepem wzorcowym we wskaźniku biologicznym może być Bacillus stearothermophilus
+- [ ] **D.** szczepem wzorcowym we wskaźniku biologicznym może być Bacillus atrophaeus/subtilis
+- [ ] **E.** szczep wzorcowy wskaźnika odznacza się wysoką opornością na określony proces sterylizacyjny
+
+**Poprawna odpowiedź:** B — wskaźnik biologiczny to nośnik zaszczepiony komórkami szczepu wzorcowego
+
+**Wyjaśnienie:**
+
+**Wskaźnik biologiczny** to nośnik zaszczepiony **przetrwalnikami** (sporami) — formami spoczynkowymi o **najwyższej oporności** na czynniki fizyczne i chemiczne. To właśnie oporność spor jest miarą skuteczności cyklu: jeśli zginą przetrwalniki, zginą wszystkie inne drobnoustroje. *Komórki wegetatywne* ( B) są łatwo zabijane już w warunkach łagodnych — nie nadają się jako test sterylizacji. Pozostałe odpowiedzi są prawdziwe: **Geobacillus stearothermophilus** ( C) — para wodna 134°C, **Bacillus atrophaeus** (D, dawniej *B. subtilis var. niger*) — tlenek etylenu, formaldehyd, ciepło suche, plazma.
+
+---
+
+## mju-zal-003
+
+Przyporządkuj do każdej z niżej wymienionych metod sterylizacji (1-5) odpowiednią temperaturę fazy ekspozycji cyklu sterylizacji (a-e):
+1) sterylizacja nasyconą parą wodną
+2) sterylizacja parowo-formaldehydowa
+3) sterylizacja tlenkiem etylenu
+4) sterylizacja plazmowa
+5) sterylizacja ciepłem suchym.
+
+Temperatury:
+a) 40-55°C
+b) 121°C lub 134°C
+c) 37°C lub 55°C
+d) 180°C
+e) 50-65°C.
+
+Prawidłowe zestawienie to:
+
+- [ ] **A.** 1-a, 2-b, 3-c, 4-e, 5-d
+- [ ] **B.** 1-b, 2-a, 3-c, 4-d, 5-e
+- [ ] **C.** 1-e, 2-d, 3-b, 4-c, 5-a
+- [✓] **D.** 1-b, 2-e, 3-c, 4-a, 5-d
+- [ ] **E.** 1-c, 2-b, 3-e, 4-d, 5-a
+
+**Poprawna odpowiedź:** D — 1-b, 2-e, 3-c, 4-a, 5-d
+
+**Wyjaśnienie:**
+
+**Temperatury ekspozycji wg metody:** **1→b** *Para wodna* — **121°C** (cykl 15-30 min) lub **134°C** (cykl 3-7 min) — klasyczne autoklawowanie. **2→e** *Parowo-formaldehydowa* — **50-65°C**, niskotemperaturowa para z dodatkiem formaldehydu (alternatywa dla EO przy materiałach termolabilnych). **3→c** *Tlenek etylenu* — **37°C lub 55°C** (cykl zimny vs ciepły), najniższe temperatury — dla najwrażliwszych materiałów (elektronika, polimery). **4→a** *Plazma (H2O2)* — **40-55°C**, krótki cykl, brak pozostałości toksycznych. **5→d** *Ciepło suche* — **180°C** (lub 160°C/2h, 170°C/1h), do szkła, metalu, olejów. Reguła kciuka: im delikatniejszy materiał, tym niższa T → EO/plazma; szkło/metal → 180°C suche.
+
+---
+
+## mju-zal-004
+
+Wybierz właściwą definicję pojęcia dekontaminacja:
+
+- [ ] **A.** dekontaminacja to proces niszczenia biologicznych czynników chorobotwórczych poprzez sterylizację
+- [ ] **B.** dekontaminacja to proces niszczenia biologicznych czynników chorobotwórczych poprzez czynności sprzątania, mycia, dezynfekcji
+- [ ] **C.** dekontaminacja to proces usuwania drobnoustrojów z mytych i dezynfekowanych powierzchni w zakresie bakterii i grzybów
+- [ ] **D.** dekontaminacja to stosowanie myjąco-dezynfekujących środków na powierzchnię skóry i błon śluzowych w celu zniszczenia drobnoustrojów lub zahamowania ich wzrostu
+- [✓] **E.** dekontaminacja to proces niszczenia biologicznych czynników chorobotwórczych poprzez mycie, dezynfekcję i sterylizację
+
+**Poprawna odpowiedź:** E — dekontaminacja to proces niszczenia biologicznych czynników chorobotwórczych poprzez mycie, dezynfekcję i sterylizację
+
+**Wyjaśnienie:**
+
+**Dekontaminacja** to pojęcie *parasol* — obejmuje **wszystkie trzy poziomy** redukcji bioobciążenia: **mycie → dezynfekcja → sterylizacja**. Kolejność hierarchiczna: mycie usuwa bioładunek mechanicznie, dezynfekcja zabija formy wegetatywne, sterylizacja niszczy wszystko łącznie z przetrwalnikami. *Sterylizacja sama* ( A) to tylko najwyższy poziom — za wąska definicja. *Mycie + dezynfekcja bez sterylizacji* ( B) — za wąska, brak ostatniego ogniwa. *Antyseptyka skóry i błon* ( D) to osobne pojęcie odnoszące się do *tkanek żywych*, nie sprzętu. Klucz: **dekontaminacja = pełna procedura redukcji bioładunku w obróbce sprzętu**.
+
+---
+
+## mju-zal-005
+
+Które twierdzenie dotyczące tzw. pakietu okolicznościowego jest nieprawidłowe?
+
+- [ ] **A.** zawartość pakietu jest przeznaczona do zużycia tylko przez jednego pacjenta
+- [ ] **B.** zawartość pakietu jest przeznaczona do jednej operacji, zabiegu, badania, w jednym czasie na raz
+- [ ] **C.** pakiet może zawierać jedno lub kilka narzędzi, jak i duże zestawy operacyjne, zabiegowe, diagnostyczne, pielęgnacyjne
+- [ ] **D.** niezużyte z pakietu wyroby należy zawsze traktować jako skażone i przekazywać do ponownej sterylizacji
+- [✓] **E.** w przypadku utraty daty przydatności pakietu z powodu jego przeterminowania, bezzwłocznie należy taki pakiet wykorzystać do zabiegu
+
+**Poprawna odpowiedź:** E — w przypadku utraty daty przydatności pakietu z powodu jego przeterminowania, bezzwłocznie należy taki pakiet wykorzystać do zabiegu
+
+**Wyjaśnienie:**
+
+**Pakiet okolicznościowy** = zestaw narzędzi sterylnych dedykowany **jednemu pacjentowi, jednej procedurze, w jednym czasie** — to fundament zasady „jeden pakiet = jeden pacjent". Pakiet **przeterminowany** ( E) traci status sterylności wraz z upływem daty ważności (zwykle 6 miesięcy dla podwójnej folii) — **musi zostać przepakowany i ponownie wysterylizowany**, nigdy nie używany do zabiegu. *Niezużyte narzędzia* ( D) z otwartego pakietu są skażone mikrobiotą powietrza/personelu, więc też wracają do reprocesowania. Pozostałe stwierdzenia (A, B, C) to standardowe zasady CSSD.
+
+---
+
+## mju-zal-006
+
+Który z poniżej wymienionych węglowodanów ma największy potencjał próchnicotwórczy?
+
+- [ ] **A.** glukoza
+- [✓] **B.** sacharoza
+- [ ] **C.** skrobia
+- [ ] **D.** fruktoza
+- [ ] **E.** maltoza
+
+**Poprawna odpowiedź:** B — sacharoza
+
+**Wyjaśnienie:**
+
+**Sacharoza** to *„arch-villain"* próchnicy z **trzech** niezależnych powodów: **(1)** jest **fermentowalna** → kwasy organiczne → spadek pH; **(2)** jest **jedynym** substratem dla **glukozylotransferaz (GTF)** *Streptococcus mutans* produkujących **nierozpuszczalne glukany** (mutany) → matryca biofilmu; **(3)** dostarcza fruktozę dla **fruktozylotransferazy (FTF)** → lewan. *Glukoza i fruktoza* (A, D) są fermentowalne (spadek pH), ale **nie indukują GTF/FTF** → brak matrycy biofilmu. *Skrobia* ( C) wymaga α-amylazy ślinowej, więc kariogenność niska. *Maltoza* ( E) — fermentowalna, ale brak indukcji GTF. Stąd zasada: nie chodzi tylko o cukier, chodzi o **sacharozę**.
+
+---
+
+## mju-zal-007
+
+Próchnica cementu korzeniowego występuje najczęściej:
+
+- [ ] **A.** u niemowląt
+- [ ] **B.** u dzieci do 2 r. ż.
+- [ ] **C.** u osób po 20 r. ż.
+- [✓] **D.** u osób po 60 r. ż.
+- [ ] **E.** występowanie próchnicy cementu nie jest związane z wiekiem
+
+**Poprawna odpowiedź:** D — u osób po 60 r. ż.
+
+**Wyjaśnienie:**
+
+**Próchnica korzenia** (*root caries*) wymaga **odsłonięcia cementu** w jamie ustnej — co następuje przy **recesji dziąseł** związanej z **wiekiem, periodontopatią, zmianami inwolucyjnymi**. Stąd typowa populacja: **seniorzy ≥60 r.ż.** Czynniki ryzyka: kserostomia polekowa (leki kardiologiczne, antydepresanty), trudniejsza higiena, dieta miękka węglowodanowa. *Pacjenci po 20 r.ż.* ( C) zwykle mają jeszcze pełne pokrycie cementu dziąsłem. *Niemowlęta i małe dzieci* (A, B) mają zęby mleczne — brak ekspozycji cementu. Cement jest mniej zmineralizowany niż szkliwo → krytyczne pH atakujące **6,2-6,7** (wyższe niż dla szkliwa 5,5).
+
+---
+
+## mju-zal-008
+
+Substytutem objętościowym cukru jest:
+
+- [ ] **A.** sacharyna
+- [ ] **B.** cyklamat
+- [ ] **C.** aspartam
+- [✓] **D.** sorbitol
+- [ ] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** D — sorbitol
+
+**Wyjaśnienie:**
+
+Substytuty cukru dzielimy na **dwie kategorie:** **(1)** *intensywne słodziki* (high-intensity) — słodzą setki/tysiące razy mocniej niż sacharoza, używane w **śladowych ilościach**: **sacharyna** (A, 300×), **cyklamat** (B, 30×), **aspartam** (C, 200×). **(2)** *substytuty objętościowe* (bulk sweeteners) — słodycz **zbliżona** do sacharozy, używane w **takich samych ilościach** (gram za gram): **sorbitol** (D), ksylitol, mannitol, maltitol. To **alkohole cukrowe (poliole)** — niefermentowalne przez *S. mutans*, niskokaloryczne, **niekariogenne** (ksylitol nawet anty-kariogenny). Klucz: „objętościowy" = wypełnia objętość jak cukier → poliole.
+
+---
+
+## mju-zal-009
+
+Do osób podatnych na próchnicę ostrą należą:
+
+- [ ] **A.** pacjenci z zespołem Sjogrena
+- [ ] **B.** osoby poddane radioterapii nowotworu głowy lub szyi
+- [ ] **C.** niemowlęta długo karmione butelką
+- [ ] **D.** osoby z kserostomią
+- [✓] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+**Próchnica ostra (rampant caries)** = szybko postępujące, wielopowierzchniowe ubytki, klinicznie miękkie i jasne. Wspólny mianownik wszystkich wymienionych grup: **redukcja funkcji ochronnej śliny** lub **stały kontakt z cukrem**. *Zespół Sjögrena* ( A) — autoimmunologiczne zniszczenie ślinianek → kserostomia. *Radioterapia głowy/szyi* ( B) — uszkodzenie popromienne ślinianek → kserostomia popromienna (jedna z najcięższych postaci). *Karmienie butelką* (C, *baby bottle caries*) — stały kontakt mleka/soków z zębami przedniogórnymi, zwłaszcza nocą gdy ślina nie płynie. *Kserostomia* ( D) — pojęcie nadrzędne dla A, B oraz innych przyczyn (polekowa, anorexia). Wszystkie 4 grupy = ten sam mechanizm → **E**.
+
+---
+
+## mju-zal-010
+
+Wskaż zestawienie mikroorganizmów będących głównymi czynnikami ryzyka rozwoju próchnicy:
+
+- [ ] **A.** Candida albicans, Streptococcus mutans
+- [ ] **B.** Streptococcus mutans, Staphylococcus aureus
+- [✓] **C.** Lactobacillus acidophilus, Streptococcus mutans
+- [ ] **D.** Aggregatibacter actinomycetemcomitans, Treponema denticola
+- [ ] **E.** Lactobacillus acidophilus, Staphylococcus aureus
+
+**Poprawna odpowiedź:** C — Lactobacillus acidophilus, Streptococcus mutans
+
+**Wyjaśnienie:**
+
+Klasyczny duet patogenów próchnicy: ***Streptococcus mutans*** (inicjator) + ***Lactobacillus acidophilus*** (progresja). **S. mutans** zapoczątkowuje proces — kwasolubny, sacharozozależny, produkuje glukany budujące biofilm, daje pierwszy spadek pH. Gdy ubytek się pogłębia (zębina), warunki stają się jeszcze bardziej kwaśne i tlenowo-ograniczone → **Lactobacillus** dominuje na późnych etapach jako *„kontynuator"* destrukcji. *Aggregatibacter + Treponema* ( D) to duet **periodontopatogenny** (zapalenie przyzębia, *nie* próchnica). *Staphylococcus aureus* (B, E) — nie jest patogenem próchnicy. *Candida albicans* ( A) — w dyskusji jako modulator, ale klasyczna para to S. mutans + Lactobacillus.
+
+---
+
+## mju-zal-011
+
+Do bakterii pionierskich adsorbujących się na osłonce nabytej pokrywającej powierzchnię szkliwa nie należy:
+
+- [ ] **A.** Streptococcus oralis
+- [✓] **B.** Fusobacterium spp.
+- [ ] **C.** Haemophilus spp.
+- [ ] **D.** Actinomyces spp.
+- [ ] **E.** Streptococcus sanguinis
+
+**Poprawna odpowiedź:** B — Fusobacterium spp.
+
+**Wyjaśnienie:**
+
+**Bakterie pionierskie** (early colonizers) adsorbują się na **osłonce nabytej** (acquired pellicle) w pierwszych godzinach po oczyszczeniu szkliwa. Są to przede wszystkim **paciorkowce grupy mitis/sanguinis**: *S. oralis* (A), *S. sanguinis* (E), *S. mitis*, *S. gordonii*, oraz *Actinomyces naeslundii* ( D) i *Haemophilus* (C). ***Fusobacterium*** ( B) to **„bridge organism"** — pełni rolę *mostu* łączącego pionierów z późnymi kolonizatorami (*P. gingivalis*, *T. forsythia*, *T. denticola*); pojawia się dopiero w **fazie sukcesji** biofilmu, nigdy nie inicjuje. Pułapka: studenci wybierają *Haemophilus* ( C) jako „dziwnego" w grupie paciorkowców, ale to prawidłowy pionier.
+
+---
+
+## mju-zal-012
+
+Teoria DLVO dotyczy:
+
+- [ ] **A.** związku między pH płytki nazębnej a czasem oddziaływania na nią produktów przemiany węglowodanów
+- [✓] **B.** adhezji bakterii do powierzchni szkliwa
+- [ ] **C.** zjawisk prowadzących do przekształcania się płytki nazębnej w kamień nazębny
+- [ ] **D.** powstawania płytki na poddziąsłowych powierzchniach zębów
+- [ ] **E.** predyspozycji osobniczej do rozwoju próchnicy
+
+**Poprawna odpowiedź:** B — adhezji bakterii do powierzchni szkliwa
+
+**Wyjaśnienie:**
+
+**Teoria DLVO** (**D**erjaguin-**L**andau-**V**erwey-**O**verbeek) opisuje **adhezję** cząstek koloidalnych (w tym bakterii) do powierzchni jako **wypadkową dwóch sił**: **(1)** *przyciągających* sił van der Waalsa (krótki zasię g) i **(2)** *odpychających* sił elektrostatycznych (oba obiekty mają zwykle ładunek ujemny — bakteria i szkliwo). Bakteria pokonuje barierę odpychania na **dystansie ~10-20 nm** dzięki adhezynom (białkom fimbrialnym wiążącym do osłonki nabytej). To stadium **odwracalnej adhezji** (faza 1 tworzenia biofilmu — patrz Q29). *Krzywa Stephana* ( A) — pH a czas. *Mineralizacja* ( C) — kamień. *Pioneer/successor* ( D) — kolonizacja, nie adhezja per se.
+
+---
+
+## mju-zal-013
+
+Białko bogate w prolinę bierze udział w:
+
+- [✓] **A.** formowaniu się płytki nazębnej
+- [ ] **B.** przekształcaniu się sacharozy w lewan
+- [ ] **C.** zależnym od nośnika transporcie cukrów przez błonę cytoplazmatyczną
+- [ ] **D.** eliminacji bakterii w mechanizmie odporności wrodzonej gospodarza
+- [ ] **E.** żadnym z wyżej wymienionych procesów
+
+**Poprawna odpowiedź:** A — formowaniu się płytki nazębnej
+
+**Wyjaśnienie:**
+
+**Białka bogate w prolinę (PRP, *proline-rich proteins*)** to **główny składnik osłonki nabytej** — pokrywają hydroksyapatyt w ciągu sekund po oczyszczeniu zęba. Stanowią platformę receptorową dla bakterii pionierskich (zwłaszcza *Actinomyces*, *S. gordonii*), pośrednicząc w **adhezji odwracalnej**. *Lewan* ( B) powstaje pod wpływem fruktozylotransferazy (FTF) *S. salivarius*/*S. mutans* — to enzym bakteryjny, nie PRP. *Transport cukrów* ( C) — PEP-PTS, system fosfotransferazowy bakterii. *Odporność wrodzona* ( D) — lizozym, defensyny, laktoferryna, histatyny — nie PRP. Klucz: PRP = składnik *osłonki nabytej* = pierwszy krok formowania płytki.
+
+---
+
+## mju-zal-014
+
+Wśród bakterii tworzących płytkę nazębną na powierzchniach stycznych zębów dominują:
+
+- [ ] **A.** Fusobacterium spp.
+- [ ] **B.** Streptococcus mutans
+- [ ] **C.** Neisseria spp.
+- [✓] **D.** Actinomyces spp.
+- [ ] **E.** Lactobacillus spp.
+
+**Poprawna odpowiedź:** D — Actinomyces spp.
+
+**Wyjaśnienie:**
+
+**Powierzchnie styczne (aproksymalne)** to nisze *trudno dostępne dla śliny i mechanicznego oczyszczania* — sprzyjają **bakteriom beztlenowym/mikroaerofilnym, nitkowatym**. Dominują tu ***Actinomyces*** (A. naeslundii, A. israelii) — Gram-dodatnie, beztlenowe pałeczki nitkowate, doskonale przylegające do osłonki nabytej dzięki fimbriom typu 1 i 2. *S. mutans* ( B) — preferuje zagłębienia i bruzdy powierzchni żującej (kariogenne nisze). *Neisseria* ( C) — powierzchnie tlenowe (język, dziąsło, powierzchnie żujące). *Fusobacterium* ( A) i *Lactobacillus* ( E) — obecne, ale nie dominują.
+
+---
+
+## mju-zal-015
+
+Spośród bakterii izolowanych z protez ruchomych, największy odsetek stanowią:
+
+- [ ] **A.** pałeczki Gram-dodatnie
+- [ ] **B.** pałeczki Gram-ujemne
+- [ ] **C.** drożdżaki
+- [✓] **D.** paciorkowce
+- [ ] **E.** gronkowce
+
+**Poprawna odpowiedź:** D — paciorkowce
+
+**Wyjaśnienie:**
+
+Powierzchnia akrylowa protezy stanowi *nową niszę* zasiedlaną głównie przez **paciorkowce** (do 60-70% izolatów bakteryjnych) — szczególnie *S. oralis*, *S. mitis*, *S. sanguinis*, *S. salivarius*, ale też *S. mutans*. Akryl mikroporowaty zatrzymuje płytkę, a paciorkowce — jako pionierzy — pierwsze adsorbują się na osłonce nabytej tworzącej się na akrylu. *Drożdżaki* (C, głównie *Candida albicans*) są obecne i klinicznie ważne (kandydoza protetyczna), ale wśród **bakterii** to paciorkowce dominują. *Gronkowce* (E) — mniej liczne, ważne w stomatitis protezowej z infekcją wtórną.
+
+---
+
+## mju-zal-016
+
+Porównując skład śliny w stanie spoczynkowym i stanie pobudzonym:
+
+- [ ] **A.** ślina w stanie spoczynkowym zawiera więcej białka, lizozymu, sodu i mniej węglanów
+- [ ] **B.** ślina w stanie spoczynkowym zawiera więcej białka, lizozymu oraz mniej sodu i węglanów
+- [ ] **C.** ślina w stanie pobudzonym zawiera więcej białka, lizozymu, sodu i węglanów
+- [ ] **D.** ślina w stanie pobudzonym zawiera więcej sodu i węglanów oraz mniej białka i lizozymu
+- [✓] **E.** ślina w stanie pobudzonym zawiera więcej sodu, węglanów i białka oraz mniej lizozymu
+
+**Poprawna odpowiedź:** E — ślina w stanie pobudzonym zawiera więcej sodu, węglanów i białka oraz mniej lizozymu
+
+**Wyjaśnienie:**
+
+**Ślina pobudzona** (bodziec smakowy/żucie) = napływ ze **ślinianek przyusznych** (surowicze, *parotis*) → *więcej elektrolitów, białka, niższy lizozym*. **Ślina spoczynkowa** = wkład **podżuchwowych + podjęzykowych** (mieszane/śluzowe) + małych ślinianek → wyższe **lizozymu** (z małych ślinianek śluzowych). Konkretne zmiany przy pobudzeniu: ↑ **Na+**, ↑ **HCO3-** (główny bufor — chroni przed kwasami próchnicotwórczymi!), ↑ **białko** (więcej amylazy z przyusznicy), ↓ **lizozym**. Pobudzenie ślinianek pH śliny rośnie z ~6,5 (spoczynek) do ~7,5-8,0 (pobudzenie) właśnie dzięki HCO3-. To dlaczego *guma do żucia* działa antypróchnicowo: pobudza wydzielanie buforów.
+
+---
+
+## mju-zal-017
+
+Bakterie izolowane ze wszystkich siedlisk jamy ustnej, wykazujące zdolności sacharolityczne, zazwyczaj rozkładające węglowodany i dobrze rosnące w warunkach tlenowych należą do rodzaju:
+
+- [ ] **A.** Veillonella
+- [✓] **B.** Neisseria
+- [ ] **C.** Simonsiella
+- [ ] **D.** Bacteroides
+- [ ] **E.** Eikenella
+
+**Poprawna odpowiedź:** B — Neisseria
+
+**Wyjaśnienie:**
+
+**Neisseria** (Gram-ujemne, *tlenowe* dwoinki) to praktycznie jedyne **tlenowe sacharolityczne ziarniaki** w mikrobiocie jamy ustnej (*N. subflava*, *N. sicca*, *N. mucosa*). Rozkładają glukozę, maltozę, sacharozę z produkcją kwasu — stąd „sacharolityczne". Izolowane praktycznie wszędzie (ślina, język, płytka, dziąsło). *Veillonella* ( A) — *beztlenowa*, niesacharolityczna (rozkłada kwas mlekowy, nie cukry — patrz Q19). *Bacteroides* ( D) i *Eikenella* ( E) — *beztlenowe*. *Simonsiella* ( C) — komensal, ale niezwykle rzadko izolowana, niegłówny składnik mikrobioty.
+
+---
+
+## mju-zal-018
+
+Zielonożółty pigment wytwarzają bakterie należące do gatunku:
+
+- [ ] **A.** Neisseria sicca
+- [ ] **B.** Neisseria mucosa
+- [✓] **C.** Neisseria subflava
+- [ ] **D.** Neisseria cinerea
+- [ ] **E.** Neisseria animalis
+
+**Poprawna odpowiedź:** C — Neisseria subflava
+
+**Wyjaśnienie:**
+
+**Mnemotechnika z nazwy:** ***subflava*** = łac. „pod-żółta" = bladożółty/zielonożółty pigment kolonii. To podstawowa cecha różnicująca w obrębie *Neisseria* jamy ustnej. *N. cinerea* ( D) — łac. *cinis* = popiół → kolonie **szare/popielate**. *N. sicca* ( A) — *siccus* = suchy → **suche, pomarszczone** kolonie, bez pigmentu. *N. mucosa* ( B) — **śluzowate** kolonie. *N. animalis* ( E) — rzadko izolowana ze zwierząt. Każda nazwa łacińska kryje cechę fenotypową — kluczowa zasada nazewnictwa systematycznego.
+
+---
+
+## mju-zal-019
+
+Zdolność metabolizowania kwasu mlekowego wykazują bakterie z rodzaju:
+
+- [ ] **A.** Neisseria
+- [✓] **B.** Veillonella
+- [ ] **C.** Eikenella
+- [ ] **D.** Lactobacillus
+- [ ] **E.** Stomatococcus
+
+**Poprawna odpowiedź:** B — Veillonella
+
+**Wyjaśnienie:**
+
+***Veillonella*** to **„uliczny śmieciarz"** jamy ustnej — Gram-ujemne, beztlenowe ziarniaki, które **nie fermentują cukrów**, za to **konsumują kwas mlekowy** (produkowany przez *S. mutans* i *Lactobacillus*) i przekształcają go w słabsze kwasy (octowy, propionowy) + CO2. **Funkcja anty-kariogenne** w pewnym sensie — usuwa najsilniejszy kwas atakujący szkliwo. *Lactobacillus* ( D) — **produkuje** kwas mlekowy (homofermentacja), a nie metabolizuje go. *Neisseria* ( A) — sacharolityczna, produkuje kwasy z cukrów. Pułapka skojarzeniowa: nazwa „lacto" w *Lactobacillus* nie oznacza „metabolizuje mleczan" tylko „produkuje".
+
+---
+
+## mju-zal-020
+
+Gram-ujemne ziarenkowce izolowane z większości powierzchni jamy ustnej, występujące w największych ilościach w płytce nazębnej, to bakterie z rodzaju:
+
+- [ ] **A.** Neisseria
+- [✓] **B.** Veillonella
+- [ ] **C.** Streptococcus
+- [ ] **D.** Staphylococcus
+- [ ] **E.** Enterococcus
+
+**Poprawna odpowiedź:** B — Veillonella
+
+**Wyjaśnienie:**
+
+Dwie kategorie Gram-ujemnych ziarniaków oralnych: ***Neisseria*** (tlenowe) i ***Veillonella*** (beztlenowe). W **dojrzałej płytce nazębnej** (środowisko niskotlenowe, zwłaszcza warstwy głębsze) dominuje *Veillonella* — wykorzystuje kwas mlekowy produkowany przez sąsiednie paciorkowce (kooperacja metaboliczna *„food chain"*). *Neisseria* ( A) preferuje powierzchnie eksponowane na tlen (powierzchnia śluzówki, śliny). *Streptococcus*, *Staphylococcus*, *Enterococcus* (C, D, E) — wszystkie **Gram-dodatnie** → niezgodne z treścią pytania.
+
+---
+
+## mju-zal-021
+
+Do najczęściej występujących chorób przyzębia zalicza się:
+
+- [ ] **A.** ostre wrzodziejące zapalenie dziąseł
+- [✓] **B.** przewlekłe zapalenie przyzębia związane z płytką nazębną
+- [ ] **C.** ciążowe zapalenie dziąseł
+- [ ] **D.** młodzieńcze zapalenie przyzębia
+- [ ] **E.** wirusowe zapalenie przyzębia
+
+**Poprawna odpowiedź:** B — przewlekłe zapalenie przyzębia związane z płytką nazębną
+
+**Wyjaśnienie:**
+
+**Przewlekłe zapalenie przyzębia związane z płytką** (klasyfikacja 1999: *chronic periodontitis*, klasyfikacja 2018: *periodontitis* stadium I-IV) to **najczęstsza** choroba przyzębia u dorosłych — szacowana globalna częstość **30-50%** populacji po 35 r.ż., z czego ciężkie postacie ok. 10%. Etiologia: dysbioza biofilmu poddziąsłowego (czerwony kompleks: *P. gingivalis*, *T. forsythia*, *T. denticola*). *NUG* ( A) — rzadkie, związane ze stresem, paleniem, immunosupresją. *Ciążowe* ( C) — okresowe, dotyczy 30-75% ciężarnych, ale jest podtypem zapalenia dziąseł, nie przyzębia. *Młodzieńcze* (D, dawne LJP/agresywne) — rzadkie. *Wirusowe* ( E) — niemal nieistniejące w praktyce.
+
+---
+
+## mju-zal-022
+
+Zwiększone wydzielanie estradiolu i progesteronu w ciąży wiąże się z udziałem w płytce nazębnej gatunku:
+
+- [ ] **A.** Staphylococcus aureus
+- [ ] **B.** Streptococcus salivarius
+- [ ] **C.** Candida albicans
+- [✓] **D.** Prevotella intermedia
+- [ ] **E.** Actinomyces israelii
+
+**Poprawna odpowiedź:** D — Prevotella intermedia
+
+**Wyjaśnienie:**
+
+***Prevotella intermedia*** ma unikalną cechę: **wykorzystuje progesteron i estradiol jako *„zamiennik" witaminy K***  (menadionu) w swoim metabolizmie. W ciąży (zwłaszcza II/III trymestr) wzrost hormonów płciowych → wybuchowy wzrost *P. intermedia* w biofilmie poddziąsłowym → **ciążowe zapalenie dziąseł** (gingivitis gravidarum) i charakterystyczne **epulis ciążowe** (nadziąślak). Mechanizm odwracalny — po porodzie populacja *P. intermedia* spada. Pozostałe gatunki (A-C, E) nie wykazują takiej zależności hormonalnej.
+
+Klinicznie: krwawienie z dziąseł u ciężarnej + płytka = klasyk *P. intermedia*.
+
+---
+
+## mju-zal-023
+
+Bakterie kieszonki dziąsłowej metabolizują:
+
+- [ ] **A.** cukry i prowadzą do zmniejszenia pH do wartości 5,5-6,9
+- [ ] **B.** białka i prowadzą do zmniejszenia pH do wartości 5,5-6,9
+- [ ] **C.** cukry i prowadzą do zwiększenia pH do wartości 7,4-7,8
+- [✓] **D.** białka i prowadzą do zwiększenia pH do wartości 7,4-7,8
+- [ ] **E.** białka, co nie wpływa istotnie na wartość pH
+
+**Poprawna odpowiedź:** D — białka i prowadzą do zwiększenia pH do wartości 7,4-7,8
+
+**Wyjaśnienie:**
+
+**Kieszonka dziąsłowa** = środowisko **proteolityczne**, *odwrotne* do naddziąsłowej płytki. Bakterie kieszonki (*P. gingivalis*, *T. forsythia*, *Treponema*, *Prevotella*) **nie fermentują cukrów** — zamiast tego rozkładają **białka** (głównie kolagen tkanek przyzębia i białka płynu dziąsłowego) → produkty alkaliczne: **amoniak, aminy, siarczki** (H2S, metanetiol) → wzrost pH do **7,4-7,8**. Dlatego *P. gingivalis* preferuje pH alkaliczne — odwrotnie niż *S. mutans*, który lubi pH 4,5-5,5. Stąd dwa „światy" w jamie ustnej: naddziąsłowo *kwas* (próchnica), poddziąsłowo *zasada* (periodontoza). Halitoza poddziąsłowa = siarczki lotne (VSC).
+
+---
+
+## mju-zal-024
+
+U 56-letniego policjanta stwierdzono zapalenie dziąseł z towarzyszącymi nasilonymi dolegliwościami bólowymi, a także obecnością szarej pseudobłony, której odsłonięcie powodowało broczenie krwią. Badanie mikrobiologiczne materiału pobranego z owrzodzeń wykazało obecność krętków Treponema spp. Najbardziej prawdopodobnym rozpoznaniem jest:
+
+- [ ] **A.** grzybicze zapalenie jamy ustnej
+- [✓] **B.** ostre wrzodziejące zapalenie dziąseł
+- [ ] **C.** ostre paciorkowcowe zapalenie dziąseł
+- [ ] **D.** gwałtownie postępujące zapalenie przyzębia
+- [ ] **E.** ostre opryszczkowe zapalenie dziąseł
+
+**Poprawna odpowiedź:** B — ostre wrzodziejące zapalenie dziąseł
+
+**Wyjaśnienie:**
+
+Klasyczna triada **NUG** (*Necrotizing Ulcerative Gingivitis*, dawniej *choroba Vincenta / angina Plauta-Vincenta*): **( 1) ból**, **( 2) krwawienie** przy dotyku, **( 3) szara pseudobłona** (martwica brodawek międzyzębowych — *„krater"* brodawek). Etiologia: **fuzobakteria** (*Fusobacterium nucleatum*) **+ krętki** (*Treponema vincentii*, *T. denticola*) — *„spirochete-fusobacterium complex"*. Czynniki sprzyjające: **stres, palenie, immunosupresja, niedożywienie** — pasuje do 56-letniego policjanta (przewlekły stres). Leczenie: usunięcie nekrotycznych tkanek + **metronidazol** (działa na beztlenowce). *Kandydoza* ( A) — białe naloty, nie szare. *Opryszczka* ( E) — pęcherzyki, dzieci/młodzi dorośli, gorączka.
+
+---
+
+## mju-zal-025
+
+Możliwym czynnikiem etiologicznym zapalenia przyzębia u dzieci jest/są:
+
+- [ ] **A.** Eikenella corrodens
+- [ ] **B.** Prevotella intermedia
+- [ ] **C.** Aggregatibacter actinomycetemcomitans
+- [ ] **D.** Capnocytophaga spp.
+- [✓] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+Klasyczna „**piątka HACEK-like**" periodontopatogenów wieku rozwojowego (dawne *„LJP — Localized Juvenile Periodontitis"*, obecnie *agresywne zapalenie przyzębia stadium III-IV grade C*): ***Aggregatibacter actinomycetemcomitans*** ( C) — kluczowy patogen, produkuje **leukotoksynę** specyficznie niszczącą neutrofile; ***Eikenella corrodens*** ( A) — *„korodująca"* kolonie z dołkami w agarze; ***Capnocytophaga*** ( D) — wymagająca CO2, wytwarza enzymy proteolityczne uszkadzające tkanki; ***Prevotella intermedia*** (B). U dzieci szybka destrukcja kości, szczególnie wokół pierwszych zębów stałych (siekacze, pierwsze trzonowce). Wszystkie 4 = etiologia → **E**.
+
+---
+
+## mju-zal-026
+
+Z wymienionych drobnoustrojów mikrobioty jamy ustnej wybierz bakterie wzrastające w warunkach beztlenowych:
+a) Neisseria subflava
+b) Neisseria sicca
+c) Veillonella parvula
+d) Veillonella atypica
+e) Candida glabrata.
+
+Prawidłowe zestawienie drobnoustrojów to:
+
+- [ ] **A.** a, b
+- [ ] **B.** b, c
+- [✓] **C.** c, d
+- [ ] **D.** d, e
+- [ ] **E.** a, b, d
+
+**Poprawna odpowiedź:** C — c, d
+
+**Wyjaśnienie:**
+
+**Veillonella** to **bezwzględne beztlenowce** (*obligate anaerobes*) — *V. parvula* ( c) i *V. atypica* ( d) — Gram-ujemne ziarniaki kolonizujące głębsze warstwy płytki, metabolizujące kwas mlekowy. *Neisseria subflava* ( a) i *N. sicca* ( b) — **tlenowe** Gram-ujemne ziarniaki (odwrotny biegun tlenowy do *Veillonella*). *Candida glabrata* ( e) — drożdżak, **fakultatywny tlenowiec** (preferuje tlen, ale toleruje warunki beztlenowe). Klucz mnemoniczny: **Neisseria = O2, Veillonella = anaerob** — para antagonistyczna często testowana razem.
+
+---
+
+## mju-zal-027
+
+Katalazododatni, Gram-dodatni ziarniak izolowany prawie wyłącznie z języka to:
+
+- [✓] **A.** Rothia mucilaginosa (Stomatococcus mucilaginosus)
+- [ ] **B.** Eikenella corrodens
+- [ ] **C.** Aggregatibacter actinomycetemcomitans
+- [ ] **D.** Streptococcus vestibularis
+- [ ] **E.** Enterococcus faecalis
+
+**Poprawna odpowiedź:** A — Rothia mucilaginosa (Stomatococcus mucilaginosus)
+
+**Wyjaśnienie:**
+
+**Rothia mucilaginosa** (dawniej *Stomatococcus mucilaginosus*) ma trzy cechy diagnostyczne: **( 1) Gram-dodatni ziarniak**, **( 2) katalaza-dodatni** (odróżnia od paciorkowców — *Streptococcus* są katalaza-ujemne!), **( 3) preferuje powierzchnię języka** — *„the tongue coccus"*. Produkuje śluz (stąd *mucilaginosus*) — kolonie kleiste. *S. vestibularis* ( D) — Gram(+), ziarniak, ale **katalaza-ujemny** (jak każdy *Streptococcus*) — to klucz różnicowy w pytaniu! *Eikenella* ( B) i *Aggregatibacter* ( C) — Gram-ujemne **pałeczki**. *Enterococcus* ( E) — głównie jelito, nie język. Klinicznie: rzadki patogen, ale opisany w endocarditis u pacjentów po zabiegach stomatologicznych.
+
+---
+
+## mju-zal-028
+
+Jest to podostra, niekiedy przewlekła infekcja bakteryjna wywoływana przez bakterie beztlenowe. Zakażenie przenosi się na zdrowe tkanki poprzez ciągłość, wywołując proces zapalny z powstawaniem licznych ropni i przetok, z których wydzielane są żółte ziarnistości — ze względu na kolor nazywane są „siarkowymi". Najczęściej choroba dotyka okolicy szyjno-twarzowej, piersiowej i brzusznej. Wskaż prawidłową odpowiedź zawierającą nazwę choroby oraz czynnik etiologiczny:
+
+- [ ] **A.** ziarnica — Actinomyces naeslundii
+- [ ] **B.** promienica — Actinomyces odontolyticus
+- [ ] **C.** różyca — Actinomyces gerencseriae
+- [ ] **D.** płonica — Actinomyces israelii
+- [✓] **E.** żadna odpowiedź nie jest prawidłowa
+
+**Poprawna odpowiedź:** E — żadna odpowiedź nie jest prawidłowa
+
+**Wyjaśnienie:**
+
+Opis pasuje do **promienicy** (*actinomycosis*) — *„siarkowe ziarna"* (sulfur granules), przetoki, postać szyjno-twarzowa to klasyka. Klasyczny czynnik etiologiczny: ***Actinomyces israelii*** (Gram(+), beztlenowy, nitkowaty). Jednak żadna opcja nie łączy poprawnie **nazwy choroby + patogenu**: opcja D ma poprawny patogen ale *płonica* to choroba paciorkowcowa (*scarlatina* — *S. pyogenes*); opcja B ma poprawną nazwę choroby ale *A. odontolyticus* to gatunek próchnicowy, nie promienicowy. *Ziarnica* ( A) — choroba Hodgkina (limfom). *Różyca* ( C) — *Erysipelothrix rhusiopathiae*. Pułapka „dystraktora w parach" — wszystko brzmi mikrobiologicznie, ale tylko **E** jest prawdziwie poprawna.
+
+---
+
+## mju-zal-029
+
+Przemieszczanie się komórek w kierunku zasiedlanej powierzchni regulują oddziaływania fizyczne związane z działaniem sił hydrodynamicznych, grawitacyjnych, aerodynamicznych (ruchy Browna) oraz sił van der Waalsa. Względnie szerokie spektrum ich działania pozwala na zbliżanie się komórki do powierzchni. Powyższy opis dotyczy fazy tworzenia się biofilmu określanej jako:
+
+- [✓] **A.** adhezja odwracalna
+- [ ] **B.** adhezja nieodwracalna
+- [ ] **C.** tworzenie mikrokolonii
+- [ ] **D.** dojrzewanie biofilmu
+- [ ] **E.** dyspersja i migracja komórek z biofilmu
+
+**Poprawna odpowiedź:** A — adhezja odwracalna
+
+**Wyjaśnienie:**
+
+**Pięć faz tworzenia biofilmu:** ** 1) Adhezja odwracalna** — siły fizyczne (van der Waalsa, hydrodynamiczne, grawitacja, ruchy Browna) zbliżają komórkę do powierzchni; bakteria *może jeszcze odpłynąć*. ** 2) Adhezja nieodwracalna** — *adhezyny* (lektyny, fimbrie) wiążą się specyficznie z receptorami osłonki nabytej; bakteria *„zakotwicza się"*. ** 3) Mikrokolonie** — proliferacja, początek matrycy. ** 4) Dojrzewanie** — produkcja EPS, struktura 3D z kanałami wodnymi, *quorum sensing*. ** 5) Dyspersja** — komórki opuszczają biofilm by kolonizować nowe miejsca. Opisane w pytaniu siły *fizyczne, niespecyficzne, krótkiego zasięgu* = **faza 1**. To także zakres działania teorii DLVO (Q12).
+
+---
+
+## mju-zal-030
+
+Wskaż twierdzenie nieprawdziwe dotyczące zjawiska „quorum sensing”:
+
+- [ ] **A.** zdolność bakterii do porozumiewania się oparta jest na wytwarzaniu sygnałów chemicznych zwanych autoinduktorami oraz obecności białek zdolnych do odbierania tych informacji
+- [ ] **B.** osiągnięcie kworum, a więc określonego stężenia autoinduktora jest sygnałem do uruchomienia i utrzymywania procesów istotnych dla populacji bakteryjnej
+- [ ] **C.** w odpowiedzi na sygnał chemiczny następuje indukcja ekspresji odpowiednich genów i powstaje efekt metaboliczny równocześnie we wszystkich komórkach danej populacji
+- [✓] **D.** aktywowane laktony homoseryny (AHL) to autoinduktory bakterii Gram-dodatnich, które w strukturze biofilmu swobodnie dyfundują z jednej komórki do drugiej
+- [ ] **E.** walka z drobnoustrojami występującymi w postaci biofilmu może być ułatwiona dzięki zaburzeniu ich wzajemnej komunikacji, wykorzystując zjawisko „quorum quenching”
+
+**Poprawna odpowiedź:** D — aktywowane laktony homoseryny (AHL) to autoinduktory bakterii Gram-dodatnich, które w strukturze biofilmu swobodnie dyfundują z jednej komórki do drugiej
+
+**Wyjaśnienie:**
+
+**Krytyczna pomyłka w D:** **AHL (acyl-homoseryny laktony)** to autoinduktory **bakterii Gram-UJEMNYCH** (nie Gram-dodatnich!) — dyfundują przez błonę zewnętrzną. **Bakterie Gram-dodatnie** używają **oligopeptydów (AIP — autoinducer peptides)** — wymagają transporterów ABC, bo nie przechodzą przez błonę swobodnie. **AI-2 (furanozyl-borany)** to *„uniwersalny język”* — wspólny dla obu Gram. Pozostałe stwierdzenia (A, B, C, E) opisują QS poprawnie: chemiczne sygnały + receptory (A), próg kworum (B), synchroniczna indukcja genów (C), *quorum quenching* jako strategia anty-biofilmowa (E — m.in. AiiA-laktonazy hydrolizujące AHL).
+
+---
+
+## mju-zal-031
+
+Z wymienionych drobnoustrojów mikrobioty jamy ustnej wybierz bakterie posiadające zdolność rozkładu węglowodanów:
+a) Neisseria subflava
+b) Neisseria mucosa
+c) Neisseria sicca
+d) Veillonella parvula
+e) Veillonella dispar
+f) Veillonella atypica.
+
+Prawidłowe zestawienie drobnoustrojów to:
+
+- [✓] **A.** a, b, c
+- [ ] **B.** b, c, d
+- [ ] **C.** c, d, e
+- [ ] **D.** d, e, f
+- [ ] **E.** a, b, c, f
+
+**Poprawna odpowiedź:** A — a, b, c
+
+**Wyjaśnienie:**
+
+**Sacharolityczne** = potrafią rozkładać cukry. ***Neisseria*** (a, b, c) — wszystkie gatunki oralne (*N. subflava*, *N. mucosa*, *N. sicca*) **fermentują cukry** z produkcją kwasów (test biochemiczny różnicujący gatunki: *N. sicca* — glukoza/maltoza/sacharoza/fruktoza dodatnie; *N. mucosa* — wszystkie + redukcja azotanów). ***Veillonella*** (d, e, f) — **bezwzględnie niesacharolityczne**; metabolizm oparty na **kwasie mlekowym** (Q19), bez fermentacji cukrów. To kluczowa różnica metaboliczna: *Neisseria* żyje z cukrów, *Veillonella* z kwasów. Klucz: dwa rodzaje Gram(-) ziarniaków, ale przeciwstawne metabolicznie.
+
+---
+
+## mju-zal-032
+
+Który z wymienionych paciorkowców nie należy do grupy Streptococcus mutans?
+
+- [ ] **A.** Streptococcus mutans
+- [ ] **B.** Streptococcus sobrinus
+- [✓] **C.** Streptococcus sanguinis
+- [ ] **D.** Streptococcus cricetus
+- [ ] **E.** Streptococcus rattus
+
+**Poprawna odpowiedź:** C — Streptococcus sanguinis
+
+**Wyjaśnienie:**
+
+**Grupa *Streptococcus mutans*** (*mutans streptococci*, MS) obejmuje **7 gatunków** kariogennych: *S. mutans*, *S. sobrinus*, *S. cricetus*, *S. rattus*, *S. ferus*, *S. macacae*, *S. downei*. Wszystkie są **silnie kwasolubne i kwasotwórcze**, produkują glukozylotransferazy (GTF), wiążą się z osłonką nabytą przez antygen I/II. ***S. sanguinis*** (C) należy do **grupy *mitis*** (paciorkowce zieleniące, *„viridans"*) — to **pionier płytki nazębnej** (early colonizer), **chroni** przed kolonizacją *S. mutans* na zdrowym szkliwie (kompetycja niszowa). Klinicznie też ważny w **infekcyjnym zapaleniu wsierdzia** (po zabiegach stomatologicznych). Pułapka: nazwa zaczyna się tak samo, ale grupa zupełnie inna.
+
+---
+
+## mju-zal-033
+
+Która z wymienionych cząsteczek nie jest charakterystyczna dla Streptococcus mutans?
+
+- [ ] **A.** kwas lipotejchojowy
+- [ ] **B.** antygen I/II
+- [ ] **C.** antygen B
+- [ ] **D.** antygen P1
+- [✓] **E.** lipopolisacharyd
+
+**Poprawna odpowiedź:** E — lipopolisacharyd
+
+**Wyjaśnienie:**
+
+***S. mutans*** to bakteria **Gram-dodatnia** → ma grubą warstwę **peptydoglikanu** + **kwasy tejchojowe i lipotejchojowe (LTA)** ( A) zakotwiczone w błonie. **LPS (lipopolisacharyd)** ( E) to składnik **błony zewnętrznej bakterii Gram-UJEMNYCH** (np. *P. gingivalis*, *Neisseria*, *Veillonella*) — *S. mutans* nie ma błony zewnętrznej, więc **fizycznie nie może mieć LPS**. *Antygen I/II* (B, znany też jako *PAc*, *P1* (D), *SpaP*) — adhezyna paciorkowcowa wiążąca się z PRP osłonki nabytej; różne nazwy w literaturze (synonimy!). *Antygen B* ( C) — polisacharydowy antygen serotypowy. Klucz: Gram(+) ≠ LPS.
+
+---
+
+## mju-zal-034
+
+Grupa tych bakterii izolowana jest prawie z każdej części jamy ustnej, choć najchętniej kolonizuje powierzchnię języka. Wytwarzają one zewnątrzkomórkowo polimer fruktozy (lewan), co powoduje ich wzrost w postaci charakterystycznie wielkich, śluzowatych kolonii podczas hodowli na agarze zawierającym sacharozę. Opis dotyczy:
+
+- [ ] **A.** Streptococcus mutans
+- [✓] **B.** Streptococcus salivarius
+- [ ] **C.** Streptococcus mitis
+- [ ] **D.** Streptococcus pneumoniae
+- [ ] **E.** Streptococcus vestibularis
+
+**Poprawna odpowiedź:** B — Streptococcus salivarius
+
+**Wyjaśnienie:**
+
+Dwie wskazówki diagnostyczne: **(1)** *„powierzchnia języka"* — typowa nisza ***S. salivarius*** (nazwa od *saliva* — ślina/język), **(2)** *„polimer fruktozy = lewan"* + *„wielkie śluzowate kolonie"* — to klasyczny opis ***S. salivarius*** na agarze MSA z sacharozą. Enzym: **fruktozylotransferaza (FTF)** rozszczepia sacharozę → glukoza (uwolniona) + fruktoza polimeryzowana do **lewanu** (matryca biofilmu). Pułapka: ***S. mutans*** (A) produkuje **glukany (mutany)**, nie lewan — *glukozylotransferaza (GTF)*, polimer glukozy. Klucz: GTF vs FTF, glukany vs lewan, S. mutans vs S. salivarius — para często testowana razem.
+
+---
+
+## mju-zal-035
+
+Przyporządkuj paciorkowce do odpowiedniej grupy wg Lancefield:
+I) Streptococcus anginosus
+II) Streptococcus pyogenes
+III) Streptococcus pneumoniae
+IV) Streptococcus mitis.
+
+Grupy:
+a) grupa A
+b) grupa G
+c) grupa O
+d) niesklasyfikowany.
+
+Prawidłowe zestawienie to:
+
+- [ ] **A.** I-a, II-b, III-c, IV-d
+- [ ] **B.** I-d, II-a, III-c, IV-b
+- [ ] **C.** I-c, II-a, III-d, IV-b
+- [ ] **D.** I-b, II-c, III-d, IV-a
+- [✓] **E.** I-b, II-a, III-d, IV-c
+
+**Poprawna odpowiedź:** E — I-b, II-a, III-d, IV-c
+
+**Wyjaśnienie:**
+
+**Mapowanie:** **I-b** *S. anginosus* (grupa *„anginosus"*, dawniej *milleri*) — antygeny grupy **A, C, F, G** mogą się pojawiać; tu przypisana **G**. **II-a** *S. pyogenes* — **grupa A** (klasyk! GAS — *group A streptococcus*, β-hemoliza, angina, szkarlatyna). **III-d** *S. pneumoneae* — **niesklasyfikowany** w systemie Lancefield (nie posiada antygenów wielocukrowych grupowych w typowym rozumieniu; klasyfikowany w serotypach polisacharydu otoczkowego, których jest >90). **IV-c** *S. mitis* — paciorkowiec zieleniący, w źródle przypisany do *„grupy O"* — co jest **klasyfikacją niestandardową** (S. mitis typowo zaliczany do *viridans group* bez antygenu Lancefield). To dziwoląg źródłowy — flaguję dla walidatora. Klucz dydaktyczny: zapamiętaj A=pyogenes, B=agalactiae, D=enterococci, viridans=brak grupy.
+
+---
+
+## mju-zal-036
+
+Do substancji zawartych w płynie dziąsłowym, sprzyjających namnażaniu się bakterii należy/należą:
+
+- [ ] **A.** hemoglobina
+- [ ] **B.** transferyna
+- [ ] **C.** alfa-2-globulina
+- [ ] **D.** haptoglobina
+- [✓] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+Wszystkie wymienione substancje to **źródła żelaza** (Fe) — kluczowego pierwiastka wzrostowego dla większości bakterii periodontopatogennych (zwłaszcza *P. gingivalis*, który produkuje **gingipainy** do uwalniania Fe z hemu). **Hemoglobina** ( A) — bezpośrednio z erytrocytów (krwawienia z kieszonki). **Transferyna** ( B) — transporter Fe w surowicy. **Haptoglobina** ( D) — wiąże uwolnioną Hb po hemolizie. **α2-globulina** ( C) — frakcja zawierająca m.in. ceruloplazminę, transportującą miedź i pośrednio wpływającą na metabolizm Fe. Płyn dziąsłowy (GCF) jest *eksudatem osocza* → zawiera te wszystkie białka. Stąd: krwawienie z dziąseł = bonanza Fe → wzrost biofilmu poddziąsłowego → więcej zapalenia → więcej krwawienia (*błędne koło periodontologiczne*).
+
+---
+
+## mju-zal-037
+
+Wybierz cechę charakteryzującą adenowirusy:
+
+- [ ] **A.** mają budowę helikalną
+- [✓] **B.** mają budowę ikosaedralną
+- [ ] **C.** są jednymi z większych wirusów o długości około 300 nm
+- [ ] **D.** zawierają w swoim składzie RNA i DNA
+- [ ] **E.** są otoczone otoczką
+
+**Poprawna odpowiedź:** B — mają budowę ikosaedralną
+
+**Wyjaśnienie:**
+
+**Adenowirusy** (*Adenoviridae*) — **bezotoczkowe wirusy dsDNA o symetrii *ikosaedralnej*** (B). Charakterystyczne **„fibry"** wystające z 12 wierzchołków kapsydu — odpowiedzialne za przyleganie do receptora CAR. *Helikalna* ( A) symetria dotyczy m.in. wirusów grypy, rabies, eboli — adenowirusy nie. Wielkość **70-90 nm** — *średnie* wirusy, nie 300 nm (C — to rozmiar wirusów ospy). *RNA+DNA* ( D) — żaden wirus nie ma jednocześnie obu kwasów nukleinowych; adenowirusy mają wyłącznie **dsDNA**. *Otoczka* ( E) — brak; właśnie *bezotoczkowość* sprawia, że są **oporne na środki dezynfekcyjne** (etanol, eter — działają tylko na otoczkę lipidową; adenowirusy wymagają wyższego poziomu dezynfekcji, jak HBV).
+
+---
+
+## mju-zal-038
+
+Pierwsza szczepionka opracowana przez Edwarda Jennera w 1796 roku, stosowana w profilaktyce ospy prawdziwej, zawierała:
+
+- [ ] **A.** inaktywowane wirusy ospy
+- [ ] **B.** aktywne wirusy ospy poddane procesowi suszenia
+- [ ] **C.** białka wirusa ospy
+- [✓] **D.** aktywne wirusy ospy atakujące krowy
+- [ ] **E.** inaktywowane wirusy ospy krowianki
+
+**Poprawna odpowiedź:** D — aktywne wirusy ospy atakujące krowy
+
+**Wyjaśnienie:**
+
+**Edward Jenner (1796)** — narodziny wakcynologii. Zaobserwował, że dojarki chorujące na **ospę krowią** (*cowpox*, łac. *variola vaccina*) są **odporne na ospę prawdziwą** (*smallpox*, *Variola major*). Pobrał materiał z krost na rękach dojarki Sarah Nelmes i wszczepił 8-letniemu Jamesowi Phippsowi → odporność krzyżowa, brak choroby po ekspozycji na *Variola*. Mechanizm: **wirus ospy krowiej (Vaccinia)** — *„aktywne wirusy ospy atakujące krowy"* — dzieli antygeny z wirusem ospy prawdziwej, ale jest łagodny dla człowieka. Etymologia: *„vaccinatio"* od *vaccina* = od krowy. *Inaktywowane wirusy ospy* (A) — szczepionka kompletnie inna, nieistniejąca w czasach Jennera. WHO ogłosiło eradykację ospy w 1980 — pierwsza i jedyna eradykowana choroba człowieka.
+
+---
+
+## mju-zal-039
+
+Szczepionka stosowana w profilaktyce i leczeniu osób po zakażeniu wirusami wścieklizny zawiera:
+
+- [ ] **A.** aktywne wirusy wścieklizny typu ulicznego
+- [ ] **B.** inaktywowane wirusy wścieklizny typu ulicznego
+- [ ] **C.** aktywne wirusy wścieklizny typu ustalonego
+- [✓] **D.** inaktywowane wirusy wścieklizny typu ustalonego
+- [ ] **E.** wirusy wścieklizny zdolne do wędrówki wśród nerwów
+
+**Poprawna odpowiedź:** D — inaktywowane wirusy wścieklizny typu ustalonego
+
+**Wyjaśnienie:**
+
+Dwa typy wirusa wścieklizny (lyssavirus): **( 1) *Typ uliczny (street virus)*** — dziki, krążący w naturze (lisy, nietoperze, psy); długi okres inkubacji, ekstremalnie patogenny, **nieużywany w szczepionkach**. **( 2) *Typ ustalony (fixed virus)*** — uzyskany przez wielokrotne pasaże na zwierzętach laboratoryjnych (oryginalnie Pasteur 1885 — pasaże w mózgach królików); skrócony okres inkubacji, zmniejszona wirulencja, **podstawa szczepionek**. Współczesne szczepionki to **inaktywowane** (β-propiolaktonem) wirusy typu ustalonego namnażane w hodowli komórek (HDCV, PCEC). Szczepienie poekspozycyjne (PEP) jest skuteczne *przed* dotarciem wirusa do CUN — kluczowe okno czasowe. *Aktywny typ ustalony* (C) — Pasteur używał, ale współczesność wymaga inaktywacji ze względów bezpieczeństwa.
+
+---
+
+## mju-zal-040
+
+Spośród wymienionych bakterii, w naddziąsłowej płytce nazębnej największy odsetkowy udział ma:
+
+- [ ] **A.** Actinomyces naeslundii
+- [ ] **B.** Capnocytophaga gingivalis
+- [ ] **C.** Streptococcus salivarius
+- [✓] **D.** Streptococcus oralis
+- [ ] **E.** Streptococcus mutans
+
+**Poprawna odpowiedź:** D — Streptococcus oralis
+
+**Wyjaśnienie:**
+
+**Naddziąsłowa płytka nazębna** = środowisko **tlenowe/mikroaerofilne**, dominują **paciorkowce grupy mitis** — *S. oralis*, *S. sanguinis*, *S. gordonii*, *S. mitis*. ***S. oralis*** stanowi jeden z największych odsetków (klasycznie ~20-30% biofilmu pionierskiego). To **pionier**, wiążący się przez antygen I/II do PRP osłonki nabytej. *S. mutans* ( E) — występuje, ale w **znacznie mniejszym odsetku** (~1-5% nawet w aktywnej próchnicy); jest *„podstępny ale nieliczny"*. *S. salivarius* ( C) — głównie **język**, nie płytka. *Actinomyces* ( A) — powierzchnie aproksymalne (Q14). *Capnocytophaga* ( B) — głównie poddziąsłowa.
+
+---
+
+## mju-zal-041
+
+Udział procentowy leukocytów płynu dziąsłowego przedstawia się następująco:
+
+- [✓] **A.** 95% to neutrofile, pozostałe 5% to limfocyty i monocyty
+- [ ] **B.** 95% to monocyty, pozostałe 5% to limfocyty i neutrofile
+- [ ] **C.** 50% to neutrofile, 45% monocyty i 5% to limfocyty
+- [ ] **D.** 60% neutrofile, 20% monocyty i 20% to limfocyty
+- [ ] **E.** 80% neutrofile, 19% monocyty, 1% to limfocyty
+
+**Poprawna odpowiedź:** A — 95% to neutrofile, pozostałe 5% to limfocyty i monocyty
+
+**Wyjaśnienie:**
+
+**Płyn dziąsłowy (GCF — *gingival crevicular fluid*)** zawiera **~95% neutrofili (PMN)**, pozostałe 5% to limfocyty i monocyty. To **pierwsza linia odpowiedzi komórkowej** w bruździe/kieszonce: neutrofile migrują z naczyń dziąsła przez nabłonek przyczepu (chemotaksja na IL-8, C5a, fMLP bakteryjne) i fagocytują bakterie biofilmu poddziąsłowego. W zapaleniu napływ PMN gwałtownie rośnie — *„barykada neutrofilowa"* chroniąca głębsze tkanki przyzębia. Defekty PMN (cyklowa neutropenia, zespół Chédiaka-Higashiego, defekty adhezji LAD) → ciężkie wczesne periodontozy. Pozostałe procentowe rozkłady (C, D, E) opisują *krew obwodową lub inne kompartymenty* — w GCF dominacja PMN jest ekstremalna.
+
+---
+
+## mju-zal-042
+
+Płyn dziąsłowy w porównaniu do śliny zawiera:
+
+- [ ] **A.** więcej jonów sodu, potasu i wapnia
+- [✓] **B.** więcej jonów sodu i wapnia, a mniej potasu
+- [ ] **C.** więcej jonów sodu, a mniej jonów wapnia i potasu
+- [ ] **D.** więcej jonów potasu i wapnia, a mniej sodu
+- [ ] **E.** więcej jonów potasu i sodu, a mniej wapnia
+
+**Poprawna odpowiedź:** B — więcej jonów sodu i wapnia, a mniej potasu
+
+**Wyjaśnienie:**
+
+**GCF to *eksudat osocza*** — skład bliższy surowicy niż ślinie. Stąd: **↑ Na+** (osocze ~140 mmol/l vs ślina ~5-30 mmol/l), **↑ Ca2+** (osocze ~2,2 mmol/l vs ślina ~1,2 mmol/l), **↓ K+** (osocze ~4 mmol/l vs ślina ~20-40 mmol/l). Ślina ma odwrócony stosunek Na/K — to efekt aktywnej **resorpcji Na+ i sekrecji K+** w przewodach ślinianek (hipoosmotyczność śliny względem osocza). Wapń w GCF — istotny dla **mineralizacji kamienia poddziąsłowego** (kamień nazębny w kieszonce powstaje z GCF, naddziąsłowy z śliny). Klucz: GCF = osocze-like → wysokie Na, niskie K.
+
+---
+
+## mju-zal-043
+
+Za wytwarzanie kwasu hipocyjanowego w obrębie jamy ustnej odpowiadają:
+
+- [ ] **A.** system lizozym-proteaza-anion
+- [✓] **B.** system sialoperoksydazy
+- [ ] **C.** komórki Langerhansa
+- [ ] **D.** limfocyty wewnątrzkomórkowe
+- [ ] **E.** makrofagi
+
+**Poprawna odpowiedź:** B — system sialoperoksydazy
+
+**Wyjaśnienie:**
+
+**System sialoperoksydazy** (laktoperoksydaza ślinowa, LPO) to **mikrobójczy mechanizm odporności wrodzonej śliny**. Mechanizm: LPO + **H2O2** (produkowany przez paciorkowce!) + **tiocyjanian (SCN-)** z osocza → **kwas hipocyjanowy (HOSCN)** lub **OSCN-**. HOSCN utleniają grupy -SH białek enzymatycznych bakterii (zwłaszcza glikoliza → blokada produkcji ATP) → zahamowanie wzrostu *S. mutans*, *S. sanguinis* i innych. Ciekawostka: **bakterie same dostarczają H2O2**, który ślinianki przekształcają w czynnik bakteriostatyczny — *„pułapka samobójcza"*. System komercyjnie wykorzystywany w pastach typu *Biotene*. Pozostałe systemy: lizozym (rozcina peptydoglikan), laktoferryna (sekwestracja Fe), defensyny, histatyny.
+
+---
+
+## mju-zal-044
+
+Dobierz właściwe podłoże dla poszczególnych drobnoustrojów:
+1) Löfflera
+2) Löwensteina-Jensena
+3) Chapmana
+4) Sabourauda
+5) Middlebrooka
+6) z tellurynem potasu
+7) SS
+8) tioglikolan sodowy.
+
+Prawidłowa odpowiedź to:
+
+- [ ] **A.** 1 - maczugowce, 2 - prątki, 3 - paciorkowce, 4 - beztlenowce, 6 - grzyby
+- [ ] **B.** 2 - prątki, 3 - gronkowce, 4 - beztlenowce, 5 - grzyby, 7 - pałeczki Salmonella
+- [ ] **C.** 2 - maczugowce, 3 - gronkowce, 4 - grzyby, 5 - prątki, 7 - pałeczki Salmonella
+- [✓] **D.** 3 - gronkowce, 4 - grzyby, 5 - prątki, 6 - maczugowce, 8 - beztlenowce
+- [ ] **E.** 3 - gronkowce, 4 - beztlenowce, 5 - grzyby, 6 - maczugowce, 7 - prątki
+
+**Poprawna odpowiedź:** D — 3 - gronkowce, 4 - grzyby, 5 - prątki, 6 - maczugowce, 8 - beztlenowce
+
+**Wyjaśnienie:**
+
+**Pełna mapa podłoży:** **Löffler** ( 1) → *maczugowce* (*Corynebacterium diphtheriae*) — surowicza pożywka. **Löwenstein-Jensen** ( 2) → *prątki* (*Mycobacterium tuberculosis*) — pożywka jajowa, klasyczna w mikobakteriologii. **Chapman** (3, agar manitolowo-solny) → *gronkowce* — wysokie NaCl (7,5%) selekcjonuje *Staphylococcus*; *S. aureus* fermentuje manitol (kolonie żółte). **Sabouraud** ( 4) → *grzyby* — niskie pH (5, 6) hamuje bakterie. **Middlebrook** ( 5) → *prątki* (alternatywa dla L-J, syntetyczna). **Telluryn potasu** ( 6) → *maczugowce* — redukcja telluru daje czarne kolonie *C. diphtheriae*. **SS** ( 7) → *Salmonella/Shigella*. **Tioglikolan sodowy** ( 8) → *beztlenowce* — usuwa tlen z medium. Odpowiedź D wybiera 5 pasujących par: gronkowce-Chapman, grzyby-Sabouraud, prątki-Middlebrook, maczugowce-telluryn, beztlenowce-tioglikolan.
+
+---
+
+## mju-zal-045
+
+Wybierz poprawną definicję opisującą próchnicę zębów:
+
+- [ ] **A.** próchnica zębów nie jest chorobą infekcyjną i powstaje na skutek odwapnienia zmineralizowanych tkanek zęba i rozpadu zawartych w nich substancji organicznych
+- [ ] **B.** próchnica zębów jest chorobą infekcyjną i powstaje na skutek odwapnienia tylko szkliwa i rozpadu zawartych w nim substancji organicznych
+- [ ] **C.** próchnica zębów jest chorobą infekcyjną i powstaje na skutek odwapnienia jedynie szkliwa i zębiny oraz rozpadu zawartych w nich substancji organicznych
+- [✓] **D.** próchnica zębów jest chorobą infekcyjną i powstaje na skutek odwapnienia zmineralizowanych tkanek zęba i rozpadu zawartych w nich substancji organicznych
+- [ ] **E.** próchnica zębów jest chorobą metaboliczną wynikającą z odwapnienia zmineralizowanych tkanek zęba pod wpływem kwasów pokarmowych spożywanych przez pacjenta
+
+**Poprawna odpowiedź:** D — próchnica zębów jest chorobą infekcyjną i powstaje na skutek odwapnienia zmineralizowanych tkanek zęba i rozpadu zawartych w nich substancji organicznych
+
+**Wyjaśnienie:**
+
+**Prawidłowa definicja (D)** zawiera trzy kluczowe elementy: **( 1) choroba infekcyjna** (etiologia bakteryjna — *S. mutans*, *Lactobacillus*); **( 2) odwapnienie *wszystkich* zmineralizowanych tkanek** (szkliwo, zębina, cement — nie tylko szkliwo); **( 3) rozpad substancji organicznych** (proteoliza po demineralizacji — głównie kolagen zębiny). Pozostałe są błędne przez **jeden niuans każde**: ( A) odrzuca infekcyjność (klasyczny błąd „próchnica = dieta tylko"); ( B) ogranicza do szkliwa; ( C) ogranicza do szkliwa+zębiny (pomija cement → ważne przy próchnicy korzenia, Q7); ( E) — *„metaboliczna, kwasy pokarmowe"* — częściowa prawda (kwasy odgrywają rolę), ale **nie z pokarmu** (te są neutralizowane szybko), tylko **z fermentacji bakteryjnej węglowodanów w biofilmie** → znów odrzuca infekcyjność. Klasyczna pułapka „częściowo prawdziwego dystraktora".
+
+---
+
+## mju-zal-046
+
+Która z wymienionych procedur cechuje się największą efektywnością wobec prionów?
+
+- [ ] **A.** sterylizacja przy użyciu promieniowania UV
+- [ ] **B.** sterylizacja przy użyciu promieniowania jonizującego
+- [✓] **C.** sterylizacja parą wodną w nadciśnieniu przez 60 minut w temperaturze 134°C, poprzedzona etapem alkalicznego mycia sprzętu
+- [ ] **D.** sterylizacja parą wodną w nadciśnieniu przez 15 minut w temperaturze 134°C, poprzedzona etapem alkalicznego mycia sprzętu
+- [ ] **E.** sterylizacja parą wodną w nadciśnieniu przez 60 minut w temperaturze 121°C, poprzedzona etapem mycia sprzętu przy użyciu kationowych środków powierzchniowo-czynnych
+
+**Poprawna odpowiedź:** C — sterylizacja parą wodną w nadciśnieniu przez 60 minut w temperaturze 134°C, poprzedzona etapem alkalicznego mycia sprzętu
+
+**Wyjaśnienie:**
+
+**Priony** (PrPSc — patologiczne formy białka PrP) to **najbardziej oporne czynniki zakaźne znane medycynie** — brak kwasu nukleinowego, struktura β-arkusza odporna na denaturację. Standard WHO/CDC dla prionów: **134°C × 60 min** (nie 15 min! — opcja D za krótka) + **alkaliczne mycie** (NaOH 1M lub podchloryn) **przed** autoklawowaniem (mycie kationowe E nie wystarcza — kationy mogą wręcz stabilizować PrPSc). *UV* ( A) — niewystarczające (priony nie mają DNA). *Promieniowanie jonizujące* ( B) — uszkadza kwasy nukleinowe, nie zmienia istotnie konformacji białka. *121°C × 60 min* ( E) — za niska T dla prionów. Klinicznie: instrumenty po neurochirurgii pacjentów z CJD często **utylizowane**, nie sterylizowane — koszt vs ryzyko.
+
+---
+
+## mju-zal-047
+
+Która z poniższych odpowiedzi przedstawia w prawidłowy sposób uszeregowanie grup drobnoustrojów wraz z ich wzrastającą opornością na działanie środków antyseptycznych?
+
+- [ ] **A.** wirusy bezosłonkowe, bakterie Gram-ujemne, bakterie Gram-dodatnie, grzyby, wirusy osłonkowe, spory bakteryjne, mykobakterie
+- [ ] **B.** wirusy bezosłonkowe, bakterie Gram-dodatnie, bakterie Gram-ujemne, mykobakterie, grzyby, wirusy osłonkowe, spory bakteryjne
+- [ ] **C.** wirusy osłonkowe, bakterie Gram-ujemne, grzyby, wirusy bezosłonkowe, bakterie Gram-dodatnie, spory bakteryjne, mykobakterie
+- [ ] **D.** wirusy osłonkowe, bakterie Gram-ujemne, bakterie Gram-dodatnie, grzyby, wirusy bezosłonkowe, spory bakteryjne, mykobakterie
+- [✓] **E.** wirusy osłonkowe, bakterie Gram-dodatnie, bakterie Gram-ujemne, grzyby, wirusy bezosłonkowe, mykobakterie, spory bakteryjne
+
+**Poprawna odpowiedź:** E — wirusy osłonkowe, bakterie Gram-dodatnie, bakterie Gram-ujemne, grzyby, wirusy bezosłonkowe, mykobakterie, spory bakteryjne
+
+**Wyjaśnienie:**
+
+**Klasyczne uszeregowanie Spauldinga (od najwrażliwszych do najoporniejszych):** ** 1) Wirusy osłonkowe** (HIV, HBV, HCV, grypa) — otoczka lipidowa rozpuszczalna alkoholem/eterem. ** 2) Bakterie Gram-dodatnie** — łatwo penetrowalne. ** 3) Bakterie Gram-ujemne** — błona zewnętrzna z LPS daje pewną oporność. ** 4) Grzyby** — chitynowa ściana. ** 5) Wirusy bezosłonkowe** (adeno, noro, polio, papilloma) — białkowy kapsyd oporny na lipidofilne środki. ** 6) Mykobakterie** — woskowata ściana z kwasami mikolowymi (lipofilna bariera). ** 7) Przetrwalniki bakteryjne** (*Bacillus*, *Clostridium*) — *najoporniejsze* z bakterii. Powyżej jeszcze priony i niektóre wirusy (norwalk). Klinicznie istotne: środek z deklarowaną aktywnością „tuberkulobójczy" działa też na większość grup poniżej (uniwersalny).
+
+---
+
+## mju-zal-048
+
+Młody mężczyzna zgłosił się do gabinetu stomatologicznego z powodu nasilonego obrzęku i zaczerwienienia dziąseł. Ponadto chory w wywiadzie podał, że od dnia poprzedzającego wystąpienie objawów pojawił się nasilony ból gardła i gorączka do 38,9°C. W badaniu fizykalnym stwierdzono lokalnie powiększone węzły chłonne, żywo zaczerwienioną śluzówkę gardła z obecnymi na migdałkach podniebiennych białymi nalotami. Jakie jest twoje postępowanie?
+
+- [ ] **A.** podejrzewasz infekcję o etiologii wirusowej — ostre opryszczkowe zapalenie gardła, podajesz lek przeciwwirusowy
+- [ ] **B.** podejrzewasz chorobę Vincenta, zalecasz metronidazol
+- [✓] **C.** podejrzewasz anginę, chorobę o etiologii bakteryjnej wywoływaną przez Streptococcus pyogenes, zalecasz adekwatną antybiotykoterapię
+- [ ] **D.** podejrzewasz zakażenie o etiologii grzybiczej, kandydozę rzekomobłoniastą, podajesz lek przeciwgrzybiczy
+- [ ] **E.** podejrzewasz zakażenie promieniowcem promienicy, zalecasz poszerzenie diagnostyki
+
+**Poprawna odpowiedź:** C — podejrzewasz anginę, chorobę o etiologii bakteryjnej wywoływaną przez Streptococcus pyogenes, zalecasz adekwatną antybiotykoterapię
+
+**Wyjaśnienie:**
+
+Klasyczna prezentacja **anginy paciorkowcowej (GAS pharyngitis)**: **( 1) ostry początek** (24-48h), **( 2) gorączka ≥38°C**, **( 3) wysięk/białe naloty na migdałkach**, **( 4) tkliwe przednie węzły szyjne**, **( 5) brak kaszlu** (kryteria Centora — 4/4 punktów → 50-60% prawdopodobieństwo). Patogen: ***Streptococcus pyogenes*** (grupa A wg Lancefield, β-hemolityczny). Leczenie: **penicylina V** 10 dni (lub amoksycylina; cefalosporyny I gen. przy alergii nieinaktywującej; makrolidy przy alergii na β-laktamy). Cel: zapobieganie **gorączce reumatycznej** i kłębuszkowemu zapaleniu nerek. *Opryszczka* ( A) — pęcherzyki + nadżerki, nie naloty; *NUG* ( B) — szare pseudobłony dziąseł, nie migdałków; *Kandydoza* ( D) — *miękkie* białe naloty zeskrobywalne, brak gorączki tak wysokiej; *Promienica* ( E) — przewlekła, przetoki, nie ostra angina.
+
+---
+
+## mju-zal-049
+
+Krętki pochodzące z jamy ustnej najlepiej jest wykrywać stosując:
+
+- [ ] **A.** barwienie metodą Neissera
+- [ ] **B.** hodowlę na podłożu Nelsona
+- [✓] **C.** mikroskopię fluorescencyjną
+- [ ] **D.** testy serologiczne
+- [ ] **E.** obserwację przeżyciową w mikroskopie optycznym
+
+**Poprawna odpowiedź:** C — mikroskopię fluorescencyjną
+
+**Wyjaśnienie:**
+
+Krętki oralne (*Treponema denticola*, *T. vincentii*, *T. socranskii*) są **trudne do hodowli** (rygorystyczne anaeroby, długi czas wzrostu) i **bardzo wąskie** (~0,2 µ m) — często niewidoczne w klasycznej mikroskopii świetlnej. **Mikroskopia fluorescencyjna** z przeciwciałami znakowanymi fluorochromem (immunofluorescencja, FISH) jest złotym standardem — łączy *czułość* z *swoistością gatunkową*. *Barwienie Neissera* ( A) — dla maczugowców (ziarna metachromatyczne), nie krętków. *Podłoże Nelsona* — używane historycznie dla *T. pallidum* (kiła), nie oralnych. *Serologia* ( D) — krętki oralne są częścią komensalnej mikrobioty, brak swoistych testów rutynowych. *Mikroskopia przyżyciowa w polu jasnym* ( E) — krętki są często niewidoczne; *ciemne pole* byłoby lepsze, ale fluorescencja przebija.
+
+---
+
+## mju-zal-050
+
+30-letnia pacjentka zgłosiła się do lekarza rodzinnego z następującymi objawami: wysoka gorączka, ostry ból gardła, złe samopoczucie. Lekarz zlecił antybiotykoterapię podejrzewając anginę. Pacjentka po dwóch dniach zgłosiła się ponownie do lekarza w związku z niemijającymi objawami, a także zaobserwowała wysypkę. Lekarz zlecił wykonanie odczynu ASO jak również USG jamy brzusznej. Odczyn ASO był negatywny, a USG jamy brzusznej wykazało powiększenie śledziony. Który z wymienionych drobnoustrojów najprawdopodobniej jest odpowiedzialny za opisane schorzenie?
+
+- [ ] **A.** Streptococcus pyogenes
+- [ ] **B.** Staphylococcus aureus
+- [ ] **C.** HSV 1
+- [✓] **D.** EBV
+- [ ] **E.** Candida albicans
+
+**Poprawna odpowiedź:** D — EBV
+
+**Wyjaśnienie:**
+
+Klasyczny obraz **mononukleozy zakaźnej** — *„kissing disease"*, wywoływanej przez **wirus Epsteina-Barr (EBV, HHV-4)**. Triada diagnostyczna: **( 1) gorączka + zapalenie gardła** z wysiękiem (mimikra anginy), **( 2) limfadenopatia** (szyjna tylna szczególnie), **( 3) splenomegalia** (USG! ryzyko pęknięcia). Tu jeszcze **patognomoniczny** szczegół: **wysypka po antybiotyku β-laktamowym** (amoksycylina/ampicylina) → reakcja typu morbiliformnego u 90-100% chorych na mono — *nie* alergia, tylko immunologiczna interakcja EBV-lek. **ASO ujemne** → wyklucza *S. pyogenes* (A). Diagnostyka: heterofilne przeciwciała (Paul-Bunnell-Davidsohn, monospot), atypowe limfocyty (Downeya) w rozmazie, EBV-IgM VCA. Leczenie: objawowe + **bezwzględny zakaz sportu** 4-6 tyg. (ryzyko pęknięcia śledziony!).
+
+---
+
+## mju-zal-051
+
+Bezwzględnie beztlenowym ziarenkowcem Gram-dodatnim jest:
+
+- [ ] **A.** Veillonella parvula
+- [ ] **B.** Streptococcus vestibularis
+- [✓] **C.** Peptostreptococcus anaerobius
+- [ ] **D.** Actinomyces israelii
+- [ ] **E.** Rothia mucilaginosa
+
+**Poprawna odpowiedź:** C — Peptostreptococcus anaerobius
+
+**Wyjaśnienie:**
+
+Trzy cechy w pytaniu: **( 1) ziarniak (coccus)**, **( 2) Gram-dodatni**, **( 3) bezwzględny beztlenowiec**. Tylko ***Peptostreptococcus anaerobius*** spełnia całą trójkę — Gram(+) ziarniak, *strict anaerobe*, klasyczny patogen ropni zębopochodnych i okołowierzchołkowych. *Veillonella parvula* ( A) — ziarniak beztlenowy, ale **Gram-UJEMNY** (Q19/Q20 z 2023). *S. vestibularis* ( B) — Gram(+) ziarniak, ale **fakultatywny** tlenowiec (jak wszystkie *Streptococcus*). *A. israelii* ( D) — Gram(+) beztlenowiec, ale **pałeczka nitkowata**, nie ziarniak. *Rothia mucilaginosa* ( E) — Gram(+) ziarniak, ale fakultatywny tlenowiec. Klucz: każda inna opcja chybia *jednym* niuansem — klasyczna pułapka pary cech.
+
+---
+
+## mju-zal-052
+
+Zaznacz twierdzenie prawdziwe dotyczące Actinomyces israelii:
+
+- [ ] **A.** bakteria bezwzględnie beztlenowa
+- [ ] **B.** na agarze z dodatkiem glukozy i krwi tworzą kremowobiałe kolonie przypominające powierzchnię zęba trzonowego
+- [ ] **C.** czynnik etiologiczny promienicy z najczęstszą postacią szyjno-twarzową
+- [ ] **D.** w zakażeniu mieszanym izolowana jest wraz z Aggregatibacter actinomycetemcomitans
+- [✓] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+***Actinomyces israelii*** — pełne ABC: **(A)** *bezwzględny beztlenowiec*, Gram(+) pałeczka nitkowata. **(B)** *kolonie „molarne"* — charakterystyczny obraz na agarze z glukozą i krwią: kremowobiałe, guzkowate, przypominające powierzchnię żującą zęba trzonowego (*„molar tooth colonies"* — patognomoniczne!). **(C)** czynnik etiologiczny **promienicy** (*actinomycosis*) — postać szyjno-twarzowa stanowi ~60% przypadków (Q28 z 2023), powstaje po urazach jamy ustnej, ekstrakcjach, w przebiegu próchnicy. **(D)** często zakażenie *polibakteryjne* z ***Aggregatibacter actinomycetemcomitans*** (właściwie *„A. actinomycetemcomitans"* zawiera w nazwie *„actinomyces"* właśnie z tego powodu — odkryty jako częsty *„towarzysz"* A. israelii w promienicy). Wszystkie 4 = prawda → **E**.
+
+---
+
+## mju-zal-053
+
+Różne postaci zapaleń przyzębia wiążą się z izolacją charakterystycznych dla tej postaci patogenów z objętych zakażeniem tkanek. Wśród drobnoustrojów izolowanych z jamy ustnej w tak zwanym dziecięcym zapaleniu przyzębia dominują:
+I) Aggregatibacter actinomycetemcomitans
+II) Prevotella intermedia
+III) Capnocytophaga spp.
+IV) Streptococcus sanguinis
+V) Fusobacterium spp.
+VI) Eikenella corrodens
+VII) Candida albicans.
+
+Wskaż prawidłowe zestawienie:
+
+- [ ] **A.** I, II, III, IV, V, VI, VII
+- [ ] **B.** I, II, III, IV
+- [✓] **C.** I, II, III, VI, VII
+- [ ] **D.** I, II, V, VI, VII
+- [ ] **E.** I, II, III, VI, VII, VIII
+
+**Poprawna odpowiedź:** C — I, II, III, VI, VII
+
+**Wyjaśnienie:**
+
+Klasyczne periodontopatogeny **dziecięcego zapalenia przyzębia** (Q25 z 2023): ***A. actinomycetemcomitans*** (I), ***P. intermedia*** (II), ***Capnocytophaga*** (III), ***E. corrodens*** (VI), z udziałem ***Candida albicans*** ( VII) jako modyfikatora w niektórych przypadkach. Razem 5 patogenów → **C**. ***S. sanguinis*** ( IV) — to **pionier zdrowej płytki**, nie patogen (chroni nawet przed *S. mutans* w naddziąsłowej); jego włączenie do listy patogenów byłoby błędem. ***Fusobacterium*** ( V) — bardziej typowe dla NUG i dorosłych periodontitis, nie kluczowe w postaci dziecięcej. *Opcja E* zawiera **„VIII"** którego nie ma w stemie (jest tylko I- VII) — absurdalny dystraktor, oczywiście niepoprawny.
+
+---
+
+## mju-zal-054
+
+Podwyższone ryzyko rozwoju zapalenia przyzębia wiąże się bezpośrednio ze zwiększoną ilością izolowanych z płytki nazębnej:
+
+- [ ] **A.** Bacteroides i Porphyromonas
+- [✓] **B.** Porphyromonas i Prevotella
+- [ ] **C.** Bacteroides, Porphyromonas i Prevotella
+- [ ] **D.** Porphyromonas i Fusobacterium
+- [ ] **E.** Bacteroides, Porphyromonas i Fusobacterium
+
+**Poprawna odpowiedź:** B — Porphyromonas i Prevotella
+
+**Wyjaśnienie:**
+
+Klasyczna para periodontopatogenów: ***Porphyromonas gingivalis*** (czerwony kompleks Socranskyego) + ***Prevotella intermedia*** (pomarańczowy kompleks). Oba są **czarno-pigmentowanymi beztlenowymi pałeczkami Gram-ujemnymi** (dawniej oba klasyfikowane razem jako *Bacteroides melaninogenicus group*). *P. gingivalis* — kluczowy patogen przewlekłego periodontitis (gingipainy, LPS, hemaglutyniny). *P. intermedia* — silnie powiązana z ciążowym gingivitis (Q22 z 2023) i postępującym periodontitis. ***Bacteroides*** (A, C, E) — to rodzaj **jelitowy** (*B. fragilis* i in.); reklasyfikacja taksonomiczna oddzieliła go od porphyromonas/prevotella. ***Fusobacterium*** (D, E) — *bridge organism*, obecny, ale nie marker bezpośredniego ryzyka jak P. gingivalis/P. intermedia.
+
+---
+
+## mju-zal-055
+
+Obecność dużej ilości krętków i bakterii wrzecionowatych w dotkniętych procesem chorobowym tkankach jest charakterystyczna dla wystąpienia:
+
+- [ ] **A.** ropni okołozębowych
+- [ ] **B.** suchego zębodołu
+- [ ] **C.** anginy Ludwika
+- [✓] **D.** ostrego wrzodziejącego zapalenia dziąseł
+- [ ] **E.** młodzieńczego zapalenia przyzębia
+
+**Poprawna odpowiedź:** D — ostrego wrzodziejącego zapalenia dziąseł
+
+**Wyjaśnienie:**
+
+**Klasyczny duet NUG** (*Necrotizing Ulcerative Gingivitis*, dawniej *choroba/angina Plauta-Vincenta*) — **kompleks krętkowo-fuzobakteryjny**: ***Treponema vincentii***, ***T. denticola*** (krętki) + ***Fusobacterium nucleatum*** (pałeczki wrzecionowate). Te dwie morfologie razem w rozmazie bezpośrednim z owrzodzeń są praktycznie patognomoniczne dla NUG (Q24 z 2023). *Ropień okołozębowy* ( A) — polimikrobiologiczny, dominują ziarniaki tlenowe + beztlenowe pałeczki, ale bez tak wyraźnego obrazu mikroskopowego. *Suchy zębodół* (B, *alveolar osteitis*) — głównie defekt fibrynolizy, niekoniecznie infekcyjny. *Angina Ludwiga* ( C) — głębokie zapalenie dna jamy ustnej, mieszane. *Młodzieńcze periodontitis* ( E) — *A. actinomycetemcomitans*, nie krętki.
+
+---
+
+## mju-zal-056
+
+Poniżej wśród zestawionych czynników bakteryjnych odgrywających znaczącą rolę w patogenezie chorób przyzębia umieszczono jeden który nie spełnia opisanego warunku, wskaż błędnie wymieniony czynnik:
+
+- [ ] **A.** indol
+- [ ] **B.** amoniak
+- [ ] **C.** krótkołańcuchowe kwasy tłuszczowe
+- [ ] **D.** merkaptan metylu
+- [✓] **E.** hemopeksyny
+
+**Poprawna odpowiedź:** E — hemopeksyny
+
+**Wyjaśnienie:**
+
+***Hemopeksyna*** to **białko gospodarza** (osocze, faza ostra) wiążące wolny **hem** — chroni tkanki przed toksycznym Fe2+ i ogranicza dostępność hemu dla patogenów. To **białko obronne**, nie produkt bakteryjny! Pozostałe odpowiedzi to klasyczne **produkty metabolizmu beztlenowców periodontopatogennych** (zwłaszcza *P. gingivalis*, *T. forsythia*, *T. denticola*): **indol** ( A) — z tryptofanu; **amoniak** ( B) — z proteolizy białek (kieszonka → pH alkaliczne, Q23 z 2023); **SCFA** ( C) — propionian, maślan (hamują proliferację fibroblastów); **merkaptan metylu** ( D) — *„czerwony siarczek"*, VSC odpowiedzialny za **halitozę** poddziąsłową. Klucz dydaktyczny: rozróżnij *produkty bakteryjne* (atak) vs *białka gospodarza* (obrona).
+
+---
+
+## mju-zal-057
+
+Najczęściej izolowaną spiralną bakterią w chorobach przyzębia jest:
+
+- [ ] **A.** Treponema oralis
+- [ ] **B.** Treponema vincentii
+- [ ] **C.** Treponema macrodentium
+- [ ] **D.** Treponema scoliodontium
+- [✓] **E.** Treponema denticola
+
+**Poprawna odpowiedź:** E — Treponema denticola
+
+**Wyjaśnienie:**
+
+***Treponema denticola*** to **najczęściej izolowany krętek** poddziąsłowy w chorobach przyzębia — członek **czerwonego kompleksu** Socranskyego razem z *P. gingivalis* i *T. forsythia*. Patogen *„dojrzałego biofilmu"* w głębokich kieszonkach (>5 mm). Cechy patogenne: **dentilizyna** (proteaza degradująca kolagen, fibronektynę, IgA), motilność (przenika nabłonek przyczepu), tworzy mikrokolonie *„corn cob"* z paciorkowcami. *T. vincentii* ( B) — partner w NUG (Q5 / Q24 z 2023), nie typowy patogen przewlekłego periodontitis. *T. macrodentium*, *T. socranskii*, *T. scoliodontium* (C, D) — rzadziej spotykane gatunki oralne. *T. oralis* ( A) — nazwa praktycznie nieużywana taksonomicznie.
+
+---
+
+## mju-zal-058
+
+Ciążowe zapalenie dziąseł jest skorelowane z wystąpieniem w szczególności jednego czynnika etiologicznego. Wybierz najczęściej izolowany drobnoustrój spośród wymienionych poniżej:
+
+- [✓] **A.** Prevotella intermedia
+- [ ] **B.** Aggregatibacter actinomycetemcomitans
+- [ ] **C.** Porphyromonas gingivalis
+- [ ] **D.** Fusobacterium nucleatum
+- [ ] **E.** Candida albicans
+
+**Poprawna odpowiedź:** A — Prevotella intermedia
+
+**Wyjaśnienie:**
+
+***Prevotella intermedia*** — patogen ciążowego gingivitis (*gingivitis gravidarum*, Q22 z 2023). Mechanizm: bakteria **wykorzystuje progesteron i estradiol jako *„zamiennik" menadionu*** (witaminy K) w metabolizmie. W ciąży II/III trymestr → wzrost hormonów → wybuchowy wzrost *P. intermedia* w biofilmie poddziąsłowym → krwawienie, obrzęk dziąseł, niekiedy *epulis* (nadziąślak ciążowy). Mechanizm **odwracalny** — populacja wraca do normy po porodzie. *P. gingivalis* ( C) — przewlekłe periodontitis dorosłych, nie hormonozależne. *AA* ( B) — dziecięce/agresywne. *F. nucleatum* ( D) — *bridge organism*. *C. albicans* ( E) — kandydoza, nie gingivitis.
+
+---
+
+## mju-zal-059
+
+Nasilenie tempa wzrostu Porphyromonas gingivalis oraz aktywności gingipainy jest uwarunkowane:
+
+- [ ] **A.** niskim odczynem pH
+- [✓] **B.** wysokim stężeniem heminy
+- [ ] **C.** obecnością innych pałeczek beztlenowych
+- [ ] **D.** prawidłowe A i B
+- [ ] **E.** prawidłowe A, B, C
+
+**Poprawna odpowiedź:** B — wysokim stężeniem heminy
+
+**Wyjaśnienie:**
+
+***Porphyromonas gingivalis*** jest **asacharolityczna** — energię czerpie z proteolizy białek. Kluczowy pierwiastek wzrostowy: **żelazo** w formie **heminy** (Fe-protoporfiryna IX z hemoglobiny). Bakteria zdobywa Fe poprzez **gingipainy** (proteazy cysteinowe Rgp/Kgp degradujące hemoglobinę i białka gospodarza) → uwolniony hem akumulowany w błonie zewnętrznej (stąd ciemny pigment kolonii — *„porphyrin"* = porfiryna w nazwie!). **Wysokie stężenie heminy** → wzrost biomasy I aktywności gingipain (sprzężenie zwrotne). *Niskie pH* ( A) — *P. gingivalis* preferuje pH **alkaliczne** (~7,5-8 w kieszonce, Q23 z 2023), nie niskie → A jest *odwróceniem prawdy*. *Obecność innych beztlenowców* ( C) — pomaga w polimikrobiologicznej niszy, ale nie warunkuje *bezpośrednio* tempa wzrostu i gingipain jak hemina.
+
+---
+
+## mju-zal-060
+
+Trawienie białek jest powodem, dla którego wartości pH płynu dziąsłowego:
+
+- [ ] **A.** zmniejsza się poniżej 6,0
+- [ ] **B.** zawiera się w granicach 6,4-6,9
+- [ ] **C.** wynosi 7,0
+- [✓] **D.** zawiera się w granicach 7,4-7,9
+- [ ] **E.** zwiększa się powyżej 8,0
+
+**Poprawna odpowiedź:** D — zawiera się w granicach 7,4-7,9
+
+**Wyjaśnienie:**
+
+**Płyn dziąsłowy (GCF)** ma pH **alkaliczne 7,4-7,9** — odwrotnie niż naddziąsłowa płytka (kwaśna). Mechanizm: bakterie kieszonki (***P. gingivalis***, ***T. forsythia***, ***Treponema***, ***Prevotella***) są **asacharolityczne** — *nie fermentują cukrów*, zamiast tego **proteolizują białka** (kolagen, białka GCF, hemoglobina) → produkty końcowe: **amoniak (NH3)**, **aminy** (kadawerina, putrescyna), **siarczki** (H2S, merkaptan metylu — VSC halitozy poddziąsłowej). Wszystko *alkaliczne*. Stąd dwa „światy" pH w jamie ustnej: **naddziąsłowo kwas** (próchnica, *S. mutans*, pH 4,5-5,5), **poddziąsłowo zasada** (periodontoza, *P. gingivalis*, pH 7,5-8). To dlaczego periodontopatogeny lubią głębokie kieszonki — środowisko sprzyja ich metabolizmowi.
+
+---
+
+## mju-zal-061
+
+Wskaż prawidłowe twierdzenie dotyczące ziarniaków Gram-ujemnych jamy ustnej:
+
+- [ ] **A.** pierwszymi kolonizatorami szkliwa zębów zawsze są bakterie z rodzaju Neisseria
+- [ ] **B.** wszystkie gatunki z rodzaju Neisseria izolowane z jamy ustnej są sacharolityczne
+- [✓] **C.** Gram-ujemne ziarniaki mające zdolność rozkładu węglowodanów należą do tlenowców
+- [ ] **D.** Neisseria subflava w odróżnieniu od Neisseria sicca nie wytwarza zielonożółtego pigmentu
+- [ ] **E.** wszystkie ziarniaki Gram-ujemne izolowane z jamy ustnej mają zdolność metabolizowania węglowodanów
+
+**Poprawna odpowiedź:** C — Gram-ujemne ziarniaki mające zdolność rozkładu węglowodanów należą do tlenowców
+
+**Wyjaśnienie:**
+
+Klucz: dwa rodzaje Gram(-) ziarniaków jamy ustnej dzielą się metabolicznie. ***Neisseria*** — **tlenowce, sacharolityczne** (rozkładają cukry). ***Veillonella*** — **beztlenowce, asacharolityczne** (metabolizują kwas mlekowy). Stwierdzenie **C** opisuje tę dychotomię prawidłowo: *„rozkładają węglowodany = tlenowce"* = Neisseria. Pułapki: **(A)** *„zawsze"* — pionierami są raczej paciorkowce *mitis*/*sanguinis* (Q11 z 2023), nie Neisseria. **(B)** *N. cinerea* praktycznie nie fermentuje cukrów — nie wszystkie. **(D)** to **odwrócenie prawdy** — *N. subflava* (łac. *„pod-żółta"*, Q18 z 2023) **właśnie wytwarza** zielonożółty pigment, a *N. sicca* nie. Klasyczna pułapka „relacja odwrotna". **(E)** *Veillonella* jest asacharolityczna — łamie ogólnik „wszystkie".
+
+---
+
+## mju-zal-062
+
+Które spośród wymienionych stwierdzeń jest prawidłowe:
+
+- [ ] **A.** najliczniejszą grupą bakterii wchodzących w skład prawidłowej flory jamy ustnej są ziarniaki Gram-ujemne
+- [ ] **B.** w początkowych etapach rozwoju płytki nazębnej najczęściej biorą udział bakterie z rodzaju Aggregatibacter
+- [ ] **C.** do tzw. czarno pigmentowanych beztlenowców należy m.in. Veillonella dispar
+- [✓] **D.** bakterie z rodzaju Prevotella mają zdolność do rozkładu sacharozy
+- [ ] **E.** żadne z powyższych stwierdzeń nie jest prawidłowe
+
+**Poprawna odpowiedź:** D — bakterie z rodzaju Prevotella mają zdolność do rozkładu sacharozy
+
+**Wyjaśnienie:**
+
+***Prevotella*** to **wyjątek** wśród Gram(-) beztlenowych pałeczek poddziąsłowych — w przeciwieństwie do *Porphyromonas* (która jest **asacharolityczna**), *Prevotella* **rozkłada cukry** (sacharoza, glukoza, laktoza). To kluczowa różnica taksonomiczna *„sacharolityczna Prevotella vs asacharolityczna Porphyromonas"* — kiedyś jeden rodzaj *Bacteroides*, rozdzielony właśnie na tej podstawie. Pułapki: **(A)** dominują **paciorkowce Gram(+)**, nie Gram(-). **(B)** pionierami są paciorkowce *mitis* (Q11 z 2023), nie *Aggregatibacter*. **(C)** *Veillonella* jest **niepigmentowana**; czarno-pigmentowane beztlenowce to *P. gingivalis*, *P. intermedia*, *P. nigrescens* (porfiryna z hemu).
+
+---
+
+## mju-zal-063
+
+Spośród wymienionych do bakterii sacharolitycznych należy:
+
+- [ ] **A.** Porphyromonas gingivalis
+- [✓] **B.** Neisseria sicca
+- [ ] **C.** Moraxella catarrhalis
+- [ ] **D.** Veillonella dispar
+- [ ] **E.** Fusobacterium periodonticum
+
+**Poprawna odpowiedź:** B — Neisseria sicca
+
+**Wyjaśnienie:**
+
+***Neisseria sicca*** — wszystkie gatunki *Neisseria* jamy ustnej fermentują cukry (Q17 z 2023). Test biochemiczny różnicujący: *N. sicca* — glukoza/maltoza/sacharoza/fruktoza dodatnie. Pozostałe są **asacharolityczne**: **(A)** *P. gingivalis* — proteolityczna (gingipainy), żyje z białek/hemu. **(C)** *Moraxella catarrhalis* — Gram(-) dwoinka, **nie rozkłada żadnych cukrów** (cecha różnicująca od Neisseria w diagnostyce). **(D)** *Veillonella* — metabolizuje kwas mlekowy, nie cukry (Q19 z 2023). **(E)** *Fusobacterium* — asacharolityczne, produkują maślan z białek/peptydów. Klucz dydaktyczny: prawie wszystkie *beztlenowce poddziąsłowe* są asacharolityczne — wyjątek: *Prevotella* (Q62).
+
+---
+
+## mju-zal-064
+
+Z płytki nazębnej wyizolowano beztlenowe bakterie o okrągłym kształcie, niemające zdolności rozkładu węglowodanów i nie wytwarzające zewnątrzkomórkowych polisacharydów. Najprawdopodobniej wyizolowano bakterie z rodzaju:
+
+- [✓] **A.** Veillonella
+- [ ] **B.** Neisseria
+- [ ] **C.** Actinomyces
+- [ ] **D.** Haemophilus
+- [ ] **E.** Streptococcus
+
+**Poprawna odpowiedź:** A — Veillonella
+
+**Wyjaśnienie:**
+
+Trzy klucze diagnostyczne: **( 1) beztlenowe**, **( 2) okrągłe (ziarniaki)**, **( 3) asacharolityczne, brak EPS**. Pełen profil ***Veillonella*** — Gram(-) ziarniak beztlenowy metabolizujący kwas mlekowy zamiast cukrów (Q19/Q20 z 2023). Brak produkcji zewnątrzkomórkowych polisacharydów (EPS) potwierdza — *Veillonella* nie buduje matrycy biofilmu, *„podpina się"* pod paciorkowce w ramach kooperacji metabolicznej. Pułapki: *Neisseria* ( B) — okrągła, ale **tlenowa i sacharolityczna**. *Actinomyces* ( C) — beztlenowy, ale **pałeczka nitkowata**. *Haemophilus* ( D) — pałeczka, fakultatywny tlenowiec. *Streptococcus* ( E) — okrągły, fakultatywny tlenowiec, produkuje EPS (glukany).
+
+---
+
+## mju-zal-065
+
+Bakterie te mają kształt kulisty, do wzrostu wymagają warunków tlenowych i zwiększonej zawartości CO2. Optymalny ich wzrost uzyskuje się na tzw. agarze czekoladowym, a w barwieniu Grama przybierają różowo-czerwony kolor.
+
+Bakterie, o których mowa należą do rodzaju:
+
+- [ ] **A.** Streptococcus
+- [ ] **B.** Porphyromonas
+- [ ] **C.** Aggregatibacter
+- [✓] **D.** Neisseria
+- [ ] **E.** Haemophilus
+
+**Poprawna odpowiedź:** D — Neisseria
+
+**Wyjaśnienie:**
+
+Cztery klucze: **( 1) kulisty** (= ziarniak), **( 2) tlenowiec + CO2** (kapnofil), **( 3) agar czekoladowy** (płytka krwawa podgrzana → hemoliza erytrocytów uwalnia X i V czynniki), **( 4) Gram-różowy** (= Gram-ujemny, gdyż barwnik kontrastowy fuksyna/safranina). Profil pasuje do ***Neisseria*** — kapnofilna (5-10% CO2), agar czekoladowy klasyczny. Pułapki: *Streptococcus* ( A) — kulisty, ale **Gram-dodatni (fioletowy)**, fakultatywny. *Porphyromonas* ( B) — Gram(-), ale **pałeczka** i bezwzględnie beztlenowa. *Aggregatibacter* ( C) — kapnofilna, ale **pałeczka**. *Haemophilus* ( E) — Gram(-), kapnofilny, agar czekoladowy ✓, ale **pałeczka**, nie ziarniak. Klucz: morfologia kulista przecina opcje pałeczkowate.
+
+---
+
+## mju-zal-066
+
+Bakterie z rodzaju Veillonella jako źródło energii najczęściej wykorzystują:
+
+- [ ] **A.** sacharozę
+- [ ] **B.** nadtlenek wodoru
+- [ ] **C.** kwas octowy
+- [ ] **D.** glukozę
+- [✓] **E.** kwas mlekowy
+
+**Poprawna odpowiedź:** E — kwas mlekowy
+
+**Wyjaśnienie:**
+
+***Veillonella*** to **„uliczny śmieciarz"** jamy ustnej — fermentuje **kwas mlekowy** (produkowany przez *S. mutans*, *Lactobacillus*) do słabszych kwasów (octowego, propionowego) + CO2 + H2 (Q19 z 2023). Mechanizm to **kooperacja metaboliczna** (*food chain*) — paciorkowce dają mleczan, *Veillonella* go odbiera. Sumarycznie: redukcja najsilniejszego kariogennego kwasu → **funkcja teoretycznie antypróchnicowa** w biofilmie. *Sacharoza/glukoza* (A, D) — bakterie te są **asacharolityczne** (Q64). *Nadtlenek wodoru* ( B) — produkowany przez paciorkowce *mitis*, nie konsumowany przez Veillonella jako źródło energii. *Kwas octowy* ( C) — **produkt**, nie substrat. Klucz: mleczan to *„resztki ze stołu paciorkowca"*, które Veillonella podjada.
+
+---
+
+## mju-zal-067
+
+Do charakterystycznych cech bakterii z rodzaju Moraxella (dawniej Branhamella) nie należy:
+
+- [ ] **A.** brak zdolności rozkładu sacharozy
+- [✓] **B.** metabolizm beztlenowy
+- [ ] **C.** brak wytwarzania polisacharydów zewnątrzkomórkowych
+- [ ] **D.** wytwarzanie β-laktamaz
+- [ ] **E.** brak wytwarzania pigmentu barwiącego kolonie
+
+**Poprawna odpowiedź:** B — metabolizm beztlenowy
+
+**Wyjaśnienie:**
+
+***Moraxella catarrhalis*** (dawniej *Branhamella catarrhalis*) to **bezwzględny tlenowiec** Gram(-), dwoinka — więc *„metabolizm beztlenowy"* (B) to **odwrócenie prawdy** = odpowiedź na pytanie *„czego NIE należy"*. Pozostałe cechy są prawdziwe: **(A)** *asacharolityczna* — nie fermentuje cukrów (vs Neisseria która fermentuje); kluczowy test różnicujący. **(C)** brak EPS — nie tworzy matrycy biofilmu jak paciorkowce. **(D)** **>90% szczepów produkuje β-laktamazy** (BRO-1, BRO-2) → naturalna oporność na penicyliny niechronione; klinicznie wybór: amoksycylina z klawulanianem, cefalosporyny, makrolidy. **(E)** brak pigmentu — kolonie szarobiałe, niczym się nie wyróżniają wizualnie. Patogen otitis media, zaostrzeń POChP, sinusitis.
+
+---
+
+## mju-zal-068
+
+Zaznacz twierdzenie prawdziwe dotyczące Fusobacterium sulci:
+
+- [✓] **A.** jest izolowana ze szczeliny dziąsłowej
+- [ ] **B.** należy do bezwzględnych tlenowców
+- [ ] **C.** jest pleomorficzną pałeczką Gram-dodatnią
+- [ ] **D.** występuje wraz z ziarniakami w płytce nazębnej tworząc struktury przypominające „kolbę kukurydzy”
+- [ ] **E.** posiada długie włókienko, przez co komórki określane są jako „biczokształtne”
+
+**Poprawna odpowiedź:** A — jest izolowana ze szczeliny dziąsłowej
+
+**Wyjaśnienie:**
+
+Nazwa gatunku zdradza siedlisko: ***Fusobacterium sulci*** (łac. *sulcus* = bruzda, szczelina) → **izolowana ze szczeliny dziąsłowej** (sulkus). Klasyczne stanowisko — *Fusobacterium* jako *bridge organism* łączy biofilm naddziąsłowy z poddziąsłowym. Pułapki: **(B)** *bezwzględny tlenowiec* — odwrócenie; *Fusobacterium* to **bezwzględne beztlenowce**. **(C)** Gram-dodatnia — odwrócenie; *Fusobacterium* to **Gram-ujemne pleomorficzne pałeczki**. **(D)** *„kolba kukurydzy"* (*corn cob*) — to struktura tworzona przez ***Treponema/T. denticola*** z paciorkowcami (Q57), NIE *F. sulci*. **(E)** „biczokształtne" / długie włókienko — nie ta morfologia; *Fusobacterium* są pleomorficzne, ale nie wici.
+
+---
+
+## mju-zal-069
+
+Który spośród niżej podanych paciorkowców należy do grupy Streptococcus milleri:
+
+- [ ] **A.** Streptococcus mitis
+- [✓] **B.** Streptococcus anginosus
+- [ ] **C.** Streptococcus gordonii
+- [ ] **D.** Streptococcus sanguinis
+- [ ] **E.** Streptococcus mutans
+
+**Poprawna odpowiedź:** B — Streptococcus anginosus
+
+**Wyjaśnienie:**
+
+**Grupa *Streptococcus milleri*** (dawne nazewnictwo; obecnie ***S. anginosus group*** lub *„anginosus complex"*) — obejmuje trzy gatunki: ***S. anginosus***, ***S. constellatus***, ***S. intermedius***. Wspólne cechy: **β-hemoliza zmienna** (γ/α/β), antygeny Lancefield **A, C, F lub G**, wymagająca CO2, tworzą **ropnie** (klinicznie: ropnie wątroby, mózgu, płuc — także *„dental focal infection"*). Pozostałe paciorkowce w opcjach należą do **innych grup**: *S. mitis* (A), *S. gordonii* (C), *S. sanguinis* ( D) → grupa ***mitis*** (pionierzy płytki, viridans). *S. mutans* ( E) → grupa ***mutans*** (kariogenne, Q32 z 2023). Klasyfikacja paciorkowców viridans w 6 grupach: *mitis*, *salivarius*, *anginosus* (=milleri), *mutans*, *bovis*, *sanguinis* (czasem łączona z mitis).
+
+---
+
+## mju-zal-070
+
+Zaznacz twierdzenie prawdziwe dotyczące Streptococcus vestibularis:
+
+- [ ] **A.** na agarze krwawym wywołuje hemolizę gamma
+- [ ] **B.** wytwarza zewnątrzkomórkowo lewan z sacharozy
+- [✓] **C.** wytwarza ureazę i nadtlenek wodoru
+- [ ] **D.** izolowany głównie z płytki poddziąsłowej
+- [ ] **E.** wszystkie powyższe prawidłowe
+
+**Poprawna odpowiedź:** C — wytwarza ureazę i nadtlenek wodoru
+
+**Wyjaśnienie:**
+
+***Streptococcus vestibularis*** — paciorkowiec grupy ***salivarius***, kolonizujący głównie **przedsionek jamy ustnej** (łac. *vestibulum* — stąd nazwa) oraz powierzchnie błony śluzowej (policzki, dno). Dwie kluczowe cechy biochemiczne: **( 1) ureaza** (rozkłada mocznik → NH3 + CO2; mocznik pochodzi ze śliny i GCF;
+
+NH3 podnosi pH → funkcja antypróchnicowa), **( 2) produkcja H2O2** (substrat dla systemu sialoperoksydazy, Q43 z 2023, → kwas hipocyjanowy bakteriobójczy). Pułapki: **(A)** typowo **α-hemoliza** (zieleniąca, jak inne viridans), nie γ. **(B)** **lewan produkuje *S. salivarius***, nie *S. vestibularis* — pułapka pokrewieństwa (oba w tej samej grupie). **(D)** głównie *naddziąsłowo*/błona śluzowa, nie poddziąsłowo.
+
+---
+
+## mju-zal-071
+
+Do każdego wymienionego poniżej rodzaju kontroli procesu sterylizacji dobierz właściwy test:
+1) kontrola sprzętu
+2) kontrola ekspozycji
+3) kontrola pakietu
+4) kontrola wsadu.
+
+Testy:
+a) testy biologiczne np.
+
+Sporal
+b) termowrażliwe taśmy wskaźnikowe
+c) test Bowie-Dicka
+d) taśmy wskaźnikowe wrażliwe na wszystkie parametry krytyczne procesu sterylizacji.
+
+Prawidłowa odpowiedź to:
+
+- [ ] **A.** 1a, 2b, 3d, 4c
+- [✓] **B.** 1c, 2b, 3d, 4a
+- [ ] **C.** 1a, 2d, 3b, 4c
+- [ ] **D.** 1c, 2d, 3b, 4a
+- [ ] **E.** 1d, 2c, 3a, 4b
+
+**Poprawna odpowiedź:** B — 1c, 2b, 3d, 4a
+
+**Wyjaśnienie:**
+
+**Mapa kontroli:** **1→c** *Kontrola sprzętu (autoklawu)* — **test Bowie-Dicka** wykrywa skuteczność próżni i penetrację pary; codzienna procedura przed pierwszym cyklem. **2→b** *Kontrola ekspozycji* — **taśmy termowrażliwe** (typ 1) na zewnątrz pakietu, zmieniają kolor po nagrzaniu (potwierdzają, że pakiet *„był w autoklawie"*). **3→d** *Kontrola pakietu* — **wskaźniki zintegrowane** (typ 4- 6) wewnątrz pakietu, reagują na *wszystkie parametry krytyczne* (T, p, czas, para nasycona). **4→a** *Kontrola wsadu* — **wskaźniki biologiczne** (Sporal A/S z przetrwalnikami *G. stearothermophilus*) — jedyna metoda potwierdzająca biobójczość cyklu (Q1 z 2023). Klucz: sprzęt=Bowie-Dick, ekspozycja=zewnętrzna taśma, pakiet=wewnętrzny wskaźnik, wsad=biologiczny.
+
+---
+
+## mju-zal-072
+
+Do sterylizacji płynów metodą filtracji wykorzystywane są filtry membranowe wykonane z:
+
+- [ ] **A.** ziemi okrzemkowej
+- [ ] **B.** nieglazurowanej porcelany
+- [ ] **C.** płytek azbestowych
+- [ ] **D.** szkła spiekanego
+- [✓] **E.** estrów celulozy
+
+**Poprawna odpowiedź:** E — estrów celulozy
+
+**Wyjaśnienie:**
+
+**Współczesne filtry membranowe** do sterylizacji płynów (zwłaszcza termolabilnych — surowice, antybiotyki, leki biologiczne) wykonane są z **estrów celulozy** — głównie **octan celulozy (CA)** i **azotan celulozy (CN)**. Membrany mają wystandaryzowany rozmiar porów: **0,22 µm** (sterylizujący, zatrzymuje wszystkie bakterie) lub 0,45 µm (klaryfikacja). Pozostałe materiały to **historyczne filtry głębinowe** (depth filters): *ziemia okrzemkowa* (A, *Kieselguhr* — filtry Berkefelda), *porcelana* (B, *Chamberland*), *azbest* (C, *Seitz* — wycofany ze względu na karcynogenność), *szkło spiekane* (D). Dziś używane rzadko, głównie do *prefiltracji*. Klucz dydaktyczny: 0,22 µm = magiczna liczba sterylizacji filtracyjnej.
+
+---
+
+## mju-zal-073
+
+W autoklawach parowych nie mogą być sterylizowane:
+
+- [ ] **A.** narzędzia ze stali nierdzewnej
+- [✓] **B.** narzędzia ze stali węglowej
+- [ ] **C.** lusterka stomatologiczne
+- [ ] **D.** kamienie ścierne
+- [ ] **E.** aluminiowe chromowane łyżki wyciskowe
+
+**Poprawna odpowiedź:** B — narzędzia ze stali węglowej
+
+**Wyjaśnienie:**
+
+**Stal węglowa** (niskostopowa) **rdzewieje** w atmosferze nasyconej pary wodnej autoklawu — Fe + H2O → Fe(OH)x + tlenki. Stąd narzędzia ze stali węglowej (np. niektóre wiertła chirurgiczne, narzędzia rolnicze) sterylizuje się **suchym ciepłem** (160-180° C) lub **chemicznie** (zimna sterylizacja glutaraldehydem, plazma). **Stal nierdzewna** (A, chromowa/chromowo-niklowa — Cr ≥ 10,5%) — *pasywna warstwa Cr2O3* chroni przed korozją, autoklaw OK. **Lusterka** ( C) — z reguły stal nierdzewna z powłoką, autoklaw OK. **Kamienie ścierne** ( D) — ceramika/diament, odporne na parę. **Aluminium chromowane** ( E) — chromowanie chroni warstwę aluminiową; standardowo OK w autoklawie do 134°C. Klucz: stal węglowa = wróg pary wodnej.
+
+---
+
+## mju-zal-074
+
+Wskaż właściwe stężenie i czas działania aldehydu glutarowego stosowanego w celu usunięcia form wegetatywnych i przetrwalników bakterii:
+1) 0,5%
+2) 1%
+3) 2%
+4) 4%.
+
+Czasy:
+a) 2h
+b) 4h
+c) 8h
+d) 12h.
+
+Prawidłowe zestawienie parametrów to:
+
+- [ ] **A.** 1d
+- [ ] **B.** 2c
+- [ ] **C.** 3b
+- [ ] **D.** 4a
+- [✓] **E.** 3d
+
+**Poprawna odpowiedź:** E — 3d
+
+**Wyjaśnienie:**
+
+**Aldehyd glutarowy** to dialdehyd o silnym działaniu sporobójczym — alkilacja grup -NH2, -SH, -OH białek bakterii. Standardowa procedura: **2% roztwór × 10-12 godzin** (sterylizacja chemiczna *high-level*) — eliminuje wszystkie formy włącznie z **przetrwalnikami**. Dlatego prawidłowo: **3d = 2% × 12h**. Krótsze czasy (np. 20-45 min) dają tylko **dezynfekcję wysokiego poziomu** (formy wegetatywne, wirusy, prątki) — niewystarczające na spory. Klinicznie: glutaraldehyd to historyczny *„zimny sterylizator"* dla narzędzi termolabilnych (endoskopy elastyczne) — dziś coraz częściej zastępowany przez **OPA (orto-ftalaldehyd)** (krótszy czas, mniej drażniący) lub **kwas nadoctowy**. Wady glutaraldehydu: ostre opary, podrażnienia skóry i dróg oddechowych personelu.
+
+---
+
+## mju-zal-075
+
+Barwnik anilinowy stosowany do dezynfekcji błon śluzowych i nieuszkodzonej skóry to:
+
+- [ ] **A.** nadmanganian potasu
+- [ ] **B.** jodyna
+- [✓] **C.** pioktanina
+- [ ] **D.** chlorheksydyna
+- [ ] **E.** glikosal
+
+**Poprawna odpowiedź:** C — pioktanina
+
+**Wyjaśnienie:**
+
+***Pioktanina*** (= **fiolet gencjanowy**, *gentian violet*, *crystal violet*, **CI 42555**) to klasyczny **barwnik trifenylometanowy** wywodzący się chemicznie z **aniliny** — stąd „anilinowy". Działanie: bakteriostatyczne na Gram(+) (zaburza syntezę ściany), niewielkie na Gram(-), grzybobójcze na *Candida*. Historyczne wskazanie: **kandydoza jamy ustnej**, *liszajec zakaźny*, dezynfekcja błon śluzowych dzieci („malowanie gardła"). *Nadmanganian potasu* ( A) — utleniacz, nie barwnik. *Jodyna* ( B) — kompleks I2 z alkoholem, halogen. *Chlorheksydyna* ( D) — biguanid (Q44 niżej, najpopularniejszy stomatologicznie antyseptyk dziąseł). *Glikosal* ( E) — nazwa nietypowa, prawdopodobnie błąd źródła (możliwie *glioksal*). UWAGA: obecnie WHO ostrzega przed kancerogennością fioletu gencjanowego przy długotrwałym stosowaniu na błonach śluzowych.
+
+---
+
+## mju-zal-076
+
+Wskaż zdanie fałszywe:
+
+- [✓] **A.** wraz ze wzrostem długości łańcucha węglowego alkoholi maleje ich aktywność przeciwdrobnoustrojowa
+- [ ] **B.** czwartorzędowe związki amoniowe w niższych stężeniach działają bakteriostatycznie, a w wyższych bakteriobójczo
+- [ ] **C.** aktywność przeciwdrobnoustrojowa tlenku etylenu wzrasta wraz ze wzrostem temperatury
+- [ ] **D.** spośród halogenków najskuteczniejsze działanie dezynfekcyjne wykazują związki jodu
+- [ ] **E.** dezynfekcyjne działanie chloru jest skuteczniejsze w środowisku o niższej wartości pH
+
+**Poprawna odpowiedź:** A — wraz ze wzrostem długości łańcucha węglowego alkoholi maleje ich aktywność przeciwdrobnoustrojowa
+
+**Wyjaśnienie:**
+
+Klasyczne **odwrócenie relacji** w opcji A. **Aktywność alkoholi *wzrasta* z długością łańcucha** węglowego do około **C5-C8** (metanol C1 — słaba aktywność, etanol C2 — średnia, izopropanol C3 i n-butanol C4 — optymalne), dopiero powyżej C8 spada (rozpuszczalność w wodzie). Stąd kliniczny standard: **70% etanol** lub **60-70% izopropanol**. Pozostałe stwierdzenia prawidłowe: **(B)** *„dose-response"* QAC — niskie = bakteriostatyczne, wysokie = bakteriobójcze. **(C)** EO — reguła Arrheniusa, ↑ T → ↑ kinetyka alkilacji (typowe cykle 37°C lub 55°C). **(D)** halogeny — jod (jodyna, jodofory) > chlor > brom > fluor pod kątem antyseptyki. **(E)** chlor — równowaga HOCl ↔ OCl-; **HOCl** (niezdysocjowany kwas podchlorawy, dominujący w niskim pH) jest **~80× silniejszy** od OCl- (anion, wysokie pH).
+
+---
+
+## mju-zal-077
+
+Na próchnicę najbardziej podatne są następujące powierzchnie zębów:
+
+- [ ] **A.** powierzchnie styczne
+- [ ] **B.** powierzchnie językowe zębów w żuchwie
+- [ ] **C.** powierzchnie językowe zębów szczęki
+- [✓] **D.** powierzchnie żujące pierwszych i drugich trzonowców
+- [ ] **E.** powierzchnie policzkowe
+
+**Poprawna odpowiedź:** D — powierzchnie żujące pierwszych i drugich trzonowców
+
+**Wyjaśnienie:**
+
+**Powierzchnie żujące (okluzyjne)** pierwszych i drugich trzonowców są **najbardziej kariogenne** z trzech powodów: **( 1) głębokie bruzdy i dołki** (*fissure caries*) — fizyczna nisza dla *S. mutans*, niedostępna dla mechanicznego oczyszczania szczoteczką ani języka; **( 2) długi okres dojrzewania szkliwa po wyrznięciu** (~2-3 lata) — *„posteruptywna dojrzewałość"* — szkliwo świeże jest bardziej porowate i podatne na demineralizację; **( 3) położenie z tyłu łuku** — pacjenci źle szczotkują tylne zęby. *Powierzchnie styczne* (A, *aproksymalne*) — drugie w kolejności (Q14 z 2023, *Actinomyces*-dominacja), próchnica „przy punktach stycznych". *Powierzchnie językowe i policzkowe* (B, C, E) — najlepiej obmywane przez ślinę i ruchy języka/policzka → najniższe ryzyko. Mnemonika: **bruzdy → kariogenny gettonażylk**.
+
+---
+
+## mju-zal-078
+
+Inwazja bakterii do zębiny następuje wskutek:
+
+- [ ] **A.** rozwoju ubytku próchnicowego w obrębie szkliwa
+- [ ] **B.** rozwoju ubytku próchnicowego w obrębie cementu korzeniowego
+- [ ] **C.** przemieszczenia z kieszonki dziąsłowej poprzez kanały boczne
+- [ ] **D.** pęknięcia lub urazu podczas leczenia
+- [✓] **E.** wszystkie powyższe odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+Cztery drogi inwazji bakterii do **zębiny**: **(A)** *droga koronowa* — najczęstsza, próchnica szkliwa → granica szkliwno-zębinowa (DEJ) → kanaliki zębinowe (~30 tys/mm² o średnicy 0,5-2 µm — wystarczające dla *S. mutans*). **(B)** *droga cementowa* — próchnica korzenia/cementu (Q7 z 2023, seniorzy) → odsłonięta zębina korzeniowa. **(C)** *droga *„retrogradalna"** — z kieszonki dziąsłowej przez **kanały boczne** (Hess, Hertwig) lub apex → bakterie periodontopatogenne wnikają do miazgi *„od dołu"* (klasyczna teoria zmian endo-perio). **(D)** *jatrogenna/urazowa* — pęknięcie szkliwa, niedostatecznie wypełniona zębina, urazy zębów stałych z otwartym apex. Wszystkie 4 + → **E**. Klucz dydaktyczny: zębina jest *„barierą"*, ale ma wiele „bram" — szkliwo, cement, kanały, urazy.
+
+---
+
+## mju-zal-079
+
+Do bakterii licznie występujących zarówno w miazdze jak i zębinie u pacjentów z chorobami przyzębia należą:
+
+- [ ] **A.** Fusobacterium nucleatum
+- [ ] **B.** Actinomyces naeslundii
+- [ ] **C.** Streptococcus sobrinus
+- [✓] **D.** prawidłowe odpowiedzi to A i B
+- [ ] **E.** wszystkie odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** D — prawidłowe odpowiedzi to A i B
+
+**Wyjaśnienie:**
+
+U pacjentów z **chorobą przyzębia + zmianami endo-perio** dominują w miazdze i zębinie dwa typy bakterii: ***Fusobacterium nucleatum*** ( A) — *bridge organism* periodontopatogenny, główny patogen w infekcjach mieszanych, hub kolonizacji wtórnej; ***Actinomyces naeslundii*** ( B) — *pioneer* powierzchni aproksymalnych i kanałów bocznych, izolowany w ~60% nekroz miazgi. ***S. sobrinus*** ( C) — typowo **powierzchniowy paciorkowiec próchnicowy** (grupa mutans), niezbyt głęboko penetrujący; izolowany z biofilmu, nie z głębokiej miazgi. *Wszystkie odpowiedzi* ( E) — błędne ze względu na S. sobrinus. Stąd kombinacja **D = A + B**. Klucz: pamiętaj o duecie Fusobacterium + Actinomyces w mikrobiologii endodontycznej u pacjentów periodontologicznych.
+
+---
+
+## mju-zal-080
+
+Substytutem cukru zaburzającym metabolizm cukrów paciorkowców zmiennych i hamującym proces glikolizy na poziomie fosfofruktokinazy jest:
+
+- [ ] **A.** sorbitol
+- [ ] **B.** sacharyna
+- [ ] **C.** aspartam
+- [✓] **D.** ksylitol
+- [ ] **E.** mannitol
+
+**Poprawna odpowiedź:** D — ksylitol
+
+**Wyjaśnienie:**
+
+***Ksylitol*** to pentitol (alkohol cukrowy 5-węglowy) z **udowodnioną aktywnością antypróchnicową** — nie tylko *„nieaktywny dla bakterii"*, ale **aktywnie hamujący** *S. mutans*. Mechanizm: paciorkowce zmienne (mutans) **transportują ksylitol do komórki przez PEP-PTS** (system fosfotransferazowy zużywający fosfoenolopirogronian) → wewnątrz powstaje **ksylitolo-5-fosforan**, który **hamuje fosfofruktokinazę (PFK)** — kluczowy enzym glikolizy. Efekt: blokada produkcji ATP, *„futile cycle"* (paciorkowiec marnuje fosfoenolopirogronian na pobranie substratu nieproduktywnego), spadek populacji *S. mutans* o ~2 log po 6-12 mies. używania. *Sorbitol* ( A) — niefermentowalny, ale tylko *„bezzębny"* (nieaktywny inhibicyjnie). *Mannitol* ( E) — analogiczny, neutralny. *Sacharyna/aspartam* (B, C) — intensywne słodziki, niefermentowalne. Klucz: ksylitol = aktywny inhibitor, sorbitol = pasywny zamiennik.
+
+---
+
+## mju-zal-081
+
+Do wybarwienia płytki nazębnej używamy:
+
+- [ ] **A.** aneksyny
+- [ ] **B.** propidyny
+- [✓] **C.** erytrozyny
+- [ ] **D.** katepsyny
+- [ ] **E.** akrydyny
+
+**Poprawna odpowiedź:** C — erytrozyny
+
+**Wyjaśnienie:**
+
+***Erytrozyna*** (CI 45430, *Red No. 3*) — czerwony barwnik ksantenowy stosowany w **tabletkach uwidaczniających płytkę** (*disclosing tablets*) — pacjent rozgryza tabletkę, ślina rozprowadza barwnik, płytka wybarwia się na czerwono (a po nowoczesnych formułach dwukolorowych: świeża płytka różowa, dojrzała niebieska/fioletowa). Klasyczne narzędzie edukacji higieny jamy ustnej i nauki szczotkowania u dzieci. Pułapki — *anhetynki* z innej dziedziny: *aneksyny* ( A) — białka wiążące fosfolipidy w apoptozie. *Propidyna* (jodek propidyny, B) — barwnik DNA w cytometrii przepływowej (martwe komórki). *Katepsyny* ( D) — enzymy lizosomalne (proteazy). *Akrydyna* (E, akridyna pomarańczowa) — barwnik DNA fluorescencyjny. Wszystkie *„-yny"* — pułapka „pary podobnych nazw" zgodnie z regułą 8 ze specyfikacji dystraktorów.
+
+---
+
+## mju-zal-082
+
+Przyleganie Porphyromonas gingivalis do komórek nabłonkowych jest ułatwione po zadziałaniu:
+
+- [ ] **A.** neuraminidazy
+- [✓] **B.** trypsyny
+- [ ] **C.** amylazy
+- [ ] **D.** fosfolipazy
+- [ ] **E.** papainy
+
+**Poprawna odpowiedź:** B — trypsyny
+
+**Wyjaśnienie:**
+
+**Trypsyna** (proteaza serynowa o specyficzności na Arg-Lys) działa na powierzchniowe białka komórek nabłonkowych demaskując **kryptyczne receptory adhezyjne** dla *P. gingivalis*. Sama bakteria produkuje analogi: **gingipainy Rgp/Kgp** — proteazy cysteinowe o aktywności *„trypsyno-podobnej"* (cięcie po Arg-Lys), które *in vivo* pełnią tę samą funkcję — eksponują nowe miejsca wiązania na komórkach nabłonka kieszonki + uwalniają hemoglobinę i białka gospodarza dla heminy. Stąd test diagnostyczny: **BANA-test** (N-benzoyl-DL-arginine-2-naphthylamide) wykrywa aktywność trypsynopodobną *P. gingivalis*, *T. denticola*, *T. forsythia* — *„big three"* czerwonego kompleksu. *Neuraminidaza* ( A) — kwas sialowy, np. influenza, *S. pneumoniae*. *Amylaza* ( C) — cukry. *Fosfolipaza* ( D) — błony. *Papaina* ( E) — proteaza roślinna, ale niezwiązana z aktywacją receptorów dla P. gingivalis.
+
+---
+
+## mju-zal-083
+
+U pacjentów z ruchomymi protezami pierwszymi kolonizatorami tych powierzchni są:
+
+- [ ] **A.** Streptococcus mutans, Streptococcus oralis, Actinomyces israelii
+- [ ] **B.** Candida albicans, Staphylococcus aureus, Actinomyces israelii
+- [ ] **C.** Streptococcus oralis, Actinomyces israelii, Candida albicans
+- [✓] **D.** Streptococcus mutans, Streptococcus sanguinis
+- [ ] **E.** Streptococcus mutans, Actinomyces israelii
+
+**Poprawna odpowiedź:** D — Streptococcus mutans, Streptococcus sanguinis
+
+**Wyjaśnienie:**
+
+**Pierwsi kolonizatorzy akrylu** to **paciorkowce grupy mutans i mitis** — ***S. mutans*** + ***S. sanguinis*** (oraz *S. oralis*, *S. mitis*). Mechanizm: na akrylu w ciągu sekund-minut tworzy się **osłonka nabyta** (białka śliny analogiczne do tej na szkliwie — PRP, statheryny, mucyny), a paciorkowce wiążą się przez antygen I/II do tych białek (Q15 z 2023 — paciorkowce do 60-70% bakterii z protez). *Candida albicans* (B, C) — pojawia się **wtórnie** (sukcesja, kandydoza protetyczna 50-65% nosicieli protez), wymaga preekspozycji *S. mutans* tworzącego matrycę glukanów do przylegania. *S. aureus* ( B) — sporadyczny, nie pionier. *Actinomyces israelii* (A, B, C, E) — *successor*, nie pionier, pojawia się w dojrzałej płytce. Klucz: zasada pionierzy = paciorkowce, *Candida* dołącza później.
+
+---
+
+## mju-zal-084
+
+Które twierdzenie dotyczące płynu płytki nazębnej jest prawdziwe?
+
+- [ ] **A.** w płynie płytki nazębnej stosunek stężeń K+/Na+ jest niższy niż w ślinie
+- [ ] **B.** obecność hydroksyproliny i hydroksylizyny w płynie płytki świadczy o intensywnej syntezie kolagenu zachodzącej w obrębie płytki nazębnej
+- [✓] **C.** właściwości buforujące płynu płytki nazębnej są większe niż śliny
+- [ ] **D.** zawartość białka w płynie płytki nazębnej jest niższa niż w ślinie
+- [ ] **E.** stężenie lizozymu jest wyższe w ślinie niż w płynie płytki nazębnej
+
+**Poprawna odpowiedź:** C — właściwości buforujące płynu płytki nazębnej są większe niż śliny
+
+**Wyjaśnienie:**
+
+**UWAGA:** pytanie w źródle z adnotacją *„ponoć anulowane"* — klucz wskazuje **C** (właściwości buforujące płynu płytki > śliny), ale walidatorzy egzaminacyjni podświetlali też **B**. Idziemy za kluczem. **(C)** Buforowanie płynu płytki — wyższa zawartość białek, peptydów, amoniaku (z proteolizy) i wodorowęglanów lokalnie zatężonych w matrycy biofilmu. **(B)** *hydroksyprolina/hydroksylizyna* — aminokwasy *charakterystyczne dla kolagenu*; ich obecność w płynie płytki świadczy o **degradacji kolagenu** (z tkanek przyzębia) przez bakteryjne kolagenazy, NIE o syntezie (komórki płytki nie syntetyzują kolagenu) — stąd B w prawidłowej interpretacji jest fałszywe, **chyba że potraktować twierdzenie luźno**. **(A)** odwrócenie — K+/Na+ w płycie wyższy niż w ślinie (bakterie konsumują Na, akumulują K). **(D, E)** odwrócenia — białka i lizozym ze śliny napływają do płytki, ich stężenie tam jest *zbliżone lub wyższe*. Dla bezpieczeństwa: w sesji nauki obie opcje (B, C) są w „strefie buforowej" — przy nauce do egzaminu zaznacz C zgodnie z oficjalnym kluczem.
+
+---
+
+## mju-zal-085
+
+Który z wymienionych gatunków nie jest zaliczany do grupy Streptococcus mitis?
+
+- [ ] **A.** Streptococcus sanguis
+- [ ] **B.** Streptococcus gordonii
+- [ ] **C.** Streptococcus parasanguinis
+- [✓] **D.** Streptococcus cricetus
+- [ ] **E.** Streptococcus oralis
+
+**Poprawna odpowiedź:** D — Streptococcus cricetus
+
+**Wyjaśnienie:**
+
+***Streptococcus cricetus*** należy do **grupy *mutans*** (paciorkowce zmienne kariogenne, Q32 z 2023) — razem z *S. mutans*, *S. sobrinus*, *S. rattus*, *S. ferus*, *S. macacae*, *S. downei*. Pozostałe gatunki to klasycy **grupy *mitis*** — pionierzy zdrowej płytki nazębnej, *„dobrzy" paciorkowce*: ***S. sanguis*** (A — używana w źródle archaiczna nazwa; współcześnie ***S. sanguinis***), ***S. gordonii*** (B), ***S. parasanguinis*** (C), ***S. oralis*** (E). Mnemotechnika: **mitis = MGOSP** (mitis-gordonii-oralis-sanguinis-parasanguinis), **mutans = MSCRFMD** (mutans-sobrinus-cricetus-rattus-ferus-macacae-downei). Klinicznie *grupa mitis* częsta w **infekcyjnym zapaleniu wsierdzia** po zabiegach stomatologicznych (transient bacteriemia → przyleganie do uszkodzonych zastawek przez antygen I/II).
+
+---
+
+## mju-zal-086
+
+Który z wymienionych gatunków paciorkowców powoduje hemolizę typu γ (brak hemolizy):
+
+- [ ] **A.** Streptococcus pneumoniae
+- [✓] **B.** Streptococcus salivarius
+- [ ] **C.** Streptococcus agalactiae
+- [ ] **D.** Streptococcus pyogenes
+- [ ] **E.** Streptococcus mitis
+
+**Poprawna odpowiedź:** B — Streptococcus salivarius
+
+**Wyjaśnienie:**
+
+Trzy typy hemolizy na agarze krwawym: **α** — *„zieleniąca"* (niepełne utlenienie hemu → biliwerdyna; *viridans* — *S. mitis*, *S. pneumoniae*, *S. oralis*). **β** — *„czysta"* (kompletna liza erytrocytów → przejrzysta strefa; *S. pyogenes* — paskowate hemolizyny SLO/SLS, *S. agalactiae* — słabsza β + CAMP-test). **γ** — *„brak hemolizy"* (kolonie bez zmian wokół; ***S. salivarius***, *Enterococcus* itp.). Stąd: **(B)** *S. salivarius* — typowo **niehemolizujący (γ)** lub α słaby; preferuje powierzchnię języka (Q34 z 2023, lewan). **(A)** *S. pneumoniae* — **α**. **(C)** *S. agalactiae* — **β**. **(D)** *S. pyogenes* — **β** (klasyk!). **(E)** *S. mitis* — **α**. Klasyfikacja hemolizy to klucz pierwszego rzutu w diagnostyce paciorkowców.
+
+---
+
+## mju-zal-087
+
+Do objawów kiły w obrębie jamy ustnej należy/ą:
+
+- [ ] **A.** wrzód twardy w kile drugorzędowej
+- [ ] **B.** owrzodzenie pełzające w jamie ustnej w kile pierwszorzędowej
+- [✓] **C.** perforacja podniebienia w kile trzeciorzędowej
+- [ ] **D.** kilaki umiejscowione w jamie ustnej w kile pierwszorzędowej
+- [ ] **E.** siekacze Hutchinsona w kile pierwszorzędowej
+
+**Poprawna odpowiedź:** C — perforacja podniebienia w kile trzeciorzędowej
+
+**Wyjaśnienie:**
+
+**Kiła trzeciorzędowa** (*lues tertiaria*, 3-15+ lat od zakażenia) — destrukcja tkanek przez **kilaki gummowe** (*gummata*) w podniebieniu, języku, jamie nosowej → **perforacja podniebienia twardego/miękkiego** ze sztywnym, charakterystycznym obrazem („siodełkowaty nos" + szczeliny). Pozostałe odpowiedzi to **klasyczne odwrócenia stadiów** (zgodnie z regułą 5 — typowe błędy poznawcze): **(A)** *wrzód twardy (chancre)* — **kiła pierwszorzędowa**, nie drugorzędowa. **(B)** *owrzodzenia pełzające/błony śluzowej* — **kiła drugorzędowa** (*plaques muqueuses*), nie pierwszorzędowa. **(D)** *kilaki* — **kiła trzeciorzędowa**, nie pierwszorzędowa. **(E)** *siekacze Hutchinsona* (z półksiężycową bruzdą) — **kiła wrodzona**, nie nabyta pierwszorzędowa; triada Hutchinsona: zęby + zapalenie miąższowe rogówki + głuchota labiryntowa. Pułapka: każda zła odpowiedź ma poprawny *element* w niewłaściwym *kontekście stadium*.
+
+---
+
+## mju-zal-088
+
+Gatunki z tego rodzaju są bezwzględnie beztlenowe, asacharolityczne, zwykle niehemolizujące, do wzrostu wymagają bogatego podłoża. Powyższy opis dotyczy rodzaju:
+
+- [ ] **A.** Aggregatibacter
+- [ ] **B.** Haemophilus
+- [ ] **C.** Neisseria
+- [✓] **D.** Fusobacterium
+- [ ] **E.** Streptococcus
+
+**Poprawna odpowiedź:** D — Fusobacterium
+
+**Wyjaśnienie:**
+
+Cztery klucze: **( 1) bezwzględnie beztlenowe**, **( 2) asacharolityczne**, **( 3) niehemolizujące**, **( 4) wymagające bogatego podłoża**. Komplet pasuje do ***Fusobacterium*** — Gram(-) pleomorficzne pałeczki wrzecionowate, *bridge organism* biofilmu, produkujące maślan i propionian z białek (asacharolizm) — Q5/Q24 z 2023 (NUG), Q57/Q68 (*F. sulci*, *F. nucleatum*). Pułapki: **(A)** *Aggregatibacter* — **fakultatywny tlenowiec**, kapnofilny, **sacharolityczny** (rozkłada glukozę, maltozę). **(B)** *Haemophilus* — fakultatywny tlenowiec, wymaga **czynników X i V**, **sacharolityczny**. **(C)** *Neisseria* — **tlenowiec**, sacharolityczny (Q11/Q61). **(E)** *Streptococcus* — **fakultatywny tlenowiec**, sacharolityczny, większość *hemolizuje* (α/β;
+
+Q86). Klucz: tylko *Fusobacterium* spełnia wszystkie 4 cechy naraz.
+
+---
+
+## mju-zal-089
+
+Wskaż prawidłowe twierdzenie dotyczące wirusa SARS-CoV-2:
+
+- [✓] **A.** jego kapsyd jest otoczony osłonką
+- [ ] **B.** zawiera RNA o ujemnej polarności
+- [ ] **C.** nie ulega inaktywacji podczas 30 minutowego ogrzewania w temp. 60°C
+- [ ] **D.** jego rozmiary wynoszą około 200 nm
+- [ ] **E.** łączy się z komórką za pośrednictwem receptorów ACE 1
+
+**Poprawna odpowiedź:** A — jego kapsyd jest otoczony osłonką
+
+**Wyjaśnienie:**
+
+***SARS-CoV-2*** (rodzina *Coronaviridae*) to **otoczkowy wirus RNA o dodatniej polarności (+ssRNA)** — osłonka lipidowa z białkami **S (spike), M (membranowe), E (envelope), N (nukleokapsyd)**. Otoczka odpowiada za **wrażliwość na detergenty/alkohol** (dlatego mydło i 70% etanol działają!). Pozostałe: **(B)** *„ujemna polarność"* — odwrócenie; *SARS-CoV-2 to (+)ssRNA*, czyli RNA *„gotowy do tłumaczenia"* — przy wejściu do komórki od razu jest mRNA dla rybosomu. Wirusy (-)ssRNA to grypa, rabies, ebola, RSV. **(C)** *„nie ulega inaktywacji 60°C/30min"* — *odwrócenie*;
+
+SARS-CoV-2 **ulega** inaktywacji termicznej (60°C/30 min, 70°C/5 min) — stąd skuteczność pasteryzacji i autoklawu. **(D)** *200 nm* — za duże; rzeczywisty rozmiar **60-140 nm** (z wypustkami S do 220 nm, ale wirion ~100 nm). **(E)** ***ACE2***, nie *ACE1* — *„receptor wejścia"* (klasyczna pułapka „one letter difference"); proteaza komórkowa **TMPRSS2** aktywuje białko S.
+
+---
+
+## mju-zal-090
+
+Przykładem wirusów o dwudziestościennej (ikosaedralnej) budowie są:
+
+- [ ] **A.** wirusy grypy
+- [✓] **B.** adenowirusy
+- [ ] **C.** wirusy wścieklizny
+- [ ] **D.** wirusy mozaiki tytoniowej
+- [ ] **E.** wirusy ospy prawdziwej
+
+**Poprawna odpowiedź:** B — adenowirusy
+
+**Wyjaśnienie:**
+
+**Symetrie kapsydu wirusów** — trzy główne typy: **( 1) ikosaedralna** (dwudziestościan, 20 trójkątnych ścian, 12 wierzchołków) — adenowirusy (charakterystyczne *„fibry"* z wierzchołków, Q37 z 2023), pikornawirusy (polio, rhino, HAV), parwowirusy, papilomawirusy. **( 2) helikalna** (spiralna) — wirusy grypy (A — wewnętrzny nukleokapsyd RNP), rabies (C, *„kulista" zewnętrzna, ale helikalny nukleokapsyd"*), TMV (D, klasyczny przykład helikalny — pręcikowaty). **( 3) złożona** (*complex*) — wirusy ospy (E, *Poxviridae* — *„box-shaped"*, brak prostej symetrii), bakteriofagi typu T (głowa+ogonek). Stąd ikosaedralne = **B (adenowirusy)** — klasyczny przykład egzaminacyjny. Klucz: symetria kapsydu = jedna z 6 podstawowych cech klasyfikacji ICTV (Baltimorea).
+
+---
+
+## mju-zal-091
+
+Fluor wpływa hamująco na przemianę materii bakterii płytki nazębnej poprzez:
+
+- [ ] **A.** zmniejszenie wydajności glikolizy
+- [ ] **B.** blokowanie systemu PEP-PTS
+- [ ] **C.** hamowanie syntezy glikogenu
+- [ ] **D.** prawidłowe A, B
+- [✓] **E.** prawidłowe A, B, C
+
+**Poprawna odpowiedź:** E — prawidłowe A, B, C
+
+**Wyjaśnienie:**
+
+**Fluor** ma **trójtorowy** mechanizm antybakteryjny w płytce, niezależny od remineralizacji szkliwa (która jest *innym*, równoległym mechanizmem). **( A) Hamowanie glikolizy** — F- jako składnik **fluoroapatytu enolazy** blokuje **enolazę** (przejście 2-fosfoglicerynian → fosfoenolopirogronian, PEP) → spadek produkcji ATP. **( B) Blokada PEP-PTS** — niedobór PEP (przez enolazę powyżej) → mniej fosforylacji cukrów na wejściu (system PEP-PTS dostarcza P z PEP) → bakterie nie mogą transportować ani fosforylować glukozy. **( C) Hamowanie syntezy glikogenu wewnątrzkomórkowego (IPS, *intracellular polysaccharide stores*)** — bakterie nie mogą gromadzić zapasów na *„noc"* (gdy brak cukru z diety). Wszystkie 3 efekty razem → **E**. Klinicznie: fluor (NaF, SnF2, AmF — aminefluoryd) w pastach to nie tylko remineralizator, ale i **inhibitor metabolizmu *S. mutans***. To dlatego pasty z fluorem działają „podwójnie".
+
+---
+
+## mju-zal-092
+
+Spośród wymienionych wskaż drobnoustrój Gram-dodatni:
+
+- [ ] **A.** Serratia marcescens
+- [ ] **B.** Porphyromonas gingivalis
+- [ ] **C.** Neisseria subflava
+- [ ] **D.** Campylobacter jejuni
+- [✓] **E.** Actinomyces israelii
+
+**Poprawna odpowiedź:** E — Actinomyces israelii
+
+**Wyjaśnienie:**
+
+***Actinomyces israelii*** — Gram(+) pałeczka nitkowata, beztlenowiec; jedyny Gram(+) na liście (Q2/Q52). Pozostałe to **Gram-ujemne**: **(A)** *Serratia marcescens* — Gram(-) pałeczka (Enterobacteriaceae), klasyk infekcji szpitalnych, czerwony pigment **prodygiozyna**. **(B)** *Porphyromonas gingivalis* — Gram(-) pałeczka beztlenowa, czerwony kompleks. **(C)** *Neisseria subflava* — Gram(-) dwoinka (Q11/Q18 z 2023). **(D)** *Campylobacter jejuni* — Gram(-) pałeczka spiralna („mewka"), patogen biegunki zakaźnej, w jamie ustnej oportunistycznie. Mnemotechnika: **„actino" = aktyny = jak komórki ssaków (Gram+)**; **„neisseria/porphyro/serratia/campylo" = brzmią obco/„dziko" = Gram-** (regułka prymitywna ale działa w 80%).
+
+---
+
+## mju-zal-093
+
+Spośród wymienionych wskaż pałeczkę Gram-ujemną:
+
+- [✓] **A.** Prevotella intermedia
+- [ ] **B.** Neisseria sicca
+- [ ] **C.** Staphylococcus epidermidis
+- [ ] **D.** Bacillus subtilis
+- [ ] **E.** Lactobacillus acidophilus
+
+**Poprawna odpowiedź:** A — Prevotella intermedia
+
+**Wyjaśnienie:**
+
+Pytanie testuje **dwie cechy jednocześnie**: morfologię (*pałeczka*) i barwienie (*Gram-ujemna*). ***Prevotella intermedia*** (A) — Gram(-) pałeczka beztlenowa, czarno-pigmentowana, klasyk ciążowego gingivitis (Q58) i pomarańczowego kompleksu. Pozostałe nie pasują *jednym* niuansem każda — klasyczna *„pułapka pojedynczego niuansu"*: **(B)** *Neisseria sicca* — Gram(-) ✓, ale **ziarniak**, nie pałeczka. **(C)** *Staphylococcus epidermidis* — **Gram(+)** ✗, ziarniak. **(D)** *Bacillus subtilis* — pałeczka ✓, ale **Gram(+)** ✗ (przetrwalniki!). **(E)** *Lactobacillus acidophilus* — pałeczka ✓, ale **Gram(+)** ✗ (klasyczne paciorki *„Doderleina"*). Klucz dydaktyczny: zawsze sprawdzaj **dwa wymiary** (kształt + Gram), opcja chybiająca jednego z nich jest błędna.
+
+---
+
+## mju-zal-094
+
+Wskaż twierdzenie prawdziwe na temat barwienia Ziehla-Neelsena:
+
+- [ ] **A.** służy do barwienia przetrwalników
+- [ ] **B.** jest wykorzystywane do diagnostyki błonicy
+- [✓] **C.** w tym typie barwienia bakterie kwasoodporne przybierają kolor czerwony pochodzący od fuksyny (nie odbarwiają się w kwaśnym alkoholu)
+- [ ] **D.** jest to metoda pozwalająca wykryć polifosforany w komórkach maczugowców
+- [ ] **E.** służy do wykrycia ciałek zapasowych (Ernsta-Babesa) u Corynebacterium
+
+**Poprawna odpowiedź:** C — w tym typie barwienia bakterie kwasoodporne przybierają kolor czerwony pochodzący od fuksyny (nie odbarwiają się w kwaśnym alkoholu)
+
+**Wyjaśnienie:**
+
+**Barwienie Ziehla-Neelsena (ZN)** = wykrywanie **kwasoodporności (AFB, *acid-fast bacilli*)** — diagnostyka **prątków** (*Mycobacterium tuberculosis*, *M. leprae*, *M. avium*). Procedura: **(1)** fuksyna karbolowa + ogrzewanie (penetracja przez woskową ścianę z kwasami mikolowymi); **(2)** odbarwianie **kwaśnym alkoholem (3% HCl w 95% etanolu)** — bakterie kwasoodporne **zatrzymują czerwień fuksyny** (gruba warstwa lipidów chroni), pozostałe się odbarwiają; **(3)** dobarwianie błękitem metylenowym → tło niebieskie + prątki *„różowo-czerwone pałeczki"*. Pułapki — wszystkie pozostałe to **inne barwienia**: **(A)** *przetrwalniki* → **Schaeffer-Fulton** (zielona malachit + safranina). **(B)** *błonica/maczugowce* → **Neisser** (czerń + brąz, wykrywa ziarna metachromatyczne Ernst-Babesa). **(D, E)** *polifosforany Ernst-Babes* → także **Neisser**, nie ZN.
+
+---
+
+## mju-zal-095
+
+Czynnikiem wybiórczym w podłożu Chapmana jest:
+
+- [ ] **A.** 7,5% NaOH
+- [ ] **B.** mannitol
+- [ ] **C.** czerwień fenolowa
+- [ ] **D.** sole żółci
+- [✓] **E.** wszystkie powyższe odpowiedzi są nieprawidłowe
+
+**Poprawna odpowiedź:** E — wszystkie powyższe odpowiedzi są nieprawidłowe
+
+**Wyjaśnienie:**
+
+Czynnikiem wybiórczym (selektywnym) w **agarze Chapmana** (Q44 z 2023 — *gronkowce*) jest **7,5% NaCl** — wysokie stężenie chlorku sodu hamuje wzrost większości bakterii, tolerują je tylko ***Staphylococcus*** (halotolerancja). Pytanie jest „podstępne" — opcja **(A)** mówi *„NaOH"* (zasada sodowa!), nie NaCl — to **wodorotlenek**, który zabiłby wszystko, nie selekcjonowałby gronkowców. **(B)** *mannitol* — to **substrat** różnicujący w Chapman (fermentacja → zmiana koloru), nie czynnik wybiórczy. **(C)** *czerwień fenolowa* — to **wskaźnik pH** (żółta przy fermentacji mannitolu przez *S. aureus*), nie selektor. **(D)** *sole żółci* — to selektor w **agarze MacConkeya** dla pałeczek jelitowych, nie w Chapman. Stąd **wszystkie wymienione są nieprawidłowe** → **E**. Pułapka „one letter difference": NaCl ≠ NaOH — jeden klasyczny błąd przy szybkim czytaniu.
+
+---
+
+## mju-zal-096
+
+Które z wymienionych podłoży służy do oceny lekowrażliwości gronkowców?
+
+- [ ] **A.** Löwensteina-Jensena
+- [ ] **B.** Ogawy
+- [ ] **C.** Stonebrinka
+- [✓] **D.** Mueller-Hintona
+- [ ] **E.** Middlebrooka
+
+**Poprawna odpowiedź:** D — Mueller-Hintona
+
+**Wyjaśnienie:**
+
+**Agar Mueller-Hinton (MH)** = **złoty standard antybiogramu** (testy lekowrażliwości metodą **Kirby-Bauer** — krążki bibułowe nasączone antybiotykiem, pomiar stref zahamowania wzrostu wg standardów **EUCAST/CLSI**). Wymagania MH: pH 7,2-7,4, kationy Ca2+/Mg2+ w określonym stężeniu (wpływają na MIC aminoglikozydów), grubość 4 mm. Dla *Streptococcus*, *Haemophilus*, *Neisseria* używa się **MH wzbogaconego krwią/NAD+ (MH-F, MH-Hb)**. Pozostałe opcje to **podłoża dla prątków** (mykobakterii): **(A)** *Löwenstein-Jensen* — klasyczna pożywka jajowa (Q44 z 2023). **(B)** *Ogawa* — analog L-J, alternatywa stosowana w Azji. **(C)** *Stonebrink* — modyfikacja L-J z pirogronianem (dla *M. bovis* nie używającym glicerolu). **(E)** *Middlebrook* — syntetyczne podłoże agarowe dla prątków. Klucz: jeśli widzisz „Mueller-Hinton" — to o antybiotykach.
+
+---
+
+## mju-zal-097
+
+Spośród wymienionych wskaż patogeny oportunistyczne:
+a) Porphyromonas gingivalis
+b) Candida albicans
+c) Clostridium botulinum
+d) Pseudomonas aeruginosa
+e) Salmonella Typhi
+f) Candida auris.
+
+Prawidłowe zestawienie to:
+
+- [ ] **A.** a, b, c, d
+- [ ] **B.** b, c, d, f
+- [ ] **C.** b, d, e, f
+- [✓] **D.** b, d, f
+- [ ] **E.** b, e, f
+
+**Poprawna odpowiedź:** D — b, d, f
+
+**Wyjaśnienie:**
+
+**Patogeny oportunistyczne** = mikroorganizmy chorobotwórcze **tylko** w warunkach **osłabionej odporności** lub **przerwania bariery** (cewniki, oparzenia, transplantacje, HIV, neutropenia). U zdrowego — komensale lub środowiskowe. Klasyczna trójka oportunistów z listy: **(b)** ***Candida albicans*** — komensal jamy ustnej, kandydoza tylko gdy dysbioza/immunosupresja (Q9 z 2023 — kserostomia, sterydy, antybiotyki); **(d)** ***Pseudomonas aeruginosa*** — środowiskowa (woda, gleba), oportunista u OIT, mukowiscydoza, oparzenia; **(f)** ***Candida auris*** — emerging *multidrug-resistant* drożdżak, oportunistyczne zakażenia szpitalne. Stąd **D = b, d, f**. Patogeny **obligatoryjne** (zawsze chorobotwórcze): **(a)** *P. gingivalis* — *właściwy* patogen periodontopatii u praktycznie wszystkich; **(c)** *C. botulinum* — toksyna botulinowa działa nawet u zdrowych; **(e)** *S. Typhi* — dur brzuszny, klasyczna patogen obligatoryjny (zakaża zdrowych).
+
+---
+
+## mju-zal-098
+
+Która z wymienionych klas przeciwciał przeważa w ślinie spoczynkowej?
+
+- [✓] **A.** IgA
+- [ ] **B.** IgG
+- [ ] **C.** IgM
+- [ ] **D.** IgE
+- [ ] **E.** IgD
+
+**Poprawna odpowiedź:** A — IgA
+
+**Wyjaśnienie:**
+
+**Wydzielnicza IgA (sIgA, *secretory IgA*)** dominuje we wszystkich wydzielinach śluzówkowych — ślinie, łzach, mleku, śluzie nosowo-gardłowym, jelitowym. W ślinie spoczynkowej **>95%** immunoglobulin to **sIgA** produkowana przez plazmocyty obrzeży ślinianek. Struktura: **dimer IgA + łańcuch J + komponent wydzielniczy (SC, secretory component)** — SC dodawany podczas transcytozy przez komórki gruczołowe; chroni Ig przed proteolizą śliny. Funkcje: **immune exclusion** — agglutynacja bakterii i zapobieganie ich przyleganiu do błon śluzowych (głównie przez wiązanie adhezyn — Ag I/II *S. mutans*!), neutralizacja toksyn, blokada wchłaniania alergenów. Niedobór sIgA = wzrost ryzyka próchnicy, infekcji błon śluzowych. *IgG* ( B) — pojawia się w **płynie dziąsłowym** (przesącz osocza, GCF), nie w ślinie. *IgM, IgE, IgD* (C, D, E) — śladowe ilości w ślinie.
+
+---
+
+## mju-zal-099
+
+Wskaż prawidłowe zestawienie określające zawartość poszczególnych składników w ślinie spoczynkowej:
+
+- [ ] **A.** węglan > potas > wapń > fosforan
+- [ ] **B.** węglan > potas > sód > magnez
+- [ ] **C.** magnez > fosforan > wapń > węglan
+- [ ] **D.** sód > magnez > fosforan > potas
+- [✓] **E.** potas > sód > wapń > magnez
+
+**Poprawna odpowiedź:** E — potas > sód > wapń > magnez
+
+**Wyjaśnienie:**
+
+**Ślina spoczynkowa** ma **wysokie K+ i niskie Na+** — odwrotnie niż osocze. Mechanizm: ślinianki w trybie spoczynkowym **aktywnie resorbują Na+** z pierwotnej śliny (izotonicznej z osoczem) w przewodach, jednocześnie **sekrując K+** → ślina hipotoniczna, K+ >> Na+. Stężenia rzędu: **K+ ~20-40 mmol/L**, **Na+ ~5-15 mmol/L**, **Ca2+ ~1-2 mmol/L**, **Mg2+ ~0,2-0,3 mmol/L** → kolejność **K > Na > Ca > Mg** = **E**. W *ślinie pobudzonej* (Q16 z 2023) napływ z przyusznicy → Na+ wzrasta, K+ relatywnie spada (jednak wciąż K+ ≥ Na+ w większości pomiarów). Stężenia HCO3- (węglanu) w spoczynku są **niskie** (~2-5 mmol/L, niski potencjał buforujący), w pobudzeniu silnie rosną do ~20-40 mmol/L (główny bufor antypróchnicowy).
+
+---
+
+## mju-zal-100
+
+Średnie stężenie którego z wymienionych składników jest najwyższe w płynie dziąsłowym?
+
+- [ ] **A.** węglan
+- [ ] **B.** potas
+- [✓] **C.** sód
+- [ ] **D.** magnez
+- [ ] **E.** fosforan
+
+**Poprawna odpowiedź:** C — sód
+
+**Wyjaśnienie:**
+
+**Płyn dziąsłowy (GCF)** to **eksudat osocza** przesączający się przez nabłonek przyczepu — stąd skład **zbliżony do surowicy**, nie do śliny. W osoczu/GCF **najwyższym kationem** jest **Na+** (~140 mmol/L) — dlatego sód wygrywa wszystkie inne wymienione: **(B)** potas ~4-5 mmol/L (vs ~20-40 w ślinie — odwrócenie!), **(D)** magnez ~0,8 mmol/L, **(A, E)** węglan/fosforan jako aniony rzędu kilku-kilkudziesięciu mmol/L, ale wciąż poniżej Na+. To kluczowa różnica metaboliczna i diagnostyczna **GCF vs ślina**: ślina ma odwrócony stosunek Na/K (Q99), GCF zachowuje proporcje osocza (Q42 z 2023). Kliniczne: **wysokie stężenie Ca2+ w GCF** sprzyja mineralizacji **kamienia poddziąsłowego** (różny od naddziąsłowego, który wywodzi się ze śliny). Klucz: pamiętaj — GCF = osocze, ślina = odwrócone Na/K.
+
+---
+
+## mju-zal-101
+
+Wskaż etap w powstawaniu biofilmu bakteryjnego dla którego charakterystyczna jest wzmożona synteza EPS (substancji polimerycznych wydzielanych zewnątrzkomórkowo):
+
+- [ ] **A.** adhezja odwracalna mikroorganizmów
+- [ ] **B.** adhezja nieodwracalna mikroorganizmów
+- [✓] **C.** tworzenie mikrokolonii i dojrzewanie biofilmu
+- [ ] **D.** dyspersja i migracja komórek z biofilmu
+- [ ] **E.** w trakcie tworzenia biofilmu nie dochodzi do produkcji EPS
+
+**Poprawna odpowiedź:** C — tworzenie mikrokolonii i dojrzewanie biofilmu
+
+**Wyjaśnienie:**
+
+**EPS (extracellular polymeric substances)** to ”cement” biofilmu — głównie **polisacharydy** (np. glukany *S. mutans*, alginat *P. aeruginosa*) + **białka, eDNA, lipidy**. Faza **tworzenia mikrokolonii i dojrzewania** (faza 3-4 z 5; Q29 z 2023) to moment, gdy bakterie ”przykryte” warstwą EPS przechodzą z trybu *planktonicznego* na *sesyjny* — uruchamiają geny syntezy macierzy regulowane przez **quorum sensing** (Q30/2023). Wtedy powstaje charakterystyczna struktura 3D z kanałami wodnymi. Pułapki: **(A, B)** *adhezja* — komórki dopiero przyklejają się, EPS produkcja minimalna. **(D)** *dyspersja* — odwrotnie, EPS jest **rozkładany** enzymatycznie (dispersin B, alginat-liaza), by uwolnić komórki ”wzbogacone” dla nowych nisz. **(E)** absurd — EPS to ”skin biofilm”.
+
+---
+
+## mju-zal-102
+
+Który z wymienionych procesów nie jest obserwowany wśród komórek bakterii zasiedlających strukturę wewnętrzną biofilmu?
+
+- [ ] **A.** zahamowanie produkcji flageliny
+- [✓] **B.** zahamowanie aktywności beztlenowych szlaków metabolicznych
+- [ ] **C.** zahamowanie syntezy fosfolipazy C
+- [ ] **D.** zahamowanie syntezy toksyn
+- [ ] **E.** aktywacja syntezy enzymów rozkładających antybiotyki
+
+**Poprawna odpowiedź:** B — zahamowanie aktywności beztlenowych szlaków metabolicznych
+
+**Wyjaśnienie:**
+
+Wnętrze biofilmu (głębokie warstwy) to **strefa silnie redukcyjna i hipoksyjna** — gradient tlenu spada od powierzchni (~150 µM) do zera w głębi (już >100 µm w głąb). Bakterie tam zasiedlone *aktywują* (nie hamują) **beztlenowe szlaki metaboliczne** — fermentację, anaerobową respirację z azotanami, siarczanami. Stąd **B jest odwróceniem prawdy** — to zjawisko, którego *nie ma*. Pozostałe są prawdziwymi adaptacjami biofilmu (*persister state*): **(A)** *zahamowanie flageliny* — komórki sesyjne nie potrzebują motilności, oszczędzają energię. **(C, D)** *zahamowanie wirulencji* — biofilm to ”cisza” metaboliczna, ekspresja czynników wirulencji obniżona (paradoks: nie atakują, ale są **oporne**). **(E)** *aktywacja enzymów detoksykujących antybiotyki* (β-laktamazy, pompy MDR) — kluczowa adaptacja oporności biofilmowej (oporność ~1000× wyższa niż planktoniczna).
+
+---
+
+## mju-zal-103
+
+Zdolność bakterii do porozumiewania się (zjawisko quorum sensing) oparta jest na wytwarzaniu sygnałów chemicznych zwanych autoinduktorami. Wskaż autoinduktory charakterystyczne dla bakterii Gram-ujemnych:
+
+- [✓] **A.** acylowane laktony homoseryny (AHL)
+- [ ] **B.** białkowe regulatory transkrypcyjne LuxR
+- [ ] **C.** transportery ABC
+- [ ] **D.** białka wiążące laktozę (MBP)
+- [ ] **E.** białko zwiększające przepuszczalność (BPI)
+
+**Poprawna odpowiedź:** A — acylowane laktony homoseryny (AHL)
+
+**Wyjaśnienie:**
+
+**AHL (N-acyl-homoserine lactones)** to klasyczne autoinduktory **bakterii Gram-UJEMNYCH** — małe lipofilne cząsteczki *swobodnie dyfundujące* przez błonę zewnętrzną LPS i błonę cytoplazmatyczną. Klasyczny system *LuxI/LuxR* (*Vibrio fischeri*, bioluminescencja) — *LuxI* syntetaza AHL, **LuxR** (B w pytaniu!) to *receptor cytoplazmatyczny* (białkowy regulator transkrypcyjny aktywowany przez AHL). Pułapka: **B (LuxR)** to **odbiornik**, nie sygnał — sam **nie jest autoinduktorem**. **C (transportery ABC)** to maszyneria wydzielania **oligopeptydów (AIP)** — autoinduktorów **Gram-DODATNICH** (nie przechodzą swobodnie przez błonę). **D, E** to białka odporności wrodzonej gospodarza (MBP, BPI), nie autoinduktory. Klucz: AHL=Gram(-), AIP=Gram(+), AI-2=uniwersalny (Q30/2023).
+
+---
+
+## mju-zal-104
+
+W hodowli drobnoustrojów in vitro podłoże Chapmana może być wykorzystywane jako podłoże wybiórczo-różnicujące dzięki zawartości w swoim składzie:
+
+- [ ] **A.** mannitolu i soli żółci
+- [ ] **B.** soli żółci i 7,5% NaCl
+- [ ] **C.** 7,5% NaCl i laktozy
+- [ ] **D.** laktozy i czerwieni fenolowej
+- [✓] **E.** 7,5% NaCl i mannitolu
+
+**Poprawna odpowiedź:** E — 7,5% NaCl i mannitolu
+
+**Wyjaśnienie:**
+
+**Agar Chapmana (MSA, *Mannitol Salt Agar*)** ma podwójną funkcję: **( 1) wybiórcza** — **7,5% NaCl** hamuje wzrost większości bakterii poza halotolerancyjnymi *Staphylococcus* (Q95 z 2022 — selektor); **( 2) różnicująca** — **mannitol + czerwień fenolowa** jako wskaźnik pH. ***S. aureus*** fermentuje mannitol → kwas → spadek pH → strefa **żółta** wokół kolonii (cecha różnicująca patogenne od koagulazoujemnych *S. epidermidis* — niefermentującego, zostawia pożywkę różową). Stąd **E**. Pułapki: **(A, B)** *sole żółci* — to selektor **MacConkey** dla pałeczek jelitowych, NIE Chapman. **(C, D)** *laktoza* — to substrat różnicujący w MacConkey, nie Chapman.
+
+---
+
+## mju-zal-105
+
+Na podłożu Chapmana zahamowaniu ulega wzrost bakterii z rodzaju:
+
+- [ ] **A.** Klebsiella
+- [ ] **B.** Streptococcus
+- [ ] **C.** Enterococcus
+- [✓] **D.** prawidłowe są odpowiedzi A i B
+- [ ] **E.** prawidłowe są odpowiedzi B i C
+
+**Poprawna odpowiedź:** D — prawidłowe są odpowiedzi A i B
+
+**Wyjaśnienie:**
+
+**Chapman (7,5% NaCl)** selekcjonuje *Staphylococcus* przeciw większości innych bakterii — hamuje **( A) Klebsiella** (Gram(-) pałeczka, niska tolerancja na NaCl) i **( B) Streptococcus** (większość rośnie tylko w ~2-4% NaCl, paciorkowce zieleniące i ropotwórcze nie tolerują 7,5%). Stąd **D = A + B**. Pułapka: **( C) Enterococcus** — wyjątek! *Enterococcus faecalis* i *E. faecium* **rosną** w 6,5% NaCl (cecha różnicująca od *Streptococcus*) i mogą wzrastać też w 7,5% NaCl, choć słabiej. To kluczowa różnica taksonomiczna: *Enterococcus* odłączono od rodzaju *Streptococcus* m.in. na tej podstawie. Klinicznie: *Enterococcus* lubi wyższe NaCl, niskie pH, żółć — to ”twarda bakteria” odporna na warunki.
+
+---
+
+## mju-zal-106
+
+Drobnoustroje o zwiększonych wymaganiach odżywczych (np. Haemophilus spp., Neisseria spp.) dobrze wzrastają na podłożu:
+
+- [ ] **A.** agar z krwią baranią
+- [✓] **B.** agar czekoladowy
+- [ ] **C.** Sabouraud agar
+- [ ] **D.** MacConkey agar
+- [ ] **E.** prawidłowe są odpowiedzi A i B
+
+**Poprawna odpowiedź:** B — agar czekoladowy
+
+**Wyjaśnienie:**
+
+**Agar czekoladowy** = agar krwawy *podgrzany* (~80° C) → **kontrolowana hemoliza** uwalnia z erytrocytów: **( 1) czynnik X (hemina)** i **( 2) czynnik V (NAD+)** — oba wymagane przez *Haemophilus influenzae* (stąd nazwa rodzaju ”haemo-philus” = lubiący krew, ale w postaci *dostępnej*). Także *Neisseria* (kapnofilna) lubi pożywki bogate. Pułapka — *agar z krwią baranią* (A): *Haemophilus* **NIE rośnie** na świeżej krwi baraniej (erytrocyty całe → NAD+ niedostępne; dodatkowo krew baranian zawiera NADazę degradującą czynnik V — *zjawisko satelitarne* wokół kolonii *S. aureus*, który robi hemolizę i uwalnia NAD). Stąd **NIE A+B**, tylko **B**. *Sabouraud* ( C) — grzyby (Q44/2023). *MacConkey* ( D) — pałeczki Gram(-) jelitowe.
+
+---
+
+## mju-zal-107
+
+Barwienie według Ziehla-Neelsena stosowane jest do wybarwiania:
+
+- [ ] **A.** krętków
+- [ ] **B.** przecinkowców
+- [ ] **C.** laseczek
+- [✓] **D.** prątków
+- [ ] **E.** ziarenkowców
+
+**Poprawna odpowiedź:** D — prątków
+
+**Wyjaśnienie:**
+
+**Ziehl-Neelsen (ZN)** = test kwasoodporności — diagnostyka **prątków** (*Mycobacterium tuberculosis*, *M. leprae*, *M. avium*). Mechanizm: gruba warstwa **kwasów mikolowych** w ścianie *Mycobacterium* zatrzymuje fuksynę karbolową nawet po odbarwianiu kwaśnym alkoholem → pałeczki ”różowo-czerwone” na niebieskim tle (błękit metylenowy jako dobarwianie tła; Q94 z 2022). Pułapki — *inne barwienia*: **( A) krętki** → impregnacja srebrowa (Fontana-Tribondeau), ciemne pole. **( B) przecinkowce** (*Vibrio*) → klasyczny Gram. **( C) laseczki/przetrwalniki** → Schaeffer-Fulton (zielona malachit + safranina). **( E) ziarniaki** → Gram. Klucz: ZN = jedyne barwienie dla AFB (*acid-fast bacilli*), poza nim klasyczny Gram lub specyficzne dla danej grupy.
+
+---
+
+## mju-zal-108
+
+Wskaż zdanie zawierające nieprawdziwą informację o mikroflorze jamy ustnej:
+
+- [ ] **A.** bakterie kolonizujące obszar szczeliny dziąsłowej odgrywają kluczową rolę w inicjowaniu chorób przyzębia
+- [ ] **B.** powierzchnia języka może stanowić rezerwuar bakterii beztlenowych odpowiedzialnych za choroby przyzębia
+- [ ] **C.** powierzchnia zębów jest jedynym obszarem ciała człowieka niemającym zdolności eliminowania drobnoustrojów i pozwalającym na ich współwystępowanie
+- [ ] **D.** płytka nazębna jest klasycznym przykładem naturalnego biofilmu
+- [✓] **E.** protezy stomatologiczne i ortodontyczne nie są zaliczane do głównych siedlisk mikroflory jamy ustnej
+
+**Poprawna odpowiedź:** E — protezy stomatologiczne i ortodontyczne nie są zaliczane do głównych siedlisk mikroflory jamy ustnej
+
+**Wyjaśnienie:**
+
+**Protezy stomatologiczne i ortodontyczne** są **istotnymi siedliskami** mikroflory jamy ustnej — akryl protez i metalowe elementy aparatów ortodontycznych tworzą ”dodatkową niszę” dla bakterii i grzybów (Q15 z 2023, Q83 z 2022 — paciorkowce *mutans*/*sanguinis* jako pionierzy + *Candida albicans* jako sukcesor; klasyczna **kandydoza protetyczna** dotyczy 50-65% nosicieli). Stąd opcja **E** jest *odwróceniem prawdy*. Pozostałe stwierdzenia prawdziwe: **(A)** kieszonka/szczelina = siedlisko czerwonego kompleksu (Q54/2022). **(B)** język rezerwuar *Veillonella*, *Fusobacterium*, krętków — *grzbiet języka* (*tongue coating*) jako źródło halitozy i transferu bakterii do kieszonek. **(C)** szkliwo = jedyna powierzchnia ciała bez deskwamacji nabłonka (która usuwa bakterie z innych błon śluzowych). **(D)** klasyk biofilmologii.
+
+---
+
+## mju-zal-109
+
+Ekosystemem jamy ustnej rzadko kolonizowanym przez bakterie jest:
+
+- [✓] **A.** błona śluzowa powierzchni policzkowych
+- [ ] **B.** błona śluzowa dna jamy ustnej
+- [ ] **C.** nabłonek szczeliny dziąsłowej
+- [ ] **D.** poddziąsłowa powierzchnia zębów
+- [ ] **E.** powierzchnia styczna zębów
+
+**Poprawna odpowiedź:** A — błona śluzowa powierzchni policzkowych
+
+**Wyjaśnienie:**
+
+**Błona śluzowa policzków** (*buccal mucosa*) — najuboższa pod względem liczebności bakterii (~100-1000 CFU/cm²) z trzech powodów: **( 1) ciągła deskwamacja nabłonka** wielowarstwowego płaskiego nierogowaciejącego — komórki łuszczą się i odpadają wraz z bakteriami; **( 2) ciągłe omywanie przez ślinę** + ruchy mięśni policzka (mechaniczne oczyszczanie); **( 3) niska wilgotność** w stosunku do innych nisz. Dla porównania: **( C) szczelina dziąsłowa** — 10⁸-10¹⁰ bakterii (Q108-A), **( D) poddziąsłowo** — *rezerwuar* czerwonego kompleksu, **( E) powierzchnie styczne** — biofilm aproksymalny *Actinomyces*-dominacja (Q14/2023). **( B) dno jamy ustnej** — bogato unaczynione, więcej bakterii niż policzki. Klucz: tam gdzie deskwamacja i mycie śliną → mało bakterii.
+
+---
+
+## mju-zal-110
+
+Spośród bakterii biorących udział w tworzeniu próchnicy, największą tolerancją na kwaśne pH charakteryzuje się:
+
+- [ ] **A.** Streptococcus oralis
+- [ ] **B.** Neisseria subflava
+- [ ] **C.** Actinomyces odontolyticus
+- [✓] **D.** Lactobacillus casei
+- [ ] **E.** prawidłowe są odpowiedzi A i D
+
+**Poprawna odpowiedź:** D — Lactobacillus casei
+
+**Wyjaśnienie:**
+
+***Lactobacillus*** to **król kwasolubności** w jamie ustnej — toleruje pH **<4,0** (*S. mutans* już ”słabnie” przy ~4,5). Stąd *Lactobacillus* dominuje w **zaawansowanej próchnicy zębiny** (Q10 z 2023 — *S. mutans* inicjuje, *Lactobacillus* kontynuuje destrukcję w głębokim, ekstremalnie kwaśnym ubytku). Mechanizm tolerancji: pompy protonowe **F1F0-ATPazy** wypompowujące H+ z cytoplazmy. Pułapki: **( A) S. oralis** — pionier zdrowej płytki (Q11/2023), kwasochwiejny (umiera w pH <5). **( B) N. subflava** — *kwasowrażliwa* (jak wszystkie *Neisseria*). **( C) A. odontolyticus** — toleruje umiarkowane pH (~5,5), ale nie tak skrajnie jak *Lactobacillus*. **( E) A + D** — błąd, *S. oralis* nie jest kwasolubny. Klucz: hierarchia kwasolubności w próchnicy = **Lactobacillus > S. mutans > Bifidobacterium > inne**.
+
+---
+
+## mju-zal-111
+
+Zespół Stevensa-Johnsona objawiający się występowaniem w obrębie śluzówki jamy ustnej bolesnych pęcherzy, przekształcających się w nadżerki najczęściej jest spowodowany zakażeniem:
+
+- [ ] **A.** Actinomyces israelii
+- [ ] **B.** Corynebacterium ulcerans
+- [ ] **C.** Klebsiella pneumoniae
+- [✓] **D.** Mycoplasma pneumoniae
+- [ ] **E.** Streptococcus pyogenes
+
+**Poprawna odpowiedź:** D — Mycoplasma pneumoniae
+
+**Wyjaśnienie:**
+
+**Zespół Stevensa-Johnsona (SJS)** to ciężka, immunologiczna reakcja śluzówkowo-skórna z dwoma głównymi triggerami: **( 1) leki** (sulfonamidy, allopurinol, antyepileptyki — karbamazepina, lamotrygina), **( 2) infekcje** — *Mycoplasma-induced rash and mucositis (MIRM)*. ***Mycoplasma pneumoniae*** to **najczęstszy zakaźny trigger SJS u dzieci** — *walking pneumonia* + nadżerki śluzówkowe + zmiany skórne typu *tarcze strzelnicze*. Mechanizm: *molekularna mimikra* (białka błonowe *Mycoplasma* aktywują autoreaktywne limfocyty T atakujące keratynocyty śluzówki). Pozostałe patogeny **nie są klasycznie kojarzone z SJS**: **( B) C. ulcerans** — błonica skórna/gardłowa. **( E) S. pyogenes** — angina, szkarlatyna (Q48/2023), różyca, NIE SJS (chociaż może wywołać *strep TSS* — inna prezentacja). Diagnostyka SJS: leki w wywiadzie + serologia *Mycoplasma* IgM.
+
+---
+
+## mju-zal-112
+
+Wśród drobnoustrojów izolowanych z jamy ustnej w dziecięcym zapaleniu przyzębia dominują:
+1) Aggregatibacter actinomycetemcomitans
+2) Prevotella intermedia
+3) Capnocytophaga spp.
+4) Staphylococcus aureus
+5) Streptococcus sanguinis
+6) Fusobacterium spp.
+7) Eikenella corrodens
+8) Candida albicans.
+
+Wskaż prawidłowe zestawienie:
+
+- [ ] **A.** 1, 2, 3, 4, 5, 6, 7
+- [ ] **B.** 1, 2, 3, 4
+- [✓] **C.** 1, 2, 3, 6, 7
+- [ ] **D.** 1, 2, 5, 6, 7
+- [ ] **E.** 1, 2, 3, 6, 7, 8
+
+**Poprawna odpowiedź:** C — 1, 2, 3, 6, 7
+
+**Wyjaśnienie:**
+
+Klasyczne periodontopatogeny dziecięcego zapalenia przyzębia: ***A. actinomycetemcomitans*** (1, leukotoksyna), ***P. intermedia*** (2), ***Capnocytophaga*** (3), ***Fusobacterium*** (6, *bridge*), ***E. corrodens*** (7). Razem 5 patogenów → **C**. Pułapki: **( 4) S. aureus** — nie jest klasycznym periodontopatogenem; może być sporadycznie izolowany w infekcjach mieszanych, ale nie dominuje. **( 5) S. sanguinis** — **pionier ZDROWEJ płytki**, chroni przed *S. mutans* — wręcz *anti-patogen* (jak w Q53/2022, gdzie również odrzucony). **( 8) C. albicans** — w niektórych klasyfikacjach włączana jako modulator (Q53/2022 — tam była w prawidłowej grupie), tu jednak odrzucona. **Różnica między latami**: w 2022 *Candida* była w grupie, w 2019 nie — różne podręczniki źródłowe, jeden niuans rozróżnienia.
+
+---
+
+## mju-zal-113
+
+Choroba Vincenta to:
+
+- [ ] **A.** ostre paciorkowcowe zapalenie dziąseł
+- [ ] **B.** ostre paciorkowcowe zapalenie dziąseł z towarzyszącą anginą
+- [✓] **C.** ostre wrzodziejące zapalenie dziąseł
+- [ ] **D.** ostra próchnica z towarzyszącym zapaleniem dziąseł
+- [ ] **E.** opryszczkowe zapalenie dziąseł
+
+**Poprawna odpowiedź:** C — ostre wrzodziejące zapalenie dziąseł
+
+**Wyjaśnienie:**
+
+**Choroba Vincenta** = **ostre wrzodziejące zapalenie dziąseł** (*NUG, Necrotizing Ulcerative Gingivitis*; dawniej *angina Plauta-Vincenta*). Triada (Q24 z 2023, Q55 z 2022): **( 1) ból**, **( 2) krwawienie** przy dotyku, **( 3) szara pseudobłona** (martwica brodawek międzyzębowych — ”krater”). Etiologia: **kompleks krętkowo-fuzobakteryjny** — *Treponema vincentii*, *T. denticola* + *Fusobacterium nucleatum*. Czynniki: **stres, palenie, niedożywienie, immunosupresja, HIV**. Leczenie: usunięcie martwicy + **metronidazol** (skuteczny przeciw beztlenowcom). Pułapki: **(A, B)** *paciorkowcowe* — nie etiologia paciorkowcowa! **(E)** *opryszczkowe* — to **HSV-1 (gingivostomatitis herpetica)** — pęcherzyki, dzieci/młodzi dorośli, gorączka, *inna* prezentacja. Klucz: NUG = krętki + Fusobacterium + stres.
+
+---
+
+## mju-zal-114
+
+Spośród wymienionych, wskaż cechy charakterystyczne dla gatunków Neisseria subflava, Neisseria mucosa i Neisseria sicca:
+a) są chorobotwórcze
+b) bytują w jamie nosowo-gardłowej
+c) wykazują małe wymagania wzrostowe
+d) są kapnofilne
+e) rosną na agarze zwykłym.
+
+Prawidłowe zestawienie cech to:
+
+- [ ] **A.** a, b, c
+- [ ] **B.** a, d, e
+- [ ] **C.** b, c, d
+- [ ] **D.** b, c, e
+- [✓] **E.** c, d, e
+
+**Poprawna odpowiedź:** E — c, d, e
+
+**Wyjaśnienie:**
+
+*Komensalne gatunki Neisseria* jamy ustnej (***N. subflava***, ***N. mucosa***, ***N. sicca***) — w przeciwieństwie do *patogennych N. meningitidis* i *N. gonorrhoeae* — są **niechorobotwórcze**, **mało wymagające** (rosną na zwykłym agarze, nie potrzebują czekoladowego!) i **kapnofilne** (5-10% CO2). Stąd cechy **c, d, e = E**. Pułapki: **(a)** *chorobotwórcze* — odwrócenie; komensale jamy ustnej są nieinwazyjne; oportunistycznie mogą sporadycznie wywołać endokarditis lub bakteriemię, ale nie są klasyfikowane jako patogeny. **(b)** *nosogardło* — częściowo prawda, ale ich **główna nisza to jama ustna**, nie nosogardło (to są domeny *Streptococcus pyogenes*, *S. pneumoniae*). Klucz dydaktyczny: *komensalne Neisseria oralne* ≠ *patogenne Neisseria nosogardłowo-narządowe*.
+
+---
+
+## mju-zal-115
+
+Obecność dużej ilości krętków i bakterii wrzecionowatych w dotkniętych procesem chorobowym tkankach jest charakterystyczna dla:
+
+- [ ] **A.** ropni okołozębowych
+- [ ] **B.** suchego zębodołu
+- [ ] **C.** anginy Ludwiga
+- [✓] **D.** ostrego wrzodziejącego zapalenia dziąseł
+- [ ] **E.** młodzieńczego zapalenia przyzębia
+
+**Poprawna odpowiedź:** D — ostrego wrzodziejącego zapalenia dziąseł
+
+**Wyjaśnienie:**
+
+Powtórka pytania z 2022 (Q 55) i 2023 (Q 24) — **klasyczny duet w NUG**: ***Treponema*** (krętki) + ***Fusobacterium*** (pałeczki wrzecionowate). Te dwie morfologie razem w rozmazie bezpośrednim z owrzodzeń są praktycznie **patognomoniczne** dla NUG. Pułapki: **(A)** *ropień okołozębowy* — polimikrobiologiczny, dominują ziarniaki tlenowe + beztlenowe pałeczki, ale bez tak wyraźnego mikroskopowego obrazu krętki+fuso. **(B)** *suchy zębodół* (*alveolar osteitis*) — głównie defekt fibrynolizy w gojeniu po ekstrakcji, niekoniecznie infekcyjny. **(C)** *angina Ludwiga* — głębokie zapalenie dna jamy ustnej, mieszane (paciorkowce + beztlenowce z polibakteryjnej infekcji zębopochodnej). **(E)** *młodzieńczy periodontitis* — *A. actinomycetemcomitans*, **leukotoksyna**, NIE krętki. Klucz: każde *krętki + wrzecionowate* = NUG, automatyzm diagnostyczny.
+
+---
+
+## mju-zal-116
+
+Wskaż, który z wymienionych drobnoustrojów często występuje w próchnicy cementu korzeniowego:
+
+- [ ] **A.** Eikenella corrodens
+- [✓] **B.** Rothia dentocariosa
+- [ ] **C.** Fusobacterium nucleatum
+- [ ] **D.** Leptotrichia buccalis
+- [ ] **E.** Bifidobacterium dentium
+
+**Poprawna odpowiedź:** B — Rothia dentocariosa
+
+**Wyjaśnienie:**
+
+***Rothia dentocariosa*** — nazwa zdradza siedlisko: *denti-cariosa* = *zębów próchnicowych*. Gram(+) pleomorficzna pałeczka, izolowana z **próchnicy cementu korzeniowego** (Q7 z 2023 — populacja seniorów po 60 r.ż. z recesją dziąseł i odsłoniętym cementem). Cement ma niższą mineralizację niż szkliwo (~50% vs 96% hydroksyapatytu) → krytyczne pH dla demineralizacji **6,2-6,7** (vs 5,5 dla szkliwa) → łatwiejsza penetracja bakterii. *Rothia dentocariosa* wraz z *Actinomyces*, *Lactobacillus* tworzą charakterystyczny biofilm próchnicy korzenia. Pułapki: **( A) E. corrodens** — periodontitis, nie próchnica. **( C) F. nucleatum** — *bridge organism* poddziąsłowy. **( D) L. buccalis** — komensal języka. **( E) B. dentium** — kojarzony z próchnicą zębiny u dzieci, nie typowo cement. Mnemotechnika: *Rothia DENTI-CARIOSA = ząb próchnicowy*.
+
+---
+
+## mju-zal-117
+
+W chorobach przyzębia najczęściej izolowanym krętkiem jest:
+
+- [ ] **A.** Treponema oralis
+- [ ] **B.** Treponema vincentii
+- [ ] **C.** Treponema macrodentium
+- [ ] **D.** Treponema scoliodentum
+- [✓] **E.** Treponema denticola
+
+**Poprawna odpowiedź:** E — Treponema denticola
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q57) — ***T. denticola*** to **najczęstszy krętek poddziąsłowy** w periodontopatiach. Członek **czerwonego kompleksu Socranskyego** razem z *P. gingivalis* i *T. forsythia* — *big three* przewlekłego periodontitis dorosłych. Cechy patogenne: **dentilizyna** (proteaza degradująca kolagen, fibronektynę, IgA), motilność (przenika nabłonek przyczepu), tworzy z paciorkowcami struktury *corn cob*. *T. vincentii* ( B) — partner NUG, nie typowy patogen przewlekłego. *T. socranskii/scoliodentum/macrodentium* (C, D) — rzadsze. *T. oralis* ( A) — taksonomicznie problematyczna. Klucz dydaktyczny: kiedykolwiek pytanie o *najczęstszy/main krętek periodontopatii* — automatycznie *T. denticola*.
+
+---
+
+## mju-zal-118
+
+Głównym czynnikiem etiologicznym ciążowego zapalenia przyzębia jest:
+
+- [✓] **A.** Prevotella intermedia
+- [ ] **B.** Aggregatibacter actinomycetemcomitans
+- [ ] **C.** Porphyromonas gingivalis
+- [ ] **D.** Fusobacterium nucleatum
+- [ ] **E.** Candida albicans
+
+**Poprawna odpowiedź:** A — Prevotella intermedia
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q 58) i 2023 (Q 22) — ***Prevotella intermedia*** jako patogen ciążowego periodontitis/gingivitis. Mechanizm: bakteria wykorzystuje **progesteron i estradiol** jako *zamiennik menadionu* (witaminy K) w metabolizmie. W ciąży (zwłaszcza II/III trymestr) skok hormonów → wybuchowy wzrost *P. intermedia* w biofilmie poddziąsłowym → **gingivitis gravidarum** (krwawienie, obrzę k) lub klasyczne **epulis ciążowe** (nadziąślak, hemorrhagic granulation tissue). Mechanizm **odwracalny** — populacja wraca do normy po porodzie. Pułapki: *P. gingivalis* ( C) — przewlekłe periodontitis dorosłych, niezhormonozależne. *AA* ( B) — dziecięce/agresywne. *F. nucleatum* ( D) — *bridge*. *C. albicans* ( E) — kandydoza, nie gingivitis. Klucz: estrogen+progesteron → *P. intermedia* (klasyk testowany 3 razy w 3 latach!).
+
+---
+
+## mju-zal-119
+
+Nasilenie tempa wzrostu Porphyromonas gingivalis oraz aktywności gingipainy jest uwarunkowane:
+
+- [ ] **A.** niskim odczynem pH
+- [✓] **B.** wysokimi stężeniami heminy
+- [ ] **C.** obecnością innych pałeczek beztlenowych
+- [ ] **D.** prawidłowe są odpowiedzi A i B
+- [ ] **E.** prawidłowe są odpowiedzi A, B, C
+
+**Poprawna odpowiedź:** B — wysokimi stężeniami heminy
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q59) — ***P. gingivalis*** **asacharolityczna**, energetycznie zależna od proteolizy białek. Kluczowy pierwiastek: **żelazo z heminy** (Fe-protoporfiryna IX z hemoglobiny). Bakteria zdobywa Fe przez **gingipainy** (proteazy cysteinowe Rgp/Kgp) degradujące Hb i białka gospodarza → uwolniony hem akumulowany w błonie zewnętrznej daje *czarny pigment kolonii* (stąd *porphyrin* w nazwie!). **Wysoka hemina = wybuchowy wzrost + gingipainy**. Pułapki: **( A) niskie pH** — odwrócenie; *P. gingivalis* preferuje pH **alkaliczne** (~7,5-8 kieszonki). Stąd D i E są błędne — A jest fałszem. **( C) inne beztlenowce** — pomagają polimikrobiologicznie, ale nie warunkują bezpośrednio gingipain jak hemina. Klucz: hemina = paliwo *P. gingivalis*.
+
+---
+
+## mju-zal-120
+
+W wyniku trawienia białek wartość pH płynu dziąsłowego sięga:
+
+- [ ] **A.** <6
+- [ ] **B.** 6,4-6,9
+- [ ] **C.** 7,0
+- [✓] **D.** 7,4-7,9
+- [ ] **E.** >8
+
+**Poprawna odpowiedź:** D — 7,4-7,9
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q 60) i 2023 (Q 23) — **GCF ma pH alkaliczne 7,4-7,9**. Mechanizm: bakterie kieszonki (*P. gingivalis*, *Treponema*, *Prevotella*) są **asacharolityczne** — proteolizują białka (kolagen, hemoglobinę, GCF) → produkty końcowe: **amoniak (NH3)**, aminy (kadawerina, putrescyna), siarczki lotne (H2S, merkaptan metylu — VSC odpowiedzialne za halitozę poddziąsłową). Wszystko alkaliczne. Dwa ”światy” pH jamy ustnej: **naddziąsłowo kwas** (próchnica, *S. mutans*, pH 4,5-5,5), **poddziąsłowo zasada** (periodontoza, pH 7,5-8). Stąd periodontopatogeny lubią głębokie kieszonki — środowisko sprzyja ich metabolizmowi. Klucz: ten klasyczny pytany 3 razy w 3 latach (2019, 2022, 2023) — pamiętaj na zawsze: **GCF = alkaliczne 7,4-7,9**.
+
+---
+
+## mju-zal-121
+
+Do paciorkowców Gram-dodatnich, alfa-hemolizujących, katalazo-ujemnych, których wzrost jest hamowany przez żółć i optochinę należy:
+
+- [ ] **A.** Streptococcus mutans
+- [ ] **B.** Streptococcus pyogenes
+- [ ] **C.** Streptococcus anginosus
+- [✓] **D.** Streptococcus pneumoniae
+- [ ] **E.** Streptococcus salivarius
+
+**Poprawna odpowiedź:** D — Streptococcus pneumoniae
+
+**Wyjaśnienie:**
+
+***Streptococcus pneumoniae*** ma 4 klasyczne testy diagnostyczne odróżniające od *viridans*: **( 1) α-hemoliza** ✓ (jak inne *mitis*-group), **( 2) katalaza-ujemna** ✓ (jak wszystkie *Streptococcus*), **( 3) wrażliwość na *optochinę*** (etylhydrochlorid hydrokupreiny) — strefa zahamowania ≥14 mm na agarze krwawym, kluczowy test rutynowy; **( 4) liza w żółci** (*bile solubility test*) — pneumokoki rozpuszczają się w 10% deoksycholanie sodu w ciągu kilku minut (jedyne paciorkowce z tą cechą). Pułapki: **( A) S. mutans** — γ-hemoliza zwykle, niewrażliwy na żółć. **( B) S. pyogenes** — **β-hemoliza** ✗, opornym na optochinę. **( C) S. anginosus** — α/β zmienny, opornym. **( E) S. salivarius** — γ (Q86 z 2022). Klucz mnemoniczny: *optochin + bile = pneumonie*.
+
+---
+
+## mju-zal-122
+
+Gram-dodatnie, niekwasooporne i nieruchliwe, nitkowate rozgałęzione pałeczki obecne w ropie sączącej się z przetok, tworzące agregaty w postaci żółtawych ”ziaren siarkowych” to drobnoustroje z gatunku:
+
+- [ ] **A.** Streptococcus mutans
+- [ ] **B.** Lactobacillus acidophilus
+- [✓] **C.** Actinomyces israelii
+- [ ] **D.** Nocardia asteroides
+- [ ] **E.** Corynebacterium matruchotii
+
+**Poprawna odpowiedź:** C — Actinomyces israelii
+
+**Wyjaśnienie:**
+
+***Actinomyces israelii*** — klasyk **promienicy** (*actinomycosis*; Q28 z 2023, Q52 z 2022). **Ziarna siarkowe** (*sulfur granules*) to żółtawe makroskopowe agregaty mikrobiologiczne (200-300 µ m) widoczne w ropie z przetok — w mikroskopie składają się z radialnie ułożonych nitek bakteryjnych otoczonych eozynofilną otoczką (z odkładaniem białek gospodarza). Pułapka: ***Nocardia asteroides*** ( D) — **bardzo podobna** morfologicznie (nitkowate Gram+ pałeczki rozgałęzione, czasem ziarna siarkowe), ale różnica: ***Nocardia jest CZĘŚCIOWO KWASOOPORNA*** (modyfikowane ZN ujawnia kwasoodporność). Pytanie wyraźnie mówi *niekwasooporna* — to eliminuje Nocardię, zostaje *A. israelii*. **( E) C. matruchotii** — Gram+, ale ma **krótkie pałeczki z włókienkami** (*test tube brush*), nie nitki. Klucz: ziarna siarkowe + niekwasooporne = *A. israelii*.
+
+---
+
+## mju-zal-123
+
+Który z poniżej wymienionych drobnoustrojów wytwarza zewnątrzkomórkowo lewan (polimer fruktozy) z sacharozy, co powoduje wzrost w postaci charakterystycznie wielkich, śluzowatych kolonii?
+
+- [✓] **A.** Streptococcus salivarius
+- [ ] **B.** Lactobacillus acidophilus
+- [ ] **C.** Streptococcus anginosus
+- [ ] **D.** Corynebacterium matruchotii
+- [ ] **E.** Streptococcus milleri
+
+**Poprawna odpowiedź:** A — Streptococcus salivarius
+
+**Wyjaśnienie:**
+
+Powtórka z 2023 (Q34) — ***S. salivarius*** produkuje **lewan** (polimer fruktozy) z sacharozy dzięki enzymowi **fruktozylotransferazie (FTF)**. Mechanizm: sacharoza → glukoza (uwolniona) + fruktoza polimeryzowana do **lewanu** = matryca kolonii. Na agarze z sacharozą (np. MSA) → **wielkie, śluzowate kolonie** typu *miodu pszczelego*. Klasyczna nisza: **powierzchnia języka** (*saliva-rius* = ślina/język). Pułapka: ***S. mutans*** produkuje **glukany (mutany)** glukozylotransferazą (GTF), NIE lewan — para często mylona. **( C) S. anginosus** / **( E) S. milleri** — grupa anginosus, brak FTF. **( D) C. matruchotii** — Gram+, ale produkcja głównie krótkich włókien, nie polimerów fruktozy. Klucz: GTF vs FTF, glukany vs lewan, mutans vs salivarius — dwa systemy enzymatyczne, dwa polimery, dwie nisze.
+
+---
+
+## mju-zal-124
+
+Poniżej przedstawiono zestawienie drobnoustrojów zasiedlających środowisko jamy ustnej:
+a) Streptococcus mutans
+b) Corynebacterium matruchotii
+c) Porphyromonas gingivalis
+d) Veillonella parvula
+e) Actinomyces israelii
+f) Neisseria sicca.
+
+Wskaż zestaw zawierający jedynie bakterie Gram-dodatnie:
+
+- [ ] **A.** a, b, c, d
+- [ ] **B.** a, b, e, f
+- [✓] **C.** a, b, e
+- [ ] **D.** b, c, d
+- [ ] **E.** d, e, f
+
+**Poprawna odpowiedź:** C — a, b, e
+
+**Wyjaśnienie:**
+
+**Gram-dodatnie** z listy: **( a) S. mutans** — ziarniak Gram+, kariogenny. **( b) C. matruchotii** — pałeczka Gram+, *test tube brush*. **( e) A. israelii** — nitkowata pałeczka Gram+, promienica (Q22). Razem **a, b, e = C**. **Gram-ujemne** odrzucone: **( c) P. gingivalis** — pałeczka Gram(-), czerwony kompleks (Q19). **( d) V. parvula** — Gram(-) ziarniak beztlenowy (Q66 z 2022). **( f) N. sicca** — Gram(-) dwoinka tlenowa (Q11 z 2023). Pułapka: wszystkie opcje zawierają mix Gram+/Gram(-), tylko **C** ma wyłącznie Gram+. Klucz mnemoniczny — *Gram dodatnie w jamie ustnej: **SAL** = Streptococcus, Actinomyces, Lactobacillus + Corynebacterium*. Wszystko inne (Veillonella, Neisseria, Porphyromonas, Prevotella, Fusobacterium) = Gram(-).
+
+---
+
+## mju-zal-125
+
+Wskaż prawidłowe stwierdzenie dotyczące hodowli promieniowców:
+
+- [ ] **A.** rosną szybko w warunkach tlenowych, na agarze z dodatkiem glukozy i krwi lub surowicy, po dwóch dniach inkubacji widoczne są duże, śluzowate kolonie przypominające okruchy chleba lub powierzchnię zęba trzonowego
+- [✓] **B.** rosną wolno w warunkach beztlenowych, na agarze z dodatkiem glukozy i krwi lub surowicy, po tygodniu inkubacji widoczne są małe kremowobiałe kolonie przypominające okruchy chleba lub powierzchnię zęba trzonowego
+- [ ] **C.** rosną wolno w warunkach beztlenowych, są mało wymagające, wzrastają na agarze zwykłym, po tygodniu inkubacji widoczne są kolonie wżerające się w powierzchnię agaru
+- [ ] **D.** rosną szybko w warunkach tlenowych, są mało wymagające, wzrastają na agarze zwykłym, po dwóch dniach widoczne są kolonie wżerające się w powierzchnię
+- [ ] **E.** rosną szybko w warunkach tlenowych, są mało wymagające, wzrastają na agarze zwykłym, po dwóch dniach inkubacji widoczne są duże, śluzowate kolonie przypominające głowę meduzy
+
+**Poprawna odpowiedź:** B — rosną wolno w warunkach beztlenowych, na agarze z dodatkiem glukozy i krwi lub surowicy, po tygodniu inkubacji widoczne są małe kremowobiałe kolonie przypominające okruchy chleba lub powierzchnię zęba trzonowego
+
+**Wyjaśnienie:**
+
+**Hodowla *Actinomyces israelii*** wymaga: **( 1) warunki beztlenowe** (bezwzględny beztlenowiec;
+
+Q52 z 2022), **( 2) bogate podłoże** (krew, surowica, glukoza — *promieniowce wymagające*), **( 3) długi czas inkubacji** — **5-7 dni**, **( 4) kolonie *molarne*** — kremowobiałe, guzkowate, przypominające powierzchnię żującą zęba trzonowego (*molar tooth colonies* — patognomoniczne!). Stąd **B**. Pułapki: **(A)** *szybki tlenowy wzrost po 2 dniach* — odwrócenie wszystkich kluczowych cech. **(C, D)** *kolonie wżerające się* — to ***Eikenella corrodens*** (*corroding* = korodująca), nie *Actinomyces*; pomylenie podobnych gatunków periodontologicznych. **(E)** *głowa meduzy* — to ***Bacillus anthracis*** (laseczka wąglika); odległa pułapka taksonomiczna. Klucz: Actinomyces = beztlenowy wolny *molar tooth*;
+
+Eikenella = wżerający;
+
+Bacillus = meduza.
+
+---
+
+## mju-zal-126
+
+Rodzaj próchnicy obejmującej kilka przednich zębów w szczęce niemowląt związanej z karmieniem butelką to:
+
+- [ ] **A.** próchnica wczesna
+- [✓] **B.** próchnica ostra
+- [ ] **C.** próchnica wtórna
+- [ ] **D.** próchnica bruzdowa
+- [ ] **E.** wszystkie powyższe odpowiedzi są nieprawidłowe
+
+**Poprawna odpowiedź:** B — próchnica ostra
+
+**Wyjaśnienie:**
+
+**Próchnica butelkowa** (*bottle caries*, *baby bottle tooth decay*) — atakuje **siekacze i kły szczęki** u niemowląt karmionych butelką ze słodzonymi napojami (zwłaszcza nocą, gdy ślina nie płynie). Klasyfikowana w polskim mianownictwie jako **próchnica ostra** (*caries acuta* / *rampant caries*) — szybko postępująca, miękka, jasnożółta, wielopowierzchniowa. **UWAGA terminologiczna**: w nowszej literaturze anglosaskiej używa się określenia *Early Childhood Caries (ECC)* — co w polskim często tłumaczone jako *próchnica wczesnego dzieciństwa* lub *próchnica wczesna*, więc opcja **A** też brzmi rozsądnie. Klucz jednak idzie za **B (próchnica ostra)** — bo kliniczna manifestacja to klasyczna ostra postać (szybka destrukcja, miękkie tkanki). *Próchnica wtórna* ( C) — przy/pod wypełnieniami (Q127). *Próchnica bruzdowa* ( D) — w bruzdach trzonowców, nie u niemowląt. Wybierz B, ale wiedz że ECC to to samo zjawisko w innym nazewnictwie.
+
+---
+
+## mju-zal-127
+
+Do rozwoju próchnicy wtórnej dochodzi:
+
+- [ ] **A.** przy zmniejszonym wydzielaniu śliny
+- [ ] **B.** tylko na siekaczach
+- [ ] **C.** najczęściej u małych dzieci
+- [ ] **D.** tylko na trzonowcach
+- [✓] **E.** pod wypełnieniami i wokół nich, niezależnie od rodzaju zębów
+
+**Poprawna odpowiedź:** E — pod wypełnieniami i wokół nich, niezależnie od rodzaju zębów
+
+**Wyjaśnienie:**
+
+**Próchnica wtórna** (*caries secundaria*, *recurrent caries*) = nowy ubytek **przy granicy wypełnienia z zębem** (margines wypełnienia). Występuje na **każdym zębie z wypełnieniem** — nie ma predylekcji do konkretnej grupy. Etiologia: mikroprzecieki (*microleakage*) między materiałem (amalgamat, kompozyt) a zębem → bakterie i kwasy wnikają w szczelinę → demineralizacja od strony granicy. Czynniki ryzyka: złe założenie wypełnienia, korozja amalgamatu, polimeryzacyjny skurcz kompozytu (~2-3% obj.), pęknięcia szkliwa wokół brzegu. Pułapki — wszystkie ”tylko...” (B, D) lub *małe dzieci* ( C) to fałszywe ograniczenia. *Kserostomia* ( A) — ogólny czynnik ryzyka próchnicy (Q9 z 2023), ale **nie definiuje próchnicy wtórnej**. Klucz: próchnica wtórna = **pod/wokół wypełnień, dowolne zęby**.
+
+---
+
+## mju-zal-128
+
+Spośród wymienionych gatunków bakterii, największy udział w rozwoju próchnicy ma:
+
+- [ ] **A.** Streptococcus sanguinis
+- [ ] **B.** Veillonella dispar
+- [ ] **C.** Porphyromonas gingivalis
+- [ ] **D.** Actinomyces naeslundii
+- [✓] **E.** Streptococcus mutans
+
+**Poprawna odpowiedź:** E — Streptococcus mutans
+
+**Wyjaśnienie:**
+
+***Streptococcus mutans*** — **kluczowy patogen próchnicy**, inicjator demineralizacji (Q10 z 2023). Cechy odróżniające go od innych paciorkowców: **( 1) silnie kwasolubny** (do pH ~4,5), **( 2) silnie kwasotwórczy** (laktacydoza), **( 3) sacharozozależny** (jedyny enzym GTF skutecznie wytwarza glukany matrycowe — Q6 z 2023), **( 4) wiążę się z osłonką nabytą przez antygen I/II (PAc)**, **( 5) toleruje skrajne pH dzięki F1F0-ATPazom**. Pułapki: **( A) S. sanguinis** — pionier **ZDROWEJ** płytki, *anti-mutans*; im więcej S. sanguinis tym mniej S. mutans (klasyczny *ecological plaque hypothesis*). **( B) V. dispar** — konsumuje kwas mlekowy (Q19/2023), funkcja anty-kariogenne. **( C) P. gingivalis** — patogen periodontitis, nie próchnicy (pH alkaliczne!). **( D) A. naeslundii** — pionier i ważny w próchnicy korzenia, ale nie próchnicy szkliwa. Klucz: *S. mutans = arch-villain*.
+
+---
+
+## mju-zal-129
+
+Teoria DLVO to teoria tłumacząca:
+
+- [ ] **A.** proces zasiedlania jamy ustnej mający miejsce u noworodka po porodzie drogami natury
+- [ ] **B.** proces zasiedlania jamy ustnej noworodka odbywający się po porodzie zakończonym cięciem cesarskim
+- [✓] **C.** proces oddziaływania między mikroorganizmem a podłożem
+- [ ] **D.** określa tempo zasiedlania jamy ustnej przez paciorkowce
+- [ ] **E.** tłumaczy proces próchnicy
+
+**Poprawna odpowiedź:** C — proces oddziaływania między mikroorganizmem a podłożem
+
+**Wyjaśnienie:**
+
+**Teoria DLVO** (**D**erjaguin-**L**andau-**V**erwey-**O**verbeek) — Q12 z 2023. Opisuje **adhezję cząstek koloidalnych (w tym bakterii) do powierzchni** jako wypadkową dwóch sił: **(1)** *przyciągających* sił van der Waalsa (krótki zasięg, ~1 nm) i **(2)** *odpychających* sił elektrostatycznych (oba obiekty — bakteria i szkliwo — zwykle naładowane ujemnie). Bakteria pokonuje barierę odpychania na dystansie ~10-20 nm dzięki adhezynom (białkom fimbrialnym wiążącym do osłonki nabytej). To stadium **odwracalnej adhezji** (faza 1 tworzenia biofilmu — Q29/2023). Pułapki: **(A, B)** *zasiedlanie noworodka* — proces transmisji mikrobioty od matki (poród naturalny vs cesarka), nie ma związku z DLVO. **(D)** *tempo zasiedlania* — kinetyka, nie fizyka adhezji. **(E)** *próchnica* — DLVO opisuje krok 1 (adhezję), nie cały proces próchnicy.
+
+---
+
+## mju-zal-130
+
+U 40-letniego pacjenta po leczeniu immunosupresyjnym stwierdzasz obecność białego nalotu na powierzchni błony śluzowej policzków i języka. Pobrany wymaz najlepiej posiać na podłoże:
+
+- [ ] **A.** agar czekoladowy
+- [ ] **B.** agar z krwią
+- [ ] **C.** Löwensteina-Jensena
+- [✓] **D.** Sabourauda
+- [ ] **E.** Chapmana
+
+**Poprawna odpowiedź:** D — Sabourauda
+
+**Wyjaśnienie:**
+
+**Biały nalot na śluzówce u pacjenta immunosupresyjnego** = **kandydoza rzekomobłoniasta** (*pseudomembranous candidiasis*, *thrush*) — ***Candida albicans*** (lub *C. glabrata*, *C. krusei*, *C. auris*). Drożdżaki to **grzyby**, więc podłoże specjalistyczne: **Sabouraud** ( D) — niskie pH (5,6), wysoka zawartość glukozy, antybiotyki bakteriostatyczne (chloramfenikol/gentamycyna) — selekcjonuje grzyby przeciw bakteriom (Q44 z 2023). Pułapki: **( A) agar czekoladowy** — dla *Haemophilus*, *Neisseria* (Q106). **( B) agar z krwią** — uniwersalny dla większości bakterii. **( C) Löwenstein-Jensen** — dla prątków (Q46 z 2023). **( E) Chapman** — dla gronkowców (Q104, Q105). Wszystkie inne to **bakterie** — nie pomogą w diagnostyce grzybiczej. Klinicznie: leczenie kandydozy → nystatyna miejscowo, flukonazol systemowo; korekta immunosupresji jeśli możliwa.
+
+---
+
+## mju-zal-131
+
+Wskaż prawdziwe zdanie dotyczące środków stosowanych do zwalczania próchnicy:
+
+- [ ] **A.** w niskich wartościach pH bakterie są mniej wrażliwe na działanie związków fluoru
+- [ ] **B.** najskuteczniejszym sposobem profilaktyki próchnicy jest zastąpienie w diecie sacharozy sorbitolem
+- [ ] **C.** najefektywniejsze w zwalczaniu próchnicy są antybiotyki β-laktamowe
+- [✓] **D.** zmniejszenie produkcji kwasów przez paciorkowce zmienne może być spowodowane zastosowaniem zarówno chlorheksydyny, jak i związków fluoru
+- [ ] **E.** wszystkie powyższe odpowiedzi są nieprawidłowe
+
+**Poprawna odpowiedź:** D — zmniejszenie produkcji kwasów przez paciorkowce zmienne może być spowodowane zastosowaniem zarówno chlorheksydyny, jak i związków fluoru
+
+**Wyjaśnienie:**
+
+**Chlorheksydyna i fluor** — dwa pillary chemicznej profilaktyki próchnicy, oba **redukują produkcję kwasów** przez *S. mutans*: **( 1) Fluor** (Q91 z 2022) — hamuje enolazę (glikoliza), PEP-PTS (transport cukrów), syntezę glikogenu. **( 2) Chlorheksydyna** — biguanid kationowy, niszczy błonę cytoplazmatyczną bakterii Gram+, hamuje metabolizm i adhezję; *„złoty standard”* płukania w periodontologii (0,12-0,2%). Pułapki: **( A) odwrócenie** — w **niskim pH fluor jest BARDZIEJ aktywny** (HF, niezdysocjowany kwas fluorowodorowy, przenika błonę cytoplazmatyczną; w cytoplazmie pH wzrasta → dysocjacja → F- pułapkuje H+ co osłabia bakterię). **( B) sorbitol** — niefermentowalny, ale tylko *pasywny zamiennik*; **ksylitol** (Q80 z 2022) jest aktywny inhibicyjnie, sorbitol nie. **( C) antybiotyki β-laktamowe** — absurd; próchnicę leczy się higieną + fluorem + chlorheksydyną + dietą, antybiotyki nieskuteczne (biofilm + dysbioza populacji).
+
+---
+
+## mju-zal-132
+
+Wskaż, które powierzchnie zębów są najbardziej podatne na próchnicę:
+
+- [ ] **A.** powierzchnie styczne zębów żuchwy
+- [✓] **B.** powierzchnie żujące trzonowców
+- [ ] **C.** powierzchnie językowe zębów żuchwy
+- [ ] **D.** powierzchnie językowe zębów szczęki górnej
+- [ ] **E.** powierzchnie policzkowe zębów szczęki górnej
+
+**Poprawna odpowiedź:** B — powierzchnie żujące trzonowców
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q 77) — **powierzchnie żujące (okluzyjne) trzonowców** są najbardziej kariogenne z trzech powodów: **( 1) głębokie bruzdy i dołki** (*fissure caries*) — fizyczna nisza dla *S. mutans* niedostępna dla szczotki ani języka; **( 2) długi okres dojrzewania szkliwa po wyrznięciu** (~2-3 lata) — *posteruptywna dojrzewałość* — świeże szkliwo bardziej porowate; **( 3) położenie z tyłu łuku** — pacjenci źle szczotkują tylne zęby. Hierarchia podatności: **żujące > styczne > pozostałe**. *Powierzchnie styczne* (A, *aproksymalne*) — drugie w kolejności (Q14 z 2023 — *Actinomyces*-dominacja). *Powierzchnie językowe i policzkowe* (C, D, E) — najlepiej obmywane przez ślinę i ruchy mięśni → najmniejsze ryzyko. Profilaktyka: **lakowanie bruzd** (sealants) na pierwszych i drugich trzonowcach świeżo wyrzniętych — najskuteczniejsza metoda zapobiegania.
+
+---
+
+## mju-zal-133
+
+Ryzyko rozwinięcia próchnicy szkliwa:
+
+- [ ] **A.** jest wyższe u osób starszych niż u młodzieży
+- [✓] **B.** rośnie proporcjonalnie do ilości spożywanych pokarmów z dużą zawartością sacharozy
+- [ ] **C.** maleje wraz ze spadkiem pH w jamie ustnej
+- [ ] **D.** jest niższe u osób z zespołem Sjögrena
+- [ ] **E.** jest wyższe u osób podczas antybiotykoterapii
+
+**Poprawna odpowiedź:** B — rośnie proporcjonalnie do ilości spożywanych pokarmów z dużą zawartością sacharozy
+
+**Wyjaśnienie:**
+
+**Próchnica szkliwa** = funkcja **częstości spożywania sacharozy** (Q6 z 2023 — sacharoza to *arch-villain*). Każdy kontakt z cukrem → **krzywa Stephana**: spadek pH płytki poniżej krytycznej wartości 5,5 przez ~30-60 min → demineralizacja. Wzór ryzyka: **liczba ekspozycji × ich częstość >> ilość jednorazowa**. To dlatego *5 cukierków przez dzień* jest groźniejsze niż *1 cukierek + 1 odpowiednia higiena*. Pułapki — wszystkie odwrócenia: **(A)** *starsi* — większe ryzyko **próchnicy korzenia** (Q7/2023), ale nie szkliwa; szkliwo dojrzewa, staje się **bardziej oporne** z wiekiem (większa krystaliczność, mniej węglanu). **( C) odwrócenie** — niskie pH **rozpuszcza** szkliwo, zwiększa ryzyko, nie zmniejsza! **( D) odwrócenie** — *Sjögren* powoduje kserostomię (Q9/2023) → **wyższe** ryzyko, nie niższe. **( E) antybiotykoterapia** — może zaburzać mikrobiotę, ale nie zwiększa bezpośrednio ryzyka próchnicy (poza długoterminową dysbiozą).
+
+---
+
+## mju-zal-134
+
+Wśród wymienionych poniżej wskaż prawidłowe zestawienie cech morfologicznych i biochemicznych z gatunkiem drobnoustroju:
+
+- [ ] **A.** Porphyromonas gingivalis -- Gram-dodatnie ziarniakopałeczki, które cechują się zdolnością pełzania
+- [ ] **B.** Lactobacillus acidophilus -- Gram-ujemne, alfa-hemolizujące, katalazododatnie ziarniaki wytwarzające spory
+- [ ] **C.** Streptococcus mutans -- bezwzględnie beztlenowe, nitkowate bakterie, które są często gramzmienne
+- [ ] **D.** Actinomyces israelii -- Gram-dodatnie bakterie sacharolityczne, które wytwarzają zielonożółty pigment
+- [✓] **E.** Corynebacterium matruchotii -- Gram-dodatnie bakterie, posiadające długie włókienka wyrastające na zewnątrz krótkich, grubych, pałeczkowatych komórek
+
+**Poprawna odpowiedź:** E — Corynebacterium matruchotii -- Gram-dodatnie bakterie, posiadające długie włókienka wyrastające na zewnątrz krótkich, grubych, pałeczkowatych komórek
+
+**Wyjaśnienie:**
+
+***Corynebacterium matruchotii*** ma charakterystyczny **morfologiczny wygląd ”testu rurki probówkowej”** (*test tube brush*) — krótkie, grube pałeczki Gram+ z **długimi włókienkami** wyrastającymi na zewnątrz, dające w mikroskopie obraz przypominający szczotkę do mycia probówek. To unikalna cecha różnicująca w mikroskopii biofilmu. Pozostałe opisy to **klasyczne odwrócenia cech** (zgodnie z regułą *jeden niuans*): **( A) P. gingivalis** — **Gram-UJEMNE pałeczki**, nie *Gram(+) ziarniakopałeczki*; nie pełza (nieruchliwa). **( B) L. acidophilus** — **Gram-DODATNIE pałeczki, katalaza-UJEMNE**, **bez spor** (Lactobacillus nie wytwarza przetrwalników!). **( C) S. mutans** — **fakultatywny tlenowiec, ziarniak**, NIE *beztlenowy nitkowaty gramzmienny*. **( D) A. israelii** — **nie wytwarza zielonożółtego pigmentu** (to *N. subflava* — Q18 z 2023); jest sacharolityczna ale pigmentu brak. Klucz: każda wadliwa opcja ma odwrócone **2-3 cechy** naraz — najsilniejsza pułapka typu *pakiet bzdur*.
+
+---
+
+## mju-zal-135
+
+Najczęstsza odmiana promienicy, odpowiadająca za 50-70% przypadków choroby to:
+
+- [ ] **A.** promienica brzuszna
+- [✓] **B.** promienica szyjno-twarzowa
+- [ ] **C.** promienica piersiowa
+- [ ] **D.** promienica opon mózgowo-rdzeniowych
+- [ ] **E.** promienica rozsiana
+
+**Poprawna odpowiedź:** B — promienica szyjno-twarzowa
+
+**Wyjaśnienie:**
+
+**Promienica szyjno-twarzowa** (*cervicofacial actinomycosis*) — **50-70%** wszystkich przypadków promienicy (Q28 z 2023, Q52 z 2022). Patogeneza: ***Actinomyces israelii*** (komensal jamy ustnej, Gram+ pałeczka beztlenowa nitkowata) wnika w tkanki przez **uszkodzenia** — ekstrakcje zębów, urazy, próchnica głęboka, zabiegi stomatologiczne. Klinicznie: **przewlekły obrzęk** okolicy żuchwowo-szyjnej (*„lumpy jaw”*), **liczne przetoki** z **żółtawymi ziarnami siarkowymi** w wydzielinie. Lokalizacje: kąt żuchwy, okolica skroniowa, dół zaszczękowy. Pozostałe odmiany: **(A)** *brzuszna* (~20%) — po appendektomii, dziurawienie jelita. **(C)** *piersiowa* (~15%) — aspiracja drobnoustrojów do płuc. **(D, E)** *OUN, rozsiana* — rzadkie. Leczenie: **penicylina** długoterminowo (kilka miesięcy) + drenaż ropni. Klucz mnemoniczny: *promienica = szyja-brzuch-pierś w kolejności częstości*.
+
+---
+
+## mju-zal-136
+
+Proteazy IgA, pile, lipooligosacharyd to czynniki zjadliwości wytwarzane przez:
+
+- [ ] **A.** Moraxella catarrhalis
+- [ ] **B.** Veillonella parvula
+- [ ] **C.** Haemophilus influenzae
+- [ ] **D.** Neisseria meningitidis
+- [✓] **E.** Neisseria gonorrhoeae
+
+**Poprawna odpowiedź:** E — Neisseria gonorrhoeae
+
+**Wyjaśnienie:**
+
+***Neisseria gonorrhoeae*** (gonokoki) — patogen rzeżączki, ma **trzy klasyczne czynniki zjadliwości**: **( 1) Proteazy IgA1** — specyficzne enzymy rozkładające ludzką IgA1 (główne przeciwciało śluzówkowe) → unika immune exclusion. **( 2) Pile (fimbrie)** — białkowe wypustki do adhezji do nabłonka urogenitalnego/spojówkowego; podlegają **zmienności antygenowej** (rearanżacje genu pilS/pilE) co utrudnia odpowiedź immunologiczną. **( 3) LOS (lipooligosacharyd)** — odmiana LPS bez antygenu O-specyficznego, ale z silnym lipidem A → endotoksyna, aktywuje cytokiny (gorączka, zapalenie). Również *N. meningitidis* ( D) ma te trzy cechy, ale klinicznie kontekst pytania (proteaza IgA = najbardziej kojarzona z rzeżączką STD) wskazuje na **gonorrhoeae**. *Moraxella catarrhalis* ( A) — produkuje β-laktamazy (Q67/2022), ale nie ten profil. *Veillonella* ( B) i *Haemophilus* ( C) — różne czynniki zjadliwości.
+
+---
+
+## mju-zal-137
+
+Który z wymienionych enzymów wytwarzanych przez bakterie nie przyczynia się do osłabienia spójności tkanek przyzębia:
+
+- [ ] **A.** peptydaza
+- [ ] **B.** hialuronidaza
+- [✓] **C.** glukozylotransferaza
+- [ ] **D.** chondroitynosulfataza
+- [ ] **E.** prawidłowe odpowiedzi to A i C
+
+**Poprawna odpowiedź:** C — glukozylotransferaza
+
+**Wyjaśnienie:**
+
+**Glukozylotransferaza (GTF)** *S. mutans* **buduje** matrycę biofilmu (glukany z sacharozy — Q6, Q23, Q33 z 2023), NIE niszczy tkanek przyzębia. To enzym **konstrukcyjny**, nie destrukcyjny. Stąd **C** — nie przyczynia się do osłabienia spójności tkanek. Pozostałe enzymy **faktycznie niszczą** tkanki przyzębia: **( A) Peptydazy** (m.in. gingipainy *P. gingivalis*) — rozkładają białka osłonki nabytej, kolagen, immunoglobuliny. **( B) Hialuronidaza** — degraduje kwas hialuronowy macierzy zewnątrzkomórkowej tkanek miękkich (*spreading factor* z *Streptococcus*, *Staphylococcus*). **( D) Chondroitynosulfataza** — rozkłada siarczany chondroityny w macierzy więzadeł ozębnej. Klucz dydaktyczny: GTF jest *pro-biofilmowa* (matryca → ochrona → trwałość), nie *pro-destrukcyjna* (kolagenoliza).
+
+---
+
+## mju-zal-138
+
+Bakterie należące do rodzaju Veillonella są bezwzględnie beztlenowymi Gram-ujemnymi ziarenkowcami, często izolowanymi z jamy ustnej. Najczęściej spotykanym gatunkiem jest Veillonella parvula. Cechą charakterystyczną tego gatunku jest:
+
+- [ ] **A.** wytwarzanie czynnika X
+- [ ] **B.** wytwarzanie czynnika indukującego epiteliotoksynę
+- [✓] **C.** przekształcanie kwasu mlekowego do kwasów: octowego i propionowego
+- [ ] **D.** przekształcanie kwasu pirogronowego do acetylo-CoA
+- [ ] **E.** przekształcanie kwasu mlekowego do kwasu akrylowego
+
+**Poprawna odpowiedź:** C — przekształcanie kwasu mlekowego do kwasów: octowego i propionowego
+
+**Wyjaśnienie:**
+
+Powtórka z 2022 (Q 66) i 2023 (Q 19) — ***Veillonella*** to **”uliczny śmieciarz”** jamy ustnej, fermentuje **kwas mlekowy** (produkowany przez *S. mutans*, *Lactobacillus*) do **kwasów: octowego i propionowego** + CO2 + H2. Metabolizm odbywa się przez **szlak metylomalonyl-CoA / sukcynian** (klasyczna fermentacja propionianowa). Sumarycznie: **redukcja najsilniejszego kariogennego kwasu** → potencjalna funkcja **anty-kariogenne** w biofilmie. Pułapki: **( A) czynnik X (hemina)** — produkuje gospodarz (z hemu), nie *Veillonella*; potrzebne dla *Haemophilus* (Q106). **( B) epiteliotoksyna** — niespecyficzny czynnik. **( D) pirogronian → acetylo-CoA** — ogólny szlak fermentacji glukozy w cyklu Krebsa, nie specyficzny dla *Veillonella* (która nie fermentuje glukozy w ogóle!). **( E) kwas akrylowy** — atypowy produkt, brak znaczenia klinicznego. Klucz: *Veillonella = lactate → acetate + propionate*.
+
+---
+
+## mju-zal-139
+
+Do hodowli Bordetella pertussis najczęściej stosuje się:
+
+- [ ] **A.** agar z mąką kukurydzianą
+- [ ] **B.** podłoże Robron
+- [✓] **C.** podłoże Bordeta-Gengou
+- [ ] **D.** podłoże Bairda-Parkera
+- [ ] **E.** bulion z żółcią
+
+**Poprawna odpowiedź:** C — podłoże Bordeta-Gengou
+
+**Wyjaśnienie:**
+
+***Bordetella pertussis*** (krztusiec, *whooping cough*) — Gram(-) pałeczka, niezwykle wymagająca w hodowli. **Podłoże Bordet-Gengou** (1906) to klasyk — zawiera **ekstrakt ziemniaków + glicerol + krew baranią/króliczą + sole + agar**, niskie pH ~6,8. Kolonie *B. pertussis* rosną wolno (3-7 dni), drobne, błyszczące, *mercury-droplet appearance*. Klinicznie: diagnostyka rzadko hodowlana dzisiaj (bardzo wymagająca) — głównie **PCR z wymazu nosogardłowego** + serologia (anty-PT IgG). Pułapki: **( A) mąka kukurydziana** — *Candida albicans* (test germ tube i chlamydospor). **( B) Robron** — nazwa nietypowa, prawdopodobnie nieistniejąca pożywka standardowa. **( D) Baird-Parker** — gronkowce (selektor dla *S. aureus*, redukcja telluru → czarne kolonie). **( E) bulion z żółcią** — test selektywny dla *Streptococcus pneumoniae* lub *Salmonella* (bile broth).
+
+---
+
+## mju-zal-140
+
+Bakterie te rosną w atmosferze tlenu z dodatkiem 5-10% CO2. Na agarze z krwią rosną w postaci białych, przejrzystych kolonii nie powodując hemolizy.
+
+Wewnętrzna struktura kolonii przypomina kształtem gwiazdę.
+
+Powyższy opis dotyczy:
+
+- [ ] **A.** Haemophilus influenzae
+- [ ] **B.** Capnocytophaga gingivalis
+- [ ] **C.** Eikenella corrodens
+- [✓] **D.** Aggregatibacter actinomycetemcomitans
+- [ ] **E.** Bordetella pertussis
+
+**Poprawna odpowiedź:** D — Aggregatibacter actinomycetemcomitans
+
+**Wyjaśnienie:**
+
+***Aggregatibacter actinomycetemcomitans*** — patognomoniczna **”gwiazda” w kolonii** (*star-shaped center*, *„dental burr”*) — Gram(-) pałeczka kapnofilna z charakterystycznym wzorem wzrostu, gdzie wewnątrz kolonii widoczne są radialne ”promienie” jak gwiazda (mikroskopowo). Dodatkowo: **kapnofil** (5-10% CO2) ✓, **brak hemolizy** ✓, kolonie **przejrzyste/białe**. Klinicznie: kluczowy patogen **dziecięcego/agresywnego periodontitis** (Q25 z 2023, Q112 — leukotoksyna niszczy neutrofile). Pułapki: **( A) Haemophilus influenzae** — kapnofil ✓, ale nie ma struktury gwiazdy; preferuje agar **czekoladowy**, nie krwawy. **( B) Capnocytophaga gingivalis** — *„capno”* = kapnofilna, ale tworzy **rozpełzające się** kolonie (*gliding motility*). **( C) Eikenella corrodens** — *corroding* = **wżerająca się** w agar (kolonie z zagłębieniami — Q125), inny obraz. **( E) Bordetella pertussis** — *„mercury droplet”*, nie gwiazda. Klucz: gwiazda w środku kolonii = ***AA***.
+
+---
+
+## mju-zal-141
+
+Wskaż twierdzenie nieprawdziwe dotyczące Haemophilus spp.:
+
+- [ ] **A.** niektóre gatunki mogą powodować chorobę przenoszoną drogą płciową
+- [ ] **B.** niektóre gatunki są otoczkowe
+- [ ] **C.** większość gatunków Haemophilus spp. posiada otoczkę
+- [✓] **D.** wytwarzają przetrwalniki
+- [ ] **E.** barwią się Gram-ujemnie i są nieruchliwe
+
+**Poprawna odpowiedź:** D — wytwarzają przetrwalniki
+
+**Wyjaśnienie:**
+
+***Haemophilus spp.*** **NIE wytwarza przetrwalników** — to Gram(-) pałeczki, a przetrwalniki są domeną tylko **dwóch rodzajów Gram-DODATNICH**: ***Bacillus*** (tlenowe — wąglik, *B. cereus*, *B. subtilis*) i ***Clostridium*** (beztlenowe — tężec, botulizm, *C. difficile*). Stąd opcja **D = NIEPRAWDA** = odpowiedź pytania. Pozostałe stwierdzenia prawdziwe: **(A)** *choroba STD* — ***Haemophilus ducreyi*** wywołuje **wrzód miękki** (*chancroid*, *ulcus molle*) — owrzodzenia narządów płciowych. **(B)** *niektóre gatunki otoczkowe* — *H. influenzae* typ b (Hib) ma otoczkę polirybityl-fosfanową (PRP) — cel szczepionki dla dzieci! **(C)** *większość ma otoczkę* — to słabsze stwierdzenie; *H. influenzae* dzieli się na otoczkowe (a-f, w tym Hib) i nieotoczkowe (NTHi, częstsze w dorosłych). **(E)** Gram(-), nieruchliwe ✓. Klucz: tylko *Bacillus* i *Clostridium* mają przetrwalniki — reszta NIE.
+
+---
+
+## mju-zal-142
+
+Proces tyndalizacji:
+
+- [ ] **A.** został zaprojektowany do skutecznej inaktywacji wirusów
+- [ ] **B.** służy do oceny zawiesiny bakteryjnej
+- [✓] **C.** wykorzystuje możliwość kiełkowania przetrwalników bakteryjnych w optymalnych warunkach środowiska
+- [ ] **D.** polega tylko na trzykrotnym podgrzaniu pożywki bakteryjnej w temperaturze około 80°C
+- [ ] **E.** polega na jednorazowym dwugodzinnym podgrzaniu roztworu do temperatury 80°C
+
+**Poprawna odpowiedź:** C — wykorzystuje możliwość kiełkowania przetrwalników bakteryjnych w optymalnych warunkach środowiska
+
+**Wyjaśnienie:**
+
+**Tyndalizacja** (*fractional sterilization*, Tyndall 1875) — **frakcjonowane ogrzewanie z przerwami** w temperaturze poniżej wrzenia (60-100°C, np. **80-100°C przez 30 min**), powtarzane **3 razy w odstępach 24h**. **Mechanizm — to klucz**: pierwsze ogrzewanie zabija **formy wegetatywne**; przerwa daje czas **przetrwalnikom na wykiełkowanie** w optymalnych warunkach (T pokojowa, wilgotność, składniki odżywcze pożywki) → formy wegetatywne po kiełkowaniu; kolejne ogrzewania zabijają te nowo wykiełkowane bakterie. Stąd **C** — *wykorzystuje kiełkowanie przetrwalników* to istota metody. Pułapki: **(A)** *wirusy* — tyndalizacja głównie eliminuje bakterie/spory, nie wirusy. **(B)** *ocena zawiesiny* — to coś innego (np. McFarland, OD600), nie tyndalizacja. **(D)** *„tylko trzykrotne”* — niekompletne, brak wzmianki o **przerwach** (kluczowych). **(E)** *jednorazowe ogrzewanie* — to **pasteryzacja**, nie tyndalizacja. Klucz: tyndalizacja = **3 × ogrzewanie + 2 × przerwa**.
+
+---
+
+## mju-zal-143
+
+Skuteczny proces mycia zanieczyszczonych narzędzi chirurgicznych przed ich sterylizacją polega na:
+
+- [ ] **A.** umieszczeniu ich w 96% alkoholu etylowym
+- [ ] **B.** umieszczeniu ich we wrzącej wodzie
+- [ ] **C.** umieszczeniu ich w 90% izopropanolu
+- [✓] **D.** zastosowaniu zimnych wodnych roztworów myjących
+- [ ] **E.** zastosowaniu przed właściwym procesem mycia inkubacji w suszarce w temperaturze 180°C
+
+**Poprawna odpowiedź:** D — zastosowaniu zimnych wodnych roztworów myjących
+
+**Wyjaśnienie:**
+
+**Mycie przed sterylizacją** to fundamentalny krok dekontaminacji (Q4 z 2023) — używa się **ZIMNYCH wodnych roztworów myjących** z **enzymami proteolitycznymi** (proteazy, lipazy) i **detergentami** (środki powierzchniowo-czynne, *surfactants*). Kluczowe: **temperatura <40°C** — wysoka temperatura **denaturuje białka** (krew, ślinę, tkanki) → trwale przyklejają się do powierzchni narzędzi, niemożliwe do usunięcia. Stąd zasada: ”nigdy gorąca woda na świeże białka”. Pułapki: **(A, C) alkohole** — denaturują i utrwalają białka, nie myją. **( B) wrząca woda** — fatalne (białka się przykleją na zawsze; klinika: krew zaschnięta na wiertłach → nieusuwalna). **( E) 180°C suszarka** — to sterylizacja sucha (Q3/2023), nie mycie. Klucz kliniczny: **zimne, enzymatyczne, ultradźwiękowe mycie** → potem dezynfekcja → potem sterylizacja. Sekwencja jest święta.
+
+---
+
+## mju-zal-144
+
+Sterylizacja to:
+
+- [✓] **A.** monitorowany proces skutecznej inaktywacji drobnoustrojów
+- [ ] **B.** proces wykorzystujący tylko parę wodną nasyconą o temperaturze 121°C
+- [ ] **C.** proces dekantacji w ciśnieniu atmosferycznym
+- [ ] **D.** ogrzewanie narzędzi w temperaturze 80°C
+- [ ] **E.** proces polewania ran roztworem dezynfekującym
+
+**Poprawna odpowiedź:** A — monitorowany proces skutecznej inaktywacji drobnoustrojów
+
+**Wyjaśnienie:**
+
+**Sterylizacja** — definicja ogólna: ***monitorowany* proces *skutecznej* inaktywacji drobnoustrojów** (wszystkich form życia, w tym **przetrwalników**). To kluczowe odróżnienie od **dezynfekcji** (formy wegetatywne, nie przetrwalniki). Wymogi: **( 1) monitorowany** — kontrola fizyczna (wydruki cyklu), chemiczna (wskaźniki, Bowie-Dick), biologiczna (spory *G. stearothermophilus*); **( 2) skuteczny** — *Sterility Assurance Level (SAL) 10⁻⁶* (1 na milion produktów może zawierać żywą bakterię). Stąd **A** = uniwersalna definicja. Pułapki: **(B)** *tylko para 121°C* — za wąskie; sterylizacja może być parowa (121/134°C), suchym ciepłem (160-180°C), tlenkiem etylenu, plazmą, radiacją γ, filtracją (Q3/2023, Q22/2022). **(C)** *dekantacja* — to po prostu zlewanie cieczy, nie sterylizacja. **(D) 80°C** — to *pasteryzacja*, niewystarczająca dla przetrwalników. **(E)** *polewanie ran* — to antyseptyka.
+
+---
+
+## mju-zal-145
+
+Aseptyka to:
+
+- [ ] **A.** oczyszczenie rany z zastosowaniem roztworu dezynfekującego
+- [✓] **B.** tworzenie barier między strefą skażoną i nieskażoną
+- [ ] **C.** inaktywacja drobnoustrojów w odpadach szpitalnych
+- [ ] **D.** niszczenie drobnoustrojów w zakażonym organizmie
+- [ ] **E.** określenie opisujące proces niszczenia drobnoustrojów w sepsie
+
+**Poprawna odpowiedź:** B — tworzenie barier między strefą skażoną i nieskażoną
+
+**Wyjaśnienie:**
+
+**Aseptyka** (*a-septicus* = bez septyki, bez gnicia) = **postępowanie zapobiegawcze** — tworzenie i utrzymywanie środowiska **wolnego od drobnoustrojów**: **bariery sterylne**, jednorazowe rękawiczki, maski, fartuchy, sterylne pola operacyjne, *no-touch technique*. To podejście **proaktywne** — zapobiega kontaminacji *zanim do niej dojdzie*. Vs **Antyseptyka** = **postępowanie reaktywne** na zakażonej tkance/ranie (alkohol, jodyna, chlorheksydyna na skórze, błonach). Vs **Dezynfekcja** = inaktywacja drobnoustrojów na powierzchniach martwych (narzędzia, podłogi). Vs **Sterylizacja** = pełna eliminacja, w tym spór (Q144). Pułapki: **(A)** *oczyszczenie rany* — to **antyseptyka** (nie aseptyka). **(C)** *odpady* — *dezynfekcja* odpadów szpitalnych (autoklawowanie odpadów medycznych). **(D)** *niszczenie w organizmie* — to **antybiotykoterapia/leczenie**. **(E)** *sepsa* — to klinika ciężkiego zakażenia, nie procedura. Klucz: aseptyka = bariery, prewencja, sterylne pole; antyseptyka = działanie na tkance.
+
+---
+
+## mju-zal-146
+
+Inaktywację prionów na powierzchni możemy przeprowadzić stosując:
+
+- [ ] **A.** wodę utlenioną
+- [ ] **B.** 70% alkohol etylowy
+- [ ] **C.** 96% alkohol etylowy
+- [✓] **D.** 10% roztwór KOH
+- [ ] **E.** formalinę
+
+**Poprawna odpowiedź:** D — 10% roztwór KOH
+
+**Wyjaśnienie:**
+
+**Priony** (PrPSc — Q46 z 2023) to **najoporniejsze czynniki zakaźne** — brak kwasu nukleinowego, struktura β-arkusza odporna na konwencjonalne metody. Standardowo używa się **silnych zasad** denaturujących białka: **NaOH 1-2M** (najczęściej) lub **KOH 1-2M** (~10% roztwó r) — alkaliczna hydroliza wiązań peptydowych niszczy strukturę PrPSc. Alternatywnie: **podchloryn sodu (NaOCl) 2%** lub kombinacja **134°C × 60min + alkaliczne mycie** (Q46/2023). Stąd **D = 10% KOH** zgodnie z kluczem 2019. Pułapki: **( A) woda utleniona (H2O2)** — utleniacz, działa na komórki, ale słabo na priony (nie denaturuje β-arkusza). **(B, C) alkohole** — utrwalają priony, **nie inaktywują**! (klasyczna pułapka — alkohole działają na otoczki lipidowe, ale nie na priony). **( E) formalina** — utrwalacz histopatologiczny, **stabilizuje** PrPSc (nie inaktywuje!) — kliniczna konsekwencja: tkanki utrwalone formaliną u pacjenta z CJD pozostają zakaźne. Klucz: priony = **zasada (NaOH/KOH) lub autoklaw 134°C × 60min**, nigdy alkohol/formalina.
+
+---
+
+## mju-zal-147
+
+W autoklawie najczęściej jako czynnik sterylizujący stosuje się:
+
+- [ ] **A.** ogrzane powietrze do temperatury 121°C
+- [ ] **B.** przegrzaną parę wodną
+- [ ] **C.** mieszaninę powietrza z parą wodną
+- [✓] **D.** nasyconą parę wodną
+- [ ] **E.** wilgotne powietrze wcześniej ogrzane do temperatury 121°C
+
+**Poprawna odpowiedź:** D — nasyconą parę wodną
+
+**Wyjaśnienie:**
+
+**Autoklaw** = sterylizacja **nasyconą parą wodną** pod ciśnieniem. Klucz fizyczny: **para nasycona** to para w **równowadze termodynamicznej z wodą ciekłą** w danej temperaturze — *maksymalna* gęstość pary, jaką można osiągnąć przy danym ciśnieniu. To krytyczne, bo: **(1)** kondensacja pary na zimnym narzędziu oddaje **ciepło utajone** (~2260 kJ/kg) — błyskawiczne ogrzanie do T pary; **(2)** woda penetruje pory, materiały, opakowania; **(3)** zwilgocenie zwiększa skuteczność denaturacji białek bakterii. Parametry: **121°C × 15-30 min** (1 atm nadciśnienia) lub **134°C × 3-7 min** (2 atm nadciśnienia). Pułapki: **( A) ogrzane powietrze 121°C** — to opis **sterylizacji suchej** (ale w niższej T niż klasyczne 160-180°C, więc tu absurd). **( B) para przegrzana** (*superheated steam*) — *paradoksalnie* **gorzej steryluje**! Przegrzana = bez kropli wody = niska gęstość, słaba penetracja, nie kondensuje na narzędziach. To dlatego autoklawy mają precyzyjny pomiar nasycenia. **(C, E)** mieszaniny i powietrze — air pockets w autoklawie to *defekt*, nie standard.
+
+---
+
+## mju-zal-148
+
+Która z poniższych cząsteczek w procesie dezynfekcji nie pełni roli utleniacza?
+
+- [ ] **A.** nadtlenek wodoru
+- [✓] **B.** fenol
+- [ ] **C.** jod
+- [ ] **D.** podchloryn sodu
+- [ ] **E.** KMnO4
+
+**Poprawna odpowiedź:** B — fenol
+
+**Wyjaśnienie:**
+
+**Fenol (C6H5OH)** = klasyczny **denaturant białek i lipidów** — niszczy bakterie przez **uszkodzenie błony cytoplazmatycznej** (precypituje białka, rozpuszcza fosfolipidy). NIE jest utleniaczem! Mechanizm fenolu: penetruje błonę, przerywa jej integralność, wycieka cytoplazma, śmierć komórki. Pochodne (chlorofenole, krezole) mają wyższą aktywność. Pozostałe to **klasyczne utleniacze**: **( A) H2O2** — generuje wolne rodniki (•OH, najsilniejszy utleniacz biologiczny) — utlenia tłuszcze, białka, DNA bakterii. **( C) Jod** (I2 → I- + I+) — utleniacz halogenowy, jodynuje tyrozyny w białkach. **( D) Podchloryn sodu (NaOCl)** — w wodzie tworzy **HOCl** (kwas podchlorawy, ~80× silniejszy niż OCl- — Q76 z 2022, pH-dependent activity), aktywne utlenianie. **( E) KMnO4** — nadmanganian potasu, silny utleniacz (Mn⁷⁺ → Mn²⁺), historyczne zastosowanie antyseptyczne. Klucz: fenol = denaturacja, reszta = utlenianie.
+
+---
+
+## mju-zal-149
+
+Produkt metabolizmu bakterii w największym stopniu odpowiedzialny za demineralizację szkliwa to:
+
+- [ ] **A.** kwas masłowy
+- [ ] **B.** kwas octowy
+- [ ] **C.** kwas ortofosforowy (V)
+- [✓] **D.** kwas mlekowy
+- [ ] **E.** kwas propionowy
+
+**Poprawna odpowiedź:** D — kwas mlekowy
+
+**Wyjaśnienie:**
+
+**Kwas mlekowy** (C3H6O 3) = **kluczowy demineralizator szkliwa** — produkt fermentacji **homolaktycznej** *Streptococcus mutans* i *Lactobacillus*. Cechy: **(1)** mocny kwas organiczny (pKa = 3,86 — najmocniejszy z fermentacyjnych kwasów), **(2)** rozpuszcza hydroksyapatyt (Ca10(PO4)6(OH) 2) przy **pH <5,5** (krytyczna wartość Stephana), **(3)** dyfunduje przez biofilm i porowate szkliwo, **(4)** chelatuje wapń. Klasyczna **krzywa Stephana**: pobranie cukru → spadek pH w 5-10 min do nadiru ~4,5 (utrzymuje się 20-40 min) → powrót do baseline po ~60 min. Pułapki — *słabsze kwasy*: **( A) kwas masłowy** (pKa 4,82), **( B) octowy** (4,76), **( E) propionowy** (4, 87) — produkty Veillonella i innych beztlenowców, ale **słabsze**, mniej kariogenne. **( C) kwas ortofosforowy** — to silny kwas mineralny (z fosforanu trójwapniowego rozpuszczonego), używany w stomatologii (37% etching), ale **NIE produkowany metabolicznie** w jamie ustnej. Klucz: laktacydoza = próchnica.
+
+---
+
+## mju-zal-150
+
+Wskaż zdanie fałszywe dotyczące próchnicy:
+
+- [ ] **A.** próchnica korzeni częściej dotyczy osób starszych niż dzieci
+- [ ] **B.** demineralizacja szkliwa jest procesem poprzedzającym rozwój próchnicy
+- [✓] **C.** w procesie próchnicy gładkich powierzchni zębów wykazano decydującą rolę Streptococcus mitis
+- [ ] **D.** próchnica zębów jest chorobą wywoływaną przez mikroorganizmy wchodzące w skład naturalnej flory jamy ustnej
+- [ ] **E.** kwaśne środowisko jamy ustnej sprzyja rozwojowi próchnicy
+
+**Poprawna odpowiedź:** C — w procesie próchnicy gładkich powierzchni zębów wykazano decydującą rolę Streptococcus mitis
+
+**Wyjaśnienie:**
+
+**Decydującą rolę w próchnicy gładkich powierzchni zębów** odgrywa ***Streptococcus mutans*** (Q128), **NIE *S. mitis***. *S. mitis* to **pionier ZDROWEJ płytki** (grupa mitis: *S. oralis*, *S. sanguinis*, *S. mitis*, *S. gordonii* — Q11 z 2023) — paciorkowce zieleniące, kwasowrażliwe, NIE produkujące glukanów. Stąd **C** to **odwrócenie prawdy** = fałszywe zdanie = odpowiedź na pytanie. Mechanizm: *S. mutans* dzięki GTF tworzy **nierozpuszczalne glukany** (mutany) z sacharozy → matryca przylegania do **gładkich powierzchni** (które bez sacharozy są niedostępne dla bakterii). Bez glukanów *S. mutans* nie kolonizuje gładkich powierzchni. Pozostałe zdania prawdziwe: **(A)** próchnica korzeni — seniorzy (Q7/2023). **(B)** demineralizacja poprzedza ubytek (faza biała → brązowa → ubytek). **(D)** próchnica = choroba komensali (*S. mutans*, *Lactobacillus* są częścią normalnej flory, tylko w warunkach dysbiozy stają się patogenne). **(E)** kwasy → demineralizacja (Q149).
+
+---
+
+## mju-zal-151
+
+Pierwotne środowisko bytowania pałeczek z rodzaju Aggregatibacter to:
+
+- [ ] **A.** błona śluzowa podniebienia
+- [ ] **B.** dno jamy ustnej
+- [ ] **C.** grzbiet języka
+- [✓] **D.** szczeliny dziąsłowe
+- [ ] **E.** powierzchnie styczne zębów
+
+**Poprawna odpowiedź:** D — szczeliny dziąsłowe
+
+**Wyjaśnienie:**
+
+***Aggregatibacter actinomycetemcomitans*** (AA) bytuje pierwotnie w **kieszonkach/szczelinach dziąsłowych** — jego idealna nisza ze względu na **kapnofilność** (5-10% CO2, dostępność w warstwach beztlenowych biofilmu) i **bogactwo białek** w GCF (do proteolizy). Klinicznie: kluczowy patogen **dziecięcego/agresywnego periodontitis** (Q25/2023, Q112/2019) — leukotoksyna niszczy neutrofile. Pułapki: **( A) podniebienie** — głównie ziarniaki Gram(+) (paciorkowce *mitis*-group). **( B) dno jamy ustnej** — *Lactobacillus*, *Veillonella*, paciorkowce. **( C) grzbiet języka** — *S. salivarius*, *Veillonella*, krętki (źródło VSC i halitozy). **( E) powierzchnie styczne** — *Actinomyces* dominuje biofilm aproksymalny (Q14/2023). Klucz: AA = kieszonki = ”dom periodontopatogenów”.
+
+---
+
+## mju-zal-152
+
+Ile bakterii powstanie po 2 godzinach, jeśli początkowo były dwie, a czas podwajania wynosił 20 minut?
+
+- [ ] **A.** 32
+- [ ] **B.** 64
+- [✓] **C.** 128
+- [ ] **D.** 256
+- [ ] **E.** 512
+
+**Poprawna odpowiedź:** C — 128
+
+**Wyjaśnienie:**
+
+**Wzrost wykładniczy bakterii**: N( t) = N₀ × 2^(t/T), gdzie N₀ = 2 (początek), T = 20 min (czas podwajania), t = 120 min (2 godziny). Liczba podziałów: 120 ÷ 20 = **6**. Zatem N = 2 × 2⁶ = 2 × 64 = **128**. Mnemotechniczne sprawdzenie: każde 20 min liczba podwaja się: 2 → 4 → 8 → 16 → 32 → 64 → 128. Dokładnie 6 kroków = 6 podwojeń. Pułapki: **( A) 32** — zapomnienie o początkowych 2 bakteriach (czyli 2⁵ zamiast 2 × 2⁶). **( B) 64** — pomyłka liczby kroków (5 zamiast 6). **( D) 256** — jeden krok za dużo (8 podziałów). **( E) 512** — 9 podziałów. Klucz: zawsze sprawdzaj N₀, czas T i czas całkowity t przed podstawieniem do wzoru.
+
+---
+
+## mju-zal-153
+
+Jakie gatunki należą do grupy S. oralis?
+
+- [ ] **A.** S. gordonii
+- [ ] **B.** S. vestibularis
+- [ ] **C.** S. mitis
+- [ ] **D.** S. sanguis
+- [✓] **E.** prawidłowe są odpowiedzi A, C i D
+
+**Poprawna odpowiedź:** E — prawidłowe są odpowiedzi A, C i D
+
+**Wyjaśnienie:**
+
+Do grupy S. oralis należą:
+- S. sanguis,
+- S. gordonii,
+- S. oralis,
+- S. parasanguis,
+- S. mitis.
+
+---
+
+## mju-zal-154
+
+Które bakterie nie wytwarzają kwasu tejchojowego i lipotejchojowego?
+
+- [ ] **A.** Stomatococcus mucilagenosus
+- [ ] **B.** Streptococcus mutans
+- [✓] **C.** Neisseria subflava
+- [ ] **D.** Lactobacillus acidophilus
+- [ ] **E.** Actinomyces naeslundii
+
+**Poprawna odpowiedź:** C — Neisseria subflava
+
+**Wyjaśnienie:**
+
+**Kwasy tejchojowe (WTA)** i **lipotejchojowe (LTA)** to **specyficzne komponenty ściany komórkowej bakterii Gram-DODATNICH** — kotwiczone w peptydoglikanie (WTA) lub w błonie cytoplazmatycznej (LTA). Pełnią funkcję: stabilizacja ściany, regulacja autolizy, adhezja, modulacja odpowiedzi immunologicznej. ***Neisseria subflava*** ( C) to **Gram-UJEMNA dwoinka** (Q11/2023, Q114/2019) — ma LPS w błonie zewnętrznej zamiast LTA/WTA. Stąd **C** = jedyna z listy bez tych kwasów. Pozostałe to **Gram-DODATNIE**: **( A) Stomatococcus mucilagenosus** — Gram(+) ziarniak (obecnie *Rothia mucilaginosa*). **( B) S. mutans** — Gram(+) ziarniak. **( D) L. acidophilus** — Gram(+) pałeczka (Q134/2019). **( E) A. naeslundii** — Gram(+) pałeczka nitkowata. Klucz prosty: **LTA/WTA tylko Gram(+)**; reszta z Gram(-) ma LPS/LOS jako odpowiednik strukturalny.
+
+---
+
+## mju-zal-155
+
+Streptococcus mitis wg klasyfikacji Lancefield należy do:
+
+- [ ] **A.** grupy A
+- [ ] **B.** grupy B
+- [ ] **C.** grupy C
+- [ ] **D.** grupy D
+- [✓] **E.** brak poprawnej odpowiedzi
+
+**Poprawna odpowiedź:** E — brak poprawnej odpowiedzi
+
+**Wyjaśnienie:**
+
+**Klasyfikacja Lancefield** (Rebecca Lancefield, 1933) opiera się na **antygenach węglowodanowych ściany komórkowej** (antygen C, polisaharydy). Obejmuje grupy A-W. Klasyczne klinicznie ważne: **A** = *S. pyogenes* (angina, szkarlatyna, RHD), **B** = *S. agalactiae* (zakażenia noworodków), **C** = *S. equi/dysgalactiae*, **D** = *Enterococcus* (kiedyś) + *S. bovis*. ***S. mitis*** wraz z całą **grupą viridans/mitis** (Q153) — paciorkowce zieleniące — **NIE MA antygenu Lancefield**! Ściana jest morfologicznie ”niesklasyfikowalna” w tym schemacie. Stąd **E = brak poprawnej odpowiedzi**. Pułapki: **(A, B, C, D)** — wszystkie konkretne grupy są błędne, viridans/mitis są poza systemem Lancefield. Klucz dydaktyczny: jeżeli pytanie o Lancefield + viridans-group (mitis, sanguinis, mutans, salivarius, anginosus) → automatycznie ”brak grupy”.
+
+---
+
+## mju-zal-156
+
+Plamki Koplika są charakterystyczne dla wirusa:
+
+- [✓] **A.** odry
+- [ ] **B.** różyczki
+- [ ] **C.** HIV
+- [ ] **D.** HBV
+- [ ] **E.** świnki
+
+**Poprawna odpowiedź:** A — odry
+
+**Wyjaśnienie:**
+
+**Plamki Koplika** (*Koplik spots*) — białe punkciki z czerwoną otoczką na **błonie śluzowej policzków naprzeciw zębów trzonowych górnych**. Patognomoniczne dla **odry** (*Measles*, *Morbillivirus*, paramyxowirus RNA) — pojawiają się **2-4 dni PRZED wysypką skórną**, w fazie nieżytowej. Klinicznie ważne: pozwalają na **wczesną diagnozę** i izolację chorego (odra jest wysoce zakaźna — R0 ~12-18, najwyższe z chorób zakaźnych ludzi). Pułapki — *inne wysypki wirusowe*: **( B) różyczka** (*Rubella*) — plamki Forschheimera na podniebieniu miękkim (rzadziej), wysypka skórna z węzłami chłonnymi za uchem. **( C) HIV** — brak charakterystycznych plamek śluzówkowych w fazie ostrej. **( D) HBV** — żółtaczka, brak plamek śluzówkowych. **( E) świnka** (*Mumps*) — zapalenie ślinianek przyusznych, brak plamek. Klucz mnemoniczny: *plamki Koplika = odra; pierwsze, śluzówkowe, przed wysypką*.
+
+---
+
+## mju-zal-157
+
+Zewnątrzkomórkowy wielocukier wytwarzają wszystkie bakterie za wyjątkiem:
+
+- [ ] **A.** Streptococcus salivarius
+- [✓] **B.** Streptococcus parasanguinis
+- [ ] **C.** Streptococcus mutans
+- [ ] **D.** Actinomyces viscosus
+- [ ] **E.** Rothia dentocariosa
+
+**Poprawna odpowiedź:** B — Streptococcus parasanguinis
+
+**Wyjaśnienie:**
+
+**Zewnątrzkomórkowe polisacharydy (EPS)** to składnik matrycy biofilmu (Q101/2019) — produkują je głównie bakterie posiadające **glukozylotransferazy (GTF)** lub **fruktozylotransferazy (FTF)**. ***S. parasanguinis*** — z grupy mitis (Q153), pionier zdrowej płytki, NIE wytwarza zewnątrzkomórkowych polimerów cukrowych jak inni paciorkowce próchnicowo aktywni. Stąd **B**. Pozostałe **wytwarzają EPS**: **( A) S. salivarius** — produkuje **lewan** (polimer fruktozy) z sacharozy FTF (Q34/2023, Q123/2019). **( C) S. mutans** — produkuje **glukany (mutany)** GTF (Q6/2023, Q33/2023) — fundament kariogenności. **( D) A. viscosus** — produkuje **levan-like polimery** (stąd nazwa *viscosus* = lepki). **( E) R. dentocariosa** — produkuje śluzowate ekstracelularne polisacharydy. Klucz: *S. parasanguinis* = mitis, pionier, nie matrycowy.
+
+---
+
+## mju-zal-158
+
+Jaki związek może przeprowadzać alkilację reszt terminalnych: hydroksylowej, karboksylowej, aminowej?
+
+- [ ] **A.** tlenek etylenu
+- [ ] **B.** formaldehyd
+- [ ] **C.** nadtlenek wodoru
+- [✓] **D.** odpowiedzi A i B
+- [ ] **E.** odpowiedzi A, B i C
+
+**Poprawna odpowiedź:** D — odpowiedzi A i B
+
+**Wyjaśnienie:**
+
+**Alkilacja** = wprowadzenie grupy alkilowej (-CH3, -CH2-) do reaktywnych grup funkcyjnych (-OH, -COOH, -NH2, -SH) w białkach i kwasach nukleinowych → trwałe modyfikacje denaturujące. **Klasyczne alkilatory dezynfekcyjne/sterylizujące**: **( A) Tlenek etylenu (EtO)** — gaz, sterylizacja niskotemperaturowa wrażliwych narzędzi (np. plastiki, elektronika); alkiluje DNA i białka. **( B) Formaldehyd (HCHO)** — utrwalacz histologiczny + sterylizator gazowy; tworzy mostki metylenowe między aminokwasami. Stąd **D = A + B**. **( C) Nadtlenek wodoru (H2O2)** — NIE jest alkilatorem! H2O2 to **utleniacz** generujący wolne rodniki •OH (Q148/2019). Mechanizm zupełnie inny. Stąd opcja E (A+B+ C) jest pułapką. Klucz dydaktyczny: dwa wielkie mechanizmy dezynfekcji to **alkilacja** (EtO, HCHO, GA) i **utlenianie** (H2O2, PAA, NaOCl, jod, KMnO4) — Q42/2025.
+
+---
+
+## mju-zal-159
+
+Lipopolisacharyd nie wchodzi w skład ściany u:
+
+- [ ] **A.** Porphyromonas gingivalis
+- [✓] **B.** Lactobacillus casei
+- [ ] **C.** Veillonella parvula
+- [ ] **D.** Neisseria mucosa
+- [ ] **E.** Prevotella intermedia
+
+**Poprawna odpowiedź:** B — Lactobacillus casei
+
+**Wyjaśnienie:**
+
+**Lipopolisacharyd (LPS)** = endotoksyna **bakterii Gram-UJEMNYCH**, składnik błony zewnętrznej. Struktura: **lipid A** (toksyczna kotwica) + **rdzeń węglowodanowy** + **antygen O** (zmienny łańcuch). ***Lactobacillus casei*** to **Gram-DODATNIA pałeczka** (Q4 z 2023, Q124/2019) — w ścianie ma peptydoglikan + LTA/WTA (Q154), brak LPS. Stąd **B**. Pozostałe to **Gram-UJEMNE**, wszystkie mają LPS lub LOS: **( A) P. gingivalis** — Gram(-), LPS atypowy (lipid A z 5 łańcuchami acylowymi zamiast 6 → słabsza aktywacja TLR4). **( C) V. parvula** — Gram(-) ziarniak beztlenowy (Q66/2022), ma LPS. **( D) N. mucosa** — Gram(-), ma **LOS** (lipooligosacharyd — wersja LPS bez antygenu O, charakterystyczna dla *Neisseria* — Q11/2023). **( E) P. intermedia** — Gram(-), LPS. Klucz: LPS = tylko Gram(-);
+
+Gram(+) ma LTA/WTA.
+
+---
+
+## mju-zal-160
+
+W przypadku podejrzenia zakażenia jamy ustnej związanego z używaniem protez, należy wykonać badanie mikrobiologiczne wykorzystując podłoże:
+
+- [ ] **A.** Löwensteina-Jensena
+- [ ] **B.** Thayera-Martina
+- [✓] **C.** Sabourauda
+- [ ] **D.** SF (z selenianem sodu)
+- [ ] **E.** agar czekoladowy
+
+**Poprawna odpowiedź:** C — Sabourauda
+
+**Wyjaśnienie:**
+
+**Zakażenie protetyczne jamy ustnej** = **kandydoza protetyczna** (*denture stomatitis*) — ***Candida albicans*** dominuje (Q15/2023, Q83/2022, Q108/2019). Akryl protezy adsorbuje ślinę → osłonka pseudomucynowa → adhezja *Candida* przez Hwp1, Als → biofilm → zapalenie błony śluzowej pod protezą (typ I-III wg Newtona). Diagnostyka: **podłoże Sabourauda** (Q44/2023, Q130/2019) — niskie pH (5,6), wysoka glukoza, chloramfenikol → selekcjonuje grzyby. Pułapki — *inne podłoża*: **( A) Löwenstein-Jensen** — dla *Mycobacterium* (Q46/2023), zawiera zieleń malachitową + jaja kurze; izolacja prątków. **( B) Thayer-Martin** — selektywne dla *N. gonorrhoeae* (zawiera vankomycynę, kolistynę, nystatynę, trimetoprim — VCNT). **( D) SF / selenian sodu** — wzbogacenie dla pałeczek Gram(-) jelitowych (*Salmonella*, *Shigella*). **( E) agar czekoladowy** — dla *Haemophilus*, *Neisseria* (Q106/2019). Klucz: protezy = *Candida* = Sabouraud.
+
+---
+
+## mju-zal-161
+
+Rolę autoinduktorów dla bakterii Gram-ujemnych w biofilmie pełnią:
+
+- [ ] **A.** alfa-butyrylolaktony
+- [ ] **B.** gamma-butyrylolaktony
+- [✓] **C.** acylowane laktony homoseryny
+- [ ] **D.** acylowane laktony homocysteiny
+- [ ] **E.** trans-aminolaktony
+
+**Poprawna odpowiedź:** C — acylowane laktony homoseryny
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q103) i 2023 (Q30) — **AHL (N-acyl-homoserine lactones)** to klasyczne autoinduktory **bakterii Gram-UJEMNYCH** w quorum sensing. Małe lipofilne cząsteczki, swobodnie dyfundują przez błonę zewnętrzną. System *LuxI/LuxR*: *LuxI* syntetaza AHL, *LuxR* receptor cytoplazmatyczny. Aktywują geny biofilmu, wirulencji, bioluminescencji. Pułapki: **( A) alfa-butyrylolaktony** — atypowa modyfikacja, nieklasyczne. **( B) gamma-butyrylolaktony** — autoinduktory **Streptomyces** (bakterie glebowe Gram+), nie typowe dla jamy ustnej. **( D) acylowane laktony homocysteiny** — niuans! Homoseryna (HSL) vs homocysteina — różnica jednej grupy SH; podpucha o jeden atom. **( E) trans-aminolaktony** — nieistniejąca klasa. Klucz: **AHL = Gram(-)**, **AIP = Gram(+) oligopeptydy**, **AI-2 (DPD) = uniwersalny** (interspecies).
+
+---
+
+## mju-zal-162
+
+Charakterystyczne ”kolby kukurydzy” w płytce poddziąsłowej wytwarzają:
+
+- [ ] **A.** Lactobacillus casei
+- [✓] **B.** Eubacterium yurii
+- [ ] **C.** Actinomyces viscosus
+- [ ] **D.** Actinomyces naeslundii
+- [ ] **E.** Fusobacterium nucleatum
+
+**Poprawna odpowiedź:** B — Eubacterium yurii
+
+**Wyjaśnienie:**
+
+**”Kolby kukurydzy”** (*corn cob structures*) — charakterystyczne agregaty mikrobiologiczne w płytce poddziąsłowej widoczne w SEM/TEM, gdzie centralna pałeczka (np. ***Eubacterium yurii***) jest obłożona radialnie przez ziarniaki paciorkowców → wygląd przypominający kolbę kukurydzy lub szczotkę do butelek. ***E. yurii*** to Gram(+) beztlenowiec, klasyczny ”trzon” struktury kolby. **Funkcja**: koagregacja międzygatunkowa stabilizuje strukturę biofilmu. Pułapki — inne struktury w biofilmie: **(C, D) Actinomyces viscosus/naeslundii** — tworzą ”corn cob” z paciorkowcami też, ale historycznie nazwa ”kolby kukurydzy” przypisywana *Eubacterium*. **( E) Fusobacterium nucleatum** — tworzy struktury ”bridge” (*bridging organism*) między pierwszymi a późnymi kolonizatorami (Q24/2023), ale to inna geometria. **( A) L. casei** — Gram(+) pałeczka, nie tworzy ”kolb”. Klucz: kolby kukurydzy = *E. yurii* (lub *Actinomyces*) jako trzon + paciorkowce obłożone.
+
+---
+
+## mju-zal-163
+
+U pacjentów z zaawansowaną chorobą przyzębia i głębokimi kieszonkami okołozębowymi stwierdza się obecność bakterii należących do kompleksu czerwonego, czyli:
+
+- [✓] **A.** Porphyromonas gingivalis, Treponema denticola, Tannerella forsythia
+- [ ] **B.** Porphyromonas gingivalis, Prevotella intermedia, Peptostreptococcus anaerobius
+- [ ] **C.** Streptococcus mutans, Lactobacillus acidophilus
+- [ ] **D.** Candida albicans, Candida glabrata
+- [ ] **E.** Actinomyces israelii i inne promieniowce
+
+**Poprawna odpowiedź:** A — Porphyromonas gingivalis, Treponema denticola, Tannerella forsythia
+
+**Wyjaśnienie:**
+
+**Kompleks czerwony Socranskyego** (1998) — klasyczna triada periodontopatogenów przewlekłego periodontitis dorosłych: ***Porphyromonas gingivalis*** (Q19/2019, Q23/2023) + ***Treponema denticola*** (Q117/2019) + ***Tannerella forsythia*** (dawniej *Bacteroides forsythus*). Stąd **A**. Synergiczna współpraca: *P. gingivalis* (gingipainy → niszczy IgA, kolagen), *T. denticola* (dentilizyna, motilność → wnika do nabłonka), *T. forsythia* (cysteinowe proteazy, SLP osłonka). Pozostałe to **inne kompleksy lub poza klasyfikacją**: **( B) P. intermedia + Peptostreptococcus** — kompleks **pomarańczowy**, prekursor czerwonego (oranizacja-rekrutacja czerwonego do biofilmu). **( C) S. mutans + Lactobacillus** — patogeny próchnicy, NIE periodontitis (źle pomylone choroby!). **( D) Candida** — kandydoza śluzówkowa, nie periodontitis. **( E) Actinomyces** — promienica lub komensal, nie czerwony. **Typo źródłowy**: ”Porphyromonax” → naprawione na ”Porphyromonas”. Klucz: czerwony = P.g. + T.d. + T.f.
+
+---
+
+## mju-zal-164
+
+Zdolność wytwarzania lewanu z sacharozy posiada:
+
+- [✓] **A.** Streptococcus salivarius
+- [ ] **B.** Streptococcus sanguinis
+- [ ] **C.** Streptococcus oralis
+- [ ] **D.** Streptococcus mitis
+- [ ] **E.** Streptococcus gordonii
+
+**Poprawna odpowiedź:** A — Streptococcus salivarius
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q123) i 2023 (Q34) — ***S. salivarius*** produkuje **lewan** (polimer fruktozy) dzięki **fruktozylotransferazie (FTF)**. Mechanizm: sacharoza → glukoza (uwolniona) + fruktoza polimeryzowana do lewanu = matryca śluzowatych kolonii. Nisza: **grzbiet języka** (*saliva-rius*). Pułapki — wszystkie pozostałe to **grupa mitis** (Q153): **( B) S. sanguinis** — pionier zdrowej płytki, antagonista *S. mutans*. **( C) S. oralis** — komensal, kwasochwiejny. **( D) S. mitis** — bardzo podobny do *oralis*, niesklasyfikowany Lancefield (Q155). **( E) S. gordonii** — koagreguje z *Actinomyces*, ”pomost” pierwszych kolonizatorów. **Żaden z grupy mitis NIE produkuje lewanu** — to specyficzność *S. salivarius* (grupa salivarius — wraz z *S. vestibularis*). Klucz dydaktyczny: enzymy/polimery wg gatunku — **S. mutans → glukany (GTF) → próchnica**; **S. salivarius → lewan (FTF) → język**; **mitis-group → bez polimerów EPS**.
+
+---
+
+## mju-zal-165
+
+Skrót EPS oznacza:
+
+- [✓] **A.** zewnątrzkomórkowe substancje polimeryczne, które odpowiadają za stabilizację biofilmu
+- [ ] **B.** typ endotoksyny charakterystycznej dla pałeczek Gram-ujemnych bytujących w jamie ustnej
+- [ ] **C.** typ endotoksyny charakterystycznej dla ziarniaków Gram-ujemnych bytujących w jamie ustnej
+- [ ] **D.** egzotoksynę produkowaną przez Porphyromonas gingivalis
+- [ ] **E.** rodzaj adhezyn występujących u grzybów z rodzaju Candida
+
+**Poprawna odpowiedź:** A — zewnątrzkomórkowe substancje polimeryczne, które odpowiadają za stabilizację biofilmu
+
+**Wyjaśnienie:**
+
+**EPS** = ***Extracellular Polymeric Substances*** — zewnątrzkomórkowe substancje polimeryczne stanowiące **matrycę biofilmu** (Q101/2019). Skład: **(1)** polisacharydy (glukany, lewany, alginiany — najliczniejsze), **(2)** białka (adhezyny, enzymy), **(3)** eDNA (zewnątrzkomórkowe DNA z lizowanych komórek), **(4)** lipidy, **(5)** woda (do 97% objętości). Funkcje: ”cement” strukturalny, ochrona przed antybiotykami i fagocytozą, retencja substratów, gradient chemiczny. Pułapki: **(B, C) endotoksyna** — to **LPS/LOS** (Q159), nie EPS; pomylenie skrótów. **( D) egzotoksyna P. gingivalis** — to **gingipainy** (Q119/2019). **( E) adhezyny Candida** — to **Hwp1, Als (Agglutinin-like sequence)**, nie EPS. Klucz mnemoniczny: **EPS = matryca biofilmu** = polisacharydy + białka + eDNA.
+
+---
+
+## mju-zal-166
+
+Kwas sialowy powierzchni komórek nabłonka może być usunięty przez:
+
+- [✓] **A.** neuraminidazę
+- [ ] **B.** mutazę
+- [ ] **C.** amylazę
+- [ ] **D.** trypsynę
+- [ ] **E.** proteazę
+
+**Poprawna odpowiedź:** A — neuraminidazę
+
+**Wyjaśnienie:**
+
+**Neuraminidaza** (sialidaza, NAM) = enzym hydrolizujący wiązanie α-glikozydowe **kwasu sialowego** (kwas N-acetyloneuraminowy, NeuAc) z glikoprotein/glikolipidów powierzchni komórek. Klinicznie znaczenie: **(1)** wirus grypy ma **neuraminidazę (N)** w otoczce — uwalnia nowe wiriony od komórki (cel oseltamiwiru/Tamiflu). **(2)** ***S. pneumoniae*** wydziela NAM → ekspozycja receptorów dla adhezji. **(3)** ***S. oralis*** i ***S. mitis*** wytwarzają NAM (Q24/2025-Q174) → odsłaniają **galaktozę** rozpoznawaną przez *Actinomyces*, *Eikenella*, *Prevotella*. Pułapki: **( B) mutaza** — enzym izomeryzujący (np. fosfoglukomutaza); nic wspólnego z sialowem. **( C) amylaza** — hydroliza skrobi (α-1,4-glikozydowe); inny substrat. **( D) trypsyna** — proteaza serynowa rozkładająca wiązania peptydowe (białka); nie cukry. **( E) proteaza** — ogólnie rozkłada białka, nie sjalowe. Klucz: neuraminidaza ↔ kwas sialowy; jeden enzym, jedna funkcja.
+
+---
+
+## mju-zal-167
+
+Na wzrost kolonii i aktywności Porphyromonas gingivalis ma wpływ:
+
+- [✓] **A.** wzrost pH
+- [ ] **B.** wzrost temperatury
+- [ ] **C.** spadek pH
+- [ ] **D.** spadek temperatury
+- [ ] **E.** dostępność CO2
+
+**Poprawna odpowiedź:** A — wzrost pH
+
+**Wyjaśnienie:**
+
+***P. gingivalis*** jest **asacharolityczna** — energetycznie zależna od proteolizy białek do peptydów + amoniaku → **podnosi pH środowiska do alkalicznego** (7,5-8). Stąd preferuje **wzrost pH** (Q119/2019, Q23/2023). Klinicznie: w kieszonkach okołozębowych pH wzrasta z 7,2 (zdrowie) do ~7,9 (zaawansowane periodontitis) — dokładnie środowisko *P. gingivalis*. Mechanizm: **gingipainy Rgp/Kgp** (proteazy cysteinowe) rozkładają białka GCF, kolagen, hemoglobinę → uwolnione peptydy + Fe (z heminy) + alkaliczne produkty fermentacji aminokwasów (kadawerina, putrescyna, amoniak). Pułapki: **( C) spadek pH** — to środowisko próchnicowe (*S. mutans*, *Lactobacillus* — pH 4,5-5,5); *P. gingivalis* tam nie rośnie. **(B, D) temperatura** — *P. gingivalis* jest mezofilna jak większość ludzkich patogenów (37°C). **( E) CO2** — *P. gingivalis* to **bezwzględny beztlenowiec**, nie kapnofil;
+
+CO2 nie pomaga (i nawet nie tlen).
+
+---
+
+## mju-zal-168
+
+Drobnoustroje zdolne do rozkładu kwasu mlekowego do słabszych kwasów w płytce nazębnej to:
+
+- [ ] **A.** Streptococcus sanguinis
+- [ ] **B.** Streptococcus mitis
+- [✓] **C.** Veillonella spp.
+- [ ] **D.** Neisseria spp.
+- [ ] **E.** Enterococcus spp.
+
+**Poprawna odpowiedź:** C — Veillonella spp.
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q138), 2022 (Q 66) i 2023 (Q 19) — ***Veillonella spp.*** to **”uliczny śmieciarz”** jamy ustnej, fermentuje **kwas mlekowy** (z *S. mutans*, *Lactobacillus*) do **słabszych kwasów: octowego i propionowego** + CO2 + H2. Mechanizm: szlak metylomalonyl-CoA / sukcynian. Klinicznie: **funkcja potencjalnie ANTYKARIOGENNA** — redukuje silny demineralizator (mlekowy, pKa 3, 86) do słabszych (octowy 4,76, propionowy 4,87). Stąd *Veillonella* w zdrowej płytce w obfitości to dobry znak. Pułapki: **(A, B) S. sanguinis, S. mitis** — paciorkowce zieleniące, **produkują** kwasy (homolaktyczna fermentacja), nie rozkładają. **( D) Neisseria spp.** — komensale (Q114/2019), nie rozkładają mlekowego. **( E) Enterococcus spp.** — komensale jelitowe (Q105/2019), w jamie ustnej minimalna rola, nie rozkładają mlekowego. Klucz: *Veillonella = lactate → acetate + propionate*, jedyna w jamie ustnej z tą funkcją.
+
+---
+
+## mju-zal-169
+
+Podwyższone ryzyko rozwoju zapalenia przyzębia wiąże się bezpośrednio ze zwiększoną ilością izolowanych z płytki nazębnej:
+
+- [ ] **A.** Bacteroides i Porphyromonas
+- [✓] **B.** Porphyromonas i Prevotella
+- [ ] **C.** Bacteroides, Porphyromonas i Prevotella
+- [ ] **D.** Porphyromonas i Fusobacterium
+- [ ] **E.** Bacteroides, Porphyromonas i Fusobacterium
+
+**Poprawna odpowiedź:** B — Porphyromonas i Prevotella
+
+**Wyjaśnienie:**
+
+**Najsilniejsza korelacja z periodontitis**: ***Porphyromonas gingivalis*** (Q19/2019, czerwony kompleks — Q163) + ***Prevotella intermedia*** (Q18/2019, pomarańczowy kompleks). Stąd **B**. **Klasyczny duet diagnostyczny** w mikrobiologii zaawansowanego periodontitis. **Bacteroides** (różne gatunki) — historycznie kompletny rodzaj obejmował *Porphyromonas* i *Prevotella*, ale **w 1988 r. taksonomicznie wyodrębniono**: ***Bacteroides*** jelitowe (jelito grube), ***Porphyromonas*** (jama ustna, pigmentowane), ***Prevotella*** (jama ustna, niepigmentowane). Stąd w pytaniu *Bacteroides* (A, C, E) to **stara nazwa** — niepoprawne dla periodontologii. **( D) Fusobacterium** — *bridge organism* (kompleks pomarańczowy/zielony), wspomaga ale nie jest centralnym czynnikiem ryzyka jak *P. gingivalis* + *P. intermedia*. Klucz: zaawansowane periodontitis = *Porphyromonas* + *Prevotella*.
+
+---
+
+## mju-zal-170
+
+Pojęcie kryptotypu odnosi się do:
+
+- [ ] **A.** epitopu na komórce, który ujawnia się po usunięciu komórki
+- [✓] **B.** epitopu dostępnego w strukturze antygenu, ujawniającego się dopiero po zmianie jego konformacji
+- [ ] **C.** przeciwciała skierowanego przeciw własnym tkankom
+- [ ] **D.** epitopu ulegającego wiązaniu przez komórki nowotworowe
+- [ ] **E.** wszystkie odpowiedzi są prawidłowe
+
+**Poprawna odpowiedź:** B — epitopu dostępnego w strukturze antygenu, ujawniającego się dopiero po zmianie jego konformacji
+
+**Wyjaśnienie:**
+
+**Kryptotyp** (*cryptotope*, kryptotop) = **”ukryty epitop”** — fragment antygenu **niedostępny** dla przeciwciała w natywnej konformacji białka, **odsłonięty po denaturacji, proteolizie lub zmianie konformacji** (np. po związaniu ligandu, kwasie, ogrzewaniu). Klinicznie ważne: niektóre choroby autoimmunologiczne wynikają z odsłonięcia kryptotypów — np. **toczeń (SLE)**: martwica → uwolnienie wewnątrzkomórkowych antygenów (DNA, nukleoproteiny) → autoprzeciwciała przeciw ”nowym” epitopom. Pułapki: **( A) epitop po usunięciu komórki** — to nieprecyzyjna definicja, ale brzmi podobnie (mała różnica niuansowa). **( C) przeciwciała przeciw własnym tkankom** — to **autoprzeciwciała**, nie kryptotyp (kryptotyp to *epitop*, nie przeciwciało). **( D) epitop nowotworowy (TAA)** — to *Tumor-Associated Antigen*, też inne pojęcie. **( E) wszystkie** — pułapka *„wszystkie powyższe”* (Q11/2019 - regular trap).
+
+---
+
+## mju-zal-171
+
+W ciążowym zaawansowanym zapaleniu przyzębia znaczącą rolę pełnią:
+
+- [ ] **A.** Porphyromonas gingivalis w III trymestrze ciąży
+- [ ] **B.** Porphyromonas gingivalis w II trymestrze ciąży
+- [ ] **C.** Prevotella intermedia w III trymestrze ciąży
+- [✓] **D.** Prevotella intermedia w II trymestrze ciąży
+- [ ] **E.** Candida w III trymestrze ciąży
+
+**Poprawna odpowiedź:** D — Prevotella intermedia w II trymestrze ciąży
+
+**Wyjaśnienie:**
+
+**Ciążowe zapalenie przyzębia** = ***Prevotella intermedia*** + **II trymestr** (Q22/2023, Q58/2022, Q118/2019). Mechanizm: skok **estradiolu i progesteronu** w **II trymestrze** (najwyższe stężenia ~14-20 tydzień) → *P. intermedia* wykorzystuje hormony jako *„zamiennik menadionu”* (witaminy K) w metabolizmie → wybuchowy wzrost (10-55x baseline) → **gingivitis gravidarum** / **epulis ciążowy**. Pułapki — kombinacje patogen × trymestr: **(A, B) P. gingivalis** — przewlekłe periodontitis dorosłych, **niezhormonozależne**; nie zmienia się znacząco w ciąży. **( C) P. intermedia III trymestr** — niuans! Pik jest w II, w III stabilizacja lub spadek; częsta pułapka. **( E) Candida III trymestr** — kandydoza pochwy (II, III trymestr) jest powszechna, ale nie periodontitis. Klucz mnemoniczny: **P. intermedia + II trymestr + menadion-mimicry = ciążowy gingivitis**.
+
+---
+
+## mju-zal-172
+
+Korreceptor HIV to:
+
+- [ ] **A.** CCR8
+- [✓] **B.** CCR5
+- [ ] **C.** CXCR8
+- [ ] **D.** CXCR2
+- [ ] **E.** CXCR1
+
+**Poprawna odpowiedź:** B — CCR5
+
+**Wyjaśnienie:**
+
+**HIV (Human Immunodeficiency Virus)** wchodzi do limfocytów T CD4+ i makrofagów przez **dwustopniowy proces**: **( 1) wiązanie podstawowe** do **CD4** (główny receptor) → konformacja gp120, **( 2) wiązanie z korreceptorem** = ***CCR5*** (na makrofagach, monocytach, limfocytach T pamięci) lub ***CXCR4*** (na limfocytach T naiwnych). Stąd HIV dzieli się na: **R5-tropowe** (wczesna infekcja, CCR 5) i **X4-tropowe** (faza późna, CXCR4). Klinicznie: ***mutacja CCR5-Δ32*** (delecja 32pz, frekwencja ~10% u białych Europejczykó w) → homozygoty są **odporne na HIV-1**! Stąd kierunek terapeutyczny: **maraviroc** (antagonista CCR 5) i CCR5 KO transplantacja (Berlin Patient, London Patient — wyleczone z HIV przez przeszczep CCR5-Δ32 szpiku). Pułapki: **( A) CCR8** — ekspresja w Th2, eozynofile; niezwiązany z HIV. **(C, D, E) CXCR8/2/1** — inne receptory chemokin (IL-8 receptor, etc.). Klucz: HIV = CD4 + CCR5/CXCR4.
+
+---
+
+## mju-zal-173
+
+Które z poniższych komórek wykazują jednoetapową adsorpcję wirusową?
+
+- [ ] **A.** neutrofile
+- [ ] **B.** makrofagi
+- [✓] **C.** erytrocyty
+- [ ] **D.** limfocyty T
+- [ ] **E.** komórki nabłonka
+
+**Poprawna odpowiedź:** C — erytrocyty
+
+**Wyjaśnienie:**
+
+**Adsorpcja jednoetapowa** = wirus wiąże się od razu z **jednym receptorem** bez aktywnego sygnału z komórki gospodarza. Klasyczny model: **erytrocyty** + wirus grypy (*Influenza A*). Mechanizm: **HA (hemaglutynina)** wirusa wiąże się z **kwasem sialowym** powierzchni erytrocytu → aglutynacja widoczna gołym okiem (test HA — diagnostyka). Erytrocyt nie ma jądra → nie wspiera replikacji → wirion ”utknie” na powierzchni jako klasyczny model in vitro. Pułapki: **(A, B, D, E) komórki jądrowe** — adsorpcja **dwuetapowa lub wieloetapowa**: receptor podstawowy + korreceptor → sygnalizacja → fuzja błon → internalizacja. Przykłady: **HIV** (Q172) — CD4 + CCR5/CXCR4 (limfocyty, makrofagi). **Adenowirusy** — receptor CAR + integryny αvβ3/ 5. **Rinowirusy** — ICAM- 1. Wszystkie wymagają **sygnalizacji od komórki**. Klucz dydaktyczny: erytrocyty = ”martwa” adsorpcja jednostopniowa = model HA testowania.
+
+---
+
+## mju-zal-174
+
+Neuraminidaza wytwarzana przez Streptococcus oralis i Streptococcus mitis typu 1 uwalnia ligand galaktozylowy rozpoznawany przez:
+
+- [ ] **A.** Actinomyces spp.
+- [ ] **B.** Eikenella corrodens
+- [ ] **C.** Prevotella intermedia
+- [✓] **D.** wszystkie odpowiedzi są prawidłowe
+- [ ] **E.** wszystkie odpowiedzi są nieprawidłowe
+
+**Poprawna odpowiedź:** D — wszystkie odpowiedzi są prawidłowe
+
+**Wyjaśnienie:**
+
+**Sukcesja mikrobiologiczna w biofilmie**: pierwsi kolonizatorzy (Q37/2025-Q187 — paciorkowce grupy mitis) wytwarzają **neuraminidazy (sialidazy)** → odcinają kwas sialowy z osłonki nabytej → **odsłaniają receptory galaktozylowe** (β-Gal). Te receptory są rozpoznawane przez **późniejsze kolonizatory** posiadające specyficzne adhezyny galaktozowe: **( A) Actinomyces spp.** — fimbrie typu 2 wiążące β-Gal (adhezja do nabłonka i odsłoniętej osłonki). **( B) Eikenella corrodens** — lektyna galaktozospecyficzna. **( C) Prevotella intermedia** — adhezyny do galaktozy + niska wymaganość hormonalna (Q171). Wszystkie trzy korzystają z ”przygotowania terenu” przez paciorkowce → **D = wszystkie prawidłowe**. Klucz dydaktyczny: **sukcesja biofilmu jest enzymatycznie kierowana** — neuraminidaza usuwa sialowe → galaktoza odsłonięta → późni kolonizatorzy mają receptor. Mechanizm ekologicznej sukcesji.
+
+---
+
+## mju-zal-175
+
+Ksylitol w diecie redukuje próchnicogenny potencjał płytki nazębnej, ponieważ:
+
+- [ ] **A.** jest aktywnie metabolizowany przez S. mutans do kwasów słabych
+- [ ] **B.** nie jest metabolizowany przez bakterie płytki nazębnej
+- [ ] **C.** hamuje wydzielanie śliny u pacjenta
+- [ ] **D.** system fruktozylotransferazy transportuje ksylitol do wnętrza komórki Streptococcus sobrinus, gdzie podlega fosforylacji, defosforylacji i wydaleniu
+- [✓] **E.** odpowiedzi B i D są prawidłowe
+
+**Poprawna odpowiedź:** E — odpowiedzi B i D są prawidłowe
+
+**Wyjaśnienie:**
+
+**Ksylitol** = poliol pięciowęglowy (C5H12O5) — substancja słodząca o aktywnym **mechanizmie antykariogennym** (Q80/2022), nie tylko pasywnym jak sorbitol. **Dwa mechanizmy w jednym** (stąd E): **( B) NIEFERMENTOWALNY** przez *S. mutans* i *Lactobacillus* — brak produkcji kwasów. **( D) *Futile cycle* w *S. sobrinus***: bakteria transportuje ksylitol systemem PEP-PTS fruktozylotransferazy → fosforyluje do ksylitol-5-fosforanu → ten związek **toksyczny dla bakterii** (interferuje z glikolizą) → bakteria musi go defosforylować i wydalić → **strata ATP** → osłabienie populacji. Stąd ksylitol nie tylko ”nie karmi” próchnicy (jak sorbitol), ale **aktywnie ją osłabia**. Pułapki: **(A)** *aktywnie metabolizowany* — odwrócenie; ksylitol NIE jest metabolizowany. **(C)** *hamuje ślinę* — odwrócenie; ksylitol pobudza wydzielanie śliny (efekt mechaniczny + smakowy). Klucz: ksylitol = ”pasożytuje na patogenie” + niefermentowalny — kombinacja idealna.
+
+---
+
+## mju-zal-176
+
+Spośród poniższych środków dezynfekcyjnych wybierz wyłącznie te uszkadzające błonę komórkową bakterii:
+
+- [ ] **A.** podchloryn, chlorheksydyna, bromki
+- [ ] **B.** podchloryn, aldehyd glutarynowy, formaldehyd
+- [✓] **C.** chlorheksydyna, alkohole, fenole
+- [ ] **D.** chlorheksydyna, alkohole, podchloryn
+- [ ] **E.** wszystkie powyższe odpowiedzi są nieprawidłowe
+
+**Poprawna odpowiedź:** C — chlorheksydyna, alkohole, fenole
+
+**Wyjaśnienie:**
+
+**Trzy główne mechanizmy dezynfekcji** (Q148/2019, Q42/2025-Q192): **( 1) Uszkodzenie błony cytoplazmatycznej** — *chlorheksydyna* (biguanid, łączy się z ujemnie naładowanymi fosfolipidami), *alkohole* (etanol, izopropanol — denaturacja białek + rozpuszczenie lipidów), *fenole* (precypitacja białek + uszkodzenie błony). **( 2) Utlenianie** — podchloryn (HOCl), H2O2, KMnO4, jod, kwas nadoctowy. **( 3) Alkilacja** — aldehyd glutarynowy, formaldehyd, tlenek etylenu (Q158/2025). Stąd **C** = trzy klasyczne błonowo-uszkadzające. Pułapki: **( A) podchloryn** to UTLENIACZ, nie błonowo. **( B) aldehydy** to ALKILATORY. **( D) podchloryn** miesza mechanizmy. Klucz: trzy kategorie mechanizmów to fundamentalna klasyfikacja środków dezynfekcyjnych — *błonowe* (CHX, alkohole, fenole), *utleniające* (chlor, jod, nadtlenki, kwasy), *alkilujące* (aldehydy, EtO).
+
+---
+
+## mju-zal-177
+
+Wybierz zdanie fałszywe dotyczące otoczek bakterii:
+
+- [ ] **A.** biorą udział w adhezji do powierzchni
+- [ ] **B.** hamują fagocytozę przez komórki gospodarza
+- [ ] **C.** ich obecność można wykazać reakcją pęcznienia otoczek (test Quellunga)
+- [ ] **D.** wywołują reakcję odpornościową, dlatego wykorzystywane są w wytwarzaniu szczepionek
+- [✓] **E.** występują tylko u bakterii Gram-ujemnych
+
+**Poprawna odpowiedź:** E — występują tylko u bakterii Gram-ujemnych
+
+**Wyjaśnienie:**
+
+**Otoczki bakteryjne** (*capsules*) występują u zarówno **Gram-DODATNICH** jak i **Gram-UJEMNYCH** bakterii. Klasyczne przykłady: **Gram(+) otoczkowe**: ***Streptococcus pneumoniae*** (polisacharydowa, ~90 serotypów, cel szczepionki PCV13/PPSV23), ***Streptococcus pyogenes*** (kwas hialuronowy — mimikra molekularna), ***Bacillus anthracis*** (polipeptydowa z kwasu D-glutaminowego!). **Gram(-) otoczkowe**: ***Haemophilus influenzae typ b (Hib)*** (PRP — cel szczepionki Hib), ***Neisseria meningitidis*** (polisaharydowa, serogrupy A/B/C/W/Y), ***Klebsiella pneumoniae*** (śluzowa otoczka — *„soczewa”*), ***E. coli K1*** (zakażenia noworodków). Stąd **E** = klasyczne odwrócenie = fałsz. Pozostałe (A-D) — prawdziwe funkcje otoczek: **(A)** adhezja, **(B)** anty-fagocytarna (bariera dla komplementu i przeciwciał), **(C)** test Quellunga (przeciwciało + otoczka → optyczne pęcznienie), **(D)** immunogenność → cel szczepionek polisacharydowych. Klucz: otoczki = obie strony Gram.
+
+---
+
+## mju-zal-178
+
+SARS-CoV-2:
+
+- [ ] **A.** jest wirusem DNA
+- [ ] **B.** ma rozmiary zbliżone do małych wirusów (~20 mikrometrów)
+- [ ] **C.** nie posiada otoczki lipidowej
+- [ ] **D.** może się namnażać tylko wewnątrz jądra komórki gospodarza
+- [✓] **E.** posiada receptory ACE2 i CD209L
+
+**Poprawna odpowiedź:** E — posiada receptory ACE2 i CD209L
+
+**Wyjaśnienie:**
+
+**SARS-CoV-2** (*Severe Acute Respiratory Syndrome Coronavirus 2*) — wirus odpowiedzialny za COVID-19. Cechy: **( 1) ssRNA(+)** ~30 kb (jeden z największych genomów RNA-wirusów), **( 2) wirion ~100 nm** (klasyczny średni wirus, kulisty z koroną S — stąd *„corona”*), **( 3) **OTOCZKA LIPIDOWA**** (dlatego skuteczne mydło/alkohole — niszczą otoczkę), **( 4) namnażanie w **CYTOPLAZMIE**** (typowe dla wszystkich coronawirusów), **( 5) WEJŚCIE: receptor główny **ACE2** + korreceptor **TMPRSS2/CD209L** (DC-SIGN-related). Stąd **E**. Pułapki — **wszystkie odwrócenia**: **( A) DNA** — fałsz, RNA. **( B) 20 µm** — fałsz; to byłaby wielkość bakterii (np. *E. coli* ~2 µm), wirusy to nanometry (20-300 nm); typowa pułapka skali. **( C) bez otoczki** — fałsz, ma; *(adenowirusy są BEZ otoczki, picornawirusy też — ale nie SARS)*. **( D) jądro** — fałsz, namnaża się w cytoplazmie (jak wszystkie RNA(+) wirusy, poza grypą i retrowirusami). Klucz: SARS = ssRNA(+), otoczka, cytoplazma, ACE2.
+
+---
+
+## mju-zal-179
+
+Fluor działa jako inhibitor poprzez:
+
+- [ ] **A.** pobudzenie działania enolazy co zwiększa wydajność glikolizy
+- [ ] **B.** zahamowanie działania enolazy co zmniejsza wydajność glikolizy
+- [ ] **C.** zakwaszanie wnętrza bakterii (H+ trapping)
+- [ ] **D.** odpowiedzi A i C są prawidłowe
+- [✓] **E.** odpowiedzi B i C są prawidłowe
+
+**Poprawna odpowiedź:** E — odpowiedzi B i C są prawidłowe
+
+**Wyjaśnienie:**
+
+**Trzy mechanizmy fluoru** w hamowaniu próchnicy (Q91/2022): **( 1) Hamowanie ENOLAZY** — kluczowy enzym glikolizy (2-fosfoglicerynian → fosfoenolopirogronian, PEP); fluor wiąże Mg²+ w centrum aktywnym → bakteria nie może fermentować cukrów → mniej kwasów (B). **( 2) PUŁAPKA H+** — w niskim pH środowiska HF (niezdysocjowany kwas fluorowodorowy, pKa ~ 3) przenika błonę cytoplazmatyczną; wewnątrz pH wyższe → dysocjacja na H+ + F- → akumulacja H+ wewnątrz bakterii → **zakwaszenie cytoplazmy** → osłabienie metabolizmu (C). **( 3) Wzmocnienie szkliwa** — F- zastępuje OH- w hydroksyapatycie → **fluoroapatyt** (Ca10(PO4)6F2), wyższy próg demineralizacji (pH ~4,5 zamiast 5,5). Stąd **E = B + C** (oba mechanizmy bakteriobójcze). Pułapki: **( A) pobudzenie enolazy** — odwrócenie; fluor HAMUJE, nie pobudza. **( D) A+C** — nieprawidłowa, bo A samo jest odwrócone.
+
+---
+
+## mju-zal-180
+
+Próchnica wtórna:
+
+- [ ] **A.** występuje wyłącznie w zębach pozbawionych żywej miazgi
+- [ ] **B.** występuje wyłącznie w zębach z żywą miazgą
+- [✓] **C.** rozwija się wokół i pod wypełnieniami
+- [ ] **D.** obejmuje pośrednio tylko powierzchnie styczne zębów
+- [ ] **E.** powstaje wyłącznie na powierzchniach żujących trzonowców
+
+**Poprawna odpowiedź:** C — rozwija się wokół i pod wypełnieniami
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q127) — **próchnica wtórna** (*caries secundaria*, *recurrent caries*) = nowy ubytek **przy granicy wypełnienia z zębem** (margines wypełnienia). Etiologia: **mikroprzecieki** (*microleakage*) między materiałem (amalgamat, kompozyt) a zębem → bakterie + kwasy wnikają w szczelinę → demineralizacja od strony granicy. Czynniki ryzyka: złe założenie, korozja amalgamatu, polimeryzacyjny skurcz kompozytu (~2-3% obj.), pęknięcia szkliwa wokół brzegu. Pułapki — wszystkie ”wyłącznie...” (A, B, D, E) to fałszywe ograniczenia. Próchnica wtórna **dotyczy każdego zęba z wypełnieniem**, niezależnie od witalności miazgi, lokalizacji wypełnienia. Klucz: próchnica wtórna = pod/wokół wypełnień, dowolne zęby.
+
+---
+
+## mju-zal-181
+
+Wybrać prawidłowe stwierdzenie dotyczące chlorheksydyny:
+
+- [ ] **A.** jest płynem o jasnożółtym zabarwieniu i mocnym zapachu, substancją czynną jest wolny chlor
+- [ ] **B.** to organiczny związek z grupy halogenoalkanów, ma słodkawy zapach, jest bezbarwny, słabo rozpuszcza się w wodzie
+- [ ] **C.** jest stosowana do znieczuleń miejscowych, zawiera pierścień tiofenowy
+- [✓] **D.** to związek z grupy biguanidów, jest zasadą, atom chloru jest umiejscowiony przy pierścieniu fenolowym
+- [ ] **E.** wszystkie powyższe zdania są fałszywe
+
+**Poprawna odpowiedź:** D — to związek z grupy biguanidów, jest zasadą, atom chloru jest umiejscowiony przy pierścieniu fenolowym
+
+**Wyjaśnienie:**
+
+**Chlorheksydyna** (CHX) = **bis-biguanid** kationowy — związek z grupy **biguanidów** (jak metformina, ale farmakologicznie zupełnie inna), zasada organiczna z dwoma atomami chloru przy pierścieniach **fenolowych**. Substancja czynna jako diglukonian lub diacetan, rozpuszczalna w wodzie i alkoholu. Mechanizm: kation wiąże się elektrostatycznie z ujemnymi fosfolipidami błony cytoplazmatycznej Gram(+) i błony zewnętrznej Gram(-) → uszkodzenie błony → wyciek cytoplazmy (Q176). Klinicznie: **”złoty standard” chemicznej kontroli płytki** w periodontologii (0,12-0,2% płyn do płukania). Pułapki — wszystkie odwrócenia/inne związki: **(A)** *wolny chlor + żółty + mocny zapach* — to opis **podchlorynu sodu** (NaOCl), klasyczny irygator endodontyczny. **(B)** *halogenoalkany + słodkawy + bezbarwny* — opis **chloroformu** (CHCl3) lub **halotanu** (anestetyk wziewny). **(C)** *znieczulenie + tiofen* — opis **artikainy** (lokalny anestetyk stomatologiczny z grupą tiofenową). **(E)** *wszystkie fałszywe* — pułapka uniwersalna, gdy D jest prawdą.
+
+---
+
+## mju-zal-182
+
+Wybierz zdanie nieprawidłowe o próchnicy:
+
+- [ ] **A.** jest procesem wynikającym z braku równowagi pomiędzy demineralizacją a remineralizacją
+- [ ] **B.** bardziej narażeni są pacjenci z kserostomią (zmniejszone wydzielanie śliny)
+- [ ] **C.** najmniej podatne są powierzchnie językowe zębów
+- [✓] **D.** najmniej podatne są powierzchnie żujące pierwszego i drugiego trzonowca
+- [ ] **E.** kwaśne pH środowiska (poniżej 5,5) sprzyja demineralizacji szkliwa
+
+**Poprawna odpowiedź:** D — najmniej podatne są powierzchnie żujące pierwszego i drugiego trzonowca
+
+**Wyjaśnienie:**
+
+**Powierzchnie żujące trzonowców = NAJBARDZIEJ podatne**, nie najmniej (Q132/2019, Q77/2022). Trzy powody: **( 1) głębokie bruzdy i dołki** — fizyczna nisza dla *S. mutans* niedostępna dla szczotki ani języka; **( 2) długi okres dojrzewania szkliwa po wyrznięciu** (~2-3 lata) — *posteruptywna dojrzewałość* — świeże szkliwo bardziej porowate; **( 3) lokalizacja z tyłu łuku** — gorzej szczotkowane. Stąd **D = odwrócenie prawdy = fałsz**. Pozostałe (A, B, C, E) — prawdziwe: **(A)** klasyczna definicja próchnicy jako dyrównowaga demineralizacja/remineralizacja. **(B)** kserostomia → mniej śliny → mniej buforowania → wyższe ryzyko (Q9/2023). **(C)** powierzchnie językowe (podniebienne i lingwalne) najlepiej obmywane przez ślinę i ruchy języka → najmniej podatne. **(E)** krytyczne pH ~5,5 dla hydroksyapatytu (Q149/2019). Klucz: trzonowce żujące = brud + bruzdy = arch-bohater próchnicy.
+
+---
+
+## mju-zal-183
+
+Zdolności adhezyjne do powierzchni jamy ustnej posiadają:
+
+- [✓] **A.** fimbrie
+- [ ] **B.** lipooligosacharyd (LOS)
+- [ ] **C.** lipopolisacharyd (LPS)
+- [ ] **D.** odpowiedzi A i B
+- [ ] **E.** peptydoglikan ściany komórkowej
+
+**Poprawna odpowiedź:** A — fimbrie
+
+**Wyjaśnienie:**
+
+**Fimbrie** (*pili*) = włókniste białkowe wypustki na powierzchni bakterii, podstawowy aparat adhezji. Klasyczne fimbrie: ***P. gingivalis*** (FimA — adhezja do osłonki nabytej i komórek nabłonka), ***Actinomyces*** (typ 1 — adhezja do osłonki, typ 2 — koagregacja z paciorkowcami), ***E. coli*** uropatogenne (P-pili, fimbrie typu 1), ***N. gonorrhoeae*** (pili typu IV, *twitching motility* + adhezja, Q136/2019). Stąd **A**. Pułapki: **( B) LOS** i **( C) LPS** — to **endotoksyny** (Q159), **antygeny powierzchniowe**, niektóre szczepy używają ich do adhezji (np. *N. gonorrhoeae* LOS wiąże asialoglikoproteiny nabłonka), ale **fimbrie są klasycznym i głównym adhezynem**. Klucz: chociaż LPS/LOS mogą uczestniczyć w niespecyficznej adhezji, **klasyczna odpowiedź to fimbrie** (jak w kluczu źródłowym). **( D) A + B** — pułapka kombinacyjna. **( E) peptydoglikan** — strukturalny składnik ściany Gram(+), antygenny dla układu odpornościowego, ale nie adhezyna. Klucz: fimbrie = klasyk adhezji.
+
+---
+
+## mju-zal-184
+
+Zdanie nieprawdziwe dotyczące Enterobacter cloacae:
+
+- [ ] **A.** nie stanowi prawidłowej (głównej) mikroflory jelit
+- [ ] **B.** nie odpowiada za pierwotne zakażenia jamy ustnej
+- [✓] **C.** jest Gram-dodatnią pałeczką tlenową
+- [ ] **D.** powoduje szpitalne zakażenia układu moczowego
+- [ ] **E.** jest typowym przedstawicielem grupy ESKAPE patogenów szpitalnych
+
+**Poprawna odpowiedź:** C — jest Gram-dodatnią pałeczką tlenową
+
+**Wyjaśnienie:**
+
+***Enterobacter cloacae*** to **Gram-UJEMNA fakultatywna pałeczka** z rodziny *Enterobacteriaceae* (jak *E. coli*, *Klebsiella*, *Salmonella*) — NIE Gram-dodatnia tlenowa! Stąd **C = fałsz**. Cechy prawdziwe (A, B, D, E): **(A)** *E. cloacae* jest **bakterią głównie środowiskową** (gleba, woda, rośliny) i sporadycznym komensalem; nie jest głównym składnikiem mikroflory jelit (*Bacteroides*, *E. coli* dominują). **(B)** Pierwotnie nie atakuje jamy ustnej; oportunistycznie u immunosupresyjnych. **(D)** Klasyczny patogen szpitalny — **UTI, VAP, bakteriemie, infekcje rany**. **(E)** Należy do grupy ***ESKAPE*** (***E***nterococcus, ***S***. aureus, ***K***lebsiella, ***A***cinetobacter, ***P***seudomonas, ***E***nterobacter) — sześć kluczowych patogenów MDR według WHO. Klinicznie *E. cloacae* produkuje **AmpC β-laktamazę** indukcyjną → naturalna oporność na cefalosporyny 3. generacji. **Flaga walidatorska**: opcja A (”nie stanowi mikroflory jelit”) jest dyskusyjna — w nowszej literaturze *E. cloacae* jest częstym składnikiem mikroflory jelit. Idziemy za kluczem 2025.
+
+---
+
+## mju-zal-185
+
+Sposobem umożliwiającym obserwację krętków w preparacie mikroskopowym jest:
+
+- [ ] **A.** barwienie metodą Grama z fuksyną zasadową
+- [ ] **B.** barwienie gorącą fuksyną karbolową (Ziehl-Neelsen)
+- [ ] **C.** barwienie błękitem toluidynowym z chondroityną
+- [✓] **D.** mikroskopia immunofluorescencyjna (DFA, FTA-ABS)
+- [ ] **E.** klasyczne barwienie hematoksyliną-eozyną
+
+**Poprawna odpowiedź:** D — mikroskopia immunofluorescencyjna (DFA, FTA-ABS)
+
+**Wyjaśnienie:**
+
+**Krętki** (Treponema, Borrelia, Leptospira) są **bardzo cienkie** (~0,1-0,3 µm × 5-15 µ m) i **słabo barwią się standardowym Gramem** (cienka ściana ze ślabą peptydoglikanu). Cztery klasyczne metody obserwacji krętków: **( 1) MIKROSKOPIA W CIEMNYM POLU** — ”żywe” krętki, ruchome, widoczne jako lśniące spirale (rutynowo dla kiły wczesnej). **( 2) IMMUNOFLUORESCENCJA** — *DFA-TP* (Direct Fluorescent Antibody, bezpośrednie wykrywanie *T. pallidum* w wymazie) i *FTA-ABS* (serologia kiły, IgG przeciw *T. pallidum*). **( 3) Impregnacja srebrowa** (Fontana-Tribondeau) — krętki czarne na żółtym tle. **( 4) Barwienie Giemsy/Wrighta** dla *Borrelia recurrentis* w rozmazie krwi (gorączki nawrotne). Stąd **D = immunofluorescencja** zgodnie z kluczem 2025. Pułapki: **( A) Gram** — krętki Gram-ujemne, ale słabo wybarwiają się standardowym barwieniem. **( B) ZN** — to barwienie kwasoodporne dla prątków (Q107/2019). **( C) chondroityna** — nieistniejące standardowe barwienie. **( E) HE** — barwienie histologiczne tkanek, słabe dla krętków (chociaż TP można czasem zidentyfikować w tkance po Warthin-Starry).
+
+---
+
+## mju-zal-186
+
+Bakteria nieposiadająca ściany komórkowej, zachowująca swój kształt nawet w środowisku hipertonicznym, mogąca powodować choroby układu oddechowego i moczowego, to:
+
+- [ ] **A.** sferoplasty (formy bakterii bez fragmentu ściany)
+- [ ] **B.** protoplasty (formy bakterii pozbawione całkowicie ściany)
+- [✓] **C.** Mycoplasma spp.
+- [ ] **D.** krętki (Treponema, Leptospira)
+- [ ] **E.** L-formy bakterii (przejściowe formy bez ściany)
+
+**Poprawna odpowiedź:** C — Mycoplasma spp.
+
+**Wyjaśnienie:**
+
+***Mycoplasma*** = unikalny rodzaj bakterii **NATURALNIE pozbawiony ściany komórkowej** (peptydoglikan nieobecny od narodzin gatunku, nie wtórnie zniszczony). Cecha kluczowa: **steroidy (cholesterol) w błonie cytoplazmatycznej** — usztywniają błonę, dają oporność na lizę osmotyczną. Stąd *Mycoplasma* **zachowuje kształt nawet w hipertonii** (typowe dla L-form to liza w hipotonii). Klinicznie: ***M. pneumoniae*** — *atypowe zapalenie płuc* (walking pneumonia, Q111/2019); ***M. genitalium*** — niegonokokowe zapalenie cewki moczowej; ***Ureaplasma urealyticum*** — zakażenia urogenitalne. Naturalna **oporność na antybiotyki β-laktamowe** (brak peptydoglikanu jako celu!) → leczenie makrolidami/tetracyklinami/fluorochinolonami. Pułapki — *„nie do końca Mycoplasma”* formy: **( A) sferoplasty** — bakterie z **częściowo** zniszczoną ścianą (zostaje błona zewnętrzna u Gram(-)). **( B) protoplasty** — **całkowicie** pozbawione ściany (lizozym), **lizują w hipotonii** — różnica niuansowa od *Mycoplasma*. **( E) L-formy** — bakterie wtórnie tracące ścianę pod wpływem antybiotyków/lizozymu, **przejściowe**, mogą wrócić do normalnej formy. **( D) krętki** — mają ścianę (Q185). Klucz: *Mycoplasma* = jedyne **stabilne** bezścianowe.
+
+---
+
+## mju-zal-187
+
+Pierwsze drobnoustroje zasiedlające osłonkę nabytą szkliwa stanowią:
+
+- [✓] **A.** ziarniaki Gram-ujemne i Gram-dodatnie
+- [ ] **B.** tylko ziarniaki Gram-dodatnie
+- [ ] **C.** tylko ziarniaki Gram-ujemne
+- [ ] **D.** pałeczki Gram-dodatnie i Gram-ujemne
+- [ ] **E.** promieniowce i nitkowate bakterie Gram-dodatnie
+
+**Poprawna odpowiedź:** A — ziarniaki Gram-ujemne i Gram-dodatnie
+
+**Wyjaśnienie:**
+
+**Sukcesja mikrobiologiczna w biofilmie** — pionierzy zasiedlają **osłonkę nabytą** (*acquired pellicle* — warstwa białek śliny adsorbowanych na szkliwie ~10 min po szczotkowaniu) w pierwszych godzinach po higienie. **Pierwsi kolonizatorzy = ziarniaki Gram(+) i Gram(-)**: **Gram(+)**: ***S. sanguinis***, ***S. oralis***, ***S. mitis***, ***S. gordonii*** (grupa mitis, Q11/2023, Q153/2025); **Gram(-)**: ***Neisseria*** (zwłaszcza *N. subflava*, *N. mucosa* — Q114/2019), ***Veillonella*** (ziarniak Gram(-) beztlenowy). Stąd **A**. Pułapki: **( B) tylko Gram+** — fałsz, *Neisseria* też. **( C) tylko Gram-** — fałsz, paciorkowce dominują. **( D) pałeczki** — pałeczki przychodzą **PÓŹNIEJ** (24-48h): *Actinomyces*, *Corynebacterium*, później *Lactobacillus*. **( E) promieniowce + nitkowate Gram+** — *„późni kolonizatorzy”* (po 48-72h), dojrzała płytka, obraz ”corn cob” (Q162/2025). Klucz sukcesji: **pionierzy (ziarniaki) → mid (pałeczki, *Actinomyces*) → źrali kolonizatorzy (Fusobacterium-bridge → czerwony kompleks)**.
+
+---
+
+## mju-zal-188
+
+Bezwzględnie beztlenowa pałeczka Gram-ujemna o wrzecionowatym kształcie, często wykrywana w chorobach przyzębia, to:
+
+- [ ] **A.** Treponema denticola
+- [ ] **B.** Porphyromonas gingivalis
+- [✓] **C.** Fusobacterium nucleatum
+- [ ] **D.** Prevotella intermedia
+- [ ] **E.** Aggregatibacter actinomycetemcomitans
+
+**Poprawna odpowiedź:** C — Fusobacterium nucleatum
+
+**Wyjaśnienie:**
+
+***Fusobacterium nucleatum*** = **klasyczna pałeczka WRZECIONOWATA** (*fusiform* — fusus to wrzeciono), Gram-ujemna, bezwzględny beztlenowiec. Funkcja w periodontologii: ***bridge organism*** — łączy pierwszych kolonizatorów (paciorkowce mitis-group) z późnymi (czerwony kompleks: *P. gingivalis*, *T. denticola*, *T. forsythia*). Bez *F. nucleatum* dojrzewanie biofilmu poddziąsłowego jest niemożliwe. Klasyczny duet w NUG: *F. nucleatum* + krętki (Q113/2019, Q24/2023, Q55/2022). Pułapki — *różne morfologie*: **( A) T. denticola** — **krętek** (spiralny), nie pałeczka wrzecionowata. **( B) P. gingivalis** — Gram(-) pałeczka, ale **krótka, prosta**, nie wrzecionowata. **( D) P. intermedia** — Gram(-) pałeczka, ale **prosta** (Q118/2019). **( E) A. actinomycetemcomitans** — Gram(-) **ziarniako-pałeczka** (coccobacillus), kapnofil tlenowy, nie beztlenowiec (Q151/2025). Klucz: ”wrzeciono” + Gram(-) + beztlenowiec = *F. nucleatum*.
+
+---
+
+## mju-zal-189
+
+Które z poniższych zestawień drobnoustrojów wytwarzają przetrwalniki?
+
+- [ ] **A.** Geobacillus stearothermophilus, Corynebacterium diphtheriae, Bacillus anthracis
+- [ ] **B.** Corynebacterium diphtheriae, Actinomyces israelii, Bacillus atrophaeus
+- [✓] **C.** Geobacillus stearothermophilus, Clostridium diphtheriae, Bacillus anthracis
+- [ ] **D.** Geobacillus stearothermophilus, Mycobacterium tuberculosis, Bacillus anthracis
+- [ ] **E.** Clostridium tetani, Lactobacillus casei, Bacillus cereus
+
+**Poprawna odpowiedź:** C — Geobacillus stearothermophilus, Clostridium diphtheriae, Bacillus anthracis
+
+**Wyjaśnienie:**
+
+**Przetrwalniki bakteryjne** (*endospores*) wytwarzają **TYLKO dwa rodzaje Gram-DODATNICH**: ***Bacillus*** (tlenowce — wąglik *B. anthracis*, *B. cereus*, *B. subtilis*, *B. atrophaeus*, *Geobacillus stearothermophilus*) i ***Clostridium*** (beztlenowce — tężec *C. tetani*, botulizm *C. botulinum*, zgorzel *C. perfringens*, *C. difficile*). Stąd odpowiedź wymaga **3 prawidłowych przetrwalnikowych**. **(C)** *Geobacillus stearothermophilus* ✓ (wskaźnik biologiczny Sporal A — para wodna), *Clostridium* ✓ ([uwaga: ”diphtheriae” to typo źródłowy — nie ma gatunku *Clostridium diphtheriae*; intencja autora to *C. tetani* lub *C. perfringens*]), *Bacillus anthracis* ✓ (wąglik). Stąd **C** zgodnie z kluczem. Pułapki — **odwrócenia**: **(A)** *Corynebacterium diphtheriae* — Gram(+) pałeczka, ale **NIE wytwarza przetrwalników** (jest mylona z *Clostridium* zwłaszcza ze względu na nazwę ”diphtheriae”). **(B)** *Actinomyces israelii* — promieniowiec, **nie wytwarza przetrwalników**, mimo wytwarzania *„konidialnopodobnych”* sporangiów. **(D)** *Mycobacterium tuberculosis* — Gram(+), ale **nie ma przetrwalników** (chociaż formy persisterowe latent — nie endospory). **(E)** *Lactobacillus* — **nie wytwarza** (Q134/2019). **Flaga walidatorska**: opcja C ma typo źródłowy *„Clostridium diphtheriae”* (gatunek nieistniejący) — należy uznać że źródło myślało o *Clostridium spp.* w ogóle; konsultacja z Kasią.
+
+---
+
+## mju-zal-190
+
+Wskaż zdanie fałszywe o próchnicy cementu korzeniowego:
+
+- [ ] **A.** występuje przy odsłoniętych dziąsłach (recesja dziąseł)
+- [ ] **B.** powierzchnia odsłoniętego korzenia jest chropowata, co zwiększa łatwość kolonizacji przez bakterie
+- [✓] **C.** występuje głównie u osób młodych
+- [ ] **D.** krytyczne pH demineralizacji cementu jest wyższe niż dla szkliwa (~6,2-6,7 vs 5,5)
+- [ ] **E.** Rothia dentocariosa i Actinomyces to typowi patogeni próchnicy korzenia
+
+**Poprawna odpowiedź:** C — występuje głównie u osób młodych
+
+**Wyjaśnienie:**
+
+**Próchnica cementu korzeniowego** (*root caries*) — dotyczy **głównie SENIORÓW** (po 60 r.ż.), nie młodych! Stąd **C = fałsz**. Mechanizm: z wiekiem **recesja dziąseł** (zanik dziąseł brzeżnych w wyniku starzenia, periodontitis, traumy, agresywnego szczotkowania) → ekspozycja cementu i zębiny korzenia. Pozostałe (A, B, D, E) — prawdziwe: **(A)** recesja jest warunkiem koniecznym. **(B)** cement to **chropowata** powierzchnia (włókna Sharpey'a, kanaliki resorpcyjne, linie przyrostowe) — fizycznie sprzyja adhezji bakterii vs gładkie szkliwo. **(D)** krytyczne pH demineralizacji cementu ~6,2-6,7 (cement zawiera ~50% hydroksyapatytu vs 96% w szkliwie) → **łatwiej demineralizować** → próchnica korzenia rozwija się szybciej (Q7/2023, Q116/2019). **(E)** ***Rothia dentocariosa*** + ***Actinomyces*** + ***Lactobacillus*** to klasyczne patogeny próchnicy korzenia (Q116/2019 — *„denti-cariosa”* = nazwa dosłownie zdradza siedlisko). Klucz: próchnica korzenia = seniorzy + recesja + chropowaty cement + wyższe krytyczne pH.
+
+---
+
+## mju-zal-191
+
+Główny czynnik zjadliwości Aggregatibacter actinomycetemcomitans to:
+
+- [✓] **A.** leukotoksyna (RTX-toksyna)
+- [ ] **B.** gingipainy (Rgp i Kgp)
+- [ ] **C.** dentilizyna
+- [ ] **D.** streptolizyna O
+- [ ] **E.** egzotoksyna A z aktywnością ADP-rybozylacji
+
+**Poprawna odpowiedź:** A — leukotoksyna (RTX-toksyna)
+
+**Wyjaśnienie:**
+
+***A. actinomycetemcomitans*** (AA) wytwarza **LEUKOTOKSYNĘ** — białko z rodziny **RTX (repeats in toxin)**, podobne do α-hemolizyny *E. coli* i HlyA *Bordetella pertussis*. Mechanizm: tworzy **pory w błonach leukocytów** (neutrofili, makrofagów, limfocytó w) → liza tych komórek → **lokalna immunosupresja** → bakteria omija odpowiedź wrodzoną. To wyjaśnia agresywny przebieg **dziecięcego/lokalizowanego agresywnego periodontitis** (Q25/2023, Q112/2019). Dodatkowo AA wytwarza ***Cytolethal Distending Toxin (CDT)*** — zatrzymuje cykl komórkowy nabłonka w fazie G2/M. Pułapki — *toksyny innych periodontopatogenów* (kategoria toksyn): **( B) gingipainy Rgp/Kgp** — proteazy cysteinowe *P. gingivalis* (Q119/2019). **( C) dentilizyna** — proteaza *T. denticola*, kolagenoliza. **( D) streptolizyna O** — cytolizyna *S. pyogenes* (angina, szkarlatyna), kardiotoksyczna. **( E) egzotoksyna A** — *P. aeruginosa*, inhibitor EF-2 z mechanizmem podobnym do toksyny błonicy. Klucz: AA = leukotoksyna = niszczy neutrofile.
+
+---
+
+## mju-zal-192
+
+Do związków o mechanizmie utleniającym należą:
+
+- [ ] **A.** alkohole etylowy i izopropylowy, fenol, chlorheksydyna
+- [✓] **B.** nadmanganian potasu, nadtlenek wodoru, kwas nadoctowy
+- [ ] **C.** tlenek etylenu, formaldehyd, aldehyd glutarynowy
+- [ ] **D.** sole amoniowe czwartorzędowe (QAC), fenol, krezol
+- [ ] **E.** kwas borowy, kwas mlekowy, kwas octowy
+
+**Poprawna odpowiedź:** B — nadmanganian potasu, nadtlenek wodoru, kwas nadoctowy
+
+**Wyjaśnienie:**
+
+**Utleniacze chemiczne** = środki dezynfekcyjne działające przez transfer elektronów → utlenianie tłuszczów, białek, DNA bakterii (rodniki •OH, •O−). Trzy klasyczne to **(B)**: ***nadmanganian potasu (KMnO4)*** — Mn⁷+ → Mn²+ (potężny utleniacz), historycznie używany do antyseptyki. ***Nadtlenek wodoru (H2O2)*** — 3-6% do dezynfekcji, generuje •OH, najsilniejszy biologiczny utleniacz. ***Kwas nadoctowy (PAA, CH3CO3H)*** — silniej utleniacz niż H2O2, szybkie sporobójcze działanie, używany do sterylizacji niskotemperaturowej. Pułapki — **inne mechanizmy**: **( A) alkohole + fenol + CHX** — **denaturacja błony** (Q176/2025). **( C) EtO + aldehydy** — **alkilacja** (Q158/2025). **( D) QAC + fenole** — *quaternary ammonium compounds* działają błonowo (kationowe, jak CHX). **( E) kwasy słabe** — boroowy, mlekowy, octowy — niski pH (denaturacja białek przez pH), ale **NIE utleniacze**. Klucz mnemoniczny utleniaczy: **chlor, jod, nadtlenki, kwasy nadtlenkowe, nadmanganian** (Q148/2019 — fenol jest wyjątkiem, nie utleniacz).
+
+---
+
+## mju-zal-193
+
+Najpowszechniejszym krętkiem w jamie ustnej jest:
+
+- [ ] **A.** Treponema pallidum
+- [ ] **B.** Treponema socranskii
+- [ ] **C.** Treponema vincentii
+- [ ] **D.** Treponema macrodentium
+- [✓] **E.** Treponema denticola
+
+**Poprawna odpowiedź:** E — Treponema denticola
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q117) i 2022 (Q57) — ***T. denticola*** to **najczęstszy krętek poddziąsłowy** w jamie ustnej, członek **czerwonego kompleksu Socranskyego** (Q163/2025) razem z *P. gingivalis* i *T. forsythia*. Cechy: motilność (penetruje nabłonek przyczepu), proteoliza (**dentilizyna** — kolagen, fibronektyna, IgA), tworzy ”corn cob” z paciorkowcami (Q162/2025). Pułapki — *różne Treponema*: **( A) T. pallidum** — patogen **KIŁY** (*syphilis*), nie jamy ustnej; klasyczne barwienie w ciemnym polu (Q185/2025), serologia FTA-ABS / VDRL. **( B) T. socranskii** — krętek poddziąsłowy, drugorzędny, mniej liczny. **( C) T. vincentii** — partner NUG (choroba Vincenta, Q113/2019), nie typowy patogen przewlekłego periodontitis. **( D) T. macrodentium** — rzadszy gatunek poddziąsłowy. Klucz dydaktyczny: ”najczęstszy krętek w jamie ustnej” = **T. denticola** (klasyczny test wielokrotnie pytany: 2019, 2022, 2025).
+
+---
+
+## mju-zal-194
+
+Wskaż definicję gatunków oportunistycznych:
+
+- [ ] **A.** bakterie chorobotwórcze nieobecne w prawidłowej mikroflorze, atakujące każdego gospodarza
+- [✓] **B.** występują fizjologicznie w mikroflorze organizmu i w warunkach obniżonej odporności mogą wywoływać zakażenia
+- [ ] **C.** drobnoustroje wywołujące pierwotne zakażenia wyłącznie u osób z prawidłową odpornością
+- [ ] **D.** bakterie środowiskowe nigdy niewchodzące w skład mikroflory człowieka
+- [ ] **E.** drobnoustroje wywołujące wyłącznie zakażenia szpitalne, nieobecne w naturze
+
+**Poprawna odpowiedź:** B — występują fizjologicznie w mikroflorze organizmu i w warunkach obniżonej odporności mogą wywoływać zakażenia
+
+**Wyjaśnienie:**
+
+**Gatunki oportunistyczne** (*opportunistic pathogens*) = **komensale** mikroflory organizmu, które w **warunkach obniżonej odporności** gospodarza (immunosupresja, AIDS, neutropenia, cukrzyca, niedożywienie, chemia/radioterapia) lub **utraty bariery** (cewnik, opatrunek, wziernik) **wykorzystują okazję** (*opportunity*) → wywołują zakażenie. Klasyczne przykłady: ***Candida albicans*** (kandydoza u immunosupresyjnych — Q160/2025), ***Staphylococcus epidermidis*** (zakażenia cewników), ***E. coli*** (UTI), ***Pseudomonas aeruginosa*** (zakażenia ran, mukowiscydoza). Stąd **B**. Pułapki — **inne kategorie patogenów**: **( A) patogeny pierwotne** (*primary pathogens*) — *S. pyogenes*, *N. gonorrhoeae*, *M. tuberculosis*, *Treponema pallidum* — atakują zdrowych. **(C)** odwrócenie — patogeny pierwotne właśnie atakują zdrowych, oportunistyczne czekają na obniżenie odporności. **( D) bakterie środowiskowe** — np. *Legionella* (woda), ale ta kategoria nie obejmuje oportunistów z mikroflory. **( E) tylko szpitalne** — to **bakterie nozokomialne** (grupa ESKAPE — Q184), podzbiór oportunistów. Klucz: oportunista = komensal + obniżona odporność = zakażenie.
+
+---
+
+## mju-zal-195
+
+Pierwotna nisza bytowania Capnocytophaga:
+
+- [ ] **A.** błona śluzowa policzków
+- [ ] **B.** grzbiet języka
+- [ ] **C.** ślina (mikrobiom planktoniczny)
+- [✓] **D.** płytka poddziąsłowa (kieszonka dziąsłowa)
+- [ ] **E.** powierzchnia szkliwa nadziąsłowa
+
+**Poprawna odpowiedź:** D — płytka poddziąsłowa (kieszonka dziąsłowa)
+
+**Wyjaśnienie:**
+
+***Capnocytophaga*** = rodzaj **Gram-UJEMNYCH KAPNOFILNYCH** pałeczek (*„capno”* = CO2, *„cytophaga”* = pożeracz komórek — od *gliding motility* po komórkach gospodarza). Pierwotna nisza: **płytka poddziąsłowa** (kieszonka dziąsłowa) — idealna ze względu na **kapnofilność** (wysokie CO2 w warstwach beztlenowych biofilmu, podobnie jak *A. actinomycetemcomitans* — Q151/2025) i **dostępność białek** GCF. Należy do **kompleksu zielonego Socranskyego** — drugorzędny periodontopatogen, kojarzony z **dziecięcym periodontitis** (Q112/2019, razem z *AA*, *P. intermedia*). Cecha unikalna: ***Capnocytophaga canimorsus*** (szczep zwierzęcy) — przenoszona przez **psie ugryzienie**, może wywołać posocznicę u immunosupresyjnych (zwłaszcza po splenektomii). Pułapki — *inne nisze*: **( A) policzki** — paciorkowce *mitis*-group dominują (Q109/2019). **( B) język** — *S. salivarius*, *Veillonella*, krętki, źródło VSC. **( C) ślina** — *S. salivarius*, *Streptococcus mitis* w fazie planktonicznej (~10⁹/ml). **( E) szkliwo nadziąsłowe** — pionierzy biofilmu naddziąsłowego (ziarniaki Q187/2025). Klucz: *Capnocytophaga* = kieszonka = kapnofil.
+
+---
+
+## mju-zal-196
+
+Wskaż zdanie fałszywe dotyczące chlorheksydyny:
+
+- [ ] **A.** jest pochodną biguanidu, kationowym związkiem powierzchniowo-czynnym
+- [ ] **B.** skutecznie hamuje produkcję glukanów przez Streptococcus mutans
+- [ ] **C.** powoduje przebarwienia zębów i języka przy długotrwałym stosowaniu
+- [ ] **D.** w stężeniu 0,12-0,2% jest standardem płukania w periodontologii
+- [✓] **E.** działa skuteczniej na paciorkowce zdrowej płytki (sanguinis, mitis) niż na paciorkowce kariogenne (S. mutans)
+
+**Poprawna odpowiedź:** E — działa skuteczniej na paciorkowce zdrowej płytki (sanguinis, mitis) niż na paciorkowce kariogenne (S. mutans)
+
+**Wyjaśnienie:**
+
+**Chlorheksydyna** (Q181/2025) wykazuje ***SELEKTYWNĄ aktywność*** przeciwko ***S. mutans*** i innym **paciorkowcom kariogennym** (skuteczniej niż na komensale zdrowej płytki). Mechanizm: silna **dodatnio naładowana** cząsteczka biguanidu wiąże się z **ujemnie naładowanymi adhezynami glikoprotein** *S. mutans* (większa gęstość naładowanych grup karboksylowych niż u *S. sanguinis*) → preferencyjnie blokuje adhezję kariogennych. Stąd **E = odwrócenie prawdy = fałsz**. Pozostałe (A-D) — prawdziwe: **(A)** CHX = **bis-biguanid kationowy** (Q181). **(B)** Hamuje **glukozylotransferazy (GTF)** → brak produkcji glukanów (Q33/2023) → brak matrycy biofilmu *S. mutans*. **(C)** Klasyczny efekt uboczny: **brązowe przebarwienia zębów i języka** (po 2-3 tygodniach codziennego płukania) — wynikają z reakcji CHX z polifenolami w jedzeniu (herbata, kawa, wino) i metabolitami bakterii. **(D)** Stężenia kliniczne: **0,12% (Listerine-like)** i **0,2% (Corsodyl, Eludril)**, czas kontaktu 30-60 sek. Klucz: CHX = selektywnie anty-mutans (przeciwnie do E).
+
+---
+
+## mju-zal-197
+
+Dezynfekcja — definicja:
+
+- [✓] **A.** niemonitorowany proces inaktywacji form wegetatywnych drobnoustrojów; stopień zależny od mocy zastosowanego środka
+- [ ] **B.** monitorowany proces niszczenia wszystkich form życia, w tym przetrwalników bakteryjnych
+- [ ] **C.** usuwanie zanieczyszczeń organicznych z narzędzi przed właściwą sterylizacją
+- [ ] **D.** tworzenie barier między strefą skażoną i nieskażoną w polu operacyjnym
+- [ ] **E.** niszczenie drobnoustrojów na zakażonej tkance żywej z użyciem antyseptyków
+
+**Poprawna odpowiedź:** A — niemonitorowany proces inaktywacji form wegetatywnych drobnoustrojów; stopień zależny od mocy zastosowanego środka
+
+**Wyjaśnienie:**
+
+**Dezynfekcja** (*disinfection*) = **niemonitorowany** proces inaktywacji **form wegetatywnych** (nie przetrwalników, nie prionó w) drobnoustrojów na powierzchniach martwych (narzędzia, podłogi, blaty). **Stopień skuteczności zależy od**: typu środka, stężenia, czasu kontaktu, temperatury, obciążenia organicznego. Klasyfikacja Spauldinga: **wysoki poziom** (sporostatyczny — aldehyd glutarynowy, PAA), **średni** (HLD bez sporyzowania — chlor, alkohole, fenole), **niski** (QAC, słabe roztwory). Pułapki — *różne pojęcia*: **( B) sterylizacja** — monitorowana (Q144/2019), niszczy WSZYSTKO w tym spory;
+
+SAL 10⁻⁶. **( C) mycie/oczyszczanie** (*cleaning*) — usuwanie zanieczyszczeń organicznych, fizyczne, ZIMNE roztwory (Q143/2019). **( D) aseptyka** (Q145/2019) — tworzenie barier sterylnych, proaktywne. **( E) antyseptyka** — działanie na **żywej tkance** (skóra, błony śluzowe), nie na martwych powierzchniach. Hierarchia: **mycie → dezynfekcja → sterylizacja** (dla narzędzi); **antyseptyka** (dla tkanki); **aseptyka** (dla pola).
+
+---
+
+## mju-zal-198
+
+Najważniejszy bufor wartości pH śliny stanowi:
+
+- [ ] **A.** bufor fosforanowy (HPO4²⁻/H2PO4⁻)
+- [ ] **B.** bufor białkowy (mucyny, statheryny)
+- [ ] **C.** bufor mocznikowy (urea)
+- [✓] **D.** bufor wodorowęglanowy (HCO3⁻/H2CO3)
+- [ ] **E.** bufor histydynowy (związany z białkami śliny)
+
+**Poprawna odpowiedź:** D — bufor wodorowęglanowy (HCO3⁻/H2CO3)
+
+**Wyjaśnienie:**
+
+**Bufor wodorowęglanowy** (HCO3⁻/H2CO3, pKa 6, 1) = **dominujący system buforowy śliny stymulowanej** (~85% pojemności buforowej śliny pobudzonej). Mechanizm: H+ (z kwasów płytki) + HCO3⁻ → H2CO3 → CO2 (lotny) + H2O → ucieczka CO2 z powierzchni śliny przesuwa równowagę → ”wypompowanie” H+. Stąd **D**. Klucz fizjologiczny: **ślina stymulowana** (np. żucie, smak kwaśny) ma 5-10× WIĘCEJ HCO3⁻ niż spoczynkowa → znacznie lepsza buforowość → szybkie podniesienie pH płytki po posiłku (krzywa Stephana, Q149/2019 — powrót do baseline w ~60 min). Pułapki — *inne bufory*: **( A) bufor fosforanowy** (pKa 7, 2) — **drugi co do znaczenia**, dominujący w **ślinie SPOCZYNKOWEJ** (~5-15% pojemności); ważny w środowiskach nie-pobudzonych. **( B) bufor białkowy** — mucyny mają niską pojemność buforową, głównie funkcja lubrykacyjna. **( C) mocznik** — substrat ureazy bakteryjnej (*S. salivarius*, *Actinomyces*) → NH3 → podwyższenie pH (mechanizm alkalogenny biofilmu), ale **NIE klasyczny bufor**. **( E) histydyna** — wchodzi w skład białek śliny, drobne znaczenie. Klucz: pobudzona ślina = wodorowęglany; spoczynkowa = fosforany.
+
+---
+
+## mju-zal-199
+
+Wskaźnik biologiczny Sporal S służy do kontroli sterylizacji:
+
+- [ ] **A.** parowej (autoklaw, para nasycona 121-134°C) — przetrwalniki Geobacillus stearothermophilus
+- [✓] **B.** suchym gorącym powietrzem (160-180°C) — przetrwalniki Bacillus atrophaeus
+- [ ] **C.** radiacyjnej (promieniowanie gamma) — przetrwalniki Clostridium tetani
+- [ ] **D.** filtracji powietrza HEPA — zarodniki Aspergillus niger
+- [ ] **E.** tlenkiem etylenu (EtO) — przetrwalniki Bacillus subtilis
+
+**Poprawna odpowiedź:** B — suchym gorącym powietrzem (160-180°C) — przetrwalniki Bacillus atrophaeus
+
+**Wyjaśnienie:**
+
+**Sporal S** = wskaźnik biologiczny dla **sterylizacji suchym gorącym powietrzem** (160-180°C, 30-60 min) zawierający przetrwalniki ***Bacillus atrophaeus*** (dawniej *B. subtilis var. niger*, ATCC 9372). Wybór tego mikroorganizmu: jego spory są szczególnie oporne na ciepło suche (D-value w 160°C ~1-2 min) → jeśli zginęły, sterylizacja była skuteczna. **Mechanizm działania ciepła suchego**: utlenianie składników komórki + denaturacja białek (vs ciepło wilgotne — koagulacja). Pułapki — *różne wskaźniki sterylizacji*: **( A) Sporal A** — dla **autoklawu** parowego, ***Geobacillus stearothermophilus*** (ATCC 7953) — wytrzymuje 121°C, jest niszczone tylko gdy para nasycona penetruje pakiet. **( C) radiacja gamma** — wskaźnik ***Bacillus pumilus*** (E601) lub *G. stearothermophilus*, NIE *C. tetani*. **( D) filtracja HEPA** — testy *DOP/PAO* (dietylhexylftalat / poli-α-olefina), nie biologiczne. **( E) EtO** — wskaźnik ***Bacillus atrophaeus*** (ten sam co dla suchego ciepła, ale inny mechanizm — alkilacja), więc opcja częściowo prawda ale błędna kombinacja. **Flaga walidatorska**: klucz źródłowy pisał ”*B. anthracis*” — to BŁĄD; *B. anthracis* to wąglik, niebezpieczny patogen, NIE wskaźnik sterylizacji. Poprawione na *B. atrophaeus*. Klucz mnemoniczny: **Sporal A = Autoklaw + stearothermophilus;
+
+Sporal S = Suche + atrophaeus**.
+
+---
+
+## mju-zal-200
+
+Diagnostyka mikrobiologiczna Actinomyces israelii polega na:
+
+- [ ] **A.** barwieniu Ziehla-Neelsena i wykazaniu kwasoodporności prątków
+- [ ] **B.** posiewie na agarze Sabourauda — kremowobiałe kolonie po 24-48h
+- [ ] **C.** impregnacji srebrowej Fontana-Tribondeau i obserwacji w ciemnym polu
+- [✓] **D.** posiewie na bogatym agarze (krew, surowica) w warunkach beztlenowych — kremowobiałe kolonie po 5-7 dniach przypominające powierzchnię zęba trzonowego
+- [ ] **E.** barwieniu błękitem metylenowym i obserwacji ziaren siarkowych w preparacie bezpośrednim z ropy
+
+**Poprawna odpowiedź:** D — posiewie na bogatym agarze (krew, surowica) w warunkach beztlenowych — kremowobiałe kolonie po 5-7 dniach przypominające powierzchnię zęba trzonowego
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q125) i 2022 (Q 52) — ***Actinomyces israelii*** wymaga **specyficznej hodowli**: **( 1) warunki beztlenowe** (bezwzględny beztlenowiec); **( 2) bogate podłoże** (agar z krwią, surowicą lub glukozą — wymagający); **( 3) długi czas inkubacji** **5-7 dni**; **( 4) charakterystyczne kolonie *molarne*** — kremowobiałe, guzkowate, przypominające powierzchnię żującą zęba trzonowego (***molar tooth colonies*** — patognomoniczne!). Stąd **D**. Pułapki — *różne metody diagnostyczne*: **( A) Ziehl-Neelsen + kwasoodporność** — to dla **prątków** (Q107/2019, *Mycobacterium*); ***A. israelii nie jest kwasoodporny*** (różni się od *Nocardia*, która JEST częściowo kwasoodporna — Q122/2019). **( B) Sabouraud + 24-48h** — to dla **grzybów** (*Candida*); za szybki dla *A. israelii*. **( C) Fontana-Tribondeau + ciemne pole** — to dla **krętków** (*Treponema pallidum*, kiła;
+
+Q185/2025). **( E) ziarna siarkowe + błękit metylenowy** — ziarna siarkowe (*sulfur granules*, Q122/2019) są klasyczną cechą *A. israelii* w preparacie bezpośrednim z ropy, ALE diagnostyka rutynowa to hodowla; ziarna siarkowe to dodatek (gross morphology w ropie z przetok). Klucz: *A. israelii* = beztlenowy + bogate podłoże + 5-7 dni + ”molar tooth colonies”.
+
+---
+
+## mju-zal-201
+
+Wskaż prawidłowe zestawienie typów hemolizy z gatunkami Streptococcus:
+
+- [✓] **A.** alfa-hemoliza: S. vestibularis; beta-hemoliza: S. anginosus
+- [ ] **B.** alfa-hemoliza: S. mutans; beta-hemoliza: S. vestibularis
+- [ ] **C.** alfa-hemoliza: S. pyogenes; beta-hemoliza: S. pneumoniae
+- [ ] **D.** alfa-hemoliza: S. salivarius; beta-hemoliza: S. agalactiae
+- [ ] **E.** alfa-hemoliza: S. mitis; beta-hemoliza: S. mutans
+
+**Poprawna odpowiedź:** A — alfa-hemoliza: S. vestibularis; beta-hemoliza: S. anginosus
+
+**Wyjaśnienie:**
+
+**Typy hemolizy paciorkowców**: **(1) alfa** — częściowa, zielonkawa strefa wokół kolonii (oxidative hemoliza, produkcja H2O2 utlenia hemoglobinę do methemoglobiny → zielony kolor); **(2) beta** — całkowita, klarowna strefa (streptolizyna O/S lizuje erytrocyty); **(3) gamma** — brak hemolizy. ***S. vestibularis*** (grupa salivarius) — alfa-hemoliza ✓. ***S. anginosus*** (grupa anginosus) — beta-hemoliza ✓ (chociaż czasem alfa lub gamma — szczepowo zależne). Stąd **A**. Pułapki — *odwrócenia typowych hemoliz*: **(B) S. mutans** — typowo **gamma** (brak hemolizy), nie alfa; *S. vestibularis* — alfa, nie beta. **(C) S. pyogenes** — klasyczna **beta** (Lancefield A), nie alfa; *S. pneumoniae* — alfa (zielonkawa wokół kolonii pod optochinem), nie beta. **(D) S. salivarius** — gamma; *S. agalactiae* (Lancefield B) — beta. **(E) S. mitis** — alfa; *S. mutans* — gamma. Klucz mnemoniczny: **alfa = zieleniejące (viridans, mitis, oralis, sanguinis, mutans-czasem)**; **beta = ropotwórcze (pyogenes, agalactiae, anginosus)**; **gamma = niekorzystne paciorkowce (Enterococcus, salivarius)**.
+
+---
+
+## mju-zal-202
+
+Aggregatibacter actinomycetemcomitans serotyp a należy do kompleksu:
+
+- [ ] **A.** czerwonego 
+- [✓] **B.** zielonego 
+- [ ] **C.** pomarańczowego
+- [ ] **D.** purpurowego 
+- [ ] **E.** żółtego 
+
+**Poprawna odpowiedź:** B — zielonego 
+
+**Wyjaśnienie:**
+
+**Klasyfikacja Socranskyego** (1998) dzieli mikroflorę poddziąsłową na **6 kompleksów ekologicznych** według wzorców wzrostu w biofilmie i powiązań z chorobą: **żółty** (paciorkowce mitis, pionierzy), **zielony** (*Capnocytophaga*, *Eikenella corrodens*, *AA serotyp a*, *Campylobacter concisus*), **purpurowy** (*Veillonella*, *Actinomyces odontolyticus*), **pomarańczowy** (*P. intermedia*, *F. nucleatum*, *P. micra*, *C. rectus*), **czerwony** (klucz Q163/2025 — *P. gingivalis*, *T. denticola*, *T. forsythia*), **AA serotyp b** (poza klasyczną klasyfikacją — silnie patogenny w agresywnym periodontitis). Stąd **B**. **Ważny niuans**: ***AA serotyp a, c, d, e*** = kompleks **zielony** (mniej patogenny, częsty komensal), ale ***AA serotyp b*** = własny kompleks (super-leukotoksyna JP2 clone, klasyczny patogen *Localized Aggressive Periodontitis* u młodzieży, zwłaszcza afro-pochodzenia). Pułapki — pozostałe to **inne kompleksy bez AA**. Klucz: serotyp determinuje położenie ekologiczne — *a* jest niewinny, *b* niebezpieczny.
+
+---
+
+## mju-zal-203
+
+Ostra kandydoza atroficzna (zanikowa) najczęściej dotyczy:
+
+- [ ] **A.** ludzi zakażonych wirusem HIV
+- [✓] **B.** pacjentów po długotrwałej antybiotykoterapii
+- [ ] **C.** ludzi używających ruchomych protez stomatologicznych
+- [ ] **D.** ludzi w podeszłym wieku z kserostomią
+- [ ] **E.** noworodków i niemowląt karmionych butelką
+
+**Poprawna odpowiedź:** B — pacjentów po długotrwałej antybiotykoterapii
+
+**Wyjaśnienie:**
+
+**Ostra kandydoza atroficzna** (*acute atrophic candidiasis*, *acute erythematous candidiasis*) — czerwona, bolesna, **żywo-rumieniowa** błona śluzowa bez białego nalotu, najczęściej grzbiet języka (**zanik brodawek nitkowatych** = ”wygładzony język”, *bald tongue*). Klasyczna etiologia: **długotrwała antybiotykoterapia** (zwłaszcza szerokospektrowa — tetracykliny, amoksycylina, klindamycyna) → zaburzenie równowagi mikrobiologicznej → eliminacja paciorkowców bakteryjnych konkurencyjnych → eksplozja *Candida albicans*. Stąd **B = ”antybiotykowy język”** (*antibiotic sore mouth*). Pułapki — **inne formy kandydozy**: **(A) HIV** — najczęściej **rzekomobłoniasta** (Q21/2023 — *thrush*), zdrapywalne białe naloty. **(C) protezy** — **przewlekła rumieniowa** (= stomatopatia protetyczna, Q214 niżej). **(D) starsi z kserostomią** — multifaktorialnie. **(E) noworodki** — **rzekomobłoniasta** (*thrush*, *muguet*) z przewodu pokarmowego matki. Klucz dydaktyczny: **forma → typowy pacjent**: ostra atroficzna → antybiotyk; przewlekła rumieniowa → proteza; rzekomobłoniasta → noworodek/HIV; hiperplastyczna → przewlekła nikotynizm/idiopatyczna.
+
+---
+
+## mju-zal-204
+
+Czego NIE koduje plazmid bakteryjny?
+
+- [✓] **A.** endotoksyn
+- [ ] **B.** egzotoksyn
+- [ ] **C.** oporności na antybiotyki
+- [ ] **D.** odporności na środki dezynfekcyjne
+- [ ] **E.** metabolizmu pomocniczego (np. degradacja nietypowych substratów)
+
+**Poprawna odpowiedź:** A — endotoksyn
+
+**Wyjaśnienie:**
+
+**Endotoksyna** = **lipopolisacharyd (LPS)** lub **lipid A** — **integralny składnik strukturalny błony zewnętrznej** bakterii Gram-ujemnych (Q159/2025). Synteza LPS jest kodowana **chromosomalnie** (operony *lpx* — lipid A, *waa* — rdzeń, *rfb* — antygen O); są to **geny niezbywalne** (esencjalne dla przeżycia). Stąd **A**. Pozostałe (B-E) — wszystkie **typowe funkcje plazmidów**: **(B) egzotoksyny** — wiele klinicznych: toksyna **błonicy** (plazmid w *C. diphtheriae* — *„tox”* gene), toksyna **tężca** (plazmid pE88 w *C. tetani*), **botulinum** (plazmid + lizogen), toksyna *Shiga* (fag + plazmid w EHEC), TSST-1 (plazmid w *S. aureus*). **(C) oporność na antybiotyki** = klasyczna funkcja plazmidów R (*R-plasmids*) — β-laktamazy, MRSA *mecA*, VRE *vanA*, NDM-1. **(D) oporność na dezynfekty** — np. plazmid pSK1 u *S. aureus* (oporność na QAC, chlorheksydyna). **(E) metabolizm pomocniczy** — *plazmidy degradacyjne* (np. *Pseudomonas* + węglowodory ropy naftowej, plazmidy TOL, NAH). Klucz: **plazmid = ”bonus dla bakterii”, chromosom = ”niezbędne ja”**; endotoksyna = strukturalna, chromosom.
+
+---
+
+## mju-zal-205
+
+Kryptotopy to:
+
+- [ ] **A.** hapteny bakteryjne podobne do substancji grupowych krwi, ułatwiające przyleganie
+- [ ] **B.** epitopy antygenów bakterii, które zmieniając konformację przestrzenną unikają wiązania z przeciwciałami wydzielniczymi
+- [✓] **C.** miejsca wiązania receptorów PRP-1, które podczas wiązania do hydroksyapatytu zmieniają konformację, odsłaniając ukryte fragmenty cząsteczki
+- [ ] **D.** adhezyny bakteryjne podobne do antygenów powierzchniowych C. neoformans, umożliwiające wiązanie A. viscosus do powierzchni hydroksyapatytu
+- [ ] **E.** żadna z powyższych odpowiedzi nie jest prawidłowa
+
+**Poprawna odpowiedź:** C — miejsca wiązania receptorów PRP-1, które podczas wiązania do hydroksyapatytu zmieniają konformację, odsłaniając ukryte fragmenty cząsteczki
+
+**Wyjaśnienie:**
+
+**Kryptotop** (w kontekście **stomatologicznej osłonki nabytej**, *acquired pellicle*) = **ukryte miejsce wiązania na białku śliny** odsłaniane po **adsorpcji do powierzchni hydroksyapatytu**. Klasyczny przykład: ***PRP-1*** (***P***roline-***R***ich ***P***rotein 1) — *kwaśne białko bogate w prolinę* (acidic PRP) wydzielane przez gruczoły ślinowe; w roztworze ma jedną konformację, **po przyleganiu do szkliwa** podlega zmianie konformacji → **odsłonięcie kryptotypów** = **nowych miejsc wiązania dla bakterii** (zwłaszcza *S. gordonii*, *Actinomyces viscosus*). Klinicznie ważne: ten mechanizm tłumaczy **specyficzną adhezję pionierów do szkliwa pokrytego osłonką** (nie do gołego szkliwa!). Stąd **C**. Niuans: **w 2025 r. Q170 ten sam termin był definiowany ogólniej** (jako *epitop ujawniający się po zmianie konformacji antygenu*) — kryptotyp ma 2 znaczenia: (1) ogólne immunologiczne, (2) konkretne stomatologiczne (PRP-1). Tu klucz 2024 = znaczenie **stomatologiczne (PRP-1)**. Pułapki: **(A)** *hapteny grupowe* — antygeny ABO/Lewis na nabłonku, inne pojęcie. **(B)** *zmiana konformacji unikania przeciwciał* — to **antygenowa zmienność** (np. *N. gonorrhoeae* opa, pili), nie kryptotyp. **(D)** *adhezyny grzybicze* — pomylenie skali (białko śliny vs adhezyna mikroba). Klucz: kryptotyp = ”ukryte miejsce odkrywane po przylepieniu”.
+
+---
+
+## mju-zal-206
+
+Biologiczne wskaźniki sterylizacji służą głównie do:
+
+- [✓] **A.** kontroli wsadu (skuteczność cyklu sterylizacyjnego dla konkretnej partii)
+- [ ] **B.** kontroli pakietu (taśmy chemiczne na opakowaniu)
+- [ ] **C.** kontroli ekspozycji (oznakowanie strefy wewnątrz pakietu)
+- [ ] **D.** kontroli sterylności (testy na gotowych produktach po sterylizacji)
+- [ ] **E.** kontroli mycia (czystości narzędzi przed sterylizacją)
+
+**Poprawna odpowiedź:** A — kontroli wsadu (skuteczność cyklu sterylizacyjnego dla konkretnej partii)
+
+**Wyjaśnienie:**
+
+**Wskaźniki sterylizacji** dzielą się na **3 typy** (klasyfikacja PN-EN ISO 11140 i 11138): **(1) Wskaźniki BIOLOGICZNE** (BI, klasa biologiczna) — żywe przetrwalniki bakterii referencyjnych w ampułkach: ***Geobacillus stearothermophilus*** (Sporal A dla pary, Q199/2025), ***Bacillus atrophaeus*** (Sporal S dla suchego ciepła i EtO). Hodowla po cyklu pokazuje czy zginęły → **kontrola WSADU** (czy cały cykl dla tego konkretnego ładunku był skuteczny). **(2) Wskaźniki CHEMICZNE** (klasy 1-6): klasa 1 (taśmy, kontrola ekspozycji), 2 (Bowie-Dick), 3-5 (parametry), 6 (emulator cyklu). **(3) Wskaźniki FIZYCZNE** (czujniki temperatury, ciśnienia, czasu). Stąd **A**. Pułapki — *różne typy kontroli*: **(B) kontrola pakietu** — chemiczne (taśmy klasy 1). **(C) ekspozycja** — taśma na opakowaniu klasa 1. **(D) kontrola sterylności** — *Sterility Testing* (USP <71>), wykonywana **na gotowych produktach farmaceutycznych** (BP, EP), nie na rutynowych narzędziach. **(E) kontrola mycia** — testy ATP, białka resztowe — przed sterylizacją. Klucz: BI = wsad; chemiczne klasy 1-6 = pakiet/cykl.
+
+---
+
+## mju-zal-207
+
+Od czego zależy szybkość penetracji pary wodnej w autoklawie?
+
+- [ ] **A.** szybkość odpowietrzania komory w cyklu pracy autoklawu
+- [ ] **B.** rodzaj pakietu (gęstość, materiał opakowania)
+- [ ] **C.** materiały do sterylizacji wewnątrz pakietu (porowate vs lite)
+- [ ] **D.** odpowiedzi A i B
+- [✓] **E.** odpowiedzi A, B i C
+
+**Poprawna odpowiedź:** E — odpowiedzi A, B i C
+
+**Wyjaśnienie:**
+
+**Penetracja pary nasyconej** w autoklawie wymaga **eliminacji wszystkich kieszeni powietrza** — para musi dotrzeć do wszystkich powierzchni narzędzi w pakiecie. Wszystkie 3 czynniki współdziałają: **(A) Odpowietrzanie** — kluczowe! Pre-vacuum cycle (wysokoodpróżniony cykl klasy B, EN-285) usuwa powietrze przez wielokrotne podciśnienia przed wpuszczeniem pary. Bez tego — *„kieszenie powietrzne”* = *„cold spots”* — para tam nie dotrze (test Bowie-Dick wykrywa tę wadę!). **(B) Rodzaj pakietu** — opakowania porowate (papier krepowany, włóknina SMS) → para penetruje łatwo; opakowania szczelne (rękawy plastikowe-papierowe Steriking) → wolniejsza penetracja, wymaga dłuższego cyklu. **(C) Materiały wewnątrz** — narzędzia porowate (gazy, fartuchy) potrzebują dłuższego czasu (10-20 min więcej); narzędzia lite (skalpele) — szybciej. Stąd **E = A + B + C**. Pułapki: **(D) tylko A+B** — niekompletne, brakuje materiałów wewnątrz. **(A, B, C samodzielnie)** — każde za wąskie. Klucz: trzy czynniki penetracji to **odpowietrzanie + opakowanie + zawartość**.
+
+---
+
+## mju-zal-208
+
+Wskaż zdanie zawierające nieprawdziwą informację dotyczącą kamienia nazębnego:
+
+- [ ] **A.** kamień nazębny to zmineralizowana płytka nazębna
+- [ ] **B.** kamień nazębny może być pokryty warstwą żywych bakterii
+- [ ] **C.** częstość występowania kamienia nazębnego wzrasta z wiekiem
+- [✓] **D.** pirofosforany oraz sole cynku przyspieszają mineralizację płytki nazębnej
+- [ ] **E.** obecność kamienia nazębnego zwiększa prawdopodobieństwo zapalenia przyzębia
+
+**Poprawna odpowiedź:** D — pirofosforany oraz sole cynku przyspieszają mineralizację płytki nazębnej
+
+**Wyjaśnienie:**
+
+**Pirofosforany i sole cynku** są klasycznymi **INHIBITORAMI** mineralizacji (nie przyspieszaczami!) — są **wbudowywane do past *tartar-control*** (Crest Pro-Health, Sensodyne Tartar). Mechanizm: pirofosforan (P2O7⁴⁻) **wiąże się z fosforanami wapnia** powierzchniowymi kryształów hydroksyapatytu → **blokuje wzrost kryształów** (kompetycyjny inhibitor); sole **cynku** (Zn²⁺) zastępują Ca²⁺ w strukturze → niestabilne kryształy. Stąd **D = odwrócenie prawdy = fałsz**. Pozostałe (A-C, E) — prawdziwe: **(A)** kamień = **zmineralizowana płytka** (apatyt + brushite + węglanapatyt, 70-90% hydroksyapatytu, 10-30% materia organiczna). **(B)** powierzchnia kamienia często **pokryta żywą płytką** (kamień to ”cmentarz”, ale na nim nowa warstwa). **(C)** częstość rośnie z wiekiem (~30% u 20-latków, ~80% u 60-latków) — kumulacja przez lata. **(E)** kamień zwiększa retencję płytki bakteryjnej + jest mechaniczną pułapką → koreluje z periodontitis (chociaż **kamień sam w sobie nie wywołuje** zapalenia — to płytka na jego powierzchni). Klucz: pirofosforany + Zn = **anty-kamień** w pastach (Crest).
+
+---
+
+## mju-zal-209
+
+Program sterylizacji prionów w autoklawie parowym to:
+
+- [ ] **A.** 121°C, 1 atm nadciśnienia, 15-20 minut
+- [ ] **B.** 134°C, 2 atm nadciśnienia, 18 minut p
+- [✓] **C.** 134°C, 2 atm nadciśnienia, 60 minut 
+- [ ] **D.** 160°C, suche gorące powietrze przez 2 godziny
+- [ ] **E.** 70°C + 1N NaOH przez 60 minut
+
+**Poprawna odpowiedź:** C — 134°C, 2 atm nadciśnienia, 60 minut 
+
+**Wyjaśnienie:**
+
+**Sterylizacja prionów** (Q46/2023, Q146/2019) wymaga **najsilniejszych warunków**, bo PrPSc to β-arkusz, ekstremalnie odporny na: ciepło suche (do 600°C!), chemikalia (alkohole, formalina UTRWALAJĄ priony!), promieniowanie UV/γ. Skuteczne metody: **(1)** autoklaw **134°C × 60 min** (WHO/CDC, cykl prionowy), **(2)** 1-2N NaOH lub 2% NaOCl przez 60 min + niszczenie narzędzi po cyklu. Standardowy autoklaw (121°C/20min) NIE wystarcza — dla prionów MUSI być cykl ”prionowy” lub utylizacja narzędzi. Stąd **C**. Pułapki: **(A) 121°C × 20 min** — standardowy cykl dla zwykłych bakterii i spór, **NIEWYSTARCZAJĄCY** dla prionów. **(B) 134°C × 18 min** — cykl krótki dla materiałów termoodpornych, też niewystarczający dla prionów (potrzeba 60 min!). **(D) suche ciepło 160°C × 2h** — **NIE DZIAŁA** na priony (potrzeba 600°C!). **(E) NaOH 70°C** — częściowa metoda chemiczna (alkaliczna hydroliza), ale 1N NaOH przy 121°C × 30 min jest skuteczne, nie 70°C. Klucz: priony = **134°C × 60 min** (główna) lub **NaOH 1N + 121°C × 30 min** (alternatywa). Klinicznie: po operacjach u CJD/vCJD narzędzia często **utylizowane**, nie reused.
+
+---
+
+## mju-zal-210
+
+Która z wymienionych metod NIE jest metodą dezynfekcji ciepłem wilgotnym?
+
+- [ ] **A.** pasteryzacja (ogrzewanie wodne ~63-72°C, czas zależny od temperatury)
+- [✓] **B.** ogrzewanie w płomieniu palnika Bunsena (flambowanie ezy bakteriologicznej)
+- [ ] **C.** aparat Kocha (gotowanie w naczyniu, 100°C × kilka minut)
+- [ ] **D.** tyndalizacja (frakcjonowane ogrzewanie 80-100°C × 30 min × 3 dni)
+- [ ] **E.** gotowanie narzędzi w wodzie (100°C × 10-30 min)
+
+**Poprawna odpowiedź:** B — ogrzewanie w płomieniu palnika Bunsena (flambowanie ezy bakteriologicznej)
+
+**Wyjaśnienie:**
+
+**Ogrzewanie w płomieniu palnika Bunsena** (*flame sterilization*, **flambowanie**) — to **STERYLIZACJA ciepłem SUCHYM** (~1000°C w niebieskim stożku płomienia!), nie wilgotnym. Klasyczne zastosowanie: **wyżarzanie ezy bakteriologicznej** (Pt/Ni metalowa pętla) przed każdym pasażem — momentalna inaktywacja bakterii, spór, prionów. Stąd **B = odpowiedź pytania** = NIE jest metodą ciepła wilgotnego. Pozostałe (A, C, D, E) — wszystkie używają **wody/pary**: **(A) Pasteryzacja** (Louis Pasteur, 1864) — niskoozonująca dezynfekcja mleka, wina; HTST (72°C × 15s), LTLT (63°C × 30 min), UHT (135°C × 2-5s). **(C) Aparat Kocha** — gotowanie 100°C w wodzie pod ciśnieniem atmosferycznym. **(D) Tyndalizacja** (Q142/2019) — frakcjonowane ogrzewanie 30 min × 3 dni z wykorzystaniem **kiełkowania przetrwalników** między cyklami. **(E) Gotowanie** — klasyczna desfekcja domowa (butelki dla niemowląt). Klucz dydaktyczny: **ciepło wilgotne** = woda/para (autoklaw, pasteryzacja, gotowanie, tyndalizacja); **ciepło suche** = powietrze/płomień (Bunsen, suszarka, sterylizatory gorącego powietrza).
+
+---
+
+## mju-zal-211
+
+Wskaż zdanie FAŁSZYWE dotyczące rodzaju Neisseria:
+
+- [ ] **A.** Neisseria meningitidis może wywołać zapalenie opon mózgowo-rdzeniowych
+- [ ] **B.** Neisseria gonorrhoeae wywołuje rzeżączkę (gonorrhoea)
+- [ ] **C.** Neisseria meningitidis posiada otoczkę polisacharydową (cel szczepionek koniugowanych)
+- [ ] **D.** Neisseria gonorrhoeae wytwarza proteazy IgA1 jako czynnik zjadliwości
+- [✓] **E.** za zespół Waterhousa-Friderichsena odpowiada Neisseria gonorrhoeae
+
+**Poprawna odpowiedź:** E — za zespół Waterhousa-Friderichsena odpowiada Neisseria gonorrhoeae
+
+**Wyjaśnienie:**
+
+**Zespół Waterhouse'a-Friderichsena** (*WFS*) = **piorunująca meningokokemia** z **krwotokiem do nadnerczy** → niewydolność kory nadnerczy → wstrząs (klasyczny zespół, śmiertelność 50-90%). Wywoływany przez ***Neisseria MENINGITIDIS*** (zwłaszcza serogrupy B i C, dzieci/młodzież w epidemiach), **NIE *N. gonorrhoeae***! Stąd **E = fałsz**. Manifestacja: nagła wysoka gorączka + **plamica martwicza** (wybroczyny, sińce krwotoczne) + spadek RR + niewydolność krążenia + DIC + adrenokortyzol ↓. Pozostałe (A-D) — prawdziwe: **(A)** *N. meningitidis* — klasyczna **bakteryjna meningitis epidemic** (gorączka + sztywność karku + zaburzenia świadomości; Kernig+, Brudziński+); szczepionki MenACWY, MenB. **(B)** *N. gonorrhoeae* — **rzeżączka** (STD, *the clap*); UTI, PID, niepłodność, ofthalmia neonatorum; oporność wzrastająca — *„last-line”* ceftriakson + azytromycyna. **(C)** otoczka polisacharydowa — cel szczepionek koniugowanych z białkiem nośnikowym (toxoid błonicy/tężca) → indukcja odpowiedzi T-zależnej u dzieci. **(D)** proteazy IgA1 + **pile + LOS** — klasyczna triada zjadliwości gonokoki (Q136/2019). Klucz: WFS = MENINGITIDIS, nie gonorrhoeae.
+
+---
+
+## mju-zal-212
+
+Wskaż zdanie FAŁSZYWE dotyczące rodziny Neisseriaceae:
+
+- [ ] **A.** są to dwoinki Gram-ujemne, oksydazododatnie
+- [ ] **B.** większość gatunków rośnie najlepiej na agarze czekoladowym
+- [ ] **C.** są kapnofilne (wymagają 5-10% CO2 w atmosferze)
+- [ ] **D.** wytwarzają oksydazę cytochromową (test pozytywny rutynowo)
+- [✓] **E.** wszystkie gatunki są sacharolityczne (fermentują glukozę i inne cukry)
+
+**Poprawna odpowiedź:** E — wszystkie gatunki są sacharolityczne (fermentują glukozę i inne cukry)
+
+**Wyjaśnienie:**
+
+**Nie wszystkie gatunki Neisseria są sacharolityczne** — fermentacja cukrów to **kluczowa cecha różnicująca** między gatunkami w identyfikacji laboratoryjnej. Klasyczna tabelka: ***N. gonorrhoeae*** fermentuje **TYLKO glukozę**; ***N. meningitidis*** — **glukozę + maltozę**; ***N. lactamica*** — **glukozę + maltozę + LAKTOZĘ** (jedyna lactose-fermenter); ***N. sicca*** — **glukozę + maltozę + sacharozę + fruktozę**; ***N. cinerea*** — **żaden cukier (asacharolityczna)**; ***Moraxella catarrhalis*** (taksonomicznie blisko Neisseria) — **asacharolityczna**. Stąd **E = odwrócenie prawdy = fałsz**. Pozostałe (A-D) — prawdziwe dla **całej rodziny Neisseriaceae**: **(A)** Gram(-) **dwoinki** (*diplococci*, *„coffee bean”*), oksydaza pozytywna. **(B)** Wymagająca — agar czekoladowy z czynnikami X+V (Q106/2019), Thayer-Martin (selektywny). **(C)** Kapnofilne — wymagają 5-10% CO2 dla optymalnego wzrostu (inkubator z CO2 lub świeca w słoiku). **(D)** **Oksydaza cytochromowa pozytywna** — klasyczny test różnicujący od *Enterobacteriaceae*, podstawowy odczyn rutynowy w diagnostyce. Klucz: profil cukrów = klucz identyfikacji Neisseria; **asacharolityczna *N. cinerea*** to wyjątek do zapamiętania.
+
+---
+
+## mju-zal-213
+
+Serotypy Streptococcus mutans występujące u ludzi to:
+
+- [ ] **A.** a, b, c 
+- [ ] **B.** a, b, c, d
+- [ ] **C.** b, c, d
+- [✓] **D.** c, e, f
+- [ ] **E.** a, b, c, d, e, f, g, h
+
+**Poprawna odpowiedź:** D — c, e, f
+
+**Wyjaśnienie:**
+
+***Streptococcus mutans*** dzieli się na **8 serotypów** (a, b, c, d, e, f, g, h) wg węglowodanów ściany komórkowej (różne polisacharydy seryjne wiązane do peptydoglikanu). **U ludzi dominują serotypy c, e, f**, przy czym ***serotyp c stanowi 70-80%*** wszystkich izolatów ludzkich (najczęstszy), *serotyp e* ~15%, *f* ~5%. Stąd **D**. Klinicznie ważne: **transmisja matka-dziecko** (*window of infectivity* 19-31 m.ż. — Caufield 1993) — dziecko nabywa **ten sam serotyp co matka** (typowo c). Pułapki: **(A) a, b, c** — *„a”* i *„b”* nie są typowe dla ludzi; *S. mutans serotyp a* i *b* to głównie **gryzonie i szczury** (eksperymentalne modele próchnicy). **(B) a, b, c, d** — *„d”* to *S. sobrinus* (taksonomicznie inny gatunek, też kariogenny, towarzyszący *S. mutans c*). **(C) b, c, d** — częściowo prawda dla *„c”*, błędna dla *„b”* i *„d”*. **(E) wszystkie 8** — niektóre nie zostały izolowane z ludzi rutynowo. Klucz dydaktyczny: **u ludzi = c, e, f** (mnemonika: ***c***-domestic, ***e***-extra, ***f***-rare); **u zwierząt = a, b, d, g, h**.
+
+---
+
+## mju-zal-214
+
+Stomatopatia protetyczna to:
+
+- [ ] **A.** ostra kandydoza atroficzna (poantybiotykowa)
+- [ ] **B.** ostra kandydoza rzekomobłoniasta (thrush, muguet)
+- [ ] **C.** ostre wrzodziejące zapalenie dziąseł (NUG, choroba Vincenta)
+- [✓] **D.** przewlekła kandydoza rumieniowa (chronic erythematous candidiasis)
+- [ ] **E.** zapalenie kątów ust (cheilitis angularis, perlèche)
+
+**Poprawna odpowiedź:** D — przewlekła kandydoza rumieniowa (chronic erythematous candidiasis)
+
+**Wyjaśnienie:**
+
+**Stomatopatia protetyczna** (*denture stomatitis*, *denture sore mouth*) = **przewlekła kandydoza rumieniowa** błony śluzowej **pod płytą protezy ruchomej** (zwłaszcza górnej). Wywoływana przez ***Candida albicans*** + komensale bakteryjne (paciorkowce mitis, gronkowce). **Klasyfikacja Newtona**: **typ I** — punktowy zapalenie (zlokalizowane czerwienie), **typ II** — rozlane (cała powierzchnia pod protezą), **typ III** — z hiperplazją brodawkową podniebienia (*papillary hyperplasia palatum*). Czynniki ryzyka: **noszenie protezy w nocy** (brak omywania śliną), zła higiena protezy (biofilm na akrylu), kserostomia, antybiotyki, cukrzyca. **Stąd D**. Pułapki — inne formy kandydozy/zapaleń: **(A) ostra atroficzna** — *„antibiotic sore mouth”* (Q203), grzbiet języka, NIE pod protezą. **(B) rzekomobłoniasta** — *thrush* z białym nalotem, noworodki/immunosupresja. **(C) NUG** — bakteryjne (krętki + *Fusobacterium*, Q113/2019), nie kandydoza. **(E) cheilitis angularis** — kąty ust, *„zajady”*, mieszane *Candida + S. aureus*; często z stomatopatią protetyczną razem (wspólna etiologia *Candida*). Klucz: stomatopatia = pod protezą + przewlekła + rumieniowa + *Candida*.
+
+---
+
+## mju-zal-215
+
+Spośród poniższych drobnoustrojów Gram-DODATNI jest:
+
+- [ ] **A.** Porphyromonas gingivalis
+- [ ] **B.** Aggregatibacter actinomycetemcomitans
+- [✓] **C.** Corynebacterium matruchotii
+- [ ] **D.** Fusobacterium nucleatum
+- [ ] **E.** Veillonella parvula
+
+**Poprawna odpowiedź:** C — Corynebacterium matruchotii
+
+**Wyjaśnienie:**
+
+***Corynebacterium matruchotii*** = **Gram-DODATNIA pałeczka** o charakterystycznym kształcie ***„test tube brush”*** (krótkie, grube pałeczki z długimi włókienkami wystającymi na zewnątrz — Q124/2019, Q134/2019). Tworzy w biofilmie naddziąsłowym charakterystyczne agregaty z paciorkowcami (*„corn cob structures”* — Q162/2025). Stąd **C**. Pozostałe to **klasyczne Gram-UJEMNE periodontopatogeny lub komensale**: **(A) P. gingivalis** — Gram(-) pałeczka, czerwony kompleks (Q163/2025), pigmentowana czarno na agarze krwawym, asacharolityczna. **(B) AA** — Gram(-) **ziarniako-pałeczka** (coccobacillus), kapnofil, leukotoksyna (Q151/2025, Q191/2025). **(D) F. nucleatum** — Gram(-) **wrzecionowata pałeczka** beztlenowa, *bridge organism* (Q188/2025). **(E) V. parvula** — Gram(-) ziarniak beztlenowy, fermentuje lactate (Q138/2019, Q168/2025). Klucz mnemoniczny: **Gram(+) w jamie ustnej (SACL)**: ***S***treptococcus, ***A***ctinomyces, ***C***orynebacterium, ***L***actobacillus + *Rothia*, *Eubacterium*. **Gram(-)**: ***NEVAPFC*** — ***N***eisseria, ***E***ikenella, ***V***eillonella, ***A***ggregatibacter, ***P***orphyromonas/Prevotella, ***F***usobacterium, ***C***apnocytophaga, *Treponema* (krętki bez klasyfikacji).
+
+---
+
+## mju-zal-216
+
+Bakterie najczęściej występujące w próchnicy szkliwa i cementu korzeniowego to:
+
+- [✓] **A.** Streptococcus mutans, Lactobacillus spp. i Actinomyces spp.
+- [ ] **B.** Streptococcus mutans, Streptococcus sanguinis i Neisseria spp.
+- [ ] **C.** Streptococcus mutans, Veillonella spp. i Capnocytophaga spp.
+- [ ] **D.** Actinomyces, Porphyromonas i Fusobacterium
+- [ ] **E.** Lactobacillus, Treponema i Tannerella
+
+**Poprawna odpowiedź:** A — Streptococcus mutans, Lactobacillus spp. i Actinomyces spp.
+
+**Wyjaśnienie:**
+
+**Klasyczna triada próchnicowa**: ***S. mutans*** (inicjator demineralizacji — szkliwo, Q10/2023, Q128/2019), ***Lactobacillus*** (rozprzestrzeniacz, dominuje w głębokiej próchnicy zębiny — kwasooporny do pH <4, Q110/2019), ***Actinomyces*** (próchnica korzenia/cementu — *A. naeslundii*, *A. viscosus*, *Rothia dentocariosa* — Q116/2019, Q190/2025). Stąd **A** — ta sama grupa atakuje zarówno szkliwo (młodsi) jak i cement korzenia (seniorzy z recesją dziąseł). Klucz fizjopatologiczny: **fazy próchnicy**: (1) inicjacja na szkliwie → *S. mutans* + paciorkowce, (2) progresja w zębinę → +*Lactobacillus*, (3) korzeniowa po recesji → *Actinomyces*. Pułapki: **(B) S. sanguinis + Neisseria** — to **PIONIERZY ZDROWEJ płytki** (Q11/2023, Q187/2025), nie patogenne. **(C) Veillonella + Capnocytophaga** — *Veillonella* anty-kariogenne (rozkład lactate, Q138/2019), *Capnocytophaga* w periodontologii (Q195/2025), nie próchnica. **(D) Actinomyces + Porphyromonas + Fusobacterium** — mieszanka próchnica + periodontitis, niepoprawnie. **(E) Lactobacillus + Treponema + Tannerella** — *Treponema* + *Tannerella* to czerwony kompleks periodontitis (Q163/2025). Klucz: próchnica = **MLA** (mutans + lactobacillus + actinomyces).
+
+---
+
+## mju-zal-217
+
+Który z poniższych gatunków wytwarza leukotoksynę?
+
+- [✓] **A.** Aggregatibacter actinomycetemcomitans
+- [ ] **B.** Porphyromonas gingivalis
+- [ ] **C.** Tannerella forsythia
+- [ ] **D.** Treponema denticola
+- [ ] **E.** Fusobacterium nucleatum
+
+**Poprawna odpowiedź:** A — Aggregatibacter actinomycetemcomitans
+
+**Wyjaśnienie:**
+
+Powtórka z 2025 (Q191) — ***Aggregatibacter actinomycetemcomitans*** wytwarza **LEUKOTOKSYNĘ (LtxA)**, białko z rodziny **RTX (*repeats in toxin*)** podobne do α-hemolizyny *E. coli* i HlyA *Bordetella*. **Mechanizm**: tworzy **pory w błonach leukocytów** (zwłaszcza neutrofili i limfocytów ludzkich — selektywna dla LFA-1, integryny β2) → liza komórek odpornościowych → **lokalna immunosupresja** → bakteria omija odpowiedź wrodzoną. **Klinicznie**: kluczowy patogen ***Localized Aggressive Periodontitis*** (LAP, dawniej ”młodzieńczy/juwenilny periodontitis”; Q25/2023, Q112/2019) — charakterystyczne **szybkie niszczenie kości wokół pierwszych trzonowców i siekaczy** u młodzieży. ***Klon JP2*** (delecja 530pz w promotorze ltxA → super-ekspresja leukotoksyny) jest szczególnie patogenny, częsty u młodzieży afro-pochodzenia. Pułapki — *toksyny innych periodontopatogenów* (kategoria toksyn periodontologicznych): **(B) gingipainy** (Rgp/Kgp) — *P. gingivalis*, proteazy cysteinowe (Q119/2019). **(C) BspA + cysteine proteases** — *T. forsythia*. **(D) dentilizyna** — *T. denticola*, chymotryptyczna proteaza serynowa kolagenu. **(E) FadA, MORN repeat protein** — *F. nucleatum*, adhezyna do nabłonka i koagregacji. Klucz: AA = leukotoksyna = niszczy neutrofile.
+
+---
+
+## mju-zal-218
+
+Najbardziej próchnicogennym cukrem jest:
+
+- [ ] **A.** glukoza (monosacharyd, produkt trawienia skrobi)
+- [ ] **B.** fruktoza (monosacharyd, klasyczny ”cukier owoców„)
+- [ ] **C.** laktoza (disacharyd, główny cukier mleka)
+- [✓] **D.** sacharoza (disacharyd glukoza + fruktoza)
+- [ ] **E.** maltoza (disacharyd, produkt rozkładu skrobi)
+
+**Poprawna odpowiedź:** D — sacharoza (disacharyd glukoza + fruktoza)
+
+**Wyjaśnienie:**
+
+**Sacharoza** = **najbardziej kariogenny cukier** z 3 powodów: **(1) Substrat dla GTF** ***S. mutans*** — ***glukozylotransferaza*** rozkłada wiązanie α(1→β2) glukozy-fruktozy → uwolniona glukoza polimeryzowana do **NIEROZPUSZCZALNYCH glukanów** (mutany) = **matryca biofilmu** przylegającego do szkliwa (Q6/2023, Q33/2023). Bez sacharozy *S. mutans* nie tworzy ufortyfikowanej płytki. **(2) Substrat dla FTF** ***S. salivarius*** — fruktoza → lewan (Q34/2023, Q123/2019, Q164/2025) jako rezerwa energii w biofilmie. **(3) Bezpośredni fermentowalny** — *S. mutans*, *Lactobacillus* metabolizują → kwas mlekowy (Q149/2019) → demineralizacja. Stąd **D**. Pułapki — *inne cukry, mniejsza kariogenność*: **(A) glukoza** — fermentowalna, ale **brak substrate dla GTF** (potrzebny disacharyd). **(B) fruktoza** — fermentowalna, ale brak GTF substrate. **(C) laktoza** — fermentowalna głównie u dzieci karmionych mlekiem (próchnica butelkowa — Q126/2019); znacznie mniej kariogenna niż sacharoza, słabsza dla GTF. **(E) maltoza** — fermentowalna, ale słabszy substrat GTF (głównie dla GTF-S typu S. salivarius). Klucz mnemoniczny: ***„sacharoza = arch-villain”*** próchnicy — jedyny cukier z DWOMA mechanizmami (substrat GTF + fermentowalność). WHO rekomenduje **<10% energii dziennej z cukrów wolnych** (FAO/WHO 2003).
+
+---
+
+## mju-zal-219
+
+Liczba bakterii znajdujących się w 1 mikrolitrze (μl) śliny u zdrowego człowieka to około:
+
+- [ ] **A.** 10 bakterii (mniej niż w wodzie z kranu)
+- [ ] **B.** 1 000 bakterii (jak w czystej wodzie pitnej)
+- [✓] **C.** 100 000 bakterii (10⁵ CFU/μl, czyli 10⁸ CFU/ml)
+- [ ] **D.** 10 000 000 bakterii (10⁷/μl = 10¹⁰/ml)
+- [ ] **E.** 1 000 000 000 bakterii (10⁹/μl = 10¹²/ml)
+
+**Poprawna odpowiedź:** C — 100 000 bakterii (10⁵ CFU/μl, czyli 10⁸ CFU/ml)
+
+**Wyjaśnienie:**
+
+**Liczba bakterii w ślinie zdrowego dorosłego**: **~10⁸ CFU/ml** (sto milionów w mililitrze) = **~10⁵ CFU/μl** (sto tysięcy w mikrolitrze). To bardzo bogata flora — ślina jest *„rozproszonym biofilmem”* zawierającym **>700 gatunków bakterii** (Human Oral Microbiome Database, HOMD). Skład planktonicznej śliny: **paciorkowce** (40-60%, *S. salivarius* dominuje), *Veillonella* (10-15%), *Neisseria* (5-10%), *Granulicatella*, *Gemella*, *Prevotella*, *Fusobacterium*. Stąd **C**. Pułapki — błędna skala wielkości: **(A) 10 bakterii** — to byłoby praktycznie sterylne (woda z kranu ma ~10²-10³/ml). **(B) 1000** — woda pitna oczyszczana (~10³-10⁴/ml maks. wg standardów). **(D) 10⁷/μl** = **10¹⁰/ml** — to **biofilm poddziąsłowy**, nie ślina (kieszonki dziąsłowe mają 10⁸-10¹⁰/ml). **(E) 10⁹/μl** = 10¹²/ml — niefizjologiczne, to byłaby gęsta zawiesina bakteryjna. Klucz dydaktyczny — **gradient gęstości w jamie ustnej**: **ślina ~10⁸/ml**; **płytka naddziąsłowa ~10⁹-10¹⁰/g**; **biofilm poddziąsłowy ~10¹⁰-10¹¹/g** (najgęstsze). Dla porównania: **kał ~10¹¹-10¹² CFU/g** (mikrobiota jelitowa — najgęstsza w organizmie).
+
+---
+
+## mju-zal-220
+
+Standardowe podłoże do testu filamentacji (germ tube test) Candida albicans to:
+
+- [ ] **A.** 0,9% roztwór NaCl (sól fizjologiczna)
+- [✓] **B.** surowica zwierzęca (królicza, bydlęca) lub ludzka
+- [ ] **C.** żółtko jaja kurzego (homogenat)
+- [ ] **D.** mleko UHT pełnotłuste
+- [ ] **E.** agar Sabouraud (płynny, bez agaru)
+
+**Poprawna odpowiedź:** B — surowica zwierzęca (królicza, bydlęca) lub ludzka
+
+**Wyjaśnienie:**
+
+**Test filamentacji (*germ tube test*, GTT)** = klasyczna **szybka diagnostyka różnicowa *Candida albicans*** od innych gatunków *Candida* (rutynowy w 2-4h). **Procedura**: niewielki posiew drożdży + **0,5 ml surowicy** (klasycznie *królicza*, też ludzka, bydlęca) → inkubacja **37°C × 2-4 godz.** → mikroskopia (powiększenie ×400). ***C. albicans*** wytwarza **kiełkowe rurki** (*germ tubes*) — krótkie, niezwężone wypustki cytoplazmatyczne wyrastające bezpośrednio z komórki drożdży (nie z hyf!) → **transition yeast-to-hypha**, kluczowy czynnik wirulencji. **Stąd B**. **Mechanizm filamentacji**: w surowicy obecne są **białka indukujące** (głównie albumina, prawdopodobnie poprzez **wiązanie żelaza** + transferyna) → uruchamiają geny *HWP1*, *ALS3*, *ECE1* → przejście do formy hyfalnej. **Klinicznie ważne**: ***C. albicans GTT(+)*** — 95% szczepów; ***C. dubliniensis*** może dawać słaby GTT (+/-) — wymaga dodatkowych testów (wzrost w 42°C — *dubliniensis* (-), *albicans* (+); chrom-agar Candida); ***C. glabrata, C. krusei, C. parapsilosis*** = GTT (−). Pułapki — *niefunkcjonalne podłoża*: **(A) NaCl** — brak induktorów; drożdże nie tworzą filamentów. **(C) żółtko jaja** — używane w testach lipazy (*Egg yolk agar* dla *C. perfringens*). **(D) mleko** — brak induktorów. **(E) Sabouraud** — standardowy do hodowli, nie do GTT (Q44/2023, Q130/2019). Klucz: GTT = surowica + 37°C + 3h = albicans.
+
+---
+
+## mju-zal-221
+
+Martwiczo-wrzodziejące zapalenie dziąseł (NUG, choroba Vincenta) jest wywoływane przez kompleks bakterii:
+
+- [ ] **A.** Streptococcus pyogenes + Streptococcus mutans
+- [ ] **B.** Lactobacillus acidophilus + Candida albicans
+- [ ] **C.** Aggregatibacter actinomycetemcomitans + Capnocytophaga
+- [ ] **D.** Porphyromonas gingivalis + Tannerella forsythia + Treponema denticola
+- [✓] **E.** Fusobacterium nucleatum + Treponema vincentii (kompleks krętkowo-fuzobakteryjny)
+
+**Poprawna odpowiedź:** E — Fusobacterium nucleatum + Treponema vincentii (kompleks krętkowo-fuzobakteryjny)
+
+**Wyjaśnienie:**
+
+**NUG (choroba Vincenta, angina Plauta-Vincenta)** — powtórka klasyka Q13/2019, Q15/2019, Q24/2023, Q55/2022. **Patognomoniczny duet w rozmazie**: ***Treponema vincentii*** + ***T. denticola*** (krętki) + ***Fusobacterium nucleatum*** (wrzecionowate pałeczki Gram-ujemne) — *kompleks krętkowo-fuzobakteryjny*. **Triada kliniczna**: **(1) ból** (różni od przewlekłego periodontitis, bezbolesnego); **(2) krwawienie** spontaniczne i przy dotyku; **(3) szara pseudobłona** martwicy brodawek międzyzębowych — *„cratered papillae”*. **Czynniki ryzyka**: **stres** (akronim *„STRESS”* dla NUG), **palenie** (~98% chorych pali!), **immunosupresja**, **niedożywienie** (witamina C, białko), **HIV** (NUG/NUP/Noma w późnym AIDS). **Leczenie**: drenaż + płukanie 1,5% H2O2 + **metronidazol** (skuteczny przeciw beztlenowcom — Q226 niżej) + higiena + zaprzestanie palenia. **Stąd E**. Pułapki: **(A) S. pyogenes + S. mutans** — paciorkowce, NIE klasyk NUG. **(B) Lacto + Candida** — próchnica + kandydoza. **(C) AA + Capnocytophaga** — kompleks zielony Socranskyego, młodzieńczy periodontitis. **(D) czerwony kompleks** — przewlekły periodontitis dorosłych (Q163/2025), NIE NUG. Klucz: NUG = krętki + Fusobacterium + stres.
+
+---
+
+## mju-zal-222
+
+Bakteria jamy ustnej wytwarzająca charakterystyczny barwnik (pigment) to:
+
+- [ ] **A.** Streptococcus salivarius
+- [ ] **B.** Veillonella parvula
+- [✓] **C.** Prevotella denticola
+- [ ] **D.** Neisseria mucosa
+- [ ] **E.** Actinomyces viscosus
+
+**Poprawna odpowiedź:** C — Prevotella denticola
+
+**Wyjaśnienie:**
+
+***Prevotella denticola*** = **Gram(-) pałeczka beztlenowa pigmentowana**, kolonia czarna lub brązowa na agarze krwawym. Należy do **kompleksu pomarańczowego** Socranskyego — periodontopatogen towarzyszący *P. intermedia*, *P. nigrescens*, *P. melaninogenica*. **Mechanizm pigmentu**: wszystkie pigmentowane *Bacteroides*-like (P. gingivalis, Prevotella spp.) tworzą **czarne kolonie** dzięki **akumulacji żelaza z heminy** w błonie zewnętrznej — degradują hemoglobinę proteazami, gromadzą hem-Fe (stąd nazwa rodzaju ***Porphyromonas*** od *„porphyrin”* — pierścień porfirynowy hemu, Q119/2019). Stąd **C**. Klinicznie: pigmentowane *Prevotella* + *Porphyromonas* na agarze są łatwo identyfikowalne po 5-7 dniach inkubacji beztlenowej (kolonie zaczynają się od jasnoszarych → ciemnieją z czasem). Pułapki — *bakterie BEZ pigmentu*: **(A) S. salivarius** — γ-hemoliza, kolonie kremowe (Q86/2022, Q123/2019, Q164/2025). **(B) V. parvula** — Gram(-) ziarniak beztlenowy, kolonie szare/białe (Q138/2019). **(D) N. mucosa** — Gram(-) dwoinka tlenowa, kolonie szare/żółtawe (różowe na czekoladzie). **(E) A. viscosus** — Gram(+) pałeczka, kolonie kremowobiałe, gładkie ”viscous” śluzowate (stąd nazwa *„viscosus”*). Klucz mnemoniczny: **bakterie pigmentowane jamy ustnej = czarni Bacteroides-like** (*Porphyromonas*, *Prevotella spp.* pigmentowane); **bezbarwne** = wszystkie inne.
+
+---
+
+## mju-zal-223
+
+Ciałka Negriego (Negri bodies) to charakterystyczne wtręty wewnątrzkomórkowe stwierdzane w:
+
+- [ ] **A.** śluzówce policzkowej pacjentów z odrą (plamki Koplika)
+- [✓] **B.** neuronach mózgu (głównie róg Ammona) pacjentów z wścieklizną
+- [ ] **C.** keratynocytach skóry w opryszczce (ciałka Cowdry typ A)
+- [ ] **D.** hepatocytach wątroby w żółtej gorączce (ciałka Councilmana)
+- [ ] **E.** komórkach nabłonka dróg moczowych w cytomegalii (komórki ”owl-eye„)
+
+**Poprawna odpowiedź:** B — neuronach mózgu (głównie róg Ammona) pacjentów z wścieklizną
+
+**Wyjaśnienie:**
+
+**Ciałka Negriego** (*Negri bodies*) — eozynofilne wtręty cytoplazmatyczne ~2-10 µm średnicy, **PATOGNOMONICZNE dla WŚCIEKLIZNY** (*Rabies*, *Lyssavirus*, *Rhabdoviridae*). Lokalizacja: głównie ***neurony rogu Ammona (hippocampus)*** i komórek Purkinjego móżdżku — wykrywane post-mortem (sekcja mózgu). **Histologicznie**: barwienie hematoksyliną-eozyną (HE) lub Sellera (fuksyna karbolowa + błękit metylenowy) → ciałka **różowe/czerwone** na fioletowym tle cytoplazmy. **Skład molekularny**: skupiska wirusowych nukleokapsydów (RNA + N-protein), miejsca replikacji *Lyssavirus*. Stąd **B**. **Klinicznie**: wścieklizna ma **prawie 100% śmiertelność** po wystąpieniu objawów (jedna z najwyższych w medycynie!); diagnostyka **przyżyciowa** trudna — biopsja skóry karku (wybarwianie immunofluorescencyjne RABV), ślina (RT-PCR); **post-mortem** — ciałka Negriego klasyczne, ale czulsze: **DFA z mózgu** (test referencyjny WHO). Pułapki — *inne charakterystyczne wtręty wirusowe*: **(A) plamki Koplika** — **wewnątrzśluzówkowe**, NIE wewnątrzkomórkowe; patognomoniczne dla **odry** (Q6/2025, Q156/2025). **(C) ciałka Cowdry A** — wewnątrzjądrowe, **HSV-1/2** (opryszczka, *intranuclear inclusions*). **(D) ciałka Councilmana** — apoptotyczne hepatocyty w **żółtej gorączce, HCV**. **(E) ”owl-eye”** — wewnątrzjądrowe wtręty **CMV** (cytomegalia kongenitalna). Klucz mnemoniczny: ***„Negri = nerve = neuron”*** = wścieklizna.
+
+---
+
+## mju-zal-224
+
+”Chorobę pocałunków” (mononukleozę zakaźną) wywołuje wirus:
+
+- [ ] **A.** CMV (Cytomegalovirus, HHV-5)
+- [ ] **B.** HIV (Human Immunodeficiency Virus, retrowirus)
+- [✓] **C.** EBV (Epstein-Barr Virus, HHV-4)
+- [ ] **D.** HSV-1 (Herpes Simplex Virus typ 1)
+- [ ] **E.** VZV (Varicella-Zoster Virus, HHV-3)
+
+**Poprawna odpowiedź:** C — EBV (Epstein-Barr Virus, HHV-4)
+
+**Wyjaśnienie:**
+
+**Mononukleoza zakaźna** (*infectious mononucleosis*, IM, *„choroba pocałunków„* — *kissing disease*) = klasyczna infekcja ***Epstein-Barr virus*** (***EBV***, HHV-4, *Gammaherpesvirinae*). **Triada kliniczna**: **(1)** gorączka, **(2)** zapalenie gardła z białą wydzieliną na migdałkach (eksudat), **(3)** uogólnione powiększenie węzłów chłonnych (szyjnych). Dodatkowo: **splenomegalia** (uważać na pęknięcie śledziony przy wysiłku!), **hepatomegalia z transaminazemią**, **wysypka** po ampicylinie (90% pacjentów — interakcja immunologiczna). **Transmisja**: ślina (stąd *„kissing”*), nastolatki/młodzi dorośli (15-25 lat). **Diagnostyka**: **(1)** heterofilne przeciwciała (test Paul-Bunnell, mononotest) — 90% przypadków; **(2)** specyficzne anty-VCA (Viral Capsid Antigen): VCA-IgM (ostra), VCA-IgG (przebyte/aktualne), EBNA-IgG (przebyte, pojawia się 2-3 mies. po infekcji); **(3)** w rozmazie krwi: **limfocyty atypowe** (CD8+ aktywowane = *Downey cells*). **Stąd C**. **EBV w jamie ustnej**: *oral hairy leukoplakia* (włochata leukoplakia, klasyczna w HIV/AIDS), chłoniak Burkitta (linia żuchwy w endemicznych regionach Afryki). Pułapki — *inne herpeswirusy*: **(A) CMV** — wrodzona cytomegalia (charakterystyczne ”owl-eye cells„, Q223), zapalenie wątroby/retiny w immunosupresji. **(D) HSV-1** — opryszczka wargowa, gingivostomatitis primaria. **(E) VZV** — ospa wietrzna + półpasiec (zoster, Q21/2022 dla zoster lokalnie w jamie ustnej). Klucz: ”kissing disease” = EBV.
+
+---
+
+## mju-zal-225
+
+Wskaż zdanie FAŁSZYWE dotyczące otoczek bakteryjnych:
+
+- [ ] **A.** biorą udział w adhezji bakterii do powierzchni komórek gospodarza
+- [ ] **B.** hamują fagocytozę poprzez maskowanie ligandów PAMP
+- [ ] **C.** obecność otoczki można wykazać reakcją Quellunga (pęcznienie w obecności swoistych przeciwciał)
+- [✓] **D.** wszystkie otoczki bakteryjne są zbudowane wyłącznie z polisacharydów
+- [ ] **E.** wykorzystywane są w produkcji szczepionek polisacharydowych koniugowanych
+
+**Poprawna odpowiedź:** D — wszystkie otoczki bakteryjne są zbudowane wyłącznie z polisacharydów
+
+**Wyjaśnienie:**
+
+Powtórka z 2025 (Q177) — **NIE wszystkie otoczki są polisacharydowe**! Klasyczny wyjątek: ***Bacillus anthracis*** (wąglik) ma **OTOCZKĘ POLIPEPTYDOWĄ** z kwasu **D-glutaminowego** (γ-D-glutamylpolypeptide) — kodowana plazmidem pXO2 (drugi plazmid pXO1 koduje toksyny). To dlatego *B. anthracis* jest niewrażliwy na większość klasycznych przeciwciał polisacharydowych. Stąd **D = odwrócenie prawdy = fałsz**. Pozostałe (A, B, C, E) — prawdziwe: **(A) Adhezja** — otoczka ułatwia przyleganie do nabłonków (*S. pneumoniae* do nabłonka dróg oddechowych). **(B) Anty-fagocytoza** — kluczowa funkcja zjadliwości; otoczka maskuje **PAMP** (peptydoglikan, LPS) → fagocyty nie rozpoznają; *S. pneumoniae* bez otoczki (R-form) jest awirulentny vs S-form otoczkowy (klasyczny eksperyment Griffitha 1928 — transformacja!). **(C) Reakcja Quellunga** (Neufeld 1902) — przeciwciało + otoczka → indeks załamania światła zwiększa się → otoczka pęcznieje optycznie pod mikroskopem; klasyczna identyfikacja serotypów *S. pneumoniae*. **(E) Szczepionki polisacharydowe koniugowane** — PCV13/15/20 (pneumokoki), Hib (PRP-T), MenACWY, Typhim Vi (dur); polisacharyd słabo immunogenny (T-niezależny) → koniugacja z białkiem nośnikowym (toxoid CRM197, błonicy, tężca) → T-zależna odpowiedź u dzieci. Klucz: otoczki = głównie polisacharydy, ale **wyjątek: B. anthracis (D-glutaminian)**.
+
+---
+
+## mju-zal-226
+
+Antybiotykiem stosowanym w farmakoterapii ostrego wrzodziejącego zapalenia dziąseł (NUG, choroba Vincenta) jest:
+
+- [ ] **A.** penicylina V (fenoksymetylopenicylina, doustnie)
+- [✓] **B.** metronidazol (250-500 mg p.o. 3 × dziennie przez 7 dni)
+- [ ] **C.** ciprofloksacyna (fluorochinolon szerokiego spektrum)
+- [ ] **D.** flukonazol (azolowy lek przeciwgrzybiczy)
+- [ ] **E.** acyklowir (analog nukleozydowy przeciw HSV/VZV)
+
+**Poprawna odpowiedź:** B — metronidazol (250-500 mg p.o. 3 × dziennie przez 7 dni)
+
+**Wyjaśnienie:**
+
+**Metronidazol** = ***lek z wyboru w NUG*** (Q221/2024, Q113/2019). **Mechanizm**: nitroimidazolowa pochodna, **wchłaniany pasywnie do komórek bakteryjnych**; w **bezwzględnych beztlenowcach** ulega **redukcji enzymatycznej** (ferredoksyna, flawodoksyna) → tworzy **rodniki nitro-anionowe** → uszkadzają DNA bakteryjne → bakteriobójczo. *Selektywność*: tylko bakterie z systemami redukcji ferredoksyna-niskiego potencjału = **bezwzględne beztlenowce + niektóre mikroaerofile** (*Helicobacter pylori*, *Trichomonas vaginalis*, *Giardia*). NUG = krętki (*Treponema*) + *Fusobacterium* — wszystko beztlenowce → **idealna celowanie**. **Dawkowanie**: 250-500 mg p.o. × 3 dz. × 7 dni; uzupełniająco: **drenaż**, **płukanie 1,5% H2O2**, higiena. Pułapki — *nieskuteczne leki w NUG*: **(A) penicylina V** — **NIE pierwszego rzutu**; działa na beztlenowce (zwłaszcza Gram(+)), ale słabiej niż metronidazol; rezerwa dla pacjentów z przeciwwskazaniami do metronidazolu (ciąża I trymestr, leczenie alkoholikiem). **(C) ciprofloksacyna** — fluorochinolon, słabo na beztlenowce (Q119/2022 dla bakterii Gram-, ale anaerobowo zwykle gorzej); off-label, niefarmakologiczna w NUG. **(D) flukonazol** — anti-Candida; NUG to NIE kandydoza. **(E) acyklowir** — anti-HSV, NUG to bakteryjne (różnica: **gingivostomatitis herpetica** vs NUG — w herpes: pęcherzyki, dzieci, niska gorączka; HSV-1, leczenie acyklowirem). Klucz: NUG = beztlenowce = metronidazol.
+
+---
+
+## mju-zal-227
+
+Bakteriocyna enocyna jest wytwarzana przez:
+
+- [ ] **A.** Streptococcus mutans
+- [✓] **B.** Streptococcus salivarius
+- [ ] **C.** Streptococcus oralis
+- [ ] **D.** Lactobacillus acidophilus
+- [ ] **E.** Actinomyces viscosus
+
+**Poprawna odpowiedź:** B — Streptococcus salivarius
+
+**Wyjaśnienie:**
+
+***Streptococcus salivarius*** wytwarza **bakteriocyny** (małe peptydy zabijające inne bakterie) — **enocyna A i B**, **salivaricin A, B, K12** etc. **Mechanizm**: tworzą pory w błonie cytoplazmatycznej innych Gram(+) → liza komórki. **Spektrum**: hamują głównie ***S. pyogenes*** (anginę paciorkowcową) i ***S. mutans*** (próchnicę) — stąd ***S. salivarius* ma funkcję ”probiotyczną„** w jamie ustnej. **Klinicznie**: szczep ***S. salivarius K12*** (BLIS Technologies) używany w pastylkach probiotycznych (BLIS K12, BLIS M18) do redukcji halitozy, profilaktyki anginy i otitis media u dzieci. Stąd **B**. Pułapki — *bakteriocyny innych gatunków* (kategoria bakteriocyn paciorkowcowych): **(A) mutacyna** — *S. mutans* (5 typów: I-V; mutacyna IV najbardziej znana); konkuruje z innymi paciorkowcami o niszę próchnicową. **(C) krótkie peptydy** — *S. oralis* też ma bakteriocyny, ale nazwa ”enocyna” nie jest standardowo dla *oralis*. **(D) acydofilina** — *L. acidophilus* produkuje **acydofilinę** (bakteriocyna podobna do nizyny), używaną komercjalnie w probiotykach jelitowych. **(E) acidolin** — różne *Lactobacillus* produkują *acidoliny* (kategoria), ale *A. viscosus* (promieniowiec) nie. Klucz dydaktyczny: ***bakteriocyna = ”antybiotyk produkowany przez bakterię przeciw innym pokrewnym bakteriom„***; szeroko stosowane w probiotykach i przemyśle spożywczym (nizyna w żywności).
+
+---
+
+## mju-zal-228
+
+Bakterie z rodzaju Veillonella jako główne źródło energii wykorzystują:
+
+- [ ] **A.** sacharozę (disacharyd)
+- [ ] **B.** nadtlenek wodoru (utleniacz, generowany przez paciorkowce)
+- [ ] **C.** kwas octowy (produkt fermentacji glukozy)
+- [ ] **D.** glukozę (monosacharyd przez glikolizę)
+- [✓] **E.** kwas mlekowy (produkt fermentacji homolaktycznej innych bakterii)
+
+**Poprawna odpowiedź:** E — kwas mlekowy (produkt fermentacji homolaktycznej innych bakterii)
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q138), 2022 (Q66), 2023 (Q19), 2025 (Q168) — ***Veillonella* ma UNIKALNĄ niszę metaboliczną**: **NIE fermentuje glukozy** (asacharolityczna dla cukrów!), zamiast tego **konsumuje kwas mlekowy** (laktat) wytworzony przez sąsiednie *S. mutans* i *Lactobacillus*. **Mechanizm**: szlak **metylomalonyl-CoA / sukcynian** → kwas mlekowy → kwas pirogronowy → propionian + acetate + CO2 + H2 (fermentacja propionianowa). **Klinicznie ważne**: *Veillonella* w zdrowej płytce w obfitości to ***„dobry znak„*** — redukuje silny demineralizator (mlekowy, pKa 3,86, Q149/2019) do słabszych kwasów (octowy 4,76, propionowy 4,87). Stąd potencjalna funkcja ***ANTYKARIOGENNA*** (chociaż słabsze kwasy też zakwaszają płytkę — *Veillonella* nie eliminuje próchnicy, tylko ją moduluje). Stąd **E**. Pułapki — *nieprawidłowe substraty*: **(A) sacharoza** — *Veillonella* asacharolityczna, nie używa cukrów. **(B) H2O2** — *Veillonella* nie ma katalazy ani peroksydazy aktywnej dla H2O2 jako źródła energii (chociaż H2O2 zabija ją w wysokich stężeniach — interakcja antagonistyczna z paciorkowcami produkującymi H2O2 jak *S. sanguinis*). **(C) kwas octowy** — odwrócenie; *Veillonella* **PRODUKUJE** octan, nie konsumuje! **(D) glukoza** — *Veillonella* nie fermentuje glukozy (brak hexokinazy aktywnej). Klucz: ***V = lactate eater***; symbiotyczna z *S. mutans* (synergia ekologiczna w biofilmie).
+
+---
+
+## mju-zal-229
+
+Czego płyn płytki (plaque fluid) zawiera mniej niż ślina?
+
+- [ ] **A.** albumina (główne białko transportowe osocza)
+- [ ] **B.** lizozym (muramidaza, antybakteryjny enzym śliny)
+- [ ] **C.** laktoferyna (białko wiążące żelazo, antybakteryjne)
+- [ ] **D.** IgG (główna immunoglobulina krwi, w GCF z osocza)
+- [✓] **E.** IgA (główna immunoglobulina wydzielnicza śliny)
+
+**Poprawna odpowiedź:** E — IgA (główna immunoglobulina wydzielnicza śliny)
+
+**Wyjaśnienie:**
+
+**Płyn płytki nazębnej** (*plaque fluid*) ma odmienny skład białkowy niż ślina — to **mieszanka GCF (płynu szczeliny dziąsłowej, z osocza) + składników bakteryjnych + lokalnie wydzielanych białek**. **Główne różnice ilościowe**: **(1)** *płyn płytki ma WIĘCEJ:* albuminy (z GCF), IgG (klasa transudat), białek osoczowych ogólnie. **(2)** *płyn płytki ma MNIEJ:* IgA wydzielnicza (sIgA — Q83/2022), lizozym, laktoferyna (głównie z ślinianek, mniej z GCF). **(3)** *podobne stężenie:* niektóre prozapalne cytokiny, statheryny, cystatyny. Stąd **E (IgA)** — w ślinie obfitej sIgA z dimerów + komponentu wydzielniczego (SC) z gruczołów ślinowych; w płytce już znacznie mniej (głównie IgA monomerowa z GCF). Pułapki — wszystkie inne (A, B, C, D) są **WIĘCEJ** w płytce niż w ślinie: **(A) Albumina** — typowo plazma 35-50 g/L → GCF 30 g/L → ślina 0,5 g/L (płytka >> ślina). **(B) Lizozym** — ślinianki produkują w obfitości; ślina 100-300 mg/L, płytka mniej (~50 mg/L); ALE klucz mówi że płytka ma WIĘCEJ — to nieintuicyjne, ale możliwe lokalnie wokół bakterii uwalniających lizozym z fagocytów rozpadających się GCF. **(C) Laktoferyna** — głównie ślinianki, ale GCF też zawiera (z neutrofili) — płytka ma więcej z neutrofili. **(D) IgG** — w ślinie minimalne (~10 mg/L), w GCF 7-10× więcej (~70-100 mg/L). **Komentarz źródłowy**: w pliku PDF źródłowym ma dopisek autora: ”bo jest go tyle samo w obu”. To znaczy że klucz uznał E za prawidłową, bo IgA jest **MNIEJ WIĘCEJ tak samo** w płytce i ślinie (a inne są bardziej w płytce). Idziemy za kluczem 2024 z flagą walidatorską — to dyskusyjne pytanie.
+
+---
+
+## mju-zal-230
+
+Krętki (Treponema) najlepiej obserwować w preparacie mikroskopowym z wykorzystaniem:
+
+- [ ] **A.** klasycznego barwienia metodą Grama z odbarwianiem alkoholem
+- [ ] **B.** barwienia gorącą fuksyną karbolową (Ziehl-Neelsen z odbarwianiem kwasem)
+- [ ] **C.** immunofluorescencji bezpośredniej (DFA-TP, FITC-anti-Treponema)
+- [✓] **D.** mikroskopii w ciemnym polu widzenia (dark-field microscopy)
+- [ ] **E.** mikroskopii elektronowej (SEM/TEM)
+
+**Poprawna odpowiedź:** D — mikroskopii w ciemnym polu widzenia (dark-field microscopy)
+
+**Wyjaśnienie:**
+
+**Mikroskopia w ciemnym polu** (*dark-field microscopy*) = **klasyczna i historyczna metoda obserwacji krętków**, zwłaszcza ***Treponema pallidum*** (kiła wczesna). **Zasada**: kondensor cardioid kieruje światło **bocznie** na próbkę — bezpośrednio przez obiektyw światło nie wchodzi (czarne tło), tylko **rozproszone z preparatu** → obiekty świecą się jasno na ciemnym tle (jak gwiazdy na niebie). **Krętki** (cienkie ~0,1-0,3 µm, niewidoczne w klasycznej mikroskopii świetlnej, słabo Gram) są **żywe + ruchome** w preparacie z surowicy z wykwitu pierwotnego (chancre) — widoczne jako **lśniące spirale wijące się**. Patognomoniczny obraz. Stąd **D**. Pułapki — *różne metody dla krętków* (Q185/2025): **(A) Gram** — krętki Gram(-), ale **słabo barwią się** (cienka ściana), nie standardowa metoda. **(B) ZN** — to dla **prątków** (kwasoodporność, Q107/2019, Q44/2022), krętki nie są kwasoodporne. **(C) DFA-TP** (Direct Fluorescent Antibody) — TAKŻE prawidłowa metoda dla krętków! Specyficzne przeciwciało znaczone FITC + anty-*T. pallidum* → krętki świecą zielonkawo w mikroskopie fluorescencyjnym. **Dyskusyjne!**: pytanie ma ”tylko ciemne pole„ — ale faktycznie istnieją inne metody (DFA, impregnacja srebrowa Fontana-Tribondeau, Warthin-Starry). Klucz 2024 = D zgodnie ze źródłem. **Flaga walidatorska**: pytanie powinno być sformułowane jako ”klasycznie obserwowane w” lub ”najszybszą bezpośrednią metodą„ (DFA jest tak samo szybkie, ale wymaga laboratorium). **(E) ME** — naukowa, nie kliniczna rutyna. Klucz: **kiła primary = ciemne pole + scrap z chancre**.
+
+---
+
+## mju-zal-231
+
+Bakterią BEZWZGLĘDNIE BEZTLENOWĄ z poniższej listy jest:
+
+- [✓] **A.** Actinomyces israelii (pałeczka Gram(+), nitkowata, promienica)
+- [ ] **B.** Streptococcus mutans (ziarniak Gram(+), próchnica)
+- [ ] **C.** Branhamella catarrhalis (= Moraxella, dwoinka Gram(-))
+- [ ] **D.** Neisseria mucosa (dwoinka Gram(-), kapnofilna)
+- [ ] **E.** Haemophilus influenzae (pałeczka Gram(-), fakultatywna)
+
+**Poprawna odpowiedź:** A — Actinomyces israelii (pałeczka Gram(+), nitkowata, promienica)
+
+**Wyjaśnienie:**
+
+***Actinomyces israelii*** = **BEZWZGLĘDNY BEZTLENOWIEC** (*obligate anaerobe*) — wymaga 0% O2, ginie w obecności tlenu. Klasyczny patogen ***promienicy*** (*actinomycosis*, Q35/2019 / Q200/2025 — kolonie *„molar tooth„* na agarze beztlenowym po 5-7 dniach; Q22/2024 / Q243 niżej — ziarna siarkowe w ropie z przetok). Stąd **A**. Pułapki — *różne wymagania tlenowe*: **(B) S. mutans** — ***FAKULTATYWNY ANAEROB***: rośnie w warunkach tlenowych i beztlenowych, ale **preferuje mikroaerofilowe** (5% O2 + 5-10% CO2). W biofilmie zazwyczaj w warstwach głębokich (beztlenowych). **(C) Branhamella catarrhalis** (***Moraxella catarrhalis***) — ***BEZWZGLĘDNY TLENOWIEC*** (*strict aerobe*), Gram(-) dwoinka, klasyczny patogen otitis media u dzieci, exacerbations COPD u dorosłych; produkuje β-laktamazę BRO (Q67/2022). **(D) N. mucosa** — ***KAPNOFIL*** (wymaga 5-10% CO2), tlenowiec; komensal jamy ustnej (Q114/2019). **(E) H. influenzae** — ***FAKULTATYWNY*** w atmosferze z CO2; wymagający (czynniki X+V — Q106/2019, czekoladowy agar). Klucz dydaktyczny: **klasyfikacja wg O2** w jamie ustnej: **bezwzględne beztlenowce** = *Actinomyces*, *Porphyromonas*, *Treponema*, *Tannerella*, *Veillonella*, *Fusobacterium*, *Lactobacillus* (niektóre), *Clostridium*; **fakultatywne** = paciorkowce, *Haemophilus*, *AA*; **kapnofile** = *Neisseria*, *Capnocytophaga*, *Eikenella*; **bezwzględne tlenowce** = *Moraxella*, *Bordetella*, *Pseudomonas*, *Mycobacterium tuberculosis*.
+
+---
+
+## mju-zal-232
+
+Dezynfekcja sporobójcza (wysokiego poziomu, HLD) różni się od sterylizacji:
+
+- [✓] **A.** brakiem monitorowania procesu (rutynowa kontrola jakości cyklu)
+- [ ] **B.** osiągnięciem parametrów krytycznych (T, ciśnienie, czas)
+- [ ] **C.** osiągnięciem wartości SAL 10⁻⁶ (Sterility Assurance Level)
+- [ ] **D.** wykorzystaniem wskaźników biologicznych do kontroli
+- [ ] **E.** wszystkie powyższe odpowiedzi są poprawne
+
+**Poprawna odpowiedź:** A — brakiem monitorowania procesu (rutynowa kontrola jakości cyklu)
+
+**Wyjaśnienie:**
+
+**Kluczowa różnica DEZYNFEKCJI SPOROBÓJCZEJ (HLD)** od **STERYLIZACJI** = ***brak monitorowania procesu*** w taki sposób jak sterylizacja (Q144/2019, Q197/2025). **Sterylizacja**: ścisły protokół z **walidacją każdego cyklu** — wskaźniki biologiczne (BI — *G. stearothermophilus* dla pary, *B. atrophaeus* dla EtO/suchego ciepła, Q199/2025), chemiczne klas 1-6 (Bowie-Dick, integratory), fizyczne (czujniki); cel SAL 10⁻⁶ (1 na milion). **HLD**: typowo używa **aldehydu glutarowego 2-3,4%** (Cidex) lub **kwasu nadoctowego (PAA)** (Steris) lub **OPA 0,55%** (orto-ftalaldehyd), zazwyczaj **immersja narzędzi 30-60 min**; **brak ścisłego monitorowania** — kontrola pasywna (data ważności roztworu, koncentracja paskami testowymi, log temperatury). HLD niszczy spory **w określonych warunkach** (długi czas), ale **nie ma gwarancji SAL 10⁻⁶** jak sterylizacja. Stąd **A**. Pułapki — *cechy STERYLIZACJI, nie HLD*: **(B) parametry krytyczne** — sterylizacja je osiąga (121°C, 1 atm, 15 min itd.) i monitoruje; HLD ma parametry, ale luźniej. **(C) SAL 10⁻⁶** — wyłączna domena STERYLIZACJI, nie HLD. **(D) wskaźniki biologiczne** — głównie sterylizacja; HLD czasem używa *Mycobacterium terrae* lub *Bacillus subtilis* spory, ale rzadziej rutynowo. **(E) wszystkie poprawne** — niepoprawne, bo B-D to cechy odróżniające STERYLIZACJĘ (nie HLD). Klucz: HLD = sporobójcze, ale **NIE monitorowane** jak sterylizacja; **klasyfikacja Spauldinga**: krytyczne (sterylizacja) → semi-krytyczne (HLD) → niekrytyczne (LLD/dezynfekcja niskiego poziomu).
+
+---
+
+## mju-zal-233
+
+W przebiegu zakażenia HIV/AIDS NIE występuje (charakterystycznie):
+
+- [✓] **A.** zespół Sjögrena
+- [ ] **B.** leukoplakia włochata
+- [ ] **C.** opryszczkowe zapalenie jamy ustnej
+- [ ] **D.** mięsak Kaposiego jamy ustnej
+- [ ] **E.** kandydoza rzekomobłoniasta i atroficzna
+
+**Poprawna odpowiedź:** A — zespół Sjögrena
+
+**Wyjaśnienie:**
+
+**Zespół Sjögrena** = **autoimmunologiczna egzokrynopatia** atakująca głównie ślinianki i łzowe (sucha jama ustna + suche oczy + objawy reumatologiczne). Etiologia: nacieki **limfocytów T CD4+** wokół przewodów wyprowadzających → zniszczenie gruczołów → kserostomia. **Klasycznie kobiety 40-60 lat**, często towarzyszy reumatoidalnemu zapaleniu stawów (rzs) lub toczniowi (SLE). **W HIV występuje pokrewne (ale ODMIENNE) zjawisko**: ***Diffuse Infiltrative Lymphocytosis Syndrome (DILS)*** — nacieki **limfocytów T CD8+** (vs CD4+ w prawdziwym Sjögrenie!) w śliniankach i innych narządach. Klinicznie DILS przypomina Sjögrena, ale to **odrębne pojęcie**. Stąd **klasyczny Sjögren NIE jest częsty w HIV** — przeciwnie, HIV powoduje DILS (Sjögren-like). Klucz **A**. Pułapki — *klasyczne manifestacje jamy ustnej w HIV/AIDS* (kategoria *„HIV-associated oral lesions„*): **(B) leukoplakia włochata** — patognomoniczna dla HIV, EBV-reaktywacja, biała blaszka na **bocznej powierzchni języka** z poprzecznymi rowkami, **NIE daje się usunąć**, sugeruje immunosupresję (CD4 <300). **(C) opryszczka** — reaktywacja HSV-1/VZV w HIV — większe nawroty, atypowe lokalizacje, większe owrzodzenia. **(D) Mięsak Kaposiego (KS)** — HHV-8 (*Kaposi's Sarcoma-associated HerpesVirus*), klasyczne purpurowo-fioletowe makuły/guzki na **podniebieniu twardym**, ślinotok, krwawienie; wczesne ”AIDS-defining illness”. **(E) Kandydoza** — najczęstsza oportunistyczna infekcja w HIV; rzekomobłoniasta (CD4 <200), atroficzna (CD4 <300), hiperplastyczna (przewlekła). **Flaga walidatorska**: opcja A jest dyskusyjna ze względu na DILS — *HIV-Sjögren-like syndrome*. Idziemy za kluczem 2024.
+
+---
+
+## mju-zal-234
+
+Gruba warstwa białej błony w kącikach ust ze strzępkami grzybów w obrazie mikroskopowym wskazuje na:
+
+- [ ] **A.** ostrą kandydozę atroficzną (zanikowa, poantybiotykowa)
+- [ ] **B.** ostrą kandydozę rzekomobłoniastą (thrush, *muguet*, *cottage cheese-like*)
+- [ ] **C.** przewlekłą kandydozę rumieniową (stomatopatia protetyczna)
+- [✓] **D.** przewlekłą kandydozę hiperplastyczną (rozrostowa, *Candida leukoplakia*)
+- [ ] **E.** zapalenie kątów ust (cheilitis angularis, *perlèche*)
+
+**Poprawna odpowiedź:** D — przewlekłą kandydozę hiperplastyczną (rozrostowa, *Candida leukoplakia*)
+
+**Wyjaśnienie:**
+
+**Przewlekła kandydoza hiperplastyczna** (*chronic hyperplastic candidiasis*, *Candida leukoplakia*, *Candidal hyperplasia*) — **gruba, biała, NIE-USUWALNA blaszka** (różnica od rzekomobłoniastej, która daje się ścierać!) na śluzówce — typowo **kąty ust + dziąsła + dno jamy ustnej**. Histologicznie: **strzępki Candida wnikają w warstwę paraepithelialną** (głębsza inwazja niż w innych formach!) → reakcja zapalna + parakeratoza + akantoza nabłonka. **Klinicznie**: nie usuwa się szpatułką → wymaga **biopsji** dla różnicowania od **leukoplakii prawdziwej** (premalignancy!) — dlatego ważne! Często towarzyszy ***paleniem***, **przewlekłą iritation** (źle dopasowana proteza), **niedoborem witaminy A**, **suchością**. Leczenie: **długotrwałe leczenie systemowe** (flukonazol 100-200 mg × 14-28 dni); profilaktyka — eliminacja czynników predysponujących. Stąd **D**. Pułapki — *różne formy kandydozy* (klasyfikacja morfologiczna): **(A) atroficzna** — bez nalotu, **rumieniowa** (Q203/2024). **(B) rzekomobłoniasta** — biały nalot **USUWALNY** szpatułką, podściółka rumieniowa krwawiąca; *thrush* u noworodków, immunosupresyjnych, HIV. **(C) rumieniowa przewlekła** — stomatopatia protetyczna (Q214/2024); rumień bez nalotu. **(E) cheilitis angularis** — kąty ust ”zajady„, mieszane *Candida + S. aureus*; tylko kąty, nie głębokie blaszki. Klucz dydaktyczny: **biała + nie-usuwalna = hiperplastyczna; biała + usuwalna = rzekomobłoniasta; rumieniowa bez nalotu = atroficzna/rumieniowa**.
+
+---
+
+## mju-zal-235
+
+Bakteria zdolna do przeżycia zarówno w warunkach tlenowych jak i beztlenowych, należąca do Gram-ujemnych, której optymalnym podłożem hodowlanym jest agar czekoladowy, to:
+
+- [✓] **A.** Haemophilus influenzae
+- [ ] **B.** Neisseria meningitidis
+- [ ] **C.** Moraxella catarrhalis
+- [ ] **D.** Veillonella parvula
+- [ ] **E.** Bordetella pertussis
+
+**Poprawna odpowiedź:** A — Haemophilus influenzae
+
+**Wyjaśnienie:**
+
+***Haemophilus influenzae*** = **Gram-UJEMNA pałeczka**, ***fakultatywny anaerob*** (rośnie tlenowo i beztlenowo, ale lepiej z 5-10% CO2 — kapnofil). Podłoże: ***agar CZEKOLADOWY*** (Q106/2019) — agar z **lizowaną krwią**, dzięki czemu uwolnione są ***czynniki X (hemina)*** i ***V (NAD)*** niezbędne do wzrostu *Haemophilus* (klasyczna mnemotechnika: ***X = heme, V = vitamin B3***). Na agarze krwawym (nielizowany) *H. influenzae* nie rośnie samodzielnie — chyba że obok rośnie ***S. aureus*** uwalniający NAD → ***satellite phenomenon*** (zjawisko satelityzmu, klasyczna diagnostyka). Stąd **A**. Pułapki — *inne wymagania tlenowe/podłoża*: **(B) N. meningitidis** — ***BEZWZGLĘDNY TLENOWIEC*** (kapnofil), też rośnie na agarze czekoladowym, ale NIE jest fakultatywnym anaerobem. Niuans: oba klasycznie rosną na czekoladzie, ale tylko *Haemophilus* fakultatywny. **(C) Moraxella catarrhalis** (= *Branhamella*) — **bezwzględny tlenowiec** (Q231/2024). **(D) V. parvula** — Gram(-) ziarniak ***BEZWZGLĘDNY BEZTLENOWIEC***; rośnie na podłożach beztlenowych, nie czekoladowy. **(E) B. pertussis** — wymaga specjalnego podłoża **Bordet-Gengou** (z agaru ziemniaczanego + glicerolu + krwi), nie czekoladowego. Klucz: ***Haemophilus = X + V = fakultatywny = czekolada***.
+
+---
+
+## mju-zal-236
+
+Podłożem hodowlanym z wyboru dla Porphyromonas gingivalis jest:
+
+- [ ] **A.** agar Sabouraud
+- [ ] **B.** agar MacConkey 
+- [✓] **C.** agar Schaedlera z witaminą K i heminą
+- [ ] **D.** agar Löwensteina-Jensena
+- [ ] **E.** agar Thayer-Martin
+
+**Poprawna odpowiedź:** C — agar Schaedlera z witaminą K i heminą
+
+**Wyjaśnienie:**
+
+***Porphyromonas gingivalis*** ma **3 wymagania hodowlane**: **(1) BEZWZGLĘDNIE BEZTLENOWE** warunki (anaerostat, GasPak, komora beztlenowa); **(2) BOGATE PODŁOŻE** z dodatkami: **HEMINĄ** (Fe³⁺ porfirynowe — *P. gingivalis* nie syntetyzuje hemu, musi go uzyskać z zewnątrz; stąd nazwa **Porphyromonas** od *„porphyrin„* — Q119/2019, Q222/2024); **WITAMINĄ K** (menadion, niezbędna do syntezy chinonów oddechowych); **(3) DŁUGI CZAS INKUBACJI** (5-10 dni). Klasyczne podłoże spełniające: ***agar Schaedlera z heminą i witaminą K1*** — *„złoty standard”* dla bezwzględnych beztlenowców jamy ustnej (też *Prevotella*, *Fusobacterium*, *Treponema socranskii*). Charakterystyczne **CZARNE KOLONIE** po 5-7 dniach (gromadzenie hem-Fe w błonie zewnętrznej). Stąd **C**. Pułapki — *podłoża dla innych bakterii*: **(A) Sabouraud** — dla *Candida* (Q160/2025, Q44/2023). **(B) MacConkey** — dla Gram(-) Enterobacteriaceae (z fioletem krystalicznym + solami żółci jako inhibitorami Gram+), różnicowanie laktozo-fermentujących (różowe) od nie- (bezbarwne). **(D) Löwenstein-Jensen** — dla *Mycobacterium* (Q46/2023). **(E) Thayer-Martin** — selektywny dla *Neisseria gonorrhoeae* z VCNT (wancomycin, kolistyna, nystatyna, trimetoprim). Klucz: ***P. gingivalis = beztlenowo + hemina + wit K + Schaedler***.
+
+---
+
+## mju-zal-237
+
+Który z poniższych enzymów bakteryjnych NIE przyczynia się do osłabienia spójności tkanek gospodarza?
+
+- [ ] **A.** kolagenaza (degradacja kolagenu — głównego składnika ECM)
+- [ ] **B.** hialuronidaza (rozkład kwasu hialuronowego — ”cement międzykomórkowy„)
+- [ ] **C.** chondroitynosulfataza (rozkład siarczanów chondroityny — chrząstki)
+- [ ] **D.** peptydaza (proteoliza białek tkanki łącznej)
+- [✓] **E.** peroksydaza (enzym OXR, np. mieloperoksydaza neutrofili)
+
+**Poprawna odpowiedź:** E — peroksydaza (enzym OXR, np. mieloperoksydaza neutrofili)
+
+**Wyjaśnienie:**
+
+**Peroksydaza** (*peroxidase*) = **NIE jest enzymem rozkładającym tkanki**! To **enzym oksydacyjno-redukcyjny** wykorzystywany przede wszystkim przez **NEUTROFILE i makrofagi** jako **broń przeciwdrobnoustrojowa**: ***mieloperoksydaza (MPO)*** + H2O2 + Cl⁻ → tworzy ***podchloryn (HOCl)*** = silny utleniacz zabijający bakterie wewnątrz fagosomu (**oxidative burst**). Bakterie same NIE wytwarzają peroksydazy do atakowania tkanek (chociaż mają katalazy do detoksykacji H2O2 z neutrofili — *S. aureus* katalaza+, paciorkowce katalaza−). **Peroksydaza w ślinie** (ślinowa LPO + laktoperoksydaza) ma funkcję **OBRONNĄ** śliny — utlenia tiocyjanian (SCN⁻) do hipotiocyjanianu (OSCN⁻) → antybakteryjnie hamuje *S. mutans*. Stąd **E = wyjątek = NIE osłabia tkanek**. Pozostałe (A-D) — **wszystkie ROZKŁADAJĄ tkanki** (typowe enzymy zjadliwości bakterii periodontologicznych): **(A) Kolagenaza** — *P. gingivalis* (kolagenaza Z, Mcp), *T. denticola* (dentilizyna), *AA* — degradacja kolagenu typu I (kość, więzadło przyzębne!) → utrata przyczepu. **(B) Hialuronidaza** — *„spreading factor„* — *S. pyogenes*, *S. aureus* (HAS), *Clostridium* — rozkład kwasu hialuronowego → ułatwia rozprzestrzenianie po tkankach. **(C) Chondroitynosulfataza** — siarczany chondroityny w macierzy chrząstki/tkanki łącznej → uszkodzenie. **(D) Peptydaza** — ogólnie proteazy (np. gingipainy *P. gingivalis*, Q119/2019). Klucz: ***peroksydaza = enzym obronny gospodarza, nie atakujący tkanki***.
+
+---
+
+## mju-zal-238
+
+Oceń poniższe zdania: ”Bakterie rosnące na stałym podłożu (w biofilmie) mają bardziej zaawansowany metabolizm niż bakterie planktoniczne; bakterie w biofilmie są bardziej oporne na środki dezynfekcyjne.”
+
+- [✓] **A.** obie tezy prawdziwe ZE związkiem przyczynowym
+- [ ] **B.** obie tezy prawdziwe BEZ związku przyczynowego
+- [ ] **C.** pierwsza prawda, druga fałszywa
+- [ ] **D.** pierwsza fałszywa, druga prawdziwa
+- [ ] **E.** obie tezy fałszywe
+
+**Poprawna odpowiedź:** A — obie tezy prawdziwe ZE związkiem przyczynowym
+
+**Wyjaśnienie:**
+
+**Obie tezy prawdziwe + ZE związkiem przyczynowym**. **Mechanizm**: bakterie w **BIOFILMIE** (na stałym podłożu) różnią się drastycznie od **planktonicznych** (w roztworze) — to inny **fenotyp** ekspresji genowej. **(1) ZAAWANSOWANY METABOLIZM** — w biofilmie funkcjonuje *quorum sensing* (autoinduktory: AHL u Gram(-), AIP u Gram(+), AI-2 uniwersalny — Q103/2019, Q161/2025) → koordynacja ekspresji ~30% genów: produkcja **macierzy EPS** (polisacharydy, eDNA, białka, Q165/2025), enzymów degradujących, **persister cells** (dormant — przeżywają każdy antybiotyk!), gradienty metaboliczne (warstwa zewnętrzna aerobowa, wewnętrzna anaerobowa — koegzystencja tlenowców i beztlenowców), **division of labor** między subpopulacjami. **(2) OPORNOŚĆ NA DEZYNFEKTY** wynika **bezpośrednio** z punktu 1: **(a)** macierz EPS jako *fizyczna bariera dyfuzyjna* (środek nie dociera do głębokich warstw); **(b)** *persister cells* nie metabolizują → niewrażliwe na antybiotyki celujące w metabolizm (β-laktamy, aminoglikozydy); **(c)** *podwyższona ekspresja pomp efflux* (MexAB-OprM u *Pseudomonas*); **(d)** *horyzontalny transfer genów oporności* w biofilmie (HGT 1000× efektywniejszy niż w roztworze). Bakterie w biofilmie są **10-1000× OPORNIEJSZE** na antybiotyki i dezynfekty niż planktoniczne (oporność do antybiotyków na *Pseudomonas* w mukowiscydozie). Klucz: ***biofilm = inny fenotyp = oporność = problem kliniczny*** (CDC szacuje że **80% przewlekłych infekcji** to biofilmy: protezy, cewniki, mukowiscydoza, periodontitis, próchnica, otitis media chroniczne). Stąd **A**. Pułapki: pozostałe (B-E) odwrócone lub zerwane zależności.
+
+---
+
+## mju-zal-239
+
+Oceń poniższe zdania: ”Actinomyces viscosus jest jednym z PIERWSZYCH drobnoustrojów kolonizujących powierzchnię zęba; ziarniaki są od niego UZALEŻNIONE, ponieważ potrzebują produktów metabolizmu A. viscosus do wzrostu.”
+
+- [ ] **A.** obie tezy prawdziwe ZE związkiem przyczynowym
+- [ ] **B.** obie tezy prawdziwe BEZ związku przyczynowego
+- [ ] **C.** pierwsza prawda, druga fałszywa
+- [ ] **D.** pierwsza fałszywa, druga prawdziwa
+- [✓] **E.** obie tezy fałszywe
+
+**Poprawna odpowiedź:** E — obie tezy fałszywe
+
+**Wyjaśnienie:**
+
+**OBIE TEZY FAŁSZYWE**. **Teza 1 (FAŁSZ)**: ***Actinomyces viscosus*** **NIE JEST pierwszym kolonizatorem** osłonki nabytej szkliwa. Pierwsi to **ZIARNIAKI Gram-DODATNIE i Gram-UJEMNE** (Q187/2025) — paciorkowce mitis-group (***S. sanguinis***, ***S. mitis***, ***S. oralis***, ***S. gordonii***) + Gram(-) *Neisseria*, *Veillonella*. *Actinomyces viscosus* przychodzi **PÓŹNIEJ (24-48h)** jako ***wczesny kolonizator drugiej fali*** — buduje korn-cob structures z paciorkowcami (Q162/2025). **Teza 2 (FAŁSZ)**: ***RELACJA JEST ODWROTNA*** — to *Actinomyces* **koagreguje Z paciorkowcami** i wykorzystuje **odsłonięte galaktozylowe receptory** po neuraminidazie paciorkowców mitis (Q174/2025) — czyli *Actinomyces* potrzebuje paciorkowców, nie odwrotnie! Ziarniaki nie są od *A. viscosus* uzależnione metabolicznie — mają własną fermentację cukrów. Stąd **E**. Pułapki — wszystkie inne kombinacje (A-D) zakładają jakąś prawdę, której tu nie ma. Klucz dydaktyczny — **sukcesja biofilmu** (Q187/2025): **(1) pionerzy** (0-24h): ziarniaki Gram(+) i (-) — paciorkowce mitis + Neisseria + Veillonella; **(2) wczesni kolonizatorzy** (24-72h): *Actinomyces*, *Corynebacterium*, *Capnocytophaga*; **(3) bridge** (72h-1 tydz.): *Fusobacterium nucleatum*; **(4) późni** (>1 tydz., kieszonka): czerwony kompleks *P. gingivalis*, *T. denticola*, *T. forsythia* (Q163/2025).
+
+---
+
+## mju-zal-240
+
+W autoklawie parowym NIE można sterylizować:
+
+- [ ] **A.** płynów infuzyjnych i wody do iniekcji
+- [✓] **B.** wielorazowych narzędzi z polietylenu
+- [ ] **C.** instrumentów ostrych chirurgicznych
+- [ ] **D.** szklanych naczyń laboratoryjnych
+- [ ] **E.** metalowych narzędzi chirurgicznych ze stali nierdzewnej
+
+**Poprawna odpowiedź:** B — wielorazowych narzędzi z polietylenu
+
+**Wyjaśnienie:**
+
+**Polietylen (PE)** = termoplast o **temperaturze topnienia 105-130°C** (LDPE) lub 130-135°C (HDPE) — **TOPI SIĘ w autoklawie!** Autoklaw używa 121°C × 15 min lub 134°C × 3-18 min — w obu cyklach PE **deformuje się i topi**. Dla wyrobów z PE/polipropylenu/PCV używa się ***niskotemperaturowych metod***: **(1) Tlenek etylenu (EtO)** — alkilacja (Q158/2025); **(2) Plazma niskotemperaturowa (Sterrad)** — H2O2 + RF; **(3) Promieniowanie gamma** (zwykle przemysłowe, dla zapakowanych jednorazówek). Stąd **B**. Pozostałe (A, C, D, E) — **WSZYSTKIE można sterylizować w autoklawie**: **(A) Płyny infuzyjne** — **cykl płynów** w autoklawie (121°C × 30-60 min, wolniejsze schładzanie aby uniknąć eksplozji butelki przez nagłe wrzenie). **(C) Narzędzia ostre** — można, ale ***tępią ostrza*** (ekspozycja na parę pod ciśnieniem); preferowana **suchego ciepła sterylizacja** dla skalpeli i wierteł stomatologicznych (160°C × 60 min lub 180°C × 30 min). **(D) Szkło** — klasyczne, autoklawowanie probówek/kolb (121°C × 20 min). **(E) Metale stali nierdzewnej** — autoklawowanie najpopularniejsze; mogą **korodować przy długotrwałym używaniu** (sole z wody/destylowana woda preferowana). **Flaga źródłowa**: oryginalny PDF zawiera odpowiedź C ”majtów xd„ jako żart autora — podmieniono na sensowną ”instrumentów ostrych chirurgicznych” (wciąż jako poprawny wybór 1 z 4 wariantów *„można sterylizować w autoklawie„*). Klucz: PE = topi się = NIE autoklaw.
+
+---
+
+## mju-zal-241
+
+Najczęściej izolowanym paciorkowcem z głębokiej kieszonki poddziąsłowej w przewlekłym periodontitis jest:
+
+- [✓] **A.** Streptococcus anginosus
+- [ ] **B.** Streptococcus mitis
+- [ ] **C.** Streptococcus salivarius
+- [ ] **D.** Streptococcus gordonii
+- [ ] **E.** Streptococcus sanguinis
+
+**Poprawna odpowiedź:** A — Streptococcus anginosus
+
+**Wyjaśnienie:**
+
+***Streptococcus anginosus*** (grupa anginosus, dawniej *„S. milleri group„* — obejmuje *S. anginosus*, *S. intermedius*, *S. constellatus*) jest **najczęściej izolowanym paciorkowcem z PODDZIĄSŁOWEJ płytki** w głębokich kieszonkach periodontalnych. **Cechy grupy anginosus**: mikroaerofilne, kapnofilne (preferują 5-10% CO2 + niskie O2), β-hemoliza najczęściej, tworzą małe (<0,5 mm) ”micro” kolonie (stąd ”milleri„). Klinicznie ważne: **kategoria abscess-formers** — *S. anginosus group* jest klasycznym patogenem **ropni** (mózgu, wątroby, śródpiersia, jamy brzusznej) + zakażeń poliminobakteryjnych z beztlenowcami; w periodontologii dominują w **głębokich kieszonkach (>5 mm)**, towarzysząc czerwonemu kompleksowi. **Flaga walidatorska**: To **dyskusyjne** — klasycznie głęboka kieszonka dominują **beztlenowcami Gram(-)** (kompleks czerwony Q163/2025), a nie paciorkowcami. Niemniej z **paciorkowców** najczęściej tam izolowany jest *S. anginosus* (pytanie *„jakim paciorkowcem”* — nie jakim mikroorganizmem ogólnie). Pozostałe to **paciorkowce NADDZIĄSŁOWE/ślinowe** (nie kieszonki): **(B) S. mitis** — naddziąsłowa płytka, pionier osłonki nabytej (Q153/2025). **(C) S. salivarius** — grzbiet języka, ślina (Q123/2019, Q164/2025). **(D) S. gordonii** — naddziąsłowy, koagreguje z *Actinomyces* (Q174/2025 mechanizm). **(E) S. sanguinis** — naddziąsłowy pionier zdrowej płytki, antagonista *S. mutans*. Klucz: ***anginosus = ”abscess-former„ = głębokie infekcje, w tym poddziąsłowe***.
+
+---
+
+## mju-zal-242
+
+Za próchnicę cementu korzeniowego w największym stopniu odpowiadają bakterie z rodzaju:
+
+- [ ] **A.** Streptococcus (zwłaszcza S. mutans)
+- [ ] **B.** Lactobacillus (acidophilus, casei)
+- [✓] **C.** Actinomyces (naeslundii, viscosus, israelii)
+- [ ] **D.** Veillonella (parvula, atypica)
+- [ ] **E.** Capnocytophaga (gingivalis, ochracea)
+
+**Poprawna odpowiedź:** C — Actinomyces (naeslundii, viscosus, israelii)
+
+**Wyjaśnienie:**
+
+***Actinomyces*** = **dominujący rodzaj w próchnicy cementu korzeniowego** (*root caries*) — zwłaszcza ***A. naeslundii*** + ***A. viscosus*** + ***Rothia dentocariosa*** (Q116/2019, Q190/2025). **Mechanizm**: cement korzenia ma ***NIŻSZY próg demineralizacji*** (krytyczne pH ~6,2-6,7 vs 5,5 dla szkliwa) → łatwiej rozpuszcza się w słabszych kwasach; *Actinomyces* fermentuje cukry do kwasu mlekowego i octowego — wystarczające dla cementu. Dodatkowo: cement to ***chropowata*** powierzchnia (Q40/2025-Q190 — włókna Sharpey'a, kanaliki resorpcyjne) → ułatwiona adhezja *Actinomyces* (jego nitkowate fimbrie). Próchnica korzenia = ***choroba seniorów*** po recesji dziąseł (zazwyczaj >60 r.ż.); klasycznie obejmuje **całą obwódkę** odsłoniętego korzenia (vs próchnica szkliwa zaczynająca się w bruzdach/przestrzeniach stycznych). Stąd **C**. Pułapki — *inne rodzaje w próchnicy*: **(A) Streptococcus mutans** — KLASYCZNIE w **próchnicy SZKLIWA** (pionier demineralizacji, Q10/2023); w cemencie ROLA POMOCNICZA. **(B) Lactobacillus** — w **głębokiej próchnicy zębiny** (kwasooporny do pH 3,5-4, Q110/2019); też w cemencie towarzyszący *Actinomyces*. **(D) Veillonella** — *anty-kariogenne* (rozkład lactate, Q228/2024). **(E) Capnocytophaga** — periodontopatogen (Q195/2025), NIE próchnica. Klucz mnemoniczny: **próchnica szkliwa = ***mutans*** + paciorkowce**; **próchnica zębiny = + ***Lactobacillus***; **próchnica cementu/korzenia = ***Actinomyces*** + Rothia** (Q216/2024).
+
+---
+
+## mju-zal-243
+
+Pierwszym mikroorganizmem osiadającym na powierzchni nowej protezy ruchomej (akryl) jest:
+
+- [ ] **A.** Streptococcus mutans
+- [✓] **B.** Streptococcus sanguinis
+- [ ] **C.** Candida albicans 
+- [ ] **D.** Lactobacillus casei 
+- [ ] **E.** Actinomyces viscosus
+
+**Poprawna odpowiedź:** B — Streptococcus sanguinis
+
+**Wyjaśnienie:**
+
+***Streptococcus sanguinis*** (dawniej *S. sanguis*) = **pierwotny kolonizator akrylowej powierzchni protezy** — analogicznie do osłonki nabytej szkliwa (Q187/2025, Q11/2023). Sekwencja kolonizacji protezy: **(1) Osłonka nabyta na akrylu** — białka śliny adsorbują na akrylu w ciągu **minut po założeniu protezy** (głównie mucyny, statheryny, PRP-1 — Q205/2024). **(2) Pierwsi kolonizatorzy** (24h) — ziarniaki paciorkowców mitis-group: ***S. sanguinis***, ***S. oralis***, ***S. mitis*** + *Neisseria*, *Veillonella*. **(3) Wczesni kolonizatorzy** (24-72h) — *Actinomyces*, *Corynebacterium*. **(4) Późni** + ***Candida albicans*** (po ~5-7 dniach z niewłaściwą higieną) — początek **stomatopatii protetycznej** (Q214/2024). Stąd **B**. Pułapki — *bakterie późniejszych etapów lub innych nisz*: **(A) S. mutans** — kariogenny, **nie pionier zdrowej płytki/protezy** (rośnie w już dojrzałym biofilmie z bruzdami szkliwa). **(C) Candida albicans** — pojawia się LATER w sekwencji, jest patogenem stomatopatii ale nie pierwotnym kolonizatorem — najpierw musi być osłonka bakteryjna. **(D) Lactobacillus** — głęboka próchnica zębiny (Q216/2024). **(E) A. viscosus** — wczesny kolonizator (24-72h), nie pierwotny (Q239/2024). Klucz dydaktyczny: **sukcesja na protezie ≈ sukcesja na szkliwie** (akryl naśladuje powierzchnię szkliwa w mechanizmie adsorpcji osłonki nabytej), z **różnicą** że akryl jest bardziej porowaty + chropowaty mikroskopowo → **biofilm gęstszy + bardziej oporny na czyszczenie** → łatwiejsza kolonizacja *Candida* po pionierach.
+
+---
+
+## mju-zal-244
+
+Promienica (actinomycosis) jest wywoływana przez:
+
+- [✓] **A.** Actinomyces israelii (klasyczna ”lumpy jaw„; szczęka, dolna)
+- [ ] **B.** Nocardia asteroides (częściowo kwasoodporna, immunosupresja)
+- [ ] **C.** Mycobacterium tuberculosis (gruźlica klasyczna)
+- [ ] **D.** Streptomyces somaliensis (madurakon, mycetoma)
+- [ ] **E.** Corynebacterium diphtheriae (błonica)
+
+**Poprawna odpowiedź:** A — Actinomyces israelii (klasyczna ”lumpy jaw„; szczęka, dolna)
+
+**Wyjaśnienie:**
+
+Powtórka z 2019 (Q122) i 2025 (Q200) — ***Actinomyces israelii*** = **klasyczny patogen PROMIENICY** (*actinomycosis*) — przewlekła, granulomatozno-ropna choroba zakaźna z powolnym progresem przez tygodnie-miesiące. **Forma szyjno-twarzowa (50-70% przypadków)**: ***”lumpy jaw„*** = twardy, niebolesny obrzęk policzka/szczęki/dna jamy ustnej, **przetoki skórne z wydzielaniem ropy** zawierającej patognomoniczne ***ziarna siarkowe*** (*sulfur granules*) — żółtawe agregaty Actinomyces wielkości 0,1-1 mm widoczne gołym okiem. Czynniki ryzyka: ekstrakcja zęba, uraz jamy ustnej, zła higiena, obniżona odporność. Diagnostyka: hodowla **5-7 dni beztlenowo na agarze Schaedlera** (Q200/2025) — kolonie ***”molar tooth”*** kremowobiałe + obraz mikroskopowy ziaren siarkowych + Gram+ pałeczki nitkowate ”branching„ (rozgałęziające się). **Leczenie**: ***penicylina G iv. w dużych dawkach (10-20 mln j./d × 4-6 tyg.), potem amoksycylina p.o. × 6-12 miesięcy*** — *Actinomyces* jest **bardzo wrażliwy** na β-laktamy. Stąd **A**. Pułapki — *podobne morfologicznie/klinicznie patogeny* (kategoria nitkowatych Gram+ chorobotwórczych): **(B) Nocardia asteroides** — Gram+ pałeczka nitkowata, ale ***częściowo KWASOODPORNA*** (modified ZN+), **TLENOWA** (Actinomyces beztlenowy!), wywołuje **nocardiosis** (płuc, mózg, skóra) u **immunosupresyjnych** — *„false TB”*. **(C) M. tuberculosis** — gruźlica, kwasoodporny prątek. **(D) Streptomyces somaliensis** — *madurakon* (madura foot), nitkowate Gram+ ”actinomycetales„, ale aktywne w glebie + mycetoma w krajach tropikalnych. **(E) C. diphtheriae** — błonica, NIE promienica, choć obie ”coryne-form Gram+ pałeczki”. Klucz: ***actinomycosis = A. israelii + szczęka + ziarna siarkowe + ”molar tooth„ + penicylina × miesiące***.
+
+---
+
+## mju-zal-245
+
+Wskaż zdanie FAŁSZYWE dotyczące bakterii:
+
+- [ ] **A.** rozmnażają się przez podział binarny (binary fission, zwykle co 20 min - 24h)
+- [ ] **B.** niektóre posiadają plazmidy z genami oporności na antybiotyki
+- [ ] **C.** niektóre wytwarzają otoczki polisacharydowe lub polipeptydowe
+- [✓] **D.** rozmnażają się przez sporulację (tworzenie przetrwalników)
+- [ ] **E.** większość ma peptydoglikan w ścianie komórkowej (z wyjątkiem Mycoplasma)
+
+**Poprawna odpowiedź:** D — rozmnażają się przez sporulację (tworzenie przetrwalników)
+
+**Wyjaśnienie:**
+
+**Sporulacja u bakterii to PROCES OBRONNY**, **NIE rozmnażanie!** Stąd **D = FAŁSZ**. **Sporulacja** = tworzenie ***ENDOSPORY*** (przetrwalnika wewnętrznego, *endospore*) — wyspecjalizowanej **formy spoczynkowej** odpornej na ciepło, wysuszenie, dezynfekty, promieniowanie, ekstremalne pH. **Mechanizm**: w warunkach niedoboru składników odżywczych (głód) → komórka wegetatywna ulega asymetrycznemu podziałowi → **mniejsza komórka córka (forespore)** jest **otaczana** przez drugą komórkę → wytwarzanie **wielowarstwowej otoczki** (cortex, coat, exosporium) + **dipikolinian wapnia (DPA)** w cytoplazmie + obniżenie wody do <30% → metabolicznie **NIEAKTYWNY przetrwalnik** może przeżyć dziesiątki/setki lat (klasyczne odkrycie: 250-milionletni *Bacillus permians* w soli — żywy!). **Z JEDNEJ komórki powstaje JEDEN przetrwalnik** = NIE rozmnażanie! W odpowiednich warunkach przetrwalnik → **kiełkowanie** (germination) → wraca do formy wegetatywnej. **Sporujące bakterie**: tylko 2 rodzaje Gram+ — ***Bacillus*** (tlenowiec: *B. anthracis* wąglik, *B. cereus*, *B. subtilis*, *B. atrophaeus*; *Geobacillus stearothermophilus*) i ***Clostridium*** (beztlenowiec: *C. tetani* tężec, *C. botulinum* botulizm, *C. perfringens* zgorzel, *C. difficile* C. diff colitis) — Q39/2025-Q189, Q146/2019. Pozostałe (A-C, E) — **prawdziwe**: **(A) podział binarny** — klasyczny mechanizm rozmnażania bakterii (jedna → dwie), czas generacji od 20 min (*E. coli* w optymalnych warunkach) do 24h (*Mycobacterium tuberculosis*). **(B) plazmidy R** — geny oporności (Q204/2024). **(C) otoczki** — polisacharydowe (większość) lub polipeptydowe (*B. anthracis* — Q225/2024). **(E) peptydoglikan** — uniwersalny składnik ściany bakterii, **wyjątek** to ***Mycoplasma*** (brak ściany od narodzin gatunku, Q186/2025). Klucz: ***rozmnażanie = podział binarny; sporulacja = obrona, nie reprodukcja***. **Flaga źródłowa**: PDF zawiera dopisek autora ”jakoś tak„ — pomijam, klucz jednoznaczny.
+
+---

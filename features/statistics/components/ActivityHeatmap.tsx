@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 const LEVELS = [
@@ -15,6 +16,7 @@ export function ActivityHeatmap({
 }: {
   cells: { date: string; level: number }[];
 }) {
+  const t = useTranslations("statistics");
   const grid = [...cells];
   while (grid.length < 35) grid.push({ date: "", level: 0 });
 
@@ -33,13 +35,13 @@ export function ActivityHeatmap({
         ))}
       </div>
       <div className="mt-3 flex items-center justify-between font-body text-body-xs text-muted">
-        <span>Mniej</span>
+        <span>{t("activity.less")}</span>
         <div className="flex gap-1">
           {LEVELS.slice(1).map((cls, i) => (
             <span key={i} className={cn("size-3 rounded-sm", cls)} />
           ))}
         </div>
-        <span>Więcej</span>
+        <span>{t("activity.more")}</span>
       </div>
     </div>
   );

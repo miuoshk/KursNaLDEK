@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import type { OPGQuestion, OPGStructure } from '../../lib/opg/types'
@@ -31,6 +32,7 @@ export default function OPGMcqPanel({
   feedback,
   disabled,
 }: OPGMcqPanelProps) {
+  const t = useTranslations('osce')
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null)
 
   const options = useMemo<OPGStructure[]>(
@@ -44,8 +46,12 @@ export default function OPGMcqPanel({
 
   const heading =
     question.direction === 'number_to_name'
-      ? `Struktura oznaczona numerem ${question.targetStructure.structure_number} to:`
-      : `Wskaż numer struktury: ${question.targetStructure.name_pl}`
+      ? t('opgMcqNumberPrompt', {
+          number: question.targetStructure.structure_number,
+        })
+      : t('opgMcqNamePrompt', {
+          name: question.targetStructure.name_pl,
+        })
 
   function handleClick(option: OPGStructure) {
     if (disabled) return

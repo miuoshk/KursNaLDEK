@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { BookOpen } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
 import {
@@ -9,14 +10,22 @@ import {
 } from "@/features/subjects/lib/topicDisplayName";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
 import { cn } from "@/lib/utils";
-import { pytaniaForm } from "@/lib/pluralizePolish";
 
 type TopicCardProps = {
   topic: TopicWithProgress;
   onSelect: (topic: TopicWithProgress) => void;
 };
 
-function formatLastStudied(iso: string | null): string {
+type RelativeDateTranslator = (
+  key: "today" | "yesterday" | "daysAgo" | "weekAgo" | "weeksAgo",
+  values?: { count?: number },
+) => string;
+
+function formatLastStudied(
+  iso: string | null,
+  t: RelativeDateTranslator,
+  locale: string,
+): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "—";
@@ -24,14 +33,14 @@ function formatLastStudied(iso: string | null): string {
   const diffMs = now.getTime() - d.getTime();
   const diffDays = Math.floor(diffMs / 86_400_000);
 
-  if (diffDays === 0) return "dzisiaj";
-  if (diffDays === 1) return "wczoraj";
-  if (diffDays < 7) return `${diffDays} dni temu`;
+  if (diffDays === 0) return t("today");
+  if (diffDays === 1) return t("yesterday");
+  if (diffDays < 7) return t("daysAgo", { count: diffDays });
   if (diffDays < 30) {
     const weeks = Math.floor(diffDays / 7);
-    return weeks === 1 ? "tydzień temu" : `${weeks} tyg. temu`;
+    return weeks === 1 ? t("weekAgo") : t("weeksAgo", { count: weeks });
   }
-  return d.toLocaleDateString("pl-PL", { day: "numeric", month: "short" });
+  return d.toLocaleDateString(locale, { day: "numeric", month: "short" });
 }
 
 function fillClassForProgress(pct: number) {
@@ -41,6 +50,9 @@ function fillClassForProgress(pct: number) {
 }
 
 export function TopicCard({ topic, onSelect }: TopicCardProps) {
+  const t = useTranslations("subjects");
+  const tSession = useTranslations("session");
+  const locale = useLocale();
   const [showCard, setShowCard] = useState(false);
 
   const total = topic.question_count;
@@ -51,6 +63,8 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const displayName = formatTopicDisplayName(topic.name);
   const hasKnowledgeCard =
     topic.knowledge_card != null && topic.knowledge_card.trim().length > 0;
+  const sessionTimesLabel =
+    topic.session_count === 1 ? t("timeOnce") : t("timesMany");
 
   const inner = (
     <>
@@ -60,18 +74,21 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         </h3>
         {!hasQuestions && (
           <span className="font-body text-body-xs text-brand-gold">
-            Wkrótce
+            {t("comingSoon")}
           </span>
         )}
         {isGeneratedTopicFlag && hasQuestions && (
           <span className="rounded-pill border border-brand-gold/30 px-2 py-0.5 font-body text-[10px] font-medium uppercase tracking-wide text-brand-gold">
-            Generowane
+            {t("generated")}
           </span>
         )}
         {topic.session_count > 0 && (
           <span
             className="rounded-pill border border-white/10 px-2 py-0.5 font-body text-[10px] font-medium tabular-nums text-secondary"
-            title={`Temat przerobiony ${topic.session_count} ${topic.session_count === 1 ? "raz" : "razy"}`}
+            title={t("topicStudiedTimes", {
+              count: topic.session_count,
+              timesLabel: sessionTimesLabel,
+            })}
           >
             {topic.session_count}×
           </span>
@@ -84,8 +101,8 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
               setShowCard(true);
             }}
             className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-brand-sage/30 text-brand-sage transition-colors duration-200 ease-out hover:bg-brand-sage/10"
-            aria-label="Karta wiedzy"
-            title="Karta wiedzy"
+            aria-label={t("knowledgeCard")}
+            title={t("knowledgeCard")}
           >
             <BookOpen className="size-4" aria-hidden />
           </button>
@@ -101,11 +118,15 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         />
       </div>
       <p className="mt-3 font-body text-body-xs text-muted">
-        {hasQuestions ? `${answered} / ${total} ${pytaniaForm(total)}` : "Brak pytań"}
+        {hasQuestions
+          ? `${answered} / ${total} ${tSession("questionsShort")}`
+          : t("noQuestions")}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">
-          Ostatnio: {formatLastStudied(topic.last_studied_at)}
+          {t("lastStudied", {
+            when: formatLastStudied(topic.last_studied_at, t, locale),
+          })}
         </p>
         <span
           className={cn(
@@ -115,7 +136,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
               : "border-transparent text-muted",
           )}
         >
-          {hasQuestions ? "Rozpocznij" : "Wkrótce"}
+          {hasQuestions ? t("start") : t("comingSoon")}
         </span>
       </div>
     </>

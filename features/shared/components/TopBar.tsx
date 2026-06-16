@@ -2,9 +2,10 @@
 
 import { Bell, ChevronLeft, ChevronRight, Flame, Menu, Search } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { formatStreak } from "@/lib/formatStreak";
+import { formatStreakI18n } from "@/lib/formatStreak";
 import { CommandPalette } from "@/features/shared/components/CommandPalette";
 import { fetchReportNotifications } from "@/features/notifications/api/fetchReportNotifications";
 import { markReportNotificationsRead } from "@/features/notifications/api/markReportNotificationsRead";
@@ -15,23 +16,36 @@ import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContex
 import { useMobileViewport } from "@/features/shared/hooks/useMobileViewport";
 import { mobilePageTitle } from "@/features/shared/lib/mobilePageTitle";
 import { useSidebarStore } from "@/features/shared/stores/sidebarStore";
+import type { AppLocale } from "@/i18n/config";
 
-function formatNotificationDate(iso: string): string {
-  const date = new Date(iso);
-  return date.toLocaleDateString("pl-PL", {
-    day: "numeric",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
+const DATE_LOCALE: Record<AppLocale, string> = {
+  pl: "pl-PL",
+  uk: "uk-UA",
+  ru: "ru-RU",
+  en: "en-US",
+};
 
 function NotificationBell() {
+  const tCommon = useTranslations("common");
+  const locale = useLocale() as AppLocale;
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState<ReportNotification[]>([]);
   const [unreadIds, setUnreadIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const formatNotificationDate = useCallback(
+    (iso: string): string => {
+      const date = new Date(iso);
+      return date.toLocaleDateString(DATE_LOCALE[locale] ?? "pl-PL", {
+        day: "numeric",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    },
+    [locale],
+  );
 
   const refreshNotifications = useCallback(async () => {
     setLoading(true);
@@ -92,8 +106,8 @@ function NotificationBell() {
         )}
         aria-label={
           unreadCount > 0
-            ? `Powiadomienia, ${unreadCount} nieprzeczytanych`
-            : "Powiadomienia"
+            ? tCommon("notificationsUnread", { count: unreadCount })
+            : tCommon("notifications")
         }
         aria-expanded={open}
       >
@@ -111,25 +125,25 @@ function NotificationBell() {
           )}
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
-            <p className="font-body text-body-sm font-medium text-primary">Powiadomienia</p>
+            <p className="font-body text-body-sm font-medium text-primary">{tCommon("notifications")}</p>
             {unreadCount > 0 ? (
               <button
                 type="button"
                 onClick={() => void markRead(unreadIds)}
                 className="font-body text-body-xs text-brand-gold transition-colors hover:text-primary"
               >
-                Oznacz wszystkie
+                {tCommon("markAllRead")}
               </button>
             ) : null}
           </div>
           {loading ? (
             <div className="px-4 py-8 text-center font-body text-body-sm text-secondary">
-              Wczytuję…
+              {tCommon("loading")}
             </div>
           ) : notifications.length === 0 ? (
             <div className="flex flex-col items-center gap-2 px-4 py-8">
               <Bell className="size-6 text-muted" aria-hidden />
-              <p className="font-body text-body-sm text-secondary">Brak powiadomień</p>
+              <p className="font-body text-body-sm text-secondary">{tCommon("noNotifications")}</p>
             </div>
           ) : (
             <ul className="max-h-[min(28rem,70vh)] overflow-y-auto">
@@ -157,6 +171,7 @@ function NotificationBell() {
 }
 
 export function TopBar() {
+  const tCommon = useTranslations("common");
   const pathname = usePathname();
   const router = useRouter();
   const isMobile = useMobileViewport();
@@ -165,15 +180,14 @@ export function TopBar() {
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const { year, secondSegment, thirdSegment } = useDashboardBreadcrumb();
   const { streak, initials, avatarEmoji } = useDashboardUser();
-  const pathFallback = mobilePageTitle(pathname);
+  const tOsce = useTranslations("osce");
+  const tNav = useTranslations("nav");
+  const pathFallback = mobilePageTitle(pathname, { nav: tNav, osce: tOsce });
   const mobileTitle =
-    thirdSegment ?? secondSegment ?? pathFallback ?? `Rok ${year}`;
+    thirdSegment ?? secondSegment ?? pathFallback ?? tCommon("yearPrefix", { year });
   const [paletteOpen, setPaletteOpen] = useState(false);
   const openPalette = useCallback(() => setPaletteOpen(true), []);
 
-  // Globalny skrot Cmd/Ctrl+K - dziala na kazdej stronie dashboardu.
-  // Ignorujemy wewnatrz input/textarea/contentEditable, zeby nie kolidowac
-  // z formularzami i edytorami.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
@@ -208,7 +222,7 @@ export function TopBar() {
             type="button"
             onClick={() => router.back()}
             className="shrink-0 rounded-lg p-1.5 text-secondary transition-colors hover:text-primary"
-            aria-label="Wstecz"
+            aria-label={tCommon("back")}
           >
             <ChevronLeft className="size-5" aria-hidden />
           </button>
@@ -222,7 +236,7 @@ export function TopBar() {
               "hover:bg-white/[0.04] hover:text-primary active:scale-[0.98]",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
-            aria-label="Otwórz menu"
+            aria-label={tCommon("openMenu")}
           >
             <Menu className="size-5" aria-hidden />
           </button>
@@ -232,9 +246,9 @@ export function TopBar() {
             "flex min-w-0 items-center gap-1 font-body text-body-sm text-secondary",
             isMobile && "sr-only",
           )}
-          aria-label="Ścieżka nawigacji"
+          aria-label={tCommon("breadcrumbNav")}
         >
-          <span className="truncate">Rok {year}</span>
+          <span className="truncate">{tCommon("yearPrefix", { year })}</span>
           {secondSegment ? (
             <>
               <ChevronRight className="size-3 shrink-0 text-muted" aria-hidden />
@@ -267,7 +281,7 @@ export function TopBar() {
             "active:scale-[0.98]",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
           )}
-          aria-label="Szukaj…"
+          aria-label={tCommon("search")}
         >
           <Search className="size-4" aria-hidden />
         </button>
@@ -280,10 +294,10 @@ export function TopBar() {
             "active:scale-[0.98]",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
           )}
-          aria-label="Szukaj…"
+          aria-label={tCommon("search")}
         >
           <Search className="size-4 shrink-0" aria-hidden />
-          <span className="flex-1 font-body text-body-sm">Szukaj…</span>
+          <span className="flex-1 font-body text-body-sm">{tCommon("search")}</span>
           <kbd
             className={cn(
               "hidden rounded border border-border bg-sidebar px-1.5 py-0.5 font-body text-[11px] text-muted lg:inline",
@@ -300,7 +314,7 @@ export function TopBar() {
         <div className="hidden items-center gap-1.5 sm:flex">
           <Flame className="size-5 shrink-0 text-brand-gold" aria-hidden />
           <span className="font-body text-sm text-brand-gold">
-            {formatStreak(streak)}
+            {formatStreakI18n(tCommon, streak)}
           </span>
         </div>
 

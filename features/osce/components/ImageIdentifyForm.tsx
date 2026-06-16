@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import type { ImageIdentifyHotspot } from "@/features/osce/components/ImageIdentifyQuestion";
 import { QuestionFooterActions } from "@/features/shared/components/QuestionFooterActions";
@@ -41,6 +42,8 @@ export function ImageIdentifyForm({
   onCheck,
   onResetView,
 }: ImageIdentifyFormProps) {
+  const t = useTranslations("osce");
+  const tCommon = useTranslations("common");
   void _labelStep;
   void _labelOutcome;
   void _onLabelSelect;
@@ -63,7 +66,7 @@ export function ImageIdentifyForm({
                 {i + 1}.
               </span>
               <label htmlFor={`${formId}-sel-${h.id}`} className="sr-only">
-                Wybór dla punktu {i + 1}
+                {t("selectForPoint", { number: i + 1 })}
               </label>
               <select
                 id={`${formId}-sel-${h.id}`}
@@ -81,7 +84,7 @@ export function ImageIdentifyForm({
                     "border-error",
                 )}
               >
-                <option value="">Wybierz nazwę…</option>
+                <option value="">{t("selectName")}</option>
                 {labelOptions.map((opt) => (
                   <option key={opt} value={opt}>
                     {opt}
@@ -90,9 +93,9 @@ export function ImageIdentifyForm({
               </select>
               {checked ? (
                 identifySelections[h.id]?.trim() === h.correct_label ? (
-                  <Check className="size-5 shrink-0 text-success" aria-label="Dobrze" />
+                  <Check className="size-5 shrink-0 text-success" aria-label={t("correctIcon")} />
                 ) : (
-                  <X className="size-5 shrink-0 text-error" aria-label="Źle" />
+                  <X className="size-5 shrink-0 text-error" aria-label={t("wrongIcon")} />
                 )
               ) : null}
             </div>
@@ -101,7 +104,7 @@ export function ImageIdentifyForm({
       ) : (
         <div className="mt-6 font-body text-body-sm text-secondary">
           {labelComplete && !checked ? (
-            <p className="text-brand-gold">Wszystkie punkty wskazane. Sprawdź odpowiedzi.</p>
+            <p className="text-brand-gold">{t("allPointsMarked")}</p>
           ) : null}
         </div>
       )}
@@ -120,14 +123,14 @@ export function ImageIdentifyForm({
                   : "bg-brand-gold text-brand-bg hover:brightness-110",
               )}
             >
-              Sprawdź
+              {tCommon("check")}
             </button>
             <button
               type="button"
               onClick={onResetView}
               className="rounded-btn border border-brand-sage/40 px-4 py-2 font-body text-body-sm text-brand-sage transition hover:bg-brand-sage/10"
             >
-              Reset widoku
+              {t("resetView")}
             </button>
           </div>
           <QuestionFooterActions questionId={questionId} questionText={questionText} />

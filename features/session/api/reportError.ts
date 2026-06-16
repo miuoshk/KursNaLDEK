@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
@@ -20,9 +21,10 @@ export type ReportErrorResult = { ok: true } | { ok: false; message: string };
 export async function reportError(
   raw: z.infer<typeof schema>,
 ): Promise<ReportErrorResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { ok: false, message: "Opis musi mieć minimum 10 znaków." };
+    return { ok: false, message: t("errors.descriptionMinLength") };
   }
 
   try {
@@ -33,15 +35,15 @@ export async function reportError(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Musisz być zalogowany." };
+      return { ok: false, message: t("errors.mustLogin") };
     }
 
     const categoryLabels: Record<string, string> = {
-      wrong_answer: "Błędna poprawna odpowiedź",
-      question_text: "Błąd w treści pytania",
-      explanation: "Błąd w wyjaśnieniu",
-      outdated: "Nieaktualne informacje",
-      other: "Inne",
+      wrong_answer: t("reportCategoryWrongAnswer"),
+      question_text: t("reportCategoryQuestionText"),
+      explanation: t("reportCategoryExplanation"),
+      outdated: t("reportCategoryOutdated"),
+      other: t("reportCategoryOther"),
     };
 
     const { error } = await supabase.from("error_reports").insert({
@@ -54,12 +56,12 @@ export async function reportError(
 
     if (error) {
       console.error("[reportError]", error.message);
-      return { ok: false, message: "Nie udało się wysłać zgłoszenia." };
+      return { ok: false, message: t("errors.reportFailed") };
     }
 
     return { ok: true };
   } catch (e) {
     console.error("[reportError]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

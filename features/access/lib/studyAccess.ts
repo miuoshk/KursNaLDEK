@@ -52,8 +52,12 @@ export function isRegistrationClosedForSelection(track: StudyTrack, year: StudyY
   return CLOSED_REGISTRATION_OPTIONS.has(optionKey(track, year));
 }
 
-export function formatTrackLabel(track: StudyTrack): string {
-  return track === "lekarski" ? "Lekarski" : "Stomatologia";
+export type TrackLabelTranslator = (
+  key: "trackStomatologia" | "trackLekarski",
+) => string;
+
+export function formatTrackLabel(track: StudyTrack, t: TrackLabelTranslator): string {
+  return track === "lekarski" ? t("trackLekarski") : t("trackStomatologia");
 }
 
 export function optionKey(track: StudyTrack, year: StudyYear): string {

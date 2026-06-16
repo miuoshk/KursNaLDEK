@@ -2,13 +2,22 @@
 
 import { motion } from "framer-motion";
 import { Lock } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import type { AchievementRow } from "@/features/gamification/types";
 import { achievementLucide } from "@/features/gamification/lib/achievementIcons";
+import type { AppLocale } from "@/i18n/config";
 
-function formatUnlockedAt(iso: string | null): string {
+const DATE_LOCALE: Record<AppLocale, string> = {
+  pl: "pl-PL",
+  uk: "uk-UA",
+  ru: "ru-RU",
+  en: "en-US",
+};
+
+function formatUnlockedAt(iso: string | null, locale: AppLocale): string {
   if (!iso) return "";
   try {
-    return new Date(iso).toLocaleDateString("pl-PL", {
+    return new Date(iso).toLocaleDateString(DATE_LOCALE[locale] ?? "pl-PL", {
       day: "numeric",
       month: "long",
       year: "numeric",
@@ -19,9 +28,13 @@ function formatUnlockedAt(iso: string | null): string {
 }
 
 export function AchievementCard({ row }: { row: AchievementRow }) {
+  const t = useTranslations("gamification");
+  const locale = useLocale() as AppLocale;
   const Icon = achievementLucide(row.icon);
   const inProgress = !row.unlocked && !row.locked;
   const pct = row.targetValue > 0 ? Math.min(100, (row.progress / row.targetValue) * 100) : 0;
+  const name = t(`achievements.items.${row.id}.name`);
+  const description = t(`achievements.items.${row.id}.description`);
 
   if (row.unlocked) {
     return (
@@ -35,12 +48,12 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
           <Icon className="size-8 text-brand-gold" aria-hidden />
         </div>
         <h3 className="mt-3 text-center font-body text-body-sm font-semibold text-white">
-          {row.name}
+          {name}
         </h3>
-        <p className="mt-1 text-center text-body-xs text-secondary">{row.description}</p>
+        <p className="mt-1 text-center text-body-xs text-secondary">{description}</p>
         {row.unlockedAt ? (
           <p className="mt-2 text-center font-body text-body-xs text-muted">
-            {formatUnlockedAt(row.unlockedAt)}
+            {formatUnlockedAt(row.unlockedAt, locale)}
           </p>
         ) : null}
       </motion.div>
@@ -54,9 +67,9 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
           <Lock className="size-8 text-muted" aria-hidden />
         </div>
         <h3 className="mt-3 text-center font-body text-body-sm font-semibold text-white">
-          {row.name}
+          {name}
         </h3>
-        <p className="mt-1 text-center font-body text-body-xs text-muted">???</p>
+        <p className="mt-1 text-center font-body text-body-xs text-muted">{t("achievements.locked")}</p>
       </div>
     );
   }
@@ -67,9 +80,9 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
         <Icon className="size-8 text-secondary" aria-hidden />
       </div>
       <h3 className="mt-3 text-center font-body text-body-sm font-semibold text-white/80">
-        {row.name}
+        {name}
       </h3>
-      <p className="mt-1 text-center text-body-xs text-secondary/90">{row.description}</p>
+      <p className="mt-1 text-center text-body-xs text-secondary/90">{description}</p>
       {inProgress ? (
         <div className="mt-3">
           <p className="mb-1 text-center font-body text-body-xs text-muted">

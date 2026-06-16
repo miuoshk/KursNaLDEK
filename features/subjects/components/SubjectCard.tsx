@@ -1,16 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Clock, Lock } from "lucide-react";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getSubjectIcon } from "@/features/subjects/iconMap";
 import { cn } from "@/lib/utils";
-import { pytaniaForm, dzialForm } from "@/lib/pluralizePolish";
+import { dzialForm } from "@/lib/pluralizePolish";
 
 type SubjectCardProps = {
   subject: SubjectWithProgress;
   locked?: boolean;
 };
 
-function formatLastStudied(iso: string | null): string {
+type RelativeDateTranslator = (
+  key: "today" | "yesterday" | "daysAgo" | "weekAgo" | "weeksAgo",
+  values?: { count?: number },
+) => string;
+
+function formatLastStudied(
+  iso: string | null,
+  t: RelativeDateTranslator,
+  locale: string,
+): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "—";
@@ -18,17 +30,20 @@ function formatLastStudied(iso: string | null): string {
   const diffMs = now.getTime() - d.getTime();
   const diffDays = Math.floor(diffMs / 86_400_000);
 
-  if (diffDays === 0) return "dzisiaj";
-  if (diffDays === 1) return "wczoraj";
-  if (diffDays < 7) return `${diffDays} dni temu`;
+  if (diffDays === 0) return t("today");
+  if (diffDays === 1) return t("yesterday");
+  if (diffDays < 7) return t("daysAgo", { count: diffDays });
   if (diffDays < 30) {
     const weeks = Math.floor(diffDays / 7);
-    return weeks === 1 ? "tydzień temu" : `${weeks} tyg. temu`;
+    return weeks === 1 ? t("weekAgo") : t("weeksAgo", { count: weeks });
   }
-  return d.toLocaleDateString("pl-PL", { day: "numeric", month: "short" });
+  return d.toLocaleDateString(locale, { day: "numeric", month: "short" });
 }
 
 export function SubjectCard({ subject, locked }: SubjectCardProps) {
+  const t = useTranslations("subjects");
+  const tCommon = useTranslations("common");
+  const locale = useLocale();
   const Icon = getSubjectIcon(subject.icon_name);
   const mastery = subject.mastery_percentage;
   /** Brak aktywnych pytań (w tym gdy wszystkie są zdezaktywowane w adminie). */
@@ -55,16 +70,16 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
               <Clock className="size-3.5 text-muted" aria-hidden />
             )}
             <p className="font-body text-body-sm text-muted">
-              {contentInPrep ? "Wkrótce" : "Niedostępne"}
+              {contentInPrep ? t("comingSoon") : t("unavailable")}
             </p>
           </div>
         ) : (
           <div className="text-right">
             <p className="font-body text-lg text-secondary">{mastery}%</p>
-            <p className="font-body text-body-xs text-muted">Mistrzostwo</p>
+            <p className="font-body text-body-xs text-muted">{t("mastery")}</p>
             {subject.due_reviews > 0 ? (
               <p className="mt-1 font-body text-body-xs font-medium text-brand-gold">
-                {subject.due_reviews} powt.
+                {t("reviewsShort", { count: subject.due_reviews })}
               </p>
             ) : null}
           </div>
@@ -78,16 +93,15 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       {noActiveQuestions ? (
         <p className="mt-2 font-body text-body-sm text-muted">
           {contentInPrep
-            ? "Wkrótce dostępne"
-            : "Brak aktywnych pytań"}
+            ? t("comingSoonAvailable")
+            : t("noActiveQuestions")}
         </p>
         ) : (
           <p className="mt-2 font-body text-body-sm text-muted">
-            {subject.question_count} {pytaniaForm(subject.question_count)} · {subject.topic_count} {dzialForm(subject.topic_count)}
+            {tCommon("questionsCount", { count: subject.question_count })} · {subject.topic_count} {dzialForm(subject.topic_count)}
             {subject.due_reviews > 0 ? (
               <span className="text-brand-gold">
-                {" "}
-                · {subject.due_reviews} do powtórki
+                {t("dueForReview", { count: subject.due_reviews })}
               </span>
             ) : null}
           </p>
@@ -110,16 +124,16 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       >
         {noActiveQuestions ? (
           <p className="font-body text-body-xs text-muted">
-            {contentInPrep ? "Treści w przygotowaniu" : "Pytania wyłączone w panelu"}
+            {contentInPrep ? t("contentInPrep") : t("questionsDisabledAdmin")}
           </p>
         ) : (
           <p className="font-body text-body-xs text-muted">
-            Ostatnio: {formatLastStudied(subject.last_studied_at)}
+            {t("lastStudied", { when: formatLastStudied(subject.last_studied_at, t, locale) })}
           </p>
         )}
         {!isDisabled && (
           <span className="inline-flex items-center rounded-lg border border-brand-sage/40 px-3 py-1 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 ease-out group-hover:bg-brand-sage/10">
-            Otwórz
+            {t("open")}
           </span>
         )}
       </div>
@@ -129,7 +143,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
           <div className="flex flex-col items-center gap-2">
             <Lock className="size-5 text-secondary" aria-hidden />
             <span className="font-body text-body-xs text-muted">
-              Dostęp wymaga płatności
+              {t("paymentRequired")}
             </span>
           </div>
         </div>

@@ -1,22 +1,17 @@
 "use client";
 
+import { useMemo } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import type { ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
-import { pytaniaForm } from "@/lib/pluralizePolish";
+import { getBcp47Locale } from "@/lib/i18n/bcp47Locale";
+import type { AppLocale } from "@/i18n/config";
 
 const WEEKS = 13;
-const DAY_LABELS: [number, string][] = [[0, "Pn"], [2, "Śr"], [4, "Pt"]];
-
-const MONTH_FMT = new Intl.DateTimeFormat("pl-PL", { month: "short" });
-const TOOLTIP_FMT = new Intl.DateTimeFormat("pl-PL", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-});
 
 function cellColor(count: number): string {
   if (count === 0) return "bg-background border-white/[0.04]";
@@ -74,13 +69,16 @@ function buildGrid(activityDays: ActivityDay[]) {
   return weeks;
 }
 
-function getMonthLabels(weeks: CellData[][]) {
+function getMonthLabels(weeks: CellData[][], locale: AppLocale) {
+  const monthFmt = new Intl.DateTimeFormat(getBcp47Locale(locale), {
+    month: "short",
+  });
   const labels: { col: number; label: string }[] = [];
   let lastMonth = -1;
   for (let w = 0; w < weeks.length; w++) {
     const m = weeks[w][0].date.getMonth();
     if (m !== lastMonth) {
-      labels.push({ col: w, label: MONTH_FMT.format(weeks[w][0].date) });
+      labels.push({ col: w, label: monthFmt.format(weeks[w][0].date) });
       lastMonth = m;
     }
   }
@@ -90,15 +88,37 @@ function getMonthLabels(weeks: CellData[][]) {
 type Props = { activityDays: ActivityDay[] };
 
 export function ActivityHeatmap({ activityDays }: Props) {
+  const t = useTranslations("pulpit");
+  const locale = useLocale() as AppLocale;
+
+  const dayLabels = useMemo(
+    (): [number, string][] => [
+      [0, t("heatmapDayMon")],
+      [2, t("heatmapDayWed")],
+      [4, t("heatmapDayFri")],
+    ],
+    [t],
+  );
+
+  const tooltipFmt = useMemo(
+    () =>
+      new Intl.DateTimeFormat(getBcp47Locale(locale), {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+    [locale],
+  );
+
   if (activityDays.length === 0) {
     return (
       <section>
         <h2 className="font-heading text-xl font-bold text-primary">
-          Twoja aktywność
+          {t("yourActivity")}
         </h2>
         <div className="mt-4 rounded-2xl border border-border bg-card py-12 text-center">
           <p className="font-body text-sm text-secondary">
-            Zacznij rozwiązywać pytania, a tu pojawi się Twoja mapa aktywności.
+            {t("activityEmpty")}
           </p>
         </div>
       </section>
@@ -106,21 +126,20 @@ export function ActivityHeatmap({ activityDays }: Props) {
   }
 
   const weeks = buildGrid(activityDays);
-  const months = getMonthLabels(weeks);
+  const months = getMonthLabels(weeks, locale);
   const totalQuestions = activityDays.reduce((s, d) => s + d.count, 0);
 
   return (
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">
-        Twoja aktywność
+        {t("yourActivity")}
       </h2>
 
       <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-card p-5">
         <div className="inline-flex gap-0">
-          {/* Day labels column */}
           <div className="flex w-7 shrink-0 flex-col pr-1.5" style={{ paddingTop: 20 }}>
             {Array.from({ length: 7 }, (_, i) => {
-              const entry = DAY_LABELS.find(([row]) => row === i);
+              const entry = dayLabels.find(([row]) => row === i);
               return (
                 <div
                   key={i}
@@ -137,9 +156,7 @@ export function ActivityHeatmap({ activityDays }: Props) {
             })}
           </div>
 
-          {/* Grid area */}
           <div>
-            {/* Month labels */}
             <div className="flex" style={{ height: 16, marginBottom: 4 }}>
               {weeks.map((_, wi) => {
                 const m = months.find((l) => l.col === wi);
@@ -158,7 +175,6 @@ export function ActivityHeatmap({ activityDays }: Props) {
               })}
             </div>
 
-            {/* Cells grid: columns = weeks, rows = days */}
             <div className="flex gap-[3px]">
               {weeks.map((week, wi) => (
                 <div key={wi} className="flex flex-col gap-[3px]">
@@ -171,7 +187,14 @@ export function ActivityHeatmap({ activityDays }: Props) {
                         />
                       );
                     }
-                    return <HeatmapCell key={cell.ymd} cell={cell} />;
+                    return (
+                      <HeatmapCell
+                        key={cell.ymd}
+                        cell={cell}
+                        tooltipFmt={tooltipFmt}
+                        t={t}
+                      />
+                    );
                   })}
                 </div>
               ))}
@@ -179,20 +202,19 @@ export function ActivityHeatmap({ activityDays }: Props) {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
           <p className="font-body text-sm text-secondary">
-            {totalQuestions} {pytaniaForm(totalQuestions)} w ostatnich 13 tygodniach
+            {t("heatmapQuestionsInWeeks", { count: totalQuestions })}
           </p>
           <div className="flex items-center gap-1.5">
-            <span className="font-body text-[10px] text-secondary">Mniej</span>
+            <span className="font-body text-[10px] text-secondary">{t("heatmapLess")}</span>
             {LEGEND_COLORS.map((cls, i) => (
               <span
                 key={i}
                 className={`inline-block size-[10px] rounded-sm border ${cls}`}
               />
             ))}
-            <span className="font-body text-[10px] text-secondary">Więcej</span>
+            <span className="font-body text-[10px] text-secondary">{t("heatmapMore")}</span>
           </div>
         </div>
       </div>
@@ -200,11 +222,20 @@ export function ActivityHeatmap({ activityDays }: Props) {
   );
 }
 
-function HeatmapCell({ cell }: { cell: CellData }) {
+function HeatmapCell({
+  cell,
+  tooltipFmt,
+  t,
+}: {
+  cell: CellData;
+  tooltipFmt: Intl.DateTimeFormat;
+  t: ReturnType<typeof useTranslations<"pulpit">>;
+}) {
+  const dateLabel = tooltipFmt.format(cell.date);
   const label =
     cell.count > 0
-      ? `${TOOLTIP_FMT.format(cell.date)} — ${cell.count} ${pytaniaForm(cell.count)}`
-      : `${TOOLTIP_FMT.format(cell.date)} — brak aktywności`;
+      ? t("heatmapActivity", { date: dateLabel, count: cell.count })
+      : t("heatmapNoActivity", { date: dateLabel });
 
   return (
     <Tooltip>

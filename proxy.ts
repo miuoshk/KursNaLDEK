@@ -1,9 +1,25 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import {
+  applyLocaleToResponse,
+  isAdminPath,
+  resolveAdminLocale,
+  resolveProxyLocale,
+} from "@/lib/i18n/proxyLocale";
 
-/** Auth + redirects. Next.js 16 uses `proxy.ts` (see upgrading/version-16). */
+/** Auth + locale + redirects. Next.js 16 uses `proxy.ts` (see upgrading/version-16). */
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (isAdminPath(pathname)) {
+    let response = NextResponse.next({ request });
+    response = applyLocaleToResponse(request, response, resolveAdminLocale());
+    return response;
+  }
+
   let response = NextResponse.next({ request });
+  const locale = resolveProxyLocale(request);
+  response = applyLocaleToResponse(request, response, locale);
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -28,7 +44,6 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { pathname } = request.nextUrl;
   const isAuthRoute = pathname === "/login" || pathname === "/register";
   // `/forgot-password` musi być dostępny bez sesji (użytkownik zapomniał hasła),
   // `/auth/callback` wymienia kod PKCE z e-maila zanim sesja jeszcze istnieje.

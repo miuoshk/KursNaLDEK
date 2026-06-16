@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { loadSessionAntaresInsights } from "@/features/session/api/loadSessionAntaresInsights";
 import { SummaryActions } from "@/features/session/components/SummaryActions";
@@ -23,6 +24,7 @@ export function SessionSummaryClient({
 }: {
   summary: SessionSummaryData;
 }) {
+  const t = useTranslations("session");
   const { setSecondSegment, setThirdSegment } = useDashboardBreadcrumb();
   const [summary, setSummary] = useState(initialSummary);
   const needsInsights =
@@ -68,12 +70,12 @@ export function SessionSummaryClient({
 
   useEffect(() => {
     setSecondSegment(summary.subjectName);
-    setThirdSegment("Podsumowanie sesji");
+    setThirdSegment(t("summaryTitle"));
     return () => {
       setSecondSegment(null);
       setThirdSegment(null);
     };
-  }, [summary.subjectName, setSecondSegment, setThirdSegment]);
+  }, [summary.subjectName, setSecondSegment, setThirdSegment, t]);
 
   useEffect(() => {
     try {

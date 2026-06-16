@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { LoginForm } from "@/features/auth/components/LoginForm";
 import { RegistrationCountdown } from "@/features/auth/components/RegistrationCountdown";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
-import { ACCOUNT_BLOCKED_MESSAGE } from "@/lib/auth/accountBan";
 
 type LoginPageProps = {
   searchParams: Promise<{
@@ -23,6 +23,7 @@ function authErrorMessage(code: string | undefined): string | null {
 }
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const tErrors = await getTranslations("errors");
   const registrationOpen = isRegistrationOpen();
   const sp = await searchParams;
   const resetSuccess = sp.reset === "success";
@@ -38,7 +39,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           role="alert"
           className="mt-4 rounded-btn border border-[#F87171]/40 bg-[#F87171]/10 px-4 py-3 font-body text-body-sm text-[#F87171]"
         >
-          {ACCOUNT_BLOCKED_MESSAGE}
+          {tErrors("accountBlocked")}
         </div>
       ) : null}
 

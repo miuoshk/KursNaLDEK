@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { OsceExamTasksBox } from "@/features/osce/components/OsceExamTasksBox";
 import { OsceSimulationQuestionBlock } from "@/features/osce/components/OsceSimulationQuestionBlock";
@@ -41,6 +42,7 @@ function formatMmSs(sec: number): string {
 }
 
 export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
+  const t = useTranslations("osce");
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("briefing");
   const [stationIndex, setStationIndex] = useState(0);
@@ -224,7 +226,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
   if (stations.length === 0) {
     return (
       <p className="font-body text-body-md text-secondary">
-        Brak stacji dla tego dnia. Sprawdź dane w panelu lub skontaktuj się z administratorem.
+        {t("noStationsForDay")}
       </p>
     );
   }
@@ -233,10 +235,9 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
     <div>
       {phase === "briefing" ? (
         <div className="rounded-card border border-border bg-card p-6">
-          <h2 className="font-heading text-heading-sm text-primary">Przed startem</h2>
+          <h2 className="font-heading text-heading-sm text-primary">{t("simulationBeforeStart")}</h2>
           <p className="mt-4 font-body text-body-md leading-relaxed text-secondary">
-            Za chwilę rozpoczniesz symulację OSCE. Każda stacja ma 2 zadania. Próg zaliczenia: 60% z obu
-            tasków łącznie. Czas jest ograniczony. Powodzenia!
+            {t("simulationBriefing")}
           </p>
           <button
             type="button"
@@ -248,7 +249,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
             }}
             className="mt-8 rounded-btn bg-brand-gold px-8 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
           >
-            Rozpocznij symulację
+            {t("startSimulation")}
           </button>
         </div>
       ) : null}
@@ -257,7 +258,11 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
         <div>
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <p className="font-heading text-heading-sm text-primary">
-              Stacja {stationIndex + 1} z {stations.length}: {current.short_name}
+              {t("stationProgress", {
+                current: stationIndex + 1,
+                total: stations.length,
+                name: current.short_name,
+              })}
             </p>
             <div
               className={cn(
@@ -280,16 +285,19 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
           <OsceExamTasksBox examTasks={current.exam_tasks} />
 
           {loadingQuestions ? (
-            <p className="mt-8 font-body text-body-sm text-secondary">Ładowanie pytań…</p>
+            <p className="mt-8 font-body text-body-sm text-secondary">{t("loadingQuestions")}</p>
           ) : questionQueue.length === 0 ? (
             <p className="mt-8 font-body text-body-md text-error">
-              Brak aktywnych pytań dla tej stacji. Stacja zostanie uznana za niezaliczoną.
+              {t("noActiveStationQuestions")}
             </p>
           ) : currentQuestion ? (
             <div className="mt-8" key={currentQuestion.id}>
               <div className="mb-4 flex items-center justify-between gap-2">
                 <span className="font-body text-body-sm text-secondary">
-                  Pytanie {qIndex + 1} z {questionQueue.length}
+                  {t("questionOfTotal", {
+                    current: qIndex + 1,
+                    total: questionQueue.length,
+                  })}
                 </span>
               </div>
               <OsceSimulationQuestionBlock
@@ -317,10 +325,10 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
               feedback.passed ? "text-success" : "text-error",
             )}
           >
-            {feedback.passed ? "Stacja zaliczona" : "Stacja niezaliczona"}
+            {feedback.passed ? t("stationPassed") : t("stationFailed")}
           </p>
           <p className="mt-2 font-body text-body-lg text-secondary tabular-nums">{feedback.percent}%</p>
-          <p className="mt-6 font-body text-body-sm text-muted">Za chwilę następna stacja…</p>
+          <p className="mt-6 font-body text-body-sm text-muted">{t("nextStationSoon")}</p>
         </motion.div>
       ) : null}
 
@@ -330,9 +338,9 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
             <table className="w-full min-w-[320px] border-collapse text-left font-body text-body-sm">
               <thead>
                 <tr className="border-b border-white/[0.08] text-secondary">
-                  <th className="px-4 py-3 font-medium">Stacja</th>
-                  <th className="px-4 py-3 font-medium">Wynik</th>
-                  <th className="px-4 py-3 font-medium">Status</th>
+                  <th className="px-4 py-3 font-medium">{t("tableStation")}</th>
+                  <th className="px-4 py-3 font-medium">{t("tableScore")}</th>
+                  <th className="px-4 py-3 font-medium">{t("tableStatus")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -343,7 +351,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
                       {o.correctCount}/{o.totalQuestions} ({o.percent}%)
                     </td>
                     <td className={cn("px-4 py-3", o.passed ? "text-success" : "text-error")}>
-                      {o.passed ? "Zaliczona" : "Niezaliczona"}
+                      {o.passed ? t("stationStatusPassed") : t("stationStatusFailed")}
                     </td>
                   </tr>
                 ))}
@@ -353,7 +361,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
 
           <div className="text-center">
             <p className="font-body text-body-md text-secondary">
-              Średni wynik ze stacji:{" "}
+              {t("averageStationScore")}{" "}
               <span className="font-body text-primary tabular-nums">{overallPercent}%</span>
             </p>
             <AnimatePresence mode="wait">
@@ -368,7 +376,7 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
                   passedOverall ? "text-success" : "text-error",
                 )}
               >
-                {passedOverall ? "Zdany" : "Niezdany"}
+                {passedOverall ? t("passed") : t("failed")}
               </motion.p>
             </AnimatePresence>
           </div>
@@ -379,14 +387,14 @@ export function OSCESimulation({ examDay, stations }: OSCESimulationProps) {
                 href={retryHref}
                 className="inline-flex items-center justify-center rounded-btn border border-brand-sage/50 bg-transparent px-6 py-3 font-body font-semibold text-brand-sage transition hover:bg-brand-sage/10"
               >
-                Powtórz niezaliczone stacje
+                {t("retryFailedStations")}
               </Link>
             ) : null}
             <Link
               href="/osce/symulacja"
               className="inline-flex items-center justify-center rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
             >
-              Wróć do symulacji
+              {t("backToSimulation")}
             </Link>
           </div>
         </div>

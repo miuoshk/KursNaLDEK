@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import { persistRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
+  const t = useTranslations("session");
   const router = useRouter();
   const wrongIds = summary.answers
     .filter((a) => !a.isCorrect)
@@ -38,7 +40,7 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
         href={nextSessionHref}
         className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
       >
-        Rozpocznij kolejną sesję
+        {t("summaryStartNext")}
       </Link>
 
       <div className="relative">
@@ -46,10 +48,11 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
           type="button"
           onClick={handleRetryWrong}
           disabled={wrongIds.length === 0}
-          title={wrongIds.length === 0 ? "Brak błędnych odpowiedzi" : undefined}
+          title={wrongIds.length === 0 ? t("summaryNoWrongAnswers") : undefined}
           className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-sage disabled:hover:text-brand-sage"
         >
-          Powtórz błędne pytania{wrongIds.length > 0 ? ` (${wrongIds.length})` : ""}
+          {t("summaryRetryWrong")}
+          {wrongIds.length > 0 ? ` (${wrongIds.length})` : ""}
         </button>
       </div>
 
@@ -57,7 +60,7 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}
         className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
       >
-        Wróć do przedmiotu
+        {t("backToSubject")}
       </Link>
     </div>
   );

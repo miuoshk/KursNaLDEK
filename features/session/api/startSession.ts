@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import type { SessionMode, SessionQuestion, SessionQuestionMeta } from "@/features/session/types";
@@ -63,9 +64,10 @@ export type StartSessionResult =
 export async function startSession(
   input: z.infer<typeof schema>,
 ): Promise<StartSessionResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe parametry sesji." };
+    return { ok: false, message: t("errors.invalidParams") };
   }
 
   const rawSubject = parsed.data.subjectId?.trim() ?? "";
@@ -88,7 +90,7 @@ export async function startSession(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Musisz być zalogowany, aby rozpocząć sesję." };
+      return { ok: false, message: t("errors.mustLoginToStart") };
     }
 
     const profile = await getProfileByUserId(user.id);
@@ -108,7 +110,7 @@ export async function startSession(
       }
       const rows = await loadQuestionsByIdsOrdered(supabase, explicitIds, viewerTrack);
       if (rows.length === 0) {
-        return { ok: false, message: "Nie udało się wczytać treści pytań." };
+        return { ok: false, message: t("errors.loadQuestionsFailed") };
       }
       const questions =
         mode === "inteligentna"
@@ -159,7 +161,7 @@ export async function startSession(
 
       if (insErr) {
         console.error("[startSession] insert retry session", insErr.message);
-        return { ok: false, message: "Nie udało się utworzyć sesji." };
+        return { ok: false, message: t("errors.createSessionFailed") };
       }
 
       return {
@@ -167,7 +169,7 @@ export async function startSession(
         sessionId: inserted.id,
         subject: {
           id: resolvedSubjectId,
-          name: subjMeta?.name ?? "Powtórka",
+          name: subjMeta?.name ?? t("subjectRetry"),
           short_name: subjMeta?.short_name ?? "",
         },
         questions,
@@ -177,7 +179,7 @@ export async function startSession(
     if (isMix && topicId) {
       return {
         ok: false,
-        message: "Sesja mieszana nie obsługuje filtra po pojedynczym temacie.",
+        message: t("errors.mixedNoTopicFilter"),
       };
     }
 
@@ -191,13 +193,13 @@ export async function startSession(
         .maybeSingle();
 
       if (subErr || !subject) {
-        return { ok: false, message: "Nie znaleziono przedmiotu." };
+        return { ok: false, message: t("errors.subjectNotFound") };
       }
       subjectRow = subject;
       subjectTrack = normalizeTrack(subject.track as string);
       viewerTrack = subjectTrack;
       if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
-        return { ok: false, message: "Nie znaleziono przedmiotu." };
+        return { ok: false, message: t("errors.subjectNotFound") };
       }
     }
 
@@ -216,10 +218,10 @@ export async function startSession(
         .eq("id", topicId)
         .maybeSingle();
       if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
-        return { ok: false, message: "Nieprawidłowy temat dla tego przedmiotu." };
+        return { ok: false, message: t("errors.invalidTopic") };
       }
       if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
-        return { ok: false, message: "Ten temat nie jest dostępny na Twoim kierunku." };
+        return { ok: false, message: t("errors.topicNotOnTrack") };
       }
       pool = await fetchTopicQuestionIds(supabase, topicId, viewerTrack);
       topicFilter = new Set(pool);
@@ -231,7 +233,7 @@ export async function startSession(
         ),
       );
       if (pool.length === 0) {
-        return { ok: false, message: "Brak aktywnych pytań w wybranym temacie." };
+        return { ok: false, message: t("errors.noQuestionsInTopic") };
       }
     } else if (isMix) {
       // Sesja mieszana / domyślna powtórka: zawężamy pulę do bieżącego
@@ -274,8 +276,8 @@ export async function startSession(
         return {
           ok: false,
           message: isMix
-            ? "Brak pytań do powtórki. Jesteś na bieżąco!"
-            : "Brak pytań do powtórki w tym przedmiocie.",
+            ? t("errors.noDueQuestionsMix")
+            : t("errors.noDueQuestionsSubject"),
         };
       }
       chosenIds = dueIds.slice(0, count);
@@ -342,7 +344,7 @@ export async function startSession(
     if (chosenIds.length === 0) {
       return {
         ok: false,
-        message: "Brak pytań dla tego przedmiotu. Uruchom skrypt seed w Supabase.",
+        message: t("errors.noQuestionsSeed"),
       };
     }
 
@@ -352,7 +354,7 @@ export async function startSession(
 
     const rows = await loadQuestionsByIdsOrdered(supabase, chosenIds, viewerTrack);
     if (rows.length === 0) {
-      return { ok: false, message: "Nie udało się wczytać treści pytań." };
+      return { ok: false, message: t("errors.loadQuestionsFailed") };
     }
 
     let questions =
@@ -400,7 +402,7 @@ export async function startSession(
         sessionId: `katalog-${Date.now()}`,
         subject: {
           id: subjectId,
-          name: subjectRow?.name ?? "Przeglądanie",
+          name: subjectRow?.name ?? t("subjectBrowse"),
           short_name: subjectRow?.short_name ?? "",
         },
         questions,
@@ -442,7 +444,7 @@ export async function startSession(
       console.error("[startSession] insert session", insErr.message, insErr);
       return {
         ok: false,
-        message: "Nie udało się utworzyć sesji. Upewnij się, że w bazie jest kolumna question_ids.",
+        message: t("errors.createSessionColumn"),
       };
     }
 
@@ -459,8 +461,8 @@ export async function startSession(
       sessionId: inserted.id,
       subject: {
         id: insertSubjectId,
-        name: isMix ? "Sesja mieszana" : (insertSubject?.name ?? subjectRow?.name ?? ""),
-        short_name: isMix ? "Mix" : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
+        name: isMix ? t("subjectMixed") : (insertSubject?.name ?? subjectRow?.name ?? ""),
+        short_name: isMix ? t("subjectMixedShort") : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
       },
       questions,
       reserveQuestions:
@@ -468,6 +470,6 @@ export async function startSession(
     };
   } catch (e) {
     console.error("[startSession]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

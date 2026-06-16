@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Bookmark, ArrowRight, Loader2 } from "lucide-react";
 import type { SavedQuestionItem } from "@/features/saved/server/loadSavedQuestions";
 import { toggleBookmark } from "@/features/session/api/toggleBookmark";
@@ -9,10 +10,10 @@ import { resolveCatalogSubjectId } from "@/features/session/lib/resolveCatalogSu
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { cn } from "@/lib/utils";
 
-function formatWhen(iso: string): string {
+function formatWhen(iso: string, locale: string): string {
   try {
     const d = new Date(iso);
-    return new Intl.DateTimeFormat("pl-PL", {
+    return new Intl.DateTimeFormat(locale, {
       day: "2-digit",
       month: "short",
       year: "numeric",
@@ -38,6 +39,8 @@ function buildCatalogHref(
 }
 
 export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
+  const t = useTranslations("saved");
+  const locale = useLocale();
   const { currentTrack } = useDashboardUser();
   const [rows, setRows] = useState(items);
   const [pending, startTransition] = useTransition();
@@ -61,17 +64,16 @@ export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
           <Bookmark className="size-6 text-brand-gold" aria-hidden />
         </div>
         <h2 className="mt-4 font-heading text-xl font-bold text-primary">
-          Brak zapisanych pytań
+          {t("emptyTitle")}
         </h2>
         <p className="mt-2 font-body text-body-sm text-secondary">
-          Podczas sesji lub w katalogu pytań kliknij ikonę zakładki, aby zapisać
-          pytanie tutaj.
+          {t("emptyDescription")}
         </p>
         <Link
           href="/przedmioty"
           className="mt-5 inline-flex items-center justify-center gap-2 rounded-btn bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition-colors hover:brightness-110"
         >
-          Przejdź do przedmiotów
+          {t("goToSubjects")}
           <ArrowRight className="size-4" aria-hidden />
         </Link>
       </div>
@@ -99,12 +101,16 @@ export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
                   </span>
                 ) : null}
                 {item.topicName ? <span>{item.topicName}</span> : null}
-                {item.subjectYear != null ? <span>· Rok {item.subjectYear}</span> : null}
-                <span className="ml-auto">Zapisano {formatWhen(item.savedAt)}</span>
+                {item.subjectYear != null ? (
+                  <span>{t("yearPrefix", { year: item.subjectYear })}</span>
+                ) : null}
+                <span className="ml-auto">
+                  {t("savedOn", { date: formatWhen(item.savedAt, locale) })}
+                </span>
               </div>
 
               <p className="line-clamp-3 font-body text-body-sm text-primary md:text-body-md">
-                {item.questionText || "(brak treści pytania)"}
+                {item.questionText || t("noQuestionText")}
               </p>
 
               <div className="flex flex-wrap items-center justify-end gap-2">
@@ -119,14 +125,14 @@ export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
                   ) : (
                     <Bookmark className="size-3.5" aria-hidden />
                   )}
-                  Odepnij
+                  {t("unpin")}
                 </button>
                 {catalogHref ? (
                   <Link
                     href={catalogHref}
                     className="inline-flex items-center gap-1.5 rounded-btn bg-brand-sage px-3 py-1.5 font-body text-body-xs font-medium text-white transition-colors hover:brightness-110"
                   >
-                    Otwórz w katalogu
+                    {t("openInCatalog")}
                     <ArrowRight className="size-3.5" aria-hidden />
                   </Link>
                 ) : null}

@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
@@ -14,15 +15,17 @@ export type UpdateNotifResult = { ok: true } | { ok: false; message: string };
 export async function updateNotifications(
   input: z.infer<typeof schema>,
 ): Promise<UpdateNotifResult> {
+  const tSettings = await getTranslations("settings");
+  const tErrors = await getTranslations("errors");
   const parsed = schema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane." };
+    return { ok: false, message: tErrors("invalidData") };
   }
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return { ok: false, message: "Brak sesji." };
+  if (!user) return { ok: false, message: tErrors("noSession") };
 
   const { error } = await supabase
     .from("profiles")
@@ -34,7 +37,7 @@ export async function updateNotifications(
     .eq("id", user.id);
 
   if (error) {
-    return { ok: false, message: "Nie udało się zapisać powiadomień." };
+    return { ok: false, message: tSettings("errors.notificationsSaveFailed") };
   }
   revalidatePath("/", "layout");
   return { ok: true };

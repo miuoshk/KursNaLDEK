@@ -1,4 +1,4 @@
--- Fizjologia: wspólne repozytorium treści dla stomatologii i lekarskiego (rok 2)
+-- Fizjologia: wspólne repozytorium treści (rok 2) — powłoka UI: lek-fizjologia.
 -- (model jak histologia / biofizyka — track-specific ID to powłoka UI).
 
 INSERT INTO public.subjects (id, name, short_name, icon_name, year, track, product, display_order)

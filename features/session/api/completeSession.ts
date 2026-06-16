@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 import { z } from "zod";
@@ -23,9 +24,10 @@ export type CompleteSessionResult =
 export async function completeSession(
   raw: z.infer<typeof schema>,
 ): Promise<CompleteSessionResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane." };
+    return { ok: false, message: t("errors.invalidData") };
   }
 
   try {
@@ -36,7 +38,7 @@ export async function completeSession(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Brak sesji logowania." };
+      return { ok: false, message: t("errors.noAuthSession") };
     }
 
     const { data: session, error: se } = await supabase
@@ -49,7 +51,7 @@ export async function completeSession(
       .maybeSingle();
 
     if (se || !session) {
-      return { ok: false, message: "Sesja nie została znaleziona." };
+      return { ok: false, message: t("errors.sessionNotFound") };
     }
 
     if (session.is_completed) {
@@ -59,7 +61,7 @@ export async function completeSession(
         user.id,
       );
       if (!summary) {
-        return { ok: false, message: "Nie udało się wczytać podsumowania." };
+        return { ok: false, message: t("errors.loadSummaryFailed") };
       }
       return { ok: true, summary };
     }
@@ -85,7 +87,7 @@ export async function completeSession(
       ]);
 
     if (!profile) {
-      return { ok: false, message: "Brak profilu użytkownika." };
+      return { ok: false, message: t("errors.noProfile") };
     }
 
     const isFirstSessionEver = (completedBefore ?? 0) === 0;
@@ -145,11 +147,11 @@ export async function completeSession(
 
     if (upSessRes.error) {
       console.error("[completeSession] study_sessions", upSessRes.error.message);
-      return { ok: false, message: "Nie udało się zamknąć sesji." };
+      return { ok: false, message: t("errors.closeSessionFailed") };
     }
     if (upProfRes.error) {
       console.error("[completeSession] profiles", upProfRes.error.message);
-      return { ok: false, message: "Nie udało się zaktualizować profilu." };
+      return { ok: false, message: t("errors.updateProfileFailed") };
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -210,11 +212,11 @@ export async function completeSession(
     ]);
 
     if (!summary) {
-      return { ok: false, message: "Nie udało się zbudować podsumowania." };
+      return { ok: false, message: t("errors.buildSummaryFailed") };
     }
 
     summary.xpEarned = xpEarned;
-    summary.achievementUnlocked = isFirstSessionEver ? "Pierwsza sesja" : null;
+    summary.achievementUnlocked = isFirstSessionEver ? t("achievementFirstSession") : null;
     summary.previousStreakDays = profile.current_streak ?? 0;
 
     if (profAfter.data) {
@@ -312,6 +314,6 @@ export async function completeSession(
     return { ok: true, summary };
   } catch (e) {
     console.error("[completeSession]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

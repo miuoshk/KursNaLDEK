@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
@@ -87,6 +88,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
     const origin = await getOriginFromHeaders();
     const stripe = getStripeServerClient();
+    const tCheckout = await getTranslations("checkout");
 
     const profileResult = await supabase
       .from("profiles")
@@ -113,7 +115,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
       },
       custom_text: {
         terms_of_service_acceptance: {
-          message: buildStripeTermsAcceptanceMessage(origin),
+          message: buildStripeTermsAcceptanceMessage(origin, tCheckout),
         },
       },
       metadata: {

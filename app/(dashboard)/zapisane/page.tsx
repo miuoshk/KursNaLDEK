@@ -1,13 +1,18 @@
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { SavedQuestionsList } from "@/features/saved/components/SavedQuestionsList";
 import { loadSavedQuestions } from "@/features/saved/server/loadSavedQuestions";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata = {
-  title: "Zapisane pytania · KurzNaLDEK",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("saved");
+  return {
+    title: `${t("title")} · KurzNaLDEK`,
+  };
+}
 
 export default async function ZapisanePage() {
+  const t = await getTranslations("saved");
   const supabase = await createClient();
   const {
     data: { user },
@@ -20,11 +25,10 @@ export default async function ZapisanePage() {
     <div className="space-y-8">
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-          Zapisane pytania
+          {t("title")}
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">
-          Twoja prywatna kolekcja pytań do powtórki. Otwórz w katalogu, aby
-          zobaczyć wyjaśnienie, lub odepnij gdy już opanujesz materiał.
+          {t("description")}
         </p>
       </header>
 

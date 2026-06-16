@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   type DraggableAttributes,
   type DraggableSyntheticListeners,
@@ -43,6 +44,7 @@ export function OrderingCard({
   mobile,
   checked,
 }: OrderingCardProps) {
+  const t = useTranslations("osce");
   const surface =
     status === "correct"
       ? "border-success bg-success/10"
@@ -82,7 +84,7 @@ export function OrderingCard({
         <p className="text-left font-body text-body-md leading-snug text-primary">{text}</p>
         {checked && status === "wrong" && correctPlace1Based != null ? (
           <p className="mt-2 font-body text-body-xs text-error">
-            Właściwe miejsce: pozycja {correctPlace1Based}
+            {t("correctPosition", { position: correctPlace1Based })}
           </p>
         ) : null}
       </div>
@@ -91,7 +93,7 @@ export function OrderingCard({
         <button
           type="button"
           className="hidden shrink-0 cursor-grab touch-none items-center justify-center rounded-btn border border-transparent p-2 text-brand-gold/80 transition-colors hover:border-brand-gold/40 hover:text-brand-gold active:cursor-grabbing sm:flex"
-          aria-label="Przeciągnij, aby zmienić kolejność"
+          aria-label={t("dragToReorder")}
           {...dragHandleProps}
           {...dragListeners}
         >
@@ -111,7 +113,7 @@ export function OrderingCard({
                 ? "hover:border-brand-gold hover:bg-brand-gold/10"
                 : "cursor-not-allowed opacity-35",
             )}
-            aria-label="Przesuń wyżej"
+            aria-label={t("moveUp")}
           >
             <ChevronUp className="size-5" aria-hidden />
           </button>
@@ -125,7 +127,7 @@ export function OrderingCard({
                 ? "hover:border-brand-gold hover:bg-brand-gold/10"
                 : "cursor-not-allowed opacity-35",
             )}
-            aria-label="Przesuń niżej"
+            aria-label={t("moveDown")}
           >
             <ChevronDown className="size-5" aria-hidden />
           </button>

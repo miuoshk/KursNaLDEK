@@ -4,6 +4,7 @@
 **Cel:** wgrać nowy wsad **tylko pod stomatologię** (`stoma-histologia` w UI), **bez** psucia lekarskiego (`lek-histologia`) i bez mieszania z innymi przedmiotami.
 
 **Powiązane pliki w repo:**
+- **`exports/histologia-stoma-jak-batchowac.md`** — **START TUTAJ:** krok po kroku batchowanie TXT → SQL (STOMA-only)
 - `ClaudePrompt-TXT-na-SQL.md` — pełna instrukcja konwersji TXT → SQL
 - `FormatPisaniaPytan-PoHistologii-Stoma.md` — model kanon + `tracks`
 - `FormatPisaniaPytan.md` — ogólny format pytań

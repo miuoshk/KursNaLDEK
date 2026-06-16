@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { Confidence } from "@/features/session/types";
 
@@ -25,6 +26,8 @@ export function SessionConfidenceBar({
   onContinueReview,
   disabled,
 }: SessionConfidenceBarProps) {
+  const t = useTranslations("session");
+
   return (
     <div
       className={cn(
@@ -42,11 +45,11 @@ export function SessionConfidenceBar({
                   className="inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-secondary transition-colors hover:text-primary"
                 >
                   <ChevronLeft className="size-4 shrink-0" aria-hidden />
-                  Poprzednie
+                  {t("previous")}
                 </button>
               )}
               <p className="font-body text-body-xs text-secondary">
-                Pytanie {current + 1} / {total}
+                {t("questionProgress", { current: current + 1, total })}
               </p>
             </div>
             <button
@@ -54,13 +57,13 @@ export function SessionConfidenceBar({
               onClick={onContinueReview}
               className="rounded-btn bg-brand-gold px-4 py-2.5 font-body text-body-sm font-semibold text-brand-bg transition hover:brightness-110"
             >
-              Dalej
+              {t("continue")}
             </button>
           </div>
         ) : (
           <>
             <div className="flex flex-col items-center gap-2">
-              <p className="font-body text-body-xs text-secondary">Jak dobrze znałeś odpowiedź?</p>
+              <p className="font-body text-body-xs text-secondary">{t("howWellKnown")}</p>
               <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
                 <button
                   type="button"
@@ -68,7 +71,7 @@ export function SessionConfidenceBar({
                   onClick={() => onConfidence("nie_wiedzialem")}
                   className="flex-1 rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                 >
-                  Nie wiedziałem
+                  {t("didNotKnow")}
                 </button>
                 <button
                   type="button"
@@ -76,7 +79,7 @@ export function SessionConfidenceBar({
                   onClick={() => onConfidence("troche")}
                   className="flex-1 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                 >
-                  {disabled ? "Zapisywanie..." : "Trochę wiedziałem"}
+                  {disabled ? t("saving") : t("knewSomewhat")}
                 </button>
                 <button
                   type="button"
@@ -84,7 +87,7 @@ export function SessionConfidenceBar({
                   onClick={() => onConfidence("na_pewno")}
                   className="flex-1 rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
                 >
-                  Wiedziałem na pewno
+                  {t("knewForSure")}
                 </button>
               </div>
               <button
@@ -93,7 +96,7 @@ export function SessionConfidenceBar({
                 onClick={() => onConfidence("troche")}
                 className="font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Pomiń ocenę
+                {t("skipRating")}
               </button>
             </div>
           </>
@@ -108,11 +111,11 @@ export function SessionConfidenceBar({
                 className="inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-secondary transition-colors hover:text-primary"
               >
                 <ChevronLeft className="size-4 shrink-0" aria-hidden />
-                Poprzednie
+                {t("previous")}
               </button>
             )}
             <p className="font-body text-body-xs text-secondary">
-              Pytanie {current + 1} / {total}
+              {t("questionProgress", { current: current + 1, total })}
             </p>
           </div>
           <div className="flex gap-1.5">

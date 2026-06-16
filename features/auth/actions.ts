@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
@@ -9,15 +10,15 @@ import { isRegistrationOpen } from "@/lib/registrationWindow";
 import { isRegistrationClosedForSelection, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import {
   assertAccountNotBlocked,
-  ACCOUNT_BLOCKED_MESSAGE,
+  ACCOUNT_BLOCKED_MESSAGE_KEY,
   getClientIpFromHeaders,
 } from "@/lib/auth/accountBan";
 import { isValidEmoji } from "@/lib/emoji";
-import { assertAuthRateLimit, AUTH_RATE_LIMIT_MESSAGE } from "@/lib/security/rateLimit";
+import { assertAuthRateLimit, AUTH_RATE_LIMIT_MESSAGE_KEY } from "@/lib/security/rateLimit";
 
 const loginSchema = z.object({
-  email: z.string().email("Podaj poprawny adres e-mail."),
-  password: z.string().min(6, "Hasło musi mieć co najmniej 6 znaków."),
+  email: z.string().email("emailInvalid"),
+  password: z.string().min(6, "passwordMinLength"),
 });
 
 const registerSchema = z
@@ -25,48 +26,139 @@ const registerSchema = z
     fullName: z
       .string()
       .trim()
-      .min(2, "Podaj imię i nazwisko.")
-      .max(120, "Imię i nazwisko jest za długie."),
+      .min(2, "fullNameRequired")
+      .max(120, "fullNameTooLong"),
     nick: z
       .string()
       .trim()
-      .min(3, "Nick musi mieć co najmniej 3 znaki.")
-      .max(32, "Nick może mieć maksymalnie 32 znaki.")
-      .regex(
-        /^[A-Za-z0-9._-]+$/,
-        "Nick może zawierać tylko litery, cyfry oraz znaki . _ -",
-      ),
-    email: z.string().email("Podaj poprawny adres e-mail."),
-    password: z.string().min(6, "Hasło musi mieć co najmniej 6 znaków."),
-    confirmPassword: z.string().min(6, "Powtórz hasło."),
+      .min(3, "nickMinLength")
+      .max(32, "nickMaxLength")
+      .regex(/^[A-Za-z0-9._-]+$/, "nickInvalidChars"),
+    email: z.string().email("emailInvalid"),
+    password: z.string().min(6, "passwordMinLength"),
+    confirmPassword: z.string().min(6, "confirmPasswordRequired"),
     currentTrack: z
       .string()
       .refine((value): value is "stomatologia" | "lekarski" => {
         return value === "stomatologia" || value === "lekarski";
-      }, { message: "Wybierz kierunek studiów." }),
-    currentYear: z.coerce.number().int().min(1, "Wybierz rok studiów.").max(3, "Wybierz rok studiów."),
+      }, { message: "trackRequired" }),
+    currentYear: z.coerce.number().int().min(1, "studyYearRequired").max(3, "studyYearRequired"),
     avatarEmoji: z
       .string()
       .trim()
-      .refine(isValidEmoji, "Wybierz dokładnie jedno emoji jako avatar."),
+      .refine(isValidEmoji, "avatarEmojiInvalid"),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Hasła muszą być takie same.",
+    message: "passwordsMustMatch",
     path: ["confirmPassword"],
   });
+
+type ErrorTranslator = Awaited<ReturnType<typeof getTranslations<"errors">>>;
+
+function translateErrorKey(tErrors: ErrorTranslator, key: string): string {
+  return tErrors(key as Parameters<ErrorTranslator>[0]);
+}
+
+type MappedRegisterError = {
+  messageKey?: keyof IntlMessages["errors"];
+  fallbackMessage?: string;
+  offerResend: boolean;
+};
+
+function mapRegisterErrorMessage(
+  message: string,
+  code?: string | null,
+): MappedRegisterError {
+  const normalized = message.toLowerCase();
+  if (normalized.includes("already registered") || normalized.includes("already exists")) {
+    return {
+      messageKey: "emailAlreadyRegistered",
+      offerResend: true,
+    };
+  }
+  if (
+    normalized.includes("profiles_nick_lower_unique") ||
+    (normalized.includes("duplicate key value") && normalized.includes("nick"))
+  ) {
+    return { messageKey: "nickTaken", offerResend: false };
+  }
+  if (normalized.includes("password")) {
+    return {
+      messageKey: "passwordSecurityRequirements",
+      offerResend: false,
+    };
+  }
+  if (normalized.includes("invalid email") || normalized.includes("email address")) {
+    return { messageKey: "emailInvalid", offerResend: false };
+  }
+  if (
+    normalized.includes("email rate limit") ||
+    normalized.includes("rate limit") ||
+    code === "over_email_send_rate_limit"
+  ) {
+    return {
+      messageKey: "emailRateLimitRegister",
+      offerResend: true,
+    };
+  }
+  return {
+    messageKey: "registerFailed",
+    offerResend: false,
+  };
+}
+
+function mapLoginErrorMessage(
+  message: string,
+  code?: string | null,
+): MappedRegisterError {
+  const normalized = message.toLowerCase();
+  if (
+    normalized.includes("email not confirmed") ||
+    code === "email_not_confirmed"
+  ) {
+    return {
+      messageKey: "emailNotConfirmed",
+      offerResend: true,
+    };
+  }
+  if (
+    normalized.includes("invalid login credentials") ||
+    normalized.includes("invalid email or password") ||
+    code === "invalid_credentials"
+  ) {
+    return {
+      messageKey: "invalidCredentials",
+      offerResend: false,
+    };
+  }
+  return {
+    fallbackMessage: message,
+    offerResend: false,
+  };
+}
+
+function resolveMappedError(tErrors: ErrorTranslator, mapped: MappedRegisterError): string {
+  if (mapped.messageKey) {
+    return translateErrorKey(tErrors, mapped.messageKey);
+  }
+  return mapped.fallbackMessage ?? translateErrorKey(tErrors, "invalidLoginData");
+}
 
 export async function loginAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  const tErrors = await getTranslations("errors");
+
   const parsed = loginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
   if (!parsed.success) {
+    const key = parsed.error.issues[0]?.message ?? "invalidLoginData";
     return {
-      error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane logowania.",
+      error: translateErrorKey(tErrors, key),
       info: null,
     };
   }
@@ -78,12 +170,12 @@ export async function loginAction(
     email: parsed.data.email,
   });
   if (rateLimit.blocked) {
-    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null };
+    return { error: translateErrorKey(tErrors, rateLimit.messageKey), info: null };
   }
 
   const { blocked } = await assertAccountNotBlocked({ email: parsed.data.email, ip });
   if (blocked) {
-    return { error: ACCOUNT_BLOCKED_MESSAGE, info: null };
+    return { error: translateErrorKey(tErrors, ACCOUNT_BLOCKED_MESSAGE_KEY), info: null };
   }
 
   const supabase = await createClient();
@@ -96,7 +188,7 @@ export async function loginAction(
     const detailedCode = (error as { code?: string | null }).code ?? null;
     const mapped = mapLoginErrorMessage(error.message, detailedCode);
     return {
-      error: mapped.message,
+      error: resolveMappedError(tErrors, mapped),
       info: null,
       resendEmail: mapped.offerResend ? parsed.data.email : null,
     };
@@ -114,94 +206,16 @@ export async function loginAction(
   redirect("/");
 }
 
-type MappedRegisterError = {
-  message: string;
-  /** Gdy true, formularz pokaże przycisk "Wyślij ponownie link potwierdzający". */
-  offerResend: boolean;
-};
-
-function mapRegisterErrorMessage(
-  message: string,
-  code?: string | null,
-): MappedRegisterError {
-  const normalized = message.toLowerCase();
-  if (normalized.includes("already registered") || normalized.includes("already exists")) {
-    return {
-      message:
-        "Ten adres e-mail jest już zajęty. Jeśli to Ty, sprawdź skrzynkę (i spam) — być może masz już link aktywacyjny. Jeśli wygasł, kliknij poniżej, żeby wysłać nowy.",
-      offerResend: true,
-    };
-  }
-  if (
-    normalized.includes("profiles_nick_lower_unique") ||
-    (normalized.includes("duplicate key value") && normalized.includes("nick"))
-  ) {
-    return { message: "Ten nick jest już zajęty.", offerResend: false };
-  }
-  if (normalized.includes("password")) {
-    return {
-      message: "Hasło nie spełnia wymagań bezpieczeństwa.",
-      offerResend: false,
-    };
-  }
-  if (normalized.includes("invalid email") || normalized.includes("email address")) {
-    return { message: "Podaj poprawny adres e-mail.", offerResend: false };
-  }
-  if (
-    normalized.includes("email rate limit") ||
-    normalized.includes("rate limit") ||
-    code === "over_email_send_rate_limit"
-  ) {
-    return {
-      message:
-        "Chwilowo wyczerpaliśmy limit wysyłki maili (ten sam adres mógł już dostać link). Sprawdź skrzynkę i spam — jeśli link nie dotarł, kliknij poniżej, żeby spróbować ponownie za moment.",
-      offerResend: true,
-    };
-  }
-  return {
-    message: "Nie udało się założyć konta. Spróbuj ponownie.",
-    offerResend: false,
-  };
-}
-
-function mapLoginErrorMessage(
-  message: string,
-  code?: string | null,
-): MappedRegisterError {
-  const normalized = message.toLowerCase();
-  if (
-    normalized.includes("email not confirmed") ||
-    code === "email_not_confirmed"
-  ) {
-    return {
-      message:
-        "Twój adres e-mail nie został jeszcze potwierdzony. Sprawdź skrzynkę (i spam). Jeśli link nie dotarł, wyślij go ponownie.",
-      offerResend: true,
-    };
-  }
-  if (
-    normalized.includes("invalid login credentials") ||
-    normalized.includes("invalid email or password") ||
-    code === "invalid_credentials"
-  ) {
-    return {
-      message: "Niepoprawny e-mail lub hasło.",
-      offerResend: false,
-    };
-  }
-  return {
-    message,
-    offerResend: false,
-  };
-}
-
 export async function registerAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  const tErrors = await getTranslations("errors");
+  const tAuth = await getTranslations("auth");
+
   if (!isRegistrationOpen()) {
     return {
-      error: "Rejestracja jest tymczasowo wyłączona do 17 maja 2026, godz. 21:00.",
+      error: translateErrorKey(tErrors, "registrationTemporarilyClosed"),
       info: null,
     };
   }
@@ -218,8 +232,9 @@ export async function registerAction(
   });
 
   if (!parsed.success) {
+    const key = parsed.error.issues[0]?.message ?? "invalidRegisterData";
     return {
-      error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane rejestracji.",
+      error: translateErrorKey(tErrors, key),
       info: null,
     };
   }
@@ -231,21 +246,21 @@ export async function registerAction(
     email: parsed.data.email,
   });
   if (rateLimit.blocked) {
-    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null };
+    return { error: translateErrorKey(tErrors, rateLimit.messageKey), info: null };
   }
 
   const track = normalizeTrack(parsed.data.currentTrack);
   const year = normalizeYear(parsed.data.currentYear);
   if (isRegistrationClosedForSelection(track, year)) {
     return {
-      error: "Rejestracja zamknięta.",
+      error: translateErrorKey(tErrors, "registrationClosedSelection"),
       info: null,
     };
   }
 
   const { blocked } = await assertAccountNotBlocked({ email: parsed.data.email });
   if (blocked) {
-    return { error: ACCOUNT_BLOCKED_MESSAGE, info: null };
+    return { error: translateErrorKey(tErrors, ACCOUNT_BLOCKED_MESSAGE_KEY), info: null };
   }
 
   const supabase = await createClient();
@@ -281,7 +296,7 @@ export async function registerAction(
     });
     const mapped = mapRegisterErrorMessage(error.message, detailedCode);
     return {
-      error: mapped.message,
+      error: resolveMappedError(tErrors, mapped),
       info: null,
       resendEmail: mapped.offerResend ? trimmedEmail : null,
     };
@@ -289,32 +304,27 @@ export async function registerAction(
 
   return {
     error: null,
-    info:
-      "Konto utworzone. Sprawdź skrzynkę e-mail i potwierdź adres, a następnie zaloguj się.",
+    info: tAuth("infoAccountCreated"),
     resendEmail: null,
   };
 }
 
 const resendSchema = z.object({
-  email: z.string().email("Podaj poprawny adres e-mail."),
+  email: z.string().email("emailInvalid"),
 });
 
-/**
- * Wysyła ponownie link potwierdzający rejestrację. Używane gdy użytkownik
- * widzi błąd "e-mail już zajęty" (niepotwierdzony) albo "email not
- * confirmed" przy logowaniu, oraz gdy domyślny mail rejestracyjny się
- * zgubił. Wewnętrznie wywołuje `supabase.auth.resend({ type: 'signup' })`
- * — Supabase debouncuje to po stronie Auth (`signup_confirmation.period`),
- * więc bezpieczne do wystawienia bez własnego rate-limitu.
- */
 export async function resendConfirmationAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  const tErrors = await getTranslations("errors");
+  const tAuth = await getTranslations("auth");
+
   const parsed = resendSchema.safeParse({ email: formData.get("email") });
   if (!parsed.success) {
+    const key = parsed.error.issues[0]?.message ?? "invalidEmail";
     return {
-      error: parsed.error.issues[0]?.message ?? "Nieprawidłowy adres e-mail.",
+      error: translateErrorKey(tErrors, key),
       info: null,
       resendEmail: null,
     };
@@ -327,7 +337,11 @@ export async function resendConfirmationAction(
     email: parsed.data.email,
   });
   if (rateLimit.blocked) {
-    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null, resendEmail: parsed.data.email };
+    return {
+      error: translateErrorKey(tErrors, rateLimit.messageKey),
+      info: null,
+      resendEmail: parsed.data.email,
+    };
   }
 
   const supabase = await createClient();
@@ -358,14 +372,13 @@ export async function resendConfirmationAction(
       detailedCode === "over_email_send_rate_limit"
     ) {
       return {
-        error:
-          "Chwilowo wyczerpaliśmy limit wysyłki maili — spróbuj ponownie za kilka minut.",
+        error: translateErrorKey(tErrors, "emailRateLimitResend"),
         info: null,
         resendEmail: parsed.data.email,
       };
     }
     return {
-      error: "Nie udało się wysłać linku. Spróbuj ponownie za chwilę.",
+      error: translateErrorKey(tErrors, "resendFailed"),
       info: null,
       resendEmail: parsed.data.email,
     };
@@ -373,7 +386,7 @@ export async function resendConfirmationAction(
 
   return {
     error: null,
-    info: `Wysłaliśmy nowy link potwierdzający na ${parsed.data.email}. Sprawdź skrzynkę (i spam).`,
+    info: tAuth("infoResendConfirmationSent", { email: parsed.data.email }),
     resendEmail: null,
   };
 }
@@ -385,35 +398,32 @@ export async function logoutAction() {
 }
 
 const forgotPasswordSchema = z.object({
-  email: z.string().trim().email("Podaj poprawny adres e-mail."),
+  email: z.string().trim().email("emailInvalid"),
 });
 
-function mapResetEmailError(message: string, code?: string | null): string {
+function mapResetEmailError(message: string, code?: string | null): keyof IntlMessages["errors"] {
   const normalized = message.toLowerCase();
   if (
     normalized.includes("rate limit") ||
     code === "over_email_send_rate_limit"
   ) {
-    return "Chwilowo wyczerpaliśmy limit wysyłki maili — spróbuj ponownie za kilka minut.";
+    return "emailRateLimitResend";
   }
-  return "Nie udało się wysłać linku. Spróbuj ponownie za chwilę.";
+  return "resendFailed";
 }
 
-/**
- * Wysyła e-mail z linkiem do resetu hasła. Z punktu widzenia UI zawsze
- * zwracamy tę samą wiadomość sukcesu (niezależnie czy adres istnieje),
- * żeby nie ujawniać listy użytkowników. Link prowadzi przez
- * `/auth/callback?next=/reset-password`, gdzie token PKCE jest wymieniany
- * na sesję, a użytkownik trafia na ekran ustawiania nowego hasła.
- */
 export async function requestPasswordResetAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  const tErrors = await getTranslations("errors");
+  const tAuth = await getTranslations("auth");
+
   const parsed = forgotPasswordSchema.safeParse({ email: formData.get("email") });
   if (!parsed.success) {
+    const key = parsed.error.issues[0]?.message ?? "invalidEmail";
     return {
-      error: parsed.error.issues[0]?.message ?? "Nieprawidłowy adres e-mail.",
+      error: translateErrorKey(tErrors, key),
       info: null,
       resendEmail: null,
     };
@@ -428,7 +438,7 @@ export async function requestPasswordResetAction(
     email: trimmedEmail,
   });
   if (rateLimit.blocked) {
-    return { error: AUTH_RATE_LIMIT_MESSAGE, info: null, resendEmail: null };
+    return { error: translateErrorKey(tErrors, rateLimit.messageKey), info: null, resendEmail: null };
   }
 
   const supabase = await createClient();
@@ -449,7 +459,7 @@ export async function requestPasswordResetAction(
       status: error.status,
     });
     return {
-      error: mapResetEmailError(error.message, detailedCode),
+      error: translateErrorKey(tErrors, mapResetEmailError(error.message, detailedCode)),
       info: null,
       resendEmail: null,
     };
@@ -457,59 +467,56 @@ export async function requestPasswordResetAction(
 
   return {
     error: null,
-    info: `Jeśli konto z adresem ${trimmedEmail} istnieje, wysłaliśmy na nie link do resetu hasła. Sprawdź skrzynkę (i spam).`,
+    info: tAuth("infoPasswordResetSent", { email: trimmedEmail }),
     resendEmail: null,
   };
 }
 
 const updatePasswordSchema = z
   .object({
-    password: z.string().min(6, "Hasło musi mieć co najmniej 6 znaków."),
-    confirmPassword: z.string().min(6, "Powtórz nowe hasło."),
+    password: z.string().min(6, "passwordMinLength"),
+    confirmPassword: z.string().min(6, "confirmNewPasswordRequired"),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Hasła muszą być takie same.",
+    message: "passwordsMustMatch",
     path: ["confirmPassword"],
   });
 
-function mapUpdatePasswordError(message: string): string {
+function mapUpdatePasswordError(message: string): keyof IntlMessages["errors"] {
   const normalized = message.toLowerCase();
   if (
     normalized.includes("same as the old password") ||
     normalized.includes("new password should be different")
   ) {
-    return "Nowe hasło musi różnić się od poprzedniego.";
+    return "passwordSameAsOld";
   }
   if (normalized.includes("password") && normalized.includes("weak")) {
-    return "Hasło nie spełnia wymagań bezpieczeństwa.";
+    return "passwordSecurityRequirements";
   }
   if (
     normalized.includes("auth session missing") ||
     normalized.includes("not authenticated")
   ) {
-    return "Link do resetu wygasł. Poproś o nowy w sekcji „Nie pamiętasz hasła?”.";
+    return "resetLinkExpired";
   }
-  return "Nie udało się zaktualizować hasła. Spróbuj ponownie.";
+  return "updatePasswordFailed";
 }
 
-/**
- * Ustawia nowe hasło. Wymaga aktywnej sesji utworzonej przez `/auth/callback`
- * (wymiana kodu PKCE z linka z e-maila). Po sukcesie wylogowujemy
- * użytkownika, żeby wymusić ponowne zalogowanie z nowym hasłem — to też
- * unieważnia sesję recovery na innych urządzeniach.
- */
 export async function updatePasswordAction(
   _prevState: AuthActionState,
   formData: FormData,
 ): Promise<AuthActionState> {
+  const tErrors = await getTranslations("errors");
+
   const parsed = updatePasswordSchema.safeParse({
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
   });
 
   if (!parsed.success) {
+    const key = parsed.error.issues[0]?.message ?? "invalidData";
     return {
-      error: parsed.error.issues[0]?.message ?? "Nieprawidłowe dane.",
+      error: translateErrorKey(tErrors, key),
       info: null,
       resendEmail: null,
     };
@@ -519,7 +526,7 @@ export async function updatePasswordAction(
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (userError || !userData.user) {
     return {
-      error: "Link do resetu wygasł. Poproś o nowy w sekcji „Nie pamiętasz hasła?”.",
+      error: translateErrorKey(tErrors, "resetLinkExpired"),
       info: null,
       resendEmail: null,
     };
@@ -537,7 +544,7 @@ export async function updatePasswordAction(
       status: error.status,
     });
     return {
-      error: mapUpdatePasswordError(error.message),
+      error: translateErrorKey(tErrors, mapUpdatePasswordError(error.message)),
       info: null,
       resendEmail: null,
     };

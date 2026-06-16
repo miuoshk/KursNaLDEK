@@ -1,0 +1,280 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-1",
+  "edits": [
+    {
+      "id": "phum-soc-gen-001",
+      "options": [
+        {"id": "a", "text": "Talcott Parsons — autor funkcjonalnej koncepcji zdrowia opartej na pełnieniu ról społecznych"},
+        {"id": "b", "text": "Eliot Freidson — twórca typologii dewiacji pierwotnej i wtórnej w ujęciu socjologii medycyny"},
+        {"id": "c", "text": "Erving Goffman — badacz interakcji w instytucjach totalnych i mechanizmów piętna społecznego"},
+        {"id": "d", "text": "Aaron Antonovsky — autor koncepcji salutogenezy i poczucia koherencji w ochronie zdrowia"},
+        {"id": "e", "text": "Magdalena Sokołowska — polska socjolożka medycyny, autorka definicji piętna w materiale kursu"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-002",
+      "options": [
+        {"id": "a", "text": "piętna społecznego nakładanego na jednostkę przez otoczenie w reakcji na chorobę"},
+        {"id": "b", "text": "salutogenezy — procesu budowania zasobów ochronnych wobec czynników patogennych"},
+        {"id": "c", "text": "dewiacji społecznej — odchylenia od norm sprawności fizycznej i pełnienia ról"},
+        {"id": "d", "text": "roli przypisanej biologicznie, niezależnej od oczekiwań i norm funkcjonowania społecznego"},
+        {"id": "e", "text": "normy gatunkowej determinującej zachowanie zdrowotne wyłącznie przez uwarunkowania biologiczne"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-003",
+      "options": [
+        {"id": "a", "text": "Chory ma prawo być zwolniony z pełnienia normalnych ról i codziennych obowiązków społecznych"},
+        {"id": "b", "text": "Osoba chora nie ponosi odpowiedzialności moralnej za własny stan zdrowia i jego przyczyny"},
+        {"id": "c", "text": "Chory ma obowiązek szukać kompetentnej pomocy medycznej i współpracować w procesie leczenia"},
+        {"id": "d", "text": "Przezwyciężenie choroby jest możliwe wyłącznie przez samą wolę i decyzję o wyzdrowieniu"},
+        {"id": "e", "text": "Osoba chora powinna traktować swój stan jako niepożądany i dążyć do powrotu do zdrowia"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-004",
+      "options": [
+        {"id": "a", "text": "pierwotna — gdy choroba jedynie modyfikuje sposób pełnienia dotychczasowych ról społecznych"},
+        {"id": "b", "text": "autoteliczna — gdy choroba staje się celem samym w sobie, niezależnym od funkcji społecznych"},
+        {"id": "c", "text": "funkcjonalna — gdy choroba wzmacnia stabilność systemu poprzez tymczasowe zwolnienie z ról"},
+        {"id": "d", "text": "instrumentalna — gdy choroba służy osiąganiu korzyści materialnych lub unikaniu obowiązków"},
+        {"id": "e", "text": "wtórna — gdy choroba nakazuje przyjęcie nowej roli chorego w miejsce dotychczasowych ról"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-005",
+      "options": [
+        {"id": "a", "text": "choroba zmusza pacjenta do całkowitego przyjęcia nowej roli społecznej chorego w grupie"},
+        {"id": "b", "text": "zakłócenia zdrowotne modyfikują sposób pełnienia dotychczasowych ról społecznych"},
+        {"id": "c", "text": "chory zostaje trwale napiętnowany przez społeczeństwo z powodu widocznego kalectwa"},
+        {"id": "d", "text": "choroba prowadzi do izolacji chorego i degradacji jego pozycji w strukturze społecznej"},
+        {"id": "e", "text": "następuje całkowita utrata wszystkich ról społecznych i wykluczenie z życia zbiorowego"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-006",
+      "options": [
+        {"id": "a", "text": "Magdalena Sokołowska — autorka cytowanej w materiale definicji piętna jako atrybutu kulturowego"},
+        {"id": "b", "text": "Eliot Freidson — amerykański socjolog medycyny, twórca typologii dewiacji pierwotnej i wtórnej"},
+        {"id": "c", "text": "Talcott Parsons — autor koncepcji roli chorego i funkcjonalnej definicji zdrowia i choroby"},
+        {"id": "d", "text": "Robert Cialdini — psycholog społeczny badający wpływ i zasady postępowania w relacjach międzyludzkich"},
+        {"id": "e", "text": "Philip Zimbardo — psycholog znany z badań nad rolą sytuacji w zachowaniu jednostki w grupie"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-007",
+      "options": [
+        {"id": "a", "text": "Zakres domniemanej winy chorego za swój stan — np. przy AIDS lub skutkach alkoholizmu"},
+        {"id": "b", "text": "Widoczność kalectwa — stopień, w jakim niepełnosprawność jest dostrzegalna dla otoczenia"},
+        {"id": "c", "text": "Wysokość dochodów chorego — poziom zarobków i majątku wpływający na dostęp do opieki"},
+        {"id": "d", "text": "Nieodwracalność kalectwa — trwałość i nieuleczalność widocznych skutków choroby"},
+        {"id": "e", "text": "Nieprzewidywalność zachowań chorego — niestabilność emocjonalna i społeczna, np. w chorobach psychicznych"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-008",
+      "options": [
+        {"id": "a", "text": "salutogenezy — koncentrującej się na czynnikach wzmacniających zdrowie, poczuciu koherencji i odporności"},
+        {"id": "b", "text": "wyuczonej bezradności — opisującej rezygnację jednostki po wielokrotnych niepowodzeniach w radzeniu sobie"},
+        {"id": "c", "text": "społecznego uczenia się — wyjaśniającej zachowania przez obserwację, naśladownictwo i wzorce grupowe"},
+        {"id": "d", "text": "naznaczenia społecznego (etykietyzowania) — obejmującej piętnowanie, degradację i izolowanie dewianta"},
+        {"id": "e", "text": "dysonansu poznawczego — wywołanego sprzecznością między przekonaniami a zachowaniem jednostki"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-009",
+      "options": [
+        {"id": "a", "text": "czysto biologicznej — ograniczającej zdrowie do braku patologii somatycznej mierzalnej obiektywnie"},
+        {"id": "b", "text": "czysto funkcjonalnej — definiującej zdrowie wyłącznie przez zdolność do pełnienia ról społecznych"},
+        {"id": "c", "text": "socjomedycznej Parsonsa — wiążącej zdrowie z pełnieniem przypisanych ról w strukturze społecznej"},
+        {"id": "d", "text": "behawioralnej — opartej na obserwowalnych nawykach zdrowotnych bez wymiaru dobrostanu psychicznego"},
+        {"id": "e", "text": "biologiczno-funkcjonalnej — łączącej dobrostan fizyczny, psychiczny i społeczny w jednej definicji"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-010",
+      "options": [
+        {"id": "a", "text": "funkcjonalne — ujmujące zdrowie przez zdolność do uczestnictwa w życiu społecznym i pełnienia ról"},
+        {"id": "b", "text": "biologiczne — ujmujące zdrowie jako stan somatyczny mierzalny parametrami medycyny, bez wymiaru psychicznego"},
+        {"id": "c", "text": "biologiczno-funkcjonalne — syntetyzujące parametry somatyczne z dobrostanem psychicznym i społecznym"},
+        {"id": "d", "text": "socjomedyczne — wiążące zdrowie z pełnieniem ról społecznych i normami funkcjonowania w grupie"},
+        {"id": "e", "text": "kulturowe — ujmujące zdrowie i chorobę jako konstrukty zależne od norm, wartości i wzorców danej społeczności"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-011",
+      "options": [
+        {"id": "a", "text": "Ałma Acie — gdzie WHO uznało zdrowie za prawo człowieka i zdolność do twórczego życia społecznego"},
+        {"id": "b", "text": "Ottawie — gdzie przyjęto Kartę zdrowia promocji opartą na determinantach zdrowia społecznego"},
+        {"id": "c", "text": "Genewie — gdzie WHO po raz pierwszy ogłosiło definicję zdrowia z 1946 roku w pełni dobrostanu"},
+        {"id": "d", "text": "Helsinkach — gdzie ustalono etyczne zasady badań na ludziach i ochrony uczestników badań"},
+        {"id": "e", "text": "Adelajdzie — gdzie opracowano deklarację o prawach pacjenta i uczestnictwie w decyzjach medycznych"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-012",
+      "options": [
+        {"id": "a", "text": "emocjonalny — obejmujący wyrażanie uczuć, panowanie nad emocjami i stabilność nastroju w codziennym życiu"},
+        {"id": "b", "text": "intelektualny — obejmujący kreatywność, rozwijanie wiedzy i zdolność do rozwiązywania problemów"},
+        {"id": "c", "text": "duchowy — obejmujący rozumienie wartości życia, spokój ducha i posiadanie spójnego systemu wartości"},
+        {"id": "d", "text": "społeczny — obejmujący jakość relacji interpersonalnych, poczucie przynależności i wsparcia grupy"},
+        {"id": "e", "text": "zawodowy — obejmujący satysfakcję z pracy, rozwój kariery i równowagę między obowiązkami a życiem prywatnym"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-013",
+      "options": [
+        {"id": "a", "text": "mężczyźni chorują częściej niż kobiety, lecz kobiety umierają wcześniej z powodu cięższych schorzeń"},
+        {"id": "b", "text": "mężczyźni częściej korzystają z usług medycznych i leczą schorzenia we wczesnym stadium"},
+        {"id": "c", "text": "kobiety i mężczyźni chorują z taką samą częstością, różniąc się wyłącznie typem schorzeń somatycznych"},
+        {"id": "d", "text": "kobiety chorują częściej niż mężczyźni, lecz to mężczyźni umierają wcześniej z tych powodów"},
+        {"id": "e", "text": "kobiety żyją krócej niż mężczyźni, mimo niższej zachorowalności na choroby prowadzące do zgonu"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-014",
+      "options": [
+        {"id": "a", "text": "Genetycznie uwarunkowane różnice między płciami wpływające na podatność na wybrane choroby"},
+        {"id": "b", "text": "Różnice w dominującym typie reakcji emocjonalnych i strategiach radzenia sobie ze stresem"},
+        {"id": "c", "text": "Większy udział mężczyzn w wypadkach komunikacyjnych i zawodowych o wysokim ryzyku urazu"},
+        {"id": "d", "text": "Częstsze uleganie nałogom przez mężczyzn, w tym paleniu tytoniu i nadmiernemu spożyciu alkoholu"},
+        {"id": "e", "text": "Częstsze korzystanie przez mężczyzn z usług medycznych i profilaktyki w porównaniu z kobietami"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-015",
+      "options": [
+        {"id": "a", "text": "kobiet, ponieważ małżeństwo daje im stabilne wsparcie emocjonalne i zmniejsza obciążenie domowe"},
+        {"id": "b", "text": "mężczyzn, ponieważ związek zapewnia regularny tryb życia i pomoc w razie choroby"},
+        {"id": "c", "text": "obu płci w równym stopniu, ponieważ korzyści zdrowotne małżeństwa są symetryczne dla partnerów"},
+        {"id": "d", "text": "kobiet, ponieważ małżeństwo zmniejsza liczbę pełnionych przez nie ról społecznych i obowiązków"},
+        {"id": "e", "text": "osób owdowiałych, ponieważ utrata partnera wzmacnia samodzielność i odporność psychofizyczną"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-016",
+      "options": [
+        {"id": "a", "text": "autotelicznej — cenionej dla niej samej, niezależnie od praktycznej użyteczności w osiąganiu celów"},
+        {"id": "b", "text": "instrumentalnej — traktowanej jako środek do realizacji innych celów życiowych i zawodowych"},
+        {"id": "c", "text": "funkcjonalnej — ocenianej według zdolności do pełnienia ról społecznych i codziennego funkcjonowania"},
+        {"id": "d", "text": "socjopatogennej — rozumianej jako skutek patogennych warunków społecznych i stresu środowiskowego"},
+        {"id": "e", "text": "adaptacyjnej — mierzonej wyłącznie zdolnością organizmu do przystosowania się do czynników stresogennych"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-017",
+      "options": [
+        {"id": "a", "text": "industrializacja, urbanizacja, migracje i płeć — jako ogólne czynniki strukturalne wpływające na zdrowie"},
+        {"id": "b", "text": "wiek, płeć, wykształcenie i zawód — jako demograficzne determinanty różnic zdrowotnych w populacji"},
+        {"id": "c", "text": "ubóstwo lub niski status ekonomiczny, samotność, migracje i bezrobocie — szczególnie predysponujące do chorób"},
+        {"id": "d", "text": "warunki materialno-bytowe, system kształcenia i struktura rodziny — jako tło społeczne jednostki"},
+        {"id": "e", "text": "organizm biologiczny, styl życia, środowisko i opieka zdrowotna — jako cztery główne grupy warunkujące zdrowie"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-018",
+      "options": [
+        {"id": "a", "text": "fizyczna — gdy pomoc innych warunkuje samą egzystencję chorego i podstawowe funkcje życiowe"},
+        {"id": "b", "text": "rytualna — gdy otoczenie okazuje wsparcie w ustalonych, ceremonialnych formach kontaktu społecznego"},
+        {"id": "c", "text": "instrumentalna — gdy wsparcie ma charakter praktyczny, np. w załatwianiu spraw codziennych chorego"},
+        {"id": "d", "text": "psychiczna — gdy wsparcie wynika z przyjaźni, sympatii lub miłości ze strony najbliższego otoczenia"},
+        {"id": "e", "text": "funkcjonalna — gdy chory zależy od innych w zakresie pełnienia dotychczasowych ról społecznych"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-019",
+      "options": [
+        {"id": "a", "text": "objawy depresji i zaburzenia jedzenia — typowe raczej dla kobiet w reakcji na stres i presję społeczną"},
+        {"id": "b", "text": "stany niezrównoważenia i zaburzenia psychosomatyczne — częściej diagnozowane u kobiet niż u mężczyzn"},
+        {"id": "c", "text": "smutek i przygnębienie — dominujące u kobiet, podczas gdy mężczyźni częściej maskują te stany"},
+        {"id": "d", "text": "bezsenność i drażliwość — równomiernie rozkładające się między płciami bez istotnych różnic"},
+        {"id": "e", "text": "psychozy, zaburzenia osobowości i choroby wynikające z uzależnień — częstsze u mężczyzn niż u kobiet"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-020",
+      "options": [
+        {"id": "a", "text": "około 12 definicji — reprezentujących wyłącznie wąskie, biologiczne ujęcia stanu zdrowia człowieka"},
+        {"id": "b", "text": "około 120 definicji — bazujących na różnych płaszczyznach biologicznej, psychicznej i społecznej"},
+        {"id": "c", "text": "około 60 definicji — powstałych głównie w okresie międzywojennym i tuż po II wojnie światowej"},
+        {"id": "d", "text": "około 200 definicji — obejmujących wyłącznie ujęcia funkcjonalne i socjomedyczne zdrowia publicznego"},
+        {"id": "e", "text": "około 500 definicji — uwzględniających wszystkie warianty językowe i regionalne interpretacje pojęcia zdrowia"}
+      ],
+      "correct_option_id": "b"
+    },
+    {
+      "id": "phum-soc-gen-021",
+      "options": [
+        {"id": "a", "text": "poznawczy — obejmujący przekonania, wiedzę i opinie jednostki na temat danego obiektu postawy"},
+        {"id": "b", "text": "behawioralny — obejmujący skłonność do podejmowania określonych działań wobec obiektu postawy"},
+        {"id": "c", "text": "emocjonalny — obejmujący uczucia wobec obiektu, np. lęk, złość, sympatię lub awersję wobec grupy"},
+        {"id": "d", "text": "motywacyjny — obejmujący wewnętrzne impulsy i cele kierujące zachowaniem jednostki wobec obiektu"},
+        {"id": "e", "text": "aksjologiczny — obejmujący hierarchię wartości i norm moralnych stojących za oceną obiektu postawy"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-soc-gen-022",
+      "options": [
+        {"id": "a", "text": "poznawczy — obejmujący przekonania, wiedzę i opinie jednostki na temat danego obiektu postawy"},
+        {"id": "b", "text": "emocjonalny — obejmujący uczucia wobec obiektu, np. lęk, złość, sympatię lub awersję wobec grupy"},
+        {"id": "c", "text": "behawioralny — obejmujący skłonność do działań wobec obiektu postawy, np. pomocy lub unikania"},
+        {"id": "d", "text": "kulturowy — obejmujący wpływ norm i wzorców społecznych na sposób oceny i reagowania na obiekt"},
+        {"id": "e", "text": "instrumentalny — obejmujący ocenę obiektu postawy przez pryzmat korzyści i strat dla jednostki"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-soc-gen-023",
+      "options": [
+        {"id": "a", "text": "uprzedzenia — postawy awersji lub wrogości wobec grupy oparte na błędnej generalizacji doświadczeń"},
+        {"id": "b", "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"},
+        {"id": "c", "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"},
+        {"id": "d", "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"},
+        {"id": "e", "text": "piętna — atrybutu lub cechy określającej jednostkę jako gorszą pod względem kulturowym w oczach otoczenia"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-soc-gen-024",
+      "options": [
+        {"id": "a", "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"},
+        {"id": "b", "text": "dehumanizacji — traktowania jednostki lub grupy jako całkowicie pozbawionej godności i człowieczeństwa"},
+        {"id": "c", "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"},
+        {"id": "d", "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"},
+        {"id": "e", "text": "uprzedzenia — postawy awersji lub wrogości wobec grupy opartej na błędnej generalizacji doświadczeń"}
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-soc-gen-025",
+      "options": [
+        {"id": "a", "text": "stereotypu — nadmiernego uogólnienia cech przypisywanych każdemu członkowi danej grupy społecznej"},
+        {"id": "b", "text": "dyskryminacji — nierównego traktowania grup przez odmawianie im udziału w przywilejach i władzy"},
+        {"id": "c", "text": "uprzedzenia — postawy nacechowanej awersją lub wrogością wobec grupy, opartej na błędnej generalizacji"},
+        {"id": "d", "text": "stygmatyzacji — procesu piętnowania jednostek z powodu cech odbiegających od normy społecznej"},
+        {"id": "e", "text": "marginalizacji — procesu wypychania grup na obrzeża społeczeństwa bez bezpośredniego odmawiania przywilejów"}
+      ],
+      "correct_option_id": "b"
+    }
+  ]
+}

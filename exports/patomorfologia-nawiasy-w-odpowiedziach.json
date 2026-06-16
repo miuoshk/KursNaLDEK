@@ -1,0 +1,1283 @@
+{
+  "count": 60,
+  "questions": [
+    {
+      "id": "pat-kra-038",
+      "topicId": "PAT-KRA",
+      "topicName": "Zaburzenia w krążeniu",
+      "text": "Do miejscowych następstw krwotoku nie należy:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "d",
+          "text": "nasiąkanie krwią (imbibicja) tkanek",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-047",
+      "topicId": "PAT-KRA",
+      "topicName": "Zaburzenia w krążeniu",
+      "text": "Który z poniższych NIE jest typowym dalszym losem (przekształceniem) zakrzepu?",
+      "correctOptionId": "e",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "zwapnienie (powstanie kamienia żylnego)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-051",
+      "topicId": "PAT-KRA",
+      "topicName": "Zaburzenia w krążeniu",
+      "text": "Co pozostaje jako trwała zmiana po przebytym zawale (niedokrwiennym) mózgu?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "jama poudarowa (torbiel) otoczona glejozą",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-077",
+      "topicId": "PAT-KRA-GEN",
+      "topicName": "Zaburzenia w krążeniu (generowane)",
+      "text": "Wybroczyny (petechiae) to:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "rozległe, płaskie podbiegnięcia krwawe (sińce)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-kra-080",
+      "topicId": "PAT-KRA-GEN",
+      "topicName": "Zaburzenia w krążeniu (generowane)",
+      "text": "Krwotok z nadżarcia powstaje, gdy:",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "wcześniej chorobowo zmieniona ściana naczynia lub serca (tętniak, żylak) pęka pod wpływem ciśnienia",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-007",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Pacjent w podeszłym wieku - zmiana na twarzy, wrzodziejąca, niegojąca się od kilku tygodni o uniesionych brzegach, co podejrzewasz:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "rogowiak kolczystokomórkowy (keratoacanthoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "kiła (zmiana pierwotna)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-008",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Objawami gruczolakoraka jelita grubego są:",
+      "correctOptionId": "e",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "prawa połowa (początkowa) - niedokrwistość; lewa połowa (końcowa) - zaburzenia defekacji",
+          "open": 2,
+          "close": 2
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-009",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Guz Krukenberga to:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "Guz jajnika będący przerzutem gruczolakoraka przewodu pokarmowego (typowo żołądka)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-011",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Brodawczak (papilloma) to:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "Nowotwór łagodny nabłonka okrywającego (pokrywającego)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-012",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Starszy pacjent ze wrzodziejącą, niegojącą się od kilku tygodni zmianą na twarzy o uniesionych, perłowych brzegach. Najbardziej prawdopodobne rozpoznanie:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "Kiła (zmiana pierwotna)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-038",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Najczęstszym nowotworem złośliwym mężczyzn w Polsce jest:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "rak stercza (gruczołu krokowego)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-039",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Najczęstszy łagodny nowotwór piersi u kobiet w wieku rozrodczym to:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "gruczolakowłókniak (fibroadenoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-040",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Najczęstszym nowotworem złośliwym jelita grubego u dorosłych jest:",
+      "correctOptionId": "e",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "rakowiak (guz neuroendokrynny)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "gruczolakorak (adenocarcinoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-044",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Które z poniższych stwierdzeń jest fałszywe?",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "w ocenie stopnia zaawansowania klinicznego (staging) bierze się pod uwagę nasilenie martwicy w guzie",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-045",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Jaki jest najczęstszy typ histologiczny nowotworu złośliwego jelita grubego?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "rakowiak (guz neuroendokrynny)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "gruczolakorak (adenocarcinoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-047",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Który nowotwór płuca może w obrazie naśladować płatowe zapalenie płuc?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "rak oskrzelikowo-pęcherzykowy (gruczolakorak typu lepidic)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-049",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "LCIS (lobular carcinoma in situ) to:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "rak zrazikowy piersi nienaciekający (in situ), nieprzekraczający błony podstawnej",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-050",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Które badanie służy do ostatecznego potwierdzenia (histologicznego) charakteru wyczuwalnej palpacyjnie zmiany piersi?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "biopsja (badanie histopatologiczne)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-051",
+      "topicId": "PAT-NABL",
+      "topicName": "Nowotwory nabłonkowe",
+      "text": "Które stwierdzenie o guzku pęcherzykowym tarczycy jest prawdziwe?",
+      "correctOptionId": "e",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "może być elementem wola guzkowego, gruczolakiem (łagodnym) albo rakiem pęcherzykowym (złośliwym)",
+          "open": 2,
+          "close": 2
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-059",
+      "topicId": "PAT-NABL-GEN",
+      "topicName": "Nowotwory nabłonkowe (generowane)",
+      "text": "Czym są „perły rogowe” widoczne w raku płaskonabłonkowym?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "koncentryczne zwapnienia w podścielisku guza (ciałka piaszczakowate)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-073",
+      "topicId": "PAT-NABL-GEN",
+      "topicName": "Nowotwory nabłonkowe (generowane)",
+      "text": "Rak jasnokomórkowy nerki wywodzi się z:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "komórek kłębuszka nerkowego (podocytów)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-078",
+      "topicId": "PAT-NABL-GEN",
+      "topicName": "Nowotwory nabłonkowe (generowane)",
+      "text": "Markerem, który może być podwyższony w nasieniaku, jest m.in.:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 3,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "antygen karcynoembrionalny (CEA)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "fosfataza zasadowa łożyskowa (PLAP) oraz LDH",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "α-fetoproteina (AFP) podwyższona w 100% przypadków nasieniaka",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nabl-083",
+      "topicId": "PAT-NABL-GEN",
+      "topicName": "Nowotwory nabłonkowe (generowane)",
+      "text": "Najczęstszym typem histopatologicznym raka inwazyjnego piersi (do 80% przypadków) jest:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "rak przewodowy (NST, niesklasyfikowany inaczej)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "rak śluzowy (koloidowy)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-004",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Fałszywe stwierdzenie na temat chłoniaków to:",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na nieziarnicze i ziarniczego (ziarnica złośliwa)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-006",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Najczęstszy nowotwór złośliwy u dzieci:",
+      "correctOptionId": "c",
+      "totalParensInOptions": 4,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak (osteosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "nerwiak zarodkowy (neuroblastoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "białaczka (ostra białaczka limfoblastyczna)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "siatkówczak (retinoblastoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-009",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Wskaż zdanie NIEPRAWDZIWE o chłoniaku:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 3,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "Wywodzi się z komórek układu chłonnego (limfocytów)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "Dzieli się na ziarnicze (Hodgkina) i nieziarnicze",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "Może być przyczyną amyloidozy wtórnej (amyloid AL)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-010",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Najczęstszym mięsakiem u dorosłych jest:",
+      "correctOptionId": "c",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "Maziówczak złośliwy (sarcoma synoviale)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "Kostniakomięsak (osteosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "Tłuszczakomięsak (liposarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "Włókniakomięsak (fibrosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "Włóknisty histiocytoma złośliwy (MFH)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-028",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Kosmówczak (Chorioepithelioma):",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "jest łagodnym nowotworem germinalnym (zarodkowym), rozwijającym się z komórek trofoblastu",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-032",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Najczęstszy łagodny nowotwór piersi u kobiet w wieku rozrodczym to:",
+      "correctOptionId": "e",
+      "totalParensInOptions": 4,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "rak piersi (breast carcinoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "naczyniak (haemangioma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "mięśniak gładkokomórkowy (leiomyoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "tłuszczak (lipoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-033",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Fałszywe stwierdzenie na temat chłoniaków to:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "chłoniaki dzielą się na chłoniaki nieziarnicze i chłoniaka ziarniczego (ziarnica złośliwa)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-040",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Fałszywe stwierdzenie na temat chłoniaków to:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "dzielą się na ziarnicze (Hodgkina) i nieziarnicze",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-042",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Najczęstszym łagodnym nowotworem tkanek miękkich jest:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "mięśniak gładkokomórkowy (leiomyoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "tłuszczak (lipoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "naczyniak (haemangioma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "włókniak (fibroma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "nerwiak (neurinoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-046",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Który z wymienionych nowotworów jest nowotworem o najwyższej złośliwości?",
+      "correctOptionId": "b",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "tłuszczak (lipoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "włókniakomięsak (fibrosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "włókniak (fibroma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "kostniak (osteoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "naczyniak (haemangioma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-047",
+      "topicId": "PAT-NIEN",
+      "topicName": "Nowotwory nienabłonkowe",
+      "text": "Jaki jest najczęstszy mięsak (nowotwór złośliwy tkanek miękkich) u osób dorosłych?",
+      "correctOptionId": "e",
+      "totalParensInOptions": 4,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "mięśniakomięsak prążkowanokomórkowy (rhabdomyosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "kostniakomięsak (osteosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "maziówczak złośliwy (synovial sarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "tłuszczakomięsak (liposarcoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-063",
+      "topicId": "PAT-NIEN-GEN",
+      "topicName": "Nowotwory nienabłonkowe (generowane)",
+      "text": "Wzrost mięśniaków gładkokomórkowych macicy jest stymulowany przez:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "androgeny (testosteron i DHT)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-069",
+      "topicId": "PAT-NIEN-GEN",
+      "topicName": "Nowotwory nienabłonkowe (generowane)",
+      "text": "Włókniak twardy skóry (dermatofibroma) jest zmianą łagodną, której złośliwym odpowiednikiem fibrohistiocytarnym jest:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "kostniakomięsak (osteosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "guzowaty włókniakomięsak skóry (dermatofibrosarcoma protuberans)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "tłuszczakomięsak (liposarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "mięśniakomięsak z komórek mięśni poprzecznie prążkowanych (rhabdomyosarcoma)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "chrzęstniakomięsak (chondrosarcoma)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-086",
+      "topicId": "PAT-NIEN-GEN",
+      "topicName": "Nowotwory nienabłonkowe (generowane)",
+      "text": "Większość chłoniaków nieziarniczych wywodzi się z limfocytów:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 3,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "T (80–90% przypadków)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "B (80–90% przypadków)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "NK (większość przypadków)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-nien-095",
+      "topicId": "PAT-NIEN-GEN",
+      "topicName": "Nowotwory nienabłonkowe (generowane)",
+      "text": "Najczęstszą białaczką wieku dziecięcego (ok. 80%) jest:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 4,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "ostra białaczka limfoblastyczna (ALL)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "ostra białaczka szpikowa (AML)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "przewlekła białaczka limfatyczna (CLL)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "przewlekła białaczka szpikowa (CML)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-025",
+      "topicId": "PAT-POST",
+      "topicName": "Zmiany postępowe",
+      "text": "69-letni mężczyzna od 5 lat ma problemy z oddawaniem moczu; urolog stwierdza dwukrotne powiększenie gruczołu krokowego. Jaki proces patologiczny za to odpowiada?",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "d",
+          "text": "rozrost (hyperplasia)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-026",
+      "topicId": "PAT-POST",
+      "topicName": "Zmiany postępowe",
+      "text": "Macica 20-letniej kobiety ma wymiary 7x4x3 cm; pod koniec ciąży 34x18x12 cm. Jaki proces dominująco to tłumaczy?",
+      "correctOptionId": "e",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "przerost mięśni gładkich macicy (myometrium)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-031",
+      "topicId": "PAT-POST",
+      "topicName": "Zmiany postępowe",
+      "text": "Rychłozrost (gojenie przez rychłozrost) zachodzi, gdy:",
+      "correctOptionId": "e",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "rana jest kłuta, cięta, czysta (niezakażona), o przylegających brzegach",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-033",
+      "topicId": "PAT-POST",
+      "topicName": "Zmiany postępowe",
+      "text": "Microadenoma definiuje się jako gruczolak o średnicy:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "poniżej 10 mm (<10 mm)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-034",
+      "topicId": "PAT-POST",
+      "topicName": "Zmiany postępowe",
+      "text": "Naprawa (reparatio) jako mechanizm gojenia oznacza, że:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "tkanka wraca w pełni do stanu wyjściowego (budowy i funkcji)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "zniszczona tkanka o małej zdolności odnowy zostaje zastąpiona tkanką łączną (blizną)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-post-057",
+      "topicId": "PAT-POST-GEN",
+      "topicName": "Zmiany postępowe (generowane)",
+      "text": "Podłożem rozrostu nabłonka w kłykcinach kończystych jest zakażenie wirusem:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "cytomegalii (CMV)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "Epsteina-Barr (EBV)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-przed-050",
+      "topicId": "PAT-PRZED-GEN",
+      "topicName": "Zmiany i stany przednowotworowe (generowane)",
+      "text": "Które znamię barwnikowe zwiększa ryzyko rozwoju czerniaka złośliwego?",
+      "correctOptionId": "a",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "znamię barwnikowe dysplastyczne (atypowe)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "wyłącznie znamię barwnikowe brzeżne (junctional)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-wst-064",
+      "topicId": "PAT-WST-GEN",
+      "topicName": "Zmiany wsteczne (generowane)",
+      "text": "Torbiele w zwyrodnieniu wielotorbielowatym nerek wyściela nabłonek:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "przejściowy wielowarstwowy (urotelium)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-010",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Zbiorowisko ropne w naturalnej jamie ciała to:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "Ropniak (empyema)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "Ropień (abscessus)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "Ropowica (phlegmone)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "Czyrak (furunculus)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "Przetoka (fistula)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-016",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Do objawów podstawowych zapalenia nie należy:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 4,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "Zaczerwienienie (rubor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "Ocieplenie (calor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "Ból (dolor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "Obrzęk (tumor)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-021",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Który z podanych odczynów serologicznych jest najbardziej specyficzny dla RZS (reumatoidalnego zapalenia stawów)?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 2,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "czynnik reumatoidalny (RF)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "przeciwciała przeciwko cytrulinowanym antygenom (anty-CCP)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-029",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Wskaż autoprzeciwciała najbardziej charakterystyczne dla zespołu Sjögrena:",
+      "correctOptionId": "b",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "czynnik reumatoidalny (RF)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-032",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "„Pneumocystis carinii (jiroveci)” może wywołać u osób z obniżoną odpornością:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "d",
+          "text": "śródmiąższowe zapalenie płuc (tzw. plazmatycznokomórkowe)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-036",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Które stwierdzenie najlepiej opisuje istotę choroby (wola) Hashimoto?",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "nadczynność tarczycy z wytrzeszczem (choroba Gravesa-Basedowa)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-038",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Empyema (ropniak) – co oznacza ten termin?",
+      "correctOptionId": "c",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "ograniczone nagromadzenie ropy w tkance z jej zniszczeniem (ropień)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-040",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Gronkowcowe zapalenie płuc ma najczęściej charakter:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "d",
+          "text": "odoskrzelowego zapalenia płuc (bronchopneumonia)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-041",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Co odróżnia ziarniniaki gruźlicze od sarkoidalnych w obrazie mikroskopowym?",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "w gruźlicy obecna jest martwica serowata, w sarkoidozie jej brak (z tendencją do włóknienia)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-042",
+      "topicId": "PAT-ZAP",
+      "topicName": "Zapalenia",
+      "text": "Jaka jest najczęstsza przyczyna nabytych wad zastawkowych serca?",
+      "correctOptionId": "d",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "d",
+          "text": "reumatyczne zapalenie wsierdzia (gorączka reumatyczna)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-055",
+      "topicId": "PAT-ZAP-GEN",
+      "topicName": "Zapalenia (generowane)",
+      "text": "Do klasycznych objawów (cech) miejscowych zapalenia NIE należy:",
+      "correctOptionId": "d",
+      "totalParensInOptions": 5,
+      "flaggedOptions": [
+        {
+          "id": "a",
+          "text": "obrzęk (tumor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "b",
+          "text": "zaczerwienienie (rubor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "c",
+          "text": "miejscowe ocieplenie skóry (calor)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "d",
+          "text": "niedokrwistość (anaemia)",
+          "open": 1,
+          "close": 1
+        },
+        {
+          "id": "e",
+          "text": "ból (dolor)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-056",
+      "topicId": "PAT-ZAP-GEN",
+      "topicName": "Zapalenia (generowane)",
+      "text": "Komórką dominującą w nacieku w OSTRYM zapaleniu jest:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "e",
+          "text": "komórka tuczna (mastocyt) bogata w histaminę",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-062",
+      "topicId": "PAT-ZAP-GEN",
+      "topicName": "Zapalenia (generowane)",
+      "text": "Najczęstszą przyczyną ostrego zapalenia wyrostka robaczkowego jest:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "c",
+          "text": "zakażenie wirusem brodawczaka ludzkiego (HPV)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    },
+    {
+      "id": "pat-zap-089",
+      "topicId": "PAT-ZAP-GEN",
+      "topicName": "Zapalenia (generowane)",
+      "text": "Zachorowanie na gruźlicę bezpośrednio po zakażeniu prątkiem określa się jako gruźlicę:",
+      "correctOptionId": "a",
+      "totalParensInOptions": 1,
+      "flaggedOptions": [
+        {
+          "id": "b",
+          "text": "popierwotną (wtórną)",
+          "open": 1,
+          "close": 1
+        }
+      ]
+    }
+  ]
+}

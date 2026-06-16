@@ -1,6 +1,7 @@
 "use client";
 
 import { BookOpen } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { markdownBlock } from "@/features/osce/lib/markdownBlock";
 
@@ -10,13 +11,14 @@ export type TopicSessionIntroProps = {
 };
 
 export function TopicSessionIntro({ knowledgeCard, onStart }: TopicSessionIntroProps) {
+  const t = useTranslations("osce");
   const trimmedKnowledgeCard = knowledgeCard?.trim() ?? null;
   const knowledgeCardContent = trimmedKnowledgeCard ?? "";
   const hasKnowledgeCard = knowledgeCardContent.length > 0;
 
   return (
     <div className="rounded-card border border-border bg-card p-6">
-      <h2 className="font-heading text-heading-sm text-primary">Karta wiedzy</h2>
+      <h2 className="font-heading text-heading-sm text-primary">{t("knowledgeCard")}</h2>
       {hasKnowledgeCard ? (
         <div className="mt-4">{markdownBlock(knowledgeCardContent)}</div>
       ) : (
@@ -25,17 +27,17 @@ export function TopicSessionIntro({ knowledgeCard, onStart }: TopicSessionIntroP
             <BookOpen className="h-5 w-5 text-[#367368]" aria-hidden />
           </div>
           <p className="mt-4 font-body text-body-md font-medium text-primary">
-            Karta wiedzy jest w przygotowaniu
+            {t("knowledgeCardPreparing")}
           </p>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            W międzyczasie możesz przećwiczyć pytania — to najlepszy sposób nauki.
+            {t("knowledgeCardPreparingHint")}
           </p>
           <button
             type="button"
             onClick={onStart}
             className="mt-6 rounded-lg bg-[#C9A84C] px-6 py-2.5 font-body font-medium text-[#002A27] transition duration-200 ease-out hover:brightness-110"
           >
-            Przejdź do pytań →
+            {t("goToQuestions")}
           </button>
         </div>
       )}
@@ -45,7 +47,7 @@ export function TopicSessionIntro({ knowledgeCard, onStart }: TopicSessionIntroP
           onClick={onStart}
           className="mt-8 rounded-lg bg-[#C9A84C] px-6 py-2.5 font-body font-medium text-[#002A27] transition duration-200 ease-out hover:brightness-110"
         >
-          Rozumiem, przejdź do pytań
+          {t("understoodGoToQuestions")}
         </button>
       ) : null}
     </div>

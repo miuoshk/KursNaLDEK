@@ -1,0 +1,606 @@
+{
+  "rows": [
+    {
+      "seq": 1,
+      "topic": "ANA-NAC",
+      "text": "Tętnica szyjna wewnętrzna oddaje na szyi:",
+      "srccode": "ANATSTO-509"
+    },
+    {
+      "seq": 2,
+      "topic": "ANA-NAC",
+      "text": "Tętnica podstawna powstaje z połączenia:",
+      "srccode": "ANATSTO-510"
+    },
+    {
+      "seq": 3,
+      "topic": "ANA-NAC",
+      "text": "Tętnica tarczowa dolna jest gałęzią:",
+      "srccode": "ANATSTO-511"
+    },
+    {
+      "seq": 4,
+      "topic": "ANA-KON",
+      "text": "Łuk dłoniowy powierzchowny oddaje:",
+      "srccode": "ANATSTO-512"
+    },
+    {
+      "seq": 5,
+      "topic": "ANA-KON",
+      "text": "Łuk dłoniowy powierzchowny powstaje z połączenia:",
+      "srccode": "ANATSTO-513"
+    },
+    {
+      "seq": 6,
+      "topic": "ANA-NAC",
+      "text": "Kąt żylny powstaje z połączenia:",
+      "srccode": "ANATSTO-514"
+    },
+    {
+      "seq": 7,
+      "topic": "ANA-KON",
+      "text": "Żyła odpiszczelowa odprowadza krew do żyły:",
+      "srccode": "ANATSTO-515"
+    },
+    {
+      "seq": 8,
+      "topic": "ANA-KON",
+      "text": "Żyła odłokciowa odprowadza krew do żyły:",
+      "srccode": "ANATSTO-516"
+    },
+    {
+      "seq": 9,
+      "topic": "ANA-TRZ",
+      "text": "Część błoniasta przegrody międzykomorowej jest:",
+      "srccode": "ANATSTO-517"
+    },
+    {
+      "seq": 10,
+      "topic": "ANA-OUN",
+      "text": "Zachyłek szyszynkowy znajduje się w:",
+      "srccode": "ANATSTO-518"
+    },
+    {
+      "seq": 11,
+      "topic": "ANA-CZA",
+      "text": "Przez kanał wzrokowy przechodzi:",
+      "srccode": "ANATSTO-519"
+    },
+    {
+      "seq": 12,
+      "topic": "ANA-JAM",
+      "text": "Komórki sitowe tylne uchodzą do:",
+      "srccode": "ANATSTO-520"
+    },
+    {
+      "seq": 13,
+      "topic": "ANA-CZA",
+      "text": "Przez otwór okrągły przechodzi:",
+      "srccode": "ANATSTO-521"
+    },
+    {
+      "seq": 14,
+      "topic": "ANA-NAC",
+      "text": "W dole zażuchwowym tętnica szyjna zewnętrzna oddaje gałęzie:",
+      "srccode": "ANATSTO-522"
+    },
+    {
+      "seq": 15,
+      "topic": "ANA-NER",
+      "text": "Nerw bloczkowy unerwia mięsień:",
+      "srccode": "ANATSTO-523"
+    },
+    {
+      "seq": 16,
+      "topic": "ANA-NER",
+      "text": "Druga gałąź nerwu trójdzielnego (V2) oddaje gałęzie do:",
+      "srccode": "ANATSTO-524"
+    },
+    {
+      "seq": 17,
+      "topic": "ANA-NER",
+      "text": "Przywspółczulne jądro nerwu twarzowego to jądro:",
+      "srccode": "ANATSTO-525"
+    },
+    {
+      "seq": 18,
+      "topic": "ANA-NER",
+      "text": "Zwój przedsionkowy leży w:",
+      "srccode": "ANATSTO-526"
+    },
+    {
+      "seq": 19,
+      "topic": "ANA-NER",
+      "text": "Nerw językowo-gardłowy opuszcza mózgowie w:",
+      "srccode": "ANATSTO-527"
+    },
+    {
+      "seq": 20,
+      "topic": "ANA-TRZ",
+      "text": "Płat dolny płuca prawego zawiera:",
+      "srccode": "ANATSTO-528"
+    },
+    {
+      "seq": 21,
+      "topic": "ANA-OBW",
+      "text": "Układ przywspółczulny składa się z części:",
+      "srccode": "ANATSTO-529"
+    },
+    {
+      "seq": 22,
+      "topic": "ANA-CZA",
+      "text": "Okienko ślimaka znajduje się:",
+      "srccode": "ANATSTO-530"
+    },
+    {
+      "seq": 23,
+      "topic": "ANA-TRZ",
+      "text": "Więzadło wątrobowo-dwunastnicze zawiera:",
+      "srccode": "ANATSTO-531"
+    },
+    {
+      "seq": 24,
+      "topic": "ANA-TRZ",
+      "text": "Otwór sieciowy prowadzący do torby sieciowej jest ograniczony z tyłu przez:",
+      "srccode": "ANATSTO-532"
+    },
+    {
+      "seq": 25,
+      "topic": "ANA-TUL",
+      "text": "W śródpiersiu tylnym dolnym nie znajdują się:",
+      "srccode": "ANATSTO-533"
+    },
+    {
+      "seq": 26,
+      "topic": "ANA-NER",
+      "text": "Nerw okoruchowy nie unerwia mięśnia:",
+      "srccode": "ANATSTO-534"
+    },
+    {
+      "seq": 27,
+      "topic": "ANA-KON",
+      "text": "Mięsień dwugłowy uda działa w ten sposób, że:",
+      "srccode": "ANATSTO-535"
+    },
+    {
+      "seq": 28,
+      "topic": "ANA-CZA",
+      "text": "Kość łzowa jest jednym z elementów budujących:",
+      "srccode": "ANATSTO-536"
+    },
+    {
+      "seq": 29,
+      "topic": "ANA-TRZ",
+      "text": "Węzeł przedsionkowo-komorowy leży:",
+      "srccode": "ANATSTO-537"
+    },
+    {
+      "seq": 30,
+      "topic": "ANA-CZA",
+      "text": "W skład ściany przyśrodkowej oczodołu nie wchodzą elementy kości:",
+      "srccode": "ANATSTO-538"
+    },
+    {
+      "seq": 31,
+      "topic": "ANA-TUL",
+      "text": "Więzadła żółte łączą:",
+      "srccode": "ANATSTO-539"
+    },
+    {
+      "seq": 32,
+      "topic": "ANA-TUL",
+      "text": "Otwory w wyrostkach poprzecznych są cechą charakterystyczną dla:",
+      "srccode": "ANATSTO-540"
+    },
+    {
+      "seq": 33,
+      "topic": "ANA-TUL",
+      "text": "Żebra rzekome to żebra:",
+      "srccode": "ANATSTO-541"
+    },
+    {
+      "seq": 34,
+      "topic": "ANA-TUL",
+      "text": "Kąt mostka (miejsce połączenia trzonu z rękojeścią) to miejsce przyczepu:",
+      "srccode": "ANATSTO-542"
+    },
+    {
+      "seq": 35,
+      "topic": "ANA-KON",
+      "text": "W skład kośćca ręki wchodzi:",
+      "srccode": "ANATSTO-543"
+    },
+    {
+      "seq": 36,
+      "topic": "ANA-KON",
+      "text": "Staw biodrowy to staw:",
+      "srccode": "ANATSTO-544"
+    },
+    {
+      "seq": 37,
+      "topic": "ANA-KON",
+      "text": "Ruchy nawracania i odwracania przedramienia zachodzą w stawie:",
+      "srccode": "ANATSTO-545"
+    },
+    {
+      "seq": 38,
+      "topic": "ANA-KON",
+      "text": "W stawie kolanowym więzadła wewnątrzstawowe to:",
+      "srccode": "ANATSTO-546"
+    },
+    {
+      "seq": 39,
+      "topic": "ANA-CZA",
+      "text": "Szew wieńcowy łączy:",
+      "srccode": "ANATSTO-547"
+    },
+    {
+      "seq": 40,
+      "topic": "ANA-CZA",
+      "text": "Skrzydło mniejsze kości klinowej stanowi element:",
+      "srccode": "ANATSTO-548"
+    },
+    {
+      "seq": 41,
+      "topic": "ANA-OUN",
+      "text": "Ściana boczna rogu przedniego komory bocznej jest utworzona przez:",
+      "srccode": "ANATSTO-549"
+    },
+    {
+      "seq": 42,
+      "topic": "ANA-OUN",
+      "text": "Piramidy leżą do boku od:",
+      "srccode": "ANATSTO-550"
+    },
+    {
+      "seq": 43,
+      "topic": "ANA-OUN",
+      "text": "Powierzchnię grzbietową mostu i rdzenia przedłużonego oddzielają:",
+      "srccode": "ANATSTO-551"
+    },
+    {
+      "seq": 44,
+      "topic": "ANA-OUN",
+      "text": "Wzgórek nerwu twarzowego znajduje się w:",
+      "srccode": "ANATSTO-552"
+    },
+    {
+      "seq": 45,
+      "topic": "ANA-OUN",
+      "text": "Do najstarszych filogenetycznie części móżdżku należy:",
+      "srccode": "ANATSTO-553"
+    },
+    {
+      "seq": 46,
+      "topic": "ANA-OUN",
+      "text": "Konar górny móżdżku:",
+      "srccode": "ANATSTO-554"
+    },
+    {
+      "seq": 47,
+      "topic": "ANA-OUN",
+      "text": "Wzgórki dolne blaszki pokrywy to:",
+      "srccode": "ANATSTO-555"
+    },
+    {
+      "seq": 48,
+      "topic": "ANA-OUN",
+      "text": "Jądra uzdeczki to elementy:",
+      "srccode": "ANATSTO-556"
+    },
+    {
+      "seq": 49,
+      "topic": "ANA-OUN",
+      "text": "Zakręt przyhipokampowy znajduje się na:",
+      "srccode": "ANATSTO-557"
+    },
+    {
+      "seq": 50,
+      "topic": "ANA-OUN",
+      "text": "Ciało migdałowate leży w okolicy:",
+      "srccode": "ANATSTO-558"
+    },
+    {
+      "seq": 51,
+      "topic": "ANA-TRZ",
+      "text": "Nasada krezki zaczyna się na wysokości:",
+      "srccode": "ANATSTO-559"
+    },
+    {
+      "seq": 52,
+      "topic": "ANA-TRZ",
+      "text": "Więzadło sierpowate oddziela w wątrobie:",
+      "srccode": "ANATSTO-560"
+    },
+    {
+      "seq": 53,
+      "topic": "ANA-TRZ",
+      "text": "Przewód wątrobowy wspólny powstaje z połączenia:",
+      "srccode": "ANATSTO-561"
+    },
+    {
+      "seq": 54,
+      "topic": "ANA-TRZ",
+      "text": "Dół pęcherzykowy znajduje się w wątrobie:",
+      "srccode": "ANATSTO-562"
+    },
+    {
+      "seq": 55,
+      "topic": "ANA-TRZ",
+      "text": "Trzustka:",
+      "srccode": "ANATSTO-563"
+    },
+    {
+      "seq": 56,
+      "topic": "ANA-TRZ",
+      "text": "Dwunastnica otacza:",
+      "srccode": "ANATSTO-564"
+    },
+    {
+      "seq": 57,
+      "topic": "ANA-JAM",
+      "text": "Do przewodu nosowego dolnego uchodzą:",
+      "srccode": "ANATSTO-565"
+    },
+    {
+      "seq": 58,
+      "topic": "ANA-JAM",
+      "text": "Mięsień rozwierający szparę głośni to:",
+      "srccode": "ANATSTO-566"
+    },
+    {
+      "seq": 59,
+      "topic": "ANA-TRZ",
+      "text": "Najniżej położonym elementem w korzeniu płuc jest:",
+      "srccode": "ANATSTO-567"
+    },
+    {
+      "seq": 60,
+      "topic": "ANA-TRZ",
+      "text": "Wnęka nerki leży na wysokości:",
+      "srccode": "ANATSTO-568"
+    },
+    {
+      "seq": 61,
+      "topic": "ANA-MIE",
+      "text": "Mięśnie skrzydłowe znajdują się:",
+      "srccode": "ANATSTO-569"
+    },
+    {
+      "seq": 62,
+      "topic": "ANA-TUL",
+      "text": "Rozwór aorty znajduje się w:",
+      "srccode": "ANATSTO-570"
+    },
+    {
+      "seq": 63,
+      "topic": "ANA-TUL",
+      "text": "Część żebrowa przepony przyczepia się do:",
+      "srccode": "ANATSTO-571"
+    },
+    {
+      "seq": 64,
+      "topic": "ANA-TUL",
+      "text": "Blaszkę przednią pochewki mięśnia prostego brzucha poniżej pępka tworzy:",
+      "srccode": "ANATSTO-572"
+    },
+    {
+      "seq": 65,
+      "topic": "ANA-TUL",
+      "text": "Ścianę tylną kanału pachwinowego tworzy:",
+      "srccode": "ANATSTO-573"
+    },
+    {
+      "seq": 66,
+      "topic": "ANA-TRZ",
+      "text": "Przez kanał pachwinowy u kobiety przechodzi:",
+      "srccode": "ANATSTO-574"
+    },
+    {
+      "seq": 67,
+      "topic": "ANA-NAC",
+      "text": "Blaszka przedtchawicza biegnie:",
+      "srccode": "ANATSTO-575"
+    },
+    {
+      "seq": 68,
+      "topic": "ANA-MIE",
+      "text": "Jednostronny skurcz mm. skrzydłowych bocznych:",
+      "srccode": "ANATSTO-576"
+    },
+    {
+      "seq": 69,
+      "topic": "ANA-MIE",
+      "text": "Głowa dolna mięśnia skrzydłowego bocznego przyczepia się między innymi do:",
+      "srccode": "ANATSTO-577"
+    },
+    {
+      "seq": 70,
+      "topic": "ANA-KON",
+      "text": "Mięsień kruczo-ramienny:",
+      "srccode": "ANATSTO-578"
+    },
+    {
+      "seq": 71,
+      "topic": "ANA-TRZ",
+      "text": "We wnęce nerki w kolejności od tyłu do przodu leżą:",
+      "srccode": "ANATSTO-579"
+    },
+    {
+      "seq": 72,
+      "topic": "ANA-TRZ",
+      "text": "Moczowód biegnie:",
+      "srccode": "ANATSTO-580"
+    },
+    {
+      "seq": 73,
+      "topic": "ANA-TRZ",
+      "text": "Powięź nasienna zewnętrzna odpowiada:",
+      "srccode": "ANATSTO-581"
+    },
+    {
+      "seq": 74,
+      "topic": "ANA-TRZ",
+      "text": "Dół łódkowaty to:",
+      "srccode": "ANATSTO-582"
+    },
+    {
+      "seq": 75,
+      "topic": "ANA-TRZ",
+      "text": "W obrębie prącia cewka moczowa otoczona jest przez:",
+      "srccode": "ANATSTO-583"
+    },
+    {
+      "seq": 76,
+      "topic": "ANA-TRZ",
+      "text": "Kolejne odcinki jajowodu, licząc od końca macicznego, to:",
+      "srccode": "ANATSTO-584"
+    },
+    {
+      "seq": 77,
+      "topic": "ANA-TRZ",
+      "text": "Prawidłowo macica położona jest w:",
+      "srccode": "ANATSTO-585"
+    },
+    {
+      "seq": 78,
+      "topic": "ANA-TRZ",
+      "text": "Ujście zewnętrzne cewki moczowej żeńskiej znajduje się:",
+      "srccode": "ANATSTO-586"
+    },
+    {
+      "seq": 79,
+      "topic": "ANA-TRZ",
+      "text": "Po lewej stronie mostka osłuchujemy:",
+      "srccode": "ANATSTO-587"
+    },
+    {
+      "seq": 80,
+      "topic": "ANA-TRZ",
+      "text": "Więzadło obłe wątroby to pozostałość po:",
+      "srccode": "ANATSTO-588"
+    },
+    {
+      "seq": 81,
+      "topic": "ANA-CZA",
+      "text": "Otwór szyjny ograniczony jest przez:",
+      "srccode": "ANATSTO-589"
+    },
+    {
+      "seq": 82,
+      "topic": "ANA-KON",
+      "text": "Gęsia stopka (pes anserinus) jest utworzona przez ścięgna mięśni:",
+      "srccode": "ANATSTO-590"
+    },
+    {
+      "seq": 83,
+      "topic": "ANA-CZA",
+      "text": "Wyniosłość łukowata piramidy kości skroniowej jest utworzona przez:",
+      "srccode": "ANATSTO-591"
+    },
+    {
+      "seq": 84,
+      "topic": "ANA-JAM",
+      "text": "Ślinianka przyuszna:",
+      "srccode": "ANATSTO-592"
+    },
+    {
+      "seq": 85,
+      "topic": "ANA-JAM",
+      "text": "Ślinianka podżuchwowa jest unerwiona przez nerw czaszkowy:",
+      "srccode": "ANATSTO-593"
+    },
+    {
+      "seq": 86,
+      "topic": "ANA-TRZ",
+      "text": "Zwężenie anatomiczne przełyku spowodowane jest skrzyżowaniem:",
+      "srccode": "ANATSTO-594"
+    },
+    {
+      "seq": 87,
+      "topic": "ANA-NER",
+      "text": "Korzeń czuciowy zwoju żuchwowego (podżuchwowego) pochodzi z:",
+      "srccode": "ANATSTO-595"
+    },
+    {
+      "seq": 88,
+      "topic": "ANA-MIE",
+      "text": "Mięsień dwubrzuścowy unerwiony jest następująco:",
+      "srccode": "ANATSTO-596"
+    },
+    {
+      "seq": 89,
+      "topic": "ANA-KON",
+      "text": "Mięsień odwodziciel długi kciuka należy do:",
+      "srccode": "ANATSTO-597"
+    },
+    {
+      "seq": 90,
+      "topic": "ANA-JAM",
+      "text": "Tylną 1/3 języka smakowo unerwia:",
+      "srccode": "ANATSTO-598"
+    },
+    {
+      "seq": 91,
+      "topic": "ANA-OUN",
+      "text": "Włókna korowo-rdzeniowe przechodzą przez:",
+      "srccode": "ANATSTO-599"
+    },
+    {
+      "seq": 92,
+      "topic": "ANA-NAC",
+      "text": "Tętnica łącząca tylna jest gałęzią:",
+      "srccode": "ANATSTO-600"
+    },
+    {
+      "seq": 93,
+      "topic": "ANA-OUN",
+      "text": "Zatoki żylne mózgowia leżą między:",
+      "srccode": "ANATSTO-601"
+    },
+    {
+      "seq": 94,
+      "topic": "ANA-OBW",
+      "text": "Splot szyjny powstaje z połączenia:",
+      "srccode": "ANATSTO-602"
+    },
+    {
+      "seq": 95,
+      "topic": "ANA-OBW",
+      "text": "Nerw pachowy odchodzi z:",
+      "srccode": "ANATSTO-603"
+    },
+    {
+      "seq": 96,
+      "topic": "ANA-OBW",
+      "text": "Uszkodzenie nerwu zasłonowego spowoduje przede wszystkim utrudnienie w ruchach:",
+      "srccode": "ANATSTO-604"
+    },
+    {
+      "seq": 97,
+      "topic": "ANA-OBW",
+      "text": "Nerw łokciowy oddaje między innymi gałęzie do:",
+      "srccode": "ANATSTO-605"
+    },
+    {
+      "seq": 98,
+      "topic": "ANA-TRZ",
+      "text": "Zachyłki opłucnej to:",
+      "srccode": "ANATSTO-606"
+    },
+    {
+      "seq": 99,
+      "topic": "ANA-OBW",
+      "text": "Mięśnie przywodziciele uda są unerwione przez nerw:",
+      "srccode": "ANATSTO-607"
+    },
+    {
+      "seq": 100,
+      "topic": "ANA-OBW",
+      "text": "Opadanie stopy (brak możliwości wykonania zgięcia grzbietowego stopy) jest spowodowane uszkodzeniem nerwu:",
+      "srccode": "ANATSTO-608"
+    }
+  ],
+  "internalCut": [],
+  "rowCount": 100
+}

@@ -1,0 +1,655 @@
+{
+  "label": "phum-psy-gen-length-fix-chunk-3",
+  "edits": [
+    {
+      "id": "phum-psy-gen-051",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Krytykowanie — bezpośrednie obwinianie pacjenta za jego postępowanie w formie oceny lub ataku"
+        },
+        {
+          "id": "b",
+          "text": "Pocieszanie — próba łagodzenia emocji pacjenta przez bagatelizowanie jego obaw i uczuć"
+        },
+        {
+          "id": "c",
+          "text": "Moralizowanie — ocenianie zachowania pacjenta normami etycznymi zamiast słuchania jego potrzeb"
+        },
+        {
+          "id": "d",
+          "text": "Pouczanie — przekazywanie rad i wskazówek z pozycji autorytetu bez zbadania perspektywy pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Interpretowanie i diagnozowanie — przypisanie pacjenta do stereotypu („tacy pacjenci jak pan”)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-052",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wydawanie ocen pozytywnych — pochwała z ukrytą krytyką i protekcjonalnością wobec pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "Pouczanie — doradzanie pacjentowi, co powinien robić, bez zbadania jego uczuć i motywacji"
+        },
+        {
+          "id": "c",
+          "text": "Odwracanie uwagi i ironizowanie — zmiana tematu lub żart w sytuacji wymagającej empatii"
+        },
+        {
+          "id": "d",
+          "text": "Interpretowanie — przypisywanie pacjentowi motywów i diagnozowanie jego uczuć bez pytania"
+        },
+        {
+          "id": "e",
+          "text": "Pocieszanie i uspokajanie — unieważnianie emocji pacjenta słowami „proszę nie płakać”"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-053",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Carl Rogers — twórca podejścia humanistycznego w psychoterapii i psychologii klinicznej"
+        },
+        {
+          "id": "b",
+          "text": "Thomas Gordon — autor modelu 12 barier komunikacyjnych w relacji terapeutycznej"
+        },
+        {
+          "id": "c",
+          "text": "Marshall Rosenberg — twórca metody Porozumienia bez Przemocy (Nonviolent Communication)"
+        },
+        {
+          "id": "d",
+          "text": "William Miller — współtwórca Dialogu Motywującego i modelu pracy z oporem pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Jacek Reykowski — polski psycholog społeczny, badacz postaw i procesów grupowych"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-054",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sekwencja NVC: uczucie → obserwacja faktu → prośba → potrzeba (zamiana pierwszych dwóch kroków)"
+        },
+        {
+          "id": "b",
+          "text": "Sekwencja NVC: uczucie → potrzeba → obserwacja → prośba (potrzeba przed obserwacją faktu)"
+        },
+        {
+          "id": "c",
+          "text": "Sekwencja NVC: potrzeba → prośba → obserwacja → uczucie (całkowicie odwrócona kolejność kroków)"
+        },
+        {
+          "id": "d",
+          "text": "Sekwencja NVC: obserwacja → prośba → uczucie → potrzeba (prośba przed uczuciem i potrzebą)"
+        },
+        {
+          "id": "e",
+          "text": "Sekwencja NVC: obserwacja → uczucie → potrzeba → prośba (prawidłowa kolejność 4 kroków)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-055",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Język pełen ocen, krytyki, porównań i analizowania — typowy dla języka szakala w symbolice NVC"
+        },
+        {
+          "id": "b",
+          "text": "Język etykiet, stereotypów i uogólnień — przypisywanie ludziom szufladek zamiast słuchania"
+        },
+        {
+          "id": "c",
+          "text": "Język uczuć i potrzeb — mówienie o sobie z szacunkiem, empatią i słuchaniem drugiej strony"
+        },
+        {
+          "id": "d",
+          "text": "Język kar i nagród — manipulowanie zachowaniem groźbą lub obietnicą materialnej korzyści"
+        },
+        {
+          "id": "e",
+          "text": "Język żądań i przymusu — oczekiwanie, że inni spełnią oczekiwania bez negocjacji potrzeb"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-056",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Język żyrafy — język serca oparty na uczuciach, potrzebach i wzajemnym szacunku w dialogu"
+        },
+        {
+          "id": "b",
+          "text": "Język terapeuty stosującego parafrazę — odbicie treści wypowiedzi pacjenta bez oceniania"
+        },
+        {
+          "id": "c",
+          "text": "Język empatycznego lekarza — komunikacja oparta na aktywnym słuchaniu i walidacji emocji"
+        },
+        {
+          "id": "d",
+          "text": "Język pacjenta w fazie działania — deklaracje gotowości do zmiany i planowania zachowań"
+        },
+        {
+          "id": "e",
+          "text": "Język szakala — język „musisz”, „powinieneś”, ocen, kar i żądań wobec rozmówcy"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-057",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metoda zakazująca wszelkiej krytyki pod groźbą kary — całkowity zakaz negatywnej informacji"
+        },
+        {
+          "id": "b",
+          "text": "Metoda eliminująca komunikację niewerbalną — ograniczenie dialogu wyłącznie do słów werbalnych"
+        },
+        {
+          "id": "c",
+          "text": "Metoda dotycząca wyłącznie przemocy fizycznej w placówce medycznej — interwencja kryzysowa"
+        },
+        {
+          "id": "d",
+          "text": "Metoda oparta na perswazji i nakłanianiu do zmiany — przekonywanie pacjenta do właściwego postępu"
+        },
+        {
+          "id": "e",
+          "text": "Metoda budująca kontakt oparty na szacunku i zrozumieniu, zaspokajając potrzeby pokojowo"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-058",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stosuje się w pełni do zaleceń lekarskich — realizuje wszystkie zalecone leki i zalecenia"
+        },
+        {
+          "id": "b",
+          "text": "Regularnie zgłasza się na wizyty kontrolne — utrzymuje ciągłość opieki ambulatoryjnej"
+        },
+        {
+          "id": "c",
+          "text": "Całkowicie rezygnuje z leczenia — porzuca farmakoterapię i zalecenia modyfikacji stylu życia"
+        },
+        {
+          "id": "d",
+          "text": "Stosuje wyłącznie metody niefarmakologiczne — odrzuca leki na rzecz diet i aktywności fizycznej"
+        },
+        {
+          "id": "e",
+          "text": "Nie przestrzega zaleceń lekarskich — nie realizuje zaleconego leczenia w wymaganym stopniu"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-059",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Znaczenie bezwarunkowego szacunku wobec klienta — akceptacja bez oceniania (wkład Rogersa)"
+        },
+        {
+          "id": "b",
+          "text": "Konieczność stosowania perswazji — przekonywanie pacjenta do zmiany zachowań zdrowotnych"
+        },
+        {
+          "id": "c",
+          "text": "Rolę nieświadomych mechanizmów obronnych — wpływ psychoanalitycznych procesów na opór"
+        },
+        {
+          "id": "d",
+          "text": "Wpływ czynników biologicznych na zachowanie — determinizm genetyczny i neurobiologiczny"
+        },
+        {
+          "id": "e",
+          "text": "Duże znaczenie stadium zmiany klienta — dopasowanie interwencji do etapu gotowości (TTM)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-060",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wprowadzenie zdrowych nawyków i regularnej kontroli obniżających ryzyko nawrotów chorób serca"
+        },
+        {
+          "id": "b",
+          "text": "Całkowite wyleczenie choroby przewlekłej — trwałe ustąpienie objawów i normalizacja wyników"
+        },
+        {
+          "id": "c",
+          "text": "Wyłączną poprawę komunikacji werbalnej — lepsze sformułowania bez wpływu na zachowania zdrowotne"
+        },
+        {
+          "id": "d",
+          "text": "Zwiększenie liczby przepisywanych leków — intensyfikacja farmakoterapii jako główny cel rozmowy"
+        },
+        {
+          "id": "e",
+          "text": "Skrócenie czasu wizyty lekarskiej — efektywność organizacyjna bez wpływu na wyniki kliniczne"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-061",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sprzeczność między zasadami organizacji a przekonaniami jednostki — konflikt wartości (Maslach)"
+        },
+        {
+          "id": "b",
+          "text": "Konflikt między językiem żyrafy a szakala — stosowanie różnych stylów komunikacji w gabinecie"
+        },
+        {
+          "id": "c",
+          "text": "Rozbieżność między wiedzą medyczną a wiedzą pacjenta — asymetria informacji w relacji terapeutycznej"
+        },
+        {
+          "id": "d",
+          "text": "Niezgodność między oceną pierwotną a wtórną — rozbieżność w diagnozie między specjalistami"
+        },
+        {
+          "id": "e",
+          "text": "Konflikt między rolą zawodową a rolą prywatną — trudność pogodzenia pracy lekarza z życiem rodzinnym"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-062",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niższy poziom wypalenia zawodowego — zmniejszenie wyczerpania emocjonalnego u personelu medycznego"
+        },
+        {
+          "id": "b",
+          "text": "Mniejsza presja czasu — redukcja stresu związanego z ograniczonym czasem wizyty ambulatoryjnej"
+        },
+        {
+          "id": "c",
+          "text": "Uruchomienie efektu placebo i wzmocnienie odporności — korzyść biologiczna po stronie pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "Większe zadowolenie z pracy zawodowej — poprawa satysfakcji zawodowej lekarza po empatycznej rozmowie"
+        },
+        {
+          "id": "e",
+          "text": "Mniejsze prawdopodobieństwo depresji u lekarza — ochrona zdrowia psychicznego personelu medycznego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-063",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rozwój egocentryzmu mowy i myślenia — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny)"
+        },
+        {
+          "id": "b",
+          "text": "Osiągnięcie emocjonalnej niezależności od rodziców — autonomia afektywna typowa dla adolescencji"
+        },
+        {
+          "id": "c",
+          "text": "Rozróżnianie dobra i zła — rozwój moralny i etyczny w średnim dzieciństwie (wiek przedszkolny)"
+        },
+        {
+          "id": "d",
+          "text": "Pojawienie się stadium przedoperacyjnego Piageta — myślenie symboliczne, ale jeszcze nielogiczne"
+        },
+        {
+          "id": "e",
+          "text": "Bezpieczna więź rodzic–dziecko sprzyjająca zaufaniu i zdrowemu rozwojowi emocjonalnemu niemowlęcia"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-064",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "W średnim dzieciństwie (wiek przedszkolny) — lęki przed zwierzętami, ciemnością i symbolami"
+        },
+        {
+          "id": "b",
+          "text": "W wieku szkolnym — lęki przed niepowodzeniem, krytyką nauczyciela i brakiem akceptacji rówieśników"
+        },
+        {
+          "id": "c",
+          "text": "We wczesnym dzieciństwie (niemowlęctwie) — lęk separacyjny, przed obcymi i głośnymi dźwiękami"
+        },
+        {
+          "id": "d",
+          "text": "W wieku dorastania — lęk przed dezaprobatą grupy rówieśniczej i oceną społeczną"
+        },
+        {
+          "id": "e",
+          "text": "W okresie prenatalnym — reakcje na bodźce matczyne jeszcze przed narodzinami dziecka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-065",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niemowlęctwa — lęk separacyjny, przed obcymi ludźmi i przed głośnymi, nagłymi dźwiękami"
+        },
+        {
+          "id": "b",
+          "text": "Wczesnej dorosłości — lęki egzystencjalne związane z tożsamością i samodzielnością życiową"
+        },
+        {
+          "id": "c",
+          "text": "Wieku szkolnego — lęki przed niepowodzeniem, krytyką nauczyciela i brakiem akceptacji przez rówieśników"
+        },
+        {
+          "id": "d",
+          "text": "Wieku dorastania — lęk przed dezaprobatą grupy i eksperymentowanie z tożsamością społeczną"
+        },
+        {
+          "id": "e",
+          "text": "Średniego dzieciństwa (wieku przedszkolnego) — lęk przed wyimaginowanymi postaciami (potwory, duchy)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-066",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Emocjonalna niezależność od rodziców i zakochiwanie się — cechy typowe dla okresu adolescencji"
+        },
+        {
+          "id": "b",
+          "text": "Odroczona gratyfikacja i maskowanie agresji — osiągnięcia charakterystyczne dla wieku szkolnego"
+        },
+        {
+          "id": "c",
+          "text": "Pojęcie abstrakcyjne choroby — rozumienie choroby jako procesu wymagającego refleksji (adolescencja)"
+        },
+        {
+          "id": "d",
+          "text": "Rozpatrywanie śmierci w kategoriach lęku egzystencjalnego — typowe dla chorującego nastolatka"
+        },
+        {
+          "id": "e",
+          "text": "Egocentryzm mowy i myślenia oraz stadium przedoperacyjne Piageta — osiągnięcia wieku przedszkolnego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-067",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rozumieją chorobę jako pojęcie abstrakcyjne — postrzegają ją jako proces wymagający głębszej refleksji"
+        },
+        {
+          "id": "b",
+          "text": "W pełni rozumieją czasowość nieobecności rodziców — wiedzą, że rodzice wrócą po separacji"
+        },
+        {
+          "id": "c",
+          "text": "Rozpatrują śmierć w kategoriach lęku egzystencjalnego — myślą o nieuchronności i sensie życia"
+        },
+        {
+          "id": "d",
+          "text": "Postrzegają chorobę jako proces nieodwracalny i powszechny — rozumieją jej ostateczność"
+        },
+        {
+          "id": "e",
+          "text": "Nie rozumieją choroby — przeżywają każdy epizod osobno; przy oporze wobec leczenia czują się zdrowe"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-068",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proces nieodwracalny i powszechny — rozumienie choroby jako stanu trwałego dotykającego wszystkich"
+        },
+        {
+          "id": "b",
+          "text": "Subiektywne cierpienie wymagające negocjacji — choroba jako doświadczenie do omówienia z dorosłymi"
+        },
+        {
+          "id": "c",
+          "text": "Zjawisko czysto abstrakcyjne — choroba jako pojęcie teoretyczne bez bezpośredniego znaczenia osobistego"
+        },
+        {
+          "id": "d",
+          "text": "Lęk egzystencjalny — postrzeganie choroby w kategoriach zagrożenia sensu i tożsamości (adolescencja)"
+        },
+        {
+          "id": "e",
+          "text": "Karę za złe uczynki — magiczne, karzące wyjaśnienie choroby lub konieczności operacji"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-069",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do 3 roku życia — dziecko postrzega śmierć jako stan odwracalny, porównywalny ze snem lub podróżą"
+        },
+        {
+          "id": "b",
+          "text": "W 7 roku życia — śmierć jako proces nieodwracalny, ale jeszcze niepowszechny (tylko u niektórych)"
+        },
+        {
+          "id": "c",
+          "text": "Od 9 roku życia — przekonanie o powszechności śmierci jako nieuchronnego losu każdego człowieka"
+        },
+        {
+          "id": "d",
+          "text": "Dopiero w wieku dorastania — pełne egzystencjalne ujęcie śmierci i choroby jako zagrożenia tożsamości"
+        },
+        {
+          "id": "e",
+          "text": "W okresie prenatalnym — brak świadomości śmierci; pojęcie powstaje dopiero po urodzeniu dziecka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-070",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niemowlęcia — brak rozumienia choroby; reakcje na ból, separację i procedury medyczne"
+        },
+        {
+          "id": "b",
+          "text": "Dziecka w wieku przedszkolnym — magiczne, karzące wyjaśnienia choroby i operacji"
+        },
+        {
+          "id": "c",
+          "text": "Dziecka w wieku wczesnoszkolnym — stopniowe rozumienie nieodwracalności, lecz nie powszechności śmierci"
+        },
+        {
+          "id": "d",
+          "text": "Chorującego nastolatka (wiek dorastania) — abstrakcyjne pojęcie choroby i lęk egzystencjalny"
+        },
+        {
+          "id": "e",
+          "text": "Dziecka do 3 roku życia — epizodyczne przeżywanie choroby bez zrozumienia jej jako stanu trwałego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-071",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "W wieku przedszkolnym postrzegających chorobę lub operację jako karę — magiczne wyjaśnienia za złe uczynki"
+        },
+        {
+          "id": "b",
+          "text": "W adolescencji przeżywających lęk egzystencjalny — abstrakcyjne ujęcie choroby i śmierci"
+        },
+        {
+          "id": "c",
+          "text": "Od 9 roku życia rozumiejących powszechność śmierci — pełna świadomość nieuchronności losu"
+        },
+        {
+          "id": "d",
+          "text": "W pierwszym roku życia doświadczających zagrożenia życia — silne, bierne przywiązanie wobec matki"
+        },
+        {
+          "id": "e",
+          "text": "Do 3 miesiąca życia reagujących zmianą rytmu snu — wczesna adaptacja do stresu hospitalizacji"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-072",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Egocentryzm mowy i myślenia — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny)"
+        },
+        {
+          "id": "b",
+          "text": "Lęk separacyjny przed rozstaniem z opiekunem — normatywny lęk wczesnego dzieciństwa (niemowlęctwo)"
+        },
+        {
+          "id": "c",
+          "text": "Poszukiwanie doznań i stymulacji, podatność na sugestię oraz lęk przed dezaprobatą — adolescencja"
+        },
+        {
+          "id": "d",
+          "text": "Trening czystości i stadium przedoperacyjne Piageta — osiągnięcia wieku przedszkolnego"
+        },
+        {
+          "id": "e",
+          "text": "Brak rozumienia czasowości nieobecności rodziców — trudność w przewidywaniu powrotu opiekuna"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-073",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Agresja społeczna dominuje u chłopców, a fizyczna u dziewcząt — odwrócenie typowego wzorca płciowego"
+        },
+        {
+          "id": "b",
+          "text": "Brak zdolności do odroczonej gratyfikacji — niemożność opóźnienia gratyfikacji (cecha niemowlęcia)"
+        },
+        {
+          "id": "c",
+          "text": "Dzieci nie potrafią rozpoznawać i nazywać uczuć — brak kompetencji emocjonalnej (wiek przedszkolny)"
+        },
+        {
+          "id": "d",
+          "text": "Maskowanie agresji — agresja społeczna głównie u dziewcząt, fizyczna u chłopców (wiek szkolny)"
+        },
+        {
+          "id": "e",
+          "text": "Rozstawanie się z rodzicami zawsze wywołuje silny lęk — utrwalony lęk separacyjny (niemowlęctwo)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-074",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lęk separacyjny i lęk przed obcymi — normatywne lęki wczesnego dzieciństwa (niemowlęctwo)"
+        },
+        {
+          "id": "b",
+          "text": "Lęk przed głośnymi dźwiękami i upadkiem — typowe lęki niemowlęcia w pierwszych latach życia"
+        },
+        {
+          "id": "c",
+          "text": "Lęk przed nadnaturalnymi postaciami (potwory, duchy) — lęk przed symbolami w wieku przedszkolnym"
+        },
+        {
+          "id": "d",
+          "text": "Lęk przed niepowodzeniem/porażką oraz przed brakiem akceptacji i krytyką — lęki wieku szkolnego"
+        },
+        {
+          "id": "e",
+          "text": "Lęk egzystencjalny przed nieuchronnością śmierci — typowy dla chorującego nastolatka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-075",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pojawienie się egocentryzmu mowy — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny i wczesny)"
+        },
+        {
+          "id": "b",
+          "text": "Trening czystości — osiągnięcie kontroli nad funkcjami fizjologicznymi (wiek przedszkolny)"
+        },
+        {
+          "id": "c",
+          "text": "Rozwój stałości obiektu i lęku przed separacją — kamień milowy niemowlęctwa (pierwszy rok życia)"
+        },
+        {
+          "id": "d",
+          "text": "Nasilenie konfliktów rodzinnych związanych z autonomią oraz uczuciowe angażowanie się (zakochiwanie)"
+        },
+        {
+          "id": "e",
+          "text": "Brak zdolności nazywania emocji — niemożność werbalizacji uczuć (cecha wczesnego dzieciństwa)"
+        }
+      ]
+    }
+  ]
+}

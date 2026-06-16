@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import type { OPGAtlas, OPGStructure, OPGQuizConfig } from '../../lib/opg/types'
 import { useOPGQuiz } from './useOPGQuiz'
@@ -22,6 +23,7 @@ export default function OPGQuizView({
   initialConfig,
   onBack,
 }: OPGQuizViewProps) {
+  const t = useTranslations('osce')
   const quiz = useOPGQuiz()
   const currentQuestion = quiz.getCurrentQuestion()
 
@@ -148,7 +150,7 @@ export default function OPGQuizView({
                 cursor: 'pointer',
               }}
             >
-              Dalej &rarr;
+              {t('opgContinue')}
             </button>
           )}
         </div>

@@ -41,6 +41,8 @@ function collectMatchIndices(text, re) {
   for (const m of text.matchAll(global)) {
     if (m.index === undefined) continue;
     if (isParenRangeBefore(text, m.index)) continue;
+    const prev = m.index > 0 ? text[m.index - 1] : "";
+    if (prev === "(" || prev === "*") continue;
     indices.push(m.index);
   }
   return indices;
@@ -77,10 +79,12 @@ const LIST_MARKER_IN_SEGMENT =
 function breakAfterListBlock(text) {
   return text.replace(
     /([.!?;])([ \t]+)(?=[A-ZĄĆĘŁŃÓŚŹŻ])/gu,
-    (match, punct, sp, offset, whole) => {
+    (match, punct, _sp, offset, whole) => {
       const lineStart = whole.lastIndexOf("\n", offset - 1) + 1;
       const segment = whole.slice(lineStart, offset);
-      if (!LIST_MARKER_IN_SEGMENT.test(segment)) return match;
+      const tail = segment.split(";").pop()?.trim() ?? segment.trim();
+      if (!/^(\d{1,2}[.)]|[a-z]\)|[IVX]{1,4}\))/i.test(tail)) return match;
+      if (!LIST_MARKER_IN_SEGMENT.test(tail)) return match;
       return `${punct}\n\n`;
     },
   );

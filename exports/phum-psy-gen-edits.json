@@ -1,0 +1,2625 @@
+{
+  "label": "phum-psy-gen-length-fix-2026-06-13",
+  "edits": [
+    {
+      "id": "phum-psy-gen-001",
+      "options": [
+        {
+          "id": "a",
+          "text": "współodczuwanie i rozumienie stanu oraz sytuacji psychologicznej drugiego człowieka"
+        },
+        {
+          "id": "b",
+          "text": "wyłącznie afektywne zarażenie emocjami pacjenta bez komponentu poznawczego rozumienia"
+        },
+        {
+          "id": "c",
+          "text": "technika perswazji skłaniająca pacjenta do zmiany nawyków i zachowań zdrowotnych"
+        },
+        {
+          "id": "d",
+          "text": "zdolność do obiektywnej, beznamiętnej oceny objawów bez angażowania się emocjonalnie"
+        },
+        {
+          "id": "e",
+          "text": "stała cecha osobowości niezależna od kontekstu relacji lekarz–pacjent i sytuacji klinicznej"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-002",
+      "options": [
+        {
+          "id": "a",
+          "text": "większy dystans emocjonalny wobec pacjenta i mniejsze ryzyko wypalenia zawodowego"
+        },
+        {
+          "id": "b",
+          "text": "silniejsza tendencja do powielania utrwalonych schematów rutyny w kontakcie klinicznym"
+        },
+        {
+          "id": "c",
+          "text": "mniejsza precyzja diagnozy, bo emocje zaburzają obiektywizm oceny objawów klinicznych"
+        },
+        {
+          "id": "d",
+          "text": "właściwszy, lepiej dopasowany rodzaj relacji werbalnej i niewerbalnej z pacjentem"
+        },
+        {
+          "id": "e",
+          "text": "wyłącznie lepsza komunikacja werbalna bez wpływu na niewerbalną ekspresję relacji"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-003",
+      "options": [
+        {
+          "id": "a",
+          "text": "nazywanie i odzwierciedlanie emocji pacjenta, np. Wydaje się pan zmartwiony tym, że…"
+        },
+        {
+          "id": "b",
+          "text": "zachęcanie pacjenta do rozwinięcia wypowiedzi i wspólne eksplorowanie jego lęków i obaw"
+        },
+        {
+          "id": "c",
+          "text": "wyrażanie szacunku i uznania dla wysiłku oraz zaangażowania, jaki pacjent wkłada w leczenie"
+        },
+        {
+          "id": "d",
+          "text": "deklaracja wsparcia i obecności przy pacjencie niezależnie od trudności terapeutycznych"
+        },
+        {
+          "id": "e",
+          "text": "okazywanie zrozumienia trudności sytuacji pacjenta i jego emocjonalnych doświadczeń choroby"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-004",
+      "options": [
+        {
+          "id": "a",
+          "text": "Naming — nazywanie i odzwierciedlanie emocji pacjenta przez lekarza w kontakcie klinicznym"
+        },
+        {
+          "id": "b",
+          "text": "Understanding — okazywanie zrozumienia trudności sytuacji i emocji, jakie przeżywa pacjent"
+        },
+        {
+          "id": "c",
+          "text": "Respecting — wyrażanie szacunku i uznania dla wysiłku oraz zaangażowania samego pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "Supporting — deklaracja wsparcia i obecności przy pacjencie w trakcie leczenia i trudności"
+        },
+        {
+          "id": "e",
+          "text": "Exploring — zachęcanie pacjenta do eksplorowania obaw i pogłębiania wypowiedzi o emocjach"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-005",
+      "options": [
+        {
+          "id": "a",
+          "text": "moralny — wewnętrzna altruistyczna siła motywująca do stosowania empatii w praktyce klinicznej"
+        },
+        {
+          "id": "b",
+          "text": "poznawczy — umiejętność rozpoznawania, rozumienia i interpretacji uczuć oraz myśli pacjenta"
+        },
+        {
+          "id": "c",
+          "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"
+        },
+        {
+          "id": "d",
+          "text": "emocjonalny — zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego innych"
+        },
+        {
+          "id": "e",
+          "text": "interakcyjny — wzajemny wpływ emocji i zachowań w relacji lekarza z pacjentem podczas kontaktu"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-006",
+      "options": [
+        {
+          "id": "a",
+          "text": "moralny — wewnętrzna altruistyczna siła motywująca do stosowania empatii w praktyce klinicznej"
+        },
+        {
+          "id": "b",
+          "text": "emocjonalny — zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego innych"
+        },
+        {
+          "id": "c",
+          "text": "poznawczy — umiejętność rozpoznawania, rozumienia i interpretacji uczuć oraz myśli pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"
+        },
+        {
+          "id": "e",
+          "text": "afektywny — naturalny, wrodzony potencjał do współodczuwania emocji dojrzewający wraz z wiekiem"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-007",
+      "options": [
+        {
+          "id": "a",
+          "text": "emocjonalny — naturalny, wrodzony potencjał do współodczuwania emocji dojrzewający z wiekiem"
+        },
+        {
+          "id": "b",
+          "text": "moralny — wewnętrzna altruistyczna siła motywująca do wprowadzania empatii w czyn kliniczny"
+        },
+        {
+          "id": "c",
+          "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"
+        },
+        {
+          "id": "d",
+          "text": "poznawczy — umiejętność wyuczalna i mierzalna bazująca na naturalnych zdolnościach empatii"
+        },
+        {
+          "id": "e",
+          "text": "interakcyjny — wzajemny wpływ emocji i zachowań w relacji lekarza z pacjentem podczas kontaktu"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-008",
+      "options": [
+        {
+          "id": "a",
+          "text": "zmniejszony poziom niepokoju i frustracji u pacjenta pod wpływem empatycznej komunikacji"
+        },
+        {
+          "id": "b",
+          "text": "wyższe poczucie kontroli nad chorobą i leczeniem po stronie samego pacjenta w kontakcie"
+        },
+        {
+          "id": "c",
+          "text": "rzadsze stany depresyjne i lepsze stosowanie się do zaleceń terapeutycznych u pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "niższy poziom wypalenia zawodowego i mniejsze odczuwanie presji czasu w pracy klinicznej"
+        },
+        {
+          "id": "e",
+          "text": "poczucie bycia wysłuchanym i docenionym jako jednostka przez lekarza prowadzącego terapię"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-009",
+      "options": [
+        {
+          "id": "a",
+          "text": "słyszenie jest procesem biernym, a słuchanie aktywnym, angażującym procesem komunikacji"
+        },
+        {
+          "id": "b",
+          "text": "słyszenie jest procesem aktywnym, a słuchanie biernym odbiorem treści bez angażowania się"
+        },
+        {
+          "id": "c",
+          "text": "oba są procesami biernymi, różnią się wyłącznie intencją rozmówcy, a nie poziomem aktywności"
+        },
+        {
+          "id": "d",
+          "text": "słuchanie dotyczy tylko treści werbalnych, a słyszenie wyłącznie emocji i niewerbalnych sygnałów"
+        },
+        {
+          "id": "e",
+          "text": "słyszenie wymaga kontaktu wzrokowego, a słuchanie odbywa się bez angażowania poznawczego"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-010",
+      "options": [
+        {
+          "id": "a",
+          "text": "kontakt wzrokowy utrzymywany 40–60% czasu rozmowy oraz dystans interpersonalny 40–120 cm"
+        },
+        {
+          "id": "b",
+          "text": "kontakt wzrokowy 20–40% czasu rozmowy oraz dystans interpersonalny 10–40 cm w gabinecie"
+        },
+        {
+          "id": "c",
+          "text": "kontakt wzrokowy 60–80% czasu rozmowy oraz dystans interpersonalny 120–200 cm przy badaniu"
+        },
+        {
+          "id": "d",
+          "text": "kontakt wzrokowy przez cały czas rozmowy oraz dystans interpersonalny utrzymywany na 40–60 cm"
+        },
+        {
+          "id": "e",
+          "text": "kontakt wzrokowy 40–60% czasu rozmowy oraz dystans interpersonalny 120–360 cm w gabinecie"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-011",
+      "options": [
+        {
+          "id": "a",
+          "text": "potwierdzenie odbioru informacji — krótkie sygnały, że lekarz słyszy i rozumie pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "uściślanie wypowiedzi — dopytywanie pacjenta o konkretne znaczenie jego słów, myśli i intencji"
+        },
+        {
+          "id": "c",
+          "text": "odzwierciedlanie uczuć — nazwanie emocji, jakie lekarz odczytuje u pacjenta w rozmowie"
+        },
+        {
+          "id": "d",
+          "text": "parafrazowanie — powtórzenie sensu wypowiedzi pacjenta własnymi słowami lekarza"
+        },
+        {
+          "id": "e",
+          "text": "zadawanie pytań otwartych — pytania zachęcające do pogłębienia wypowiedzi bez sugerowania"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-012",
+      "options": [
+        {
+          "id": "a",
+          "text": "parafrazowanie treści — powtórzenie sensu wypowiedzi pacjenta własnymi słowami bez oceniania"
+        },
+        {
+          "id": "b",
+          "text": "uściślanie wypowiedzi — dopytywanie pacjenta o konkretne znaczenie jego słów, myśli i intencji"
+        },
+        {
+          "id": "c",
+          "text": "odzwierciedlanie uczuć — nazwanie emocji, jaką lekarz odczytuje u pacjenta podczas rozmowy"
+        },
+        {
+          "id": "d",
+          "text": "potwierdzenie odbioru informacji — krótkie sygnały werbalne i niewerbalne słuchania pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "moralizowanie — ocenianie zachowań pacjenta z perspektywy norm moralnych i społecznych etyki"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-013",
+      "options": [
+        {
+          "id": "a",
+          "text": "charakterystyczna konfiguracja codziennych zachowań jednostek i grup w wybranych sferach życia"
+        },
+        {
+          "id": "b",
+          "text": "wyłącznie zespół zachowań zdrowotnych podejmowanych pod bezpośrednim nadzorem lekarza prowadzącego"
+        },
+        {
+          "id": "c",
+          "text": "jednorazowa decyzja o zmianie nawyków zdrowotnych bez stałej regularności codziennych zachowań"
+        },
+        {
+          "id": "d",
+          "text": "wrodzony, niezmienny wzorzec reagowania na chorobę niezależny od wyborów i kontekstu życia"
+        },
+        {
+          "id": "e",
+          "text": "ogół postaw politycznych i ekonomicznych jednostki bez odniesienia do codziennych zachowań"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-014",
+      "options": [
+        {
+          "id": "a",
+          "text": "emocjonalny — stosunek, zaangażowanie i motywacja do zdrowia oraz działań prozdrowotnych"
+        },
+        {
+          "id": "b",
+          "text": "behawioralny — zespół codziennych zachowań prozdrowotnych lub antyzdrowotnych w praktyce"
+        },
+        {
+          "id": "c",
+          "text": "poznawczy — poziom wiedzy na temat zdrowia, profilaktyki i zdrowego stylu życia osoby"
+        },
+        {
+          "id": "d",
+          "text": "motywacyjny — wewnętrzna gotowość do podejmowania działań zdrowotnych niezależnie od wiedzy"
+        },
+        {
+          "id": "e",
+          "text": "somatyczny — stan fizjologiczny organizmu bez odniesienia do postaw i zachowań zdrowotnych"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-015",
+      "options": [
+        {
+          "id": "a",
+          "text": "James Prochaska i Carlo DiClemente — twórcy Transteoretycznego Modelu Zmiany zachowania"
+        },
+        {
+          "id": "b",
+          "text": "William Miller i Stephen Rollnick — autorzy dialogu motywującego i podejścia partnerskiego"
+        },
+        {
+          "id": "c",
+          "text": "Richard Lazarus i Susan Folkman — badacze stresu i strategii radzenia sobie człowieka"
+        },
+        {
+          "id": "d",
+          "text": "Christina Maslach i Ayala Pines — badaczki wypalenia zawodowego i syndromu wypalenia"
+        },
+        {
+          "id": "e",
+          "text": "Marshall Rosenberg i Thomas Gordon — twórcy komunikacji bez przemocy i aktywnego słuchania"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-016",
+      "options": [
+        {
+          "id": "a",
+          "text": "kontemplacja — ambiwalencja wobec zmiany z argumentami zarówno za, jak i przeciw nowemu zachowaniu"
+        },
+        {
+          "id": "b",
+          "text": "przygotowanie — zobowiązanie do zmiany wyrażane deklaracją gotowości do działania wkrótce"
+        },
+        {
+          "id": "c",
+          "text": "prekontemplacja — brak gotowości do zmiany i obrona obecnego zachowania przed krytyką"
+        },
+        {
+          "id": "d",
+          "text": "działanie — realne wdrażanie zmiany zachowania w codziennym życiu i monitorowanie postępów"
+        },
+        {
+          "id": "e",
+          "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-017",
+      "options": [
+        {
+          "id": "a",
+          "text": "kontemplacja — ambiwalencja z argumentami zarówno za, jak i przeciw zmianie w jednej wypowiedzi"
+        },
+        {
+          "id": "b",
+          "text": "prekontemplacja — brak dostrzegania problemu i obrona status quo bez wahania ani ambiwalencji"
+        },
+        {
+          "id": "c",
+          "text": "przygotowanie — deklaracja zobowiązania do zmiany jeszcze przed realnym podjęciem działania"
+        },
+        {
+          "id": "d",
+          "text": "działanie — realne wdrażanie zmiany zachowania w życiu codziennym i monitorowanie efektów terapii"
+        },
+        {
+          "id": "e",
+          "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-018",
+      "options": [
+        {
+          "id": "a",
+          "text": "prekontemplacja — brak świadomości problemu i obrona obecnego zachowania bez gotowości do zmiany"
+        },
+        {
+          "id": "b",
+          "text": "kontemplacja — ambiwalencja wobec zmiany z argumentami zarówno za, jak i przeciw nowemu zachowaniu"
+        },
+        {
+          "id": "c",
+          "text": "przygotowanie — zobowiązanie do zmiany wyrażane deklaracją gotowości do działania wkrótce"
+        },
+        {
+          "id": "d",
+          "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"
+        },
+        {
+          "id": "e",
+          "text": "nawrót — powrót do wcześniejszego, niezdrowego zachowania po okresie utrzymywania zmiany"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-019",
+      "options": [
+        {
+          "id": "a",
+          "text": "definicja dla praktyka pragmatyka — skoncentrowany na osobie sposób pomagania w ambiwalencji"
+        },
+        {
+          "id": "b",
+          "text": "definicja dla laika — współpracujący styl wzmacniający wewnętrzną motywację pacjenta do zmiany"
+        },
+        {
+          "id": "c",
+          "text": "definicja techniczna — opis języka zmiany i konkretnych technik prowadzenia rozmowy motywującej"
+        },
+        {
+          "id": "d",
+          "text": "definicja filozoficzna — humanistyczne założenia partnerskiej relacji i szacunku wobec pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "definicja neurobiologiczna — wyjaśnienie mechanizmów mózgu leżących u podstaw zmiany zachowania"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-020",
+      "options": [
+        {
+          "id": "a",
+          "text": "Carl Rogers — twórca humanistycznego podejścia z empatią i bezwarunkowym szacunkiem w relacji"
+        },
+        {
+          "id": "b",
+          "text": "Marshall Rosenberg — autor komunikacji bez przemocy i modelu wyrażania potrzeb w kontakcie"
+        },
+        {
+          "id": "c",
+          "text": "Thomas Gordon — twórca koncepcji aktywnego słuchania i komunikacji w relacji terapeutycznej"
+        },
+        {
+          "id": "d",
+          "text": "Hans Selye — badacz ogólnego zespołu adaptacji do stresu i reakcji organizmu na obciążenie"
+        },
+        {
+          "id": "e",
+          "text": "Aaron Antonovsky — autor teorii poczucia koherencji i odporności psychicznej wobec stresu choroby"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-021",
+      "options": [
+        {
+          "id": "a",
+          "text": "równa relacja oparta na współpracy i odkrywaniu, nie upominaniu; unikanie pułapki eksperta"
+        },
+        {
+          "id": "b",
+          "text": "skupienie na deficytach i brakach klienta w celu zidentyfikowania tego, co należy naprawić"
+        },
+        {
+          "id": "c",
+          "text": "całkowita akceptacja osoby przy jednoczesnym poparciu każdego jej zachowania bez oceny zmiany"
+        },
+        {
+          "id": "d",
+          "text": "aktywne działanie dla dobra klienta, okazywanie troski i odpowiadanie na jego potrzeby zdrowotne"
+        },
+        {
+          "id": "e",
+          "text": "konfrontowanie klienta z konsekwencjami zachowań w celu wywołania presji na natychmiastową zmianę"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-022",
+      "options": [
+        {
+          "id": "a",
+          "text": "partnerstwo — równa relacja oparta na współpracy zamiast upominania i postawy eksperta klienta"
+        },
+        {
+          "id": "b",
+          "text": "akceptacja — uznanie bezwzględnej wartości osoby przy rozróżnieniu osoby od jej zachowania"
+        },
+        {
+          "id": "c",
+          "text": "współczucie — aktywne działanie dla dobra klienta i odpowiadanie na jego potrzeby zdrowotne"
+        },
+        {
+          "id": "d",
+          "text": "wywoływanie — odkrywanie zasobów i mocnych stron zamiast koncentracji na deficytach klienta"
+        },
+        {
+          "id": "e",
+          "text": "ukierunkowywanie — ciągłe poszukiwanie i podtrzymywanie wspólnie ustalonego kierunku zmiany"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-023",
+      "options": [
+        {
+          "id": "a",
+          "text": "akceptacja — wspieranie autonomii, uznanie wartości osoby, zrozumienie i dowartościowanie pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "bezwarunkowe poparcie każdego zachowania klienta bez rozróżnienia osoby od jej czynów w procesie terapii"
+        },
+        {
+          "id": "c",
+          "text": "współczucie — aktywne działanie dla dobra klienta i odpowiadanie na jego potrzeby zdrowotne"
+        },
+        {
+          "id": "d",
+          "text": "wywoływanie — odkrywanie mocnych stron i zasobów zamiast koncentracji na deficytach klienta"
+        },
+        {
+          "id": "e",
+          "text": "partnerstwo — równa relacja oparta na współpracy zamiast upominania i postawy eksperta klienta"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-024",
+      "options": [
+        {
+          "id": "a",
+          "text": "angażowanie — budowanie współpracy, szacunku i zaufania; lekarz jako partner, nie przeciwnik"
+        },
+        {
+          "id": "b",
+          "text": "ukierunkowywanie — ciągłe poszukiwanie i podtrzymywanie kierunku zmiany ustalonego z pacjentem"
+        },
+        {
+          "id": "c",
+          "text": "wywoływanie — wzmacnianie wewnętrznej motywacji przez odkrywanie zasobów i mocnych stron klienta"
+        },
+        {
+          "id": "d",
+          "text": "planowanie — wspólne ustalanie konkretnych kroków działania i strategii realizacji zmiany z pacjentem"
+        },
+        {
+          "id": "e",
+          "text": "parafrazowanie — narzędzie aktywnego słuchania, nie jeden z czterech procesów dialogu motywującego"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-025",
+      "options": [
+        {
+          "id": "a",
+          "text": "ukierunkowywanie — ciągły proces poszukiwania kierunku, w którym pacjent decyduje o zmianie"
+        },
+        {
+          "id": "b",
+          "text": "angażowanie — budowanie współpracy, szacunku i zaufania; lekarz jako partner, nie przeciwnik"
+        },
+        {
+          "id": "c",
+          "text": "wywoływanie — wzmacnianie wewnętrznej motywacji przez odkrywanie zasobów i mocnych stron klienta"
+        },
+        {
+          "id": "d",
+          "text": "planowanie — wspólne ustalanie konkretnych kroków działania i strategii realizacji zmiany z pacjentem"
+        },
+        {
+          "id": "e",
+          "text": "podtrzymanie — etap TTM utrwalający nowe zachowanie; nie jest procesem dialogu motywującego"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-026",
+      "options": [
+        {
+          "id": "a",
+          "text": "proces budowania relacji oparty na otwartości, szacunku i partnerskiej współpracy"
+        },
+        {
+          "id": "b",
+          "text": "proces poszukiwania i wzmacniania argumentów zmiany po stronie pacjenta"
+        },
+        {
+          "id": "c",
+          "text": "proces wzmacniania motywacji wewnętrznej i wiary we własną skuteczność"
+        },
+        {
+          "id": "d",
+          "text": "proces opracowania konkretnego planu działania i zobowiązania pacjenta do zmiany"
+        },
+        {
+          "id": "e",
+          "text": "proces demonstracji pożądanego zachowania przez terapeutę podczas wizyty pacjenta"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-027",
+      "options": [
+        {
+          "id": "a",
+          "text": "proces budowania relacji oparty na szacunku i partnerskiej współpracy z pacjentem"
+        },
+        {
+          "id": "b",
+          "text": "proces wydobywania argumentów zmiany oraz poszukiwania języka zmiany u pacjenta"
+        },
+        {
+          "id": "c",
+          "text": "proces wzmacniania wewnętrznej motywacji i poczucia sprawczości pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "proces rozwijania zobowiązania do zmiany i sformułowania konkretnego działania"
+        },
+        {
+          "id": "e",
+          "text": "proces utrzymywania wprowadzonych zmian i zapobiegania nawrotom do wcześniejszego zachowania"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-028",
+      "options": [
+        {
+          "id": "a",
+          "text": "dotyczy głównie osób od początku niezaangażowanych i znudzonych wykonywaną pracą zawodową"
+        },
+        {
+          "id": "b",
+          "text": "jest tożsame ze zwykłym zmęczeniem i przejściowym zniechęceniem do codziennych obowiązków"
+        },
+        {
+          "id": "c",
+          "text": "jest końcowym etapem procesu, który początkowo obejmował wysokie zaangażowanie i motywację"
+        },
+        {
+          "id": "d",
+          "text": "pojawia się natychmiast po wyborze zawodu, który od razu okazuje się rozczarowujący"
+        },
+        {
+          "id": "e",
+          "text": "występuje wyłącznie u osób bez odpowiedniego wykształcenia kierunkowego w dziedzinie medycyny"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-029",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyczerpanie emocjonalne, depersonalizację oraz obniżone poczucie dokonań osobistych"
+        },
+        {
+          "id": "b",
+          "text": "mobilizację psychiczną, rozstrój funkcjonowania oraz destrukcję dostępnych zasobów osobistych"
+        },
+        {
+          "id": "c",
+          "text": "stadium alarmu organizmu, stadium odporności adaptacyjnej oraz stadium wyczerpania"
+        },
+        {
+          "id": "d",
+          "text": "hiperstres przekraczający możliwości, hipostres oraz dystres naruszający równowagę organizmu"
+        },
+        {
+          "id": "e",
+          "text": "prekontemplację zmiany zachowania, kontemplację jej korzyści oraz wdrażanie działania"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-030",
+      "options": [
+        {
+          "id": "a",
+          "text": "depersonalizacji polegającej na traktowaniu pacjentów jak przypadków i emocjonalnym dystansie"
+        },
+        {
+          "id": "b",
+          "text": "wyczerpania emocjonalnego polegającego na chronicznym zmęczeniu i braku energii do pracy"
+        },
+        {
+          "id": "c",
+          "text": "obniżenia dokonań polegającego na braku satysfakcji z pracy i wątpliwościach co do kompetencji"
+        },
+        {
+          "id": "d",
+          "text": "stadium odporności polegającego na utrzymaniu wysokiej mobilizacji organizmu wobec stresorów"
+        },
+        {
+          "id": "e",
+          "text": "fazy mobilizacji polegającej na aktywizacji procesów psychicznych i szybszych reakcjach na stres"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-031",
+      "options": [
+        {
+          "id": "a",
+          "text": "nadmierne obciążenie pracą wykraczające poza możliwości adaptacyjne jednostki"
+        },
+        {
+          "id": "b",
+          "text": "utrata kontroli nad wykonywaną pracą i brak realnego wpływu na jej organizację"
+        },
+        {
+          "id": "c",
+          "text": "sprzeczność między zasadami organizacji a indywidualnymi przekonaniami jednostki"
+        },
+        {
+          "id": "d",
+          "text": "brak sprawiedliwości w podziale obowiązków, nagród i uznania w zespole pracy"
+        },
+        {
+          "id": "e",
+          "text": "niedostateczne wynagrodzenie finansowe i brak uznania za wkład w pracę zespołową"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-032",
+      "options": [
+        {
+          "id": "a",
+          "text": "miesiąc miodowy jako faza początkowego zauroczenia pracą i entuzjazmu zawodowego"
+        },
+        {
+          "id": "b",
+          "text": "przebudzenie jako faza pierwszych rys wypalenia i prób kompensacji przez więcej pracy"
+        },
+        {
+          "id": "c",
+          "text": "szorstkość jako faza opisana słowami: coraz więcej wysiłku przy coraz mniejszym efekcie"
+        },
+        {
+          "id": "d",
+          "text": "wypalenie pełnoobjawowe jako faza wyczerpania, depresji i ucieczki od obowiązków zawodowych"
+        },
+        {
+          "id": "e",
+          "text": "odradzanie się jako faza leczenia, regeneracji i powrotu do równowagi po kryzysie wypalenia"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-033",
+      "options": [
+        {
+          "id": "a",
+          "text": "objawy afektywne obejmujące depresyjność, płaczliwość, lękliwość, wahania nastroju i lęk wobec pracy"
+        },
+        {
+          "id": "b",
+          "text": "objawy somatyczne obejmujące bóle głowy, zaburzenia snu, zmianę wagi i zaburzenia koncentracji"
+        },
+        {
+          "id": "c",
+          "text": "objawy kognitywne obejmujące niską samoocenę, poczucie winy, myśli samobójcze i sztywność myślenia"
+        },
+        {
+          "id": "d",
+          "text": "objawy behawioralne obejmujące impulsywność, odkładanie spraw, wzrost używek i wycofywanie się"
+        },
+        {
+          "id": "e",
+          "text": "objawy motywacyjne obejmujące utratę idealizmu, gorliwości, poczucia sensu i wiary w sens pracy zawodowej"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-034",
+      "options": [
+        {
+          "id": "a",
+          "text": "czynniki indywidualne, interpersonalne oraz organizacyjne sprzyjające wypaleniu zawodowemu"
+        },
+        {
+          "id": "b",
+          "text": "czynniki fizyczne, chemiczne oraz biologiczne obciążające organizm w środowisku pracy zawodowej"
+        },
+        {
+          "id": "c",
+          "text": "czynniki poznawcze, emocjonalne oraz behawioralne objawiające się w symptomach wypalenia"
+        },
+        {
+          "id": "d",
+          "text": "czynniki afektywne, somatyczne oraz motywacyjne opisujące symptomy wypalenia u osoby"
+        },
+        {
+          "id": "e",
+          "text": "czynniki środowiskowe, osobowościowe oraz społeczne wpływające na adaptację do pracy"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-035",
+      "options": [
+        {
+          "id": "a",
+          "text": "twórca koncepcji salutogenezy i autora modelu zasobów odpornościowych człowieka"
+        },
+        {
+          "id": "b",
+          "text": "autor poznawczo-transakcyjnego paradygmatu stresu opartego na subiektywnej ocenie sytuacji"
+        },
+        {
+          "id": "c",
+          "text": "ojciec koncepcji stresu, który jako pierwszy wprowadził to pojęcie do nauki medycznej"
+        },
+        {
+          "id": "d",
+          "text": "twórca modelu dialogu motywującego opartego na czterech procesach zmiany zachowania"
+        },
+        {
+          "id": "e",
+          "text": "autor trójwymiarowej koncepcji wypalenia zawodowego opartej na pracy z innymi ludźmi"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-036",
+      "options": [
+        {
+          "id": "a",
+          "text": "alarmu, w którym organizm reaguje szokiem lub przeciwdziała niemu w fazie początkowej reakcji"
+        },
+        {
+          "id": "b",
+          "text": "szoku, w którym organizm jest zaskoczony bodźcem i traci chwilowo równowagę wewnętrzną"
+        },
+        {
+          "id": "c",
+          "text": "odporności, w którym organizm opiera się stresorom, utrzymując mobilizację powyżej normy"
+        },
+        {
+          "id": "d",
+          "text": "wyczerpania, w którym spada odporność organizmu i pojawia się poddanie się stresorom"
+        },
+        {
+          "id": "e",
+          "text": "przeciwdziałania szokowi, w którym organizm próbuje przywrócić równowagę po bodźcu"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-037",
+      "options": [
+        {
+          "id": "a",
+          "text": "hipostres rozumiany jako stadium przedstresowe, poniżej progu właściwej reakcji organizmu"
+        },
+        {
+          "id": "b",
+          "text": "hiperstres rozumiany jako nadmierne obciążenie przekraczające możliwości adaptacyjne jednostki"
+        },
+        {
+          "id": "c",
+          "text": "dystres rozumiany jako negatywny stres naruszający równowagę i dobrostan jednostki"
+        },
+        {
+          "id": "d",
+          "text": "eustres rozumiany jako pozytywny stres pobudzający organizm do konstruktywnego działania"
+        },
+        {
+          "id": "e",
+          "text": "distres adaptacyjny rozumiany jako przedłużona reakcja na chroniczne źródła napięcia psychicznego"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-038",
+      "options": [
+        {
+          "id": "a",
+          "text": "relację osoba–środowisko ocenianą jako przekraczającą zasoby i zagrażającą dobrostanowi"
+        },
+        {
+          "id": "b",
+          "text": "niespecyficzną reakcję organizmu na wymagania stawiane przez otoczenie zewnętrzne i bodźce"
+        },
+        {
+          "id": "c",
+          "text": "stan zaburzonej równowagi wyłącznie na poziomie fizjologicznym bez subiektywnej oceny poznawczej"
+        },
+        {
+          "id": "d",
+          "text": "końcowy etap procesu zaangażowania zawodowego po wcześniejszym wysokim motywowaniu do pracy"
+        },
+        {
+          "id": "e",
+          "text": "dodatni bodziec pobudzający organizm do działania bez zagrożenia dla jego dobrostanu psychicznego"
+        }
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-039",
+      "options": [
+        {
+          "id": "a",
+          "text": "pytanie oceny wtórnej brzmiące: Co mogę teraz zrobić w tej sytuacji?"
+        },
+        {
+          "id": "b",
+          "text": "pytanie strategii radzenia sobie: Skoncentrować się na problemie czy na emocjach?"
+        },
+        {
+          "id": "c",
+          "text": "pytanie oceny powtórnej brzmiące: Czy sytuacja się zmieniła i czy czuję się lepiej?"
+        },
+        {
+          "id": "d",
+          "text": "pytanie oceny zasobów brzmiące: Jakie mam dostępne zasoby zaradcze w tej sytuacji?"
+        },
+        {
+          "id": "e",
+          "text": "pytanie oceny pierwotnej brzmiące: Czy to ma dla mnie znaczenie i jakie?"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-040",
+      "options": [
+        {
+          "id": "a",
+          "text": "krzywdy lub straty, gdy szkoda już nastąpiła i towarzyszą żal, złość lub smutek"
+        },
+        {
+          "id": "b",
+          "text": "zagrożenia, gdy przewidywane są przyszłe straty i dominują lęk oraz strach"
+        },
+        {
+          "id": "c",
+          "text": "wyzwania, gdy możliwe są zarówno straty, jak i korzyści oraz nadzieja i zapał"
+        },
+        {
+          "id": "d",
+          "text": "braku znaczenia, gdy sytuacja nie jest uznawana za istotną dla podmiotu"
+        },
+        {
+          "id": "e",
+          "text": "szkody dokonanej, gdy strata jest już pewna i pojawia się rezygnacja oraz bezradność"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-041",
+      "options": [
+        {
+          "id": "a",
+          "text": "zmienić ocenę pierwotną z wyzwania na zagrożenie i istotnie obniżyć poczucie kontroli nad sytuacją"
+        },
+        {
+          "id": "b",
+          "text": "zwiększyć poziom odczuwanego stresu i utrudnić skuteczne radzenie sobie ze stresem"
+        },
+        {
+          "id": "c",
+          "text": "całkowicie wyeliminować potrzebę stosowania strategii radzenia sobie ze stresem"
+        },
+        {
+          "id": "d",
+          "text": "prowadzić wyłącznie do skupienia się na emocjach zamiast na rozwiązaniu problemu"
+        },
+        {
+          "id": "e",
+          "text": "zmienić ocenę z zagrożenia na wyzwanie, wzmacniając kontrolę i mobilizację do działania"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-042",
+      "options": [
+        {
+          "id": "a",
+          "text": "rozstroju, w którym spada sprawność psychiczna i pojawiają się zachowania stereotypowe"
+        },
+        {
+          "id": "b",
+          "text": "destrukcji, w której żadna czynność nie jest już wykonywana w sposób poprawny"
+        },
+        {
+          "id": "c",
+          "text": "mobilizacji, w której sprawniej przebiegają spostrzeganie, myślenie i szybsze reakcje"
+        },
+        {
+          "id": "d",
+          "text": "odporności organizmu, w którym utrzymywana jest wysoka mobilizacja fizjologiczna"
+        },
+        {
+          "id": "e",
+          "text": "wyczerpania adaptacyjnego, w którym organizm traci zdolność do skutecznej obrony"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-043",
+      "options": [
+        {
+          "id": "a",
+          "text": "mobilizacji z aktywizacją procesów psychicznych i szybszymi reakcjami na stresor"
+        },
+        {
+          "id": "b",
+          "text": "odporności organizmu z utrzymaną wysoką mobilizacją wobec czynników stresogennych"
+        },
+        {
+          "id": "c",
+          "text": "destrukcji, w której dochodzi do całkowitego załamania i niemożności poprawnego działania"
+        },
+        {
+          "id": "d",
+          "text": "alarmu w reakcji ogólnoadaptacyjnej, gdy organizm reaguje na nowy bodziec stresowy"
+        },
+        {
+          "id": "e",
+          "text": "rozstroju z obniżeniem czynności psychicznych, stereotypami i dominacją emocji"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-044",
+      "options": [
+        {
+          "id": "a",
+          "text": "sprawniej i szybciej wykonywać zadania dzięki przejściowej mobilizacji psychicznej i pobudzeniu"
+        },
+        {
+          "id": "b",
+          "text": "w pełni racjonalnie oceniać sytuację i przewidywać konsekwencje swoich działań"
+        },
+        {
+          "id": "c",
+          "text": "utrzymywać mobilizację powyżej normy bez widocznych objawów kryzysu, rezygnacji lub załamania"
+        },
+        {
+          "id": "d",
+          "text": "doświadczać wyłącznie emocji pozytywnych mimo obecności silnych bodźców stresowych"
+        },
+        {
+          "id": "e",
+          "text": "na pozór wydawać się spokojną z powodu zahamowania, odczuwając przy tym silne emocje"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-045",
+      "options": [
+        {
+          "id": "a",
+          "text": "communio, co oznacza wspólność i poczucie łączności między uczestnikami kontaktu"
+        },
+        {
+          "id": "b",
+          "text": "communicatio, co oznacza wymianę, łączność i rozmowę między nadawcą a odbiorcą"
+        },
+        {
+          "id": "c",
+          "text": "communicare, co oznacza uczynić wspólnym, połączyć lub zestawić ze sobą uczestników"
+        },
+        {
+          "id": "d",
+          "text": "transmittere, co oznacza nadawanie i odbieranie sygnałów w ustalonym kanale komunikacji"
+        },
+        {
+          "id": "e",
+          "text": "concordia, co oznacza porozumienie i zgodę osiąganą bez użycia przemocy w dialogu"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-046",
+      "options": [
+        {
+          "id": "a",
+          "text": "przebiega głównie na poziomie intelektualnym, ma charakter nieciągły i podlega gramatyce"
+        },
+        {
+          "id": "b",
+          "text": "toczy się według ścisłych zasad gramatycznych i jest w pełni świadoma oraz kontrolowana"
+        },
+        {
+          "id": "c",
+          "text": "przebiega na poziomie emocjonalnym, bywa nieuświadomiona i charakteryzuje się ciągłością"
+        },
+        {
+          "id": "d",
+          "text": "jest zawsze w pełni świadoma, kontrolowana i nie dostarcza kontekstu do interpretacji słów"
+        },
+        {
+          "id": "e",
+          "text": "nie dostarcza kontekstu do wypowiedzi werbalnych i zastępuje kanał słowny w relacji"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-047",
+      "options": [
+        {
+          "id": "a",
+          "text": "polecenia i instrukcje służące przekazywaniu zaleceń oraz oczekiwanych działań pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "pytania i informacje służące zbieraniu danych oraz przekazywaniu wiedzy medycznej"
+        },
+        {
+          "id": "c",
+          "text": "komunikowanie emocji polegające na słownym wyrażaniu uczuć i stanów wewnętrznych"
+        },
+        {
+          "id": "d",
+          "text": "metakomunikaty zawierające oprócz treści dosłownej także ukryty, niejawny komunikat"
+        },
+        {
+          "id": "e",
+          "text": "parafrazy polegające na powtarzaniu i potwierdzaniu treści wypowiedzi rozmówcy"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-048",
+      "options": [
+        {
+          "id": "a",
+          "text": "ciągłość oznacza, że kanał niewerbalny pozostaje stale otwarty podczas interakcji"
+        },
+        {
+          "id": "b",
+          "text": "zastępowanie oznacza, że komunikacja niewerbalna całkowicie zastępuje werbalną treść"
+        },
+        {
+          "id": "c",
+          "text": "retrospektywa oznacza, że komunikacja niewerbalna dotyczy wyłącznie przeszłych wydarzeń"
+        },
+        {
+          "id": "d",
+          "text": "planowość oznacza, że sygnały niewerbalne są zawsze świadomie planowane i celowe"
+        },
+        {
+          "id": "e",
+          "text": "automatyzm oznacza, że sygnały niewerbalne są wysyłane głównie poza świadomością"
+        }
+      ],
+      "correct_option_id": "e"
+    },
+    {
+      "id": "phum-psy-gen-049",
+      "options": [
+        {
+          "id": "a",
+          "text": "słuchanie aktywne polegające na dążeniu do pełnego zrozumienia treści i znaczenia wypowiedzi"
+        },
+        {
+          "id": "b",
+          "text": "słuchanie empatyczne polegające na przyjęciu perspektywy rozmówcy i jego doświadczenia"
+        },
+        {
+          "id": "c",
+          "text": "słuchanie świadome polegające na wychwytywaniu niespójności między słowami a sygnałami"
+        },
+        {
+          "id": "d",
+          "text": "słuchanie otwarte polegające na zahamowaniu tendencji do przedwczesnej oceny i wniosków"
+        },
+        {
+          "id": "e",
+          "text": "słuchanie refleksyjne polegające na analizie własnych reakcji emocjonalnych podczas rozmowy"
+        }
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-050",
+      "options": [
+        {
+          "id": "a",
+          "text": "nakazów i poleceń narzucających rozwiązanie i budzących opór u rozmówcy"
+        },
+        {
+          "id": "b",
+          "text": "moralizowania wywołującego poczucie winy przez ocenę etyczną zachowania pacjenta"
+        },
+        {
+          "id": "c",
+          "text": "doradzania i sugerowania gotowego rozwiązania z pozycji autorytetu i wiedzy eksperta"
+        },
+        {
+          "id": "d",
+          "text": "pouczania traktującego rozmówcę jak osobę niedojrzałą wymagającą ciągłej kontroli i nadzoru"
+        },
+        {
+          "id": "e",
+          "text": "krytykowania skupiającego się na negatywnej ocenie osoby zamiast na jej problemie"
+        }
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-051",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Krytykowanie — bezpośrednie obwinianie pacjenta za jego postępowanie w formie oceny lub ataku"
+        },
+        {
+          "id": "b",
+          "text": "Pocieszanie — próba łagodzenia emocji pacjenta przez bagatelizowanie jego obaw i uczuć"
+        },
+        {
+          "id": "c",
+          "text": "Moralizowanie — ocenianie zachowania pacjenta normami etycznymi zamiast słuchania jego potrzeb"
+        },
+        {
+          "id": "d",
+          "text": "Pouczanie — przekazywanie rad i wskazówek z pozycji autorytetu bez zbadania perspektywy pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Interpretowanie i diagnozowanie — przypisanie pacjenta do stereotypu („tacy pacjenci jak pan”)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-052",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wydawanie ocen pozytywnych — pochwała z ukrytą krytyką i protekcjonalnością wobec pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "Pouczanie — doradzanie pacjentowi, co powinien robić, bez zbadania jego uczuć i motywacji"
+        },
+        {
+          "id": "c",
+          "text": "Odwracanie uwagi i ironizowanie — zmiana tematu lub żart w sytuacji wymagającej empatii"
+        },
+        {
+          "id": "d",
+          "text": "Interpretowanie — przypisywanie pacjentowi motywów i diagnozowanie jego uczuć bez pytania"
+        },
+        {
+          "id": "e",
+          "text": "Pocieszanie i uspokajanie — unieważnianie emocji pacjenta słowami „proszę nie płakać”"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-053",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Carl Rogers — twórca podejścia humanistycznego w psychoterapii i psychologii klinicznej"
+        },
+        {
+          "id": "b",
+          "text": "Thomas Gordon — autor modelu 12 barier komunikacyjnych w relacji terapeutycznej"
+        },
+        {
+          "id": "c",
+          "text": "Marshall Rosenberg — twórca metody Porozumienia bez Przemocy (Nonviolent Communication)"
+        },
+        {
+          "id": "d",
+          "text": "William Miller — współtwórca Dialogu Motywującego i modelu pracy z oporem pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Jacek Reykowski — polski psycholog społeczny, badacz postaw i procesów grupowych"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-054",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sekwencja NVC: uczucie → obserwacja faktu → prośba → potrzeba (zamiana pierwszych dwóch kroków)"
+        },
+        {
+          "id": "b",
+          "text": "Sekwencja NVC: uczucie → potrzeba → obserwacja → prośba (potrzeba przed obserwacją faktu)"
+        },
+        {
+          "id": "c",
+          "text": "Sekwencja NVC: potrzeba → prośba → obserwacja → uczucie (całkowicie odwrócona kolejność kroków)"
+        },
+        {
+          "id": "d",
+          "text": "Sekwencja NVC: obserwacja → prośba → uczucie → potrzeba (prośba przed uczuciem i potrzebą)"
+        },
+        {
+          "id": "e",
+          "text": "Sekwencja NVC: obserwacja → uczucie → potrzeba → prośba (prawidłowa kolejność 4 kroków)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-055",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Język pełen ocen, krytyki, porównań i analizowania — typowy dla języka szakala w symbolice NVC"
+        },
+        {
+          "id": "b",
+          "text": "Język etykiet, stereotypów i uogólnień — przypisywanie ludziom szufladek zamiast słuchania"
+        },
+        {
+          "id": "c",
+          "text": "Język uczuć i potrzeb — mówienie o sobie z szacunkiem, empatią i słuchaniem drugiej strony"
+        },
+        {
+          "id": "d",
+          "text": "Język kar i nagród — manipulowanie zachowaniem groźbą lub obietnicą materialnej korzyści"
+        },
+        {
+          "id": "e",
+          "text": "Język żądań i przymusu — oczekiwanie, że inni spełnią oczekiwania bez negocjacji potrzeb"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-056",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Język żyrafy — język serca oparty na uczuciach, potrzebach i wzajemnym szacunku w dialogu"
+        },
+        {
+          "id": "b",
+          "text": "Język terapeuty stosującego parafrazę — odbicie treści wypowiedzi pacjenta bez oceniania"
+        },
+        {
+          "id": "c",
+          "text": "Język empatycznego lekarza — komunikacja oparta na aktywnym słuchaniu i walidacji emocji"
+        },
+        {
+          "id": "d",
+          "text": "Język pacjenta w fazie działania — deklaracje gotowości do zmiany i planowania zachowań"
+        },
+        {
+          "id": "e",
+          "text": "Język szakala — język „musisz”, „powinieneś”, ocen, kar i żądań wobec rozmówcy"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-057",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metoda zakazująca wszelkiej krytyki pod groźbą kary — całkowity zakaz negatywnej informacji"
+        },
+        {
+          "id": "b",
+          "text": "Metoda eliminująca komunikację niewerbalną — ograniczenie dialogu wyłącznie do słów werbalnych"
+        },
+        {
+          "id": "c",
+          "text": "Metoda dotycząca wyłącznie przemocy fizycznej w placówce medycznej — interwencja kryzysowa"
+        },
+        {
+          "id": "d",
+          "text": "Metoda oparta na perswazji i nakłanianiu do zmiany — przekonywanie pacjenta do właściwego postępu"
+        },
+        {
+          "id": "e",
+          "text": "Metoda budująca kontakt oparty na szacunku i zrozumieniu, zaspokajając potrzeby pokojowo"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-058",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stosuje się w pełni do zaleceń lekarskich — realizuje wszystkie zalecone leki i zalecenia"
+        },
+        {
+          "id": "b",
+          "text": "Regularnie zgłasza się na wizyty kontrolne — utrzymuje ciągłość opieki ambulatoryjnej"
+        },
+        {
+          "id": "c",
+          "text": "Całkowicie rezygnuje z leczenia — porzuca farmakoterapię i zalecenia modyfikacji stylu życia"
+        },
+        {
+          "id": "d",
+          "text": "Stosuje wyłącznie metody niefarmakologiczne — odrzuca leki na rzecz diet i aktywności fizycznej"
+        },
+        {
+          "id": "e",
+          "text": "Nie przestrzega zaleceń lekarskich — nie realizuje zaleconego leczenia w wymaganym stopniu"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-059",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Znaczenie bezwarunkowego szacunku wobec klienta — akceptacja bez oceniania (wkład Rogersa)"
+        },
+        {
+          "id": "b",
+          "text": "Konieczność stosowania perswazji — przekonywanie pacjenta do zmiany zachowań zdrowotnych"
+        },
+        {
+          "id": "c",
+          "text": "Rolę nieświadomych mechanizmów obronnych — wpływ psychoanalitycznych procesów na opór"
+        },
+        {
+          "id": "d",
+          "text": "Wpływ czynników biologicznych na zachowanie — determinizm genetyczny i neurobiologiczny"
+        },
+        {
+          "id": "e",
+          "text": "Duże znaczenie stadium zmiany klienta — dopasowanie interwencji do etapu gotowości (TTM)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-060",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wprowadzenie zdrowych nawyków i regularnej kontroli obniżających ryzyko nawrotów chorób serca"
+        },
+        {
+          "id": "b",
+          "text": "Całkowite wyleczenie choroby przewlekłej — trwałe ustąpienie objawów i normalizacja wyników"
+        },
+        {
+          "id": "c",
+          "text": "Wyłączną poprawę komunikacji werbalnej — lepsze sformułowania bez wpływu na zachowania zdrowotne"
+        },
+        {
+          "id": "d",
+          "text": "Zwiększenie liczby przepisywanych leków — intensyfikacja farmakoterapii jako główny cel rozmowy"
+        },
+        {
+          "id": "e",
+          "text": "Skrócenie czasu wizyty lekarskiej — efektywność organizacyjna bez wpływu na wyniki kliniczne"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-061",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sprzeczność między zasadami organizacji a przekonaniami jednostki — konflikt wartości (Maslach)"
+        },
+        {
+          "id": "b",
+          "text": "Konflikt między językiem żyrafy a szakala — stosowanie różnych stylów komunikacji w gabinecie"
+        },
+        {
+          "id": "c",
+          "text": "Rozbieżność między wiedzą medyczną a wiedzą pacjenta — asymetria informacji w relacji terapeutycznej"
+        },
+        {
+          "id": "d",
+          "text": "Niezgodność między oceną pierwotną a wtórną — rozbieżność w diagnozie między specjalistami"
+        },
+        {
+          "id": "e",
+          "text": "Konflikt między rolą zawodową a rolą prywatną — trudność pogodzenia pracy lekarza z życiem rodzinnym"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-062",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niższy poziom wypalenia zawodowego — zmniejszenie wyczerpania emocjonalnego u personelu medycznego"
+        },
+        {
+          "id": "b",
+          "text": "Mniejsza presja czasu — redukcja stresu związanego z ograniczonym czasem wizyty ambulatoryjnej"
+        },
+        {
+          "id": "c",
+          "text": "Uruchomienie efektu placebo i wzmocnienie odporności — korzyść biologiczna po stronie pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "Większe zadowolenie z pracy zawodowej — poprawa satysfakcji zawodowej lekarza po empatycznej rozmowie"
+        },
+        {
+          "id": "e",
+          "text": "Mniejsze prawdopodobieństwo depresji u lekarza — ochrona zdrowia psychicznego personelu medycznego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-063",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rozwój egocentryzmu mowy i myślenia — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny)"
+        },
+        {
+          "id": "b",
+          "text": "Osiągnięcie emocjonalnej niezależności od rodziców — autonomia afektywna typowa dla adolescencji"
+        },
+        {
+          "id": "c",
+          "text": "Rozróżnianie dobra i zła — rozwój moralny i etyczny w średnim dzieciństwie (wiek przedszkolny)"
+        },
+        {
+          "id": "d",
+          "text": "Pojawienie się stadium przedoperacyjnego Piageta — myślenie symboliczne, ale jeszcze nielogiczne"
+        },
+        {
+          "id": "e",
+          "text": "Bezpieczna więź rodzic–dziecko sprzyjająca zaufaniu i zdrowemu rozwojowi emocjonalnemu niemowlęcia"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-064",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "W średnim dzieciństwie (wiek przedszkolny) — lęki przed zwierzętami, ciemnością i symbolami"
+        },
+        {
+          "id": "b",
+          "text": "W wieku szkolnym — lęki przed niepowodzeniem, krytyką nauczyciela i brakiem akceptacji rówieśników"
+        },
+        {
+          "id": "c",
+          "text": "We wczesnym dzieciństwie (niemowlęctwie) — lęk separacyjny, przed obcymi i głośnymi dźwiękami"
+        },
+        {
+          "id": "d",
+          "text": "W wieku dorastania — lęk przed dezaprobatą grupy rówieśniczej i oceną społeczną"
+        },
+        {
+          "id": "e",
+          "text": "W okresie prenatalnym — reakcje na bodźce matczyne jeszcze przed narodzinami dziecka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-065",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niemowlęctwa — lęk separacyjny, przed obcymi ludźmi i przed głośnymi, nagłymi dźwiękami"
+        },
+        {
+          "id": "b",
+          "text": "Wczesnej dorosłości — lęki egzystencjalne związane z tożsamością i samodzielnością życiową"
+        },
+        {
+          "id": "c",
+          "text": "Wieku szkolnego — lęki przed niepowodzeniem, krytyką nauczyciela i brakiem akceptacji przez rówieśników"
+        },
+        {
+          "id": "d",
+          "text": "Wieku dorastania — lęk przed dezaprobatą grupy i eksperymentowanie z tożsamością społeczną"
+        },
+        {
+          "id": "e",
+          "text": "Średniego dzieciństwa (wieku przedszkolnego) — lęk przed wyimaginowanymi postaciami (potwory, duchy)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-066",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Emocjonalna niezależność od rodziców i zakochiwanie się — cechy typowe dla okresu adolescencji"
+        },
+        {
+          "id": "b",
+          "text": "Odroczona gratyfikacja i maskowanie agresji — osiągnięcia charakterystyczne dla wieku szkolnego"
+        },
+        {
+          "id": "c",
+          "text": "Pojęcie abstrakcyjne choroby — rozumienie choroby jako procesu wymagającego refleksji (adolescencja)"
+        },
+        {
+          "id": "d",
+          "text": "Rozpatrywanie śmierci w kategoriach lęku egzystencjalnego — typowe dla chorującego nastolatka"
+        },
+        {
+          "id": "e",
+          "text": "Egocentryzm mowy i myślenia oraz stadium przedoperacyjne Piageta — osiągnięcia wieku przedszkolnego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-067",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rozumieją chorobę jako pojęcie abstrakcyjne — postrzegają ją jako proces wymagający głębszej refleksji"
+        },
+        {
+          "id": "b",
+          "text": "W pełni rozumieją czasowość nieobecności rodziców — wiedzą, że rodzice wrócą po separacji"
+        },
+        {
+          "id": "c",
+          "text": "Rozpatrują śmierć w kategoriach lęku egzystencjalnego — myślą o nieuchronności i sensie życia"
+        },
+        {
+          "id": "d",
+          "text": "Postrzegają chorobę jako proces nieodwracalny i powszechny — rozumieją jej ostateczność"
+        },
+        {
+          "id": "e",
+          "text": "Nie rozumieją choroby — przeżywają każdy epizod osobno; przy oporze wobec leczenia czują się zdrowe"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-068",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proces nieodwracalny i powszechny — rozumienie choroby jako stanu trwałego dotykającego wszystkich"
+        },
+        {
+          "id": "b",
+          "text": "Subiektywne cierpienie wymagające negocjacji — choroba jako doświadczenie do omówienia z dorosłymi"
+        },
+        {
+          "id": "c",
+          "text": "Zjawisko czysto abstrakcyjne — choroba jako pojęcie teoretyczne bez bezpośredniego znaczenia osobistego"
+        },
+        {
+          "id": "d",
+          "text": "Lęk egzystencjalny — postrzeganie choroby w kategoriach zagrożenia sensu i tożsamości (adolescencja)"
+        },
+        {
+          "id": "e",
+          "text": "Karę za złe uczynki — magiczne, karzące wyjaśnienie choroby lub konieczności operacji"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-069",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do 3 roku życia — dziecko postrzega śmierć jako stan odwracalny, porównywalny ze snem lub podróżą"
+        },
+        {
+          "id": "b",
+          "text": "W 7 roku życia — śmierć jako proces nieodwracalny, ale jeszcze niepowszechny (tylko u niektórych)"
+        },
+        {
+          "id": "c",
+          "text": "Od 9 roku życia — przekonanie o powszechności śmierci jako nieuchronnego losu każdego człowieka"
+        },
+        {
+          "id": "d",
+          "text": "Dopiero w wieku dorastania — pełne egzystencjalne ujęcie śmierci i choroby jako zagrożenia tożsamości"
+        },
+        {
+          "id": "e",
+          "text": "W okresie prenatalnym — brak świadomości śmierci; pojęcie powstaje dopiero po urodzeniu dziecka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-070",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Niemowlęcia — brak rozumienia choroby; reakcje na ból, separację i procedury medyczne"
+        },
+        {
+          "id": "b",
+          "text": "Dziecka w wieku przedszkolnym — magiczne, karzące wyjaśnienia choroby i operacji"
+        },
+        {
+          "id": "c",
+          "text": "Dziecka w wieku wczesnoszkolnym — stopniowe rozumienie nieodwracalności, lecz nie powszechności śmierci"
+        },
+        {
+          "id": "d",
+          "text": "Chorującego nastolatka (wiek dorastania) — abstrakcyjne pojęcie choroby i lęk egzystencjalny"
+        },
+        {
+          "id": "e",
+          "text": "Dziecka do 3 roku życia — epizodyczne przeżywanie choroby bez zrozumienia jej jako stanu trwałego"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-071",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "W wieku przedszkolnym postrzegających chorobę lub operację jako karę — magiczne wyjaśnienia za złe uczynki"
+        },
+        {
+          "id": "b",
+          "text": "W adolescencji przeżywających lęk egzystencjalny — abstrakcyjne ujęcie choroby i śmierci"
+        },
+        {
+          "id": "c",
+          "text": "Od 9 roku życia rozumiejących powszechność śmierci — pełna świadomość nieuchronności losu"
+        },
+        {
+          "id": "d",
+          "text": "W pierwszym roku życia doświadczających zagrożenia życia — silne, bierne przywiązanie wobec matki"
+        },
+        {
+          "id": "e",
+          "text": "Do 3 miesiąca życia reagujących zmianą rytmu snu — wczesna adaptacja do stresu hospitalizacji"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-072",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Egocentryzm mowy i myślenia — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny)"
+        },
+        {
+          "id": "b",
+          "text": "Lęk separacyjny przed rozstaniem z opiekunem — normatywny lęk wczesnego dzieciństwa (niemowlęctwo)"
+        },
+        {
+          "id": "c",
+          "text": "Poszukiwanie doznań i stymulacji, podatność na sugestię oraz lęk przed dezaprobatą — adolescencja"
+        },
+        {
+          "id": "d",
+          "text": "Trening czystości i stadium przedoperacyjne Piageta — osiągnięcia wieku przedszkolnego"
+        },
+        {
+          "id": "e",
+          "text": "Brak rozumienia czasowości nieobecności rodziców — trudność w przewidywaniu powrotu opiekuna"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-073",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Agresja społeczna dominuje u chłopców, a fizyczna u dziewcząt — odwrócenie typowego wzorca płciowego"
+        },
+        {
+          "id": "b",
+          "text": "Brak zdolności do odroczonej gratyfikacji — niemożność opóźnienia gratyfikacji (cecha niemowlęcia)"
+        },
+        {
+          "id": "c",
+          "text": "Dzieci nie potrafią rozpoznawać i nazywać uczuć — brak kompetencji emocjonalnej (wiek przedszkolny)"
+        },
+        {
+          "id": "d",
+          "text": "Maskowanie agresji — agresja społeczna głównie u dziewcząt, fizyczna u chłopców (wiek szkolny)"
+        },
+        {
+          "id": "e",
+          "text": "Rozstawanie się z rodzicami zawsze wywołuje silny lęk — utrwalony lęk separacyjny (niemowlęctwo)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-074",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lęk separacyjny i lęk przed obcymi — normatywne lęki wczesnego dzieciństwa (niemowlęctwo)"
+        },
+        {
+          "id": "b",
+          "text": "Lęk przed głośnymi dźwiękami i upadkiem — typowe lęki niemowlęcia w pierwszych latach życia"
+        },
+        {
+          "id": "c",
+          "text": "Lęk przed nadnaturalnymi postaciami (potwory, duchy) — lęk przed symbolami w wieku przedszkolnym"
+        },
+        {
+          "id": "d",
+          "text": "Lęk przed niepowodzeniem/porażką oraz przed brakiem akceptacji i krytyką — lęki wieku szkolnego"
+        },
+        {
+          "id": "e",
+          "text": "Lęk egzystencjalny przed nieuchronnością śmierci — typowy dla chorującego nastolatka"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-075",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pojawienie się egocentryzmu mowy — trudność w przyjęciu perspektywy innej osoby (wiek przedszkolny i wczesny)"
+        },
+        {
+          "id": "b",
+          "text": "Trening czystości — osiągnięcie kontroli nad funkcjami fizjologicznymi (wiek przedszkolny)"
+        },
+        {
+          "id": "c",
+          "text": "Rozwój stałości obiektu i lęku przed separacją — kamień milowy niemowlęctwa (pierwszy rok życia)"
+        },
+        {
+          "id": "d",
+          "text": "Nasilenie konfliktów rodzinnych związanych z autonomią oraz uczuciowe angażowanie się (zakochiwanie)"
+        },
+        {
+          "id": "e",
+          "text": "Brak zdolności nazywania emocji — niemożność werbalizacji uczuć (cecha wczesnego dzieciństwa)"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-076",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "werbalnych, wokalnych i niewerbalnych zachodzącej bez określonego kontekstu sytuacyjnego"
+        },
+        {
+          "id": "b",
+          "text": "wyłącznie sygnałów słownych przekazywanych świadomie w relacji lekarz–pacjent"
+        },
+        {
+          "id": "c",
+          "text": "ograniczonej do treści medycznej, bez wymiany sygnałów pozawerbalnych"
+        },
+        {
+          "id": "d",
+          "text": "werbalnych, wokalnych i niewerbalnych w kontekście służącym lepszej współpracy stron"
+        },
+        {
+          "id": "e",
+          "text": "jedynie niewerbalnych, zachodzącej poza świadomością nadawcy i odbiorcy"
+        }
+      ],
+      "explanation": "Definicja medyczna (**Nęcki 1996**): komunikacja to wymiana sygnałów **werbalnych, wokalnych i niewerbalnych** podejmowana w określonym kontekście w celu osiągnięcia **lepszego współdziałania**. Z punktu widzenia teorii komunikacji wszystko, co podlega spostrzeganiu w wyglądzie i zachowaniu innych, jest dla nas komunikatem. Trójpodział sygnałów (werbalne/wokalne/niewerbalne) to istota definicji."
+    },
+    {
+      "id": "phum-psy-gen-077",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "określania i etykietowania rzeczy, myśli oraz przeżywanych doświadczeń"
+        },
+        {
+          "id": "b",
+          "text": "oceniania rzeczy i doświadczeń w celu wyrażenia własnej opinii"
+        },
+        {
+          "id": "c",
+          "text": "regulowania relacji przez kreowanie wypowiedzi jedno- lub dwuznacznych"
+        },
+        {
+          "id": "d",
+          "text": "dzielenia się doświadczeniami i przeżyciami dla wzajemnego zrozumienia stron"
+        },
+        {
+          "id": "e",
+          "text": "uzupełniania lub modyfikowania sensu słów przez ton głosu i mimikę"
+        }
+      ],
+      "explanation": "Funkcje komunikatów werbalnych: **nazywanie** (określanie, etykietowanie), **ocenianie** (wyrażanie opinii), **dzielenie się** (doświadczeniami, przeżyciami) oraz **regulowanie** (regulowanie stosunków między ludźmi przez kreowanie komunikatów **jedno- lub dwuznacznych**). Dystraktor E dotyczy funkcji niewerbalnych (ton głosu). Marker regulowania: zarządzanie relacją międzyludzką, nie samym opisem rzeczywistości."
+    },
+    {
+      "id": "phum-psy-gen-078",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "sygnalizowaniu nastawienia do rozmówcy oraz omawianego tematu rozmowy"
+        },
+        {
+          "id": "b",
+          "text": "wyrażaniu stanów emocjonalnych poprzez postawę ciała i mimikę twarzy"
+        },
+        {
+          "id": "c",
+          "text": "zachęcaniu do kontynuowania wypowiedzi przez potakiwanie i gesty"
+        },
+        {
+          "id": "d",
+          "text": "uzupełnianiu lub modyfikowaniu znaczenia słów przez ton i mimikę"
+        },
+        {
+          "id": "e",
+          "text": "określaniu i etykietowaniu rzeczy, myśli oraz przeżywanych doświadczeń"
+        }
+      ],
+      "explanation": "Funkcje komunikatów niewerbalnych: komunikowanie emocji (mimika, postawa ciała), **dostarczanie kontekstu** (uzupełnianie lub modyfikowanie znaczenia słów przez **ton głosu i mimikę**), wyrażanie postaw (nastawienie do rozmówcy i tematu) oraz podtrzymywanie rozmowy (potakiwanie, gesty). Dystraktor E to funkcja werbalna (nazywanie). Marker: ton głosu/mimika zmieniające sens wypowiedzi werbalnej."
+    },
+    {
+      "id": "phum-psy-gen-079",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "swoistej, różniącej się w zależności od rodzaju bodźca stresogennego"
+        },
+        {
+          "id": "b",
+          "text": "poznawczej, opierającej się na subiektywnej ocenie sytuacji"
+        },
+        {
+          "id": "c",
+          "text": "transakcyjnej, rozumianej jako relacja jednostki ze środowiskiem"
+        },
+        {
+          "id": "d",
+          "text": "nieswoistej (niespecyficznej), niezależnej od rodzaju stresora"
+        },
+        {
+          "id": "e",
+          "text": "salutogenetycznej, budującej poczucie koherencji i odporności"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-080",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "pojawienia się bodźca stresogennego, zanim jednostka oceni swoje zasoby radzenia"
+        },
+        {
+          "id": "b",
+          "text": "zakończenia procesu radzenia sobie, gdy stresor zostanie całkowicie usunięty"
+        },
+        {
+          "id": "c",
+          "text": "osiągnięcia przez organizm stadium wyczerpania w reakcji ogólnej na stres"
+        },
+        {
+          "id": "d",
+          "text": "uznania w ocenie pierwotnej relacji za stresową i oceny sposobów radzenia"
+        },
+        {
+          "id": "e",
+          "text": "przewagi emocji pozytywnych nad negatywnymi w relacji jednostki ze stresem"
+        }
+      ],
+      "explanation": "**Ocena wtórna** jest zapoczątkowana wówczas, gdy w **ocenie pierwotnej** relacja z otoczeniem została uznana za **stresową** — dotyczy możliwości usunięcia przyczyny stresu lub złagodzenia skutków oraz analizy własnych zasobów zaradczych. Oba procesy oceny są ze sobą **sprzężone i wzajemnie się wpływają**. Ocena wtórna to punkt wyjścia do aktywności ukierunkowanej na zmianę transakcji stresowej."
+    },
+    {
+      "id": "phum-psy-gen-081",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "depresyjność, płaczliwość, obniżenie nastroju, apatia i drażliwość w relacji z podopiecznymi"
+        },
+        {
+          "id": "b",
+          "text": "agresję wobec podopiecznych, izolację społeczną i zrywanie więzi ze współpracownikami"
+        },
+        {
+          "id": "c",
+          "text": "bóle głowy, zaburzenia snu oraz inne dolegliwości somatyczne w pracy"
+        },
+        {
+          "id": "d",
+          "text": "utratę satysfakcji zawodowej i spadek poczucia sensu wykonywanej pracy"
+        },
+        {
+          "id": "e",
+          "text": "spadek efektywności organizacyjnej, obniżenie jakości pracy zespołu i absencje"
+        }
+      ],
+      "explanation": "W płaszczyźnie **interpersonalnej** objawy **behawioralne** wypalenia to m.in.: **agresja wobec podopiecznych**, izolacja społeczna, wycofanie, konflikty w pracy i w domu, **dystansowanie się** do podopiecznych, szufladkowanie, niechęć do pomocy, automatyzm zachowania i **zrywanie więzi ze współpracownikami**. Depresyjność i płaczliwość należą do objawów afektywnych płaszczyzny indywidualnej, a bóle głowy do somatycznych; utrata satysfakcji i spadek efektywności — do płaszczyzny organizacyjnej."
+    },
+    {
+      "id": "phum-psy-gen-082",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "utratę satysfakcji zawodowej i spadek poczucia sensu wykonywanej pracy"
+        },
+        {
+          "id": "b",
+          "text": "cynizm oraz utratę zaufania do współpracowników i władz zwierzchnich"
+        },
+        {
+          "id": "c",
+          "text": "spadek motywacji do pracy i niechęć do podejmowania nowych inicjatyw"
+        },
+        {
+          "id": "d",
+          "text": "skracanie czasu pracy i ograniczanie kontaktu z podopiecznymi w placówce"
+        },
+        {
+          "id": "e",
+          "text": "spadek jakości pracy, absencje chorobowe i obniżenie efektywności zespołu"
+        }
+      ],
+      "explanation": "W płaszczyźnie **organizacyjnej** objawy **kognitywne** to **cynizm** oraz **utrata zaufania do współpracowników i władz zwierzchnich**. Objaw afektywny tej płaszczyzny to utrata satysfakcji zawodowej; behawioralne to spadek efektywności i jakości pracy, absencje, skracanie czasu pracy i kontaktu z podopiecznymi; motywacyjne to spadek motywacji, niechęć do pójścia do pracy, spadek inicjatywy. Pytanie sprawdza rozróżnienie kategorii objawów w obrębie płaszczyzny organizacyjnej."
+    },
+    {
+      "id": "phum-psy-gen-083",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "zbyt wiele biurokracji i obciążenia dokumentacją w codziennej pracy lekarza"
+        },
+        {
+          "id": "b",
+          "text": "brak szacunku ze strony administracji, kierownictwa i współpracowników (41%)"
+        },
+        {
+          "id": "c",
+          "text": "spędzanie wielu godzin w pracy i długie dyżury bez wystarczającego odpoczynku"
+        },
+        {
+          "id": "d",
+          "text": "niewystarczająca płaca i nagrody finansowe w porównaniu z włożonym wysiłkiem"
+        },
+        {
+          "id": "e",
+          "text": "brak kontroli nad własną pracą i ograniczona autonomia w podejmowaniu decyzji"
+        }
+      ],
+      "explanation": "Wg badań z **2020 r. w Wielkiej Brytanii** najważniejszym czynnikiem wypalenia w ocenie lekarzy był **brak szacunku** ze strony pracowników administracyjnych, kierownictwa i współpracowników (**41%**), następnie zbyt wiele biurokracji (39%), spędzanie wielu godzin w pracy (38%), brak kontroli/autonomii (32%). Pytanie sprawdza zapamiętanie czynnika o najwyższym odsetku — brak szacunku, nie biurokracja."
+    },
+    {
+      "id": "phum-psy-gen-084",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "relacyjnemu (transakcyjnemu), gdzie stres wynika z oceny sytuacji przez jednostkę"
+        },
+        {
+          "id": "b",
+          "text": "reakcji organizmu (w duchu Selyego), jako niespecyficznej odpowiedzi na wymagania"
+        },
+        {
+          "id": "c",
+          "text": "poznawczemu Lazarusa, opierającemu się na subiektywnej ocenie transakcji"
+        },
+        {
+          "id": "d",
+          "text": "salutogenetycznemu, budującemu poczucie koherencji i zasoby radzenia sobie"
+        },
+        {
+          "id": "e",
+          "text": "behawioralnemu, koncentrującemu się na obserwowalnych reakcjach na stresor"
+        }
+      ],
+      "explanation": "Ujęcie stresu jako **niespecyficznej reakcji organizmu** na stawiane mu fizyczne i psychiczne wymagania odpowiada koncepcji **Selyego** (reakcja organizmu). Prezentacja podaje też inne ujęcia: stan napięcia, sytuacja trudna (nadmiernie obciążająca system samoregulacyjny), reakcja na zagrożenie. Odróżnij od ujęcia **relacyjnego** Lazarusa (stres jako relacja osoba-otoczenie oceniana subiektywnie) — to dwa różne paradygmaty."
+    },
+    {
+      "id": "phum-psy-gen-085",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "ocenie pierwotnej lub powtórnej sytuacji stresowej przez jednostkę"
+        },
+        {
+          "id": "b",
+          "text": "problemie lub na emocjach związanych z sytuacją stresową"
+        },
+        {
+          "id": "c",
+          "text": "zasobach środowiskowych lub osobowych dostępnych w danej sytuacji"
+        },
+        {
+          "id": "d",
+          "text": "stresorach środowiskowych lub fizjologicznych reakcjach organizmu"
+        },
+        {
+          "id": "e",
+          "text": "mobilizacji zasobów lub destrukcji w reakcji ogólnej na stres"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-086",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "nazwanie emocji, które odbiorca może odczuwać w danej sytuacji"
+        },
+        {
+          "id": "b",
+          "text": "wyrażenie zrozumienia perspektywy i trudności drugiej osoby"
+        },
+        {
+          "id": "c",
+          "text": "okazanie uznania dla wysiłku i zaangażowania rozmówcy"
+        },
+        {
+          "id": "d",
+          "text": "deklaracja gotowości wsparcia i obecności przy pacjencie"
+        },
+        {
+          "id": "e",
+          "text": "zachęcenie do pogłębienia tematu przez dodatkowe pytania"
+        }
+      ],
+      "explanation": "**Respecting** (R) to wyrażanie szacunku i uznania dla wysiłku i postawy pacjenta: „To naprawdę musi wymagać olbrzymiego wysiłku”, „Jestem pod wrażeniem, jak dobrze radzi sobie Pan z leczeniem”. Odróżnij od **Understanding** (okazanie zrozumienia trudności: „To jest dla Pana bardzo trudne”) i **Supporting** (deklaracja wsparcia). Marker Respecting: docenienie, komplement wobec wysiłku pacjenta."
+    },
+    {
+      "id": "phum-psy-gen-087",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "nazwanie emocji, które odbiorca może odczuwać w danej sytuacji"
+        },
+        {
+          "id": "b",
+          "text": "wyrażenie zrozumienia perspektywy i trudności drugiej osoby"
+        },
+        {
+          "id": "c",
+          "text": "okazanie uznania dla wysiłku i zaangażowania rozmówcy"
+        },
+        {
+          "id": "d",
+          "text": "deklaracja gotowości wsparcia i obecności przy pacjencie"
+        },
+        {
+          "id": "e",
+          "text": "zachęcenie do pogłębienia tematu przez dodatkowe pytania"
+        }
+      ],
+      "explanation": "**Exploring** (E) to zachęcanie pacjenta do rozwinięcia i pogłębienia tematu: „Proszę opowiedzieć mi więcej o swoich obawach…”, „Wspomniał Pan, że boi się o reakcję dzieci — czy może mi Pan coś więcej powiedzieć?”. To eksplorowanie obaw i emocji pacjenta, otwierające przestrzeń na dalsze informacje. Należy odróżnić je od **Understanding**, które jedynie sygnalizuje zrozumienie sytuacji bez dopytywania. Exploring to ostatnia litera akronimu **NURSE**; jego marker to dopytywanie i poszerzanie wypowiedzi pacjenta."
+    },
+    {
+      "id": "phum-psy-gen-088",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "obiektywnej oceny objawów klinicznych bez uwzględniania emocji i perspektywy pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "dostrzeżenia oznak emocji u drugiej osoby i zrozumienia jej myśli oraz celów"
+        },
+        {
+          "id": "c",
+          "text": "narzucania pacjentowi własnego punktu widzenia i oczekiwań lekarza"
+        },
+        {
+          "id": "d",
+          "text": "utrzymywania pełnego dystansu emocjonalnego w relacji z chorym"
+        },
+        {
+          "id": "e",
+          "text": "stawiania diagnozy wyłącznie na podstawie wyników badań laboratoryjnych"
+        }
+      ],
+      "explanation": "Prezentacja definiuje empatię również jako **zdolność dostrzeżenia i zinterpretowania oznak emocji** doświadczanych przez drugą osobę oraz rozumienia jej **myśli, motywów i celów** — to komponent poznawczy empatii dopełniający współodczuwanie. Empatia jest podstawowym czynnikiem kształtowania dobrego kontaktu z chorym i zaspokajania jego potrzeb biopsychospołecznych — nie zaś utrzymywania pełnego dystansu emocjonalnego czy narzucania pacjentowi własnego punktu widzenia, co byłoby jej zaprzeczeniem."
+    },
+    {
+      "id": "phum-psy-gen-089",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "nazwanie emocji, które odbiorca może odczuwać w danej sytuacji"
+        },
+        {
+          "id": "b",
+          "text": "wyrażenie zrozumienia perspektywy i trudności drugiej osoby"
+        },
+        {
+          "id": "c",
+          "text": "okazanie uznania dla wysiłku i zaangażowania rozmówcy"
+        },
+        {
+          "id": "d",
+          "text": "deklaracja gotowości wsparcia i obecności przy pacjencie"
+        },
+        {
+          "id": "e",
+          "text": "zachęcenie do pogłębienia tematu przez dodatkowe pytania"
+        }
+      ],
+      "explanation": "**Understanding** (U) to okazanie zrozumienia perspektywy i trudności pacjenta: „Jeśli dobrze rozumiem, martwi się Pan, jak leczenie wpłynie na Pana”, „To jest dla Pana bardzo trudne”, „Nie potrafię sobie wyobrazić, jak to jest”. Odróżnij od **Naming** (nazwanie emocji: „Wydaje się pani zmartwiona”) — Understanding sygnalizuje pojęcie sytuacji pacjenta, często z parafrazą („jeśli dobrze rozumiem…”)."
+    },
+    {
+      "id": "phum-psy-gen-090",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "nie ma znaczenia dla dziecka aż do ukończenia trzeciego roku życia i nauki chodzenia"
+        },
+        {
+          "id": "b",
+          "text": "do 18 miesiąca wiąże się z przeżywaniem utraty, bo brak reprezentacji matki"
+        },
+        {
+          "id": "c",
+          "text": "powoduje natychmiastowe rozumienie czasowości rozstania przez niemowlę"
+        },
+        {
+          "id": "d",
+          "text": "jest emocjonalnie obojętna dla starszego niemowlęcia po ukończeniu roku"
+        },
+        {
+          "id": "e",
+          "text": "dotyczy wyłącznie dzieci po trzecim roku życia z wykształconą pamięcią"
+        }
+      ],
+      "explanation": "Obecność matki jest istotna zwłaszcza **do 18 miesiąca życia**, gdyż jej nieobecność wiąże się z przeżywaniem sytuacji jako **utraty** — dziecko nie ma jeszcze wykształconej **wewnętrznej reprezentacji matki**. W okresie od 3 m.ż. do 3 r.ż. trudna jest separacja z matką, bo stanowi ona źródło poczucia bezpieczeństwa. Stres może być zmniejszany przez obecność bliskiej osoby i stały zespół medyczny."
+    },
+    {
+      "id": "phum-psy-gen-091",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "skrócenie czasu wizyty kosztem pełnego zrozumienia potrzeb i perspektywy pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "precyzyjniejsze diagnozowanie i terapię uwzględniającą indywidualne potrzeby"
+        },
+        {
+          "id": "c",
+          "text": "utrzymanie pacjenta jedynie jako przypadku medycznego bez osobowości"
+        },
+        {
+          "id": "d",
+          "text": "unikanie aktywnego słuchania i koncentracji na samej treści medycznej"
+        },
+        {
+          "id": "e",
+          "text": "ograniczenie relacji do komunikacji niewerbalnej bez rozmowy słownej"
+        }
+      ],
+      "explanation": "Lekarz, który potrafi wyrazić empatię, może **bardziej precyzyjnie diagnozować i proponować terapie**, uwzględniając **indywidualne potrzeby pacjenta** — dzięki czemu leczenie staje się bardziej efektywne. Empatia pozwala postrzegać pacjenta jako jednostkę, a nie tylko „przypadek medyczny”, co jest odwrotnością przedmiotowego traktowania. Empatyczna komunikacja nie polega też na skracaniu wizyty kosztem zrozumienia, lecz opiera się na **aktywnym słuchaniu** i skupieniu na potrzebach chorego."
+    },
+    {
+      "id": "phum-psy-gen-092",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "wyłącznie wrodzonych predyspozycjach genetycznych jednostki, rodziny i środowiska"
+        },
+        {
+          "id": "b",
+          "text": "podejmowaniu lub zaniechaniu zachowań prozdrowotnych jako komponencie postawy"
+        },
+        {
+          "id": "c",
+          "text": "jednorazowej decyzji o zmianie diety bez wpływu postawy wobec zdrowia"
+        },
+        {
+          "id": "d",
+          "text": "czynnikach wyłącznie obiektywnych, niezależnych od przekonań jednostki"
+        },
+        {
+          "id": "e",
+          "text": "przekonaniach politycznych jednostki i jej poglądach społeczno-ekonomicznych"
+        }
+      ],
+      "explanation": "Styl życia jest warunkowany **przyjęciem określonej postawy wobec zdrowia** (prozdrowotnej lub antyzdrowotnej) i jej odzwierciedleniem; przejawia się przede wszystkim w **podejmowaniu lub zaniechaniu zachowań prozdrowotnych**, które stanowią jeden z **komponentów postawy prozdrowotnej**. Na styl życia wpływają czynniki subiektywne (przekonania, wartości) i obiektywne (środowisko, sytuacja społeczno-ekonomiczna) — nie tylko jedne z nich."
+    },
+    {
+      "id": "phum-psy-gen-093",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "stadium przedrefleksyjne, gdy jednostka nie rozważa jeszcze zmiany"
+        },
+        {
+          "id": "b",
+          "text": "refleksja, polegająca na rozważaniu konieczności i sensu zmiany"
+        },
+        {
+          "id": "c",
+          "text": "przygotowania, obejmujące planowanie i szukanie sposobów wprowadzenia zmiany"
+        },
+        {
+          "id": "d",
+          "text": "działanie, mające na celu wprowadzenie zmiany w rozwiązywanym problemie"
+        },
+        {
+          "id": "e",
+          "text": "utrwalanie, polegające na utrzymaniu zmiany i zapobieganiu nawrotom"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-094",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "prekontemplacji, gdy jednostka nie widzi potrzeby zmiany zachowania"
+        },
+        {
+          "id": "b",
+          "text": "kontemplacji, polegającej na rozważaniu zalet i wad proponowanej zmiany"
+        },
+        {
+          "id": "c",
+          "text": "przygotowania, obejmującego planowanie konkretnych kroków zmiany zachowania"
+        },
+        {
+          "id": "d",
+          "text": "działania, w którym jednostka aktywnie wdraża nowe zachowanie w praktyce"
+        },
+        {
+          "id": "e",
+          "text": "podtrzymania, gdy jednostka zna strategie radzenia sobie z ryzykiem nawrotu"
+        }
+      ],
+      "explanation": "Wypowiedź \"Wiem, co robić, gdy stracę koncentrację…\" wskazuje na etap **podtrzymania/nawrotów** (Etap V) — pacjent dysponuje już strategiami radzenia sobie z trudnościami i zapobiegania nawrotom utrwalonej zmiany. Odróżnij od **działania** (samo wdrażanie zmiany: \"zacząłem mówić ciszej\"). Marker podtrzymania: gotowe procedury na sytuacje ryzyka nawrotu, świadczące o utrwalonej zmianie."
+    },
+    {
+      "id": "phum-psy-gen-095",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "skoncentrowanym na osobie sposobie pomagania wobec ambiwalencji wobec zmiany"
+        },
+        {
+          "id": "b",
+          "text": "współpracy w rozmowie służącej wzmocnieniu własnej motywacji do zmiany"
+        },
+        {
+          "id": "c",
+          "text": "komunikacji zorientowanej na cel, zwracającej uwagę na język zmiany"
+        },
+        {
+          "id": "d",
+          "text": "metodzie perswazji opartej na autorytecie i wiedzy eksperta medycznego"
+        },
+        {
+          "id": "e",
+          "text": "technice konfrontacji z konsekwencjami szkodliwego zachowania pacjenta"
+        }
+      ],
+      "explanation": "Definicja **dla laika** („Co to jest DM?”) akcentuje, że dialog motywujący to **oparty na współpracy styl rozmowy** służący **umocnieniu u osoby jej własnej motywacji i zobowiązania do zmiany** (Miller, Rollnick 2014, s. 12). Definicja dla praktyka pragmatyka opisuje DM jako skoncentrowany na osobie sposób pomagania wobec ambiwalencji, a definicja techniczna podkreśla język zmiany. Pytanie sprawdza rozróżnienie trzech poziomów definicji po charakterystycznym sformułowaniu o stylu rozmowy."
+    },
+    {
+      "id": "phum-psy-gen-096",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "ocenianiu wypowiedzi rozmówcy w celu jej korekty, poprawy i udzielenia rady medycznej"
+        },
+        {
+          "id": "b",
+          "text": "szacunku i pozytywnym nastawieniu obejmującym zachowania werbalne i niewerbalne"
+        },
+        {
+          "id": "c",
+          "text": "przerywaniu wypowiedzi rozmówcy w celu przyspieszenia tempa rozmowy"
+        },
+        {
+          "id": "d",
+          "text": "koncentracji wyłącznie na treści, z pominięciem emocji rozmówcy"
+        },
+        {
+          "id": "e",
+          "text": "unikaniu kontaktu wzrokowego w celu zachowania profesjonalnego dystansu"
+        }
+      ],
+      "explanation": "Aktywne słuchanie to starania o pełne zrozumienie treści i znaczenia przekazu rozmówcy; cechuje je **szacunek i pozytywne nastawienie** do rozmówcy oraz obejmuje zachowania **werbalne i niewerbalne** (kontakt wzrokowy, otwarta postawa, potakiwanie, zwroty zachęcające). Zasada \"nie oceniaj\" (slajd 7) jest sprzeczna z dystraktorem A. Marker: zrozumienie + szacunek + sygnały werbalne i niewerbalne."
+    },
+    {
+      "id": "phum-psy-gen-097",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "ocena przyspiesza zrozumienie rozmówcy i ułatwia wyciąganie wniosków"
+        },
+        {
+          "id": "b",
+          "text": "wypowiedzi oceniające wywołują potrzebę obrony u rozmówcy"
+        },
+        {
+          "id": "c",
+          "text": "ocena jest warunkiem koniecznym empatii w relacji lekarz–pacjent"
+        },
+        {
+          "id": "d",
+          "text": "ocenianie zwiększa zaufanie pacjenta do lekarza i otwiera rozmowę"
+        },
+        {
+          "id": "e",
+          "text": "ocena zastępuje parafrazowanie i potwierdzanie zrozumienia wypowiedzi"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-098",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "eliminowaniu wszelkich różnic zdań między stronami konfliktu przez perswazję"
+        },
+        {
+          "id": "b",
+          "text": "skutecznym radzeniu sobie z konfliktami i trudnościami komunikacyjnymi"
+        },
+        {
+          "id": "c",
+          "text": "narzucaniu wspólnego rozwiązania przez stronę silniejszą w sporze"
+        },
+        {
+          "id": "d",
+          "text": "unikaniu konfrontacji za wszelką cenę bez poszukiwania rozwiązania"
+        },
+        {
+          "id": "e",
+          "text": "stosowaniu kar i nagród w celu wymuszenia zgodności stanowisk"
+        }
+      ],
+      "explanation": "Wśród korzyści NVC: poprawa relacji interpersonalnych, **rozwiązywanie konfliktów** (umożliwia **skuteczne radzenie sobie z konfliktami i trudnościami komunikacyjnymi** przez tworzenie wspólnych rozwiązań), lepsze zrozumienie siebie i innych oraz tworzenie atmosfery wzajemnego szacunku. NVC zachęca do głębszego zrozumienia siebie i innych oraz budowania więzi opartych na szacunku i empatii — nie do perswazji czy unikania (dystraktory)."
+    },
+    {
+      "id": "phum-psy-gen-099",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "dostrzeżenie pierwszych rys wypalenia i próby kompensacji przez więcej pracy"
+        },
+        {
+          "id": "b",
+          "text": "zauroczenie pracą i pełną satysfakcję z wykonywanych obowiązków zawodowych"
+        },
+        {
+          "id": "c",
+          "text": "coraz więcej wysiłku przy coraz mniejszym efekcie i rosnącym zmęczeniu"
+        },
+        {
+          "id": "d",
+          "text": "wyczerpanie, depresję i ucieczkę od pracy lub zmianę miejsca zatrudnienia"
+        },
+        {
+          "id": "e",
+          "text": "etap leczenia, odradzania się i powrotu do równowagi po wypaleniu"
+        }
+      ]
+    },
+    {
+      "id": "phum-psy-gen-100",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "egocentryzm mowy i myślenia, typowy dla wczesnego wieku przedszkolnego"
+        },
+        {
+          "id": "b",
+          "text": "odróżnianie fantazji od rzeczywistości oraz trwałość i dowolność uwagi"
+        },
+        {
+          "id": "c",
+          "text": "rozwój stałości obiektu i lęk przed separacją od opiekuna w niemowlęctwie"
+        },
+        {
+          "id": "d",
+          "text": "pojęcie abstrakcyjne choroby i rozumienie procesów leczenia w adolescencji"
+        },
+        {
+          "id": "e",
+          "text": "emocjonalna niezależność od rodziców i kształtowanie tożsamości w okresie dojrzewania"
+        }
+      ],
+      "explanation": "W **wieku szkolnym (6-12 lat)** osiągnięcia rozwoju **poznawczego** to: myślenie logiczne, **odróżnianie fantazji od rzeczywistości**, **trwałość i dowolność uwagi i pamięci**, aktywność poznawcza oraz orientacja w przestrzeni i schemacie własnego ciała. Egocentryzm mowy i myślenia opisuje wiek przedszkolny, stałość obiektu i lęk separacyjny — niemowlęctwo, a abstrakcyjne pojęcie choroby i niezależność emocjonalna — adolescencję. Marker szkolny: logika, odróżnianie fantazji od realności i dowolna uwaga."
+    }
+  ]
+}

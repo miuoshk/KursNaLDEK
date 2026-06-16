@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { OsceBreadcrumbSetter } from "@/features/osce/components/OsceBreadcrumbSetter";
@@ -17,6 +18,7 @@ type PageProps = {
 };
 
 export default async function OsceTopicSessionPage({ params }: PageProps) {
+  const t = await getTranslations("osce");
   const { stationId, topicId } = await params;
 
   const result = await loadOsceStation(stationId);
@@ -27,8 +29,8 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     }
     return (
       <div>
-        <OsceBreadcrumbSetter second="Kurs na OSCE" />
-        <h1 className="font-heading text-heading-xl text-primary">Temat</h1>
+        <OsceBreadcrumbSetter second={t("courseTitle")} />
+        <h1 className="font-heading text-heading-xl text-primary">{t("topicTitle")}</h1>
         <div className="mt-8">
           <PrzedmiotyError message={result.message} />
         </div>
@@ -36,16 +38,15 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     );
   }
 
-  if (!result.topics.some((t) => t.id === topicId)) {
+  if (!result.topics.some((topic) => topic.id === topicId)) {
     notFound();
   }
 
   const { station } = result;
 
-  // OPG quiz — dedicated interactive view
   if (topicId === OPG_QUIZ_TOPIC_ID) {
-    const topicMeta = result.topics.find((t) => t.id === topicId);
-    const topicName = topicMeta?.name ?? "Panorama (OPG)";
+    const topicMeta = result.topics.find((topic) => topic.id === topicId);
+    const topicName = topicMeta?.name ?? t("opgPanoramaDefault");
 
     const [atlas, structures] = await Promise.all([
       loadOPGAtlas("opg_standard_01"),
@@ -55,7 +56,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     return (
       <div>
         <OsceBreadcrumbSetter
-          second="Kurs na OSCE"
+          second={t("courseTitle")}
           third={`${station.short_name} · ${topicName}`}
         />
 
@@ -76,7 +77,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
           ) : (
             <div className="rounded-card border border-border bg-card p-6">
               <p className="font-body text-body-sm text-secondary">
-                Dane atlasu OPG nie zostały jeszcze skonfigurowane.
+                {t("opgAtlasNotConfigured")}
               </p>
             </div>
           )}
@@ -93,8 +94,8 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     }
     return (
       <div>
-        <OsceBreadcrumbSetter second="Kurs na OSCE" />
-        <h1 className="font-heading text-heading-xl text-primary">Temat</h1>
+        <OsceBreadcrumbSetter second={t("courseTitle")} />
+        <h1 className="font-heading text-heading-xl text-primary">{t("topicTitle")}</h1>
         <div className="mt-8">
           <PrzedmiotyError message={sessionData.message} />
         </div>
@@ -102,7 +103,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
     );
   }
 
-  const topicIndex = result.topics.findIndex((t) => t.id === topicId);
+  const topicIndex = result.topics.findIndex((topic) => topic.id === topicId);
   const nextTopicId =
     topicIndex >= 0 && topicIndex + 1 < result.topics.length
       ? result.topics[topicIndex + 1]!.id
@@ -119,7 +120,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
       return (
         <div>
           <OsceBreadcrumbSetter
-            second="Kurs na OSCE"
+            second={t("courseTitle")}
             third={`${station.short_name} · ${sessionData.topicName}`}
           />
           <h1 className="font-heading text-heading-xl text-primary">{sessionData.topicName}</h1>
@@ -135,7 +136,7 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
   return (
     <div>
       <OsceBreadcrumbSetter
-        second="Kurs na OSCE"
+        second={t("courseTitle")}
         third={`${station.short_name} · ${sessionData.topicName}`}
       />
 
@@ -168,9 +169,9 @@ export default async function OsceTopicSessionPage({ params }: PageProps) {
           />
         ) : (
           <div className="rounded-card border border-border bg-card p-6">
-            <h2 className="font-heading text-heading-sm text-primary">Sesja pytań</h2>
+            <h2 className="font-heading text-heading-sm text-primary">{t("questionSession")}</h2>
             <p className="mt-2 font-body text-body-sm text-secondary">
-              Brak aktywnych pytań w tym temacie.
+              {t("noActiveQuestions")}
             </p>
           </div>
         )}

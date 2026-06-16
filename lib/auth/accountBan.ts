@@ -3,8 +3,7 @@ import "server-only";
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 
-export const ACCOUNT_BLOCKED_MESSAGE =
-  "Konto zostało zablokowane. Skontaktuj się z administratorem.";
+export const ACCOUNT_BLOCKED_MESSAGE_KEY = "accountBlocked" as const;
 
 export const LOGIN_BLOCKED_QUERY = "blocked";
 export const ACCESS_REVOKED_QUERY = "revoked";

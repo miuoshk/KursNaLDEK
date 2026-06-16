@@ -1,19 +1,29 @@
+type MobilePageTitleTranslators = {
+  nav: (
+    key: "dashboard" | "mySubjects" | "statistics" | "achievements" | "settings",
+  ) => string;
+  osce: (key: "courseTitle" | "simulation" | "osceShort" | "pageSubject" | "pageSession") => string;
+};
+
 /** Tytuł do uproszczonego breadcrumbu na wąskim ekranie. */
-export function mobilePageTitle(pathname: string): string | null {
-  if (pathname === "/pulpit" || pathname === "/pulpit/") return "Pulpit";
+export function mobilePageTitle(
+  pathname: string,
+  t: MobilePageTitleTranslators,
+): string | null {
+  if (pathname === "/pulpit" || pathname === "/pulpit/") return t.nav("dashboard");
   if (pathname === "/przedmioty" || pathname.startsWith("/przedmioty/")) {
-    if (pathname === "/przedmioty") return "Moje przedmioty";
-    return "Przedmiot";
+    if (pathname === "/przedmioty") return t.nav("mySubjects");
+    return t.osce("pageSubject");
   }
-  if (pathname === "/osce" || pathname === "/osce/") return "Kurs na OSCE";
+  if (pathname === "/osce" || pathname === "/osce/") return t.osce("courseTitle");
   if (pathname.startsWith("/osce/")) {
-    if (pathname.startsWith("/osce/symulacja")) return "Symulacja OSCE";
-    return "OSCE";
+    if (pathname.startsWith("/osce/symulacja")) return t.osce("simulation");
+    return t.osce("osceShort");
   }
-  if (pathname === "/statystyki") return "Statystyki";
-  if (pathname === "/osiagniecia") return "Osiągnięcia";
-  if (pathname === "/ustawienia") return "Ustawienia";
-  if (pathname.startsWith("/sesja/")) return "Sesja";
-  if (pathname.startsWith("/dashboard/ustawienia")) return "Ustawienia";
+  if (pathname === "/statystyki") return t.nav("statistics");
+  if (pathname === "/osiagniecia") return t.nav("achievements");
+  if (pathname === "/ustawienia") return t.nav("settings");
+  if (pathname.startsWith("/sesja/")) return t.osce("pageSession");
+  if (pathname.startsWith("/dashboard/ustawienia")) return t.nav("settings");
   return null;
 }

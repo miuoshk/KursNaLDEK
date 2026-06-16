@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { RankTierTrack } from "@/features/gamification/components/RankTierTrack";
 import { PlayerCard } from "@/features/gamification/components/PlayerCard";
 import { AchievementsGrid } from "@/features/gamification/components/AchievementsGrid";
@@ -25,6 +26,7 @@ export default async function OsiagnieciaPage({
 }: {
   searchParams: Promise<{ lb?: string | string[]; scope?: string | string[] }>;
 }) {
+  const t = await getTranslations("gamification");
   const sp = await searchParams;
   const period = parseLb(sp.lb);
   const scope = parseScope(sp.scope);
@@ -40,10 +42,10 @@ export default async function OsiagnieciaPage({
     <div className="space-y-8">
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-          Osiągnięcia
+          {t("page.title")}
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">
-          Rangi, XP i Twój postęp w nauce.
+          {t("page.subtitle")}
         </p>
       </header>
 

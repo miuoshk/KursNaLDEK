@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
@@ -13,9 +14,10 @@ export type EndSessionResult = { ok: true } | { ok: false; message: string };
 export async function endSession(
   raw: z.infer<typeof schema>,
 ): Promise<EndSessionResult> {
+  const t = await getTranslations("session");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane." };
+    return { ok: false, message: t("errors.invalidData") };
   }
 
   try {
@@ -26,7 +28,7 @@ export async function endSession(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Brak sesji logowania." };
+      return { ok: false, message: t("errors.noAuthSession") };
     }
 
     const { data: session, error: se } = await supabase
@@ -36,7 +38,7 @@ export async function endSession(
       .maybeSingle();
 
     if (se || !session || session.user_id !== user.id) {
-      return { ok: false, message: "Sesja nie została znaleziona." };
+      return { ok: false, message: t("errors.sessionNotFound") };
     }
 
     const { error: up } = await supabase
@@ -50,12 +52,12 @@ export async function endSession(
 
     if (up) {
       console.error("[endSession]", up.message);
-      return { ok: false, message: "Nie udało się zakończyć sesji." };
+      return { ok: false, message: t("errors.endSessionFailed") };
     }
 
     return { ok: true };
   } catch (e) {
     console.error("[endSession]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

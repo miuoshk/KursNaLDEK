@@ -12,19 +12,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
 import { cn } from "@/lib/utils";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
-import { pickSlogan, SIDEBAR_SLOGANS } from "@/features/shared/lib/slogans";
+import { getSloganPool, pickSlogan } from "@/features/shared/lib/slogans";
 import { formatTrackLabel } from "@/features/access/lib/studyAccess";
-import { formatStreak } from "@/lib/formatStreak";
+import { formatStreakI18n } from "@/lib/formatStreak";
 
 export const SIDEBAR_NAV = [
-  { href: "/statystyki", label: "Statystyki", icon: BarChart3 },
-  { href: "/osiagniecia", label: "Osiągnięcia", icon: Award },
-  { href: "/ustawienia", label: "Ustawienia", icon: Settings },
+  { href: "/statystyki", labelKey: "statistics" as const, icon: BarChart3 },
+  { href: "/osiagniecia", labelKey: "achievements" as const, icon: Award },
+  { href: "/ustawienia", labelKey: "settings" as const, icon: Settings },
 ] as const;
 
 type SidebarPanelProps = {
@@ -40,16 +41,24 @@ export function SidebarPanel({
   onCloseMobile,
   className,
 }: SidebarPanelProps) {
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
+  const tSlogans = useTranslations("slogans");
   const { year } = useDashboardBreadcrumb();
   const { streak, displayName, initials, avatarEmoji, currentTrack } =
     useDashboardUser();
-  const trackLabel = formatTrackLabel(currentTrack);
+  const tAccess = useTranslations("access");
+  const trackLabel = formatTrackLabel(currentTrack, tAccess);
   const mobile = Boolean(onCloseMobile);
-  const slogan = useMemo(() => pickSlogan(SIDEBAR_SLOGANS), []);
+  const slogan = useMemo(
+    () => pickSlogan(getSloganPool(tSlogans, "sidebar"), tSlogans("default")),
+    [tSlogans],
+  );
+  const streakLabel = formatStreakI18n(tCommon, streak);
 
   return (
     <aside
-      aria-label="Kurs na LDEK — menu nawigacji"
+      aria-label={tNav("sidebarAriaLabel")}
       className={cn(
         "flex h-full min-h-0 shrink-0 flex-col border-r border-border bg-sidebar transition-[width] duration-200 ease-out",
         collapsed ? "w-16" : "w-[260px]",
@@ -63,7 +72,7 @@ export function SidebarPanel({
         )}
       >
         {(!collapsed || mobile) && (
-          <p className="font-heading text-[16px] text-brand-gold">Kurs na LDEK</p>
+          <p className="font-heading text-[16px] text-brand-gold">{tCommon("appName")}</p>
         )}
         {mobile ? (
           <button
@@ -74,7 +83,7 @@ export function SidebarPanel({
               "hover:bg-white/[0.04] hover:text-primary",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
-            aria-label="Zamknij menu"
+            aria-label={tCommon("closeMenu")}
           >
             <X className="size-4" aria-hidden />
           </button>
@@ -87,7 +96,7 @@ export function SidebarPanel({
               "hover:bg-white/[0.04] hover:text-primary",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
-            aria-label={collapsed ? "Rozwiń panel boczny" : "Zwiń panel boczny"}
+            aria-label={collapsed ? tNav("expandSidebar") : tNav("collapseSidebar")}
           >
             {collapsed ? (
               <ChevronRight className="size-4" aria-hidden />
@@ -128,7 +137,11 @@ export function SidebarPanel({
                 {displayName}
               </p>
               <p className="mt-0.5 font-body text-body-xs text-secondary">
-                Rok {year} · {trackLabel} · {formatStreak(streak)}
+                {tCommon("yearProfileLine", {
+                  year,
+                  trackLabel,
+                  streak: streakLabel,
+                })}
               </p>
             </div>
           )}
@@ -138,16 +151,16 @@ export function SidebarPanel({
         </div>
       </div>
 
-      <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-4" aria-label="Główna nawigacja">
+      <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-4" aria-label={tNav("mainNavAriaLabel")}>
         <SidebarLink
           href="/pulpit"
-          label="Pulpit"
+          label={tNav("dashboard")}
           icon={LayoutDashboard}
           collapsed={collapsed && !mobile}
         />
         <SidebarLink
           href="/przedmioty"
-          label="Moje przedmioty"
+          label={tNav("mySubjects")}
           icon={BookOpen}
           collapsed={collapsed && !mobile}
         />
@@ -155,7 +168,7 @@ export function SidebarPanel({
           <SidebarLink
             key={item.href}
             href={item.href}
-            label={item.label}
+            label={tNav(item.labelKey)}
             icon={item.icon}
             collapsed={collapsed && !mobile}
           />

@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-076",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Przemoc polegająca na działaniach mających na celu zniszczenie poczucia własnej wartości ofiary, takich jak wyzwiska, poniżanie, manipulacja, groźby i zastraszanie, to przemoc:",
+    "options": [
+      {
+        "id": "a",
+        "text": "psychiczna"
+      },
+      {
+        "id": "b",
+        "text": "fizyczna"
+      },
+      {
+        "id": "c",
+        "text": "ekonomiczna"
+      },
+      {
+        "id": "d",
+        "text": "technologiczna"
+      },
+      {
+        "id": "e",
+        "text": "seksualna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Przemoc **psychiczna** to działania niszczące **poczucie własnej wartości** ofiary: wyzwiska, poniżanie, manipulacja, groźby, zastraszanie, izolowanie. Należy ją odróżnić od przemocy **werbalnej** (sama agresja słowna) i **ekonomicznej** (kontrola finansowa). Przemoc psychiczna jest trudniejsza do zidentyfikowania niż fizyczna, bo nie pozostawia widocznych śladów, a \"kultura milczenia\" sprzyja jej ukrywaniu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-077",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wśród społecznych uwarunkowań przemocy fizycznej w rodzinie, czynnik opisany jako \"katalizator przemocy\" zmniejszający samokontrolę i zwiększający skłonność do agresji to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "akceptacja kar cielesnych"
+      },
+      {
+        "id": "b",
+        "text": "stres ekonomiczny"
+      },
+      {
+        "id": "c",
+        "text": "uzależnienia (alkohol, narkotyki)"
+      },
+      {
+        "id": "d",
+        "text": "wyuczone zachowania"
+      },
+      {
+        "id": "e",
+        "text": "izolacja społeczna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Uzależnienia** (alkohol, narkotyki) są często **katalizatorem przemocy** fizycznej — nadużywanie substancji **zmniejsza samokontrolę** i zwiększa skłonność do agresji. To jeden z czterech wymienionych uwarunkowań przemocy fizycznej, obok akceptacji kar cielesnych, stresu/presji ekonomicznej oraz wyuczonych zachowań. Uzależnienie nie jest \"przyczyną\" w sensie deterministycznym, lecz czynnikiem nasilającym agresję.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-078",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, statystyki dotyczące ofiar przemocy domowej pokazują, że częściej stają się nimi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie mężczyźni"
+      },
+      {
+        "id": "b",
+        "text": "osoby o wysokim statusie społecznym"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie osoby starsze"
+      },
+      {
+        "id": "d",
+        "text": "kobiety oraz dzieci"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie osoby z niepełnosprawnościami"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Choć przemoc domowa dotyczy zarówno kobiet, jak i mężczyzn, statystyki pokazują, że **kobiety oraz dzieci częściej** stają się ofiarami przemocy domowej. Wiąże się to z uwarunkowaniami patriarchalnymi, nierównościami płciowymi i zależnością ekonomiczną. Materiał zaznacza jednak, że mężczyźni również bywają ofiarami, a stereotypy płciowe utrudniają im przyznanie się (\"to niemęskie\").",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-079",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, organizacja pozarządowa oferująca pomoc telefoniczną i wsparcie ofiarom przemocy w rodzinie, wymieniona obok policji i ośrodków interwencji kryzysowej, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Niebieska Karta"
+      },
+      {
+        "id": "b",
+        "text": "Amnesty International"
+      },
+      {
+        "id": "c",
+        "text": "Czerwony Krzyż"
+      },
+      {
+        "id": "d",
+        "text": "Caritas"
+      },
+      {
+        "id": "e",
+        "text": "Niebieska Linia"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Niebieska Linia** to organizacja pozarządowa oferująca **pomoc telefoniczną i wsparcie** ofiarom przemocy. Należy odróżnić ją od **Niebieskiej Karty**, która jest **procedurą** interwencyjną (a nie organizacją). Wśród instytucji pomocowych materiał wymienia: policję (interwencje), ośrodki interwencji kryzysowej (pomoc psychologiczna, prawna, schronienie) oraz NGO takie jak Niebieska Linia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-080",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, kluczowe znaczenie w rozpoznawaniu przemocy ma budowanie zaufania. Działanie lekarza polegające na zadawaniu pytań o okoliczności obrażeń \"w sposób delikatny, ale konkretny, unikając oskarżycielskiego tonu\" dotyczy etapu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dokumentowania obrażeń"
+      },
+      {
+        "id": "b",
+        "text": "zbierania wywiadu medycznego"
+      },
+      {
+        "id": "c",
+        "text": "skierowania do służb"
+      },
+      {
+        "id": "d",
+        "text": "edukacji i prewencji"
+      },
+      {
+        "id": "e",
+        "text": "wszczęcia Niebieskiej Karty"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Zadawanie pytań o okoliczności obrażeń **w sposób delikatny, ale konkretny, bez oskarżycielskiego tonu** to element **zbierania wywiadu medycznego**. Pacjenci często podają zmyślone przyczyny obrażeń, dlatego sposób prowadzenia wywiadu jest kluczowy. Należy go odróżnić od **dokumentowania** (notowanie lokalizacji, czasu i przyczyn obrażeń jako dowodów) oraz **skierowania do służb** (informowanie o dostępnych formach pomocy).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-081",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału o wpływie środowiska społecznego na zdrowie, religia, w której mogą występować zasady dotyczące zakazu transfuzji krwi, mogące mieć poważne konsekwencje zdrowotne, to przykład:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Świadków Jehowy"
+      },
+      {
+        "id": "b",
+        "text": "islamu"
+      },
+      {
+        "id": "c",
+        "text": "katolicyzmu"
+      },
+      {
+        "id": "d",
+        "text": "judaizmu"
+      },
+      {
+        "id": "e",
+        "text": "buddyzmu"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Materiał wskazuje **Świadków Jehowy** jako przykład wyznania, w którym mogą występować zasady dotyczące **zakazu transfuzji krwi**, co ma poważne konsekwencje zdrowotne przy potrzebie takiej procedury. To ilustracja wpływu **wyznania** na decyzje pacjentów o korzystaniu z usług medycznych. Innym przykładem religijnego wpływu na zdrowie jest zakaz spożywania wieprzowiny w islamie (wpływ na dietę).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-082",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, wśród czynników stresogennych wpływających na zdrowie pacjenta, długotrwały stres jest powiązany z wieloma chorobami. Które z poniższych NIE jest wymienione jako skutek przewlekłego stresu?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Choroby serca"
+      },
+      {
+        "id": "b",
+        "text": "Depresja"
+      },
+      {
+        "id": "c",
+        "text": "Daltonizm"
+      },
+      {
+        "id": "d",
+        "text": "Cukrzyca typu 2"
+      },
+      {
+        "id": "e",
+        "text": "Zaburzenia lękowe"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Przewlekły stres wynikający z trudności rodzinnych, konfliktów, marginalizacji czy przemocy jest powiązany z **chorobami serca, depresją, zaburzeniami lękowymi, nadciśnieniem i cukrzycą typu 2**. **Daltonizm** to wrodzone zaburzenie widzenia barw uwarunkowane genetycznie — nie ma związku ze stresem społecznym. To dystraktor spoza kategorii chorób stresozależnych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-083",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, zespół stresu pourazowego (PTSD) jest wymieniany jako specyficzne schorzenie szczególnie zagrażające:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pracownikom biurowym"
+      },
+      {
+        "id": "b",
+        "text": "nauczycielom"
+      },
+      {
+        "id": "c",
+        "text": "rolnikom"
+      },
+      {
+        "id": "d",
+        "text": "pracownikom służb ratunkowych"
+      },
+      {
+        "id": "e",
+        "text": "sprzedawcom"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**PTSD** (zespół stresu pourazowego) jest wymieniany jako specyficzne schorzenie zagrażające **pracownikom służb ratunkowych** — w ramach zawodów wysokiego ryzyka (służby mundurowe, medyczne, miejsca o dużym stresie). To ilustracja długotrwałych skutków negatywnego środowiska pracy na zdrowie psychiczne. Praca w zawodach wysokiego ryzyka może prowadzić do specyficznych chorób zawodowych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-084",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, status społeczno-ekonomiczny określają trzy główne elementy. Który z poniższych zestawów jest poprawny?",
+    "options": [
+      {
+        "id": "a",
+        "text": "wiek, płeć, stan cywilny"
+      },
+      {
+        "id": "b",
+        "text": "warunki mieszkaniowe, dieta, aktywność fizyczna"
+      },
+      {
+        "id": "c",
+        "text": "religia, narodowość, pochodzenie"
+      },
+      {
+        "id": "d",
+        "text": "miejsce zamieszkania, migracje, bezrobocie"
+      },
+      {
+        "id": "e",
+        "text": "zawód, wykształcenie, dochód"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Status społeczno-ekonomiczny określają: **zawód** (prestiż, możliwość kontroli, udział w decyzjach), **wykształcenie** (sposób postrzegania zdrowia, świadomość zagrożeń) i **dochód** (wpływ na warunki mieszkaniowe i życiowe). Osoby z niższych klas odznaczają się wyższą umieralnością i krótszym trwaniem życia. Zależność klasy społecznej i zdrowia zauważono już w XIX w. (Anglia, Francja).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-085",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, ruchliwość społeczna jako czynnik społeczny warunkujący stan zdrowia może mieć charakter:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie poziomy"
+      },
+      {
+        "id": "b",
+        "text": "poziomy i pionowy"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie pionowy"
+      },
+      {
+        "id": "d",
+        "text": "wyłącznie geograficzny"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie zawodowy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Ruchliwość społeczna** wymieniona wśród czynników społecznych warunkujących stan zdrowia może mieć charakter **poziomy i pionowy**. Ruchliwość pozioma to zmiana pozycji bez zmiany statusu (np. zmiana zawodu na równorzędny), pionowa to awans lub degradacja w hierarchii społecznej. Oba typy mobilności mogą wiązać się ze stresem adaptacyjnym wpływającym na zdrowie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-086",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Stan w stosunkach między ludźmi, w którym jednostka lub grupa z powodu zajmowanej pozycji społecznej użytkuje cenione dobra w stopniu większym niż inne jednostki lub grupy, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nierówność społeczna"
+      },
+      {
+        "id": "b",
+        "text": "stratyfikacja wiekowa"
+      },
+      {
+        "id": "c",
+        "text": "ruchliwość społeczna"
+      },
+      {
+        "id": "d",
+        "text": "dewiacja społeczna"
+      },
+      {
+        "id": "e",
+        "text": "marginalizacja"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Nierówność społeczna** to stan, w którym jednostka lub grupa z powodu **pozycji społecznej** użytkuje cenione społecznie dobra **w stopniu większym** niż inne. Cechy społeczne (posiadanie, wykształcenie, zawód) są podłożem powstawania klas i warstw — części struktury społeczeństwa i źródła nierówności. Struktura społeczna warunkuje szanse życiowe, w tym zapadalność na choroby.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-087",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w którym przedziale wiekowym (wg klasyfikacji socjologicznej) następuje nasilenie występowania chorób nowotworowych, chorób układu krążenia, wylewów i chorób umysłowych?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wczesne niemowlęctwo (do 1 r.ż.)"
+      },
+      {
+        "id": "b",
+        "text": "Dzieciństwo (1-14 lat)"
+      },
+      {
+        "id": "c",
+        "text": "Dojrzałość (25-64 lata)"
+      },
+      {
+        "id": "d",
+        "text": "Młodość (15-24 lata)"
+      },
+      {
+        "id": "e",
+        "text": "Wiek starszy (65+)"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Dojrzałość (25-64 lata)** to okres nasilenia chorób **nowotworowych, układu krążenia, wylewów, chorób umysłowych**, niepełnosprawności, a także wypadków w pracy i drogowych. Wiążą się też z nadużywaniem alkoholu, zmianami w rolach społecznych i dużą ruchliwością zawodową. Wiek starszy (65+) wiąże się głównie z chorobami układu krążenia, nerwowego i reumatycznymi.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-088",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, status społeczny osób starszych można rozpatrywać w wymiarze obiektywnym i subiektywnym. Wskaźniki subiektywne obejmują m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "warunki ekonomiczne i przynależne prawa"
+      },
+      {
+        "id": "b",
+        "text": "liczbę posiadanych dóbr materialnych"
+      },
+      {
+        "id": "c",
+        "text": "stan zdrowia mierzony parametrami medycznymi"
+      },
+      {
+        "id": "d",
+        "text": "stopień satysfakcji z zajmowanego miejsca w układach społecznych i możliwość kontroli nad własnym życiem"
+      },
+      {
+        "id": "e",
+        "text": "poziom wykształcenia formalnego"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Wskaźniki **subiektywne** statusu osoby starszej to: **stopień satysfakcji** z zajmowanego miejsca w układach społecznych, udział w podejmowaniu decyzji oraz **możliwość kontroli nad własnym życiem**. Wskaźniki **obiektywne** dotyczą przynależnych praw, warunków ekonomicznych, stopnia uczestnictwa w grupach i zmian w stanie zdrowia. Rozróżnienie obiektywne/subiektywne jest kluczowe dla oceny jakości życia w starości.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-089",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, przeciętne trwanie życia w Polsce w 2023 r. wynosiło około:",
+    "options": [
+      {
+        "id": "a",
+        "text": "mężczyźni 70 lat, kobiety 78 lat"
+      },
+      {
+        "id": "b",
+        "text": "mężczyźni 68 lat, kobiety 76 lat"
+      },
+      {
+        "id": "c",
+        "text": "mężczyźni 78 lat, kobiety 85 lat"
+      },
+      {
+        "id": "d",
+        "text": "mężczyźni 72 lata, kobiety 80 lat"
+      },
+      {
+        "id": "e",
+        "text": "mężczyźni 74,7 lat, kobiety 82 lata"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wg materiału przeciętne trwanie życia w Polsce w 2023 r. wynosiło: **mężczyźni 74,7 lat, kobiety 82 lata**. W większości krajów rozwiniętych kobiety żyją około **7 lat dłużej** niż mężczyźni, co jednak nie oznacza lepszego zdrowia — stan zdrowia kobiet jest gorszy (więcej chorób przewlekłych o lżejszym przebiegu). To ilustracja **paradoksu płci** w zdrowiu: kobiety żyją dłużej, ale w gorszym zdrowiu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-090",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, dotyczącego więzi społecznych, kobiety mają silniejsze więzi emocjonalne z otoczeniem, co wynika m.in. z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "uwarunkowań wyłącznie genetycznych"
+      },
+      {
+        "id": "b",
+        "text": "pełnienia kobiecych ról, udzielania wsparcia innym i troszczenia się o większą liczbę osób"
+      },
+      {
+        "id": "c",
+        "text": "wyższego statusu ekonomicznego kobiet"
+      },
+      {
+        "id": "d",
+        "text": "mniejszej liczby obowiązków rodzinnych"
+      },
+      {
+        "id": "e",
+        "text": "rzadszych kontaktów z lekarzem"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Silniejsze więzi emocjonalne kobiet wynikają z **pełnienia kobiecych ról**, udzielania wsparcia innym i troszczenia się o **większą liczbę osób**. Kobiety odpowiadają za potrzeby zdrowotne rodziny i sprawują opiekę w razie choroby. Istotne jest też wychowanie i socjalizacja przygotowująca do roli matki. Nieformalne więzi (rodzina, przyjaciele, sąsiedzi) stanowią barierę ochronną przed zdrowotnymi konsekwencjami stresu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-091",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według cytatu prof. M. Sokołowskiej, kryteria zdrowia mają charakter:",
+    "options": [
+      {
+        "id": "a",
+        "text": "historyczny, zmieniający się wraz z sytuacją społeczną i normami zbiorowości"
+      },
+      {
+        "id": "b",
+        "text": "uniwersalny i statyczny"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie biologiczny i niezmienny"
+      },
+      {
+        "id": "d",
+        "text": "zależny tylko od osiągnięć medycyny"
+      },
+      {
+        "id": "e",
+        "text": "niezależny od środowiska społecznego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wg prof. **M. Sokołowskiej** kryteria zdrowia są **historyczne**, zmieniają się wraz z sytuacją społeczną, warunkami środowiskowymi oraz normami i zwyczajami zbiorowości. Słowa \"zdrowie\" i \"choroba\" **nie mogą być precyzowane uniwersalnie czy statycznie** — mają sens tylko w odniesieniu do określonej osoby w określonym środowisku fizycznym i społecznym. To podkreśla społeczno-kulturowe uwarunkowanie pojęć zdrowia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-092",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w odniesieniu do osób starszych pozostających w związku małżeńskim, pozostawanie w rodzinie ma oddziaływanie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "obojętne dla ryzyka zgonu"
+      },
+      {
+        "id": "b",
+        "text": "szkodliwe, zwiększające ryzyko zgonu"
+      },
+      {
+        "id": "c",
+        "text": "ochronne, związane z obniżeniem ryzyka zgonu w starszym wieku"
+      },
+      {
+        "id": "d",
+        "text": "istotne tylko dla kobiet"
+      },
+      {
+        "id": "e",
+        "text": "istotne tylko w przypadku chorób zakaźnych"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Pozostawanie w związku małżeńskim w wieku starszym ma oddziaływanie **ochronne** — obniża ryzyko zgonu. To pozytywny efekt **wsparcia społecznego** ze strony partnera i rodziny: redukcja zachowań antyzdrowotnych, wzmacnianie zasobów zdrowia i lepsza opieka w razie choroby. Osoby starsze w związkach mają zwykle bardziej rozbudowane kontakty społeczne i lepszą sytuację materialną.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-093",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, domeną mężczyzn są zachowania antyzdrowotne. Które z poniższych NIE zostało wymienione w tym kontekście?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Picie alkoholu"
+      },
+      {
+        "id": "b",
+        "text": "Palenie papierosów"
+      },
+      {
+        "id": "c",
+        "text": "Niebezpieczne sporty"
+      },
+      {
+        "id": "d",
+        "text": "Częstsze korzystanie z badań profilaktycznych"
+      },
+      {
+        "id": "e",
+        "text": "Nadwaga"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Domeną mężczyzn są zachowania **antyzdrowotne**: picie alkoholu, palenie papierosów, **nadwaga, niebezpieczne sporty**, częstotliwość i jakość używania samochodów. **Częstsze korzystanie z badań profilaktycznych** to zachowanie **prozdrowotne** — i to kobiety częściej kontaktują się z lekarzem oraz korzystają z profilaktyki. Odp. D odwraca rzeczywistą zależność płciową.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-094",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, choroba jako stan może być ujęta w trzech obszarach. Obszar dotyczący \"społecznej tożsamości stającej się udziałem ludzi uznanych przez innych za chorych\", skutkujący etykietą \"chory\", odnosi się do:",
+    "options": [
+      {
+        "id": "a",
+        "text": "obiektywnej patologicznej zmiany w organizmie"
+      },
+      {
+        "id": "b",
+        "text": "indywidualnej interpretacji symptomów"
+      },
+      {
+        "id": "c",
+        "text": "dewiacji pierwotnej"
+      },
+      {
+        "id": "d",
+        "text": "czysto biologicznego wymiaru choroby"
+      },
+      {
+        "id": "e",
+        "text": "społecznego wymiaru choroby (etykietyzacja)"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Trzeci obszar choroby to **społeczna tożsamość** — udział ludzi **uznanych przez innych za chorych** lub publicznie określających się jako chorzy, czego konsekwencją jest **etykieta \"chory\"** i odmienne traktowanie niż osób zdrowych. Pozostałe dwa obszary to: obiektywna **patologiczna zmiana** w organizmie oraz **indywidualna interpretacja** symptomów (samopoczucie). To trójwymiarowe ujęcie choroby (biologiczne, subiektywne, społeczne).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-095",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, zmiany dokonujące się w starszym wieku mają głównie charakter:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zysków"
+      },
+      {
+        "id": "b",
+        "text": "strat"
+      },
+      {
+        "id": "c",
+        "text": "neutralny"
+      },
+      {
+        "id": "d",
+        "text": "wyłącznie biologiczny"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie ekonomiczny"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Zmiany w starszym wieku mają głównie charakter **strat**, rzadko zysków. Obejmują: pogorszenie **statusu ekonomicznego**, obniżenie sprawności fizycznej i psychicznej, wycofywanie się z aktywności (w tym pracy), **utratę małżonka**, kurczenie się znaczących relacji i utratę niezależności. Dotyczą też utraty ról społecznych, władzy, poczucia bezpieczeństwa i własnej wartości — to bilans przeważnie ujemny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-096",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału o wpływie środowiska pracy na zdrowie, stan wynikający z nadmiernego, chronicznego stresu w pracy, prowadzący do obniżenia jakości życia i pogorszenia zdrowia psychicznego, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wypalenie zawodowe"
+      },
+      {
+        "id": "b",
+        "text": "PTSD"
+      },
+      {
+        "id": "c",
+        "text": "mobbing"
+      },
+      {
+        "id": "d",
+        "text": "dysonans poznawczy"
+      },
+      {
+        "id": "e",
+        "text": "somatyzacja"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Wypalenie zawodowe** jest częstym wynikiem nadmiernego, chronicznego **stresu w pracy**, prowadzącym do obniżenia jakości życia i pogorszenia zdrowia psychicznego. Należy je odróżnić od **mobbingu** (przemoc/nękanie w relacjach pracowniczych) oraz **PTSD** (skutek traumy). Czynnikiem ochronnym przed wypaleniem jest wysokiej jakości **wsparcie społeczne** ze strony współpracowników.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-097",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w niektórych kulturach choroba może być postrzegana jako \"kara za grzechy\" lub \"test, który trzeba przejść\", podczas gdy w społeczeństwach zachodnich dominuje podejście:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tradycyjno-ludowe"
+      },
+      {
+        "id": "b",
+        "text": "szamanistyczne"
+      },
+      {
+        "id": "c",
+        "text": "medyczne (choroba jako problem biologiczny wymagający leczenia)"
+      },
+      {
+        "id": "d",
+        "text": "religijno-duchowe"
+      },
+      {
+        "id": "e",
+        "text": "fatalistyczne"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W społeczeństwach **zachodnich** dominuje podejście **medyczne**, traktujące chorobę jako **problem biologiczny wymagający leczenia**. W niektórych kulturach choroba bywa postrzegana jako kara za grzechy lub test, a w kulturach tradycyjnych istnieje większa tendencja do szukania pomocy u **szamanów, uzdrowicieli** czy stosowania medycyny ludowej. To ilustracja kulturowego zróżnicowania postaw wobec choroby.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-098",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, instytucja społeczna definiowana jest jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie budynek użyteczności publicznej"
+      },
+      {
+        "id": "b",
+        "text": "tymczasowe zrzeszenie osób"
+      },
+      {
+        "id": "c",
+        "text": "nieformalna grupa przyjaciół"
+      },
+      {
+        "id": "d",
+        "text": "stosunkowo trwały układ społeczno-kulturowy zaspokajający wyodrębnione potrzeby zbiorowości w sposób uregulowany, podlegający kontroli społecznej i normom"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie organizacja państwowa"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Instytucja społeczna** to stosunkowo **trwały układ społeczno-kulturowy** zaspokajający wyodrębnione potrzeby zbiorowości i jednostek w sposób **uregulowany**, podlegający **kontroli społecznej i normom**. Instytucje to powtarzalne, utrwalone sposoby zachowania, wzorce, reguły i rytuały, które czynią świat interakcji **przewidywalnym**. Rodzina może być rozpatrywana zarówno jako grupa społeczna, jak i jako instytucja.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-099",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w kontekście integracji międzypokoleniowej jako pozytywnej postawy wobec starości, korzyść polegająca na tym, że młodsze pokolenia wprowadzają osoby starsze w świat nowych technologii, a starsze przekazują mądrość życiową, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wzmacnianie więzi społecznych"
+      },
+      {
+        "id": "b",
+        "text": "wykluczenie cyfrowe"
+      },
+      {
+        "id": "c",
+        "text": "zmiana stereotypów"
+      },
+      {
+        "id": "d",
+        "text": "zwiększenie aktywności fizycznej"
+      },
+      {
+        "id": "e",
+        "text": "wzajemne uczenie się"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Wzajemne uczenie się** to korzyść integracji międzypokoleniowej, w której osoby starsze dzielą się **wiedzą i doświadczeniem** (tradycje, mądrość życiowa), a młodsze wprowadzają je w świat **nowych technologii** i współczesnych trendów. Inne korzyści to: zmiana stereotypów, zwiększenie aktywności fizycznej/psychicznej oraz wzmacnianie więzi społecznych (walka z samotnością seniorów). Wymiana ma charakter dwukierunkowy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-100",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału o wpływie uwarunkowań społeczno-kulturowych, bariera językowa, dyskryminacja oraz brak akceptacji w społeczeństwie, utrudniające dostęp do opieki zdrowotnej, dotyczą szczególnie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "osób o wysokim statusie ekonomicznym"
+      },
+      {
+        "id": "b",
+        "text": "imigrantów i mniejszości etnicznych"
+      },
+      {
+        "id": "c",
+        "text": "osób młodych"
+      },
+      {
+        "id": "d",
+        "text": "mieszkańców dużych miast"
+      },
+      {
+        "id": "e",
+        "text": "osób z wyższym wykształceniem"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Imigranci i mniejszości etniczne** mogą doświadczać trudności w dostępie do opieki zdrowotnej z powodu **bariery językowej, dyskryminacji lub braku akceptacji**. Dodatkowo adaptacja do nowego środowiska wiąże się z przewlekłym stresem negatywnie wpływającym na zdrowie. Materiał podkreśla potrzebę **wrażliwości kulturowej** personelu medycznego i dążenia do równości w dostępie do opieki zdrowotnej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

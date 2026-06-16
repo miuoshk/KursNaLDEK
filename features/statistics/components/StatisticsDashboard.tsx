@@ -1,6 +1,7 @@
 "use client";
 
 import { BarChart3 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EmptyState } from "@/features/shared/components/EmptyState";
 import { ActivityHeatmap } from "@/features/statistics/components/ActivityHeatmap";
@@ -14,14 +15,10 @@ import { SessionHistoryList } from "@/features/shared/components/SessionHistoryL
 import type { StatisticsPayload, TimeRangeKey } from "@/features/statistics/types";
 import { cn } from "@/lib/utils";
 
-const RANGES: { key: TimeRangeKey; label: string }[] = [
-  { key: "7", label: "7 dni" },
-  { key: "30", label: "30 dni" },
-  { key: "90", label: "90 dni" },
-  { key: "all", label: "Wszystko" },
-];
+const RANGES: TimeRangeKey[] = ["7", "30", "90", "all"];
 
 export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
+  const t = useTranslations("statistics");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -30,17 +27,17 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       <div className="space-y-8">
         <header>
           <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-            Statystyki
+            {t("page.title")}
           </h1>
           <p className="mt-1 font-body text-sm text-secondary">
-            Analiza postępów i predykcja wyniku końcowego
+            {t("page.subtitle")}
           </p>
         </header>
         <EmptyState
           icon={BarChart3}
-          title="Brak danych do wyświetlenia"
-          description="Odpowiedz na pytania, a tutaj pojawią się Twoje statystyki."
-          cta={{ href: "/przedmioty", label: "Rozpocznij pierwszą sesję →" }}
+          title={t("empty.title")}
+          description={t("empty.description")}
+          cta={{ href: "/przedmioty", label: t("empty.cta") }}
         />
       </div>
     );
@@ -57,26 +54,26 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-            Statystyki
+            {t("page.title")}
           </h1>
           <p className="mt-1 font-body text-sm text-secondary">
-            Analiza postępów i predykcja wyniku końcowego
+            {t("page.subtitle")}
           </p>
         </div>
         <div className="inline-flex rounded-pill bg-card p-1">
-          {RANGES.map((r) => (
+          {RANGES.map((key) => (
             <button
-              key={r.key}
+              key={key}
               type="button"
-              onClick={() => setRange(r.key)}
+              onClick={() => setRange(key)}
               className={cn(
                 "rounded-pill px-4 py-2 font-body text-body-sm transition duration-200 ease-out",
-                data.range === r.key
+                data.range === key
                   ? "bg-brand-gold text-brand-bg"
                   : "text-secondary hover:text-primary",
               )}
             >
-              {r.label}
+              {t(`ranges.${key}`)}
             </button>
           ))}
         </div>
@@ -87,7 +84,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
         <ExamCountdown />
         <div className="rounded-card bg-card p-6">
           <p className="font-body text-body-xs font-medium uppercase tracking-wide text-secondary">
-            Aktywność (30 dni)
+            {t("activity.title")}
           </p>
           <div className="mt-4">
             <ActivityHeatmap cells={data.heatmap} />
@@ -98,7 +95,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-xl font-bold text-primary">
-            Opanowanie dziedzin
+            {t("mastery.title")}
           </h2>
           <div className="mt-4">
             <SubjectRadarChart data={data} />
@@ -106,7 +103,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
         </section>
         <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-xl font-bold text-primary">
-            Czas nauki (godziny)
+            {t("studyTime.title")}
           </h2>
           <div className="mt-4">
             <StudyTimeChart data={data} />
@@ -117,7 +114,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-xl font-bold text-primary">
-            Trend poprawności (30 dni)
+            {t("accuracyTrend.title")}
           </h2>
           <div className="mt-4">
             <AccuracyTrendChart data={data} />
@@ -125,7 +122,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
         </section>
         <section className="rounded-card bg-card p-6">
           <h2 className="font-heading text-xl font-bold text-primary">
-            Słabe ogniwa (top 5)
+            {t("weakTopics.title")}
           </h2>
           <div className="mt-4">
             <WeakTopicsList data={data} />
@@ -135,24 +132,27 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
 
       <section>
         <h2 className="font-heading text-xl font-bold text-primary">
-          Historia sesji
+          {t("sessionHistory.title")}
         </h2>
         <p className="mt-1 font-body text-sm text-secondary">
-          Ostatnie ukończone sesje. Kliknij, aby zobaczyć podsumowanie i odpowiedzi.
+          {t("sessionHistory.subtitle")}
         </p>
         <div className="mt-4">
           <SessionHistoryList
             sessions={data.recentSessions}
-            emptyText="Brak ukończonych sesji w tym okresie."
-            emptyAction={{ href: "/przedmioty", label: "Rozpocznij sesję" }}
+            emptyText={t("sessionHistory.empty")}
+            emptyAction={{ href: "/przedmioty", label: t("sessionHistory.startSession") }}
           />
         </div>
       </section>
 
       <p className="font-body text-body-xs text-muted">
-        Łącznie pytań w wybranym okresie: {data.totalQuestionsAnswered} · Czas nauki:{" "}
-        {Math.round(data.totalStudyMinutes)} min · XP: {data.xp} · Streak:{" "}
-        {data.currentStreak} dni
+        {t("footer", {
+          questions: data.totalQuestionsAnswered,
+          minutes: Math.round(data.totalStudyMinutes),
+          xp: data.xp,
+          streak: data.currentStreak,
+        })}
       </p>
     </div>
   );

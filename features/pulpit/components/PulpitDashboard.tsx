@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
 import { ActivityHeatmap } from "@/features/pulpit/components/ActivityHeatmap";
 import { ProgressChart } from "@/features/pulpit/components/ProgressChart";
@@ -8,22 +9,15 @@ import { PulpitQuickStart } from "@/features/pulpit/components/PulpitQuickStart"
 import { PulpitRecentSessions } from "@/features/pulpit/components/PulpitRecentSessions";
 import { PulpitTodayCards } from "@/features/pulpit/components/PulpitTodayCards";
 import { WeakPoints } from "@/features/pulpit/components/WeakPoints";
-import { pluralizePolish, verbUczyPolish } from "@/lib/pluralizePolish";
+import { getBcp47Locale } from "@/lib/i18n/bcp47Locale";
+import type { AppLocale } from "@/i18n/config";
 
-const DATE_FMT = new Intl.DateTimeFormat("pl-PL", {
-  weekday: "long",
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-  timeZone: "Europe/Warsaw",
-});
-
-function getGreeting(): string {
+function getGreeting(t: ReturnType<typeof useTranslations<"pulpit">>): string {
   const h = new Date().getHours();
-  if (h >= 6 && h < 12) return "Dzień dobry! Gotowy na nowe wyzwania?";
-  if (h >= 12 && h < 18) return "Jak leci? Czas na trochę nauki.";
-  if (h >= 18 && h < 22) return "Dobry wieczór! Wieczorna sesja?";
-  return "Nocna sowa? Nie zapomnij o śnie!";
+  if (h >= 6 && h < 12) return t("greetingMorning");
+  if (h >= 12 && h < 18) return t("greetingAfternoon");
+  if (h >= 18 && h < 22) return t("greetingEvening");
+  return t("greetingNight");
 }
 
 function capitalize(s: string): string {
@@ -31,8 +25,18 @@ function capitalize(s: string): string {
 }
 
 export function PulpitDashboard({ data }: { data: PulpitData }) {
+  const t = useTranslations("pulpit");
+  const locale = useLocale() as AppLocale;
   const hasAnySessions = data.recentSessions.length > 0;
-  const todayLabel = capitalize(DATE_FMT.format(new Date()));
+  const todayLabel = capitalize(
+    new Intl.DateTimeFormat(getBcp47Locale(locale), {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "Europe/Warsaw",
+    }).format(new Date()),
+  );
 
   return (
     <motion.div
@@ -44,26 +48,22 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
       <header className="flex items-start justify-between gap-4">
         <div>
           <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-            Witaj, {data.displayName}!
+            {t("welcome", { name: data.displayName })}
           </h1>
-          <p className="mt-1 font-body text-sm text-secondary">
-            {getGreeting()}
-          </p>
+          <p className="mt-1 font-body text-sm text-secondary">{getGreeting(t)}</p>
         </div>
         <div className="hidden shrink-0 flex-col items-end gap-2 md:flex">
           <p className="font-body text-sm text-secondary">{todayLabel}</p>
           {data.activeUsersNow > 0 ? (
             <span
               className="inline-flex items-center gap-2 rounded-pill border border-success/20 bg-success/[0.08] px-3 py-1 font-body text-body-xs text-success"
-              title="Liczba użytkowników aktywnych w ostatnich 5 minutach"
+              title={t("activeUsersTitle")}
             >
               <span className="relative inline-flex size-2">
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/70 opacity-60" />
                 <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
-              {data.activeUsersNow}{" "}
-              {pluralizePolish(data.activeUsersNow, ["osoba", "osoby", "osób"])}{" "}
-              {verbUczyPolish(data.activeUsersNow)} się teraz
+              {t("activeUsers", { count: data.activeUsersNow })}
             </span>
           ) : null}
         </div>

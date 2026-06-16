@@ -1,14 +1,17 @@
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 import { OsceBreadcrumbSetter } from "@/features/osce/components/OsceBreadcrumbSetter";
 import { loadOsceSimulationHistory } from "@/features/osce/server/loadOsceSimulationHistory";
 import { loadOsceSimulationStations } from "@/features/osce/server/loadOsceSimulationStations";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
+import type { AppLocale } from "@/i18n/config";
+import { getBcp47Locale } from "@/lib/i18n/bcp47Locale";
 import { cn } from "@/lib/utils";
 
-function formatPlDate(iso: string): string {
+function formatLocaleDate(iso: string, locale: AppLocale): string {
   try {
     const d = new Date(iso);
-    return d.toLocaleString("pl-PL", {
+    return d.toLocaleString(getBcp47Locale(locale), {
       dateStyle: "medium",
       timeStyle: "short",
     });
@@ -18,6 +21,8 @@ function formatPlDate(iso: string): string {
 }
 
 export default async function OsceSymulacjaPage() {
+  const t = await getTranslations("osce");
+  const locale = (await getLocale()) as AppLocale;
   const [day1, day2, history] = await Promise.all([
     loadOsceSimulationStations(1),
     loadOsceSimulationStations(2),
@@ -29,11 +34,11 @@ export default async function OsceSymulacjaPage() {
 
   return (
     <div>
-      <OsceBreadcrumbSetter second="Kurs na OSCE" third="Symulacja" />
+      <OsceBreadcrumbSetter second={t("courseTitle")} third={t("simulationShort")} />
 
-      <h1 className="font-heading text-heading-xl text-primary">Symulacja OSCE</h1>
+      <h1 className="font-heading text-heading-xl text-primary">{t("simulation")}</h1>
       <p className="mt-2 font-body text-body-md text-secondary">
-        Pełna próba czasowa wg kolejności stacji. Wyniki zapisujemy w profilu.
+        {t("simulationDescription")}
       </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -44,12 +49,11 @@ export default async function OsceSymulacjaPage() {
             "hover:border-brand-sage/50 hover:bg-card-hover",
           )}
         >
-          <h2 className="font-heading text-heading-sm text-primary">Dzień 1</h2>
+          <h2 className="font-heading text-heading-sm text-primary">{t("dayGroupDay1")}</h2>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {day1.length}{" "}
-            {day1.length === 1 ? "stacja" : day1.length >= 2 && day1.length <= 4 ? "stacje" : "stacji"}
+            {t("stationsCount", { count: day1.length })}
           </p>
-          <p className="mt-4 font-body text-body-xs text-muted">Rozpocznij symulację pierwszego dnia egzaminu.</p>
+          <p className="mt-4 font-body text-body-xs text-muted">{t("simulationDay1Hint")}</p>
         </Link>
         <Link
           href="/osce/symulacja/2"
@@ -58,23 +62,21 @@ export default async function OsceSymulacjaPage() {
             "hover:border-brand-sage/50 hover:bg-card-hover",
           )}
         >
-          <h2 className="font-heading text-heading-sm text-primary">Dzień 2</h2>
+          <h2 className="font-heading text-heading-sm text-primary">{t("dayGroupDay2")}</h2>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {day2.length}{" "}
-            {day2.length === 1 ? "stacja" : day2.length >= 2 && day2.length <= 4 ? "stacje" : "stacji"}
+            {t("stationsCount", { count: day2.length })}
           </p>
-          <p className="mt-4 font-body text-body-xs text-muted">Rozpocznij symulację drugiego dnia egzaminu.</p>
+          <p className="mt-4 font-body text-body-xs text-muted">{t("simulationDay2Hint")}</p>
         </Link>
       </div>
 
       <div className="mt-14">
-        <h2 className="font-heading text-heading-sm text-primary">Historia prób</h2>
+        <h2 className="font-heading text-heading-sm text-primary">{t("historyHeading")}</h2>
         {histErr ? (
           <div className="mt-4">
             <PrzedmiotyError message={histErr} />
             <p className="mt-2 font-body text-body-xs text-muted">
-              Jeśli tabela nie istnieje, uruchom migrację SQL z pliku{" "}
-              <span className="font-body">scripts/osce-simulation-schema.sql</span> w Supabase.
+              {t("historyMigrationHint", { script: "scripts/osce-simulation-schema.sql" })}
             </p>
           </div>
         ) : histOk && histOk.length > 0 ? (
@@ -86,10 +88,16 @@ export default async function OsceSymulacjaPage() {
               >
                 <div>
                   <p className="font-body text-body-sm text-primary">
-                    Dzień {row.examDay} · {formatPlDate(row.completedAt)}
+                    {t("historyRow", {
+                      day: row.examDay,
+                      date: formatLocaleDate(row.completedAt, locale),
+                    })}
                   </p>
                   <p className="mt-1 font-body text-body-xs text-muted">
-                    Stacje: {row.stationCount} · średni wynik {Math.round(row.overallPercent)}%
+                    {t("historyRowStats", {
+                      stations: row.stationCount,
+                      percent: Math.round(row.overallPercent),
+                    })}
                   </p>
                 </div>
                 <span
@@ -100,14 +108,14 @@ export default async function OsceSymulacjaPage() {
                       : "bg-error/15 text-error",
                   )}
                 >
-                  {row.passedOverall ? "Zdany" : "Niezdany"}
+                  {row.passedOverall ? t("passed") : t("failed")}
                 </span>
               </li>
             ))}
           </ul>
         ) : (
           <p className="mt-4 font-body text-body-sm text-secondary">
-            Brak zapisanych symulacji. Ukończ pierwszą próbę, aby zobaczyć historię.
+            {t("noSimulationHistory")}
           </p>
         )}
       </div>
@@ -116,7 +124,7 @@ export default async function OsceSymulacjaPage() {
         href="/osce"
         className="mt-10 inline-block font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold"
       >
-        Wróć do listy stacji
+        {t("backToStationList")}
       </Link>
     </div>
   );

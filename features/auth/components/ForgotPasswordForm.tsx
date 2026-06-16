@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 import { requestPasswordResetAction } from "@/features/auth/actions";
 import { initialAuthActionState } from "@/features/auth/types";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,7 @@ const inputClassName =
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("auth");
 
   return (
     <button
@@ -21,12 +23,14 @@ function SubmitButton() {
         "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70",
       )}
     >
-      {pending ? "Wysyłanie..." : "Wyślij link resetujący"}
+      {pending ? t("sendPending") : t("sendResetLink")}
     </button>
   );
 }
 
 export function ForgotPasswordForm() {
+  const t = useTranslations("auth");
+  const tCommon = useTranslations("common");
   const [state, formAction] = useActionState(
     requestPasswordResetAction,
     initialAuthActionState,
@@ -35,8 +39,7 @@ export function ForgotPasswordForm() {
   return (
     <form action={formAction} className="mt-6 space-y-4">
       <p className="font-body text-body-sm text-secondary">
-        Podaj adres e-mail, którym zakładasz konto. Wyślemy na niego link do
-        ustawienia nowego hasła.
+        {t("forgotPasswordDescription")}
       </p>
 
       <div>
@@ -44,7 +47,7 @@ export function ForgotPasswordForm() {
           htmlFor="email"
           className="mb-2 block font-body text-body-sm text-secondary"
         >
-          Email
+          {t("email")}
         </label>
         <input
           id="email"
@@ -53,7 +56,7 @@ export function ForgotPasswordForm() {
           required
           autoComplete="email"
           className={inputClassName}
-          placeholder="twoj@email.pl"
+          placeholder={tCommon("emailPlaceholder")}
         />
       </div>
 

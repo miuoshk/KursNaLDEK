@@ -1,13 +1,13 @@
 "use client";
 
 import { ChevronDown, Minus, Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { updateStudyPreferences } from "@/features/settings/api/updateStudyPreferences";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import { Toggle } from "@/features/shared/components/Toggle";
-import { pytaniaForm } from "@/lib/pluralizePolish";
 
 const selectClass =
   "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
@@ -20,6 +20,8 @@ function normalizeCount(n: number): 10 | 25 | 50 {
 }
 
 export function StudyPreferencesSection({ profile }: Props) {
+  const t = useTranslations("settings");
+  const tCommon = useTranslations("common");
   const { toast } = useToast();
   const [goal, setGoal] = useState(profile.daily_goal);
   const [mode, setMode] = useState<KnnpSessionMode>(profile.default_session_mode);
@@ -34,7 +36,7 @@ export function StudyPreferencesSection({ profile }: Props) {
       skip.current = false;
       return;
     }
-    const t = setTimeout(async () => {
+    const timer = setTimeout(async () => {
       const res = await updateStudyPreferences({
         daily_goal: goal,
         default_session_mode: mode,
@@ -47,7 +49,7 @@ export function StudyPreferencesSection({ profile }: Props) {
         setTimeout(() => setSavedFlash(false), 2000);
       } else toast(res.message, "error");
     }, 500);
-    return () => clearTimeout(t);
+    return () => clearTimeout(timer);
   }, [goal, mode, count, showTimer, showTopics, toast]);
 
   function bump(delta: number) {
@@ -57,29 +59,31 @@ export function StudyPreferencesSection({ profile }: Props) {
   return (
     <section>
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="font-heading text-xl font-bold text-primary">Nauka</h2>
+        <h2 className="font-heading text-xl font-bold text-primary">{t("study.title")}</h2>
         {savedFlash ? (
-          <span className="font-body text-body-xs text-brand-sage">Zapisano</span>
+          <span className="font-body text-body-xs text-brand-sage">{t("study.saved")}</span>
         ) : null}
       </div>
       <div className="mt-6 space-y-6">
         <div>
-          <p className="font-body text-body-sm text-secondary">Cel dzienny</p>
+          <p className="font-body text-body-sm text-secondary">{t("study.dailyGoal")}</p>
           <div className="mt-2 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={() => bump(-5)}
               className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
-              aria-label="Zmniejsz cel"
+              aria-label={t("study.decreaseGoal")}
             >
               <Minus className="size-4" aria-hidden />
             </button>
-            <span className="min-w-[7rem] font-body text-body-lg text-primary">{goal} {pytaniaForm(goal)}</span>
+            <span className="min-w-[7rem] font-body text-body-lg text-primary">
+              {goal} {tCommon("questionsCount", { count: goal })}
+            </span>
             <button
               type="button"
               onClick={() => bump(5)}
               className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
-              aria-label="Zwiększ cel"
+              aria-label={t("study.increaseGoal")}
             >
               <Plus className="size-4" aria-hidden />
             </button>
@@ -87,7 +91,7 @@ export function StudyPreferencesSection({ profile }: Props) {
         </div>
         <div>
           <label htmlFor="sm" className="font-body text-body-sm text-secondary">
-            Domyślny tryb sesji
+            {t("study.defaultSessionMode")}
           </label>
           <div className="relative mt-1.5">
             <select
@@ -96,9 +100,9 @@ export function StudyPreferencesSection({ profile }: Props) {
               onChange={(e) => setMode(e.target.value as KnnpSessionMode)}
               className={selectClass}
             >
-              <option value="inteligentna">Inteligentna sesja</option>
-              <option value="przeglad">Nauka klasyczna</option>
-              <option value="katalog">Katalog pytań</option>
+              <option value="inteligentna">{t("study.modeInteligentna")}</option>
+              <option value="przeglad">{t("study.modePrzeglad")}</option>
+              <option value="katalog">{t("study.modeKatalog")}</option>
             </select>
             <ChevronDown
               className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
@@ -110,10 +114,10 @@ export function StudyPreferencesSection({ profile }: Props) {
           <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p id="show-timer-label" className="font-body text-body-sm text-primary">
-                Czas sesji podczas nauki
+                {t("study.showTimer")}
               </p>
               <p className="font-body text-body-xs text-muted">
-                Zegar w górnym pasku aktywnej sesji
+                {t("study.showTimerHint")}
               </p>
             </div>
             <Toggle
@@ -125,10 +129,10 @@ export function StudyPreferencesSection({ profile }: Props) {
           <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p id="show-topics-label" className="font-body text-body-sm text-primary">
-                Tematy w sesji
+                {t("study.showTopics")}
               </p>
               <p className="font-body text-body-xs text-muted">
-                Z jakich działów pochodzą pytania w bieżącej sesji
+                {t("study.showTopicsHint")}
               </p>
             </div>
             <Toggle
@@ -140,7 +144,7 @@ export function StudyPreferencesSection({ profile }: Props) {
         </ul>
         <div>
           <label htmlFor="qc" className="font-body text-body-sm text-secondary">
-            Domyślna liczba pytań
+            {t("study.defaultQuestionCount")}
           </label>
           <div className="relative mt-1.5">
             <select

@@ -1,11 +1,13 @@
+"use client";
+
 import { Clock, Flame, MessageSquare, Target } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { RankProgressBar } from "@/features/gamification/components/RankProgressBar";
 import { getCurrentRank } from "@/features/gamification/lib/ranks";
 import type { GamificationPayload } from "@/features/gamification/types";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
-import { formatStreak } from "@/lib/formatStreak";
+import { formatStreakI18n } from "@/lib/formatStreak";
 import { cn } from "@/lib/utils";
-import { pluralizePolish } from "@/lib/pluralizePolish";
 
 export function PlayerCard({
   xp,
@@ -27,20 +29,12 @@ export function PlayerCard({
   | "avgAccuracy"
   | "totalStudyMinutes"
 >) {
+  const t = useTranslations("gamification");
+  const tCommon = useTranslations("common");
   const rank = getCurrentRank(xp);
+  const rankName = t(`ranks.${rank.id}`);
   const pct = Math.round(avgAccuracy * 100);
   const studySeconds = totalStudyMinutes * 60;
-  const solvedNoun = pluralizePolish(totalQuestionsAnswered, [
-    "pytanie",
-    "pytania",
-    "pytań",
-  ]);
-  const solvedAdj = pluralizePolish(totalQuestionsAnswered, [
-    "rozwiązane",
-    "rozwiązane",
-    "rozwiązanych",
-  ]);
-  const solvedLabel = `${totalQuestionsAnswered} ${solvedNoun} ${solvedAdj}`;
 
   return (
     <div className="rounded-card border border-brand-gold/20 bg-card p-6">
@@ -56,7 +50,7 @@ export function PlayerCard({
           </div>
           <div className="min-w-0">
             <h2 className="font-heading text-heading-md text-primary">{displayName}</h2>
-            <p className={cn("mt-1 font-body text-body-md", rank.colorClass)}>{rank.name}</p>
+            <p className={cn("mt-1 font-body text-body-md", rank.colorClass)}>{rankName}</p>
             <div className="mt-4">
               <RankProgressBar xp={xp} />
             </div>
@@ -66,25 +60,29 @@ export function PlayerCard({
         <div className="space-y-3 font-body text-body-sm text-secondary">
           <p className="flex items-center gap-2">
             <MessageSquare className="size-4 shrink-0 text-brand-gold" aria-hidden />
-            <span>{solvedLabel}</span>
+            <span>{t("player.questionsSolved", { count: totalQuestionsAnswered })}</span>
           </p>
           <p className="flex items-center gap-2">
             <Target className="size-4 shrink-0 text-brand-gold" aria-hidden />
-            <span>{pct}% średnia trafność</span>
+            <span>{t("player.avgAccuracy", { pct })}</span>
           </p>
           <p className="flex items-center gap-2">
             <Flame className="size-4 shrink-0 text-brand-gold" aria-hidden />
-            <span>{formatStreak(streak)} streak</span>
+            <span>{t("player.streak", { streak: formatStreakI18n(tCommon, streak) })}</span>
           </p>
           <p className="flex items-center gap-2">
             <Clock className="size-4 shrink-0 text-brand-gold" aria-hidden />
-            <span>{formatSessionDuration(studySeconds)} łączny czas nauki</span>
+            <span>
+              {t("player.totalStudyTime", {
+                duration: formatSessionDuration(studySeconds),
+              })}
+            </span>
           </p>
         </div>
 
         <div className="mr-2 flex flex-col items-center gap-1.5 lg:items-end">
           <p className="font-body text-body-xs uppercase tracking-wide text-brand-gold/60">
-            RANGA
+            {t("player.rankLabel")}
           </p>
           <div
             className={cn(
@@ -94,7 +92,7 @@ export function PlayerCard({
             )}
             aria-hidden
           >
-            {rank.name.charAt(0)}
+            {rankName.charAt(0)}
           </div>
         </div>
       </div>

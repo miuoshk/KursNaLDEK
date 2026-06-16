@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCircle, XCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { SessionQuestion } from "@/features/session/types";
 import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
@@ -19,6 +20,8 @@ export function FeedbackPanel({
   isCorrect,
   hideExplanation = false,
 }: FeedbackPanelProps) {
+  const t = useTranslations("session");
+  const tCommon = useTranslations("common");
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
     explanation: question.explanation,
@@ -36,6 +39,12 @@ export function FeedbackPanel({
     orderCtx,
   );
 
+  const answerLine = t("summaryYourAnswer", {
+    selected: yourLetter,
+    correct: correctLetter,
+    topic: "",
+  }).replace(/\s·\s*$/, "");
+
   return (
     <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">
       <div
@@ -49,14 +58,12 @@ export function FeedbackPanel({
         ) : (
           <XCircle className="size-6 shrink-0" aria-hidden />
         )}
-        {isCorrect ? "Poprawna odpowiedź!" : "Niepoprawna odpowiedź"}
+        {isCorrect ? t("correctAnswer") : t("incorrectAnswer")}
       </div>
-      <p className="font-body text-body-sm text-secondary">
-        Twoja odpowiedź: {yourLetter} · Poprawna: {correctLetter}
-      </p>
+      <p className="font-body text-body-sm text-secondary">{answerLine}</p>
       {!hideExplanation ? (
         <div className="rounded-card bg-card p-5">
-          <h3 className="font-heading text-heading-sm text-primary">Wyjaśnienie</h3>
+          <h3 className="font-heading text-heading-sm text-primary">{tCommon("explanation")}</h3>
           <div className="mt-3">
             {markdownBlock(question.explanation)}
           </div>

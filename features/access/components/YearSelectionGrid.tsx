@@ -1,4 +1,7 @@
+"use client";
+
 import { Lock, FlaskConical } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { StudyOption } from "@/features/access/lib/studyAccess";
 import { formatTrackLabel } from "@/features/access/lib/studyAccess";
 import { CheckoutPaymentForm } from "@/features/checkout/components/CheckoutPaymentForm";
@@ -17,17 +20,20 @@ type Props = {
 };
 
 export function YearSelectionGrid({ options, activateFreeAction, checkoutAction }: Props) {
+  const t = useTranslations("access");
+
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       {options.map((option) => {
-        const title = `${formatTrackLabel(option.track)} · rok ${option.year}`;
+        const track = formatTrackLabel(option.track, t);
+        const title = t("yearTitle", { track, year: option.year });
         const ctaLabel = option.isFreeTest
           ? option.isUnlocked
-            ? "Przejdź do pulpitu"
-            : "Aktywuj i przejdź do pulpitu"
+            ? t("goToDashboard")
+            : t("activateAndGo")
           : option.isUnlocked
-            ? "Przejdź do pulpitu"
-            : "Przejdź do płatności";
+            ? t("goToDashboard")
+            : t("goToPayment");
 
         return (
           <article
@@ -43,9 +49,7 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
               <div>
                 <h3 className="font-heading text-xl text-primary">{title}</h3>
                 <p className="mt-2 font-body text-body-sm text-secondary">
-                  {option.isFreeTest
-                    ? "Rok testowy — darmowy dostęp."
-                    : "Dostęp płatny jednorazowo."}
+                  {option.isFreeTest ? t("freeTestDescription") : t("paidDescription")}
                 </p>
               </div>
               <span
@@ -57,7 +61,7 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
                 )}
               >
                 {option.isFreeTest ? <FlaskConical className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
-                {option.isFreeTest ? "Testowy" : "Płatny"}
+                {option.isFreeTest ? t("badgeTest") : t("badgePaid")}
               </span>
             </div>
 
@@ -70,7 +74,7 @@ export function YearSelectionGrid({ options, activateFreeAction, checkoutAction 
               </a>
             ) : option.isRegistrationClosed ? (
               <p className="mt-5 rounded-btn border border-white/15 bg-white/5 px-4 py-2.5 text-center font-body text-body-sm text-secondary">
-                Rejestracja zamknięta.
+                {t("registrationClosed")}
               </p>
             ) : option.isFreeTest ? (
               <form action={activateFreeAction} className="mt-5">

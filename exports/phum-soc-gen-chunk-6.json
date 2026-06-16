@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-126",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wydatki Polski na ochronę zdrowia w relacji do PKB charakteryzują się tym, że są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Poniżej średniej unijnej"
+      },
+      {
+        "id": "b",
+        "text": "Najwyższe w Unii Europejskiej"
+      },
+      {
+        "id": "c",
+        "text": "Dokładnie równe średniej światowej"
+      },
+      {
+        "id": "d",
+        "text": "Wyższe niż w Niemczech"
+      },
+      {
+        "id": "e",
+        "text": "Całkowicie pokrywane przez sektor prywatny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wydatki Polski na zdrowie pozostają **poniżej średniej unijnej**, co przekłada się na **niedofinansowanie** systemu, długie kolejki i problemy z dostępnością usług. Dla porównania Niemcy przeznaczają ok. **11-12% PKB** na zdrowie (jeden z najwyższych poziomów na świecie). Niedofinansowanie to jeden z głównych, powracających problemów polskiego systemu, obok braków kadrowych i nierówności miasto-wieś. Niedofinansowanie przekłada się bezpośrednio na dostępność świadczeń.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-127",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "\"Sieć szpitali\" w Polsce jest przykładem działania z zakresu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Prywatyzacji całości systemu"
+      },
+      {
+        "id": "b",
+        "text": "Organizacji i zarządzania systemem ochrony zdrowia"
+      },
+      {
+        "id": "c",
+        "text": "Likwidacji NFZ"
+      },
+      {
+        "id": "d",
+        "text": "Wprowadzenia modelu liberalnego"
+      },
+      {
+        "id": "e",
+        "text": "Zniesienia składki zdrowotnej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Sieć szpitali** to przykład reformy z obszaru **organizacji i zarządzania** systemem ochrony zdrowia w Polsce, obok decentralizacji i zmian w kontraktowaniu usług przez NFZ. Reformy zarządcze mają poprawić efektywność i koordynację placówek. Nie jest to prywatyzacja ani zmiana modelu — Polska pozostaje przy modelu mieszanym z dominacją publicznego NFZ. To narzędzie porządkowania struktury świadczeniodawców.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-128",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który z poniższych jest wskazywany jako WSPÓLNY współczesny problem większości systemów ochrony zdrowia na świecie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nadmiar personelu medycznego"
+      },
+      {
+        "id": "b",
+        "text": "Zbyt krótkie kolejki do specjalistów"
+      },
+      {
+        "id": "c",
+        "text": "Rosnące koszty nowoczesnych terapii i leków obciążające budżety"
+      },
+      {
+        "id": "d",
+        "text": "Całkowity brak biurokracji"
+      },
+      {
+        "id": "e",
+        "text": "Spadek zapotrzebowania na opiekę z powodu młodniejących społeczeństw"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wśród wspólnych wyzwań współczesnych systemów wymienia się **rosnące koszty** nowoczesnych terapii i leków, które obciążają budżety publiczne i prywatne (w USA leczenie może prowadzić do **bankructwa osobistego**). Inne wspólne problemy: nierówności w dostępie (geograficzne, ekonomiczne, społeczne), przeciążenie systemów przez starzenie się populacji, braki kadrowe, biurokracja oraz dominacja leczenia nad profilaktyką. Żaden system nie jest idealny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-129",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Co ujawniła pandemia COVID-19 w odniesieniu do systemów ochrony zdrowia według materiału?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Że wszystkie systemy były w pełni przygotowane na kryzys"
+      },
+      {
+        "id": "b",
+        "text": "Że profilaktyka stała się zbędna"
+      },
+      {
+        "id": "c",
+        "text": "Że biurokracja całkowicie zniknęła"
+      },
+      {
+        "id": "d",
+        "text": "Słabości takie jak mała elastyczność, braki kadrowe i niedostatki w dostępie do opieki"
+      },
+      {
+        "id": "e",
+        "text": "Że koszty leczenia spadły"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Pandemia **COVID-19** ujawniła **słabości** systemów: małą **elastyczność** i nieprzygotowanie na sytuacje kryzysowe, **braki kadrowe** w szpitalach, niedostatki w dostępie do opieki medycznej. Pokazała jednak też mocne strony — zdolność szybkiej reakcji w niektórych krajach (np. Niemcy). Stała się katalizatorem debat o reformach. To przykład testu wydolności systemów w warunkach nadzwyczajnego obciążenia. Test wydolności w warunkach nadzwyczajnego, masowego obciążenia systemu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-130",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W starożytnym Egipcie głównym źródłem wiedzy anatomicznej była:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sekcja zwłok przestępców"
+      },
+      {
+        "id": "b",
+        "text": "Obserwacja rentgenowska"
+      },
+      {
+        "id": "c",
+        "text": "Wiwisekcja zwierząt"
+      },
+      {
+        "id": "d",
+        "text": "Tłumaczenie tekstów greckich"
+      },
+      {
+        "id": "e",
+        "text": "Mumifikacja ciał"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Egipcjanie zdobywali wiedzę o anatomii głównie poprzez **mumifikację ciał**, choć ich wiedza o organach wewnętrznych była ograniczona. Łączyli praktyczne obserwacje z elementami religijnymi i magicznymi. Sekcja zwłok jako metoda naukowa pojawiła się znacznie później (Bolonia, XIV w.). Wiwisekcja zwierząt to metoda **Galena**. Mumifikacja jako \"uboczne\" źródło wiedzy anatomicznej to charakterystyczna cecha medycyny egipskiej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-131",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który egipski papirus medyczny koncentruje się głównie na chirurgii, opisie urazów i leczeniu ran?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Papirus Edwin Smitha"
+      },
+      {
+        "id": "b",
+        "text": "Papirus Ebersa"
+      },
+      {
+        "id": "c",
+        "text": "Papirus Kahuna"
+      },
+      {
+        "id": "d",
+        "text": "Kodeks Hammurabiego"
+      },
+      {
+        "id": "e",
+        "text": "Corpus Hippocraticum"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Papirus Edwin Smitha** (ok. 1600 r. p.n.e.) jest dokumentem **praktycznym**, skupionym na **chirurgii, urazach i leczeniu ran**. Natomiast **Papirus Ebersa** (ok. 1550 r. p.n.e.) zawiera informacje o ziołach, chorobach i metodach leczenia, w tym magicznych. Mnemonik: **S**mith = **S**urgery (chirurgia). Kodeks Hammurabiego to tekst mezopotamski, Corpus Hippocraticum — grecki. Łatwo pomylić oba papirusy, więc kluczowe jest skojarzenie Smith↔chirurgia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-132",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który mezopotamski zbiór praw regulował praktykę lekarską, określając wynagrodzenia i kary za błędy medyczne?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Papirus Ebersa"
+      },
+      {
+        "id": "b",
+        "text": "Kodeks Hammurabiego"
+      },
+      {
+        "id": "c",
+        "text": "Prawa Solona"
+      },
+      {
+        "id": "d",
+        "text": "Corpus Iuris Civilis"
+      },
+      {
+        "id": "e",
+        "text": "Canon Medicinae"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Kodeks Hammurabiego** (Babilonia) zawierał przepisy dotyczące praktyk lekarskich: **odpowiedzialności lekarzy**, **wynagrodzeń** za leczenie oraz **kar** za nieudane leczenie i błędy medyczne. To jeden z najwcześniejszych przykładów prawnej regulacji zawodu lekarza. Dystraktory pochodzą z innych kultur/epok: Ebersa (Egipt), Corpus Iuris Civilis (Bizancjum), Canon Medicinae (Awicenna). Kodeks Hammurabiego łączy prawo z medycyną.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-133",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Kogo uznaje się za \"ojca medycyny\", autora zasady naturalizmu w leczeniu chorób?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Galen"
+      },
+      {
+        "id": "b",
+        "text": "Asklepiades z Bitynii"
+      },
+      {
+        "id": "c",
+        "text": "Hipokrates z Kos"
+      },
+      {
+        "id": "d",
+        "text": "Awicenna"
+      },
+      {
+        "id": "e",
+        "text": "Imhotep"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Hipokrates z Kos** (ok. 460-370 p.n.e.) to **\"ojciec medycyny\"**. Wprowadził **zasadę naturalizmu** — choroby mają naturalne przyczyny, nie są karą bogów. Podkreślał obserwację, diagnozę, etykę (przysięga Hipokratesa) oraz rolę diety i higieny (\"niech jedzenie będzie twoim lekarstwem\"). Działał w **Szkole Kos**. Galen rozwinął jego teorię humoralną później; Imhotep był egipskim lekarzem; Asklepiades działał w Rzymie. Hipokrates = przełom ku medycynie racjonalnej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-134",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zgodnie z teorią humoralną, melancholijny temperament był powiązany z którym humorem (sokiem ustrojowym)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Krwią (sanguis)"
+      },
+      {
+        "id": "b",
+        "text": "Żółtą żółcią (chole)"
+      },
+      {
+        "id": "c",
+        "text": "Flegmą (phlegma)"
+      },
+      {
+        "id": "d",
+        "text": "Czarną żółcią (melanchole)"
+      },
+      {
+        "id": "e",
+        "text": "Limfą"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W teorii humoralnej **czarna żółć** (melanchole), powiązana ze **śledzioną**, **jesienią** i temperamentem **melancholijnym**, odpowiadała za usposobienie smutne. Pozostałe: **krew** (serce, wiosna, sangwinik), **żółta żółć** (wątroba, lato, choleryk), **flegma** (mózg, zima, flegmatyk). Sama nazwa \"melancholia\" pochodzi od greckiego *melas chole* = czarna żółć. Zdrowie = równowaga czterech humorów; choroba = ich nierównowaga. Teoria dominowała aż do XVIII w.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-135",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Świątynie poświęcone greckiemu bogu uzdrowienia, pełniące funkcję pierwszych szpitali, nazywano:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bimaristanami"
+      },
+      {
+        "id": "b",
+        "text": "Liceami"
+      },
+      {
+        "id": "c",
+        "text": "Termami"
+      },
+      {
+        "id": "d",
+        "text": "Gimnazjonami"
+      },
+      {
+        "id": "e",
+        "text": "Asklepionami"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Asklepiony** to świątynie boga uzdrowienia **Asklepiosa**, pełniące funkcję pierwszych **szpitali**. Praktykowano tam kąpiele, dietę, masaże, zioła oraz **sen asklepiadyjski** (inkubacja — pacjent spał w świątyni, a kapłani interpretowali jego sny). Najważniejsze: Epidauros, Kos, Pergamon. **Bimaristany** to późniejsze szpitale arabskie, **termy** to rzymskie łaźnie, **gimnazjony** — greckie miejsca ćwiczeń. Asklepiony łączyły kult religijny z realnymi metodami leczniczymi.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-136",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który rzymski lekarz greckiego pochodzenia zdobywał wiedzę anatomiczną z badań na zwierzętach i był głównym autorytetem medycznym aż do renesansu?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Galen"
+      },
+      {
+        "id": "b",
+        "text": "Asklepiades z Bitynii"
+      },
+      {
+        "id": "c",
+        "text": "Celsus"
+      },
+      {
+        "id": "d",
+        "text": "Hipokrates"
+      },
+      {
+        "id": "e",
+        "text": "Dioskorydes"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Galen** (ok. 129-216 n.e.), Grek z Pergamonu działający w Rzymie, prowadził badania anatomiczne na **zwierzętach** (nie miał dostępu do zwłok ludzkich), co rodziło błędy. Usystematyzował wiedzę medyczną i rozwinął teorię humoralną — był **niepodważalnym autorytetem aż do renesansu** (XVI w., dopiero Vesalius go skorygował). Jego dzieła tłumaczono na arabski. Celsus był encyklopedystą, Dioskorydes — autorem zielnika. Galen = synteza antycznej medycyny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-137",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Aulus Cornelius Celsus w dziele \"De Medicina\" opisał cztery klasyczne objawy zapalenia. Są to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Febris, tussis, dyspnoe, cyanosis"
+      },
+      {
+        "id": "b",
+        "text": "Rubor, tumor, calor, dolor"
+      },
+      {
+        "id": "c",
+        "text": "Pallor, frigor, sopor, stupor"
+      },
+      {
+        "id": "d",
+        "text": "Sanguis, chole, melanchole, phlegma"
+      },
+      {
+        "id": "e",
+        "text": "Caput, cor, hepar, ren"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Celsus** opisał cztery klasyczne objawy zapalenia: **rubor** (zaczerwienienie), **tumor** (obrzęk), **calor** (gorąco), **dolor** (ból). Ta tetrada jest do dziś podstawą semiotyki zapalenia (później dodano *functio laesa* — upośledzenie funkcji). Celsus, prawdopodobnie nie praktykujący lekarz, lecz encyklopedysta, pisał **po łacinie**, co uczyniło \"De Medicina\" cennym dla średniowiecznego Zachodu nieznającego greki. Dystraktor D to humory, nie objawy zapalenia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-138",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Asklepiades z Bitynii zasłynął jako twórca którego podejścia/szkoły w medycynie rzymskiej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Szkoły dogmatycznej opartej na teorii humoralnej"
+      },
+      {
+        "id": "b",
+        "text": "Chirurgii wojskowej"
+      },
+      {
+        "id": "c",
+        "text": "Holistycznego, łagodnego podejścia odrzucającego teorię humoralną — szkoły metodystów"
+      },
+      {
+        "id": "d",
+        "text": "Medycyny opartej na sekcji zwłok ludzkich"
+      },
+      {
+        "id": "e",
+        "text": "Teorii krążenia płucnego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Asklepiades z Bitynii** **odrzucił teorię humoralną** Hipokratesa i promował **łagodne, holistyczne** podejście: dietę, gimnastykę, masaże, kąpiele, muzykę, terapię rozmową. Inspirowany atomizmem Demokryta uważał, że lekarz powinien być \"przyjacielem pacjenta\". Dał początek **szkole metodystów** (jednej z trzech rzymskich, obok empirycznej i dogmatycznej). Prekursor psychosomatyki i postrzegania chorób psychicznych jako uleczalnych schorzeń fizycznych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-139",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który arabski uczony jest autorem \"Kanonu medycyny\" (Canon Medicinae), podstawowego podręcznika na europejskich uniwersytetach aż do XVII wieku?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Al-Razi (Rhazes)"
+      },
+      {
+        "id": "b",
+        "text": "Al-Zahrawi (Abulcasis)"
+      },
+      {
+        "id": "c",
+        "text": "Ibn al-Nafis"
+      },
+      {
+        "id": "d",
+        "text": "Awicenna (Ibn Sina)"
+      },
+      {
+        "id": "e",
+        "text": "Hunayn ibn Ishaq"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Awicenna (Ibn Sina, 980-1037)** to największy lekarz świata islamu, autor **\"Kanonu medycyny\"** (Canon Medicinae), który systematyzował całą znaną wiedzę medyczną i był podstawowym podręcznikiem w Europie **aż do XVII wieku**. Pozostali: **Al-Razi** (odróżnił ospę od odry), **Al-Zahrawi** (\"ojciec chirurgii\", Al-Tasrif), **Ibn al-Nafis** (krążenie płucne), **Hunayn ibn Ishaq** (tłumacz). Awicenna = systematyzacja i synteza medycyny średniowiecznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-140",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który arabski lekarz jako pierwszy opisał mały obieg krwi (krążenie płucne), wyprzedzając Williama Harveya o niemal 400 lat?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Awicenna (Ibn Sina)"
+      },
+      {
+        "id": "b",
+        "text": "Al-Razi (Rhazes)"
+      },
+      {
+        "id": "c",
+        "text": "Al-Zahrawi (Abulcasis)"
+      },
+      {
+        "id": "d",
+        "text": "Galen"
+      },
+      {
+        "id": "e",
+        "text": "Ibn al-Nafis"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Ibn al-Nafis (1213-1288)** jako pierwszy opisał **mały obieg krwi** (krążenie płucne), wyprzedzając **Williama Harveya** o prawie **400 lat**. Jego dzieła nie od razu dotarły do Europy, ale pokazują zaawansowanie medycyny arabskiej. To klasyczny przykład odkrycia wyprzedzającego epokę. Dystraktory to inni wybitni lekarze arabscy o innych zasługach. Harvey opisał pełny obieg krwi dopiero w 1628 r. — Ibn al-Nafis go uprzedził w zakresie krążenia płucnego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-141",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Al-Zahrawi (Abulcasis), autor 30-tomowego dzieła \"Al-Tasrif\", jest uważany za:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ojca nowożytnej chirurgii"
+      },
+      {
+        "id": "b",
+        "text": "Ojca teorii humoralnej"
+      },
+      {
+        "id": "c",
+        "text": "Pierwszego tłumacza Hipokratesa na arabski"
+      },
+      {
+        "id": "d",
+        "text": "Twórcę pierwszego uniwersytetu w Europie"
+      },
+      {
+        "id": "e",
+        "text": "Odkrywcę krążenia płucnego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Al-Zahrawi (Abulcasis, 936-1013)** uważany jest za **\"ojca nowożytnej chirurgii\"**. Jego 30-tomowe dzieło **\"Al-Tasrif\"** zawierało dokładne opisy **narzędzi chirurgicznych**, opatrunków, leczenia złamań, operacji zębów i oczu oraz zasad **sterylizacji**. Opisał setki technik chirurgicznych. Nie mylić z Awicenną (Kanon, systematyzacja) ani Ibn al-Nafisem (krążenie). Al-Zahrawi = praktyczna, narzędziowa chirurgia, której wpływ sięgał europejskiego renesansu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-142",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jak nazywano pierwsze nowoczesne szpitale w świecie arabskim, dostępne bezpłatnie niezależnie od wyznania i statusu społecznego?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Asklepiony"
+      },
+      {
+        "id": "b",
+        "text": "Bimaristany"
+      },
+      {
+        "id": "c",
+        "text": "Termy"
+      },
+      {
+        "id": "d",
+        "text": "Hospicja"
+      },
+      {
+        "id": "e",
+        "text": "Lazarety"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Bimaristany** to pierwsze nowoczesne szpitale świata arabskiego — **bezpłatne**, dostępne **niezależnie od wyznania i statusu**, z oddziałami specjalistycznymi (chirurgia, **psychiatria**, choroby zakaźne), zatrudniające lekarzy, pielęgniarzy i farmaceutów, prowadzące **naukę** dla studentów. Przykłady: Bagdad, Kair (Al-Mansura), Kordoba, Damaszek. Wyprzedzały europejskie szpitale organizacyjnie. **Asklepiony** to greckie świątynie lecznicze — nie mylić tych dwóch instytucji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-143",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Al-Razi (Rhazes) zasłynął w diagnostyce różnicowej dzięki temu, że jako jeden z pierwszych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Opisał krążenie płucne"
+      },
+      {
+        "id": "b",
+        "text": "Stworzył przysięgę lekarską"
+      },
+      {
+        "id": "c",
+        "text": "Odróżnił ospę od odry"
+      },
+      {
+        "id": "d",
+        "text": "Przeprowadził pierwszą transplantację"
+      },
+      {
+        "id": "e",
+        "text": "Wynalazł mikroskop"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Al-Razi (Rhazes, 865-925)**, perski lekarz i filozof, autor ponad 200 dzieł (m.in. \"Kitab al-Hawi\"/Liber Continens), stosował **empiryczne metody** diagnozy i jako jeden z pierwszych **odróżnił ospę od odry** — klasyczny przykład wczesnej **diagnostyki różnicowej**. Kierował pierwszym szpitalem publicznym w Bagdadzie. Dystraktory przypisane są innym postaciom (krążenie — Ibn al-Nafis, przysięga — Hipokrates). Al-Razi = empiryzm i różnicowanie chorób.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-144",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która szkoła medyczna jest uznawana za najstarszą w średniowiecznej Europie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Uniwersytet w Bolonii"
+      },
+      {
+        "id": "b",
+        "text": "Uniwersytet Paryski"
+      },
+      {
+        "id": "c",
+        "text": "Uniwersytet w Montpellier"
+      },
+      {
+        "id": "d",
+        "text": "Szkoła Medyczna w Salerno (Schola Medica Salernitana)"
+      },
+      {
+        "id": "e",
+        "text": "Uniwersytet Oksfordzki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Szkoła Medyczna w Salerno** (Schola Medica Salernitana) uznawana jest za **najstarszą** szkołę medyczną średniowiecznej Europy — działała od **IX/X wieku**, szczyt sławy osiągnęła w XI-XII w. Inne ośrodki powstały później: **Bolonia** (uniwersytet 1088, wydział medyczny ~2. poł. XII w., słynął z sekcji zwłok), **Paryż** (~1215), **Montpellier** (~1220). Salerno wyprzedziło uniwersytety i łączyło tradycje grecką, arabską i żydowską.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-145",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który ośrodek akademicki średniowiecznej Europy zasłynął jako pionier w prowadzeniu publicznych sekcji zwłok?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Salerno"
+      },
+      {
+        "id": "b",
+        "text": "Montpellier"
+      },
+      {
+        "id": "c",
+        "text": "Paryż"
+      },
+      {
+        "id": "d",
+        "text": "Oksford"
+      },
+      {
+        "id": "e",
+        "text": "Bolonia"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Bolonia** (uniwersytet założony w 1088 r.) zasłynęła z **anatomii** — prowadziła pionierskie **publiczne sekcje zwłok**, zwłaszcza od XIV wieku, gdy Kościół zaczął je tolerować. Wcześniej zakaz sekcji ograniczał rozwój anatomii, a nauczano jej z tekstów Galena, nie z obserwacji. Salerno było najstarsze, ale to Bolonia przełamała tabu anatomiczne. To kluczowy krok ku medycynie opartej na bezpośrednim badaniu ciała ludzkiego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-146",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jak nazywała się instytucja w Bagdadzie, w której tłumaczono dzieła starożytnych uczonych greckich, perskich i indyjskich na język arabski?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dom Mądrości (Bayt al-Hikma)"
+      },
+      {
+        "id": "b",
+        "text": "Bimaristan"
+      },
+      {
+        "id": "c",
+        "text": "Asklepion"
+      },
+      {
+        "id": "d",
+        "text": "Schola Salernitana"
+      },
+      {
+        "id": "e",
+        "text": "Canon Medicinae"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Dom Mądrości (Bayt al-Hikma)** w Bagdadzie był ośrodkiem tłumaczeń dzieł klasycznych uczonych greckich, indyjskich i perskich na **arabski**. Pracowali tam tłumacze jak **Hunayn ibn Ishaq** i Sahl ibn Bishr. Najczęściej tłumaczono Hipokratesa, Galena, Dioskuridesa oraz indyjskich lekarzy (Sushruta, Charaka). Dzięki tej pracy medycyna arabska stała się **pomostem** między antykiem a nowożytnym Zachodem. Bimaristan to szpital, nie instytut tłumaczeń.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-147",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Dominującym sposobem postrzegania choroby we wczesnym średniowieczu europejskim było traktowanie jej jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie zaburzenia biochemicznego"
+      },
+      {
+        "id": "b",
+        "text": "Kary za grzechy lub testu duchowego, leczonego m.in. modlitwą i pokutą"
+      },
+      {
+        "id": "c",
+        "text": "Wyniku działania mikroorganizmów"
+      },
+      {
+        "id": "d",
+        "text": "Zjawiska czysto genetycznego"
+      },
+      {
+        "id": "e",
+        "text": "Efektu nierównowagi atomów"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W średniowieczu chorobę często traktowano jako **karę za grzechy** lub **test duchowy**, stąd skutecznymi metodami leczenia miały być **modlitwy, pokuty, pielgrzymki i relikwie**. Kościół przepisywał też sakramenty (namaszczenie chorych). To religijne ujęcie współistniało z medycyną galenistyczną (humory). Wiedza o mikroorganizmach nie istniała. Pokazuje to silne uwarunkowanie religijne medycyny średniowiecznej i paternalistyczny stosunek do pacjenta jako \"obiektu\".",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-148",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Stosunek do pacjenta w medycynie średniowiecznej najlepiej opisuje stwierdzenie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pacjent był aktywnym, równorzędnym uczestnikiem decyzji terapeutycznych"
+      },
+      {
+        "id": "b",
+        "text": "Obowiązywała pełna koncepcja praw pacjenta"
+      },
+      {
+        "id": "c",
+        "text": "Medycyna była paternalistyczna — lekarz decydował, pacjent miał ufać, będąc raczej \"obiektem\""
+      },
+      {
+        "id": "d",
+        "text": "Pacjent mógł swobodnie wybierać spośród konkurujących terapii rynkowych"
+      },
+      {
+        "id": "e",
+        "text": "Pacjenci podpisywali świadomą zgodę na zabiegi"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Medycyna średniowieczna była silnie **paternalistyczna** — **lekarz decydował**, co dobre, a pacjent miał **ufać**. Nie istniała koncepcja **indywidualnych praw pacjenta**; chory był bardziej **\"obiektem\"** niż aktywnym uczestnikiem leczenia. Wynikało to z uwarunkowań religijnych, filozoficznych i ograniczonej wiedzy. Współczesna koncepcja autonomii pacjenta i świadomej zgody to zdobycz dużo późniejsza. To istotny kontrast z dzisiejszym partnerskim modelem relacji lekarz-pacjent.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-149",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W średniowiecznej medycynie europejskiej chirurdzy w porównaniu z lekarzami (medici) byli najczęściej:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Uważani za elitę akademicką o najwyższym prestiżu"
+      },
+      {
+        "id": "b",
+        "text": "Zakazani przez prawo"
+      },
+      {
+        "id": "c",
+        "text": "Wyłącznie duchownymi"
+      },
+      {
+        "id": "d",
+        "text": "Traktowani jako rzemieślnicy zajmujący się zabiegami mechanicznymi"
+      },
+      {
+        "id": "e",
+        "text": "Jedynymi uprawnionymi do nauczania na uniwersytetach"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W średniowieczu **chirurdzy** byli zazwyczaj uznawani za **rzemieślników** i zajmowali się **zabiegami mechanicznymi**: amputacjami, upuszczaniem krwi, leczeniem złamań i ran. Mieli niższy status niż akademiccy **lekarze (medici)**, którzy studiowali teksty na uniwersytetach. Ten podział na \"uczonego lekarza\" i \"rzemieślniczego chirurga\" utrzymywał się przez wieki. Anatomia była wówczas wykładana z tekstów Galena, a praktyka kliniczna miała minimalny wymiar.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-150",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Imhotep, jedna z najsłynniejszych postaci medycyny starożytnego Egiptu, pełnił funkcję:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie kapłana bez wiedzy medycznej"
+      },
+      {
+        "id": "b",
+        "text": "Rzymskiego chirurga wojskowego"
+      },
+      {
+        "id": "c",
+        "text": "Greckiego filozofa"
+      },
+      {
+        "id": "d",
+        "text": "Babilońskiego prawodawcy"
+      },
+      {
+        "id": "e",
+        "text": "Lekarza, architekta i doradcy faraona, później czczonego niemal jako bóstwo uzdrawiające"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Imhotep** (ok. 2650-2600 p.n.e.) był wszechstronną postacią: **lekarzem, architektem i doradcą faraona**. Z czasem otoczono go kultem niemal jako **bóstwo uzdrawiające** — wierzono, że ma moc leczenia. Reprezentuje charakterystyczne dla Egiptu **przenikanie się medycyny z religią i magią**. To jeden z najwcześniejszych znanych z imienia lekarzy w historii. Dystraktory umieszczają go w innych kulturach — kluczowe jest osadzenie w Egipcie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

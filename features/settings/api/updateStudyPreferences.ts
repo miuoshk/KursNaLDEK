@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
@@ -21,16 +22,18 @@ export type UpdateStudyPrefsResult = { ok: true } | { ok: false; message: string
 export async function updateStudyPreferences(
   input: z.infer<typeof schema>,
 ): Promise<UpdateStudyPrefsResult> {
+  const tSettings = await getTranslations("settings");
+  const tErrors = await getTranslations("errors");
   const goal = Math.min(100, Math.max(5, roundGoal(input.daily_goal)));
   const parsed = schema.safeParse({ ...input, daily_goal: goal });
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowe dane." };
+    return { ok: false, message: tErrors("invalidData") };
   }
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return { ok: false, message: "Brak sesji." };
+  if (!user) return { ok: false, message: tErrors("noSession") };
 
   const patch: Record<string, unknown> = {
     daily_goal: parsed.data.daily_goal,
@@ -52,7 +55,7 @@ export async function updateStudyPreferences(
     .eq("id", user.id);
 
   if (error) {
-    return { ok: false, message: "Nie udało się zapisać preferencji." };
+    return { ok: false, message: tSettings("errors.preferencesSaveFailed") };
   }
   revalidatePath("/", "layout");
   return { ok: true };

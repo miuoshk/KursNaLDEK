@@ -28,7 +28,7 @@ export default function AdminDashboardPage() {
         </p>
       </header>
 
-      <div>
+      <div className="flex flex-col gap-10">
         <Suspense fallback={<KpiFallback />}>
           <DashboardKpiSection />
         </Suspense>

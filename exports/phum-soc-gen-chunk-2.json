@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-026",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa wobec niepełnosprawności, która wynika z troski i chęci pomocy, ale wprowadza ograniczenia w autonomii i niezależności osoby, zakładając jej bezradność i przejmując decyzje \"w jej interesie\", to postawa:",
+    "options": [
+      {
+        "id": "a",
+        "text": "paternalistyczna"
+      },
+      {
+        "id": "b",
+        "text": "litościwa"
+      },
+      {
+        "id": "c",
+        "text": "wykluczająca"
+      },
+      {
+        "id": "d",
+        "text": "neutralna"
+      },
+      {
+        "id": "e",
+        "text": "integracyjna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Postawa **paternalistyczna** wynika z troski, ale **ogranicza autonomię** — zakłada, że osoba z niepełnosprawnością jest bezradna i wymaga podejmowania decyzji za nią \"w jej interesie\". Różni się od postawy **litościwej** (dominuje współczucie/żal, traktowanie jako \"obiekt pomocy\") subtelnie — paternalizm akcentuje **przejmowanie kontroli i decyzji**, podczas gdy litość — emocjonalny stosunek współczucia. To częsta para myląca.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-027",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa wobec niepełnosprawności, w której dominuje współczucie i żal, a osoba z niepełnosprawnością traktowana jest jako \"obiekt pomocy\" zasługujący na litość, co utrwala stereotyp \"biednej ofiary\", to postawa:",
+    "options": [
+      {
+        "id": "a",
+        "text": "paternalistyczna"
+      },
+      {
+        "id": "b",
+        "text": "humanitarna"
+      },
+      {
+        "id": "c",
+        "text": "litościwa"
+      },
+      {
+        "id": "d",
+        "text": "aktywistyczna"
+      },
+      {
+        "id": "e",
+        "text": "inkluzywna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Postawa **litościwa** opiera się na **współczuciu i żalu**, traktując osobę z niepełnosprawnością jako \"obiekt pomocy\" zasługujący na litość. Jej konsekwencją jest wzmacnianie stereotypu **\"biednej ofiary\"**, brak równości i — paradoksalnie — brak empatii (mimo dobrych intencji). Różni się od **paternalizmu** akcentem na emocję litości, a od **humanitaryzmu** brakiem podmiotowego szacunku i równości.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-028",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która postawa wobec niepełnosprawności zakłada zmianę z modelu medycznego (skupionego na \"naprawianiu\" osoby) na model społeczny (zakładający, że to społeczeństwo powinno dostosować się do potrzeb), poprzez kampanie, protesty i działania na rzecz zmian w prawodawstwie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "humanitarna"
+      },
+      {
+        "id": "b",
+        "text": "integracyjna"
+      },
+      {
+        "id": "c",
+        "text": "neutralna"
+      },
+      {
+        "id": "d",
+        "text": "aktywistyczna"
+      },
+      {
+        "id": "e",
+        "text": "litościwa"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Postawa **aktywistyczna** dąży do zmiany norm społecznych poprzez **kampanie, protesty i zmiany w prawodawstwie**, przesuwając akcent z **modelu medycznego** (\"naprawianie\" osoby niepełnosprawnej) na **model społeczny** (to społeczeństwo dostosowuje się do różnorodnych potrzeb). Odróżnia ją od postawy **humanitarnej** czy **integracyjnej** wymiar zorganizowanej **walki i rzecznictwa** o prawa.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-029",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która postawa wobec niepełnosprawności charakteryzuje się brakiem silnych opinii i uprzedzeń, dostrzeganiem niepełnosprawności bez emocjonalnego zaangażowania, z poszanowaniem praw, ale bez inicjatywy na rzecz integracji?",
+    "options": [
+      {
+        "id": "a",
+        "text": "integracyjna"
+      },
+      {
+        "id": "b",
+        "text": "humanitarna"
+      },
+      {
+        "id": "c",
+        "text": "paternalistyczna"
+      },
+      {
+        "id": "d",
+        "text": "aktywistyczna"
+      },
+      {
+        "id": "e",
+        "text": "neutralna"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Postawa **neutralna** to brak silnych opinii i uprzedzeń — niepełnosprawność jest dostrzegana, ale bez **emocjonalnego zaangażowania**, z poszanowaniem praw, lecz **bez inicjatywy** na rzecz integracji. Może wynikać z braku świadomości, doświadczenia lub zaangażowania. Choć pozornie \"bezpieczna\", w dłuższej perspektywie **utrwala stereotypy i marginalizację**, bo nie prowadzi do aktywnego wsparcia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-030",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która postawa wobec niepełnosprawności, według materiału, \"idzie o krok dalej\" w stosunku do podejścia humanitarnego i integracyjnego, zakładając pełną integrację z zachowaniem szacunku dla różnorodności oraz dostosowanie środowiska, systemów i struktur społecznych?",
+    "options": [
+      {
+        "id": "a",
+        "text": "aktywistyczna"
+      },
+      {
+        "id": "b",
+        "text": "inkluzywna"
+      },
+      {
+        "id": "c",
+        "text": "neutralna"
+      },
+      {
+        "id": "d",
+        "text": "paternalistyczna"
+      },
+      {
+        "id": "e",
+        "text": "litościwa"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Postawa **inkluzywna** według materiału **idzie o krok dalej** niż humanitarna i integracyjna — zakłada **pełną integrację** z szacunkiem dla różnorodności oraz dostosowanie **środowiska, systemów i struktur** społecznych do wszystkich. Kluczowa różnica wobec integracji: inkluzja nie tylko zaprasza do uczestnictwa, ale przebudowuje otoczenie, by było dostępne i przyjazne dla każdego, niezależnie od zdolności.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-031",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Dyskryminacja ze względu na wiek, w której starość postrzegana jest jako okres zależności, spadku sprawności i wartości społecznej, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ageizm"
+      },
+      {
+        "id": "b",
+        "text": "stygmatyzacja"
+      },
+      {
+        "id": "c",
+        "text": "paternalizm"
+      },
+      {
+        "id": "d",
+        "text": "marginalizacja"
+      },
+      {
+        "id": "e",
+        "text": "dehumanizacja"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Ageizm** to dyskryminacja ze względu na **wiek**, w której starość postrzegana jest negatywnie — jako okres zależności, spadku sprawności i wartości społecznej. Przejawia się stereotypami (osoby starsze jako \"nieproduktywne\", niezdolne do adaptacji), szczególnie widocznymi na **rynku pracy** i w **mediach**. Termin obejmuje uprzedzenia, stereotypy i dyskryminację wobec osób ze względu na ich wiek.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-032",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W najbardziej skrajnej formie postawy wykluczającej wobec niepełnosprawności, traktowanie osób jako obiektów pomocy pozbawionych prawa do decydowania o swoim życiu, prowadzące do poczucia bezsilności, określa się jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stygmatyzacja"
+      },
+      {
+        "id": "b",
+        "text": "izolacja społeczna"
+      },
+      {
+        "id": "c",
+        "text": "dehumanizacja"
+      },
+      {
+        "id": "d",
+        "text": "paternalizm"
+      },
+      {
+        "id": "e",
+        "text": "marginalizacja"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Dehumanizacja** to najbardziej skrajny przejaw postawy **wykluczającej** — traktowanie osób z niepełnosprawnością nie jak pełnoprawnych członków społeczeństwa, lecz jak **obiekty pomocy** pozbawione prawa decydowania o swoim życiu, co prowadzi do poczucia bezsilności i braku **agencyjności** (sprawczości). To krok dalej niż stygmatyzacja czy izolacja, które również są cechami postawy wykluczającej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-033",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, zjawisko wzajemnego wpływu stereotypów, uprzedzeń i dyskryminacji wobec choroby przebiega zwykle w sekwencji:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dyskryminacja → uprzedzenia → stereotypy"
+      },
+      {
+        "id": "b",
+        "text": "stygmatyzacja → stereotypy → uprzedzenia"
+      },
+      {
+        "id": "c",
+        "text": "uprzedzenia → stereotypy → dyskryminacja"
+      },
+      {
+        "id": "d",
+        "text": "stereotypy → uprzedzenia → dyskryminacja"
+      },
+      {
+        "id": "e",
+        "text": "dyskryminacja → stereotypy → uprzedzenia"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Materiał opisuje sekwencję: negatywne **stereotypy** prowadzą do **uprzedzeń**, które następnie prowadzą do **dyskryminacji**, a każde z tych zjawisk wzmacnia oddziaływanie pozostałych. To logiczny ciąg: przekonanie (poznawcze) → nastawienie (emocjonalne) → działanie (behawioralne). Mnemonik odpowiada trójkomponentowemu modelowi postawy — myśl prowadzi do emocji, emocja do czynu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-034",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa wobec niepełnosprawności promująca pełne włączenie osób z niepełnosprawnościami, równe szanse i dostęp do zasobów, traktująca różnorodność jako wartość, a nie przeszkodę, to postawa:",
+    "options": [
+      {
+        "id": "a",
+        "text": "humanitarna"
+      },
+      {
+        "id": "b",
+        "text": "paternalistyczna"
+      },
+      {
+        "id": "c",
+        "text": "neutralna"
+      },
+      {
+        "id": "d",
+        "text": "litościwa"
+      },
+      {
+        "id": "e",
+        "text": "integracyjna"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Postawa **integracyjna (akceptująca)** promuje **pełne włączenie** osób z niepełnosprawnościami, zapewniając **równe szanse** i dostęp do zasobów oraz traktując **różnorodność jako wartość**, a nie przeszkodę. Kładzie nacisk na dostosowanie środowiska, edukację inkluzyjną i traktowanie osób jako pełnoprawnych członków społeczeństwa. Różni się od **inkluzywnej** tym, że ta ostatnia \"idzie o krok dalej\" w przebudowie struktur.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-035",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału stereotypy wobec osób z niepełnosprawnością mogą być pozytywne lub negatywne. Stereotyp przedstawiający osobę z niepełnosprawnością jako \"wyjątkowo odważną, silną lub inspirującą\" w sposób redukujący jej pełną osobowość to stereotyp:",
+    "options": [
+      {
+        "id": "a",
+        "text": "negatywny, prowadzący do marginalizacji"
+      },
+      {
+        "id": "b",
+        "text": "pozytywny, ale również utrudniający integrację"
+      },
+      {
+        "id": "c",
+        "text": "neutralny, bez wpływu na funkcjonowanie"
+      },
+      {
+        "id": "d",
+        "text": "paternalistyczny w swej istocie"
+      },
+      {
+        "id": "e",
+        "text": "dehumanizujący"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "To stereotyp **pozytywny** — przedstawia osobę jako odważną, silną, inspirującą, ale **redukuje ją** do pewnych cech, zapominając o pełnej osobowości i możliwości normalnego życia. Materiał podkreśla, że **oba typy** stereotypów (pozytywne i negatywne) utrudniają integrację społeczną. To ważny niuans: nawet \"pochlebny\" stereotyp jest szkodliwy, bo odbiera podmiotowość (tzw. inspiration porn).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-036",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które z poniższych NIE jest wymienione w materiale jako jeden z czynników kształtujących postawy społeczne?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Predyspozycje genetyczne"
+      },
+      {
+        "id": "b",
+        "text": "Wpływ rodziny i wychowania"
+      },
+      {
+        "id": "c",
+        "text": "Media i kultura masowa"
+      },
+      {
+        "id": "d",
+        "text": "Doświadczenia życiowe"
+      },
+      {
+        "id": "e",
+        "text": "Grupy rówieśnicze"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Czynniki kształtujące postawy społeczne wg materiału to m.in.: **doświadczenia życiowe, wpływ rodziny i wychowania, grupy rówieśnicze, media i kultura masowa, edukacja, czynniki emocjonalne, społeczne i historyczne oraz poznawcze**. **Predyspozycje genetyczne** nie są wymienione — postawy są opisywane jako wytwór **procesu społecznego i kulturowego**, a nie dziedziczenia biologicznego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-037",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawa wobec niepełnosprawności kładąca nacisk na szacunek, empatię i wsparcie, uznająca godność, prawa i wartość każdej osoby niezależnie od jej zdolności fizycznych czy intelektualnych, to postawa:",
+    "options": [
+      {
+        "id": "a",
+        "text": "integracyjna"
+      },
+      {
+        "id": "b",
+        "text": "aktywistyczna"
+      },
+      {
+        "id": "c",
+        "text": "humanitarna"
+      },
+      {
+        "id": "d",
+        "text": "neutralna"
+      },
+      {
+        "id": "e",
+        "text": "paternalistyczna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Postawa **humanitarna** kładzie nacisk na **szacunek, empatię i wsparcie**, uznając **godność, prawa i wartość** każdej osoby niezależnie od jej zdolności. Jej cechy to: szacunek i równość, empatia i zrozumienie, akceptacja i inkluzja, dostępność, przeciwdziałanie marginalizacji oraz wspieranie niezależności. Różni się od **aktywistycznej** brakiem wymiaru zorganizowanej walki politycznej — koncentruje się na etycznym stosunku do osoby.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-038",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, przemoc wobec osób starszych, w której dochodzi do wykorzystywania finansowego, kradzieży pieniędzy czy zmuszania do przekazania majątku, to przemoc:",
+    "options": [
+      {
+        "id": "a",
+        "text": "fizyczna"
+      },
+      {
+        "id": "b",
+        "text": "psychiczna"
+      },
+      {
+        "id": "c",
+        "text": "zaniedbanie"
+      },
+      {
+        "id": "d",
+        "text": "ekonomiczna"
+      },
+      {
+        "id": "e",
+        "text": "seksualna"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Przemoc **ekonomiczna** wobec seniorów obejmuje **wykorzystywanie finansowe, kradzież pieniędzy i zmuszanie do przekazania majątku**. Należy ją odróżnić od **przemocy psychicznej** (upokarzanie, izolacja, zastraszanie, kontrolowanie) oraz **zaniedbania** (brak opieki, niewłaściwe warunki życia, odmawianie pomocy medycznej). Przemoc ekonomiczna często dotyczy osób zależnych finansowo od opiekunów.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-039",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według badań CBOS i danych przytoczonych w materiale, w grupie negatywnych postaw wobec starości, \"przyspieszone starzenie się mózgu (większe ryzyko demencji), obniżona odporność i zwiększona śmiertelność\" wymieniane są jako konsekwencje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ageizmu w miejscu pracy"
+      },
+      {
+        "id": "b",
+        "text": "braku zrozumienia potrzeb cyfrowych"
+      },
+      {
+        "id": "c",
+        "text": "przemocy ekonomicznej"
+      },
+      {
+        "id": "d",
+        "text": "paternalizmu"
+      },
+      {
+        "id": "e",
+        "text": "izolacji społecznej osób starszych"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Konsekwencje **izolacji społecznej** osób starszych obejmują: **depresję, poczucie samotności, przyspieszone starzenie się mózgu** (większe ryzyko demencji), **obniżoną odporność i zwiększoną śmiertelność**. Izolacja jako negatywna postawa wobec starości wynika m.in. z wykluczenia z życia zawodowego, utraty bliskich, ograniczeń zdrowotnych i wykluczenia cyfrowego. To stan o poważnych skutkach zdrowotnych, nie tylko emocjonalnych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-040",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Postawy społeczne mogą być pozytywne lub negatywne, a ich zmiana jest możliwa przede wszystkim poprzez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie zmianę przepisów prawnych"
+      },
+      {
+        "id": "b",
+        "text": "doświadczenia, edukację lub działania perswazyjne"
+      },
+      {
+        "id": "c",
+        "text": "predyspozycje wrodzone"
+      },
+      {
+        "id": "d",
+        "text": "izolację od obiektu postawy"
+      },
+      {
+        "id": "e",
+        "text": "wzmacnianie stereotypów"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Zmiana postaw społecznych jest możliwa poprzez **doświadczenia, edukację lub działania perswazyjne**. Postawy nie są stałe — to **ciągły proces**, w którym mogą ewoluować pod wpływem nowych doświadczeń i wpływów. Edukacja i kontakt (np. międzypokoleniowy, integracja) są w materiale wielokrotnie wskazywane jako kluczowe narzędzia przełamywania stereotypów i uprzedzeń.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-041",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Najbardziej znany model żałoby, wyróżniający pięć etapów (zaprzeczenie, gniew, targowanie się, depresja, akceptacja), został opracowany przez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Elisabeth Kübler-Ross"
+      },
+      {
+        "id": "b",
+        "text": "Talcotta Parsonsa"
+      },
+      {
+        "id": "c",
+        "text": "Eliota Freidsona"
+      },
+      {
+        "id": "d",
+        "text": "Aarona Antonovsky'ego"
+      },
+      {
+        "id": "e",
+        "text": "Ervinga Goffmana"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Pięcioetapowy model żałoby (**zaprzeczenie, gniew, targowanie się, depresja, akceptacja**) opracowała **Elisabeth Kübler-Ross**. Mnemonik angielski: **DABDA** (Denial, Anger, Bargaining, Depression, Acceptance). Model opisuje typową sekwencję reakcji emocjonalnych na utratę bliskiej osoby lub świadomość własnej śmierci, choć w praktyce etapy nie zawsze następują liniowo.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-042",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W modelu żałoby Elisabeth Kübler-Ross etap, w którym pojawiają się próby znalezienia sposobów na cofnięcie śmierci lub jej złagodzenie (np. \"Gdybym zrobił coś inaczej, może by się udało\"), to etap:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zaprzeczenia"
+      },
+      {
+        "id": "b",
+        "text": "gniewu"
+      },
+      {
+        "id": "c",
+        "text": "targowania się"
+      },
+      {
+        "id": "d",
+        "text": "depresji"
+      },
+      {
+        "id": "e",
+        "text": "akceptacji"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Etap **targowania się** w modelu **Kübler-Ross** to próby **cofnięcia lub złagodzenia śmierci** (\"Gdybym zrobił coś inaczej, może by się udało\"). Następuje po **gniewie** (poczucie niesprawiedliwości), a przed **depresją** (głęboki smutek, pustka). Targowanie często ma charakter myślenia warunkowego lub \"umów\" (także z Bogiem/losem) w nadziei na odwrócenie nieuchronnego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-043",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wśród mechanizmów obronnych stosowanych przez rodzinę w obliczu nadchodzącej śmierci bliskiej osoby, przenoszenie trudnych emocji (złości, bezsilności) na osoby trzecie, np. personel medyczny, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zaprzeczenie"
+      },
+      {
+        "id": "b",
+        "text": "racjonalizacja"
+      },
+      {
+        "id": "c",
+        "text": "sublimacja"
+      },
+      {
+        "id": "d",
+        "text": "projekcja"
+      },
+      {
+        "id": "e",
+        "text": "regresja"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Projekcja** to przenoszenie trudnych emocji, takich jak **złość czy bezsilność, na osoby trzecie** (np. personel medyczny). W materiale wymieniono trzy mechanizmy obronne rodziny: **zaprzeczenie** (czasowe odcięcie od rzeczywistości), **racjonalizację** (szukanie logicznych uzasadnień) oraz **projekcję**. Pełnią funkcję ochronną wobec psychiki i są naturalnym etapem procesu adaptacyjnego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-044",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Mechanizm obronny polegający na szukaniu logicznych uzasadnień trudnej sytuacji, stosowany przez rodzinę wobec nadchodzącej śmierci bliskiego, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "projekcja"
+      },
+      {
+        "id": "b",
+        "text": "zaprzeczenie"
+      },
+      {
+        "id": "c",
+        "text": "wyparcie"
+      },
+      {
+        "id": "d",
+        "text": "kompensacja"
+      },
+      {
+        "id": "e",
+        "text": "racjonalizacja"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Racjonalizacja** to **szukanie logicznych uzasadnień** dla trudnej sytuacji. Odróżnia się od **zaprzeczenia** (czasowe odcięcie się od rzeczywistości, niedopuszczanie faktu do świadomości) oraz **projekcji** (przenoszenie emocji na innych). Wszystkie trzy pełnią funkcję **ochronną** wobec psychiki i — mimo pozornej nieadekwatności — stanowią naturalny pierwszy krok w drodze do akceptacji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-045",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Która z poniższych funkcji rodziny polega na \"wprowadzeniu dziecka w świat kultury danego społeczeństwa i przygotowaniu go do samodzielnego pełnienia ról społecznych\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "funkcja emocjonalno-ekspresyjna"
+      },
+      {
+        "id": "b",
+        "text": "funkcja socjalizacyjna"
+      },
+      {
+        "id": "c",
+        "text": "funkcja prawno-kontrolna"
+      },
+      {
+        "id": "d",
+        "text": "funkcja opiekuńczo-zabezpieczająca"
+      },
+      {
+        "id": "e",
+        "text": "funkcja klasowa"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Funkcja **socjalizacyjna** rodziny to wychowanie dziecka i przystosowanie go do życia w zbiorowości poprzez **wprowadzenie w świat kultury** i przygotowanie do samodzielnego pełnienia **ról społecznych**. Różni się od funkcji **emocjonalno-ekspresyjnej** (zaspokajanie potrzeb emocjonalnych, równowaga osobowości) oraz **prawno-kontrolnej** (nadzorowanie postępowania członków rodziny w celu zapobiegania odstępstwom od norm).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-046",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Funkcja rodziny polegająca na \"wzajemnym nadzorowaniu postępowania członków rodziny w celu zapobiegania odstępstwom od obowiązujących norm i wzorów\" to funkcja:",
+    "options": [
+      {
+        "id": "a",
+        "text": "prawno-kontrolna"
+      },
+      {
+        "id": "b",
+        "text": "socjalizacyjna"
+      },
+      {
+        "id": "c",
+        "text": "klasowa"
+      },
+      {
+        "id": "d",
+        "text": "opiekuńczo-zabezpieczająca"
+      },
+      {
+        "id": "e",
+        "text": "kulturalna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Funkcja **prawno-kontrolna** to **wzajemne nadzorowanie** postępowania członków rodziny w celu zapobiegania odstępstwom od norm i wzorów. Należy ją odróżnić od funkcji **klasowej** (wyznaczanie pozycji społecznej w strukturze społeczeństwa) oraz **socjalizacyjnej** (przygotowanie do ról społecznych). Funkcja prawno-kontrolna akcentuje element **kontroli społecznej** wewnątrz rodziny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-047",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Forma wsparcia rodzinnego polegająca na \"działaniu na rzecz osoby potrzebującej wsparcia\" (np. konkretna pomoc, wyręczanie w zadaniach) to wsparcie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "emocjonalne"
+      },
+      {
+        "id": "b",
+        "text": "informacyjne"
+      },
+      {
+        "id": "c",
+        "text": "instrumentalne"
+      },
+      {
+        "id": "d",
+        "text": "oceniające"
+      },
+      {
+        "id": "e",
+        "text": "duchowe"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wsparcie **instrumentalne** to **działanie na rzecz** osoby potrzebującej wsparcia — konkretna, praktyczna pomoc. Odróżnia się od wsparcia **emocjonalnego** (miłość, empatia, opiekowanie się), **informacyjnego** (prowadzącego do rozwiązania problemu) oraz **oceniającego**. To klasyczna typologia form wsparcia społecznego — instrumentalne = \"robienie czegoś dla kogoś\", a nie samo bycie obok.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-048",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w przytoczonym badaniu 1234 pacjentów po zawale serca obserwowanych przez 4 lata, wskaźnik umieralności u osób samotnych w porównaniu do osób mieszkających z rodzinami był:",
+    "options": [
+      {
+        "id": "a",
+        "text": "taki sam"
+      },
+      {
+        "id": "b",
+        "text": "czterokrotnie wyższy"
+      },
+      {
+        "id": "c",
+        "text": "dwukrotnie niższy"
+      },
+      {
+        "id": "d",
+        "text": "dwukrotnie wyższy"
+      },
+      {
+        "id": "e",
+        "text": "nieznacznie niższy"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W badaniu 1234 pacjentów po zawale serca wskaźnik umieralności u osób **samotnych był dwukrotnie wyższy** niż u osób mieszkających z rodzinami; kolejny zawał (u 18% badanych) również występował u samotnych znacznie częściej. Badanie ilustruje **ochronną rolę rodziny** jako podstawowej grupy wsparcia — posiadanie lub brak wsparcia różnicuje zachorowalność i przeżywalność.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-049",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Przyjęcie przez WHO którego modelu zdrowia spowodowało dostrzeżenie znaczenia nieprofesjonalnych systemów opieki i uznanie rodziny za podstawowego partnera lekarza?",
+    "options": [
+      {
+        "id": "a",
+        "text": "biomedycznego"
+      },
+      {
+        "id": "b",
+        "text": "paternalistycznego"
+      },
+      {
+        "id": "c",
+        "text": "patogenetycznego"
+      },
+      {
+        "id": "d",
+        "text": "salutogenetycznego"
+      },
+      {
+        "id": "e",
+        "text": "socjoekologicznego"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Przyjęcie przez WHO **socjoekologicznego modelu zdrowia** spowodowało dostrzeżenie znaczenia **nieprofesjonalnych systemów opieki i leczenia**, dzięki czemu rodzina zaczęła być postrzegana jako **podstawowy, obok pacjenta, partner lekarza** i medycyny. Uznano wówczas podstawową opiekę zdrowotną za kluczowy element systemu ochrony zdrowia i wprowadzono instytucję **lekarza rodzinnego**.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-050",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Niesformalizowane działania i decyzje związane ze zdrowiem, podejmowane przez poszczególne osoby, rodziny, sąsiadów, przyjaciół i współpracowników, obejmujące m.in. wsparcie podczas choroby, to koncepcja:",
+    "options": [
+      {
+        "id": "a",
+        "text": "podstawowej opieki zdrowotnej"
+      },
+      {
+        "id": "b",
+        "text": "samoopieki"
+      },
+      {
+        "id": "c",
+        "text": "opieki paliatywnej"
+      },
+      {
+        "id": "d",
+        "text": "opieki długoterminowej"
+      },
+      {
+        "id": "e",
+        "text": "medykalizacji"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Koncepcja **samoopieki** odnosi się do **niesformalizowanych działań i decyzji** związanych ze zdrowiem, podejmowanych przez osoby, rodziny, sąsiadów, przyjaciół i współpracowników, obejmując m.in. wsparcie podczas choroby. Działania polityki zdrowotnej mają **wspomagać rodzinę, ale nie zastępować** jej — wykorzystując naturalny potencjał opiekuńczy tkwiący w rodzinie i nieformalnych systemach opieki.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { updateExamDate } from "@/features/settings/api/updateExamDate";
 import { useToast } from "@/features/shared/components/ToastProvider";
@@ -41,16 +42,8 @@ function daysUntilFuture(iso: string | null): number | null {
   return diff > 0 ? diff : null;
 }
 
-function polishDaysPhrase(n: number): string {
-  const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 14) return `${n} dni`;
-  const mod10 = n % 10;
-  if (mod10 === 1) return `${n} dzień`;
-  if (mod10 >= 2 && mod10 <= 4) return `${n} dni`;
-  return `${n} dni`;
-}
-
 export function ExamDateSection({ examDate }: Props) {
+  const t = useTranslations("settings");
   const router = useRouter();
   const { toast } = useToast();
   const [value, setValue] = useState(() => isoToDateInput(examDate));
@@ -79,10 +72,10 @@ export function ExamDateSection({ examDate }: Props) {
 
   return (
     <section>
-      <h2 className="font-heading text-xl font-bold text-primary">Egzamin</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">{t("exam.title")}</h2>
       <div className="mt-6 space-y-2">
         <label htmlFor="exam-date" className="font-body text-body-sm text-secondary">
-          Kiedy masz egzamin?
+          {t("exam.label")}
         </label>
         <input
           id="exam-date"
@@ -98,7 +91,7 @@ export function ExamDateSection({ examDate }: Props) {
         />
         {daysLeft != null ? (
           <p className="font-body text-body-sm text-brand-sage">
-            Do egzaminu: {polishDaysPhrase(daysLeft)}
+            {t("exam.daysUntil", { count: daysLeft })}
           </p>
         ) : null}
         <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -112,12 +105,12 @@ export function ExamDateSection({ examDate }: Props) {
               }}
               className="font-body text-body-sm text-brand-sage underline-offset-2 transition-colors hover:text-brand-gold hover:underline disabled:opacity-50"
             >
-              Usuń datę
+              {t("exam.clearDate")}
             </button>
           ) : null}
         </div>
         <p className="font-body text-body-xs text-muted">
-          Pole opcjonalne — pomoże dopasować plan nauki.
+          {t("exam.optionalHint")}
         </p>
       </div>
     </section>

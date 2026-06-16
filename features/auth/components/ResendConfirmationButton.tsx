@@ -2,12 +2,15 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 import { resendConfirmationAction } from "@/features/auth/actions";
 import { initialAuthActionState } from "@/features/auth/types";
 import { cn } from "@/lib/utils";
 
 function ResendSubmit() {
   const { pending } = useFormStatus();
+  const t = useTranslations("auth");
+
   return (
     <button
       type="submit"
@@ -17,7 +20,7 @@ function ResendSubmit() {
         "hover:bg-brand-gold/15 disabled:cursor-not-allowed disabled:opacity-60",
       )}
     >
-      {pending ? "Wysyłanie..." : "Wyślij link potwierdzający ponownie"}
+      {pending ? t("sendPending") : t("resendConfirmation")}
     </button>
   );
 }

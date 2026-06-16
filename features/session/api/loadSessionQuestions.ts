@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -26,9 +27,10 @@ export type LoadSessionQuestionsResult =
 export async function loadSessionQuestions(
   sessionIdRaw: string,
 ): Promise<LoadSessionQuestionsResult> {
+  const t = await getTranslations("session");
   const sessionId = schema.safeParse(sessionIdRaw);
   if (!sessionId.success) {
-    return { ok: false, message: "Nieprawidłowy identyfikator sesji." };
+    return { ok: false, message: t("errors.invalidSessionId") };
   }
 
   try {
@@ -39,7 +41,7 @@ export async function loadSessionQuestions(
     } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { ok: false, message: "Musisz być zalogowany." };
+      return { ok: false, message: t("errors.mustLogin") };
     }
 
     const { data: session, error: se } = await supabase
@@ -49,14 +51,14 @@ export async function loadSessionQuestions(
       .maybeSingle();
 
     if (se || !session || session.user_id !== user.id) {
-      return { ok: false, message: "Nie znaleziono sesji." };
+      return { ok: false, message: t("errors.sessionNotFound") };
     }
 
     const ids = (session.question_ids as string[] | null) ?? [];
     if (ids.length === 0) {
       return {
         ok: false,
-        message: "Sesja nie zawiera kolejki pytań. Rozpocznij sesję ponownie.",
+        message: t("errors.sessionNoQueue"),
       };
     }
 
@@ -67,7 +69,7 @@ export async function loadSessionQuestions(
       .maybeSingle();
 
     if (subErr || !subject) {
-      return { ok: false, message: "Nie znaleziono przedmiotu." };
+      return { ok: false, message: t("errors.subjectNotFound") };
     }
 
     const { data: rows, error: qe } = await supabase
@@ -79,7 +81,7 @@ export async function loadSessionQuestions(
 
     if (qe) {
       console.error("[loadSessionQuestions]", qe.message);
-      return { ok: false, message: "Nie udało się wczytać pytań." };
+      return { ok: false, message: t("errors.loadQuestionsApiFailed") };
     }
 
     const byId = new Map((rows ?? []).map((r) => [r.id as string, r as QuestionRow]));
@@ -128,6 +130,6 @@ export async function loadSessionQuestions(
     };
   } catch (e) {
     console.error("[loadSessionQuestions]", e);
-    return { ok: false, message: "Wystąpił nieoczekiwany błąd." };
+    return { ok: false, message: t("errors.unexpected") };
   }
 }

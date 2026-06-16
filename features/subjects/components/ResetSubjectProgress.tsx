@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Trash2 } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { resetSubjectProgress } from "@/features/subjects/server/resetSubjectProgress";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
+  const t = useTranslations("subjects");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [resetting, setResetting] = useState(false);
   const { toast } = useToast();
@@ -30,9 +33,9 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
     }
 
     setOpen(false);
-    toast("Postęp wyzerowany", "success");
+    toast(t("progressReset"), "success");
     router.refresh();
-  }, [subjectId, toast, router]);
+  }, [subjectId, toast, router, t]);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -42,7 +45,7 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
           className="inline-flex items-center gap-1.5 font-body text-body-xs text-red-400/70 transition-colors hover:text-red-400"
         >
           <Trash2 className="size-3.5 shrink-0" aria-hidden />
-          Zresetuj postęp
+          {t("resetProgress")}
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -53,13 +56,10 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
           )}
         >
           <Dialog.Title className="font-heading text-heading-sm text-primary">
-            Zresetuj postęp
+            {t("resetProgressTitle")}
           </Dialog.Title>
           <Dialog.Description className="mt-2 font-body text-body-sm text-secondary">
-            Czy na pewno chcesz wyzerować cały postęp w{" "}
-            <span className="font-semibold text-primary">{subjectName}</span>?
-            Ta operacja jest nieodwracalna — usunięte zostaną wszystkie
-            odpowiedzi, statystyki i mastery.
+            {t("resetProgressDescription", { subjectName })}
           </Dialog.Description>
           <div className="mt-6 flex justify-end gap-3">
             <Dialog.Close asChild>
@@ -68,7 +68,7 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
                 disabled={resetting}
                 className="rounded-btn px-4 py-2 font-body text-body-sm text-secondary hover:text-primary"
               >
-                Anuluj
+                {tCommon("cancel")}
               </button>
             </Dialog.Close>
             <button
@@ -80,7 +80,7 @@ export function ResetSubjectProgress({ subjectId, subjectName }: Props) {
                 resetting && "cursor-not-allowed opacity-60",
               )}
             >
-              {resetting ? "Resetowanie…" : "Zresetuj"}
+              {resetting ? t("resetting") : t("reset")}
             </button>
           </div>
         </Dialog.Content>

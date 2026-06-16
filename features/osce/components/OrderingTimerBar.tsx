@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type TimerBarProps = {
   totalSeconds: number;
@@ -9,6 +10,7 @@ export type TimerBarProps = {
 };
 
 export function OrderingTimerBar({ totalSeconds, remainingSeconds }: TimerBarProps) {
+  const t = useTranslations("osce");
   const ratio = totalSeconds > 0 ? Math.max(0, remainingSeconds / totalSeconds) : 0;
 
   return (
@@ -17,12 +19,12 @@ export function OrderingTimerBar({ totalSeconds, remainingSeconds }: TimerBarPro
       role="timer"
       aria-live="polite"
       aria-atomic
-      aria-label={`Pozostały czas: ${remainingSeconds} sekund`}
+      aria-label={t("timeRemainingSeconds", { seconds: remainingSeconds })}
     >
       <div className="mb-2 flex items-center justify-between gap-3">
         <span className="inline-flex items-center gap-1.5 font-body text-body-xs text-secondary">
           <Clock className="size-4 shrink-0 text-brand-gold" aria-hidden />
-          Czas na ułożenie
+          {t("timeToOrder")}
         </span>
         <span className="font-body text-body-sm tabular-nums text-brand-gold">
           {remainingSeconds}s

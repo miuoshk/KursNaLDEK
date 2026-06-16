@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { BreadcrumbSubjectSegment } from "@/features/subjects/components/BreadcrumbSubjectSegment";
 import { ResetSubjectProgress } from "@/features/subjects/components/ResetSubjectProgress";
 import { SmartSessionCTA } from "@/features/subjects/components/SmartSessionCTA";
@@ -16,6 +17,7 @@ type PageProps = {
 
 export default async function SubjectDashboardPage({ params }: PageProps) {
   const { subjectId } = await params;
+  const t = await getTranslations("subjects");
   const result = await loadSubjectDashboard(subjectId);
 
   if (!result.ok) {
@@ -57,7 +59,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
           />
         ) : (
           <p className="font-body text-body-sm text-muted">
-            Brak aktywnych pytań w tym przedmiocie.
+            {t("noQuestionsInSubject")}
           </p>
         )}
         <TopicGrid

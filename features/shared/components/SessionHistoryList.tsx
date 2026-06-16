@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
-import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
+import { normalizeSessionMode } from "@/features/session/lib/sessionModeLabel";
 import type { SessionMode } from "@/features/session/types";
+import type { AppLocale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-import { pytaniaForm } from "@/lib/pluralizePolish";
 
 export type SessionHistoryItem = {
   id: string;
@@ -15,7 +18,14 @@ export type SessionHistoryItem = {
   durationSeconds: number | null;
 };
 
-function formatWhen(iso: string): string {
+const DATE_LOCALE: Record<AppLocale, string> = {
+  pl: "pl-PL",
+  uk: "uk-UA",
+  ru: "ru-RU",
+  en: "en-US",
+};
+
+function formatWhen(iso: string, locale: AppLocale, todayLabel: string): string {
   const d = new Date(iso);
   const today = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Warsaw",
@@ -29,8 +39,8 @@ function formatWhen(iso: string): string {
     month: "2-digit",
     day: "2-digit",
   }).format(d);
-  if (day === today) return "dzisiaj";
-  return new Intl.DateTimeFormat("pl-PL", {
+  if (day === today) return todayLabel;
+  return new Intl.DateTimeFormat(DATE_LOCALE[locale] ?? "pl-PL", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -52,13 +62,25 @@ type Props = {
 
 export function SessionHistoryList({
   sessions,
-  emptyText = "Nie masz jeszcze żadnych sesji.",
+  emptyText,
   emptyAction,
 }: Props) {
+  const tShared = useTranslations("shared");
+  const tStats = useTranslations("statistics");
+  const tCommon = useTranslations("common");
+  const locale = useLocale() as AppLocale;
+  const resolvedEmptyText = emptyText ?? tShared("sessionHistory.empty");
+
+  function sessionModeLabel(mode: string): string {
+    const normalized = normalizeSessionMode(mode) as SessionMode;
+    const key = `sessionModes.${normalized}` as const;
+    return tStats(key);
+  }
+
   if (sessions.length === 0) {
     return (
       <p className="rounded-card border border-border bg-card p-4 font-body text-body-sm text-secondary">
-        {emptyText}
+        {resolvedEmptyText}
         {emptyAction ? (
           <>
             {" "}
@@ -82,7 +104,11 @@ export function SessionHistoryList({
           >
             <p className="font-body text-body-sm text-primary">
               {s.subjectName}
-              <span className="text-secondary"> · {sessionModeLabel(s.mode as SessionMode)} · {formatWhen(s.completedAt)}</span>
+              <span className="text-secondary">
+                {" "}
+                · {sessionModeLabel(s.mode)} ·{" "}
+                {formatWhen(s.completedAt, locale, tShared("sessionHistory.today"))}
+              </span>
             </p>
             <p
               className={cn(
@@ -93,7 +119,7 @@ export function SessionHistoryList({
               {s.accuracy != null ? `${Math.round(s.accuracy * 100)}%` : "—"}
             </p>
             <p className="font-body text-body-xs text-muted">
-              {s.totalQuestions} {pytaniaForm(s.totalQuestions)}
+              {tCommon("questionsCount", { count: s.totalQuestions })}
               {s.durationSeconds != null ? ` · ${formatSessionDuration(s.durationSeconds)}` : ""}
             </p>
           </Link>

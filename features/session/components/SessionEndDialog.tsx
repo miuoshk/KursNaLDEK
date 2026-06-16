@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
 import { pytaniaForm } from "@/lib/pluralizePolish";
@@ -19,6 +20,8 @@ export function SessionEndDialog({
   totalQuestions,
   onConfirm,
 }: SessionEndDialogProps) {
+  const t = useTranslations("session");
+  const tCommon = useTranslations("common");
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
@@ -29,11 +32,10 @@ export function SessionEndDialog({
           )}
         >
           <Dialog.Title className="font-heading text-heading-sm text-primary">
-            Zakończyć sesję?
+            {t("endSessionConfirmTitle")}
           </Dialog.Title>
           <Dialog.Description className="mt-2 font-body text-body-sm text-secondary">
-            Czy na pewno chcesz zakończyć? Odpowiedziałeś na {answeredCount} z{" "}
-            {totalQuestions} {pytaniaForm(totalQuestions)}.
+            {t("endSessionConfirmDescription", { answered: answeredCount, total: totalQuestions, questionsLabel: pytaniaForm(totalQuestions) })}
           </Dialog.Description>
           <div className="mt-6 flex justify-end gap-3">
             <Dialog.Close asChild>
@@ -41,7 +43,7 @@ export function SessionEndDialog({
                 type="button"
                 className="rounded-btn px-4 py-2 font-body text-body-sm text-secondary hover:text-primary"
               >
-                Anuluj
+                {tCommon("cancel")}
               </button>
             </Dialog.Close>
             <button
@@ -49,7 +51,7 @@ export function SessionEndDialog({
               onClick={onConfirm}
               className="rounded-btn bg-brand-gold px-4 py-2 font-body text-body-sm font-semibold text-brand-bg"
             >
-              Zakończ
+              {t("endSessionConfirmButton")}
             </button>
           </div>
         </Dialog.Content>

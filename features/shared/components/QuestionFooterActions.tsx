@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Bookmark, Flag, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toggleBookmark } from "@/features/session/api/toggleBookmark";
 import { isQuestionSaved } from "@/features/session/api/isQuestionSaved";
 import { ReportErrorDialog } from "@/features/session/components/ReportErrorDialog";
@@ -10,25 +11,19 @@ import { loadDiscussion } from "@/features/session/api/loadDiscussion";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 
 export type QuestionFooterActionsProps = {
-  /** Id pytania (np. do zgłoszenia błędu / dyskusji). */
   questionId?: string;
-  /** Skrócony kontekst pytania (opcjonalnie). */
   questionText?: string;
-  /** Liczba wpisów w dyskusji — domyślnie 0. */
   discussionCount?: number;
-  /** Ukrywa kategorię „błąd w wyjaśnieniu” (np. angielski medyczny STOMA r.1). */
   subjectId?: string;
 };
 
-/**
- * Wspólny pasek akcji pod treścią pytania (sesja LDEK, OSCE, symulacja).
- */
 export function QuestionFooterActions({
   questionId,
   questionText = "",
   discussionCount = 0,
   subjectId,
 }: QuestionFooterActionsProps) {
+  const t = useTranslations("shared");
   const hideExplanationCategory = subjectId
     ? isExplanationHiddenForSubject(subjectId)
     : false;
@@ -65,6 +60,8 @@ export function QuestionFooterActions({
     setSaving(false);
   }, [questionId, saving]);
 
+  const displayCount = isLoaded ? discussionCountState : discussionCount;
+
   return (
     <div className="mt-6 border-t border-[rgba(255,255,255,0.06)] pt-6">
       <div className="flex flex-wrap items-center justify-center gap-6">
@@ -75,7 +72,7 @@ export function QuestionFooterActions({
           disabled={!questionId}
         >
           <Flag className="size-4 shrink-0" aria-hidden />
-          Zgłoś błąd
+          {t("questionFooter.reportError")}
         </button>
         <button
           type="button"
@@ -87,7 +84,7 @@ export function QuestionFooterActions({
             className={`size-4 shrink-0 ${saved ? "text-brand-gold" : ""}`}
             aria-hidden
           />
-          {saved ? "Zapisano \u2713" : "Zapisz"}
+          {saved ? t("questionFooter.saved") : t("questionFooter.save")}
         </button>
         <button
           type="button"
@@ -96,7 +93,7 @@ export function QuestionFooterActions({
           disabled={!questionId}
         >
           <MessageCircle className="size-4 shrink-0" aria-hidden />
-          Dyskusja ({isLoaded ? discussionCountState : discussionCount})
+          {t("questionFooter.discussion", { count: displayCount })}
         </button>
       </div>
       {questionId ? (
@@ -121,5 +118,4 @@ export function QuestionFooterActions({
   );
 }
 
-/** Alias nazwy używanej w module sesji nauki. */
 export const SessionQuestionActions = QuestionFooterActions;

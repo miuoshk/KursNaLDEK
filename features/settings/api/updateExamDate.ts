@@ -1,5 +1,6 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
@@ -19,15 +20,17 @@ function dateInputToIsoUtc(dateStr: string): string {
 export async function updateExamDate(
   input: z.infer<typeof schema>,
 ): Promise<UpdateExamDateResult> {
+  const tSettings = await getTranslations("settings");
+  const tErrors = await getTranslations("errors");
   const parsed = schema.safeParse(input);
   if (!parsed.success) {
-    return { ok: false, message: "Nieprawidłowa data." };
+    return { ok: false, message: tSettings("errors.examDateInvalid") };
   }
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return { ok: false, message: "Brak sesji." };
+  if (!user) return { ok: false, message: tErrors("noSession") };
 
   const examDate =
     parsed.data.exam_date === "" ? null : dateInputToIsoUtc(parsed.data.exam_date);
@@ -41,7 +44,7 @@ export async function updateExamDate(
     .eq("id", user.id);
 
   if (error) {
-    return { ok: false, message: "Nie udało się zapisać daty egzaminu." };
+    return { ok: false, message: tSettings("errors.examDateSaveFailed") };
   }
   revalidatePath("/", "layout");
   return { ok: true };

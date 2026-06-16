@@ -1,0 +1,70 @@
+{
+  "mode": "apply",
+  "steps": [
+    {
+      "name": "inventory",
+      "topics": 20,
+      "questions": 766,
+      "pairs": 95,
+      "lekOnlyQuestions": 0
+    },
+    {
+      "name": "subject_anatomia",
+      "ok": true
+    },
+    {
+      "name": "sync_pair_content",
+      "pairs": 95
+    },
+    {
+      "name": "topics_to_anatomia",
+      "ok": true
+    },
+    {
+      "name": "fk_remap_session_answers",
+      "updated": 0,
+      "deleted": 4651
+    },
+    {
+      "name": "fk_remap_question_discussions",
+      "updated": 0,
+      "deleted": 0
+    },
+    {
+      "name": "fk_remap_error_reports",
+      "updated": 0,
+      "deleted": 0
+    },
+    {
+      "name": "fk_remap_question_edits",
+      "updated": 0,
+      "deleted": 0
+    },
+    {
+      "name": "saved_questions",
+      "rows": 0
+    },
+    {
+      "name": "user_question_progress",
+      "merged": 0,
+      "moved": 0
+    },
+    {
+      "name": "delete_lek_questions",
+      "count": 95
+    },
+    {
+      "name": "delete_lek_topics",
+      "count": 10
+    },
+    {
+      "name": "sync_topic_counts",
+      "topics": 10
+    },
+    {
+      "name": "verify",
+      "lekQuestionsRemaining": 0,
+      "questionsOnAnaTopics": 671
+    }
+  ]
+}

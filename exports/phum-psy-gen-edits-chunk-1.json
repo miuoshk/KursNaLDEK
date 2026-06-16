@@ -1,0 +1,280 @@
+{
+  "label": "phum-psy-gen-length-fix-chunk-1",
+  "edits": [
+    {
+      "id": "phum-psy-gen-001",
+      "options": [
+        {"id": "a", "text": "współodczuwanie i rozumienie stanu oraz sytuacji psychologicznej drugiego człowieka"},
+        {"id": "b", "text": "wyłącznie afektywne zarażenie emocjami pacjenta bez komponentu poznawczego rozumienia"},
+        {"id": "c", "text": "technika perswazji skłaniająca pacjenta do zmiany nawyków i zachowań zdrowotnych"},
+        {"id": "d", "text": "zdolność do obiektywnej, beznamiętnej oceny objawów bez angażowania się emocjonalnie"},
+        {"id": "e", "text": "stała cecha osobowości niezależna od kontekstu relacji lekarz–pacjent i sytuacji klinicznej"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-002",
+      "options": [
+        {"id": "a", "text": "większy dystans emocjonalny wobec pacjenta i mniejsze ryzyko wypalenia zawodowego"},
+        {"id": "b", "text": "silniejsza tendencja do powielania utrwalonych schematów rutyny w kontakcie klinicznym"},
+        {"id": "c", "text": "mniejsza precyzja diagnozy, bo emocje zaburzają obiektywizm oceny objawów klinicznych"},
+        {"id": "d", "text": "właściwszy, lepiej dopasowany rodzaj relacji werbalnej i niewerbalnej z pacjentem"},
+        {"id": "e", "text": "wyłącznie lepsza komunikacja werbalna bez wpływu na niewerbalną ekspresję relacji"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-003",
+      "options": [
+        {"id": "a", "text": "nazywanie i odzwierciedlanie emocji pacjenta, np. Wydaje się pan zmartwiony tym, że…"},
+        {"id": "b", "text": "zachęcanie pacjenta do rozwinięcia wypowiedzi i wspólne eksplorowanie jego lęków i obaw"},
+        {"id": "c", "text": "wyrażanie szacunku i uznania dla wysiłku oraz zaangażowania, jaki pacjent wkłada w leczenie"},
+        {"id": "d", "text": "deklaracja wsparcia i obecności przy pacjencie niezależnie od trudności terapeutycznych"},
+        {"id": "e", "text": "okazywanie zrozumienia trudności sytuacji pacjenta i jego emocjonalnych doświadczeń choroby"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-004",
+      "options": [
+        {"id": "a", "text": "Naming — nazywanie i odzwierciedlanie emocji pacjenta przez lekarza w kontakcie klinicznym"},
+        {"id": "b", "text": "Understanding — okazywanie zrozumienia trudności sytuacji i emocji, jakie przeżywa pacjent"},
+        {"id": "c", "text": "Respecting — wyrażanie szacunku i uznania dla wysiłku oraz zaangażowania samego pacjenta"},
+        {"id": "d", "text": "Supporting — deklaracja wsparcia i obecności przy pacjencie w trakcie leczenia i trudności"},
+        {"id": "e", "text": "Exploring — zachęcanie pacjenta do eksplorowania obaw i pogłębiania wypowiedzi o emocjach"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-005",
+      "options": [
+        {"id": "a", "text": "moralny — wewnętrzna altruistyczna siła motywująca do stosowania empatii w praktyce klinicznej"},
+        {"id": "b", "text": "poznawczy — umiejętność rozpoznawania, rozumienia i interpretacji uczuć oraz myśli pacjenta"},
+        {"id": "c", "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"},
+        {"id": "d", "text": "emocjonalny — zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego innych"},
+        {"id": "e", "text": "interakcyjny — wzajemny wpływ emocji i zachowań w relacji lekarza z pacjentem podczas kontaktu"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-006",
+      "options": [
+        {"id": "a", "text": "moralny — wewnętrzna altruistyczna siła motywująca do stosowania empatii w praktyce klinicznej"},
+        {"id": "b", "text": "emocjonalny — zdolność do subiektywnego doświadczania i dzielenia stanu psychicznego innych"},
+        {"id": "c", "text": "poznawczy — umiejętność rozpoznawania, rozumienia i interpretacji uczuć oraz myśli pacjenta"},
+        {"id": "d", "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"},
+        {"id": "e", "text": "afektywny — naturalny, wrodzony potencjał do współodczuwania emocji dojrzewający wraz z wiekiem"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-007",
+      "options": [
+        {"id": "a", "text": "emocjonalny — naturalny, wrodzony potencjał do współodczuwania emocji dojrzewający z wiekiem"},
+        {"id": "b", "text": "moralny — wewnętrzna altruistyczna siła motywująca do wprowadzania empatii w czyn kliniczny"},
+        {"id": "c", "text": "behawioralny — komunikacyjna odpowiedź przekazująca pacjentowi zrozumienie jego doświadczenia"},
+        {"id": "d", "text": "poznawczy — umiejętność wyuczalna i mierzalna bazująca na naturalnych zdolnościach empatii"},
+        {"id": "e", "text": "interakcyjny — wzajemny wpływ emocji i zachowań w relacji lekarza z pacjentem podczas kontaktu"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-008",
+      "options": [
+        {"id": "a", "text": "zmniejszony poziom niepokoju i frustracji u pacjenta pod wpływem empatycznej komunikacji"},
+        {"id": "b", "text": "wyższe poczucie kontroli nad chorobą i leczeniem po stronie samego pacjenta w kontakcie"},
+        {"id": "c", "text": "rzadsze stany depresyjne i lepsze stosowanie się do zaleceń terapeutycznych u pacjenta"},
+        {"id": "d", "text": "niższy poziom wypalenia zawodowego i mniejsze odczuwanie presji czasu w pracy klinicznej"},
+        {"id": "e", "text": "poczucie bycia wysłuchanym i docenionym jako jednostka przez lekarza prowadzącego terapię"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-009",
+      "options": [
+        {"id": "a", "text": "słyszenie jest procesem biernym, a słuchanie aktywnym, angażującym procesem komunikacji"},
+        {"id": "b", "text": "słyszenie jest procesem aktywnym, a słuchanie biernym odbiorem treści bez angażowania się"},
+        {"id": "c", "text": "oba są procesami biernymi, różnią się wyłącznie intencją rozmówcy, a nie poziomem aktywności"},
+        {"id": "d", "text": "słuchanie dotyczy tylko treści werbalnych, a słyszenie wyłącznie emocji i niewerbalnych sygnałów"},
+        {"id": "e", "text": "słyszenie wymaga kontaktu wzrokowego, a słuchanie odbywa się bez angażowania poznawczego"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-010",
+      "options": [
+        {"id": "a", "text": "kontakt wzrokowy utrzymywany 40–60% czasu rozmowy oraz dystans interpersonalny 40–120 cm"},
+        {"id": "b", "text": "kontakt wzrokowy 20–40% czasu rozmowy oraz dystans interpersonalny 10–40 cm w gabinecie"},
+        {"id": "c", "text": "kontakt wzrokowy 60–80% czasu rozmowy oraz dystans interpersonalny 120–200 cm przy badaniu"},
+        {"id": "d", "text": "kontakt wzrokowy przez cały czas rozmowy oraz dystans interpersonalny utrzymywany na 40–60 cm"},
+        {"id": "e", "text": "kontakt wzrokowy 40–60% czasu rozmowy oraz dystans interpersonalny 120–360 cm w gabinecie"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-011",
+      "options": [
+        {"id": "a", "text": "potwierdzenie odbioru informacji — krótkie sygnały, że lekarz słyszy i rozumie pacjenta"},
+        {"id": "b", "text": "uściślanie wypowiedzi — dopytywanie pacjenta o konkretne znaczenie jego słów, myśli i intencji"},
+        {"id": "c", "text": "odzwierciedlanie uczuć — nazwanie emocji, jakie lekarz odczytuje u pacjenta w rozmowie"},
+        {"id": "d", "text": "parafrazowanie — powtórzenie sensu wypowiedzi pacjenta własnymi słowami lekarza"},
+        {"id": "e", "text": "zadawanie pytań otwartych — pytania zachęcające do pogłębienia wypowiedzi bez sugerowania"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-012",
+      "options": [
+        {"id": "a", "text": "parafrazowanie treści — powtórzenie sensu wypowiedzi pacjenta własnymi słowami bez oceniania"},
+        {"id": "b", "text": "uściślanie wypowiedzi — dopytywanie pacjenta o konkretne znaczenie jego słów, myśli i intencji"},
+        {"id": "c", "text": "odzwierciedlanie uczuć — nazwanie emocji, jaką lekarz odczytuje u pacjenta podczas rozmowy"},
+        {"id": "d", "text": "potwierdzenie odbioru informacji — krótkie sygnały werbalne i niewerbalne słuchania pacjenta"},
+        {"id": "e", "text": "moralizowanie — ocenianie zachowań pacjenta z perspektywy norm moralnych i społecznych etyki"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-013",
+      "options": [
+        {"id": "a", "text": "charakterystyczna konfiguracja codziennych zachowań jednostek i grup w wybranych sferach życia"},
+        {"id": "b", "text": "wyłącznie zespół zachowań zdrowotnych podejmowanych pod bezpośrednim nadzorem lekarza prowadzącego"},
+        {"id": "c", "text": "jednorazowa decyzja o zmianie nawyków zdrowotnych bez stałej regularności codziennych zachowań"},
+        {"id": "d", "text": "wrodzony, niezmienny wzorzec reagowania na chorobę niezależny od wyborów i kontekstu życia"},
+        {"id": "e", "text": "ogół postaw politycznych i ekonomicznych jednostki bez odniesienia do codziennych zachowań"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-014",
+      "options": [
+        {"id": "a", "text": "emocjonalny — stosunek, zaangażowanie i motywacja do zdrowia oraz działań prozdrowotnych"},
+        {"id": "b", "text": "behawioralny — zespół codziennych zachowań prozdrowotnych lub antyzdrowotnych w praktyce"},
+        {"id": "c", "text": "poznawczy — poziom wiedzy na temat zdrowia, profilaktyki i zdrowego stylu życia osoby"},
+        {"id": "d", "text": "motywacyjny — wewnętrzna gotowość do podejmowania działań zdrowotnych niezależnie od wiedzy"},
+        {"id": "e", "text": "somatyczny — stan fizjologiczny organizmu bez odniesienia do postaw i zachowań zdrowotnych"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-015",
+      "options": [
+        {"id": "a", "text": "James Prochaska i Carlo DiClemente — twórcy Transteoretycznego Modelu Zmiany zachowania"},
+        {"id": "b", "text": "William Miller i Stephen Rollnick — autorzy dialogu motywującego i podejścia partnerskiego"},
+        {"id": "c", "text": "Richard Lazarus i Susan Folkman — badacze stresu i strategii radzenia sobie człowieka"},
+        {"id": "d", "text": "Christina Maslach i Ayala Pines — badaczki wypalenia zawodowego i syndromu wypalenia"},
+        {"id": "e", "text": "Marshall Rosenberg i Thomas Gordon — twórcy komunikacji bez przemocy i aktywnego słuchania"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-016",
+      "options": [
+        {"id": "a", "text": "kontemplacja — ambiwalencja wobec zmiany z argumentami zarówno za, jak i przeciw nowemu zachowaniu"},
+        {"id": "b", "text": "przygotowanie — zobowiązanie do zmiany wyrażane deklaracją gotowości do działania wkrótce"},
+        {"id": "c", "text": "prekontemplacja — brak gotowości do zmiany i obrona obecnego zachowania przed krytyką"},
+        {"id": "d", "text": "działanie — realne wdrażanie zmiany zachowania w codziennym życiu i monitorowanie postępów"},
+        {"id": "e", "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-017",
+      "options": [
+        {"id": "a", "text": "kontemplacja — ambiwalencja z argumentami zarówno za, jak i przeciw zmianie w jednej wypowiedzi"},
+        {"id": "b", "text": "prekontemplacja — brak dostrzegania problemu i obrona status quo bez wahania ani ambiwalencji"},
+        {"id": "c", "text": "przygotowanie — deklaracja zobowiązania do zmiany jeszcze przed realnym podjęciem działania"},
+        {"id": "d", "text": "działanie — realne wdrażanie zmiany zachowania w życiu codziennym i monitorowanie efektów terapii"},
+        {"id": "e", "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-018",
+      "options": [
+        {"id": "a", "text": "prekontemplacja — brak świadomości problemu i obrona obecnego zachowania bez gotowości do zmiany"},
+        {"id": "b", "text": "kontemplacja — ambiwalencja wobec zmiany z argumentami zarówno za, jak i przeciw nowemu zachowaniu"},
+        {"id": "c", "text": "przygotowanie — zobowiązanie do zmiany wyrażane deklaracją gotowości do działania wkrótce"},
+        {"id": "d", "text": "podtrzymanie — utrwalanie nowego zachowania i zapobieganie nawrotowi do wcześniejszego stylu"},
+        {"id": "e", "text": "nawrót — powrót do wcześniejszego, niezdrowego zachowania po okresie utrzymywania zmiany"}
+      ],
+      "correct_option_id": "c"
+    },
+    {
+      "id": "phum-psy-gen-019",
+      "options": [
+        {"id": "a", "text": "definicja dla praktyka pragmatyka — skoncentrowany na osobie sposób pomagania w ambiwalencji"},
+        {"id": "b", "text": "definicja dla laika — współpracujący styl wzmacniający wewnętrzną motywację pacjenta do zmiany"},
+        {"id": "c", "text": "definicja techniczna — opis języka zmiany i konkretnych technik prowadzenia rozmowy motywującej"},
+        {"id": "d", "text": "definicja filozoficzna — humanistyczne założenia partnerskiej relacji i szacunku wobec pacjenta"},
+        {"id": "e", "text": "definicja neurobiologiczna — wyjaśnienie mechanizmów mózgu leżących u podstaw zmiany zachowania"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-020",
+      "options": [
+        {"id": "a", "text": "Carl Rogers — twórca humanistycznego podejścia z empatią i bezwarunkowym szacunkiem w relacji"},
+        {"id": "b", "text": "Marshall Rosenberg — autor komunikacji bez przemocy i modelu wyrażania potrzeb w kontakcie"},
+        {"id": "c", "text": "Thomas Gordon — twórca koncepcji aktywnego słuchania i komunikacji w relacji terapeutycznej"},
+        {"id": "d", "text": "Hans Selye — badacz ogólnego zespołu adaptacji do stresu i reakcji organizmu na obciążenie"},
+        {"id": "e", "text": "Aaron Antonovsky — autor teorii poczucia koherencji i odporności psychicznej wobec stresu choroby"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-021",
+      "options": [
+        {"id": "a", "text": "równa relacja oparta na współpracy i odkrywaniu, nie upominaniu; unikanie pułapki eksperta"},
+        {"id": "b", "text": "skupienie na deficytach i brakach klienta w celu zidentyfikowania tego, co należy naprawić"},
+        {"id": "c", "text": "całkowita akceptacja osoby przy jednoczesnym poparciu każdego jej zachowania bez oceny zmiany"},
+        {"id": "d", "text": "aktywne działanie dla dobra klienta, okazywanie troski i odpowiadanie na jego potrzeby zdrowotne"},
+        {"id": "e", "text": "konfrontowanie klienta z konsekwencjami zachowań w celu wywołania presji na natychmiastową zmianę"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-022",
+      "options": [
+        {"id": "a", "text": "partnerstwo — równa relacja oparta na współpracy zamiast upominania i postawy eksperta klienta"},
+        {"id": "b", "text": "akceptacja — uznanie bezwzględnej wartości osoby przy rozróżnieniu osoby od jej zachowania"},
+        {"id": "c", "text": "współczucie — aktywne działanie dla dobra klienta i odpowiadanie na jego potrzeby zdrowotne"},
+        {"id": "d", "text": "wywoływanie — odkrywanie zasobów i mocnych stron zamiast koncentracji na deficytach klienta"},
+        {"id": "e", "text": "ukierunkowywanie — ciągłe poszukiwanie i podtrzymywanie wspólnie ustalonego kierunku zmiany"}
+      ],
+      "correct_option_id": "d"
+    },
+    {
+      "id": "phum-psy-gen-023",
+      "options": [
+        {"id": "a", "text": "akceptacja — wspieranie autonomii, uznanie wartości osoby, zrozumienie i dowartościowanie pacjenta"},
+        {"id": "b", "text": "bezwarunkowe poparcie każdego zachowania klienta bez rozróżnienia osoby od jej czynów w procesie terapii"},
+        {"id": "c", "text": "współczucie — aktywne działanie dla dobra klienta i odpowiadanie na jego potrzeby zdrowotne"},
+        {"id": "d", "text": "wywoływanie — odkrywanie mocnych stron i zasobów zamiast koncentracji na deficytach klienta"},
+        {"id": "e", "text": "partnerstwo — równa relacja oparta na współpracy zamiast upominania i postawy eksperta klienta"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-024",
+      "options": [
+        {"id": "a", "text": "angażowanie — budowanie współpracy, szacunku i zaufania; lekarz jako partner, nie przeciwnik"},
+        {"id": "b", "text": "ukierunkowywanie — ciągłe poszukiwanie i podtrzymywanie kierunku zmiany ustalonego z pacjentem"},
+        {"id": "c", "text": "wywoływanie — wzmacnianie wewnętrznej motywacji przez odkrywanie zasobów i mocnych stron klienta"},
+        {"id": "d", "text": "planowanie — wspólne ustalanie konkretnych kroków działania i strategii realizacji zmiany z pacjentem"},
+        {"id": "e", "text": "parafrazowanie — narzędzie aktywnego słuchania, nie jeden z czterech procesów dialogu motywującego"}
+      ],
+      "correct_option_id": "a"
+    },
+    {
+      "id": "phum-psy-gen-025",
+      "options": [
+        {"id": "a", "text": "ukierunkowywanie — ciągły proces poszukiwania kierunku, w którym pacjent decyduje o zmianie"},
+        {"id": "b", "text": "angażowanie — budowanie współpracy, szacunku i zaufania; lekarz jako partner, nie przeciwnik"},
+        {"id": "c", "text": "wywoływanie — wzmacnianie wewnętrznej motywacji przez odkrywanie zasobów i mocnych stron klienta"},
+        {"id": "d", "text": "planowanie — wspólne ustalanie konkretnych kroków działania i strategii realizacji zmiany z pacjentem"},
+        {"id": "e", "text": "podtrzymanie — etap TTM utrwalający nowe zachowanie; nie jest procesem dialogu motywującego"}
+      ],
+      "correct_option_id": "a"
+    }
+  ]
+}

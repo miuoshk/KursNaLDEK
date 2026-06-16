@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 type OverallProgressProps = {
   year: number;
   totalQuestions: number;
@@ -6,13 +8,14 @@ type OverallProgressProps = {
   reviewing: number;
 };
 
-export function OverallProgress({
+export async function OverallProgress({
   year,
   totalQuestions,
   answered,
   mastered,
   reviewing,
 }: OverallProgressProps) {
+  const t = await getTranslations("subjects");
   const percentage =
     totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
 
@@ -26,14 +29,14 @@ export function OverallProgress({
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div>
           <p className="font-body text-sm uppercase tracking-widest text-secondary">
-            Postęp ogólny roku {year}
+            {t("overallProgressYear", { year })}
           </p>
           <p className="mt-2 font-body text-3xl text-brand-gold">{percentage}%</p>
         </div>
         <div className="text-left md:text-right">
           <p className="font-body text-lg text-secondary">
             {answered} / {totalQuestions}{" "}
-            <span className="font-body text-body-sm text-muted">liczba pytań</span>
+            <span className="font-body text-body-sm text-muted">{t("questionsCountLabel")}</span>
           </p>
         </div>
       </div>
@@ -58,15 +61,15 @@ export function OverallProgress({
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-body text-body-xs text-muted">
         <span className="inline-flex items-center gap-2">
           <span className="size-2 rounded-full bg-success" aria-hidden />
-          Opanowane
+          {t("mastered")}
         </span>
         <span className="inline-flex items-center gap-2">
           <span className="size-2 rounded-full bg-brand-gold" aria-hidden />
-          Powtórki
+          {t("reviewing")}
         </span>
         <span className="inline-flex items-center gap-2">
           <span className="size-2 rounded-full bg-white/20" aria-hidden />
-          Do nauki
+          {t("toLearn")}
         </span>
       </div>
     </div>

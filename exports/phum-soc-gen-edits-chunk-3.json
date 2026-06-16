@@ -1,0 +1,655 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-3",
+  "edits": [
+    {
+      "id": "phum-soc-gen-051",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Znaczenie systemu opieki zdrowotnej dla funkcjonowania rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Znaczenie rodziny w sytuacji choroby któregoś z jej członków"
+        },
+        {
+          "id": "c",
+          "text": "Znaczenie choroby członka rodziny dla jej codziennego funkcjonowania"
+        },
+        {
+          "id": "d",
+          "text": "Znaczenie rodziny dla zdrowia i dobrostanu jej członków"
+        },
+        {
+          "id": "e",
+          "text": "Wszystkie wymienione aspekty należą do tej triady rodzina–zdrowie"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-052",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pośredni — uruchomienie zasobów rodziny w celu opanowania sytuacji choroby"
+        },
+        {
+          "id": "b",
+          "text": "Instrumentalny — zapewnienie chorego praktycznej pomocy w codziennych czynnościach"
+        },
+        {
+          "id": "c",
+          "text": "Bezpośredni — włączenie chorego w strukturę rodziny i jego integracja w niej"
+        },
+        {
+          "id": "d",
+          "text": "Instytucjonalny — przekazanie opieki nad chorym do systemu formalnej opieki"
+        },
+        {
+          "id": "e",
+          "text": "Oceniający — ocena postępów leczenia i zachowania chorego przez rodzinę"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-053",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "W fazie terminalnej choroby — gdy rodzina przygotowuje się do utraty bliskiej osoby i żałoby"
+        },
+        {
+          "id": "b",
+          "text": "W okresie rehabilitacji — gdy chory wraca do częściowej samodzielności"
+        },
+        {
+          "id": "c",
+          "text": "Dopiero po wyleczeniu — gdy choroba ustępuje i życie wraca do normy"
+        },
+        {
+          "id": "d",
+          "text": "W pierwszym, najtrudniejszym etapie choroby — gdy rodzina przebudowuje organizację życia"
+        },
+        {
+          "id": "e",
+          "text": "W fazie przewlekłej stabilizacji — gdy choroba trwa długo, ale jej przebieg jest przewidywalny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-054",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zasoby materialne — dochody, warunki mieszkaniowe i dostęp do opieki medycznej"
+        },
+        {
+          "id": "b",
+          "text": "Zasoby instytucjonalne — formalne wsparcie ze strony szpitali, OPS i fundacji"
+        },
+        {
+          "id": "c",
+          "text": "Zasoby czasowe — ilość wolnego czasu członków rodziny na opiekę nad chorym"
+        },
+        {
+          "id": "d",
+          "text": "Zasoby ludzkie — wiek, liczba i stan zdrowia członków rodziny"
+        },
+        {
+          "id": "e",
+          "text": "Zasoby kulturowe — wiedza, umiejętności, wzory zachowania, wartości i normy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-055",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Przypominanie chorego o istnieniu rzeczywistości innej niż choroba czy szpital"
+        },
+        {
+          "id": "b",
+          "text": "Wykonywanie czynności pielęgnacyjno-leczniczych wobec chorego członka rodziny"
+        },
+        {
+          "id": "c",
+          "text": "Powstrzymywanie chorego przed ograniczaniem tożsamości wyłącznie do roli pacjenta"
+        },
+        {
+          "id": "d",
+          "text": "Podtrzymywanie społecznej tożsamości chorego w kontaktach z otoczeniem"
+        },
+        {
+          "id": "e",
+          "text": "Ułatwianie porozumienia między światem choroby a światem codziennym"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-056",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sam pacjent i jego rodzina stawiają pierwszą diagnozę, od której zależy dalsze postępowanie"
+        },
+        {
+          "id": "b",
+          "text": "Rodzina zawsze wymaga hospitalizacji chorego — to obowiązek każdego członka rodziny w sytuacji choroby"
+        },
+        {
+          "id": "c",
+          "text": "Rodzina nie powinna uczestniczyć w decyzjach medycznych — to wyłączna kompetencja lekarza prowadzącego"
+        },
+        {
+          "id": "d",
+          "text": "Tylko lekarz może ocenić objawy chorobowe — rodzina nie posiada kompetencji diagnostycznych w ocenie stanu"
+        },
+        {
+          "id": "e",
+          "text": "Rodzina jest zawsze przeszkodą w leczeniu — jej interwencje systematycznie pogarszają wyniki terapii chorego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-057",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pracą zawodową — obowiązkami służbowymi, karierą zawodową i odpowiedzialnością zawodową członka rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Dobrami materialnymi — posiadaniem majątku, standardem życia i dostępem do zasobów materialnych rodziny"
+        },
+        {
+          "id": "c",
+          "text": "Rodziną rozumianą jako wartość — lojalnością wobec bliskich i obowiązkami rodzinnymi"
+        },
+        {
+          "id": "d",
+          "text": "Rozrywką — czasem wolnym, hobby i aktywnościami rekreacyjnymi członków rodziny"
+        },
+        {
+          "id": "e",
+          "text": "Religią — wierzeniami religijnymi i praktykami duchowymi członków rodziny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-058",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wspólne wartości i zadania — cele i obowiązki wiążące wszystkich członków rodziny"
+        },
+        {
+          "id": "b",
+          "text": "Świadomość odrębności — poczucie granic między rodziną a otaczającym światem"
+        },
+        {
+          "id": "c",
+          "text": "Struktura ról, pozycji i władzy — podział obowiązków i hierarchia w rodzinie"
+        },
+        {
+          "id": "d",
+          "text": "Całkowita niezależność od norm społecznych — brak wpływu otoczenia na funkcjonowanie rodziny"
+        },
+        {
+          "id": "e",
+          "text": "System stosunków uregulowanych instytucjonalnie — małżeństwo, pokrewieństwo, powinowactwo i adopcja"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-059",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyłącznie opiekę medyczną pacjentowi — bez wsparcia emocjonalnego dla jego bliskich"
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie wsparcie finansowe rodzinie — pokrycie kosztów leczenia i opieki domowej"
+        },
+        {
+          "id": "c",
+          "text": "Zastąpienie rodziny w całości — przejęcie wszystkich obowiązków opiekuńczych przez hospicjum"
+        },
+        {
+          "id": "d",
+          "text": "Jedynie wsparcie religijne — duchową opiekę kapelana bez interwencji medycznej"
+        },
+        {
+          "id": "e",
+          "text": "Opiekę medyczną pacjentowi oraz wsparcie emocjonalne jego bliskim w procesie umierania"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-060",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Medykalizacja — przekształcanie problemów społecznych i emocjonalnych w kwestie medyczne"
+        },
+        {
+          "id": "b",
+          "text": "Wypalenie opiekunów — wyczerpanie emocjonalne i fizyczne głównego opiekuna w długim leczeniu"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia lub instytucji"
+        },
+        {
+          "id": "d",
+          "text": "Somatyzacja — przejawianie stresu i lęku w postaci objawów somatycznych bez przyczyny organicznej"
+        },
+        {
+          "id": "e",
+          "text": "Dysonans opiekuńczy — rozbieżność między oczekiwaniami opiekuna a możliwościami chorego"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-061",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zaniedbanie — długotrwałe niepodejmowanie działań zapewniających podstawowe potrzeby zależnego"
+        },
+        {
+          "id": "b",
+          "text": "Przemoc ekonomiczna — kontrolowanie dostępu do pieniędzy, kont bankowych i zasobów materialnych ofiary"
+        },
+        {
+          "id": "c",
+          "text": "Przemoc psychiczna — systematyczne poniżanie, groźby i manipulacja emocjonalna ofiary"
+        },
+        {
+          "id": "d",
+          "text": "Przemoc społeczna — izolowanie ofiary od rodziny, przyjaciół i wspólnoty lokalnej"
+        },
+        {
+          "id": "e",
+          "text": "Przemoc werbalna — agresja słowna, krzyki, obelgi i publiczne upokarzanie ofiary"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-062",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Teoria naznaczenia społecznego — przypisywanie etykiet wpływających na tożsamość i zachowanie"
+        },
+        {
+          "id": "b",
+          "text": "Teoria dewiacji Parsonsa — choroba jako rola społeczna wymagająca zwolnienia z obowiązków"
+        },
+        {
+          "id": "c",
+          "text": "Teoria społecznego uczenia się — uczenie zachowań przez obserwację i naśladownictwo modeli"
+        },
+        {
+          "id": "d",
+          "text": "Teoria salutogenezy — czynniki wzmacniające odporność psychiczną i poczucie sensu życia"
+        },
+        {
+          "id": "e",
+          "text": "Teoria dysonansu poznawczego — napięcie między przekonaniami a zachowaniem wymuszające zmianę"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-063",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dysonans poznawczy — napięcie między przekonaniami a doświadczeniem wymuszające racjonalizację"
+        },
+        {
+          "id": "b",
+          "text": "Racjonalizacja — logiczne uzasadnianie niedopuszczalnych zachowań sprawcy przemocy"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia na zgłoszenie"
+        },
+        {
+          "id": "d",
+          "text": "Wyuczona bezradność — utrata wiary w możliwość zmiany sytuacji i brak zgłaszania przemocy"
+        },
+        {
+          "id": "e",
+          "text": "Projekcja — przypisywanie innym własnych nieakceptowanych uczuć, myśli i impulsów"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-064",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Art. 207 k.k. — znęcanie się ze szczególnym okrucieństwem (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "b",
+          "text": "Art. 197 k.k. — zgwałcenie kwalifikowane (przestępstwo z katalogu art. 240 § 1)"
+        },
+        {
+          "id": "c",
+          "text": "Art. 156 k.k. — spowodowanie ciężkiego uszczerbku na zdrowiu (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "d",
+          "text": "Art. 148 k.k. — zabójstwo (przestępstwo z katalogu art. 240 § 1 k.k.)"
+        },
+        {
+          "id": "e",
+          "text": "Art. 240 § 1 k.k. — obowiązek zawiadomienia organów ścigania o przestępstwie z katalogu"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-065",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Art. 148 k.k. — zabójstwo (przestępstwo z katalogu art. 240)"
+        },
+        {
+          "id": "b",
+          "text": "Art. 207 k.k. — znęcanie się (w tym ze szczególnym okrucieństwem, § 3)"
+        },
+        {
+          "id": "c",
+          "text": "Art. 197 k.k. — zgwałcenie (w tym kwalifikowane, § 3–4)"
+        },
+        {
+          "id": "d",
+          "text": "Art. 156 k.k. — spowodowanie ciężkiego uszczerbku na zdrowiu"
+        },
+        {
+          "id": "e",
+          "text": "Art. 240 k.k. — obowiązek zawiadomienia organów ścigania o przestępstwie z katalogu"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-066",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Procedura Niebieskiej Karty — wszczęcie bez zgody ofiary, współpraca z policją, OPS i sądem"
+        },
+        {
+          "id": "b",
+          "text": "Procedura nakazu opuszczenia mieszkania — natychmiastowe wydalenie sprawcy z lokalu mieszkalnego"
+        },
+        {
+          "id": "c",
+          "text": "Procedura ubezwłasnowolnienia — ograniczenie zdolności prawnej ofiary przemocy domowej"
+        },
+        {
+          "id": "d",
+          "text": "Procedura interdyscyplinarna sądowa — postępowanie dyscyplinarne wobec lekarza sprawcy"
+        },
+        {
+          "id": "e",
+          "text": "Procedura mediacji rodzinnej — dobrowolne porozumienie między ofiarą a sprawcą przemocy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-067",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bezwzględny, sankcjonowany karą pozbawienia wolności — jak obowiązek z art. 240 k.k."
+        },
+        {
+          "id": "b",
+          "text": "Wyłącznie etyczny, bez żadnych konsekwencji — tylko zalecenie Kodeksu Etyki Lekarskiej"
+        },
+        {
+          "id": "c",
+          "text": "Społeczny — bez kary za niezawiadomienie, ale z możliwością odpowiedzialności zawodowej"
+        },
+        {
+          "id": "d",
+          "text": "Zależny wyłącznie od zgody pacjenta — lekarz nie może działać bez zgody ofiary przemocy"
+        },
+        {
+          "id": "e",
+          "text": "Ograniczony do przypadków przemocy fizycznej — nie obejmuje przemocy psychicznej ani ekonomicznej"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-068",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pacjent jest osobą dorosłą — tajemnica lekarska obowiązuje bez względu na wiek pacjenta"
+        },
+        {
+          "id": "b",
+          "text": "Minęło 30 dni od zdarzenia — upływ czasu zwalnia lekarza z obowiązku zachowania tajemnicy"
+        },
+        {
+          "id": "c",
+          "text": "Sprawca jest członkiem rodziny — bliskość relacji uzasadnia ujawnienie informacji o przemocy"
+        },
+        {
+          "id": "d",
+          "text": "Istnieje bezpośrednie zagrożenie życia lub zdrowia — pacjenta lub innej osoby"
+        },
+        {
+          "id": "e",
+          "text": "Pacjent odmawia leczenia — lekarz może ujawnić informacje, by wymusić podjęcie terapii"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-069",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dzieci — ze względu na zależność od opiekunów i ograniczoną zdolność do obrony"
+        },
+        {
+          "id": "b",
+          "text": "Osoby starsze — ze względu na fizyczną słabość i często ograniczoną mobilność"
+        },
+        {
+          "id": "c",
+          "text": "Osoby z niepełnosprawnościami — ze względu na zależność od opiekunów i barierę komunikacyjną"
+        },
+        {
+          "id": "d",
+          "text": "Migranci i uchodźcy — ze względu na barierę językową i brak sieci wsparcia społecznego"
+        },
+        {
+          "id": "e",
+          "text": "Osoby o wysokim statusie społeczno-ekonomicznym — wysoki status jako czynnik ryzyka przemocy"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-070",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Werbalna — agresja słowna, krzyki, obelgi, publiczne upokarzanie i groźby wobec ofiary przemocy"
+        },
+        {
+          "id": "b",
+          "text": "Technologiczna — wykorzystanie internetu i mediów społecznościowych do nękania i szpiegowania"
+        },
+        {
+          "id": "c",
+          "text": "Społeczna — izolowanie ofiary od rodziny, przyjaciół i wspólnoty lokalnej"
+        },
+        {
+          "id": "d",
+          "text": "Psychiczna — systematyczne poniżanie, groźby i manipulacja emocjonalna ofiary"
+        },
+        {
+          "id": "e",
+          "text": "Ekonomiczna — kontrolowanie dostępu do pieniędzy i zasobów materialnych ofiary"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-071",
+      "correct_option_id": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patriarchalna — oparta na dominacji mężczyzny i podporządkowaniu kobiety w rodzinie"
+        },
+        {
+          "id": "b",
+          "text": "Indywidualistyczna — priorytet osobistych celów nad obowiązkami wobec rodziny i wspólnoty"
+        },
+        {
+          "id": "c",
+          "text": "Kolektywistyczna — priorytet dobra grupy i rodziny nad indywidualnymi potrzebami członków"
+        },
+        {
+          "id": "d",
+          "text": "Egalitarna — równość płci i współdzielenie władzy w relacjach rodzinnych i społecznych"
+        },
+        {
+          "id": "e",
+          "text": "Matriarchalna — oparta na dominacji kobiety i podporządkowaniu mężczyzny w strukturze rodziny"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-072",
+      "correct_option_id": "c",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lekarz jest zobowiązany do prowadzenia dochodzenia w sprawie przemocy — jak funkcjonariusz policji"
+        },
+        {
+          "id": "b",
+          "text": "Lekarz powinien samodzielnie ukarać sprawcę — w ramach swojej roli zawodowej i etycznej"
+        },
+        {
+          "id": "c",
+          "text": "Lekarz nie prowadzi dochodzenia, lecz reaguje na dowody i kieruje pacjenta do instytucji"
+        },
+        {
+          "id": "d",
+          "text": "Lekarz może ujawniać informacje o przemocy bez żadnych ograniczeń — bez zgody pacjenta"
+        },
+        {
+          "id": "e",
+          "text": "Lekarz nie ma żadnej roli w rozpoznawaniu przemocy — to wyłączna kompetencja organów ścigania"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-073",
+      "correct_option_id": "d",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wyuczona bezradność — utrata wiary w możliwość zmiany sytuacji przez izolowaną ofiarę"
+        },
+        {
+          "id": "b",
+          "text": "Dysonans rodzinny — rozbieżność między oficjalnym obrazem rodziny a rzeczywistością przemocy"
+        },
+        {
+          "id": "c",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez reakcję otoczenia na ujawnienie przemocy"
+        },
+        {
+          "id": "d",
+          "text": "\"Cisza rodzinna\" — milczenie wokół przemocy, gdy przemoc jest tematem tabu w rodzinie"
+        },
+        {
+          "id": "e",
+          "text": "Dehumanizacja — traktowanie ofiary przemocy jak przedmiotu, a nie podmiotu z prawami"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-074",
+      "correct_option_id": "e",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stygmatyzacja pierwotna — negatywna etykieta przypisana ofierze już przy pierwszym kontakcie"
+        },
+        {
+          "id": "b",
+          "text": "Medykalizacja — przekształcanie problemów społecznych w kwestie medyczne i psychiatryczne"
+        },
+        {
+          "id": "c",
+          "text": "Projekcja medialna — nadawanie ofierze cech, których nie posiada, w relacjach prasowych"
+        },
+        {
+          "id": "d",
+          "text": "Dehumanizacja — przedstawianie ofiary w sposób pozbawiający ją godności, podmiotowości i prawa do głosu"
+        },
+        {
+          "id": "e",
+          "text": "Wtórna wiktymizacja — ponowne skrzywdzenie ofiary przez sensacyjny sposób relacjonowania w mediach"
+        }
+      ]
+    },
+    {
+      "id": "phum-soc-gen-075",
+      "correct_option_id": "b",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kontakty społeczne rzeczywiście nie istnieją — brak formalnych relacji z innymi ludźmi"
+        },
+        {
+          "id": "b",
+          "text": "Osoba czuje się samotna i odizolowana, mimo że formalnie otaczają ją inni ludzie"
+        },
+        {
+          "id": "c",
+          "text": "Izolacja jest narzucona przez instytucje — np. szpital, areszt lub placówka opiekuńcza"
+        },
+        {
+          "id": "d",
+          "text": "Izolacja wynika wyłącznie z pandemii — ograniczenia epidemiologiczne jako jedyne źródło"
+        },
+        {
+          "id": "e",
+          "text": "Izolacja dotyczy tylko osób starszych — wiek zaawansowany jako warunek izolacji społecznej"
+        }
+      ]
+    }
+  ]
+}

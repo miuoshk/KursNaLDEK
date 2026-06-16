@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { loadDiscussion } from "@/features/session/api/loadDiscussion";
 import { deleteComment, postComment } from "@/features/session/api/postComment";
 import { DiscussionComment } from "@/features/session/components/DiscussionComment";
@@ -14,6 +15,8 @@ type DiscussionPanelProps = {
 };
 
 export function DiscussionPanel({ questionId, open, onCountChange }: DiscussionPanelProps) {
+  const t = useTranslations("session");
+  const tCommon = useTranslations("common");
   const [comments, setComments] = useState<CommentType[]>([]);
   const [text, setText] = useState("");
   const [posting, setPosting] = useState(false);
@@ -70,7 +73,7 @@ export function DiscussionPanel({ questionId, open, onCountChange }: DiscussionP
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Dodaj komentarz..."
+                placeholder={t("discussionPlaceholder")}
                 rows={2}
                 className="min-h-[60px] flex-1 resize-none rounded-btn border border-border bg-background px-3 py-2 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
               />
@@ -80,15 +83,15 @@ export function DiscussionPanel({ questionId, open, onCountChange }: DiscussionP
                 onClick={() => void handlePost()}
                 className="self-end rounded-btn bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition-colors hover:brightness-110 disabled:opacity-40"
               >
-                Wyślij
+                {tCommon("send")}
               </button>
             </div>
 
             {open && !loaded ? (
-              <p className="mt-4 font-body text-body-sm text-muted">Ładowanie…</p>
+              <p className="mt-4 font-body text-body-sm text-muted">{tCommon("loading")}</p>
             ) : comments.length === 0 ? (
               <p className="mt-4 font-body text-body-sm text-muted">
-                Brak komentarzy. Bądź pierwszy!
+                {t("discussionEmpty")}
               </p>
             ) : (
               <div className="mt-2 divide-y divide-[rgba(255,255,255,0.06)]">

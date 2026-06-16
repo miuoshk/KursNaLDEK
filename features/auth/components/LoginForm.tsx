@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useTranslations } from "next-intl";
 import { loginAction } from "@/features/auth/actions";
 import { ResendConfirmationButton } from "@/features/auth/components/ResendConfirmationButton";
 import { initialAuthActionState } from "@/features/auth/types";
@@ -13,6 +14,7 @@ const inputClassName =
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("auth");
 
   return (
     <button
@@ -23,19 +25,21 @@ function SubmitButton() {
         "hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70",
       )}
     >
-      {pending ? "Logowanie..." : "Zaloguj się"}
+      {pending ? t("loginPending") : t("login")}
     </button>
   );
 }
 
 export function LoginForm() {
+  const t = useTranslations("auth");
+  const tCommon = useTranslations("common");
   const [state, formAction] = useActionState(loginAction, initialAuthActionState);
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
       <div>
         <label htmlFor="email" className="mb-2 block font-body text-body-sm text-secondary">
-          Email
+          {t("email")}
         </label>
         <input
           id="email"
@@ -44,20 +48,20 @@ export function LoginForm() {
           required
           autoComplete="email"
           className={inputClassName}
-          placeholder="twoj@email.pl"
+          placeholder={tCommon("emailPlaceholder")}
         />
       </div>
 
       <div>
         <div className="mb-2 flex items-baseline justify-between gap-2">
           <label htmlFor="password" className="block font-body text-body-sm text-secondary">
-            Hasło
+            {t("password")}
           </label>
           <Link
             href="/forgot-password"
             className="font-body text-body-xs text-brand-sage transition-colors duration-200 ease-out hover:text-brand-gold"
           >
-            Nie pamiętasz hasła?
+            {t("forgotPassword")}
           </Link>
         </div>
         <input
@@ -67,7 +71,7 @@ export function LoginForm() {
           required
           autoComplete="current-password"
           className={inputClassName}
-          placeholder="••••••••"
+          placeholder={tCommon("passwordPlaceholder")}
         />
       </div>
 

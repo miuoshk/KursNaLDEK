@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-051",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Związki między rodziną a zdrowiem rozpatruje się zwykle w trzech aspektach. Który z poniższych NIE należy do tych trzech aspektów?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Znaczenie systemu opieki zdrowotnej dla rodziny"
+      },
+      {
+        "id": "b",
+        "text": "Znaczenie rodziny w sytuacji choroby któregoś z członków"
+      },
+      {
+        "id": "c",
+        "text": "Znaczenie choroby członka rodziny dla jej funkcjonowania"
+      },
+      {
+        "id": "d",
+        "text": "Znaczenie rodziny dla zdrowia jej członków"
+      },
+      {
+        "id": "e",
+        "text": "Wszystkie wymienione aspekty należą do tej triady"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Trzy aspekty związków rodzina–zdrowie to: **znaczenie rodziny dla zdrowia jej członków**, **znaczenie rodziny w sytuacji choroby** któregoś z członków oraz **znaczenie choroby członka rodziny dla funkcjonowania** całej rodziny. Aspekt dotyczący **systemu opieki zdrowotnej** nie należy do tej triady — pytanie sprawdza precyzyjną znajomość trójdzielnej klasyfikacji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-052",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Wsparcie rodziny polegające na włączeniu chorego w strukturę rodziny i jego integracji ma charakter:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pośredni"
+      },
+      {
+        "id": "b",
+        "text": "instrumentalny"
+      },
+      {
+        "id": "c",
+        "text": "bezpośredni"
+      },
+      {
+        "id": "d",
+        "text": "instytucjonalny"
+      },
+      {
+        "id": "e",
+        "text": "oceniający"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wsparcie o charakterze **bezpośrednim** polega na **włączeniu chorego w strukturę rodziny i jego integracji**. Wsparcie **pośrednie** to natomiast uruchomienie zasobów rodziny dla opanowania niekorzystnej sytuacji choroby. Rozróżnienie dotyczy tego, czy działanie skierowane jest wprost na chorego (integracja), czy na mobilizację zasobów wokół problemu.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-053",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, największe zmiany w życiu rodzinnym spowodowane chorobą członka rodziny mają miejsce:",
+    "options": [
+      {
+        "id": "a",
+        "text": "w fazie terminalnej choroby"
+      },
+      {
+        "id": "b",
+        "text": "w okresie rehabilitacji"
+      },
+      {
+        "id": "c",
+        "text": "dopiero po wyleczeniu"
+      },
+      {
+        "id": "d",
+        "text": "w pierwszym, najtrudniejszym etapie choroby"
+      },
+      {
+        "id": "e",
+        "text": "w fazie przewlekłej stabilizacji"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Materiał wskazuje, że największe zmiany w życiu rodzinnym mają miejsce w **pierwszym, najtrudniejszym etapie choroby**. To wtedy rodzina musi przebudować dotychczasową organizację życia, przejąć obowiązki chorego i podjąć nowe zadania związane z chorobą. Sposób radzenia sobie zależy od zasobów rodziny (materialnych, kulturowych, czasowych, ludzkich) oraz wsparcia społecznego.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-054",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który z poniższych rodzajów zasobów, decydujących o radzeniu sobie rodziny z chorobą, obejmuje \"wiedzę, umiejętności, wzory zachowania, system wartości i norm\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "zasoby materialne"
+      },
+      {
+        "id": "b",
+        "text": "zasoby instytucjonalne"
+      },
+      {
+        "id": "c",
+        "text": "zasoby czasowe"
+      },
+      {
+        "id": "d",
+        "text": "zasoby ludzkie"
+      },
+      {
+        "id": "e",
+        "text": "zasoby kulturowe"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Zasoby **kulturowe** rodziny obejmują **wiedzę, umiejętności, wzory zachowania oraz system wartości i norm**. Odróżnia się je od zasobów **materialnych** (dochody, warunki mieszkaniowe), **czasowych** (dostępny czas na opiekę) i **ludzkich** (wiek, liczba i stan zdrowia członków rodziny). To czteroelementowa typologia zasobów decydujących o zdolności adaptacji rodziny do choroby.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-055",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, rodzina pełni rolę \"łącznika między światem chorego a światem zewnętrznym\". Które działanie NIE należy do tej funkcji?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przypominanie o istnieniu rzeczywistości innej niż choroba czy szpital"
+      },
+      {
+        "id": "b",
+        "text": "Wykonywanie czynności pielęgnacyjno-leczniczych"
+      },
+      {
+        "id": "c",
+        "text": "Powstrzymywanie przed ograniczaniem tożsamości do bycia pacjentem"
+      },
+      {
+        "id": "d",
+        "text": "Podtrzymywanie społecznej tożsamości chorego"
+      },
+      {
+        "id": "e",
+        "text": "Ułatwianie porozumienia między światem choroby a światem codziennym"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Rola rodziny jako **łącznika** obejmuje: przypominanie o rzeczywistości innej niż choroba, dostarczanie informacji o niej, **podtrzymywanie społecznej tożsamości** chorego (powstrzymywanie przed redukcją tożsamości do roli pacjenta) oraz ułatwianie porozumienia między światami. **Czynności pielęgnacyjno-lecznicze** należą do funkcji **opiekuńczo-zabezpieczającej**, a nie do roli łącznika — to inna kategoria zadań.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-056",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, niedoceniane przez lekarzy, ale istotne stwierdzenie dotyczące roli rodziny w rozpoznaniu choroby brzmi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sam pacjent i jego rodzina stawiają pierwszą diagnozę"
+      },
+      {
+        "id": "b",
+        "text": "rodzina zawsze wymaga hospitalizacji chorego"
+      },
+      {
+        "id": "c",
+        "text": "rodzina nie powinna uczestniczyć w decyzjach medycznych"
+      },
+      {
+        "id": "d",
+        "text": "tylko lekarz może ocenić objawy chorobowe"
+      },
+      {
+        "id": "e",
+        "text": "rodzina jest zawsze przeszkodą w leczeniu"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Materiał podkreśla niedoceniane stwierdzenie, że **sam pacjent i jego rodzina stawiają pierwszą diagnozę**, od której często zależy dalsze postępowanie (nic nie robić, samoleczenie, czy szukać pomocy profesjonalnej). Rodzina jest **nieprofesjonalnym elementem systemu opieki zdrowotnej**, stanowiąc źródło poradnictwa nieprofesjonalnego — to pierwsze ogniwo w ścieżce pacjenta do leczenia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-057",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, zdrowie w hierarchii wartości \"często przegrywa z innymi wartościami, najczęściej z\":",
+    "options": [
+      {
+        "id": "a",
+        "text": "pracą zawodową"
+      },
+      {
+        "id": "b",
+        "text": "dobrami materialnymi"
+      },
+      {
+        "id": "c",
+        "text": "rodziną (rozumianą jako wartość)"
+      },
+      {
+        "id": "d",
+        "text": "rozrywką"
+      },
+      {
+        "id": "e",
+        "text": "religią"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Materiał wskazuje, że zdrowie często **przegrywa z rodziną** rozumianą jako wartość — w takiej sytuacji zdrowie staje się mniej ważne. Lekarz powinien pamiętać, by nie lekceważyć tego, co robi rodzina, bo często to od niej zależy, czy chory zażywa leki, ćwiczy, przestrzega diety. Rodzina może wspomagać w walce z chorobą lub odwrotnie — wywierać presję odwodzącą od zaleceń.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-058",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Rodzina jako \"pierwotna grupa społeczna, występująca we wszystkich typach społeczeństwa\", łączy osoby związane małżeństwem, pokrewieństwem, powinowactwem lub adopcją. Która cecha NIE jest w materiale przypisana rodzinie jako grupie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wspólne wartości i zadania"
+      },
+      {
+        "id": "b",
+        "text": "Świadomość odrębności"
+      },
+      {
+        "id": "c",
+        "text": "Struktura ról, pozycji i władzy"
+      },
+      {
+        "id": "d",
+        "text": "Całkowita niezależność od norm społecznych"
+      },
+      {
+        "id": "e",
+        "text": "System stosunków uregulowanych instytucjonalnie"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Rodzina jest powiązana **systemem stosunków uregulowanych instytucjonalnie**, posiada **wspólne wartości** i **świadomość odrębności** oraz organizację — strukturę **ról, pozycji i władzy**. Twierdzenie o \"całkowitej niezależności od norm społecznych\" jest **fałszywe** — rodzina jako instytucja funkcjonuje właśnie **według norm społecznych** i podlega kontroli społecznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-059",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "W procesie umierania bliskiej osoby, według materiału, szczególną rolę pełnią hospicja i opieka paliatywna, ponieważ oferują:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyłącznie opiekę medyczną pacjentowi"
+      },
+      {
+        "id": "b",
+        "text": "wyłącznie wsparcie finansowe rodzinie"
+      },
+      {
+        "id": "c",
+        "text": "zastąpienie rodziny w całości"
+      },
+      {
+        "id": "d",
+        "text": "jedynie wsparcie religijne"
+      },
+      {
+        "id": "e",
+        "text": "opiekę medyczną pacjentowi oraz wsparcie emocjonalne jego bliskim"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Hospicja i opieka paliatywna pełnią szczególną rolę, oferując nie tylko **opiekę medyczną pacjentowi**, ale również **wsparcie emocjonalne jego bliskim**. Skorzystanie z usług hospicjum pomaga rodzinie w opiece nad osobą w końcowej fazie życia. To podejście holistyczne — obejmuje zarówno umierającego, jak i system rodzinny przeżywający antycypację straty i żałobę.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-060",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, zjawisko, w którym główny opiekun osoby przewlekle chorej w długotrwałym procesie leczenia doświadcza wyczerpania emocjonalnego i fizycznego, określa się jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "medykalizacja"
+      },
+      {
+        "id": "b",
+        "text": "wypalenie opiekunów"
+      },
+      {
+        "id": "c",
+        "text": "wtórna wiktymizacja"
+      },
+      {
+        "id": "d",
+        "text": "somatyzacja"
+      },
+      {
+        "id": "e",
+        "text": "dysonans opiekuńczy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Wypalenie opiekunów** to wyczerpanie głównego opiekuna w długotrwałym procesie leczenia. Materiał podkreśla, że przeciwdziałanie wypaleniu wymaga dostępu do **wsparcia psychologicznego, grup wsparcia i możliwości odpoczynku** (np. opieki wytchnieniowej), aby opiekun mógł nadal skutecznie opiekować się pacjentem. To kluczowy aspekt zarządzania obciążeniem emocjonalnym całej rodziny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-061",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Forma przemocy polegająca na długotrwałym niepodejmowaniu działań koniecznych do zapewnienia podstawowych potrzeb fizycznych, emocjonalnych, zdrowotnych czy edukacyjnych, określana jako \"przemoc bierna\", to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zaniedbanie"
+      },
+      {
+        "id": "b",
+        "text": "przemoc ekonomiczna"
+      },
+      {
+        "id": "c",
+        "text": "przemoc psychiczna"
+      },
+      {
+        "id": "d",
+        "text": "przemoc społeczna"
+      },
+      {
+        "id": "e",
+        "text": "przemoc werbalna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Zaniedbanie** to forma **przemocy biernej**, polegająca na długotrwałym **niepodejmowaniu działań** koniecznych do zapewnienia podstawowych potrzeb (fizycznych, emocjonalnych, zdrowotnych, edukacyjnych) dziecka lub innego zależnego członka rodziny. Kluczowa różnica wobec innych form: zaniedbanie to **zaniechanie** (przemoc przez bierność), a nie aktywne działanie krzywdzące.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-062",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Mechanizm międzypokoleniowego przekazu przemocy, zakładający że ludzie uczą się zachowań przez obserwację i naśladownictwo modeli obecnych w ich otoczeniu, opisuje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "teoria naznaczenia społecznego"
+      },
+      {
+        "id": "b",
+        "text": "teoria dewiacji Parsonsa"
+      },
+      {
+        "id": "c",
+        "text": "teoria społecznego uczenia się"
+      },
+      {
+        "id": "d",
+        "text": "teoria salutogenezy"
+      },
+      {
+        "id": "e",
+        "text": "teoria dysonansu poznawczego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Teoria społecznego uczenia się** zakłada, że ludzie uczą się zachowań przez **obserwację i naśladownictwo** modeli w otoczeniu. W przemocowych rodzinach rodzice stają się takimi modelami — dzieci uczą się, że konflikty rozwiązuje się agresją. Przemoc nie musi być aprobowana — wystarczy, że jest **obecna** i traktowana jako \"normalny\" element relacji. To podstawa międzypokoleniowego dziedziczenia przemocy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-063",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Zjawisko, w którym ofiara przemocy w warunkach izolacji z czasem przestaje wierzyć, że sytuacja może się zmienić, i nie zgłasza przemocy przez wiele lat, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "dysonans poznawczy"
+      },
+      {
+        "id": "b",
+        "text": "racjonalizacja"
+      },
+      {
+        "id": "c",
+        "text": "wtórna wiktymizacja"
+      },
+      {
+        "id": "d",
+        "text": "wyuczona bezradność"
+      },
+      {
+        "id": "e",
+        "text": "projekcja"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Wyuczona bezradność** to stan, w którym izolowana ofiara przemocy **przestaje wierzyć**, że sytuacja może się zmienić, i przez lata nie zgłasza przemocy (z lęku przed odrzuceniem, niezrozumieniem czy odwetem). Izolacja społeczna pogłębia ten stan, bo sprawca celowo odcina ofiarę od wsparcia. Nie należy mylić z **wtórną wiktymizacją** (ponowne skrzywdzenie ofiary przez reakcję otoczenia/instytucji).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-064",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, lekarz ma obowiązek zawiadomienia organów ścigania o przestępstwach wymienionych w zamkniętym katalogu. Na podstawie którego artykułu Kodeksu karnego wynika ten obowiązek?",
+    "options": [
+      {
+        "id": "a",
+        "text": "art. 207 k.k."
+      },
+      {
+        "id": "b",
+        "text": "art. 197 k.k."
+      },
+      {
+        "id": "c",
+        "text": "art. 156 k.k."
+      },
+      {
+        "id": "d",
+        "text": "art. 148 k.k."
+      },
+      {
+        "id": "e",
+        "text": "art. 240 § 1 k.k."
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Obowiązek zawiadomienia organów ścigania o przestępstwach z zamkniętego katalogu wynika z **art. 240 § 1 k.k.** (\"kto, mając wiarygodną wiadomość o karalnym przygotowaniu/usiłowaniu/dokonaniu czynu zabronionego... nie zawiadamia niezwłocznie... podlega karze pozbawienia wolności do lat 3\"). Katalog ten obejmuje m.in. zabójstwo (art. 148), ciężki uszczerbek (art. 156), zgwałcenie kwalifikowane (art. 197 §3-4) i znęcanie ze szczególnym okrucieństwem (art. 207 §3).",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-065",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Przestępstwo znęcania się jest w polskim Kodeksie karnym uregulowane w artykule:",
+    "options": [
+      {
+        "id": "a",
+        "text": "art. 148"
+      },
+      {
+        "id": "b",
+        "text": "art. 207"
+      },
+      {
+        "id": "c",
+        "text": "art. 197"
+      },
+      {
+        "id": "d",
+        "text": "art. 156"
+      },
+      {
+        "id": "e",
+        "text": "art. 240"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Znęcanie się** reguluje **art. 207 k.k.** Jego kwalifikowana postać — znęcanie ze **szczególnym okrucieństwem** (art. 207 § 3) — należy do katalogu z art. 240, czyli podlega obowiązkowi zawiadomienia. Pozostałe artykuły: 148 (zabójstwo), 156 (ciężki uszczerbek na zdrowiu), 197 (zgwałcenie), 240 (obowiązek denuncjacji). Warto zapamiętać 207 jako \"kluczowy artykuł przemocy domowej\".",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-066",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Procedura, którą lekarz może i powinien wszcząć w przypadku rozpoznania przemocy w rodzinie, niewymagająca zgody osoby doświadczającej przemocy, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "procedura Niebieskiej Karty"
+      },
+      {
+        "id": "b",
+        "text": "procedura nakazu opuszczenia mieszkania"
+      },
+      {
+        "id": "c",
+        "text": "procedura ubezwłasnowolnienia"
+      },
+      {
+        "id": "d",
+        "text": "procedura interdyscyplinarna sądowa"
+      },
+      {
+        "id": "e",
+        "text": "procedura mediacji rodzinnej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Procedura Niebieskiej Karty** może (i powinna) być wszczęta przez lekarza, co **nie wymaga zgody** osoby doświadczającej przemocy. Lekarz wypełnia formularz, opisując sytuację i obrażenia, a następnie współpracuje z policją, OPS, sądem i organizacjami. Procedura ma na celu kompleksową pomoc ofierze — zabezpieczenie bezpieczeństwa oraz pomoc prawną, socjalną i psychologiczną.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-067",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według art. 9d Ustawy o przeciwdziałaniu przemocy domowej, obowiązek osób wykonujących zawód medyczny do przekazywania informacji o przemocy odpowiednim organom ma charakter:",
+    "options": [
+      {
+        "id": "a",
+        "text": "bezwzględny, sankcjonowany karą pozbawienia wolności"
+      },
+      {
+        "id": "b",
+        "text": "wyłącznie etyczny, bez żadnych konsekwencji"
+      },
+      {
+        "id": "c",
+        "text": "społeczny, niesankcjonowany karą za niezawiadomienie, ale mogący skutkować odpowiedzialnością zawodową"
+      },
+      {
+        "id": "d",
+        "text": "zależny wyłącznie od zgody pacjenta"
+      },
+      {
+        "id": "e",
+        "text": "ograniczony do przypadków przemocy fizycznej"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Obowiązek z **art. 9d Ustawy o przeciwdziałaniu przemocy domowej** ma charakter **społeczny** — brak zgłoszenia **nie pociąga odpowiedzialności karnej**, ale może skutkować **odpowiedzialnością zawodową**. To odróżnia go od obowiązku z art. 240 k.k. (katalog ciężkich przestępstw), który jest sankcjonowany karnie. Subtelne, ale egzaminacyjnie ważne rozróżnienie dwóch podstaw prawnych obowiązku lekarza.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-068",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, lekarz jest zobowiązany do przestrzegania tajemnicy lekarskiej i nie może ujawniać informacji o podejrzeniu przemocy bez zgody pacjenta, CHYBA ŻE:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pacjent jest osobą dorosłą"
+      },
+      {
+        "id": "b",
+        "text": "minęło 30 dni od zdarzenia"
+      },
+      {
+        "id": "c",
+        "text": "sprawca jest członkiem rodziny"
+      },
+      {
+        "id": "d",
+        "text": "istnieje bezpośrednie zagrożenie życia lub zdrowia"
+      },
+      {
+        "id": "e",
+        "text": "pacjent odmawia leczenia"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Lekarz przestrzega **tajemnicy lekarskiej** i nie ujawnia informacji o podejrzeniu przemocy bez zgody pacjenta — **chyba że istnieje bezpośrednie zagrożenie życia lub zdrowia**. To kluczowy wyjątek od tajemnicy, balansujący autonomię i poufność pacjenta z koniecznością ochrony przed realnym, bezpośrednim niebezpieczeństwem. Lekarz musi też zachować ostrożność, by rozmowami nie pogorszyć bezpieczeństwa ofiary.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-069",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które z poniższych NIE jest wymienione w materiale jako grupa szczególnie narażona na przemoc?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dzieci"
+      },
+      {
+        "id": "b",
+        "text": "Osoby starsze"
+      },
+      {
+        "id": "c",
+        "text": "Osoby z niepełnosprawnościami"
+      },
+      {
+        "id": "d",
+        "text": "Migranci i uchodźcy"
+      },
+      {
+        "id": "e",
+        "text": "Osoby o wysokim statusie społeczno-ekonomicznym"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Grupy szczególnie narażone na przemoc to: **dzieci, osoby starsze, osoby z niepełnosprawnościami, kobiety, osoby LGBTQ+, migranci i uchodźcy** oraz osoby w kryzysie bezdomności lub uzależnienia. Łączy je **ograniczony dostęp do pomocy, wykluczenie społeczne i zależność od otoczenia**. Osoby o **wysokim statusie** nie należą do grup wrażliwych — przeciwnie, wysoki status jest czynnikiem ochronnym.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-070",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Forma przemocy wykorzystująca technologie, internet i media społecznościowe do nękania, szkalowania czy szpiegowania ofiary (np. cyberprzemoc) to przemoc:",
+    "options": [
+      {
+        "id": "a",
+        "text": "werbalna"
+      },
+      {
+        "id": "b",
+        "text": "technologiczna"
+      },
+      {
+        "id": "c",
+        "text": "społeczna"
+      },
+      {
+        "id": "d",
+        "text": "psychiczna"
+      },
+      {
+        "id": "e",
+        "text": "ekonomiczna"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Przemoc **technologiczna** to wykorzystanie technologii, internetu i mediów społecznościowych do **nękania, szkalowania, szpiegowania** lub wydobywania informacji osobistych bez zgody (np. **cyberprzemoc**). Odróżnia się od przemocy **werbalnej** (agresja słowna) i **społecznej** (izolowanie od rodziny i wspólnoty). Cyberprzemoc bywa kontynuacją lub przedłużeniem przemocy domowej w przestrzeni cyfrowej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-071",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, kultura oparta na dominacji mężczyzny i podporządkowaniu kobiety, tworząca przestrzeń dla usprawiedliwiania zachowań przemocowych, to kultura:",
+    "options": [
+      {
+        "id": "a",
+        "text": "patriarchalna"
+      },
+      {
+        "id": "b",
+        "text": "indywidualistyczna"
+      },
+      {
+        "id": "c",
+        "text": "kolektywistyczna"
+      },
+      {
+        "id": "d",
+        "text": "egalitarna"
+      },
+      {
+        "id": "e",
+        "text": "matriarchalna"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Kultura **patriarchalna**, oparta na **dominacji mężczyzny i podporządkowaniu kobiety**, tworzy przestrzeń dla usprawiedliwiania przemocy. Tradycyjne role płciowe (kobieta uległa, mężczyzna dominujący) mogą prowadzić do nadużyć. To jedno z kluczowych **uwarunkowań społeczno-kulturowych** przemocy w rodzinie — obok stereotypów płciowych, nierówności, czynników ekonomicznych i izolacji społecznej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-072",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w roli lekarza w rozpoznawaniu przemocy, prawidłowe stwierdzenie dotyczące zakresu jego obowiązków brzmi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "lekarz jest zobowiązany do prowadzenia dochodzenia w sprawie przemocy"
+      },
+      {
+        "id": "b",
+        "text": "lekarz powinien samodzielnie ukarać sprawcę"
+      },
+      {
+        "id": "c",
+        "text": "lekarz nie jest zobowiązany do prowadzenia dochodzenia, ale do reagowania na podstawie dostępnych dowodów i objawów oraz kierowania pacjenta do odpowiednich instytucji"
+      },
+      {
+        "id": "d",
+        "text": "lekarz może ujawniać informacje o przemocy bez żadnych ograniczeń"
+      },
+      {
+        "id": "e",
+        "text": "lekarz nie ma żadnej roli w rozpoznawaniu przemocy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Lekarz **nie jest zobowiązany do prowadzenia dochodzenia**, lecz do **reagowania** na podstawie dostępnych dowodów i objawów oraz **kierowania pacjenta** do odpowiednich instytucji. Jego rola jest diagnostyczna i interwencyjna, nie śledcza. Obejmuje wczesne rozpoznawanie objawów, budowanie zaufania, dokumentowanie obrażeń, wszczęcie Niebieskiej Karty i współpracę ze służbami — ale nie zastępowanie organów ścigania.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-073",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, milczenie wokół przemocy w rodzinie, gdy przemoc jest tematem tabu i nie nazywa się jej po imieniu, określane jest jako:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyuczona bezradność"
+      },
+      {
+        "id": "b",
+        "text": "dysonans rodzinny"
+      },
+      {
+        "id": "c",
+        "text": "wtórna wiktymizacja"
+      },
+      {
+        "id": "d",
+        "text": "\"cisza rodzinna\""
+      },
+      {
+        "id": "e",
+        "text": "dehumanizacja"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**\"Cisza rodzinna\"** to milczenie wokół przemocy — przemoc jako temat **tabu**, o którym nie mówi się na zewnątrz ani nie nazywa po imieniu wewnątrz rodziny. Ofiary (zwłaszcza dzieci) odczuwają, że ich cierpienie jest niewidzialne lub bagatelizowane, co utrudnia budowanie mechanizmów odróżniających przemoc od normy. To istotny aspekt międzypokoleniowego przekazu przemocy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-074",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, dziennikarze relacjonujący przypadki przemocy powinni unikać sensacji i uprzedzeń, aby nie doprowadzić do ponownego skrzywdzenia ofiary przez sposób przedstawienia jej historii. Zjawisko to nazywa się:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stygmatyzacją pierwotną"
+      },
+      {
+        "id": "b",
+        "text": "medykalizacją"
+      },
+      {
+        "id": "c",
+        "text": "projekcją medialną"
+      },
+      {
+        "id": "d",
+        "text": "dehumanizacją"
+      },
+      {
+        "id": "e",
+        "text": "wtórną wiktymizacją"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Wtórna wiktymizacja** to ponowne skrzywdzenie ofiary — w kontekście mediów przez sensacyjne, pełne uprzedzeń relacjonowanie. Materiał podkreśla odpowiedzialną rolę dziennikarzy: bez uprzedzeń, sensacji i wtórnej wiktymizacji. Zjawisko to oznacza, że ofiara cierpi dodatkowo nie z powodu samego czynu, ale przez reakcję otoczenia, instytucji lub mediów na ujawnienie przemocy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-075",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, izolacja społeczna jako uwarunkowanie przemocy może mieć charakter obiektywny lub subiektywny. Charakter subiektywny oznacza, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kontakty społeczne rzeczywiście nie istnieją"
+      },
+      {
+        "id": "b",
+        "text": "osoba czuje się samotna i odizolowana, nawet jeśli formalnie otaczają ją inni"
+      },
+      {
+        "id": "c",
+        "text": "izolacja jest narzucona przez instytucje"
+      },
+      {
+        "id": "d",
+        "text": "izolacja wynika wyłącznie z pandemii"
+      },
+      {
+        "id": "e",
+        "text": "izolacja dotyczy tylko osób starszych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Izolacja **subiektywna** to stan, w którym osoba **czuje się samotna i odizolowana**, nawet jeśli formalnie otaczają ją inni ludzie. Izolacja **obiektywna** oznacza natomiast, że kontakty społeczne **rzeczywiście nie istnieją**. Oba typy zwiększają ryzyko przemocy — ograniczają dostęp ofiary do wsparcia i ułatwiają sprawcy kontrolę. Rozróżnienie obiektywna/subiektywna jest klasyczne w socjologii samotności.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

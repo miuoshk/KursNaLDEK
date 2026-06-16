@@ -1,24 +1,22 @@
 export interface RankTier {
   id: string;
-  name: string;
   minXp: number;
   maxXp: number;
   colorClass: string;
 }
-
 // Progi XP × 10 vs pierwotny tier — userzy mieli za szybko bić rangi i
 // "kończyć grę" już po paru sesjach. Teraz Mistrz LDEK to faktyczne 120k+
 // XP, czyli setki sesji. Wracamy do siedmiu klasycznych tierów (bez
 // prestige I-V°), bo przy takim śrubowaniu i tak praktycznie nikt nie
 // dobije Mistrza w sezonie, więc dodatkowe stopnie są zbędne.
 export const RANK_TIERS: RankTier[] = [
-  { id: "praktykant", name: "Praktykant", minXp: 0, maxXp: 5000, colorClass: "text-amber-600" },
-  { id: "asystent", name: "Asystent", minXp: 5000, maxXp: 15000, colorClass: "text-slate-300" },
-  { id: "rezydent-1", name: "Rezydent I°", minXp: 15000, maxXp: 30000, colorClass: "text-brand-gold" },
-  { id: "rezydent-2", name: "Rezydent II°", minXp: 30000, maxXp: 50000, colorClass: "text-brand-gold" },
-  { id: "rezydent-3", name: "Rezydent III°", minXp: 50000, maxXp: 80000, colorClass: "text-brand-gold" },
-  { id: "specjalista", name: "Specjalista", minXp: 80000, maxXp: 120000, colorClass: "text-white" },
-  { id: "mistrz", name: "Mistrz LDEK", minXp: 120000, maxXp: Number.POSITIVE_INFINITY, colorClass: "text-white" },
+  { id: "praktykant", minXp: 0, maxXp: 5000, colorClass: "text-amber-600" },
+  { id: "asystent", minXp: 5000, maxXp: 15000, colorClass: "text-slate-300" },
+  { id: "rezydent-1", minXp: 15000, maxXp: 30000, colorClass: "text-brand-gold" },
+  { id: "rezydent-2", minXp: 30000, maxXp: 50000, colorClass: "text-brand-gold" },
+  { id: "rezydent-3", minXp: 50000, maxXp: 80000, colorClass: "text-brand-gold" },
+  { id: "specjalista", minXp: 80000, maxXp: 120000, colorClass: "text-white" },
+  { id: "mistrz", minXp: 120000, maxXp: Number.POSITIVE_INFINITY, colorClass: "text-white" },
 ];
 
 export const XP_RULES = {

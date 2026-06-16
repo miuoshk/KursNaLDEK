@@ -17,6 +17,7 @@ import {
   RotateCcw,
   X,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
@@ -120,6 +121,7 @@ export function CatalogView({
   questions,
   initialQuestionId,
 }: CatalogViewProps) {
+  const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
   const initialIndex = useMemo(() => {
     if (!initialQuestionId) return 0;
@@ -268,7 +270,7 @@ export function CatalogView({
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <h1 className="truncate font-heading text-xl font-bold text-primary md:text-2xl">
-              Katalog pytań
+              {t("modeCatalog")}
             </h1>
             <p className="truncate font-body text-body-xs text-secondary">
               {subjectName}
@@ -288,16 +290,16 @@ export function CatalogView({
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Szukaj w pytaniach i odpowiedziach..."
+            placeholder={t("catalogSearchPlaceholder")}
             className="h-10 w-full rounded-btn border border-border bg-card pl-10 pr-10 font-body text-body-sm text-primary outline-none placeholder:text-muted focus:border-brand-sage/40"
-            aria-label="Szukaj w katalogu pytań"
+            aria-label={t("catalogSearchAria")}
           />
           {searchValue ? (
             <button
               type="button"
               onClick={() => setSearchValue("")}
               className="absolute right-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded-full text-muted transition-colors hover:bg-white/5 hover:text-primary"
-              aria-label="Wyczyść wyszukiwanie"
+              aria-label={t("catalogClearSearchAria")}
             >
               <X className="size-3.5" aria-hidden />
             </button>
@@ -309,9 +311,9 @@ export function CatalogView({
         <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           {navigationIndexes.length === 0 ? (
             <div className="mx-auto max-w-3xl rounded-card border border-border bg-card p-6 text-center">
-              <p className="font-heading text-xl font-bold text-primary">Brak wyników</p>
+              <p className="font-heading text-xl font-bold text-primary">{t("catalogNoResults")}</p>
               <p className="mt-2 font-body text-body-sm text-secondary">
-                Nie znaleziono frazy w treści pytania ani odpowiedziach.
+                {t("catalogNoResultsHint")}
               </p>
             </div>
           ) : (
@@ -416,7 +418,7 @@ export function CatalogView({
                       className="inline-flex items-center gap-2 rounded-btn border border-border bg-card px-3 py-1.5 font-body text-body-xs text-secondary transition-colors hover:border-brand-gold/40 hover:text-primary"
                     >
                       <RotateCcw className="size-3.5" aria-hidden />
-                      Spróbuj ponownie
+                      {t("catalogResetAnswer")}
                     </button>
                   </div>
                 ) : null}
@@ -471,21 +473,23 @@ function ModePills({
   value: CatalogMode;
   onChange: (next: CatalogMode) => void;
 }) {
+  const t = useTranslations("session");
+
   return (
     <div className="inline-flex shrink-0 items-center gap-1 rounded-pill border border-border bg-card-hover/40 p-1">
       <ModeButton
         active={value === "nauka"}
         onClick={() => onChange("nauka")}
         icon={<BookOpenText className="size-3.5" aria-hidden />}
-        label="Nauka"
-        title="Tryb nauki — odpowiedzi i wyjaśnienia widoczne od razu"
+        label={t("catalogModeStudy")}
+        title={t("catalogModeStudyTitle")}
       />
       <ModeButton
         active={value === "egzamin"}
         onClick={() => onChange("egzamin")}
         icon={<GraduationCap className="size-3.5" aria-hidden />}
-        label="Egzamin"
-        title="Tryb egzaminacyjny — wyjaśnienie po wybraniu odpowiedzi"
+        label={t("catalogModeExam")}
+        title={t("catalogModeExamTitle")}
       />
     </div>
   );
@@ -538,6 +542,7 @@ function CatalogBottomNav({
   selectedByQ: Record<string, string>;
   mode: CatalogMode;
 }) {
+  const t = useTranslations("session");
   const activeRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -573,7 +578,7 @@ function CatalogBottomNav({
               ref={isActive ? activeRef : null}
               type="button"
               onClick={() => onSelect(qIdx)}
-              aria-label={`Pytanie ${i + 1}`}
+              aria-label={t("catalogQuestionAria", { number: i + 1 })}
               aria-current={isActive ? "true" : undefined}
               className={cn(
                 "inline-flex size-9 shrink-0 items-center justify-center rounded-btn border font-body text-body-xs transition-colors",
@@ -604,9 +609,11 @@ function CatalogExplanationPanel({
   revealed: boolean;
   className?: string;
 }) {
+  const t = useTranslations("session");
+
   return (
     <section className={className}>
-      <h3 className="font-heading text-xl font-bold text-primary">Wyjaśnienie</h3>
+      <h3 className="font-heading text-xl font-bold text-primary">{t("catalogExplanation")}</h3>
       {revealed ? (
         <div className="mt-3 rounded-card border border-border bg-card p-4 sm:p-5">
           {markdownBlock(explanation)}
@@ -615,7 +622,7 @@ function CatalogExplanationPanel({
         <div className="mt-3 flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
           <Sparkles className="size-6 text-muted" aria-hidden />
           <p className="font-body text-body-sm text-muted">
-            Wybierz odpowiedź, aby zobaczyć wyjaśnienie.
+            {t("catalogExplanationHidden")}
           </p>
         </div>
       )}

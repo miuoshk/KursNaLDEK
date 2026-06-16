@@ -1,0 +1,280 @@
+{
+  "label": "phum-soc-gen-length-fix-chunk-5",
+  "edits": [
+    {
+      "id": "phum-soc-gen-101",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Model Beveridge'a — finansowanie podatkowe, państwowe placówki, zdrowie jako prawo obywatelskie"},
+        {"id": "b", "text": "Model Bismarcka — obowiązkowe składki pracownik-pracodawca, niezależne kasy chorych i finansowanie opieki"},
+        {"id": "c", "text": "Model liberalny (rynkowy) — dominacja prywatnych ubezpieczeń, traktowanie opieki jako towaru na rynku"},
+        {"id": "d", "text": "Model mieszany — łączenie finansowania publicznego ze współistniejącym sektorem prywatnym i komercyjnym"},
+        {"id": "e", "text": "Model rezydualny — minimalna rola państwa, opieka tylko dla najuboższych w ramach pomocy społecznej"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-102",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "William Beveridge — autor raportu z 1942 r. o uniwersalnym systemie finansowanym wyłącznie z podatków państwowych"},
+        {"id": "b", "text": "Otto von Bismarck — w 1883 r. wprowadził pierwszy obowiązkowy system ubezpieczeń ze składek pracowników"},
+        {"id": "c", "text": "Otto von Bismarck — w 1942 r. opracował reformę brytyjskiego NHS finansowanego podatkowo z budżetu państwa"},
+        {"id": "d", "text": "William Beveridge — w 1883 r. stworzył niemieckie kasy chorych oparte na składkach pracownik-pracodawca"},
+        {"id": "e", "text": "Rudolf Virchow — w 1848 r. zaproponował powszechną opiekę z budżetu państwa w zaborze pruskim"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-103",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Spełnienie wymogów Unii Europejskiej dotyczących jednolitego rynku ubezpieczeń zdrowotnych w państwach członkowskich"},
+        {"id": "b", "text": "Realizacja postulatów raportu Beveridge'a z 1942 r. o uniwersalnym systemie podatkowym w Wielkiej Brytanii"},
+        {"id": "c", "text": "Przeciwdziałanie rosnącym wpływom ruchów socjalistycznych i stabilizacja władzy poprzez reformy socjalne"},
+        {"id": "d", "text": "Prywatyzacja istniejących kas chorych i przekazanie organizacji opieki wyłącznie sektorowi komercyjnemu"},
+        {"id": "e", "text": "Wprowadzenie modelu rynkowej konkurencji ubezpieczycieli bez regulacji państwa i obowiązku solidarnościowego"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-104",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Wielka Brytania — klasyczny przykład modelu Beveridge'a z NHS finansowanym z podatków i państwowymi placówkami"},
+        {"id": "b", "text": "Niemcy — model Bismarcka oparty na obowiązkowych składkach zdrowotnych i niezależnych kasach chorych"},
+        {"id": "c", "text": "Szwecja — nordycki system publiczny z silną rolą państwa, wysokimi podatkami i powszechnym dostępem"},
+        {"id": "d", "text": "Stany Zjednoczone — model liberalny z dominacją prywatnych ubezpieczeń i traktowaniem opieki jako towaru"},
+        {"id": "e", "text": "Kanada — system publiczno-prywatny z uniwersalnym ubezpieczeniem provincialnym i elementami solidarności"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-105",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Czysto publiczny model Beveridge'a — wyłącznie finansowanie podatkowe bez udziału sektora prywatnego w opiece"},
+        {"id": "b", "text": "Czysto liberalny model rynkowy — opieka jako towar bez publicznego ubezpieczenia obowiązkowego dla obywateli"},
+        {"id": "c", "text": "Model w pełni prywatnych ubezpieczeń obowiązkowych bez roli instytucji publicznych finansujących świadczenia"},
+        {"id": "d", "text": "Model rezydualny — państwo interweniuje wyłącznie w pomocy społecznej dla najuboższych, reszta na rynku"},
+        {"id": "e", "text": "Model mieszany — dominacja publicznego NFZ przy rosnącym sektorze prywatnym i płatnościach bezpośrednich"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-106",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "1999 — rok powołania NFZ i przejścia na model ubezpieczeniowy po transformacji ustrojowej w Polsce"},
+        {"id": "b", "text": "1950 — wprowadzenie powszechnego ubezpieczenia z budżetu państwa w okresie PRL i państwowych szpitali"},
+        {"id": "c", "text": "1989 — rozpoczęcie transformacji ustrojowej i pierwszych reform strukturalnych systemu ochrony zdrowia"},
+        {"id": "d", "text": "2004 — rok wejścia Polski do UE i harmonizacji przepisów dotyczących transgranicznej opieki zdrowotnej"},
+        {"id": "e", "text": "1918 — odrodzenie państwa i początek budowy systemu opieki zdrowotnej w II Rzeczypospolitej Polskiej"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-107",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "PKV (Private Krankenversicherung) — prywatne ubezpieczenie dla osób z wyższymi dochodami i samozatrudnionych"},
+        {"id": "b", "text": "GKV (Gesetzliche Krankenversicherung) — publiczne, obowiązkowe ubezpieczenie solidarnościowe w Niemczech"},
+        {"id": "c", "text": "NHS (National Health Service) — brytyjski system publiczny finansowany z podatków państwowych i uniwersalny"},
+        {"id": "d", "text": "NFZ (Narodowy Fundusz Zdrowia) — polska instytucja finansująca opiekę ze składki zdrowotnej i budżetu"},
+        {"id": "e", "text": "HMO (Health Maintenance Organization) — amerykański model zarządzanej opieki zdrowotnej w sektorze prywatnym"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-108",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Wysokie koszty administracyjne prywatnych ubezpieczeń — typowa wada modelu liberalnego, nie publicznego Beveridge'a"},
+        {"id": "b", "text": "Brak powszechnego dostępu do opieki — cecha modelu rynkowego, gdzie dostęp zależy od zdolności finansowej"},
+        {"id": "c", "text": "Przeciążenie systemu i długie kolejki przy ograniczonych zasobach publicznych finansowanych podatkowo"},
+        {"id": "d", "text": "Całkowity brak roli państwa w finansowaniu i organizacji opieki zdrowotnej obywateli państwa"},
+        {"id": "e", "text": "Uzależnienie dostępu wyłącznie od dochodów pacjenta — wada modelu liberalnego, nie uniwersalnego publicznego"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-109",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Powołanie Narodowego Funduszu Zdrowia i przejście na model składkowy ubezpieczeniowy finansowany ze składek"},
+        {"id": "b", "text": "Wprowadzenie modelu Bismarcka ze składkami pracownik-pracodawca w latach pięćdziesiątych XX wieku w PRL"},
+        {"id": "c", "text": "Prywatyzacja szpitali i przekazanie organizacji opieki wyłącznie sektorowi komercyjnemu i prywatnemu"},
+        {"id": "d", "text": "Wprowadzenie powszechnego ubezpieczenia zdrowotnego finansowanego z budżetu państwa w 1950 r."},
+        {"id": "e", "text": "Likwidacja państwowego systemu szpitali w ramach gospodarczych reform transformacyjnych lat dziewięćdziesiątych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-110",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Zabór rosyjski — najsłabiej rozwinięty system opieki z ograniczonym dostępem do lekarzy i placówek medycznych"},
+        {"id": "b", "text": "Żaden — system ubezpieczeń zdrowotnych powstał dopiero w II RP po odzyskaniu niepodległości w 1918 r."},
+        {"id": "c", "text": "Zabór austriacki — ubezpieczenia ograniczone do wybranych grup zawodowych bez powszechnego charakteru"},
+        {"id": "d", "text": "Wszystkie trzy w równym stopniu — jednolity system ubezpieczeń i opieki we wszystkich zaborach na ziemiach polskich"},
+        {"id": "e", "text": "Zabór pruski — ubezpieczenia robotników i instytucje sanitarne według bismarckowskich reform socjalnych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-111",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Indywidualna odpowiedzialność za zdrowie i traktowanie opieki medycznej jako towaru na rynku"},
+        {"id": "b", "text": "Powszechne poczucie solidarności społecznej w zdrowiu — cecha modeli Bismarcka i Beveridge'a, nie liberalnego"},
+        {"id": "c", "text": "Pełna równość dostępu do opieki niezależnie od dochodów — cecha systemów uniwersalnych finansowanych publicznie"},
+        {"id": "d", "text": "Dominacja państwowych placówek i finansowanie z podatków — typowe cechy modelu Beveridge'a w Europie"},
+        {"id": "e", "text": "Brak roli organizacji charytatywnych — w modelu liberalnym NGO często wypełniają luki w dostępie do opieki"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-112",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "Pacjenci zamożni nadużywają systemu publicznego kosztem osób o niższych dochodach i ograniczonych zasobach"},
+        {"id": "b", "text": "Czynniki ekonomiczne pogarszają zdrowie, a złe zdrowie utrudnia poprawę sytuacji materialnej i zawodowej"},
+        {"id": "c", "text": "Nadmiar profilaktyki prowadzi do hipochondrii i nieuzasadnionego obciążenia systemu opieki zdrowotnej"},
+        {"id": "d", "text": "Lekarze odmawiają leczenia osób ubogich z powodu braku prywatnego ubezpieczenia i niskich dochodów"},
+        {"id": "e", "text": "Prywatne ubezpieczenia zwiększają dostępność opieki dla wszystkich grup społecznych bez wykluczeń finansowych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-113",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Bariery językowe u imigrantów utrudniające komunikację z personelem medycznym w placówkach publicznych"},
+        {"id": "b", "text": "Brak dostępu do internetu i telemedycyny w obszarach miejskich z dobrze rozwiniętą infrastrukturą cyfrową"},
+        {"id": "c", "text": "Utrudniony dostęp mieszkańców wsi i małych miejscowości do specjalistów oraz koszty i czas dojazdu"},
+        {"id": "d", "text": "Cenzura informacji medycznej przez instytucje państwowe ograniczająca edukację zdrowotną obywateli"},
+        {"id": "e", "text": "Wykluczenie osób niesłyszących z powodu braku tłumaczy języka migowego w placówkach medycznych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-114",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Wyłącznie bezpośrednia cena badania profilaktycznego, bez uwzględnienia kosztów pośrednich towarzyszących wizycie"},
+        {"id": "b", "text": "Koszty zakupu prywatnego ubezpieczenia zdrowotnego obejmującego badania kontrolne i profilaktykę specjalistyczną"},
+        {"id": "c", "text": "Podatki i składki na NFZ finansujące publiczny system profilaktyki w ramach obowiązkowego ubezpieczenia"},
+        {"id": "d", "text": "Transport, utracone dochody z powodu nieobecności w pracy oraz koszty opieki nad dziećmi i seniorami"},
+        {"id": "e", "text": "Opłaty rejestracyjne w przychodni POZ oraz dodatkowe koszty badań poza podstawowym pakietem refundowanym"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-115",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Profilaktyka jest zawsze droższa niż leczenie ostrego schorzenia wymagającego hospitalizacji i intensywnej terapii"},
+        {"id": "b", "text": "Profilaktyka wymaga hospitalizacji i długiego pobytu w placówce medycznej, co generuje wysokie koszty bezpośrednie"},
+        {"id": "c", "text": "Profilaktyka jest zakazana przepisami dla osób ubogich korzystających z pomocy społecznej i świadczeń socjalnych"},
+        {"id": "d", "text": "NFZ nie refunduje żadnej profilaktyki — wszystkie badania kontrolne i programy prewencyjne są w pełni płatne"},
+        {"id": "e", "text": "Korzyści profilaktyki są odroczone w czasie, więc ustępują doraźnym potrzebom materialnym i bieżącym wydatkom"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-116",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Unikanie wizyt i programów profilaktycznych z obawy przed oceną i postrzeganiem profilaktyki jako luksusu bogatych"},
+        {"id": "b", "text": "Lepsza opieka z powodu współczucia personelu wobec osób o niższym statusie społecznym w publicznych placówkach medycznych"},
+        {"id": "c", "text": "Pierwszeństwo w kolejkach do specjalistów dzięki preferencjom socjalnym, ulgom i programom wsparcia dla osób ubogich"},
+        {"id": "d", "text": "Automatyczne objęcie prywatnym ubezpieczeniem zdrowotnym przez państwo bez względu na dochody"},
+        {"id": "e", "text": "Częstsze korzystanie z innowacyjnych terapii dzięki programom wsparcia finansowego dla osób ubogich"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-117",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "Brak wpływu stresu finansowego na proces terapeutyczny, współpracę z lekarzem i realizację zaleceń medycznych"},
+        {"id": "b", "text": "Obniżenie zdolności koncentracji i zaangażowania, możliwe nawroty chorób psychicznych i pogorszenie wyników"},
+        {"id": "c", "text": "Poprawa koncentracji pacjenta na leczeniu dzięki motywacji do szybkiego powrotu do pracy i stabilizacji dochodów"},
+        {"id": "d", "text": "Zwiększenie motywacji do kontynuowania terapii w obliczu presji materialnej i obawy o utratę źródła utrzymania"},
+        {"id": "e", "text": "Wpływ dotyczy wyłącznie terapii chirurgicznych, nie obejmuje psychoterapii, farmakoterapii ani rehabilitacji"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-118",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Identyczny dostęp wszystkich pacjentów do terapii niezależnie od statusu majątkowego i wysokości dochodów"},
+        {"id": "b", "text": "Tańsze koszty terapii innowacyjnych w porównaniu ze standardowymi metodami leczenia w publicznym systemie"},
+        {"id": "c", "text": "Dostęp do kosztownych terapii innowacyjnych poza refundacją tylko dla części pacjentów z wyższymi dochodami"},
+        {"id": "d", "text": "Państwo refunduje wszystkie terapie genowe i biologiczne w ramach publicznego systemu ochrony zdrowia"},
+        {"id": "e", "text": "Nierówności dotyczą wyłącznie diagnostyki laboratoryjnej, nie wyboru metod terapeutycznych i leków specjalistycznych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-119",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Zwiększenie liczby zlecanych badań diagnostycznych w celu podwyższenia dochodów lekarza z kontraktów z NFZ"},
+        {"id": "b", "text": "Wydłużenie czasu każdej konsultacji dzięki mniejszemu obciążeniu grafikiem pracy i lepszej organizacji placówki"},
+        {"id": "c", "text": "Poprawa jakości diagnostyki dzięki większej motywacji do staranności w pracy i ciągłemu doskonaleniu zawodowemu"},
+        {"id": "d", "text": "Wypalenie zawodowe, skrócenie czasu poświęcanego pacjentowi i ryzyko przeoczenia istotnych objawów klinicznych"},
+        {"id": "e", "text": "Brak wpływu wynagrodzeń na jakość opieki — decyduje wyłącznie etyka zawodowa i osobista odpowiedzialność lekarza"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-120",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Wybór najdroższej dostępnej terapii dla pewności skuteczności i bezpieczeństwa leczenia mimo znacznych ograniczeń budżetu rodziny"},
+        {"id": "b", "text": "Domaganie się wyłącznie terapii innowacyjnych bez względu na koszty, refundację NFZ i realną dostępność w systemie"},
+        {"id": "c", "text": "Całkowita rezygnacja z jakiegokolwiek leczenia z powodu braku środków finansowych i braku wsparcia społecznego"},
+        {"id": "d", "text": "Korzystanie wyłącznie z prywatnej opieki pomimo ograniczeń budżetowych rodziny i braku ubezpieczenia komercyjnego"},
+        {"id": "e", "text": "Wybór tańszych, mniej skutecznych lub niesprawdzonych terapii grożących gorszymi wynikami leczenia i powikłaniami"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-121",
+      "correct_option_id": "a",
+      "options": [
+        {"id": "a", "text": "Giełda papierów wartościowych — instytucja rynku kapitałowego niebędąca elementem systemu ochrony zdrowia"},
+        {"id": "b", "text": "Personel medyczny — lekarze, pielęgniarki, położne i inni specjaliści bezpośrednio świadczący usługi zdrowotne"},
+        {"id": "c", "text": "Finansowanie — składki zdrowotne, podatki, ubezpieczenia prywatne i środki przekazywane z budżetu państwa"},
+        {"id": "d", "text": "Placówki medyczne — szpitale, przychodnie POZ, ośrodki specjalistyczne i centra diagnostyczno-lecznicze"},
+        {"id": "e", "text": "Instytucje zarządzające i regulujące — Ministerstwo Zdrowia, NFZ, organy nadzoru, inspekcja sanitarna i kontrola"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-122",
+      "correct_option_id": "b",
+      "options": [
+        {"id": "a", "text": "Finansowanie wyłącznie z podatków ogólnych bez roli prywatnych ubezpieczycieli i konkurencji rynkowej"},
+        {"id": "b", "text": "Obowiązkowe prywatne ubezpieczenie z podstawowym pakietem i dotacjami państwa dla osób o niskich dochodach"},
+        {"id": "c", "text": "Całkowite wykluczenie sektora prywatnego z organizacji, finansowania i świadczenia opieki zdrowotnej obywateli"},
+        {"id": "d", "text": "Brak konkurencji między ubezpieczycielami — monopol państwowy na ubezpieczenia zdrowotne wszystkich obywateli kraju"},
+        {"id": "e", "text": "System identyczny z brytyjskim NHS — finansowanie podatkowe, państwowe placówki, brak prywatnych składek i konkurencji"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-123",
+      "correct_option_id": "c",
+      "options": [
+        {"id": "a", "text": "Wyłącznie osoby bezrobotne zarejestrowane w urzędzie pracy korzystające ze świadczeń prywatnego PKV"},
+        {"id": "b", "text": "Wyłącznie emeryci przechodzący automatycznie z publicznego GKV na prywatne PKV po osiągnięciu wieku emerytalnego"},
+        {"id": "c", "text": "Osoby o wyższych dochodach, samozatrudnieni oraz wybrani pracownicy sfery publicznej i urzędnicy państwowi"},
+        {"id": "d", "text": "Tylko imigranci bez statusu rezydenta korzystający z prywatnych ubezpieczeń zdrowotnych zamiast GKV"},
+        {"id": "e", "text": "Wszyscy obywatele Niemiec obowiązkowo objęci PKV zamiast publicznego, solidarnościowego ubezpieczenia GKV"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-124",
+      "correct_option_id": "d",
+      "options": [
+        {"id": "a", "text": "Wszyscy płacą identyczną kwotę składki zdrowotnej niezależnie od dochodów, wieku i sytuacji rodzinnej"},
+        {"id": "b", "text": "Ubezpieczenie GKV jest dobrowolne — każdy obywatel decyduje samodzielnie o przystąpieniu do publicznego systemu"},
+        {"id": "c", "text": "Składki zdrowotne płaci wyłącznie pracodawca bez udziału pracownika w finansowaniu opieki medycznej"},
+        {"id": "d", "text": "Osoby zarabiające więcej płacą wyższe składki, finansując tym samym dostęp osób mniej zarabiających"},
+        {"id": "e", "text": "Dostęp do świadczeń zależy od wysokości wpłaconej składki — zasada ekwiwalentności typowa dla ubezpieczeń prywatnych"}
+      ]
+    },
+    {
+      "id": "phum-soc-gen-125",
+      "correct_option_id": "e",
+      "options": [
+        {"id": "a", "text": "Gwałtowny przyrost naturalny generujący rosnącą liczbę młodych wymagających opieki pediatrycznej i edukacyjnej"},
+        {"id": "b", "text": "Spadek kosztów leczenia dzięki postępowi technologicznemu, efektywności systemu i optymalizacji wydatków publicznych"},
+        {"id": "c", "text": "Całkowity brak imigracji personelu medycznego — hipotetyczny scenariusz, nie wspólny problem Niemiec i Polski"},
+        {"id": "d", "text": "Nadmiar lekarzy specjalistów powodujący nierówności w rozdziale świadczeń i konkurencję między placówkami"},
+        {"id": "e", "text": "Starzenie się społeczeństwa i wzrost zapotrzebowania na opiekę geriatryczną oraz długoterminową"}
+      ]
+    }
+  ]
+}

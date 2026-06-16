@@ -2,6 +2,8 @@
 
 > Companion do `FormatPisaniaPytan.md`. Dotyczy batchy wgrywanych **po zakończeniu histologii** w programie stomatologii rok 1.
 
+**Instrukcja batchowania (TXT → SQL, `questions.tracks`):** `exports/histologia-stoma-jak-batchowac.md`
+
 ---
 
 ## 1. Gdzie są dane (stan na dziś)

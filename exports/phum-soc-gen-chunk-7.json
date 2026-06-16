@@ -1,0 +1,952 @@
+[
+  {
+    "id": "phum-soc-gen-151",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który czynnik najlepiej tłumaczy, dlaczego zdrowe odżywianie bywa barierą profilaktyki dla osób o niskich dochodach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zdrowe produkty są często droższe od wysoko przetworzonej żywności, a ich przygotowanie wymaga czasu"
+      },
+      {
+        "id": "b",
+        "text": "Zdrowa żywność jest zawsze tańsza od przetworzonej"
+      },
+      {
+        "id": "c",
+        "text": "Zdrowa żywność jest zakazana dla osób ubogich"
+      },
+      {
+        "id": "d",
+        "text": "Przetworzona żywność jest niedostępna w sklepach"
+      },
+      {
+        "id": "e",
+        "text": "NFZ refunduje całość kosztów zdrowej diety"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Zdrowe produkty spożywcze są często **znacznie droższe** od żywności **wysoko przetworzonej** (bogatej w cukry i tłuszcze trans). Dodatkowo gotowanie zdrowych posiłków wymaga **czasu**, którego brakuje osobom pracującym w nieregularnych godzinach lub na kilku etatach. Brak czasu wymusza sięganie po gotowe dania i fast foody. To pokazuje, jak **czas staje się zasobem ekonomicznym**, a styl życia jest uwarunkowany sytuacją materialną — kluczowy mechanizm nierówności zdrowotnych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-152",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które stwierdzenie o dzieciach z rodzin o niskich dochodach jest zgodne z materiałem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Są mniej narażone na choroby dietozależne"
+      },
+      {
+        "id": "b",
+        "text": "Są bardziej narażone na otyłość, cukrzycę typu 2 i utrwalanie niezdrowych nawyków przenoszonych międzypokoleniowo"
+      },
+      {
+        "id": "c",
+        "text": "Mają lepszy dostęp do płatnych zajęć sportowych"
+      },
+      {
+        "id": "d",
+        "text": "Korzystają częściej z prywatnej profilaktyki"
+      },
+      {
+        "id": "e",
+        "text": "Nie odczuwają skutków nierówności zdrowotnych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Dzieci z rodzin o **niskim dochodzie** są bardziej narażone na choroby **dietozależne** (otyłość, cukrzyca typu 2) oraz zaburzenia zdrowia psychicznego. Brak edukacji i wsparcia profilaktycznego prowadzi do **utrwalania niezdrowych nawyków przenoszonych z pokolenia na pokolenie**, co pogłębia istniejące nierówności zdrowotne. Bariery to koszt zdrowej żywności, zajęć sportowych i dojazdu oraz niedobór bezpłatnych zajęć ruchowych. To międzypokoleniowa transmisja nierówności.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-153",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "\"Decyzje o priorytetyzacji badań\" w systemie o ograniczonych zasobach oznaczają, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wszystkie badania są wykonywane natychmiast dla każdego"
+      },
+      {
+        "id": "b",
+        "text": "Badania są przyznawane losowo"
+      },
+      {
+        "id": "c",
+        "text": "Pierwszeństwo dostają pacjenci z pilniejszymi potrzebami, a mniej pilni czekają dłużej"
+      },
+      {
+        "id": "d",
+        "text": "Tylko pacjenci prywatni mają dostęp do diagnostyki"
+      },
+      {
+        "id": "e",
+        "text": "Priorytetyzacja nie wpływa na czas oczekiwania"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W systemach o **ograniczonych zasobach** podejmuje się **decyzje o priorytetyzacji** badań — pierwszeństwo dostają pacjenci z **bardziej pilnymi lub powszechnymi potrzebami** zdrowotnymi, a osoby z mniej pilnymi potrzebami **czekają dłużej**. Wpływa to na czas oczekiwania na diagnostykę i leczenie. To racjonowanie świadczeń wymuszone limitami finansowymi (np. NFZ). Mechanizm ten, choć konieczny, może opóźniać wykrycie chorób u pacjentów zakwalifikowanych jako mniej pilni.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-154",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, brak edukacji finansowej pacjenta może prowadzić do tego, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pacjent zawsze wybiera najskuteczniejsze terapie"
+      },
+      {
+        "id": "b",
+        "text": "Pacjent ma pełną wiedzę o wszystkich ubezpieczeniach"
+      },
+      {
+        "id": "c",
+        "text": "Pacjent nie ponosi żadnych kosztów leczenia"
+      },
+      {
+        "id": "d",
+        "text": "Pacjent rezygnuje z badań lub wybiera tańsze opcje, nie znając opcji refundacji i nie oceniając relacji koszt-efekt"
+      },
+      {
+        "id": "e",
+        "text": "Edukacja finansowa nie wpływa na decyzje diagnostyczne"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Brak **edukacji finansowej** sprawia, że pacjenci nie znają całkowitych kosztów, **nie wiedzą o opcjach refundacji** (NFZ, ubezpieczenia) i nie potrafią ocenić relacji **koszt-efekt**. Skutkuje to rezygnacją z badań, wyborem **tańszych, mniej skutecznych** opcji lub opóźnianiem diagnozy z obawy przed kosztami — co długoterminowo zwiększa wydatki na leczenie powikłań. Edukacja finansowa mogłaby zmniejszyć opóźnienia i zachęcić do wczesnej diagnostyki.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-155",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Jaki jest mechanizm \"zaburzenia równowagi między prewencją a leczeniem\" w polityce zdrowotnej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nadmierne finansowanie profilaktyki kosztem leczenia"
+      },
+      {
+        "id": "b",
+        "text": "Prewencja jest zawsze droższa niż leczenie zaawansowanej choroby"
+      },
+      {
+        "id": "c",
+        "text": "Całkowita rezygnacja z leczenia na rzecz prewencji"
+      },
+      {
+        "id": "d",
+        "text": "Równe finansowanie zawsze gwarantuje wczesne wykrycie"
+      },
+      {
+        "id": "e",
+        "text": "Skupienie polityki na leczeniu ogranicza finansowanie wczesnej diagnostyki, więc choroby wykrywa się w zaawansowanym stadium"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Gdy polityka zdrowotna **skupia się na leczeniu** zamiast na prewencji, ogranicza finansowanie **wczesnej diagnostyki**. W efekcie pacjentów diagnozuje się dopiero, gdy choroba jest w **zaawansowanym stadium**, co zwiększa koszty leczenia i pogarsza wyniki zdrowotne. To paradoks krótkowzroczności systemowej — oszczędność na prewencji generuje większe wydatki później. Materiał podkreśla, że profilaktyka jest teoretycznie tańsza, ale bywa traktowana jako mniej priorytetowa.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-156",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które terapie są w materiale wskazywane jako szczególnie kosztowne i często nieobjęte refundacją, ograniczając dostęp pacjentów?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Terapie genowe, immunoterapie i nowe leki biologiczne"
+      },
+      {
+        "id": "b",
+        "text": "Podstawowe szczepienia obowiązkowe"
+      },
+      {
+        "id": "c",
+        "text": "Standardowe badania krwi"
+      },
+      {
+        "id": "d",
+        "text": "Konsultacje internistyczne w POZ"
+      },
+      {
+        "id": "e",
+        "text": "Pomiar ciśnienia tętniczego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Terapie genowe, immunoterapie i nowe leki biologiczne** to innowacyjne metody o **wysokich kosztach**, często **nieobjęte refundacją** lub dostępne dla wąskiego grona pacjentów. Mimo lepszych wyników są poza zasięgiem finansowym wielu chorych, zwłaszcza bez pełnego ubezpieczenia. Prowadzi to do **nierówności w dostępie** — pacjenci zamożniejsi lub z lepszą polisą zyskują szansę na wyleczenie niedostępną dla uboższych. To ostry przykład wpływu finansów na rokowanie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-157",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Tańsze alternatywy terapeutyczne wskazane w materiale (samopomoc, terapie online, grupy wsparcia) charakteryzują się tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zawsze w pełni zastępują profesjonalną terapię"
+      },
+      {
+        "id": "b",
+        "text": "Są bardziej dostępne finansowo, ale nie zawsze oferują poziom wsparcia wymagany przy złożonych problemach"
+      },
+      {
+        "id": "c",
+        "text": "Są droższe od terapii prywatnej"
+      },
+      {
+        "id": "d",
+        "text": "Są refundowane w 100% przez NFZ"
+      },
+      {
+        "id": "e",
+        "text": "Są zakazane w polskim systemie"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Tańsze alternatywy jak **samopomoc, terapie online i grupy wsparcia** są **bardziej dostępne finansowo** i mogą mieć swoje zalety, ale **nie zawsze oferują poziom wsparcia** wymagany przy bardziej skomplikowanych problemach zdrowotnych. Pacjenci sięgają po nie z powodu ograniczeń finansowych (koszt długotrwałych terapii psychoterapeutycznych, rehabilitacji, leczenia uzależnień). To kompromis dostępność-skuteczność — lepsze niż nic, ale potencjalnie niewystarczające w cięższych przypadkach.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-158",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Według materiału, w którym modelu systemu ochrony zdrowia leczenie najczęściej może prowadzić do \"bankructwa osobistego\" pacjenta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "W modelu Beveridge'a (np. Wielka Brytania)"
+      },
+      {
+        "id": "b",
+        "text": "W modelu Bismarcka (np. Niemcy)"
+      },
+      {
+        "id": "c",
+        "text": "W modelu bez uniwersalnej opieki zdrowotnej (np. USA)"
+      },
+      {
+        "id": "d",
+        "text": "W czysto publicznym modelu skandynawskim"
+      },
+      {
+        "id": "e",
+        "text": "W modelu mieszanym polskim"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W krajach **bez uniwersalnej opieki zdrowotnej** (przykład: **USA**, model liberalny) leczenie może prowadzić do **bankructwa osobistego** pacjenta z powodu bardzo wysokich, nieobjętych ubezpieczeniem kosztów. Modele Beveridge'a (Wlk. Brytania, Skandynawia) i Bismarcka (Niemcy) zapewniają powszechny dostęp i chronią przed katastrofą finansową. To jeden z najczęściej przytaczanych argumentów przeciw czysto rynkowemu modelowi ochrony zdrowia.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-159",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Galen rozwinął i sformalizował teorię, której pierwotnym autorem był Hipokrates. Była to teoria:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Krążenia płucnego"
+      },
+      {
+        "id": "b",
+        "text": "Atomistyczna"
+      },
+      {
+        "id": "c",
+        "text": "Mikrobiologiczna"
+      },
+      {
+        "id": "d",
+        "text": "Humoralna (czterech soków ustrojowych)"
+      },
+      {
+        "id": "e",
+        "text": "Komórkowa"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Galen** rozwinął i sformalizował **teorię humoralną** (czterech soków: krew, flegma, żółta i czarna żółć), której pierwotnym autorem był **Hipokrates**. Według niej choroba wynika z **nierównowagi humorów**, a leczenie (upuszczanie krwi, dieta, zioła) ma przywrócić równowagę. Teoria dominowała aż do XVII-XVIII w. Teorię atomistyczną w medycynie głosił Asklepiades; krążenie płucne opisał Ibn al-Nafis. Linia Hipokrates→Galen to kręgosłup antycznej i średniowiecznej medycyny.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-160",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Które stwierdzenie NIE jest prawdziwe w odniesieniu do roli Kościoła w medycynie średniowiecznej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Klasztory przechowywały i kopiowały starożytne teksty medyczne"
+      },
+      {
+        "id": "b",
+        "text": "Zakonnicy zakładali szpitale i opiekowali się chorymi"
+      },
+      {
+        "id": "c",
+        "text": "Religijne podejście do ciała ograniczało rozwój chirurgii"
+      },
+      {
+        "id": "d",
+        "text": "Mnisi rozwijali ziołolecznictwo i prowadzili ogrody ziołowe"
+      },
+      {
+        "id": "e",
+        "text": "Kościół aktywnie promował publiczne sekcje zwłok od początku średniowiecza"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Stwierdzenie **C jest fałszywe** — Kościół przez długi czas **zabraniał sekcji zwłok** i eksperymentów anatomicznych, co **ograniczało** rozwój chirurgii i anatomii (publiczne sekcje pojawiły się dopiero od XIV w., np. w Bolonii). Prawdziwe są pozostałe role: przechowywanie i kopiowanie tekstów, zakładanie szpitali, ziołolecznictwo w klasztorach. To pytanie typu \"które NIE jest prawdziwe\" — Kościół odegrał rolę dwuznaczną: chronił wiedzę, ale hamował niektóre postępy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-161",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który anatom epoki Renesansu, autor dzieła \"De humani corporis fabrica\" (1543), uznawany jest za ojca nowoczesnej anatomii i podważył wiele twierdzeń Galena?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Andreas Vesalius"
+      },
+      {
+        "id": "b",
+        "text": "Marcello Malpighi"
+      },
+      {
+        "id": "c",
+        "text": "William Harvey"
+      },
+      {
+        "id": "d",
+        "text": "Giovanni Morgagni"
+      },
+      {
+        "id": "e",
+        "text": "Ambroise Paré"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Andreas Vesalius** (1514–1564), flamandzki lekarz, w 1543 r. wydał **\"De humani corporis fabrica\"** (\"O budowie ciała ludzkiego\") – przełomowe, oparte na własnych sekcjach zwłok dzieło z precyzyjnymi ilustracjami, które obalało błędy **Galena**. **Harvey** odkrył krążenie krwi (XVII w.), **Malpighi** to ojciec anatomii mikroskopowej, **Morgagni** – anatomii patologicznej, a **Paré** był chirurgiem. Mnemonik: \"Vesalius = Fabrica\" – nazwisko i tytuł dzieła idą w parze.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-162",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Renesansowemu chirurgowi Ambroise'owi Paré przypisuje się rewolucję w leczeniu ran. Na czym polegała jego kluczowa innowacja w tamowaniu krwotoków?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przypalanie ran wrzącym olejem i rozżarzonym żelazem (kauteryzacja)"
+      },
+      {
+        "id": "b",
+        "text": "Wprowadzenie kwasu karbolowego do dezynfekcji"
+      },
+      {
+        "id": "c",
+        "text": "Mycie rąk roztworem chloru przed zabiegiem"
+      },
+      {
+        "id": "d",
+        "text": "Zakładanie wchłanialnych szwów katgutowych z jelit zwierzęcych"
+      },
+      {
+        "id": "e",
+        "text": "Podwiązywanie naczyń krwionośnych (ligatury) zamiast wypalania żelazem"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Ambroise Paré** (ok. 1510–1590), uważany za ojca nowożytnej chirurgii, zastąpił brutalne wypalanie ran żelazem i wrzącym olejem **podwiązywaniem naczyń (ligaturami)** oraz łagodnymi opatrunkami (jaja, olej różany, terpentyna). Kwas karbolowy to **Lister** (XIX w.), mycie rąk – **Semmelweis**. Słynne zdanie Parégo: \"Ja go opatrywałem, a Bóg uleczył\". Pisał po francusku, by udostępnić wiedzę praktykom. Paré jako balwierz-chirurg osiągnął rangę lekarza czterech królów Francji.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-163",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który renesansowy uczony w dziele \"De contagione\" (1546) sformułował koncepcję, że choroby zakaźne przenoszone są przez niewidzialne \"zarazki\" (seminaria contagionis)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Paracelsus"
+      },
+      {
+        "id": "b",
+        "text": "Girolamo Fracastoro"
+      },
+      {
+        "id": "c",
+        "text": "Leonard Fuchs"
+      },
+      {
+        "id": "d",
+        "text": "Andreas Vesalius"
+      },
+      {
+        "id": "e",
+        "text": "Marcello Malpighi"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Girolamo Fracastoro** (1478–1553) w \"De contagione et contagiosis morbis\" (1546) opisał przenoszenie chorób przez niewidzialne **\"seminaria contagionis\"** (nasiona zarazy) – przez kontakt bezpośredni, pośredni i na odległość. Intuicyjnie wyprzedził odkrycie drobnoustrojów, mimo braku mikroskopu. Konkurencyjne wówczas teorie to **miazmatyczna** (\"zepsute powietrze\") i **humoralna**. Pełen rozwój teorii zakażeń – dopiero Pasteur i Koch w XIX w.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-164",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Maksyma \"Tylko dawka czyni truciznę\" oraz wprowadzenie związków chemicznych (rtęć, siarka, arsen) do terapii to dorobek którego prekursora nowoczesnej farmakologii?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dioskurides"
+      },
+      {
+        "id": "b",
+        "text": "Franciscus Sylvius"
+      },
+      {
+        "id": "c",
+        "text": "Paracelsus"
+      },
+      {
+        "id": "d",
+        "text": "Jan Baptist van Helmont"
+      },
+      {
+        "id": "e",
+        "text": "Galen"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Paracelsus** (Philippus Theophrastus von Hohenheim, 1493–1541) głosił, że \"tylko dawka czyni truciznę\" – do dziś podstawa **toksykologii**. Jako jeden z pierwszych stosował **minerały i związki chemiczne** (rtęć, siarka, arsen) jako leki, krytykując Galena i Awicennę. Twórca medycyny spagirycznej. **Sylvius** i **van Helmont** to jatrochemicy XVII w.; **Dioskurides** – autor antycznego \"De Materia Medica\". Postawił na empirię i obserwację zamiast ślepego autorytetu dawnych tekstów.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-165",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Odkrycie zamkniętego krążenia krwi pompowanej przez serce, opublikowane w dziele \"De motu cordis\" (1628), było dziełem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Marcella Malpighiego"
+      },
+      {
+        "id": "b",
+        "text": "Williama Harveya"
+      },
+      {
+        "id": "c",
+        "text": "Santoria Santoria"
+      },
+      {
+        "id": "d",
+        "text": "Thomasa Sydenhama"
+      },
+      {
+        "id": "e",
+        "text": "Roberta Hooke'a"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**William Harvey** (1578–1657) w \"Exercitatio anatomica de motu cordis et sanguinis in animalibus\" (1628) obalił galenowską teorię ciągłej produkcji krwi w wątrobie, dowodząc **zamkniętego obiegu** pompowanego przez serce. Użył obliczeń matematycznych i eksperymentów. Brakujące ogniwo – **naczynia włosowate** – potwierdził dopiero **Malpighi** (1661). Harvey to wzorzec nowożytnej metody fizjologicznej. Jego mechanistyczne ujęcie krążenia wpisało biologię w ramy nauk przyrodniczych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-166",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który włoski uczony, uznawany za ojca anatomii mikroskopowej, jako pierwszy zaobserwował naczynia włosowate w płucach żaby (1661), dopełniając teorię krążenia krwi?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Antoni van Leeuwenhoek"
+      },
+      {
+        "id": "b",
+        "text": "Marcello Malpighi"
+      },
+      {
+        "id": "c",
+        "text": "Robert Hooke"
+      },
+      {
+        "id": "d",
+        "text": "Franciscus Sylvius"
+      },
+      {
+        "id": "e",
+        "text": "Giovanni Morgagni"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Marcello Malpighi** (1628–1694), ojciec anatomii mikroskopowej, odkrył **kapilary w płucach żaby** (1661), uzupełniając model Harveya o ogniwo łączące tętnice z żyłami. Opisał m.in. ciałka nerkowe (Malpighiego) i warstwę Malpighiego w skórze. **Leeuwenhoek** opisał \"animalcules\", **Hooke** ukuł termin \"komórka\" (cells) w \"Micrographia\" (1665). Łatwo mylić tych trzech mikroskopistów XVII w. Przejście od anatomii makroskopowej do mikroskopowej umożliwiło rozwój histologii.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-167",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Holenderski samouk, który mikroskopami własnej konstrukcji jako pierwszy zaobserwował organizmy jednokomórkowe (\"animalcules\") i opisał je w listach do Royal Society, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Robert Hooke"
+      },
+      {
+        "id": "b",
+        "text": "Marcello Malpighi"
+      },
+      {
+        "id": "c",
+        "text": "Jan Baptist van Helmont"
+      },
+      {
+        "id": "d",
+        "text": "Antoni van Leeuwenhoek"
+      },
+      {
+        "id": "e",
+        "text": "Martinus Beijerinck"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Antoni van Leeuwenhoek** (1632–1723), holenderski samouk, budował proste mikroskopy o powiększeniu do ~270× i jako pierwszy opisał **\"animalcules\"** (jednokomórkowce), bakterie, plemniki i krwinki w listach do **Royal Society**. Sam nie powiązał ich z chorobami – to zrobili później Pasteur i Koch. **Hooke** opisał komórki korka, **Beijerinck** (XIX/XX w.) badał wirusy. Jego obserwacje przygotowały grunt pod późniejszą teorię drobnoustrojową chorób.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-168",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Angielski lekarz Thomas Sydenham (1624–1689), zwany \"angielskim Hipokratesem\", zasłynął przede wszystkim z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Odkrycia naczyń włosowatych pod mikroskopem"
+      },
+      {
+        "id": "b",
+        "text": "Wprowadzenia pierwszego szczepienia przeciw ospie prawdziwej krowianką"
+      },
+      {
+        "id": "c",
+        "text": "Nacisku na obserwację kliniczną objawów zamiast samej teorii"
+      },
+      {
+        "id": "d",
+        "text": "Sformułowania zasady \"omnis cellula e cellula\""
+      },
+      {
+        "id": "e",
+        "text": "Pomiarów ilościowych przemiany materii i perspiracji człowieka"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Thomas Sydenham**, \"angielski Hipokrates\", głosił prymat **dokładnej obserwacji klinicznej** objawów nad teorią – praktykował coś bliskiego dzisiejszej evidence-based medicine. Opisał m.in. pląsawicę Sydenhama, stosował chininę w malarii. Zasada \"omnis cellula\" to **Virchow**, szczepienie przeciw ospie – **Jenner**, pomiary metabolizmu – **Santorio**. Prekursor nowoczesnej medycyny klinicznej. Twierdził, że to natura leczy chorobę, a rolą lekarza jest jej nie przeszkadzać.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-169",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Który włoski lekarz, pionier medycyny opartej na pomiarach ilościowych, wprowadził pojęcie \"niewidzialnej perspiracji\" i zapoczątkował badanie przemiany materii?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Franciscus Sylvius"
+      },
+      {
+        "id": "b",
+        "text": "Santorio Santorio"
+      },
+      {
+        "id": "c",
+        "text": "Marcello Malpighi"
+      },
+      {
+        "id": "d",
+        "text": "Giovanni Morgagni"
+      },
+      {
+        "id": "e",
+        "text": "Jan Baptist van Helmont"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Santorio Santorio** (1561–1636), pionier medycyny ilościowej, latami ważył siebie i pokarmy, wprowadzając pojęcie **\"niewidzialnej perspiracji\"** (utrata masy przez oddychanie i pocenie). Dał podstawy badań nad **metabolizmem** i fizjologii pomiarowej (termometr, waga). **Sylvius** to jatrochemik, **van Helmont** – prekursor biochemii, **Morgagni** – anatomia patologiczna. Santorio łączył medycynę z fizyką i matematyką.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-170",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Dualizm ciała i duszy oraz postrzeganie ciała jako maszyny, wpływające na rozwój nowożytnej fizjologii, wiążą się z filozofem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "John Locke"
+      },
+      {
+        "id": "b",
+        "text": "René Descartes (Kartezjusz)"
+      },
+      {
+        "id": "c",
+        "text": "David Hume"
+      },
+      {
+        "id": "d",
+        "text": "Jean-Jacques Rousseau"
+      },
+      {
+        "id": "e",
+        "text": "Thomas Sydenham"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**René Descartes** (Kartezjusz, 1596–1650), autor maksymy \"Cogito, ergo sum\", głosił **dualizm** – ciało (materialne) i dusza (niematerialna) jako odrębne byty, a ciało traktował jako **maszynę** do badania mechanicznego. Sprzyjało to rozwojowi anatomii i fizjologii. **Locke** (\"tabula rasa\") i **Hume** kładli podwaliny pod psychologię, **Rousseau** podkreślał rolę czynników społecznych. Jego metoda wątpienia i analizy stała się inspiracją dla medycyny eksperymentalnej.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-171",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Włoski anatom Giovanni Battista Morgagni (1682–1771) zapisał się w historii medycyny jako ojciec:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nowoczesnej fizjologii eksperymentalnej"
+      },
+      {
+        "id": "b",
+        "text": "Immunologii"
+      },
+      {
+        "id": "c",
+        "text": "Anatomii mikroskopowej i histologii"
+      },
+      {
+        "id": "d",
+        "text": "Nowoczesnej psychiatrii"
+      },
+      {
+        "id": "e",
+        "text": "Nowoczesnej anatomii patologicznej"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Giovanni Battista Morgagni**, ojciec **anatomii patologicznej**, w dziele \"De Sedibus et Causis Morborum\" (1761) jako pierwszy systematycznie powiązał objawy kliniczne ze zmianami anatomicznymi wykrywanymi w sekcji – ponad 700 opisów przypadków. Ojcem fizjologii był **Haller**, immunologii – **Jenner**, anatomii mikroskopowej – **Malpighi**, psychiatrii – **Pinel**. Morgagni: każda choroba ma fizyczne źródło w narządzie.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-172",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Szwajcarski uczony Albrecht von Haller (1708–1777), ojciec nowoczesnej fizjologii, wsławił się rozróżnieniem dwóch właściwości tkanek. Były to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pobudliwość mięśni i wrażliwość nerwów"
+      },
+      {
+        "id": "b",
+        "text": "Kurczliwość serca i elastyczność naczyń"
+      },
+      {
+        "id": "c",
+        "text": "Przewodnictwo i opór tkankowy"
+      },
+      {
+        "id": "d",
+        "text": "Wydzielanie wewnętrzne i zewnętrzne"
+      },
+      {
+        "id": "e",
+        "text": "Metabolizm tlenowy i beztlenowy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Albrecht von Haller** wykazał, że **mięśnie są pobudliwe** (reagują na bodziec bez udziału nerwów), a **nerwy wrażliwe** (odczuwają i przekazują bodźce) – kluczowe rozróżnienie dla neurofizjologii. Prowadził systematyczne eksperymenty na żywych organizmach. Jego 8-tomowe \"Elementa Physiologiae Corporis Humani\" to pierwsza nowoczesna praca z fizjologii człowieka. Mnemonik: mięsień = pobudliwy, nerw = wrażliwy.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-173",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Edward Jenner (1749–1823) w 1796 r. przeprowadził pierwsze skuteczne szczepienie przeciw ospie prawdziwej. Jakiego materiału użył?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Osłabionego wirusa ospy prawdziwej"
+      },
+      {
+        "id": "b",
+        "text": "Surowicy ozdrowieńców"
+      },
+      {
+        "id": "c",
+        "text": "Riketsji hodowanych we wszach"
+      },
+      {
+        "id": "d",
+        "text": "Wirusa krowianki (ospy krowiej)"
+      },
+      {
+        "id": "e",
+        "text": "Inaktywowanej szczepionki z hodowli tkankowej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Edward Jenner**, ojciec immunologii, zauważył, że mleczarki po przebyciu **ospy krowiej (krowianki)** nie chorują na ospę prawdziwą. W 1796 r. zaszczepił 8-letniego chłopca materiałem od kobiety z ospą krowią, a próba zarażenia ospą prawdziwą okazała się bezskuteczna. To kamień milowy immunologii. Hodowla riketsji we wszach to metoda **Weigla** (tyfus, XX w.), nie Jennera. Praca Jennera doprowadziła do globalnej walki z ospą i jej eradykacji w XX wieku.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-174",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Francuski lekarz uznawany za jednego z ojców nowoczesnej psychiatrii, który w 1793 r. uwolnił chorych psychicznie z łańcuchów i wprowadził humanitarne metody, to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Jean-Étienne Esquirol"
+      },
+      {
+        "id": "b",
+        "text": "Philippe Pinel"
+      },
+      {
+        "id": "c",
+        "text": "Sigmund Freud"
+      },
+      {
+        "id": "d",
+        "text": "Władysław Biegański"
+      },
+      {
+        "id": "e",
+        "text": "Carl Rogers"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Philippe Pinel** (1745–1826), jeden z ojców nowoczesnej psychiatrii, w 1793 r. w paryskim szpitalu **uwolnił chorych z łańcuchów** i wprowadził humanitarne, oparte na obserwacji podejście oraz terapię rozmową. **Esquirol** był jego uczniem (pojęcie \"monomanii\"), **Freud** stworzył psychoanalizę (XIX/XX w.), **Biegański** to polski psychiatra. Pinel klasyfikował zaburzenia wg objawów. Jego podejście wyznaczyło początek leczenia opartego na nauce i empatii, nie przesądach.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  },
+  {
+    "id": "phum-soc-gen-175",
+    "topic_id": "PHUM-SOC-GEN",
+    "text": "Filozofowi Johnowi Locke'owi przypisuje się koncepcję, która kładła fundamenty pod późniejsze badania nad psychiką. Chodzi o ideę, że umysł jest jak:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Maszyna podlegająca wyłącznie prawom mechaniki i fizyki"
+      },
+      {
+        "id": "b",
+        "text": "Zbiór idei wrodzonych, danych z góry i niezależnych od doświadczenia"
+      },
+      {
+        "id": "c",
+        "text": "Równowaga czterech humorów"
+      },
+      {
+        "id": "d",
+        "text": "Odbicie układu gwiazd i planet"
+      },
+      {
+        "id": "e",
+        "text": "\"Czysta tablica\" (tabula rasa) kształtowana przez doświadczenia"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**John Locke** (1632–1704) głosił, że umysł rodzi się jak **\"czysta tablica\" (tabula rasa)**, a kształtują go doświadczenia, w tym społeczne – fundament empiryzmu i późniejszej psychologii. Mechanistyczne ujęcie ciała to **Descartes**, wrodzone idee – stanowisko racjonalistów, humory – teoria humoralna. **Rousseau** podkreślał psujący wpływ cywilizacji i nierówności społecznych. Rousseau widział w nierównościach społecznych źródło wielu problemów psychicznych.",
+    "batch_label": "gen_phum_soc_2026",
+    "theme_label": null,
+    "subtheme_label": null,
+    "learning_outcome": null,
+    "source_exam": null,
+    "source_code": null,
+    "question_type": "single_choice",
+    "disable_option_shuffle": false,
+    "is_active": true
+  }
+]

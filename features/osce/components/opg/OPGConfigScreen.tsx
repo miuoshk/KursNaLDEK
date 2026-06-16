@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import type {
   OPGQuizConfig,
@@ -46,6 +47,7 @@ function chipStyle(isActive: boolean): React.CSSProperties {
 }
 
 export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
+  const t = useTranslations('osce')
   const [selectedMode, setSelectedMode] = useState<OPGQuizMode>('mcq')
   const [selectedDirection, setSelectedDirection] =
     useState<OPGQuizDirection>('number_to_name')
@@ -70,55 +72,52 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
     })
   }
 
+  const directionOptions: { value: OPGQuizDirection; labelKey: 'opgNumberToName' | 'opgNameToNumber' | 'opgMix' }[] = [
+    { value: 'number_to_name', labelKey: 'opgNumberToName' },
+    { value: 'name_to_number', labelKey: 'opgNameToNumber' },
+    { value: 'mix', labelKey: 'opgMix' },
+  ]
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Tryb odpowiedzi */}
       <section>
-        <p style={sectionLabelStyle}>Tryb odpowiedzi</p>
+        <p style={sectionLabelStyle}>{t('opgAnswerMode')}</p>
         <div style={{ display: 'flex', gap: 8 }}>
           <button
             type="button"
             onClick={() => setSelectedMode('mcq')}
             style={chipStyle(selectedMode === 'mcq')}
           >
-            Test (a/b/c/d)
+            {t('opgMcqMode')}
           </button>
           <button
             type="button"
             onClick={() => setSelectedMode('text_input')}
             style={chipStyle(selectedMode === 'text_input')}
           >
-            Wpisywanie
+            {t('opgTextInputMode')}
           </button>
         </div>
       </section>
 
-      {/* Kierunek pytania */}
       <section>
-        <p style={sectionLabelStyle}>Kierunek pytania</p>
+        <p style={sectionLabelStyle}>{t('opgQuestionDirection')}</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          {(
-            [
-              ['number_to_name', 'Numerki \u2192 Nazwy'],
-              ['name_to_number', 'Nazwy \u2192 Numerki'],
-              ['mix', 'Mix'],
-            ] as const
-          ).map(([value, label]) => (
+          {directionOptions.map(({ value, labelKey }) => (
             <button
               key={value}
               type="button"
               onClick={() => setSelectedDirection(value)}
               style={chipStyle(selectedDirection === value)}
             >
-              {label}
+              {t(labelKey)}
             </button>
           ))}
         </div>
       </section>
 
-      {/* Ilość pytań */}
       <section>
-        <p style={sectionLabelStyle}>Ilość pytań</p>
+        <p style={sectionLabelStyle}>{t('opgQuestionCount')}</p>
         <div style={{ display: 'flex', gap: 8 }}>
           {PRESET_COUNTS.map((n) => (
             <button
@@ -135,7 +134,7 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
             onClick={handleCustomToggle}
             style={chipStyle(isCustomCount)}
           >
-            Własne
+            {t('opgCustomCount')}
           </button>
         </div>
 
@@ -162,7 +161,6 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
         )}
       </section>
 
-      {/* START */}
       <button
         type="button"
         onClick={handleStart}
@@ -179,7 +177,7 @@ export default function OPGConfigScreen({ onStart }: OPGConfigScreenProps) {
           letterSpacing: 0.5,
         }}
       >
-        Rozpocznij quiz
+        {t('opgStartQuiz')}
       </button>
     </div>
   )

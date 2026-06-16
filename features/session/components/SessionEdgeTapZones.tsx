@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 type SessionEdgeTapZonesProps = {
   active: boolean;
   canPrevious: boolean;
@@ -18,6 +20,8 @@ export function SessionEdgeTapZones({
   onPrevious,
   onNext,
 }: SessionEdgeTapZonesProps) {
+  const t = useTranslations("session");
+
   if (!active) return null;
 
   return (
@@ -25,14 +29,14 @@ export function SessionEdgeTapZones({
       <button
         type="button"
         className="fixed left-0 top-0 z-20 h-full w-[min(14vw,72px)] cursor-default border-0 bg-transparent p-0 opacity-0 disabled:pointer-events-none"
-        aria-label="Poprzednie pytanie"
+        aria-label={t("previousQuestionAria")}
         disabled={!canPrevious}
         onClick={onPrevious}
       />
       <button
         type="button"
         className="fixed right-0 top-0 z-20 h-full w-[min(14vw,72px)] cursor-default border-0 bg-transparent p-0 opacity-0 disabled:pointer-events-none"
-        aria-label="Następne pytanie"
+        aria-label={t("nextQuestionAria")}
         disabled={!canNext}
         onClick={onNext}
       />

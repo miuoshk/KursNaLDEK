@@ -210,7 +210,6 @@ export function SummaryHero({
   onInsightsRetry,
 }: Props) {
   const t = useTranslations("session");
-  const tCommon = useTranslations("common");
   const prev = summary.previousAccuracy;
   const delta =
     prev != null ? Math.round((summary.accuracy - prev) * 100) : null;
@@ -218,11 +217,10 @@ export function SummaryHero({
   const declined = delta != null && delta < 0;
   const answered = summary.answers.length;
   const planned = summary.totalQuestions;
-  const questionsLabel = tCommon("questionsCount", { count: planned });
   const questionsLine = t("summaryQuestionsOf", {
     answered: answered < planned ? answered : planned,
     total: planned,
-    questionsLabel,
+    questionsLabel: t("questionsShort"),
   });
   const { title, subtitle } = pickHeadline(summary.accuracy, delta, t);
 

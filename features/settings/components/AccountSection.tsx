@@ -64,15 +64,15 @@ export function AccountSection({ email }: Props) {
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">{t("account.title")}</h2>
 
-      <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-10">
-        <div>
+      <div className="mt-6 grid gap-8 md:grid-cols-2 md:items-stretch md:gap-10">
+        <div className="flex flex-col">
           <h3 className="font-body text-body-sm font-medium text-primary">
             {t("language.chooseTitle")}
           </h3>
           <p className="mt-1 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 flex flex-1 flex-col gap-2">
             {localePickerRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="grid grid-cols-2 gap-2">
+              <div key={rowIndex} className="grid flex-1 grid-cols-2 gap-2">
                 {row.map((code) => {
                   const selected = code === locale;
                   return (
@@ -84,10 +84,10 @@ export function AccountSection({ email }: Props) {
                       aria-pressed={selected}
                       aria-label={localeLabels[code]}
                       className={cn(
-                        "flex flex-col items-center gap-1.5 rounded-btn border px-3 py-3 transition",
+                        "flex h-full min-h-[4.5rem] flex-col items-center justify-center gap-1.5 rounded-btn border px-3 py-3 transition",
                         selected
                           ? "border-brand-gold/50 bg-brand-gold/10"
-                          : "border-white/10 bg-card hover:border-white/20 hover:bg-white/[0.04]",
+                          : "border-white/10 bg-transparent hover:border-white/25",
                         localePending && "opacity-60",
                       )}
                     >
@@ -110,7 +110,7 @@ export function AccountSection({ email }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center space-y-4 md:pt-6">
+        <div className="flex flex-col justify-end space-y-4">
           <button
             type="button"
             onClick={onResetPassword}

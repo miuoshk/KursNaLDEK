@@ -122,7 +122,6 @@ export async function StatsRow({ stats }: { stats: SubjectStats }) {
             {stats.dueCount > 0 && (
               <p className="mt-2 font-body text-body-xs text-brand-gold">
                 {t("dueForReviewCount", {
-                  count: stats.dueCount,
                   questionsLabel: tCommon("questionsCount", { count: stats.dueCount }),
                 })}
               </p>

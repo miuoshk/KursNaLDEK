@@ -88,7 +88,6 @@ export default async function PrzedmiotyPage() {
                 : savedCount === 1
                   ? t("savedOneInCollection")
                   : t("savedManyInCollection", {
-                      count: savedCount,
                       questionsLabel: tCommon("questionsCount", { count: savedCount }),
                     })}
             </p>

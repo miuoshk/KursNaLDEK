@@ -75,6 +75,25 @@ export type SharedProfileRow = {
   created_at: string | null;
 };
 
+export type SegmentProfileRow = {
+  id: string;
+  current_track: string | null;
+  current_year: number | null;
+};
+
+/** Lekki odczyt profili pod wykres segmentów (kierunek × rok). */
+export const getProfilesForSegments = cache(async (): Promise<SegmentProfileRow[]> => {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("profiles")
+    .select("id, current_track, current_year");
+  if (error) {
+    console.error("[loadAdminShared] segment profiles error", error.message);
+    return [];
+  }
+  return (data ?? []) as SegmentProfileRow[];
+});
+
 export type SharedSubjectRow = {
   id: string;
   name: string | null;
@@ -113,6 +132,75 @@ export const getStudySessionsLast90d = cache(async (): Promise<SharedSessionRow[
       .order("started_at", { ascending: true })
       .range(from, to),
   );
+});
+
+/** Sesje z 30 dni — wystarczają dla KPI i analityki dashboardu. */
+export const getStudySessionsLast30d = cache(async (): Promise<SharedSessionRow[]> => {
+  const admin = createAdminClient();
+  const since30Iso = new Date(Date.now() - 30 * MS_DAY).toISOString();
+  return fetchAllPaginated<SharedSessionRow>("study_sessions_30d", async (from, to) =>
+    admin
+      .from("study_sessions")
+      .select(
+        "id, user_id, subject_id, mode, total_questions, correct_answers, accuracy, duration_seconds, started_at, completed_at, is_completed",
+      )
+      .gte("started_at", since30Iso)
+      .order("started_at", { ascending: true })
+      .range(from, to),
+  );
+});
+
+export const getTotalUsersCount = cache(async (): Promise<number> => {
+  const admin = createAdminClient();
+  const { count, error } = await admin
+    .from("profiles")
+    .select("id", { count: "exact", head: true });
+  if (error) {
+    console.error("[loadAdminShared] profiles count", error.message);
+    return 0;
+  }
+  return count ?? 0;
+});
+
+export const getPaidUsersCount = cache(async (): Promise<number> => {
+  const admin = createAdminClient();
+  const { count, error } = await admin
+    .from("profiles")
+    .select("id", { count: "exact", head: true })
+    .eq("subscription_status", "active");
+  if (error) {
+    console.error("[loadAdminShared] paid profiles count", error.message);
+    return 0;
+  }
+  return count ?? 0;
+});
+
+export const getNewRegistrationsCountSince = cache(
+  async (sinceIso: string): Promise<number> => {
+    const admin = createAdminClient();
+    const { count, error } = await admin
+      .from("profiles")
+      .select("id", { count: "exact", head: true })
+      .gte("created_at", sinceIso);
+    if (error) {
+      console.error("[loadAdminShared] registrations count", error.message);
+      return 0;
+    }
+    return count ?? 0;
+  },
+);
+
+export const getPendingReportsCount = cache(async (): Promise<number> => {
+  const admin = createAdminClient();
+  const { count, error } = await admin
+    .from("error_reports")
+    .select("id", { count: "exact", head: true })
+    .eq("status", "pending");
+  if (error) {
+    console.error("[loadAdminShared] pending reports count", error.message);
+    return 0;
+  }
+  return count ?? 0;
 });
 
 /** Liczba faktycznych odpowiedzi (session_answers) od podanej daty. */

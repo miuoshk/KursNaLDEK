@@ -5,7 +5,7 @@ import {
   getAllProfiles,
   getAllSubjects,
   getSessionAnswersCountSince,
-  getStudySessionsLast90d,
+  getStudySessionsLast30d,
   getTotalQuestionsCount,
 } from "@/features/admin/server/loadAdminShared";
 import { mergeSubjectPopularityByShortName } from "@/features/admin/server/mergeSubjectPopularity";
@@ -260,7 +260,7 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     answersCount14d,
   ] = await Promise.all([
     getTotalQuestionsCount(),
-    getStudySessionsLast90d(),
+    getStudySessionsLast30d(),
     getAllProfiles(),
     getAllSubjects(),
     getAllErrorReports(),

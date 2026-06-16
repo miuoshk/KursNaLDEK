@@ -1,7 +1,10 @@
 import { Suspense } from "react";
 import { AdminCohortSubjectChart } from "@/features/admin/components/AdminCohortSubjectChart";
+import { AdminLazyMount } from "@/features/admin/components/AdminLazyMount";
 import { AdminTrendChart } from "@/features/admin/components/AdminTrendChart";
-import { DashboardSections } from "@/features/admin/components/sections/DashboardSections";
+import { DashboardAnalyticsSections } from "@/features/admin/components/sections/DashboardAnalyticsSections";
+import { DashboardKpiSection } from "@/features/admin/components/sections/DashboardKpiSection";
+import { DashboardSegmentsSection } from "@/features/admin/components/sections/DashboardSegmentsSection";
 import { FinanceSection } from "@/features/admin/components/sections/FinanceSection";
 import { InvestorSections } from "@/features/admin/components/sections/InvestorSections";
 import {
@@ -25,58 +28,98 @@ export default function AdminDashboardPage() {
         </p>
       </header>
 
-      <Suspense fallback={<DashboardSectionsFallback />}>
-        <DashboardSections />
-      </Suspense>
+      <div>
+        <Suspense fallback={<KpiFallback />}>
+          <DashboardKpiSection />
+        </Suspense>
 
-      <section>
-        <SectionHeader
-          title="Trendy — filtruj kierunkiem, rokiem i zakresem"
-          subtitle="Każdy wykres ma własne kontrolki; dane na żywo z bazy"
-        />
-        <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-          <AdminTrendChart metric="sessions" />
-          <AdminTrendChart metric="time" />
-          <AdminTrendChart metric="answers" />
-          <AdminTrendChart metric="users" />
-          <AdminCohortSubjectChart />
-          <AdminTrendChart metric="accuracy" />
-        </div>
-      </section>
+        <Suspense fallback={<SegmentsFallback />}>
+          <DashboardSegmentsSection />
+        </Suspense>
 
-      <Suspense fallback={<FinanceFallback />}>
-        <FinanceSection />
-      </Suspense>
+        <Suspense fallback={<AnalyticsFallback />}>
+          <DashboardAnalyticsSections />
+        </Suspense>
+      </div>
 
-      <Suspense fallback={<InvestorFallback />}>
-        <InvestorSections />
-      </Suspense>
+      <AdminLazyMount fallback={<TrendChartsFallback />}>
+        <section>
+          <SectionHeader
+            title="Trendy — filtruj kierunkiem, rokiem i zakresem"
+            subtitle="Każdy wykres ma własne kontrolki; dane na żywo z bazy"
+          />
+          <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <AdminTrendChart metric="sessions" />
+            <AdminTrendChart metric="time" />
+            <AdminTrendChart metric="answers" />
+            <AdminTrendChart metric="users" />
+            <AdminCohortSubjectChart />
+            <AdminTrendChart metric="accuracy" />
+          </div>
+        </section>
+      </AdminLazyMount>
+
+      <AdminLazyMount fallback={<FinanceFallback />}>
+        <Suspense fallback={<FinanceFallback />}>
+          <FinanceSection />
+        </Suspense>
+      </AdminLazyMount>
+
+      <AdminLazyMount fallback={<InvestorFallback />}>
+        <Suspense fallback={<InvestorFallback />}>
+          <InvestorSections />
+        </Suspense>
+      </AdminLazyMount>
     </div>
   );
 }
 
-function DashboardSectionsFallback() {
+function KpiFallback() {
   return (
-    <div className="flex flex-col gap-10">
-      <section>
-        <SectionHeader title="Najważniejsze liczby" subtitle="Stan na dziś" />
-        <KpiRowSkeleton cols={8} />
-      </section>
-      <section>
-        <SectionHeader
-          title="Użytkownicy — segmenty"
-          subtitle="Kto siedzi w platformie: kierunek + rok studiów"
-        />
-        <SectionSkeleton height="h-72" />
-      </section>
-      <section>
-        <SectionHeader
-          title="Kiedy się uczą"
-          subtitle="Pora dnia i dzień tygodnia (ostatnie 30 dni)"
-        />
-        <SectionSkeleton height="h-64" />
-      </section>
-    </div>
+    <section>
+      <SectionHeader title="Najważniejsze liczby" subtitle="Stan na dziś" />
+      <KpiRowSkeleton cols={8} />
+    </section>
+  );
+}
+
+function SegmentsFallback() {
+  return (
+    <section>
+      <SectionHeader
+        title="Użytkownicy — segmenty"
+        subtitle="Kierunek + rok studiów · %Total = zarejestrowani / rocznik (LEK 288, STOMA 120)"
+      />
+      <SectionSkeleton height="h-72" />
+    </section>
+  );
+}
+
+function AnalyticsFallback() {
+  return (
+    <section>
+      <SectionHeader
+        title="Kiedy się uczą"
+        subtitle="Pora dnia i dzień tygodnia (ostatnie 30 dni)"
+      />
+      <SectionSkeleton height="h-64" />
+    </section>
+  );
+}
+
+function TrendChartsFallback() {
+  return (
+    <section>
+      <SectionHeader
+        title="Trendy — filtruj kierunkiem, rokiem i zakresem"
+        subtitle="Każdy wykres ma własne kontrolki; dane na żywo z bazy"
+      />
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <SectionSkeleton key={i} height="h-56" />
+        ))}
+      </div>
+    </section>
   );
 }
 

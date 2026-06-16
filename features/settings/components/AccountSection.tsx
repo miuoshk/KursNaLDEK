@@ -5,12 +5,12 @@ import { Lock, Trash2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { deleteAccount } from "@/features/settings/api/deleteAccount";
 import { requestPasswordReset } from "@/features/settings/api/requestPasswordReset";
 import { updateLocale } from "@/features/settings/api/updateLocale";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import {
-  localeFlags,
   localeLabels,
   localePickerRows,
   type AppLocale,
@@ -61,10 +61,8 @@ export function AccountSection({ email }: Props) {
   }
 
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("account.title")}</h2>
-
-      <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-0">
+    <SettingsCard title={t("account.title")}>
+      <div className="grid gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-0">
         <div className="flex flex-col">
           <h3 className="font-body text-body-sm font-medium text-primary">
             {t("language.chooseTitle")}
@@ -83,17 +81,14 @@ export function AccountSection({ email }: Props) {
                       aria-pressed={selected}
                       aria-label={localeLabels[code]}
                       className={cn(
-                        "inline-flex items-center justify-center gap-2 rounded-btn border px-3 py-2.5 transition",
+                        "inline-flex items-center justify-center rounded-btn border px-3 py-2.5 transition",
                         selected
                           ? "border-brand-gold/60 text-brand-gold"
                           : "border-white/10 text-secondary hover:border-white/25 hover:text-primary",
                         localePending && "opacity-60",
                       )}
                     >
-                      <span className="text-lg leading-none" aria-hidden>
-                        {localeFlags[code]}
-                      </span>
-                      <span className="font-body text-body-xs">{localeLabels[code]}</span>
+                      <span className="font-body text-body-sm">{localeLabels[code]}</span>
                     </button>
                   );
                 })}
@@ -102,7 +97,7 @@ export function AccountSection({ email }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 md:pt-7">
+        <div className="flex flex-col gap-5">
           <button
             type="button"
             onClick={onResetPassword}
@@ -127,7 +122,7 @@ export function AccountSection({ email }: Props) {
         </div>
       </div>
 
-      <p className="mt-3 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
+      <p className="mt-6 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
@@ -173,6 +168,6 @@ export function AccountSection({ email }: Props) {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
-    </section>
+    </SettingsCard>
   );
 }

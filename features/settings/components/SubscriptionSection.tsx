@@ -2,6 +2,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { getLocale, getTranslations } from "next-intl/server";
 import { createBillingPortalSessionAction } from "@/features/access/actions";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { AppLocale } from "@/i18n/config";
 import { getDateFnsLocale } from "@/lib/i18n/dateFnsLocale";
@@ -21,9 +22,8 @@ export async function SubscriptionSection({ profile }: Props) {
     : null;
 
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("subscription.title")}</h2>
-      <div className="mt-6 space-y-4">
+    <SettingsCard title={t("subscription.title")}>
+      <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-3">
           <span
             className={cn(
@@ -41,15 +41,17 @@ export async function SubscriptionSection({ profile }: Props) {
             <p className="font-body text-body-md text-secondary">{t("subscription.noEndDate")}</p>
           )}
         </div>
-        {active && profile.stripe_customer_id ? (
-          <form action={createBillingPortalSessionAction}>
-            <button
-              type="submit"
-              className="inline-flex font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
-            >
-              {t("subscription.manage")}
-            </button>
-          </form>
+        {active ? (
+          profile.stripe_customer_id ? (
+            <form action={createBillingPortalSessionAction}>
+              <button
+                type="submit"
+                className="inline-flex font-body text-body-sm text-brand-sage transition-colors hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+              >
+                {t("subscription.manage")}
+              </button>
+            </form>
+          ) : null
         ) : (
           <Link
             href="/cennik"
@@ -59,6 +61,6 @@ export async function SubscriptionSection({ profile }: Props) {
           </Link>
         )}
       </div>
-    </section>
+    </SettingsCard>
   );
 }

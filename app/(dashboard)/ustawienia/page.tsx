@@ -28,7 +28,7 @@ export default async function UstawieniaPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-2xl space-y-8">
+    <div className="mx-auto max-w-3xl space-y-6">
       <SettingsBreadcrumb />
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">

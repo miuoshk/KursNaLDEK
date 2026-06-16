@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { achievementLucide } from "@/features/gamification/lib/achievementIcons";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import type { BadgePreviewItem } from "@/features/settings/server/loadAchievementPreview";
 import { cn } from "@/lib/utils";
 
@@ -10,9 +11,8 @@ type Props = { items: BadgePreviewItem[] };
 export async function AchievementsBadgesPreview({ items }: Props) {
   const t = await getTranslations("settings");
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("achievementsPreview.title")}</h2>
-      <div className="mt-6 grid grid-cols-6 gap-3 sm:max-w-md">
+    <SettingsCard title={t("achievementsPreview.title")}>
+      <div className="grid grid-cols-6 gap-3 sm:max-w-md">
         {items.map((item) => {
           const Icon = achievementLucide(item.icon);
           return (
@@ -41,6 +41,6 @@ export async function AchievementsBadgesPreview({ items }: Props) {
       >
         {t("achievementsPreview.viewAll")}
       </Link>
-    </section>
+    </SettingsCard>
   );
 }

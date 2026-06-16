@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { updateExamDate } from "@/features/settings/api/updateExamDate";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import { cn } from "@/lib/utils";
@@ -71,9 +72,8 @@ export function ExamDateSection({ examDate }: Props) {
   );
 
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("exam.title")}</h2>
-      <div className="mt-6 space-y-2">
+    <SettingsCard title={t("exam.title")}>
+      <div className="space-y-2">
         <label htmlFor="exam-date" className="font-body text-body-sm text-secondary">
           {t("exam.label")}
         </label>
@@ -113,6 +113,6 @@ export function ExamDateSection({ examDate }: Props) {
           {t("exam.optionalHint")}
         </p>
       </div>
-    </section>
+    </SettingsCard>
   );
 }

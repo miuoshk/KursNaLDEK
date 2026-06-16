@@ -4,12 +4,12 @@ import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { updateProfile } from "@/features/settings/api/updateProfile";
 import type { SettingsProfile } from "@/features/settings/types";
 import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import { isValidEmoji } from "@/lib/emoji";
-import { initialsFromName } from "@/lib/initialsFromName";
 
 const selectClass =
   "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
@@ -63,36 +63,17 @@ export function ProfileSection({ profile, email }: Props) {
     } else toast(res.message, "error");
   }
 
-  const fallbackInitials = (
-    profile.avatar_initials?.trim() ||
-    initialsFromName(profile.full_name || profile.nick)
-  )
-    .slice(0, 4)
-    .toUpperCase();
-  const previewEmoji = trimmedEmoji && isValidEmoji(trimmedEmoji) ? trimmedEmoji : null;
-
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("profile.title")}</h2>
-      <div className="mt-6 flex flex-wrap items-center gap-6">
-        <div
-          className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-accent-2 font-body text-3xl text-brand-gold"
-          aria-hidden
-        >
-          {previewEmoji ?? fallbackInitials}
-        </div>
-        <div className="min-w-0 flex-1">
-          <EmojiInput
-            name="avatar_emoji_settings"
-            label={t("profile.avatarLabel")}
-            value={avatarEmoji}
-            onChange={setAvatarEmoji}
-            helper={t("profile.avatarHelper")}
-          />
-        </div>
-      </div>
+    <SettingsCard title={t("profile.title")}>
+      <EmojiInput
+        name="avatar_emoji_settings"
+        label={t("profile.avatarLabel")}
+        value={avatarEmoji}
+        onChange={setAvatarEmoji}
+        helper={t("profile.avatarHelper")}
+      />
 
-      <form onSubmit={onSubmit} className="mt-8 space-y-5">
+      <form onSubmit={onSubmit} className="mt-6 space-y-5">
         <div>
           <label htmlFor="dn" className="font-body text-body-sm text-secondary">
             {t("profile.fullName")}
@@ -172,6 +153,6 @@ export function ProfileSection({ profile, email }: Props) {
           {t("profile.saveChanges")}
         </button>
       </form>
-    </section>
+    </SettingsCard>
   );
 }

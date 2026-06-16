@@ -3,6 +3,7 @@
 import { ChevronDown, Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { updateStudyPreferences } from "@/features/settings/api/updateStudyPreferences";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
@@ -57,14 +58,15 @@ export function StudyPreferencesSection({ profile }: Props) {
   }
 
   return (
-    <section>
-      <div className="flex items-baseline justify-between gap-4">
-        <h2 className="font-heading text-xl font-bold text-primary">{t("study.title")}</h2>
-        {savedFlash ? (
+    <SettingsCard
+      title={t("study.title")}
+      aside={
+        savedFlash ? (
           <span className="font-body text-body-xs text-brand-sage">{t("study.saved")}</span>
-        ) : null}
-      </div>
-      <div className="mt-6 space-y-6">
+        ) : null
+      }
+    >
+      <div className="space-y-6">
         <div>
           <p className="font-body text-body-sm text-secondary">{t("study.dailyGoal")}</p>
           <div className="mt-2 flex flex-wrap items-center gap-3">
@@ -164,6 +166,6 @@ export function StudyPreferencesSection({ profile }: Props) {
           </div>
         </div>
       </div>
-    </section>
+    </SettingsCard>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { updateNotifications } from "@/features/settings/api/updateNotifications";
 import type { SettingsProfile } from "@/features/settings/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
@@ -26,9 +27,8 @@ export function NotificationsSection({ profile }: Props) {
   }
 
   return (
-    <section>
-      <h2 className="font-heading text-xl font-bold text-primary">{t("notifications.title")}</h2>
-      <ul className="mt-6 space-y-6">
+    <SettingsCard title={t("notifications.title")}>
+      <ul className="space-y-6">
         <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p
@@ -72,6 +72,6 @@ export function NotificationsSection({ profile }: Props) {
           />
         </li>
       </ul>
-    </section>
+    </SettingsCard>
   );
 }

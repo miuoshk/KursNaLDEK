@@ -764,7 +764,8 @@
     }
   },
   "session": {
-    "loadingSession": "Ładowanie sesji…",
+      "loadingSession": "Ładowanie sesji…",
+      "redirecting": "Przekierowanie…",
     "loading": "Ładowanie…",
     "topicDefault": "Temat",
     "topicLabel": "Temat: {name}",

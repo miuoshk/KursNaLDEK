@@ -73,8 +73,8 @@ export function ExamDateSection({ examDate }: Props) {
 
   return (
     <SettingsCard title={t("exam.title")}>
-      <div className="space-y-2">
-        <label htmlFor="exam-date" className="font-body text-body-sm text-secondary">
+      <div className="space-y-3">
+        <label htmlFor="exam-date" className="block font-body text-body-sm text-secondary">
           {t("exam.label")}
         </label>
         <input

@@ -81,7 +81,7 @@ export function AccountSection({ email }: Props) {
                       aria-pressed={selected}
                       aria-label={localeLabels[code]}
                       className={cn(
-                        "inline-flex items-center justify-center rounded-btn border px-3 py-2.5 transition",
+                        "inline-flex h-11 items-center justify-center rounded-btn border px-3 transition",
                         selected
                           ? "border-brand-gold/60 text-brand-gold"
                           : "border-white/10 text-secondary hover:border-white/25 hover:text-primary",
@@ -97,27 +97,35 @@ export function AccountSection({ email }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5">
-          <button
-            type="button"
-            onClick={onResetPassword}
-            className="flex items-center gap-2 font-body text-body-sm text-secondary transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+        <div className="flex flex-col">
+          <span
+            aria-hidden
+            className="hidden select-none font-body text-body-sm font-medium md:block"
           >
-            <Lock className="size-4 shrink-0" aria-hidden />
-            {t("account.changePassword")}
-          </button>
-          <div>
+            &nbsp;
+          </span>
+          <div className="mt-3 space-y-2">
             <button
               type="button"
-              onClick={() => setOpen(true)}
-              className="flex items-center gap-2 font-body text-body-sm text-error/60 transition hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+              onClick={onResetPassword}
+              className="flex h-11 items-center gap-2 font-body text-body-sm text-secondary transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
             >
-              <Trash2 className="size-4 shrink-0" aria-hidden />
-              {t("account.deleteAccount")}
+              <Lock className="size-4 shrink-0" aria-hidden />
+              {t("account.changePassword")}
             </button>
-            <p className="mt-1 font-body text-body-xs text-muted">
-              {t("account.deleteIrreversible")}
-            </p>
+            <div>
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="flex h-11 items-center gap-2 font-body text-body-sm text-error/60 transition hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+              >
+                <Trash2 className="size-4 shrink-0" aria-hidden />
+                {t("account.deleteAccount")}
+              </button>
+              <p className="font-body text-body-xs text-muted">
+                {t("account.deleteIrreversible")}
+              </p>
+            </div>
           </div>
         </div>
       </div>

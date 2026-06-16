@@ -191,6 +191,7 @@
   },
   "session": {
     "loadingSession": "Загрузка сессии…",
+    "redirecting": "Перенаправление…",
     "loading": "Loading…",
     "topicDefault": "Topic",
     "topicLabel": "Topic: {name}",

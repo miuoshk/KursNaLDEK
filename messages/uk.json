@@ -191,6 +191,7 @@
   },
   "session": {
     "loadingSession": "Завантаження сесії…",
+    "redirecting": "Перенаправлення…",
     "loading": "Loading…",
     "topicDefault": "Topic",
     "topicLabel": "Topic: {name}",

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { loadSessionSummaryAction } from "@/features/session/api/loadSessionSummary";
 import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
 import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
@@ -21,6 +22,7 @@ function readCachedSummary(sessionId: string): SessionSummaryData | null {
 
 export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   const router = useRouter();
+  const t = useTranslations("session");
   const [summary, setSummary] = useState<SessionSummaryData | null>(() =>
     readCachedSummary(sessionId),
   );
@@ -42,7 +44,7 @@ export function SessionSummaryLoader({ sessionId }: { sessionId: string }) {
   if (error) {
     return (
       <p className="font-body text-body-sm text-muted">
-        Przekierowanie…
+        {t("redirecting")}
       </p>
     );
   }

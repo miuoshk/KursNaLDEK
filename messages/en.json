@@ -434,7 +434,8 @@
     "weakPointsNone": "Great job! You have no weak points."
   },
   "session": {
-    "loadingSession": "Loading session…",
+      "loadingSession": "Loading session…",
+      "redirecting": "Redirecting…",
     "loading": "Loading…",
     "topicDefault": "Topic",
     "topicLabel": "Topic: {name}",

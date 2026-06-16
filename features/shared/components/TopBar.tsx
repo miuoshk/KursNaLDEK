@@ -8,10 +8,7 @@ import { formatStreak } from "@/lib/formatStreak";
 import { CommandPalette } from "@/features/shared/components/CommandPalette";
 import { fetchReportNotifications } from "@/features/notifications/api/fetchReportNotifications";
 import { markReportNotificationsRead } from "@/features/notifications/api/markReportNotificationsRead";
-import {
-  reportVerdictDescription,
-  reportVerdictLabel,
-} from "@/features/notifications/lib/reportVerdictLabel";
+import { ReportNotificationItem } from "@/features/notifications/components/ReportNotificationItem";
 import type { ReportNotification } from "@/features/notifications/types";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
@@ -109,7 +106,7 @@ function NotificationBell() {
       {open && (
         <div
           className={cn(
-            "absolute right-0 top-full z-50 mt-2 w-80 overflow-hidden rounded-card border border-border bg-card shadow-lg",
+            "absolute right-0 top-full z-50 mt-2 w-[min(22rem,92vw)] overflow-hidden rounded-card border border-border bg-card shadow-lg",
             "animate-fade-in",
           )}
         >
@@ -135,36 +132,19 @@ function NotificationBell() {
               <p className="font-body text-body-sm text-secondary">Brak powiadomień</p>
             </div>
           ) : (
-            <ul className="max-h-96 overflow-y-auto">
+            <ul className="max-h-[min(28rem,70vh)] overflow-y-auto">
               {notifications.map((item) => {
                 const isUnread = unreadIds.includes(item.id);
                 return (
                   <li key={item.id} className="border-b border-border last:border-b-0">
-                    <button
-                      type="button"
-                      onClick={() => {
+                    <ReportNotificationItem
+                      item={item}
+                      isUnread={isUnread}
+                      onRead={() => {
                         if (isUnread) void markRead([item.id]);
                       }}
-                      className={cn(
-                        "w-full px-4 py-3 text-left transition-colors hover:bg-white/[0.04]",
-                        isUnread && "bg-brand-gold/[0.06]",
-                      )}
-                    >
-                      <p className="font-body text-body-sm font-medium text-primary">
-                        {reportVerdictLabel(item.status)}
-                      </p>
-                      <p className="mt-0.5 font-body text-body-xs text-secondary">
-                        {reportVerdictDescription(item.status, item.category)}
-                      </p>
-                      {item.adminResponse ? (
-                        <p className="mt-2 line-clamp-3 whitespace-pre-wrap font-body text-body-xs text-primary/90">
-                          {item.adminResponse}
-                        </p>
-                      ) : null}
-                      <p className="mt-2 font-body text-[11px] text-muted">
-                        {formatNotificationDate(item.resolvedAt)}
-                      </p>
-                    </button>
+                      formatDate={formatNotificationDate}
+                    />
                   </li>
                 );
               })}

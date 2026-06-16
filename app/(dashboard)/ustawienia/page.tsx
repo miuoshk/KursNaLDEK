@@ -3,7 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { AccountSection } from "@/features/settings/components/AccountSection";
 import { AchievementsBadgesPreview } from "@/features/settings/components/AchievementsBadgesPreview";
 import { ExamDateSection } from "@/features/settings/components/ExamDateSection";
-import { LanguageSection } from "@/features/settings/components/LanguageSection";
 import { NotificationsSection } from "@/features/settings/components/NotificationsSection";
 import { ProfileSection } from "@/features/settings/components/ProfileSection";
 import { SettingsBreadcrumb } from "@/features/settings/components/SettingsBreadcrumb";
@@ -37,7 +36,6 @@ export default async function UstawieniaPage() {
         </h1>
         <p className="mt-1 font-body text-sm text-secondary">{t("page.subtitle")}</p>
       </header>
-      <LanguageSection />
       <ProfileSection profile={profile} email={resolvedEmail} />
       <ExamDateSection examDate={profile.exam_date} />
       <SubscriptionSection profile={profile} />

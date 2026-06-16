@@ -13,6 +13,20 @@ export const localeLabels: Record<AppLocale, string> = {
   en: "English",
 };
 
+/** Flagi wyświetlane w przełączniku języka (ustawienia → Konto). */
+export const localeFlags: Record<AppLocale, string> = {
+  pl: "🇵🇱",
+  uk: "🇺🇦",
+  ru: "🇷🇺",
+  en: "🇺🇸",
+};
+
+/** Kolejność w panelu języka: wiersz 1 → pl, en; wiersz 2 → ru, uk */
+export const localePickerRows: readonly (readonly AppLocale[])[] = [
+  ["pl", "en"],
+  ["ru", "uk"],
+];
+
 export function isAppLocale(value: string | null | undefined): value is AppLocale {
   return locales.includes(value as AppLocale);
 }

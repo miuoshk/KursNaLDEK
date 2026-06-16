@@ -2,11 +2,19 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { Lock, Trash2, X } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { useState, useTransition } from "react";
 import { deleteAccount } from "@/features/settings/api/deleteAccount";
 import { requestPasswordReset } from "@/features/settings/api/requestPasswordReset";
+import { updateLocale } from "@/features/settings/api/updateLocale";
 import { useToast } from "@/features/shared/components/ToastProvider";
+import {
+  localeFlags,
+  localeLabels,
+  localePickerRows,
+  type AppLocale,
+} from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 type Props = { email: string | null };
@@ -15,8 +23,21 @@ export function AccountSection({ email }: Props) {
   const t = useTranslations("settings");
   const tCommon = useTranslations("common");
   const { toast } = useToast();
+  const locale = useLocale() as AppLocale;
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [localePending, startLocaleTransition] = useTransition();
+
+  function onSelectLocale(nextLocale: AppLocale) {
+    if (nextLocale === locale || localePending) return;
+    const formData = new FormData();
+    formData.set("locale", nextLocale);
+    startLocaleTransition(async () => {
+      await updateLocale(formData);
+      router.refresh();
+    });
+  }
 
   async function onResetPassword() {
     if (!email) {
@@ -42,25 +63,75 @@ export function AccountSection({ email }: Props) {
   return (
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">{t("account.title")}</h2>
-      <div className="mt-6 space-y-4">
-        <button
-          type="button"
-          onClick={onResetPassword}
-          className="flex items-center gap-2 font-body text-body-sm text-secondary transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
-        >
-          <Lock className="size-4" aria-hidden />
-          {t("account.changePassword")}
-        </button>
+
+      <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-10">
         <div>
+          <h3 className="font-body text-body-sm font-medium text-primary">
+            {t("language.chooseTitle")}
+          </h3>
+          <p className="mt-1 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
+          <div className="mt-4 space-y-2">
+            {localePickerRows.map((row, rowIndex) => (
+              <div key={rowIndex} className="grid grid-cols-2 gap-2">
+                {row.map((code) => {
+                  const selected = code === locale;
+                  return (
+                    <button
+                      key={code}
+                      type="button"
+                      disabled={localePending}
+                      onClick={() => onSelectLocale(code)}
+                      aria-pressed={selected}
+                      aria-label={localeLabels[code]}
+                      className={cn(
+                        "flex flex-col items-center gap-1.5 rounded-btn border px-3 py-3 transition",
+                        selected
+                          ? "border-brand-gold/50 bg-brand-gold/10"
+                          : "border-white/10 bg-card hover:border-white/20 hover:bg-white/[0.04]",
+                        localePending && "opacity-60",
+                      )}
+                    >
+                      <span className="text-2xl leading-none" aria-hidden>
+                        {localeFlags[code]}
+                      </span>
+                      <span
+                        className={cn(
+                          "font-body text-body-xs",
+                          selected ? "text-brand-gold" : "text-secondary",
+                        )}
+                      >
+                        {localeLabels[code]}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center space-y-4 md:pt-6">
           <button
             type="button"
-            onClick={() => setOpen(true)}
-            className="flex items-center gap-2 font-body text-body-sm text-error/60 transition hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+            onClick={onResetPassword}
+            className="flex items-center gap-2 font-body text-body-sm text-secondary transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
           >
-            <Trash2 className="size-4" aria-hidden />
-            {t("account.deleteAccount")}
+            <Lock className="size-4" aria-hidden />
+            {t("account.changePassword")}
           </button>
-          <p className="mt-1 font-body text-body-xs text-muted">{t("account.deleteIrreversible")}</p>
+          <div>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="flex items-center gap-2 font-body text-body-sm text-error/60 transition hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
+            >
+              <Trash2 className="size-4" aria-hidden />
+              {t("account.deleteAccount")}
+            </button>
+            <p className="mt-1 font-body text-body-xs text-muted">
+              {t("account.deleteIrreversible")}
+            </p>
+          </div>
         </div>
       </div>
 

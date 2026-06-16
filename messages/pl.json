@@ -470,6 +470,7 @@
     },
     "breadcrumb": "Ustawienia",
     "language": {
+      "chooseTitle": "Wybierz język",
       "sectionTitle": "Język interfejsu",
       "description": "Wybierz język menu, przycisków i komunikatów aplikacji.",
       "contentNotice": "Treść pytań i wyjaśnień jest dostępna po polsku.",

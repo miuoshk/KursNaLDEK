@@ -77,7 +77,7 @@ export function StudyPreferencesSection({ profile }: Props) {
               <Minus className="size-4" aria-hidden />
             </button>
             <span className="min-w-[7rem] font-body text-body-lg text-primary">
-              {goal} {tCommon("questionsCount", { count: goal })}
+              {tCommon("questionsCount", { count: goal })}
             </span>
             <button
               type="button"

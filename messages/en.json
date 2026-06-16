@@ -776,6 +776,7 @@
     },
     "breadcrumb": "Settings",
     "language": {
+      "chooseTitle": "Choose language",
       "sectionTitle": "Interface language",
       "description": "Choose the language for menus, buttons and app messages.",
       "contentNotice": "Question and explanation content is available in Polish.",

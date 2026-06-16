@@ -37,13 +37,18 @@ export async function proxy(request: NextRequest) {
     pathname === "/forgot-password" || pathname === "/auth/callback";
   const isWebhookRoute = pathname === "/api/stripe/webhook";
   const isPublicRoot = pathname === "/";
+  const isLegalRoute =
+    pathname === "/regulamin" ||
+    pathname === "/polityka-prywatnosci" ||
+    pathname.startsWith("/legal/");
 
   if (
     !user &&
     !isAuthRoute &&
     !isPasswordRecoveryRoute &&
     !isWebhookRoute &&
-    !isPublicRoot
+    !isPublicRoot &&
+    !isLegalRoute
   ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
@@ -57,6 +62,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|map)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|map|pdf)$).*)",
   ],
 };

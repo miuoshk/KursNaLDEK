@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { BookOpen } from "lucide-react";
 import type { TopicWithProgress } from "@/features/subjects/server/loadSubjectDashboard";
+import {
+  formatTopicDisplayName,
+  isGeneratedTopic,
+} from "@/features/subjects/lib/topicDisplayName";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
 import { cn } from "@/lib/utils";
 import { pytaniaForm } from "@/lib/pluralizePolish";
@@ -11,6 +15,24 @@ type TopicCardProps = {
   topic: TopicWithProgress;
   onSelect: (topic: TopicWithProgress) => void;
 };
+
+function formatLastStudied(iso: string | null): string {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  const now = new Date();
+  const diffMs = now.getTime() - d.getTime();
+  const diffDays = Math.floor(diffMs / 86_400_000);
+
+  if (diffDays === 0) return "dzisiaj";
+  if (diffDays === 1) return "wczoraj";
+  if (diffDays < 7) return `${diffDays} dni temu`;
+  if (diffDays < 30) {
+    const weeks = Math.floor(diffDays / 7);
+    return weeks === 1 ? "tydzień temu" : `${weeks} tyg. temu`;
+  }
+  return d.toLocaleDateString("pl-PL", { day: "numeric", month: "short" });
+}
 
 function fillClassForProgress(pct: number) {
   if (pct < 40) return "bg-error";
@@ -25,8 +47,8 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const answered = topic.answered_count;
   const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
   const hasQuestions = total > 0;
-  const isGeneratedTopic =
-    topic.id.endsWith("-GEN") || topic.name.includes("(generowane)");
+  const isGeneratedTopicFlag = isGeneratedTopic(topic.id, topic.name);
+  const displayName = formatTopicDisplayName(topic.name);
   const hasKnowledgeCard =
     topic.knowledge_card != null && topic.knowledge_card.trim().length > 0;
 
@@ -34,16 +56,24 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
     <>
       <div className="flex items-center gap-2">
         <h3 className="min-w-0 flex-1 font-heading text-body-md text-primary">
-          {topic.name}
+          {displayName}
         </h3>
         {!hasQuestions && (
           <span className="font-body text-body-xs text-brand-gold">
             Wkrótce
           </span>
         )}
-        {isGeneratedTopic && hasQuestions && (
+        {isGeneratedTopicFlag && hasQuestions && (
           <span className="rounded-pill border border-brand-gold/30 px-2 py-0.5 font-body text-[10px] font-medium uppercase tracking-wide text-brand-gold">
             Generowane
+          </span>
+        )}
+        {topic.session_count > 0 && (
+          <span
+            className="rounded-pill border border-white/10 px-2 py-0.5 font-body text-[10px] font-medium tabular-nums text-secondary"
+            title={`Temat przerobiony ${topic.session_count} ${topic.session_count === 1 ? "raz" : "razy"}`}
+          >
+            {topic.session_count}×
           </span>
         )}
         {hasKnowledgeCard && (
@@ -74,7 +104,9 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         {hasQuestions ? `${answered} / ${total} ${pytaniaForm(total)}` : "Brak pytań"}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
-        <p className="font-body text-body-xs text-muted">Ostatnio: —</p>
+        <p className="font-body text-body-xs text-muted">
+          Ostatnio: {formatLastStudied(topic.last_studied_at)}
+        </p>
         <span
           className={cn(
             "inline-flex items-center rounded-lg border px-3 py-1 font-body text-body-sm font-medium transition-colors duration-200 ease-out",
@@ -105,7 +137,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         className={cn(
           "group block w-full rounded-card border bg-card p-5 text-left",
           "transition-all duration-200 ease-out",
-          isGeneratedTopic
+          isGeneratedTopicFlag
             ? "border-dashed border-brand-gold/25 hover:border-brand-gold/45"
             : "border-border hover:border-brand-sage/30",
         )}
@@ -115,7 +147,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
       {showCard && hasKnowledgeCard && (
         <KnowledgeCardOverlay
           knowledgeCard={topic.knowledge_card!}
-          topicName={topic.name}
+          topicName={displayName}
           onClose={() => setShowCard(false)}
         />
       )}

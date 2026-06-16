@@ -24,6 +24,7 @@ import { buildFallbackReserveIds } from "@/features/session/lib/antares/reserveP
 import {
   fetchDueReviewQuestionIdsForTopics,
   fetchUnseenQuestionIds,
+  isPoolFullySeen,
   mixNaukaQuestionIds,
 } from "@/features/session/server/sessionQuestionMix";
 import { placeFocusQuestionFirst } from "@/features/session/lib/placeFocusQuestionFirst";
@@ -203,6 +204,7 @@ export async function startSession(
     let chosenIds: string[] = [];
     let reserveIds: string[] = [];
     let antaresMeta = new Map<string, SessionQuestionMeta>();
+    let topicFullRerun = false;
 
     let pool: string[];
     let topicFilter: Set<string> | undefined;
@@ -283,41 +285,55 @@ export async function startSession(
         chosenIds,
       );
     } else if (mode === "inteligentna") {
-      const antares = await buildAntaresInteligentnaSession(
-        supabase,
-        user.id,
-        count,
-        pool,
-        topicOkForDue,
-        topicFilter,
-        viewerTrack,
-      );
-      if (antares.questionIds.length > 0) {
-        chosenIds = antares.questionIds;
-        reserveIds = antares.reserveIds;
-        antaresMeta = antares.metaByQuestionId;
-      } else {
-        const dueIds = await fetchDueReviewQuestionIdsForTopics(
-          supabase,
-          user.id,
-          topicOkForDue,
-          viewerTrack,
-          count,
-          topicFilter,
-        );
-        const unseenIds = await fetchUnseenQuestionIds(
-          supabase,
-          user.id,
-          pool,
-          count,
-        );
-        chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
-        reserveIds = buildFallbackReserveIds(count, chosenIds, pool);
+      const wantsFullTopicSet = topicId != null && count >= pool.length;
+      if (wantsFullTopicSet && pool.length > 0) {
+        topicFullRerun = await isPoolFullySeen(supabase, user.id, pool);
+      }
+
+      if (topicFullRerun) {
+        chosenIds = shuffle([...pool]);
         antaresMeta = await fetchSessionQuestionMeta(
           supabase,
           user.id,
-          [...chosenIds, ...reserveIds],
+          chosenIds,
         );
+      } else {
+        const antares = await buildAntaresInteligentnaSession(
+          supabase,
+          user.id,
+          count,
+          pool,
+          topicOkForDue,
+          topicFilter,
+          viewerTrack,
+        );
+        if (antares.questionIds.length > 0) {
+          chosenIds = antares.questionIds;
+          reserveIds = antares.reserveIds;
+          antaresMeta = antares.metaByQuestionId;
+        } else {
+          const dueIds = await fetchDueReviewQuestionIdsForTopics(
+            supabase,
+            user.id,
+            topicOkForDue,
+            viewerTrack,
+            count,
+            topicFilter,
+          );
+          const unseenIds = await fetchUnseenQuestionIds(
+            supabase,
+            user.id,
+            pool,
+            count,
+          );
+          chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
+          reserveIds = buildFallbackReserveIds(count, chosenIds, pool);
+          antaresMeta = await fetchSessionQuestionMeta(
+            supabase,
+            user.id,
+            [...chosenIds, ...reserveIds],
+          );
+        }
       }
     } else {
       chosenIds = shuffle(pool).slice(0, count);
@@ -330,7 +346,7 @@ export async function startSession(
       };
     }
 
-    if (mode !== "katalog") {
+    if (mode !== "katalog" && !topicFullRerun) {
       chosenIds = chosenIds.slice(0, count);
     }
 

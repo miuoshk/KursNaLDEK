@@ -93,6 +93,33 @@ export async function fetchUnseenQuestionIds(
   return poolShuffled.filter((id) => !seen.has(id)).slice(0, limit);
 }
 
+/** Wszystkie pytania z puli mają co najmniej jedną odpowiedź w UQP. */
+export async function isPoolFullySeen(
+  supabase: SupabaseClient,
+  userId: string,
+  pool: string[],
+): Promise<boolean> {
+  if (pool.length === 0) return false;
+
+  const CHUNK = 200;
+  let answeredInPool = 0;
+  for (let i = 0; i < pool.length; i += CHUNK) {
+    const chunk = pool.slice(i, i + CHUNK);
+    const { data, error } = await supabase
+      .from("user_question_progress")
+      .select("question_id")
+      .eq("user_id", userId)
+      .in("question_id", chunk)
+      .gt("times_answered", 0);
+    if (error) {
+      console.error("[isPoolFullySeen]", error.message);
+      return false;
+    }
+    answeredInPool += (data ?? []).length;
+  }
+  return answeredInPool >= pool.length;
+}
+
 export function mixNaukaQuestionIds(
   dueIds: string[],
   unseenIds: string[],

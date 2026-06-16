@@ -14,6 +14,9 @@ export type TopicWithProgress = Topic & {
   answered_count: number;
   correct_count: number;
   knowledge_card: string | null;
+  /** Ukończone sesje z tego tematu (kafelek / filtr topic_id). */
+  session_count: number;
+  last_studied_at: string | null;
 };
 
 export type SubjectStats = {
@@ -125,6 +128,10 @@ export async function loadSubjectDashboard(
       string,
       { uniqueAnswered: number; totalAttempts: number; totalCorrect: number }
     >();
+    const topicSessionStats = new Map<
+      string,
+      { count: number; lastAt: string | null }
+    >();
     let nextReviewDate: Date | null = null;
     let dueCount = 0;
 
@@ -191,10 +198,32 @@ export async function loadSubjectDashboard(
           }
         }
       }
+
+      const { data: topicSessions, error: topicSessErr } = await supabase
+        .from("study_sessions")
+        .select("topic_id, completed_at")
+        .eq("user_id", user.id)
+        .eq("is_completed", true)
+        .in("topic_id", allTopicIds)
+        .order("completed_at", { ascending: false });
+
+      if (topicSessErr) {
+        console.error("[loadSubjectDashboard] topic sessions:", topicSessErr.message);
+      } else {
+        for (const r of topicSessions ?? []) {
+          const tid = r.topic_id as string | null;
+          if (!tid) continue;
+          const cur = topicSessionStats.get(tid) ?? { count: 0, lastAt: null };
+          cur.count += 1;
+          if (!cur.lastAt) cur.lastAt = (r.completed_at as string) ?? null;
+          topicSessionStats.set(tid, cur);
+        }
+      }
     }
 
     const topics: TopicWithProgress[] = topicRows.map((row) => {
       const prog = progressByTopic.get(row.id as string);
+      const sess = topicSessionStats.get(row.id as string);
       return {
         id: row.id,
         subject_id: subjectId,
@@ -204,6 +233,8 @@ export async function loadSubjectDashboard(
         answered_count: prog?.uniqueAnswered ?? 0,
         correct_count: prog?.totalCorrect ?? 0,
         knowledge_card: (row.knowledge_card as string | null) ?? null,
+        session_count: sess?.count ?? 0,
+        last_studied_at: sess?.lastAt ?? null,
       };
     });
 

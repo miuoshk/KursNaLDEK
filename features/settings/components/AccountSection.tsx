@@ -64,15 +64,14 @@ export function AccountSection({ email }: Props) {
     <section>
       <h2 className="font-heading text-xl font-bold text-primary">{t("account.title")}</h2>
 
-      <div className="mt-6 grid gap-8 md:grid-cols-2 md:items-stretch md:gap-10">
+      <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-x-10 md:gap-y-0">
         <div className="flex flex-col">
           <h3 className="font-body text-body-sm font-medium text-primary">
             {t("language.chooseTitle")}
           </h3>
-          <p className="mt-1 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
-          <div className="mt-4 flex flex-1 flex-col gap-2">
+          <div className="mt-3 space-y-2">
             {localePickerRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="grid flex-1 grid-cols-2 gap-2">
+              <div key={rowIndex} className="grid grid-cols-2 gap-2">
                 {row.map((code) => {
                   const selected = code === locale;
                   return (
@@ -84,24 +83,17 @@ export function AccountSection({ email }: Props) {
                       aria-pressed={selected}
                       aria-label={localeLabels[code]}
                       className={cn(
-                        "flex h-full min-h-[4.5rem] flex-col items-center justify-center gap-1.5 rounded-btn border px-3 py-3 transition",
+                        "inline-flex items-center justify-center gap-2 rounded-btn border px-3 py-2.5 transition",
                         selected
-                          ? "border-brand-gold/50 bg-brand-gold/10"
-                          : "border-white/10 bg-transparent hover:border-white/25",
+                          ? "border-brand-gold/60 text-brand-gold"
+                          : "border-white/10 text-secondary hover:border-white/25 hover:text-primary",
                         localePending && "opacity-60",
                       )}
                     >
-                      <span className="text-2xl leading-none" aria-hidden>
+                      <span className="text-lg leading-none" aria-hidden>
                         {localeFlags[code]}
                       </span>
-                      <span
-                        className={cn(
-                          "font-body text-body-xs",
-                          selected ? "text-brand-gold" : "text-secondary",
-                        )}
-                      >
-                        {localeLabels[code]}
-                      </span>
+                      <span className="font-body text-body-xs">{localeLabels[code]}</span>
                     </button>
                   );
                 })}
@@ -110,13 +102,13 @@ export function AccountSection({ email }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col justify-end space-y-4">
+        <div className="flex flex-col gap-5 md:pt-7">
           <button
             type="button"
             onClick={onResetPassword}
             className="flex items-center gap-2 font-body text-body-sm text-secondary transition hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
           >
-            <Lock className="size-4" aria-hidden />
+            <Lock className="size-4 shrink-0" aria-hidden />
             {t("account.changePassword")}
           </button>
           <div>
@@ -125,7 +117,7 @@ export function AccountSection({ email }: Props) {
               onClick={() => setOpen(true)}
               className="flex items-center gap-2 font-body text-body-sm text-error/60 transition hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]"
             >
-              <Trash2 className="size-4" aria-hidden />
+              <Trash2 className="size-4 shrink-0" aria-hidden />
               {t("account.deleteAccount")}
             </button>
             <p className="mt-1 font-body text-body-xs text-muted">
@@ -134,6 +126,8 @@ export function AccountSection({ email }: Props) {
           </div>
         </div>
       </div>
+
+      <p className="mt-3 font-body text-body-xs text-muted">{t("language.contentNotice")}</p>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>

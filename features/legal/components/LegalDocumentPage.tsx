@@ -34,7 +34,7 @@ export async function LegalDocumentPage({ title, pdfPath }: Props) {
       </header>
 
       <iframe
-        src={pdfPath}
+        src={`${pdfPath}#view=FitH`}
         title={title}
         className="min-h-[70vh] w-full flex-1 rounded-card border border-white/10 bg-white"
       />

@@ -55,10 +55,17 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
-      // Regulamin / polityka — osadzane w iframe na stronach publicznych (rejestracja).
+      // PDF-y regulaminu/polityki — muszą być osadzalne w iframe na /regulamin itd.
+      // Globalne CSP ma frame-ancestors 'none'; tu nadpisujemy całe CSP + X-Frame-Options.
       {
         source: "/legal/:path*",
-        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'none'; frame-ancestors 'self'",
+          },
+        ],
       },
     ];
   },

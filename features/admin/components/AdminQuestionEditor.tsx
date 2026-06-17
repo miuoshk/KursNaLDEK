@@ -1,15 +1,20 @@
 "use client";
 
-import { useCallback, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import { Check, Loader2, Plus, RotateCcw, Trash2 } from "lucide-react";
-import { updateQuestionFull } from "@/features/admin/server/adminActions";
+import {
+  fetchAdminTopicCatalog,
+  updateQuestionFull,
+} from "@/features/admin/server/adminActions";
 import { AdminQuestionImageField } from "@/features/admin/components/AdminQuestionImageField";
+import { AdminTopicAssignmentFields } from "@/features/admin/components/AdminTopicAssignmentFields";
 import { MarkdownExplanationEditor } from "@/features/admin/components/MarkdownExplanationEditor";
 import type {
   AdminQuestionDetail,
   AdminQuestionOption,
   QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
+import type { AdminTopicCatalog } from "@/features/admin/server/loadAdminTopicCatalog";
 import { cn } from "@/lib/utils";
 
 type AdminQuestionEditorProps = {
@@ -86,6 +91,40 @@ export function AdminQuestionEditor({
   >(null);
   const [isPending, startTransition] = useTransition();
   const [isSaving, setIsSaving] = useState(false);
+  const [catalog, setCatalog] = useState<AdminTopicCatalog | null>(null);
+  const [catalogError, setCatalogError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchAdminTopicCatalog()
+      .then((res) => {
+        if (cancelled) return;
+        if (!res.ok) {
+          setCatalogError(res.message);
+          return;
+        }
+        setCatalog(res.catalog);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error("[AdminQuestionEditor] fetchAdminTopicCatalog", err);
+        setCatalogError("Nie udało się wczytać katalogu tematów.");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const topicSummary = useMemo(() => {
+    if (state.topicId && catalog) {
+      const topic = catalog.topics.find((entry) => entry.id === state.topicId);
+      if (topic) return `${topic.name} (${topic.id})`;
+    }
+    if (question.topicName && question.topicId) {
+      return `${question.topicName} (${question.topicId})`;
+    }
+    return question.topicId ?? "—";
+  }, [state.topicId, catalog, question.topicId, question.topicName]);
 
   const dirty = useMemo(
     () => JSON.stringify(state) !== JSON.stringify(initial),
@@ -165,6 +204,13 @@ export function AdminQuestionEditor({
       });
       return;
     }
+    if (!state.topicId.trim()) {
+      setFeedback({
+        tone: "error",
+        message: "Wybierz dział (temat) w sekcji przypisania tematycznego.",
+      });
+      return;
+    }
 
     setIsSaving(true);
     const result = await updateQuestionFull({
@@ -217,7 +263,7 @@ export function AdminQuestionEditor({
       <div className="grid grid-cols-3 gap-2 rounded-btn bg-background/60 px-3 py-2 text-body-xs text-secondary">
         <Meta label="ID" value={question.id} />
         <Meta label="Typ" value={question.questionType ?? "—"} />
-        <Meta label="Temat" value={question.topicId ?? "—"} />
+        <Meta label="Temat" value={topicSummary} />
       </div>
 
       <Field label="Treść pytania">
@@ -311,6 +357,32 @@ export function AdminQuestionEditor({
         onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
       />
 
+      {catalogError ? (
+        <div className="rounded-btn border border-error/40 bg-error/10 px-3 py-2 font-body text-body-sm text-error">
+          {catalogError}
+        </div>
+      ) : catalog ? (
+        <AdminTopicAssignmentFields
+          catalog={catalog}
+          topicId={state.topicId}
+          themeLabel={state.themeLabel}
+          subthemeLabel={state.subthemeLabel}
+          initialSubjectId={question.subjectId}
+          onTopicIdChange={(topicId) => setState((p) => ({ ...p, topicId }))}
+          onThemeLabelChange={(themeLabel) =>
+            setState((p) => ({ ...p, themeLabel }))
+          }
+          onSubthemeLabelChange={(subthemeLabel) =>
+            setState((p) => ({ ...p, subthemeLabel }))
+          }
+        />
+      ) : (
+        <div className="flex items-center gap-2 rounded-card border border-border bg-background/40 px-3 py-4 font-body text-body-sm text-secondary">
+          <Loader2 className="size-4 animate-spin text-brand-gold" aria-hidden />
+          Wczytuję katalog tematów…
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Field label="Termin egzaminu (source_exam)">
           <input
@@ -334,41 +406,11 @@ export function AdminQuestionEditor({
             className={inputClass}
           />
         </Field>
-        <Field label="Topic ID">
-          <input
-            type="text"
-            value={state.topicId}
-            onChange={(e) =>
-              setState((p) => ({ ...p, topicId: e.target.value }))
-            }
-            className={inputClass}
-          />
-        </Field>
         <AdminQuestionImageField
           questionId={question.id}
           value={state.imageUrl}
           onChange={(imageUrl) => setState((p) => ({ ...p, imageUrl }))}
         />
-        <Field label="Theme label">
-          <input
-            type="text"
-            value={state.themeLabel}
-            onChange={(e) =>
-              setState((p) => ({ ...p, themeLabel: e.target.value }))
-            }
-            className={inputClass}
-          />
-        </Field>
-        <Field label="Subtheme label">
-          <input
-            type="text"
-            value={state.subthemeLabel}
-            onChange={(e) =>
-              setState((p) => ({ ...p, subthemeLabel: e.target.value }))
-            }
-            className={inputClass}
-          />
-        </Field>
         <Field label="Batch label">
           <input
             type="text"

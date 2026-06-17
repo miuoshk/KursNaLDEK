@@ -8,6 +8,9 @@ export type AdminQuestionOption = {
 export type AdminQuestionDetail = {
   id: string;
   topicId: string | null;
+  topicName: string | null;
+  subjectId: string | null;
+  subjectName: string | null;
   questionType: string | null;
   text: string;
   options: AdminQuestionOption[];
@@ -46,7 +49,7 @@ export async function loadAdminQuestionDetail(
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle",
+      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle, topics(name, subject_id, subjects(name))",
     )
     .eq("id", questionId)
     .maybeSingle();
@@ -58,9 +61,30 @@ export async function loadAdminQuestionDetail(
 
   if (!data) return null;
 
+  const topicNode = data.topics as
+    | {
+        name: string;
+        subject_id: string;
+        subjects: { name: string } | { name: string }[] | null;
+      }
+    | {
+        name: string;
+        subject_id: string;
+        subjects: { name: string } | { name: string }[] | null;
+      }[]
+    | null;
+  const topic = Array.isArray(topicNode) ? topicNode[0] : topicNode;
+  const subjectNode = topic?.subjects;
+  const subjectName = Array.isArray(subjectNode)
+    ? subjectNode[0]?.name
+    : subjectNode?.name;
+
   return {
     id: data.id as string,
     topicId: (data.topic_id as string | null) ?? null,
+    topicName: topic?.name ?? null,
+    subjectId: topic?.subject_id ?? null,
+    subjectName: subjectName ?? null,
     questionType: (data.question_type as string | null) ?? null,
     text: (data.text as string) ?? "",
     options: normalizeOptions(data.options),

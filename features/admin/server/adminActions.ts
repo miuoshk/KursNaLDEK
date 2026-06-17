@@ -11,6 +11,7 @@ import {
   type QuestionEditLogEntry,
 } from "@/features/admin/server/loadAdminQuestionDetail";
 import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
+import { loadAdminTopicCatalog } from "@/features/admin/server/loadAdminTopicCatalog";
 import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
 import { formatQuestionCopyText, formatQuestionCopyWithReportText } from "@/features/admin/lib/formatQuestionCopyText";
 
@@ -260,6 +261,17 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     };
   }
 
+  if ("topic_id" in changes && parsed.data.topicId) {
+    const { topics } = await loadAdminTopicCatalog();
+    const topicExists = topics.some((topic) => topic.id === parsed.data.topicId);
+    if (!topicExists) {
+      return {
+        ok: false as const,
+        message: "Wybrany temat nie istnieje w katalogu.",
+      };
+    }
+  }
+
   const fullUpdatePayload = {
     text: parsed.data.text,
     options: parsed.data.options,
@@ -348,6 +360,20 @@ export async function fetchQuestionForAdmin(questionId: string): Promise<
   }
 
   return { ok: true, question, history };
+}
+
+export async function fetchAdminTopicCatalog(): Promise<
+  | { ok: true; catalog: Awaited<ReturnType<typeof loadAdminTopicCatalog>> }
+  | { ok: false; message: string }
+> {
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false, message: "Brak uprawnień." };
+  }
+
+  const catalog = await loadAdminTopicCatalog();
+  return { ok: true, catalog };
 }
 
 async function loadQuestionCopyPayload(questionId: string) {

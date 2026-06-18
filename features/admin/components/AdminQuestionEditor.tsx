@@ -183,13 +183,6 @@ export function AdminQuestionEditor({
       setFeedback({ tone: "error", message: "Treść pytania nie może być pusta." });
       return;
     }
-    if (state.explanation.trim().length === 0) {
-      setFeedback({
-        tone: "error",
-        message: "Wyjaśnienie nie może być puste.",
-      });
-      return;
-    }
     if (state.options.some((opt) => opt.text.trim().length === 0)) {
       setFeedback({
         tone: "error",

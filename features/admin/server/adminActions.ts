@@ -156,7 +156,7 @@ const updateQuestionSchema = z.object({
   text: z.string().min(1).max(4000),
   options: z.array(optionSchema).min(2).max(8),
   correctOptionId: z.string().min(1).max(8),
-  explanation: z.string().min(1).max(8000),
+  explanation: z.string().max(8000),
   isActive: z.boolean(),
   sourceExam: z.string().max(120).nullable(),
   sourceCode: z.string().max(120).nullable(),

@@ -8,7 +8,16 @@ import {
   countQuestionsByTopic,
   fetchActiveQuestionsForTopics,
 } from "@/lib/content/fetchActiveQuestionsForTopics";
-import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
+import {
+  getCanonicalContentSubjectId,
+  getTopicDisplaySubjectIds,
+} from "@/features/session/server/sharedSubjects";
+import { fetchActiveQuestionsForThemeLabel } from "@/lib/content/fetchThemeLabelQuestions";
+import {
+  buildVirtualThemeTopicId,
+  getVirtualThemeTopicsForContentSubject,
+  isVirtualThemeTopicId,
+} from "@/lib/content/virtualThemeTopics";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -123,6 +132,38 @@ export async function loadSubjectDashboard(
     const topicRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack);
 
     const allTopicIds = topicRows.map((t) => t.id as string);
+    const contentSubjectId = getCanonicalContentSubjectId(subjectId);
+    const virtualDefinitions = getVirtualThemeTopicsForContentSubject(contentSubjectId);
+    const virtualQuestionIdsByTopic = new Map<string, string[]>();
+    const virtualTopicMeta = new Map<
+      string,
+      { displayName: string; displayOrder: number; questionCount: number }
+    >();
+
+    for (const def of virtualDefinitions) {
+      const themeRows = await fetchActiveQuestionsForThemeLabel(
+        supabase,
+        def.contentSubjectId,
+        def.themeLabel,
+        viewerTrack,
+      );
+      if (themeRows.length === 0) continue;
+      const virtualId = buildVirtualThemeTopicId(
+        def.contentSubjectId,
+        def.themeLabel,
+      );
+      virtualQuestionIdsByTopic.set(
+        virtualId,
+        themeRows.map((row) => row.id),
+      );
+      virtualTopicMeta.set(virtualId, {
+        displayName: def.displayName,
+        displayOrder: def.displayOrder,
+        questionCount: themeRows.length,
+      });
+    }
+    const virtualTopicIds = [...virtualQuestionIdsByTopic.keys()];
+    const sessionTopicIds = [...allTopicIds, ...virtualTopicIds];
 
     const progressByTopic = new Map<
       string,
@@ -137,19 +178,26 @@ export async function loadSubjectDashboard(
 
     const visibleCountByTopic = new Map<string, number>();
 
-    if (user && allTopicIds.length > 0) {
-      const qRows = await fetchActiveQuestionsForTopics(
-        supabase,
-        allTopicIds,
-        viewerTrack,
-      );
-      for (const [tid, count] of countQuestionsByTopic(qRows)) {
-        visibleCountByTopic.set(tid, count);
+    if (user && (allTopicIds.length > 0 || virtualTopicIds.length > 0)) {
+      let qRows: Awaited<ReturnType<typeof fetchActiveQuestionsForTopics>> = [];
+      if (allTopicIds.length > 0) {
+        qRows = await fetchActiveQuestionsForTopics(
+          supabase,
+          allTopicIds,
+          viewerTrack,
+        );
+        for (const [tid, count] of countQuestionsByTopic(qRows)) {
+          visibleCountByTopic.set(tid, count);
+        }
       }
 
-      const qids = qRows.map((q) => q.id);
+      const qids = [
+        ...qRows.map((q) => q.id),
+        ...Array.from(virtualQuestionIdsByTopic.values()).flat(),
+      ];
+      const uniqueQids = [...new Set(qids)];
 
-      if (qids.length > 0) {
+      if (uniqueQids.length > 0) {
         const UQP_CHUNK = 200;
         type UqpRow = {
           question_id: string;
@@ -159,8 +207,8 @@ export async function loadSubjectDashboard(
           state: string | null;
         };
         const uqpRows: UqpRow[] = [];
-        for (let i = 0; i < qids.length; i += UQP_CHUNK) {
-          const chunk = qids.slice(i, i + UQP_CHUNK);
+        for (let i = 0; i < uniqueQids.length; i += UQP_CHUNK) {
+          const chunk = uniqueQids.slice(i, i + UQP_CHUNK);
           const { data, error: uqpErr } = await supabase
             .from("user_question_progress")
             .select("question_id, times_answered, times_correct, next_review, state")
@@ -173,21 +221,37 @@ export async function loadSubjectDashboard(
           uqpRows.push(...((data ?? []) as UqpRow[]));
         }
 
+        const questionToVirtualTopics = new Map<string, string[]>();
+        for (const [virtualId, ids] of virtualQuestionIdsByTopic) {
+          for (const qid of ids) {
+            const linked = questionToVirtualTopics.get(qid) ?? [];
+            linked.push(virtualId);
+            questionToVirtualTopics.set(qid, linked);
+          }
+        }
+
         const now = new Date();
         for (const r of uqpRows) {
           const tid = qRows.find((q) => q.id === r.question_id)?.topic_id;
-          if (!tid) continue;
           const timesAns = Number(r.times_answered ?? 0);
           const timesCorr = Number(r.times_correct ?? 0);
-          const cur = progressByTopic.get(tid) ?? {
-            uniqueAnswered: 0,
-            totalAttempts: 0,
-            totalCorrect: 0,
+
+          const applyProgress = (topicKey: string) => {
+            const cur = progressByTopic.get(topicKey) ?? {
+              uniqueAnswered: 0,
+              totalAttempts: 0,
+              totalCorrect: 0,
+            };
+            if (timesAns > 0) cur.uniqueAnswered += 1;
+            cur.totalAttempts += timesAns;
+            cur.totalCorrect += timesCorr;
+            progressByTopic.set(topicKey, cur);
           };
-          if (timesAns > 0) cur.uniqueAnswered += 1;
-          cur.totalAttempts += timesAns;
-          cur.totalCorrect += timesCorr;
-          progressByTopic.set(tid, cur);
+
+          if (tid) applyProgress(tid);
+          for (const virtualId of questionToVirtualTopics.get(r.question_id) ?? []) {
+            applyProgress(virtualId);
+          }
 
           const st = r.state as string | null;
           const nr = r.next_review as string | null;
@@ -199,54 +263,80 @@ export async function loadSubjectDashboard(
         }
       }
 
-      const { data: topicSessions, error: topicSessErr } = await supabase
-        .from("study_sessions")
-        .select("topic_id, completed_at")
-        .eq("user_id", user.id)
-        .eq("is_completed", true)
-        .in("topic_id", allTopicIds)
-        .order("completed_at", { ascending: false });
+      if (sessionTopicIds.length > 0) {
+        const { data: topicSessions, error: topicSessErr } = await supabase
+          .from("study_sessions")
+          .select("topic_id, completed_at")
+          .eq("user_id", user.id)
+          .eq("is_completed", true)
+          .in("topic_id", sessionTopicIds)
+          .order("completed_at", { ascending: false });
 
-      if (topicSessErr) {
-        console.error("[loadSubjectDashboard] topic sessions:", topicSessErr.message);
-      } else {
-        for (const r of topicSessions ?? []) {
-          const tid = r.topic_id as string | null;
-          if (!tid) continue;
-          const cur = topicSessionStats.get(tid) ?? { count: 0, lastAt: null };
-          cur.count += 1;
-          if (!cur.lastAt) cur.lastAt = (r.completed_at as string) ?? null;
-          topicSessionStats.set(tid, cur);
+        if (topicSessErr) {
+          console.error("[loadSubjectDashboard] topic sessions:", topicSessErr.message);
+        } else {
+          for (const r of topicSessions ?? []) {
+            const tid = r.topic_id as string | null;
+            if (!tid) continue;
+            const cur = topicSessionStats.get(tid) ?? { count: 0, lastAt: null };
+            cur.count += 1;
+            if (!cur.lastAt) cur.lastAt = (r.completed_at as string) ?? null;
+            topicSessionStats.set(tid, cur);
+          }
         }
       }
     }
 
-    const topics: TopicWithProgress[] = topicRows.map((row) => {
-      const prog = progressByTopic.get(row.id as string);
-      const sess = topicSessionStats.get(row.id as string);
-      return {
-        id: row.id,
-        subject_id: subjectId,
-        name: row.name,
-        display_order: row.display_order ?? 0,
-        question_count: visibleCountByTopic.get(row.id as string) ?? 0,
-        answered_count: prog?.uniqueAnswered ?? 0,
-        correct_count: prog?.totalCorrect ?? 0,
-        knowledge_card: (row.knowledge_card as string | null) ?? null,
-        session_count: sess?.count ?? 0,
-        last_studied_at: sess?.lastAt ?? null,
-      };
-    });
+    const topics: TopicWithProgress[] = topicRows
+      .map((row) => {
+        const prog = progressByTopic.get(row.id as string);
+        const sess = topicSessionStats.get(row.id as string);
+        return {
+          id: row.id,
+          subject_id: subjectId,
+          name: row.name,
+          display_order: row.display_order ?? 0,
+          question_count: visibleCountByTopic.get(row.id as string) ?? 0,
+          answered_count: prog?.uniqueAnswered ?? 0,
+          correct_count: prog?.totalCorrect ?? 0,
+          knowledge_card: (row.knowledge_card as string | null) ?? null,
+          session_count: sess?.count ?? 0,
+          last_studied_at: sess?.lastAt ?? null,
+        };
+      })
+      .concat(
+        virtualTopicIds.map((virtualId) => {
+          const meta = virtualTopicMeta.get(virtualId)!;
+          const prog = progressByTopic.get(virtualId);
+          const sess = topicSessionStats.get(virtualId);
+          return {
+            id: virtualId,
+            subject_id: subjectId,
+            name: meta.displayName,
+            display_order: meta.displayOrder,
+            question_count: meta.questionCount,
+            answered_count: prog?.uniqueAnswered ?? 0,
+            correct_count: prog?.totalCorrect ?? 0,
+            knowledge_card: null,
+            session_count: sess?.count ?? 0,
+            last_studied_at: sess?.lastAt ?? null,
+          };
+        }),
+      )
+      .sort((a, b) => a.display_order - b.display_order);
 
     let totalQuestions = 0;
     let answeredQuestions = 0;
     let totalAttempts = 0;
     let totalCorrect = 0;
     for (const t of topics) {
+      if (isVirtualThemeTopicId(t.id)) continue;
       totalQuestions += t.question_count;
       answeredQuestions += t.answered_count;
     }
-    for (const p of progressByTopic.values()) {
+    for (const tid of allTopicIds) {
+      const p = progressByTopic.get(tid);
+      if (!p) continue;
       totalAttempts += p.totalAttempts;
       totalCorrect += p.totalCorrect;
     }

@@ -76,6 +76,11 @@ export function getTopicDisplaySubjectIds(subjectId: string): string[] {
   return [subjectId];
 }
 
+/** Id kanonicznego repozytorium treści (np. stomo-biofizyka → biofizyka). */
+export function getCanonicalContentSubjectId(subjectId: string): string {
+  return findCanonicalShared(subjectId)?.canonicalId ?? subjectId;
+}
+
 export function hasSharedScope(subjectId: string): boolean {
   return findCanonicalShared(subjectId) !== null;
 }

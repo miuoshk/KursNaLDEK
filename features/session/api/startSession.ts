@@ -13,6 +13,8 @@ import {
   fetchVisibleTopicIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
+import { fetchThemeLabelQuestionIds } from "@/lib/content/fetchThemeLabelQuestions";
+import { parseVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import {
   getSubjectScopeIds,
@@ -212,28 +214,52 @@ export async function startSession(
     let topicFilter: Set<string> | undefined;
     let topicOkForDue: Set<string>;
     if (topicId) {
-      const { data: top, error: te } = await supabase
-        .from("topics")
-        .select("subject_id, tracks")
-        .eq("id", topicId)
-        .maybeSingle();
-      if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
-        return { ok: false, message: t("errors.invalidTopic") };
-      }
-      if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
-        return { ok: false, message: t("errors.topicNotOnTrack") };
-      }
-      pool = await fetchTopicQuestionIds(supabase, topicId, viewerTrack);
-      topicFilter = new Set(pool);
-      topicOkForDue = new Set(
-        await fetchVisibleTopicIds(
+      const virtualTopic = parseVirtualThemeTopicId(topicId);
+      if (virtualTopic) {
+        if (!isSubjectInScope(subjectId, virtualTopic.contentSubjectId)) {
+          return { ok: false, message: t("errors.invalidTopic") };
+        }
+        pool = await fetchThemeLabelQuestionIds(
           supabase,
-          getSubjectScopeIds(subjectId),
-          subjectTrack,
-        ),
-      );
-      if (pool.length === 0) {
-        return { ok: false, message: t("errors.noQuestionsInTopic") };
+          virtualTopic.contentSubjectId,
+          virtualTopic.themeLabel,
+          viewerTrack,
+        );
+        topicFilter = new Set(pool);
+        topicOkForDue = new Set(
+          await fetchVisibleTopicIds(
+            supabase,
+            getSubjectScopeIds(subjectId),
+            subjectTrack,
+          ),
+        );
+        if (pool.length === 0) {
+          return { ok: false, message: t("errors.noQuestionsInTopic") };
+        }
+      } else {
+        const { data: top, error: te } = await supabase
+          .from("topics")
+          .select("subject_id, tracks")
+          .eq("id", topicId)
+          .maybeSingle();
+        if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
+          return { ok: false, message: t("errors.invalidTopic") };
+        }
+        if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
+          return { ok: false, message: t("errors.topicNotOnTrack") };
+        }
+        pool = await fetchTopicQuestionIds(supabase, topicId, viewerTrack);
+        topicFilter = new Set(pool);
+        topicOkForDue = new Set(
+          await fetchVisibleTopicIds(
+            supabase,
+            getSubjectScopeIds(subjectId),
+            subjectTrack,
+          ),
+        );
+        if (pool.length === 0) {
+          return { ok: false, message: t("errors.noQuestionsInTopic") };
+        }
       }
     } else if (isMix) {
       // Sesja mieszana / domyślna powtórka: zawężamy pulę do bieżącego

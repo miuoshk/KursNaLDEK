@@ -97,7 +97,7 @@ export function SessionQuestionContent({
   });
 
   return (
-    <>
+    <div className="relative flex min-h-0 flex-1 flex-col">
       <SessionEdgeTapZones
         active={touchNavActive}
         canPrevious={canGoPrevious}
@@ -245,6 +245,6 @@ export function SessionQuestionContent({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

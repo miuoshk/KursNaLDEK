@@ -1,5 +1,6 @@
 "use client";
 
+import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { cn } from "@/lib/utils";
 
 export type AnswerState = "default" | "selected" | "correct" | "wrong" | "muted";
@@ -47,7 +48,10 @@ export function AnswerOption({
       >
         {letter}
       </span>
-      <span className="min-w-0 flex-1 font-body text-body-md text-primary">{text}</span>
+      <RichTextContent
+        text={text}
+        className="flex-1 font-body text-body-md text-primary"
+      />
     </button>
   );
 }

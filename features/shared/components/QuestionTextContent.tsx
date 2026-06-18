@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { parseDualColumnListQuestion } from "@/lib/content/parseDualColumnListQuestion";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +11,12 @@ type QuestionTextContentProps = {
 };
 
 function renderSegment(text: string, render?: (s: string) => ReactNode): ReactNode {
-  return render ? render(text) : text;
+  return (
+    <RichTextContent
+      text={text}
+      renderTextSegment={render}
+    />
+  );
 }
 
 function ListColumn({

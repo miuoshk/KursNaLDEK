@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { remarkPlugins, rehypePlugins } from "@/features/shared/lib/markdownPlugins";
 import { cn } from "@/lib/utils";
 
 function ScrollableTable({ children, ...props }: ComponentPropsWithoutRef<"table">) {
@@ -34,9 +34,14 @@ export function markdownBlock(md: string) {
         "[&_td]:border [&_td]:border-white/[0.12] [&_td]:px-3 [&_td]:py-2",
         "[&_tr:hover]:bg-white/[0.02]",
         "[&_del]:text-muted [&_del]:line-through",
+        "[&_.katex-display]:my-3",
       )}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+      <ReactMarkdown
+        remarkPlugins={[...remarkPlugins]}
+        rehypePlugins={[...rehypePlugins]}
+        components={mdComponents}
+      >
         {md}
       </ReactMarkdown>
     </div>

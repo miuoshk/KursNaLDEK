@@ -21,6 +21,7 @@ import { useTranslations } from "next-intl";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
+import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
@@ -259,13 +260,6 @@ export function CatalogView({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <SessionEdgeTapZones
-        active={touchNavActive}
-        canPrevious={canGoPrev}
-        canNext={canGoNext}
-        onPrevious={onEdgePrevious}
-        onNext={onEdgeNext}
-      />
       <div className="shrink-0 border-b border-border bg-background px-4 py-3 sm:px-6">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
@@ -307,7 +301,14 @@ export function CatalogView({
         </label>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
+      <div className="relative flex min-h-0 flex-1 flex-col lg:flex-row">
+        <SessionEdgeTapZones
+          active={touchNavActive}
+          canPrevious={canGoPrev}
+          canNext={canGoNext}
+          onPrevious={onEdgePrevious}
+          onNext={onEdgeNext}
+        />
         <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           {navigationIndexes.length === 0 ? (
             <div className="mx-auto max-w-3xl rounded-card border border-border bg-card p-6 text-center">
@@ -373,7 +374,10 @@ export function CatalogView({
                       <>
                         <span className={badgeClass}>{letter}</span>
                         <span className="min-w-0 flex-1">
-                          {highlightText(opt.text, searchValue)}
+                          <RichTextContent
+                            text={opt.text}
+                            renderTextSegment={(segment) => highlightText(segment, searchValue)}
+                          />
                         </span>
                         {showAsCorrect ? (
                           <Check

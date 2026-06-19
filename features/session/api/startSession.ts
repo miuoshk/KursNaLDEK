@@ -29,6 +29,7 @@ import {
   fetchUnseenQuestionIds,
   isPoolFullySeen,
   mixNaukaQuestionIds,
+  mixTopicCompletionQuestionIds,
 } from "@/features/session/server/sessionQuestionMix";
 import { placeFocusQuestionFirst } from "@/features/session/lib/placeFocusQuestionFirst";
 import {
@@ -362,6 +363,24 @@ export async function startSession(
             [...chosenIds, ...reserveIds],
           );
         }
+      }
+    } else if (mode === "przeglad" && topicId) {
+      const unseenIds = await fetchUnseenQuestionIds(
+        supabase,
+        user.id,
+        pool,
+        pool.length,
+      );
+      if (unseenIds.length > 0) {
+        chosenIds = mixTopicCompletionQuestionIds(
+          unseenIds,
+          [],
+          pool,
+          count,
+          "przeglad",
+        );
+      } else {
+        chosenIds = shuffle(pool).slice(0, count);
       }
     } else {
       chosenIds = shuffle(pool).slice(0, count);

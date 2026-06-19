@@ -21,6 +21,7 @@ import {
 import { calculateDueUrgency } from "@/features/session/lib/antares/urgencyScore";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
 import { shuffle } from "@/features/session/server/questionSelection";
+import { fetchAnsweredQuestionIdsInPool } from "@/features/session/server/sessionQuestionMix";
 import type { SessionQuestionMeta } from "@/features/session/types";
 import {
   buildReserveQuestionIds,
@@ -219,13 +220,12 @@ export async function buildAntaresInteligentnaSession(
     .eq("user_id", userId)
     .eq("is_leech", true);
 
-  const { data: seenRows } = await supabase
-    .from("user_question_progress")
-    .select("question_id")
-    .eq("user_id", userId);
-
-  const seen = new Set((seenRows ?? []).map((r) => r.question_id as string));
-  const unseenInPool = pool.filter((id) => !seen.has(id));
+  const answeredInPool = await fetchAnsweredQuestionIdsInPool(
+    supabase,
+    userId,
+    pool,
+  );
+  const unseenInPool = pool.filter((id) => !answeredInPool.has(id));
 
   const allCandidateIds = [
     ...new Set([
@@ -369,6 +369,7 @@ export async function buildAntaresInteligentnaSession(
     dailyGoal,
     questionsToday,
     examDate,
+    prioritizeUnseen: topicFilter != null && unseenRanked.length > 0,
   });
 
   if (composed.questionIds.length === 0) return empty;

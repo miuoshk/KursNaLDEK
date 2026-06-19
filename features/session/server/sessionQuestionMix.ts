@@ -75,6 +75,35 @@ export async function fetchDueReviewQuestionIds(
   );
 }
 
+/** Pytania z puli, na które user odpowiedział co najmniej raz (zgodnie z dashboardem). */
+export async function fetchAnsweredQuestionIdsInPool(
+  supabase: SupabaseClient,
+  userId: string,
+  pool: string[],
+): Promise<Set<string>> {
+  const answered = new Set<string>();
+  if (pool.length === 0) return answered;
+
+  const CHUNK = 200;
+  for (let i = 0; i < pool.length; i += CHUNK) {
+    const chunk = pool.slice(i, i + CHUNK);
+    const { data, error } = await supabase
+      .from("user_question_progress")
+      .select("question_id")
+      .eq("user_id", userId)
+      .in("question_id", chunk)
+      .gt("times_answered", 0);
+    if (error) {
+      console.error("[fetchAnsweredQuestionIdsInPool]", error.message);
+      return answered;
+    }
+    for (const row of data ?? []) {
+      answered.add(row.question_id as string);
+    }
+  }
+  return answered;
+}
+
 export async function fetchUnseenQuestionIds(
   supabase: SupabaseClient,
   userId: string,
@@ -84,13 +113,37 @@ export async function fetchUnseenQuestionIds(
   const poolShuffled = shuffle([...pool]);
   if (poolShuffled.length === 0 || limit === 0) return [];
 
-  const { data: seenRows } = await supabase
-    .from("user_question_progress")
-    .select("question_id")
-    .eq("user_id", userId);
+  const answered = await fetchAnsweredQuestionIdsInPool(supabase, userId, pool);
+  return poolShuffled.filter((id) => !answered.has(id)).slice(0, limit);
+}
 
-  const seen = new Set((seenRows ?? []).map((r) => r.question_id as string));
-  return poolShuffled.filter((id) => !seen.has(id)).slice(0, limit);
+/** Sesja tematu: najpierw nieodpowiedziane, potem powtórki / reszta puli. */
+export function mixTopicCompletionQuestionIds(
+  unseenIds: string[],
+  dueIds: string[],
+  pool: string[],
+  count: number,
+  mode: "inteligentna" | "przeglad",
+): string[] {
+  const takeUnseen = shuffle(unseenIds).slice(0, Math.min(count, unseenIds.length));
+  const chosen = new Set(takeUnseen);
+  let out = [...takeUnseen];
+
+  if (out.length < count && mode === "inteligentna") {
+    for (const id of dueIds) {
+      if (out.length >= count) break;
+      if (chosen.has(id)) continue;
+      chosen.add(id);
+      out.push(id);
+    }
+  }
+
+  if (out.length < count) {
+    const filler = shuffle(pool.filter((id) => !chosen.has(id)));
+    out = [...out, ...filler.slice(0, count - out.length)];
+  }
+
+  return shuffle(out).slice(0, count);
 }
 
 /** Wszystkie pytania z puli mają co najmniej jedną odpowiedź w UQP. */

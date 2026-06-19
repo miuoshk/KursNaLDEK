@@ -23,6 +23,8 @@ export type SessionComposerInput = {
   dailyGoal: number;
   questionsToday: number;
   examDate: Date | null;
+  /** Sesja w obrębie tematu — najpierw domknij nieodpowiedziane pytania. */
+  prioritizeUnseen?: boolean;
 };
 
 export type ComposedSession = {
@@ -200,12 +202,83 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     dailyGoal,
     questionsToday,
     examDate,
+    prioritizeUnseen = false,
   } = input;
 
   const now = new Date();
   const dueCount = dueQuestions.length;
   const unseenCount = unseenQuestions.length;
   const totalPool = dueCount + unseenCount;
+
+  if (prioritizeUnseen && unseenCount > 0) {
+    let takeNew = unseenQuestions.slice(0, Math.min(count, unseenQuestions.length));
+    const takeNewIds = new Set(takeNew.map((q) => q.questionId));
+
+    let takeDue = dueQuestions
+      .filter((q) => !takeNewIds.has(q.questionId))
+      .slice(0, Math.max(0, count - takeNew.length));
+
+    const nLeechCap = Math.min(3, leechQuestions.length);
+    const takeDueIds = new Set(takeDue.map((q) => q.questionId));
+    const leechCandidates = leechQuestions
+      .filter((q) => !takeNewIds.has(q.questionId) && !takeDueIds.has(q.questionId))
+      .slice(0, nLeechCap);
+
+    if (leechCandidates.length > 0 && takeDue.length > 0) {
+      const k = Math.min(leechCandidates.length, takeDue.length);
+      takeDue = takeDue.slice(0, takeDue.length - k);
+      takeDue = [...takeDue, ...leechCandidates.slice(0, k)];
+    }
+
+    let merged: { q: RankedQuestion; tag: PoolTag }[] = [
+      ...takeNew.map((q) => ({ q, tag: "unseen" as const })),
+      ...takeDue.map((q) => ({ q, tag: "due" as const })),
+    ];
+
+    merged = dedupeByQuestionId(merged);
+
+    if (merged.length < count) {
+      merged = fillShortage(merged, count, dueQuestions, unseenQuestions);
+    }
+
+    merged = merged.slice(0, count);
+
+    const mergedQs = merged.map((m) => m.q);
+    const sourceById = new Map(
+      merged.map((m) => [m.q.questionId, m.tag] as const),
+    );
+
+    const interleaved = interleaveByTopic(mergedQs);
+    const curved = applyPersonalizedCurve(interleaved, topicMastery);
+    const questionIds = curved.map((q) => q.questionId);
+
+    const topicIdsInSession = [...new Set(curved.map((q) => q.topicId))];
+    let avgTopicMastery = 0;
+    if (topicIdsInSession.length > 0) {
+      let sum = 0;
+      for (const tid of topicIdsInSession) {
+        sum += topicMastery.get(tid) ?? 0;
+      }
+      avgTopicMastery = sum / topicIdsInSession.length;
+    }
+
+    const dueReviews = curved.filter(
+      (q) => sourceById.get(q.questionId) === "due",
+    ).length;
+    const newQuestions = curved.filter(
+      (q) => sourceById.get(q.questionId) === "unseen",
+    ).length;
+    const leeches = curved.filter((q) => q.isLeech).length;
+
+    return {
+      questionIds,
+      composition: { dueReviews, newQuestions, leeches },
+      metadata: {
+        avgTopicMastery,
+        estimatedDuration: count * 15,
+      },
+    };
+  }
 
   let dueRatio = totalPool > 0 ? dueCount / (totalPool + 1) : 0;
 

@@ -19,8 +19,6 @@ import {
   normalizeTopicMasteryRow,
   TOPIC_MASTERY_CACHE_SELECT,
 } from "@/features/session/lib/antares/topicMasteryCacheDb";
-import { computeReadinessPercentile } from "@/features/statistics/server/refreshReadinessPercentileCache";
-
 /** Ile historii eventów wczytać przed sesją (findPrevR / retrievability). */
 const LEARNING_EVENTS_LOOKBACK_DAYS = 180;
 
@@ -450,18 +448,14 @@ export async function runCompleteSessionPostAntares(
     throw insightsErr;
   }
 
-  const readinessCache = await computeReadinessPercentile(supabase, userId);
-
+  // Percentyl kohorty (readiness_*) liczymy w tle (next/after) — wchodzi tylko
+  // na /statystyki, nie do podsumowania, więc nie blokuje ekranu po sesji.
   const admin = createAdminClient();
   const { error: profileErr } = await admin
     .from("profiles")
     .update({
       exam_readiness_score: exam.score,
       questions_answered_total: questionsAnsweredTotal,
-      readiness_percentile: readinessCache.peerPercentile,
-      readiness_cohort_size: readinessCache.peerCohortSize,
-      readiness_user_attempts: readinessCache.peerUserAttempts,
-      readiness_computed_at: new Date().toISOString(),
     })
     .eq("id", userId);
 

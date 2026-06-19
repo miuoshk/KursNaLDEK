@@ -10,6 +10,7 @@ import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
 import { nextStreakValues, todayDateString } from "@/features/session/server/sessionStreak";
 import { runCompleteSessionPostAntares } from "@/features/session/server/completeSessionPostAntares";
+import { refreshReadinessPercentileCache } from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 const schema = z.object({
@@ -239,6 +240,10 @@ export async function completeSession(
 
     after(async () => {
       try {
+        // Percentyl kohorty (readiness_*) — tylko na /statystyki, liczony po
+        // odpowiedzi żeby nie wydłużać ekranu podsumowania.
+        await refreshReadinessPercentileCache(supabase, bgUserId);
+
         const bgAdmin = createAdminClient();
         const now = new Date();
         const currentHour =

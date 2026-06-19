@@ -194,29 +194,16 @@ export async function recalculateTopicMastery(
       }
     }
 
-    const { data: allCached, error: listErr } = await supabase
-      .from("topic_mastery_cache")
-      .select("topic_id, mastery_score")
-      .eq("user_id", userId)
-      .order("mastery_score", { ascending: true });
+    // Ranking słabości: jeden UPDATE z row_number() w bazie zamiast pętli
+    // N osobnych UPDATE-ów (jeden round-trip Vercel->Supabase na każdy temat —
+    // przy ~50 tematach to kilka sekund blokujących ekran podsumowania).
+    const { error: rankErr } = await supabase.rpc(
+      "recompute_topic_mastery_weakness_rank",
+      { p_user_id: userId },
+    );
 
-    if (listErr) {
-      throw listErr;
-    }
-
-    const ordered = allCached ?? [];
-
-    for (let i = 0; i < ordered.length; i++) {
-      const row = ordered[i];
-      const { error: rankErr } = await supabase
-        .from("topic_mastery_cache")
-        .update({ weakness_rank: i + 1 })
-        .eq("user_id", userId)
-        .eq("topic_id", row.topic_id);
-
-      if (rankErr) {
-        throw rankErr;
-      }
+    if (rankErr) {
+      throw rankErr;
     }
   } catch (e) {
     console.error("[recalculateTopicMastery]", e);

@@ -2,8 +2,8 @@ import "server-only";
 
 import type { AdminUserSegment, TrackKey } from "@/features/admin/server/loadAdminDashboard";
 import {
+  getDashboardSessionAggregates,
   getProfilesForSegments,
-  getStudySessionsLast30d,
 } from "@/features/admin/server/loadAdminShared";
 
 const YEAR_COHORT_CAPACITY: Record<Exclude<TrackKey, "inny">, number> = {
@@ -30,11 +30,8 @@ function trackYearLabel(track: TrackKey, year: number | null): string {
 
 /** Segmenty użytkowników (kierunek × rok) — lekki loader na pierwszy ekran. */
 export async function loadAdminDashboardSegments(): Promise<AdminUserSegment[]> {
-  const now = new Date();
-  const since7dMs = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).getTime();
-
-  const [sessions30d, profiles] = await Promise.all([
-    getStudySessionsLast30d(),
+  const [agg, profiles] = await Promise.all([
+    getDashboardSessionAggregates(),
     getProfilesForSegments(),
   ]);
 
@@ -42,17 +39,11 @@ export async function loadAdminDashboardSegments(): Promise<AdminUserSegment[]> 
   const activeUsersSet30d = new Set<string>();
   const userCompletedTests30d = new Map<string, number>();
 
-  for (const row of sessions30d) {
-    if (!row.user_id) continue;
-    activeUsersSet30d.add(row.user_id);
-    if (row.started_at && new Date(row.started_at).getTime() >= since7dMs) {
-      activeUsersSet7d.add(row.user_id);
-    }
-    if (row.is_completed === true || row.completed_at !== null) {
-      userCompletedTests30d.set(
-        row.user_id,
-        (userCompletedTests30d.get(row.user_id) ?? 0) + 1,
-      );
+  for (const u of agg.perUser) {
+    if (u.sessions30 > 0) activeUsersSet30d.add(u.userId);
+    if (u.sessions7 > 0) activeUsersSet7d.add(u.userId);
+    if (u.completedTests30 > 0) {
+      userCompletedTests30d.set(u.userId, u.completedTests30);
     }
   }
 

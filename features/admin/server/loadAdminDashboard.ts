@@ -1,12 +1,13 @@
 import "server-only";
 
+import { warsawYmd } from "@/lib/datetime/warsawCalendar";
 import {
   getAllErrorReports,
   getAllProfiles,
   getAllSubjects,
-  getSessionAnswersCountSince,
-  getStudySessionsLast30d,
+  getDashboardSessionAggregates,
   getTotalQuestionsCount,
+  type AggUserStat,
 } from "@/features/admin/server/loadAdminShared";
 import { mergeSubjectPopularityByShortName } from "@/features/admin/server/mergeSubjectPopularity";
 
@@ -207,95 +208,39 @@ function trackYearLabel(track: TrackKey, year: number | null): string {
   return year ? `${year} ${trackShort}` : trackShort;
 }
 
-function dowFromIso(iso: string): number {
-  return new Date(iso).getDay();
-}
-
-function hourFromIso(iso: string): number {
-  return new Date(iso).getHours();
-}
-
-function safeAccuracy(row: SessionRow): number {
-  const explicit = row.accuracy;
-  if (typeof explicit === "number") return explicit;
-  const totalQ = row.total_questions ?? 0;
-  const correctQ = row.correct_answers ?? 0;
-  return totalQ > 0 ? correctQ / totalQ : 0;
-}
-
-type SessionRow = {
-  id: string;
-  user_id: string | null;
-  subject_id: string | null;
-  mode: string | null;
-  total_questions: number | null;
-  correct_answers: number | null;
-  accuracy: number | null;
-  duration_seconds: number | null;
-  started_at: string | null;
-  completed_at: string | null;
-  is_completed: boolean | null;
+type ProfileMeta = {
+  displayName: string;
+  track: TrackKey;
+  year: number | null;
+  xp: number;
+  streak: number;
+  subscription: string | null;
+  createdAt: string | null;
 };
 
 export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   const now = new Date();
-  const startOfToday = new Date(now);
-  startOfToday.setHours(0, 0, 0, 0);
-  const todayMs = startOfToday.getTime();
-  const since7d = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
-  const since7dMs = new Date(since7d).getTime();
-  const since14d = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString();
-  const since14dMs = new Date(since14d).getTime();
-  const since30d = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
-  const since30dMs = new Date(since30d).getTime();
+  const since7dMs = now.getTime() - 7 * 24 * 60 * 60 * 1000;
+  const since30dMs = now.getTime() - 30 * 24 * 60 * 60 * 1000;
 
-  const [
-    totalQuestions,
-    allSessions,
-    allProfiles,
-    allSubjects,
-    allReports,
-    answersCount7d,
-    answersCount30d,
-    answersCount14d,
-  ] = await Promise.all([
-    getTotalQuestionsCount(),
-    getStudySessionsLast30d(),
-    getAllProfiles(),
-    getAllSubjects(),
-    getAllErrorReports(),
-    getSessionAnswersCountSince(since7d),
-    getSessionAnswersCountSince(since30d),
-    getSessionAnswersCountSince(since14d),
-  ]);
-  const answeredQuestionsLast7d = answersCount7d;
-  const answeredQuestionsLast30d = answersCount30d;
-  const answeredQuestionsPrev7d = Math.max(0, answersCount14d - answersCount7d);
+  const [totalQuestions, agg, allProfiles, allSubjects, allReports] =
+    await Promise.all([
+      getTotalQuestionsCount(),
+      getDashboardSessionAggregates(),
+      getAllProfiles(),
+      getAllSubjects(),
+      getAllErrorReports(),
+    ]);
 
-  const sessions30d = allSessions.filter((row) => {
-    if (!row.started_at) return false;
-    return new Date(row.started_at).getTime() >= since30dMs;
-  }) as SessionRow[];
-
-  const profiles = allProfiles;
-  const subjects = allSubjects;
-
-  const sessionsToday = allSessions.filter((row) => {
-    if (!row.started_at) return false;
-    return new Date(row.started_at).getTime() >= todayMs;
-  }).length;
-
-  const paidUsers = profiles.filter(
-    (p) => p.subscription_status === "active",
-  ).length;
-
-  const pendingReports = allReports.filter((r) => r.status === "pending").length;
+  const answeredQuestionsLast7d = agg.answers7d;
+  const answeredQuestionsLast30d = agg.answers30d;
+  const answeredQuestionsPrev7d = Math.max(0, agg.answers14d - agg.answers7d);
 
   const subjectMap = new Map<
     string,
     { name: string; shortName: string; track: string | null; year: number | null }
   >();
-  for (const s of subjects) {
+  for (const s of allSubjects) {
     const name = (s.name as string) ?? (s.id as string);
     subjectMap.set(s.id as string, {
       name,
@@ -305,19 +250,8 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     });
   }
 
-  const profileMap = new Map<
-    string,
-    {
-      displayName: string;
-      track: TrackKey;
-      year: number | null;
-      xp: number;
-      streak: number;
-      subscription: string | null;
-      createdAt: string | null;
-    }
-  >();
-  for (const p of profiles) {
+  const profileMap = new Map<string, ProfileMeta>();
+  for (const p of allProfiles) {
     profileMap.set(p.id as string, {
       displayName: ((p.display_name as string | null) ?? "Użytkownik") || "Użytkownik",
       track: normalizeTrack(p.current_track),
@@ -329,111 +263,70 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     });
   }
 
-  const sessions7d = sessions30d.filter(
-    (row) => row.started_at !== null && new Date(row.started_at).getTime() >= since7dMs,
-  );
-  const sessionsInPrev7d = sessions30d.filter((row) => {
-    if (!row.started_at) return false;
-    const t = new Date(row.started_at).getTime();
-    return t >= since14dMs && t < since7dMs;
-  });
+  const userStatMap = new Map<string, AggUserStat>();
+  for (const u of agg.perUser) userStatMap.set(u.userId, u);
 
-  const sessionsLast7d = sessions7d.length;
-  const sessionsLast30d = sessions30d.length;
-  const sessionsPrev7d = sessionsInPrev7d.length;
-  const completedTestsLast7d = sessions7d.filter(
-    (row) => row.is_completed === true || row.completed_at !== null,
-  ).length;
+  const sessionsLast7d = agg.sessions7d;
+  const sessionsLast30d = agg.sessions30d;
+  const sessionsPrev7d = agg.sessionsPrev7d;
 
-  const totalDurationSec7d = sessions7d.reduce(
-    (sum, row) => sum + (row.duration_seconds ?? 0),
-    0,
-  );
-  const totalDurationSec30d = sessions30d.reduce(
-    (sum, row) => sum + (row.duration_seconds ?? 0),
-    0,
-  );
-  const totalDurationSecPrev7d = sessionsInPrev7d.reduce(
-    (sum, row) => sum + (row.duration_seconds ?? 0),
-    0,
-  );
-  const studyHoursLast7d = Number((totalDurationSec7d / 3600).toFixed(1));
-  const studyHoursLast30d = Number((totalDurationSec30d / 3600).toFixed(1));
-  const studyHoursPrev7d = Number((totalDurationSecPrev7d / 3600).toFixed(1));
+  const studyHoursLast7d = Number((agg.durationSec7d / 3600).toFixed(1));
+  const studyHoursLast30d = Number((agg.durationSec30d / 3600).toFixed(1));
+  const studyHoursPrev7d = Number((agg.durationSecPrev7d / 3600).toFixed(1));
   const averageSessionMinutesLast7d =
     sessionsLast7d > 0
-      ? Number(((totalDurationSec7d / 60) / sessionsLast7d).toFixed(1))
+      ? Number(((agg.durationSec7d / 60) / sessionsLast7d).toFixed(1))
       : 0;
 
-  const totalAccuracy7d = sessions7d.reduce((sum, row) => sum + safeAccuracy(row), 0);
   const averageAccuracyLast7d =
     sessionsLast7d > 0
-      ? Number(((totalAccuracy7d / sessionsLast7d) * 100).toFixed(1))
+      ? Number(((agg.accSum7d / sessionsLast7d) * 100).toFixed(1))
       : 0;
-  const totalAccuracy30d = sessions30d.reduce((sum, row) => sum + safeAccuracy(row), 0);
   const averageAccuracyLast30d =
     sessionsLast30d > 0
-      ? Number(((totalAccuracy30d / sessionsLast30d) * 100).toFixed(1))
+      ? Number(((agg.accSum30d / sessionsLast30d) * 100).toFixed(1))
       : 0;
 
-  const activeUsersSet7d = new Set<string>();
   const activeUsersSet30d = new Set<string>();
-  const activeUsersSetPrev7d = new Set<string>();
-  const userSessionCounts30d = new Map<string, number>();
-  for (const row of sessions30d) {
-    if (!row.user_id) continue;
-    activeUsersSet30d.add(row.user_id);
-    userSessionCounts30d.set(
-      row.user_id,
-      (userSessionCounts30d.get(row.user_id) ?? 0) + 1,
-    );
+  let uniqueActiveUsersLast7d = 0;
+  let uniqueActiveUsersLast30d = 0;
+  let uniqueActiveUsersPrev7d = 0;
+  for (const u of agg.perUser) {
+    if (u.sessions30 > 0) {
+      activeUsersSet30d.add(u.userId);
+      uniqueActiveUsersLast30d += 1;
+    }
+    if (u.sessions7 > 0) uniqueActiveUsersLast7d += 1;
+    if (u.sessionsPrev7 > 0) uniqueActiveUsersPrev7d += 1;
   }
-  for (const row of sessions7d) {
-    if (row.user_id) activeUsersSet7d.add(row.user_id);
-  }
-  for (const row of sessionsInPrev7d) {
-    if (row.user_id) activeUsersSetPrev7d.add(row.user_id);
-  }
-  const uniqueActiveUsersLast7d = activeUsersSet7d.size;
-  const uniqueActiveUsersLast30d = activeUsersSet30d.size;
-  const uniqueActiveUsersPrev7d = activeUsersSetPrev7d.size;
 
   let topUser: AdminDashboardData["topUser"] = null;
-  let topUid = "";
   let topCount = 0;
-  for (const [uid, c] of userSessionCounts30d) {
-    if (c > topCount) {
-      topCount = c;
-      topUid = uid;
+  for (const u of agg.perUser) {
+    if (u.sessions30 > topCount) {
+      topCount = u.sessions30;
+      topUser = {
+        displayName: profileMap.get(u.userId)?.displayName ?? "Użytkownik",
+        sessionCount: u.sessions30,
+      };
     }
   }
-  if (topUid) {
-    const profile = profileMap.get(topUid);
-    topUser = {
-      displayName: profile?.displayName ?? "Użytkownik",
-      sessionCount: topCount,
-    };
-  }
 
-  const newRegistrationsLast7d = profiles.filter((p) => {
+  const newRegistrationsLast7d = allProfiles.filter((p) => {
     const created = p.created_at as string | null;
-    return created !== null && new Date(created).getTime() >= new Date(since7d).getTime();
+    return created !== null && new Date(created).getTime() >= since7dMs;
   }).length;
-  const newRegistrationsLast30d = profiles.filter((p) => {
+  const newRegistrationsLast30d = allProfiles.filter((p) => {
     const created = p.created_at as string | null;
-    return created !== null && new Date(created).getTime() >= new Date(since30d).getTime();
+    return created !== null && new Date(created).getTime() >= since30dMs;
   }).length;
 
-  const userCompletedTests30d = new Map<string, number>();
-  for (const row of sessions30d) {
-    if (!row.user_id) continue;
-    if (row.is_completed !== true && row.completed_at === null) continue;
-    userCompletedTests30d.set(
-      row.user_id,
-      (userCompletedTests30d.get(row.user_id) ?? 0) + 1,
-    );
-  }
+  const paidUsers = allProfiles.filter(
+    (p) => p.subscription_status === "active",
+  ).length;
+  const pendingReports = allReports.filter((r) => r.status === "pending").length;
 
+  // --- Segmenty użytkowników (kierunek × rok) ---
   const segmentBuckets = new Map<
     string,
     AdminUserSegment & {
@@ -457,10 +350,11 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       activeIds30: new Set<string>(),
       completedTestsSum: 0,
     };
+    const stats = userStatMap.get(uid);
     bucket.count += 1;
-    bucket.completedTestsSum += userCompletedTests30d.get(uid) ?? 0;
-    if (activeUsersSet7d.has(uid)) bucket.activeIds7.add(uid);
-    if (activeUsersSet30d.has(uid)) bucket.activeIds30.add(uid);
+    bucket.completedTestsSum += stats?.completedTests30 ?? 0;
+    if (stats && stats.sessions7 > 0) bucket.activeIds7.add(uid);
+    if (stats && stats.sessions30 > 0) bucket.activeIds30.add(uid);
     segmentBuckets.set(key, bucket);
   }
   const userSegments: AdminUserSegment[] = Array.from(segmentBuckets.values())
@@ -492,41 +386,13 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       return (a.year ?? 99) - (b.year ?? 99);
     });
 
-  const hourBuckets = new Map<
-    number,
-    { sessions: number; questions: number; accSum: number }
-  >();
-  const dowBuckets = new Map<
-    number,
-    { sessions: number; questions: number; accSum: number }
-  >();
-  const heatmapMap = new Map<string, number>();
-
-  for (const row of sessions30d) {
-    if (!row.started_at) continue;
-    const hour = hourFromIso(row.started_at);
-    const dow = dowFromIso(row.started_at);
-    const acc = safeAccuracy(row);
-    const totalQ = row.total_questions ?? 0;
-
-    const h = hourBuckets.get(hour) ?? { sessions: 0, questions: 0, accSum: 0 };
-    h.sessions += 1;
-    h.questions += totalQ;
-    h.accSum += acc;
-    hourBuckets.set(hour, h);
-
-    const d = dowBuckets.get(dow) ?? { sessions: 0, questions: 0, accSum: 0 };
-    d.sessions += 1;
-    d.questions += totalQ;
-    d.accSum += acc;
-    dowBuckets.set(dow, d);
-
-    const key = `${dow}-${hour}`;
-    heatmapMap.set(key, (heatmapMap.get(key) ?? 0) + 1);
+  // --- Pora dnia / dzień tygodnia / heatmapa (Europe/Warsaw, z RPC) ---
+  const hourStats = new Map<number, { sessions: number; questions: number; accSum: number }>();
+  for (const h of agg.hour) {
+    hourStats.set(h.hour, { sessions: h.sessions, questions: h.questions, accSum: h.accSum });
   }
-
   const hourOfDayLast30d: AdminHourBucket[] = Array.from({ length: 24 }, (_, hour) => {
-    const stats = hourBuckets.get(hour);
+    const stats = hourStats.get(hour);
     return {
       hour,
       sessions: stats?.sessions ?? 0,
@@ -538,9 +404,13 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     };
   });
 
+  const dowStats = new Map<number, { sessions: number; questions: number; accSum: number }>();
+  for (const d of agg.dow) {
+    dowStats.set(d.dow, { sessions: d.sessions, questions: d.questions, accSum: d.accSum });
+  }
   const dayOfWeekLast30d: AdminDayOfWeekBucket[] = Array.from({ length: 7 }, (_, idx) => {
     const dow = (idx + 1) % 7; // Pn=1..Nd=0 -> ułożone Pn..Nd
-    const stats = dowBuckets.get(dow);
+    const stats = dowStats.get(dow);
     return {
       dow,
       label: DOW_LABELS[dow]!,
@@ -553,17 +423,18 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     };
   });
 
+  const heatmapMap = new Map<string, number>();
   let heatmapMaxSessions = 0;
-  for (const v of heatmapMap.values()) {
-    if (v > heatmapMaxSessions) heatmapMaxSessions = v;
+  for (const cell of agg.heatmap) {
+    heatmapMap.set(`${cell.dow}-${cell.hour}`, cell.sessions);
+    if (cell.sessions > heatmapMaxSessions) heatmapMaxSessions = cell.sessions;
   }
   const heatmapLast30d: AdminHeatmapCell[] = [];
   for (let dowIdx = 0; dowIdx < 7; dowIdx += 1) {
     const dow = (dowIdx + 1) % 7;
     for (let hour = 0; hour < 24; hour += 1) {
       const sessions = heatmapMap.get(`${dow}-${hour}`) ?? 0;
-      const intensity =
-        heatmapMaxSessions > 0 ? sessions / heatmapMaxSessions : 0;
+      const intensity = heatmapMaxSessions > 0 ? sessions / heatmapMaxSessions : 0;
       heatmapLast30d.push({ dow, hour, sessions, intensity });
     }
   }
@@ -579,45 +450,31 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
   let peakDayOfWeek: AdminDashboardData["peakDayOfWeek"] = null;
   for (const bucket of dayOfWeekLast30d) {
     if (!peakDayOfWeek || bucket.sessions > peakDayOfWeek.sessions) {
-      peakDayOfWeek = {
-        dow: bucket.dow,
-        label: bucket.label,
-        sessions: bucket.sessions,
-      };
+      peakDayOfWeek = { dow: bucket.dow, label: bucket.label, sessions: bucket.sessions };
     }
   }
   if (peakDayOfWeek && peakDayOfWeek.sessions === 0) peakDayOfWeek = null;
 
-  const subjectMap30 = new Map<
-    string,
-    { sessions: number; questions: number; accSum: number }
-  >();
-  for (const row of sessions30d) {
-    if (!row.subject_id) continue;
-    const s = subjectMap30.get(row.subject_id) ?? { sessions: 0, questions: 0, accSum: 0 };
-    s.sessions += 1;
-    s.questions += row.total_questions ?? 0;
-    s.accSum += safeAccuracy(row);
-    subjectMap30.set(row.subject_id, s);
-  }
+  // --- Popularność przedmiotów ---
   const subjectPopularityLast30d: AdminSubjectPopularity[] =
     mergeSubjectPopularityByShortName(
-      Array.from(subjectMap30.entries()).map(([subjectId, stats]) => {
-        const meta = subjectMap.get(subjectId);
+      agg.subject.map((row) => {
+        const meta = subjectMap.get(row.subjectId);
         return {
-          subjectId,
-          subjectName: meta?.name ?? subjectId,
-          shortName: meta?.shortName ?? subjectId,
+          subjectId: row.subjectId,
+          subjectName: meta?.name ?? row.subjectId,
+          shortName: meta?.shortName ?? row.subjectId,
           track: meta?.track ?? null,
           year: meta?.year ?? null,
-          sessions: stats.sessions,
-          questions: stats.questions,
-          accSum: stats.accSum,
+          sessions: row.sessions,
+          questions: row.questions,
+          accSum: row.accSum,
         };
       }),
       10,
     );
 
+  // --- Wydajność kierunków (agregacja per-user wg profilu track/rok) ---
   const trackPerfMap = new Map<
     string,
     {
@@ -629,9 +486,8 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       durationSec: number;
     }
   >();
-  for (const row of sessions30d) {
-    if (!row.user_id) continue;
-    const profile = profileMap.get(row.user_id);
+  for (const u of agg.perUser) {
+    const profile = profileMap.get(u.userId);
     if (!profile) continue;
     const key = `${profile.track}|${profile.year ?? "-"}`;
     const stats = trackPerfMap.get(key) ?? {
@@ -642,10 +498,10 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       accSum: 0,
       durationSec: 0,
     };
-    stats.sessions += 1;
-    stats.questions += row.total_questions ?? 0;
-    stats.accSum += safeAccuracy(row);
-    stats.durationSec += row.duration_seconds ?? 0;
+    stats.sessions += u.sessions30;
+    stats.questions += u.questions30;
+    stats.accSum += u.accSum30;
+    stats.durationSec += u.durationSec30;
     trackPerfMap.set(key, stats);
   }
   const trackPerformanceLast30d: AdminTrackPerformance[] = Array.from(
@@ -671,6 +527,7 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       return (a.year ?? 99) - (b.year ?? 99);
     });
 
+  // --- Rozkład subskrypcji (profile) ---
   const subscriptionCounter = new Map<string, number>();
   for (const profile of profileMap.values()) {
     const status = profile.subscription ?? "brak";
@@ -693,181 +550,109 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     }))
     .sort((a, b) => b.count - a.count);
 
+  // --- Zaangażowanie (profile × liczba sesji 30d) ---
   const veryActiveThreshold = 5;
   let veryActive = 0;
   let active = 0;
   let inactive = 0;
   let neverStarted = 0;
   for (const uid of profileMap.keys()) {
-    const c = userSessionCounts30d.get(uid) ?? 0;
+    const c = userStatMap.get(uid)?.sessions30 ?? 0;
     if (c >= veryActiveThreshold) veryActive += 1;
     else if (c >= 1) active += 1;
     else if (activeUsersSet30d.has(uid)) inactive += 1;
     else neverStarted += 1;
   }
-  const totalUsersFromMap = profileMap.size;
   const engagementLast30d: AdminEngagement = {
     veryActive,
     active,
     inactive,
     neverStarted,
-    totalUsers: totalUsersFromMap,
+    totalUsers: profileMap.size,
   };
 
+  // --- Rejestracje (profile, kubełki dzienne Europe/Warsaw) ---
   const registrationsMap = new Map<string, number>();
   for (const profile of profileMap.values()) {
     const created = profile.createdAt;
     if (!created) continue;
-    if (new Date(created).getTime() < new Date(since30d).getTime()) continue;
-    const day = created.slice(0, 10);
+    if (new Date(created).getTime() < since30dMs) continue;
+    const day = warsawYmd(new Date(created));
     registrationsMap.set(day, (registrationsMap.get(day) ?? 0) + 1);
   }
   const registrationsLast30d: AdminRegistrationsPoint[] = [];
   for (let i = 29; i >= 0; i -= 1) {
-    const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
-    const day = d.toISOString().slice(0, 10);
-    registrationsLast30d.push({
-      date: day,
-      registrations: registrationsMap.get(day) ?? 0,
-    });
+    const day = warsawYmd(new Date(now.getTime() - i * 24 * 60 * 60 * 1000));
+    registrationsLast30d.push({ date: day, registrations: registrationsMap.get(day) ?? 0 });
   }
 
-  const modeMap = new Map<
-    string,
-    { sessions: number; accSum: number; durationSec: number }
-  >();
-  for (const row of sessions7d) {
-    const mode = ((row.mode as string | null) ?? "nieznany").toLowerCase();
-    const stats = modeMap.get(mode) ?? { sessions: 0, accSum: 0, durationSec: 0 };
-    stats.sessions += 1;
-    stats.accSum += safeAccuracy(row);
-    stats.durationSec += row.duration_seconds ?? 0;
-    modeMap.set(mode, stats);
-  }
-  const modeBreakdownLast7d: AdminModeBenchmark[] = Array.from(modeMap.entries())
-    .map(([mode, stats]) => ({
-      mode,
-      sessions: stats.sessions,
+  // --- Tryby nauki (7 dni, z RPC) ---
+  const modeBreakdownLast7d: AdminModeBenchmark[] = agg.mode7d
+    .map((m) => ({
+      mode: m.mode,
+      sessions: m.sessions,
       sharePct:
         sessionsLast7d > 0
-          ? Number(((stats.sessions / sessionsLast7d) * 100).toFixed(1))
+          ? Number(((m.sessions / sessionsLast7d) * 100).toFixed(1))
           : 0,
       avgAccuracy:
-        stats.sessions > 0
-          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
-          : 0,
+        m.sessions > 0 ? Number(((m.accSum / m.sessions) * 100).toFixed(1)) : 0,
       avgDurationMin:
-        stats.sessions > 0
-          ? Number(((stats.durationSec / 60) / stats.sessions).toFixed(1))
-          : 0,
+        m.sessions > 0 ? Number(((m.durationSec / 60) / m.sessions).toFixed(1)) : 0,
     }))
     .sort((a, b) => b.sessions - a.sessions);
 
-  const trendMap = new Map<
-    string,
-    {
-      sessions: number;
-      users: Set<string>;
-      questions: number;
-      durationSec: number;
-      accSum: number;
-    }
-  >();
-  for (const row of sessions30d) {
-    if (!row.started_at) continue;
-    if (new Date(row.started_at).getTime() < new Date(since14d).getTime()) continue;
-    const day = row.started_at.slice(0, 10);
-    const current = trendMap.get(day) ?? {
-      sessions: 0,
-      users: new Set<string>(),
-      questions: 0,
-      durationSec: 0,
-      accSum: 0,
-    };
-    current.sessions += 1;
-    if (row.user_id) current.users.add(row.user_id);
-    current.questions += row.total_questions ?? 0;
-    current.durationSec += row.duration_seconds ?? 0;
-    current.accSum += safeAccuracy(row);
-    trendMap.set(day, current);
+  // --- Trend dzienny 14 dni (kubełki Europe/Warsaw, z RPC) ---
+  const trendByDay = new Map<string, AdminDailyTrendPoint>();
+  for (const d of agg.dailyTrend14d) {
+    trendByDay.set(d.day, {
+      date: d.day,
+      sessions: d.sessions,
+      users: d.users,
+      questions: d.questions,
+      studyHours: Number((d.durationSec / 3600).toFixed(1)),
+      avgAccuracy:
+        d.sessions > 0 ? Number(((d.accSum / d.sessions) * 100).toFixed(1)) : 0,
+    });
   }
   const dailyTrendLast14d: AdminDailyTrendPoint[] = [];
   for (let i = 13; i >= 0; i -= 1) {
-    const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
-    const day = d.toISOString().slice(0, 10);
-    const stats = trendMap.get(day);
-    dailyTrendLast14d.push({
-      date: day,
-      sessions: stats?.sessions ?? 0,
-      users: stats?.users.size ?? 0,
-      questions: stats?.questions ?? 0,
-      studyHours: Number(((stats?.durationSec ?? 0) / 3600).toFixed(1)),
-      avgAccuracy:
-        stats && stats.sessions > 0
-          ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
-          : 0,
-    });
+    const day = warsawYmd(new Date(now.getTime() - i * 24 * 60 * 60 * 1000));
+    dailyTrendLast14d.push(
+      trendByDay.get(day) ?? {
+        date: day,
+        sessions: 0,
+        users: 0,
+        questions: 0,
+        studyHours: 0,
+        avgAccuracy: 0,
+      },
+    );
   }
 
-  const TEST_MODES = new Set(["inteligentna", "przeglad", "osce_topic"]);
-
-  const userBenchMap = new Map<
-    string,
-    {
-      sessions: number;
-      questions: number;
-      durationSec: number;
-      accSum: number;
-      testSessions: number;
-      testDurationSec: number;
-    }
-  >();
-  for (const row of sessions30d) {
-    if (!row.user_id) continue;
-    const stats = userBenchMap.get(row.user_id) ?? {
-      sessions: 0,
-      questions: 0,
-      durationSec: 0,
-      accSum: 0,
-      testSessions: 0,
-      testDurationSec: 0,
-    };
-    stats.sessions += 1;
-    stats.questions += row.total_questions ?? 0;
-    stats.durationSec += row.duration_seconds ?? 0;
-    stats.accSum += safeAccuracy(row);
-    const modeKey = ((row.mode as string | null) ?? "").toLowerCase();
-    if (TEST_MODES.has(modeKey)) {
-      stats.testSessions += 1;
-      stats.testDurationSec += row.duration_seconds ?? 0;
-    }
-    userBenchMap.set(row.user_id, stats);
-  }
-  const userBenchmarksLast30d: AdminUserBenchmark[] = Array.from(userBenchMap.entries())
-    .map(([userId, stats]) => {
-      const profile = profileMap.get(userId);
-      const totalPlatformMinutes = Number((stats.durationSec / 60).toFixed(1));
-      const totalTestMinutes = Number((stats.testDurationSec / 60).toFixed(1));
-      const avgTestDurationMinutes =
-        stats.testSessions > 0
-          ? Number(((stats.testDurationSec / 60) / stats.testSessions).toFixed(1))
-          : 0;
+  // --- Benchmarki użytkowników (per-user z RPC) ---
+  const userBenchmarksLast30d: AdminUserBenchmark[] = agg.perUser
+    .map((u) => {
+      const profile = profileMap.get(u.userId);
       return {
-        userId,
+        userId: u.userId,
         displayName: profile?.displayName ?? "Użytkownik",
         track: profile ? TRACK_LABEL[profile.track] : null,
         trackKey: profile?.track ?? null,
         year: profile?.year ?? null,
-        sessions: stats.sessions,
-        questions: stats.questions,
-        studyHours: Number((stats.durationSec / 3600).toFixed(1)),
+        sessions: u.sessions30,
+        questions: u.questions30,
+        studyHours: Number((u.durationSec30 / 3600).toFixed(1)),
         avgAccuracy:
-          stats.sessions > 0
-            ? Number(((stats.accSum / stats.sessions) * 100).toFixed(1))
+          u.sessions30 > 0
+            ? Number(((u.accSum30 / u.sessions30) * 100).toFixed(1))
             : 0,
-        totalPlatformMinutes,
-        totalTestMinutes,
-        avgTestDurationMinutes,
+        totalPlatformMinutes: Number((u.durationSec30 / 60).toFixed(1)),
+        totalTestMinutes: Number((u.testDurationSec30 / 60).toFixed(1)),
+        avgTestDurationMinutes:
+          u.testSessions30 > 0
+            ? Number(((u.testDurationSec30 / 60) / u.testSessions30).toFixed(1))
+            : 0,
       };
     })
     .sort((a, b) => {
@@ -875,6 +660,7 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
       return b.studyHours - a.studyHours;
     });
 
+  // --- Benchmarki kohort (kierunek × rok, z profili + per-user) ---
   const cohortAggMap = new Map<
     string,
     {
@@ -907,13 +693,13 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
     bucket.headcount += 1;
     if (activeUsersSet30d.has(uid)) bucket.activeCount += 1;
     if (profile.subscription === "active") bucket.paidCount += 1;
-    const stats = userBenchMap.get(uid);
+    const stats = userStatMap.get(uid);
     if (stats) {
-      bucket.platformSec += stats.durationSec;
-      bucket.testSec += stats.testDurationSec;
-      bucket.testSessions += stats.testSessions;
-      bucket.accSum += stats.accSum;
-      bucket.accCount += stats.sessions;
+      bucket.platformSec += stats.durationSec30;
+      bucket.testSec += stats.testDurationSec30;
+      bucket.testSessions += stats.testSessions30;
+      bucket.accSum += stats.accSum30;
+      bucket.accCount += stats.sessions30;
     }
     cohortAggMap.set(key, bucket);
   }
@@ -956,16 +742,16 @@ export async function loadAdminDashboard(): Promise<AdminDashboardData> {
 
   return {
     totalQuestions,
-    totalUsers: profiles.length,
+    totalUsers: allProfiles.length,
     paidUsers,
     pendingReports,
-    sessionsToday,
+    sessionsToday: agg.sessionsToday,
     sessionsLast7d,
     sessionsLast30d,
     answeredQuestionsLast7d,
     answeredQuestionsLast30d,
     answeredQuestionsPrev7d,
-    completedTestsLast7d,
+    completedTestsLast7d: agg.completedTests7d,
     averageAccuracyLast7d,
     averageAccuracyLast30d,
     studyHoursLast7d,

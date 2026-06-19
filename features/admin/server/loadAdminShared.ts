@@ -281,3 +281,123 @@ export const getTotalQuestionsCount = cache(async (): Promise<number> => {
   }
   return count ?? 0;
 });
+
+/**
+ * Zagregowane metryki sesji liczone po stronie bazy (funkcja RPC
+ * `admin_dashboard_session_aggregates`). Jeden round-trip + jeden skan
+ * `study_sessions` z 30 dni zamiast ~73 stronicowanych zapytań i agregacji
+ * w JS. Kubełki kalendarzowe (godzina / dzień tygodnia / dzień) liczone w
+ * strefie Europe/Warsaw — spójnie z resztą aplikacji.
+ */
+export type AggUserStat = {
+  userId: string;
+  sessions30: number;
+  sessions7: number;
+  sessionsPrev7: number;
+  completedTests30: number;
+  questions30: number;
+  durationSec30: number;
+  accSum30: number;
+  testSessions30: number;
+  testDurationSec30: number;
+};
+
+export type AggHourBucket = {
+  hour: number;
+  sessions: number;
+  questions: number;
+  accSum: number;
+};
+
+export type AggDowBucket = {
+  dow: number;
+  sessions: number;
+  questions: number;
+  accSum: number;
+};
+
+export type AggHeatCell = { dow: number; hour: number; sessions: number };
+
+export type AggSubjectBucket = {
+  subjectId: string;
+  sessions: number;
+  questions: number;
+  accSum: number;
+};
+
+export type AggModeBucket = {
+  mode: string;
+  sessions: number;
+  accSum: number;
+  durationSec: number;
+};
+
+export type AggDailyPoint = {
+  day: string;
+  sessions: number;
+  users: number;
+  questions: number;
+  durationSec: number;
+  accSum: number;
+};
+
+export type DashboardSessionAggregates = {
+  generatedAt: string;
+  sessionsToday: number;
+  sessions7d: number;
+  sessions30d: number;
+  sessionsPrev7d: number;
+  durationSec7d: number;
+  durationSec30d: number;
+  durationSecPrev7d: number;
+  accSum7d: number;
+  accSum30d: number;
+  completedTests7d: number;
+  answers7d: number;
+  answers14d: number;
+  answers30d: number;
+  perUser: AggUserStat[];
+  hour: AggHourBucket[];
+  dow: AggDowBucket[];
+  heatmap: AggHeatCell[];
+  subject: AggSubjectBucket[];
+  mode7d: AggModeBucket[];
+  dailyTrend14d: AggDailyPoint[];
+};
+
+const EMPTY_AGGREGATES: DashboardSessionAggregates = {
+  generatedAt: new Date(0).toISOString(),
+  sessionsToday: 0,
+  sessions7d: 0,
+  sessions30d: 0,
+  sessionsPrev7d: 0,
+  durationSec7d: 0,
+  durationSec30d: 0,
+  durationSecPrev7d: 0,
+  accSum7d: 0,
+  accSum30d: 0,
+  completedTests7d: 0,
+  answers7d: 0,
+  answers14d: 0,
+  answers30d: 0,
+  perUser: [],
+  hour: [],
+  dow: [],
+  heatmap: [],
+  subject: [],
+  mode7d: [],
+  dailyTrend14d: [],
+};
+
+export const getDashboardSessionAggregates = cache(
+  async (): Promise<DashboardSessionAggregates> => {
+    const admin = createAdminClient();
+    const { data, error } = await admin.rpc("admin_dashboard_session_aggregates");
+    if (error) {
+      console.error("[loadAdminShared] dashboard aggregates", error.message);
+      return EMPTY_AGGREGATES;
+    }
+    if (!data) return EMPTY_AGGREGATES;
+    return data as unknown as DashboardSessionAggregates;
+  },
+);

@@ -325,7 +325,7 @@ function AdminSidebarPanel({
               <Link
                 key={item.href}
                 href={item.href}
-                prefetch
+                prefetch={false}
                 className={linkClass}
                 aria-current={active ? "page" : undefined}
                 title={collapsed && !mobile ? item.label : undefined}

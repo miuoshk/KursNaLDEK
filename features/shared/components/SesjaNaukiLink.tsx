@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Brain } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   Tooltip,
@@ -16,6 +17,7 @@ import { cn } from "@/lib/utils";
 export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const [prefetchOnIntent, setPrefetchOnIntent] = useState(false);
   const { dueReviewsCount, preferredSessionCount } = useDashboardUser();
   const href =
     dueReviewsCount > 0
@@ -74,7 +76,9 @@ export function SesjaNaukiLink({ collapsed }: { collapsed: boolean }) {
   const link = (
     <Link
       href={href}
-      prefetch
+      prefetch={prefetchOnIntent ? null : false}
+      onMouseEnter={() => setPrefetchOnIntent(true)}
+      onTouchStart={() => setPrefetchOnIntent(true)}
       className={linkClass}
       aria-current={active ? "page" : undefined}
       title={collapsed ? tooltip : undefined}

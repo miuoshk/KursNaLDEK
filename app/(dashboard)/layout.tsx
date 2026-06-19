@@ -11,7 +11,6 @@ import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache"
 import { pingPresence } from "@/features/shared/server/pingPresence";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { getDashboardYear } from "@/lib/dashboard/getDashboardYear";
 import { greetingName } from "@/lib/greetingName";
 import { initialsFromName } from "@/lib/initialsFromName";
 import { createClient } from "@/lib/supabase/server";
@@ -25,7 +24,6 @@ export default async function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const year = await getDashboardYear();
   const supabase = await createClient();
   const {
     data: { user },
@@ -41,12 +39,21 @@ export default async function DashboardLayout({
     redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
   }
 
-  void pingPresence();
   const userEmail = user.email ?? null;
   const profileRow = await getProfileByUserId(user.id);
   const userTrack = profileRow?.current_track ?? "stomatologia";
   const userYear = profileRow?.current_year ?? 1;
+  // Rok do breadcrumb/TopBar bierzemy z już-pobranego profilu zamiast osobnego
+  // getDashboardYear() (który robił własny auth.getUser() + SELECT profiles).
+  const year = userYear;
   const currentTrack = normalizeTrack(userTrack);
+
+  // Presence ping z danymi z profilu — bez dodatkowego auth.getUser() i z
+  // throttlem opartym o realny last_seen_at (działa na serverless).
+  void pingPresence(
+    user.id,
+    (profileRow as { last_seen_at?: string | null } | null)?.last_seen_at ?? null,
+  );
   await getCachedKnnpCatalog(userTrack, userYear);
   const dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
   const preferredSessionCount = getPreferredSessionCount(profileRow);

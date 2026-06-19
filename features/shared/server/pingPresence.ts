@@ -8,27 +8,39 @@ const PING_INTERVAL_MS = 60_000;
 const lastPingByUser = new Map<string, number>();
 
 /**
- * Aktualizuje `profiles.last_seen_at` dla aktualnego usera.
+ * Aktualizuje `profiles.last_seen_at` dla danego usera.
  * Throttlowane do 1× / 60 s per user. Wywoływane z dashboard layout.
+ *
+ * Throttle opiera się PRZEDE WSZYSTKIM o `lastSeenIso` z DB (przekazywane z
+ * już-pobranego profilu), bo mapa w pamięci procesu jest bezużyteczna na
+ * serverless — każda zimna instancja startuje z pustą mapą i UPDATE leciał
+ * praktycznie przy każdym żądaniu. Mapa zostaje jako szybki bezpiecznik dla
+ * równoległych żądań na tej samej ciepłej instancji.
+ *
+ * Nie wykonuje już własnego `auth.getUser()` — `userId` dostarcza layout.
  * Cicho ignoruje błędy — to nie powinno blokować renderowania.
  */
-export async function pingPresence(): Promise<void> {
+export async function pingPresence(
+  userId: string,
+  lastSeenIso: string | null,
+): Promise<void> {
   try {
-    const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (!user) return;
-
     const now = Date.now();
-    const last = lastPingByUser.get(user.id) ?? 0;
-    if (now - last < PING_INTERVAL_MS) return;
-    lastPingByUser.set(user.id, now);
 
+    const lastSeenMs = lastSeenIso ? Date.parse(lastSeenIso) : 0;
+    if (Number.isFinite(lastSeenMs) && lastSeenMs > 0 && now - lastSeenMs < PING_INTERVAL_MS) {
+      return;
+    }
+
+    const last = lastPingByUser.get(userId) ?? 0;
+    if (now - last < PING_INTERVAL_MS) return;
+    lastPingByUser.set(userId, now);
+
+    const supabase = await createClient();
     await supabase
       .from("profiles")
       .update({ last_seen_at: new Date(now).toISOString() })
-      .eq("id", user.id);
+      .eq("id", userId);
   } catch {
     // intentionally silent
   }

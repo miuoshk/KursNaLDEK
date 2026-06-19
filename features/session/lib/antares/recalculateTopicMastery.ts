@@ -84,7 +84,9 @@ export async function recalculateTopicMastery(
 
     const sessionIds = (userSessions ?? []).map((s) => s.id);
 
-    for (const topicId of uniqueTopics) {
+    // Tematy liczymy równolegle — każdy to niezależny zestaw zapytań + upsert.
+    await Promise.all(
+      uniqueTopics.map(async (topicId) => {
       const topicQuestions = await fetchActiveQuestionsForTopics(
         supabase,
         [topicId],
@@ -192,7 +194,8 @@ export async function recalculateTopicMastery(
       if (upsertErr) {
         throw upsertErr;
       }
-    }
+      }),
+    );
 
     // Ranking słabości: jeden UPDATE z row_number() w bazie zamiast pętli
     // N osobnych UPDATE-ów (jeden round-trip Vercel->Supabase na każdy temat —

@@ -156,8 +156,10 @@ export async function completeSession(
     }
 
     // ═══════════════════════════════════════════════════════════
-    // ANTARES — synchronicznie (serverless ucina fire-and-forget)
-    // mastery, sessionInsights, examReadiness → potem summary z DB
+    // ANTARES (mastery, sessionInsights, examReadiness) policzymy w tle
+    // (next/after) — nie blokuje ekranu podsumowania. Summary wraca bez
+    // insightów; klient dociąga je pollingiem (loadSessionAntaresInsights),
+    // a footer z insightami i tak pokazuje się tylko w trybie inteligentnym.
     // ═══════════════════════════════════════════════════════════
 
     const sessionStartedAt =
@@ -170,42 +172,6 @@ export async function completeSession(
       question_order: (a.question_order as number | null) ?? null,
       answered_at: (a.answered_at as string | null) ?? null,
     }));
-
-    if (postAnsRows.length > 0) {
-      try {
-        const { data: topicRows, error: topicErr } = await supabase
-          .from("session_answers")
-          .select("questions!inner(topic_id)")
-          .eq("session_id", session.id);
-
-        if (topicErr) throw topicErr;
-
-        const affectedTopicIds = [
-          ...new Set(
-            (topicRows ?? [])
-              .map((r) => {
-                const q = r.questions as unknown as {
-                  topic_id: string;
-                } | null;
-                return q?.topic_id;
-              })
-              .filter((id): id is string => Boolean(id)),
-          ),
-        ];
-
-        await runCompleteSessionPostAntares(
-          supabase,
-          user.id,
-          session.id as string,
-          sessionStartedAt,
-          affectedTopicIds,
-          postAnsRows,
-          answeredCount,
-        );
-      } catch (err) {
-        console.error("[completeSession] postAntares", err);
-      }
-    }
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
@@ -240,6 +206,45 @@ export async function completeSession(
 
     after(async () => {
       try {
+        // ANTARES najpierw — zapisuje session_insights/examReadiness do DB,
+        // skąd klient (tryb inteligentny) dociąga je pollingiem. Liczymy tu,
+        // bo to najcięższa część i nie ma prawa blokować ekranu podsumowania.
+        if (postAnsRows.length > 0) {
+          try {
+            const { data: topicRows, error: topicErr } = await supabase
+              .from("session_answers")
+              .select("questions!inner(topic_id)")
+              .eq("session_id", bgSessionId);
+
+            if (topicErr) throw topicErr;
+
+            const affectedTopicIds = [
+              ...new Set(
+                (topicRows ?? [])
+                  .map((r) => {
+                    const q = r.questions as unknown as {
+                      topic_id: string;
+                    } | null;
+                    return q?.topic_id;
+                  })
+                  .filter((id): id is string => Boolean(id)),
+              ),
+            ];
+
+            await runCompleteSessionPostAntares(
+              supabase,
+              bgUserId,
+              bgSessionId,
+              sessionStartedAt,
+              affectedTopicIds,
+              postAnsRows,
+              answeredCount,
+            );
+          } catch (err) {
+            console.error("[completeSession] postAntares (bg)", err);
+          }
+        }
+
         // Percentyl kohorty (readiness_*) — tylko na /statystyki, liczony po
         // odpowiedzi żeby nie wydłużać ekranu podsumowania.
         await refreshReadinessPercentileCache(supabase, bgUserId);

@@ -201,11 +201,15 @@ export async function runCompleteSessionPostAntares(
         )
         .eq("user_id", userId)
         .in("question_id", qids),
+      // Tylko eventy pytań z tej sesji — bez tego ciągnęliśmy wszystkie answer-
+      // eventy usera z 180 dni (u aktywnych userów dziesiątki tysięcy wierszy)
+      // i filtrowaliśmy po question_id dopiero w JS.
       supabase
         .from("learning_events")
         .select("created_at, payload")
         .eq("user_id", userId)
         .eq("event_type", "answer")
+        .in("payload->>question_id", qids)
         .gte("created_at", eventsFromIso)
         .lte("created_at", eventsToIso)
         .order("created_at", { ascending: true }),

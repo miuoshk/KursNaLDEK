@@ -31,6 +31,17 @@ const nextConfig: NextConfig = {
       tailwindcss: tailwindPkg,
     },
   },
+  experimental: {
+    // Router Cache po stronie klienta dla tras dynamicznych (domyślnie 0 = brak).
+    // Dzięki temu po pierwszym wejściu przełączanie np. pulpit <-> przedmioty
+    // jest natychmiastowe (bez ponownego renderu na serwerze) przez 5 minut.
+    // Mutacje (zakończenie sesji, zmiana ustawień) i tak robią revalidatePath,
+    // więc dane po akcji są odświeżane mimo cache.
+    staleTimes: {
+      dynamic: 300,
+      static: 300,
+    },
+  },
   async headers() {
     const securityHeaders = [
       { key: "X-Frame-Options", value: "DENY" },

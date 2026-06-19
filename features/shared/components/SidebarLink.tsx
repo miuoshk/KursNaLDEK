@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   Tooltip,
@@ -25,10 +24,6 @@ export function SidebarLink({
   collapsed,
 }: SidebarLinkProps) {
   const pathname = usePathname();
-  // Prefetch dopiero na hover/intencję — trasy dashboardu są force-dynamic z
-  // loading.tsx, więc viewport-prefetch odpalał pełny render layoutu na serwerze
-  // dla każdego widocznego linku. Hover-prefetch ogranicza to do realnej intencji.
-  const [prefetchOnIntent, setPrefetchOnIntent] = useState(false);
   const active =
     href === "/pulpit"
       ? pathname === "/pulpit" || pathname === "/pulpit/"
@@ -84,9 +79,6 @@ export function SidebarLink({
   const link = (
     <Link
       href={href}
-      prefetch={prefetchOnIntent ? null : false}
-      onMouseEnter={() => setPrefetchOnIntent(true)}
-      onTouchStart={() => setPrefetchOnIntent(true)}
       className={linkClass}
       aria-current={active ? "page" : undefined}
       title={collapsed ? label : undefined}

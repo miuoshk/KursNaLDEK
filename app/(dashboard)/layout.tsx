@@ -7,7 +7,6 @@ import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataC
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { normalizeTrack } from "@/features/access/lib/studyAccess";
-import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { pingPresence } from "@/features/shared/server/pingPresence";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
@@ -32,11 +31,10 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
-  const { blocked } = await assertAccountNotBlocked({ email: user.email });
-  if (blocked) {
-    await supabase.auth.signOut();
-    redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
-  }
+  // Ban-check leci równolegle z pobraniem profilu/danych (niezależne zapytania).
+  // Sprawdzamy wynik dopiero przed renderem — blokowany user i tak zostanie
+  // wylogowany zanim cokolwiek zobaczy, a RLS chroni dane w międzyczasie.
+  const blockedPromise = assertAccountNotBlocked({ email: user.email });
 
   const userEmail = user.email ?? null;
   const profileRow = await getProfileByUserId(user.id);
@@ -53,8 +51,13 @@ export default async function DashboardLayout({
     user.id,
     (profileRow as { last_seen_at?: string | null } | null)?.last_seen_at ?? null,
   );
-  await getCachedKnnpCatalog(userTrack, userYear);
   const dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
+
+  const { blocked } = await blockedPromise;
+  if (blocked) {
+    await supabase.auth.signOut();
+    redirect(`/login?${LOGIN_BLOCKED_QUERY}=1`);
+  }
   const preferredSessionCount = getPreferredSessionCount(profileRow);
   const displayName = greetingName(profileRow, userEmail);
   const streak = profileRow?.current_streak ?? 0;

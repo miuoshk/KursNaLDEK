@@ -1,17 +1,14 @@
 import "server-only";
 
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { hasAnyActiveEntitlement, hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
 export async function requireAnyEntitlementOrRedirect() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");
@@ -30,10 +27,7 @@ export async function requireAnyEntitlementOrRedirect() {
 }
 
 export async function requireCurrentSelectionAccessOrRedirect() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");
@@ -52,10 +46,7 @@ export async function requireCurrentSelectionAccessOrRedirect() {
 }
 
 export async function hasAccessForSubjectSelection(track: string, year: number): Promise<boolean> {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     return false;

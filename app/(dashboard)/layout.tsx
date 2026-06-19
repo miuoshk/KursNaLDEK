@@ -14,6 +14,7 @@ import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { greetingName } from "@/lib/greetingName";
 import { initialsFromName } from "@/lib/initialsFromName";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { redirect } from "next/navigation";
 import { assertAccountNotBlocked, LOGIN_BLOCKED_QUERY } from "@/lib/auth/accountBan";
 
@@ -25,9 +26,7 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");

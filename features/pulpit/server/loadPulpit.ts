@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
@@ -59,11 +60,8 @@ export async function loadPulpit(): Promise<
 > {
   try {
     const supabase = await createClient();
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-    if (authError || !user) {
+    const user = await getCurrentUser();
+    if (!user) {
       return { ok: false, message: "Brak aktywnej sesji." };
     }
 

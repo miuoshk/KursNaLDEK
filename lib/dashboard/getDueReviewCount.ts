@@ -1,6 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
-import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
+import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
 
 /**
@@ -8,6 +7,11 @@ import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache"
  * curriculum bieżącego (track, year). Bez tego zawężenia studenci, którzy
  * zmienili rok/kierunek (lub korzystali z free testu), widzieli powtórki
  * z przedmiotów, do których już nie mają dostępu.
+ *
+ * Agregacja po stronie bazy (RPC `due_review_count`): jedno zapytanie z JOIN-em
+ * zamiast pobierania wszystkich ID pytań do Node i pętli COUNT po 200. Topiki
+ * pochodzą z cache'owanego katalogu (ta sama logika co wcześniej), a RPC liczy
+ * powtórki dla tego scope w jednym przebiegu.
  *
  * Gdy `track`/`year` nie zostaną podane, zwracana jest globalna liczba
  * (legacy fallback — np. dla skryptów / testów).
@@ -18,9 +22,8 @@ export async function getDueReviewCount(
   track?: string,
   year?: number,
 ): Promise<number> {
-  const nowIso = new Date().toISOString();
-
   if (!track || year == null) {
+    const nowIso = new Date().toISOString();
     const { count, error } = await supabase
       .from("user_question_progress")
       .select("id", { count: "exact", head: true })
@@ -38,32 +41,15 @@ export async function getDueReviewCount(
   const topicIds = catalog.topicRows.map((t) => t.id);
   if (topicIds.length === 0) return 0;
 
-  const studyTrack = normalizeTrack(track) as StudyTrack;
-  const qRows = await fetchActiveQuestionsForTopics(
-    supabase,
-    topicIds,
-    studyTrack,
-  );
-  const questionIds = qRows.map((q) => q.id);
-  if (questionIds.length === 0) return 0;
+  const { data, error } = await supabase.rpc("due_review_count", {
+    p_user_id: userId,
+    p_topic_ids: topicIds,
+    p_track: normalizeTrack(track),
+  });
 
-  const IN_CHUNK = 200;
-  let total = 0;
-  for (let i = 0; i < questionIds.length; i += IN_CHUNK) {
-    const chunk = questionIds.slice(i, i + IN_CHUNK);
-    const { count, error } = await supabase
-      .from("user_question_progress")
-      .select("id", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .not("next_review", "is", null)
-      .lte("next_review", nowIso)
-      .in("question_id", chunk);
-
-    if (error) {
-      console.error("[getDueReviewCount]", error.message);
-      return total;
-    }
-    total += count ?? 0;
+  if (error) {
+    console.error("[getDueReviewCount]", error.message);
+    return 0;
   }
-  return total;
+  return typeof data === "number" ? data : 0;
 }

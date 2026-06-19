@@ -6,7 +6,7 @@ const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
 
 export function buildKnnpSubjectsList(
   catalog: KnnpCatalogRows,
-  answeredPerSubject?: Map<string, Set<string>>,
+  answeredPerSubject?: Map<string, number>,
   lastStudiedPerSubject?: Map<string, string>,
   dueReviewsPerSubject?: Map<string, number>,
 ): {
@@ -38,7 +38,7 @@ export function buildKnnpSubjectsList(
       questionCount += bucket?.questionSum ?? 0;
       topicCount += bucket?.topicCount ?? 0;
     }
-    const answeredUnique = answeredPerSubject?.get(row.id)?.size ?? 0;
+    const answeredUnique = answeredPerSubject?.get(row.id) ?? 0;
     totalQuestionCount += questionCount;
 
     return {

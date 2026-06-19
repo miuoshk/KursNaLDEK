@@ -129,7 +129,9 @@ export async function loadSubjectDashboard(
     }
 
     const viewerTrack = normalizeTrack(subject.track as string) as StudyTrack;
-    const topicRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack);
+    const topicRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack).filter(
+      (row) => !isVirtualThemeTopicId(row.id as string),
+    );
 
     const allTopicIds = topicRows.map((t) => t.id as string);
     const contentSubjectId = getCanonicalContentSubjectId(subjectId);

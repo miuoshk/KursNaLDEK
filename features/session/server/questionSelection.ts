@@ -6,6 +6,7 @@ import {
   expandTopicSubjectIdsForCatalog,
   getSubjectScopeIds,
 } from "@/features/session/server/sharedSubjects";
+import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
 
 export async function fetchVisibleTopicIds(
   supabase: SupabaseClient,
@@ -25,7 +26,9 @@ export async function fetchVisibleTopicIds(
   const visible = track
     ? filterTopicsForTrack(topicRows ?? [], track)
     : (topicRows ?? []);
-  return visible.map((t) => t.id as string);
+  return visible
+    .map((t) => t.id as string)
+    .filter((id) => !isVirtualThemeTopicId(id));
 }
 
 export function shuffle<T>(items: T[]): T[] {

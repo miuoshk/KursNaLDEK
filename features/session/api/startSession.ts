@@ -37,6 +37,7 @@ import {
   mapRowsToSessionQuestions,
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
 import { persistLastSessionQuestionCount } from "@/features/session/server/persistLastSessionQuestionCount";
+import { resolveStudySessionTopicId } from "@/features/session/server/resolveStudySessionTopicId";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
@@ -148,13 +149,14 @@ export async function startSession(
         .maybeSingle();
 
       const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
+      const insertTopicId = await resolveStudySessionTopicId(supabase, topicId);
 
       const { data: inserted, error: insErr } = await supabase
         .from("study_sessions")
         .insert({
           user_id: user.id,
           subject_id: resolvedSubjectId,
-          topic_id: topicId ?? null,
+          topic_id: insertTopicId,
           mode: dbMode,
           total_questions: questions.length,
           question_ids: explicitIds,
@@ -470,13 +472,14 @@ export async function startSession(
     }
 
     const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
+    const insertTopicId = await resolveStudySessionTopicId(supabase, topicId);
 
     const { data: inserted, error: insErr } = await supabase
       .from("study_sessions")
       .insert({
         user_id: user.id,
         subject_id: insertSubjectId,
-        topic_id: topicId ?? null,
+        topic_id: insertTopicId,
         mode: dbMode,
         total_questions: questions.length,
         question_ids: chosenIds,

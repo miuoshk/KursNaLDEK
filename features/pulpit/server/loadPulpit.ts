@@ -7,7 +7,6 @@ import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/
 import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
 import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
-import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import { fetchVisibleTopicIds } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
@@ -138,22 +137,22 @@ export async function loadPulpit(): Promise<
         track,
       );
       if (topicIds.length > 0) {
-        const qrows = await fetchActiveQuestionsForTopics(supabase, topicIds, track);
-        const qids = qrows.map((q) => q.id);
-        if (qids.length > 0) {
-          const { data: uqp } = await supabase
-            .from("user_question_progress")
-            .select("times_answered, times_correct")
-            .eq("user_id", user.id)
-            .in("question_id", qids);
-          let t = 0;
-          let c = 0;
-          for (const r of uqp ?? []) {
-            t += Number(r.times_answered ?? 0);
-            c += Number(r.times_correct ?? 0);
-          }
-          lastSubjectMasteryPct = t > 0 ? Math.round((c / t) * 100) : 0;
-        }
+        // Sumę answered/correct po aktywnych pytaniach tematów liczy baza
+        // (jeden JOIN) zamiast pobierania setek question_id i sumowania w JS.
+        const { data: masteryRows } = await supabase.rpc(
+          "subject_answered_mastery",
+          {
+            p_user_id: user.id,
+            p_topic_ids: topicIds,
+            p_track: track,
+          },
+        );
+        const row = (
+          Array.isArray(masteryRows) ? masteryRows[0] : masteryRows
+        ) as { total_correct?: number; total_answered?: number } | null;
+        const c = Number(row?.total_correct ?? 0);
+        const t = Number(row?.total_answered ?? 0);
+        lastSubjectMasteryPct = t > 0 ? Math.round((c / t) * 100) : 0;
       }
     }
 

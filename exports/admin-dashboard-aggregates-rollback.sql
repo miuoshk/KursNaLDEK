@@ -10,14 +10,18 @@
 --     features/admin/server/loadAdminShared.ts \
 --     features/admin/server/loadAdminDashboardKpis.ts \
 --     features/admin/server/loadAdminDashboardSegments.ts \
---     features/admin/server/loadAdminDashboard.ts
+--     features/admin/server/loadAdminDashboard.ts \
+--     features/admin/server/loadAdminTrendSeries.ts \
+--     features/admin/server/loadAdminCohortSubjectPopularity.ts
 -- (getStudySessionsLast30d zostaje w loadAdminShared.ts, wiec rewert dziala od razu.)
 --
 -- Ponizsze SQL usuwa artefakty bazodanowe. DROP FUNCTION i DROP INDEX CONCURRENTLY
 -- NIE moga byc w jednej transakcji - uruchamiac KAZDY STATEMENT OSOBNO.
 
--- 1) Funkcja RPC (bezpieczna do usuniecia - po rewercie loaderow nikt jej nie wola)
+-- 1) Funkcje RPC (bezpieczne do usuniecia - po rewercie loaderow nikt ich nie wola)
 drop function if exists public.admin_dashboard_session_aggregates();
+drop function if exists public.admin_trend_series(text, text, int, int);
+drop function if exists public.admin_cohort_subject_popularity(text, int, int);
 
 -- 2) Indeksy - ZALECANE ZOSTAWIC (korzystne niezaleznie od reszty zmian).
 --    Usuwac tylko przy swiadomym, pelnym rewercie. Kazdy osobno:

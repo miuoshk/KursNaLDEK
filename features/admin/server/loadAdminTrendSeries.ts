@@ -1,30 +1,6 @@
 import "server-only";
+import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
-
-const PAGE_SIZE = 1000;
-
-async function fetchAllPaginated<T>(
-  label: string,
-  buildQuery: (from: number, to: number) => Promise<{
-    data: T[] | null;
-    error: { message: string } | null;
-  }>,
-): Promise<T[]> {
-  const all: T[] = [];
-  let offset = 0;
-  while (true) {
-    const { data, error } = await buildQuery(offset, offset + PAGE_SIZE - 1);
-    if (error) {
-      console.error(`[loadAdminTrendSeries] ${label}`, error.message);
-      break;
-    }
-    const batch = data ?? [];
-    all.push(...batch);
-    if (batch.length < PAGE_SIZE) break;
-    offset += PAGE_SIZE;
-  }
-  return all;
-}
 
 export type AdminTrendMetric =
   | "sessions"
@@ -46,7 +22,7 @@ export type AdminTrendParams = {
 };
 
 export type AdminTrendPoint = {
-  /** YYYY-MM-DD (UTC) */
+  /** YYYY-MM-DD (Europe/Warsaw) */
   date: string;
   value: number;
 };
@@ -57,19 +33,6 @@ export type AdminTrendSeries = {
   total: number;
   points: AdminTrendPoint[];
 };
-
-function dayKey(d: Date): string {
-  return d.toISOString().slice(0, 10);
-}
-
-function emptySeries(days: number, startMs: number): Map<string, number> {
-  const map = new Map<string, number>();
-  for (let i = 0; i < days; i += 1) {
-    const d = new Date(startMs + i * 86400000);
-    map.set(dayKey(d), 0);
-  }
-  return map;
-}
 
 function metricUnit(metric: AdminTrendMetric): string {
   switch (metric) {
@@ -89,201 +52,54 @@ function metricUnit(metric: AdminTrendMetric): string {
 }
 
 /**
- * Pobiera ID userów zgodne z filtrem (kierunek + rok studiów).
- * Zwraca null gdy filtr nie zawęża (wówczas pomijamy join).
+ * Seria trendu liczona po stronie bazy (RPC `admin_trend_series`). Agregacja
+ * dzienna w SQL (kubełki Europe/Warsaw) zamiast pobierania wszystkich wierszy i
+ * liczenia w JS. Wynik buforowany krótko (`unstable_cache`), bo wykresy
+ * dociągają się leniwie i często równolegle.
  */
-async function resolveUserScope(
+const loadTrendSeriesUncached = async (
+  metric: AdminTrendMetric,
   track: AdminTrendTrack,
   year: "all" | number,
-): Promise<string[] | null> {
-  if (track === "all" && year === "all") return null;
+  range: AdminTrendRange,
+): Promise<AdminTrendSeries> => {
   const admin = createAdminClient();
-  let q = admin.from("profiles").select("id");
-  if (track !== "all") q = q.eq("current_track", track);
-  if (year !== "all") q = q.eq("current_year", year);
-  const { data } = await q;
-  return (data ?? []).map((row) => row.id as string);
-}
+  const { data, error } = await admin.rpc("admin_trend_series", {
+    p_metric: metric,
+    p_track: track,
+    p_year: year === "all" ? null : year,
+    p_range: Number(range),
+  });
+
+  if (error || !data) {
+    if (error) console.error("[loadAdminTrendSeries]", error.message);
+    return { metric, unit: metricUnit(metric), total: 0, points: [] };
+  }
+
+  const result = data as unknown as AdminTrendSeries;
+  return {
+    metric,
+    unit: result.unit || metricUnit(metric),
+    total: Number(result.total ?? 0),
+    points: (result.points ?? []).map((p) => ({
+      date: p.date,
+      value: Number(p.value ?? 0),
+    })),
+  };
+};
+
+const getCachedTrendSeries = unstable_cache(
+  loadTrendSeriesUncached,
+  ["admin-trend-series"],
+  { revalidate: 60 },
+);
 
 export async function loadAdminTrendSeries(
   params: AdminTrendParams,
 ): Promise<AdminTrendSeries> {
-  const range = params.range ?? "30";
+  const metric = params.metric;
   const track = params.track ?? "all";
   const year = params.year ?? "all";
-  const days = Number(range);
-  const now = Date.now();
-  // Wyrównujemy do północy UTC dla stabilnych kubełków dziennie.
-  const todayMid = new Date();
-  todayMid.setUTCHours(0, 0, 0, 0);
-  const endMs = todayMid.getTime();
-  const startMs = endMs - (days - 1) * 86400000;
-  const sinceIso = new Date(startMs).toISOString();
-
-  const userScope = await resolveUserScope(track, year);
-  if (userScope && userScope.length === 0) {
-    // Filtr nie zwraca żadnego usera — zero w każdym kubełku.
-    const buckets = emptySeries(days, startMs);
-    return {
-      metric: params.metric,
-      unit: metricUnit(params.metric),
-      total: 0,
-      points: Array.from(buckets, ([date, value]) => ({ date, value })),
-    };
-  }
-
-  const admin = createAdminClient();
-  const buckets = emptySeries(days, startMs);
-
-  if (params.metric === "users") {
-    // Liczba unikalnych userów per dzień (DAU) — patrzymy na completed sessions.
-    let q = admin
-      .from("study_sessions")
-      .select("user_id, completed_at")
-      .eq("is_completed", true)
-      .gte("completed_at", sinceIso);
-    if (userScope) q = q.in("user_id", userScope);
-    const data = await fetchAllPaginated<{ user_id: string; completed_at: string | null }>(
-      "study_sessions/users",
-      async (from, to) => q.order("completed_at", { ascending: true }).range(from, to),
-    );
-    const dailySets = new Map<string, Set<string>>();
-    for (const row of data) {
-      const ca = row.completed_at as string | null;
-      if (!ca) continue;
-      const k = dayKey(new Date(ca));
-      if (!buckets.has(k)) continue;
-      const set = dailySets.get(k) ?? new Set<string>();
-      set.add(row.user_id as string);
-      dailySets.set(k, set);
-    }
-    for (const [k, set] of dailySets) buckets.set(k, set.size);
-    let total = 0;
-    const totalSet = new Set<string>();
-    for (const set of dailySets.values()) for (const id of set) totalSet.add(id);
-    total = totalSet.size;
-    return {
-      metric: params.metric,
-      unit: metricUnit(params.metric),
-      total,
-      points: Array.from(buckets, ([date, value]) => ({ date, value })),
-    };
-  }
-
-  if (params.metric === "questions") {
-    // Unikalne (user, question) — patrzymy na session_answers join sessions.
-    let answersQ = admin
-      .from("session_answers")
-      .select(
-        "question_id, answered_at, study_sessions!inner(user_id, is_completed)",
-      )
-      .gte("answered_at", sinceIso)
-      .eq("study_sessions.is_completed", true);
-    if (userScope) {
-      answersQ = answersQ.in("study_sessions.user_id", userScope);
-    }
-    const data = await fetchAllPaginated<{
-      question_id: string;
-      answered_at: string | null;
-      study_sessions: { user_id?: string } | { user_id?: string }[] | null;
-    }>("session_answers/questions", async (from, to) =>
-      answersQ.order("answered_at", { ascending: true }).range(from, to),
-    );
-    const dailyPairs = new Map<string, Set<string>>();
-    const allPairs = new Set<string>();
-    for (const row of data) {
-      const at = row.answered_at as string | null;
-      if (!at) continue;
-      const k = dayKey(new Date(at));
-      if (!buckets.has(k)) continue;
-      const ssRaw = row.study_sessions;
-      const ss = Array.isArray(ssRaw) ? ssRaw[0] : ssRaw;
-      const userId = ss?.user_id;
-      if (!userId) continue;
-      const pair = `${userId}|${row.question_id}`;
-      const set = dailyPairs.get(k) ?? new Set<string>();
-      if (!allPairs.has(pair)) {
-        set.add(pair);
-        allPairs.add(pair);
-      }
-      dailyPairs.set(k, set);
-    }
-    for (const [k, set] of dailyPairs) buckets.set(k, set.size);
-    return {
-      metric: params.metric,
-      unit: metricUnit(params.metric),
-      total: allPairs.size,
-      points: Array.from(buckets, ([date, value]) => ({ date, value })),
-    };
-  }
-
-  // sessions / time / answers / accuracy — agregat z study_sessions
-  let q = admin
-    .from("study_sessions")
-    .select("user_id, completed_at, duration_seconds, total_questions, accuracy, correct_answers")
-    .eq("is_completed", true)
-    .gte("completed_at", sinceIso);
-  if (userScope) q = q.in("user_id", userScope);
-  const data = await fetchAllPaginated<{
-    user_id: string;
-    completed_at: string | null;
-    duration_seconds: number | null;
-    total_questions: number | null;
-    accuracy: number | null;
-    correct_answers: number | null;
-  }>("study_sessions/metrics", async (from, to) =>
-    q.order("completed_at", { ascending: true }).range(from, to),
-  );
-
-  if (params.metric === "accuracy") {
-    const dailyCorrect = new Map<string, number>();
-    const dailyTotal = new Map<string, number>();
-    let totalCorrect = 0;
-    let totalTotal = 0;
-    for (const row of data) {
-      const ca = row.completed_at;
-      if (!ca) continue;
-      const k = dayKey(new Date(ca));
-      if (!buckets.has(k)) continue;
-      const c = Number(row.correct_answers ?? 0);
-      const t = Number(row.total_questions ?? 0);
-      dailyCorrect.set(k, (dailyCorrect.get(k) ?? 0) + c);
-      dailyTotal.set(k, (dailyTotal.get(k) ?? 0) + t);
-      totalCorrect += c;
-      totalTotal += t;
-    }
-    for (const [k] of buckets) {
-      const c = dailyCorrect.get(k) ?? 0;
-      const t = dailyTotal.get(k) ?? 0;
-      buckets.set(k, t > 0 ? Math.round((c / t) * 1000) / 10 : 0);
-    }
-    return {
-      metric: params.metric,
-      unit: metricUnit(params.metric),
-      total: totalTotal > 0 ? Math.round((totalCorrect / totalTotal) * 1000) / 10 : 0,
-      points: Array.from(buckets, ([date, value]) => ({ date, value })),
-    };
-  }
-
-  let total = 0;
-  for (const row of data) {
-    const ca = row.completed_at;
-    if (!ca) continue;
-    const k = dayKey(new Date(ca));
-    if (!buckets.has(k)) continue;
-    let inc = 0;
-    if (params.metric === "sessions") inc = 1;
-    else if (params.metric === "time")
-      inc = Math.round((Number(row.duration_seconds ?? 0) / 60) * 10) / 10;
-    else if (params.metric === "answers") inc = Number(row.total_questions ?? 0);
-    buckets.set(k, (buckets.get(k) ?? 0) + inc);
-    total += inc;
-  }
-
-  return {
-    metric: params.metric,
-    unit: metricUnit(params.metric),
-    total: Math.round(total * 10) / 10,
-    points: Array.from(buckets, ([date, value]) => ({ date, value })),
-  };
+  const range = params.range ?? "30";
+  return getCachedTrendSeries(metric, track, year, range);
 }

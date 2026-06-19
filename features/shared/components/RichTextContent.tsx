@@ -33,6 +33,36 @@ function InlineMathSpan({ math }: { math: string }) {
   }
 }
 
+/**
+ * Inline markdown for a text segment between inline-math spans.
+ * Markdown trims edge whitespace, which would glue text to neighbouring
+ * `$...$` math (e.g. `grawitacji $g$ z` → `grawitacjigz`). Render the
+ * surrounding whitespace as literal text nodes to preserve the spacing.
+ */
+function InlineMarkdownSegment({ text }: { text: string }) {
+  const leading = text.match(/^\s+/)?.[0] ?? "";
+  const trailing = text.match(/\s+$/)?.[0] ?? "";
+  const core = text.slice(leading.length, text.length - trailing.length);
+
+  if (!core) {
+    return <>{text}</>;
+  }
+
+  return (
+    <>
+      {leading}
+      <ReactMarkdown
+        remarkPlugins={[...remarkPlugins]}
+        rehypePlugins={[...rehypePlugins]}
+        components={inlineMarkdownComponents}
+      >
+        {core}
+      </ReactMarkdown>
+      {trailing}
+    </>
+  );
+}
+
 type RichTextContentProps = {
   text: string;
   className?: string;
@@ -57,16 +87,7 @@ function renderMathAwareSegments(
     if (renderTextSegment) {
       return <span key={`text-${index}`}>{renderTextSegment(part)}</span>;
     }
-    return (
-      <ReactMarkdown
-        key={`md-${index}`}
-        remarkPlugins={[...remarkPlugins]}
-        rehypePlugins={[...rehypePlugins]}
-        components={inlineMarkdownComponents}
-      >
-        {part}
-      </ReactMarkdown>
-    );
+    return <InlineMarkdownSegment key={`md-${index}`} text={part} />;
   });
 }
 

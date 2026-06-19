@@ -34,33 +34,23 @@ function InlineMathSpan({ math }: { math: string }) {
 }
 
 /**
- * Inline markdown for a text segment between inline-math spans.
- * Markdown trims edge whitespace, which would glue text to neighbouring
- * `$...$` math (e.g. `grawitacji $g$ z` → `grawitacjigz`). Render the
- * surrounding whitespace as literal text nodes to preserve the spacing.
+ * Search-highlight path only: split around `$...$` so the highlight transform
+ * touches plain text but not LaTeX. The default (non-highlight) path lets
+ * remark-math parse `$...$` inline within the full markdown, which keeps
+ * spacing and adjacent text (e.g. `($h$ - opis)`) on one line.
  */
-function InlineMarkdownSegment({ text }: { text: string }) {
-  const leading = text.match(/^\s+/)?.[0] ?? "";
-  const trailing = text.match(/\s+$/)?.[0] ?? "";
-  const core = text.slice(leading.length, text.length - trailing.length);
-
-  if (!core) {
-    return <>{text}</>;
-  }
-
-  return (
-    <>
-      {leading}
-      <ReactMarkdown
-        remarkPlugins={[...remarkPlugins]}
-        rehypePlugins={[...rehypePlugins]}
-        components={inlineMarkdownComponents}
-      >
-        {core}
-      </ReactMarkdown>
-      {trailing}
-    </>
-  );
+function renderHighlightedSegments(
+  text: string,
+  renderTextSegment: (segment: string) => ReactNode,
+): ReactNode {
+  return splitInlineMath(text).map((part, index) => {
+    if (isInlineMathSegment(part)) {
+      return (
+        <InlineMathSpan key={`math-${index}`} math={stripInlineMathDelimiters(part)} />
+      );
+    }
+    return <span key={`text-${index}`}>{renderTextSegment(part)}</span>;
+  });
 }
 
 type RichTextContentProps = {
@@ -70,27 +60,6 @@ type RichTextContentProps = {
   renderTextSegment?: (segment: string) => ReactNode;
 };
 
-function renderMathAwareSegments(
-  text: string,
-  renderTextSegment?: (segment: string) => ReactNode,
-): ReactNode {
-  const parts = splitInlineMath(text);
-  return parts.map((part, index) => {
-    if (isInlineMathSegment(part)) {
-      return (
-        <InlineMathSpan
-          key={`math-${index}`}
-          math={stripInlineMathDelimiters(part)}
-        />
-      );
-    }
-    if (renderTextSegment) {
-      return <span key={`text-${index}`}>{renderTextSegment(part)}</span>;
-    }
-    return <InlineMarkdownSegment key={`md-${index}`} text={part} />;
-  });
-}
-
 /**
  * Markdown (GFM) + inline LaTeX (`$...$`) for question stems and answer options.
  */
@@ -99,29 +68,21 @@ export function RichTextContent({
   className,
   renderTextSegment,
 }: RichTextContentProps) {
-  const hasMath = text.includes("$");
-  const needsSegmentSplit = Boolean(renderTextSegment) || hasMath;
+  const wrapperClassName = cn(
+    "min-w-0 [&_strong]:font-semibold [&_strong]:text-primary",
+    className,
+  );
 
-  if (needsSegmentSplit) {
+  if (renderTextSegment) {
     return (
-      <span
-        className={cn(
-          "min-w-0 [&_strong]:font-semibold [&_strong]:text-primary",
-          className,
-        )}
-      >
-        {renderMathAwareSegments(text, renderTextSegment)}
+      <span className={wrapperClassName}>
+        {renderHighlightedSegments(text, renderTextSegment)}
       </span>
     );
   }
 
   return (
-    <span
-      className={cn(
-        "min-w-0 [&_strong]:font-semibold [&_strong]:text-primary",
-        className,
-      )}
-    >
+    <span className={wrapperClassName}>
       <ReactMarkdown
         remarkPlugins={[...remarkPlugins]}
         rehypePlugins={[...rehypePlugins]}

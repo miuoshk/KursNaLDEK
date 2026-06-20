@@ -271,7 +271,7 @@
     "reportErrorTitle": "Сообщить об ошибке в вопросе",
     "reportErrorCategory": "Категория ошибки",
     "reportErrorDescribe": "Опишите проблему",
-    "reportErrorPlaceholder": "Опишите, что не так (мин. 10 символов)...",
+    "reportErrorPlaceholder": "Опишите, что не так (мин. 10 символов). Помните: порядок ответов меняется в каждой сессии — точно укажите, какой ответ неверный (например, по содержанию, а не по букве A/B/C/D).",
     "reportErrorSubmit": "Отправить сообщение",
     "reportErrorSending": "Отправка…",
     "reportErrorSuccess": "Сообщение отправлено. Спасибо!",

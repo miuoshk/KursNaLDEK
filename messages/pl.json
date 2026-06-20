@@ -846,7 +846,7 @@
     "reportErrorTitle": "Zgłoś błąd w pytaniu",
     "reportErrorCategory": "Kategoria błędu",
     "reportErrorDescribe": "Opisz problem",
-    "reportErrorPlaceholder": "Opisz co jest nie tak (min. 10 znaków)...",
+    "reportErrorPlaceholder": "Opisz co jest nie tak (min. 10 znaków). Pamiętaj: kolejność odpowiedzi miesza się z każdą sesją — precyzyjnie określ, która odpowiedź jest błędna (np. po treści, nie po literze A/B/C/D).",
     "reportErrorSubmit": "Wyślij zgłoszenie",
     "reportErrorSending": "Wysyłanie…",
     "reportErrorSuccess": "Zgłoszenie zostało wysłane. Dziękujemy!",

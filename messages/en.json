@@ -515,7 +515,7 @@
     "reportErrorTitle": "Report question error",
     "reportErrorCategory": "Error category",
     "reportErrorDescribe": "Describe the problem",
-    "reportErrorPlaceholder": "Describe what's wrong (min. 10 characters)...",
+    "reportErrorPlaceholder": "Describe what's wrong (min. 10 characters). Remember: answer order shuffles with each session — specify precisely which answer is wrong (e.g. by its text, not by letter A/B/C/D).",
     "reportErrorSubmit": "Send report",
     "reportErrorSending": "Sending…",
     "reportErrorSuccess": "Report sent. Thank you!",

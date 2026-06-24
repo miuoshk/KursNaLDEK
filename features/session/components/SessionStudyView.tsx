@@ -175,6 +175,7 @@ export function SessionStudyView({
   );
 
   useSessionKeyboardShortcuts({
+    sessionId,
     currentQuestion: s.currentQuestion,
     currentIndex: s.currentIndex,
     total: s.total,
@@ -222,6 +223,7 @@ export function SessionStudyView({
         onEnd={() => setEndOpen(true)}
       />
       <SessionQuestionContent
+        sessionId={sessionId}
         q={q}
         currentIndex={s.currentIndex}
         total={s.total}

@@ -11,6 +11,7 @@ import { optionVisualState } from "@/features/session/lib/optionVisualState";
 import type { SessionQuestion } from "@/features/session/types";
 
 type SessionQuestionOptionsProps = {
+  sessionId: string;
   q: SessionQuestion;
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
@@ -18,12 +19,13 @@ type SessionQuestionOptionsProps = {
 };
 
 export function SessionQuestionOptions({
+  sessionId,
   q,
   selectedOptionId,
   isShowingFeedback,
   onSelectOption,
 }: SessionQuestionOptionsProps) {
-  const displayOptions = useSessionOptionOrder(q.id, q.options, {
+  const displayOptions = useSessionOptionOrder(sessionId, q.id, q.options, {
     disableOptionShuffle: q.disableOptionShuffle,
     explanation: q.explanation,
   });

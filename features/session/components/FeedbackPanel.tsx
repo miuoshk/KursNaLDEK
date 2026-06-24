@@ -8,6 +8,7 @@ import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { cn } from "@/lib/utils";
 
 type FeedbackPanelProps = {
+  sessionId: string;
   question: SessionQuestion;
   selectedOptionId: string;
   isCorrect: boolean;
@@ -15,6 +16,7 @@ type FeedbackPanelProps = {
 };
 
 export function FeedbackPanel({
+  sessionId,
   question,
   selectedOptionId,
   isCorrect,
@@ -27,12 +29,14 @@ export function FeedbackPanel({
     explanation: question.explanation,
   };
   const yourLetter = sessionOptionLetter(
+    sessionId,
     question.id,
     question.options,
     selectedOptionId,
     orderCtx,
   );
   const correctLetter = sessionOptionLetter(
+    sessionId,
     question.id,
     question.options,
     question.correctOptionId,

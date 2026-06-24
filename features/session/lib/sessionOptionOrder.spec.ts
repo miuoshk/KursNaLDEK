@@ -106,15 +106,27 @@ describe("shouldKeepFixedOptionOrder", () => {
 });
 
 describe("orderSessionOptions", () => {
-  it("tasuje zwykłe pytanie deterministycznie", () => {
-    const first = orderSessionOptions("q-plain", PLAIN_OPTIONS);
-    const second = orderSessionOptions("q-plain", PLAIN_OPTIONS);
+  const sessionA = "session-a";
+  const sessionB = "session-b";
+
+  it("tasuje zwykłe pytanie deterministycznie w ramach sesji", () => {
+    const first = orderSessionOptions(sessionA, "q-plain", PLAIN_OPTIONS);
+    const second = orderSessionOptions(sessionA, "q-plain", PLAIN_OPTIONS);
     assert.deepEqual(first, second);
     assert.notDeepEqual(first.map((o) => o.id), ["a", "b", "c", "d", "e"]);
   });
 
+  it("zmienia kolejność między sesjami", () => {
+    const inA = orderSessionOptions(sessionA, "q-plain", PLAIN_OPTIONS);
+    const inB = orderSessionOptions(sessionB, "q-plain", PLAIN_OPTIONS);
+    assert.notDeepEqual(
+      inA.map((o) => o.id),
+      inB.map((o) => o.id),
+    );
+  });
+
   it("nie tasuje pytań kombinatorycznych", () => {
-    const ordered = orderSessionOptions("q-combo", COMBO_OPTIONS);
+    const ordered = orderSessionOptions(sessionA, "q-combo", COMBO_OPTIONS);
     assert.deepEqual(
       ordered.map((o) => o.id),
       ["a", "b", "c", "d", "e"],
@@ -122,7 +134,7 @@ describe("orderSessionOptions", () => {
   });
 
   it("nie tasuje gdy wyjaśnienie ma (A)–(E)", () => {
-    const ordered = orderSessionOptions("q-expl", PLAIN_OPTIONS, {
+    const ordered = orderSessionOptions(sessionA, "q-expl", PLAIN_OPTIONS, {
       explanation: "Wyjaśnienie o (B) i (D).",
     });
     assert.deepEqual(
@@ -133,9 +145,10 @@ describe("orderSessionOptions", () => {
 
   it("sessionOptionLetter zgadza się z kolejnością wyświetlania", () => {
     const ctx = { explanation: "" };
-    const ordered = orderSessionOptions("q-letter", PLAIN_OPTIONS, ctx);
+    const ordered = orderSessionOptions(sessionA, "q-letter", PLAIN_OPTIONS, ctx);
     for (let i = 0; i < ordered.length; i++) {
       const letter = sessionOptionLetter(
+        sessionA,
         "q-letter",
         PLAIN_OPTIONS,
         ordered[i]!.id,

@@ -5,6 +5,7 @@ import type { Confidence, SessionQuestion } from "@/features/session/types";
 import { orderSessionOptions } from "@/features/session/lib/sessionOptionOrder";
 
 type Args = {
+  sessionId: string;
   currentQuestion: SessionQuestion | null;
   currentIndex: number;
   total: number;
@@ -19,6 +20,7 @@ type Args = {
 };
 
 export function useSessionKeyboardShortcuts({
+  sessionId,
   currentQuestion,
   currentIndex,
   total,
@@ -34,12 +36,12 @@ export function useSessionKeyboardShortcuts({
   const displayOptions = useMemo(
     () =>
       currentQuestion
-        ? orderSessionOptions(currentQuestion.id, currentQuestion.options, {
+        ? orderSessionOptions(sessionId, currentQuestion.id, currentQuestion.options, {
             disableOptionShuffle: currentQuestion.disableOptionShuffle,
             explanation: currentQuestion.explanation,
           })
         : [],
-    [currentQuestion],
+    [sessionId, currentQuestion],
   );
 
   useEffect(() => {

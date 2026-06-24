@@ -181,6 +181,7 @@ const SANITY_OPTIONS = [
 ];
 const sanityOrdered = orderSessionOptions(
   "__supabase_shuffle_sanity__",
+  "__supabase_shuffle_sanity__",
   SANITY_OPTIONS,
 );
 if (

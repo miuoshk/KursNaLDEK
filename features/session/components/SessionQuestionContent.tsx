@@ -20,6 +20,7 @@ import type {
 import { cn } from "@/lib/utils";
 
 type SessionQuestionContentProps = {
+  sessionId: string;
   q: SessionQuestion;
   currentIndex: number;
   total: number;
@@ -42,6 +43,7 @@ type SessionQuestionContentProps = {
 };
 
 export function SessionQuestionContent({
+  sessionId,
   q,
   currentIndex,
   total,
@@ -116,6 +118,7 @@ export function SessionQuestionContent({
           >
             <QuestionCard question={q} showTopicName={showTopicName}>
               <SessionQuestionOptions
+                sessionId={sessionId}
                 q={q}
                 selectedOptionId={selectedOptionId}
                 isShowingFeedback={isShowingFeedback || isCurrentAnswered}
@@ -134,6 +137,7 @@ export function SessionQuestionContent({
             className="mx-auto w-full max-w-3xl"
           >
             <FeedbackPanel
+              sessionId={sessionId}
               question={q}
               selectedOptionId={selectedOptionId!}
               isCorrect={isCorrect}

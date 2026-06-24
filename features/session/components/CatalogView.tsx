@@ -24,6 +24,7 @@ import { QuestionTextContent } from "@/features/shared/components/QuestionTextCo
 import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
+import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ type CatalogMode = "nauka" | "egzamin";
 const MODE_STORAGE_KEY = "catalog-mode";
 
 type CatalogViewProps = {
+  sessionId: string;
   subjectId: string;
   subjectName: string;
   questions: SessionQuestion[];
@@ -117,6 +119,7 @@ function highlightText(value: string, query: string): ReactNode {
 }
 
 export function CatalogView({
+  sessionId,
   subjectId,
   subjectName,
   questions,
@@ -184,6 +187,15 @@ export function CatalogView({
     : (navigationIndexes[0] ?? 0);
   const currentNavPosition = navigationIndexes.indexOf(activeIndex);
   const q = questions[activeIndex];
+  const displayOptions = useSessionOptionOrder(
+    sessionId,
+    q?.id ?? "",
+    q?.options ?? [],
+    {
+      disableOptionShuffle: q?.disableOptionShuffle,
+      explanation: q?.explanation,
+    },
+  );
   const selectedOptionId = q ? selectedByQ[q.id] : undefined;
   const isRevealed = mode === "nauka" || Boolean(selectedOptionId);
 
@@ -340,7 +352,7 @@ export function CatalogView({
                 />
 
                 <div className="mt-6 flex flex-col gap-2">
-                  {q.options.map((opt, i) => {
+                  {displayOptions.map((opt, i) => {
                     const letter = String.fromCharCode(65 + i);
                     const isCorrect = opt.id === q.correctOptionId;
                     const isSelected = selectedOptionId === opt.id;

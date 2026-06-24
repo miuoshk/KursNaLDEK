@@ -228,6 +228,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
     return (
       <CatalogView
         key={`${boot.subjectId}-${boot.initialQuestionId ?? "catalog"}`}
+        sessionId={boot.sessionId}
         subjectId={boot.subjectId}
         subjectName={boot.subjectName}
         questions={boot.questions}

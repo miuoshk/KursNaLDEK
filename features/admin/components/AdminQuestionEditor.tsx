@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
-import { Check, Loader2, Plus, RotateCcw, Trash2 } from "lucide-react";
+import { Check, Eye, Loader2, Pencil, Plus, RotateCcw, Trash2 } from "lucide-react";
 import {
   fetchAdminTopicCatalog,
   updateQuestionFull,
@@ -9,6 +9,8 @@ import {
 import { AdminQuestionImageField } from "@/features/admin/components/AdminQuestionImageField";
 import { AdminTopicAssignmentFields } from "@/features/admin/components/AdminTopicAssignmentFields";
 import { MarkdownExplanationEditor } from "@/features/admin/components/MarkdownExplanationEditor";
+import { RichTextContent } from "@/features/shared/components/RichTextContent";
+import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import type {
   AdminQuestionDetail,
   AdminQuestionOption,
@@ -85,6 +87,7 @@ export function AdminQuestionEditor({
 }: AdminQuestionEditorProps) {
   const initial = useMemo(() => toState(question), [question]);
   const [state, setState] = useState<EditableState>(initial);
+  const [view, setView] = useState<"edit" | "preview">("edit");
   const [feedback, setFeedback] = useState<
     | { tone: "success" | "error" | "info"; message: string }
     | null
@@ -259,96 +262,145 @@ export function AdminQuestionEditor({
         <Meta label="Temat" value={topicSummary} />
       </div>
 
-      <Field label="Treść pytania">
-        <textarea
-          value={state.text}
-          onChange={(e) => setState((p) => ({ ...p, text: e.target.value }))}
-          rows={3}
-          className={inputClass}
-        />
-      </Field>
-
-      <div>
-        <div className="mb-1 flex items-center justify-between">
-          <label className="font-body text-body-xs uppercase tracking-widest text-muted">
-            Opcje odpowiedzi
-          </label>
-          {state.options.length < 8 && (
-            <button
-              type="button"
-              onClick={addOption}
-              className="inline-flex items-center gap-1 rounded-btn border border-border bg-card px-2 py-1 font-body text-body-xs text-secondary transition-colors hover:text-white"
-            >
-              <Plus className="size-3" aria-hidden /> Dodaj opcję
-            </button>
-          )}
-        </div>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="font-body text-body-xs uppercase tracking-widest text-muted">
+          Treść, opcje i wyjaśnienie
+        </span>
         <div
-          className="flex flex-col gap-2"
-          role="radiogroup"
-          aria-label="Poprawna odpowiedź"
+          className="flex items-center gap-0.5 rounded-btn border border-border bg-background/60 p-0.5"
+          role="tablist"
+          aria-label="Widok pytania"
         >
-          {state.options.map((opt) => {
-            const isCorrect = opt.id === state.correctOptionId;
+          {(
+            [
+              { id: "edit" as const, icon: Pencil, label: "Edytor" },
+              { id: "preview" as const, icon: Eye, label: "Podgląd" },
+            ] as const
+          ).map((tab) => {
+            const Icon = tab.icon;
             return (
-              <div
-                key={opt.id}
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={view === tab.id}
+                onClick={() => setView(tab.id)}
                 className={cn(
-                  "flex items-start gap-2 rounded-btn border px-2 py-2",
-                  isCorrect
-                    ? "border-success/40 bg-success/[0.06]"
-                    : "border-border bg-background",
+                  "inline-flex items-center gap-1 rounded-btn px-2.5 py-1 font-body text-body-xs transition-colors",
+                  view === tab.id
+                    ? "bg-brand-gold/15 text-brand-gold"
+                    : "text-secondary hover:text-primary",
                 )}
               >
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={isCorrect}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setState((p) => ({ ...p, correctOptionId: opt.id }));
-                  }}
-                  title={
-                    isCorrect ? "Aktualnie poprawna" : "Oznacz jako poprawną"
-                  }
-                  className={cn(
-                    "mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
-                    "font-body text-body-xs font-medium uppercase",
-                    "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60",
-                    isCorrect
-                      ? "bg-success text-brand-bg"
-                      : "bg-card text-secondary hover:bg-white/10",
-                  )}
-                >
-                  {opt.id.toUpperCase()}
-                </button>
-                <textarea
-                  value={opt.text}
-                  onChange={(e) => updateOption(opt.id, e.target.value)}
-                  rows={2}
-                  className="min-w-0 flex-1 resize-none rounded-btn border border-border bg-background px-2 py-1.5 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
-                />
-                {state.options.length > 2 && (
-                  <button
-                    type="button"
-                    onClick={() => removeOption(opt.id)}
-                    className="mt-1 rounded-btn p-1 text-muted transition-colors hover:bg-error/10 hover:text-error"
-                    title="Usuń opcję"
-                    aria-label={`Usuń opcję ${opt.id.toUpperCase()}`}
-                  >
-                    <Trash2 className="size-3.5" aria-hidden />
-                  </button>
-                )}
-              </div>
+                <Icon className="size-3.5" aria-hidden />
+                {tab.label}
+              </button>
             );
           })}
         </div>
       </div>
 
-      <MarkdownExplanationEditor
-        value={state.explanation}
-        onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
-      />
+      {view === "preview" ? (
+        <QuestionPreview
+          text={state.text}
+          options={state.options}
+          correctOptionId={state.correctOptionId}
+          explanation={state.explanation}
+        />
+      ) : (
+        <>
+          <Field label="Treść pytania">
+            <textarea
+              value={state.text}
+              onChange={(e) => setState((p) => ({ ...p, text: e.target.value }))}
+              rows={3}
+              className={inputClass}
+            />
+          </Field>
+
+          <div>
+            <div className="mb-1 flex items-center justify-between">
+              <label className="font-body text-body-xs uppercase tracking-widest text-muted">
+                Opcje odpowiedzi
+              </label>
+              {state.options.length < 8 && (
+                <button
+                  type="button"
+                  onClick={addOption}
+                  className="inline-flex items-center gap-1 rounded-btn border border-border bg-card px-2 py-1 font-body text-body-xs text-secondary transition-colors hover:text-white"
+                >
+                  <Plus className="size-3" aria-hidden /> Dodaj opcję
+                </button>
+              )}
+            </div>
+            <div
+              className="flex flex-col gap-2"
+              role="radiogroup"
+              aria-label="Poprawna odpowiedź"
+            >
+              {state.options.map((opt) => {
+                const isCorrect = opt.id === state.correctOptionId;
+                return (
+                  <div
+                    key={opt.id}
+                    className={cn(
+                      "flex items-start gap-2 rounded-btn border px-2 py-2",
+                      isCorrect
+                        ? "border-success/40 bg-success/[0.06]"
+                        : "border-border bg-background",
+                    )}
+                  >
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={isCorrect}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setState((p) => ({ ...p, correctOptionId: opt.id }));
+                      }}
+                      title={
+                        isCorrect ? "Aktualnie poprawna" : "Oznacz jako poprawną"
+                      }
+                      className={cn(
+                        "mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
+                        "font-body text-body-xs font-medium uppercase",
+                        "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold/60",
+                        isCorrect
+                          ? "bg-success text-brand-bg"
+                          : "bg-card text-secondary hover:bg-white/10",
+                      )}
+                    >
+                      {opt.id.toUpperCase()}
+                    </button>
+                    <textarea
+                      value={opt.text}
+                      onChange={(e) => updateOption(opt.id, e.target.value)}
+                      rows={2}
+                      className="min-w-0 flex-1 resize-none rounded-btn border border-border bg-background px-2 py-1.5 font-body text-body-sm text-primary placeholder:text-muted focus:border-brand-sage focus:outline-none"
+                    />
+                    {state.options.length > 2 && (
+                      <button
+                        type="button"
+                        onClick={() => removeOption(opt.id)}
+                        className="mt-1 rounded-btn p-1 text-muted transition-colors hover:bg-error/10 hover:text-error"
+                        title="Usuń opcję"
+                        aria-label={`Usuń opcję ${opt.id.toUpperCase()}`}
+                      >
+                        <Trash2 className="size-3.5" aria-hidden />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <MarkdownExplanationEditor
+            value={state.explanation}
+            onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
+          />
+        </>
+      )}
 
       {catalogError ? (
         <div className="rounded-btn border border-error/40 bg-error/10 px-3 py-2 font-body text-body-sm text-error">
@@ -559,6 +611,86 @@ function Field({
       </span>
       {children}
     </label>
+  );
+}
+
+function PreviewLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="font-body text-body-xs uppercase tracking-widest text-muted">
+      {children}
+    </span>
+  );
+}
+
+function QuestionPreview({
+  text,
+  options,
+  correctOptionId,
+  explanation,
+}: {
+  text: string;
+  options: AdminQuestionOption[];
+  correctOptionId: string;
+  explanation: string;
+}) {
+  return (
+    <div className="flex flex-col gap-4 rounded-card border border-border bg-background/40 p-4">
+      <div className="flex flex-col gap-1">
+        <PreviewLabel>Treść pytania</PreviewLabel>
+        {text.trim().length > 0 ? (
+          <RichTextContent
+            text={text}
+            className="font-body text-body-md leading-relaxed text-primary"
+          />
+        ) : (
+          <p className="font-body text-body-sm text-muted">Brak treści.</p>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <PreviewLabel>Opcje odpowiedzi</PreviewLabel>
+        <div className="flex flex-col gap-2">
+          {options.map((opt) => {
+            const isCorrect = opt.id === correctOptionId;
+            return (
+              <div
+                key={opt.id}
+                className={cn(
+                  "flex items-start gap-2 rounded-btn border px-3 py-2",
+                  isCorrect
+                    ? "border-success/40 bg-success/[0.06]"
+                    : "border-border bg-background",
+                )}
+              >
+                <span
+                  className={cn(
+                    "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-body text-body-xs font-medium uppercase",
+                    isCorrect
+                      ? "bg-success text-brand-bg"
+                      : "bg-card text-secondary",
+                  )}
+                >
+                  {opt.id.toUpperCase()}
+                </span>
+                <RichTextContent
+                  text={opt.text}
+                  className="font-body text-body-sm leading-relaxed text-primary"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {explanation.trim().length > 0 && (
+        <div className="flex flex-col gap-1">
+          <PreviewLabel>Wyjaśnienie</PreviewLabel>
+          <div className="rounded-btn border border-border bg-card px-4 py-3">
+            {markdownBlock(explanation)}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

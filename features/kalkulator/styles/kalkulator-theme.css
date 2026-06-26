@@ -1,0 +1,102 @@
+.kalkulator-theme {
+  --k-primary: #1b4332;
+  --k-primary-light: #2d6a4f;
+  --k-accent: #d4a537;
+  --k-page-bg: #fafaf7;
+  --k-card-bg: #ffffff;
+  --k-text: #1a1a1a;
+  --k-muted: #6b7280;
+  --k-border: #e5e7eb;
+  --k-margin-positive: #2d6a4f;
+  --k-margin-warning: #d4a537;
+  --k-margin-loss: #b23a3a;
+  --k-radius-card: 14px;
+  --k-radius-btn: 8px;
+  --k-focus-ring: #2d6a4f;
+
+  min-height: 100vh;
+  background-color: var(--k-page-bg);
+  color: var(--k-text);
+  font-family: var(--font-body), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.kalkulator-theme ::selection {
+  background: rgba(212, 165, 55, 0.25);
+  color: var(--k-text);
+}
+
+.kalkulator-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Widoczny focus — kontrast zgodny z WCAG na jasnym tle */
+.kalkulator-theme :where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 2px solid var(--k-focus-ring);
+  outline-offset: 2px;
+}
+
+.kalkulator-theme :where(button, input, select, textarea):focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kalkulator-theme *,
+  .kalkulator-theme *::before,
+  .kalkulator-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile-first: log wykonań — sticky CTA u dołu ekranu */
+.kalkulator-log-sticky-cta {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: 1rem;
+  background: linear-gradient(to top, var(--k-page-bg) 75%, transparent);
+}
+
+@media (min-width: 640px) {
+  .kalkulator-log-sticky-cta {
+    position: static;
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+}
+
+/* Raporty — pełna tabela od tablet/desktop */
+.kalkulator-reports-table-wrap {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .kalkulator-reports-table-wrap {
+    display: block;
+  }
+
+  .kalkulator-reports-cards-wrap {
+    display: none;
+  }
+}
+
+.kalkulator-scroll-tabs {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.kalkulator-scroll-tabs::-webkit-scrollbar {
+  display: none;
+}

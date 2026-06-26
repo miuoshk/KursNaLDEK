@@ -56,6 +56,8 @@ export async function proxy(request: NextRequest) {
     pathname === "/regulamin" ||
     pathname === "/polityka-prywatnosci" ||
     pathname.startsWith("/legal/");
+  const isKalkulatorRoute =
+    pathname === "/kalkulator" || pathname.startsWith("/kalkulator/");
 
   if (
     !user &&
@@ -63,7 +65,8 @@ export async function proxy(request: NextRequest) {
     !isPasswordRecoveryRoute &&
     !isWebhookRoute &&
     !isPublicRoot &&
-    !isLegalRoute
+    !isLegalRoute &&
+    !isKalkulatorRoute
   ) {
     return NextResponse.redirect(new URL("/login", request.url));
   }

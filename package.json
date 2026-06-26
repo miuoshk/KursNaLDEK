@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "audit:check": "npm audit --audit-level=high",
-    "test": "node --import tsx --test features/access/lib/studyAccess.spec.ts features/session/lib/sessionOptionOrder.spec.ts",
+    "test": "node --import tsx --test features/access/lib/studyAccess.spec.ts features/session/lib/sessionOptionOrder.spec.ts features/kalkulator/lib/costing.spec.ts features/kalkulator/data/benchmarks.spec.ts features/kalkulator/lib/wizardValidation.spec.ts features/kalkulator/lib/marginTone.spec.ts features/kalkulator/lib/saveProcedureLog.spec.ts features/kalkulator/lib/aggregateMonthlyReport.spec.ts",
     "test:supabase": "node --import tsx scripts/test-option-shuffle-supabase.mjs",
     "normalize-lists": "node scripts/normalize-question-list-format.mjs --dry-run",
     "normalize-lists:apply": "node scripts/normalize-question-list-format.mjs --apply",

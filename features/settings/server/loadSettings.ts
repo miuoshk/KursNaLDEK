@@ -2,6 +2,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { defaultLocale, isAppLocale } from "@/i18n/config";
+import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { getEntitlementExpiresAt } from "@/features/access/lib/entitlementExpiry";
+import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 
 const DEFAULT_MODE: KnnpSessionMode = "inteligentna";
 
@@ -52,6 +55,29 @@ export async function loadSettings(
     subscription_ends_at: profileRow?.subscription_ends_at ?? null,
     stripe_customer_id: profileRow?.stripe_customer_id ?? null,
   };
+
+  const track = normalizeTrack(profile.current_track);
+  const year = normalizeYear(profile.current_year);
+  const hasAccess = await hasActiveEntitlementForSelection(userId, track, year);
+  if (!hasAccess) {
+    profile.subscription_status = "inactive";
+  } else if (!profile.subscription_ends_at) {
+    const { data: entitlementRow } = await supabase
+      .from("user_year_entitlements")
+      .select("access_type, granted_at")
+      .eq("user_id", userId)
+      .eq("track", track)
+      .eq("year", year)
+      .eq("active", true)
+      .maybeSingle();
+    if (entitlementRow?.granted_at) {
+      const expiresAt = getEntitlementExpiresAt(
+        entitlementRow.granted_at as string,
+        entitlementRow.access_type as "free_test" | "paid",
+      );
+      profile.subscription_ends_at = expiresAt?.toISOString() ?? null;
+    }
+  }
 
   return { profile, email };
 }

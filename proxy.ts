@@ -1,6 +1,13 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import {
+  dashboardRouteRequiresAnyEntitlement,
+  isDashboardGuardedRoute,
+  isEntitlementExemptDashboardRoute,
+} from "@/features/access/lib/dashboardRouteAccess";
+import { evaluateAccessForUser } from "@/features/access/server/evaluateAccessForUser";
+import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
+import {
   applyLocaleToResponse,
   isAdminPath,
   resolveAdminLocale,
@@ -52,6 +59,11 @@ export async function proxy(request: NextRequest) {
     pathname === "/forgot-password" || pathname === "/auth/callback";
   const isWebhookRoute = pathname === "/api/stripe/webhook";
   const isPublicRoot = pathname === "/";
+  const isSeoRoute =
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/icon" ||
+    pathname === "/opengraph-image";
   const isLegalRoute =
     pathname === "/regulamin" ||
     pathname === "/polityka-prywatnosci" ||
@@ -65,6 +77,7 @@ export async function proxy(request: NextRequest) {
     !isPasswordRecoveryRoute &&
     !isWebhookRoute &&
     !isPublicRoot &&
+    !isSeoRoute &&
     !isLegalRoute &&
     !isKalkulatorRoute
   ) {
@@ -72,7 +85,31 @@ export async function proxy(request: NextRequest) {
   }
 
   if (user && isAuthRoute) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/pulpit", request.url));
+  }
+
+  if (user && isPublicRoot) {
+    return NextResponse.redirect(new URL("/pulpit", request.url));
+  }
+
+  if (user && isDashboardGuardedRoute(pathname)) {
+    const access = await evaluateAccessForUser(supabase, user.id);
+
+    if (access.revoked && pathname !== "/wybor-roku") {
+      return NextResponse.redirect(
+        new URL(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`, request.url),
+      );
+    }
+
+    if (!isEntitlementExemptDashboardRoute(pathname)) {
+      const allowed = dashboardRouteRequiresAnyEntitlement(pathname)
+        ? access.hasAny
+        : access.hasCurrent;
+
+      if (!allowed) {
+        return NextResponse.redirect(new URL("/wybor-roku", request.url));
+      }
+    }
   }
 
   return response;

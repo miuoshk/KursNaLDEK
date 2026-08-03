@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { isEntitlementCurrentlyValid } from "@/features/access/lib/entitlementExpiry";
 
 export type AdminUserRole = "admin" | "moderator" | "student";
 export type AdminUserTrack = "lekarski" | "stomatologia" | "inny" | "";
@@ -166,13 +167,16 @@ export async function loadAdminUsers(params?: {
 
     const { data: entitlementRows, error: entitlementError } = await admin
       .from("user_year_entitlements")
-      .select("user_id")
+      .select("user_id, access_type, granted_at, active")
       .eq("active", true);
 
     if (entitlementError) {
       console.error("[loadAdminUsers] entitlements", entitlementError.message);
     } else {
       for (const row of entitlementRows ?? []) {
+        if (!isEntitlementCurrentlyValid(row as { access_type: "free_test" | "paid"; granted_at: string; active: boolean })) {
+          continue;
+        }
         const userId = row.user_id as string | null;
         if (userId) usersWithActiveEntitlement.add(userId);
       }

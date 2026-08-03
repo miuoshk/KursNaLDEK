@@ -3,6 +3,7 @@
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 const schema = z.object({
   sessionId: z.string().uuid(),
@@ -33,12 +34,20 @@ export async function endSession(
 
     const { data: session, error: se } = await supabase
       .from("study_sessions")
-      .select("id, user_id")
+      .select("id, user_id, subject_id")
       .eq("id", parsed.data.sessionId)
       .maybeSingle();
 
     if (se || !session || session.user_id !== user.id) {
       return { ok: false, message: t("errors.sessionNotFound") };
+    }
+
+    const access = await requireLearningAccessForSubject(
+      user.id,
+      session.subject_id as string,
+    );
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     const { error: up } = await supabase

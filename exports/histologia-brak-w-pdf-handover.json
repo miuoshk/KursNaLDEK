@@ -1,0 +1,2701 @@
+{
+  "exportedAt": "2026-06-19T19:58:10.635Z",
+  "subject": "histologia",
+  "summary": {
+    "questionCount": 47,
+    "placeholderOptionCount": 57,
+    "variants": [
+      "Brak w PDF",
+      "brak danych w PDF"
+    ],
+    "note": "Placeholdery są distraktorami — correct_option_id nigdy nie wskazuje na nie. Podmieniaj tylko tekst opcji placeholder; klucz zostaw."
+  },
+  "instructionsForClaude": [
+    "Dla każdego pytania uzupełnij distraktory zamiast 'Brak w PDF' / 'brak danych w PDF'.",
+    "Zachowaj id opcji (a/b/c/d/e) — zmieniaj wyłącznie pole text.",
+    "Nie zmieniaj correct_option_id ani treści pytań/explanation, chyba że placeholder dotyczył brakującej opcji E.",
+    "Wygeneruj scripts/2026-06-19-histologia-brak-w-pdf-apply.sql z UPDATE ... WHERE id = ...",
+    "Rollback: exports/histologia-brak-w-pdf-snapshot-rollback.sql"
+  ],
+  "questions": [
+    {
+      "id": "HIST-01-008",
+      "topicId": "HIST-01",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-653",
+      "isActive": true,
+      "text": "Reakcja immunohistochemiczna polega przede wszystkim na:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Wykrywaniu obecności i lokalizacji antygenów w tkance",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Wykrywaniu obecności i lokalizacji antygenów w tkance"
+        },
+        {
+          "id": "b",
+          "text": "Wykrywaniu DNA genowego"
+        },
+        {
+          "id": "c",
+          "text": "Hybrydyzacji mRNA"
+        },
+        {
+          "id": "d",
+          "text": "Detekcji aktywności enzymów"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Wykrywaniu obecności i lokalizacji antygenów w tkance"
+        },
+        {
+          "id": "b",
+          "text": "Wykrywaniu DNA genowego"
+        },
+        {
+          "id": "c",
+          "text": "Hybrydyzacji mRNA"
+        },
+        {
+          "id": "d",
+          "text": "Detekcji aktywności enzymów"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **IHC (immunohistochemia)** = wykrywanie **obecności i lokalizacji antygenów** (białek, glikoprotein) w tkankach utrwalonych za pomocą **specyficznych przeciwciał** (monoklonalnych lub poliklonalnych) + chromogen (DAB, brąz) lub fluorescencja (IHF). Techniki: bezpośrednia (Ab-chromogen); pośrednia (primary + secondary Ab + amplifikacja przez streptawidyna-biotyna lub polimery). Klinicznie: IHC kluczowa w patologii nowotworowej (CD20 = B-cell lymphoma;\n\nCD3 = T-cell;\n\nTTF-1 = płuco/tarczyca;\n\nER/PR/HER2 = rak piersi;\n\nPSA = prostata; chromogranina = neuroendokrynne;\n\nS100 = melanocyt)."
+    },
+    {
+      "id": "HIST-02-009",
+      "topicId": "HIST-02",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-854",
+      "isActive": true,
+      "text": "Triada Gregga dotyczy:",
+      "correctOptionId": "d",
+      "correctAnswerText": "różyczki",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "głuchoty"
+        },
+        {
+          "id": "b",
+          "text": "zaćmy"
+        },
+        {
+          "id": "c",
+          "text": "wady serca"
+        },
+        {
+          "id": "d",
+          "text": "różyczki"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "głuchoty"
+        },
+        {
+          "id": "b",
+          "text": "zaćmy"
+        },
+        {
+          "id": "c",
+          "text": "wady serca"
+        },
+        {
+          "id": "d",
+          "text": "różyczki"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Triada Gregga** to klasyczne **trzy objawy WRODZONEGO ZESPOŁU RÓŻYCZKI** (CRS): ( 1) **wady serca** — PDA, zwężenie tętnicy płucnej, VSD/ASD; ( 2) **zaćma wrodzona** — obustronna, gęste zmętnienie soczewki; też retinopatia „sól i pieprz\", mikroftalmia; ( 3) **głuchota czuciowo-nerwowa** — uszkodzenie ślimaka i narządu Cortiego. Klucz D — triada Gregga **DOTYCZY RÓŻYCZKI** (zakażenie wirusem Rubella w I trymestrze). Opisana przez **Normana Gregga** (Australia, 1941) — pierwszy dowód teratogenności zakażenia wirusowego. Im wcześniejsze zakażenie, tym poważniejsze wady (do 8. tygodnia = organogeneza). Inne objawy CRS: mikrocefalia, plamica (blueberry muffin), IUGR. Profilaktyka: szczepienie MMR. Klucz: D."
+    },
+    {
+      "id": "HIST-02-012",
+      "topicId": "HIST-02",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-857",
+      "isActive": true,
+      "text": "W stadium moruli znajduje / znajdują się:",
+      "correctOptionId": "d",
+      "correctAnswerText": "12–16 blastomerów",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "2 blastomery"
+        },
+        {
+          "id": "b",
+          "text": "4 blastomery"
+        },
+        {
+          "id": "c",
+          "text": "7–8 blastomerów"
+        },
+        {
+          "id": "d",
+          "text": "12–16 blastomerów"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "2 blastomery"
+        },
+        {
+          "id": "b",
+          "text": "4 blastomery"
+        },
+        {
+          "id": "c",
+          "text": "7–8 blastomerów"
+        },
+        {
+          "id": "d",
+          "text": "12–16 blastomerów"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**MORULA** (łac. morum = jeżyna) — 3.– 4. doba po zapłodnieniu, **12–32 blastomery** (typowo **12–16** — klucz D). Sekwencja: zygota → 2 komórki (~30 godz.) → 4 → 8 (kompakcja, E-kadheryny, polarność wewn./zewn.) → **MORULA** (12–16 blastomerów) → wchodzi do macicy. Blastomery wewnętrzne → **EMBRIOBLAST/ICM** → zarodek + amnion; zewnętrzne → **TROFOBLAST** → łożysko. (4.– 5. doba): kawitacja → **BLASTOCYSTA** z jamą blastocelu. (6.– 7. doba): implantacja w endometrium. **Gastrula** — III tydzień: gastrulacja, 3 listki zarodkowe. Klucz: D."
+    },
+    {
+      "id": "HIST-03-015",
+      "topicId": "HIST-03",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-633",
+      "isActive": true,
+      "text": "Typ sygnalizacji w przypadku angiotensyny II:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Z białkiem G (GPCR AT1R, Gq)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Z białkiem G (GPCR AT1R, Gq)"
+        },
+        {
+          "id": "b",
+          "text": "Z innymi białkami (RTK)"
+        },
+        {
+          "id": "c",
+          "text": "Z kompleksem (receptory jądrowe)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Z białkiem G (GPCR AT1R, Gq)"
+        },
+        {
+          "id": "b",
+          "text": "Z innymi białkami (RTK)"
+        },
+        {
+          "id": "c",
+          "text": "Z kompleksem (receptory jądrowe)"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — angiotensyna II działa przez **receptor AT1R (GPCR, Gq)** → PLC → IP3 + DAG → Ca²⁺ + PKC → wazokonstrukcja + aldosteron. AT2R (Gq/Gi) — efekty przeciwne (wazodilatacja, antyproliferacja). Synteza: angiotensynogen (wątroba) → renina (JG nerki) → angiotensyna I → **ACE** (płuca) → **angiotensyna II**. Klinicznie: **ACE-inhibitory** (lisinopril, enalapril) + **ARB** (losartan, walsartan) → blokada układu RAA → ↓BP + nefroprotekcja + ↓HF; kandesartan/olmesartan dla AT1R."
+    },
+    {
+      "id": "HIST-03-021",
+      "topicId": "HIST-03",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-666",
+      "isActive": true,
+      "text": "Co zawiera kwasne hydrolazy:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Lizosomy",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Lizosomy"
+        },
+        {
+          "id": "b",
+          "text": "Mitochondria"
+        },
+        {
+          "id": "c",
+          "text": "Peroksysomy"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Lizosomy"
+        },
+        {
+          "id": "b",
+          "text": "Mitochondria"
+        },
+        {
+          "id": "c",
+          "text": "Peroksysomy"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — powtórka Q510 e2020-1. **Lizosomy** = kwaśne hydrolazy (>60 typów: katepsyny B/D/L, glikozydazy, lipazy, sulfatazy, nukleazy; optimum pH ~5.0 utrzymywane przez V-ATPazę). Peroksysomy = katalaza + oksydazy (H₂O₂); mitochondria = oksydoreduktazy oddechowe. Klinicznie: LSD (lizosomalne choroby spichrzeniowe): Gaucher (β-glukocerebrozydaza), Fabry (α-galaktozydaza A), Tay-Sachs (heksozaminidaza A), Niemann-Pick (sfingomielinaza), Pompe (α-glukozyda); leczenie ERT;\n\nHSCT w niektórych."
+    },
+    {
+      "id": "HIST-03-035",
+      "topicId": "HIST-03",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-861",
+      "isActive": true,
+      "text": "Co jest łączone w splicingu alternatywnym?",
+      "correctOptionId": "c",
+      "correctAnswerText": "eksony",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "ogon poli-A"
+        },
+        {
+          "id": "b",
+          "text": "czapeczka"
+        },
+        {
+          "id": "c",
+          "text": "eksony"
+        },
+        {
+          "id": "d",
+          "text": "introny"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "ogon poli-A"
+        },
+        {
+          "id": "b",
+          "text": "czapeczka"
+        },
+        {
+          "id": "c",
+          "text": "eksony"
+        },
+        {
+          "id": "d",
+          "text": "introny"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**SPLICING** — wycinanie intronów i **ŁĄCZENIE EKSONÓW** w dojrzałe mRNA. Wykonywany przez **SPLICEOSOM** — kompleks snRNP (U1, U2, U4, U5, U6) + ~200 białek. Mechanizm: rozpoznanie 5' splice site (GT) i 3' splice site (AG) → wycięcie intronu jako **lariat (lasso)** → ligacja eksonów. **SPLICING ALTERNATYWNY** — z jednego pre-mRNA powstają różne mRNA przez **różne sposoby ŁĄCZENIA EKSONÓW** (klucz C): pomijanie eksonów (exon skipping), alternatywne miejsca splicingu, retencja intronu, eksony wzajemnie wykluczające się. Znaczenie: ~95% genów ludzkich ma splicing alternatywny → z ~20 000 genów → ~100 000+ białek. Klasyk: tropomiozyna, CD45. **Ogon poli-A** ( A) i **czapeczka 7-MeG** ( B) — inne procesy obróbki pre-mRNA (poliadenylacja, capping). Klucz: C."
+    },
+    {
+      "id": "HIST-03-037",
+      "topicId": "HIST-03",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-863",
+      "isActive": true,
+      "text": "Wybierz zdanie prawidłowe o cyklinach:",
+      "correctOptionId": "d",
+      "correctAnswerText": "A i C",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "są to białka łączące się z kinazami"
+        },
+        {
+          "id": "b",
+          "text": "hamują procesy cyklu komórkowego"
+        },
+        {
+          "id": "c",
+          "text": "biorą udział w regulacji cyklu komórkowego"
+        },
+        {
+          "id": "d",
+          "text": "A i C"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "są to białka łączące się z kinazami"
+        },
+        {
+          "id": "b",
+          "text": "hamują procesy cyklu komórkowego"
+        },
+        {
+          "id": "c",
+          "text": "biorą udział w regulacji cyklu komórkowego"
+        },
+        {
+          "id": "d",
+          "text": "A i C"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**CYKLINY** — białka regulatorowe cyklu komórkowego: ( A) **ŁĄCZĄ SIĘ Z CDK (cyclin-dependent kinases)** — cyklina = podjednostka regulatorowa, CDK = katalityczna (ser/thr kinaza). Cyklina aktywuje CDK (zmiana konformacji) → fosforylacja substratów (Rb, laminy, histon H1). POPRAWNE. ( C) **REGULUJĄ CYKL KOMÓRKOWY** — cykliczne narastanie i degradacja (D→E→A→ B) napędza progresję G1→S→G2→M. POPRAWNE. ( B) **HAMUJĄ PROCESY CYKLU** — BŁĄD: cykliny **NAPĘDZAJĄ** cykl. Hamowanie — **CKI (CDK inhibitors)**: INK4 (p15, p16 — hamują CDK4/6-cyklina D), CIP/KIP (**p21** indukowane przez p53 → zatrzymanie G1/S przy uszkodzeniu DNA, **p27, p57**). Degradacja cyklin przez ubikwitynację: SCF (dla G1/S cyklin), APC/C (dla cykliny B w M). Klucz: D (A i C)."
+    },
+    {
+      "id": "HIST-05-024",
+      "topicId": "HIST-05",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-634",
+      "isActive": true,
+      "text": "Powięzie, rozcięgna i twardówka gałki ocznej zbudowane są z:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Tkanki łącznej zbitej o utkaniu nieregularnym",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Tkanki łącznej zbitej o utkaniu nieregularnym"
+        },
+        {
+          "id": "b",
+          "text": "Tkanki łącznej luźnej"
+        },
+        {
+          "id": "c",
+          "text": "Chrząstki sprężystej"
+        },
+        {
+          "id": "d",
+          "text": "Chrząstki włóknistej"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Tkanki łącznej zbitej o utkaniu nieregularnym"
+        },
+        {
+          "id": "b",
+          "text": "Tkanki łącznej luźnej"
+        },
+        {
+          "id": "c",
+          "text": "Chrząstki sprężystej"
+        },
+        {
+          "id": "d",
+          "text": "Chrząstki włóknistej"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — powtórka Q549 e2020-1. **Tkanka łączna zbita nieregularna**: włókna kolagenu I w różnych kierunkach → wielokierunkowa wytrzymałość; twardówka (ochronna torba oka), skóra właściwa (warstwa siateczkowata), torebki narządów. Powięzie i rozcięgna — autor przyjął NIEREGULARNA (wielowarstwowe z krzyżującymi się włóknami jako całość). Klinicznie: compartment syndrome → fasciotomia;\n\nDupuytren (palmar aponeurosis); plantar fasciitis; scleritis (autoimmun — RA, GPA)."
+    },
+    {
+      "id": "HIST-05-025",
+      "topicId": "HIST-05",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-640",
+      "isActive": true,
+      "text": "Buduje błonę śluzową i podśluzową układu oddechowego i pokarmowego, buduje błonę surowiczą:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Tkanka łączna wiotka (luźna)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Tkanka łączna wiotka (luźna)"
+        },
+        {
+          "id": "b",
+          "text": "Tkanka łączna zwarta"
+        },
+        {
+          "id": "c",
+          "text": "Tkanka chrzęstna"
+        },
+        {
+          "id": "d",
+          "text": "Tkanka kostna"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Tkanka łączna wiotka (luźna)"
+        },
+        {
+          "id": "b",
+          "text": "Tkanka łączna zwarta"
+        },
+        {
+          "id": "c",
+          "text": "Tkanka chrzęstna"
+        },
+        {
+          "id": "d",
+          "text": "Tkanka kostna"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **tkanka łączna wiotka (luźna, areolar)** buduje: blaszki właściwe błon śluzowych (pokarmowy, oddechowy, moczowo-płciowy), **błonę podśluzową** (tela submucosa), **błony surowicze** (pleura, otrzewna, osierdzie — pod mezotelium), otoczenie naczyń i nerwów, krezka. Cecha: dużo komórek (fibroblasty, makrofagi, mastocyty, adipocyty) + obfita substancja podstawowa (żel HA+GAG) + luźna sieć kolagenu I/III. Powtórka Q493 e2020-1."
+    },
+    {
+      "id": "HIST-09-036",
+      "topicId": "HIST-09",
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-606",
+      "isActive": true,
+      "text": "Komórki mikrogleju:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Mają zdolność do fagocytozy",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Mają zdolność do fagocytozy"
+        },
+        {
+          "id": "b",
+          "text": "Brak odpowiedzi"
+        },
+        {
+          "id": "c",
+          "text": "Są składnikiem splotu naczyniowego"
+        },
+        {
+          "id": "d",
+          "text": "Pochodzą z ektodermy"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Mają zdolność do fagocytozy"
+        },
+        {
+          "id": "b",
+          "text": "Brak odpowiedzi"
+        },
+        {
+          "id": "c",
+          "text": "Są składnikiem splotu naczyniowego"
+        },
+        {
+          "id": "d",
+          "text": "Pochodzą z ektodermy"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — mikroglej = **rezydentny makrofag OUN**; zdolność do **fagocytozy** (patogeny, płytki amyloidowe, martwe neurony, debrisy mielinowe). Pochodzenie: **MEZODERMALNE** (progenitory mieloidalne z pęcherzyka żółtkowego → OUN ~8 tydz. ciąży, populacja samowyodnawiająca się). Markery: IBA1, CD68, CD11b, P2RY12, TMEM119. Funkcje: fagocytoza + APC (MHC II) + cytokiny (M1: TNF, IL-1, IL-6;\n\nM2: IL-10, TGF-β) + synaptic pruning. **C FAŁSZ**: splot naczyniowy = komórki ependymopodobne (neuroektoderma) → CSF; **D FAŁSZ**: nie z ektodermy — z mezodermy/żółtkowca.\n\nKlinicznie: Alzheimer (TREM2 receptor, ↓klierens amyloidu w dysregulowanym mikroglieniu);\n\nParkinson (α-synuklein + TNF);\n\nHIV-HAND (HIV infekuje mikroglej, CD4+CCR5+); gitterzellen = mikroglej z fagocytowaną mieliną (udar, MS)."
+    },
+    {
+      "id": "HIST-10-027",
+      "topicId": "HIST-10",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-828",
+      "isActive": true,
+      "text": "Co wchodzi w skład triady?",
+      "correctOptionId": "c",
+      "correctAnswerText": "1 kanalik T i 2 cysterny brzeżne",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "brak danych w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "2 kanaliki T i 1 cysterna brzeżna"
+        },
+        {
+          "id": "b",
+          "text": "komórki satelitarne, kanalik T i cysterna brzeżna"
+        },
+        {
+          "id": "c",
+          "text": "1 kanalik T i 2 cysterny brzeżne"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "2 kanaliki T i 1 cysterna brzeżna"
+        },
+        {
+          "id": "b",
+          "text": "komórki satelitarne, kanalik T i cysterna brzeżna"
+        },
+        {
+          "id": "c",
+          "text": "1 kanalik T i 2 cysterny brzeżne"
+        },
+        {
+          "id": "d",
+          "text": "brak danych w PDF"
+        },
+        {
+          "id": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "explanation": "**TRIADA mięśnia szkieletowego** — klasyczna struktura sprzężenia elektromechanicznego zlokalizowana na pograniczu **prążka A i I** (granica disku A/I): ( 1) **JEDEN KANALIK T** — wpuklenie sarkolemy biegnące poprzecznie, propaguje depolaryzację do wnętrza włókna; ( 2) **DWIE CYSTERNY BRZEŻNE** — poszerzenia siateczki sarkoplazmatycznej po obu stronach kanalika T, magazynują **Ca²⁺** (z kalsekwestryną). Mechanizm: depolaryzacja → kanalik T → **DHPR** → **RyR1** w cysternie → wyrzut Ca²⁺ → skurcz. W **mięśniu sercowym**: **DIADA** (1 kanalik T + 1 cysterna), kanaliki T na poziomie linii Z. Klucz: C. Opcje D i E „brak danych w PDF\" — autor nie podał dalszych odpowiedzi."
+    },
+    {
+      "id": "HIST-11-030",
+      "topicId": "HIST-11",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-678",
+      "isActive": true,
+      "text": "Z jakiej tkanki zbudowany jest szkielet serca?",
+      "correctOptionId": "b",
+      "correctAnswerText": "Tkanka łączna zbita o utkaniu nieregularnym",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Tkanka łączna wiotka"
+        },
+        {
+          "id": "b",
+          "text": "Tkanka łączna zbita o utkaniu nieregularnym"
+        },
+        {
+          "id": "c",
+          "text": "Tkanka siateczkowa"
+        },
+        {
+          "id": "d",
+          "text": "Mięśniówka"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Tkanka łączna wiotka"
+        },
+        {
+          "id": "b",
+          "text": "Tkanka łączna zbita o utkaniu nieregularnym"
+        },
+        {
+          "id": "c",
+          "text": "Tkanka siateczkowa"
+        },
+        {
+          "id": "d",
+          "text": "Mięśniówka"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz B** — szkielet włóknisty serca = **tkanka łączna zbita nieregularna** (kolagen I + elastyna). Składniki: 4 pierścienie włókniste zastawek (anuli fibrosi) + 2 trójkąty włókniste + przegroda błoniasta (pars membranacea). Funkcje: przyczepiają zastawki, izolacja elektryczna przedsionki-komory (sygnał tylko przez węzeł AV + pęczek Hisa). Powtórka Q512 e2020-1. Klinicznie: kalcyfikacja szkieletu z wiekiem → bloki AV; chirurgia wymiany zastawek musi uwzględniać integralność pierścieni; fibrotyczny martwiak po MI (w sąsiedztwie, nie szkielet serca per se)."
+    },
+    {
+      "id": "HIST-11-032",
+      "topicId": "HIST-11",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-681",
+      "isActive": true,
+      "text": "Blaszka zewnętrzna (tunica adventitia) w żyłach zbudowana jest z:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Tkanki łącznej luźnej",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Tkanki łącznej luźnej"
+        },
+        {
+          "id": "b",
+          "text": "Tkanki łącznej zbitej"
+        },
+        {
+          "id": "c",
+          "text": "Tkanki tłuszczowej"
+        },
+        {
+          "id": "d",
+          "text": "Mięśnia gładkiego"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Tkanki łącznej luźnej"
+        },
+        {
+          "id": "b",
+          "text": "Tkanki łącznej zbitej"
+        },
+        {
+          "id": "c",
+          "text": "Tkanki tłuszczowej"
+        },
+        {
+          "id": "d",
+          "text": "Mięśnia gładkiego"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — powtórka Q609 e2019-1 + Q548 e2020-1. Tunica adventitia żył = **tkanka łączna luźna** (fibroblasty + kolagen I/III + nerwy autonomiczne); w żyłach DUŻYCH — liczne podłużne pęczki SMC (dominująca warstwa;\n\nQ609).\n\nMedia żył = cieńsza niż tętnic.\n\nKlinicznie: żylaki (CVI, niewydolność zastawek żylnych) → pończochy uciskowe, ablacja (RFA, EVLT);\n\nDVT → DOAC (apixaban, rivaroxaban);\n\nPE → heparyna → DOAC;\n\nSVC syndrome (SCLC)."
+    },
+    {
+      "id": "HIST-11-033",
+      "topicId": "HIST-11",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-682",
+      "isActive": true,
+      "text": "Budowa tunica intima w naczyniach tętniczych:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Śródbłonek + tk. łączna wiotka podśródbłonkowa + blaszka sprężysta wewnętrzna",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Śródbłonek + tk. łączna wiotka podśródbłonkowa + blaszka sprężysta wewnętrzna"
+        },
+        {
+          "id": "b",
+          "text": "Tylko śródbłonek"
+        },
+        {
+          "id": "c",
+          "text": "Śródbłonek + SMC"
+        },
+        {
+          "id": "d",
+          "text": "Tylko błona podstawna"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Śródbłonek + tk. łączna wiotka podśródbłonkowa + blaszka sprężysta wewnętrzna"
+        },
+        {
+          "id": "b",
+          "text": "Tylko śródbłonek"
+        },
+        {
+          "id": "c",
+          "text": "Śródbłonek + SMC"
+        },
+        {
+          "id": "d",
+          "text": "Tylko błona podstawna"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **tunica intima (błona wewnętrzna)** tętnic: **( 1) śródbłonek** (endothelium, komórki Weibel-Palade z P-selektyną + vWF); **( 2) tk. łączna podśródbłonkowa** (wiotka, fibroblasty + kolagen + GAG); **( 3) blaszka sprężysta wewnętrzna** (lamina elastica interna, wyraźna w tt. mięśniowych, \"fenestrae\" — okienka). Porównanie warstw: intima + media + adventitia. W tt. sprężystych lamina elastica interna słabiej widoczna (dużo błon okienkowatych w medii). Klinicznie: ateroskleroza (foam cells + plaque w intimie!); endarterektomia tętnicy szyjnej (endarterectomia — usunięcie intimy z blaszką); endothelin-1 z intimy w dysfunkcji śródbłonka."
+    },
+    {
+      "id": "HIST-12-042",
+      "topicId": "HIST-12",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-707",
+      "isActive": true,
+      "text": "Gdzie wystepuje system kanalow otwartych i gestych (dense tubular system)?",
+      "correctOptionId": "a",
+      "correctAnswerText": "Trombocyty (platki krwi)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Trombocyty (platki krwi)"
+        },
+        {
+          "id": "b",
+          "text": "Megakariocyty"
+        },
+        {
+          "id": "c",
+          "text": "Hepatocyty"
+        },
+        {
+          "id": "d",
+          "text": "Podocyty"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Trombocyty (platki krwi)"
+        },
+        {
+          "id": "b",
+          "text": "Megakariocyty"
+        },
+        {
+          "id": "c",
+          "text": "Hepatocyty"
+        },
+        {
+          "id": "d",
+          "text": "Podocyty"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **trombocyty (płytki krwi)** mają 2 systemy membranowe: **( 1) OCS (open canalicular system, kanały otwarte)** = inwaginacje błony plazmatycznej → sieć kanalików komunikujących z zewnętrzem → wydzielanie ziarnistości (droga egzocytozy); **( 2) DTS (dense tubular system, kanały gęste)** = zamknięty system śródplazmatyczny zbliżony do SER; magazyn Ca²⁺ (SERCA); synteza prostaglandyn (COX-1 tu!). OCS pochodzi z demarcation membrane system (DMS) megakariocytów. Klinicznie: aspiryna (iniehibicja COX-1 w DTS → ↓TXA2 → ↓agregacja płytek, nieodwracalne przez całe życie płytki ~10 dni);\n\nHIT (heparyna + PF4 → IgG → tromboza; argatroban alternatywa);\n\nITP (anty-GPIIb/IIIa lub anty-GPIb Ab → splenektomia + rytuksymab + romiplostim/eltrombopag)."
+    },
+    {
+      "id": "HIST-12-043",
+      "topicId": "HIST-12",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-709",
+      "isActive": true,
+      "text": "Hialomer i granulomer sa elementami:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Trombocytow (plytek krwi)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Trombocytow (plytek krwi)"
+        },
+        {
+          "id": "b",
+          "text": "Erytrocytow"
+        },
+        {
+          "id": "c",
+          "text": "Limfocytow"
+        },
+        {
+          "id": "d",
+          "text": "Monocytow"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Trombocytow (plytek krwi)"
+        },
+        {
+          "id": "b",
+          "text": "Erytrocytow"
+        },
+        {
+          "id": "c",
+          "text": "Limfocytow"
+        },
+        {
+          "id": "d",
+          "text": "Monocytow"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **trombocyty (płytki krwi)** w rozmazie: 2 strefy morfologiczne: **( 1) hialomer** = obwodowa, jasna, przezroczysta strefa; zawiera marginalny pierścień mikrotubul (utrzymanie kształtu dyskoidalnego) + filamenty aktynowe + spektryna (cytoszkielet płytek); **( 2) granulomer (chromomere)** = centralna, granularna strefa; zawiera ziarnistości α (fibryogen, vWF, PDGF, P-selektyna) + δ (ADP, Ca²⁺, serotonina) + λ (lizosomalne) + mitochondria + glikogen. Po aktywacji: kształt dysk → sferyczny z pseudopodiami; granulomer wypełnia całą komórkę. Klinicznie: ocena morfologii płytek w rozmazie (giant platelets = Bernard-Soulier, grey platelet syndrome = brak ziarnistości α;\n\nChediak-Higashi = gigantyczne ziarnistości)."
+    },
+    {
+      "id": "HIST-13-043",
+      "topicId": "HIST-13",
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-604",
+      "isActive": true,
+      "text": "Fałszywe zdanie o komórkach plazmatycznych:",
+      "correctOptionId": "c",
+      "correctAnswerText": "Wytwarzają heparynę i leukotrieny",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Najczęściej występują w błonie śluzowej układu pokarmowego"
+        },
+        {
+          "id": "b",
+          "text": "Powstają z limfocytów B"
+        },
+        {
+          "id": "c",
+          "text": "Wytwarzają heparynę i leukotrieny"
+        },
+        {
+          "id": "e",
+          "text": "Brak poprawnych odpowiedzi"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Najczęściej występują w błonie śluzowej układu pokarmowego"
+        },
+        {
+          "id": "b",
+          "text": "Powstają z limfocytów B"
+        },
+        {
+          "id": "c",
+          "text": "Wytwarzają heparynę i leukotrieny"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak poprawnych odpowiedzi"
+        }
+      ],
+      "explanation": "**Klucz C FAŁSZ** — plazmocyty NIE produkują heparyny ani leukotrienów → to **mastocyty + bazofile**. Plazmocyty produkują **immunoglobuliny (Ig, przeciwciała)**. **A PRAWDA**: najliczniejsze w lamina propria GALT/MALT (~80% to IgA-produkujące, sIgA) + sznury rdzenne węzłów + szpik (long-lived plasma cells). **B PRAWDA**: z aktywowanych B (naive → GC → plazmoblast → plazmocyt) po stymulacji Tfh (CD40L + IL-21). Struktura histologiczna: jądro ekscentryczne (\"zegarowe\"), hof perinuklearny (Golgi), cytoplazma bazofilna (rozbudowana RER → synteza Ig). Klinicznie: szpiczak mnogi (M-spike SPEP, CRAB, bortezomib + IMiDs + daratumumab, CAR-T); amyloidoza AL (łańcuchy lekkie); mastocytoza (D816V KIT mut., tryptaza+, CD117+)."
+    },
+    {
+      "id": "HIST-14-075",
+      "topicId": "HIST-14",
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-615",
+      "isActive": true,
+      "text": "Przez co wydzielany jest IF (czynnik wewnętrzny Castle'a)?",
+      "correctOptionId": "c",
+      "correctAnswerText": "Komórki żołądka — okładzinowe (parietal cells)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Komórki jelita grubego"
+        },
+        {
+          "id": "b",
+          "text": "Komórki jelita cienkiego"
+        },
+        {
+          "id": "c",
+          "text": "Komórki żołądka — okładzinowe (parietal cells)"
+        },
+        {
+          "id": "d",
+          "text": "Enterocyty dwunastnicy"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Komórki jelita grubego"
+        },
+        {
+          "id": "b",
+          "text": "Komórki jelita cienkiego"
+        },
+        {
+          "id": "c",
+          "text": "Komórki żołądka — okładzinowe (parietal cells)"
+        },
+        {
+          "id": "d",
+          "text": "Enterocyty dwunastnicy"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz C** — **czynnik wewnętrzny Castle'a (IF)** produkują **komórki okładzinowe (parietal cells)** dna + trzonu żołądka (też produkują HCl). IF wiąże B12 po uwolnieniu z białek pokarmowych (HCl + pepsyna) → kompleks B12-IF chroniony → terminal ileum → receptor kubilinowy enterocytów → endocytoza → transkobalamina II do krwi. **A, B, D** = jelito tylko wchłania (receptory kubiliny w ileum), nie produkuje IF. Klinicznie: **pernicious anemia** (anty-IF ab + anty-parietal cells ab → atroficzne gastritis typ A → ↓IF → ↓B12 → niedokrwistość megaloblastyczna + SCD rdzenia kręgowego); B12 i.m. dożywotnio; gastrektomia/bypass bariatryczny → ↓parietal cells → ↓IF → suplementacja B12; metformina chronicznie → ↓absorpcja B12."
+    },
+    {
+      "id": "HIST-14-078",
+      "topicId": "HIST-14",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-649",
+      "isActive": true,
+      "text": "Obkurczanie pęcherzyka żółciowego pobudza:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Cholecystokinina (CCK)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Cholecystokinina (CCK)"
+        },
+        {
+          "id": "b",
+          "text": "Sekretyna"
+        },
+        {
+          "id": "c",
+          "text": "Gastryna"
+        },
+        {
+          "id": "d",
+          "text": "VIP"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Cholecystokinina (CCK)"
+        },
+        {
+          "id": "b",
+          "text": "Sekretyna"
+        },
+        {
+          "id": "c",
+          "text": "Gastryna"
+        },
+        {
+          "id": "d",
+          "text": "VIP"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **CCK (cholecystokinina)** z komórek I dwunastnicy (bodziec: tłuszcze + aa w dwunastnicy) → receptor CCK1-R na SMC pęcherzyka → **skurcz pęcherzyka** + relaksacja zwieracza Oddiego → wyrzut żółci do dwunastnicy; też aktywuje enzymy trzustki (CCK-A receptor na acini). Sekretyna → HCO₃⁻ trzustkowe + cholereza (wodnista żółć, NIE skurcz pęcherzyka). VIP → wazodylatacja + relaksacja SMC. Klinicznie: ERCP może wywołać skurcz sfinktera Oddiego → pancreatitis jatrogenowe; kamica żółciowa (4F) → cholecystitis (Murphy sign) → laparoskopowa cholecystektomia."
+    },
+    {
+      "id": "HIST-14-081",
+      "topicId": "HIST-14",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-668",
+      "isActive": true,
+      "text": "Nablonek pecherzyka zolciowego to:",
+      "correctOptionId": "c",
+      "correctAnswerText": "Nablone jednowarstwowy walcowaty",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Nablone jednowarstwowy plaski"
+        },
+        {
+          "id": "b",
+          "text": "Nablone jednowarstwowy szescienny"
+        },
+        {
+          "id": "c",
+          "text": "Nablone jednowarstwowy walcowaty"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Nablone jednowarstwowy plaski"
+        },
+        {
+          "id": "b",
+          "text": "Nablone jednowarstwowy szescienny"
+        },
+        {
+          "id": "c",
+          "text": "Nablone jednowarstwowy walcowaty"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz C** — powtórka Q482/Q575 e2020-1. **Jednowarstwowy walcowaty** z mikrokosmkami apikalnymi → zagęszczanie żółci ~10× (NHE3 + Na/K-ATPaza + AQP1/8 → resorpcja wody). Brak muscularis mucosae + brak submucosy. Klinicznie: kamica (4F); cholecystitis acuta (Murphy sign);\n\nERCP (choledocholithiasis); ascending cholangitis (triada Charcota → pentada Reynoldsa = pilna ERCP); gallstone pancreatitis; porcelain gallbladder → ryzyko raka."
+    },
+    {
+      "id": "HIST-14-082",
+      "topicId": "HIST-14",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-687",
+      "isActive": true,
+      "text": "Gdzie nie wystepuja faldy okrezne (plicae circulares)?",
+      "correctOptionId": "d",
+      "correctAnswerText": "Jelito grube (colon)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Dwunastnica"
+        },
+        {
+          "id": "b",
+          "text": "Jelito czcze (jejunum)"
+        },
+        {
+          "id": "c",
+          "text": "Jelito krete (ileum)"
+        },
+        {
+          "id": "d",
+          "text": "Jelito grube (colon)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Dwunastnica"
+        },
+        {
+          "id": "b",
+          "text": "Jelito czcze (jejunum)"
+        },
+        {
+          "id": "c",
+          "text": "Jelito krete (ileum)"
+        },
+        {
+          "id": "d",
+          "text": "Jelito grube (colon)"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz D** — **jelito grube (colon)** NIE ma fałdów okrężnych (plicae circulares, zastawki Kerkringa, valvulae conniventes)! Jelito grube: brak kosmków + brak fałdów Kerkringa; głębsze krypty (crypts of Lieberkühn) + liczne komórki kubkowe + haustra (pofałdowania od taeniae coli) + appendices epiploicae. Fałdy okrężne: dystalna dwunastnica → maximum w jelicie czczym → stopniowo zanikają w krętym. Powtórka Q484 e2020-1. Klinicznie: choroba Leśniowskiego-Crohna vs UC (wrzodziejące zapalenie jelita grubego — tylko jelito grube + odbytnica); rak jelita grubego (polipektomia → leczenie CRC w stadium I-II;\n\nFOLFOX/FOLFIRI + bevacizumab/cetuksymab w IV)."
+    },
+    {
+      "id": "HIST-15-044",
+      "topicId": "HIST-15",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-685",
+      "isActive": true,
+      "text": "Bariera krew-powietrze utworzona jest przez:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Surfaktant → pneumocyt I → bl. podstawna pneumocyta → bl. podstawna sródbłonka → sródbłonek kapilary",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Surfaktant → pneumocyt I → bl. podstawna pneumocyta → bl. podstawna sródbłonka → sródbłonek kapilary"
+        },
+        {
+          "id": "b",
+          "text": "Tylko pneumocyt I i sródbłonek"
+        },
+        {
+          "id": "c",
+          "text": "Pneumocyt II i sródbłonek"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Surfaktant → pneumocyt I → bl. podstawna pneumocyta → bl. podstawna sródbłonka → sródbłonek kapilary"
+        },
+        {
+          "id": "b",
+          "text": "Tylko pneumocyt I i sródbłonek"
+        },
+        {
+          "id": "c",
+          "text": "Pneumocyt II i sródbłonek"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **bariera krew-powietrze (blood-air barrier)** od strony powietrza do krwi: ( 1) **surfaktant** (warstwa płynu + fosfolipidy na granicy powietrze/płyn); ( 2) **pneumocyt I** (cienki ~0.2 µm, AQP5); ( 3) **błona podstawna pneumocyta I** (zlewająca się z BM śródbłonka w najcieńszych miejscach); ( 4) **błona podstawna śródbłonka** (lub wspólna BM); ( 5) **śródbłonek kapilary** (ciągły, nieliczne pory). Łączna grubość ~0.5 µm → szybka dyfuzja O₂/CO₂ (prawo Ficka). Klinicznie: ARDS = DAD (diffuse alveolar damage) → zniszczenie pneumocytów I + II + śródbłonka → błony hialinowe + obrzęk → ↓DLCO; \"berlin criteria\" PaO₂/FiO₂ <300;\n\nPEEP + prone position."
+    },
+    {
+      "id": "HIST-15-047",
+      "topicId": "HIST-15",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-717",
+      "isActive": true,
+      "text": "Gdzie wystepuja gruczoły Bowmana?",
+      "correctOptionId": "a",
+      "correctAnswerText": "Nablone wechowy / czesc wechowa jamy nosowej / blaszka wlasciwa nablonka wechowego",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Nablone wechowy / czesc wechowa jamy nosowej / blaszka wlasciwa nablonka wechowego"
+        },
+        {
+          "id": "b",
+          "text": "Powieka"
+        },
+        {
+          "id": "c",
+          "text": "Tarczyca"
+        },
+        {
+          "id": "d",
+          "text": "Skora"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Nablone wechowy / czesc wechowa jamy nosowej / blaszka wlasciwa nablonka wechowego"
+        },
+        {
+          "id": "b",
+          "text": "Powieka"
+        },
+        {
+          "id": "c",
+          "text": "Tarczyca"
+        },
+        {
+          "id": "d",
+          "text": "Skora"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **gruczoły Bowmana (gl. olfactoriae)** = surowicze gruczoły w **blaszce właściwej nabłonka węchowego** jamy nosowej (regio olfactoria: sklepienie + górna przegroda + górna małżowina, ~2-5 cm²). Wydzielina: wodnista + OBP (odorant-binding proteins, lipocaliny) → **rozpuszcza odoranty** → docierają do rzęsek neuronów węchowych (OR receptory GPCR, ~400 funkcjonalnych u człowieka). Nabłonek węchowy: neurony węchowe (bipolarne!) + komórki podporne + komórki podstawne (regeneracja neuronów, RZADKA CECHA OUN!). Klinicznie: anosmia w COVID-19 (uszkodzenie komórek podpornych/sustentacular z ACE2; regeneracja przez komórki podstawne); anosmia w chorobie Alzheimera i Parkinsona (wczesny objaw prodromalny!); Kallmann (brak migracji GnRH neurons + komórek węchowych → anosmia + hipogonadyzm)."
+    },
+    {
+      "id": "HIST-15-050",
+      "topicId": "HIST-15",
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-757",
+      "isActive": true,
+      "text": "W oskrzelikach:",
+      "correctOptionId": "b",
+      "correctAnswerText": "Mogą występować pojedyncze grudki chłonne",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Mogą występować blaszki chrzęstne"
+        },
+        {
+          "id": "b",
+          "text": "Mogą występować pojedyncze grudki chłonne"
+        },
+        {
+          "id": "c",
+          "text": "Mogą występować gruczoły surowicze produkujące surfaktant"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Mogą występować blaszki chrzęstne"
+        },
+        {
+          "id": "b",
+          "text": "Mogą występować pojedyncze grudki chłonne"
+        },
+        {
+          "id": "c",
+          "text": "Mogą występować gruczoły surowicze produkujące surfaktant"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidłowej odpowiedzi"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "W ścianie oskrzelików mogą występować **pojedyncze grudki chłonne** należące do tkanki limfatycznej oskrzeli (BALT). Oskrzeliki nie mają natomiast chrząstki ani gruczołów podśluzówkowych — to odróżnia je od oskrzeli. Surfaktant wytwarzają pneumocyty II rzędu w pęcherzykach, a nie gruczoły. Dlatego jedyną prawdziwą cechą jest obecność grudek chłonnych. *Klinicznie:* skurcz mięśniówki gładkiej oskrzelików leży u podstaw napadu astmy, a ich zapalenie (bronchiolitis) jest częste u małych dzieci."
+    },
+    {
+      "id": "HIST-16-024",
+      "topicId": "HIST-16",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-703",
+      "isActive": true,
+      "text": "Jakich komorek nie ma w skorze wlasciwej (dermis)?",
+      "correctOptionId": "a",
+      "correctAnswerText": "Keratynocytow ",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Keratynocytow "
+        },
+        {
+          "id": "b",
+          "text": "Adipocytow "
+        },
+        {
+          "id": "c",
+          "text": "Fibroblastow"
+        },
+        {
+          "id": "d",
+          "text": "Komorek tucznych "
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Keratynocytow "
+        },
+        {
+          "id": "b",
+          "text": "Adipocytow "
+        },
+        {
+          "id": "c",
+          "text": "Fibroblastow"
+        },
+        {
+          "id": "d",
+          "text": "Komorek tucznych "
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **keratynocytów NIE MA w skórze właściwej (dermis)**; keratynocyty = komórki **naskórka (epidermis)**: warstwy podstawna, kolczysta, ziarnista, (jasna), rogowa. Dermis zawiera: fibroblasty ( C) + makrofagi + mastocyty ( D) + adipocyty (B, szczeg. w głębokiej dermis/tk. podskórnej) + naczynia + nerwy + mieszki włosowe + gruczoły potowe + łojowe. Granica skórno-naskórkowa (DEJ): nabłonek wielowarstwowy płaski rogowaciejący na błonie podstawnej (kolagen IV + laminina-332 w hemidesmosomach). Klinicznie: zmiany skórne w dermis — czerniak (melanocyty z DEJ → dermis → przerzuty), SCC (atypowe keratynocyty inwadują dermis), BCC (z komórek bazalnych); sklerodermia (fibroza dermis — kolagen III)."
+    },
+    {
+      "id": "HIST-16-033",
+      "topicId": "HIST-16",
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-751",
+      "isActive": true,
+      "text": "Jakich komórek nie ma w ozębnej?",
+      "correctOptionId": "b",
+      "correctAnswerText": "Odontoblastów",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Fibroblastów"
+        },
+        {
+          "id": "b",
+          "text": "Odontoblastów"
+        },
+        {
+          "id": "c",
+          "text": "Osteoblastów"
+        },
+        {
+          "id": "d",
+          "text": "Limfocytów"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Fibroblastów"
+        },
+        {
+          "id": "b",
+          "text": "Odontoblastów"
+        },
+        {
+          "id": "c",
+          "text": "Osteoblastów"
+        },
+        {
+          "id": "d",
+          "text": "Limfocytów"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Ozębna (periodontium, PDL)** to **tkanka łączna włóknista** w szczelinie ozębnej (między cementem korzenia a kością zębodołu). Główny element: **włókna Sharpey'a** — pęczki kolagenu I od cementu do kości. Komórki ozębnej: **fibroblasty** (najliczniejsze — remodelują kolagen), **cementoblasty** (wzdłuż cementu), **osteoblasty** (wzdłuż kości), **osteoklasty** (resorpcja — kluczowe w ortodoncji), **resztki Malasseza** (nabłonkowe — źródło torbieli korzeniowych), **komórki odpornościowe** (makrofagi, **limfocyty** — zapalenie przyzębia). **Odontoblasty** — komórki **miazgi zęba (pulpa)**, na granicy zębina/miazga, produkują prazębinę i zębinę; **NIE WYSTĘPUJĄ W OZĘBNEJ**. Klucz B jednoznaczny. Klinika: periodontitis — utrata przyczepu ozębnej; ortodoncja wykorzystuje osteoblasty/osteoklasty ozębnej do przemieszczania zębów."
+    },
+    {
+      "id": "HIST-17-034",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-608",
+      "isActive": true,
+      "text": "Nefryna jest elementem:",
+      "correctOptionId": "d",
+      "correctAnswerText": "Błonki filtracyjnej (slit diaphragm)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Błony Bowmana"
+        },
+        {
+          "id": "b",
+          "text": "Blaszki jasnej błony podstawnej"
+        },
+        {
+          "id": "c",
+          "text": "Blaszki ciemnej"
+        },
+        {
+          "id": "d",
+          "text": "Błonki filtracyjnej (slit diaphragm)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Błony Bowmana"
+        },
+        {
+          "id": "b",
+          "text": "Blaszki jasnej błony podstawnej"
+        },
+        {
+          "id": "c",
+          "text": "Blaszki ciemnej"
+        },
+        {
+          "id": "d",
+          "text": "Błonki filtracyjnej (slit diaphragm)"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz D** — **nefryna (NPHS1)** = kluczowe białko **slit diaphragm (błonki szczelinowej)** między pedicytami (stopkami) sąsiednich podocytów; tworzy \"zipper-like\" strukturę (homotypicalne interakcje Ig-like). Trójwarstwowa bariera filtracyjna kłębuszka: ( 1) śródbłonek okienkowy (fenestracje 70-100 nm, ujemny glikokaliks); ( 2) GBM (~300-400 nm; kolagen IV α3α4α5 + laminin-521); ( 3) **podocyty + stopki + slit diaphragm (nefryna + podocyna + CD2AP)**. **A** = błona Bowmana w rogówce (NIE nerka!); **B/C** = blaszki BM nie zawierają nefryny. Klinicznie: CNF (NPHS1 mut., fiński typ — masywna proteinuria od urodzenia, nefrektomia + transplantacja);\n\nSRNS + FSGS (NPHS2 podocyna, ACTN4);\n\nMCD (zlepianie stopek podocytów, GKS-sensitive ~90%); membranous nephropathy (anty-PLA2R)."
+    },
+    {
+      "id": "HIST-17-036",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-651",
+      "isActive": true,
+      "text": "Nabłonek przejściowy (urothelium) pokrywa:",
+      "correctOptionId": "d",
+      "correctAnswerText": "Błonę śluzową pęcherza moczowego",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Kanaliki kręte nerki"
+        },
+        {
+          "id": "b",
+          "text": "Błonę śluzową jajowodu"
+        },
+        {
+          "id": "c",
+          "text": "Błonę śluzową nasieniowodu"
+        },
+        {
+          "id": "d",
+          "text": "Błonę śluzową pęcherza moczowego"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Kanaliki kręte nerki"
+        },
+        {
+          "id": "b",
+          "text": "Błonę śluzową jajowodu"
+        },
+        {
+          "id": "c",
+          "text": "Błonę śluzową nasieniowodu"
+        },
+        {
+          "id": "d",
+          "text": "Błonę śluzową pęcherza moczowego"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz D** — **nabłonek przejściowy (urothelium, uroepithelium)** = wielowarstwowy nabłonek charakterystyczny dla **układu moczowego**: miedniczka nerkowa → moczowody → **pęcherz moczowy** → proksymalna cewka moczowa. Cecha: zmiana kształtu przy rozciąganiu (wypełniony pęcherz → 3-4 warstwy + spłaszczone komórki; pusty → 6-7 warstw + komórki parasolowate/facet cells, duże, dwujądrowe, z glikoglikokaliksiną umbrella cells). Klinicznie: rak urotelialny (transitional cell carcinoma, TCC) — najczęstszy rak pęcherza; czynniki ryzyka: palenie (arylaminy) + ekspozycja zawodowa + cyklofosfamid; hematuria → cystoskopia; leczenie TURBT + BCG (immunoterapia) w niemusculo-invasive; cystektomia + chemio w invasive."
+    },
+    {
+      "id": "HIST-17-040",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-694",
+      "isActive": true,
+      "text": "Bezpośrednim przedłużeniem blaszki ściennej torebki Bowmana jest:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Kanalik proksymalny (PCT)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Kanalik proksymalny (PCT)"
+        },
+        {
+          "id": "b",
+          "text": "Petla Henlego"
+        },
+        {
+          "id": "c",
+          "text": "Kanalik dalszy (DCT)"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidlowej odpowiedzi"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Kanalik proksymalny (PCT)"
+        },
+        {
+          "id": "b",
+          "text": "Petla Henlego"
+        },
+        {
+          "id": "c",
+          "text": "Kanalik dalszy (DCT)"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidlowej odpowiedzi"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — powtórka Q556 e2020-1 + Q694 (późniejsze). Nabłonek blaszki ściennej torebki Bowmana (jednowarstwowy płaski) w **biegunie moczowym** przechodzi w nabłonek **PCT** (sześcienny z brush borderem). Biegun naczyniowy = afferent + efferent arteriola + JGA (komórki przykłębuszkowe = renina; macula densa = \"sensor\" Na w dystalnym kanaliku). PCT: resorpcja ~65-70% Na⁺+H₂O + 100% glukozy (SGLT2 + SGLT1) + 100% aa. Klinicznie: ATN (muddy brown casts), Fanconi (pan-PCT defekt), SGLT2i (empagliflozin, dapagliflozin → ↓glikemia + ↓BP + nefroprotekcja w DM2 i CKD)."
+    },
+    {
+      "id": "HIST-17-041",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-695",
+      "isActive": true,
+      "text": "Blaszke scienna torebki Bowmana wyściela:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Nablone jednowarstwowy plaski",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Nablone jednowarstwowy plaski"
+        },
+        {
+          "id": "b",
+          "text": "Nablone jednowarstwowy szescienny"
+        },
+        {
+          "id": "c",
+          "text": "Nablone jednowarstwowy walcowaty"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Nablone jednowarstwowy plaski"
+        },
+        {
+          "id": "b",
+          "text": "Nablone jednowarstwowy szescienny"
+        },
+        {
+          "id": "c",
+          "text": "Nablone jednowarstwowy walcowaty"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — blaszka ścienna torebki Bowmana (pars parietalis capsulae glomeruli) = **jednowarstwowy płaski** (ścianka zewnętrzna torebki); przechodzi w nabłonek PCT w biegunie moczowym. Blaszka trzewna = podocyty (specyficzny nabłonek z pedicytami + slit diaphragm). Powtórka Q694. Klinicznie: crescentic GN (szybko postępujące RPGN) = proliferacja komórek blaszki ściennej (parietal cells) → crescents w przestrzeni Bowmana → masywna utrata funkcji → dializy; etiologia crescentic: anti-GBM (Goodpasture), ANCA-vasculitis, immunokompleksy (SLE, post-strep); pilne leczenie (plazmafereза + GKS + cyklofosfamid)."
+    },
+    {
+      "id": "HIST-17-047",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-834",
+      "isActive": true,
+      "text": "Wskaż zdanie nieprawidłowe o rdzeniu nerki:",
+      "correctOptionId": "c",
+      "correctAnswerText": "występują komórki mioepitelialne",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "występują przewody zbiorcze"
+        },
+        {
+          "id": "b",
+          "text": "występują pętle Henlego"
+        },
+        {
+          "id": "c",
+          "text": "występują komórki mioepitelialne"
+        },
+        {
+          "id": "d",
+          "text": "dochodzą do niego tętniczki proste"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "występują przewody zbiorcze"
+        },
+        {
+          "id": "b",
+          "text": "występują pętle Henlego"
+        },
+        {
+          "id": "c",
+          "text": "występują komórki mioepitelialne"
+        },
+        {
+          "id": "d",
+          "text": "dochodzą do niego tętniczki proste"
+        },
+        {
+          "id": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "explanation": "**Rdzeń nerki** — piramidy Malpighiego z brodawkami nerkowymi. Cechy histologiczne: ( A) **PRZEWODY ZBIORCZE (Belliniego)** — nabłonek sześcienny, komórki główne (ADH) i wstawkowe (kwasowo-zasadowe);\n\nPOPRAWNE. ( B) **PĘTLE HENLEGO** — szczególnie długie pętle nefronów przyrdzeniowych, kluczowe dla mechanizmu przeciwprądowego zagęszczania moczu;\n\nPOPRAWNE. ( D) **TĘTNICZKI PROSTE (vasa recta)** — od tętniczek odprowadzających, równoległe do pętli Henlego, mechanizm przeciwprądowy wymiany (nie wypłukują gradientu);\n\nPOPRAWNE. ( C) **KOMÓRKI MIOEPITELIALNE** — NIE występują w rdzeniu nerki. Są w **gruczołach zewnątrzwydzielniczych** (ślinianki, sutek, gruczoły potowe, łzowe). W nerce ich brak. Klucz: C (błędne twierdzenie)."
+    },
+    {
+      "id": "HIST-17-049",
+      "topicId": "HIST-17",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-858",
+      "isActive": true,
+      "text": "Z czego powstają narządy układu moczowego?",
+      "correctOptionId": "c",
+      "correctAnswerText": "z mezodermy pośredniej / nefrotomu",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "z mezodermy przyśrodkowej"
+        },
+        {
+          "id": "b",
+          "text": "z mezodermy przyosiowej"
+        },
+        {
+          "id": "c",
+          "text": "z mezodermy pośredniej / nefrotomu"
+        },
+        {
+          "id": "d",
+          "text": "z mezodermy bocznej"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "z mezodermy przyśrodkowej"
+        },
+        {
+          "id": "b",
+          "text": "z mezodermy przyosiowej"
+        },
+        {
+          "id": "c",
+          "text": "z mezodermy pośredniej / nefrotomu"
+        },
+        {
+          "id": "d",
+          "text": "z mezodermy bocznej"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Narządy układu moczowego** rozwijają się z **MEZODERMY POŚREDNIEJ (intermediate mesoderm) = NEFROTOMU** — paskowatego obszaru mezodermy między somitami a mezodermą boczną. Klucz C. **Klasyfikacja mezodermy** (od osi ciała na zewnątrz): ( 1) **MEZODERMA PRZYOSIOWA (paraxial)** = somity → mięśnie szkieletowe, kręgi, skóra właściwa; ( 2) **MEZODERMA POŚREDNIA = NEFROTOM** → **nerki** (pronefros → mezonefros → metanefros), **moczowody** (pączek moczowodowy z przewodu Wolffa), **gonady**; ( 3) **MEZODERMA BOCZNA (lateral plate)** → somatopleura (ściana ciała) i splanchnopleura (układ pokarmowy, krążenie). **Pęcherz moczowy** — z zatoki moczowo-płciowej (endoderma), ale trójkąt z mezodermy moczowodów. Klucz: C."
+    },
+    {
+      "id": "HIST-18-071",
+      "topicId": "HIST-18",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-648",
+      "isActive": true,
+      "text": "Krążenie wrotne wyspowo-pęcherzykowe jest charakterystyczne dla:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Trzustki",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Trzustki"
+        },
+        {
+          "id": "b",
+          "text": "Szyszynki"
+        },
+        {
+          "id": "c",
+          "text": "Przysadki"
+        },
+        {
+          "id": "d",
+          "text": "Wątroby"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Trzustki"
+        },
+        {
+          "id": "b",
+          "text": "Szyszynki"
+        },
+        {
+          "id": "c",
+          "text": "Przysadki"
+        },
+        {
+          "id": "d",
+          "text": "Wątroby"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **krążenie wrotne wyspowo-pęcherzykowe (insulo-acinar portal system)** w trzustce: krew z naczyń krwionośnych wysp Langerhansa (bogata w insulinę, glukagon, somatostatynę) przepływa do otaczających acini egzokrynowych → hormony wysp wpływają na sekrecję egzokrynną (insulina stymuluje enzymy trzustkowe, glukagon/SS hamują). Wyspy Langerhansa = komórki α (glukagon, ~20%), β (insulina, ~70%), δ (somatostatyna, ~5%), PP (polipeptyd trzustkowy), ε (grelina). Klinicznie: cukrzyca T1 (autoimmun atakuje β); T2 (insulinooporność + wyczerpanie β); insulinoma (guzy β, hipoglikemia); ZES (gastrinoma); VIPoma; glukagonoma."
+    },
+    {
+      "id": "HIST-18-074",
+      "topicId": "HIST-18",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-706",
+      "isActive": true,
+      "text": "Warstwa klebuszkowata, pasmowata i siateczkowata naleza do:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Kory nadnerczy (cortex)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Kory nadnerczy (cortex)"
+        },
+        {
+          "id": "b",
+          "text": "Rdzenia nadnerczy (medulla)"
+        },
+        {
+          "id": "c",
+          "text": "Przytatczyc (parathyroid)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Kory nadnerczy (cortex)"
+        },
+        {
+          "id": "b",
+          "text": "Rdzenia nadnerczy (medulla)"
+        },
+        {
+          "id": "c",
+          "text": "Przytatczyc (parathyroid)"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **kora nadnerczy (cortex)** = 3 warstwy (GFR mnemonic): **G**lomerulosa (aldosteron) → **F**asciculata (kortyzol, najgrubsza ~75%) → **R**eticularis (androgeny DHEA). Rdzeń nadnerczy (medulla) = komórki chromochłonne (chromaffin) = zmodyfikowane postsynaptyczne neurony współczulne; produkują adrenalinę (~80%) + noradrenalinę (~20%); unerwienie preganglionarne (splanchnicus major). Klinicznie: Conn (aldosteronoma Z. glomerulosa → HTN + hipokaliemia); Cushing adrenal (adenoma Z. fasciculata); adrenarche (Z. reticularis, DHEA w wieku 6-8 lat); pheochromocytoma (rdzeń, reguła 10%; VMA+metanephrine w moczu; α-blokada pre-op)."
+    },
+    {
+      "id": "HIST-18-078",
+      "topicId": "HIST-18",
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-771",
+      "isActive": true,
+      "text": "Komórki C tarczycy parafolikularne:",
+      "correctOptionId": "b",
+      "correctAnswerText": "Występują w ścianie pęcherzyków i poza nią",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Występują tylko w ścianie pęcherzyków"
+        },
+        {
+          "id": "b",
+          "text": "Występują w ścianie pęcherzyków i poza nią"
+        },
+        {
+          "id": "c",
+          "text": "Nie występują w ścianie pęcherzyków"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Występują tylko w ścianie pęcherzyków"
+        },
+        {
+          "id": "b",
+          "text": "Występują w ścianie pęcherzyków i poza nią"
+        },
+        {
+          "id": "c",
+          "text": "Nie występują w ścianie pęcherzyków"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "explanation": "**Komórki C (parafolikularne)** tarczycy — ~0.1% komórek, odrębne od tyreocytów. Pochodzenie: **grzebień nerwowy** — neuralna geneza, część układu **APUD/DNES** (diffuse neuroendocrine system); migrują z **5. kieszonki gardłowej (ciałko ostatnie)** do tarczycy. Lokalizacja: **W ŚCIANIE PĘCHERZYKÓW** — wbudowane między tyreocyty w nabłonku pęcherzykowym, ale **NIE STYKAJĄ się ze światłem pęcherzyka** (oddziela cienka cytoplazma tyreocytów lub błona podstawna); **POZA PĘCHERZYKAMI** — w przestrzeni międzypęcherzykowej (tkanka łączna). Stąd B — obie lokalizacje. **Funkcja**: wydzielają **KALCYTONINĘ (CT)** — peptyd 32 aa, hormon hipokalcemiczny: hamowanie **osteoklastów** (↓resorpcja kostna), ↑wydalanie Ca²⁺ i fosforanu z moczem. Klucz B poprawnie. Klinika: **rak rdzeniasty tarczycy (MTC)** — z komórek C; sporadyczny lub w **MEN 2A/2B** (mutacja RET); marker: kalcytonina;\n\nIHC: kalcytonina, chromogranina A, synaptofizyna."
+    },
+    {
+      "id": "HIST-18-088",
+      "topicId": "HIST-18",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-843",
+      "isActive": true,
+      "text": "Jaka część nadnerczy odpowiedzialna jest za produkcję hormonów płciowych?",
+      "correctOptionId": "a",
+      "correctAnswerText": "warstwa siatkowata kory",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "warstwa siatkowata kory"
+        },
+        {
+          "id": "b",
+          "text": "warstwa kłębkowata kory"
+        },
+        {
+          "id": "c",
+          "text": "warstwa pasmowata"
+        },
+        {
+          "id": "d",
+          "text": "rdzeń nadnerczy"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "warstwa siatkowata kory"
+        },
+        {
+          "id": "b",
+          "text": "warstwa kłębkowata kory"
+        },
+        {
+          "id": "c",
+          "text": "warstwa pasmowata"
+        },
+        {
+          "id": "d",
+          "text": "rdzeń nadnerczy"
+        },
+        {
+          "id": "e",
+          "text": "brak danych w PDF"
+        }
+      ],
+      "explanation": "**Kora nadnerczy** — trzy warstwy (GFR — od zewnątrz): ( 1) **KŁĘBKOWATA (glomerulosa)** — ~15%, produkuje **ALDOSTERON** (mineralokortykoid); regulacja przez angiotensynę II (RAA) i K+. ( 2) **PASMOWATA (fasciculata)** — ~75%, produkuje **KORTYZOL** (glukokortykoid); regulacja przez ACTH. ( 3) **SIATKOWATA (reticularis)** — ~10%, produkuje **ANDROGENY** — **DHEA, siarczan DHEA, androstendion**; regulacja przez ACTH. Klucz A — warstwa siatkowata = hormony płciowe. **Rdzeń nadnerczy** (D) — komórki chromafinowe produkujące **katecholaminy** (adrenalina, noradrenalina) — system współczulny. Mnemonic: **GFR** (jak przesączanie nerkowe) = Glukokortykoid (Pasmowata), Filtrat=Mineralokortykoid (Kłębkowata), Reticularis=Androgeny."
+    },
+    {
+      "id": "HIST-19-077",
+      "topicId": "HIST-19",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-639",
+      "isActive": true,
+      "text": "70% objętości nasienia to wydzielina:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Pęcherzyków nasiennych",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Pęcherzyków nasiennych"
+        },
+        {
+          "id": "b",
+          "text": "Gruczołów opuszkowo-cewkowych (Cowpera)"
+        },
+        {
+          "id": "c",
+          "text": "Sterczowa (prostata)"
+        },
+        {
+          "id": "d",
+          "text": "Plemniki"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Pęcherzyków nasiennych"
+        },
+        {
+          "id": "b",
+          "text": "Gruczołów opuszkowo-cewkowych (Cowpera)"
+        },
+        {
+          "id": "c",
+          "text": "Sterczowa (prostata)"
+        },
+        {
+          "id": "d",
+          "text": "Plemniki"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — skład nasienia (ejakulat ~2-5 mL): **( A) pęcherzyki nasienne (vesiculae seminales)** = ~65-70% objętości (bogata w fruktozę dla energii plemników + prostaglandyny + białka koagulacyjne); **( C) prostata** = ~25-30% (cytryniany, cynk, PSA, kwaśna fosfataza, antyinfekcyjne); **( B) gruczoły Cowpera** = < 5% (śluz, neutralizacja cewki przed ejakulacją); **plemniki** = <5% objętości. PSA (kallikrein) rozkłada koagulat nasienia. Klinicznie: CBAVD (brak pęcherzyków + nasieniowodu w CF) → azoospermia + niskie pH + brak fruktozy."
+    },
+    {
+      "id": "HIST-19-080",
+      "topicId": "HIST-19",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-656",
+      "isActive": true,
+      "text": "Przewód najądrza wyściela nabłonek:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Wielorzędowy (pseudostratified) walcowaty ze stereocyliami",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Wielorzędowy (pseudostratified) walcowaty ze stereocyliami"
+        },
+        {
+          "id": "b",
+          "text": "Jednowarstwowy płaski"
+        },
+        {
+          "id": "c",
+          "text": "Wielowarstwowy płaski"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Wielorzędowy (pseudostratified) walcowaty ze stereocyliami"
+        },
+        {
+          "id": "b",
+          "text": "Jednowarstwowy płaski"
+        },
+        {
+          "id": "c",
+          "text": "Wielowarstwowy płaski"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **ductus epididymidis** = **pseudostratified walcowaty ze STEREOCYLIAMI** (długie mikrowilli, NIE rzęski — brak 9+2 struktur, aktyna zamiast mikrotubul; długie wypustki cytoplazmatyczne). Komórki główne (principal) z stereocyliami → dojrzewanie + capacitation plemników przez ~10-14 dni; resorpcja płynu + sekrecja czynników; magazyn w ogonie. Powtórka Q583 e2019-1 (ductuli efferentes = pseudo-stratified walcowaty z rzęskami + microkosmkami). Klinicznie: epididymitis (<35 r. = Chlamydia, >35 = E. coli); CBAVD (brak najądrza + nasieniowodu w CF); obstrukcyjna azoospermia → MESA/PESA + ICSI."
+    },
+    {
+      "id": "HIST-19-082",
+      "topicId": "HIST-19",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-686",
+      "isActive": true,
+      "text": "Budowa najądrza:",
+      "correctOptionId": "d",
+      "correctAnswerText": "Wszystkie prawidłowe",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Posiada głowę, trzon i ogon"
+        },
+        {
+          "id": "b",
+          "text": "W skład trzonu i ogona wchodzi przewód najądrza"
+        },
+        {
+          "id": "c",
+          "text": "Kwaśny odczyn wydzieliny"
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie prawidłowe"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Posiada głowę, trzon i ogon"
+        },
+        {
+          "id": "b",
+          "text": "W skład trzonu i ogona wchodzi przewód najądrza"
+        },
+        {
+          "id": "c",
+          "text": "Kwaśny odczyn wydzieliny"
+        },
+        {
+          "id": "d",
+          "text": "Wszystkie prawidłowe"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz D (wszystkie A+B+C)** — najądrze (epididymis): **( A) głowa (caput)** = ductuli efferentes (~10-20) → **trzon (corpus)** + **ogon (cauda)** = ductus epididymidis (~6m zwinięty, pseudostratified ze stereocyliami); **( B) trzon + ogon = przewód najądrza** (caput = ductuli efferentes); **( C) kwaśne pH wydzieliny** (~6.5-6.8 — hamuje przedwczesną aktywację plemników przed ejakulacją; dojrzewanie obejmuje ↓pH). Capacitation plemników: nabycie zdolności do fertilizacji + motylity (ruchliwości); magazyn w ogonie. Klinicznie: orchitis + epididymitis;\n\nCBAVD (CF); vasektomia (przecięcie nasieniowodu po ogonie najądrza);\n\nMESA (microsurgical epididymal sperm aspiration) + ICSI."
+    },
+    {
+      "id": "HIST-19-094",
+      "topicId": "HIST-19",
+      "sourceExam": "LDEK 2017 sesja 1",
+      "sourceCode": "HISLEK-e2017-1-853",
+      "isActive": true,
+      "text": "Kiedy powstają oocyty I rzędu?",
+      "correctOptionId": "a",
+      "correctAnswerText": "pomiędzy 8.–30. tygodniem życia płodowego",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "pomiędzy 8.–30. tygodniem życia płodowego"
+        },
+        {
+          "id": "b",
+          "text": "pomiędzy 5.–7. miesiącem życia płodowego"
+        },
+        {
+          "id": "c",
+          "text": "zaraz po urodzeniu"
+        },
+        {
+          "id": "d",
+          "text": "po osiągnięciu dojrzałości płciowej"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "pomiędzy 8.–30. tygodniem życia płodowego"
+        },
+        {
+          "id": "b",
+          "text": "pomiędzy 5.–7. miesiącem życia płodowego"
+        },
+        {
+          "id": "c",
+          "text": "zaraz po urodzeniu"
+        },
+        {
+          "id": "d",
+          "text": "po osiągnięciu dojrzałości płciowej"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Oogeneza płodowa**: ( 1) 3.– 6. tydzień: **oogonia** (PGC migrujące z pęcherzyka żółtkowego) namnażają się mitotycznie; ( 2) od **~ 8. tygodnia** oogonia wchodzą w **mejozę I** → stają się **OOCYTAMI I RZĘDU** — mejoza zatrzymuje się w **profazie I (diploten)**; ( 3) do **~ 30. tygodnia** większość oocytów I rzędu otoczona komórkami pęcherzykowymi → **pęcherzyki pierwotne (primordial follicles)**. Klucz A (8.– 30. tydzień). Liczba oocytów maleje przez atrezję: ~7 mln (szczyt) → ~1–2 mln przy urodzeniu → ~300–400 tys. w dojrzewaniu → ~400–500 owuluje w życiu. **Wszystkie oocyty kobiety powstają przed urodzeniem** — klucz A. Mejoza I kończy się dopiero **tuż przed owulacją**; mejoza II — po zapłodnieniu. Klucz: A."
+    },
+    {
+      "id": "HIST-20-028",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2019 sesja 1",
+      "sourceCode": "HISLEK-e2019-1-611",
+      "isActive": true,
+      "text": "Elementem nie wchodzącym w skład kubków smakowych są komórki:",
+      "correctOptionId": "d",
+      "correctAnswerText": "Kępkowe (brush cells)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Podstawne"
+        },
+        {
+          "id": "b",
+          "text": "Typu II"
+        },
+        {
+          "id": "c",
+          "text": "Typu III"
+        },
+        {
+          "id": "d",
+          "text": "Kępkowe (brush cells)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Podstawne"
+        },
+        {
+          "id": "b",
+          "text": "Typu II"
+        },
+        {
+          "id": "c",
+          "text": "Typu III"
+        },
+        {
+          "id": "d",
+          "text": "Kępkowe (brush cells)"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz D** — **komórki kępkowe (brush/tuft cells)** NIE wchodzą w skład kubka smakowego. Kubek smakowy zawiera: **( A) podstawne** (stem, turnover ~10 dni); **( B) typ I (dark/ciemne)** — podporowe, transport K⁺; **typ II (jasne)** — receptory słodkiego/gorzkiego/umami (TAS1R/TAS2R → PLCβ2 → IP3 → Ca²⁺ → ATP przez CALHM1); **( C) typ III** — receptor kwaśny (OTOP1/PKD2L1), klasyczne synapsy, serotonina; + zakończenia nerwowe (VII, IX, X). Komórki kępkowe = chemosensory w nabłonku oddechowym + jelitowym (IL-25 + ILC2). Klinicznie: ageuzja w COVID-19; ↓smak w niedoborze Zn; ageuzja po chemio; drogi smaku: VII (chorda tympani, przednie 2/3 języka) → IX (tylna 1/3) → X (nagłośnia) → jądro samotne → VPM wzgórza → insula."
+    },
+    {
+      "id": "HIST-20-030",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-642",
+      "isActive": true,
+      "text": "Zrąb rogówki zawiera:",
+      "correctOptionId": "c",
+      "correctAnswerText": "A i B (oba typy kolagenu)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Kolagen typu I"
+        },
+        {
+          "id": "b",
+          "text": "Kolagen typu V"
+        },
+        {
+          "id": "c",
+          "text": "A i B (oba typy kolagenu)"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Kolagen typu I"
+        },
+        {
+          "id": "b",
+          "text": "Kolagen typu V"
+        },
+        {
+          "id": "c",
+          "text": "A i B (oba typy kolagenu)"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz C** — zrąb rogówki (substantia propria, ~90% grubości): **kolagen I + kolagen V** (oba!) ułożone w 200-300 równoległych lamellach (precyzyjny spacing → przezroczystość) + keratocyty + proteoglikany (decorin, lumican, keratocan regulują spacing włókien). Powtórka Q588 e2019-1. Inne warstwy rogówki: nabłonek wielowarstwowy płaski nierogowaciejący → błona Bowmana (kol. I+V) → **zrąb** → błona Descemeta (kol. VIII, rośnie z wiekiem) → śródbłonek (pompa Na/K, klucz dla przezroczystości). Klinicznie: LASIK (flap w zrębie); keratoconus (degeneracja zrębu); keratitis."
+    },
+    {
+      "id": "HIST-20-031",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-643",
+      "isActive": true,
+      "text": "Jak soczewka jest połączona z wyrostkami rzęskowymi:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Więzadełkami Zinna (zonula ciliaris)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Więzadełkami Zinna (zonula ciliaris)"
+        },
+        {
+          "id": "b",
+          "text": "Więzadełkami Zeissa"
+        },
+        {
+          "id": "c",
+          "text": "Więzadełkami Molla"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Więzadełkami Zinna (zonula ciliaris)"
+        },
+        {
+          "id": "b",
+          "text": "Więzadełkami Zeissa"
+        },
+        {
+          "id": "c",
+          "text": "Więzadełkami Molla"
+        },
+        {
+          "id": "d",
+          "text": "Brak w PDF"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — soczewka zawieszona na **więzadełkach Zinna (zonula ciliaris, fibres zonulares)** = cienkie włókna z fibryliny-1 (FBN1!) łączące ciało rzęskowe z torebką soczewki. Akomodacja: skurcz m. ciliaris → relaksacja więzadełek → soczewka kulista (widzenie bliskie); relaksacja m. ciliaris → naciąg więzadełek → spłaszczenie (widzenie dalekie). **Więzadełka Zeissa** = gruczoły łojowe przy mieszkach rzęs (powieka); **Molla** = gruczoły potowe apokrynowe powieki. Klinicznie: presbyopia (↓elastyczność soczewki → brak akomodacji); ektopia soczewki (Marfan — FBN1 mut. → zerwanie więzadełek)."
+    },
+    {
+      "id": "HIST-20-033",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-676",
+      "isActive": true,
+      "text": "Gruczoły Molla i Zeissa znajduja sie w:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Powiece (przy mieszkach rzesotek)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Powiece (przy mieszkach rzesotek)"
+        },
+        {
+          "id": "b",
+          "text": "Twardzowce"
+        },
+        {
+          "id": "c",
+          "text": "Rogówce"
+        },
+        {
+          "id": "d",
+          "text": "Soczewce"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Powiece (przy mieszkach rzesotek)"
+        },
+        {
+          "id": "b",
+          "text": "Twardzowce"
+        },
+        {
+          "id": "c",
+          "text": "Rogówce"
+        },
+        {
+          "id": "d",
+          "text": "Soczewce"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — gruczoły powieki przy mieszkach rzęs: **( 1) Gruczoły Molla** = zmodyfikowane gruczoły potowe **APOKRYNOWE** (apocrine sweat glands, cytoplazma z wypuklinami \"dekap\"); przewody otwierają się do mieszków rzęs lub bezpośrednio na skórze powieki; wydzielina: wodnisto-lipidowa; **( 2) Gruczoły Zeissa (Zeiss)** = zmodyfikowane gruczoły **ŁOJOWE** (sebaceous glands); przy mieszkach rzęs; tłusta wydzielina → chroni rzęsy + nawilżenie brzegu powieki; mikroanatomy inne niż gruczoły Meiboma (w tarsusie). Klinicznie: **chalazion** = zatkanie gruczołu Meiboma → ziarniak lipidowy; **gradówka** vs **jaczmen (hordeolum)** (S. aureus, ostry); **molluscum contagiosum** vs wirus HPV na powiece."
+    },
+    {
+      "id": "HIST-20-034",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-677",
+      "isActive": false,
+      "text": "Gruczoły Meiboma wystepuja w:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Powiece (w tarsusie)",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Powiece (w tarsusie)"
+        },
+        {
+          "id": "b",
+          "text": "Twardzowce"
+        },
+        {
+          "id": "c",
+          "text": "Rogówce"
+        },
+        {
+          "id": "d",
+          "text": "Spojówce"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Powiece (w tarsusie)"
+        },
+        {
+          "id": "b",
+          "text": "Twardzowce"
+        },
+        {
+          "id": "c",
+          "text": "Rogówce"
+        },
+        {
+          "id": "d",
+          "text": "Spojówce"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **gruczoły Meiboma (tarsalne)** = duże gruczoły łojowe (holokrynne) osadzone prostopadle w **tarsusie** (chrząstce) górnej (~25-40 gruczołó w) i dolnej (~20-30 gruczołó w) powieki; przewody wzdłuż brzegu powieki; wydzielina: meibum = lipidy (cholesterol, woski, tróójglicerydy) → **warstwa lipidowa łez** (zewnętrzna z 3-warstw błony łzowej) → hamuje parowanie łez. Klinicznie: dysfunkcja gruczołów Meiboma (MGD) = najczęstsza przyczyna **choroby suchego oka (dry eye disease)** → ↓lipidowa warstwa łez → ↑parowanie → keratoconjunctivitis sicca; **chalazion** = zatkanie MGD → ziarniak;\n\nIPL (intense pulsed light) + ciepłe kompresy w MGD; sztuczne łzy w DED."
+    },
+    {
+      "id": "HIST-20-040",
+      "topicId": "HIST-20",
+      "sourceExam": "LDEK 2018 sesja 1",
+      "sourceCode": "HISLEK-e2018-1-746",
+      "isActive": true,
+      "text": "Funkcja narządu lemieszowego to:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Receptorowa — odbiór sygnałów zapachowych/feromonowych",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Receptorowa — odbiór sygnałów zapachowych/feromonowych"
+        },
+        {
+          "id": "b",
+          "text": "Produkcja płynu rozpuszczającego substancje zapachowe"
+        },
+        {
+          "id": "c",
+          "text": "Brak funkcji"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidłowej odpowiedzi"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Receptorowa — odbiór sygnałów zapachowych/feromonowych"
+        },
+        {
+          "id": "b",
+          "text": "Produkcja płynu rozpuszczającego substancje zapachowe"
+        },
+        {
+          "id": "c",
+          "text": "Brak funkcji"
+        },
+        {
+          "id": "d",
+          "text": "Brak prawidłowej odpowiedzi"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "Narząd lemieszowo-nosowy (Jacobsona) pełni funkcję **receptorową — odbiera sygnały zapachowe i feromonowe**. U zwierząt odgrywa kluczową rolę w komunikacji chemicznej, a u człowieka jest strukturą szczątkową o dyskusyjnej czynności. Leży w przedniej części przegrody nosa. Produkcja płynu rozpuszczającego substancje zapachowe to zadanie gruczołów Bowmana okolicy węchowej, nie tego narządu. *Klinicznie:* u człowieka jego znaczenie funkcjonalne pozostaje przedmiotem badań."
+    },
+    {
+      "id": "HIST-21-009",
+      "topicId": "HIST-14",
+      "sourceExam": "LDEK 2019 sesja 2",
+      "sourceCode": "HISLEK-e2019-2-710",
+      "isActive": true,
+      "text": "Biegun naczyniowy i zolciowy to charakterystyczna cecha:",
+      "correctOptionId": "a",
+      "correctAnswerText": "Hepatocytow",
+      "placeholdersToReplace": [
+        {
+          "optionId": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "existingRealOptions": [
+        {
+          "id": "a",
+          "text": "Hepatocytow"
+        },
+        {
+          "id": "b",
+          "text": "Komorek Kupffera"
+        },
+        {
+          "id": "c",
+          "text": "Komorek Ito (stellate)"
+        },
+        {
+          "id": "d",
+          "text": "Cholangiocytow"
+        }
+      ],
+      "allOptionsCurrent": [
+        {
+          "id": "a",
+          "text": "Hepatocytow"
+        },
+        {
+          "id": "b",
+          "text": "Komorek Kupffera"
+        },
+        {
+          "id": "c",
+          "text": "Komorek Ito (stellate)"
+        },
+        {
+          "id": "d",
+          "text": "Cholangiocytow"
+        },
+        {
+          "id": "e",
+          "text": "Brak w PDF"
+        }
+      ],
+      "explanation": "**Klucz A** — **hepatocyty** = **biegunowe komórki** z 2 powierzchniami funkcjonalnymi: **( 1) biegun naczyniowy (vascular/sinusoidal)** — zwrócony ku zatoczce (sinusoid) → wydzielanie albumin, czynników krzepnięcia, ApoB, lipoprotein → krew; mikrowille w przestrzeni Dissego; **( 2) biegun żółciowy (biliary/canalicular)** — zwrócony ku kanaliku żółciowemu → wydzielanie żółci (bile canaliculi między sąsiednimi hepatocytami, brak własnej ściany — tylko błony 2 hepatocytów + tight junctions). Komórki Kupffera ( B) = makrofagi rezydentne zatoczek;\n\nIto ( C) = gwiazdowe, magazyn wit. A + fibroza; cholangiocyty ( D) = nabłonek przewodów żółciowych. Klinicznie: hepatitis (martwica hepatocytów → ↑ALT/AST + ↑bilirubina);\n\nPSC/PBC (cholangiopatie); hepatocellular carcinoma (HCC) AFP marker."
+    }
+  ]
+}

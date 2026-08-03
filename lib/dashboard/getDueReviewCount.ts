@@ -21,6 +21,7 @@ export async function getDueReviewCount(
   userId: string,
   track?: string,
   year?: number,
+  viewerEmail?: string | null,
 ): Promise<number> {
   if (!track || year == null) {
     const nowIso = new Date().toISOString();
@@ -37,7 +38,7 @@ export async function getDueReviewCount(
     return count ?? 0;
   }
 
-  const catalog = await getCachedKnnpCatalog(track, year);
+  const catalog = await getCachedKnnpCatalog(track, year, viewerEmail);
   const topicIds = catalog.topicRows.map((t) => t.id);
   if (topicIds.length === 0) return 0;
 

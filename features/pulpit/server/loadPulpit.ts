@@ -70,9 +70,9 @@ export async function loadPulpit(): Promise<
     const year = normalizeYear(profile?.current_year);
 
     const onlineWindowIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
-    const catalog = await getCachedKnnpCatalog(track, year);
+    const catalog = await getCachedKnnpCatalog(track, year, user.email);
     const [dueReviews, dueReviewsPerSubject, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints, activeNowRes] = await Promise.all([
-      getDueReviewCount(supabase, user.id, track, year),
+      getDueReviewCount(supabase, user.id, track, year, user.email),
       getDueReviewsPerSubject(supabase, user.id, catalog, track),
       supabase
         .from("study_sessions")

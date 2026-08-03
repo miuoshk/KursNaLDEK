@@ -1,0 +1,6 @@
+-- apply 2
+BEGIN;
+UPDATE public.questions SET text='Zmiany wychylenia ($x$) ciała drgającego od czasu ($t$) dla ruchu drgającego tłumionego przedstawia równanie ($A$ - amplituda drgań, λ - współczynnik tłumienia, ω - częstość drgań): o', options='[{"id":"a","text":"$x = A \\cdot e^{\\lambda t} \\cdot \\sin(\\omega t)$"},{"id":"b","text":"$x = A \\cdot e^{-\\omega t} \\cdot \\sin(\\lambda t)$"},{"id":"c","text":"$x = A \\cdot e^{-\\lambda t} \\cdot \\sin(\\omega t)$"},{"id":"d","text":"$x = A \\cdot \\lambda \\cdot \\sin(\\omega t)$"}]'::jsonb, explanation='Ruch drgajacy tlumiony: x = A_0 * exp(-lambda*t) * sin(omega*t). Amplituda maleje wykladniczo w czasie (exp(-lambda*t)), drgania sa sinusoidalne.' WHERE id='biofiz-c4-005';
+
+UPDATE public.questions SET text='Zmiany wychylenia ($x$) ciała drgającego od czasu ($t$) dla ruchu drgającego tłumionego przedstawia równanie ($A$ - amplituda drgań, λ - współczynnik tłumienia, ω - częstość drgań) o', options='[{"id":"a","text":"$x = A \\cdot e^{\\lambda t} \\cdot \\sin(\\omega t)$"},{"id":"b","text":"$x = A \\cdot e^{-\\omega t} \\cdot \\sin(\\lambda t)$"},{"id":"c","text":"$x = A \\cdot e^{-\\lambda t} \\cdot \\sin(\\omega t)$"}]'::jsonb, explanation='Drgania tłumione: x = A*exp(-lambda*t)*sin(omega*t). Amplituda maleje wykładniczo (exp(-lambda*t)), drgania sinusoidalne.' WHERE id='biofiz-w5-122';
+COMMIT;

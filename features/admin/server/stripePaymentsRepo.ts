@@ -2,6 +2,7 @@ import "server-only";
 
 import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizeTrack, normalizeYear, type StudyTrack, type StudyYear } from "@/features/access/lib/studyAccess";
 
 /**
  * Lokalna replika danych płatności Stripe.
@@ -27,6 +28,12 @@ export type StripePaymentRow = {
   year: number | null;
   metadata: Record<string, unknown> | null;
   stripe_created_at: string;
+};
+
+export type ResolvedChargeEntitlement = {
+  userId: string;
+  track: StudyTrack;
+  year: StudyYear;
 };
 
 function chargeToRow(charge: Stripe.Charge): StripePaymentRow {
@@ -57,6 +64,55 @@ function chargeToRow(charge: Stripe.Charge): StripePaymentRow {
     metadata: Object.keys(metadata).length > 0 ? (charge.metadata as Record<string, unknown>) : null,
     stripe_created_at: new Date((charge.created ?? 0) * 1000).toISOString(),
   };
+}
+
+export async function resolveChargeEntitlement(
+  charge: Stripe.Charge,
+): Promise<ResolvedChargeEntitlement | null> {
+  const row = chargeToRow(charge);
+  if (row.user_id && row.track && row.year) {
+    return {
+      userId: row.user_id,
+      track: normalizeTrack(row.track),
+      year: normalizeYear(row.year),
+    };
+  }
+
+  const paymentIntentId = row.payment_intent_id;
+  if (!paymentIntentId) {
+    return null;
+  }
+
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("user_year_entitlements")
+    .select("user_id, track, year")
+    .eq("stripe_payment_intent_id", paymentIntentId)
+    .maybeSingle();
+
+  if (error) {
+    console.error("[stripePaymentsRepo] resolveChargeEntitlement", error.message);
+    return null;
+  }
+
+  if (!data?.user_id) {
+    return null;
+  }
+
+  return {
+    userId: data.user_id as string,
+    track: normalizeTrack(data.track as string),
+    year: normalizeYear(data.year as number),
+  };
+}
+
+export function isChargeFullyRefunded(charge: Stripe.Charge): boolean {
+  if (charge.refunded) {
+    return true;
+  }
+  const amount = charge.amount ?? 0;
+  const refunded = charge.amount_refunded ?? 0;
+  return amount > 0 && refunded >= amount;
 }
 
 export async function upsertCharges(charges: Stripe.Charge[]): Promise<number> {

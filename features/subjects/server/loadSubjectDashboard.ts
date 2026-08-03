@@ -95,7 +95,7 @@ export async function loadSubjectDashboard(
     }
 
     const subjectTrack = normalizeTrack(subject.track as string);
-    if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
+    if (isCatalogSubjectHidden(subjectId, subjectTrack, user?.email)) {
       return {
         ok: false,
         kind: "not_found",

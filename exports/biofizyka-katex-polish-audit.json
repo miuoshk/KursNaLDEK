@@ -1,0 +1,473 @@
+{
+  "generatedAt": "2026-06-18T21:15:52.168Z",
+  "total": 783,
+  "changed": 55,
+  "unchanged": 728,
+  "byTopic": {
+    "BIOF-C1": 2,
+    "BIOF-C2": 4,
+    "BIOF-C3": 5,
+    "BIOF-C4": 7,
+    "BIOF-S1": 9,
+    "BIOF-S2": 20,
+    "BIOF-S3": 2,
+    "BIOF-W1": 1,
+    "BIOF-W3": 1,
+    "BIOF-W4": 4
+  },
+  "samples": [
+    {
+      "id": "biofiz-c1-013",
+      "topic_id": "BIOF-C1",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Czas wygaszenia fosforescencji jest zazwyczaj … niż fluorescencji.",
+        "explanation": "Fosforescencja ma dłuższy czas wygaszenia niż fluorescencja. Fosforescencja wymaga \"zabronionych\" przejsc między stanami o roznym spinie (triplet->singlet), co trwa dluzej."
+      },
+      "after": {
+        "text": "Czas wygaszenia fosforescencji jest zazwyczaj … niż fluorescencji.",
+        "explanation": "Fosforescencja ma dłuższy czas wygaszenia niż fluorescencja. Fosforescencja wymaga \"zabronionych\" przejsc między stanami o roznym spinie (triplet->singlet), co trwa dłużej."
+      }
+    },
+    {
+      "id": "biofiz-c1-030",
+      "topic_id": "BIOF-C1",
+      "changes": [
+        "option-c"
+      ],
+      "before": {
+        "text": "Widmo emisyjne jako otrzymujemy dla gazów wieloatomowych klasyfikujemy jako widmo:",
+        "explanation": "Gazy wieloatomowe (cząsteczkowe) daja widmo pasmowe - skladajace się z wielu blisko siebie polozonych linii tworzacych pasma. Wynika to z przejsc rotacyjno-oscylacyjnych."
+      },
+      "after": {
+        "text": "Widmo emisyjne jako otrzymujemy dla gazów wieloatomowych klasyfikujemy jako widmo:",
+        "explanation": "Gazy wieloatomowe (cząsteczkowe) daja widmo pasmowe - skladajace się z wielu blisko siebie polozonych linii tworzacych pasma. Wynika to z przejsc rotacyjno-oscylacyjnych."
+      }
+    },
+    {
+      "id": "biofiz-c2-003",
+      "topic_id": "BIOF-C2",
+      "changes": [
+        "option-a",
+        "option-b",
+        "option-c",
+        "option-d"
+      ],
+      "before": {
+        "text": "Polaryzacja zachodząca na powierzchni dielektryka spełnia warunek ($α$ - kąt padania wiązki świetlnej na dielektryk, n - współczynnik załamania światła)",
+        "explanation": "Prawo Brewstera: $\\\\tan(\\alpha) = n. Pod k$ątem Brewstera promień odbity jest całkowicie spolaryzowany (drgania E prostopadle do płaszczyzny padania). Promień załamany jest czesciowo spolaryzowany."
+      },
+      "after": {
+        "text": "Polaryzacja zachodząca na powierzchni dielektryka spełnia warunek ($α$ - kąt padania wiązki świetlnej na dielektryk, n - współczynnik załamania światła)",
+        "explanation": "Prawo Brewstera: $\\\\tan(\\alpha) = n. Pod k$ątem Brewstera promień odbity jest całkowicie spolaryzowany (drgania E prostopadle do płaszczyzny padania). Promień załamany jest czesciowo spolaryzowany."
+      }
+    },
+    {
+      "id": "biofiz-c2-013",
+      "topic_id": "BIOF-C2",
+      "changes": [
+        "option-d"
+      ],
+      "before": {
+        "text": "Jeżeli światło przechodzi z ośrodka o współczynniku załamania n1 ($α$ - kąt padania) do ośrodka o współczynniku załamania n2 ($β$ - kąt załamania) to prawo załamania światła w tym przypadku wyraża równanie",
+        "explanation": "Prawo Snella (załamania): $n_{1} \\cdot \\\\sin(\\alpha) = n_{2} \\cdot \\\\sin(\\beta)$, gdzie alpha to kąt padania, beta to kąt załamania. Prawo okresla, jak zmienia się kierunek promienia na granicy ośrodk"
+      },
+      "after": {
+        "text": "Jeżeli światło przechodzi z ośrodka o współczynniku załamania n1 ($α$ - kąt padania) do ośrodka o współczynniku załamania n2 ($β$ - kąt załamania) to prawo załamania światła w tym przypadku wyraża rów",
+        "explanation": "Prawo Snella (załamania): $n_{1} \\cdot \\\\sin(\\alpha) = n_{2} \\cdot \\\\sin(\\beta)$, gdzie alpha to kąt padania, beta to kąt załamania. Prawo okresla, jak zmienia się kierunek promienia na granicy ośrodk"
+      }
+    },
+    {
+      "id": "biofiz-c3-011",
+      "topic_id": "BIOF-C3",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Krew jest cieczą nienewtonowską i tiksotropową. Wzrost lepkości krwi jest powodowany przez",
+        "explanation": "Lepkość krwi rosnie przy: nizszej temperaturze, wyzszym hematokrycie, agregacji erytrocytów. Krew jest cieczą tiksotropową - lepkość zależy od szybkosci ścinania."
+      },
+      "after": {
+        "text": "Krew jest cieczą nienewtonowską i tiksotropową. Wzrost lepkości krwi jest powodowany przez",
+        "explanation": "Lepkość krwi rośnie przy: nizszej temperaturze, wyzszym hematokrycie, agregacji erytrocytów. Krew jest cieczą tiksotropową - lepkość zależy od szybkosci ścinania."
+      }
+    },
+    {
+      "id": "biofiz-c3-015",
+      "topic_id": "BIOF-C3",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "W trakcie przepływu krwi przez naczynia krwionośne na lepkość krwi mogą wpływać różne czynniki. Powoduje to, że lepkość krwi może być różna w różnych częściach układu naczyniowego. Jednym ze zjawisk wpływających na lepkość krwi to efekt Magnusa. Można go wyjaśnić poprzez",
+        "explanation": "Akumulacja osiowa erytrocytów (efekt Fahraeus-Lindqvist): czerwone krwinki gromadza się w osi naczynia, przy scianach plynie osocze. Zmniejsza to pozorna lepkość w malych naczyniach."
+      },
+      "after": {
+        "text": "W trakcie przepływu krwi przez naczynia krwionośne na lepkość krwi mogą wpływać różne czynniki. Powoduje to, że lepkość krwi może być różna w różnych częściach układu naczyniowego. Jednym ze zjawisk w",
+        "explanation": "Akumulacja osiowa erytrocytów (efekt Fahraeus-Lindqvist): czerwone krwinki gromadza się w osi naczynia, przy scianach plynie osocze. Zmniejsza to pozorna lepkość w małych naczyniach."
+      }
+    },
+    {
+      "id": "biofiz-c3-027",
+      "topic_id": "BIOF-C3",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Wzrost lepkości krwi powoduje:",
+        "explanation": "Lepkość krwi rosnie przy: wyzszym hematokrycie (wiecej komorek) i nizszej temperaturze (większa lepkość osocza). Odwrotne czynniki zmniejszaja lepkość."
+      },
+      "after": {
+        "text": "Wzrost lepkości krwi powoduje:",
+        "explanation": "Lepkość krwi rośnie przy: wyzszym hematokrycie (wiecej komorek) i nizszej temperaturze (większa lepkość osocza). Odwrotne czynniki zmniejszaja lepkość."
+      }
+    },
+    {
+      "id": "biofiz-c3-030",
+      "topic_id": "BIOF-C3",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Zjawisko akumulacji osiowej krwinek wpływa na lepkość krwi i powoduje",
+        "explanation": "Akumulacja osiowa (efekt Fahraeus-Lindqvist) zmniejsza pozorna lepkość krwi w malych naczyniach. Erytrocyty plyna w osi, przy scianach jest osocze o mniejszej lepkości."
+      },
+      "after": {
+        "text": "Zjawisko akumulacji osiowej krwinek wpływa na lepkość krwi i powoduje",
+        "explanation": "Akumulacja osiowa (efekt Fahraeus-Lindqvist) zmniejsza pozorna lepkość krwi w małych naczyniach. Erytrocyty plyna w osi, przy scianach jest osocze o mniejszej lepkości."
+      }
+    },
+    {
+      "id": "biofiz-c4-010",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "W mięśniu po jego wydłużeniu z początkowej długości i pozostawieniu stałej długości mięśnia występuje zjawisko:",
+        "explanation": "Relaksacja naprężenia: przy stałej długości (stalym odksztalceniu) naprezenie stopniowo maleje w czasie. Charakterystyczne dla materialow lepko-sprezystych."
+      },
+      "after": {
+        "text": "W mięśniu po jego wydłużeniu z początkowej długości i pozostawieniu stałej długości mięśnia występuje zjawisko:",
+        "explanation": "Relaksacja naprężenia: przy stałej długości (stalym odksztalceniu) naprężenie stopniowo maleje w czasie. Charakterystyczne dla materialow lepko-sprezystych."
+      }
+    },
+    {
+      "id": "biofiz-c4-013",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Potencjał elektryczny na błonie komórki mięśnia poprzecznie prążkowanego wynosi około",
+        "explanation": "Potencjał spoczynkowy komórki miesniowej wynosi ok. -60 do -90 mV (wnetrze ujemne wzgledem zewnetrza). Depolaryzacja do ok. +30 mV wyzwala skurcz."
+      },
+      "after": {
+        "text": "Potencjał elektryczny na błonie komórki mięśnia poprzecznie prążkowanego wynosi około",
+        "explanation": "Potencjał spoczynkowy komórki mięśniowej wynosi ok. -60 do -90 mV (wnetrze ujemne wzgledem zewnetrza). Depolaryzacja do ok. +30 mV wyzwala skurcz."
+      }
+    },
+    {
+      "id": "biofiz-c4-014",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Energia do skurczu mięśnia czerpana jest z",
+        "explanation": "Energia do skurczu pochodzi z hydrolizy ATP (adenozynotrifosforan). ATP -> ADP + Pi + energia. ATP jest uniwersalnym nosnikiem energii w komorce."
+      },
+      "after": {
+        "text": "Energia do skurczu mięśnia czerpana jest z",
+        "explanation": "Energia do skurczu pochodzi z hydrolizy ATP (adenozynotrifosforan). ATP -> ADP + Pi + energia. ATP jest uniwersalnym nosnikiem energii w komórce."
+      }
+    },
+    {
+      "id": "biofiz-c4-016",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Maksymalny zasięg, kiedy ciało po odjęciu działającej siły powraca do poprzedniego kształtu to:",
+        "explanation": "Granica sprężystości: maksymalne naprezenie, przy ktorym material wraca do pierwotnego kształtu po odjęciu siły. Powyzej - trwale odksztalcenie plastyczne."
+      },
+      "after": {
+        "text": "Maksymalny zasięg, kiedy ciało po odjęciu działającej siły powraca do poprzedniego kształtu to:",
+        "explanation": "Granica sprężystości: maksymalne naprężenie, przy ktorym material wraca do pierwotnego kształtu po odjęciu siły. Powyzej - trwale odksztalcenie plastyczne."
+      }
+    },
+    {
+      "id": "biofiz-c4-019",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Liniowa wprost proporcjonalna zależność między naprężeniem wewnętrznym względnym wydłużeniem wynikającym z prawa Hooke’a nie jest spełniona:",
+        "explanation": "Prawo Hookea (sigma = E * epsilon) obowiazuje w zakresie od zera do granicy proporcjonalności. Powyżej zależność jest nieliniowa."
+      },
+      "after": {
+        "text": "Liniowa wprost proporcjonalna zależność między naprężeniem wewnętrznym względnym wydłużeniem wynikającym z prawa Hooke’a nie jest spełniona:",
+        "explanation": "Prawo Hookea (sigma = E * epsilon) obowiązuje w zakresie od zera do granicy proporcjonalności. Powyżej zależność jest nieliniowa."
+      }
+    },
+    {
+      "id": "biofiz-c4-027",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Reologiczny model Maxwella opisuje",
+        "explanation": "Model Maxwella opisuje zachowanie mięśni gładkich podczas rozciągania - wykazuja one relaksacje naprezenia (naprezenie maleje przy stalym odksztalceniu)."
+      },
+      "after": {
+        "text": "Reologiczny model Maxwella opisuje",
+        "explanation": "Model Maxwella opisuje zachowanie mięśni gładkich podczas rozciągania - wykazuja one relaksacje naprezenia (naprężenie maleje przy stalym odksztalceniu)."
+      }
+    },
+    {
+      "id": "biofiz-c4-030",
+      "topic_id": "BIOF-C4",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Jak nazywa się prawo, któremu podlega wiele materiałów poddanych obciążeniom, o ile obciążenie nie przekracza granicy sprężystości materiału",
+        "explanation": "Prawo Hookea: $\\sigma = E \\cdot \\epsilon (naprezenie proporcjonalne do odksztalcenia)$. Obowiazuje dla malych odksztalcen w zakresie sprezystym. E to modul Younga."
+      },
+      "after": {
+        "text": "Jak nazywa się prawo, któremu podlega wiele materiałów poddanych obciążeniom, o ile obciążenie nie przekracza granicy sprężystości materiału",
+        "explanation": "Prawo Hookea: $\\sigma = E \\cdot \\epsilon (naprężenie proporcjonalne do odkształcenia)$. Obowiązuje dla małych odkształceń w zakresie sprezystym. E to modul Younga."
+      }
+    },
+    {
+      "id": "biofiz-s1-003",
+      "topic_id": "BIOF-S1",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Jednostką efektywnego równoważnika dawki (dawki skutecznej) jest",
+        "explanation": "Dawka skuteczna (efektywny rownowaznik dawki) mierzona jest w siwertach (Sv). Uwzględnia rozny wpływ biologiczny różnych rodzajow promieniowania i czulosc tkanek."
+      },
+      "after": {
+        "text": "Jednostką efektywnego równoważnika dawki (dawki skutecznej) jest",
+        "explanation": "Dawka skuteczna (efektywny rownowaznik dawki) mierzona jest w siewertach (Sv). Uwzględnia rozny wpływ biologiczny różnych rodzajow promieniowania i czulosc tkanek."
+      }
+    },
+    {
+      "id": "biofiz-s2-023",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "W stanie stacjonarnym",
+        "explanation": "Stan stacjonarny: funkcje termodynamiczne (T, p, stężenia) sa stale w czasie, mimo ze przez uklad przeplywaja strumienie energii i materii. Rozny od rownowagi termodynamicznej."
+      },
+      "after": {
+        "text": "W stanie stacjonarnym",
+        "explanation": "Stan stacjonarny: funkcje termodynamiczne (T, p, stężenia) sa stale w czasie, mimo ze przez układ przeplywaja strumienie energii i materii. Rozny od rownowagi termodynamicznej."
+      }
+    },
+    {
+      "id": "biofiz-s2-028",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "U człowieka stan, w którym ciepło oddawane do otoczenia nie jest w stanie zbilansować ciepła wytwarzanego w organizmie to",
+        "explanation": "Hipertermia: produkcja ciepła przewyzsza oddawanie, temperatura ciala rosnie niekontrolowanie. Rozna od goraczki (kontrolowana przez ośrodek termoregulacji)."
+      },
+      "after": {
+        "text": "U człowieka stan, w którym ciepło oddawane do otoczenia nie jest w stanie zbilansować ciepła wytwarzanego w organizmie to",
+        "explanation": "Hipertermia: produkcja ciepła przewyzsza oddawanie, temperatura ciala rośnie niekontrolowanie. Rozna od goraczki (kontrolowana przez ośrodek termoregulacji)."
+      }
+    },
+    {
+      "id": "biofiz-s2-033",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Jak nazywa się zjawisko unoszenia ciepła za pośrednictwem poruszającej się substancji?",
+        "explanation": "Konwekcja to unoszenie ciepła przez poruszajaca się materie (gaz, ciecz). Przewodzenie - przez zderzenia czasteczek, promieniowanie - przez fale EM."
+      },
+      "after": {
+        "text": "Jak nazywa się zjawisko unoszenia ciepła za pośrednictwem poruszającej się substancji?",
+        "explanation": "Konwekcja to unoszenie ciepła przez poruszajaca się materię (gaz, ciecz). Przewodzenie - przez zderzenia czasteczek, promieniowanie - przez fale EM."
+      }
+    },
+    {
+      "id": "biofiz-s2-043",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Entropia",
+        "explanation": "Entropia S = k*ln(W) - jest wprost proporcjonalna do logarytmu prawdopodobieństwa termodynamicznego W. Rosnie w procesach nieodwracalnych. Jest funkcją stanu."
+      },
+      "after": {
+        "text": "Entropia",
+        "explanation": "Entropia S = k*ln(W) - jest wprost proporcjonalna do logarytmu prawdopodobieństwa termodynamicznego W. Rośnie w procesach nieodwracalnych. Jest funkcją stanu."
+      }
+    },
+    {
+      "id": "biofiz-s2-045",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Współczynnik dyfuzji nie jest",
+        "explanation": "Współczynnik dyfuzji D ROSNIE ze wzrostem temperatury (większe ruchy termiczne). Zależy od wielkości i kształtu cząsteczek, jest współczynnikiem w prawie Ficka."
+      },
+      "after": {
+        "text": "Współczynnik dyfuzji nie jest",
+        "explanation": "Współczynnik dyfuzji D ROŚNIE ze wzrostem temperatury (większe ruchy termiczne). Zależy od wielkości i kształtu cząsteczek, jest współczynnikiem w prawie Ficka."
+      }
+    },
+    {
+      "id": "biofiz-s2-048",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Zgodnie z drugą zasadą termodynamiki podczas dowolnego procesu całkowita entropia wszechświata",
+        "explanation": "II zasadą: całkowita entropia wszechświata (uklad + otoczenie) wzrasta lub pozostaje stała. W procesach odwracalnych dS_total = 0, w nieodwracalnych dS_total > 0."
+      },
+      "after": {
+        "text": "Zgodnie z drugą zasadą termodynamiki podczas dowolnego procesu całkowita entropia wszechświata",
+        "explanation": "II zasadą: całkowita entropia wszechświata (układ + otoczenie) wzrasta lub pozostaje stała. W procesach odwracalnych dS_total = 0, w nieodwracalnych dS_total > 0."
+      }
+    },
+    {
+      "id": "biofiz-s2-049",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Układ termodynamiczny można uznać za układ otwarty",
+        "explanation": "Układ otwarty wymienia z otoczeniem zarowno energie jak i materię. Układ zamkniety wymienia tylko energie. Układ izolowany nie wymienia niczego."
+      },
+      "after": {
+        "text": "Układ termodynamiczny można uznać za układ otwarty",
+        "explanation": "Układ otwarty wymienia z otoczeniem zarówno energie jak i materię. Układ zamkniety wymienia tylko energie. Układ izolowany nie wymienia niczego."
+      }
+    },
+    {
+      "id": "biofiz-s2-051",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Jakim typem układu termodynamicznego jest żywy organizm?",
+        "explanation": "Żywy organizm to uklad otwarty - wymienia z otoczeniem zarowno energie (cieplo, praca) jak i materie (pokarm, tlen, CO2, metabolity). Utrzymuje stan stacjonarny."
+      },
+      "after": {
+        "text": "Jakim typem układu termodynamicznego jest żywy organizm?",
+        "explanation": "Żywy organizm to układ otwarty - wymienia z otoczeniem zarówno energie (cieplo, praca) jak i materię (pokarm, tlen, CO2, metabolity). Utrzymuje stan stacjonarny."
+      }
+    },
+    {
+      "id": "biofiz-s2-055",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Czas trwania potencjału czynnościowego wynosi od około 0,5 do 2 ms",
+        "explanation": "Potencjal czynnosciowy trwa ok. 1-2 ms w neuronach, nieco dluzej w komorce miesniowej serca (200-400 ms). Faza depolaryzacji to ok. 0.5 ms."
+      },
+      "after": {
+        "text": "Czas trwania potencjału czynnościowego wynosi od około 0,5 do 2 ms",
+        "explanation": "Potencjał czynnościowy trwa ok. 1-2 ms w neuronach, nieco dłużej w komórce mięśniowej serca (200-400 ms). Faza depolaryzacji to ok. 0.5 ms."
+      }
+    },
+    {
+      "id": "biofiz-s2-067",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Na zachowanie się krwi w naczyniach w trakcie przepływu ma istotny wpływ współczynnik lepkości krwi. Współczynnik lepkości krwi może zwiększyć się w przypadku:",
+        "explanation": "Lepkość krwi rosnie przy: wzroscie hematokrytu (wiecej komorek) i spadku temperatury (większa lepkość osocza). Te same czynniki co dla kazdej cieczy plus agregacja erytrocytow."
+      },
+      "after": {
+        "text": "Na zachowanie się krwi w naczyniach w trakcie przepływu ma istotny wpływ współczynnik lepkości krwi. Współczynnik lepkości krwi może zwiększyć się w przypadku:",
+        "explanation": "Lepkość krwi rośnie przy: wzroscie hematokrytu (wiecej komorek) i spadku temperatury (większa lepkość osocza). Te same czynniki co dla kazdej cieczy plus agregacja erytrocytow."
+      }
+    },
+    {
+      "id": "biofiz-s2-079",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Przy przechodzeniu promieniowania rentgenowskiego lub gamma dochodzi do oddziaływania tych promieniowań z materią poprzez zjawiska: fotoelektryczne, Comptona lub kreacji par. W przypadku rozproszenia Comptonowskiego, możemy stwierdzić, że w wyniku tego oddziaływania",
+        "explanation": "Efekt Comptona: foton traci energie (rozpraszany na elektronie), wiec jego częstotliwość maleje (E=hf), a długość fali rosnie ($\\dfrac{\\\\lambda = c}{f})$."
+      },
+      "after": {
+        "text": "Przy przechodzeniu promieniowania rentgenowskiego lub gamma dochodzi do oddziaływania tych promieniowań z materią poprzez zjawiska: fotoelektryczne, Comptona lub kreacji par. W przypadku rozproszenia ",
+        "explanation": "Efekt Comptona: foton traci energie (rozpraszany na elektronie), wiec jego częstotliwość maleje (E=hf), a długość fali rośnie ($\\dfrac{\\\\lambda = c}{f})$."
+      }
+    },
+    {
+      "id": "biofiz-s2-096",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Człowiek w swoim codziennym życiu narażony jest na wpływ promieniowania jonizującego, pochodzącego od czynników naturalnych (promieniowanie kosmiczne, promieniowanie z izotopów promieniotwórczych znajdujących się w niewielkich ilościach w otoczeniu). Związana z tym przeciętna dawka skuteczna (efektywna) promieniowania jonizującego dla człowieka od tła wynosi (Sv - Siwert)",
+        "explanation": "Średnia roczna dawka promieniowania naturalnego: ok. 2-3 mSv (radon, promieniowanie kosmiczne, izotopy w zywnosci, promieniowanie z gruntu)."
+      },
+      "after": {
+        "text": "Człowiek w swoim codziennym życiu narażony jest na wpływ promieniowania jonizującego, pochodzącego od czynników naturalnych (promieniowanie kosmiczne, promieniowanie z izotopów promieniotwórczych znaj",
+        "explanation": "Średnia roczna dawka promieniowania naturalnego: ok. 2-3 mSv (radon, promieniowanie kosmiczne, izotopy w żywności, promieniowanie z gruntu)."
+      }
+    },
+    {
+      "id": "biofiz-s2-098",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Współczynnik lepkości określa własności cieczy związane z wzajemnym oddziaływaniem molekuł w trakcie przepływu cieczy (w sąsiednich warstwach cieczy). Współczynnik ten definiowany jest jako iloraz",
+        "explanation": "Współczynnik lepkości eta = naprezenie scinajace / szybkosc ścinania = tau / (dv/dy). Jednostka: Pa*s. Dla cieczy newtonowskiej eta = const."
+      },
+      "after": {
+        "text": "Współczynnik lepkości określa własności cieczy związane z wzajemnym oddziaływaniem molekuł w trakcie przepływu cieczy (w sąsiednich warstwach cieczy). Współczynnik ten definiowany jest jako iloraz",
+        "explanation": "Współczynnik lepkości eta = naprężenie scinajace / szybkosc ścinania = tau / (dv/dy). Jednostka: Pa*s. Dla cieczy newtonowskiej eta = const."
+      }
+    },
+    {
+      "id": "biofiz-s2-102",
+      "topic_id": "BIOF-S2",
+      "changes": [
+        "explanation"
+      ],
+      "before": {
+        "text": "Ciała stałe pod wpływem przyłożonej siły ulegają odkształceniom. Zdolność materiału do osiągnięcia nowych kształtów oraz zachowania kształtów uprzednio uzyskanych po zdjęciu obciążenia bez naruszenia spójności to",
+        "explanation": "Plastyczność to zdolność materiału do trwalego odksztalcenia bez zerwania. Sprężystość - powrot do ksztaltu. Wytrzymałość - odpornosc na zniszczenie."
+      },
+      "after": {
+        "text": "Ciała stałe pod wpływem przyłożonej siły ulegają odkształceniom. Zdolność materiału do osiągnięcia nowych kształtów oraz zachowania kształtów uprzednio uzyskanych po zdjęciu obciążenia bez naruszenia ",
+        "explanation": "Plastyczność to zdolność materiału do trwalego odkształcenia bez zerwania. Sprężystość - powrot do ksztaltu. Wytrzymałość - odpornosc na zniszczenie."
+      }
+    }
+  ]
+}

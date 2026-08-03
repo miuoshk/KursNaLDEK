@@ -8,6 +8,7 @@ import { mapRecordToTopicSessionQuestionRow } from "@/features/osce/server/mapTo
 import { OSCE_QUESTIONS_COLUMNS } from "@/features/osce/server/osceQuestionsSelect";
 import type { TopicSessionQuestionRow } from "@/features/osce/types";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 function shuffle<T>(items: T[]): T[] {
   const a = [...items];
@@ -25,6 +26,18 @@ export async function fetchSimulationStationQuestions(
   stationId: string,
 ): Promise<TopicSessionQuestionRow[]> {
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return [];
+  }
+
+  const access = await requireLearningAccessForSubject(user.id, stationId);
+  if (!access.ok) {
+    return [];
+  }
 
   const { data: topicRows, error: te } = await supabase
     .from("topics")

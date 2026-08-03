@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { Rating, type Grade } from "ts-fsrs";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 import { persistUserProgressFsrs } from "@/features/session/server/persistUserProgressFsrs";
 import { updateLeechStatus } from "@/features/session/lib/antares/leechDetector";
 import {
@@ -98,12 +99,20 @@ export async function submitAnswer(
 
     const { data: session, error: se } = await supabase
       .from("study_sessions")
-      .select("id, user_id")
+      .select("id, user_id, subject_id")
       .eq("id", parsed.data.sessionId)
       .maybeSingle();
 
     if (se || !session || session.user_id !== user.id) {
       return { ok: false, message: t("errors.sessionNotFound") };
+    }
+
+    const access = await requireLearningAccessForSubject(
+      user.id,
+      session.subject_id as string,
+    );
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     const { data: questionRow, error: questionError } = await supabase

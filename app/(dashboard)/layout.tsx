@@ -51,7 +51,13 @@ export default async function DashboardLayout({
     user.id,
     (profileRow as { last_seen_at?: string | null } | null)?.last_seen_at ?? null,
   );
-  const dueReviewsCount = await getDueReviewCount(supabase, user.id, userTrack, userYear);
+  const dueReviewsCount = await getDueReviewCount(
+    supabase,
+    user.id,
+    userTrack,
+    userYear,
+    userEmail,
+  );
 
   const { blocked } = await blockedPromise;
   if (blocked) {

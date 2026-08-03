@@ -1,0 +1,4726 @@
+-- ============================================================
+-- ROLLBACK: biofizyka — przed audytem KaTeX + polskie znaki
+-- Data:     2026-06-18T21:14:24.587Z
+-- Pytań:    783
+--
+-- Przywraca text, options, explanation sprzed edycji.
+-- Uruchom w Supabase SQL Editor → Run.
+-- ============================================================
+
+BEGIN;
+
+UPDATE public.questions
+   SET text = 'Zdolność rozdzielcza mikroskopu zależy od',
+       options = '[{"id":"a","text":"długości tubusa i długości fali oświetlającej preparat"},{"id":"b","text":"ogniskowych okularu i obiektywu"},{"id":"c","text":"apertury numerycznej obiektywu i długości tubusa"},{"id":"d","text":"długości fali oświetlającej preparat i współczynnika załamania ośrodka przed mikroskopem Teoria zdolności rozdzielczej przyrządów optycznych, rozwinięta przez Abbego i Strutta wykazała, że zdolność rozdzielcza mikroskopu optycznego zależy od długości fali świetlnej, współczynnika załamania światła i apertury soczewki."}]'::jsonb,
+       explanation = 'Zdolnosc rozdzielcza mikroskopu zalezy od dlugosci fali oswietlajacej preparat i wspolczynnika zalamania osrodka przed obiektywem. Wzor Abbego: d = lambda/(2*n*sin(u)), gdzie n*sin(u) to apertura numeryczna.'
+ WHERE id = 'biofiz-c1-001';
+
+UPDATE public.questions
+   SET text = 'Odwrotność najmniejszego kąta, pod jakim widziane są ze źrenicy wyjściowej oka osobno obrazy dwóch punktów nazwiemy',
+       options = '[{"id":"a","text":"zdolnością skupiającą oka"},{"id":"b","text":"refrakcją oka"},{"id":"c","text":"zdolnością rozdzielczą oka (konkretnie zdolność rozdzielcza kątowa)"},{"id":"d","text":"aperturą oka"}]'::jsonb,
+       explanation = 'Zdolnosc rozdzielcza katowa oka to odwrotnosc najmniejszego kata, pod jakim mozna rozroznic dwa punkty jako osobne. Dla zdrowego oka wynosi ok. 1 minuta katowa.'
+ WHERE id = 'biofiz-c1-002';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem de Broglie’a każdą cząstkę materialną znajdującą się w ruchu można rozpatrywać jako falę o długości (h - stała Plancka, m - masa, v - prędkość, f - częstotliwość)',
+       options = '[{"id":"a","text":"ƛ = v/f"},{"id":"b","text":"ƛ = ½ mv2"},{"id":"c","text":"ƛ = h/(mv)"},{"id":"d","text":"ƛ = h/(Mv2)"}]'::jsonb,
+       explanation = 'Hipoteza de Brogliea: kazda czastka w ruchu ma przypisana fale o dlugosci lambda = h/(mv) = h/p, gdzie h to stala Plancka, m masa, v predkosc. Elektrony w mikroskopie elektronowym maja krotsza fale niz swiatlo.'
+ WHERE id = 'biofiz-c1-003';
+
+UPDATE public.questions
+   SET text = 'Zdolność skupiającą D soczewki korekcyjnej znajdującej się w odległości x od oka o refrakcji R_K obliczamy ze wzoru',
+       options = '[{"id":"a","text":"D = 1/(1+x*R_K)"},{"id":"b","text":"D = R_K/(1-x*R_K)"},{"id":"c","text":"D = 1/(1-x*R_K)"},{"id":"d","text":"D = R_K/(1+x*R_K)"}]'::jsonb,
+       explanation = 'Zdolnosc skupiajaca soczewki korekcyjnej w odleglosci x od oka o refrakcji R: D = R_K/(1-x*R_K). Uwzglednia to fakt, ze soczewka nie jest dokładnie przy oku.'
+ WHERE id = 'biofiz-c1-004';
+
+UPDATE public.questions
+   SET text = 'Oko jest astygmatyczne gdy',
+       options = '[{"id":"a","text":"promienie równoległe do osi optycznej są skupiane w innym punkcie niż promienie biegnące w płaszczyźnie do niej prostopadłej"},{"id":"b","text":"promienie prostopadłe do osi optycznej są skupiane w tym samym punkcie co promienie biegnące w płaszczyźnie do niej równoległej"},{"id":"c","text":"ma tą samą zdolność skupiającą w różnych przekrojach"},{"id":"d","text":"promienie równoległe do osi optycznej są skupiane w tym samym punkcie ci promienie biegnące w płaszczyźnie do niej prostopadłej"}]'::jsonb,
+       explanation = 'Astygmatyzm: oko ma różna zdolność skupiania w różnych przekrojach (płaszczyzny). Promienie świetlne przechodzące przez jeden przekrój oka (np. pionowy) są skupiane w innym punkcie, niż promienie przechodzące przez przekrój do niego prostopadły (np. poziomy).'
+ WHERE id = 'biofiz-c1-006';
+
+UPDATE public.questions
+   SET text = 'Przedmiot umieszczony w podwójnej ogniskowej soczewki cienkiej wypukłej daje obraz:',
+       options = '[{"id":"a","text":"pozorny, powiększony i prosty dokładnie w ognisku obrazowym"},{"id":"b","text":"rzeczywisty, niepowiększony i niepomniejszony, odwrócony"},{"id":"c","text":"pozorny, niepomniejszony, i dokładnie w podwójnej ogniskowej obrazowej"},{"id":"d","text":"pozorny, pomniejszony i prosty, dokładnie w ognisku przedmiotowym"}]'::jsonb,
+       explanation = 'Przedmiot w podwojnej ogniskowej (x=2f) daje obraz rzeczywisty, niepowiekszony, niezmniejszony, odwrocony, rowniez w odleglosci 2f od soczewki. Powiekszenie = -1.'
+ WHERE id = 'biofiz-c1-008';
+
+UPDATE public.questions
+   SET text = 'Ogniskowa przedmiotowa to odległość między punktami',
+       options = '[{"id":"a","text":"F do H"},{"id":"b","text":"H'' do F''"},{"id":"c","text":"F'' do H''"},{"id":"d","text":"H do F"}]'::jsonb,
+       explanation = 'Ogniskowa przedmiotowa f to odleglosc od plaszczyzny glownej przedmiotowej H do ogniska przedmiotowego F. Promienie rownolegle po stronie przedmiotowej skupiaja sie w ognisku obrazowym.'
+ WHERE id = 'biofiz-c1-009';
+
+UPDATE public.questions
+   SET text = 'W przypadku nadwzroczności zmieniając korekcję okularową na korekcję za pomocą soczewek kontaktowych soczewki będą miały',
+       options = '[{"id":"a","text":"mniejszą moc niż okulary"},{"id":"b","text":"większą moc niż okulary"},{"id":"c","text":"taką samą moc jak okulary"}]'::jsonb,
+       explanation = 'Przy nadwzrocznosci (R>0): soczewki kontaktowe maja wieksza moc niz okulary. Soczewka kontaktowa jest blizej oka, wiec potrzebna wieksza korekcja. Wzor: D_kontakt = D_okular/(1-x*D_okular).'
+ WHERE id = 'biofiz-c1-011';
+
+UPDATE public.questions
+   SET text = 'Czas wygaszenia fluorescencji jest zazwyczaj … niż fosforescencji.',
+       options = '[{"id":"a","text":"krótszy"},{"id":"b","text":"dłuższy"},{"id":"c","text":"dwa razy dłuższy"},{"id":"d","text":"równy"}]'::jsonb,
+       explanation = 'Fluorescencja ma krotszy czas wygaszenia (10^-9 do 10^-6 s) niz fosforescencja (10^-3 do sekund/minut). Fluorescencja = przejscie singlet-singlet, fosforescencja = przejscie triplet-singlet (wolniejsze).'
+ WHERE id = 'biofiz-c1-012';
+
+UPDATE public.questions
+   SET text = 'Czas wygaszenia fosforescencji jest zazwyczaj … niż fluorescencji.',
+       options = '[{"id":"a","text":"krótszy"},{"id":"b","text":"równy"},{"id":"c","text":"dłuższy"},{"id":"d","text":"dwa razy krótszy"}]'::jsonb,
+       explanation = 'Fosforescencja ma dluzszy czas wygaszenia niz fluorescencja. Fosforescencja wymaga "zabronionych" przejsc miedzy stanami o roznym spinie (triplet->singlet), co trwa dluzej.'
+ WHERE id = 'biofiz-c1-013';
+
+UPDATE public.questions
+   SET text = 'Co nazywamy dyspersją przenikalności dielektrycznej tkanek?',
+       options = '[{"id":"a","text":"zależność przenikalności od częstotliwości pola elektrycznego"},{"id":"b","text":"zależność przenikalności od natężenia pola elektrycznego"},{"id":"c","text":"zależność przenikalności od natężenia pola magnetycznego"}]'::jsonb,
+       explanation = 'Dyspersja przenikalnosci dielektrycznej to zaleznosc przenikalnosci od czestotliwosci pola elektrycznego. Rozne mechanizmy polaryzacji maja rozne czasy relaksacji.'
+ WHERE id = 'biofiz-c1-014';
+
+UPDATE public.questions
+   SET text = 'Widmo emisyjne to:',
+       options = '[{"id":"a","text":"widmo liniowe (gazów i par w stanie atomowym), pasmowe (gazów i par w stanie cząsteczkowym), ciągłe (cieczy i ciał stałych)"},{"id":"b","text":"widmo powstałe w wyniku reakcji chemicznych zachodzących pomiędzy atomami"},{"id":"c","text":"widmo powstałe, gdy na drodze promieniowania o widmie ciągłym (promieniowanie białe) umieścimy warstwę gazu lub pary o niższej temperaturze niż temperatura źródła"}]'::jsonb,
+       explanation = 'Widmo emisyjne: liniowe dla gazow atomowych (dyskretne przejscia elektronowe), pasmowe dla gazow czasteczkowych (przejscia rotacyjno-oscylacyjne), ciagle dla cial stalych i cieczy.'
+ WHERE id = 'biofiz-c1-015';
+
+UPDATE public.questions
+   SET text = 'Energia emitowana przez cząsteczkę składa się z trzech części: - zmian energii związanej ze zmianą poziomu oscylacyjnego E_o, zmian energii związanej z przejściem elektronu E_e, zmian energii związanej ze zmianą poziomu rotacyjnego E_r. Ogólnie emitowana energia jest wynikiem',
+       options = '[{"id":"a","text":"dużej porcji E_o , małej porcji E_r , bardzo małej porcji energii E_e"},{"id":"b","text":"dużej porcji E_r , małej porcji E_o , bardzo małej porcji energii E_e"},{"id":"c","text":"dużej porcji E_e , małej porcji E_r , bardzo małej porcji energii E_o"},{"id":"d","text":"dużej porcji E_e , małej porcji E_o , bardzo małej porcji energii E_r"}]'::jsonb,
+       explanation = 'Energie czastek: E_elektronowa >> E_oscylacyjna >> E_rotacyjna. Elektrony maja najwieksza energie (eV), oscylacje ~0.1 eV, rotacje ~0.001 eV. Dlatego widma rotacyjne sa w podczerwieni/mikrofalach.'
+ WHERE id = 'biofiz-c1-016';
+
+UPDATE public.questions
+   SET text = 'Tkanki biologiczne mają charakter',
+       options = '[{"id":"a","text":"pojemnościowo-oporowy"},{"id":"b","text":"indukcyjno-oporowy"},{"id":"c","text":"pojemnościowo-indukcyjny"},{"id":"d","text":"oporowo-pojemnościowo-indukcyjny"}]'::jsonb,
+       explanation = 'Tkanki biologiczne maja charakter pojemnosciowo-oporowy (RC). Blony dzialaja jak kondensatory (pojemnosc), cytozol i plyny zewnatrzkomorkowe jak opory. Indukcyjnosc jest pomijalna.'
+ WHERE id = 'biofiz-c1-017';
+
+UPDATE public.questions
+   SET text = 'Prawo Beera stosuje się:',
+       options = '[{"id":"a","text":"do roztworów częściowo zjonizowanych"},{"id":"b","text":"do roztworów, których budowa nie zmienia się wraz ze zmianą stężenia"},{"id":"c","text":"do roztworów, których budowa zmienia się wraz ze zmianą stężenia"},{"id":"d","text":"do roztworów niezjonizowanych lub częściowo zjonizowanych"}]'::jsonb,
+       explanation = 'Prawo Beera stosuje sie do roztworow, ktorych struktura nie zmienia sie ze stezeniem - brak asocjacji, dysocjacji, reakcji chemicznych. Wtedy absorpcja jest wprost proporcjonalna do stezenia.'
+ WHERE id = 'biofiz-c1-018';
+
+UPDATE public.questions
+   SET text = 'Korzystając z prawa Lamberta-Beera można wyznaczyć nieznane stężenie roztworu. Sporządzamy wówczas wykres A = f(c), ponieważ',
+       options = '[{"id":"a","text":"przepuszczalność jest liniowo zależna od stężenia"},{"id":"b","text":"absorbancja jest liniowo zależna od stężenia"},{"id":"c","text":"interesuje nas przepuszczalność względem substancji rozpuszczonej w wodzie"},{"id":"d","text":"absorbancja nie zależy od stężenia"}]'::jsonb,
+       explanation = 'Prawo Lamberta-Beera: A = epsilon*c*l. Absorbancja ( A) jest liniowo zalezna od stezenia (c). Wykres A=f( c) jest linia prosta przechodzaca przez poczatek ukladu.'
+ WHERE id = 'biofiz-c1-019';
+
+UPDATE public.questions
+   SET text = 'Badany roztwór spełnia prawo Beera, gdy zależność absorbancji od stężenia substancji (przy stałej długości fali i grubości kuwety)',
+       options = '[{"id":"a","text":"jest linią prostą przechodzącą przez początek układu współrzędnych"},{"id":"b","text":"jest linią prostą przechodzącą przez określoną absorpcję zależną od rodzaju roztworu"},{"id":"c","text":"jest funkcją logarytmiczną"},{"id":"d","text":"jest funkcją logarytmiczną przechodzącą przez początek układu współrzędnych"}]'::jsonb,
+       explanation = 'Roztwór spełnia prawo Beera gdy wykres A = f(c) jest linią prostą przechodzącą przez początek układu (A = 0 dla c = 0). Odchylenia od liniowości wskazują na nieidealność roztworu.'
+ WHERE id = 'biofiz-c1-020';
+
+UPDATE public.questions
+   SET text = 'Dla dielektryków szerokość pasma wzbronionego wynosi',
+       options = '[{"id":"a","text":"więcej niż 2 eV"},{"id":"b","text":"mniej niż 2 eV"},{"id":"c","text":"w zakresie pomiędzy 0,02 eV a 0,2 eV"},{"id":"d","text":"zero"}]'::jsonb,
+       explanation = 'Dielektryk (izolator): pasmo wzbronione > 2-3 eV. Polprzewodnik: pasmo wzbronione < 2 eV. Metal: brak pasma wzbronionego. Szerokosc pasma okresla, czy elektrony moga byc wzbudzone.'
+ WHERE id = 'biofiz-c1-021';
+
+UPDATE public.questions
+   SET text = 'Moment sił działających na dipol (
+p) w polu elektrycznym (
+E) określa wzór (a - jest kątem między polem E i p',
+       options = '[{"id":"a","text":"p * E * tg(a)"},{"id":"b","text":"p * E * sin(a)"},{"id":"c","text":"p * E * cos(a)"},{"id":"d","text":"p * E * a"}]'::jsonb,
+       explanation = 'Moment sily dzialajacy na dipol w polu elektrycznym: M = p x E = p*E*sin(alpha), gdzie alpha to kat miedzy wektorem dipola p i polem E. Sila dazy do ustawienia dipola wzdluz pola.'
+ WHERE id = 'biofiz-c1-022';
+
+UPDATE public.questions
+   SET text = 'Błonę komórkową możemy określić jako',
+       options = '[{"id":"a","text":"półprzewodnik o przenikalności dielektrycznej między 5 a 6"},{"id":"b","text":"izolator o przenikalności dielektrycznej między 500 a 600"},{"id":"c","text":"izolator o przenikalności między 5 a 6"},{"id":"d","text":"półprzewodnik o przenikalności dielektrycznej między 500 a 600"}]'::jsonb,
+       explanation = 'Blona komorkowa jest izolatorem (warstwa lipidowa) o przenikalnosci dielektrycznej epsilon = 5-6 (podobna do oleju). Bardzo cienka (7-10 nm), ale skutecznie izoluje cytozol od srodowiska.'
+ WHERE id = 'biofiz-c1-023';
+
+UPDATE public.questions
+   SET text = 'Stratami przewodzenia w dielektryku rzeczywistym umieszczonym w zewnętrznym polu elektrycznym nazywamy ciepło wydzielone w trakcie',
+       options = '[{"id":"a","text":"oscylacji dipoli swobodnych"},{"id":"b","text":"przepływu ładunków swobodnych"},{"id":"c","text":"oscylacji ładunków swobodnych"},{"id":"d","text":"przepływu dipoli swobodnych"}]'::jsonb,
+       explanation = 'Straty przewodzenia to cieplo wydzielane wskutek przeplywu ladunkow swobodnych (elektronow, jonow) przez dielektryk. Proporcjonalne do przewodnosci wlasciwej i kwadratu pola.'
+ WHERE id = 'biofiz-c1-024';
+
+UPDATE public.questions
+   SET text = 'Polaryzację polegającą na ustawianiu się molekuł dipolowych zgodnie z zewnętrznym polem elektrycznym nazywamy polaryzacją',
+       options = '[{"id":"a","text":"międzyprzestrzenną"},{"id":"b","text":"orientacyjną"},{"id":"c","text":"deformacyjną"},{"id":"d","text":"atomową"}]'::jsonb,
+       explanation = 'Polaryzacja orientacyjna polega na ustawianiu sie trwalych dipoli molekularnych zgodnie z zewnetrznym polem elektrycznym. Wystepuje w dielektrykach polarnych (np. woda). Maleje ze wzrostem temperatury.'
+ WHERE id = 'biofiz-c1-025';
+
+UPDATE public.questions
+   SET text = 'Dipol elektryczny definiujemy jako (q - ładunek, I - odległość między ładunkiem + i - ):',
+       options = '[{"id":"a","text":"q * l i jest to wektor skierowany od + do -"},{"id":"b","text":"q / l i jest to skalar"},{"id":"c","text":"q * l i jest to wektor skierowany od - do +"},{"id":"d","text":"q / l i jest to wektor skierowany od - do +"}]'::jsonb,
+       explanation = 'Dipol elektryczny: p = q*l (iloczyn ladunku i odleglosci). Jest wektorem skierowanym od ladunku ujemnego do dodatniego (umownie). Jednostka: C*m lub Debye.'
+ WHERE id = 'biofiz-c1-026';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji dielektrycznej nazwiemy czas w którym, po wyłączeniu pola elektrycznego polaryzacja dielektryka (e = 2,71, π = 3,14)',
+       options = '[{"id":"a","text":"zmaleje e-krotnie"},{"id":"b","text":"wzrośnie e-krotnie"},{"id":"c","text":"zmaleje π-krotnie"},{"id":"d","text":"wzrośnie π-krotnie"}]'::jsonb,
+       explanation = 'Czas relaksacji dielektrycznej tau to czas, po ktorym polaryzacja maleje e-krotnie (e = 2.718...) po wylaczeniu pola. Rozne mechanizmy polaryzacji maja rozne czasy relaksacji.'
+ WHERE id = 'biofiz-c1-027';
+
+UPDATE public.questions
+   SET text = 'Wzrost temperatury dielektryka powoduje, że jego podatność elektryczna',
+       options = '[{"id":"a","text":"maleje"},{"id":"b","text":"rośnie"},{"id":"c","text":"nie zmienia się"},{"id":"d","text":"rośnie lub maleje w zależności od typu dielektryka"}]'::jsonb,
+       explanation = 'Wpływ temperatury zależy od mechanizmu polaryzacji: w dielektrykach polarnych chaotyczne ruchy cieplne zmniejszają podatność (utrudniając uporządkowanie dipoli), natomiast w innych materiałach (np. ferroelektrykach w pobliżu punktu Curie) może ona gwałtownie rosnąć.'
+ WHERE id = 'biofiz-c1-028';
+
+UPDATE public.questions
+   SET text = 'Fluorescencję zaliczamy do świecenia:',
+       options = '[{"id":"a","text":"nietermicznego o krótkim czasie przejścia od wzbudzenia do emisji"},{"id":"b","text":"termicznego o długim czasie przejścia od wzbudzenia do emisji"},{"id":"c","text":"nietermicznego o długim czasie przejścia od wzbudzenia do emisji"},{"id":"d","text":"termicznego o krótkim czasie przejścia od wzbudzenia do emisji"}]'::jsonb,
+       explanation = 'Fluorescencja to swiecenie nietermiczne (luminescencja) z krotkim czasem trwania (nanosekundy). Emisja nastepuje natychmiast po absorpcji fotonu, bez udzialu ciepla.'
+ WHERE id = 'biofiz-c1-029';
+
+UPDATE public.questions
+   SET text = 'Widmo emisyjne jako otrzymujemy dla gazów wieloatomowych klasyfikujemy jako widmo:',
+       options = '[{"id":"a","text":"charakterystyczne"},{"id":"b","text":"ciągłe"},{"id":"c","text":"pasmowe (jeżeli wieloatomowe = cząsteczkowe)"},{"id":"d","text":"liniowe (jeżeli wieloatomowe = atomowe)"}]'::jsonb,
+       explanation = 'Gazy wieloatomowe (czasteczkowe) daja widmo pasmowe - skladajace sie z wielu blisko siebie polozonych linii tworzacych pasma. Wynika to z przejsc rotacyjno-oscylacyjnych.'
+ WHERE id = 'biofiz-c1-030';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem Beera, dla pewnych roztworów o małym stężeniu współczynnik osłabienia "k" jest:',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalny do stężenia roztworu"},{"id":"b","text":"wprost proporcjonalny do stężenia roztworu"},{"id":"c","text":"proporcjonalny do kwadratu stężenia roztworu"},{"id":"d","text":"niezależny od stężenia roztworu"}]'::jsonb,
+       explanation = 'Prawo Beera: wspolczynnik absorpcji k (lub oslabienia) jest wprost proporcjonalny do stezenia roztworu. k = alpha*c, gdzie alpha to wspolczynnik absorpcji molowej.'
+ WHERE id = 'biofiz-c1-031';
+
+UPDATE public.questions
+   SET text = 'Cząsteczki niepolarne, nie mające momentu dipolowego',
+       options = '[{"id":"a","text":"dają tylko widma oscylacyjne"},{"id":"b","text":"nie dają widm rotacyjnych, ani oscylacyjnych"},{"id":"c","text":"dają tylko widma rotacyjne"},{"id":"d","text":"dają widma oscylacyjno-rotacyjne"}]'::jsonb,
+       explanation = 'Cząsteczki niepolarne (brak momentu dipolowego) NIE dają widm rotacyjnych ani oscylacyjnych w podczerwieni, bo nie ma zmiany momentu dipolowego podczas ruchu. To jak cicha zabawka - nie "krzyczy" do detektora.'
+ WHERE id = 'biofiz-c1-032';
+
+UPDATE public.questions
+   SET text = 'Światło monochromatyczne przechodzi przez mieszaninę trzech substancji absorbujących przy danej długości fali o absorbancjach $A_1$, $A_2$, $A_3$. Absorbancja całego roztworu $A$ jest równa:',
+       options = '[{"id":"a","text":"$A = A_1 + A_2 + A_3$"},{"id":"b","text":"$A = \\dfrac{A_1 + A_2 + A_3}{3}$"},{"id":"c","text":"$\\dfrac{1}{A} = \\dfrac{1}{A_1} + \\dfrac{1}{A_2} + \\dfrac{1}{A_3}$"},{"id":"d","text":"$A$ = wartości maksymalnej z $A_1$, $A_2$, $A_3$"}]'::jsonb,
+       explanation = '**Absorbancja jest addytywna** — przy danej długości fali absorbancje składników **sumują się**: $A = A_1 + A_2 + A_3$. Wynika to wprost z prawa **Lamberta-Beera** ($A = \varepsilon c l$) i logarytmicznej definicji absorbancji: iloczyn transmitancji przekłada się na sumę absorbancji. Uśrednianie, odwrotności czy branie maksimum nie mają tu podstaw — addytywność jest podstawą analizy spektrofotometrycznej mieszanin.'
+ WHERE id = 'biofiz-c1-341';
+
+UPDATE public.questions
+   SET text = 'W cząsteczkach oprócz skwantowanych stanów elektronowych wyróżnia się stany oscylacyjne (drgania atomów) i rotacyjne (obroty cząsteczki). Zmiana stanu oscylacyjnego cząsteczki następuje wskutek absorpcji lub emisji promieniowania:',
+       options = '[{"id":"a","text":"Widzialnego (VIS)"},{"id":"b","text":"Ultrafioletowego w zakresie A (UVA)"},{"id":"c","text":"Podczerwonego (IR)"},{"id":"d","text":"Ultrafioletowego w zakresie B (UVB)"}]'::jsonb,
+       explanation = 'Przejścia między **poziomami oscylacyjnymi** (drgania wiązań) odpowiadają energiom kwantów **podczerwieni (IR)** — stąd spektroskopia IR służy identyfikacji grup funkcyjnych i wiązań. Promieniowanie **UV/VIS** ma większą energię i wywołuje przejścia **elektronowe**, a przejścia czysto **rotacyjne** wymagają jeszcze mniejszych energii (mikrofale). Drgania (oscylacje) → zakres IR. Reguła: rotacje < oscylacje < elektronowe pod względem energii.'
+ WHERE id = 'biofiz-c1-347';
+
+UPDATE public.questions
+   SET text = 'Czas życia fosforescencji (czas trwania emisji światła po wzbudzeniu) wynosi, zależnie od rodzaju związku:',
+       options = '[{"id":"a","text":"od milisekund do sekund, a nawet godzin"},{"id":"b","text":"około $10^{-8}$ sekundy"},{"id":"c","text":"znacznie mniej niż $10^{-8}$ sekundy"},{"id":"d","text":"$10^{-6}$ sekundy"}]'::jsonb,
+       explanation = '**Fosforescencja** to emisja z **wzbronionym** przejściem (zmiana multipletowości, stan trypletowy → singletowy), dlatego jest **długotrwała**: od **milisekund** przez sekundy aż do godzin. **Fluorescencja** jako przejście dozwolone trwa krótko, rzędu **$10^{-8}$ s** (opcja B). Im dłuższy czas życia stanu wzbudzonego, tym wolniejszy zanik świecenia. Fosforescencja → poświata utrzymująca się po ustaniu wzbudzenia.'
+ WHERE id = 'biofiz-c1-349';
+
+UPDATE public.questions
+   SET text = 'Ciało doskonale czarne emituje energię w postaci fal elektromagnetycznych. Zgodnie z prawem Wiena długość fali, przy której przypada maksimum emisji, jest:',
+       options = '[{"id":"a","text":"Proporcjonalna do bezwzględnej temperatury"},{"id":"b","text":"Proporcjonalna do czwartej potęgi bezwzględnej temperatury"},{"id":"c","text":"Odwrotnie proporcjonalna do bezwzględnej temperatury"},{"id":"d","text":"Nie zależy od bezwzględnej temperatury"}]'::jsonb,
+       explanation = '**Prawo przesunięć Wiena:** $\lambda_{max} = b/T$ — długość fali maksimum emisji jest **odwrotnie proporcjonalna** do temperatury bezwzględnej. Im gorętsze ciało, tym krótsza fala maksimum (przesunięcie ku barwom niebieskim — stąd kolor rozgrzanego metalu). **Czwarta potęga T** dotyczy prawa **Stefana-Boltzmanna** (całkowita moc emisji), nie położenia maksimum. Gorętsze → krótsza $\lambda_{max}$.'
+ WHERE id = 'biofiz-c1-369';
+
+UPDATE public.questions
+   SET text = 'Dla roztworu o małym stężeniu roztworu współczynnika absorpcji a jest charakterystyczny dla λ',
+       options = '[{"id":"a","text":"stężenia roztworu"},{"id":"b","text":"mocy promieniowania po przejściu przez absorbent"},{"id":"c","text":"rodzaju roztworu i długości fali promieniowania"},{"id":"d","text":"mocy promieniowania padającego"}]'::jsonb,
+       explanation = 'Wspolczynnik absorpcji molowej (epsilon) jest charakterystyczny dla danej substancji i dlugosci fali promieniowania. Nie zalezy od stezenia ani mocy promieniowania - to wlasnosc materialu.'
+ WHERE id = 'biofiz-c2-001';
+
+UPDATE public.questions
+   SET text = 'Kompensator w refraktometrze Abbego',
+       options = '[{"id":"a","text":"rozprasza wiązkę światła, gdyż jego częścią jest powierzchnia matowa"},{"id":"b","text":"odbija promienie padające pod kątem większym od granicznego powodując, że pojawia się pole jasne w okularze"},{"id":"c","text":"odbija promienie padające pod kątem większym od granicznego powodując, że pojawia się pole ciemne w okularze"},{"id":"d","text":"likwiduje efekt dyspersji światła"}]'::jsonb,
+       explanation = 'Kompensator (pryzmat Amiciego) w refraktometrze Abbego likwiduje efekt dyspersji swiatla - rozne dlugosci fal sa inaczej zalamywane. Pozwala uzyskac ostra granice miedzy polem jasnym i ciemnym.'
+ WHERE id = 'biofiz-c2-002';
+
+UPDATE public.questions
+   SET text = 'Polaryzacja zachodząca na powierzchni dielektryka spełnia warunek (α - kąt padania wiązki świetlnej na dielektryk, n - współczynnik załamania światła)',
+       options = '[{"id":"a","text":"tg(α) = n, całkowicie spolaryzowanym jest promień odbity"},{"id":"b","text":"tg(α) = n, całkowicie spolaryzowanym jest promień załamany"},{"id":"c","text":"sin(α) = n, całkowicie spolaryzowanym jest promień odbity"},{"id":"d","text":"sin(α) = n, całkowicie spolaryzowanym jest promień załamany"}]'::jsonb,
+       explanation = 'Prawo Brewstera: tg(alpha) = n. Pod katem Brewstera promien odbity jest calkowicie spolaryzowany (drgania E prostopadle do plaszczyzny padania). Promien zalamany jest czesciowo spolaryzowany.'
+ WHERE id = 'biofiz-c2-003';
+
+UPDATE public.questions
+   SET text = 'Aby dwa polaryzatory ustawione jeden za drugim nie przepuszczały światła trzeba ich kierunek światła ustawić pod kątem',
+       options = '[{"id":"a","text":"prostym"},{"id":"b","text":"określonym przez prawo pochłaniania"},{"id":"c","text":"45o"},{"id":"d","text":"zero"}]'::jsonb,
+       explanation = 'Dwa polaryzatory ustawione prostopadle (90 stopni) nie przepuszczaja swiatla - tzw. polaryzatory skrzyzowane. Gdy osie polaryzacji sa rownolegle (0 stopni), swiatlo przechodzi maksymalnie.'
+ WHERE id = 'biofiz-c2-004';
+
+UPDATE public.questions
+   SET text = 'W fali świetlnej spolaryzowanej liniowo płaszczyznę polaryzacji tworzy',
+       options = '[{"id":"a","text":"kierunek biegu fali padającej i kierunek biegu fali odbitej"},{"id":"b","text":"kierunek biegu fali padającej i kierunku biegu fali załamanej"},{"id":"c","text":"kierunek biegu fali i kierunek drgań pola elektrycznego"},{"id":"d","text":"kierunek drgań pola magnetycznego i kierunek drgań pola elektrycznego"}]'::jsonb,
+       explanation = 'Płaszczyzna polaryzacji = kierunek drgań pola ELEKTRYCZNEGO + kierunek rozchodzenia fali. W fizyce przyjęto konwencję, że o polaryzacji światła decyduje wektor natężenia pola elektrycznego (nazywany często wektorem świetlnym), ponieważ to on najsilniej oddziałuje z materią (np. z elektronami w atomach).'
+ WHERE id = 'biofiz-c2-005';
+
+UPDATE public.questions
+   SET text = 'Sposób polaryzacji światła przez dichroizm polega na',
+       options = '[{"id":"a","text":"różnym odbijaniu świetlnej wiązki na granicy ośrodka ze względu na kierunek drgań pola E"},{"id":"b","text":"różnym rozpraszaniu świetlnej wiązki w ośrodku ze względu na kierunek drgań pola E"},{"id":"c","text":"różnym pochłanianiu świetlnej wiązki w ośrodku ze względu na kierunek drgań pola E"},{"id":"d","text":"rozszczepieniu świetlnej wiązki w ośrodku o różnej prędkości rozchodzenia się ze względu na kierunek drgań pola E"}]'::jsonb,
+       explanation = 'Dichroizm to zjawisko roznego pochlaniania swiatla w zaleznosci od kierunku drgan wektora E wzgledem osi krysztalograficznych. Wykorzystywane w polaroidach i krysztale turmalinu.'
+ WHERE id = 'biofiz-c2-006';
+
+UPDATE public.questions
+   SET text = 'Światło nazwiemy spolaryzowanym liniowo gdy',
+       options = '[{"id":"a","text":"drgania pola elektrycznego i pola magnetycznego zachodzą w jednej płaszczyźnie"},{"id":"b","text":"drgania pola elektrycznego zachodzą w kierunku rozchodzenia się fali"},{"id":"c","text":"drgania pola elektrycznego zachodzą w jednej płaszczyźnie"},{"id":"d","text":"drgania pola elektromagnetycznego mogą być pod dowolnym kątem względem kierunku rozchodzenia się fali"}]'::jsonb,
+       explanation = 'O polaryzacji światła decyduje zachowanie wektora pola elektrycznego (tzw. wektora świetlnego). Jeśli wektor ten oscyluje w sposób uporządkowany, ograniczony do jednej, ustalonej płaszczyzny (zawierającej kierunek biegu fali), mówimy o polaryzacji liniowej.'
+ WHERE id = 'biofiz-c2-007';
+
+UPDATE public.questions
+   SET text = 'Bezwzględny współczynnik załamania światła jest',
+       options = '[{"id":"a","text":"proporcjonalny do prędkości światła w danym ośrodku"},{"id":"b","text":"odwrotnie proporcjonalny do prędkości światła w danym ośrodku, a wprost proporcjonalny do prędkości światła w próżni"},{"id":"c","text":"proporcjonalny do częstotliwości światła"},{"id":"d","text":"odwrotnie proporcjonalny do częstotliwości światła w danym ośrodku"}]'::jsonb,
+       explanation = 'Bezwzgledny wspolczynnik zalamania n = c/v, gdzie c to predkosc swiatla w prozni, v w osrodku. Jest odwrotnie proporcjonalny do predkosci swiatla w osrodku, wprost proporcjonalny do c.'
+ WHERE id = 'biofiz-c2-008';
+
+UPDATE public.questions
+   SET text = 'Prawo Malusa opisuje równanie (I - natężenie wiązki świetlnej, α - kąt skręcenia płaszczyzny polaryzacji):',
+       options = '[{"id":"a","text":"I = I sin(α) o"},{"id":"b","text":"I = I sin2(α) o"},{"id":"c","text":"I = I cos2(α) o"},{"id":"d","text":"I = I cos(α) o"}]'::jsonb,
+       explanation = 'Prawo Malusa: I = I_0 * cos^2(alpha), gdzie alpha to kat miedzy plaszczyznami polaryzacji polaryzatora i analizatora. Dla alpha=0: I=I_0, dla alpha=90: I=0.'
+ WHERE id = 'biofiz-c2-009';
+
+UPDATE public.questions
+   SET text = 'W refraktometrze Abbego pole jasne i pole ciemne otrzymujemy na skutek',
+       options = '[{"id":"a","text":"działania kompensatora"},{"id":"b","text":"rozproszeniu wiązki światła na powierzchni matowej"},{"id":"c","text":"odbicia promieni padających na powierzchnię gładką pryzmatu pod kątem większym od kąta granicznego i przechodzenia promieni padających pod kątem mniejszym od granicznego"},{"id":"d","text":"odbicia promieni padających na powierzchnię gładką pryzmatu pod kątem większym od kąta granicznego i przechodzenia promieni padających pod kątem większym od granicznego"}]'::jsonb,
+       explanation = 'W refraktometrze Abbego pole jasne i ciemne powstaja na skutek odbicia calkowitego. Promienie padajace pod katem wiekszym od granicznego ulegaja calkowitemu odbiciu, pod mniejszym - przechodza.'
+ WHERE id = 'biofiz-c2-010';
+
+UPDATE public.questions
+   SET text = 'Laserowa korekcja wady wzroku polega na',
+       options = '[{"id":"a","text":"koncentrycznych nacięciach powierzchni tęczówki w oku"},{"id":"b","text":"koncentrycznych nacięciach powierzchni soczewki w oku"},{"id":"c","text":"koncentrycznych nacięciach powierzchni rogówki"},{"id":"d","text":"oddziaływaniem promieniowania laserowego na siatkówkę"}]'::jsonb,
+       explanation = 'Laserowa korekcja wzroku (LASIK, PRK) polega na precyzyjnym usuwaniu warstw rogowki laserem ekscymerowym, zmieniajac jej krzywizne i zdolnosc skupiajaca oka. Nie ingeruje w soczewke ani siatkówke.'
+ WHERE id = 'biofiz-c2-011';
+
+UPDATE public.questions
+   SET text = 'Zjawisko dichroizmu jest wykorzystane przy polaryzacji światła przez',
+       options = '[{"id":"a","text":"refraktometr Abbego"},{"id":"b","text":"kryształ turmalinu"},{"id":"c","text":"pryzmat Nicola"},{"id":"d","text":"odbicie od powierzchni dielektryka"}]'::jsonb,
+       explanation = 'Krysztal turmalinu wykorzystuje dichroizm do polaryzacji swiatla - absorbuje skladowa E rownolegle do osi, przepuszcza prostopadla. Pryzmat Nicola wykorzystuje dwojlomnosc.'
+ WHERE id = 'biofiz-c2-012';
+
+UPDATE public.questions
+   SET text = 'Jeżeli światło przechodzi z ośrodka o współczynniku załamania n1 (α - kąt padania) do ośrodka o współczynniku załamania n2 (β - kąt załamania) to prawo załamania światła w tym przypadku wyraża równanie',
+       options = '[{"id":"a","text":"n1 cos (α) = n2 cos (β)"},{"id":"b","text":"n2 cos (α) = n1 cos (β)"},{"id":"c","text":"n2 sin (α) = n1 sin (β)"},{"id":"d","text":"n1 sin (α) = n2 sin (β) 𝑠𝑖𝑛 α 𝑛2 = 𝑠𝑖𝑛 β 𝑛1 α - kąt padania β - kąt załamania"}]'::jsonb,
+       explanation = 'Prawo Snella (zalamania): n_1 * sin(alpha) = n_2 * sin(beta), gdzie alpha to kat padania, beta to kat zalamania. Prawo okresla, jak zmienia sie kierunek promienia na granicy osrodkow.'
+ WHERE id = 'biofiz-c2-013';
+
+UPDATE public.questions
+   SET text = 'Sposób polaryzacji światła przez dwójłomność polega na',
+       options = '[{"id":"a","text":"różnym pochłanianiu świetlnej wiązki w ośrodku ze względu na kierunek drgań pola E"},{"id":"b","text":"różnym rozpraszaniu świetlnej wiązki w ośrodku ze względu na kierunek drgań pola E"},{"id":"c","text":"różnym odbijaniu świetlnej wiązki na granicy ośrodka ze względu na kierunek drgań pola E"},{"id":"d","text":"rozszczepieniu świetlnej wiązki w ośrodku o różnej prędkości rozchodzenia się ze względu na kierunek drgań pola E"}]'::jsonb,
+       explanation = 'Dwojlomnosc (birefringencja) polega na rozszczepieniu wiazki na dwa promienie (zwyczajny i nadzwyczajny) o roznych predkosciach i polaryzacji. Wykorzystywane w pryzmacie Nicola.'
+ WHERE id = 'biofiz-c2-014';
+
+UPDATE public.questions
+   SET text = 'Jeśli kąt padania światła w ośrodku o większym współczynniku załamania jest mniejszy od kąta granicznego to',
+       options = '[{"id":"a","text":"promień przechodzi do ośrodka o mniejszym współczynniku załamania, przy czym kąt załamania jest większy od kąta padania"},{"id":"b","text":"promień przechodzi do ośrodka o mniejszym współczynniku załamania, przy czym kąt załamania jest taki sam jak kąt padania"},{"id":"c","text":"następuje całkowite wewnętrzne odbicie (to by było, jakby ten kąt był większy od kąta granicznego)"},{"id":"d","text":"promień przechodzi do ośrodka o mniejszym współczynniku załamania, przy czym kąt załamania jest mniejszy od kąta padania"}]'::jsonb,
+       explanation = 'Gdy kat padania < kata granicznego, promien przechodzi do osrodka o mniejszym n. Kat zalamania jest wiekszy od kata padania (promien oddala sie od normalnej). Przy kacie granicznym beta=90.'
+ WHERE id = 'biofiz-c2-015';
+
+UPDATE public.questions
+   SET text = 'Dwie soczewki o mocach $D_1$ i $D_2$ znajdujące się w powietrzu w odległości $d$ od siebie tworzą układ, którego moc $D$ wynosi:',
+       options = '[{"id":"a","text":"$D = D_1 + D_2 + dD_1D_2$"},{"id":"b","text":"$D = D_1 + D_2$"},{"id":"c","text":"$D = D_1 + D_2 - dD_1D_2$"},{"id":"d","text":"$D = \\dfrac{D_1 + D_2}{2}$"}]'::jsonb,
+       explanation = 'Moc układu **dwóch cienkich soczewek** oddalonych o $d$ opisuje **wzór Gullstranda:** $D = D_1 + D_2 - d\,D_1 D_2$. Człon $-d\,D_1D_2$ uwzględnia **odległość między soczewkami** — gdy się stykają ($d=0$), moce po prostu się sumują ($D = D_1 + D_2$, opcja B). Odsuwanie soczewek zmniejsza moc układu, stąd znak ujemny. Wzór ma zastosowanie m.in. w optyce oka i układach wieloskładnikowych. Wariant dodatni (A) i uśrednienie (D) są fizycznie błędne.'
+ WHERE id = 'biofiz-c2-338';
+
+UPDATE public.questions
+   SET text = 'Dla oka krótkowzrocznego (R – refrakcja oka):',
+       options = '[{"id":"a","text":"Punkt daleki znajduje się w skończonej odległości przed okiem, a R > 0"},{"id":"b","text":"Punkt daleki znajduje się w skończonej odległości przed okiem, a R < 0"},{"id":"c","text":"Punkt daleki znajduje się w skończonej odległości za okiem, a R < 0"},{"id":"d","text":"Punkt daleki znajduje się w skończonej odległości za okiem, a R > 0"}]'::jsonb,
+       explanation = 'W **krótkowzroczności (myopia)** układ optyczny ma **za dużą moc** względem długości gałki — obraz ostry powstaje **przed siatkówką**. **Punkt daleki** (najdalszy punkt widziany ostro bez akomodacji) leży w **skończonej odległości przed okiem**, a nie w nieskończoności jak w oku miarowym. Korekcja wymaga soczewki **rozpraszającej (ujemnej)**, co odpowiada $R < 0$. Krótkowzroczność → minus. Punkt daleki za okiem dotyczyłby nadwzroczności (hyperopii), gdzie $R > 0$.'
+ WHERE id = 'biofiz-c2-339';
+
+UPDATE public.questions
+   SET text = 'Większą zdolność rozdzielczą mikroskopu można uzyskać poprzez:',
+       options = '[{"id":"a","text":"Zastosowanie promieniowania o większej długości fali"},{"id":"b","text":"Zwiększenie apertury numerycznej"},{"id":"c","text":"Zmianę ustawienia przesłony oświetlacza"},{"id":"d","text":"Zmianę ustawienia kondensora"}]'::jsonb,
+       explanation = 'Zdolność rozdzielcza zależy od kryterium Abbego: $d = \dfrac{0{,}61\,\lambda}{NA}$ (ogólnie $k\lambda/NA$) — im **mniejsze $d$**, tym lepsza rozdzielczość. Zwiększenie **apertury numerycznej $NA$** (np. obiektyw immersyjny) **zmniejsza $d$**, poprawiając rozdzielczość. Zwiększenie **długości fali $\lambda$ pogarsza** rozdzielczość (stąd opcja A błędna). Przesłona i kondensor wpływają na kontrast i oświetlenie, nie na graniczną zdolność rozdzielczą.'
+ WHERE id = 'biofiz-c2-340';
+
+UPDATE public.questions
+   SET text = 'W doświadczeniu Younga (interferencja światła spójnego o długości fali $\lambda$ po przejściu przez dwie szczeliny) warunek maksimum natężenia na ekranie określa równanie ($\Delta s$ – różnica dróg optycznych, $n = 0, 1, 2, 3\ldots$):',
+       options = '[{"id":"a","text":"$\\Delta s = n\\lambda$"},{"id":"b","text":"$\\Delta s = (2n + 1)\\dfrac{\\lambda}{2}$"},{"id":"c","text":"$\\Delta s = 2n + 1$"},{"id":"d","text":"$\\Delta s = (3n + 1)\\lambda$"}]'::jsonb,
+       explanation = '**Maksimum interferencyjne** (jasny prążek) powstaje, gdy różnica dróg jest **całkowitą wielokrotnością długości fali**: $\Delta s = n\lambda$ — fale docierają w zgodnej fazie i wzmacniają się. Warunek $\Delta s = (2n+1)\frac{\lambda}{2}$ (opcja B) opisuje **minimum** (wygaszenie). Opcja C jest niespójna wymiarowo (brak $\lambda$), a opcja D nie odpowiada żadnemu warunkowi interferencyjnemu. Maksima: wielokrotność $\lambda$; minima: nieparzysta wielokrotność $\lambda/2$.'
+ WHERE id = 'biofiz-c2-343';
+
+UPDATE public.questions
+   SET text = 'Gdy promienie światła przechodzą z ośrodka optycznie gęstszego (o większym współczynniku załamania) do rzadszego (o mniejszym współczynniku załamania), kąt załamania jest:',
+       options = '[{"id":"a","text":"równy kątowi padania"},{"id":"b","text":"mniejszy od kąta padania"},{"id":"c","text":"większy od kąta padania"},{"id":"d","text":"mniejszy bądź równy kątowi padania"}]'::jsonb,
+       explanation = 'Zgodnie z prawem **Snella** ($n_1\sin\theta_1 = n_2\sin\theta_2$), przejście do ośrodka **rzadszego** (mniejsze $n_2$) powoduje, że kąt załamania jest **większy** od kąta padania — promień odchyla się od normalnej. Przy dostatecznie dużym kącie padania pojawia się **całkowite wewnętrzne odbicie** (podstawa światłowodów). Gęstszy → rzadszy: oddalenie od normalnej, kąt rośnie. Odwrotnie byłoby przy przejściu do ośrodka gęstszego.'
+ WHERE id = 'biofiz-c2-352';
+
+UPDATE public.questions
+   SET text = 'Zdolność skupiająca (moc) $D$ cienkiej soczewki sferycznej w powietrzu jest sumą mocy przedniej ($D_1$) i tylnej ($D_2$) powierzchni. Wyraża ją wzór ($n$ – współczynnik załamania soczewki, $r_1$, $r_2$ – promienie krzywizny):',
+       options = '[{"id":"a","text":"$D = (n-1)\\left(\\dfrac{1}{r_1} - \\dfrac{1}{r_2}\\right)$"},{"id":"b","text":"$D = (n+1)\\left(\\dfrac{1}{r_1} - \\dfrac{1}{r_2}\\right)$"},{"id":"c","text":"$D = (n-1)\\left(\\dfrac{1}{r_1} + \\dfrac{1}{r_2}\\right)$"},{"id":"d","text":"$D = (n+1)\\left(\\dfrac{1}{r_1} + \\dfrac{1}{r_2}\\right)$"}]'::jsonb,
+       explanation = '**Równanie szlifierzy soczewek** dla cienkiej soczewki w powietrzu: $D = (n-1)\left(\frac{1}{r_1} - \frac{1}{r_2}\right)$. Czynnik **$(n-1)$** odzwierciedla kontrast współczynników załamania soczewka–powietrze, a **różnica** odwrotności promieni wynika z przyjętej konwencji znaków dla obu powierzchni. Użycie $(n+1)$ lub sumy odwrotności promieni jest błędne. Moc w dioptriach zależy od kształtu i materiału soczewki.'
+ WHERE id = 'biofiz-c2-353';
+
+UPDATE public.questions
+   SET text = 'Apertura numeryczna ($A$) obiektywu mikroskopu decyduje o zbieraniu światła i liczbie szczegółów obrazu. Jest zdefiniowana jako ($\alpha$ – połowa maksymalnego kąta wejścia światła do obiektywu, $n$ – współczynnik załamania ośrodka):',
+       options = '[{"id":"a","text":"$A = n \\times \\cos(\\alpha)$"},{"id":"b","text":"$A = n \\times \\alpha$"},{"id":"c","text":"$A = n \\times \\alpha$"},{"id":"d","text":"$A = n \\times \\sin(\\alpha)$"}]'::jsonb,
+       explanation = '**Apertura numeryczna:** $NA = n \sin\alpha$, gdzie $n$ to współczynnik załamania ośrodka między preparatem a obiektywem (powietrze, olejek immersyjny), a $\alpha$ – połowa kąta rozwarcia stożka światła. Większe $NA$ → lepsza zdolność rozdzielcza ($d \propto \lambda/NA$) i jasność obrazu. Olejek immersyjny ($n\approx1{,}5$) podnosi $NA$ powyżej 1. Funkcje $\cos$ lub liniowa $\alpha$ nie opisują geometrii zbierania światła — kluczowy jest **sinus** kąta aperturowego.'
+ WHERE id = 'biofiz-c2-354';
+
+UPDATE public.questions
+   SET text = 'Mikroskop służy do obserwacji obiektów małych rozmiarów. Obserwowany w mikroskopie obraz jest:',
+       options = '[{"id":"a","text":"Pozorny, prosty, powiększony"},{"id":"b","text":"Rzeczywisty, odwrócony, powiększony"},{"id":"c","text":"Pozorny, odwrócony, powiększony"},{"id":"d","text":"Rzeczywisty, prosty, powiększony"}]'::jsonb,
+       explanation = 'Mikroskop optyczny tworzy obraz końcowy **pozorny, odwrócony i powiększony**. Obiektyw daje obraz rzeczywisty, odwrócony i powiększony, który okular (działający jak lupa) dodatkowo powiększa do obrazu **pozornego** — oglądanego przez oko jako wirtualny, wciąż **odwrócony** względem przedmiotu. Stąd preparat przesuwa się w polu widzenia w kierunku przeciwnym do ruchu stolika. Pozorny + odwrócony + powiększony.'
+ WHERE id = 'biofiz-c2-364';
+
+UPDATE public.questions
+   SET text = 'Kąt Brewstera, związany z otrzymywaniem światła spolaryzowanego przez odbicie, spełnia zależność $n = \mathrm{tg}(\theta)$, gdzie $n$ to współczynnik załamania na powierzchni dielektryka, a $\theta$ oznacza kąt:',
+       options = '[{"id":"a","text":"pomiędzy kierunkami drgań pola elektrycznego i rozchodzenia się światła"},{"id":"b","text":"między promieniem odbitym a załamanym"},{"id":"c","text":"załamania światła"},{"id":"d","text":"padania światła na powierzchnię dielektryka"}]'::jsonb,
+       explanation = 'W zależności $n = \mathrm{tg}(\theta_B)$ kąt $\theta$ to **kąt padania** światła na granicę ośrodka — tzw. **kąt Brewstera**. Przy tym kącie światło odbite jest **całkowicie spolaryzowane** liniowo (drgania prostopadłe do płaszczyzny padania), a promień odbity i załamany tworzą kąt **90°**. Wartość kąta zależy od współczynnika załamania dielektryka. To kąt padania, nie załamania ani kąt między promieniami.'
+ WHERE id = 'biofiz-c2-370';
+
+UPDATE public.questions
+   SET text = 'Zależność między masą molową ($M$), gęstością ($\rho$) oraz współczynnikiem załamania światła ($n$) określa wzór:',
+       options = '[{"id":"a","text":"$\\dfrac{n^2+1}{n^2-2} \\times \\dfrac{M}{\\rho}$"},{"id":"b","text":"$\\dfrac{n^2-1}{n^2+2} \\times \\dfrac{\\rho}{M}$"},{"id":"c","text":"$\\dfrac{n^2+2}{n^2-1} \\times \\dfrac{M}{\\rho}$"},{"id":"d","text":"$\\dfrac{n^2-1}{n^2+2} \\times \\dfrac{M}{\\rho}$"}]'::jsonb,
+       explanation = '**Refrakcja molowa** (wzór Lorentza-Lorenza): $R = \dfrac{n^2-1}{n^2+2} \cdot \dfrac{M}{\rho}$. Wyrażenie wiąże współczynnik załamania z objętością molową ($M/\rho$) i polaryzowalnością cząsteczek. Charakterystyczna jest kombinacja $\frac{n^2-1}{n^2+2}$ oraz mnożnik $M/\rho$. Warianty z odwróconym ułamkiem $n^2$ lub z $\rho/M$ zamiast $M/\rho$ są błędne. Refrakcja molowa jest wielkością addytywną, zależną od budowy cząsteczki.'
+ WHERE id = 'biofiz-c2-374';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem ciągłości przepływu, przepływ cieczy przez przewężenie naczynia powoduje, że prędkość cieczy w przewężeniu (w porównaniu do szerszej części naczynia) jest',
+       options = '[{"id":"a","text":"uzależniona od miejsca przewężenia"},{"id":"b","text":"mniejsza"},{"id":"c","text":"taka sama"},{"id":"d","text":"większa"}]'::jsonb,
+       explanation = 'Prawo ciaglosci przeplywu: A1*v1 = A2*v2. W przewezeniu pole przekroju jest mniejsze, wiec predkosc musi byc wieksza, by przepływ objetosciowy byl staly.'
+ WHERE id = 'biofiz-c3-001';
+
+UPDATE public.questions
+   SET text = 'Opór naczyniowy kapilary jest proporcjonalny do',
+       options = '[{"id":"a","text":"gęstości cieczy i długości kapilary"},{"id":"b","text":"jej promienia i współczynnika lepkości"},{"id":"c","text":"jej długości i współczynnika lepkości"},{"id":"d","text":"promienia w czwartej potędze i współczynnika lepkości cieczy"}]'::jsonb,
+       explanation = 'Opor naczyniowy R = 8*eta*L/(pi*r^4). Jest proporcjonalny do dlugosci L i lepkosci eta, odwrotnie proporcjonalny do r^4. Maly promien = duzy opor.'
+ WHERE id = 'biofiz-c3-002';
+
+UPDATE public.questions
+   SET text = 'Przeciętna wydajność serca u człowieka wynosi około',
+       options = '[{"id":"a","text":"24%"},{"id":"b","text":"14%(w spoczynku)"},{"id":"c","text":"4%"},{"id":"d","text":"40% (przy wysiłku)"}]'::jsonb,
+       explanation = 'Wydajnosc serca (sprawnosc) w spoczynku wynosi ok. 14-20%. Wiekszosc energii zamieniana jest na cieplo. Przy wysilku moze wzrosnac do 25-40%.'
+ WHERE id = 'biofiz-c3-003';
+
+UPDATE public.questions
+   SET text = 'Przeciętna objętość wyrzutowa serca u człowieka wynosi około',
+       options = '[{"id":"a","text":"7 ml"},{"id":"b","text":"0,7 ml"},{"id":"c","text":"70 ml"},{"id":"d","text":"700 ml"}]'::jsonb,
+       explanation = 'Objetosc wyrzutowa serca (SV - stroke volume) wynosi ok. 70 ml w spoczynku. Pojemnosc minutowa = SV * HR = 70 ml * 70/min = ok. 5 L/min.'
+ WHERE id = 'biofiz-c3-004';
+
+UPDATE public.questions
+   SET text = 'Wraz z oddalaniem się w układzie krwionośnym (krążenie duże, zgodne z przepływem krwi) od serca średnia prędkość krwi w naczyniach',
+       options = '[{"id":"a","text":"maleje w układzie tętniczym a potem rośnie w układzie żylnym"},{"id":"b","text":"rośnie w układzie tętniczym a potem maleje w układzie żylnym"},{"id":"c","text":"maleje zarówno w układzie tętniczym jak i w układzie żylnym"},{"id":"d","text":"rośnie w układzie tętniczym a następnie jest stała w układzie żylnym"}]'::jsonb,
+       explanation = 'Cisnienie krwi maleje w ukladzie tetniczym (od aorty do kapilar), a potem rosnie w ukladzie zylnym (powrot do serca). Gradient cisnienia napedza przeplyw.'
+ WHERE id = 'biofiz-c3-005';
+
+UPDATE public.questions
+   SET text = 'Ciśnieniem transmuralnym nazwiemy różnicę między ciśnieniem krwi',
+       options = '[{"id":"a","text":"w aorcie a ciśnieniem w żyle głównej"},{"id":"b","text":"w naczyniu a ciśnieniem w otaczających tkankach"},{"id":"c","text":"w tętnicy płucnej a ciśnieniem w żyle płucnej"},{"id":"d","text":"w małych tętniczkach a ciśnieniem w naczyniach włosowatych"}]'::jsonb,
+       explanation = 'Cisnienie transmuralne to roznica miedzy cisnieniem wewnatrz naczynia a cisnieniem w otaczajacych tkankach. Okresla obciazenie sciany naczynia.'
+ WHERE id = 'biofiz-c3-006';
+
+UPDATE public.questions
+   SET text = 'Prawo mówiące, że suma ciśnień: statycznego, dynamicznego i hydrostatycznego jest stała w naczyniach połączonych szeregowo nazwiemy prawem',
+       options = '[{"id":"a","text":"Bernouliego"},{"id":"b","text":"ciągłości przepływu"},{"id":"c","text":"Poiseuille’a"},{"id":"d","text":"Newtona"}]'::jsonb,
+       explanation = 'Rownanie Bernoulliego: p + (1/2)*rho*v^2 + rho*g*h = const. Suma cisnienia statycznego, dynamicznego i hydrostatycznego jest stala wzdluz linii pradu.'
+ WHERE id = 'biofiz-c3-007';
+
+UPDATE public.questions
+   SET text = 'Prędkość fali tętna w porównaniu ze średnią prędkością krwi w aorcie jest',
+       options = '[{"id":"a","text":"ponad dziesięć razy większa"},{"id":"b","text":"około dwa razy mniejsza"},{"id":"c","text":"około dwa razy większa"},{"id":"d","text":"taka sama"}]'::jsonb,
+       explanation = 'Fala tetna rozchodzi sie z predkoscia ok. 5-10 m/s, podczas gdy srednia predkosc krwi w aorcie to ok. 0.3-0.5 m/s. Fala tetna jest ponad 10x szybsza.'
+ WHERE id = 'biofiz-c3-008';
+
+UPDATE public.questions
+   SET text = 'Krążenie duże w układzie krwionośnym zaczyna się w',
+       options = '[{"id":"a","text":"prawej komorze a kończy w lewej komorze"},{"id":"b","text":"lewej komorze a kończy się w prawej komorze"},{"id":"c","text":"prawej komorze a kończy się w lewym przedsionku"},{"id":"d","text":"lewej komorze a kończy się w prawym przedsionku"}]'::jsonb,
+       explanation = 'Krazenie duze (systemowe): lewa komora -> aorta -> tkanki -> zyly -> prawy przedsionek. Krazenie male: prawa komora -> pluca -> lewy przedsionek.'
+ WHERE id = 'biofiz-c3-009';
+
+UPDATE public.questions
+   SET text = 'Kapilara o tej samej długości ale o dwukrotnie większym promieniu będzie miała opór naczyniowy dla tej samej cieczy',
+       options = '[{"id":"a","text":"2 razy mniejszy"},{"id":"b","text":"16 razy większy"},{"id":"c","text":"2 razy większy"},{"id":"d","text":"16 razy mniejszy"}]'::jsonb,
+       explanation = 'Opor R ~ 1/r^4. Dwukrotnie wiekszy promien: R2 = R1/(2^4) = R1/16, czyli opor jest 16 razy mniejszy. Maly promien dramatycznie zwieksza opor.'
+ WHERE id = 'biofiz-c3-010';
+
+UPDATE public.questions
+   SET text = 'Krew jest cieczą nienewtonowską i tiksotropową. Wzrost lepkości krwi jest powodowany przez',
+       options = '[{"id":"a","text":"zwiększenie stopnia elongacji erytrocytów przy dużych prędkościach ścinania"},{"id":"b","text":"zmniejszenie temperatury krwi lub wzrost hematokrytu"},{"id":"c","text":"zmniejszenie temperatury krwi lub hematokrytu"},{"id":"d","text":"zmniejszenie stopnia agregacji erytrocytów przy małych prędkościach ścinania"}]'::jsonb,
+       explanation = 'Lepkosc krwi rosnie przy: nizszej temperaturze, wyzszym hematokrycie, agregacji erytrocytow. Krew jest cieczą tiksotropowa - lepkosc zalezy od szybkosci scinania.'
+ WHERE id = 'biofiz-c3-011';
+
+UPDATE public.questions
+   SET text = 'W metodzie Stokesa wyznaczania współczynnika lepkości obserwujemy kroplę cieczy opadająca w cieczy o mniejszej gęstości. Jeśli siły działające na krople opadającą w cieczy lepkiej równoważą się i kropla porusza się ruchem jednostajnym, to o siłach działających na kulkę możemy powiedzieć, że',
+       options = '[{"id":"a","text":"siły ciężkości i lepkości są równoważone przez siłę wyporu"},{"id":"b","text":"siły ciężkości i wyporu są równoważone przez siłę lepkości"},{"id":"c","text":"siły lepkości i wyporu są równoważone przez siłę ciężkości"},{"id":"d","text":"siła lepkości jest równoważona przez siłę ciężkości"}]'::jsonb,
+       explanation = 'Metoda Stokesa: kulka osiaga predkosc graniczna gdy sila ciezkosci jest równowazona przez sume sily wyporu i sily lepkosci. F_g = F_wyporu + F_lepkosci.'
+ WHERE id = 'biofiz-c3-012';
+
+UPDATE public.questions
+   SET text = 'Zmniejszenie stopnia agregacji krwinek czerwonych, przy dużych szybkościach ścinania',
+       options = '[{"id":"a","text":"nie wpływa na lepkość krwi"},{"id":"b","text":"powoduje zmniejszenie lepkości krwi"},{"id":"c","text":"powoduje wzrost lub zmniejszenie lepkości krwi w zależności od promienia naczynia, przez które przepływa krew"},{"id":"d","text":"powoduje wzrost lepkości krwi"}]'::jsonb,
+       explanation = 'Przy duzych szybkosciach scinania agregaty erytrocytow rozpadaja sie, co zmniejsza lepkosc krwi. Krew staje sie bardziej plynna przy szybszym przeplywie.'
+ WHERE id = 'biofiz-c3-013';
+
+UPDATE public.questions
+   SET text = 'Wzrost temperatury krwi powoduje',
+       options = '[{"id":"a","text":"zmniejszenie lepkości względnej krwi natomiast lepkość bezwzględna prawie nie zmienia się"},{"id":"b","text":"zmniejszenie zarówno lepkości bezwzględnej jak i względnej krwi"},{"id":"c","text":"zwiększenie zarówno lepkości bezwzględnej jak i względnej krwi"},{"id":"d","text":"zmniejszenie lepkości bezwzględnej krwi natomiast lepkość względna prawie nie zmienia się"}]'::jsonb,
+       explanation = 'Wzrost temperatury zmniejsza lepkosc bezwzgledna (ciecz staje sie bardziej plynna). Lepkosc wzgledna (stosunek do wody) prawie sie nie zmienia, bo woda tez staje sie mniej lepka.'
+ WHERE id = 'biofiz-c3-014';
+
+UPDATE public.questions
+   SET text = 'W trakcie przepływu krwi przez naczynia krwionośne na lepkość krwi mogą wpływać różne czynniki. Powoduje to, że lepkość krwi może być różna w różnych częściach układu naczyniowego. Jednym ze zjawisk wpływających na lepkość krwi to efekt Magnusa. Można go wyjaśnić poprzez',
+       options = '[{"id":"a","text":"zjawisko osiowej akumulacji erytrocytów"},{"id":"b","text":"zależność hematokrytu od sposobu przepływu krwi"},{"id":"c","text":"wpływ ciśnienia krwi w naczyniu na przepływ erytrocytów w naczyniu"},{"id":"d","text":"zjawisko pozaosiowego przepływu krwi"}]'::jsonb,
+       explanation = 'Akumulacja osiowa erytrocytow (efekt Fahraeus-Lindqvist): czerwone krwinki gromadza sie w osi naczynia, przy scianach plynie osocze. Zmniejsza to pozorna lepkosc w malych naczyniach.'
+ WHERE id = 'biofiz-c3-015';
+
+UPDATE public.questions
+   SET text = 'Po wkropieniu kropli cieczy o większej gęstości niż ciecz w naczyniu, kropla cieczy zaczyna opadać ruchem niejednostajnie przyśpieszonym. Przyśpieszenie w tym ruchu stopniowo zmniejsza się (do zera) na skutek',
+       options = '[{"id":"a","text":"zwiększania się siły lepkości ze względu na malejącą prędkość opadania kropli"},{"id":"b","text":"zmniejszania się siły lepkości ze względu na malejącą prędkość opadania kropli"},{"id":"c","text":"zwiększania się siły lepkości ze względu na rosnącą prędkość opadania kropli"},{"id":"d","text":"zmniejszania się siły lepkości ze względu na rosnącą prędkość opadania kropli"}]'::jsonb,
+       explanation = 'Kropla przyspieszajac zwieksza predkosc, co zwieksza sile lepkosci (F = 6*pi*eta*r*v). W koncu sila lepkosci zrownowazy sile wypadkowa i kropla osiagnie predkosc graniczna.'
+ WHERE id = 'biofiz-c3-016';
+
+UPDATE public.questions
+   SET text = 'Przy zapisie wartości mierzonych ciśnień stosujemy przedrostki pozwalające na wygodniejszy zapis wartości mierzonego ciśnienia. Jednostka 1 MPa (megapaskal) jest równa',
+       options = '[{"id":"a","text":"10^3 Pa"},{"id":"b","text":"10^9 Pa"},{"id":"c","text":"10^6 Pa"},{"id":"d","text":"10^2 Pa"}]'::jsonb,
+       explanation = '1 MPa (megapaskal) = 10⁶ Pa. Przedrostek MEGA = milion. Dla porównania: ciśnienie krwi ~120 mmHg = ~16 kPa = ~0.016 MPa. Ciśnienie w oponach samochodu ~2 atm = ~0.2 MPa. MPa to duża jednostka - używana do ciśnień w materiałach, hydraulice.'
+ WHERE id = 'biofiz-c3-017';
+
+UPDATE public.questions
+   SET text = 'Każde ciało poruszające się w ośrodku lepkim doznaje siły oporu, przeciwnie skierowanej do prędkości ciała. Siła oporu działająca na ciało w kształcie kuli, poruszające się ze stałą prędkością jest proporcjonalna',
+       options = '[{"id":"a","text":"do promienia kuli a odwrotnie proporcjonalna do współczynnika lepkości ośrodka"},{"id":"b","text":"tylko do lepkości ośrodka"},{"id":"c","text":"tylko do promienia kuli"},{"id":"d","text":"do współczynnika lepkości ośrodka i promienia kuli"}]'::jsonb,
+       explanation = 'Sila Stokesa: F = 6*pi*eta*r*v. Proporcjonalna do wspolczynnika lepkosci eta, promienia kuli r i predkosci v. Dziala przeciwnie do kierunku ruchu.'
+ WHERE id = 'biofiz-c3-018';
+
+UPDATE public.questions
+   SET text = 'Głównym elementem wiskozymetru Ostwalda jest kapilara, przez którą przepuszczamy określoną objętość cieczy. Wykorzystując prawo Poiseuille’a przy wyznaczaniu lepkości cieczy metodą wiskozymetryczną możemy stwierdzić że lepkość cieczy przepływającej przez kapilarę (przy ustalonej objętości - objętość górnego zbiorniczka) jest proporcjonalna do',
+       options = '[{"id":"a","text":"czasu przepływu przez kapilarę i gęstości cieczy"},{"id":"b","text":"czasu przepływu przez kapilarę i objętości cieczy"},{"id":"c","text":"czasu przepływu przez kapilarę a odwrotnie proporcjonalna do gęstości cieczy"},{"id":"d","text":"gęstości cieczy a odwrotnie proporcjonalna do objętości cieczy"}]'::jsonb,
+       explanation = 'Wiskozymetr Ostwalda: lepkosc proporcjonalna do czasu przeplywu i gestosci cieczy. eta = K*rho*t, gdzie K to stala aparatu.'
+ WHERE id = 'biofiz-c3-019';
+
+UPDATE public.questions
+   SET text = 'Jeśli w czasie laminarnego przepływu cieczy przez rurkę o sztywnych ściankach przy ustalonej różnicy ciśnień na końcach naczynia, nastąpi czterokrotny wzrost lepkości cieczy to strumie objętościowy dla przepływającej cieczy',
+       options = '[{"id":"a","text":"zmaleje dwukrotnie"},{"id":"b","text":"wzrośnie czterokrotnie"},{"id":"c","text":"zmaleje czterokrotnie"},{"id":"d","text":"wzrośnie dwukrotnie"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: Strumień objętościowy jest odwrotnie proporcjonalny do lepkości cieczy, co oznacza, że czterokrotny wzrost lepkości powoduje czterokrotne zmniejszenie przepływu.'
+ WHERE id = 'biofiz-c3-021';
+
+UPDATE public.questions
+   SET text = 'Współczynnik lepkości cieczy zależy od temperatury, przy czym wzrost temperatury najczęściej powoduje zmniejszenie współczynnika lepkości. Określ parametry występujące w poniższym wzorze zależności lepkości od temperatury',
+       options = '[{"id":"a","text":"k - stała Boltzmana, T - temperatura w skali Kelwina a w jest energią aktywacji lepkości a"},{"id":"b","text":"k - stała Faraday’a, T - temperatura w skali Celcjusza a w jest siłą aktywacji lepkości a"},{"id":"c","text":"k - stała Faraday’a, T - temperatura w skali Celcjusza a w jest energią aktywacji lepkości a"},{"id":"d","text":"k - stała Boltzmana, T - temperatura w skali Kelwina a w jest siłą aktywacji lepkości a"}]'::jsonb,
+       explanation = 'Zaleznosc lepkosci od temperatury: eta = A*exp(W/(k*T)), gdzie k to stala Boltzmanna, T temperatura w Kelwinach, W energia aktywacji przeplywu lepkiego.'
+ WHERE id = 'biofiz-c3-022';
+
+UPDATE public.questions
+   SET text = 'Ciecze ze względu na ich zachowanie się w trakcie przepływu dzielimy na kilka typów, jednym z nich jest tzw. tiksotropia. Ciecz zaliczamy do cieczy tiksotropowej gdy',
+       options = '[{"id":"a","text":"współczynnik lepkości nie zależy od szybkości ścinania"},{"id":"b","text":"krzywa płynięcia nie wykazuje histerezy, natomiast obserwujemy liniowy charakter krzywej płynięcia"},{"id":"c","text":"krzywa płynięcia cechuje się histerezą a współczynnik lepkości zależy od szybkości ścinania"},{"id":"d","text":"krzywa płynięcia nie wykazuje histerezy, natomiast obserwujemy nieliniowy charakter krzywej płynięcia"}]'::jsonb,
+       explanation = 'Tiksotropia to zjawisko „pamięci cieczy”, w którym lepkość zmienia się w czasie pod wpływem działania sił (np. mieszania), a proces niszczenia i powolnej odbudowy struktury wewnętrznej tworzy na wykresie charakterystyczną pętlę histerezy.'
+ WHERE id = 'biofiz-c3-023';
+
+UPDATE public.questions
+   SET text = 'Ze względu na właściwości lepkie krew nie można zaliczyć do cieczy',
+       options = '[{"id":"a","text":"nienewtonowskich"},{"id":"b","text":"pseudoplastycznych"},{"id":"c","text":"newtonowskich"},{"id":"d","text":"tiksotropowych"}]'::jsonb,
+       explanation = 'Krew NIE jest cieczą newtonowska. Jest cieczą nieniutonowska, pseudoplastyczna i tiksotropowa - jej lepkosc zalezy od szybkosci scinania i historii przeplywu.'
+ WHERE id = 'biofiz-c3-024';
+
+UPDATE public.questions
+   SET text = 'Ciecz Newtonowska jest cieczą wzorcową, dla której krzywa płynięcia przedstawiona na wykresie zależności naprężenia ścinającego od szybkości ścinania jest',
+       options = '[{"id":"a","text":"linią prostą przechodzącą przez początek układu współrzędnych i nachyloną kątem zależnym od rodzaju cieczy"},{"id":"b","text":"linią prostą nie przechodzącą przez początek układu współrzędnych i nachyloną pod kątem zależnym od rodzaju cieczy"},{"id":"c","text":"hiperbolą nie przechodzącą przez początek układu współrzędnych"},{"id":"d","text":"parabolą przechodzącą przez początek układu współrzędnych"}]'::jsonb,
+       explanation = 'Ciecz newtonowska: krzywa plynięcia to linia prosta przechodzaca przez poczatek ukladu, nachylona pod katem rownym wspolczynnikowi lepkosci. tau = eta * (dv/dy).'
+ WHERE id = 'biofiz-c3-025';
+
+UPDATE public.questions
+   SET text = 'Graniczna liczba lepkościowa określa:',
+       options = '[{"id":"a","text":"granicę do jakiej zmierza lepkość roztworu przy stężeniu dążącym do zera"},{"id":"b","text":"granicę do jakiej zmierza iloraz lepkości właściwej i stężenia przy stężeniu dążącym do zera"},{"id":"c","text":"maksymalna wartość lepkości cieczy"},{"id":"d","text":"minimalną wartość lepkości cieczy"}]'::jsonb,
+       explanation = 'Graniczna liczba lepkosciowa [eta] = lim(c->0) [eta_sp/c], gdzie eta_sp to lepkosc wlasciwa. Charakteryzuje pojedyncza czasteczke polimeru w roztworze.'
+ WHERE id = 'biofiz-c3-026';
+
+UPDATE public.questions
+   SET text = 'Wzrost lepkości krwi powoduje:',
+       options = '[{"id":"a","text":"zmniejszenie hematokrytu i zmniejszenie temperatury krwi"},{"id":"b","text":"zwiększenie hematokrytu i zwiększenie temperatury krwi"},{"id":"c","text":"wzrost hematokrytu i zmniejszenie temperatury krwi"},{"id":"d","text":"zmniejszenie hematokrytu i wzrost temperatury krwi"}]'::jsonb,
+       explanation = 'Lepkosc krwi rosnie przy: wyzszym hematokrycie (wiecej komorek) i nizszej temperaturze (wieksza lepkosc osocza). Odwrotne czynniki zmniejszaja lepkosc.'
+ WHERE id = 'biofiz-c3-027';
+
+UPDATE public.questions
+   SET text = 'Zaznacz prawidłowe stwierdzenie dotyczące lepkości krwi',
+       options = '[{"id":"a","text":"Pełna krew jest cieczą nieniutonowską"},{"id":"b","text":"Pełna krew nie jest cieczą o właściwościach tiksotropowych"},{"id":"c","text":"Lepkość krwi nie zależy od hematokrytu"},{"id":"d","text":"Lepkość krwi nie zależy od szybkości jej przepływu"}]'::jsonb,
+       explanation = 'Pełna krew jest nieniutonowska, tiksotropowa, jej lepkość zależy od hematokrytu i szybkosci przepływu.'
+ WHERE id = 'biofiz-c3-028';
+
+UPDATE public.questions
+   SET text = 'Zjawisko akumulacji osiowej krwinek wpływa na lepkość krwi i powoduje',
+       options = '[{"id":"a","text":"zmniejszenie lepkości krwi"},{"id":"b","text":"stałą lepkość krwi niezależnie od średnicy naczynia"},{"id":"c","text":"wzrost lepkości krwi"}]'::jsonb,
+       explanation = 'Akumulacja osiowa (efekt Fahraeus-Lindqvist) zmniejsza pozorna lepkosc krwi w malych naczyniach. Erytrocyty plyna w osi, przy scianach jest osocze o mniejszej lepkosci.'
+ WHERE id = 'biofiz-c3-030';
+
+UPDATE public.questions
+   SET text = 'Na załączonym wykresie przedstawiono',
+       options = '[{"id":"a","text":"histerezę krzywej płynięcia cieczy newtonowskich"},{"id":"b","text":"zależność szybkości przepływu krwi od średnicy naczynia"},{"id":"c","text":"histerezę krzywej płynięcia cieczy tiksotropowej"},{"id":"d","text":"lepkość cieczy tiksotropowej"}]'::jsonb,
+       explanation = 'Histereza krzywej plynięcia jest typowa dla cieczy tiksotropowych jak krew. Krzywa przy wzroście i spadku szybkosci scinania nie pokrywa sie.'
+ WHERE id = 'biofiz-c3-031';
+
+UPDATE public.questions
+   SET text = 'Do makroreologicznych czynników lepkościowych krwi należą',
+       options = '[{"id":"a","text":"ciśnienie"},{"id":"b","text":"agregacja erytrocytów"},{"id":"c","text":"odkształcenie erytrocytów"},{"id":"d","text":"hematokryt"}]'::jsonb,
+       explanation = 'Makroreologiczne czynniki lepkosciowe krwi to: hematokryt, lepkosc osocza, temperatura. Agregacja i odksztalcalnosc erytrocytow to czynniki mikroreologiczne.'
+ WHERE id = 'biofiz-c3-032';
+
+UPDATE public.questions
+   SET text = 'Jakie zjawisko ma największy wpływ na lepkość krwi przy stałym hematokrycie i małych prędkościach ścinania?',
+       options = '[{"id":"a","text":"zwiększona agregacja erytrocytów"},{"id":"b","text":"zmniejszona odkształcalność erytrocytów"},{"id":"c","text":"zmniejszona agregacja erytrocytów"},{"id":"d","text":"zwiększona odkształcalność erytrocytów"}]'::jsonb,
+       explanation = 'Przy malych predkosciach scinania dominuje agregacja erytrocytow - krwinki tworza rulony (rouleaux), co znacznie zwiększa lepkosc krwi.'
+ WHERE id = 'biofiz-c3-033';
+
+UPDATE public.questions
+   SET text = 'W jaki sposób lepkość krwi zależy od temperatury?',
+       options = '[{"id":"a","text":"zmniejsza się z obniżeniem"},{"id":"b","text":"nie zależy od temperatury"},{"id":"c","text":"zwiększa się ze wzrostem temperatury"},{"id":"d","text":"zwiększa się z obniżeniem temperatury"}]'::jsonb,
+       explanation = 'Lepkosc krwi zwieksza sie z obnizeniem temperatury. Nizszа temperatura = wolniejsze ruchy czasteczek = wieksze tarcie wewnetrzne = wieksza lepkosc.'
+ WHERE id = 'biofiz-c3-034';
+
+UPDATE public.questions
+   SET text = 'Kulka zanurzona w cieczy zaczyna opadać. Siła działająca na tę kulkę, skierowana pionowo do góry to',
+       options = '[{"id":"a","text":"siła ciężkości"},{"id":"b","text":"siła wyporu hydrostatycznego"},{"id":"c","text":"siła lepkości"},{"id":"d","text":"B i C prawidłowe"}]'::jsonb,
+       explanation = 'Sila wyporu hydrostatycznego (Archimedesa) dziala pionowo do gory - przeciwnie do sily ciezkosci. F_wyporu = rho_cieczy * V * g.'
+ WHERE id = 'biofiz-c3-035';
+
+UPDATE public.questions
+   SET text = 'Lepkością nie jest',
+       options = '[{"id":"a","text":"właściwość materii związaną z oddziaływaniem międzycząsteczkowym"},{"id":"b","text":"tarcie wewnętrzne"},{"id":"c","text":"opór przeciw płynięciu powstający na granicy płynu i ścianek naczynia"},{"id":"d","text":"zdolność cieczy do stawiania oporu przy wzajemnym przesuwaniu się cząstek"}]'::jsonb,
+       explanation = 'Lepkosc to tarcie wewnetrzne cieczy, opor przy wzajemnym przesuwaniu warstw. Opor na granicy plyny-scianka to cos innego - to warunek brzegowy (brak poslizgu).'
+ WHERE id = 'biofiz-c3-036';
+
+UPDATE public.questions
+   SET text = 'Od czego wprost zależy współczynnik lepkości dynamicznej dla cieczy newtonowskiej',
+       options = '[{"id":"a","text":"od charakteru ruchu (laminarny, turbulentny)"},{"id":"b","text":"od temperatury cieczy i rodzaju cieczy"},{"id":"c","text":"od stanu skupienia"},{"id":"d","text":"od gęstości cieczy"}]'::jsonb,
+       explanation = 'Wspolczynnik lepkosci dynamicznej cieczy newtonowskiej zalezy od temperatury i rodzaju cieczy. Nie zalezy od szybkosci scinania (definicja cieczy newtonowskiej).'
+ WHERE id = 'biofiz-c3-037';
+
+UPDATE public.questions
+   SET text = 'Lepkość pozorna krwi jest funkcją:',
+       options = '[{"id":"a","text":"rosnącą w zależności od temperatury"},{"id":"b","text":"malejąca w zależności od temperatury"},{"id":"c","text":"malejącą prędkości ścinania"},{"id":"d","text":"rosnącą prędkości ścinania"}]'::jsonb,
+       explanation = 'Lepkosc pozorna krwi jest funkcja malejaca szybkosci scinania - im szybszy przeplyw, tym mniejsza lepkosc (rozpad agregatow, elongacja erytrocytow). To cecha cieczy pseudoplastycznej.'
+ WHERE id = 'biofiz-c3-038';
+
+UPDATE public.questions
+   SET text = 'Zgodnie ze wzorem Stokesa siła lepkości działająca na kulkę o promieniu r, opadającą z prędkością $v$ w cieczy o lepkości $\eta$, jest:',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalna do v oraz do r"},{"id":"b","text":"wprost proporcjonalna do v oraz do r"},{"id":"c","text":"wprost proporcjonalna do v, a odwrotnie proporcjonalna do r"},{"id":"d","text":"wprost proporcjonalna do r, a odwrotnie proporcjonalna do v"}]'::jsonb,
+       explanation = '**Wzór Stokesa:** $F = 6\pi\eta r v$ — siła oporu lepkiego jest **wprost proporcjonalna** zarówno do **promienia kulki $r$**, jak i do **prędkości $v$** (oraz do lepkości $\eta$). Większa kulka i większa prędkość → większy opór. To podstawa wiskozymetrii Stokesa (pomiar lepkości z prędkości opadania kulki) i wyznaczania prędkości granicznej, gdy $F$ równoważy ciężar. Zależność liniowa od $r$ i $v$.'
+ WHERE id = 'biofiz-c3-344';
+
+UPDATE public.questions
+   SET text = 'Prędkość wypływu cieczy doskonałej pod wpływem grawitacji $g$ z otworu na głębokości $h$ pod swobodną powierzchnią opisuje prawo Torricellego o postaci:',
+       options = '[{"id":"a","text":"$v = 2gh$"},{"id":"b","text":"$v = \\sqrt{2gh}$"},{"id":"c","text":"$v = \\sqrt{3gh}$"},{"id":"d","text":"$v = 4gh$"}]'::jsonb,
+       explanation = '**Prawo Torricellego:** $v = \sqrt{2gh}$ — prędkość wypływu jest taka sama jak prędkość ciała swobodnie spadającego z wysokości $h$, co wynika z prawa Bernoulliego (zamiana energii potencjalnej słupa cieczy na kinetyczną). Zależność od **pierwiastka** z $h$, nie liniowa. Wzory $v = 2gh$ czy $4gh$ są wymiarowo i fizycznie błędne. Większa głębokość → większa, lecz pierwiastkowo rosnąca prędkość.'
+ WHERE id = 'biofiz-c3-356';
+
+UPDATE public.questions
+   SET text = 'Transport substancji od stężeń większych do mniejszych (dyfuzja) opisuje I prawo Ficka ($dn$ – liczba moli przenoszona w czasie $dt$ przez powierzchnię $S$, $D$ – współczynnik dyfuzji, $dc$ – zmiana stężenia na odległości $dx$):',
+       options = '[{"id":"a","text":"$\\dfrac{dn}{dt} = D\\,S\\,\\dfrac{dc}{dx}$"},{"id":"b","text":"$\\dfrac{dn}{dt} = -D\\,S\\,\\dfrac{dx}{dc}$"},{"id":"c","text":"$\\dfrac{dn}{dt} = D\\,S\\,\\dfrac{dx}{dc}$"},{"id":"d","text":"$\\dfrac{dn}{dt} = -D\\,S\\,\\dfrac{dc}{dx}$"}]'::jsonb,
+       explanation = '**I prawo Ficka:** $\dfrac{dn}{dt} = -D\,S\,\dfrac{dc}{dx}$. Strumień moli jest proporcjonalny do **powierzchni $S$**, współczynnika dyfuzji **$D$** i **gradientu stężenia $\frac{dc}{dx}$**, a **znak minus** oznacza transport w kierunku **malejącego stężenia**. Opcje z $\frac{dx}{dc}$ (B, C) mają odwrócony gradient, a brak minusa (A, C) ignoruje kierunek dyfuzji. Tylko D łączy poprawny gradient i znak minus.'
+ WHERE id = 'biofiz-c3-357';
+
+UPDATE public.questions
+   SET text = 'Po wprowadzeniu błony półprzepuszczalnej między dwa roztwory o różnym stężeniu rozpuszczalnik przenika do roztworu stężonego, a powstające ciśnienie osmotyczne opisuje prawo van''t Hoffa ($c_m$ – stężenie molowe, $R$ – stała gazowa, $T$ – temperatura):',
+       options = '[{"id":"a","text":"$\\pi = c_m \\cdot R \\cdot T$"},{"id":"b","text":"$\\pi = \\dfrac{c_m}{R \\cdot T}$"},{"id":"c","text":"$\\pi = \\dfrac{R \\cdot T}{c_m}$"},{"id":"d","text":"$\\pi = c_m + R \\cdot T$"}]'::jsonb,
+       explanation = '**Prawo van''t Hoffa:** $\pi = c_m R T$ — ciśnienie osmotyczne jest **wprost proporcjonalne** do stężenia molowego rozpuszczonych cząstek i do temperatury bezwzględnej. Forma analogiczna do równania gazu doskonałego ($\pi V = nRT$). Większe stężenie i wyższa temperatura → wyższe ciśnienie osmotyczne. Warianty z dzieleniem lub dodawaniem są niespójne wymiarowo. Dla elektrolitów dochodzi współczynnik van''t Hoffa $i$ (dysocjacja).'
+ WHERE id = 'biofiz-c3-358';
+
+UPDATE public.questions
+   SET text = 'Prawo Bernoulliego wyraża zasadę zachowania energii cieczy płynącej bez tarcia. Można je zdefiniować jedynie dla cieczy:',
+       options = '[{"id":"a","text":"Nielepkich, nieściśliwych i płynących w elastycznym przewodzie"},{"id":"b","text":"Nielepkich, nieściśliwych i płynących w sztywnym przewodzie"},{"id":"c","text":"Lepkich, ściśliwych i płynących w sztywnym przewodzie"},{"id":"d","text":"Lepkich, ściśliwych i płynących w elastycznym przewodzie"}]'::jsonb,
+       explanation = 'Prawo **Bernoulliego** zakłada **ciecz doskonałą** — **nielepką** (bez strat na tarcie) i **nieściśliwą** (stała gęstość), płynącą ustalonym przepływem w **sztywnym przewodzie** (stały przekrój nieodkształcalny). Lepkość wprowadza straty energii (wtedy obowiązuje Hagena-Poiseuille''a), a ściśliwość i elastyczność ścian łamią założenia. Idealizacja: brak tarcia + stała gęstość + sztywne ściany.'
+ WHERE id = 'biofiz-c3-361';
+
+UPDATE public.questions
+   SET text = 'Zależność między strumieniem objętości cieczy a różnicą ciśnień powodującą przepływ określa prawo Hagena-Poiseuille''a. Prawo to stosuje się przy założeniu m.in., że:',
+       options = '[{"id":"a","text":"Ciecz jest nieściśliwa, przepływ laminarny, a ściany elastyczne"},{"id":"b","text":"Ciecz jest ściśliwa, przepływ laminarny, a ściany sztywne"},{"id":"c","text":"Ciecz jest ściśliwa, przepływ laminarny, a ściany elastyczne"},{"id":"d","text":"Ciecz jest nieściśliwa, przepływ laminarny, a ściany sztywne"}]'::jsonb,
+       explanation = 'Prawo **Hagena-Poiseuille''a** $\left(Q = \dfrac{\pi r^4 \Delta p}{8\eta l}\right)$ obowiązuje dla cieczy **nieściśliwej**, **lepkiej** newtonowskiej, w przepływie **laminarnym** przez **sztywną** rurę o stałym przekroju. Kluczowa jest zależność od **$r^4$** — niewielka zmiana promienia drastycznie zmienia przepływ (istotne w hemodynamice). Założenia elastycznych ścian lub ściśliwości cieczy łamią warunki stosowalności. Nieściśliwa + laminarny + sztywne ściany.'
+ WHERE id = 'biofiz-c3-362';
+
+UPDATE public.questions
+   SET text = 'Równanie opisujące związek między temperaturą, ciśnieniem i objętością gazu doskonałego (równanie Clapeyrona) ma postać ($n$ – liczba moli, $T$ – temperatura bezwzględna, $R$ – stała gazowa, $p$ – ciśnienie, $V$ – objętość):',
+       options = '[{"id":"a","text":"$nV = pRT$"},{"id":"b","text":"$RT = npV$"},{"id":"c","text":"$pV = nRT$"},{"id":"d","text":"$pT = nRT$"}]'::jsonb,
+       explanation = '**Równanie stanu gazu doskonałego (Clapeyrona):** $pV = nRT$. Iloczyn ciśnienia i objętości jest proporcjonalny do liczby moli i temperatury bezwzględnej, ze stałą gazową $R$ jako współczynnikiem. Z niego wynikają prawa szczegółowe (Boyle''a-Mariotte''a, Charlesa, Gay-Lussaca). Pozostałe warianty mają błędnie poprzestawiane wielkości stanu. Podstawowa forma: $p\,V = n\,R\,T$.'
+ WHERE id = 'biofiz-c3-363';
+
+UPDATE public.questions
+   SET text = 'Prędkość przejścia z przepływu laminarnego do burzliwego (prędkość krytyczna $v_k$) wyraża się wzorem ($\eta$ – lepkość, $d$ – średnica naczynia, $\rho$ – gęstość, $Re$ – krytyczna liczba Reynoldsa):',
+       options = '[{"id":"a","text":"$v_k = \\dfrac{Re \\times \\rho}{\\eta \\times d}$"},{"id":"b","text":"$v_k = \\dfrac{Re \\times d}{\\rho \\times \\eta}$"},{"id":"c","text":"$v_k = \\dfrac{Re \\times \\eta}{Z \\times \\rho \\times d}$"},{"id":"d","text":"$v_k = \\dfrac{Re \\times \\eta}{\\rho \\times d}$"}]'::jsonb,
+       explanation = 'Z definicji liczby Reynoldsa $Re = \dfrac{\rho v d}{\eta}$, po przekształceniu dla wartości krytycznej: $v_k = \dfrac{Re\,\eta}{\rho d}$. Prędkość krytyczna rośnie z lepkością $\eta$ (lepka ciecz dłużej pozostaje laminarna), a maleje ze wzrostem gęstości i średnicy. Powyżej $v_k$ przepływ staje się **burzliwy**. Warianty z $\eta$ lub $d$ w złym miejscu dają odwrotne zależności (opcja C ma dodatkowo zbędne $Z$).'
+ WHERE id = 'biofiz-c3-375';
+
+UPDATE public.questions
+   SET text = 'Dla kapilary o długości $l$ i promieniu przekroju $r$ opór naczyniowy $R$ można zapisać jako ($\eta$ – współczynnik lepkości cieczy):',
+       options = '[{"id":"a","text":"$R = \\dfrac{\\eta l}{\\pi r^4}$"},{"id":"b","text":"$R = \\dfrac{8\\eta l}{\\pi r^4}$"},{"id":"c","text":"$R = \\dfrac{8\\eta l}{\\pi r^2}$"},{"id":"d","text":"$R = \\dfrac{8\\eta l}{\\pi r}$"}]'::jsonb,
+       explanation = 'Z prawa Hagena-Poiseuille''a opór hydrodynamiczny: $R = \dfrac{8\eta l}{\pi r^4}$. Kluczowa jest zależność od **czwartej potęgi promienia** ($r^4$) w mianowniku — dwukrotne zwężenie naczynia zwiększa opór **16-krotnie**, co ma ogromne znaczenie w regulacji przepływu krwi. Opór rośnie też z lepkością i długością. Pominięcie czynnika 8 lub błędna potęga $r$ ($r^2$ zamiast $r^4$) dają nieprawidłowy wzór. $R \propto \eta l / r^4$.'
+ WHERE id = 'biofiz-c3-377';
+
+UPDATE public.questions
+   SET text = 'Prawo ciągłości strumienia, opisujące zachowanie cieczy przy przewężeniach lub rozszerzeniach naczynia, stwierdza, że:',
+       options = '[{"id":"a","text":"W połączonych równolegle naczyniach strumień objętości jest jednakowy na całej długości"},{"id":"b","text":"W połączonych szeregowo naczyniach strumień objętości w danym przekroju jest jednakowy na całej długości połączonych naczyń"},{"id":"c","text":"W połączonych szeregowo naczyniach strumień objętości jest zmienny na całej długości"},{"id":"d","text":"W połączonych równolegle naczyniach strumień objętości jest zmienny na całej długości"}]'::jsonb,
+       explanation = '**Prawo ciągłości** ($S v = \mathrm{const}$) wynika z zachowania masy cieczy nieściśliwej: w naczyniu połączonym **szeregowo** strumień objętości ($Q = Sv$) jest **stały** na całej długości — w przewężeniu prędkość rośnie, w rozszerzeniu maleje. Stała ilość cieczy musi przejść przez każdy przekrój. Dotyczy to układu szeregowego; w rozgałęzieniach równoległych strumień się dzieli. Q = const w danej gałęzi szeregowej.'
+ WHERE id = 'biofiz-c3-378';
+
+UPDATE public.questions
+   SET text = 'Ciecz newtonowska charakteryzuje się:',
+       options = '[{"id":"a","text":"Nieliniową zależnością naprężenia ścinającego od szybkości ścinania przy stałej lepkości"},{"id":"b","text":"Liniową zależnością naprężenia ścinającego od szybkości ścinania przy zmiennej lepkości"},{"id":"c","text":"Nieliniową zależnością naprężenia ścinającego od szybkości ścinania przy zmiennej lepkości"},{"id":"d","text":"Liniową zależnością naprężenia ścinającego od szybkości ścinania przy stałej lepkości"}]'::jsonb,
+       explanation = '**Ciecz newtonowska** spełnia $\tau = \eta\dfrac{dv}{dx}$ — **liniową** zależność naprężenia ścinającego od szybkości ścinania, ze **stałą lepkością** $\eta$ niezależną od prędkości ścinania (np. woda, osocze). Ciecze **nienewtonowskie** (np. krew pełna, z uwagi na erytrocyty) mają lepkość zmienną — efekty ścinania, tiksotropia. Liniowość + stała lepkość = newtonowska. Zmienna lepkość lub nieliniowość wykluczają charakter newtonowski.'
+ WHERE id = 'biofiz-c3-380';
+
+UPDATE public.questions
+   SET text = 'Na osiach krzywej naprężeniowo-odkształceniowej ciała stałego (przedstawionej poniżej) znajdują się odpowiednio (oś pionowa - oś pozioma)',
+       options = '[{"id":"a","text":"naprężenie (oś pionowa) i odkształcenie bezwzględne (oś pozioma)"},{"id":"b","text":"siła (oś pionowa) i odkształcenie bezwzględne (oś pozioma)"},{"id":"c","text":"naprężenie (oś pionowa) i odkształcenie względne (oś pozioma)"},{"id":"d","text":"odkształcenie (oś pionowa) i naprężenie względne (oś pozioma)"}]'::jsonb,
+       explanation = 'Krzywa naprezeniowo-odksztalceniowa: os pionowa - naprezenie sigma (sila/pole), os pozioma - odksztalcenie wzgledne epsilon (delta_L/L). To standardowy wykres w mechanice materialow.'
+ WHERE id = 'biofiz-c4-001';
+
+UPDATE public.questions
+   SET text = 'Elementami składowymi komórek mięśniowych są miofilamenty, których rozmiary są tego samego rzędu wielkości. Średnica miofilamentu cienkiego jest rzędu',
+       options = '[{"id":"a","text":"milimetra"},{"id":"b","text":"nanometra"},{"id":"c","text":"pikometra"},{"id":"d","text":"mikrometra"}]'::jsonb,
+       explanation = 'Miofilamenty (aktyna, miozyna) maja rozmiary rzedu nanometrow. Filament gruby (miozyna): ok. 15 nm srednica. Filament cienki (aktyna): ok. 7 nm srednica.'
+ WHERE id = 'biofiz-c4-002';
+
+UPDATE public.questions
+   SET text = 'Przykładając do mięśnia poprzecznie prążkowanego obciążenie (siłę) obserwujemy jego wydłużenie. Zależność naprężenia mięśnia poprzecznie prążkowanego do jego odkształcenia (długości spoczynkowej) jest',
+       options = '[{"id":"a","text":"nieliniowa, przy czym ze wzrostem odkształcenia maleje moduł Younga"},{"id":"b","text":"liniowa, przy czym ze wzrostem odkształcenia maleje moduł Younga"},{"id":"c","text":"nieliniowa, przy czym ze wzrostem odkształcenia wzrasta moduł Younga"},{"id":"d","text":"liniowa, przy czym ze wzrostem odkształcenia wzrasta moduł Younga"}]'::jsonb,
+       explanation = 'Mięsień nie poddaje się prawu Hooke’a (jest nieliniowy), a w miarę rozciągania staje się coraz sztywniejszy, co oznacza, że jego moduł Younga rośnie, chroniąc tkankę przed zerwaniem.'
+ WHERE id = 'biofiz-c4-003';
+
+UPDATE public.questions
+   SET text = 'Cząsteczka ATP, dostarczając energię do skurczu mięśnia, wiąże się z:',
+       options = '[{"id":"a","text":"troponiną"},{"id":"b","text":"miozyną"},{"id":"c","text":"tropomiozyną"},{"id":"d","text":"aktyną"}]'::jsonb,
+       explanation = 'ATP wiaze sie z glowka miozyny. Hydroliza ATP dostarcza energii do zmiany konformacji miozyny i wykonania "power stroke" - ruchu glowki wzgledem aktyny.'
+ WHERE id = 'biofiz-c4-004';
+
+UPDATE public.questions
+   SET text = 'Zmiany wychylenia (
+x) ciała drgającego od czasu (
+t) dla ruchu drgającego tłumionego przedstawia równanie (A - amplituda drgań, λ - współczynnik tłumienia, ω - częstość drgań): o',
+       options = '[{"id":"a","text":"x = A * exp(λt) * sin(ωt) o"},{"id":"b","text":"x = A * exp(-ωt) * sin(λt) o"},{"id":"c","text":"x = A * exp(-λt) * sin(ωt) o"},{"id":"d","text":"x = A * λ * sin(ωt) o"}]'::jsonb,
+       explanation = 'Ruch drgajacy tlumiony: x = A_0 * exp(-lambda*t) * sin(omega*t). Amplituda maleje wykladniczo w czasie (exp(-lambda*t)), drgania sa sinusoidalne.'
+ WHERE id = 'biofiz-c4-005';
+
+UPDATE public.questions
+   SET text = 'Jony wapnia uwolnione po depolaryzacji błony komórkowej łączą się w obrębie miofilamentów z:',
+       options = '[{"id":"a","text":"tropomiozyną"},{"id":"b","text":"aktyną"},{"id":"c","text":"troponiną"},{"id":"d","text":"miozyną"}]'::jsonb,
+       explanation = 'Jony Ca2+ lacza sie z troponina C. Powoduje to zmiane konformacji troponiny, przesunięcie tropomiozyny i odsloniecie miejsc wiazania miozyny na aktynie.'
+ WHERE id = 'biofiz-c4-006';
+
+UPDATE public.questions
+   SET text = 'Z wykresu zależności prędkości skurczu mięśnia (
+v) od jego obciążenia (
+F) dla mięśni poprzecznie prążkowanych można wyciągnąć wniosek, że:',
+       options = '[{"id":"a","text":"mięsień poddany większemu obciążeniu kurczy się wolniej"},{"id":"b","text":"szybkość skurczu mięśnia jest proporcjonalna do jego obciążenia"},{"id":"c","text":"szybkość skurczu mięśnia nie zależy od jego obciążenia"},{"id":"d","text":"mięsień poddany większemu obciążeniu kurczy się szybciej"}]'::jsonb,
+       explanation = 'Krzywa Hilla: predkosc skurczu maleje ze wzrostem obciazenia. Przy zerowym obciazeniu predkosc maksymalna, przy maksymalnym obciazeniu (sila izometryczna) predkosc = 0.'
+ WHERE id = 'biofiz-c4-007';
+
+UPDATE public.questions
+   SET text = 'Głównym składnikiem miofilamentu grubego są cząsteczki:',
+       options = '[{"id":"a","text":"aktyny"},{"id":"b","text":"miozyny"},{"id":"c","text":"tropomiozyny"},{"id":"d","text":"troponiny"}]'::jsonb,
+       explanation = 'Miofilament gruby sklada sie glownie z miozyny - ok. 300-400 czasteczek miozyny tworzacych bipolarny filament o dlugosci ok. 1.6 mikrometra.'
+ WHERE id = 'biofiz-c4-008';
+
+UPDATE public.questions
+   SET text = 'Mięśnie poprzecznie prążkowane są wydłużonymi komórkami o wymiarach:',
+       options = '[{"id":"a","text":"średnica około 0,1 mm i długość około 1 mm"},{"id":"b","text":"średnica około 1 µm i długość około 10 µm"},{"id":"c","text":"średnica około 0,01 mm i długość około 0,1 mm"},{"id":"d","text":"średnica około 0,1 µm i długość około 1 µm"}]'::jsonb,
+       explanation = 'Wlokna miesniowe poprzecznie prazkowane: srednica ok. 10-100 mikrometrow (0.01-0.1 mm), dlugosc od milimetrow do kilku centymetrow.'
+ WHERE id = 'biofiz-c4-009';
+
+UPDATE public.questions
+   SET text = 'W mięśniu po jego wydłużeniu z początkowej długości i pozostawieniu stałej długości mięśnia występuje zjawisko:',
+       options = '[{"id":"a","text":"pełzania"},{"id":"b","text":"relaksacji odkształcenia"},{"id":"c","text":"relaksacji naprężenia"},{"id":"d","text":"płynięcia"}]'::jsonb,
+       explanation = 'Relaksacja naprezenia: przy stalej dlugosci (stalym odksztalceniu) naprezenie stopniowo maleje w czasie. Charakterystyczne dla materialow lepko-sprezystych.'
+ WHERE id = 'biofiz-c4-010';
+
+UPDATE public.questions
+   SET text = 'W skład jednego miofilamentu grubego wchodzi około',
+       options = '[{"id":"a","text":"40 cząsteczek miozyny"},{"id":"b","text":"400 cząsteczek tropomiozyny"},{"id":"c","text":"40 cząsteczek tropomiozyny"},{"id":"d","text":"400 cząsteczek miozyny"}]'::jsonb,
+       explanation = 'Jeden filament gruby zawiera ok. 300-400 czasteczek miozyny ulozonych bipolarnie - glowki miozyny wystaja na zewnatrz, tworzac mostki poprzeczne.'
+ WHERE id = 'biofiz-c4-011';
+
+UPDATE public.questions
+   SET text = 'Okres drgań',
+       options = '[{"id":"a","text":"nie zależy od częstotliwości drgań"},{"id":"b","text":"jest proporcjonalny do częstotliwości drgań"},{"id":"c","text":"jest odwrotnie proporcjonalny do częstotliwości drgań"},{"id":"d","text":"może zmieniać się w trakcie drgań ruchu harmonicznego prostego"}]'::jsonb,
+       explanation = 'Okres T = 1/f (odwrotnosc czestotliwosci). Okres i czestotliwosc sa odwrotnie proporcjonalne. W ruchu harmonicznym prostym okres jest staly.'
+ WHERE id = 'biofiz-c4-012';
+
+UPDATE public.questions
+   SET text = 'Potencjał elektryczny na błonie komórki mięśnia poprzecznie prążkowanego wynosi około',
+       options = '[{"id":"a","text":"-60 mV"},{"id":"b","text":"-6 V"},{"id":"c","text":"-6 mV"},{"id":"d","text":"-60 kV"}]'::jsonb,
+       explanation = 'Potencjal spoczynkowy komorki miesniowej wynosi ok. -60 do -90 mV (wnetrze ujemne wzgledem zewnetrza). Depolaryzacja do ok. +30 mV wyzwala skurcz.'
+ WHERE id = 'biofiz-c4-013';
+
+UPDATE public.questions
+   SET text = 'Energia do skurczu mięśnia czerpana jest z',
+       options = '[{"id":"a","text":"ATP"},{"id":"b","text":"ciepła dostarczonego z otoczenia komórki"},{"id":"c","text":"potencjału błonowego komórki mięśniowej"},{"id":"d","text":"ciepła wydzielonego w procesach metabolicznych"}]'::jsonb,
+       explanation = 'Energia do skurczu pochodzi z hydrolizy ATP (adenozynotrifosforan). ATP -> ADP + Pi + energia. ATP jest uniwersalnym nosnikiem energii w komorce.'
+ WHERE id = 'biofiz-c4-014';
+
+UPDATE public.questions
+   SET text = 'Model Kelvina-Voigta służy do opisu:',
+       options = '[{"id":"a","text":"właściwości lepko-sprężystych ciał o przewadze elementów lepkich"},{"id":"b","text":"właściwości materiałów sprężystych"},{"id":"c","text":"właściwości materiałów o przewadze elementów lepkich"},{"id":"d","text":"właściwości lepko-sprężystych ciał o przewadze elementów sprężystych"}]'::jsonb,
+       explanation = 'Model Kelvina-Voigta: sprezyna i tlumik rownolegle. Opisuje ciala lepko-sprezysste o przewadze elementow sprezystych. Charakterystyczna jest opozniona odpowiedz na obciazenie.'
+ WHERE id = 'biofiz-c4-015';
+
+UPDATE public.questions
+   SET text = 'Maksymalny zasięg, kiedy ciało po odjęciu działającej siły powraca do poprzedniego kształtu to:',
+       options = '[{"id":"a","text":"granica zerwania próbki"},{"id":"b","text":"granica plastyczności"},{"id":"c","text":"granica proporcjonalności"},{"id":"d","text":"granica sprężystości"}]'::jsonb,
+       explanation = 'Granica sprezystosci: maksymalne naprezenie, przy ktorym material wraca do pierwotnego ksztaltu po odjeciu sily. Powyzej - trwale odksztalcenie plastyczne.'
+ WHERE id = 'biofiz-c4-016';
+
+UPDATE public.questions
+   SET text = 'Jaka jest rola kompleksu troponin w funkcjonowaniu mięśni?',
+       options = '[{"id":"a","text":"główny składnik miofilamentu grubego"},{"id":"b","text":"dostarcza energii do pracy mięśni"},{"id":"c","text":"bierze udział w regulacji skurczu mięśnia poprzecznie prążkowanego"},{"id":"d","text":"brak poprawnej odpowiedzi"}]'::jsonb,
+       explanation = 'Troponina reguluje skurcz miesni poprzecznie prazkowanych. Sklada sie z 3 podjednostek: TnC (wiaze Ca2+), TnI (inhibitor), TnT (wiaze tropomiozyne).'
+ WHERE id = 'biofiz-c4-017';
+
+UPDATE public.questions
+   SET text = 'Które z poniższych jonów odgrywa najważniejszą rolę regulacyjną w funkcjonowaniu mięśni?',
+       options = '[{"id":"a","text":"troponina"},{"id":"b","text":"Ca2+"},{"id":"c","text":"tropomiozyna"},{"id":"d","text":"aktyna"}]'::jsonb,
+       explanation = 'Jony wapnia Ca2+ sa glownym regulatorem skurczu miesni. Wzrost stezenia Ca2+ w cytoplazmie (z 0.1 do 10 mikroM) wyzwala skurcz przez wiazanie z troponina.'
+ WHERE id = 'biofiz-c4-018';
+
+UPDATE public.questions
+   SET text = 'Liniowa wprost proporcjonalna zależność między naprężeniem wewnętrznym względnym wydłużeniem wynikającym z prawa Hooke’a nie jest spełniona:',
+       options = '[{"id":"a","text":"na granicy proporcjonalności"},{"id":"b","text":"w zakresie od zera do granicy proporcjonalności"},{"id":"c","text":"powyżej granicy proporcjonalności"},{"id":"d","text":"tylko do połowy granicy proporcjonalności"}]'::jsonb,
+       explanation = 'Prawo Hookea (sigma = E * epsilon) obowiazuje w zakresie od zera do granicy proporcjonalnosci. Powyzej zaleznosc jest nieliniowa.'
+ WHERE id = 'biofiz-c4-019';
+
+UPDATE public.questions
+   SET text = 'Model Maxwella służy do opisu:',
+       options = '[{"id":"a","text":"właściwości materiałów o przewadze elementów lepkich (ciecze sprężysto-lepkie)"},{"id":"b","text":"właściwości materiałów o przewadze elementów sprężystych (ciecze lepko-sprężyste)"},{"id":"c","text":"właściwości materiałów o przewadze elementów lepkich (ciecze lepko-sprężyste)"},{"id":"d","text":"właściwości materiałów o przewadze elementów sprężystych (ciecze sprężysto-lepkie)"}]'::jsonb,
+       explanation = 'Model Maxwella: sprezyna i tlumik szeregowo. Opisuje ciala o przewadze elementow lepkich (ciecze lepko-sprezysте). Charakterystyczna jest relaksacja naprezenia.'
+ WHERE id = 'biofiz-c4-020';
+
+UPDATE public.questions
+   SET text = 'Głównym składnikiem miofilamentu cienkiego jest:',
+       options = '[{"id":"a","text":"aktyna"},{"id":"b","text":"stężenie jonów Ca2+"},{"id":"c","text":"tropomiozyna"},{"id":"d","text":"troponina"}]'::jsonb,
+       explanation = 'Miofilament cienki sklada sie glownie z aktyny (F-aktyna - filamentowa). Dodatkowo zawiera tropomiozyne i troponine jako bialka regulatorowe.'
+ WHERE id = 'biofiz-c4-021';
+
+UPDATE public.questions
+   SET text = 'Wskaż błędne dopasowanie definicji do pojęcia',
+       options = '[{"id":"a","text":"Zdolność materiału do przenoszenia obciążenia bez jego zniszczenia - wytrzymałość"},{"id":"b","text":"Właściwość materiału polegająca na jego pękaniu bez uprzednich odkształceń plastycznych lub przy bardzo małych odkształceniach plastycznych - kruchość"},{"id":"c","text":"Zdolność materiału do osiągnięcia nowych kształtów oraz zachowania kształtów uprzednio uzyskanych po zdjęciu obciążenia bez naruszenia spójności - plastyczność"},{"id":"d","text":"Odporność materiału na odkształcenia trwałe pod wpływem sił skupionych, działających na małą powierzchnię tego ciała - sprężystość"}]'::jsonb,
+       explanation = 'Wytrzymalosc to zdolnosc materialu do przenoszenia obciazenia bez zniszczenia. Kruchosc - pekanie bez odksztalcen. Plastycznosc - trwale odksztalcenie. Twardosc - odpornosc na wciskanie.'
+ WHERE id = 'biofiz-c4-023';
+
+UPDATE public.questions
+   SET text = 'Dopasuj podpis do rysunku',
+       options = '[{"id":"a","text":"Wykres (4) wychylenia jako funkcja czasu - drgania tłumione"},{"id":"b","text":"Wykres (3) wychylenia jako funkcja czasu - drgania nietłumione"},{"id":"c","text":"Wykres (2) - widmo drgań harmonicznych prostych"},{"id":"d","text":"Wykres (1) - rozkład widmowy drgań harmonicznych złożonych"}]'::jsonb,
+       explanation = 'Drgania tlumione: amplituda maleje wykladniczo w czasie, krzywa wychylenia to sinusoida z malejaca amplituda (obwiednia wykladnicza).'
+ WHERE id = 'biofiz-c4-024';
+
+UPDATE public.questions
+   SET text = 'Spoczynkowy potencjał wnętrza komórki w stosunku do jej powierzchni wynosi?',
+       options = '[{"id":"a","text":"-6 uV"},{"id":"b","text":"-6 mV"},{"id":"c","text":"-60 mV"},{"id":"d","text":"-60 uV"}]'::jsonb,
+       explanation = 'Potencjal spoczynkowy komorki wynosi ok. -60 do -90 mV (wnetrze ujemne). Powstaje dzieki roznej przepuszczalnosci blony dla jonow K+ i Na+ oraz pompy sodowo-potasowej.'
+ WHERE id = 'biofiz-c4-025';
+
+UPDATE public.questions
+   SET text = 'Prawo Hilla głosi że',
+       options = '[{"id":"a","text":"szybkość skurczu jest najwyższa, gdy mięsień kurczy się bez obciążenia"},{"id":"b","text":"dla każdego mięśnia istnieje optymalne obciążenie, dla którego szybkość skurczu jest największa"},{"id":"c","text":"szybkość skurczu nie zależy od obciążenia mięśnia"},{"id":"d","text":"szybkość skurczu jest najwyższa, gdy mięsień jest maksymalnie obciążony"}]'::jsonb,
+       explanation = 'Prawo Hilla: predkosc skurczu jest maksymalna gdy miesien nie jest obciazony (F=0). Ze wzrostem obciazenia predkosc maleje nieliniowo do zera przy sile izometrycznej.'
+ WHERE id = 'biofiz-c4-026';
+
+UPDATE public.questions
+   SET text = 'Reologiczny model Maxwella opisuje',
+       options = '[{"id":"a","text":"ruch harmoniczny prosty"},{"id":"b","text":"zachowanie mięśni gładkich podczas rozciągania"},{"id":"c","text":"zachowanie mięśni poprzecznie prążkowanych podczas rozciągania"},{"id":"d","text":"ruch harmoniczny tłumiony"}]'::jsonb,
+       explanation = 'Model Maxwella opisuje zachowanie miesni gladkich podczas rozciagania - wykazuja one relaksacje naprezenia (naprezenie maleje przy stalym odksztalceniu).'
+ WHERE id = 'biofiz-c4-027';
+
+UPDATE public.questions
+   SET text = 'Jak nazywa się wzrost amplitud drgań układu przy charakterystycznych częstotliwościach wzbudzających?',
+       options = '[{"id":"a","text":"rezonans"},{"id":"b","text":"kurczenie się"},{"id":"c","text":"wydłużanie"},{"id":"d","text":"deformacja"}]'::jsonb,
+       explanation = 'Rezonans to gwaltowny wzrost amplitudy drgan gdy czestotliwosc wymuszenia jest bliska czestotliwosci wlasnej ukladu. Moze prowadzic do zniszczenia konstrukcji.'
+ WHERE id = 'biofiz-c4-028';
+
+UPDATE public.questions
+   SET text = 'Kiedy wahadło jest w równowadze, to jego energia kinetyczna jest:',
+       options = '[{"id":"a","text":"równa energii całkowitej"},{"id":"b","text":"równa energii potencjalnej"},{"id":"c","text":"równa zero"},{"id":"d","text":"maksymalna"}]'::jsonb,
+       explanation = 'W polozeniu rownowagi (najnizszy punkt) wahadlo ma maksymalna predkosc, wiec maksymalna energie kinetyczna. Energia potencjalna jest minimalna (zero przy wyborze tego poziomu odniesienia).'
+ WHERE id = 'biofiz-c4-029';
+
+UPDATE public.questions
+   SET text = 'Jak nazywa się prawo, któremu podlega wiele materiałów poddanych obciążeniom, o ile obciążenie nie przekracza granicy sprężystości materiału',
+       options = '[{"id":"a","text":"prawo Hooke''a"},{"id":"b","text":"prawo Younga"},{"id":"c","text":"prawo Hilla"},{"id":"d","text":"prawo Maxwella"}]'::jsonb,
+       explanation = 'Prawo Hookea: sigma = E * epsilon (naprezenie proporcjonalne do odksztalcenia). Obowiazuje dla malych odksztalcen w zakresie sprezystym. E to modul Younga.'
+ WHERE id = 'biofiz-c4-030';
+
+UPDATE public.questions
+   SET text = 'Nazwa parametru związanego z ruchem harmonicznym, mierzona w radianach na sekundę, to',
+       options = '[{"id":"a","text":"częstość kątowa"},{"id":"b","text":"amplituda"},{"id":"c","text":"prędkość"},{"id":"d","text":"naprężenie graniczne"}]'::jsonb,
+       explanation = 'Czestosc katowa (pulsacja) omega = 2*pi*f, mierzona w rad/s. Opisuje szybkosc zmian fazy w ruchu harmonicznym. Amplituda mierzona w metrach, predkosc w m/s.'
+ WHERE id = 'biofiz-c4-031';
+
+UPDATE public.questions
+   SET text = 'Szybkość utraty ciepła z organizmu poprzez parowanie zależy m.in. od różnicy:',
+       options = '[{"id":"a","text":"temperatury powietrza i skóry"},{"id":"b","text":"czwartych potęg ciśnień parcjalnych pary wodnej w powietrzu i przy powierzchni skóry"},{"id":"c","text":"ciśnień parcjalnych pary wodnej w powietrzu i przy powierzchni skóry"},{"id":"d","text":"czwartych potęg temperatur otaczających obiektów i skóry"}]'::jsonb,
+       explanation = '**Parowanie** (utrata ciepła z potem) napędzane jest **różnicą ciśnień parcjalnych pary wodnej** między powierzchnią skóry a otaczającym powietrzem — im suchsze powietrze, tym szybsze parowanie. Dlatego w wilgotnym otoczeniu chłodzenie przez pot jest mało skuteczne. Różnica **temperatur** dotyczy konwekcji/przewodzenia, a **czwarte potęgi temperatur** (prawo Stefana-Boltzmanna) to mechanizm **promieniowania**, nie parowania.'
+ WHERE id = 'biofiz-c4-351';
+
+UPDATE public.questions
+   SET text = 'Potencjał spoczynkowy błony mięśnia szkieletowego wynosi około:',
+       options = '[{"id":"a","text":"-70 mV"},{"id":"b","text":"-55 mV"},{"id":"c","text":"-40 mV"},{"id":"d","text":"-80 mV"}]'::jsonb,
+       explanation = 'Potencjał spoczynkowy **mięśnia szkieletowego** wynosi ok. **−80 do −90 mV** — z dostępnych opcji najbliżej jest **−80 mV**. Wartości ujemne wynikają z nierównomiernego rozkładu jonów po obu stronach błony (głównie $\mathrm{K^+}$, dla którego błona jest najbardziej przepuszczalna w spoczynku) i opisuje je **równanie Goldmana**. Dla porównania: neurony mają ok. −70 mV, a wartość −55 mV odpowiada raczej **progowi pobudzenia**. Im bardziej ujemny potencjał, tym silniejsza polaryzacja błony.'
+ WHERE id = 'biofiz-c4-359';
+
+UPDATE public.questions
+   SET text = 'Model molekularny, w którym element lepki (tłoczek z cieczą) połączony jest równolegle z elementem sprężystym (sprężyna), nazywamy modelem:',
+       options = '[{"id":"a","text":"Maxwella"},{"id":"b","text":"Kelvina-Voighta"},{"id":"c","text":"Hooke''a"},{"id":"d","text":"mięśni poprzecznie prążkowanych"}]'::jsonb,
+       explanation = '**Model Kelvina-Voighta** to **równoległe** połączenie sprężyny (element sprężysty Hooke''a) i tłumika (element lepki Newtona) — opisuje **pełzanie** (powolne odkształcenie pod stałym naprężeniem) z odwracalnym powrotem. **Model Maxwella** to połączenie **szeregowe** tych elementów (opisuje relaksację naprężeń). Hooke to czysta sprężystość bez lepkości. Połączenie równoległe → Kelvin-Voigt; szeregowe → Maxwell.'
+ WHERE id = 'biofiz-c4-371';
+
+UPDATE public.questions
+   SET text = 'Zysk mechaniczny (przekładnia mechaniczna) dźwigni to:',
+       options = '[{"id":"a","text":"Iloraz długości ramienia obciążenia do długości ramienia działania siły"},{"id":"b","text":"Suma długości ramienia działania siły i ramienia obciążenia"},{"id":"c","text":"Iloczyn długości ramienia działania siły i siły przyłożonej do obciążenia"},{"id":"d","text":"Iloraz długości ramienia działania siły do długości ramienia obciążenia"}]'::jsonb,
+       explanation = '**Zysk mechaniczny** dźwigni = stosunek **ramienia siły** (działania) do **ramienia obciążenia**: MA = r_siły / r_obciążenia. Gdy ramię siły jest dłuższe (MA > 1), dźwignia daje **przewagę siły**. W ciele człowieka większość dźwigni (np. staw łokciowy) ma MA < 1 — przegrywa na sile, ale zyskuje na zakresie i prędkości ruchu. Odwrócony iloraz (opcja A) opisuje przewagę prędkości, nie siły. MA = ramię siły / ramię obciążenia.'
+ WHERE id = 'biofiz-c4-379';
+
+UPDATE public.questions
+   SET text = 'Które stwierdzenie najlepiej opisuje pierwszą zasadę termodynamiki?',
+       options = '[{"id":"a","text":"Zmiana energii wewnętrznej układu jest równa sumie ciepła dostarczonego do układu i pracy wykonanej nad układem"},{"id":"b","text":"Zmiana energii wewnętrznej układu jest równa różnicy między ciepłem oddanym przez układ a pracą wykonaną przez układ"},{"id":"c","text":"Zmiana energii wewnętrznej zależy tylko od ilości ciepła dostarczonego do układu"},{"id":"d","text":"Energia wewnętrzna układu nie może się zmieniać, niezależnie od procesów w otoczeniu"}]'::jsonb,
+       explanation = '**I zasada termodynamiki** (zachowanie energii): $\Delta U = Q + W$, gdzie $\Delta U$ to zmiana energii wewnętrznej, Q – ciepło **dostarczone** do układu, W – praca **wykonana nad** układem (przyjmując tę konwencję znaków). Energia nie ginie ani nie powstaje, jedynie zmienia formę (ciepło ↔ praca). Opcja C pomija pracę, a D zaprzecza możliwości zmiany energii wewnętrznej. $\Delta U = Q + W$ (ciepło i praca jako formy przekazu energii).'
+ WHERE id = 'biofiz-c4-382';
+
+UPDATE public.questions
+   SET text = 'Temperatura skóry wynika z równowagi między ciepłem wytwarzanym metabolicznie a oddawanym do otoczenia. Człowiek zanurzony w lodowatej wodzie traci energię cieplną głównie na skutek:',
+       options = '[{"id":"a","text":"Promieniowania"},{"id":"b","text":"Parowania"},{"id":"c","text":"innego mechanizmu niż wymienione powyżej"},{"id":"d","text":"przewodzenia i konwekcji"}]'::jsonb,
+       explanation = 'W **lodowatej wodzie** dominuje utrata ciepła przez **przewodzenie i konwekcję** — woda ma ok. **25 razy większe przewodnictwo cieplne** niż powietrze i odbiera ciepło bardzo szybko, a ruch wody (konwekcja) stale odprowadza ogrzaną warstwę przy skórze. Stąd wychłodzenie w wodzie następuje wielokrotnie szybciej niż w powietrzu. **Parowanie** i **promieniowanie** mają w zanurzeniu znikomy udział. Woda → przewodzenie + konwekcja.'
+ WHERE id = 'biofiz-c4-383';
+
+UPDATE public.questions
+   SET text = 'Efektywny równoważnik dawki (dawka skuteczna) wyraża się wzorem indeks T oznacza określoną tkankę lub narząd, symbol w oznacza współczynnik wagowy związany z T prawdopodobieństwem wystąpienia skutków napromieniowania tkanki T, natomiast H oznacza: T',
+       options = '[{"id":"a","text":"równoważnik dawki pochłoniętej w tkance T"},{"id":"b","text":"dawkę pochłoniętą w tkance T"},{"id":"c","text":"dopuszczalną dawkę w tkance T"},{"id":"d","text":"dawkę ekspozycyjną w tkance T"}]'::jsonb,
+       explanation = 'Efektywny rownowaznik dawki (dawka skuteczna) E = suma(w_T * H_T), gdzie H_T to rownowaznik dawki pochlonietej w tkance T, a w_T to wspolczynnik wagowy tkanki.'
+ WHERE id = 'biofiz-s1-001';
+
+UPDATE public.questions
+   SET text = 'Jednostką dawki pochłoniętej jest:',
+       options = '[{"id":"a","text":"grej (Gy)"},{"id":"b","text":"bekerel (Bq)"},{"id":"c","text":"C/kg"},{"id":"d","text":"siwert (Sv)"}]'::jsonb,
+       explanation = 'Dawka pochłonieta mierzona jest w grejach (Gy). 1 Gy = 1 J/kg - energia promieniowania pochłonieta przez jednostke masy. Siwert (Sv) to rownowaznik dawki.'
+ WHERE id = 'biofiz-s1-002';
+
+UPDATE public.questions
+   SET text = 'Jednostką efektywnego równoważnika dawki (dawki skutecznej) jest',
+       options = '[{"id":"a","text":"grey (Gy)"},{"id":"b","text":"C/kg"},{"id":"c","text":"siwert (Sv)"},{"id":"d","text":"bekerel (Bq)"}]'::jsonb,
+       explanation = 'Dawka skuteczna (efektywny rownowaznik dawki) mierzona jest w siwertach (Sv). Uwzglednia rozny wplyw biologiczny roznych rodzajow promieniowania i czulosc tkanek.'
+ WHERE id = 'biofiz-s1-003';
+
+UPDATE public.questions
+   SET text = 'Wykres przedstawia zależność liczby jąder izotopu promieniotwórczego N od czasu t, zgodną z prawem rozpadu promieniotwórczego. Ile wynosi N ? x',
+       options = '[{"id":"a","text":"N = N / 12 x o"},{"id":"b","text":"N = N / 8 x o"},{"id":"c","text":"N = N / 4 x o"},{"id":"d","text":"N = N / 16 x o"}]'::jsonb,
+       explanation = 'Po 4 okresach polowicznego rozpadu pozostaje 1/16 poczatkowej liczby jader: N = N_0 * (1/2)^4 = N_0/16. Kazdy okres polowica liczbe jader.'
+ WHERE id = 'biofiz-s1-004';
+
+UPDATE public.questions
+   SET text = 'Zależność liczby jąder izotopu promieniotwórczego N od czasu , zgodną z prawem rozpadu promieniotwórczego przedstawia wykres:',
+       options = '[{"id":"a","text":"(4)"},{"id":"b","text":"(1)"},{"id":"c","text":"(2)"},{"id":"d","text":"(3)"}]'::jsonb,
+       explanation = 'Prawo rozpadu promieniotwórczego: N(t) = N_0 * e^(-lambda*t). Krzywa wykladniczo malejaca, gdzie lambda to stala rozpadu.'
+ WHERE id = 'biofiz-s1-005';
+
+UPDATE public.questions
+   SET text = 'Prawo rozpadu promieniotwórczego tj. zależność liczby jąder izotopu promieniotwórczego N od czasu t przedstawia wzór (λ – stała rozpadu)',
+       options = '[{"id":"a","text":"N(t) = N(0) e-λt"},{"id":"b","text":"N(t) = N(0) eλt"},{"id":"c","text":"dN(t) = λ N(t) dt"},{"id":"d","text":"dN(t) = λ N(t) / dt"}]'::jsonb,
+       explanation = 'Prawo rozpadu: N(t) = N(0) * e^(-lambda*t), gdzie lambda to stala rozpadu. Liczba jader maleje wykladniczo w czasie. Równanie rozniczkowe: dN = -lambda*N*dt.'
+ WHERE id = 'biofiz-s1-006';
+
+UPDATE public.questions
+   SET text = 'Tworzenie par elektron-pozyton zachodzi, gdy kwant promieniowania gamma znajdzie się w pobliżu jądra atomowego, a jego energia spełnia warunek (m – masa elektronu, c – prędkość światła) e',
+       options = '[{"id":"a","text":"E ≤ 2m c2 e"},{"id":"b","text":"E < 2m c2 e"},{"id":"c","text":"E ≥ 2m c2 e"},{"id":"d","text":"E > 2m c2 e"}]'::jsonb,
+       explanation = 'Kreacja pary wymaga minimum E = 2m_e c² = 1.022 MeV (masa spoczynkowa elektronu + pozytonu). Proces zachodzi gdy E ≥ 2m_e c² (większe LUB RÓWNE - nierówność NIEostra). Przy E = 2m_e c² para powstaje w spoczynku. Przy E > 2m_e c² nadmiar energii zamienia się na energię kinetyczną pary.'
+ WHERE id = 'biofiz-s1-007';
+
+UPDATE public.questions
+   SET text = 'Rysunek przedstawia schemat i zasadę działania',
+       options = '[{"id":"a","text":"detektora Geigera-Müllera"},{"id":"b","text":"lampy rentgenowskiej"},{"id":"c","text":"licznika scyntylacyjnego"},{"id":"d","text":"detektora półprzewodnikowego"}]'::jsonb,
+       explanation = 'Rysunek przedstawia schemat budowy fotopowielacza (ang. photomultiplier), który jest głównym elementem detekcyjnym w liczniku scyntylacyjnym.'
+ WHERE id = 'biofiz-s1-008';
+
+UPDATE public.questions
+   SET text = 'W oddziaływaniu promieniowania γ z materią NIE zachodzi zjawisko',
+       options = '[{"id":"a","text":"fotoelektryczne"},{"id":"b","text":"tunelowe"},{"id":"c","text":"Comptona"},{"id":"d","text":"kreacji par elektron – pozyton"}]'::jsonb,
+       explanation = 'Promieniowanie gamma oddzialuje z materia przez: efekt fotoelektryczny, efekt Comptona, kreacje par. Zjawisko tunelowe wystepuje przy rozpadzie alfa, nie przy oddzialywaniu gamma.'
+ WHERE id = 'biofiz-s1-009';
+
+UPDATE public.questions
+   SET text = 'Przemiana jądrowa polegająca na emisji cząstki helu z jądra atomu nazywana jest',
+       options = '[{"id":"a","text":"przemianą gamma"},{"id":"b","text":"przemianą beta minus"},{"id":"c","text":"przemianą beta plus"},{"id":"d","text":"przemianą alfa"}]'::jsonb,
+       explanation = 'Przemiana alfa: jadro emituje czastke alfa (jadro helu: 2 protony + 2 neutrony). Liczba masowa A maleje o 4, liczba atomowa Z o 2. Typowa dla ciezkich jader.'
+ WHERE id = 'biofiz-s1-010';
+
+UPDATE public.questions
+   SET text = 'Stała rozpadu to',
+       options = '[{"id":"a","text":"miara prawdopodobieństwa rozpadu danego jądra w jednostce czasu"},{"id":"b","text":"czas, w którym połowa początkowej liczby jąder uległa rozpadowi"},{"id":"c","text":"zależność przedstawiona graficznie jako krzywa rozpadu danego pierwiastka promieniotwórczego"},{"id":"d","text":"połowa liczby jąder, które uległy rozpadowi"}]'::jsonb,
+       explanation = 'Stala rozpadu lambda to prawdopodobienstwo rozpadu pojedynczego jadra w jednostce czasu. Zwiazana z czasem polowicznego rozpadu: T_1/2 = ln(2)/lambda.'
+ WHERE id = 'biofiz-s1-011';
+
+UPDATE public.questions
+   SET text = 'Miarą pochłaniania promieniowania jonizującego jest:',
+       options = '[{"id":"a","text":"dawka ekspozycyjna"},{"id":"b","text":"dawka skuteczna"},{"id":"c","text":"dawka pochłonięta"},{"id":"d","text":"równoważnik dawki"}]'::jsonb,
+       explanation = 'Dawka pochłonieta (Gy) mierzy energie promieniowania zaabsorbowana przez jednostke masy tkanki. To podstawowa miara fizyczna pochłaniania promieniowania.'
+ WHERE id = 'biofiz-s1-012';
+
+UPDATE public.questions
+   SET text = 'Składnikiem jądra atomowego nie są:',
+       options = '[{"id":"a","text":"neutrony"},{"id":"b","text":"nukleony"},{"id":"c","text":"pozytony"},{"id":"d","text":"protony"}]'::jsonb,
+       explanation = 'Jadro atomowe sklada sie z nukleonow: protonow i neutronow. Pozytony (antyelektrony) nie sa skladnikiem jadra - powstaja przy rozpadzie beta plus.'
+ WHERE id = 'biofiz-s1-013';
+
+UPDATE public.questions
+   SET text = 'Promień R jądra o liczbie masowej A wynosi w przybliżeniu: (cbrt to pierwiastek sześcienny -> cbrt8 = 2)',
+       options = '[{"id":"a","text":"𝑅 = 1,4 · cbrt𝐴 · 10^−12 𝑚"},{"id":"b","text":"𝑅 = 1,4 · cbrt𝐴 · 10^−15 𝑚"},{"id":"c","text":"𝑅 = 1,4 · 𝐴 · 10^−15 m"},{"id":"d","text":"𝑅 = 1,4 · 𝐴 · 10 𝑚"}]'::jsonb,
+       explanation = 'Promien jadra: R = r_0 * A^(1/3), gdzie r_0 ≈ 1.2-1.4 fm (femtometry = 10^-15 m). Objetosc jadra jest proporcjonalna do liczby nukleonow A.'
+ WHERE id = 'biofiz-s1-014';
+
+UPDATE public.questions
+   SET text = 'Wyrażenie h/m c, związane z jednym ze zjawisk opisujących współdziałanie promieniowania elektromagnetycznego z materią nosi nazwę',
+       options = '[{"id":"a","text":"fali Comptona"},{"id":"b","text":"pracy wyjścia"},{"id":"c","text":"masy spoczynkowej elektronu"},{"id":"d","text":"długości drogi fotoelektronu"}]'::jsonb,
+       explanation = 'Wyrażenie h/(m_e*c) = lambda_C to comptonowska dlugosc fali elektronu (ok. 2.43 pm). Charakteryzuje efekt Comptona - rozpraszanie fotonow na elektronach.'
+ WHERE id = 'biofiz-s1-015';
+
+UPDATE public.questions
+   SET text = 'Od czego zależy natężenie promieniowania rentgenowskiego?',
+       options = '[{"id":"a","text":"od kwadratu napięcia anodowego, wprost proporcjonalnie"},{"id":"b","text":"od kwadratu natężenia prądu anodowego, odwrotnie proporcjonalnie"},{"id":"c","text":"od kwadratu natężenia prądu anodowego, wprost proporcjonalnie"},{"id":"d","text":"od kwadratu napięcia anodowego, odwrotnie proporcjonalnie"}]'::jsonb,
+       explanation = 'Natezenie promieniowania RTG jest proporcjonalne do kwadratu napiecia anodowego (U^2) i do natezenia pradu (I). Wyzsze napiecie = wiecej fotonow o wiekszej energii.'
+ WHERE id = 'biofiz-s1-016';
+
+UPDATE public.questions
+   SET text = 'W którym z wymienionych zjawisk, atom pozbawiony elektronu staje się jonem dodatnim, zderza się z sąsiednimi atomami jonizując je?',
+       options = '[{"id":"a","text":"fotoelektryczne"},{"id":"b","text":"Comptona"},{"id":"c","text":"LET, liniowe przeniesienie energii"},{"id":"d","text":"tworzenie par elektron-pozyton"}]'::jsonb,
+       explanation = 'LET (liniowe przeniesienie energii) opisuje energie traconą przez czastke jonizujaca na jednostke drogi. Atom tracacy elektron staje sie jonem i zderzenia z sasiadami to jonizacja.'
+ WHERE id = 'biofiz-s1-017';
+
+UPDATE public.questions
+   SET text = 'Efekt tunelowy towarzyszy jednemu z rozpadów promieniotwórczych, któremu?',
+       options = '[{"id":"a","text":"β-"},{"id":"b","text":"γ"},{"id":"c","text":"α"},{"id":"d","text":"β+"}]'::jsonb,
+       explanation = 'Efekt tunelowy jest kluczowy przy rozpadzie alfa - czastka alfa "tuneluje" przez bariere potencjalu coulombowskiego, mimo ze klasycznie nie ma wystarczajacej energii.'
+ WHERE id = 'biofiz-s1-018';
+
+UPDATE public.questions
+   SET text = 'Pozytony są emitowane podczas przemiany',
+       options = '[{"id":"a","text":"β+"},{"id":"b","text":"α"},{"id":"c","text":"γ"},{"id":"d","text":"β-"}]'::jsonb,
+       explanation = 'Przemiana beta plus (β+): proton zamienia sie w neutron z emisja pozytonu (e+) i neutrina elektronowego. Zachodzi w jadrach z nadmiarem protonow.'
+ WHERE id = 'biofiz-s1-019';
+
+UPDATE public.questions
+   SET text = 'Jak nazywa się detektor promieniowania jądrowego, w którym w wyniku jonizacji lawinowej gazu wypełniającego komorę licznika powstają impulsy prądowe.',
+       options = '[{"id":"a","text":"licznik scyntylacyjny"},{"id":"b","text":"komora Wilsona"},{"id":"c","text":"licznik Geigera-Mullera"},{"id":"d","text":"komora pęcherzykowa"}]'::jsonb,
+       explanation = 'Licznik Geigera-Mullera wykorzystuje jonizacje lawinowa gazu. Promieniowanie jonizuje gaz, elektrony sa przyspieszane, powoduja kolejne jonizacje - efekt lawiny.'
+ WHERE id = 'biofiz-s1-020';
+
+UPDATE public.questions
+   SET text = 'Efektem trzech przemian α oraz dwóch przemian β, jakim ulega jądro o liczbie A-238, Z-92 jest powstanie jądra',
+       options = '[{"id":"a","text":"A-226, Z-88"},{"id":"b","text":"A-235, Z-94"},{"id":"c","text":"A-228, Z-88"},{"id":"d","text":"A-235, Z-90"}]'::jsonb,
+       explanation = '3 przemiany alfa: A zmniejsza sie o 3*4=12, Z o 3*2= 6. 2 przemiany beta: Z zwieksza sie o 2. Wynik: A=238-12=226, Z=92-6+2=88 (rad-226).'
+ WHERE id = 'biofiz-s1-021';
+
+UPDATE public.questions
+   SET text = 'Czas połowicznego rozpadu pewnego pierwiastka wynosi 4 dni. W ciągu 12 dni z 20 g tego pierwiastka rozpadnie się',
+       options = '[{"id":"a","text":"17,5 g"},{"id":"b","text":"2,5 g"},{"id":"c","text":"12,5 g"},{"id":"d","text":"5 g"}]'::jsonb,
+       explanation = '12 dni = 3 okresy polowicznego rozpadu (T_1/2=4 dni). Po 3 okresach zostaje: 20g * (1/2)^3 = 2.5g. Rozpadlo sie: 20 - 2.5 = 17.5g.'
+ WHERE id = 'biofiz-s1-022';
+
+UPDATE public.questions
+   SET text = 'Stabilność jądra atomowego jest charakteryzowana przez',
+       options = '[{"id":"a","text":"energię wiązania jądra"},{"id":"b","text":"liczbę neutronów w jądrze atomowym"},{"id":"c","text":"masę jądra"},{"id":"d","text":"energię wiązania jądra przypadającą na jeden nukleon"}]'::jsonb,
+       explanation = 'Stabilnosc jadra najlepiej charakteryzuje energia wiazania przypadajaca na nukleon. Maksymalna (ok. 8.8 MeV) dla pierwiastkow srednich (zelazo). Zbyt male lub duze jadra sa mniej stabilne.'
+ WHERE id = 'biofiz-s1-023';
+
+UPDATE public.questions
+   SET text = 'Od czego zależy długość fali promieniowania rentgenowskiego?',
+       options = '[{"id":"a","text":"od natężenia prądu anodowego, odwrotnie proporcjonalnie"},{"id":"b","text":"od napięcia anodowego, odwrotnie proporcjonalnie"},{"id":"c","text":"od natężenia prądu anodowego, wprost proporcjonalnie"},{"id":"d","text":"od napięcia anodowego, wprost proporcjonalnie"}]'::jsonb,
+       explanation = 'Minimalna dlugosc fali RTG: lambda_min = hc/(eU). Jest odwrotnie proporcjonalna do napiecia anodowego - wyzsze napiecie daje krotsza (bardziej energetyczna) fale.'
+ WHERE id = 'biofiz-s1-024';
+
+UPDATE public.questions
+   SET text = 'Jak nazywa się detektor promieniowania jądrowego, który opiera się na zdolności skraplania przesyconej pary wodnej na zarodnikach kondensacji, powstających wzdłuż toru cząstki α lub β?',
+       options = '[{"id":"a","text":"licznik Geigera-Mullera"},{"id":"b","text":"komora pęcherzykowa"},{"id":"c","text":"licznik scyntylacyjny"},{"id":"d","text":"komora Wilsona"}]'::jsonb,
+       explanation = 'Komora Wilsona: przesycona para wodna skapla sie na jonach utworzonych przez promieniowanie, tworząc widoczne ślady czastek. Historycznie wazna w fizyce jadra.'
+ WHERE id = 'biofiz-s1-025';
+
+UPDATE public.questions
+   SET text = 'Jądra atomowe o tej samej liczbie A, różniące się liczbą Z to',
+       options = '[{"id":"a","text":"izobary"},{"id":"b","text":"izomery"},{"id":"c","text":"izotony"},{"id":"d","text":"izotopy"}]'::jsonb,
+       explanation = 'Izobary: jadra o tej samej liczbie masowej A, ale roznej liczbie atomowej Z (np. C-14 i N-14). Izotopy maja ta sama Z, izotony ta sama liczbe neutronow.'
+ WHERE id = 'biofiz-s1-026';
+
+UPDATE public.questions
+   SET text = 'Jedna z cząstek elementarnych mając energię większą od 1,022 MeV może w polu jądra atomowego wyzwolić parę elektron-pozyton. Tą cząstką elementarną jest',
+       options = '[{"id":"a","text":"elektron"},{"id":"b","text":"proton"},{"id":"c","text":"neutron"},{"id":"d","text":"foton"}]'::jsonb,
+       explanation = 'Foton (kwant gamma) o energii >= 1.022 MeV moze w polu jadra utworzyc pare elektron-pozyton. To kreacja par - zamiana energii promieniowania na mase czastek.'
+ WHERE id = 'biofiz-s1-027';
+
+UPDATE public.questions
+   SET text = 'Dawka efektywna promieniowania jonizującego dla człowieka wyrażana jest w jednostce (Sv – siwert, Gy – grej):',
+       options = '[{"id":"a","text":"0,25 Sv"},{"id":"b","text":"25 mGy"},{"id":"c","text":"25 Sv"},{"id":"d","text":"2,5 mSv"}]'::jsonb,
+       explanation = '**Dawka efektywna** uwzględnia rodzaj promieniowania i wrażliwość narządów, więc jej jednostką jest **siwert (Sv)**, a nie grej (Gy, jednostka dawki pochłoniętej). Realistyczna wartość rzędu badania diagnostycznego to **2,5 mSv** (typowa skala mSv). Opcje w Gy/mGy są błędne jednostkowo, a 25 Sv to dawka śmiertelna o nierealnym dla diagnostyki rzędzie wielkości. Sv → dawka równoważna/efektywna; Gy → pochłonięta.'
+ WHERE id = 'biofiz-s1-337';
+
+UPDATE public.questions
+   SET text = 'Końcowym efektem reakcji radiolizy wody NIE jest:',
+       options = '[{"id":"a","text":"Zmniejszenie wartości pH"},{"id":"b","text":"Wydzielanie wodoru cząsteczkowego"},{"id":"c","text":"Zmniejszenie stężenia jonu hydroniowego $\\mathrm{H_3O^+}$"},{"id":"d","text":"Powstanie cząsteczek nadtlenku wodoru"}]'::jsonb,
+       explanation = 'Radioliza wody generuje **rodniki** ($\mathrm{{}^{\bullet}OH}$, $\mathrm{H^{\bullet}}$, $\mathrm{e^-_{aq}}$) i produkty stabilne: **$\mathrm{H_2}$**, **$\mathrm{H_2O_2}$** oraz jony, w tym **$\mathrm{H_3O^+}$**. Powstawanie jonów hydroniowych **obniża pH** (zakwaszenie środowiska). Zatem **zmniejszenie stężenia $\mathrm{H_3O^+}$** (opcja C) **NIE zachodzi** — przeciwnie, jego stężenie rośnie. Pytanie negatywne: szukamy efektu, który nie występuje. Pozostałe to realne produkty radiolizy.'
+ WHERE id = 'biofiz-s1-345';
+
+UPDATE public.questions
+   SET text = 'LET (liniowy współczynnik przenoszenia energii) dla promieniowania jonizującego to:',
+       options = '[{"id":"a","text":"Wartość w radiobiologii wyrażana zwyczajowo w jednostkach pola magnetycznego"},{"id":"b","text":"Wartość, która nie zależy od rodzaju promieniowania"},{"id":"c","text":"Miara gęstości przekazywania energii do ośrodka, decydująca o efektach chemicznych i biologicznych"},{"id":"d","text":"Wartość tym mniejsza, im mniej przenikliwe jest promieniowanie"}]'::jsonb,
+       explanation = '**LET** to ilość energii przekazywanej ośrodkowi na **jednostkę drogi** cząstki ($\mathrm{keV/\mu m}$) — miara **gęstości jonizacji**. Wysoki LET (cząstki $\alpha$, neutrony) oznacza gęste, skoncentrowane uszkodzenia (więcej dwuniciowych pęknięć DNA) i większą skuteczność biologiczną (RBE). LET **silnie zależy od rodzaju** promieniowania (B błędne). Promieniowanie mało przenikliwe ($\alpha$) ma **wysoki**, nie niski LET — D jest odwrotne. LET → gęstość deponowanej energii.'
+ WHERE id = 'biofiz-s1-367';
+
+UPDATE public.questions
+   SET text = 'W którym odcinku drogi naładowanych cząstek w materiale obserwuje się maksymalny stopień jonizacji (widoczny na krzywej Bragga jako pik)?',
+       options = '[{"id":"a","text":"Na początku drogi, gdy cząstka ma najwyższą prędkość"},{"id":"b","text":"W połowie drogi cząstki przez ośrodek"},{"id":"c","text":"W końcowym odcinku drogi, tuż przed zatrzymaniem cząstki"},{"id":"d","text":"Po całkowitym zatrzymaniu cząstki"}]'::jsonb,
+       explanation = '**Pik Bragga** występuje **na końcu drogi**, tuż przed zatrzymaniem cząstki — wówczas, gdy zwalnia, gęstość jonizacji gwałtownie rośnie (im wolniejsza cząstka, tym dłużej oddziałuje z atomami, większy LET). Na początku drogi przy dużej prędkości jonizacja jest mniejsza. Po zatrzymaniu cząstka nie jonizuje. Ta właściwość jest wykorzystywana w **radioterapii protonowej/hadronowej** do precyzyjnego deponowania dawki w guzie.'
+ WHERE id = 'biofiz-s1-368';
+
+UPDATE public.questions
+   SET text = 'W liczniku Geigera-Müllera wykorzystuje się jonizację pierwotną i wtórną gazu wypełniającego cylindryczny kondensator. Jest to tak zwane:',
+       options = '[{"id":"a","text":"zjawisko jonizacji lawinowej"},{"id":"b","text":"zjawisko termoemisji elektronów"},{"id":"c","text":"zjawisko Comptona"},{"id":"d","text":"wyładowanie ciągłe między elektrodami kondensatora cylindrycznego"}]'::jsonb,
+       explanation = 'W **liczniku Geigera-Müllera** pojedyncza cząstka jonizująca wywołuje **jonizację lawinową** — elektrony przyspieszane silnym polem jonizują kolejne atomy gazu, tworząc gwałtowną **lawinę** (mnożenie ładunku). Daje to silny, łatwo mierzalny impuls niezależny od energii cząstki (stąd GM zlicza, ale nie mierzy energii). **Termoemisja** dotyczy katody lamp, **efekt Comptona** to rozpraszanie fotonów. Lawina jonizacyjna = mechanizm działania GM.'
+ WHERE id = 'biofiz-s1-386';
+
+UPDATE public.questions
+   SET text = 'Efekt Tyndalla',
+       options = '[{"id":"a","text":"podział i przemieszczanie linii widmowych"},{"id":"b","text":"rozpraszanie światła przez absorbowanie materiału"},{"id":"c","text":"rozpraszanie światła przez koloid (lekki stożek)"},{"id":"d","text":"zmiana kierunku propagacji fali na krawędzi przeszkody"}]'::jsonb,
+       explanation = 'Efekt Tyndalla to rozpraszanie swiatla przez czastki koloidalne - widoczne jako stozek swiatla przechodzacy przez koloid. Rozmiar czastek 1 nm - 1 mikrometr.'
+ WHERE id = 'biofiz-s2-001';
+
+UPDATE public.questions
+   SET text = 'Konwencjonalna technika rentgenowska',
+       options = '[{"id":"a","text":"nadaje się do obrazowania tych struktur, które mają takie samo pochłanianie promieniowania jak ich otoczenie"},{"id":"b","text":"nadaje się do obrazowania tych struktur, które różnią się większym pochłanianiem promieniowania niż ich otoczenie"},{"id":"c","text":"nadaje się do obrazowania tych struktur, które różnią się mniejszym pochłanianiem promieniowania niż ich otoczenie"}]'::jsonb,
+       explanation = 'Konwencjonalne RTG obrazuje struktury o roznym pochłanianiu - widać te, ktore pochłaniają więcej (kosci) lub mniej (płuca) niż otoczenie. Brak kontrastu = brak obrazu.'
+ WHERE id = 'biofiz-s2-002';
+
+UPDATE public.questions
+   SET text = 'Wirowanie preparatywne to',
+       options = '[{"id":"a","text":"wirowanie różnicowe wirowanie analityczne"},{"id":"b","text":"sedymentacja prosta, wirowanie równowagowe izopiknotyczne"},{"id":"c","text":"sedymentacja prosta, wirowanie analityczne"},{"id":"d","text":"wirowanie równowagowe izokinetyczne, wirowanie analityczne"}]'::jsonb,
+       explanation = 'Wirowanie preparatywne obejmuje sedymentacje prosta i wirowanie rownowagowe izopiknotyczne (w gradiencie gestosci). Wirowanie analityczne to oddzielna kategoria.'
+ WHERE id = 'biofiz-s2-003';
+
+UPDATE public.questions
+   SET text = 'Widma ramanowskie obserwuje się',
+       options = '[{"id":"a","text":"w świetle podczerwonym, dając informacje o poziomach oscylacyjno-rotacyjnych związanych ze strukturą cząsteczki"},{"id":"b","text":"w szerokim zakresie fal ultrakrótkich, dając informacje o poziomach elektronowo-rotacyjnych związanych ze wzbudzeniem wszystkich elektronów cząsteczki"},{"id":"c","text":"w świetle widzialnym, dając informacje o poziomie wzbudzenia elektronów walencyjnych cząsteczki"},{"id":"d","text":"w świetle widzialnym, dając informacje o poziomach oscylacyjno-rotacyjnych związanych ze strukturą cząsteczki"}]'::jsonb,
+       explanation = 'Widma Ramana obserwuje sie w świetle widzialnym. Dają informacje o poziomach oscylacyjno-rotacyjnych (podobnie jak IR), ale mechanizm jest inny (nieelastyczne rozpraszanie).'
+ WHERE id = 'biofiz-s2-004';
+
+UPDATE public.questions
+   SET text = 'W metodach opartych na wirowaniu podstawą metody jest',
+       options = '[{"id":"a","text":"różna rozpuszczalność"},{"id":"b","text":"różna wielkość i kształt cząsteczek"},{"id":"c","text":"bioselektywne oddziaływanie wzajemnie między białkiem a ligandem"},{"id":"d","text":"różny ładunek"}]'::jsonb,
+       explanation = 'W wirowaniu podstawa jest rozna wielkosc i ksztalt czasteczek - wieksze/ciezsze czastki sedymentuja szybciej. Stala sedymentacji zalezy od masy, ksztaltu i gestosci.'
+ WHERE id = 'biofiz-s2-005';
+
+UPDATE public.questions
+   SET text = 'Rozproszenie Rayleigha',
+       options = '[{"id":"a","text":"rozpraszanie fal elektromagnetycznych na ciałach stałych, cieczach lub gazach (przezroczyste)"},{"id":"b","text":"nieelastyczne rozpraszanie fotonów przez substancje"},{"id":"c","text":"rozpraszanie fal elektromagnetycznych o wysokiej częstotliwości na wolnych lub słabo związanych elektronach"},{"id":"d","text":"oddziaływanie fal świetlnych i dźwiękowych"}]'::jsonb,
+       explanation = 'Rozpraszanie Rayleigha to elastyczne rozpraszanie fal EM na czasteczkach mniejszych od dlugosci fali. Intensywnosc proporcjonalna do 1/lambda^4 (dlatego niebo jest niebieskie).'
+ WHERE id = 'biofiz-s2-006';
+
+UPDATE public.questions
+   SET text = 'Elektroforeza to',
+       options = '[{"id":"a","text":"opadanie na dno za pomocą grawitacji"},{"id":"b","text":"oddzielenie składników za pomocą różnicy temperatur"},{"id":"c","text":"fuzje cieczy ze szlamu"},{"id":"d","text":"rozdzielenie mieszaniny na jednorodne frakcje"}]'::jsonb,
+       explanation = 'Elektroforeza rozdziela mieszanine na frakcje na podstawie ruchu czasteczek naladowanych w polu elektrycznym. Rozna ruchliwosc (zależna od ladunku i rozmiaru) = rozne frakcje.'
+ WHERE id = 'biofiz-s2-007';
+
+UPDATE public.questions
+   SET text = 'Różna wielkość i kształt cząsteczek jest podstawą metody',
+       options = '[{"id":"a","text":"elektroforezy żelowej"},{"id":"b","text":"elektroforezy swobodnej"},{"id":"c","text":"elektroforezy jonowymiennej"},{"id":"d","text":"chromatografii żelowej"}]'::jsonb,
+       explanation = 'Chromatografia zelowa (sitowa) rozdziela czastki na podstawie wielkosci. Małe czastki wnikaja w pory zelu i eleuuja pozniej, duze omijają pory i eleuują szybciej.'
+ WHERE id = 'biofiz-s2-008';
+
+UPDATE public.questions
+   SET text = 'W chromatografii rozdzielczej podstawą metody jest',
+       options = '[{"id":"a","text":"różna wielkość cząstek"},{"id":"b","text":"różna rozpuszczalność"},{"id":"c","text":"różny ładunek"},{"id":"d","text":"bioselektywne oddziaływanie wzajemnie między białkiem a ligandem"}]'::jsonb,
+       explanation = 'Chromatografia rozdzielcza (podziałowa) opiera sie na roznej rozpuszczalnosci substancji w fazie stacjonarnej i ruchomej. Substancje bardziej rozpuszczalne w fazie ruchomej eleuują szybciej.'
+ WHERE id = 'biofiz-s2-009';
+
+UPDATE public.questions
+   SET text = 'Detektory (w liczbie kilkuset) zostały umieszczone na łuku pierścienia, obracającego się razem z lampą dookoła pacjenta w',
+       options = '[{"id":"a","text":"II generacji tomografów"},{"id":"b","text":"IV generacji tomografów"},{"id":"c","text":"III generacji tomografów"}]'::jsonb,
+       explanation = 'III generacja CT: lampa i detektory na luku (kilkuset detektorow) obracają sie razem wokol pacjenta. Wiazka wachlarzowa, czas ok. 1-2 s na obrót.'
+ WHERE id = 'biofiz-s2-010';
+
+UPDATE public.questions
+   SET text = 'Znajomość stałej sedymentacji umożliwia',
+       options = '[{"id":"a","text":"obliczenie ciężaru cząsteczkowego"},{"id":"b","text":"obliczenie przeciążenia Ag"},{"id":"c","text":"wyznaczenie gęstości cząsteczek zawiesiny"}]'::jsonb,
+       explanation = 'Znajomosc stałej sedymentacji ( s) pozwala obliczyc mase czasteczkowa ( M) z rownania Svedberga: s = M(1-v*rho)/(N*f), gdzie f to wspolczynnik tarcia.'
+ WHERE id = 'biofiz-s2-011';
+
+UPDATE public.questions
+   SET text = 'Współczynnik dyfuzji D zależy',
+       options = '[{"id":"a","text":"od stałej Boltzmanna"},{"id":"b","text":"od prędkości przepływu"},{"id":"c","text":"od prędkości kątowej"}]'::jsonb,
+       explanation = 'Wspolczynnik dyfuzji D = kT/(6*pi*eta*r) (rownanie Stokesa-Einsteina). Zalezy od stałej Boltzmanna k, temperatury T, lepkosci eta i promienia czastki r.'
+ WHERE id = 'biofiz-s2-012';
+
+UPDATE public.questions
+   SET text = 'Interferencja fal wiązki promieniowania rozproszonego zachodzi kiedy spełniony jest między innymi warunek',
+       options = '[{"id":"a","text":"spójności promieniowania"},{"id":"b","text":"długości fali musi być dwa razy większa od odległości między atomami"},{"id":"c","text":"układ rozpraszający nie jest wymagany do uzyskania tego efektu"}]'::jsonb,
+       explanation = 'Interferencja fal rozproszonych wymaga spojnosci promieniowania - fale musza miec stala roznice faz. Warunek Bragga okresla katy konstruktywnej interferencji.'
+ WHERE id = 'biofiz-s2-013';
+
+UPDATE public.questions
+   SET text = 'W tomografii spiralnej',
+       options = '[{"id":"a","text":"lampa rentgenowska i detektor obracają się wokół ciała pacjenta"},{"id":"b","text":"lampa rentgenowska obraca się wokół pacjenta, detektor jest nieruchomy"},{"id":"c","text":"lampa rentgenowska jest nieruchoma, detektor obraca się wokół pacjenta"}]'::jsonb,
+       explanation = 'Tomografia spiralna (helikalna): lampa i detektory obracaja sie, jednoczesnie stol z pacjentem przesuwa sie - tor skanowania ma ksztalt spirali.'
+ WHERE id = 'biofiz-s2-014';
+
+UPDATE public.questions
+   SET text = 'W elektroforezie stosuje się natężenie pola',
+       options = '[{"id":"a","text":"10 V/m lub 100 V/m"},{"id":"b","text":"10 mV/m lub 100 mV/m"},{"id":"c","text":"10 V/m2 lub 100 V/m2"}]'::jsonb,
+       explanation = 'W elektroforezie stosuje sie pole elektryczne ok. 1-20 V/cm (10-200 V/m). Zbyt silne pole powoduje nagrzewanie i denaturacje bialek.'
+ WHERE id = 'biofiz-s2-015';
+
+UPDATE public.questions
+   SET text = 'Układ termodynamiczny nazywamy izolowanym gdy',
+       options = '[{"id":"a","text":"nie wymienia z otoczeniem substancji, natomiast może wymieniać energię"},{"id":"b","text":"może wymieniać z otoczeniem zarówno energię jak i substancję"},{"id":"c","text":"może wymieniać z otoczeniem tylko substancję"},{"id":"d","text":"nie wymienia z otoczeniem ani energii, ani substancji"}]'::jsonb,
+       explanation = 'Uklad izolowany nie wymienia z otoczeniem ani energii, ani materii. Energia wewnetrzna i masa sa stałe. Entropia moze tylko rosnac (II zasada termodynamiki).'
+ WHERE id = 'biofiz-s2-016';
+
+UPDATE public.questions
+   SET text = 'Funkcje stanu',
+       options = '[{"id":"a","text":"ich zmiana nie zależy od sposobu, jakim została dokonana przemiana"},{"id":"b","text":"są niezależne od parametrów stanu"},{"id":"c","text":"ich zmiana zależy od sposobu, jakim została dokonana przemiana"},{"id":"d","text":"ich zmiana jest równa sumie wartości funkcji w stanie początkowym i końcowym"}]'::jsonb,
+       explanation = 'Funkcje stanu (U, H, S, G, F) zaleza tylko od stanu ukladu, nie od drogi przemiany. Ich zmiana miedzy dwoma stanami jest taka sama niezaleznie od sposobu przejscia.'
+ WHERE id = 'biofiz-s2-017';
+
+UPDATE public.questions
+   SET text = 'Entalpia H jest funkcją stanu w postaci (gdzie: U - energia wewnętrzna, p - ciśnienie, V - objętość)',
+       options = '[{"id":"a","text":"H = U - pV"},{"id":"b","text":"H = U + p/V"},{"id":"c","text":"H = U - p/V"},{"id":"d","text":"H = U + pV"}]'::jsonb,
+       explanation = 'Entalpia H = U + pV (energia wewnetrzna plus iloczyn cisnienia i objetosci). Reprezentuje calkowita energie cieplna ukladu przy stalym cisnieniu.'
+ WHERE id = 'biofiz-s2-018';
+
+UPDATE public.questions
+   SET text = 'Statystyczną interpretację pojęcia entropii wyraża wzór (gdzie: k - stała Boltzmanna, W - liczba mikrostanów)',
+       options = '[{"id":"a","text":"S = k ∙ lnW"},{"id":"b","text":"S = k/lnW"},{"id":"c","text":"S = 1/k ∙ lnW"},{"id":"d","text":"S = k ∙ ln(1/W)"}]'::jsonb,
+       explanation = 'Wzor Boltzmanna: S = k*ln(W), gdzie k to stala Boltzmanna, W to liczba mikrostanow (prawdopodobienstwo termodynamiczne). Wiekszy nieurzadkowanie = wiecej mikrostanow = wieksza entropia.'
+ WHERE id = 'biofiz-s2-019';
+
+UPDATE public.questions
+   SET text = 'Potencjał chemiczny składnika i w mieszaninie gazów, względnie w roztworze doskonałym, wyraża się wzorem (gdzie: μo- potencjał chemiczny składnika i w stanie czystym (x=1), w temperaturze T i przy i i ciśnieniu p)',
+       options = '[{"id":"a","text":"μ = μo + RT · ln( x ) i i i"},{"id":"b","text":"μ = μo + 1/RT ln( x ) i i i"},{"id":"c","text":"μ = μo + RT / ln( x ) i i i"},{"id":"d","text":"μ = μo + RT · ln( 1/x ) i i i"}]'::jsonb,
+       explanation = 'Potencjal chemiczny: mu_i = mu_i^0 + RT*ln(x_i), gdzie x_i to ulamek molowy. Okresla "skłonnosc" substancji do reakcji chemicznych lub transportu.'
+ WHERE id = 'biofiz-s2-020';
+
+UPDATE public.questions
+   SET text = 'Przepuszczalność błony dla danej substancji (jeżeli stężenie jest w mol/m3) jest wyrażona w',
+       options = '[{"id":"a","text":"m/s2"},{"id":"b","text":"m3/s"},{"id":"c","text":"m2/s"},{"id":"d","text":"m/s"}]'::jsonb,
+       explanation = 'Przepuszczalnosc blony P ma jednostke m/s (dlugosc/czas). Strumien J = P*(c1-c2), gdzie c w mol/m^3, wiec J w mol/(m^2*s), P = J/delta_c w m/s.'
+ WHERE id = 'biofiz-s2-021';
+
+UPDATE public.questions
+   SET text = 'Ciśnienie osmotyczne π',
+       options = '[{"id":"a","text":"zależy od rodzaju ciała rozpuszczonego"},{"id":"b","text":"wszystkie pozostałe odpowiedzi są prawdziwe"},{"id":"c","text":"nie zależy od liczby cząsteczek rozpuszczonych w jednostce objętości"},{"id":"d","text":"jest proporcjonalne do stężenia molowego roztworu i temperatury"}]'::jsonb,
+       explanation = 'Cisnienie osmotyczne pi = cRT (rownanie vant Hoffa). Proporcjonalne do stezenia molowego c i temperatury T. Nie zalezy od rodzaju substancji rozpuszczonej (wlasnosc koligatywna).'
+ WHERE id = 'biofiz-s2-022';
+
+UPDATE public.questions
+   SET text = 'W stanie stacjonarnym',
+       options = '[{"id":"a","text":"funkcje termodynamiczne układu zachowują stałą wartość w czasie"},{"id":"b","text":"w układzie nie zachodzą procesy tworzące entropię"},{"id":"c","text":"szybkość tworzenia się entropii jest stała i przyjmuje wartość największą"},{"id":"d","text":"zmienia się entropia układu, bez zmian entalpii swobodnej"}]'::jsonb,
+       explanation = 'Stan stacjonarny: funkcje termodynamiczne (T, p, stezenia) sa stale w czasie, mimo ze przez uklad przeplywaja strumienie energii i materii. Rozny od rownowagi termodynamicznej.'
+ WHERE id = 'biofiz-s2-023';
+
+UPDATE public.questions
+   SET text = 'Błona komórkowa',
+       options = '[{"id":"a","text":"ma proporcje składników budowy, które nie zależą od pełnionych funkcji przez daną komórkę"},{"id":"b","text":"według mozaikowego modelu, tworzy ją potrójna warstwa lipidowa"},{"id":"c","text":"jest zbudowana głównie z białek oraz związków lipidowych"},{"id":"d","text":"posiada białka odpowiedzialne głównie za nieselektywny transport"}]'::jsonb,
+       explanation = 'Blona komorkowa zbudowana jest glownie z lipidow (fosfolipidy, cholesterol) i bialek. Model mozaikowy Singera-Nicolsona: podwojna warstwa lipidowa z zanurzonymi bialkami.'
+ WHERE id = 'biofiz-s2-024';
+
+UPDATE public.questions
+   SET text = 'Transport aktywny przez błony odbywa się',
+       options = '[{"id":"a","text":"zgodnie z istniejącymi bodźcami, bez nakładu energii"},{"id":"b","text":"wbrew istniejącym bodźcom, bez nakładu energii"},{"id":"c","text":"zgodnie z istniejącymi bodźcami, z nakładem energii"},{"id":"d","text":"wbrew istniejącym bodźcom, z nakładem energii"}]'::jsonb,
+       explanation = 'Transport aktywny odbywa sie wbrew gradientowi (elektrochemicznemu, stezeniowemu) z nakladem energii (ATP). Przyklady: pompa Na/K-ATPaza, pompy jonowe.'
+ WHERE id = 'biofiz-s2-025';
+
+UPDATE public.questions
+   SET text = 'Entalpia swobodna substancji w stanie czystym zależy od:',
+       options = '[{"id":"a","text":"temperatury"},{"id":"b","text":"ciśnienia"},{"id":"c","text":"objętości"},{"id":"d","text":"A i B prawidłowe"}]'::jsonb,
+       explanation = 'Entalpia swobodna substancji czystej zalezy od temperatury i cisnienia: G = G(T,p). Dla mieszanin dodatkowo zalezy od skladu (stezen).'
+ WHERE id = 'biofiz-s2-026';
+
+UPDATE public.questions
+   SET text = 'Chaotyczne ruchy cząsteczek powodujące przypadkowe odchylenia dowolnej wielkości fizycznej od jej wartości średniej to',
+       options = '[{"id":"a","text":"fluktuacje"},{"id":"b","text":"ruchy Browna"},{"id":"c","text":"procesy samorzutne"},{"id":"d","text":"entropia"}]'::jsonb,
+       explanation = 'Fluktuacje to przypadkowe odchylenia wielkosci fizycznych od wartosci sredniej wywolane chaotycznymi ruchami czasteczek. Amplituda fluktuacji maleje ze wzrostem liczby czastek.'
+ WHERE id = 'biofiz-s2-027';
+
+UPDATE public.questions
+   SET text = 'U człowieka stan, w którym ciepło oddawane do otoczenia nie jest w stanie zbilansować ciepła wytwarzanego w organizmie to',
+       options = '[{"id":"a","text":"gorączka"},{"id":"b","text":"hipotermia"},{"id":"c","text":"sprawna termoregulacja"},{"id":"d","text":"hipertermia"}]'::jsonb,
+       explanation = 'Hipertermia: produkcja ciepla przewyzsza oddawanie, temperatura ciala rosnie niekontrolowanie. Rozna od goraczki (kontrolowana przez osrodek termoregulacji).'
+ WHERE id = 'biofiz-s2-028';
+
+UPDATE public.questions
+   SET text = 'Na wykresie została zilustrowana jedna z przemian gazu doskonałego, która?',
+       options = '[{"id":"a","text":"izochoryczna"},{"id":"b","text":"izotermiczna"},{"id":"c","text":"izobaryczna"},{"id":"d","text":"adiabatyczna"}]'::jsonb,
+       explanation = 'Przemiana izobaryczna (p=const) na wykresie pV to linia pozioma. Izotermiczna to hiperbola (pV=const), izochoryczna to linia pionowa, adiabatyczna to stroma krzywa.'
+ WHERE id = 'biofiz-s2-029';
+
+UPDATE public.questions
+   SET text = 'Przewodnictwo elektryczne G całej błony komórkowej jest',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalnie od oporu pojedynczego kanału"},{"id":"b","text":"odwrotnie proporcjonalnie od liczby kanałów"},{"id":"c","text":"wprost proporcjonalnie od liczby kanałów"},{"id":"d","text":"A i C prawidłowe"}]'::jsonb,
+       explanation = 'Przewodnictwo blony G = n*g, gdzie n to liczba kanalow, g to przewodnictwo pojedynczego kanalu. G jest wprost proporcjonalne do liczby kanalow, a odwrotnie proporcjonalne do oporu pojedynczego kanału.'
+ WHERE id = 'biofiz-s2-030';
+
+UPDATE public.questions
+   SET text = 'Jeśli nad układem została wykonana praca i układ oddał ciepło to',
+       options = '[{"id":"a","text":"W>0, Q<0, ΔU<0"},{"id":"b","text":"W<0, Q<0, ΔU<0"},{"id":"c","text":"W<0, Q>0, a o znaku ΔU nie można nic powiedzieć"},{"id":"d","text":"W>0, Q<0, a o znaku ΔU nie można nic powiedzieć"}]'::jsonb,
+       explanation = 'Praca wykonana NAD ukladem: W> 0. Uklad ODDAL cieplo: Q< 0. Zmiana energii wewnetrznej: dU = Q + W, wiec znak dU zalezy od wartosci Q i W.'
+ WHERE id = 'biofiz-s2-031';
+
+UPDATE public.questions
+   SET text = 'Zaznacz odpowiedź, w której wszystkie wymienione wielkości są funkcjami stanu',
+       options = '[{"id":"a","text":"Ciśnienie, Temperatura, Entropia"},{"id":"b","text":"Entalpia, Entropia, Energia wewnętrzna"},{"id":"c","text":"Energia swobodna, Entalpia swobodna, Entropia"},{"id":"d","text":"Energia swobodna, Ciśnienie, Entropia"}]'::jsonb,
+       explanation = 'Funkcje stanu: H (entalpia), S (entropia), U (energia wewnetrzna), G (entalpia swobodna), F (energia swobodna). Cisnienie i temperatura to parametry stanu.'
+ WHERE id = 'biofiz-s2-032';
+
+UPDATE public.questions
+   SET text = 'Jak nazywa się zjawisko unoszenia ciepła za pośrednictwem poruszającej się substancji?',
+       options = '[{"id":"a","text":"parowanie"},{"id":"b","text":"konwekcja"},{"id":"c","text":"promieniowanie"},{"id":"d","text":"przewodnictwo cieplne"}]'::jsonb,
+       explanation = 'Konwekcja to unoszenie ciepla przez poruszajaca sie materie (gaz, ciecz). Przewodzenie - przez zderzenia czasteczek, promieniowanie - przez fale EM.'
+ WHERE id = 'biofiz-s2-033';
+
+UPDATE public.questions
+   SET text = 'W krzywej przebiegu potencjału czynnościowego można wyróżnić kilka faz. Faza, w czasie której potencjał rośnie do wartości około 30-35 mV to:',
+       options = '[{"id":"a","text":"faza repolaryzacji"},{"id":"b","text":"potencjał następczy hiperpolaryzacyjny"},{"id":"c","text":"potencjał następczy depolaryzacyjny"},{"id":"d","text":"faza depolaryzacji"}]'::jsonb,
+       explanation = 'Faza depolaryzacji: potencjal blonowy szybko rosnie od ok. -70 mV do ok. +30 mV wskutek otwarcia kanalow Na+ i naplywu jonow sodu do komorki.'
+ WHERE id = 'biofiz-s2-034';
+
+UPDATE public.questions
+   SET text = 'W układzie otwartym, w stanie równowagi szybkość tworzenia się entropii jest',
+       options = '[{"id":"a","text":"maksymalna"},{"id":"b","text":"wartością ujemną"},{"id":"c","text":"ma ustaloną, charakterystyczną dla tego stanu wartość, różną od zera"},{"id":"d","text":"równa zero 𝑑𝑛 𝑑𝑐"}]'::jsonb,
+       explanation = 'W stanie rownowagi termodynamicznej szybkosc tworzenia entropii wynosi zero (dS/dt = 0). W stanie stacjonarnym jest stała, ale rozna od zera.'
+ WHERE id = 'biofiz-s2-035';
+
+UPDATE public.questions
+   SET text = 'W naczyniu zamkniętym mamy parę nasyconą, ale na dnie nie ma już cieczy. Wzrost temperatury tej pary',
+       options = '[{"id":"a","text":"spowoduje wzrost ciśnienia, ale para nie będzie już parą nasyconą"},{"id":"b","text":"nie spowoduje wzrostu jej ciśnienia"},{"id":"c","text":"spowoduje wzrost jej ciśnienia i w dalszym ciągu będzie to para nasycona"}]'::jsonb,
+       explanation = 'Para nasycona jest w rownowadze z ciecza. Bez cieczy po podgrzaniu cisnienie wzrosnie, ale para nie bedzie juz nasycona - stanie sie para przegrzana.'
+ WHERE id = 'biofiz-s2-036';
+
+UPDATE public.questions
+   SET text = 'Wielkość fizyczna, która wyraża liczbowo pracę wykonaną podczas zmiany liczby moli składnika roztworu o jeden, przy zachowaniu stałości temperatury, ciśnienia oraz ilości innych składników wchodzących w skład układu to',
+       options = '[{"id":"a","text":"współczynnik aktywności"},{"id":"b","text":"entalpia swobodna"},{"id":"c","text":"entalpia tworzenia"},{"id":"d","text":"potencjał chemiczny"}]'::jsonb,
+       explanation = 'Potencjal chemiczny mu = (dG/dn)_T,p - zmiana entalpii swobodnej przy zmianie liczby moli skladnika. Ma jednostke J/mol.'
+ WHERE id = 'biofiz-s2-037';
+
+UPDATE public.questions
+   SET text = 'W układzie izolowanym, w którym zachodzi proces nieodwracalny entropia',
+       options = '[{"id":"a","text":"osiąga wartość maksymalną w stanie równowagi"},{"id":"b","text":"jest stała"},{"id":"c","text":"rośnie"},{"id":"d","text":"maleje"}]'::jsonb,
+       explanation = 'W ukladzie izolowanym entropia rosnie podczas procesow nieodwracalnych (II zasada). Osiaga maksimum w stanie rownowagi termodynamicznej.'
+ WHERE id = 'biofiz-s2-038';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z drugą zasadą termodynamiki',
+       options = '[{"id":"a","text":"lodówki mogą działać bez wkładu energii"},{"id":"b","text":"sprawność silników cieplnych jest większa niż silników elektrycznych"},{"id":"c","text":"możliwe jest zbliżenie się do absolutnej temperatury zerowej z ograniczoną dokładnością"},{"id":"d","text":"ciepło jest transportowana spontanicznie tylko z obszaru o wyższej do obszaru o niższej temperaturze"}]'::jsonb,
+       explanation = 'II zasada: cieplo samoistnie przeplywla tylko od ciala cieplejszego do zimniejszego. Lodówka wymaga pracy, sprawnosc silnika cieplnego < 100%.'
+ WHERE id = 'biofiz-s2-039';
+
+UPDATE public.questions
+   SET text = 'Która z przedstawionych wielkości fizycznych nie jest funkcją stanu?',
+       options = '[{"id":"a","text":"entalpia swobodna"},{"id":"b","text":"potencjał chemiczny"},{"id":"c","text":"energia wewnętrzna"},{"id":"d","text":"praca"}]'::jsonb,
+       explanation = 'Praca i cieplo NIE sa funkcjami stanu - zaleza od drogi przemiany. Energia wewnetrzna, entalpia, entropia, entalpia swobodna, potencjal chemiczny - sa funkcjami stanu.'
+ WHERE id = 'biofiz-s2-040';
+
+UPDATE public.questions
+   SET text = 'Konwekcja to',
+       options = '[{"id":"a","text":"wymiana ciepła przez metabolizm organizmu"},{"id":"b","text":"wymiana ciepła przez przewodzenie"},{"id":"c","text":"wymiana ciepła przez odparowanie"},{"id":"d","text":"wymiana ciepła przez opary gazu grzewczego"}]'::jsonb,
+       explanation = 'Konwekcja to wymiana ciepla przez ruch masy plynów (gazu lub cieczy). Moze byc naturalna (wywolana roznicą gestosc) lub wymuszona (wentylator, pompa).'
+ WHERE id = 'biofiz-s2-041';
+
+UPDATE public.questions
+   SET text = 'Funkcjami stanu termodynamicznego są',
+       options = '[{"id":"a","text":"energia wewnętrzna, entalpia, entalpia swobodna, potencjał chemiczny, energia swobodna"},{"id":"b","text":"energia swobodna, energia wewnętrzna, ciepło, entalpia swobodna, entropia"},{"id":"c","text":"energia swobodna, entalpia, entalpia swobodna, potencjał chemiczny, praca"},{"id":"d","text":"energia wewnętrzna, entalpia, entalpia swobodna, entropia, praca, ciepło"}]'::jsonb,
+       explanation = 'Funkcje stanu: U (energia wew.), H (entalpia), G (entalpia swobodna), F (energia swobodna), S (entropia), mu (potencjal chemiczny). Praca i cieplo - nie.'
+ WHERE id = 'biofiz-s2-042';
+
+UPDATE public.questions
+   SET text = 'Entropia',
+       options = '[{"id":"a","text":"nie zmienia się podczas procesów nieodwracalnych"},{"id":"b","text":"zmniejsza się podczas nieodwracalnych procesów"},{"id":"c","text":"nie jest funkcją stanu"},{"id":"d","text":"jest wprost proporcjonalna do prawdopodobieństwa termodynamicznego"}]'::jsonb,
+       explanation = 'Entropia S = k*ln(W) - jest wprost proporcjonalna do logarytmu prawdopodobienstwa termodynamicznego W. Rosnie w procesach nieodwracalnych. Jest funkcja stanu.'
+ WHERE id = 'biofiz-s2-043';
+
+UPDATE public.questions
+   SET text = 'Któremu z poniższych procesów towarzyszy zmniejszenie entropii układu?',
+       options = '[{"id":"a","text":"odparowanie"},{"id":"b","text":"zamrożenie"},{"id":"c","text":"rozpuszczenie"},{"id":"d","text":"rozprężanie gazu"}]'::jsonb,
+       explanation = 'Zamrozenie zmniejsza entropie - czasteczki przechodza z nieurzadkowanego stanu cieklego do uporzadkowanego stanu stalego. Parowanie, rozpuszczanie, rozprezanie - zwiekszaja S.'
+ WHERE id = 'biofiz-s2-044';
+
+UPDATE public.questions
+   SET text = 'Współczynnik dyfuzji nie jest',
+       options = '[{"id":"a","text":"malejący wraz ze wzrostem temperatury"},{"id":"b","text":"współczynnikiem proporcjonalności w prawie Ficka"},{"id":"c","text":"zależny od kształtu cząsteczek substancji transportowanej"},{"id":"d","text":"zależny od wielkości cząsteczek substancji transportowanej"}]'::jsonb,
+       explanation = 'Wspolczynnik dyfuzji D ROSNIE ze wzrostem temperatury (wieksze ruchy termiczne). Zalezy od wielkosci i ksztaltu czasteczek, jest wspolczynnikiem w prawie Ficka.'
+ WHERE id = 'biofiz-s2-045';
+
+UPDATE public.questions
+   SET text = 'Klasyczna termodynamika nie jest w stanie opisać',
+       options = '[{"id":"a","text":"procesów odwracalnych"},{"id":"b","text":"warunków równowagi układu"},{"id":"c","text":"przebiegu procesów w czasie"},{"id":"d","text":"zmian energii w układzie"}]'::jsonb,
+       explanation = 'Termodynamika klasyczna opisuje stany rownowagi i ich zmiany, ale nie przebieg procesow w czasie (kinetyka). Do opisu procesow potrzebna jest termodynamika nierownowagowa.'
+ WHERE id = 'biofiz-s2-046';
+
+UPDATE public.questions
+   SET text = 'Strumień dyfuzji przez błonę zależy od',
+       options = '[{"id":"a","text":"przepuszczalności błony i różnicy stężeń molekuł po obydwu stronach błony"},{"id":"b","text":"od powierzchni błony i jej przepuszczalności"},{"id":"c","text":"tylko od przepuszczalności błony"},{"id":"d","text":"tylko od różnicy stężeń molekuł po obydwu stronach błony"}]'::jsonb,
+       explanation = 'Strumien dyfuzji J = P*S*delta_c, gdzie P to przepuszczalnosc, S to powierzchnia, delta_c to roznica stezen. Zalezy od przepuszczalnosci i roznicy stezen.'
+ WHERE id = 'biofiz-s2-047';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z drugą zasadą termodynamiki podczas dowolnego procesu całkowita entropia wszechświata',
+       options = '[{"id":"a","text":"wzrasta lub pozostaje stała"},{"id":"b","text":"zmniejsza się"},{"id":"c","text":"wzrasta"},{"id":"d","text":"pozostaje stałe"}]'::jsonb,
+       explanation = 'II zasada: calkowita entropia wszechswiata (uklad + otoczenie) wzrasta lub pozostaje stala. W procesach odwracalnych dS_total = 0, w nieodwracalnych dS_total > 0.'
+ WHERE id = 'biofiz-s2-048';
+
+UPDATE public.questions
+   SET text = 'Układ termodynamiczny można uznać za układ otwarty',
+       options = '[{"id":"a","text":"jeśli wymienia on tylko energię ze swoim otoczeniem"},{"id":"b","text":"jeśli jego masa jest stała"},{"id":"c","text":"jeśli wymienia on materię i energię ze swoim otoczeniem"},{"id":"d","text":"jeśli może on wymieniać dowolną energię ze swoim otoczeniem, z wyjątkiem materiału i ciepła"}]'::jsonb,
+       explanation = 'Uklad otwarty wymienia z otoczeniem zarowno energie jak i materie. Uklad zamkniety wymienia tylko energie. Uklad izolowany nie wymienia niczego.'
+ WHERE id = 'biofiz-s2-049';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z uogólnioną drugą zasadą termodynamiki na przyrost entropii dS układu składa się',
+       options = '[{"id":"a","text":"przyrost dSE = dQe/T wynikający z dodania ciepła w ilości dQe z otoczenia do układu oraz przyrost dSi = dQi/T będący wynikiem procesów odwracalnych"},{"id":"b","text":"przyrost dSE = dQe/T wynikający z dodania ciepła w ilości dQe z układu do otoczenia oraz przyrost dSi = dQi/T będący wynikiem procesów nieodwracalnych"},{"id":"c","text":"przyrost dSE = dQe/T będący wynikiem procesów nieodwracalnych dQe oraz przyrost dSi = dQi/T wynikający z dodanie ciepła procesów nieodwracalnych"},{"id":"d","text":"przyrost dSE = dQe/T wynikający z dodania ciepła w ilości dQe z otoczenia do układu oraz przyrost dSi = dQi/T będący wynikiem procesów nieodwracalnych"}]'::jsonb,
+       explanation = 'Przyrost entropii: dS = dS_e + dS_i, gdzie dS_e = dQ_e/T (wymiana z otoczeniem), dS_i ≥ 0 (produkcja wewnętrzna przez NIEODWRACALNE procesy). Procesy odwracalne: dS_i = 0. Rzeczywiste procesy zawsze mają dS_i > 0.'
+ WHERE id = 'biofiz-s2-050';
+
+UPDATE public.questions
+   SET text = 'Jakim typem układu termodynamicznego jest żywy organizm?',
+       options = '[{"id":"a","text":"zamkniętym"},{"id":"b","text":"otwartym"},{"id":"c","text":"izolowanym"},{"id":"d","text":"adiabatycznym"}]'::jsonb,
+       explanation = 'Zywy organizm to uklad otwarty - wymienia z otoczeniem zarowno energie (cieplo, praca) jak i materie (pokarm, tlen, CO2, metabolity). Utrzymuje stan stacjonarny.'
+ WHERE id = 'biofiz-s2-051';
+
+UPDATE public.questions
+   SET text = 'Które z poniższych stwierdzeń dotyczy procesów odwracalnych?',
+       options = '[{"id":"a","text":"praca wykonana przez układ jest największa"},{"id":"b","text":"wydajność procesu wynosi zawsze 100%"},{"id":"c","text":"aby przywrócić pierwotny stan, potrzeba więcej energii niż ta uwalniana podczas procesu"},{"id":"d","text":"praca wykonana nad układem jest największa"}]'::jsonb,
+       explanation = 'W procesach odwracalnych praca wykonana PRZEZ uklad jest maksymalna (lub praca wykonana NAD ukladem jest minimalna). Proces przebiega przez stany rownowagowe.'
+ WHERE id = 'biofiz-s2-052';
+
+UPDATE public.questions
+   SET text = 'Współczynnik dyfuzji:',
+       options = '[{"id":"a","text":"zależy od temperatury, natomiast nie zależy od rodzaju substancji rozpuszczonej"},{"id":"b","text":"zależy od rodzaju substancji rozpuszczonej, rozpuszczalnika, temperatury"},{"id":"c","text":"nie zależy od temperatury"},{"id":"d","text":"zależy tylko od temperatury"}]'::jsonb,
+       explanation = 'Wspolczynnik dyfuzji D zalezy od: temperatury, rodzaju substancji rozpuszczonej, rozpuszczalnika, lepkosci osrodka. D = kT/(6*pi*eta*r) - rownanie Stokesa-Einsteina.'
+ WHERE id = 'biofiz-s2-053';
+
+UPDATE public.questions
+   SET text = 'Przy obniżeniu temperatury ciała o masie 75kg o temperaturę 2K ciepło tracone do otoczenia wynosi',
+       options = '[{"id":"a","text":"150 J"},{"id":"b","text":"525 kcal"},{"id":"c","text":"750 J"},{"id":"d","text":"525 KJ"}]'::jsonb,
+       explanation = 'Q = m*c*delta_T. Dla ciala ludzkiego c ≈ 3.5 kJ/(kg*K). Q = 75 kg * 3.5 kJ/(kg*K) * 2 K = 525 kJ. Uwaga: cieplo wlasciwe ciala rozni sie od wody.'
+ WHERE id = 'biofiz-s2-054';
+
+UPDATE public.questions
+   SET text = 'Czas trwania potencjału czynnościowego wynosi od około 0,5 do 2 ms',
+       options = '[{"id":"a","text":"prawda"},{"id":"b","text":"fałsz"}]'::jsonb,
+       explanation = 'Potencjal czynnosciowy trwa ok. 1-2 ms w neuronach, nieco dluzej w komorce miesniowej serca (200-400 ms). Faza depolaryzacji to ok. 0.5 ms.'
+ WHERE id = 'biofiz-s2-055';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z pierwszą zasadą termodynamiki (ΔU=Q+W) zmiana energii wewnętrznej układu jest równa sumie pracy i',
+       options = '[{"id":"a","text":"ciepła traconego przez układ"},{"id":"b","text":"ciepła dodanego do układu"},{"id":"c","text":"ciepła wytworzonego przez układ"},{"id":"d","text":"strumieniowi cieplnemu"}]'::jsonb,
+       explanation = 'I zasada: dU = Q + W. Q to cieplo DODANE do ukladu (konwencja Gibbs-Helmholtza). Jesli cieplo jest oddawane, Q < 0.'
+ WHERE id = 'biofiz-s2-056';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z 1 zasadą termodynamiki zmiana energii wewnętrznej układu jest równa',
+       options = '[{"id":"a","text":"sumie energii przekazanej do układu i pracy wykonanej na układzie"},{"id":"b","text":"ilorazowi energii przekazanej do układu i pracy wykonanej na układzie"},{"id":"c","text":"różnicy energii przekazanej do układu i pracy wykonanej na układzie"},{"id":"d","text":"iloczynowi energii przekazanej do układu i pracy wykonanej na układzie"}]'::jsonb,
+       explanation = 'I zasada termodynamiki: dU = Q + W. Zmiana energii wewnetrznej = cieplo dostarczone + praca wykonana NA ukladzie. Obie wielkosci dodajemy.'
+ WHERE id = 'biofiz-s2-057';
+
+UPDATE public.questions
+   SET text = 'Za selektywny transport przez błony komórkowe odpowiadają związane z błoną białka integralne i powierzchniowe',
+       options = '[{"id":"a","text":"prawda"},{"id":"b","text":"fałsz"}]'::jsonb,
+       explanation = 'Bialka integralne (transmembranowe) odpowiadaja za selektywny transport: kanaly jonowe, transportery, pompy. Bialka peryferyjne pelnia inne funkcje.'
+ WHERE id = 'biofiz-s2-058';
+
+UPDATE public.questions
+   SET text = 'Próg pobudliwości to',
+       options = '[{"id":"a","text":"wartość potencjału,powyżej którego może zostać wyzwolony potencjał czynnościowy"},{"id":"b","text":"wartość potencjału,poniżej którego może zostać wyzwolony potencjał czynnościowy"}]'::jsonb,
+       explanation = 'Prog pobudliwosci to wartosc potencjalu (ok. -55 mV), powyzej ktorej zostaje wyzwolony potencjal czynnosciowy. Ponizej progu - bodziec podprogowy.'
+ WHERE id = 'biofiz-s2-059';
+
+UPDATE public.questions
+   SET text = 'Układ termodynamiczny który nie wymienia z otoczeniem substancji, ale może wymieniać energię, to układ',
+       options = '[{"id":"a","text":"zamknięty"},{"id":"b","text":"otwarty"},{"id":"c","text":"izolowany"}]'::jsonb,
+       explanation = 'Uklad zamkniety nie wymienia materii z otoczeniem, ale moze wymieniac energie (cieplo, prace). Przyklad: gaz w cylindrze z ruchomym tlokiem.'
+ WHERE id = 'biofiz-s2-060';
+
+UPDATE public.questions
+   SET text = 'Proces przekazywania ciepła do otoczenia może odbywać się w drodze',
+       options = '[{"id":"a","text":"konwekcji, promieniowania i parowania"},{"id":"b","text":"konwekcji, promieniowania i radiacji"},{"id":"c","text":"kondukcji, konwekcji i radiacji"},{"id":"d","text":"kondukcji, promieniowania i radiacji"}]'::jsonb,
+       explanation = 'Cieplo przekazywane jest przez: konwekcje (unoszenie przez plyny), promieniowanie (fale EM), parowanie (zmiana stanu). Kondukcja = przewodzenie. Radiacja = promieniowanie.'
+ WHERE id = 'biofiz-s2-062';
+
+UPDATE public.questions
+   SET text = 'Entalpia swobodna danej substancji zależy od ciśnienia, temperatury i jej ilości',
+       options = '[{"id":"a","text":"prawda"},{"id":"b","text":"fałsz"}]'::jsonb,
+       explanation = 'Entalpia swobodna G zalezy od temperatury T, cisnienia p i ilosci substancji n: G = G(T, p, n). Dla mieszanin dodatkowo od skladu.'
+ WHERE id = 'biofiz-s2-063';
+
+UPDATE public.questions
+   SET text = 'Energia wewnętrzna organizmu nie ulega zmianie i ciało pozostaje w stanie stacjonarnym gdy',
+       options = '[{"id":"a","text":"moc cieplna jest mniejsza od strumienia cieplnego"},{"id":"b","text":"moc ciepła jest równa strumieniowi cieplnemu"},{"id":"c","text":"moc cieplna jest większa od strumienia cieplnego"},{"id":"d","text":"moc cieplna jest dwa razy większa od strumienia cieplnego"}]'::jsonb,
+       explanation = 'Stan stacjonarny: moc cieplna (produkcja ciepla) = strumien cieplny (oddawanie ciepla). Energia wewnetrzna i temperatura sa stale.'
+ WHERE id = 'biofiz-s2-064';
+
+UPDATE public.questions
+   SET text = 'Potencjał wewnątrz komórki jest ujemny w stosunku do potencjału elektrycznego jej otoczenia',
+       options = '[{"id":"a","text":"prawda"},{"id":"b","text":"fałsz"}]'::jsonb,
+       explanation = 'Potencjal spoczynkowy: wnetrze komorki jest ujemne (ok. -70 mV) wzgledem zewnetrza. Wynika z asymetrycznego rozkladu jonow K+, Na+, Cl- i pompy Na/K.'
+ WHERE id = 'biofiz-s2-065';
+
+UPDATE public.questions
+   SET text = 'W trakcie pomiarów i ich opracowania istotne jest, aby zwracać uwagę na możliwe błędy. Jednym z błędów jest błąd systematyczny. Błąd ten może być spowodowany przez',
+       options = '[{"id":"a","text":"nieprawidłowe działanie przyrządu pomiarowego"},{"id":"b","text":"niepoprawny zapis danych pomiarowych"},{"id":"c","text":"zakłócenia zewnętrzne pojawiające się w trakcie pomiaru"},{"id":"d","text":"dobranie zbyt małej ilości pomiarów"}]'::jsonb,
+       explanation = 'Dobranie zbyt malej liczby pomiarow to blad metodyczny/systematyczny zwiazany z planowaniem eksperymentu, nie blad pomiaru. Pozostale to przyczyny bledow przypadkowych/systematycznych.'
+ WHERE id = 'biofiz-s2-066';
+
+UPDATE public.questions
+   SET text = 'Na zachowanie się krwi w naczyniach w trakcie przepływu ma istotny wpływ współczynnik lepkości krwi. Współczynnik lepkości krwi może zwiększyć się w przypadku:',
+       options = '[{"id":"a","text":"zmniejszenia hematokrytu lub zmniejszenia temperatury krwi"},{"id":"b","text":"wzrostu hematokrytu lub zmniejszenia temperatury krwi"},{"id":"c","text":"zwiększenia hematokrytu lub zwiększenia temperatury krwi"},{"id":"d","text":"zmniejszenia hematokrytu lub wzrostu temperatury krwi"}]'::jsonb,
+       explanation = 'Lepkosc krwi rosnie przy: wzroscie hematokrytu (wiecej komorek) i spadku temperatury (wieksza lepkosc osocza). Te same czynniki co dla kazdej cieczy plus agregacja erytrocytow.'
+ WHERE id = 'biofiz-s2-067';
+
+UPDATE public.questions
+   SET text = 'Wielkością związaną ze strukturą widmową dźwięku jest barwa dźwięku. W przypadku dźwięków złożonych barwa dźwięku zależy od',
+       options = '[{"id":"a","text":"częstotliwości tonu podstawowego i tonów harmonicznych"},{"id":"b","text":"częstotliwości tonu podstawowego i jego natężenia"},{"id":"c","text":"natężeń tonu podstawowego i tonów harmonicznych"},{"id":"d","text":"liczby tonów harmonicznych i ich natężeń"}]'::jsonb,
+       explanation = '(Pilawski: “Dźwięki harmoniczne złożone, poza drganiem podstawowym o częstotliwości v, decydującym o ich wysokości, zawierają tony harmoniczne o częstotliwości 2v, 3v… Barwa dźwięku zależy od liczby tonów harmonicznych oraz ich amplitud, czyli od struktury widmowej”) Ton podstawowy to ton określający wysokość dźwięku nie jego barwę.'
+ WHERE id = 'biofiz-s2-068';
+
+UPDATE public.questions
+   SET text = 'Światło po odbiciu od powierzchni dielektryka pod kątem zwanym kątem Brewstera jest spolaryzowane liniowo. Warunek, jaki musi spełniać kąt padania (Φ) określa wzór (n - współczynnik załamania światła na powierzchni dielektryka)',
+       options = '[{"id":"a","text":"n = ctg(Φ)"},{"id":"b","text":"n = tg(Φ)"},{"id":"c","text":"n = cos(Φ)"},{"id":"d","text":"n = sin(Φ)"}]'::jsonb,
+       explanation = 'Prawo Brewstera: n = tg(phi_B), gdzie phi_B to kat Brewstera. Pod tym katem swiatlo odbite jest calkowicie spolaryzowane (kierunek prostopadly do plaszczyzny padania).'
+ WHERE id = 'biofiz-s2-069';
+
+UPDATE public.questions
+   SET text = 'Wzór Einsteina dotyczy lepkości względnej roztworu (η ) ma postać η = η (1+2,5 Φ). Symbol Φ w 0 oznacza',
+       options = '[{"id":"a","text":"strumień objętościowy cząsteczek rozpuszczonych"},{"id":"b","text":"strumień objętościowy roztworu"},{"id":"c","text":"stosunek objętości cząsteczek rozpuszczonych do objętości roztworu"},{"id":"d","text":"stosunek objętości cząsteczek rozpuszczonych do objętości rozpuszczalnika"}]'::jsonb,
+       explanation = 'We wzorze Einsteina phi to ulamek objetosciowy - stosunek objetosci czastek rozpuszczonych do calkowitej objetosci roztworu. Dla sfer: eta_wzgl = 1 + 2.5*phi.'
+ WHERE id = 'biofiz-s2-070';
+
+UPDATE public.questions
+   SET text = 'Pisanie niepoprawnych jednostek, np. mPa zamiast Pa. Powoduje to, że wielkość zapisana znacznie odbiega (co do wartości) od pozostałych danych szeregu pomiarowego. Tego typu błąd nazwiemy błędem',
+       options = '[{"id":"a","text":"bezwzględnym"},{"id":"b","text":"grubym"},{"id":"c","text":"systematycznym"},{"id":"d","text":"przypadkowym"}]'::jsonb,
+       explanation = 'Blad gruby (pomylka) to oczywisty blad jak zly zapis jednostek, pomylka w obliczeniach, odczyt zlej skali. Wyniki z bledami grubymi nalezy odrzucic.'
+ WHERE id = 'biofiz-s2-071';
+
+UPDATE public.questions
+   SET text = 'Dielektryk jest substancją zawierającą cząsteczki cechujące się trwałym rozsunięciem ładunków na cząsteczce, któremu można przyporządkować wektor momentu dipolowego. Makroskopowo wielkością definiowaną dla dielektryka, którą można mierzyć, jest wektor polaryzacji próbki definiowany jako',
+       options = '[{"id":"a","text":"iloczyn momentów dipolowych do objętości próbki"},{"id":"b","text":"suma momentów dipolowych do powierzchni bocznej próbki"},{"id":"c","text":"iloczyn momentów dipolowych do powierzchni bocznej próbki"},{"id":"d","text":"suma momentów dipolowych do objętości próbki"}]'::jsonb,
+       explanation = 'Polaryzacja dielektryka P = suma momentow dipolowych / objetosc. Jednostka: C/m^2. Opisuje gestosc momentu dipolowego w materiale.'
+ WHERE id = 'biofiz-s2-072';
+
+UPDATE public.questions
+   SET text = 'Fala ultradźwiękowa, natrafiając na granicę dwóch ośrodków o różnych impedancjach akustycznych, ulega częściowemu odbiciu. Współczynnik odbicia fali ultradźwiękowej na granicy powietrze-woda jest',
+       options = '[{"id":"a","text":"mały i wynosi około 1%"},{"id":"b","text":"zależy od długości fali i mieści się w zakresie od 60 do 70%"},{"id":"c","text":"duży i wynosi około 99%"},{"id":"d","text":"zależy od częstotliwości fali i mieści się w zakresie od 60 do 70%"}]'::jsonb,
+       explanation = 'Na granicy tkanek miekkich (podobna impedancja) odbija sie ok. 1% energii. Na granicy tkanka-kosć lub tkanka-powietrze odbicie jest duze (ok. 99%) - duza roznica impedancji.'
+ WHERE id = 'biofiz-s2-073';
+
+UPDATE public.questions
+   SET text = 'W widmie emisyjnym lampy rentgenowskiej wyróżnić można widmo ciągłe i charakterystyczne. Widmo ciągłe powstaje na skutek hamowania elektronów na',
+       options = '[{"id":"a","text":"katodzie, a najkrótsza długość fali w tym widmie jest odwrotnie proporcjonalna do napięcia przyspieszającego elektrony"},{"id":"b","text":"katodzie, a najkrótsza długość fali w tym widmie jest proporcjonalna do napięcia przyspieszającego elektrony"},{"id":"c","text":"anodzie, a najkrótsza długość fali w tym widmie jest odwrotnie proporcjonalna do napięcia przyspieszającego elektrony"},{"id":"d","text":"anodzie, a najkrótsza długość fali w tym widmie jest proporcjonalna do napięcia przyspieszającego elektrony"}]'::jsonb,
+       explanation = 'Widmo ciagle RTG powstaje na anodzie (hamowanie elektronow). Lambda_min = hc/(eU) - najkrotsza dlugosc fali jest odwrotnie proporcjonalna do napiecia przyspieszajacego.'
+ WHERE id = 'biofiz-s2-074';
+
+UPDATE public.questions
+   SET text = 'Na układ dwóch polaryzatorów (polaryzator i analizator) pada wiązka światła monochromatycznego o natężeniu I . Po przejściu przez obydwa polaryzatory rejestrowana jest wiązka świetlna o natężeniu I równym (α - kąt między płaszczyznami przecięcia głównego polaryzatora i analizatora, określających płaszczyzny drgań światła spolaryzowanego)',
+       options = '[{"id":"a","text":"I = I •cos(α)"},{"id":"b","text":"I = I •sin(α)"},{"id":"c","text":"I = I •cos2(α)"},{"id":"d","text":"I = I •sin2(α)"}]'::jsonb,
+       explanation = 'Prawo Malusa: I = I_0 * cos^2(alpha), gdzie alpha to kat miedzy kierunkami polaryzacji polaryzatora i analizatora. Dla alpha=90 stopni I=0.'
+ WHERE id = 'biofiz-s2-075';
+
+UPDATE public.questions
+   SET text = 'W celu określenia dokładności pomiarowej posługujemy się pojęciem błędu. Różnicę między średnią arytmetyczną a wielkością zmierzoną nazwiemy błędem',
+       options = '[{"id":"a","text":"względnym"},{"id":"b","text":"bezwzględnym"},{"id":"c","text":"systematycznym"},{"id":"d","text":"standardowym"}]'::jsonb,
+       explanation = 'Blad bezwzgledny to roznica miedzy srednia wartoscia pomiarow a wartoscia rzeczywista (lub przyjeta za rzeczywista). Ma te sama jednostke co mierzona wielkosc.'
+ WHERE id = 'biofiz-s2-076';
+
+UPDATE public.questions
+   SET text = 'Fale ultrasonograficzne mogą rozchodzić w tkankach organizmu człowieka, dzięki czemu jest możliwe obrazowanie ich struktury wewnętrznej. Prędkość fali ultrasonograficznej w tkankach miękkich jest',
+       options = '[{"id":"a","text":"taka sama jest jej prędkość w kościach, a nieco większa niż w wodzie"},{"id":"b","text":"znacznie mniejsza niż jej prędkość w kościach, a nieco większa niż w wodzie"},{"id":"c","text":"znacznie większa niż jej prędkość w kościach, a nieco większa niż w wodzie"},{"id":"d","text":"nieco większa niż jej prędkość w kościach i taka sama jak w wodzie"}]'::jsonb,
+       explanation = 'Predkosc USG w tkankach miekkich (ok. 1540 m/s) jest znacznie mniejsza niz w kosciach (3000-4000 m/s), a nieco wieksza niz w wodzie (1480 m/s).'
+ WHERE id = 'biofiz-s2-077';
+
+UPDATE public.questions
+   SET text = 'Po przyłożeniu do ciała stałego (np. pręt) siły dochodzi do odkształcenia ciała, zarówno w kierunku działania siły jak i w kierunku prostopadłym do siły.
+
+Iloraz wydłużenia względnego poprzecznego do wydłużenia względnego podłużnego nazwiemy',
+       options = '[{"id":"a","text":"współczynnikiem Poissona"},{"id":"b","text":"współczynnikiem Hooke’a"},{"id":"c","text":"modułem Maxwella"},{"id":"d","text":"modułem Younga"}]'::jsonb,
+       explanation = 'Współczynnik Poissona to stosunek względnego odkształcenia poprzecznego do względnego odkształcenia podłużnego przy jednoosiowym stanie naprężenia. Gdyby pytano o stosunek NAPRĘŻENIA do wydłużenia względnego, wtedy odpowiedzią byłby Moduł Younga (E = sigma / epsilon). To on mówi nam, jak "sztywny" jest materiał (jak dużą siłę trzeba przyłożyć, by go rozciągnąć).'
+ WHERE id = 'biofiz-s2-078';
+
+UPDATE public.questions
+   SET text = 'Przy przechodzeniu promieniowania rentgenowskiego lub gamma dochodzi do oddziaływania tych promieniowań z materią poprzez zjawiska: fotoelektryczne, Comptona lub kreacji par. W przypadku rozproszenia Comptonowskiego, możemy stwierdzić, że w wyniku tego oddziaływania',
+       options = '[{"id":"a","text":"zarówno długość jak i częstotliwość fali promieniowania zmniejszają się"},{"id":"b","text":"długość fali promieniowania zmniejsza się"},{"id":"c","text":"częstotliwość fali promieniowania zwiększa się"},{"id":"d","text":"długość fali promieniowania zwiększa się a częstotliwość zmniejsza się"}]'::jsonb,
+       explanation = 'Efekt Comptona: foton traci energie (rozpraszany na elektronie), wiec jego czestotliwosc maleje (E=hf), a dlugosc fali rosnie (lambda=c/f).'
+ WHERE id = 'biofiz-s2-079';
+
+UPDATE public.questions
+   SET text = 'Całkowita praca objętościowa i wydajność energetyczna serca w spoczynku wynoszą (z przybliżeniem) odpowiednio',
+       options = '[{"id":"a","text":"2,1 J/skurcz i 25%"},{"id":"b","text":"1,1 J/skurcz i 40%"},{"id":"c","text":"0,11 J/skurcz i 10%"},{"id":"d","text":"1,1 J/skurcz i 15%"}]'::jsonb,
+       explanation = 'Praca serca w spoczynku: ok. 1-1.2 J/skurcz. Wydajnosc energetyczna (sprawnosc mechaniczna): ok. 15-25%. Wiekszosc energii zamienia sie w cieplo.'
+ WHERE id = 'biofiz-s2-080';
+
+UPDATE public.questions
+   SET text = 'Podczas skurczu mięśnia dochodzi do skracania sarkomerów. Proces ten związany jest z',
+       options = '[{"id":"a","text":"polaryzacją sarkolemmy"},{"id":"b","text":"dyfuzją jonów wapniowych na zewnątrz sarkomeru"},{"id":"c","text":"skróceniem miofilamentów, zarówno cienkich jak i grubych"},{"id":"d","text":"przesunięciem miofilamentów cienkich względem miofilamentów grubych"}]'::jsonb,
+       explanation = 'Skurcz miesnia: miofilamenty cienkie (aktyna) przesuwaja sie wzgledem grubych (miozyna). Dlugosc filamentow nie zmienia sie - zmienia sie ich wzajemne polozenie.'
+ WHERE id = 'biofiz-s2-081';
+
+UPDATE public.questions
+   SET text = 'Jeśli podczas dostarczania ciepła do próbki substancji nie obserwujemy wzrostu jej temperatury, oznacza to, że',
+       options = '[{"id":"a","text":"mamy do czynienia z ciałem amorficznym"},{"id":"b","text":"energia wewnętrzna tego ciała jest stała"},{"id":"c","text":"maleje energia wewnętrzna tego ciała"},{"id":"d","text":"następuje przemiana fazowa przemiana fazowa drugiego rzędu"}]'::jsonb,
+       explanation = 'Brak wzrostu temperatury przy dostarczaniu ciepla = przemiana fazowa (topnienie, parowanie). Cieplo zuzywane jest na zmiane stanu, nie na wzrost temperatury.'
+ WHERE id = 'biofiz-s2-082';
+
+UPDATE public.questions
+   SET text = 'Fale ze względu na sposób pobudzania do drgań elementów ośrodka, przez który przechodzą, dzielimy na podłużne i poprzeczne. Do fal podłużnych zaliczamy fale',
+       options = '[{"id":"a","text":"elektromagnetyczne"},{"id":"b","text":"akustyczne"},{"id":"c","text":"stojące"},{"id":"d","text":"świetlne"}]'::jsonb,
+       explanation = 'Fale akustyczne (dzwiekowe) to fale mechaniczne podluzne - czastki osrodka drgaja wzdluz kierunku propagacji fali. Wymagaja osrodka materialnego.'
+ WHERE id = 'biofiz-s2-083';
+
+UPDATE public.questions
+   SET text = 'Aby przeanalizować zależność między dwiema mierzonymi cechami przedstawiamy je na wykresie w postaci punktów (z prostokątami błędów) i linią trendu, prowadzoną w pobliżu punktów.
+
+Bok prostokąta błędu jest równy',
+       options = '[{"id":"a","text":"błędowi względnemu odpowiedniej wielkości mierzonej"},{"id":"b","text":"podwójnemu błędowi bezwzględnemu odpowiedniej wielkości mierzonej"},{"id":"c","text":"błędowi bezwzględnemu odpowiedniej wielkości mierzonej"},{"id":"d","text":"podwójnemu błędowi względnemu odpowiedniej wielkości mierzonej"}]'::jsonb,
+       explanation = 'Bok prostokąta musi objąć cały zakres niepewności — od "najniższego" do "najwyższego" przewidywanego wyniku, co daje nam dwukrotność błędu bezwzględnego. L = (x + delta x) - (x - delta x) = 2*(delta x)'
+ WHERE id = 'biofiz-s2-084';
+
+UPDATE public.questions
+   SET text = 'Fala świetlna, przechodząc przez materię, może podlegać rozproszeniu Rayleigha lub Ramana. W przypadku rozpraszania Rayleigha możemy stwierdzić, że',
+       options = '[{"id":"a","text":"zderzenia fotonów z “ośrodkami rozproszenia” są niesprężyste"},{"id":"b","text":"zderzenia fotonów z “ośrodkami rozproszenia” są sprężyste"},{"id":"c","text":"w wyniku rozproszenia zmienia się częstotliwość fali"},{"id":"d","text":"w wyniku rozproszenia zmienia się długość fali"}]'::jsonb,
+       explanation = 'Rozpraszanie Rayleigha jest sprezysłe (elastyczne) - foton nie traci energii, zmienia tylko kierunek. Rozpraszanie Ramana jest niesprezysłe - zmiana energii i czestotliwosci.'
+ WHERE id = 'biofiz-s2-085';
+
+UPDATE public.questions
+   SET text = 'W metodzie NMR zastosowanie impulsu π/2 powoduje odchylenie wektora magnetyzacji o kąt 90°. Po wyłączeniu pola radiowego, magnetyzacja precesując, powraca do kierunku pola magnetycznego. Czas potrzebny na to, aby poprzeczna składowa magnetyzacji zmalała do 37% jej wartości początkowej nazywamy czasem relaksacji',
+       options = '[{"id":"a","text":"spin-spin A"},{"id":"b","text":"spin-sieć T"},{"id":"c","text":"spin-spin T"},{"id":"d","text":"spin-sieć A"}]'::jsonb,
+       explanation = 'Po impulsie pi/2 wektor magnetyzacji obraca sie o 90 stopni do plaszczyzny xy. Powrot do rownowagi: T1 (spin-siec) - skladowa z, T2 (spin-spin) - skladowa xy.'
+ WHERE id = 'biofiz-s2-086';
+
+UPDATE public.questions
+   SET text = 'Równanie Bragga pozwalające na rentgenowską analizę strukturalną ma postać (n - kolejne liczby naturalne, λ - długość fali, α - kąt padania wiązki promieni X, d - odległość między warstwami sieci krystalicznej)',
+       options = '[{"id":"a","text":"2dλ = nsin(α)"},{"id":"b","text":"nλ = 2dsin(α)"},{"id":"c","text":"nλ = dsin(α2)"},{"id":"d","text":"2ndλ = sin(α)"}]'::jsonb,
+       explanation = 'Rownanie Bragga: n*lambda = 2d*sin(theta), gdzie d to odleglosc miedzypłaszczyznowa, theta to kat padania, n to rzad dyfrakcji. Warunek konstruktywnej interferencji.'
+ WHERE id = 'biofiz-s2-087';
+
+UPDATE public.questions
+   SET text = 'Mięsień jest tkanką anizotropową, co wpływa na to, że zależność naprężenia w mięśniu jako funkcja odkształcenia jest funkcją nieliniową. Z zależności tej można wnioskować, że moduł Younga dla mięśnia poprzecznie prążkowanego',
+       options = '[{"id":"a","text":"jest stały, niezależny od odkształcenia"},{"id":"b","text":"zwiększa się lub maleje wraz ze wzrostem odkształcenia mięśnia, w zależności od długości początkowej mięśnia"},{"id":"c","text":"zwiększa się wraz ze wzrostem odkształcenia mięśnia"},{"id":"d","text":"maleje wraz ze wzrostem odkształcenia mięśnia"}]'::jsonb,
+       explanation = 'Miesien jest nieliniowo sprezysty - modul Younga (sztywnosc) zwieksza sie ze wzrostem odksztalcenia. Im bardziej rozciagniety, tym trudniej rozciagnac dalej.'
+ WHERE id = 'biofiz-s2-088';
+
+UPDATE public.questions
+   SET text = 'W jednej z metod ultrasonograficznych możliwe jest określenie prędkości przepływu krwi w naczyniu krwionośnym. Metoda ta, zwana dopplerowską, polega na wyznaczeniu',
+       options = '[{"id":"a","text":"zmiany prędkości rozchodzenia się fali odbitej w porównaniu do fali padającej"},{"id":"b","text":"czasu opóźnienia powrotu fali odbitej w porównaniu do fali emitowanej"},{"id":"c","text":"zmiany częstotliwości fali odbitej w porównaniu do fali padającej"},{"id":"d","text":"natężeń fal odbitej i padającej"}]'::jsonb,
+       explanation = 'Metoda Dopplerowska w USG: zmiana czestotliwosci fali odbitej od poruszajacych sie krwinek pozwala obliczyc predkosc przeplywu krwi. Delta_f proporcjonalne do predkosci.'
+ WHERE id = 'biofiz-s2-089';
+
+UPDATE public.questions
+   SET text = 'Przy przejściu przez substancję optycznie czynną światła spolaryzowanego dochodzi do skręcenia płaszczyzny polaryzacji wiązki świetlnej. Do substancji optycznie czynnych na pewno nie zaliczymy',
+       options = '[{"id":"a","text":"cukru"},{"id":"b","text":"biała"},{"id":"c","text":"kwasu nukleinowego"},{"id":"d","text":"wody"}]'::jsonb,
+       explanation = 'Woda nie jest substancja optycznie czynna (nie skreca plaszczyzny polaryzacji). Cukry, bialka, kwasy nukleinowe - sa optycznie czynne (czasteczki chiralne).'
+ WHERE id = 'biofiz-s2-090';
+
+UPDATE public.questions
+   SET text = 'Jądro atomowe o niezerowym momencie magnetycznym ulega w zewnętrznym polu magnetycznym procesji. Zjawisko to polega na wirowaniu momentu magnetycznego jądra wokół kierunku zewnętrznego pola magnetycznego z częstotliwością (γ - współczynnik giromagnetyczny jądra',
+       options = '[{"id":"a","text":"i jest nazywana szybkością Lame’a"},{"id":"b","text":"i jest nazywana częstotliwością Larmora"},{"id":"c","text":"i jest nazywana częstotliwością Lame’a"},{"id":"d","text":"i jest nazywana szynkością Larmora"}]'::jsonb,
+       explanation = 'Czestotliwosc Larmora: omega_L = gamma*B, gdzie gamma to wspolczynnik giromagnetyczny, B to pole magnetyczne. Opisuje precesje momentu magnetycznego jadra.'
+ WHERE id = 'biofiz-s2-091';
+
+UPDATE public.questions
+   SET text = 'Fala tętna jest sprężystym odkształceniem ścian tętnic, powstałym na skutek zwiększonego ciśnienia po wyrzucie krwi do aorty. Szybkość fali tętna w naczyniach sprężystych nie zależy od',
+       options = '[{"id":"a","text":"grubości ściany naczynia"},{"id":"b","text":"modułu Younga ścian naczyń"},{"id":"c","text":"lepkości krwi"},{"id":"d","text":"promienia przekroju naczynia"}]'::jsonb,
+       explanation = 'Predkosc fali tetna v = sqrt(E*h/(rho*d)), gdzie E to modul Younga sciany, h to grubosc, rho to gestosc krwi (**A NIE LEPKOŚĆ!!**), d to srednica.'
+ WHERE id = 'biofiz-s2-092';
+
+UPDATE public.questions
+   SET text = 'Wzór przedstawiony poniżej przedstawia (n - liczba pomiarów, x - wynik i-tego pomiaru) i',
+       options = '[{"id":"a","text":"odchylenie standardowe"},{"id":"b","text":"błąd bezwzględny pomiaru"},{"id":"c","text":"wariancję"},{"id":"d","text":"błąd standardowy"}]'::jsonb,
+       explanation = 'yWzór pokazuje BŁĄD STANDARDOWY (standard error): SE = σ/√n, gdzie σ to odchylenie standardowe. Wariancja to σ². Błąd bezwzględny to |x - x_śr|. Błąd standardowy mówi jak dokładna jest średnia.'
+ WHERE id = 'biofiz-s2-093';
+
+UPDATE public.questions
+   SET text = 'Jednym z koniecznych warunków, aby lampa rentgenowska emitowała promieniowanie rentgenowskie, jest podwyższenie temperatury jednej z elektrod. Obwód żarzenia w lampie rentgenowskiej ma na celu',
+       options = '[{"id":"a","text":"przyspieszenie elektronów poruszających się w kierunku anody"},{"id":"b","text":"przyspieszenie elektronów poruszających się w kierunku katody"},{"id":"c","text":"zwiększenie emisji elektronów z powierzchni anody"},{"id":"d","text":"zwiększenie emisji elektronów z powierzchni katody"}]'::jsonb,
+       explanation = 'Obwód żarzenia rozgrzewa włókno katody do wysokiej temperatury, co wywołuje zjawisko termoemisji, czyli uwalniania elektronów z jej powierzchni.'
+ WHERE id = 'biofiz-s2-094';
+
+UPDATE public.questions
+   SET text = 'Jedną z metod pozwalających na rozdzielanie cząsteczek ze względu na ich właściwości biofizyczne jest chromatografia żelowa. Metoda ta pozwala na frakcjonowanie cząsteczek ze względu na ich:',
+       options = '[{"id":"a","text":"różny ładunek"},{"id":"b","text":"różną rozpuszczalność w wodzie"},{"id":"c","text":"różną wielkość i ciężar właściwy"},{"id":"d","text":"różną wielkość i kształt"}]'::jsonb,
+       explanation = '**Chromatografia żelowa** rozdziela cząsteczki ze względu na ich wielkość hydrodynamiczną, zależną od wielkości i kształtu cząsteczki. Duże cząsteczki nie wnikają do porów żelu i wypływają szybciej, a mniejsze wnikają do porów, przez co ich droga jest dłuższa i eluuują później. Metoda ta nie rozdziela według ładunku ani ciężaru właściwego — to ostatnie dotyczy raczej sedymentacji/wirowania.'
+ WHERE id = 'biofiz-s2-095';
+
+UPDATE public.questions
+   SET text = 'Człowiek w swoim codziennym życiu narażony jest na wpływ promieniowania jonizującego, pochodzącego od czynników naturalnych (promieniowanie kosmiczne, promieniowanie z izotopów promieniotwórczych znajdujących się w niewielkich ilościach w otoczeniu). Związana z tym przeciętna dawka skuteczna (efektywna) promieniowania jonizującego dla człowieka od tła wynosi (Sv - Siwert)',
+       options = '[{"id":"a","text":"25 mSv"},{"id":"b","text":"2,5 Sv"},{"id":"c","text":"2,5 mSv"},{"id":"d","text":"0,25 Sv"}]'::jsonb,
+       explanation = 'Srednia roczna dawka promieniowania naturalnego: ok. 2-3 mSv (radon, promieniowanie kosmiczne, izotopy w zywnosci, promieniowanie z gruntu).'
+ WHERE id = 'biofiz-s2-096';
+
+UPDATE public.questions
+   SET text = 'W cząsteczkach wieloatomowych wyróżnimy poziomy energetyczne: elektronowe (el), rotacyjne (rot) i oscylacyjne (osc). Zaznacz prawidłową relację pomiędzy poszczególnymi energiami wzbudzeń w cząsteczce',
+       options = '[{"id":"a","text":"ΔE >> ΔE >> ΔE el rot osc"},{"id":"b","text":"ΔE << ΔE << ΔE el osc rot"},{"id":"c","text":"ΔE >> ΔE >> ΔE osc rot el"},{"id":"d","text":"ΔE >> ΔE >> ΔE el osc rot"}]'::jsonb,
+       explanation = 'Energie przejsc: elektronowe >> oscylacyjne >> rotacyjne. Typowo: El ~ eV, osc ~ 0.1 eV, rot ~ 0.001 eV. Widma rotacyjne - mikrofale, oscylacyjne - IR, elektronowe - UV-Vis.'
+ WHERE id = 'biofiz-s2-097';
+
+UPDATE public.questions
+   SET text = 'Współczynnik lepkości określa własności cieczy związane z wzajemnym oddziaływaniem molekuł w trakcie przepływu cieczy (w sąsiednich warstwach cieczy). Współczynnik ten definiowany jest jako iloraz',
+       options = '[{"id":"a","text":"naprężenia ścinającego do powierzchni stykających się warstw"},{"id":"b","text":"prędkości ścinania do naprężenia ścinającego"},{"id":"c","text":"naprężenia ścinającego do prędkości ścinania"},{"id":"d","text":"prędkości ścinania do powierzchni stykających się warstw"}]'::jsonb,
+       explanation = 'Wspolczynnik lepkosci eta = naprezenie scinajace / szybkosc scinania = tau / (dv/dy). Jednostka: Pa*s. Dla cieczy newtonowskiej eta = const.'
+ WHERE id = 'biofiz-s2-098';
+
+UPDATE public.questions
+   SET text = 'Prawo Webera-Fechnera zastosowane do narządu słuchu pozwala stwierdzić, że najmniejszy zauważalny bodziec, czyli próg różnicy natężenia odbieranej fali dźwiękowej jest',
+       options = '[{"id":"a","text":"proporcjonalny do natężenia fali już działającej"},{"id":"b","text":"odwrotnie proporcjonalny do natężenia fali już działającej"},{"id":"c","text":"odwrotnie proporcjonalny do kwadratu natężenia fali już działającej"},{"id":"d","text":"proporcjonalny do kwadratu natężenia fali już działającej"}]'::jsonb,
+       explanation = 'Prawo Webera-Fechnera: delta_I/I = const. Najmniejszy zauważalny przyrost natezenia (prog roznicowy) jest proporcjonalny do natezenia dzwięku juz dzialajacego.'
+ WHERE id = 'biofiz-s2-099';
+
+UPDATE public.questions
+   SET text = 'Komórki i tkanki umieszczone w polu elektrycznym reagują na to pole. Jednym ze zjawisk obserwowanych w tym przypadku jest dyspersja przenikalności dielektrycznej tkanek. Cechą charakterystyczną tego zjawiska jest zależność przenikalności dielektrycznej od',
+       options = '[{"id":"a","text":"natężenia zastosowanego pola elektrycznego"},{"id":"b","text":"częstotliwości zastosowanego pola elektrycznego"},{"id":"c","text":"mocy zastosowanego pola elektrycznego"},{"id":"d","text":"energii zastosowanego pola elektrycznego"}]'::jsonb,
+       explanation = 'Elektroporacja zalezy od czestotliwosci pola elektrycznego. Przy odpowiedniej czestotliwosci blona staje sie przepuszczalna - tworza sie przejsciowe pory.'
+ WHERE id = 'biofiz-s2-100';
+
+UPDATE public.questions
+   SET text = 'Polaryzacja elektryczna ośrodka jest reakcją ośrodka na przyłożone zewnętrzne pole elektryczne. Szybkość zaniku polaryzacji elektrycznej po wyłączeniu pola elektrycznego charakteryzowane jest przez czas relaksacji elektrycznej. Czas ten jest czasem potrzebnym na to, aby polaryzacja po wyłączeniu pola zmalała',
+       options = '[{"id":"a","text":"do zera"},{"id":"b","text":"dwukrotnie"},{"id":"c","text":"2,71 (e) krotnie"},{"id":"d","text":"czterokrotnie"}]'::jsonb,
+       explanation = 'Czas relaksacji tau - to czas, w ktorym polaryzacja maleje e razy (2.71...) czyli do ok. 37% wartosci poczatkowej. P(t) = P_0 * exp(-t/tau).'
+ WHERE id = 'biofiz-s2-101';
+
+UPDATE public.questions
+   SET text = 'Ciała stałe pod wpływem przyłożonej siły ulegają odkształceniom. Zdolność materiału do osiągnięcia nowych kształtów oraz zachowania kształtów uprzednio uzyskanych po zdjęciu obciążenia bez naruszenia spójności to',
+       options = '[{"id":"a","text":"ciągliwość"},{"id":"b","text":"plastyczność"},{"id":"c","text":"sprężystość"},{"id":"d","text":"wytrzymałość"}]'::jsonb,
+       explanation = 'Plastycznosc to zdolnosc materialu do trwalego odksztalcenia bez zerwania. Sprezystosc - powrot do ksztaltu. Wytrzymalosc - odpornosc na zniszczenie.'
+ WHERE id = 'biofiz-s2-102';
+
+UPDATE public.questions
+   SET text = 'W oddziaływaniu van der Waalsa mogą występować różne rodzaje sił. Siły, które występują między cząsteczkami tylko wówczas, gdy jedna z nich ma charakter dipolowy to siły',
+       options = '[{"id":"a","text":"dipolowe"},{"id":"b","text":"orientacyjne"},{"id":"c","text":"dyspersyjne"},{"id":"d","text":"indukcyjne"}]'::jsonb,
+       explanation = 'Siły indukcyjne są poprawną odpowiedzią.'
+ WHERE id = 'biofiz-s2-103';
+
+UPDATE public.questions
+   SET text = 'Do generowania i odbierania fal ultradźwiękowych wykorzystuje się efekty: piezoelektryczny (prosty) i piezoelektryczny odwrotny. Efekt piezoelektryczny prosty (obserwowany np. w krysztale kwarcu) jest zjawiskiem, w którym',
+       options = '[{"id":"a","text":"po przyłożeniu do kryształu pola magnetycznego następuje odkształcenie kryształu"},{"id":"b","text":"po przyłożeniu do kryształu pola elektrycznego następuje odkształcenie kryształu"},{"id":"c","text":"przy odkształceniu kryształu, pojawiają się ładunki tego samego znaku na przeciwległych ściankach kryształu"},{"id":"d","text":"przy odkształceniu kryształu, pojawiają się ładunki przeciwnego znaku na przeciwległych ściankach kryształu"}]'::jsonb,
+       explanation = 'Efekt piezoelektryczny odwrotny: przyłożone pole elektryczne powoduje odkształcenie kryształu. Prosty: odkształcenie generuje ładunki przeciwnego znaku na ścianach.'
+ WHERE id = 'biofiz-s2-104';
+
+UPDATE public.questions
+   SET text = 'Jednym z parametrów stosowanych w rentgenowskiej tomografii komputerowej jest projekcja. Parametr ten jest definiowany wzorem (l - natężenie wiązki padającej, l - natężenie wiązki przechodzącej, d - grubość woksla, ln () - logarytm naturalny)',
+       options = '[{"id":"a","text":"i jest równy iloczynowi współczynników pochłaniania woksli, przez które przechodzi promieniowanie"},{"id":"b","text":"i jest równy sumie współczynników pochłaniania woksli, przez które przechodzi promieniowanie"},{"id":"c","text":"P = d • ln(l /l) i jest równy iloczynowi współczynników pochłaniania woksli, przez które przechodzi promieniowanie"},{"id":"d","text":"P = d • ln(l /l) i jest równy sumie współczynników pochłaniania woksli, przez które przechodzi promieniowanie"}]'::jsonb,
+       explanation = 'Projekcja w CT to suma wspolczynnikow pochlaniania wzdluz promienia RTG. Rekonstrukcja obrazu z wielu projekcji pod roznymi katami.'
+ WHERE id = 'biofiz-s2-105';
+
+UPDATE public.questions
+   SET text = 'Reakcją ciał na przyłożenie zewnętrznego pola elektrycznego jest niezerowy wektor polaryzacji, który po wyłączeniu pola elektrycznego zanika. Szybkość zaniku polaryzacji elektrycznej po wyłączeniu pola elektrycznego nie zależy od',
+       options = '[{"id":"a","text":"natężenia pola elektrycznego"},{"id":"b","text":"momentu bezwładności dipoli"},{"id":"c","text":"temperatury"},{"id":"d","text":"warunków obrotu dipoli w ośrodku"}]'::jsonb,
+       explanation = 'Polaryzacja P jest proporcjonalna do natezenia pola E: P = epsilon_0 * chi * E, gdzie chi to podatnosc elektryczna osrodka.'
+ WHERE id = 'biofiz-s2-106';
+
+UPDATE public.questions
+   SET text = 'Mamy do dyspozycji dwie kapilary o tej samej długości, przy czym promień jednej z kapilar jest dwukrotnie większy. Przy przepływie przez kapilary tej samej cieczy (np. wody) opór naczyniowy kapilary o dwukrotnie większym promieniu jest',
+       options = '[{"id":"a","text":"szesnaście razy mniejszy"},{"id":"b","text":"cztery razy mniejszy"},{"id":"c","text":"osiem razy mniejszy"},{"id":"d","text":"dwa razy mniejszy"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: Q ~ r^ 4. Dwukrotnie mniejszy promien: Q2 = Q1*(1/2)^4 = Q1/ 16. Opor szesnastokrotnie wiekszy.'
+ WHERE id = 'biofiz-s2-107';
+
+UPDATE public.questions
+   SET text = 'Fale akustyczne odbierane przez ucho są wzmacniane w uchu środkowym. Elementy struktury ucha środkowego odpowiedzialne za wzmocnienie to',
+       options = '[{"id":"a","text":"powierzchnia błony okienka owalnego i ślimak"},{"id":"b","text":"układ kosteczek słuchowych i ślimak"},{"id":"c","text":"powierzchnie błony okienka owalnego i bębenkowej oraz ślimak"},{"id":"d","text":"powierzchnie błon okienka owalnego i bębenkowej oraz układ kosteczek słuchowych"}]'::jsonb,
+       explanation = 'Wzmocnienie w uchu srodkowym: roznica powierzchni blony bebenkowej i okienka owalnego (17:1) oraz dzwignia kosteczek sluchowych (1.3:1). Laczne wzmocnienie ok. 22x.'
+ WHERE id = 'biofiz-s2-108';
+
+UPDATE public.questions
+   SET text = 'Poziomy energetyczne niektórych jąder atomowych umieszczonych w silnym zewnętrznym polu magnetycznym (B ) ulegają rozszczepieniu ze względu na kierunek ich momentów magnetycznych względem B . Różnica między poziomami energii jąder przy ustawieniu przeciwnym ich momentów magnetycznych jest',
+       options = '[{"id":"a","text":"proporcjonalna do B a odwrotnie proporcjonalna do współczynnika giromagnetycznego"},{"id":"b","text":"proporcjonalna do współczynnika giromagnetycznego i odwrotnie proporcjonalna do B"},{"id":"c","text":"proporcjonalna do współczynnika giromagnetycznego i B"},{"id":"d","text":"odwrotnie proporcjonalna do współczynnika giromagnetycznego i B"}]'::jsonb,
+       explanation = 'Roznica energii miedzy poziomami spinowymi: delta_E = gamma * h_bar * B. Proporcjonalna do wspolczynnika giromagnetycznego gamma i indukcji B.'
+ WHERE id = 'biofiz-s2-109';
+
+UPDATE public.questions
+   SET text = 'Światło jest falą elektromagnetyczną, w której pola elektryczne i magnetyczne drgają w kierunkach wzajemnie prostopadłych i prostopadle do kierunku rozchodzenia się fali. Aby fala świetlna była spolaryzowana liniowo koniecznym jest, aby',
+       options = '[{"id":"a","text":"drgania pola elektrycznego odbywały się w płaszczyznach wzajemnie równoległych"},{"id":"b","text":"fala przechodziła przez ośrodek optycznie czynny"},{"id":"c","text":"drgania pola elektrycznego mogą mieć dowolny kierunek"},{"id":"d","text":"drgania pola elektrycznego odbywały się w płaszczyznach wzajemnie prostopadłych"}]'::jsonb,
+       explanation = 'Swiatlo spolaryzowane liniowo: drgania pola E w jednej plaszczyznie. Powstaje przez odbicie pod katem Brewstera, przejscie przez polaryzator, dwojlomnosc.'
+ WHERE id = 'biofiz-s2-110';
+
+UPDATE public.questions
+   SET text = 'Zjawiskami mającymi wpływ na lepkość krwi są agregacja i elongacja krwinek czerwonych. Zwiększenie stopnia agregacji krwinek czerwonych (zachodzące przy małych szybkościach ścinania)',
+       options = '[{"id":"a","text":"powoduje zmniejszenie lepkości krwi"},{"id":"b","text":"powoduje wzrost lepkości krwi"},{"id":"c","text":"powoduje wzrost lub zmniejszenie lepkości krwi w zależności od promienia naczynia krwionośnego"},{"id":"d","text":"nie wpływa na lepkość krwi"}]'::jsonb,
+       explanation = 'Elongacja (wydluzanie) erytrocytow przy duzych szybkosciach scinania zmniejsza lepkosc krwi. Agregacja (przy malych szybkosciach) zwieksza lepkosc.'
+ WHERE id = 'biofiz-s2-111';
+
+UPDATE public.questions
+   SET text = 'Zjawisko luminescencji obserwowane jest w ciałach stałych, cieczach i gazach. Dzielone jest na dwa typy: fosforescencję i fluorescencję. Porównując te dwa typy pod względem czasu wygaszania, możemy stwierdzić, że czas wygaszania fluorescencji jest zazwyczaj',
+       options = '[{"id":"a","text":"krótszy lub dłuższy niż dla fosforescencji"},{"id":"b","text":"krótszy niż dla fosforescencji"},{"id":"c","text":"dłuższy niż dla fosforescencji"},{"id":"d","text":"taki sam jak dla fosforescencji"}]'::jsonb,
+       explanation = 'Fluorescencja: czas zycia stanu wzbudzonego 10^-9 - 10^-7 s (nanosekundy). Fosforescencja: 10^-3 - 10^2 s (milisekundy do sekund). Fluorescencja jest krotsza.'
+ WHERE id = 'biofiz-s2-112';
+
+UPDATE public.questions
+   SET text = 'Głównym elementem refraktometru Abbego, pozwalającego wyznaczyć współczynnik załamania substancji umieszczonej między pryzmatami, jest układ pryzmatów o dużym współczynniku załamania. Na matowej powierzchni pierwszego z pryzmatów dochodzi do zjawiska',
+       options = '[{"id":"a","text":"rozproszenia światła, natomiast na powierzchni drugiego z pryzmatów dochodzi do załamania światła, przy czym promienie padające pod kątem większym od kąta granicznego ulegają całkowitemu wewnętrznemu odbiciu (odpowiada temu pole ciemne obserwowane w lunecie)"},{"id":"b","text":"załamania światła, natomiast na powierzchni drugiego z pryzmatów dochodzi do rozproszenia światła, przy czym promienie padające pod kątem mniejszym od kąta granicznego ulegają całkowitemu wewnętrznemu odbiciu (odpowiada temu pole ciemne obserwowane w lunecie)"},{"id":"c","text":"rozproszenia światła, natomiast na powierzchni drugiego z pryzmatów dochodzi do załamania światła, przy czym promienie padające pod kątem mniejszym od kąta granicznego ulegają całkowitemu wewnętrznemu odbiciu (odpowiada temu pole jasne obserwowane w lunecie)"},{"id":"d","text":"załamania światła, natomiast na powierzchni drugiego z pryzmatów dochodzi do rozproszenia światła, przy czym promienie padające pod kątem większym od kąta granicznego ulegają całkowitemu wewnętrznemu odbiciu (odpowiada temu pole ciemne obserwowane w lunecie)"}]'::jsonb,
+       explanation = 'Refraktometr Abbego: na jednym pryzmacie zachodzi zalamania graniczne (kat graniczny zaleza od n), na drugim zachodzi calkowite wewnetrzne odbicie.'
+ WHERE id = 'biofiz-s2-113';
+
+UPDATE public.questions
+   SET text = 'Jednym z ważnych parametrów określających falę rozchodzącą się w danym ośrodku jest natężenie fali, które definiujemy jako iloraz',
+       options = '[{"id":"a","text":"energii fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą fala przechodzi"},{"id":"b","text":"energii fali do czasu rozchodzenia się fali"},{"id":"c","text":"mocy fali do czasu rozchodzenia się fali"},{"id":"d","text":"mocy fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą fala przechodzi"}]'::jsonb,
+       explanation = 'Natezenie fali I = moc/powierzchnie = P/S. Jednostka: W/m^2. Energia przechodzaca przez jednostke powierzchni w jednostce czasu.'
+ WHERE id = 'biofiz-s2-114';
+
+UPDATE public.questions
+   SET text = 'W obrazowaniu NMR tkanek wewnętrznych organizmu wykorzystywane jest silne pole magnetyczne oraz pole elektromagnetyczne z zakresu radiowego. Zadaniem pola elektromagnetycznego z zakresu radiowego jest',
+       options = '[{"id":"a","text":"odchylenie magnetyzacji z kierunku prostopadłego do zewnętrznego pola magnetycznego"},{"id":"b","text":"ustawienie magnetyzacji zgodnie z przyłożonym zewnętrznym polem magnetycznym"},{"id":"c","text":"odchylenie magnetyzacji z kierunku równoległego do zewnętrznego pola magnetycznego"},{"id":"d","text":"zwiększenie długości wektora magnetyzacji"}]'::jsonb,
+       explanation = 'Impuls RF w NMR odchyla magnetyzacje z kierunku rownoleglego (wzdluz B0) do kierunku prostopadlego. Relaksacja przywraca rownowage.'
+ WHERE id = 'biofiz-s2-115';
+
+UPDATE public.questions
+   SET text = 'Ważnymi parametrami wykorzystywanymi do charakteryzowania zróżnicowania między tkankami w obrazowaniu wnętrza organizmu za pomocą magnetycznego rezonansu jądrowego są czasy relaksacji. Czas relaksacji spin-sieć (T1) jest czasem potrzebnym na to, aby po impulsie π/2 składowa magnetyzacji:',
+       options = '[{"id":"a","text":"podłużna wzrosła do 63-67% jej wartości maksymalnej"},{"id":"b","text":"podłużna zmalała do 33-37% jej wartości początkowej"},{"id":"c","text":"poprzeczna zmalała do 33-37% jej wartości początkowej"},{"id":"d","text":"poprzeczna wzrosła do 63-67% jej wartości maksymalnej"}]'::jsonb,
+       explanation = 'Czas relaksacji T1 (spin-siec): skladowa podluzna Mz narasta do wartosci rownowagowej. T1 to czas gdy Mz osiaga 63-67% wartosci koncowej.'
+ WHERE id = 'biofiz-s2-116';
+
+UPDATE public.questions
+   SET text = 'Tomograf rentgenowski składający się z dookólnej matrycy detektorów i ruchomej lampy rentgenowskiej, obracającej w sposób ciągły wokół pacjenta oraz wykorzystujący wiązkę wachlarzykowatą o kącie rozwartości 60° zaliczymy do rentgenowskich tomografów generacji',
+       options = '[{"id":"a","text":"piątej"},{"id":"b","text":"drugiej"},{"id":"c","text":"czwartej"},{"id":"d","text":"trzeciej"}]'::jsonb,
+       explanation = 'IV generacja CT: pelny pierscien nieruchomych detektorow (360°), lampa obraca sie wewnatrz. Szybsze skanowanie niz III generacja.'
+ WHERE id = 'biofiz-s2-117';
+
+UPDATE public.questions
+   SET text = 'Przy przechodzeniu promieniowania jonizującego przez materiały dochodzi do oddziaływań, których miarą intensywności są dawki lub moce dawek. Jedną ze stosowanych jednostek tych wielkości jest Grej (Gy), który jest jednostką',
+       options = '[{"id":"a","text":"mocy dawki pochłoniętej"},{"id":"b","text":"mocy dawki ekspozycyjnej"},{"id":"c","text":"dawki pochłoniętej"},{"id":"d","text":"dawki ekspozycyjnej"}]'::jsonb,
+       explanation = 'Dawka pochlonieta D = energia zaabsorbowana / masa. Jednostka: Gy (gray) = J/kg. Mierzy energie zdeponowana w tkance.'
+ WHERE id = 'biofiz-s2-118';
+
+UPDATE public.questions
+   SET text = 'Po wzbudzeniu próbki umieszczonej w zewnętrznym polu magnetycznym, polem elektromagnetycznym z zakresu radiowego, w cewce odbiorczej obserwowany jest zanikający sygnał sinusoidalny (free induction decay). Przebieg tego sygnału w czasie pozwala wyznaczyć czas relaksacji T . Sygnał ten związany jest z zanikającą w czasie',
+       options = '[{"id":"a","text":"fazą wektora magnetyzacji"},{"id":"b","text":"składową podłużną wektora magnetyzacji"},{"id":"c","text":"długością wektora magnetyzacji"},{"id":"d","text":"składową poprzeczną wektora magnetyzacji"}]'::jsonb,
+       explanation = 'Po impulsie RF skladowa poprzeczna Mxy (precesujaca) indukuje sygnal w cewce odbiorczej. T2 opisuje zanik skladowej poprzecznej.'
+ WHERE id = 'biofiz-s2-119';
+
+UPDATE public.questions
+   SET text = 'Promieniowanie jonizujące przy przechodzeniu przez materię zostaje osłabione zgodnie z prawem osłabienia. Parametrem tego zjawiska jest grubość połówkowego pochłaniania (D).
+
+Jeżeli promieniowanie jonizujące przejdzie przez materię o grubości równej d = 2D, to natężenie promieniowania zmaleje',
+       options = '[{"id":"a","text":"czterokrotnie"},{"id":"b","text":"dwukrotnie Przyda się na przyszłość: Natężenie promieniowania jako funkcja grubości absorbenta (a)"}]'::jsonb,
+       explanation = 'Prawo oslabienia: I = I_0 * exp(-mu*x). Przy grubosci rownej HVL (half-value layer) natezenie maleje dwukrotnie.'
+ WHERE id = 'biofiz-s2-121';
+
+UPDATE public.questions
+   SET text = 'Lampa rentgenowska w czasie pracy emituje promieniowanie rentgenowskie w postaci pasma o wielu długościach fal. Cechą charakterystyczną widma ciągłego lampy rentgenowskiej jest granica krótkofalowa widma promieniowania rentgenowskiego, która',
+       options = '[{"id":"a","text":"jest odwrotnie proporcjonalne do napięcia między anodą a katodą w lampie rentgenowskiej"},{"id":"b","text":"jest wprost proporcjonalna do napięcia między anodą a katodą w lampie rentgenowskiej"}]'::jsonb,
+       explanation = 'Minimalna dlugosc fali lambda_min = hc/(eU). Odwrotnie proporcjonalna do napiecia U. Wyzsze napiecie = krotsza lambda_min = twardsze promieniowanie.'
+ WHERE id = 'biofiz-s2-122';
+
+UPDATE public.questions
+   SET text = 'Aby utrzymać stałą temperaturę wnętrza ciała, organizm wymienia ciepło z otoczeniem. Strumień cieplny, który zależy od różnicy T 4 – T 4, gdzie T - temperatura bezwzględna skóry, T - temperatura s ot s ot bezwzględna otoczenia, nazwiemy strumieniem',
+       options = '[{"id":"a","text":"promieniowania"},{"id":"b","text":"konwekcyjnym"}]'::jsonb,
+       explanation = 'Wymiana ciepla przez promieniowanie (radiacje) - emisja fal EM z powierzchni ciala. Prawo Stefana-Boltzmanna: P = epsilon*sigma*A*T^4.'
+ WHERE id = 'biofiz-s2-123';
+
+UPDATE public.questions
+   SET text = 'Jeżeli przy natężeniu dźwięku I = 2 · 10-6 W/m2 stwierdzono, że najmniejsza zauważalna zmiana natężenia wynosi ∆I = a [W/m2], to przy natężeniu tego samego dźwięku równym I = 6 · 10-6 W/m2 najmniejsza zauważalna zmiana będzie wynosiła',
+       options = '[{"id":"a","text":"a/3"},{"id":"b","text":"a + 4 W/m2"},{"id":"c","text":"a - 4 W/m2"},{"id":"d","text":"3a"}]'::jsonb,
+       explanation = 'Prawo Webera: delta_I/I = const. Przy trojkrotnie wiekszym natezeniu (I2=3I1), prog roznicowy tez jest trojkrotnie wiekszy: delta_I2 = 3*delta_I1 = 3a.'
+ WHERE id = 'biofiz-s2-124';
+
+UPDATE public.questions
+   SET text = 'Przy ustalonym ciśnieniu naprężenie sprężyste ściany naczynia (r - promień, a - grubość ściany) jest wprost proporcjonalne do',
+       options = '[{"id":"a","text":"r/a"},{"id":"b","text":"r2/a"},{"id":"c","text":"a/r"},{"id":"d","text":"a/r2"}]'::jsonb,
+       explanation = 'Prawo Laplacea: naprezenie w scianie = p*r/a, gdzie p cisnienie, r promien, a grubosc sciany. Proporcjonalne do r/a.'
+ WHERE id = 'biofiz-s2-125';
+
+UPDATE public.questions
+   SET text = 'Z wykresu krzywych izofonicznych można odczytać, że dźwięk o częstotliwości 100 Hz i poziomie natężenia 60 dB jest słyszany (w przybliżeniu) jednakowo głośno jak dźwięk o częstotliwości 1kHz i poziomie natężenia',
+       options = '[{"id":"a","text":"60 dB"},{"id":"b","text":"50 dB"},{"id":"c","text":"40 dB"},{"id":"d","text":"30 dB"}]'::jsonb,
+       explanation = 'Z krzywych izofonicznych: 40 fonow przy 100 Hz odpowiada ok. 60 dB, ale 40 fonow przy 1000 Hz to ok. 40 dB. Krzywe sa nieliniowe.'
+ WHERE id = 'biofiz-s2-126';
+
+UPDATE public.questions
+   SET text = 'Strumień cieczy przepływającej laminarnie przez rurę sztywną zależy',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalnie od kwadratu pola przekroju"},{"id":"b","text":"odwrotnie proporcjonalnie od kwadratu promienia"},{"id":"c","text":"wprost proporcjonalnie od kwadratu promienia"},{"id":"d","text":"wprost proporcjonalnie od kwadratu pola przekroju"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: Q = (pi*r^4*delta_p)/(8*eta*L). Strumien proporcjonalny do r^4, czyli do kwadratu pola przekroju (S ~ r^2).'
+ WHERE id = 'biofiz-s2-127';
+
+UPDATE public.questions
+   SET text = 'Zaznacz błędną odpowiedź. Ciśnienie śródpęcherzykowe',
+       options = '[{"id":"a","text":"różnica jego i ciśnienia wewnątrzopłucnowego to ciśnienie sprężyste tkanki płucnej (w stanie równowagi)"},{"id":"b","text":"to ciśnienie powietrze w pęcherzykach płucnych"},{"id":"c","text":"w stanie spoczynku jest równe ciśnieniu atmosferycznemu"},{"id":"d","text":"jest mniejsze od ciśnienia wewnątrzopłucnowego"}]'::jsonb,
+       explanation = 'Cisnienie srodpecherzykowe jest WIEKSZE od wewnatrzoplucnowego (podoplucnowego). Roznica to cisnienie sprezystosci pluc.'
+ WHERE id = 'biofiz-s2-128';
+
+UPDATE public.questions
+   SET text = 'Dla cieczy warstwa adsorbowana',
+       options = '[{"id":"a","text":"zwiększa napięcie powierzchniowe cieczy"},{"id":"b","text":"zmniejsza napięcie powierzchniowe cieczy"},{"id":"c","text":"początkowo zmniejsza, a następnie zwiększa napięcie powierzchniowe cieczy"},{"id":"d","text":"początkowo zwiększa, a następnie zmniejsza napięcie powierzchniowe cieczy"}]'::jsonb,
+       explanation = 'Surfaktanty (substancje powierzchniowo czynne) adsorbuja sie na powierzchni i zmniejszaja napiecie powierzchniowe cieczy.'
+ WHERE id = 'biofiz-s2-129';
+
+UPDATE public.questions
+   SET text = 'Uzupełnij wg kolejności w tekście: Przy wdechu powiększa się powierzchnia pęcherzyków oraz ... się grubość pokrywających je surfaktantów i ... napięcie powierzchniowe.',
+       options = '[{"id":"a","text":"zmniejsza, zwiększa"},{"id":"b","text":"zmniejsza, zmniejsza"},{"id":"c","text":"zwiększa, zmniejsza"},{"id":"d","text":"zwiększa, zwiększa"}]'::jsonb,
+       explanation = 'Przy wdechu: powierzchnia pecherzykow rosnie, stezenie surfaktantu maleje (rozcieczenie), napiecie powierzchniowe zwieksza sie.'
+ WHERE id = 'biofiz-s2-130';
+
+UPDATE public.questions
+   SET text = 'Jednostką współczynnika absorpcji w układzie SI jest',
+       options = '[{"id":"a","text":"Pa"},{"id":"b","text":"Pa^-1"},{"id":"c","text":"Pa^2"},{"id":"d","text":"Pa^-2"}]'::jsonb,
+       explanation = 'Wspolczynnik absorpcji (rozpuszczalnosci) alfa = c/p (prawo Henryego). c w mol/m^3, p w Pa, wiec alfa w mol/(m^3*Pa) = Pa^-1 * mol/m^3.'
+ WHERE id = 'biofiz-s2-131';
+
+UPDATE public.questions
+   SET text = 'Napięcie powierzchniowe wyraża się',
+       options = '[{"id":"a","text":"stosunkiem wypadkowej sił napięcia powierzchniowego do powierzchni na której działają"},{"id":"b","text":"stosunkiem wypadkowej sił napięcia powierzchniowego do kwadratu powierzchni na której działają"},{"id":"c","text":"stosunkiem energii powierzchniowej do długości odcinka"},{"id":"d","text":"stosunkiem wypadkowej sił napięcia powierzchniowego do długości odcinka, wzdłuż którego są zaczepione"}]'::jsonb,
+       explanation = 'Napiecie powierzchniowe sigma = F/L (sila na jednostke dlugosci). Jednostka: N/m. Energia powierzchniowa na jednostke pola: J/m^2 = N/m.'
+ WHERE id = 'biofiz-s2-132';
+
+UPDATE public.questions
+   SET text = 'Cząsteczki przy powierzchni cieczy',
+       options = '[{"id":"a","text":"mają większą energię niż w głębi cieczy"},{"id":"b","text":"mają połowę energii cząsteczki w głębi cieczy"},{"id":"c","text":"mają taką samą energię jak w głębi cieczy"},{"id":"d","text":"mają mniejszą energię niż w głębi cieczy"}]'::jsonb,
+       explanation = 'Czasteczki przy powierzchni maja wieksza energie - brak sasiadow z jednej strony, niezrownowazzone sily kohezji. To zrodlo napięcia powierzchniowego.'
+ WHERE id = 'biofiz-s2-133';
+
+UPDATE public.questions
+   SET text = 'Wentylacja minutowa to',
+       options = '[{"id":"a","text":"objętość powietrza wydychana w ciągu minuty"},{"id":"b","text":"wynosi przy spokojnym oddychaniu około 18 dm3/min"},{"id":"c","text":"objętość powietrza wdychana i wydychana w ciągu minuty"},{"id":"d","text":"objętość powietrza wdychana w ciągu minuty"}]'::jsonb,
+       explanation = 'Wentylacja minutowa = objetosc oddechowa * czestotliwosc oddechow = ok. 500 ml * 12/min = 6 L/min w spoczynku. Obejmuje wdech i wydech.'
+ WHERE id = 'biofiz-s2-134';
+
+UPDATE public.questions
+   SET text = 'Energia powierzchniowa właściwa to',
+       options = '[{"id":"a","text":"wypadkowa sił napięć powierzchniowych"},{"id":"b","text":"siła kohezji występująca na granicy ciała stałego i powietrza"},{"id":"c","text":"wartość nadwyżki ciśnienia dla cieczy dla cieczy w kształcie kuli"},{"id":"d","text":"współczynnik napięcia powierzchniowego"}]'::jsonb,
+       explanation = 'Energia powierzchniowa wlasciwa = wspolczynnik napiecia powierzchniowego sigma. Jednostka: J/m^2 = N/m.'
+ WHERE id = 'biofiz-s2-135';
+
+UPDATE public.questions
+   SET text = 'Jaka jest rola surfaktantów w procesie oddychania?',
+       options = '[{"id":"a","text":"zmniejszają strumień dyfuzyjny tlenu przez powierzchnię pęcherzyków"},{"id":"b","text":"zmieniają współczynnik napięcia powierzchniowego pęcherzyków płucnych"},{"id":"c","text":"zmniejszają współczynnik sprężystości pęcherzyków płucnych"},{"id":"d","text":"zwiększają strumień dyfuzyjny tlenu przez powierzchnię pęcherzyków"}]'::jsonb,
+       explanation = 'Surfaktant zmniejsza wspolczynnik napiecia powierzchniowego pecherzykow plucnych. Zapobiega zapadaniu malych pecherzykow (prawo Laplacea).'
+ WHERE id = 'biofiz-s2-136';
+
+UPDATE public.questions
+   SET text = 'Każda cząsteczka w głębi cieczy',
+       options = '[{"id":"a","text":"oddziałuje siłami spójności z cząsteczkami znajdującymi się w zasięgu jej działania"},{"id":"b","text":"wszystkie odpowiedz są poprawne"},{"id":"c","text":"ma dwa razy większą energię niż cząsteczka przy powierzchni cieczy"},{"id":"d","text":"tworzy warstwę monomolekularną"}]'::jsonb,
+       explanation = 'Czasteczka w glebi cieczy oddzialuje z sasiadami we wszystkich kierunkach - sily sie rownowaza. Wypadkowa sila = 0.'
+ WHERE id = 'biofiz-s2-137';
+
+UPDATE public.questions
+   SET text = 'Zaznacz odpowiedź błędną. Zdolność dyfuzyjna',
+       options = '[{"id":"a","text":"wyrażona jest w cm3, Pa-1, s-1"},{"id":"b","text":"nie zależy od właściwości błon"},{"id":"c","text":"zależy od powierzchni"},{"id":"d","text":"zależy od rozpuszczalności gazu"}]'::jsonb,
+       explanation = 'Zdolnosc dyfuzyjna ZALEZY od wlasciwosci blon (grubosci, powierzchni, przepuszczalnosci). DL = V/(pA-pV) * rozpuszczalnosc.'
+ WHERE id = 'biofiz-s2-138';
+
+UPDATE public.questions
+   SET text = 'Prawo Henry''ego wyraża wzór (gdzie: c - stężenie gazu rozpuszczonego w cieczy, p - ciśnienie cząstkowe gazu pozostałego nad cieczą, α - współczynnik rozpuszczalności gazu)',
+       options = '[{"id":"a","text":"c = α∙p"},{"id":"b","text":"c = α2p"},{"id":"c","text":"c = 1/αp"},{"id":"d","text":"c = α/p"}]'::jsonb,
+       explanation = 'Prawo Henryego: c = alpha * p. Stezenie gazu rozpuszczonego proporcjonalne do cisnienia czesciowego gazu nad cieczą. Alpha to wspolczynnik absorpcji.'
+ WHERE id = 'biofiz-s2-139';
+
+UPDATE public.questions
+   SET text = 'Metoda planimetryczna do wyznaczenia pracy wykonywanej przez układ oddechowy, polega na',
+       options = '[{"id":"a","text":"rejestracji zmian ciśnienia wewnątrzopłucnowego"},{"id":"b","text":"rejestracji zmian objętości płuc"},{"id":"c","text":"pomiarze pola wykresu pracy oddechowej"},{"id":"d","text":"wszystkie z wymienionych"}]'::jsonb,
+       explanation = 'Metoda planimetryczna: rejestracja zmian cisnienia i objetosci, obliczenie pola pod krzywa p-V = praca oddechowa.'
+ WHERE id = 'biofiz-s2-140';
+
+UPDATE public.questions
+   SET text = 'Zaznacz odpowiedź błędną. Szybkość dyfuzji gazów z pęcherzyków do krwi',
+       options = '[{"id":"a","text":"jest odwrotnie proporcjonalna do zdolności dyfuzyjnej płuc"},{"id":"b","text":"wyraża się strumieniem objętości gazu dyfundującego przez błony pęcherzyków i ściany naczyń do krwi"},{"id":"c","text":"wyrażona jest w cm3/s"},{"id":"d","text":"jest proporcjonalna do różnicy ciśnień cząstkowych gazu w pęcherzykach i naczyniach włosowatych"}]'::jsonb,
+       explanation = 'Szybkosc dyfuzji jest WPROST proporcjonalna do zdolnosci dyfuzyjnej (nie odwrotnie). V = DL * delta_p.'
+ WHERE id = 'biofiz-s2-141';
+
+UPDATE public.questions
+   SET text = 'Adsorbcja polega na',
+       options = '[{"id":"a","text":"gromadzeniu się danej substancji na powierzchni ciała"},{"id":"b","text":"łączeniu się ze sobą powierzchniowych warstw ciał"},{"id":"c","text":"oddziaływaniu międzycząsteczkowym występującym wewnątrz ciała"},{"id":"d","text":"pochłanianiu danej substancji w całej objętości ciała"}]'::jsonb,
+       explanation = 'Adsorpcja - gromadzenie substancji NA powierzchni ciala. Absorpcja - wchlanianie W cala objetosc. To rozne zjawiska.'
+ WHERE id = 'biofiz-s2-142';
+
+UPDATE public.questions
+   SET text = 'Odcinek PQ na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"depolaryzację mięśnia komór"},{"id":"b","text":"depolaryzację mięśniówki przedsionków oraz przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"c","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas trwania jednego pełnego cyklu pracy serca"}]'::jsonb,
+       explanation = 'Odcinek PQ (po zalamku P): przewodzenie impulsu przez wezel AV i peczek Hisa. Opoznienie AV ok. 0.1 s.'
+ WHERE id = 'biofiz-s2-143';
+
+UPDATE public.questions
+   SET text = 'Odcinek ST na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"początkową repolaryzację mięśniówki komór"},{"id":"b","text":"depolaryzację mięśnia komór"},{"id":"c","text":"depolaryzację mięśniówki przedsionków oraz przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas trwania jednego pełnego cyklu pracy serca"}]'::jsonb,
+       explanation = 'Odcinek ST: poczatkowa faza repolaryzacji komor. Unienienie/obnizenie ST moze wskazywac na niedokrwienie.'
+ WHERE id = 'biofiz-s2-144';
+
+UPDATE public.questions
+   SET text = 'Odstęp PQ na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"depolaryzację mięśniówki przedsionków oraz przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"b","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"c","text":"czas trwania jednego pełnego cyklu pracy serca"},{"id":"d","text":"depolaryzację mięśnia komór"}]'::jsonb,
+       explanation = 'Odstep PQ (od P do Q): depolaryzacja przedsionkow + przewodzenie przez wezel AV. Norma: 0.12-0.20 s.'
+ WHERE id = 'biofiz-s2-145';
+
+UPDATE public.questions
+   SET text = 'Odstęp QT na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"początkową repolaryzację mięśniówki komór"},{"id":"b","text":"depolaryzację mięśnia komór"},{"id":"c","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas od początku depolaryzacji do zakończenia repolaryzacji mięśniówki komór"}]'::jsonb,
+       explanation = 'Odstep QT: od poczatku QRS do konca T - caly czas depolaryzacji i repolaryzacji komor. Norma zalezy od HR.'
+ WHERE id = 'biofiz-s2-146';
+
+UPDATE public.questions
+   SET text = 'Odstęp ST na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"początkową repolaryzację mięśniówki komór"},{"id":"b","text":"depolaryzację mięśnia komór"},{"id":"c","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas od końca depolaryzacji komór do końca ich repolaryzacji"}]'::jsonb,
+       explanation = 'Odstep ST: od konca QRS (punkt J) do konca T - faza plateau i repolaryzacja komor.'
+ WHERE id = 'biofiz-s2-147';
+
+UPDATE public.questions
+   SET text = 'Odstęp RR na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"czas trwania jednego pełnego cyklu pracy serca"},{"id":"b","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"c","text":"depolaryzację mięśniówki przedsionków oraz przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas trwania jednego niepełnego cyklu pracy serca"}]'::jsonb,
+       explanation = 'Odstep RR: miedzy dwoma kolejnymi zalamkami R - jeden pelny cykl pracy serca. HR = 60/RR.'
+ WHERE id = 'biofiz-s2-148';
+
+UPDATE public.questions
+   SET text = 'Zespół QRS na krzywej EKG interpretujemy jako',
+       options = '[{"id":"a","text":"depolaryzację mięśniówki przedsionków oraz przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"b","text":"depolaryzację mięśnia komór"},{"id":"c","text":"przewodzenie depolaryzacji przez węzeł przedsionkowo-komorowy i pęczek przedsionkowo-komorowy"},{"id":"d","text":"czas trwania jednego pełnego cyklu pracy serca"}]'::jsonb,
+       explanation = 'Zespol QRS: depolaryzacja komor. Q - depolaryzacja przegrody, R - sciany bocznej, S - podstawy komor. Czas < 0.12 s.'
+ WHERE id = 'biofiz-s2-149';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe miejsce podpięcia elektrody żółtej do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"prawa ręka"},{"id":"b","text":"lewa goleń"},{"id":"c","text":"prawa goleń"},{"id":"d","text":"lewa ręka"}]'::jsonb,
+       explanation = 'Elektroda zolta - lewa reka. Mnemotechnika: slonce (zolty) - lewa reka.'
+ WHERE id = 'biofiz-s2-150';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe miejsce podpięcia elektrody czerwonej do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"lewa goleń"},{"id":"b","text":"prawa goleń"},{"id":"c","text":"prawa ręka"},{"id":"d","text":"lewa ręka"}]'::jsonb,
+       explanation = 'Elektroda czerwona - prawa reka. Mnemotechnika: czerwony = start = prawa (jak w wyscigu).'
+ WHERE id = 'biofiz-s2-151';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe miejsce podpięcia elektrody zielonej do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"lewa ręka"},{"id":"b","text":"lewa goleń"},{"id":"c","text":"prawa ręka"},{"id":"d","text":"prawa goleń"}]'::jsonb,
+       explanation = 'Elektroda zielona - lewa noga/golen. Mnemotechnika: trawa (zielona) = dol = lewa noga.'
+ WHERE id = 'biofiz-s2-152';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe miejsce podpięcia elektrody czarnej do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"prawa goleń"},{"id":"b","text":"lewa goleń"},{"id":"c","text":"prawa ręka"},{"id":"d","text":"lewa ręka"}]'::jsonb,
+       explanation = 'Elektroda czarna (uziemienie) - prawa noga/golen. Nie uczestniczy w rejestracji, tylko uziemia pacjenta.'
+ WHERE id = 'biofiz-s2-153';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe podpięcie elektrody brązowej V4 do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"w lewym piątym międzyżebrzu w linii pachowej środkowej lewej"},{"id":"b","text":"w lewym czwartym międzyżebrzu przy brzegu mostka"},{"id":"c","text":"w lewym piątym międzyżebrzu w linii środkowo-obojczykowej lewej"},{"id":"d","text":"w lewym piątym międzyżebrzu w linii pachowej przedniej lewej"}]'::jsonb,
+       explanation = 'V4 (brazowa): V miedzyzebrze w linii srodkowo-obojczykowej lewej. Na koniuszku serca.'
+ WHERE id = 'biofiz-s2-154';
+
+UPDATE public.questions
+   SET text = 'Prawidłowe podpięcie elektrody fioletowej V6 do pacjenta podczas pomiaru EKG to',
+       options = '[{"id":"a","text":"w lewym piątym międzyżebrzu w linii pachowej przedniej lewej"},{"id":"b","text":"w lewym piątym międzyżebrzu w linii środkowo-obojczykowej lewej"},{"id":"c","text":"w lewym czwartym międzyżebrzu przy brzegu mostka"},{"id":"d","text":"w lewym piątym międzyżebrzu w linii pachowej środkowej lewej"}]'::jsonb,
+       explanation = 'V6 (fioletowa): V miedzyzebrze w linii pachowej srodkowej lewej. Najbardziej na lewo z odprowadzen przedsercowych.'
+ WHERE id = 'biofiz-s2-155';
+
+UPDATE public.questions
+   SET text = 'Wg Korotkowa ciśnienie skurczowe (górne) odpowiada',
+       options = '[{"id":"a","text":"fazie V"},{"id":"b","text":"fazie II"},{"id":"c","text":"fazie I"},{"id":"d","text":"fazie IV"}]'::jsonb,
+       explanation = 'Metoda Korotkowa: cisnienie skurczowe = faza I (pojawienie sie pierwszych tonow). Krew zaczyna przeplywac przez scisnięta tętnice.'
+ WHERE id = 'biofiz-s2-156';
+
+UPDATE public.questions
+   SET text = 'Wg Korotkowa ciśnienie rozkurczowe (dolne) odpowiada',
+       options = '[{"id":"a","text":"fazie I"},{"id":"b","text":"fazie V"},{"id":"c","text":"fazie III"},{"id":"d","text":"fazie IV"}]'::jsonb,
+       explanation = 'Cisnienie rozkurczowe = faza V (zanikniecie tonow). Krew przeplywla swobodnie, bez turbulencji.'
+ WHERE id = 'biofiz-s2-157';
+
+UPDATE public.questions
+   SET text = 'Podczas pomiaru ciśnienia mankiet należy opróżniać z prędkością',
+       options = '[{"id":"a","text":"1 mmHg/sek"},{"id":"b","text":"5 mmHg/sek"},{"id":"c","text":"2 mmHg/sek"},{"id":"d","text":"nie ma znaczenia prędkość opróżniania mankietu"}]'::jsonb,
+       explanation = 'Mankiet nalezy oproznic z predkoscia ok. 2-3 mmHg/uderzenie serca (ok. 2 mmHg/s). Zbyt szybko = bledy w pomiarze.'
+ WHERE id = 'biofiz-s2-158';
+
+UPDATE public.questions
+   SET text = 'Gdy podczas pomiaru ciśnienia mankiet opróżniany jest zbyt szybko to',
+       options = '[{"id":"a","text":"nie ma znaczenia, czy mankiet zostanie dopełniony, czy nie"},{"id":"b","text":"nie wolno go dopełniać, a badanie można powtórzyć po co najmniej 10 minutach"},{"id":"c","text":"należy niezwłocznie dopełnić mankiet i dokończyć pomiar"},{"id":"d","text":"nie wolno go dopełniać, a badanie można powtórzyć po co najmniej 3 minutach"}]'::jsonb,
+       explanation = 'Przy zbyt szybkim oproznianiu nie wolno dopelniac mankietu - trzeba calkowicie spuscic i powtorzyc pomiar po 1-2 min (zastoj zylny).'
+ WHERE id = 'biofiz-s2-159';
+
+UPDATE public.questions
+   SET text = 'Pulsoksymetria to metoda opierająca się na',
+       options = '[{"id":"a","text":"zasadzie spektrofluorometrycznego pomiaru wysycenia tlenem hemoglobiny"},{"id":"b","text":"zasadzie spektrofotometrycznego pomiaru wysycenia tlenem hemoglobiny"},{"id":"c","text":"zasadzie spektroskopii fluorescencyjnej pomiaru wysycenia tlenem hemoglobiny"},{"id":"d","text":"zasadzie fluorymetrii wysycenia tlenem hemoglobiny"}]'::jsonb,
+       explanation = 'Pulsoksymetria - metoda spektrofotometryczna. Mierzy absorbcje swiatla czerwonego i podczerwonego przez oksyhemoglobine i deoksyhemoglobine.'
+ WHERE id = 'biofiz-s2-160';
+
+UPDATE public.questions
+   SET text = 'Pulsoksymetr nie mierzy',
+       options = '[{"id":"a","text":"saturacji"},{"id":"b","text":"pulsu"},{"id":"c","text":"pulsu i saturacji"},{"id":"d","text":"tlenku węgla"}]'::jsonb,
+       explanation = 'Pulsoksymetr mierzy saturacje SpO2 i puls. NIE mierzy karboksyhemoglobiny (CO) - moze dawac falszywie wysokie wyniki przy zatruciu CO.'
+ WHERE id = 'biofiz-s2-161';
+
+UPDATE public.questions
+   SET text = 'Podczas przeprowadzania wywiadu SAMPLE z pacjentem należy zapytać o',
+       options = '[{"id":"a","text":"kontakt do rodziny, objawy, alergie, choroby przewlekłe, ostatni posiłek"},{"id":"b","text":"temperaturę ciała, choroby przewlekłe, ostatni posiłek, ciśnienie krwi, objawy, alergie"},{"id":"c","text":"objawy, alergie, przyjmowane leki, choroby przewlekłe, ostatni posiłek, okoliczności wypadku"},{"id":"d","text":"ciśnienie krwi, objawy, alergie, kontakt do rodziny, temperaturę ciała"}]'::jsonb,
+       explanation = 'SAMPLE: Symptoms (objawy), Allergies (alergie), Medications (leki), Past history (choroby), Last meal (ostatni posilek), Events (okolicznosci zdarzenia).'
+ WHERE id = 'biofiz-s2-162';
+
+UPDATE public.questions
+   SET text = 'W medycynie szeroko wykorzystywane jest promieniowanie rentgenowskie powstające w lampie rentgenowskiej. Obwód wysokiego napięcia w tej lampie ma na celu:',
+       options = '[{"id":"a","text":"rozpędzenie elektronów do dużej prędkości w kierunku od anody do katody"},{"id":"b","text":"rozpędzenie elektronów do dużej prędkości w kierunku od katody do anody"},{"id":"c","text":"zwiększenie emisji elektronów z powierzchni anody"},{"id":"d","text":"zwiększenie emisji elektronów z powierzchni katody"}]'::jsonb,
+       explanation = '**Wysokie napięcie anodowe** rozpędza elektrony wybite z rozgrzanej **katody** i kieruje je ku **anodzie** — uderzając w nią z dużą energią, generują promieniowanie hamowania (Bremsstrahlung) i charakterystyczne. Kierunek ruchu elektronów to zawsze **katoda → anoda** (opcja A ma go odwrócony). Samą emisję elektronów z katody zapewnia osobny **obwód żarzenia** (termoemisja), a nie obwód wysokiego napięcia — stąd opcje C i D mylą funkcje obu obwodów.'
+ WHERE id = 'biofiz-s2-330';
+
+UPDATE public.questions
+   SET text = 'Głębokości wnikania fal elektromagnetycznych z zakresu widzialnego (VIS), nadfioletu (UV) i podczerwieni (IR) w skórę i tkanki podskórne można uszeregować od największej do najmniejszej następująco:',
+       options = '[{"id":"a","text":"UV, VIS, IR"},{"id":"b","text":"IR, VIS, UV"},{"id":"c","text":"VIS, IR, UV"},{"id":"d","text":"UV, IR, VIS"}]'::jsonb,
+       explanation = 'Najgłębiej w skórę wnika **podczerwień (IR)** — większa długość fali, słabe rozpraszanie, stąd uczucie głębokiego ogrzewania. **Światło widzialne (VIS)** wnika płycej, a **nadfiolet (UV)** o najkrótszej fali jest silnie pochłaniany w naskórku i powierzchownych warstwach skóry (stąd oparzenia słoneczne dotyczą powierzchni). Kolejność malejąca: **IR > VIS > UV**. Im krótsza fala, tym płytsze wnikanie.'
+ WHERE id = 'biofiz-s2-342';
+
+UPDATE public.questions
+   SET text = 'Fala elektromagnetyczna z zakresu UV ma w porównaniu z falą z zakresu IR:',
+       options = '[{"id":"a","text":"Większą długość fali i mniejszą częstotliwość"},{"id":"b","text":"Mniejszą długość fali i mniejszą częstotliwość"},{"id":"c","text":"Większą długość fali i większą częstotliwość"},{"id":"d","text":"Mniejszą długość fali i większą częstotliwość"}]'::jsonb,
+       explanation = '**UV** leży po stronie krótkofalowej widma, **IR** po długofalowej. Zatem UV ma **mniejszą długość fali** niż IR. Ponieważ $c = \lambda f$ (stała prędkość światła), krótsza fala oznacza **większą częstotliwość**. UV: krótka $\lambda$, duża $f$, większa energia kwantu ($E = hf$) — stąd jonizujący charakter dalekiego UV i jego szkodliwość biologiczna. IR: długa $\lambda$, mała $f$, niskoenergetyczne kwanty odczuwane jako ciepło. Reguła: krótsza fala ↔ wyższa częstotliwość ↔ większa energia.'
+ WHERE id = 'biofiz-s2-346';
+
+UPDATE public.questions
+   SET text = 'Warunkiem koniecznym do działania lasera jest inwersja obsadzeń, czyli:',
+       options = '[{"id":"a","text":"Stan równowagi termodynamicznej, w którym obsadzenie poziomów zgodne jest z rozkładem Boltzmanna"},{"id":"b","text":"Stan, w którym liczba cząstek o niższej energii jest większa niż liczba cząstek o wyższej energii"},{"id":"c","text":"Stan, w którym więcej cząstek znajduje się na wyższym poziomie energetycznym niż na niższym, co umożliwia emisję wymuszoną"},{"id":"d","text":"Proces spontanicznego przejścia cząstek z poziomu wyższego na niższy z emisją fotonu"}]'::jsonb,
+       explanation = '**Inwersja obsadzeń** to nierównowagowy stan, w którym **więcej cząstek zajmuje poziom wyższy** niż niższy — odwrotnie niż przewiduje rozkład Boltzmanna w równowadze. Dopiero wtedy przeważa **emisja wymuszona** nad absorpcją i możliwe jest wzmacnianie światła (akcja laserowa). Opcja B opisuje stan równowagowy, A wprost wyklucza inwersję, a D to emisja **spontaniczna**, nie wymuszona. Inwersja = przewaga obsadzenia stanu wzbudzonego.'
+ WHERE id = 'biofiz-s2-348';
+
+UPDATE public.questions
+   SET text = 'Irydotomia jest zabiegiem wykonywanym z zastosowaniem lasera w:',
+       options = '[{"id":"a","text":"Stomatologii"},{"id":"b","text":"medycynie estetycznej"},{"id":"c","text":"Okulistyce"},{"id":"d","text":"Urologii"}]'::jsonb,
+       explanation = '**Irydotomia** (laserowa, najczęściej laserem **Nd:YAG**) to wykonanie otworu w **tęczówce oka** — zabieg z zakresu **okulistyki**, stosowany m.in. w jaskrze z zamkniętym kątem przesączania, by udrożnić odpływ cieczy wodnistej i obniżyć ciśnienie wewnątrzgałkowe. Nazwa pochodzi od greckiego "iris" (tęczówka) i "tome" (cięcie). Zabieg nie dotyczy zębów (stomatologia), skóry (medycyna estetyczna) ani układu moczowego (urologia). Tęczówka → okulistyka.'
+ WHERE id = 'biofiz-s2-350';
+
+UPDATE public.questions
+   SET text = 'Strumień fotonów promieniowania RTG ($\Phi$) zależy od materiału tarczy ($Z$), napięcia $U$ przyłożonego na lampie oraz natężenia prądu anodowego $I$. Zależność tę określa wzór ($A$ – stała):',
+       options = '[{"id":"a","text":"$\\Phi = A\\,Z\\,I\\,U\\omega^3$"},{"id":"b","text":"$\\Phi = A\\,Z\\,I\\,U\\omega$"},{"id":"c","text":"$\\Phi = A\\,Z\\,I^{2}\\,U\\omega^3$"},{"id":"d","text":"$\\Phi = A\\,Z\\,I^{3}\\,U\\omega$"}]'::jsonb,
+       explanation = 'Strumień (moc) promieniowania lampy RTG rośnie z trzema czynnikami: jest **proporcjonalny do liczby atomowej $Z$** materiału anody (cięższa tarcza → wydajniejsza emisja), do **natężenia prądu anodowego $I$** (więcej elektronów uderzających w anodę) oraz **silnie rośnie z napięciem $U$** (większa energia elektronów i wydajność konwersji). Stąd regulacja $U$ i $I$ steruje odpowiednio jakością (twardością) i ilością promieniowania w diagnostyce RTG.'
+ WHERE id = 'biofiz-s2-366';
+
+UPDATE public.questions
+   SET text = 'W którym stwierdzeniu zawarty jest prawdziwy sens prawa Ohma?',
+       options = '[{"id":"a","text":"Napięcie między końcami przewodnika jest wprost proporcjonalne do jego natężenia"},{"id":"b","text":"Opór przewodnika jest wprost proporcjonalny do napięcia, a odwrotnie proporcjonalny do natężenia prądu"},{"id":"c","text":"Natężenie prądu w przewodniku jest wprost proporcjonalne do napięcia na jego końcach, a odwrotnie proporcjonalne do jego oporu elektrycznego"},{"id":"d","text":"Opór elektryczny przewodnika to stosunek napięcia na jego końcach do natężenia płynącego prądu"}]'::jsonb,
+       explanation = 'Prawo Ohma ($I = U/R$) mówi, że **natężenie prądu jest wprost proporcjonalne do napięcia i odwrotnie proporcjonalne do oporu** — to fizyczna treść prawa. Opcja D jest tylko **definicją oporu** ($R = U/I$), prawdziwą, lecz niewyrażającą zależności przyczynowej prawa Ohma. Opcja B błędnie sugeruje, że opór zależy od $U$ i $I$ (opór jest cechą przewodnika, niezależną od nich). Istota: $I \propto U$, $I \propto 1/R$.'
+ WHERE id = 'biofiz-s2-376';
+
+UPDATE public.questions
+   SET text = 'Wysokość dźwięku związana jest z',
+       options = '[{"id":"a","text":"struktura widmową"},{"id":"b","text":"natężeniem"},{"id":"c","text":"barwą"},{"id":"d","text":"częstotliwością"}]'::jsonb,
+       explanation = 'Wysokosc dzwieku (cecha psychologiczna) jest zwiazana z czestotliwoscia (cecha fizyczna). Im wyzsza czestotliwosc, tym wyzszy ton. Zakres slyszalny: 16 Hz - 20 kHz.'
+ WHERE id = 'biofiz-s3-001';
+
+UPDATE public.questions
+   SET text = 'Cechy fizyczne dźwięku to',
+       options = '[{"id":"a","text":"wysokość, głośność"},{"id":"b","text":"struktura widmowa, natężenie dźwięku"},{"id":"c","text":"natężenie dźwięku, częstotliwość, barwa"},{"id":"d","text":"częstotliwość, natężenie, głośność"}]'::jsonb,
+       explanation = 'Fizyczne cechy dzwieku to: natezenie (W/m^2), czestotliwosc (Hz), struktura widmowa (harmoniczne). Wysokosc, glosnosc i barwa to cechy psychologiczne - subiektywne wrazenia sluchowe.'
+ WHERE id = 'biofiz-s3-002';
+
+UPDATE public.questions
+   SET text = 'Częstotliwości, których ucho ludzkie nie słyszy mieszczą się w zakresie',
+       options = '[{"id":"a","text":"Od 20 Hz do 20 kHz"},{"id":"b","text":"Powyżej 20 kHz"},{"id":"c","text":"Od 20 Hz do 16 kHz"},{"id":"d","text":"Od 16 Hz do 20 kHz"}]'::jsonb,
+       explanation = 'Ucho ludzkie nie slyszy czestotliwosci powyzej 20 kHz (ultradzwieki) i ponizej 16-20 Hz (infradzwieki). Zakres slyszalny to ok. 16 Hz - 20 kHz.'
+ WHERE id = 'biofiz-s3-003';
+
+UPDATE public.questions
+   SET text = 'Cechami psychologicznymi dźwięku są',
+       options = '[{"id":"a","text":"częstotliwość, natężenie, głośność"},{"id":"b","text":"natężenie dźwięku, częstotliwość, barwa"},{"id":"c","text":"struktura widmowa, natężenie dźwięku"},{"id":"d","text":"wysokość, głośność"}]'::jsonb,
+       explanation = 'Cechy psychologiczne dzwieku to: wysokosc, glosnosc, barwa. Struktura widmowa i natezenie dzwieku to cechy fizyczne, mierzalne obiektywnie przyrządami.'
+ WHERE id = 'biofiz-s3-004';
+
+UPDATE public.questions
+   SET text = 'Jednostką natężenia dźwięku jest',
+       options = '[{"id":"a","text":"Hz"},{"id":"b","text":"Bel"},{"id":"c","text":"dB"},{"id":"d","text":"W/m2"}]'::jsonb,
+       explanation = 'Natezenie dzwieku mierzymy w W/m^2 (watach na metr kwadratowy) - to moc akustyczna przypadajaca na jednostke powierzchni. dB to jednostka poziomu natezenia.'
+ WHERE id = 'biofiz-s3-005';
+
+UPDATE public.questions
+   SET text = 'Krzywe izofoniczne to',
+       options = '[{"id":"a","text":"krzywe jednakowego poziomu głośności"},{"id":"b","text":"krzywe jednakowego poziomu natężenia dźwięku"},{"id":"c","text":"krzywe o jednakowej częstotliwości"},{"id":"d","text":"krzywe o jednakowym natężeniu dźwięku"}]'::jsonb,
+       explanation = 'Krzywe izofoniczne (rownej glosnosci) laczą punkty o tym samym subiektywnym wrazeniu glosnosci przy roznych czestotliwosciach i natezeniach. Ucho ma rozna czulosc dla roznych czestotliwosci.'
+ WHERE id = 'biofiz-s3-006';
+
+UPDATE public.questions
+   SET text = 'Jednostką poziomu głośności dźwięku jest',
+       options = '[{"id":"a","text":"dB"},{"id":"b","text":"son"},{"id":"c","text":"fon"},{"id":"d","text":"Hz"}]'::jsonb,
+       explanation = 'Glosnosc (subiektywne odczucie) mierzymy w fonach.'
+ WHERE id = 'biofiz-s3-007';
+
+UPDATE public.questions
+   SET text = 'Jednostką poziomu głośności jest',
+       options = '[{"id":"a","text":"fon"},{"id":"b","text":"dB"},{"id":"c","text":"Hz"},{"id":"d","text":"son"}]'::jsonb,
+       explanation = 'Poziom glosnosci mierzymy w fonach. 1 fon = poziom glosnosci rownowazny tonowi 1 kHz o danym poziomie natezenia w dB. Glosnosc w fonach = poziom natezenia w dB dla tonu 1 kHz.'
+ WHERE id = 'biofiz-s3-008';
+
+UPDATE public.questions
+   SET text = 'Prędkość dźwięku jest największa w',
+       options = '[{"id":"a","text":"w sprężonym powietrzu"},{"id":"b","text":"w cieczach"},{"id":"c","text":"w ciałach stałych"},{"id":"d","text":"w powietrzu"}]'::jsonb,
+       explanation = 'Predkosc dzwieku jest najwieksza w cialach stalych (np. stal ~5000 m/s), mniejsza w cieczach (~1500 m/s w wodzie), najmniejsza w gazach (~340 m/s w powietrzu). Sztywniejszy osrodek = szybszy dzwiek.'
+ WHERE id = 'biofiz-s3-009';
+
+UPDATE public.questions
+   SET text = 'Decybel jest jednostką',
+       options = '[{"id":"a","text":"ciśnienia akustycznego"},{"id":"b","text":"barwy dźwięku"},{"id":"c","text":"natężenia dźwięku"},{"id":"d","text":"poziomu natężenia dźwięku"}]'::jsonb,
+       explanation = 'Decybel (dB) to jednostka poziomu natezenia dzwieku: L = 10*log(I/I_0), gdzie I_0 = 10^-12 W/m^2 (prog slyszalnosci). To skala logarytmiczna, nie liniowa.'
+ WHERE id = 'biofiz-s3-010';
+
+UPDATE public.questions
+   SET text = 'Jeden dB równa się',
+       options = '[{"id":"a","text":"100 B"},{"id":"b","text":"0,1 B"},{"id":"c","text":"0,01 B"},{"id":"d","text":"10 B"}]'::jsonb,
+       explanation = '1 decybel (dB) = 0.1 bela (B). Bel to zbyt duza jednostka do praktycznego uzycia, dlatego stosuje sie decybele. 10 dB = 1 B.'
+ WHERE id = 'biofiz-s3-012';
+
+UPDATE public.questions
+   SET text = 'Fale ultradźwiękowe padając na ruchome struktury biologiczne ulegają odbiciu lub rozproszeniu i zmieniają swoją',
+       options = '[{"id":"a","text":"częstotliwość"},{"id":"b","text":"gęstość"},{"id":"c","text":"prędkość"},{"id":"d","text":"ciśnienie akustyczne"}]'::jsonb,
+       explanation = 'Efekt Dopplera: fala odbita od ruchomej struktury zmienia czestotliwosc. Jesli struktura zbliza sie, czestotliwosc rosnie; jesli oddala, maleje. Podstawa USG Doppler.'
+ WHERE id = 'biofiz-s3-013';
+
+UPDATE public.questions
+   SET text = 'Biorąc pod uwagę długości kosteczek słuchowych oraz różne powierzchnie błony okienka owalnego i bębenka przyjmuje się,że wzmocnienie dźwięku w uchu środkowym jest',
+       options = '[{"id":"a","text":"około 20 krotne"},{"id":"b","text":"około 5 krotne"},{"id":"c","text":"około 25 krotne"},{"id":"d","text":"około 10 krotne"}]'::jsonb,
+       explanation = 'Uklad kosteczek sluchowych i stosunek powierzchni blony bebenkowej do okienka owalnego daje wzmocnienie ok. 20-22 razy. Konieczne do dopasowania impedancji powietrze-plyny ucha wewnetrznego.'
+ WHERE id = 'biofiz-s3-014';
+
+UPDATE public.questions
+   SET text = 'Który z parametrów charakteryzujących ultradźwięki nie ulega zmianie podczas przejścia przez tkanki i narządy',
+       options = '[{"id":"a","text":"prędkość"},{"id":"b","text":"częstotliwość"},{"id":"c","text":"ciśnienie akustyczne"},{"id":"d","text":"długość fali"}]'::jsonb,
+       explanation = 'Przy przejsciu USG przez rozne tkanki czestotliwosc pozostaje stala (okreslona przez zrodlo). Zmienia sie predkosc, dlugosc fali i cisnienie akustyczne (tlumienie).'
+ WHERE id = 'biofiz-s3-015';
+
+UPDATE public.questions
+   SET text = 'Fizyczne cechy dźwięku to',
+       options = '[{"id":"a","text":"natężenie"},{"id":"b","text":"częstotliwość"},{"id":"c","text":"głośność"},{"id":"d","text":"A i B prawidłowe"}]'::jsonb,
+       explanation = 'Fizyczne cechy dzwieku to przede wszystkim czestotliwosc (Hz), natezenie (W/m^2) i struktura widmowa. Wysokosc i glosnosc to cechy psychologiczne.'
+ WHERE id = 'biofiz-s3-016';
+
+UPDATE public.questions
+   SET text = 'Gdy wiązka ultradźwięków pada na granicę ośrodków pod kątem różnym od kąta prostego i prędkość fali zmienia się na granicy ośrodków to takie zjawisko nazywamy',
+       options = '[{"id":"a","text":"załamanie fali"},{"id":"b","text":"ugięcie fali"},{"id":"c","text":"rozproszenie fali"},{"id":"d","text":"odbicie fali"}]'::jsonb,
+       explanation = 'Gdy fala pada ukosnie na granice osrodkow o roznych predkosciach, zachodzi zalamanie (refraction) - zmiana kierunku propagacji zgodnie z prawem Snella. Odbicie zachodzi tez, ale to osobne zjawisko.'
+ WHERE id = 'biofiz-s3-017';
+
+UPDATE public.questions
+   SET text = 'Rezonans występuje w układach biologicznych i przyrządach badawczych. Zjawisko to polega na przekazie energii z jednego układu drgającego do drugiego:',
+       options = '[{"id":"a","text":"O stałej amplitudzie drgań i częstotliwości wymuszonej niezależnej od struktury układu odbierającego energię"},{"id":"b","text":"O najmniejszej amplitudzie drgań i częstotliwości wymuszającej określonej przez układ przesyłający energię"},{"id":"c","text":"O największej amplitudzie drgań dla częstotliwości wymuszającej określonej przez strukturę układu odbierającego energię"},{"id":"d","text":"Z amplitudą drgań proporcjonalną do częstotliwości wymuszającej układu"}]'::jsonb,
+       explanation = '**Rezonans** zachodzi, gdy częstotliwość wymuszająca pokrywa się z **częstotliwością własną** układu odbierającego energię — wówczas amplituda drgań osiąga **maksimum**, a przekaz energii jest najefektywniejszy. To struktura układu odbierającego (jego częstotliwość własna) decyduje o warunku rezonansu. Pozostałe opcje błędnie wiążą amplitudę z układem przesyłającym lub czynią ją niezależną od struktury, co przeczy istocie rezonansu.'
+ WHERE id = 'biofiz-s3-322';
+
+UPDATE public.questions
+   SET text = 'W metodach ultrasonograficznych ważnymi parametrami są prędkość rozchodzenia się fali w ośrodku i gęstość ośrodka. Iloczyn tych parametrów nazywamy:',
+       options = '[{"id":"a","text":"Przewodnością akustyczną"},{"id":"b","text":"Tłumieniem akustycznym"},{"id":"c","text":"Impedancją akustyczną"},{"id":"d","text":"Ciśnieniem akustycznym"}]'::jsonb,
+       explanation = '**Impedancja akustyczna** to **$Z = \rho c$** (gęstość ośrodka razy prędkość fali). Decyduje o odbiciu i przejściu fali na granicy ośrodków — im większa różnica $Z$, tym silniejsze odbicie (stąd potrzeba żelu sprzęgającego w USG, dopasowującego impedancje). **Tłumienie** opisuje zanik energii wzdłuż drogi, a **ciśnienie akustyczne** to lokalne wahania ciśnienia w fali. Iloczyn $\rho c$ jednoznacznie definiuje impedancję.'
+ WHERE id = 'biofiz-s3-325';
+
+UPDATE public.questions
+   SET text = 'Efekt piezoelektryczny umożliwia generowanie fali ultradźwiękowej. Główna cecha tego efektu to:',
+       options = '[{"id":"a","text":"Przy odkształceniu kryształu pojawiają się ładunki tego samego znaku na przeciwległych ściankach"},{"id":"b","text":"Przy odkształceniu kryształu pojawiają się ładunki przeciwnych znaków na przeciwległych ściankach"},{"id":"c","text":"Przy ogrzewaniu kryształu pojawiają się ładunki przeciwnych znaków na jego ściankach"},{"id":"d","text":"Po przyłożeniu pola elektrycznego do kryształu następuje jego odkształcenie"}]'::jsonb,
+       explanation = '**Prosty efekt piezoelektryczny**: mechaniczne **odkształcenie** kryształu (np. kwarcu) powoduje pojawienie się **ładunków przeciwnych znaków** na przeciwległych ściankach — tak działa odbiornik USG. Opcja D opisuje **odwrotny** efekt piezoelektryczny (pole → odkształcenie), wykorzystywany do nadawania fali. Opcja C to efekt **piroelektryczny** (ogrzewanie). Pytanie o cechę główną efektu wskazuje generację ładunku przy odkształceniu.'
+ WHERE id = 'biofiz-s3-327';
+
+UPDATE public.questions
+   SET text = 'Fale akustyczne (dźwiękowe) rozchodzące się w gazach i cieczach zaliczamy do:',
+       options = '[{"id":"a","text":"Elektromagnetycznych i poprzecznych"},{"id":"b","text":"Sprężystych i poprzecznych"},{"id":"c","text":"Elektromagnetycznych i podłużnych"},{"id":"d","text":"Sprężystych i podłużnych"}]'::jsonb,
+       explanation = 'Dźwięk to fala **sprężysta** (mechaniczna) — wymaga ośrodka materialnego i polega na lokalnych zagęszczeniach i rozrzedzeniach. W **gazach i cieczach** rozchodzi się wyłącznie jako fala **podłużna**, bo płyny nie przenoszą naprężeń ścinających (brak sztywności postaciowej). Fale poprzeczne dźwięku możliwe są tylko w ciałach stałych. Fale elektromagnetyczne nie wymagają ośrodka — to inna kategoria, więc opcje z "elektromagnetycznych" są błędne.'
+ WHERE id = 'biofiz-s3-328';
+
+UPDATE public.questions
+   SET text = 'Fale ultradźwiękowe stosuje się do obrazowania wnętrza organizmu. Prędkość tych fal w tkankach miękkich jest:',
+       options = '[{"id":"a","text":"znacznie mniejsza niż w kościach"},{"id":"b","text":"nieco większa niż w kościach"},{"id":"c","text":"dużo większa niż w kościach"},{"id":"d","text":"taka sama jak w kościach"}]'::jsonb,
+       explanation = 'Prędkość dźwięku rośnie ze sztywnością ośrodka, dlatego w **kościach** (ok. **3500–4000 m/s**) jest **znacznie większa** niż w **tkankach miękkich** (przyjmuje się uśrednioną wartość **1540 m/s**, na której kalibrowane są aparaty USG). Tkanki miękkie → wolniej, kość → szybciej. Duża różnica prędkości i **impedancji akustycznej** na granicy tkanka–kość powoduje silne odbicia fali, co utrudnia obrazowanie struktur leżących za kością i daje cień akustyczny.'
+ WHERE id = 'biofiz-s3-333';
+
+UPDATE public.questions
+   SET text = 'Natężenie fali (elektromagnetycznej lub mechanicznej) definiujemy jako iloraz:',
+       options = '[{"id":"a","text":"energii fali do powierzchni prostopadłej do kierunku rozchodzenia się fali"},{"id":"b","text":"mocy fali do powierzchni prostopadłej do kierunku rozchodzenia się fali"},{"id":"c","text":"energii fali do powierzchni równoległej do kierunku rozchodzenia się fali"},{"id":"d","text":"mocy fali do powierzchni równoległej do kierunku rozchodzenia się fali"}]'::jsonb,
+       explanation = '**Natężenie fali** $I = P/S$ — to **moc** przenoszona przez falę przez jednostkową powierzchnię **prostopadłą** do kierunku rozchodzenia (jednostka $\mathrm{W/m^2}$). Powierzchnia musi być prostopadła, bo liczy się strumień energii przechodzący przez przekrój fali. Energia ($\mathrm{J}$) zamiast mocy dałaby inną wielkość, a powierzchnia równoległa do kierunku propagacji nie jest przecinana przez falę. $I$ = moc / pole prostopadłe.'
+ WHERE id = 'biofiz-s3-335';
+
+UPDATE public.questions
+   SET text = 'Ilość energii odbitej od granicy między dwoma ośrodkami o impedancjach akustycznych $Z_1$ i $Z_2$ określa wzór na współczynnik odbicia:',
+       options = '[{"id":"a","text":"$R = \\left(\\dfrac{Z_1 - Z_2}{Z_1 + Z_2}\\right)^2$"},{"id":"b","text":"$R = \\dfrac{Z_1 - Z_2}{Z_1 + Z_2}$"},{"id":"c","text":"$R = \\dfrac{Z_1 Z_2}{(Z_1 + Z_2)^2}$"},{"id":"d","text":"$R = \\dfrac{Z_1 + Z_2}{(Z_1 - Z_2)^2}$"}]'::jsonb,
+       explanation = 'Współczynnik odbicia **energii** fali na granicy ośrodków: $R = \left(\dfrac{Z_1-Z_2}{Z_1+Z_2}\right)^2$. Im większa różnica impedancji akustycznych, tym więcej energii się odbija — przy zbliżonych $Z$ odbicie jest minimalne (dlatego w USG stosuje się żel sprzęgający dopasowujący impedancje skóra–głowica). Wyrażenie bez kwadratu opisywałoby odbicie **amplitudy**, a nie energii. Odbicie energii zależy więc od **kwadratu** względnej różnicy impedancji.'
+ WHERE id = 'biofiz-s3-360';
+
+UPDATE public.questions
+   SET text = 'Ruch harmoniczny można opisać równaniem ($x$ – wychylenie, $t$ – czas, $A$ – amplituda drgań, $\omega$ – częstość drgań, $\varphi$ – przesunięcie fazowe):',
+       options = '[{"id":"a","text":"$x = A \\cos\\cos(\\varphi t + \\omega)$"},{"id":"b","text":"$x = A (\\omega t + \\varphi)$"},{"id":"c","text":"$x = A \\cos\\cos(\\omega t + \\varphi)$"},{"id":"d","text":"$x = A \\sin(\\omega t + \\varphi)$"}]'::jsonb,
+       explanation = 'Ruch harmoniczny prosty opisuje funkcja sinusoidalna: $x = A\sin(\omega t + \varphi)$ (równoważnie cosinus przy odpowiednim $\varphi$). **$A$** to amplituda, **$\omega$** – częstość kołowa, **$\varphi$** – faza początkowa. Funkcja liniowa (B) nie jest okresowa, a zapisy z podwojonym „$\cos\cos$" (A, C) to artefakt zapisu bez sensu fizycznego; dodatkowo w A zamieniono argument na $\varphi t + \omega$. Kluczowa jest pojedyncza funkcja okresowa argumentu $\omega t + \varphi$.'
+ WHERE id = 'biofiz-s3-365';
+
+UPDATE public.questions
+   SET text = 'W której technice ultrasonograficznej jasność punktów na ekranie odpowiada sile odbitego sygnału, obrazując przekrój badanego obszaru ciała?',
+       options = '[{"id":"a","text":"prezentacja A"},{"id":"b","text":"prezentacja B"},{"id":"c","text":"prezentacja M"},{"id":"d","text":"prezentacja D"}]'::jsonb,
+       explanation = '**Prezentacja B (Brightness)** koduje **jasność** punktu proporcjonalnie do amplitudy echa, budując dwuwymiarowy **przekrój** anatomiczny — to standardowy obraz USG. **Prezentacja A (Amplitude)** pokazuje echa jako piki amplitudy na osi czasu (jednowymiarowo). **Prezentacja M (Motion)** rejestruje ruch struktur w czasie (np. zastawek serca). Jasność = siła echa, obraz 2D → tryb B.'
+ WHERE id = 'biofiz-s3-372';
+
+UPDATE public.questions
+   SET text = 'Zjawisko Dopplera w ultrasonografii pozwala obliczyć prędkość przepływu krwi. Metoda ta polega na pomiarze:',
+       options = '[{"id":"a","text":"natężenia fali odbitej lub rozproszonej"},{"id":"b","text":"czasu opóźnienia powrotu fali odbitej lub rozproszonej"},{"id":"c","text":"zmiany częstotliwości fali odbitej lub rozproszonej względem fali padającej"},{"id":"d","text":"zmiany prędkości rozchodzenia się fali odbitej lub rozproszonej względem fali padającej"}]'::jsonb,
+       explanation = '**Efekt Dopplera** polega na **zmianie częstotliwości** fali odbitej od poruszającego się obiektu (krwinek) względem fali padającej — przesunięcie dopplerowskie jest proporcjonalne do prędkości przepływu i kosinusa kąta. Stąd USG dopplerowskie mierzy prędkość krwi. **Czas opóźnienia** (B) służy do określania odległości (tryb B/A), a prędkość fali w tkance jest w przybliżeniu stała (D błędne). Doppler → przesunięcie częstotliwości.'
+ WHERE id = 'biofiz-s3-373';
+
+UPDATE public.questions
+   SET text = 'Dźwięk można opisać za pomocą cech fizycznych, do których NIE zaliczamy:',
+       options = '[{"id":"a","text":"częstotliwości dźwięku"},{"id":"b","text":"natężenia dźwięku"},{"id":"c","text":"struktury widmowej"},{"id":"d","text":"wysokości dźwięku"}]'::jsonb,
+       explanation = '**Wysokość dźwięku** to cecha **subiektywna (psychoakustyczna)** — wrażenie słuchowe odpowiadające fizycznej **częstotliwości**, ale nie tożsame z nią. Cechy **fizyczne** (obiektywne, mierzalne) to: **częstotliwość**, **natężenie** i **struktura widmowa** (skład harmoniczny). Wysokość, głośność i barwa to ich subiektywne odpowiedniki. Pytanie negatywne: szukamy cechy, która nie jest fizyczna — to wysokość dźwięku.'
+ WHERE id = 'biofiz-s3-385';
+
+UPDATE public.questions
+   SET text = 'Średnia arytmetyczna z szeregu pomiarowego jest',
+       options = '[{"id":"a","text":"może być obliczona tylko dla odpowiednio dużej ilości pomiarów"},{"id":"b","text":"przybliżeniem wartości rzeczywistej mierzonej wielkości"},{"id":"c","text":"jest równa wartości rzeczywistej mierzonej wielkości"},{"id":"d","text":"jest miarą rozproszenia wyników pomiarów"}]'::jsonb,
+       explanation = 'Srednia arytmetyczna jest estymatorem (przyblizeniem) wartosci rzeczywistej wielkosci mierzonej. Nigdy nie znamy dokladnej wartosci rzeczywistej - srednia z pomiarow jest jej najlepszym oszacowaniem.'
+ WHERE id = 'biofiz-w1-001';
+
+UPDATE public.questions
+   SET text = 'Odchylenie standardowe',
+       options = '[{"id":"a","text":"nie zależy od ilości wykonanych pomiarów"},{"id":"b","text":"jest kwadratem wariancji"},{"id":"c","text":"jest równe wariancji"},{"id":"d","text":"jest jedną z miar rozproszenia wyników pomiarowych"}]'::jsonb,
+       explanation = 'Odchylenie standardowe (sigma) jest miara rozproszenia (dyspersji) wynikow pomiarowych. Okresla, jak bardzo wyniki odbiegaja od sredniej. Wariancja to kwadrat odchylenia standardowego, nie odwrotnie.'
+ WHERE id = 'biofiz-w1-002';
+
+UPDATE public.questions
+   SET text = 'Wariancja',
+       options = '[{"id":"a","text":"jest równa średniej arytmetycznej w przypadku dużej ilości pomiarów"},{"id":"b","text":"jest pierwiastkiem kwadratowym z odchylenia standardowego"},{"id":"c","text":"jest jedną z miar rozproszenia wyników pomiarowych"},{"id":"d","text":"jest przybliżeniem wartości rzeczywistej mierzonej wielkości"}]'::jsonb,
+       explanation = 'Wariancja (s^2 lub sigma^2) jest miara rozproszenia wynikow pomiarowych, zdefiniowana jako srednia kwadratow odchylen od sredniej. Odchylenie standardowe to pierwiastek z wariancji, nie odwrotnie.'
+ WHERE id = 'biofiz-w1-003';
+
+UPDATE public.questions
+   SET text = 'Średnia arytmetyczna określona jest z warunku na minimum funkcji będącej sumą po wszystkich pomiarach',
+       options = '[{"id":"a","text":"wielkości zmierzonych podzielonych przez liczbę pomiarów"},{"id":"b","text":"różnic między wielkością zmierzoną a szukaną średnią"},{"id":"c","text":"pierwiastków z różnic między wielkością zmierzoną a szukaną średnią"},{"id":"d","text":"kwadratów różnic między wielkością zmierzoną a szukaną średnią"}]'::jsonb,
+       explanation = 'Srednia arytmetyczna minimalizuje sume kwadratow roznic miedzy wartosciami zmierzonymi a srednia. To jest podstawa metody najmniejszych kwadratow (MNK). Minimalizujemy: Sum[(xi - x_sr)^2].'
+ WHERE id = 'biofiz-w1-004';
+
+UPDATE public.questions
+   SET text = 'Błąd standardowy',
+       options = '[{"id":"a","text":"jego wartość maleje liniowo wraz ze wzrostem liczby pomiarów"},{"id":"b","text":"jest kwadratem odchylenia standardowego"},{"id":"c","text":"jest błędem średniej arytmetycznej"},{"id":"d","text":"nie zależy od liczby pomiarów"}]'::jsonb,
+       explanation = 'Blad standardowy (SE = sigma/sqrt(n)) jest bledem sredniej arytmetycznej. Okresla niepewnosc wyznaczenia sredniej. Maleje proporcjonalnie do sqrt(n), nie liniowo.'
+ WHERE id = 'biofiz-w1-005';
+
+UPDATE public.questions
+   SET text = 'Rozkład normalny mierzonej wielokrotnie wielkości',
+       options = '[{"id":"a","text":"obrazuje zależność średniej arytmetycznej od wartości rzeczywistej wielkości mierzonej"},{"id":"b","text":"przyjmuje wartość maksymalną dla odchylenia standardowego"},{"id":"c","text":"przyjmuje wartość minimalną dla średniej arytmetycznej"},{"id":"d","text":"obrazuje zależność częstości pojawiania się wartości mierzonej od wartości wielkości mierzonej"}]'::jsonb,
+       explanation = 'Rozklad normalny (Gaussa) obrazuje czestotliwosc (prawdopodobienstwo) wystapienia danej wartosci mierzonej. Maksimum krzywa Gaussa przyjmuje dla sredniej, nie dla odchylenia standardowego.'
+ WHERE id = 'biofiz-w1-006';
+
+UPDATE public.questions
+   SET text = 'Błąd bezwzględny pomiaru jest to',
+       options = '[{"id":"a","text":"iloraz błędu względnego do średniej arytmetycznej"},{"id":"b","text":"różnica między wielkością zmierzoną a średnią arytmetyczną"},{"id":"c","text":"różnica między wielkością zmierzoną a odchyleniem standardowym"},{"id":"d","text":"wielkość bezwymiarowa"}]'::jsonb,
+       explanation = 'Blad bezwzgledny to roznica miedzy wartoscia zmierzona a wartoscia rzeczywista (lub jej przyblizeniem - srednia): Delta_x = x_i - x_sr. Ma te same jednostki co wielkosci mierzona.'
+ WHERE id = 'biofiz-w1-007';
+
+UPDATE public.questions
+   SET text = 'Błąd względny pomiaru jest to',
+       options = '[{"id":"a","text":"suma wszystkich pomiarów podzielona przez liczbę pomiarów"},{"id":"b","text":"różnica między wielkością zmierzoną a średnią arytmetyczną"},{"id":"c","text":"iloczyn błędu bezwzględnego pomiaru i średniej arytmetycznej"},{"id":"d","text":"iloraz błędu bezwzględnego pomiaru do średniej arytmetycznej"}]'::jsonb,
+       explanation = 'Blad wzgledny to iloraz bledu bezwzglednego do wartosci rzeczywistej (sredniej): delta = Delta_x / x_sr. Jest wielkoscia bezwymiarowa, czesto wyrazana w procentach.'
+ WHERE id = 'biofiz-w1-008';
+
+UPDATE public.questions
+   SET text = 'Błąd systematyczny jest to błąd spowodowany',
+       options = '[{"id":"a","text":"zbyt małą ilością wykonanych pomiarów"},{"id":"b","text":"złą skalą przyrządu pomiarowego"},{"id":"c","text":"wpływem parametrów otoczenia na pomiar"},{"id":"d","text":"niepoprawnym zapisem danych do tabeli pomiarowej"}]'::jsonb,
+       explanation = 'Blad systematyczny wynika z wadliwego przyrządu pomiarowego (zła skala, zle wyzerowanie). Powoduje stale przesuniecie wszystkich wynikow w jedna strone. Zwiekszanie liczby pomiarow go nie eliminuje.'
+ WHERE id = 'biofiz-w1-009';
+
+UPDATE public.questions
+   SET text = 'Błąd systematyczny można zmniejszyć (usunąć) poprzez',
+       options = '[{"id":"a","text":"kalibrację przyrządu pomiarowego"},{"id":"b","text":"zwiększenie ilości pomiarów"},{"id":"c","text":"odrzucenie części wyników pomiarowych znacznie różniących się od pozostałych"},{"id":"d","text":"zmniejszenie liczby pomiarów"}]'::jsonb,
+       explanation = 'Blad systematyczny mozna usunac przez kalibracje (wzorcowanie) przyrządu pomiarowego. Zwiekszanie liczby pomiarow nie pomaga - blad systematyczny nie usrednia sie do zera.'
+ WHERE id = 'biofiz-w1-010';
+
+UPDATE public.questions
+   SET text = 'Przyczyną błędu przypadkowego może być',
+       options = '[{"id":"a","text":"warunki otoczenia, w jakich wykonywany jest pomiar"},{"id":"b","text":"niewykalibrowany przyrząd pomiarowy"},{"id":"c","text":"zły zapis wyniku w tabeli pomiarowej"},{"id":"d","text":"zbyt mała ilość pomiarów"}]'::jsonb,
+       explanation = 'Bledy przypadkowe (losowe) wynikaja z losowych fluktuacji warunkow pomiaru: drgania, zmiany temperatury, ciśnienia itp. Maja charakter losowy i usredniaja sie przy duzej liczbie pomiarow.'
+ WHERE id = 'biofiz-w1-011';
+
+UPDATE public.questions
+   SET text = 'Błędy przypadkowe w pomiarach',
+       options = '[{"id":"a","text":"związane są z nieprawidłowym działaniem przyrządu pomiarowego"},{"id":"b","text":"można je całkowicie wyeliminować poprzez zwiększenie ilości pomiarów"},{"id":"c","text":"występują zawsze, można zmniejszyć ich wpływ na pomiar poprzez zwiększenie ilości pomiarów"},{"id":"d","text":"można zmniejszyć poprzez odrzucenie części wyników pomiarowych"}]'::jsonb,
+       explanation = 'Bledy przypadkowe wystepuja zawsze w kazdym pomiarze. Nie mozna ich calkowicie wyeliminowac, ale mozna zmniejszyc ich wplyw na wynik koncowy przez zwiekszenie liczby pomiarow (srednia jest dokladniejsza).'
+ WHERE id = 'biofiz-w1-012';
+
+UPDATE public.questions
+   SET text = 'Błąd gruby w pomiarach',
+       options = '[{"id":"a","text":"pojawia się, gdy posługujemy się nieskalibrowanym przyrządem pomiarowym"},{"id":"b","text":"jest tego samego rzędu, co błędy przypadkowe"},{"id":"c","text":"wynika najczęściej z niepoprawnego odczytu lub zapisu wielkości mierzonej"},{"id":"d","text":"wynika ze zbyt małej ilości pomiarów"}]'::jsonb,
+       explanation = 'Blad gruby (pomylka) wynika najczesciej z bledu ludzkiego: zly odczyt skali, zly zapis wyniku, pomylka obliczeniowa. Jest znaczaco wiekszy niz bledy przypadkowe i powinien byc odrzucony.'
+ WHERE id = 'biofiz-w1-013';
+
+UPDATE public.questions
+   SET text = 'Statystyczny rozkład błędów przypadkowych jest',
+       options = '[{"id":"a","text":"rozkładem normalnym dla średniej i odchylenia standardowego zależnych o metody pomiarowej"},{"id":"b","text":"rozkładem normalnym ze średnią zależną od wielkości mierzonej, przy czym im mniejsze odchylenie standardowe dla błędów tym węższa jest krzywa rozkładu"},{"id":"c","text":"rozkładem normalnym ze średnią równą zero, przy czym im mniejsze odchylenie standardowe dla błędów tym węższa jest krzywa rozkładu"},{"id":"d","text":"rozkładem normalnym ze średnią równą zero, przy czym im większe odchylenie standardowe dla błędów tym węższa jest krzywa rozkładu"}]'::jsonb,
+       explanation = 'Bledy przypadkowe maja rozklad normalny (Gaussa) ze srednia rowna zero (bledy dodatnie i ujemne sa rownie prawdopodobne). Im mniejsze odchylenie standardowe, tym wezsza (bardziej skupiona) krzywa rozkladu.'
+ WHERE id = 'biofiz-w1-014';
+
+UPDATE public.questions
+   SET text = 'Do liczenia błędów wielkości mierzonych pośrednio (wyliczanych ze wzoru, w którym występują wielkości mierzone) możemy wykorzystać metodę',
+       options = '[{"id":"a","text":"pochodnej logarytmicznej, niezależnie od typu zależności od wielkości mierzonych"},{"id":"b","text":"pochodnej logarytmicznej, również w przypadku, gdy w funkcji występuje suma lub różnica wielkości mierzonych"},{"id":"c","text":"pochodnej logarytmicznej, tylko w przypadku, gdy w funkcji występują tylko iloczyny lub iloraz wielkości mierzonych"},{"id":"d","text":"różniczki zupełnej funkcji wielkości mierzonych, tylko w przypadku, gdy w funkcji występują tylko iloczyny lub iloraz wielkości mierzonych"}]'::jsonb,
+       explanation = 'Metoda pochodnej logarytmicznej dziala tylko dla funkcji bedacych iloczynem lub ilorazem wielkosci mierzonych, bo ln(ab) = ln( a) + ln( b) i ln(a/ b) = ln( a) - ln(b). Dla sum/roznic trzeba uzyc roznicy zupelnej.'
+ WHERE id = 'biofiz-w1-015';
+
+UPDATE public.questions
+   SET text = 'Błąd względny obliczenia objętości kuli przy pomiarze jej promienia',
+       options = '[{"id":"a","text":"jest trzykrotnie większy od błędu względnego pomiaru promienia"},{"id":"b","text":"nie zależy od błędu względnego pomiaru promienia"},{"id":"c","text":"jest taki sam jak błąd względny pomiaru promienia"},{"id":"d","text":"jest dwukrotnie większy od błędu względnego pomiaru promienia"}]'::jsonb,
+       explanation = 'Objetosc kuli V = (4/3)*pi*r^3. Blad wzgledny: dV/V = 3*dr/r, czyli blad wzgledny objetosci jest 3-krotnie wiekszy od bledu wzglednego promienia (wykladnik potegi przy r).'
+ WHERE id = 'biofiz-w1-016';
+
+UPDATE public.questions
+   SET text = 'Błąd bezwzględny obliczenia pomiaru objętości kuli przy pomiarze promienia kuli',
+       options = '[{"id":"a","text":"jest odwrotnie proporcjonalny do promienia kuli i proporcjonalny do błędu bezwzględnego pomiaru jej promienia"},{"id":"b","text":"nie zależy od promienia kuli i jest proporcjonalny do błędu bezwzględnego pomiaru promienia"},{"id":"c","text":"jest proporcjonalny do promienia kuli i do błędu bezwzględnego pomiaru jej promienia"},{"id":"d","text":"jest proporcjonalny do kwadratu promienia kuli i do błędu bezwzględnego pomiaru jej promienia"}]'::jsonb,
+       explanation = 'Blad bezwzgledny objetosci: dV = (dV/dr)*dr = 4*pi*r^2 * dr. Jest proporcjonalny do r^2 (kwadratu promienia) i do dr (bledu bezwzglednego promienia).'
+ WHERE id = 'biofiz-w1-017';
+
+UPDATE public.questions
+   SET text = 'Pochodna z funkcji ln(x) jest równa (x wielkość mierzona)',
+       options = '[{"id":"a","text":"(lnx)’=1/x"},{"id":"b","text":"(lnx)’=x"},{"id":"c","text":"(lnx)’= x2"},{"id":"d","text":"(lnx)’=x/2"}]'::jsonb,
+       explanation = 'Pochodna funkcji logarytmicznej: (ln x)'' = 1/x. To podstawowy wzor rozniczkowania, kluczowy w metodzie pochodnej logarytmicznej do obliczania bledow.'
+ WHERE id = 'biofiz-w1-018';
+
+UPDATE public.questions
+   SET text = 'Pochodna ze stałej',
+       options = '[{"id":"a","text":"jest równa zero"},{"id":"b","text":"jest większa od zera"},{"id":"c","text":"może być mniejsza od zera, większa od zera lub równa zero"},{"id":"d","text":"jest mniejsza od zera"}]'::jsonb,
+       explanation = 'Pochodna stalej jest rowna zero: (c)'' = 0. Stala nie zmienia sie, wiec jej "szybkosc zmiany" (pochodna) wynosi zero.'
+ WHERE id = 'biofiz-w1-019';
+
+UPDATE public.questions
+   SET text = 'Pochodna z sumy dwóch funkcji',
+       options = '[{"id":"a","text":"jest równa iloczynowi pochodnych tych funkcji"},{"id":"b","text":"jest zawsze równa zero"},{"id":"c","text":"jest równa ilorazowi pochodnych tych funkcji"},{"id":"d","text":"jest równa sumie pochodnych tych funkcji"}]'::jsonb,
+       explanation = 'Pochodna sumy jest rowna sumie pochodnych: (f + g)'' = f'' + g''. Rozniczkowanie jest operacja liniowa.'
+ WHERE id = 'biofiz-w1-020';
+
+UPDATE public.questions
+   SET text = 'Pochodna z iloczynu stałej i funkcji',
+       options = '[{"id":"a","text":"jest równa sumie stałej i pochodnej funkcji"},{"id":"b","text":"jest równa iloczynowi tej stałej i pochodnej funkcji"},{"id":"c","text":"jest równa pochodnej funkcji pomniejszonej o stałą"},{"id":"d","text":"jest równa pochodnej funkcji podzielonej przez stałą"}]'::jsonb,
+       explanation = 'Pochodna iloczynu stalej i funkcji: (c*f)'' = c*f''. Stala "wychodzi przed pochodna" - rozniczkowanie jest operacja liniowa.'
+ WHERE id = 'biofiz-w1-021';
+
+UPDATE public.questions
+   SET text = 'Pochodna z funkcji x^(n) wynosi',
+       options = '[{"id":"a","text":"n*x^(n)"},{"id":"b","text":"n*x^(n+1)"},{"id":"c","text":"(n-1)*x^(n-1)"},{"id":"d","text":"n*x^(n-1)"}]'::jsonb,
+       explanation = 'Pochodna funkcji potegowej: (x^n)'' = n*x^(n-1). Wykladnik "schodzi na dol" jako wspolczynnik, a sam zmniejsza sie o 1.'
+ WHERE id = 'biofiz-w1-022';
+
+UPDATE public.questions
+   SET text = 'Wokół punktu naniesionego na wykres y=f(x) (Δx i Δy – błędy bezwzględne wielkości x i y), rysujemy i i i i prostokąt błędu, którego boki są równe',
+       options = '[{"id":"a","text":"Δx i Δy i i"},{"id":"b","text":"błędom względnym wielkości x i y i i"},{"id":"c","text":"podwojonym błędom względnym wielkości x i y i i"},{"id":"d","text":"2Δx i 2Δy i i"}]'::jsonb,
+       explanation = 'Prostokat bledu ma boki rowne 2*Delta_x i 2*Delta_y, bo blad moze byc dodatni lub ujemny. Punkt moze znajdowac sie w zakresie +/- Delta od wartosci zmierzonej.'
+ WHERE id = 'biofiz-w1-023';
+
+UPDATE public.questions
+   SET text = 'Linię dopasowania do punktów pomiarowych (linię trendu) prowadzimy',
+       options = '[{"id":"a","text":"tak, aby wychodziła z początku układu pomiarowego"},{"id":"b","text":"przez prostokąty błędów, jak najbliżej punktów pomiarowych"},{"id":"c","text":"dokładnie przez każdy z punktów pomiarowych, linią ciągłą wygładzoną"},{"id":"d","text":"dokładnie przez każdy z punktów pomiarowych, linią łamaną"}]'::jsonb,
+       explanation = 'Linie trendu prowadzimy przez prostokaty bledow, jak najblizej punktow pomiarowych. Nie musi wychodzic z poczatku ukladu ani przechodzic dokladnie przez punkty.'
+ WHERE id = 'biofiz-w1-024';
+
+UPDATE public.questions
+   SET text = 'Metoda liniowej regresji jest takim dopasowaniem linii do punktów, że',
+       options = '[{"id":"a","text":"suma odległości punktów od linii jest minimalna"},{"id":"b","text":"suma odległości punktów od linii jest maksymalna"},{"id":"c","text":"suma kwadratów odległości punktów od linii jest maksymalna"},{"id":"d","text":"suma kwadratów ich odległości od linii jest minimalna"}]'::jsonb,
+       explanation = 'Regresja liniowa (metoda najmniejszych kwadratow) minimalizuje sume kwadratow odleglosci punktow od prostej. Dlatego nazywa sie "metoda najmniejszych kwadratow".'
+ WHERE id = 'biofiz-w1-025';
+
+UPDATE public.questions
+   SET text = 'Współczynnik liniowej korelacji (współczynnik Pearsona) charakteryzujący zależność między dwoma szeregami danych',
+       options = '[{"id":"a","text":"im większa jest wartość współczynnika korelacji tym słabsza jest zależność między wielkościami mierzonymi"},{"id":"b","text":"przyjmuje wartości w zakresie od 0 do 1"},{"id":"c","text":"przyjmuje wartości w zakresie od -1 do 1, oraz gdy jest ujemny odpowiada funkcji malejącej"},{"id":"d","text":"im mniejsza jest wartość współczynnika korelacji tym punkty pomiarowe są bardziej skupione wokół prostej regresji"}]'::jsonb,
+       explanation = 'Wspolczynnik korelacji Pearsona przyjmuje wartosci od -1 do +1. Wartosc ujemna oznacza korelacje ujemna (funkcja malejaca), dodatnia - korelacje dodatnia (funkcja rosnaca).'
+ WHERE id = 'biofiz-w1-026';
+
+UPDATE public.questions
+   SET text = 'Wartość pochodnej funkcji w danym punkcie określa',
+       options = '[{"id":"a","text":"wartość funkcji w danym punkcie i gdy pochodna jest ujemna to funkcja jest malejąca"},{"id":"b","text":"jak szybko zmienia się funkcja i gdy pochodna jest dodatnia to funkcja jest rosnąca"},{"id":"c","text":"wartość funkcji w danym punkcie i gdy pochodna jest dodatnia to funkcja jest rosnąca"},{"id":"d","text":"jak szybko zmienia się funkcja i gdy pochodna jest ujemna to funkcja jest rosnąca"}]'::jsonb,
+       explanation = 'Pochodna okresla szybkosc zmiany funkcji (nachylenie stycznej). Gdy pochodna > 0, funkcja rosnie; gdy pochodna < 0, funkcja maleje; gdy pochodna = 0, funkcja ma ekstremum.'
+ WHERE id = 'biofiz-w1-027';
+
+UPDATE public.questions
+   SET text = 'Własności logarytmu poprawnie przedstawiają zależności',
+       options = '[{"id":"a","text":"ln(xy) = ln(x) ln(y) ; ln(xn) = n ln(x)"},{"id":"b","text":"ln(xy) = ln(x) + ln(y) ; ln(x/y) = ln(x) - ln(y)"},{"id":"c","text":"ln(xn) = (ln(x))n ; ln(x/y) = ln(x) – ln(y)"},{"id":"d","text":"ln(xy) = ln(x) ln(y) ; ln(x/y) = ln(x) / ln(y)"}]'::jsonb,
+       explanation = 'Wlasnosci logarytmu: ln(xy) = ln( x) + ln(y), ln(x/ y) = ln( x) - ln(y), ln(x^ n) = n*ln(x). Logarytm zamienia mnozenie na dodawanie, dzielenie na odejmowanie, potegowanie na mnozenie.'
+ WHERE id = 'biofiz-w1-028';
+
+UPDATE public.questions
+   SET text = 'Aby zmniejszyć błąd wyznaczenia mierzonej wielkości zwiększamy liczbę pomiarów. Przybliżeniem wartości rzeczywistej mierzonej wielkości, obliczonej z szeregu pomiarowego, jest:',
+       options = '[{"id":"a","text":"Średnia"},{"id":"b","text":"Wariancja"},{"id":"c","text":"Odchylenie standardowe"},{"id":"d","text":"Błąd standardowy"}]'::jsonb,
+       explanation = 'Najlepszym estymatorem wartości rzeczywistej jest **średnia arytmetyczna** szeregu pomiarowego — wraz ze wzrostem liczby pomiarów dąży ona do wartości prawdziwej (prawo wielkich liczb). **Wariancja** i **odchylenie standardowe** opisują rozrzut wyników wokół średniej, a nie samą wartość. **Błąd standardowy** (odchylenie standardowe średniej) określa niepewność wyznaczenia średniej i maleje jak **$1/\sqrt{n}$**, ale jest miarą precyzji, nie estymatorem wartości mierzonej.'
+ WHERE id = 'biofiz-w1-317';
+
+UPDATE public.questions
+   SET text = 'Która z miar statystycznych informuje, jak bardzo poszczególne wartości w zbiorze różnią się od średniej arytmetycznej, i jest obliczana jako średnia arytmetyczna kwadratów tych odchyleń?',
+       options = '[{"id":"a","text":"Błąd standardowy"},{"id":"b","text":"Błąd względny"},{"id":"c","text":"Wariancja"},{"id":"d","text":"Odchylenie standardowe"}]'::jsonb,
+       explanation = '**Wariancja** to średnia arytmetyczna **kwadratów odchyleń** od średniej ($\sigma^2$) — definicja wprost odpowiada opisowi. **Odchylenie standardowe** to pierwiastek z wariancji ($\sigma$), więc ma jednostkę wielkości mierzonej, a nie jej kwadrat. **Błąd standardowy** to $\sigma/\sqrt{n}$. **Błąd względny** to stosunek błędu bezwzględnego do wartości mierzonej, wyrażany zwykle w procentach. Klucz wyróżnia kwadrat odchyleń, co jednoznacznie wskazuje wariancję.'
+ WHERE id = 'biofiz-w1-318';
+
+UPDATE public.questions
+   SET text = 'Po wykonaniu n pomiarów wielkości X obliczamy parametry statystyczne. Równanie $\sqrt{\dfrac{1}{n(n-1)}\sum_{i=1}^{n}\left(x_i - \bar{x}\right)^2}$ jest wykorzystywane do obliczenia:',
+       options = '[{"id":"a","text":"Błędu standardowego"},{"id":"b","text":"Błędu bezwzględnego pomiaru"},{"id":"c","text":"Wariancji"},{"id":"d","text":"Odchylenia standardowego"}]'::jsonb,
+       explanation = 'Wzór z mianownikiem **$n(n-1)$** pod pierwiastkiem (suma kwadratów odchyleń od średniej) opisuje **błąd standardowy średniej**, czyli niepewność wyznaczenia wartości średniej. Sama **wariancja** próby ma postać $\frac{1}{n-1}\sum(x_i-\bar{x})^2$ — bez dodatkowego $n$ i bez pierwiastka, a **odchylenie standardowe** to jej pierwiastek. **Błąd bezwzględny** to różnica wartości zmierzonej i rzeczywistej. Dodatkowe dzielenie przez $n$ (uśrednienie) jednoznacznie wskazuje błąd standardowy.'
+ WHERE id = 'biofiz-w1-319';
+
+UPDATE public.questions
+   SET text = 'Współczynnik liniowej korelacji (współczynnik Pearsona) charakteryzuje zależność między dwoma zmiennymi. Gdy jest dodatni, odpowiada funkcji:',
+       options = '[{"id":"a","text":"Malejącej, a jego wartości mieszczą się w zakresie od –1 do 1"},{"id":"b","text":"Rosnącej, a jego wartości mieszczą się w zakresie od 0 do 1"},{"id":"c","text":"Malejącej, a jego wartości mieszczą się w zakresie od 0 do 1"},{"id":"d","text":"Rosnącej, a jego wartości mieszczą się w zakresie od –1 do 1"}]'::jsonb,
+       explanation = 'Współczynnik Pearsona **r** przyjmuje wartości z całego zakresu **od −1 do 1**. Znak **dodatni** oznacza zależność **rosnącą** (wzrost jednej zmiennej wiąże się ze wzrostem drugiej), znak ujemny — malejącą. Wartość bezwzględna bliska 1 to silna korelacja liniowa, bliska 0 — brak liniowego związku. Pełny zakres r to zawsze [−1, 1], niezależnie od znaku, więc opcje ograniczające do [0, 1] są błędne.'
+ WHERE id = 'biofiz-w1-320';
+
+UPDATE public.questions
+   SET text = 'Błąd wynikający z braku kalibracji przyrządu pomiarowego nazywamy błędem:',
+       options = '[{"id":"a","text":"Bezwzględnym"},{"id":"b","text":"Przypadkowym"},{"id":"c","text":"Systematycznym"},{"id":"d","text":"Względnym"}]'::jsonb,
+       explanation = 'Brak kalibracji daje **stałe, jednokierunkowe** zaburzenie wyniku — to typowy **błąd systematyczny**, którego nie usuwa uśrednianie wielu pomiarów (wszystkie są przesunięte tak samo). **Błąd przypadkowy** jest losowy i maleje przy uśrednianiu. **Błąd bezwzględny** i **względny** to nie typy ze względu na źródło, lecz sposób wyrażenia wielkości błędu. Systematyczny → źródło aparaturowe, np. niewykalibrowana skala.'
+ WHERE id = 'biofiz-w1-332';
+
+UPDATE public.questions
+   SET text = 'Fala jest to:',
+       options = '[{"id":"a","text":"przemieszczanie się ośrodka spowodowane jego zaburzeniem"},{"id":"b","text":"deformacja ośrodka zależna od sposobu przyłożenia siły"},{"id":"c","text":"przemieszczanie się odkształceń ośrodka wywołanych działaniem stałej siły"},{"id":"d","text":"rozprzestrzenianie się energii w ośrodku bez przemieszczania się ośrodka"}]'::jsonb,
+       explanation = 'Fala to rozprzestrzenianie sie energii w osrodku bez przemieszczania sie samego osrodka. Czasteczki osrodka wykonuja drgania wokol polozenia rownowagi, ale nie przemieszczaja sie z fala.'
+ WHERE id = 'biofiz-w3-001';
+
+UPDATE public.questions
+   SET text = 'Fala akustyczna',
+       options = '[{"id":"a","text":"może rozchodzić się w próżni"},{"id":"b","text":"jest falą sprężystą i poprzeczną"},{"id":"c","text":"może rozchodzić się tylko w gazach i cieczach"},{"id":"d","text":"jest falą sprężystą i podłużną"}]'::jsonb,
+       explanation = 'Fala akustyczna (dzwiekowa) jest fala sprezystą i podluzna - czasteczki osrodka drgaja wzdluz kierunku rozchodzenia sie fali. W przeciwienstwie do fal EM, wymaga osrodka materialnego do propagacji.'
+ WHERE id = 'biofiz-w3-002';
+
+UPDATE public.questions
+   SET text = 'Zakres częstotliwości słyszalnych fal akustycznych',
+       options = '[{"id":"a","text":"mieści się w zakresie od 16Hz do 20kHz a infradźwięków powyżej 20kHz"},{"id":"b","text":"mieści się w zakresie od 16Hz do 20000Hz a infradźwięków od 0 do 16Hz"},{"id":"c","text":"mieści się w zakresie od 16Hz do 2kHz a ultradźwięków od 0 do 16Hz"},{"id":"d","text":"mieści się w zakresie od 16Hz do 2kHz a ultradźwięków powyżej 20kHz"}]'::jsonb,
+       explanation = 'Zakres slyszalny: 16 Hz - 20 kHz (20000 Hz). Infradźwieki: ponizej 16 Hz. Ultradzwieki: powyzej 20 kHz. To standardowe granice percepcji sluchowej czlowieka.'
+ WHERE id = 'biofiz-w3-003';
+
+UPDATE public.questions
+   SET text = 'Fala elektromagnetyczna',
+       options = '[{"id":"a","text":"jest falą podłużną, może rozchodzić się w ciałach przezroczystych"},{"id":"b","text":"jest falą poprzeczną, może rozchodzić się w próżni z maksymalną , obserwowalną prędkością"},{"id":"c","text":"jest falą podłużną, może rozchodzić się w próżni z maksymalną , obserwowalną prędkością"},{"id":"d","text":"jest falą poprzeczną, nie może rozchodzić się w próżni"}]'::jsonb,
+       explanation = 'Fala elektromagnetyczna jest fala poprzeczna (wektory E i B prostopadle do kierunku propagacji). Moze rozchodzic sie w prozni z predkoscia swiatla c = 3*10^8 m/s - maksymalna predkosc we wszechswiecie.'
+ WHERE id = 'biofiz-w3-004';
+
+UPDATE public.questions
+   SET text = 'Do fal elektromagnetycznych niejonizujących zaliczymy',
+       options = '[{"id":"a","text":"podczerwień, ultrafiolet, rentgenowskie i radiowe"},{"id":"b","text":"światło, podczerwień, ultrafiolet i radiowe"},{"id":"c","text":"światło, promieniowanie gamma, ultrafiolet i podczerwień"},{"id":"d","text":"promieniowanie gamma, rentgenowskie i radiowe"}]'::jsonb,
+       explanation = 'Promieniowanie niejonizujace: swiatlo widzialne, podczerwen (IR), ultrafiolet (UV) i fale radiowe. Promieniowanie jonizujace: rentgenowskie (X) i gamma - maja energie wystarczajaca do jonizacji atomow.'
+ WHERE id = 'biofiz-w3-005';
+
+UPDATE public.questions
+   SET text = 'Natężenie fali jest to',
+       options = '[{"id":"a","text":"iloczyn energii fali i powierzchni równoległej do kierunku rozchodzenia się fali, przez którą przechodzi fala"},{"id":"b","text":"iloraz mocy fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą przechodzi fala"},{"id":"c","text":"iloczyn mocy fali i powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą przechodzi fala"},{"id":"d","text":"iloraz energii fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą przechodzi fala"}]'::jsonb,
+       explanation = 'Natezenie fali I = P/S, gdzie P to moc, S to powierzchnia prostopadla do kierunku rozchodzenia sie fali. Jednostka: W/m^2. To iloraz mocy do powierzchni, nie iloczyn ani energia.'
+ WHERE id = 'biofiz-w3-006';
+
+UPDATE public.questions
+   SET text = 'W danym ośrodku długość fali',
+       options = '[{"id":"a","text":"jest odwrotnie proporcjonalna do jej prędkości"},{"id":"b","text":"jest proporcjonalna do jej częstotliwości"},{"id":"c","text":"jest odwrotnie proporcjonalna do jej częstotliwości"},{"id":"d","text":"nie zależy od częstotliwości fali ani od jej prędkości w danym ośrodku"}]'::jsonb,
+       explanation = 'Dlugosc fali lambda = c/f, czyli jest odwrotnie proporcjonalna do czestotliwosci. Im wieksza czestotliwosc, tym krotsza fala. W danym osrodku predkosc v jest stala.'
+ WHERE id = 'biofiz-w3-007';
+
+UPDATE public.questions
+   SET text = 'Przy przejściu fali przez granicę dwóch ośrodków',
+       options = '[{"id":"a","text":"nie zmienia się jej długość natomiast zmienia się jej częstotliwość"},{"id":"b","text":"nie zmienia się jej częstotliwość natomiast zmienia się jej długość"},{"id":"c","text":"zmieniają się zarówno długość jak i częstotliwość fali"},{"id":"d","text":"nie zmieniają się zarówno długość jak i częstotliwość fali"}]'::jsonb,
+       explanation = 'Przy przejsciu przez granice osrodkow czestotliwosc fali pozostaje stala (okreslona przez zrodlo), ale zmienia sie dlugosc fali i predkosc. Lambda = v/f, wiec jesli v sie zmienia przy stalym f, to lambda tez sie zmienia.'
+ WHERE id = 'biofiz-w3-008';
+
+UPDATE public.questions
+   SET text = 'Ciśnienie akustyczne (p) fali USG (bez tłumienia) zmienia się zgodnie ze wzorem (po - amplituda ciśnienia, ω - częstość drgań, x – odległość, t - czas, c – prędkość fali)',
+       options = '[{"id":"a","text":"p = p ω cos[ω(t-x/c)] o"},{"id":"b","text":"p = p exp[ω(t-x/c)] o"},{"id":"c","text":"p = p ω cos[ (t-x/c)] o"},{"id":"d","text":"p = p cos[ω(t-x/c)] o"}]'::jsonb,
+       explanation = 'Rownanie fali plaskiej: p = p_0 * cos[omega*(t - x/c)]. Amplituda p_0 jest stala (bez tlumienia), argument funkcji cos zawiera (t - x/c) - roznica czasu i przesuniecia podzielonego przez predkosc.'
+ WHERE id = 'biofiz-w3-009';
+
+UPDATE public.questions
+   SET text = 'Długość fali jest',
+       options = '[{"id":"a","text":"proporcjonalna do częstotliwości fali"},{"id":"b","text":"najmniejszą odległością między punktami o tej samej fazie (tym samym wychyleniu)"},{"id":"c","text":"niezależną od ośrodka w którym rozchodzi się fala"},{"id":"d","text":"największą odległością między punktami o tej samej fazie (tym samym wychyleniu)"}]'::jsonb,
+       explanation = 'Dlugosc fali to najmniejsza odleglosc miedzy punktami o tej samej fazie (np. dwoma sasiednimi maksimami lub minimami). Zalezy od osrodka poprzez predkosc: lambda = v/f.'
+ WHERE id = 'biofiz-w3-010';
+
+UPDATE public.questions
+   SET text = 'Efekt piezoelektryczny polega na',
+       options = '[{"id":"a","text":"powstawaniu ładunków tego samego znaku na przeciwległych ściankach kryształu kwarcu, przy odkształceniu ścianek kryształu na których pojawiają się ładunki"},{"id":"b","text":"odkształcaniu kryształu po przyłożeniu do niego pola elektrycznego"},{"id":"c","text":"powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, podczas ogrzewania kryształu"},{"id":"d","text":"powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, przy odkształceniu ścianek kryształu prostopadłych do ścian z ładunkami"}]'::jsonb,
+       explanation = 'Efekt piezoelektryczny: odksztalcenie mechaniczne krysztalu powoduje powstanie ladunkow elektrycznych przeciwnego znaku na przeciwleglych sciankach. Odksztalcenie jest prostopadle do scian z ladunkami.'
+ WHERE id = 'biofiz-w3-011';
+
+UPDATE public.questions
+   SET text = 'Głowice ultradźwiękowe',
+       options = '[{"id":"a","text":"generują ultradźwięki o częstotliwości zależnej od kształtu kryształów kwarcu"},{"id":"b","text":"generują ultradźwięki w oparciu o zjawisko efektu piezoelektrycznego"},{"id":"c","text":"rejestrują ultradźwięki tylko w przypadku, gdy do kryształów kwarcu przyłożone jest sinusoidalnie zmienne napięcie"},{"id":"d","text":"generują ultradźwięki w oparciu o zjawisko odwrotnego efektu piezoelektrycznego"}]'::jsonb,
+       explanation = 'Glowice USG generuja ultradzwieki wykorzystujac odwrotny efekt piezoelektryczny (napiecie -> odksztalcenie -> fala). Do rejestracji wykorzystuja zwykly efekt piezoelektryczny (fala -> odksztalcenie -> napiecie).'
+ WHERE id = 'biofiz-w3-013';
+
+UPDATE public.questions
+   SET text = 'Prędkość fali USG wynosi',
+       options = '[{"id":"a","text":"340 m/s w powietrzu i 1500 m/s w wodzie"},{"id":"b","text":"nie zależy od ośrodka, w którym rozchodzi się fala"},{"id":"c","text":"340 km/h w powietrzu i 1500 km/h w wodzie"},{"id":"d","text":"340 km/s w powietrzu i 1500 km/s w wodzie"}]'::jsonb,
+       explanation = 'Predkosc dzwieku: ok. 340 m/s w powietrzu, ok. 1500 m/s w wodzie. Predkosc zalezy od osrodka - w gestszych, sztywniejszych materialach jest wieksza. Jednostka: m/s, nie km/h ani km/s.'
+ WHERE id = 'biofiz-w3-014';
+
+UPDATE public.questions
+   SET text = 'Prędkość fali USG',
+       options = '[{"id":"a","text":"w tkankach miękkich jest nieco większa niż w wodzie a w kościach znacznie większa"},{"id":"b","text":"jest największa w próżni a najmniejsza w ciałach stałych"},{"id":"c","text":"w tkankach miękkich jest podobna jak w powietrzu a w kościach znacznie większa"},{"id":"d","text":"w kościach jest mniejsza niż w tkankach miękkich"}]'::jsonb,
+       explanation = 'Predkosc USG w tkankach miekkich (~1540 m/ s) jest podobna do wody. W kosciach jest znacznie wieksza (~4000 m/ s) ze wzgledu na wieksza sztywnosc. USG nie rozchodzi sie w prozni.'
+ WHERE id = 'biofiz-w3-015';
+
+UPDATE public.questions
+   SET text = 'Litotrypsja jest to metoda polegająca na stosowaniu',
+       options = '[{"id":"a","text":"infradźwięków do rozbijania kamieni nerkowych"},{"id":"b","text":"podczerwieni do termicznego rozbijania kamieni nerkowych"},{"id":"c","text":"promieniowania rentgenowskiego do obrazowania wnętrza organizmu"},{"id":"d","text":"ultradźwięków do rozbijania kamieni nerkowych"}]'::jsonb,
+       explanation = 'Litotrypsja (ESWL) wykorzystuje ultradzwieki o duzym natezeniu do rozbijania kamieni nerkowych i zolciowych. Fale USG sa fokusowane na kamieniu, powodujac jego fragmentacje bez ingerencji chirurgicznej.'
+ WHERE id = 'biofiz-w3-016';
+
+UPDATE public.questions
+   SET text = 'Współczynnik osłabiania ultradźwięków w tkankach zależy od zjawisk',
+       options = '[{"id":"a","text":"absorpcji i załamania"},{"id":"b","text":"rozpraszania i absorpcji"},{"id":"c","text":"rozpraszania i odbicia"},{"id":"d","text":"załamania i odbicia"}]'::jsonb,
+       explanation = 'Oslabienie USG w tkankach wynika glownie z absorpcji (zamiana energii na cieplo) i rozpraszania (zmiana kierunku propagacji). Odbicie i zalamania sa oddzielnymi zjawiskami na granicach osrodkow.'
+ WHERE id = 'biofiz-w3-017';
+
+UPDATE public.questions
+   SET text = 'Współczynnik rozpraszania zależy od zjawiska (f – częstotliwość fali)',
+       options = '[{"id":"a","text":"rozpraszania Tyndala (dla którego jest proporcjonalny do f^4) i rozpraszania Reyleigha (dla którego jest proporcjonalny do f)"},{"id":"b","text":"rozpraszania Tyndala (dla którego jest proporcjonalny do f^2) i rozpraszania Reyleigha (dla którego jest proporcjonalny do f^4)"},{"id":"c","text":"rozpraszania Reyleigha (dla którego jest proporcjonalny do f^2) i rozpraszania Tyndala (dla którego jest proporcjonalny do f^4)"},{"id":"d","text":"rozpraszania Reyleigha (dla którego jest proporcjonalny do f) i rozpraszania Tyndala (dla którego jest proporcjonalny do f^2)"}]'::jsonb,
+       explanation = 'Rozpraszanie Rayleigha: proporcjonalne do f^ 4. Rozpraszanie Tyndalla (Mie): proporcjonalne do f^ 2. Wyzsze czestotliwosci = wieksze rozpraszanie.'
+ WHERE id = 'biofiz-w3-018';
+
+UPDATE public.questions
+   SET text = 'Rozpraszanie Rayleigha cechuje się tym, że rozmiary struktur rozpraszających są',
+       options = '[{"id":"a","text":"dużo mniejsze od długości fali ultradźwiękowej"},{"id":"b","text":"porównywalne z długością fali ultradźwiękowej"},{"id":"c","text":"dużo większe od długości fali ultradźwiękowej"},{"id":"d","text":"nie mają związku z długością fali ultradźwiękowej"}]'::jsonb,
+       explanation = 'Rozpraszanie Rayleigha zachodzi gdy rozmiary struktur rozpraszajacych sa duzo mniejsze od dlugosci fali (d << lambda). Typowe dla malych czastek, silnie zalezy od czestotliwosci (~f^4).'
+ WHERE id = 'biofiz-w3-019';
+
+UPDATE public.questions
+   SET text = 'Rozpraszanie Tyndalla cechuje się tym, że rozmiary struktur rozpraszających są',
+       options = '[{"id":"a","text":"nie mają związku z długością fali ultradźwiękowej"},{"id":"b","text":"dużo większe od długości fali ultradźwiękowej"},{"id":"c","text":"porównywalne z długością fali ultradźwiękowej"},{"id":"d","text":"dużo mniejsze od długości fali ultradźwiękowej"}]'::jsonb,
+       explanation = 'Rozpraszanie Tyndalla (Mie) zachodzi gdy rozmiary struktur sa porownywalne z dlugoscia fali (d ~ lambda). Wystepuje np. na erytrocytach w USG. Zaleznosc od czestotliwosci: ~f^2.'
+ WHERE id = 'biofiz-w3-020';
+
+UPDATE public.questions
+   SET text = 'Zdolność rozdzielcza w USG',
+       options = '[{"id":"a","text":"jest wprost proporcjonalna do długości fali"},{"id":"b","text":"nie zależy od częstotliwości i długości fali"},{"id":"c","text":"jest wprost proporcjonalna zarówno do długości jak i częstotliwości fali"},{"id":"d","text":"jest wprost proporcjonalna do częstotliwości fali"}]'::jsonb,
+       explanation = 'Zdolnosc rozdzielcza USG jest wprost proporcjonalna do czestotliwosci (odwrotnie proporcjonalna do dlugosci fali). Wyzsze czestotliwosci daja lepsza rozdzielczosc, ale mniejsza penetracje.'
+ WHERE id = 'biofiz-w3-021';
+
+UPDATE public.questions
+   SET text = 'Impedancja akustyczna ośrodka',
+       options = '[{"id":"a","text":"jest sumą prędkości fali i gęstości ośrodka"},{"id":"b","text":"jest różnicą prędkości fali i gęstości ośrodka"},{"id":"c","text":"jest ilorazem prędkości fali i gęstości ośrodka"},{"id":"d","text":"jest iloczynem prędkości fali i gęstości ośrodka"}]'::jsonb,
+       explanation = 'Impedancja akustyczna Z = rho * v (iloczyn gestosci osrodka i predkosci fali). Jednostka: kg/(m^2*s) lub rayl. Roznica impedancji determinuje odbicie na granicach osrodkow.'
+ WHERE id = 'biofiz-w3-022';
+
+UPDATE public.questions
+   SET text = 'Odbicie ultradźwięków od granicy między dwoma ośrodkami',
+       options = '[{"id":"a","text":"jest stosunkowo niewielkie na granicy powietrze tkanka"},{"id":"b","text":"zależy od różnicy impedancji akustycznych obu ośrodków"},{"id":"c","text":"zależy od prędkości fali w ośrodkach a nie zależy od gęstości ośrodków"},{"id":"d","text":"zależy od iloczynu impedancji akustycznych obu ośrodków"}]'::jsonb,
+       explanation = 'Wspolczynnik odbicia USG zalezy od roznicy impedancji akustycznych obu osrodkow: R = [(Z2-Z1)/(Z2+Z1)]^2. Im wieksza roznica impedancji, tym silniejsze odbicie (np. tkanka-powietrze: prawie 100%).'
+ WHERE id = 'biofiz-w3-023';
+
+UPDATE public.questions
+   SET text = 'Współczynnik odbicia fali USG jest definiowany, jako',
+       options = '[{"id":"a","text":"iloczyn natężeń fali odbitej i padającej"},{"id":"b","text":"iloraz ciśnień akustycznych fali odbitej do padającej"},{"id":"c","text":"iloraz ciśnień akustycznych fali padającej do odbitej"},{"id":"d","text":"iloraz natężeń fali odbitej do padającej"}]'::jsonb,
+       explanation = 'Wspolczynnik odbicia R = I_odbita / I_padajaca (iloraz natezen). Okresla jaka czesc energii fali zostaje odbita na granicy osrodkow. Dla cisnien: r = p_odbite / p_padajace.'
+ WHERE id = 'biofiz-w3-024';
+
+UPDATE public.questions
+   SET text = 'Metoda echograficzna, (pozwalająca obliczyć odległości struktur odbijających w organizmie) polega na pomiarze',
+       options = '[{"id":"a","text":"czasu powrotu echa USG"},{"id":"b","text":"długości fali powracającego echa USG"},{"id":"c","text":"częstotliwości powracającego echa fali USG"},{"id":"d","text":"czasu zaniku echa USG"}]'::jsonb,
+       explanation = 'Metoda echograficzna: wysylamy impuls USG i mierzymy czas powrotu echa. Znajac predkosc USG w tkance (ok. 1540 m/s), obliczamy odleglosc: d = v*t/2 (dzielimy przez 2, bo fala pokonuje droge tam i z powrotem).'
+ WHERE id = 'biofiz-w3-025';
+
+UPDATE public.questions
+   SET text = 'Strefowe wzmacnianie ech USG polega na tym, że',
+       options = '[{"id":"a","text":"im głębiej położona struktura odbijająca tym silniejsze wzmocnienie powracającego impulsu"},{"id":"b","text":"wzmocnieniu podlegają sygnały, których amplituda jest co najmniej dwukrotnie mniejsza od amplitudy wysyłanej fali USG"},{"id":"c","text":"wzmocnienie zachodzi tylko dla stref najdalej położonych"},{"id":"d","text":"im głębiej położona struktura odbijająca tym mniejsze wzmocnienie powracającego impulsu"}]'::jsonb,
+       explanation = 'Strefowe wzmacnianie (TGC - Time Gain Compensation) kompensuje tlumienie fali w tkankach. Im glebiej polozana struktura, tym bardziej wzmacniamy sygnal echa - wyrownujac jasnosc obrazu na roznych glebokosciach.'
+ WHERE id = 'biofiz-w3-026';
+
+UPDATE public.questions
+   SET text = 'Dla fali ultradźwiękowej',
+       options = '[{"id":"a","text":"jej prędkość jest znacznie mniejsza od prędkości przepływu krwi w aorcie"},{"id":"b","text":"prędkość rozchodzenia się w powietrzu jest większa niż w wodzie"},{"id":"c","text":"jej prędkość jest wielokrotnie większa od prędkości przepływu krwi w aorcie"},{"id":"d","text":"jej prędkość jest porównywalna do prędkości przepływu krwi w aorcie"}]'::jsonb,
+       explanation = 'Predkosc USG w tkankach: ok. 1500 m/s. Predkosc krwi w aorcie: ok. 1 m/s. Roznica: ok. 1500-krotna. USG jest znacznie szybsze niz przeplyw krwi, co umozliwia obrazowanie w czasie rzeczywistym.'
+ WHERE id = 'biofiz-w3-027';
+
+UPDATE public.questions
+   SET text = 'Promieniowanie rentgenowskie',
+       options = '[{"id":"a","text":"jest pochłaniane tylko przez tkanki o odpowiednio dużej gęstości"},{"id":"b","text":"jest jednakowo pochłaniane przez różne tkanki"},{"id":"c","text":"jest mocniej pochłaniane przez tkanki o większej gęstości i zawierające pierwiastki o większej masie atomowej"},{"id":"d","text":"jest mocniej pochłaniane przez tkanki o mniejszej gęstości i zawierające pierwiastki o mniejszej masie atomowej"}]'::jsonb,
+       explanation = 'Promieniowanie RTG jest mocniej pochlaniane przez tkanki o wiekszej gestosci i zawierajace pierwiastki o wiekszej liczbie atomowej Z. Dlatego kosci (Ca) sa jasne na RTG, a tkanki miekkie ciemniejsze.'
+ WHERE id = 'biofiz-w4-001';
+
+UPDATE public.questions
+   SET text = 'Promieniowanie rentgenowskie',
+       options = '[{"id":"a","text":"jest promieniowaniem niejonizującym, oddziałującym z elektronami wszystkich powłok"},{"id":"b","text":"jest falą podłużną, powodującą jonizację materii"},{"id":"c","text":"jest falą elektromagnetyczną, jest szkodliwe ze względu na jonizowanie materii i oddziałuje z elektronami powłok wewnętrznych"},{"id":"d","text":"jest promieniowaniem jonizującym, oddziałującym z elektronami powłok walencyjnych"}]'::jsonb,
+       explanation = 'Promieniowanie RTG to fala elektromagnetyczna (nie podluzna!) o wysokiej energii, powodujaca jonizacje materii. Oddzialuje glownie z elektronami powlok wewnetrznych (efekt fotoelektryczny, Compton).'
+ WHERE id = 'biofiz-w4-002';
+
+UPDATE public.questions
+   SET text = 'Wzór Ef = h · ν = h · c / λ przedstawia energią fotonu, przy czym',
+       options = '[{"id":"a","text":"λ jest stałą Plancka, v jest prędkością rozchodzenia się promieniowania, h jest długością fali promieniowania a c jest częstotliwością"},{"id":"b","text":"v jest stałą Plancka, c jest prędkością rozchodzenia się promieniowania, λ jest długością fali promieniowania a h jest częstotliwością"},{"id":"c","text":"h jest stałą Plancka, c jest prędkością rozchodzenia się promieniowania, λ jest długością fali promieniowania a v jest częstotliwością"},{"id":"d","text":"h jest stałą Plancka, c jest prędkością rozchodzenia się promieniowania, v jest długością fali promieniowania a λ jest częstotliwością"}]'::jsonb,
+       explanation = 'E = h*nu = h*c/lambda, gdzie: h - stala Plancka (6.63*10^-34 J*s), c - predkosc swiatla, lambda - dlugosc fali, nu (v) - czestotliwosc. To podstawowe rownanie Plancka dla energii fotonu.'
+ WHERE id = 'biofiz-w4-003';
+
+UPDATE public.questions
+   SET text = 'Natężenie promieniowania definiuje wzór',
+       options = '[{"id":"a","text":"I = E / S · t, gdzie E jest energią fali, S jest powierzchnią przez którą fala przechodzi a t - jest czasem przejścia fali przez powierzchnię S"},{"id":"b","text":"I = E / S, gdzie E jest energią fali a S jest powierzchnią przez którą fala przechodzi"},{"id":"c","text":"I = P/ t, gdzie P jest mocą fali a t - jest czasem przejścia fali o mocy P"},{"id":"d","text":"I = E / P · t, gdzie P jest mocą fali, S jest powierzchnią przez którą fala przechodzi a t - jest czasem przejścia fali przez powierzchnię S"}]'::jsonb,
+       explanation = 'Natezenie promieniowania I = E/(S*t) = P/S, gdzie E to energia, S powierzchnia, t czas, P moc. Jednostka: W/m^2. To energia przypadajaca na jednostke powierzchni w jednostce czasu.'
+ WHERE id = 'biofiz-w4-004';
+
+UPDATE public.questions
+   SET text = 'Grubość połówkowego pochłaniania',
+       options = '[{"id":"a","text":"jest to grubość ciała, dla której natężenie promieniowania rośnie dwukrotnie"},{"id":"b","text":"jest to grubość ciała, dla której częstotliwość promieniowania maleje dwukrotnie"},{"id":"c","text":"jest to grubość ciała, dla której natężenie promieniowania maleje dwukrotnie"},{"id":"d","text":"jest to grubość ciała, dla której częstotliwość promieniowania rośnie dwukrotnie"}]'::jsonb,
+       explanation = 'Grubosc polowkowego pochlaniania (HVL - Half Value Layer) to grubosc materialu, przy ktorej natezenie promieniowania maleje o polowe. Im wieksza energia RTG, tym wieksza HVL.'
+ WHERE id = 'biofiz-w4-005';
+
+UPDATE public.questions
+   SET text = 'Oddziaływanie promieniowania rentgenowskiego z materią opisują zjawiska:',
+       options = '[{"id":"a","text":"interferencji i odbicia"},{"id":"b","text":"interferencji i efekt Comptona"},{"id":"c","text":"załamania i interferencji"},{"id":"d","text":"absorpcji i efekt Comptona"}]'::jsonb,
+       explanation = 'Promieniowanie RTG oddzialuje z materia glownie poprzez: absorpcje (efekt fotoelektryczny - foton jest calkowicie pochlaniany) i efekt Comptona (nieelastyczne rozproszenie fotonu na elektronie).'
+ WHERE id = 'biofiz-w4-006';
+
+UPDATE public.questions
+   SET text = 'Oddziaływanie Comptonowskie:',
+       options = '[{"id":"a","text":"powoduje zmniejszenie zdolności rozdzielczej obrazów przy prześwietleniu rentgenowskim"},{"id":"b","text":"może zwiększać lub zmniejszać zdolność rozdzielczą obrazów przy prześwietleniu rentgenowskim"},{"id":"c","text":"powoduje zwiększenie zdolności rozdzielczej obrazów przy prześwietleniu rentgenowskim"},{"id":"d","text":"nie wpływa na zdolność rozdzielczą obrazów przy prześwietleniu rentgenowskim"}]'::jsonb,
+       explanation = 'Efekt Comptona (rozproszenie) zmniejsza zdolnosc rozdzielcza obrazow RTG. Rozproszone fotony zmieniaja kierunek i docieraja do detektora, powodujac rozmycie obrazu i zmniejszenie kontrastu.'
+ WHERE id = 'biofiz-w4-007';
+
+UPDATE public.questions
+   SET text = 'Zjawisko odpowiedzialne za zmniejszenie kontrastu na zdjęciach rentgenowskich to:',
+       options = '[{"id":"a","text":"zjawisko Comptona, polegające na zmianie kierunku rozchodzenia się fotonu po rozproszeniu"},{"id":"b","text":"zjawisko absorpcji, powodujące zmianę kierunku rozchodzenia się fotonu"},{"id":"c","text":"zjawisko załamania na niejednorodnościach tkanki"},{"id":"d","text":"zjawisko odbicia na niejednorodnościach tkanki"}]'::jsonb,
+       explanation = 'Efekt Comptona polega na zmianie kierunku fotonu po rozproszeniu na elektronie. Te rozproszone fotony tworza "szum" na obrazie, zmniejszajac kontrast. Dlatego stosuje sie siatki przeciwrozproszeniowe.'
+ WHERE id = 'biofiz-w4-008';
+
+UPDATE public.questions
+   SET text = 'Miejsca na kliszy o większym zaczernieniu odpowiadają tkankom o:',
+       options = '[{"id":"a","text":"mniejszym stopniu pochłaniania promieniowania rentgenowskiego"},{"id":"b","text":"mniejszym stopniu odbicia promieniowania rentgenowskiego"},{"id":"c","text":"większym stopniu pochłaniania promieniowania rentgenowskiego"},{"id":"d","text":"większym stopniu odbicia promieniowania rentgenowskiego"}]'::jsonb,
+       explanation = 'Klisza RTG dziala jak negatyw: ciemniejsze miejsca = wiecej promieniowania doszlo = mniejsze pochlanianie przez tkanke. Kosci sa jasne (duze pochlanianie), pluca ciemne (male pochlanianie).'
+ WHERE id = 'biofiz-w4-009';
+
+UPDATE public.questions
+   SET text = 'Środki kontrastujące w rentgenografii mają za zadanie:',
+       options = '[{"id":"a","text":"zwiększenie efektów rozproszenia promieniowania rentgenowskiego"},{"id":"b","text":"zmniejszenie efektów rozproszenia promieniowania rentgenowskiego"},{"id":"c","text":"zwiększenie kontrastu na zdjęciach rentgenowskich i powinny gromadzić się wybiórczo w określonych miejscach organizmu"},{"id":"d","text":"zmniejszenie kontrastu na zdjęciach rentgenowskich i powinny być szybko wydalane z organizmu"}]'::jsonb,
+       explanation = 'Srodki kontrastowe (np. bar, jod) maja duza liczbe atomowa Z, silnie pochlaniaja RTG, zwiekszajac kontrast. Gromadza sie wybiórczo w okreslonych strukturach (np. jod w tarczycy, bar w przewodzie pokarmowym).'
+ WHERE id = 'biofiz-w4-010';
+
+UPDATE public.questions
+   SET text = 'Rola wysokiego napięcia w lampie rentgenowskiej polega na',
+       options = '[{"id":"a","text":"przyśpieszaniu elektronów do dużych prędkości, poruszających się od anody do katody"},{"id":"b","text":"hamowaniu elektronów, w trakcie którego emitowane jest widmo charakterystyczne"},{"id":"c","text":"przyśpieszaniu elektronów do dużych prędkości, poruszających się od katody do anody"},{"id":"d","text":"hamowaniu elektronów, w trakcie którego emitowane jest widmo ciągłe"}]'::jsonb,
+       explanation = 'Wysokie napiecie (ok. 100 kV) przysiesza elektrony od katody (zrodlo e-) do anody (tarcza). Na anodzie elektrony sa hamowane, emitujac promieniowanie RTG (hamowania i charakterystyczne).'
+ WHERE id = 'biofiz-w4-011';
+
+UPDATE public.questions
+   SET text = 'Aby uwidocznić naczynia krwionośne w prześwietleniu rentgenowskim należy wprowadzić kontrast poprzez',
+       options = '[{"id":"a","text":"iniekcję do naczynia krwionośnego w dowolnym miejscu naczynia"},{"id":"b","text":"inhalację do dróg oddechowych"},{"id":"c","text":"iniekcję do naczynia krwionośnego przed rozwidleniem"},{"id":"d","text":"iniekcję do naczynia krwionośnego za rozwidleniem"}]'::jsonb,
+       explanation = 'Kontrast do angiografii podaje sie przed rozwidleniem naczynia - wtedy przeplynie do wszystkich odgalezien. Za rozwidleniem wypenil by tylko jedno naczynia.'
+ WHERE id = 'biofiz-w4-012';
+
+UPDATE public.questions
+   SET text = 'Jaka część energii rozpędzonych elektronów w lampie rentgenowskiej zamienia się na promieniowanie rentgenowskie',
+       options = '[{"id":"a","text":"około 50%, reszta energii zamienia się na ciepło i pracę potrzebną na wybicie elektronów z anody"},{"id":"b","text":"około 1%, reszta energii zamienia się na ciepło"},{"id":"c","text":"około 10%, reszta energii zamienia się na ciepło i pracę potrzebną na wybicie elektronów z katody"},{"id":"d","text":"około 10%, reszta energii zamienia się na ciepło"}]'::jsonb,
+       explanation = 'Tylko ok. 1% energii elektronow zamienia sie na promieniowanie RTG. Reszta (99%) zamienia sie na cieplo, dlatego anoda wymaga intensywnego chlodzenia (anoda wirujaca, chlodzenie wodne/olejowe).'
+ WHERE id = 'biofiz-w4-013';
+
+UPDATE public.questions
+   SET text = 'Napięcie w lampie rentgenowskiej przyśpieszające elektrony jest rzędu:',
+       options = '[{"id":"a","text":"100V"},{"id":"b","text":"1kV"},{"id":"c","text":"1V"},{"id":"d","text":"100 kV"}]'::jsonb,
+       explanation = 'Napiecie w lampie RTG wynosi ok. 40-150 kV (kilovolty) w diagnostyce. Wyzsze napiecie = wieksza energia fotonow (krotsza fala), wieksza penetracja, mniejsze roznice kontrastu.'
+ WHERE id = 'biofiz-w4-014';
+
+UPDATE public.questions
+   SET text = 'Obwód żarzenia katody ma na celu:',
+       options = '[{"id":"a","text":"rozpędzenie elektronów do dużej prędkości"},{"id":"b","text":"rozgrzania katody tak aby łatwiej pochłaniała elektrony"},{"id":"c","text":"rozgrzania katody tak aby w jej pobliżu pojawiły się elektrony"},{"id":"d","text":"hamowanie elektronów docierających do katody"}]'::jsonb,
+       explanation = 'Obwod zarzenia (6-12 V) rozgrzewa katode do ok. 2000°C, powodujac emisje termoelektronowa - elektrony "wyparowuja" z powierzchni metalu i sa gotowe do przyspieszenia w kierunku anody.'
+ WHERE id = 'biofiz-w4-015';
+
+UPDATE public.questions
+   SET text = 'Środki kontrastujące w prześwietleniu rentgenowskim muszą spełniać warunki:',
+       options = '[{"id":"a","text":"posiadają odpowiednio dużą liczbę atomową, kumulują się w tkankach, wchodzą w reakcje metaboliczne"},{"id":"b","text":"nie wchodzą w reakcje metaboliczne, posiadają odpowiednio małą liczbę atomową, kumulują się w tkankach"},{"id":"c","text":"nie wchodzą w reakcje metaboliczne, posiadają odpowiednio dużą liczbę atomową, są szybko wydalane z organizmu"},{"id":"d","text":"są szybko wydalane z organizmu, kumulują się w tkankach, posiadają odpowiednio małą liczbę atomową"}]'::jsonb,
+       explanation = 'Srodki kontrastowe: ( 1) nie wchodza w reakcje metaboliczne - sa obojetne, ( 2) maja duza liczbe atomowa Z - silnie pochlaniaja RTG, ( 3) sa szybko wydalane - minimalizuja ekspozycje organizmu.'
+ WHERE id = 'biofiz-w4-016';
+
+UPDATE public.questions
+   SET text = 'Widmo promieniowania lampy rentgenowskiej składa się z:',
+       options = '[{"id":"a","text":"widma ciągłego powstającego na skutek hamowania elektronów na anodzie i widma charakterystycznego powstającego po wybiciu elektronów z wewnętrznych powłok atomów anody"},{"id":"b","text":"widma charakterystycznego powstającego na skutek hamowania elektronów na katodzie i widma ciągłego powstającego po wybiciu elektronów z wewnętrznych powłok atomów katody"},{"id":"c","text":"widma charakterystycznego powstającego na skutek hamowania elektronów na anodzie i widma ciągłego powstającego po wybiciu elektronów z wewnętrznych powłok atomów anody"},{"id":"d","text":"widma ciągłego powstającego na skutek hamowania elektronów na katodzie i widma charakterystycznego powstającego po wybiciu elektronów z wewnętrznych powłok atomów katody"}]'::jsonb,
+       explanation = 'Widmo RTG sklada sie z: widma ciaglego (Bremsstrahlung - hamowanie elektronow na anodzie, caly zakres energii) + widma charakterystycznego (przeskoki elektronow miedzy powlokami atomow anody, dyskretne linie).'
+ WHERE id = 'biofiz-w4-017';
+
+UPDATE public.questions
+   SET text = 'Dwukrotne zwiększenie wysokiego napięcia w lampie rentgenowskiej spowoduje:',
+       options = '[{"id":"a","text":"dwukrotne zwiększenie granicy krótkofalowej promieniowania i zmniejszenie natężenia promieniowania w całym zakresie widma"},{"id":"b","text":"dwukrotne zmniejszenie granicy krótkofalowej promieniowania i zwiększenie natężenia promieniowania w całym zakresie widma"},{"id":"c","text":"dwukrotne zwiększenie granicy krótkofalowej promieniowania i zwiększenie natężenia promieniowania w całym zakresie widma"},{"id":"d","text":"dwukrotne zmniejszenie granicy krótkofalowej promieniowania i zmniejszenie natężenia promieniowania w całym zakresie widma"}]'::jsonb,
+       explanation = 'Podwojenie napiecia: lambda_min = hc/(eU), wiec 2x U -> lambda_min/2 (granica krotkofalowa maleje dwukrotnie). Natezenie promieniowania rosnie proporcjonalnie do U^2.'
+ WHERE id = 'biofiz-w4-018';
+
+UPDATE public.questions
+   SET text = 'Widmo charakterystyczne serii K otrzymamy po wybiciu elektronu z powłoki:',
+       options = '[{"id":"a","text":"pierwszej i przeskoku elektronów z wyższych powłok na wolną orbitę"},{"id":"b","text":"drugiej i przeskoku elektronów z niższych powłok na wolną orbitę"},{"id":"c","text":"pierwszej i powrotu wybitych elektronów na wolną orbitę"},{"id":"d","text":"drugiej i przeskoku elektronów z wyższych powłok na wolną orbitę"}]'::jsonb,
+       explanation = 'Seria K: elektron z powloki K (pierwszej, najblizszej jadra) jest wybijany, a elektrony z wyzszych powlok (L, M...) "spadaja" na wolne miejsce, emitujac fotony charakterystyczne.'
+ WHERE id = 'biofiz-w4-019';
+
+UPDATE public.questions
+   SET text = 'Rentgenowska tomografia komputerowa:',
+       options = '[{"id":"a","text":"pozwala otrzymać obrazy wnętrza organizmu poprzez analizę promieniowania rozproszonego"},{"id":"b","text":"polega na otrzymywaniu obrazów wnętrza organizmu poprzez analizę pochłaniania wiązki rentgenowskiej przechodzącej przez warstwy ciała z różnych kierunków"},{"id":"c","text":"może być stosowana do obrazowania wnętrza organizmu przy zastosowaniu silnego pola magnetycznego"},{"id":"d","text":"może być stosowana do obrazowania wnętrza organizmu przy zastosowaniu silnego pola elektrycznego"}]'::jsonb,
+       explanation = 'Tomografia komputerowa (CT) analizuje rozne stopnie pochlaniania wiazki RTG przez tkanki. Na tej podstawie rekonstruuje obraz przekroju ciala (nie wykorzystuje pola magnetycznego - to MRI).'
+ WHERE id = 'biofiz-w4-020';
+
+UPDATE public.questions
+   SET text = 'Najmniejszy element objętościowy analizowany w tomografii komputerowej nazywamy',
+       options = '[{"id":"a","text":"bokslem"},{"id":"b","text":"pikslem lub wokslem w zależności od typu tomografii"},{"id":"c","text":"wokslem"},{"id":"d","text":"pikslem"}]'::jsonb,
+       explanation = 'Woksel (voxel = volume element) to najmniejszy element objetosciowy w CT/MRI. Piksel to element 2D obrazu. Woksel ma wymiary: szerokosc x wysokosc x grubosc warstwy.'
+ WHERE id = 'biofiz-w4-021';
+
+UPDATE public.questions
+   SET text = 'Skanery CAT pierwszej generacji wykonywały prześwietlenia jednej warstwy:',
+       options = '[{"id":"a","text":"bez liniowego przemieszczania źródła i detektora z powtarzanym prześwietleniem po obrocie co 1o w zakresie od 0o do 360o"},{"id":"b","text":"z liniowym przemieszczeniem źródła i detektora powtarzanymi po obrocie co 1o w zakresie od 0o do 180o"},{"id":"c","text":"z liniowym przemieszczeniem źródła i detektora powtarzanymi po obrocie co 10o w zakresie od 0o do 180o"},{"id":"d","text":"bez liniowego przemieszczania źródła i detektora z powtarzanym prześwietleniem po obrocie co 10o w zakresie od 0o do 180o"}]'::jsonb,
+       explanation = 'Skanery CT 1. generacji: wiazka olowkowa, liniowy przesuw lampy i detektora, pomiar powtarzany po obrocie o 1 stopien w zakresie 0-180 stopni. Czas skanowania: ok. 5 minut na warstwe.'
+ WHERE id = 'biofiz-w4-022';
+
+UPDATE public.questions
+   SET text = 'Projekcja w CAT jest określona wzorem (I - natężenie wiązki padającej, I - natężenie wiązki o przechodzącej, d - grubość woksla)',
+       options = '[{"id":"a","text":"P = d ln(I₀/I) i jest równa iloczynowi współczynników pochłaniania woksli przez które przechodzi o promieniowanie"},{"id":"b","text":"P = (1/d) ln(I₀/I) i jest równa iloczynowi współczynników pochłaniania woksli przez które o przechodzi promieniowanie"},{"id":"c","text":"P = (1/d) ln(I₀/I) i jest równa sumie współczynników pochłaniania woksli przez które o przechodzi promieniowanie"},{"id":"d","text":"P = d ln(I₀/I) i jest równa sumie współczynników pochłaniania woksli przez które przechodzi o promieniowanie"}]'::jsonb,
+       explanation = 'Projekcja w CAT: P = (1/d)·ln(I₀/ I) = Σμᵢ (suma, nie iloczyn!). Logarytm przekształca osłabienie wykładnicze I=I₀·e^(-Σμᵢ· d) w sumę liniową. To pozwala na rekonstrukcję obrazu algorytmem.'
+ WHERE id = 'biofiz-w4-023';
+
+UPDATE public.questions
+   SET text = 'Skala Hounsfielda',
+       options = '[{"id":"a","text":"pozwala odwzorować współczynniki rozpraszania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada jaśniejszemu punktowi na obrazie tomograficznym"},{"id":"b","text":"pozwala odwzorować współczynniki pochłaniania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada ciemniejszemu punktowi na obrazie tomograficznym"},{"id":"c","text":"pozwala odwzorować współczynniki pochłaniania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada jaśniejszemu punktowi na obrazie tomograficznym"},{"id":"d","text":"pozwala odwzorować współczynniki rozpraszania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada ciemniejszemu punktowi na obrazie tomograficznym"}]'::jsonb,
+       explanation = 'Skala Hounsfielda: HU = 1000·(μ-μ_woda)/μ_woda. Większy μ (pochłanianie, nie rozpraszanie!) → większy HU → JAŚNIEJSZY piksel. Woda=0, powietrze=-1000, kość kompaktowa=+1000. To liniowa skala pochłaniania względem wody.'
+ WHERE id = 'biofiz-w4-024';
+
+UPDATE public.questions
+   SET text = 'W tomografach drugiej generacji zastosowano wiązkę:',
+       options = '[{"id":"a","text":"wachlarzykowatą (o kącie rozwartości 10o) z przesuwem liniowym i powtórnym pomiarem po obrocie o 10o w zakresie od 0o do 180o dla jednej warstwy"},{"id":"b","text":"liniową, z powtarzanymi pomiarami po obrocie o 10o w zakresie od 0o do 180o dla jednej warstwy"},{"id":"c","text":"liniową, z powtarzanymi pomiarami po obrocie o 10o w zakresie od 0o do 360o dla jednej warstwy"},{"id":"d","text":"wachlarzykowatą (o kącie rozwartości 60o) z przesuwem liniowym i powtórnym pomiarem po obrocie o 60o w zakresie od 0o do 360o dla jednej warstwy"}]'::jsonb,
+       explanation = 'CT 2. generacji: wiazka wachlarzowa (ok. 10 stopni), kilka detektorow, przesuw liniowy + obrot. Szybsze niz 1. generacja dzieki pomiarowi kilku projekcji jednoczesnie.'
+ WHERE id = 'biofiz-w4-025';
+
+UPDATE public.questions
+   SET text = 'W tomografach trzeciej generacji wykorzystuje się wiązki rentgenowskie:',
+       options = '[{"id":"a","text":"o rozwartości 60o i ciągłym pomiarze dla warstwy w zakresie od 0o do 360o"},{"id":"b","text":"o rozwartości 30o i ciągłym pomiarze dla warstwy w zakresie od 0o do 180o"},{"id":"c","text":"o rozwartości 30o i ciągłym pomiarze dla warstwy w zakresie od 0o do 360o"},{"id":"d","text":"o rozwartości 60o i ciągłym pomiarze dla warstwy w zakresie od 0o do 180o"}]'::jsonb,
+       explanation = 'CT 3. generacji: wiazka wachlarzowa o rozwartosci ok. 30-60 stopni, obejmuje caly przekroj pacjenta. Lampa i detektory obracaja sie razem o 360 stopni. Czas: ok. 2-10 sekund.'
+ WHERE id = 'biofiz-w4-026';
+
+UPDATE public.questions
+   SET text = 'Zwiększenie generacji tomografu rentgenowskiego wiąże się ze zwiększeniem:',
+       options = '[{"id":"a","text":"liczby lamp rentgenowskich w tomografie"},{"id":"b","text":"natężenia wiązki padającej i wydłużeniem czasu pomiaru dla jednej warstwy"},{"id":"c","text":"ilości detektorów i zmniejszeniem czasu potrzebnego do wykonania pomiarów dla jednej warstwy"},{"id":"d","text":"dawki pochłoniętej przez pacjenta"}]'::jsonb,
+       explanation = 'Wyzsze generacje CT = wiecej detektorow, szybsze skanowanie, krotsza ekspozycja, mniejsza dawka promieniowania dla pacjenta przy lepszej jakosci obrazu.'
+ WHERE id = 'biofiz-w4-027';
+
+UPDATE public.questions
+   SET text = 'Czwarta generacja tomografów rtg składa się z:',
+       options = '[{"id":"a","text":"nieruchomej lampy rtg i ruchomej matrycy detektorów obracających się w sposób ciągły wokół pacjenta. Wykorzystuje się wiązkę wachlarzykowatą o kacie rozwartości 180o"},{"id":"b","text":"dookólnej matrycy detektorów i ruchomej lampy rtg obracającej w sposób ciągły wokół pacjenta. Wykorzystuje się wiązkę wachlarzykowatą o kacie rozwartości 30o"},{"id":"c","text":"ruchomej matrycy detektorów i ruchomej lampy rtg obracających się w sposób ciągły wokół pacjenta. Wykorzystuje się wiązkę wachlarzykowatą o kacie rozwartości 30o"},{"id":"d","text":"dookólnej matrycy detektorów i ruchomej lampy rtg obracającej w sposób ciągły wokół pacjenta. Wykorzystuje się wiązkę wachlarzykowatą o kacie rozwartości 60o"}]'::jsonb,
+       explanation = 'IV generacja tomografu: dookólny pierścień detektorów (stały) + obracająca się lampa RTG. Wiązka wachlarzykowa o kącie ~60° (nie 30° ani 180°). To pozwala na ciągły obrót bez kabli (slip ring).'
+ WHERE id = 'biofiz-w4-028';
+
+UPDATE public.questions
+   SET text = 'Dawka skuteczna promieniowania jonizującego dla człowieka od tła wynosi:',
+       options = '[{"id":"a","text":"2.5 mSv"},{"id":"b","text":"250 MSv"},{"id":"c","text":"0.25 kSv"},{"id":"d","text":"2.5 Sv"}]'::jsonb,
+       explanation = 'Naturalne promieniowanie tla (kosmiczne + ziemskie + radon) daje dawke ok. 2-3 mSv/rok dla przecietnego czlowieka. W Polsce ok. 2.5 mSv/rok. To dawka referencyjna do porownan.'
+ WHERE id = 'biofiz-w4-029';
+
+UPDATE public.questions
+   SET text = 'Rozróżniane różnice absorpcji w rentgenowskiej tomografii komputerowej są rzędu:',
+       options = '[{"id":"a","text":"0.5%"},{"id":"b","text":"15%"},{"id":"c","text":"5%"},{"id":"d","text":"10%"}]'::jsonb,
+       explanation = 'CT moze rozroznic roznice w pochłanianiu na poziomie ok. 0.5% (5 promili), znacznie lepiej niz konwencjonalne RTG (ok. 5-10%). Dlatego CT widzi tkanki miekkie lepiej.'
+ WHERE id = 'biofiz-w4-030';
+
+UPDATE public.questions
+   SET text = 'Szkodliwość promieniowania rentgenowskiego stosowanego w tomografii rentgenowskiej polega na:',
+       options = '[{"id":"a","text":"wydzielaniu się wodoru w ośrodku przez który przechodzi promieniowanie"},{"id":"b","text":"zwiększaniu temperatury ośrodka przez który przechodzi promieniowanie,"},{"id":"c","text":"jonizacji ośrodka przez który przechodzi promieniowanie"},{"id":"d","text":"rekombinacji jonów ośrodka przez który przechodzi promieniowanie"}]'::jsonb,
+       explanation = 'Szkodliwosc RTG polega na jonizacji materii - wybijaniu elektronow z atomow. To prowadzi do uszkodzen DNA, bialek, lipidow. Jonizacja moze inicjowac reakcje wolnorodnikowe.'
+ WHERE id = 'biofiz-w4-031';
+
+UPDATE public.questions
+   SET text = 'Rozwój tomografii komputerowej nakierowany jest na:',
+       options = '[{"id":"a","text":"zwiększenie napromieniowania pacjenta i wydłużenie czasu skanowania"},{"id":"b","text":"zwiększenie napromieniowania pacjenta i skrócenie czasu skanowania"},{"id":"c","text":"zmniejszanie napromieniowania pacjenta i skrócenie czasu skanowania"},{"id":"d","text":"zmniejszanie napromieniowania pacjenta i wydłużenie czasu skanowania"}]'::jsonb,
+       explanation = 'Rozwoj CT daży do: ( 1) zmniejszenia dawki dla pacjenta (bezpieczenstwo), ( 2) skrocenia czasu skanowania (komfort pacjenta, mniej artefaktow ruchowych). Czesciej, szybciej, bezpieczniej.'
+ WHERE id = 'biofiz-w4-032';
+
+UPDATE public.questions
+   SET text = 'Tomografia rentgenowska opiera się na różnym stopniu:',
+       options = '[{"id":"a","text":"hamowania promieniowania przez tkanki"},{"id":"b","text":"rozpraszania promieniowania przez tkanki"},{"id":"c","text":"pochłaniania promieniowania przez tkanki"},{"id":"d","text":"odbijania promieniowania przez tkanki"}]'::jsonb,
+       explanation = 'CT opiera sie na roznym stopniu pochlaniania (absorpcji) promieniowania RTG przez rozne tkanki. Rozne gestosci i skladz chemiczny = rozne wspolczynniki pochlaniania = rozny obraz.'
+ WHERE id = 'biofiz-w4-033';
+
+UPDATE public.questions
+   SET text = 'Dawki pochłonięte przez pacjenta podczas tomografii rentgenowskiej:',
+       options = '[{"id":"a","text":"są znacznie większe od dawki promieniowania tła"},{"id":"b","text":"są znacznie mniejsze od dawki promieniowania tła"},{"id":"c","text":"nie mogą być porównywalne z dawką promieniowania tła ze względu na różne jednostki"},{"id":"d","text":"są takie same jak dawka promieniowania tła"}]'::jsonb,
+       explanation = 'Dawka podczas CT (5-25 mSv) jest znacznie wieksza od rocznej dawki tla (ok. 2.5 mSv). Jedno badanie CT glowy to ok. 2 mSv, CT brzucha ok. 10-15 mSv.'
+ WHERE id = 'biofiz-w4-034';
+
+UPDATE public.questions
+   SET text = 'W tomografii komputerowej objętość badanej tkanki dzielona jest na jednakowe, niewielkie elementy objętościowe, które nazywamy:',
+       options = '[{"id":"a","text":"Pikselami"},{"id":"b","text":"Wokselami"},{"id":"c","text":"Gradientami"},{"id":"d","text":"projekcjami"}]'::jsonb,
+       explanation = '**Woksel** (volume element) to trójwymiarowy odpowiednik piksela — najmniejszy element **objętości** rekonstruowanej w CT, któremu przypisuje się wartość osłabienia promieniowania (w jednostkach Hounsfielda). **Piksel** to element obrazu 2D (na ekranie). **Projekcja** to pojedynczy profil pomiarowy pod danym kątem, a **gradient** dotyczy MRI (kodowanie przestrzenne). Objętość → woksel.'
+ WHERE id = 'biofiz-w4-336';
+
+UPDATE public.questions
+   SET text = 'Skala Hounsfielda (HU) to ilościowa skala radiologiczna w tomografii komputerowej, opierająca się na pomiarze osłabienia promieniowania rentgenowskiego. Wartość 0 HU określa:',
+       options = '[{"id":"a","text":"Gęstość radiologiczną wody"},{"id":"b","text":"Gęstość radiologiczną powietrza"},{"id":"c","text":"Gęstość radiologiczną kości"},{"id":"d","text":"Gęstość radiologiczną tkanki tłuszczowej"}]'::jsonb,
+       explanation = '**Skala Hounsfielda** jest kalibrowana tak, że **0 HU = woda**, a **−1000 HU = powietrze**. Kości gęste osiągają +1000 HU i więcej, tkanka tłuszczowa ma wartości ujemne (ok. −100 HU). Skala odzwierciedla **współczynnik osłabienia** promieniowania względem wody. Znajomość punktów odniesienia (woda 0, powietrze −1000) pozwala interpretować gęstości tkanek w obrazach CT. Punkt zerowy skali to woda.'
+ WHERE id = 'biofiz-w4-381';
+
+UPDATE public.questions
+   SET text = 'Źródłem pola magnetycznego mogą być',
+       options = '[{"id":"a","text":"nieruchome ładunki i prądy płynące w przewodnikach"},{"id":"b","text":"elektromagnesy i ładunki przeciwnego znaku rozmieszczone na okładkach kondensatora"},{"id":"c","text":"magnesy i zwoje przez które przepływa prąd elektryczny"},{"id":"d","text":"magnesy, nieruchome ładunki i prądy elektryczne"}]'::jsonb,
+       explanation = 'Zrodla pola magnetycznego: magnesy trwale i prady elektryczne (w tym elektromagnesy - zwoje z pradem). Nieruchome ladunki tworza tylko pole elektryczne.'
+ WHERE id = 'biofiz-w5-001';
+
+UPDATE public.questions
+   SET text = 'Indukcja pola magnetycznego w solenoidzie jest proporcjonalna do',
+       options = '[{"id":"a","text":"natężenia prądu, długości solenoidu i liczby zwoi"},{"id":"b","text":"natężenia prądu i długości solenoidu a odwrotnie proporcjonalna do liczby zwoi"},{"id":"c","text":"natężenia prądu a odwrotnie proporcjonalna do liczby zwoi i długości solenoidu"},{"id":"d","text":"natężenia prądu w zwojach i liczby zwoi a odwrotnie proporcjonalna do długości solenoidu"}]'::jsonb,
+       explanation = 'Indukcja w solenoidzie: B = mu_0 * n * I, gdzie n = N/L (liczba zwoi na jednostke dlugosci). Proporcjonalna do I i N, odwrotnie do L.'
+ WHERE id = 'biofiz-w5-002';
+
+UPDATE public.questions
+   SET text = 'Pole magnetyczne wewnątrz długiego solenoidu jest',
+       options = '[{"id":"a","text":"jednorodne a jego kierunek określamy regułą lewej dłoni"},{"id":"b","text":"niejednorodne a jego kierunek określamy regułą lewej dłoni"},{"id":"c","text":"jednorodne a jego kierunek określamy regułą prawej dłoni"},{"id":"d","text":"niejednorodne a jego kierunek określamy regułą prawej dłoni"}]'::jsonb,
+       explanation = 'Pole wewnatrz dlugiego solenoidu jest jednorodne (B = const). Kierunek okresla regula prawej dloni (palce - kierunek pradu, kciuk - kierunek B).'
+ WHERE id = 'biofiz-w5-003';
+
+UPDATE public.questions
+   SET text = 'Jądro atomowe posiada niezerowy moment magnetyczny w przypadku, gdy',
+       options = '[{"id":"a","text":"spin i moment pędu są różne od zera"},{"id":"b","text":"moment pędu jest różny od zera a spin jest równy zero"},{"id":"c","text":"spin jest różny od zera a moment pędu jest równy zero"},{"id":"d","text":"spin i moment pędu są równe zero"}]'::jsonb,
+       explanation = 'Jadro ma niezerowy moment magnetyczny gdy ma niezerowy spin. Spin jadra zalezy od liczby protonow i neutronow - nieparzysta suma = niezerowy spin.'
+ WHERE id = 'biofiz-w5-004';
+
+UPDATE public.questions
+   SET text = 'Jądra atomowe mające zerowy spin',
+       options = '[{"id":"a","text":"mają nieparzystą liczbę protonów i parzystą liczbę neutronów"},{"id":"b","text":"mają parzystą liczbę protonów i parzystą liczbę neutronów"},{"id":"c","text":"mają parzystą liczbę protonów i nieparzystą liczbę neutronów"},{"id":"d","text":"mają dowolną liczbę protonów i neutronów"}]'::jsonb,
+       explanation = 'Jadra o zerowym spinie: parzysta liczba protonow I parzysta liczba neutronow. Protony i neutrony paruja sie, ich spiny sie kompensuja.'
+ WHERE id = 'biofiz-w5-005';
+
+UPDATE public.questions
+   SET text = 'Rezonans jest zjawiskiem, w którym występuje przekaz energii między drgającymi układami',
+       options = '[{"id":"a","text":"z najmniejszą amplitudą dla częstotliwości określonej przez strukturę układu odbierającego energię"},{"id":"b","text":"z amplitudą proporcjonalną do częstotliwości określonej przez strukturę układu odbierającego energię"},{"id":"c","text":"ale tylko w przypadku gdy układy są identyczne"},{"id":"d","text":"z największą amplitudą dla częstotliwości określonej przez strukturę układu odbierającego energię"}]'::jsonb,
+       explanation = 'Rezonans: maksymalny przekaz energii gdy czestotliwosc wymuszenia = czestotliwosc wlasna ukladu. Amplituda drgań osiaga maksimum.'
+ WHERE id = 'biofiz-w5-006';
+
+UPDATE public.questions
+   SET text = 'Rezonans może zachodzić między',
+       options = '[{"id":"a","text":"sprzężonymi wahadłami fizycznymi lub sprzężonymi układami elektrycznymi zawierającymi kondensator i cewkę indukcyjną"},{"id":"b","text":"dowolnymi układami drgającymi"},{"id":"c","text":"sprzężonymi układami elektrycznymi zawierającymi kondensatory połączone równolegle do siły elektromotorycznej"},{"id":"d","text":"sprzężonymi wahadłami matematycznymi lub sprzężonymi układami elektrycznymi zawierającymi kondensator i opornik"}]'::jsonb,
+       explanation = 'Rezonans wystepuje miedzy sprzezonymi ukladami drgajacymi: wahadlami fizycznymi, obwodami elektrycznymi RLC. Uklady musza byc sprzezone (wymieniac energie).'
+ WHERE id = 'biofiz-w5-007';
+
+UPDATE public.questions
+   SET text = 'Dla próbki znajdującej się w obszarze bez zewnętrznego pola magnetycznego energię momentów magnetycznych spinów jądrowych są',
+       options = '[{"id":"a","text":"jednakowe a ich wypadkowy wektor (magnetyzacja próbki) będzie równy zero"},{"id":"b","text":"różne a ich wypadkowy wektor (magnetyzacja próbki) będzie różny od zera"},{"id":"c","text":"jednakowe a ich wypadkowy wektor (magnetyzacja próbki) będzie różny od zera"},{"id":"d","text":"różne a ich wypadkowy wektor (magnetyzacja próbki) będzie równy zero"}]'::jsonb,
+       explanation = 'Bez pola zewnetrznego: momenty magnetyczne jadra maja jednakowa energie niezaleznie od kierunku, ustawione chaotycznie - wypadkowa magnetyzacja = 0.'
+ WHERE id = 'biofiz-w5-008';
+
+UPDATE public.questions
+   SET text = 'Jeżeli umieścimy próbkę w silnym zewnętrznym polu magnetycznym to energie momentów magnetycznych jąder',
+       options = '[{"id":"a","text":"będą uzależnione od ich kierunku względem pola magnetycznego i dla momentów skierowanych zgodnie z polem energia będzie większa niż w przypadku momentów skierowanych przeciwnie"},{"id":"b","text":"będą uzależnione od ich kierunku względem pola magnetycznego i dla momentów skierowanych zgodnie z polem energia będzie mniejsza niż w przypadku momentów skierowanych przeciwnie"},{"id":"c","text":"nie będą zależne od ich kierunku względem pola magnetycznego"},{"id":"d","text":"będą większe niż w przypadku gdy nie było pola magnetycznego"}]'::jsonb,
+       explanation = 'W zewnetrznym polu B: energie momentow magnetycznych zaleza od kierunku (E = -mu*B*cos(theta)). Momenty rownolegle do B maja nizsza energie.'
+ WHERE id = 'biofiz-w5-009';
+
+UPDATE public.questions
+   SET text = 'Zjawisko Zeemana (dla jąder o spinie 1/2) polega na',
+       options = '[{"id":"a","text":"rozproszeniu energii jąder w zewnętrznym polu magnetycznym ze względu na ich kierunek względem pola przy czym różnica między poziomami energii w jest proporcjonalna do B o"},{"id":"b","text":"rozproszeniu energii jąder w zewnętrznym polu magnetycznym ze względu na ich kierunek względem pola przy czym różnica między poziomami energii jest odwrotnie proporcjonalna do B o"},{"id":"c","text":"rozszczepieniu energii jąder w zewnętrznym polu magnetycznym (B ) ze względu na ich o kierunek względem pola przy czym różnica między poziomami energii jest odwrotnie proporcjonalna do B o"},{"id":"d","text":"rozszczepieniu energii jąder w zewnętrznym polu magnetycznym (B ) ze względu na ich o kierunek względem pola przy czym różnica między poziomami energii jest proporcjonalna do B o"}]'::jsonb,
+       explanation = 'Efekt Zeemana: rozszczepienie poziomow energetycznych jadra w polu magnetycznym na 2I+1 podpoziomow. Dla spinu 1/2: dwa poziomy o roznej energii.'
+ WHERE id = 'biofiz-w5-010';
+
+UPDATE public.questions
+   SET text = 'Obsadzenie poziomów energetycznych jąder o spinie połówkowym w zewnętrznym polu magnetycznym opisuje równanie będące rozkładem',
+       options = '[{"id":"a","text":"Boltzmana, gdzie N jest liczbą jąder o mniejszej energii a N2 jest liczbą jąder o większej energii"},{"id":"b","text":"normalnym, gdzie N jest liczbą jąder o większej energii a N2 jest liczbą jąder o mniejszej energii"},{"id":"c","text":"normalnym, gdzie N jest liczbą jąder o mniejszej energii a N2 jest liczbą jąder o większej energii"},{"id":"d","text":"Boltzmana, gdzie N jest liczbą jąder o większej energii a N2 jest liczbą jąder o mniejszej energii"}]'::jsonb,
+       explanation = 'Rozklad Boltzmanna: N_nizszy/N_wyzszy = exp(delta_E/(kT)). Wiecej jader na nizszym poziomie energetycznym (stan rownowagi termicznej).'
+ WHERE id = 'biofiz-w5-011';
+
+UPDATE public.questions
+   SET text = 'Rozpatrując obsadzenie poziomów energetycznych jąder o spinie połówkowym znajdujących się w zewnętrznym polu magnetycznym możemy stwierdzić, że na niższym poziomie energetycznym jest',
+       options = '[{"id":"a","text":"więcej jąder niż na wyższym, a wzbudzenia jądra z poziomu niższego na wyższy możemy dokonać stosując fale elektromagnetyczne z zakresu mikrofalowego"},{"id":"b","text":"mniej jąder niż na wyższym, a wzbudzenia jądra z poziomu niższego na wyższy możemy dokonać stosując fale elektromagnetyczne z zakresu radiowego"},{"id":"c","text":"więcej jąder niż na wyższym, a wzbudzenia jądra z poziomu niższego na wyższy możemy dokonać stosując fale elektromagnetyczne z zakresu radiowego"},{"id":"d","text":"mniej jąder niż na wyższym, a wzbudzenia jądra z poziomu niższego na wyższy możemy dokonać stosując fale elektromagnetyczne z zakresu podczerwieni"}]'::jsonb,
+       explanation = 'Zgodnie z rozkładem Boltzmanna układy dążą do stanu o najniższej energii, dlatego na niższym poziomie energetycznym zawsze znajduje się statystyczna nadwyżka jąder. Ponieważ różnica energii między tymi poziomami w polu magnetycznym jest niewielka, do wywołania przeskoku na wyższy poziom wystarcza niskoenergetyczne promieniowanie z zakresu fal radiowych.'
+ WHERE id = 'biofiz-w5-012';
+
+UPDATE public.questions
+   SET text = 'W nieobecności zewnętrznego pola magnetycznego wektor namagnesowania jest',
+       options = '[{"id":"a","text":"różny od zera a rozkład ustawienia kierunków momentów magnetycznych jest anizotropowy"},{"id":"b","text":"różny od zera a rozkład ustawienia kierunków momentów magnetycznych jest izotropowy"},{"id":"c","text":"równy zero a rozkład ustawienia kierunków momentów magnetycznych jest izotropowy"},{"id":"d","text":"równy zero a rozkład ustawienia kierunków momentów magnetycznych jest anizotropowy"}]'::jsonb,
+       explanation = 'Bez pola zewnetrznego: momenty magnetyczne ustawione chaotycznie (izotropowo), suma wektorowa = 0, magnetyzacja M = 0.'
+ WHERE id = 'biofiz-w5-014';
+
+UPDATE public.questions
+   SET text = 'Magnetyzacja próbki w zewnętrznym polu magnetycznym jest proporcjonalna do',
+       options = '[{"id":"a","text":"indukcji pola magnetycznego, kwadratu momentu magnetycznego jądra oraz liczby jąder w próbce"},{"id":"b","text":"indukcji pola magnetycznego i do momentu magnetycznego jądra, a odwrotnie proporcjonalna do liczby jąder w próbce"},{"id":"c","text":"momentu magnetycznego jądra oraz liczby jąder w próbce, a odwrotnie proporcjonalna do indukcji pola magnetycznego"},{"id":"d","text":"indukcji pola magnetycznego, momentu magnetycznego jądra oraz liczby jąder w próbce"}]'::jsonb,
+       explanation = 'Magnetyzacja M proporcjonalna do: indukcji B, kwadratu momentu magnetycznego mu^2, liczby jader N, odwrotnie do temperatury T (prawo Curie).'
+ WHERE id = 'biofiz-w5-015';
+
+UPDATE public.questions
+   SET text = 'Precesja momentu magnetycznego skierowanego pod kątem względem zewnętrznego pola magnetycznego zachodzi z częstotliwością określoną równaniem',
+       options = '[{"id":"a","text":"- nazywana częstotliwością Larmora"},{"id":"b","text":"- nazywana częstotliwością Boltzmana"},{"id":"c","text":"- nazywana długością Larmora"},{"id":"d","text":"- nazywana długością Boltzmana"}]'::jsonb,
+       explanation = 'Precesja momentu magnetycznego w polu B z czestotliwoscia Larmora: omega_L = gamma * B, gdzie gamma to wspolczynnik giromagnetyczny.'
+ WHERE id = 'biofiz-w5-016';
+
+UPDATE public.questions
+   SET text = 'W polu jednorodnym o indukcji B różne jądra precesują z o',
+       options = '[{"id":"a","text":"różną częstotliwością a magnetyzacja próbki jest różna od zera i odwrotnie proporcjonalna do B o"},{"id":"b","text":"różną częstotliwością a magnetyzacja próbki jest różna od zera i proporcjonalna do B o"},{"id":"c","text":"jednakową częstotliwością a magnetyzacja próbki jest różna od zera i proporcjonalna do B o"},{"id":"d","text":"jednakową częstotliwością a magnetyzacja próbki jest równa zero"}]'::jsonb,
+       explanation = 'Różne jądra (¹H, ¹³C, ³¹P) mają różne γ (stosunek gyromagnetyczny) → precesują z różnymi częstotliwościami Larmora: ω = γB. Magnetyzacja próbki M jest WPROST proporcjonalna do B₀ (prawo Curie): M ∝ B₀/T. Silniejsze pole → więcej spinów się ustawia równolegle → większa magnetyzacja. To podstawa wysokopolowego NMR - im silniejsze pole, tym lepszy sygnał!'
+ WHERE id = 'biofiz-w5-017';
+
+UPDATE public.questions
+   SET text = 'Rolą pola radiowego (fal elektromagnetycznych z zakresu radiowego) w metodzie NMR jest',
+       options = '[{"id":"a","text":"wytrącenie magnetyzacji z kierunku równoległego do zewnętrznego pola magnetycznego przy czym kąt o jaki zostanie obrócona magnetyzacja zależy od częstotliwości Larmora i czasu działania pola radiowego"},{"id":"b","text":"wytrącenie magnetyzacji z kierunku prostopadłego do zewnętrznego pola magnetycznego przy czym kąt o jaki zostanie obrócona magnetyzacja nie zależy od częstotliwości Larmora, natomiast zależy od czasu działania pola radiowego"},{"id":"c","text":"zwiększenie amplitudy magnetyzacji przy czym wzrost amplitudy magnetyzacji zależy od częstotliwości Larmora"},{"id":"d","text":"zwiększenie amplitudy magnetyzacji przy czym wzrost amplitudy magnetyzacji nie zależy od częstotliwości Larmora"}]'::jsonb,
+       explanation = 'Pole RF (o czestotliwosci Larmora) wytraca magnetyzacje z kierunku rownoleglego do B0. Powoduje rezonansowa absorpcje energii i obrót magnetyzacji.'
+ WHERE id = 'biofiz-w5-018';
+
+UPDATE public.questions
+   SET text = 'Impuls π/2 jest impulsem powodującym obrót magnetyzacji o kąt 90°',
+       options = '[{"id":"a","text":"przy czym zaobserwujemy precesję magnetyzacji z częstotliwością Boltzmana"},{"id":"b","text":"przy czym zaobserwujemy precesję magnetyzacji z częstotliwością Larmora"},{"id":"c","text":"przy czym impuls ten nie powoduje precesji magnetyzacji"},{"id":"d","text":"i zmniejszenie jej amplitudy na skutek rozfazowania spinów"}]'::jsonb,
+       explanation = 'Impuls π/2 obraca M o 90° → M precesuje wokół B₀ z częstotliwością LARMORA (nie Boltzmana!). ω_Larmor = γB₀. To rezonansowa częstotliwość precesji. Boltzmann to rozkład obsadzeń poziomów energii.'
+ WHERE id = 'biofiz-w5-019';
+
+UPDATE public.questions
+   SET text = 'Sygnał NMR (sygnał swobodnej precesji) przedstawia wykres, przy czym na osi pionowej jest',
+       options = '[{"id":"a","text":"długość wektora magnetyzacji"},{"id":"b","text":"częstotliwość Larmora"},{"id":"c","text":"składowa poprzeczna magnetyzacji"},{"id":"d","text":"składowa podłużna magnetyzacji"}]'::jsonb,
+       explanation = 'Sygnal NMR (FID - free induction decay) to skladowa poprzeczna magnetyzacji Mxy - precesujaca i zanikajaca w czasie. Indukuje napiecie w cewce.'
+ WHERE id = 'biofiz-w5-020';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T2 jest czasem potrzebnym na to aby',
+       options = '[{"id":"a","text":"poprzeczna składowa magnetyzacji zmalała do 37% jej wartości początkowej"},{"id":"b","text":"podłużna składowa magnetyzacji zmalała do 37% jej wartości początkowej"},{"id":"c","text":"poprzeczna składowa magnetyzacji wzrosła do 63% magnetyzacji w stanie ustalonym"},{"id":"d","text":"podłużna składowa magnetyzacji wzrosła do 63% magnetyzacji w stanie ustalonym"}]'::jsonb,
+       explanation = 'T2 (spin-spin): czas zaniku skladowej poprzecznej Mxy do 33-37% wartosci poczatkowej. Spowodowany rozfazowaniem spinow.'
+ WHERE id = 'biofiz-w5-021';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T1 jest czasem potrzebnym na to aby',
+       options = '[{"id":"a","text":"poprzeczna składowa magnetyzacji zmalała do 33-37% jej wartości początkowej"},{"id":"b","text":"podłużna składowa magnetyzacji wzrosła do 63-67% jej wartości końcowej (maksymalnej)"},{"id":"c","text":"podłużna składowa magnetyzacji zmalała do 33-37% jej wartości początkowej"},{"id":"d","text":"poprzeczna składowa magnetyzacji wzrosła do 63-67% jej wartości końcowej (maksymalnej)"}]'::jsonb,
+       explanation = 'Czas T1 (relaksacja podłużna) opisuje proces powrotu układu do równowagi termodynamicznej, co skutkuje odbudową (wzrostem) namagnesowania wzdłuż linii pola magnetycznego. Zgodnie z definicją matematyczną, po czasie równym T1 składowa ta osiąga wartość $(1 - 1/e)$, czyli około 63% (w przybliżeniu podawanym w testach często jako 67%) swojej wartości maksymalnej.'
+ WHERE id = 'biofiz-w5-022';
+
+UPDATE public.questions
+   SET text = 'Przyczyną zaniku poprzecznej składowej magnetyzacji są',
+       options = '[{"id":"a","text":"silne pole magnetyczne w próbce oraz oddziaływania magnetyczne pomiędzy sąsiadującymi jądrami"},{"id":"b","text":"gradienty pola magnetycznego w próbce oraz fale elektromagnetyczne zakresu radiowego"},{"id":"c","text":"oddziaływania magnetyczne pomiędzy momentami magnetycznymi jąder a siecią oraz jednorodność pola magnetycznego w próbce"},{"id":"d","text":"oddziaływania magnetyczne pomiędzy sąsiadującymi jądrami oraz niejednorodności stałego pola magnetycznego w próbce"}]'::jsonb,
+       explanation = 'Zanik Mxy (relaksacja T2): oddzialywania spin-spin miedzy sasiednimi jadrami oraz niejednorodnosc pola magnetycznego (gradienty) powoduja rozfazowanie.'
+ WHERE id = 'biofiz-w5-023';
+
+UPDATE public.questions
+   SET text = 'Aby składowa podłużna magnetyzacji próbki zmalała do zera należy zastosować impuls',
+       options = '[{"id":"a","text":"2 π"},{"id":"b","text":"π/2"},{"id":"c","text":"π"},{"id":"d","text":"π/4"}]'::jsonb,
+       explanation = 'Impuls π/2 (90°) obraca wektor magnetyzacji Mz o 90° → cała magnetyzacja trafia do płaszczyzny xy → Mz = 0, Mxy = maksymalna. To podstawowy impuls w NMR do obserwacji sygnału FID. Impuls π (180°) odwraca kierunek Mz (+z → -z), ale nie zeruje - używany w sekwencjach spin-echo do refokusowania. Jak kiwanie wahadła: 90° to poziomo (Mz=0), 180° to druga strona (Mz nadal ≠0)..'
+ WHERE id = 'biofiz-w5-024';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T2 w ciałach stałych jest',
+       options = '[{"id":"a","text":"porównywalny z T1"},{"id":"b","text":"niezależny od stosowanego pola magnetycznego"},{"id":"c","text":"znacznie mniejszy niż czas T1"},{"id":"d","text":"znacznie większy niż czas T1"}]'::jsonb,
+       explanation = 'W cialach stalych T2 << T1. Silne oddzialywania spin-spin powoduja szybki zanik Mxy (krotkie T2). T1 moze byc bardzo dlugie (minuty-godziny).'
+ WHERE id = 'biofiz-w5-025';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T1 dla cieczy',
+       options = '[{"id":"a","text":"jest porównywalny do czasu T2"},{"id":"b","text":"znacznie mniejszy niż czas T2"},{"id":"c","text":"silnie zależy od zastosowanego pola magnetycznego"},{"id":"d","text":"znacznie większy niż czas T2"}]'::jsonb,
+       explanation = 'W cieczach T1 ≈ T2 (sekundy). Szybkie ruchy czasteczek usredniaja oddzialywania spin-spin, T2 zblizone do T1.'
+ WHERE id = 'biofiz-w5-026';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T2',
+       options = '[{"id":"a","text":"jest prawie niezależny od indukcji pola magnetycznego natomiast czas T1 silnie zależy od indukcji pola magnetycznego"},{"id":"b","text":"i T1 są niezależne od indukcji pola magnetycznego"},{"id":"c","text":"i T1 silnie zależą od indukcji pola magnetycznego"},{"id":"d","text":"silnie zależy od indukcji pola magnetycznego natomiast czas T1 jest niezależny od indukcji pola magnetycznego"}]'::jsonb,
+       explanation = 'Czas T2 wynika z lokalnych oddziaływań między sąsiednimi spinami, które nie zależą od siły zewnętrznego pola magnetycznego, w przeciwieństwie do czasu T1, który wydłuża się w silniejszym polu ze względu na utrudnione przekazywanie energii do otoczenia przy wyższych częstotliwościach rezonansowych.'
+ WHERE id = 'biofiz-w5-027';
+
+UPDATE public.questions
+   SET text = 'Na obrazach tomograficznych NMR intensywności odcieni szarości poszczególnych piksli odpowiadać będą odpowiednim',
+       options = '[{"id":"a","text":"wartościom czasów relaksacji T lub T 1 2"},{"id":"b","text":"gęstościom tkanek"},{"id":"c","text":"zawartościom pierwiastków ciężkich w tkankach"},{"id":"d","text":"przewodnościom elektrycznym tkanek"}]'::jsonb,
+       explanation = 'Kontrast obrazu NMR zalezy od czasow relaksacji T1 i T2 (oraz gestosci protonow). Rozne tkanki maja rozne T1 i T2.'
+ WHERE id = 'biofiz-w5-028';
+
+UPDATE public.questions
+   SET text = 'Komórki nowotworowe w porównaniu do komórek zdrowych',
+       options = '[{"id":"a","text":"różnią się czasami relaksacji zarówno T jak i T 1 2"},{"id":"b","text":"różnią się czasami relaksacji T natomiast nie różnią się ze względu na czas relaksacji T 2 1"},{"id":"c","text":"różnią się czasami relaksacji T natomiast nie różnią się ze względu na czas relaksacji T 1 2"},{"id":"d","text":"mają jednakowe czasy relaksacji T i T 1 2"}]'::jsonb,
+       explanation = 'Komorki nowotworowe maja dluzsze T1 i T2 niz zdrowe (wiecej wody, inna struktura). To podstawa diagnostyki nowotworow w MRI.'
+ WHERE id = 'biofiz-w5-029';
+
+UPDATE public.questions
+   SET text = 'Woksel jest to',
+       options = '[{"id":"a","text":"największa powierzchnia analizowana w tomografii natomiast pixel jest to największy element obrazu otrzymywanego w tomografii"},{"id":"b","text":"największa objętość analizowana w tomografii natomiast pixel jest to największy element obrazu otrzymywanego w tomografii"},{"id":"c","text":"najmniejsza objętość analizowana w tomografii natomiast pixel jest to najmniejszy element obrazu otrzymywanego w tomografii"},{"id":"d","text":"najmniejsza powierzchnia analizowana w tomografii natomiast pixel jest to najmniejszy element obrazu otrzymywanego w tomografii"}]'::jsonb,
+       explanation = 'Woksel (voxel) = volumetric pixel - najmniejsza analizowana OBJETOSC w tomografii 3D. Pixel = najmniejszy element obrazu 2D.'
+ WHERE id = 'biofiz-w5-030';
+
+UPDATE public.questions
+   SET text = 'Mniejszy woksel w tomografii wiąże się z',
+       options = '[{"id":"a","text":"większą zdolnością rozdzielczą przestrzenną i mniejszą zdolnością rozdzielczą planarną na tomogramach"},{"id":"b","text":"mniejszą zdolnością rozdzielczą przestrzenną i większą planarną na tomogramach"},{"id":"c","text":"większą zdolnością rozdzielczą zarówno przestrzenną jak i planarną na tomogramach"},{"id":"d","text":"mniejszą zdolnością rozdzielczą zarówno przestrzenną jak i planarną na tomogramach"}]'::jsonb,
+       explanation = 'Mniejszy woksel → WIĘKSZA zdolność rozdzielcza zarówno przestrzenna (3D) jak i planarna (2D). Mniejszy "piksel" → więcej szczegółów. Ale mniejszy woksel → mniej sygnału → większy szum. Trade-off jakość vs czas/szum.'
+ WHERE id = 'biofiz-w5-031';
+
+UPDATE public.questions
+   SET text = 'Aby otrzymać tomogramy z analizowanego obszaru należy zastosować silne pole magnetyczne B z o nałożonymi gradientami pola magnetycznego wzdłuż',
+       options = '[{"id":"a","text":"trzech równoległych kierunków"},{"id":"b","text":"trzech prostopadłych kierunków"},{"id":"c","text":"dwóch prostopadłych kierunków"},{"id":"d","text":"podłużnej osi pacjenta"}]'::jsonb,
+       explanation = 'Do obrazowania 3D potrzebne sa gradienty pola w trzech prostopadlych kierunkach (x, y, z). Kazdy gradient koduje polozenie w jednym wymiarze.'
+ WHERE id = 'biofiz-w5-032';
+
+UPDATE public.questions
+   SET text = 'Jeżeli zastosujemy oprócz silnego pola magnetycznego B gradient pola magnetycznego skierowany o wzdłuż osi długiej pacjenta to otrzymamy sygnał od',
+       options = '[{"id":"a","text":"warstwy będącej przekrojem prostopadłym do osi długiej pacjenta"},{"id":"b","text":"całej objętości pacjenta zanurzonej w silnym polu magnetycznym"},{"id":"c","text":"linii wzdłuż osi pacjenta, przy czym położenie linii będzie uzależnione od wielkości gradientu pola magnetycznego"},{"id":"d","text":"woksla, którego położenie będzie określone przez częstotliwość Larmora"}]'::jsonb,
+       explanation = 'Gradient wzdluz z (os dluga pacjenta) wybiera warstwe - tylko jadra w warstwie o odpowiednim B rezonuja przy danej czestotliwosci.'
+ WHERE id = 'biofiz-w5-033';
+
+UPDATE public.questions
+   SET text = 'Aby otrzymać obraz z jednej płaszczyzny (xy) – prostopadłej do osi długiej pacjenta (z) wówczas należy ustalić',
+       options = '[{"id":"a","text":"gradienty w kierunkach x, y i z"},{"id":"b","text":"gradienty w kierunku osi x i y i zmieniać gradient w kierunku z"},{"id":"c","text":"gradient pola w kierunku osi z, i zmieniać gradienty w kierunku x i y"},{"id":"d","text":"gradienty w kierunku x i zmieniać gradienty w kierunku z i y"}]'::jsonb,
+       explanation = 'Gradient z wybiera warstwe, gradienty x i y koduja polozenie w plaszczyznie (kodowanie czestotliwosciowe i fazowe). Zmiana gradientow tworzy obraz.'
+ WHERE id = 'biofiz-w5-034';
+
+UPDATE public.questions
+   SET text = 'Przeciwwskazaniem do badań NMR jest',
+       options = '[{"id":"a","text":"nowotwór"},{"id":"b","text":"nadciśnienie"},{"id":"c","text":"posiadanie metalowej protezy w ciele"},{"id":"d","text":"miażdżyca"}]'::jsonb,
+       explanation = 'Przeciwwskazania do MRI: metalowe implanty (rozrusznik, stymulator, klipy naczyniowe), fragmenty metalowe. Silne pole magnetyczne moze je przemieszcic.'
+ WHERE id = 'biofiz-w5-035';
+
+UPDATE public.questions
+   SET text = 'Czy w metodzie MRI (obrazowanie NMR) pacjent jest narażony na promieniowanie jonizujące?',
+       options = '[{"id":"a","text":"tak, niezależnie od tego jak duże zastosujemy pole magnetyczne"},{"id":"b","text":"nie, ze względu na to że w metodzie tej stosowane jest silne pole magnetyczne i pole elektromagnetyczne z zakresu radiowego"},{"id":"c","text":"nie, ponieważ pole magnetyczne i pole elektromagnetyczne z zakresu radiowego nie wnikają do organizmu człowieka"},{"id":"d","text":"tak, ze względu na to że stosowane silne pole magnetyczne i pole elektromagnetyczne z zakresu radiowego silnie jonizują materię MEDICLEARN"}]'::jsonb,
+       explanation = 'MRI nie używa promieniowania jonizującego! Używa pola magnetycznego B₀ i fal radiowych (RF). Oba są niejonizujące. RF wnika do ciała (to fale elektromagnetyczne), ale nie jonizuje atomów (za mała energia: E = hf, f ~MHz).'
+ WHERE id = 'biofiz-w5-036';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z równaniem Hilla prędkość skurczu mięśnia',
+       options = '[{"id":"a","text":"jest proporcjonalna do jego obciążenia"},{"id":"b","text":"jest odwrotnie proporcjonalna do jego obciążenia"},{"id":"c","text":"nie zależy od obciążenia mięśnia"},{"id":"d","text":"jest odwrotnie proporcjonalna do mocy rozwijanej przez mięsień"}]'::jsonb,
+       explanation = 'Rownanie Hilla: (F+a)(v+b) = const. Predkosc skurczu maleje ze wzrostem obciazenia (nieliniowo). Przy F=F_max, v=0 (skurcz izometryczny).'
+ WHERE id = 'biofiz-w5-037';
+
+UPDATE public.questions
+   SET text = 'Przeciążenie to stan, w którym siła nacisku jest',
+       options = '[{"id":"a","text":"równa ciężarowi ciała"},{"id":"b","text":"równa zero"},{"id":"c","text":"większa niż ciężar ciała"},{"id":"d","text":"mniejsza od ciężaru ciała"}]'::jsonb,
+       explanation = 'Przeciazenie: sila nacisku > ciezar ciala. Przeciazenie n*g oznacza sile n razy wieksza od normalnego ciezaru. n>1 = przeciazenie.'
+ WHERE id = 'biofiz-w5-038';
+
+UPDATE public.questions
+   SET text = 'Podczas skurczu ciśnienie krwi w aorcie, u przeciętnego zdrowego człowieka wynosi około',
+       options = '[{"id":"a","text":"120 mmHg ponad ciśnienie atmosferyczne"},{"id":"b","text":"760 mmHg"},{"id":"c","text":"70 mmHg ponad ciśnienie atmosferyczne"},{"id":"d","text":"120 mmHg poniżej ciśnienia atmosferycznego"}]'::jsonb,
+       explanation = 'Cisnienie skurczowe (systoliczne) ok. 120 mmHg PONAD cisnienie atmosferyczne. Rzeczywiste cisnienie w aorcie = 760 + 120 = 880 mmHg.'
+ WHERE id = 'biofiz-w5-039';
+
+UPDATE public.questions
+   SET text = 'Obniżenie lub podwyższenie ciśnienia w otoczeniu powoduje w gazach znajdujących się w organizmie zmiany określone prawem Boyle’a-Mariotte''a. Zaznacz prawidłową odpowiedź',
+       options = '[{"id":"a","text":"wraz ze wzrostem ciśnienia wzrasta objętość gazu"},{"id":"b","text":"wraz ze spadkiem ciśnienia zmniejsza się objętość gazu"},{"id":"c","text":"zmiana ciśnienia nie ma wpływu na objętość gazu"},{"id":"d","text":"wraz ze spadkiem ciśnienia wzrasta objętość gazu"}]'::jsonb,
+       explanation = 'Prawo Boylei-Mariottea: p*V = const przy T=const. Spadek cisnienia zewnetrznego powoduje wzrost objetosci gazu (pecherzyki powietrza przy wynurzaniu).'
+ WHERE id = 'biofiz-w5-040';
+
+UPDATE public.questions
+   SET text = 'Efektem Magnusa można wyjaśnić',
+       options = '[{"id":"a","text":"zależność lepkości krwi od hematokrytu"},{"id":"b","text":"akumulację osiową krwinek"},{"id":"c","text":"zależność lepkości krwi od ciśnienia"},{"id":"d","text":"zależność lepkości krwi od temperatury"}]'::jsonb,
+       explanation = 'Efekt Magnusa wyjaśnia akumulację osiową krwinek - obrotowa kula w plynie doznaję siły prostopadłej do kierunku ruchu, pchającej ja do osi naczynia.'
+ WHERE id = 'biofiz-w5-041';
+
+UPDATE public.questions
+   SET text = 'Substancja zawierająca stałe dipole nazywana jest',
+       options = '[{"id":"a","text":"izolatorem"},{"id":"b","text":"dielektrykiem"},{"id":"c","text":"przewodnikiem drugiego stopnia"},{"id":"d","text":"przewodnikiem pierwszego stopnia"}]'::jsonb,
+       explanation = 'Dielektryk to substancja zawierająca stałe dipole elektryczne (polarna) lub mogąca je indukować w polu elektrycznym. Nie przewodzi prądu.'
+ WHERE id = 'biofiz-w5-042';
+
+UPDATE public.questions
+   SET text = 'Prawidłowa wartość ciśnienia skurczowego u osoby dorosłej wynosi około',
+       options = '[{"id":"a","text":"20 mmHg"},{"id":"b","text":"190 mmHg"},{"id":"c","text":"120 mmHg"},{"id":"d","text":"70 mmHg"}]'::jsonb,
+       explanation = 'Prawidłowe ciśnienie skurczowe u dorosłego: ok. 120 mmHg. Norma: 90-139 mmHg. Powyżej 140 = nadciśnienie.'
+ WHERE id = 'biofiz-w5-043';
+
+UPDATE public.questions
+   SET text = 'Jeśli kąt padania światła w ośrodku optycznie gęstszym jest większy od kąta granicznego to',
+       options = '[{"id":"a","text":"promień przechodzi do ośrodka rzadszego bez zmiany kierunku"},{"id":"b","text":"promień nie może przejść do ośrodka rzadszego (nie może się załamać) następuje całkowite wewnętrzne odbicie"},{"id":"c","text":"załamanie następuje pod kątem 45o"},{"id":"d","text":"kąt załamania jest równy 0o"}]'::jsonb,
+       explanation = 'Całkowite wewnętrzne odbicie: gdy kąt padania > kąt graniczny, światło nie przechodzi do ośrodka rzadszego - całkowicie się odbija.'
+ WHERE id = 'biofiz-w5-044';
+
+UPDATE public.questions
+   SET text = 'Komórka elementarna to',
+       options = '[{"id":"a","text":"szczególny przypadek stanu skupienia wody"},{"id":"b","text":"powtarzająca się struktura geometryczna tworząca sieć w ciałach amorficznych"},{"id":"c","text":"odmiana komórek macierzystych"},{"id":"d","text":"powtarzająca się struktura geometryczna tworząca sieć w kryształach"}]'::jsonb,
+       explanation = 'Komórka elementarna to najmniejsza powtarzająca się jednostka struktury krystalicznej. Translacja komórki tworzy całą sieć przestrzenną kryształu.'
+ WHERE id = 'biofiz-w5-045';
+
+UPDATE public.questions
+   SET text = 'Według postulatu Pauliego w atomie z wieloma elektronami',
+       options = '[{"id":"a","text":"w stanie wzbudzonym atom emituje kwant promieniowania"},{"id":"b","text":"dwa elektrony mają takie same wartości liczb kwantowych"},{"id":"c","text":"dwa elektrony muszą różnić się co najmniej jedną liczbą kwantową"},{"id":"d","text":"w stanie wzbudzonym wszystkie elektrony mają takie same wartości liczb kwantowych"}]'::jsonb,
+       explanation = 'Zakaz Pauliego: dwa elektrony w atomie muszą różnić się co najmniej jedną liczbą kwantową. W jednym stanie kwantowym może być max 1 elektron.'
+ WHERE id = 'biofiz-w5-046';
+
+UPDATE public.questions
+   SET text = 'Na krzywej naprężeniowo-odkształceniowej',
+       options = '[{"id":"a","text":"punkt A określa granicę proporcjonalności a D granicę wytrzymałości"},{"id":"b","text":"punkt C określa granicę sprężystości a E plastyczności"},{"id":"c","text":"punkt A określa granicę sprężystości a D plastyczności"},{"id":"d","text":"punkt B określa granicę sprężystości a E plastyczności"}]'::jsonb,
+       explanation = 'Krzywa naprężenie-odkształcenie: A = granica proporcjonalności (koniec prawa Hookea), B = granica sprężystości, C = granica plastyczności, D = wytrzymałość.'
+ WHERE id = 'biofiz-w5-047';
+
+UPDATE public.questions
+   SET text = 'Iloraz naprężenia ścinającego do prędkości ścinania dla płynów nazywamy',
+       options = '[{"id":"a","text":"ruchem burzliwym"},{"id":"b","text":"napięciem powierzchniowym"},{"id":"c","text":"lepkością"},{"id":"d","text":"oporem naczyniowym"}]'::jsonb,
+       explanation = 'Lepkość (dynamiczna) eta = naprężenie ścinające / prędkość ścinania = tau / (dv/dy). Jednostka: Pa*s.'
+ WHERE id = 'biofiz-w5-048';
+
+UPDATE public.questions
+   SET text = 'Najwięcej ciepła człowiek oddaje do otoczenia przez',
+       options = '[{"id":"a","text":"konwekcję"},{"id":"b","text":"oddaje porównywalną ilość ciepła we wszystkich wymienionych procesach"},{"id":"c","text":"wyparowanie wody"},{"id":"d","text":"promieniowanie"}]'::jsonb,
+       explanation = 'W spoczynku człowiek traci najwięcej ciepła przez promieniowanie (ok. 60%). Przy wysiłku dominuje parowanie potu.'
+ WHERE id = 'biofiz-w5-049';
+
+UPDATE public.questions
+   SET text = 'Izotopami danego pierwiastka nazywamy jądra atomowe o tej samej liczbie',
+       options = '[{"id":"a","text":"atomowej (porządkowej), a różnej liczbie masowej"},{"id":"b","text":"neutronów"},{"id":"c","text":"masowej, a różnej liczbie atomowej (porządkowej)"},{"id":"d","text":"nukleonów"}]'::jsonb,
+       explanation = 'Izotopy: ta sama liczba atomowa Z (protonów), różna liczba masowa A (nukleonów). Np. C-12 i C-14 to izotopy węgla.'
+ WHERE id = 'biofiz-w5-050';
+
+UPDATE public.questions
+   SET text = 'Widmo emisyjne powstaje w wyniku',
+       options = '[{"id":"a","text":"reakcji chemicznych zachodzących pomiędzy atomami"},{"id":"b","text":"pochłaniania a potem emisji przez badaną substancję określonych długości fali padającego promieniowania"},{"id":"c","text":"pochłaniania przez badaną substancję określonych długości fali padającego promieniowania"},{"id":"d","text":"emisji przez badaną substancję określonych długości fali promieniowania"}]'::jsonb,
+       explanation = 'Widmo emisyjne: atomy emitują fotony przy przejściach elektronów z wyższych na niższe poziomy energetyczne. Widmo liniowe charakterystyczne dla pierwiastka.'
+ WHERE id = 'biofiz-w5-051';
+
+UPDATE public.questions
+   SET text = 'Zjawisko Zeemana (dla jąder o spinie ½) polega na',
+       options = '[{"id":"a","text":"rozproszeniu energii jąder w zewnętrznym polu magnetycznym ze względu na ich kierunek względem pola przy czym różnica między poziomami energii w jest proporcjonalna do B o"},{"id":"b","text":"rozszczepieniu energii jąder w zewnętrznym polu magnetycznym (B ) ze względu na ich o kierunek względem pola przy czym różnica między poziomami energii jest proporcjonalna do B o"},{"id":"c","text":"rozszczepieniu energii jąder w zewnętrznym polu magnetycznym (B ) ze względu na ich o kierunek względem pola przy czym różnica między poziomami energii jest odwrotnie proporcjonalna do B o"},{"id":"d","text":"rozproszeniu energii jąder w zewnętrznym polu magnetycznym ze względu na ich kierunek względem pola przy czym różnica między poziomami energii jest odwrotnie proporcjonalna do B o"}]'::jsonb,
+       explanation = 'Efekt Zeemana: rozszczepienie poziomów energetycznych jądra w polu magnetycznym. Dla spinu 1/2: dwa poziomy (równoległy i antyrównoległy do B).'
+ WHERE id = 'biofiz-w5-052';
+
+UPDATE public.questions
+   SET text = 'W trakcie skurczu mięśnia',
+       options = '[{"id":"a","text":"dochodzi do skracania się tylko miofilamentów cienkich"},{"id":"b","text":"głowy miozynowe miofilamentu grubego łączą się z aktynami miofilamentu cienkiego"},{"id":"c","text":"głowy miozynowe miofilamentu cienkiego łączą się z aktynami miofilamentu grubego"},{"id":"d","text":"dochodzi do skracania się zarówno miofilamentów cienkich jak i grubych"}]'::jsonb,
+       explanation = 'Podczas skurczu: główki miozyny (filament gruby) łączą się z aktyną (filament cienki) i wykonują ruch. Filamenty nie skracają się - przesuwają względem siebie.'
+ WHERE id = 'biofiz-w5-053';
+
+UPDATE public.questions
+   SET text = 'Masy nukleonów (protonu i neutronu) w porównaniu do masy elektronu są około',
+       options = '[{"id":"a","text":"1836 razy większe"},{"id":"b","text":"10 razy większe"},{"id":"c","text":"1836 razy mniejsze"},{"id":"d","text":"10 razy mniejsze"}]'::jsonb,
+       explanation = 'Masa protonu/neutronu ≈ 1836 * masa elektronu. m_p ≈ 1.67*10^-27 kg, m_e ≈ 9.11*10^-31 kg.'
+ WHERE id = 'biofiz-w5-054';
+
+UPDATE public.questions
+   SET text = 'Na opór przepływu wpływa',
+       options = '[{"id":"a","text":"tylko czynnik lepkościowy"},{"id":"b","text":"żadna odpowiedź nie jest poprawna"},{"id":"c","text":"tylko czynnik geometryczny"},{"id":"d","text":"czynnik lepkościowy i czynnik geometryczny"}]'::jsonb,
+       explanation = 'Opór naczyniowy zależy od: czynnika geometrycznego (długość, promień naczynia) i lepkościowego (lepkość krwi). R = 8*eta*L/(pi*r^4).'
+ WHERE id = 'biofiz-w5-055';
+
+UPDATE public.questions
+   SET text = 'Błąd względny obliczenia objętości kuli przy pomiarze jej promienia',
+       options = '[{"id":"a","text":"jest taki sam jak błąd względny pomiaru promienia"},{"id":"b","text":"jest dwukrotnie większy od błędu względnego pomiaru promienia"},{"id":"c","text":"nie zależy od błędu względnego pomiaru promienia"},{"id":"d","text":"jest trzykrotnie większy od błędu względnego pomiaru promienia"}]'::jsonb,
+       explanation = 'V = (4/3)*pi*r^3. Błąd względny: delta_V/V = 3*delta_r/r. Trzykrotnie większy niż błąd pomiaru promienia (z propagacji błędów).'
+ WHERE id = 'biofiz-w5-056';
+
+UPDATE public.questions
+   SET text = 'Cechą fizyczną dźwięku jest',
+       options = '[{"id":"a","text":"wysokość"},{"id":"b","text":"struktura widmowa"},{"id":"c","text":"głośność"},{"id":"d","text":"barwa"}]'::jsonb,
+       explanation = 'Cechy fizyczne dźwięku: częstotliwość, amplituda, struktura widmowa. Psychologiczne: wysokość, głośność, barwa.'
+ WHERE id = 'biofiz-w5-057';
+
+UPDATE public.questions
+   SET text = 'Jaka część energii rozpędzonych elektronów w lampie rentgenowskiej zamienia się na promieniowanie rentgenowskie?',
+       options = '[{"id":"a","text":"około 10%, reszta energii zamienia się na ciepło"},{"id":"b","text":"około 1%, reszta energii zamienia się na ciepło"},{"id":"c","text":"około 10%, reszta energii zamienia się na ciepło i pracę potrzebną na wybicie elektronów z katody"},{"id":"d","text":"około 50%, reszta energii zamienia się na ciepło i pracę potrzebną na wybicie elektronów z anody"}]'::jsonb,
+       explanation = 'W lampie RTG tylko ok. 1% energii elektronów zamienia się na promieniowanie X. Reszta (99%) to ciepło - anoda wymaga chłodzenia.'
+ WHERE id = 'biofiz-w5-058';
+
+UPDATE public.questions
+   SET text = 'Naprężenie jest definiowane jako',
+       options = '[{"id":"a","text":"iloczyn siły działającej przez powierzchnię na którą działa siła"},{"id":"b","text":"suma siły działającej i powierzchni na którą działa siła"},{"id":"c","text":"różnica między siłą działającą a powierzchnią na którą działa siły"},{"id":"d","text":"iloraz siły działającej do powierzchni na którą działa siła"}]'::jsonb,
+       explanation = 'Naprężenie sigma = F/A (siła / powierzchnia). Jednostka: Pa = N/m^2.'
+ WHERE id = 'biofiz-w5-059';
+
+UPDATE public.questions
+   SET text = 'Żyły są',
+       options = '[{"id":"a","text":"układem ciśnieniowym"},{"id":"b","text":"układem pojemnościowym"},{"id":"c","text":"układem nie zmieniającym się"},{"id":"d","text":"żadnym z wymienionych"}]'::jsonb,
+       explanation = 'Żyły to układ pojemnościowy (niskociśnieniowy) - zawierają ok. 65% objętości krwi. Tętnice to układ ciśnieniowy (wysokociśnieniowy).'
+ WHERE id = 'biofiz-w5-060';
+
+UPDATE public.questions
+   SET text = 'Krzywa zależności naprężenia ścinającego od prędkości ścinania dla cieczy newtonowskiej jest',
+       options = '[{"id":"a","text":"linią prostą nie przechodzącą przez początek układu współrzędnych"},{"id":"b","text":"krzywą wykładniczą"},{"id":"c","text":"linią prostą przechodzącą przez początek układu współrzędnych"},{"id":"d","text":"linią prostą poziomą"}]'::jsonb,
+       explanation = 'Ciecz newtonowska: tau = eta * (dv/dy) - liniowa zależność przez początek układu współrzędnych. Nachylenie = lepkość.'
+ WHERE id = 'biofiz-w5-061';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem Laplace’a ciśnienie wywierane na ściany naczynia jest',
+       options = '[{"id":"a","text":"równe iloczynowi napięcia sprężystego i promienia przewodu"},{"id":"b","text":"wprost proporcjonalne do promienia przewodu"},{"id":"c","text":"odwrotnie proporcjonalne do napięcia sprężystego"},{"id":"d","text":"wprost proporcjonalne do napięcia sprężystego"}]'::jsonb,
+       explanation = 'Prawo Laplacea: p = T/r (lub T*2/r dla sfery). Ciśnienie wprost proporcjonalne do napięcia sprężystego T, odwrotnie do promienia r.'
+ WHERE id = 'biofiz-w5-062';
+
+UPDATE public.questions
+   SET text = 'Jednostką równoważnika dawki pochłoniętej jest',
+       options = '[{"id":"a","text":"grej (Gy)"},{"id":"b","text":"siwert (Sv)"},{"id":"c","text":"C/kg"},{"id":"d","text":"bekerel (Bq)"}]'::jsonb,
+       explanation = 'Równoważnik dawki (dawka skuteczna) w siwertach (Sv). H = D * w_R * w_T, gdzie D w Gy, w_R to współczynnik wagowy promieniowania.'
+ WHERE id = 'biofiz-w5-063';
+
+UPDATE public.questions
+   SET text = 'Rola wysokiego napięcia w lampie rentgenowskiej polega na',
+       options = '[{"id":"a","text":"przyśpieszaniu elektronów do dużych prędkości, poruszających się od anody do katody"},{"id":"b","text":"hamowaniu elektronów, w trakcie którego emitowane jest widmo ciągłe"},{"id":"c","text":"przyśpieszaniu elektronów do dużych prędkości, poruszających się od katody do anody"},{"id":"d","text":"hamowaniu elektronów, w trakcie którego emitowane jest widmo charakterystyczne"}]'::jsonb,
+       explanation = 'Wysokie napięcie przyspiesza elektrony od katody do anody. Elektrony poruszające się w kierunku katody do anody są hamowane na anodzie - emitują RTG.'
+ WHERE id = 'biofiz-w5-064';
+
+UPDATE public.questions
+   SET text = 'Opór naczyniowy można obliczyć z prawa Poiseuille''a jako iloraz różnicy ciśnień na końcach przewodu do',
+       options = '[{"id":"a","text":"długości przewodu"},{"id":"b","text":"promienia przewodu"},{"id":"c","text":"strumienia objętości"},{"id":"d","text":"lepkości"}]'::jsonb,
+       explanation = 'Opór naczyniowy R = delta_p / Q (różnica ciśnień / strumień objętościowy). Analogia do prawa Ohma: R = U/I.'
+ WHERE id = 'biofiz-w5-065';
+
+UPDATE public.questions
+   SET text = 'Wartość liczby Reynoldsa zależy',
+       options = '[{"id":"a","text":"wprost proporcjonalnie od wartości prędkości przepływu"},{"id":"b","text":"wprost proporcjonalnie od wartości kwadratu prędkości przepływu"},{"id":"c","text":"odwrotnie proporcjonalnie od wartości prędkości przepływu"},{"id":"d","text":"odwrotnie proporcjonalnie od wartości kwadratu prędkości przepływu"}]'::jsonb,
+       explanation = 'Liczba Reynoldsa Re = rho*v*d/eta. Wprost proporcjonalna do prędkości v. Re > 2300 = przepływ turbulentny.'
+ WHERE id = 'biofiz-w5-066';
+
+UPDATE public.questions
+   SET text = 'Wyznaczanie lepkości cieczy wiskozymetrem Ostwalda polega na',
+       options = '[{"id":"a","text":"liczeniu kropel cieczy badanej i cieczy wzorcowej wypływających z wiskozymetru"},{"id":"b","text":"pomiarze czasów napełniania zbiornika o jednakowej objętości V cieczą badaną i cieczą wzorcową"},{"id":"c","text":"pomiarze czasów przepływu przez kapilarę wiskozymetru jednakowej objętości V cieczy badanej i cieczy wzorcowej"},{"id":"d","text":"pomiarze czasu opadania kropli cieczy badanej w cylindrze z olejem"}]'::jsonb,
+       explanation = 'Wiskozymetr Ostwalda: porównanie czasów przepływu tej samej objętości cieczy badanej i wzorcowej przez kapilarę. eta/eta_0 = (t*rho)/(t_0*rho_0).'
+ WHERE id = 'biofiz-w5-067';
+
+UPDATE public.questions
+   SET text = 'Napięcie sprężyste jest',
+       options = '[{"id":"a","text":"iloczynem stycznych sił rozciągających i długości na które działają"},{"id":"b","text":"iloczynem stycznych sił rozciągających i przekroju przewodu"},{"id":"c","text":"ilorazem stycznych sił rozciągających do długości na które działają"},{"id":"d","text":"ilorazem stycznych sił rozciągających do pola powierzchni przekroju przewodu"}]'::jsonb,
+       explanation = 'Napięcie sprężyste T = F/S (siła styczna / pole powierzchni przekroju przewodu). Jednostka: N/(m^2) (Pa).'
+ WHERE id = 'biofiz-w5-068';
+
+UPDATE public.questions
+   SET text = 'Magnetyzacja próbki w zewnętrznym polu magnetycznym jest',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalna do indukcji pola magnetycznego, a proporcjonalna do momentu magnetycznego jądra oraz liczby jąder w próbce"},{"id":"b","text":"odwrotnie proporcjonalna do liczby jąder w próbce, a proporcjonalna do indukcji pola magnetycznego i do momentu magnetycznego jądra"},{"id":"c","text":"proporcjonalna do indukcji pola magnetycznego, kwadratu momentu magnetycznego jądra oraz liczby jąder w próbce"},{"id":"d","text":"proporcjonalna do indukcji pola magnetycznego, momentu magnetycznego jądra oraz liczby jąder w próbce"}]'::jsonb,
+       explanation = 'Magnetyzacja M proporcjonalna do: B (indukcja), mu^2 (kwadrat momentu magnetycznego), N (liczba jąder), odwrotnie do T (temperatura).'
+ WHERE id = 'biofiz-w5-070';
+
+UPDATE public.questions
+   SET text = 'Do pomiaru lepkości nie służy',
+       options = '[{"id":"a","text":"wiskozymetr Ubbelohde’a"},{"id":"b","text":"wiskozymetr rotacyjny"},{"id":"c","text":"wiskozymetr Ostwalda"},{"id":"d","text":"stalagmometr"}]'::jsonb,
+       explanation = 'Stalagmometr służy do pomiaru napięcia powierzchniowego (metoda kropli). Wiskozymetry (Ostwalda, Ubbelohde, rotacyjny) mierzą lepkość.'
+ WHERE id = 'biofiz-w5-071';
+
+UPDATE public.questions
+   SET text = 'Cechą światła laserowego nie jest',
+       options = '[{"id":"a","text":"zróżnicowanie energetyczne emitowanych fotonów"},{"id":"b","text":"monochromatyczność"},{"id":"c","text":"uporządkowanie fazowo przestrzenne"},{"id":"d","text":"duża powierzchniowa gęstość mocy"}]'::jsonb,
+       explanation = 'Laser: monochromatyczny (jedna długość fali), spójny (uporządkowanie fazowe), kierunkowy, duża gęstość mocy. NIE ma zróżnicowania energetycznego fotonów.'
+ WHERE id = 'biofiz-w5-072';
+
+UPDATE public.questions
+   SET text = 'Lepkość krwi',
+       options = '[{"id":"a","text":"zwiększa się gdy temperatura maleje"},{"id":"b","text":"zmniejsza się gdy temperatura maleje"},{"id":"c","text":"nie zależy od temperatury"},{"id":"d","text":"dla temperatury poniżej 37 stopni Celsjusza maleje, a powyżej 37 stopni rośnie z temperaturą"}]'::jsonb,
+       explanation = 'Lepkość krwi zwiększa się gdy temperatura maleje. Niższa temperatura = wolniejsze ruchy cząsteczek = większe tarcie wewnętrzne.'
+ WHERE id = 'biofiz-w5-073';
+
+UPDATE public.questions
+   SET text = 'Zwiększenie stopnia agregacji krwinek czerwonych, przy małych szybkościach ścinania',
+       options = '[{"id":"a","text":"powoduje obniżenie lepkości krwi"},{"id":"b","text":"powoduje wzrost lepkości krwi"},{"id":"c","text":"powoduje wzrost lub obniżenie lepkości krwi w zależności od promienia naczynia"},{"id":"d","text":"nie wpływa na lepkość krwi"}]'::jsonb,
+       explanation = 'Większa agregacja erytrocytów (przy małych szybkościach ścinania) = większa lepkość krwi. Erytrocyty tworzą rulony (rouleaux).'
+ WHERE id = 'biofiz-w5-074';
+
+UPDATE public.questions
+   SET text = 'Do bezpośredniej detekcji promieniowania jonizującego nie używamy',
+       options = '[{"id":"a","text":"półprzewodników"},{"id":"b","text":"kliszy fotograficznej"},{"id":"c","text":"scyntylatorów"},{"id":"d","text":"pryzmatów"}]'::jsonb,
+       explanation = 'Detektory promieniowania jonizującego: scyntylatory, półprzewodniki, klisza fotograficzna, liczniki gazowe. Pryzmaty to element optyczny - nie detekują.'
+ WHERE id = 'biofiz-w5-075';
+
+UPDATE public.questions
+   SET text = 'W przewodnikach szerokość strefy wzbronionej jest',
+       options = '[{"id":"a","text":"mniejsza niż 2 eV"},{"id":"b","text":"równa zero"},{"id":"c","text":"mniejsza niż 2 V"},{"id":"d","text":"większa niż 2 eV"}]'::jsonb,
+       explanation = 'W przewodnikach (metalach) strefa wzbroniona praktycznie nie istnieje (= 0). Pasmo przewodnictwa i walencyjne się nakładają.'
+ WHERE id = 'biofiz-w5-076';
+
+UPDATE public.questions
+   SET text = 'Jeżeli kąt padania światła w ośrodku optycznie gęstszym jest większy od kąta granicznego to na granicy ośrodków',
+       options = '[{"id":"a","text":"następuje całkowite wewnętrzne odbicie"},{"id":"b","text":"w ośrodku rzadszym obserwujemy załamanie"},{"id":"c","text":"kąt załamania to 45o"},{"id":"d","text":"promień przechodzi do ośrodka rzadszego bez zmiany kierunku"}]'::jsonb,
+       explanation = 'Całkowite wewnętrzne odbicie gdy kąt padania > kąt graniczny przy przejściu z ośrodka gęstszego do rzadszego. Światło nie przechodzi.'
+ WHERE id = 'biofiz-w5-077';
+
+UPDATE public.questions
+   SET text = 'Za pomocą pryzmatu Nikola można spolaryzować światło wykorzystując zjawisko',
+       options = '[{"id":"a","text":"dichroizmu"},{"id":"b","text":"odbicia od dielektryka"},{"id":"c","text":"rozproszenia"},{"id":"d","text":"dwójłomności"}]'::jsonb,
+       explanation = 'Pryzmat Nikola wykorzystuje dwójłomność kryształu kalcytu. Rozdziela promień na dwa: zwyczajny i nadzwyczajny, o prostopadłych polaryzacjach.'
+ WHERE id = 'biofiz-w5-078';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem Lamberta-Berra dla roztworów o małym stężeniu',
+       options = '[{"id":"a","text":"absorpcja nie zależy od stężenia"},{"id":"b","text":"absorpcja jest liniowo zależna od stężenia"},{"id":"c","text":"interesuje nas przepuszczalność względem substancji rozpuszczonej w wodzie"},{"id":"d","text":"przepuszczalność jest liniowo zależna od stężenia"}]'::jsonb,
+       explanation = 'Prawo Lamberta-Beera: A = epsilon*c*l. Absorpcja liniowo zależna od stężenia c (dla małych stężeń). epsilon to współczynnik absorpcji molowej.'
+ WHERE id = 'biofiz-w5-079';
+
+UPDATE public.questions
+   SET text = 'O wartości przenikalności dielektrycznej decyduje',
+       options = '[{"id":"a","text":"rodzaj i stężenie ładunków swobodnych"},{"id":"b","text":"rozkład przestrzenny oraz zdolność do przesuwania się ładunków"},{"id":"c","text":"egzaltacja refrakcji molekularnej"},{"id":"d","text":"stężenie ładunków swobodnych"}]'::jsonb,
+       explanation = 'Przenikalność dielektryczna zależy od rozkładu przestrzennego ładunków związanych i ich zdolności do przesuwania się w polu elektrycznym (polaryzacji).'
+ WHERE id = 'biofiz-w5-080';
+
+UPDATE public.questions
+   SET text = 'Współczynnik sedymentacji',
+       options = '[{"id":"a","text":"jest iloczynem strumienia dyfuzji i strumienia sedymentacji"},{"id":"b","text":"jest iloczynem prędkości sedymentacji i przyspieszenia odśrodkowego"},{"id":"c","text":"jest zawsze równy współczynnikowi dyfuzji"},{"id":"d","text":"jest ilorazem prędkości sedymentacji do przyspieszenia odśrodkowego"}]'::jsonb,
+       explanation = 'Współczynnik sedymentacji s = v/a, gdzie v to prędkość sedymentacji, a to przyspieszenie odśrodkowe. Jednostka: svedberg (S) = 10^-13 s.'
+ WHERE id = 'biofiz-w5-082';
+
+UPDATE public.questions
+   SET text = 'Zjawisko Comptona polega na sprężystym zderzeniu',
+       options = '[{"id":"a","text":"fotonu z pozytonem"},{"id":"b","text":"fotonu z jądrem atomowym"},{"id":"c","text":"fotonu z elektronem"},{"id":"d","text":"elektronu z pozytonem"}]'::jsonb,
+       explanation = 'Efekt Comptona: niesprężyste rozpraszanie fotonu na elektronie. Foton przekazuje część energii elektronowi, zmienia kierunek i długość fali.'
+ WHERE id = 'biofiz-w5-083';
+
+UPDATE public.questions
+   SET text = 'Związki optycznie czynne mogą występować w odmianach prawoskrętnej i lewoskrętnej. Właściwość ta nosi nazwę',
+       options = '[{"id":"a","text":"dichroizmu"},{"id":"b","text":"refrakcji molekularnej"},{"id":"c","text":"zjawiska Malusa"},{"id":"d","text":"izomerii optycznej"}]'::jsonb,
+       explanation = 'Izomeria optyczna (enancjomeria): związki chiralnie różniące się jak lustrzane odbicia. Skręcają płaszczyznę polaryzacji w przeciwnych kierunkach.'
+ WHERE id = 'biofiz-w5-084';
+
+UPDATE public.questions
+   SET text = 'Cechą psychologiczną dźwięku nie jest',
+       options = '[{"id":"a","text":"głośność"},{"id":"b","text":"struktura widmowa"},{"id":"c","text":"wysokość"},{"id":"d","text":"barwa"}]'::jsonb,
+       explanation = 'Struktura widmowa to cecha FIZYCZNA dźwięku. Cechy psychologiczne: wysokość, głośność, barwa (subiektywne odczucie).'
+ WHERE id = 'biofiz-w5-085';
+
+UPDATE public.questions
+   SET text = 'Aktywnością izotopu promieniotwórczego nazywamy liczbę rozpadów',
+       options = '[{"id":"a","text":"w jednostce masy"},{"id":"b","text":"w jednostce objętości"},{"id":"c","text":"rejestrowanych przez detektor"},{"id":"d","text":"w jednostce czasu"}]'::jsonb,
+       explanation = 'Aktywność A = dN/dt - liczba rozpadów w jednostce czasu. Jednostka: bekerel (Bq) = 1 rozpad/sekundę.'
+ WHERE id = 'biofiz-w5-086';
+
+UPDATE public.questions
+   SET text = 'Rolę rezerwuaru energii w układzie krążenia spełnia',
+       options = '[{"id":"a","text":"układ żylny"},{"id":"b","text":"układ tętniczy"},{"id":"c","text":"grawitacja"},{"id":"d","text":"żaden z wymienionych"}]'::jsonb,
+       explanation = 'Układ tętniczy pełni rolę rezerwuaru energii - sprężyste ściany aorty magazynują energię podczas skurczu i oddają ją podczas rozkurczu (efekt Windkessela).'
+ WHERE id = 'biofiz-w5-087';
+
+UPDATE public.questions
+   SET text = 'Energia poziomów elektronowych cząsteczki jest skwantowana (dyskretna) co oznacza to, że:',
+       options = '[{"id":"a","text":"przyjmuje wartości od 0 do nieskończoności"},{"id":"b","text":"przyjmuje ściśle określone wartości, zmieniające się skokowo"},{"id":"c","text":"przyjmuje dowolne wartości"},{"id":"d","text":"przyjmuje wartości od –1 do 1"}]'::jsonb,
+       explanation = 'Kwantyzacja energii: elektron może mieć tylko ściśle określone wartości energii (poziomy), zmieniające się skokowo. Przejścia = absorpcja/emisja fotonów.'
+ WHERE id = 'biofiz-w5-088';
+
+UPDATE public.questions
+   SET text = 'O wartości przewodności właściwej (konduktywności) decyduje',
+       options = '[{"id":"a","text":"rodzaj i stężenie ładunków swobodnych"},{"id":"b","text":"stężenie ładunków swobodnych"},{"id":"c","text":"rozkład przestrzenny ładunków"},{"id":"d","text":"rozkład przestrzenny oraz zdolność do przesuwania się ładunków"}]'::jsonb,
+       explanation = 'Przewodność właściwa sigma zależy od rodzaju i stężenia nośników ładunku (elektronów, jonów) oraz ich ruchliwości.'
+ WHERE id = 'biofiz-w5-089';
+
+UPDATE public.questions
+   SET text = 'Sygnał NMR (sygnał swobodnej precesji) przedstawia wykres przy czym na osi pionowej jest',
+       options = '[{"id":"a","text":"składowa poprzeczna magnetyzacji"},{"id":"b","text":"składowa podłużna magnetyzacji"},{"id":"c","text":"długość wektora magnetyzacji"},{"id":"d","text":"częstotliwość Larmora"}]'::jsonb,
+       explanation = 'Sygnał NMR (FID) to składowa poprzeczna magnetyzacji Mxy precesująca z częstotliwością Larmora. Zanika eksponencjalnie z czasem T2*.'
+ WHERE id = 'biofiz-w5-090';
+
+UPDATE public.questions
+   SET text = 'Dla roztworów o małym stężeniu współczynnik absorpcji a jest charakterystyczny dla: λ',
+       options = '[{"id":"a","text":"rodzaju roztworu i długości fali promieniowania"},{"id":"b","text":"mocy promieniowania po przejściu przez absorbent"},{"id":"c","text":"stężenia roztworu"},{"id":"d","text":"mocy promieniowania padającego"}]'::jsonb,
+       explanation = 'Współczynnik absorpcji molowej epsilon jest charakterystyczny dla danej substancji i długości fali. Nie zależy od stężenia (przy małych c).'
+ WHERE id = 'biofiz-w5-091';
+
+UPDATE public.questions
+   SET text = 'Wskaż siły działające na obiekty w roztworze poruszające się ruchem jednostajnym podczas sedymentacji w ultrawirówce:',
+       options = '[{"id":"a","text":"siła wyporu jest równoważona przez siły ośrodkową i oporu"},{"id":"b","text":"siła odśrodkowa jest równoważona przez siły wyporu i oporu"},{"id":"c","text":"siła odśrodkowa jest równoważona przez siłę oporu"},{"id":"d","text":"siła wyporu jest równoważona przez siły ośrodkową i oporu"}]'::jsonb,
+       explanation = 'Przy sedymentacji z v=const: siła odśrodkowa = siła wyporu + siła oporu. F_odsrodkowa = F_wyporu + F_Stokesa.'
+ WHERE id = 'biofiz-w5-092';
+
+UPDATE public.questions
+   SET text = 'W polarymetrze, zgodnie z prawem Malusa jeżeli kąt pomiędzy polaryzatorem i analizatorem wynosi 90°, to natężenie światła wychodzącego z analizatora jest:',
+       options = '[{"id":"a","text":"równe natężeniu światła wychodzącemu z polaryzatora"},{"id":"b","text":"większe od natężenia światła wchodzącego do polaryzatora"},{"id":"c","text":"równe zero"},{"id":"d","text":"większe od natężenia światła wychodzącego z polaryzatora"}]'::jsonb,
+       explanation = 'Prawo Malusa: I = I_0*cos^2(alpha). Dla alpha = 90° (polaryzator prostopadły do analizatora): I = 0 (światło nie przechodzi).'
+ WHERE id = 'biofiz-w5-093';
+
+UPDATE public.questions
+   SET text = 'W liczniku Geigera-Müllera wykorzystuje się:',
+       options = '[{"id":"a","text":"termoemisję elektronów"},{"id":"b","text":"zjawisko comptona"},{"id":"c","text":"jonizację pierwotną i wtórną gazu wypełniającego kondensator cylindryczny"},{"id":"d","text":"wyładowanie ciągłe między elektrodami kondensatora cylindrycznego"}]'::jsonb,
+       explanation = 'Licznik Geigera-Müllera: promieniowanie jonizuje gaz w rurze, elektrony przyspieszane w polu powodują lawinę jonizacji (jonizacja wtórna).'
+ WHERE id = 'biofiz-w5-094';
+
+UPDATE public.questions
+   SET text = 'Proces transportu ciepła na zasadzie unoszenia ciepła za pośrednictwem poruszającej się cieczy lub gazu nazywa się:',
+       options = '[{"id":"a","text":"konwekcją ciepła"},{"id":"b","text":"promieniowaniem"},{"id":"c","text":"konduktywnością ciepła"},{"id":"d","text":"przewodzeniem ciepła"}]'::jsonb,
+       explanation = 'Konwekcja to transport ciepła przez ruch masy płynu. Może być naturalna (różnica gęstości) lub wymuszona (wentylator).'
+ WHERE id = 'biofiz-w5-095';
+
+UPDATE public.questions
+   SET text = 'Rozpad promieniotwórczy gamma (przemiana gamma) polega na:',
+       options = '[{"id":"a","text":"przejściu jądra pierwiastka promieniotwórczego ze stanu wzbudzonego do stanu o niższej energii"},{"id":"b","text":"zjawisku zwanym efektem tunelowym"},{"id":"c","text":"protonu w neutron, elektron i kwant gamma"},{"id":"d","text":"neutronu w proton, pozyton i kwant gamma"}]'::jsonb,
+       explanation = 'Przemiana gamma: jądro przechodzi ze stanu wzbudzonego do niższego stanu energetycznego emitując foton gamma. A i Z nie zmieniają się.'
+ WHERE id = 'biofiz-w5-096';
+
+UPDATE public.questions
+   SET text = 'Strefowe wzmacnianie ech USG polega na tym, że:',
+       options = '[{"id":"a","text":"im głębiej położona struktura odbijająca tym mniejsze wzmocnienie powracającego impulsu"},{"id":"b","text":"im głębiej położona struktura odbijająca tym silniejsze wzmocnienie powracającego impulsu"},{"id":"c","text":"wzmocnienie zachodzi tylko dla stref najdalej położonych"},{"id":"d","text":"wzmocnieniu podlegają sygnały, których amplituda jest co najmniej dwukrotnie mniejsza od amplitudy wysyłanej fali USG"}]'::jsonb,
+       explanation = 'Strefowe wzmacnianie (TGC - Time Gain Compensation): echa z głębszych struktur są wzmacniane silniej, bo uległy większemu tłumieniu po drodze.'
+ WHERE id = 'biofiz-w5-097';
+
+UPDATE public.questions
+   SET text = 'Składnikami jądra komórkowego nie są',
+       options = '[{"id":"a","text":"protony"},{"id":"b","text":"neutrony"},{"id":"c","text":"nukleony"},{"id":"d","text":"pozytony"}]'::jsonb,
+       explanation = 'Jądro atomowe składa się z protonów i neutronów (nukleony). Pozytony (antyelektrony) nie są składnikami jądra - powstają w rozpadzie beta+.'
+ WHERE id = 'biofiz-w5-098';
+
+UPDATE public.questions
+   SET text = 'W danym ośrodku długość fali:',
+       options = '[{"id":"a","text":"jest odwrotnie proporcjonalne do jej prędkości"},{"id":"b","text":"nie zależy od częstotliwości fali ani od jej prędkości w danym ośrodku"},{"id":"c","text":"jest proporcjonalna do jej częstotliwości"},{"id":"d","text":"jest odwrotnie proporcjonalna do jej częstotliwości"}]'::jsonb,
+       explanation = 'Lambda = v/f. Długość fali odwrotnie proporcjonalna do częstotliwości. Im wyższa częstotliwość, tym krótsza fala.'
+ WHERE id = 'biofiz-w5-099';
+
+UPDATE public.questions
+   SET text = 'Który ze strumieni cieplnych zależy od różnicy temperatur skóry i otoczenia?',
+       options = '[{"id":"a","text":"strumień konwekcyjny"},{"id":"b","text":"żaden ze strumieni"},{"id":"c","text":"strumień promieniowania"},{"id":"d","text":"strumień parowania"}]'::jsonb,
+       explanation = 'Strumień konwekcyjny zależy od różnicy temperatur skóry i otoczenia: Q = h*A*(T_skory - T_otoczenia). h to współczynnik przejmowania ciepła.'
+ WHERE id = 'biofiz-w5-100';
+
+UPDATE public.questions
+   SET text = 'Jednostką aktywności izotopu promieniotwórczego jest:',
+       options = '[{"id":"a","text":"grej na sekundę (Gy/s)"},{"id":"b","text":"siwert (Sv)"},{"id":"c","text":"bekerel (Bq)"},{"id":"d","text":"bekerel na sekundę (Bq/s)"}]'::jsonb,
+       explanation = 'Aktywność mierzona w bekerelach (Bq) = 1 rozpad/sekundę. Dawniej używano curie (Ci). 1 Ci = 3.7*10^10 Bq.'
+ WHERE id = 'biofiz-w5-101';
+
+UPDATE public.questions
+   SET text = 'Napięcie w lampie rentgenowskiej przyspieszające elektrony jest rzędu:',
+       options = '[{"id":"a","text":"100 kV"},{"id":"b","text":"100 V"},{"id":"c","text":"1 kV"},{"id":"d","text":"1 V"}]'::jsonb,
+       explanation = 'Napięcie przyspieszające w lampie RTG: diagnostyka 30-150 kV, terapia do 300 kV. Typowo ok. 100 kV.'
+ WHERE id = 'biofiz-w5-102';
+
+UPDATE public.questions
+   SET text = 'Co obrazuje równanie Hilla dotyczące skurczu mięśnia?',
+       options = '[{"id":"a","text":"zależność wydłużenia mięśnia od jego obciążenia"},{"id":"b","text":"zależność prędkości skurczu od wydłużenia mięśnia"},{"id":"c","text":"zależność energii skurczu mięśnia od wydłużenia mięśnia"},{"id":"d","text":"zależność prędkości skurczu od obciążenia mięśnia"}]'::jsonb,
+       explanation = 'Równanie Hilla opisuje zależność prędkości skurczu od obciążenia mięśnia: (F+a)(v+b) = (F_0+a)*b. Im większe obciążenie, tym wolniejszy skurcz.'
+ WHERE id = 'biofiz-w5-103';
+
+UPDATE public.questions
+   SET text = 'Promieniowanie rentgenowskie:',
+       options = '[{"id":"a","text":"jest szkodliwe ze względu na jonizowanie materii i oddziałuje z elektronami powłok wewnętrznych"},{"id":"b","text":"jest promieniowaniem niejonizującym, oddziałującym z elektronami wszystkich powłok"},{"id":"c","text":"jest falą podłużną, powodującą jonizację materii"},{"id":"d","text":"jest promieniowaniem jonizującym, oddziałującym z elektronami powłok walencyjnych"}]'::jsonb,
+       explanation = 'RTG to promieniowanie jonizujące (fale EM o wysokiej energii). Szkodliwe bo jonizuje atomy, uszkadzając DNA. Oddziałuje z elektronami atomów.'
+ WHERE id = 'biofiz-w5-104';
+
+UPDATE public.questions
+   SET text = 'Końcowymi produktami reakcji radiolizy wody są',
+       options = '[{"id":"a","text":"jony wodorowe i wodorotlenowe"},{"id":"b","text":"wodór cząsteczkowy i nadtlenek wodoru"},{"id":"c","text":"wodór i tlen cząsteczkowy"},{"id":"d","text":"rodniki wodorowe i wodorotlenowe"}]'::jsonb,
+       explanation = 'Radioliza wody: końcowe produkty stabilne to H2 (wodór cząsteczkowy) i H2O2 (nadtlenek wodoru). Produkty pośrednie to rodniki OH* i H*.'
+ WHERE id = 'biofiz-w5-105';
+
+UPDATE public.questions
+   SET text = 'W teorii pasmowej pojęcie strefa wzbroniona oznacza:',
+       options = '[{"id":"a","text":"minimalną energię, jaką musi uzyskać neutron aby był nośnikiem swobodnym"},{"id":"b","text":"obszar w przestrzeni atomu, w którym nie występują swobodne elektrony"},{"id":"c","text":"minimalną energię, jaką musi uzyskać proton aby ten był nośnikiem swobodnym"},{"id":"d","text":"minimalną energię, jaką musi uzyskać elektron walencyjny aby był nośnikiem swobodnym"}]'::jsonb,
+       explanation = 'Strefa wzbroniona to minimalna energia potrzebna do przejścia elektronu z pasma walencyjnego do pasma przewodnictwa.'
+ WHERE id = 'biofiz-w5-106';
+
+UPDATE public.questions
+   SET text = 'Podaj właściwą kolejność zakresów promieniowania elektromagnetycznego, zaczynając od najwyższej energii:',
+       options = '[{"id":"a","text":"promieniowanie gamma; ultrafiolet; światło widzialne; podczerwień"},{"id":"b","text":"fale radiowe; promieniowanie rentgenowskie; mikrofale; światło widzialne"},{"id":"c","text":"promieniowanie rentgenowskie; podczerwień; mikrofale; światło widzialne"},{"id":"d","text":"światło widzialne; ultrafiolet; promieniowanie gamma; mikrofale"}]'::jsonb,
+       explanation = 'Od najkrótszej fali: gamma < RTG < UV < widzialne < IR < mikrofale < fale radiowe.'
+ WHERE id = 'biofiz-w5-107';
+
+UPDATE public.questions
+   SET text = 'Ruch krwi wywołany jest:',
+       options = '[{"id":"a","text":"ciśnieniem hydrostatycznym niezależnie od różnicy ciśnień układu tętniczego i żylnego"},{"id":"b","text":"stałym ciśnieniem układu tętniczego i żylnego"},{"id":"c","text":"ciśnieniem grawitacyjnym działającym na układ tętniczy i żylny"},{"id":"d","text":"różnicą ciśnień między układem tętniczym i żylnym"}]'::jsonb,
+       explanation = 'Krew płynie dzięki różnicy ciśnień między układem tętniczym (wysokie ciśnienie) a żylnym (niskie ciśnienie). Gradient ciśnienia napędza przepływ.'
+ WHERE id = 'biofiz-w5-108';
+
+UPDATE public.questions
+   SET text = 'Wzmocnienie dźwięku w uchu odbywa się poprzez:',
+       options = '[{"id":"a","text":"tylko przez mechanizm dźwigni układu kosteczek słuchowych"},{"id":"b","text":"budowę anatomiczną małżowiny usznej"},{"id":"c","text":"dźwignię układu kosteczek słuchowych i różnicę powierzchni okienka owalnego i błony bębenkowej"},{"id":"d","text":"tylko poprzez różnicę rozmiaru powierzchni okienka owalnego i błony bębenkowej"}]'::jsonb,
+       explanation = 'Wzmocnienie w uchu środkowym: dźwignia kosteczek (ok. 1.3x) + różnica powierzchni błon (ok. 17x). Łącznie ok. 22x.'
+ WHERE id = 'biofiz-w5-109';
+
+UPDATE public.questions
+   SET text = 'Prawo Bernouliego:',
+       options = '[{"id":"a","text":"określa zależność pomiędzy ciśnieniem statycznym i dynamicznym cieczy"},{"id":"b","text":"dotyczy wyznaczania niezależnych stężeń"},{"id":"c","text":"służy do obliczenia aktywności źródła promieniotwórczego"},{"id":"d","text":"dotyczy obliczenia natężenia prądu w układzie RC"}]'::jsonb,
+       explanation = 'Równanie Bernoulliego: p + (1/2)*rho*v^2 + rho*g*h = const. Określa zależność między ciśnieniem statycznym, dynamicznym i hydrostatycznym.'
+ WHERE id = 'biofiz-w5-110';
+
+UPDATE public.questions
+   SET text = 'Zdolność rozdzielcza w USG:',
+       options = '[{"id":"a","text":"jest proporcjonalna do długości fali"},{"id":"b","text":"jest proporcjonalna do częstotliwości fali"},{"id":"c","text":"jest proporcjonalna zarówno do długości jak i częstotliwości fali"},{"id":"d","text":"nie zależy od częstotliwości i długości fali"}]'::jsonb,
+       explanation = 'Zdolność rozdzielcza USG proporcjonalna do częstotliwości (odwrotnie proporcjonalna do długości fali). Wyższa f = lepsza rozdzielczość, ale mniejsza penetracja.'
+ WHERE id = 'biofiz-w5-111';
+
+UPDATE public.questions
+   SET text = 'Widmo absorpcyjne powstaje w wyniku:',
+       options = '[{"id":"a","text":"pochłaniania przez badaną substancję danych długości fali padającego promieniowania"},{"id":"b","text":"emisji przez badaną substancję danych długości fali promieniowania"},{"id":"c","text":"reakcji chemicznych zachodzących pomiędzy atomami"},{"id":"d","text":"rozpraszania przez badaną substancję danych długości fali padającego promieniowania"}]'::jsonb,
+       explanation = 'Widmo absorpcyjne: substancja pochłania określone długości fali z ciągłego widma. Ciemne linie na jasnym tle.'
+ WHERE id = 'biofiz-w5-112';
+
+UPDATE public.questions
+   SET text = 'Prawo Hooke''a:',
+       options = '[{"id":"a","text":"określa liniową zależność między naprężeniem a względnym odkształceniem ciała"},{"id":"b","text":"jest spełnione dla odkształceń sprężystych i plastycznych"},{"id":"c","text":"określa że naprężenie jest proporcjonalne do kwantu względnego odkształcenia"},{"id":"d","text":"jest spełnione tylko w zakresie odkształceń plastycznych"}]'::jsonb,
+       explanation = 'Prawo Hookea: sigma = E * epsilon. Liniowa zależność naprężenia od odkształcenia względnego. Spełnione tylko dla odkształceń sprężystych.'
+ WHERE id = 'biofiz-w5-113';
+
+UPDATE public.questions
+   SET text = 'Na podstawie wartości granicznej liczby lepkościowej nie można wyznaczyć:',
+       options = '[{"id":"a","text":"promienia cząsteczki substancji rozpuszczonej"},{"id":"b","text":"objętości cząsteczki substancji rozpuszczonej"},{"id":"c","text":"temperatury roztworu"},{"id":"d","text":"masy molowej substancji rozpuszczonej"}]'::jsonb,
+       explanation = 'Graniczna liczba lepkościowa pozwala wyznaczyć: masę molową (równanie Marka-Houwinka), promień i objętość cząsteczki. NIE temperaturę.'
+ WHERE id = 'biofiz-w5-114';
+
+UPDATE public.questions
+   SET text = 'Energię pobraną przez serce można w przybliżeniu wyliczyć',
+       options = '[{"id":"a","text":"z masy pobranej krwi"},{"id":"b","text":"z ilości pobranej krwi"},{"id":"c","text":"z 20 cm3 pobranej krwi"},{"id":"d","text":"z ilości pobranego tlenu"}]'::jsonb,
+       explanation = 'Energia pobrana przez serce obliczana z ilości pobranego tlenu (kalorymetria pośrednia). 1 L O2 ≈ 20 kJ energii.'
+ WHERE id = 'biofiz-w5-115';
+
+UPDATE public.questions
+   SET text = 'Przerwa wzbroniona dla półprzewodników jest',
+       options = '[{"id":"a","text":"większa niż 2 ev"},{"id":"b","text":"równa zero"},{"id":"c","text":"zależna od temperatury ciśnienia"},{"id":"d","text":"większa niż zero a mniejsza niż 2 eV"}]'::jsonb,
+       explanation = 'Półprzewodniki: przerwa wzbroniona 0 < E_g < 2 eV. Krzem: 1.1 eV, german: 0.7 eV. Izolatory: > 2-3 eV.'
+ WHERE id = 'biofiz-w5-116';
+
+UPDATE public.questions
+   SET text = 'Wskaż prawidłową kolejność wartości energii przejść w cząsteczce, zaczynając od najmniejszej',
+       options = '[{"id":"a","text":"rotacyjne; elektronowe; oscylacyjne"},{"id":"b","text":"rotacyjne; oscylacyjne; elektronowe"},{"id":"c","text":"elektronowe; oscylacyjne; rotacyjne"},{"id":"d","text":"oscylacyjne; elektronowe; rotacyjne"}]'::jsonb,
+       explanation = 'Energie przejść: rotacyjne (meV) < oscylacyjne (0.1 eV) < elektronowe (eV). Najmniejsze = rotacyjne.'
+ WHERE id = 'biofiz-w5-117';
+
+UPDATE public.questions
+   SET text = 'Na lepkość krwi nie ma wpływu',
+       options = '[{"id":"a","text":"hematokryt"},{"id":"b","text":"deformacja krwinek"},{"id":"c","text":"grupa krwi"},{"id":"d","text":"agregacja krwinek"}]'::jsonb,
+       explanation = 'Na lepkość krwi wpływa: hematokryt, agregacja i deformacja krwinek, temperatura. Grupa krwi NIE wpływa bezpośrednio na lepkość.'
+ WHERE id = 'biofiz-w5-118';
+
+UPDATE public.questions
+   SET text = 'Współczynnik Poissona jest',
+       options = '[{"id":"a","text":"ilorazem wydłużenia bezwzględnego do wydłużenia bezwzględnego poprzecznego"},{"id":"b","text":"iloczynem wydłużenia względnego podłużnego i wydłużenia względnego poprzecznego"},{"id":"c","text":"ilorazem wydłużenia względnego poprzecznego do wydłużenia względnego podłużnego"},{"id":"d","text":"iloczynem wydłużenia względnego poprzecznego I wydłużenia względnego podłużnego"}]'::jsonb,
+       explanation = 'Współczynnik Poissona nu = -epsilon_poprzeczne / epsilon_podłużne. Dla większości materiałów 0 < nu < 0.5.'
+ WHERE id = 'biofiz-w5-119';
+
+UPDATE public.questions
+   SET text = 'Równoważnikiem dawki pochłoniętej nazywamy',
+       options = '[{"id":"a","text":"iloczyn dawki pochłoniętej i współczynników zależnych m.in. od rodzaju i energii promieniowania"},{"id":"b","text":"wartość dawki pochłoniętej w jednostce objętości"},{"id":"c","text":"iloczyn przyrostu dawki pochłoniętej i czasu w którym ten przyrost nastąpił"},{"id":"d","text":"iloraz przyrostu dawki pochłoniętej do czasu w którym ten przyrost nastąpił"}]'::jsonb,
+       explanation = 'Równoważnik dawki H = D * w_R * w_T. Iloczyn dawki pochłoniętej i współczynników wagowych promieniowania i tkanki.'
+ WHERE id = 'biofiz-w5-120';
+
+UPDATE public.questions
+   SET text = 'W półprzewodnikach szerokość strefy wzbronionej jest',
+       options = '[{"id":"a","text":"większa niż 2V"},{"id":"b","text":"równa zero"},{"id":"c","text":"mniejsza niż 2 eV"},{"id":"d","text":"większa niż 2 eV"}]'::jsonb,
+       explanation = 'Półprzewodniki: przerwa wzbroniona mniejsza niż 2 eV (typowo 0.5-1.5 eV). Przewodniki: 0. Izolatory: > 2-3 eV.'
+ WHERE id = 'biofiz-w5-121';
+
+UPDATE public.questions
+   SET text = 'Zmiany wychylenia (
+x) ciała drgającego od czasu (
+t) dla ruchu drgającego tłumionego przedstawia równanie (A - amplituda drgań, λ - współczynnik tłumienia, ω - częstość drgań) o',
+       options = '[{"id":"a","text":"x = A * e(λt) * sin (ωt)"},{"id":"b","text":"x = A * e(-ωt) * sin (λt)"},{"id":"c","text":"x = A * e(-λt) * sin (ωt)"}]'::jsonb,
+       explanation = 'Drgania tłumione: x = A*exp(-lambda*t)*sin(omega*t). Amplituda maleje wykładniczo (exp(-lambda*t)), drgania sinusoidalne.'
+ WHERE id = 'biofiz-w5-122';
+
+UPDATE public.questions
+   SET text = 'Widmo promieniowania lampy rentgenowskiej składa się z widma:',
+       options = '[{"id":"a","text":"charakterystycznego powstającego na skutek hamowania elektronów na katodzie i widma ciągłego powstającego po wybiciu elektronów z wewnętrznych powłok atomów katody"},{"id":"b","text":"charakterystycznego powstającego na skutek hamowania elektronów na anodzie i widma ciągłego powstającego po wybiciu elektronów z wewnętrznych powłok atomów anody"},{"id":"c","text":"ciągłego powstającego na skutek hamowania elektronów na anodzie i widma charakterystycznego powstającego po wybiciu elektronów z wewnętrznych powłok atomów anody"},{"id":"d","text":"ciągłego powstającego na skutek hamowania elektronów na katodzie i widma charakterystycznego powstającego po wybiciu elektronów z wewnętrznych powłok atomów katody"}]'::jsonb,
+       explanation = 'Widmo RTG: ciągłe (hamowanie elektronów na anodzie) + charakterystyczne (przejścia elektronów w atomach anody). Oba powstają na anodzie.'
+ WHERE id = 'biofiz-w5-123';
+
+UPDATE public.questions
+   SET text = 'Prawo osłabienia jonizującego promieniowania elektromagnetycznego mówi, że natężenie promieniowania po przejściu przez absorbent',
+       options = '[{"id":"a","text":"jest proporcjonalne do kwadratu grubości absorbentu"},{"id":"b","text":"zależy od logarytmu grubości absorbentu"},{"id":"c","text":"zależy wykładniczo od grubości absorbentu"},{"id":"d","text":"jest proporcjonalne do grubości absorbentu"}]'::jsonb,
+       explanation = 'Prawo osłabienia: I = I_0 * exp(-mu*x). Natężenie maleje wykładniczo z grubością absorbentu x.'
+ WHERE id = 'biofiz-w5-124';
+
+UPDATE public.questions
+   SET text = 'Przepływ laminarny to',
+       options = '[{"id":"a","text":"przepływ cieczy o bardzo dużej lepkości"},{"id":"b","text":"przepływ w równoległych warstwach, bez zakłóceń pomiędzy warstwami"},{"id":"c","text":"gwałtowny przepływ, któremu towarzyszy powstawanie wirów"},{"id":"d","text":"rodzaj transportu błonowego"}]'::jsonb,
+       explanation = 'Przepływ laminarny: uporządkowany, warstwy płynu przesuwają się równolegle bez mieszania. Re < 2300.'
+ WHERE id = 'biofiz-w5-125';
+
+UPDATE public.questions
+   SET text = 'Wydłużenie względne ciała określamy jako',
+       options = '[{"id":"a","text":"iloraz odkształcenia bezwzględnego do końcowej długości ciała"},{"id":"b","text":"iloraz odkształcenia bezwzględnego do początkowej długości ciała"},{"id":"c","text":"iloczyn odkształcenia bezwzględnego i końcowej długości ciała"},{"id":"d","text":"iloczyn odkształcenia bezwzględnego I początkowej długości ciała"}]'::jsonb,
+       explanation = 'Wydłużenie względne epsilon = delta_L / L_0 (odkształcenie bezwzględne / początkowa długość). Bezwymiarowe.'
+ WHERE id = 'biofiz-w5-126';
+
+UPDATE public.questions
+   SET text = 'Rozpad promieniotwórczy alfa polega na wyrzuceniu z jądra atomowego',
+       options = '[{"id":"a","text":"cząsteczek złożonych z dwóch pozytonów i dwóch neutronów"},{"id":"b","text":"cząsteczek złożonych z dwóch protonów i dwóch neutronów"},{"id":"c","text":"dwóch pozytonów i dwóch elektronów"},{"id":"d","text":"cząstek złożonych z dwóch pozytonów I dwóch nukleonów"}]'::jsonb,
+       explanation = 'Rozpad alfa: emisja cząstki alfa = jądro helu-4 = 2 protony + 2 neutrony. A zmniejsza się o 4, Z o 2.'
+ WHERE id = 'biofiz-w5-127';
+
+UPDATE public.questions
+   SET text = 'Wektor namagnesowania definiujemy jako',
+       options = '[{"id":"a","text":"iloczyn momentów magnetycznych jąder w próbce"},{"id":"b","text":"iloczyn momentów magnetycznych jąder w próbce podzielony przez objętość próbki"},{"id":"c","text":"sumę momentów magnetycznych jąder w próbce podzieloną przez objętość próbki"},{"id":"d","text":"sumę momentów magnetycznych jąder w próbce"}]'::jsonb,
+       explanation = 'Wektor namagnesowania M = Σμᵢ/V (suma momentów podzielona przez objętość). To makroskopowa magnetyzacja próbki. Bez podziału przez V byłaby to po prostu suma momentów - ale chcemy znać "gęstość" magnetyzacji'
+ WHERE id = 'biofiz-w5-128';
+
+UPDATE public.questions
+   SET text = 'Hipoksja to zjawisko',
+       options = '[{"id":"a","text":"tworzenia się zatorów gazowych"},{"id":"b","text":"niedotlenienia"},{"id":"c","text":"podwyższenia ciśnienia"},{"id":"d","text":"wrzenia płynów tkankowych"}]'::jsonb,
+       explanation = 'Hipoksja = niedotlenienie tkanek. Może być spowodowana niskim ciśnieniem O2, niedokrwistością, zaburzeniami krążenia.'
+ WHERE id = 'biofiz-w5-129';
+
+UPDATE public.questions
+   SET text = 'Energia do skurczu mięśnia czerpana jest z',
+       options = '[{"id":"a","text":"ciepła dostarczonego z otoczenia komórki"},{"id":"b","text":"ciepła wydzielonego w procesach metabolicznych"},{"id":"c","text":"ATP"},{"id":"d","text":"potencjału błonowego komórki mięśniowej"}]'::jsonb,
+       explanation = 'Energia do skurczu pochodzi z hydrolizy ATP. ATP -> ADP + Pi + energia. ATP regenerowane w mitochondriach.'
+ WHERE id = 'biofiz-w5-130';
+
+UPDATE public.questions
+   SET text = 'Substancje takie jak karoteny, wielopierścieniowe porfiryny (wit. B , cytochrom C) posiadają właściwości',
+       options = '[{"id":"a","text":"izolatorów"},{"id":"b","text":"przewodników"},{"id":"c","text":"magnetyczne"},{"id":"d","text":"półprzewodników"}]'::jsonb,
+       explanation = 'Barwniki organiczne (karoteny, porfiryny) mają właściwości półprzewodnikowe - sprzężone wiązania pi tworzą pasma energetyczne.'
+ WHERE id = 'biofiz-w5-131';
+
+UPDATE public.questions
+   SET text = 'Prawo ciągłości strumienia dla rozgałęzionego obwodu (gdzie Q - natężenie przepływu, indeks n dotyczy rozgałęzień, S – pole przekroju naczynia, v - prędkość przepływu, Σ - oznacza sumowanie po n) wyraża się zależnością',
+       options = '[{"id":"a","text":"Q = ΣQ V n n"},{"id":"b","text":"SV = S V n n"},{"id":"c","text":"Q = ΣQ n"},{"id":"d","text":"Q = ΣQ S n n"}]'::jsonb,
+       explanation = 'Prawo ciągłości przepływu: Q = suma(Q_n). Strumień wchodzący = suma strumieni wychodzących (zachowanie masy).'
+ WHERE id = 'biofiz-w5-132';
+
+UPDATE public.questions
+   SET text = 'Kiedy światło jest spolaryzowane liniowo?',
+       options = '[{"id":"a","text":"gdy istnieje tylko jedna płaszczyzna drgań składowej elektrycznej fali elektromagnetycznej"},{"id":"b","text":"gdy kierunek rozchodzenia się fali jest zgodny ze składową elektryczną fali elektromagnetycznej"},{"id":"c","text":"gdy światło rozchodzi się po linii prostej"},{"id":"d","text":"gdy kierunek rozchodzenia się fali jest prostopadły do składowej elektrycznej fali elektromagnetycznej"}]'::jsonb,
+       explanation = 'Światło spolaryzowane liniowo: drgania pola E tylko w jednej płaszczyźnie (przechodzącej przez kierunek propagacji).'
+ WHERE id = 'biofiz-w5-133';
+
+UPDATE public.questions
+   SET text = 'Linię dopasowania do punktów pomiarowych (linię trendu) prowadzimy:',
+       options = '[{"id":"a","text":"poprzez prostokąty błędów, jak najbliżej punktów pomiarowych"},{"id":"b","text":"dokładnie przez każdy z punktów pomiarowych, linią łamaną"},{"id":"c","text":"tak, aby wychodziła z początku układu pomiarowego"},{"id":"d","text":"dokładnie przez każdy z punktów pomiarowych, linią ciągłą wygładzoną"}]'::jsonb,
+       explanation = 'Linia trendu: prowadzona przez prostokąty błędów, jak najbliżej punktów pomiarowych. Nie musi przechodzić przez wszystkie punkty.'
+ WHERE id = 'biofiz-w5-134';
+
+UPDATE public.questions
+   SET text = 'Polaryzacja elektronowa pod wpływem zewnętrznego pola elektrycznego polega na:',
+       options = '[{"id":"a","text":"przesunięciu jonów w komórce"},{"id":"b","text":"przesunięciu środka geometrycznego powłok elektronowych względem dodatniego ładunku jądra"},{"id":"c","text":"przesunięciu zdeformowanych atomów tworzących cząsteczkę"},{"id":"d","text":"wzbudzeniu elektrony, czemu towarzyszy emisja kwantu promieniowania"}]'::jsonb,
+       explanation = 'Polaryzacja elektronowa: przesunięcie środka chmury elektronowej względem jądra w polu elektrycznym. Powstaje indukowany dipol.'
+ WHERE id = 'biofiz-w5-135';
+
+UPDATE public.questions
+   SET text = 'Metoda liniowej regresji jest takim dopasowaniem linii do punktów, że suma',
+       options = '[{"id":"a","text":"odległości punktów od linii jest maksymalna"},{"id":"b","text":"kwadratów odległości punktów od linii jest minimalna"},{"id":"c","text":"odległości punktów od linii jest minimalna"},{"id":"d","text":"kwadratów odległości punktów od linii jest maksymalna"}]'::jsonb,
+       explanation = 'Metoda najmniejszych kwadratów: minimalizacja sumy kwadratów odchyłek punktów od linii. chi^2 = suma[(y_i - f(x_i))^2] -> min.'
+ WHERE id = 'biofiz-w5-136';
+
+UPDATE public.questions
+   SET text = 'Efektywny równoważnik dawki (dawka skuteczna) to',
+       options = '[{"id":"a","text":"całkowita wartość równoważnika dawki pochłoniętej w organizmie człowieka"},{"id":"b","text":"suma iloczynów średnich równoważników dawek w poszczególnych tkankach (narządach) i współczynników wagowych charakteryzujących radiowrażliwość tych tkanek (narządów)"},{"id":"c","text":"wartość równoważnika dawki pochłoniętej w jednostce czasu"},{"id":"d","text":"iloraz przyrostu równoważnika dawki pochłoniętej do czasu w którym ten przyrost nastąpił"}]'::jsonb,
+       explanation = 'Dawka skuteczna E = suma(w_T * H_T). Suma iloczynów równoważników dawek w tkankach i współczynników wagowych tkanek.'
+ WHERE id = 'biofiz-w5-137';
+
+UPDATE public.questions
+   SET text = 'Cechą charakterystyczną widma ciągłego promieniowania rentgenowskiego jest',
+       options = '[{"id":"a","text":"liniowa zależność energii promieniowania od długości fali"},{"id":"b","text":"brak zależności natężenia promieniowania od napięcia anodowego"},{"id":"c","text":"istnienie ostrej granicy od strony fal długich"},{"id":"d","text":"istnienie ostrej granicy od strony fal krótkich"}]'::jsonb,
+       explanation = 'Widmo ciągłe RTG: ostra granica od strony fal krótkich (lambda_min = hc/eU). Brak granicy od strony fal długich.'
+ WHERE id = 'biofiz-w5-138';
+
+UPDATE public.questions
+   SET text = 'Minimalna długość fali widma promieniowania rentgenowskiego jest',
+       options = '[{"id":"a","text":"odwrotnie proporcjonalna do kwadratu napięcia pomiędzy anodą i katodą"},{"id":"b","text":"odwrotnie proporcjonalna do napięcia pomiędzy anodą i katodą"},{"id":"c","text":"wprost proporcjonalna do napięcia pomiędzy anodą i katodą"},{"id":"d","text":"wprost proporcjonalna do kwadratu napięć pomiędzy anodą i katodą"}]'::jsonb,
+       explanation = 'Lambda_min = hc/(eU). Odwrotnie proporcjonalna do napięcia U. Wyższe napięcie = krótsza lambda_min.'
+ WHERE id = 'biofiz-w5-139';
+
+UPDATE public.questions
+   SET text = 'Pochodna z funkcji In(x) jest równa (x wielkość mierzona)',
+       options = '[{"id":"a","text":"(Inx)’=1/x"},{"id":"b","text":"(Inx)’=x2"},{"id":"c","text":"(Inx)’=x/2"},{"id":"d","text":"(Inx)’=x"}]'::jsonb,
+       explanation = 'Pochodna logarytmu naturalnego: (ln(x))'' = 1/x.'
+ WHERE id = 'biofiz-w5-140';
+
+UPDATE public.questions
+   SET text = 'Defektem masy jądra atomowego nazywamy różnicę pomiędzy',
+       options = '[{"id":"a","text":"masą danego jądra, a masą jego izobaru"},{"id":"b","text":"masą danego jądra, a masą jego izomeru"},{"id":"c","text":"masą nukleotydów tworzących jądro, a masą jądra"},{"id":"d","text":"masą protonów w jądrze, a masą neutronów"}]'::jsonb,
+       explanation = 'Defekt masy: różnica między sumą mas składników (nukleonów) a masą jądra. delta_m = Z*m_p + N*m_n - M_jadra. Energia wiązania = delta_m * c^2.'
+ WHERE id = 'biofiz-w5-141';
+
+UPDATE public.questions
+   SET text = 'Rozpraszanie Rayleigha cechuje się tym, że rozmiary struktur rozpraszających są',
+       options = '[{"id":"a","text":"dużo większe od długości fali ultradźwiękowej"},{"id":"b","text":"porównywalne z długością fali ultradźwiękowej"},{"id":"c","text":"dużo mniejsze od długości fali ultradźwiękowej"},{"id":"d","text":"nie mają związku z długością fali ultradźwiękowej"}]'::jsonb,
+       explanation = 'Rozpraszanie Rayleigha: struktury rozpraszające << długość fali. Intensywność proporcjonalna do 1/lambda^4.'
+ WHERE id = 'biofiz-w5-142';
+
+UPDATE public.questions
+   SET text = 'Błąd względny pomiaru jest to',
+       options = '[{"id":"a","text":"suma wszystkich pomiarów podzielona przez liczbę pomiarów"},{"id":"b","text":"różnica między wielkością zmierzoną a średnią arytmetyczną"},{"id":"c","text":"iloczyn błędu bezwzględnego pomiaru i średniej arytmetycznej"},{"id":"d","text":"iloraz błędu bezwzględnego pomiaru do średniej arytmetycznej"}]'::jsonb,
+       explanation = 'Błąd względny = błąd bezwzględny / wartość średnia. delta_x/x_sr. Bezwymiarowy, często wyrażany w %.'
+ WHERE id = 'biofiz-w5-143';
+
+UPDATE public.questions
+   SET text = 'Współczynnik dyfuzji, dla cząsteczek kulistych:',
+       options = '[{"id":"a","text":"jest wprost proporcjonalny do temperatury a odwrotnie proporcjonalny do promienia cząsteczki"},{"id":"b","text":"nie zależy od temperatury i lepkości"},{"id":"c","text":"nie zależy od promieniowania cząsteczki"},{"id":"d","text":"jest wprost proporcjonalny do lepkości rozpuszczalnika i temperatury"}]'::jsonb,
+       explanation = 'Równanie Stokesa-Einsteina: D = kT/(6*pi*eta*r). D proporcjonalne do T, odwrotnie proporcjonalne do eta i r.'
+ WHERE id = 'biofiz-w5-144';
+
+UPDATE public.questions
+   SET text = 'W skład miofilamentu cienkiego wchodzą białka:',
+       options = '[{"id":"a","text":"tropomiozyna, miozyna i troponina"},{"id":"b","text":"troponina, aktyna i tropomiozyna"},{"id":"c","text":"aktyna, miozyna i troponina"},{"id":"d","text":"miozyna, aktyna i tropomiozyna"}]'::jsonb,
+       explanation = 'Filament cienki: aktyna (główny składnik) + troponina + tropomiozyna (białka regulatorowe). Miozyna jest w filamencie grubym.'
+ WHERE id = 'biofiz-w5-145';
+
+UPDATE public.questions
+   SET text = 'Cechą charakterystyczną cieczy tiksotropowej jest',
+       options = '[{"id":"a","text":"liniowy charakter krzywej płynącej"},{"id":"b","text":"brak zależności lepkości od szybkości ścinania"},{"id":"c","text":"brak zależności naprężenia ścinającego od szybkości ścinania"},{"id":"d","text":"histereza krzywej płynięcia"}]'::jsonb,
+       explanation = 'Ciecz tiksotropowa: histereza krzywej płynięcia. Lepkość zależy od historii ścinania. Krew jest tiksotropowa.'
+ WHERE id = 'biofiz-w5-146';
+
+UPDATE public.questions
+   SET text = 'W definicji efektywnego równoważnika dawki: indeks T oznacza określoną tkankę lub narząd, a symbol W oznacza T',
+       options = '[{"id":"a","text":"moc promieniowania w tkance T"},{"id":"b","text":"energię promieniowania w tkance T"},{"id":"c","text":"współczynnik wagowy związany w prawdopodobieństwem pochłonięcia przez tkankę T dawki H T"},{"id":"d","text":"współczynnik wagowy związany z prawdopodobieństwem wystąpienia skutków napromieniowania tkanki T"}]'::jsonb,
+       explanation = 'Współczynnik w_T to wagowy współczynnik tkankowy - związany z prawdopodobieństwem wystąpienia skutków stochastycznych w danej tkance.'
+ WHERE id = 'biofiz-w5-147';
+
+UPDATE public.questions
+   SET text = 'W trakcie skurczu mięśnia jony',
+       options = '[{"id":"a","text":"magnezu oddziałują z układem troponin powodując zmianę ich konformacji i odsłonięcie miejsca aktywnego na miozynie do którego przyłącza się tropomiozyna"},{"id":"b","text":"wapnia oddziałują z układem aktyn powodując zmianę ich konformacji i odsłonięcie miejsca aktywnego na troponinie do którego przyłącza się głowa miozynowa"},{"id":"c","text":"wapnia oddziałuję z układem troponin powodując zmianę ich konformacji i odsłonięcia miejsca aktywnego na aktynie do którego przyłącza się głowa miozynowa"},{"id":"d","text":"magnezu oddziałują z układem troponin powodując zmianę ich konformacji i odsłonięcie miejsca aktywnego na aktynie do którego przyłącza się tropomiozyna"}]'::jsonb,
+       explanation = 'Jony Ca2+ wiążą się z troponiną C, powodując zmianę konformacji kompleksu troponinowego i odsłonięcie miejsc wiązania miozyny na aktynie.'
+ WHERE id = 'biofiz-w5-148';
+
+UPDATE public.questions
+   SET text = 'Rysunek przedstawia zależność szybkości liczenia (N) licznika Geigera-Mϋllera od przyłożonego napięcia (U).
+
+Zakres napięć U - U jest określany jako 1 2',
+       options = '[{"id":"a","text":"plateau licznika"},{"id":"b","text":"przejście fazowe"},{"id":"c","text":"strefa martwa"},{"id":"d","text":"brak wzmocnienia gazowego"}]'::jsonb,
+       explanation = 'Plateau licznika G-M: zakres napięć gdzie szybkość zliczeń jest prawie stała. Prawidłowa praca licznika.'
+ WHERE id = 'biofiz-w5-149';
+
+UPDATE public.questions
+   SET text = 'Reologiczny model mięśni gładkich to model:',
+       options = '[{"id":"a","text":"Hooke’a"},{"id":"b","text":"Hilla"},{"id":"c","text":"Maxwella"},{"id":"d","text":"Kelvina-Voigta"}]'::jsonb,
+       explanation = 'Mięśnie gładkie: model Maxwella (element sprężysty szeregowo z lepkim). Wykazują relaksację naprężenia.'
+ WHERE id = 'biofiz-w5-150';
+
+UPDATE public.questions
+   SET text = 'Błąd bezwzględny pomiaru jest to',
+       options = '[{"id":"a","text":"różnica między wielkością zmierzoną a średnią arytmetyczną"},{"id":"b","text":"wielkość bezwymiarowa"},{"id":"c","text":"iloraz błędu względnego do średniej arytmetycznej"},{"id":"d","text":"różnica między wielkością zmierzoną a odchyleniem standardowym"}]'::jsonb,
+       explanation = 'Błąd bezwzględny = różnica między wartością zmierzoną a wartością rzeczywistą (lub średnią). Ma jednostkę mierzonej wielkości.'
+ WHERE id = 'biofiz-w5-151';
+
+UPDATE public.questions
+   SET text = 'Wydajność serca określa się stosunkiem:',
+       options = '[{"id":"a","text":"objętości krwi wpływającej do objętości krwi wypływającej z lewej komory"},{"id":"b","text":"objętości komory od ilości skurczów na minutę"},{"id":"c","text":"całkowitej pobranej energii do pracy zużytej na przepompowanie krwii"},{"id":"d","text":"pracy zużytej na przepompowanie krwi do całkowitej pobranej energii"}]'::jsonb,
+       explanation = 'Wydajność (sprawność) serca = praca użyteczna / energia pobrana = W/E. Typowo 10-25%.'
+ WHERE id = 'biofiz-w5-152';
+
+UPDATE public.questions
+   SET text = 'Według prawa Webera-Fechnera najmniejszy zauważalny przyrost bodźca jest proporcjonalny do wartości bodźca już działającego. Prawo to jest spełnione',
+       options = '[{"id":"a","text":"dla wszystkich zmysłów"},{"id":"b","text":"tylko dla zmysłu czucia"},{"id":"c","text":"tylko dla zmysłu wzroku"},{"id":"d","text":"tylko dla zmysłu słuchu"}]'::jsonb,
+       explanation = 'Prawo Webera-Fechnera obowiązuje dla wszystkich zmysłów (słuch, wzrok, dotyk). delta_I/I = const.'
+ WHERE id = 'biofiz-w5-153';
+
+UPDATE public.questions
+   SET text = 'Potencjał elektryczny na błonie komórkowej wynosi około',
+       options = '[{"id":"a","text":"-60 mV"},{"id":"b","text":"6 V"},{"id":"c","text":"6 mV"},{"id":"d","text":"60 kV"}]'::jsonb,
+       explanation = 'Potencjał spoczynkowy błony komórkowej ok. -60 do -90 mV (wnętrze ujemne względem zewnątrz).'
+ WHERE id = 'biofiz-w5-154';
+
+UPDATE public.questions
+   SET text = 'Rolą pola radiowego (fal elektromagnetycznych z zakresu radiowego) w metodzie NMR jest',
+       options = '[{"id":"a","text":"wytrącenie magnetyzacji z kierunku prostopadłego do zewnętrznego pola magnetycznego przy czym kąt o jaki zostanie obrócona magnetyzacja nie zależy od częstotliwości Larmora, natomiast zależy od czasu działania pola radiowego"},{"id":"b","text":"zwiększenie amplitudy magnetyzacji przy czym wzrost amplitudy magnetyzacji nie zależy od częstotliwości Larmora"},{"id":"c","text":"zwiększenie amplitudy magnetyzacji przy czym wzrost amplitudy magnetyzacji zależy od częstotliwości Larmora"},{"id":"d","text":"wytrącenie magnetyzacji z kierunku równoległego do zewnętrznego pola magnetycznego przy czym kąt o jaki zostanie obrócona magnetyzacja zależy od częstotliwości Larmora i czasu działania pola radiowego"}]'::jsonb,
+       explanation = 'Pole RF w NMR wytrąca magnetyzację z kierunku równoległego do B0 (kierunek z) do płaszczyzny prostopadłej (xy).'
+ WHERE id = 'biofiz-w5-155';
+
+UPDATE public.questions
+   SET text = 'Reologiczny model najlepiej odpowiadający mięśniom poprzecznie prążkowanym składa się z elementu:',
+       options = '[{"id":"a","text":"lepkiego i sprężystego połączonych szeregowo"},{"id":"b","text":"lepkiego i sprężystego połączonych równolegle"},{"id":"c","text":"sprężystego połączonego szeregowo z równolegle połączonymi elementami: lepkim i sprężystym"},{"id":"d","text":"lepkiego połączonego szeregowo z równolegle połączonymi elementami: lepkim i sprężystym"}]'::jsonb,
+       explanation = 'Model mięśnia poprzecznie prążkowanego (Hilla): element sprężysty szeregowo z równolegle połączonymi elementami sprężystym i lepkim.'
+ WHERE id = 'biofiz-w5-156';
+
+UPDATE public.questions
+   SET text = 'Gdy układ składa się z różnych połączonych szeregowo przewodów o różnym przekroju, różnym odcinkom układu odpowiada:',
+       options = '[{"id":"a","text":"różny opór i stały spadek ciśnienia"},{"id":"b","text":"stały opór i różny spadek ciśnienia"},{"id":"c","text":"różny opór i różny spadek ciśnienia"},{"id":"d","text":"stały opór i stały spadek ciśnienia"}]'::jsonb,
+       explanation = 'Przewody szeregowo o różnym przekroju: różny opór (R ~ 1/r^4) i różny spadek ciśnienia (delta_p = Q*R). Strumień Q jest stały.'
+ WHERE id = 'biofiz-w5-157';
+
+UPDATE public.questions
+   SET text = 'Precesja momentu magnetycznego skierowanego pod kątem względem zewnętrznego pola magnetycznego (B) zachodzi z częstotliwością określoną równaniem',
+       options = '[{"id":"a","text":"Nazwana częstotliwością Boltzmana"},{"id":"b","text":"Nazwana częstotliwością Larmora"},{"id":"c","text":"Nazwana częstotliwością Bohra"},{"id":"d","text":"Nazwana częstotliwością Plancka"}]'::jsonb,
+       explanation = 'Częstotliwość precesji w polu magnetycznym to częstotliwość Larmora: omega_L = gamma * B.'
+ WHERE id = 'biofiz-w5-158';
+
+UPDATE public.questions
+   SET text = 'Reologiczny model Kelvina-Voigta składa się z elementu lepkiego (tłoczek z cieczą) i sprężystego (sprężyna) połączonych',
+       options = '[{"id":"a","text":"szeregowo"},{"id":"b","text":"równolegle"},{"id":"c","text":"równolegle z dołączonym szeregowo elementem sprężystym"},{"id":"d","text":"równolegle z dołączonym szeregowo elementem lepkim"}]'::jsonb,
+       explanation = 'Model Kelvina-Voigta: element sprężysty i lepki połączone równolegle. Opisuje ciała o przewadze cech sprężystych.'
+ WHERE id = 'biofiz-w5-159';
+
+UPDATE public.questions
+   SET text = 'W polarymetrze zgodnie z prawem Malusa jeżeli kąt pomiędzy polaryzatorem i analizatorem wynosi 0⁰, to natężenie światła wychodzącego z analizatora jest',
+       options = '[{"id":"a","text":"równe zero"},{"id":"b","text":"większe od natężenia światła wychodzącego z polaryzatora"},{"id":"c","text":"większe od natężenia światła wchodzącego do polaryzatora"},{"id":"d","text":"równe natężeniu światła wychodzącemu z polaryzatora"}]'::jsonb,
+       explanation = 'Prawo Malusa: I = I_0*cos^2(alpha). Dla alpha = 0° (równoległe płaszczyzny): I = I_0 (pełne natężenie przechodzi).'
+ WHERE id = 'biofiz-w5-160';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z równaniem Einsteina lepkość roztworu zawierającego cząsteczki kuliste zależy od',
+       options = '[{"id":"a","text":"temperatury"},{"id":"b","text":"promienia cząsteczek"},{"id":"c","text":"ilorazu promienia cząsteczek do średnicy naczynia"},{"id":"d","text":"ilorazu objętości cząsteczek do objętości roztworu"}]'::jsonb,
+       explanation = 'Równanie Einsteina: eta = eta_0*(1 + 2.5*phi), gdzie phi to ułamek objętościowy (V_cząstek/V_roztworu). Lepkość zależy od phi.'
+ WHERE id = 'biofiz-w5-161';
+
+UPDATE public.questions
+   SET text = 'Wydajność serca oblicza się jako iloraz',
+       options = '[{"id":"a","text":"pracy użytecznej do objętości pobranej krwi"},{"id":"b","text":"objętości pobranej krwi do ilości pobranego tlenu"},{"id":"c","text":"pracy użytecznej do ilości pobranego tlenu"},{"id":"d","text":"pracy użytecznej do całkowitej pobranej energii"}]'::jsonb,
+       explanation = 'Wydajność serca = praca użyteczna / całkowita pobrana energia = W/E. Energia obliczana z pobranego tlenu.'
+ WHERE id = 'biofiz-w5-162';
+
+UPDATE public.questions
+   SET text = 'Model Cassona wyraża',
+       options = '[{"id":"a","text":"zależność naprężenia ścinającego od logarytmu szybkości ścinania"},{"id":"b","text":"logarytmiczną zależność pierwiastka naprężenia ścinającego od pierwiastka szybkości ścinania"},{"id":"c","text":"zależność pierwiastka naprężenia ścinającego od logarytmu szybkości ścinania"},{"id":"d","text":"liniową zależność pierwiastka naprężenia ścinającego od pierwiastka szybkości ścinania"}]'::jsonb,
+       explanation = 'Model Cassona: sqrt(tau) = sqrt(tau_y) + sqrt(eta_C)*sqrt(dv/dy). Liniowa zależność pierwiastków naprężenia i szybkości ścinania.'
+ WHERE id = 'biofiz-w5-163';
+
+UPDATE public.questions
+   SET text = 'Natężenie fali jest to',
+       options = '[{"id":"a","text":"iloraz energii fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą przechodzi fala"},{"id":"b","text":"iloczyn mocy fali i powierzchni prostopadłej do kierunku rozchodzenia się fali przez którą przechodzi fala"},{"id":"c","text":"iloraz mocy fali do powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą przechodzi fala"},{"id":"d","text":"iloczyn energii fali i powierzchni równoległej do kierunku rozchodzenia się fali, przez którą przechodzi fala"}]'::jsonb,
+       explanation = 'Natężenie fali I = P/S = moc/powierzchnię prostopadłą do kierunku rozchodzenia. Jednostka: W/m^2.'
+ WHERE id = 'biofiz-w5-164';
+
+UPDATE public.questions
+   SET text = 'Skala Hounsfielda w tomografii komputerowej przyporządkowuje stopnie szarości współczynnikom',
+       options = '[{"id":"a","text":"załamania poszczególnych woksli"},{"id":"b","text":"odbicia poszczególnych woksli"},{"id":"c","text":"absorpcji poszczególnych woksli"},{"id":"d","text":"absorpcji pomniejszonych o współczynnik transmisji poszczególnych woksli"}]'::jsonb,
+       explanation = 'Skala Hounsfielda przyporządkowuje odcienie szarości współczynnikom absorpcji (pochłaniania) RTG. HU = 1000*(mu-mu_wody)/mu_wody.'
+ WHERE id = 'biofiz-w5-165';
+
+UPDATE public.questions
+   SET text = 'Gęstość prawdopodobieństwa znalezienia się elektronów między jądrami obu atomów jest największa w przypadku wiązania',
+       options = '[{"id":"a","text":"metalicznego"},{"id":"b","text":"jonowego"},{"id":"c","text":"kowalencyjnego wiążącego"},{"id":"d","text":"kowalencyjnego antywiążącego"}]'::jsonb,
+       explanation = 'Wiązanie kowalencyjne wiążące: duża gęstość elektronowa między jądrami. Wiążące = obniżenie energii, antywiążące = podwyższenie.'
+ WHERE id = 'biofiz-w5-166';
+
+UPDATE public.questions
+   SET text = 'Refraktometrem Abbego można mierzyć współczynnik załamania światła danej substancji jeśli',
+       options = '[{"id":"a","text":"pryzmat jest oświetlany światłem monochromatycznym"},{"id":"b","text":"jest on większy od współczynnika załamania szkła pryzmatu"},{"id":"c","text":"substancja jest optycznie czynna"},{"id":"d","text":"jest on mniejszy od współczynnika załamania szkła pryzmatu"}]'::jsonb,
+       explanation = 'Refraktometr Abbego mierzy n substancji gdy n < n_pryzmatu. Wykorzystuje całkowite wewnętrzne odbicie na granicy.'
+ WHERE id = 'biofiz-w5-167';
+
+UPDATE public.questions
+   SET text = 'W liczniku scyntylacyjnym nie wykorzystuje się',
+       options = '[{"id":"a","text":"termoemisji elektronów"},{"id":"b","text":"zjawiska scyntylacji"},{"id":"c","text":"zjawiska fotoelektrycznego"},{"id":"d","text":"przyspieszania elektronów w silnym polu elektrycznym"}]'::jsonb,
+       explanation = 'Licznik scyntylacyjny: scyntylacja + fotopowielacz (zjawisko fotoelektryczne + przyspieszanie elektronów). Termoemisja NIE jest wykorzystywana.'
+ WHERE id = 'biofiz-w5-168';
+
+UPDATE public.questions
+   SET text = 'Zdolność rozróżniania przez ucho zmiany częstotliwości dźwięku',
+       options = '[{"id":"a","text":"nie zależy od częstotliwości tego dźwięku"},{"id":"b","text":"zmienia się tylko dla niskich częstotliwości"},{"id":"c","text":"zmienia się tylko dla wysokich częstotliwości"},{"id":"d","text":"zależy od częstotliwości tego dźwięku"}]'::jsonb,
+       explanation = 'Zdolność różnicowania częstotliwości (delta_f) zależy od częstotliwości - lepsza dla niskich częstotliwości. Prawo Webera.'
+ WHERE id = 'biofiz-w5-169';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T2 dla cieczy',
+       options = '[{"id":"a","text":"znacznie większy niż czas T1"},{"id":"b","text":"jest porównywalny do czasu T1"},{"id":"c","text":"silnie zależy od zastosowanego pola magnetycznego"},{"id":"d","text":"znacznie mniejszy niż czas T1"}]'::jsonb,
+       explanation = 'W cieczach T1 ≈ T2 (porównywalne). Szybkie ruchy cząsteczek uśredniają oddziaływania spin-spin.'
+ WHERE id = 'biofiz-w5-170';
+
+UPDATE public.questions
+   SET text = 'Z prawa Poiseuille’a wynika, że przepływ objętości cieczy',
+       options = '[{"id":"a","text":"rośnie ze wzrostem średnicy przewodu"},{"id":"b","text":"rośnie ze wzrostem lepkości tej cieczy"},{"id":"c","text":"zależy od kwadratu różnicy ciśnień"},{"id":"d","text":"nie zależy od różnicy ciśnień"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: Q ~ r^4. Przepływ rośnie ze wzrostem średnicy (promienia). Maleje ze wzrostem lepkości (Q ~ 1/eta).'
+ WHERE id = 'biofiz-w5-171';
+
+UPDATE public.questions
+   SET text = 'Skurcz mięśnia jest indukowany przez depolaryzację błony komórkowej i oddziaływanie uwolnionych jonów',
+       options = '[{"id":"a","text":"wapniowych z układem troponin miofilamentu grubego"},{"id":"b","text":"wapniowych z układem troponin miofilamentu cienkiego"},{"id":"c","text":"magnezowego z układem troponin miofilamentu grubego"},{"id":"d","text":"magnezowego z układem aktyn miofilamentu grubego"}]'::jsonb,
+       explanation = 'Ca2+ wiąże się z troponiną (w filamencie cienkim), powodując odsłonięcie miejsc wiązania miozyny na aktynie.'
+ WHERE id = 'biofiz-w5-172';
+
+UPDATE public.questions
+   SET text = 'Objętość cieczy przepływającej laminarnie przez rurkę o sztywnych ścianach (przy jednakowej różnicy ciśnień na końcach naczynia)',
+       options = '[{"id":"a","text":"zależy od logarytmu naturalnego lepkości cieczy"},{"id":"b","text":"zależy odwrotnie proporcjonalnie od lepkości cieczy"},{"id":"c","text":"zależy wprost proporcjonalnie od lepkości cieczy"},{"id":"d","text":"nie zależy od lepkości cieczy"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: Q = (pi*r^4*delta_p)/(8*eta*L). Q odwrotnie proporcjonalne do lepkości eta.'
+ WHERE id = 'biofiz-w5-173';
+
+UPDATE public.questions
+   SET text = 'Oddziaływanie van der Waalsa ma charakter',
+       options = '[{"id":"a","text":"grawitacyjny"},{"id":"b","text":"jądrowy"},{"id":"c","text":"żadna odpowiedź nie jest prawidłowa"},{"id":"d","text":"elektryczny"}]'::jsonb,
+       explanation = 'Siły van der Waalsa mają charakter elektryczny - wynikają z oddziaływań dipol-dipol, dipol-indukcja, dyspersyjnych (fluktuacje ładunku).'
+ WHERE id = 'biofiz-w5-174';
+
+UPDATE public.questions
+   SET text = 'Wykres zależności współczynnika lepkości cieczy newtonowskiej od szybkości ścinania jest',
+       options = '[{"id":"a","text":"krzywą wykładniczą"},{"id":"b","text":"linią prostą poziomą"},{"id":"c","text":"linią prostą nie przechodzącą przez początek układy współrzędnych i nachyloną pod kątem zależnym od rodzaju cieczy"},{"id":"d","text":"linią prostą przechodzącą przez początek układu współrzędnych i nachyloną pod kątem zależnym od rodzaju cieczy"}]'::jsonb,
+       explanation = 'Ciecz newtonowska: lepkość nie zależy od szybkości ścinania. Wykres eta vs (dv/dy) to linia pozioma.'
+ WHERE id = 'biofiz-w5-175';
+
+UPDATE public.questions
+   SET text = 'Do liczenia błędów wielkości mierzonych pośrednio (wyliczonych ze wzoru, w którym występują wielkości mierzone) możemy wykorzystać metodę',
+       options = '[{"id":"a","text":"pochodnej logarytmicznej, niezależnie od typu zależności od wielkości mierzonych"},{"id":"b","text":"różniczki zupełnej funkcji wielkości mierzonych, tylko w przypadku, gdy w funkcji występują tylko iloczyny lub iloraz wielkości mierzonych"},{"id":"c","text":"pochodnej logarytmicznej, tylko w przypadku, gdy w funkcji występują tylko iloczyny lub ilorazy wielkości mierzonych"},{"id":"d","text":"pochodnej logarytmicznej, również w przypadku, gdy w funkcji występuje suma lub różnica wielkości mierzonych"}]'::jsonb,
+       explanation = 'Metoda pochodnej logarytmicznej jest matematycznym "skrótem" stosowanym w rachunku błędu, ale ma swoje ograniczenia wynikające z właściwości logarytmów. Idealne zastosowanie - iloczyny i ilorazy: logarytm zamienia mnożenie na dodawanie, a dzielenie na odejmowanie.'
+ WHERE id = 'biofiz-w5-176';
+
+UPDATE public.questions
+   SET text = 'Rozpraszanie Tyndalla cechuje się tym, że rozmiary struktur rozpraszających są',
+       options = '[{"id":"a","text":"porównywalne z długością fali ultradźwiękowej"},{"id":"b","text":"nie mają związku z długością fali ultradźwiękowej"},{"id":"c","text":"dużo większe od długości fali ultradźwiękowej"},{"id":"d","text":"dużo mniejsze długości fali ultradźwiękowej"}]'::jsonb,
+       explanation = 'Rozpraszanie Tyndalla: cząstki rozpraszające porównywalne z długością fali. Rozpraszanie Rayleigha: cząstki << lambda.'
+ WHERE id = 'biofiz-w5-177';
+
+UPDATE public.questions
+   SET text = 'Jednostką lepkości względnej cieczy jest',
+       options = '[{"id":"a","text":"Pa s"},{"id":"b","text":"Pa/s"},{"id":"c","text":"1 (wielkość bezwymiarowa)"},{"id":"d","text":"Ns/m"}]'::jsonb,
+       explanation = 'Lepkość względna = eta/eta_0 (stosunek dwóch lepkości). Bezwymiarowa.'
+ WHERE id = 'biofiz-w5-178';
+
+UPDATE public.questions
+   SET text = 'Jakie zjawiska wpływają na kontrast w klasycznej radiografii?',
+       options = '[{"id":"a","text":"rozproszenie Comptonowskie i absorpcja"},{"id":"b","text":"absorpcja"},{"id":"c","text":"zjawisko kreacji par pozyton-elektron"},{"id":"d","text":"tylko rozproszenie Comptonowskie"}]'::jsonb,
+       explanation = 'Kontrast RTG: absorpcja (efekt fotoelektryczny) + rozpraszanie Comptonowskie. Różnica w pochłanianiu różnych tkanek.'
+ WHERE id = 'biofiz-w5-179';
+
+UPDATE public.questions
+   SET text = 'Infradźwięki są to drgania',
+       options = '[{"id":"a","text":"słyszalne przez ucho ludzkie"},{"id":"b","text":"o bardzo wysokiej częstotliwości"},{"id":"c","text":"o częstotliwości większej niż 16 Hz"},{"id":"d","text":"o częstotliwości mniejszej niż 16 Hz"}]'::jsonb,
+       explanation = 'Infradźwięki: f < 16-20 Hz (poniżej progu słyszalności). Ultradźwięki: f > 20 kHz.'
+ WHERE id = 'biofiz-w5-180';
+
+UPDATE public.questions
+   SET text = 'Miejsca na kliszy o większym zaczernieniu odpowiadają tkankom o',
+       options = '[{"id":"a","text":"większym stopniu odbicia promieniowania rentgenowskiego"},{"id":"b","text":"mniejszym stopniu pochłaniania promieniowania rentgenowskiego"},{"id":"c","text":"mniejszym stopniu odbicia promieniowania rentgenowskiego"},{"id":"d","text":"większym stopniu pochłaniania promieniowania rentgenowskiego"}]'::jsonb,
+       explanation = 'Większe zaczernienie = więcej promieniowania dotarło do kliszy = mniejsze pochłanianie przez tkankę (np. płuca są ciemne, kości jasne).'
+ WHERE id = 'biofiz-w5-181';
+
+UPDATE public.questions
+   SET text = 'Substancja, której właściwości fizyczne zmieniają się w sposób ciągły podczas przemiany fazowej jest:',
+       options = '[{"id":"a","text":"gazem"},{"id":"b","text":"ciałem stałym"},{"id":"c","text":"kryształem"},{"id":"d","text":"ciałem amorficznym"}]'::jsonb,
+       explanation = 'Ciało amorficzne (szkło): właściwości zmieniają się ciągle przy przemianie fazowej. Brak wyraźnej temperatury topnienia.'
+ WHERE id = 'biofiz-w5-182';
+
+UPDATE public.questions
+   SET text = 'Prawo Poiseuille''a jest słuszne przy założeniu, że ciecz jest newtonowska, a charakter przepływu jest',
+       options = '[{"id":"a","text":"burzliwy i odbywa się w naczyniach elastycznych"},{"id":"b","text":"burzliwy i odbywa się w naczyniach sztywnych"},{"id":"c","text":"laminarny i odbywa się w naczyniach elastycznych"},{"id":"d","text":"laminarny i odbywa się w naczyniach sztywnych"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: ciecz newtonowska, przepływ laminarny, naczynia sztywne. W warunkach fizjologicznych te założenia są przybliżone.'
+ WHERE id = 'biofiz-w5-183';
+
+UPDATE public.questions
+   SET text = 'Wykres zależności natężenia (I) monochromatycznego promieniowania gamma po przejściu przez absorbent, od grubości absorbentu (x), przedstawia wykres',
+       options = '[{"id":"a","text":"IV"},{"id":"b","text":"II"},{"id":"c","text":"I"},{"id":"d","text":"III"}]'::jsonb,
+       explanation = 'Wykres IV poprawnie przedstawia zależność natężenia promieniowania gamma od grubości absorbentu. Zjawisko to opisuje prawo osłabienia (absorpcji) promieniowania, które ma charakter wykładniczy. Wzór opisujący tę zależność to: I(x) = I_0*(e^(-mi*x)).'
+ WHERE id = 'biofiz-w5-184';
+
+UPDATE public.questions
+   SET text = 'Przy przejściu fali przez granicę dwóch ośrodków',
+       options = '[{"id":"a","text":"zmieniają się zarówno długość jak i częstotliwość fali"},{"id":"b","text":"nie zmienia się jej długość natomiast zmienia się jej częstotliwość"},{"id":"c","text":"nie zmieniają się zarówno długość jak i częstotliwość fali"},{"id":"d","text":"nie zmienia się jej częstotliwość natomiast zmienia się jej długość"}]'::jsonb,
+       explanation = 'Przy przejściu przez granicę ośrodków: częstotliwość nie zmienia się (f=const), zmienia się długość fali (lambda = v/f, v zależy od ośrodka).'
+ WHERE id = 'biofiz-w5-185';
+
+UPDATE public.questions
+   SET text = 'Od czego zależy zmiana energii fotonu w rozproszeniu Comptonowskim?',
+       options = '[{"id":"a","text":"tylko od kąta rozproszenia"},{"id":"b","text":"tylko od energii padającego fotonu"},{"id":"c","text":"od kąta rozproszenia i energii padającego fotonu"},{"id":"d","text":"tylko od energii rozproszonego elektronu"}]'::jsonb,
+       explanation = 'Energia fotonu jest odwrotnie proporcjonalna do długości fali (E = hc/lambda). Ponieważ zależność ta nie jest liniowa, to samo przesunięcie (deltalambda) powoduje zupełnie inną stratę energii dla fotonu o małej energii niż dla fotonu o dużej energii. Wzór na energię fotonu rozproszonego wygląda tak: E = E/(1 + (E/(m_e·c²)) · (1-cosθ)).'
+ WHERE id = 'biofiz-w5-186';
+
+UPDATE public.questions
+   SET text = 'Zasada działania wiskozymetru Ostwalda opiera się na prawie',
+       options = '[{"id":"a","text":"Poiseuille''a"},{"id":"b","text":"Stokesa"},{"id":"c","text":"Bernoulliego"},{"id":"d","text":"Ciągłości strumienia"}]'::jsonb,
+       explanation = 'Wiskozymetr Ostwalda: pomiar czasu przepływu przez kapilarę. Opiera się na prawie Poiseuille.'
+ WHERE id = 'biofiz-w5-187';
+
+UPDATE public.questions
+   SET text = 'Widmo ciągłe lampy rentgenowskiej powstaje na skutek zamiany energii kinetycznej na energię promieniowania elektromagnetycznego podczas hamowania wysokoenergetycznych elektronów',
+       options = '[{"id":"a","text":"na anodzie"},{"id":"b","text":"na katodzie"},{"id":"c","text":"w silnym zewnętrznym polu elektrycznym"},{"id":"d","text":"w silnym zewnętrznym polu magnetycznym"}]'::jsonb,
+       explanation = 'Widmo ciągłe RTG: elektrony hamowane na anodzie. Energia kinetyczna zamieniana na promieniowanie hamowania (bremsstrahlung).'
+ WHERE id = 'biofiz-w5-188';
+
+UPDATE public.questions
+   SET text = 'Ebulizacją nazywamy zjawisko',
+       options = '[{"id":"a","text":"niedotlenienia"},{"id":"b","text":"wrzenia płynów tkankowych"},{"id":"c","text":"podwyższenia ciśnienia"},{"id":"d","text":"tworzenia się zatorów gazowych"}]'::jsonb,
+       explanation = 'Ebulizacja = wrzenie płynów tkankowych. Występuje przy gwałtownym spadku ciśnienia (choroba dekompresyjna).'
+ WHERE id = 'biofiz-w5-189';
+
+UPDATE public.questions
+   SET text = 'Mechanizm wzmacniania dźwięku w uchu środkowym jest związany z',
+       options = '[{"id":"a","text":"działaniem układu kosteczek słuchowych i powierzchniami błon okienka owalnego i bębenkowej"},{"id":"b","text":"działaniem ślimaka i powierzchni błon okienka owalnego i bębenkowej"},{"id":"c","text":"działaniem układu kosteczek słuchowych i ślimaka"},{"id":"d","text":"tylko działaniem układu kosteczek słuchowych"}]'::jsonb,
+       explanation = 'Wzmocnienie w uchu środkowym: dźwignia kosteczek słuchowych (1.3x) + różnica powierzchni błon bębenkowej i okienka owalnego (17x).'
+ WHERE id = 'biofiz-w5-190';
+
+UPDATE public.questions
+   SET text = 'Projekcja w CAT jest określona wzorem (I₀ - natężenie wiązki padającej, I - natężenie wiązki o przechodzącej, d- grubość woksla)',
+       options = '[{"id":"a","text":"P=(1/d)ln(I₀/I) i jest równa sumie współczynników pochłaniania woksli przez które o przechodzi promieniowanie"},{"id":"b","text":"P=d ln(I₀/I) i jest równa sumie współczynników pochłaniania woksli przez które przechodzi o promieniowanie"},{"id":"c","text":"P=d ln(I₀/I) i jest równa iloczynowi współczynników pochłaniania woksli przez które przechodzi o promieniowanie"},{"id":"d","text":"P=(1/d)ln(I₀/I) i jest równa iloczynowi współczynników pochłaniania woksli przez które o przechodzi promieniowanie"}]'::jsonb,
+       explanation = 'Projekcja w CT: P = (1/d)·ln(I₀/I) = suma współczynników pochłaniania woksli na drodze promienia. To równanie Lamberta-Beera scałkowane po drodze. Algorytm rekonstrukcji odtwarza μ dla każdego woksla.'
+ WHERE id = 'biofiz-w5-191';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T2 jest czasem potrzebnym na to aby',
+       options = '[{"id":"a","text":"podłużna składowa magnetyzacji wzrosła do 67% jej wartości końcowej (maksymalnej)"},{"id":"b","text":"podłużna składowa magnetyzacji zmalała do 37% jej wartości początkowej"},{"id":"c","text":"poprzeczna składowa magnetyzacji zmalała do 37% jej wartości początkowej"},{"id":"d","text":"poprzeczna składowa magnetyzacji wzrosła do 67% jej wartości końcowej (maksymalnej)"}]'::jsonb,
+       explanation = 'T2 to czas zaniku składowej poprzecznej magnetyzacji do 37% wartości początkowej (rozfazowanie spinów).'
+ WHERE id = 'biofiz-w5-192';
+
+UPDATE public.questions
+   SET text = 'Wykonując pomiary absorpcjometrem fotoelektrycznym przyjmujemy, że przepuszczalność rozpuszczalnika',
+       options = '[{"id":"a","text":"jest równa 100%"},{"id":"b","text":"jest charakterystyczna dla aparatury i podana w instrukcji przez producenta sprzętu"},{"id":"c","text":"jest równa zero"},{"id":"d","text":"nie ma znaczenia dla prowadzenia pomiarów"}]'::jsonb,
+       explanation = 'Roztwór odniesienia (blank) ma przepuszczalność 100%. Absorbancja próbki mierzona względem blanku.'
+ WHERE id = 'biofiz-w5-193';
+
+UPDATE public.questions
+   SET text = 'Podaj właściwą kolejność spektrum promieniowania elektromagnetycznego, zaczynając od najwyższej energii',
+       options = '[{"id":"a","text":"promieniowanie gamma – ultrafiolet - światło widzialne - podczerwień - fale radiowe"},{"id":"b","text":"promieniowanie rentgenowskie - podczerwień - mikrofale - światło widzialne"},{"id":"c","text":"światło widzialne – ultrafiolet – promieniowanie gamma"},{"id":"d","text":"fale radiowe – promieniowanie rentgenowskie – mikrofale - światło widzialne"}]'::jsonb,
+       explanation = 'Od najkrótszej fali: gamma < RTG < UV < widzialne < IR < mikrofale < radiowe.'
+ WHERE id = 'biofiz-w5-194';
+
+UPDATE public.questions
+   SET text = 'W wyniku depolaryzacji błony komórkowej mięśnia impulsem nerwowym dochodzi do',
+       options = '[{"id":"a","text":"uwolnienia jonów wapniowych i ich dyfuzji na zewnątrz komórki"},{"id":"b","text":"związania jonów wapniowych z białkami błony komórkowej mięśnia"},{"id":"c","text":"uwolnienia jonów wapniowych i ich dyfuzji w obręb miofilamentów"},{"id":"d","text":"uwolnienia jonów magnezowych i ich dyfuzji na zewnątrz komórki"}]'::jsonb,
+       explanation = 'Depolaryzacja uwalnia Ca2+ z siateczki sarkoplazmatycznej. Ca2+ dyfundują do miofilamentów i wiążą z troponiną.'
+ WHERE id = 'biofiz-w5-195';
+
+UPDATE public.questions
+   SET text = 'Kryształy turmalinu polaryzują światło w oparciu o zjawisko',
+       options = '[{"id":"a","text":"rozproszenia"},{"id":"b","text":"dichroizmu"},{"id":"c","text":"dwójłomności"},{"id":"d","text":"odbicia od dielektryka"}]'::jsonb,
+       explanation = 'Turmalin wykazuje dichroizm - różne pochłanianie dwóch składowych polaryzacji. Jedna przechodzi, druga jest pochłaniana.'
+ WHERE id = 'biofiz-w5-196';
+
+UPDATE public.questions
+   SET text = 'Prawo Bragga przedstawia równanie (gdzie: d - stała, α - kąt pod którym obserwujemy wzmocnienie, a - odległość między płaszczyznami)',
+       options = '[{"id":"a","text":"2d=a*sinα"},{"id":"b","text":"d=a*sin2α"},{"id":"c","text":"d=2*a*sin2α"},{"id":"d","text":"d=2*a*sinα"}]'::jsonb,
+       explanation = 'Prawo Bragga: n*lambda = 2d*sin(alpha). n to rząd dyfrakcji, d to odległość międzypłaszczyznowa, alpha to kąt.'
+ WHERE id = 'biofiz-w5-197';
+
+UPDATE public.questions
+   SET text = 'Okres połowicznego rozpadu jest to czas, w którym',
+       options = '[{"id":"a","text":"rozpadowi ulegnie połowa początkowej liczby jąder"},{"id":"b","text":"liczba jąder zmaleje e-krotnie"},{"id":"c","text":"dwukrotnie zmaleje masa danego izotopu"},{"id":"d","text":"dwukrotnie zmaleje stężenie danego izotopu w tkance"}]'::jsonb,
+       explanation = 'Okres półrozpadu T_1/2: czas po którym pozostaje połowa początkowej liczby jąder. N(T_1/2) = N_0/2.'
+ WHERE id = 'biofiz-w5-198';
+
+UPDATE public.questions
+   SET text = 'Egzaltacja refrakcji molekularnej to',
+       options = '[{"id":"a","text":"iloraz refrakcji obliczeniowej i doświadczalnej"},{"id":"b","text":"iloczyn refrakcji obliczeniowej i doświadczalnej"},{"id":"c","text":"suma refrakcji doświadczalnej i obliczeniowej"},{"id":"d","text":"różnica refrakcji obliczeniowej i doświadczalnej"}]'::jsonb,
+       explanation = 'Egzaltacja refrakcji molekularnej = R_doświadczalna - R_obliczeniowa. Różnica między wartościami zmierzoną a obliczoną z addytywności.'
+ WHERE id = 'biofiz-w5-199';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem Stokesa wartość siły lepkości działającej na kulkę poruszającą się w cieczy lepkiej zależy od lepkości cieczy oraz',
+       options = '[{"id":"a","text":"gęstości cieczy i prędkości kulki"},{"id":"b","text":"gęstości cieczy i promienia kulki"},{"id":"c","text":"promienia i prędkości kulki"},{"id":"d","text":"promienia i gęstości kulki"}]'::jsonb,
+       explanation = 'Siła Stokesa F = 6*pi*eta*r*v. Zależy od lepkości eta, promienia r i prędkości v. Nie zależy od gęstości kuli.'
+ WHERE id = 'biofiz-w5-200';
+
+UPDATE public.questions
+   SET text = 'Przedmiotem pomiaru w refraktometrii jest:',
+       options = '[{"id":"a","text":"prędkość światła w badanym ośrodku"},{"id":"b","text":"współczynnik załamania światła dla danej substancji"},{"id":"c","text":"kąt odbicia światła przez badaną substancję"},{"id":"d","text":"kąt załamania światła przez badaną substancję"}]'::jsonb,
+       explanation = 'Refraktometria to, z definicji, metoda analityczna służąca do pomiaru współczynnika załamania światła (nazywanego też indeksem refrakcji). Opcja D („kąt załamania”) jest nieprecyzyjna (chodzi o kąt graniczny, a nie dowolny kąt załamania) i w kontekście obsługi przyrządu jest to wielkość pośrednia, niewidoczna dla użytkownika na skali.'
+ WHERE id = 'biofiz-w5-201';
+
+UPDATE public.questions
+   SET text = 'Jednostką równoważnika dawki pochłoniętej w układzie SI jest',
+       options = '[{"id":"a","text":"1 Bq (bekerel) = 1 rozpad/s"},{"id":"b","text":"1 Sv (siwert) = 1J/kg"},{"id":"c","text":"1 C/kg = 1 kulomb/kilogram"},{"id":"d","text":"1 Gy (grej) = 1 J/kg"}]'::jsonb,
+       explanation = 'Równoważnik dawki (dawka równoważna) w siwertach (Sv). 1 Sv = 1 J/kg (wymiarowo jak Gy, ale z uwzględnieniem w_R).'
+ WHERE id = 'biofiz-w5-202';
+
+UPDATE public.questions
+   SET text = 'Dźwięk, któremu odpowiada drganie harmoniczne proste to inaczej:',
+       options = '[{"id":"a","text":"fon"},{"id":"b","text":"szum biały"},{"id":"c","text":"szum barwny"},{"id":"d","text":"ton"}]'::jsonb,
+       explanation = 'Ton = dźwięk odpowiadający drganiu harmonicznemu prostemu (sinusoida). Dźwięk złożony = suma tonów harmonicznych.'
+ WHERE id = 'biofiz-w5-203';
+
+UPDATE public.questions
+   SET text = 'Odwrotny efekt piezoelektryczny polega na',
+       options = '[{"id":"a","text":"pojawianiu się odkształcenia kryształu na skutek przyłożenia napięcia elektrycznego do ścianek w kierunku odkształcenia"},{"id":"b","text":"polega na powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, podczas ogrzewania lub ochładzania kryształu"},{"id":"c","text":"polega na powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, przy odkształceniu kryształu w kierunku do nich prostopadłym"},{"id":"d","text":"pojawieniu się odkształcenia kryształu na skutek przyłożenia napięcia elektrycznego do ścianek prostopadłych do odkształcenia"}]'::jsonb,
+       explanation = 'Odwrotny efekt piezoelektryczny (nazywany też elektrostrykcją, choć to pojęcie szersze) polega na zamianie energii elektrycznej na mechaniczną. Gdy do kryształu przyłożymy napięcie, wewnątrz powstaje pole elektryczne, które wymusza przesunięcie ładunków (jonów) w sieci krystalicznej, co skutkuje zmianą wymiarów kryształu (skurczeniem lub rozszerzeniem).'
+ WHERE id = 'biofiz-w5-204';
+
+UPDATE public.questions
+   SET text = 'Dawką pochłoniętą nazywamy',
+       options = '[{"id":"a","text":"iloraz energii przekazanej przez promieniowanie jonizujące elementowi masy substancji przez masę tego elementu"},{"id":"b","text":"energię przekazaną przez promieniowanie jonizujące elementowi substancji w jednostce czasu"},{"id":"c","text":"iloraz energii przekazanej przez promieniowanie jonizujące elementowi substancji przez objętość tego elementu"},{"id":"d","text":"iloraz ładunku wytworzonego przez promieniowanie jonizujące w elemencie masy substancji przez masę tego elementu"}]'::jsonb,
+       explanation = 'Dawka pochłonięta D = E/m (energia zaabsorbowana / masa). Jednostka: Gy = J/kg.'
+ WHERE id = 'biofiz-w5-205';
+
+UPDATE public.questions
+   SET text = 'Błąd gruby w pomiarach',
+       options = '[{"id":"a","text":"wynika najczęściej z niepoprawnego odczytu lub zapisu wielkości mierzonej"},{"id":"b","text":"pojawia się, gdy posługujemy się niewykalibrowanym przyrządem pomiarowym"},{"id":"c","text":"jest tego samego rzędu, co błędy przypadkowe"},{"id":"d","text":"wynika ze zbyt małej ilości pomiarów"}]'::jsonb,
+       explanation = 'Błąd gruby (pomyłka): niepoprawny odczyt, zapis, obliczenie. Łatwy do wykrycia, należy odrzucić taki pomiar.'
+ WHERE id = 'biofiz-w5-206';
+
+UPDATE public.questions
+   SET text = 'Jeśli siły działające na kulkę opadającą w cieczy lepkiej nie równoważą się i kulka porusza się ruchem jednostajnie przyspieszonym, to układ dąży do zrównoważenia tych sił poprzez:',
+       options = '[{"id":"a","text":"spadek siły tarcia wewnętrznego"},{"id":"b","text":"wzrost siły lepkości"},{"id":"c","text":"spadek siły wyporu"},{"id":"d","text":"wzrost siły wyporu"}]'::jsonb,
+       explanation = 'Kulka przyspieszając zwiększa prędkość, co zwiększa siłę lepkości (F = 6*pi*eta*r*v). W końcu siły się równoważą.'
+ WHERE id = 'biofiz-w5-207';
+
+UPDATE public.questions
+   SET text = 'Co nazywamy dyspersją przenikalności dielektrycznej tkanek',
+       options = '[{"id":"a","text":"zależność przenikalności od częstotliwości pola magnetycznego"},{"id":"b","text":"zależność przenikalności od natężenia pola magnetycznego"},{"id":"c","text":"zależność przenikalności od natężenia pola elektrycznego"},{"id":"d","text":"zależność przenikalności od częstotliwości pola elektrycznego"}]'::jsonb,
+       explanation = 'Dyspersja dielektryczna: zależność przenikalności od częstotliwości pola elektrycznego. W tkankach występują dyspersje alfa, beta, gamma.'
+ WHERE id = 'biofiz-w5-208';
+
+UPDATE public.questions
+   SET text = 'Aby otrzymać obraz z jednej płaszczyzny (xy) - prostopadłej do osi długiej pacjenta (z) wówczas należy ustalić gradienty pola magnetycznego w kierunku',
+       options = '[{"id":"a","text":"osi x, y i z"},{"id":"b","text":"osi x i y i zmieniać gradient w kierunku z"},{"id":"c","text":"osi z i zmieniać gradienty w kierunku x i y"},{"id":"d","text":"osi x i zmieniać gradienty w kierunku z i y"}]'::jsonb,
+       explanation = 'Gradient wzdłuż z wybiera warstwę (plasterek). Gradienty x i y kodują położenie w wybranej płaszczyźnie.'
+ WHERE id = 'biofiz-w5-209';
+
+UPDATE public.questions
+   SET text = 'Średnica miofilamentu cienkiego jest rzędu',
+       options = '[{"id":"a","text":"nanometra"},{"id":"b","text":"pikometra"},{"id":"c","text":"milimetra"},{"id":"d","text":"mikrometra"}]'::jsonb,
+       explanation = 'Filament cienki (aktyna): średnica ok. 6-8 nm (nanometry). Filament gruby (miozyna): ok. 15 nm.'
+ WHERE id = 'biofiz-w5-210';
+
+UPDATE public.questions
+   SET text = 'Beta dyspersja występuje w zakresie częstotliwości',
+       options = '[{"id":"a","text":"od około 10 Hz do 25 Hz"},{"id":"b","text":"od około 100 kHz do 30 MHz"},{"id":"c","text":"od około 1 GHz do 100 GHz"},{"id":"d","text":"od około 1 Hz do 10 kHz"}]'::jsonb,
+       explanation = 'Dyspersja beta: 100 kHz - 30 MHz. Związana z polaryzacją błon komórkowych (struktury makroskopowe).'
+ WHERE id = 'biofiz-w5-211';
+
+UPDATE public.questions
+   SET text = 'Wartość kąta skręcenia płaszczyzny polaryzacji przez ciało optycznie czynne nie zależy',
+       options = '[{"id":"a","text":"od stężenia substancji"},{"id":"b","text":"od rodzaju substancji dla danej długości fali"},{"id":"c","text":"od grubości warstwy i długości fali użytego światła"},{"id":"d","text":"od refrakcji molekularnej"}]'::jsonb,
+       explanation = 'Kąt skręcenia zależy od: stężenia, grubości warstwy, długości fali, rodzaju substancji. NIE zależy od refrakcji molekularnej.'
+ WHERE id = 'biofiz-w5-212';
+
+UPDATE public.questions
+   SET text = 'Do badania czułości ucha wykorzystujemy',
+       options = '[{"id":"a","text":"tomografię komputerową"},{"id":"b","text":"spirometrię"},{"id":"c","text":"audiometrię"},{"id":"d","text":"ultrasonografię"}]'::jsonb,
+       explanation = 'Audiometria - badanie czułości słuchu. Wyznaczanie progu słyszenia dla różnych częstotliwości.'
+ WHERE id = 'biofiz-w5-213';
+
+UPDATE public.questions
+   SET text = 'Dla próbki znajdującej się w obszarze bez zewnętrznego pola magnetycznego energie momentów magnetycznych spinów jądrowych są',
+       options = '[{"id":"a","text":"różne a ich wypadkowy wektor (magnetyzacja próbki) będzie różny od zera"},{"id":"b","text":"jednakowe a ich wypadkowy wektor (magnetyzacja próbki) będzie równy zero"},{"id":"c","text":"jednakowe a ich wypadkowy wektor (magnetyzacja próbki) będzie różny od zera"},{"id":"d","text":"różne a ich wypadkowy wektor (magnetyzacja próbki) będzie równy zero"}]'::jsonb,
+       explanation = 'ez pola B₀: wszystkie spiny mają TĄ SAMĄ energię (zdegenerowane) → wektor wypadkowy M = 0 (losowa orientacja). Jak magnesy chaotycznie porozkładane - nie ma wypadkowej. Dopiero B₀ rozszczepia poziomy i tworzy M ≠ 0.'
+ WHERE id = 'biofiz-w5-214';
+
+UPDATE public.questions
+   SET text = 'Jednostką efektywnego równoważnika dawki (dawki skutecznej) jest',
+       options = '[{"id":"a","text":"Grej (Gy)"},{"id":"b","text":"Siwert (Sv)"},{"id":"c","text":"Bekerel (Bq)"},{"id":"d","text":"C/kg"}]'::jsonb,
+       explanation = 'Dawka skuteczna (efektywna) w siwertach (Sv). E = suma(w_T * H_T).'
+ WHERE id = 'biofiz-w5-215';
+
+UPDATE public.questions
+   SET text = 'Obwód żarzenia katody ma na celu',
+       options = '[{"id":"a","text":"rozpędzenie elektronów do dużej prędkości"},{"id":"b","text":"rozgrzania katody tak, aby w jej pobliżu pojawiły się elektrony"},{"id":"c","text":"rozgrzania katody tak, aby łatwiej pochłaniała elektrony"},{"id":"d","text":"hamowanie elektronów docierających do katody"}]'::jsonb,
+       explanation = 'Żarzenie katody: rozgrzanie powoduje termoemisję elektronów. Elektrony są następnie przyspieszane ku anodzie.'
+ WHERE id = 'biofiz-w5-216';
+
+UPDATE public.questions
+   SET text = 'Efekt piezoelektryczny polega na',
+       options = '[{"id":"a","text":"odkształcaniu kryształu po przyłożeniu do niego pola elektrycznego"},{"id":"b","text":"powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, przy odkształceniu ścianek kryształu prostopadłych do ścian z ładunkami"},{"id":"c","text":"powstawaniu ładunków tego samego znaku na przeciwległych ściankach kryształu kwarcu, przy odkształceniu ścianek kryształu, na których pojawią się ładunki"},{"id":"d","text":"powstawaniu ładunków przeciwnego znaku na przeciwległych ściankach kryształu kwarcu, podczas ogrzewania kryształu"}]'::jsonb,
+       explanation = 'Efekt piezoelektryczny (prosty): odkształcenie kryształu powoduje powstanie ładunków przeciwnego znaku na przeciwległych ścianach.'
+ WHERE id = 'biofiz-w5-217';
+
+UPDATE public.questions
+   SET text = 'Fala akustyczna',
+       options = '[{"id":"a","text":"może rozchodzić się tylko w gazach i cieczach"},{"id":"b","text":"jest falą sprężystą i podłużną"},{"id":"c","text":"jest falą sprężystą i poprzeczną"},{"id":"d","text":"może rozchodzić się w próżni"}]'::jsonb,
+       explanation = 'Fala akustyczna to fala sprężysta i podłużna. Wymaga ośrodka materialnego (nie rozchodzi się w próżni). W ciałach stałych może być też poprzeczna.'
+ WHERE id = 'biofiz-w5-218';
+
+UPDATE public.questions
+   SET text = 'Skala Haunsfielda (SH) pozwala odwzorować współczynniki',
+       options = '[{"id":"a","text":"rozpraszania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada jaśniejszemu punktowi na obrazie tomograficznym"},{"id":"b","text":"pochłaniania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada jaśniejszemu punktowi na obrazie tomograficznym"},{"id":"c","text":"pochłaniania woksli prześwietlanych tkanek na skalę szarości, mniejsza wartość w SH odpowiada jaśniejszemu punktowi na obrazie tomograficznym"},{"id":"d","text":"rozpraszania woksli prześwietlanych tkanek na skalę szarości, większa wartość w SH odpowiada ciemniejszemu punktowi na obrazie tomograficznym"}]'::jsonb,
+       explanation = 'Skala Hounsfielda: współczynniki pochłaniania na skalę szarości. HU wody = 0, powietrza = -1000, kości = +1000.'
+ WHERE id = 'biofiz-w5-219';
+
+UPDATE public.questions
+   SET text = 'Kąt graniczny, to taki kąt dla którego kąt',
+       options = '[{"id":"a","text":"odbicia jest równy 0 stopni"},{"id":"b","text":"odbicia jest równy 90 stopni"},{"id":"c","text":"załamania jest równy 90 stopni"},{"id":"d","text":"załamania jest równy 0 stopni"}]'::jsonb,
+       explanation = 'Kąt graniczny: kąt padania przy którym kąt załamania = 90°. Powyżej kąta granicznego = całkowite wewnętrzne odbicie.'
+ WHERE id = 'biofiz-w5-220';
+
+UPDATE public.questions
+   SET text = 'Moduł Younga mięśnia',
+       options = '[{"id":"a","text":"jest stały, niezależny od odkształcenia i mniejszy niż dla stali"},{"id":"b","text":"maleje wraz ze zwiększaniem odkształcenia mięśnia"},{"id":"c","text":"jest stały, niezależny od odkształcenia i większy niż dla stali"},{"id":"d","text":"rośnie wraz ze zwiększeniem odkształcenia mięśnia"}]'::jsonb,
+       explanation = 'Modul Younga miesnia rosnie ze wzrostem odksztalcenia - miesien jest nieliniowo sprezysty. Im bardziej rozciagniety, tym sztywniejszy (wieksza wartosc E).'
+ WHERE id = 'biofiz-w5-221';
+
+UPDATE public.questions
+   SET text = 'Wskaż zjawiska odpowiedzialne za tłumienie ultradźwięków w tkankach',
+       options = '[{"id":"a","text":"odbicie i absorpcja"},{"id":"b","text":"odbicie i rozproszenie"},{"id":"c","text":"absorpcja i rozproszenie"},{"id":"d","text":"odbicie, absorpcja i rozproszenie"}]'::jsonb,
+       explanation = 'Tłumienie USG = ABSORPCJA (zamiana na ciepło) + ROZPROSZENIE (zmiana kierunku). Odbicie to coś innego (powrót do źródła, tworzy echo) - jest zjawiskiem granicznym – zachodzi na styku dwóch różnych ośrodków (np. mięsień/kość), a nie wewnątrz samej jednorodnej tkanki. Choć odbicie powoduje osłabienie sygnału docierającego głębiej (bo część energii wraca), w ścisłym sensie fizycznym nie jest składnikiem materiałowego współczynnika tłumienia danej tkanki, lecz osobny parametrem wynikającym z różnic impedancji akustycznej.'
+ WHERE id = 'biofiz-w5-222';
+
+UPDATE public.questions
+   SET text = 'Dawką ekspozycyjną nazywamy:',
+       options = '[{"id":"a","text":"iloraz energii przekazanej przez promieniowanie jonizujące elementowi masy substancji przez masę tego elementu"},{"id":"b","text":"sumę ładunków jonów jednego znaku wytworzonych przez promieniowanie jonizujące w elemencie masy powietrza w jednostce czasu"},{"id":"c","text":"energię przekazaną przez promieniowanie jonizujące elementowi masy substancji w jednostce czasu"},{"id":"d","text":"iloraz sumy ładunków jonów jednego znaku wytworzonych przez promieniowanie jonizujące w elemencie masy powietrza przez masę tego elementu"}]'::jsonb,
+       explanation = 'Dawka ekspozycyjna (kerama): iloraz sumy ladunkow jonow jednego znaku wytworzonych przez promieniowanie X lub gamma do masy powietrza. Jednostka: C/kg.'
+ WHERE id = 'biofiz-w5-223';
+
+UPDATE public.questions
+   SET text = 'Kruchy kryształ, na ogół przeźroczysty, źle przewodzący prąd w niskich temperaturach jest kryształem, w którym dominują wiązania',
+       options = '[{"id":"a","text":"jonowe"},{"id":"b","text":"kowalencyjne"},{"id":"c","text":"van der Waalsa"},{"id":"d","text":"metaliczne"}]'::jsonb,
+       explanation = 'Krysztaly jonowe: kruche, przezroczyste, izolatory w niskich temperaturach. Wiazanie jonowe: elektrostatyczne przyciaganie kationow i anionow (np. NaCl).'
+ WHERE id = 'biofiz-w5-224';
+
+UPDATE public.questions
+   SET text = 'Zakres słyszalnych częstotliwości rozciąga się:',
+       options = '[{"id":"a","text":"od 16 Hz do 20 kHz"},{"id":"b","text":"od 16 Hz do 20000 kHz"},{"id":"c","text":"od 16 kHz do 20 000 Hz"},{"id":"d","text":"od 16 kHz do 20 000 MHz"}]'::jsonb,
+       explanation = 'Zakres slyszalny: 16-20 Hz do 20 kHz (20 000 Hz). Ponizej 16 Hz - infradZwieki, powyzej 20 kHz - ultradZwieki. Zakres zmienia sie z wiekiem.'
+ WHERE id = 'biofiz-w5-225';
+
+UPDATE public.questions
+   SET text = 'Grubość połówkowego pochłaniania jest to grubość ciała po przejściu przez którą',
+       options = '[{"id":"a","text":"częstotliwość promieniowania rośnie dwukrotnie"},{"id":"b","text":"natężenie promieniowania maleje dwukrotnie"},{"id":"c","text":"natężenie promieniowania rośnie dwukrotnie"},{"id":"d","text":"częstotliwość promieniowania maleje dwukrotnie"}]'::jsonb,
+       explanation = 'Grubosc polowkowa (HVL): grubosc materialu, po przejsciu ktorej natezenie promieniowania maleje o polowe. Zalezy od energii promieniowania i materialu.'
+ WHERE id = 'biofiz-w5-226';
+
+UPDATE public.questions
+   SET text = 'Analiza spektralna polega na wyznaczaniu',
+       options = '[{"id":"a","text":"kąta skręcania płaszczyzny polaryzacji"},{"id":"b","text":"współczynnika załamania światła badanej substancji"},{"id":"c","text":"absorbcji w zależności od stężenia badanej substancji"},{"id":"d","text":"składników badanych substancji na podstawie identyfikacji długości fal świetlnych emitowanych lub absorbowanych przez tę substancję"}]'::jsonb,
+       explanation = 'Analiza spektralna: identyfikacja skladnikow substancji na podstawie ich charakterystycznych dlugosci fal (linii widmowych). Kazdy pierwiastek ma unikalne widmo.'
+ WHERE id = 'biofiz-w5-227';
+
+UPDATE public.questions
+   SET text = 'Zależność siły rozwijanej przez mięsień jako funkcji jego wydłużenia',
+       options = '[{"id":"a","text":"wykazuje histerezę tylko dla małych odkształceń mięśnia"},{"id":"b","text":"nie wykazuje histerezy"},{"id":"c","text":"jest nieliniowa i wykazuje histerezę"},{"id":"d","text":"jest liniowa i spełnia prawo Hooke''a"}]'::jsonb,
+       explanation = 'Zaleznosc sila-wydluzenie dla miesnia jest nieliniowa i wykazuje histereze - krzywa przy rozciaganiu rozni sie od krzywej przy kurczeniu (rozpraszanie energii).'
+ WHERE id = 'biofiz-w5-228';
+
+UPDATE public.questions
+   SET text = 'W celu wyznaczenia prędkości krwi w naczyniach metodą ultrasonografii dopplerowskiej wystarczy znać:',
+       options = '[{"id":"a","text":"częstotliwość padającej fali oraz prędkość tej fali w tkankach"},{"id":"b","text":"częstotliwości padającej i odbitej fali"},{"id":"c","text":"częstotliwości padającej i odbitej fali oraz prędkość tej fali w tkankach"},{"id":"d","text":"częstotliwość odbitej fali oraz prędkość tej fali w tkankach"}]'::jsonb,
+       explanation = 'Metoda Dopplera: potrzebna czestotliwosc fali padajacej i odbitej (do obliczenia przesuniecia Dopplerowskiego) oraz predkosc fali w tkankach (do przeliczenia na predkosc krwi).'
+ WHERE id = 'biofiz-w5-229';
+
+UPDATE public.questions
+   SET text = 'Fala elektromagnetyczna jest falą',
+       options = '[{"id":"a","text":"poprzeczną, nie może rozchodzić się w próżni"},{"id":"b","text":"poprzeczną, może rozchodzić się w próżni z maksymalną, obserwowalną prędkością"},{"id":"c","text":"podłużną, może rozchodzić się w ciałach przezroczystych"},{"id":"d","text":"podłużną, może rozchodzić się w próżni z maksymalną, obserwowalną prędkością"}]'::jsonb,
+       explanation = 'Fala EM jest fala poprzeczna (E i B prostopadle do kierunku propagacji). Moze rozchodzic sie w prozni z predkoscia c = 3*10^8 m/s.'
+ WHERE id = 'biofiz-w5-230';
+
+UPDATE public.questions
+   SET text = 'Ultradźwięki',
+       options = '[{"id":"a","text":"są słyszalne przez ucho ludzkie"},{"id":"b","text":"to fale akustyczne o częstotliwości większej niż 20 kHz"},{"id":"c","text":"są wykorzystywane w tomografii komputerowej"},{"id":"d","text":"to fale akustyczne o częstotliwości mniejszej niż 20 Hz"}]'::jsonb,
+       explanation = 'Ultradzwieki: fale akustyczne o czestotliwosci powyzej 20 kHz (ponad prog slyszalnosci). Uzywane w USG diagnostycznym i terapeutycznym.'
+ WHERE id = 'biofiz-w5-231';
+
+UPDATE public.questions
+   SET text = 'W półprzewodnikach domieszkowanych typu p',
+       options = '[{"id":"a","text":"domieszka przyjmuje elektron z pasma walencyjnego"},{"id":"b","text":"nośnikami większościowymi są atomy domieszki"},{"id":"c","text":"domieszka przyjmuje dziurę z pasma walencyjnego"},{"id":"d","text":"nośnikami większościowymi są elektrony"}]'::jsonb,
+       explanation = 'Polprzewodnik typu p: domieszka akceptorowa (np. bor w krzemie) przyjmuje elektron z pasma walencyjnego, tworzac dziure. Nosniki wiekszosciowe: dziury.'
+ WHERE id = 'biofiz-w5-232';
+
+UPDATE public.questions
+   SET text = 'Błąd systematyczny jest to błąd spowodowany',
+       options = '[{"id":"a","text":"wpływem parametrów otoczenia na pomiar"},{"id":"b","text":"złą skalą przyrządu pomiarowego"},{"id":"c","text":"niepoprawnym zapisem danych do tabeli pomiarowej"},{"id":"d","text":"zbyt mała ilością wykonanych pomiarów"}]'::jsonb,
+       explanation = 'Blad systematyczny: staly blad spowodowany np. zla kalibracja przyrzadu, zla skala. Powtarza sie w kazdym pomiarze w tym samym kierunku.'
+ WHERE id = 'biofiz-w5-233';
+
+UPDATE public.questions
+   SET text = 'Praca objętościowa serca w spoczynku wynosi około',
+       options = '[{"id":"a","text":"1,1 J/skurcz"},{"id":"b","text":"11 W/skurcz"},{"id":"c","text":"11 J/skurcz"},{"id":"d","text":"1,1 W/skurcz"}]'::jsonb,
+       explanation = 'Praca objetosciowa serca w spoczynku: ok. 1-1.2 J/skurcz (cisnienie * objetosc wyrzutowa). Moc serca: ok. 1.3 W w spoczynku.'
+ WHERE id = 'biofiz-w5-234';
+
+UPDATE public.questions
+   SET text = 'Jeżeli umieścimy próbkę w silnym zewnętrznym polu magnetycznym to energie momentów magnetycznych jąder',
+       options = '[{"id":"a","text":"będą uzależnione od ich kierunku względem pola magnetycznego i dla momentów skierowanych zgodnie z polem energia będzie większa niż w przypadku momentów skierowanych przeciwnie"},{"id":"b","text":"będą uzależnione od ich kierunku względem pola magnetycznego i dla momentów skierowanych zgodnie z polem energia będzie mniejsza niż w przypadku momentów skierowanych przeciwnie"},{"id":"c","text":"nie będą zależne od ich kierunku względem pola magnetycznego"},{"id":"d","text":"będą większe niż w przypadku gdy nie było pola magnetycznego"}]'::jsonb,
+       explanation = 'W polu B₀: E_↑↑ < E_↑↓ (zgodnie z polem to MNIEJSZA energia). Spin zgodny z B₀ ma energię E = -μ·B₀ (minus!), przeciwny E = +μ·B₀ (plus). To jak magnes w polu - zgodny to minimum energii potencjalnej.'
+ WHERE id = 'biofiz-w5-235';
+
+UPDATE public.questions
+   SET text = 'Zaznacz prawidłową odpowiedź odnośnie rodzajów energii wzbudzeń w cząsteczce:',
+       options = '[{"id":"a","text":"ΔE <<ΔE <<ΔE el osc rot"},{"id":"b","text":"widmo energii elektronów jest ciągłe"},{"id":"c","text":"energia wzbudzenia oscylacyjnego jest dużo większa od energii wzbudzenia elektronowego"},{"id":"d","text":"ΔE >>ΔE >>ΔE el osc rot"}]'::jsonb,
+       explanation = 'Energie przejsc: elektronowe >> oscylacyjne >> rotacyjne. Typowo: E_el ~ eV, E_osc ~ 0.1 eV, E_rot ~ 0.001 eV.'
+ WHERE id = 'biofiz-w5-236';
+
+UPDATE public.questions
+   SET text = 'Siła lepkości R działająca na kulkę o promieniu r opadającą z prędkością v w cieczy o lepkości η wyraża się wzorem',
+       options = '[{"id":"a","text":"R = 8 * π * r * η * v"},{"id":"b","text":"R = 6 * π * r4 * η * v"},{"id":"c","text":"R = 6 * π * r2 * η * v"},{"id":"d","text":"R = 6 * π * r * η * v"}]'::jsonb,
+       explanation = 'Sila Stokesa (opor lepki): F = 6*pi*eta*r*v. Proporcjonalna do lepkosci eta, promienia r i predkosci v. Dziala przeciwnie do ruchu.'
+ WHERE id = 'biofiz-w5-237';
+
+UPDATE public.questions
+   SET text = 'Aby otrzymać tomogramy z analizowanego obszaru należy zastosować silne pole magnetyczne B o z nałożony i gradientami pola magnetycznego wzdłuż',
+       options = '[{"id":"a","text":"podłużnej osi pacjenta"},{"id":"b","text":"trzech prostopadłych kierunków"},{"id":"c","text":"trzech równoległych kierunków"},{"id":"d","text":"dwóch prostopadłych kierunków"}]'::jsonb,
+       explanation = 'W MRI do lokalizacji sygnalu stosuje sie gradienty pola magnetycznego w trzech prostopadlych kierunkach (x, y, z). Pozwala to na rekonstrukcje 3D.'
+ WHERE id = 'biofiz-w5-238';
+
+UPDATE public.questions
+   SET text = 'Czas wygaszania fluorescencji w porównaniu do czasu wygaszania fosforescencji jest zazwyczaj',
+       options = '[{"id":"a","text":"krótszy"},{"id":"b","text":"dłuższy"},{"id":"c","text":"taki sam"},{"id":"d","text":"krótszy lub dłuższy w zależności od warunków pomiaru"}]'::jsonb,
+       explanation = 'Czas wygaszania fluorescencji (10^-9 - 10^-6 s) jest znacznie krotszy niz fosforescencji (10^-3 s do godzin). Fosforescencja wymaga zmiany spinu (przejscie zabronione).'
+ WHERE id = 'biofiz-w5-239';
+
+UPDATE public.questions
+   SET text = 'Lepkość cieczy',
+       options = '[{"id":"a","text":"zależy wykładniczo od odwrotności temperatury bezwzględnej"},{"id":"b","text":"zależy wykładniczo od temperatury bezwzględnej"},{"id":"c","text":"zależy odwrotnie proporcjonalnie od temperatury bezwzględnej"},{"id":"d","text":"zależy proporcjonalnie od temperatury bezwzględnej"}]'::jsonb,
+       explanation = 'Lepkosc cieczy: eta = A*exp(W/kT). Zalezy wykladniczo od odwrotnosci temperatury. Wzrost T -> spadek lepkosci (luzniejsze wiazania miedzy czasteczkami).'
+ WHERE id = 'biofiz-w5-240';
+
+UPDATE public.questions
+   SET text = 'Krzywa przedstawiona na załączonym wykresie opisuje zależność',
+       options = '[{"id":"a","text":"częstotliwości jako funkcji przenikalności dielektrycznej substancji"},{"id":"b","text":"przewodności elektrycznej substancji jako funkcji częstotliwości"},{"id":"c","text":"przenikalności dielektrycznej substancji jako funkcji częstotliwości"},{"id":"d","text":"częstotliwości jako funkcji przewodności elektrycznej substancji"}]'::jsonb,
+       explanation = 'Dyspersja dielektryczna: przenikalnosc dielektryczna maleje ze wzrostem czestotliwosci (dipole nie nadazaja za zmianami pola). Krzywa relaksacyjna.'
+ WHERE id = 'biofiz-w5-241';
+
+UPDATE public.questions
+   SET text = 'W polach elektromagnetycznych o niskich częstotliwościach oddziałujących na materiał biologiczny',
+       options = '[{"id":"a","text":"przenikalność dielektryczna ma wysoką wartość, pole elektryczne nie wnika do komórek"},{"id":"b","text":"przenikalność dielektryczna jest stała, pole elektryczne przenika przez komórki"},{"id":"c","text":"przenikalność dielektryczna ma niską wartość, pole elektryczne nie wnika do komórek"},{"id":"d","text":"przenikalność dielektryczna ma niską wartość, pole elektryczne przenika przez komórki"}]'::jsonb,
+       explanation = 'Przy niskich czestotliwosciach: przenikalnosc dielektryczna wysoka (dipole nadazaja za polem), pole elektryczne przenika przez tkanki, tlumieniu ulega pole magnetyczne.'
+ WHERE id = 'biofiz-w5-242';
+
+UPDATE public.questions
+   SET text = 'Stosunek zmiany objętości przepływającej cieczy od czasu przepływu przez naczynie nazywa się',
+       options = '[{"id":"a","text":"modułem sprężystości objętościowej"},{"id":"b","text":"modułem sprężystości właściwej"},{"id":"c","text":"strumieniem objętości"},{"id":"d","text":"objętością sprężystą"}]'::jsonb,
+       explanation = 'Strumien objetosci Q = dV/dt (objetosc przeplywajaca w jednostce czasu). Jednostka: m^3/s. Rownanie ciaglosci: Q = const w rurce.'
+ WHERE id = 'biofiz-w5-243';
+
+UPDATE public.questions
+   SET text = 'Częstotliwość Larmora w związku z NMR zależy od',
+       options = '[{"id":"a","text":"indukcji magnetycznej pola magnetycznego i współczynnika giromagnetycznego jądra"},{"id":"b","text":"indukcji magnetycznej pola magnetycznego i współczynnika giromagnetycznego elektronu"},{"id":"c","text":"natężenia pola elektrycznego i współczynnika giromagnetycznego jądra"},{"id":"d","text":"ułożenia cewki odbiorczej sygnału NMR"}]'::jsonb,
+       explanation = 'Czestotliwosc Larmora: omega_L = gamma*B, gdzie gamma to wspolczynnik giromagnetyczny jadra, B to indukcja pola magnetycznego. Zalezy od obu wielkosci.'
+ WHERE id = 'biofiz-w5-244';
+
+UPDATE public.questions
+   SET text = 'We wzorze Einsteina na lepkość roztworów zawierających cząsteczki kuliste symbol Φ oznacza η = η (1+2,5 Φ)',
+       options = '[{"id":"a","text":"strumień rozpuszczalnika"},{"id":"b","text":"strumień cząsteczek"},{"id":"c","text":"stosunek średnicy cząsteczek do średnicy naczynia"},{"id":"d","text":"stosunek objętości cząsteczek do objętości roztworu"}]'::jsonb,
+       explanation = 'We wzorze Einsteina phi to ulamek objetosciowy - stosunek objetosci czastek rozproszonych do objetosci roztworu. eta_wzgl = 1 + 2.5*phi.'
+ WHERE id = 'biofiz-w5-245';
+
+UPDATE public.questions
+   SET text = 'Wzór Svedberga pozwala',
+       options = '[{"id":"a","text":"wyznaczyć prędkość wirowania"},{"id":"b","text":"wyznaczyć równowagę sedymentacyjną"},{"id":"c","text":"obliczyć współczynnik dyfuzji w oparciu o współczynnik sedymentacji"},{"id":"d","text":"wyznaczyć masę molową z pomiarów współczynników sedymentacji i dyfuzji"}]'::jsonb,
+       explanation = 'Wzor Svedberga: M = s*R*T / [D*(1-v*rho)]. Pozwala wyznaczyc mase molowa z pomiarow wspolczynnika sedymentacji s i dyfuzji D.'
+ WHERE id = 'biofiz-w5-246';
+
+UPDATE public.questions
+   SET text = 'Poziom natężenia dźwięku wynosi 1 B (bel), jeżeli jego natężenie :',
+       options = '[{"id":"a","text":"I = 10 I"},{"id":"b","text":"I = 100 I"},{"id":"c","text":"I = 1000 I"},{"id":"d","text":"I = I"}]'::jsonb,
+       explanation = '1 bel = 10 decybeli. L = log(I/I_0), gdzie I_0 to natezenie progowe. L = 1 B oznacza I = 10*I_0 (10-krotne natezenie).'
+ WHERE id = 'biofiz-w5-247';
+
+UPDATE public.questions
+   SET text = 'Długość wiązania r jest odległością dla której ∩',
+       options = '[{"id":"a","text":"energia potencjalna wynosi zero"},{"id":"b","text":"energia potencjalna cząsteczki przyjmuje wartość maksymalną"},{"id":"c","text":"żadna odpowiedź nie jest prawidłowa"},{"id":"d","text":"energia potencjalna cząsteczki przyjmuje wartość minimalną"}]'::jsonb,
+       explanation = 'Dlugosc wiazania r_0 to odleglosc, dla ktorej energia potencjalna jest minimalna (minimum krzywej Morse''a lub Lennarda-Jonesa). Stan rownowagi czasteczki.'
+ WHERE id = 'biofiz-w5-248';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T1 jest czasem potrzebnym na to aby',
+       options = '[{"id":"a","text":"podłużna składowa magnetyzacji zmalała do 33-37% jej wartości początkowej"},{"id":"b","text":"podłużna składowa magnetyzacji wzrosła do 63-67% magnetyzacji w stanie ustalonym"},{"id":"c","text":"poprzeczna składowa magnetyzacji zmalała do 33-37% jej wartości początkowej"},{"id":"d","text":"poprzeczna składowa magnetyzacji wzrosła do 63-67% magnetyzacji w stanie ustalonym"}]'::jsonb,
+       explanation = 'T1 (spin-siec): czas relaksacji podluznej. Skladowa Mz narastа od 0 do 63-67% wartosci rownowazonej M_0 (lub maleje do 33-37% przy odwroceniu).'
+ WHERE id = 'biofiz-w5-249';
+
+UPDATE public.questions
+   SET text = 'Tworzenie par elektron-pozyton zachodzi gdy kwant elektromagnetycznego promieniowania jonizującego znajdzie się w pobliżu jądra atomowego, a jego energia',
+       options = '[{"id":"a","text":"jest większa od energii równoważnej masie spoczynkowej dwóch elektronów"},{"id":"b","text":"jest mniejsza od energii równoważnej masie spoczynkowej dwóch elektronów"},{"id":"c","text":"jest większa od podwójnej energii wzbudzenia elektronu"},{"id":"d","text":"jest większa od energii wzbudzenia elektronu"}]'::jsonb,
+       explanation = 'Kreacja pary e-/e+: energia fotonu > 2*m_e*c^2 = 1.022 MeV (podwojna masa spoczynkowa elektronu). Foton zamienia sie na pare elektron-pozyton.'
+ WHERE id = 'biofiz-w5-250';
+
+UPDATE public.questions
+   SET text = 'Z zależności siły międzyatomowej F od odległości r pomiędzy atomami (wykres) można stwierdzić, że w miarę zbliżania się do atomów do siebie siły',
+       options = '[{"id":"a","text":"odpychające maleją i przechodzą w siły przyciągające, które powoli rosną"},{"id":"b","text":"przyciągające maleją i przechodzą w siły odpychające które powoli rosną"},{"id":"c","text":"odpychające rosną, potem maleją i przechodzą w siły przyciągające"},{"id":"d","text":"przyciągające rosną, potem maleją i przechodzą w siły odpychające"}]'::jsonb,
+       explanation = 'Sily miedzyatomowe: przy malych odleglosciach dominuja sily odpychania (szybko malejace), przy wiekszych - sily przyciagania. Rownowaga przy r = r_0.'
+ WHERE id = 'biofiz-w5-251';
+
+UPDATE public.questions
+   SET text = 'Częstotliwość drgań',
+       options = '[{"id":"a","text":"jest to ilość drgań w jednostce czasu i może zmieniać się w trakcie drgań ruchu harmonicznego prostego"},{"id":"b","text":"jest to ilość drgań w jednostce czasu i jest odwrotnie proporcjonalna do okresu drgań"},{"id":"c","text":"nie zależy od okresu drgań"},{"id":"d","text":"jest to ilość drgań w jednostce czasu i jest proporcjonalna do okresu drgań"}]'::jsonb,
+       explanation = 'Czestotliwosc f = 1/T (odwrotnosc okresu). Ilosc drgan w jednostce czasu. W ruchu harmonicznym prostym jest stala. Jednostka: Hz.'
+ WHERE id = 'biofiz-w5-252';
+
+UPDATE public.questions
+   SET text = 'Jądro atomowe posiada niezerowy moment magnetyczny w przypadku, gdy',
+       options = '[{"id":"a","text":"spin jest różny od zera a moment pędu jest równy zero"},{"id":"b","text":"spin i moment pędu są różne od zera"},{"id":"c","text":"moment pędu jest różny od zera a spin jest równy zero"},{"id":"d","text":"spin i moment pędu są równe zero"}]'::jsonb,
+       explanation = 'Moment magnetyczny jadra wystepuje gdy spin jadrowy I != 0. Spin jest sumа spinow i momentow pedu nukleonow. Oba musza byc niezerowe.'
+ WHERE id = 'biofiz-w5-253';
+
+UPDATE public.questions
+   SET text = 'Wskaż prawidłowe stwierdzenie:',
+       options = '[{"id":"a","text":"w tętnicach występują zastawki"},{"id":"b","text":"w naczyniach włosowatych krew płynie wolno, aby efektywnie przekazać tkance tlen"},{"id":"c","text":"naczyniami żylnymi w dużym układzie krążenia krew płynie w kierunku od serca"},{"id":"d","text":"tętnice są cienkie, krew w nich płynie wolno aby umożliwić wymianę metabolitów"}]'::jsonb,
+       explanation = 'W kapilarach krew plynie wolno (ok. 0.5-1 mm/s) aby umozliwic wymiane gazowa i substancji odzywczych. Duza sumaryczna powierzchnia kapilar zmniejsza predkosc.'
+ WHERE id = 'biofiz-w5-254';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem Henry’ego',
+       options = '[{"id":"a","text":"rozpuszczalność gazu zależy od ciśnienia cząstkowego tego gazu nad powierzchnią cieczy"},{"id":"b","text":"skład procentowy gazów w atmosferze nie zmienia się z wysokością"},{"id":"c","text":"rozpuszczalność gazu zależy od lepkości cieczy"},{"id":"d","text":"rozpuszczalność gazu zależy od stężenia tego gazu nad powierzchnią cieczy"}]'::jsonb,
+       explanation = 'Prawo Henry''ego: rozpuszczalnosc gazu jest proporcjonalna do cisnienia czastkowego tego gazu nad roztworem. c = k_H * p.'
+ WHERE id = 'biofiz-w5-255';
+
+UPDATE public.questions
+   SET text = 'Sacharymetry to',
+       options = '[{"id":"a","text":"polarymetry służące do wyznaczania stężenia cukru (np. glukozy/sacharozy) w roztworze wodnym (np. moczu)"},{"id":"b","text":"polarymetry służące do obserwacji zjawiska inwersji sacharozy"},{"id":"c","text":"analizatory dla diabetyków"},{"id":"d","text":"polaroidy pozwalające określić rodzaj cukru obecnego w roztworze"}]'::jsonb,
+       explanation = 'Odp. A jest również poprawna, natomiast niestety na takie pytanie trzeba być przygotowanym na egzaminie i zaznaczyć odp. o obserwacji zjawiska inwersji sacharozy (B)! Sacharymetry to polarymetry specjalizowane do pomiaru stezenia cukrow na podstawie skretu plaszczyzny polaryzacji. Choć nazwa "sacharymetr" pochodzi od sacharozy (cukru trzcinowego), w kontekście medycznym i biofizycznym urządzenia te były tradycyjnie wykorzystywane do badania stężenia glukozy w moczu pacjentów (co pozwalało diagnozować i monitorować cukrzycę przed erą nowoczesnych paskowych glukometrów).'
+ WHERE id = 'biofiz-w5-256';
+
+UPDATE public.questions
+   SET text = 'Rozpad promieniotwórczy beta minus polega na przemianie',
+       options = '[{"id":"a","text":"protonu w neutron, elektron i antyneutrino elektronowe"},{"id":"b","text":"neutronu w proton, pozyton i neutrino elektronowe"},{"id":"c","text":"neutronu w proton, pozyton i antyneutrino elektronowe"},{"id":"d","text":"neutronu w proton, elektron i antyneutrino elektronowe"}]'::jsonb,
+       explanation = 'Rozpad beta minus: neutron -> proton + elektron + antyneutrino elektronowe. Liczba atomowa Z rosnie o 1, liczba masowa A bez zmian.'
+ WHERE id = 'biofiz-w5-257';
+
+UPDATE public.questions
+   SET text = 'Czas relaksacji T1 w ciałach stałych jest',
+       options = '[{"id":"a","text":"porównywalny z T2"},{"id":"b","text":"znacznie mniejszy niż czas T2"},{"id":"c","text":"niezależny od stosowanego pola magnetycznego"},{"id":"d","text":"znacznie większy niż czas T2"}]'::jsonb,
+       explanation = 'W cialach stalych T2 << T1. T2 (spin-spin) jest krotki z powodu silnych oddzialywan dipolowych miedzy spinami w sztywnej strukturze. T1 moze byc dlugi.'
+ WHERE id = 'biofiz-w5-258';
+
+UPDATE public.questions
+   SET text = 'Komórki mięśniowe',
+       options = '[{"id":"a","text":"zawierają tylko jedno jądro i składają się z podjednostek – sarkomerów"},{"id":"b","text":"mogą zawierać wiele jąder i składają z podjednostek – sarkomerów"},{"id":"c","text":"nie posiadają jądra komórkowego"},{"id":"d","text":"kurczą się na skutek skracania się miofilamentów"}]'::jsonb,
+       explanation = 'Komorki miesniowe poprzecznie prazkowane moga zawierac wiele jader (syncytium). Skladaja sie z sarkomerow - jednostek kurczliwych zawierajacych miofilamenty.'
+ WHERE id = 'biofiz-w5-259';
+
+UPDATE public.questions
+   SET text = 'Na podstawie pomiaru współczynnika rozpraszania światła przez koloid można wyliczyć',
+       options = '[{"id":"a","text":"współczynnik dyfuzji"},{"id":"b","text":"prędkość światła roztworze"},{"id":"c","text":"masę cząsteczkową"},{"id":"d","text":"współczynnik sedymentacji"}]'::jsonb,
+       explanation = 'Pomiar rozpraszania swiatla (np. metoda nefelometryczna) pozwala wyznaczyc mase czasteczkowa polimerow i koloidow na podstawie rownania Rayleigha.'
+ WHERE id = 'biofiz-w5-260';
+
+UPDATE public.questions
+   SET text = 'Prawo rozpadu promieniotwórczego mówi, że liczba jąder rozpadających się w jednostce czasu jest proporcjonalna do',
+       options = '[{"id":"a","text":"liczby jąder, które wcześniej uległy rozpadowi"},{"id":"b","text":"masy atomowej danego izotopu"},{"id":"c","text":"do gęstości danego izotopu"},{"id":"d","text":"liczby jąder, które jeszcze nie uległy rozpadowi"}]'::jsonb,
+       explanation = 'Prawo rozpadu: dN/dt = -lambda*N. Liczba rozpadow jest proporcjonalna do liczby jader N, ktore jeszcze nie ulegly rozpadowi. Lambda to stala rozpadu.'
+ WHERE id = 'biofiz-w5-261';
+
+UPDATE public.questions
+   SET text = 'kPa (kilopaskal) oznacza',
+       options = '[{"id":"a","text":"100 Pa"},{"id":"b","text":"1 000 000 Pa"},{"id":"c","text":"10 Pa"},{"id":"d","text":"1 000 Pa"}]'::jsonb,
+       explanation = 'kPa = kilopaskal = 10^3 Pa = 1000 Pa. Przedrostek kilo oznacza 1000. Cisnienie atmosferyczne to ok. 101 kPa.'
+ WHERE id = 'biofiz-w5-262';
+
+UPDATE public.questions
+   SET text = 'W wiązaniu van der Waalsa zasięg sił odpychania jest',
+       options = '[{"id":"a","text":"jest to wiązanie w którym występują tylko siły przyciągające"},{"id":"b","text":"znacznie dłuższy aniżeli sił przyciągania"},{"id":"c","text":"jest to wiązanie, w którym występują tylko siły odpychające"},{"id":"d","text":"znacznie krótszy aniżeli sił przyciągania"}]'::jsonb,
+       explanation = 'W wiazaniu van der Waalsa sily odpychania maja znacznie krotszy zasieg niz sily przyciagania. Odpychanie dominuje przy malych odleglosciach (nakladanie powlok elektronowych).'
+ WHERE id = 'biofiz-w5-263';
+
+UPDATE public.questions
+   SET text = 'Jak wpływa zwiększenie średnicy naczynia na szybkość przepływu cieczy?',
+       options = '[{"id":"a","text":"dwukrotne zwiększenie średnicy naczynia powoduje dwukrotne zmniejszenie prędkości przepływu"},{"id":"b","text":"dwukrotne zwiększenie powierzchni przekroju naczynia powoduje dwukrotne zmniejszenie prędkości przepływu"},{"id":"c","text":"dwukrotne zmniejszenie średnicy naczynia powoduje dwukrotne zmniejszenie prędkości przepływu"},{"id":"d","text":"dwukrotne zmniejszenie powierzchni przekroju naczynia powoduje dwukrotne zmniejszenie prędkości przepływu"}]'::jsonb,
+       explanation = 'Prawo ciaglosci: Q = A*v = const. Dwukrotne zwiekszenie pola przekroju A powoduje dwukrotne zmniejszenie predkosci v (przy stalym przeplywie).'
+ WHERE id = 'biofiz-w5-264';
+
+UPDATE public.questions
+   SET text = 'W ruchu harmonicznym prostym (nietłumionym) działają siły',
+       options = '[{"id":"a","text":"tylko sprężysta i nie jest spełniona zasada zachowania energii mechanicznej"},{"id":"b","text":"tylko sprężysta i spełniona jest zasada zachowania energii mechanicznej"},{"id":"c","text":"tylko oporowa i nie jest spełniona zasada zachowania energii mechanicznej"},{"id":"d","text":"sprężysta i oporowa i nie jest spełniona zasada zachowania energii mechanicznej"}]'::jsonb,
+       explanation = 'Ruch harmoniczny prosty (nietlumiony): dziala tylko sila sprezysła (F = -kx). Energia mechaniczna jest zachowana (E_k + E_p = const).'
+ WHERE id = 'biofiz-w5-266';
+
+UPDATE public.questions
+   SET text = 'Próg słyszalności',
+       options = '[{"id":"a","text":"to inaczej próg bólu"},{"id":"b","text":"jest to najmniejsze, zaledwie słyszalne natężenie dźwięku lub ciśnienie akustyczne"},{"id":"c","text":"nie zależy od częstotliwości"},{"id":"d","text":"jest to maksymalne słyszalne natężenie dźwięku lub ciśnienie akustyczne"}]'::jsonb,
+       explanation = 'Prog slyszalnosci: minimalne natezenie dzwieku slyszalne przez ucho. Przy 1 kHz: I_0 = 10^-12 W/m^2. Zalezy od czestotliwosci (krzywa izofoniczna).'
+ WHERE id = 'biofiz-w5-267';
+
+UPDATE public.questions
+   SET text = 'W ruchu drgającym tłumionym działają siły',
+       options = '[{"id":"a","text":"tylko oporowa i nie jest spełniona zasada zachowania energii mechanicznej"},{"id":"b","text":"tylko sprężysta i spełniona jest zasada zachowania energii mechanicznej"},{"id":"c","text":"tylko sprężysta i nie jest spełniona zasada zachowania energii mechanicznej"},{"id":"d","text":"sprężysta i oporowa i nie jest spełniona zasada zachowania energii mechanicznej"}]'::jsonb,
+       explanation = 'Ruch tlumiony: dziala sila sprezysła i sila oporu (tarcia). Energia mechaniczna nie jest zachowana - czesc zamienia sie w cieplo. Amplituda maleje.'
+ WHERE id = 'biofiz-w5-268';
+
+UPDATE public.questions
+   SET text = 'Jednostką dawki pochłoniętej jest',
+       options = '[{"id":"a","text":"grej (Gy)"},{"id":"b","text":"bekerel (Bq)"},{"id":"c","text":"C/kg"},{"id":"d","text":"siwert (Sv)"}]'::jsonb,
+       explanation = 'Dawka pochlonieta mierzona w grejach (Gy). 1 Gy = 1 J/kg. Dawka skuteczna (rownowazna) - w siwertach (Sv). Aktywnosc - w bekerelach (Bq).'
+ WHERE id = 'biofiz-w5-269';
+
+UPDATE public.questions
+   SET text = 'W naczyniach sprężystych wzrost ciśnienia napędowego powoduje rozciąganie się ściany naczynia',
+       options = '[{"id":"a","text":"powoduje to wzrost lepkości płynu"},{"id":"b","text":"rozciąganie nie ma wpływu na opór naczyniowy"},{"id":"c","text":"powoduje to wzrost oporu naczyniowego"},{"id":"d","text":"powoduje to spadek oporu naczyniowego"}]'::jsonb,
+       explanation = 'W naczyniach sprezystych wzrost cisnienia rozciaga sciane, zwiekszajac srednice. Wedlug prawa Poiseuille''a R ~ 1/r^4, wiec opor maleje.'
+ WHERE id = 'biofiz-w5-270';
+
+UPDATE public.questions
+   SET text = 'Moduł Younga',
+       options = '[{"id":"a","text":"określa właściwości sprężyste ciała"},{"id":"b","text":"jest proporcjonalny do naprężenia pojawiającego się pod wpływem przyłożonej siły"},{"id":"c","text":"określa właściwości lepkie ciała"},{"id":"d","text":"jest odwrotnie proporcjonalny do odkształcenia"}]'::jsonb,
+       explanation = 'Modul Younga E = sigma/epsilon. Okresla wlasciwosci sprezysłe ciala - im wiekszy E, tym sztywniejszy material (trudniej go odksztalcic).'
+ WHERE id = 'biofiz-w5-271';
+
+UPDATE public.questions
+   SET text = 'Poziom natężenia dźwięku',
+       options = '[{"id":"a","text":"definiuje się jako logarytm ilorazu natężenia dźwięku badanego do natężenia odniesienia"},{"id":"b","text":"definiuje się jako logarytm natężenia dźwięku odniesienia"},{"id":"c","text":"definiuje się jako logarytm natężenia dźwięku badanego pomnożony przez wartość 10"},{"id":"d","text":"podaje się w jednostce W/m2"}]'::jsonb,
+       explanation = 'Poziom natezenia dzwieku L = log(I/I_0), gdzie I_0 = 10^-12 W/m^2. Jednostka: bel (B) lub decybel (dB). 1 B = 10 dB.'
+ WHERE id = 'biofiz-w5-272';
+
+UPDATE public.questions
+   SET text = 'Dwukrotne zwiększenie wysokiego napięcia w lampie rentgenowskiej spowoduje dwukrotne',
+       options = '[{"id":"a","text":"zwiększenie granicy krótkofalowej promieniowania i zmniejszenie natężenia promieniowania w całym zakresie widma"},{"id":"b","text":"zmniejszenie granicy krótkofalowej promieniowania i zmniejszenie natężenia promieniowania w całym zakresie widma"},{"id":"c","text":"zwiększenie granicy krótkofalowej promieniowania i zwiększenie natężenia promieniowania w całym zakresie widma"},{"id":"d","text":"zmniejszenie granicy krótkofalowej promieniowania i zwiększenie natężenia promieniowania w całym zakresie widma"}]'::jsonb,
+       explanation = 'Lambda_min = hc/(eU). Dwukrotne zwiekszenie napiecia U: lambda_min maleje o polowe (granica krotkofalowa przesuwa sie). Natezenie RTG rosnie.'
+ WHERE id = 'biofiz-w5-273';
+
+UPDATE public.questions
+   SET text = 'W przypadku sił jądrowych odpowiedzialnych m.in. za wiązanie nukleonów w jądrze atomu NIE jest prawdziwe stwierdzenie, że są to siły',
+       options = '[{"id":"a","text":"o charakterze nasyceniowym"},{"id":"b","text":"przyciągania elektrostatycznego (siły kulombowskie)"},{"id":"c","text":"przyciągania"},{"id":"d","text":"działające tylko pomiędzy sąsiadującymi nukleonami"}]'::jsonb,
+       explanation = 'Sily jadrowe: krotki zasieg (ok. 10^-15 m), charakter nasyceniowy (kazdy nukleon oddzialuje tylko z sasiadami), znacznie silniejsze niz sily elektromagnetyczne.'
+ WHERE id = 'biofiz-w5-274';
+
+UPDATE public.questions
+   SET text = 'Zależność przewodności i przenikalności dielektrycznej od częstotliwości pola elektromagnetycznego jest nazywana',
+       options = '[{"id":"a","text":"prawem Lamberta-Beera"},{"id":"b","text":"polaryzacją orientacyjną"},{"id":"c","text":"polaryzacją deformacyjną"},{"id":"d","text":"dyspersją"}]'::jsonb,
+       explanation = 'Dyspersja: zaleznosc wielkosci od czestotliwosci. Dyspersja dielektryczna: przenikalnosc i przewodnosc zaleza od czestotliwosci pola elektrycznego.'
+ WHERE id = 'biofiz-w5-275';
+
+UPDATE public.questions
+   SET text = 'Prędkość fali USG',
+       options = '[{"id":"a","text":"jest największa w próżni a najmniejsza w ciałach stałych"},{"id":"b","text":"w tkankach miękkich jest podobna jak w powietrzu a w kościach znacznie większa"},{"id":"c","text":"w kościach jest mniejsza niż w tkankach miękkich"},{"id":"d","text":"w tkankach miękkich jest nieco większa niż w wodzie a w kościach znacznie większa"}]'::jsonb,
+       explanation = 'Predkosc USG: w tkankach miekkich ok. 1540 m/s (nieco wieksza niz w wodzie - 1480 m/s), w kosciach ok. 3000-4000 m/s (znacznie wieksza).'
+ WHERE id = 'biofiz-w5-276';
+
+UPDATE public.questions
+   SET text = 'Jednostką współczynnika lepkości cieczy nie jest',
+       options = '[{"id":"a","text":"Ns/m2"},{"id":"b","text":"Pa*s"},{"id":"c","text":"kg/m*s"},{"id":"d","text":"Pa/s"}]'::jsonb,
+       explanation = 'Jednostki lepkosci: Pa*s = Ns/m^2 = kg/(m*s). Pa/s NIE jest jednostka lepkosci - wymiar nie zgadza sie (lepkosc = naprezenie / predkosc scinania).'
+ WHERE id = 'biofiz-w5-277';
+
+UPDATE public.questions
+   SET text = 'Środki kontrastujące w prześwietleniu rentgenowskim muszą spełniać warunki',
+       options = '[{"id":"a","text":"nie wchodzą w reakcje metaboliczne, posiadają odpowiednio małą liczbę atomową, kumulują się w tkankach"},{"id":"b","text":"nie wchodzą w reakcje metaboliczne, posiadają odpowiednio dużą liczbę atomową, są szybko wydalane z organizmu"},{"id":"c","text":"posiadają odpowiednio dużą liczbę atomową, kumulują się w tkankach, wchodzą w reakcje metaboliczne"},{"id":"d","text":"są szybko wydalane z organizmu, kumulują się w tkankach, posiadają odpowiednio małą liczbę atomową"}]'::jsonb,
+       explanation = 'Srodki kontrastowe: duza liczba atomowa (silne pochlanianie RTG), nie wchodza w reakcje metaboliczne, nie sa toksyczne. Np. bar, jod.'
+ WHERE id = 'biofiz-w5-278';
+
+UPDATE public.questions
+   SET text = 'Przejście elektronu z powłoki 3s1 atomu sodu na powłokę 3s2p5 atomu chloru',
+       options = '[{"id":"a","text":"tworzy wiązanie jonowe"},{"id":"b","text":"tworzy wiązanie kowalencyjne"},{"id":"c","text":"tworzy wiązanie koordynacyjne"},{"id":"d","text":"jest niezgodne z zasadą Pauliego"}]'::jsonb,
+       explanation = 'Sod oddaje elektron chlorowi - powstaja jony Na+ i Cl- zwiazane elektrostatycznie. To typowe wiazanie jonowe (NaCl - sol kuchenna).'
+ WHERE id = 'biofiz-w5-279';
+
+UPDATE public.questions
+   SET text = 'Kąt skręcenia płaszczyzny polaryzacji (α) dla roztworu o grubości (d), stężeniu c można obliczyć z równania',
+       options = '[{"id":"a","text":"α = α * c * d2 λ"},{"id":"b","text":"α = α * c * d λ"},{"id":"c","text":"α = α * c/d2 λ"},{"id":"d","text":"α = α * c2d λ"}]'::jsonb,
+       explanation = 'Kat skretu: alpha = [alpha]_lambda * c * d, gdzie [alpha] to skrecosc wlasciwa (zalezy od dlugosci fali lambda), c - stezenie, d - dlugosc drogi.'
+ WHERE id = 'biofiz-w5-280';
+
+UPDATE public.questions
+   SET text = 'Dawka skuteczna promieniowania jonizującego dla człowieka od tła wynosi',
+       options = '[{"id":"a","text":"25 mSv"},{"id":"b","text":"2,5 mSv"},{"id":"c","text":"0,25 mSv"},{"id":"d","text":"2,5 Sv"}]'::jsonb,
+       explanation = 'Dawka skuteczna od tla naturalnego: ok. 2-3 mSv/rok (radon, promieniowanie kosmiczne, izotopy w zywnosci, promieniowanie z gruntu).'
+ WHERE id = 'biofiz-w5-281';
+
+UPDATE public.questions
+   SET text = 'Reologiczny model Maxwella składa się elementu lepkiego (tłoczek z cieczą) i sprężystego (sprężyną) połączonych',
+       options = '[{"id":"a","text":"szeregowo"},{"id":"b","text":"równolegle"},{"id":"c","text":"równolegle z dołączonym szeregowo elementem sprężystym"},{"id":"d","text":"równolegle z dołączonym szeregowo elementem lepkim"}]'::jsonb,
+       explanation = 'Model Maxwella: element lepki (tlumik) i sprezysty (sprezyna) polaczone szeregowo. Opisuje relaksacje naprezenia. Model Kelvina-Voigta: rownolegle.'
+ WHERE id = 'biofiz-w5-282';
+
+UPDATE public.questions
+   SET text = 'Prawo ciągłości strumienia można wyrazić w postaci (S – pole przekroju naczynia, v - prędkość cieczy)',
+       options = '[{"id":"a","text":"S1 * v1 = S2 * v2"},{"id":"b","text":"S1 * v2 = S2 * v1"},{"id":"c","text":"S1 * v1 < S2 * v2"},{"id":"d","text":"S1 * v1 > S2 * v2"}]'::jsonb,
+       explanation = 'Równanie ciągłości: S1 * v1 = S2 * v2. Przepływ objętościowy Q = S * v = const w rurce. Zmniejszenie przekroju = wzrost prędkości.'
+ WHERE id = 'biofiz-w5-283';
+
+UPDATE public.questions
+   SET text = 'Jeśli w czasie laminarnego przepływu cieczy przez rurkę o sztywnych ściankach przy ustalonej różnicy ciśnień na końcach naczynia, nastąpi dwukrotny wzrost lepkości cieczy to strumień objętościowy',
+       options = '[{"id":"a","text":"zmaleje dwukrotnie"},{"id":"b","text":"wzrośnie czterokrotnie"},{"id":"c","text":"zmaleje czterokrotnie"},{"id":"d","text":"wzrośnie dwukrotnie"}]'::jsonb,
+       explanation = 'Prawo Poiseuille: strumień objętościowy jest odwrotnie proporcjonalny do lepkości cieczy, co oznacza, że dwukrotny wzrost lepkości powoduje dwukrotne zmniejszenie przepływu.'
+ WHERE id = 'biofiz-w5-284';
+
+UPDATE public.questions
+   SET text = 'Współdziałanie ciężkich cząstek naładowanych (np. cząstki alfa, protony) z materią nie polega na',
+       options = '[{"id":"a","text":"zderzeniach z elektronami powłok atomów"},{"id":"b","text":"zjawisku fotoelektrycznym"},{"id":"c","text":"reakcjach jądrowych"},{"id":"d","text":"zderzeniach z atomami lub jądrami atomów; reakcjach jądrowych"}]'::jsonb,
+       explanation = 'Zjawisko fotoelektryczne dotyczy wyłącznie fotonów (promieniowania elektromagnetycznego), a nie cząstek o masie spoczynkowej. Ciężkie cząstki naładowane tracą energię głównie poprzez oddziaływania kulombowskie (jonizację), a nie przez całkowite pochłonięcie charakterystyczne dla efektu fotoelektrycznego.'
+ WHERE id = 'biofiz-w5-285';
+
+UPDATE public.questions
+   SET text = 'Graniczną liczbę lepkościową wyznacza się przez',
+       options = '[{"id":"a","text":"ekstrapolację do stężenia zerowego ilorazu lepkości właściwej do stężenia"},{"id":"b","text":"bezpośredni pomiar wiskozymetrem Ostwalda"},{"id":"c","text":"ekstrapolację do stężenia zerowego lepkości właściwej"},{"id":"d","text":"bezpośredni pomiar wiskozymetrem rotacyjnym"}]'::jsonb,
+       explanation = 'Graniczna liczba lepkosciowa [eta] = lim(c->0) [eta_sp/c]. Otrzymuje sie ja przez ekstrapolacje do stezenia zerowego. Charakteryzuje czasteczke polimeru.'
+ WHERE id = 'biofiz-w5-286';
+
+UPDATE public.questions
+   SET text = 'Jednostką dawki ekspozycyjnej jest',
+       options = '[{"id":"a","text":"J/kg"},{"id":"b","text":"Grej (Gy)"},{"id":"c","text":"Bekerel (Bq)"},{"id":"d","text":"C/kg"}]'::jsonb,
+       explanation = 'Dawka ekspozycyjna (kerama): jednostka C/kg. Mierzy jonizacje powietrza przez promieniowanie X lub gamma. Dawka pochlonieta: Gy (J/kg).'
+ WHERE id = 'biofiz-w5-287';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z prawem ciągłości strumienia, zmniejszenie pola przekroju przewodu spowoduje, że prędkość przepływu',
+       options = '[{"id":"a","text":"zmniejszy się"},{"id":"b","text":"wzrośnie"},{"id":"c","text":"wzrośnie lub zmaleje w zależności od rodzaju przewodu"},{"id":"d","text":"nie zmieni się"}]'::jsonb,
+       explanation = 'Prawo ciaglosci: S*v = const. Zmniejszenie przekroju S powoduje wzrost predkosci v. Przeplyw objetosciowy pozostaje staly.'
+ WHERE id = 'biofiz-w5-288';
+
+UPDATE public.questions
+   SET text = 'Aeroembolizm to zjawisko',
+       options = '[{"id":"a","text":"wrzenia płynów tkankowych"},{"id":"b","text":"podwyższenia ciśnienia"},{"id":"c","text":"tworzenia się zatorów gazowych"},{"id":"d","text":"niedotlenienia"}]'::jsonb,
+       explanation = 'Aeroembolizm (choroba kesonowa): tworzenie sie pecherzykow gazu (glownie azotu) we krwi przy zbyt szybkim wyplywaniu z glebokosci. Zatory gazowe.'
+ WHERE id = 'biofiz-w5-289';
+
+UPDATE public.questions
+   SET text = 'Ściany tętnic są',
+       options = '[{"id":"a","text":"magazynem pojemnościowym energii kinetycznej"},{"id":"b","text":"magazynem energii potencjalnej sprężystości"},{"id":"c","text":"magazynem energii kinetycznej sprężystości"},{"id":"d","text":"magazynem pojemnościowym energii potencjalnej"}]'::jsonb,
+       explanation = 'Sciany tetnic (sprezysłe) magazynuja energie potencjalna sprezystosci podczas skurczu serca. Podczas rozkurczu energia ta napedza krew - efekt Windkessela.'
+ WHERE id = 'biofiz-w5-290';
+
+UPDATE public.questions
+   SET text = 'Izomeria optyczna to zjawisko',
+       options = '[{"id":"a","text":"powierzchnia światła przez układ polaryzator - analizator"},{"id":"b","text":"charakterystyczne dla danego roztworu, zależne od jego stężenia"},{"id":"c","text":"występowania substancji optycznie czynnych w odmianie prawo- i lewoskrętnej"},{"id":"d","text":"zależne od kąta skręcenia płaszczyzny polaryzacji"}]'::jsonb,
+       explanation = 'Izomeria optyczna: wystepowanie substancji w dwoch formach (enancjomery) - prawo- i lewoskretnej. Zwiazane z asymetrycznym atomem wegla (chiralnosc).'
+ WHERE id = 'biofiz-w5-291';
+
+UPDATE public.questions
+   SET text = 'Funkcje stanu to:',
+       options = '[{"id":"a","text":"praca, entalpia, entropia"},{"id":"b","text":"ciepło, praca, entropia"},{"id":"c","text":"entalpia, entropia, energia swobodna"},{"id":"d","text":"energia wewnętrzna, praca, ciepło"}]'::jsonb,
+       explanation = 'Funkcje stanu: U (energia wew.), H (entalpia), S (entropia), G (ent. swobodna), F (en. swobodna), mu (pot. chem.). Cieplo i praca NIE sa funkcjami stanu.'
+ WHERE id = 'biofiz-w5-292';
+
+UPDATE public.questions
+   SET text = 'Prezbiopia to:',
+       options = '[{"id":"a","text":"starczowzroczność"},{"id":"b","text":"widzenie fotopowe"},{"id":"c","text":"odmiana astygmatyzmu"},{"id":"d","text":"dystorsja"}]'::jsonb,
+       explanation = 'Prezbiopia = starczowzrocznosc. Utrata zdolnosci akomodacji z wiekiem (zmniejszona elastycznosc soczewki). Trudnosc widzenia z bliska.'
+ WHERE id = 'biofiz-w5-293';
+
+UPDATE public.questions
+   SET text = 'Przystosowanie się oka do zmiennych warunków oświetleniowych nazywa się:',
+       options = '[{"id":"a","text":"refrakcją oka"},{"id":"b","text":"adaptacją oka"},{"id":"c","text":"zdolnością skupiającą oka"},{"id":"d","text":"akomodacją oka"}]'::jsonb,
+       explanation = 'Adaptacja oka: przystosowanie do zmiennych warunkow oswietlenia (jasnosc/ciemnosc). Akomodacja - dostosowanie do odleglosci. Refrakcja - zdolnosc skupiajaca.'
+ WHERE id = 'biofiz-w5-294';
+
+UPDATE public.questions
+   SET text = 'Zasada Prigogine’a jest określona przez stwierdzenie:',
+       options = '[{"id":"a","text":"w stanie równowagi entropia przyjmuje wartość maksymalną, a szybkość tworzenia się entropii jest równa zero"},{"id":"b","text":"w stanie stacjonarnym funkcje termodynamiczne układu zachowują stałą wartość w czasie (entropia, energia oraz entalpia swobodna nie ulegają zmianie)"},{"id":"c","text":"w stanie stacjonarnym szybkość tworzenia się entropii jest stała i przyjmuje wartość minimalną"},{"id":"d","text":"szybkość tworzenia się entropii w układzie nie może być ujemna: jest zerem dla procesów odwracalnych, a dodatnia dla procesów nieodwracalnych"}]'::jsonb,
+       explanation = 'Zasada Prigogine''a (twierdzenie o minimum produkcji entropii): w stanie stacjonarnym szybkosc tworzenia entropii jest minimalna (ale niezerowa).'
+ WHERE id = 'biofiz-w5-295';
+
+UPDATE public.questions
+   SET text = 'W odwracalnym procesie izotermiczno-izobarycznym wykonanie pracy nieobjętościowej przez układ jest równe ubytkowi:',
+       options = '[{"id":"a","text":"entalpii swobodnej"},{"id":"b","text":"entropii"},{"id":"c","text":"energii swobodnej"},{"id":"d","text":"energii wewnętrznej"}]'::jsonb,
+       explanation = 'W procesie izotermiczno-izobarycznym (T,p=const) maksymalna praca nieobjętosciowa rowna jest zmianie entalpii swobodnej Gibbsa: W_max = -delta_G.'
+ WHERE id = 'biofiz-w5-296';
+
+UPDATE public.questions
+   SET text = 'Dla oka z wadą krótkowzroczności refrakcja R i odległość punktu dalekiego od oka SD spełniają zależności:',
+       options = '[{"id":"a","text":"R > 0 oraz S = R-1 D"},{"id":"b","text":"R > 0 oraz S = ∞ D"},{"id":"c","text":"R < 0 oraz S = ∞ D"},{"id":"d","text":"R < 0 oraz S < 0 D"}]'::jsonb,
+       explanation = 'Krotkowzrocznosc: refrakcja R < 0 (oko ma za duza moc). Punkt daleki S_D w skonczoneosci (przed oczami, nie w nieskonczonosci). Potrzebne soczewki rozpraszajace.'
+ WHERE id = 'biofiz-w5-297';
+
+UPDATE public.questions
+   SET text = 'Termodynamiczny układ zamknięty:',
+       options = '[{"id":"a","text":"może wymieniać zarówno energię jak i materię z otoczeniem"},{"id":"b","text":"może wymieniać materię z otoczeniem, nie wymienia energii"},{"id":"c","text":"może wymieniać energię z otoczeniem, nie wymienia materii"},{"id":"d","text":"nie może wymieniać ani materii, ani energii z otoczeniem"}]'::jsonb,
+       explanation = 'Uklad zamkniety: moze wymieniac energie (cieplo, prace) z otoczeniem, ale nie moze wymieniac materii. Masa ukladu jest stala.'
+ WHERE id = 'biofiz-w5-298';
+
+UPDATE public.questions
+   SET text = 'Jednostką refrakcji oka jest',
+       options = '[{"id":"a","text":"dioptria"},{"id":"b","text":"jest wielkością bezwymiarową"},{"id":"c","text":"metr"},{"id":"d","text":"minuta kątowa"}]'::jsonb,
+       explanation = 'Refrakcja oka mierzona w dioptriach (D = 1/m). Refrakcja R = 1/f, gdzie f to ogniskowa w metrach. Oko normalne: R ok. 60 D.'
+ WHERE id = 'biofiz-w5-299';
+
+UPDATE public.questions
+   SET text = 'Kątowa zdolność rozdzielcza oka',
+       options = '[{"id":"a","text":"to odwrotność kąta, pod jakim widziane są ze źrenicy wejściowej obrazy dwóch punktów jeszcze przez układ optyczny rozdzielonych"},{"id":"b","text":"to kąt pod jakim widziane są ze źrenicy wejściowej obrazy dwóch punktów jeszcze przez układ optyczny rozdzielonych"},{"id":"c","text":"jest równa odwrotności ogniskowej soczewki"},{"id":"d","text":"jest iloczynem kąta pod jakim widziane są ze źrenicy wejściowej rozdzielnie obrazy dwóch punktów i ogniskowej soczewki"}]'::jsonb,
+       explanation = 'Katowa zdolnosc rozdzielcza oka: odwrotnosc minimalnego kata, pod ktorym widac dwa punkty jako oddzielne. Dla oka: ok. 1 minuta katowa (1/60 stopnia).'
+ WHERE id = 'biofiz-w5-300';
+
+UPDATE public.questions
+   SET text = 'Kryterium Rayleigha, dotyczące minimalnej odległości między dwoma punktami widzialnymi oddzielnie jest spełnione gdy:',
+       options = '[{"id":"a","text":"maximum główne natężenia obrazu dyfrakcyjnego jednego punktu pokrywa się z maksimum głównym natężenia obrazu dyfrakcyjnego drugiego punktu"},{"id":"b","text":"maximum pierwszego rzędu natężenia obrazu dyfrakcyjnego jednego punktu pokrywa się z minimum pierwszego rzędu natężenia obrazu dyfrakcyjnego drugiego punktu"},{"id":"c","text":"minimum główne natężenia obrazu dyfrakcyjnego jednego punktu pokrywa się z minimum głównym natężenia obrazu dyfrakcyjnego drugiego punktu"},{"id":"d","text":"maximum główne natężenia obrazu dyfrakcyjnego jednego z punktów pokrywa się z minimum pierwszego rzędu natężenia obrazu dyfrakcyjnego drugiego punktu"}]'::jsonb,
+       explanation = 'Kryterium Rayleigha: dwa punkty sa rozroznialne gdy maximum dyfrakcyjne jednego pokrywa sie z pierwszym minimum drugiego. Okreska granice rozdzielczosci.'
+ WHERE id = 'biofiz-w5-301';
+
+UPDATE public.questions
+   SET text = 'Jeżeli zdolność skupiająca soczewki wynosi 2 dioptrie, to jej ogniskowa wynosi',
+       options = '[{"id":"a","text":"1 m"},{"id":"b","text":"0,5 m"},{"id":"c","text":"0,25 m"},{"id":"d","text":"2 m"}]'::jsonb,
+       explanation = 'Zdolnosc skupiajaca D = 1/f. Jesli D = 2 dioptrie, to f = 1/2 m = 0.5 m = 50 cm. Soczewka skupiajaca o ogniskowej 50 cm.'
+ WHERE id = 'biofiz-w5-302';
+
+UPDATE public.questions
+   SET text = 'Obraz otrzymany za pomocą mikroskopu jest',
+       options = '[{"id":"a","text":"powiększony, prosty, odwrócony"},{"id":"b","text":"powiększony, odwrócony, rzeczywisty"},{"id":"c","text":"powiększony, odwrócony, pozorny"},{"id":"d","text":"powiększony, prosty, rzeczywisty"}]'::jsonb,
+       explanation = 'Obraz w mikroskopie: powiekszonу, odwroconу (gora-dol i lewo-prawo), pozornу (powstaje za okularem, widoczny przez okular ale nie mozna go rzutowac).'
+ WHERE id = 'biofiz-w5-303';
+
+UPDATE public.questions
+   SET text = 'Definicja entropii Boltzmanna wyraża się wzorem S=klnW, gdzie k oznacza stałą Boltzmanna, a W jest:',
+       options = '[{"id":"a","text":"liczbą stanów makroskopowych w jakich może znajdować się dany układ"},{"id":"b","text":"ilorazem energii swobodnej układu i czasu"},{"id":"c","text":"prawdopodobieństwem termodynamicznym"},{"id":"d","text":"pracą wykonaną przez układ"}]'::jsonb,
+       explanation = 'Wzor Boltzmanna: S = k*ln(W). W to prawdopodobienstwo termodynamiczne - liczba mikrostanow odpowiadajacych danemu makrostanowi ukladu.'
+ WHERE id = 'biofiz-w5-304';
+
+UPDATE public.questions
+   SET text = 'Przedmiot umieszczony w odległości równej połowie ogniskowej soczewki cienkiej wypukłej daje obraz:',
+       options = '[{"id":"a","text":"pozorny, powiększony i prosty dokładnie w ognisku przedmiotowym"},{"id":"b","text":"pozorny, pomniejszony i prosty dokładnie w ognisku przedmiotowym"},{"id":"c","text":"pozorny, powiększony i prosty dokładnie w ognisku obrazowym"},{"id":"d","text":"pozorny, pomniejszony i prosty dokładnie w ognisku obrazowym"}]'::jsonb,
+       explanation = 'Przedmiot w odleglosci f/2 od soczewki skupiajacej: obraz pozorny, powiekszony 2x, prosty, po tej samej stronie co przedmiot (przed ogniskiem).'
+ WHERE id = 'biofiz-w5-305';
+
+UPDATE public.questions
+   SET text = 'Astygmatyzm oka nie polega na',
+       options = '[{"id":"a","text":"różnych wartościach refrakcji w przekrojach głównych"},{"id":"b","text":"występowaniu torycznej powierzchni oka"},{"id":"c","text":"różnych zdolnościach skupiających w przekrojach głównych"},{"id":"d","text":"ujemnej wartości amplitudy akomodacji oka"}]'::jsonb,
+       explanation = 'Astygmatyzm: rozne wartosci refrakcji w roznych przekrojach (powierzchnia toryczna). NIE polega na ujemnej amplitudzie akomodacji - to by oznaczało prezbiopia.'
+ WHERE id = 'biofiz-w5-306';
+
+UPDATE public.questions
+   SET text = 'Parametry stanu to',
+       options = '[{"id":"a","text":"potencjał chemiczny, entalpia, entropia"},{"id":"b","text":"ciepło, temperatura, entropia"},{"id":"c","text":"entalpia, entropia, temperatura"},{"id":"d","text":"ciśnienie, temperatura, ilość moli"}]'::jsonb,
+       explanation = 'Parametry stanu: cisnienie p, temperatura T, objetosc V, ilosc moli n. Jednoznacznie okreslaja stan ukladu. Entalpia, entropia - to funkcje stanu.'
+ WHERE id = 'biofiz-w5-307';
+
+UPDATE public.questions
+   SET text = 'Funkcją stanu nie jest',
+       options = '[{"id":"a","text":"entropia"},{"id":"b","text":"energia swobodna"},{"id":"c","text":"energia wewnętrzna"},{"id":"d","text":"ciepło"}]'::jsonb,
+       explanation = 'Cieplo NIE jest funkcja stanu - zalezy od drogi przemiany. Funkcje stanu: U, H, S, G, F - zaleza tylko od stanu poczatkowego i koncowego.'
+ WHERE id = 'biofiz-w5-308';
+
+UPDATE public.questions
+   SET text = 'Aby zwiększyć zdolność rozdzielczą mikroskopu optycznego wprowadza się między obiektyw i preparat ciecz (olejek immersyjny), której współczynnik załamania n powinien być:',
+       options = '[{"id":"a","text":"dowolną wartością z przedziału od 0 do 1"},{"id":"b","text":"większy od 1"},{"id":"c","text":"równy 0,5"},{"id":"d","text":"równy 1"}]'::jsonb,
+       explanation = 'Immersja: osrodek miedzy obiektywem a preparatem o wspolczynniku zalamania n > 1 (olej n=1.5, woda n=1.33). Zwieksza aperture numeryczna A = n*sin(u).'
+ WHERE id = 'biofiz-w5-309';
+
+UPDATE public.questions
+   SET text = 'Która z wymienionych wielkości fizycznych nie jest funkcją stanu?',
+       options = '[{"id":"a","text":"potencjał chemiczny"},{"id":"b","text":"entalpia swobodna"},{"id":"c","text":"praca"},{"id":"d","text":"energia wewnętrzna"}]'::jsonb,
+       explanation = 'Praca NIE jest funkcja stanu - zalezy od drogi przemiany. Potencjal chemiczny, entalpia swobodna, energia wewnetrzna - sa funkcjami stanu.'
+ WHERE id = 'biofiz-w5-310';
+
+UPDATE public.questions
+   SET text = 'Zdolność tworzenia na siatkówce oka obrazów przedmiotów bliskich i dalekich nazwiemy',
+       options = '[{"id":"a","text":"adaptacją oka"},{"id":"b","text":"akomodacją oka"},{"id":"c","text":"zdolnością skupiającą oka"},{"id":"d","text":"refrakcją oka"}]'::jsonb,
+       explanation = 'Akomodacja oka: zdolnosc zmiany ogniskowej soczewki (przez kurczenie miesnia rzeskowego) w celu ostrego widzenia na rozne odleglosci.'
+ WHERE id = 'biofiz-w5-311';
+
+UPDATE public.questions
+   SET text = 'Apertura numeryczna (A) wyrażana jest wzorem (n - współczynnik załamania, u - kąt aperturowy)',
+       options = '[{"id":"a","text":"A = 2u * sin n"},{"id":"b","text":"A = 2n * sin u"},{"id":"c","text":"A = u * sin n"},{"id":"d","text":"A = n * sin u"}]'::jsonb,
+       explanation = 'Apertura numeryczna: A = n * sin(u), gdzie n to wspolczynnik zalamania osrodka, u to polowa kata rozwarcia stozka swiatla wchodzacego do obiektywu.'
+ WHERE id = 'biofiz-w5-312';
+
+UPDATE public.questions
+   SET text = 'Potencjał termodynamiczny Gibbsa (G) ma postać (S - entropia, H - entalpia, T - temperatura)',
+       options = '[{"id":"a","text":"G = H + TS"},{"id":"b","text":"G = S + TH"},{"id":"c","text":"G = S – TH"},{"id":"d","text":"G = H – TS"}]'::jsonb,
+       explanation = 'Entalpia swobodna Gibbsa: G = H - TS. Kriterium samorzutnosci: dG < 0 (przy T,p = const). W rownowadze dG = 0.'
+ WHERE id = 'biofiz-w5-313';
+
+UPDATE public.questions
+   SET text = 'Jeśli kąt padania światła w ośrodku optycznie gęstszym jest większy od kąta granicznego to na granicy ośrodków',
+       options = '[{"id":"a","text":"kąt padania to 45o"},{"id":"b","text":"następuje całkowite wewnętrzne odbicie"},{"id":"c","text":"w ośrodku rzadszym obserwujemy załamanie"},{"id":"d","text":"promień przechodzi do ośrodka rzadszego bez zmiany kierunku"}]'::jsonb,
+       explanation = 'Calkowite wewnetrzne odbicie: nastepuje gdy kat padania > kat graniczny. Swiatlo nie przechodzi do osrodka rzadszego, odbija sie calkowicie.'
+ WHERE id = 'biofiz-w5-314';
+
+UPDATE public.questions
+   SET text = 'Prawo Bragga przedstawia równanie (gdzie: n - kolejne liczby naturalne, λ - długość fali, α - kąt pod którym obserwujemy wzmocnienie, a - odległość między płaszczyznami)',
+       options = '[{"id":"a","text":"n * λ = 2 * a * sin2α"},{"id":"b","text":"n * λ = a * sin2α"},{"id":"c","text":"2 * n * λ = a * sinα"},{"id":"d","text":"n * λ = 2 * a * sinα"}]'::jsonb,
+       explanation = 'Prawo Bragga: n*lambda = 2*d*sin(theta). Warunek konstruktywnej interferencji fal rozproszonych na plaszczyznach krystalicznych o odleglosci d.'
+ WHERE id = 'biofiz-w5-315';
+
+UPDATE public.questions
+   SET text = 'Przesloną aperturową oka jest',
+       options = '[{"id":"a","text":"rogówka"},{"id":"b","text":"soczewka"},{"id":"c","text":"siatkówka"},{"id":"d","text":"tęczówka"}]'::jsonb,
+       explanation = 'Przeslona aperturowa oka: teczowka (iris) z otworem - zrenica. Reguluje ilosc swiatla wchodzacego do oka. Srednica zrenicy: 2-8 mm.'
+ WHERE id = 'biofiz-w5-316';
+
+UPDATE public.questions
+   SET text = 'W metodzie NMR wykorzystywane jest silne pole magnetyczne. Źródłem pola magnetycznego w ogólnym przypadku mogą być:',
+       options = '[{"id":"a","text":"Nieruchome ładunki i prądy elektryczne"},{"id":"b","text":"Ładunki przeciwnego znaku na okładkach kondensatora i elektromagnesy"},{"id":"c","text":"Nieruchome ładunki i magnesy"},{"id":"d","text":"Zwoje, przez które przepływa prąd elektryczny, i magnesy"}]'::jsonb,
+       explanation = 'Pole magnetyczne wytwarzają **poruszające się ładunki** — prąd elektryczny płynący w **zwojach** (elektromagnes, cewka) oraz **magnesy trwałe** (uporządkowane momenty magnetyczne). **Nieruchome ładunki** wytwarzają wyłącznie pole elektryczne, więc opcje je wymieniające są błędne. W tomografach MRI źródłem stałego pola $B_0$ jest najczęściej cewka nadprzewodząca (zwoje z prądem), co odpowiada wskazanej odpowiedzi.'
+ WHERE id = 'biofiz-w5-321';
+
+UPDATE public.questions
+   SET text = 'Wykresy przedstawiają czasowe zmiany głównych parametrów w obrazowaniu NMR po zaburzeniu wektora magnetyzacji impulsem $\pi/2$. Prawidłowo opisuje je:',
+       options = '[{"id":"a","text":"T1 – czas relaksacji spin-sieć, odpowiadający zmianom składowej podłużnej magnetyzacji; T2 – czas relaksacji spin-spin, odpowiadający zmianom składowej poprzecznej magnetyzacji"},{"id":"b","text":"T1 – relaksacji spin-spin, składowa podłużna; T2 – relaksacji spin-sieć, składowa poprzeczna"},{"id":"c","text":"T1 – relaksacji spin-sieć, składowa poprzeczna; T2 – relaksacji spin-spin, składowa podłużna"},{"id":"d","text":"T1 – relaksacji spin-spin, składowa poprzeczna; T2 – relaksacji spin-sieć, składowa podłużna"}]'::jsonb,
+       explanation = '**T1 (spin-sieć)** opisuje **odbudowę składowej podłużnej** magnetyzacji (wzdłuż $B_0$) wskutek oddawania energii do otoczenia. **T2 (spin-spin)** opisuje **zanik składowej poprzecznej** wskutek defazowania spinów. Zawsze zachodzi $T_2 \le T_1$. Pozostałe warianty mieszają przypisanie czasów do mechanizmów lub składowych. Mnemonik: **T1 = podŁużna (Longitudinal), T2 = poprzeczna (Transverse)**.'
+ WHERE id = 'biofiz-w5-323';
+
+UPDATE public.questions
+   SET text = 'Czy podczas stosowania metody MRI (obrazowanie NMR) pacjent jest narażony na promieniowanie jonizujące?',
+       options = '[{"id":"a","text":"Tak, ponieważ silne pole magnetyczne jonizuje materię"},{"id":"b","text":"Nie, ponieważ stosowane pole magnetyczne i pole elektromagnetyczne z zakresu radiowego nie wnikają do organizmu człowieka"},{"id":"c","text":"Tak, ponieważ pole elektromagnetyczne z zakresu radiowego jonizuje materię"},{"id":"d","text":"Nie, ponieważ w metodzie tej stosuje się silne pole magnetyczne i pole elektromagnetyczne z zakresu radiowego"}]'::jsonb,
+       explanation = 'MRI **nie wykorzystuje promieniowania jonizującego** — używa silnego **pola magnetycznego** $B_0$ i fal **radiowych (RF)**, których energia kwantu jest zbyt mała, by wybić elektrony i jonizować materię. To główna przewaga MRI nad CT. Opcja B jest błędna, bo fale RF i tak oddziałują z organizmem (na tym opiera się metoda) — nie chodzi o brak wnikania, lecz o nie-jonizujący charakter używanego promieniowania.'
+ WHERE id = 'biofiz-w5-324';
+
+UPDATE public.questions
+   SET text = 'Po zaburzeniu impulsem $\pi/2$ wektor magnetyzacji w NMR powraca do ustawienia zgodnego z $B_0$. Czas, po którym wartość podłużna magnetyzacji osiąga 37% wartości początkowej, nazywamy czasem:',
+       options = '[{"id":"a","text":"Relaksacji spin-sieć ($T_1$)"},{"id":"b","text":"Relaksacji spin-spin ($T_2$)"},{"id":"c","text":"Połowicznego zaniku sygnału"},{"id":"d","text":"Poprzecznej relaksacji spin-sieć"}]'::jsonb,
+       explanation = 'Odbudowa **składowej podłużnej** magnetyzacji (wzdłuż $B_0$) to relaksacja **spin-sieć** ($T_1$) — i to ją mierzy pytanie. Charakterystyczny czas $T_1$ opisuje powrót magnetyzacji podłużnej do równowagi wskutek oddawania energii do otoczenia (sieci). **$T_2$** (spin-spin) dotyczy zaniku składowej **poprzecznej**. Opcja D jest sprzeczna pojęciowo — relaksacja spin-sieć odnosi się do składowej podłużnej, nie poprzecznej. Mnemonik: **$T_1$ = podŁużna (Longitudinal)**.'
+ WHERE id = 'biofiz-w5-326';
+
+UPDATE public.questions
+   SET text = 'Zewnętrzne pole magnetyczne powoduje, że w umieszczonej w nim próbce pojawia się wektor magnetyzacji próbki, który:',
+       options = '[{"id":"a","text":"Nie zależy od indukcji pola magnetycznego"},{"id":"b","text":"Jest odwrotnie proporcjonalny do indukcji pola i nie zależy od liczby jąder"},{"id":"c","text":"Jest odwrotnie proporcjonalny do liczby jąder i proporcjonalny do indukcji pola"},{"id":"d","text":"Jest proporcjonalny do indukcji pola magnetycznego oraz liczby jąder w próbce"}]'::jsonb,
+       explanation = 'Wektor magnetyzacji **M** rośnie z **indukcją pola** $B_0$ (większe pole → większa nadwyżka spinów na niższym poziomie energetycznym, zgodnie z rozkładem Boltzmanna) oraz z **liczbą jąder** w próbce (więcej momentów magnetycznych do zsumowania). Stąd proporcjonalność do obu wielkości. Im silniejsze pole i większa próbka, tym mocniejszy sygnał NMR — to fundament budowy aparatów o wysokim $B_0$.'
+ WHERE id = 'biofiz-w5-329';
+
+UPDATE public.questions
+   SET text = 'Zjawisko rozszczepienia energii jąder w zewnętrznym polu magnetycznym $B_0$ cechuje się tym, że różnica między poziomami energii jąder:',
+       options = '[{"id":"a","text":"Jest proporcjonalna do $B_0$ i nosi nazwę zjawiska Larmora"},{"id":"b","text":"Jest proporcjonalna do $B_0$ i nosi nazwę zjawiska Zeemana"},{"id":"c","text":"Jest odwrotnie proporcjonalna do $B_0$ i nosi nazwę zjawiska Larmora"},{"id":"d","text":"Jest odwrotnie proporcjonalna do $B_0$ i nosi nazwę zjawiska Zeemana"}]'::jsonb,
+       explanation = 'Rozszczepienie poziomów energetycznych jąder (lub elektronów) w polu magnetycznym to **zjawisko Zeemana**, a różnica energii $\Delta E = \gamma \hbar B_0$ jest **wprost proporcjonalna do $B_0$**. Im silniejsze pole, tym większy rozstaw poziomów i wyższa częstotliwość rezonansowa. **Częstotliwość Larmora** (precesji) także rośnie z $B_0$, ale samo rozszczepienie poziomów nosi nazwę Zeemana — to klucz różnicujący odpowiedzi.'
+ WHERE id = 'biofiz-w5-331';
+
+UPDATE public.questions
+   SET text = 'Wartość wektora magnetyzacji próbki w obrazowaniu NMR jest definiowana jako:',
+       options = '[{"id":"a","text":"objętość próbki"},{"id":"b","text":"wektorowa suma momentów magnetycznych jąder w próbce pomnożona przez objętość próbki"},{"id":"c","text":"wektorowy iloczyn momentów magnetycznych jąder pomnożony przez objętość próbki"},{"id":"d","text":"wektorowa suma momentów magnetycznych jąder w próbce podzielona przez objętość próbki"}]'::jsonb,
+       explanation = '**Magnetyzacja M** to **wektorowa suma momentów magnetycznych** jąder przypadająca na **jednostkę objętości**, czyli suma momentów **podzielona przez objętość** próbki. Jest to wielkość gęstościowa (moment magnetyczny na $\mathrm{m^3}$). Mnożenie przez objętość (opcja B) dałoby całkowity moment, a nie magnetyzację. „Iloczyn wektorowy" momentów (opcja C) nie ma tu sensu fizycznego. Definicja: $M = \dfrac{\sum \vec{\mu}}{V}$.'
+ WHERE id = 'biofiz-w5-334';
+
+UPDATE public.questions
+   SET text = 'Zgodnie z mechaniką kwantową materia wykazuje dualizm korpuskularno-falowy; każdej cząstce przypisuje się falę de Broglie''a. Długość fali $\lambda$ poruszającego się elektronu wynosi ($h$ – stała Plancka, $m$ – masa, $v$ – prędkość elektronu):',
+       options = '[{"id":"a","text":"$\\lambda = \\dfrac{h}{mv}$"},{"id":"b","text":"$\\lambda = \\dfrac{mv}{h}$"},{"id":"c","text":"$\\lambda = -\\dfrac{h}{mv}$"},{"id":"d","text":"$\\lambda = -\\dfrac{mv}{h}$"}]'::jsonb,
+       explanation = '**Równanie de Broglie''a:** $\lambda = \dfrac{h}{p} = \dfrac{h}{mv}$ — długość fali jest **odwrotnie proporcjonalna do pędu** cząstki. Im większy pęd (większa masa lub prędkość), tym krótsza fala — dlatego elektrony o dużej energii dają bardzo małe $\lambda$, co wykorzystuje mikroskopia elektronowa o wysokiej rozdzielczości. Długość fali jest dodatnia, więc warianty ze znakiem minus są niefizyczne, a odwrócony ułamek $mv/h$ ma złą zależność.'
+ WHERE id = 'biofiz-w5-355';
+
+UPDATE public.questions
+   SET text = 'Pęd fotonu określamy wzorem ($h$ – stała Plancka, $\nu$ – częstotliwość promieniowania, $c$ – prędkość światła, $\lambda$ – długość fali):',
+       options = '[{"id":"a","text":"$\\dfrac{h\\nu}{c} = \\dfrac{h}{\\lambda}$"},{"id":"b","text":"$\\dfrac{h\\lambda}{c} = \\dfrac{h}{\\nu}$"},{"id":"c","text":"$\\dfrac{hc}{\\nu} = \\dfrac{h}{\\lambda}$"},{"id":"d","text":"$\\dfrac{hc}{\\nu} = \\dfrac{\\lambda}{h}$"}]'::jsonb,
+       explanation = '**Pęd fotonu:** $p = \dfrac{h\nu}{c} = \dfrac{h}{\lambda}$ (bo $c = \lambda\nu$). Wynika z połączenia $E = h\nu$ oraz relatywistycznego $E = pc$ dla cząstki bezmasowej. Pęd jest **odwrotnie proporcjonalny do długości fali** — fotony krótkofalowe ($X$, $\gamma$) niosą większy pęd niż długofalowe. Na tym opiera się **ciśnienie promieniowania** i **efekt Comptona**. Pozostałe warianty dają błędne wymiary. Zapamiętaj: $p = \dfrac{h}{\lambda} = \dfrac{h\nu}{c}$.'
+ WHERE id = 'biofiz-w5-384';
+
+COMMIT;

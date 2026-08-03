@@ -2,6 +2,7 @@
 
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForProfile } from "@/features/access/server/requireLearningAccess";
 
 type ToggleBookmarkResult =
   | { ok: true; saved: boolean }
@@ -19,6 +20,11 @@ export async function toggleBookmark(
 
   if (authErr || !user) {
     return { ok: false, message: t("errors.mustLogin") };
+  }
+
+  const access = await requireLearningAccessForProfile(user.id);
+  if (!access.ok) {
+    return { ok: false, message: access.message };
   }
 
   // Check if already saved

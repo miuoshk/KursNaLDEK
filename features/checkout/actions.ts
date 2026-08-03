@@ -123,6 +123,13 @@ export async function createCheckoutSessionAction(formData: FormData) {
         track: parsed.data.track,
         year: String(parsed.data.year),
       },
+      payment_intent_data: {
+        metadata: {
+          user_id: user.id,
+          track: parsed.data.track,
+          year: String(parsed.data.year),
+        },
+      },
     });
 
     checkoutUrl = session.url ?? null;

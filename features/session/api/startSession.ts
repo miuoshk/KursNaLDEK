@@ -15,7 +15,13 @@ import {
 } from "@/features/session/server/questionSelection";
 import { fetchThemeLabelQuestionIds } from "@/lib/content/fetchThemeLabelQuestions";
 import { parseVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
-import type { StudyTrack } from "@/features/access/lib/studyAccess";
+import {
+  normalizeTrack,
+  normalizeYear,
+  type StudyTrack,
+  type StudyYear,
+} from "@/features/access/lib/studyAccess";
+import { requireLearningAccessForSelection } from "@/features/access/server/requireLearningAccess";
 import {
   getSubjectScopeIds,
   isSubjectInScope,
@@ -39,7 +45,6 @@ import {
 import { persistLastSessionQuestionCount } from "@/features/session/server/persistLastSessionQuestionCount";
 import { resolveStudySessionTopicId } from "@/features/session/server/resolveStudySessionTopicId";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
 
 const schema = z.object({
@@ -99,9 +104,15 @@ export async function startSession(
 
     const profile = await getProfileByUserId(user.id);
     let viewerTrack: StudyTrack = normalizeTrack(profile?.current_track);
+    const profileYear = normalizeYear(profile?.current_year);
 
     // ── Explicit question IDs (e.g. retry wrong questions) ──
     if (explicitIds && explicitIds.length > 0) {
+      const access = await requireLearningAccessForSelection(user.id, viewerTrack, profileYear);
+      if (!access.ok) {
+        return { ok: false, message: access.message };
+      }
+
       if (subjectId) {
         const { data: subTrack } = await supabase
           .from("subjects")
@@ -188,12 +199,19 @@ export async function startSession(
       };
     }
 
-    let subjectRow: { id: string; name: string; short_name: string } | null = null;
+    if (isMix) {
+      const access = await requireLearningAccessForSelection(user.id, viewerTrack, profileYear);
+      if (!access.ok) {
+        return { ok: false, message: access.message };
+      }
+    }
+
+    let subjectRow: { id: string; name: string; short_name: string; year?: number } | null = null;
     let subjectTrack: StudyTrack = "stomatologia";
     if (!isMix) {
       const { data: subject, error: subErr } = await supabase
         .from("subjects")
-        .select("id, name, short_name, track")
+        .select("id, name, short_name, track, year")
         .eq("id", subjectId)
         .maybeSingle();
 
@@ -203,7 +221,16 @@ export async function startSession(
       subjectRow = subject;
       subjectTrack = normalizeTrack(subject.track as string);
       viewerTrack = subjectTrack;
-      if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
+      const subjectYear = normalizeYear(subject.year as number | null | undefined);
+      const access = await requireLearningAccessForSelection(
+        user.id,
+        subjectTrack,
+        subjectYear,
+      );
+      if (!access.ok) {
+        return { ok: false, message: access.message };
+      }
+      if (isCatalogSubjectHidden(subjectId, subjectTrack, user?.email)) {
         return { ok: false, message: t("errors.subjectNotFound") };
       }
     }

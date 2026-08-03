@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 const schema = z.object({
   subjectId: z.string().min(1),
@@ -30,6 +31,11 @@ export async function createOsceTopicSession(
 
     if (authError || !user) {
       return { ok: false, message: "Brak sesji logowania." };
+    }
+
+    const access = await requireLearningAccessForSubject(user.id, parsed.data.subjectId);
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     const { data: inserted, error } = await supabase

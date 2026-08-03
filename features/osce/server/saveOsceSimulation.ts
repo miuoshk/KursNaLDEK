@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { OSCE_SIM_PASS_THRESHOLD } from "@/features/osce/constants/osceSimulation";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForProfile } from "@/features/access/server/requireLearningAccess";
 
 const stationResultSchema = z.object({
   stationId: z.string().min(1),
@@ -43,6 +44,11 @@ export async function saveOsceSimulationComplete(
 
     if (authError || !user) {
       return { ok: false, message: "Brak sesji logowania." };
+    }
+
+    const access = await requireLearningAccessForProfile(user.id);
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     const { examDay, stationResults } = parsed.data;

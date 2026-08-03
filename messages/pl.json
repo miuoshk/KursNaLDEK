@@ -920,6 +920,7 @@
     "errors": {
       "invalidParams": "Nieprawidłowe parametry sesji.",
       "mustLoginToStart": "Musisz być zalogowany, aby rozpocząć sesję.",
+      "noAccess": "Brak aktywnego dostępu do tego kursu.",
       "loadQuestionsFailed": "Nie udało się wczytać treści pytań.",
       "createSessionFailed": "Nie udało się utworzyć sesji.",
       "mixedNoTopicFilter": "Sesja mieszana nie obsługuje filtra po pojedynczym temacie.",
@@ -1098,6 +1099,172 @@
       "supabaseProfileUpdate": "Nie udało się zapisać wyboru roku w profilu.",
       "entitlementGrantFailed": "Nie udało się zapisać dostępu w bazie.",
       "unknown": "Nieznany błąd. Sprawdź logi serwera."
+    }
+  },
+  "marketing": {
+    "metadata": {
+      "title": "Kurs na LDEK — adaptacyjna nauka dla studentów medycyny",
+      "description": "Pytania, inteligentne powtórki i śledzenie postępów w jednej platformie dla studentów medycyny i stomatologii."
+    },
+    "nav": {
+      "ariaLabel": "Nawigacja strony głównej",
+      "how": "Jak działa",
+      "forWhom": "Dla kogo",
+      "faq": "FAQ",
+      "openMenu": "Otwórz menu",
+      "closeMenu": "Zamknij menu"
+    },
+    "actions": {
+      "register": "Załóż konto",
+      "login": "Zaloguj się",
+      "seeHow": "Zobacz, jak to działa",
+      "alreadyHaveAccount": "Mam już konto"
+    },
+    "hero": {
+      "eyebrow": "Kurs na LDEK",
+      "titleStart": "Nauka zaczyna się od",
+      "titleAccent": "dobrego pytania.",
+      "titleEnd": "Każda odpowiedź przybliża Cię do",
+      "titleEndAccent": "celu.",
+      "description": "Platforma do adaptacyjnej nauki dla studentów medycyny i stomatologii. Rozwiązujesz pytania, oceniasz swoją pewność, a system planuje kolejne powtórki.",
+      "loading": "Przygotowujemy platformę",
+      "scroll": "Przewiń, aby wejść",
+      "productProof": "Plan, pytania i powtórki w jednym rytmie nauki.",
+      "demo": {
+        "dailyGoal": "Cel dzienny",
+        "streak": "Seria",
+        "streakCaption": "Regularność widoczna dzień po dniu.",
+        "stageLabel": "Pokaż etap {number}",
+        "planEyebrow": "Plan na dziś",
+        "planTitle": "Twoja sesja jest gotowa.",
+        "planDescription": "Zaczynamy od pytań, które najbardziej opłaca się dziś powtórzyć.",
+        "reviews": "powtórek czeka",
+        "minutes": "minut nauki",
+        "start": "Rozpocznij sesję",
+        "questionEyebrow": "Pytanie 6 · Anatomia",
+        "question": "Który nerw odpowiada za unerwienie mięśni mimicznych?",
+        "answerA": "Nerw trójdzielny",
+        "answerB": "Nerw twarzowy",
+        "answerC": "Nerw językowo-gardłowy",
+        "explanationLabel": "Dlaczego?",
+        "explanation": "Nerw twarzowy prowadzi włókna ruchowe do mięśni mimicznych. System wróci do tego pytania w odpowiednim terminie.",
+        "summaryEyebrow": "Sesja zakończona",
+        "accuracy": "Trafność",
+        "summaryTitle": "Dobra robota. Następny krok już czeka.",
+        "scheduled": "zaplanowanych powtórek",
+        "accessibleDescription": "Animowany podgląd produktu pokazuje plan dnia, rozwiązywanie pytania i podsumowanie sesji."
+      }
+    },
+    "product": {
+      "eyebrow": "Twój pulpit",
+      "title": "Wiesz, co zrobić dzisiaj.",
+      "description": "Po zalogowaniu nie szukasz planu nauki. Widzisz cel, czekające powtórki i postęp, a następna sesja jest gotowa do uruchomienia.",
+      "dailyGoalTitle": "Konkretny plan na dziś",
+      "dailyGoalDescription": "Cel dzienny porządkuje naukę bez rozpisywania kolejnej tabeli.",
+      "reviewsTitle": "Powtórki we właściwym momencie",
+      "reviewsDescription": "System wraca do materiału wtedy, gdy pamięć naprawdę tego potrzebuje.",
+      "rankTitle": "Postęp, który widać",
+      "rankDescription": "Rangi, streak i opanowanie materiału pokazują regularność, nie puste punkty.",
+      "mock": {
+        "dailyGoal": "Cel dzienny",
+        "goalProgress": "Jeszcze 5 pytań na dziś",
+        "streak": "Seria",
+        "streakCaption": "Najdłuższa seria: 18 dni",
+        "reviews": "Powtórki",
+        "reviewAction": "Powtórz teraz",
+        "rank": "Ranga",
+        "rankName": "Rezydent II",
+        "rankProgress": "680 XP do kolejnej rangi"
+      }
+    },
+    "session": {
+      "eyebrow": "Jak działa sesja",
+      "title": "Jedna odpowiedź uruchamia cały proces.",
+      "description": "Każda sesja łączy pytania, wyjaśnienia i algorytm powtórek. Uczysz się aktywnie, a platforma porządkuje to, co powinno wrócić później.",
+      "steps": {
+        "chooseTitle": "Wybierasz cel",
+        "chooseDescription": "Zaczynasz od inteligentnej sesji, konkretnego przedmiotu albo samych zaległych powtórek.",
+        "answerTitle": "Rozwiązujesz i rozumiesz",
+        "answerDescription": "Po odpowiedzi dostajesz wyjaśnienie mechanizmu, a nie tylko oznaczenie poprawnej opcji.",
+        "rateTitle": "Oceniasz pewność",
+        "rateDescription": "Krótka samoocena pomaga zaplanować termin następnego kontaktu z pytaniem."
+      },
+      "mock": {
+        "smartSession": "Inteligentna sesja",
+        "recommended": "Polecane",
+        "smartCaption": "Pytania dobrane do Twojej wiedzy i zaplanowanych powtórek.",
+        "answerA": "Nerw trójdzielny",
+        "answerB": "Nerw twarzowy",
+        "answerC": "Nerw językowo-gardłowy",
+        "didNotKnow": "Nie wiedziałem",
+        "knewSomewhat": "Trochę wiedziałem",
+        "knewForSure": "Wiedziałem na pewno"
+      }
+    },
+    "progress": {
+      "eyebrow": "Postęp bez zgadywania",
+      "title": "Widzisz, co naprawdę umiesz.",
+      "description": "Aktywność, opanowanie przedmiotów i słabe obszary składają się w jeden czytelny obraz przygotowania.",
+      "points": {
+        "activity": "Historia regularnej pracy zamiast samej liczby logowań.",
+        "weaknesses": "Tematy wymagające uwagi są widoczne przed kolejną sesją.",
+        "schedule": "Zaplanowane powtórki zmieniają wiedzę krótkotrwałą w trwałą."
+      },
+      "mock": {
+        "title": "Twoja aktywność",
+        "caption": "Ostatnie 13 tygodni",
+        "mastery": "Opanowanie",
+        "biochemistry": "Biochemia",
+        "physiology": "Fizjologia",
+        "microbiology": "Mikrobiologia"
+      }
+    },
+    "paths": {
+      "eyebrow": "Od podstaw do egzaminu",
+      "title": "Platforma rośnie razem z Twoim kierunkiem.",
+      "description": "Wybierasz kierunek i rok. Katalog przedmiotów, pytania i ścieżka nauki dopasowują się do aktualnego etapu studiów.",
+      "dentistry": {
+        "title": "Stomatologia",
+        "description": "Podstawowe nauki medyczne, kolejne lata studiów i przygotowanie do LDEK w jednym koncie.",
+        "scope": "Rok 1–3 · LDEK"
+      },
+      "medicine": {
+        "title": "Kierunek lekarski",
+        "description": "Przedmioty podstawowe i kliniczne uporządkowane według roku, z aktywnym przypominaniem materiału.",
+        "scope": "Rok 1–3 · kolejne moduły w przygotowaniu"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Zanim zaczniesz.",
+      "description": "Najważniejsze informacje o dostępie, nauce i działaniu platformy.",
+      "items": {
+        "accessQuestion": "Jak długo mam dostęp po zakupie?",
+        "accessAnswer": "Dostęp działa zgodnie z wariantem wybranym podczas zakupu. Aktualny zakres i warunki zobaczysz przed przejściem do płatności.",
+        "universityQuestion": "Czy pytania są dopasowane do mojej uczelni?",
+        "universityAnswer": "Katalog jest uporządkowany według kierunku i roku. Zakres może różnić się między uczelniami, dlatego przed wyborem dostępu możesz sprawdzić dostępne przedmioty.",
+        "adaptiveQuestion": "Na czym polega adaptacyjna nauka?",
+        "adaptiveAnswer": "Platforma bierze pod uwagę Twoje odpowiedzi, ocenę pewności i terminy poprzednich powtórek, aby dobierać materiał wymagający uwagi.",
+        "mobileQuestion": "Czy mogę korzystać na telefonie?",
+        "mobileAnswer": "Tak. Platforma działa w przeglądarce na telefonie, tablecie i komputerze bez instalowania aplikacji.",
+        "paymentQuestion": "Jak wygląda płatność?",
+        "paymentAnswer": "Po utworzeniu konta wybierasz kierunek i rok, a dostęp płatny aktywujesz przez bezpieczny checkout Stripe.",
+        "trialQuestion": "Czy mogę przetestować platformę?",
+        "trialAnswer": "Dostępność wariantu testowego zależy od wybranego kierunku i roku. Aktualne opcje zobaczysz po założeniu konta."
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Zacznij od jednej sesji",
+      "title": "Mniej planowania.",
+      "accent": "Więcej świadomej nauki.",
+      "description": "Załóż konto, wybierz swój kierunek i zobacz, jak platforma układa kolejne kroki."
+    },
+    "footer": {
+      "ariaLabel": "Linki w stopce",
+      "contact": "Kontakt",
+      "terms": "Regulamin",
+      "privacy": "Polityka prywatności",
+      "copyright": "© 2026 Zenit Labs Sp. z o.o."
     }
   },
   "checkout": {

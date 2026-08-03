@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurs na LDEK</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--olive:#274E34;--teal:#003932;--teal-deep:#002A27;--slate:#1E3F44;--slate-mid:#1F4F5A;--sage:#367368;--gold:#C9A84C;--gold-light:#E4CA72;--gold-glow:#C9A84C25;--bg:#011210;--bg-card:#041E1A;--bg-card-h:#072822;--text:#E2EDE8;--text-s:#8BABA0;--text-m:#4A7268;--border:#0F2E28;--border-h:#1A4038;--r:14px;--rl:20px;--ease:cubic-bezier(.16,1,.3,1);--eo:cubic-bezier(0,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;opacity:.02;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:10000}
+::selection{background:var(--teal);color:#fff}a{color:inherit;text-decoration:none}
+
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+.o1{width:600px;height:600px;top:-180px;right:-80px;background:radial-gradient(circle,rgba(0,57,50,.35),transparent 70%);animation:od 22s ease-in-out infinite}
+.o2{width:450px;height:450px;bottom:25%;left:-120px;background:radial-gradient(circle,var(--gold-glow),transparent 70%);animation:od 28s ease-in-out infinite reverse}
+@keyframes od{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-35px) scale(1.04)}66%{transform:translate(-18px,28px) scale(.96)}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease)}
+.nav.scrolled{background:rgba(1,18,16,.88);backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:.6rem;z-index:10}
+.nav-logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--teal),var(--sage));border-radius:10px;display:grid;place-items:center;transition:transform .3s var(--ease)}
+.nav-logo-mark svg{width:18px;height:18px}
+.nav-logo:hover .nav-logo-mark{transform:rotate(-6deg) scale(1.06)}
+.nav-logo-text{font-family:'DM Serif Display',serif;font-size:1.15rem;letter-spacing:-.01em}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none;z-index:10}
+.nav-links a{font-size:.84rem;font-weight:500;color:var(--text-s);letter-spacing:.01em;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--sage);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.5rem 1.35rem;background:var(--teal);border:1px solid rgba(54,115,104,.3);border-radius:100px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .3s var(--ease);z-index:10}
+.nav-cta:hover{background:var(--sage);border-color:var(--sage);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,57,50,.3)}
+.nav-mob{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;z-index:10}
+
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:25% center;opacity:0;transform:scale(1.06);animation:hr 2.2s var(--ease) .2s forwards}
+@keyframes hr{to{opacity:.14;transform:scale(1)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,transparent 30%),linear-gradient(180deg,transparent 55%,var(--bg) 100%),linear-gradient(90deg,var(--bg) 0%,rgba(1,18,16,.6) 55%,transparent 100%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;background:var(--sage);border-radius:50%;opacity:0;animation:pu linear infinite}
+@keyframes pu{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:.4}90%{opacity:.4}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:9rem 2rem 5rem;width:100%}
+.hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.8rem,6.5vw,5rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:1.75rem}
+.hl{display:block;overflow:hidden}
+.hli{display:block;opacity:0;transform:translateY(110%);animation:li 1s var(--ease) forwards}
+.hl:nth-child(1) .hli{animation-delay:.6s}.hl:nth-child(2) .hli{animation-delay:.78s}
+@keyframes li{to{opacity:1;transform:translateY(0)}}
+.hero h1 em{font-style:italic;color:var(--gold);position:relative}
+.hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);animation:ul 1.4s var(--ease) 1.5s forwards}
+@keyframes ul{to{width:100%}}
+.hero-sub{font-size:clamp(.95rem,1.6vw,1.15rem);color:var(--text-s);max-width:500px;line-height:1.8;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:su .8s var(--ease) 1.1s forwards}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:5rem;opacity:0;transform:translateY(20px);animation:su .8s var(--ease) 1.3s forwards}
+@keyframes su{to{opacity:1;transform:translateY(0)}}
+.btn{padding:.9rem 2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .4s var(--ease);border:none;position:relative;overflow:hidden}
+.btn-p{background:linear-gradient(135deg,var(--teal),var(--sage));color:#fff;box-shadow:0 4px 20px rgba(0,57,50,.25),inset 0 1px 0 rgba(255,255,255,.08)}
+.btn-p::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sage),#45897b);opacity:0;transition:opacity .4s}
+.btn-p:hover::before{opacity:1}.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,57,50,.35),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn-p span{position:relative;z-index:1}
+.btn-g{background:transparent;color:var(--text);border:1px solid var(--border-h)}
+.btn-g:hover{border-color:var(--text-m);background:rgba(255,255,255,.02);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3.5rem;opacity:0;transform:translateY(20px);animation:su .8s var(--ease) 1.5s forwards}
+.hs{position:relative}.hs::before{content:'';position:absolute;top:6px;left:-1.75rem;width:1px;height:36px;background:var(--border)}.hs:first-child::before{display:none}
+.hsv{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--gold);letter-spacing:-.03em;line-height:1.2}
+.hsl{font-size:.72rem;font-weight:500;color:var(--text-m);letter-spacing:.04em;text-transform:uppercase;margin-top:.1rem}
+
+.section{padding:7rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.sov{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.75rem}
+.sh{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:400;letter-spacing:-.025em;line-height:1.15;margin-bottom:1rem}
+.sp{color:var(--text-s);font-size:1rem;line-height:1.75;max-width:520px;margin-bottom:3.5rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1200px;margin:0 auto}
+.sr{opacity:0;transform:translateY(36px);transition:opacity .85s var(--eo),transform .85s var(--ease)}
+.sr.vis{opacity:1;transform:translateY(0)}
+.sr-d1{transition-delay:.06s}.sr-d2{transition-delay:.12s}.sr-d3{transition-delay:.18s}.sr-d4{transition-delay:.24s}.sr-d5{transition-delay:.3s}.sr-d6{transition-delay:.36s}
+
+#kierunki{scroll-margin-top:5rem}
+.pt{display:flex;gap:1rem;margin-bottom:3rem}
+.ptab{flex:1;max-width:340px;padding:1.6rem 1.75rem;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--rl);cursor:pointer;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.ptab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,57,50,.08),transparent);opacity:0;transition:opacity .4s}
+.ptab:hover{border-color:var(--border-h)}.ptab:hover::before{opacity:1}
+.ptab.active{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),0 8px 36px rgba(0,57,50,.2)}.ptab.active::before{opacity:1}
+.pti{width:40px;height:40px;border-radius:10px;background:rgba(0,57,50,.15);border:1px solid var(--border);display:grid;place-items:center;margin-bottom:.75rem;position:relative;z-index:1}
+.pti svg{width:20px;height:20px;stroke:var(--sage);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ptn{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:.2rem;position:relative;z-index:1}
+.pts{font-size:.8rem;color:var(--text-m);position:relative;z-index:1}
+
+.cp{display:none}.cp.active{display:block;animation:ci .5s var(--ease)}
+@keyframes ci{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.cl{font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);margin-bottom:1.25rem;margin-top:2.5rem}.cl:first-child{margin-top:0}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.15rem}
+.cc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:1.85rem;transition:all .4s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.cc::after{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--teal),var(--sage));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.cc:hover{border-color:var(--border-h);background:var(--bg-card-h);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.3),0 0 30px rgba(0,57,50,.08)}.cc:hover::after{transform:scaleX(1)}
+.cct{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.15rem}
+.cc h3{font-family:'DM Serif Display',serif;font-size:1.4rem;font-weight:400}
+.cb{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:100px;white-space:nowrap}
+.cb-g{background:rgba(54,115,104,.12);color:var(--sage);border:1px solid rgba(54,115,104,.2)}
+.cb-y{background:rgba(201,168,76,.08);color:var(--gold);border:1px solid rgba(201,168,76,.15)}
+.cb-s{background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04));color:var(--gold-light);border:1px solid rgba(201,168,76,.2)}
+.ccs{list-style:none;flex-grow:1;margin-bottom:1.4rem}
+.ccs li{font-size:.86rem;color:var(--text-s);padding:.32rem 0;display:flex;align-items:center;gap:.55rem}
+.ccs li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--sage);flex-shrink:0}
+.ccs li.dim{color:var(--text-m);font-style:italic}.ccs li.dim::before{background:var(--text-m)}
+.ccb{display:flex;justify-content:space-between;align-items:center;padding-top:1.15rem;border-top:1px solid var(--border);margin-top:auto}
+.ccp{font-weight:700;font-size:1.1rem}.ccpp{font-size:.7rem;color:var(--text-m)}
+.ccbt{padding:.55rem 1.3rem;background:var(--teal);color:#fff;border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s var(--ease)}
+.ccbt:hover{background:var(--sage);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,57,50,.2)}
+.ccbt.off{background:var(--border);color:var(--text-m);cursor:default;pointer-events:none}
+
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem}
+.fc{padding:2.15rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:all .4s var(--ease)}
+.fc:hover{border-color:var(--border-h);transform:translateY(-3px);box-shadow:0 14px 44px rgba(0,0,0,.2)}
+.fci{width:46px;height:46px;background:rgba(0,57,50,.1);border:1px solid var(--border);border-radius:12px;display:grid;place-items:center;margin-bottom:1.15rem;transition:all .4s var(--ease)}
+.fci svg{width:22px;height:22px;stroke:var(--sage);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fc:hover .fci{background:rgba(0,57,50,.18);border-color:var(--teal);transform:scale(1.05)}.fc:hover .fci svg{stroke:var(--gold)}
+.fc h3{font-family:'DM Serif Display',serif;font-size:1rem;font-weight:400;margin-bottom:.45rem}
+.fc p{font-size:.86rem;color:var(--text-s);line-height:1.65}
+
+.showcase{padding:7rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.sv{position:relative;border-radius:var(--rl);overflow:hidden}
+.sv img{width:100%;display:block;transition:transform 6s var(--eo)}.sv:hover img{transform:scale(1.03)}
+.sv::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,42,39,.6) 0%,rgba(30,63,68,.4) 40%,rgba(1,18,16,.85) 100%);pointer-events:none}
+.sv::before{content:'';position:absolute;inset:-1px;border-radius:var(--rl);border:1px solid var(--border);z-index:3;pointer-events:none}
+.st h2{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,3.2vw,2.35rem);font-weight:400;letter-spacing:-.02em;line-height:1.2;margin-bottom:1.15rem}
+.st p{color:var(--text-s);font-size:1rem;line-height:1.75;margin-bottom:2rem}
+.ckl{list-style:none;margin-bottom:2.5rem;display:flex;flex-direction:column;gap:.8rem}
+.ckl li{display:flex;align-items:center;gap:.7rem;font-size:.9rem;color:var(--text-s)}
+.ckm{width:20px;height:20px;background:rgba(0,57,50,.15);border:1px solid var(--teal);border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.ckm svg{width:10px;height:10px;stroke:var(--sage);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+.fl{max-width:700px}
+.fi{border-bottom:1px solid var(--border)}
+.fq{width:100%;padding:1.4rem 0;background:none;border:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .3s}
+.fq:hover{color:var(--gold)}
+.fchev{width:20px;height:20px;flex-shrink:0;transition:transform .4s var(--ease)}
+.fchev svg{width:20px;height:20px;stroke:var(--text-m);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fi.open .fchev{transform:rotate(180deg)}.fi.open .fchev svg{stroke:var(--sage)}
+.fa{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.fai{padding-bottom:1.4rem;font-size:.9rem;color:var(--text-s);line-height:1.7}
+.fi.open .fa{max-height:250px}
+
+.fcta{text-align:center;padding:8rem 2rem;position:relative;z-index:1}
+.fcta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:650px;height:450px;background:radial-gradient(ellipse,rgba(0,57,50,.15),transparent 65%);pointer-events:none}
+.fcta h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:1.15rem;position:relative}
+.fcta h2 em{color:var(--gold);font-style:italic}
+.fcta p{color:var(--text-s);font-size:1.05rem;margin-bottom:2.5rem;position:relative}
+
+.footer{padding:2.5rem 2rem;border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-i{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-b{font-family:'DM Serif Display',serif;font-size:.9rem;color:var(--text-m)}.footer-b span{color:var(--gold);opacity:.5}
+.footer-l{display:flex;gap:2rem;list-style:none}
+.footer-l a{font-size:.8rem;color:var(--text-m);transition:color .3s}.footer-l a:hover{color:var(--text-s)}
+.footer-c{font-size:.7rem;color:var(--text-m);opacity:.5}
+
+
+.hero-seq{position:relative;height:360vh;background:var(--bg)}
+.hero-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:#010d0c}
+.hero-canvas-wrap,.hero-sequence-overlay{position:absolute;inset:0}
+.hero-sequence-overlay{background:
+linear-gradient(180deg,rgba(1,18,16,.72) 0%,rgba(1,18,16,.16) 22%,rgba(1,18,16,.08) 54%,rgba(1,18,16,.58) 100%),
+linear-gradient(90deg,rgba(1,18,16,.82) 0%,rgba(1,18,16,.34) 48%,rgba(1,18,16,.10) 100%)}
+#hero-sequence-canvas{width:100%;height:100%;display:block}
+.hero-copy{position:relative;z-index:3;max-width:1200px;height:100%;margin:0 auto;padding:8.5rem 2rem 4rem;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.hero-copy-top{max-width:760px}
+.hero-kicker{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;opacity:.86}
+.hero-seq-title{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.9rem,6.8vw,5.5rem);line-height:1.04;letter-spacing:-.035em;max-width:8ch;text-wrap:balance}
+.hero-seq-title .accent{color:var(--gold);font-style:italic}
+.hero-copy-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero-seq-note{max-width:380px;color:var(--text-s);font-size:.95rem;line-height:1.7}
+.hero-seq-progress{display:flex;align-items:center;gap:.9rem;color:var(--text-m);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hero-seq-line{width:120px;height:1px;background:linear-gradient(90deg,rgba(201,168,76,.85),rgba(201,168,76,.1))}
+.hero-seq-stats{display:flex;gap:3rem;flex-wrap:wrap;opacity:0;transform:translateY(28px)}
+.hero-seq-stats .hs::before{background:rgba(255,255,255,.08)}
+.hero-seq-end{opacity:0;transform:translateY(24px)}
+.hero-seq-end .hero-seq-title{max-width:12ch}
+.hero-hint{position:absolute;left:50%;bottom:1.35rem;transform:translateX(-50%);z-index:4;color:rgba(226,237,232,.66);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;pointer-events:none}
+.hero-hint::after{content:'';width:38px;height:1px;background:linear-gradient(90deg,rgba(201,168,76,.72),rgba(201,168,76,.1))}
+@media(max-width:768px){
+  .hero-seq{height:300vh}
+  .hero-copy{padding:7rem 1.25rem 2.5rem}
+  .hero-copy-bottom{flex-direction:column;align-items:flex-start}
+  .hero-seq-stats{gap:1.6rem 2rem}
+  .hero-seq-line{width:72px}
+}
+@media(max-width:1024px){.sg{grid-template-columns:1fr;gap:3rem}.sv{order:-1}.fg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.nav-links{display:none}.nav-mob{display:block}.hero-content{padding:7rem 1.25rem 3rem}.hero-stats{gap:2rem;flex-wrap:wrap}.hs::before{display:none}.hsv{font-size:1.5rem}.pt{flex-direction:column}.ptab{max-width:100%}.fg{grid-template-columns:1fr}.section{padding:5rem 1.25rem}.showcase{padding:5rem 1.25rem}.footer-i{flex-direction:column;text-align:center;gap:1.25rem}.cg{grid-template-columns:1fr}}
+@media(max-width:480px){.hero-btns{flex-direction:column}.btn{width:100%;text-align:center;justify-content:center}.hero h1{font-size:2.4rem}.cc{padding:1.4rem}.fcta{padding:5rem 1.25rem}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo"><div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 6 5 6 9c0 3 1 5 2 6l-1 5h10l-1-5c1-1 2-3 2-6 0-4-2-7-6-7z"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div><div class="nav-logo-text">Kurs na <span>LDEK</span></div></a>
+  <ul class="nav-links"><li><a href="#kierunki">Kursy</a></li><li><a href="#features">Jak to działa</a></li><li><a href="#faq">FAQ</a></li></ul>
+  <a href="#kierunki" class="nav-cta">Zacznij teraz</a>
+  <button class="nav-mob" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">☰</button>
+</nav>
+
+
+<section class="hero-seq" id="hero-seq">
+  <div class="hero-sticky">
+    <div class="hero-canvas-wrap">
+      <canvas id="hero-sequence-canvas" aria-label="Animowany hero Kurs na LDEK"></canvas>
+      <div class="hero-sequence-overlay"></div>
+    </div>
+    <div class="hero-copy">
+      <div class="hero-copy-top">
+        <div class="hero-kicker" id="hero-kicker">Kurs na LDEK</div>
+        <div class="hero-seq-start" id="hero-start">
+          <h1 class="hero-seq-title">Marzenie to <span class="accent">początek.</span></h1>
+        </div>
+        <div class="hero-seq-end" id="hero-end">
+          <h1 class="hero-seq-title">Każdy krok przybliża Cię do <span class="accent">celu.</span></h1>
+        </div>
+      </div>
+      <div class="hero-copy-bottom">
+        <p class="hero-seq-note" id="hero-note">Przewiń i zobacz drogę do platformy — bez autoplay, bez wideo, tylko sterowanie scrollem klatka po klatce.</p>
+        <div class="hero-seq-progress" id="hero-progress">
+          <span>Scrolluj</span><span class="hero-seq-line"></span>
+        </div>
+        <div class="hero-seq-stats" id="hero-stats">
+          <div class="hs"><div class="hsv">444+</div><div class="hsl">Aktywnych użytkowników</div></div>
+          <div class="hs"><div class="hsv">99.2%</div><div class="hsl">Zdawalność z kursem</div></div>
+          <div class="hs"><div class="hsv">790k+</div><div class="hsl">Rozwiązanych pytań</div></div>
+          <div class="hs"><div class="hsv">2 500+</div><div class="hsl">Pytań w bazie</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-hint" id="hero-hint">Scroll</div>
+  </div>
+</section>
+
+
+<section class="section" id="kierunki">
+  <div class="sov sr">Wybierz kierunek</div>
+  <h2 class="sh sr sr-d1">Od pierwszego roku<br>do egzaminu.</h2>
+  <p class="sp sr sr-d2">Wybierz kierunek i rok — platforma dopasuje pytania do Twojego poziomu i postępów.</p>
+  <div class="pt sr sr-d3">
+    <div class="ptab active" onclick="switchPath('stoma')"><div class="pti"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 3 1 5 2 6l-1 5h10l-1-5c1-1 2-3 2-6 0-4-2-7-6-7z"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div><div class="ptn">Stomatologia</div><div class="pts">Rok 1–3 · OSCE · LDEK</div></div>
+    <div class="ptab" onclick="switchPath('lek')"><div class="pti"><svg viewBox="0 0 24 24"><path d="M4.8 2.3A2 2 0 0 0 3 4.3v1.5a2 2 0 0 0 .8 1.6L12 14l8.2-6.6a2 2 0 0 0 .8-1.6V4.3a2 2 0 0 0-1.8-2H4.8z"/><path d="M12 14v8"/><path d="M8 18h8"/></svg></div><div class="ptn">Lekarski</div><div class="pts">Rok 1–3 · LEK</div></div>
+  </div>
+  <div class="cp active" id="p-stoma">
+    <div class="cl">Kurs na PNM — Podstawowe Nauki Medyczne</div>
+    <div class="cg">
+      <div class="cc"><div class="cct"><h3>Rok 1</h3><span class="cb cb-g">✓ Czerwiec</span></div><ul class="ccs"><li>Biologia</li><li>Biofizyka</li><li>Chemia</li><li class="dim">Anatomia — wkrótce</li><li class="dim">Histologia — wkrótce</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt">Kup dostęp</button></div></div>
+      <div class="cc"><div class="cct"><h3>Rok 2</h3><span class="cb cb-g">✓ Czerwiec</span></div><ul class="ccs"><li>Biochemia</li><li>Fizjologia</li><li>Mikrobiologia</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt">Kup dostęp</button></div></div>
+      <div class="cc"><div class="cct"><h3>Rok 3</h3><span class="cb cb-g">✓ Czerwiec</span></div><ul class="ccs"><li>Farmakologia</li><li>Patomorfologia</li><li>Chirurgia</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt">Kup dostęp</button></div></div>
+    </div>
+    <div class="cl">Kursy egzaminacyjne</div>
+    <div class="cg">
+      <div class="cc"><div class="cct"><h3>Kurs na OSCE</h3><span class="cb cb-y">Wkrótce</span></div><ul class="ccs"><li>Stacje kliniczne</li><li>Symulacje procedur</li><li>Komunikacja z pacjentem</li></ul><div class="ccb"><div><span class="ccp">99 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt off">Powiadom mnie</button></div></div>
+      <div class="cc"><div class="cct"><h3>Kurs na LDEK</h3><span class="cb cb-s">★ Wrzesień 2026</span></div><ul class="ccs"><li>Pełny zakres LDEK</li><li>Baza pytań egzaminacyjnych</li><li>Adaptacyjny tryb nauki</li><li>Symulator egzaminu</li></ul><div class="ccb"><div><span class="ccp">249 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt off">Powiadom mnie</button></div></div>
+    </div>
+  </div>
+  <div class="cp" id="p-lek">
+    <div class="cl">Kurs na PNM — Podstawowe Nauki Medyczne</div>
+    <div class="cg">
+      <div class="cc"><div class="cct"><h3>Rok 1</h3><span class="cb cb-g">✓ Czerwiec</span></div><ul class="ccs"><li>Biologia</li><li class="dim">Anatomia — wkrótce</li><li class="dim">Histologia — wkrótce</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt">Kup dostęp</button></div></div>
+      <div class="cc"><div class="cct"><h3>Rok 2</h3><span class="cb cb-y">Wkrótce</span></div><ul class="ccs"><li>Biochemia</li><li>Fizjologia</li><li>Mikrobiologia</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt off">Powiadom mnie</button></div></div>
+      <div class="cc"><div class="cct"><h3>Rok 3</h3><span class="cb cb-y">Wkrótce</span></div><ul class="ccs"><li>Farmakologia</li><li>Patomorfologia</li><li>Patofizjologia</li></ul><div class="ccb"><div><span class="ccp">49 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt off">Powiadom mnie</button></div></div>
+    </div>
+    <div class="cl">Kursy egzaminacyjne</div>
+    <div class="cg">
+      <div class="cc"><div class="cct"><h3>Kurs na LEK</h3><span class="cb cb-s">★ 2027</span></div><ul class="ccs"><li>Pełny zakres LEK</li><li>Baza pytań egzaminacyjnych</li><li>Adaptacyjny tryb nauki</li><li>Symulator egzaminu</li></ul><div class="ccb"><div><span class="ccp">249 zł</span><span class="ccpp"> / mies.</span></div><button class="ccbt off">Powiadom mnie</button></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="features">
+  <div class="sov sr">Jak to działa</div>
+  <h2 class="sh sr sr-d1">Nauka, która się<br>dostosowuje.</h2>
+  <p class="sp sr sr-d2">Silnik ANTARES AI analizuje Twoje odpowiedzi i dobiera kolejne pytania — skupia się na tym, czego jeszcze nie umiesz.</p>
+  <div class="fg">
+    <div class="fc sr sr-d1"><div class="fci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg></div><h3>Adaptacyjne pytania</h3><p>Algorytm uczy się Twoich słabych stron i serwuje pytania tam, gdzie masz luki. Zero marnowania czasu na to, co już umiesz.</p></div>
+    <div class="fc sr sr-d2"><div class="fci"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5.5-4 7l-1 6H10l-1-6C7 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><line x1="9" y1="22" x2="15" y2="22"/></svg></div><h3>Wyjaśnienia AI</h3><p>Każde pytanie ma wyjaśnienie od ANTARES — mechanizm, schemat, skojarzenie. Jak korepetycje, nie jak podręcznik.</p></div>
+    <div class="fc sr sr-d3"><div class="fci"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Gamifikacja i ranking</h3><p>XP, poziomy, streak, ranking — rywalizuj ze znajomymi z roku. Nauka idzie lepiej, gdy ktoś depcze Ci po piętach.</p></div>
+    <div class="fc sr sr-d4"><div class="fci"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><polyline points="22 4 12 12 9 9"/></svg></div><h3>Śledzenie postępów</h3><p>Radar chart kompetencji, progress bar na każdy przedmiot. Widzisz gdzie jesteś i ile Ci zostało.</p></div>
+    <div class="fc sr sr-d5"><div class="fci"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></div><h3>Ucz się gdziekolwiek</h3><p>Pełna responsywność — telefon, tablet, laptop. W tramwaju, między zajęciami, o 2 w nocy przed egzaminem.</p></div>
+    <div class="fc sr sr-d6"><div class="fci"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Realne pytania egzaminacyjne</h3><p>Pytania pisane pod realne egzaminy na Twoim kierunku. Nie losowe quizy — pytania, które pojawiają się na sesji.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="showcase">
+  <div class="sg">
+    <div class="sv sr"><img src="scrubs.jpeg" alt="Student medycyny i stomatologii"></div>
+    <div class="st">
+      <div class="sov sr">Dlaczego my</div>
+      <h2 class="sr sr-d1">Zbudowane przez studenta.<br>Dla studentów.</h2>
+      <p class="sr sr-d2">Kurs na LDEK nie powstał w korporacji. To platforma stworzona przez studenta stomatologii, który sam przeszedł przez sesje — wie co boli i co działa.</p>
+      <ul class="ckl sr sr-d3">
+        <li><span class="ckm"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Prawie cały rocznik na SUM już korzysta</li>
+        <li><span class="ckm"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Zdawalność z kursem wzrosła do 99.2%</li>
+        <li><span class="ckm"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Break-even w pierwszym miesiącu</li>
+        <li><span class="ckm"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Ponad 790 000 rozwiązanych pytań</li>
+      </ul>
+      <a href="#kierunki" class="btn btn-p sr sr-d4"><span>Zobacz kursy →</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section" id="faq">
+  <div class="sov sr">FAQ</div>
+  <h2 class="sh sr sr-d1">Często zadawane pytania</h2>
+  <p class="sp sr sr-d2">Jeśli nie znajdziesz odpowiedzi — napisz do nas.</p>
+  <div class="fl">
+    <div class="fi sr"><button class="fq" onclick="toggleFaq(this)">Jak długo mam dostęp po zakupie?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">Dostęp jest aktywny tak długo, jak trwa Twoja subskrypcja. Możesz anulować w dowolnym momencie — dostęp zostanie utrzymany do końca opłaconego okresu.</div></div></div>
+    <div class="fi sr sr-d1"><button class="fq" onclick="toggleFaq(this)">Czy pytania są dopasowane do mojej uczelni?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">Aktualnie baza pytań jest zbudowana pod egzaminy na Śląskim Uniwersytecie Medycznym w Zabrzu. Pracujemy nad rozszerzeniem na kolejne uczelnie — pytania pokrywają się tematycznie z programem większości uczelni medycznych w Polsce.</div></div></div>
+    <div class="fi sr sr-d2"><button class="fq" onclick="toggleFaq(this)">Co to jest ANTARES AI?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">ANTARES to nasz silnik sztucznej inteligencji, który generuje rozbudowane wyjaśnienia do każdego pytania. Mechanizm, skojarzenie, schemat — wyjaśnione tak, żeby zapamiętać, a nie wykuć.</div></div></div>
+    <div class="fi sr sr-d3"><button class="fq" onclick="toggleFaq(this)">Czy mogę korzystać na telefonie?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">Tak — platforma jest w pełni responsywna. Działa w przeglądarce na każdym urządzeniu, bez instalowania aplikacji.</div></div></div>
+    <div class="fi sr sr-d4"><button class="fq" onclick="toggleFaq(this)">Jaka jest metoda płatności?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">Płatności obsługuje Stripe — akceptujemy karty (Visa, Mastercard), BLIK i Apple Pay. Bezpieczna, szyfrowana transakcja.</div></div></div>
+    <div class="fi sr sr-d5"><button class="fq" onclick="toggleFaq(this)">Czy mogę przetestować za darmo?<span class="fchev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="fa"><div class="fai">Tak — Rok 2 stomatologii (biochemia, fizjologia, mikrobiologia) jest dostępny w wersji darmowej. Przetestuj bez zobowiązań.</div></div></div>
+  </div>
+</section>
+
+<section class="fcta">
+  <h2 class="sr">Sesja nie czeka.<br><em>Ty też nie powinieneś.</em></h2>
+  <p class="sr sr-d1">Dołącz do 444+ studentów, którzy zdają za pierwszym razem.</p>
+  <a href="#kierunki" class="btn btn-p sr sr-d2"><span>Zacznij teraz →</span></a>
+</section>
+
+<footer class="footer"><div class="footer-i"><div class="footer-b">Kurs na <span>LDEK</span> · by Zenit Labs</div><ul class="footer-l"><li><a href="mailto:kontakt@kursnaldek.pl">Kontakt</a></li><li><a href="#">Regulamin</a></li><li><a href="#">Polityka prywatności</a></li></ul><div class="footer-c">© 2026 Zenit Labs Sp. z o.o.</div></div></footer>
+
+<script>
+!function(){for(var c=document.getElementById('particles'),i=0;i<25;i++){var p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(10+Math.random()*18)+'s';p.style.animationDelay=Math.random()*12+'s';p.style.width=p.style.height=(1+Math.random()*1.5)+'px';c.appendChild(p)}}();
+var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+function switchPath(p){document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.cp').forEach(function(c){c.classList.remove('active')});if(p==='stoma'){document.querySelectorAll('.ptab')[0].classList.add('active');document.getElementById('p-stoma').classList.add('active')}else{document.querySelectorAll('.ptab')[1].classList.add('active');document.getElementById('p-lek').classList.add('active')}}
+function toggleFaq(b){var item=b.parentElement,was=item.classList.contains('open');document.querySelectorAll('.fi').forEach(function(i){i.classList.remove('open')});if(!was)item.classList.add('open')}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.sr').forEach(function(el){obs.observe(el)});
+
+var seqSection=document.getElementById('hero-seq');
+var seqCanvas=document.getElementById('hero-sequence-canvas');
+var seqCtx=seqCanvas.getContext('2d',{alpha:false});
+var heroStart=document.getElementById('hero-start');
+var heroEnd=document.getElementById('hero-end');
+var heroStats=document.getElementById('hero-stats');
+var heroNote=document.getElementById('hero-note');
+var heroProgress=document.getElementById('hero-progress');
+var heroHint=document.getElementById('hero-hint');
+var totalFrames=222;
+var framePath='frames/frame_';
+var frameExt='.webp';
+var loadedFrames={};
+var renderWidth=0,renderHeight=0,currentFrame=1,seqTicking=false;
+function padFrame(n){return String(n).padStart(4,'0')}
+function frameSrc(n){return framePath+padFrame(n)+frameExt}
+function clamp(v,min,max){return Math.min(max,Math.max(min,v))}
+function lerp(a,b,t){return a+(b-a)*t}
+function easeOutCubic(t){return 1-Math.pow(1-t,3)}
+function easeInOutCubic(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+function weightedFrame(progress){
+  progress=clamp(progress,0,1);
+  var a=22,b=184,c=222;
+  var seg1=a,seg2=b-a,seg3=c-b;
+  var w1=1,w2=.34,w3=2.2;
+  var total=(seg1*w1)+(seg2*w2)+(seg3*w3);
+  var s1=(seg1*w1)/total, s2=(seg2*w2)/total;
+  if(progress<=s1){
+    return Math.round(lerp(1,a,progress/s1));
+  }
+  if(progress<=s1+s2){
+    var p2=(progress-s1)/s2;
+    return Math.round(lerp(a+1,b,easeOutCubic(p2)));
+  }
+  var p3=(progress-s1-s2)/(1-s1-s2);
+  return Math.round(lerp(b+1,c,easeInOutCubic(p3)));
+}
+function loadFrame(n,priority){
+  n=clamp(n,1,totalFrames);
+  if(loadedFrames[n]) return loadedFrames[n];
+  var img=new Image();
+  if(priority) img.fetchPriority='high';
+  img.decoding='async';
+  img.src=frameSrc(n);
+  loadedFrames[n]=img;
+  return img;
+}
+function preloadWindow(center){
+  for(var i=center-6;i<=center+10;i++) loadFrame(i,false);
+}
+function drawFrame(n){
+  n=clamp(n,1,totalFrames);
+  currentFrame=n;
+  var img=loadFrame(n,true);
+  if(!img.complete){img.onload=function(){if(currentFrame===n) drawFrame(n)}; return;}
+  var cw=seqCanvas.width,ch=seqCanvas.height,iw=img.naturalWidth,ih=img.naturalHeight;
+  if(!iw||!ih) return;
+  var scale=Math.max(cw/iw,ch/ih);
+  var dw=iw*scale,dh=ih*scale;
+  var dx=(cw-dw)/2,dy=(ch-dh)/2;
+  seqCtx.fillStyle='#010d0c';
+  seqCtx.fillRect(0,0,cw,ch);
+  seqCtx.drawImage(img,dx,dy,dw,dh);
+}
+function resizeSequence(){
+  var ratio=Math.min(window.devicePixelRatio||1,1.6);
+  var rect=seqCanvas.getBoundingClientRect();
+  var w=Math.round(rect.width*ratio),h=Math.round(rect.height*ratio);
+  if(w!==renderWidth||h!==renderHeight){
+    renderWidth=w;renderHeight=h;
+    seqCanvas.width=w;seqCanvas.height=h;
+    drawFrame(currentFrame);
+  }
+}
+function updateHeroCopy(progress){
+  var introFade=clamp(1-progress*2.2,0,1);
+  heroStart.style.opacity=introFade;
+  heroStart.style.transform='translateY('+(1-introFade)*24+'px)';
+  var noteOpacity=clamp(1-progress*1.8,0,1);
+  heroNote.style.opacity=noteOpacity;
+  heroProgress.style.opacity=clamp(1-progress*2.8,0,1);
+  heroHint.style.opacity=clamp(1-progress*3.2,0,.9);
+  var endIn=clamp((progress-.72)/.18,0,1);
+  heroEnd.style.opacity=endIn;
+  heroEnd.style.transform='translateY('+(24-(24*easeOutCubic(endIn)))+'px)';
+  var statsIn=clamp((progress-.84)/.12,0,1);
+  heroStats.style.opacity=statsIn;
+  heroStats.style.transform='translateY('+(28-(28*easeOutCubic(statsIn)))+'px)';
+}
+function updateSequence(){
+  seqTicking=false;
+  var rect=seqSection.getBoundingClientRect();
+  var max=seqSection.offsetHeight-window.innerHeight;
+  var progress=clamp((-rect.top)/(max||1),0,1);
+  var targetFrame=weightedFrame(progress);
+  if(targetFrame!==currentFrame) drawFrame(targetFrame);
+  preloadWindow(targetFrame);
+  updateHeroCopy(progress);
+}
+window.addEventListener('scroll',function(){
+  if(!seqTicking){seqTicking=true;requestAnimationFrame(updateSequence)}
+},{passive:true});
+window.addEventListener('resize',function(){resizeSequence();updateSequence()},{passive:true});
+loadFrame(1,true);
+loadFrame(2,true);
+loadFrame(22,true);
+loadFrame(23,true);
+loadFrame(184,true);
+loadFrame(222,true);
+resizeSequence();
+updateSequence();
+
+</script>
+</body>
+</html>

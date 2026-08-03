@@ -83,6 +83,7 @@ html {
   line-height: 1.55;
   color: var(--text-primary);
   background-color: var(--color-background);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -100,6 +101,10 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; }
 :focus-visible { outline: 2px solid var(--color-brand-gold); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 /* KaTeX — dopasowanie do ciemnego UI */
 .katex {

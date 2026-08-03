@@ -216,7 +216,7 @@ export async function loginAction(
     }
   }
 
-  redirect("/");
+  redirect("/pulpit");
 }
 
 export async function registerAction(

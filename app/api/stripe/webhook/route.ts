@@ -4,8 +4,17 @@ import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { normalizeTrack, normalizeYear, trackSchema, yearSchema } from "@/features/access/lib/studyAccess";
-import { upsertChargeFromWebhook } from "@/features/admin/server/stripePaymentsRepo";
+import {
+  isChargeFullyRefunded,
+  resolveChargeEntitlement,
+  upsertChargeFromWebhook,
+} from "@/features/admin/server/stripePaymentsRepo";
 import { ADMIN_FINANCE_CACHE_TAG } from "@/features/admin/server/loadAdminFinance";
+import { getEntitlementExpiresAt } from "@/features/access/lib/entitlementExpiry";
+import {
+  revokeEntitlementForSelection,
+  syncProfileSubscriptionStatus,
+} from "@/features/access/server/revokeEntitlements";
 import { logConsumerConsent } from "@/features/checkout/server/logConsumerConsent";
 
 export const runtime = "nodejs";
@@ -42,7 +51,11 @@ export async function POST(request: Request) {
       event.type === "charge.refunded" ||
       event.type === "charge.failed"
     ) {
-      await upsertChargeFromWebhook(event.data.object as Stripe.Charge);
+      const charge = event.data.object as Stripe.Charge;
+      await upsertChargeFromWebhook(charge);
+      if (isChargeFullyRefunded(charge)) {
+        await handleChargeFullyRefunded(charge);
+      }
       revalidateTag(ADMIN_FINANCE_CACHE_TAG, "max");
     }
   } catch (error) {
@@ -51,6 +64,21 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ received: true });
+}
+
+async function handleChargeFullyRefunded(charge: Stripe.Charge) {
+  const resolved = await resolveChargeEntitlement(charge);
+  if (!resolved) {
+    console.warn("[stripe-webhook] refund without resolvable entitlement", charge.id);
+    return;
+  }
+
+  await revokeEntitlementForSelection({
+    userId: resolved.userId,
+    track: resolved.track,
+    year: resolved.year,
+  });
+  await syncProfileSubscriptionStatus(resolved.userId);
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
@@ -75,6 +103,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const track = normalizeTrack(parsedTrack.data);
   const year = normalizeYear(parsedYear.data);
   const admin = createAdminClient();
+  const grantedAt = new Date().toISOString();
+  const subscriptionEndsAt = getEntitlementExpiresAt(grantedAt, "paid")?.toISOString() ?? null;
 
   const { error: entitlementError } = await admin.from("user_year_entitlements").upsert(
     {
@@ -83,6 +113,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       year,
       access_type: "paid",
       active: true,
+      granted_at: grantedAt,
       stripe_checkout_session_id: session.id,
       stripe_payment_intent_id:
         typeof session.payment_intent === "string" ? session.payment_intent : null,
@@ -103,6 +134,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       current_year: year,
       stripe_customer_id: customerId,
       subscription_status: "active",
+      subscription_ends_at: subscriptionEndsAt,
     })
     .eq("id", userId);
 

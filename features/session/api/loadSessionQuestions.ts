@@ -3,6 +3,7 @@
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 import {
   mapRowToSessionQuestion,
   type QuestionRow,
@@ -52,6 +53,14 @@ export async function loadSessionQuestions(
 
     if (se || !session || session.user_id !== user.id) {
       return { ok: false, message: t("errors.sessionNotFound") };
+    }
+
+    const access = await requireLearningAccessForSubject(
+      user.id,
+      session.subject_id as string,
+    );
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     const ids = (session.question_ids as string[] | null) ?? [];

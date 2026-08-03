@@ -6,6 +6,7 @@ import { after } from "next/server";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
 import { nextStreakValues, todayDateString } from "@/features/session/server/sessionStreak";
@@ -53,6 +54,14 @@ export async function completeSession(
 
     if (se || !session) {
       return { ok: false, message: t("errors.sessionNotFound") };
+    }
+
+    const access = await requireLearningAccessForSubject(
+      user.id,
+      session.subject_id as string,
+    );
+    if (!access.ok) {
+      return { ok: false, message: access.message };
     }
 
     if (session.is_completed) {

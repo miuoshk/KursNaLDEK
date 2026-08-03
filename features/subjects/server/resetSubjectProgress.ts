@@ -2,8 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 const schema = z.object({
   subjectId: z.string().min(1),
@@ -32,21 +34,31 @@ export async function resetSubjectProgress(
       return { ok: false, message: "Brak sesji logowania." };
     }
 
-    const { subjectId } = parsed.data;
-    const admin = createAdminClient();
-    const { error: resetError } = await admin.rpc("reset_subject_progress_for_user", {
-      p_user_id: user.id,
-      p_subject_id: subjectId,
-    });
+    const access = await requireLearningAccessForSubject(user.id, parsed.data.subjectId);
+    if (!access.ok) {
+      return { ok: false, message: access.message };
+    }
 
-    if (resetError) {
-      console.error(
-        "[resetSubjectProgress] reset_subject_progress RPC",
-        resetError.message,
-        resetError.code,
-        resetError.details,
-      );
-      return { ok: false, message: "Nie udało się wyzerować postępu." };
+    const { subjectId } = parsed.data;
+    const subjectScopeIds = getSubjectScopeIds(subjectId);
+    const admin = createAdminClient();
+
+    for (const scopeId of subjectScopeIds) {
+      const { error: resetError } = await admin.rpc("reset_subject_progress_for_user", {
+        p_user_id: user.id,
+        p_subject_id: scopeId,
+      });
+
+      if (resetError) {
+        console.error(
+          "[resetSubjectProgress] reset_subject_progress RPC",
+          scopeId,
+          resetError.message,
+          resetError.code,
+          resetError.details,
+        );
+        return { ok: false, message: "Nie udało się wyzerować postępu." };
+      }
     }
 
     revalidatePath("/", "layout");

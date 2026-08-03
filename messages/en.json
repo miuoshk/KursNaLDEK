@@ -589,6 +589,7 @@
     "errors": {
       "invalidParams": "Invalid session parameters.",
       "mustLoginToStart": "You must be logged in to start a session.",
+      "noAccess": "You do not have active access to this course.",
       "loadQuestionsFailed": "Could not load question content.",
       "createSessionFailed": "Could not create session.",
       "mixedNoTopicFilter": "Mixed session does not support single-topic filter.",
@@ -1098,6 +1099,172 @@
     },
     "savedQuestions": {
       "subtitle": "Your private collection of questions for review. Open in the catalog to see explanations, or unpin when you've mastered the material."
+    }
+  },
+  "marketing": {
+    "metadata": {
+      "title": "Kurs na LDEK — adaptive learning for medical students",
+      "description": "Questions, smart reviews and progress tracking in one platform for medical and dental students."
+    },
+    "nav": {
+      "ariaLabel": "Main navigation",
+      "how": "How it works",
+      "forWhom": "Who it is for",
+      "faq": "FAQ",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
+    },
+    "actions": {
+      "register": "Create account",
+      "login": "Log in",
+      "seeHow": "See how it works",
+      "alreadyHaveAccount": "I already have an account"
+    },
+    "hero": {
+      "eyebrow": "Kurs na LDEK",
+      "titleStart": "Learning starts with",
+      "titleAccent": "a good question.",
+      "titleEnd": "Every answer brings you closer to",
+      "titleEndAccent": "your goal.",
+      "description": "An adaptive learning platform for medical and dental students. Answer questions, rate your confidence and let the system schedule the right reviews.",
+      "loading": "Preparing the platform",
+      "scroll": "Scroll to enter",
+      "productProof": "Your plan, questions and reviews in one learning rhythm.",
+      "demo": {
+        "dailyGoal": "Daily goal",
+        "streak": "Streak",
+        "streakCaption": "Consistency made visible, day by day.",
+        "stageLabel": "Show stage {number}",
+        "planEyebrow": "Today’s plan",
+        "planTitle": "Your session is ready.",
+        "planDescription": "Start with the questions that are most valuable to review today.",
+        "reviews": "reviews due",
+        "minutes": "minutes of study",
+        "start": "Start session",
+        "questionEyebrow": "Question 6 · Anatomy",
+        "question": "Which nerve supplies the muscles of facial expression?",
+        "answerA": "Trigeminal nerve",
+        "answerB": "Facial nerve",
+        "answerC": "Glossopharyngeal nerve",
+        "explanationLabel": "Why?",
+        "explanation": "The facial nerve carries motor fibres to the muscles of facial expression. The system will bring this question back at the right time.",
+        "summaryEyebrow": "Session complete",
+        "accuracy": "Accuracy",
+        "summaryTitle": "Good work. Your next step is already waiting.",
+        "scheduled": "reviews scheduled",
+        "accessibleDescription": "An animated product preview shows the daily plan, answering a question and the session summary."
+      }
+    },
+    "product": {
+      "eyebrow": "Your dashboard",
+      "title": "Know exactly what to do today.",
+      "description": "Once you sign in, you do not have to build another study plan. Your goal, due reviews and progress are clear, and the next session is ready.",
+      "dailyGoalTitle": "A clear plan for today",
+      "dailyGoalDescription": "A daily goal keeps learning focused without another spreadsheet.",
+      "reviewsTitle": "Reviews at the right time",
+      "reviewsDescription": "The system returns to material when your memory actually needs it.",
+      "rankTitle": "Progress you can see",
+      "rankDescription": "Ranks, streaks and mastery reflect consistency rather than empty points.",
+      "mock": {
+        "dailyGoal": "Daily goal",
+        "goalProgress": "5 questions left today",
+        "streak": "Streak",
+        "streakCaption": "Longest streak: 18 days",
+        "reviews": "Reviews",
+        "reviewAction": "Review now",
+        "rank": "Rank",
+        "rankName": "Resident II",
+        "rankProgress": "680 XP to the next rank"
+      }
+    },
+    "session": {
+      "eyebrow": "How a session works",
+      "title": "One answer starts the whole process.",
+      "description": "Every session combines questions, explanations and spaced repetition. You learn actively while the platform decides what should return later.",
+      "steps": {
+        "chooseTitle": "Choose your goal",
+        "chooseDescription": "Start a smart session, focus on one subject or work only through due reviews.",
+        "answerTitle": "Answer and understand",
+        "answerDescription": "After answering, you get an explanation of the mechanism, not just a marked option.",
+        "rateTitle": "Rate your confidence",
+        "rateDescription": "A quick self-assessment helps schedule the next time you should see the question."
+      },
+      "mock": {
+        "smartSession": "Smart session",
+        "recommended": "Recommended",
+        "smartCaption": "Questions selected from your knowledge and scheduled reviews.",
+        "answerA": "Trigeminal nerve",
+        "answerB": "Facial nerve",
+        "answerC": "Glossopharyngeal nerve",
+        "didNotKnow": "I did not know",
+        "knewSomewhat": "I partly knew",
+        "knewForSure": "I knew for sure"
+      }
+    },
+    "progress": {
+      "eyebrow": "Progress without guessing",
+      "title": "See what you truly know.",
+      "description": "Activity, subject mastery and weak areas form one clear view of your preparation.",
+      "points": {
+        "activity": "A history of consistent work, not just login counts.",
+        "weaknesses": "Topics that need attention are visible before the next session.",
+        "schedule": "Scheduled reviews turn short-term recall into lasting knowledge."
+      },
+      "mock": {
+        "title": "Your activity",
+        "caption": "Last 13 weeks",
+        "mastery": "Mastery",
+        "biochemistry": "Biochemistry",
+        "physiology": "Physiology",
+        "microbiology": "Microbiology"
+      }
+    },
+    "paths": {
+      "eyebrow": "From foundations to the exam",
+      "title": "The platform grows with your course.",
+      "description": "Choose your programme and year. Subjects, questions and your learning path adapt to your current stage.",
+      "dentistry": {
+        "title": "Dentistry",
+        "description": "Basic medical sciences, later study years and LDEK preparation in one account.",
+        "scope": "Years 1–3 · LDEK"
+      },
+      "medicine": {
+        "title": "Medicine",
+        "description": "Foundational and clinical subjects organised by year, with active recall built in.",
+        "scope": "Years 1–3 · more modules in development"
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Before you start.",
+      "description": "The essentials about access, learning and how the platform works.",
+      "items": {
+        "accessQuestion": "How long does access last after purchase?",
+        "accessAnswer": "Access follows the option selected at purchase. You will see the current scope and terms before payment.",
+        "universityQuestion": "Are questions tailored to my university?",
+        "universityAnswer": "The catalogue is organised by programme and year. Curricula vary, so you can review available subjects before choosing access.",
+        "adaptiveQuestion": "How does adaptive learning work?",
+        "adaptiveAnswer": "The platform uses your answers, confidence rating and previous review dates to select material that needs attention.",
+        "mobileQuestion": "Can I use it on my phone?",
+        "mobileAnswer": "Yes. The platform works in a browser on phones, tablets and computers without an app.",
+        "paymentQuestion": "How does payment work?",
+        "paymentAnswer": "After creating an account, choose your programme and year, then activate paid access through secure Stripe Checkout.",
+        "trialQuestion": "Can I try the platform?",
+        "trialAnswer": "Trial availability depends on the selected programme and year. Current options are shown after account creation."
+      }
+    },
+    "finalCta": {
+      "eyebrow": "Start with one session",
+      "title": "Less planning.",
+      "accent": "More deliberate learning.",
+      "description": "Create an account, choose your programme and see how the platform organises the next steps."
+    },
+    "footer": {
+      "ariaLabel": "Footer links",
+      "contact": "Contact",
+      "terms": "Terms",
+      "privacy": "Privacy policy",
+      "copyright": "© 2026 Zenit Labs Sp. z o.o."
     }
   },
   "checkout": {

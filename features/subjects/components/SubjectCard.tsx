@@ -58,6 +58,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       <div className="flex items-start justify-between gap-3">
         <SubjectIcon
           iconName={subject.icon_name}
+          subjectId={subject.id}
           className={cn(
             "transition-colors duration-200 ease-out",
             isDisabled

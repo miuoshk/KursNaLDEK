@@ -79,6 +79,28 @@ export const subjectIconMap: Record<string, TablerIcon> = {
   languages: IconLanguage,
 };
 
-export function getSubjectIconComponent(iconName: string): TablerIcon {
+/** Stałe mapowanie LDEW — nie polegamy wyłącznie na `icon_name` w DB. */
+export const ldewSubjectIconById: Record<string, TablerIcon> = {
+  "ldew-stomatologia-zachowawcza": IconDental,
+  "ldew-endodoncja": IconNeedle,
+  "ldew-periodontologia": IconDentalBroken,
+  "ldew-choroby-sluzowki": IconMicroscope,
+  "ldew-stomatologia-dziecieca": IconBabyCarriage,
+  "ldew-ortodoncja": IconBraces,
+  "ldew-protetyka": IconCrown,
+  "ldew-chirurgia-stomatologiczna": IconScissors,
+  "ldew-chirurgia-szczekowo-twarzowa": IconSkull,
+  "ldew-radiologia": IconPhotoScan,
+  "ldew-zdrowie-publiczne": IconBuildingHospital,
+  "ldew-orzecznictwo": IconGavel,
+};
+
+export function getSubjectIconComponent(
+  iconName: string,
+  subjectId?: string,
+): TablerIcon {
+  if (subjectId && subjectId in ldewSubjectIconById) {
+    return ldewSubjectIconById[subjectId];
+  }
   return subjectIconMap[iconName] ?? IconBook;
 }

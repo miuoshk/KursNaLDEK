@@ -488,6 +488,11 @@
       "track": "Ścieżka",
       "trackStomatologia": "Stomatologia",
       "trackLekarski": "Lekarski",
+      "course": "Kurs",
+      "courseKnnp": "Nauki podstawowe (KNNP)",
+      "courseLdew": "LDEW — nostryfikacja",
+      "courseAdminHint": "Dostępne tylko dla administratorów — podgląd kursu przed publikacją.",
+      "clinicalCourseHint": "Kurs LDEW nie wymaga wyboru roku — po zapisaniu przejdź do Moje przedmioty.",
       "studyYear": "Rok studiów",
       "saveChanges": "Zapisz zmiany",
       "saved": "Zmiany zapisane",
@@ -556,7 +561,8 @@
       "examDateSaveFailed": "Nie udało się zapisać daty egzaminu.",
       "deleteAccountFailed": "Nie udało się usunąć konta. Skontaktuj się z pomocą.",
       "deleteAccountNotConfigured": "Usuwanie konta nie jest skonfigurowane (brak klucza serwisowego). Skontaktuj się z administratorem.",
-      "passwordResetSendFailed": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+      "passwordResetSendFailed": "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+      "productSwitchForbidden": "Nie masz uprawnień do zmiany kursu."
     }
   },
   "gamification": {

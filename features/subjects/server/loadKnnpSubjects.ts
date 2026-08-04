@@ -6,8 +6,7 @@ import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { isClinicalProduct } from "@/features/access/server/currentAccess";
-import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 export type ProfileForSubjects = {
   current_year: number;

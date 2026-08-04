@@ -795,6 +795,11 @@
       "track": "Track",
       "trackStomatologia": "Dentistry",
       "trackLekarski": "Medicine",
+      "course": "Course",
+      "courseKnnp": "Basic sciences (KNNP)",
+      "courseLdew": "LDEW — nostrification exam",
+      "courseAdminHint": "Admin only — preview a course before public launch.",
+      "clinicalCourseHint": "The LDEW course has no year selection — after saving, open My subjects.",
       "studyYear": "Year of study",
       "saveChanges": "Save changes",
       "saved": "Changes saved",
@@ -863,7 +868,8 @@
       "examDateSaveFailed": "Could not save exam date.",
       "deleteAccountFailed": "Could not delete account. Contact support.",
       "deleteAccountNotConfigured": "Account deletion is not configured (missing service key). Contact the administrator.",
-      "passwordResetSendFailed": "Could not send message. Try again."
+      "passwordResetSendFailed": "Could not send message. Try again.",
+      "productSwitchForbidden": "You do not have permission to change the course."
     }
   },
   "gamification": {

@@ -2,9 +2,11 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { defaultLocale, isAppLocale } from "@/i18n/config";
-import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/lib/studyAccess";
+import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { getEntitlementExpiresAt } from "@/features/access/lib/entitlementExpiry";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import { isProfileAdmin } from "@/lib/auth/profileAdmin";
 
 const DEFAULT_MODE: KnnpSessionMode = "inteligentna";
 
@@ -16,7 +18,7 @@ export async function loadSettings(
   const { data: profileRow } = await supabase
     .from("profiles")
     .select(
-      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
+      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, current_product, role, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
     )
     .eq("id", userId)
     .maybeSingle();
@@ -42,6 +44,8 @@ export async function loadSettings(
     avatar_emoji: (profileRow?.avatar_emoji as string | null | undefined) ?? null,
     current_track: profileRow?.current_track ?? "stomatologia",
     current_year: profileRow?.current_year ?? 1,
+    current_product: normalizeProduct(profileRow?.current_product as string | null | undefined),
+    can_switch_product: isProfileAdmin(profileRow?.role),
     locale: isAppLocale(profileRow?.locale) ? profileRow.locale : defaultLocale,
     exam_date: (profileRow?.exam_date as string | null | undefined) ?? null,
     daily_goal: profileRow?.daily_goal ?? 25,
@@ -58,7 +62,9 @@ export async function loadSettings(
 
   const track = normalizeTrack(profile.current_track);
   const year = normalizeYear(profile.current_year);
-  const hasAccess = await hasActiveEntitlementForSelection(userId, track, year);
+  const hasAccess =
+    isClinicalProduct(profile.current_product) ||
+    (await hasActiveEntitlementForSelection(userId, track, year));
   if (!hasAccess) {
     profile.subscription_status = "inactive";
   } else if (!profile.subscription_ends_at) {

@@ -4,6 +4,8 @@ import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
+import type { StudyProduct } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/lib/studyAccess";
 import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import { updateProfile } from "@/features/settings/api/updateProfile";
 import type { SettingsProfile } from "@/features/settings/types";
@@ -24,19 +26,23 @@ export function ProfileSection({ profile, email }: Props) {
   const router = useRouter();
   const { toast } = useToast();
   const [nick, setNick] = useState(profile.nick);
+  const [product, setProduct] = useState<StudyProduct>(profile.current_product);
   const [track, setTrack] = useState(profile.current_track);
   const [year, setYear] = useState(String(profile.current_year));
   const [avatarEmoji, setAvatarEmoji] = useState(profile.avatar_emoji ?? "");
   const [saving, setSaving] = useState(false);
 
+  const isClinicalCourse = isClinicalProduct(product);
+
   const dirty = useMemo(() => {
     return (
       nick !== profile.nick ||
+      product !== profile.current_product ||
       track !== profile.current_track ||
       year !== String(profile.current_year) ||
       avatarEmoji !== (profile.avatar_emoji ?? "")
     );
-  }, [nick, track, year, avatarEmoji, profile]);
+  }, [nick, product, track, year, avatarEmoji, profile]);
 
   const trimmedEmoji = avatarEmoji.trim();
   const emojiValid = trimmedEmoji.length === 0 || isValidEmoji(trimmedEmoji);
@@ -53,6 +59,7 @@ export function ProfileSection({ profile, email }: Props) {
       nick: nick.trim(),
       current_track: track === "lekarski" ? "lekarski" : "stomatologia",
       current_year: Number(year),
+      current_product: profile.can_switch_product ? product : undefined,
       avatar_initials: profile.avatar_initials ?? null,
       avatar_emoji: trimmedEmoji ? trimmedEmoji : null,
     });
@@ -109,42 +116,76 @@ export function ProfileSection({ profile, email }: Props) {
             className="mt-1.5 w-full cursor-not-allowed rounded-btn border border-border bg-card-hover/50 px-4 py-3 font-body text-muted"
           />
         </div>
-        <div>
-          <label htmlFor="tr" className="font-body text-body-sm text-secondary">
-            {t("profile.track")}
-          </label>
-          <div className="relative mt-1.5">
-            <select
-              id="tr"
-              value={track === "lekarski" ? "lekarski" : "stomatologia"}
-              onChange={(e) => setTrack(e.target.value)}
-              className={selectClass}
-            >
-              <option value="stomatologia">{t("profile.trackStomatologia")}</option>
-              <option value="lekarski">{t("profile.trackLekarski")}</option>
-            </select>
-            <ChevronDown
-              className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
-              aria-hidden
-            />
+
+        {profile.can_switch_product ? (
+          <div>
+            <label htmlFor="course" className="font-body text-body-sm text-secondary">
+              {t("profile.course")}
+            </label>
+            <div className="relative mt-1.5">
+              <select
+                id="course"
+                value={product}
+                onChange={(e) => setProduct(e.target.value as StudyProduct)}
+                className={selectClass}
+              >
+                <option value="knnp">{t("profile.courseKnnp")}</option>
+                <option value="ldew">{t("profile.courseLdew")}</option>
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
+                aria-hidden
+              />
+            </div>
+            <p className="mt-1 font-body text-body-xs text-muted">{t("profile.courseAdminHint")}</p>
           </div>
-        </div>
-        <div>
-          <label htmlFor="yr" className="font-body text-body-sm text-secondary">
-            {t("profile.studyYear")}
-          </label>
-          <div className="relative mt-1.5">
-            <select id="yr" value={year} onChange={(e) => setYear(e.target.value)} className={selectClass}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-            <ChevronDown
-              className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
-              aria-hidden
-            />
-          </div>
-        </div>
+        ) : null}
+
+        {!isClinicalCourse ? (
+          <>
+            <div>
+              <label htmlFor="tr" className="font-body text-body-sm text-secondary">
+                {t("profile.track")}
+              </label>
+              <div className="relative mt-1.5">
+                <select
+                  id="tr"
+                  value={track === "lekarski" ? "lekarski" : "stomatologia"}
+                  onChange={(e) => setTrack(e.target.value)}
+                  className={selectClass}
+                >
+                  <option value="stomatologia">{t("profile.trackStomatologia")}</option>
+                  <option value="lekarski">{t("profile.trackLekarski")}</option>
+                </select>
+                <ChevronDown
+                  className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
+                  aria-hidden
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="yr" className="font-body text-body-sm text-secondary">
+                {t("profile.studyYear")}
+              </label>
+              <div className="relative mt-1.5">
+                <select id="yr" value={year} onChange={(e) => setYear(e.target.value)} className={selectClass}>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <ChevronDown
+                  className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
+                  aria-hidden
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <p className="rounded-btn border border-brand-gold/25 bg-brand-gold/10 px-4 py-3 font-body text-body-sm text-brand-gold">
+            {t("profile.clinicalCourseHint")}
+          </p>
+        )}
+
         <button
           type="submit"
           disabled={!dirty || saving || !emojiValid}

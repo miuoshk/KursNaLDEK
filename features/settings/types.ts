@@ -1,5 +1,6 @@
 import type { KnnpSessionMode } from "@/features/session/types";
 import type { AppLocale } from "@/i18n/config";
+import type { StudyProduct } from "@/features/access/lib/studyAccess";
 
 export type SettingsProfile = {
   full_name: string;
@@ -8,6 +9,9 @@ export type SettingsProfile = {
   avatar_emoji: string | null;
   current_track: string;
   current_year: number;
+  current_product: StudyProduct;
+  /** Admin może przełączać produkt (KNNP ↔ LDEW) w ustawieniach. */
+  can_switch_product: boolean;
   locale: AppLocale;
   /** ISO 8601 (TIMESTAMPTZ) lub null */
   exam_date: string | null;

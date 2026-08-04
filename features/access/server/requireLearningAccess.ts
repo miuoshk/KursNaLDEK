@@ -12,7 +12,7 @@ import {
   type StudyTrack,
   type StudyYear,
 } from "@/features/access/lib/studyAccess";
-import { isClinicalProduct } from "@/features/access/server/currentAccess";
+import { isClinicalProduct } from "@/features/access/lib/studyAccess";
 
 type LearningAccessDenied = { ok: false; message: string };
 type LearningAccessGranted = { ok: true; track: StudyTrack; year: StudyYear };

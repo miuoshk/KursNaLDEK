@@ -6,6 +6,7 @@ import {
   normalizeProduct,
   normalizeTrack,
   normalizeYear,
+  isClinicalProduct,
   type StudyProduct,
   type StudyTrack,
   type StudyYear,
@@ -34,8 +35,4 @@ export async function loadCurrentSelectionAccess(userId: string): Promise<Curren
     year,
     hasAccess,
   };
-}
-
-export function isClinicalProduct(product: StudyProduct): boolean {
-  return product === "ldew" || product === "ldek";
 }

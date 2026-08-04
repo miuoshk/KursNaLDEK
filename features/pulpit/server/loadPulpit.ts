@@ -9,8 +9,7 @@ import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWea
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { fetchVisibleTopicIds } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
-import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
-import { isClinicalProduct } from "@/features/access/server/currentAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { greetingName } from "@/lib/greetingName";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getDueReviewsPerSubject } from "@/lib/dashboard/getDueReviewsPerSubject";

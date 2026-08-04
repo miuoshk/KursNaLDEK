@@ -3,7 +3,10 @@
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { isClinicalProduct } from "@/features/access/lib/studyAccess";
+import { normalizeProduct, STUDY_PRODUCTS } from "@/features/access/lib/studyAccess";
 import { isValidEmoji } from "@/lib/emoji";
+import { isProfileAdmin } from "@/lib/auth/profileAdmin";
 import { createClient } from "@/lib/supabase/server";
 
 const schema = z.object({
@@ -15,6 +18,7 @@ const schema = z.object({
     .regex(/^[A-Za-z0-9._-]+$/),
   current_track: z.enum(["stomatologia", "lekarski"]),
   current_year: z.coerce.number().int().min(1).max(3),
+  current_product: z.enum(STUDY_PRODUCTS).optional(),
   avatar_initials: z.string().max(4).optional().nullable(),
   avatar_emoji: z
     .string()
@@ -41,22 +45,43 @@ export async function updateProfile(input: z.infer<typeof schema>): Promise<Upda
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, message: tErrors("noSession") };
 
+  const { data: existingProfile } = await supabase
+    .from("profiles")
+    .select("role, current_product")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  const requestedProduct = parsed.data.current_product
+    ? normalizeProduct(parsed.data.current_product)
+    : normalizeProduct(existingProfile?.current_product as string | null | undefined);
+
+  if (requestedProduct !== "knnp" && !isProfileAdmin(existingProfile?.role)) {
+    return { ok: false, message: tSettings("errors.productSwitchForbidden") };
+  }
+
   const initials = parsed.data.avatar_initials?.trim() || null;
   const emojiRaw = parsed.data.avatar_emoji?.trim() || null;
   const emoji = emojiRaw && isValidEmoji(emojiRaw) ? emojiRaw : null;
 
-  const { error } = await supabase
-    .from("profiles")
-    .update({
-      nick: parsed.data.nick,
-      display_name: parsed.data.nick,
-      current_track: parsed.data.current_track,
-      current_year: parsed.data.current_year,
-      avatar_initials: initials,
-      avatar_emoji: emoji,
-      updated_at: new Date().toISOString(),
-    })
-    .eq("id", user.id);
+  const updatePayload: Record<string, unknown> = {
+    nick: parsed.data.nick,
+    display_name: parsed.data.nick,
+    avatar_initials: initials,
+    avatar_emoji: emoji,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (isClinicalProduct(requestedProduct)) {
+    updatePayload.current_product = requestedProduct;
+    updatePayload.current_track = "stomatologia";
+    updatePayload.current_year = 1;
+  } else {
+    updatePayload.current_product = "knnp";
+    updatePayload.current_track = parsed.data.current_track;
+    updatePayload.current_year = parsed.data.current_year;
+  }
+
+  const { error } = await supabase.from("profiles").update(updatePayload).eq("id", user.id);
 
   if (error) {
     if (

@@ -1,7 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
-import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
-import { isClinicalProduct } from "@/features/access/server/currentAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
 
 /**
  * Pytania z zaplanowaną powtórką (next_review <= teraz), zawężone do

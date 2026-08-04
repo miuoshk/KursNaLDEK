@@ -45,6 +45,10 @@ export function normalizeProduct(product: string | null | undefined): StudyProdu
   return "knnp";
 }
 
+export function isClinicalProduct(product: StudyProduct): boolean {
+  return product === "ldew" || product === "ldek";
+}
+
 export function isFreeTestSelection(track: StudyTrack, year: StudyYear): boolean {
   return track === "stomatologia" && year === 2;
 }

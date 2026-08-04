@@ -3,8 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
-import { normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
-import { isClinicalProduct } from "@/features/access/server/currentAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
 import { requireLearningAccessForProfile } from "@/features/access/server/requireLearningAccess";
 
 export type SearchSubjectItem = {

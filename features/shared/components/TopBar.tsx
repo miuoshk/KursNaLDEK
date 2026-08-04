@@ -15,6 +15,7 @@ import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBrea
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { useMobileViewport } from "@/features/shared/hooks/useMobileViewport";
 import { mobilePageTitle } from "@/features/shared/lib/mobilePageTitle";
+import { breadcrumbRootForProduct } from "@/lib/dashboard/productLabels";
 import { useSidebarStore } from "@/features/shared/stores/sidebarStore";
 import type { AppLocale } from "@/i18n/config";
 
@@ -178,13 +179,14 @@ export function TopBar() {
   const mainRoutes = new Set(["/", "/pulpit", "/przedmioty", "/osce", "/statystyki", "/osiagniecia", "/ustawienia"]);
   const showBack = !mainRoutes.has(pathname);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
-  const { year, secondSegment, thirdSegment } = useDashboardBreadcrumb();
+  const { year, currentProduct, secondSegment, thirdSegment } = useDashboardBreadcrumb();
   const { streak, initials, avatarEmoji } = useDashboardUser();
   const tOsce = useTranslations("osce");
   const tNav = useTranslations("nav");
   const pathFallback = mobilePageTitle(pathname, { nav: tNav, osce: tOsce });
+  const breadcrumbRoot = breadcrumbRootForProduct(currentProduct, year, tCommon);
   const mobileTitle =
-    thirdSegment ?? secondSegment ?? pathFallback ?? tCommon("yearPrefix", { year });
+    thirdSegment ?? secondSegment ?? pathFallback ?? breadcrumbRoot;
   const [paletteOpen, setPaletteOpen] = useState(false);
   const openPalette = useCallback(() => setPaletteOpen(true), []);
 
@@ -248,7 +250,7 @@ export function TopBar() {
           )}
           aria-label={tCommon("breadcrumbNav")}
         >
-          <span className="truncate">{tCommon("yearPrefix", { year })}</span>
+          <span className="truncate">{breadcrumbRoot}</span>
           {secondSegment ? (
             <>
               <ChevronRight className="size-3 shrink-0 text-muted" aria-hidden />

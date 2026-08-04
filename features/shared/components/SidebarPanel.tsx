@@ -21,6 +21,10 @@ import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContex
 import { getSloganPool, pickSlogan } from "@/features/shared/lib/slogans";
 import { formatTrackLabel } from "@/features/access/lib/studyAccess";
 import { formatStreakI18n } from "@/lib/formatStreak";
+import {
+  appNameForProduct,
+  profileLineForProduct,
+} from "@/lib/dashboard/productLabels";
 
 export const SIDEBAR_NAV = [
   { href: "/statystyki", labelKey: "statistics" as const, icon: BarChart3 },
@@ -45,7 +49,7 @@ export function SidebarPanel({
   const tCommon = useTranslations("common");
   const tSlogans = useTranslations("slogans");
   const { year } = useDashboardBreadcrumb();
-  const { streak, displayName, initials, avatarEmoji, currentTrack } =
+  const { streak, displayName, initials, avatarEmoji, currentTrack, currentProduct } =
     useDashboardUser();
   const tAccess = useTranslations("access");
   const trackLabel = formatTrackLabel(currentTrack, tAccess);
@@ -72,7 +76,9 @@ export function SidebarPanel({
         )}
       >
         {(!collapsed || mobile) && (
-          <p className="font-heading text-[16px] text-brand-gold">{tCommon("appName")}</p>
+          <p className="font-heading text-[16px] text-brand-gold">
+            {appNameForProduct(currentProduct, tCommon)}
+          </p>
         )}
         {mobile ? (
           <button
@@ -138,11 +144,13 @@ export function SidebarPanel({
                 {displayName}
               </p>
               <p className="mt-0.5 font-body text-body-xs text-secondary">
-                {tCommon("yearProfileLine", {
+                {profileLineForProduct(
+                  currentProduct,
                   year,
                   trackLabel,
-                  streak: streakLabel,
-                })}
+                  streakLabel,
+                  tCommon,
+                )}
               </p>
             </div>
           )}

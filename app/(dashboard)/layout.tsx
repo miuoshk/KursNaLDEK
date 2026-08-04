@@ -6,7 +6,7 @@ import { DashboardBreadcrumbProvider } from "@/features/shared/contexts/Dashboar
 import { DashboardDataProvider } from "@/features/shared/contexts/DashboardDataContext";
 import { DashboardUserProvider } from "@/features/shared/contexts/DashboardUserContext";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
-import { normalizeTrack } from "@/features/access/lib/studyAccess";
+import { normalizeTrack, normalizeProduct } from "@/features/access/lib/studyAccess";
 import { pingPresence } from "@/features/shared/server/pingPresence";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
@@ -44,6 +44,7 @@ export default async function DashboardLayout({
   // getDashboardYear() (który robił własny auth.getUser() + SELECT profiles).
   const year = userYear;
   const currentTrack = normalizeTrack(userTrack);
+  const currentProduct = normalizeProduct(profileRow?.current_product);
 
   // Presence ping z danymi z profilu — bez dodatkowego auth.getUser() i z
   // throttlem opartym o realny last_seen_at (działa na serverless).
@@ -56,7 +57,7 @@ export default async function DashboardLayout({
     user.id,
     userTrack,
     userYear,
-    userEmail,
+    currentProduct,
   );
 
   const { blocked } = await blockedPromise;
@@ -102,7 +103,7 @@ export default async function DashboardLayout({
     <DashboardProviders>
       <DashboardDataProvider profile={profileSnapshot} userEmail={userEmail}>
         <DashboardTooltipProvider>
-          <DashboardBreadcrumbProvider year={year}>
+          <DashboardBreadcrumbProvider year={year} currentProduct={currentProduct}>
             <DashboardUserProvider
               value={{
                 displayName,
@@ -110,6 +111,7 @@ export default async function DashboardLayout({
                 initials,
                 avatarEmoji,
                 currentTrack,
+                currentProduct,
                 dueReviewsCount,
                 preferredSessionCount,
                 showSessionTimer,

@@ -50,7 +50,9 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
   const noActiveQuestions = subject.question_count === 0;
   /** Pusty przedmiot — jeszcze bez struktury tematów. */
   const contentInPrep = noActiveQuestions && subject.topic_count === 0;
-  const isDisabled = locked || noActiveQuestions;
+  /** Tematy są, pytania jeszcze nie — można wejść i przeglądać siatkę tematów. */
+  const structureReady = noActiveQuestions && subject.topic_count > 0;
+  const isDisabled = locked || contentInPrep;
 
   const content = (
     <>
@@ -66,11 +68,20 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         />
         {noActiveQuestions ? (
           <div className="flex items-center gap-1.5 text-right">
-            {contentInPrep && (
+            {(contentInPrep || structureReady) && (
               <Clock className="size-3.5 text-muted" aria-hidden />
             )}
-            <p className="font-body text-body-sm text-muted">
-              {contentInPrep ? t("comingSoon") : t("unavailable")}
+            <p
+              className={cn(
+                "font-body text-body-sm",
+                structureReady ? "text-brand-gold" : "text-muted",
+              )}
+            >
+              {contentInPrep
+                ? t("comingSoon")
+                : structureReady
+                  ? t("structureReady")
+                  : t("unavailable")}
             </p>
           </div>
         ) : (
@@ -94,9 +105,14 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         <p className="mt-2 font-body text-body-sm text-muted">
           {contentInPrep
             ? t("comingSoonAvailable")
-            : t("noActiveQuestions")}
+            : structureReady
+              ? t("topicsReadyQuestionsSoon", {
+                  count: subject.topic_count,
+                  topicsLabel: dzialForm(subject.topic_count),
+                })
+              : t("noActiveQuestions")}
         </p>
-        ) : (
+      ) : (
           <p className="mt-2 font-body text-body-sm text-muted">
             {tCommon("questionsCount", { count: subject.question_count })} · {subject.topic_count} {dzialForm(subject.topic_count)}
             {subject.due_reviews > 0 ? (
@@ -124,7 +140,11 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       >
         {noActiveQuestions ? (
           <p className="font-body text-body-xs text-muted">
-            {contentInPrep ? t("contentInPrep") : t("questionsDisabledAdmin")}
+            {contentInPrep
+              ? t("contentInPrep")
+              : structureReady
+                ? t("questionsComingSoon")
+                : t("questionsDisabledAdmin")}
           </p>
         ) : (
           <p className="font-body text-body-xs text-muted">
@@ -133,7 +153,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         )}
         {!isDisabled && (
           <span className="inline-flex items-center rounded-lg border border-brand-sage/40 px-3 py-1 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 ease-out group-hover:bg-brand-sage/10">
-            {t("open")}
+            {structureReady ? t("browseTopics") : t("open")}
           </span>
         )}
       </div>
@@ -170,7 +190,9 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       className={cn(
         "group relative flex flex-col rounded-card border border-border bg-card p-5",
         "cursor-pointer transition-all duration-200 ease-out",
-        "hover:border-brand-sage/30",
+        structureReady
+          ? "hover:border-brand-gold/30"
+          : "hover:border-brand-sage/30",
       )}
     >
       {content}

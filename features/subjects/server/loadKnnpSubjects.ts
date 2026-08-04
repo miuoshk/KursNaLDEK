@@ -6,11 +6,12 @@ import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear, type StudyProduct } from "@/features/access/lib/studyAccess";
 
 export type ProfileForSubjects = {
   current_year: number;
   track: string;
+  product: StudyProduct;
 };
 
 export type OverallProgressData = {
@@ -33,6 +34,7 @@ export type LoadKnnpSubjectsResult =
 const DEFAULT_PROFILE: ProfileForSubjects = {
   current_year: 1,
   track: "Stomatologia",
+  product: "knnp",
 };
 
 function formatTrackLabel(track: string): string {
@@ -61,6 +63,7 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       profile = {
         current_year: profileRow.current_year ?? 1,
         track: formatTrackLabel(track),
+        product,
       };
     } else {
       console.warn(

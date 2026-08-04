@@ -8,6 +8,10 @@ import { loadKnnpSubjectsData } from "@/features/subjects/server/loadKnnpSubject
 import { requireCurrentSelectionAccessOrRedirect } from "@/features/access/server/guards";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
+import {
+  shouldShowSavedQuestions,
+  subjectsSubtitleForProduct,
+} from "@/lib/dashboard/productLabels";
 
 async function getSavedQuestionsCount(): Promise<number> {
   const user = await getCurrentUser();
@@ -50,26 +54,34 @@ export default async function PrzedmiotyPage() {
       ? tAccess("trackLekarski")
       : tAccess("trackStomatologia");
 
+  const showSavedQuestions = shouldShowSavedQuestions(profile.product);
+  const subtitle = subjectsSubtitleForProduct(
+    profile.product,
+    profile.current_year,
+    trackLabel,
+    t,
+  );
+
   return (
     <div>
       <header>
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
           {t("mySubjects")}
         </h1>
-        <p className="mt-1 font-body text-sm text-secondary">
-          {t("yearTrackLine", { year: profile.current_year, track: trackLabel })}
-        </p>
+        <p className="mt-1 font-body text-sm text-secondary">{subtitle}</p>
       </header>
 
       <div className="mt-8 space-y-8">
         <OverallProgress
           year={profile.current_year}
+          product={profile.product}
           totalQuestions={totalQuestionCount}
           answered={overallProgress.answered}
           mastered={overallProgress.mastered}
           reviewing={overallProgress.reviewing}
         />
 
+        {showSavedQuestions ? (
         <Link
           href="/zapisane"
           className="group flex items-center gap-4 rounded-card border border-border bg-card p-4 transition-colors hover:border-brand-gold/40"
@@ -96,6 +108,7 @@ export default async function PrzedmiotyPage() {
             aria-hidden
           />
         </Link>
+        ) : null}
 
         {showOsceSection ? (
           <section>

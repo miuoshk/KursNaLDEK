@@ -1,7 +1,10 @@
 import { getTranslations } from "next-intl/server";
+import type { StudyProduct } from "@/features/access/lib/studyAccess";
+import { overallProgressTitleForProduct } from "@/lib/dashboard/productLabels";
 
 type OverallProgressProps = {
   year: number;
+  product: StudyProduct;
   totalQuestions: number;
   answered: number;
   mastered: number;
@@ -10,12 +13,14 @@ type OverallProgressProps = {
 
 export async function OverallProgress({
   year,
+  product,
   totalQuestions,
   answered,
   mastered,
   reviewing,
 }: OverallProgressProps) {
   const t = await getTranslations("subjects");
+  const progressTitle = overallProgressTitleForProduct(product, year, t);
   const percentage =
     totalQuestions > 0 ? Math.round((answered / totalQuestions) * 100) : 0;
 
@@ -29,7 +34,7 @@ export async function OverallProgress({
       <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div>
           <p className="font-body text-sm uppercase tracking-widest text-secondary">
-            {t("overallProgressYear", { year })}
+            {progressTitle}
           </p>
           <p className="mt-2 font-body text-3xl text-brand-gold">{percentage}%</p>
         </div>

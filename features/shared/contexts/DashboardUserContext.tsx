@@ -6,6 +6,8 @@ import {
   type ReactNode,
 } from "react";
 
+import type { StudyProduct } from "@/features/access/lib/studyAccess";
+
 export type DashboardUserValue = {
   streak: number;
   displayName: string;
@@ -14,6 +16,8 @@ export type DashboardUserValue = {
   avatarEmoji: string | null;
   /** "stomatologia" | "lekarski" — kierunek z profilu, używany w sidebarze. */
   currentTrack: "stomatologia" | "lekarski";
+  /** knnp | ldek | ldew — aktywny kurs użytkownika. */
+  currentProduct: StudyProduct;
   /** Liczba pytań z terminem powtórki (next_review <= teraz). */
   dueReviewsCount: number;
   /** Ostatnia liczba pytań z konfiguracji sesji (10, 25, custom…). */

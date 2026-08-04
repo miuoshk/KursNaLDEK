@@ -9,8 +9,11 @@ import {
   type ReactNode,
 } from "react";
 
+import type { StudyProduct } from "@/features/access/lib/studyAccess";
+
 type DashboardBreadcrumbContextValue = {
   year: number;
+  currentProduct: StudyProduct;
   secondSegment: string | null;
   thirdSegment: string | null;
   setSecondSegment: (segment: string | null) => void;
@@ -22,9 +25,11 @@ const DashboardBreadcrumbContext =
 
 export function DashboardBreadcrumbProvider({
   year,
+  currentProduct,
   children,
 }: {
   year: number;
+  currentProduct: StudyProduct;
   children: ReactNode;
 }) {
   const [secondSegment, setSecondSegmentState] = useState<string | null>(null);
@@ -41,12 +46,13 @@ export function DashboardBreadcrumbProvider({
   const value = useMemo(
     () => ({
       year,
+      currentProduct,
       secondSegment,
       thirdSegment,
       setSecondSegment,
       setThirdSegment,
     }),
-    [year, secondSegment, thirdSegment, setSecondSegment, setThirdSegment],
+    [year, currentProduct, secondSegment, thirdSegment, setSecondSegment, setThirdSegment],
   );
 
   return (

@@ -9,10 +9,10 @@ import {
   normalizeProduct,
   normalizeTrack,
   normalizeYear,
+  isClinicalProduct,
   type StudyTrack,
   type StudyYear,
 } from "@/features/access/lib/studyAccess";
-import { isClinicalProduct } from "@/features/access/lib/studyAccess";
 
 type LearningAccessDenied = { ok: false; message: string };
 type LearningAccessGranted = { ok: true; track: StudyTrack; year: StudyYear };
@@ -65,12 +65,27 @@ export async function requireLearningAccessForSubject(
   const supabase = await createClient();
   const { data: subject, error } = await supabase
     .from("subjects")
-    .select("track, year")
+    .select("track, year, product")
     .eq("id", subjectId)
     .maybeSingle();
 
   if (error || !subject) {
     return { ok: false, message: await deniedMessage() };
+  }
+
+  const profile = await getProfileByUserId(userId);
+  const userProduct = normalizeProduct(profile?.current_product as string | null | undefined);
+  const subjectProduct = normalizeProduct(subject.product as string | null | undefined);
+
+  if (isClinicalProduct(subjectProduct)) {
+    if (userProduct !== subjectProduct) {
+      return { ok: false, message: await deniedMessage() };
+    }
+    return {
+      ok: true,
+      track: normalizeTrack(subject.track as string),
+      year: 1,
+    };
   }
 
   return requireLearningAccessForSelection(

@@ -4,7 +4,7 @@ import {
   hasValidEntitlementForSelection,
   type EntitlementRowForAccess,
 } from "@/features/access/lib/evaluateEntitlementAccess";
-import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 export type UserAccessEvaluation = {
   revoked: boolean;
@@ -21,7 +21,7 @@ export async function evaluateAccessForUser(
   const [profileResult, entitlementsResult] = await Promise.all([
     supabase
       .from("profiles")
-      .select("access_revoked_at, current_track, current_year")
+      .select("access_revoked_at, current_track, current_year, current_product")
       .eq("id", userId)
       .maybeSingle(),
     supabase
@@ -33,7 +33,18 @@ export async function evaluateAccessForUser(
 
   const track = normalizeTrack(profileResult.data?.current_track);
   const year = normalizeYear(profileResult.data?.current_year);
+  const product = normalizeProduct(profileResult.data?.current_product as string | null | undefined);
   const rows = (entitlementsResult.data ?? []) as EntitlementRowForAccess[];
+
+  if (isClinicalProduct(product)) {
+    return {
+      revoked: Boolean(profileResult.data?.access_revoked_at),
+      hasAny: true,
+      hasCurrent: true,
+      track,
+      year,
+    };
+  }
 
   return {
     revoked: Boolean(profileResult.data?.access_revoked_at),

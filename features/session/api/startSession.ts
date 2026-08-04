@@ -230,7 +230,7 @@ export async function startSession(
       if (!access.ok) {
         return { ok: false, message: access.message };
       }
-      if (isCatalogSubjectHidden(subjectId, subjectTrack, user?.email)) {
+      if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
         return { ok: false, message: t("errors.subjectNotFound") };
       }
     }

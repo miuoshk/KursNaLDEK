@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { normalizeTrack } from "@/features/access/lib/studyAccess";
-import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/server/currentAccess";
 
 /**
  * Pytania z zaplanowaną powtórką (next_review <= teraz), zawężone do
@@ -21,7 +22,7 @@ export async function getDueReviewCount(
   userId: string,
   track?: string,
   year?: number,
-  viewerEmail?: string | null,
+  product?: string | null,
 ): Promise<number> {
   if (!track || year == null) {
     const nowIso = new Date().toISOString();
@@ -38,7 +39,9 @@ export async function getDueReviewCount(
     return count ?? 0;
   }
 
-  const catalog = await getCachedKnnpCatalog(track, year, viewerEmail);
+  const normalizedProduct = normalizeProduct(product ?? undefined);
+  const catalogYear = isClinicalProduct(normalizedProduct) ? 1 : year;
+  const catalog = await getCachedProductCatalog(normalizedProduct, track, catalogYear);
   const topicIds = catalog.topicRows.map((t) => t.id);
   if (topicIds.length === 0) return 0;
 

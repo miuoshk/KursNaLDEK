@@ -6,11 +6,13 @@ import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import {
+  normalizeProduct,
   normalizeTrack,
   normalizeYear,
   type StudyTrack,
   type StudyYear,
 } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/server/currentAccess";
 
 type LearningAccessDenied = { ok: false; message: string };
 type LearningAccessGranted = { ok: true; track: StudyTrack; year: StudyYear };
@@ -41,6 +43,14 @@ export async function requireLearningAccessForProfile(
   userId: string,
 ): Promise<LearningAccessGranted | LearningAccessDenied> {
   const profile = await getProfileByUserId(userId);
+  const product = normalizeProduct(profile?.current_product);
+  if (isClinicalProduct(product)) {
+    return {
+      ok: true,
+      track: normalizeTrack(profile?.current_track),
+      year: 1,
+    };
+  }
   return requireLearningAccessForSelection(
     userId,
     normalizeTrack(profile?.current_track),

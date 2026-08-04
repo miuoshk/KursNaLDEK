@@ -3,10 +3,11 @@ import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { buildKnnpSubjectsList } from "@/features/subjects/server/buildKnnpSubjectsList";
 import type { SubjectWithProgress } from "@/features/subjects/types";
-import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/server/currentAccess";
+import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 export type ProfileForSubjects = {
   current_year: number;
@@ -52,7 +53,9 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
     const profileRow = await getProfileByUserId(user.id);
     const track = normalizeTrack(profileRow?.current_track);
     const currentYear = normalizeYear(profileRow?.current_year);
-    const catalog = await getCachedKnnpCatalog(track, currentYear, user.email);
+    const product = normalizeProduct(profileRow?.current_product);
+    const catalogYear = isClinicalProduct(product) ? 1 : currentYear;
+    const catalog = await getCachedProductCatalog(product, track, catalogYear);
 
     let profile: ProfileForSubjects = { ...DEFAULT_PROFILE };
     if (profileRow) {
@@ -67,11 +70,13 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       );
     }
 
-    const isSubscribed = await hasActiveEntitlementForSelection(user.id, track, currentYear);
+    const isSubscribed = isClinicalProduct(product)
+      ? true
+      : await hasActiveEntitlementForSelection(user.id, track, currentYear);
 
     if (catalog.subjectRows.length === 0) {
       console.warn(
-        "[loadKnnpSubjects] tabela subjects jest pusta dla product=knnp — uruchom seed SQL w Supabase.",
+        "[loadKnnpSubjects] tabela subjects jest pusta dla product=" + product + " — uruchom seed SQL w Supabase.",
       );
       return {
         ok: true,

@@ -2,8 +2,9 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { getCachedKnnpCatalog } from "@/features/shared/server/knnpCatalogCache";
-import { normalizeTrack } from "@/features/access/lib/studyAccess";
+import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
+import { normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
+import { isClinicalProduct } from "@/features/access/server/currentAccess";
 import { requireLearningAccessForProfile } from "@/features/access/server/requireLearningAccess";
 
 export type SearchSubjectItem = {
@@ -35,9 +36,10 @@ export async function loadSearchableSubjects(): Promise<SearchSubjectItem[]> {
 
   const profile = await getProfileByUserId(user.id);
   const track = normalizeTrack(profile?.current_track ?? "stomatologia");
-  const year = profile?.current_year ?? 1;
+  const product = normalizeProduct(profile?.current_product);
+  const year = isClinicalProduct(product) ? 1 : (profile?.current_year ?? 1);
 
-  const { subjectRows } = await getCachedKnnpCatalog(track, year, user.email);
+  const { subjectRows } = await getCachedProductCatalog(product, track, year);
   return subjectRows.map((s) => ({
     id: s.id,
     name: s.name,

@@ -95,7 +95,7 @@ export async function loadSubjectDashboard(
     }
 
     const subjectTrack = normalizeTrack(subject.track as string);
-    if (isCatalogSubjectHidden(subjectId, subjectTrack, user?.email)) {
+    if (isCatalogSubjectHidden(subjectId, subjectTrack)) {
       return {
         ok: false,
         kind: "not_found",
@@ -106,6 +106,7 @@ export async function loadSubjectDashboard(
     const canAccessSubject = await hasAccessForSubjectSelection(
       (subject.track as string) ?? "stomatologia",
       (subject.year as number) ?? 1,
+      subject.product as string,
     );
     if (!canAccessSubject) {
       return {

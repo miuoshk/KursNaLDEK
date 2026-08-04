@@ -2,8 +2,10 @@ import "server-only";
 
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
+import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { hasAnyActiveEntitlement, hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
+import { isClinicalProduct, loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
+import { normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
@@ -16,6 +18,11 @@ export async function requireAnyEntitlementOrRedirect() {
 
   if (await isUserAccessRevoked(user.id)) {
     redirect(`/wybor-roku?${ACCESS_REVOKED_QUERY}=1`);
+  }
+
+  const profile = await getProfileByUserId(user.id);
+  if (isClinicalProduct(normalizeProduct(profile?.current_product))) {
+    return user;
   }
 
   const hasAny = await hasAnyActiveEntitlement(user.id);
@@ -45,11 +52,21 @@ export async function requireCurrentSelectionAccessOrRedirect() {
   return { user, current };
 }
 
-export async function hasAccessForSubjectSelection(track: string, year: number): Promise<boolean> {
+export async function hasAccessForSubjectSelection(
+  track: string,
+  year: number,
+  product?: string | null,
+): Promise<boolean> {
   const user = await getCurrentUser();
 
   if (!user) {
     return false;
+  }
+
+  const normalizedProduct = normalizeProduct(product ?? undefined);
+  if (isClinicalProduct(normalizedProduct)) {
+    const profile = await getProfileByUserId(user.id);
+    return normalizeProduct(profile?.current_product) === normalizedProduct;
   }
 
   return hasActiveEntitlementForSelection(

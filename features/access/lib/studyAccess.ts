@@ -2,9 +2,11 @@ import { z } from "zod";
 
 export const STUDY_TRACKS = ["stomatologia", "lekarski"] as const;
 export const STUDY_YEARS = [1, 2, 3] as const;
+export const STUDY_PRODUCTS = ["knnp", "ldek", "ldew"] as const;
 
 export type StudyTrack = (typeof STUDY_TRACKS)[number];
 export type StudyYear = (typeof STUDY_YEARS)[number];
+export type StudyProduct = (typeof STUDY_PRODUCTS)[number];
 export type AccessType = "free_test" | "paid";
 
 export type StudyOption = {
@@ -36,6 +38,11 @@ export function normalizeTrack(track: string | null | undefined): StudyTrack {
 export function normalizeYear(year: number | null | undefined): StudyYear {
   if (year === 2 || year === 3) return year;
   return 1;
+}
+
+export function normalizeProduct(product: string | null | undefined): StudyProduct {
+  if (product === "ldew" || product === "ldek") return product;
+  return "knnp";
 }
 
 export function isFreeTestSelection(track: StudyTrack, year: StudyYear): boolean {

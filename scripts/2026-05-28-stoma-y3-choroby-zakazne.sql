@@ -6,7 +6,7 @@ VALUES (
   'stoma-zakazne',
   'Choroby zakaźne',
   'Ch. zakaźne',
-  'shield-alert',
+  'virus',
   3,
   'stomatologia',
   'knnp',

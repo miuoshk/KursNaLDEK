@@ -5,18 +5,18 @@
 -- ============================================================
 
 INSERT INTO public.subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
-  ('ldew-stomatologia-zachowawcza', 'Stomatologia zachowawcza',           'Zachowawcza',  'heart-pulse',     1, 'stomatologia', 'ldew',  1),
-  ('ldew-endodoncja',               'Endodoncja',                         'Endodoncja',   'zap',             1, 'stomatologia', 'ldew',  2),
-  ('ldew-periodontologia',          'Periodontologia',                    'Periodont.',   'activity',        1, 'stomatologia', 'ldew',  3),
+  ('ldew-stomatologia-zachowawcza', 'Stomatologia zachowawcza',           'Zachowawcza',  'dental',          1, 'stomatologia', 'ldew',  1),
+  ('ldew-endodoncja',               'Endodoncja',                         'Endodoncja',   'needle',          1, 'stomatologia', 'ldew',  2),
+  ('ldew-periodontologia',          'Periodontologia',                    'Periodont.',   'dental-broken',   1, 'stomatologia', 'ldew',  3),
   ('ldew-choroby-sluzowki',         'Choroby błony śluzowej jamy ustnej', 'Błona śluzowa','microscope',      1, 'stomatologia', 'ldew',  4),
-  ('ldew-stomatologia-dziecieca',   'Stomatologia dziecięca',             'Pedodoncja',   'users',           1, 'stomatologia', 'ldew',  5),
-  ('ldew-ortodoncja',               'Ortodoncja',                         'Ortodoncja',   'bone',            1, 'stomatologia', 'ldew',  6),
-  ('ldew-protetyka',                'Protetyka stomatologiczna',          'Protetyka',    'pill',            1, 'stomatologia', 'ldew',  7),
-  ('ldew-chirurgia-stomatologiczna','Chirurgia stomatologiczna',          'Chir. stom.',  'scan',            1, 'stomatologia', 'ldew',  8),
-  ('ldew-chirurgia-szczekowo-twarzowa', 'Chirurgia szczękowo-twarzowa',   'Chir. szcz.',  'clipboard-check', 1, 'stomatologia', 'ldew',  9),
-  ('ldew-radiologia',               'Radiologia stomatologiczna',         'Radiologia',   'flask-conical',   1, 'stomatologia', 'ldew', 10),
-  ('ldew-zdrowie-publiczne',        'Zdrowie publiczne',                   'Zd. publiczne','languages',       1, 'stomatologia', 'ldew', 11),
-  ('ldew-orzecznictwo',             'Orzecznictwo',                       'Orzecznictwo', 'book-open',       1, 'stomatologia', 'ldew', 12)
+  ('ldew-stomatologia-dziecieca',   'Stomatologia dziecięca',             'Pedodoncja',   'baby-carriage',   1, 'stomatologia', 'ldew',  5),
+  ('ldew-ortodoncja',               'Ortodoncja',                         'Ortodoncja',   'braces',          1, 'stomatologia', 'ldew',  6),
+  ('ldew-protetyka',                'Protetyka stomatologiczna',          'Protetyka',    'crown',           1, 'stomatologia', 'ldew',  7),
+  ('ldew-chirurgia-stomatologiczna','Chirurgia stomatologiczna',          'Chir. stom.',  'scissors',        1, 'stomatologia', 'ldew',  8),
+  ('ldew-chirurgia-szczekowo-twarzowa', 'Chirurgia szczękowo-twarzowa',   'Chir. szcz.',  'skull',           1, 'stomatologia', 'ldew',  9),
+  ('ldew-radiologia',               'Radiologia stomatologiczna',         'Radiologia',   'photo-scan',      1, 'stomatologia', 'ldew', 10),
+  ('ldew-zdrowie-publiczne',        'Zdrowie publiczne',                   'Zd. publiczne','hospital',        1, 'stomatologia', 'ldew', 11),
+  ('ldew-orzecznictwo',             'Orzecznictwo',                       'Orzecznictwo', 'gavel',           1, 'stomatologia', 'ldew', 12)
 ON CONFLICT (id) DO UPDATE SET
   name          = EXCLUDED.name,
   short_name    = EXCLUDED.short_name,

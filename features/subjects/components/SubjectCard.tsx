@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Clock, Lock } from "lucide-react";
 import type { SubjectWithProgress } from "@/features/subjects/types";
-import { getSubjectIcon } from "@/features/subjects/iconMap";
+import { SubjectIcon } from "@/features/subjects/components/SubjectIcon";
 import { cn } from "@/lib/utils";
 import { dzialForm } from "@/lib/pluralizePolish";
 
@@ -44,7 +44,6 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
   const t = useTranslations("subjects");
   const tCommon = useTranslations("common");
   const locale = useLocale();
-  const Icon = getSubjectIcon(subject.icon_name);
   const mastery = subject.mastery_percentage;
   /** Brak aktywnych pytań (w tym gdy wszystkie są zdezaktywowane w adminie). */
   const noActiveQuestions = subject.question_count === 0;
@@ -57,14 +56,14 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
   const content = (
     <>
       <div className="flex items-start justify-between gap-3">
-        <Icon
+        <SubjectIcon
+          iconName={subject.icon_name}
           className={cn(
-            "size-5 shrink-0 transition-colors duration-200 ease-out",
+            "transition-colors duration-200 ease-out",
             isDisabled
               ? "text-secondary grayscale"
               : "text-secondary group-hover:text-brand-sage",
           )}
-          aria-hidden
         />
         {noActiveQuestions ? (
           <div className="flex items-center gap-1.5 text-right">

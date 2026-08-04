@@ -45,7 +45,7 @@ export function buildKnnpSubjectsList(
       id: row.id,
       name: row.name,
       short_name: row.short_name,
-      icon_name: row.icon_name ?? "book-open",
+      icon_name: row.icon_name ?? "book",
       year: row.year,
       track: row.track,
       product: row.product,

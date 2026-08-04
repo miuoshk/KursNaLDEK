@@ -6,7 +6,7 @@ VALUES (
   'biofizyka',
   'Biofizyka',
   'Biofizyka',
-  'zap',
+  'bolt',
   1,
   'shared',
   'knnp',

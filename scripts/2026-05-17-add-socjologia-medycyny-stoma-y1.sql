@@ -19,7 +19,7 @@ VALUES
   ('stoma-socjologia',
    'Socjologia medycyny',
    'Socjologia',
-   'users',
+   'heart-handshake',
    1,
    'stomatologia',
    'knnp',

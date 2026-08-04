@@ -14,25 +14,25 @@ DELETE FROM subjects;
 -- Rok 1
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-anatomia',     'Anatomia',                  'Anatomia',      'bone',           1, 'stomatologia', 'knnp', 1),
-  ('stoma-angielski',    'Język angielski medyczny',   'Angielski',     'languages',      1, 'stomatologia', 'knnp', 2),
+  ('stoma-angielski',    'Język angielski medyczny',   'Angielski',     'language',       1, 'stomatologia', 'knnp', 2),
   ('stoma-histologia',   'Histologia i embriologia',  'Histologia',    'microscope',     1, 'stomatologia', 'knnp', 3),
-  ('stoma-biofizyka',    'Biofizyka',                 'Biofizyka',     'zap',            1, 'stomatologia', 'knnp', 4),
+  ('stoma-biofizyka',    'Biofizyka',                 'Biofizyka',     'bolt',           1, 'stomatologia', 'knnp', 4),
   ('stoma-biologia',     'Biologia z genetyką',       'Biologia',      'dna',            1, 'stomatologia', 'knnp', 5),
-  ('stoma-chemia',       'Chemia medyczna',           'Chemia',        'flask-conical',  1, 'stomatologia', 'knnp', 6);
+  ('stoma-chemia',       'Chemia medyczna',           'Chemia',        'flask',          1, 'stomatologia', 'knnp', 6);
 
 -- Rok 2 (stoma-biochemia / stoma-fizjologia ukryte w UI — patrz catalogSubjectVisibility.ts)
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-patologia',    'Patomorfologia',            'Patologia',     'scan',           2, 'stomatologia', 'knnp', 7),
   ('stoma-osce',         'OSCE',                      'OSCE',          'clipboard-check', 2, 'stomatologia', 'knnp', 8),
-  ('stoma-biochemia',    'Biochemia',                 'Biochemia',     'flask-round',    2, 'stomatologia', 'knnp', 9),
-  ('stoma-fizjologia',   'Fizjologia',                'Fizjologia',    'heart-pulse',    2, 'stomatologia', 'knnp', 10),
+  ('stoma-biochemia',    'Biochemia',                 'Biochemia',     'flask-2',        2, 'stomatologia', 'knnp', 9),
+  ('stoma-fizjologia',   'Fizjologia',                'Fizjologia',    'heart-rate',     2, 'stomatologia', 'knnp', 10),
   ('stoma-mikrobio',     'Mikrobiologia',             'Mikrobiologia', 'bug',            2, 'stomatologia', 'knnp', 11),
-  ('stoma-mikrobio-ju',  'Mikrobiologia jamy ustnej', 'Mikro JU',      'microscope',     2, 'stomatologia', 'knnp', 12);
+  ('stoma-mikrobio-ju',  'Mikrobiologia jamy ustnej', 'Mikro JU',      'virus',          2, 'stomatologia', 'knnp', 12);
 
 -- Rok 3
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-farmakologia',      'Farmakologia',              'Farmakologia',  'pill',           3, 'stomatologia', 'knnp', 13),
-  ('stoma-zakazne',           'Choroby zakaźne',           'Ch. zakaźne',   'shield-alert',   3, 'stomatologia', 'knnp', 14);
+  ('stoma-zakazne',           'Choroby zakaźne',           'Ch. zakaźne',   'virus',          3, 'stomatologia', 'knnp', 14);
 
 -- Wspólne repozytorium treści (farmakologia)
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
@@ -46,17 +46,17 @@ ON CONFLICT (id) DO NOTHING;
 -- Rok 1
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('lek-anatomia',       'Anatomia',                  'Anatomia',      'bone',           1, 'lekarski', 'knnp', 1),
-  ('lek-biofizyka',      'Biofizyka',                 'Biofizyka',     'zap',            1, 'lekarski', 'knnp', 2),
+  ('lek-biofizyka',      'Biofizyka',                 'Biofizyka',     'bolt',           1, 'lekarski', 'knnp', 2),
   ('lek-histologia',     'Histologia i embriologia',  'Histologia',    'microscope',     1, 'lekarski', 'knnp', 3),
   ('lek-biologia-mol',   'Biologia molekularna',      'Bio. mol.',     'dna',            1, 'lekarski', 'knnp', 4),
-  ('lek-prof-humanizm',  'Profesjonalizm i humanizm w medycynie', 'Prof. human.', 'users', 1, 'lekarski', 'knnp', 5);
+  ('lek-prof-humanizm',  'Profesjonalizm i humanizm w medycynie', 'Prof. human.', 'heart-handshake', 1, 'lekarski', 'knnp', 5);
 
 -- Rok 2
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
-  ('lek-biochemia',      'Biochemia',                 'Biochemia',     'flask-round',    2, 'lekarski', 'knnp', 5),
-  ('lek-fizjologia',     'Fizjologia',                'Fizjologia',    'heart-pulse',    2, 'lekarski', 'knnp', 6),
-  ('lek-angielski',      'Język angielski medyczny',  'Angielski',     'languages',      2, 'lekarski', 'knnp', 7),
-  ('lek-immunologia',    'Immunologia',               'Immunologia',   'shield',         2, 'lekarski', 'knnp', 8);
+  ('lek-biochemia',      'Biochemia',                 'Biochemia',     'flask-2',        2, 'lekarski', 'knnp', 5),
+  ('lek-fizjologia',     'Fizjologia',                'Fizjologia',    'heart-rate',     2, 'lekarski', 'knnp', 6),
+  ('lek-angielski',      'Język angielski medyczny',  'Angielski',     'language',       2, 'lekarski', 'knnp', 7),
+  ('lek-immunologia',    'Immunologia',               'Immunologia',   'shield-plus',    2, 'lekarski', 'knnp', 8);
 
 -- Rok 3
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES

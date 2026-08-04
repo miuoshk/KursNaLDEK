@@ -45,7 +45,7 @@ Tematy poza Periodontologią dodawaj przy pierwszym batchu (wzorzec `PER-01`).
 | Periodontologia | `per-07-014` | `PER-07` |
 | Endodoncja (przyszłość) | `end-03-002` | `END-03` |
 | Ortodoncja | `ort-01-001` | `ORT-01` |
-| Ortodoncja | `ort-08-008` | `ORT-08` |
+| Ortodoncja | `ort-12-004` | `ORT-12` |
 
 - Numer tematu w ID: **2 cyfry** (`01`, `07`, `22`).
 - Numer pytania: **3 cyfry** (`001`, `014`).

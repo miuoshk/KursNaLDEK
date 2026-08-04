@@ -26,6 +26,12 @@
 | `ORT-06` | 6 | Aparaty profilaktyczne i lecznicze |
 | `ORT-07` | 7 | Profilaktyka i oświata zdrowotna |
 | `ORT-08` | 8 | Różne metody leczenia |
+| `ORT-09` | 9 | Powikłania leczenia ortodontycznego |
+| `ORT-10` | 10 | Współpraca interdyscyplinarna |
+| `ORT-11` | 11 | Rozszczepy szczęki |
+| `ORT-12` | 12 | Wady uwarunkowane genetycznie |
+
+> Mapowanie na materiały PDF: tematy ORT-01…ORT-12 odpowiadają rozdziałom 2–13 (bez „Rys. historyczny”).
 
 ---
 
@@ -40,6 +46,7 @@
 | `ort-01-001` | `ORT-01` |
 | `ort-05-012` | `ORT-05` |
 | `ort-08-008` | `ORT-08` |
+| `ort-12-004` | `ORT-12` |
 
 - `question_type`: `single_choice`
 - `options`: 5 opcji `a`–`e`
@@ -115,7 +122,7 @@ DELETE FROM public.topics
 ```
 Przygotowujesz pytania MCQ do Supabase dla Kurs na LDEW (nostryfikacja).
 
-Przedmiot: ldew-ortodoncja (prefiks: ort-, tematy ORT-01…ORT-08)
+Przedmiot: ldew-ortodoncja (prefiks: ort-, tematy ORT-01…ORT-12)
 Mapa: exports/ldew-ortodoncja-claude-handover.md
 Format: FormatPisaniaPytan-LDEW.md + FormatPisaniaPytan.md
 
@@ -130,6 +137,6 @@ Zacznij od tematu [ORT-01 / …] — wygeneruj [N] pytań.
 
 - [ ] Uruchomiono `scripts/2026-08-04-ldew-ortodoncja-topics.sql` na produkcji
 - [ ] `id` pytań: `ort-{NN}-{NNN}` (małe litery)
-- [ ] `topic_id` dokładnie `ORT-01` … `ORT-08`
+- [ ] `topic_id` dokładnie `ORT-01` … `ORT-12`
 - [ ] Apostrofy w SQL podwojone (`''`)
 - [ ] Po batchu: UPDATE `topics.question_count`

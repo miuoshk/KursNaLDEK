@@ -1,5 +1,5 @@
 -- ============================================================
--- LDEW — Ortodoncja: 8 tematów (ORT-01 … ORT-08)
+-- LDEW — Ortodoncja: 12 tematów (ORT-01 … ORT-12)
 -- Przedmiot ldew-ortodoncja musi istnieć (patrz
 -- scripts/2026-08-04-ldew-clinical-subjects-periodontologia.sql).
 -- Bezpieczne do wielokrotnego uruchomienia (ON CONFLICT).
@@ -19,7 +19,11 @@ INSERT INTO public.topics (id, subject_id, name, display_order, question_count) 
   ('ORT-05', 'ldew-ortodoncja', 'Diagnostyka wad zgryzu', 5, 0),
   ('ORT-06', 'ldew-ortodoncja', 'Aparaty profilaktyczne i lecznicze', 6, 0),
   ('ORT-07', 'ldew-ortodoncja', 'Profilaktyka i oświata zdrowotna', 7, 0),
-  ('ORT-08', 'ldew-ortodoncja', 'Różne metody leczenia', 8, 0)
+  ('ORT-08', 'ldew-ortodoncja', 'Różne metody leczenia', 8, 0),
+  ('ORT-09', 'ldew-ortodoncja', 'Powikłania leczenia ortodontycznego', 9, 0),
+  ('ORT-10', 'ldew-ortodoncja', 'Współpraca interdyscyplinarna', 10, 0),
+  ('ORT-11', 'ldew-ortodoncja', 'Rozszczepy szczęki', 11, 0),
+  ('ORT-12', 'ldew-ortodoncja', 'Wady uwarunkowane genetycznie', 12, 0)
 ON CONFLICT (id) DO UPDATE SET
   subject_id    = EXCLUDED.subject_id,
   name          = EXCLUDED.name,

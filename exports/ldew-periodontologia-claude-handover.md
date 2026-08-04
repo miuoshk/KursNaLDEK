@@ -70,7 +70,6 @@
 | `ldew-endodoncja` | Endodoncja |
 | `ldew-choroby-sluzowki` | Choroby błony śluzowej jamy ustnej |
 | `ldew-stomatologia-dziecieca` | Stomatologia dziecięca |
-| `ldew-ortodoncja` | Ortodoncja |
 | `ldew-protetyka` | Protetyka stomatologiczna |
 | `ldew-chirurgia-stomatologiczna` | Chirurgia stomatologiczna |
 | `ldew-chirurgia-szczekowo-twarzowa` | Chirurgia szczękowo-twarzowa |

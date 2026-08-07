@@ -31,6 +31,16 @@ export async function requireLearningAccessForSelection(
     return { ok: false, message: await deniedMessage() };
   }
 
+  const profile = await getProfileByUserId(userId);
+  const product = normalizeProduct(profile?.current_product);
+  if (isClinicalProduct(product)) {
+    return {
+      ok: true,
+      track: normalizeTrack(profile?.current_track ?? track),
+      year: 1,
+    };
+  }
+
   const allowed = await hasActiveEntitlementForSelection(userId, track, year);
   if (!allowed) {
     return { ok: false, message: await deniedMessage() };

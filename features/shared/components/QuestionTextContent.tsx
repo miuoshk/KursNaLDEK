@@ -46,10 +46,11 @@ export function QuestionTextContent({
   const parsed = parseDualColumnListQuestion(text);
 
   if (parsed.kind === "plain") {
+    // div (not p): RichTextContent may emit block markdown (ol/ul/p)
     return (
-      <p className={cn("whitespace-pre-wrap font-body leading-relaxed text-primary", className)}>
+      <div className={cn("whitespace-pre-wrap font-body leading-relaxed text-primary", className)}>
         {renderSegment(parsed.text, render)}
-      </p>
+      </div>
     );
   }
 

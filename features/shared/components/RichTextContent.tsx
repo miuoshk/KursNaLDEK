@@ -70,6 +70,10 @@ export function RichTextContent({
 }: RichTextContentProps) {
   const wrapperClassName = cn(
     "min-w-0 [&_strong]:font-semibold [&_strong]:text-primary",
+    // Tailwind preflight strips list markers — restore for GFM ol/ul in stems & options
+    "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:whitespace-normal",
+    "[&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:whitespace-normal",
+    "[&_li]:mt-1 [&_li:first-child]:mt-0",
     className,
   );
 

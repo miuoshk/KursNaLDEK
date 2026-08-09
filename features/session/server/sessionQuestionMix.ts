@@ -1,13 +1,58 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
-import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
+import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import {
   fetchVisibleTopicIds,
   shuffle,
 } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 
-/** Powtórki należące do tematów z `topicOk`. */
+const UQP_CHUNK = 200;
+
+/**
+ * Fallback: due w obrębie znanej puli ID (chunkowane UQP).
+ * Używane gdy RPC niedostępne albo gdy zawężamy do `allowedIds` (sesja tematu).
+ */
+async function fetchDueFromQuestionPool(
+  supabase: SupabaseClient,
+  userId: string,
+  pool: string[],
+  limit: number,
+): Promise<string[]> {
+  if (pool.length === 0 || limit <= 0) return [];
+
+  const nowIso = new Date().toISOString();
+  const due: Array<{ question_id: string; next_review: string }> = [];
+
+  for (let i = 0; i < pool.length; i += UQP_CHUNK) {
+    const chunk = pool.slice(i, i + UQP_CHUNK);
+    const { data, error } = await supabase
+      .from("user_question_progress")
+      .select("question_id, next_review")
+      .eq("user_id", userId)
+      .in("question_id", chunk)
+      .not("next_review", "is", null)
+      .lte("next_review", nowIso);
+    if (error) {
+      console.error("[fetchDueFromQuestionPool]", error.message);
+      break;
+    }
+    for (const row of data ?? []) {
+      due.push({
+        question_id: row.question_id as string,
+        next_review: row.next_review as string,
+      });
+    }
+  }
+
+  due.sort(
+    (a, b) =>
+      new Date(a.next_review).getTime() - new Date(b.next_review).getTime(),
+  );
+  return due.slice(0, limit).map((r) => r.question_id);
+}
+
+/** Powtórki należące do tematów z `topicOk` (scoped jak RPC due_review_count). */
 export async function fetchDueReviewQuestionIdsForTopics(
   supabase: SupabaseClient,
   userId: string,
@@ -16,39 +61,43 @@ export async function fetchDueReviewQuestionIdsForTopics(
   limit: number,
   allowedIds?: Set<string>,
 ): Promise<string[]> {
-  if (topicOk.size === 0) return [];
+  if (topicOk.size === 0 || limit <= 0) return [];
 
-  const { data: dueRows } = await supabase
-    .from("user_question_progress")
-    .select("question_id, next_review")
-    .eq("user_id", userId)
-    .not("next_review", "is", null)
-    .lte("next_review", new Date().toISOString())
-    .order("next_review", { ascending: true });
-
-  if (!dueRows?.length) return [];
-
-  const ids = [...new Set(dueRows.map((r) => r.question_id as string))];
-  const { data: qMeta } = await supabase
-    .from("questions")
-    .select("id, topic_id")
-    .in("id", ids)
-    .or(questionTracksOrFilter(track));
-
-  const allowed = new Set(
-    (qMeta ?? [])
-      .filter((q) => topicOk.has(q.topic_id as string))
-      .map((q) => q.id as string),
-  );
-
-  const out: string[] = [];
-  for (const row of dueRows) {
-    const qid = row.question_id as string;
-    if (allowedIds && !allowedIds.has(qid)) continue;
-    if (allowed.has(qid)) out.push(qid);
-    if (out.length >= limit) break;
+  // Sesja tematu: filtruj po znanej puli (bez globalnego UQP).
+  if (allowedIds && allowedIds.size > 0) {
+    return fetchDueFromQuestionPool(
+      supabase,
+      userId,
+      [...allowedIds],
+      limit,
+    );
   }
-  return out;
+
+  const topicIds = [...topicOk];
+  const { data, error } = await supabase.rpc("due_review_question_ids", {
+    p_user_id: userId,
+    p_topic_ids: topicIds,
+    p_track: track,
+    p_limit: limit,
+  });
+
+  if (!error && Array.isArray(data)) {
+    return data
+      .map((row) => (row as { question_id: string }).question_id)
+      .filter((id): id is string => typeof id === "string");
+  }
+
+  if (error) {
+    console.error("[fetchDueReviewQuestionIdsForTopics] rpc:", error.message);
+  }
+
+  const rows = await fetchActiveQuestionsForTopics(supabase, topicIds, track);
+  return fetchDueFromQuestionPool(
+    supabase,
+    userId,
+    rows.map((r) => r.id),
+    limit,
+  );
 }
 
 export async function fetchDueReviewQuestionIds(

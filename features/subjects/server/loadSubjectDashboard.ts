@@ -207,14 +207,13 @@ export async function loadSubjectDashboard(
           times_answered: number | null;
           times_correct: number | null;
           next_review: string | null;
-          state: string | null;
         };
         const uqpRows: UqpRow[] = [];
         for (let i = 0; i < uniqueQids.length; i += UQP_CHUNK) {
           const chunk = uniqueQids.slice(i, i + UQP_CHUNK);
           const { data, error: uqpErr } = await supabase
             .from("user_question_progress")
-            .select("question_id, times_answered, times_correct, next_review, state")
+            .select("question_id, times_answered, times_correct, next_review")
             .eq("user_id", user.id)
             .in("question_id", chunk);
           if (uqpErr) {
@@ -256,9 +255,9 @@ export async function loadSubjectDashboard(
             applyProgress(virtualId);
           }
 
-          const st = r.state as string | null;
+          // Due = next_review <= now (jak RPC due_review_count / karty przedmiotów)
           const nr = r.next_review as string | null;
-          if (nr && (st === "review" || st === "relearning")) {
+          if (nr) {
             const nrDate = new Date(nr);
             if (!nextReviewDate || nrDate < nextReviewDate) nextReviewDate = nrDate;
             if (nrDate <= now) dueCount += 1;

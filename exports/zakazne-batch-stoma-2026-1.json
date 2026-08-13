@@ -1,0 +1,1396 @@
+[
+  {
+    "id": "zaksto-z2026-1-1",
+    "topic_id": "ZAKAZ-11",
+    "text": "Opryszczkowe zapalenie jamy ustnej występuje w przebiegu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "reaktywacji zakażenia HSV-1"
+      },
+      {
+        "id": "b",
+        "text": "pierwotnego zakażenia HSV-2"
+      },
+      {
+        "id": "c",
+        "text": "pierwotnego zakażenia HSV-1"
+      },
+      {
+        "id": "d",
+        "text": "reaktywacji zakażenia HSV-2"
+      },
+      {
+        "id": "e",
+        "text": "pierwotnego zakażenia EBV"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Opryszczkowe zapalenie jamy ustnej i dziąseł to typowa postać **pierwotnego zakażenia HSV-1**, najczęściej u dzieci między 6. miesiącem a 5. rokiem życia: wysoka gorączka, bolesne pęcherzyki i nadżerki na błonie śluzowej oraz dziąsłach, ślinotok, powiększone węzły podżuchwowe. Reaktywacja HSV-1 daje ograniczoną **opryszczkę wargową**, HSV-2 odpowiada głównie za opryszczkę narządów płciowych, a EBV za mononukleozę z anginą.",
+    "subtheme_label": "Zakażenia wirusami opryszczki",
+    "source_code": "ZAKSTO-843",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-2",
+    "topic_id": "ZAKAZ-12",
+    "text": "Jakie komórki atakuje HIV: I. limfocyty CD4+; II. makrofagi; III. komórki dendrytyczne; IV. erytrocyty; V. limfocyty CD8+ (bezpośrednio)",
+    "options": [
+      {
+        "id": "a",
+        "text": "I i II"
+      },
+      {
+        "id": "b",
+        "text": "I i III"
+      },
+      {
+        "id": "c",
+        "text": "II i III"
+      },
+      {
+        "id": "d",
+        "text": "I, II i III"
+      },
+      {
+        "id": "e",
+        "text": "wszystkie wymienione"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "HIV wnika do komórki, wiążąc się z receptorem **CD4** oraz koreceptorem **CCR5** lub **CXCR4** — zakaża limfocyty T pomocnicze, makrofagi i komórki dendrytyczne, które są zarazem rezerwuarem wirusa i transportują go do węzłów chłonnych. Erytrocyty nie mają jądra ani cząsteczki CD4, a limfocyty **CD8+** nie są zakażane bezpośrednio. Spadek CD4 **poniżej 200/µl** oznacza głęboką immunosupresję i ryzyko chorób wskaźnikowych.",
+    "subtheme_label": "Zakażenie HIV",
+    "source_code": "ZAKSTO-844",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-3",
+    "topic_id": "ZAKAZ-03",
+    "text": "Choroby przenoszone drogą kropelkową najłatwiej rozprzestrzeniają się w środowisku:",
+    "options": [
+      {
+        "id": "a",
+        "text": "terenów wiejskich o niskiej gęstości zaludnienia"
+      },
+      {
+        "id": "b",
+        "text": "obszarów zurbanizowanych o dużej gęstości zaludnienia"
+      },
+      {
+        "id": "c",
+        "text": "rejonów o bardzo niskim poziomie higieny osobistej"
+      },
+      {
+        "id": "d",
+        "text": "klimatu tropikalnego i wilgotnego"
+      },
+      {
+        "id": "e",
+        "text": "klimatu umiarkowanego i suchego"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Transmisja kropelkowa (kropelki >5 µm, zasięg **1–2 m**) zależy przede wszystkim od **zagęszczenia ludzi** i bliskiego kontaktu, dlatego zakażenia te szerzą się najłatwiej w miastach, żłobkach, szkołach, koszarach i komunikacji zbiorowej. Poziom higieny rąk i stan sanitacji decydują głównie o zakażeniach szerzących się **drogą fekalno-oralną** (WZW A, dur brzuszny, czerwonka). Klimat ma tu znaczenie drugorzędne.",
+    "subtheme_label": "Drogi szerzenia się zakażeń",
+    "source_code": "ZAKSTO-845",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-4",
+    "topic_id": "ZAKAZ-13",
+    "text": "Pacjentka zgłosiła się do szpitala na planowy zabieg. Wykryto u niej przeciwciała anty-HCV. Jakie postępowanie należy wdrożyć?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Natychmiast rozpocząć pełną terapię lekami DAA"
+      },
+      {
+        "id": "b",
+        "text": "Pozostawić pacjentkę wyłącznie w obserwacji klinicznej"
+      },
+      {
+        "id": "c",
+        "text": "Podać immunoglobulinę swoistą i szczepionkę przeciw HCV"
+      },
+      {
+        "id": "d",
+        "text": "Oznaczyć HCV-RNA, bo przeciwciała nie dowodzą wiremii"
+      },
+      {
+        "id": "e",
+        "text": "Odroczyć zabieg o 6 miesięcy bez dalszej diagnostyki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Anty-HCV to marker kontaktu z wirusem — utrzymują się także po samowyleczeniu (ok. **20–30%** zakażeń) oraz po skutecznym leczeniu. O czynnym zakażeniu decyduje wykrycie **HCV-RNA**; dopiero dodatni wynik kwalifikuje do terapii **DAA (leki o bezpośrednim działaniu przeciwwirusowym)**. Szczepionki przeciw HCV nie ma, immunoglobulina jest nieskuteczna. Przeciwciała anty-HCV nie chronią przed reinfekcją.",
+    "subtheme_label": "Zakażenie HCV",
+    "source_code": "ZAKSTO-846",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-5",
+    "topic_id": "ZAKAZ-10",
+    "text": "Zęby charakterystyczne dla kiły wrodzonej to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zęby Turnera"
+      },
+      {
+        "id": "b",
+        "text": "perły Epsteina"
+      },
+      {
+        "id": "c",
+        "text": "plamki Koplika"
+      },
+      {
+        "id": "d",
+        "text": "zęby Hutchinsona"
+      },
+      {
+        "id": "e",
+        "text": "guzki Bohna"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Triadę Hutchinsona w **kile wrodzonej późnej** tworzą: beczułkowate siekacze z półksiężycowatym wcięciem brzegu siecznego, śródmiąższowe zapalenie rogówki i głuchota z uszkodzenia **nerwu VIII**. Towarzyszą im zęby Moona (guzkowate trzonowce). Ząb Turnera to hipoplazja szkliwa po urazie lub zapaleniu zawiązka, plamki Koplika są patognomoniczne dla **odry**, a perły Epsteina i guzki Bohna to niegroźne torbiele noworodkowe.",
+    "subtheme_label": "Kiła",
+    "source_code": "ZAKSTO-847",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-6",
+    "topic_id": "ZAKAZ-22",
+    "text": "U jakiego pacjenta przed zabiegiem stomatologicznym zalecana jest profilaktyka infekcyjnego zapalenia wsierdzia (IZW)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Z nadciśnieniem tętniczym leczonym farmakologicznie"
+      },
+      {
+        "id": "b",
+        "text": "Po wszczepieniu stentu wieńcowego przed 2 laty"
+      },
+      {
+        "id": "c",
+        "text": "Z wypadaniem płatka zastawki mitralnej bez fali zwrotnej"
+      },
+      {
+        "id": "d",
+        "text": "Z wszczepionym stymulatorem serca"
+      },
+      {
+        "id": "e",
+        "text": "Ze sztuczną zastawką lub po przebytym IZW"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Profilaktykę ograniczono do grup najwyższego ryzyka: chorych ze sztuczną zastawką lub materiałem sztucznym użytym do jej naprawy, po przebytym IZW oraz z wybranymi wrodzonymi wadami siniczymi. Dotyczy zabiegów naruszających dziąsło, okolicę okołowierzchołkową lub błonę śluzową — standardem jest **amoksycylina 2 g p.o. 30–60 min przed zabiegiem** (przy uczuleniu klindamycyna). Stent, stymulator i wypadanie płatka nie są wskazaniem.",
+    "subtheme_label": "Infekcyjne zapalenie wsierdzia",
+    "source_code": "ZAKSTO-848",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-7",
+    "topic_id": "ZAKAZ-08",
+    "text": "Wskaż prawidłowe stwierdzenie dotyczące promienicy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ziarna siarkowe widoczne są tylko w mikroskopie elektronowym"
+      },
+      {
+        "id": "b",
+        "text": "Podstawą rozpoznania są badania serologiczne"
+      },
+      {
+        "id": "c",
+        "text": "W treści ropnej widoczne są makroskopowo ziarna siarkowe"
+      },
+      {
+        "id": "d",
+        "text": "Zmiany mają charakter wyłącznie mikroskopowych zwłóknień"
+      },
+      {
+        "id": "e",
+        "text": "Zakażenie szerzy się przede wszystkim drogą krwiopochodną"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Promienica szyjno-twarzowa (**Actinomyces israelii**, Gram-dodatnia beztlenowa pałeczka flory jamy ustnej) rozwija się po ekstrakcji zęba lub urazie: powstaje twardy, deskowaty naciek szerzący się przez ciągłość, z przetokami przebijającymi skórę. W wycieku ropnym widać gołym okiem żółtawe **ziarna siarkowe (druzy)** — skupiska strzępek. Rozpoznanie opiera się na hodowli beztlenowej, nie na serologii; leczenie to wielotygodniowa **penicylina**.",
+    "subtheme_label": "Promienica",
+    "source_code": "ZAKSTO-849",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-8",
+    "topic_id": "ZAKAZ-22",
+    "text": "Panel TORCH obejmuje badania w kierunku:",
+    "options": [
+      {
+        "id": "a",
+        "text": "toksoplazmozy"
+      },
+      {
+        "id": "b",
+        "text": "gruźlicy"
+      },
+      {
+        "id": "c",
+        "text": "krztuśca"
+      },
+      {
+        "id": "d",
+        "text": "grypy sezonowej"
+      },
+      {
+        "id": "e",
+        "text": "anginy paciorkowcowej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**TORCH** to zestaw badań w kierunku zakażeń wrodzonych przenoszonych przezłożyskowo: **T**oxoplasma gondii, **O**thers (kiła, HBV, VZV, parwowirus B19, Listeria), **R**ubella, **C**ytomegalovirus, **H**erpes simplex. Typowe następstwa to małogłowie, zwapnienia śródczaszkowe, wady serca, głuchota, zapalenie siatkówki i naczyniówki oraz hepatosplenomegalia. Gruźlica, krztusiec i grypa nie należą do tego akronimu; u noworodka diagnostykę opiera się na przeciwciałach klasy IgM.",
+    "subtheme_label": "Zakażenia wrodzone",
+    "source_code": "ZAKSTO-850",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-9",
+    "topic_id": "ZAKAZ-06",
+    "text": "O ile procent na dobę wzrasta ryzyko zakażenia układu moczowego (ZUM) u pacjenta z założonym cewnikiem?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0,1–0,5%"
+      },
+      {
+        "id": "b",
+        "text": "1–3%"
+      },
+      {
+        "id": "c",
+        "text": "5–10%"
+      },
+      {
+        "id": "d",
+        "text": "15–20%"
+      },
+      {
+        "id": "e",
+        "text": "25–30%"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Cewnik moczowy jest najczęstszym źródłem zakażeń szpitalnych — ryzyko bakteriurii rośnie o ok. **5–10% z każdą dobą** utrzymywania cewnika, a po **30 dniach** praktycznie każdy chory ma bakteriurię. Drobnoustroje wędrują drogą wewnątrz- i zewnątrzcewnikową, tworząc na powierzchni **biofilm** niedostępny dla antybiotyków. Podstawą profilaktyki jest unikanie zbędnego cewnikowania, zamknięty system drenażu i szybkie usunięcie cewnika.",
+    "subtheme_label": "Zakażenia układu moczowego",
+    "source_code": "ZAKSTO-851",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-10",
+    "topic_id": "ZAKAZ-06",
+    "text": "Najczęstszą przyczynę narastania oporności bakteryjnej w szpitalu stanowią:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zakażenia okołozabiegowe miejsca operowanego"
+      },
+      {
+        "id": "b",
+        "text": "zakażenia skóry i tkanek miękkich"
+      },
+      {
+        "id": "c",
+        "text": "zakażenia przewodu pokarmowego"
+      },
+      {
+        "id": "d",
+        "text": "zakażenia układu moczowego"
+      },
+      {
+        "id": "e",
+        "text": "odcewnikowe zakażenia krwi"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Zakażenia układu moczowego** to ok. 30–40% wszystkich zakażeń szpitalnych, w większości odcewnikowe, wielokrotnie i często niepotrzebnie leczone empirycznie — także w postaci bezobjawowej bakteriurii. To główny motor selekcji szczepów opornych, zwłaszcza pałeczek jelitowych wytwarzających **ESBL** i karbapenemazy (**KPC**, NDM). Ograniczenie cewnikowania i odstąpienie od leczenia bezobjawowej bakteriurii to filary szpitalnej polityki antybiotykowej.",
+    "subtheme_label": "Narastanie oporności bakteryjnej",
+    "source_code": "ZAKSTO-852",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-11",
+    "topic_id": "ZAKAZ-04",
+    "text": "Antybiotykiem o najwyższym ryzyku wywołania zapalenia jelit związanego z zakażeniem Clostridioides difficile jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "klindamycyna"
+      },
+      {
+        "id": "b",
+        "text": "amoksycylina"
+      },
+      {
+        "id": "c",
+        "text": "doksycyklina"
+      },
+      {
+        "id": "d",
+        "text": "klarytromycyna"
+      },
+      {
+        "id": "e",
+        "text": "nitrofurantoina"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Największe ryzyko zakażenia **C. difficile** niosą **klindamycyna**, fluorochinolony, cefalosporyny II–IV generacji i karbapenemy (reguła „4 C”: clindamycin, cephalosporins, ciprofloxacin, co-amoxiclav). Niszczą one beztlenową florę jelitową, umożliwiając namnożenie laseczki i wytwarzanie **toksyn A i B**. Doksycyklina i nitrofurantoina mają ryzyko najniższe. W leczeniu stosuje się **wankomycynę p.o.** lub fidaksomycynę.",
+    "subtheme_label": "Powikłania antybiotykoterapii",
+    "source_code": "ZAKSTO-853",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-12",
+    "topic_id": "ZAKAZ-13",
+    "text": "Możliwym ciężkim następstwem zakażenia HAV jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "marskość wątroby"
+      },
+      {
+        "id": "b",
+        "text": "przewlekłe wirusowe zapalenie wątroby"
+      },
+      {
+        "id": "c",
+        "text": "rak wątrobowokomórkowy"
+      },
+      {
+        "id": "d",
+        "text": "przewlekłe nosicielstwo wirusa"
+      },
+      {
+        "id": "e",
+        "text": "nadostre (piorunujące) zapalenie wątroby"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**HAV nigdy nie przechodzi w postać przewlekłą** — nie istnieje nosicielstwo, a marskość i rak wątrobowokomórkowy nie rozwijają się na jego podłożu. Jedynym groźnym następstwem jest **nadostre (piorunujące) zapalenie wątroby** z encefalopatią i ostrą niewydolnością narządu; dotyczy <1% chorych, a ryzyko rośnie po 50. r.ż. i przy współistniejącej przewlekłej chorobie wątroby. Możliwy jest też przebieg cholestatyczny i nawrotowy.",
+    "subtheme_label": "WZW typu A",
+    "source_code": "ZAKSTO-854",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-13",
+    "topic_id": "ZAKAZ-12",
+    "text": "Wskaż fałszywe stwierdzenie na temat terapii antyretrowirusowej (ARV):",
+    "options": [
+      {
+        "id": "a",
+        "text": "Stosuje się w niej skojarzenie trzech lub więcej leków"
+      },
+      {
+        "id": "b",
+        "text": "Umożliwia całkowitą eradykację wirusa z organizmu"
+      },
+      {
+        "id": "c",
+        "text": "Zmniejsza ryzyko transmisji zakażenia"
+      },
+      {
+        "id": "d",
+        "text": "Jest proponowana każdemu pacjentowi zakażonemu HIV"
+      },
+      {
+        "id": "e",
+        "text": "Jej celem jest niewykrywalna wiremia HIV-RNA"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**cART** hamuje replikację, ale nie usuwa prowirusowego DNA z **rezerwuarów** (spoczynkowe limfocyty T CD4+ pamięci, OUN, tkanka limfatyczna jelit) — po odstawieniu wiremia odbija, więc eradykacja jest niemożliwa. Standardem jest skojarzenie co najmniej 3 leków z 2 grup, u każdego zakażonego niezależnie od CD4, z celem HIV-RNA **<50 kopii/ml**. Zasada **U=U**: niewykrywalna wiremia znosi ryzyko transmisji drogą płciową.",
+    "subtheme_label": "Leczenie zakażenia HIV",
+    "source_code": "ZAKSTO-855",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-14",
+    "topic_id": "ZAKAZ-11",
+    "text": "Prawdziwe na temat mononukleozy zakaźnej: I. przebiega bez podwyższenia temperatury; II. angina ustępuje po podaniu antybiotyku; III. wywołana jest przez EBV; IV. wysypka występuje zawsze; V. występuje objaw tzw. szyi Nerona; VI. częstym powikłaniem splenomegalii jest pęknięcie wątroby",
+    "options": [
+      {
+        "id": "a",
+        "text": "I, III i IV"
+      },
+      {
+        "id": "b",
+        "text": "tylko III"
+      },
+      {
+        "id": "c",
+        "text": "III i V"
+      },
+      {
+        "id": "d",
+        "text": "wszystkie wymienione"
+      },
+      {
+        "id": "e",
+        "text": "żadne z wymienionych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Pewne jest wyłącznie stwierdzenie o etiologii — **EBV (HHV-4)**. Mononukleoza przebiega z gorączką, anginą z nalotami i uogólnioną limfadenopatią; angina nie reaguje na antybiotyk, a **ampicylina i amoksycylina** wywołują osutkę polekową (wysypka nie jest objawem stałym). Groźnym powikłaniem splenomegalii jest **pęknięcie śledziony**, nie wątroby. Określenia „szyja Nerona” używa się głównie w opisie obrzęku szyi w błonicy.",
+    "subtheme_label": "Mononukleoza zakaźna",
+    "source_code": "ZAKSTO-856",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-15",
+    "topic_id": "ZAKAZ-13",
+    "text": "W grupie szczepień zalecanych Programu Szczepień Ochronnych (PSO) szczepienie przeciw WZW A dotyczy osób szczególnie narażonych, z wyjątkiem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "osób wyjeżdżających do krajów o wysokiej endemiczności WZW A"
+      },
+      {
+        "id": "b",
+        "text": "osób zatrudnionych przy produkcji i dystrybucji żywności"
+      },
+      {
+        "id": "c",
+        "text": "dzieci i młodzieży, które nie chorowały na WZW A"
+      },
+      {
+        "id": "d",
+        "text": "osób z przewlekłą chorobą wątroby, zakażonych HBV lub HCV"
+      },
+      {
+        "id": "e",
+        "text": "osób po 65. roku życia wyłącznie z powodu wieku"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "PSO wymienia wśród zalecanych szczepień przeciw **WZW A**: podróżnych do rejonów o wysokiej i pośredniej endemiczności, pracowników produkcji i dystrybucji żywności oraz usuwania odpadów, dzieci i młodzież, które nie chorowały, a także chorych z **przewlekłą chorobą wątroby**. Sam wiek nie jest wskazaniem. Szczepionka inaktywowana, 2 dawki (0 i 6–12 mies.).",
+    "subtheme_label": "Profilaktyka WZW typu A",
+    "source_code": "ZAKSTO-857",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-16",
+    "topic_id": "ZAKAZ-12",
+    "text": "Jakie leki wykorzystywane są w leczeniu przyczynowym COVID-19?",
+    "options": [
+      {
+        "id": "a",
+        "text": "oseltamiwir"
+      },
+      {
+        "id": "b",
+        "text": "acyklowir"
+      },
+      {
+        "id": "c",
+        "text": "nirmatrelwir z rytonawirem"
+      },
+      {
+        "id": "d",
+        "text": "amantadyna"
+      },
+      {
+        "id": "e",
+        "text": "iwermektyna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Nirmatrelwir z rytonawirem (Paxlovid)** to inhibitor proteazy 3CL wirusa SARS-CoV-2 z boosterem farmakokinetycznym; podaje się go doustnie przez 5 dni, rozpoczynając **do 5 dni od wystąpienia objawów**, u chorych z czynnikami ryzyka ciężkiego przebiegu. Wymaga kontroli licznych interakcji przez **CYP3A4**. Alternatywą jest remdesiwir. Oseltamiwir działa na grypę, acyklowir na HSV i VZV, a amantadyna i iwermektyna są w COVID-19 nieskuteczne.",
+    "subtheme_label": "COVID-19",
+    "source_code": "ZAKSTO-858",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-17",
+    "topic_id": "ZAKAZ-08",
+    "text": "Przy botulizmie nie występuje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zaburzenia mowy i połykania"
+      },
+      {
+        "id": "b",
+        "text": "opadanie powiek"
+      },
+      {
+        "id": "c",
+        "text": "podwójne widzenie"
+      },
+      {
+        "id": "d",
+        "text": "gorączka powyżej 39°C"
+      },
+      {
+        "id": "e",
+        "text": "suchość w jamie ustnej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Toksyna botulinowa** blokuje uwalnianie acetylocholiny w płytce nerwowo-mięśniowej i zwojach przywspółczulnych, dając symetryczne, **zstępujące porażenie wiotkie** bez gorączki i bez zaburzeń świadomości: podwójne widzenie, opadanie powiek, dyzartrię, dysfagię, suchość w ustach, szerokie sztywne źrenice, wreszcie porażenie mięśni oddechowych. Gorączka wskazuje na inne rozpoznanie. Leczenie: **antytoksyna** i wentylacja mechaniczna.",
+    "subtheme_label": "Botulizm",
+    "source_code": "ZAKSTO-859",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-18",
+    "topic_id": "ZAKAZ-12",
+    "text": "Wskaż prawidłowe stwierdzenie dotyczące zakażenia wirusem Zika:",
+    "options": [
+      {
+        "id": "a",
+        "text": "często przebiega z niewydolnością oddechową"
+      },
+      {
+        "id": "b",
+        "text": "śmiertelność sięga 40% zakażonych"
+      },
+      {
+        "id": "c",
+        "text": "przenoszone jest przez kleszcze z rodzaju Ixodes"
+      },
+      {
+        "id": "d",
+        "text": "ciężkie powikłania dotyczą głównie mężczyzn"
+      },
+      {
+        "id": "e",
+        "text": "u większości zakażonych przebiega bezobjawowo"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Zika to flawiwirus przenoszony przez komary **Aedes**, dodatkowo drogą płciową i przezłożyskową. U ok. **80%** zakażonych przebiega bezobjawowo, a u pozostałych daje łagodną gorączkę, plamisto-grudkową wysypkę, zapalenie spojówek i bóle stawów; śmiertelność jest znikoma. Największym zagrożeniem jest zakażenie w ciąży — **małogłowie** i inne wady OUN płodu. U dorosłych opisano **zespół Guillaina-Barrégo**. Nie ma leczenia przyczynowego ani szczepionki, liczy się ochrona przed komarami.",
+    "subtheme_label": "Gorączka Zika",
+    "source_code": "ZAKSTO-860",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-19",
+    "topic_id": "ZAKAZ-12",
+    "text": "Zgodnie z Programem Szczepień Ochronnych (PSO), kiedy należy podać pierwszą dawkę szczepionki przeciw rotawirusom?",
+    "options": [
+      {
+        "id": "a",
+        "text": "po ukończeniu 6. tygodnia życia"
+      },
+      {
+        "id": "b",
+        "text": "po ukończeniu 6. miesiąca życia"
+      },
+      {
+        "id": "c",
+        "text": "dopiero po ukończeniu 12. miesiąca życia"
+      },
+      {
+        "id": "d",
+        "text": "w pierwszej dobie po urodzeniu"
+      },
+      {
+        "id": "e",
+        "text": "w dowolnym momencie przed 18. rokiem życia"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Szczepienie przeciw **rotawirusom** jest w Polsce **obowiązkowe** dla dzieci urodzonych po 31.12.2020 r. Pierwszą dawkę doustnej, **żywej** szczepionki podaje się po ukończeniu **6. tygodnia życia** (optymalnie do 12. tygodnia), a cały cykl — 2 lub 3 dawki zależnie od preparatu — należy zakończyć do **24. lub 32. tygodnia życia**. Późniejsze rozpoczynanie zwiększa ryzyko wgłobienia jelita, które obok SCID jest przeciwwskazaniem.",
+    "subtheme_label": "Zakażenia rotawirusowe",
+    "source_code": "ZAKSTO-861",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-20",
+    "topic_id": "ZAKAZ-12",
+    "text": "Zmiany w jamie ustnej w przebiegu zakażenia HIV to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kandydoza jamy ustnej"
+      },
+      {
+        "id": "b",
+        "text": "leukoplakia włochata"
+      },
+      {
+        "id": "c",
+        "text": "mięsak Kaposiego"
+      },
+      {
+        "id": "d",
+        "text": "opryszczkowe zapalenie jamy ustnej"
+      },
+      {
+        "id": "e",
+        "text": "wszystkie wymienione"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Jama ustna bywa pierwszym miejscem ujawnienia immunosupresji: **kandydoza rzekomobłoniasta** (wczesny sygnał spadku CD4), **leukoplakia włochata** na bocznych brzegach języka związana z EBV i niedająca się zetrzeć, **mięsak Kaposiego** (HHV-8) jako sinofioletowe plamy i guzki podniebienia oraz dziąseł, nawracająca opryszczka, a także martwicze wrzodziejące zapalenie dziąseł i przyzębia. Stomatolog często pierwszy podejrzewa zakażenie HIV.",
+    "subtheme_label": "Zakażenie HIV",
+    "source_code": "ZAKSTO-862",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-21",
+    "topic_id": "ZAKAZ-12",
+    "text": "Mężczyzna został zraniony przez znanego psa, uszkodzona skóra miała kontakt ze śliną zwierzęcia. Właściciel przedstawił wiarygodną dokumentację szczepienia psa przeciw wściekliźnie. Jakie jest postępowanie?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Obserwacja weterynaryjna psa przez 15 dni"
+      },
+      {
+        "id": "b",
+        "text": "Wyłącznie szczepienie przeciw wściekliźnie"
+      },
+      {
+        "id": "c",
+        "text": "Profilaktyka czynno-bierna: szczepionka i immunoglobulina"
+      },
+      {
+        "id": "d",
+        "text": "Obserwacja szpitalna mężczyzny przez 15 dni"
+      },
+      {
+        "id": "e",
+        "text": "Brak jakiegokolwiek postępowania poekspozycyjnego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Gdy zwierzę jest znane i **dostępne do obserwacji**, o postępowaniu decyduje jego stan zdrowia: psa lub kota poddaje się **15-dniowej obserwacji weterynaryjnej**. Jeśli zwierzę pozostaje zdrowe, profilaktyki nie wdraża się wcale albo przerywa po pierwszych dawkach. Uodpornienie czynno-bierne rezerwuje się dla ekspozycji III kategorii ze zwierzęciem chorym, podejrzanym lub niedostępnym. Nieleczona wścieklizna jest **w 100% śmiertelna**.",
+    "subtheme_label": "Wścieklizna",
+    "source_code": "ZAKSTO-863",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-22",
+    "topic_id": "ZAKAZ-08",
+    "text": "Wskaż prawdziwe stwierdzenia o błonicy: I. najcięższa jest postać gardłowa i krtaniowa; II. nie ma konieczności hospitalizacji, można leczyć ambulatoryjnie; III. leczenie polega na podaniu surowicy przeciwbłoniczej i antybiotyku; IV. konieczne jest zdejmowanie błon rzekomych szpatułką; V. powoduje powikłania ze strony układu nerwowego i serca; VI. powoduje obrzęk szyi typu tzw. szyi Nerona",
+    "options": [
+      {
+        "id": "a",
+        "text": "I, III, V i VI"
+      },
+      {
+        "id": "b",
+        "text": "I, II i IV"
+      },
+      {
+        "id": "c",
+        "text": "II, III i V"
+      },
+      {
+        "id": "d",
+        "text": "tylko III i V"
+      },
+      {
+        "id": "e",
+        "text": "wszystkie wymienione"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Corynebacterium diphtheriae** wytwarza toksynę blokującą czynnik elongacyjny **EF-2**. Najcięższa jest postać gardłowo-krtaniowa (krup błoniczy z groźbą uduszenia); chory wymaga izolacji i hospitalizacji. Leczenie to jak najwcześniejsza **antytoksyna błonicza** oraz penicylina lub makrolid. Błon rzekomych nie wolno usuwać — obficie krwawią. Powikłania toksyczne: **zapalenie mięśnia sercowego** i porażenia podniebienia oraz akomodacji.",
+    "subtheme_label": "Błonica",
+    "source_code": "ZAKSTO-864",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-23",
+    "topic_id": "ZAKAZ-13",
+    "text": "Wskaż fałszywe stwierdzenie na temat HEV:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Genotypy 3 i 4 są zoonozami przenoszonymi przez surowe mięso"
+      },
+      {
+        "id": "b",
+        "text": "Zakażenie bywa szczególnie groźne w II i III trymestrze ciąży"
+      },
+      {
+        "id": "c",
+        "text": "U osób w immunosupresji może przejść w postać przewlekłą"
+      },
+      {
+        "id": "d",
+        "text": "Może dawać powikłania ze strony nerwów czaszkowych"
+      },
+      {
+        "id": "e",
+        "text": "W Europie występuje wyłącznie jako zakażenie zawleczone"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "W Europie **HEV genotypu 3** jest zakażeniem rodzimym (autochtonicznym) — rezerwuarem są świnie i dziki, a do zakażenia dochodzi po zjedzeniu surowej wieprzowiny, wątróbki czy dziczyzny; opisano też transmisję przez przetoczenia krwi. Genotypy 1 i 2 (Azja, Afryka) szerzą się przez skażoną wodę i bywają zawlekane. Śmiertelność u ciężarnych sięga **20–25%**, a u chorych po przeszczepach możliwe jest zakażenie przewlekłe leczone **rybawiryną**.",
+    "subtheme_label": "WZW typu E",
+    "source_code": "ZAKSTO-865",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-24",
+    "topic_id": "ZAKAZ-13",
+    "text": "Układ markerów serologicznych zakażenia HBV: HBsAg (-), HBeAg (-), HBeAb (-), HBcAb-IgM (-), HBcAb-IgG (-), HBsAb (+) może odpowiadać:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wczesnemu okresowi wylęgania WZW typu B"
+      },
+      {
+        "id": "b",
+        "text": "przebytemu zakażeniu HBV"
+      },
+      {
+        "id": "c",
+        "text": "ostremu WZW typu B w fazie okna serologicznego"
+      },
+      {
+        "id": "d",
+        "text": "odporności poszczepiennej"
+      },
+      {
+        "id": "e",
+        "text": "przewlekłemu zakażeniu HBV"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Izolowane **anty-HBs** przy nieobecności anty-HBc to podpis skutecznego szczepienia — ochronę zapewnia miano **>10 mIU/ml**. Po przebytym zakażeniu obok anty-HBs dożywotnio utrzymują się **anty-HBc w klasie IgG**. Okno serologiczne oznacza brak HBsAg i anty-HBs przy obecnych anty-HBc IgM. W okresie wylęgania wykrywa się HBsAg bez przeciwciał, a w zakażeniu przewlekłym HBsAg utrzymujący się **ponad 6 miesięcy**.",
+    "subtheme_label": "WZW typu B",
+    "source_code": "ZAKSTO-866",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-25",
+    "topic_id": "ZAKAZ-12",
+    "text": "Szczepienie przeciw kleszczowemu zapaleniu mózgu (KZM) jest szczepieniem zalecanym szczególnie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "osobom powyżej 60. roku życia mieszkającym na wsi"
+      },
+      {
+        "id": "b",
+        "text": "obowiązkowo wszystkim dzieciom w 2. roku życia"
+      },
+      {
+        "id": "c",
+        "text": "osobom pracującym na terenach leśnych i endemicznych"
+      },
+      {
+        "id": "d",
+        "text": "wyłącznie osobom po przebytym pokłuciu przez kleszcza"
+      },
+      {
+        "id": "e",
+        "text": "podróżnym udającym się do Afryki Subsaharyjskiej"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**KZM** wywołuje flawiwirus przenoszony przez kleszcze **Ixodes ricinus**, rzadziej przez niepasteryzowane mleko kóz i krów. PSO zaleca szczepienie osobom przebywającym na terenach endemicznych: leśnikom, rolnikom, żołnierzom, turystom i dzieciom na koloniach. Schemat: 0, 1–3 mies., 5–12 mies., dawki przypominające co 3–5 lat. Przebieg jest dwufazowy — faza grypopodobna, potem neuroinfekcja; leczenia przyczynowego brak.",
+    "subtheme_label": "Kleszczowe zapalenie mózgu",
+    "source_code": "ZAKSTO-867",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-26",
+    "topic_id": "ZAKAZ-12",
+    "text": "Jaka choroba wskaźnikowa pojawia się przy liczbie limfocytów CD4 poniżej 100 komórek/µl?",
+    "options": [
+      {
+        "id": "a",
+        "text": "gruźlica płuc"
+      },
+      {
+        "id": "b",
+        "text": "cytomegalowirusowe zapalenie mózgu"
+      },
+      {
+        "id": "c",
+        "text": "mięsak Kaposiego"
+      },
+      {
+        "id": "d",
+        "text": "nawracająca kandydoza jamy ustnej"
+      },
+      {
+        "id": "e",
+        "text": "półpasiec jednosegmentarny"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Rodzaj choroby wskaźnikowej zależy od głębokości immunosupresji. Przy CD4 **poniżej 100/µl** pojawiają się toksoplazmoza mózgu, kryptokokowe zapalenie opon oraz narządowa choroba **CMV** — zapalenie mózgu, siatkówki i jelita (typowo <50/µl). Gruźlica, kandydoza jamy ustnej, półpasiec i mięsak Kaposiego mogą wystąpić przy znacznie wyższej liczbie CD4, nawet powyżej 200/µl. Profilaktykę kotrimoksazolem włącza się poniżej **200/µl**.",
+    "subtheme_label": "Choroby wskaźnikowe AIDS",
+    "source_code": "ZAKSTO-868",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-27",
+    "topic_id": "ZAKAZ-12",
+    "text": "Typowym powikłaniem różyczki wrodzonej jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "rozszczep podniebienia"
+      },
+      {
+        "id": "b",
+        "text": "wrodzona wada serca"
+      },
+      {
+        "id": "c",
+        "text": "bezmózgowie"
+      },
+      {
+        "id": "d",
+        "text": "przepuklina oponowo-rdzeniowa"
+      },
+      {
+        "id": "e",
+        "text": "achondroplazja"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Zespół Gregga (różyczka wrodzona) to triada: **wady serca** — najczęściej przetrwały przewód tętniczy i zwężenie tętnicy płucnej, **zaćma** oraz **głuchota** czuciowo-nerwowa. Ryzyko jest największe przy zakażeniu w I trymestrze, w pierwszych 8 tygodniach sięga 85%. Towarzyszą małogłowie, mała masa urodzeniowa, plamica typu „blueberry muffin” i hepatosplenomegalia. Chroni szczepionka **MMR**, przeciwwskazana w ciąży.",
+    "subtheme_label": "Różyczka",
+    "source_code": "ZAKSTO-869",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-28",
+    "topic_id": "ZAKAZ-10",
+    "text": "Wskaż prawdziwe stwierdzenie na temat rumienia wędrującego:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zmiana o średnicy powyżej 5 cm, często z przejaśnieniem w środku"
+      },
+      {
+        "id": "b",
+        "text": "swędząca grudka do 2 cm, ustępująca w ciągu doby"
+      },
+      {
+        "id": "c",
+        "text": "zmiana krwotoczna z martwicą w części środkowej"
+      },
+      {
+        "id": "d",
+        "text": "pęcherzykowa wysypka wzdłuż przebiegu nerwu"
+      },
+      {
+        "id": "e",
+        "text": "rozsiane plamki na dłoniach i podeszwach stóp"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Rumień wędrujący** to jedyny objaw pozwalający rozpoznać boreliozę **klinicznie, bez badań serologicznych**. Pojawia się po 3–30 dniach od pokłucia, powiększa się odśrodkowo, przekracza **5 cm**, często z przejaśnieniem w centrum, jest niebolesny i nieswędzący. Wczesny, mały i swędzący odczyn w ciągu 48 h to reakcja alergiczna na ślinę kleszcza. Serologia bywa w tej fazie ujemna i nie może opóźniać leczenia.",
+    "subtheme_label": "Borelioza",
+    "source_code": "ZAKSTO-870",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-29",
+    "topic_id": "ZAKAZ-12",
+    "text": "Która choroba powinna wzbudzić podejrzenie zakażenia HIV?",
+    "options": [
+      {
+        "id": "a",
+        "text": "angina paciorkowcowa"
+      },
+      {
+        "id": "b",
+        "text": "ostre zapalenie oskrzeli"
+      },
+      {
+        "id": "c",
+        "text": "zapalenie mózgu o etiologii CMV"
+      },
+      {
+        "id": "d",
+        "text": "grypa sezonowa"
+      },
+      {
+        "id": "e",
+        "text": "ospa wietrzna u dziecka"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Rozpoznanie choroby wskaźnikowej nakazuje wykonanie testu w kierunku **HIV**. Należą do nich narządowa choroba **CMV** (zapalenie mózgu, siatkówki, jelita), pneumocystozowe zapalenie płuc, toksoplazmoza mózgu, kandydoza przełyku, gruźlica pozapłucna, mięsak Kaposiego i chłoniaki. U osoby immunokompetentnej zakażenie CMV przebiega bezobjawowo lub jako zespół mononukleozopodobny, a zapalenie mózgu praktycznie nie występuje.",
+    "subtheme_label": "Zakażenie HIV",
+    "source_code": "ZAKSTO-871",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-30",
+    "topic_id": "ZAKAZ-04",
+    "text": "Antybiotykoterapia w rumieniu wędrującym to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "doksycyklina 100 mg p.o. raz na dobę przez 7 dni"
+      },
+      {
+        "id": "b",
+        "text": "doksycyklina 100 mg p.o. co 12 h lub 200 mg raz na dobę, 7-21 dni"
+      },
+      {
+        "id": "c",
+        "text": "doksycyklina 100 mg co 24 h z cefuroksymem 500 mg co 12 h, 21 dni"
+      },
+      {
+        "id": "d",
+        "text": "doksycyklina 100 mg co 12 h z cefuroksymem 500 mg co 24 h, 21 dni"
+      },
+      {
+        "id": "e",
+        "text": "doksycyklina 100 mg co 12 h przez tydzień, potem co 24 h przez 2 tygodnie"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W rumieniu wędrującym obowiązuje **monoterapia** — doksycyklina 100 mg co 12 h albo 200 mg raz na dobę, typowo przez **14–21 dni** (nowsze zalecenia dopuszczają 10–14 dni). Dodatkowo obejmuje ona możliwą koinfekcję **anaplazmozą**. Przy przeciwwskazaniach (ciąża, dzieci poniżej 8. r.ż.) stosuje się amoksycylinę, cefuroksym aksetylu lub azytromycynę. Kojarzenie dwóch antybiotyków i przedłużanie terapii są niezalecane.",
+    "subtheme_label": "Leczenie boreliozy",
+    "source_code": "ZAKSTO-872",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-31",
+    "topic_id": "ZAKAZ-12",
+    "text": "Szczepienie przeciw żółtej gorączce (żółtej febrze): I. po pełnym cyklu zapewnia odporność dożywotnią; II. wymaga doszczepiania co 5 lat; III. bywa wymagane przy podróży do niektórych krajów; IV. jest przeciwwskazane w ciąży poza szczególnymi sytuacjami; V. jest szczepionką żywą atenuowaną",
+    "options": [
+      {
+        "id": "a",
+        "text": "II, III i V"
+      },
+      {
+        "id": "b",
+        "text": "I, III, IV i V"
+      },
+      {
+        "id": "c",
+        "text": "tylko III"
+      },
+      {
+        "id": "d",
+        "text": "I i II"
+      },
+      {
+        "id": "e",
+        "text": "wszystkie wymienione"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Szczepionka przeciw żółtej gorączce (szczep **17D**) jest preparatem **żywym atenuowanym**; od 2016 r. WHO uznaje pojedynczą dawkę za dającą **odporność dożywotnią** — obowiązek doszczepiania zniesiono. Wpis w **Międzynarodowej Książeczce Szczepień** bywa warunkiem wjazdu do krajów Afryki i Ameryki Południowej. Przeciwwskazania: ciąża (poza sytuacjami szczególnymi), immunosupresja, wiek poniżej 6 miesięcy, uczulenie na białko jaja.",
+    "subtheme_label": "Żółta gorączka",
+    "source_code": "ZAKSTO-873",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-32",
+    "topic_id": "ZAKAZ-12",
+    "text": "U kogo stosujemy terapię antyretrowirusową (ART)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "tylko przy liczbie CD4 poniżej 200 komórek/µl"
+      },
+      {
+        "id": "b",
+        "text": "dopiero po wystąpieniu choroby wskaźnikowej AIDS"
+      },
+      {
+        "id": "c",
+        "text": "tylko u kobiet w ciąży i osób z koinfekcją HCV"
+      },
+      {
+        "id": "d",
+        "text": "u każdej osoby zakażonej HIV, niezależnie od liczby CD4"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie przy wiremii powyżej 100 000 kopii/ml"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Po badaniach **START** i TEMPRANO leczenie antyretrowirusowe proponuje się **każdemu zakażonemu HIV**, niezależnie od liczby CD4 i wysokości wiremii, najlepiej niezwłocznie po rozpoznaniu (strategia rapid start). Wczesne włączenie zmniejsza śmiertelność, ryzyko chorób wskaźnikowych oraz powikłań niezwiązanych z AIDS, a osiągnięcie niewykrywalnej wiremii znosi ryzyko transmisji drogą płciową (**U=U**). Nieleczone zakażenie prowadzi do AIDS średnio w ciągu 8–10 lat.",
+    "subtheme_label": "Leczenie zakażenia HIV",
+    "source_code": "ZAKSTO-874",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-33",
+    "topic_id": "ZAKAZ-08",
+    "text": "Bakteria Gram-dodatnia, produkująca przetrwalniki, odpowiedzialna za najczęstsze biegunki szpitalne to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Escherichia coli"
+      },
+      {
+        "id": "b",
+        "text": "Salmonella enteritidis"
+      },
+      {
+        "id": "c",
+        "text": "Clostridioides difficile"
+      },
+      {
+        "id": "d",
+        "text": "Staphylococcus aureus"
+      },
+      {
+        "id": "e",
+        "text": "Campylobacter jejuni"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Clostridioides difficile** to Gram-dodatnia laseczka beztlenowa wytwarzająca **przetrwalniki** oporne na preparaty alkoholowe — stąd konieczność mycia rąk wodą z mydłem i dezynfekcji otoczenia środkami chlorowymi. Odpowiada za większość biegunek poantybiotykowych i szpitalnych; **toksyny A i B** uszkadzają cytoszkielet enterocytów, prowadząc do rzekomobłoniastego zapalenia jelita grubego. E. coli, Salmonella i Campylobacter są Gram-ujemne.",
+    "subtheme_label": "Zakażenie Clostridioides difficile",
+    "source_code": "ZAKSTO-875",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-34",
+    "topic_id": "ZAKAZ-08",
+    "text": "Kobieta zgłosiła się na SOR z raną po zacięciu nożem. Pełny cykl szczepienia przeciw tężcowi zakończyła 7 lat temu. Jakie postępowanie poekspozycyjne należy wdrożyć?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nie podejmować działań, szczepienie sprzed 7 lat wystarcza"
+      },
+      {
+        "id": "b",
+        "text": "Podać wyłącznie swoistą immunoglobulinę przeciwtężcową"
+      },
+      {
+        "id": "c",
+        "text": "Rozpocząć pełny cykl szczepienia podstawowego (3 dawki)"
+      },
+      {
+        "id": "d",
+        "text": "Podać jedną dawkę przypominającą szczepionki Td"
+      },
+      {
+        "id": "e",
+        "text": "Podać dawkę przypominającą wraz z immunoglobuliną"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "U osoby z pełnym szczepieniem podstawowym decyduje czas od ostatniej dawki i charakter rany: przy ranie **innej niż czysta i powierzchowna** dawkę przypominającą (**Td**) podaje się, gdy minęło **ponad 5 lat**, przy ranie czystej — gdy ponad 10 lat. Swoistą immunoglobulinę rezerwuje się dla osób nieszczepionych, o nieznanym statusie szczepień lub z ciężkim niedoborem odporności. Równie ważne jest chirurgiczne oczyszczenie rany.",
+    "subtheme_label": "Tężec",
+    "source_code": "ZAKSTO-876",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-35",
+    "topic_id": "ZAKAZ-22",
+    "text": "Objawy i odchylenia laboratoryjne typowe dla żółtaczki mechanicznej to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wzrost fosfatazy zasadowej, bilirubina sprzężona, bilirubina w moczu"
+      },
+      {
+        "id": "b",
+        "text": "prawidłowa fosfataza zasadowa i przewaga bilirubiny wolnej"
+      },
+      {
+        "id": "c",
+        "text": "izolowany wzrost bilirubiny wolnej, brak bilirubiny w moczu"
+      },
+      {
+        "id": "d",
+        "text": "ciemne stolce i jasne zabarwienie moczu"
+      },
+      {
+        "id": "e",
+        "text": "znaczny wzrost AlAT przy prawidłowej fosfatazie zasadowej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "W żółtaczce **mechanicznej (zaporowej)** blok odpływu żółci powoduje wzrost **bilirubiny sprzężonej**, rozpuszczalnej w wodzie i przechodzącej do moczu (ciemny mocz), oraz enzymów cholestatycznych — **fosfatazy zasadowej i GGTP**. Brak żółci w jelicie daje odbarwione, tłuszczowe stolce i uporczywy świąd. W żółtaczce hemolitycznej dominuje bilirubina wolna, nieobecna w moczu, a w miąższowej — wzrost **AlAT i AspAT**.",
+    "subtheme_label": "Żółtaczka",
+    "source_code": "ZAKSTO-877",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-36",
+    "topic_id": "ZAKAZ-05",
+    "text": "22-letni student został przywieziony na SOR z zaburzeniami świadomości. W badaniu stwierdzono dodatni objaw Kerniga i sztywność karku, a na tułowiu oraz kończynach dolnych wybroczyny. Należy podejrzewać:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wirusowe zapalenie opon mózgowo-rdzeniowych"
+      },
+      {
+        "id": "b",
+        "text": "posocznicę meningokokową"
+      },
+      {
+        "id": "c",
+        "text": "kleszczowe zapalenie mózgu"
+      },
+      {
+        "id": "d",
+        "text": "gruźlicze zapalenie opon mózgowo-rdzeniowych"
+      },
+      {
+        "id": "e",
+        "text": "krwotok podpajęczynówkowy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Nagłe objawy oponowe (**sztywność karku, objaw Kerniga**) z zaburzeniami świadomości i szybko narastającą **wysypką krwotoczną**, nieznikającą pod uciskiem szkłem, u młodej osoby to inwazyjna choroba meningokokowa. **Neisseria meningitidis** prowadzi do wstrząsu septycznego, DIC i zespołu Waterhouse'a-Friderichsena. Postępowanie: natychmiastowy **ceftriakson** bez czekania na wyniki oraz chemioprofilaktyka osób z kontaktu.",
+    "subtheme_label": "Posocznica meningokokowa",
+    "source_code": "ZAKSTO-878",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-37",
+    "topic_id": "ZAKAZ-12",
+    "text": "Leśniczy zgłosił się po ugryzieniu przez dzikie zwierzę (kunę leśną). Rana jest płytka, zwierzę uciekło. Jakie postępowanie poekspozycyjne należy wdrożyć?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie chirurgiczne opracowanie rany i obserwację przez 15 dni"
+      },
+      {
+        "id": "b",
+        "text": "Wyłącznie szczepienie przeciw wściekliźnie, bez immunoglobuliny"
+      },
+      {
+        "id": "c",
+        "text": "Odczekanie na odłowienie i zbadanie zwierzęcia, bez profilaktyki"
+      },
+      {
+        "id": "d",
+        "text": "Szczepienie oraz swoistą immunoglobulinę przeciw wściekliźnie"
+      },
+      {
+        "id": "e",
+        "text": "Brak wskazań do profilaktyki, bo kuny nie przenoszą wścieklizny"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Każde **przezskórne ugryzienie** przez dzikie zwierzę mięsożerne to ekspozycja **III kategorii**, niezależnie od głębokości rany. Konieczne są: obfite przemycie rany wodą z mydłem, **szczepionka** w schemacie 0-3-7-14-28 oraz **swoista immunoglobulina** ostrzyknięta wokół rany. Zwierzę dzikie zwykle jest niedostępne do obserwacji, więc profilaktyki nie wolno odraczać. Należy też sprawdzić stan uodpornienia przeciw tężcowi.",
+    "subtheme_label": "Wścieklizna",
+    "source_code": "ZAKSTO-879",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-38",
+    "topic_id": "ZAKAZ-13",
+    "text": "Szczepienie przeciw WZW B jest zalecane:",
+    "options": [
+      {
+        "id": "a",
+        "text": "osobom przygotowywanym do planowych zabiegów operacyjnych"
+      },
+      {
+        "id": "b",
+        "text": "wyłącznie lekarzom z ukończoną specjalizacją zabiegową"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie osobom pracującym przy produkcji żywności"
+      },
+      {
+        "id": "d",
+        "text": "obowiązkowo wszystkim dorosłym, w odstępach 5-letnich"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie osobom podróżującym do krajów tropikalnych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "PSO wymienia wśród szczepień **zalecanych** przeciw WZW B osoby przygotowywane do zabiegów operacyjnych, przewlekle chorych o wysokim ryzyku zakażenia, chorych z niedoborami odporności oraz osoby narażone przez tryb życia lub kontakty seksualne. Personel i studenci kierunków medycznych, noworodki, dializowani i domownicy zakażonych objęci są szczepieniem **obowiązkowym**. Branża spożywcza dotyczy szczepienia przeciw **WZW A**.",
+    "subtheme_label": "Profilaktyka WZW typu B",
+    "source_code": "ZAKSTO-880",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-39",
+    "topic_id": "ZAKAZ-13",
+    "text": "Zakażenie HCV zwiększa ryzyko - wskaż fałszywe:",
+    "options": [
+      {
+        "id": "a",
+        "text": "raka wątrobowokomórkowego"
+      },
+      {
+        "id": "b",
+        "text": "cukrzycy typu 2"
+      },
+      {
+        "id": "c",
+        "text": "krioglobulinemii mieszanej"
+      },
+      {
+        "id": "d",
+        "text": "marskości wątroby"
+      },
+      {
+        "id": "e",
+        "text": "stwardnienia rozsianego"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**HCV** to zakażenie ogólnoustrojowe: 60–80% przypadków przechodzi w postać przewlekłą, a po 20–30 latach u części chorych rozwija się marskość i **rak wątrobowokomórkowy**. Objawy pozawątrobowe obejmują **krioglobulinemię mieszaną** z zapaleniem naczyń i kłębuszków nerkowych, chłoniaki B-komórkowe, insulinooporność i cukrzycę typu 2, porfirię skórną późną oraz liszaj płaski. Związku ze **stwardnieniem rozsianym** nie wykazano.",
+    "subtheme_label": "WZW typu C",
+    "source_code": "ZAKSTO-881",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-40",
+    "topic_id": "ZAKAZ-13",
+    "text": "Przeciwwskazaniem do leczenia przeciwwirusowego zakażenia HCV jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wyrównana niewydolność serca"
+      },
+      {
+        "id": "b",
+        "text": "skutecznie leczony rak wątrobowokomórkowy"
+      },
+      {
+        "id": "c",
+        "text": "przewidywana długość życia poniżej 6 miesięcy"
+      },
+      {
+        "id": "d",
+        "text": "wiek powyżej 65 lat"
+      },
+      {
+        "id": "e",
+        "text": "marskość wątroby w klasie A wg Childa-Pugha"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Terapia **DAA (leki o bezpośrednim działaniu przeciwwirusowym)** jest krótka, bezpieczna i wskazana praktycznie u każdego chorego z wykrywalnym **HCV-RNA**, także w marskości i po leczeniu HCC. Jedynym realnym ograniczeniem jest **krótkie przewidywane przeżycie (<6 miesięcy)** z przyczyn pozawątrobowych, gdy eradykacja wirusa nie poprawi rokowania. Uwagi wymagają interakcje lekowe oraz ryzyko reaktywacji **HBV** — przed leczeniem oznacza się HBsAg i anty-HBc.",
+    "subtheme_label": "Leczenie WZW typu C",
+    "source_code": "ZAKSTO-882",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "id": "zaksto-z2026-1-41",
+    "topic_id": "ZAKAZ-13",
+    "text": "Jakiego pacjenta nie zaszczepimy przeciw WZW B?",
+    "options": [
+      {
+        "id": "a",
+        "text": "noworodka matki HBsAg-dodatniej"
+      },
+      {
+        "id": "b",
+        "text": "pacjenta dializowanego z anty-HBs poniżej 10 mIU/ml"
+      },
+      {
+        "id": "c",
+        "text": "osobę wyjeżdżającą do kraju o wysokiej endemiczności HBV"
+      },
+      {
+        "id": "d",
+        "text": "domownika osoby zakażonej HBV"
+      },
+      {
+        "id": "e",
+        "text": "chorego w immunosupresji z anty-HBs powyżej 100 mIU/ml"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Miano **anty-HBs co najmniej 10 mIU/ml** świadczy o skutecznej ochronie poszczepiennej — przy wyniku powyżej 100 mIU/ml szczepienie i dawka przypominająca są zbędne, również w immunosupresji. Szczepić natomiast należy noworodki matek HBsAg(+) (w ciągu 12 h, z immunoglobuliną), dializowanych bez ochronnego miana, domowników zakażonych i podróżnych.",
+    "subtheme_label": "Profilaktyka WZW typu B",
+    "source_code": "ZAKSTO-883",
+    "batch_label": "z2026-1",
+    "source_exam": "Egzamin SUM 2026 (ZAKSTO e2026-1)",
+    "theme_label": "2026"
+  }
+]

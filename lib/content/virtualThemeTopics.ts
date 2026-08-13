@@ -40,6 +40,12 @@ export const VIRTUAL_THEME_TOPIC_DEFINITIONS: VirtualThemeTopicDefinition[] = [
     displayName: "2026",
     displayOrder: 23,
   },
+  {
+    contentSubjectId: "stoma-zakazne",
+    themeLabel: "2026",
+    displayName: "2026",
+    displayOrder: 24,
+  },
 ];
 
 export function buildVirtualThemeTopicId(

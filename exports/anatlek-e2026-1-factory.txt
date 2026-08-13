@@ -1,0 +1,1299 @@
+ID: ANATLEK-706
+TEMAT: ANA-TUL
+PYTANIE:
+Powięź nasienna wewnętrzna odpowiada w ścianie brzucha:
+A. tkance podskórnej
+B. powięzi poprzecznej
+C. rozcięgnu mięśnia skośnego wewnętrznego brzucha
+D. rozcięgnu mięśnia poprzecznego brzucha
+E. powięzi podskórnej
+KLUCZ: b
+WYJAŚNIENIE:
+Osłonki powrózka nasiennego powstają z kolejnych warstw ściany brzucha uwypuklanych podczas zstępowania jądra przez kanał pachwinowy. **Powięź nasienna wewnętrzna** jest bezpośrednim przedłużeniem **powięzi poprzecznej** i stanowi najgłębszą osłonkę. Warstwę środkową, **mięsień dźwigacz jądra z powięzią**, daje mięsień skośny wewnętrzny, a **powięź nasienna zewnętrzna** wywodzi się z rozcięgna mięśnia skośnego zewnętrznego.
+---
+ID: ANATLEK-707
+TEMAT: ANA-TRZ
+PYTANIE:
+Kolejne odcinki cewki moczowej męskiej to:
+A. odcinek śródścienny, sterczowy, jamisty, gąbczasty
+B. odcinek śródścienny, sterczowy, łonowy, gąbczasty
+C. odcinek śródścienny, sterczowy, łonowy, jamisty
+D. odcinek śródścienny, sterczowy, błoniasty, gąbczasty
+E. odcinek śródścienny, sterczowy, błoniasty, łonowy
+KLUCZ: d
+WYJAŚNIENIE:
+Cewka męska ma cztery części: **śródścienną** w ścianie pęcherza, **sterczową** – najszerszą, ze wzgórkiem nasiennym i ujściami przewodów wytryskowych, **błoniastą** – najkrótszą i najwęższą, przebijającą przeponę moczowo-płciową ze zwieraczem zewnętrznym, oraz **gąbczastą** – najdłuższą, biegnącą w ciele gąbczastym prącia. Określenia „jamisty" i „łonowy" nie są nazwami odcinków cewki. Zwężenia cewki odpowiadają ujściu wewnętrznemu, części błoniastej i ujściu zewnętrznemu.
+---
+ID: ANATLEK-708
+TEMAT: ANA-TRZ
+PYTANIE:
+Gruczoł krokowy położony jest:
+A. poniżej części gąbczastej cewki moczowej, do przodu od części miednicznej odbytnicy
+B. poniżej części błoniastej cewki moczowej, do przodu od części miednicznej odbytnicy
+C. poniżej części sterczowej cewki moczowej, do przodu od części miednicznej odbytnicy
+D. poniżej części błoniastej cewki moczowej, do przodu od bańki odbytnicy
+E. poniżej pęcherza moczowego, do przodu od bańki odbytnicy
+KLUCZ: e
+WYJAŚNIENIE:
+Stercz leży **poniżej pęcherza moczowego**, opierając się podstawą o jego dno, a szczytem o **przeponę moczowo-płciową**. Ku tyłowi sąsiaduje z **bańką odbytnicy**, od której oddziela go przegroda odbytniczo-pęcherzowa – dlatego jest dostępny w badaniu palcem przez odbytnicę. Nie może leżeć poniżej części sterczowej cewki, bo ta **przechodzi przez jego miąższ**, podobnie jak przewody wytryskowe. Rozrost stercza zwęża cewkę i utrudnia mikcję – to typowe podłoże objawów u starszych mężczyzn.
+---
+ID: ANATLEK-709
+TEMAT: ANA-TRZ
+PYTANIE:
+Kolejne odcinki jajowodu licząc od strony macicznej to:
+A. bańka, cieśń, lejek
+B. cieśń, bańka, lejek
+C. lejek, bańka, cieśń
+D. bańka, lejek, cieśń
+E. lejek, cieśń, bańka
+KLUCZ: b
+WYJAŚNIENIE:
+Po części śródściennej (macicznej) następuje **cieśń** – wąska, grubościenna, o świetle ok. 1 mm, potem szeroka i kręta **bańka**, najdłuższy odcinek, w którym zwykle dochodzi do **zapłodnienia**, a na końcu **lejek** ze strzępkami obejmującymi jajnik. Kierunek jest więc od wąskiego do szerokiego – odwrotna kolejność opisuje drogę komórki jajowej, nie budowę liczoną od macicy. Część maciczna (śródścienna) przebiega w ścianie macicy i otwiera się ujściem macicznym jajowodu.
+---
+ID: ANATLEK-710
+TEMAT: ANA-TRZ
+PYTANIE:
+Otrzewna powlekająca macicę to:
+A. przymacicze
+B. śródmacicze
+C. omacicze
+D. endometrium
+E. brak prawidłowej odpowiedzi
+KLUCZ: c
+WYJAŚNIENIE:
+Ściana macicy ma trzy warstwy: **błonę śluzową (endometrium)**, grubą **błonę mięśniową (myometrium)** i zewnętrzną **błonę surowiczą, czyli omacicze (perimetrium)** – jest nią otrzewna. **Przymacicze (parametrium)** to tkanka łączna przywięzadłowa między blaszkami więzadła szerokiego, z tętnicą maciczną i moczowodem, a nie otrzewna. Termin „śródmacicze" nie funkcjonuje w mianownictwie. Otrzewna przechodzi z macicy na odbytnicę, tworząc **zagłębienie odbytniczo-maciczne (Douglasa)**.
+---
+ID: ANATLEK-711
+TEMAT: ANA-TRZ
+PYTANIE:
+Dno macicy stanowi jej część:
+A. dolną, poniżej ujść macicznych jajowodów
+B. górną, powyżej ujść macicznych jajowodów
+C. przednią, poniżej ujść macicznych jajowodów
+D. tylną, poniżej ujść macicznych jajowodów
+E. przednią i tylną, poniżej ujść macicznych jajowodów
+KLUCZ: b
+WYJAŚNIENIE:
+Macica dzieli się na **dno**, **trzon** i **szyjkę**. **Dno** to część leżąca **powyżej linii łączącej ujścia maciczne jajowodów** – wypukła ku górze i do przodu, pokryta otrzewną. Miejsca odejścia jajowodów to **rogi macicy**. Dolna, zwężona część to szyjka z częścią nadpochwową i pochwową. Mimo nazwy dno leży najwyżej, ponieważ narząd w typowym ustawieniu jest przodozgięty i przodopochylony. Wysokość dna bada się palpacyjnie przez powłoki i wykorzystuje do oceny zaawansowania ciąży.
+---
+ID: ANATLEK-712
+TEMAT: ANA-TRZ
+PYTANIE:
+Unaczynienie tętnicze macicy pochodzi z tętnic:
+A. macicznej od t. biodrowej zewnętrznej i t. jajnikowej z t. biodrowej wewnętrznej
+B. macicznej od t. biodrowej wewnętrznej i t. jajnikowej z t. biodrowej zewnętrznej
+C. macicznej od t. biodrowej wewnętrznej i t. jajnikowej z t. krezkowej dolnej
+D. macicznej od t. biodrowej wewnętrznej i t. jajnikowej z t. krezkowej górnej
+E. macicznej od t. biodrowej wewnętrznej i t. jajnikowej z aorty brzusznej
+KLUCZ: e
+WYJAŚNIENIE:
+**Tętnica maciczna** jest gałęzią trzewną **tętnicy biodrowej wewnętrznej**; w podstawie więzadła szerokiego krzyżuje **moczowód od góry** („woda pod mostem") i oddaje gałęzie jajowodowe oraz jajnikowe, tworząc zespolenia. **Tętnica jajnikowa** odchodzi natomiast bezpośrednio od **aorty brzusznej** na wysokości L2, jak tętnica jądrowa – jest to konsekwencja pierwotnego, wysokiego położenia gonady. Uszkodzenie moczowodu przy podwiązywaniu tętnicy macicznej to klasyczne powikłanie histerektomii.
+---
+ID: ANATLEK-713
+TEMAT: ANA-TRZ
+PYTANIE:
+Ujście żyły głównej górnej znajduje się w:
+A. ścianie przedniej przedsionka prawego
+B. ścianie tylnej przedsionka prawego
+C. ścianie górnej przedsionka prawego
+D. ścianie przedniej przedsionka lewego
+E. ścianie tylnej przedsionka lewego
+KLUCZ: c
+WYJAŚNIENIE:
+**Żyła główna górna** uchodzi do **górnej ściany przedsionka prawego**, bez zastawki, w okolicy zatoki żył głównych. **Żyła główna dolna** wchodzi od dołu, w ścianie dolnej, i ma szczątkową **zastawkę Eustachiusza**, a **zatoka wieńcowa** uchodzi tuż przy niej z zastawką Tebezjusza. W okolicy ujścia żyły głównej górnej leży **węzeł zatokowo-przedsionkowy** – nadrzędny rozrusznik serca. Ujście żyły głównej górnej pozbawione jest zastawki, co wykorzystuje się przy cewnikowaniu centralnym.
+---
+ID: ANATLEK-714
+TEMAT: ANA-TRZ
+PYTANIE:
+Pozostałością po krążeniu płodowym są między innymi:
+A. więzadło sierpowate wątroby, dół owalny, uszko prawe serca
+B. więzadło sierpowate wątroby, przewód żylny, uszko prawe serca
+C. więzadło obłe wątroby, więzadło tętnicze, więzadło żylne
+D. więzadło obłe wątroby, dół owalny, uszko prawe serca
+E. więzadło obłe wątroby, żyła pępkowa, uszko prawe serca
+KLUCZ: c
+WYJAŚNIENIE:
+Po urodzeniu zarastają: **żyła pępkowa → więzadło obłe wątroby**, **przewód żylny (Arancjusza) → więzadło żylne**, **przewód tętniczy (Botalla) → więzadło tętnicze**, a otwór owalny → dół owalny. **Uszko prawe** jest stałym elementem serca, a **więzadło sierpowate** to fałd otrzewnej, w którego wolnym brzegu biegnie więzadło obłe – same w sobie nie są pozostałościami płodowymi. Przetrwały przewód tętniczy wymaga zamknięcia farmakologicznego lub zabiegowego.
+---
+ID: ANATLEK-715
+TEMAT: ANA-TRZ
+PYTANIE:
+Tętnica wieńcowa lewa:
+A. rozpoczyna się w lewej zatoce aorty
+B. biegnie między uszkiem lewym a opuszką aorty
+C. oddaje gałąź międzykomorową tylną
+D. Prawidłowe A i B
+E. Prawidłowe A, B i C
+KLUCZ: a
+WYJAŚNIENIE:
+Tętnica wieńcowa lewa odchodzi od **lewej zatoki aorty (Valsalvy)**, tuż nad płatkiem zastawki. Krótki pień dzieli się na **gałąź międzykomorową przednią** i **gałąź okalającą**, biegnąc między **uszkiem lewym a pniem płucnym**, nie opuszką aorty – dlatego opis przebiegu między uszkiem lewym a opuszką aorty jest fałszywy. **Gałąź międzykomorowa tylna** u ok. 70% osób pochodzi z tętnicy wieńcowej prawej (typ prawostronny unaczynienia). Zamknięcie gałęzi międzykomorowej przedniej daje rozległy zawał ściany przedniej i przegrody.
+---
+ID: ANATLEK-716
+TEMAT: ANA-TRZ
+PYTANIE:
+Okrężnica wstępująca jest unaczyniona przez gałęzie:
+A. t. krezkowej górnej
+B. t. krezkowej dolnej
+C. t. biodrowej wewnętrznej
+D. prawidłowe A i B
+E. prawidłowe A, B i C
+KLUCZ: a
+WYJAŚNIENIE:
+Okrężnica wstępująca pochodzi ze **środkowej części jelita pierwotnego**, więc zaopatruje ją **tętnica krezkowa górna** – przez **tętnicę okrężniczą prawą** i gałąź okrężniczą tętnicy krętniczo-okrężniczej. Granicą dorzeczy jest **zgięcie śledzionowe** (punkt Griffithsa): dalszy odcinek należy do **tętnicy krezkowej dolnej**. Zespolenia zapewnia **tętnica brzeżna Drummonda** wzdłuż całej okrężnicy. Zgięcie śledzionowe, jako obszar graniczny, jest typowym miejscem niedokrwienia jelita.
+---
+ID: ANATLEK-717
+TEMAT: ANA-CZA
+PYTANIE:
+Do przewodu nosowego dolnego uchodzą:
+A. zatoka szczękowa
+B. zatoka czołowa
+C. komórki sitowe tylne
+D. przewód nosowo-łzowy
+E. Prawidłowe A, B i D
+KLUCZ: d
+WYJAŚNIENIE:
+Do **przewodu nosowego dolnego** uchodzi wyłącznie **przewód nosowo-łzowy**, osłonięty fałdem błony śluzowej (zastawka Hasnera) – stąd łzawienie przy nieżycie nosa. Do **przewodu środkowego** spływają **zatoka szczękowa, czołowa oraz komórki sitowe przednie i środkowe** (kompleks ujściowo-przewodowy), do **górnego** – komórki sitowe tylne, a do **zachyłka klinowo-sitowego** – zatoka klinowa. Niedrożność przewodu nosowo-łzowego u noworodka objawia się przewlekłym łzawieniem.
+---
+ID: ANATLEK-718
+TEMAT: ANA-TRZ
+PYTANIE:
+Stożek sprężysty stanowi element:
+A. górnego piętra krtani
+B. środkowego piętra krtani
+C. dolnego piętra krtani
+D. prawidłowe A i B
+E. prawidłowe B i C
+KLUCZ: c
+WYJAŚNIENIE:
+**Stożek sprężysty** to dolna część błony włóknisto-sprężystej krtani: rozpina się od **górnego brzegu łuku chrząstki pierścieniowatej** ku górze, a jego wolny brzeg tworzy **więzadło głosowe**. Leży zatem poniżej szpary głośni, w **jamie podgłośniowej**, czyli w **dolnym piętrze krtani**. Górne piętro (przedsionek) i piętro środkowe ograniczone są błoną czworokątną z więzadłem przedsionkowym. Luźna błona śluzowa jamy podgłośniowej łatwo obrzęka, co u dzieci grozi zwężeniem podgłośniowym.
+---
+ID: ANATLEK-719
+TEMAT: ANA-TRZ
+PYTANIE:
+Do mięśni napinających wargi głosowe zaliczamy:
+A. m. tarczowo-nalewkowy zewnętrzny i m. pierścienno-nalewkowy tylny
+B. m. pierścienno-tarczowy i m. tarczowo-nalewkowy zewnętrzny
+C. m. tarczowo-nalewkowy zewnętrzny i m. pierścienno-nalewkowy boczny
+D. m. pierścienno-tarczowy i m. tarczowo-nalewkowy wewnętrzny
+E. m. pierścienno-nalewkowy boczny i m. tarczowo-nalewkowy wewnętrzny
+KLUCZ: d
+WYJAŚNIENIE:
+Napinaczami więzadeł głosowych są **mięsień pierścienno-tarczowy** (napinacz zewnętrzny, pochylający chrząstkę tarczowatą do przodu i wydłużający fałd) oraz **mięsień tarczowo-nalewkowy wewnętrzny, czyli mięsień głosowy** (napinacz wewnętrzny, regulujący napięcie odcinkowe). Mięsień pierścienno-tarczowy jest jedynym unerwionym przez **nerw krtaniowy górny**, pozostałe – przez **nerw krtaniowy wsteczny**. Obustronne porażenie nerwu krtaniowego wstecznego prowadzi do duszności krtaniowej.
+---
+ID: ANATLEK-720
+TEMAT: ANA-TRZ
+PYTANIE:
+We wnęce płuca lewego najwyżej położona jest:
+A. tętnica płucna
+B. oskrzele nadtętnicze
+C. żyła płucna przednia
+D. żyła płucna dolna
+E. oskrzele główne
+KLUCZ: a
+WYJAŚNIENIE:
+Po stronie lewej układ jest **hiparteryjny**: najwyżej leży **tętnica płucna**, pod nią **oskrzele główne**, a najniżej i najbardziej z przodu **żyły płucne**. Po stronie prawej najwyżej biegnie **oskrzele płatowe górne (nadtętnicze)** – stąd określenie płuca prawego jako **eparteryjnego**. Mnemonik dla wnęk: **RALS** – Right Anterior, Left Superior, czyli po prawej tętnica z przodu, po lewej u góry. Struktury wnęki obejmuje wspólna osłonka opłucnej przechodząca ku dołowi w więzadło płucne.
+---
+ID: ANATLEK-721
+TEMAT: ANA-TRZ
+PYTANIE:
+Segment przedni występuje w:
+A. płacie górnym płuca lewego
+B. płacie dolnym płuca lewego
+C. płacie środkowym płuca prawego
+D. płacie dolnym płuca prawego
+E. brak prawidłowej odpowiedzi
+KLUCZ: a
+WYJAŚNIENIE:
+**Segment przedni (S3)** należy do **płata górnego** – zarówno po stronie prawej, jak i lewej, gdzie wchodzi w skład części szczytowej płata górnego. Płat środkowy prawy dzieli się na segment **boczny i przyśrodkowy**, a płaty dolne na segment **szczytowy (S6)** oraz segmenty **podstawne: przyśrodkowy, przedni, boczny i tylny** – w nich występuje segment „podstawny przedni", a nie sam „przedni". Segmenty stanowią jednostki chirurgiczne z własnym oskrzelem segmentowym i gałęzią tętniczą.
+---
+ID: ANATLEK-722
+TEMAT: ANA-TRZ
+PYTANIE:
+Szczelina skośna płuca lewego przebiega:
+A. od wyrostka poprzecznego II kręgu piersiowego do chrząstki V żebra w linii środkowoobojczykowej
+B. od wyrostka poprzecznego IV kręgu piersiowego do chrząstki VI żebra w linii środkowoobojczykowej
+C. od wyrostka kolczystego V kręgu piersiowego do chrząstki IV żebra w linii przymostkowej
+D. od wyrostka kolczystego IV kręgu piersiowego do chrząstki IV żebra w linii przymostkowej
+E. od wyrostka kolczystego III kręgu piersiowego do chrząstki VI żebra w linii przymostkowej
+KLUCZ: e
+WYJAŚNIENIE:
+Rzut szczeliny skośnej biegnie od **wyrostka kolczystego Th3** skośnie w dół i do przodu, wzdłuż przebiegu **VI żebra**, do **chrząstki VI żebra** przy mostku. Po stronie lewej szczelina ustawiona jest nieco bardziej stromo niż po prawej. Praktyczny odpowiednik: linia poprowadzona od kręgu Th3 do połączenia żebrowo-chrzęstnego VI żebra przy uniesionej kończynie górnej. Po stronie prawej dodatkowo biegnie szczelina pozioma na wysokości IV żebra, odgraniczając płat środkowy.
+---
+ID: ANATLEK-723
+TEMAT: ANA-TUL
+PYTANIE:
+Śródpiersie dolne tylne zawiera między innymi:
+A. przełyk, aortę wstępującą, nerwy błędne, przewód piersiowy
+B. przełyk, aortę zstępującą, nerwy błędne, żyłę nieparzystą
+C. nerwy przeponowe, aortę zstępującą, nerwy błędne, żyłę nieparzystą
+D. nerwy przeponowe, nerwy błędne, żyłę nieparzystą dodatkową
+E. nerwy błędne, aortę wstępującą, tchawicę, żyłę nieparzystą
+KLUCZ: b
+WYJAŚNIENIE:
+W śródpiersiu tylnym leżą: **przełyk** ze splotem przełykowym **nerwów błędnych**, **aorta piersiowa zstępująca**, **przewód piersiowy**, **żyła nieparzysta i nieparzysta krótka** oraz pnie współczulne i nerwy trzewne. **Aorta wstępująca i tchawica** należą do śródpiersia środkowego i górnego, a **nerwy przeponowe** biegną w śródpiersiu środkowym, po bokach osierdzia. Śródpiersie dolne dzieli się na przednie, środkowe z sercem i tylne; granicę górną wyznacza płaszczyzna Th4/Th5.
+---
+ID: ANATLEK-724
+TEMAT: ANA-TRZ
+PYTANIE:
+Kolejno pokrywające nerkę osłonki to:
+A. powięź nerkowa, błona włóknista, torebka tłuszczowa, błona mięśniowa
+B. powięź nerkowa, błona włóknista, błona mięśniowa, torebka tłuszczowa
+C. błona mięśniowa, błona włóknista, torebka tłuszczowa, powięź nerkowa
+D. błona włóknista, błona mięśniowa, torebka tłuszczowa, powięź nerkowa
+E. torebka tłuszczowa, błona włóknista, błona mięśniowa, powięź nerkowa
+KLUCZ: c
+WYJAŚNIENIE:
+Licząc od miąższu na zewnątrz: cienka **błona mięśniowa**, **błona (torebka) włóknista** – łatwa do zdjęcia ze zdrowej nerki, **torebka tłuszczowa** stabilizująca narząd oraz **powięź nerkowa (Geroty)** z blaszką przednią i tylną. Zewnętrznie leży jeszcze ciało tłuszczowe okołonerkowe. Osłabienie torebki tłuszczowej sprzyja **nerce ruchomej**, a powięź wyznacza drogę szerzenia się ropni. Nerka prawa leży nieco niżej niż lewa z powodu sąsiedztwa wątroby.
+---
+ID: ANATLEK-725
+TEMAT: ANA-TRZ
+PYTANIE:
+Prawidłowe stwierdzenia dotyczące moczowodu to:
+A. składa się z trzech części
+B. ujście pęcherzowe moczowodu stanowi kąt tylno-boczny podstawy trójkąta pęcherzowego
+C. posiada trzy naturalne zagięcia
+D. Prawidłowe B i C
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+Moczowód dzieli się na **część brzuszną, miedniczną i śródścienną**, wykazuje **trzy zagięcia** (przy przejściu w miednicę, w miednicy i przed wejściem w ścianę pęcherza) oraz trzy **zwężenia**: przy miedniczce, na skrzyżowaniu z naczyniami biodrowymi i w ujściu pęcherzowym – to typowe miejsca zaklinowania złogów. **Ujścia moczowodów** wyznaczają tylno-boczne kąty **trójkąta pęcherzowego**. Perystaltyka warstwy mięśniowej przesuwa mocz niezależnie od siły ciężkości.
+---
+ID: ANATLEK-726
+TEMAT: ANA-OUN
+PYTANIE:
+Do wypustek opony twardej nie należy:
+A. sierp mózgu
+B. sierp móżdżku
+C. namiot móżdżku
+D. namiot mózgu
+E. przepona siodła
+KLUCZ: d
+WYJAŚNIENIE:
+Blaszka wewnętrzna opony twardej tworzy cztery wypustki: **sierp mózgu** między półkulami, **namiot móżdżku** oddzielający płaty potyliczne od móżdżku, **sierp móżdżku** w tylnej części dołu tylnego oraz **przeponę siodła** nad przysadką. Struktura o nazwie „namiot mózgu" nie istnieje. W obrębie wypustek biegną **zatoki żylne opony twardej**, m.in. strzałkowa górna i prosta, a wcięcie namiotu jest miejscem **wgłobienia haka hipokampa**.
+---
+ID: ANATLEK-727
+TEMAT: ANA-OBW
+PYTANIE:
+Splot szyjny nie łączy się z:
+A. nerwem twarzowym
+B. nerwem podjęzykowym
+C. nerwem dodatkowym
+D. nerwem językowo-gardłowym
+E. pniem współczulnym
+KLUCZ: d
+WYJAŚNIENIE:
+Splot szyjny (**C1–C4**) tworzy połączenia z **nerwem podjęzykowym** – włókna C1 biegną z nim jako korzeń górny **pętli szyjnej**, z **nerwem dodatkowym** w obrębie mięśnia mostkowo-obojczykowo-sutkowego i czworobocznego, z **nerwem twarzowym** przez nerw uszny wielki oraz z **pniem współczulnym szyjnym**. Nerw językowo-gardłowy nie wchodzi w skład tych połączeń – jego pole to gardło, migdałek i tylna część języka. Splot leży na mięśniach głębokich szyi, pod mięśniem mostkowo-obojczykowo-sutkowym.
+---
+ID: ANATLEK-728
+TEMAT: ANA-OBW
+PYTANIE:
+Pętla szyjna:
+A. jest gałęzią mięśniową krótką splotu szyjnego
+B. składa się z gałęzi górnej i dolnej
+C. składa się z gałęzi przedniej i tylnej
+D. prawidłowe A i B
+E. prawidłowe A i C
+KLUCZ: b
+WYJAŚNIENIE:
+**Pętla szyjna** powstaje z połączenia **korzenia (gałęzi) górnego**, biegnącego z C1 wraz z nerwem podjęzykowym, oraz **korzenia dolnego** z włókien **C2–C3**. Zaopatruje ruchowo mięśnie **podgnykowe**: mostkowo-gnykowy, mostkowo-tarczowy i łopatkowo-gnykowy, natomiast mięsień tarczowo-gnykowy – bezpośrednio z C1. Jest to gałąź **długa** splotu szyjnego, a nie gałąź mięśniowa krótka, dlatego określenie jej jako gałęzi mięśniowej krótkiej jest błędne. Pętla leży zwykle na powierzchni żyły szyjnej wewnętrznej.
+---
+ID: ANATLEK-729
+TEMAT: ANA-OBW
+PYTANIE:
+Do nerwów krótkich splotu ramiennego nie należy nerw:
+A. mięśniowo-skórny
+B. grzbietowy łopatki
+C. piersiowy długi
+D. piersiowy boczny
+E. podobojczykowy
+KLUCZ: a
+WYJAŚNIENIE:
+Nerwy **krótkie** odchodzą głównie od części nadobojczykowej splotu i zaopatrują mięśnie obręczy: **grzbietowy łopatki**, **piersiowy długi**, **podobojczykowy**, **nadłopatkowy**, **piersiowe boczny i przyśrodkowy**, **podłopatkowe**, **piersiowo-grzbietowy** oraz **pachowy**. **Nerw mięśniowo-skórny** to gałąź **długa** pęczka bocznego – unerwia mięśnie przedziału przedniego ramienia i przechodzi w nerw skórny boczny przedramienia. Uszkodzenie nerwu piersiowego długiego daje charakterystyczną łopatkę skrzydlatą.
+---
+ID: ANATLEK-730
+TEMAT: ANA-OBW
+PYTANIE:
+„Ręka szponiasta" jest skutkiem uszkodzenia nerwu:
+A. promieniowego
+B. pośrodkowego
+C. łokciowego
+D. pachowego
+E. mięśniowo-skórnego
+KLUCZ: c
+WYJAŚNIENIE:
+Porażenie **nerwu łokciowego** znosi czynność **mięśni glistowatych III i IV oraz międzykostnych**, przez co przewaga prostownika długiego palców powoduje przeprost w stawach śródręczno-paliczkowych i zgięcie w międzypaliczkowych – typowa **ręka szponiasta**, najwyraźniejsza w palcach IV i V. Uszkodzenie nerwu pośrodkowego daje **rękę błogosławiącą** przy próbie zaciśnięcia pięści, a promieniowego – **rękę opadającą**.
+---
+ID: ANATLEK-731
+TEMAT: ANA-OBW
+PYTANIE:
+Nerw pośrodkowy zaopatruje czuciowo skórę ręki na powierzchni:
+A. dłoniowej 2 i ½ palca strony bocznej
+B. dłoniowej 3 i ½ palca strony bocznej
+C. dłoniowej 3 i ½ palca strony przyśrodkowej
+D. grzbietowej 3 i ½ palca strony bocznej
+E. grzbietowej 3 i ½ palca strony przyśrodkowej
+KLUCZ: b
+WYJAŚNIENIE:
+Nerw pośrodkowy unerwia czuciowo **dłoniową powierzchnię 3½ palca po stronie bocznej (promieniowej)**: kciuk, palec wskazujący, środkowy i połowę serdecznego, a dodatkowo **grzbietowe powierzchnie paliczków dalszych** tych palców. Pozostałe 1½ palca od strony przyśrodkowej należy do **nerwu łokciowego**. Skórę kłębu zaopatruje **gałąź dłoniowa** odchodząca powyżej troczka – dlatego bywa oszczędzona w zespole cieśni nadgarstka.
+---
+ID: ANATLEK-732
+TEMAT: ANA-OBW
+PYTANIE:
+Nerw udowy:
+A. jest gałęzią długą splotu lędźwiowego
+B. jego początkowy odcinek leży na mięśniu lędźwiowym mniejszym
+C. jest nerwem czysto ruchowym
+D. wszystkie odpowiedzi prawidłowe
+E. brak prawidłowej odpowiedzi
+KLUCZ: a
+WYJAŚNIENIE:
+Nerw udowy (**L2–L4**) to najgrubsza **gałąź długa splotu lędźwiowego**. Powstaje w obrębie **mięśnia lędźwiowego większego** i wychodzi spod jego brzegu bocznego, biegnąc w bruździe między nim a mięśniem biodrowym – mięsień lędźwiowy mniejszy jest szczątkowy i nieobecny u połowy osób. Jest nerwem **mieszanym**: ruchowo zaopatruje mięsień czworogłowy i krawiecki, czuciowo – przednią powierzchnię uda oraz przyśrodkową goleni przez **nerw udowo-goleniowy**.
+---
+ID: ANATLEK-733
+TEMAT: ANA-OBW
+PYTANIE:
+Chód ptasi (koguci) jest skutkiem uszkodzenia nerwu:
+A. podeszwowego przyśrodkowego
+B. podeszwowego bocznego
+C. piszczelowego
+D. strzałkowego wspólnego
+E. udowego
+KLUCZ: d
+WYJAŚNIENIE:
+Uszkodzenie **nerwu strzałkowego wspólnego** – najczęściej na szyjce kości strzałkowej, gdzie leży powierzchownie – poraża prostowniki stopy i mięśnie strzałkowe. Powstaje **stopa opadająca**, którą chory musi wysoko unosić i „kłuć" palcami o podłoże, co daje **chód brodzący (koguci)**. Towarzyszy temu zniesienie czucia na grzbiecie stopy i bocznej powierzchni goleni. Porażenie nerwu piszczelowego daje **stopę piętową** z brakiem zgięcia podeszwowego.
+---
+ID: ANATLEK-734
+TEMAT: ANA-NER
+PYTANIE:
+Do gałęzi nerwu szczękowego nie należy:
+A. n. jarzmowy
+B. nn. skrzydłowo-podniebienne
+C. gałąź oponowa środkowa
+D. n. oczny
+E. n. podoczodołowy
+KLUCZ: d
+WYJAŚNIENIE:
+**Nerw szczękowy (V2)** opuszcza czaszkę przez **otwór okrągły** i oddaje: **gałąź oponową środkową**, **nerw jarzmowy**, **nerwy skrzydłowo-podniebienne** do zwoju oraz przechodzi w **nerw podoczodołowy** z nerwami zębodołowymi górnymi. **Nerw oczny (V1)** jest odrębną, równorzędną gałęzią nerwu trójdzielnego – odchodzi od zwoju trójdzielnego i biegnie do oczodołu przez **szczelinę oczodołową górną**, więc nie może być gałęzią V2.
+---
+ID: ANATLEK-735
+TEMAT: ANA-NER
+PYTANIE:
+Gałęzie doprowadzające zwoju skrzydłowo-podniebiennego to:
+A. ruchowa z n. szczękowego, przywspółczulna z n. twarzowego, współczulna ze splotu szyjno-tętniczego wewnętrznego
+B. czuciowa z n. szczękowego, przywspółczulna z n. twarzowego, współczulna ze splotu szyjno-tętniczego wewnętrznego
+C. czuciowa z n. szczękowego, ruchowa z n. twarzowego, przywspółczulna ze splotu szyjno-tętniczego wewnętrznego
+D. czuciowa z n. szczękowego, przywspółczulna z n. językowo-gardłowego, współczulna ze splotu szyjno-tętniczego wewnętrznego
+E. czuciowa z n. szczękowego, ruchowa z n. językowo-gardłowego, współczulna ze splotu szyjno-tętniczego wewnętrznego
+KLUCZ: b
+WYJAŚNIENIE:
+Zwój skrzydłowo-podniebienny otrzymuje trzy korzenie: **czuciowy** – nerwy skrzydłowo-podniebienne od **V2** (włókna tylko przechodzą, bez przełączenia), **przywspółczulny** – **nerw skalisty większy** z nerwu twarzowego, oraz **współczulny** – **nerw skalisty głęboki** ze splotu tętnicy szyjnej wewnętrznej. Oba tworzą **nerw kanału skrzydłowego (widiański)**. Włókna zazwojowe unerwiają gruczoł łzowy oraz gruczoły nosa i podniebienia.
+---
+ID: ANATLEK-736
+TEMAT: ANA-TUL
+PYTANIE:
+Grzebień głowy żebra występuje na:
+A. pierwszym żebrze
+B. drugim żebrze
+C. jedenastym żebrze
+D. dwunastym żebrze
+E. brak prawidłowej odpowiedzi
+KLUCZ: b
+WYJAŚNIENIE:
+**Grzebień głowy żebra** oddziela dwie powierzchnie stawowe głowy i występuje tam, gdzie żebro łączy się z **trzonami dwóch sąsiednich kręgów** – czyli na żebrach **II–X**. Żebra **I, XI i XII** mają głowę z **jedną powierzchnią stawową**, bez grzebienia, ponieważ łączą się tylko z odpowiadającym im kręgiem. Żebra XI i XII nie mają też **guzka żebra** i nie tworzą stawu żebrowo-poprzecznego – to żebra wolne. Głowa łączy się z trzonami stawem, a guzek – z wyrostkiem poprzecznym kręgu.
+---
+ID: ANATLEK-737
+TEMAT: ANA-TUL
+PYTANIE:
+Więzadło podłużne przednie:
+A. biegnie na tylnej powierzchni trzonów kręgów
+B. biegnie na przedniej powierzchni trzonów kręgów
+C. rozpoczyna się na części podstawnej kości klinowej
+D. prawidłowe A i C
+E. prawidłowe B i C
+KLUCZ: b
+WYJAŚNIENIE:
+**Więzadło podłużne przednie** biegnie po **przedniej powierzchni trzonów kręgów**, od **części podstawnej kości potylicznej** (guzka gardłowego) i kręgu szczytowego aż do kości krzyżowej – nie od kości klinowej. Zrasta się mocno z trzonami, a luźno z krążkami, i **ogranicza przeprost** kręgosłupa. Powierzchnię tylną trzonów, w kanale kręgowym, pokrywa **więzadło podłużne tylne**, węższe w odcinku lędźwiowym.
+---
+ID: ANATLEK-738
+TEMAT: ANA-CZA
+PYTANIE:
+Elementem kości skroniowej nie jest:
+A. część łuskowa
+B. część stokowa
+C. część bębenkowa
+D. część sutkowa
+E. część skalista
+KLUCZ: b
+WYJAŚNIENIE:
+Kość skroniowa składa się z części **łuskowej**, **skalistej (piramidy)**, **bębenkowej** i **sutkowej**, a dodatkowo wytwarza **wyrostek rylcowaty** i **jarzmowy**. **Stok (clivus)** nie jest jej częścią – tworzą go **część podstawna kości potylicznej i trzon kości klinowej**. W piramidzie mieści się ucho wewnętrzne i przebiega kanał nerwu twarzowego, a przez część sutkową szerzą się zapalenia ucha środkowego. Wyrostek rylcowaty daje przyczep mięśniom i więzadłom pęczka Riolana.
+---
+ID: ANATLEK-739
+TEMAT: ANA-KON
+PYTANIE:
+Staw skokowy dolny to staw:
+A. skokowo-goleniowy
+B. skokowo-piętowo-sześcienny
+C. skokowo-piętowo-łódkowy
+D. piętowo-łódkowo-sześcienny
+E. piętowo-łódkowo-klinowy
+KLUCZ: c
+WYJAŚNIENIE:
+**Staw skokowy dolny** obejmuje czynnościowo połączoną parę: **staw skokowo-piętowy (tylny)** i **staw skokowo-piętowo-łódkowy (przedni)**, rozdzielone **zatoką stępu** z więzadłem skokowo-piętowym międzykostnym. Odbywają się w nim ruchy **inwersji i ewersji** stopy wokół osi skośnej. Staw skokowo-goleniowy to staw skokowy **górny**, zawiasowy, odpowiadający za zgięcie grzbietowe i podeszwowe. Oba stawy skokowe działają wspólnie, umożliwiając ustawienie stopy na nierównym podłożu.
+---
+ID: ANATLEK-740
+TEMAT: ANA-JAM
+PYTANIE:
+Do mięśni wewnętrznych języka nie należy:
+A. mięsień podłużny górny
+B. mięsień podłużny dolny
+C. mięsień poprzeczny języka
+D. mięsień pionowy języka
+E. mięsień poprzeczny dolny języka
+KLUCZ: e
+WYJAŚNIENIE:
+Mięśnie **wewnętrzne** języka to cztery grupy włókien: **podłużny górny**, **podłużny dolny**, **poprzeczny** i **pionowy** – zmieniają kształt narządu, nie zmieniając jego położenia. Mięsień „poprzeczny dolny" nie istnieje. Mięśnie **zewnętrzne** (bródkowo-, gnykowo-, rylcowo- i podniebienno-językowy) przemieszczają język jako całość. Wszystkie poza podniebienno-językowym unerwia ruchowo **nerw podjęzykowy (XII)**. Czucie smaku z przednich dwóch trzecich języka prowadzi struna bębenkowa.
+---
+ID: ANATLEK-741
+TEMAT: ANA-TRZ
+PYTANIE:
+Wybierz prawidłowe informacje dotyczące przełyku:
+A. przełyk składa się z części szyjnej, piersiowej i żołądkowej
+B. tylko zwężenie środkowe przełyku jest anatomiczne
+C. zwężenie górne przełyku znajduje się w jego części szyjnej
+D. wszystkie odpowiedzi prawidłowe
+E. prawidłowe tylko odpowiedzi B i C
+KLUCZ: c
+WYJAŚNIENIE:
+Przełyk dzieli się na część **szyjną, piersiową i brzuszną** (nie żołądkową). **Zwężenie górne (pierścienno-gardłowe)** leży na wysokości **C6**, w części szyjnej, i jest jedynym **anatomicznym** – zależy od budowy samej ściany. Zwężenie środkowe (aortowo-oskrzelowe) i dolne (przeponowe) wynikają z ucisku z zewnątrz i czynności zwieracza, więc nie jest prawdą, że tylko zwężenie środkowe jest anatomiczne.
+---
+ID: ANATLEK-742
+TEMAT: ANA-TRZ
+PYTANIE:
+Zachyłki otrzewnej znajdują się w:
+A. okolicy dwunastnicy
+B. okolicy jelita ślepego
+C. okolicy okrężnicy esowatej
+D. wszystkie odpowiedzi prawidłowe
+E. brak prawidłowej odpowiedzi
+KLUCZ: d
+WYJAŚNIENIE:
+Zachyłki to kieszonki otrzewnej powstałe w miejscach zrastania krezek. Przy zgięciu dwunastniczo-czczym leżą **zachyłki dwunastnicze górny i dolny**, wokół kątnicy – **zachyłki krętniczo-kątnicze i zakątniczy**, a przy krezce esicy – **zachyłek międzyesowaty**. Wszystkie mają znaczenie kliniczne jako miejsca **przepuklin wewnętrznych** i zbierania się treści ropnej. Odrębne są zachyłki podprzeponowe i torba sieciowa.
+---
+ID: ANATLEK-743
+TEMAT: ANA-TRZ
+PYTANIE:
+Przewód żółciowy wspólny powstaje z połączenia:
+A. przewodu wątrobowego prawego z przewodem pęcherzykowym
+B. przewodu wątrobowego lewego z przewodem pęcherzykowym
+C. przewodu wątrobowego wspólnego z przewodem pęcherzykowym
+D. przewodu wątrobowego wspólnego z przewodem pęcherzykowym i trzustkowym większym
+E. przewodu wątrobowego wspólnego z przewodem pęcherzykowym i trzustkowym mniejszym
+KLUCZ: c
+WYJAŚNIENIE:
+Przewody **wątrobowe prawy i lewy** łączą się we wnęce w **przewód wątrobowy wspólny**, który po dołączeniu **przewodu pęcherzykowego** tworzy **przewód żółciowy wspólny**. Biegnie on w więzadle wątrobowo-dwunastniczym, po prawej stronie tętnicy wątrobowej i przed żyłą wrotną. Dopiero w ścianie dwunastnicy łączy się z **przewodem trzustkowym większym**, tworząc **bańkę wątrobowo-trzustkową** ze zwieraczem Oddiego. Kamica przewodu żółciowego wspólnego prowadzi do żółtaczki mechanicznej.
+---
+ID: ANATLEK-744
+TEMAT: ANA-TRZ
+PYTANIE:
+Więzadło płucne jest:
+A. przedłużeniem opłucnej płucnej
+B. przedłużeniem opłucnej ściennej
+C. strukturą obejmującą korzeń płuca
+D. wytwarza wszystkie zachyłki opłucnej
+E. wytwarza tylko zachyłek żebrowo-śródpiersiowy opłucnej
+KLUCZ: a
+WYJAŚNIENIE:
+**Więzadło płucne** to podwójny fałd opłucnej **poniżej wnęki**, powstający jako przedłużenie **opłucnej płucnej** przechodzącej w opłucną śródpiersiową. Ma kształt trójkąta schodzącego ku przeponie i zapewnia płucu **rezerwę ruchomości** przy oddychaniu, nie obejmując samego korzenia. Zachyłki opłucnej – **żebrowo-przeponowy**, najgłębszy i najczęściej nakłuwany, oraz żebrowo-śródpiersiowy – powstają z opłucnej **ściennej**.
+---
+ID: ANATLEK-745
+TEMAT: ANA-TRZ
+PYTANIE:
+Tętnica wieńcowa lewa:
+A. rozpoczyna się w lewej zatoce aorty
+B. biegnie między uszkiem prawym a aortą wstępującą
+C. dzieli się na gałąź międzykomorową tylną i gałąź okalającą
+D. towarzyszy jej żyła średnia serca
+E. wszystkie odpowiedzi prawidłowe
+KLUCZ: a
+WYJAŚNIENIE:
+Pień lewej tętnicy wieńcowej odchodzi od **lewej zatoki aorty**, biegnie między **uszkiem lewym a pniem płucnym** i dzieli się na **gałąź międzykomorową przednią** oraz **gałąź okalającą** – nie na gałąź międzykomorową tylną, która u większości osób pochodzi z tętnicy wieńcowej prawej. Gałęzi międzykomorowej przedniej towarzyszy **żyła wielka serca**, natomiast **żyła średnia** biegnie w bruździe międzykomorowej tylnej. Pień lewej tętnicy wieńcowej jest krótki – ma zwykle 1–2 cm długości.
+---
+ID: ANATLEK-746
+TEMAT: ANA-NAC
+PYTANIE:
+Pęczek naczyniowo-nerwowy szyi:
+A. towarzyszy mu mięsień pochyły przedni
+B. zawiera tętnicę szyjną wspólną
+C. zawiera żyłę szyjną wspólną
+D. prawidłowe B i C
+E. wszystkie odpowiedzi prawidłowe
+KLUCZ: b
+WYJAŚNIENIE:
+Pęczek biegnie w **pochewce naczyń szyjnych** i zawiera trzy elementy: **tętnicę szyjną wspólną** przyśrodkowo, **żyłę szyjną wewnętrzną** bocznie oraz **nerw błędny** między nimi, w rowku od tyłu. Naczynie o nazwie „żyła szyjna wspólna" nie istnieje – są żyły szyjne wewnętrzna, zewnętrzna i przednia. Pęczek leży pod mięśniem mostkowo-obojczykowo-sutkowym; na mięśniu pochyłym przednim biegnie natomiast **nerw przeponowy**.
+---
+ID: ANATLEK-747
+TEMAT: ANA-NAC
+PYTANIE:
+Prawidłowe pochodzenie gałęzi tętnicy szyjnej zewnętrznej to:
+A. t. językowa z gałęzi przednich, t. potyliczna z gałęzi tylnych i t. szczękowa z gałęzi końcowych
+B. t. językowa z gałęzi środkowych, t. uszna tylna z gałęzi tylnych i t. twarzowa z gałęzi końcowych
+C. t. twarzowa z gałęzi przednich, t. gardłowa wstępująca z gałęzi tylnych i t. szczękowa z gałęzi końcowych
+D. t. tarczowa górna z gałęzi przednich, t. skroniowa powierzchowna i t. szczękowa z gałęzi końcowych
+E. t. językowa z gałęzi przednich, t. twarzowa z gałęzi tylnych i t. językowa z gałęzi końcowych
+KLUCZ: a
+WYJAŚNIENIE:
+Gałęzie **przednie** to tętnice **tarczowa górna, językowa i twarzowa**, **tylne** – **potyliczna i uszna tylna**, gałąź **przyśrodkowa** to **tętnica gardłowa wstępująca**, a gałęzie **końcowe** to **szczękowa i skroniowa powierzchowna**, na które tętnica dzieli się w obrębie ślinianki przyusznej. Tętnica gardłowa wstępująca nie należy więc do gałęzi tylnych, a wariant z samą tarczową górną wśród przednich i dwoma gałęziami końcowymi pomija językową oraz twarzową.
+---
+ID: ANATLEK-748
+TEMAT: ANA-TRZ
+PYTANIE:
+Unaczynienie śledziony pochodzi z:
+A. tętnicy śledzionowej z t. krezkowej górnej
+B. tętnicy śledzionowej z t. krezkowej dolnej
+C. tętnicy śledzionowej z t. żołądkowej krótkiej
+D. tętnicy śledzionowej z t. wątrobowej wspólnej
+E. brak prawidłowej odpowiedzi
+KLUCZ: e
+WYJAŚNIENIE:
+**Tętnica śledzionowa** jest najgrubszą gałęzią **pnia trzewnego**, a nie żadnej z wymienionych tętnic – dlatego żadna odpowiedź nie jest prawdziwa. Biegnie krętym torem wzdłuż górnego brzegu trzustki i wchodzi do wnęki przez **więzadło przeponowo-śledzionowe**, oddając po drodze gałęzie trzustkowe, **tętnice żołądkowe krótkie** i tętnicę żołądkowo-sieciową lewą. Pień trzewny odchodzi od aorty na wysokości **Th12**. Krętość naczynia rośnie z wiekiem wraz ze zmianami miażdżycowymi.
+---
+ID: ANATLEK-749
+TEMAT: ANA-TUL
+PYTANIE:
+Żyła nieparzysta:
+A. leży w śródpiersiu tylnym dolnym
+B. leży w śródpiersiu górnym
+C. leży po stronie prawej klatki piersiowej
+D. prawidłowe A i C
+E. prawidłowe A, B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Żyła nieparzysta powstaje z połączenia żyły lędźwiowej wstępującej prawej i żyły podżebrowej, wstępuje **po prawej stronie kręgosłupa** w **śródpiersiu tylnym**, a następnie jej **łuk** kieruje się do przodu nad korzeniem płuca prawego, w obrębie **śródpiersia górnego**, uchodząc do **żyły głównej górnej**. Stanowi główne połączenie obocznego krążenia między żyłą główną górną i dolną, co ma znaczenie przy niedrożności tych naczyń.
+---
+ID: ANATLEK-750
+TEMAT: ANA-KON
+PYTANIE:
+Żyły powierzchowne kończyn uchodzą:
+A. ż. odłokciowa do ż. ramiennej, a ż. odstrzałkowa do ż. udowej
+B. ż. odłokciowa do ż. pachowej, a ż. odstrzałkowa do ż. udowej
+C. ż. odłokciowa do ż. ramiennej, a ż. odstrzałkowa do ż. podkolanowej
+D. ż. odpromieniowa do ż. pachowej, a ż. odstrzałkowa do ż. udowej
+E. ż. odpromieniowa do ż. ramiennej, a ż. odpiszczelowa do ż. udowej
+KLUCZ: c
+WYJAŚNIENIE:
+**Żyła odłokciowa** biegnie po stronie przyśrodkowej i przebija powięź w połowie ramienia, uchodząc do **żyły ramiennej**, natomiast **żyła odpromieniowa** wstępuje w bruździe naramienno-piersiowej do **żyły pachowej**. Na kończynie dolnej **żyła odstrzałkowa** kończy się w dole podkolanowym w **żyle podkolanowej**, a **żyła odpiszczelowa** uchodzi przez rozwór odpiszczelowy do **żyły udowej**. Wariant z odstrzałkową uchodzącą do żyły udowej myli ją z odpiszczelową.
+---
+ID: ANATLEK-751
+TEMAT: ANA-TRZ
+PYTANIE:
+Żyła śledzionowa łączy się z:
+A. ż. nerkową lewą
+B. ż. biodrową wewnętrzną
+C. ż. główną dolną
+D. ż. krezkową górną
+E. ż. wątrobową wspólną
+KLUCZ: d
+WYJAŚNIENIE:
+**Żyła wrotna** powstaje za szyjką trzustki z połączenia **żyły śledzionowej** i **żyły krezkowej górnej**; **żyła krezkowa dolna** uchodzi zwykle do śledzionowej. Naczynie o nazwie „żyła wątrobowa wspólna" nie istnieje – żyły wątrobowe uchodzą wprost do żyły głównej dolnej. Zablokowanie odpływu wrotnego otwiera **zespolenia wrotno-układowe**: przełykowe, odbytnicze i okołopępkowe (głowa meduzy). Żyła wrotna dzieli się we wrotach wątroby na gałąź prawą i lewą.
+---
+ID: ANATLEK-752
+TEMAT: ANA-NAC
+PYTANIE:
+Trójkąt tętnicy szyjnej jest ograniczony przez:
+A. m. MOS (mostkowo-obojczykowo-sutkowy), brzusiec dolny m. łopatkowo-gnykowego, brzusiec przedni m. dwubrzuścowego
+B. m. MOS (mostkowo-obojczykowo-sutkowy), brzusiec górny m. łopatkowo-gnykowego, brzusiec tylny m. dwubrzuścowego
+C. m. MOS (mostkowo-obojczykowo-sutkowy), brzusiec dolny i górny m. łopatkowo-gnykowego, brzusiec tylny m. dwubrzuścowego
+D. m. MOS (mostkowo-obojczykowo-sutkowy), brzusiec dolny i górny m. łopatkowo-gnykowego, brzusiec przedni m. dwubrzuścowego
+E. m. żuchwowo-gnykowy, brzusiec dolny i górny m. łopatkowo-gnykowego, brzusiec tylny m. dwubrzuścowego
+KLUCZ: b
+WYJAŚNIENIE:
+Trójkąt tętnicy szyjnej ograniczają: od tyłu **brzeg przedni mięśnia mostkowo-obojczykowo-sutkowego**, od dołu i przodu **brzusiec górny mięśnia łopatkowo-gnykowego**, a od góry **brzusiec tylny mięśnia dwubrzuścowego**. Brzusiec dolny należy do trójkąta łopatkowo-obojczykowego. W trójkącie leży **podział tętnicy szyjnej wspólnej** na wysokości chrząstki tarczowatej.
+---
+ID: ANATLEK-753
+TEMAT: ANA-NAC
+PYTANIE:
+Trójkąt Pirogowa zawiera:
+A. t. szyjną zewnętrzną
+B. t. twarzową
+C. t. szczękową
+D. t. językową
+E. t. gardłową wstępującą
+KLUCZ: d
+WYJAŚNIENIE:
+**Trójkąt Pirogowa** ograniczają: **ścięgno pośrednie mięśnia dwubrzuścowego**, **tylny brzeg mięśnia żuchwowo-gnykowego** i **nerw podjęzykowy**; dnem jest mięsień gnykowo-językowy. Pod nim przebiega **tętnica językowa** – dostęp ten wykorzystuje się do jej podwiązania. Sama tętnica odchodzi od tętnicy szyjnej zewnętrznej na wysokości rogu większego kości gnykowej, powyżej tętnicy tarczowej górnej. Nerw podjęzykowy stanowi granicę górną trójkąta i biegnie tuż nad nim.
+---
+ID: ANATLEK-754
+TEMAT: ANA-NAC
+PYTANIE:
+Blaszka powierzchowna powięzi szyi przyczepia się do:
+A. gałęzi żuchwy, grzebienia łopatki, mostka i obojczyka
+B. kąta żuchwy, wyrostka kruczego łopatki, mostka i obojczyka
+C. trzonu żuchwy, wyrostka barkowego łopatki, mostka i obojczyka
+D. gałęzi żuchwy, wyrostka barkowego łopatki, mostka i obojczyka
+E. trzonu żuchwy, grzebienia łopatki, mostka i obojczyka
+KLUCZ: c
+WYJAŚNIENIE:
+Blaszka powierzchowna otacza szyję kołnierzowato: ku górze przyczepia się do **dolnego brzegu trzonu żuchwy**, kresy karkowej i wyrostka sutkowatego, ku dołowi do **rękojeści mostka, obojczyka oraz wyrostka barkowego i grzebienia łopatki**. Tworzy pochewki dla mięśni **mostkowo-obojczykowo-sutkowego i czworobocznego** oraz torebkę ślinianki przyusznej. Gałąź żuchwy leży głębiej i nie daje jej przyczepu. Blaszka ta zamyka od zewnątrz wszystkie przestrzenie międzypowięziowe szyi.
+---
+ID: ANATLEK-755
+TEMAT: ANA-MIE
+PYTANIE:
+Mięsień skrzydłowy przyśrodkowy przyczepia się:
+A. w dole skrzydłowym, na wyrostku piramidowym kości podniebiennej, na wewnętrznej powierzchni kąta żuchwy
+B. w dole skrzydłowym, na wyrostku piramidowym kości sitowej, na wewnętrznej powierzchni kąta żuchwy
+C. w dole skrzydłowym, na wyrostku piramidowym kości sitowej, na zewnętrznej powierzchni kąta żuchwy
+D. w dole skrzydłowym, na wyrostku piramidowym kości skroniowej, na zewnętrznej powierzchni kąta żuchwy
+E. w dole skrzydłowym, na wyrostku piramidowym kości skroniowej, na wewnętrznej powierzchni kąta żuchwy
+KLUCZ: a
+WYJAŚNIENIE:
+Mięsień rozpoczyna się w **dole skrzydłowym** (na przyśrodkowej powierzchni blaszki bocznej wyrostka skrzydłowatego) oraz na **wyrostku piramidowym kości podniebiennej** i guzie szczęki, a kończy na **guzowatości skrzydłowej – wewnętrznej powierzchni kąta żuchwy**. Tworzy z mięśniem żwaczem **pętlę żwaczową** obejmującą kąt żuchwy. Unosi żuchwę i wysuwa ją do przodu; unerwia go **nerw żuchwowy (V3)**. Razem ze skrzydłowym bocznym odpowiada za ruchy żucia typu mielenia pokarmu.
+---
+ID: ANATLEK-756
+TEMAT: ANA-KON
+PYTANIE:
+W stawie nadgarstkowo-śródręcznym kciuka możliwe do wykonania ruchy to:
+A. przywodzenie, odwodzenie
+B. przeciwstawianie, odprowadzanie
+C. obwodzenie
+D. prawidłowe A i B
+E. prawidłowe A, B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Staw nadgarstkowo-śródręczny kciuka jest stawem **siodełkowym** między kością **czworoboczną większą** a podstawą I kości śródręcza. Ma **dwie osie ruchu**: zginanie i prostowanie oraz **odwodzenie i przywodzenie**, a ich złożenie daje **obwodzenie** i najważniejsze czynnościowo **przeciwstawianie (opozycję)** z odprowadzeniem. Ta ruchomość odpowiada za chwyt precyzyjny; jej utrata przy porażeniu nerwu pośrodkowego daje **rękę małpią**.
+---
+ID: ANATLEK-757
+TEMAT: ANA-KON
+PYTANIE:
+Mięsień prostownik wskaziciela należy do grupy:
+A. przedniej mięśni przedramienia, warstwy powierzchownej
+B. tylnej mięśni przedramienia, warstwy głębokiej
+C. bocznej mięśni przedramienia, warstwy powierzchownej
+D. przedniej mięśni przedramienia, warstwy głębokiej
+E. tylnej mięśni przedramienia, warstwy powierzchownej
+KLUCZ: b
+WYJAŚNIENIE:
+**Prostownik wskaziciela** należy do **warstwy głębokiej grupy tylnej** przedramienia, razem z **odwodzicielem długim kciuka, prostownikiem krótkim i długim kciuka** oraz odwracaczem. Jego ścięgno biegnie w czwartym przedziale pod troczkiem prostowników, przyśrodkowo od ścięgna prostownika palców, i umożliwia **niezależne prostowanie palca wskazującego**. Grupę tylną unerwia **nerw międzykostny tylny** z nerwu promieniowego.
+---
+ID: ANATLEK-758
+TEMAT: ANA-JAM
+PYTANIE:
+Prawidłowe stwierdzenia dotyczące ślinianki podjęzykowej to:
+A. przewód podjęzykowy większy uchodzi wzdłuż fałdu podjęzykowego
+B. jest unerwiona przez nerw językowo-gardłowy
+C. jest unaczyniona tętniczo przez gałęzie tętnicy twarzowej
+D. wszystkie odpowiedzi prawdziwe
+E. brak prawidłowej odpowiedzi
+KLUCZ: e
+WYJAŚNIENIE:
+**Przewód podjęzykowy większy (Bartholina)** uchodzi na **mięsku podjęzykowym**, razem z przewodem podżuchwowym – wzdłuż fałdu podjęzykowego otwierają się jedynie **przewody mniejsze (Rivinusa)**. Unerwienie wydzielnicze pochodzi ze **struny bębenkowej nerwu twarzowego** przez zwój podżuchwowy, nie z nerwu IX. Głównym źródłem krwi jest **tętnica podjęzykowa** z tętnicy językowej, choć dochodzi też gałąź podbródkowa tętnicy twarzowej; to jednak nie jest główne źródło unaczynienia.
+---
+ID: ANATLEK-759
+TEMAT: ANA-JAM
+PYTANIE:
+Unerwienie czuciowe języka pochodzi z nerwów:
+A. V2, VII i IX
+B. V2 i VII
+C. V2 i IX
+D. V3, VII i IX
+E. V3, IX i X
+KLUCZ: e
+WYJAŚNIENIE:
+Czucie ogólne przednich **2/3** języka prowadzi **nerw językowy z V3**, tylnej **1/3** – **nerw językowo-gardłowy (IX)**, a okolicy nasady i nagłośni – **nerw krtaniowy górny z nerwu błędnego (X)**. Nerw szczękowy (V2) nie unerwia języka. Czucie **smaku** biegnie natomiast z przodu **struną bębenkową (VII)**, z tyłu nerwem IX i X – dlatego wariant z VII dotyczy smaku, a nie czucia ogólnego, o które pyta zadanie. Jednostronne uszkodzenie IX znosi odruch wymiotny po tej samej stronie.
+---
+ID: ANATLEK-760
+TEMAT: ANA-TRZ
+PYTANIE:
+Prawidłowe stwierdzenia dotyczące przełyku to:
+A. zaczyna się na wysokości VI kręgu szyjnego
+B. kończy się na wysokości kręgu XII piersiowego lub I lędźwiowego
+C. posiada trzy naturalne zwężenia, z czego dwa anatomiczne i jedno czynnościowe
+D. żyły dolnej części przełyku uchodzą do żyły żołądkowej prawej
+E. wszystkie odpowiedzi prawidłowe
+KLUCZ: a
+WYJAŚNIENIE:
+Przełyk zaczyna się na wysokości **C6**, na dolnym brzegu chrząstki pierścieniowatej, a kończy ujściem do żołądka na wysokości **Th11**, nie Th12/L1. Z trzech zwężeń **anatomiczne jest tylko górne**, pierścienno-gardłowe. Krew żylna z dolnego odcinka odpływa do **żyły żołądkowej lewej**, tworząc kluczowe **zespolenie wrotno-układowe** – podłoże żylaków przełyku w nadciśnieniu wrotnym. Ściana przełyku nie ma błony surowiczej poza krótkim odcinkiem brzusznym, co sprzyja szerzeniu się nowotworu.
+---
+ID: ANATLEK-761
+TEMAT: ANA-TRZ
+PYTANIE:
+Dwunastnica unaczyniona jest między innymi przez:
+A. t. trzustkowo-dwunastniczą górną, która jest gałęzią t. żołądkowo-dwunastniczej
+B. t. trzustkowo-dwunastniczą górną, która jest gałęzią t. wątrobowo-dwunastniczej
+C. t. trzustkowo-dwunastniczą dolną, która jest gałęzią t. krezkowej dolnej
+D. prawidłowe A i C
+E. prawidłowe B i C
+KLUCZ: a
+WYJAŚNIENIE:
+**Tętnica trzustkowo-dwunastnicza górna** odchodzi od **tętnicy żołądkowo-dwunastniczej**, czyli pośrednio z **pnia trzewnego**, a **dolna** – od **tętnicy krezkowej górnej**, nie dolnej. Ich zespolenie w łukach przednim i tylnym czyni dwunastnicę **strefą graniczną** między dorzeczami jelita przedniego i środkowego, co odpowiada miejscu ujścia przewodu żółciowego. Tętnica „wątrobowo-dwunastnicza" nie istnieje – to nazwa więzadła.
+---
+ID: ANATLEK-762
+TEMAT: ANA-TRZ
+PYTANIE:
+Słupy odbytu:
+A. utworzone są przez fałdy błony śluzowej
+B. występują w liczbie 5-10
+C. znajdują się w kanale odbytu
+D. wszystkie odpowiedzi prawidłowe
+E. brak prawidłowej odpowiedzi
+KLUCZ: d
+WYJAŚNIENIE:
+**Słupy odbytowe (Morgagniego)** to podłużne **fałdy błony śluzowej** kanału odbytu, w liczbie około **5–10**, zawierające gałęzie **tętnicy odbytniczej górnej** i **splot żylny odbytniczy wewnętrzny**. U ich podstawy leżą **zatoki i zastawki odbytowe**, tworzące **linię grzebieniastą** – granicę między częścią endodermalną a ektodermalną. Poszerzenie splotu w tej okolicy daje **żylaki odbytu (hemoroidy) wewnętrzne**, niebolesne.
+---
+ID: ANATLEK-763
+TEMAT: ANA-TRZ
+PYTANIE:
+Więzadłem wątroby nie jest więzadło:
+A. wieńcowe wątroby
+B. trójkątne wątroby przednie i tylne
+C. wątrobowo-przeponowe
+D. wątrobowo-nerkowe
+E. sierpowate
+KLUCZ: b
+WYJAŚNIENIE:
+Wątrobę mocują więzadła: **sierpowate**, **wieńcowe** z blaszką górną i dolną, **trójkątne prawe i lewe** (nie przednie i tylne), **wątrobowo-przeponowe**, **wątrobowo-nerkowe** oraz sieć mniejsza z więzadłami **wątrobowo-żołądkowym i wątrobowo-dwunastniczym**. Wszystkie są fałdami otrzewnej. Blaszki więzadła wieńcowego ograniczają **pole nagie** wątroby, pozbawione otrzewnej i przylegające bezpośrednio do przepony. Więzadło sierpowate dzieli powierzchnię przeponową na płat prawy i lewy.
+---
+ID: ANATLEK-764
+TEMAT: ANA-TRZ
+PYTANIE:
+Wątroba posiada unaczynienie:
+A. czynnościowe z żyły wrotnej
+B. odżywcze z tętnicy krezkowej górnej
+C. odżywcze z pnia trzewnego
+D. prawidłowe A i B
+E. prawidłowe A i C
+KLUCZ: e
+WYJAŚNIENIE:
+Wątroba ma **podwójne unaczynienie**: **czynnościowe** – **żyła wrotna** przynosi ok. **75%** krwi bogatej we wchłonięte substancje, oraz **odżywcze** – **tętnica wątrobowa właściwa**, gałąź tętnicy wątrobowej wspólnej z **pnia trzewnego**, dostarczająca krew utlenowaną. Oba naczynia wchodzą przez **wrota wątroby** i rozgałęziają się aż do przestrzeni wrotno-żółciowych, a krew odpływa **żyłami wątrobowymi** do żyły głównej dolnej. Mieszanie się obu strumieni krwi następuje dopiero w sinusoidach zrazika.
+---
+ID: ANATLEK-765
+TEMAT: ANA-TRZ
+PYTANIE:
+Trzustka położona jest względem otrzewnej:
+A. głowa wewnątrzotrzewnowo, a trzon i ogon zaotrzewnowo
+B. głowa i trzon wewnątrzotrzewnowo, a ogon zaotrzewnowo
+C. głowa i ogon wewnątrzotrzewnowo, a trzon zaotrzewnowo
+D. cała wewnątrzotrzewnowo
+E. cała zaotrzewnowo
+KLUCZ: e
+WYJAŚNIENIE:
+Trzustka leży **zaotrzewnowo**, przy czym jest to położenie **wtórne** – pierwotnie miała krezkę, która zrosła się z tylną ścianą jamy brzusznej. Otrzewna pokrywa ją tylko od przodu, tworząc tylną ścianę **torby sieciowej**. Narząd rozciąga się od pętli dwunastnicy do wnęki śledziony na wysokości **L1–L2**. Ogon, biegnący w więzadle przeponowo-śledzionowym, bywa opisywany jako jedyna część o cechach wewnątrzotrzewnowych.
+---
+ID: ANATLEK-766
+TEMAT: ANA-NER
+PYTANIE:
+Splot przyuszniczy:
+A. jest utworzony przez gałęzie czuciowe nerwu twarzowego
+B. jest utworzony przez gałęzie czuciowe nerwu językowo-gardłowego
+C. jest utworzony przez gałęzie czuciowe pętli szyjnej
+D. jest utworzony przez gałęzie ruchowe nerwu twarzowego
+E. jest utworzony przez gałęzie ruchowe nerwu językowo-gardłowego
+KLUCZ: d
+WYJAŚNIENIE:
+**Splot przyuszniczy (gęsia stopka większa)** powstaje w miąższu ślinianki przyusznej z podziału pnia **nerwu twarzowego** po wyjściu z otworu rylcowo-sutkowego. Oddaje pięć grup gałęzi **ruchowych** do mięśni mimicznych: **skroniowe, jarzmowe, policzkowe, brzeżną żuchwy i szyjną**. Splot dzieli gruczoł na płat powierzchowny i głęboki, dlatego zabiegi w tej okolicy grożą **porażeniem obwodowym twarzy**. Włókna wydzielnicze dla ślinianki niesie natomiast nerw IX.
+---
+ID: ANATLEK-767
+TEMAT: ANA-JAM
+PYTANIE:
+2/3 przednie języka smakowo są unerwione przez:
+A. włókna smakowe z nerwu skalistego większego
+B. włókna smakowe z nerwu skalistego mniejszego
+C. włókna smakowe ze struny bębenkowej
+D. włókna smakowe z nerwu szczękowego
+E. włókna smakowe z nerwu żuchwowego
+KLUCZ: c
+WYJAŚNIENIE:
+Smak z przednich **2/3** języka prowadzi **struna bębenkowa** – gałąź **nerwu twarzowego**, która dołącza do nerwu językowego z V3 i wraz z nim dociera do błony śluzowej. Ciała komórek leżą w **zwoju kolanka**, a włókna kończą się w **jądrze pasma samotnego**. Nerw skalisty większy niesie włókna wydzielnicze do gruczołu łzowego, a skalisty mniejszy – z nerwu IX do ślinianki przyusznej. Nerw językowy odpowiada w tej okolicy tylko za **czucie ogólne**.
+---
+ID: ANATLEK-768
+TEMAT: ANA-NER
+PYTANIE:
+Jądra nerwu językowo-gardłowego to:
+A. jądro dwuznaczne – ruchowe, jądro pasma samotnego – przywspółczulne, jądro ślinowe górne – czuciowe
+B. jądro dwuznaczne – ruchowe, jądro klinowe górne – przywspółczulne, jądro pasma samotnego – czuciowe
+C. jądro dodatkowe – ruchowe, jądro ślinowe górne – przywspółczulne, jądro pasma samotnego – czuciowe
+D. jądro dwuznaczne – ruchowe, jądro klinowe dolne – przywspółczulne, jądro pasma samotnego – czuciowe
+E. jądro dwuznaczne – ruchowe, jądro ślinowe dolne – przywspółczulne, jądro pasma samotnego – czuciowe
+KLUCZ: e
+WYJAŚNIENIE:
+Nerw IX ma trzy jądra w **rdzeniu przedłużonym**: **dwuznaczne** – ruchowe dla mięśnia rylcowo-gardłowego, **ślinowe dolne** – przywspółczulne, którego włókna przez nerw skalisty mniejszy i **zwój uszny** unerwiają śliniankę przyuszną, oraz **pasma samotnego** – czuciowe i smakowe dla tylnej 1/3 języka, gardła i zatoki szyjnej. **Jądro ślinowe górne** należy do nerwu twarzowego, a jądra klinowe to jądra dróg czucia głębokiego.
+---
+ID: ANATLEK-769
+TEMAT: ANA-NER
+PYTANIE:
+Opadanie powieki górnej jest skutkiem uszkodzenia nerwu:
+A. trójdzielnego
+B. twarzowego
+C. bloczkowego
+D. okoruchowego
+E. odwodzącego
+KLUCZ: d
+WYJAŚNIENIE:
+**Nerw okoruchowy (III)** unerwia **dźwigacz powieki górnej**, dlatego jego porażenie daje **opadnięcie powieki (ptozę)**, ustawienie gałki **w dół i na zewnątrz** oraz – przy zajęciu włókien przywspółczulnych – **szeroką, sztywną źrenicę**. Nerw bloczkowy poraża mięsień skośny górny (dwojenie przy schodzeniu ze schodów), a odwodzący – prosty boczny, dając zez zbieżny. Niewielka ptoza z **wąską źrenicą** to natomiast zespół Hornera.
+---
+ID: ANATLEK-770
+TEMAT: ANA-OUN
+PYTANIE:
+We wzgórkach górnych blaszki pokrywy znajdują się podkorowe ośrodki:
+A. smaku
+B. węchu
+C. wzroku
+D. słuchu
+E. wszystkich wyżej wymienionych
+KLUCZ: c
+WYJAŚNIENIE:
+**Wzgórki górne** blaszki pokrywy są podkorowymi ośrodkami **wzroku** – odbierają włókna z pasma wzrokowego przez ramię wzgórka górnego i pośredniczą w **odruchach źrenicznych oraz orientacyjnych ruchach głowy i oczu**. **Wzgórki dolne** to ośrodki **słuchu**, połączone z ciałem kolankowatym przyśrodkowym. Ośrodki podkorowe smaku i węchu leżą poza blaszką pokrywy: odpowiednio we wzgórzu i w opuszce oraz korze węchowej.
+---
+ID: ANATLEK-771
+TEMAT: ANA-CZA
+PYTANIE:
+Błona naczyniowa gałki ocznej składa się z:
+A. naczyniówki, ciała rzęskowego i tęczówki
+B. naczyniówki, ciała szklistego i tęczówki
+C. naczyniówki, ciała rzęskowego i źrenicy
+D. naczyniówki, rogówki i tęczówki
+E. naczyniówki, tęczówki i spojówki
+KLUCZ: a
+WYJAŚNIENIE:
+Błona naczyniowa (**uvea**) obejmuje trzy odcinki: **naczyniówkę**, odżywiającą warstwy zewnętrzne siatkówki, **ciało rzęskowe** wytwarzające ciecz wodnistą i nastawiające soczewkę przez obwódkę rzęskową, oraz **tęczówkę** z mięśniami zwieraczem i rozwieraczem źrenicy. **Źrenica** to jedynie otwór w tęczówce, **rogówka i twardówka** tworzą błonę włóknistą, a **ciało szkliste** wypełnia wnętrze gałki. Zapalenie uvei nazywamy zapaleniem błony naczyniowej.
+---
+ID: ANATLEK-772
+TEMAT: ANA-CZA
+PYTANIE:
+Ściana dolna jamy bębenkowej to:
+A. ściana błędnikowa
+B. ściana błoniasta
+C. ściana szyjno-tętnicza
+D. ściana żyły szyjnej
+E. ściana sutkowa
+KLUCZ: d
+WYJAŚNIENIE:
+Jama bębenkowa ma sześć ścian: górną **pokrywkową** (od dołu środkowego czaszki), dolną **żyły szyjnej** – oddzielającą ją od **opuszki żyły szyjnej wewnętrznej**, boczną **błoniastą** z błoną bębenkową, przyśrodkową **błędnikową** ze wzgórkiem i okienkami, przednią **szyjno-tętniczą** przy tętnicy szyjnej wewnętrznej z ujściem trąbki oraz tylną **sutkową** z wejściem do jaskini. Cienka ściana dolna tłumaczy ryzyko krwawienia przy zabiegach na uchu.
+---
+ID: ANATLEK-773
+TEMAT: ANA-CZA
+PYTANIE:
+Trąbka słuchowa (Eustachiusza) uchodzi w:
+A. części nosowej gardła
+B. części ustnej gardła
+C. przewodzie nosowym górnym
+D. przewodzie nosowym środkowym
+E. przewodzie nosowym dolnym
+KLUCZ: a
+WYJAŚNIENIE:
+Ujście gardłowe trąbki leży na **ścianie bocznej części nosowej gardła**, na wysokości małżowiny nosowej dolnej, otoczone **wałem trąbkowym** i migdałkiem trąbkowym; ku tyłowi od niego znajduje się **zachyłek gardłowy (Rosenmüllera)**. Trąbka wyrównuje ciśnienie w jamie bębenkowej, otwierając się przy połykaniu dzięki mięśniowi **napinaczowi podniebienia miękkiego**. U dzieci jest krótsza i bardziej pozioma, co sprzyja **zapaleniom ucha środkowego**.
+---
+ID: ANATLEK-774
+TEMAT: ANA-NER
+PYTANIE:
+Jądro przywspółczulne nerwu podjęzykowego znajduje się w:
+A. międzymózgowiu przednim
+B. międzymózgowiu tylnym
+C. dole równoległobocznym
+D. śródmózgowiu
+E. brak prawidłowej odpowiedzi
+KLUCZ: e
+WYJAŚNIENIE:
+**Nerw podjęzykowy (XII) nie ma jądra przywspółczulnego** – jest nerwem czysto **ruchowym somatycznym**. Jego jądro leży w **rdzeniu przedłużonym**, pod trójkątem nerwu podjęzykowego w dole równoległobocznym. Włókna przywspółczulne w obrębie głowy niosą tylko nerwy **III, VII, IX i X**, z jądrami: dodatkowym (Edingera-Westphala), ślinowym górnym, ślinowym dolnym i grzbietowym nerwu błędnego. Uszkodzenie XII zbacza język **w stronę uszkodzenia**.
+---
+ID: ANATLEK-775
+TEMAT: ANA-CZA
+PYTANIE:
+Stok jest utworzony przez kości:
+A. klinową, skroniową i potyliczną
+B. sitową, klinową i skroniową
+C. sitową, potyliczną i skroniową
+D. tylko klinową i potyliczną
+E. tylko klinową i skroniową
+KLUCZ: d
+WYJAŚNIENIE:
+**Stok (clivus)** powstaje ze zrośnięcia **części podstawnej kości potylicznej** z **tylną powierzchnią trzonu kości klinowej** – połączenie to kostnieje ostatecznie około 20. roku życia. Tworzy pochyłą powierzchnię dołu tylnego czaszki, na której spoczywają **most i rdzeń przedłużony**, a wzdłuż niej biegnie **tętnica podstawna**. Kość skroniowa sąsiaduje ze stokiem przez **szczelinę skalisto-potyliczną**, ale go nie buduje.
+---
+ID: ANATLEK-776
+TEMAT: ANA-NAC
+PYTANIE:
+Tętnica szczękowa:
+A. jest jedną z gałęzi końcowych tętnicy szyjnej zewnętrznej
+B. składa się z części żuchwowej, skrzydłowej i żwaczowej
+C. składa się z części żuchwowej, skrzydłowej i zębodołowej
+D. prawidłowe A i B
+E. prawidłowe A i C
+KLUCZ: a
+WYJAŚNIENIE:
+Tętnica szczękowa jest większą **gałęzią końcową tętnicy szyjnej zewnętrznej**, odchodzącą w miąższu ślinianki przyusznej za szyjką żuchwy. Dzieli się na trzy odcinki: **żuchwowy**, **skrzydłowy** i **skrzydłowo-podniebienny** – nazwy „żwaczowa" i „zębodołowa" dotyczą jej gałęzi, a nie części. Z odcinka pierwszego odchodzi **tętnica oponowa środkowa**, której uszkodzenie przy złamaniu łuski skroniowej daje **krwiak nadtwardówkowy**.
+---
+ID: ANATLEK-777
+TEMAT: ANA-TRZ
+PYTANIE:
+Tętnica nadnerczowa środkowa jest gałęzią:
+A. trzewną nieparzystą aorty piersiowej
+B. trzewną parzystą aorty brzusznej
+C. ścienną parzystą aorty piersiowej
+D. trzewną nieparzystą aorty brzusznej
+E. trzewną parzystą aorty piersiowej
+KLUCZ: b
+WYJAŚNIENIE:
+**Tętnica nadnerczowa środkowa** odchodzi bezpośrednio od **aorty brzusznej** na wysokości **L1**, obok tętnicy krezkowej górnej, i należy do gałęzi **trzewnych parzystych** – tak jak tętnice **nerkowe** oraz **jądrowe/jajnikowe**. Gałęzie trzewne nieparzyste to pień trzewny oraz tętnice krezkowe górna i dolna. Nadnercze otrzymuje ponadto **tętnicę nadnerczową górną** z tętnicy przeponowej dolnej i **dolną** z tętnicy nerkowej. Prawa tętnica nadnerczowa środkowa biegnie za żyłą główną dolną.
+---
+ID: ANATLEK-778
+TEMAT: ANA-KON
+PYTANIE:
+Głównym naczyniem doprowadzającym krew do łuku tętniczego dłoniowego głębokiego jest:
+A. tętnica łokciowa
+B. tętnica promieniowa
+C. tętnica ramienna
+D. tętnica pachowa
+E. tętnica pośrodkowa przedramienia
+KLUCZ: b
+WYJAŚNIENIE:
+**Łuk dłoniowy głęboki** tworzy głównie **tętnica promieniowa**, która przechodzi przez tabakierkę anatomiczną i pierwszą przestrzeń międzykostną na stronę dłoniową, gdzie zespala się z **gałęzią głęboką tętnicy łokciowej**. Odwrotnie jest w **łuku dłoniowym powierzchownym**, zasilanym przede wszystkim przez **tętnicę łokciową**. Drożność obu naczyń sprawdza się **próbą Allena** przed nakłuciem tętnicy promieniowej. Łuk głęboki leży bliżej nadgarstka niż powierzchowny.
+---
+ID: ANATLEK-779
+TEMAT: ANA-OUN
+PYTANIE:
+Dół równoległoboczny:
+A. tworzy dno komory trzeciej
+B. składa się z części przedniej i tylnej
+C. jest podzielony na całej swojej długości bruzdą pośrodkową
+D. w jego części mostowej znajduje się wzgórek nerwu trójdzielnego
+E. wszystkie odpowiedzi prawdziwe
+KLUCZ: c
+WYJAŚNIENIE:
+Dół równoległoboczny stanowi **dno komory czwartej** i dzieli się na część **mostową (górną) i rdzeniową (dolną)**, rozgraniczone **prążkami rdzennymi**, a nie na przednią i tylną. Na całej długości biegnie przez niego **bruzda pośrodkowa**, a po bokach **wyniosłość przyśrodkowa**. W części mostowej leży **wzgórek nerwu twarzowego** (kolano VII nad jądrem VI), natomiast trójkąt nerwu podjęzykowego i błędnego – w części rdzeniowej.
+---
+ID: ANATLEK-780
+TEMAT: ANA-OUN
+PYTANIE:
+Który z elementów śródmózgowia zawiera drogi korowo-jądrowe?
+A. nakrywka
+B. blaszka pokrywy
+C. odnogi mózgu
+D. wodociąg mózgu
+E. istota czarna
+KLUCZ: c
+WYJAŚNIENIE:
+Drogi **korowo-jądrowe i korowo-rdzeniowe** biegną w **odnogach mózgu**, dokładniej w ich brzusznej części – **podstawie (crus cerebri)**, gdzie zajmują środkowe 3/5 wraz z drogami korowo-mostowymi. **Istota czarna** oddziela podstawę od **nakrywki**, w której leżą jądra nerwów III i IV, jądro czerwienne i wstęgi. **Blaszka pokrywy** to wzgórki górne i dolne, a **wodociąg mózgu** łączy komorę trzecią z czwartą. Uszkodzenie odnogi daje niedowład połowiczy po stronie przeciwnej.
+---
+ID: ANATLEK-781
+TEMAT: ANA-OUN
+PYTANIE:
+Kora czuciowa zajmuje:
+A. zakręt przedśrodkowy i zakręt zaśrodkowy
+B. zakręt zaśrodkowy i część płacika okołośrodkowego
+C. zakręt przedśrodkowy i część płacika okołośrodkowego
+D. zakręt skroniowy poprzeczny i pole prążkowe
+E. zakręt skroniowy górny i pole prążkowe
+KLUCZ: b
+WYJAŚNIENIE:
+Pierwszorzędowa kora czuciowa (**pola 3, 1, 2**) leży w **zakręcie zaśrodkowym** płata ciemieniowego i przechodzi na powierzchnię przyśrodkową jako **tylna część płacika okołośrodkowego**, gdzie reprezentowana jest kończyna dolna i krocze. Odpowiada jej **homunkulus czuciowy** z ogromną reprezentacją ręki i twarzy. **Zakręt przedśrodkowy** to kora ruchowa (pole 4), **zakręty skroniowe poprzeczne** – kora słuchowa, a pole prążkowe – wzrokowa.
+---
+ID: ANATLEK-782
+TEMAT: ANA-OUN
+PYTANIE:
+Drogi korowo-jądrowe przebiegają przez:
+A. odnogę przednią torebki wewnętrznej
+B. odnogę tylną torebki wewnętrznej
+C. odnogę przednią torebki zewnętrznej
+D. odnogę tylną torebki zewnętrznej
+E. kolano torebki wewnętrznej
+KLUCZ: e
+WYJAŚNIENIE:
+**Kolano torebki wewnętrznej** zawiera **drogi korowo-jądrowe** kierujące się do jąder ruchowych nerwów czaszkowych. W **odnodze tylnej** biegną drogi **korowo-rdzeniowe**, wstęga przyśrodkowa oraz promienistości wzrokowa i słuchowa, a w **odnodze przedniej** – drogi czołowo-mostowe i pasmo wzgórzowe przednie. Torebka zewnętrzna to cienka warstwa istoty białej między skorupą a przedmurzem, bez odnóg. Unaczynienie kolana zapewniają **tętnice prążkowiowo-torebkowe**.
+---
+ID: ANATLEK-783
+TEMAT: ANA-KON
+PYTANIE:
+Staw ramienny jest:
+A. stawem kulistym panewkowym
+B. stawem kulistym wolnym
+C. jego panewka powiększona jest przez więzadło kruczo-barkowe
+D. prawidłowe A i C
+E. prawidłowe B i C
+KLUCZ: b
+WYJAŚNIENIE:
+Staw ramienny to **staw kulisty wolny** – mała, płytka **panewka** obejmuje jedynie około jednej trzeciej głowy kości ramiennej, co daje największy zakres ruchów w organizmie kosztem stabilności i sprzyja **zwichnięciom**. Panewkę pogłębia **obrąbek stawowy**, a nie więzadło kruczo-barkowe, które wraz z wyrostkami tworzy **sklepienie stawu**. Przykładem stawu kulistego **panewkowego** o głębokiej panewce jest staw biodrowy.
+---
+ID: ANATLEK-784
+TEMAT: ANA-TUL
+PYTANIE:
+Najsilniejszą częścią przepony jest:
+A. środek ścięgnisty
+B. część żebrowa
+C. część mostkowa
+D. część lędźwiowa
+E. wszystkie części przepony są jednakowo silne
+KLUCZ: d
+WYJAŚNIENIE:
+**Część lędźwiowa** jest najsilniejsza i najgrubsza – tworzą ją **odnoga prawa i lewa** przyczepiające się do trzonów kręgów L1–L4 oraz więzadła łukowate. Przez nią przechodzą **rozwór aortowy (Th12)** i **rozwór przełykowy (Th10)**. Część mostkowa jest najsłabsza; między nią a żebrową leży **trójkąt mostkowo-żebrowy (Larreya)**, a między żebrową a lędźwiową **trójkąt lędźwiowo-żebrowy (Bochdaleka)** – typowe miejsca **przepuklin przeponowych**.
+---
+ID: ANATLEK-785
+TEMAT: ANA-TUL
+PYTANIE:
+Otwór żyły głównej znajduje się w:
+A. części żebrowej przepony
+B. części mostkowej przepony
+C. części lędźwiowej przepony
+D. środku ścięgnistym przepony
+E. brak prawidłowej odpowiedzi
+KLUCZ: d
+WYJAŚNIENIE:
+**Otwór żyły głównej** leży w **środku ścięgnistym**, na wysokości **Th8**, nieco na prawo od linii pośrodkowej; przechodzi przez niego żyła główna dolna i gałąź przeponowo-brzuszna **nerwu przeponowego prawego**. Ponieważ ściany otworu są ścięgniste, wdech go **rozszerza** i ułatwia powrót żylny. Wyżej niż pozostałe otwory: **przełykowy** leży na Th10 w części mięśniowej, a **aortowy** na Th12, między odnogami. Mnemonik: **żyła 8, przełyk 10, aorta 12**.
+---
+ID: ANATLEK-786
+TEMAT: ANA-OUN
+PYTANIE:
+Z rdzeniem kręgowym łączy się:
+A. 30 par nerwów rdzeniowych za pomocą korzeni brzusznych
+B. 30 par nerwów rdzeniowych za pomocą korzeni grzbietowych
+C. 30 par nerwów rdzeniowych za pomocą korzeni bocznych
+D. prawidłowe A i B
+E. brak prawidłowej odpowiedzi
+KLUCZ: e
+WYJAŚNIENIE:
+Z rdzeniem łączy się **31 par** nerwów rdzeniowych: 8 szyjnych, 12 piersiowych, 5 lędźwiowych, 5 krzyżowych i 1 guziczna – liczba 30 jest błędna, dlatego żadna odpowiedź nie jest prawdziwa. Każdy nerw powstaje z połączenia **korzenia brzusznego (ruchowego)** i **grzbietowego (czuciowego)** ze **zwojem rdzeniowym**; korzenie boczne nie istnieją. Poniżej **L1–L2** korzenie tworzą **ogon koński**, co umożliwia bezpieczne nakłucie lędźwiowe.
+---
+ID: ANATLEK-787
+TEMAT: ANA-OUN
+PYTANIE:
+Do dróg rdzeniowo-mózgowych sznura tylnego należy:
+A. pęczek smukły
+B. pęczek przegrodowo-brzeżny
+C. pęczek własny
+D. pęczek międzypęczkowy
+E. wszystkie wyżej wymienione
+KLUCZ: a
+WYJAŚNIENIE:
+Sznur tylny zawiera dwie drogi **rdzeniowo-mózgowe** czucia głębokiego i dotyku różnicującego: **pęczek smukły (Golla)** – przyśrodkowy, z kończyny dolnej i tułowia poniżej Th6, oraz **pęczek klinowaty (Burdacha)** – boczny, z kończyny górnej. Kończą się w jądrach smukłym i klinowatym rdzenia przedłużonego. Pęczki **przegrodowo-brzeżny, międzypęczkowy i własne** to drogi **spoidłowo-kojarzeniowe** łączące sąsiednie segmenty w obrębie samego rdzenia.
+---
+ID: ANATLEK-788
+TEMAT: ANA-OUN
+PYTANIE:
+Zachyłek nadszyszynkowy jest elementem:
+A. komory bocznej mózgu
+B. komory trzeciej mózgu
+C. komory czwartej mózgu
+D. zatoki strzałkowej dolnej
+E. zatoki strzałkowej górnej
+KLUCZ: b
+WYJAŚNIENIE:
+**Komora trzecia** wytwarza cztery zachyłki: **nadszyszynkowy** i **szyszynkowy** w ścianie tylnej, **wzrokowy** nad skrzyżowaniem oraz **lejka** w dnie. Zachyłek nadszyszynkowy leży nad podstawą szyszynki, pod przyczepem splotu naczyniówkowego. Komora trzecia łączy się z bocznymi przez **otwory międzykomorowe (Monroe)**, a z czwartą przez **wodociąg mózgu**. Zatoki strzałkowe to naczynia żylne opony twardej i nie mają zachyłków.
+---
+ID: ANATLEK-789
+TEMAT: ANA-OUN
+PYTANIE:
+Do elementów układu pozapiramidowego nie należy:
+A. jądro brzuszne przednie wzgórza
+B. jądro ogoniaste
+C. jądro pasma samotnego
+D. istota czarna
+E. gałka blada
+KLUCZ: c
+WYJAŚNIENIE:
+**Jądro pasma samotnego** to jądro **czuciowo-smakowe i trzewne** nerwów VII, IX i X w rdzeniu przedłużonym – nie ma związku z kontrolą ruchu. Układ pozapiramidowy tworzą **jądra podstawne**: ogoniaste, skorupa i **gałka blada**, wraz z **istotą czarną**, jądrem niskowzgórzowym, jądrem czerwiennym oraz jądrami wzgórza (**brzusznym przednim i bocznym**) jako stacją przekaźnikową do kory. Zwyrodnienie istoty czarnej daje **chorobę Parkinsona**.
+---
+ID: ANATLEK-790
+TEMAT: ANA-OUN
+PYTANIE:
+Głównym skupiskiem dróg rzutowych jest:
+A. gałka blada
+B. skorupa
+C. sklepienie
+D. ciało modzelowate
+E. torebka wewnętrzna
+KLUCZ: e
+WYJAŚNIENIE:
+**Drogi rzutowe (projekcyjne)** łączą korę z niższymi piętrami układu nerwowego i zbiegają się w **torebce wewnętrznej**, tworząc poniżej **wieniec promienisty**, a niżej odnogi mózgu. **Ciało modzelowate** to największe włókna **spoidłowe** łączące obie półkule, **sklepienie** należy do układu limbicznego, a gałka blada i skorupa to jądra podstawne. Ognisko w torebce wewnętrznej daje rozległy **niedowład połowiczy** mimo niewielkich rozmiarów.
+---
+ID: ANATLEK-791
+TEMAT: ANA-OUN
+PYTANIE:
+Torebka ostatnia leży między:
+A. skorupą a gałką bladą
+B. gałką bladą a przedmurzem
+C. gałką bladą a wyspą
+D. przedmurzem a wyspą
+E. wzgórzem a skorupą
+KLUCZ: d
+WYJAŚNIENIE:
+Idąc od boku ku środkowi: kora **wyspy**, **torebka ostatnia**, **przedmurze**, **torebka zewnętrzna**, **skorupa**, gałka blada i wreszcie **torebka wewnętrzna** oddzielająca jądro soczewkowate od wzgórza i jądra ogoniastego. Torebka ostatnia jest więc cienką blaszką istoty białej **między przedmurzem a korą wyspy**. Prosty sposób zapamiętania: obie „zewnętrzne" torebki otaczają przedmurze – zewnętrzna od strony skorupy, ostatnia od strony wyspy.
+---
+ID: ANATLEK-792
+TEMAT: ANA-OUN
+PYTANIE:
+Blaszka krańcowa jest elementem ściany:
+A. przyśrodkowej rogu przedniego komory bocznej
+B. przyśrodkowej rogu tylnego komory bocznej
+C. przedniej komory trzeciej
+D. górnej komory trzeciej
+E. tylnej komory czwartej
+KLUCZ: c
+WYJAŚNIENIE:
+**Blaszka krańcowa** to cienka płytka istoty szarej rozpięta między **skrzyżowaniem wzrokowym a spoidłem przednim**, tworząca **przednią ścianę komory trzeciej** – jest pozostałością przedniego końca cewy nerwowej. Ścianę górną stanowi **splot naczyniówkowy z tkanką naczyniówkową**, boczne – **wzgórza i podwzgórza**, a tylną – **spoidło tylne i szyszynka**. W obrębie blaszki leży **narząd naczyniowy** pozbawiony bariery krew–mózg.
+---
+ID: ANATLEK-793
+TEMAT: ANA-OUN
+PYTANIE:
+Do elementów nadwzgórza nie należy:
+A. szyszynka
+B. przysadka
+C. trójkąt uzdeczki
+D. spoidło uzdeczki
+E. spoidło tylne
+KLUCZ: b
+WYJAŚNIENIE:
+**Nadwzgórze (epithalamus)** obejmuje **szyszynkę**, **uzdeczki z trójkątami i spoidłem uzdeczki**, **spoidło tylne** oraz **prążek rdzenny wzgórza**. **Przysadka** należy do **podwzgórza**: zawieszona jest na lejku i spoczywa w siodle tureckim, a jej płat tylny stanowi wypustkę międzymózgowia. Szyszynka wydziela **melatoninę** i bierze udział w regulacji rytmu dobowego; u dorosłych często wapnieje, co czyni ją punktem odniesienia w obrazowaniu.
+---
+ID: ANATLEK-794
+TEMAT: ANA-OUN
+PYTANIE:
+Do elementów ośrodków i drogi słuchowej należą:
+A. jądra ciała czworobocznego, jądra wzgórka górnego, jądra ciała kolankowatego bocznego
+B. jądra wstęgi bocznej, jądra wzgórka górnego, jądra ciała kolankowatego bocznego
+C. jądra ciała czworobocznego, jądra wzgórka dolnego, jądra ciała kolankowatego przyśrodkowego
+D. jądra wstęgi bocznej, jądra wzgórka dolnego, jądra ciała kolankowatego bocznego
+E. brak prawidłowej odpowiedzi
+KLUCZ: c
+WYJAŚNIENIE:
+Droga słuchowa biegnie od jąder ślimakowych przez **jądra ciała czworobocznego** i jądra wstęgi bocznej do **wzgórka dolnego**, następnie do **ciała kolankowatego przyśrodkowego** i przez promienistość słuchową do **zakrętów skroniowych poprzecznych (Heschla)**. **Wzgórek górny i ciało kolankowate boczne** należą do drogi **wzrokowej** – to najczęstsza pułapka w tym pytaniu. Częściowe skrzyżowanie włókien sprawia, że jednostronne uszkodzenie ośrodków nie daje głuchoty.
+---
+ID: ANATLEK-795
+TEMAT: ANA-NAC
+PYTANIE:
+Tętnica mózgu tylna:
+A. jest parzysta
+B. jest gałęzią tętnicy szyjnej wewnętrznej
+C. jest gałęzią tętnicy kręgowej
+D. prawidłowe A i B
+E. prawidłowe A i C
+KLUCZ: a
+WYJAŚNIENIE:
+**Tętnice mózgu tylne** są **parzyste** i powstają z podziału **tętnicy podstawnej**, utworzonej przez połączenie obu tętnic kręgowych – nie odchodzą więc ani od tętnicy szyjnej wewnętrznej, ani wprost od kręgowej. Z tętnicą szyjną wewnętrzną łączy je **tętnica łącząca tylna**, zamykająca **koło tętnicze mózgu (Willisa)**. Zaopatrują płat potyliczny i dolną część skroniowego, dlatego ich niedrożność powoduje **niedowidzenie połowicze**.
+---
+ID: ANATLEK-796
+TEMAT: ANA-TUL
+PYTANIE:
+Mięśnie płatowate głowy i szyi należą do:
+A. mięśni powierzchownych grzbietu
+B. mięśni głębokich grzbietu
+C. mięśni głębokich szyi
+D. mięśni powierzchownych szyi
+E. mięśni głębokich klatki piersiowej
+KLUCZ: b
+WYJAŚNIENIE:
+Mięśnie **płatowate głowy i szyi** to najbardziej powierzchowna warstwa mięśni **głębokich (właściwych) grzbietu**, rozwijających się z **miotomów grzbietowych** i unerwionych przez **gałęzie grzbietowe nerwów rdzeniowych** – to kryterium rozstrzyga o przynależności. Biegną skośnie od wyrostków kolczystych do kresy karkowej i wyrostków poprzecznych kręgów szyjnych, prostując i skręcając głowę. Mięśnie powierzchowne grzbietu, jak czworoboczny, unerwiają gałęzie brzuszne.
+---
+ID: ANATLEK-797
+TEMAT: ANA-KON
+PYTANIE:
+Ścianę dolną jamy pachowej tworzy między innymi:
+A. mięsień piersiowy mniejszy
+B. mięsień zębaty tylny
+C. mięsień zębaty przedni
+D. mięsień najszerszy grzbietu
+E. brak prawidłowej odpowiedzi
+KLUCZ: e
+WYJAŚNIENIE:
+Ściana dolna, czyli **podstawa jamy pachowej**, nie zawiera mięśni – tworzą ją **skóra dołu pachowego i powięź pachowa**, dlatego żadna z odpowiedzi nie jest prawdziwa. Mięsień **piersiowy mniejszy** wchodzi w skład ściany przedniej, **najszerszy grzbietu** wraz z obłym większym i podłopatkowym – tylnej, a **zębaty przedni** buduje ścianę przyśrodkową. Ścianę boczną stanowi **bruzda międzyguzkowa** kości ramiennej z mięśniami dwugłowym i kruczo-ramiennym.
+---
+ID: ANATLEK-798
+TEMAT: ANA-KON
+PYTANIE:
+Do mięśni kłębu kciuka nie należy:
+A. m. odwodziciel krótki kciuka
+B. m. zginacz krótki kciuka
+C. m. przeciwstawiacz kciuka
+D. m. przywodziciel kciuka
+E. m. przywodziciel krótki kciuka
+KLUCZ: e
+WYJAŚNIENIE:
+Kłąb tworzą cztery mięśnie: **odwodziciel krótki**, **zginacz krótki**, **przeciwstawiacz** i **przywodziciel kciuka** – mięsień „przywodziciel krótki kciuka" nie istnieje. Pierwsze trzy unerwia **nerw pośrodkowy** (gałąź mięśniowa oddawana za troczkiem zginaczy), a przywodziciel i głowę głęboką zginacza krótkiego – **gałąź głęboka nerwu łokciowego**. Zanik kłębu z brakiem opozycji to obraz **ręki małpiej** w zaawansowanym zespole cieśni nadgarstka.
+---
+ID: ANATLEK-799
+TEMAT: ANA-KON
+PYTANIE:
+Mięsień dwugłowy uda:
+A. jest w całości mięśniem jednostawowym
+B. jest w całości mięśniem dwustawowym
+C. należy do grupy tylnej mięśni uda
+D. prawidłowe A i C
+E. prawidłowe B i C
+KLUCZ: c
+WYJAŚNIENIE:
+Mięsień dwugłowy uda należy do **grupy tylnej** wraz z półścięgnistym i półbłoniastym. Jego **głowa długa** rozpoczyna się na guzie kulszowym i jest **dwustawowa** – prostuje staw biodrowy i zgina kolano, natomiast **głowa krótka** odchodzi od kresy chropawej kości udowej i działa **tylko na staw kolanowy**. Dlatego stwierdzenia o jednolitym charakterze mięśnia są fałszywe. Głowę długą unerwia część piszczelowa, a krótką – strzałkowa **nerwu kulszowego**.
+---
+ID: ANATLEK-800
+TEMAT: ANA-KON
+PYTANIE:
+Dół biodrowo-łonowy znajduje się w obrębie:
+A. kanału przywodzicieli
+B. kanału pachwinowego
+C. kanału udowego
+D. kanału zasłonowego
+E. trójkąta udowego
+KLUCZ: e
+WYJAŚNIENIE:
+**Dół biodrowo-łonowy** to zagłębienie dna **trójkąta udowego**, utworzone przez mięsień **biodrowo-lędźwiowy** bocznie i **grzebieniowy** przyśrodkowo, oddzielone **łukiem biodrowo-grzebieniowym**. Trójkąt ograniczają **więzadło pachwinowe**, mięsień **krawiecki** i **przywodziciel długi**. W dole leży pęczek naczyniowy: od boku **nerw udowy**, tętnica i żyła udowa oraz przyśrodkowo **kanał udowy** – miejsce przepukliny udowej. Mnemonik ułożenia: **NAŻP** od boku ku środkowi.
+---
+ID: ANATLEK-801
+TEMAT: ANA-KON
+PYTANIE:
+Kanał przywodzicieli:
+A. łączy trójkąt udowy z dołem podkolanowym
+B. jego ścianę przednią stanowi głowa przyśrodkowa m. czworogłowego
+C. jego ścianę boczną stanowi m. przywodziciel wielki
+D. jego ścianę przyśrodkową stanowi blaszka ścięgnista
+E. wszystkie odpowiedzi prawidłowe
+KLUCZ: a
+WYJAŚNIENIE:
+**Kanał przywodzicieli (Huntera)** biegnie w przyśrodkowej części uda i łączy **trójkąt udowy** z **dołem podkolanowym** przez **rozwór ścięgnisty przywodzicieli**. Ścianę **boczną** tworzy **mięsień obszerny przyśrodkowy**, **przyśrodkowo-tylną** – przywodziciele długi i wielki, a **przednią** – **blaszka ścięgnista (vastoadductoria)**, co odwraca opisy z pozostałych wariantów. Przechodzą tędy **tętnica i żyła udowa** oraz **nerw udowo-goleniowy**.
+---
+ID: ANATLEK-802
+TEMAT: ANA-KON
+PYTANIE:
+Dół podkolanowy ograniczony jest przez:
+A. mm. półścięgnisty, półbłoniasty, podeszwowy, dwugłowy uda
+B. mm. półścięgnisty, półbłoniasty, piszczelowy tylny, dwugłowy uda
+C. mm. półścięgnisty, półbłoniasty, strzałkowy długi, dwugłowy uda
+D. mm. półścięgnisty, półbłoniasty, strzałkowy krótki, dwugłowy uda
+E. brak prawidłowej odpowiedzi
+KLUCZ: a
+WYJAŚNIENIE:
+Dół podkolanowy ma kształt rombu: od góry i przyśrodkowo ograniczają go **mięśnie półścięgnisty i półbłoniasty**, od góry i bocznie **mięsień dwugłowy uda**, a od dołu **głowy mięśnia brzuchatego łydki** wraz z **mięśniem podeszwowym**. Dno tworzą powierzchnia podkolanowa kości udowej i mięsień podkolanowy. Zawartość, licząc od głębi: **tętnica podkolanowa**, żyła, a najbardziej powierzchownie **nerw piszczelowy** – kolejność istotna przy urazach.
+---
+ID: ANATLEK-803
+TEMAT: ANA-CZA
+PYTANIE:
+Kość skroniowa składa się z części:
+A. łuskowej, kolcowej, bębenkowej i podstawy
+B. łuskowej, sutkowej, bębenkowej i podstawy
+C. łuskowej, kolcowej, sutkowej i podstawy
+D. łuskowej, bębenkowej, sutkowej i piramidy
+E. łuskowej, bębenkowej, piramidy i podstawy
+KLUCZ: d
+WYJAŚNIENIE:
+Kość skroniowa powstaje ze zrośnięcia czterech elementów: **łuski**, **części bębenkowej** otaczającej przewód słuchowy zewnętrzny, **części sutkowej** z komórkami powietrznymi oraz **części skalistej, czyli piramidy**, mieszczącej ucho wewnętrzne. „Podstawa" i „część kolcowa" to elementy kości **klinowej** – kolec klinowy leży obok otworu owalnego. Od łuski odchodzi **wyrostek jarzmowy**, a między częścią bębenkową a sutkową – **wyrostek rylcowaty**.
+---
+ID: ANATLEK-804
+TEMAT: ANA-CZA
+PYTANIE:
+Ścianę przyśrodkową oczodołu budują między innymi:
+A. wyrostek czołowy szczęki, blaszka oczodołowa kości sitowej, kość nosowa
+B. wyrostek czołowy szczęki, powierzchnia oczodołowa kości podniebiennej, kość łzowa
+C. wyrostek czołowy szczęki, blaszka sitowa kości sitowej, kość łzowa
+D. wyrostek czołowy szczęki, kość łzowa, kość klinowa
+E. wyrostek czołowy szczęki, blaszka sitowa kości sitowej, kość klinowa
+KLUCZ: d
+WYJAŚNIENIE:
+Ścianę przyśrodkową tworzą kolejno od przodu: **wyrostek czołowy szczęki**, **kość łzowa** z dołem woreczka łzowego, **blaszka oczodołowa (papierowata) kości sitowej** i **trzon kości klinowej**. **Blaszka sitowa** leży poziomo w dole przednim czaszki i nie wchodzi w skład oczodołu, a kość nosowa buduje szkielet nosa. Bardzo cienka blaszka papierowata sprzyja szerzeniu się **zapaleń z zatok sitowych** oraz złamaniom przyśrodkowym typu blow-out.
+---
+ID: ANATLEK-805
+TEMAT: ANA-CZA
+PYTANIE:
+Do zawartości dołu skrzydłowo-podniebiennego nie należy:
+A. splot żylny skrzydłowy
+B. zwój skrzydłowo-podniebienny
+C. nerw szczękowy
+D. tętnica szczękowa
+E. naczynia skrzydłowo-podniebienne
+KLUCZ: a
+WYJAŚNIENIE:
+W dole skrzydłowo-podniebiennym znajdują się: **nerw szczękowy (V2)**, **zwój skrzydłowo-podniebienny** z nerwem kanału skrzydłowego oraz **trzeci, skrzydłowo-podniebienny odcinek tętnicy szczękowej** z gałęziami. **Splot żylny skrzydłowy** leży w **dole podskroniowym**, między mięśniami skrzydłowymi – to on łączy się z zatoką jamistą przez żyły emisariuszowe. Dół komunikuje się z oczodołem szczeliną oczodołową dolną, a z jamą czaszki – **otworem okrągłym**.

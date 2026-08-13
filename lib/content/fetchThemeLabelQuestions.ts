@@ -13,12 +13,16 @@ export async function fetchActiveQuestionsForThemeLabel(
   contentSubjectId: string,
   themeLabel: string,
   track?: StudyTrack,
+  topicIdsOverride?: string[],
 ): Promise<QuestionTopicRow[]> {
-  const topicIds = await fetchVisibleTopicIds(
-    supabase,
-    getSubjectScopeIds(contentSubjectId),
-    track,
-  );
+  const topicIds =
+    topicIdsOverride && topicIdsOverride.length > 0
+      ? topicIdsOverride
+      : await fetchVisibleTopicIds(
+          supabase,
+          getSubjectScopeIds(contentSubjectId),
+          track,
+        );
   if (topicIds.length === 0) return [];
 
   const all: QuestionTopicRow[] = [];

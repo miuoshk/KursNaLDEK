@@ -1,0 +1,1982 @@
+[
+  {
+    "topic_id": "HIST-22",
+    "text": "U noworodka stwierdzono ciężką wadę rozwojową nosa związaną z brakiem wpuklania się plakod nosowych. Która/e struktura/y nie powstała/y prawidłowo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dołki nosowe"
+      },
+      {
+        "id": "b",
+        "text": "Przegroda nosowa"
+      },
+      {
+        "id": "c",
+        "text": "Małżowiny nosowe"
+      },
+      {
+        "id": "d",
+        "text": "Podniebienie wtórne"
+      },
+      {
+        "id": "e",
+        "text": "A, B, C"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Plakody nosowe to zgrubienia ektodermy na wyniosłości czołowo-nosowej, pojawiające się w **5. tygodniu**. Ich wpuklenie tworzy **dołki (jamki) nosowe** — to bezpośrednia konsekwencja opisywanego procesu, więc jego brak znosi właśnie te struktury. **Przegroda nosowa** i **podniebienie wtórne** powstają ze zrostu wyrostków przyśrodkowych nosowych i szczękowych, a **małżowiny** z mezenchymy bocznej ściany jamy nosowej — nie zależą wprost od inwaginacji plakody.",
+    "subtheme_label": "Rozwój twarzy i jamy nosowej",
+    "source_code": "",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Opona twarda składa się z dwóch warstw:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Twardej i miękkiej"
+      },
+      {
+        "id": "b",
+        "text": "Okostnowej i oponowej"
+      },
+      {
+        "id": "c",
+        "text": "Okostnowej i nerwowej"
+      },
+      {
+        "id": "d",
+        "text": "Zewnętrznej i siateczkowatej"
+      },
+      {
+        "id": "e",
+        "text": "Kolagenowej i sprężystej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Opona twarda mózgowia zbudowana jest z gęstej tkanki łącznej zbitej i ma warstwę **okostnową** (zewnętrzną, pełniącą rolę okostnej kości czaszki) oraz **oponową** (wewnętrzną, właściwą). Ich rozejście tworzy **zatoki żylne opony twardej**, a wpuklenia warstwy oponowej — sierp mózgu i namiot móżdżku. W kanale kręgowym występuje wyłącznie warstwa oponowa; między nią a okostną kręgów leży **przestrzeń nadtwardówkowa** z tkanką tłuszczową i splotem żylnym.",
+    "subtheme_label": "Opony mózgowo-rdzeniowe",
+    "source_code": "HISLEK-e2026-1-845",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-19",
+    "text": "U pacjenta doszło do zamknięcia ujścia gruczołów opuszkowo-cewkowych. Do którego odcinka cewki moczowej prawidłowo uchodzą te gruczoły?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Do części sterczowej cewki moczowej"
+      },
+      {
+        "id": "b",
+        "text": "Do bliższego odcinka części gąbczastej cewki moczowej"
+      },
+      {
+        "id": "c",
+        "text": "Do części błoniastej cewki moczowej"
+      },
+      {
+        "id": "d",
+        "text": "Do dołu łódkowatego cewki moczowej"
+      },
+      {
+        "id": "e",
+        "text": "Do ujścia zewnętrznego cewki moczowej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Gruczoły opuszkowo-cewkowe (Cowpera)** to cewkowo-pęcherzykowe gruczoły śluzowe leżące w przeponie moczowo-płciowej. Ich przewody przebijają opuszkę prącia i uchodzą do **bliższego odcinka części gąbczastej** cewki. Wydzielina bogata w **glikozaminoglikany** nawilża i alkalizuje cewkę przed ejakulacją, neutralizując resztki moczu. Do **części sterczowej** uchodzą przewody wytryskowe i przewodziki prostaty, a w części gąbczastej rozsiane są drobne gruczoły Littrégo.",
+    "subtheme_label": "Męskie gruczoły dodatkowe i cewka moczowa",
+    "source_code": "HISLEK-e2026-1-846",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-19",
+    "text": "W fazie proliferacyjnej wzrost stężenia estrogenów w osoczu jest związany z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Rozwojem warstwy wewnętrznej osłonek pęcherzyków jajnikowych"
+      },
+      {
+        "id": "b",
+        "text": "Degeneracją ciałka żółtego"
+      },
+      {
+        "id": "c",
+        "text": "Wydzielaniem progesteronu przez ciałko żółte"
+      },
+      {
+        "id": "d",
+        "text": "Zanikiem gruczołów macicznych"
+      },
+      {
+        "id": "e",
+        "text": "C, D"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Faza proliferacyjna endometrium odpowiada fazie folikularnej jajnika. Estrogeny powstają zgodnie z **teorią dwóch komórek i dwóch gonadotropin**: komórki **osłonki wewnętrznej (theca interna)** pobudzane przez **LH** wytwarzają androgeny, a komórki ziarniste pod wpływem **FSH** aromatyzują je do **estradiolu**. Rozwój theca interna jest więc warunkiem wzrostu estrogenemii. Ciałko żółte powstaje dopiero po owulacji i wydziela **progesteron**, a gruczoły maciczne w tej fazie proliferują.",
+    "subtheme_label": "Cykl jajnikowy i miesiączkowy",
+    "source_code": "HISLEK-e2026-1-847",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "U pacjenta ze stwardnieniem rozsianym doszło do uszkodzenia osłonek mielinowych w rdzeniu kręgowym. Która warstwa rozwojowa była źródłem uszkodzonych struktur?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Warstwa rogowo-boczna"
+      },
+      {
+        "id": "b",
+        "text": "Warstwa brzeżna"
+      },
+      {
+        "id": "c",
+        "text": "Warstwa płaszczowa"
+      },
+      {
+        "id": "d",
+        "text": "A, B"
+      },
+      {
+        "id": "e",
+        "text": "A, C"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Ściana cewy nerwowej różnicuje się na trzy warstwy: **komorową (ependymalną)**, **płaszczową** i **brzeżną**. Warstwa płaszczowa daje **istotę szarą** (perykariony neuronów), natomiast warstwa **brzeżna** — **istotę białą**, czyli obszar wypełniony aksonami mielinizowanymi przez **oligodendrocyty**. To ona jest źródłem struktur niszczonych w **stwardnieniu rozsianym**, chorobie demielinizacyjnej istoty białej. „Warstwa rogowo-boczna” nie jest warstwą rozwojową — to dystraktor nawiązujący do rogów rdzenia.",
+    "subtheme_label": "Rozwój cewy nerwowej",
+    "source_code": "HISLEK-e2026-1-848",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Po aktywacji mikroglej:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Traci wypustki i staje się komórką prezentującą antygen"
+      },
+      {
+        "id": "b",
+        "text": "Tworzy mielinę"
+      },
+      {
+        "id": "c",
+        "text": "Przekształca się w neuron"
+      },
+      {
+        "id": "d",
+        "text": "Wytwarza kolagen"
+      },
+      {
+        "id": "e",
+        "text": "Zanika"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Mikroglej jako jedyny glej wywodzi się z linii **monocytarno-makrofagowej** (prekursory z worka żółtkowego), nie z neuroektodermy. W spoczynku ma drobne, silnie rozgałęzione wypustki monitorujące otoczenie. Po aktywacji **retrahuje wypustki**, przybiera kształt ameboidalny, nabiera zdolności **fagocytozy** i prezentacji antygenu z ekspresją **MHC klasy II**. Mielinę w OUN tworzą **oligodendrocyty**, kolagen — fibroblasty, a barierę krew–mózg współtworzą astrocyty.",
+    "subtheme_label": "Komórki glejowe",
+    "source_code": "HISLEK-e2026-1-849",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-07",
+    "text": "Najczęściej występującym proteoglikanem chrząstki szklistej jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dekoryna"
+      },
+      {
+        "id": "b",
+        "text": "Syndekan"
+      },
+      {
+        "id": "c",
+        "text": "Agrekan"
+      },
+      {
+        "id": "d",
+        "text": "Perlekan"
+      },
+      {
+        "id": "e",
+        "text": "Fibronektyna"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Agrekan** to dominujący proteoglikan macierzy chrząstki szklistej. Wiąże się z **hialuronianem** za pośrednictwem białek łączących, tworząc olbrzymie agregaty. Jego liczne łańcuchy **siarczanu chondroityny i keratanu** są silnie ujemnie naładowane, wiążą wodę i nadają chrząstce odporność na ucisk oraz zasadochłonność macierzy terytorialnej. **Dekoryna** i **perlekan** występują w małych ilościach, **syndekan** jest proteoglikanem błonowym, a **fibronektyna** — glikoproteiną adhezyjną.",
+    "subtheme_label": "Macierz chrząstki szklistej",
+    "source_code": "HISLEK-e2026-1-850",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Które zestawienie prawidłowo łączy subpopulację limfocytów T z jej charakterystycznym koreceptorem powierzchniowym oraz klasą cząsteczki MHC, z którą ten koreceptor współdziała podczas rozpoznawania antygenu?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Limfocyty T pomocnicze — CD8 — MHC klasy I"
+      },
+      {
+        "id": "b",
+        "text": "Limfocyty T pomocnicze — CD4 — MHC klasy II"
+      },
+      {
+        "id": "c",
+        "text": "Limfocyty T cytotoksyczne — CD4 — MHC klasy II"
+      },
+      {
+        "id": "d",
+        "text": "Limfocyty T regulatorowe — CD8 — MHC klasy I"
+      },
+      {
+        "id": "e",
+        "text": "Komórki NK — TCR — MHC klasy II"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Limfocyty Th** mają koreceptor **CD4**, wiążący niepolimorficzny fragment **MHC klasy II** na komórkach prezentujących antygen (makrofagi, komórki dendrytyczne, limfocyty B). **Limfocyty Tc** noszą **CD8** rozpoznający **MHC klasy I**, obecne na wszystkich komórkach jądrzastych. **Treg** są CD4+CD25+FoxP3+, a komórki **NK** nie mają TCR — działają przez receptory aktywujące i hamujące. Mnemonik: reguła ósemki — CD4 x MHC II = 8, CD8 x MHC I = 8.",
+    "subtheme_label": "Subpopulacje limfocytów T",
+    "source_code": "HISLEK-e2026-1-851",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Główną funkcją oligodendrocytów jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Produkcja neuroprzekaźników"
+      },
+      {
+        "id": "b",
+        "text": "Fagocytoza uszkodzonych neuronów"
+      },
+      {
+        "id": "c",
+        "text": "Tworzenie osłonki mielinowej"
+      },
+      {
+        "id": "d",
+        "text": "Produkcja płynu mózgowo-rdzeniowego"
+      },
+      {
+        "id": "e",
+        "text": "Tworzenie bariery krew–mózg"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Oligodendrocyty** wytwarzają **mielinę w ośrodkowym układzie nerwowym**: jedna komórka wysyła kilkadziesiąt wypustek i mielinizuje **wiele aksonów** naraz. W układzie obwodowym **komórka Schwanna** obejmuje tylko jeden odcinek międzywęzłowy jednego aksonu. Mielina wielokrotnie przyspiesza przewodzenie dzięki **przewodzeniu skokowemu** między przewężeniami Ranviera. Fagocytozę pełni mikroglej, płyn mózgowo-rdzeniowy produkuje splot naczyniówkowy, a barierę krew–mózg — śródbłonek i astrocyty.",
+    "subtheme_label": "Komórki glejowe",
+    "source_code": "HISLEK-e2026-1-852",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Które zestawienie najtrafniej opisuje podstawowy podział miazgi śledziony?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Miazga biała — zatoki śledzionowe i sznury śledzionowe; miazga czerwona — grudki chłonne i PALS."
+      },
+      {
+        "id": "b",
+        "text": "Miazga biała — wyłącznie naczynia zatokowe; miazga czerwona — wyłącznie limfocyty T."
+      },
+      {
+        "id": "c",
+        "text": "Miazga biała — grudki chłonne i PALS; miazga czerwona — zatoki wypełnione krwią i sznury śledzionowe."
+      },
+      {
+        "id": "d",
+        "text": "Miazga biała — beleczki łącznotkankowe; miazga czerwona — torebka śledziony."
+      },
+      {
+        "id": "e",
+        "text": "Miazga biała — tylko komórki plazmatyczne; miazga czerwona — tylko komórki dendrytyczne."
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Miazga biała** to tkanka limfatyczna wokół tętnic środkowych: **PALS** (pochewki limfatyczne okołotętnicze z limfocytami **T**) oraz **grudki chłonne** z limfocytami **B**; na jej obwodzie leży strefa brzeżna. **Miazga czerwona** to **zatoki żylne** wypełnione krwią i **sznury Billrotha** bogate w makrofagi, które niszczą zużyte erytrocyty i odzyskują żelazo. Beleczki i torebka stanowią wspólny zrąb łącznotkankowy obu miazg, a nie element ich definicji.",
+    "subtheme_label": "Budowa śledziony",
+    "source_code": "HISLEK-e2026-1-853",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Część wewnątrzwydzielniczą trzustki tworzą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pęcherzyki surowicze"
+      },
+      {
+        "id": "b",
+        "text": "Przewody wyprowadzające"
+      },
+      {
+        "id": "c",
+        "text": "Wyspy Langerhansa"
+      },
+      {
+        "id": "d",
+        "text": "Komórki mioepitelialne"
+      },
+      {
+        "id": "e",
+        "text": "Cewki śluzowe"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Część wewnątrzwydzielniczą stanowią **wyspy trzustkowe (Langerhansa)** — silnie unaczynione skupiska komórek, ok. **1–2% masy narządu**, liczniejsze w ogonie. Zawierają komórki **B (insulina, ~70%)**, **A (glukagon, ~20%)**, **D (somatostatyna)** i **PP**; hormony trafiają bezpośrednio do krwi. **Pęcherzyki surowicze** i przewody należą do części zewnątrzwydzielniczej produkującej sok trzustkowy. Komórek mioepitelialnych ani cewek śluzowych trzustka nie zawiera.",
+    "subtheme_label": "Część wewnątrzwydzielnicza trzustki",
+    "source_code": "HISLEK-e2026-1-854",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Główną funkcją komórek Ito jest magazynowanie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Witaminy A"
+      },
+      {
+        "id": "b",
+        "text": "Witaminy C"
+      },
+      {
+        "id": "c",
+        "text": "Witaminy B12"
+      },
+      {
+        "id": "d",
+        "text": "Żelaza"
+      },
+      {
+        "id": "e",
+        "text": "Glikogenu"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Komórki Ito (gwiaździste, lipocyty)** leżą w **przestrzeni Dissego**, między hepatocytami a śródbłonkiem zatok. Magazynują **witaminę A** w kroplach lipidowych — około **80% ustrojowych zapasów retinoidów** — i produkują składniki macierzy zewnątrzkomórkowej. Po uszkodzeniu wątroby aktywują się, tracą lipidy i przekształcają w **miofibroblasty** wytwarzające kolagen: to kluczowy mechanizm **włóknienia i marskości**. Żelazo gromadzą makrofagi (komórki Kupffera), a glikogen — hepatocyty.",
+    "subtheme_label": "Komórki wątroby",
+    "source_code": "HISLEK-e2026-1-855",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie prawdziwe dotyczące pneumocytów typu I:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pneumocyty typu I są głównymi komórkami produkującymi surfaktant"
+      },
+      {
+        "id": "b",
+        "text": "Pneumocyty typu I zawierają ciałka blaszkowate"
+      },
+      {
+        "id": "c",
+        "text": "Pneumocyty typu I umożliwiają szybki transport gazów przez płaskie części cytoplazmy"
+      },
+      {
+        "id": "d",
+        "text": "Pneumocyty typu I są komórkami ziarnistymi"
+      },
+      {
+        "id": "e",
+        "text": "Pneumocyty typu I stanowią główne źródło serotoniny w pęcherzykach płucnych"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Pneumocyty typu I** stanowią tylko ok. 40% komórek nabłonka pęcherzyka, ale pokrywają aż **95% jego powierzchni**. Są skrajnie spłaszczone — warstwa cytoplazmy ma poniżej **0,2 μm** — co minimalizuje dystans dyfuzji i umożliwia szybką **wymianę gazową**. Połączone są obwódkami zamykającymi i nie dzielą się; odnawiają je pneumocyty typu II. **Surfaktant** i **ciałka blaszkowate** to cecha pneumocytów typu II, a serotoninę wydzielają komórki neuroendokrynne dróg oddechowych.",
+    "subtheme_label": "Nabłonek pęcherzyków płucnych",
+    "source_code": "HISLEK-e2026-1-856",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Kanaliki żółciowe są tworzone przez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Komórki Kupffera"
+      },
+      {
+        "id": "b",
+        "text": "Komórki Ito"
+      },
+      {
+        "id": "c",
+        "text": "Powierzchnie szczytowe sąsiadujących hepatocytów"
+      },
+      {
+        "id": "d",
+        "text": "Komórki śródbłonka zatok i hepatocytów"
+      },
+      {
+        "id": "e",
+        "text": "A, D"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Kanaliki żółciowe** nie mają własnej ściany — to szczelinowate przestrzenie między **błonami szczytowymi (kanalikowymi) sąsiadujących hepatocytów**, uszczelnione **połączeniami ścisłymi**, które zapobiegają przeciekaniu żółci do krwi (ich uszkodzenie daje żółtaczkę cholestatyczną). Żółć płynie **przeciwnie** do krwi: od żyły centralnej ku przestrzeni wrotnej, gdzie przechodzi w kanaliki Heringa. **Komórki Kupffera** to makrofagi zatok, a **Ito** magazynują witaminę A.",
+    "subtheme_label": "Drogi żółciowe wewnątrzwątrobowe",
+    "source_code": "HISLEK-e2026-1-857",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Komórki tuczne są szczególnie liczne:",
+    "options": [
+      {
+        "id": "a",
+        "text": "W szkliwie zęba"
+      },
+      {
+        "id": "b",
+        "text": "W pobliżu małych naczyń krwionośnych skóry i krezki"
+      },
+      {
+        "id": "c",
+        "text": "W soczewce oka"
+      },
+      {
+        "id": "d",
+        "text": "W chrząstce szklistej"
+      },
+      {
+        "id": "e",
+        "text": "W rogówce"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Mastocyty** gromadzą się w tkance łącznej wzdłuż **drobnych naczyń krwionośnych** skóry, krezki oraz błony śluzowej przewodu pokarmowego i dróg oddechowych — czyli tam, gdzie ustrój styka się ze środowiskiem zewnętrznym i potrzebuje szybkiej odpowiedzi zapalnej. Ich metachromatyczne ziarnistości zawierają **histaminę**, **heparynę** i proteazy. **Szkliwo** jest bezkomórkowe, a **soczewka**, **rogówka** i **chrząstka szklista** pozbawione naczyń i tkanki łącznej właściwej — mastocytów tam nie ma.",
+    "subtheme_label": "Komórki tkanki łącznej właściwej",
+    "source_code": "HISLEK-e2026-1-858",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie prawdziwe dotyczące lokalizacji makrofagów płucnych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Występują wyłącznie w chrząstce tchawicy"
+      },
+      {
+        "id": "b",
+        "text": "Występują tylko w świetle naczyń włosowatych"
+      },
+      {
+        "id": "c",
+        "text": "Występują wyłącznie w nabłonku oskrzeli głównych"
+      },
+      {
+        "id": "d",
+        "text": "Mogą występować w przegrodach międzypęcherzykowych oraz wewnątrz i na powierzchni nabłonka pęcherzykowego płuc"
+      },
+      {
+        "id": "e",
+        "text": "Występują wyłącznie w opłucnej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Makrofagi płucne (komórki pyłowe)** wywodzą się z monocytów krwi i występują w dwóch pulach: **śródmiąższowej** — w przegrodach międzypęcherzykowych, oraz **pęcherzykowej** — na powierzchni nabłonka i w świetle pęcherzyków, gdzie fagocytują pyły i drobnoustroje. Usuwane są ruchem rzęsek lub drogą chłonną. W przewlekłym zastoju żylnym pochłaniają erytrocyty i hemosyderynę, tworząc **komórki wad sercowych**. Bezkomórkowa chrząstka i opłucna nie są ich typowym siedliskiem.",
+    "subtheme_label": "Makrofagi płucne",
+    "source_code": "HISLEK-e2026-1-859",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Komórki tuczne odgrywają kluczową rolę w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nadwrażliwości natychmiastowej (typ I)"
+      },
+      {
+        "id": "b",
+        "text": "Krzepnięciu krwi"
+      },
+      {
+        "id": "c",
+        "text": "Mineralizacji kości"
+      },
+      {
+        "id": "d",
+        "text": "Powstawaniu szkliwa"
+      },
+      {
+        "id": "e",
+        "text": "Przewodzeniu impulsów nerwowych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Mastocyty mają na powierzchni receptory **FcεRI** o wysokim powinowactwie do **IgE**. Ponowny kontakt z alergenem mostkuje sąsiednie cząsteczki IgE, wyzwalając **degranulację**: wyrzut **histaminy**, heparyny i proteaz oraz syntezę de novo **leukotrienów (SRS-A)** i prostaglandyn. Skutkiem jest rozszerzenie naczyń, wzrost przepuszczalności i skurcz oskrzeli — obraz **nadwrażliwości typu I**, od pokrzywki po wstrząs anafilaktyczny. W krzepnięciu uczestniczą płytki i osoczowe czynniki krzepnięcia.",
+    "subtheme_label": "Mastocyty i reakcje alergiczne",
+    "source_code": "HISLEK-e2026-1-860",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Podczas operacji usunięto guz zlokalizowany w okolicy okrężnicy zstępującej. Z którego odcinka jelita pierwotnego rozwinęła się ta część przewodu pokarmowego?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Jelito przednie"
+      },
+      {
+        "id": "b",
+        "text": "Jelito środkowe"
+      },
+      {
+        "id": "c",
+        "text": "Jelito tylne"
+      },
+      {
+        "id": "d",
+        "text": "Stek pierwotny"
+      },
+      {
+        "id": "e",
+        "text": "Endoderma gardła"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Jelito tylne** daje **dalszą 1/3 okrężnicy poprzecznej, okrężnicę zstępującą, esicę, odbytnicę** i górną część kanału odbytu; unaczynia je **tętnica krezkowa dolna**. **Jelito środkowe** obejmuje odcinek od dwunastnicy poniżej ujścia przewodu żółciowego do bliższych 2/3 okrężnicy poprzecznej (tętnica krezkowa górna), a **jelito przednie** — przełyk, żołądek i początek dwunastnicy. Granice te wyznaczają zakres unaczynienia i pomagają lokalizować wady rozwojowe.",
+    "subtheme_label": "Rozwój przewodu pokarmowego",
+    "source_code": "HISLEK-e2026-1-861",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Z której części pierwotnego gardła rozwija się zachyłek krtaniowo-tchawiczy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Brzusznej"
+      },
+      {
+        "id": "b",
+        "text": "Płaszczowej"
+      },
+      {
+        "id": "c",
+        "text": "Grzbietowej"
+      },
+      {
+        "id": "d",
+        "text": "Komorowo-bocznej"
+      },
+      {
+        "id": "e",
+        "text": "A, B"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Około **4. tygodnia** na **brzusznej** ścianie jelita przedniego (pierwotnego gardła), doogonowo od IV łuku gardłowego, pojawia się **zachyłek krtaniowo-tchawiczy** — zawiązek krtani, tchawicy, oskrzeli i płuc. Od leżącego grzbietowo przełyku oddziela go **przegroda tchawiczo-przełykowa**; jej nieprawidłowe wykształcenie daje **przetokę tchawiczo-przełykową z atrezją przełyku**. Nabłonek dróg oddechowych pochodzi z **endodermy**, a chrząstki i mięśniówka z mezodermy trzewnej.",
+    "subtheme_label": "Rozwój układu oddechowego",
+    "source_code": "HISLEK-e2026-1-862",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Przykładem tkanki łącznej zbitej o utkaniu nieregularnym jest/są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ścięgno"
+      },
+      {
+        "id": "b",
+        "text": "Więzadło"
+      },
+      {
+        "id": "c",
+        "text": "Warstwa siateczkowata skóry właściwej"
+      },
+      {
+        "id": "d",
+        "text": "A, B"
+      },
+      {
+        "id": "e",
+        "text": "A, B, C"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W tkance łącznej zbitej **nieregularnej** grube pęczki **kolagenu typu I** biegną w wielu płaszczyznach, co daje odporność na rozciąganie z każdego kierunku. Tak zbudowana jest **warstwa siateczkowata skóry właściwej**, a także torebki narządów, ochrzęstna i okostna. **Ścięgna i więzadła** to tkanka zbita **regularna**: równoległe pęczki przystosowane do siły działającej w jednej osi, z **fibrocytami (komórkami ścięgnistymi)** ułożonymi w rzędach między nimi.",
+    "subtheme_label": "Rodzaje tkanki łącznej właściwej",
+    "source_code": "HISLEK-e2026-1-863",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-07",
+    "text": "Chrząstka sprężysta występuje w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Trzonach kręgów"
+      },
+      {
+        "id": "b",
+        "text": "Małżowinie usznej"
+      },
+      {
+        "id": "c",
+        "text": "Powierzchniach stawowych"
+      },
+      {
+        "id": "d",
+        "text": "Spojeniu łonowym"
+      },
+      {
+        "id": "e",
+        "text": "Krążkach międzykręgowych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Chrząstka sprężysta** obok kolagenu typu II zawiera gęstą sieć **włókien elastycznych** (barwienie orceiną lub rezorcyno-fuksyną), co nadaje jej żółtawą barwę i zdolność powrotu do kształtu wyjściowego po odkształceniu. Występuje w **małżowinie usznej**, przewodzie słuchowym zewnętrznym, trąbce słuchowej, **nagłośni** i chrząstkach klinowatych krtani. Powierzchnie stawowe pokrywa chrząstka **szklista**, a spojenie łonowe i krążki międzykręgowe budowane są z chrząstki **włóknistej**.",
+    "subtheme_label": "Rodzaje chrząstki i ich lokalizacja",
+    "source_code": "HISLEK-e2026-1-864",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-08",
+    "text": "Osteoklasty odpowiadają za:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tworzenie chrząstki"
+      },
+      {
+        "id": "b",
+        "text": "Syntezę kolagenu typu II"
+      },
+      {
+        "id": "c",
+        "text": "Resorpcję kości"
+      },
+      {
+        "id": "d",
+        "text": "Produkcję osteoidu"
+      },
+      {
+        "id": "e",
+        "text": "Mineralizację szkliwa"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Osteoklasty** to wielojądrzaste komórki z linii **monocytarno-makrofagowej**, powstające przez fuzję prekursorów pod wpływem **RANKL** i **M-CSF**. Przylegają do kości **strefą uszczelniającą**, a przez **rąbek falbaniasty** wydzielają do zatoki Howshipa **H+** (pompa protonowa, anhydraza węglanowa) rozpuszczające hydroksyapatyt oraz **katepsynę K** trawiącą kolagen. Osteoid i kolagen typu I wytwarzają **osteoblasty**, kolagen typu II — chondroblasty, a szkliwo mineralizują ameloblasty.",
+    "subtheme_label": "Komórki tkanki kostnej",
+    "source_code": "HISLEK-e2026-1-865",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-17",
+    "text": "Który opis najtrafniej łączy strukturę z funkcją klinicznie istotną?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kanalik bliższy — główne miejsce działania aldosteronu na reabsorpcję Na+"
+      },
+      {
+        "id": "b",
+        "text": "Podocyty — magazynowanie reniny w ziarnistościach"
+      },
+      {
+        "id": "c",
+        "text": "Komórki lacis — tworzenie rąbka szczoteczkowego"
+      },
+      {
+        "id": "d",
+        "text": "Aparat przykłębuszkowy — sprzężenie zwrotne regulujące GFR i ciśnienie tętnicze"
+      },
+      {
+        "id": "e",
+        "text": "Kanalik dalszy — brak udziału w regulacji gospodarki jonowej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Aparat przykłębuszkowy** tworzą **plamka gęsta** kanalika dalszego, **komórki przykłębuszkowe (ziarniste)** tętniczki doprowadzającej wydzielające **reninę** oraz komórki mezangium pozakłębuszkowego (lacis). Plamka gęsta monitoruje stężenie **NaCl** w płynie kanalikowym i przez **sprzężenie kanalikowo-kłębuszkowe** oraz układ **RAA** reguluje **GFR** i ciśnienie tętnicze. **Aldosteron** działa na kanalik dalszy i zbiorczy, a **rąbek szczoteczkowy** ma kanalik bliższy.",
+    "subtheme_label": "Aparat przykłębuszkowy i kanaliki nerkowe",
+    "source_code": "HISLEK-e2026-1-866",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-07",
+    "text": "Chrząstka włóknista będzie obecna w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Małżowinie usznej"
+      },
+      {
+        "id": "b",
+        "text": "Nagłośni"
+      },
+      {
+        "id": "c",
+        "text": "Chrząstkach nosa"
+      },
+      {
+        "id": "d",
+        "text": "Tchawicy"
+      },
+      {
+        "id": "e",
+        "text": "Krążkach międzykręgowych"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Chrząstka włóknista** zawiera grube pęczki **kolagenu typu I** obok typu II, ma skąpą, kwasochłonną macierz i chondrocyty ułożone w **rzędach** między włóknami; nie ma prawdziwej ochrzęstnej. Występuje w **krążkach międzykręgowych** (pierścień włóknisty), **spojeniu łonowym**, **łąkotkach**, obrąbkach stawowych i przyczepach ścięgien do kości. Małżowina uszna i nagłośnia to chrząstka **sprężysta**, a chrząstki nosa i pierścienie tchawicy — chrząstka **szklista**.",
+    "subtheme_label": "Chrząstka włóknista",
+    "source_code": "HISLEK-e2026-1-867",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Fizjologiczną i zarazem główną funkcją grasicy jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Produkcja hormonów steroidowych"
+      },
+      {
+        "id": "b",
+        "text": "Filtracja limfy"
+      },
+      {
+        "id": "c",
+        "text": "Tolerancja centralna i zapobieganie autoagresji"
+      },
+      {
+        "id": "d",
+        "text": "Magazynowanie żelaza"
+      },
+      {
+        "id": "e",
+        "text": "Synteza przeciwciał"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Grasica jest **centralnym (pierwotnym)** narządem limfatycznym, w którym dojrzewają limfocyty **T**. W korze zachodzi **selekcja pozytywna** — przeżywają tymocyty rozpoznające własne MHC; na granicy korowo-rdzeniowej i w rdzeniu **selekcja negatywna** eliminuje w apoptozie klony autoreaktywne, czemu sprzyja ekspresja antygenów tkanek obwodowych zależna od **AIRE**. To istota **tolerancji centralnej**. Limfę filtrują węzły chłonne, a przeciwciała wytwarzają plazmocyty narządów obwodowych.",
+    "subtheme_label": "Grasica",
+    "source_code": "HISLEK-e2026-1-868",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Śródsierdzie jest znacznie grubsze w ścianach komór niż przedsionków, ponieważ:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Komory nie uczestniczą w pompowaniu krwi"
+      },
+      {
+        "id": "b",
+        "text": "Przedsionki pompują krew pod większym ciśnieniem niż komory"
+      },
+      {
+        "id": "c",
+        "text": "Komory muszą wytwarzać dużą siłę do pompowania krwi w krążeniu płucnym i systemowym"
+      },
+      {
+        "id": "d",
+        "text": "Przedsionki zawierają więcej włóknistego szkieletu serca"
+      },
+      {
+        "id": "e",
+        "text": "C, D"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Śródsierdzie (myocardium)** to warstwa kardiomiocytów, a jej grubość odzwierciedla obciążenie hemodynamiczne. **Komory** muszą wygenerować ciśnienie tłoczące krew do krążenia płucnego i systemowego, więc ich mięśniówka jest najgrubsza — lewa komora około **trzykrotnie** grubsza od prawej, bo pracuje przeciw wyższym oporom. **Przedsionki** jedynie dopełniają komory pod niskim ciśnieniem. **Szkielet włóknisty** leży na granicy przedsionków i komór i nie zwiększa grubości mięśniówki.",
+    "subtheme_label": "Budowa ściany serca",
+    "source_code": "HISLEK-e2026-1-869",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-04",
+    "text": "Wydzielanie holokrynowe różni się od apokrynowego tym, że w holokrynowym:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Komórka nie traci żadnej części cytoplazmy"
+      },
+      {
+        "id": "b",
+        "text": "Oddziela się tylko fragment szczytowy komórki"
+      },
+      {
+        "id": "c",
+        "text": "Rozpada się cała komórka wydzielnicza"
+      },
+      {
+        "id": "d",
+        "text": "Wydzielina zawsze trafia bezpośrednio do krwi"
+      },
+      {
+        "id": "e",
+        "text": "Uczestniczą w nim tylko komórki śluzowe"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W wydzielaniu **holokrynowym** komórka **rozpada się w całości**, a jej obumarła zawartość staje się wydzieliną — klasycznie w **gruczołach łojowych**; ubytek uzupełniają dzielące się komórki warstwy podstawnej. W **apokrynowym** odrywa się jedynie **szczytowy fragment cytoplazmy** otoczony błoną (gruczoły apokrynowe pachy, wydzielanie tłuszczu mleka). W **merokrynowym (ekrynowym)** wydzielina opuszcza komórkę przez **egzocytozę**, bez utraty cytoplazmy — jak w gruczołach potowych ekrynowych.",
+    "subtheme_label": "Typy wydzielania gruczołów zewnątrzwydzielniczych",
+    "source_code": "HISLEK-e2026-1-870",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Prawidłowa liczba płytek krwi wynosi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "5 000–10 000/μl krwi"
+      },
+      {
+        "id": "b",
+        "text": "20 000–50 000/μl krwi"
+      },
+      {
+        "id": "c",
+        "text": "80 000–100 000/μl krwi"
+      },
+      {
+        "id": "d",
+        "text": "150 000–400 000/μl krwi"
+      },
+      {
+        "id": "e",
+        "text": "800 000–1 200 000/μl krwi"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Prawidłowa liczba płytek krwi to **150 000–400 000/μl**. Powstają przez fragmentację cytoplazmy **megakariocytów** szpiku pod wpływem **trombopoetyny**, żyją **8–10 dni**, a około 1/3 puli jest magazynowana w śledzionie. Spadek poniżej **50 000/μl** grozi krwawieniem po urazie, poniżej **20 000/μl** — krwawieniami samoistnymi. Wartości rzędu miliona odpowiadają **nadpłytkowości**, typowej dla nowotworów mieloproliferacyjnych. Podane niższe zakresy to małopłytkowość.",
+    "subtheme_label": "Płytki krwi",
+    "source_code": "HISLEK-e2026-1-871",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Do katecholamin wydzielanych przez komórki chromochłonne należą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kortyzol i aldosteron"
+      },
+      {
+        "id": "b",
+        "text": "Insulina i glukagon"
+      },
+      {
+        "id": "c",
+        "text": "Prolaktyna i oksytocyna"
+      },
+      {
+        "id": "d",
+        "text": "Epinefryna i norepinefryna"
+      },
+      {
+        "id": "e",
+        "text": "Tyroksyna i trijodotyronina"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Komórki chromochłonne** rdzenia nadnerczy to zmodyfikowane neurony pozazwojowe współczulne, unerwione bezpośrednio przez włókna przedzwojowe. Wydzielają **adrenalinę (epinefrynę, ok. 80%)** i **noradrenalinę**, magazynowane w ziarnistościach barwiących się solami chromu (reakcja chromochłonna). Konwersję noradrenaliny w adrenalinę katalizuje **PNMT**, indukowana wysokim stężeniem **kortyzolu** docierającego z kory krążeniem wrotnym. Kortyzol i aldosteron to steroidy **kory** nadnerczy.",
+    "subtheme_label": "Rdzeń nadnerczy",
+    "source_code": "HISLEK-e2026-1-872",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "U pacjenta z zaburzeniem lękowym zastosowano selektywny inhibitor wychwytu zwrotnego serotoniny (SSRI). Bezpośrednim skutkiem działania tego leku będzie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zmniejszenie stężenia serotoniny przy błonie postsynaptycznej"
+      },
+      {
+        "id": "b",
+        "text": "Zwiększenie stężenia serotoniny w okolicy błony postsynaptycznej"
+      },
+      {
+        "id": "c",
+        "text": "Zahamowanie wszystkich receptorów postsynaptycznych"
+      },
+      {
+        "id": "d",
+        "text": "Całkowite zablokowanie przewodzenia impulsów nerwowych"
+      },
+      {
+        "id": "e",
+        "text": "Zmniejszenie liczby cząsteczek serotoniny w szczelinie synaptycznej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**SSRI** blokują transporter **SERT** w błonie presynaptycznej, odpowiadający za wychwyt zwrotny **serotoniny (5-HT)** ze szczeliny synaptycznej. Neuroprzekaźnik pozostaje w niej dłużej, więc jego stężenie **przy błonie postsynaptycznej rośnie** i wydłuża się pobudzanie receptorów 5-HT. Pełny efekt kliniczny pojawia się dopiero po **2–4 tygodniach**, bo wymaga desensytyzacji autoreceptorów **5-HT1A** i zmian adaptacyjnych, a nie samego natychmiastowego wzrostu stężenia.",
+    "subtheme_label": "Synapsa i neuroprzekaźniki",
+    "source_code": "HISLEK-e2026-1-873",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "U mężczyzny stwierdzono wrodzony brak nasieniowodu. Która struktura zarodkowa najprawdopodobniej rozwinęła się nieprawidłowo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przewód przyśródnerczowy"
+      },
+      {
+        "id": "b",
+        "text": "Przewód śródnerczowy"
+      },
+      {
+        "id": "c",
+        "text": "Omocznia"
+      },
+      {
+        "id": "d",
+        "text": "Moczowód"
+      },
+      {
+        "id": "e",
+        "text": "A, D"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Przewód śródnerczowy (Wolffa)** pod wpływem **testosteronu** komórek Leydiga daje **najądrze, nasieniowód, pęcherzyk nasienny i przewód wytryskowy** — jego wadliwy rozwój tłumaczy wrodzony brak nasieniowodu, klasycznie kojarzony z mutacjami **CFTR**. **Przewód przyśródnerczowy (Müllera)** u mężczyzn zanika pod wpływem **AMH** komórek Sertolego, a u kobiet tworzy jajowody, macicę i górną pochwę. Moczowód powstaje z pąka moczowodowego, a omocznia daje więzadło pępkowe pośrodkowe.",
+    "subtheme_label": "Rozwój układu moczowo-płciowego",
+    "source_code": "HISLEK-e2026-1-874",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Kortyzol wpływa na metabolizm węglowodanów poprzez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hamowanie glukoneogenezy we wszystkich tkankach i syntezy glikogenu w wątrobie"
+      },
+      {
+        "id": "b",
+        "text": "Zwiększenie wydalania glukozy z moczem"
+      },
+      {
+        "id": "c",
+        "text": "Stymulowanie glukoneogenezy w wielu komórkach i syntezy glikogenu w wątrobie"
+      },
+      {
+        "id": "d",
+        "text": "Blokowanie syntezy glikogenu w wątrobie"
+      },
+      {
+        "id": "e",
+        "text": "Przekształcanie się bezpośrednio w insulinę"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Kortyzol** z **warstwy pasmowatej** kory nadnerczy działa **katabolicznie i hiperglikemizująco**: nasila **glukoneogenezę**, dostarczając substratów przez proteolizę mięśni i lipolizę, zwiększa **syntezę glikogenu** w wątrobie i osłabia obwodowy wychwyt glukozy, wywołując insulinooporność. Efektem jest wzrost glikemii — stąd **cukrzyca posteroidowa** i obraz **zespołu Cushinga** (otyłość centralna, rozstępy, osteoporoza). Cukromocz jest wtórny do hiperglikemii, a nie efektem pierwotnym.",
+    "subtheme_label": "Hormony kory nadnerczy",
+    "source_code": "HISLEK-e2026-1-875",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie prawdziwe dotyczące kolejności elementów bariery powietrze–krew od strony wnętrza pęcherzyka:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Śródbłonek → surfaktant → pneumocyt typu II → błona podstawna śródbłonka naczynia włosowatego"
+      },
+      {
+        "id": "b",
+        "text": "Kolagen → makrofag → surfaktant → erytrocyt"
+      },
+      {
+        "id": "c",
+        "text": "Błona podstawna śródbłonka → surfaktant → pneumocyt typu I → błona podstawna śródbłonka naczynia włosowatego"
+      },
+      {
+        "id": "d",
+        "text": "Surfaktant → wypustka cytoplazmy pneumocytu typu I → błona podstawna nabłonka pęcherzyka → błona podstawna śródbłonka naczynia włosowatego"
+      },
+      {
+        "id": "e",
+        "text": "Pneumocyt typu II → chrząstka → błona podstawna nabłonka → mięsień gładki"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Idąc od światła pęcherzyka: **surfaktant** → cienka **wypustka cytoplazmy pneumocytu typu I** → **błona podstawna nabłonka** (zwykle zlana z błoną podstawną śródbłonka) → **śródbłonek** naczynia włosowatego. Całość ma zaledwie **0,2–0,5 μm**, co pozwala na szybką dyfuzję **O2 i CO2** zgodnie z prawem Ficka. **Surfaktant** — głównie fosfatydylocholina z białkami SP-A, SP-B, SP-C i SP-D — obniża napięcie powierzchniowe; jego niedobór u wcześniaków wywołuje **RDS**.",
+    "subtheme_label": "Bariera powietrze-krew",
+    "source_code": "HISLEK-e2026-1-876",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Wydzielanie aldosteronu pobudzane jest przez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Spadek stężenia K+ w osoczu"
+      },
+      {
+        "id": "b",
+        "text": "Spadek stężenia Na+ w cytoplazmie erytrocytów"
+      },
+      {
+        "id": "c",
+        "text": "Wzrost stężenia K+ w osoczu"
+      },
+      {
+        "id": "d",
+        "text": "Spadek stężenia glukozy w jelicie"
+      },
+      {
+        "id": "e",
+        "text": "Wzrost stężenia bilirubiny"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Aldosteron powstaje w **warstwie kłębkowatej** kory nadnerczy, a jego wydzielanie pobudzają dwa główne bodźce: **angiotensyna II** (układ RAA, uruchamiany spadkiem perfuzji nerki) oraz bezpośrednio **hiperkaliemia**, czyli **wzrost stężenia K+ w osoczu**. W kanaliku dalszym i cewce zbiorczej hormon zwiększa **reabsorpcję Na+** i wody oraz **wydalanie K+ i H+**, przywracając normokaliemię. **ACTH** ma tu znaczenie jedynie pomocnicze, w przeciwieństwie do kortyzolu.",
+    "subtheme_label": "Regulacja wydzielania aldosteronu",
+    "source_code": "HISLEK-e2026-1-877",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Tkanka łączna galaretowata w pępowinie to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Galareta Virchowa"
+      },
+      {
+        "id": "b",
+        "text": "Galareta Whartona"
+      },
+      {
+        "id": "c",
+        "text": "Galareta Ranviera"
+      },
+      {
+        "id": "d",
+        "text": "Galareta Haversa"
+      },
+      {
+        "id": "e",
+        "text": "Galareta Meissnera"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Galareta Whartona** to tkanka łączna galaretowata (śluzowata) wypełniająca pępowinę: uboga w komórki (fibroblasty), z obfitą macierzą bogatą w **kwas hialuronowy** i nielicznymi włóknami kolagenowymi. Jej sprężystość chroni **żyłę i dwie tętnice pępowinowe** przed zagięciem i uciskiem podczas ruchów płodu. Stanowi też cenne źródło mezenchymalnych komórek macierzystych. Nazwiska w pozostałych opcjach opisują zupełnie inne struktury: przewężenia Ranviera, kanały Haversa, ciałka Meissnera.",
+    "subtheme_label": "Tkanka łączna galaretowata",
+    "source_code": "HISLEK-e2026-1-878",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Przestrzeń podtwardówkowa znajduje się między:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Oponą miękką a mózgiem"
+      },
+      {
+        "id": "b",
+        "text": "Oponą twardą a pajęczą"
+      },
+      {
+        "id": "c",
+        "text": "Oponą pajęczą a miękką"
+      },
+      {
+        "id": "d",
+        "text": "Kością a mięśniem"
+      },
+      {
+        "id": "e",
+        "text": "Komorami mózgu"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Przestrzeń podtwardówkowa** leży między **oponą twardą a pajęczynówką** i fizjologicznie jest jedynie przestrzenią potencjalną (szczelinową). Rozrywają się w niej **żyły mostowe**, dając **krwiaka podtwardówkowego** — typowo u osób starszych i po niewielkim urazie, o powolnym narastaniu i sierpowatym kształcie w tomografii. Między pajęczynówką a oponą miękką biegnie **przestrzeń podpajęczynówkowa** wypełniona **płynem mózgowo-rdzeniowym** i naczyniami mózgu.",
+    "subtheme_label": "Przestrzenie oponowe",
+    "source_code": "HISLEK-e2026-1-879",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Podczas operacji szyi usunięto fragment kości gnykowej obejmujący róg większy. Z którego łuku gardłowego rozwinęła się ta struktura?",
+    "options": [
+      {
+        "id": "a",
+        "text": "I łuk gardłowy"
+      },
+      {
+        "id": "b",
+        "text": "II łuk gardłowy"
+      },
+      {
+        "id": "c",
+        "text": "III łuk gardłowy"
+      },
+      {
+        "id": "d",
+        "text": "IV łuk gardłowy"
+      },
+      {
+        "id": "e",
+        "text": "VI łuk gardłowy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Z chrząstki **III łuku gardłowego** powstają **róg większy i dolna część trzonu kości gnykowej**; łuk ten daje też mięsień rylcowo-gardłowy i nerw **IX (językowo-gardłowy)**, a z jego kieszonki endodermalnej rozwijają się **grasica i dolne przytarczyce**. **Róg mniejszy i górna część trzonu** pochodzą z **II łuku** (nerw VII). I łuk daje żuchwę, młoteczek i kowadełko (nerw V3), a łuki **IV i VI** — chrząstki krtani unerwione przez nerw X.",
+    "subtheme_label": "Łuki gardłowe",
+    "source_code": "HISLEK-e2026-1-880",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-16",
+    "text": "Wskaż zdanie prawdziwe dotyczące ciałek Paciniego:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Odpowiadają za odbiór światła"
+      },
+      {
+        "id": "b",
+        "text": "Są mechanoreceptorami odpowiedzialnymi za odczuwanie temperatury"
+      },
+      {
+        "id": "c",
+        "text": "Są mechanoreceptorami odpowiadającymi za ucisk i wibrację"
+      },
+      {
+        "id": "d",
+        "text": "Są gruczołami potowymi ekrynowymi"
+      },
+      {
+        "id": "e",
+        "text": "Występują wyłącznie w naskórku"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Ciałka blaszkowate Paciniego** to duże, otorbione mechanoreceptory: koncentryczne blaszki komórek okołonerwowych układają się wokół zakończenia nerwowego niczym **przekrój cebuli**. Leżą w **tkance podskórnej**, okostnej, torebkach stawowych i krezce. Adaptują się **bardzo szybko**, dzięki czemu odbierają **ucisk i wibrację** o wysokiej częstotliwości. Dotyk powierzchowny rejestrują ciałka **Meissnera** w brodawkach skóry właściwej, a temperaturę i ból — wolne zakończenia nerwowe.",
+    "subtheme_label": "Receptory czuciowe skóry",
+    "source_code": "HISLEK-e2026-1-881",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-19",
+    "text": "U pacjenta z guzem gruczołu krokowego dochodzi do ucisku struktur powstających w obrębie prostaty z połączenia końcowych odcinków baniek nasieniowodów z przewodami pęcherzyków nasiennych. Które struktury są opisywane w tej sytuacji i gdzie prawidłowo uchodzą?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przewody odprowadzające jądra — uchodzą do przewodu najądrza w obrębie jego głowy"
+      },
+      {
+        "id": "b",
+        "text": "Przewody najądrza — uchodzą do początkowego odcinka nasieniowodu"
+      },
+      {
+        "id": "c",
+        "text": "Bańki nasieniowodów — uchodzą do części sterczowej cewki moczowej po połączeniu z przewodami gruczołu krokowego"
+      },
+      {
+        "id": "d",
+        "text": "Przewody wytryskowe — uchodzą do części sterczowej cewki moczowej"
+      },
+      {
+        "id": "e",
+        "text": "Przewody pęcherzyków nasiennych — uchodzą bezpośrednio do części sterczowej cewki moczowej bez udziału nasieniowodów"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Połączenie **bańki nasieniowodu** z **przewodem pęcherzyka nasiennego** tworzy **przewód wytryskowy**, który przebija gruczoł krokowy i uchodzi na **wzgórku nasiennym w części sterczowej cewki moczowej**. Guz stercza może go uciskać, zaburzając ejakulację. **Przewodziki odprowadzające jądra** uchodzą do przewodu najądrza w jego głowie, a liczne przewody wyprowadzające prostaty otwierają się osobno wokół wzgórka — nie łączą się z bańkami nasieniowodów.",
+    "subtheme_label": "Drogi wyprowadzające nasienie",
+    "source_code": "HISLEK-e2026-1-882",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-06",
+    "text": "U dorosłych tkanka tłuszczowa brunatna występuje m.in.:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyłącznie w skórze właściwej"
+      },
+      {
+        "id": "b",
+        "text": "Wyłącznie w szpiku kostnym"
+      },
+      {
+        "id": "c",
+        "text": "Wyłącznie w kończynach dolnych"
+      },
+      {
+        "id": "d",
+        "text": "Tylko w mięśniach szkieletowych"
+      },
+      {
+        "id": "e",
+        "text": "Wokół nerek, nadnerczy, aorty i w śródpiersiu"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "U dorosłych **tkanka tłuszczowa brunatna** utrzymuje się w niewielkich ilościach **wokół nerek i nadnerczy, dużych naczyń (aorty), w śródpiersiu**, okolicy nadobojczykowej i karkowej — jest wykrywalna w badaniu **PET** jako obszary wzmożonego wychwytu FDG. Jej adipocyty są **wielopęcherzykowe**, mają liczne mitochondria i bogate unaczynienie. Białko rozprzęgające **UCP-1 (termogenina)** rozprasza gradient protonowy, produkując **ciepło** zamiast ATP — kluczowe u noworodków.",
+    "subtheme_label": "Tkanka tłuszczowa brunatna",
+    "source_code": "HISLEK-e2026-1-883",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Nabłonek pokrywający powierzchnię błony śluzowej żołądka to nabłonek:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Jednowarstwowy walcowaty"
+      },
+      {
+        "id": "b",
+        "text": "Jednowarstwowy płaski"
+      },
+      {
+        "id": "c",
+        "text": "Wielowarstwowy płaski nierogowaciejący"
+      },
+      {
+        "id": "d",
+        "text": "Jednowarstwowy sześcienny"
+      },
+      {
+        "id": "e",
+        "text": "Przejściowy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Powierzchnię błony śluzowej żołądka i dołeczków żołądkowych pokrywa **nabłonek jednowarstwowy walcowaty**, zbudowany z **komórek śluzowych powierzchownych** wydzielających gęsty, zasadowy śluz z **wodorowęglanami** (bariera śluzówkowo-wodorowęglanowa). Odnawiają się co 3–5 dni z komórek macierzystych szyjki gruczołu. Nabłonek **wielowarstwowy płaski nierogowaciejący** kończy się ostro na wpuście; jego zastąpienie nabłonkiem jelitowym w przełyku to metaplazja Barretta. Nabłonek **przejściowy** wyściela drogi moczowe.",
+    "subtheme_label": "Błona śluzowa żołądka",
+    "source_code": "HISLEK-e2026-1-884",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Główna funkcja sieci podbłonowej erytrocytu to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Synteza ATP"
+      },
+      {
+        "id": "b",
+        "text": "Synteza białek"
+      },
+      {
+        "id": "c",
+        "text": "Stabilizacja błony i elastyczność komórki"
+      },
+      {
+        "id": "d",
+        "text": "Magazynowanie jonów wapnia"
+      },
+      {
+        "id": "e",
+        "text": "Produkcja hemoglobiny"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Sieć podbłonowa erytrocytu to szkielet zbudowany ze **spektryny α i β**, **ankiryny**, **aktyny** i **białka pasma 4.1**, zakotwiczony w błonie przez **białko pasma 3** i **glikoforynę**. Nadaje krwince kształt **dwuwklęsłego dysku** i **odkształcalność** niezbędną przy przeciskaniu się przez kapilary oraz zatoki śledziony. Mutacje spektryny lub ankiryny dają **sferocytozę wrodzoną** z hemolizą. Dojrzały erytrocyt nie ma jądra ani organelli, więc nie syntetyzuje białek ani hemoglobiny.",
+    "subtheme_label": "Budowa erytrocytu",
+    "source_code": "HISLEK-e2026-1-885",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Jodowane reszty tyrozynowe tyreoglobuliny są prekursorami:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kalcytoniny i PTH"
+      },
+      {
+        "id": "b",
+        "text": "Insuliny i glukagonu"
+      },
+      {
+        "id": "c",
+        "text": "Melatoniny i serotoniny"
+      },
+      {
+        "id": "d",
+        "text": "T3 i T4"
+      },
+      {
+        "id": "e",
+        "text": "Adrenaliny i noradrenaliny"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W koloidzie pęcherzyków tarczycy **tyreoperoksydaza** jodowa reszty **tyrozynowe tyreoglobuliny**, tworząc **MIT** i **DIT**. Ich sprzęganie daje **T3 (MIT+DIT)** i **T4 (DIT+DIT)**, uwalniane do krwi po endocytozie koloidu i strawieniu tyreoglobuliny w lizosomach tyreocytów. **Kalcytoninę** wydzielają komórki C (przypęcherzykowe), **PTH** — komórki główne przytarczyc, a katecholaminy powstają wprawdzie z tyrozyny, ale w rdzeniu nadnerczy i bez udziału tyreoglobuliny.",
+    "subtheme_label": "Tarczyca i synteza hormonów",
+    "source_code": "HISLEK-e2026-1-886",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Główną funkcją śluzu pokrywającego błonę śluzową żołądka jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Trawienie tłuszczów"
+      },
+      {
+        "id": "b",
+        "text": "Wchłanianie witamin"
+      },
+      {
+        "id": "c",
+        "text": "Ochrona nabłonka przed działaniem kwasu żołądkowego"
+      },
+      {
+        "id": "d",
+        "text": "Produkcja enzymów trawiennych"
+      },
+      {
+        "id": "e",
+        "text": "A, C"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Komórki śluzowe powierzchowne i szyjkowe wydzielają gęsty, nierozpuszczalny **żel śluzowy** wysycony **HCO3-**, dzięki czemu tuż przy nabłonku panuje pH bliskie **7**, mimo pH około **2** w świetle żołądka. Chroni to komórki przed **HCl i pepsyną**. Uszkodzenie bariery przez **Helicobacter pylori**, **NLPZ** (zahamowanie COX-1 i syntezy prostaglandyn) lub alkohol prowadzi do **choroby wrzodowej**. Trawienie prowadzą enzymy, a witaminy wchłaniane są w jelicie cienkim.",
+    "subtheme_label": "Bariera śluzowa żołądka",
+    "source_code": "HISLEK-e2026-1-887",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Karbaminohemoglobina to hemoglobina związana z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "O2"
+      },
+      {
+        "id": "b",
+        "text": "CO2"
+      },
+      {
+        "id": "c",
+        "text": "Fe3+"
+      },
+      {
+        "id": "d",
+        "text": "Na+"
+      },
+      {
+        "id": "e",
+        "text": "K+"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Karbaminohemoglobina** powstaje przez odwracalne wiązanie **CO2** z wolnymi **grupami aminowymi** łańcuchów globiny — a więc z częścią białkową, nie z żelazem hemu. W tej postaci transportowanych jest około **20–25%** dwutlenku węgla; około **70%** przenoszone jest jako **HCO3-** w osoczu, reszta rozpuszczona fizycznie. Hemoglobina odtlenowana wiąże CO2 chętniej — to **efekt Haldane'a**. Z Fe2+ hemu wiąże się **O2**, a **CO** około 200 razy silniej, dając karboksyhemoglobinę.",
+    "subtheme_label": "Transport gazów przez hemoglobinę",
+    "source_code": "HISLEK-e2026-1-888",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Zrąb szpiku kostnego zbudowany jest z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tkanki kostnej splotowatej"
+      },
+      {
+        "id": "b",
+        "text": "Tkanki łącznej siateczkowej"
+      },
+      {
+        "id": "c",
+        "text": "Tkanki chrzęstnej"
+      },
+      {
+        "id": "d",
+        "text": "B, C"
+      },
+      {
+        "id": "e",
+        "text": "A, C"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Zrąb szpiku tworzy **tkanka łączna siateczkowata**: komórki siateczki (retikularne) oraz **włókna srebrochłonne z kolagenu typu III** budują trójwymiarową sieć wypełnioną komórkami krwiotwórczymi, adipocytami i **zatokami** o nieciągłym śródbłonku, przez który dojrzałe krwinki wchodzą do krążenia. Komórki zrębu tworzą **nisze** wydzielające **SCF** i **CXCL12**, sterujące samoodnową krwiotwórczych komórek macierzystych. Tkanka kostna i chrzęstna nie wchodzą w skład zrębu krwiotwórczego.",
+    "subtheme_label": "Szpik kostny",
+    "source_code": "HISLEK-e2026-1-889",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Enzym katalizujący powstawanie jonów H+ i HCO3- w komórkach okładzinowych to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pepsyna"
+      },
+      {
+        "id": "b",
+        "text": "Amylaza"
+      },
+      {
+        "id": "c",
+        "text": "Lipaza"
+      },
+      {
+        "id": "d",
+        "text": "Anhydraza węglanowa"
+      },
+      {
+        "id": "e",
+        "text": "Katalaza"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "W komórkach okładzinowych **anhydraza węglanowa** katalizuje reakcję CO2 + H2O do **H2CO3**, dysocjującego na **H+ i HCO3-**. Protony pompuje do światła gruczołu **H+/K+-ATPaza** kanalików wewnątrzkomórkowych (cel omeprazolu), a wodorowęglany wracają do krwi w wymianie za Cl-, dając poposiłkową **falę zasadową**. Komórki te wydzielają też **czynnik wewnętrzny** niezbędny do wchłaniania **witaminy B12**. Pepsynogen produkują komórki główne, a amylazę i lipazę — ślinianki i trzustka.",
+    "subtheme_label": "Komórki okładzinowe żołądka",
+    "source_code": "HISLEK-e2026-1-890",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Komórki główne przytarczyc wydzielają:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kalcytoninę"
+      },
+      {
+        "id": "b",
+        "text": "Melatoninę"
+      },
+      {
+        "id": "c",
+        "text": "Tyroksynę"
+      },
+      {
+        "id": "d",
+        "text": "PTH"
+      },
+      {
+        "id": "e",
+        "text": "Trijodotyroninę"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Komórki główne przytarczyc** wydzielają **parathormon (PTH)** w odpowiedzi na spadek stężenia **Ca2+**, wykrywany przez receptor wapniowy **CaSR**. PTH podnosi kalcemię: nasila **resorpcję kostną** (pośrednio, przez pobudzenie ekspresji **RANKL** w osteoblastach), zwiększa **reabsorpcję Ca2+** w kanaliku dalszym przy jednoczesnej fosfaturii i pobudza syntezę **kalcytriolu** w nerce. Działa antagonistycznie do **kalcytoniny** komórek C tarczycy. Drugim typem komórek przytarczyc są komórki oksyfilne.",
+    "subtheme_label": "Przytarczyce",
+    "source_code": "HISLEK-e2026-1-891",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Ślinianki przyuszne są zbudowane głównie z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cewek śluzowych"
+      },
+      {
+        "id": "b",
+        "text": "Pęcherzyków śluzowych"
+      },
+      {
+        "id": "c",
+        "text": "Pęcherzyków surowiczych"
+      },
+      {
+        "id": "d",
+        "text": "Pęcherzyków chromofobowych"
+      },
+      {
+        "id": "e",
+        "text": "B, D"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Ślinianka przyuszna** jest gruczołem czysto **surowiczym**: tworzą ją pęcherzyki o komórkach z kwasochłonnymi **ziarnistościami zymogenu** w części szczytowej i zasadochłonną cytoplazmą podstawną (obfita szorstka siateczka). Produkuje wodnistą ślinę bogatą w **amylazę**. Ślinianka **podżuchwowa** jest mieszana z przewagą surowiczej (**półksiężyce Gianuzziego**), a **podjęzykowa** — mieszana z przewagą śluzowej. Przez miąższ przyusznicy przebiega nerw **twarzowy**, narażony w parotidektomii.",
+    "subtheme_label": "Gruczoły ślinowe",
+    "source_code": "HISLEK-e2026-1-892",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie fałszywe dotyczące pierścieni tchawicy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "W tchawicy występuje około 16-20 pierścieni chrzęstnych"
+      },
+      {
+        "id": "b",
+        "text": "Pierścienie tchawicy mają kształt podkowiasty"
+      },
+      {
+        "id": "c",
+        "text": "Pierścienie tchawicy utrzymują światło tchawicy stale szerokie"
+      },
+      {
+        "id": "d",
+        "text": "Pierścienie tchawicy zapobiegają zapadaniu się tchawicy"
+      },
+      {
+        "id": "e",
+        "text": "Pierścienie tchawicy są pełnymi, zamkniętymi pierścieniami kostnymi"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Zdanie fałszywe: pierścienie tchawicy nie są ani kostne, ani zamknięte. To **16–20 podkowiastych chrząstek szklistych**, otwartych ku tyłowi, gdzie ich końce łączy **mięsień tchawiczy** i tkanka łączna, tworząc ścianę błoniastą przylegającą do przełyku. Taka budowa utrzymuje światło **stale drożne** i zapobiega zapadaniu się tchawicy przy wdechu, a zarazem pozwala przełykowi rozszerzać się podczas połykania i umożliwia zwężenie światła przy kaszlu.",
+    "subtheme_label": "Budowa tchawicy",
+    "source_code": "HISLEK-e2026-1-893",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Szkielet serca pomaga w koordynacji rytmu pracy serca, ponieważ:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przewodzi impulsy elektryczne szybciej niż zmodyfikowane kardiomiocyty układu przewodzącego."
+      },
+      {
+        "id": "b",
+        "text": "Umożliwia swobodne szerzenie się pobudzenia bezpośrednio z przedsionków do komór przez całą ich powierzchnię."
+      },
+      {
+        "id": "c",
+        "text": "Stanowi główne miejsce powstawania impulsów elektrycznych inicjujących skurcz serca."
+      },
+      {
+        "id": "d",
+        "text": "Izoluje elektrycznie mięśniówkę przedsionków od mięśniówki komór, ograniczając przewodzenie pobudzenia do wyspecjalizowanego układu przewodzącego."
+      },
+      {
+        "id": "e",
+        "text": "Zastępuje układ przewodzący serca w przekazywaniu impulsów między przedsionkami a komorami."
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Szkielet włóknisty serca** — pierścienie i trójkąty włókniste oraz przegroda błoniasta — zbudowany z gęstej tkanki łącznej, stanowi **izolator elektryczny** między mięśniówką przedsionków a komór. Jedyną drogą przejścia pobudzenia jest **pęczek Hisa**, co wraz z **opóźnieniem w węźle przedsionkowo-komorowym** pozwala komorom napełnić się przed skurczem. Rozrusznikiem serca jest węzeł **zatokowo-przedsionkowy**, a szkielet daje ponadto przyczep zastawkom i kardiomiocytom.",
+    "subtheme_label": "Szkielet serca i układ przewodzący",
+    "source_code": "HISLEK-e2026-1-894",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Adrenalina jest odpowiedzialna za:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Zwężenie oskrzeli"
+      },
+      {
+        "id": "b",
+        "text": "Zmniejszenie częstości akcji serca"
+      },
+      {
+        "id": "c",
+        "text": "Zahamowanie przepływu w mięśniach szkieletowych"
+      },
+      {
+        "id": "d",
+        "text": "Zwiększenie częstości akcji serca i rozszerzenie oskrzeli"
+      },
+      {
+        "id": "e",
+        "text": "Obniżenie stężenia glukozy we krwi przez hamowanie glikogenolizy"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Adrenalina** wyzwala reakcję „walcz albo uciekaj”: przez receptory **β1** serca zwiększa **częstość rytmu** (efekt chronotropowy dodatni) i kurczliwość, przez **β2** rozszerza **oskrzela** oraz naczynia mięśni szkieletowych, a przez **α1** obkurcza naczynia skóry i trzewi. Metabolicznie nasila **glikogenolizę** i lipolizę, podnosząc glikemię. Ten profil uzasadnia jej zastosowanie we **wstrząsie anafilaktycznym**, ciężkim skurczu oskrzeli i zatrzymaniu krążenia.",
+    "subtheme_label": "Działanie katecholamin",
+    "source_code": "HISLEK-e2026-1-895",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Warstwa splotowata zewnętrzna siatkówki zawiera głównie:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Perykariony komórek zwojowych i komórki Müllera"
+      },
+      {
+        "id": "b",
+        "text": "Ciała komórek fotoreceptorowych i aksony komórek fotoreceptorowych"
+      },
+      {
+        "id": "c",
+        "text": "Nabłonek barwnikowy siatkówki i czopki"
+      },
+      {
+        "id": "d",
+        "text": "Wyłącznie zakończenia komórek zwojowych"
+      },
+      {
+        "id": "e",
+        "text": "Aksony komórek fotoreceptorowych oraz dendryty neuronów warstwy jądrowej wewnętrznej"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Warstwa splotowata zewnętrzna** to strefa **synaps**: kontaktują się w niej **aksony fotoreceptorów** — pręcików i czopków — z **dendrytami komórek dwubiegunowych i horyzontalnych**, których perykariony leżą w **warstwie jądrowej wewnętrznej**. Same perykariony fotoreceptorów tworzą warstwę jądrową **zewnętrzną**. Drugie piętro synaps, między komórkami dwubiegunowymi a zwojowymi, leży w warstwie splotowatej **wewnętrznej**; aksony komórek zwojowych tworzą nerw wzrokowy.",
+    "subtheme_label": "Warstwy siatkówki",
+    "source_code": "HISLEK-e2026-1-896",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Kliniczne znaczenie integralności struktur oddzielających przychłonkę od endolimfy wynika przede wszystkim z faktu, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Oba płyny posiadają niemal identyczny skład elektrolitowy"
+      },
+      {
+        "id": "b",
+        "text": "Przychłonka występuje wyłącznie w błędniku błoniastym"
+      },
+      {
+        "id": "c",
+        "text": "Endolimfa i przychłonka nie uczestniczą w transdukcji bodźców słuchowych"
+      },
+      {
+        "id": "d",
+        "text": "Odmienny skład jonowy obu płynów jest warunkiem prawidłowego funkcjonowania komórek rzęsatych ucha wewnętrznego"
+      },
+      {
+        "id": "e",
+        "text": "Ich oddzielenie ma znaczenie wyłącznie dla funkcji ucha środkowego"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Przychłonka** wypełnia błędnik kostny i przypomina płyn zewnątrzkomórkowy — dużo **Na+**, mało K+. **Endolimfa** błędnika błoniastego jest unikatowa: bogata w **K+**, uboga w Na+, wytwarzana przez **prążek naczyniowy** i odpowiadająca za dodatni **potencjał śródślimakowy (+80 mV)**. Ten gradient napędza napływ K+ i depolaryzację **komórek rzęsatych** po otwarciu kanałów mechanotransdukcyjnych. Zmieszanie płynów, np. przy pęknięciu błony Reissnera, znosi transdukcję i powoduje głuchotę.",
+    "subtheme_label": "Płyny ucha wewnętrznego",
+    "source_code": "HISLEK-e2026-1-897",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Wrzecionko ślimaka zawiera struktury klinicznie istotne dla przewodzenia impulsów słuchowych, w tym:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Komórki nabłonka rogówki i melanocyty oraz naczynia krwionośne"
+      },
+      {
+        "id": "b",
+        "text": "Włókna nerwu twarzowego i komórki Schwanna nerwu VIII skupione z zwój spiralny"
+      },
+      {
+        "id": "c",
+        "text": "Naczynia krwionośne oraz perykariony i wypustki gałęzi słuchowej VIII nerwu czaszkowego skupione w zwój spiralny"
+      },
+      {
+        "id": "d",
+        "text": "Wyłącznie przychłonka"
+      },
+      {
+        "id": "e",
+        "text": "B, D"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Wrzecionko (modiolus)** to kostny stożek stanowiący oś ślimaka. Biegną w nim **naczynia krwionośne** oraz **perykariony neuronów dwubiegunowych** tworzących **zwój spiralny (Cortiego)** wraz z ich wypustkami: obwodowymi — do komórek rzęsatych narządu spiralnego, i ośrodkowymi — budującymi **gałąź ślimakową nerwu VIII**. To pierwszy neuron drogi słuchowej i cel stymulacji przez **implant ślimakowy**. Komórki rogówki i melanocyty należą do struktur oka.",
+    "subtheme_label": "Ślimak i droga słuchowa",
+    "source_code": "HISLEK-e2026-1-898",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Która sekwencja interleukin została prawidłowo uporządkowana według ich dominującego wpływu na kolejne etapy hematopoezy i odpowiedzi immunologicznej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IL-3 → proliferacja komórek progenitorowych; IL-4 → aktywacja limfocytów B; IL-5 → różnicowanie eozynofilii"
+      },
+      {
+        "id": "b",
+        "text": "IL-5 → proliferacja komórek progenitorowych; IL-3 → aktywacja limfocytów B; IL-4 → różnicowanie eozynofilii"
+      },
+      {
+        "id": "c",
+        "text": "IL-2 → różnicowanie eozynofilii; IL-4 → proliferacja komórek progenitorowych; IL-5 → aktywacja limfocytów B"
+      },
+      {
+        "id": "d",
+        "text": "IL-1 → różnicowanie eozynofilii; IL-3 → aktywacja limfocytów B; IL-2 → proliferacja bazofilii"
+      },
+      {
+        "id": "e",
+        "text": "A, B"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**IL-3** (multi-CSF), wytwarzana głównie przez limfocyty T, pobudza **proliferację wielopotencjalnych komórek progenitorowych** szpiku. **IL-4** z limfocytów **Th2** aktywuje limfocyty **B** i napędza przełączanie klas na **IgE/IgG1**. **IL-5** steruje **różnicowaniem i aktywacją eozynofilów** — stąd leki anty-IL-5 w ciężkiej astmie eozynofilowej. **IL-2** jest głównym czynnikiem wzrostu limfocytów T, a **IL-1** cytokiną prozapalną i endogennym pirogenem.",
+    "subtheme_label": "Cytokiny w hematopoezie",
+    "source_code": "HISLEK-e2026-1-899",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Które zestawienie immunoglobulina–funkcja jest nieprawidłowe?",
+    "options": [
+      {
+        "id": "a",
+        "text": "IgA – odporność błon śluzowych"
+      },
+      {
+        "id": "b",
+        "text": "IgM – silna aktywacja dopełniacza"
+      },
+      {
+        "id": "c",
+        "text": "IgE – reakcje alergiczne"
+      },
+      {
+        "id": "d",
+        "text": "IgD – receptor antygenowy limfocytu B"
+      },
+      {
+        "id": "e",
+        "text": "IgM – główna immunoglobulina wydzielin śluzowych"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Główną immunoglobuliną wydzielin śluzowych jest **IgA**, transportowana przez nabłonek jako **dimer** połączony z **komponentem wydzielniczym** chroniącym przed proteazami (ślina, łzy, mleko i siara). **IgM** to **pentamer**, pierwsza pojawia się w odpowiedzi pierwotnej i **najsilniej aktywuje dopełniacz** drogą klasyczną, ale nie jest przeciwciałem wydzielniczym. **IgE** wiąże się z mastocytami w alergii i inwazjach pasożytniczych, a **IgD** wraz z IgM tworzy receptor dziewiczych limfocytów B.",
+    "subtheme_label": "Klasy immunoglobulin",
+    "source_code": "HISLEK-e2026-1-900",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Melanocyty obecne w naczyniówce oka pełnią przede wszystkim funkcję:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Produkcji cieczy wodnistej"
+      },
+      {
+        "id": "b",
+        "text": "Syntezy kolagenu typu II"
+      },
+      {
+        "id": "c",
+        "text": "Pochłaniania światła i zapobiegania jego odbiciom"
+      },
+      {
+        "id": "d",
+        "text": "Tworzenia włókien obwódkowych soczewki"
+      },
+      {
+        "id": "e",
+        "text": "Regulacji ciśnienia śródgałkowego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Naczyniówka to silnie unaczyniona i barwnikowa część błony naczyniowej, odżywiająca zewnętrzne warstwy siatkówki. Zawarta w melanocytach **melanina pochłania nadmiar światła**, eliminując jego rozpraszanie i odbicia wewnątrz gałki, co zapewnia ostry, kontrastowy obraz — podobnie jak zaczernione wnętrze aparatu fotograficznego. Brak barwnika w **bielactwie** daje światłowstręt i oczopląs. Ciecz wodnistą wytwarzają wyrostki rzęskowe, a obwódkę rzęskową tworzy ciało rzęskowe.",
+    "subtheme_label": "Błona naczyniowa gałki ocznej",
+    "source_code": "HISLEK-e2026-1-901",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-19",
+    "text": "Bariera krew–jądro jest tworzona głównie przez:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Desmosomy między spermatydami"
+      },
+      {
+        "id": "b",
+        "text": "Połączenia szczelinowe między komórkami Leydiga"
+      },
+      {
+        "id": "c",
+        "text": "Obwódki zamykające między komórkami Sertolego"
+      },
+      {
+        "id": "d",
+        "text": "Błonę podstawną kanalików nasiennych"
+      },
+      {
+        "id": "e",
+        "text": "Komórki mioidalne"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Barierę krew–jądro** tworzą **obwódki zamykające (połączenia ścisłe)** między sąsiednimi **komórkami Sertolego**, dzielące kanalik nasienny na przedział **podstawny** (spermatogonie i wczesne spermatocyty I) oraz **przyświatłowy** (dalsze stadia spermatogenezy). Izolują one komórki **haploidalne**, powstające dopiero w okresie dojrzewania, od układu odpornościowego, chroniąc przed **autoimmunizacją**. Uraz lub zapalenie jądra może przerwać barierę i wyzwolić przeciwciała przeciwplemnikowe.",
+    "subtheme_label": "Kanalik nasienny i bariera krew-jądro",
+    "source_code": "HISLEK-e2026-1-902",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Kobieta po porodzie produkuje prawidłową ilość mleka, ale ma problem z jego wypływem podczas karmienia. Niedobór którego hormonu jest najbardziej prawdopodobny?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Prolaktyny"
+      },
+      {
+        "id": "b",
+        "text": "Estrogenu"
+      },
+      {
+        "id": "c",
+        "text": "Progesteronu"
+      },
+      {
+        "id": "d",
+        "text": "Oksytocyny"
+      },
+      {
+        "id": "e",
+        "text": "Kortyzolu"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Za samą **produkcję mleka** odpowiada **prolaktyna** — tu jest prawidłowa. Za **wypływ** odpowiada **oksytocyna**, wytwarzana w jądrach przykomorowych i nadwzrokowych podwzgórza, a magazynowana w **części nerwowej przysadki**. Drażnienie brodawki uruchamia odruch neurohormonalny: oksytocyna kurczy **komórki mioepitelialne** otaczające pęcherzyki i przewody gruczołu sutkowego (**odruch wyrzutu mleka**). Ten sam hormon obkurcza mięśniówkę macicy w czasie porodu i połogu.",
+    "subtheme_label": "Hormony części nerwowej przysadki",
+    "source_code": "HISLEK-e2026-1-903",
+    "batch_label": "e_hist_lek_2026/1",
+    "source_exam": "Egzamin histologia LEK SUM 2026 (HISLEK e2026-1)",
+    "theme_label": "2026"
+  }
+]

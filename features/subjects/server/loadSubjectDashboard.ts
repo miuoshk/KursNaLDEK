@@ -15,8 +15,8 @@ import {
 import { fetchActiveQuestionsForThemeLabel } from "@/lib/content/fetchThemeLabelQuestions";
 import {
   buildVirtualThemeTopicId,
-  getVirtualThemeTopicsForContentSubject,
   isVirtualThemeTopicId,
+  mergeVirtualThemeDefinitions,
 } from "@/lib/content/virtualThemeTopics";
 
 export type TopicWithProgress = Topic & {
@@ -130,13 +130,21 @@ export async function loadSubjectDashboard(
     }
 
     const viewerTrack = normalizeTrack(subject.track as string) as StudyTrack;
-    const topicRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack).filter(
+    const trackedRows = filterTopicsForTrack(allTopicRows ?? [], viewerTrack);
+    const topicRows = trackedRows.filter(
       (row) => !isVirtualThemeTopicId(row.id as string),
     );
 
     const allTopicIds = topicRows.map((t) => t.id as string);
     const contentSubjectId = getCanonicalContentSubjectId(subjectId);
-    const virtualDefinitions = getVirtualThemeTopicsForContentSubject(contentSubjectId);
+    const virtualDefinitions = mergeVirtualThemeDefinitions(
+      contentSubjectId,
+      trackedRows.map((row) => ({
+        id: row.id as string,
+        name: row.name as string | null,
+        display_order: row.display_order as number | null,
+      })),
+    );
     const virtualQuestionIdsByTopic = new Map<string, string[]>();
     const virtualTopicMeta = new Map<
       string,
@@ -149,6 +157,7 @@ export async function loadSubjectDashboard(
         def.contentSubjectId,
         def.themeLabel,
         viewerTrack,
+        allTopicIds,
       );
       if (themeRows.length === 0) continue;
       const virtualId = buildVirtualThemeTopicId(

@@ -1,6 +1,7 @@
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache";
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
+import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
 
 const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
 
@@ -17,6 +18,9 @@ export function buildKnnpSubjectsList(
   // Per-subject agregaty: liczba topiców i suma pytań (po cached `question_count`).
   const agg = new Map<string, { topicCount: number; questionSum: number }>();
   for (const row of topicRows ?? []) {
+    // Cienie kafelków rocznikowych (np. anatomia-THEME-2026) mają question_count=0
+    // i nie są osobną pulą — inaczej licznik działów / pytań by się dublował.
+    if (isVirtualThemeTopicId(row.id as string)) continue;
     const sid = row.subject_id as string;
     const cur = agg.get(sid) ?? { topicCount: 0, questionSum: 0 };
     cur.topicCount += 1;

@@ -136,6 +136,9 @@ export async function loadSubjectDashboard(
     );
 
     const allTopicIds = topicRows.map((t) => t.id as string);
+    const contentTopicIds = (allTopicRows ?? [])
+      .filter((row) => !isVirtualThemeTopicId(row.id as string))
+      .map((row) => row.id as string);
     const contentSubjectId = getCanonicalContentSubjectId(subjectId);
     const virtualDefinitions = mergeVirtualThemeDefinitions(
       contentSubjectId,
@@ -157,7 +160,7 @@ export async function loadSubjectDashboard(
         def.contentSubjectId,
         def.themeLabel,
         viewerTrack,
-        allTopicIds,
+        contentTopicIds,
       );
       if (themeRows.length === 0) continue;
       const virtualId = buildVirtualThemeTopicId(

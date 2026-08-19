@@ -1,0 +1,2602 @@
+ID: FARSTO-e2026-1-1873
+TEMAT: FARM-09
+PYTANIE:
+Którego z poniższych efektów nie wykazują benzodiazepiny:
+A. Przeciwlękowe
+B. Przeciwdepresyjne
+C. Nasenne
+D. Uspokajające
+E. Miorelaksacyjne
+KLUCZ: b
+WYJAŚNIENIE:
+**Benzodiazepiny** działają allosterycznie na receptor **GABA-A**, zwiększając **częstość otwarć** kanału chlorkowego. Stąd pięć klasycznych efektów: **przeciwlękowy**, **uspokajająco-nasenny**, **miorelaksacyjny** (ośrodkowy, przez neurony wstawkowe rdzenia), **przeciwdrgawkowy** oraz **niepamięć następcza**. Działania **przeciwdepresyjnego** nie mają — nie wpływają na przekaźnictwo monoaminergiczne; u chorego z depresją łagodzą jedynie doraźnie lęk i bezsenność, a przewlekle grożą tolerancją i uzależnieniem.
+---
+ID: FARSTO-e2026-1-1874
+TEMAT: FARM-08
+PYTANIE:
+Hipertermia, skurcze mięśniowe, zaburzenia rytmu serca, zaburzenia krążenia i zaburzenia świadomości to objawy charakterystyczne dla:
+A. Zespołu serotoninowego, który może pojawić się przy łączeniu selektywnych inhibitorów wychwytu serotoniny z inhibitorami MAO
+B. Zespołu czerwonego człowieka, który może pojawić się po podaniu antybiotyków glikopeptydowych
+C. Przedawkowania kolchicyny
+D. Przedawkowania glikozydów nasercowych
+E. Niedodawkowania insuliny
+KLUCZ: a
+WYJAŚNIENIE:
+Triada **zespołu serotoninowego**: objawy **autonomiczne** (hipertermia, tachykardia, zaburzenia rytmu i krążenia), **nerwowo-mięśniowe** (mioklonie, wzmożone odruchy, sztywność) i **psychiczne** (pobudzenie, splątanie). Najgroźniejsza interakcja to **SSRI z inhibitorami MAO**; ryzyko dają też tramadol, tryptany, linezolid i MDMA. Przy zmianie SSRI na IMAO obowiązuje przerwa **14 dni** (fluoksetyna — **5 tygodni**). Leczenie: odstawienie leku, chłodzenie, **benzodiazepiny**, **cyproheptadyna**.
+---
+ID: FARSTO-e2026-1-1875
+TEMAT: FARM-08
+PYTANIE:
+Zaznacz zdanie fałszywe:
+A. Amitryptylina może być stosowana w terapii depresji, a także w profilaktyce migreny
+B. Propranolol może być stosowany w profilaktyce migreny
+C. Buspiron ma działanie przeciwlękowe
+D. Bupropion może być stosowany w leczeniu ciężkiej depresji
+E. Escitalopram może być stosowany do leczenia ciężkiej depresji
+KLUCZ: e
+WYJAŚNIENIE:
+**Amitryptylina** (TLPD) i **propranolol** mają udowodnioną skuteczność w **profilaktyce migreny**, a **buspiron** — częściowy agonista **5-HT1A** — jest anksjolitykiem niebenzodiazepinowym, więc pierwsze trzy stwierdzenia są prawdziwe. Wariant o escitalopramie w **ciężkiej depresji** uznano za fałszywy, ponieważ (zwłaszcza w postaci melancholicznej) przewagę skuteczności mają **TLPD** i **wenlafaksyna**, a **SSRI** pozostają lekami z wyboru w epizodach łagodnych i umiarkowanych. Rozgraniczenie względem **bupropionu** jest jednak dyskusyjne.
+---
+ID: FARSTO-e2026-1-1876
+TEMAT: FARM-08
+PYTANIE:
+Lekiem zwiększającym popęd płciowy u kobiet jest:
+A. Sertralina
+B. Flibanseryna
+C. Felbamat
+D. Trazodon
+E. Amitryptylina
+KLUCZ: b
+WYJAŚNIENIE:
+**Flibanseryna** to agonista receptora **5-HT1A** i antagonista **5-HT2A**, który w korze przedczołowej zwiększa stężenie **dopaminy i noradrenaliny**, a obniża **serotoniny** — stąd wzrost popędu płciowego. Wskazanie: **hipoaktywne zaburzenie pożądania seksualnego (HSDD)** u kobiet przed menopauzą; przyjmowana codziennie wieczorem. Przeciwwskazany **alkohol** i **inhibitory CYP3A4** (ryzyko hipotonii i omdleń). Odwrotny efekt dają **SSRI** i **TLPD**, które libido obniżają.
+---
+ID: FARSTO-e2026-1-1877
+TEMAT: FARM-03
+PYTANIE:
+Wybierz zdanie fałszywe:
+A. NLPZ znacznie osłabiają działanie diuretyków pętlowych
+B. Duże dawki NLPZ mogą zmniejszać działanie hipoglikemizujące pochodnych sulfonylomocznika
+C. Użycie NLPZ zwiększa ryzyko krwawienia z górnego odcinka przewodu pokarmowego
+D. Użycie NLPZ zwiększa ryzyko drgawek w czasie terapii fluorochinolonami
+E. Użycie NLPZ w trakcie leczenia aminoglikozydami może spowodować zaburzenia czynności nerek
+KLUCZ: b
+WYJAŚNIENIE:
+Fałsz dotyczy **pochodnych sulfonylomocznika**: NLPZ wypierają je z połączeń z **albuminami** i hamują ich metabolizm, więc **nasilają** hipoglikemię, a nie ją osłabiają. Pozostałe zdania są prawdziwe — blokada **COX** zmniejsza nerkową syntezę **PGE2/PGI2**, osłabiając diuretyki pętlowe i nasilając nefrotoksyczność aminoglikozydów; z **fluorochinolonami** NLPZ wypierają **GABA** z receptora (drgawki), a hamowanie **COX-1** znosi cytoprotekcję błony śluzowej żołądka.
+---
+ID: FARSTO-e2026-1-1878
+TEMAT: FARM-02
+PYTANIE:
+Do przerywania napadu migreny można stosować:
+A. Sumatryptan, Lasmiditan, Propranolol
+B. Propranolol, Ergotamina, Kwas acetylosalicylowy
+C. Sumatryptan, Ubrogepant, Ibuprofen
+D. Naproksen, Metoprolol, Kwas walproinowy
+E. Brak prawidłowej odpowiedzi
+KLUCZ: c
+WYJAŚNIENIE:
+Napad przerywają: **NLPZ** (ibuprofen, ASA, naproksen), **tryptany** — agoniści **5-HT1B/1D** (sumatryptan), **gepanty** — antagoniści receptora **CGRP** (ubrogepant, rimegepant), **ditany** — agoniści **5-HT1F** (lasmiditan) oraz alkaloidy sporyszu. Warianty z propranololem, metoprololem i kwasem walproinowym dyskwalifikuje obecność leków **profilaktycznych**: **propranololu**, **metoprololu** i **kwasu walproinowego**, które przewlekle zmniejszają częstość napadów, ale nie przerywają już rozpoczętego bólu.
+---
+ID: FARSTO-e2026-1-1879
+TEMAT: FARM-02
+PYTANIE:
+W profilaktyce napadów migreny można stosować:
+A. Kwas acetylosalicylowy
+B. Ibuprofen
+C. Erenumab
+D. Lasmiditan
+E. Kodeina
+KLUCZ: c
+WYJAŚNIENIE:
+**Erenumab** to przeciwciało monoklonalne blokujące **receptor CGRP** (pozostałe — fremanezumab, galkanezumab — wiążą sam ligand), podawane **podskórnie raz w miesiącu** w profilaktyce migreny przewlekłej i epizodycznej. Klasyczne leki profilaktyczne to także **propranolol**, **topiramat**, **kwas walproinowy**, **amitryptylina** i **flunaryzyna**. ASA, ibuprofen i **lasmiditan** działają **doraźnie**, a **kodeina** grozi bólem głowy z nadużywania leków.
+---
+ID: FARSTO-e2026-1-1880
+TEMAT: FARM-02
+PYTANIE:
+Które z poniższych nie jest wskazaniem do podania antagonistów receptora H1:
+A. Pokrzywka
+B. Alergiczny nieżyt nosa
+C. Alergie polekowe
+D. Alergie po ukłuciach owadów
+E. Wybroczyny
+KLUCZ: e
+WYJAŚNIENIE:
+**Wybroczyny** są objawem **skazy krwotocznej** — małopłytkowej lub naczyniowej — i nie mają związku z uwalnianiem **histaminy**, więc **blokery H1** są tu bezużyteczne. Pozostałe wskazania wynikają wprost z blokady receptorów **H1** w skórze i błonach śluzowych: pokrzywka, **alergiczny nieżyt nosa**, odczyny polekowe i reakcje po ukłuciach owadów. Leki **I generacji**, przenikające do OUN, dodatkowo działają przeciwwymiotnie, przeciw chorobie lokomocyjnej i nasennie.
+---
+ID: FARSTO-e2026-1-1881
+TEMAT: FARM-02
+PYTANIE:
+Które leki pełnią rolę blokera histaminowego H1 oraz stabilizatora błony komórkowej mastocytów:
+A. Ketotyfen, Azelastyna
+B. Hydroksyzyna, Prometazyna
+C. Antazolina, Loratadyna
+D. Cetyryzyna, Hydroksyzyna
+E. Nedokromil, Lewocetyryzyna
+KLUCZ: a
+WYJAŚNIENIE:
+**Ketotyfen** i **azelastyna** mają podwójny mechanizm: blokują receptor **H1** i **stabilizują błonę mastocytów**, hamując ich degranulację oraz uwalnianie histaminy i leukotrienów — stąd zastosowanie w alergicznym zapaleniu spojówek i nosa, z efektem zarówno doraźnym, jak i profilaktycznym. **Nedokromil** i kromoglikan są wyłącznie stabilizatorami mastocytów, bez powinowactwa do H1, natomiast **cetyryzyna**, **loratadyna**, **hydroksyzyna** i **prometazyna** to czyści antagoniści H1.
+---
+ID: FARSTO-e2026-1-1882
+TEMAT: FARM-02
+PYTANIE:
+Antagonistą receptora 5-HT2 jest:
+A. Cyproheptadyna
+B. Metoklopramid
+C. Azelastyna
+D. Sumatryptan
+E. Ondansetron
+KLUCZ: a
+WYJAŚNIENIE:
+**Cyproheptadyna** łączy blokadę receptorów **H1** i **5-HT2**, dlatego jest antidotum w **zespole serotoninowym** i bywa stosowana jako lek pobudzający apetyt. Pozostałe leki działają na inne receptory: **ondansetron** blokuje **5-HT3** (przeciwwymiotny), **metoklopramid** jest antagonistą **D2** i agonistą **5-HT4**, **sumatryptan** agonistą **5-HT1B/1D**, a **azelastyna** antagonistą **H1**. Silnymi antagonistami **5-HT2A** są też ketanseryna i neuroleptyki atypowe.
+---
+ID: FARSTO-e2026-1-1883
+TEMAT: FARM-06
+PYTANIE:
+Wskaż lek będący diuretykiem osmotycznym:
+A. hydrochlorotiazyd
+B. torasemid
+C. bumetanid
+D. mannitol
+E. acetazolamid
+KLUCZ: d
+WYJAŚNIENIE:
+**Mannitol** to niemetabolizowany alkohol cukrowy, swobodnie filtrowany w kłębuszku i niewchłaniany zwrotnie — zwiększa **osmolalność moczu pierwotnego**, zatrzymując wodę głównie w **cewce proksymalnej** i **ramieniu zstępującym pętli Henlego**. Wskazania: **obrzęk mózgu**, ostry napad **jaskry**, wymuszona diureza w zatruciach. Pozostałe leki mają inne cele: **hydrochlorotiazyd** blokuje kotransporter **Na/Cl**, **torasemid** i **bumetanid** — **NKCC2**, a **acetazolamid** hamuje **anhydrazę węglanową**.
+---
+ID: FARSTO-e2026-1-1884
+TEMAT: FARM-17
+PYTANIE:
+Insuliną krótko i szybko działającą jest:
+A. glarginowa
+B. detemir
+C. degludec
+D. lispro
+E. brak prawidłowej odpowiedzi
+KLUCZ: d
+WYJAŚNIENIE:
+**Lispro** — obok **aspart** i **glulizynowej** — to **analog szybko działający**: zamiana kolejności aminokwasów w łańcuchu B utrudnia tworzenie heksamerów, więc działanie zaczyna się po **ok. 15 min**, szczyt przypada na **1 h**, a całość trwa **3-5 h**; podaje się je tuż przed posiłkiem. **Glargina**, **detemir** i **degludec** to analogi **długo działające**, praktycznie bezszczytowe, odtwarzające wydzielanie podstawowe insuliny.
+---
+ID: FARSTO-e2026-1-1885
+TEMAT: FARM-12
+PYTANIE:
+Do krótkodziałających beta2-mimetyków zaliczamy:
+A. salmeterol, formoterol
+B. salbutamol, fenoterol
+C. terbutalina, budezonid
+D. indakaterol, salmeterol
+E. wilanterol, salbutamol
+KLUCZ: b
+WYJAŚNIENIE:
+**Salbutamol** i **fenoterol** (a także **terbutalina**) to **krótko działające beta2-mimetyki (SABA)** — początek działania po kilku minutach, czas **4-6 h**, stosowane doraźnie w napadzie duszności. **Salmeterol** i **formoterol** to **LABA** (ok. **12 h**), a **indakaterol** i **wilanterol** — ultra-LABA działające **24 h**, wyłącznie przewlekle i w astmie zawsze łącznie z wziewnym glikokortykosteroidem. Wariant z terbutaliną dyskwalifikuje **budezonid**, który jest właśnie takim GKS.
+---
+ID: FARSTO-e2026-1-1886
+TEMAT: FARM-07
+PYTANIE:
+Lekiem inotropowo dodatnim stosowanym w leczeniu ostrej niewydolności serca, będącym inhibitorem fosfodiesterazy typu 3 jest:
+A. dobutamina
+B. milrynon
+C. lewozymendan
+D. digitoksyna
+E. wazopresyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Milrynon** hamuje **fosfodiesterazę typu 3**, zwiększając stężenie **cAMP** w kardiomiocycie (napływ **Ca2+** i efekt inotropowy dodatni) oraz w miocytach naczyń (rozkurcz, spadek obciążenia następczego) — stąd nazwa **inodilator**. Działa niezależnie od receptorów beta, więc zachowuje skuteczność u chorych leczonych **beta-blokerami**. Ograniczenia: **hipotonia**, **arytmie komorowe** i wzrost śmiertelności przy dłuższym stosowaniu, dlatego tylko krótkotrwały wlew dożylny.
+---
+ID: FARSTO-e2026-1-1887
+TEMAT: FARM-07
+PYTANIE:
+Lekiem inotropowo dodatnim stosowanym w leczeniu ostrej niewydolności serca, należącym do grupy tzw. uczulaczy wapniowych (calcium sensitizers) jest:
+A. dobutamina
+B. milrynon
+C. lewozymendan
+D. digitoksyna
+E. wazopresyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Lewozymendan** wiąże się z **troponiną C** w sposób zależny od stężenia wapnia i zwiększa **wrażliwość miofilamentów na Ca2+**, poprawiając kurczliwość **bez wzrostu stężenia Ca2+** w kardiomiocycie — dlatego nie podnosi zużycia tlenu ani ryzyka arytmii tak jak katecholaminy. Dodatkowo otwiera kanały **K-ATP** w naczyniach, rozszerzając tętnice i żyły. Aktywny metabolit **OR-1896** przedłuża efekt hemodynamiczny do **7-9 dni** po zakończeniu wlewu.
+---
+ID: FARSTO-e2026-1-1888
+TEMAT: FARM-07
+PYTANIE:
+Statyną, która nie zwiększa ryzyka wystąpienia cukrzycy typu 2 jest:
+A. simwastatyna
+B. atorwastatyna
+C. pitawastatyna
+D. rozuwastatyna
+E. prawastatyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Pitawastatyna** jako jedyna statyna nie pogarsza gospodarki węglowodanowej — w badaniach nie zwiększała ryzyka **cukrzycy typu 2**, a nawet nieznacznie podnosiła stężenie **adiponektyny**. Ryzyko nowych zachorowań rośnie wraz z intensywnością terapii i dotyczy głównie **rozuwastatyny**, **atorwastatyny** i **simwastatyny** w dużych dawkach (upośledzenie wydzielania insuliny i nasilenie insulinooporności). Pitawastatyna jest też mało zależna od **CYP3A4**, więc rzadko wchodzi w interakcje.
+---
+ID: FARSTO-e2026-1-1889
+TEMAT: FARM-16
+PYTANIE:
+Inhibitorem steroidogenezy nadnerczowej w mechanizmie hamowania aktywności 17,20-liazy steroidowej jest:
+A. Aminoglutetymid
+B. Ketokonazol
+C. Metyrapon
+D. Trilostan
+E. Osilodrostat
+KLUCZ: b
+WYJAŚNIENIE:
+**Ketokonazol**, pochodna imidazolowa, hamuje nie tylko grzybiczą, ale i ludzką rodzinę **CYP450**, w tym **CYP17 (17-alfa-hydroksylaza / 17,20-liaza)**, blokując syntezę androgenów i kortyzolu — stąd użycie w **zespole Cushinga**. Ogranicza go **hepatotoksyczność** i liczne interakcje przez **CYP3A4**. Pozostałe leki działają na inne enzymy: **metyrapon** i **osilodrostat** hamują **11-beta-hydroksylazę**, **trilostan** — **3-beta-dehydrogenazę steroidową**, a **aminoglutetymid** — desmolazę.
+---
+ID: FARSTO-e2026-1-1890
+TEMAT: FARM-16
+PYTANIE:
+Inhibitorem steroidogenezy nadnerczowej, który hamuje powstawanie pregnenolonu z cholesterolu jest:
+A. Aminoglutetymid
+B. Ketokonazol
+C. Metyrapon
+D. Trilostan
+E. Osilodrostat
+KLUCZ: a
+WYJAŚNIENIE:
+**Aminoglutetymid** blokuje **desmolazę cholesterolową (CYP11A1)**, czyli enzym pierwszego i ograniczającego etapu steroidogenezy — przekształcenia **cholesterolu w pregnenolon**. Hamuje więc syntezę wszystkich hormonów kory nadnerczy, wywołując **adrenalektomię farmakologiczną** z koniecznością substytucji hydrokortyzonem, a jako **inhibitor aromatazy I generacji** ogranicza też obwodową produkcję estrogenów. Enzymy blokowane przez pozostałe leki leżą niżej w szlaku steroidogenezy.
+---
+ID: FARSTO-e2026-1-1891
+TEMAT: FARM-16
+PYTANIE:
+Glikokortykosteroidem o największej relatywnej sile działania jest:
+A. Hydrokortyzon
+B. Prednizon
+C. Prednizolon
+D. Metyloprednizolon
+E. Betametazon
+KLUCZ: e
+WYJAŚNIENIE:
+**Betametazon** i jego izomer **deksametazon** mają **25-30x** większą siłę glikokortykoidową niż **hydrokortyzon** (siła referencyjna = 1) i są praktycznie pozbawione komponenty **mineralokortykoidowej**. Należą do preparatów **długo działających** (biologiczny okres półtrwania **36-54 h**), stąd zastosowanie w obrzęku mózgu i stymulacji dojrzewania płuc płodu. **Prednizon** i **prednizolon** są ok. **4x**, a **metyloprednizolon** ok. **5x** silniejsze od hydrokortyzonu.
+---
+ID: FARSTO-e2026-1-1892
+TEMAT: FARM-16
+PYTANIE:
+Działaniem niepożądanym przewlekłego stosowania glikokortykosteroidów nie jest:
+A. Osteoporoza
+B. Jaskra
+C. Zaćma
+D. Hiperkalemia
+E. Nadciśnienie tętnicze
+KLUCZ: d
+WYJAŚNIENIE:
+Przewlekła sterydoterapia wywołuje **hipokaliemię**, a nie hiperkaliemię: pobudzenie receptora **mineralokortykoidowego** w cewce zbiorczej zwiększa resorpcję **Na+** i wody (stąd nadciśnienie i obrzęki) kosztem utraty **K+** oraz **H+**, co grozi zasadowicą metaboliczną. Pozostałe powikłania są typowe — **osteoporoza** (hamowanie osteoblastów i wchłaniania wapnia), **zaćma** podtorebkowa tylna i **jaskra** ze wzrostu oporu odpływu cieczy wodnistej. Dochodzą hiperglikemia i miopatia.
+---
+ID: FARSTO-e2026-1-1893
+TEMAT: FARM-13
+PYTANIE:
+Do działania niepożądanego trimetoprymu należy:
+A. Leukopenia
+B. Nudności i wymioty
+C. Wysypka
+D. Niedokrwistość megaloblastyczna
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+**Trimetoprim** hamuje **reduktazę dihydrofolianową** — wybiórczo bakteryjną, ale przy dużych dawkach i długiej terapii również ludzką, co daje **niedokrwistość megaloblastyczną**, **leukopenię** i małopłytkowość (odtrutką jest **kwas folinowy**). Dochodzą typowe dla kotrimoksazolu **nudności i wymioty** oraz odczyny skórne, aż po zespół **Stevensa-Johnsona**. Warto pamiętać też o **hiperkaliemii** — trimetoprim blokuje kanał **ENaC** w cewce zbiorczej, działając jak amilorid.
+---
+ID: FARSTO-e2026-1-1894
+TEMAT: FARM-13
+PYTANIE:
+Do cefalosporyn IV generacji należy:
+A. Cefadroksyl
+B. Cefaklor
+C. Ceftazydym
+D. Cefuroksym
+E. Cefepim
+KLUCZ: e
+WYJAŚNIENIE:
+**Cefepim** to jedyna w zestawie cefalosporyna **IV generacji** — łączy szerokie działanie na bakterie **Gram-ujemne** (w tym **Pseudomonas aeruginosa**) z zachowaną aktywnością wobec gronkowców i paciorkowców, jest oporny na beta-laktamazy typu **AmpC** i dobrze przenika do OUN. Pozostałe leki to: **cefadroksyl** — I generacja, **cefaklor** i **cefuroksym** — II, a **ceftazydym** — III generacja, antypseudomonasowa, ale słaba wobec ziarenkowców Gram-dodatnich.
+---
+ID: FARSTO-e2026-1-1895
+TEMAT: FARM-14
+PYTANIE:
+Do działań niepożądanych, które mogą wystąpić w czasie stosowania ogólnego acyklowiru należą:
+A. Nudności i wymioty
+B. Odwracalne uszkodzenie nerek
+C. Drgawki
+D. Drżenia mięśniowe
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+**Acyklowir** jest prolekiem aktywowanym przez wirusową **kinazę tymidynową**, stąd duża wybiórczość, ale przy podaniu ogólnym możliwe są wszystkie wymienione objawy. Kluczowa jest **nefrotoksyczność** — wytrącanie kryształów leku w cewkach przy szybkim wlewie dożylnym i odwodnieniu, odwracalna po nawodnieniu i zwolnieniu infuzji. Wtórnie do kumulacji w niewydolności nerek pojawia się **neurotoksyczność**: drżenia mięśniowe, splątanie i **drgawki**.
+---
+ID: FARSTO-e2026-1-1896
+TEMAT: FARM-14
+PYTANIE:
+Do działań niepożądanych, które mogą wystąpić w czasie stosowania ogólnego gancyklowiru należą:
+A. Zaparcia
+B. Nadmierna senność
+C. Bladość skóry
+D. Obniżona temperatura ciała
+E. Neuropatia obwodowa
+KLUCZ: e
+WYJAŚNIENIE:
+**Gancyklowir**, analog nukleozydowy czynny wobec **CMV** i fosforylowany przez wirusową kinazę **UL97**, poza dominującą **mielosupresją** wywołuje objawy neurologiczne — **neuropatię obwodową**, splątanie, drgawki. Pozostałe opcje są odwrotnością rzeczywistego profilu: typowa jest **biegunka**, nie zaparcia, oraz **gorączka**, nie hipotermia; bladość powłok bywa jedynie wtórna do niedokrwistości. Lek działa **teratogennie** i hamuje spermatogenezę, więc wymaga antykoncepcji.
+---
+ID: FARSTO-e2026-1-1897
+TEMAT: FARM-14
+PYTANIE:
+Do nukleozydowych i nukleotydowych inhibitorów odwrotnej transkryptazy nie należy:
+A. Zydowudyna
+B. Abakawir
+C. Atazanawir
+D. Lamiwudyna
+E. Emtrycytabina
+KLUCZ: c
+WYJAŚNIENIE:
+Końcówka **-nawir** zdradza inhibitor **proteazy HIV**: **atazanawir** blokuje cięcie poliprotein Gag-Pol, a typowa jest dla niego **niesprzężona hiperbilirubinemia** oraz konieczność kwaśnego środowiska żołądka (interakcja z **IPP**). Pozostałe to **NRTI** hamujące **odwrotną transkryptazę** po wewnątrzkomórkowej fosforylacji: **zydowudyna** (mielosupresja), **lamiwudyna** i **emtrycytabina** (czynne też wobec HBV) oraz **abakawir**, groźny nadwrażliwością u nosicieli **HLA-B*5701**.
+---
+ID: FARSTO-e2026-1-1898
+TEMAT: FARM-14
+PYTANIE:
+Do natychmiastowych działań niepożądanych amfoterycyny B należy:
+A. Nefrotoksyczność
+B. Hepatotoksyczność
+C. Obniżenie ciśnienia tętniczego
+D. Niedokrwistość
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: c
+WYJAŚNIENIE:
+Tylko **spadek ciśnienia tętniczego** należy do **reakcji infuzyjnej** — pojawiającej się w trakcie lub tuż po wlewie triady: **gorączka, dreszcze, hipotonia**, z nudnościami i dusznością; zapobiega jej powolny wlew i premedykacja paracetamolem, lekiem przeciwhistaminowym i hydrokortyzonem. **Nefrotoksyczność** (z hipokaliemią i hipomagnezemią), **niedokrwistość** ze spadku erytropoetyny oraz uszkodzenie wątroby to powikłania **późne**, zależne od dawki skumulowanej.
+---
+ID: FARSTO-e2026-1-1899
+TEMAT: FARM-14
+PYTANIE:
+Wskaż zdanie prawdziwe na temat jodochinolu:
+A. Wykazuje aktywność jedynie w tkankach w przypadku zakażenia Entamoeba histolytica
+B. Stosowany jest wraz z metronidazolem w celu leczenia bezobjawowej amebiozy
+C. Nie ma wpływu na funkcje tarczycy
+D. Należy zachować ostrożność podczas stosowania leku u osób z zaburzeniami funkcji tarczycy i neuropatią wzrokową
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: d
+WYJAŚNIENIE:
+**Jodochinol** to amebicyd **kontaktowy**, działający wyłącznie w **świetle jelita**, bo prawie się nie wchłania — to obala twierdzenie o aktywności jedynie w tkankach. W **amebiozie bezobjawowej** wystarcza sam lek luminalny, bez **metronidazolu**, a zawarty w cząsteczce **jod** zaburza testy czynności tarczycy i może wywołać wole. Przy długim stosowaniu opisywano **zapalenie nerwu wzrokowego** i podostrą neuropatię rdzeniowo-wzrokową, stąd ostrożność przy zaburzeniach tarczycy i neuropatii wzrokowej.
+---
+ID: FARSTO-e2026-1-1900
+TEMAT: FARM-09
+PYTANIE:
+Do leków znieczulających miejscowo o budowie amidowej należy:
+A. Prokaina
+B. Proksymetakaina
+C. Oksybuprokaina
+D. Bupiwakaina
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: d
+WYJAŚNIENIE:
+**Bupiwakaina** zawiera wiązanie **amidowe**, podobnie jak lidokaina, mepiwakaina, ropiwakaina i stosowana w stomatologii **artykaina**. Mnemonik: **amidy mają dwie litery „i" w nazwie** (bup-i-wakaina, l-i-doka-i-na), estry tylko jedną (prokaina, proksymetakaina, oksybuprokaina). Różnica jest praktyczna: amidy metabolizuje **wątroba (CYP)**, estry rozkłada **esteraza osoczowa** do **PABA** — częstej przyczyny alergii. Bupiwakaina jest najbardziej **kardiotoksyczna**.
+---
+ID: FARSTO-e2026-1-1901
+TEMAT: FARM-01
+PYTANIE:
+Metabolizmu pierwszego przejścia można uniknąć przy podaniu:
+A. Doustnym
+B. Podjęzykowym
+C. Dożylnym
+D. Odpowiedzi A i C są prawidłowe
+E. Odpowiedzi B i C są prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+**Efekt pierwszego przejścia** to metabolizm leku w ścianie jelita i **wątrobie** zaraz po wchłonięciu z przewodu pokarmowego, zanim trafi do krążenia dużego — dotyczy drogi **doustnej** i obniża **biodostępność** (klasycznie nitrogliceryna, propranolol, lidokaina). Omijają go podania **podjęzykowe** (spływ krwi do żyły głównej górnej), **dożylne**, domięśniowe, przezskórne i wziewne, a częściowo doodbytnicze — stąd omijają je podanie podjęzykowe i dożylne.
+---
+ID: FARSTO-e2026-1-1902
+TEMAT: FARM-02
+PYTANIE:
+Do antagonistów receptora histaminowego H1 pierwszej generacji nie należy:
+A. Antazolina
+B. Azelastyna
+C. Doksylamina
+D. Prometazyna
+E. Klemastyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Azelastyna** należy do **II generacji** leków przeciwhistaminowych — słabo przenika przez barierę krew-mózg i stosowana miejscowo (donosowo, do worka spojówkowego) praktycznie nie powoduje senności. Pozostałe — **antazolina**, **doksylamina**, **prometazyna** i **klemastyna** — to klasyczne leki **I generacji**: lipofilne, silnie **sedatywne**, o dodatkowym działaniu **antymuskarynowym** (suchość w ustach, zatrzymanie moczu) oraz przeciwwymiotnym.
+---
+ID: FARSTO-e2026-1-1903
+TEMAT: FARM-05
+PYTANIE:
+Do przeciwwskazań bezwzględnych do stosowania leków przeciwzakrzepowych należy:
+A. Guz mózgu
+B. Skaza krwotoczna
+C. Źle kontrolowane nadciśnienie tętnicze
+D. Retinopatia cukrzycowa
+E. Ostre zapalenie wsierdzia
+KLUCZ: b
+WYJAŚNIENIE:
+Bezwzględnym przeciwwskazaniem jest **skaza krwotoczna** — wrodzone lub nabyte zaburzenie hemostazy (hemofilia, głęboka małopłytkowość, ciężka niewydolność wątroby) — obok czynnego krwawienia i świeżego **udaru krwotocznego**, bo ryzyko krwotoku przewyższa tu każdą korzyść. Pozostałe stany: **guz mózgu**, źle kontrolowane **nadciśnienie**, **retinopatia cukrzycowa** i zapalenie wsierdzia to przeciwwskazania **względne**, wymagające indywidualnej oceny bilansu ryzyka.
+---
+ID: FARSTO-e2026-1-1904
+TEMAT: FARM-06
+PYTANIE:
+Pochodną niedihydropirydynową w grupie antagonistów kanałów wapniowych jest:
+A. Nifedypina
+B. Amlodypina
+C. Werapamil
+D. Nimodypina
+E. Lacydypina
+KLUCZ: c
+WYJAŚNIENIE:
+**Werapamil** jest **fenyloalkiloaminą**, a więc antagonistą wapnia **niedihydropirydynowym** — razem z benzotiazepinowym **diltiazemem**. Ta grupa działa głównie na **serce**: zwalnia rytm zatokowy i przewodzenie w węźle **przedsionkowo-komorowym** oraz obniża kurczliwość, stąd zastosowanie w częstoskurczach nadkomorowych i zakaz łączenia z **beta-blokerami** (bradykardia, blok AV). Wszystkie leki z końcówką **-dypina** to pochodne **dihydropirydyny** działające na naczynia.
+---
+ID: FARSTO-e2026-1-1905
+TEMAT: FARM-05
+PYTANIE:
+Nasilenie działania przeciwkrzepliwego podczas stosowania doustnych antykoagulantów powoduje:
+A. Gryzeofulwina
+B. Ryfampicyna
+C. Karbamazepina
+D. Cyprofloksacyna
+E. Barbiturany
+KLUCZ: d
+WYJAŚNIENIE:
+**Cyprofloksacyna** hamuje **CYP1A2** i **CYP3A4**, zwalniając metabolizm **warfaryny** i **acenokumarolu**, a dodatkowo niszczy florę jelitową wytwarzającą **witaminę K** — INR rośnie, a z nim ryzyko krwawienia. Pozostałe leki to klasyczne **induktory CYP**, które działanie antykoagulantów **osłabiają**; pomaga mnemonik **CRAPGPS**: Carbamazepina, Ryfampicyna, Alkohol przewlekle, Phenytoina, Gryzeofulwina, Phenobarbital, Sulfonylomoczniki.
+---
+ID: FARSTO-e2026-1-1906
+TEMAT: FARM-18
+PYTANIE:
+Odtrutką stosowaną w zatruciu benzodiazepinami jest:
+A. Izoniazyd
+B. Flumazenil
+C. Błękit metylenowy
+D. Acetylocysteina
+E. Neostygmina
+KLUCZ: b
+WYJAŚNIENIE:
+**Flumazenil** jest kompetycyjnym antagonistą miejsca benzodiazepinowego receptora **GABA-A**; podany dożylnie znosi sedację w ciągu 1-2 minut, ale jego okres półtrwania (**ok. 1 h**) bywa krótszy niż benzodiazepiny, więc sedacja może **nawrócić**. Ostrożnie u osób uzależnionych i przy współzatruciu **TLPD** — grozi **drgawkami**. Pozostałe odtrutki: **acetylocysteina** — paracetamol, **błękit metylenowy** — methemoglobinemia, **neostygmina** — kurara niedepolaryzująca.
+---
+ID: FARSTO-e2026-1-1907
+TEMAT: FARM-14
+PYTANIE:
+Najpoważniejszym działaniem niepożądanym gancyklowiru jest:
+A. Wydłużenie odstępu QT
+B. Nefrotoksyczność
+C. Mielosupresja
+D. Występowanie przewlekłych biegunek
+E. Nawracające migreny
+KLUCZ: c
+WYJAŚNIENIE:
+Ograniczającym dawkę działaniem niepożądanym **gancyklowiru** jest **mielosupresja** — **neutropenia** dotyczy nawet 40% leczonych, częste są też małopłytkowość i niedokrwistość, dlatego konieczna jest regularna kontrola morfologii, a przy głębokiej neutropenii podaje się **G-CSF**. Ryzyko rośnie przy łączeniu z **zydowudyną** i innymi lekami mielotoksycznymi. Dla kontrastu **foskarnet**, alternatywa w zakażeniu **CMV**, jest przede wszystkim **nefrotoksyczny** i wywołuje hipokalcemię.
+---
+ID: FARSTO-e2026-1-1908
+TEMAT: FARM-03
+PYTANIE:
+Lek stosowany w terapii przewlekłej dny moczanowej, który działa poprzez rozkładanie kwasu moczowego do alantoiny to:
+A. febuksostat
+B. lesynurad
+C. peglotykaza
+D. benzbromaron
+E. allopurynol
+KLUCZ: c
+WYJAŚNIENIE:
+**Peglotykaza** to pegylowana rekombinowana **urykaza** — enzym, którego człowiek nie posiada — utleniająca **kwas moczowy** do znacznie lepiej rozpuszczalnej i łatwo wydalanej **alantoiny**; podawana dożylnie co 2 tygodnie w ciężkiej dnie guzkowatej opornej na leczenie. Grozi **anafilaksją**, a przy niedoborze **G6PD** hemolizą. Inne mechanizmy: **allopurynol** i **febuksostat** hamują **oksydazę ksantynową**, a **lesynurad** i **benzbromaron** to urykozuryki blokujące **URAT1**.
+---
+ID: FARSTO-e2026-1-1909
+TEMAT: FARM-15
+PYTANIE:
+Wskaż lek będący antagonistą receptora 5-HT3 stosowany w wymiotach po chemioterapii:
+A. ondansetron
+B. metoklopramid
+C. aprepitant
+D. prochlorperazyna
+E. dimenhydrynat
+KLUCZ: a
+WYJAŚNIENIE:
+**Ondansetron** blokuje receptory **5-HT3** na zakończeniach nerwu błędnego w jelicie i w **strefie chemoreceptorowej (CTZ)**. Cytostatyki, zwłaszcza **cisplatyna**, uwalniają serotoninę z komórek enterochromatofilnych błony śluzowej, uruchamiając odruch wymiotny — stąd wysoka skuteczność setronów. Typowe działania niepożądane to ból głowy, zaparcia i **wydłużenie QT**. Inne mechanizmy: **aprepitant** blokuje receptor **NK1**, **metoklopramid** i **prochlorperazyna** — **D2**, a **dimenhydrynat** — **H1**.
+---
+ID: FARSTO-e2026-1-1910
+TEMAT: FARM-06
+PYTANIE:
+Który z poniższych leków jest inhibitorem fosfodiesterazy typu 5 stosowanym w leczeniu nadciśnienia płucnego?
+A. bosentan
+B. riociguat
+C. sildenafil
+D. iloprost
+E. ambrisentan
+KLUCZ: c
+WYJAŚNIENIE:
+**Sildenafil** hamuje **fosfodiesterazę typu 5** rozkładającą **cGMP**, przedłużając naczyniorozszerzające działanie **tlenku azotu** w krążeniu płucnym i obniżając opór płucny. Bezwzględnym przeciwwskazaniem jest jednoczesne stosowanie **azotanów** (groźna hipotonia) oraz **riocyguatu**. Pozostałe leki działają inaczej: **bosentan** i **ambrisentan** blokują receptory **endoteliny**, **iloprost** jest analogiem **prostacykliny**, a **riocyguat** stymulatorem cyklazy guanylanowej.
+---
+ID: FARSTO-e2026-1-1911
+TEMAT: FARM-16
+PYTANIE:
+Działaniem niepożądanym glikokortykosteroidów przy długotrwałym ich stosowaniu nie jest:
+A. zespół Cushinga jatrogenny
+B. osteoporoza
+C. hiperglikemia
+D. nadczynność tarczycy
+E. zwiększona podatność na infekcje
+KLUCZ: d
+WYJAŚNIENIE:
+Glikokortykosteroidy nie wywołują **nadczynności tarczycy** — przeciwnie, hamują wydzielanie **TSH** i obwodową konwersję **T4 do T3**, dlatego w przełomie tarczycowym stosuje się je leczniczo. Pozostałe powikłania są klasyczne: **jatrogenny zespół Cushinga** z otyłością centralną i twarzą księżycowatą, **osteoporoza** posteroidowa, **hiperglikemia** z nasilonej glukoneogenezy i insulinooporności oraz **immunosupresja** sprzyjająca zakażeniom, w tym reaktywacji gruźlicy.
+---
+ID: FARSTO-e2026-1-1912
+TEMAT: FARM-06
+PYTANIE:
+Wskaż lek stosowany w nadciśnieniu, który działa poprzez agonizm receptorów imidazolinowych typu pierwszego (I1) w rdzeniu przedłużonym:
+A. klonidyna
+B. moksonidyna
+C. metyldopa
+D. urapidyl
+E. guanfacyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Moksonidyna** jest wybiórczym agonistą receptorów **imidazolinowych I1** w brzuszno-bocznej części rdzenia przedłużonego, co zmniejsza napięcie **współczulne** i obniża ciśnienie bez typowej dla klonidyny senności i suchości w ustach (klonidyna pobudza dodatkowo receptory **alfa2**). **Metyldopa** to prolek przekształcany w **alfa-metylonoradrenalinę**, lek z wyboru w ciąży, **guanfacyna** działa na **alfa2A**, a **urapidyl** blokuje **alfa1** i pobudza **5-HT1A**.
+---
+ID: FARSTO-e2026-1-1913
+TEMAT: FARM-09
+PYTANIE:
+Wskaż lek stosowany w znieczuleniu miejscowym o najkrótszym czasie działania:
+A. bupiwakaina
+B. ropiwakaina
+C. lidokaina
+D. prokaina
+E. tetrakaina
+KLUCZ: d
+WYJAŚNIENIE:
+**Prokaina** jest estrem szybko hydrolizowanym przez **esterazę osoczową**, o małej sile i najkrótszym czasie działania (**ok. 30-60 min**), dziś praktycznie wypartym z lecznictwa. **Lidokaina** działa pośrednio długo (**1-2 h**), a **bupiwakaina**, **ropiwakaina** i **tetrakaina** nawet **4-8 h** dzięki dużej lipofilności i silnemu wiązaniu z białkami. Powstający z prokainy **PABA** odpowiada za reakcje alergiczne i osłabia działanie **sulfonamidów**.
+---
+ID: FARSTO-e2026-1-1914
+TEMAT: FARM-12
+PYTANIE:
+Wskaż lek stosowany w terapii mukowiscydozy poprawiający funkcję białka CFTR:
+A. erlotynib
+B. iwakaftor
+C. bosentan
+D. sirolimus
+E. natalizumab
+KLUCZ: b
+WYJAŚNIENIE:
+**Iwakaftor** jest **potencjatorem CFTR** — zwiększa prawdopodobieństwo otwarcia kanału chlorkowego już obecnego w błonie komórkowej, dlatego działa w mutacjach **bramkowania**, klasycznie **G551D**. W najczęstszej mutacji **F508del** łączy się go z **korektorami** (lumakaftor, tezakaftor, eleksakaftor), poprawiającymi fałdowanie i transport białka do błony. To jedyne leczenie **przyczynowe** mukowiscydozy, uzupełniane dornazą alfa i hipertonicznym NaCl.
+---
+ID: FARSTO-e2026-1-1915
+TEMAT: FARM-01
+PYTANIE:
+Wskaż zdanie fałszywe na temat transportu czynnego substancji:
+A. Zachodzi wbrew gradientowi stężeń
+B. Wymaga udziału nośnika energii
+C. Może być blokowany przez inhibitory ATP-azy
+D. Może być hamowany niekompetytywnie przez substancje o podobnej budowie chemicznej
+E. Wszystkie zdania są prawdziwe
+KLUCZ: d
+WYJAŚNIENIE:
+Transport czynny zachodzi **wbrew gradientowi stężeń**, kosztem energii z **ATP** i przy udziale swoistego nośnika — jest więc **wysycalny** i wybiórczy. Substancje o **podobnej budowie chemicznej** konkurują o to samo miejsce wiążące nośnika, hamując go **kompetycyjnie**, a nie niekompetycyjnie — dlatego zdanie D jest fałszywe. Hamowanie **niekompetycyjne** wywołują trucizny metaboliczne i **inhibitory ATP-azy**, jak ouabaina blokująca pompę sodowo-potasową.
+---
+ID: FARSTO-e2026-1-1916
+TEMAT: FARM-02
+PYTANIE:
+Do leków przeciwhistaminowych I generacji nie zaliczymy:
+A. Hydroksyzyny
+B. Klemastyny
+C. Doksylaminy
+D. Cetyryzyny
+E. Prometazyny
+KLUCZ: d
+WYJAŚNIENIE:
+**Cetyryzyna** to lek **II generacji**, powstały jako aktywny metabolit **hydroksyzyny** — dzięki polarnej grupie karboksylowej praktycznie nie przenika bariery krew-mózg, więc nie działa nasennie ani **antymuskarynowo**. Pozostałe: **hydroksyzyna**, **klemastyna**, **doksylamina** i **prometazyna** to leki **I generacji**, silnie sedatywne; doksylaminę wykorzystuje się wręcz jako lek nasenny i przeciwwymiotny u ciężarnych, a prometazynę w chorobie lokomocyjnej.
+---
+ID: FARSTO-e2026-1-1917
+TEMAT: FARM-02
+PYTANIE:
+Do antagonistów receptora 5-HT3 zaliczymy:
+A. Ondansetron
+B. Doksylaminę
+C. Flibanserynę
+D. Almotryptan
+E. Cyzapryd
+KLUCZ: a
+WYJAŚNIENIE:
+**Ondansetron** — jak wszystkie **setrony** (granisetron, palonosetron, tropisetron) — blokuje jonotropowy receptor **5-HT3** w jelicie i strefie chemoreceptorowej, znosząc wymioty po chemioterapii i pooperacyjne. Pozostałe leki obsługują inne receptory: **almotryptan** pobudza **5-HT1B/1D** (migrena), **cyzapryd** — **5-HT4** (prokinetyk wycofany z powodu **wydłużenia QT**), **flibanseryna** — **5-HT1A**, a **doksylamina** blokuje **H1**.
+---
+ID: FARSTO-e2026-1-1918
+TEMAT: FARM-02
+PYTANIE:
+Erenumab stosowany w terapii migreny działa poprzez:
+A. Pobudzanie 5-HT1B oraz 5-HT1D
+B. Blokowanie receptorów histaminowych typu 1
+C. Blokowanie receptorów beta-adrenergicznych
+D. Blokowanie receptorów CGRP
+E. Blokowanie cyklooksygenazy typu 2
+KLUCZ: d
+WYJAŚNIENIE:
+**Erenumab** to ludzkie przeciwciało monoklonalne skierowane przeciwko **receptorowi CGRP** — peptydu uwalnianego z zakończeń nerwu **trójdzielnego**, który rozszerza naczynia oponowe i podtrzymuje zapalenie neurogenne w napadzie migreny. Podaje się go **podskórnie raz w miesiącu** w profilaktyce. Pozostałe mechanizmy należą do innych leków: pobudzanie **5-HT1B/1D** — tryptany, blokada receptorów **beta** — propranolol, hamowanie **COX-2** — koksyby.
+---
+ID: FARSTO-e2026-1-1919
+TEMAT: FARM-15
+PYTANIE:
+Który z poniższych leków może być stosowany jako lek przeciwwymiotny poprzez hamowanie receptorów 5-HT3?
+A. Cyproheptadyna
+B. Granisetron
+C. Buspiron
+D. Karbamazepina
+E. Sumatryptan
+KLUCZ: b
+WYJAŚNIENIE:
+**Granisetron** należy do **setronów** — antagonistów receptora **5-HT3** — obok ondansetronu, palonosetronu i tropisetronu. Blokuje receptory na włóknach aferentnych **nerwu błędnego** w jelicie i w **strefie chemoreceptorowej**, znosząc wymioty po chemioterapii, radioterapii i zabiegach. Pozostałe leki działają na inne receptory serotoninowe: **cyproheptadyna** blokuje **5-HT2**, **buspiron** pobudza **5-HT1A**, a **sumatryptan** — **5-HT1B/1D**.
+---
+ID: FARSTO-e2026-1-1920
+TEMAT: FARM-13
+PYTANIE:
+Do działań niepożądanych pochodnych nitroimidazolu należą:
+A. Encefalopatia
+B. Wymioty i biegunka
+C. Zapalenie trzustki
+D. Metaliczny smak w ustach
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+**Metronidazol** i **tynidazol** to proleki aktywowane przez redukcję grupy nitrowej w beztlenowcach i pierwotniakach; powstające rodniki uszkadzają jednak także komórki gospodarza. Najbardziej charakterystyczny jest **metaliczny smak w ustach**, obok nudności, wymiotów i biegunki. Rzadziej pojawiają się **zapalenie trzustki**, **encefalopatia** i neuropatia obwodowa przy długiej terapii. Kluczowa interakcja to **reakcja disulfiramowa** po alkoholu — wymagana abstynencja.
+---
+ID: FARSTO-e2026-1-1921
+TEMAT: FARM-13
+PYTANIE:
+Sulfonamidem doustnym, który działa wolno jest:
+A. Rywastygmina
+B. Sulfametoksazol
+C. Sulfizoksazol
+D. Tropikamid
+E. Sulfanilamid
+KLUCZ: b
+WYJAŚNIENIE:
+**Sulfametoksazol** wchłania się i jest wydalany wolniej niż krótko działające **sulfizoksazol** i **sulfanilamid**, a jego okres półtrwania (**ok. 10 h**) niemal pokrywa się z półtrwaniem **trimetoprymu** — dlatego oba leki połączono w **kotrimoksazol** w proporcji **5:1**, uzyskując synergiczną, dwustopniową blokadę syntezy **folianów**. Pozostałe opcje to leki spoza grupy: **rywastygmina** hamuje cholinesterazę, a **tropikamid** jest lekiem antymuskarynowym.
+---
+ID: FARSTO-e2026-1-1922
+TEMAT: FARM-04
+PYTANIE:
+Do objawów zatrucia atropiną nie należy:
+A. Pobudzenie ośrodka termoregulacyjnego
+B. Pobudzenie psychomotoryczne
+C. Zwiększenie wydzielania gruczołowego
+D. Rozszerzenie naczyń skórnych
+E. Rozszerzenie źrenic
+KLUCZ: c
+WYJAŚNIENIE:
+Atropina blokuje receptory **muskarynowe**, więc wydzielanie gruczołowe **maleje** — pojawia się suchość skóry i błon śluzowych, a nie jej wzrost. Pozostałe objawy tworzą klasyczny zespół antycholinergiczny opisany mnemonikiem: **gorący jak zając** (hipertermia z braku potu), **suchy jak pieprz**, **czerwony jak burak** (rozszerzenie naczyń skórnych), **ślepy jak nietoperz** (mydriaza, porażenie akomodacji), **szalony jak kapelusznik** (pobudzenie, majaczenie). Odtrutką jest **fizostygmina**.
+---
+ID: FARSTO-e2026-1-1923
+TEMAT: FARM-09
+PYTANIE:
+Długo działającą benzodiazepiną jest:
+A. Midazolam
+B. Diazepam
+C. Oksazepam
+D. Remimazolam
+E. Tiopental
+KLUCZ: b
+WYJAŚNIENIE:
+**Diazepam** ma okres półtrwania **20-50 h**, a jego aktywne metabolity — **nordazepam** (nawet **100 h**), oksazepam i temazepam — dodatkowo przedłużają efekt, dlatego kumuluje się u osób starszych i sprzyja upadkom. **Midazolam** działa krótko (**1,5-3 h**), **oksazepam** średnio długo i bez aktywnych metabolitów (bezpieczny w chorobach wątroby), **remimazolam** ultrakrótko dzięki rozkładowi przez esterazy, a **tiopental** jest barbituranem.
+---
+ID: FARSTO-e2026-1-1924
+TEMAT: FARM-08
+PYTANIE:
+Do działań niepożądanych leków przeciwdepresyjnych nie należy:
+A. Neurotoksyczność
+B. Arytmie
+C. Spadek masy ciała
+D. Uczucie splątania
+E. Wielomocz
+KLUCZ: c
+WYJAŚNIENIE:
+Leki przeciwdepresyjne, zwłaszcza **TLPD** i **mirtazapina**, powodują raczej **przyrost** masy ciała — blokada receptorów **H1** i **5-HT2C** pobudza apetyt; chudnięcie dotyczy głównie **bupropionu** i wczesnej fazy leczenia SSRI. Pozostałe działania są typowe: **arytmie** i wydłużenie **QT** po TLPD oraz citalopramie, **splątanie** i **neurotoksyczność** (drżenia, drgawki, zespół serotoninowy), a także zaburzenia gospodarki wodnej z **hiponatremią**.
+---
+ID: FARSTO-e2026-1-1925
+TEMAT: FARM-17
+PYTANIE:
+Grupa leków przeciwcukrzycowych, której należy unikać u osób starszych z niepełną zdolnością oceny przyjmowanej dawki (szczególnie u pacjentów z demencją, splątaniem) to:
+A. Pochodne biguanidu
+B. Inhibitory alfa-glukozydazy
+C. Glitazony
+D. Pochodne sulfonylomocznika
+E. Flozyny
+KLUCZ: d
+WYJAŚNIENIE:
+**Pochodne sulfonylomocznika** zamykają kanał **K-ATP** komórki beta i wyzwalają wyrzut insuliny **niezależnie od glikemii**, dlatego jako jedyne z wymienionych grup wywołują ciężkie, przedłużone **hipoglikemie** — szczególnie groźne u osób starszych, z otępieniem i upośledzoną czynnością nerek (klasycznie **glibenklamid**). **Metformina**, **flozyny**, glitazony i **akarboza** nie stymulują bezpośrednio wydzielania insuliny, więc same nie powodują hipoglikemii.
+---
+ID: FARSTO-e2026-1-1926
+TEMAT: FARM-17
+PYTANIE:
+Wskaż zdanie fałszywe dotyczące flozyn (inhibitorów SGLT-2, kotransportera sodowo-glukozowego typu 2):
+A. Są inhibitorami kotransportera sodowo-glukozowego typu 2
+B. Ich zastosowanie wywołuje glikozurię i zmniejszenie obciążenia organizmu wchłoniętą po posiłku glukozą
+C. Wykazują działanie zmniejszające ryzyko wystąpienia zawału serca, udaru i śmierci z powodów sercowo-naczyniowych
+D. Działania niepożądane tej grupy leków ograniczają się głównie do zakażeń układu moczowego
+E. Nie wpływają na wartości hemoglobiny glikowanej
+KLUCZ: e
+WYJAŚNIENIE:
+Zdanie E jest fałszywe — **flozyny** obniżają **HbA1c** o około **0,5-1%**. Hamując kotransporter **SGLT-2** w cewce proksymalnej, wywołują **glikozurię** z utratą kilkuset kcal na dobę oraz łagodny efekt natriuretyczny. W badaniach EMPA-REG i DAPA-HF zmniejszyły śmiertelność sercowo-naczyniową, liczbę hospitalizacji z powodu **niewydolności serca** i progresję choroby nerek. Groźnym powikłaniem jest **euglikemiczna kwasica ketonowa**.
+---
+ID: FARSTO-e2026-1-1927
+TEMAT: FARM-12
+PYTANIE:
+Lekiem mukokinetycznym jest:
+A. Bromheksyna
+B. Gwajafenezyna
+C. Butamirat
+D. Kodeina
+E. Dornaza alfa
+KLUCZ: a
+WYJAŚNIENIE:
+**Bromheksyna** działa **mukokinetycznie** — depolimeryzuje kwaśne mukopolisacharydy wydzieliny, pobudza komórki surowicze i przyspiesza ruch **rzęsek**, usprawniając transport śluzowo-rzęskowy; jej aktywnym metabolitem jest **ambroksol**. Pozostałe leki mają inne mechanizmy: **gwajafenezyna** działa wykrztuśnie odruchowo, **dornaza alfa** rozkłada **DNA** gęstej plwociny w mukowiscydozie, a **butamirat** i **kodeina** hamują odruch kaszlowy.
+---
+ID: FARSTO-e2026-1-1928
+TEMAT: FARM-15
+PYTANIE:
+Do grupy antagonistów receptorów serotoninowych typu 3 należy:
+A. Tietylperazyna
+B. Ondansetron
+C. Somatostatyna
+D. Terlipresyna
+E. Soraprazan
+KLUCZ: b
+WYJAŚNIENIE:
+**Ondansetron** blokuje jonotropowy receptor **5-HT3** na zakończeniach nerwu błędnego i w strefie chemoreceptorowej — to lek pierwszego wyboru w wymiotach po **chemioterapii** i pooperacyjnych. Pozostałe pozycje należą do innych grup: **tietylperazyna** jest pochodną fenotiazyny blokującą **D2**, **somatostatyna** i **terlipresyna** zmniejszają przepływ trzewny w krwawieniu z żylaków przełyku, a **soraprazan** to odwracalny bloker pompy protonowej.
+---
+ID: FARSTO-e2026-1-1929
+TEMAT: FARM-08
+PYTANIE:
+Do działań niepożądanych wywoływanych przez antagonistów receptorów dopaminowych typu 2 nie należy:
+A. Nasilenie wydzielania prolaktyny
+B. Zaburzenia pozapiramidowe
+C. Senność
+D. Zaburzenia miesiączkowania
+E. Impotencja
+KLUCZ: c
+WYJAŚNIENIE:
+**Senność** nie wynika z blokady receptorów **D2**, lecz z równoczesnego hamowania receptorów **H1** i **alfa1**, dlatego przypisuje się ją lekom o szerokim profilu powinowactwa (fenotiazyny, klozapina), a nie samej antagonizacji dopaminy. Wprost z blokady **D2** wynikają natomiast **hiperprolaktynemia** — zniesienie tonicznego hamowania w szlaku **guzkowo-lejkowym**, z zaburzeniami miesiączkowania, mlekotokiem i **impotencją** — oraz objawy **pozapiramidowe** ze szlaku nigrostriatalnego.
+---
+ID: FARSTO-e2026-1-1930
+TEMAT: FARM-06
+PYTANIE:
+Lekiem z grupy tiazydów stosowanym w nadciśnieniu i niewydolności serca, którego działanie polega na rozszerzaniu naczyń oraz jest zwykle podawany raz dziennie jest:
+A. Hydrochlorotiazyd
+B. Metolazon
+C. Chlortalidon
+D. Indapamid
+E. Klopamid
+KLUCZ: d
+WYJAŚNIENIE:
+**Indapamid** to lek **tiazydopodobny** z dodatkową komponentą **rozszerzającą naczynia** (wpływ na napływ wapnia do miocytów gładkich i syntezę prostaglandyn), dzięki czemu obniża ciśnienie już w dawkach o słabym działaniu moczopędnym. Podawany **raz na dobę**, ma korzystniejszy profil metaboliczny niż hydrochlorotiazyd i powoduje regresję **przerostu lewej komory**. **Chlortalidon** i **klopamid** też są tiazydopodobne, ale bez efektu naczyniowego.
+---
+ID: FARSTO-e2026-1-1931
+TEMAT: FARM-16
+PYTANIE:
+Lekiem stosowanym w leczeniu łagodnego przerostu gruczołu krokowego jest:
+A. Wazopresyna
+B. Desmopresyna
+C. Koniwaptan
+D. Urodylatyna
+E. Finasteryd
+KLUCZ: e
+WYJAŚNIENIE:
+**Finasteryd** hamuje **5-alfa-reduktazę typu 2**, blokując przemianę **testosteronu w dihydrotestosteron** — androgen odpowiedzialny za rozrost gruczołu krokowego. Zmniejsza objętość prostaty po **3-6 miesiącach** i obniża stężenie **PSA o około 50%**, co trzeba uwzględnić w diagnostyce raka; działa też w łysieniu androgenowym. Pozostałe opcje dotyczą gospodarki wodnej: **desmopresyna** pobudza receptor **V2**, **koniwaptan** go blokuje, a **urodylatyna** jest peptydem natriuretycznym.
+---
+ID: FARSTO-e2026-1-1932
+TEMAT: FARM-05
+PYTANIE:
+Do leków hamujących czynność płytek krwi nie należy:
+A. Rywaroksaban
+B. Kwas acetylosalicylowy
+C. Klopidogrel
+D. Prasugrel
+E. Iloprost
+KLUCZ: a
+WYJAŚNIENIE:
+**Rywaroksaban** jest bezpośrednim inhibitorem **czynnika Xa** — należy do **DOAC (bezpośrednich doustnych antykoagulantów)** i hamuje osoczową kaskadę krzepnięcia, a nie czynność płytek. Pozostałe leki to antyagreganty: **kwas acetylosalicylowy** nieodwracalnie acetyluje **COX-1**, znosząc syntezę **tromboksanu A2**, **klopidogrel** i **prasugrel** blokują płytkowy receptor **P2Y12** dla ADP, a **iloprost** jako analog **prostacykliny** zwiększa stężenie cAMP w płytkach.
+---
+ID: FARSTO-e2026-1-1933
+TEMAT: FARM-15
+PYTANIE:
+Najsilniejsze działanie przeciwwymiotne w leczeniu choroby lokomocyjnej wykazuje:
+A. prometazyna
+B. skopolamina
+C. ondansetron
+D. metoklopramid
+E. ranitydyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Skopolamina**, alkaloid tropanowy blokujący receptory **muskarynowe**, najsilniej hamuje przekaźnictwo z jąder **przedsionkowych** do ośrodka wymiotnego, dlatego w profilaktyce choroby lokomocyjnej stosuje się ją w plastrze **przezskórnym** za uchem, działającym do **72 h**. **Prometazyna** i dimenhydrynat są skuteczne, lecz słabsze. **Ondansetron** i **metoklopramid** zawodzą, bo bodziec jest przedsionkowy, a nie serotoninowy czy dopaminowy; ranitydyna nie działa przeciwwymiotnie.
+---
+ID: FARSTO-e2026-1-1934
+TEMAT: FARM-08
+PYTANIE:
+Lek przeciwpsychotyczny częściowo agonistyczny w stosunku do receptorów D2 to:
+A. olanzapina
+B. arypiprazol
+C. kwetiapina
+D. risperidon
+E. perazyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Arypiprazol** jest **częściowym agonistą D2** — przy nadmiarze dopaminy w szlaku mezolimbicznym zachowuje się jak antagonista, a przy jej niedoborze w szlaku mezokortykalnym i guzkowo-lejkowym jak słaby agonista, stąd nazwa **stabilizator dopaminowy**. Dodatkowo pobudza **5-HT1A** i blokuje **5-HT2A**. Rzadko wywołuje **hiperprolaktynemię** oraz przyrost masy ciała, ale często **akatyzję**. Pozostałe leki to klasyczni antagoniści receptora D2.
+---
+ID: FARSTO-e2026-1-1935
+TEMAT: FARM-14
+PYTANIE:
+Wskaż lek przeciwgrzybiczy o mechanizmie polegającym na hamowaniu syntezy beta-(1,3)-glukanu w ścianie komórkowej grzybów:
+A. amfoterycyna B
+B. flukonazol
+C. kaspofungina
+D. terbinafina
+E. gryzeofulwina
+KLUCZ: c
+WYJAŚNIENIE:
+**Kaspofungina**, jak pozostałe **echinokandyny** (anidulafungina, mikafungina), hamuje **syntazę beta-(1,3)-glukanu**, uniemożliwiając budowę **ściany komórkowej** grzyba — struktury, której człowiek nie posiada, stąd bardzo dobra tolerancja. Podawana wyłącznie **dożylnie**, jest lekiem z wyboru w inwazyjnej kandydozie. Inne mechanizmy: **amfoterycyna B** wiąże **ergosterol** i tworzy pory, **flukonazol** hamuje **14-alfa-demetylazę**, a **terbinafina** — epoksydazę skwalenową.
+---
+ID: FARSTO-e2026-1-1936
+TEMAT: FARM-13
+PYTANIE:
+Zespół "czerwonego człowieka" jest charakterystycznym działaniem niepożądanym:
+A. gentamycyny
+B. wankomycyny
+C. linezolidu
+D. daptomycyny
+E. streptomycyny
+KLUCZ: b
+WYJAŚNIENIE:
+Zespół **czerwonego człowieka** to nieimmunologiczne, bezpośrednie uwolnienie **histaminy** z mastocytów przy zbyt szybkim wlewie **wankomycyny** — pojawia się rumień i świąd twarzy, szyi oraz górnej połowy tułowia, czasem z hipotonią. Nie jest to alergia **IgE-zależna**, więc wystarczy wydłużyć infuzję do co najmniej **60 minut** i podać lek przeciwhistaminowy. Inne typowe działania wankomycyny to **nefrotoksyczność** i **ototoksyczność**, nasilane przez aminoglikozydy.
+---
+ID: FARSTO-e2026-1-1937
+TEMAT: FARM-08
+PYTANIE:
+Wskaż lek przeciwdepresyjny będący inhibitorem wychwytu zwrotnego serotoniny i noradrenaliny (SNRI):
+A. sertralina
+B. duloksetyna
+C. moklobemid
+D. mirtazapina
+E. fluwoksamina
+KLUCZ: b
+WYJAŚNIENIE:
+**Duloksetyna** hamuje wychwyt zwrotny **serotoniny i noradrenaliny**, podobnie jak wenlafaksyna i milnacypran. Poza depresją i zaburzeniem lękowym uogólnionym stosuje się ją w **bólu neuropatycznym** w cukrzycy, fibromialgii i wysiłkowym nietrzymaniu moczu — efekt przeciwbólowy wynika ze wzmocnienia zstępujących szlaków hamujących. **Sertralina** i **fluwoksamina** to SSRI, **moklobemid** — odwracalny inhibitor **MAO-A**, a **mirtazapina** blokuje receptory **alfa2**.
+---
+ID: FARSTO-e2026-1-1938
+TEMAT: FARM-12
+PYTANIE:
+Lek, który hamuje syntezę leukotrienów przez blokadę 5-lipooksygenazy:
+A. montelukast
+B. zafirlukast
+C. zileuton
+D. pitrakinra
+E. mepolizumab
+KLUCZ: c
+WYJAŚNIENIE:
+**Zileuton** blokuje **5-lipooksygenazę**, enzym przekształcający **kwas arachidonowy** w leukotrieny, więc hamuje powstawanie zarówno **LTB4**, jak i cysteinylowych **LTC4, LTD4 i LTE4**. Wymaga dawkowania cztery razy na dobę i kontroli **aminotransferaz** ze względu na hepatotoksyczność, dlatego jest rzadko stosowany. **Montelukast** i **zafirlukast** działają niżej w szlaku, blokując receptor **CysLT1**, a **mepolizumab** jest przeciwciałem przeciw **IL-5**.
+---
+ID: FARSTO-e2026-1-1939
+TEMAT: FARM-15
+PYTANIE:
+Wskaż lek działający poprzez nieodwracalne hamowanie pompy protonowej w komórkach okładzinowych żołądka:
+A. ranitydyna
+B. famotydyna
+C. mizoprostol
+D. omeprazol
+E. sukralfat
+KLUCZ: d
+WYJAŚNIENIE:
+**Omeprazol** jest prolekiem gromadzącym się w kanalikach wydzielniczych komórki okładzinowej, gdzie w **kwaśnym pH** przekształca się w sulfenamid i **nieodwracalnie** wiąże z **H+/K+-ATP-azą**, czyli pompą protonową. Efekt utrzymuje się aż do syntezy nowych pomp, przez **24-48 h**, a lek przyjmuje się **30-60 min przed posiłkiem**. Inaczej działają: **ranitydyna** i **famotydyna** blokują receptory **H2**, **mizoprostol** jest analogiem **PGE1**, a **sukralfat** tworzy warstwę ochronną.
+---
+ID: FARSTO-e2026-1-1940
+TEMAT: FARM-17
+PYTANIE:
+Który z wymienionych leków jest inhibitorem SGLT-2 (kotransportera sodowo-glukozowego typu 2) i stosowany w cukrzycy typu 2?
+A. sitagliptyna
+B. eksenatyd
+C. kanagliflozyna
+D. akarboza
+E. repaglinid
+KLUCZ: c
+WYJAŚNIENIE:
+**Kanagliflozyna**, podobnie jak dapagliflozyna i empagliflozyna, hamuje **SGLT-2** w cewce proksymalnej — kotransporter odpowiadający za około **90% zwrotnego wchłaniania glukozy**. Efektem są **glikozuria**, spadek masy ciała i ciśnienia tętniczego oraz ochrona serca i nerek. Inne mechanizmy: **sitagliptyna** hamuje **DPP-4 (dipeptydylopeptydazę 4)**, **eksenatyd** pobudza receptor **GLP-1 (peptydu glukagonopodobnego 1)**, **akarboza** blokuje alfa-glukozydazę, a **repaglinid** zamyka kanał **K-ATP**.
+---
+ID: FARSTO-e2026-1-1941
+TEMAT: FARM-14
+PYTANIE:
+Wskaż lek przeciwwirusowy stosowany w leczeniu COVID-19 w postaci doustnej:
+A. oseltamiwir
+B. remdesiwir
+C. nirmatrelwir/rytonawir
+D. acyklowir
+E. gancyklowir
+KLUCZ: c
+WYJAŚNIENIE:
+**Nirmatrelwir** hamuje główną proteazę **3CL (Mpro)** wirusa SARS-CoV-2, blokując cięcie poliprotein niezbędne do replikacji, natomiast **rytonawir** dodano wyłącznie jako **booster farmakokinetyczny** — silny inhibitor **CYP3A4** podtrzymujący stężenie leku, ale i źródło licznych interakcji (statyny, amiodaron, takrolimus). Terapię doustną trzeba zacząć w ciągu **5 dni** od objawów. **Remdesiwir** podaje się dożylnie, a **oseltamiwir** hamuje neuraminidazę wirusa grypy.
+---
+ID: FARSTO-e2026-1-1942
+TEMAT: FARM-15
+PYTANIE:
+Lek stosowany w terapii krwawień z przewodu pokarmowego, działający poprzez aktywację receptorów wazopresynowych w mięśniach gładkich naczyń trzewnych:
+A. wazopresyna
+B. desmopresyna
+C. terlipresyna
+D. oksytocyna
+E. bromokryptyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Terlipresyna** to prolek stopniowo uwalniający **lizyno-wazopresynę**, która pobudza receptory **V1** w mięśniówce naczyń **trzewnych**; ich skurcz zmniejsza napływ krwi do krążenia wrotnego i obniża ciśnienie w **żylakach przełyku**, hamując krwawienie. Stosuje się ją także w **zespole wątrobowo-nerkowym**. Długi czas działania pozwala podawać ją w bolusach co 4-6 h, w odróżnieniu od wazopresyny wymagającej wlewu. **Desmopresyna** pobudza wybiórczo receptory **V2**.
+---
+ID: FARSTO-e2026-1-1943
+TEMAT: FARM-04
+PYTANIE:
+Z białkiem Gs są związane receptory:
+A. alfa2
+B. beta1
+C. M2
+D. 5-HT3
+E. B1
+KLUCZ: b
+WYJAŚNIENIE:
+Receptory **beta-adrenergiczne** (beta1, beta2, beta3) sprzęgają się z białkiem **Gs**, które pobudza **cyklazę adenylanową** i zwiększa stężenie **cAMP** — w sercu daje to efekt inotropowy i chronotropowy dodatni. Z białkiem **Gi**, hamującym cyklazę, związane są **alfa2** i **M2**, z **Gq** (fosfolipaza C, IP3, wzrost Ca2+) — alfa1, M1/M3 i bradykininowy **B1**, a **5-HT3** jest receptorem **jonotropowym**, czyli kanałem jonowym niezwiązanym z białkiem G.
+---
+ID: FARSTO-e2026-1-1944
+TEMAT: FARM-04
+PYTANIE:
+Za wydzielanie reniny przez aparat przykłębuszkowy w nerce odpowiada receptor:
+A. alfa1
+B. M3
+C. beta1
+D. beta2
+E. beta3
+KLUCZ: c
+WYJAŚNIENIE:
+Wydzielanie **reniny** przez komórki ziarniste aparatu przykłębuszkowego pobudzają włókna współczulne działające przez receptory **beta1** — obok spadku ciśnienia w tętniczce doprowadzającej i mniejszej podaży **NaCl** w plamce gęstej. Tłumaczy to jeden z mechanizmów hipotensyjnego działania **beta-blokerów**, które hamują aktywność układu **RAA**. Receptory **beta2** rozszerzają oskrzela i naczynia mięśni szkieletowych, a **beta3** znajdują się w tkance tłuszczowej i pęcherzu moczowym.
+---
+ID: FARSTO-e2026-1-1945
+TEMAT: FARM-04
+PYTANIE:
+Jednym ze wskazań do stosowania leków cholinomimetycznych jest:
+A. Niedrożność dróg moczowych i żółciowych
+B. Astma oskrzelowa
+C. Zawał mięśnia sercowego
+D. Atonia przewodu pokarmowego
+E. Nadczynność tarczycy
+KLUCZ: d
+WYJAŚNIENIE:
+**Cholinomimetyki** (betanechol, neostygmina) pobudzają receptory **M3** mięśniówki gładkiej jelit i pęcherza, dlatego stosuje się je w pooperacyjnej **atonii przewodu pokarmowego** i zatrzymaniu moczu z atonii wypieracza. Pozostałe stany to **przeciwwskazania**: niedrożność mechaniczna grozi perforacją, w **astmie** dochodzi do skurczu oskrzeli i wzrostu wydzieliny, a w świeżym zawale i **nadczynności tarczycy** ryzykowna jest bradykardia i pobudzenie arytmii.
+---
+ID: FARSTO-e2026-1-1946
+TEMAT: FARM-04
+PYTANIE:
+Lekiem sympatykomimetycznym pobudzającym receptory alfa1, stosowanym pozajelitowo w celu utrzymania prawidłowych wartości ciśnienia tętniczego podczas znieczulenia przewodowego czy ogólnego oraz jako środek wspomagający w leczeniu wstrząsu i niedociśnienia tętniczego, jest:
+A. Nafazolina
+B. Tetryzolina
+C. Midodryna
+D. Etylefryna
+E. Fenylefryna
+KLUCZ: e
+WYJAŚNIENIE:
+**Fenylefryna** jest wybiórczym agonistą receptorów **alfa1** — obkurcza naczynia oporowe i podnosi ciśnienie bez bezpośredniego pobudzania serca, dlatego podaje się ją **dożylnie** w hipotonii po znieczuleniu podpajęczynówkowym lub ogólnym; typowa jest przy tym odruchowa **bradykardia** z baroreceptorów. **Nafazolina** i **tetryzolina** służą wyłącznie do stosowania miejscowego w nosie i oku, **midodryna** działa doustnie w hipotonii ortostatycznej, a **etylefryna** pobudza też receptory beta.
+---
+ID: FARSTO-e2026-1-1947
+TEMAT: FARM-06
+PYTANIE:
+Działaniem niepożądanym inhibitorów ACE nie jest:
+A. Duży wzrost ciśnienia tętniczego krwi po pierwszej dawce
+B. Suchy kaszel
+C. Zaburzenia smaku
+D. Hiperkaliemia
+E. Pokrzywka alergiczna
+KLUCZ: a
+WYJAŚNIENIE:
+Po pierwszej dawce inhibitora ACE ciśnienie gwałtownie **spada**, a nie rośnie — hipotonia pierwszej dawki jest szczególnie groźna u chorych odwodnionych i leczonych diuretykami. Pozostałe działania są typowe: **suchy kaszel** i **obrzęk naczynioruchowy** wynikają z nagromadzenia **bradykininy**, **hiperkaliemia** ze spadku stężenia **aldosteronu**, a **zaburzenia smaku**, wysypki i pokrzywka wiążą się z grupą **sulfhydrylową** kaptoprylu.
+---
+ID: FARSTO-e2026-1-1948
+TEMAT: FARM-02
+PYTANIE:
+Niedobór tlenku azotu stwierdza się w:
+A. Wstrząsie endotoksycznym
+B. Rzucawce okołoporodowej
+C. Reumatoidalnym zapaleniu stawów
+D. Padaczce
+E. Pourazowym uszkodzeniu OUN
+KLUCZ: b
+WYJAŚNIENIE:
+W stanie przedrzucawkowym i **rzucawce** dochodzi do dysfunkcji śródbłonka z **niedoborem tlenku azotu** i prostacykliny, czego skutkiem są uogólniony **skurcz naczyń**, nadciśnienie, białkomocz i niedokrwienie łożyska. W pozostałych stanach obserwuje się **nadmiar NO** wytwarzanego przez indukowalną syntazę **iNOS**: we **wstrząsie endotoksycznym** odpowiada on za oporną na aminy katecholowe wazodylatację, a w RZS, padaczce i urazie OUN — za odczyn zapalny i **ekscytotoksyczność**.
+---
+ID: FARSTO-e2026-1-1949
+TEMAT: FARM-13
+PYTANIE:
+Przedstawicielem oksazolidynonów jest:
+A. bacytracyna
+B. linkomycyna
+C. linezolid
+D. lamiwudyna
+E. lewofloksacyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Linezolid** to główny przedstawiciel **oksazolidynonów** — wiąże się z podjednostką **50S** rybosomu i blokuje tworzenie kompleksu inicjującego **70S**, czyli najwcześniejszy etap syntezy białka, co czyni oporność krzyżową mało prawdopodobną. Działa na oporne ziarenkowce Gram-dodatnie: **MRSA**, **VRE** i pneumokoki, a jego biodostępność doustna sięga **100%**. Ograniczenia: **mielosupresja** po ponad 2 tygodniach terapii, neuropatia i ryzyko **zespołu serotoninowego** z SSRI.
+---
+ID: FARSTO-e2026-1-1950
+TEMAT: FARM-03
+PYTANIE:
+Do II stopnia drabiny analgetycznej nie należy:
+A. Tramadol
+B. Kodeina
+C. Dihydrokodeina
+D. Morfina
+E. Analgetyki nieopioidowe
+KLUCZ: d
+WYJAŚNIENIE:
+**Morfina** to **silny opioid**, czyli **III stopień** drabiny analgetycznej WHO, razem z oksykodonem, fentanylem, buprenorfiną i metadonem. **II stopień** tworzą opioidy słabe — **tramadol**, **kodeina** i **dihydrokodeina** — zawsze kojarzone z analgetykami nieopioidowymi ze stopnia I (**paracetamol**, **NLPZ**). Na każdym szczeblu można dołączyć **koanalgetyki**: leki przeciwdepresyjne, przeciwpadaczkowe, glikokortykosteroidy czy bisfosfoniany w bólu kostnym.
+---
+ID: FARSTO-e2026-1-1951
+TEMAT: FARM-13
+PYTANIE:
+Do farmakoterapii atypowego zapalenia płuc wywołanego przez Legionella sp., Mycoplasma sp. lub Chlamydia sp. powinno się włączyć:
+A. Cefotaksym
+B. Metronidazol
+C. Wankomycynę
+D. Ryfampicynę
+E. Azytromycynę
+KLUCZ: e
+WYJAŚNIENIE:
+Patogeny atypowe są **wewnątrzkomórkowe** (Legionella, Chlamydia) lub pozbawione **ściany komórkowej** (Mycoplasma), dlatego beta-laktamy jak **cefotaksym** oraz glikopeptydy są wobec nich bezsilne — brakuje im punktu uchwytu lub dostępu do wnętrza komórki. Skuteczne są leki dobrze penetrujące do cytoplazmy: **makrolidy**, **tetracykliny** i fluorochinolony oddechowe. **Azytromycyna** kumuluje się w makrofagach i ma długi okres półtrwania, co pozwala skrócić terapię do 3-5 dni.
+---
+ID: FARSTO-e2026-1-1952
+TEMAT: FARM-13
+PYTANIE:
+Dobrą penetracją do OUN charakteryzuje się:
+A. Metronidazol
+B. Aminoglikozydy
+C. Cefalosporyny I generacji
+D. Neomycyna
+E. Kwas klawulanowy
+KLUCZ: a
+WYJAŚNIENIE:
+**Metronidazol** jest małą, silnie **lipofilną** cząsteczką słabo wiążącą się z białkami, dlatego swobodnie przenika **barierę krew-mózg** i osiąga w płynie mózgowo-rdzeniowym stężenia zbliżone do surowiczych — to lek z wyboru w **ropniach mózgu** o etiologii beztlenowej. **Aminoglikozydy**, w tym **neomycyna**, są polarnymi kationami i praktycznie nie wnikają do OUN, podobnie **cefalosporyny I generacji**; skuteczne w zapaleniu opon są dopiero cefalosporyny III generacji.
+---
+ID: FARSTO-e2026-1-1953
+TEMAT: FARM-08
+PYTANIE:
+Wskaż lek stosowany u dzieci z ADHD:
+A. Metadon
+B. Metylfenidat
+C. Metotreksat
+D. Kwetiapina
+E. Lofeksydyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Metylfenidat** blokuje transportery **dopaminy (DAT)** i **noradrenaliny (NET)**, zwiększając stężenie tych amin w korze przedczołowej i poprawiając kontrolę uwagi oraz hamowanie impulsów w **ADHD**. Typowe działania niepożądane to brak łaknienia, zahamowanie wzrastania, bezsenność i wzrost ciśnienia; lek ma potencjał uzależniający. Alternatywą jest **atomoksetyna**, wybiórczy inhibitor NET. **Lofeksydyna**, agonista **alfa2**, łagodzi objawy odstawienia opioidów.
+---
+ID: FARSTO-e2026-1-1954
+TEMAT: FARM-15
+PYTANIE:
+Natalizumab to przeciwciało stosowane w leczeniu: I. Choroby Leśniowskiego-Crohna II. Stwardnienia rozsianego III. Rdzeniowego zaniku mięśni IV. Choroby Kennedy'ego V. Choroby Huntingtona VI. Ataksji Friedreicha
+A. I, III
+B. I, II
+C. I, IV
+D. II, V
+E. VI
+KLUCZ: b
+WYJAŚNIENIE:
+**Natalizumab** to przeciwciało monoklonalne przeciw **integrynie alfa4** limfocytów — blokuje ich adhezję do śródbłonka i przechodzenie do tkanek, w tym przez **barierę krew-mózg**. Stąd dwa wskazania: postać **rzutowo-remisyjna stwardnienia rozsianego** oraz oporna **choroba Leśniowskiego-Crohna**. Głównym zagrożeniem jest **postępująca wieloogniskowa leukoencefalopatia (PML)** wywołana wirusem **JC**, dlatego przed leczeniem oznacza się przeciwciała anty-JCV.
+---
+ID: FARSTO-e2026-1-1955
+TEMAT: FARM-10
+PYTANIE:
+Wskaż wyłącznie agonistów receptorów dopaminowych:
+A. Haloperydol, Olanzapina, Rezerpina, Pirybedyl
+B. Bromokryptyna, Pergolid, Ropinirol, Apomorfina
+C. Karbidopa, Selegilina, Tiapryd, Lewodopa
+D. Rotygotyna, Pramipeksol, Nusinersen, Olanzapina
+E. Onasemnogen, Abeparwowek, Baklofen, Kwetiapina, Diazepam
+KLUCZ: b
+WYJAŚNIENIE:
+Tylko zestaw B zawiera wyłącznie **agonistów receptorów dopaminowych**: **bromokryptynę** i **pergolid** (pochodne sporyszu, grożące włóknieniem zastawek i opłucnej), **ropinirol** oraz **apomorfinę** podawaną podskórnie w nagłych stanach **off**. Pozostałe zestawy psuje obecność leków o innym działaniu: **haloperydol**, **olanzapina** i **tiapryd** blokują **D2**, **rezerpina** opróżnia pęcherzyki z amin, **karbidopa** hamuje obwodową **dekarboksylazę**, a **selegilina** — **MAO-B**.
+---
+ID: FARSTO-e2026-1-1956
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zdanie prawdziwe:
+A. Mirabegron i wibegron służą do leczenia łagodnego przerostu prostaty
+B. Tamsulosyna i Alfuzosyna służą do leczenia nadreaktywnego pęcherza
+C. Prazosyna może być stosowana w leczeniu nadciśnienia tętniczego oraz chorobie Raynauda
+D. Betaksolol jest kardioselektywnym beta-blokerem o działaniu wazodylatacyjnym
+E. Fenoldopam służy do podwyższania ciśnienia tętniczego
+KLUCZ: c
+WYJAŚNIENIE:
+**Prazosyna** blokuje receptory **alfa1**, rozszerzając tętniczki i żyły — stąd zastosowanie w nadciśnieniu i objawie **Raynauda**, a także w koszmarach sennych w PTSD; typowa jest **hipotonia pierwszej dawki**. Pozostałe zdania mylą wskazania: **mirabegron** i wibegron to agoniści **beta3** w pęcherzu nadreaktywnym, **tamsulosyna** i alfuzosyna leczą **rozrost prostaty**, **betaksolol** nie rozszerza naczyń (w odróżnieniu od nebiwololu), a **fenoldopam**, agonista **D1**, ciśnienie obniża.
+---
+ID: FARSTO-e2026-1-1957
+TEMAT: FARM-04
+PYTANIE:
+Wraz ze wzrostem dawki dopamina wykazuje następujący ciąg efektów:
+A. Wzrost diurezy - stymulacja receptorów beta1 - aktywacja receptorów alfa1
+B. Skurcz naczyń krwionośnych - stymulacja receptorów alfa1 - wzrost diurezy
+C. Wzrost ciśnienia - tachykardia - wzrost diurezy
+D. Rozkurcz naczyń krwionośnych - bradykardia - omamy
+E. Dopamina jest neurotransmiterem wyłącznie w OUN, więc nie wywołuje efektów poza nim
+KLUCZ: a
+WYJAŚNIENIE:
+Dopamina działa **zależnie od dawki**: w małej (**1-3 mcg/kg/min**) pobudza receptory **D1** naczyń nerkowych i trzewnych, zwiększając przepływ nerkowy i **diurezę**; w średniej (**3-10**) dołącza pobudzenie **beta1** z efektem inotropowym i chronotropowym dodatnim; w dużej (**powyżej 10**) dominuje aktywacja **alfa1** ze skurczem naczyń i wzrostem oporu obwodowego. Jako amina katecholowa nie przenika bariery krew-mózg, więc podana dożylnie działa wyłącznie obwodowo.
+---
+ID: FARSTO-e2026-1-1958
+TEMAT: FARM-03
+PYTANIE:
+Zaznacz zdanie fałszywe:
+A. Nalokson to antagonista receptora opioidowego
+B. Nalokson ma krótki czas działania, dlatego aby zapobiec niewydolności oddechowej należy kilkukrotnie powtórzyć dawkę
+C. Naltrekson jest agonistą receptora opioidowego i można go podawać doustnie
+D. Naltrekson ma długi czas działania i można go podawać raz w miesiącu w zastrzykach
+E. Alwimopan jest antagonistą receptora opioidowego i działa wyłącznie obwodowo
+KLUCZ: c
+WYJAŚNIENIE:
+Fałszywe jest zdanie C: **naltrekson** to **antagonista**, a nie agonista receptorów opioidowych — podawany doustnie lub w postaci iniekcji o przedłużonym uwalnianiu **raz w miesiącu** wspomaga leczenie uzależnienia od opioidów i alkoholu. Pozostałe zdania są prawdziwe: **nalokson** działa krótko (**30-60 min**), więc po ustąpieniu efektu depresja oddechowa może wrócić i dawkę trzeba powtarzać, a **alwimopan** nie przenika do OUN, znosząc jedynie obwodowe skutki opioidów.
+---
+ID: FARSTO-e2026-1-1959
+TEMAT: FARM-03
+PYTANIE:
+Wskaż przeciwwskazania do stosowania kwasu acetylosalicylowego: I. Krwawienie miesiączkowe II. Ciąża III. Laktacja IV. Wtórna prewencja zawału V. Pierwotna prewencja zawału VI. Gorączka u dzieci do 12 roku życia VII. Astma oskrzelowa VIII. Zawał mięśnia sercowego
+A. I, II, III, VI, VII
+B. II, III, VI, VII
+C. IV, V, VII
+D. II, III, VII, VIII
+E. IV, V, VI, VII
+KLUCZ: a
+WYJAŚNIENIE:
+Kwas acetylosalicylowy nieodwracalnie hamuje **COX-1** płytek, więc nasila każde krwawienie, w tym **miesiączkowe**. W **ciąży** grozi przedwczesnym zamknięciem **przewodu tętniczego** i krwawieniem okołoporodowym, przenika też do mleka. U dzieci poniżej 12 lat może wywołać **zespół Reye'a** — encefalopatię ze stłuszczeniem wątroby — a u chorych na **astmę** napad duszności wskutek przesunięcia metabolizmu kwasu arachidonowego w stronę **leukotrienów**. Prewencja zawału jest wskazaniem, nie przeciwwskazaniem.
+---
+ID: FARSTO-e2026-1-1960
+TEMAT: FARM-08
+PYTANIE:
+Który z leków nie uzależnia psychicznie:
+A. Escitalopram
+B. Morfina
+C. Diazepam
+D. Midazolam
+E. Nikotyna
+KLUCZ: a
+WYJAŚNIENIE:
+**Escitalopram** (SSRI) nie uzależnia psychicznie — nie pobudza bezpośrednio układu nagrody, nie wywołuje euforii ani głodu leku. Po nagłym odstawieniu bywa **zespół odstawienny** (zawroty głowy, parestezje, drażliwość), dlatego dawkę zmniejsza się stopniowo, ale to nie jest uzależnienie. Pozostałe substancje uzależniają silnie: **morfina** przez receptory **mi**, **diazepam** i **midazolam** przez receptor **GABA-A**, a **nikotyna** przez receptory nikotynowe — wszystkie zwiększają uwalnianie **dopaminy** w jądrze półleżącym.
+---
+ID: FARSTO-e2026-1-1961
+TEMAT: FARM-09
+PYTANIE:
+Które leki można stosować w zaburzeniach snu:
+A. Lorazepam, Flumazenil, Difenhydramina
+B. Suworeksant, Zolpidem, Propranolol
+C. Zolpidem, Zaleplon, Buspiron
+D. Zolpidem, Difenhydramina, Melatonina
+E. Sertralina, Fentanyl, Morfina
+KLUCZ: d
+WYJAŚNIENIE:
+Zestaw D zawiera trzy leki realnie stosowane w bezsenności: **zolpidem** — lek „Z", agonista miejsca benzodiazepinowego wybiórczy wobec podjednostki **alfa1** receptora **GABA-A**, **difenhydraminę** — lek przeciwhistaminowy **I generacji** dostępny bez recepty, oraz **melatoninę** działającą przez receptory **MT1/MT2** i regulującą rytm dobowy. Pozostałe zestawy dyskwalifikują **flumazenil** (antagonista benzodiazepin), **propranolol**, **buspiron** oraz opioidy.
+---
+ID: FARSTO-e2026-1-1962
+TEMAT: FARM-10
+PYTANIE:
+Wskaż leki stosowane w chorobie Huntingtona:
+A. Tetrabenazyna, Haloperydol
+B. Lewodopa, Sertralina
+C. Apomorfina, Pergolid
+D. Escitalopram, Diazepam
+E. Olanzapina, Selegilina
+KLUCZ: a
+WYJAŚNIENIE:
+Pląsawicę w chorobie **Huntingtona** wywołuje względny **nadmiar dopaminy** w prążkowiu po utracie neuronów **GABA-ergicznych**, dlatego leczenie objawowe polega na osłabieniu przekaźnictwa dopaminergicznego: **tetrabenazyna** hamuje transporter pęcherzykowy **VMAT2**, opróżniając zakończenia z amin, a **haloperydol** blokuje receptory **D2**. Ryzykiem tetrabenazyny jest depresja z myślami samobójczymi. Leki dopaminergiczne, jak **lewodopa**, apomorfina czy pergolid, nasilałyby ruchy mimowolne.
+---
+ID: FARSTO-e2026-1-1963
+TEMAT: FARM-02
+PYTANIE:
+Do antagonistów receptora histaminowego H1 drugiej generacji nie należy:
+A. Astemizol
+B. Ebastyna
+C. Antazolina
+D. Mizolastyna
+E. Loratadyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Antazolina** to lek **I generacji**, stosowany głównie miejscowo do oka i nosa (często w połączeniu z ksylometazoliną) oraz dożylnie w ostrych reakcjach alergicznych; przenika do OUN i działa sedatywnie. **Astemizol**, **ebastyna**, **mizolastyna** i **loratadyna** należą do **II generacji** i nie wywołują senności. Astemizol oraz terfenadynę wycofano, bo blokując kanały **hERG**, wydłużały **QT** i groziły **torsade de pointes**, zwłaszcza z inhibitorami CYP3A4.
+---
+ID: FARSTO-e2026-1-1964
+TEMAT: FARM-03
+PYTANIE:
+Do leków urykozurycznych należy:
+A. Febuksostat
+B. Sulfasalazyna
+C. Peglotykaza
+D. Benzbromaron
+E. Prawidłowa jest odpowiedź B i D
+KLUCZ: d
+WYJAŚNIENIE:
+**Benzbromaron** hamuje transporter **URAT1** w cewce proksymalnej, blokując zwrotne wchłanianie **kwasu moczowego** i zwiększając jego wydalanie z moczem — to typowy **urykozuryk**, obok probenecydu, sulfinpirazonu i lesynuradu. Wymaga dobrego nawodnienia i alkalizacji moczu (ryzyko **kamicy moczanowej**), a jego stosowanie ograniczyła hepatotoksyczność. **Febuksostat** hamuje **oksydazę ksantynową**, a **peglotykaza** rozkłada kwas moczowy — działają na powstawanie, nie na wydalanie.
+---
+ID: FARSTO-e2026-1-1965
+TEMAT: FARM-07
+PYTANIE:
+Miopatie mogą być działaniem niepożądanym:
+A. Statyn
+B. Fibratów
+C. Ezetymibu
+D. Inhibitorów PCSK-9 (konwertazy proproteinowej subtylizyny/keksyny typu 9)
+E. A i B
+KLUCZ: e
+WYJAŚNIENIE:
+Zarówno **statyny**, jak i **fibraty** uszkadzają mięśnie — od bólów mięśniowych, przez zapalenie z podwyższoną **kinazą kreatynową**, po **rabdomiolizę** z mioglobinurią i ostrym uszkodzeniem nerek. Ryzyko rośnie wielokrotnie przy łączeniu obu grup, zwłaszcza z **gemfibrozylem**, który hamuje glukuronidację statyn, a także przy zablokowaniu **CYP3A4** (sok grejpfrutowy, makrolidy, azole). **Ezetymib** i **inhibitory PCSK9** są pod tym względem bezpieczne.
+---
+ID: FARSTO-e2026-1-1966
+TEMAT: FARM-07
+PYTANIE:
+Do efektów działania statyn należy:
+A. Obniżenie frakcji LDL cholesterolu
+B. Zapobieganie dysfunkcji śródbłonka
+C. Osłabienie agregacji płytek krwi
+D. Stabilizacja blaszki miażdżycowej
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+**Statyny** hamują **reduktazę HMG-CoA**, zmniejszając syntezę cholesterolu w hepatocycie i zwiększając ekspresję receptorów dla **LDL**, co obniża tę frakcję nawet o **50%**. Poza tym wykazują efekty **plejotropowe**: poprawiają czynność śródbłonka przez wzrost dostępności **tlenku azotu**, działają przeciwzapalnie (spadek **CRP**), osłabiają agregację płytek i **stabilizują blaszkę miażdżycową** — zmniejszają jej rdzeń lipidowy i wzmacniają czapeczkę włóknistą, ograniczając ryzyko zawału.
+---
+ID: FARSTO-e2026-1-1967
+TEMAT: FARM-06
+PYTANIE:
+Do beta-blokerów kardioselektywnych należy:
+A. Metoprolol
+B. Bisoprolol
+C. Nebiwolol
+D. Betaksolol
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+Wszystkie wymienione leki działają wybiórczo na receptory **beta1** mięśnia sercowego: **metoprolol**, **bisoprolol** i **betaksolol** obok atenololu i esmololu, a **nebiwolol** jest najbardziej kardioselektywnym beta-blokerem i dodatkowo uwalnia **tlenek azotu**, rozszerzając naczynia. Wybiórczość pozwala ostrożnie stosować tę grupę w **POChP**, cukrzycy i miażdżycy tętnic obwodowych, ale **zanika przy dużych dawkach**. Nieselektywne pozostają propranolol, sotalol i tymolol.
+---
+ID: FARSTO-e2026-1-1968
+TEMAT: FARM-07
+PYTANIE:
+Beta-blokery wykazują działanie:
+A. Chronotropowe ujemne
+B. Inotropowo ujemne
+C. Batmotropowe dodatnie
+D. A i B
+E. A, B i C
+KLUCZ: d
+WYJAŚNIENIE:
+Blokada receptorów **beta1** obniża stężenie **cAMP** w kardiomiocycie, dając cztery efekty ujemne: **chronotropowy** (zwolnienie rytmu zatokowego), **inotropowy** (spadek kurczliwości), **dromotropowy** (zwolnienie przewodzenia w węźle **AV**) oraz **batmotropowy** (spadek pobudliwości) — dlatego zdanie o dodatnim działaniu batmotropowym jest błędne. Skutkiem jest mniejsze zapotrzebowanie serca na tlen, wykorzystywane w dławicy, i działanie antyarytmiczne **klasy II**.
+---
+ID: FARSTO-e2026-1-1969
+TEMAT: FARM-09
+PYTANIE:
+Do leków znieczulenia miejscowego, będących pochodnymi amidowymi, NIE należy:
+A. lidokaina
+B. ropiwakaina
+C. bupiwakaina
+D. prokaina
+E. mepiwakaina
+KLUCZ: d
+WYJAŚNIENIE:
+Spośród wymienionych leków **prokaina** jako jedyna nie jest pochodną amidową, lecz **estrem** kwasu para-aminobenzoesowego — dlatego treść pytania ujęto w formie przeczącej. **Lidokaina**, **ropiwakaina**, **bupiwakaina** i **mepiwakaina** mają wiązanie **amidowe** i są metabolizowane w **wątrobie** przez układ **CYP450**, natomiast estry rozkłada **esteraza osoczowa** do **PABA** — najczęstszej przyczyny reakcji alergicznych na leki znieczulające miejscowo.
+---
+ID: FARSTO-e2026-1-1970
+TEMAT: FARM-08
+PYTANIE:
+Lekiem przeciwdepresyjnym, będącym inhibitorem wychwytu zwrotnego noradrenaliny i dopaminy jest:
+A. wortioksetyna
+B. bupropion
+C. amitryptylina
+D. sertralina
+E. mianseryna
+KLUCZ: b
+WYJAŚNIENIE:
+**Bupropion** hamuje wychwyt zwrotny **noradrenaliny i dopaminy**, nie wpływając na przekaźnictwo serotoninowe — dlatego nie powoduje zaburzeń seksualnych ani przyrostu masy ciała, a nawet sprzyja chudnięciu. Poza depresją stosuje się go w **rzucaniu palenia**, bo osłabia głód nikotynowy. Główne ryzyko to **obniżenie progu drgawkowego**, więc przeciwwskazaniem są padaczka i bulimia. **Wortioksetyna** działa wielomodalnie serotoninowo, **mianseryna** blokuje **alfa2**, a **amitryptylina** to TLPD.
+---
+ID: FARSTO-e2026-1-1971
+TEMAT: FARM-10
+PYTANIE:
+Wskaż lek znajdujący zastosowanie w leczeniu choroby Alzheimera, będący antagonistą receptora NMDA:
+A. ketamina
+B. donepezil
+C. memantyna
+D. galantamina
+E. rywastygmina
+KLUCZ: c
+WYJAŚNIENIE:
+**Memantyna** jest **antagonistą** receptora **NMDA** o umiarkowanym powinowactwie (w oryginale pytania omyłkowo napisano „agonista"). Blokuje kanał w sposób zależny od napięcia, tłumiąc toniczny napływ **wapnia** wywołany nadmiarem **glutaminianu**, czyli **ekscytotoksyczność**, ale nie znosi fizjologicznych sygnałów fazowych potrzebnych do uczenia się. Stosuje się ją w umiarkowanej i ciężkiej postaci choroby Alzheimera, także z inhibitorami cholinesterazy jak **donepezil**.
+---
+ID: FARSTO-e2026-1-1972
+TEMAT: FARM-10
+PYTANIE:
+Do działań niepożądanych inhibitorów cholinesterazy zaliczamy:
+A. zaburzenia żołądkowo-jelitowe
+B. tachykardię
+C. bradykardię
+D. A i B prawidłowe
+E. A i C prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+Inhibitory cholinesterazy — **donepezil**, **rywastygmina** i **galantamina** — zwiększają stężenie **acetylocholiny** także obwodowo, dając objawy pobudzenia receptorów **muskarynowych**: nudności, wymioty, biegunkę i kurcze brzucha, będące najczęstszą przyczyną odstawienia leku, oraz **bradykardię** z blokiem przedsionkowo-komorowym i omdleniami — nigdy tachykardię. Uwagi wymaga też skurcz oskrzeli w **astmie** i nasilenie choroby wrzodowej; dawkę zwiększa się stopniowo.
+---
+ID: FARLEK-e2026-1-1773
+TEMAT: FARM-03
+PYTANIE:
+Do leków urykozurycznych należy:
+A. Febuksostat
+B. Sulfasalazyna
+C. Peglotykaza
+D. Benzbromaron
+E. Prawidłowa odpowiedź B i D
+KLUCZ: d
+WYJAŚNIENIE:
+**Benzbromaron** hamuje transporter **URAT1** w cewce bliższej, blokując zwrotne wchłanianie kwasu moczowego i zwiększając jego wydalanie z moczem — to definicja leku **urykozurycznego**. **Febuksostat** hamuje **oksydazę ksantynową**, czyli zmniejsza syntezę kwasu moczowego, a **peglotykaza** to rekombinowana **urykaza** rozkładająca go do alantoiny. **Sulfasalazyna** jest lekiem modyfikującym przebieg RZS. Benzbromaron wymaga kontroli prób wątrobowych.
+---
+ID: FARLEK-e2026-1-1774
+TEMAT: FARM-01
+PYTANIE:
+Allopurynol wchodzi w istotną klinicznie interakcję z azatiopryną, dlatego jednoczesne stosowanie obu leków wymaga zmniejszenia dawki azatiopryny.
+A. Pierwsze zdanie jest prawdziwe, drugie zdanie jest fałszywe
+B. Pierwsze zdanie jest fałszywe, drugie zdanie jest prawdziwe
+C. Oba zdania są fałszywe
+D. Oba zdania są prawdziwe, lecz nie ma między nimi związku przyczynowo-skutkowego
+E. Oba zdania są prawdziwe i zachodzi pomiędzy nimi związek przyczynowo-skutkowy
+KLUCZ: e
+WYJAŚNIENIE:
+**Allopurynol** hamuje **oksydazę ksantynową**, która rozkłada **6-merkaptopurynę** — czynny metabolit **azatiopryny**. Zablokowanie tej drogi wielokrotnie zwiększa stężenie 6-MP, grożąc ciężką **mielosupresją** i pancytopenią. Dlatego przy skojarzeniu dawkę azatiopryny redukuje się do ok. **25-33%** wyjściowej albo unika się połączenia. Oba zdania są prawdziwe i drugie wynika z pierwszego — klasyczna **interakcja farmakokinetyczna** na etapie metabolizmu.
+---
+ID: FARLEK-e2026-1-1775
+TEMAT: FARM-03
+PYTANIE:
+Lekiem, który zmniejsza stężenie kwasu moczowego w surowicy poprzez nasilenie jego wydalania jest:
+A. Allopurynol
+B. Febuksostat
+C. Lesinurad
+D. Prawidłowe są odpowiedzi A i B
+E. Prawidłowe są odpowiedzi A, B i C
+KLUCZ: c
+WYJAŚNIENIE:
+**Lesinurad** blokuje transportery **URAT1** i **OAT4** w cewce bliższej, hamując reabsorpcję kwasu moczowego — działa więc **urykozurycznie**. **Allopurynol** i **febuksostat** obniżają urykemię zupełnie inaczej: hamują **oksydazę ksantynową**, czyli zmniejszają produkcję kwasu moczowego, nie zwiększając jego wydalania. Lesinurad wolno stosować wyłącznie **w skojarzeniu** z inhibitorem oksydazy ksantynowej — w monoterapii grozi ostrym uszkodzeniem nerek.
+---
+ID: FARLEK-e2026-1-1776
+TEMAT: FARM-03
+PYTANIE:
+Alkaloidem zimowita jesiennego stosowanym w leczeniu ostrego napadu dny moczanowej jest:
+A. Winblastyna
+B. Winkrystyna
+C. Kapecytabina
+D. Kolchicyna
+E. Winpocetyna
+KLUCZ: d
+WYJAŚNIENIE:
+**Kolchicyna** to alkaloid **zimowita jesiennego** (Colchicum autumnale). Wiąże **tubulinę** i hamuje polimeryzację mikrotubul, przez co blokuje chemotaksję oraz degranulację **neutrofilów** w stawie — stąd skuteczność w ostrym napadzie **dny**. Winblastyna i winkrystyna również działają na mikrotubule, ale pochodzą z barwinka różyczkowego i są cytostatykami. Objawem przedawkowania kolchicyny jest **biegunka** i wymioty poprzedzające uszkodzenie szpiku.
+---
+ID: FARLEK-e2026-1-1777
+TEMAT: FARM-01
+PYTANIE:
+Receptorem metabotropowym sprzężonym z białkiem Gq jest receptor:
+A. Histaminowy H1, adrenergiczny alfa1
+B. Histaminowy H2, adrenergiczny alfa2
+C. Histaminowy H3, adrenergiczny beta1
+D. Serotoninowy 5-HT3, adrenergiczny beta2
+E. Brak prawidłowej odpowiedzi
+KLUCZ: a
+WYJAŚNIENIE:
+Receptory **H1** i **alfa1** to klasyczne receptory sprzężone z białkiem **Gq**: aktywują **fosfolipazę C**, dając **IP3 i DAG** oraz wzrost wewnątrzkomórkowego **Ca2+**, czego efektem jest skurcz mięśni gładkich. **H2** oraz **beta1/beta2** sygnalizują przez **Gs** (wzrost cAMP), **alfa2** i **H3** przez **Gi** (spadek cAMP), natomiast **5-HT3** jest jedynym serotoninowym receptorem **jonotropowym** — kanałem kationowym. Mnemonik: **alfa1 i H1 — Gq**, **H2 i beta — Gs**, **alfa2 i H3 — Gi**.
+---
+ID: FARLEK-e2026-1-1778
+TEMAT: FARM-01
+PYTANIE:
+Aktywacja fosfolipazy C oraz związany z tym wzrost stężenia w cytozolu trifosforanu inozytolu i jonów wapnia jest typowym efektem pobudzenia receptorów:
+A. Jonotropowych
+B. Metabotropowych sprzężonych z białkiem Gs
+C. Metabotropowych sprzężonych z białkiem Gi
+D. Metabotropowych sprzężonych z białkiem Gq
+E. Jądrowych
+KLUCZ: d
+WYJAŚNIENIE:
+Szlak **Gq — fosfolipaza C beta — PIP2 — IP3 i DAG** kończy się uwolnieniem **Ca2+** z siateczki śródplazmatycznej oraz aktywacją **kinazy białkowej C**. Tak sygnalizują m.in. receptory **alfa1**, **H1**, **M1/M3**, **5-HT2**, **AT1** i **V1**. Receptory **Gs** i **Gi** modulują **cyklazę adenylanową** i stężenie **cAMP**, jonotropowe są kanałami bramkowanymi ligandem, a jądrowe zmieniają transkrypcję genów — działają wolno, ale długotrwale.
+---
+ID: FARLEK-e2026-1-1779
+TEMAT: FARM-09
+PYTANIE:
+Działanie stymulujące na pozasynaptyczne receptory GABA-A posiadają:
+A. Gaboksadol
+B. Izoguwacyna
+C. Etomidat
+D. Prawidłowe są odpowiedzi A i B
+E. Prawidłowe są odpowiedzi A, B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Pozasynaptyczne receptory **GABA-A** zawierają podjednostkę **delta** i odpowiadają za hamowanie **toniczne**, a nie fazowe. **Gaboksadol (THIP)** i **izoguwacyna** to bezpośredni agoniści preferujący receptory delta-zawierające, natomiast **etomidat** działa poprzez podjednostki **beta2/beta3** i również nasila prąd toniczny — prawidłowe są zatem wszystkie trzy. Warto pamiętać, że etomidat hamuje **11-beta-hydroksylazę** i steroidogenezę nadnerczową.
+---
+ID: FARLEK-e2026-1-1780
+TEMAT: FARM-14
+PYTANIE:
+Do działań niepożądanych, które mogą wystąpić w czasie stosowania ogólnego gancyklowiru należą:
+A. Zaparcia
+B. Nadmierna senność
+C. Bladość skóry
+D. Obniżona temperatura ciała
+E. Neuropatia obwodowa
+KLUCZ: e
+WYJAŚNIENIE:
+**Gancyklowir** hamuje polimerazę DNA **CMV** po fosforylacji przez wirusową kinazę **UL97**. Jego toksyczność dotyczy tkanek szybko dzielących się i układu nerwowego: dominuje **mielosupresja** (neutropenia, małopłytkowość, niedokrwistość), a ponadto występują objawy ośrodkowe — splątanie, drgawki — oraz **neuropatia obwodowa**. Zaparcia, senność czy hipotermia nie są typowe. Kojarzenie z **zydowudyną** znacząco nasila uszkodzenie szpiku.
+---
+ID: FARLEK-e2026-1-1781
+TEMAT: FARM-14
+PYTANIE:
+Do nukleozydowych i nukleotydowych inhibitorów odwrotnej transkryptazy nie należy:
+A. Zydowudyna
+B. Abakawir
+C. Atazanawir
+D. Lamiwudyna
+E. Emtrycytabina
+KLUCZ: c
+WYJAŚNIENIE:
+**Atazanawir** jest **inhibitorem proteazy** HIV — rozpoznajemy go po końcówce **-nawir**; typowym działaniem niepożądanym jest **hiperbilirubinemia** niesprzężona wskutek hamowania UGT1A1. Pozostałe leki to **NRTI**: po fosforylacji wbudowują się jako fałszywe nukleotydy i przerywają łańcuch DNA. Przed podaniem **abakawiru** trzeba oznaczyć **HLA-B*5701** (ryzyko ciężkiej reakcji nadwrażliwości), a **zydowudyna** wywołuje niedokrwistość i miopatię.
+---
+ID: FARLEK-e2026-1-1782
+TEMAT: FARM-14
+PYTANIE:
+Do natychmiastowych działań niepożądanych amfoterycyny B należy:
+A. Nefrotoksyczność
+B. Hepatotoksyczność
+C. Obniżenie ciśnienia tętniczego
+D. Niedokrwistość
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: c
+WYJAŚNIENIE:
+Amfoterycyna B ma dwa rozłączne profile toksyczności. **Natychmiastowy**, związany z wlewem, to gorączka, dreszcze, bóle mięśni, nudności i **spadek ciśnienia tętniczego** — reakcja typu shake-and-bake, łagodzona premedykacją i wolnym podawaniem. **Późna, kumulacyjna** toksyczność obejmuje **nefrotoksyczność** z hipokaliemią i hipomagnezemią oraz niedokrwistość. Mechanizm działania: wiązanie **ergosterolu** i tworzenie porów w błonie grzyba.
+---
+ID: FARLEK-e2026-1-1783
+TEMAT: FARM-02
+PYTANIE:
+Receptory 5-HT4 są receptorami:
+A. Metabotropowymi sprzężonymi z białkiem Gs
+B. Metabotropowymi sprzężonymi z białkiem Gi
+C. Metabotropowymi sprzężonymi z białkiem Gq
+D. Jonotropowymi
+E. Metabotropowymi o aktywności kinazy tyrozynowej
+KLUCZ: a
+WYJAŚNIENIE:
+**5-HT4** to receptor **metabotropowy sprzężony z Gs**: pobudza **cyklazę adenylanową** i podnosi stężenie **cAMP**. W splocie mięśniowym jelita zwiększa uwalnianie **acetylocholiny**, nasilając perystaltykę — na tym opiera się działanie **prukaloprydu** i wycofanego cyzaprydu (wydłużanie QT). Spośród receptorów serotoninowych wyłącznie **5-HT3** jest **jonotropowy**; 5-HT1 sprzęga się z **Gi**, a 5-HT2 z **Gq**. **Prukalopryd** jest wysoce selektywny wobec 5-HT4, dzięki czemu nie blokuje kanału hERG.
+---
+ID: FARLEK-e2026-1-1784
+TEMAT: FARM-02
+PYTANIE:
+Przeciwciałem monoklonalnym, stosowanym w profilaktyce migreny, które jest ukierunkowane przeciwko receptorowi dla CGRP (peptyd związany z genem kalcytoniny), jest:
+A. Eptinezumab
+B. Erenumab
+C. Galkanezumab
+D. Fremanezumab
+E. Prawidłowe są A i C
+KLUCZ: b
+WYJAŚNIENIE:
+**Erenumab** jako jedyny z przeciwciał przeciwmigrenowych blokuje **receptor CGRP**; eptinezumab, galkanezumab i fremanezumab wiążą samą **cząsteczkę CGRP**, czyli ligand. Wszystkie służą do **profilaktyki** migreny epizodycznej i przewlekłej — podskórnie co miesiąc lub kwartał, eptinezumab dożylnie. Do przerywania napadu stosuje się tryptany i gepanty.
+Mnemonik: **-NEZumab** wiąże ligand, natomiast **erEnumab** — receptor (E jak receptor).
+---
+ID: FARLEK-e2026-1-1785
+TEMAT: FARM-02
+PYTANIE:
+Lasmiditan jest:
+A. Agonistą receptorów 5-HT1B/D stosowanym w leczeniu napadów migreny
+B. Agonistą receptorów 5-HT1B/D stosowanym w profilaktyce napadów migreny
+C. Agonistą receptorów 5-HT1F stosowanym w leczeniu napadów migreny
+D. Agonistą receptorów 5-HT1F stosowanym w profilaktyce napadów migreny
+E. Antagonistą receptorów 5-HT2 stosowanym w profilaktyce napadów migreny
+KLUCZ: c
+WYJAŚNIENIE:
+**Lasmiditan** to selektywny agonista receptorów **5-HT1F**, pierwszy przedstawiciel **ditanów**, stosowany **doraźnie** w napadzie migreny. W odróżnieniu od **tryptanów** (agoniści 5-HT1B/1D) nie kurczy naczyń, więc można go podać choremu z chorobą wieńcową, po zawale czy udarze — to jego kluczowa przewaga. Ceną jest silne działanie ośrodkowe: **zawroty głowy**, senność i parestezje, z zakazem prowadzenia pojazdów przez 8 godzin.
+---
+ID: FARLEK-e2026-1-1786
+TEMAT: FARM-10
+PYTANIE:
+Lekiem o największej skuteczności w leczeniu stwardnienia zanikowego bocznego jest:
+A. Mitoksantron
+B. Natalizumab
+C. Octan glatirameru
+D. Ryluzol
+E. Siponimod
+KLUCZ: d
+WYJAŚNIENIE:
+**Ryluzol** to jedyny lek o udokumentowanym wpływie na przeżycie w **stwardnieniu zanikowym bocznym** — wydłuża je o około **3 miesiące** lub odsuwa moment tracheostomii. Hamuje presynaptyczne uwalnianie **glutaminianu** i blokuje kanały sodowe, ograniczając **ekscytotoksyczne** uszkodzenie motoneuronów. Wymaga kontroli **aminotransferaz** oraz morfologii. Pozostałe wymienione leki są lekami modyfikującymi przebieg stwardnienia rozsianego, nie SLA.
+---
+ID: FARLEK-e2026-1-1787
+TEMAT: FARM-14
+PYTANIE:
+W leczeniu rzęsistkowicy znajdują zastosowanie przede wszystkim:
+A. Pochodne nitroimidazolu
+B. Tetracykliny
+C. Makrolidy
+D. Fusydany
+E. Streptograminy
+KLUCZ: a
+WYJAŚNIENIE:
+Rzęsistkowicę wywołaną przez **Trichomonas vaginalis** leczy się **pochodnymi nitroimidazolu** — **metronidazolem** lub tynidazolem, doustnie i zawsze **równocześnie u partnera seksualnego**. Grupa nitrowa ulega redukcji w beztlenowych warunkach pierwotniaka do rodników uszkadzających jego DNA. Leczenie wyłącznie miejscowe jest nieskuteczne. Klasyczna pułapka to **reakcja disulfiramowa** po alkoholu. Antybiotyki wymienione w pozostałych opcjach nie działają na pierwotniaki.
+---
+ID: FARLEK-e2026-1-1788
+TEMAT: FARM-09
+PYTANIE:
+Anestetykiem wziewnym, który uchodzi za środek najbliższy idealnemu, jest:
+A. Enfluran
+B. Sewofluran
+C. Desfluran
+D. Izofluran
+E. Halotan
+KLUCZ: b
+WYJAŚNIENIE:
+**Sewofluran** najbardziej zbliża się do anestetyku idealnego: niski współczynnik rozdziału **krew/gaz (ok. 0,65)** zapewnia szybką indukcję i wybudzenie, a brak drażniącego zapachu pozwala na **indukcję wziewną u dzieci**. Dodatkowo rozszerza oskrzela i jest stabilny hemodynamicznie. **Desfluran** silnie drażni drogi oddechowe, **halotan** grozi hepatotoksycznością i arytmiami, **enfluran** działa drgawkorodnie. Wadą sewofluranu jest powstawanie **związku A**.
+---
+ID: FARLEK-e2026-1-1789
+TEMAT: FARM-09
+PYTANIE:
+Krótko działający anestetyk, wywołujący szybką indukcję znieczulenia, podawany samodzielnie przy krótkich zabiegach, szczególnie korzystny dlatego, że nie wywołuje depresyjnego wpływu na czynność serca i układ oddechowy. Opis dotyczy:
+A. Tiopental
+B. Halotan
+C. Etomidat
+D. Droperydol
+E. Desfluran
+KLUCZ: c
+WYJAŚNIENIE:
+**Etomidat** to pochodna imidazolowa o bardzo szybkim początku działania i krótkiej hipnozie, wyróżniająca się **stabilnością hemodynamiczną** oraz minimalną depresją oddechową — dlatego jest anestetykiem z wyboru u chorych niestabilnych krążeniowo i we wstrząsie. Nie działa przeciwbólowo. Wady: mioklonie, ból przy wstrzyknięciu, nudności oraz zahamowanie **11-beta-hydroksylazy**, co wyklucza wlewy ciągłe. **Tiopental** silnie obniża ciśnienie.
+---
+ID: FARLEK-e2026-1-1790
+TEMAT: FARM-06
+PYTANIE:
+Lekiem, który jest jednocześnie antagonistą receptorów endotelinowych oraz receptora dla angiotensyny, zarejestrowanym do leczenia nefropatii IgA, jest:
+A. Bozentan
+B. Ambryzentan
+C. Macytentan
+D. Sparsentan
+E. Sytaksentan
+KLUCZ: d
+WYJAŚNIENIE:
+**Sparsentan** to podwójny antagonista receptora endotelinowego **ETA** oraz receptora **AT1** dla angiotensyny II. Zarejestrowano go do leczenia pierwotnej **nefropatii IgA** z białkomoczem, gdzie istotnie zmniejsza proteinurię i spowalnia spadek **eGFR**. Bozentan, macytentan, ambryzentan i sytaksentan blokują wyłącznie receptory endotelinowe i służą w **tętniczym nadciśnieniu płucnym**. Cała grupa jest **hepatotoksyczna i silnie teratogenna**.
+---
+ID: FARLEK-e2026-1-1791
+TEMAT: FARM-02
+PYTANIE:
+Do antagonistów receptora histaminowego H1 pierwszej generacji nie należy:
+A. Antazolina
+B. Azelastyna
+C. Doksylamina
+D. Prometazyna
+E. Klemastyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Azelastyna** należy do **II generacji** leków przeciwhistaminowych i stosowana jest donosowo oraz do worka spojówkowego; nie przenika istotnie do OUN. Antazolina, doksylamina, prometazyna i klemastyna to **I generacja** — związki lipofilne, blokujące dodatkowo receptory **muskarynowe** i alfa-adrenergiczne, przez co dają **sedację**, suchość w ustach i zatrzymanie moczu. Sedację I generacji wykorzystuje się czasem celowo, np. doksylaminę jako lek nasenny.
+---
+ID: FARLEK-e2026-1-1792
+TEMAT: FARM-02
+PYTANIE:
+Do antagonistów receptora histaminowego H1 drugiej generacji nie należy:
+A. Astemizol
+B. Ebastyna
+C. Antazolina
+D. Mizolastyna
+E. Loratadyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Antazolina** to klasyczny lek **I generacji** — pochodna etylenodiaminy, dostępna również dożylnie w reakcjach alergicznych, o wyraźnym działaniu **antycholinergicznym** i sedatywnym. Astemizol, ebastyna, mizolastyna i loratadyna należą do **II generacji**: słabo przenikają barierę krew-mózg, więc nie powodują senności. **Astemizol** i terfenadynę wycofano z powodu blokowania kanału **hERG** i ryzyka **torsade de pointes**, zwłaszcza z inhibitorami CYP3A4.
+---
+ID: FARLEK-e2026-1-1793
+TEMAT: FARM-15
+PYTANIE:
+Który z leków stosowany jest w leczeniu jadłowstrętu:
+A. Metoklopramid
+B. Diazepam
+C. Nabilon
+D. Prometazyna
+E. Difenhydramina
+KLUCZ: c
+WYJAŚNIENIE:
+**Nabilon** jest syntetycznym analogiem **THC** i agonistą receptorów kannabinoidowych **CB1**, przez co pobudza ośrodek głodu w podwzgórzu. Stosuje się go w **jadłowstręcie i wyniszczeniu** w przebiegu choroby nowotworowej oraz AIDS, a także w opornych wymiotach po chemioterapii. Metoklopramid, prometazyna i difenhydramina działają wyłącznie przeciwwymiotnie, nie zwiększając apetytu. Typowe działania niepożądane nabilonu to euforia, dysforia, senność i **hipotonia ortostatyczna**.
+---
+ID: FARLEK-e2026-1-1794
+TEMAT: FARM-14
+PYTANIE:
+Lekiem pierwszego rzutu stosowanym w zwalczaniu tasiemczycy jest:
+A. Pyrantel
+B. Prazykwantel
+C. Oksamnichina
+D. Iwermektyna
+E. Brak prawidłowej odpowiedzi
+KLUCZ: b
+WYJAŚNIENIE:
+**Prazykwantel** zwiększa przepuszczalność oskórka pasożyta dla **jonów wapnia**, wywołując skurcz spastyczny i wakuolizację tegumentu — pasożyt zostaje wydalony. Jest lekiem z wyboru w **tasiemczycach** (Taenia, bruzdogłowiec) oraz w schistosomatozie; alternatywą pozostaje niklozamid. **Pyrantel** i **iwermektyna** działają na **nicienie**, a **oksamnichina** wyłącznie na Schistosoma mansoni. W wągrzycy prazykwantel wymaga osłony glikokortykosteroidem.
+---
+ID: FARLEK-e2026-1-1795
+TEMAT: FARM-14
+PYTANIE:
+Do zwalczania robaków obłych stosuje się:
+A. Niklozamid
+B. Albendazol
+C. Pyrantel
+D. Odpowiedzi A i C
+E. Odpowiedzi B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Robaki obłe, czyli **nicienie** (owsik, glista, włosogłówka, tęgoryjec), zwalcza się **albendazolem** i **pyrantelem**. Albendazol wiąże **beta-tubulinę** pasożyta, blokując polimeryzację mikrotubul i wychwyt glukozy. Pyrantel jest **agonistą receptorów nikotynowych** robaka: wywołuje depolaryzację i **porażenie spastyczne** mięśni, dlatego nie wolno go łączyć z piperazyną, która działa przeciwstawnie. **Niklozamid** służy natomiast wyłącznie do zwalczania tasiemców.
+---
+ID: FARLEK-e2026-1-1796
+TEMAT: FARM-08
+PYTANIE:
+Do substancji, które mogą przyczynić się do wystąpienia objawów zespołu serotoninowego, należy:
+A. Tramadol
+B. Fluoksetyna
+C. Sertralina
+D. Prawidłowe A, B i C
+E. Prawidłowe B i C
+KLUCZ: d
+WYJAŚNIENIE:
+Wszystkie trzy leki zwiększają przekaźnictwo serotoninergiczne: **fluoksetyna** i **sertralina** jako **SSRI**, a **tramadol** dodatkowo hamuje wychwyt zwrotny serotoniny obok działania na receptor mi. Zespół serotoninowy to triada: pobudzenie **autonomiczne** (gorączka, tachykardia, poty), zaburzenia świadomości oraz nadmierna aktywność nerwowo-mięśniowa (**klonus**, hiperrefleksja, mioklonie, nasilone w kończynach dolnych). Leczenie: odstawienie leków i **cyproheptadyna**.
+---
+ID: FARLEK-e2026-1-1797
+TEMAT: FARM-18
+PYTANIE:
+Do substancji wywołujących drgawki w przebiegu zatrucia należy:
+A. Paracetamol
+B. Izoniazyd
+C. Aceton
+D. Propoksyfen
+E. Glutaminian sodu
+KLUCZ: b
+WYJAŚNIENIE:
+**Izoniazyd** wiąże i inaktywuje **fosforan pirydoksalu**, blokując **dekarboksylazę kwasu glutaminowego** — spada synteza **GABA** i pojawiają się drgawki oporne na benzodiazepiny, kwasica mleczanowa oraz śpiączka. Odtrutką jest **pirydoksyna (witamina B6)** dożylnie, w dawce gramowo odpowiadającej przyjętej dawce izoniazydu. Zatrucie **paracetamolem** prowadzi do martwicy wątroby, nie do drgawek. Inne klasyczne drgawkorodne trucizny to teofilina, TLPD i bupropion.
+---
+ID: FARLEK-e2026-1-1798
+TEMAT: FARM-15
+PYTANIE:
+Do agonistów silnie pobudzających receptory motyliny należy:
+A. Trimebutyna
+B. Maraliksybat
+C. Alwimopan
+D. Erytromycyna
+E. Sorbitol
+KLUCZ: d
+WYJAŚNIENIE:
+**Erytromycyna** poza działaniem przeciwbakteryjnym jest silnym **agonistą receptorów motylinowych** i pobudza wędrujący kompleks mioelektryczny żołądka. Wykorzystuje się to w **gastroparezie** cukrzycowej oraz przed gastroskopią w krwawieniu z górnego odcinka przewodu pokarmowego. Wadą jest szybka **tachyfilaksja** wskutek down-regulacji receptorów. Trimebutyna moduluje receptory opioidowe jelita, **alwimopan** to obwodowy antagonista mi, a sorbitol działa osmotycznie.
+---
+ID: FARLEK-e2026-1-1799
+TEMAT: FARM-11
+PYTANIE:
+Wspomagająco w leczeniu cukrzycy typu 2, zespołu metabolicznego oraz hiperlipidemii działa:
+A. Cynk
+B. Fluor
+C. Miedź
+D. Molibden
+E. Chrom
+KLUCZ: e
+WYJAŚNIENIE:
+**Chrom** na III stopniu utlenienia wchodzi w skład **czynnika tolerancji glukozy**, który zwiększa wrażliwość tkanek na **insulinę** przez nasilenie autofosforylacji jej receptora. Suplementacja bywa więc stosowana wspomagająco w **cukrzycy typu 2**, zespole metabolicznym i hiperlipidemii, gdzie może nieznacznie obniżać stężenie LDL. **Cynk** jest kofaktorem wielu enzymów i warunkuje gojenie, **fluor** chroni szkliwo, a **molibden** to kofaktor oksydazy ksantynowej.
+---
+ID: FARLEK-e2026-1-1800
+TEMAT: FARM-04
+PYTANIE:
+Receptory alfa1-adrenergiczne:
+A. Działają za pośrednictwem białka Gi
+B. Drugim przekaźnikiem są IP3 i DAG, a następnie jony wapnia
+C. Powodują rozkurcz mięśni gładkich (z wyjątkiem przewodu pokarmowego)
+D. Selektywnym antagonistą jest fenylefryna
+E. Selektywnym agonistą jest doksazosyna
+KLUCZ: b
+WYJAŚNIENIE:
+Receptor **alfa1** sprzęga się z białkiem **Gq**, aktywuje **fosfolipazę C** i generuje **IP3 oraz DAG**, co uwalnia **Ca2+** i wywołuje **skurcz** mięśni gładkich naczyń, zwieracza pęcherza i mięśnia rozwieracza źrenicy. Wyjątkiem jest przewód pokarmowy, gdzie następuje rozkurcz. Dwa ostatnie warianty zamieniają role: **fenylefryna** to selektywny **agonista**, a **doksazosyna** — selektywny **antagonista** alfa1, stosowany w przeroście prostaty.
+---
+ID: FARLEK-e2026-1-1801
+TEMAT: FARM-16
+PYTANIE:
+Wskaż prawdziwe stwierdzenie dotyczące środków stosowanych w celu czasowego zahamowania płodności:
+A. Mechanizmy działania preparatów dwuskładnikowych i jednoskładnikowych są takie same
+B. Skuteczność preparatów jednoskładnikowych jest wyższa niż dwuskładnikowych
+C. Preparaty dwuskładnikowe najczęściej stosuje się codziennie, bez przerwy
+D. Preparaty jednoskładnikowe wywierają działanie zarówno antykoncepcyjne jak i antyimplantacyjne
+E. Preparaty jednoskładnikowe są przeciwwskazane u palących kobiet po 35 roku życia ze względu na ryzyko powikłań zakrzepowo-zatorowych
+KLUCZ: d
+WYJAŚNIENIE:
+Preparaty **jednoskładnikowe** (minipigułka gestagenna) tylko częściowo hamują owulację, a działają głównie przez **zagęszczenie śluzu szyjkowego** oraz **atrofię endometrium**, co daje dodatkowy efekt **antyimplantacyjny**. Preparaty **dwuskładnikowe** blokują wyrzut **LH i FSH**, więc mechanizmy nie są tożsame, a ich skuteczność jest wyższa; stosuje się je cyklicznie z przerwą. To właśnie estrogen odpowiada za ryzyko **zakrzepowo-zatorowe** u palaczek po 35 roku życia.
+---
+ID: FARLEK-e2026-1-1802
+TEMAT: FARM-05
+PYTANIE:
+Przeciwwskazaniem bezwzględnym do stosowania doustnych leków przeciwzakrzepowych jest:
+A. Ciężka niewydolność wątroby lub nerek
+B. Retinopatia cukrzycowa
+C. Objawowe nadciśnienie wrotne
+D. Źle kontrolowane nadciśnienie tętnicze
+E. Małopłytkowość immunologiczna zależna od heparyny (HIT)
+KLUCZ: c
+WYJAŚNIENIE:
+**Objawowe nadciśnienie wrotne** oznacza obecność **żylaków przełyku** i realne ryzyko masywnego, śmiertelnego krwotoku, dlatego stanowi przeciwwskazanie **bezwzględne**. Ciężka niewydolność wątroby i źle kontrolowane nadciśnienie tętnicze wymagają ostrożności, ale traktowane są jako przeciwwskazania **względne** — a sama niewydolność nerek nie wyklucza stosowania **antagonistów witaminy K**. W **HIT** doustne antykoagulanty włącza się po normalizacji liczby płytek.
+---
+ID: FARLEK-e2026-1-1803
+TEMAT: FARM-01
+PYTANIE:
+Zjawisko, w którym lek po dłuższym stosowaniu wywołuje coraz słabszy efekt, wymagając zwiększenia dawki do uzyskania tego samego działania, to:
+A. Tachyfilaksja
+B. Tolerancja farmakodynamiczna
+C. Regulacja "w górę" (up-regulation)
+D. Desensytyzacja receptorowa
+E. Efekt pierwszego przejścia
+KLUCZ: b
+WYJAŚNIENIE:
+**Tolerancja farmakodynamiczna** rozwija się **powoli**, w ciągu dni lub tygodni, i polega na adaptacji receptorów — najczęściej ich **down-regulacji** — co wymusza zwiększanie dawki, jak przy opioidach czy azotanach. **Tachyfilaksja** to zjawisko **nagłe**, po kilku kolejnych dawkach, klasycznie przy efedrynie wskutek wyczerpania zapasów noradrenaliny. Up-regulacja zwiększałaby odpowiedź, a **efekt pierwszego przejścia** jest zjawiskiem czysto farmakokinetycznym.
+---
+ID: FARLEK-e2026-1-1804
+TEMAT: FARM-03
+PYTANIE:
+Wskaż lek będący selektywnym inhibitorem COX-2:
+A. Celekoksyb
+B. Indometacyna
+C. Naproksen
+D. Ibuprofen
+E. Diklofenak
+KLUCZ: a
+WYJAŚNIENIE:
+**Celekoksyb** wybiórczo hamuje **COX-2**, indukowaną w ognisku zapalnym, oszczędzając **COX-1** odpowiedzialną za cytoprotekcyjne prostaglandyny błony śluzowej — stąd mniejsze ryzyko wrzodów i krwawień. Ceną jest zaburzenie równowagi między naczyniorozszerzającą **prostacykliną** a płytkowym **tromboksanem A2**, co zwiększa ryzyko incydentów zakrzepowych. Celekoksyb jest **sulfonamidem**, więc jest przeciwwskazany przy uczuleniu na tę grupę. Diklofenak wykazuje jedynie preferencyjność.
+---
+ID: FARLEK-e2026-1-1805
+TEMAT: FARM-03
+PYTANIE:
+Lek stosowany w terapii przewlekłej dny moczanowej, który działa poprzez rozkładanie kwasu moczowego do alantoiny to:
+A. Febuksostat
+B. Lesynurad
+C. Peglotykaza
+D. Benzbromaron
+E. Allopurynol
+KLUCZ: c
+WYJAŚNIENIE:
+**Peglotykaza** to pegylowana rekombinowana **urykaza** (oksydaza moczanowa) — enzym, którego człowiek nie posiada. Utlenia ona kwas moczowy do dobrze rozpuszczalnej **alantoiny**, gwałtownie obniżając urykemię. Podaje się ją dożylnie co 2 tygodnie w **ciężkiej dnie guzkowej opornej** na inne leczenie. Ograniczeniem są reakcje anafilaktyczne i przeciwciała neutralizujące, a u chorych z niedoborem **G6PD** grozi hemoliza i methemoglobinemia — stąd konieczność wcześniejszych oznaczeń.
+---
+ID: FARLEK-e2026-1-1806
+TEMAT: FARM-15
+PYTANIE:
+Wskaż lek będący antagonistą receptora 5-HT3 stosowany w wymiotach po chemioterapii:
+A. Ondansetron
+B. Metoklopramid
+C. Aprepitant
+D. Prochlorperazyna
+E. Dimenhydrynat
+KLUCZ: a
+WYJAŚNIENIE:
+**Ondansetron** blokuje receptory **5-HT3** na zakończeniach nerwu błędnego w jelicie oraz w **strefie chemoreceptorowej** dna komory IV. Chemioterapia, zwłaszcza **cisplatyną**, uwalnia serotoninę z komórek enterochromatofilnych jelita — dlatego setrony są podstawą profilaktyki wymiotów **ostrych**. **Aprepitant** działa inaczej: blokuje receptor **NK1** dla substancji P i chroni głównie przed wymiotami opóźnionymi. Uwaga na zaparcia, bóle głowy i **wydłużenie odstępu QT**.
+---
+ID: FARLEK-e2026-1-1807
+TEMAT: FARM-06
+PYTANIE:
+Który z poniższych leków jest inhibitorem fosfodiesterazy typu 5 i stosowany w leczeniu nadciśnienia płucnego?
+A. Bosentan
+B. Riociguat
+C. Sildenafil
+D. Iloprost
+E. Ambrisentan
+KLUCZ: c
+WYJAŚNIENIE:
+**Sildenafil** hamuje **fosfodiesterazę typu 5**, która rozkłada **cGMP** w mięśniówce naczyń płucnych — utrzymanie wysokiego cGMP powoduje wybiórcze rozszerzenie krążenia płucnego. Bezwzględnie przeciwwskazane jest łączenie z **azotanami** (groźna hipotensja) oraz z **riociguatem**, który stymuluje rozpuszczalną **cyklazę guanylanową** powyżej tego samego szlaku. Bozentan i ambrisentan blokują receptory **endotelinowe**, a **iloprost** jest analogiem prostacykliny.
+---
+ID: FARLEK-e2026-1-1808
+TEMAT: FARM-16
+PYTANIE:
+Działaniem niepożądanym glikokortykosteroidów przy długotrwałym stosowaniu NIE jest:
+A. Zespół Cushinga jatrogenny
+B. Osteoporoza
+C. Hiperglikemia
+D. Nadczynność tarczycy
+E. Zwiększona podatność na infekcje
+KLUCZ: d
+WYJAŚNIENIE:
+Przewlekła steroidoterapia daje obraz **jatrogennego zespołu Cushinga**: otyłość centralną, twarz księżycowatą, rozstępy, **osteoporozę** z nasiloną resorpcją kości, **hiperglikemię** przez glukoneogenezę i insulinooporność oraz **immunosupresję** ze skłonnością do zakażeń. Glikokortykosteroidy nie pobudzają tarczycy — przeciwnie, hamują wydzielanie **TSH** i konwersję **T4 do T3**, obniżając stężenie T3. Nagłe odstawienie grozi **przełomem nadnerczowym**.
+---
+ID: FARLEK-e2026-1-1809
+TEMAT: FARM-06
+PYTANIE:
+Wskaż lek stosowany w nadciśnieniu, który działa poprzez agonizm receptorów imidazolowych I1 w rdzeniu przedłużonym:
+A. Klonidyna
+B. Moksonidyna
+C. Metyldopa
+D. Urapidyl
+E. Guanfacyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Moksonidyna** wybiórczo pobudza receptory **imidazolowe I1** w brzuszno-bocznej części rdzenia przedłużonego, zmniejszając napływ impulsacji **współczulnej** do naczyń i serca. Dzięki znikomemu powinowactwu do receptorów **alfa2** powoduje mniejszą sedację i suchość w ustach niż **klonidyna**, która działa głównie alfa2-adrenergicznie i grozi **nadciśnieniem z odbicia**. Metyldopa to fałszywy neuroprzekaźnik stosowany w ciąży, a **urapidyl** blokuje receptory alfa1.
+---
+ID: FARLEK-e2026-1-1810
+TEMAT: FARM-15
+PYTANIE:
+Najsilniejsze działanie przeciwwymiotne w leczeniu choroby lokomocyjnej wykazuje:
+A. Prometazyna
+B. Skopolamina
+C. Ondansetron
+D. Metoklopramid
+E. Ranitydyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Skopolamina** blokuje receptory **muskarynowe M1** w jądrach przedsionkowych i w drodze przedsionkowo-móżdżkowej, przerywając przekazywanie bodźców wywołujących **kinetozę** — jest najskuteczniejszym lekiem w tym wskazaniu, podawanym w **plastrze zausznym** na kilka godzin przed podróżą. Prometazyna działa słabiej i mocno sedatywnie. **Ondansetron** i metoklopramid są bezużyteczne w chorobie lokomocyjnej, bo nie hamują pobudzenia przedsionkowego.
+---
+ID: FARLEK-e2026-1-1811
+TEMAT: FARM-08
+PYTANIE:
+Lek przeciwpsychotyczny częściowo agonistyczny w stosunku do receptorów D2 to:
+A. Olanzapina
+B. Arypiprazol
+C. Kwetiapina
+D. Risperidon
+E. Perazyna
+KLUCZ: b
+WYJAŚNIENIE:
+**Arypiprazol** jest **częściowym agonistą D2** oraz 5-HT1A i antagonistą 5-HT2A, dlatego nazywa się go **stabilizatorem układu dopaminergicznego**: tłumi nadmierną transmisję w szlaku mezolimbicznym, a podtrzymuje ją tam, gdzie dopaminy brakuje. Skutkuje to małym ryzykiem **hiperprolaktynemii** i niewielkim przyrostem masy ciała, ale częstą **akatyzją**. Pozostałe wymienione leki to czyści **antagoniści D2**. Podobnie działają kariprazyna i brekspiprazol.
+---
+ID: FARLEK-e2026-1-1812
+TEMAT: FARM-14
+PYTANIE:
+Wskaż lek przeciwgrzybiczy o mechanizmie polegającym na hamowaniu syntezy beta-(1,3)-glukanu w ścianie komórkowej grzybów:
+A. Amfoterycyna B
+B. Flukonazol
+C. Kaspofungina
+D. Terbinafina
+E. Gryzeofulwina
+KLUCZ: c
+WYJAŚNIENIE:
+**Kaspofungina** należy do **echinokandyn** i hamuje **syntazę beta-(1,3)-glukanu**, niszcząc ścianę komórkową grzyba — struktury nieobecnej u człowieka, stąd bardzo dobra tolerancja. Działa na **Candida** (także szczepy azolooporne) i **Aspergillus**, jest natomiast nieskuteczna wobec **Cryptococcus**; podaje się ją wyłącznie dożylnie. Amfoterycyna wiąże **ergosterol**, azole hamują **14-alfa-demetylazę**, terbinafina **skwalenoepoksydazę**, a gryzeofulwina blokuje mikrotubule.
+---
+ID: FARLEK-e2026-1-1813
+TEMAT: FARM-14
+PYTANIE:
+Wskaż zdanie prawdziwe na temat jodochinololu:
+A. Wykazuje aktywność jedynie w tkankach w przypadku zakażenia Entamoeba histolytica
+B. Stosowany jest wraz z metronidazolem w celu leczenia bezobjawowej amebiozy
+C. Nie ma wpływu na funkcje tarczycy
+D. Należy zachować ostrożność podczas stosowania leku u osób z zaburzeniami funkcji tarczycy i neuropatią wzrokową
+E. Wszystkie odpowiedzi są prawidłowe
+KLUCZ: d
+WYJAŚNIENIE:
+Jodochinol to **halogenowana hydroksychinolina** zawierająca jod, dlatego zaburza wyniki badań czynności **tarczycy** i może nasilać jej dysfunkcję, a przy długotrwałym stosowaniu wiąże się z **neuropatią nerwu wzrokowego** oraz podostrą mielopatią. Jest amebicydem **kontaktowym** — działa wyłącznie w **świetle jelita**, nie w tkankach, i w postaci bezobjawowej stosuje się go w monoterapii. Z **metronidazolem** kojarzy się go dopiero w pełzakowicy inwazyjnej.
+---
+ID: FARLEK-e2026-1-1814
+TEMAT: FARM-09
+PYTANIE:
+Do leków znieczulających miejscowo o budowie amidowej należy:
+A. Prokaina
+B. Proksymetakaina
+C. Oksybuprokaina
+D. Bupiwakaina
+E. Wszystkie odpowiedzi prawidłowe
+KLUCZ: d
+WYJAŚNIENIE:
+**Bupiwakaina** to **amid**, podobnie jak lidokaina, ropiwakaina, mepiwakaina i artykaina — grupa ta jest metabolizowana w **wątrobie** przez cytochrom P450, działa długo i rzadko uczula. Prokaina, proksymetakaina i oksybuprokaina to **estry**, rozkładane przez **esterazy osoczowe** do **PABA**, co odpowiada za reakcje alergiczne. Bupiwakaina jest najbardziej **kardiotoksyczna** z całej grupy.
+Mnemonik: nazwy amidów zawierają dwie litery **i** przed końcówką -kaina.
+---
+ID: FARLEK-e2026-1-1815
+TEMAT: FARM-03
+PYTANIE:
+Lekiem opioidowym o działaniu agonistyczno-antagonistycznym nie jest:
+A. Naltrekson
+B. Metadon
+C. Pentazocyna
+D. Buprenorfina
+E. Prawidłowo odpowiedź A i B
+KLUCZ: e
+WYJAŚNIENIE:
+**Naltrekson** to **czysty antagonista** receptorów opioidowych, stosowany doustnie w uzależnieniu od alkoholu i opioidów, a **metadon** — **czysty agonista mi** o długim półtrwaniu, wykorzystywany w leczeniu substytucyjnym (uwaga: wydłuża **QT**). Działanie mieszane mają natomiast **pentazocyna** (agonista **kappa**, antagonista mi) i **buprenorfina** (**częściowy agonista mi** o bardzo silnym powinowactwie), która wykazuje efekt pułapowy i może wywołać zespół abstynencyjny.
+---
+ID: FARLEK-e2026-1-1816
+TEMAT: FARM-09
+PYTANIE:
+Antagonistą receptorów glutaminowych typu NMDA jest:
+A. Morfina
+B. Metadon
+C. Etomidat
+D. Tiopental
+E. Ketamina
+KLUCZ: e
+WYJAŚNIENIE:
+**Ketamina** jest **niekompetycyjnym antagonistą** receptora **NMDA** — blokuje kanał jonowy od wewnątrz, wywołując **znieczulenie dysocjacyjne** z zachowanymi odruchami obronnymi i własnym oddechem oraz silną **analgezją**. Pobudzenie współczulne podnosi ciśnienie i tętno, co czyni ją cenną we wstrząsie, ale niekorzystną w chorobie wieńcowej. Powoduje objawy **wybudzeniowe** (halucynacje), którym zapobiega się benzodiazepinami. Metadon dodatkowo słabo blokuje NMDA.
+---
+ID: FARLEK-e2026-1-1817
+TEMAT: FARM-08
+PYTANIE:
+Pochodną amfetaminy, która może być stosowana u dzieci w terapii zespołu nadpobudliwości psychoruchowej z deficytem uwagi jest:
+A. Metylenodioksymetamfetamina
+B. Pegwisomant
+C. Metylfenidat
+D. Oktreotyd
+E. Brak prawidłowej odpowiedzi
+KLUCZ: c
+WYJAŚNIENIE:
+**Metylfenidat** hamuje transportery **DAT** i **NET**, zwiększając stężenie **dopaminy** i **noradrenaliny** w korze przedczołowej, co poprawia koncentrację i kontrolę impulsów — jest lekiem pierwszego rzutu w **ADHD** u dzieci powyżej 6 roku życia oraz w narkolepsji. Działania niepożądane: brak łaknienia, bezsenność, tiki, wzrost ciśnienia, spowolnienie wzrastania. **MDMA** to substancja odurzająca, **pegwisomant** i **oktreotyd** służą w akromegalii.
+---
+ID: FARLEK-e2026-1-1818
+TEMAT: FARM-18
+PYTANIE:
+Błękit metylenowy może być stosowany w zatruciach:
+A. Cyjankami
+B. Metadonem
+C. Benzodiazepinami
+D. Niedepolaryzującymi środkami zwiotczającymi
+E. Prowadzących do methemoglobinemii
+KLUCZ: e
+WYJAŚNIENIE:
+**Błękit metylenowy** jest kofaktorem **reduktazy methemoglobinowej zależnej od NADPH**: przyspiesza redukcję żelaza **Fe3+ do Fe2+** w hemoglobinie, przywracając jej zdolność wiązania tlenu. Podaje się go dożylnie w dawce **1-2 mg/kg** przy methemoglobinemii po azotanach, sulfonamidach czy prylokainie. Jest nieskuteczny i groźny (hemoliza) przy niedoborze **G6PD**. W zatruciu cyjankami stosuje się hydroksykobalaminę, a przy benzodiazepinach — **flumazenil**.
+---
+ID: FARLEK-e2026-1-1819
+TEMAT: FARM-11
+PYTANIE:
+Amid kwasu nikotynowego może być stosowany w leczeniu:
+A. Pelagry
+B. Liszaja skóry
+C. Chorób naczyń obwodowych
+D. Neuralgii nerwu trójdzielnego
+E. Wszystkie prawidłowe
+KLUCZ: e
+WYJAŚNIENIE:
+Amid kwasu nikotynowego (**witamina PP**) jest prekursorem koenzymów **NAD i NADP**, niezbędnych w reakcjach oksydoredukcyjnych. Podstawowym wskazaniem jest **pelagra** z klasyczną triadą **3xD**: zapalenie skóry, biegunka i otępienie. Podręcznikowe zestawienia wymieniają ponadto zmiany skórne typu liszaja, choroby naczyń obwodowych oraz neuralgię nerwu trójdzielnego. W odróżnieniu od **kwasu nikotynowego** amid nie wywołuje **flushu** ani nie obniża lipidów.
+---
+ID: FARLEK-e2026-1-1820
+TEMAT: FARM-05
+PYTANIE:
+Inhibitorem receptora trombinowego PAR-1, który przeciwwskazany jest u osób z dodatnim wywiadem w kierunku udaru mózgu jest:
+A. Epoprostenol
+B. Pegwisomant
+C. Worapaksar
+D. Dipirydamol
+E. Brak prawidłowej odpowiedzi
+KLUCZ: c
+WYJAŚNIENIE:
+**Worapaksar** blokuje płytkowy receptor **PAR-1** aktywowany przez **trombinę**, hamując najsilniejszą fizjologiczną drogę agregacji. Dodaje się go do kwasu acetylosalicylowego lub klopidogrelu w prewencji wtórnej po zawale i w miażdżycy tętnic obwodowych. Jest bezwzględnie przeciwwskazany po **udarze, TIA lub krwawieniu wewnątrzczaszkowym** — w badaniu TRACER wyraźnie zwiększał ryzyko krwotoku śródczaszkowego. Działa bardzo długo i nieodwracalnie.
+---
+ID: FARLEK-e2026-1-1821
+TEMAT: FARM-10
+PYTANIE:
+Entakapon jest inhibitorem:
+A. Monoaminooksydazy A
+B. Monoaminooksydazy B
+C. Dekarboksylazy DOPA
+D. Katecholotlenometylotransferazy
+E. Hydroksylazy tyrozynowej
+KLUCZ: d
+WYJAŚNIENIE:
+**Entakapon** hamuje **COMT** (katecholo-O-metylotransferazę) wyłącznie **na obwodzie**, blokując przemianę lewodopy w nieczynną **3-O-metylodopę**. Dzięki temu wydłuża okres półtrwania lewodopy i zmniejsza fluktuacje typu **wearing-off**; podaje się go zawsze razem z lewodopą i inhibitorem dekarboksylazy. **Tolkapon** działa też ośrodkowo, ale jest **hepatotoksyczny**. Karbidopa i benserazyd hamują dekarboksylazę, a selegilina i rasagilina — **MAO-B**. Mocz barwi się pomarańczowo.
+---
+ID: FARLEK-e2026-1-1822
+TEMAT: FARM-05
+PYTANIE:
+Antagonistą receptora CXCR4, który jest stosowany do mobilizacji macierzystych komórek układu krwiotwórczego jest:
+A. Oprelwekina
+B. Romiplostym
+C. Pleryksafor
+D. Filgrastym
+E. Roksadustat
+KLUCZ: c
+WYJAŚNIENIE:
+**Pleryksafor** blokuje receptor **CXCR4** na komórkach **CD34+**, przerywając ich wiązanie ze **SDF-1 (CXCL12)** wytwarzanym przez podścielisko szpiku. Komórki macierzyste zostają uwolnione do krwi obwodowej i można je pobrać do **autoprzeszczepienia** u chorych na szpiczaka i chłoniaki — zwykle w skojarzeniu z **G-CSF**. **Filgrastym** to właśnie G-CSF, **romiplostym** pobudza receptor trombopoetyny, a **roksadustat** hamuje hydroksylazę prolilową, aktywując HIF.
+---
+ID: FARLEK-e2026-1-1823
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zestaw leków powodujących retencję potasu:
+A. Peryndopryl, torasemid, spironolakton
+B. Spironolakton, ibuprofen, indapamid
+C. Hydrochlorotiazyd, Indapamid, Furosemid
+D. Walsartan, Peryndopryl, Eplerenon
+E. Brak prawidłowej odpowiedzi
+KLUCZ: d
+WYJAŚNIENIE:
+Wszystkie trzy leki z zestawu D osłabiają działanie **aldosteronu**: **peryndopryl** hamuje konwertazę, **walsartan** blokuje receptor **AT1**, a **eplerenon** jest antagonistą receptora **mineralokortykoidowego**. Skutkiem jest zmniejszone wydzielanie potasu w cewce zbiorczej i **hiperkaliemia** — łączenie ich wymaga kontroli kaliemii i kreatyniny. Pozostałe zestawy zawierają diuretyki **kaliuretyczne**: pętlowe (furosemid, torasemid) oraz tiazydowe i tiazydopodobne.
+---
+ID: FARLEK-e2026-1-1824
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zestaw leków przeciwnadciśnieniowych, które można zastosować u kobiety 33-letniej z rozpoznanym nadciśnieniem I stopnia planującej ciążę w ciągu najbliższych 6 miesięcy:
+A. Metyldopa lub walsartan
+B. Metyldopa lub ramipryl
+C. Ramipryl lub walsartan
+D. Metyldopa w monoterapii
+E. Każdy z wymienionych leków można zastosować w powyższej sytuacji
+KLUCZ: d
+WYJAŚNIENIE:
+**Metyldopa** — ośrodkowy agonista **alfa2** działający jako fałszywy neuroprzekaźnik — ma najdłuższą historię bezpiecznego stosowania w ciąży i jest lekiem z wyboru. **Ramipryl** (ACEI) i **walsartan** (sartan) są w ciąży **bezwzględnie przeciwwskazane**: blokada układu RAA płodu powoduje małowodzie, hipoplazję czaszki, przykurcze i niewydolność nerek noworodka. U kobiety planującej ciążę odstawia się je z wyprzedzeniem. Alternatywami są labetalol i nifedypina.
+---
+ID: FARLEK-e2026-1-1825
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zestaw leków, których jednoczesne stosowanie jest przeciwwskazane: 1. Ramipryl + bisoprolol 2. Nebiwolol + hydrochlorotiazyd 3. Ramipryl + walsartan 4. Spironolakton + eplerenon 5. Spironolakton + hydrochlorotiazyd 6. Nebiwolol + walsartan
+A. 2,3,4
+B. 2,5
+C. 1,2,3
+D. 3,4
+E. 3,4,5
+KLUCZ: d
+WYJAŚNIENIE:
+Połączenie **ACEI z sartanem** (para 3) to podwójna blokada układu RAA — badanie ONTARGET wykazało brak korzyści przy istotnym wzroście ryzyka **hiperkaliemii**, hipotonii i pogorszenia funkcji nerek. Para 4 to zestawienie **dwóch antagonistów aldosteronu** o identycznym mechanizmie, co jedynie potęguje hiperkaliemię. Pozostałe skojarzenia są dopuszczalne, a spironolakton z tiazydem bywa wręcz korzystny, bo wzajemnie znoszą wpływ na **kaliemię**.
+---
+ID: FARLEK-e2026-1-1826
+TEMAT: FARM-16
+PYTANIE:
+Wskaż zestaw leków łagodzących objawy łagodnego przerostu prostaty:
+A. Finasteryd + Testosteron
+B. Testosteron + Wazopresyna
+C. Doksazosyna + Wazopresyna
+D. Doksazosyna + Finasteryd
+E. Finasteryd + Wazopresyna
+KLUCZ: d
+WYJAŚNIENIE:
+**Doksazosyna** blokuje receptory **alfa1** w szyi pęcherza i zrębie gruczołu, dając rozkurcz i poprawę przepływu już po kilku dniach — uwaga na **hipotonię ortostatyczną** oraz zespół wiotkiej tęczówki podczas operacji zaćmy. **Finasteryd** hamuje **5-alfa-reduktazę typu 2**, zmniejszając stężenie **DHT** i objętość gruczołu po 3-6 miesiącach; obniża też **PSA** o około połowę. **Testosteron** jest w przeroście prostaty przeciwwskazany.
+---
+ID: FARLEK-e2026-1-1827
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zestaw leków stosowanych w leczeniu nadciśnienia płucnego:
+A. Sildenafil + Testosteron + Finasteryd
+B. Sildenafil + Bozentan + Epoprostenol
+C. Bozentan + Ezetymib + Eptyfibatyd
+D. Walsartan + Sakubitryl + Epoprostenol
+E. Walsartan + Finasteryd + Epoprostenol
+KLUCZ: b
+WYJAŚNIENIE:
+Zestaw B obejmuje trzy filary leczenia **tętniczego nadciśnienia płucnego**: **sildenafil** (inhibitor **PDE5**, podnosi cGMP), **bozentan** (antagonista receptorów **endotelinowych** ETA i ETB) oraz **epoprostenol** (analog **prostacykliny** podawany w ciągłym wlewie dożylnym przez cewnik centralny, bo jego okres półtrwania wynosi kilka minut). Ezetymib jest lekiem hipolipemizującym, **eptyfibatyd** blokuje płytkowy receptor GP IIb/IIIa, a sakubitryl hamuje neprylizynę.
+---
+ID: FARLEK-e2026-1-1828
+TEMAT: FARM-06
+PYTANIE:
+Wskaż zdanie opisujące prawidłową terapię przeciwnadciśnieniową:
+A. W pierwszym rzucie zawsze powinien być stosowany lek działający na ośrodkowe mechanizmy regulacji, np. klonidyna
+B. Stosowanie diuretyku oszczędzającego potas należy rozważyć jako dodatek do inhibitora konwertazy angiotensyny w celu uzyskania lepszego efektu hipotensyjnego
+C. Połączenie diuretyku tiazydopodobnego oraz inhibitora konwertazy angiotensyny nie powinno być stosowane z uwagi na ryzyko ciężkiej hipokaliemii
+D. Połączenie diuretyku tiazydopodobnego oraz dihydropirydynowego blokera kanału wapniowego jest dopuszczalne
+E. W pierwszej kolejności powinny być stosowane leki działające na układ współczulny, np. poprzez połączenie alfa-blokera z beta-blokerem
+KLUCZ: d
+WYJAŚNIENIE:
+Diuretyk tiazydopodobny z **dihydropirydynowym antagonistą wapnia** to jedno z zalecanych skojarzeń podstawowych. Leki działające ośrodkowo (**klonidyna**) i alfa-blokery należą do **kolejnych rzutów** ze względu na sedację, nadciśnienie z odbicia i hipotonię ortostatyczną. Dodanie diuretyku oszczędzającego potas do **ACEI** grozi **hiperkaliemią**, a połączenie tiazydu z ACEI jest wręcz korzystne — inhibitor konwertazy **ogranicza** utratę potasu.
+---
+ID: FARLEK-e2026-1-1829
+TEMAT: FARM-06
+PYTANIE:
+Stosowanie którego leku przeciwnadciśnieniowego jest niewskazane u pacjenta z przewlekłą hiperurykemią?
+A. Bisoprolol
+B. Nebiwolol
+C. Indapamid
+D. Walsartan
+E. Amlodypina
+KLUCZ: c
+WYJAŚNIENIE:
+**Indapamid**, jak wszystkie diuretyki tiazydowe i tiazydopodobne, konkuruje z **kwasem moczowym** o transportery anionów organicznych w cewce bliższej i dodatkowo, przez odwodnienie, nasila jego reabsorpcję. Efektem jest **hiperurykemia** i ryzyko wywołania napadu **dny**. Amlodypina i beta-blokery są pod tym względem obojętne, a wśród sartanów **losartan** wykazuje wręcz działanie **urykozuryczne** przez hamowanie URAT1 — jest więc korzystny u chorych z dną.
+---
+ID: FARLEK-e2026-1-1830
+TEMAT: FARM-13
+PYTANIE:
+Przyporządkuj nazwę leku przeciwdrobnoustrojowego do odpowiedniej grupy. a. klindamycyna b. ceftriakson c. klarytromycyna d. klotrimazol 1. cefalosporyny 2. grupa linkozamidów 3. makrolidy 4. azole
+A. a2, b3, a1, d4
+B. a3, b1, c2, d4
+C. a4, b1, c2, d3
+D. a2, b1, c3, d4
+E. a4, b1, c3, d2
+KLUCZ: d
+WYJAŚNIENIE:
+**Klindamycyna** to **linkozamid** blokujący podjednostkę **50S**, o dobrej penetracji do kości, ale obarczony największym ryzykiem rzekomobłoniastego zapalenia jelit (**C. difficile**). **Ceftriakson** jest **cefalosporyną III generacji** wydalaną głównie z żółcią (ryzyko pseudokamicy). **Klarytromycyna** to **makrolid**, również działający na 50S i silnie hamujący **CYP3A4**. **Klotrimazol** to **azol** przeciwgrzybiczy, hamujący 14-alfa-demetylazę, stosowany miejscowo.
+---
+ID: FARLEK-e2026-1-1831
+TEMAT: FARM-02
+PYTANIE:
+Antagonistą receptorów histaminowych H3, stosowanym w leczeniu zawrotów głowy i szumów usznych w przebiegu choroby Meniere'a jest:
+A. Bilastyna
+B. Busulfan
+C. Bencyklan
+D. Betahistyna
+E. Bisoprolol
+KLUCZ: d
+WYJAŚNIENIE:
+**Betahistyna** jest analogiem histaminy: słabym **agonistą H1** i silnym **antagonistą presynaptycznych H3**. Blokada H3 znosi hamowanie zwrotne i zwiększa uwalnianie histaminy, co rozszerza naczynia **prążka naczyniowego** ucha wewnętrznego, poprawia mikrokrążenie i obniża ciśnienie **endolimfy** w wodniaku błędnika. Przeciwwskazana jest w guzie chromochłonnym, a ostrożności wymaga w astmie i chorobie wrzodowej. **Bilastyna** to lek przeciwhistaminowy II generacji.
+---
+ID: FARLEK-e2026-1-1832
+TEMAT: FARM-07
+PYTANIE:
+Do wskazań, w których są stosowane beta-blokery, należy:
+A. Nadciśnienie tętnicze
+B. Choroba niedokrwienna serca
+C. Przewlekła niewydolność serca
+D. Prawidłowe A i B
+E. Prawidłowe A, B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Beta-blokery obniżają ciśnienie (spadek pojemności minutowej i wydzielania **reniny**), zmniejszają zapotrzebowanie mięśnia sercowego na tlen w **chorobie niedokrwiennej** oraz — wbrew dawnym obawom — istotnie **redukują śmiertelność w przewlekłej niewydolności serca** z obniżoną frakcją wyrzutową. Udowodniono to dla **bisoprololu, karwedilolu, metoprololu o przedłużonym uwalnianiu i nebiwololu**; w HF włącza się je u stabilnego chorego, od małych dawek stopniowo zwiększanych.
+---
+ID: FARLEK-e2026-1-1833
+TEMAT: FARM-19
+PYTANIE:
+Lek będący dawcą grup -SH ograniczających działanie toksycznych wolnych rodników, podawany w zapobieganiu zapaleniu błony śluzowej jamy ustnej i uszkodzeniu ślinianek przy radioterapii nowotworów głowy i szyi, a także w celu ochrony nerek w czasie terapii cisplatyną to:
+A. Amifostyna
+B. Palifermina
+C. Metronidazol
+D. N-acetylocysteina
+E. Deksametazon
+KLUCZ: a
+WYJAŚNIENIE:
+**Amifostyna** jest prolekiem: w tkankach prawidłowych **fosfataza alkaliczna** odszczepia grupę fosforanową, uwalniając wolny **tiol (WR-1065)**, który zmiata wolne rodniki i wiąże reaktywne metabolity platyny. Selektywność wynika z niskiej aktywności fosfatazy i kwaśnego pH w guzie. Wskazania to **kserostomia** po radioterapii głowy i szyi oraz **nefroprotekcja** przy cisplatynie. Ogranicza ją hipotensja i wymioty. **Palifermina** działa inaczej — jest czynnikiem wzrostu keratynocytów.
+---
+ID: FARLEK-e2026-1-1834
+TEMAT: FARM-10
+PYTANIE:
+Celem stosowania apomorfiny w chorobie Parkinsona jest:
+A. Zniesienie działań niepożądanych lewodopy związanych z jej metabolizmem na obwodzie
+B. Zniesienie sztywności mięśniowej
+C. Zniesienie drżenia spoczynkowego
+D. Zniesienie objawów hipokinezy
+E. Zapobieganie wystąpieniu zjawiska on-off związanego ze zmianami wrażliwości komórek na lewodopę
+KLUCZ: d
+WYJAŚNIENIE:
+**Apomorfina** to silny agonista receptorów **D1 i D2**, podawany **podskórnie** we wstrzyknięciach lub wlewie ciągłym. Działa już po 5-10 minutach, dlatego stosuje się ją **ratunkowo** w nagłych epizodach **off** z ciężką **hipokinezą i akinezją**, w tym w akinezji porannej. Nie zapobiega jednak fluktuacjom ani nie modyfikuje metabolizmu lewodopy. Jest silnie **emetogenna** — wymaga osłony domperydonem. Mimo nazwy nie wykazuje działania opioidowego.
+---
+ID: FARLEK-e2026-1-1835
+TEMAT: FARM-13
+PYTANIE:
+Dlaczego łączenie aminoglikozydów z furosemidem jest ryzykowne?
+A. Furosemid zwiększa biodostępność aminoglikozydów
+B. Nasilają się działania ototoksyczne i nefrotoksyczne obu leków
+C. Aminoglikozydy blokują metabolizm furosemidu
+D. Oba leki zmniejszają poziom sodu we krwi
+E. Brak prawidłowej odpowiedzi
+KLUCZ: b
+WYJAŚNIENIE:
+**Aminoglikozydy** kumulują się w komórkach rzęsatych ucha wewnętrznego i w nabłonku cewek bliższych, powodując **ototoksyczność** (nieodwracalną, także przedsionkową) oraz **nefrotoksyczność**. **Furosemid** samodzielnie uszkadza prążek naczyniowy ucha, a dodatkowo, wywołując hipowolemię, zwiększa stężenie aminoglikozydu w surowicy. Efekty sumują się. Stąd zaleca się kontrolę stężeń leku i kreatyniny oraz dawkowanie **raz na dobę**, mniej toksyczne dla nerek.
+---
+ID: FARLEK-e2026-1-1836
+TEMAT: FARM-17
+PYTANIE:
+Kwasica mleczanowa jest rzadkim, ale potencjalnie groźnym działaniem niepożądanym:
+A. Biguanidów
+B. Flozyn
+C. Pochodnych sulfonylomocznika
+D. Inhibitorów peptydazy dipeptydylowej 4
+E. Agonistów receptora peptydu glukagonopodobnego typu 1
+KLUCZ: a
+WYJAŚNIENIE:
+**Metformina** hamuje glukoneogenezę wątrobową oraz **kompleks I** łańcucha oddechowego, przesuwając metabolizm w stronę glikolizy beztlenowej i produkcji **mleczanu**. Kwasica mleczanowa grozi przy kumulacji leku: **eGFR poniżej 30**, niewydolności wątroby i serca, sepsie, odwodnieniu i po podaniu **kontrastu jodowego** (odstawienie na 48 godzin). Sulfonylomoczniki grożą przede wszystkim hipoglikemią, a flozyny — **euglikemiczną kwasicą ketonową**.
+---
+ID: FARLEK-e2026-1-1837
+TEMAT: FARM-17
+PYTANIE:
+Lekiem zaliczanym do grupy podwójnych agonistów receptora GIP (żołądkowy peptyd hamujący) i GLP-1, stosowanym w leczeniu cukrzycy typu 2 i otyłości, jest:
+A. Metformina
+B. Empagliflozyna
+C. Pioglitazon
+D. Tirzepatyd
+E. Gliklazyd
+KLUCZ: d
+WYJAŚNIENIE:
+**Tirzepatyd** jednocześnie pobudza receptory **GIP** i **GLP-1**, nasilając zależne od glukozy wydzielanie **insuliny**, hamując glukagon i opóźniając opróżnianie żołądka oraz silnie zmniejszając łaknienie. Podawany podskórnie **raz w tygodniu** obniża HbA1c i masę ciała skuteczniej niż sami agoniści GLP-1. Dominują działania żołądkowo-jelitowe: nudności, wymioty, biegunka. Przeciwwskazaniem jest rdzeniasty rak tarczycy i **zespół MEN2** w wywiadzie rodzinnym.
+---
+ID: FARLEK-e2026-1-1838
+TEMAT: FARM-13
+PYTANIE:
+Zespół Hoigne jest powikłaniem mogącym wystąpić podczas stosowania:
+A. Metronidazolu
+B. Benzylopenicyliny prokainowej
+C. Benzylopenicyliny benzatynowej
+D. Wankomycyny
+E. Doksycykliny
+KLUCZ: b
+WYJAŚNIENIE:
+Zespół Hoigné pojawia się po przypadkowym **donaczyniowym** podaniu **penicyliny prokainowej**: mikrokryształki zawiesiny wywołują mikrozatory, a uwolniona **prokaina** działa neurotoksycznie. Chory nagle odczuwa silny lęk i **poczucie zbliżającej się śmierci**, ma omamy wzrokowe i słuchowe, tachykardię i wzrost ciśnienia. Kluczowe jest odróżnienie od **wstrząsu anafilaktycznego** — nie ma tu pokrzywki ani spadku ciśnienia, a objawy mijają w kilkadziesiąt minut.
+---
+ID: FARLEK-e2026-1-1839
+TEMAT: FARM-01
+PYTANIE:
+Antybiotyki aminoglikozydowe i beta-laktamowe niejednokrotnie bywają stosowane w skojarzonym leczeniu niektórych infekcji. Takie połączenie jest racjonalne, ponieważ antybiotyki beta-laktamowe mogą poprawiać penetrację aminoglikozydów do ich miejsca działania w komórce bakteryjnej. Opisana sytuacja jest przykładem:
+A. Interakcji farmaceutycznej
+B. Interakcji farmakokinetycznej
+C. Interakcji farmakodynamicznej
+D. Opisana sytuacja w ogóle nie stanowi przykładu interakcji
+E. Prawidłowe A i C
+KLUCZ: c
+WYJAŚNIENIE:
+To klasyczny **synergizm hiperaddycyjny**, czyli interakcja **farmakodynamiczna**: beta-laktam uszkadza ścianę komórkową bakterii, ułatwiając aminoglikozydowi dotarcie do **podjednostki 30S** rybosomu. Interakcja **farmakokinetyczna** dotyczyłaby wchłaniania, dystrybucji, metabolizmu lub wydalania w organizmie chorego, a **farmaceutyczna** — niezgodności poza ustrojem. Uwaga praktyczna: obu antybiotyków nie wolno mieszać w jednej strzykawce, bo beta-laktam inaktywuje aminoglikozyd.
+---
+ID: FARLEK-e2026-1-1840
+TEMAT: FARM-02
+PYTANIE:
+Zaznacz zdanie fałszywe:
+A. Cyproheptadyna jest antagonistą receptorów 5-HT2
+B. Buspiron, sumatryptan i flibanseryna są agonistami receptorów 5-HT1
+C. Ondansetron jest antagonistą receptorów 5-HT3
+D. W wyniku blokowania receptorów 5-HT4, cyzapryd wzmaga motorykę przewodu pokarmowego
+E. Brak zdania fałszywego, wszystkie zdania są prawdziwe
+KLUCZ: d
+WYJAŚNIENIE:
+Cyzapryd jest **agonistą**, a nie antagonistą receptorów **5-HT4**: ich pobudzenie w splocie Auerbacha zwiększa uwalnianie **acetylocholiny** i przyspiesza pasaż jelitowy. Lek wycofano z powodu blokady kanału **hERG** i **torsade de pointes**. Pozostałe zdania są prawdziwe: **cyproheptadyna** blokuje 5-HT2 (odtrutka w zespole serotoninowym), **ondansetron** — 5-HT3, a buspiron i flibanseryna pobudzają **5-HT1A**, natomiast sumatryptan 5-HT1B/1D.
+---
+ID: FARLEK-e2026-1-1841
+TEMAT: FARM-13
+PYTANIE:
+Mechanizmem oporności na sulfonamidy jest:
+A. Nadprodukcja kwasu dihydrofoliowego
+B. Mutacja syntetazy dihydrofolianowej
+C. Zmniejszenie przepuszczalności błony bakteryjnej
+D. Odpowiedź A i B prawidłowa
+E. Odpowiedź A, B i C prawidłowa
+KLUCZ: c
+WYJAŚNIENIE:
+Sulfonamidy są strukturalnymi analogami **PABA** i kompetycyjnie hamują **syntazę dihydropteroinianową**, blokując syntezę kwasu foliowego u bakterii. Oporność powstaje przez zmniejszoną przepuszczalność błony i **aktywne usuwanie leku**, a ponadto przez nadprodukcję **PABA** (nie kwasu dihydrofoliowego, który jest produktem szlaku) oraz mutację **syntazy dihydropteroinianowej** — a nie dihydrofolianowej, będącej innym enzymem. Dlatego prawidłowy jest wyłącznie mechanizm zmniejszonej przepuszczalności błony.
+---
+ID: FARLEK-e2026-1-1842
+TEMAT: FARM-13
+PYTANIE:
+Inhibitorem gyrazy stosowanym w powikłanym zakażeniu układu moczowego jest:
+A. Norfloksacyna
+B. Lewofloksacyna
+C. Enoksacyna
+D. Cyprofloksacyna
+E. Wszystkie prawidłowe
+KLUCZ: d
+WYJAŚNIENIE:
+**Cyprofloksacyna** to fluorochinolon o najsilniejszym w grupie działaniu na pałeczki Gram-ujemne, w tym **Pseudomonas aeruginosa**, osiągający wysokie stężenia w moczu i miąższu nerki — dlatego jest lekiem z wyboru w **powikłanym ZUM** i odmiedniczkowym zapaleniu nerek. **Norfloksacyna** działa praktycznie tylko w drogach moczowych w zakażeniach niepowikłanych. Grupa hamuje **gyrazę (topoizomerazę II)** i topoizomerazę IV; uwaga na zerwanie ścięgna Achillesa i wydłużenie QT.
+---
+ID: FARLEK-e2026-1-1843
+TEMAT: FARM-07
+PYTANIE:
+Lekiem antyarytmicznym klasy Ic jest:
+A. Lidokaina
+B. Amiodaron
+C. Propafenon
+D. Chinidyna
+E. Sotalol
+KLUCZ: c
+WYJAŚNIENIE:
+**Propafenon** należy do klasy **Ic** wg Vaughana Williamsa: bardzo silnie blokuje kanały **sodowe**, wyraźnie zwalniając przewodzenie (poszerzenie **QRS**), bez wpływu na czas trwania potencjału czynnościowego. Stosuje się go jako "tabletkę podręczną" w napadowym migotaniu przedsionków, ale wyłącznie u chorych **bez organicznej choroby serca** — po zawale leki Ic zwiększają śmiertelność (badanie CAST). Lidokaina to Ib, chinidyna Ia, a sotalol i amiodaron — klasa III.
+---
+ID: FARLEK-e2026-1-1844
+TEMAT: FARM-06
+PYTANIE:
+Do działań niepożądanych inhibitorów konwertazy angiotensyny (ACEI) należą:
+A. Hiperkaliemia i suchy kaszel
+B. Hipokaliemia i tachykardia
+C. Bradykardia i zaparcia
+D. Niedosłuch i parestezje
+E. Retinopatia i nadciśnienie
+KLUCZ: a
+WYJAŚNIENIE:
+Zahamowanie konwertazy zmniejsza wytwarzanie angiotensyny II i **aldosteronu**, co ogranicza wydzielanie potasu w cewce zbiorczej — stąd **hiperkaliemia**. Ten sam enzym (kininaza II) rozkłada **bradykininę**, więc jej kumulacja w drogach oddechowych wywołuje uporczywy **suchy kaszel** u 10-15% chorych, a rzadziej **obrzęk naczynioruchowy**. Przy kaszlu zamienia się ACEI na sartan. Leki te są przeciwwskazane w ciąży i w obustronnym zwężeniu tętnic nerkowych.
+---
+ID: FARLEK-e2026-1-1845
+TEMAT: FARM-10
+PYTANIE:
+Lek stosowany w ostrym rzucie stwardnienia rozsianego w celu zahamowania procesu zapalnego to:
+A. Natalizumab
+B. Triamcynolon
+C. Ocrelizumab
+D. Interferon Beta-1a
+E. Glatiramer
+KLUCZ: b
+WYJAŚNIENIE:
+Ostry rzut stwardnienia rozsianego przerywa się **glikokortykosteroidami** w dużych dawkach, które hamują wytwarzanie cytokin prozapalnych i uszczelniają **barierę krew-mózg**, skracając czas trwania rzutu. Standardem jest **metyloprednizolon** dożylnie przez 3-5 dni, a spośród wymienionych leków jedynym glikokortykosteroidem jest **triamcynolon**. Natalizumab, okrelizumab, interferon beta-1a i glatiramer to leki **modyfikujące przebieg** choroby — nie działają doraźnie.
+---
+ID: FARLEK-e2026-1-1846
+TEMAT: FARM-10
+PYTANIE:
+Leki zwiększające stężenie dopaminy w OUN poprzez zahamowanie jej rozkładu przez monoaminooksydazę typu B (MAO-B) to:
+A. Entakapon i tolkapon
+B. Selegilina i rasagilina
+C. Amantadyna i apomorfina
+D. Bromokryptyna i ropinirol
+E. Karbidopa i benserazyd
+KLUCZ: b
+WYJAŚNIENIE:
+**Selegilina** i **rasagilina** to selektywne, nieodwracalne inhibitory **MAO-B** — izoformy dominującej w prążkowiu i odpowiadającej za rozkład **dopaminy**. Stosuje się je w monoterapii wczesnej choroby Parkinsona oraz jako dodatek pozwalający zmniejszyć dawkę lewodopy. W dużych dawkach tracą selektywność, grożąc **przełomem tyraminowym**. Selegilina jest metabolizowana do amfetaminy (bezsenność). Entakapon hamuje **COMT**, a karbidopa — dekarboksylazę obwodową.
+---
+ID: FARLEK-e2026-1-1847
+TEMAT: FARM-05
+PYTANIE:
+W leczeniu neutropenii po chemioterapii stosuje się:
+A. Filgrastym
+B. Eltrombopag
+C. Fostamatynib
+D. Erytropoetynę
+E. Darbepoetynę
+KLUCZ: a
+WYJAŚNIENIE:
+**Filgrastym** to rekombinowany **G-CSF**, który pobudza proliferację i dojrzewanie prekursorów granulocytów obojętnochłonnych oraz uwalnianie ich ze szpiku. Skraca czas trwania **neutropenii** po chemioterapii i zmniejsza ryzyko gorączki neutropenicznej; **pegfilgrastym** wymaga tylko jednego wstrzyknięcia na cykl. Typowe działania niepożądane to bóle kostne i, rzadko, pęknięcie śledziony. Eltrombopag i fostamatynib leczą małopłytkowość, a erytropoetyna — niedokrwistość.
+---
+ID: FARLEK-e2026-1-1848
+TEMAT: FARM-04
+PYTANIE:
+Lekiem pierwszego rzutu w anafilaksji jest:
+A. Dopamina
+B. Prednizon
+C. Hydrokortyzon
+D. Adrenalina
+E. Klemastyna
+KLUCZ: d
+WYJAŚNIENIE:
+**Adrenalinę** podaje się natychmiast **domięśniowo** w przednio-boczną powierzchnię uda, w dawce **0,3-0,5 mg** (0,01 mg/kg u dzieci), powtarzalnej co 5-15 minut. Działa na wszystkie kluczowe mechanizmy wstrząsu: przez **alfa1** obkurcza naczynia i cofa obrzęk, przez **beta1** zwiększa kurczliwość serca, a przez **beta2** rozszerza oskrzela i hamuje degranulację mastocytów. Glikokortykosteroidy i leki przeciwhistaminowe działają zbyt wolno — pozostają leczeniem wspomagającym.
+---
+ID: FARLEK-e2026-1-1849
+TEMAT: FARM-13
+PYTANIE:
+Zespół "Czerwonego człowieka" jest charakterystycznym działaniem niepożądanym:
+A. Gentamycyny
+B. Wankomycyny
+C. Linezolidu
+D. Daptomycyny
+E. Streptomycyny
+KLUCZ: b
+WYJAŚNIENIE:
+Zespół czerwonego człowieka występuje po **zbyt szybkim wlewie wankomycyny**: lek bezpośrednio degranuluje mastocyty, uwalniając **histaminę** bez udziału IgE. Pojawia się rumień twarzy, szyi i tułowia, świąd oraz spadek ciśnienia. To reakcja **rzekomoanafilaktyczna**, nie alergia — wystarczy wydłużyć wlew do co najmniej **60 minut** i zastosować premedykację lekiem przeciwhistaminowym, bez konieczności odstawienia antybiotyku. Wankomycyna jest też nefro- i ototoksyczna.
+---
+ID: FARLEK-e2026-1-1850
+TEMAT: FARM-08
+PYTANIE:
+Wskaż lek przeciwdepresyjny będący inhibitorem wychwytu zwrotnego serotoniny i noradrenaliny (SNRI):
+A. Sertralina
+B. Duloksetyna
+C. Moklobemid
+D. Mirtazapina
+E. Fluwoksamina
+KLUCZ: b
+WYJAŚNIENIE:
+**Duloksetyna** hamuje transportery **SERT i NET**, zwiększając przekaźnictwo serotoninergiczne i noradrenergiczne. Poza depresją ma udokumentowaną skuteczność w **bólowej neuropatii cukrzycowej**, fibromialgii i wysiłkowym nietrzymaniu moczu, bo noradrenalina wzmacnia zstępujące hamowanie bólu. Może podnosić ciśnienie tętnicze. Sertralina i fluwoksamina to **SSRI**, moklobemid — odwracalny inhibitor **MAO-A**, a mirtazapina — antagonista alfa2 z grupy NaSSA.
+---
+ID: FARLEK-e2026-1-1851
+TEMAT: FARM-12
+PYTANIE:
+Lek, który hamuje syntezę leukotrienów przez blokadę 5-lipooksygenazy:
+A. Montelukast
+B. Zafirlukast
+C. Zileuton
+D. Pitrakinra
+E. Mepolizumab
+KLUCZ: c
+WYJAŚNIENIE:
+**Zileuton** blokuje **5-lipooksygenazę**, czyli pierwszy enzym szlaku przemiany kwasu arachidonowego do leukotrienów, dlatego hamuje powstawanie zarówno **LTB4** (chemotaksja), jak i leukotrienów cysteinylowych **LTC4, LTD4 i LTE4**. Wymaga dawkowania cztery razy na dobę i kontroli **aminotransferaz**, a przez hamowanie **CYP1A2** podnosi stężenie teofiliny. Montelukast i zafirlukast działają niżej w szlaku — blokują receptor **CysLT1**. Mepolizumab to przeciwciało anty-IL-5.
+---
+ID: FARLEK-e2026-1-1852
+TEMAT: FARM-09
+PYTANIE:
+Wskaż zdanie prawdziwe dotyczące ketaminy:
+A. Jest agonistą receptora NMDA
+B. Powoduje znieczulenie dysocjacyjne
+C. Silnie hamuje ośrodek oddechowy
+D. Wydłuża czas przewodnictwa przedsionkowo-komorowego
+E. Nasila reakcję baroreceptorową i bradykardię
+KLUCZ: b
+WYJAŚNIENIE:
+Ketamina wywołuje **znieczulenie dysocjacyjne**: chory sprawia wrażenie przytomnego (otwarte oczy, oczopląs), ale jest czynnościowo odcięty od bodźców wskutek rozkojarzenia układu **limbicznego** i kory. Jest **antagonistą**, a nie agonistą **NMDA**. Nie hamuje ośrodka oddechowego, zachowuje odruchy gardłowe i rozszerza oskrzela, co czyni ją cenną w stanie astmatycznym. Hamując wychwyt zwrotny noradrenaliny, **osłabia** odruch z baroreceptorów i wywołuje tachykardię.
+---
+ID: FARLEK-e2026-1-1853
+TEMAT: FARM-05
+PYTANIE:
+Rekombinowana ludzka interleukina 11, która przyspiesza dojrzewanie megakariocytów i zwiększa liczbę płytek krwi, to:
+A. Oprelwekina
+B. Romiplostym
+C. Pleryksafor
+D. Eltrombopag
+E. Roksadustat
+KLUCZ: a
+WYJAŚNIENIE:
+**Oprelwekina** jest rekombinowaną **interleukiną 11** — cytokiną pobudzającą proliferację komórek macierzystych i dojrzewanie **megakariocytów**, przez co zwiększa liczbę płytek. Stosuje się ją w zapobieganiu ciężkiej **małopłytkowości** po chemioterapii mielosupresyjnej. Charakterystyczne działania niepożądane wynikają z retencji płynów: obrzęki, tachykardia, wysięk w opłucnej i niedokrwistość z rozcieńczenia. **Romiplostym** i **eltrombopag** pobudzają natomiast receptor trombopoetyny.
+---
+ID: FARLEK-e2026-1-1854
+TEMAT: FARM-16
+PYTANIE:
+Do inhibitorów steroidogenezy nadnerczowej należy:
+A. Metyrapon
+B. Trilostan
+C. Aminoglutetymid
+D. Prawidłowe A i C
+E. Prawidłowe A, B i C
+KLUCZ: e
+WYJAŚNIENIE:
+Wszystkie trzy leki blokują kolejne etapy syntezy steroidów nadnerczowych. **Metyrapon** hamuje **11-beta-hydroksylazę**, przez co rośnie stężenie 11-deoksykortyzolu — wykorzystuje się to w teście metyraponowym oceniającym rezerwę **ACTH**. **Aminoglutetymid** blokuje **desmolazę** przekształcającą cholesterol w pregnenolon, dając efekt chemicznej adrenalektomii. **Trilostan** hamuje **3-beta-dehydrogenazę hydroksysteroidową**. Podobnie działa ketokonazol w dużych dawkach.
+---
+ID: FARLEK-e2026-1-1855
+TEMAT: FARM-14
+PYTANIE:
+Antagonistą receptora chemokinowego CCR5, z którym łączy się gp120 wirusa przy wniknięciu do komórek, jest:
+A. Marawirok
+B. Enfuwirtyd
+C. Emtrycytabina
+D. Abakawir
+E. Dydanozyna
+KLUCZ: a
+WYJAŚNIENIE:
+**Marawirok** wiąże się z **koreceptorem CCR5** komórki gospodarza i zmienia jego konformację, uniemożliwiając przyłączenie wirusowej **gp120** — jest więc inhibitorem **wejścia** wirusa. Działa wyłącznie na szczepy o tropizmie **R5**, dlatego przed leczeniem obowiązkowe jest oznaczenie tropizmu; wobec wirusów X4 jest bezużyteczny. Wymaga monitorowania czynności wątroby. **Enfuwirtyd** blokuje inny etap — fuzję błon przez **gp41**, a pozostałe leki to NRTI.
+---
+ID: FARLEK-e2026-1-1856
+TEMAT: FARM-14
+PYTANIE:
+Do swoistych inhibitorów polimerazy RNA NS5B, stosowanych w leczeniu przewlekłego WZW typu C, należy:
+A. Sofosbuwir
+B. Dasabuwir
+C. Daklataswir
+D. Prawidłowe A i B
+E. Prawidłowe A, B i C
+KLUCZ: d
+WYJAŚNIENIE:
+**NS5B** to zależna od RNA polimeraza RNA, kluczowy enzym replikacji HCV. **Sofosbuwir** jest jej inhibitorem **nukleotydowym** — po fosforylacji wbudowuje się w nić i działa jako terminator łańcucha, a **dasabuwir** hamuje ten sam enzym **nienukleozydowo**, allosterycznie. **Daklataswir** działa natomiast na białko **NS5A**. Sofosbuwir stanowi dziś podstawę większości schematów bezinterferonowych, skutecznych wobec wszystkich genotypów HCV.
+Mnemonik końcówek: **-buwir** to NS5B, **-aswir** to NS5A, a **-prewir** to proteaza NS3/4A.
+---
+ID: FARLEK-e2026-1-1857
+TEMAT: FARM-14
+PYTANIE:
+Do swoistych inhibitorów polimerazy RNA NS5A, stosowanych w leczeniu przewlekłego WZW typu C, należy:
+A. Elbaswir
+B. Dasabuwir
+C. Daklataswir
+D. Prawidłowe A i C
+E. Prawidłowe A, B i C
+KLUCZ: d
+WYJAŚNIENIE:
+**Elbaswir** i **daklataswir** hamują białko **NS5A**, niezbędne do tworzenia kompleksu replikacyjnego i składania wirionów — rozpoznajemy je po końcówce **-aswir**. **Dasabuwir** ma końcówkę **-buwir**, więc działa na polimerazę **NS5B**. Leki bezpośrednio działające przeciwwirusowo stosuje się zawsze w skojarzeniu (np. elbaswir z grazoprewirem), co pozwala uzyskać trwałą odpowiedź wirusologiczną u ponad 95% chorych. Uwaga na ryzyko **reaktywacji HBV**.
+---
+ID: FARLEK-e2026-1-1858
+TEMAT: FARM-15
+PYTANIE:
+Mechanizm działania soraprazanu polega na:
+A. Niekompetycyjnym i nieodwracalnym blokowaniu pompy protonowej
+B. Kompetycyjnym i nieodwracalnym blokowaniu pompy protonowej
+C. Kompetycyjnym i odwracalnym blokowaniu pompy protonowej
+D. Kompetycyjnym blokowaniu receptorów H2
+E. Niekompetycyjnym blokowaniu receptorów H2
+KLUCZ: c
+WYJAŚNIENIE:
+**Soraprazan** należy do **P-CAB** — blokerów pompy protonowej konkurujących o miejsce wiązania **jonów potasu** w **H+/K+-ATPazie**. Wiązanie jest **kompetycyjne i odwracalne**, dzięki czemu lek działa natychmiast, niezależnie od posiłku i od wcześniejszej aktywacji pompy kwasem, oraz dobrze kontroluje wydzielanie nocne. Klasyczne **IPP** (omeprazol) są prolekami i wiążą pompę **kowalencyjnie, nieodwracalnie**. Najbardziej znanym P-CAB jest wonoprazan.
+---
+ID: FARLEK-e2026-1-1859
+TEMAT: FARM-15
+PYTANIE:
+Zaznacz zdanie fałszywe:
+A. Antagonistów receptorów histaminowych H2 powinno się stosować w pojedynczej dawce na noc
+B. Omeprazol blokuje wydzielanie kwasu solnego stymulowane pokarmem, a także wydzielanie pepsyny
+C. Lansoprazol hamuje aktywność pompy protonowej, nasila także procesy gojenia śluzówki żołądka
+D. Baklofen jest stosowany w leczeniu refluksu przełyku, ze względu na pobudzanie receptorów GABAb
+E. Mizoprostol jest analogiem prostaglandyny I2
+KLUCZ: e
+WYJAŚNIENIE:
+**Mizoprostol** jest syntetycznym analogiem **prostaglandyny E1**, a nie prostacykliny. Pobudzając receptory **EP3** komórek okładzinowych, hamuje wydzielanie kwasu, a jednocześnie zwiększa produkcję śluzu i wodorowęglanów — dlatego chroni śluzówkę przy przewlekłym stosowaniu **NLPZ**. Silnie kurczy macicę, więc jest **przeciwwskazany w ciąży**. Pozostałe zdania są prawdziwe: baklofen zmniejsza przemijające relaksacje dolnego zwieracza przełyku przez receptory **GABA-B**.
+---
+ID: FARLEK-e2026-1-1860
+TEMAT: FARM-15
+PYTANIE:
+Który spośród wymienionych leków nie jest stosowany jako lek przeciwbakteryjny podczas biegunki:
+A. Nifuroksazyd
+B. Ryfaksymina
+C. Cyprofloksacyna
+D. Furazydyna
+E. Azytromycyna
+KLUCZ: d
+WYJAŚNIENIE:
+**Furazydyna (furagina)** to pochodna nitrofuranu, która po wchłonięciu jest szybko wydalana przez nerki i osiąga stężenia bakteriobójcze wyłącznie w **drogach moczowych** — stosuje się ją w zakażeniach układu moczowego, nie w biegunce. Pozostałe leki działają w jelicie: **nifuroksazyd** i **ryfaksymina** praktycznie nie wchłaniają się z przewodu pokarmowego, a **cyprofloksacyna** i **azytromycyna** są lekami z wyboru w biegunce podróżnych i w zakażeniach inwazyjnych.
+---
+ID: FARLEK-e2026-1-1861
+TEMAT: FARM-17
+PYTANIE:
+Który lek wywołuje wzrost masy ciała:
+A. Liraglutyd
+B. Bupropion
+C. Metformina
+D. Gliklazyd
+E. Wszystkie z wymienionych obniżają masę ciała
+KLUCZ: d
+WYJAŚNIENIE:
+**Gliklazyd** to pochodna **sulfonylomocznika**: zamyka kanał **KATP** komórki beta, wymuszając wydzielanie **insuliny** niezależnie od aktualnej glikemii. Utrzymujący się hiperinsulinizm działa **anabolicznie** i sprzyja przyrostowi masy ciała, a dodatkowo grozi **hipoglikemią**, którą chorzy kompensują podjadaniem. **Metformina** jest neutralna lub nieznacznie redukuje masę, **liraglutyd** hamuje łaknienie i opróżnianie żołądka, a **bupropion** z naltreksonem stosuje się w leczeniu otyłości.
+---
+ID: FARLEK-e2026-1-1862
+TEMAT: FARM-17
+PYTANIE:
+Lekiem stosowanym w leczeniu otyłości uwarunkowanej genetycznie jest:
+A. Naltrekson
+B. Setmelanotyd
+C. Akarboza
+D. Donepezyl
+E. Anakinra
+KLUCZ: b
+WYJAŚNIENIE:
+**Setmelanotyd** jest agonistą podwzgórzowego receptora melanokortynowego **MC4R** — odtwarza sygnał sytości w szlaku **leptyna-melanokortyna**, gdy jest on przerwany przez mutację. Zarejestrowano go w rzadkich otyłościach monogenowych z niedoborem **POMC**, **PCSK1** lub **receptora leptyny** oraz w zespole Bardeta-Biedla. Podaje się go podskórnie raz na dobę. Typowe działania niepożądane to **ciemnienie skóry** (pobudzenie MC1R), nudności i reakcje w miejscu wstrzyknięcia.
+---
+ID: FARLEK-e2026-1-1863
+TEMAT: FARM-18
+PYTANIE:
+Lekiem z wyboru w zatruciu benzodiazepinami jest:
+A. Nalokson
+B. Flumazenil
+C. Atropina
+D. N-acetylocysteina
+E. Fizostygmina
+KLUCZ: b
+WYJAŚNIENIE:
+**Flumazenil** jest kompetycyjnym **antagonistą miejsca benzodiazepinowego** receptora GABA-A: wypiera lek z receptora i znosi sedację w ciągu 1-2 minut. Jego okres półtrwania (ok. **1 godziny**) jest jednak krótszy niż większości benzodiazepin, więc sedacja może nawrócić i konieczne bywają dawki powtarzane lub wlew. Nie wolno go stosować rutynowo u osób **uzależnionych od BZD** i po zatruciu **TLPD** — grozi drgawkami. Nalokson odwraca działanie opioidów.
+---
+ID: FARLEK-e2026-1-1864
+TEMAT: FARM-15
+PYTANIE:
+Wskaż lek działający poprzez nieodwracalne hamowanie pompy protonowej w komórkach okładzinowych żołądka:
+A. Ranitydyna
+B. Famotydyna
+C. Mizoprostol
+D. Omeprazol
+E. Sukralfat
+KLUCZ: d
+WYJAŚNIENIE:
+**Omeprazol** jest prolekiem: w kwaśnym środowisku kanalików wydzielniczych komórki okładzinowej przekształca się w sulfenamid, który **kowalencyjnie i nieodwracalnie** wiąże grupy **-SH** pompy **H+/K+-ATPazy**. Odtworzenie wydzielania wymaga syntezy nowych pomp, co trwa 24-48 godzin — stąd długie działanie mimo krótkiego okresu półtrwania. Lek przyjmuje się **30-60 minut przed posiłkiem**. Ranitydyna i famotydyna to odwracalni antagoniści receptora **H2**.
+---
+ID: FARLEK-e2026-1-1865
+TEMAT: FARM-17
+PYTANIE:
+Który z wymienionych leków jest inhibitorem SGLT-2 (kotransporter sodowo-glukozowy typu 2) i stosowany w cukrzycy typu 2?
+A. Sitagliptyna
+B. Eksenatyd
+C. Kanagliflozyna
+D. Akarboza
+E. Repaglinid
+KLUCZ: c
+WYJAŚNIENIE:
+**Kanagliflozyna** blokuje kotransporter **SGLT-2** w cewce bliższej, hamując zwrotne wchłanianie glukozy i wymuszając **glikozurię**. Efektem jest spadek HbA1c, masy ciała i ciśnienia tętniczego, a niezależnie od glikemii — mniejsze ryzyko hospitalizacji z powodu **niewydolności serca** i wolniejsza progresja przewlekłej choroby nerek. Działania niepożądane: zakażenia grzybicze narządów płciowych, odwodnienie i **euglikemiczna kwasica ketonowa**. Sitagliptyna hamuje DPP-4.
+---
+ID: FARLEK-e2026-1-1866
+TEMAT: FARM-14
+PYTANIE:
+Wskaż lek przeciwwirusowy stosowany w leczeniu COVID-19 w postaci doustnej:
+A. Oseltamiwir
+B. Remdesiwir
+C. Nirmatrelwir/rytonawir
+D. Acyklowir
+E. Gancyklowir
+KLUCZ: c
+WYJAŚNIENIE:
+**Nirmatrelwir** hamuje **proteazę główną 3CL** SARS-CoV-2, uniemożliwiając cięcie poliprotein wirusowych. Sam jest szybko metabolizowany, dlatego łączy się go z małą dawką **rytonawiru** — silnego inhibitora **CYP3A4**, który pełni rolę wyłącznie farmakokinetycznego wzmacniacza. Leczenie doustne trwa **5 dni** i musi rozpocząć się do 5 dni od wystąpienia objawów. Kluczowe są liczne **interakcje** (statyny, amiodaron, DOAC). Remdesiwir podaje się dożylnie.
+---
+ID: FARLEK-e2026-1-1867
+TEMAT: FARM-16
+PYTANIE:
+Lek stosowany w terapii krwawień z przewodu pokarmowego poprzez aktywację receptorów wazopresynowych w mięśniach gładkich naczyń trzewnych:
+A. Wazopresyna
+B. Desmopresyna
+C. Terlipresyna
+D. Oksytocyna
+E. Bromokryptyna
+KLUCZ: c
+WYJAŚNIENIE:
+**Terlipresyna** jest prolekiem wazopresyny o powolnym uwalnianiu, działającym głównie przez receptory **V1** w mięśniówce naczyń **trzewnych**. Ich skurcz zmniejsza napływ krwi do krążenia wrotnego i obniża ciśnienie w **żylakach przełyku**, dlatego lek stosuje się w krwotoku z żylaków oraz w **zespole wątrobowo-nerkowym**. Pobudzenie receptorów **V2** w nerkach daje efekt antydiuretyczny i grozi **hiponatremią**. Ryzyko niedokrwienia mięśnia sercowego i jelit.
+---
+ID: FARLEK-e2026-1-1868
+TEMAT: FARM-09
+PYTANIE:
+Wskaż lek stosowany jako anestetyk wziewny o bardzo niskim współczynniku rozpuszczalności krew/gaz, zapewniający szybkie wprowadzenie i wyprowadzenie ze znieczulenia:
+A. Halotan
+B. Izofluran
+C. Propofol
+D. Desfluran
+E. Enfluran
+KLUCZ: d
+WYJAŚNIENIE:
+**Desfluran** ma najniższy spośród anestetyków wziewnych współczynnik rozdziału **krew/gaz (ok. 0,42)** — słabo rozpuszcza się we krwi, więc prężność pęcherzykowa szybko zrównuje się z mózgową, dając błyskawiczną indukcję i wybudzenie, korzystne w chirurgii jednego dnia i u chorych otyłych. Wadą jest **drażniący zapach** wykluczający indukcję wziewną, pobudzenie współczulne przy gwałtownym zwiększaniu stężenia i konieczność stosowania podgrzewanego parownika.
+---
+ID: FARLEK-e2026-1-1869
+TEMAT: FARM-19
+PYTANIE:
+Leki biologiczne stosowane w leczeniu zaawansowanego raka sutka i gruczolakoraka żołądka, wykazujących ekspresję receptora HER2:
+A. Trastuzumab i pertuzumab
+B. Bewacyzumab i cetuksymab
+C. Niwolumab i ipilimumab
+D. Imatynib i sunitynib
+E. Nilotynib i dazatynib
+KLUCZ: a
+WYJAŚNIENIE:
+**Trastuzumab** wiąże zewnątrzkomórkową domenę receptora **HER2**, hamując sygnał proliferacyjny i uruchamiając cytotoksyczność zależną od przeciwciał (**ADCC**), natomiast **pertuzumab** blokuje inną domenę i uniemożliwia **dimeryzację HER2 z HER3** — działają więc komplementarnie i podaje się je łącznie z chemioterapią. Głównym zagrożeniem jest **kardiotoksyczność**, zwłaszcza po antracyklinach, dlatego konieczna jest okresowa kontrola frakcji wyrzutowej.
+---
+ID: FARLEK-e2026-1-1870
+TEMAT: FARM-19
+PYTANIE:
+Wskaż lek będący inhibitorem topoizomerazy I:
+A. Winblastyna
+B. Etopozyd
+C. Irynotekan
+D. Bleomycyna
+E. Cyklofosfamid
+KLUCZ: c
+WYJAŚNIENIE:
+**Irynotekan** jest prolekiem przekształcanym do aktywnego metabolitu **SN-38**, który stabilizuje kompleks **topoizomerazy I** z przeciętą nicią DNA i uniemożliwia jej ponowne połączenie — w fazie **S** prowadzi to do trwałych pęknięć. Stosuje się go w raku jelita grubego (schemat FOLFIRI). Charakterystyczne są **wczesna biegunka cholinergiczna** (odwracana atropiną), biegunka późna i neutropenia, nasilone przy polimorfizmie **UGT1A1**. Etopozyd hamuje topoizomerazę II.
+---
+ID: FARLEK-e2026-1-1871
+TEMAT: FARM-09
+PYTANIE:
+Wskaż lek stosowany w znieczuleniu miejscowym o najkrótszym czasie działania:
+A. Bupiwakaina
+B. Ropiwakaina
+C. Lidokaina
+D. Prokaina
+E. Tetrakaina
+KLUCZ: d
+WYJAŚNIENIE:
+**Prokaina** to **ester** o najkrótszym czasie działania — około **45-60 minut** — ponieważ jest błyskawicznie hydrolizowana przez **esterazy osoczowe** do PABA. Słabo penetruje też tkanki, więc nie nadaje się do znieczulenia powierzchniowego. **Lidokaina** działa pośrednio długo (1-2 godziny), a **bupiwakaina, ropiwakaina i tetrakaina** nawet kilka godzin, bo są bardziej **lipofilne** i silniej wiążą się z białkami. Dodatek **adrenaliny** wydłuża blokadę i zmniejsza toksyczność ogólną.
+---
+ID: FARLEK-e2026-1-1872
+TEMAT: FARM-12
+PYTANIE:
+Wskaż lek stosowany w terapii mukowiscydozy poprawiający funkcję białka CFTR:
+A. Erlotynib
+B. Iwakaftor
+C. Bosentan
+D. Sirolimus
+E. Natalizumab
+KLUCZ: b
+WYJAŚNIENIE:
+**Iwakaftor** jest **potencjatorem CFTR**: zwiększa prawdopodobieństwo otwarcia kanału chlorkowego, który dotarł już do błony komórkowej, dlatego działa w mutacjach zaburzających **bramkowanie**, klasycznie **G551D**. W najczęstszej mutacji **F508del** białko nie osiąga błony, więc konieczne jest dołączenie **korektorów** — tezakaftoru, eleksakaftoru lub lumakaftoru. Leczenie poprawia **FEV1**, masę ciała i obniża stężenie chlorków w pocie. Wymaga kontroli aminotransferaz.

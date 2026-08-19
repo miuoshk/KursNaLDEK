@@ -1,11 +1,29 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
-import { fetchVisibleTopicIds } from "@/features/session/server/questionSelection";
+import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
 import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import type { QuestionTopicRow } from "@/lib/content/fetchActiveQuestionsForTopics";
 
 const PAGE_SIZE = 1000;
+
+/** Wszystkie działy treści (także track-only, np. FARM-19), bez cieni rocznikowych. */
+async function fetchContentTopicIds(
+  supabase: SupabaseClient,
+  contentSubjectId: string,
+): Promise<string[]> {
+  const { data, error } = await supabase
+    .from("topics")
+    .select("id")
+    .in("subject_id", getSubjectScopeIds(contentSubjectId));
+  if (error) {
+    console.error("[fetchActiveQuestionsForThemeLabel] topics", error.message);
+    return [];
+  }
+  return (data ?? [])
+    .map((row) => row.id as string)
+    .filter((id) => !isVirtualThemeTopicId(id));
+}
 
 /** Aktywne pytania przedmiotu z danym `theme_label` (bez zmiany `topic_id`). */
 export async function fetchActiveQuestionsForThemeLabel(
@@ -18,11 +36,7 @@ export async function fetchActiveQuestionsForThemeLabel(
   const topicIds =
     topicIdsOverride && topicIdsOverride.length > 0
       ? topicIdsOverride
-      : await fetchVisibleTopicIds(
-          supabase,
-          getSubjectScopeIds(contentSubjectId),
-          track,
-        );
+      : await fetchContentTopicIds(supabase, contentSubjectId);
   if (topicIds.length === 0) return [];
 
   const all: QuestionTopicRow[] = [];

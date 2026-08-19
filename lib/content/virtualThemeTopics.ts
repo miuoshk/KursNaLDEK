@@ -46,6 +46,12 @@ export const VIRTUAL_THEME_TOPIC_DEFINITIONS: VirtualThemeTopicDefinition[] = [
     displayName: "2026",
     displayOrder: 24,
   },
+  {
+    contentSubjectId: "farmakologia",
+    themeLabel: "2026",
+    displayName: "2026",
+    displayOrder: 20,
+  },
 ];
 
 export function buildVirtualThemeTopicId(

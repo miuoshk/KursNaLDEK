@@ -17,8 +17,8 @@ import {
 } from "@/features/session/lib/sessionSummaryStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
-const POLL_INTERVAL_MS = 2000;
-const POLL_MAX_ATTEMPTS = 5;
+const POLL_INTERVAL_MS = 400;
+const POLL_MAX_ATTEMPTS = 20;
 
 function hasAntaresData(summary: SessionSummaryData): boolean {
   return Boolean(summary.sessionInsights || summary.examReadiness);

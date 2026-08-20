@@ -24,7 +24,7 @@ export type TopicWithProgress = Topic & {
   answered_count: number;
   correct_count: number;
   knowledge_card: string | null;
-  /** Ukończone sesje z tego tematu (kafelek / filtr topic_id). */
+  /** Ile razy przerobiono cały temat (min. liczba odpowiedzi na każde pytanie). */
   session_count: number;
   last_studied_at: string | null;
 };
@@ -191,8 +191,10 @@ export async function loadSubjectDashboard(
     >();
     const topicSessionStats = new Map<
       string,
-      { count: number; lastAt: string | null }
+      { lastAt: string | null }
     >();
+    const timesByQuestion = new Map<string, number>();
+    const questionIdsByTopic = new Map<string, string[]>();
     let nextReviewDate: Date | null = null;
     let dueCount = 0;
 
@@ -272,11 +274,31 @@ export async function loadSubjectDashboard(
           }
         }
 
+        for (const q of qRows) {
+          const tid = q.topic_id;
+          if (!tid) continue;
+          const list = questionIdsByTopic.get(tid) ?? [];
+          list.push(q.id);
+          questionIdsByTopic.set(tid, list);
+        }
+        for (const [virtualId, ids] of virtualQuestionIdsByTopic) {
+          questionIdsByTopic.set(virtualId, ids);
+        }
+        if (finalExamTopicId) {
+          const zalIds = qRows
+            .filter((q) => q.topic_id === finalExamTopicId)
+            .map((q) => q.id);
+          questionIdsByTopic.set(finalExamTopicId, [
+            ...new Set([...zalIds, ...yearQuestionIds]),
+          ]);
+        }
+
         const now = new Date();
         for (const r of uqpRows) {
           const tid = qRows.find((q) => q.id === r.question_id)?.topic_id;
           const timesAns = Number(r.times_answered ?? 0);
           const timesCorr = Number(r.times_correct ?? 0);
+          timesByQuestion.set(r.question_id, timesAns);
 
           const applyProgress = (topicKey: string) => {
             const cur = progressByTopic.get(topicKey) ?? {
@@ -320,14 +342,23 @@ export async function loadSubjectDashboard(
           for (const r of topicSessions ?? []) {
             const tid = r.topic_id as string | null;
             if (!tid) continue;
-            const cur = topicSessionStats.get(tid) ?? { count: 0, lastAt: null };
-            cur.count += 1;
+            const cur = topicSessionStats.get(tid) ?? { lastAt: null };
             if (!cur.lastAt) cur.lastAt = (r.completed_at as string) ?? null;
             topicSessionStats.set(tid, cur);
           }
         }
       }
     }
+
+    const fullPassCount = (topicId: string): number => {
+      const ids = questionIdsByTopic.get(topicId) ?? [];
+      if (ids.length === 0) return 0;
+      let min = Infinity;
+      for (const id of ids) {
+        min = Math.min(min, timesByQuestion.get(id) ?? 0);
+      }
+      return Number.isFinite(min) ? min : 0;
+    };
 
     const topics: TopicWithProgress[] = topicRows
       .map((row) => {
@@ -343,7 +374,7 @@ export async function loadSubjectDashboard(
           answered_count: prog?.uniqueAnswered ?? 0,
           correct_count: prog?.totalCorrect ?? 0,
           knowledge_card: (row.knowledge_card as string | null) ?? null,
-          session_count: sess?.count ?? 0,
+          session_count: fullPassCount(row.id as string),
           last_studied_at: sess?.lastAt ?? null,
         };
       })
@@ -361,7 +392,7 @@ export async function loadSubjectDashboard(
             answered_count: prog?.uniqueAnswered ?? 0,
             correct_count: prog?.totalCorrect ?? 0,
             knowledge_card: null,
-            session_count: sess?.count ?? 0,
+            session_count: fullPassCount(virtualId),
             last_studied_at: sess?.lastAt ?? null,
           };
         }),

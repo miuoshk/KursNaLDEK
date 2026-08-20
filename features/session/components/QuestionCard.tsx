@@ -25,9 +25,11 @@ export function QuestionCard({
       : null;
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-3xl overflow-x-hidden">
+    <div className="mx-auto w-full min-w-0 max-w-3xl">
       {topicLabel ? (
-        <p className="font-body text-body-xs text-muted">{topicLabel}</p>
+        <p className="mb-1 hidden font-body text-body-xs text-muted sm:block">
+          {topicLabel}
+        </p>
       ) : null}
       {question.imageUrl ? (
         <div className="relative mt-6 h-64 w-full overflow-hidden rounded-card border border-border bg-card">
@@ -43,7 +45,7 @@ export function QuestionCard({
         text={question.text}
         className="mt-6 text-body-md md:text-body-lg"
       />
-      <div className="mt-6 flex flex-col gap-3">{children}</div>
+      <div className="mt-6 flex flex-col gap-3 overflow-visible py-1">{children}</div>
     </div>
   );
 }

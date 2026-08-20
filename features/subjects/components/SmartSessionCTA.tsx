@@ -202,7 +202,7 @@ export function SmartSessionCTA({
           </p>
           <Link
             href={catalogHref}
-            className="mt-auto inline-flex items-center self-start rounded-lg border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 hover:bg-brand-sage/10"
+            className="mt-4 inline-flex items-center self-start rounded-lg border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 hover:bg-brand-sage/10"
           >
             {t("browse")}
           </Link>

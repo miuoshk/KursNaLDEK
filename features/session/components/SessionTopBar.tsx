@@ -41,56 +41,93 @@ export function SessionTopBar({
     sessionTopicNames && sessionTopicNames.length > 0
       ? sessionTopicNames.join(" · ")
       : null;
+  const mobileTitle = selectedTopicName ?? subjectName;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background px-4 py-3 sm:px-6">
-      {selectedTopicName ? (
-        <p className="mb-2 font-body text-body-sm font-medium text-brand-gold">
-          {t("topicLabel", { name: selectedTopicName })}
+    <header className="sticky top-0 z-30 border-b border-border bg-background px-3 py-2 sm:px-6 sm:py-3">
+      <div className="flex items-center gap-2 sm:hidden">
+        <p
+          className="min-w-0 flex-1 truncate font-body text-body-sm font-medium text-brand-gold"
+          title={mobileTitle}
+        >
+          {mobileTitle}
         </p>
-      ) : null}
-      {topicsLine && !selectedTopicName ? (
-        <p className="mb-2 line-clamp-2 font-body text-body-xs text-muted" title={topicsLine}>
-          {t("topicsLabel", { names: topicsLine })}
-        </p>
-      ) : null}
-      <div className="flex flex-wrap items-center gap-4">
-        <span className="shrink-0 rounded-pill bg-card px-4 py-1.5 font-body text-body-sm font-medium text-primary">
-          {subjectName}
-        </span>
-
-        <div className="min-w-0 flex-1">
-          <p className="font-body text-body-sm tabular-nums text-secondary">
-            {t("questionProgress", { current: current + 1, total })}
-          </p>
-          <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
-            <div
-              className="h-full rounded-full bg-brand-gold transition-[width] duration-[400ms] ease-out"
-              style={{ width: `${pct}%` }}
-            />
-          </div>
-        </div>
-
         {examElapsedSeconds !== null ? (
           <p
-            className="min-w-[4.5ch] shrink-0 text-right font-body text-body-md tabular-nums text-primary"
+            className="shrink-0 font-body text-body-sm tabular-nums text-primary"
             aria-label={t("sessionTimeAria")}
           >
             {formatClock(examElapsedSeconds)}
           </p>
         ) : null}
-
+        <p className="shrink-0 font-body text-body-sm tabular-nums text-secondary">
+          {current + 1}/{total}
+        </p>
         <button
           type="button"
           onClick={onEnd}
           className={cn(
-            "ml-auto inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-muted transition-colors duration-200 ease-out",
+            "inline-flex size-9 shrink-0 items-center justify-center rounded-btn text-muted transition-colors duration-200 ease-out",
             "hover:text-error",
           )}
+          aria-label={t("endSession")}
         >
-          {t("endSession")}
           <X className="size-4" aria-hidden />
         </button>
+      </div>
+
+      <div className="hidden sm:block">
+        {selectedTopicName ? (
+          <p className="mb-2 font-body text-body-sm font-medium text-brand-gold">
+            {t("topicLabel", { name: selectedTopicName })}
+          </p>
+        ) : null}
+        {topicsLine && !selectedTopicName ? (
+          <p
+            className="mb-2 line-clamp-2 font-body text-body-xs text-muted"
+            title={topicsLine}
+          >
+            {t("topicsLabel", { names: topicsLine })}
+          </p>
+        ) : null}
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="shrink-0 rounded-pill bg-card px-4 py-1.5 font-body text-body-sm font-medium text-primary">
+            {subjectName}
+          </span>
+
+          <div className="min-w-0 flex-1">
+            <p className="font-body text-body-sm tabular-nums text-secondary">
+              {t("questionProgress", { current: current + 1, total })}
+            </p>
+            <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
+              <div
+                className="h-full rounded-full bg-brand-gold transition-[width] duration-[400ms] ease-out"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+
+          {examElapsedSeconds !== null ? (
+            <p
+              className="min-w-[4.5ch] shrink-0 text-right font-body text-body-md tabular-nums text-primary"
+              aria-label={t("sessionTimeAria")}
+            >
+              {formatClock(examElapsedSeconds)}
+            </p>
+          ) : null}
+
+          <button
+            type="button"
+            onClick={onEnd}
+            className={cn(
+              "ml-auto inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-muted transition-colors duration-200 ease-out",
+              "hover:text-error",
+            )}
+          >
+            {t("endSession")}
+            <X className="size-4" aria-hidden />
+          </button>
+        </div>
       </div>
     </header>
   );

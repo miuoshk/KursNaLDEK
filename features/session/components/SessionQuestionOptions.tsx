@@ -31,7 +31,12 @@ export function SessionQuestionOptions({
   });
 
   return (
-    <motion.div variants={optionsContainerVariants} initial="hidden" animate="visible" className="space-y-3">
+    <motion.div
+      variants={optionsContainerVariants}
+      initial="hidden"
+      animate="visible"
+      className="space-y-3 overflow-visible"
+    >
       {displayOptions.map((opt, i) => {
         const letter = String.fromCharCode(65 + i);
         const state = optionVisualState(
@@ -45,10 +50,12 @@ export function SessionQuestionOptions({
           isShowingFeedback &&
           opt.id === selectedOptionId &&
           selectedOptionId !== q.correctOptionId;
+        const isAnimating = showPulse || showShake;
 
         return (
-          <motion.div key={opt.id} variants={optionVariants}>
+          <motion.div key={opt.id} variants={optionVariants} className="overflow-visible">
             <motion.div
+              className={isAnimating ? "relative z-10 overflow-visible" : "overflow-visible"}
               animate={
                 showPulse ? { scale: [1, 1.02, 1] } : showShake ? { x: [0, -4, 4, -2, 0] } : {}
               }

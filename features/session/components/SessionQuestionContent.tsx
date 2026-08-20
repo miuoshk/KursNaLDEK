@@ -97,9 +97,15 @@ export function SessionQuestionContent({
     canNext: canGoNextTouch,
   });
 
+  const navBtnClass = cn(
+    "inline-flex shrink-0 items-center justify-center rounded-btn border border-border font-body font-medium text-secondary transition-colors",
+    "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
+    "disabled:pointer-events-none disabled:opacity-30",
+  );
+
   return (
     <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-      <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pb-[max(8.5rem,calc(7rem+env(safe-area-inset-bottom)))] pt-6 touch-pan-y sm:px-8">
+      <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pb-6 pt-4 touch-pan-y sm:px-8 sm:pt-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={q.id}
@@ -194,51 +200,88 @@ export function SessionQuestionContent({
         )}
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-sm">
-        {showSquares ? (
-          <div className="mx-auto mb-2 max-w-3xl">
-            <SessionProgressSquares
-              questions={questions!}
-              answeredMap={answeredMap!}
-              currentIndex={currentIndex}
-              onJumpTo={onJumpTo}
-            />
-          </div>
-        ) : null}
-        <div className="mx-auto flex max-w-3xl items-center justify-between">
+      <div className="z-40 shrink-0 border-t border-border bg-background/95 px-2 py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur-sm sm:px-4 sm:py-3 sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <div className="mx-auto flex max-w-3xl items-center gap-1 sm:hidden">
           <button
             type="button"
             disabled={currentIndex <= 0}
             onClick={onPrevious}
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-btn border border-border px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
-              "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
-              "disabled:pointer-events-none disabled:opacity-30",
-            )}
+            className={cn(navBtnClass, "size-11")}
+            aria-label={t("previous")}
           >
-            <ChevronLeft className="size-4 shrink-0" aria-hidden />
-            {t("previous")}
+            <ChevronLeft className="size-5" aria-hidden />
           </button>
-
-          <p className="font-body text-body-xs text-secondary">
-            {t("questionProgress", { current: currentIndex + 1, total })}
-          </p>
-
+          {showSquares ? (
+            <div className="min-w-0 flex-1">
+              <SessionProgressSquares
+                questions={questions!}
+                answeredMap={answeredMap!}
+                currentIndex={currentIndex}
+                onJumpTo={onJumpTo}
+              />
+            </div>
+          ) : (
+            <p className="min-w-0 flex-1 text-center font-body text-body-xs tabular-nums text-secondary">
+              {currentIndex + 1}/{total}
+            </p>
+          )}
           <button
             type="button"
             disabled={!canNavigateNext}
             onClick={onNext}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-btn border border-border px-4 py-2.5 font-body text-body-sm font-medium text-secondary transition-colors",
-              "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
+              navBtnClass,
+              "size-11",
               (allAnswered || canEndPrzeglad) &&
                 "border-brand-gold/40 text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold",
-              "disabled:pointer-events-none disabled:opacity-30",
             )}
+            aria-label={nextLabel}
           >
-            {nextLabel}
-            <ChevronRight className="size-4 shrink-0" aria-hidden />
+            <ChevronRight className="size-5" aria-hidden />
           </button>
+        </div>
+
+        <div className="mx-auto hidden max-w-3xl sm:block">
+          {showSquares ? (
+            <div className="mb-2">
+              <SessionProgressSquares
+                questions={questions!}
+                answeredMap={answeredMap!}
+                currentIndex={currentIndex}
+                onJumpTo={onJumpTo}
+              />
+            </div>
+          ) : null}
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              disabled={currentIndex <= 0}
+              onClick={onPrevious}
+              className={cn(navBtnClass, "gap-1.5 px-4 py-2.5 text-body-sm")}
+            >
+              <ChevronLeft className="size-4 shrink-0" aria-hidden />
+              {t("previous")}
+            </button>
+
+            <p className="font-body text-body-xs text-secondary">
+              {t("questionProgress", { current: currentIndex + 1, total })}
+            </p>
+
+            <button
+              type="button"
+              disabled={!canNavigateNext}
+              onClick={onNext}
+              className={cn(
+                navBtnClass,
+                "gap-1.5 px-4 py-2.5 text-body-sm",
+                (allAnswered || canEndPrzeglad) &&
+                  "border-brand-gold/40 text-brand-gold hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold",
+              )}
+            >
+              {nextLabel}
+              <ChevronRight className="size-4 shrink-0" aria-hidden />
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { getLocale, getTranslations } from "next-intl/server";
+import { ContentCopyGuard } from "@/features/shared/components/ContentCopyGuard";
 import { IntlProvider } from "@/features/shared/components/IntlProvider";
 import "./globals.css";
 
@@ -40,7 +41,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
       <body className="font-body bg-background text-primary antialiased">
-        <IntlProvider>{children}</IntlProvider>
+        <IntlProvider>
+          <ContentCopyGuard />
+          {children}
+        </IntlProvider>
       </body>
     </html>
   );

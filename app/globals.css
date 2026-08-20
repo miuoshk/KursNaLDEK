@@ -101,6 +101,22 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
 ::selection { background: rgba(201,168,76,0.3); color: #fff; }
+
+/* Blokada zaznaczania / natywnego „Kopiuj” na telefonie; inputy zostają edytowalne */
+html[data-copy-guard],
+html[data-copy-guard] *:not(input):not(textarea):not(select):not([contenteditable="true"]) {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+html[data-copy-guard] input,
+html[data-copy-guard] textarea,
+html[data-copy-guard] select,
+html[data-copy-guard] [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type="number"] { -moz-appearance: textfield; }

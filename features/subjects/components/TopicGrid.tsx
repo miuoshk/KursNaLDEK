@@ -44,7 +44,7 @@ export function TopicGrid({
           {t("noTopics")}
         </p>
       ) : (
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
           {topics.map((topic) => (
             <TopicCard
               key={topic.id}

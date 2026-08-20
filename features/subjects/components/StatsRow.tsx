@@ -74,7 +74,7 @@ export async function StatsRow({ stats }: { stats: SubjectStats }) {
       : 0;
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
       <div className="rounded-card border border-border bg-card p-5">
         <p className="font-body text-body-xs font-medium uppercase tracking-normal text-muted">
           {t("subjectMastery")}

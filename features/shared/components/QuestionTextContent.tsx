@@ -48,14 +48,14 @@ export function QuestionTextContent({
   if (parsed.kind === "plain") {
     // div (not p): RichTextContent may emit block markdown (ol/ul/p)
     return (
-      <div className={cn("whitespace-pre-wrap font-body leading-relaxed text-primary", className)}>
+      <div className={cn("min-w-0 break-words whitespace-pre-wrap font-body leading-relaxed text-primary", className)}>
         {renderSegment(parsed.text, render)}
       </div>
     );
   }
 
   return (
-    <div className={cn("font-body leading-relaxed text-primary", className)}>
+    <div className={cn("min-w-0 break-words font-body leading-relaxed text-primary", className)}>
       {parsed.intro ? (
         <p className="whitespace-pre-wrap text-body-md md:text-body-lg">
           {renderSegment(parsed.intro, render)}

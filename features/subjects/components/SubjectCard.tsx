@@ -97,7 +97,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         )}
       </div>
 
-      <h2 className="mt-3 font-heading text-body-lg text-primary">
+      <h2 className="mt-4 font-heading text-body-lg text-primary">
         {subject.name}
       </h2>
 
@@ -176,7 +176,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
       <div
         className={cn(
           "group relative flex flex-col rounded-card border border-border bg-card p-5",
-          isDisabled && "pointer-events-none opacity-60",
+          "pointer-events-none opacity-60",
         )}
       >
         {content}

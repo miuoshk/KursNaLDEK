@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { SessionAnswer, SessionQuestion } from "@/features/session/types";
+import { scrollChildIntoCenter } from "@/features/session/lib/scrollChildIntoCenter";
 import { cn } from "@/lib/utils";
 
 type SessionProgressSquaresProps = {
@@ -44,12 +45,10 @@ export function SessionProgressSquares({
 
   useEffect(() => {
     if (!overflows) return;
+    const scroller = scrollRef.current;
     const node = itemRefs.current[currentIndex];
-    node?.scrollIntoView({
-      inline: "center",
-      block: "nearest",
-      behavior: "smooth",
-    });
+    if (!scroller || !node) return;
+    scrollChildIntoCenter(scroller, node);
   }, [currentIndex, overflows]);
 
   if (questions.length === 0) return null;
@@ -58,11 +57,12 @@ export function SessionProgressSquares({
     <div
       ref={scrollRef}
       className={cn(
-        "flex max-w-full gap-1 py-0.5",
+        "flex max-w-full flex-nowrap gap-1 py-0.5",
         overflows
-          ? "overflow-x-auto scroll-smooth [scrollbar-width:thin]"
+          ? "overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth touch-pan-x [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
           : "justify-center overflow-hidden",
       )}
+      data-horizontal-scroll={overflows ? "true" : undefined}
       role="list"
       aria-label={t("sessionProgressAria")}
     >

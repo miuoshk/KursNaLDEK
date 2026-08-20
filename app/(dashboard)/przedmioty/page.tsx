@@ -68,7 +68,7 @@ export default async function PrzedmiotyPage() {
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
           {t("mySubjects")}
         </h1>
-        <p className="mt-1 font-body text-sm text-secondary">{subtitle}</p>
+        <p className="mt-2 font-body text-sm text-secondary">{subtitle}</p>
       </header>
 
       <div className="mt-8 space-y-8">

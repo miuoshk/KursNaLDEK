@@ -95,11 +95,11 @@ export function SmartSessionCTA({
   }, [subjectId]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <h2 className="font-heading text-xl font-bold text-primary">{t("startLearning")}</h2>
 
-      <div className="rounded-card border border-brand-sage/20 bg-card p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div className="rounded-card border border-brand-sage/20 bg-card p-5 sm:p-6">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
               {t("smartSession")}
@@ -110,7 +110,7 @@ export function SmartSessionCTA({
           </div>
           <Link
             href={smartHref}
-            className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)]"
+            className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)] sm:w-auto"
           >
             {t("startSession")}
           </Link>
@@ -134,7 +134,7 @@ export function SmartSessionCTA({
             </div>
             <Link
               href={dueReviewHref}
-              className="inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110"
+              className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110 sm:w-auto"
             >
               {t("reviewButton", { count: Math.min(smartCount, dueCount) })}
             </Link>
@@ -160,7 +160,7 @@ export function SmartSessionCTA({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4">
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
           <h3 className="font-heading text-heading-sm text-primary">
             {t("classicLearning")}

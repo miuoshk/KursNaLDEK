@@ -103,7 +103,7 @@ export function TopicSessionConfigDialog({
   const catalogHref = buildHref(subjectId, topicId, "katalog", 5000);
 
   const altCardClass =
-    "flex flex-col rounded-card border border-border bg-card-hover p-3.5 transition-colors hover:border-brand-sage/25";
+    "flex flex-col rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -113,7 +113,7 @@ export function TopicSessionConfigDialog({
           className={cn(
             "fixed bottom-0 left-0 right-0 z-50 flex flex-col",
             "rounded-t-[20px] border border-b-0 border-border bg-card",
-            "max-h-[92vh]",
+            "max-h-[92vh] overflow-x-hidden",
             "lg:bottom-auto lg:left-1/2 lg:right-auto lg:top-1/2",
             "lg:-translate-x-1/2 lg:-translate-y-1/2",
             "lg:w-[min(580px,90vw)] lg:max-h-[85vh]",
@@ -156,7 +156,7 @@ export function TopicSessionConfigDialog({
           </div>
 
           {/* Body */}
-          <div className="px-5 py-4 lg:px-7 lg:py-5">
+          <div className="px-5 py-5 lg:px-7 lg:py-5">
             <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-stretch">
               {/* Left column — Hero card */}
               <div className="lg:flex lg:flex-col">
@@ -199,15 +199,15 @@ export function TopicSessionConfigDialog({
               </div>
 
               {/* Right column (desktop) / below hero (mobile) */}
-              <div className="flex flex-col gap-3">
+              <div className="mt-5 flex flex-col gap-4 lg:mt-0">
                 {/* Section label */}
-                <p className="mt-4 mb-0 font-body text-body-xs uppercase tracking-normal text-muted lg:mt-0">
+                <p className="mb-0 font-body text-body-xs uppercase tracking-normal text-muted">
                   {t("otherModes")}
                 </p>
 
                 {hasKnowledgeCard ? (
                   <>
-                    <div className="grid grid-cols-1 gap-2.5 lg:grid-cols-1 lg:gap-3">
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-1">
                       <div className={altCardClass}>
                         <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <FileText className="size-4 text-muted" aria-hidden />
@@ -281,7 +281,7 @@ export function TopicSessionConfigDialog({
                     </button>
                   </>
                 ) : (
-                  <div className="grid grid-cols-1 gap-2.5 lg:flex lg:flex-1 lg:flex-col lg:gap-3">
+                  <div className="grid grid-cols-1 gap-4 lg:flex lg:flex-1 lg:flex-col">
                     <div className={cn(altCardClass, "lg:flex-1")}>
                       <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />

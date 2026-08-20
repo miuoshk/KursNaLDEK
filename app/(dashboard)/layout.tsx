@@ -118,7 +118,7 @@ export default async function DashboardLayout({
                 showSessionTopics,
               }}
             >
-              <div className="flex h-screen min-h-0 overflow-hidden bg-background">
+              <div className="flex h-screen min-h-0 min-w-0 overflow-hidden bg-background">
                 <Sidebar />
                 <DashboardContentArea>{children}</DashboardContentArea>
               </div>

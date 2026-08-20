@@ -10,7 +10,6 @@ import { SessionQuestionOptions } from "@/features/session/components/SessionQue
 import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
-import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import type {
   Confidence,
@@ -91,7 +90,7 @@ export function SessionQuestionContent({
     !showConfidenceBar &&
     (isLast ? allAnswered || isShowingFeedback || canEndPrzeglad : true);
 
-  const { touchNavActive, onEdgePrevious, onEdgeNext } = useTouchEdgeNavigation({
+  useTouchEdgeNavigation({
     onPrevious,
     onNext,
     canPrevious: canGoPrevious,
@@ -99,15 +98,8 @@ export function SessionQuestionContent({
   });
 
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col">
-      <SessionEdgeTapZones
-        active={touchNavActive}
-        canPrevious={canGoPrevious}
-        canNext={canGoNextTouch}
-        onPrevious={onEdgePrevious}
-        onNext={onEdgeNext}
-      />
-      <div className="flex-1 overflow-y-auto px-4 pb-28 pt-6 sm:px-8">
+    <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+      <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pb-[max(8.5rem,calc(7rem+env(safe-area-inset-bottom)))] pt-6 touch-pan-y sm:px-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={q.id}
@@ -202,7 +194,7 @@ export function SessionQuestionContent({
         )}
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 backdrop-blur-sm">
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-sm">
         {showSquares ? (
           <div className="mx-auto mb-2 max-w-3xl">
             <SessionProgressSquares

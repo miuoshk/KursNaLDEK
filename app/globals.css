@@ -84,12 +84,16 @@ html {
   color: var(--text-primary);
   background-color: var(--color-background);
   scroll-behavior: smooth;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
   -webkit-font-smoothing: antialiased;
 }
 

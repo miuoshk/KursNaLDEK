@@ -8,9 +8,11 @@ import {
   useRef,
   useState,
 } from "react";
+import Link from "next/link";
 import {
   BookOpenText,
   Check,
+  ChevronLeft,
   GraduationCap,
   Search,
   Sparkles,
@@ -23,9 +25,9 @@ import { SessionQuestionActions } from "@/features/shared/components/QuestionFoo
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
-import { SessionEdgeTapZones } from "@/features/session/components/SessionEdgeTapZones";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
+import { scrollChildIntoCenter } from "@/features/session/lib/scrollChildIntoCenter";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
 
@@ -145,7 +147,7 @@ export function CatalogView({
   useEffect(() => {
     setIndex(initialIndex);
   }, [initialIndex]);
-  const [mode, setMode] = useState<CatalogMode>("nauka");
+  const [mode, setMode] = useState<CatalogMode>("egzamin");
   const [selectedByQ, setSelectedByQ] = useState<Record<string, string>>({});
 
   // Tryb zapamiętujemy w localStorage — uczy się tak samo na każdym
@@ -218,7 +220,7 @@ export function CatalogView({
     navigationIndexes.length > 0 &&
     currentNavPosition < navigationIndexes.length - 1;
 
-  const { touchNavActive, onEdgePrevious, onEdgeNext } = useTouchEdgeNavigation({
+  useTouchEdgeNavigation({
     onPrevious: goPrev,
     onNext: goNext,
     canPrevious: canGoPrev,
@@ -271,9 +273,16 @@ export function CatalogView({
   if (!q) return null;
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
       <div className="shrink-0 border-b border-border bg-background px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <Link
+            href={`/przedmioty/${subjectId}`}
+            className="inline-flex size-9 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.06] hover:text-primary"
+            aria-label={t("backToSubject")}
+          >
+            <ChevronLeft className="size-5" aria-hidden />
+          </Link>
           <div className="min-w-0 flex-1">
             <h1 className="truncate font-heading text-xl font-bold text-primary md:text-2xl">
               {t("modeCatalog")}
@@ -313,15 +322,8 @@ export function CatalogView({
         </label>
       </div>
 
-      <div className="relative flex min-h-0 flex-1 flex-col lg:flex-row">
-        <SessionEdgeTapZones
-          active={touchNavActive}
-          canPrevious={canGoPrev}
-          canNext={canGoNext}
-          onPrevious={onEdgePrevious}
-          onNext={onEdgeNext}
-        />
-        <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+      <div className="relative flex min-h-0 min-w-0 flex-1 flex-col lg:flex-row">
+        <div className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain p-4 touch-pan-y sm:p-6 lg:p-8">
           {navigationIndexes.length === 0 ? (
             <div className="mx-auto max-w-3xl rounded-card border border-border bg-card p-6 text-center">
               <p className="font-heading text-xl font-bold text-primary">{t("catalogNoResults")}</p>
@@ -330,8 +332,8 @@ export function CatalogView({
               </p>
             </div>
           ) : (
-            <div className="mx-auto max-w-3xl">
-              <article className="rounded-card border border-border bg-card p-5 sm:p-6">
+            <div className="mx-auto min-w-0 max-w-3xl">
+              <article className="min-w-0 overflow-x-hidden rounded-card border border-border bg-card p-5 sm:p-6">
                 <p className="font-body text-body-xs uppercase tracking-widest text-muted">
                   {q.topicName}
                 </p>
@@ -538,7 +540,7 @@ function ModeButton({
       )}
     >
       {icon}
-      <span className="hidden sm:inline">{label}</span>
+      <span>{label}</span>
     </button>
   );
 }
@@ -559,25 +561,24 @@ function CatalogBottomNav({
   mode: CatalogMode;
 }) {
   const t = useTranslations("session");
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    if (activeRef.current) {
-      activeRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    }
+    const scroller = scrollerRef.current;
+    const active = activeRef.current;
+    if (!scroller || !active) return;
+    scrollChildIntoCenter(scroller, active);
   }, [currentIndex]);
 
   if (questionIndexes.length <= 1) return null;
 
   return (
-    <div className="shrink-0 border-t border-border bg-card/40">
+    <div className="min-w-0 shrink-0 border-t border-border bg-card/40 pb-[max(0px,env(safe-area-inset-bottom))]">
       <div
-        className="flex gap-1.5 overflow-x-auto px-3 py-2.5"
-        style={{ scrollbarWidth: "thin" }}
+        ref={scrollerRef}
+        data-horizontal-scroll
+        className="flex w-full min-w-0 max-w-full flex-nowrap gap-1.5 overflow-x-scroll overflow-y-hidden overscroll-x-contain px-3 py-2.5 touch-pan-x [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
       >
         {questionIndexes.map((qIdx, i) => {
           const item = questions[qIdx];

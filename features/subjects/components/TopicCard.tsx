@@ -69,7 +69,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
   const inner = (
     <>
       <div className="flex items-center gap-2">
-        <h3 className="min-w-0 flex-1 font-heading text-body-md text-primary">
+        <h3 className="min-w-0 flex-1 truncate font-heading text-body-md text-primary">
           {displayName}
         </h3>
         {!hasQuestions && (

@@ -8,7 +8,7 @@ type SubjectGridProps = {
 
 export function SubjectGrid({ subjects, isSubscribed }: SubjectGridProps) {
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-4 xl:grid-cols-3">
       {subjects.map((subject) => {
         const isLocked = !isSubscribed;
         return (

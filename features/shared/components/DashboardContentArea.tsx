@@ -14,13 +14,14 @@ export function DashboardContentArea({ children }: { children: ReactNode }) {
       {!isSessionStudy ? <TopBar /> : null}
       <main
         className={cn(
-          "min-h-0 flex-1 overflow-y-auto bg-background",
-          !isSessionStudy && "p-4 md:p-6 lg:p-8",
-          isSessionStudy && "flex min-h-0 flex-1 flex-col p-0",
+          "min-h-0 min-w-0 flex-1 bg-background",
+          !isSessionStudy &&
+            "overflow-x-hidden overflow-y-auto overscroll-x-none p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:p-6 lg:p-8",
+          isSessionStudy && "flex min-h-0 flex-1 flex-col overflow-hidden p-0",
         )}
       >
         {!isSessionStudy ? (
-          <div className="animate-fade-in mx-auto max-w-[1400px]">{children}</div>
+          <div className="animate-fade-in mx-auto min-w-0 max-w-[1400px]">{children}</div>
         ) : (
           children
         )}

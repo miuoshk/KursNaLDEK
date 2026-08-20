@@ -1,0 +1,1498 @@
+[
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Gdzie przebiega gałąź międzykomorowa przednia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bruzda wieńcowa prawa"
+      },
+      {
+        "id": "b",
+        "text": "Bruzda międzykomorowa przednia"
+      },
+      {
+        "id": "c",
+        "text": "Bruzda międzykomorowa tylna"
+      },
+      {
+        "id": "d",
+        "text": "Bruzda wieńcowa lewa"
+      },
+      {
+        "id": "e",
+        "text": "Bruzda końcowa prawego przedsionka"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Gałąź międzykomorowa przednia** to największa gałąź **tętnicy wieńcowej lewej** — biegnie w **bruździe międzykomorowej przedniej** do koniuszca serca i zaopatruje przednie **2/3 przegrody międzykomorowej**, ścianę przednią lewej komory oraz koniuszek. Jej zamknięcie daje rozległy **zawał ściany przedniej**. W bruździe międzykomorowej tylnej biegnie gałąź międzykomorowa tylna, zwykle z tętnicy wieńcowej prawej, a w bruździe wieńcowej — pnie obu tętnic wieńcowych.",
+    "subtheme_label": "Serce",
+    "source_code": "ANATLEK-r2026-1-307",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-KON",
+    "text": "Na jakie naczynia dzieli się tętnica podkolanowa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tętnicę piszczelową przednią i tylną"
+      },
+      {
+        "id": "b",
+        "text": "Tętnicę piszczelową przednią i strzałkową"
+      },
+      {
+        "id": "c",
+        "text": "Tętnicę piszczelową tylną i strzałkową"
+      },
+      {
+        "id": "d",
+        "text": "Tętnicę udową i tętnicę strzałkową"
+      },
+      {
+        "id": "e",
+        "text": "Tętnicę grzbietową stopy i piszczelową tylną"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Tętnica podkolanowa** jest przedłużeniem tętnicy udowej od **rozworu przywodzicieli** i na dolnym brzegu mięśnia podkolanowego dzieli się na **tętnicę piszczelową przednią i tylną**. Piszczelowa przednia przechodzi przez otwór w błonie międzykostnej i na stopie staje się **tętnicą grzbietową stopy**. **Tętnica strzałkowa nie jest gałęzią końcową** — odchodzi od tętnicy piszczelowej tylnej. Tętno badamy w dole podkolanowym przy zgiętym kolanie.",
+    "subtheme_label": "Naczynia kończyny dolnej",
+    "source_code": "ANATLEK-r2026-1-308",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Gdzie uchodzi żyła nadnerczowa prawa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Do żyły nerkowej prawej"
+      },
+      {
+        "id": "b",
+        "text": "Do żyły jajnikowej (jądrowej) prawej"
+      },
+      {
+        "id": "c",
+        "text": "Do żyły wrotnej"
+      },
+      {
+        "id": "d",
+        "text": "Do żyły głównej dolnej"
+      },
+      {
+        "id": "e",
+        "text": "Do żyły nieparzystej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Klasyczna **asymetria żylna**: prawa żyła nadnerczowa jest bardzo krótka i uchodzi **bezpośrednio do żyły głównej dolnej**, lewa natomiast — **do żyły nerkowej lewej**. Ten sam schemat dotyczy żył gonadalnych, stąd częstsze żylaki powrózka nasiennego po stronie lewej. Ma to znaczenie przy cewnikowaniu żył nadnerczowych w diagnostyce hiperaldosteronizmu — kaniulacja prawej jest technicznie trudniejsza ze względu na ostry kąt ujścia.",
+    "subtheme_label": "Nadnercza",
+    "source_code": "ANATLEK-r2026-1-309",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OBW",
+    "text": "Przy porażeniu którego nerwu utrudnione jest prostowanie w stawie łokciowym?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nerwu pośrodkowego"
+      },
+      {
+        "id": "b",
+        "text": "Nerwu łokciowego"
+      },
+      {
+        "id": "c",
+        "text": "Nerwu promieniowego"
+      },
+      {
+        "id": "d",
+        "text": "Nerwu mięśniowo-skórnego"
+      },
+      {
+        "id": "e",
+        "text": "Nerwu pachowego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Nerw promieniowy** unerwia wszystkie prostowniki kończyny górnej, w tym **mięsień trójgłowy ramienia** — główny prostownik stawu łokciowego. Uszkodzenie wysokie (w dole pachowym) znosi prostowanie łokcia; uszkodzenie w **bruździe nerwu promieniowego** kości ramiennej jest dystalne od gałęzi do trójgłowego, więc daje głównie **rękę opadającą**. Zgięcie łokcia zależy od nerwu mięśniowo-skórnego (biceps, ramienny).",
+    "subtheme_label": "Splot ramienny",
+    "source_code": "ANATLEK-r2026-1-310",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Która ze struktur nie jest wytworem opony twardej?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sierp mózgu"
+      },
+      {
+        "id": "b",
+        "text": "Namiot móżdżku"
+      },
+      {
+        "id": "c",
+        "text": "Sierp móżdżku"
+      },
+      {
+        "id": "d",
+        "text": "Przepona siodła"
+      },
+      {
+        "id": "e",
+        "text": "Przegroda przezroczysta"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wypustki opony twardej to **sierp mózgu**, **sierp móżdżku**, **namiot móżdżku** i **przepona siodła** — fałdy blaszki wewnętrznej, w których brzegach biegną **zatoki żylne opony twardej**. **Przegroda przezroczysta** to cienka blaszka nerwowo-glejowa rozpięta między ciałem modzelowatym a sklepieniem, oddzielająca rogi przednie komór bocznych — nie ma związku z oponą twardą. Jej jama (jama przegrody) bywa wariantem rozwojowym.",
+    "subtheme_label": "Opony mózgowia",
+    "source_code": "ANATLEK-r2026-1-311",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "W którym śródpiersiu znajduje się przełyk?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tylnym"
+      },
+      {
+        "id": "b",
+        "text": "Przednim"
+      },
+      {
+        "id": "c",
+        "text": "Środkowym"
+      },
+      {
+        "id": "d",
+        "text": "Wyłącznie górnym"
+      },
+      {
+        "id": "e",
+        "text": "Przednim i środkowym"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Przełyk przechodzi przez **śródpiersie górne**, a poniżej rozwidlenia tchawicy leży w **śródpiersiu tylnym** — razem z **aortą piersiową**, **przewodem piersiowym**, **żyłą nieparzystą** i nerwami błędnymi. Śródpiersie przednie zawiera głównie tkankę tłuszczową, węzły chłonne i pozostałości grasicy, a środkowe — serce z osierdziem, pnie wielkich naczyń i nerwy przeponowe. Zwężenia przełyku: aortalne, oskrzelowe i przeponowe.",
+    "subtheme_label": "Przełyk",
+    "source_code": "ANATLEK-r2026-1-312",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Przodopochylenie macicy to kąt między:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pochwą a trzonem"
+      },
+      {
+        "id": "b",
+        "text": "Trzonem a cieśnią"
+      },
+      {
+        "id": "c",
+        "text": "Pochwą a szyjką"
+      },
+      {
+        "id": "d",
+        "text": "Trzonem a szyjką"
+      },
+      {
+        "id": "e",
+        "text": "Pochwą a cieśnią"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Przodopochylenie (anteversio)** to kąt ok. **90°** między osią długą pochwy a osią długą **szyjki macicy**, otwarty ku przodowi. Odróżnij od **przodozgięcia (anteflexio)** — kąta **120-170°** między trzonem a szyjką. Część opracowań mówi ogólnie o osi macicy, jednak klasycznie **wersja** dotyczy szyjki względem pochwy, a **fleksja** — trzonu względem szyjki. Fizjologicznie: anteversio-anteflexio.",
+    "subtheme_label": "Macica",
+    "source_code": "ANATLEK-r2026-1-313",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Najgłębszy zachyłek opłucnej to zachyłek:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Żebrowo-śródpiersiowy"
+      },
+      {
+        "id": "b",
+        "text": "Żebrowo-przeponowy"
+      },
+      {
+        "id": "c",
+        "text": "Przeponowo-śródpiersiowy"
+      },
+      {
+        "id": "d",
+        "text": "Kręgowo-śródpiersiowy"
+      },
+      {
+        "id": "e",
+        "text": "Międzypłatowy"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Zachyłek żebrowo-przeponowy** to najgłębsza (do ok. **5 cm**) i klinicznie najważniejsza przestrzeń rezerwowa jamy opłucnej — tu gromadzi się płyn wysiękowy i przesiękowy. Punkcję opłucnej wykonuje się w linii pachowej środkowej lub łopatkowej, zawsze **po górnym brzegu żebra**, bo pęczek naczyniowo-nerwowy biegnie w bruździe na brzegu dolnym. Pozostałe zachyłki, np. żebrowo-śródpiersiowy, są znacznie płytsze.",
+    "subtheme_label": "Opłucna",
+    "source_code": "ANATLEK-r2026-1-314",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Korzeń rdzeniowy nerwu XI:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wychodzi z czaszki przez otwór wielki"
+      },
+      {
+        "id": "b",
+        "text": "Wchodzi do czaszki przez przyśrodkową część otworu szyjnego"
+      },
+      {
+        "id": "c",
+        "text": "Wchodzi do czaszki przez boczną część otworu szyjnego"
+      },
+      {
+        "id": "d",
+        "text": "Wchodzi do czaszki przez kanał nerwu podjęzykowego"
+      },
+      {
+        "id": "e",
+        "text": "Wchodzi do czaszki przez otwór wielki"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Nerw XI ma dwa korzenie: **rdzeniowy** (z jądra w rogach przednich **C1-C5**) i **czaszkowy** (z jądra dwuznacznego). Korzeń rdzeniowy biegnie ku górze w kanale kręgowym i **wstępuje do jamy czaszki przez otwór wielki**, łączy się z korzeniem czaszkowym, po czym wspólny pień **opuszcza czaszkę przez otwór szyjny**. Włókna rdzeniowe unerwiają mięsień mostkowo-obojczykowo-sutkowy i czworoboczny. Uszkodzenie nerwu XI daje opadanie barku i osłabienie unoszenia ramienia powyżej poziomu.",
+    "subtheme_label": "Nerw dodatkowy",
+    "source_code": "ANATLEK-r2026-1-315",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Wzgórki dolne blaszki pokrywy są podkorowym ośrodkiem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wzrokowym"
+      },
+      {
+        "id": "b",
+        "text": "Czuciowym"
+      },
+      {
+        "id": "c",
+        "text": "Smakowym"
+      },
+      {
+        "id": "d",
+        "text": "Słuchowym"
+      },
+      {
+        "id": "e",
+        "text": "Ruchowym"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Blaszka pokrywy (czworacza) śródmózgowia: **wzgórki górne** to podkorowy ośrodek **wzroku** (odruch źreniczny, odruchy wzrokowo-ruchowe), a **wzgórki dolne** — podkorowy ośrodek **słuchu**, przekaźnik drogi słuchowej do **ciała kolankowatego przyśrodkowego**. Ze wzgórków górnych rozpoczyna się droga pokrywowo-rdzeniowa, odpowiedzialna za odruchowe zwroty głowy. Wzgórki łączą się z odpowiednimi ciałami kolankowatymi za pomocą ramion wzgórka górnego i dolnego. Mnemonik: górne widzą, dolne słyszą (superior - sight, inferior - sound).",
+    "subtheme_label": "Śródmózgowie",
+    "source_code": "ANATLEK-r2026-1-316",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Gdzie uchodzi żyła nadnerczowa prawa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Do żyły nerkowej prawej"
+      },
+      {
+        "id": "b",
+        "text": "Do żyły głównej górnej"
+      },
+      {
+        "id": "c",
+        "text": "Do żyły głównej dolnej"
+      },
+      {
+        "id": "d",
+        "text": "Do żyły nadnerczowej lewej"
+      },
+      {
+        "id": "e",
+        "text": "Do żyły nieparzystej"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Prawa żyła nadnerczowa uchodzi **wprost do żyły głównej dolnej** — jest bardzo krótka, bo prawe nadnercze przylega do tylno-bocznej ściany tego naczynia. **Lewa** żyła nadnerczowa uchodzi natomiast **do żyły nerkowej lewej**. Nadnercza mają trzy tętnice (górną z t. przeponowej dolnej, środkową z aorty, dolną z t. nerkowej), ale tylko **jedną żyłę** po każdej stronie. Żyła główna górna drenuje wyłącznie górną połowę ciała.",
+    "subtheme_label": "Nadnercza",
+    "source_code": "ANATLEK-r2026-1-317",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Przez który otwór podstawy czaszki wnika do jej wnętrza część rdzeniowa nerwu XI?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Otwór wielki"
+      },
+      {
+        "id": "b",
+        "text": "Otwór szyjny"
+      },
+      {
+        "id": "c",
+        "text": "Kanał nerwu podjęzykowego"
+      },
+      {
+        "id": "d",
+        "text": "Otwór poszarpany"
+      },
+      {
+        "id": "e",
+        "text": "Otwór sutkowy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Korzeń rdzeniowy nerwu XI powstaje z komórek rogu przedniego segmentów **C1-C5**, wstępuje **przez otwór wielki** do jamy czaszki i tam na krótko łączy się z korzeniem czaszkowym. Wspólny pień opuszcza czaszkę **przez otwór szyjny** razem z nerwami IX i X, po czym włókna czaszkowe przyłączają się do nerwu błędnego. Nerw XI jako jedyny nerw czaszkowy wnika do czaszki od dołu, przez otwór wielki. Otwór poszarpany za życia wypełnia chrząstka włóknista i nie przepuszcza nerwów.",
+    "subtheme_label": "Nerw dodatkowy",
+    "source_code": "ANATLEK-r2026-1-318",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Strop komory trzeciej tworzy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Blaszka krańcowa ze spoidłem przednim"
+      },
+      {
+        "id": "b",
+        "text": "Blaszka naczyniowa ze splotem naczyniówkowym"
+      },
+      {
+        "id": "c",
+        "text": "Podwzgórze z ciałami suteczkowatymi"
+      },
+      {
+        "id": "d",
+        "text": "Powierzchnia przyśrodkowa wzgórza"
+      },
+      {
+        "id": "e",
+        "text": "Spoidło tylne i szyszynka"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Strop komory III tworzy **blaszka naczyniowa (tela choroidea)** — podwójny fałd opony miękkiej rozpięty między prążkami rdzennymi wzgórz, zawierający **sploty naczyniówkowe** komory trzeciej; powyżej leży **sklepienie**. Ścianę przednią stanowi blaszka krańcowa ze spoidłem przednim, ściany boczne — wzgórza i podwzgórza, dno — podwzgórze z ciałami suteczkowatymi i lejkiem, a ścianę tylną — spoidło tylne i wpuklenie szyszynki.",
+    "subtheme_label": "Komory mózgowia",
+    "source_code": "ANATLEK-r2026-1-319",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Jądro pasma samotnego zawiera włókna aferentne nerwów czaszkowych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "V, VII, IX"
+      },
+      {
+        "id": "b",
+        "text": "IX, X, XI"
+      },
+      {
+        "id": "c",
+        "text": "V, IX, X"
+      },
+      {
+        "id": "d",
+        "text": "VII, VIII, IX"
+      },
+      {
+        "id": "e",
+        "text": "VII, IX, X"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Jądro pasma samotnego** to główne jądro czuciowe trzewne rdzenia przedłużonego. Część górna (**jądro smakowe**) odbiera smak z nerwów **VII** (2/3 przednie języka, struna bębenkowa), **IX** (1/3 tylna) i **X** (nagłośnia). Część dolna zbiera czucie trzewne z **IX** (zatoka i kłębek szyjny) oraz **X** (trzewia klatki piersiowej i brzucha). Nerw V przewodzi z języka wyłącznie czucie ogólne, nie smak. Stąd wychodzą łuki odruchowe: wymiotny, kaszlowy i z baroreceptorów zatoki szyjnej. Mnemonik: smak siedzi na 7-9-10.",
+    "subtheme_label": "Jądra nerwów czaszkowych",
+    "source_code": "ANATLEK-r2026-1-320",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Nerw uszny tylny jest gałęzią nerwu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Trójdzielnego"
+      },
+      {
+        "id": "b",
+        "text": "Językowo-gardłowego"
+      },
+      {
+        "id": "c",
+        "text": "Błędnego"
+      },
+      {
+        "id": "d",
+        "text": "Twarzowego"
+      },
+      {
+        "id": "e",
+        "text": "Dodatkowego"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Nerw uszny tylny** odchodzi od pnia nerwu **VII** tuż po jego wyjściu z **otworu rylcowo-sutkowego** i unerwia mięśnie małżowiny usznej oraz brzusiec potyliczny mięśnia potyliczno-czołowego. Kolejne gałęzie pozaczaszkowe biegną do brzuśca tylnego mięśnia dwubrzuścowego i mięśnia rylcowo-gnykowego, a pień wchodzi w przyusznicę, tworząc **splot przyuszniczy** z pięcioma gałęziami końcowymi. Mnemonik gałęzi końcowych: To Zanzibar By Motor Car — skroniowe, jarzmowe, policzkowe, brzeżna żuchwy, szyjna.",
+    "subtheme_label": "Nerw twarzowy",
+    "source_code": "ANATLEK-r2026-1-321",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Ścianę boczną rogu przedniego komory bocznej tworzy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Głowa jądra ogoniastego"
+      },
+      {
+        "id": "b",
+        "text": "Trzon jądra ogoniastego"
+      },
+      {
+        "id": "c",
+        "text": "Ciało modzelowate"
+      },
+      {
+        "id": "d",
+        "text": "Sklepienie"
+      },
+      {
+        "id": "e",
+        "text": "Żadne z powyższych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Róg przedni (czołowy) komory bocznej: ścianę **boczną i dno** tworzy uwypuklająca się **głowa jądra ogoniastego**, strop i ścianę przednią — **kolano oraz dziób ciała modzelowatego**, a ścianę przyśrodkową — **przegroda przezroczysta**. W części środkowej (trzonie) komory ścianę boczną stanowi już trzon jądra ogoniastego, dno — wzgórze i sklepienie, natomiast w rogu dolnym w dnie leży **hipokamp**. Sploty naczyniówkowe komór bocznych leżą w części środkowej i w rogu dolnym.",
+    "subtheme_label": "Komory mózgowia",
+    "source_code": "ANATLEK-r2026-1-322",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Splot przełykowy tworzą głównie włókna nerwu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przeponowego"
+      },
+      {
+        "id": "b",
+        "text": "Krtaniowego górnego"
+      },
+      {
+        "id": "c",
+        "text": "Błędnego"
+      },
+      {
+        "id": "d",
+        "text": "Międzyżebrowego"
+      },
+      {
+        "id": "e",
+        "text": "Podjęzykowego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Splot przełykowy** powstaje głównie z obu **nerwów błędnych**, które poniżej wnęk płuc rozdzielają się na pasma oplatające przełyk; dołączają do nich włókna współczulne z piersiowego pnia współczulnego. Ze splotu odtwarzają się **pnie błędne**: przedni (głównie z lewego nerwu X) i tylny (z prawego) — zgodnie z rotacją żołądka w rozwoju. Przechodzą one wraz z przełykiem przez **rozwór przełykowy przepony** na poziomie **Th10**.",
+    "subtheme_label": "Przełyk",
+    "source_code": "ANATLEK-r2026-1-323",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Do tworów opony twardej nie należy:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sierp mózgu"
+      },
+      {
+        "id": "b",
+        "text": "Przegroda przezroczysta"
+      },
+      {
+        "id": "c",
+        "text": "Namiot móżdżku"
+      },
+      {
+        "id": "d",
+        "text": "Przepona siodła"
+      },
+      {
+        "id": "e",
+        "text": "Sierp móżdżku"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Fałdy opony twardej to: **sierp mózgu** w szczelinie podłużnej, **namiot móżdżku** między płatami potylicznymi a móżdżkiem, **sierp móżdżku** między półkulami móżdżku i **przepona siodła** nad przysadką — w ich brzegach biegną zatoki żylne. **Przegroda przezroczysta** to blaszka nerwowo-glejowa między ciałem modzelowatym a sklepieniem. Wgłobienie zakrętu obręczy pod wolny brzeg sierpa mózgu to wklinowanie podsierpowe.",
+    "subtheme_label": "Opony mózgowia",
+    "source_code": "ANATLEK-r2026-1-324",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Wyłącznie czuciowe nerwy czaszkowe to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "I, III, V"
+      },
+      {
+        "id": "b",
+        "text": "II, VI, IX"
+      },
+      {
+        "id": "c",
+        "text": "III, XII"
+      },
+      {
+        "id": "d",
+        "text": "II, III"
+      },
+      {
+        "id": "e",
+        "text": "I, II"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Wyłącznie czuciowe są nerwy **I (węchowy)**, **II (wzrokowy)** i **VIII (przedsionkowo-ślimakowy)** — spośród podanych zestawów tylko para I i II zawiera same nerwy czuciowe. Wyłącznie ruchowe są **III, IV, VI, XI, XII**, a mieszane — **V, VII, IX, X**. Uwaga: nerw III mimo funkcji ruchowej prowadzi też włókna przywspółczulne do zwieracza źrenicy. Nerwy VII, IX i X prowadzą dodatkowo włókna przywspółczulne, a IX także czucie z zatoki szyjnej. Nerwy I i II jako jedyne nie mają jąder w pniu mózgu. Mnemonik: Some Say Marry Money But My Brother Says Big Brains Matter Most (S - czuciowy, M - ruchowy, B - mieszany, kolejno I-XII).",
+    "subtheme_label": "Podział czynnościowy nerwów czaszkowych",
+    "source_code": "ANATLEK-r2026-1-325",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Szpara głośni to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Górne piętro krtani"
+      },
+      {
+        "id": "b",
+        "text": "Dolne piętro krtani"
+      },
+      {
+        "id": "c",
+        "text": "Najdłuższy odcinek krtani"
+      },
+      {
+        "id": "d",
+        "text": "Środkowe piętro krtani"
+      },
+      {
+        "id": "e",
+        "text": "Prawidłowe B i C"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Krtań dzieli się na trzy piętra: **górne** (przedsionek, do fałdów przedsionkowych), **środkowe** (jama pośrednia z kieszonkami krtaniowymi i **szparą głośni** między fałdami głosowymi) oraz **dolne** (jama podgłośniowa do dolnego brzegu chrząstki pierścieniowatej). Szpara głośni jest **najwęższym**, a nie najdłuższym miejscem krtani — jej odruchowe zamknięcie (skurcz głośni) może doprowadzić do uduszenia. Fałdy głosowe pokrywa nabłonek wielowarstwowy płaski, a resztę krtani — migawkowy.",
+    "subtheme_label": "Krtań",
+    "source_code": "ANATLEK-r2026-1-326",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Brzusiec tylny mięśnia dwubrzuścowego unerwia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Nerw V"
+      },
+      {
+        "id": "b",
+        "text": "Nerw XII"
+      },
+      {
+        "id": "c",
+        "text": "Nerw VII"
+      },
+      {
+        "id": "d",
+        "text": "Nerw X"
+      },
+      {
+        "id": "e",
+        "text": "Nerw IX"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Mięsień dwubrzuścowy ma **podwójne unerwienie** zgodne z pochodzeniem z łuków skrzelowych: brzusiec **przedni** (I łuk) — od nerwu żuchwowego przez **nerw żuchwowo-gnykowy (V3)**, brzusiec **tylny** (II łuk) — od **nerwu twarzowego**. Nerw VII unerwia też mięsień rylcowo-gnykowy, mięśnie mimiczne, mięsień strzemiączkowy i szeroki szyi. Mięśnie podgnykowe unerwia pętla szyjna (C1-C3), a mięśnie języka — nerw XII.",
+    "subtheme_label": "Nerw twarzowy",
+    "source_code": "ANATLEK-r2026-1-327",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Zwój rzęskowy korzeń przywspółczulny otrzymuje z nerwu:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Okoruchowego"
+      },
+      {
+        "id": "b",
+        "text": "Ocznego"
+      },
+      {
+        "id": "c",
+        "text": "Szczękowego"
+      },
+      {
+        "id": "d",
+        "text": "Żuchwowego"
+      },
+      {
+        "id": "e",
+        "text": "Łzowego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Zwój rzęskowy otrzymuje **korzeń przywspółczulny z nerwu III** — od gałązki do mięśnia skośnego dolnego; włókna przedzwojowe pochodzą z **jądra dodatkowego Edingera-Westphala**. Włókna zazwojowe biegną **nerwami rzęskowymi krótkimi** do **zwieracza źrenicy** i **mięśnia rzęskowego**. Korzeń czuciowy dochodzi od nerwu nosowo-rzęskowego (gałąź nerwu ocznego), a współczulny — ze splotu tętnicy szyjnej wewnętrznej. Porażenie nerwu III znosi odruch źreniczny na światło po stronie uszkodzenia.",
+    "subtheme_label": "Zwoje przywspółczulne głowy",
+    "source_code": "ANATLEK-r2026-1-328",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Co unerwia nerw odwodzący?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mięsień skośny górny gałki ocznej"
+      },
+      {
+        "id": "b",
+        "text": "Mięsień prosty boczny gałki ocznej"
+      },
+      {
+        "id": "c",
+        "text": "Mięsień prosty przyśrodkowy gałki ocznej"
+      },
+      {
+        "id": "d",
+        "text": "Mięsień skośny dolny gałki ocznej"
+      },
+      {
+        "id": "e",
+        "text": "Mięsień dźwigacz powieki górnej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Nerw **odwodzący (VI)** unerwia wyłącznie **mięsień prosty boczny**, który odwodzi gałkę oczną. Jego porażenie daje **zeza zbieżnego** i dwojenie nasilające się przy patrzeniu w bok. Nerw VI ma najdłuższy przebieg wewnątrzczaszkowy, dlatego jako pierwszy ulega uszkodzeniu przy wzroście ciśnienia śródczaszkowego. Nerw VI przebija oponę twardą stoku, biegnie przez zatokę jamistą tuż obok tętnicy szyjnej wewnętrznej i wchodzi do oczodołu szczeliną oczodołową górną, w obrębie pierścienia ścięgnistego wspólnego. Mnemonik: **LR6 SO4** — prosty boczny z nerwu VI, skośny górny z nerwu IV, pozostałe mięśnie z nerwu III.",
+    "subtheme_label": "Nerwy gałkoruchowe",
+    "source_code": "ANATLEK-r2026-1-329",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Nerw okoruchowy nie unerwia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mięśnia prostego bocznego"
+      },
+      {
+        "id": "b",
+        "text": "Mięśnia skośnego górnego"
+      },
+      {
+        "id": "c",
+        "text": "Mięśnia marszczącego brwi"
+      },
+      {
+        "id": "d",
+        "text": "Mięśnia okrężnego oka"
+      },
+      {
+        "id": "e",
+        "text": "Wszystkie odpowiedzi prawidłowe"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Nerw III unerwia mięśnie **prosty górny, dolny, przyśrodkowy, skośny dolny** i **dźwigacz powieki górnej**, a przywspółczulnie — zwieracz źrenicy i mięsień rzęskowy. **Nie unerwia** mięśnia prostego bocznego (nerw **VI**) ani skośnego górnego (nerw **IV**). Mięśnie mimiczne, w tym marszczący brwi i okrężny oka, należą do **nerwu twarzowego** — dlatego żaden z wymienionych mięśni nie jest zaopatrywany przez nerw III.",
+    "subtheme_label": "Nerw okoruchowy",
+    "source_code": "ANATLEK-r2026-1-330",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Przez który otwór nerw żuchwowy opuszcza czaszkę?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Otwór okrągły"
+      },
+      {
+        "id": "b",
+        "text": "Otwór szyjny"
+      },
+      {
+        "id": "c",
+        "text": "Otwór kolcowy"
+      },
+      {
+        "id": "d",
+        "text": "Otwór owalny"
+      },
+      {
+        "id": "e",
+        "text": "Szczelina oczodołowa górna"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Nerw żuchwowy (V3)** — jedyna mieszana gałąź nerwu trójdzielnego — opuszcza czaszkę przez **otwór owalny** i wchodzi do **dołu podskroniowego**, gdzie oddaje m.in. nerw zębodołowy dolny, językowy i uszno-skroniowy. Przez otwór kolcowy wchodzi tętnica oponowa środkowa, a przez otwór szyjny — nerwy IX, X, XI. Uszkodzenie V3 daje zaburzenia czucia w okolicy żuchwy i policzka oraz osłabienie mięśni żucia ze zbaczaniem żuchwy w stronę porażoną. Otwór owalny leży w skrzydle większym kości klinowej. Mnemonik: **Standing Room Only** — V1 szczelina oczodołowa górna, V2 otwór okrągły (rotundum), V3 otwór owalny (ovale).",
+    "subtheme_label": "Nerw trójdzielny",
+    "source_code": "ANATLEK-r2026-1-331",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Jaka droga przechodzi przez torebkę wewnętrzną?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Piramidowa"
+      },
+      {
+        "id": "b",
+        "text": "Rdzeniowo-móżdżkowa tylna"
+      },
+      {
+        "id": "c",
+        "text": "Wstęga boczna"
+      },
+      {
+        "id": "d",
+        "text": "Droga węchowa"
+      },
+      {
+        "id": "e",
+        "text": "Pęczek podłużny przyśrodkowy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "W **odnodze tylnej** torebki wewnętrznej biegnie **droga piramidowa korowo-rdzeniowa** (somatotopowo: kończyna górna bliżej kolana, dolna ku tyłowi), a w **kolanie** — droga korowo-jądrowa. Bardziej ku tyłowi leżą wstęga przyśrodkowa oraz promienistości wzrokowa i słuchowa. Drogi rdzeniowo-móżdżkowe przebiegają przez konary móżdżku, nie przez torebkę. Mały udar w tym miejscu daje **czyste porażenie połowicze**.",
+    "subtheme_label": "Torebka wewnętrzna",
+    "source_code": "ANATLEK-r2026-1-332",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NAC",
+    "text": "Kąt żylny to miejsce połączenia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Żyły podobojczykowej z żyłą szyjną zewnętrzną"
+      },
+      {
+        "id": "b",
+        "text": "Żyły podobojczykowej z żyłą ramienno-głowową"
+      },
+      {
+        "id": "c",
+        "text": "Żyły podobojczykowej z żyłą szyjną wewnętrzną"
+      },
+      {
+        "id": "d",
+        "text": "Żyły szyjnej zewnętrznej z żyłą szyjną wspólną"
+      },
+      {
+        "id": "e",
+        "text": "Żyły podobojczykowej z żyłą szyjną wspólną"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Kąt żylny (Pirogowa)** to połączenie **żyły podobojczykowej z żyłą szyjną wewnętrzną**, z którego powstaje **żyła ramienno-głowowa**. Do lewego kąta żylnego uchodzi **przewód piersiowy** (drenaż 3/4 ciała), do prawego — przewód chłonny prawy. Powiększony węzeł nadobojczykowy lewy (**Virchowa**) sugeruje przerzut z żołądka. Żyła szyjna wspólna nie istnieje — wspólna jest tętnica szyjna. Cewnikowanie żyły podobojczykowej w tej okolicy grozi odmą opłucnową.",
+    "subtheme_label": "Żyły szyi",
+    "source_code": "ANATLEK-r2026-1-333",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NAC",
+    "text": "Z czego powstaje tętnica podstawna mózgowia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Z tętnic łączących tylnych"
+      },
+      {
+        "id": "b",
+        "text": "Z tętnic kręgowych"
+      },
+      {
+        "id": "c",
+        "text": "Z tętnic mózgu przednich"
+      },
+      {
+        "id": "d",
+        "text": "Z tętnic szyjnych wewnętrznych"
+      },
+      {
+        "id": "e",
+        "text": "Z tętnic mózgu tylnych"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Tętnica podstawna** powstaje na granicy mostu i rdzenia przedłużonego z połączenia obu **tętnic kręgowych**, będących gałęziami tętnic podobojczykowych. Oddaje tętnicę dolną przednią móżdżku, tętnice mostowe i górną móżdżku, a dzieli się na **tętnice mózgu tylne**, które przez tętnice łączące tylne zamykają **koło tętnicze Willisa**. Układ kręgowo-podstawny zaopatruje pień mózgu, móżdżek i płaty potyliczne.",
+    "subtheme_label": "Unaczynienie mózgowia",
+    "source_code": "ANATLEK-r2026-1-334",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Z czego powstają płatki zastawek przedsionkowo-komorowych serca?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Z osierdzia włóknistego"
+      },
+      {
+        "id": "b",
+        "text": "Z nasierdzia"
+      },
+      {
+        "id": "c",
+        "text": "Ze śródsierdzia"
+      },
+      {
+        "id": "d",
+        "text": "Ze szkieletu serca"
+      },
+      {
+        "id": "e",
+        "text": "Z wsierdzia"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Płatki zastawek przedsionkowo-komorowych to **duplikatury wsierdzia** z rdzeniem z tkanki łącznej włóknistej, przymocowane do **pierścieni włóknistych** szkieletu serca i połączone **strunami ścięgnistymi** z mięśniami brodawkowatymi. Tak samo zbudowane są zastawki półksiężycowate. Ponieważ **wsierdzie** wyściela jamy serca i pokrywa zastawki, infekcyjne zapalenie wsierdzia zajmuje przede wszystkim płatki zastawkowe.",
+    "subtheme_label": "Serce",
+    "source_code": "ANATLEK-r2026-1-335",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-KON",
+    "text": "Z czego powstaje łuk dłoniowy powierzchowny?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Z końcowej części tętnicy promieniowej i gałęzi dłoniowej powierzchownej tętnicy łokciowej"
+      },
+      {
+        "id": "b",
+        "text": "Z końcowej części tętnicy promieniowej i gałęzi dłoniowej głębokiej tętnicy łokciowej"
+      },
+      {
+        "id": "c",
+        "text": "Z końcowej części tętnicy międzykostnej przedniej i gałęzi dłoniowej tętnicy łokciowej"
+      },
+      {
+        "id": "d",
+        "text": "Z końcowej części tętnicy łokciowej i gałęzi dłoniowej powierzchownej tętnicy promieniowej"
+      },
+      {
+        "id": "e",
+        "text": "Z gałęzi dłoniowych powierzchownych tętnicy promieniowej i tętnicy łokciowej"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Łuk dłoniowy powierzchowny** tworzy przede wszystkim **tętnica łokciowa**, uzupełniana **gałęzią dłoniową powierzchowną tętnicy promieniowej**; leży pod rozcięgnem dłoniowym i oddaje tętnice palcowe dłoniowe wspólne. **Łuk głęboki** jest odwrotnie — zdominowany przez tętnicę promieniową z gałęzią dłoniową głęboką tętnicy łokciowej. Drożność obu naczyń sprawdza **test Allena** przed nakłuciem tętnicy promieniowej.",
+    "subtheme_label": "Naczynia kończyny górnej",
+    "source_code": "ANATLEK-r2026-1-336",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "W nadciśnieniu wrotnym krew z zespoleń wrotno-układowych okolicy wpustu żołądka omija wątrobę i odpływa głównie do:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Żyły głównej dolnej"
+      },
+      {
+        "id": "b",
+        "text": "Żył nieparzystej i półnieparzystej"
+      },
+      {
+        "id": "c",
+        "text": "Żyły biodrowej wewnętrznej"
+      },
+      {
+        "id": "d",
+        "text": "Żył zaotrzewnowych"
+      },
+      {
+        "id": "e",
+        "text": "Wszystkie odpowiedzi prawidłowe"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Zespolenie przełykowe** łączy żyłę żołądkową lewą (dorzecze wrotne) z żyłami przełykowymi uchodzącymi do **żyły nieparzystej i półnieparzystej**, czyli do **żyły głównej górnej** — stąd **żylaki przełyku** i groźne krwotoki. Pozostałe zespolenia: **odbytnicze** (żyła biodrowa wewnętrzna), **okołopępkowe** (głowa meduzy) i **zaotrzewnowe Retziusa** — nie odprowadzają jednak krwi z okolicy wpustu. Gradient ciśnień w żyłach wątrobowych powyżej 10 mmHg grozi powstaniem żylaków.",
+    "subtheme_label": "Krążenie wrotne",
+    "source_code": "ANATLEK-r2026-1-337",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-OUN",
+    "text": "Drogi czucia głębokiego zaczynają się receptorami zlokalizowanymi w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Skórze"
+      },
+      {
+        "id": "b",
+        "text": "Błonach śluzowych"
+      },
+      {
+        "id": "c",
+        "text": "Mięśniach, ścięgnach i okolicach stawów"
+      },
+      {
+        "id": "d",
+        "text": "Mięśniówce gładkiej naczyń"
+      },
+      {
+        "id": "e",
+        "text": "Okolicach gruczołów dokrewnych"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Czucie głębokie (**proprioceptywne**) pochodzi z **proprioreceptorów**: wrzecionek nerwowo-mięśniowych, **narządów ścięgnistych Golgiego** oraz receptorów torebek stawowych i więzadeł. Informacja biegnie **drogą sznurów tylnych** (pęczek smukły i klinowaty) do jąder rdzenia przedłużonego, następnie po skrzyżowaniu **wstęgą przyśrodkową** do wzgórza i kory. Receptory skóry obsługują czucie powierzchowne: dotyk, ból i temperaturę.",
+    "subtheme_label": "Drogi czuciowe",
+    "source_code": "ANATLEK-r2026-1-338",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-CZA",
+    "text": "Szczelina oczodołowa dolna komunikuje oczodół z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dołem skroniowym"
+      },
+      {
+        "id": "b",
+        "text": "Dołem podskroniowym"
+      },
+      {
+        "id": "c",
+        "text": "Dołem skrzydłowo-podniebiennym"
+      },
+      {
+        "id": "d",
+        "text": "Prawidłowe B i C"
+      },
+      {
+        "id": "e",
+        "text": "Prawidłowe A i C"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Szczelina oczodołowa dolna** łączy oczodół z **dołem podskroniowym** (przednio-bocznie) i **dołem skrzydłowo-podniebiennym** (tylno-przyśrodkowo). Przechodzą przez nią nerw **podoczodołowy** i **jarzmowy** (z V2), tętnica podoczodołowa oraz żyły łączące ze **splotem skrzydłowym**. Szczelina oczodołowa górna komunikuje oczodół z dołem środkowym czaszki — biegną nią nerwy III, IV, V1, VI i żyła oczna górna. Dół skrzydłowo-podniebienny łączy się dodatkowo z jamą nosową otworem klinowo-podniebiennym.",
+    "subtheme_label": "Oczodół",
+    "source_code": "ANATLEK-r2026-1-339",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Zwój rzęskowy leży w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Oczodole"
+      },
+      {
+        "id": "b",
+        "text": "Jamie nosowej właściwej"
+      },
+      {
+        "id": "c",
+        "text": "Dole przednim czaszki"
+      },
+      {
+        "id": "d",
+        "text": "Dole tylnym czaszki"
+      },
+      {
+        "id": "e",
+        "text": "Komorze przedniej oka"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Zwój rzęskowy** leży w tylnej części **oczodołu**, w ciele tłuszczowym między **nerwem wzrokowym** a mięśniem prostym bocznym, ok. 1 cm przed pierścieniem ścięgnistym wspólnym. To jeden z **czterech zwojów przywspółczulnych głowy** — pozostałe to skrzydłowo-podniebienny, uszny i podżuchwowy. Wychodzą z niego **nerwy rzęskowe krótkie** przebijające twardówkę i biegnące do zwieracza źrenicy oraz mięśnia rzęskowego.",
+    "subtheme_label": "Zwoje przywspółczulne głowy",
+    "source_code": "ANATLEK-r2026-1-340",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-CZA",
+    "text": "Ścianę przyśrodkową dołu zażuchwowego stanowi między innymi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wyrostek sutkowy"
+      },
+      {
+        "id": "b",
+        "text": "Wyrostek skrzydłowy"
+      },
+      {
+        "id": "c",
+        "text": "Blaszka pionowa kości podniebiennej"
+      },
+      {
+        "id": "d",
+        "text": "Blaszka sitowa"
+      },
+      {
+        "id": "e",
+        "text": "Wyrostek rylcowaty"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Dół zażuchwowy ograniczają: z przodu **gałąź żuchwy**, z tyłu **wyrostek sutkowy** z mięśniem mostkowo-obojczykowo-sutkowym, przyśrodkowo **wyrostek rylcowaty** z odchodzącymi od niego mięśniami (pęczek Riolana) i ściana gardła, od góry przewód słuchowy zewnętrzny. Wypełnia go **ślinianka przyuszna**, a w niej — od powierzchni w głąb — **nerw twarzowy, żyła zażuchwowa i tętnica szyjna zewnętrzna**. Torebkę ślinianki przyusznej tworzy blaszka powierzchowna powięzi szyi.",
+    "subtheme_label": "Doły czaszki",
+    "source_code": "ANATLEK-r2026-1-341",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Przewód wątrobowy wspólny powstaje z połączenia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przewodu wątrobowego prawego z przewodem pęcherzykowym"
+      },
+      {
+        "id": "b",
+        "text": "Przewodu wątrobowego prawego i lewego"
+      },
+      {
+        "id": "c",
+        "text": "Przewodu wątrobowego lewego z przewodem pęcherzykowym"
+      },
+      {
+        "id": "d",
+        "text": "Przewodu pęcherzykowego z przewodem trzustkowym"
+      },
+      {
+        "id": "e",
+        "text": "Przewodu trzustkowego z przewodem żółciowym wspólnym"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Przewód wątrobowy wspólny** powstaje we wnęce wątroby z połączenia **przewodów wątrobowych prawego i lewego**. Po dołączeniu **przewodu pęcherzykowego** przechodzi w **przewód żółciowy wspólny**, biegnący w więzadle wątrobowo-dwunastniczym (triada: przewód, tętnica wątrobowa właściwa, żyła wrotna). Łączy się on z przewodem trzustkowym w **bańce wątrobowo-trzustkowej Vatera**, otoczonej **zwieraczem Oddiego**. Kamica przewodowa daje żółtaczkę mechaniczną z poszerzeniem dróg żółciowych.",
+    "subtheme_label": "Drogi żółciowe",
+    "source_code": "ANATLEK-r2026-1-342",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Przez otwór szyjny (żyły szyjnej) przechodzą między innymi nerwy czaszkowe:",
+    "options": [
+      {
+        "id": "a",
+        "text": "V, VII, IX"
+      },
+      {
+        "id": "b",
+        "text": "V, VIII, IX"
+      },
+      {
+        "id": "c",
+        "text": "X, XI, XII"
+      },
+      {
+        "id": "d",
+        "text": "IX, X, XI"
+      },
+      {
+        "id": "e",
+        "text": "IX, XI, XII"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Przez **otwór szyjny** przechodzą nerwy **IX, X i XI** oraz opuszka górna **żyły szyjnej wewnętrznej**, zatoka skalista dolna i esowata. Ich uszkodzenie daje **zespół Vernet'a**: zaburzenia połykania, chrypkę i osłabienie mięśnia czworobocznego. Nerw **XII** opuszcza czaszkę osobnym **kanałem nerwu podjęzykowego**, a nerw **VII** — przewodem słuchowym wewnętrznym, a następnie otworem rylcowo-sutkowym. Kanał nerwu podjęzykowego leży powyżej kłykcia potylicznego kości potylicznej.",
+    "subtheme_label": "Otwory podstawy czaszki",
+    "source_code": "ANATLEK-r2026-1-343",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TUL",
+    "text": "Rozwór przełykowy przepony znajduje się w części:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Żebrowej przepony"
+      },
+      {
+        "id": "b",
+        "text": "Mostkowej przepony"
+      },
+      {
+        "id": "c",
+        "text": "Lędźwiowej przepony"
+      },
+      {
+        "id": "d",
+        "text": "Ścięgnistej przepony"
+      },
+      {
+        "id": "e",
+        "text": "Wiotkiej przepony"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Rozwór przełykowy** leży w **części lędźwiowej** przepony, między włóknami odnogi prawej, na poziomie **Th10** — przechodzą przez niego przełyk i oba pnie nerwu błędnego. **Rozwór aortowy (Th12)** leży między odnogami, za przeponą, i przepuszcza aortę oraz przewód piersiowy. **Otwór żyły głównej dolnej (Th8)** jest wycięty w środku ścięgnistym. Przeponę unerwia ruchowo nerw przeponowy (C3-C5), a jej części to mostkowa, żebrowa i lędźwiowa z odnogami. Przepuklina rozworu przełykowego sprzyja refluksowi. Mnemonik: liczba liter — vena cava 8, oesophagus 10, aorta 12.",
+    "subtheme_label": "Przepona",
+    "source_code": "ANATLEK-r2026-1-344",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-CZA",
+    "text": "W skład ściany przyśrodkowej oczodołu nie wchodzi kość:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Łzowa"
+      },
+      {
+        "id": "b",
+        "text": "Sitowa"
+      },
+      {
+        "id": "c",
+        "text": "Klinowa"
+      },
+      {
+        "id": "d",
+        "text": "Szczękowa"
+      },
+      {
+        "id": "e",
+        "text": "Jarzmowa"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Ścianę przyśrodkową oczodołu budują od przodu ku tyłowi: **wyrostek czołowy szczęki**, **kość łzowa**, **blaszka oczodołowa (papierowata) kości sitowej** i trzon **kości klinowej**. **Kość jarzmowa** wchodzi w skład ściany bocznej i dolnej. Blaszka papierowata jest najcieńszą częścią oczodołu — stąd łatwe szerzenie się zapalenia z komórek sitowych oraz przyśrodkowe złamania typu blow-out. Ścianę górną oczodołu tworzy część oczodołowa kości czołowej i skrzydło mniejsze klinowej.",
+    "subtheme_label": "Oczodół",
+    "source_code": "ANATLEK-r2026-1-345",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Przodopochylenie macicy to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kąt między szyjką macicy a pochwą"
+      },
+      {
+        "id": "b",
+        "text": "Kąt między trzonem macicy a pochwą"
+      },
+      {
+        "id": "c",
+        "text": "Kąt między dnem a trzonem macicy"
+      },
+      {
+        "id": "d",
+        "text": "Kąt między trzonem a szyjką macicy"
+      },
+      {
+        "id": "e",
+        "text": "Niefizjologiczne położenie macicy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Anteversio** to fizjologiczne pochylenie macicy ku przodowi — kąt ok. **90°** między osią szyjki macicy a osią pochwy. **Anteflexio (przodozgięcie)** to kąt **120-170°** między trzonem a szyjką, również otwarty ku przodowi. Prawidłowe położenie opisuje się jako **anteversio-anteflexio**; tyłozgięcie występuje u ok. 20% kobiet i zwykle nie jest patologią. Macicę utrzymują więzadła: obłe, szerokie, podstawowe i krzyżowo-maciczne.",
+    "subtheme_label": "Macica",
+    "source_code": "ANATLEK-r2026-1-346",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-JAM",
+    "text": "Do przedsionka jamy ustnej uchodzą ślinianki:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Podżuchwowa"
+      },
+      {
+        "id": "b",
+        "text": "Przyusznica"
+      },
+      {
+        "id": "c",
+        "text": "Podjęzykowa"
+      },
+      {
+        "id": "d",
+        "text": "Prawidłowe A i C"
+      },
+      {
+        "id": "e",
+        "text": "Prawidłowe B i C"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Przewód przyuszniczy (Stenona)** przebija mięsień policzkowy i uchodzi do **przedsionka jamy ustnej** na wysokości **drugiego górnego zęba trzonowego**. Przewody ślinianki podżuchwowej (**Whartona**) i podjęzykowej otwierają się w **jamie ustnej właściwej** — na mięsku podjęzykowym i wzdłuż fałdu podjęzykowego. Przyusznica jest gruczołem surowiczym, podżuchwowa mieszanym, a podjęzykowa głównie śluzowym. Kamica ślinowa dotyczy najczęściej ślinianki podżuchwowej i jej przewodu.",
+    "subtheme_label": "Ślinianki",
+    "source_code": "ANATLEK-r2026-1-347",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "Przez którą strukturę przechodzi więzadło obłe macicy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Kanał udowy"
+      },
+      {
+        "id": "b",
+        "text": "Kanał zasłonowy"
+      },
+      {
+        "id": "c",
+        "text": "Kanał pachwinowy"
+      },
+      {
+        "id": "d",
+        "text": "Otwór kulszowy większy"
+      },
+      {
+        "id": "e",
+        "text": "Rozwór naczyń udowych"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Więzadło obłe macicy** biegnie od kąta macicy przez **kanał pachwinowy** i kończy się w **wardze sromowej większej**; jest żeńskim odpowiednikiem jądrowodu i utrzymuje macicę w **przodopochyleniu**. Towarzyszy mu tętnica więzadła obłego (gałąź tętnicy nabrzusznej dolnej). Przetrwały uchyłek otrzewnej wzdłuż więzadła to **kanał Nucka**, będący miejscem torbieli lub przepukliny pachwinowej u kobiet. Więzadło obłe przebiega w brzegu wolnym więzadła szerokiego macicy.",
+    "subtheme_label": "Macica",
+    "source_code": "ANATLEK-r2026-1-348",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-TRZ",
+    "text": "W którym śródpiersiu znajduje się przełyk?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Przednim"
+      },
+      {
+        "id": "b",
+        "text": "Środkowym"
+      },
+      {
+        "id": "c",
+        "text": "Górnym i przednim"
+      },
+      {
+        "id": "d",
+        "text": "Tylnym"
+      },
+      {
+        "id": "e",
+        "text": "Nie leży w śródpiersiu"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Poniżej rozwidlenia tchawicy przełyk leży w **śródpiersiu tylnym** — do przodu od kręgosłupa i **aorty piersiowej**, a do tyłu od osierdzia i **lewego przedsionka** (stąd możliwość echokardiografii przezprzełykowej). Towarzyszą mu nerwy błędne tworzące **splot przełykowy**. W tej samej przestrzeni biegną **przewód piersiowy** i **żyła nieparzysta**; w odcinku szyjnym przełyk leży za tchawicą. Odcinek brzuszny przełyku ma zaledwie 1-2 cm i przechodzi we wpust żołądka.",
+    "subtheme_label": "Przełyk",
+    "source_code": "ANATLEK-r2026-1-349",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  },
+  {
+    "topic_id": "ANA-NER",
+    "text": "Którą śliniankę unerwia wydzielniczo nerw IX?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Podżuchwową"
+      },
+      {
+        "id": "b",
+        "text": "Podjęzykową"
+      },
+      {
+        "id": "c",
+        "text": "Wszystkie ślinianki duże"
+      },
+      {
+        "id": "d",
+        "text": "Podżuchwową i podjęzykową"
+      },
+      {
+        "id": "e",
+        "text": "Przyusznicę"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Włókna przywspółczulne dla **przyusznicy** wychodzą z **jądra ślinowego dolnego** i biegną nerwem **IX**, dalej **nerwem bębenkowym**, splotem bębenkowym i **nerwem skalistym mniejszym** do **zwoju usznego**; włókna zazwojowe dołączają do **nerwu uszno-skroniowego (V3)**. Ślinianki podżuchwową i podjęzykową unerwia wydzielniczo **nerw VII** przez strunę bębenkową i zwój podżuchwowy. Nerw IX prowadzi też czucie i smak z 1/3 tylnej języka oraz czucie z gardła i zatoki szyjnej.",
+    "subtheme_label": "Nerw językowo-gardłowy",
+    "source_code": "ANATLEK-r2026-1-350",
+    "batch_label": "r_anat_2026/1",
+    "source_exam": "Egzamin anatomia LEK SUM 2026 (ANATLEK r2026-1)",
+    "theme_label": "2026",
+    "tracks": null
+  }
+]

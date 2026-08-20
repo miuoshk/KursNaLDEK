@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
 import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
+import { isFinalExamTopicId } from "@/lib/content/finalExamTopics";
 import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 import type { QuestionTopicRow } from "@/lib/content/fetchActiveQuestionsForTopics";
 
@@ -22,7 +23,7 @@ async function fetchContentTopicIds(
   }
   return (data ?? [])
     .map((row) => row.id as string)
-    .filter((id) => !isVirtualThemeTopicId(id));
+    .filter((id) => !isVirtualThemeTopicId(id) && !isFinalExamTopicId(id));
 }
 
 /** Aktywne pytania przedmiotu z danym `theme_label` (bez zmiany `topic_id`). */

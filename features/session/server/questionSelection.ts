@@ -6,7 +6,15 @@ import {
   expandTopicSubjectIdsForCatalog,
   getSubjectScopeIds,
 } from "@/features/session/server/sharedSubjects";
-import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
+import {
+  getVirtualThemeTopicsForContentSubject,
+  isVirtualThemeTopicId,
+} from "@/lib/content/virtualThemeTopics";
+import { fetchThemeLabelQuestionIds } from "@/lib/content/fetchThemeLabelQuestions";
+import {
+  getFinalExamContentSubjectId,
+  isFinalExamTopicId,
+} from "@/lib/content/finalExamTopics";
 
 export async function fetchVisibleTopicIds(
   supabase: SupabaseClient,
@@ -59,7 +67,24 @@ export async function fetchTopicQuestionIds(
   track: StudyTrack,
 ): Promise<string[]> {
   const rows = await fetchActiveQuestionsForTopics(supabase, [topicId], track);
-  return rows.map((r) => r.id);
+  const ids = rows.map((r) => r.id);
+  if (!isFinalExamTopicId(topicId)) return ids;
+
+  const contentSubjectId = getFinalExamContentSubjectId(topicId);
+  if (!contentSubjectId) return ids;
+
+  const yearIds: string[] = [];
+  for (const def of getVirtualThemeTopicsForContentSubject(contentSubjectId)) {
+    yearIds.push(
+      ...(await fetchThemeLabelQuestionIds(
+        supabase,
+        def.contentSubjectId,
+        def.themeLabel,
+        track,
+      )),
+    );
+  }
+  return [...new Set([...ids, ...yearIds])];
 }
 
 /**

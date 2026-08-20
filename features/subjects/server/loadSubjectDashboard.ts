@@ -18,6 +18,7 @@ import {
   isVirtualThemeTopicId,
   mergeVirtualThemeDefinitions,
 } from "@/lib/content/virtualThemeTopics";
+import { isFinalExamTopicId } from "@/lib/content/finalExamTopics";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -137,7 +138,11 @@ export async function loadSubjectDashboard(
 
     const allTopicIds = topicRows.map((t) => t.id as string);
     const contentTopicIds = (allTopicRows ?? [])
-      .filter((row) => !isVirtualThemeTopicId(row.id as string))
+      .filter(
+        (row) =>
+          !isVirtualThemeTopicId(row.id as string) &&
+          !isFinalExamTopicId(row.id as string),
+      )
       .map((row) => row.id as string);
     const contentSubjectId = getCanonicalContentSubjectId(subjectId);
     const virtualDefinitions = mergeVirtualThemeDefinitions(
@@ -192,6 +197,7 @@ export async function loadSubjectDashboard(
     let dueCount = 0;
 
     const visibleCountByTopic = new Map<string, number>();
+    const nativeCountByTopic = new Map<string, number>();
 
     if (user && (allTopicIds.length > 0 || virtualTopicIds.length > 0)) {
       let qRows: Awaited<ReturnType<typeof fetchActiveQuestionsForTopics>> = [];
@@ -203,12 +209,27 @@ export async function loadSubjectDashboard(
         );
         for (const [tid, count] of countQuestionsByTopic(qRows)) {
           visibleCountByTopic.set(tid, count);
+          nativeCountByTopic.set(tid, count);
         }
+      }
+
+      const yearQuestionIds = [
+        ...new Set(Array.from(virtualQuestionIdsByTopic.values()).flat()),
+      ];
+      const finalExamTopicId = allTopicIds.find((id) => isFinalExamTopicId(id));
+      if (finalExamTopicId) {
+        const zalIds = qRows
+          .filter((q) => q.topic_id === finalExamTopicId)
+          .map((q) => q.id);
+        visibleCountByTopic.set(
+          finalExamTopicId,
+          new Set([...zalIds, ...yearQuestionIds]).size,
+        );
       }
 
       const qids = [
         ...qRows.map((q) => q.id),
-        ...Array.from(virtualQuestionIdsByTopic.values()).flat(),
+        ...yearQuestionIds,
       ];
       const uniqueQids = [...new Set(qids)];
 
@@ -240,6 +261,13 @@ export async function loadSubjectDashboard(
           for (const qid of ids) {
             const linked = questionToVirtualTopics.get(qid) ?? [];
             linked.push(virtualId);
+            questionToVirtualTopics.set(qid, linked);
+          }
+        }
+        if (finalExamTopicId) {
+          for (const qid of yearQuestionIds) {
+            const linked = questionToVirtualTopics.get(qid) ?? [];
+            if (!linked.includes(finalExamTopicId)) linked.push(finalExamTopicId);
             questionToVirtualTopics.set(qid, linked);
           }
         }
@@ -305,12 +333,13 @@ export async function loadSubjectDashboard(
       .map((row) => {
         const prog = progressByTopic.get(row.id as string);
         const sess = topicSessionStats.get(row.id as string);
+        const liveCount = visibleCountByTopic.get(row.id as string);
         return {
           id: row.id,
           subject_id: subjectId,
           name: row.name,
           display_order: row.display_order ?? 0,
-          question_count: visibleCountByTopic.get(row.id as string) ?? 0,
+          question_count: liveCount ?? Number(row.question_count ?? 0),
           answered_count: prog?.uniqueAnswered ?? 0,
           correct_count: prog?.totalCorrect ?? 0,
           knowledge_card: (row.knowledge_card as string | null) ?? null,
@@ -345,7 +374,9 @@ export async function loadSubjectDashboard(
     let totalCorrect = 0;
     for (const t of topics) {
       if (isVirtualThemeTopicId(t.id)) continue;
-      totalQuestions += t.question_count;
+      totalQuestions += isFinalExamTopicId(t.id)
+        ? (nativeCountByTopic.get(t.id) ?? 0)
+        : t.question_count;
       answeredQuestions += t.answered_count;
     }
     for (const tid of allTopicIds) {

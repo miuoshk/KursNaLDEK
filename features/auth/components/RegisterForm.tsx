@@ -61,7 +61,10 @@ export function RegisterForm() {
           name="fullName"
           type="text"
           required
+          minLength={2}
+          maxLength={120}
           autoComplete="name"
+          aria-required="true"
           className={inputClassName}
           placeholder={t("fullNamePlaceholder")}
         />

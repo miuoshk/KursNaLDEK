@@ -23,11 +23,14 @@ const loginSchema = z.object({
 
 const registerSchema = z
   .object({
-    fullName: z
-      .string()
-      .trim()
-      .min(2, "fullNameRequired")
-      .max(120, "fullNameTooLong"),
+    fullName: z.preprocess(
+      (value) => (typeof value === "string" ? value : ""),
+      z
+        .string()
+        .trim()
+        .min(2, "fullNameRequired")
+        .max(120, "fullNameTooLong"),
+    ),
     nick: z
       .string()
       .trim()

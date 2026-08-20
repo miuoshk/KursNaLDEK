@@ -64,7 +64,7 @@ Numeracja: **3 cyfry z zerami** (`001`, `014`).
 
 | ID        | Nazwa |
 |-----------|-------|
-| `ANA-CZA` | Czaszka i kości twarzoczaszki |
+| `ANA-CZA` | Głowa |
 | `ANA-MIE` | Mięśnie żucia i mimiczne |
 | `ANA-NAC` | Naczynia głowy i szyi |
 | `ANA-NER` | Nerwy czaszkowe |

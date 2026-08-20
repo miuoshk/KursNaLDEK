@@ -32,7 +32,7 @@
 ### Topiki (już istnieją w bazie dla `stoma-anatomia`)
 | `topic_id` | Nazwa                              |
 |------------|------------------------------------|
-| `ANA-CZA`  | Czaszka i kości twarzoczaszki      |
+| `ANA-CZA`  | Głowa                              |
 | `ANA-MIE`  | Mięśnie żucia i mimiczne           |
 | `ANA-NAC`  | Naczynia głowy i szyi              |
 | `ANA-NER`  | Nerwy czaszkowe                    |
@@ -43,7 +43,7 @@ Format: `{przedmiot}-{temat}-{NNN}` — małe litery, numeracja trzycyfrowa z ze
 
 Przykłady:
 - `ana-ner-001` → Anatomia · Nerwy czaszkowe · pytanie 1
-- `ana-cza-014` → Anatomia · Czaszka · pytanie 14
+- `ana-cza-014` → Anatomia · Głowa · pytanie 14
 
 ---
 
@@ -91,7 +91,7 @@ Zasady:
 - Krótka fraza rzeczownikowa (1–4 słowa), zaczynająca się z **wielkiej litery**.
 - **Węższa** niż `topic_id`. Przykłady:
   - `topic_id=ANA-NER` (Nerwy czaszkowe) → `subtheme_label="Nerw trójdzielny (V)"`, `"Nerw twarzowy (VII)"`, `"Nerw językowo-gardłowy (IX)"`
-  - `topic_id=ANA-CZA` (Czaszka) → `subtheme_label="Kość szczękowa"`, `"Żuchwa"`, `"Podstawa czaszki"`
+  - `topic_id=ANA-CZA` (Głowa) → `subtheme_label="Kość szczękowa"`, `"Żuchwa"`, `"Podstawa czaszki"`
   - `topic_id=ANA-MIE` (Mięśnie żucia) → `subtheme_label="Mięsień żwacz"`, `"Mięsień skroniowy"`
   - `topic_id=ANA-NAC` (Naczynia) → `subtheme_label="Tętnica szczękowa"`, `"Splot skrzydłowy"`
   - `topic_id=ANA-JAM` (Jama ustna) → `subtheme_label="Język"`, `"Podniebienie miękkie"`

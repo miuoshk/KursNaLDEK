@@ -58,14 +58,12 @@ DECLARE
   year_value INT;
   track_value TEXT;
   product_value TEXT;
+  emoji_value TEXT;
 BEGIN
   email_local_part := SPLIT_PART(COALESCE(NEW.email, ''), '@', 1);
-  full_name_value := NULLIF(
-    TRIM(COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'display_name', '')),
-    ''
-  );
-  IF full_name_value IS NULL THEN
-    full_name_value := email_local_part;
+  full_name_value := NULLIF(TRIM(COALESCE(NEW.raw_user_meta_data->>'full_name', '')), '');
+  IF full_name_value IS NULL OR CHAR_LENGTH(full_name_value) < 2 THEN
+    RAISE EXCEPTION 'full_name jest wymagane.';
   END IF;
 
   nick_value := NULLIF(
@@ -92,7 +90,15 @@ BEGIN
     ELSE 'knnp'
   END;
 
-  INSERT INTO public.profiles (id, full_name, nick, display_name, avatar_initials, current_track, current_year, current_product)
+  emoji_value := NULLIF(TRIM(COALESCE(NEW.raw_user_meta_data->>'avatar_emoji', '')), '');
+  IF emoji_value IS NOT NULL AND CHAR_LENGTH(emoji_value) > 32 THEN
+    emoji_value := NULL;
+  END IF;
+
+  INSERT INTO public.profiles (
+    id, full_name, nick, display_name, avatar_initials, avatar_emoji,
+    current_track, current_year, current_product
+  )
   VALUES (
     NEW.id,
     full_name_value,
@@ -100,6 +106,7 @@ BEGIN
     nick_value,
     UPPER(LEFT(full_name_value, 1) ||
           LEFT(SPLIT_PART(full_name_value, ' ', 2), 1)),
+    emoji_value,
     track_value,
     year_value,
     product_value

@@ -22,7 +22,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 -- Tematy: Anatomia
 INSERT INTO topics (id, subject_id, name, display_order, question_count) VALUES
-  ('ANA-CZA', 'stoma-anatomia', 'Czaszka i kości twarzoczaszki', 1, 5),
+  ('ANA-CZA', 'stoma-anatomia', 'Głowa', 1, 5),
   ('ANA-MIE', 'stoma-anatomia', 'Mięśnie żucia i mimiczne', 2, 5),
   ('ANA-NAC', 'stoma-anatomia', 'Naczynia głowy i szyi', 3, 5),
   ('ANA-NER', 'stoma-anatomia', 'Nerwy czaszkowe', 4, 5),

@@ -9,7 +9,12 @@ import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerS
 import { SummaryHero } from "@/features/session/components/SummaryHero";
 import { SummaryTopicBreakdown } from "@/features/session/components/SummaryTopicBreakdown";
 import { SummaryXpCard } from "@/features/session/components/SummaryXpCard";
-import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
+import {
+  persistSessionSummaryToStorage,
+  sessionSummaryStorageKey,
+  subscribeSessionSummary,
+  mergeEnrichedSessionSummary,
+} from "@/features/session/lib/sessionSummaryStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 const POLL_INTERVAL_MS = 2000;
@@ -41,21 +46,14 @@ export function SessionSummaryClient({
           sessionInsights: res.sessionInsights ?? prev.sessionInsights,
           examReadiness: res.examReadiness ?? prev.examReadiness,
         };
-        try {
-          sessionStorage.setItem(
-            sessionSummaryStorageKey(summary.sessionId),
-            JSON.stringify(next),
-          );
-        } catch {
-          /* quota */
-        }
+        persistSessionSummaryToStorage(prev.sessionId, next);
         return next;
       });
       setInsightsFailed(false);
       setInsightsLoading(false);
       return true;
     },
-    [summary.sessionId],
+    [],
   );
 
   const fetchInsights = useCallback(async () => {
@@ -76,6 +74,12 @@ export function SessionSummaryClient({
       setThirdSegment(null);
     };
   }, [summary.subjectName, setSecondSegment, setThirdSegment, t]);
+
+  useEffect(() => {
+    return subscribeSessionSummary(initialSummary.sessionId, (next) => {
+      setSummary((prev) => mergeEnrichedSessionSummary(prev, next));
+    });
+  }, [initialSummary.sessionId]);
 
   useEffect(() => {
     try {

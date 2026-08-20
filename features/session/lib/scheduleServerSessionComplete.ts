@@ -3,25 +3,26 @@ import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSu
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 /**
- * Fire-and-forget server completion. When the server returns an enriched
- * summary (ANTARES insights, XP, streak, etc.), calls `onEnrich` so the
- * already-visible client summary can be updated in-place.
- *
- * We intentionally do NOT change the browser URL here — the summary is
- * already rendered client-side via React state in SessionStudyView. The
- * permanent `/podsumowanie` URL will be used when revisiting the session.
+ * Fire-and-forget server completion. The client summary is already on screen;
+ * this persists XP / streak / previousAccuracy and broadcasts so the visible
+ * summary can enrich in place. ANTARES insights still arrive via polling.
  */
 export function scheduleServerSessionComplete(
   sessionId: string,
   sessionStartMs: number,
   onEnrich?: (summary: SessionSummaryData) => void,
+  clientTopicId?: string,
 ): void {
   const dur = Math.floor((Date.now() - sessionStartMs) / 1000);
   void completeSession({ sessionId, durationSecondsFallback: dur })
     .then((comp) => {
       if (comp.ok) {
-        persistSessionSummaryToStorage(sessionId, comp.summary);
-        onEnrich?.(comp.summary);
+        const summary = {
+          ...comp.summary,
+          topicId: clientTopicId ?? comp.summary.topicId,
+        };
+        persistSessionSummaryToStorage(sessionId, summary);
+        onEnrich?.(summary);
       }
     })
     .catch(console.error);

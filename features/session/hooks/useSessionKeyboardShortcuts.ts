@@ -17,6 +17,7 @@ type Args = {
   onNext: () => void;
   onPrevious: () => void;
   onConfidencePick: (c: Confidence) => void;
+  disabled?: boolean;
 };
 
 export function useSessionKeyboardShortcuts({
@@ -32,6 +33,7 @@ export function useSessionKeyboardShortcuts({
   onNext,
   onPrevious,
   onConfidencePick,
+  disabled = false,
 }: Args) {
   const displayOptions = useMemo(
     () =>
@@ -45,6 +47,7 @@ export function useSessionKeyboardShortcuts({
   );
 
   useEffect(() => {
+    if (disabled) return;
     const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
     if (!hasFinePointer) return;
 
@@ -111,5 +114,6 @@ export function useSessionKeyboardShortcuts({
     onNext,
     onPrevious,
     onConfidencePick,
+    disabled,
   ]);
 }

@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { SessionEndDialog } from "@/features/session/components/SessionEndDialog";
-import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionQuestionContent } from "@/features/session/components/SessionQuestionContent";
+import { SessionSummaryClient } from "@/features/session/components/SessionSummaryClient";
 import { SessionSaveToast } from "@/features/session/components/SessionSaveToast";
 import { SessionTopBar } from "@/features/session/components/SessionTopBar";
 import { useQuestionStopwatch } from "@/features/session/hooks/useQuestionStopwatch";
@@ -75,26 +75,25 @@ export function SessionStudyView({
   const isPrzeglad = mode === "przeglad";
 
   const router = useRouter();
-  const [hasCompleted, setHasCompleted] = useState(false);
+  const [instantSummary, setInstantSummary] = useState<SessionSummaryData | null>(
+    null,
+  );
   const completedRef = useRef(false);
-  const isCompleting = useRef(false);
 
-  const handleCompleting = useCallback(() => {
-    completedRef.current = true;
-    setHasCompleted(true);
-  }, []);
-
-  // Nawigacja dopiero po completeSession (w useSessionStudyFlow) — DB ma
-  // is_completed=true zanim serwerowy guard na /podsumowanie się odpali.
-  const handleComplete = useCallback((_summary: SessionSummaryData) => {
-    if (!isCompleting.current) {
-      isCompleting.current = true;
+  const handleComplete = useCallback(
+    (summary: SessionSummaryData) => {
+      if (completedRef.current) return;
+      completedRef.current = true;
+      setInstantSummary(summary);
       try {
         sessionStorage.setItem(`session_${sessionId}_completed`, "true");
-      } catch { /* SSR / quota */ }
-    }
-    router.replace(`/sesja/${sessionId}/podsumowanie`);
-  }, [router, sessionId]);
+      } catch {
+        /* SSR / quota */
+      }
+      router.replace(`/sesja/${sessionId}/podsumowanie`);
+    },
+    [router, sessionId],
+  );
 
   const s = useSession(questions, sessionId, mode);
   const qKey = s.currentQuestion?.id ?? "";
@@ -133,7 +132,6 @@ export function SessionStudyView({
     setSaveToast,
     closeEnd,
     reserveRef,
-    handleCompleting,
     handleComplete,
   );
 
@@ -141,7 +139,7 @@ export function SessionStudyView({
     if (completedRef.current) return;
     const t = setInterval(() => setTimerSec((x) => x + 1), 1000);
     return () => clearInterval(t);
-  }, [hasCompleted]);
+  }, [instantSummary]);
 
   const dismissToast = useCallback(() => setSaveToast(null), []);
 
@@ -187,13 +185,11 @@ export function SessionStudyView({
     onNext: handleNavigateNext,
     onPrevious: s.goToPrevious,
     onConfidencePick: onConfidenceShortcut,
+    disabled: Boolean(instantSummary),
   });
 
-  // Po wywolaniu router.replace nawigacja na /podsumowanie jest asynchroniczna
-  // (potrzebny RSC roundtrip). W tym oknie pokazujemy spojny ekran loading w
-  // stylu aplikacji zamiast bialego flash lub starego pytania.
-  if (hasCompleted) {
-    return <SessionLoadingScreen />;
+  if (instantSummary) {
+    return <SessionSummaryClient summary={instantSummary} />;
   }
 
   if (!s.currentQuestion) {

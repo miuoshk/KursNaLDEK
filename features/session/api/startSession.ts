@@ -148,6 +148,7 @@ export async function startSession(
             .from("topics")
             .select("subject_id")
             .eq("id", q1.topic_id as string)
+            .eq("is_inbox", false)
             .maybeSingle();
           if (t1?.subject_id) resolvedSubjectId = t1.subject_id as string;
         }
@@ -271,6 +272,7 @@ export async function startSession(
           .from("topics")
           .select("subject_id, tracks")
           .eq("id", topicId)
+          .eq("is_inbox", false)
           .maybeSingle();
         if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
           return { ok: false, message: t("errors.invalidTopic") };
@@ -494,6 +496,7 @@ export async function startSession(
         .from("topics")
         .select("subject_id")
         .eq("id", q1?.topic_id as string)
+        .eq("is_inbox", false)
         .maybeSingle();
       if (t1?.subject_id) insertSubjectId = t1.subject_id as string;
     }

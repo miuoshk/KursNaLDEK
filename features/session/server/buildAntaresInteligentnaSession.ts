@@ -85,9 +85,10 @@ async function fetchQuestionsMeta(
     const slice = ids.slice(i, i + chunk);
     const { data: rows } = await supabase
       .from("questions")
-      .select("id, topic_id")
+      .select("id, topic_id, topics!inner(is_inbox)")
       .in("id", slice)
       .eq("is_active", true)
+      .eq("topics.is_inbox", false)
       .or(questionTracksOrFilter(track));
     for (const r of rows ?? []) {
       out.set(r.id as string, {

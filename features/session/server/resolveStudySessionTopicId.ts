@@ -14,7 +14,7 @@ export async function resolveStudySessionTopicId(
 
   const { data, error } = await supabase
     .from("topics")
-    .select("id")
+    .select("id, is_inbox")
     .eq("id", topicId)
     .maybeSingle();
 
@@ -23,6 +23,7 @@ export async function resolveStudySessionTopicId(
     return isVirtualThemeTopicId(topicId) ? null : topicId;
   }
 
+  if (data?.is_inbox) return null;
   if (data?.id) return topicId;
 
   if (isVirtualThemeTopicId(topicId)) {

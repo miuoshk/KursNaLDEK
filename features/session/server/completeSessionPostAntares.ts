@@ -322,6 +322,7 @@ export async function runCompleteSessionPostAntares(
     const { data: topicNameRows } = await supabase
       .from("topics")
       .select("id, name")
+      .eq("is_inbox", false)
       .in("id", topicIdsForNames);
     for (const t of topicNameRows ?? []) {
       topicNamesById.set(t.id as string, t.name as string);
@@ -352,6 +353,7 @@ export async function runCompleteSessionPostAntares(
     const { data } = await supabase
       .from("topics")
       .select("id, name, subject_id")
+      .eq("is_inbox", false)
       .in("id", cacheTopicIds);
     topicMeta = (data ?? []) as { id: string; name: string; subject_id: string }[];
   }

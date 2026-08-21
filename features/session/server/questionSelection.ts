@@ -24,6 +24,7 @@ export async function fetchVisibleTopicIds(
   const { data: topicRows, error: te } = await supabase
     .from("topics")
     .select("id, tracks")
+    .eq("is_inbox", false)
     .in("subject_id", subjectScopeIds);
 
   if (te) {

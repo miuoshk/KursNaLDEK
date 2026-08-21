@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 export type AdminQuestionOption = {
   id: string;
@@ -49,7 +50,7 @@ export async function loadAdminQuestionDetail(
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle, topics(name, subject_id, subjects(name))",
+      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle, topics(name, subject_id, is_inbox, subjects(name))",
     )
     .eq("id", questionId)
     .maybeSingle();
@@ -65,11 +66,13 @@ export async function loadAdminQuestionDetail(
     | {
         name: string;
         subject_id: string;
+        is_inbox?: boolean;
         subjects: { name: string } | { name: string }[] | null;
       }
     | {
         name: string;
         subject_id: string;
+        is_inbox?: boolean;
         subjects: { name: string } | { name: string }[] | null;
       }[]
     | null;
@@ -82,7 +85,9 @@ export async function loadAdminQuestionDetail(
   return {
     id: data.id as string,
     topicId: (data.topic_id as string | null) ?? null,
-    topicName: topic?.name ?? null,
+    topicName: topic
+      ? formatAdminTopicName(topic.name, topic.is_inbox)
+      : null,
     subjectId: topic?.subject_id ?? null,
     subjectName: subjectName ?? null,
     questionType: (data.question_type as string | null) ?? null,

@@ -68,8 +68,9 @@ export async function fetchSessionQuestionMeta(
 
   const { data: qRows } = await supabase
     .from("questions")
-    .select("id, topic_id")
-    .in("id", uniqueIds);
+    .select("id, topic_id, topics!inner(is_inbox)")
+    .in("id", uniqueIds)
+    .eq("topics.is_inbox", false);
 
   const topicByQ = new Map<string, string>();
   const topicIds = new Set<string>();

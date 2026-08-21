@@ -66,6 +66,7 @@ export async function loadSubjectDashboard(
         .select(
           "id, subject_id, name, display_order, question_count, knowledge_card, tracks",
         )
+        .eq("is_inbox", false)
         .in("subject_id", displaySubjectIds)
         .order("display_order", { ascending: true }),
     ]);

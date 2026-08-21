@@ -84,8 +84,9 @@ export async function loadSessionQuestions(
     const { data: rows, error: qe } = await supabase
       .from("questions")
       .select(
-        "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics ( name )",
+        "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics!inner ( name )",
       )
+      .eq("topics.is_inbox", false)
       .in("id", ids);
 
     if (qe) {
@@ -110,8 +111,9 @@ export async function loadSessionQuestions(
         const { data: reserveRows, error: rqErr } = await supabase
           .from("questions")
           .select(
-            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics ( name )",
+            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics!inner ( name )",
           )
+          .eq("topics.is_inbox", false)
           .in("id", reserveIds);
 
         if (!rqErr && reserveRows?.length) {

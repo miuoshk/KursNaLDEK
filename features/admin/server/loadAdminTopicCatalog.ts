@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 export type AdminTopicCatalogSubject = {
   id: string;
@@ -33,7 +34,7 @@ export const loadAdminTopicCatalog = cache(async (): Promise<AdminTopicCatalog> 
       .order("name", { ascending: true }),
     admin
       .from("topics")
-      .select("id, name, subject_id, display_order")
+      .select("id, name, subject_id, display_order, is_inbox")
       .order("display_order", { ascending: true })
       .order("name", { ascending: true }),
   ]);
@@ -55,7 +56,7 @@ export const loadAdminTopicCatalog = cache(async (): Promise<AdminTopicCatalog> 
 
   const topics = (topicsRes.data ?? []).map((row) => ({
     id: row.id as string,
-    name: row.name as string,
+    name: formatAdminTopicName(row.name as string, row.is_inbox as boolean),
     subjectId: row.subject_id as string,
     displayOrder: Number(row.display_order ?? 0),
   }));

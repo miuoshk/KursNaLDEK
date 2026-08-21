@@ -20,9 +20,10 @@ export async function fetchActiveQuestionsForTopics(
   while (true) {
     let query = supabase
       .from("questions")
-      .select("id, topic_id")
+      .select("id, topic_id, topics!inner(is_inbox)")
       .in("topic_id", topicIds)
       .eq("is_active", true)
+      .eq("topics.is_inbox", false)
       .range(from, from + PAGE_SIZE - 1);
 
     if (track) {

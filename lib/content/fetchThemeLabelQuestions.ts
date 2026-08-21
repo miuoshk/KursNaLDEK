@@ -16,6 +16,7 @@ async function fetchContentTopicIds(
   const { data, error } = await supabase
     .from("topics")
     .select("id")
+    .eq("is_inbox", false)
     .in("subject_id", getSubjectScopeIds(contentSubjectId));
   if (error) {
     console.error("[fetchActiveQuestionsForThemeLabel] topics", error.message);
@@ -46,10 +47,11 @@ export async function fetchActiveQuestionsForThemeLabel(
   while (true) {
     let query = supabase
       .from("questions")
-      .select("id, topic_id")
+      .select("id, topic_id, topics!inner(is_inbox)")
       .in("topic_id", topicIds)
       .eq("theme_label", themeLabel)
       .eq("is_active", true)
+      .eq("topics.is_inbox", false)
       .range(from, from + PAGE_SIZE - 1);
 
     if (track) {

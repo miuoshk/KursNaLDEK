@@ -70,6 +70,7 @@ export const getCachedProductCatalog = cache(async (
   const { data: rawTopicRows, error: te } = await supabase
     .from("topics")
     .select("id, subject_id, question_count, tracks")
+    .eq("is_inbox", false)
     .in("subject_id", topicSubjectIds);
   if (te) {
     console.error("[getCachedProductCatalog] topics:", te.message);

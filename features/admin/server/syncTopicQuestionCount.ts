@@ -1,29 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-/** Przelicza `topics.question_count` z aktywnych pytań (`is_active = true`). */
+/** Przelicza `topics.question_count` i `question_count_cem` przez RPC `refresh_topic_counts`. */
 export async function syncTopicQuestionCount(
   supabase: SupabaseClient,
   topicId: string,
 ): Promise<void> {
-  const { count, error: countError } = await supabase
-    .from("questions")
-    .select("id", { count: "exact", head: true })
-    .eq("topic_id", topicId)
-    .eq("is_active", true);
-
-  if (countError) {
-    console.error("[syncTopicQuestionCount] count", countError.message);
-    return;
-  }
-
-  const { error: updateError } = await supabase
-    .from("topics")
-    .update({ question_count: count ?? 0 })
-    .eq("id", topicId);
-
-  if (updateError) {
-    console.error("[syncTopicQuestionCount] update", updateError.message);
-  }
+  await syncTopicQuestionCounts(supabase, [topicId]);
 }
 
 export async function syncTopicQuestionCounts(
@@ -31,5 +13,13 @@ export async function syncTopicQuestionCounts(
   topicIds: string[],
 ): Promise<void> {
   const unique = [...new Set(topicIds.filter(Boolean))];
-  await Promise.all(unique.map((id) => syncTopicQuestionCount(supabase, id)));
+  if (unique.length === 0) return;
+
+  const { error } = await supabase.rpc("refresh_topic_counts", {
+    p_topic_ids: unique,
+  });
+
+  if (error) {
+    console.error("[syncTopicQuestionCounts] rpc", error.message);
+  }
 }

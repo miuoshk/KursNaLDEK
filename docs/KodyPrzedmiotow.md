@@ -158,7 +158,6 @@ Topiki dla lekarskiego — do uzupełnienia przy pierwszym batchu (wzorzec jak `
 
 | Kolumna            | KNNP typowo | OSCE |
 |--------------------|------------|------|
-| `difficulty`       | `latwe` / `srednie` / `trudne` | tak |
 | `theme_label`      | lista per przedmiot (anatomia) | rzadko |
 | `subtheme_label`   | wolny tekst | rzadko |
 | `batch_label`      | np. `e_anat_2025/1` | — |

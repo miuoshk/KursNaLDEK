@@ -165,7 +165,6 @@ CREATE TABLE questions (
   options JSONB NOT NULL,
   correct_option_id TEXT NOT NULL,
   explanation TEXT NOT NULL,
-  difficulty TEXT DEFAULT 'srednie',
   source_exam TEXT,
   source_code TEXT,
   image_url TEXT,
@@ -181,7 +180,6 @@ CREATE TABLE questions (
 );
 
 CREATE INDEX idx_questions_topic ON questions(topic_id);
-CREATE INDEX idx_questions_difficulty ON questions(difficulty);
 
 -- ============================================
 -- 3. USER PROGRESS & SPACED REPETITION

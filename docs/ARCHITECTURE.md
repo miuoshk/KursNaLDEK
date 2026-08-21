@@ -138,7 +138,7 @@ achievements
 | `profiles` | Profil użytkownika | `current_product` (knnp/ldek), `xp`, `current_streak`, `rank_tier`, `exam_date`, `exam_readiness_score`, `learning_velocity` |
 | `subjects` | Przedmioty (KNNP) / stacje (OSCE) | `product` (knnp/osce), `year`, `track`, `exam_day` |
 | `topics` | Tematy w przedmiocie | `subject_id`, `question_count`, `knowledge_card` |
-| `questions` | Pytania | `topic_id`, `question_type` (single_choice, ordering, image_identify, conversion_drill), `difficulty`, `options` (JSONB) |
+| `questions` | Pytania | `topic_id`, `question_type` (single_choice, ordering, image_identify, conversion_drill), `options` (JSONB) |
 | `user_question_progress` | Stan FSRS per pytanie per user | `stability`, `difficulty_rating`, `next_review`, `state`, `correct_streak`, `wrong_streak`, `is_leech` |
 | `study_sessions` | Sesje nauki | `mode`, `total_questions`, `correct_answers`, `xp_earned`, `session_insights` (JSONB) |
 | `session_answers` | Odpowiedzi w sesji | `is_correct`, `confidence`, `time_spent_seconds`, `is_first_exposure` |
@@ -830,7 +830,7 @@ ON CONFLICT (id) DO UPDATE SET
 ```sql
 INSERT INTO questions (
   id, topic_id, text, options, correct_option_id, 
-  explanation, difficulty, source_exam, source_code,
+  explanation, source_exam, source_code,
   question_type, is_active
 ) VALUES (
   'farm-01-001',                 -- id: unikalne, pattern: {temat}-{nr}
@@ -858,7 +858,6 @@ INSERT INTO questions (
   jelita.$E$,
   -- explanation: wyjaśnienie poprawnej odpowiedzi (dollar-quoted string)
   
-  'srednie',                     -- difficulty: 'latwe' | 'srednie' | 'trudne'
   NULL,                          -- source_exam: opcjonalnie źródło egzaminu
   NULL,                          -- source_code: opcjonalnie kod pytania
   'single_choice',               -- question_type: typ pytania
@@ -881,14 +880,6 @@ INSERT INTO questions (
 - Zawsze 5 opcji (a-e) — standard egzaminu LDEK
 - `correct_option_id` musi odpowiadać jednemu z `id` w tablicy options
 
-#### Poziomy trudności
-
-| Wartość | Znaczenie | Kiedy używać |
-|---------|-----------|-------------|
-| `latwe` | Podstawowa wiedza | Fakty, definicje, proste skojarzenia |
-| `srednie` | Wymaga zrozumienia | Mechanizmy, porównania, zastosowanie wiedzy |
-| `trudne` | Analiza i synteza | Przypadki kliniczne, wieloetapowe rozumowanie |
-
 #### Typy pytań (OSCE)
 
 Oprócz `single_choice` (standard KNNP), OSCE wspiera:
@@ -903,28 +894,25 @@ Oprócz `single_choice` (standard KNNP), OSCE wspiera:
 ### 4. Batch insert — wzorzec dla wielu pytań
 
 ```sql
-INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanation, difficulty) VALUES
+INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanation) VALUES
 
 ('farm-01-001', 'FARM-01',
  'Treść pytania 1...',
  '[{"id":"a","text":"Opcja A"},{"id":"b","text":"Opcja B"},{"id":"c","text":"Opcja C"},{"id":"d","text":"Opcja D"},{"id":"e","text":"Opcja E"}]'::jsonb,
  'c',
- $E$Wyjaśnienie 1...$E$,
- 'srednie'),
+ $E$Wyjaśnienie 1...$E$),
 
 ('farm-01-002', 'FARM-01',
  'Treść pytania 2...',
  '[{"id":"a","text":"Opcja A"},{"id":"b","text":"Opcja B"},{"id":"c","text":"Opcja C"},{"id":"d","text":"Opcja D"},{"id":"e","text":"Opcja E"}]'::jsonb,
  'a',
- $E$Wyjaśnienie 2...$E$,
- 'latwe')
+ $E$Wyjaśnienie 2...$E$)
 
 ON CONFLICT (id) DO UPDATE SET
   text = EXCLUDED.text,
   options = EXCLUDED.options,
   correct_option_id = EXCLUDED.correct_option_id,
-  explanation = EXCLUDED.explanation,
-  difficulty = EXCLUDED.difficulty;
+  explanation = EXCLUDED.explanation;
 
 -- Po dodaniu pytań, zaktualizuj question_count w topics:
 UPDATE topics SET question_count = (

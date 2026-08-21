@@ -137,7 +137,6 @@ To jest **najważniejsza tabela** z perspektywy tworzenia treści.
 | `options` | jsonb | NIE | — | Opcje odpowiedzi (patrz format niżej) |
 | `correct_option_id` | text | NIE | — | ID poprawnej opcji |
 | `explanation` | text | NIE | — | Wyjaśnienie (**obsługuje Markdown!**) |
-| `difficulty` | text | TAK | 'srednie' | 'latwe' / 'srednie' / 'trudne' |
 | `source_exam` | text | TAK | — | Źródło, np. "LDEK 2024 jesień" |
 | `source_code` | text | TAK | — | Kod źródłowy pytania |
 | `image_url` | text | TAK | — | URL obrazka |
@@ -323,7 +322,7 @@ Lub użyj SQL:
 ```sql
 INSERT INTO questions (
   id, topic_id, text, options, correct_option_id, explanation,
-  difficulty, source_exam, is_active, question_type
+  source_exam, is_active, question_type
 ) VALUES (
   'biochemia-1-stom-aminokwasy-q001',
   'biochemia-1-stom-aminokwasy',
@@ -352,7 +351,6 @@ Zapamiętaj mnemonik: **„Fachowy Lit Wie, Że Metylowanie To Trudna Historia"*
 | Trp   | Tryptofan |
 | His   | Histydyna |
 | Ile   | Izoleucyna |',
-  'srednie',
   'LDEK 2024 wiosna',
   true,
   'single_choice'
@@ -372,10 +370,10 @@ WHERE id = 'biochemia-1-stom-aminokwasy';
 ### 4.2 Dodawanie wielu pytań naraz (batch)
 
 ```sql
-INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanation, difficulty, question_type) VALUES
-('topic-q001', 'topic-id', 'Treść pytania 1?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'b', 'Wyjaśnienie 1', 'latwe', 'single_choice'),
-('topic-q002', 'topic-id', 'Treść pytania 2?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'c', 'Wyjaśnienie 2', 'srednie', 'single_choice'),
-('topic-q003', 'topic-id', 'Treść pytania 3?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'a', 'Wyjaśnienie 3', 'trudne', 'single_choice');
+INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanation, question_type) VALUES
+('topic-q001', 'topic-id', 'Treść pytania 1?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'b', 'Wyjaśnienie 1', 'single_choice'),
+('topic-q002', 'topic-id', 'Treść pytania 2?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'c', 'Wyjaśnienie 2', 'single_choice'),
+('topic-q003', 'topic-id', 'Treść pytania 3?', '[{"id":"a","text":"..."},{"id":"b","text":"..."},{"id":"c","text":"..."},{"id":"d","text":"..."}]'::jsonb, 'a', 'Wyjaśnienie 3', 'single_choice');
 ```
 
 ### 4.3 Checklist — zanim klikniesz "Save"
@@ -386,7 +384,6 @@ INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanati
 - [ ] `options` — minimum 4 opcje, każda ma `id` i `text`
 - [ ] `correct_option_id` — zgadza się z jednym z `id` w options
 - [ ] `explanation` — jest wypełnione, zawiera wyjaśnienie poprawnej odpowiedzi
-- [ ] `difficulty` — to jeden z: `latwe`, `srednie`, `trudne`
 - [ ] `is_active` = `true`
 - [ ] `question_type` = `single_choice` (chyba że OSCE)
 - [ ] Po dodaniu → zaktualizuj `question_count` w topics
@@ -509,7 +506,7 @@ Leucyna jest najsilniejszym stymulatorem szlaku **mTOR**, co ma znaczenie w:
 **Albo SQL:**
 ```sql
 -- Szukaj po fragmencie tekstu:
-SELECT id, text, correct_option_id, difficulty
+SELECT id, text, correct_option_id
 FROM questions
 WHERE text ILIKE '%leucyna%';
 
@@ -667,7 +664,6 @@ Poza primary keys, kluczowe indexy:
 | Index | Tabela | Kolumny | Cel |
 |-------|--------|---------|-----|
 | `idx_questions_topic` | questions | topic_id | Szybkie filtrowanie po temacie |
-| `idx_questions_difficulty` | questions | difficulty | Filtrowanie po trudności |
 | `idx_questions_type` | questions | question_type | Filtrowanie po typie |
 | `idx_uqp_next_review` | user_question_progress | (user_id, next_review) | Znajdowanie pytań do powtórki |
 | `idx_uqp_leech` | user_question_progress | (user_id, is_leech) WHERE is_leech=true | Szybkie znajdowanie pijawek |

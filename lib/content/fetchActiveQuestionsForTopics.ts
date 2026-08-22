@@ -4,15 +4,27 @@ import { questionTracksOrFilter } from "@/lib/content/topicTrackVisibility";
 
 const PAGE_SIZE = 1000;
 
-export type QuestionTopicRow = { id: string; topic_id: string };
+export type QuestionTopicRow = {
+  id: string;
+  topic_id: string;
+  source?: string | null;
+  reserve_bucket?: number | null;
+};
 
 /** Wszystkie aktywne pytania dla podanych topiców (paginacja — domyślny limit PostgREST to 1000). */
 export async function fetchActiveQuestionsForTopics(
   supabase: SupabaseClient,
   topicIds: string[],
   track?: StudyTrack,
+  options?: { includeSource?: boolean; includeReserveBucket?: boolean },
 ): Promise<QuestionTopicRow[]> {
   if (topicIds.length === 0) return [];
+
+  const selectCols = ["id", "topic_id"];
+  if (options?.includeSource) selectCols.push("source");
+  if (options?.includeReserveBucket) selectCols.push("reserve_bucket");
+  selectCols.push("topics!inner(is_inbox)");
+  const select = selectCols.join(", ");
 
   const all: QuestionTopicRow[] = [];
   let from = 0;
@@ -20,7 +32,7 @@ export async function fetchActiveQuestionsForTopics(
   while (true) {
     let query = supabase
       .from("questions")
-      .select("id, topic_id, topics!inner(is_inbox)")
+      .select(select)
       .in("topic_id", topicIds)
       .eq("is_active", true)
       .eq("topics.is_inbox", false)

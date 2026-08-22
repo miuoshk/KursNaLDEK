@@ -534,7 +534,11 @@
       "showTimerHint": "Zegar w górnym pasku aktywnej sesji",
       "showTopics": "Tematy w sesji",
       "showTopicsHint": "Z jakich działów pochodzą pytania w bieżącej sesji",
-      "defaultQuestionCount": "Domyślna liczba pytań"
+      "defaultQuestionCount": "Domyślna liczba pytań",
+      "defaultQuestionSource": "Domyślne źródło pytań",
+      "sourceAll": "Wszystkie",
+      "sourceReference": "CEM",
+      "sourceOwn": "Autorskie"
     },
     "notifications": {
       "title": "Powiadomienia",
@@ -973,7 +977,10 @@
       "updateProfileFailed": "Nie udało się zaktualizować profilu.",
       "buildSummaryFailed": "Nie udało się zbudować podsumowania.",
       "loadDiscussionFailed": "Nie udało się wczytać dyskusji."
-    }
+    },
+    "catalogCemSession": "Sesja CEM",
+    "catalogCemSessionAll": "Wszystkie sesje",
+    "catalogRepeatsOnly": "Tylko powtarzalne"
   },
   "subjects": {
     "mySubjects": "Moje przedmioty",
@@ -1070,7 +1077,8 @@
     "resetProgressDescription": "Czy na pewno chcesz wyzerować cały postęp w {subjectName}? Ta operacja jest nieodwracalna — usunięte zostaną wszystkie odpowiedzi, statystyki i mastery.",
     "resetting": "Resetowanie…",
     "reset": "Zresetuj",
-    "progressReset": "Postęp wyzerowany"
+    "progressReset": "Postęp wyzerowany",
+    "noQuestionsForFilter": "Brak pytań CEM"
   },
   "saved": {
     "title": "Zapisane pytania",
@@ -1292,5 +1300,27 @@
     "termsAcceptance": "{waiver} Akceptuję [Regulamin]({regulaminUrl}) oraz [Politykę prywatności i cookies]({politykaUrl}).",
     "regulaminLinkText": "Regulamin",
     "privacyLinkText": "Politykę prywatności i cookies"
+  },
+  "sourceFilter": {
+    "label": "Źródło pytań",
+    "all": "Wszystkie",
+    "own": "Autorskie",
+    "referenceFallback": "Z egzaminów",
+    "inheritedFromSubject": "Dziedziczone ze strony przedmiotu — możesz nadpisać lokalnie",
+    "badgeOwn": "Autorskie",
+    "badgeRepeat": "Powtarzało się {count}×",
+    "thinCemBar": "W tym dziale mamy tylko {count} pytań CEM",
+    "fillWithOwn": "Uzupełnij autorskimi",
+    "sessionMix": "Skład sesji: {cem} pytania CEM + {own} autorskich"
+  },
+  "sourceAccuracy": {
+    "title": "Trafność według źródła",
+    "own": "Autorskie",
+    "referenceFallback": "Z egzaminów",
+    "ofQuestions": "{correct} z {seen} pytań",
+    "poolUsed": "Pula {label}: wykorzystano {seen} z {total} pytań",
+    "poolProtected": " · {count} chronionych",
+    "captionState": "Trafność na pytaniach CEM przewiduje wynik egzaminu. Trafność na autorskich mierzy, ile już umiesz. To dwie różne rzeczy i dlatego nie sumujemy ich w jedną liczbę.",
+    "captionCampus": "Trafność na pytaniach z egzaminów przewiduje wynik egzaminu uczelnianego. Trafność na autorskich mierzy, ile już umiesz. To dwie różne rzeczy i dlatego nie sumujemy ich w jedną liczbę."
   }
 }

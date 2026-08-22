@@ -26,6 +26,7 @@ type SessionStudyViewProps = {
   topicId?: string;
   questions: SessionQuestion[];
   reserveQuestions?: SessionQuestion[];
+  product?: string | null;
 };
 
 export function SessionStudyView({
@@ -37,6 +38,7 @@ export function SessionStudyView({
   topicId,
   questions,
   reserveQuestions = [],
+  product,
 }: SessionStudyViewProps) {
   const t = useTranslations("session");
   const topicDefault = t("topicDefault");
@@ -239,6 +241,7 @@ export function SessionStudyView({
         onPrevious={s.goToPrevious}
         showTopicName={showSessionTopics}
         subjectId={subjectId}
+        product={product}
       />
     </div>
   );

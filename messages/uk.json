@@ -392,7 +392,10 @@
       "updateProfileFailed": "Не вдалося оновити профіль.",
       "buildSummaryFailed": "Не вдалося побудувати підсумок.",
       "loadDiscussionFailed": "Не вдалося завантажити обговорення."
-    }
+    },
+    "catalogCemSession": "Сесія CEM",
+    "catalogCemSessionAll": "Усі сесії",
+    "catalogRepeatsOnly": "Лише повторювані"
   },
   "subjects": {
     "mySubjects": "Мої предмети",
@@ -489,7 +492,8 @@
     "resetProgressDescription": "Ви впевнені, що хочете обнулити весь прогрес з {subjectName}? Це незворотно — будуть видалені всі відповіді, статистика та mastery.",
     "resetting": "Скидання…",
     "reset": "Скинути",
-    "progressReset": "Прогрес обнулено"
+    "progressReset": "Прогрес обнулено",
+    "noQuestionsForFilter": "Немає питань CEM"
   },
   "saved": {
     "title": "Збережені питання",
@@ -861,7 +865,11 @@
       "showTimerHint": "Годинник у верхній панелі активної сесії",
       "showTopics": "Теми в сесії",
       "showTopicsHint": "З яких розділів походять питання в поточній сесії",
-      "defaultQuestionCount": "Типова кількість питань"
+      "defaultQuestionCount": "Типова кількість питань",
+      "defaultQuestionSource": "Типове джерело питань",
+      "sourceAll": "Усі",
+      "sourceReference": "CEM",
+      "sourceOwn": "Авторські"
     },
     "notifications": {
       "title": "Сповіщення",
@@ -1298,5 +1306,27 @@
       "privacy": "Політика конфіденційності",
       "copyright": "© 2026 Zenit Labs Sp. z o.o."
     }
+  },
+  "sourceFilter": {
+    "label": "Джерело питань",
+    "all": "Усі",
+    "own": "Авторські",
+    "referenceFallback": "З іспитів",
+    "inheritedFromSubject": "Успадковано зі сторінки предмета — можна змінити локально",
+    "badgeOwn": "Авторські",
+    "badgeRepeat": "Повторювалось {count}×",
+    "thinCemBar": "У цьому розділі лише {count} питань CEM",
+    "fillWithOwn": "Доповнити авторськими",
+    "sessionMix": "Склад сесії: {cem} питань CEM + {own} авторських"
+  },
+  "sourceAccuracy": {
+    "title": "Точність за джерелом",
+    "own": "Авторські",
+    "referenceFallback": "З іспитів",
+    "ofQuestions": "{correct} з {seen} питань",
+    "poolUsed": "Пул {label}: використано {seen} з {total} питань",
+    "poolProtected": " · {count} захищених",
+    "captionState": "Точність на питаннях CEM передбачає результат іспиту. Точність на авторських вимірює, скільки ви вже вмієте. Це дві різні речі, тому ми не складаємо їх в одну цифру.",
+    "captionCampus": "Точність на питаннях з іспитів передбачає результат університетського іспиту. Точність на авторських вимірює, скільки ви вже вмієте. Це дві різні речі, тому ми не складаємо їх в одну цифру."
   }
 }

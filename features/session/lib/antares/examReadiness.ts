@@ -83,6 +83,9 @@ function baseVerdict(score: number): string {
  *
  * **Wynik:** średnia ważona `masteryScore` po tematach, które user widział,
  * × kara za niskie pokrycie materiału w cache, z wstępną kalibracją przy &lt;50 odpowiedziach.
+ *
+ * TODO: gdy baza CEM przekroczy ~150 pytań na przedmiot, rozważyć
+ * readiness = 0.6 * mastery_ogólne + 0.4 * trafność_CEM.
  */
 export function calculateExamReadiness(
   input: ExamReadinessInput,

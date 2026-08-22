@@ -39,6 +39,7 @@ type SessionQuestionContentProps = {
   onPrevious: () => void;
   showTopicName?: boolean;
   subjectId: string;
+  product?: string | null;
 };
 
 export function SessionQuestionContent({
@@ -62,6 +63,7 @@ export function SessionQuestionContent({
   onPrevious,
   showTopicName = true,
   subjectId,
+  product,
 }: SessionQuestionContentProps) {
   const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
@@ -114,7 +116,7 @@ export function SessionQuestionContent({
             animate="center"
             exit="exit"
           >
-            <QuestionCard question={q} showTopicName={showTopicName}>
+            <QuestionCard question={q} showTopicName={showTopicName} product={product}>
               <SessionQuestionOptions
                 sessionId={sessionId}
                 q={q}

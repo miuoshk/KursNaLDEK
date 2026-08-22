@@ -10,6 +10,12 @@ export type QuestionRow = {
   source_code: string | null;
   image_url?: string | null;
   disable_option_shuffle?: boolean | null;
+  source?: string | null;
+  repeat_count?: number | null;
+  first_seen_session?: string | null;
+  source_exam?: string | null;
+  cemSessionLabel?: string | null;
+  cemQuestionNumber?: number | null;
   topics: { name: string } | { name: string }[] | null;
 };
 
@@ -38,5 +44,11 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     topicName: topicLabel(row.topics),
     topicId: row.topic_id ?? undefined,
     disableOptionShuffle: row.disable_option_shuffle === true,
+    source: row.source ?? undefined,
+    repeatCount: row.repeat_count ?? undefined,
+    firstSeenSession: row.first_seen_session ?? undefined,
+    sourceExam: row.source_exam ?? undefined,
+    cemSessionLabel: row.cemSessionLabel ?? undefined,
+    cemQuestionNumber: row.cemQuestionNumber ?? undefined,
   };
 }

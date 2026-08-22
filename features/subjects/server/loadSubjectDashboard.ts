@@ -19,6 +19,18 @@ import {
   mergeVirtualThemeDefinitions,
 } from "@/lib/content/virtualThemeTopics";
 import { isFinalExamTopicId } from "@/lib/content/finalExamTopics";
+import { FEATURES } from "@/lib/featureFlags";
+import {
+  hasCemExams,
+  isSourceFilterLive,
+  referenceSources,
+} from "@/lib/products";
+import {
+  sourceCountsFromTotals,
+  type SourceFilterCounts,
+} from "@/features/session/lib/sourceFilter";
+import type { SourceAccuracyBreakdown } from "@/features/session/lib/sourceAccuracy";
+import { CEM_RESERVE_BUCKET_MIN } from "@/features/session/lib/antares/cemReserve";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -27,6 +39,10 @@ export type TopicWithProgress = Topic & {
   /** Ile razy przerobiono cały temat (min. liczba odpowiedzi na każde pytanie). */
   session_count: number;
   last_studied_at: string | null;
+  /** Tylko gdy filtr źródła jest na live dla subjects.product — inaczej nie pobierane. */
+  question_count_ref?: number | null;
+  answered_count_ref?: number;
+  answered_count_own?: number;
 };
 
 export type SubjectStats = {
@@ -40,7 +56,15 @@ export type SubjectStats = {
 };
 
 export type SubjectDashboardLoadResult =
-  | { ok: true; subject: Subject; topics: TopicWithProgress[]; stats: SubjectStats }
+  | {
+      ok: true;
+      subject: Subject;
+      topics: TopicWithProgress[];
+      stats: SubjectStats;
+      sourceCounts: SourceFilterCounts | null;
+      statsBySource: Record<"all" | "reference" | "own", SubjectStats> | null;
+      sourceAccuracy: SourceAccuracyBreakdown | null;
+    }
   | { ok: false; kind: "not_found" | "error"; message: string };
 
 export async function loadSubjectDashboard(
@@ -53,14 +77,7 @@ export async function loadSubjectDashboard(
     } = await supabase.auth.getUser();
 
     const displaySubjectIds = getTopicDisplaySubjectIds(subjectId);
-    const [subjectResult, topicsResult] = await Promise.all([
-      supabase
-        .from("subjects")
-        .select(
-          "id, name, short_name, icon_name, year, track, product, display_order",
-        )
-        .eq("id", subjectId)
-        .maybeSingle(),
+    const fetchTopicsPlain = () =>
       supabase
         .from("topics")
         .select(
@@ -68,8 +85,38 @@ export async function loadSubjectDashboard(
         )
         .eq("is_inbox", false)
         .in("subject_id", displaySubjectIds)
-        .order("display_order", { ascending: true }),
-    ]);
+        .order("display_order", { ascending: true });
+
+    const fetchTopicsWithRef = () =>
+      supabase
+        .from("topics")
+        .select(
+          "id, subject_id, name, display_order, question_count, question_count_ref, knowledge_card, tracks",
+        )
+        .eq("is_inbox", false)
+        .in("subject_id", displaySubjectIds)
+        .order("display_order", { ascending: true });
+
+    const subjectQuery = supabase
+      .from("subjects")
+      .select(
+        "id, name, short_name, icon_name, year, track, product, display_order",
+      )
+      .eq("id", subjectId)
+      .maybeSingle();
+
+    const [subjectResult, topicsResult] = FEATURES.cemSource
+      ? await (async () => {
+          const subjectRes = await subjectQuery;
+          const sourceUi = isSourceFilterLive(
+            (subjectRes.data?.product as string | undefined) ?? null,
+          );
+          const topicsRes = sourceUi
+            ? await fetchTopicsWithRef()
+            : await fetchTopicsPlain();
+          return [subjectRes, topicsRes] as const;
+        })()
+      : await Promise.all([subjectQuery, fetchTopicsPlain()]);
 
     const { data: subject, error: subjectError } = subjectResult;
     const { data: allTopicRows, error: topicsError } = topicsResult;
@@ -117,6 +164,9 @@ export async function loadSubjectDashboard(
         message: "Ten rok jest zablokowany. Wybierz lub opłać dostęp w panelu wyboru roku.",
       };
     }
+
+    const sourceUi =
+      FEATURES.cemSource && isSourceFilterLive(subject.product as string);
 
     if (topicsError) {
       console.error(
@@ -186,18 +236,36 @@ export async function loadSubjectDashboard(
     const virtualTopicIds = [...virtualQuestionIdsByTopic.keys()];
     const sessionTopicIds = [...allTopicIds, ...virtualTopicIds];
 
-    const progressByTopic = new Map<
-      string,
-      { uniqueAnswered: number; totalAttempts: number; totalCorrect: number }
-    >();
+    type TopicProgress = {
+      uniqueAnswered: number;
+      totalAttempts: number;
+      totalCorrect: number;
+    };
+    const emptyProgress = (): TopicProgress => ({
+      uniqueAnswered: 0,
+      totalAttempts: 0,
+      totalCorrect: 0,
+    });
+    const progressByTopic = new Map<string, TopicProgress>();
+    const progressByTopicRef = new Map<string, TopicProgress>();
+    const progressByTopicOwn = new Map<string, TopicProgress>();
     const topicSessionStats = new Map<
       string,
       { lastAt: string | null }
     >();
     const timesByQuestion = new Map<string, number>();
     const questionIdsByTopic = new Map<string, string[]>();
+    const sourceByQuestionId = new Map<string, string>();
+    const refSources = new Set<string>(
+      sourceUi ? referenceSources(subject.product as string) : [],
+    );
     let nextReviewDate: Date | null = null;
     let dueCount = 0;
+    let nextReviewDateRef: Date | null = null;
+    let dueCountRef = 0;
+    let nextReviewDateOwn: Date | null = null;
+    let dueCountOwn = 0;
+    let protectedCemUnseen = 0;
 
     const visibleCountByTopic = new Map<string, number>();
     const nativeCountByTopic = new Map<string, number>();
@@ -209,6 +277,12 @@ export async function loadSubjectDashboard(
           supabase,
           allTopicIds,
           viewerTrack,
+          sourceUi
+            ? {
+                includeSource: true,
+                includeReserveBucket: hasCemExams(subject.product as string),
+              }
+            : undefined,
         );
         for (const [tid, count] of countQuestionsByTopic(qRows)) {
           visibleCountByTopic.set(tid, count);
@@ -281,6 +355,7 @@ export async function loadSubjectDashboard(
           const list = questionIdsByTopic.get(tid) ?? [];
           list.push(q.id);
           questionIdsByTopic.set(tid, list);
+          if (sourceUi && q.source) sourceByQuestionId.set(q.id, q.source);
         }
         for (const [virtualId, ids] of virtualQuestionIdsByTopic) {
           questionIdsByTopic.set(virtualId, ids);
@@ -301,21 +376,38 @@ export async function loadSubjectDashboard(
           const timesCorr = Number(r.times_correct ?? 0);
           timesByQuestion.set(r.question_id, timesAns);
 
-          const applyProgress = (topicKey: string) => {
-            const cur = progressByTopic.get(topicKey) ?? {
-              uniqueAnswered: 0,
-              totalAttempts: 0,
-              totalCorrect: 0,
-            };
+          const applyProgress = (
+            map: Map<string, TopicProgress>,
+            topicKey: string,
+          ) => {
+            const cur = map.get(topicKey) ?? emptyProgress();
             if (timesAns > 0) cur.uniqueAnswered += 1;
             cur.totalAttempts += timesAns;
             cur.totalCorrect += timesCorr;
-            progressByTopic.set(topicKey, cur);
+            map.set(topicKey, cur);
           };
 
-          if (tid) applyProgress(tid);
+          const qSource = sourceByQuestionId.get(r.question_id);
+          const sourceBucket: "reference" | "own" | null =
+            qSource === "own"
+              ? "own"
+              : qSource && refSources.has(qSource)
+                ? "reference"
+                : null;
+          const sourceMap =
+            sourceBucket === "reference"
+              ? progressByTopicRef
+              : sourceBucket === "own"
+                ? progressByTopicOwn
+                : null;
+
+          if (tid) {
+            applyProgress(progressByTopic, tid);
+            if (sourceMap) applyProgress(sourceMap, tid);
+          }
           for (const virtualId of questionToVirtualTopics.get(r.question_id) ?? []) {
-            applyProgress(virtualId);
+            applyProgress(progressByTopic, virtualId);
+            if (sourceMap) applyProgress(sourceMap, virtualId);
           }
 
           // Due = next_review <= now (jak RPC due_review_count / karty przedmiotów)
@@ -324,7 +416,27 @@ export async function loadSubjectDashboard(
             const nrDate = new Date(nr);
             if (!nextReviewDate || nrDate < nextReviewDate) nextReviewDate = nrDate;
             if (nrDate <= now) dueCount += 1;
+            if (sourceBucket === "reference") {
+              if (!nextReviewDateRef || nrDate < nextReviewDateRef) {
+                nextReviewDateRef = nrDate;
+              }
+              if (nrDate <= now) dueCountRef += 1;
+            } else if (sourceBucket === "own") {
+              if (!nextReviewDateOwn || nrDate < nextReviewDateOwn) {
+                nextReviewDateOwn = nrDate;
+              }
+              if (nrDate <= now) dueCountOwn += 1;
+            }
           }
+        }
+      }
+
+      if (sourceUi && hasCemExams(subject.product as string)) {
+        for (const q of qRows) {
+          if (q.source !== "cem") continue;
+          if ((q.reserve_bucket ?? 0) < CEM_RESERVE_BUCKET_MIN) continue;
+          if ((timesByQuestion.get(q.id) ?? 0) > 0) continue;
+          protectedCemUnseen += 1;
         }
       }
 
@@ -366,6 +478,11 @@ export async function loadSubjectDashboard(
         const prog = progressByTopic.get(row.id as string);
         const sess = topicSessionStats.get(row.id as string);
         const liveCount = visibleCountByTopic.get(row.id as string);
+        const refCount = sourceUi
+          ? Number(
+              (row as { question_count_ref?: number | null }).question_count_ref ?? 0,
+            )
+          : null;
         return {
           id: row.id,
           subject_id: subjectId,
@@ -377,6 +494,15 @@ export async function loadSubjectDashboard(
           knowledge_card: (row.knowledge_card as string | null) ?? null,
           session_count: fullPassCount(row.id as string),
           last_studied_at: sess?.lastAt ?? null,
+          ...(sourceUi
+            ? {
+                question_count_ref: refCount,
+                answered_count_ref:
+                  progressByTopicRef.get(row.id as string)?.uniqueAnswered ?? 0,
+                answered_count_own:
+                  progressByTopicOwn.get(row.id as string)?.uniqueAnswered ?? 0,
+              }
+            : {}),
         };
       })
       .concat(
@@ -417,25 +543,96 @@ export async function loadSubjectDashboard(
       totalAttempts += p.totalAttempts;
       totalCorrect += p.totalCorrect;
     }
-    const correctAnswers = totalCorrect;
-    const accuracy = totalAttempts > 0 ? totalCorrect / totalAttempts : 0;
-    const masteryPct = totalQuestions > 0
-      ? Math.round((answeredQuestions > 0 ? accuracy : 0) * (Math.min(1, answeredQuestions / totalQuestions)) * 100)
-      : 0;
+    const stats = buildSubjectStats({
+      totalQuestions,
+      answeredQuestions,
+      totalAttempts,
+      totalCorrect,
+      nextReviewDate,
+      dueCount,
+    });
+
+    let sourceCounts: SourceFilterCounts | null = null;
+    let statsBySource: Record<"all" | "reference" | "own", SubjectStats> | null =
+      null;
+    let sourceAccuracy: SourceAccuracyBreakdown | null = null;
+    if (sourceUi) {
+      let all = 0;
+      let ref = 0;
+      let answeredRef = 0;
+      let answeredOwn = 0;
+      for (const t of topics) {
+        if (isVirtualThemeTopicId(t.id) || isFinalExamTopicId(t.id)) continue;
+        all += t.question_count;
+        ref += t.question_count_ref ?? 0;
+        answeredRef += t.answered_count_ref ?? 0;
+        answeredOwn += t.answered_count_own ?? 0;
+      }
+      sourceCounts = sourceCountsFromTotals(all, ref);
+
+      let attemptsRef = 0;
+      let correctRef = 0;
+      let attemptsOwn = 0;
+      let correctOwn = 0;
+      for (const tid of allTopicIds) {
+        const pr = progressByTopicRef.get(tid);
+        if (pr) {
+          attemptsRef += pr.totalAttempts;
+          correctRef += pr.totalCorrect;
+        }
+        const po = progressByTopicOwn.get(tid);
+        if (po) {
+          attemptsOwn += po.totalAttempts;
+          correctOwn += po.totalCorrect;
+        }
+      }
+
+      statsBySource = {
+        all: stats,
+        reference: buildSubjectStats({
+          totalQuestions: sourceCounts.reference,
+          answeredQuestions: answeredRef,
+          totalAttempts: attemptsRef,
+          totalCorrect: correctRef,
+          nextReviewDate: nextReviewDateRef,
+          dueCount: dueCountRef,
+        }),
+        own: buildSubjectStats({
+          totalQuestions: sourceCounts.own,
+          answeredQuestions: answeredOwn,
+          totalAttempts: attemptsOwn,
+          totalCorrect: correctOwn,
+          nextReviewDate: nextReviewDateOwn,
+          dueCount: dueCountOwn,
+        }),
+      };
+
+      sourceAccuracy = {
+        product: subject.product as string,
+        reference: {
+          total: sourceCounts.reference,
+          seen: answeredRef,
+          correct: correctRef,
+        },
+        own: {
+          total: sourceCounts.own,
+          seen: answeredOwn,
+          correct: correctOwn,
+        },
+        protectedCount: hasCemExams(subject.product as string)
+          ? protectedCemUnseen
+          : 0,
+      };
+    }
 
     return {
       ok: true,
       subject: subject as Subject,
       topics,
-      stats: {
-        totalQuestions,
-        answeredQuestions,
-        correctAnswers,
-        accuracy,
-        masteryPct,
-        nextReviewDate: nextReviewDate?.toISOString() ?? null,
-        dueCount,
-      },
+      stats,
+      sourceCounts,
+      statsBySource,
+      sourceAccuracy,
     };
   } catch (e) {
     console.error("[loadSubjectDashboard] unexpected:", e);
@@ -445,4 +642,33 @@ export async function loadSubjectDashboard(
       message: "Wystąpił nieoczekiwany błąd. Odśwież stronę lub spróbuj później.",
     };
   }
+}
+
+function buildSubjectStats(input: {
+  totalQuestions: number;
+  answeredQuestions: number;
+  totalAttempts: number;
+  totalCorrect: number;
+  nextReviewDate: Date | null;
+  dueCount: number;
+}): SubjectStats {
+  const accuracy =
+    input.totalAttempts > 0 ? input.totalCorrect / input.totalAttempts : 0;
+  const masteryPct =
+    input.totalQuestions > 0
+      ? Math.round(
+          (input.answeredQuestions > 0 ? accuracy : 0) *
+            Math.min(1, input.answeredQuestions / input.totalQuestions) *
+            100,
+        )
+      : 0;
+  return {
+    totalQuestions: input.totalQuestions,
+    answeredQuestions: input.answeredQuestions,
+    correctAnswers: input.totalCorrect,
+    accuracy,
+    masteryPct,
+    nextReviewDate: input.nextReviewDate?.toISOString() ?? null,
+    dueCount: input.dueCount,
+  };
 }

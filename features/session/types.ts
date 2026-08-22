@@ -1,6 +1,9 @@
 export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
 export type SessionMode = KnnpSessionMode | "osce_topic";
 
+/** Filtr puli pytań — nie tryb nauki. `reference` rozwija się przez referenceSources(product). */
+export type SourceFilter = "all" | "reference" | "own";
+
 export type Confidence = "nie_wiedzialem" | "troche" | "na_pewno";
 
 /** Stan karty pytania u usera — przekazywany do sesji (ANTARES). */
@@ -29,6 +32,12 @@ export interface SessionQuestion {
   antares?: SessionQuestionMeta;
   /** Ręczny zakaz shuffle opcji (admin) lub wykryta kombinatoryka — opcje w stałej kolejności. */
   disableOptionShuffle?: boolean;
+  source?: string;
+  repeatCount?: number;
+  firstSeenSession?: string | null;
+  sourceExam?: string | null;
+  cemSessionLabel?: string | null;
+  cemQuestionNumber?: number | null;
 }
 
 export interface SessionState {

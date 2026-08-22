@@ -18,7 +18,7 @@ export async function loadSettings(
   const { data: profileRow } = await supabase
     .from("profiles")
     .select(
-      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, current_product, role, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
+      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, current_product, role, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, default_question_source, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
     )
     .eq("id", userId)
     .maybeSingle();
@@ -53,6 +53,11 @@ export async function loadSettings(
     default_question_count: count,
     show_session_timer: profileRow?.show_session_timer ?? true,
     show_session_topics: profileRow?.show_session_topics ?? true,
+    default_question_source:
+      profileRow?.default_question_source === "reference" ||
+      profileRow?.default_question_source === "own"
+        ? profileRow.default_question_source
+        : "all",
     notifications_reviews: profileRow?.notifications_reviews ?? true,
     notifications_weekly: profileRow?.notifications_weekly ?? false,
     subscription_status: profileRow?.subscription_status ?? "inactive",

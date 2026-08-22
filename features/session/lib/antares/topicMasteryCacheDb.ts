@@ -14,6 +14,9 @@ export type TopicMasteryCacheRow = {
   accuracy_last_7d: number | null;
   questions_last_7d: number;
   leech_count: number;
+  ref_total: number;
+  ref_seen: number;
+  ref_correct: number;
 };
 
 /** Kolumny tabeli `topic_mastery_cache` w produkcji. */
@@ -50,6 +53,9 @@ export function normalizeTopicMasteryRow(
       raw.accuracy_last_7d != null ? Number(raw.accuracy_last_7d) : null,
     questions_last_7d: Number(raw.questions_last_7d ?? 0),
     leech_count: Number(raw.leech_count ?? 0),
+    ref_total: Number(raw.ref_total ?? 0),
+    ref_seen: Number(raw.ref_seen ?? 0),
+    ref_correct: Number(raw.ref_correct ?? 0),
   };
 }
 
@@ -73,6 +79,9 @@ export function toTopicMasteryUpsert(
     accuracy_last_7d: row.accuracy_last_7d,
     questions_last_7d: row.questions_last_7d,
     leech_count: row.leech_count,
+    ref_total: row.ref_total,
+    ref_seen: row.ref_seen,
+    ref_correct: row.ref_correct,
     calculated_at: new Date().toISOString(),
   };
 }

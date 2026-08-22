@@ -392,7 +392,10 @@
       "updateProfileFailed": "Не удалось обновить профиль.",
       "buildSummaryFailed": "Не удалось построить итоги.",
       "loadDiscussionFailed": "Не удалось загрузить обсуждение."
-    }
+    },
+    "catalogCemSession": "Сессия CEM",
+    "catalogCemSessionAll": "Все сессии",
+    "catalogRepeatsOnly": "Только повторяющиеся"
   },
   "subjects": {
     "mySubjects": "Мои предметы",
@@ -489,7 +492,8 @@
     "resetProgressDescription": "Вы уверены, что хотите обнулить весь прогресс по {subjectName}? Это необратимо — будут удалены все ответы, статистика и mastery.",
     "resetting": "Сброс…",
     "reset": "Сбросить",
-    "progressReset": "Прогресс обнулён"
+    "progressReset": "Прогресс обнулён",
+    "noQuestionsForFilter": "Нет вопросов CEM"
   },
   "saved": {
     "title": "Сохранённые вопросы",
@@ -861,7 +865,11 @@
       "showTimerHint": "Таймер в верхней панели активной сессии",
       "showTopics": "Темы в сессии",
       "showTopicsHint": "Из каких разделов взяты вопросы в текущей сессии",
-      "defaultQuestionCount": "Количество вопросов по умолчанию"
+      "defaultQuestionCount": "Количество вопросов по умолчанию",
+      "defaultQuestionSource": "Источник вопросов по умолчанию",
+      "sourceAll": "Все",
+      "sourceReference": "CEM",
+      "sourceOwn": "Авторские"
     },
     "notifications": {
       "title": "Уведомления",
@@ -1298,5 +1306,27 @@
       "privacy": "Политика конфиденциальности",
       "copyright": "© 2026 Zenit Labs Sp. z o.o."
     }
+  },
+  "sourceFilter": {
+    "label": "Источник вопросов",
+    "all": "Все",
+    "own": "Авторские",
+    "referenceFallback": "С экзаменов",
+    "inheritedFromSubject": "Наследуется со страницы предмета — можно переопределить здесь",
+    "badgeOwn": "Авторские",
+    "badgeRepeat": "Повторялось {count}×",
+    "thinCemBar": "В этом разделе только {count} вопросов CEM",
+    "fillWithOwn": "Дополнить авторскими",
+    "sessionMix": "Состав сессии: {cem} вопросов CEM + {own} авторских"
+  },
+  "sourceAccuracy": {
+    "title": "Точность по источнику",
+    "own": "Авторские",
+    "referenceFallback": "С экзаменов",
+    "ofQuestions": "{correct} из {seen} вопросов",
+    "poolUsed": "Пул {label}: использовано {seen} из {total} вопросов",
+    "poolProtected": " · {count} защищённых",
+    "captionState": "Точность на вопросах CEM предсказывает результат экзамена. Точность на авторских измеряет, сколько вы уже умеете. Это разные вещи, поэтому мы не складываем их в одно число.",
+    "captionCampus": "Точность на вопросах с экзаменов предсказывает результат вузовского экзамена. Точность на авторских измеряет, сколько вы уже умеете. Это разные вещи, поэтому мы не складываем их в одно число."
   }
 }

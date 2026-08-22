@@ -1,3 +1,5 @@
+import type { SourceAccuracyBreakdown } from "@/features/session/lib/sourceAccuracy";
+
 export type TimeRangeKey = "7" | "30" | "90" | "all";
 
 export interface StatisticsPayload {
@@ -35,4 +37,5 @@ export interface StatisticsPayload {
     totalQuestions: number;
     durationSeconds: number | null;
   }[];
+  sourceAccuracy: SourceAccuracyBreakdown | null;
 }

@@ -46,6 +46,12 @@ import { persistLastSessionQuestionCount } from "@/features/session/server/persi
 import { resolveStudySessionTopicId } from "@/features/session/server/resolveStudySessionTopicId";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
+import {
+  isSourceFilterUiEnabled,
+  resolveEngineSourceFilter,
+} from "@/features/session/lib/sourceFilter";
+import { restrictQuestionIdsBySource } from "@/features/session/server/restrictQuestionIdsBySource";
+import { isThinCemPool } from "@/features/session/lib/questionSourceBadge";
 
 const schema = z.object({
   subjectId: z.string().optional(),
@@ -57,6 +63,10 @@ const schema = z.object({
   focusQuestionId: z.string().min(1).optional(),
   /** Sesja powtórkowa — wyłącznie pytania z terminem <= teraz. */
   focus: z.enum(["due"]).optional(),
+  /** Filtr źródła: all | reference | own — nie tryb nauki. */
+  source: z.enum(["all", "reference", "own"]).optional(),
+  /** Chuda pula CEM: dociągnij autorskie do wybranej liczby. */
+  fillOwn: z.boolean().optional(),
 });
 
 export type StartSessionResult =
@@ -67,6 +77,7 @@ export type StartSessionResult =
       questions: SessionQuestion[];
       /** Pula zapasowa (tylko inteligentna) — podmiany w trakcie sesji. */
       reserveQuestions?: SessionQuestion[];
+      product?: string | null;
     }
   | { ok: false; message: string };
 
@@ -88,6 +99,8 @@ export async function startSession(
     questionIds: explicitIds,
     focusQuestionId,
     focus,
+    source: sourceRaw,
+    fillOwn: fillOwnRaw,
   } = parsed.data;
   const subjectId = isMix ? "" : rawSubject;
 
@@ -156,12 +169,16 @@ export async function startSession(
 
       const { data: subjMeta } = await supabase
         .from("subjects")
-        .select("id, name, short_name")
+        .select("id, name, short_name, product")
         .eq("id", resolvedSubjectId)
         .maybeSingle();
 
       const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
       const insertTopicId = await resolveStudySessionTopicId(supabase, topicId);
+      const retrySource = resolveEngineSourceFilter(
+        sourceRaw,
+        subjMeta?.product as string | undefined,
+      );
 
       const { data: inserted, error: insErr } = await supabase
         .from("study_sessions")
@@ -172,6 +189,7 @@ export async function startSession(
           mode: dbMode,
           total_questions: questions.length,
           question_ids: explicitIds,
+          source_filter: retrySource,
         })
         .select("id")
         .single();
@@ -207,12 +225,18 @@ export async function startSession(
       }
     }
 
-    let subjectRow: { id: string; name: string; short_name: string; year?: number } | null = null;
+    let subjectRow: {
+      id: string;
+      name: string;
+      short_name: string;
+      year?: number;
+      product?: string;
+    } | null = null;
     let subjectTrack: StudyTrack = "stomatologia";
     if (!isMix) {
       const { data: subject, error: subErr } = await supabase
         .from("subjects")
-        .select("id, name, short_name, track, year")
+        .select("id, name, short_name, track, year, product")
         .eq("id", subjectId)
         .maybeSingle();
 
@@ -313,6 +337,36 @@ export async function startSession(
       );
     }
 
+    const subjectProduct = (subjectRow?.product as string | undefined) ?? null;
+    const sourceEnabled = isSourceFilterUiEnabled(subjectProduct);
+    const source = resolveEngineSourceFilter(sourceRaw, subjectProduct);
+    let pinnedCemIds: string[] = [];
+
+    if (source !== "all" && mode !== "katalog") {
+      const originalPool = pool;
+      pool = await restrictQuestionIdsBySource(
+        supabase,
+        pool,
+        source,
+        subjectProduct,
+      );
+      const thinCem = source === "reference" && isThinCemPool(pool.length);
+      if (thinCem && fillOwnRaw === true && subjectProduct) {
+        pinnedCemIds = [...pool];
+        const ownIds = await restrictQuestionIdsBySource(
+          supabase,
+          originalPool,
+          "own",
+          subjectProduct,
+        );
+        pool = [...new Set([...pool, ...ownIds])];
+      }
+      topicFilter = new Set(pool);
+      if (pool.length === 0) {
+        return { ok: false, message: t("errors.noQuestionsInTopic") };
+      }
+    }
+
     if (mode === "katalog") {
       chosenIds = pool;
       if (focusQuestionId) {
@@ -366,6 +420,7 @@ export async function startSession(
           topicOkForDue,
           topicFilter,
           viewerTrack,
+          { source, product: subjectProduct },
         );
         if (antares.questionIds.length > 0) {
           chosenIds = antares.questionIds;
@@ -428,7 +483,21 @@ export async function startSession(
       chosenIds = chosenIds.slice(0, count);
     }
 
-    const rows = await loadQuestionsByIdsOrdered(supabase, chosenIds, viewerTrack);
+    if (pinnedCemIds.length > 0 && mode !== "katalog") {
+      const pinned = new Set(pinnedCemIds);
+      const rest = chosenIds.filter((id) => !pinned.has(id));
+      chosenIds = [...pinnedCemIds, ...rest];
+      if (!topicFullRerun) {
+        chosenIds = chosenIds.slice(0, Math.max(count, pinnedCemIds.length));
+      }
+    }
+
+    const rows = await loadQuestionsByIdsOrdered(
+      supabase,
+      chosenIds,
+      viewerTrack,
+      { includeSourceMeta: sourceEnabled },
+    );
     if (rows.length === 0) {
       return { ok: false, message: t("errors.loadQuestionsFailed") };
     }
@@ -482,6 +551,7 @@ export async function startSession(
           short_name: subjectRow?.short_name ?? "",
         },
         questions,
+        product: subjectProduct,
       };
     }
 
@@ -514,6 +584,7 @@ export async function startSession(
         total_questions: questions.length,
         question_ids: chosenIds,
         reserve_question_ids: reserveIds,
+        source_filter: source,
       })
       .select("id")
       .single();

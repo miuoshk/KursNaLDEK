@@ -11,9 +11,15 @@ import {
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
 import { cn } from "@/lib/utils";
 
+import type { SourceFilter } from "@/features/session/types";
+import { topicAnsweredForSource } from "@/features/session/lib/sourceFilter";
+
 type TopicCardProps = {
   topic: TopicWithProgress;
   onSelect: (topic: TopicWithProgress) => void;
+  displayedCount?: number;
+  source?: SourceFilter;
+  sourceEnabled?: boolean;
 };
 
 type RelativeDateTranslator = (
@@ -49,16 +55,26 @@ function fillClassForProgress(pct: number) {
   return "bg-success";
 }
 
-export function TopicCard({ topic, onSelect }: TopicCardProps) {
+export function TopicCard({
+  topic,
+  onSelect,
+  displayedCount,
+  source = "all",
+  sourceEnabled = false,
+}: TopicCardProps) {
   const t = useTranslations("subjects");
   const tSession = useTranslations("session");
   const locale = useLocale();
   const [showCard, setShowCard] = useState(false);
 
-  const total = topic.question_count;
-  const answered = topic.answered_count;
+  const total = displayedCount ?? topic.question_count;
+  const answered = Math.min(
+    topicAnsweredForSource(topic, source, sourceEnabled),
+    total,
+  );
   const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
   const hasQuestions = total > 0;
+  const emptyByFilter = sourceEnabled && source !== "all" && total === 0;
   const isGeneratedTopicFlag = isGeneratedTopic(topic.id, topic.name);
   const displayName = formatTopicDisplayName(topic.name);
   const hasKnowledgeCard =
@@ -74,7 +90,7 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
         </h3>
         {!hasQuestions && (
           <span className="font-body text-body-xs text-brand-gold">
-            {t("comingSoon")}
+            {emptyByFilter ? t("noQuestionsForFilter") : t("comingSoon")}
           </span>
         )}
         {isGeneratedTopicFlag && hasQuestions && (
@@ -120,7 +136,9 @@ export function TopicCard({ topic, onSelect }: TopicCardProps) {
       <p className="mt-3 font-body text-body-xs text-muted">
         {hasQuestions
           ? `${answered} / ${total} ${tSession("questionsShort")}`
-          : t("noQuestions")}
+          : emptyByFilter
+            ? t("noQuestionsForFilter")
+            : t("noQuestions")}
       </p>
       <div className="mt-4 flex items-center justify-between gap-2">
         <p className="font-body text-body-xs text-muted">

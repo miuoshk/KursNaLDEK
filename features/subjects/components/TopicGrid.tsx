@@ -8,12 +8,23 @@ import { TopicCard } from "@/features/subjects/components/TopicCard";
 import { TopicSessionConfigDialog } from "@/features/subjects/components/TopicSessionConfigDialog";
 import { formatTopicDisplayName } from "@/features/subjects/lib/topicDisplayName";
 import { KnowledgeCardOverlay } from "@/features/shared/components/KnowledgeCardOverlay";
+import type { SourceFilter } from "@/features/session/types";
+import {
+  sourceCountsFromTotals,
+  topicAnsweredForSource,
+  topicCountForSource,
+  type SourceFilterCounts,
+} from "@/features/session/lib/sourceFilter";
 
 type TopicGridProps = {
   topics: TopicWithProgress[];
   subjectId: string;
   subjectShortName: string;
   initialSessionCount: number;
+  product?: string;
+  source?: SourceFilter;
+  sourceEnabled?: boolean;
+  subjectSourceCounts?: SourceFilterCounts | null;
 };
 
 export function TopicGrid({
@@ -21,6 +32,9 @@ export function TopicGrid({
   subjectId,
   subjectShortName,
   initialSessionCount,
+  product,
+  source = "all",
+  sourceEnabled = false,
 }: TopicGridProps) {
   const t = useTranslations("subjects");
   const [selectedTopic, setSelectedTopic] = useState<TopicWithProgress | null>(null);
@@ -49,6 +63,9 @@ export function TopicGrid({
             <TopicCard
               key={topic.id}
               topic={topic}
+              displayedCount={topicCountForSource(topic, source, sourceEnabled)}
+              source={source}
+              sourceEnabled={sourceEnabled}
               onSelect={(item) => setSelectedTopic(item)}
             />
           ))}
@@ -66,9 +83,28 @@ export function TopicGrid({
         topicName={
           selectedTopic ? formatTopicDisplayName(selectedTopic.name) : ""
         }
-        totalQuestions={selectedTopic?.question_count ?? 0}
-        answeredQuestions={selectedTopic?.answered_count ?? 0}
+        totalQuestions={
+          selectedTopic
+            ? topicCountForSource(selectedTopic, source, sourceEnabled)
+            : 0
+        }
+        topicCounts={
+          selectedTopic && sourceEnabled
+            ? sourceCountsFromTotals(
+                selectedTopic.question_count,
+                selectedTopic.question_count_ref ?? 0,
+              )
+            : null
+        }
+        answeredQuestions={
+          selectedTopic
+            ? topicAnsweredForSource(selectedTopic, source, sourceEnabled)
+            : 0
+        }
         initialSessionCount={initialSessionCount}
+        product={product}
+        source={source}
+        sourceEnabled={sourceEnabled}
         hasKnowledgeCard={
           selectedTopic?.knowledge_card != null &&
           selectedTopic.knowledge_card.trim().length > 0

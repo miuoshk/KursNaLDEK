@@ -5,12 +5,13 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 import {
-  mapRowToSessionQuestion,
-  type QuestionRow,
-} from "@/features/session/lib/mapSessionQuestion";
+  loadQuestionsByIdsOrdered,
+  mapRowsToSessionQuestions,
+} from "@/features/session/server/loadQuestionsByIdsOrdered";
 import { attachAntaresMetaToQuestions } from "@/features/session/lib/antares/questionMeta";
 import { fetchSessionQuestionMeta } from "@/features/session/server/fetchSessionQuestionMeta";
 import type { SessionQuestion } from "@/features/session/types";
+import { isSourceFilterUiEnabled } from "@/features/session/lib/sourceFilter";
 
 const schema = z.string().uuid();
 
@@ -22,6 +23,7 @@ export type LoadSessionQuestionsResult =
       mode: string;
       questions: SessionQuestion[];
       reserveQuestions?: SessionQuestion[];
+      product?: string | null;
     }
   | { ok: false; message: string };
 
@@ -73,7 +75,7 @@ export async function loadSessionQuestions(
 
     const { data: subject, error: subErr } = await supabase
       .from("subjects")
-      .select("id, name, short_name")
+      .select("id, name, short_name, product")
       .eq("id", session.subject_id as string)
       .maybeSingle();
 
@@ -81,22 +83,11 @@ export async function loadSessionQuestions(
       return { ok: false, message: t("errors.subjectNotFound") };
     }
 
-    const { data: rows, error: qe } = await supabase
-      .from("questions")
-      .select(
-        "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics!inner ( name )",
-      )
-      .eq("topics.is_inbox", false)
-      .in("id", ids);
-
-    if (qe) {
-      console.error("[loadSessionQuestions]", qe.message);
-      return { ok: false, message: t("errors.loadQuestionsApiFailed") };
-    }
-
-    const byId = new Map((rows ?? []).map((r) => [r.id as string, r as QuestionRow]));
-    const ordered = ids.map((id) => byId.get(id)).filter(Boolean) as QuestionRow[];
-    let questions: SessionQuestion[] = ordered.map(mapRowToSessionQuestion);
+    const includeSourceMeta = isSourceFilterUiEnabled(subject.product as string);
+    const ordered = await loadQuestionsByIdsOrdered(supabase, ids, undefined, {
+      includeSourceMeta,
+    });
+    let questions: SessionQuestion[] = mapRowsToSessionQuestions(ordered);
     const reserveIds = (session.reserve_question_ids as string[] | null) ?? [];
     let reserveQuestions: SessionQuestion[] | undefined;
 
@@ -108,23 +99,15 @@ export async function loadSessionQuestions(
       questions = attachAntaresMetaToQuestions(questions, meta);
 
       if (reserveIds.length > 0) {
-        const { data: reserveRows, error: rqErr } = await supabase
-          .from("questions")
-          .select(
-            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics!inner ( name )",
-          )
-          .eq("topics.is_inbox", false)
-          .in("id", reserveIds);
-
-        if (!rqErr && reserveRows?.length) {
-          const reserveById = new Map(
-            reserveRows.map((r) => [r.id as string, r as QuestionRow]),
-          );
-          const orderedReserve = reserveIds
-            .map((id) => reserveById.get(id))
-            .filter(Boolean) as QuestionRow[];
+        const orderedReserve = await loadQuestionsByIdsOrdered(
+          supabase,
+          reserveIds,
+          undefined,
+          { includeSourceMeta },
+        );
+        if (orderedReserve.length > 0) {
           reserveQuestions = attachAntaresMetaToQuestions(
-            orderedReserve.map(mapRowToSessionQuestion),
+            mapRowsToSessionQuestions(orderedReserve),
             meta,
           );
         }
@@ -134,10 +117,15 @@ export async function loadSessionQuestions(
     return {
       ok: true,
       sessionId: session.id,
-      subject,
+      subject: {
+        id: subject.id as string,
+        name: subject.name as string,
+        short_name: subject.short_name as string,
+      },
       mode: session.mode as string,
       questions,
       reserveQuestions,
+      product: (subject.product as string | null) ?? null,
     };
   } catch (e) {
     console.error("[loadSessionQuestions]", e);

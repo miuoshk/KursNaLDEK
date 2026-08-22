@@ -9,4 +9,4 @@ export * from "./sessionInsights";
 export * from "./midSessionAdapter";
 export * from "./recalculateTopicMastery";
 export * from "./questionMeta";
-export * from "./reservePool";
+export * from "./cemReserve";

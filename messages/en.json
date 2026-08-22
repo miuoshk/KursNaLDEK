@@ -636,7 +636,10 @@
       "updateProfileFailed": "Could not update profile.",
       "buildSummaryFailed": "Could not build summary.",
       "loadDiscussionFailed": "Could not load discussion."
-    }
+    },
+    "catalogCemSession": "CEM session",
+    "catalogCemSessionAll": "All sessions",
+    "catalogRepeatsOnly": "Repeats only"
   },
   "subjects": {
     "mySubjects": "My subjects",
@@ -733,7 +736,8 @@
     "resetProgressDescription": "Are you sure you want to reset all progress in {subjectName}? This cannot be undone — all answers, stats and mastery will be removed.",
     "resetting": "Resetting…",
     "reset": "Reset",
-    "progressReset": "Progress reset"
+    "progressReset": "Progress reset",
+    "noQuestionsForFilter": "No CEM questions"
   },
   "saved": {
     "title": "Saved questions",
@@ -849,7 +853,11 @@
       "showTimerHint": "Timer in the top bar during an active session",
       "showTopics": "Topics in session",
       "showTopicsHint": "Which sections the current session questions come from",
-      "defaultQuestionCount": "Default number of questions"
+      "defaultQuestionCount": "Default number of questions",
+      "defaultQuestionSource": "Default question source",
+      "sourceAll": "All",
+      "sourceReference": "CEM",
+      "sourceOwn": "Original"
     },
     "notifications": {
       "title": "Notifications",
@@ -1292,5 +1300,27 @@
     "termsAcceptance": "{waiver} I accept the [Terms of service]({regulaminUrl}) and [Privacy and cookies policy]({politykaUrl}).",
     "regulaminLinkText": "Terms of service",
     "privacyLinkText": "Privacy and cookies policy"
+  },
+  "sourceFilter": {
+    "label": "Question source",
+    "all": "All",
+    "own": "Original",
+    "referenceFallback": "From exams",
+    "inheritedFromSubject": "Inherited from the subject page — you can override it here",
+    "badgeOwn": "Original",
+    "badgeRepeat": "Repeated {count}×",
+    "thinCemBar": "This section has only {count} CEM questions",
+    "fillWithOwn": "Fill with original questions",
+    "sessionMix": "Session mix: {cem} CEM + {own} original"
+  },
+  "sourceAccuracy": {
+    "title": "Accuracy by source",
+    "own": "Original",
+    "referenceFallback": "From exams",
+    "ofQuestions": "{correct} of {seen} questions",
+    "poolUsed": "{label} pool: {seen} of {total} questions used",
+    "poolProtected": " · {count} protected",
+    "captionState": "Accuracy on CEM questions predicts the exam result. Accuracy on original questions measures how much you already know. These are two different things, which is why we do not combine them into one number.",
+    "captionCampus": "Accuracy on exam questions predicts the university exam result. Accuracy on original questions measures how much you already know. These are two different things, which is why we do not combine them into one number."
   }
 }

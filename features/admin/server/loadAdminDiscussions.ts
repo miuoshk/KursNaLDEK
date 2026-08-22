@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 export type AdminDiscussionRow = {
   id: string;
@@ -95,7 +96,7 @@ export async function loadAdminDiscussionThread(
   const [{ data: question, error: qErr }, { data: rows, error: dErr }] = await Promise.all([
     supabase
       .from("questions")
-      .select("text, options, topics(name, subjects(name, track, year))")
+      .select("text, options, topics(name, is_inbox, subjects(name, track, year))")
       .eq("id", questionId)
       .maybeSingle(),
     supabase
@@ -113,6 +114,7 @@ export async function loadAdminDiscussionThread(
 
   const topic = question.topics as unknown as {
     name: string | null;
+    is_inbox?: boolean;
     subjects: { name: string | null; track: string | null; year: number | null } | null;
   } | null;
   const subject = topic?.subjects;
@@ -126,7 +128,9 @@ export async function loadAdminDiscussionThread(
     questionText: (question.text as string) ?? "",
     options: normalizeOptions(question.options),
     subjectLabel,
-    topicName: topic?.name ?? null,
+    topicName: topic
+      ? formatAdminTopicName(topic.name, topic.is_inbox)
+      : null,
     comments: (rows ?? []).map((r) => {
       const profile = r.profiles as unknown as { display_name: string | null } | null;
       return {

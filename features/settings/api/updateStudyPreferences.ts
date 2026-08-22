@@ -11,6 +11,7 @@ const schema = z.object({
   default_question_count: z.union([z.literal(10), z.literal(25), z.literal(50)]),
   show_session_timer: z.boolean().optional(),
   show_session_topics: z.boolean().optional(),
+  default_question_source: z.enum(["all", "reference", "own"]).optional(),
 });
 
 function roundGoal(n: number): number {
@@ -47,6 +48,9 @@ export async function updateStudyPreferences(
   }
   if (parsed.data.show_session_topics !== undefined) {
     patch.show_session_topics = parsed.data.show_session_topics;
+  }
+  if (parsed.data.default_question_source !== undefined) {
+    patch.default_question_source = parsed.data.default_question_source;
   }
 
   const { error } = await supabase

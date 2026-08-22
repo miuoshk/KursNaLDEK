@@ -1,4 +1,6 @@
-import { getLocale, getTranslations } from "next-intl/server";
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
 import type { SubjectStats } from "@/features/subjects/server/loadSubjectDashboard";
 
 function formatNextReview(
@@ -63,10 +65,10 @@ function SubjectMasteryRing({ pct }: { pct: number }) {
   );
 }
 
-export async function StatsRow({ stats }: { stats: SubjectStats }) {
-  const t = await getTranslations("subjects");
-  const tCommon = await getTranslations("common");
-  const locale = await getLocale();
+export function StatsRow({ stats }: { stats: SubjectStats }) {
+  const t = useTranslations("subjects");
+  const tCommon = useTranslations("common");
+  const locale = useLocale();
   const accPct = Math.round(stats.accuracy * 100);
   const progressPct =
     stats.totalQuestions > 0

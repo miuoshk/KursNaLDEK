@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
+import { referenceSources, type QuestionSourceValue } from "@/lib/products";
 import {
   getRetrievability,
   type RetrievabilityInput,
@@ -8,6 +9,7 @@ import {
 import { toTopicMasteryUpsert } from "./topicMasteryCacheDb";
 
 type ProgressRow = {
+  question_id: unknown;
   stability: unknown;
   difficulty_rating: unknown;
   elapsed_days: unknown;
@@ -53,7 +55,12 @@ type MasteryTrend = "improving" | "declining" | "stable";
 /**
  * Przelicza wpisy `topic_mastery_cache` dla podanych tematów po zakończonej sesji:
  * pokrycie, trafność, średnia retrievability (FSRS), wynik opanowania, trend z 7 dni,
- * liczba leechy oraz na końcu ranking słabych obszarów (`weakness_rank`).
+ * liczba leechy, ranking słabych obszarów (`weakness_rank`) oraz wycinek
+ * źródeł referencyjnych (`ref_total` / `ref_seen` / `ref_correct`).
+ *
+ * `mastery_score`, `avg_retrievability` i `weakness_rank` liczone są ze
+ * wszystkich pytań tematu. Wycinek referencyjny jest obok, nie zamiast.
+ * `ref_*` liczy się też dla KNNP (nawet gdy filtr źródła nie jest na live).
  *
  * Błędy są logowane do konsoli i nie przerywają działania wywołującego kodu.
  */
@@ -84,6 +91,22 @@ export async function recalculateTopicMastery(
 
     const sessionIds = (userSessions ?? []).map((s) => s.id);
 
+    const productByTopic = new Map<string, string>();
+    const { data: topicProductRows, error: topicProdErr } = await supabase
+      .from("topics")
+      .select("id, subjects!inner(product)")
+      .in("id", uniqueTopics);
+    if (topicProdErr) {
+      throw topicProdErr;
+    }
+    for (const row of topicProductRows ?? []) {
+      const sub = row.subjects as { product?: string } | { product?: string }[] | null;
+      const product = Array.isArray(sub) ? sub[0]?.product : sub?.product;
+      if (typeof product === "string") {
+        productByTopic.set(row.id as string, product);
+      }
+    }
+
     // Tematy liczymy równolegle — każdy to niezależny zestaw zapytań + upsert.
     await Promise.all(
       uniqueTopics.map(async (topicId) => {
@@ -91,16 +114,26 @@ export async function recalculateTopicMastery(
         supabase,
         [topicId],
         track,
+        { includeSource: true },
       );
       const questionIds = topicQuestions.map((q) => q.id);
       const totalQuestions = questionIds.length;
+      const refs = referenceSources(productByTopic.get(topicId));
+      const refIdSet = new Set(
+        topicQuestions
+          .filter((q) =>
+            refs.includes((q.source ?? "") as QuestionSourceValue),
+          )
+          .map((q) => q.id),
+      );
+      const refTotal = refIdSet.size;
 
       let progressRows: ProgressRow[] = [];
       if (questionIds.length > 0) {
         const { data: pr, error: prErr } = await supabase
           .from("user_question_progress")
           .select(
-            "stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech",
+            "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech",
           )
           .eq("user_id", userId)
           .in("question_id", questionIds);
@@ -117,9 +150,17 @@ export async function recalculateTopicMastery(
 
       let totalAnswered = 0;
       let totalCorrect = 0;
+      let refSeen = 0;
+      let refCorrect = 0;
       for (const r of progressRows) {
-        totalAnswered += Number(r.times_answered ?? 0);
-        totalCorrect += Number(r.times_correct ?? 0);
+        const answered = Number(r.times_answered ?? 0);
+        const correct = Number(r.times_correct ?? 0);
+        totalAnswered += answered;
+        totalCorrect += correct;
+        if (refIdSet.has(String(r.question_id ?? ""))) {
+          if (answered > 0) refSeen += 1;
+          refCorrect += correct;
+        }
       }
 
       const accuracy =
@@ -187,6 +228,9 @@ export async function recalculateTopicMastery(
             questions_last_7d: total7,
             leech_count: leechCount,
             weakness_rank: null,
+            ref_total: refTotal,
+            ref_seen: refSeen,
+            ref_correct: refCorrect,
           }),
           { onConflict: "user_id,topic_id" },
         );

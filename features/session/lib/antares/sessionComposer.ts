@@ -1,5 +1,6 @@
-import type { SessionQuestionMeta } from "@/features/session/types";
+import type { SessionQuestionMeta, SourceFilter } from "@/features/session/types";
 import { personalEaseScore } from "@/features/session/lib/antares/questionMeta";
+import { filterUnseenHoldingCemReserve } from "@/features/session/lib/antares/cemReserve";
 
 export type RankedQuestion = {
   questionId: string;
@@ -8,6 +9,8 @@ export type RankedQuestion = {
   isLeech: boolean;
   retrievability?: number;
   antares?: SessionQuestionMeta;
+  source?: string;
+  reserveBucket?: number;
 };
 
 export type SessionComposerInput = {
@@ -25,6 +28,10 @@ export type SessionComposerInput = {
   examDate: Date | null;
   /** Sesja w obrębie tematu — najpierw domknij nieodpowiedziane pytania. */
   prioritizeUnseen?: boolean;
+  protectCemPool?: boolean;
+  source?: SourceFilter;
+  product?: string | null;
+  hasPublishedCemSession?: boolean;
 };
 
 export type ComposedSession = {
@@ -195,7 +202,7 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   const {
     count,
     dueQuestions,
-    unseenQuestions,
+    unseenQuestions: unseenRaw,
     leechQuestions,
     topicMastery,
     accuracyLast20,
@@ -203,9 +210,22 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     questionsToday,
     examDate,
     prioritizeUnseen = false,
+    protectCemPool = true,
+    source = "all",
+    product = null,
+    hasPublishedCemSession = false,
   } = input;
 
   const now = new Date();
+  const unseenQuestions = filterUnseenHoldingCemReserve(unseenRaw, {
+    protectCemPool,
+    product,
+    source,
+    hasPublishedCemSession,
+    topicMastery,
+    examDate,
+    now,
+  });
   const dueCount = dueQuestions.length;
   const unseenCount = unseenQuestions.length;
   const totalPool = dueCount + unseenCount;

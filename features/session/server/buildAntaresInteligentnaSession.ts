@@ -22,11 +22,15 @@ import { calculateDueUrgency } from "@/features/session/lib/antares/urgencyScore
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
 import { shuffle } from "@/features/session/server/questionSelection";
 import { fetchAnsweredQuestionIdsInPool } from "@/features/session/server/sessionQuestionMix";
-import type { SessionQuestionMeta } from "@/features/session/types";
+import type { SessionQuestionMeta, SourceFilter } from "@/features/session/types";
 import {
   buildReserveQuestionIds,
   mergeRankedUnique,
 } from "@/features/session/lib/antares/reservePool";
+import {
+  resolveEngineSourceFilter,
+} from "@/features/session/lib/sourceFilter";
+import { hasCemExams, referenceSources } from "@/lib/products";
 
 const MAX_DUE_CANDIDATES = 800;
 const MAX_UNSEEN_CANDIDATES = 800;
@@ -73,25 +77,64 @@ function rowToRetrievabilityInput(row: {
   };
 }
 
+export type AntaresSessionBuildOpts = {
+  source?: SourceFilter;
+  product?: string | null;
+  protectCemPool?: boolean;
+};
+
+type QuestionMetaRow = {
+  topic_id: string;
+  source?: string;
+  reserve_bucket?: number;
+};
+
 async function fetchQuestionsMeta(
   supabase: SupabaseClient,
   ids: string[],
   track: StudyTrack,
-): Promise<Map<string, { topic_id: string }>> {
-  const out = new Map<string, { topic_id: string }>();
+  source: SourceFilter,
+  product: string | null | undefined,
+): Promise<Map<string, QuestionMetaRow>> {
+  const out = new Map<string, QuestionMetaRow>();
   if (ids.length === 0) return out;
+  const includeReserveCols = hasCemExams(product);
+  const select = includeReserveCols
+    ? "id, topic_id, source, reserve_bucket, topics!inner(is_inbox)"
+    : "id, topic_id, topics!inner(is_inbox)";
+  const resolved = resolveEngineSourceFilter(source, product);
   const chunk = 200;
   for (let i = 0; i < ids.length; i += chunk) {
     const slice = ids.slice(i, i + chunk);
-    const { data: rows } = await supabase
+    // is_inbox = false bez bramki — poczekalnia nigdy nie wchodzi do silnika.
+    // $source to filtr abstrakcyjny: all | reference | own.
+    // reference → q.source IN referenceSources(product); own → q.source = 'own';
+    // all / OSCE → brak warunku (nie pusta pula).
+    let query = supabase
       .from("questions")
-      .select("id, topic_id")
+      .select(select as "id, topic_id, topics!inner(is_inbox)")
       .in("id", slice)
       .eq("is_active", true)
-      .or(questionTracksOrFilter(track));
+      .eq("topics.is_inbox", false);
+    if (resolved === "own") {
+      query = query.eq("source", "own");
+    } else if (resolved === "reference") {
+      query = query.in("source", referenceSources(product));
+    }
+    const { data: rows } = await query.or(questionTracksOrFilter(track));
     for (const r of rows ?? []) {
-      out.set(r.id as string, {
-        topic_id: r.topic_id as string,
+      const row = r as unknown as {
+        id: string;
+        topic_id: string;
+        source?: string;
+        reserve_bucket?: number | null;
+      };
+      out.set(row.id, {
+        topic_id: row.topic_id,
+        source: includeReserveCols ? row.source : undefined,
+        reserve_bucket: includeReserveCols
+          ? Number(row.reserve_bucket ?? 0)
+          : undefined,
       });
     }
   }
@@ -100,7 +143,7 @@ async function fetchQuestionsMeta(
 
 function allowedQuestion(
   qid: string,
-  meta: Map<string, { topic_id: string }>,
+  meta: Map<string, QuestionMetaRow>,
   topicOkForDue: Set<string>,
   topicFilter: Set<string> | undefined,
 ): boolean {
@@ -164,12 +207,17 @@ export async function buildAntaresInteligentnaSession(
   topicOkForDue: Set<string>,
   topicFilter: Set<string> | undefined,
   track: StudyTrack,
+  opts: AntaresSessionBuildOpts = {},
 ): Promise<AntaresSessionBuildResult> {
   const empty: AntaresSessionBuildResult = {
     questionIds: [],
     reserveIds: [],
     metaByQuestionId: new Map(),
   };
+
+  const source = resolveEngineSourceFilter(opts.source, opts.product);
+  const product = opts.product ?? null;
+  const protectCemPool = opts.protectCemPool ?? true;
 
   const poolSet = new Set(pool);
   const now = new Date();
@@ -178,7 +226,7 @@ export async function buildAntaresInteligentnaSession(
   const [{ data: profile }, questionsToday, accuracyLast20] = await Promise.all([
     supabase
       .from("profiles")
-      .select("daily_goal, exam_date")
+      .select("daily_goal, exam_date, protect_cem_pool")
       .eq("id", userId)
       .maybeSingle(),
     countSessionAnswersTodayWarsaw(supabase, userId),
@@ -188,6 +236,21 @@ export async function buildAntaresInteligentnaSession(
   const dailyGoal = Number(profile?.daily_goal ?? 25);
   const examDateRaw = profile?.exam_date as string | null | undefined;
   const examDate = examDateRaw ? new Date(examDateRaw) : null;
+  const protectFromProfile = profile?.protect_cem_pool;
+  const poolProtect =
+    typeof protectFromProfile === "boolean"
+      ? protectFromProfile
+      : protectCemPool;
+
+  let hasPublishedCemSession = false;
+  if (hasCemExams(product)) {
+    const { count: publishedCount } = await supabase
+      .from("cem_sessions")
+      .select("id", { count: "exact", head: true })
+      .eq("product", product)
+      .eq("is_published", true);
+    hasPublishedCemSession = (publishedCount ?? 0) > 0;
+  }
 
   const { data: cacheRows } = await supabase
     .from("topic_mastery_cache")
@@ -235,7 +298,13 @@ export async function buildAntaresInteligentnaSession(
     ]),
   ];
 
-  const meta = await fetchQuestionsMeta(supabase, allCandidateIds, track);
+  const meta = await fetchQuestionsMeta(
+    supabase,
+    allCandidateIds,
+    track,
+    source,
+    product,
+  );
   const rankedById = new Map<string, RankedQuestion>();
 
   const dueRanked: RankedQuestion[] = [];
@@ -277,6 +346,8 @@ export async function buildAntaresInteligentnaSession(
       isLeech: Boolean(row.is_leech),
       retrievability: rVal,
       antares,
+      source: m.source,
+      reserveBucket: m.reserve_bucket,
     };
     dueRanked.push(ranked);
     rankedById.set(qid, ranked);
@@ -324,6 +395,8 @@ export async function buildAntaresInteligentnaSession(
       isLeech: true,
       retrievability: rVal,
       antares,
+      source: m.source,
+      reserveBucket: m.reserve_bucket,
     };
     leechRanked.push(ranked);
     rankedById.set(qid, ranked);
@@ -352,6 +425,8 @@ export async function buildAntaresInteligentnaSession(
       isLeech: false,
       retrievability: 0,
       antares,
+      source: m.source,
+      reserveBucket: m.reserve_bucket,
     };
     unseenRanked.push(ranked);
     rankedById.set(qid, ranked);
@@ -370,6 +445,10 @@ export async function buildAntaresInteligentnaSession(
     questionsToday,
     examDate,
     prioritizeUnseen: topicFilter != null && unseenRanked.length > 0,
+    protectCemPool: poolProtect,
+    source,
+    product,
+    hasPublishedCemSession,
   });
 
   if (composed.questionIds.length === 0) return empty;

@@ -1,11 +1,7 @@
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
 import { BreadcrumbSubjectSegment } from "@/features/subjects/components/BreadcrumbSubjectSegment";
-import { ResetSubjectProgress } from "@/features/subjects/components/ResetSubjectProgress";
-import { SmartSessionCTA } from "@/features/subjects/components/SmartSessionCTA";
-import { StatsRow } from "@/features/subjects/components/StatsRow";
-import { TopicGrid } from "@/features/subjects/components/TopicGrid";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
+import { SubjectDashboardClient } from "@/features/subjects/components/SubjectDashboardClient";
 import { loadSubjectDashboard } from "@/features/subjects/server/loadSubjectDashboard";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
@@ -17,7 +13,6 @@ type PageProps = {
 
 export default async function SubjectDashboardPage({ params }: PageProps) {
   const { subjectId } = await params;
-  const t = await getTranslations("subjects");
   const result = await loadSubjectDashboard(subjectId);
 
   if (!result.ok) {
@@ -31,8 +26,8 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
     );
   }
 
-  const { subject, topics, stats } = result;
-  const availableQuestionCount = stats.totalQuestions;
+  const { subject, topics, stats, sourceCounts, statsBySource, sourceAccuracy } =
+    result;
 
   const supabase = await createClient();
   const {
@@ -40,6 +35,10 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
   } = await supabase.auth.getUser();
   const profile = user ? await getProfileByUserId(user.id) : null;
   const initialSessionCount = getPreferredSessionCount(profile);
+  const profileDefaultSource =
+    typeof profile?.default_question_source === "string"
+      ? profile.default_question_source
+      : null;
 
   return (
     <div>
@@ -48,34 +47,16 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
         {subject.name}
       </h1>
 
-      <div className="mt-8 space-y-8">
-        <StatsRow stats={stats} />
-        {availableQuestionCount > 0 ? (
-          <SmartSessionCTA
-            subjectId={subject.id}
-            availableQuestionCount={availableQuestionCount}
-            initialSessionCount={initialSessionCount}
-            dueCount={stats.dueCount}
-          />
-        ) : (
-          <p className="font-body text-body-sm text-muted">
-            {t("noQuestionsInSubject")}
-          </p>
-        )}
-        <TopicGrid
-          topics={topics}
-          subjectId={subject.id}
-          subjectShortName={subject.short_name}
-          initialSessionCount={initialSessionCount}
-        />
-
-        <div className="flex justify-end pt-4">
-          <ResetSubjectProgress
-            subjectId={subject.id}
-            subjectName={subject.name}
-          />
-        </div>
-      </div>
+      <SubjectDashboardClient
+        subject={subject}
+        topics={topics}
+        stats={stats}
+        sourceCounts={sourceCounts}
+        statsBySource={statsBySource}
+        sourceAccuracy={sourceAccuracy}
+        initialSessionCount={initialSessionCount}
+        profileDefaultSource={profileDefaultSource}
+      />
     </div>
   );
 }

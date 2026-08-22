@@ -9,6 +9,7 @@ import {
   BarChart3,
   ChevronLeft,
   ChevronRight,
+  FileDown,
   FileText,
   History,
   MessageSquare,
@@ -42,6 +43,7 @@ type NavItem = {
 const NAV_ITEMS: readonly NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: BarChart3 },
   { href: "/admin/pytania", label: "Pytania", icon: FileText },
+  { href: "/admin/testy", label: "Testy DOCX", icon: FileDown },
   {
     href: "/admin/bledy",
     label: "Zgłoszenia błędów",

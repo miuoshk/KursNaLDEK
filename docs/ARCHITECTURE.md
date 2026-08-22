@@ -428,6 +428,7 @@ git push origin main
 - Zmienne środowiskowe w Vercel Dashboard:
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - `NEXT_PUBLIC_FEATURE_CEM_SOURCE` — flaga UI źródeł referencyjnych (`true` / `false`). Zmienne `NEXT_PUBLIC_*` są wstrzykiwane przy `next build`, nie czytane w runtime. Zmiana flagi wymaga redeployu na Vercelu. To nie jest kill switch.
   - `SUPABASE_SERVICE_ROLE_KEY`
   - `STRIPE_SECRET_KEY` (+ webhook secret)
 - Migracje bazy: ręcznie przez Supabase Dashboard / CLI (`supabase-schema.sql` + `supabase-migrations-*.sql`)

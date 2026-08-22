@@ -1,5 +1,6 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
+import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 const STATS_PAGE_SIZE = 1000;
 
@@ -101,7 +102,7 @@ export async function loadAdminQuestions(params: {
 
   let query = supabase
     .from("questions")
-    .select("id, text, explanation, is_active, topic_id, topics(name, subject_id)", {
+    .select("id, text, explanation, is_active, topic_id, topics(name, subject_id, is_inbox)", {
       count: "exact",
     });
 
@@ -167,7 +168,11 @@ export async function loadAdminQuestions(params: {
   const statsMap = await fetchQuestionStatsAggregate(qIds);
 
   const mapped: AdminQuestion[] = allRows.map((r) => {
-    const topic = r.topics as unknown as { name: string; subject_id: string } | null;
+    const topic = r.topics as unknown as {
+      name: string;
+      subject_id: string;
+      is_inbox?: boolean;
+    } | null;
     const stats = statsMap.get(r.id as string);
     const answered = stats?.answered ?? 0;
     const correct = stats?.correct ?? 0;
@@ -176,7 +181,7 @@ export async function loadAdminQuestions(params: {
       explanation.length > 140 ? `${explanation.slice(0, 140)}…` : explanation;
     return {
       id: r.id as string,
-      topicName: topic?.name ?? "—",
+      topicName: formatAdminTopicName(topic?.name, topic?.is_inbox),
       topicId: (r.topic_id as string | null) ?? null,
       text: r.text as string,
       explanationSnippet: snippet,

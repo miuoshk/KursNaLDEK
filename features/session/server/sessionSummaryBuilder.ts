@@ -90,7 +90,8 @@ export async function buildSessionSummary(
 
   const { data: qmeta } = await supabase
     .from("questions")
-    .select("id, text, correct_option_id, options, topic_id, topics ( name )")
+    .select("id, text, correct_option_id, options, topic_id, topics!inner ( name )")
+    .eq("topics.is_inbox", false)
     .in("id", qids.length ? qids : ["__none__"]);
 
   const questionTopicIds = (qmeta ?? []).map((q) => q.topic_id as string);

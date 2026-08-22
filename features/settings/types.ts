@@ -20,6 +20,7 @@ export type SettingsProfile = {
   default_question_count: number;
   show_session_timer: boolean;
   show_session_topics: boolean;
+  default_question_source: "all" | "reference" | "own";
   notifications_reviews: boolean;
   notifications_weekly: boolean;
   subscription_status: string | null;

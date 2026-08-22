@@ -131,7 +131,7 @@ export async function loadAdminReports(
   let query = supabase
     .from("error_reports")
     .select(
-      "*, profiles(display_name), questions(text, topics(subject_id, subjects(id, name, track, year)))",
+      "*, profiles(display_name), questions(text, topics(subject_id, is_inbox, subjects(id, name, track, year)))",
     )
     .order(orderColumn, { ascending });
 
@@ -163,6 +163,7 @@ export async function loadAdminReports(
           topics:
             | {
                 subject_id: string;
+                is_inbox?: boolean;
                 subjects:
                   | { id: string; name: string; track: string; year: number }
                   | { id: string; name: string; track: string; year: number }[]
@@ -170,6 +171,7 @@ export async function loadAdminReports(
               }
             | {
                 subject_id: string;
+                is_inbox?: boolean;
                 subjects:
                   | { id: string; name: string; track: string; year: number }
                   | { id: string; name: string; track: string; year: number }[]
@@ -183,11 +185,12 @@ export async function loadAdminReports(
     const subjectNode = Array.isArray(topicNode?.subjects)
       ? topicNode?.subjects[0]
       : topicNode?.subjects;
+    const short = text.length > 80 ? text.slice(0, 80) + "…" : text;
 
     return {
       id: r.id as string,
       questionId: r.question_id as string,
-      questionTextShort: text.length > 80 ? text.slice(0, 80) + "…" : text,
+      questionTextShort: topicNode?.is_inbox ? `[poczekalnia CEM] ${short}` : short,
       category: r.category as string,
       description: r.description as string,
       status: r.status as string,

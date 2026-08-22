@@ -26,6 +26,7 @@ export async function masteryFromUqp(
   const { data: trows } = await supabase
     .from("topics")
     .select("id, name, subject_id")
+    .eq("is_inbox", false)
     .in("id", topicIds);
   const subIds = [...new Set((trows ?? []).map((t) => t.subject_id as string))];
   if (subIds.length === 0) {

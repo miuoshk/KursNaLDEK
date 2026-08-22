@@ -12,7 +12,9 @@ import { StudyTimeChart } from "@/features/statistics/components/StudyTimeChart"
 import { SubjectRadarChart } from "@/features/statistics/components/SubjectRadarChart";
 import { WeakTopicsList } from "@/features/statistics/components/WeakTopicsList";
 import { SessionHistoryList } from "@/features/shared/components/SessionHistoryList";
+import { SourceAccuracyCard } from "@/features/shared/components/SourceAccuracyCard";
 import type { StatisticsPayload, TimeRangeKey } from "@/features/statistics/types";
+import { isSourceFilterUiEnabled } from "@/features/session/lib/sourceFilter";
 import { cn } from "@/lib/utils";
 
 const RANGES: TimeRangeKey[] = ["7", "30", "90", "all"];
@@ -91,6 +93,14 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
           </div>
         </div>
       </div>
+
+      {data.sourceAccuracy &&
+      isSourceFilterUiEnabled(data.sourceAccuracy.product) ? (
+        <SourceAccuracyCard
+          product={data.sourceAccuracy.product}
+          data={data.sourceAccuracy}
+        />
+      ) : null}
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="rounded-card bg-card p-6">

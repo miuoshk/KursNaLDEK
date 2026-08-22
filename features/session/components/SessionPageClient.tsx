@@ -18,7 +18,8 @@ import {
   DEFAULT_SESSION_COUNT,
 } from "@/features/session/lib/sessionCount";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
-import type { KnnpSessionMode, SessionQuestion } from "@/features/session/types";
+import type { KnnpSessionMode, SessionQuestion, SourceFilter } from "@/features/session/types";
+import { parseSourceFilter } from "@/features/session/lib/sourceFilter";
 
 const CACHE_PREFIX = "kurs-session-";
 
@@ -37,6 +38,7 @@ type Bootstrap =
       reserveQuestions: SessionQuestion[];
       /** Deep-link do katalogu (param `q`) — trzymany w stanie, nie tylko w URL. */
       initialQuestionId?: string;
+      product?: string | null;
     };
 
 function parseMode(v: string | null): KnnpSessionMode {
@@ -48,6 +50,10 @@ function parseCount(v: string | null): number {
   const n = Number(v);
   if (Number.isFinite(n) && n >= 1) return clampSessionCount(n);
   return DEFAULT_SESSION_COUNT;
+}
+
+function parseSourceParam(v: string | null): SourceFilter | undefined {
+  return parseSourceFilter(v) ?? undefined;
 }
 
 export function SessionPageClient({ sessionId }: { sessionId: string }) {
@@ -96,6 +102,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           focusQuestionId:
             mode === "katalog" ? focusQuestionId : undefined,
           focus: sessionFocus,
+          source: parseSourceParam(searchParams.get("src")),
+          fillOwn: searchParams.get("fillown") === "1" ? true : undefined,
         });
         if (cancelled) return;
         if (!res.ok) {
@@ -117,6 +125,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             questions: res.questions,
             reserveQuestions: [],
             initialQuestionId: focusQuestionId,
+            product: res.product,
           });
           return;
         }
@@ -131,6 +140,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             topicId: topic,
             questions: res.questions,
             reserveQuestions: res.reserveQuestions ?? [],
+            product: res.product,
           }),
         );
         router.replace(`/sesja/${res.sessionId}`);
@@ -149,6 +159,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             topicId?: string;
             questions: SessionQuestion[];
             reserveQuestions?: SessionQuestion[];
+            product?: string | null;
           };
           sessionStorage.removeItem(cacheKey);
           if (!cancelled) {
@@ -166,6 +177,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
                 ),
               questions: parsed.questions,
               reserveQuestions: parsed.reserveQuestions ?? [],
+              product: parsed.product,
             });
           }
           return;
@@ -199,6 +211,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         ),
         questions: loaded.questions,
         reserveQuestions: loaded.reserveQuestions ?? [],
+        product: loaded.product,
       });
     }
 
@@ -233,6 +246,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         subjectName={boot.subjectName}
         questions={boot.questions}
         initialQuestionId={boot.initialQuestionId}
+        product={boot.product}
+        initialSource={parseSourceParam(searchParams.get("src"))}
       />
     );
   }
@@ -247,6 +262,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       topicId={boot.topicId}
       questions={boot.questions}
       reserveQuestions={boot.reserveQuestions}
+      product={boot.product}
     />
   );
 }

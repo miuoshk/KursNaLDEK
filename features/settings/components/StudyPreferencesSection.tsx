@@ -9,6 +9,9 @@ import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { useToast } from "@/features/shared/components/ToastProvider";
 import { Toggle } from "@/features/shared/components/Toggle";
+import { FEATURES } from "@/lib/featureFlags";
+import { isSourceFilterLive } from "@/lib/products";
+import type { SourceFilter } from "@/features/session/types";
 
 const selectClass =
   "w-full appearance-none rounded-btn border border-border bg-background px-4 py-3 pr-10 font-body text-primary transition-colors focus:border-brand-gold focus:outline-none";
@@ -29,6 +32,11 @@ export function StudyPreferencesSection({ profile }: Props) {
   const [count, setCount] = useState<10 | 25 | 50>(normalizeCount(profile.default_question_count));
   const [showTimer, setShowTimer] = useState(profile.show_session_timer);
   const [showTopics, setShowTopics] = useState(profile.show_session_topics);
+  const [questionSource, setQuestionSource] = useState<SourceFilter>(
+    profile.default_question_source,
+  );
+  const product = profile.current_product;
+  const showSourcePref = FEATURES.cemSource && isSourceFilterLive(product);
   const [savedFlash, setSavedFlash] = useState(false);
   const skip = useRef(true);
 
@@ -44,6 +52,7 @@ export function StudyPreferencesSection({ profile }: Props) {
         default_question_count: count,
         show_session_timer: showTimer,
         show_session_topics: showTopics,
+        default_question_source: showSourcePref ? questionSource : undefined,
       });
       if (res.ok) {
         setSavedFlash(true);
@@ -51,7 +60,7 @@ export function StudyPreferencesSection({ profile }: Props) {
       } else toast(res.message, "error");
     }, 500);
     return () => clearTimeout(timer);
-  }, [goal, mode, count, showTimer, showTopics, toast]);
+  }, [goal, mode, count, showTimer, showTopics, questionSource, showSourcePref, toast]);
 
   function bump(delta: number) {
     setGoal((g) => Math.min(100, Math.max(5, Math.round((g + delta) / 5) * 5)));
@@ -112,6 +121,29 @@ export function StudyPreferencesSection({ profile }: Props) {
             />
           </div>
         </div>
+        {showSourcePref ? (
+          <div>
+            <label htmlFor="qs" className="font-body text-body-sm text-secondary">
+              {t("study.defaultQuestionSource")}
+            </label>
+            <div className="relative mt-1.5">
+              <select
+                id="qs"
+                value={questionSource}
+                onChange={(e) => setQuestionSource(e.target.value as SourceFilter)}
+                className={selectClass}
+              >
+                <option value="all">{t("study.sourceAll")}</option>
+                <option value="reference">{t("study.sourceReference")}</option>
+                <option value="own">{t("study.sourceOwn")}</option>
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted"
+                aria-hidden
+              />
+            </div>
+          </div>
+        ) : null}
         <ul className="space-y-5 border-t border-border pt-6">
           <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>

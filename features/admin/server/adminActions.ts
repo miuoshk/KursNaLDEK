@@ -14,6 +14,7 @@ import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuesti
 import { loadAdminTopicCatalog } from "@/features/admin/server/loadAdminTopicCatalog";
 import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
 import { formatQuestionCopyText, formatQuestionCopyWithReportText } from "@/features/admin/lib/formatQuestionCopyText";
+import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -387,11 +388,14 @@ async function loadQuestionCopyPayload(questionId: string) {
   if (question.topicId) {
     const { data: topicRow } = await supabase
       .from("topics")
-      .select("name, subjects(name)")
+      .select("name, is_inbox, subjects(name)")
       .eq("id", question.topicId)
       .maybeSingle();
 
-    topicName = (topicRow?.name as string | null)?.trim() || "—";
+    topicName = formatAdminTopicName(
+      topicRow?.name as string | null,
+      topicRow?.is_inbox as boolean | null,
+    );
     const subjectNode = topicRow?.subjects as
       | { name: string }
       | { name: string }[]

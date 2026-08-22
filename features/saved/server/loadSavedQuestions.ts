@@ -29,9 +29,10 @@ export async function loadSavedQuestions(): Promise<SavedQuestionItem[]> {
   const { data, error } = await supabase
     .from("saved_questions")
     .select(
-      "id, created_at, question_id, questions(text, topics(name, subjects(id, name, short_name, year, track)))",
+      "id, created_at, question_id, questions!inner(text, topics!inner(name, is_inbox, subjects(id, name, short_name, year, track)))",
     )
     .eq("user_id", user.id)
+    .eq("questions.topics.is_inbox", false)
     .order("created_at", { ascending: false })
     .limit(200);
 

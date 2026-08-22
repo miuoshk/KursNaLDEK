@@ -24,12 +24,22 @@ import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
 import { RichTextContent } from "@/features/shared/components/RichTextContent";
+import { QuestionSourceBadge } from "@/features/shared/components/QuestionSourceBadge";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import { scrollChildIntoCenter } from "@/features/session/lib/scrollChildIntoCenter";
 import type { SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
+import { FEATURES } from "@/lib/featureFlags";
+import { hasCemExams, isSourceFilterLive } from "@/lib/products";
+import { SourceFilterBar } from "@/features/shared/components/SourceFilter";
+import {
+  parseSourceFilterOrAll,
+  questionMatchesSource,
+  sourceCountsFromTotals,
+  type SourceFilter,
+} from "@/features/session/lib/sourceFilter";
 
 type CatalogMode = "nauka" | "egzamin";
 const MODE_STORAGE_KEY = "catalog-mode";
@@ -43,6 +53,8 @@ type CatalogViewProps = {
    * Opcjonalny ID pytania do otwarcia od razu (np. deep-link z zakładki "Zapisane").
    */
   initialQuestionId?: string;
+  product?: string | null;
+  initialSource?: SourceFilter;
 };
 
 function normalizeSearchText(value: string): string {
@@ -126,6 +138,8 @@ export function CatalogView({
   subjectName,
   questions,
   initialQuestionId,
+  product,
+  initialSource = "all",
 }: CatalogViewProps) {
   const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
@@ -137,6 +151,17 @@ export function CatalogView({
 
   const [index, setIndex] = useState(() => initialIndex);
   const [searchValue, setSearchValue] = useState("");
+  const [catalogSource, setCatalogSource] = useState(() =>
+    parseSourceFilterOrAll(initialSource),
+  );
+  const [cemSession, setCemSession] = useState<string>("all");
+  const [repeatsOnly, setRepeatsOnly] = useState(false);
+
+  const sourceUi =
+    Boolean(product) &&
+    FEATURES.cemSource &&
+    isSourceFilterLive(product);
+  const examsUi = sourceUi && hasCemExams(product);
 
   useEffect(() => {
     if (!initialQuestionId) return;
@@ -167,21 +192,71 @@ export function CatalogView({
     }
   }, []);
 
+  const sourceCounts = useMemo(() => {
+    if (!sourceUi) return null;
+    let all = 0;
+    let reference = 0;
+    let own = 0;
+    for (const question of questions) {
+      all += 1;
+      if (question.source === "own") own += 1;
+      else if (question.source === "cem" || question.source === "uczelnia") {
+        reference += 1;
+      }
+    }
+    return sourceCountsFromTotals(all, reference);
+  }, [questions, sourceUi]);
+
+  const cemSessions = useMemo(() => {
+    if (!examsUi) return [] as Array<{ id: string; label: string }>;
+    const map = new Map<string, string>();
+    for (const question of questions) {
+      if (!question.firstSeenSession) continue;
+      map.set(
+        question.firstSeenSession,
+        question.cemSessionLabel?.trim() || question.firstSeenSession,
+      );
+    }
+    return [...map.entries()]
+      .map(([id, label]) => ({ id, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, "pl"));
+  }, [examsUi, questions]);
+
   const normalizedSearch = normalizeSearchText(searchValue);
 
   const filteredIndexes = useMemo(() => {
-    if (!normalizedSearch) {
-      return questions.map((_, questionIndex) => questionIndex);
-    }
     return questions
       .map((question, questionIndex) => {
+        if (
+          sourceUi &&
+          product &&
+          !questionMatchesSource(question.source, catalogSource, product)
+        ) {
+          return -1;
+        }
+        if (examsUi && cemSession !== "all" && question.firstSeenSession !== cemSession) {
+          return -1;
+        }
+        if (examsUi && repeatsOnly && !((question.repeatCount ?? 0) > 1)) {
+          return -1;
+        }
+        if (!normalizedSearch) return questionIndex;
         const searchable = normalizeSearchText(
           `${question.text} ${question.options.map((opt) => opt.text).join(" ")}`,
         );
         return searchable.includes(normalizedSearch) ? questionIndex : -1;
       })
       .filter((questionIndex) => questionIndex >= 0);
-  }, [normalizedSearch, questions]);
+  }, [
+    catalogSource,
+    cemSession,
+    examsUi,
+    normalizedSearch,
+    product,
+    questions,
+    repeatsOnly,
+    sourceUi,
+  ]);
 
   const navigationIndexes = filteredIndexes;
   const activeIndex = navigationIndexes.includes(index)
@@ -320,6 +395,43 @@ export function CatalogView({
             </button>
           ) : null}
         </label>
+        {sourceUi && product && sourceCounts ? (
+          <div className="mt-3 space-y-2">
+            <SourceFilterBar
+              product={product}
+              value={catalogSource}
+              onChange={setCatalogSource}
+              counts={sourceCounts}
+            />
+            {examsUi ? (
+              <div className="flex flex-wrap items-center gap-3">
+                <label className="flex min-w-[180px] flex-1 items-center gap-2 font-body text-body-xs text-secondary">
+                  <span className="shrink-0">{t("catalogCemSession")}</span>
+                  <select
+                    className="h-8 flex-1 rounded-btn border border-border bg-card px-2 text-primary"
+                    value={cemSession}
+                    onChange={(e) => setCemSession(e.target.value)}
+                  >
+                    <option value="all">{t("catalogCemSessionAll")}</option>
+                    {cemSessions.map((session) => (
+                      <option key={session.id} value={session.id}>
+                        {session.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="inline-flex items-center gap-2 font-body text-body-xs text-secondary">
+                  <input
+                    type="checkbox"
+                    checked={repeatsOnly}
+                    onChange={(e) => setRepeatsOnly(e.target.checked)}
+                  />
+                  {t("catalogRepeatsOnly")}
+                </label>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </div>
 
       <div className="relative flex min-h-0 min-w-0 flex-1 flex-col lg:flex-row">
@@ -337,6 +449,13 @@ export function CatalogView({
                 <p className="font-body text-body-xs uppercase tracking-widest text-muted">
                   {q.topicName}
                 </p>
+                {sourceUi ? (
+                  <QuestionSourceBadge
+                    question={q}
+                    product={product}
+                    className="mt-2"
+                  />
+                ) : null}
                 {q.imageUrl ? (
                   <div className="relative mt-4 h-56 w-full overflow-hidden rounded-card border border-border bg-background/50 sm:h-64">
                     {/* eslint-disable-next-line @next/next/no-img-element -- zewnętrzne URL (Supabase Storage) */}

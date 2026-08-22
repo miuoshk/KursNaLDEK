@@ -9,6 +9,7 @@ import {
   BarChart3,
   ChevronRight,
   ExternalLink,
+  FileDown,
   FileText,
   History,
   Menu,
@@ -33,6 +34,7 @@ type Crumb = {
 
 const SECTION_META: Record<string, { label: string; icon: LucideIcon }> = {
   pytania: { label: "Pytania", icon: FileText },
+  testy: { label: "Testy DOCX", icon: FileDown },
   bledy: { label: "Zgłoszenia błędów", icon: AlertTriangle },
   dyskusje: { label: "Dyskusje", icon: MessageSquare },
   uzytkownicy: { label: "Użytkownicy", icon: Users },

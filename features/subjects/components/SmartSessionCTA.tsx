@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Infinity as InfinityIcon } from "lucide-react";
 import {
@@ -12,6 +12,16 @@ import {
 } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
 
+import type { SourceFilter } from "@/features/session/types";
+import type { SourceFilterCounts } from "@/features/session/lib/sourceFilter";
+import {
+  isThinCemPool,
+  sessionMixCounts,
+} from "@/features/session/lib/questionSourceBadge";
+import { FEATURES } from "@/lib/featureFlags";
+import { isSourceFilterLive } from "@/lib/products";
+import { Toggle } from "@/features/shared/components/Toggle";
+
 const PRESETS = SESSION_COUNT_PRESETS;
 type PresetValue = (typeof PRESETS)[number] | "all" | null;
 
@@ -20,6 +30,9 @@ type SmartSessionCTAProps = {
   availableQuestionCount: number;
   initialSessionCount: number;
   dueCount?: number;
+  product?: string;
+  source?: SourceFilter;
+  sourceCounts?: SourceFilterCounts | null;
 };
 
 export function SmartSessionCTA({
@@ -27,11 +40,28 @@ export function SmartSessionCTA({
   availableQuestionCount,
   initialSessionCount,
   dueCount = 0,
+  product,
+  source,
+  sourceCounts = null,
 }: SmartSessionCTAProps) {
   const t = useTranslations("subjects");
   const tSession = useTranslations("session");
+  const tFilter = useTranslations("sourceFilter");
   const { questionsShort, allQuestionsAriaLabel } = getSessionCountLabels(tSession);
-  const maxQ = Math.max(1, availableQuestionCount);
+  const sourceLive =
+    Boolean(product) &&
+    FEATURES.cemSource &&
+    isSourceFilterLive(product);
+  const cemCount = sourceCounts?.reference ?? 0;
+  const ownCount = sourceCounts?.own ?? 0;
+  const thinCem = sourceLive && source === "reference" && isThinCemPool(cemCount);
+  const [fillOwn, setFillOwn] = useState(true);
+  const fillActive = thinCem && fillOwn;
+  const poolTotal = fillActive
+    ? cemCount + ownCount
+    : availableQuestionCount;
+  const canStart = poolTotal > 0;
+  const maxQ = Math.max(1, poolTotal);
   const smartInitial = sessionCountToPickerState(
     Math.min(initialSessionCount, maxQ),
   );
@@ -43,6 +73,17 @@ export function SmartSessionCTA({
   const [smartCustom, setSmartCustom] = useState(smartInitial.custom);
   const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
   const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
+
+  useEffect(() => {
+    if (typeof smartPreset === "number" && smartPreset > poolTotal) {
+      setSmartPreset("all");
+      setSmartCustom("");
+    }
+    if (typeof reviewPreset === "number" && reviewPreset > poolTotal) {
+      setReviewPreset("all");
+      setReviewCustom("");
+    }
+  }, [poolTotal, smartPreset, reviewPreset]);
 
   const smartCount = resolveSessionPickerCount(
     smartPreset,
@@ -57,14 +98,25 @@ export function SmartSessionCTA({
     Math.min(initialSessionCount, maxQ),
   );
 
+  const srcParam =
+    product &&
+    source &&
+    source !== "all" &&
+    FEATURES.cemSource &&
+    isSourceFilterLive(product)
+      ? source
+      : undefined;
+
   const smartHref = useMemo(() => {
     const q = new URLSearchParams({
       subject: subjectId,
       mode: "inteligentna",
       count: String(smartCount),
     });
+    if (srcParam) q.set("src", srcParam);
+    if (fillActive) q.set("fillown", "1");
     return `/sesja/new?${q.toString()}`;
-  }, [subjectId, smartCount]);
+  }, [subjectId, smartCount, srcParam, fillActive]);
 
   const reviewHref = useMemo(() => {
     const q = new URLSearchParams({
@@ -72,8 +124,10 @@ export function SmartSessionCTA({
       mode: "przeglad",
       count: String(reviewCount),
     });
+    if (srcParam) q.set("src", srcParam);
+    if (fillActive) q.set("fillown", "1");
     return `/sesja/new?${q.toString()}`;
-  }, [subjectId, reviewCount]);
+  }, [subjectId, reviewCount, srcParam, fillActive]);
 
   const dueReviewHref = useMemo(() => {
     const q = new URLSearchParams({
@@ -82,8 +136,9 @@ export function SmartSessionCTA({
       count: String(Math.max(1, Math.min(smartCount, dueCount))),
       focus: "due",
     });
+    if (srcParam) q.set("src", srcParam);
     return `/sesja/new?${q.toString()}`;
-  }, [subjectId, dueCount, smartCount]);
+  }, [subjectId, dueCount, smartCount, srcParam]);
 
   const catalogHref = useMemo(() => {
     const q = new URLSearchParams({
@@ -91,8 +146,12 @@ export function SmartSessionCTA({
       mode: "katalog",
       count: "5000",
     });
+    if (srcParam) q.set("src", srcParam);
     return `/sesja/new?${q.toString()}`;
-  }, [subjectId]);
+  }, [subjectId, srcParam]);
+
+  const smartMix = sessionMixCounts(smartCount, cemCount, ownCount, fillActive);
+  const reviewMix = sessionMixCounts(reviewCount, cemCount, ownCount, fillActive);
 
   return (
     <div className="space-y-5">
@@ -108,13 +167,37 @@ export function SmartSessionCTA({
               {t("smartSessionDesc")}
             </p>
           </div>
-          <Link
-            href={smartHref}
-            className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)] sm:w-auto"
-          >
-            {t("startSession")}
-          </Link>
+          {canStart ? (
+            <Link
+              href={smartHref}
+              className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)] sm:w-auto"
+            >
+              {t("startSession")}
+            </Link>
+          ) : (
+            <span className="inline-flex w-full shrink-0 cursor-not-allowed items-center justify-center rounded-lg bg-brand-sage/40 px-6 py-3 font-body font-semibold text-white/70 sm:w-auto">
+              {t("noQuestionsForFilter")}
+            </span>
+          )}
         </div>
+
+        {thinCem ? (
+          <div className="mt-4 rounded-[10px] border border-brand-gold/25 bg-brand-gold/[0.07] px-3.5 py-3">
+            <p className="font-body text-body-sm text-primary">
+              {tFilter("thinCemBar", { count: cemCount })}
+            </p>
+            <div className="mt-2.5 flex items-center justify-between gap-3">
+              <p id="cta-fill-own-label" className="font-body text-body-xs text-secondary">
+                {tFilter("fillWithOwn")}
+              </p>
+              <Toggle
+                checked={fillOwn}
+                onCheckedChange={setFillOwn}
+                aria-labelledby="cta-fill-own-label"
+              />
+            </div>
+          </div>
+        ) : null}
 
         {dueCount > 0 ? (
           <div className="mt-4 flex flex-col gap-3 rounded-lg border border-brand-gold/20 bg-brand-gold/[0.04] p-4 sm:flex-row sm:items-center sm:justify-between">
@@ -154,9 +237,15 @@ export function SmartSessionCTA({
             questionsShort={questionsShort}
             allQuestionsAriaLabel={allQuestionsAriaLabel}
           />
-          <p className="mt-2 font-body text-body-xs text-muted">
-            {t("availableQuestions", { count: availableQuestionCount })}
-          </p>
+          {thinCem && fillOwn ? (
+            <p className="mt-2 font-body text-body-xs text-muted">
+              {tFilter("sessionMix", { cem: smartMix.cem, own: smartMix.own })}
+            </p>
+          ) : (
+            <p className="mt-2 font-body text-body-xs text-muted">
+              {t("availableQuestions", { count: poolTotal })}
+            </p>
+          )}
         </div>
       </div>
 
@@ -184,13 +273,24 @@ export function SmartSessionCTA({
               allQuestionsAriaLabel={allQuestionsAriaLabel}
             />
           </div>
+          {thinCem && fillOwn ? (
+            <p className="mt-2 font-body text-body-xs text-muted">
+              {tFilter("sessionMix", { cem: reviewMix.cem, own: reviewMix.own })}
+            </p>
+          ) : null}
 
-          <Link
-            href={reviewHref}
-            className="mt-4 inline-flex items-center self-start rounded-lg bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_12px_rgba(54,115,104,0.35)]"
-          >
-            {t("start")}
-          </Link>
+          {canStart ? (
+            <Link
+              href={reviewHref}
+              className="mt-4 inline-flex items-center self-start rounded-lg bg-brand-sage px-4 py-2 font-body text-body-sm font-medium text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_12px_rgba(54,115,104,0.35)]"
+            >
+              {t("start")}
+            </Link>
+          ) : (
+            <span className="mt-4 inline-flex cursor-not-allowed items-center self-start rounded-lg bg-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-white/70">
+              {t("noQuestionsForFilter")}
+            </span>
+          )}
         </div>
 
         <div className="flex flex-col rounded-card border border-border bg-card p-5">
@@ -239,25 +339,34 @@ function PresetPicker({
 
   return (
     <div className="mt-2 flex flex-wrap items-center gap-1.5">
-      {PRESETS.map((n) => (
-        <button
-          key={n}
-          type="button"
-          onClick={() => {
-            onPresetChange(n);
-            onCustomChange("");
-          }}
-          className={cn(
-            pillClass,
-            "cursor-pointer",
-            preset === n
-              ? "border-brand-sage bg-brand-sage font-semibold text-white"
-              : "border-border bg-transparent text-secondary hover:text-primary",
-          )}
-        >
-          {n}
-        </button>
-      ))}
+      {PRESETS.map((n) => {
+        const unavailable = n > maxQ;
+        return (
+          <button
+            key={n}
+            type="button"
+            disabled={unavailable}
+            onClick={() => {
+              if (unavailable) return;
+              onPresetChange(n);
+              onCustomChange("");
+            }}
+            className={cn(
+              pillClass,
+              unavailable
+                ? "cursor-not-allowed border-border/60 text-muted line-through opacity-40"
+                : "cursor-pointer",
+              !unavailable && preset === n
+                ? "border-brand-sage bg-brand-sage font-semibold text-white"
+                : !unavailable
+                  ? "border-border bg-transparent text-secondary hover:text-primary"
+                  : null,
+            )}
+          >
+            {n}
+          </button>
+        );
+      })}
       <button
         type="button"
         onClick={() => {

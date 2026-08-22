@@ -2,7 +2,7 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import {
   BookOpen,
@@ -20,6 +20,19 @@ import {
   sessionCountToPickerState,
 } from "@/features/session/lib/sessionCount";
 import { cn } from "@/lib/utils";
+import type { SourceFilter } from "@/features/session/types";
+import {
+  countForSource,
+  type SourceFilterCounts,
+} from "@/features/session/lib/sourceFilter";
+import {
+  isThinCemPool,
+  sessionMixCounts,
+} from "@/features/session/lib/questionSourceBadge";
+import { SourceFilterBar } from "@/features/shared/components/SourceFilter";
+import { Toggle } from "@/features/shared/components/Toggle";
+import { FEATURES } from "@/lib/featureFlags";
+import { isSourceFilterLive } from "@/lib/products";
 
 type TopicSessionConfigDialogProps = {
   open: boolean;
@@ -33,6 +46,10 @@ type TopicSessionConfigDialogProps = {
   initialSessionCount: number;
   hasKnowledgeCard?: boolean;
   onOpenKnowledgeCard?: () => void;
+  product?: string;
+  source?: SourceFilter;
+  sourceEnabled?: boolean;
+  topicCounts?: SourceFilterCounts | null;
 };
 
 const PRESETS = SESSION_COUNT_PRESETS;
@@ -43,6 +60,8 @@ function buildHref(
   topicId: string,
   mode: string,
   count: number,
+  source?: SourceFilter,
+  fillOwn?: boolean,
 ) {
   const q = new URLSearchParams({
     subject: subjectId,
@@ -50,6 +69,8 @@ function buildHref(
     mode,
     count: String(count),
   });
+  if (source && source !== "all") q.set("src", source);
+  if (fillOwn) q.set("fillown", "1");
   return `/sesja/new?${q.toString()}`;
 }
 
@@ -65,20 +86,69 @@ export function TopicSessionConfigDialog({
   initialSessionCount,
   hasKnowledgeCard = false,
   onOpenKnowledgeCard,
+  product,
+  source: inheritedSource = "all",
+  sourceEnabled = false,
+  topicCounts = null,
 }: TopicSessionConfigDialogProps) {
   const t = useTranslations("subjects");
   const tSession = useTranslations("session");
   const tCommon = useTranslations("common");
+  const tFilter = useTranslations("sourceFilter");
   const { questionsShort, allQuestionsAriaLabel } = getSessionCountLabels(tSession);
-  const maxQ = Math.max(1, totalQuestions);
+  const showSource =
+    Boolean(product) &&
+    sourceEnabled &&
+    FEATURES.cemSource &&
+    isSourceFilterLive(product);
+
+  const [smartPreset, setSmartPreset] = useState<PresetValue>(null);
+  const [smartCustom, setSmartCustom] = useState("");
+  const [reviewPreset, setReviewPreset] = useState<PresetValue>(null);
+  const [reviewCustom, setReviewCustom] = useState("");
+  const [localSource, setLocalSource] = useState<SourceFilter>(inheritedSource);
+  const [fillOwn, setFillOwn] = useState(true);
+
+  useEffect(() => {
+    setLocalSource(inheritedSource);
+    setFillOwn(true);
+  }, [inheritedSource, open]);
+
+  const activeSource = showSource ? localSource : "all";
+  const cemCount = topicCounts?.reference ?? 0;
+  const ownCount = topicCounts?.own ?? 0;
+  const filteredTotal =
+    showSource && topicCounts
+      ? countForSource(topicCounts, localSource)
+      : totalQuestions;
+  const thinCem = showSource && activeSource === "reference" && isThinCemPool(cemCount);
+  const fillActive = thinCem && fillOwn;
+  const poolTotal = fillActive
+    ? cemCount + ownCount
+    : filteredTotal;
+  const maxQ = Math.max(1, poolTotal);
+  const canStart = poolTotal > 0;
   const countFallback = Math.min(initialSessionCount, maxQ);
   const smartInitial = sessionCountToPickerState(countFallback);
   const reviewInitial = sessionCountToPickerState(countFallback);
 
-  const [smartPreset, setSmartPreset] = useState<PresetValue>(smartInitial.preset);
-  const [smartCustom, setSmartCustom] = useState(smartInitial.custom);
-  const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
-  const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
+  useEffect(() => {
+    setSmartPreset(smartInitial.preset);
+    setSmartCustom(smartInitial.custom);
+    setReviewPreset(reviewInitial.preset);
+    setReviewCustom(reviewInitial.custom);
+  }, [topicId, poolTotal, open]);
+
+  useEffect(() => {
+    if (typeof smartPreset === "number" && smartPreset > poolTotal) {
+      setSmartPreset("all");
+      setSmartCustom("");
+    }
+    if (typeof reviewPreset === "number" && reviewPreset > poolTotal) {
+      setReviewPreset("all");
+      setReviewCustom("");
+    }
+  }, [poolTotal, smartPreset, reviewPreset]);
 
   const progressPct =
     totalQuestions > 0
@@ -98,9 +168,36 @@ export function TopicSessionConfigDialog({
     countFallback,
   );
 
-  const smartHref = buildHref(subjectId, topicId, "inteligentna", smartFinalCount);
-  const reviewHref = buildHref(subjectId, topicId, "przeglad", reviewFinalCount);
-  const catalogHref = buildHref(subjectId, topicId, "katalog", 5000);
+  const smartMix = sessionMixCounts(
+    smartFinalCount,
+    cemCount,
+    ownCount,
+    fillActive,
+  );
+  const reviewMix = sessionMixCounts(
+    reviewFinalCount,
+    cemCount,
+    ownCount,
+    fillActive,
+  );
+
+  const smartHref = buildHref(
+    subjectId,
+    topicId,
+    "inteligentna",
+    smartFinalCount,
+    activeSource,
+    fillActive,
+  );
+  const reviewHref = buildHref(
+    subjectId,
+    topicId,
+    "przeglad",
+    reviewFinalCount,
+    activeSource,
+    fillActive,
+  );
+  const catalogHref = buildHref(subjectId, topicId, "katalog", 5000, activeSource);
 
   const altCardClass =
     "flex flex-col rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
@@ -140,6 +237,33 @@ export function TopicSessionConfigDialog({
             <p className="mt-0.5 font-body text-body-sm text-secondary">
               {t("chooseStudyMode")}
             </p>
+            {showSource && product && topicCounts ? (
+              <SourceFilterBar
+                className="mt-3"
+                product={product}
+                value={localSource}
+                onChange={setLocalSource}
+                counts={topicCounts}
+                caption={tFilter("inheritedFromSubject")}
+              />
+            ) : null}
+            {thinCem ? (
+              <div className="mt-3 rounded-[10px] border border-brand-gold/25 bg-brand-gold/[0.07] px-3.5 py-3">
+                <p className="font-body text-body-sm text-primary">
+                  {tFilter("thinCemBar", { count: cemCount })}
+                </p>
+                <div className="mt-2.5 flex items-center justify-between gap-3">
+                  <p id="fill-own-label" className="font-body text-body-xs text-secondary">
+                    {tFilter("fillWithOwn")}
+                  </p>
+                  <Toggle
+                    checked={fillOwn}
+                    onCheckedChange={setFillOwn}
+                    aria-labelledby="fill-own-label"
+                  />
+                </div>
+              </div>
+            ) : null}
 
             {/* Progress bar */}
             <div className="mt-3 flex items-center gap-2">
@@ -180,21 +304,35 @@ export function TopicSessionConfigDialog({
                   <CountPills
                     preset={smartPreset}
                     custom={smartCustom}
-                    totalQuestions={totalQuestions}
+                    totalQuestions={poolTotal}
                     onPresetChange={setSmartPreset}
                     onCustomChange={setSmartCustom}
                     className="mt-3.5 border-t border-white/[0.06] pt-3"
                     questionsShort={questionsShort}
                     allQuestionsAriaLabel={allQuestionsAriaLabel}
                   />
+                  {thinCem && fillOwn ? (
+                    <p className="mt-2 font-body text-[11px] text-muted">
+                      {tFilter("sessionMix", {
+                        cem: smartMix.cem,
+                        own: smartMix.own,
+                      })}
+                    </p>
+                  ) : null}
 
                   {/* CTA — lg:mt-auto pushes to bottom only on desktop */}
-                  <Link
-                    href={smartHref}
-                    className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] lg:mt-auto lg:pt-3.5"
-                  >
-                    {t("startSession")}
-                  </Link>
+                  {canStart ? (
+                    <Link
+                      href={smartHref}
+                      className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] lg:mt-auto lg:pt-3.5"
+                    >
+                      {t("startSession")}
+                    </Link>
+                  ) : (
+                    <span className="mt-3.5 block w-full cursor-not-allowed rounded-btn bg-brand-sage/40 py-2.5 text-center font-body text-body-sm font-semibold text-white/70 lg:mt-auto lg:pt-3.5">
+                      {t("noQuestionsForFilter")}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -221,7 +359,7 @@ export function TopicSessionConfigDialog({
                         <CountPills
                           preset={reviewPreset}
                           custom={reviewCustom}
-                          totalQuestions={totalQuestions}
+                          totalQuestions={poolTotal}
                           onPresetChange={setReviewPreset}
                           onCustomChange={setReviewCustom}
                           className="mt-2.5 border-t border-white/[0.06] pt-2.5"
@@ -229,11 +367,25 @@ export function TopicSessionConfigDialog({
                           questionsShort={questionsShort}
                           allQuestionsAriaLabel={allQuestionsAriaLabel}
                         />
+                        {thinCem && fillOwn ? (
+                          <p className="mt-2 font-body text-[11px] text-muted">
+                            {tFilter("sessionMix", {
+                              cem: reviewMix.cem,
+                              own: reviewMix.own,
+                            })}
+                          </p>
+                        ) : null}
                         <Link
                           href={reviewHref}
-                          className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
+                          className={cn(
+                            "mt-2.5 inline-flex w-fit items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
+                            canStart
+                              ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
+                              : "pointer-events-none cursor-not-allowed border-border text-muted",
+                          )}
+                          aria-disabled={!canStart}
                         >
-                          {t("start")}
+                          {canStart ? t("start") : t("noQuestionsForFilter")}
                         </Link>
                       </div>
 
@@ -295,7 +447,7 @@ export function TopicSessionConfigDialog({
                       <CountPills
                         preset={reviewPreset}
                         custom={reviewCustom}
-                        totalQuestions={totalQuestions}
+                        totalQuestions={poolTotal}
                         onPresetChange={setReviewPreset}
                         onCustomChange={setReviewCustom}
                         className="mt-2.5 border-t border-white/[0.06] pt-2.5"
@@ -303,11 +455,25 @@ export function TopicSessionConfigDialog({
                         questionsShort={questionsShort}
                         allQuestionsAriaLabel={allQuestionsAriaLabel}
                       />
+                      {thinCem && fillOwn ? (
+                        <p className="mt-2 font-body text-[11px] text-muted">
+                          {tFilter("sessionMix", {
+                            cem: reviewMix.cem,
+                            own: reviewMix.own,
+                          })}
+                        </p>
+                      ) : null}
                       <Link
                         href={reviewHref}
-                        className="mt-2.5 inline-flex w-fit items-center rounded-btn border border-brand-sage/40 px-3 py-1.5 font-body text-body-xs font-medium text-brand-sage transition-colors hover:bg-brand-sage/10"
+                        className={cn(
+                          "mt-2.5 inline-flex w-fit items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
+                          canStart
+                            ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
+                            : "pointer-events-none cursor-not-allowed border-border text-muted",
+                        )}
+                        aria-disabled={!canStart}
                       >
-                        {t("start")}
+                        {canStart ? t("start") : t("noQuestionsForFilter")}
                       </Link>
                     </div>
 
@@ -366,25 +532,35 @@ function CountPills({
 
   return (
     <div className={cn("flex flex-wrap items-center gap-1.5", className)}>
-      {PRESETS.map((n) => (
-        <button
-          key={n}
-          type="button"
-          onClick={() => {
-            onPresetChange(n);
-            onCustomChange("");
-          }}
-          className={cn(
-            "flex cursor-pointer items-center justify-center rounded-pill border font-body transition-colors",
-            sizeClass,
-            preset === n
-              ? "border-brand-sage bg-brand-sage font-semibold text-white"
-              : "border-border bg-transparent text-secondary",
-          )}
-        >
-          {n}
-        </button>
-      ))}
+      {PRESETS.map((n) => {
+        const unavailable = n > totalQuestions;
+        return (
+          <button
+            key={n}
+            type="button"
+            disabled={unavailable}
+            onClick={() => {
+              if (unavailable) return;
+              onPresetChange(n);
+              onCustomChange("");
+            }}
+            className={cn(
+              "flex items-center justify-center rounded-pill border font-body transition-colors",
+              sizeClass,
+              unavailable
+                ? "cursor-not-allowed border-border/60 text-muted line-through opacity-40"
+                : "cursor-pointer",
+              !unavailable && preset === n
+                ? "border-brand-sage bg-brand-sage font-semibold text-white"
+                : !unavailable
+                  ? "border-border bg-transparent text-secondary"
+                  : null,
+            )}
+          >
+            {n}
+          </button>
+        );
+      })}
       <button
         type="button"
         onClick={() => {

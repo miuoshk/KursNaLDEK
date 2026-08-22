@@ -12,6 +12,14 @@ import {
   refreshReadinessPercentileCache,
 } from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { StatisticsPayload, TimeRangeKey } from "@/features/statistics/types";
+import type { SourceAccuracyBreakdown } from "@/features/session/lib/sourceAccuracy";
+import {
+  addSourceSlices,
+  emptySourceSlice,
+} from "@/features/session/lib/sourceAccuracy";
+import { FEATURES } from "@/lib/featureFlags";
+import { hasCemExams, isSourceFilterLive } from "@/lib/products";
+import { CEM_RESERVE_BUCKET_MIN } from "@/features/session/lib/antares/cemReserve";
 
 function rangeToDays(r: TimeRangeKey): number | null {
   if (r === "all") return null;
@@ -118,6 +126,12 @@ export async function loadStatistics(
     },
   );
 
+  const sourceAccuracy = await loadSourceAccuracyBreakdown(
+    supabase,
+    userId,
+    uqp,
+  );
+
   return {
     range,
     accuracyTrend,
@@ -135,5 +149,94 @@ export async function loadStatistics(
     xp: profile?.xp ?? 0,
     heatmap,
     recentSessions,
+    sourceAccuracy,
   };
+}
+
+async function loadSourceAccuracyBreakdown(
+  supabase: SupabaseClient,
+  userId: string,
+  uqp: { question_id: string; times_answered: number | null }[],
+): Promise<SourceAccuracyBreakdown | null> {
+  if (!FEATURES.cemSource) return null;
+
+  const { data: rows, error } = await supabase
+    .from("topic_mastery_cache")
+    .select(
+      "ref_total, ref_seen, ref_correct, seen_questions, total_questions, correct_answers, topics!inner(is_inbox, subject_id, subjects!inner(product))",
+    )
+    .eq("user_id", userId)
+    .eq("topics.is_inbox", false);
+
+  if (error) {
+    console.error("[loadStatistics] sourceAccuracy:", error.message);
+    return null;
+  }
+
+  let product: string | null = null;
+  let reference = emptySourceSlice();
+  let own = emptySourceSlice();
+  const liveSubjectIds = new Set<string>();
+
+  for (const row of rows ?? []) {
+    const topic = row.topics as
+      | {
+          is_inbox?: boolean;
+          subject_id?: string;
+          subjects?: { product?: string } | { product?: string }[];
+        }
+      | {
+          is_inbox?: boolean;
+          subject_id?: string;
+          subjects?: { product?: string } | { product?: string }[];
+        }[]
+      | null;
+    const topicRow = Array.isArray(topic) ? topic[0] : topic;
+    const sub = topicRow?.subjects;
+    const rowProduct = Array.isArray(sub) ? sub[0]?.product : sub?.product;
+    if (!isSourceFilterLive(rowProduct)) continue;
+    if (!product && rowProduct) product = rowProduct;
+    if (topicRow?.subject_id) liveSubjectIds.add(topicRow.subject_id);
+
+    const refTotal = Number(row.ref_total ?? 0);
+    const refSeen = Number(row.ref_seen ?? 0);
+    const refCorrect = Number(row.ref_correct ?? 0);
+    const total = Number(row.total_questions ?? 0);
+    const seen = Number(row.seen_questions ?? 0);
+    const correct = Number(row.correct_answers ?? 0);
+    reference = addSourceSlices(reference, {
+      total: refTotal,
+      seen: refSeen,
+      correct: refCorrect,
+    });
+    own = addSourceSlices(own, {
+      total: Math.max(0, total - refTotal),
+      seen: Math.max(0, seen - refSeen),
+      correct: Math.max(0, correct - refCorrect),
+    });
+  }
+
+  if (!product) return null;
+
+  let protectedCount = 0;
+  if (hasCemExams(product) && liveSubjectIds.size > 0) {
+    const seenIds = new Set(
+      uqp
+        .filter((r) => Number(r.times_answered ?? 0) > 0)
+        .map((r) => r.question_id),
+    );
+    const { data: reserved } = await supabase
+      .from("questions")
+      .select("id, topics!inner(subject_id, is_inbox)")
+      .eq("source", "cem")
+      .gte("reserve_bucket", CEM_RESERVE_BUCKET_MIN)
+      .eq("is_active", true)
+      .eq("topics.is_inbox", false)
+      .in("topics.subject_id", [...liveSubjectIds]);
+    for (const q of reserved ?? []) {
+      if (!seenIds.has(q.id as string)) protectedCount += 1;
+    }
+  }
+
+  return { product, reference, own, protectedCount };
 }

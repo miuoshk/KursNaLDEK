@@ -112,7 +112,7 @@ async function fetchQuestionsMeta(
     // all / OSCE → brak warunku (nie pusta pula).
     let query = supabase
       .from("questions")
-      .select(select)
+      .select(select as "id, topic_id, topics!inner(is_inbox)")
       .in("id", slice)
       .eq("is_active", true)
       .eq("topics.is_inbox", false);
@@ -123,11 +123,17 @@ async function fetchQuestionsMeta(
     }
     const { data: rows } = await query.or(questionTracksOrFilter(track));
     for (const r of rows ?? []) {
-      out.set(r.id as string, {
-        topic_id: r.topic_id as string,
-        source: includeReserveCols ? (r.source as string | undefined) : undefined,
+      const row = r as unknown as {
+        id: string;
+        topic_id: string;
+        source?: string;
+        reserve_bucket?: number | null;
+      };
+      out.set(row.id, {
+        topic_id: row.topic_id,
+        source: includeReserveCols ? row.source : undefined,
         reserve_bucket: includeReserveCols
-          ? Number(r.reserve_bucket ?? 0)
+          ? Number(row.reserve_bucket ?? 0)
           : undefined,
       });
     }

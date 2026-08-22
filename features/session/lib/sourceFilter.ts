@@ -105,13 +105,14 @@ type QueryWithSource = {
  * Nakłada filtr źródła na zapytanie `questions`.
  * `own` to zawsze source = 'own', nigdy dopełnienie referencyjnych.
  */
-export function applySourceFilterToQuestionQuery<T extends QueryWithSource>(
+export function applySourceFilterToQuestionQuery<T>(
   query: T,
   source: SourceFilter,
   product: string,
 ): T {
   const resolved = resolveEngineSourceFilter(source, product);
+  const q = query as T & QueryWithSource;
   if (resolved === "all") return query;
-  if (resolved === "own") return query.eq("source", "own") as T;
-  return query.in("source", referenceSources(product)) as T;
+  if (resolved === "own") return q.eq("source", "own") as T;
+  return q.in("source", referenceSources(product)) as T;
 }

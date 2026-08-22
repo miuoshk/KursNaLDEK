@@ -32,7 +32,7 @@ export async function fetchActiveQuestionsForTopics(
   while (true) {
     let query = supabase
       .from("questions")
-      .select(select)
+      .select(select as "id, topic_id, topics!inner(is_inbox)")
       .in("topic_id", topicIds)
       .eq("is_active", true)
       .eq("topics.is_inbox", false)
@@ -48,7 +48,7 @@ export async function fetchActiveQuestionsForTopics(
       break;
     }
 
-    const batch = (data ?? []) as QuestionTopicRow[];
+    const batch = (data ?? []) as unknown as QuestionTopicRow[];
     all.push(...batch);
     if (batch.length < PAGE_SIZE) break;
     from += PAGE_SIZE;

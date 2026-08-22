@@ -373,7 +373,7 @@ export function TestExportConfigurator({ catalog }: TestExportConfiguratorProps)
           <div className="mt-4 flex flex-col gap-2">
             {subjects.map((subject) => {
               const subjectTopics = topics.filter((t) => t.subjectId === subject.id);
-              const open = expanded[subject.id] ?? true;
+              const open = expanded[subject.id] ?? false;
               const subjectSum = subjectTopics.reduce(
                 (sum, t) => sum + (quotas[t.id] ?? 0),
                 0,

@@ -16,8 +16,11 @@ import {
   convertMillimetersToTwip,
 } from "docx";
 import type { EmbeddedImage } from "@/features/admin/lib/testExport/imageMeta";
+import { splitQuestionStem } from "@/features/admin/lib/testExport/splitQuestionStem";
 import { parseRichSpans } from "@/features/admin/lib/testExport/stripRichText";
 import type { SelectedTestQuestion } from "@/features/admin/lib/testExport/types";
+
+const FONT = "Times New Roman";
 
 const PAGE_W = convertMillimetersToTwip(210);
 const PAGE_H = convertMillimetersToTwip(297);
@@ -63,7 +66,7 @@ function spansToRuns(
     (span) =>
       new TextRun({
         text: span.text,
-        font: "Calibri",
+        font: FONT,
         size: extras?.size ?? 22,
         bold: extras?.bold || span.bold,
         italics: extras?.italics,
@@ -95,13 +98,13 @@ function header(meta: TestDocumentMeta, kind: "test" | "key" | "explanations") {
         children: [
           new TextRun({
             text: meta.title,
-            font: "Calibri",
+            font: FONT,
             size: 22,
             bold: true,
           }),
           new TextRun({
             text: `  ·  ${kindLabel}`,
-            font: "Calibri",
+            font: FONT,
             size: 20,
             color: "666666",
           }),
@@ -115,13 +118,13 @@ function header(meta: TestDocumentMeta, kind: "test" | "key" | "explanations") {
         children: [
           new TextRun({
             text: "Kurs na LDEK",
-            font: "Calibri",
+            font: FONT,
             size: 18,
             color: "666666",
           }),
           new TextRun({
             text: `  ·  ${formatDatePl(meta.generatedAt)}  ·  Liczba pytań: ${meta.questionCount}`,
-            font: "Calibri",
+            font: FONT,
             size: 18,
             color: "666666",
           }),
@@ -137,12 +140,12 @@ function footer() {
       new Paragraph({
         alignment: AlignmentType.RIGHT,
         children: [
-          new TextRun({ text: "Strona ", font: "Calibri", size: 16, color: "888888" }),
-          new TextRun({ children: [PageNumber.CURRENT], font: "Calibri", size: 16, color: "888888" }),
-          new TextRun({ text: " z ", font: "Calibri", size: 16, color: "888888" }),
+          new TextRun({ text: "Strona ", font: FONT, size: 16, color: "888888" }),
+          new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 16, color: "888888" }),
+          new TextRun({ text: " z ", font: FONT, size: 16, color: "888888" }),
           new TextRun({
             children: [PageNumber.TOTAL_PAGES],
-            font: "Calibri",
+            font: FONT,
             size: 16,
             color: "888888",
           }),
@@ -159,7 +162,7 @@ function titleBlock(meta: TestDocumentMeta, heading: string) {
       children: [
         new TextRun({
           text: heading,
-          font: "Calibri",
+          font: FONT,
           size: 32,
           bold: true,
         }),
@@ -173,7 +176,7 @@ function titleBlock(meta: TestDocumentMeta, heading: string) {
         children: [
           new TextRun({
             text: meta.subtitle.trim(),
-            font: "Calibri",
+            font: FONT,
             size: 22,
             italics: true,
             color: "444444",
@@ -188,7 +191,7 @@ function titleBlock(meta: TestDocumentMeta, heading: string) {
       children: [
         new TextRun({
           text: `${meta.questionCount} pytań  ·  ${formatDatePl(meta.generatedAt)}`,
-          font: "Calibri",
+          font: FONT,
           size: 20,
           color: "555555",
         }),
@@ -202,20 +205,84 @@ function questionParagraphs(
   question: SelectedTestQuestion,
   images: QuestionImageMap | undefined,
 ): Paragraph[] {
-  const out: Paragraph[] = [
-    new Paragraph({
-      spacing: { before: 160, after: 80 },
-      children: [
-        new TextRun({
-          text: `${question.number}. `,
-          font: "Calibri",
-          size: 24,
-          bold: true,
+  const blocks = splitQuestionStem(question.text);
+  const out: Paragraph[] = [];
+  let started = false;
+
+  for (let i = 0; i < blocks.length; i += 1) {
+    const block = blocks[i]!;
+    const next = blocks[i + 1];
+    const isFirst = !started;
+    started = true;
+
+    if (block.kind === "para") {
+      const beforeList = next?.kind === "item";
+      out.push(
+        new Paragraph({
+          spacing: { before: isFirst ? 160 : 80, after: 80 },
+          children: [
+            ...(isFirst
+              ? [
+                  new TextRun({
+                    text: `${question.number}. `,
+                    font: FONT,
+                    size: 24,
+                    bold: true,
+                  }),
+                ]
+              : []),
+            ...spansToRuns(block.text, { size: 24 }),
+          ],
         }),
-        ...spansToRuns(question.text, { size: 24 }),
-      ],
-    }),
-  ];
+      );
+      if (beforeList) {
+        out.push(new Paragraph({ spacing: { after: 80 }, children: [] }));
+      }
+      continue;
+    }
+
+    out.push(
+      new Paragraph({
+        spacing: { before: isFirst ? 160 : 0, after: 60 },
+        indent: { left: convertMillimetersToTwip(8), hanging: convertMillimetersToTwip(8) },
+        children: [
+          ...(isFirst
+            ? [
+                new TextRun({
+                  text: `${question.number}. `,
+                  font: FONT,
+                  size: 24,
+                  bold: true,
+                }),
+              ]
+            : []),
+          new TextRun({
+            text: `${block.marker}  `,
+            font: FONT,
+            size: 24,
+            bold: true,
+          }),
+          ...spansToRuns(block.text, { size: 24 }),
+        ],
+      }),
+    );
+  }
+
+  if (out.length === 0) {
+    out.push(
+      new Paragraph({
+        spacing: { before: 160, after: 80 },
+        children: [
+          new TextRun({
+            text: `${question.number}. `,
+            font: FONT,
+            size: 24,
+            bold: true,
+          }),
+        ],
+      }),
+    );
+  }
 
   const image = images?.get(question.id);
   if (image === "missing") {
@@ -226,7 +293,7 @@ function questionParagraphs(
         children: [
           new TextRun({
             text: "[Rycina niedostępna]",
-            font: "Calibri",
+            font: FONT,
             size: 20,
             italics: true,
             color: "888888",
@@ -262,7 +329,7 @@ function questionParagraphs(
         children: [
           new TextRun({
             text: `${optionLetter(opt.id)}.  `,
-            font: "Calibri",
+            font: FONT,
             size: 22,
             bold: true,
           }),
@@ -299,7 +366,7 @@ function keyTable(questions: SelectedTestQuestion[], columns = 5): Table {
                   children: [
                     new TextRun({
                       text: label,
-                      font: "Calibri",
+                      font: FONT,
                       size: 22,
                     }),
                   ],
@@ -324,7 +391,7 @@ function emptyDocDefaults() {
     styles: {
       default: {
         document: {
-          run: { font: "Calibri", size: 22 },
+          run: { font: FONT, size: 22 },
         },
       },
     },
@@ -351,7 +418,7 @@ export async function buildTestDocument(input: {
         children: [
           new TextRun({
             text: "Klucz odpowiedzi",
-            font: "Calibri",
+            font: FONT,
             size: 28,
             bold: true,
           }),
@@ -411,25 +478,50 @@ export async function buildExplanationsDocument(input: {
         children: [
           new TextRun({
             text: `${question.number}. ${optionLetter(question.correctOptionId)}`,
-            font: "Calibri",
+            font: FONT,
             size: 24,
             bold: true,
           }),
           new TextRun({
             text: `   ${question.id}`,
-            font: "Calibri",
+            font: FONT,
             size: 16,
             color: "888888",
           }),
         ],
       }),
     );
-    children.push(
-      new Paragraph({
-        spacing: { after: 40 },
-        children: spansToRuns(question.text, { size: 20, italics: true, color: "444444" }),
-      }),
-    );
+    const stemBlocks = splitQuestionStem(question.text);
+    for (let i = 0; i < stemBlocks.length; i += 1) {
+      const block = stemBlocks[i]!;
+      const beforeList = stemBlocks[i + 1]?.kind === "item";
+      if (block.kind === "para") {
+        children.push(
+          new Paragraph({
+            spacing: { after: beforeList ? 160 : 40 },
+            children: spansToRuns(block.text, { size: 20, italics: true, color: "444444" }),
+          }),
+        );
+        continue;
+      }
+      children.push(
+        new Paragraph({
+          spacing: { after: 40 },
+          indent: { left: convertMillimetersToTwip(8), hanging: convertMillimetersToTwip(8) },
+          children: [
+            new TextRun({
+              text: `${block.marker}  `,
+              font: FONT,
+              size: 20,
+              bold: true,
+              italics: true,
+              color: "444444",
+            }),
+            ...spansToRuns(block.text, { size: 20, italics: true, color: "444444" }),
+          ],
+        }),
+      );
+    }
     children.push(
       new Paragraph({
         spacing: { after: 80 },

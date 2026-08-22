@@ -112,6 +112,62 @@ describe("selectQuestions", () => {
     }
   });
 
+  it("tasowanie nie bierze pierwszych N po ID i miesza kolejność", () => {
+    const pool = Array.from({ length: 12 }, (_, i) =>
+      q(`per-01-${String(i + 1).padStart(3, "0")}`, "PER-01"),
+    );
+    const firstIds = pool.slice(0, 5).map((row) => row.id);
+    const result = selectQuestions({
+      pool,
+      quotas: [{ topicId: "PER-01", count: 5 }],
+      source: "all",
+      product: "ldew",
+      cemSessionIds: [],
+      shuffle: true,
+      seed: 99,
+    });
+    assert.equal(result.ok, true);
+    if (result.ok) {
+      const ids = result.questions.map((row) => row.id);
+      assert.notDeepEqual(ids, firstIds);
+      assert.notDeepEqual(
+        [...ids].sort(),
+        ids,
+      );
+    }
+  });
+
+  it("różne seedy z jednej puli dają różny zestaw lub inną kolejność", () => {
+    const pool = Array.from({ length: 20 }, (_, i) =>
+      q(`per-01-${String(i + 1).padStart(3, "0")}`, "PER-01"),
+    );
+    const a = selectQuestions({
+      pool,
+      quotas: [{ topicId: "PER-01", count: 8 }],
+      source: "all",
+      product: "ldew",
+      cemSessionIds: [],
+      shuffle: true,
+      seed: 1,
+    });
+    const b = selectQuestions({
+      pool,
+      quotas: [{ topicId: "PER-01", count: 8 }],
+      source: "all",
+      product: "ldew",
+      cemSessionIds: [],
+      shuffle: true,
+      seed: 2,
+    });
+    assert.equal(a.ok && b.ok, true);
+    if (a.ok && b.ok) {
+      assert.notDeepEqual(
+        a.questions.map((row) => row.id),
+        b.questions.map((row) => row.id),
+      );
+    }
+  });
+
   it("ten sam seed daje tę samą kolejność po tasowaniu", () => {
     const pool = Array.from({ length: 10 }, (_, i) =>
       q(`per-01-${String(i + 1).padStart(3, "0")}`, "PER-01"),

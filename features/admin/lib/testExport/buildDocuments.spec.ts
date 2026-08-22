@@ -6,6 +6,7 @@ import {
   buildTestDocument,
 } from "@/features/admin/lib/testExport/buildDocuments";
 import { testExportFileNames } from "@/features/admin/lib/testExport/fileNames";
+import { splitQuestionStem } from "@/features/admin/lib/testExport/splitQuestionStem";
 import { stripToPlain } from "@/features/admin/lib/testExport/stripRichText";
 import type { SelectedTestQuestion } from "@/features/admin/lib/testExport/types";
 
@@ -62,5 +63,21 @@ describe("fileNames / stripRichText", () => {
 
   it("zdejmuje markdown do plain text", () => {
     assert.equal(stripToPlain("Który **kieszonka** jest [x](http://a)?"), "Który kieszonka jest x?");
+  });
+
+  it("łamie inline listę na wstęp i osobne punkty", () => {
+    const blocks = splitQuestionStem(
+      "Do objawów zapalenia przyzębia należą: 1. krwawienie 2. kieszonki 3. recesje",
+    );
+    assert.equal(blocks[0]?.kind, "para");
+    if (blocks[0]?.kind === "para") {
+      assert.match(blocks[0].text, /należą/);
+    }
+    const items = blocks.filter((b) => b.kind === "item");
+    assert.equal(items.length, 3);
+    assert.deepEqual(
+      items.map((b) => (b.kind === "item" ? b.text : "")),
+      ["krwawienie", "kieszonki", "recesje"],
+    );
   });
 });

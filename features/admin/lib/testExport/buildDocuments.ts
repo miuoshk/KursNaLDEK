@@ -219,7 +219,7 @@ function questionParagraphs(
       const beforeList = next?.kind === "item";
       out.push(
         new Paragraph({
-          spacing: { before: isFirst ? 160 : 80, after: 80 },
+          spacing: { before: isFirst ? 160 : 80, after: beforeList ? 40 : 80 },
           children: [
             ...(isFirst
               ? [
@@ -235,15 +235,13 @@ function questionParagraphs(
           ],
         }),
       );
-      if (beforeList) {
-        out.push(new Paragraph({ spacing: { after: 80 }, children: [] }));
-      }
       continue;
     }
 
+    const lastItem = next?.kind !== "item";
     out.push(
       new Paragraph({
-        spacing: { before: isFirst ? 160 : 0, after: 60 },
+        spacing: { before: isFirst ? 160 : 0, after: lastItem ? 140 : 40 },
         indent: { left: convertMillimetersToTwip(8), hanging: convertMillimetersToTwip(8) },
         children: [
           ...(isFirst
@@ -494,11 +492,10 @@ export async function buildExplanationsDocument(input: {
     const stemBlocks = splitQuestionStem(question.text);
     for (let i = 0; i < stemBlocks.length; i += 1) {
       const block = stemBlocks[i]!;
-      const beforeList = stemBlocks[i + 1]?.kind === "item";
       if (block.kind === "para") {
         children.push(
           new Paragraph({
-            spacing: { after: beforeList ? 160 : 40 },
+            spacing: { after: 40 },
             children: spansToRuns(block.text, { size: 20, italics: true, color: "444444" }),
           }),
         );

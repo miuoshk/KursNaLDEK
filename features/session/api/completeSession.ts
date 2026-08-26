@@ -16,6 +16,8 @@ import {
 import { runCompleteSessionPostAntares } from "@/features/session/server/completeSessionPostAntares";
 import { refreshReadinessPercentileCache } from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
+import { createPerfSpan, logPerf, vercelRuntimeMeta } from "@/features/session/lib/perfLog";
+import { headers } from "next/headers";
 
 const schema = z.object({
   sessionId: z.string().uuid(),
@@ -28,9 +30,20 @@ export type CompleteSessionResult =
 export async function completeSession(
   raw: z.infer<typeof schema>,
 ): Promise<CompleteSessionResult> {
+  const span = createPerfSpan("completeSession HTTP");
+  const extra: Record<string, unknown> = { sessionId: raw.sessionId };
+  try {
+    extra.xVercelId = (await headers()).get("x-vercel-id");
+  } catch {
+    extra.xVercelId = null;
+  }
+
   const t = await getTranslations("session");
+  span.mark("getTranslations");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
+    extra.ok = false;
+    span.end(extra);
     return { ok: false, message: t("errors.invalidData") };
   }
 
@@ -40,8 +53,11 @@ export async function completeSession(
       data: { user },
       error: authError,
     } = await supabase.auth.getUser();
+    span.mark("createClient+getUser");
 
     if (authError || !user) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.noAuthSession") };
     }
 
@@ -53,8 +69,11 @@ export async function completeSession(
       .eq("id", parsed.data.sessionId)
       .eq("user_id", user.id)
       .maybeSingle();
+    span.mark("study_sessions.select");
 
     if (se || !session) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.sessionNotFound") };
     }
 
@@ -62,7 +81,10 @@ export async function completeSession(
       user.id,
       session.subject_id as string,
     );
+    span.mark("requireLearningAccess");
     if (!access.ok) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: access.message };
     }
 
@@ -72,6 +94,10 @@ export async function completeSession(
         parsed.data.sessionId,
         user.id,
       );
+      span.mark("buildSessionSummary already-completed");
+      extra.ok = Boolean(summary);
+      extra.alreadyCompleted = true;
+      span.end(extra);
       if (!summary) {
         return { ok: false, message: t("errors.loadSummaryFailed") };
       }
@@ -102,8 +128,11 @@ export async function completeSession(
         .eq("id", user.id)
         .maybeSingle(),
     ]);
+    span.mark("count+answers+profile");
 
     if (!profile) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.noProfile") };
     }
 
@@ -180,16 +209,21 @@ export async function completeSession(
         })
         .eq("id", user.id),
     ]);
+    span.mark("update session+profile");
 
     if (upSessRes.error) {
       console.error(
         "[completeSession] study_sessions",
         upSessRes.error.message,
       );
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.closeSessionFailed") };
     }
     if (upProfRes.error) {
       console.error("[completeSession] profiles", upProfRes.error.message);
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.updateProfileFailed") };
     }
 
@@ -219,8 +253,11 @@ export async function completeSession(
         .eq("id", user.id)
         .single(),
     ]);
+    span.mark("buildSessionSummary+profileAfter");
 
     if (!summary) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.buildSummaryFailed") };
     }
 
@@ -237,6 +274,7 @@ export async function completeSession(
 
     revalidatePath("/przedmioty", "layout");
     revalidatePath("/pulpit", "page");
+    span.mark("revalidatePath");
 
     // ═══════════════════════════════════════════════════════════
     // FAZA BACKGROUND — po response (next/after), nie blokuje UI
@@ -249,7 +287,20 @@ export async function completeSession(
       number | null | undefined;
     const bgTotalQuestions = session.total_questions ?? answeredCount;
 
+    // 0 until HTTP return is logged. If after() runs earlier, delta uses 0.
+    let httpReturnAt = 0;
+
     after(async () => {
+      const afterStartAt = Date.now();
+      logPerf("completeSession after() start", {
+        sessionId: bgSessionId,
+        afterStartAt,
+        httpReturnAt,
+        deltaFromHttpReturnMs: afterStartAt - httpReturnAt,
+        httpReturnWasUnset: httpReturnAt === 0,
+        ...vercelRuntimeMeta(),
+      });
+      const afterSpan = createPerfSpan("completeSession after()");
       try {
         const bgAdmin = createAdminClient();
         // ANTARES najpierw — zapisuje session_insights/examReadiness do DB,
@@ -261,6 +312,7 @@ export async function completeSession(
               .from("session_answers")
               .select("questions!inner(topic_id)")
               .eq("session_id", bgSessionId);
+            afterSpan.mark("affectedTopics firstQuery");
 
             if (topicErr) throw topicErr;
 
@@ -294,6 +346,7 @@ export async function completeSession(
                   (session.memory_parameter_set_id as string | null) ?? null,
               },
             );
+            afterSpan.mark("postAntares until session_insights");
           } catch (err) {
             console.error("[completeSession] postAntares (bg)", err);
           }
@@ -369,14 +422,22 @@ export async function completeSession(
             correct_answers: correct,
           },
         });
+        afterSpan.end({ sessionId: bgSessionId, ok: true });
       } catch (err) {
+        afterSpan.end({ sessionId: bgSessionId, ok: false });
         console.error("[completeSession background]", err);
       }
     });
 
+    httpReturnAt = Date.now();
+    extra.ok = true;
+    extra.httpReturnAt = httpReturnAt;
+    span.end(extra);
     return { ok: true, summary };
   } catch (e) {
     console.error("[completeSession]", e);
+    extra.ok = false;
+    span.end(extra);
     return { ok: false, message: t("errors.unexpected") };
   }
 }

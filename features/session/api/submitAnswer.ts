@@ -17,6 +17,8 @@ import {
 } from "@/features/session/lib/memory/scheduler";
 import { loadMemoryParameterSetById } from "@/features/session/server/loadMemorySchedulerConfig";
 import { persistShadowMemoryV2 } from "@/features/session/server/persistShadowMemoryV2";
+import { createPerfSpan } from "@/features/session/lib/perfLog";
+import { headers } from "next/headers";
 
 const schema = z.object({
   sessionId: z.string().uuid(),
@@ -93,9 +95,24 @@ export async function submitAnswer(
   raw: z.infer<typeof schema>,
   retryDepth = 0,
 ): Promise<SubmitAnswerResult> {
+  const span = createPerfSpan("submitAnswer");
+  const extra: Record<string, unknown> = {
+    questionOrder: raw.questionOrder,
+    sessionId: raw.sessionId,
+    retryDepth,
+  };
+  try {
+    extra.xVercelId = (await headers()).get("x-vercel-id");
+  } catch {
+    extra.xVercelId = null;
+  }
+
   const t = await getTranslations("session");
+  span.mark("getTranslations");
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
+    extra.ok = false;
+    span.end(extra);
     return { ok: false, message: t("errors.invalidAnswerData") };
   }
 
@@ -106,7 +123,10 @@ export async function submitAnswer(
       error: authError,
     } = await supabase.auth.getUser();
 
+    span.mark("createClient+getUser");
     if (authError || !user) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.noAuthSession") };
     }
 
@@ -118,15 +138,24 @@ export async function submitAnswer(
       .eq("id", parsed.data.sessionId)
       .maybeSingle();
 
+    span.mark("study_sessions.select");
+    extra.totalQuestions = session?.total_questions ?? null;
     if (se || !session || session.user_id !== user.id) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.sessionNotFound") };
     }
+    extra.isLast =
+      parsed.data.questionOrder >= Number(session.total_questions ?? 0) - 1;
 
     const access = await requireLearningAccessForSubject(
       user.id,
       session.subject_id as string,
     );
+    span.mark("requireLearningAccess");
     if (!access.ok) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: access.message };
     }
 
@@ -136,7 +165,10 @@ export async function submitAnswer(
       .eq("id", parsed.data.questionId)
       .maybeSingle();
 
+    span.mark("questions.select");
     if (questionError || !questionRow?.correct_option_id) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.questionNotFound") };
     }
 
@@ -147,9 +179,13 @@ export async function submitAnswer(
       !sessionQuestionIds.includes(parsed.data.questionId) &&
       !reserveQuestionIds.includes(parsed.data.questionId)
     ) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.questionNotFound") };
     }
     if (parsed.data.questionOrder >= Number(session.total_questions ?? 0)) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.invalidAnswerData") };
     }
 
@@ -177,7 +213,10 @@ export async function submitAnswer(
     const storedReview = prevAns?.fsrs_applied
       ? reviewFromStoredAnswer(prevAns as Record<string, unknown>)
       : null;
+    span.mark("session_answers.prev");
     if (prevAns?.fsrs_applied && !storedReview) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.saveAnswerFailed") };
     }
     if (prevAns) {
@@ -190,6 +229,8 @@ export async function submitAnswer(
       answeredAt = new Date(prevAns.answered_at as string);
     }
     if (session.is_completed && !prevAns) {
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.sessionAlreadyCompleted") };
     }
 
@@ -212,6 +253,7 @@ export async function submitAnswer(
       .eq("user_id", user.id)
       .eq("question_id", parsed.data.questionId)
       .maybeSingle();
+    span.mark("user_question_progress.select");
 
     const isFirstExposure = prevAns
       ? Boolean(prevAns.is_first_exposure)
@@ -254,6 +296,9 @@ export async function submitAnswer(
             .eq("question_id", parsed.data.questionId)
             .maybeSingle();
           if (canonicalAnswer && retryDepth < 1) {
+            extra.ok = false;
+            extra.retried = true;
+            span.end(extra);
             return submitAnswer(raw, retryDepth + 1);
           }
         }
@@ -261,10 +306,13 @@ export async function submitAnswer(
           "[submitAnswer] session_answers insert",
           insErr?.message ?? "Brak zapisanego wiersza",
         );
+        extra.ok = false;
+        span.end(extra);
         return { ok: false, message: t("errors.saveAnswerFailed") };
       }
       insertedAnswer = { id: String(data.id) };
     }
+    span.mark("session_answers.insert");
 
     // Każda realna próba przypomnienia aktualizuje model. W trybie klasycznym
     // nie ma samooceny, więc poprawność mapujemy na Again/Good.
@@ -280,6 +328,7 @@ export async function submitAnswer(
         effectiveConfidence,
         answeredAt,
       ));
+    span.mark("persistUserProgressFsrs");
 
     let effectiveMemoryReview = persistedReview;
     let effectiveSchedulerVersion =
@@ -323,6 +372,7 @@ export async function submitAnswer(
           session.engine_variant === "treatment" ? "treatment" : "shadow",
         requireExistingCard: false,
       });
+      span.mark("persistShadowMemoryV2");
       if (session.engine_variant === "treatment") {
         effectiveMemoryReview = {
           ...persistedReview,
@@ -429,8 +479,11 @@ export async function submitAnswer(
         p_event_payload: answerPayload,
       },
     );
+    span.mark("finalize_learning_answer");
     if (finalizeError) {
       console.error("[submitAnswer] finalize learning", finalizeError.message);
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.saveAnswerFailed") };
     }
 
@@ -438,8 +491,11 @@ export async function submitAnswer(
       .from("session_answers")
       .select("is_correct, time_spent_seconds")
       .eq("session_id", parsed.data.sessionId);
+    span.mark("session_answers.aggregate");
     if (aggregateError) {
       console.error("[submitAnswer] aggregate", aggregateError.message);
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.updateSessionFailed") };
     }
 
@@ -457,14 +513,21 @@ export async function submitAnswer(
       })
       .eq("id", session.id);
 
+    span.mark("study_sessions.update");
     if (sessErr) {
       console.error("[submitAnswer] study_sessions", sessErr.message);
+      extra.ok = false;
+      span.end(extra);
       return { ok: false, message: t("errors.updateSessionFailed") };
     }
 
+    extra.ok = true;
+    span.end(extra);
     return { ok: true };
   } catch (e) {
     console.error("[submitAnswer]", e);
+    extra.ok = false;
+    span.end(extra);
     return { ok: false, message: t("errors.unexpected") };
   }
 }

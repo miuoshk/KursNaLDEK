@@ -15,6 +15,7 @@ import {
   subscribeSessionSummary,
   mergeEnrichedSessionSummary,
 } from "@/features/session/lib/sessionSummaryStorage";
+import { logPerf, readSessionSummaryPerfT0 } from "@/features/session/lib/perfLog";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
 const POLL_INTERVAL_MS = 400;
@@ -106,6 +107,15 @@ export function SessionSummaryClient({
       return;
     }
 
+    const storedT0 = readSessionSummaryPerfT0(summary.sessionId);
+    const pollT0 = storedT0 ?? Date.now();
+    logPerf("summary polling start", {
+      sessionId: summary.sessionId,
+      pollT0,
+      t0Source: storedT0 != null ? "setInstantSummary" : "fallback",
+      msFromSetInstantSummary: Date.now() - pollT0,
+    });
+
     let cancelled = false;
     let attempts = 0;
 
@@ -117,12 +127,24 @@ export function SessionSummaryClient({
 
       if (res.ok && res.ready) {
         applyInsights(res);
+        logPerf("summary insights received", {
+          sessionId: summary.sessionId,
+          attempts,
+          timeout: false,
+          msFromSetInstantSummary: Date.now() - pollT0,
+        });
         return;
       }
 
       if (attempts >= POLL_MAX_ATTEMPTS) {
         setInsightsLoading(false);
         setInsightsFailed(true);
+        logPerf("summary insights timeout", {
+          sessionId: summary.sessionId,
+          attempts,
+          timeout: true,
+          msFromSetInstantSummary: Date.now() - pollT0,
+        });
         return;
       }
 

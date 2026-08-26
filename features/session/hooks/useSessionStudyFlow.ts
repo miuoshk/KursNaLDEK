@@ -10,6 +10,7 @@ import {
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
+import { markSessionSummaryPerfT0, logPerf } from "@/features/session/lib/perfLog";
 import { applyReserveSwap } from "@/features/session/lib/antares/reservePool";
 import { scheduleConceptTransfer } from "@/features/session/lib/antares/conceptTransfer";
 import {
@@ -98,13 +99,20 @@ export function useSessionStudyFlow(
       if (finishingRef.current) return;
       finishingRef.current = true;
       persistSessionSummaryToStorage(sessionId, summary);
+      markSessionSummaryPerfT0(sessionId);
       onComplete(summary);
 
       void (async () => {
         const pending = Array.from(pendingSavesRef.current);
+        const drainStartedAt = Date.now();
         if (pending.length > 0) {
           await Promise.allSettled(pending);
         }
+        logPerf("pending saves drained", {
+          sessionId,
+          pendingCount: pending.length,
+          ms: Date.now() - drainStartedAt,
+        });
         scheduleServerSessionComplete(
           sessionId,
           sessionStart.current,

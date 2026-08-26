@@ -2,6 +2,25 @@
 -- musi zwolnić blokadę przed backfillem i definicjami funkcji. Plik jest
 -- idempotentny i powinien być uruchamiany przez psql z ON_ERROR_STOP.
 
+-- PostgREST nie ustawia już request.jwt.claim.role; service_role JWT
+-- ląduje w request.jwt.claims. Stary warunek wyrzucał Forbidden na produkcji.
+CREATE OR REPLACE FUNCTION public.is_service_role()
+RETURNS boolean
+LANGUAGE sql
+STABLE
+SET search_path = public
+AS $$
+  SELECT
+    COALESCE(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+    OR COALESCE(
+      NULLIF(current_setting('request.jwt.claims', true), ''),
+      '{}'
+    )::jsonb ->> 'role' = 'service_role'
+    OR auth.role() = 'service_role';
+$$;
+REVOKE ALL ON FUNCTION public.is_service_role() FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.is_service_role() TO service_role;
+
 -- Kanoniczne nazwy kolumn topic_mastery_cache. Produkcja używa już nazw
 -- *_questions / *_answers; poniższy blok pozwala uruchomić migrację także na
 -- środowiskach odtworzonych ze starszego supabase-schema.sql.
@@ -329,9 +348,7 @@ AS $$
 DECLARE
   v_answer record;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '')
-    <> 'service_role'
-  THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
   IF p_variant NOT IN ('concise', 'standard', 'remedial')

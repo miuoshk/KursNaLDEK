@@ -303,7 +303,7 @@ AS $$
 DECLARE
   v_id uuid;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '') <> 'service_role' THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
   IF p_scheduler_version <> 'memory-v2/ts-fsrs-5.4.1'
@@ -411,7 +411,7 @@ AS $$
 DECLARE
   v_memory public.user_question_memory_v2%ROWTYPE;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '') <> 'service_role' THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
   IF p_scheduler_version <> 'memory-v2/ts-fsrs-5.4.1'
@@ -591,7 +591,7 @@ AS $$
 DECLARE
   v_count integer;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '') <> 'service_role' THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
   IF jsonb_typeof(p_rows) <> 'array' THEN
@@ -727,7 +727,7 @@ DECLARE
   v_progress public.user_question_progress%ROWTYPE;
   v_answer_applied boolean;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '') <> 'service_role' THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
 

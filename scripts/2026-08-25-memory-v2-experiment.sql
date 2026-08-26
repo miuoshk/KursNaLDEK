@@ -227,7 +227,7 @@ AS $$
 DECLARE
   v_from_percent integer;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '') <> 'service_role' THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
 

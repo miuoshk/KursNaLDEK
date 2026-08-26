@@ -17,6 +17,8 @@ await db.exec(`
   );
   CREATE FUNCTION auth.uid() RETURNS uuid
   LANGUAGE sql STABLE AS $$ SELECT NULL::uuid $$;
+  CREATE FUNCTION auth.role() RETURNS text
+  LANGUAGE sql STABLE AS $$ SELECT current_user $$;
 `);
 await db.exec(await readFile(resolve("supabase-schema.sql"), "utf8"));
 await db.exec(`
@@ -74,6 +76,7 @@ for (const path of migrations) {
 
 await db.exec(`
   SELECT set_config('request.jwt.claim.role', 'service_role', false);
+  SELECT set_config('request.jwt.claims', '{"role":"service_role"}', false);
   INSERT INTO auth.users (id, email, raw_user_meta_data)
   VALUES (
     '00000000-0000-4000-8000-000000000001',

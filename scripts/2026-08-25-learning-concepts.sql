@@ -304,9 +304,7 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '')
-    <> 'service_role'
-  THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
   IF NOT EXISTS (
@@ -450,9 +448,7 @@ DECLARE
   v_concept_states jsonb;
   v_result jsonb;
 BEGIN
-  IF COALESCE(current_setting('request.jwt.claim.role', true), '')
-    <> 'service_role'
-  THEN
+  IF NOT public.is_service_role() THEN
     RAISE EXCEPTION 'Forbidden';
   END IF;
 

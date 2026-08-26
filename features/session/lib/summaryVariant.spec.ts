@@ -153,8 +153,56 @@ describe("pickVerdictIndex", () => {
 
   it("klucze i18n są 1-based w puli wariantu", () => {
     const keys = pickVerdictMessageKeys("session-stable", "weak");
-    assert.match(keys.titleKey, /^summaryVerdictWeak[1-9]Title$/);
-    assert.match(keys.subtitleKey, /^summaryVerdictWeak[1-9]Subtitle$/);
+    assert.match(keys.titleKey, /^summaryVerdictWeak[1-8]Title$/);
+    assert.match(keys.subtitleKey, /^summaryVerdictWeak[1-8]Subtitle$/);
+  });
+
+  it("kolejna sesja nigdy nie dostaje Pierwsze starcie", () => {
+    for (let i = 0; i < 200; i += 1) {
+      const keys = pickVerdictMessageKeys(`session-${i}`, "weak", false);
+      assert.notEqual(keys.titleKey, "summaryVerdictWeak9Title");
+      const micro = pickVerdictMessageKeys(`session-${i}`, "micro", false);
+      assert.notEqual(micro.titleKey, "summaryVerdictMicro5Title");
+    }
+  });
+
+  it("pierwsza sesja może dostać pary tylko-pierwsza", () => {
+    let weakFirst = false;
+    let microFirst = false;
+    for (let i = 0; i < 200; i += 1) {
+      if (
+        pickVerdictMessageKeys(`session-${i}`, "weak", true).titleKey ===
+        "summaryVerdictWeak9Title"
+      ) {
+        weakFirst = true;
+      }
+      if (
+        pickVerdictMessageKeys(`session-${i}`, "micro", true).titleKey ===
+        "summaryVerdictMicro5Title"
+      ) {
+        microFirst = true;
+      }
+    }
+    assert.equal(weakFirst, true);
+    assert.equal(microFirst, true);
+  });
+
+  it("L2 z poprzednią sesją nie jest first — weak9 odpada", () => {
+    const first = isFirstSubjectSession(
+      session({
+        n: 10,
+        accuracy: 0.1,
+        previousAccuracy: 0.5,
+        previousTotalQuestions: 10,
+      }),
+    );
+    assert.equal(first, false);
+    const keys = pickVerdictMessageKeys(
+      "4eb8fd3c-30c6-4d6a-bead-a94ab71b7a7b",
+      "weak",
+      first,
+    );
+    assert.notEqual(keys.titleKey, "summaryVerdictWeak9Title");
   });
 });
 

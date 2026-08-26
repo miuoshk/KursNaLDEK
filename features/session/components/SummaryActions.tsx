@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, type ReactNode } from "react";
+import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import {
   buildSessionStartHref,
@@ -117,7 +117,7 @@ export function SummaryActions({
         "border border-white/20 bg-transparent text-primary hover:bg-white/[0.05]",
       placement === "primary"
         ? "w-full px-8 py-4 text-body-md sm:w-auto"
-        : "w-full px-6 py-3 sm:w-auto",
+        : "px-6 py-3",
     );
     const label = labelFor(kind, footer);
     if (kind === "retry") {
@@ -145,22 +145,18 @@ export function SummaryActions({
   }
 
   const footer = resolveSummaryFooterActions(variant, wrongIds.length);
-  const items: ReactNode[] = [
-    renderControl(footer.primary, "primary", true),
-  ];
-  if (footer.secondary) {
-    items.push(renderControl(footer.secondary, "secondary", true));
-  }
 
   return (
-    <div className="flex flex-col items-stretch gap-3 sm:items-end">
-      <p className="font-body text-body-xs uppercase tracking-widest text-muted sm:text-right">
-        {t("summaryRecommendedNext")}
-      </p>
-      {items}
+    <div className="flex flex-col items-start gap-3 sm:items-end">
+      <div className="flex flex-row flex-wrap items-center gap-3">
+        {renderControl(footer.primary, "primary", true)}
+        {footer.secondary
+          ? renderControl(footer.secondary, "secondary", true)
+          : null}
+      </div>
       <Link
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}
-        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary sm:text-right"
+        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
       >
         {t("backToSubject")}
       </Link>

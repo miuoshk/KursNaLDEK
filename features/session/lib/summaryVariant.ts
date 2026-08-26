@@ -26,6 +26,14 @@ export const SUMMARY_VERDICT_POOL_SIZE: Record<SummaryVariant, number> = {
   perfect: 5,
 };
 
+/** 1-based indeksy puli, które zakładają pierwszą sesję z przedmiotu. */
+export const SUMMARY_FIRST_SESSION_VERDICT_INDEX: Partial<
+  Record<SummaryVariant, readonly number[]>
+> = {
+  micro: [5],
+  weak: [9],
+};
+
 export type SummaryVariantInput = {
   answers: { length: number };
   accuracy: number;
@@ -59,9 +67,18 @@ export function pickVerdictIndex(sessionId: string, poolSize: number): number {
 export function pickVerdictMessageKeys(
   sessionId: string,
   variant: SummaryVariant,
+  firstSubjectSession = false,
 ): { titleKey: string; subtitleKey: string } {
   const poolSize = SUMMARY_VERDICT_POOL_SIZE[variant];
-  const n = pickVerdictIndex(sessionId, poolSize) + 1;
+  const firstOnly = new Set(
+    SUMMARY_FIRST_SESSION_VERDICT_INDEX[variant] ?? [],
+  );
+  const eligible: number[] = [];
+  for (let i = 1; i <= poolSize; i += 1) {
+    if (firstSubjectSession || !firstOnly.has(i)) eligible.push(i);
+  }
+  const n =
+    eligible[pickVerdictIndex(sessionId, eligible.length)] ?? eligible[0] ?? 1;
   const cap = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
   return {
     titleKey: `summaryVerdict${cap}${n}Title`,

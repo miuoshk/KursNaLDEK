@@ -11,6 +11,12 @@ import { startConceptReviewSession } from "@/features/session/components/Summary
 import { SummaryStatusMark } from "@/features/session/components/SummaryStatusMark";
 import { cn } from "@/lib/utils";
 
+function capitalizeFirst(label: string): string {
+  const trimmed = label.trim();
+  if (!trimmed) return label;
+  return trimmed.charAt(0).toLocaleUpperCase("pl") + trimmed.slice(1);
+}
+
 function ConceptsSkeleton() {
   return (
     <section className="space-y-4" aria-hidden>
@@ -90,7 +96,7 @@ export function SummaryTopicBreakdown({
                     <SummaryStatusMark status="wrong" className="mt-0.5" />
                     <div className="min-w-0 flex-1">
                       <p className="font-body text-body-md font-medium text-primary">
-                        {concept.label}
+                        {capitalizeFirst(concept.label)}
                       </p>
                       <p className="mt-1 font-body text-body-xs text-muted">
                         {t("summaryConceptScore", {

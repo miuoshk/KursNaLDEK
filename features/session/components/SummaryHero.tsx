@@ -19,6 +19,7 @@ import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
 import {
   canComparePreviousSession,
   getSummaryVariant,
+  isFirstSubjectSession,
   pickVerdictMessageKeys,
 } from "@/features/session/lib/summaryVariant";
 import { cn } from "@/lib/utils";
@@ -42,9 +43,10 @@ type SummaryTranslator = (
 function pickHeadline(
   sessionId: string,
   variant: ReturnType<typeof getSummaryVariant>,
+  firstSubjectSession: boolean,
   t: SummaryTranslator,
 ): { title: string; subtitle: string } {
-  const keys = pickVerdictMessageKeys(sessionId, variant);
+  const keys = pickVerdictMessageKeys(sessionId, variant, firstSubjectSession);
   return {
     title: t(keys.titleKey),
     subtitle: t(keys.subtitleKey),
@@ -88,10 +90,6 @@ function SummaryInsightsFooter({
 
   if (variant === "micro") return null;
 
-  const retrievabilityGain = insights?.retrievabilityGain ?? 0;
-  const showRetrievability = Math.abs(retrievabilityGain) >= 0.01;
-  const retrievabilityPercent = Math.round(retrievabilityGain * 100);
-
   const tips = [
     insights?.calibrationTip,
     fatigueText,
@@ -102,13 +100,13 @@ function SummaryInsightsFooter({
 
   const showFooter =
     summary.mode === "inteligentna" &&
-    (loading || failed || showRetrievability || tips.length > 0);
+    (loading || failed || tips.length > 0);
 
   if (!showFooter) return null;
 
   return (
     <div className="mt-8 border-t border-white/[0.08] pt-6">
-      {loading && !showRetrievability && tips.length === 0 ? (
+      {loading && tips.length === 0 ? (
         <div className="space-y-2">
           <p className="font-body text-body-xs text-muted">
             {t("summaryRecalculating")}
@@ -116,7 +114,7 @@ function SummaryInsightsFooter({
           <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
           <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
         </div>
-      ) : failed && !showRetrievability && tips.length === 0 ? (
+      ) : failed && tips.length === 0 ? (
         <div>
           <p className="font-body text-body-sm text-secondary">
             {t("summaryInsightsFailed")}
@@ -131,43 +129,23 @@ function SummaryInsightsFooter({
             </button>
           ) : null}
         </div>
-      ) : (
-        <div className="space-y-4">
-          {showRetrievability ? (
-            <div>
-              <p className="flex items-center gap-2 font-body text-body-sm text-primary">
-                <TrendingUp className="size-4 shrink-0 text-brand-sage" aria-hidden />
-                {t("summaryRetrievability", {
-                  percent:
-                    retrievabilityPercent > 0
-                      ? `+${retrievabilityPercent}`
-                      : String(retrievabilityPercent),
-                })}
-              </p>
-              <p className="mt-1.5 font-body text-body-xs text-muted">
-                {t("summaryRetrievabilityCaption")}
-              </p>
-            </div>
+      ) : tips.length > 0 ? (
+        <ul className="space-y-3">
+          {insights?.calibrationTip ? (
+            <InsightRow icon={Lightbulb}>
+              {insights.calibrationTip}
+            </InsightRow>
           ) : null}
-          {tips.length > 0 ? (
-            <ul className="space-y-3">
-              {insights?.calibrationTip ? (
-                <InsightRow icon={Lightbulb}>
-                  {insights.calibrationTip}
-                </InsightRow>
-              ) : null}
-              {fatigueText ? (
-                <InsightRow icon={Lightbulb}>{fatigueText}</InsightRow>
-              ) : null}
-              {(insights?.leechesHit?.length ?? 0) > 0 ? (
-                <InsightRow icon={RotateCcw}>
-                  {t("summaryLeeches", { count: insights!.leechesHit.length })}
-                </InsightRow>
-              ) : null}
-            </ul>
+          {fatigueText ? (
+            <InsightRow icon={Lightbulb}>{fatigueText}</InsightRow>
           ) : null}
-        </div>
-      )}
+          {(insights?.leechesHit?.length ?? 0) > 0 ? (
+            <InsightRow icon={RotateCcw}>
+              {t("summaryLeeches", { count: insights!.leechesHit.length })}
+            </InsightRow>
+          ) : null}
+        </ul>
+      ) : null}
     </div>
   );
 }
@@ -196,8 +174,11 @@ export function SummaryHero({
     total: planned,
     questionsLabel: t("questionsShort"),
   });
-  const headline = pickHeadline(summary.sessionId, variant, (key) =>
-    t(key as never),
+  const headline = pickHeadline(
+    summary.sessionId,
+    variant,
+    isFirstSubjectSession(summary),
+    (key) => t(key as never),
   );
   const dailyPlan = summary.dailyPlan;
   const title = headline.title;
@@ -253,7 +234,7 @@ export function SummaryHero({
 
       {primaryCta ? <div className="mt-6">{primaryCta}</div> : null}
 
-      <div className="mt-8 flex flex-col gap-8 sm:flex-row sm:items-center">
+      <div className="mt-8 flex flex-col items-center gap-6">
         <div className="flex flex-col items-center">
           <div className="relative size-[120px]">
             <svg className="size-full -rotate-90" viewBox="0 0 120 120">
@@ -293,7 +274,7 @@ export function SummaryHero({
           </p>
         </div>
 
-        <ul className="flex flex-1 flex-wrap gap-x-6 gap-y-3 text-body-sm">
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-body-sm">
           {summary.durationSeconds > 0 ? (
             <li className="flex items-center gap-2">
               <Clock className="size-4 shrink-0 text-secondary" aria-hidden />

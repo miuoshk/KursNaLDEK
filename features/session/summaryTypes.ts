@@ -1,4 +1,4 @@
-import type { Confidence, SessionMode } from "@/features/session/types";
+import type { Confidence, SessionMode, SourceFilter } from "@/features/session/types";
 
 /** Insight po sesji (ANTARES), serializowane do JSON w `study_sessions.session_insights`). */
 export interface SessionInsightsPayload {
@@ -71,8 +71,8 @@ export interface SessionSummaryData {
   /** n poprzedniej ukończonej sesji z przedmiotu. L1: undefined. Brak poprzedniej: null. */
   previousTotalQuestions?: number | null;
   /**
-   * exam_readiness_score z profilu w momencie completeSession (przed after()).
-   * L1: undefined. Hard refresh po after(): undefined (delta niedostępna).
+   * Gotowość z poprzedniej ukończonej sesji (`session_insights.examReadiness.score`).
+   * L1: undefined. Brak poprzedniej z wynikiem: null.
    */
   examReadinessBefore?: number | null;
   answers: {
@@ -104,6 +104,8 @@ export interface SessionSummaryData {
   subjectId: string;
   /** Temat sesji (gdy start z `?topic=`) — przenoszony na „kolejną sesję”. */
   topicId?: string;
+  /** Filtr źródła tej sesji (`all` pomijany w URL). */
+  sourceFilter?: SourceFilter;
   /** Uzupełniane przy `completeSession` (ANTARES). */
   sessionInsights?: SessionInsightsPayload;
   examReadiness?: ExamReadinessSnapshot;

@@ -9,6 +9,7 @@ import {
   SUMMARY_WRONG_FILTER_MIN_N,
   summaryQuestionSnippet,
 } from "@/features/session/lib/summaryVariant";
+import { SummaryStatusMark } from "@/features/session/components/SummaryStatusMark";
 import { cn } from "@/lib/utils";
 
 type AnswerRow = SessionSummaryData["answers"][0];
@@ -19,13 +20,6 @@ function rowStatus(a: AnswerRow | undefined): RowStatus {
   if (a.isCorrect && a.confidence === "nie_wiedzialem") return "lucky";
   if (a.isCorrect) return "correct";
   return "wrong";
-}
-
-function statusDot(status: RowStatus) {
-  if (status === "correct") return "bg-success";
-  if (status === "wrong") return "bg-error";
-  if (status === "lucky") return "bg-brand-gold";
-  return "border border-white/20 bg-transparent";
 }
 
 export function SummaryAnswerStrip({
@@ -54,10 +48,12 @@ export function SummaryAnswerStrip({
   const scorePercent = Math.round(summary.accuracy * 100);
   const passThreshold = 60;
   const isPassed = scorePercent >= passThreshold;
-  const missingPercent = Math.max(0, passThreshold - scorePercent);
   const isOsceSession =
     summary.mode === "osce_topic" || summary.mode.toLowerCase().includes("osce");
-  const showWrongFilter = answers.length >= SUMMARY_WRONG_FILTER_MIN_N;
+  const wrongCount = answers.filter((a) => !a.isCorrect).length;
+  const missingPercent = Math.max(0, passThreshold - scorePercent);
+  const showWrongFilter =
+    answers.length >= SUMMARY_WRONG_FILTER_MIN_N && wrongCount > 0;
 
   return (
     <section className="space-y-4">
@@ -129,13 +125,7 @@ export function SummaryAnswerStrip({
                 }
                 className="flex w-full items-start gap-3 px-4 py-3 text-left transition-colors duration-200 ease-out hover:bg-white/[0.04]"
               >
-                <span
-                  className={cn(
-                    "mt-1.5 size-2.5 shrink-0 rounded-full",
-                    statusDot(status),
-                  )}
-                  aria-hidden
-                />
+                <SummaryStatusMark status={status} className="mt-0.5" />
                 <span className="min-w-0 flex-1 font-body text-body-sm text-primary">
                   {summaryQuestionSnippet(a.questionText)}
                 </span>
@@ -151,26 +141,38 @@ export function SummaryAnswerStrip({
                 </span>
               </button>
               {open ? (
-                <div className="space-y-3 border-t border-white/[0.06] bg-background/40 px-4 py-3">
+                <div className="space-y-3 border-t border-white/[0.06] bg-background/40 px-4 py-4 sm:px-5">
                   <p className="font-body text-body-sm text-primary">
                     {a.questionText}
                   </p>
-                  <p className="font-body text-body-sm text-secondary">
-                    {t("summaryYourAnswerShort", {
-                      selected: a.selectedOptionText,
-                    })}
-                  </p>
-                  <p className="font-body text-body-sm text-secondary">
-                    {t("summaryCorrectAnswerLabel", {
-                      correct: a.correctOptionText,
-                    })}
-                  </p>
+                  {a.isCorrect ? (
+                    <p className="font-body text-body-sm text-secondary">
+                      {t("summaryYourAnswerCorrect", {
+                        selected: a.selectedOptionText,
+                      })}
+                    </p>
+                  ) : (
+                    <>
+                      <p className="font-body text-body-sm text-secondary">
+                        {t("summaryYourAnswerShort", {
+                          selected: a.selectedOptionText,
+                        })}
+                      </p>
+                      <p className="font-body text-body-sm text-secondary">
+                        {t("summaryCorrectAnswerLabel", {
+                          correct: a.correctOptionText,
+                        })}
+                      </p>
+                    </>
+                  )}
                   {a.explanation ? (
                     <div>
                       <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
                         {tCommon("explanation")}
                       </p>
-                      <div className="mt-2">{markdownBlock(a.explanation)}</div>
+                      <div className="mt-2 min-w-0 break-words">
+                        {markdownBlock(a.explanation)}
+                      </div>
                     </div>
                   ) : null}
                   <p className="font-body text-body-xs text-muted">
@@ -189,28 +191,25 @@ export function SummaryAnswerStrip({
       <div className="flex flex-wrap gap-4 font-body text-body-xs text-muted">
         {present.has("correct") ? (
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-success" aria-hidden />
+            <SummaryStatusMark status="correct" />
             {t("summaryCorrect")}
           </span>
         ) : null}
         {present.has("wrong") ? (
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-error" aria-hidden />
+            <SummaryStatusMark status="wrong" />
             {t("summaryWrong")}
           </span>
         ) : null}
         {present.has("lucky") ? (
           <span className="inline-flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-brand-gold" aria-hidden />
+            <SummaryStatusMark status="lucky" />
             {t("summaryLuckyGuess")}
           </span>
         ) : null}
         {present.has("unanswered") ? (
           <span className="inline-flex items-center gap-1.5">
-            <span
-              className="size-2 rounded-full border border-white/20"
-              aria-hidden
-            />
+            <SummaryStatusMark status="unanswered" />
             {t("summaryUnanswered")}
           </span>
         ) : null}

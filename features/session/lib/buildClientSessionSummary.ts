@@ -1,6 +1,6 @@
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
-import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionAnswer, SessionMode, SessionQuestion, SourceFilter } from "@/features/session/types";
 
 function optionText(opts: { id: string; text: string }[], id: string) {
   return opts.find((o) => o.id === id)?.text ?? id;
@@ -27,6 +27,7 @@ export type BuildClientSessionSummaryInput = {
   subjectShortName: string;
   mode: SessionMode;
   topicId?: string;
+  sourceFilter?: SourceFilter;
   questions: SessionQuestion[];
   answers: SessionAnswer[];
   profileXp: number | null;
@@ -44,6 +45,7 @@ export function buildClientSessionSummary(
     subjectShortName,
     mode,
     topicId,
+    sourceFilter,
     questions,
     answers,
     profileXp,
@@ -122,6 +124,7 @@ export function buildClientSessionSummary(
     achievementUnlocked: null,
     subjectId,
     topicId,
+    sourceFilter,
     dailyPlan,
   };
 }

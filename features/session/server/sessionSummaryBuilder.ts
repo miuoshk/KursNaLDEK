@@ -4,6 +4,7 @@ import type { Confidence, SessionMode } from "@/features/session/types";
 import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSessionInsights";
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
+import { parseSourceFilter } from "@/features/session/lib/sourceFilter";
 
 function topicNameFromJoin(
   topics: { name: string } | { name: string }[] | null | undefined,
@@ -34,6 +35,17 @@ function maxConsecutiveCorrect(rows: { is_correct: boolean }[]): number {
   return best;
 }
 
+function previousExamReadinessScore(
+  rows: Array<{ session_insights: unknown }> | null | undefined,
+): number | null {
+  for (const row of rows ?? []) {
+    const score = parseStoredSessionInsights(row.session_insights)
+      .examReadiness?.score;
+    if (typeof score === "number") return score;
+  }
+  return null;
+}
+
 export async function buildSessionSummary(
   supabase: SupabaseClient,
   sessionId: string,
@@ -42,7 +54,7 @@ export async function buildSessionSummary(
   const { data: session, error: se } = await supabase
     .from("study_sessions")
     .select(
-      "id, user_id, subject_id, topic_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights, plan_snapshot",
+      "id, user_id, subject_id, topic_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights, plan_snapshot, source_filter",
     )
     .eq("id", sessionId)
     .eq("user_id", userId)
@@ -52,7 +64,8 @@ export async function buildSessionSummary(
 
   const subjId = session.subject_id as string;
 
-  const [subjectRes, profileRes, prevRes, ansRes] = await Promise.all([
+  const [subjectRes, profileRes, prevRes, ansRes, prevReadinessRes] =
+    await Promise.all([
     supabase
       .from("subjects")
       .select("id, name, short_name")
@@ -60,7 +73,7 @@ export async function buildSessionSummary(
       .maybeSingle(),
     supabase
       .from("profiles")
-      .select("xp, current_streak, exam_readiness_score")
+      .select("xp, current_streak")
       .eq("id", userId)
       .maybeSingle(),
     supabase
@@ -80,6 +93,15 @@ export async function buildSessionSummary(
       )
       .eq("session_id", sessionId)
       .order("question_order", { ascending: true }),
+    supabase
+      .from("study_sessions")
+      .select("session_insights")
+      .eq("user_id", userId)
+      .eq("is_completed", true)
+      .neq("id", sessionId)
+      .not("session_insights", "is", null)
+      .order("completed_at", { ascending: false })
+      .limit(12),
   ]);
 
   const subject = subjectRes.data;
@@ -267,15 +289,10 @@ export async function buildSessionSummary(
     achievementUnlocked: null,
     subjectId: subject.id,
     topicId,
+    sourceFilter: parseSourceFilter(session.source_filter) ?? undefined,
     sessionInsights: sessionInsights ?? undefined,
     examReadiness: examReadiness ?? undefined,
-    examReadinessBefore: examReadiness
-      ? undefined
-      : typeof profile?.exam_readiness_score === "number"
-        ? profile.exam_readiness_score
-        : profile
-          ? null
-          : undefined,
+    examReadinessBefore: previousExamReadinessScore(prevReadinessRes.data),
     dailyPlan,
     strengthenedConcepts,
   };

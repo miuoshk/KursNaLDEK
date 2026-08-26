@@ -37,6 +37,7 @@ type Bootstrap =
       subjectShortName: string;
       mode: KnnpSessionMode;
       topicId?: string;
+      sourceFilter?: SourceFilter;
       questions: SessionQuestion[];
       reserveQuestions: SessionQuestion[];
       /** Deep-link do katalogu (param `q`) — trzymany w stanie, nie tylko w URL. */
@@ -98,6 +99,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         const sessionFocus =
           params.get("focus") === "due" ? ("due" as const) : undefined;
 
+        const source = parseSourceParam(params.get("src"));
         const res = await startSession({
           subjectId: subj || undefined,
           mode,
@@ -106,7 +108,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           questionIds: retryIds ?? undefined,
           focusQuestionId: mode === "katalog" ? focusQuestionId : undefined,
           focus: sessionFocus,
-          source: parseSourceParam(params.get("src")),
+          source,
           fillOwn: params.get("fillown") === "1" ? true : undefined,
           dailyPlan: params.get("plan") === "1" ? true : undefined,
         });
@@ -145,6 +147,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectShortName: res.subject.short_name,
             mode,
             topicId: topic,
+            sourceFilter: source,
             questions: res.questions,
             reserveQuestions: res.reserveQuestions ?? [],
             product: res.product,
@@ -166,6 +169,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             subjectShortName?: string;
             mode: KnnpSessionMode;
             topicId?: string;
+            sourceFilter?: SourceFilter;
             questions: SessionQuestion[];
             reserveQuestions?: SessionQuestion[];
             product?: string | null;
@@ -186,6 +190,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
                 inferSessionTopicId(
                   parsed.questions.map((q) => q.topicId ?? "").filter(Boolean),
                 ),
+              sourceFilter: parsed.sourceFilter,
               questions: parsed.questions,
               reserveQuestions: parsed.reserveQuestions ?? [],
               product: parsed.product,
@@ -224,6 +229,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         topicId: inferSessionTopicId(
           loaded.questions.map((q) => q.topicId ?? "").filter(Boolean),
         ),
+        sourceFilter: loaded.sourceFilter,
         questions: loaded.questions,
         reserveQuestions: loaded.reserveQuestions ?? [],
         product: loaded.product,
@@ -281,6 +287,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       subjectShortName={boot.subjectShortName}
       mode={boot.mode}
       topicId={boot.topicId}
+      sourceFilter={boot.sourceFilter}
       questions={boot.questions}
       reserveQuestions={boot.reserveQuestions}
       product={boot.product}

@@ -1,19 +1,21 @@
 "use client";
 
 import { Flame, Sparkles } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import {
   getSummaryVariant,
   isSummaryLayer2Ready,
 } from "@/features/session/lib/summaryVariant";
 
-function formatDelta(delta: number): string {
+function formatPositivePp(delta: number, locale: string): string {
   const rounded = Math.round(delta * 10) / 10;
-  const sign = rounded > 0 ? "+" : "";
-  const text =
-    Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
-  return `${sign}${text}%`;
+  const abs = Math.abs(rounded);
+  const formatted = new Intl.NumberFormat(locale, {
+    maximumFractionDigits: 1,
+    minimumFractionDigits: abs % 1 === 0 ? 0 : 1,
+  }).format(abs);
+  return `+${formatted} p.p.`;
 }
 
 export function SummaryPositivesBar({
@@ -24,6 +26,7 @@ export function SummaryPositivesBar({
   insightsLoading?: boolean;
 }) {
   const t = useTranslations("session");
+  const locale = useLocale();
   const variant = getSummaryVariant(summary);
   const layer2 = isSummaryLayer2Ready(summary);
   const streak = summary.newStreak;
@@ -32,11 +35,10 @@ export function SummaryPositivesBar({
   const showXp = xp > 0;
   const before = summary.examReadinessBefore;
   const after = summary.examReadiness?.score;
-  const showReadiness =
-    variant !== "micro" &&
-    typeof before === "number" &&
-    typeof after === "number";
-  const readinessDelta = showReadiness ? after - before : null;
+  const showReadiness = variant !== "micro" && typeof after === "number";
+  const readinessDelta =
+    showReadiness && typeof before === "number" ? after - before : null;
+  const showPositiveDelta = readinessDelta != null && readinessDelta > 0;
 
   if (!layer2) {
     return (
@@ -71,12 +73,14 @@ export function SummaryPositivesBar({
           {t("summaryXpEarned", { xp })}
         </li>
       ) : null}
-      {showReadiness && readinessDelta != null ? (
+      {showReadiness ? (
         <li className="inline-flex items-center gap-2 rounded-pill border border-white/[0.08] bg-card px-4 py-2 font-body text-body-sm text-primary">
-          {t("summaryReadinessDelta", {
-            score: Math.round(after),
-            delta: formatDelta(readinessDelta),
-          })}
+          {showPositiveDelta
+            ? t("summaryReadinessDeltaPositive", {
+                score: Math.round(after),
+                delta: formatPositivePp(readinessDelta, locale),
+              })
+            : t("summaryReadinessLevel", { score: Math.round(after) })}
         </li>
       ) : null}
       {showReadinessSkeleton ? (

@@ -10,8 +10,8 @@ import {
 } from "@/features/session/server/loadQuestionsByIdsOrdered";
 import { attachAntaresMetaToQuestions } from "@/features/session/lib/antares/questionMeta";
 import { fetchSessionQuestionMeta } from "@/features/session/server/fetchSessionQuestionMeta";
-import type { SessionQuestion } from "@/features/session/types";
-import { isSourceFilterUiEnabled } from "@/features/session/lib/sourceFilter";
+import type { SessionQuestion, SourceFilter } from "@/features/session/types";
+import { isSourceFilterUiEnabled, parseSourceFilter } from "@/features/session/lib/sourceFilter";
 
 const schema = z.string().uuid();
 
@@ -26,6 +26,7 @@ export type LoadSessionQuestionsResult =
       product?: string | null;
       adaptiveFeedbackEnabled: boolean;
       planSnapshot?: unknown;
+      sourceFilter?: SourceFilter;
     }
   | { ok: false; message: string };
 
@@ -52,7 +53,7 @@ export async function loadSessionQuestions(
     const { data: session, error: se } = await supabase
       .from("study_sessions")
       .select(
-        "id, user_id, subject_id, mode, question_ids, reserve_question_ids, engine_variant, feedback_experiment_variant, plan_snapshot",
+        "id, user_id, subject_id, mode, question_ids, reserve_question_ids, engine_variant, feedback_experiment_variant, plan_snapshot, source_filter",
       )
       .eq("id", sessionId.data)
       .maybeSingle();
@@ -135,6 +136,7 @@ export async function loadSessionQuestions(
       adaptiveFeedbackEnabled:
         session.feedback_experiment_variant === "treatment",
       planSnapshot: session.plan_snapshot ?? null,
+      sourceFilter: parseSourceFilter(session.source_filter) ?? undefined,
     };
   } catch (e) {
     console.error("[loadSessionQuestions]", e);

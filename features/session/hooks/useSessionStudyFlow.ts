@@ -26,6 +26,7 @@ import type {
   SessionAnswer,
   SessionMode,
   SessionQuestion,
+  SourceFilter,
 } from "@/features/session/types";
 
 type SessionApi = {
@@ -52,6 +53,7 @@ type FlowMeta = {
   subjectShortName: string;
   mode: SessionMode;
   topicId?: string;
+  sourceFilter?: SourceFilter;
   profileXp: number | null;
   profileStreak: number;
   adaptiveFeedbackEnabled?: boolean;
@@ -78,6 +80,7 @@ export function useSessionStudyFlow(
     subjectShortName,
     mode,
     topicId,
+    sourceFilter,
     profileXp,
     profileStreak,
     adaptiveFeedbackEnabled = false,
@@ -142,6 +145,7 @@ export function useSessionStudyFlow(
         subjectShortName,
         mode,
         topicId,
+        sourceFilter,
         questions,
         answers: answersOrdered,
         profileXp,
@@ -160,6 +164,7 @@ export function useSessionStudyFlow(
       subjectShortName,
       mode,
       topicId,
+      sourceFilter,
       questions,
       profileXp,
       profileStreak,

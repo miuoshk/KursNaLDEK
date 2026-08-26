@@ -85,5 +85,6 @@ export function mergeEnrichedSessionSummary(
       next.strengthenedConcepts ?? prev.strengthenedConcepts,
     answers: next.answers.length > 0 ? next.answers : prev.answers,
     topicId: prev.topicId ?? next.topicId,
+    sourceFilter: next.sourceFilter ?? prev.sourceFilter,
   };
 }

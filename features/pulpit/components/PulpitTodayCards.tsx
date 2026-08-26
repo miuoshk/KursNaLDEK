@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { buildSessionStartHref } from "@/features/session/lib/sessionCount";
 import type { PulpitData } from "@/features/pulpit/server/loadPulpit";
-import { getCurrentRank, getNextRank, getXpProgress } from "@/features/gamification/lib/ranks";
+import {
+  getCurrentRank,
+  getNextRank,
+  getXpProgress,
+} from "@/features/gamification/lib/ranks";
 import { formatStreakI18n } from "@/lib/formatStreak";
 import { cn } from "@/lib/utils";
 
@@ -53,8 +57,14 @@ function DailyGoalCard({
   index: number;
   t: ReturnType<typeof useTranslations<"pulpit">>;
 }) {
-  const goalDone = data.questionsToday >= data.dailyGoal;
-  const pct = ringPct(data.questionsToday, data.dailyGoal);
+  const plan = data.dailyPlan;
+  const planEnabled = plan.experimentVariant === "treatment";
+  const done = planEnabled
+    ? plan.completedEstimatedMinutes
+    : data.questionsToday;
+  const goal = planEnabled ? plan.budgetMinutes : data.dailyGoal;
+  const goalDone = done >= goal;
+  const pct = ringPct(done, goal);
 
   return (
     <CardShell label={t("dailyGoal")} index={index}>
@@ -91,9 +101,9 @@ function DailyGoalCard({
               <CheckCircle className="size-6 text-brand-gold" aria-hidden />
             ) : (
               <span className="font-heading text-2xl font-bold text-primary">
-                {data.questionsToday}
+                {done}
                 <span className="text-base font-normal text-secondary">
-                  /{data.dailyGoal}
+                  /{goal}
                 </span>
               </span>
             )}
@@ -102,10 +112,9 @@ function DailyGoalCard({
         <p className="font-body text-sm text-secondary">
           {goalDone
             ? t("goalReached")
-            : t("dailyGoalProgress", {
-                done: data.questionsToday,
-                goal: data.dailyGoal,
-              })}
+            : planEnabled
+              ? t("dailyMinutesProgress", { done, goal })
+              : t("dailyGoalProgress", { done, goal })}
         </p>
       </div>
     </CardShell>
@@ -125,11 +134,7 @@ function StreakCard({
 }) {
   const s = data.currentStreak;
   const flameColor =
-    s === 0
-      ? "text-secondary"
-      : s >= 7
-        ? "text-brand-gold"
-        : "text-brand-gold";
+    s === 0 ? "text-secondary" : s >= 7 ? "text-brand-gold" : "text-brand-gold";
 
   return (
     <CardShell label={t("streak")} index={index}>
@@ -149,7 +154,9 @@ function StreakCard({
           <p
             className={cn(
               "font-heading text-4xl font-bold",
-              s >= 7 ? "bg-gradient-to-r from-brand-gold to-[#E5A855] bg-clip-text text-transparent" : "text-brand-gold",
+              s >= 7
+                ? "bg-gradient-to-r from-brand-gold to-[#E5A855] bg-clip-text text-transparent"
+                : "text-brand-gold",
             )}
           >
             {s}
@@ -176,34 +183,41 @@ function ReviewCard({
   index: number;
   t: ReturnType<typeof useTranslations<"pulpit">>;
 }) {
-  const d = data.dueReviews;
+  const planEnabled = data.dailyPlan.experimentVariant === "treatment";
+  const d = planEnabled ? data.dailyPlan.dueBacklog : data.dueReviews;
   const numColor =
-    d === 0
-      ? "text-secondary"
-      : d <= 10
-        ? "text-brand-gold"
-        : "text-[#E5A855]";
-
-  const reviewCount = Math.min(data.preferredSessionCount, d);
+    d === 0 ? "text-secondary" : d <= 10 ? "text-brand-gold" : "text-[#E5A855]";
 
   return (
     <CardShell label={t("reviews")} index={index}>
       <p className={cn("font-heading text-4xl font-bold", numColor)}>{d}</p>
       {d > 0 ? (
-        <Link
-          href={buildSessionStartHref({
-            mode: "inteligentna",
-            count: reviewCount,
-            focus: "due",
-          })}
-          className="mt-3 inline-flex items-center rounded-btn border border-brand-gold/40 px-3 py-1 font-body text-body-sm font-medium text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
-        >
-          {t("reviewAction", { count: reviewCount })}
-        </Link>
+        planEnabled ? (
+          <p className="mt-3 font-body text-body-sm text-secondary">
+            {t("reviewsIncludedInPlan", {
+              count: data.dailyPlan.dueCount,
+            })}
+          </p>
+        ) : (
+          <Link
+            href={buildSessionStartHref({
+              mode: "inteligentna",
+              count: Math.min(data.preferredSessionCount, d),
+              focus: "due",
+            })}
+            className="mt-3 inline-flex items-center rounded-btn border border-brand-gold/40 px-3 py-1 font-body text-body-sm font-medium text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
+          >
+            {t("reviewAction", {
+              count: Math.min(data.preferredSessionCount, d),
+            })}
+          </Link>
+        )
       ) : (
         <div className="mt-3 flex items-center gap-1.5">
           <CheckCircle className="size-4 text-secondary" aria-hidden />
-          <p className="font-body text-sm text-secondary">{t("reviewsUpToDate")}</p>
+          <p className="font-body text-sm text-secondary">
+            {t("reviewsUpToDate")}
+          </p>
         </div>
       )}
     </CardShell>

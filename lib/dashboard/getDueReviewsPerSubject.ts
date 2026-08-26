@@ -17,6 +17,7 @@ export async function getDueReviewsPerSubject(
   userId: string,
   catalog: KnnpCatalogRows,
   track: string,
+  engineVariant: "shadow" | "treatment" = "shadow",
 ): Promise<Map<string, number>> {
   const out = new Map<string, number>();
   const topicIds = catalog.topicRows.map((t) => t.id);
@@ -27,7 +28,11 @@ export async function getDueReviewsPerSubject(
     topicToSubject.set(t.id, t.subject_id);
   }
 
-  const { data, error } = await supabase.rpc("topic_progress_stats", {
+  const rpcName =
+    engineVariant === "treatment"
+      ? "topic_memory_v2_due"
+      : "topic_progress_stats";
+  const { data, error } = await supabase.rpc(rpcName, {
     p_user_id: userId,
     p_topic_ids: topicIds,
     p_track: normalizeTrack(track),

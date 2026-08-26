@@ -44,7 +44,10 @@ export function resolveSessionCount(input: {
   if (input.lastUsed != null && input.lastUsed >= SESSION_COUNT_MIN) {
     return clampSessionCount(input.lastUsed);
   }
-  if (input.profileDefault != null && input.profileDefault >= SESSION_COUNT_MIN) {
+  if (
+    input.profileDefault != null &&
+    input.profileDefault >= SESSION_COUNT_MIN
+  ) {
     return clampSessionCount(input.profileDefault);
   }
   return DEFAULT_SESSION_COUNT;
@@ -60,6 +63,8 @@ export type SessionStartParams = {
   focus?: "due";
   src?: string;
   fillOwn?: boolean;
+  /** Sesja uruchomiona z osobistego planu dnia. */
+  dailyPlan?: boolean;
 };
 
 export function buildSessionStartHref(params: SessionStartParams = {}): string {
@@ -67,11 +72,15 @@ export function buildSessionStartHref(params: SessionStartParams = {}): string {
   if (params.subject) q.set("subject", params.subject);
   if (params.topic) q.set("topic", params.topic);
   q.set("mode", params.mode ?? "inteligentna");
-  q.set("count", String(clampSessionCount(params.count ?? DEFAULT_SESSION_COUNT)));
+  q.set(
+    "count",
+    String(clampSessionCount(params.count ?? DEFAULT_SESSION_COUNT)),
+  );
   if (params.retry) q.set("retry", params.retry);
   if (params.focus === "due") q.set("focus", "due");
   if (params.src && params.src !== "all") q.set("src", params.src);
   if (params.fillOwn) q.set("fillown", "1");
+  if (params.dailyPlan) q.set("plan", "1");
   return `/sesja/new?${q.toString()}`;
 }
 

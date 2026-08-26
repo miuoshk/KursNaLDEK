@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 const schema = z.object({
@@ -11,8 +12,7 @@ const schema = z.object({
 });
 
 export type CreateOsceTopicSessionResult =
-  | { ok: true; sessionId: string }
-  | { ok: false; message: string };
+  { ok: true; sessionId: string } | { ok: false; message: string };
 
 export async function createOsceTopicSession(
   raw: z.infer<typeof schema>,
@@ -33,17 +33,21 @@ export async function createOsceTopicSession(
       return { ok: false, message: "Brak sesji logowania." };
     }
 
-    const access = await requireLearningAccessForSubject(user.id, parsed.data.subjectId);
+    const access = await requireLearningAccessForSubject(
+      user.id,
+      parsed.data.subjectId,
+    );
     if (!access.ok) {
       return { ok: false, message: access.message };
     }
 
-    const { data: inserted, error } = await supabase
+    const { data: inserted, error } = await createAdminClient()
       .from("study_sessions")
       .insert({
         user_id: user.id,
         subject_id: parsed.data.subjectId,
         mode: "osce_topic",
+        session_kind: "osce",
         total_questions: parsed.data.totalQuestions,
       })
       .select("id")

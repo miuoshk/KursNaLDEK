@@ -25,13 +25,13 @@ export async function loadQuestionsByIdsOrdered(
     const query = options?.includeSourceMeta
       ? base
           .select(
-            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, source, repeat_count, first_seen_session, source_exam, topics ( name )",
+            "id, topic_id, text, options, correct_option_id, explanation, explanation_blocks, source_code, image_url, disable_option_shuffle, source, repeat_count, first_seen_session, source_exam, question_concepts(concept_id, relation, weight), topics ( name, knowledge_card )",
           )
           .in("id", slice)
           .eq("is_active", true)
       : base
           .select(
-            "id, topic_id, text, options, correct_option_id, explanation, source_code, image_url, disable_option_shuffle, topics ( name )",
+            "id, topic_id, text, options, correct_option_id, explanation, explanation_blocks, source_code, image_url, disable_option_shuffle, question_concepts(concept_id, relation, weight), topics ( name, knowledge_card )",
           )
           .in("id", slice)
           .eq("is_active", true);
@@ -48,7 +48,9 @@ export async function loadQuestionsByIdsOrdered(
     }
   }
 
-  const ordered = ids.map((id) => byId.get(id)).filter(Boolean) as QuestionRow[];
+  const ordered = ids
+    .map((id) => byId.get(id))
+    .filter(Boolean) as QuestionRow[];
   if (options?.includeSourceMeta) {
     await attachCemSessionMeta(supabase, ordered);
   }

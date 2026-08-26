@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Infinity as InfinityIcon } from "lucide-react";
 import {
@@ -21,6 +21,7 @@ import {
 import { FEATURES } from "@/lib/featureFlags";
 import { isSourceFilterLive } from "@/lib/products";
 import { Toggle } from "@/features/shared/components/Toggle";
+import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
 
 const PRESETS = SESSION_COUNT_PRESETS;
 type PresetValue = (typeof PRESETS)[number] | "all" | null;
@@ -33,6 +34,7 @@ type SmartSessionCTAProps = {
   product?: string;
   source?: SourceFilter;
   sourceCounts?: SourceFilterCounts | null;
+  dailyPlan?: DailyStudyPlan | null;
 };
 
 export function SmartSessionCTA({
@@ -43,23 +45,23 @@ export function SmartSessionCTA({
   product,
   source,
   sourceCounts = null,
+  dailyPlan = null,
 }: SmartSessionCTAProps) {
   const t = useTranslations("subjects");
   const tSession = useTranslations("session");
   const tFilter = useTranslations("sourceFilter");
-  const { questionsShort, allQuestionsAriaLabel } = getSessionCountLabels(tSession);
+  const { questionsShort, allQuestionsAriaLabel } =
+    getSessionCountLabels(tSession);
   const sourceLive =
-    Boolean(product) &&
-    FEATURES.cemSource &&
-    isSourceFilterLive(product);
+    Boolean(product) && FEATURES.cemSource && isSourceFilterLive(product);
+  const planEnabled = dailyPlan?.experimentVariant === "treatment";
   const cemCount = sourceCounts?.reference ?? 0;
   const ownCount = sourceCounts?.own ?? 0;
-  const thinCem = sourceLive && source === "reference" && isThinCemPool(cemCount);
+  const thinCem =
+    sourceLive && source === "reference" && isThinCemPool(cemCount);
   const [fillOwn, setFillOwn] = useState(true);
   const fillActive = thinCem && fillOwn;
-  const poolTotal = fillActive
-    ? cemCount + ownCount
-    : availableQuestionCount;
+  const poolTotal = fillActive ? cemCount + ownCount : availableQuestionCount;
   const canStart = poolTotal > 0;
   const maxQ = Math.max(1, poolTotal);
   const smartInitial = sessionCountToPickerState(
@@ -69,31 +71,33 @@ export function SmartSessionCTA({
     Math.min(initialSessionCount, maxQ),
   );
 
-  const [smartPreset, setSmartPreset] = useState<PresetValue>(smartInitial.preset);
+  const [smartPreset, setSmartPreset] = useState<PresetValue>(
+    smartInitial.preset,
+  );
   const [smartCustom, setSmartCustom] = useState(smartInitial.custom);
-  const [reviewPreset, setReviewPreset] = useState<PresetValue>(reviewInitial.preset);
+  const [reviewPreset, setReviewPreset] = useState<PresetValue>(
+    reviewInitial.preset,
+  );
   const [reviewCustom, setReviewCustom] = useState(reviewInitial.custom);
 
-  useEffect(() => {
-    if (typeof smartPreset === "number" && smartPreset > poolTotal) {
-      setSmartPreset("all");
-      setSmartCustom("");
-    }
-    if (typeof reviewPreset === "number" && reviewPreset > poolTotal) {
-      setReviewPreset("all");
-      setReviewCustom("");
-    }
-  }, [poolTotal, smartPreset, reviewPreset]);
+  const visibleSmartPreset =
+    typeof smartPreset === "number" && smartPreset > poolTotal
+      ? "all"
+      : smartPreset;
+  const visibleReviewPreset =
+    typeof reviewPreset === "number" && reviewPreset > poolTotal
+      ? "all"
+      : reviewPreset;
 
   const smartCount = resolveSessionPickerCount(
-    smartPreset,
-    smartCustom,
+    visibleSmartPreset,
+    visibleSmartPreset === "all" ? "" : smartCustom,
     maxQ,
     Math.min(initialSessionCount, maxQ),
   );
   const reviewCount = resolveSessionPickerCount(
-    reviewPreset,
-    reviewCustom,
+    visibleReviewPreset,
+    visibleReviewPreset === "all" ? "" : reviewCustom,
     maxQ,
     Math.min(initialSessionCount, maxQ),
   );
@@ -117,6 +121,32 @@ export function SmartSessionCTA({
     if (fillActive) q.set("fillown", "1");
     return `/sesja/new?${q.toString()}`;
   }, [subjectId, smartCount, srcParam, fillActive]);
+
+  const planHref = useMemo(() => {
+    if (!planEnabled) return null;
+    const count = Math.min(
+      maxQ,
+      Math.max(0, dailyPlan?.questionCount ?? smartCount),
+    );
+    if (count === 0) return null;
+    const q = new URLSearchParams({
+      subject: subjectId,
+      mode: "inteligentna",
+      count: String(count),
+      plan: "1",
+    });
+    if (srcParam) q.set("src", srcParam);
+    if (fillActive) q.set("fillown", "1");
+    return `/sesja/new?${q.toString()}`;
+  }, [
+    dailyPlan?.questionCount,
+    fillActive,
+    maxQ,
+    smartCount,
+    srcParam,
+    subjectId,
+    planEnabled,
+  ]);
 
   const reviewHref = useMemo(() => {
     const q = new URLSearchParams({
@@ -151,23 +181,48 @@ export function SmartSessionCTA({
   }, [subjectId, srcParam]);
 
   const smartMix = sessionMixCounts(smartCount, cemCount, ownCount, fillActive);
-  const reviewMix = sessionMixCounts(reviewCount, cemCount, ownCount, fillActive);
+  const reviewMix = sessionMixCounts(
+    reviewCount,
+    cemCount,
+    ownCount,
+    fillActive,
+  );
 
   return (
     <div className="space-y-5">
-      <h2 className="font-heading text-xl font-bold text-primary">{t("startLearning")}</h2>
+      <h2 className="font-heading text-xl font-bold text-primary">
+        {t("startLearning")}
+      </h2>
 
       <div className="rounded-card border border-brand-sage/20 bg-card p-5 sm:p-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
-              {t("smartSession")}
+              {planEnabled ? t("planToday") : t("smartSession")}
             </h3>
             <p className="mt-2 font-body text-body-sm text-secondary">
-              {t("smartSessionDesc")}
+              {planEnabled && dailyPlan
+                ? t("planTodayDesc", {
+                    minutes: dailyPlan.estimatedMinutes,
+                    due: dailyPlan.dueCount,
+                    fresh: dailyPlan.newCount,
+                    remediation: dailyPlan.remediationCount,
+                  })
+                : t("smartSessionDesc")}
             </p>
           </div>
-          {canStart ? (
+          {canStart && planEnabled && planHref ? (
+            <Link
+              href={planHref}
+              className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)] sm:w-auto"
+            >
+              {t("doPlanToday")}
+            </Link>
+          ) : canStart && planEnabled && dailyPlan?.questionCount === 0 ? (
+            <span className="inline-flex w-full shrink-0 items-center justify-center rounded-lg border border-success/25 bg-success/[0.08] px-6 py-3 font-body font-semibold text-success sm:w-auto">
+              {t("planComplete")}
+            </span>
+          ) : canStart ? (
             <Link
               href={smartHref}
               className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-sage px-6 py-3 font-body font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] hover:shadow-[0_0_16px_rgba(54,115,104,0.4)] sm:w-auto"
@@ -187,7 +242,10 @@ export function SmartSessionCTA({
               {tFilter("thinCemBar", { count: cemCount })}
             </p>
             <div className="mt-2.5 flex items-center justify-between gap-3">
-              <p id="cta-fill-own-label" className="font-body text-body-xs text-secondary">
+              <p
+                id="cta-fill-own-label"
+                className="font-body text-body-xs text-secondary"
+              >
                 {tFilter("fillWithOwn")}
               </p>
               <Toggle
@@ -215,22 +273,30 @@ export function SmartSessionCTA({
                 {t("dueReviewsOnly")}
               </p>
             </div>
-            <Link
-              href={dueReviewHref}
-              className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110 sm:w-auto"
-            >
-              {t("reviewButton", { count: Math.min(smartCount, dueCount) })}
-            </Link>
+            {planEnabled ? (
+              <span className="font-body text-body-xs font-medium text-brand-gold">
+                {t("dueIncludedInPlan")}
+              </span>
+            ) : (
+              <Link
+                href={dueReviewHref}
+                className="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-brand-gold px-5 py-2.5 font-body text-body-sm font-semibold text-background transition duration-200 ease-out hover:brightness-110 sm:w-auto"
+              >
+                {t("reviewButton", {
+                  count: Math.min(smartCount, dueCount),
+                })}
+              </Link>
+            )}
           </div>
         ) : null}
 
         <div className="mt-6 border-t border-border pt-4">
           <p className="font-body text-body-xs uppercase tracking-normal text-muted">
-            {t("questionCount")}
+            {planEnabled ? t("manualQuestionCount") : t("questionCount")}
           </p>
           <PresetPicker
-            preset={smartPreset}
-            custom={smartCustom}
+            preset={visibleSmartPreset}
+            custom={visibleSmartPreset === "all" ? "" : smartCustom}
             maxQ={maxQ}
             onPresetChange={setSmartPreset}
             onCustomChange={setSmartCustom}
@@ -246,6 +312,14 @@ export function SmartSessionCTA({
               {t("availableQuestions", { count: poolTotal })}
             </p>
           )}
+          {canStart && planEnabled ? (
+            <Link
+              href={smartHref}
+              className="mt-3 inline-flex items-center rounded-lg border border-brand-sage/40 px-4 py-2 font-body text-body-sm font-medium text-brand-sage transition-colors duration-200 hover:bg-brand-sage/10"
+            >
+              {t("startManualSession")}
+            </Link>
+          ) : null}
         </div>
       </div>
 
@@ -263,8 +337,8 @@ export function SmartSessionCTA({
               {t("questionCount")}
             </p>
             <PresetPicker
-              preset={reviewPreset}
-              custom={reviewCustom}
+              preset={visibleReviewPreset}
+              custom={visibleReviewPreset === "all" ? "" : reviewCustom}
               maxQ={maxQ}
               onPresetChange={setReviewPreset}
               onCustomChange={setReviewCustom}
@@ -275,7 +349,10 @@ export function SmartSessionCTA({
           </div>
           {thinCem && fillOwn ? (
             <p className="mt-2 font-body text-body-xs text-muted">
-              {tFilter("sessionMix", { cem: reviewMix.cem, own: reviewMix.own })}
+              {tFilter("sessionMix", {
+                cem: reviewMix.cem,
+                own: reviewMix.own,
+              })}
             </p>
           ) : null}
 
@@ -403,7 +480,9 @@ function PresetPicker({
           compact ? "h-7 w-[52px]" : "h-8 w-[56px]",
         )}
       />
-      <span className="ml-auto font-body text-body-xs text-muted">{questionsShort}</span>
+      <span className="ml-auto font-body text-body-xs text-muted">
+        {questionsShort}
+      </span>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import {
   Clock,
+  CheckCircle2,
   Flame,
   Lightbulb,
   RotateCcw,
@@ -111,14 +112,18 @@ function SummaryInteligentnaFooter({
   const tCommon = useTranslations("common");
   const insights = summary.sessionInsights;
   const readiness = summary.examReadiness;
+  const fatigueText =
+    insights?.fatigueWarning === "fatigue_detected"
+      ? t("fatigueSummary")
+      : insights?.fatigueWarning;
 
   const tips = [
     insights?.calibrationTip,
-    insights?.fatigueWarning,
+    fatigueText,
     (insights?.leechesHit?.length ?? 0) > 0
       ? t("summaryLeeches", { count: insights!.leechesHit.length })
       : null,
-    (insights?.retrievabilityGain ?? 0) > 0.01
+    !summary.dailyPlan && (insights?.retrievabilityGain ?? 0) > 0.01
       ? t("summaryRetrievability", {
           percent: Math.round((insights!.retrievabilityGain ?? 0) * 100),
         })
@@ -135,7 +140,9 @@ function SummaryInteligentnaFooter({
     <div className="mt-8 border-t border-white/[0.08] pt-6">
       {loading && !readiness && tips.length === 0 ? (
         <div className="space-y-2">
-          <p className="font-body text-body-xs text-muted">{t("summaryRecalculating")}</p>
+          <p className="font-body text-body-xs text-muted">
+            {t("summaryRecalculating")}
+          </p>
           <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
           <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
         </div>
@@ -159,20 +166,25 @@ function SummaryInteligentnaFooter({
           {tips.length > 0 ? (
             <ul className="space-y-3">
               {insights?.calibrationTip ? (
-                <InsightRow icon={Lightbulb}>{insights.calibrationTip}</InsightRow>
+                <InsightRow icon={Lightbulb}>
+                  {insights.calibrationTip}
+                </InsightRow>
               ) : null}
-              {insights?.fatigueWarning ? (
-                <InsightRow icon={Lightbulb}>{insights.fatigueWarning}</InsightRow>
+              {fatigueText ? (
+                <InsightRow icon={Lightbulb}>{fatigueText}</InsightRow>
               ) : null}
               {(insights?.leechesHit?.length ?? 0) > 0 ? (
                 <InsightRow icon={RotateCcw}>
                   {t("summaryLeeches", { count: insights!.leechesHit.length })}
                 </InsightRow>
               ) : null}
-              {(insights?.retrievabilityGain ?? 0) > 0.01 ? (
+              {!summary.dailyPlan &&
+              (insights?.retrievabilityGain ?? 0) > 0.01 ? (
                 <InsightRow icon={TrendingUp}>
                   {t("summaryRetrievability", {
-                    percent: Math.round((insights!.retrievabilityGain ?? 0) * 100),
+                    percent: Math.round(
+                      (insights!.retrievabilityGain ?? 0) * 100,
+                    ),
                   })}
                 </InsightRow>
               ) : null}
@@ -193,7 +205,9 @@ function SummaryInteligentnaFooter({
                 {readiness.verdict}
               </p>
               <p className="mt-3 font-body text-body-xs text-muted">
-                {t("summaryDailyRecommendation", { count: readiness.dailyRecommendation })}
+                {t("summaryDailyRecommendation", {
+                  count: readiness.dailyRecommendation,
+                })}
               </p>
             </div>
           ) : null}
@@ -222,17 +236,37 @@ export function SummaryHero({
     total: planned,
     questionsLabel: t("questionsShort"),
   });
-  const { title, subtitle } = pickHeadline(summary.accuracy, delta, t);
+  const accuracyHeadline = pickHeadline(summary.accuracy, delta, t);
+  const dailyPlan = summary.dailyPlan;
+  const retentionGain = Math.max(
+    0,
+    Math.round((summary.sessionInsights?.retrievabilityGain ?? 0) * 100),
+  );
+  const title = dailyPlan
+    ? dailyPlan.sessionCompletion >= 1
+      ? t("summaryPlanCompletedTitle")
+      : t("summaryPlanProgressTitle")
+    : accuracyHeadline.title;
+  const subtitle = dailyPlan
+    ? retentionGain > 0
+      ? t("summaryPredictedRetentionGain", { percent: retentionGain })
+      : t("summaryTargetRetention", {
+          percent: Math.round(dailyPlan.targetRetention * 100),
+        })
+    : accuracyHeadline.subtitle;
+  const ringProgress = dailyPlan?.sessionCompletion ?? summary.accuracy;
 
   return (
     <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
           <h1 className="font-heading text-heading-lg text-primary">{title}</h1>
-          <p className="mt-1.5 font-body text-body-md text-secondary">{subtitle}</p>
+          <p className="mt-1.5 font-body text-body-md text-secondary">
+            {subtitle}
+          </p>
           <p className="mt-4 font-body text-body-xs text-muted">
-            {summary.subjectName} · {sessionModeLabel(summary.mode, t)} · {questionsLine} ·{" "}
-            {formatSessionDuration(summary.durationSeconds)}
+            {summary.subjectName} · {sessionModeLabel(summary.mode, t)} ·{" "}
+            {questionsLine} · {formatSessionDuration(summary.durationSeconds)}
           </p>
         </div>
 
@@ -257,26 +291,40 @@ export function SummaryHero({
                 strokeLinecap="round"
                 strokeDasharray={C}
                 initial={{ strokeDashoffset: C }}
-                animate={{ strokeDashoffset: C * (1 - summary.accuracy) }}
+                animate={{ strokeDashoffset: C * (1 - ringProgress) }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="font-body text-4xl text-brand-gold">
-                {Math.round(summary.accuracy * 100)}%
+                {Math.round(ringProgress * 100)}%
               </span>
             </div>
           </div>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {t("summaryCorrectAnswers")}
+            {dailyPlan
+              ? t("summaryPlanCompletion")
+              : t("summaryCorrectAnswers")}
           </p>
           <div className="mt-2 flex items-center gap-1 font-body text-body-xs">
-            {prev == null ? (
-              <span className="text-muted">{t("summaryFirstSessionSubject")}</span>
+            {dailyPlan ? (
+              <span className="text-secondary">
+                {t("summaryAccuracySecondary", {
+                  percent: Math.round(summary.accuracy * 100),
+                })}
+              </span>
+            ) : prev == null ? (
+              <span className="text-muted">
+                {t("summaryFirstSessionSubject")}
+              </span>
             ) : (
               <>
-                <span className="text-secondary">{t("summaryPreviousSession")} </span>
-                <span className="text-secondary">{Math.round(prev * 100)}%</span>
+                <span className="text-secondary">
+                  {t("summaryPreviousSession")}{" "}
+                </span>
+                <span className="text-secondary">
+                  {Math.round(prev * 100)}%
+                </span>
                 {delta !== 0 && delta != null ? (
                   <span
                     className={cn(
@@ -301,10 +349,26 @@ export function SummaryHero({
         </div>
 
         <ul className="flex flex-col gap-3 text-body-sm lg:w-[260px]">
+          {dailyPlan ? (
+            <li className="flex items-center gap-2">
+              <CheckCircle2
+                className="size-4 shrink-0 text-brand-sage"
+                aria-hidden
+              />
+              <span className="font-body text-primary">
+                {t("summaryDailyPlanMinutes", {
+                  completed: dailyPlan.completedMinutesToday,
+                  target: dailyPlan.targetMinutes,
+                })}
+              </span>
+            </li>
+          ) : null}
           <li className="flex items-center gap-2">
             <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
             <span className="font-body text-primary">
-              {t("summaryTime", { duration: formatSessionDuration(summary.durationSeconds) })}
+              {t("summaryTime", {
+                duration: formatSessionDuration(summary.durationSeconds),
+              })}
             </span>
           </li>
           <li className="flex items-center gap-2">
@@ -319,7 +383,9 @@ export function SummaryHero({
             <Flame
               className={cn(
                 "size-4 shrink-0",
-                summary.longestStreak >= 5 ? "text-brand-gold" : "text-secondary",
+                summary.longestStreak >= 5
+                  ? "text-brand-gold"
+                  : "text-secondary",
               )}
               aria-hidden
             />

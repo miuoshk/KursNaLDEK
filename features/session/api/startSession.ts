@@ -3,7 +3,11 @@
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import type { SessionMode, SessionQuestion, SessionQuestionMeta } from "@/features/session/types";
+import { createAdminClient } from "@/lib/supabase/admin";
+import type {
+  SessionQuestion,
+  SessionQuestionMeta,
+} from "@/features/session/types";
 import { isTopicVisibleForTrack } from "@/lib/content/topicTrackVisibility";
 import {
   fetchKnnpAllQuestionIds,
@@ -19,7 +23,6 @@ import {
   normalizeTrack,
   normalizeYear,
   type StudyTrack,
-  type StudyYear,
 } from "@/features/access/lib/studyAccess";
 import { requireLearningAccessForSelection } from "@/features/access/server/requireLearningAccess";
 import {
@@ -29,12 +32,11 @@ import {
 import { buildAntaresInteligentnaSession } from "@/features/session/server/buildAntaresInteligentnaSession";
 import { fetchSessionQuestionMeta } from "@/features/session/server/fetchSessionQuestionMeta";
 import { attachAntaresMetaToQuestions } from "@/features/session/lib/antares/questionMeta";
-import { buildFallbackReserveIds } from "@/features/session/lib/antares/reservePool";
 import {
   fetchDueReviewQuestionIdsForTopics,
+  fetchMemoryV2DueFromQuestionPool,
   fetchUnseenQuestionIds,
   isPoolFullySeen,
-  mixNaukaQuestionIds,
   mixTopicCompletionQuestionIds,
 } from "@/features/session/server/sessionQuestionMix";
 import { placeFocusQuestionFirst } from "@/features/session/lib/placeFocusQuestionFirst";
@@ -52,6 +54,20 @@ import {
 } from "@/features/session/lib/sourceFilter";
 import { restrictQuestionIdsBySource } from "@/features/session/server/restrictQuestionIdsBySource";
 import { isThinCemPool } from "@/features/session/lib/questionSourceBadge";
+import {
+  LEGACY_SCHEDULER_VERSION,
+  MEMORY_SCHEDULER_VERSION,
+} from "@/features/session/lib/memory/scheduler";
+import { loadSessionMemoryPlan } from "@/features/session/server/loadSessionMemoryPlan";
+import { loadDailyPlan } from "@/features/session/server/loadDailyPlan";
+import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
+import { resolveMemoryEngineVariant } from "@/features/session/server/resolveMemoryEngineVariant";
+import {
+  ADAPTIVE_FEEDBACK_EXPERIMENT_KEY,
+  DAILY_PLAN_EXPERIMENT_KEY,
+} from "@/features/session/lib/experiments/memoryV2Experiment";
+import { resolveLearningExperiment } from "@/features/session/server/resolveLearningExperiment";
+import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 
 const schema = z.object({
   subjectId: z.string().optional(),
@@ -67,6 +83,8 @@ const schema = z.object({
   source: z.enum(["all", "reference", "own"]).optional(),
   /** Chuda pula CEM: dociągnij autorskie do wybranej liczby. */
   fillOwn: z.boolean().optional(),
+  /** Start z osobistego planu dnia; zapisuje bazę do podsumowania. */
+  dailyPlan: z.boolean().optional(),
 });
 
 export type StartSessionResult =
@@ -78,6 +96,8 @@ export type StartSessionResult =
       /** Pula zapasowa (tylko inteligentna) — podmiany w trakcie sesji. */
       reserveQuestions?: SessionQuestion[];
       product?: string | null;
+      adaptiveFeedbackEnabled: boolean;
+      planSnapshot?: unknown;
     }
   | { ok: false; message: string };
 
@@ -101,6 +121,7 @@ export async function startSession(
     focus,
     source: sourceRaw,
     fillOwn: fillOwnRaw,
+    dailyPlan: requestedDailyPlan,
   } = parsed.data;
   const subjectId = isMix ? "" : rawSubject;
 
@@ -114,14 +135,52 @@ export async function startSession(
     if (authError || !user) {
       return { ok: false, message: t("errors.mustLoginToStart") };
     }
+    const admin = createAdminClient();
 
     const profile = await getProfileByUserId(user.id);
+    const [memoryExperiment, feedbackExperiment, dailyPlanExperiment] =
+      await Promise.all([
+        mode === "inteligentna"
+          ? resolveMemoryEngineVariant(supabase, user.id)
+          : Promise.resolve(null),
+        mode !== "katalog"
+          ? resolveLearningExperiment(
+              supabase,
+              user.id,
+              ADAPTIVE_FEEDBACK_EXPERIMENT_KEY,
+            )
+          : Promise.resolve(null),
+        mode !== "katalog"
+          ? resolveLearningExperiment(
+              supabase,
+              user.id,
+              DAILY_PLAN_EXPERIMENT_KEY,
+            )
+          : Promise.resolve(null),
+      ]);
+    const isDailyPlan =
+      requestedDailyPlan === true &&
+      mode === "inteligentna" &&
+      dailyPlanExperiment?.variant === "treatment" &&
+      !explicitIds?.length &&
+      focus == null &&
+      focusQuestionId == null;
+    const engineVariant =
+      memoryExperiment?.engineVariant === "treatment" ? "treatment" : "shadow";
+    const schedulerVersion =
+      engineVariant === "treatment"
+        ? MEMORY_SCHEDULER_VERSION
+        : LEGACY_SCHEDULER_VERSION;
     let viewerTrack: StudyTrack = normalizeTrack(profile?.current_track);
     const profileYear = normalizeYear(profile?.current_year);
 
     // ── Explicit question IDs (e.g. retry wrong questions) ──
     if (explicitIds && explicitIds.length > 0) {
-      const access = await requireLearningAccessForSelection(user.id, viewerTrack, profileYear);
+      const access = await requireLearningAccessForSelection(
+        user.id,
+        viewerTrack,
+        profileYear,
+      );
       if (!access.ok) {
         return { ok: false, message: access.message };
       }
@@ -136,7 +195,11 @@ export async function startSession(
           viewerTrack = normalizeTrack(subTrack.track as string);
         }
       }
-      const rows = await loadQuestionsByIdsOrdered(supabase, explicitIds, viewerTrack);
+      const rows = await loadQuestionsByIdsOrdered(
+        supabase,
+        explicitIds,
+        viewerTrack,
+      );
       if (rows.length === 0) {
         return { ok: false, message: t("errors.loadQuestionsFailed") };
       }
@@ -144,7 +207,12 @@ export async function startSession(
         mode === "inteligentna"
           ? attachAntaresMetaToQuestions(
               mapRowsToSessionQuestions(rows),
-              await fetchSessionQuestionMeta(supabase, user.id, explicitIds),
+              await fetchSessionQuestionMeta(
+                supabase,
+                user.id,
+                explicitIds,
+                engineVariant,
+              ),
             )
           : mapRowsToSessionQuestions(rows);
 
@@ -179,8 +247,18 @@ export async function startSession(
         sourceRaw,
         subjMeta?.product as string | undefined,
       );
+      const memoryPlan = await loadSessionMemoryPlan(
+        supabase,
+        user.id,
+        profile,
+        {
+          product: (subjMeta?.product as string | null) ?? null,
+          track: viewerTrack,
+          engineVariant,
+        },
+      );
 
-      const { data: inserted, error: insErr } = await supabase
+      const { data: inserted, error: insErr } = await admin
         .from("study_sessions")
         .insert({
           user_id: user.id,
@@ -190,6 +268,26 @@ export async function startSession(
           total_questions: questions.length,
           question_ids: explicitIds,
           source_filter: retrySource,
+          session_kind: mode === "inteligentna" ? "intelligent" : "classic",
+          scheduler_version: schedulerVersion,
+          engine_variant: engineVariant,
+          experiment_key: memoryExperiment?.experimentKey ?? null,
+          experiment_bucket: memoryExperiment?.bucket ?? null,
+          experiment_rollout_percent: memoryExperiment?.rolloutPercent ?? null,
+          feedback_experiment_variant: feedbackExperiment?.variant ?? "control",
+          daily_plan_experiment_variant:
+            dailyPlanExperiment?.variant ?? "control",
+          memory_parameter_set_id: memoryPlan.parameters.parameterSetId,
+          target_retention: memoryPlan.retention.requestRetention,
+          maximum_interval: memoryPlan.retention.maximumInterval,
+          plan_snapshot: {
+            memory: {
+              parameterScope: memoryPlan.parameters.parameterScope,
+              requestRetention: memoryPlan.retention.requestRetention,
+              maximumInterval: memoryPlan.retention.maximumInterval,
+              backlogPressure: memoryPlan.retention.backlogPressure,
+            },
+          },
         })
         .select("id")
         .single();
@@ -208,6 +306,9 @@ export async function startSession(
           short_name: subjMeta?.short_name ?? "",
         },
         questions,
+        product: (subjMeta?.product as string | null) ?? null,
+        adaptiveFeedbackEnabled: feedbackExperiment?.variant === "treatment",
+        planSnapshot: null,
       };
     }
 
@@ -219,7 +320,11 @@ export async function startSession(
     }
 
     if (isMix) {
-      const access = await requireLearningAccessForSelection(user.id, viewerTrack, profileYear);
+      const access = await requireLearningAccessForSelection(
+        user.id,
+        viewerTrack,
+        profileYear,
+      );
       if (!access.ok) {
         return { ok: false, message: access.message };
       }
@@ -246,7 +351,9 @@ export async function startSession(
       subjectRow = subject;
       subjectTrack = normalizeTrack(subject.track as string);
       viewerTrack = subjectTrack;
-      const subjectYear = normalizeYear(subject.year as number | null | undefined);
+      const subjectYear = normalizeYear(
+        subject.year as number | null | undefined,
+      );
       const access = await requireLearningAccessForSelection(
         user.id,
         subjectTrack,
@@ -298,10 +405,16 @@ export async function startSession(
           .eq("id", topicId)
           .eq("is_inbox", false)
           .maybeSingle();
-        if (te || !top || !isSubjectInScope(subjectId, top.subject_id as string)) {
+        if (
+          te ||
+          !top ||
+          !isSubjectInScope(subjectId, top.subject_id as string)
+        ) {
           return { ok: false, message: t("errors.invalidTopic") };
         }
-        if (!isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)) {
+        if (
+          !isTopicVisibleForTrack(top.tracks as string[] | null, subjectTrack)
+        ) {
           return { ok: false, message: t("errors.topicNotOnTrack") };
         }
         pool = await fetchTopicQuestionIds(supabase, topicId, viewerTrack);
@@ -337,7 +450,9 @@ export async function startSession(
       );
     }
 
-    const subjectProduct = (subjectRow?.product as string | undefined) ?? null;
+    const subjectProduct =
+      (subjectRow?.product as string | undefined) ??
+      (isMix ? ((profile?.current_product as string | null) ?? null) : null);
     const sourceEnabled = isSourceFilterUiEnabled(subjectProduct);
     const source = resolveEngineSourceFilter(sourceRaw, subjectProduct);
     let pinnedCemIds: string[] = [];
@@ -367,6 +482,63 @@ export async function startSession(
       }
     }
 
+    const memoryPlan = await loadSessionMemoryPlan(supabase, user.id, profile, {
+      product: subjectProduct,
+      track: viewerTrack,
+      engineVariant,
+    });
+    const questionsTodayAtStart = isDailyPlan
+      ? await countSessionAnswersTodayWarsaw(supabase, user.id)
+      : null;
+    let scopedPlanDueCount = memoryPlan.daily.dueCount;
+    if (isDailyPlan) {
+      if (isMix) {
+        scopedPlanDueCount = await getDueReviewCount(
+          supabase,
+          user.id,
+          viewerTrack,
+          normalizeYear(subjectRow?.year ?? profileYear),
+          subjectProduct,
+          engineVariant,
+        );
+      } else if (engineVariant === "treatment") {
+        scopedPlanDueCount = (
+          await fetchMemoryV2DueFromQuestionPool(
+            supabase,
+            user.id,
+            pool,
+            pool.length,
+          )
+        ).length;
+      } else {
+        scopedPlanDueCount = (
+          await fetchDueReviewQuestionIdsForTopics(
+            supabase,
+            user.id,
+            topicOkForDue,
+            viewerTrack,
+            pool.length,
+            new Set(pool),
+          )
+        ).length;
+      }
+    }
+    const dailyStudyPlan = isDailyPlan
+      ? await loadDailyPlan(supabase, user.id, profile, {
+          dueCount: scopedPlanDueCount,
+          questionsToday: questionsTodayAtStart ?? 0,
+          subjectId: isMix ? undefined : subjectId,
+          maxQuestions: pool.length,
+        })
+      : null;
+    const effectiveCount = dailyStudyPlan?.questionCount ?? count;
+    if (isDailyPlan && effectiveCount === 0) {
+      return {
+        ok: false,
+        message: t("errors.planAlreadyComplete"),
+      };
+    }
+
     if (mode === "katalog") {
       chosenIds = pool;
       if (focusQuestionId) {
@@ -376,14 +548,25 @@ export async function startSession(
         ];
       }
     } else if (mode === "inteligentna" && focus === "due") {
-      const dueIds = await fetchDueReviewQuestionIdsForTopics(
-        supabase,
-        user.id,
-        topicOkForDue,
-        viewerTrack,
-        count,
-        topicFilter,
-      );
+      let dueIds =
+        engineVariant === "treatment"
+          ? await fetchMemoryV2DueFromQuestionPool(
+              supabase,
+              user.id,
+              pool,
+              effectiveCount,
+            )
+          : [];
+      if (engineVariant !== "treatment" && dueIds.length === 0) {
+        dueIds = await fetchDueReviewQuestionIdsForTopics(
+          supabase,
+          user.id,
+          topicOkForDue,
+          viewerTrack,
+          effectiveCount,
+          topicFilter,
+        );
+      }
       if (dueIds.length === 0) {
         return {
           ok: false,
@@ -392,14 +575,16 @@ export async function startSession(
             : t("errors.noDueQuestionsSubject"),
         };
       }
-      chosenIds = dueIds.slice(0, count);
+      chosenIds = dueIds.slice(0, effectiveCount);
       antaresMeta = await fetchSessionQuestionMeta(
         supabase,
         user.id,
         chosenIds,
+        engineVariant,
       );
     } else if (mode === "inteligentna") {
-      const wantsFullTopicSet = topicId != null && count >= pool.length;
+      const wantsFullTopicSet =
+        topicId != null && effectiveCount >= pool.length;
       if (wantsFullTopicSet && pool.length > 0) {
         topicFullRerun = await isPoolFullySeen(supabase, user.id, pool);
       }
@@ -410,43 +595,45 @@ export async function startSession(
           supabase,
           user.id,
           chosenIds,
+          engineVariant,
         );
       } else {
         const antares = await buildAntaresInteligentnaSession(
           supabase,
           user.id,
-          count,
+          effectiveCount,
           pool,
           topicOkForDue,
           topicFilter,
           viewerTrack,
-          { source, product: subjectProduct },
+          {
+            source,
+            product: subjectProduct,
+            engineVariant,
+            dailyPlanMix: dailyStudyPlan
+              ? {
+                  due: dailyStudyPlan.dueCount,
+                  new: dailyStudyPlan.newCount,
+                  remediation: dailyStudyPlan.remediationCount,
+                }
+              : undefined,
+          },
         );
         if (antares.questionIds.length > 0) {
           chosenIds = antares.questionIds;
           reserveIds = antares.reserveIds;
           antaresMeta = antares.metaByQuestionId;
         } else {
-          const dueIds = await fetchDueReviewQuestionIdsForTopics(
-            supabase,
-            user.id,
-            topicOkForDue,
-            viewerTrack,
-            count,
-            topicFilter,
+          chosenIds = antares.fallbackIds.slice(0, effectiveCount);
+          reserveIds = antares.fallbackIds.slice(
+            effectiveCount,
+            effectiveCount + Math.min(30, effectiveCount),
           );
-          const unseenIds = await fetchUnseenQuestionIds(
-            supabase,
-            user.id,
-            pool,
-            count,
-          );
-          chosenIds = mixNaukaQuestionIds(dueIds, unseenIds, pool, count);
-          reserveIds = buildFallbackReserveIds(count, chosenIds, pool);
           antaresMeta = await fetchSessionQuestionMeta(
             supabase,
             user.id,
             [...chosenIds, ...reserveIds],
+            engineVariant,
           );
         }
       }
@@ -462,14 +649,14 @@ export async function startSession(
           unseenIds,
           [],
           pool,
-          count,
+          effectiveCount,
           "przeglad",
         );
       } else {
-        chosenIds = shuffle(pool).slice(0, count);
+        chosenIds = shuffle(pool).slice(0, effectiveCount);
       }
     } else {
-      chosenIds = shuffle(pool).slice(0, count);
+      chosenIds = shuffle(pool).slice(0, effectiveCount);
     }
 
     if (chosenIds.length === 0) {
@@ -480,7 +667,7 @@ export async function startSession(
     }
 
     if (mode !== "katalog" && !topicFullRerun) {
-      chosenIds = chosenIds.slice(0, count);
+      chosenIds = chosenIds.slice(0, effectiveCount);
     }
 
     if (pinnedCemIds.length > 0 && mode !== "katalog") {
@@ -488,7 +675,10 @@ export async function startSession(
       const rest = chosenIds.filter((id) => !pinned.has(id));
       chosenIds = [...pinnedCemIds, ...rest];
       if (!topicFullRerun) {
-        chosenIds = chosenIds.slice(0, Math.max(count, pinnedCemIds.length));
+        chosenIds = chosenIds.slice(
+          0,
+          Math.max(effectiveCount, pinnedCemIds.length),
+        );
       }
     }
 
@@ -512,15 +702,11 @@ export async function startSession(
 
     if (mode === "katalog" && focusQuestionId) {
       if (!questions.some((q) => q.id === focusQuestionId)) {
-        const extraRows = await loadQuestionsByIdsOrdered(
-          supabase,
-          [focusQuestionId],
-        );
+        const extraRows = await loadQuestionsByIdsOrdered(supabase, [
+          focusQuestionId,
+        ]);
         if (extraRows.length > 0) {
-          questions = [
-            mapRowsToSessionQuestions(extraRows)[0],
-            ...questions,
-          ];
+          questions = [mapRowsToSessionQuestions(extraRows)[0], ...questions];
         }
       }
       questions = placeFocusQuestionFirst(questions, focusQuestionId);
@@ -552,6 +738,8 @@ export async function startSession(
         },
         questions,
         product: subjectProduct,
+        adaptiveFeedbackEnabled: false,
+        planSnapshot: null,
       };
     }
 
@@ -573,8 +761,58 @@ export async function startSession(
 
     const dbMode = mode === "inteligentna" ? "nauka" : "egzamin";
     const insertTopicId = await resolveStudySessionTopicId(supabase, topicId);
+    const remediationCount = questions.filter(
+      (question) => question.antares?.isLeech,
+    ).length;
+    const newCount = questions.filter(
+      (question) => question.antares?.isNew,
+    ).length;
+    const dueCount = Math.max(
+      0,
+      questions.length - remediationCount - newCount,
+    );
 
-    const { data: inserted, error: insErr } = await supabase
+    const planSnapshot = {
+      memory: {
+        parameterScope: memoryPlan.parameters.parameterScope,
+        requestRetention: memoryPlan.retention.requestRetention,
+        maximumInterval: memoryPlan.retention.maximumInterval,
+        backlogPressure: memoryPlan.retention.backlogPressure,
+      },
+      ...(isDailyPlan
+        ? {
+            daily: {
+              scopeSubjectId: isMix ? null : insertSubjectId,
+              budgetMinutes: memoryPlan.daily.budgetMinutes,
+              estimatedMinutes:
+                dailyStudyPlan?.estimatedMinutes ??
+                Math.ceil(
+                  (questions.length *
+                    memoryPlan.daily.averageQuestionSeconds) /
+                    60,
+                ),
+              targetQuestions:
+                dailyStudyPlan?.targetQuestions ??
+                memoryPlan.retention.dailyCapacity,
+              questionsTodayAtStart: questionsTodayAtStart ?? 0,
+              plannedQuestions: questions.length,
+              dueCount,
+              newCount,
+              remediationCount,
+              targetMix: dailyStudyPlan
+                ? {
+                    dueCount: dailyStudyPlan.dueCount,
+                    newCount: dailyStudyPlan.newCount,
+                    remediationCount: dailyStudyPlan.remediationCount,
+                  }
+                : null,
+              targetRetention: memoryPlan.retention.requestRetention,
+            },
+          }
+        : {}),
+    };
+
+    const { data: inserted, error: insErr } = await admin
       .from("study_sessions")
       .insert({
         user_id: user.id,
@@ -585,6 +823,19 @@ export async function startSession(
         question_ids: chosenIds,
         reserve_question_ids: reserveIds,
         source_filter: source,
+        session_kind: mode === "inteligentna" ? "intelligent" : "classic",
+        scheduler_version: schedulerVersion,
+        engine_variant: engineVariant,
+        experiment_key: memoryExperiment?.experimentKey ?? null,
+        experiment_bucket: memoryExperiment?.bucket ?? null,
+        experiment_rollout_percent: memoryExperiment?.rolloutPercent ?? null,
+        feedback_experiment_variant: feedbackExperiment?.variant ?? "control",
+        daily_plan_experiment_variant:
+          dailyPlanExperiment?.variant ?? "control",
+        memory_parameter_set_id: memoryPlan.parameters.parameterSetId,
+        target_retention: memoryPlan.retention.requestRetention,
+        maximum_interval: memoryPlan.retention.maximumInterval,
+        plan_snapshot: planSnapshot,
       })
       .select("id")
       .single();
@@ -597,7 +848,9 @@ export async function startSession(
       };
     }
 
-    void persistLastSessionQuestionCount(supabase, user.id, count);
+    if (!isDailyPlan) {
+      void persistLastSessionQuestionCount(supabase, user.id, count);
+    }
 
     const { data: insertSubject } = await supabase
       .from("subjects")
@@ -610,12 +863,19 @@ export async function startSession(
       sessionId: inserted.id,
       subject: {
         id: insertSubjectId,
-        name: isMix ? t("subjectMixed") : (insertSubject?.name ?? subjectRow?.name ?? ""),
-        short_name: isMix ? t("subjectMixedShort") : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
+        name: isMix
+          ? t("subjectMixed")
+          : (insertSubject?.name ?? subjectRow?.name ?? ""),
+        short_name: isMix
+          ? t("subjectMixedShort")
+          : (insertSubject?.short_name ?? subjectRow?.short_name ?? ""),
       },
       questions,
       reserveQuestions:
         reserveQuestions.length > 0 ? reserveQuestions : undefined,
+      product: subjectProduct,
+      adaptiveFeedbackEnabled: feedbackExperiment?.variant === "treatment",
+      planSnapshot: isDailyPlan ? planSnapshot : null,
     };
   } catch (e) {
     console.error("[startSession]", e);

@@ -3,9 +3,10 @@ import type { StudyTrack } from "@/features/access/lib/studyAccess";
 import { fetchActiveQuestionsForTopics } from "@/lib/content/fetchActiveQuestionsForTopics";
 import { referenceSources, type QuestionSourceValue } from "@/lib/products";
 import {
-  getRetrievability,
-  type RetrievabilityInput,
-} from "./retrievability";
+  MEMORY_SCHEDULER_VERSION,
+  type MemorySchedulerSettings,
+} from "@/features/session/lib/memory/scheduler";
+import { getRetrievability, type RetrievabilityInput } from "./retrievability";
 import { toTopicMasteryUpsert } from "./topicMasteryCacheDb";
 
 type ProgressRow = {
@@ -14,6 +15,7 @@ type ProgressRow = {
   difficulty_rating: unknown;
   elapsed_days: unknown;
   scheduled_days: unknown;
+  learning_steps?: unknown;
   reps: unknown;
   lapses: unknown;
   state: unknown;
@@ -25,12 +27,7 @@ type ProgressRow = {
 };
 
 function toRetrievabilityState(s: string): RetrievabilityInput["state"] {
-  if (
-    s === "new" ||
-    s === "learning" ||
-    s === "review" ||
-    s === "relearning"
-  ) {
+  if (s === "new" || s === "learning" || s === "review" || s === "relearning") {
     return s;
   }
   return "new";
@@ -42,6 +39,7 @@ function rowToRetrievabilityInput(row: ProgressRow): RetrievabilityInput {
     difficulty_rating: Number(row.difficulty_rating ?? 0.3),
     elapsed_days: Number(row.elapsed_days ?? 0),
     scheduled_days: Number(row.scheduled_days ?? 0),
+    learning_steps: Number(row.learning_steps ?? 0),
     reps: Number(row.reps ?? 0),
     lapses: Number(row.lapses ?? 0),
     state: toRetrievabilityState(String(row.state ?? "new")),
@@ -69,6 +67,10 @@ export async function recalculateTopicMastery(
   userId: string,
   affectedTopicIds: string[],
   track: StudyTrack,
+  memory?: {
+    engineVariant: "shadow" | "treatment";
+    schedulerSettings?: MemorySchedulerSettings;
+  },
 ): Promise<void> {
   try {
     const uniqueTopics = [...new Set(affectedTopicIds)];
@@ -100,7 +102,8 @@ export async function recalculateTopicMastery(
       throw topicProdErr;
     }
     for (const row of topicProductRows ?? []) {
-      const sub = row.subjects as { product?: string } | { product?: string }[] | null;
+      const sub = row.subjects as
+        { product?: string } | { product?: string }[] | null;
       const product = Array.isArray(sub) ? sub[0]?.product : sub?.product;
       if (typeof product === "string") {
         productByTopic.set(row.id as string, product);
@@ -110,134 +113,170 @@ export async function recalculateTopicMastery(
     // Tematy liczymy równolegle — każdy to niezależny zestaw zapytań + upsert.
     await Promise.all(
       uniqueTopics.map(async (topicId) => {
-      const topicQuestions = await fetchActiveQuestionsForTopics(
-        supabase,
-        [topicId],
-        track,
-        { includeSource: true },
-      );
-      const questionIds = topicQuestions.map((q) => q.id);
-      const totalQuestions = questionIds.length;
-      const refs = referenceSources(productByTopic.get(topicId));
-      const refIdSet = new Set(
-        topicQuestions
-          .filter((q) =>
-            refs.includes((q.source ?? "") as QuestionSourceValue),
-          )
-          .map((q) => q.id),
-      );
-      const refTotal = refIdSet.size;
+        const topicQuestions = await fetchActiveQuestionsForTopics(
+          supabase,
+          [topicId],
+          track,
+          { includeSource: true },
+        );
+        const questionIds = topicQuestions.map((q) => q.id);
+        const totalQuestions = questionIds.length;
+        const refs = referenceSources(productByTopic.get(topicId));
+        const refIdSet = new Set(
+          topicQuestions
+            .filter((q) =>
+              refs.includes((q.source ?? "") as QuestionSourceValue),
+            )
+            .map((q) => q.id),
+        );
+        const refTotal = refIdSet.size;
 
-      let progressRows: ProgressRow[] = [];
-      if (questionIds.length > 0) {
-        const { data: pr, error: prErr } = await supabase
-          .from("user_question_progress")
-          .select(
-            "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech",
-          )
-          .eq("user_id", userId)
-          .in("question_id", questionIds);
+        let progressRows: ProgressRow[] = [];
+        if (questionIds.length > 0) {
+          const { data: pr, error: prErr } = await supabase
+            .from("user_question_progress")
+            .select(
+              "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, learning_steps, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech",
+            )
+            .eq("user_id", userId)
+            .in("question_id", questionIds);
 
-        if (prErr) {
-          throw prErr;
-        }
-        progressRows = (pr ?? []) as ProgressRow[];
-      }
-
-      const seen = progressRows.length;
-      const coverage =
-        totalQuestions > 0 ? Math.min(1, seen / totalQuestions) : 0;
-
-      let totalAnswered = 0;
-      let totalCorrect = 0;
-      let refSeen = 0;
-      let refCorrect = 0;
-      for (const r of progressRows) {
-        const answered = Number(r.times_answered ?? 0);
-        const correct = Number(r.times_correct ?? 0);
-        totalAnswered += answered;
-        totalCorrect += correct;
-        if (refIdSet.has(String(r.question_id ?? ""))) {
-          if (answered > 0) refSeen += 1;
-          refCorrect += correct;
-        }
-      }
-
-      const accuracy =
-        totalAnswered > 0 ? totalCorrect / totalAnswered : 0;
-
-      let sumR = 0;
-      for (const r of progressRows) {
-        sumR += getRetrievability(rowToRetrievabilityInput(r));
-      }
-      const avgRetrievability = seen > 0 ? sumR / seen : 0;
-
-      const masteryScore =
-        coverage * 0.3 + accuracy * 0.3 + avgRetrievability * 0.4;
-
-      const leechCount = progressRows.filter((r) => Boolean(r.is_leech))
-        .length;
-
-      let total7 = 0;
-      let correct7 = 0;
-      if (sessionIds.length > 0 && questionIds.length > 0) {
-        const { data: recent, error: ansErr } = await supabase
-          .from("session_answers")
-          .select("is_correct")
-          .in("session_id", sessionIds)
-          .in("question_id", questionIds)
-          .gte("answered_at", sevenIso);
-
-        if (ansErr) {
-          throw ansErr;
-        }
-        for (const a of recent ?? []) {
-          total7 += 1;
-          if (a.is_correct) {
-            correct7 += 1;
+          if (prErr) {
+            throw prErr;
+          }
+          progressRows = (pr ?? []) as ProgressRow[];
+          if (memory?.engineVariant === "treatment") {
+            const { data: v2Rows, error: v2Error } = await supabase
+              .from("user_question_memory_v2")
+              .select(
+                "question_id, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, state, next_review, last_answered_at",
+              )
+              .eq("user_id", userId)
+              .eq("scheduler_version", MEMORY_SCHEDULER_VERSION)
+              .in("question_id", questionIds);
+            if (v2Error) throw v2Error;
+            const memoryByQuestion = new Map(
+              (v2Rows ?? []).map((row) => [String(row.question_id), row]),
+            );
+            progressRows = progressRows.map((row) => {
+              const v2 = memoryByQuestion.get(String(row.question_id));
+              return v2
+                ? {
+                    ...row,
+                    stability: v2.stability,
+                    difficulty_rating: v2.difficulty,
+                    elapsed_days: v2.elapsed_days,
+                    scheduled_days: v2.scheduled_days,
+                    learning_steps: v2.learning_steps,
+                    reps: v2.reps,
+                    lapses: v2.lapses,
+                    state: v2.state,
+                    next_review: v2.next_review,
+                    last_answered_at: v2.last_answered_at,
+                  }
+                : row;
+            });
           }
         }
-      }
 
-      const accuracyLast7d = total7 > 0 ? correct7 / total7 : null;
+        const seen = progressRows.length;
+        const coverage =
+          totalQuestions > 0 ? Math.min(1, seen / totalQuestions) : 0;
 
-      let trend: MasteryTrend = "stable";
-      if (total7 > 0) {
-        const acc7 = accuracyLast7d ?? 0;
-        if (acc7 > accuracy + 0.05) {
-          trend = "improving";
-        } else if (acc7 < accuracy - 0.05) {
-          trend = "declining";
+        let totalAnswered = 0;
+        let totalCorrect = 0;
+        let refSeen = 0;
+        let refCorrect = 0;
+        for (const r of progressRows) {
+          const answered = Number(r.times_answered ?? 0);
+          const correct = Number(r.times_correct ?? 0);
+          totalAnswered += answered;
+          totalCorrect += correct;
+          if (refIdSet.has(String(r.question_id ?? ""))) {
+            if (answered > 0) refSeen += 1;
+            refCorrect += correct;
+          }
         }
-      }
 
-      const { error: upsertErr } = await supabase
-        .from("topic_mastery_cache")
-        .upsert(
-          toTopicMasteryUpsert(userId, topicId, {
-            total_questions: totalQuestions,
-            seen,
-            coverage,
-            total_answered: totalAnswered,
-            total_correct: totalCorrect,
-            accuracy,
-            avg_retrievability: avgRetrievability,
-            mastery_score: masteryScore,
-            trend,
-            accuracy_last_7d: accuracyLast7d,
-            questions_last_7d: total7,
-            leech_count: leechCount,
-            weakness_rank: null,
-            ref_total: refTotal,
-            ref_seen: refSeen,
-            ref_correct: refCorrect,
-          }),
-          { onConflict: "user_id,topic_id" },
-        );
+        const accuracy = totalAnswered > 0 ? totalCorrect / totalAnswered : 0;
 
-      if (upsertErr) {
-        throw upsertErr;
-      }
+        let sumR = 0;
+        for (const r of progressRows) {
+          sumR += getRetrievability(
+            rowToRetrievabilityInput(r),
+            undefined,
+            memory?.schedulerSettings,
+          );
+        }
+        const avgRetrievability = seen > 0 ? sumR / seen : 0;
+
+        const masteryScore =
+          coverage * 0.3 + accuracy * 0.3 + avgRetrievability * 0.4;
+
+        const leechCount = progressRows.filter((r) =>
+          Boolean(r.is_leech),
+        ).length;
+
+        let total7 = 0;
+        let correct7 = 0;
+        if (sessionIds.length > 0 && questionIds.length > 0) {
+          const { data: recent, error: ansErr } = await supabase
+            .from("session_answers")
+            .select("is_correct")
+            .in("session_id", sessionIds)
+            .in("question_id", questionIds)
+            .gte("answered_at", sevenIso);
+
+          if (ansErr) {
+            throw ansErr;
+          }
+          for (const a of recent ?? []) {
+            total7 += 1;
+            if (a.is_correct) {
+              correct7 += 1;
+            }
+          }
+        }
+
+        const accuracyLast7d = total7 > 0 ? correct7 / total7 : null;
+
+        let trend: MasteryTrend = "stable";
+        if (total7 > 0) {
+          const acc7 = accuracyLast7d ?? 0;
+          if (acc7 > accuracy + 0.05) {
+            trend = "improving";
+          } else if (acc7 < accuracy - 0.05) {
+            trend = "declining";
+          }
+        }
+
+        const { error: upsertErr } = await supabase
+          .from("topic_mastery_cache")
+          .upsert(
+            toTopicMasteryUpsert(userId, topicId, {
+              total_questions: totalQuestions,
+              seen,
+              coverage,
+              total_answered: totalAnswered,
+              total_correct: totalCorrect,
+              accuracy,
+              avg_retrievability: avgRetrievability,
+              mastery_score: masteryScore,
+              trend,
+              accuracy_last_7d: accuracyLast7d,
+              questions_last_7d: total7,
+              leech_count: leechCount,
+              weakness_rank: null,
+              ref_total: refTotal,
+              ref_seen: refSeen,
+              ref_correct: refCorrect,
+            }),
+            { onConflict: "user_id,topic_id" },
+          );
+
+        if (upsertErr) {
+          throw upsertErr;
+        }
       }),
     );
 

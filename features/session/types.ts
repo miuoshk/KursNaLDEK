@@ -1,3 +1,5 @@
+import type { StructuredExplanation } from "@/features/session/lib/structuredExplanation";
+
 export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
 export type SessionMode = KnnpSessionMode | "osce_topic";
 
@@ -23,11 +25,16 @@ export interface SessionQuestion {
   options: { id: string; text: string }[];
   correctOptionId: string;
   explanation: string;
+  explanationBlocks?: StructuredExplanation | null;
   sourceCode: string | null;
   imageUrl?: string | null;
   topicName: string;
+  /** Krótka karta wiedzy tematu, używana wyłącznie w remediacji. */
+  knowledgeCard?: string | null;
   /** Id tematu z bazy (ANTARES); opcjonalne dla starszych payloadów. */
   topicId?: string;
+  /** Kontrolowany słownik pojęć używany do transferu i remediacji. */
+  conceptIds?: string[];
   /** Metadane ANTARES per user; tylko tryb inteligentna. */
   antares?: SessionQuestionMeta;
   /** Ręczny zakaz shuffle opcji (admin) lub wykryta kombinatoryka — opcje w stałej kolejności. */

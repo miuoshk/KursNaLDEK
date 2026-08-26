@@ -2,12 +2,16 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Coffee } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionProgressSquares } from "@/features/session/components/SessionProgressSquares";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
-import { feedbackVariants, questionVariants } from "@/features/session/lib/sessionMotion";
+import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
+import {
+  feedbackVariants,
+  questionVariants,
+} from "@/features/session/lib/sessionMotion";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
@@ -40,6 +44,10 @@ type SessionQuestionContentProps = {
   showTopicName?: boolean;
   subjectId: string;
   product?: string | null;
+  feedbackVariant: FeedbackVariant;
+  transferScheduled?: boolean;
+  fatigueDetected?: boolean;
+  onTakeBreak?: () => void;
 };
 
 export function SessionQuestionContent({
@@ -64,6 +72,10 @@ export function SessionQuestionContent({
   showTopicName = true,
   subjectId,
   product,
+  feedbackVariant,
+  transferScheduled,
+  fatigueDetected = false,
+  onTakeBreak,
 }: SessionQuestionContentProps) {
   const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
@@ -116,7 +128,11 @@ export function SessionQuestionContent({
             animate="center"
             exit="exit"
           >
-            <QuestionCard question={q} showTopicName={showTopicName} product={product}>
+            <QuestionCard
+              question={q}
+              showTopicName={showTopicName}
+              product={product}
+            >
               <SessionQuestionOptions
                 sessionId={sessionId}
                 q={q}
@@ -142,6 +158,8 @@ export function SessionQuestionContent({
               selectedOptionId={selectedOptionId!}
               isCorrect={isCorrect}
               hideExplanation={hideExplanation}
+              variant={feedbackVariant}
+              transferScheduled={transferScheduled}
             />
             <SessionQuestionActions
               questionId={q.id}
@@ -188,6 +206,32 @@ export function SessionQuestionContent({
                 >
                   {t("skipRating")}
                 </button>
+              </div>
+            ) : null}
+
+            {fatigueDetected ? (
+              <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-gold/25 bg-brand-gold/[0.06] p-4">
+                <Coffee
+                  className="mt-0.5 size-5 shrink-0 text-brand-gold"
+                  aria-hidden
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="font-body text-body-sm font-semibold text-primary">
+                    {t("fatigueTitle")}
+                  </p>
+                  <p className="mt-1 font-body text-body-xs leading-relaxed text-secondary">
+                    {t("fatigueDescription")}
+                  </p>
+                  {onTakeBreak ? (
+                    <button
+                      type="button"
+                      onClick={onTakeBreak}
+                      className="mt-3 rounded-btn border border-brand-gold/30 px-3 py-2 font-body text-body-xs font-semibold text-brand-gold transition-colors hover:bg-brand-gold/10"
+                    >
+                      {t("fatigueTakeBreak")}
+                    </button>
+                  ) : null}
+                </div>
               </div>
             ) : null}
           </motion.div>

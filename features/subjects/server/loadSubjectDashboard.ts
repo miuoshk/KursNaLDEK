@@ -1,7 +1,10 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Subject, Topic } from "@/features/subjects/types";
 import { hasAccessForSubjectSelection } from "@/features/access/server/guards";
-import { normalizeTrack, type StudyTrack } from "@/features/access/lib/studyAccess";
+import {
+  normalizeTrack,
+  type StudyTrack,
+} from "@/features/access/lib/studyAccess";
 import { isCatalogSubjectHidden } from "@/lib/content/catalogSubjectVisibility";
 import { filterTopicsForTrack } from "@/lib/content/topicTrackVisibility";
 import {
@@ -31,6 +34,8 @@ import {
 } from "@/features/session/lib/sourceFilter";
 import type { SourceAccuracyBreakdown } from "@/features/session/lib/sourceAccuracy";
 import { CEM_RESERVE_BUCKET_MIN } from "@/features/session/lib/antares/cemReserve";
+import { resolveMemoryEngineVariant } from "@/features/session/server/resolveMemoryEngineVariant";
+import { MEMORY_SCHEDULER_VERSION } from "@/features/session/lib/memory/scheduler";
 
 export type TopicWithProgress = Topic & {
   answered_count: number;
@@ -161,7 +166,8 @@ export async function loadSubjectDashboard(
       return {
         ok: false,
         kind: "error",
-        message: "Ten rok jest zablokowany. Wybierz lub opłać dostęp w panelu wyboru roku.",
+        message:
+          "Ten rok jest zablokowany. Wybierz lub opłać dostęp w panelu wyboru roku.",
       };
     }
 
@@ -249,10 +255,7 @@ export async function loadSubjectDashboard(
     const progressByTopic = new Map<string, TopicProgress>();
     const progressByTopicRef = new Map<string, TopicProgress>();
     const progressByTopicOwn = new Map<string, TopicProgress>();
-    const topicSessionStats = new Map<
-      string,
-      { lastAt: string | null }
-    >();
+    const topicSessionStats = new Map<string, { lastAt: string | null }>();
     const timesByQuestion = new Map<string, number>();
     const questionIdsByTopic = new Map<string, string[]>();
     const sourceByQuestionId = new Map<string, string>();
@@ -271,6 +274,10 @@ export async function loadSubjectDashboard(
     const nativeCountByTopic = new Map<string, number>();
 
     if (user && (allTopicIds.length > 0 || virtualTopicIds.length > 0)) {
+      const memoryExperiment = await resolveMemoryEngineVariant(
+        supabase,
+        user.id,
+      );
       let qRows: Awaited<ReturnType<typeof fetchActiveQuestionsForTopics>> = [];
       if (allTopicIds.length > 0) {
         qRows = await fetchActiveQuestionsForTopics(
@@ -304,10 +311,7 @@ export async function loadSubjectDashboard(
         );
       }
 
-      const qids = [
-        ...qRows.map((q) => q.id),
-        ...yearQuestionIds,
-      ];
+      const qids = [...qRows.map((q) => q.id), ...yearQuestionIds];
       const uniqueQids = [...new Set(qids)];
 
       if (uniqueQids.length > 0) {
@@ -332,6 +336,31 @@ export async function loadSubjectDashboard(
           }
           uqpRows.push(...((data ?? []) as UqpRow[]));
         }
+        const memoryNextReview = new Map<string, string | null>();
+        if (memoryExperiment.engineVariant === "treatment") {
+          for (let i = 0; i < uniqueQids.length; i += UQP_CHUNK) {
+            const chunk = uniqueQids.slice(i, i + UQP_CHUNK);
+            const { data, error: memoryError } = await supabase
+              .from("user_question_memory_v2")
+              .select("question_id, next_review")
+              .eq("user_id", user.id)
+              .eq("scheduler_version", MEMORY_SCHEDULER_VERSION)
+              .in("question_id", chunk);
+            if (memoryError) {
+              console.error(
+                "[loadSubjectDashboard] memory v2:",
+                memoryError.message,
+              );
+              break;
+            }
+            for (const row of data ?? []) {
+              memoryNextReview.set(
+                row.question_id as string,
+                (row.next_review as string | null) ?? null,
+              );
+            }
+          }
+        }
 
         const questionToVirtualTopics = new Map<string, string[]>();
         for (const [virtualId, ids] of virtualQuestionIdsByTopic) {
@@ -344,7 +373,8 @@ export async function loadSubjectDashboard(
         if (finalExamTopicId) {
           for (const qid of yearQuestionIds) {
             const linked = questionToVirtualTopics.get(qid) ?? [];
-            if (!linked.includes(finalExamTopicId)) linked.push(finalExamTopicId);
+            if (!linked.includes(finalExamTopicId))
+              linked.push(finalExamTopicId);
             questionToVirtualTopics.set(qid, linked);
           }
         }
@@ -405,16 +435,20 @@ export async function loadSubjectDashboard(
             applyProgress(progressByTopic, tid);
             if (sourceMap) applyProgress(sourceMap, tid);
           }
-          for (const virtualId of questionToVirtualTopics.get(r.question_id) ?? []) {
+          for (const virtualId of questionToVirtualTopics.get(r.question_id) ??
+            []) {
             applyProgress(progressByTopic, virtualId);
             if (sourceMap) applyProgress(sourceMap, virtualId);
           }
 
           // Due = next_review <= now (jak RPC due_review_count / karty przedmiotów)
-          const nr = r.next_review as string | null;
+          const nr = memoryNextReview.has(r.question_id)
+            ? (memoryNextReview.get(r.question_id) ?? null)
+            : (r.next_review as string | null);
           if (nr) {
             const nrDate = new Date(nr);
-            if (!nextReviewDate || nrDate < nextReviewDate) nextReviewDate = nrDate;
+            if (!nextReviewDate || nrDate < nextReviewDate)
+              nextReviewDate = nrDate;
             if (nrDate <= now) dueCount += 1;
             if (sourceBucket === "reference") {
               if (!nextReviewDateRef || nrDate < nextReviewDateRef) {
@@ -450,7 +484,10 @@ export async function loadSubjectDashboard(
           .order("completed_at", { ascending: false });
 
         if (topicSessErr) {
-          console.error("[loadSubjectDashboard] topic sessions:", topicSessErr.message);
+          console.error(
+            "[loadSubjectDashboard] topic sessions:",
+            topicSessErr.message,
+          );
         } else {
           for (const r of topicSessions ?? []) {
             const tid = r.topic_id as string | null;
@@ -480,7 +517,8 @@ export async function loadSubjectDashboard(
         const liveCount = visibleCountByTopic.get(row.id as string);
         const refCount = sourceUi
           ? Number(
-              (row as { question_count_ref?: number | null }).question_count_ref ?? 0,
+              (row as { question_count_ref?: number | null })
+                .question_count_ref ?? 0,
             )
           : null;
         return {
@@ -553,8 +591,10 @@ export async function loadSubjectDashboard(
     });
 
     let sourceCounts: SourceFilterCounts | null = null;
-    let statsBySource: Record<"all" | "reference" | "own", SubjectStats> | null =
-      null;
+    let statsBySource: Record<
+      "all" | "reference" | "own",
+      SubjectStats
+    > | null = null;
     let sourceAccuracy: SourceAccuracyBreakdown | null = null;
     if (sourceUi) {
       let all = 0;
@@ -639,7 +679,8 @@ export async function loadSubjectDashboard(
     return {
       ok: false,
       kind: "error",
-      message: "Wystąpił nieoczekiwany błąd. Odśwież stronę lub spróbuj później.",
+      message:
+        "Wystąpił nieoczekiwany błąd. Odśwież stronę lub spróbuj później.",
     };
   }
 }

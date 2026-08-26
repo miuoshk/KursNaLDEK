@@ -6,6 +6,7 @@ import {
   shuffle,
 } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
+import { MEMORY_SCHEDULER_VERSION } from "@/features/session/lib/memory/scheduler";
 
 const UQP_CHUNK = 200;
 
@@ -52,6 +53,46 @@ async function fetchDueFromQuestionPool(
   return due.slice(0, limit).map((r) => r.question_id);
 }
 
+export async function fetchMemoryV2DueFromQuestionPool(
+  supabase: SupabaseClient,
+  userId: string,
+  pool: string[],
+  limit: number,
+): Promise<string[]> {
+  if (pool.length === 0 || limit <= 0) return [];
+  const nowIso = new Date().toISOString();
+  const due: Array<{ question_id: string; next_review: string }> = [];
+
+  for (let index = 0; index < pool.length; index += UQP_CHUNK) {
+    const chunk = pool.slice(index, index + UQP_CHUNK);
+    const { data, error } = await supabase
+      .from("user_question_memory_v2")
+      .select("question_id, next_review")
+      .eq("user_id", userId)
+      .eq("scheduler_version", MEMORY_SCHEDULER_VERSION)
+      .in("question_id", chunk)
+      .not("next_review", "is", null)
+      .lte("next_review", nowIso);
+    if (error) {
+      console.error("[fetchMemoryV2DueFromQuestionPool]", error.message);
+      return [];
+    }
+    for (const row of data ?? []) {
+      due.push({
+        question_id: row.question_id as string,
+        next_review: row.next_review as string,
+      });
+    }
+  }
+
+  due.sort(
+    (left, right) =>
+      new Date(left.next_review).getTime() -
+      new Date(right.next_review).getTime(),
+  );
+  return due.slice(0, limit).map((row) => row.question_id);
+}
+
 /** Powtórki należące do tematów z `topicOk` (scoped jak RPC due_review_count). */
 export async function fetchDueReviewQuestionIdsForTopics(
   supabase: SupabaseClient,
@@ -65,12 +106,7 @@ export async function fetchDueReviewQuestionIdsForTopics(
 
   // Sesja tematu: filtruj po znanej puli (bez globalnego UQP).
   if (allowedIds && allowedIds.size > 0) {
-    return fetchDueFromQuestionPool(
-      supabase,
-      userId,
-      [...allowedIds],
-      limit,
-    );
+    return fetchDueFromQuestionPool(supabase, userId, [...allowedIds], limit);
   }
 
   const topicIds = [...topicOk];
@@ -174,7 +210,10 @@ export function mixTopicCompletionQuestionIds(
   count: number,
   mode: "inteligentna" | "przeglad",
 ): string[] {
-  const takeUnseen = shuffle(unseenIds).slice(0, Math.min(count, unseenIds.length));
+  const takeUnseen = shuffle(unseenIds).slice(
+    0,
+    Math.min(count, unseenIds.length),
+  );
   const chosen = new Set(takeUnseen);
   let out = [...takeUnseen];
 

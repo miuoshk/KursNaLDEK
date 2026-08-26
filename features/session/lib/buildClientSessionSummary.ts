@@ -38,6 +38,7 @@ export type BuildClientSessionSummaryInput = {
   answers: SessionAnswer[];
   profileXp: number | null;
   profileStreak: number;
+  dailyPlan?: SessionSummaryData["dailyPlan"];
 };
 
 export function buildClientSessionSummary(
@@ -54,6 +55,7 @@ export function buildClientSessionSummary(
     answers,
     profileXp,
     profileStreak,
+    dailyPlan,
   } = input;
 
   const correctAnswers = answers.filter((a) => a.isCorrect).length;
@@ -126,5 +128,6 @@ export function buildClientSessionSummary(
     achievementUnlocked: null,
     subjectId,
     topicId,
+    dailyPlan,
   };
 }

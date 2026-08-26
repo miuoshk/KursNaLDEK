@@ -3,17 +3,29 @@
 import { useCallback, useRef } from "react";
 import type { MutableRefObject } from "react";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
+import {
+  selectFeedbackVariant,
+  type FeedbackVariant,
+} from "@/features/session/lib/adaptiveFeedback";
+import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
 import { applyReserveSwap } from "@/features/session/lib/antares/reservePool";
+import { scheduleConceptTransfer } from "@/features/session/lib/antares/conceptTransfer";
 import {
   adaptRemainingQuestions,
   applyDifficultySwapsToRemaining,
+  detectFatigue,
   sessionQuestionToRanked,
 } from "@/features/session/lib/antares/midSessionAdapter";
 import { submitAnswerWithRetry } from "@/features/session/lib/submitAnswerWithRetry";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
-import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
+import type {
+  Confidence,
+  SessionAnswer,
+  SessionMode,
+  SessionQuestion,
+} from "@/features/session/types";
 
 type SessionApi = {
   currentQuestion: SessionQuestion | null;
@@ -26,7 +38,10 @@ type SessionApi = {
   recordAnswer: (a: SessionAnswer) => void;
   goToNext: () => boolean;
   navigateToIndex: (idx: number) => void;
-  replaceQuestionsFromIndex: (fromIndex: number, tail: SessionQuestion[]) => void;
+  replaceQuestionsFromIndex: (
+    fromIndex: number,
+    tail: SessionQuestion[],
+  ) => void;
 };
 
 type FlowMeta = {
@@ -38,8 +53,9 @@ type FlowMeta = {
   topicId?: string;
   profileXp: number | null;
   profileStreak: number;
+  adaptiveFeedbackEnabled?: boolean;
+  planSnapshot?: unknown;
 };
-
 
 export function useSessionStudyFlow(
   questions: SessionQuestion[],
@@ -50,6 +66,7 @@ export function useSessionStudyFlow(
   setSaveToast: (m: string | null) => void,
   closeEndDialog: () => void,
   reserveRef: MutableRefObject<SessionQuestion[]>,
+  onFatigueDetected: () => void,
   /** Natychmiast po ostatniej odpowiedzi — pokaż wyniki z pamięci. */
   onComplete: (summary: SessionSummaryData) => void,
 ) {
@@ -62,6 +79,8 @@ export function useSessionStudyFlow(
     topicId,
     profileXp,
     profileStreak,
+    adaptiveFeedbackEnabled = false,
+    planSnapshot,
   } = meta;
 
   const finishingRef = useRef(false);
@@ -103,6 +122,11 @@ export function useSessionStudyFlow(
         .map((q) => answeredMap[q.id])
         .filter((a): a is SessionAnswer => a != null);
 
+      const durationSeconds = answersOrdered.reduce(
+        (sum, answer) => sum + answer.timeSpentSeconds,
+        0,
+      );
+
       return buildClientSessionSummary({
         sessionId,
         subjectId,
@@ -114,18 +138,41 @@ export function useSessionStudyFlow(
         answers: answersOrdered,
         profileXp,
         profileStreak,
+        dailyPlan: parseDailyPlanProgress(
+          planSnapshot,
+          answersOrdered.length,
+          durationSeconds,
+        ),
       });
     },
-    [sessionId, subjectId, subjectName, subjectShortName, mode, topicId, questions, profileXp, profileStreak],
+    [
+      sessionId,
+      subjectId,
+      subjectName,
+      subjectShortName,
+      mode,
+      topicId,
+      questions,
+      profileXp,
+      profileStreak,
+      planSnapshot,
+    ],
   );
 
   const handleSubmitWithConfidence = useCallback(
     (
-      confidence: Confidence,
+      confidence: Confidence | null,
       {
         advance = false,
         optionIdOverride,
-      }: { advance?: boolean; optionIdOverride?: string } = {},
+        feedbackDwellSeconds = null,
+        feedbackVariant: feedbackVariantOverride,
+      }: {
+        advance?: boolean;
+        optionIdOverride?: string;
+        feedbackDwellSeconds?: number | null;
+        feedbackVariant?: FeedbackVariant;
+      } = {},
     ) => {
       if (!s.currentQuestion || s.isCurrentAnswered) return;
 
@@ -137,6 +184,14 @@ export function useSessionStudyFlow(
       if (!optionId) return;
       const currentQ = s.currentQuestion;
       const isCorrect = optionId === currentQ.correctOptionId;
+      const feedbackVariant = adaptiveFeedbackEnabled
+        ? (feedbackVariantOverride ??
+          selectFeedbackVariant({
+            question: currentQ,
+            isCorrect,
+            timeSpentSeconds: timeSpentQuestion.current,
+          }))
+        : "standard";
 
       const newAnswer: SessionAnswer = {
         questionId: currentQ.id,
@@ -155,23 +210,29 @@ export function useSessionStudyFlow(
         confidence,
         timeSpentSeconds: timeSpentQuestion.current,
         questionOrder: s.currentIndex,
-        skipFsrs: mode === "przeglad",
+        feedbackVariant,
+        feedbackDwellSeconds,
       }).then((res) => {
-        if (!res.ok) setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
+        if (!res.ok)
+          setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");
       });
       trackPendingSave(savePromise);
+
+      const allAnswers = [...s.answers, newAnswer];
+      const answeredSoFar = allAnswers.map((a) => ({
+        isCorrect: a.isCorrect,
+        confidence: a.confidence ?? "",
+        timeSeconds: a.timeSpentSeconds,
+      }));
+      if (detectFatigue(answeredSoFar).isFatigued) {
+        onFatigueDetected();
+      }
 
       if (mode === "inteligentna") {
         const nextIdx = s.currentIndex + 1;
         if (nextIdx < questions.length) {
           const tail = questions.slice(nextIdx);
           if (tail.length > 0) {
-            const allAnswers = [...s.answers, newAnswer];
-            const answeredSoFar = allAnswers.map((a) => ({
-              isCorrect: a.isCorrect,
-              confidence: a.confidence ?? "",
-              timeSeconds: a.timeSpentSeconds,
-            }));
             const adapted = adaptRemainingQuestions({
               answeredSoFar,
               remainingQuestions: tail.map(sessionQuestionToRanked),
@@ -182,8 +243,14 @@ export function useSessionStudyFlow(
               reserveRef.current,
               answeredSoFar,
             );
-            reserveRef.current = reserveSwap.reserve;
-            s.replaceQuestionsFromIndex(nextIdx, reserveSwap.tail);
+            const transfer = scheduleConceptTransfer(
+              currentQ,
+              reserveSwap.tail,
+              reserveSwap.reserve,
+              !isCorrect || Boolean(currentQ.antares?.isLeech),
+            );
+            reserveRef.current = transfer.reserve;
+            s.replaceQuestionsFromIndex(nextIdx, transfer.tail);
           }
         }
       }
@@ -218,6 +285,8 @@ export function useSessionStudyFlow(
       finishSession,
       buildSummary,
       trackPendingSave,
+      onFatigueDetected,
+      adaptiveFeedbackEnabled,
     ],
   );
 
@@ -234,7 +303,9 @@ export function useSessionStudyFlow(
         finishSession(buildSummary(s.answeredMap));
         return;
       }
-      const firstUnanswered = questions.findIndex((q) => !(q.id in s.answeredMap));
+      const firstUnanswered = questions.findIndex(
+        (q) => !(q.id in s.answeredMap),
+      );
       if (firstUnanswered >= 0) {
         s.navigateToIndex(firstUnanswered);
       }
@@ -246,5 +317,10 @@ export function useSessionStudyFlow(
     finishSession(buildSummary(s.answeredMap));
   }, [closeEndDialog, s.answeredMap, finishSession, buildSummary]);
 
-  return { handleSubmitWithConfidence, handleNavigateNext, handleEndConfirm };
+  return {
+    handleSubmitWithConfidence,
+    handleNavigateNext,
+    handleEndConfirm,
+    trackPendingSave,
+  };
 }

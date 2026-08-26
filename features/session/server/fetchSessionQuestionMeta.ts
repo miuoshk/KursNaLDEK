@@ -8,14 +8,11 @@ import {
   defaultQuestionMeta,
 } from "@/features/session/lib/antares/questionMeta";
 import type { SessionQuestionMeta } from "@/features/session/types";
+import type { MemoryEngineVariant } from "@/features/session/lib/experiments/memoryV2Experiment";
+import { MEMORY_SCHEDULER_VERSION } from "@/features/session/lib/memory/scheduler";
 
 function toRetrieverState(s: string): RetrievabilityInput["state"] {
-  if (
-    s === "new" ||
-    s === "learning" ||
-    s === "review" ||
-    s === "relearning"
-  ) {
+  if (s === "new" || s === "learning" || s === "review" || s === "relearning") {
     return s;
   }
   return "new";
@@ -27,6 +24,7 @@ type ProgressRow = {
   difficulty_rating: unknown;
   elapsed_days: unknown;
   scheduled_days: unknown;
+  learning_steps?: unknown;
   reps: unknown;
   lapses: unknown;
   state: unknown;
@@ -44,6 +42,7 @@ function rowToRetrievabilityInput(row: ProgressRow): RetrievabilityInput {
     difficulty_rating: Number(row.difficulty_rating ?? 0.3),
     elapsed_days: Number(row.elapsed_days ?? 0),
     scheduled_days: Number(row.scheduled_days ?? 0),
+    learning_steps: Number(row.learning_steps ?? 0),
     reps: Number(row.reps ?? 0),
     lapses: Number(row.lapses ?? 0),
     state: toRetrieverState(String(row.state ?? "new")),
@@ -59,6 +58,7 @@ export async function fetchSessionQuestionMeta(
   supabase: SupabaseClient,
   userId: string,
   questionIds: string[],
+  engineVariant: MemoryEngineVariant = "shadow",
 ): Promise<Map<string, SessionQuestionMeta>> {
   const out = new Map<string, SessionQuestionMeta>();
   if (questionIds.length === 0) return out;
@@ -95,7 +95,7 @@ export async function fetchSessionQuestionMeta(
   const { data: progressRows } = await supabase
     .from("user_question_progress")
     .select(
-      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech, avg_time_seconds",
+      "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, learning_steps, reps, lapses, state, next_review, last_answered_at, times_answered, times_correct, is_leech, avg_time_seconds",
     )
     .eq("user_id", userId)
     .in("question_id", uniqueIds);
@@ -103,6 +103,37 @@ export async function fetchSessionQuestionMeta(
   const progressByQ = new Map<string, ProgressRow>();
   for (const r of progressRows ?? []) {
     progressByQ.set(r.question_id as string, r as ProgressRow);
+  }
+  if (engineVariant === "treatment") {
+    const { data: memoryRows } = await supabase
+      .from("user_question_memory_v2")
+      .select(
+        "question_id, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, state, next_review, last_answered_at",
+      )
+      .eq("user_id", userId)
+      .eq("scheduler_version", MEMORY_SCHEDULER_VERSION)
+      .in("question_id", uniqueIds);
+    for (const memory of memoryRows ?? []) {
+      const qid = memory.question_id as string;
+      const support = progressByQ.get(qid);
+      progressByQ.set(qid, {
+        question_id: qid,
+        stability: memory.stability,
+        difficulty_rating: memory.difficulty,
+        elapsed_days: memory.elapsed_days,
+        scheduled_days: memory.scheduled_days,
+        learning_steps: memory.learning_steps,
+        reps: memory.reps,
+        lapses: memory.lapses,
+        state: memory.state,
+        next_review: memory.next_review,
+        last_answered_at: memory.last_answered_at,
+        times_answered: support?.times_answered ?? memory.reps,
+        times_correct: support?.times_correct ?? 0,
+        is_leech: support?.is_leech ?? false,
+        avg_time_seconds: support?.avg_time_seconds ?? null,
+      });
+    }
   }
 
   for (const qid of uniqueIds) {
@@ -127,9 +158,7 @@ export async function fetchSessionQuestionMeta(
         timesAnswered: Number(row.times_answered ?? 0),
         timesCorrect: Number(row.times_correct ?? 0),
         avgTimeSeconds:
-          row.avg_time_seconds != null
-            ? Number(row.avg_time_seconds)
-            : null,
+          row.avg_time_seconds != null ? Number(row.avg_time_seconds) : null,
         topicMastery: tm,
       }),
     );

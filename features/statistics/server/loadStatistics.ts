@@ -5,7 +5,7 @@ import {
   heatmap30,
   sessionsByLocalDate,
 } from "@/features/statistics/server/computeAggregates";
-import { masteryFromUqp } from "@/features/statistics/server/masteryFromUqp";
+import { masteryFromCache } from "@/features/statistics/server/masteryFromCache";
 import {
   isReadinessCacheStale,
   readinessFromProfile,
@@ -108,7 +108,7 @@ export async function loadStatistics(
   }
 
   const { subjectMastery, weakTopics, predictedReadiness } =
-    await masteryFromUqp(supabase, uqp);
+    await masteryFromCache(supabase, userId);
 
   const recentSessions = (recentSessionsRes.data ?? []).map(
     (row: Record<string, unknown>) => {

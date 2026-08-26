@@ -29,6 +29,30 @@ export interface ExamReadinessSnapshot {
   dailyRecommendation: number;
 }
 
+export interface DailyPlanProgress {
+  scopeSubjectId: string | null;
+  targetMinutes: number;
+  estimatedMinutes: number;
+  targetQuestions: number;
+  plannedQuestions: number;
+  answeredQuestions: number;
+  questionsTodayAtStart: number;
+  completedMinutesToday: number;
+  sessionCompletion: number;
+  dailyCompletion: number;
+  dueCount: number;
+  newCount: number;
+  remediationCount: number;
+  targetRetention: number;
+}
+
+export interface StrengthenedConcept {
+  conceptId: string;
+  label: string;
+  attempts: number;
+  correct: number;
+}
+
 export interface SessionSummaryData {
   sessionId: string;
   subjectName: string;
@@ -73,4 +97,6 @@ export interface SessionSummaryData {
   /** Uzupełniane przy `completeSession` (ANTARES). */
   sessionInsights?: SessionInsightsPayload;
   examReadiness?: ExamReadinessSnapshot;
+  dailyPlan?: DailyPlanProgress;
+  strengthenedConcepts?: StrengthenedConcept[];
 }

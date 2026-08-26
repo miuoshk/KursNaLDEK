@@ -34,9 +34,7 @@ export function sessionQuestionToRanked(q: SessionQuestion): RankedQuestion {
   };
 }
 
-function trailingWrongStreak(
-  answers: SessionState["answeredSoFar"],
-): number {
+function trailingWrongStreak(answers: SessionState["answeredSoFar"]): number {
   let n = 0;
   for (let i = answers.length - 1; i >= 0; i--) {
     if (answers[i].isCorrect) break;
@@ -45,9 +43,7 @@ function trailingWrongStreak(
   return n;
 }
 
-function trailingCorrectStreak(
-  answers: SessionState["answeredSoFar"],
-): number {
+function trailingCorrectStreak(answers: SessionState["answeredSoFar"]): number {
   let n = 0;
   for (let i = answers.length - 1; i >= 0; i--) {
     if (!answers[i].isCorrect) break;
@@ -82,7 +78,7 @@ export function adaptRemainingQuestions(
     return remainingQuestions.map((q) => ({ ...q }));
   }
 
-  let sorted = [...remainingQuestions];
+  const sorted = [...remainingQuestions];
   const wrongStreak = trailingWrongStreak(answeredSoFar);
   const correctStreak = trailingCorrectStreak(answeredSoFar);
 
@@ -133,9 +129,10 @@ function avgTime(
 /**
  * Wykrywa spadek formy (zmęczenie) na podstawie pierwszych vs ostatnich odpowiedzi w sesji.
  */
-export function detectFatigue(
-  answers: SessionState["answeredSoFar"],
-): { isFatigued: boolean; suggestion: string | null } {
+export function detectFatigue(answers: SessionState["answeredSoFar"]): {
+  isFatigued: boolean;
+  suggestion: string | null;
+} {
   if (answers.length < 15) {
     return { isFatigued: false, suggestion: null };
   }

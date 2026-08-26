@@ -27,9 +27,14 @@ export function StudyPreferencesSection({ profile }: Props) {
   const t = useTranslations("settings");
   const tCommon = useTranslations("common");
   const { toast } = useToast();
+  const [minutes, setMinutes] = useState(profile.daily_study_minutes);
   const [goal, setGoal] = useState(profile.daily_goal);
-  const [mode, setMode] = useState<KnnpSessionMode>(profile.default_session_mode);
-  const [count, setCount] = useState<10 | 25 | 50>(normalizeCount(profile.default_question_count));
+  const [mode, setMode] = useState<KnnpSessionMode>(
+    profile.default_session_mode,
+  );
+  const [count, setCount] = useState<10 | 25 | 50>(
+    normalizeCount(profile.default_question_count),
+  );
   const [showTimer, setShowTimer] = useState(profile.show_session_timer);
   const [showTopics, setShowTopics] = useState(profile.show_session_topics);
   const [questionSource, setQuestionSource] = useState<SourceFilter>(
@@ -47,6 +52,7 @@ export function StudyPreferencesSection({ profile }: Props) {
     }
     const timer = setTimeout(async () => {
       const res = await updateStudyPreferences({
+        daily_study_minutes: minutes,
         daily_goal: goal,
         default_session_mode: mode,
         default_question_count: count,
@@ -60,10 +66,26 @@ export function StudyPreferencesSection({ profile }: Props) {
       } else toast(res.message, "error");
     }, 500);
     return () => clearTimeout(timer);
-  }, [goal, mode, count, showTimer, showTopics, questionSource, showSourcePref, toast]);
+  }, [
+    minutes,
+    goal,
+    mode,
+    count,
+    showTimer,
+    showTopics,
+    questionSource,
+    showSourcePref,
+    toast,
+  ]);
 
   function bump(delta: number) {
     setGoal((g) => Math.min(100, Math.max(5, Math.round((g + delta) / 5) * 5)));
+  }
+
+  function bumpMinutes(delta: number) {
+    setMinutes((value) =>
+      Math.min(240, Math.max(5, Math.round((value + delta) / 5) * 5)),
+    );
   }
 
   return (
@@ -71,13 +93,46 @@ export function StudyPreferencesSection({ profile }: Props) {
       title={t("study.title")}
       aside={
         savedFlash ? (
-          <span className="font-body text-body-xs text-brand-sage">{t("study.saved")}</span>
+          <span className="font-body text-body-xs text-brand-sage">
+            {t("study.saved")}
+          </span>
         ) : null
       }
     >
       <div className="space-y-6">
         <div>
-          <p className="font-body text-body-sm text-secondary">{t("study.dailyGoal")}</p>
+          <p className="font-body text-body-sm text-primary">
+            {t("study.dailyMinutes")}
+          </p>
+          <p className="mt-1 font-body text-body-xs text-muted">
+            {t("study.dailyMinutesHint")}
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => bumpMinutes(-5)}
+              className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
+              aria-label={t("study.decreaseMinutes")}
+            >
+              <Minus className="size-4" aria-hidden />
+            </button>
+            <span className="min-w-[7rem] font-body text-body-lg text-primary">
+              {t("study.minutesCount", { count: minutes })}
+            </span>
+            <button
+              type="button"
+              onClick={() => bumpMinutes(5)}
+              className="flex size-10 items-center justify-center rounded-btn bg-card text-primary transition hover:bg-brand-sage/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)] active:scale-[0.98]"
+              aria-label={t("study.increaseMinutes")}
+            >
+              <Plus className="size-4" aria-hidden />
+            </button>
+          </div>
+        </div>
+        <div>
+          <p className="font-body text-body-sm text-secondary">
+            {t("study.dailyQuestionGoalFallback")}
+          </p>
           <div className="mt-2 flex flex-wrap items-center gap-3">
             <button
               type="button"
@@ -111,7 +166,9 @@ export function StudyPreferencesSection({ profile }: Props) {
               onChange={(e) => setMode(e.target.value as KnnpSessionMode)}
               className={selectClass}
             >
-              <option value="inteligentna">{t("study.modeInteligentna")}</option>
+              <option value="inteligentna">
+                {t("study.modeInteligentna")}
+              </option>
               <option value="przeglad">{t("study.modePrzeglad")}</option>
               <option value="katalog">{t("study.modeKatalog")}</option>
             </select>
@@ -123,14 +180,19 @@ export function StudyPreferencesSection({ profile }: Props) {
         </div>
         {showSourcePref ? (
           <div>
-            <label htmlFor="qs" className="font-body text-body-sm text-secondary">
+            <label
+              htmlFor="qs"
+              className="font-body text-body-sm text-secondary"
+            >
               {t("study.defaultQuestionSource")}
             </label>
             <div className="relative mt-1.5">
               <select
                 id="qs"
                 value={questionSource}
-                onChange={(e) => setQuestionSource(e.target.value as SourceFilter)}
+                onChange={(e) =>
+                  setQuestionSource(e.target.value as SourceFilter)
+                }
                 className={selectClass}
               >
                 <option value="all">{t("study.sourceAll")}</option>
@@ -147,7 +209,10 @@ export function StudyPreferencesSection({ profile }: Props) {
         <ul className="space-y-5 border-t border-border pt-6">
           <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p id="show-timer-label" className="font-body text-body-sm text-primary">
+              <p
+                id="show-timer-label"
+                className="font-body text-body-sm text-primary"
+              >
                 {t("study.showTimer")}
               </p>
               <p className="font-body text-body-xs text-muted">
@@ -162,7 +227,10 @@ export function StudyPreferencesSection({ profile }: Props) {
           </li>
           <li className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p id="show-topics-label" className="font-body text-body-sm text-primary">
+              <p
+                id="show-topics-label"
+                className="font-body text-body-sm text-primary"
+              >
                 {t("study.showTopics")}
               </p>
               <p className="font-body text-body-xs text-muted">

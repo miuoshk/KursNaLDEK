@@ -20,6 +20,7 @@ import {
   isSourceFilterUiEnabled,
   type SourceFilterCounts,
 } from "@/features/session/lib/sourceFilter";
+import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
 
 type Props = {
   subject: Subject;
@@ -30,6 +31,7 @@ type Props = {
   sourceAccuracy: SourceAccuracyBreakdown | null;
   initialSessionCount: number;
   profileDefaultSource?: string | null;
+  dailyPlan: DailyStudyPlan | null;
 };
 
 export function SubjectDashboardClient({
@@ -41,6 +43,7 @@ export function SubjectDashboardClient({
   sourceAccuracy,
   initialSessionCount,
   profileDefaultSource,
+  dailyPlan,
 }: Props) {
   const t = useTranslations("subjects");
   const enabled = isSourceFilterUiEnabled(subject.product);
@@ -77,10 +80,7 @@ export function SubjectDashboardClient({
         <StatsRow stats={displayStats} />
 
         {enabled && sourceAccuracy ? (
-          <SourceAccuracyCard
-            product={subject.product}
-            data={sourceAccuracy}
-          />
+          <SourceAccuracyCard product={subject.product} data={sourceAccuracy} />
         ) : null}
 
         {stats.totalQuestions > 0 || availableQuestionCount > 0 ? (
@@ -91,7 +91,12 @@ export function SubjectDashboardClient({
             sourceCounts={enabled ? sourceCounts : null}
             availableQuestionCount={availableQuestionCount}
             initialSessionCount={initialSessionCount}
-            dueCount={displayStats.dueCount}
+            dueCount={
+              !enabled || source === "all"
+                ? (dailyPlan?.dueBacklog ?? displayStats.dueCount)
+                : displayStats.dueCount
+            }
+            dailyPlan={dailyPlan}
           />
         ) : (
           <p className="font-body text-body-sm text-muted">

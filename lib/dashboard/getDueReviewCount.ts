@@ -1,6 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
-import { isClinicalProduct, normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
+import {
+  isClinicalProduct,
+  normalizeProduct,
+  normalizeTrack,
+} from "@/features/access/lib/studyAccess";
+import { MEMORY_SCHEDULER_VERSION } from "@/features/session/lib/memory/scheduler";
 
 /**
  * Pytania z zaplanowaną powtórką (next_review <= teraz), zawężone do
@@ -22,15 +27,28 @@ export async function getDueReviewCount(
   track?: string,
   year?: number,
   product?: string | null,
+  engineVariant: "shadow" | "treatment" = "shadow",
 ): Promise<number> {
   if (!track || year == null) {
     const nowIso = new Date().toISOString();
-    const { count, error } = await supabase
-      .from("user_question_progress")
-      .select("id", { count: "exact", head: true })
+    const table =
+      engineVariant === "treatment"
+        ? "user_question_memory_v2"
+        : "user_question_progress";
+    let query = supabase
+      .from(table)
+      .select(engineVariant === "treatment" ? "question_id" : "id", {
+        count: "exact",
+        head: true,
+      })
       .eq("user_id", userId)
+      .neq("state", "new")
       .not("next_review", "is", null)
       .lte("next_review", nowIso);
+    if (engineVariant === "treatment") {
+      query = query.eq("scheduler_version", MEMORY_SCHEDULER_VERSION);
+    }
+    const { count, error } = await query;
     if (error) {
       console.error("[getDueReviewCount]", error.message);
       return 0;
@@ -40,11 +58,17 @@ export async function getDueReviewCount(
 
   const normalizedProduct = normalizeProduct(product ?? undefined);
   const catalogYear = isClinicalProduct(normalizedProduct) ? 1 : year;
-  const catalog = await getCachedProductCatalog(normalizedProduct, track, catalogYear);
+  const catalog = await getCachedProductCatalog(
+    normalizedProduct,
+    track,
+    catalogYear,
+  );
   const topicIds = catalog.topicRows.map((t) => t.id);
   if (topicIds.length === 0) return 0;
 
-  const { data, error } = await supabase.rpc("due_review_count", {
+  const rpcName =
+    engineVariant === "treatment" ? "due_review_count_v2" : "due_review_count";
+  const { data, error } = await supabase.rpc(rpcName, {
     p_user_id: userId,
     p_topic_ids: topicIds,
     p_track: normalizeTrack(track),

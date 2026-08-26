@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionMode } from "@/features/session/types";
 import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSessionInsights";
+import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
 
 const TRUNC = 80;
@@ -48,7 +49,7 @@ export async function buildSessionSummary(
   const { data: session, error: se } = await supabase
     .from("study_sessions")
     .select(
-      "id, user_id, subject_id, topic_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights",
+      "id, user_id, subject_id, topic_id, mode, total_questions, correct_answers, duration_seconds, xp_earned, is_completed, session_insights, plan_snapshot",
     )
     .eq("id", sessionId)
     .eq("user_id", userId)
@@ -59,8 +60,16 @@ export async function buildSessionSummary(
   const subjId = session.subject_id as string;
 
   const [subjectRes, profileRes, prevRes, ansRes] = await Promise.all([
-    supabase.from("subjects").select("id, name, short_name").eq("id", subjId).maybeSingle(),
-    supabase.from("profiles").select("xp, current_streak").eq("id", userId).maybeSingle(),
+    supabase
+      .from("subjects")
+      .select("id, name, short_name")
+      .eq("id", subjId)
+      .maybeSingle(),
+    supabase
+      .from("profiles")
+      .select("xp, current_streak")
+      .eq("id", userId)
+      .maybeSingle(),
     supabase
       .from("study_sessions")
       .select("accuracy")
@@ -90,7 +99,9 @@ export async function buildSessionSummary(
 
   const { data: qmeta } = await supabase
     .from("questions")
-    .select("id, text, correct_option_id, options, topic_id, topics!inner ( name )")
+    .select(
+      "id, text, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
+    )
     .eq("topics.is_inbox", false)
     .in("id", qids.length ? qids : ["__none__"]);
 
@@ -109,11 +120,34 @@ export async function buildSessionSummary(
         topic: topicNameFromJoin(
           q.topics as { name: string } | { name: string }[] | null,
         ),
+        concepts: (() => {
+          const links =
+            (
+              q as unknown as {
+                question_concepts?: Array<{
+                  concept_id: string;
+                  relation: string;
+                  concepts: { name: string } | Array<{ name: string }> | null;
+                }>;
+              }
+            ).question_concepts ?? [];
+          const primary = links.filter((link) => link.relation === "primary");
+          return (primary.length > 0 ? primary : links).map((link) => ({
+          id: link.concept_id,
+          label: Array.isArray(link.concepts)
+            ? (link.concepts[0]?.name ?? link.concept_id)
+            : (link.concepts?.name ?? link.concept_id),
+          }));
+        })(),
       },
     ]),
   );
 
   const topicMap = new Map<string, { c: number; t: number }>();
+  const conceptMap = new Map<
+    string,
+    { label: string; attempts: number; correct: number }
+  >();
   const answers: SessionSummaryData["answers"] = [];
 
   for (const r of rows) {
@@ -123,6 +157,16 @@ export async function buildSessionSummary(
     cur.t += 1;
     if (r.is_correct) cur.c += 1;
     topicMap.set(topicName, cur);
+    for (const concept of meta?.concepts ?? []) {
+      const conceptProgress = conceptMap.get(concept.id) ?? {
+        label: concept.label,
+        attempts: 0,
+        correct: 0,
+      };
+      conceptProgress.attempts += 1;
+      if (r.is_correct) conceptProgress.correct += 1;
+      conceptMap.set(concept.id, conceptProgress);
+    }
 
     answers.push({
       questionId: r.question_id as string,
@@ -161,6 +205,15 @@ export async function buildSessionSummary(
       accuracy: v.t > 0 ? v.c / v.t : 0,
     }))
     .sort((a, b) => a.accuracy - b.accuracy);
+  const strengthenedConcepts = [...conceptMap.entries()]
+    .map(([conceptId, value]) => ({ conceptId, ...value }))
+    .sort(
+      (a, b) =>
+        b.attempts - a.attempts ||
+        b.correct - a.correct ||
+        a.label.localeCompare(b.label, "pl"),
+    )
+    .slice(0, 6);
 
   const dbMode = session.mode as string;
   const mappedMode: SessionMode =
@@ -172,6 +225,11 @@ export async function buildSessionSummary(
 
   const { sessionInsights, examReadiness } = parseStoredSessionInsights(
     session.session_insights,
+  );
+  const dailyPlan = parseDailyPlanProgress(
+    session.plan_snapshot,
+    answered,
+    dur,
   );
 
   return {
@@ -201,5 +259,8 @@ export async function buildSessionSummary(
     topicId,
     sessionInsights: sessionInsights ?? undefined,
     examReadiness: examReadiness ?? undefined,
+    dailyPlan,
+    strengthenedConcepts:
+      strengthenedConcepts.length > 0 ? strengthenedConcepts : undefined,
   };
 }

@@ -1,4 +1,7 @@
-import type { SessionQuestionMeta, SourceFilter } from "@/features/session/types";
+import type {
+  SessionQuestionMeta,
+  SourceFilter,
+} from "@/features/session/types";
 import { personalEaseScore } from "@/features/session/lib/antares/questionMeta";
 import { filterUnseenHoldingCemReserve } from "@/features/session/lib/antares/cemReserve";
 
@@ -32,6 +35,11 @@ export type SessionComposerInput = {
   source?: SourceFilter;
   product?: string | null;
   hasPublishedCemSession?: boolean;
+  targetMix?: {
+    due: number;
+    new: number;
+    remediation: number;
+  };
 };
 
 export type ComposedSession = {
@@ -67,7 +75,9 @@ function daysUntilExam(examDate: Date | null, now: Date): number | null {
  * Układa pytania tak, aby unikać dwóch kolejnych pozycji z tym samym `topicId`
  * (round-robin po tematach). Gdy to niemożliwe, dopuszcza sąsiedztwo tego samego tematu.
  */
-export function interleaveByTopic(questions: RankedQuestion[]): RankedQuestion[] {
+export function interleaveByTopic(
+  questions: RankedQuestion[],
+): RankedQuestion[] {
   if (questions.length <= 1) {
     return [...questions];
   }
@@ -214,6 +224,7 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     source = "all",
     product = null,
     hasPublishedCemSession = false,
+    targetMix,
   } = input;
 
   const now = new Date();
@@ -230,8 +241,84 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   const unseenCount = unseenQuestions.length;
   const totalPool = dueCount + unseenCount;
 
+  if (targetMix) {
+    const remediationTarget = Math.max(
+      0,
+      Math.min(count, Math.floor(targetMix.remediation)),
+    );
+    const dueTarget = Math.max(
+      0,
+      Math.min(count - remediationTarget, Math.floor(targetMix.due)),
+    );
+    const newTarget = Math.max(
+      0,
+      Math.min(
+        count - remediationTarget - dueTarget,
+        Math.floor(targetMix.new),
+      ),
+    );
+    const remediation = leechQuestions.slice(0, remediationTarget);
+    const used = new Set(remediation.map((question) => question.questionId));
+    const due = dueQuestions
+      .filter((question) => !used.has(question.questionId))
+      .slice(0, dueTarget);
+    for (const question of due) used.add(question.questionId);
+    const fresh = unseenQuestions
+      .filter((question) => !used.has(question.questionId))
+      .slice(0, newTarget);
+
+    let merged: { q: RankedQuestion; tag: PoolTag }[] = [
+      ...remediation.map((q) => ({ q, tag: "due" as const })),
+      ...due.map((q) => ({ q, tag: "due" as const })),
+      ...fresh.map((q) => ({ q, tag: "unseen" as const })),
+    ];
+    merged = dedupeByQuestionId(merged);
+    if (merged.length < count) {
+      merged = fillShortage(
+        merged,
+        count,
+        [...dueQuestions, ...leechQuestions],
+        unseenQuestions,
+      );
+    }
+
+    const sourceById = new Map(
+      merged.map((item) => [item.q.questionId, item.tag] as const),
+    );
+    const interleaved = interleaveByTopic(merged.map((item) => item.q));
+    const curved = applyPersonalizedCurve(interleaved, topicMastery);
+    const topicIds = [...new Set(curved.map((question) => question.topicId))];
+    const avgTopicMastery =
+      topicIds.length > 0
+        ? topicIds.reduce(
+            (sum, topicId) => sum + (topicMastery.get(topicId) ?? 0),
+            0,
+          ) / topicIds.length
+        : 0;
+
+    return {
+      questionIds: curved.map((question) => question.questionId),
+      composition: {
+        dueReviews: curved.filter(
+          (question) => sourceById.get(question.questionId) === "due",
+        ).length,
+        newQuestions: curved.filter(
+          (question) => sourceById.get(question.questionId) === "unseen",
+        ).length,
+        leeches: curved.filter((question) => question.isLeech).length,
+      },
+      metadata: {
+        avgTopicMastery,
+        estimatedDuration: curved.length * 15,
+      },
+    };
+  }
+
   if (prioritizeUnseen && unseenCount > 0) {
-    let takeNew = unseenQuestions.slice(0, Math.min(count, unseenQuestions.length));
+    const takeNew = unseenQuestions.slice(
+      0,
+      Math.min(count, unseenQuestions.length),
+    );
     const takeNewIds = new Set(takeNew.map((q) => q.questionId));
 
     let takeDue = dueQuestions
@@ -241,7 +328,9 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     const nLeechCap = Math.min(3, leechQuestions.length);
     const takeDueIds = new Set(takeDue.map((q) => q.questionId));
     const leechCandidates = leechQuestions
-      .filter((q) => !takeNewIds.has(q.questionId) && !takeDueIds.has(q.questionId))
+      .filter(
+        (q) => !takeNewIds.has(q.questionId) && !takeDueIds.has(q.questionId),
+      )
       .slice(0, nLeechCap);
 
     if (leechCandidates.length > 0 && takeDue.length > 0) {
@@ -345,7 +434,10 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
     takeDue = [...takeDue, ...leechCandidates.slice(0, k)];
   }
 
-  let takeNew = unseenQuestions.slice(0, Math.min(nNew, unseenQuestions.length));
+  const takeNew = unseenQuestions.slice(
+    0,
+    Math.min(nNew, unseenQuestions.length),
+  );
 
   let merged: { q: RankedQuestion; tag: PoolTag }[] = [
     ...takeDue.map((q) => ({ q, tag: "due" as const })),
@@ -361,7 +453,9 @@ export function composeSession(input: SessionComposerInput): ComposedSession {
   merged = merged.slice(0, count);
 
   const mergedQs = merged.map((m) => m.q);
-  const sourceById = new Map(merged.map((m) => [m.q.questionId, m.tag] as const));
+  const sourceById = new Map(
+    merged.map((m) => [m.q.questionId, m.tag] as const),
+  );
 
   const interleaved = interleaveByTopic(mergedQs);
   const curved = applyPersonalizedCurve(interleaved, topicMastery);

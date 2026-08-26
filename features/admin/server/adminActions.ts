@@ -13,7 +13,10 @@ import {
 import { syncTopicQuestionCounts } from "@/features/admin/server/syncTopicQuestionCount";
 import { loadAdminTopicCatalog } from "@/features/admin/server/loadAdminTopicCatalog";
 import { revokeAllEntitlementsForUser } from "@/features/access/server/revokeEntitlements";
-import { formatQuestionCopyText, formatQuestionCopyWithReportText } from "@/features/admin/lib/formatQuestionCopyText";
+import {
+  formatQuestionCopyText,
+  formatQuestionCopyWithReportText,
+} from "@/features/admin/lib/formatQuestionCopyText";
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 
 async function requireAdmin() {
@@ -40,11 +43,10 @@ const resolveSchema = z.object({
   adminResponse: z.string().optional(),
 });
 
-export async function resolveReport(
-  raw: z.infer<typeof resolveSchema>,
-) {
+export async function resolveReport(raw: z.infer<typeof resolveSchema>) {
   const parsed = resolveSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   const { supabase } = await requireAdmin();
 
@@ -59,7 +61,10 @@ export async function resolveReport(
 
   if (error) {
     console.error("[resolveReport]", error.message);
-    return { ok: false as const, message: "Nie udało się zaktualizować zgłoszenia." };
+    return {
+      ok: false as const,
+      message: "Nie udało się zaktualizować zgłoszenia.",
+    };
   }
 
   return { ok: true as const };
@@ -74,7 +79,8 @@ export async function toggleQuestionActive(
   raw: z.infer<typeof toggleQuestionSchema>,
 ) {
   const parsed = toggleQuestionSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   const { supabase } = await requireAdmin();
 
@@ -98,7 +104,10 @@ export async function toggleQuestionActive(
 
   if (error) {
     console.error("[toggleQuestionActive]", error.message);
-    return { ok: false as const, message: "Nie udało się zaktualizować pytania." };
+    return {
+      ok: false as const,
+      message: "Nie udało się zaktualizować pytania.",
+    };
   }
 
   try {
@@ -117,11 +126,10 @@ const editQuestionSchema = z.object({
   explanation: z.string().optional(),
 });
 
-export async function editQuestion(
-  raw: z.infer<typeof editQuestionSchema>,
-) {
+export async function editQuestion(raw: z.infer<typeof editQuestionSchema>) {
   const parsed = editQuestionSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   const { supabase } = await requireAdmin();
 
@@ -151,6 +159,12 @@ const optionSchema = z.object({
   text: z.string().min(1).max(2000),
 });
 
+const structuredExplanationSchema = z.object({
+  takeaway: z.string().max(2000),
+  correctReason: z.string().max(8000),
+  distractors: z.record(z.string().max(8), z.string().max(2000)),
+});
+
 const updateQuestionSchema = z.object({
   questionId: z.string().min(1),
   reportId: z.string().uuid().optional(),
@@ -158,6 +172,8 @@ const updateQuestionSchema = z.object({
   options: z.array(optionSchema).min(2).max(8),
   correctOptionId: z.string().min(1).max(8),
   explanation: z.string().max(8000),
+  explanationBlocks: structuredExplanationSchema.nullable(),
+  conceptIds: z.array(z.string().uuid()).max(12),
   isActive: z.boolean(),
   sourceExam: z.string().max(120).nullable(),
   sourceCode: z.string().max(120).nullable(),
@@ -177,15 +193,8 @@ function diffQuestion(
   after: UpdateQuestionInput,
 ): Record<string, { before: unknown; after: unknown }> {
   const changes: Record<string, { before: unknown; after: unknown }> = {};
-  const compare = (
-    field: string,
-    a: unknown,
-    b: unknown,
-    deep = false,
-  ) => {
-    const equal = deep
-      ? JSON.stringify(a) === JSON.stringify(b)
-      : a === b;
+  const compare = (field: string, a: unknown, b: unknown, deep = false) => {
+    const equal = deep ? JSON.stringify(a) === JSON.stringify(b) : a === b;
     if (!equal) changes[field] = { before: a, after: b };
   };
 
@@ -193,6 +202,18 @@ function diffQuestion(
   compare("options", before.options, after.options, true);
   compare("correct_option_id", before.correctOptionId, after.correctOptionId);
   compare("explanation", before.explanation, after.explanation);
+  compare(
+    "explanation_blocks",
+    before.explanationBlocks,
+    after.explanationBlocks,
+    true,
+  );
+  compare(
+    "concept_ids",
+    [...before.conceptIds].sort(),
+    [...after.conceptIds].sort(),
+    true,
+  );
   compare("is_active", before.isActive, after.isActive);
   compare("source_exam", before.sourceExam, after.sourceExam);
   compare("source_code", before.sourceCode, after.sourceCode);
@@ -264,7 +285,9 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
 
   if ("topic_id" in changes && parsed.data.topicId) {
     const { topics } = await loadAdminTopicCatalog();
-    const topicExists = topics.some((topic) => topic.id === parsed.data.topicId);
+    const topicExists = topics.some(
+      (topic) => topic.id === parsed.data.topicId,
+    );
     if (!topicExists) {
       return {
         ok: false as const,
@@ -273,11 +296,37 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     }
   }
 
+  const { data: conceptRows, error: conceptError } =
+    parsed.data.conceptIds.length === 0
+      ? { data: [] as { id: string }[], error: null }
+      : await ctx.supabase
+          .from("concepts")
+          .select("id")
+          .eq("is_active", true)
+          .in("id", parsed.data.conceptIds);
+  if (parsed.data.conceptIds.length === 0 && before.conceptIds.length > 0) {
+    return {
+      ok: false as const,
+      message: "Przypisz co najmniej jedno pojęcie.",
+    };
+  }
+  if (
+    conceptError ||
+    new Set((conceptRows ?? []).map((row) => row.id as string)).size !==
+      new Set(parsed.data.conceptIds).size
+  ) {
+    return {
+      ok: false as const,
+      message: "Co najmniej jedno wybrane pojęcie nie istnieje.",
+    };
+  }
+
   const fullUpdatePayload = {
     text: parsed.data.text,
     options: parsed.data.options,
     correct_option_id: parsed.data.correctOptionId,
     explanation: parsed.data.explanation,
+    explanation_blocks: parsed.data.explanationBlocks,
     is_active: parsed.data.isActive,
     source_exam: parsed.data.sourceExam,
     source_code: parsed.data.sourceCode,
@@ -303,11 +352,59 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     };
   }
 
+  if ("concept_ids" in changes) {
+    const { error: deleteConceptsError } = await ctx.supabase
+      .from("question_concepts")
+      .delete()
+      .eq("question_id", parsed.data.questionId);
+    if (deleteConceptsError) {
+      console.error(
+        "[updateQuestionFull] delete concepts",
+        deleteConceptsError.message,
+      );
+      return {
+        ok: false as const,
+        message: "Pytanie zapisano, ale nie udało się zaktualizować pojęć.",
+      };
+    }
+
+    if (parsed.data.conceptIds.length > 0) {
+      const weight = 1 / parsed.data.conceptIds.length;
+      const { error: insertConceptsError } = await ctx.supabase
+        .from("question_concepts")
+        .insert(
+          parsed.data.conceptIds.map((conceptId) => ({
+            question_id: parsed.data.questionId,
+            concept_id: conceptId,
+            relation: "primary",
+            weight,
+            source: "manual",
+            reviewed_by: ctx.userId,
+            reviewed_at: new Date().toISOString(),
+          })),
+        );
+      if (insertConceptsError) {
+        console.error(
+          "[updateQuestionFull] insert concepts",
+          insertConceptsError.message,
+        );
+        return {
+          ok: false as const,
+          message: "Pytanie zapisano, ale nie udało się przypisać pojęć.",
+        };
+      }
+    }
+  }
+
   const topicsToSync: string[] = [];
-  if ("topic_id" in changes && before.topicId) topicsToSync.push(before.topicId);
+  if ("topic_id" in changes && before.topicId)
+    topicsToSync.push(before.topicId);
   if ("topic_id" in changes && parsed.data.topicId) {
     topicsToSync.push(parsed.data.topicId);
-  } else if ("is_active" in changes && (before.topicId ?? parsed.data.topicId)) {
+  } else if (
+    "is_active" in changes &&
+    (before.topicId ?? parsed.data.topicId)
+  ) {
     topicsToSync.push(before.topicId ?? parsed.data.topicId!);
   }
 
@@ -341,7 +438,9 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
   };
 }
 
-export async function fetchQuestionForAdmin(questionId: string): Promise<
+export async function fetchQuestionForAdmin(
+  questionId: string,
+): Promise<
   | { ok: true; question: AdminQuestionDetail; history: QuestionEditLogEntry[] }
   | { ok: false; message: string }
 > {
@@ -397,12 +496,12 @@ async function loadQuestionCopyPayload(questionId: string) {
       topicRow?.is_inbox as boolean | null,
     );
     const subjectNode = topicRow?.subjects as
-      | { name: string }
-      | { name: string }[]
-      | null;
+      { name: string } | { name: string }[] | null;
     subjectName =
-      (Array.isArray(subjectNode) ? subjectNode[0]?.name : subjectNode?.name)?.trim() ||
-      "—";
+      (Array.isArray(subjectNode)
+        ? subjectNode[0]?.name
+        : subjectNode?.name
+      )?.trim() || "—";
   }
 
   return {
@@ -416,9 +515,9 @@ async function loadQuestionCopyPayload(questionId: string) {
   };
 }
 
-export async function fetchQuestionCopyText(questionId: string): Promise<
-  { ok: true; text: string } | { ok: false; message: string }
-> {
+export async function fetchQuestionCopyText(
+  questionId: string,
+): Promise<{ ok: true; text: string } | { ok: false; message: string }> {
   try {
     await requireAdminAccess();
   } catch {
@@ -469,11 +568,10 @@ const setUserRoleSchema = z.object({
  * RLS — dzięki temu update przechodzi nawet jeśli polityki nie pozwalają
  * adminom modyfikować innych profili.
  */
-export async function setUserRole(
-  raw: z.infer<typeof setUserRoleSchema>,
-) {
+export async function setUserRole(raw: z.infer<typeof setUserRoleSchema>) {
   const parsed = setUserRoleSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   let ctx;
   try {
@@ -525,25 +623,31 @@ const banUserSchema = z.object({
 
 export async function banUser(raw: z.infer<typeof banUserSchema>) {
   const parsed = banUserSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   let ctx;
   try {
     ctx = await requireSuperAdmin();
   } catch {
-    return { ok: false as const, message: "Tylko admin może banować użytkowników." };
+    return {
+      ok: false as const,
+      message: "Tylko admin może banować użytkowników.",
+    };
   }
 
   if (parsed.data.userId === ctx.userId) {
-    return { ok: false as const, message: "Nie możesz zbanować własnego konta." };
+    return {
+      ok: false as const,
+      message: "Nie możesz zbanować własnego konta.",
+    };
   }
 
   try {
     const admin = createAdminClient();
 
-    const { data: authData, error: authError } = await admin.auth.admin.getUserById(
-      parsed.data.userId,
-    );
+    const { data: authData, error: authError } =
+      await admin.auth.admin.getUserById(parsed.data.userId);
     if (authError || !authData.user?.email) {
       console.error("[banUser] getUserById", authError?.message);
       return { ok: false as const, message: "Nie znaleziono użytkownika." };
@@ -559,7 +663,10 @@ export async function banUser(raw: z.infer<typeof banUserSchema>) {
       .maybeSingle();
 
     if (existingBan) {
-      return { ok: false as const, message: "Ten użytkownik jest już zbanowany." };
+      return {
+        ok: false as const,
+        message: "Ten użytkownik jest już zbanowany.",
+      };
     }
 
     let ipAddress: string | null = null;
@@ -588,7 +695,10 @@ export async function banUser(raw: z.infer<typeof banUserSchema>) {
     await admin.auth.admin.signOut(parsed.data.userId, "global");
   } catch (e) {
     console.error("[banUser]", e);
-    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+    return {
+      ok: false as const,
+      message: "Brak konfiguracji service role po stronie serwera.",
+    };
   }
 
   return { ok: true as const };
@@ -600,12 +710,16 @@ const unbanUserSchema = z.object({
 
 export async function unbanUser(raw: z.infer<typeof unbanUserSchema>) {
   const parsed = unbanUserSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   try {
     await requireSuperAdmin();
   } catch {
-    return { ok: false as const, message: "Tylko admin może odbanować użytkowników." };
+    return {
+      ok: false as const,
+      message: "Tylko admin może odbanować użytkowników.",
+    };
   }
 
   try {
@@ -618,11 +732,17 @@ export async function unbanUser(raw: z.infer<typeof unbanUserSchema>) {
 
     if (error) {
       console.error("[unbanUser]", error.message);
-      return { ok: false as const, message: "Nie udało się odbanować użytkownika." };
+      return {
+        ok: false as const,
+        message: "Nie udało się odbanować użytkownika.",
+      };
     }
   } catch (e) {
     console.error("[unbanUser]", e);
-    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+    return {
+      ok: false as const,
+      message: "Brak konfiguracji service role po stronie serwera.",
+    };
   }
 
   return { ok: true as const };
@@ -632,9 +752,12 @@ const revokeAccessSchema = z.object({
   userId: z.string().uuid(),
 });
 
-export async function revokeUserAccess(raw: z.infer<typeof revokeAccessSchema>) {
+export async function revokeUserAccess(
+  raw: z.infer<typeof revokeAccessSchema>,
+) {
   const parsed = revokeAccessSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   let ctx;
   try {
@@ -644,7 +767,10 @@ export async function revokeUserAccess(raw: z.infer<typeof revokeAccessSchema>) 
   }
 
   if (parsed.data.userId === ctx.userId) {
-    return { ok: false as const, message: "Nie możesz odebrać dostępu własnemu kontu." };
+    return {
+      ok: false as const,
+      message: "Nie możesz odebrać dostępu własnemu kontu.",
+    };
   }
 
   try {
@@ -658,7 +784,10 @@ export async function revokeUserAccess(raw: z.infer<typeof revokeAccessSchema>) 
 
     if (profileError) {
       console.error("[revokeUserAccess] profile", profileError.message);
-      return { ok: false as const, message: "Nie udało się oznaczyć konta jako bez dostępu." };
+      return {
+        ok: false as const,
+        message: "Nie udało się oznaczyć konta jako bez dostępu.",
+      };
     }
 
     await admin.auth.admin.signOut(parsed.data.userId, "global");
@@ -670,14 +799,20 @@ export async function revokeUserAccess(raw: z.infer<typeof revokeAccessSchema>) 
   return { ok: true as const };
 }
 
-export async function restoreUserAccess(raw: z.infer<typeof revokeAccessSchema>) {
+export async function restoreUserAccess(
+  raw: z.infer<typeof revokeAccessSchema>,
+) {
   const parsed = revokeAccessSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   try {
     await requireSuperAdmin();
   } catch {
-    return { ok: false as const, message: "Tylko admin może przywracać możliwość dostępu." };
+    return {
+      ok: false as const,
+      message: "Tylko admin może przywracać możliwość dostępu.",
+    };
   }
 
   try {
@@ -689,11 +824,17 @@ export async function restoreUserAccess(raw: z.infer<typeof revokeAccessSchema>)
 
     if (error) {
       console.error("[restoreUserAccess]", error.message);
-      return { ok: false as const, message: "Nie udało się przywrócić możliwości dostępu." };
+      return {
+        ok: false as const,
+        message: "Nie udało się przywrócić możliwości dostępu.",
+      };
     }
   } catch (e) {
     console.error("[restoreUserAccess]", e);
-    return { ok: false as const, message: "Nie udało się przywrócić możliwości dostępu." };
+    return {
+      ok: false as const,
+      message: "Nie udało się przywrócić możliwości dostępu.",
+    };
   }
 
   return { ok: true as const };
@@ -704,9 +845,12 @@ const deleteUserSchema = z.object({
 });
 
 /** Trwałe usunięcie konta z Auth; komentarze/zgłoszenia zostają jako „Użytkownik”. */
-export async function adminDeleteUserAccount(raw: z.infer<typeof deleteUserSchema>) {
+export async function adminDeleteUserAccount(
+  raw: z.infer<typeof deleteUserSchema>,
+) {
   const parsed = deleteUserSchema.safeParse(raw);
-  if (!parsed.success) return { ok: false as const, message: "Nieprawidłowe dane." };
+  if (!parsed.success)
+    return { ok: false as const, message: "Nieprawidłowe dane." };
 
   let ctx;
   try {
@@ -716,7 +860,10 @@ export async function adminDeleteUserAccount(raw: z.infer<typeof deleteUserSchem
   }
 
   if (parsed.data.userId === ctx.userId) {
-    return { ok: false as const, message: "Nie możesz usunąć własnego konta z panelu admina." };
+    return {
+      ok: false as const,
+      message: "Nie możesz usunąć własnego konta z panelu admina.",
+    };
   }
 
   try {
@@ -755,14 +902,19 @@ export async function adminDeleteUserAccount(raw: z.infer<typeof deleteUserSchem
 
     await admin.auth.admin.signOut(parsed.data.userId, "global");
 
-    const { error: deleteError } = await admin.auth.admin.deleteUser(parsed.data.userId);
+    const { error: deleteError } = await admin.auth.admin.deleteUser(
+      parsed.data.userId,
+    );
     if (deleteError) {
       console.error("[adminDeleteUserAccount] deleteUser", deleteError.message);
       return { ok: false as const, message: "Nie udało się usunąć konta." };
     }
   } catch (e) {
     console.error("[adminDeleteUserAccount]", e);
-    return { ok: false as const, message: "Brak konfiguracji service role po stronie serwera." };
+    return {
+      ok: false as const,
+      message: "Brak konfiguracji service role po stronie serwera.",
+    };
   }
 
   return { ok: true as const };

@@ -8,7 +8,6 @@ import { startSession } from "@/features/session/api/startSession";
 import { CatalogView } from "@/features/session/components/CatalogView";
 import { SessionLoadingScreen } from "@/features/session/components/SessionLoadingScreen";
 import { SessionStudyView } from "@/features/session/components/SessionStudyView";
-import { sessionSummaryStorageKey } from "@/features/session/lib/sessionSummaryStorage";
 import {
   peekRetryWrongIds,
   removeRetryWrongIds,
@@ -18,7 +17,11 @@ import {
   DEFAULT_SESSION_COUNT,
 } from "@/features/session/lib/sessionCount";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
-import type { KnnpSessionMode, SessionQuestion, SourceFilter } from "@/features/session/types";
+import type {
+  KnnpSessionMode,
+  SessionQuestion,
+  SourceFilter,
+} from "@/features/session/types";
 import { parseSourceFilter } from "@/features/session/lib/sourceFilter";
 
 const CACHE_PREFIX = "kurs-session-";
@@ -39,6 +42,8 @@ type Bootstrap =
       /** Deep-link do katalogu (param `q`) — trzymany w stanie, nie tylko w URL. */
       initialQuestionId?: string;
       product?: string | null;
+      adaptiveFeedbackEnabled: boolean;
+      planSnapshot?: unknown;
     };
 
 function parseMode(v: string | null): KnnpSessionMode {
@@ -65,9 +70,7 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
 
   useEffect(() => {
     let cancelled = false;
-    if (sessionId === "new") {
-      setBoot({ status: "loading" });
-    }
+    const params = new URLSearchParams(searchKey);
 
     async function run() {
       if (sessionId !== "new") {
@@ -76,22 +79,24 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             router.replace(`/sesja/${sessionId}/podsumowanie`);
             return;
           }
-        } catch { /* SSR guard */ }
+        } catch {
+          /* SSR guard */
+        }
       }
 
       if (sessionId === "new") {
-        const subj = searchParams.get("subject")?.trim() ?? "";
-        const mode = parseMode(searchParams.get("mode"));
-        const count = parseCount(searchParams.get("count"));
-        const topic = searchParams.get("topic") ?? undefined;
+        const subj = params.get("subject")?.trim() ?? "";
+        const mode = parseMode(params.get("mode"));
+        const count = parseCount(params.get("count"));
+        const topic = params.get("topic") ?? undefined;
 
-        const retryKey = searchParams.get("retry") ?? undefined;
+        const retryKey = params.get("retry") ?? undefined;
         const retryIds = retryKey ? peekRetryWrongIds(retryKey) : undefined;
 
-        const focusQuestionId = searchParams.get("q")?.trim() || undefined;
+        const focusQuestionId = params.get("q")?.trim() || undefined;
 
         const sessionFocus =
-          searchParams.get("focus") === "due" ? ("due" as const) : undefined;
+          params.get("focus") === "due" ? ("due" as const) : undefined;
 
         const res = await startSession({
           subjectId: subj || undefined,
@@ -99,11 +104,11 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
           count: retryIds ? retryIds.length : count,
           topicId: topic,
           questionIds: retryIds ?? undefined,
-          focusQuestionId:
-            mode === "katalog" ? focusQuestionId : undefined,
+          focusQuestionId: mode === "katalog" ? focusQuestionId : undefined,
           focus: sessionFocus,
-          source: parseSourceParam(searchParams.get("src")),
-          fillOwn: searchParams.get("fillown") === "1" ? true : undefined,
+          source: parseSourceParam(params.get("src")),
+          fillOwn: params.get("fillown") === "1" ? true : undefined,
+          dailyPlan: params.get("plan") === "1" ? true : undefined,
         });
         if (cancelled) return;
         if (!res.ok) {
@@ -126,6 +131,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             reserveQuestions: [],
             initialQuestionId: focusQuestionId,
             product: res.product,
+            adaptiveFeedbackEnabled: res.adaptiveFeedbackEnabled,
+            planSnapshot: res.planSnapshot,
           });
           return;
         }
@@ -141,6 +148,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             questions: res.questions,
             reserveQuestions: res.reserveQuestions ?? [],
             product: res.product,
+            adaptiveFeedbackEnabled: res.adaptiveFeedbackEnabled,
+            planSnapshot: res.planSnapshot,
           }),
         );
         router.replace(`/sesja/${res.sessionId}`);
@@ -160,6 +169,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
             questions: SessionQuestion[];
             reserveQuestions?: SessionQuestion[];
             product?: string | null;
+            adaptiveFeedbackEnabled?: boolean;
+            planSnapshot?: unknown;
           };
           sessionStorage.removeItem(cacheKey);
           if (!cancelled) {
@@ -178,6 +189,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
               questions: parsed.questions,
               reserveQuestions: parsed.reserveQuestions ?? [],
               product: parsed.product,
+              adaptiveFeedbackEnabled: parsed.adaptiveFeedbackEnabled ?? false,
+              planSnapshot: parsed.planSnapshot,
             });
           }
           return;
@@ -195,9 +208,11 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
 
       const dbMode = loaded.mode as string;
       const mappedMode: KnnpSessionMode =
-        dbMode === "nauka" ? "inteligentna" :
-        dbMode === "egzamin" ? "przeglad" :
-        (dbMode as KnnpSessionMode);
+        dbMode === "nauka"
+          ? "inteligentna"
+          : dbMode === "egzamin"
+            ? "przeglad"
+            : (dbMode as KnnpSessionMode);
 
       setBoot({
         status: "ready",
@@ -212,6 +227,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         questions: loaded.questions,
         reserveQuestions: loaded.reserveQuestions ?? [],
         product: loaded.product,
+        adaptiveFeedbackEnabled: loaded.adaptiveFeedbackEnabled,
+        planSnapshot: loaded.planSnapshot,
       });
     }
 
@@ -231,8 +248,12 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
         className="mx-auto max-w-md rounded-card border border-error/30 bg-card p-6 text-center"
         role="alert"
       >
-        <p className="font-heading text-heading-sm text-primary">{t("startFailedTitle")}</p>
-        <p className="mt-2 font-body text-body-sm text-secondary">{boot.message}</p>
+        <p className="font-heading text-heading-sm text-primary">
+          {t("startFailedTitle")}
+        </p>
+        <p className="mt-2 font-body text-body-sm text-secondary">
+          {boot.message}
+        </p>
       </div>
     );
   }
@@ -263,6 +284,8 @@ export function SessionPageClient({ sessionId }: { sessionId: string }) {
       questions={boot.questions}
       reserveQuestions={boot.reserveQuestions}
       product={boot.product}
+      adaptiveFeedbackEnabled={boot.adaptiveFeedbackEnabled}
+      planSnapshot={boot.planSnapshot}
     />
   );
 }

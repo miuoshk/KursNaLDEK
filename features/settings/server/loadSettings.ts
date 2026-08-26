@@ -3,7 +3,11 @@ import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { defaultLocale, isAppLocale } from "@/i18n/config";
 import { isClinicalProduct } from "@/features/access/lib/studyAccess";
-import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import {
+  normalizeProduct,
+  normalizeTrack,
+  normalizeYear,
+} from "@/features/access/lib/studyAccess";
 import { getEntitlementExpiresAt } from "@/features/access/lib/entitlementExpiry";
 import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
 import { isProfileAdmin } from "@/lib/auth/profileAdmin";
@@ -18,7 +22,7 @@ export async function loadSettings(
   const { data: profileRow } = await supabase
     .from("profiles")
     .select(
-      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, current_product, role, locale, exam_date, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, default_question_source, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
+      "full_name, nick, display_name, avatar_initials, avatar_emoji, current_track, current_year, current_product, role, locale, exam_date, daily_study_minutes, daily_goal, default_session_mode, default_question_count, show_session_timer, show_session_topics, default_question_source, notifications_reviews, notifications_weekly, subscription_status, subscription_ends_at, stripe_customer_id",
     )
     .eq("id", userId)
     .maybeSingle();
@@ -26,28 +30,36 @@ export async function loadSettings(
   const email =
     options?.email !== undefined
       ? options.email
-      : (await supabase.auth.getUser()).data.user?.email ?? null;
+      : ((await supabase.auth.getUser()).data.user?.email ?? null);
 
   const rawMode = profileRow?.default_session_mode as string | null;
   const mode: KnnpSessionMode =
-    rawMode === "inteligentna" || rawMode === "przeglad" || rawMode === "katalog"
+    rawMode === "inteligentna" ||
+    rawMode === "przeglad" ||
+    rawMode === "katalog"
       ? rawMode
       : DEFAULT_MODE;
 
   const rawCount = profileRow?.default_question_count as number | null;
-  const count = rawCount === 10 || rawCount === 25 || rawCount === 50 ? rawCount : 25;
+  const count =
+    rawCount === 10 || rawCount === 25 || rawCount === 50 ? rawCount : 25;
 
   const profile: SettingsProfile = {
-    full_name: profileRow?.full_name ?? profileRow?.display_name ?? "Użytkownik",
+    full_name:
+      profileRow?.full_name ?? profileRow?.display_name ?? "Użytkownik",
     nick: profileRow?.nick ?? profileRow?.display_name ?? "uzytkownik",
     avatar_initials: profileRow?.avatar_initials ?? null,
-    avatar_emoji: (profileRow?.avatar_emoji as string | null | undefined) ?? null,
+    avatar_emoji:
+      (profileRow?.avatar_emoji as string | null | undefined) ?? null,
     current_track: profileRow?.current_track ?? "stomatologia",
     current_year: profileRow?.current_year ?? 1,
-    current_product: normalizeProduct(profileRow?.current_product as string | null | undefined),
+    current_product: normalizeProduct(
+      profileRow?.current_product as string | null | undefined,
+    ),
     can_switch_product: isProfileAdmin(profileRow?.role),
     locale: isAppLocale(profileRow?.locale) ? profileRow.locale : defaultLocale,
     exam_date: (profileRow?.exam_date as string | null | undefined) ?? null,
+    daily_study_minutes: profileRow?.daily_study_minutes ?? 25,
     daily_goal: profileRow?.daily_goal ?? 25,
     default_session_mode: mode,
     default_question_count: count,

@@ -24,6 +24,8 @@ export type LoadSessionQuestionsResult =
       questions: SessionQuestion[];
       reserveQuestions?: SessionQuestion[];
       product?: string | null;
+      adaptiveFeedbackEnabled: boolean;
+      planSnapshot?: unknown;
     }
   | { ok: false; message: string };
 
@@ -49,7 +51,9 @@ export async function loadSessionQuestions(
 
     const { data: session, error: se } = await supabase
       .from("study_sessions")
-      .select("id, user_id, subject_id, mode, question_ids, reserve_question_ids")
+      .select(
+        "id, user_id, subject_id, mode, question_ids, reserve_question_ids, engine_variant, feedback_experiment_variant, plan_snapshot",
+      )
       .eq("id", sessionId.data)
       .maybeSingle();
 
@@ -92,10 +96,12 @@ export async function loadSessionQuestions(
     let reserveQuestions: SessionQuestion[] | undefined;
 
     if (session.mode === "nauka") {
-      const meta = await fetchSessionQuestionMeta(supabase, user.id, [
-        ...ids,
-        ...reserveIds,
-      ]);
+      const meta = await fetchSessionQuestionMeta(
+        supabase,
+        user.id,
+        [...ids, ...reserveIds],
+        session.engine_variant === "treatment" ? "treatment" : "shadow",
+      );
       questions = attachAntaresMetaToQuestions(questions, meta);
 
       if (reserveIds.length > 0) {
@@ -126,6 +132,9 @@ export async function loadSessionQuestions(
       questions,
       reserveQuestions,
       product: (subject.product as string | null) ?? null,
+      adaptiveFeedbackEnabled:
+        session.feedback_experiment_variant === "treatment",
+      planSnapshot: session.plan_snapshot ?? null,
     };
   } catch (e) {
     console.error("[loadSessionQuestions]", e);

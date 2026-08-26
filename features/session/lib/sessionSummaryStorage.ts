@@ -52,7 +52,8 @@ export function subscribeSessionSummary(
     }
   };
   window.addEventListener(SESSION_SUMMARY_UPDATED_EVENT, handler);
-  return () => window.removeEventListener(SESSION_SUMMARY_UPDATED_EVENT, handler);
+  return () =>
+    window.removeEventListener(SESSION_SUMMARY_UPDATED_EVENT, handler);
 }
 
 export function mergeEnrichedSessionSummary(
@@ -71,6 +72,9 @@ export function mergeEnrichedSessionSummary(
     xpEarned: next.xpEarned ?? prev.xpEarned,
     sessionInsights: next.sessionInsights ?? prev.sessionInsights,
     examReadiness: next.examReadiness ?? prev.examReadiness,
+    dailyPlan: next.dailyPlan ?? prev.dailyPlan,
+    strengthenedConcepts:
+      next.strengthenedConcepts ?? prev.strengthenedConcepts,
     topicId: prev.topicId ?? next.topicId,
   };
 }

@@ -1,5 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
+import {
+  normalizeStructuredExplanation,
+  type StructuredExplanation,
+} from "@/features/session/lib/structuredExplanation";
 
 export type AdminQuestionOption = {
   id: string;
@@ -17,6 +21,8 @@ export type AdminQuestionDetail = {
   options: AdminQuestionOption[];
   correctOptionId: string;
   explanation: string;
+  explanationBlocks: StructuredExplanation | null;
+  conceptIds: string[];
   sourceExam: string | null;
   sourceCode: string | null;
   imageUrl: string | null;
@@ -50,7 +56,7 @@ export async function loadAdminQuestionDetail(
   const { data, error } = await supabase
     .from("questions")
     .select(
-      "id, topic_id, question_type, text, options, correct_option_id, explanation, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle, topics(name, subject_id, is_inbox, subjects(name))",
+      "id, topic_id, question_type, text, options, correct_option_id, explanation, explanation_blocks, source_exam, source_code, image_url, is_active, theme_label, subtheme_label, batch_label, learning_outcome, disable_option_shuffle, question_concepts(concept_id), topics(name, subject_id, is_inbox, subjects(name))",
     )
     .eq("id", questionId)
     .maybeSingle();
@@ -81,13 +87,17 @@ export async function loadAdminQuestionDetail(
   const subjectName = Array.isArray(subjectNode)
     ? subjectNode[0]?.name
     : subjectNode?.name;
+  const conceptLinks =
+    (data.question_concepts as
+      { concept_id: string }[] | { concept_id: string } | null) ?? [];
+  const conceptIds = (
+    Array.isArray(conceptLinks) ? conceptLinks : [conceptLinks]
+  ).map((link) => link.concept_id);
 
   return {
     id: data.id as string,
     topicId: (data.topic_id as string | null) ?? null,
-    topicName: topic
-      ? formatAdminTopicName(topic.name, topic.is_inbox)
-      : null,
+    topicName: topic ? formatAdminTopicName(topic.name, topic.is_inbox) : null,
     subjectId: topic?.subject_id ?? null,
     subjectName: subjectName ?? null,
     questionType: (data.question_type as string | null) ?? null,
@@ -95,6 +105,8 @@ export async function loadAdminQuestionDetail(
     options: normalizeOptions(data.options),
     correctOptionId: (data.correct_option_id as string) ?? "",
     explanation: (data.explanation as string) ?? "",
+    explanationBlocks: normalizeStructuredExplanation(data.explanation_blocks),
+    conceptIds,
     sourceExam: (data.source_exam as string | null) ?? null,
     sourceCode: (data.source_code as string | null) ?? null,
     imageUrl: (data.image_url as string | null) ?? null,
@@ -103,7 +115,8 @@ export async function loadAdminQuestionDetail(
     subthemeLabel: (data.subtheme_label as string | null) ?? null,
     batchLabel: (data.batch_label as string | null) ?? null,
     learningOutcome: (data.learning_outcome as string | null) ?? null,
-    disableOptionShuffle: (data.disable_option_shuffle as boolean | null) === true,
+    disableOptionShuffle:
+      (data.disable_option_shuffle as boolean | null) === true,
   };
 }
 
@@ -139,7 +152,9 @@ export async function loadQuestionEdits(
   }
 
   return (data ?? []).map((row) => {
-    const profile = row.profiles as unknown as { display_name: string | null } | null;
+    const profile = row.profiles as unknown as {
+      display_name: string | null;
+    } | null;
     const changesRaw = (row.changes as Record<string, unknown>) ?? {};
     const changes: Record<string, { before: unknown; after: unknown }> = {};
     for (const [field, entry] of Object.entries(changesRaw)) {

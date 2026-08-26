@@ -2,6 +2,7 @@ import {
   calibrationScore,
   type CalibrationData,
 } from "./confidenceCalibration";
+import { detectFatigue } from "./midSessionAdapter";
 
 /** Zestaw metryk i krótkich wskazówek po ukończonej sesji. */
 export type SessionInsights = {
@@ -55,9 +56,7 @@ export function generateSessionInsights(
   const accuracy = n > 0 ? correctCount / n : 0;
 
   const avgTimeSeconds =
-    n > 0
-      ? answers.reduce((s, a) => s + a.timeSeconds, 0) / n
-      : 0;
+    n > 0 ? answers.reduce((s, a) => s + a.timeSeconds, 0) / n : 0;
 
   let fastestQuestion: { id: string; time: number } | null = null;
   let slowestQuestion: { id: string; time: number } | null = null;
@@ -80,10 +79,7 @@ export function generateSessionInsights(
     slowestQuestion = { id: maxId, time: maxT };
   }
 
-  const topicStats = new Map<
-    string,
-    { correct: number; total: number }
-  >();
+  const topicStats = new Map<string, { correct: number; total: number }>();
   for (const a of answers) {
     const cur = topicStats.get(a.topicId) ?? { correct: 0, total: 0 };
     cur.total += 1;
@@ -117,15 +113,11 @@ export function generateSessionInsights(
   if (n > 0) {
     const beforeAvg =
       answers.reduce((s, a) => s + a.retrievabilityBefore, 0) / n;
-    const afterAvg =
-      answers.reduce((s, a) => s + a.retrievabilityAfter, 0) / n;
+    const afterAvg = answers.reduce((s, a) => s + a.retrievabilityAfter, 0) / n;
     retrievabilityGain = afterAvg - beforeAvg;
   }
 
-  const topicIds = new Set([
-    ...masteryBefore.keys(),
-    ...masteryAfter.keys(),
-  ]);
+  const topicIds = new Set([...masteryBefore.keys(), ...masteryAfter.keys()]);
   const masteryDelta = new Map<string, number>();
   for (const tid of topicIds) {
     const b = masteryBefore.get(tid) ?? 0;
@@ -144,14 +136,21 @@ export function generateSessionInsights(
       }
     }
     if (worstTid !== null && worstAcc < 0.6) {
-      const name =
-        topicNamesById?.get(worstTid) ?? worstTid;
+      const name = topicNamesById?.get(worstTid) ?? worstTid;
       const pct = Math.round(worstAcc * 100);
       nextSessionFocus = `Skup się na: ${name} (${pct}%)`;
     }
   }
 
-  const fatigueWarning: string | null = null;
+  const fatigueWarning = detectFatigue(
+    answers.map((answer) => ({
+      isCorrect: answer.isCorrect,
+      confidence: answer.confidence,
+      timeSeconds: answer.timeSeconds,
+    })),
+  ).isFatigued
+    ? "fatigue_detected"
+    : null;
 
   const score = calibrationScore(calibration);
   let calibrationTip: string | null = null;
@@ -163,8 +162,7 @@ export function generateSessionInsights(
     calibrationTip = `Wydajesz się pewny, ale ${pct}% „na pewno” było błędnych`;
   } else if (score > 0.3 && calibration.nie_wiedzialem_total > 0) {
     const correctShare =
-      calibration.nie_wiedzialem_correct /
-      calibration.nie_wiedzialem_total;
+      calibration.nie_wiedzialem_correct / calibration.nie_wiedzialem_total;
     const pct = roundPct(correctShare * 100);
     calibrationTip = `Nie doceniasz się — ${pct}% odpowiedzi „nie wiedziałem” było poprawnych`;
   }

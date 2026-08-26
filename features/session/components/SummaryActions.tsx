@@ -15,12 +15,41 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
     .filter((a) => !a.isCorrect)
     .map((a) => a.questionId);
 
-  const nextSessionHref = buildSessionStartHref({
-    subject: summary.subjectId,
-    topic: summary.topicId,
-    mode: summary.mode,
-    count: summary.totalQuestions,
-  });
+  const fatigueDetected =
+    summary.sessionInsights?.fatigueWarning === "fatigue_detected";
+  const dailyPlan = summary.dailyPlan;
+  const dailyRemaining = dailyPlan
+    ? Math.max(
+        0,
+        dailyPlan.targetQuestions -
+          dailyPlan.questionsTodayAtStart -
+          dailyPlan.answeredQuestions,
+      )
+    : 0;
+  const recommendation = fatigueDetected
+    ? "break"
+    : dailyRemaining > 0
+      ? "continue_plan"
+      : wrongIds.length > 0
+        ? "retry"
+        : "done";
+  const recommendedHref =
+    recommendation === "continue_plan"
+      ? buildSessionStartHref({
+          subject: dailyPlan?.scopeSubjectId ?? undefined,
+          mode: "inteligentna",
+          count: dailyRemaining,
+          dailyPlan: true,
+        })
+      : "/pulpit";
+  const recommendedLabel =
+    recommendation === "break"
+      ? t("summaryRecommendedBreak")
+      : recommendation === "retry"
+        ? t("summaryRecommendedRetry", { count: wrongIds.length })
+        : recommendation === "continue_plan"
+          ? t("summaryRecommendedContinuePlan", { count: dailyRemaining })
+          : t("summaryRecommendedDone");
 
   const handleRetryWrong = useCallback(() => {
     const key = persistRetryWrongIds(wrongIds);
@@ -35,26 +64,26 @@ export function SummaryActions({ summary }: { summary: SessionSummaryData }) {
   }, [wrongIds, summary.subjectId, summary.topicId, summary.mode, router]);
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-4">
-      <Link
-        href={nextSessionHref}
-        className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
-      >
-        {t("summaryStartNext")}
-      </Link>
-
-      <div className="relative">
+    <div className="flex flex-col items-end gap-3">
+      <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+        {t("summaryRecommendedNext")}
+      </p>
+      {recommendation === "retry" ? (
         <button
           type="button"
           onClick={handleRetryWrong}
-          disabled={wrongIds.length === 0}
-          title={wrongIds.length === 0 ? t("summaryNoWrongAnswers") : undefined}
-          className="rounded-btn border border-brand-sage bg-transparent px-6 py-3 font-body font-medium text-brand-sage transition duration-200 ease-out hover:border-brand-gold hover:text-brand-gold disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-brand-sage disabled:hover:text-brand-sage"
+          className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
         >
-          {t("summaryRetryWrong")}
-          {wrongIds.length > 0 ? ` (${wrongIds.length})` : ""}
+          {recommendedLabel}
         </button>
-      </div>
+      ) : (
+        <Link
+          href={recommendedHref}
+          className="rounded-btn bg-brand-gold px-6 py-3 font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110"
+        >
+          {recommendedLabel}
+        </Link>
+      )}
 
       <Link
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}

@@ -3,6 +3,7 @@
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 
 const schema = z.object({
@@ -50,7 +51,7 @@ export async function endSession(
       return { ok: false, message: access.message };
     }
 
-    const { error: up } = await supabase
+    const { error: up } = await createAdminClient()
       .from("study_sessions")
       .update({
         is_completed: true,

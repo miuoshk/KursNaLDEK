@@ -3,16 +3,33 @@ import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import { getDueReviewCount } from "@/lib/dashboard/getDueReviewCount";
 import { countSessionAnswersTodayWarsaw } from "@/features/pulpit/server/countQuestionsToday";
-import { loadActivityHeatmap, type ActivityDay } from "@/features/pulpit/server/loadActivityHeatmap";
-import { loadProgressHistory, type ProgressPoint } from "@/features/pulpit/server/loadProgressHistory";
-import { loadWeakPoints, type WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
+import {
+  loadActivityHeatmap,
+  type ActivityDay,
+} from "@/features/pulpit/server/loadActivityHeatmap";
+import {
+  loadProgressHistory,
+  type ProgressPoint,
+} from "@/features/pulpit/server/loadProgressHistory";
+import {
+  loadWeakPoints,
+  type WeakPoint,
+} from "@/features/pulpit/server/loadWeakPoints";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { fetchVisibleTopicIds } from "@/features/session/server/questionSelection";
 import { getSubjectScopeIds } from "@/features/session/server/sharedSubjects";
-import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import {
+  isClinicalProduct,
+  normalizeProduct,
+  normalizeTrack,
+  normalizeYear,
+} from "@/features/access/lib/studyAccess";
 import { greetingName } from "@/lib/greetingName";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getDueReviewsPerSubject } from "@/lib/dashboard/getDueReviewsPerSubject";
+import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
+import { loadDailyPlan } from "@/features/session/server/loadDailyPlan";
+import { resolveMemoryEngineVariant } from "@/features/session/server/resolveMemoryEngineVariant";
 
 export type PulpitDueSubject = {
   id: string;
@@ -33,6 +50,7 @@ export type PulpitRecentSession = {
 export type PulpitData = {
   displayName: string;
   dailyGoal: number;
+  dailyPlan: DailyStudyPlan;
   questionsToday: number;
   currentStreak: number;
   longestStreak: number;
@@ -73,9 +91,35 @@ export async function loadPulpit(): Promise<
 
     const onlineWindowIso = new Date(Date.now() - 5 * 60 * 1000).toISOString();
     const catalog = await getCachedProductCatalog(product, track, catalogYear);
-    const [dueReviews, dueReviewsPerSubject, sessionsRes, questionsToday, activityDays, progressHistory, weakPoints, activeNowRes] = await Promise.all([
-      getDueReviewCount(supabase, user.id, track, catalogYear, product),
-      getDueReviewsPerSubject(supabase, user.id, catalog, track),
+    const memoryExperiment = await resolveMemoryEngineVariant(
+      supabase,
+      user.id,
+    );
+    const [
+      dueReviews,
+      dueReviewsPerSubject,
+      sessionsRes,
+      questionsToday,
+      activityDays,
+      progressHistory,
+      weakPoints,
+      activeNowRes,
+    ] = await Promise.all([
+      getDueReviewCount(
+        supabase,
+        user.id,
+        track,
+        catalogYear,
+        product,
+        memoryExperiment.engineVariant,
+      ),
+      getDueReviewsPerSubject(
+        supabase,
+        user.id,
+        catalog,
+        track,
+        memoryExperiment.engineVariant,
+      ),
       supabase
         .from("study_sessions")
         .select(
@@ -98,6 +142,10 @@ export async function loadPulpit(): Promise<
 
     const dailyGoal = profile?.daily_goal ?? 25;
     const preferredSessionCount = getPreferredSessionCount(profile);
+    const dailyPlan = await loadDailyPlan(supabase, user.id, profile, {
+      dueCount: dueReviews,
+      questionsToday,
+    });
 
     const dueSubjects: PulpitDueSubject[] = catalog.subjectRows
       .map((row) => ({
@@ -110,7 +158,8 @@ export async function loadPulpit(): Promise<
 
     const recentSessions: PulpitRecentSession[] = (sessionsRes.data ?? []).map(
       (row: Record<string, unknown>) => {
-        const sub = row.subjects as { name: string } | { name: string }[] | null;
+        const sub = row.subjects as
+          { name: string } | { name: string }[] | null;
         const name = Array.isArray(sub) ? sub[0]?.name : sub?.name;
         return {
           id: row.id as string,
@@ -128,7 +177,8 @@ export async function loadPulpit(): Promise<
     let lastSubjectName: string | null = null;
     let lastSubjectMasteryPct = 0;
 
-    const firstRow = sessionsRes.data?.[0] as { subject_id?: string } | undefined;
+    const firstRow = sessionsRes.data?.[0] as
+      { subject_id?: string } | undefined;
     const sid = firstRow?.subject_id;
     if (sid) {
       lastSubjectId = sid;
@@ -163,10 +213,11 @@ export async function loadPulpit(): Promise<
       data: {
         displayName,
         dailyGoal,
+        dailyPlan,
         questionsToday,
         currentStreak: profile?.current_streak ?? 0,
         longestStreak: profile?.longest_streak ?? 0,
-        dueReviews,
+        dueReviews: dailyPlan.dueBacklog,
         dueSubjects,
         xp: profile?.xp ?? 0,
         rankTier: profile?.rank_tier ?? "praktykant",

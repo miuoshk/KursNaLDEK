@@ -1,12 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
-import { Check, Eye, Loader2, Pencil, Plus, RotateCcw, Trash2 } from "lucide-react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
+import {
+  Check,
+  Eye,
+  Loader2,
+  Pencil,
+  Plus,
+  RotateCcw,
+  Trash2,
+} from "lucide-react";
 import {
   fetchAdminTopicCatalog,
   updateQuestionFull,
 } from "@/features/admin/server/adminActions";
 import { AdminQuestionImageField } from "@/features/admin/components/AdminQuestionImageField";
+import { AdminConceptAssignmentFields } from "@/features/admin/components/AdminConceptAssignmentFields";
+import { AdminStructuredExplanationFields } from "@/features/admin/components/AdminStructuredExplanationFields";
 import { AdminTopicAssignmentFields } from "@/features/admin/components/AdminTopicAssignmentFields";
 import { MarkdownExplanationEditor } from "@/features/admin/components/MarkdownExplanationEditor";
 import { RichTextContent } from "@/features/shared/components/RichTextContent";
@@ -31,6 +47,8 @@ type EditableState = {
   options: AdminQuestionOption[];
   correctOptionId: string;
   explanation: string;
+  explanationBlocks: AdminQuestionDetail["explanationBlocks"];
+  conceptIds: string[];
   isActive: boolean;
   sourceExam: string;
   sourceCode: string;
@@ -49,6 +67,8 @@ function toState(q: AdminQuestionDetail): EditableState {
     options: q.options.map((opt) => ({ ...opt })),
     correctOptionId: q.correctOptionId,
     explanation: q.explanation,
+    explanationBlocks: q.explanationBlocks,
+    conceptIds: [...q.conceptIds],
     isActive: q.isActive,
     sourceExam: q.sourceExam ?? "",
     sourceCode: q.sourceCode ?? "",
@@ -88,10 +108,10 @@ export function AdminQuestionEditor({
   const initial = useMemo(() => toState(question), [question]);
   const [state, setState] = useState<EditableState>(initial);
   const [view, setView] = useState<"edit" | "preview">("edit");
-  const [feedback, setFeedback] = useState<
-    | { tone: "success" | "error" | "info"; message: string }
-    | null
-  >(null);
+  const [feedback, setFeedback] = useState<{
+    tone: "success" | "error" | "info";
+    message: string;
+  } | null>(null);
   const [isPending, startTransition] = useTransition();
   const [isSaving, setIsSaving] = useState(false);
   const [catalog, setCatalog] = useState<AdminTopicCatalog | null>(null);
@@ -183,7 +203,10 @@ export function AdminQuestionEditor({
     setFeedback(null);
 
     if (state.text.trim().length === 0) {
-      setFeedback({ tone: "error", message: "Treść pytania nie może być pusta." });
+      setFeedback({
+        tone: "error",
+        message: "Treść pytania nie może być pusta.",
+      });
       return;
     }
     if (state.options.some((opt) => opt.text.trim().length === 0)) {
@@ -207,6 +230,13 @@ export function AdminQuestionEditor({
       });
       return;
     }
+    if (state.conceptIds.length === 0 && question.conceptIds.length > 0) {
+      setFeedback({
+        tone: "error",
+        message: "Przypisz co najmniej jedno pojęcie.",
+      });
+      return;
+    }
 
     setIsSaving(true);
     const result = await updateQuestionFull({
@@ -219,6 +249,8 @@ export function AdminQuestionEditor({
       })),
       correctOptionId: state.correctOptionId,
       explanation: state.explanation,
+      explanationBlocks: state.explanationBlocks,
+      conceptIds: state.conceptIds,
       isActive: state.isActive,
       sourceExam: emptyToNull(state.sourceExam),
       sourceCode: emptyToNull(state.sourceCode),
@@ -312,7 +344,9 @@ export function AdminQuestionEditor({
           <Field label="Treść pytania">
             <textarea
               value={state.text}
-              onChange={(e) => setState((p) => ({ ...p, text: e.target.value }))}
+              onChange={(e) =>
+                setState((p) => ({ ...p, text: e.target.value }))
+              }
               rows={3}
               className={inputClass}
             />
@@ -359,7 +393,9 @@ export function AdminQuestionEditor({
                         setState((p) => ({ ...p, correctOptionId: opt.id }));
                       }}
                       title={
-                        isCorrect ? "Aktualnie poprawna" : "Oznacz jako poprawną"
+                        isCorrect
+                          ? "Aktualnie poprawna"
+                          : "Oznacz jako poprawną"
                       }
                       className={cn(
                         "mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
@@ -399,6 +435,14 @@ export function AdminQuestionEditor({
             value={state.explanation}
             onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
           />
+          <AdminStructuredExplanationFields
+            value={state.explanationBlocks}
+            options={state.options}
+            correctOptionId={state.correctOptionId}
+            onChange={(explanationBlocks) =>
+              setState((previous) => ({ ...previous, explanationBlocks }))
+            }
+          />
         </>
       )}
 
@@ -413,7 +457,32 @@ export function AdminQuestionEditor({
           themeLabel={state.themeLabel}
           subthemeLabel={state.subthemeLabel}
           initialSubjectId={question.subjectId}
-          onTopicIdChange={(topicId) => setState((p) => ({ ...p, topicId }))}
+          onTopicIdChange={(topicId) =>
+            setState((previous) => {
+              const available = catalog.concepts.filter(
+                (concept) => concept.topicId === topicId,
+              );
+              const availableIds = new Set(
+                available.map((concept) => concept.id),
+              );
+              const retained = previous.conceptIds.filter((id) =>
+                availableIds.has(id),
+              );
+              const fallback = available.find(
+                (concept) => concept.source === "topic-bootstrap",
+              );
+              return {
+                ...previous,
+                topicId,
+                conceptIds:
+                  retained.length > 0
+                    ? retained
+                    : fallback
+                      ? [fallback.id]
+                      : [],
+              };
+            })
+          }
           onThemeLabelChange={(themeLabel) =>
             setState((p) => ({ ...p, themeLabel }))
           }
@@ -423,10 +492,24 @@ export function AdminQuestionEditor({
         />
       ) : (
         <div className="flex items-center gap-2 rounded-card border border-border bg-background/40 px-3 py-4 font-body text-body-sm text-secondary">
-          <Loader2 className="size-4 animate-spin text-brand-gold" aria-hidden />
+          <Loader2
+            className="size-4 animate-spin text-brand-gold"
+            aria-hidden
+          />
           Wczytuję katalog tematów…
         </div>
       )}
+
+      {catalog ? (
+        <AdminConceptAssignmentFields
+          concepts={catalog.concepts}
+          topicId={state.topicId}
+          value={state.conceptIds}
+          onChange={(conceptIds) =>
+            setState((previous) => ({ ...previous, conceptIds }))
+          }
+        />
+      ) : null}
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Field label="Termin egzaminu (source_exam)">
@@ -495,7 +578,7 @@ export function AdminQuestionEditor({
         </label>
         <p className="font-body text-body-xs text-muted">
           Opcje pozostają w kolejności z bazy. Włącz, gdy pytanie ma meta-opcje
-          (np. „A i B", „wszystkie prawidłowe"), odwołania (A)–(E) w wyjaśnieniu
+          (np. „A i B”, „wszystkie prawidłowe”), odwołania (A)–(E) w wyjaśnieniu
           lub inne przypadki, których automatyczna detekcja nie wychwyciła.
         </p>
       </div>
@@ -577,7 +660,9 @@ export function AdminQuestionEditor({
                     {entry.editorRole}
                   </span>
                   <span className="text-muted">·</span>
-                  <span className="text-muted">{formatDateTime(entry.createdAt)}</span>
+                  <span className="text-muted">
+                    {formatDateTime(entry.createdAt)}
+                  </span>
                 </div>
                 <div className="mt-1 text-muted">
                   Zmienione pola: {entry.changedFields.join(", ") || "—"}
@@ -700,7 +785,10 @@ function Meta({ label, value }: { label: string; value: string }) {
       <span className="font-body text-body-xs uppercase tracking-widest text-muted">
         {label}
       </span>
-      <span className="truncate font-body text-body-sm text-primary" title={value}>
+      <span
+        className="truncate font-body text-body-sm text-primary"
+        title={value}
+      >
         {value}
       </span>
     </div>

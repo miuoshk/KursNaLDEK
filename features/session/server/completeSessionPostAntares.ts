@@ -9,19 +9,20 @@ import {
   getRetrievability,
   type RetrievabilityInput,
 } from "@/features/session/lib/antares/retrievability";
-import type { SessionAnswerData, SessionInsights } from "@/features/session/lib/antares/sessionInsights";
+import type {
+  SessionAnswerData,
+  SessionInsights,
+} from "@/features/session/lib/antares/sessionInsights";
 import { generateSessionInsights } from "@/features/session/lib/antares/sessionInsights";
 import { normalizeTrack } from "@/features/access/lib/studyAccess";
 import { recalculateTopicMastery } from "@/features/session/lib/antares/recalculateTopicMastery";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
 import type { SessionInsightsPayload } from "@/features/session/summaryTypes";
+import { loadMemoryParameterSetById } from "@/features/session/server/loadMemorySchedulerConfig";
 import {
   normalizeTopicMasteryRow,
   TOPIC_MASTERY_CACHE_SELECT,
 } from "@/features/session/lib/antares/topicMasteryCacheDb";
-/** Ile historii eventów wczytać przed sesją (findPrevR / retrievability). */
-const LEARNING_EVENTS_LOOKBACK_DAYS = 180;
-
 type AnswerRow = {
   question_id: string;
   is_correct: boolean;
@@ -29,11 +30,8 @@ type AnswerRow = {
   time_spent_seconds: number | null;
   question_order: number | null;
   answered_at: string | null;
-};
-
-type LearnPayload = {
-  question_id?: string;
-  retrievability?: number;
+  retrievability_before: number | null;
+  retrievability_after: number | null;
 };
 
 function rowToRInput(row: {
@@ -41,6 +39,7 @@ function rowToRInput(row: {
   difficulty_rating: unknown;
   elapsed_days: unknown;
   scheduled_days: unknown;
+  learning_steps?: unknown;
   reps: unknown;
   lapses: unknown;
   state: unknown;
@@ -57,6 +56,7 @@ function rowToRInput(row: {
     difficulty_rating: Number(row.difficulty_rating ?? 0.3),
     elapsed_days: Number(row.elapsed_days ?? 0),
     scheduled_days: Number(row.scheduled_days ?? 0),
+    learning_steps: Number(row.learning_steps ?? 0),
     reps: Number(row.reps ?? 0),
     lapses: Number(row.lapses ?? 0),
     state,
@@ -148,14 +148,19 @@ export async function runCompleteSessionPostAntares(
   supabase: SupabaseClient,
   userId: string,
   sessionId: string,
-  sessionStartedAt: string,
   affectedTopicIds: string[],
   ansRows: AnswerRow[],
   answeredCount: number,
+  adaptiveFeedbackEnabled: boolean,
+  memory: {
+    engineVariant: "shadow" | "treatment";
+    parameterSetId: string | null;
+  },
 ): Promise<PostAntaresResult | null> {
   if (ansRows.length === 0) {
     return null;
   }
+  const admin = createAdminClient();
 
   const masteryBefore = await fetchMasteryMap(
     supabase,
@@ -165,7 +170,14 @@ export async function runCompleteSessionPostAntares(
 
   const profileRow = await getProfileByUserId(userId);
   const viewerTrack = normalizeTrack(profileRow?.current_track);
-  await recalculateTopicMastery(supabase, userId, affectedTopicIds, viewerTrack);
+  const schedulerSettings =
+    memory.engineVariant === "treatment"
+      ? await loadMemoryParameterSetById(admin, memory.parameterSetId)
+      : undefined;
+  await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {
+    engineVariant: memory.engineVariant,
+    schedulerSettings,
+  });
 
   const masteryAfter = await fetchMasteryMap(
     supabase,
@@ -175,50 +187,23 @@ export async function runCompleteSessionPostAntares(
 
   const qids = [...new Set(ansRows.map((a) => a.question_id as string))];
 
-  const sessionStartMs = new Date(sessionStartedAt).getTime();
-  let sessionEndMs = sessionStartMs;
-  for (const a of ansRows) {
-    if (a.answered_at) {
-      sessionEndMs = Math.max(
-        sessionEndMs,
-        new Date(a.answered_at as string).getTime(),
-      );
-    }
-  }
-  const eventsFromIso = new Date(
-    sessionStartMs - LEARNING_EVENTS_LOOKBACK_DAYS * 24 * 3600 * 1000,
-  ).toISOString();
-  /** Bufor na opóźnienie zapisu eventu w submitAnswer. */
-  const eventsToIso = new Date(sessionEndMs + 120_000).toISOString();
-
-  const [{ data: qRows }, { data: uqpRows }, { data: learnRows }, { data: leechEv }] =
+  const [{ data: qRows }, { data: uqpRows }, { data: leechEv }] =
     await Promise.all([
       supabase.from("questions").select("id, topic_id").in("id", qids),
       supabase
         .from("user_question_progress")
         .select(
-          "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, reps, lapses, state, next_review, last_answered_at",
+          "question_id, stability, difficulty_rating, elapsed_days, scheduled_days, learning_steps, reps, lapses, state, next_review, last_answered_at",
         )
         .eq("user_id", userId)
         .in("question_id", qids),
-      // Tylko eventy pytań z tej sesji — bez tego ciągnęliśmy wszystkie answer-
-      // eventy usera z 180 dni (u aktywnych userów dziesiątki tysięcy wierszy)
-      // i filtrowaliśmy po question_id dopiero w JS.
       supabase
         .from("learning_events")
-        .select("created_at, payload")
-        .eq("user_id", userId)
-        .eq("event_type", "answer")
-        .in("payload->>question_id", qids)
-        .gte("created_at", eventsFromIso)
-        .lte("created_at", eventsToIso)
-        .order("created_at", { ascending: true }),
-      supabase
-        .from("learning_events")
-        .select("payload, created_at")
+        .select("question_id")
         .eq("user_id", userId)
         .eq("event_type", "leech_hit")
-        .gte("created_at", sessionStartedAt),
+        .eq("session_id", sessionId)
+        .in("question_id", qids),
     ]);
 
   const topicByQ = new Map(
@@ -229,29 +214,10 @@ export async function runCompleteSessionPostAntares(
     (uqpRows ?? []).map((r) => [r.question_id as string, r]),
   );
 
-  const allAnswerEvents = (learnRows ?? [])
-    .map((e) => ({
-      t: new Date(e.created_at as string).getTime(),
-      p: e.payload as LearnPayload,
-    }))
-    .filter((e) => e.p?.question_id && qids.includes(e.p.question_id))
-    .sort((a, b) => a.t - b.t);
-
-  function findPrevR(qid: string, beforeT: number): number {
-    let r = 0;
-    for (const e of allAnswerEvents) {
-      if (e.p.question_id !== qid) continue;
-      if (e.t >= beforeT) break;
-      r = e.p.retrievability ?? 0;
-    }
-    return r;
-  }
-
   const newLeechQuestionIds: string[] = [];
   for (const e of leechEv ?? []) {
-    const p = e.payload as { question_id?: string };
-    if (p?.question_id && qids.includes(p.question_id)) {
-      newLeechQuestionIds.push(p.question_id);
+    if (e.question_id && qids.includes(e.question_id as string)) {
+      newLeechQuestionIds.push(e.question_id as string);
     }
   }
 
@@ -269,33 +235,18 @@ export async function runCompleteSessionPostAntares(
     const timeSeconds = a.time_spent_seconds ?? 0;
     const conf = a.confidence ?? "";
 
-    const answeredAt = a.answered_at
-      ? new Date(a.answered_at).getTime()
-      : Date.now();
-
-    let best: { t: number; p: LearnPayload } | null = null;
-    let bestDelta = Infinity;
-    for (const e of allAnswerEvents) {
-      if (e.p.question_id !== qid) continue;
-      if (e.t < sessionStartMs - 120_000) continue;
-      const d = Math.abs(e.t - answeredAt);
-      if (d < bestDelta) {
-        bestDelta = d;
-        best = e;
-      }
-    }
-
-    let rBefore = 0;
-    let rAfter = 0;
-    if (best) {
-      rAfter = best.p.retrievability ?? 0;
-      rBefore = findPrevR(qid, best.t);
-    }
+    const hasStoredRetrievability =
+      a.retrievability_before != null &&
+      a.retrievability_after != null &&
+      Number.isFinite(Number(a.retrievability_before)) &&
+      Number.isFinite(Number(a.retrievability_after));
+    let rBefore = Number(a.retrievability_before ?? 0);
+    let rAfter = Number(a.retrievability_after ?? 0);
 
     const uqp = uqpByQ.get(qid);
     if (uqp) {
       const rNow = getRetrievability(rowToRInput(uqp));
-      if (!best) {
+      if (!hasStoredRetrievability) {
         rBefore = rNow;
         rAfter = rNow;
       } else if (rAfter === 0) {
@@ -339,6 +290,9 @@ export async function runCompleteSessionPostAntares(
     newLeechQuestionIds,
     topicNamesById,
   );
+  if (!adaptiveFeedbackEnabled) {
+    insights.fatigueWarning = null;
+  }
 
   const sessionInsights = serializeInsights(insights);
 
@@ -355,7 +309,11 @@ export async function runCompleteSessionPostAntares(
       .select("id, name, subject_id")
       .eq("is_inbox", false)
       .in("id", cacheTopicIds);
-    topicMeta = (data ?? []) as { id: string; name: string; subject_id: string }[];
+    topicMeta = (data ?? []) as {
+      id: string;
+      name: string;
+      subject_id: string;
+    }[];
   }
 
   const metaByT = new Map(
@@ -434,7 +392,7 @@ export async function runCompleteSessionPostAntares(
     dailyRecommendation: exam.dailyRecommendation,
   };
 
-  const { error: insightsErr } = await supabase
+  const { error: insightsErr } = await admin
     .from("study_sessions")
     .update({
       session_insights: {
@@ -456,7 +414,6 @@ export async function runCompleteSessionPostAntares(
 
   // Percentyl kohorty (readiness_*) liczymy w tle (next/after) — wchodzi tylko
   // na /statystyki, nie do podsumowania, więc nie blokuje ekranu po sesji.
-  const admin = createAdminClient();
   const { error: profileErr } = await admin
     .from("profiles")
     .update({
@@ -466,7 +423,11 @@ export async function runCompleteSessionPostAntares(
     .eq("id", userId);
 
   if (profileErr) {
-    console.error("[postAntares] profile update", profileErr.message, profileErr);
+    console.error(
+      "[postAntares] profile update",
+      profileErr.message,
+      profileErr,
+    );
     throw profileErr;
   }
 

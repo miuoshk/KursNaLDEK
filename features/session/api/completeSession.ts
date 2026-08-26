@@ -9,7 +9,10 @@ import { createClient } from "@/lib/supabase/server";
 import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import { buildSessionSummary } from "@/features/session/server/sessionSummaryBuilder";
-import { nextStreakValues, todayDateString } from "@/features/session/server/sessionStreak";
+import {
+  nextStreakValues,
+  todayDateString,
+} from "@/features/session/server/sessionStreak";
 import { runCompleteSessionPostAntares } from "@/features/session/server/completeSessionPostAntares";
 import { refreshReadinessPercentileCache } from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
@@ -20,8 +23,7 @@ const schema = z.object({
 });
 
 export type CompleteSessionResult =
-  | { ok: true; summary: SessionSummaryData }
-  | { ok: false; message: string };
+  { ok: true; summary: SessionSummaryData } | { ok: false; message: string };
 
 export async function completeSession(
   raw: z.infer<typeof schema>,
@@ -46,7 +48,7 @@ export async function completeSession(
     const { data: session, error: se } = await supabase
       .from("study_sessions")
       .select(
-        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed, started_at",
+        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed, feedback_experiment_variant, engine_variant, memory_parameter_set_id",
       )
       .eq("id", parsed.data.sessionId)
       .eq("user_id", user.id)
@@ -76,25 +78,30 @@ export async function completeSession(
       return { ok: true, summary };
     }
 
-    const [{ count: completedBefore }, { data: ansRowsRaw }, { data: profile }] =
-      await Promise.all([
-        supabase
-          .from("study_sessions")
-          .select("id", { count: "exact", head: true })
-          .eq("user_id", user.id)
-          .eq("is_completed", true),
-        supabase
-          .from("session_answers")
-          .select(
-            "question_id, is_correct, question_order, time_spent_seconds, confidence, answered_at",
-          )
-          .eq("session_id", parsed.data.sessionId),
-        supabase
-          .from("profiles")
-          .select("xp, current_streak, longest_streak, last_active_date, avg_session_hour")
-          .eq("id", user.id)
-          .maybeSingle(),
-      ]);
+    const [
+      { count: completedBefore },
+      { data: ansRowsRaw },
+      { data: profile },
+    ] = await Promise.all([
+      supabase
+        .from("study_sessions")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", user.id)
+        .eq("is_completed", true),
+      supabase
+        .from("session_answers")
+        .select(
+          "question_id, is_correct, question_order, time_spent_seconds, feedback_dwell_seconds, confidence, answered_at, retrievability_before, retrievability_after",
+        )
+        .eq("session_id", parsed.data.sessionId),
+      supabase
+        .from("profiles")
+        .select(
+          "xp, current_streak, longest_streak, last_active_date, avg_session_hour, average_question_seconds",
+        )
+        .eq("id", user.id)
+        .maybeSingle(),
+    ]);
 
     if (!profile) {
       return { ok: false, message: t("errors.noProfile") };
@@ -106,8 +113,6 @@ export async function completeSession(
       (a, b) => (a.question_order ?? 0) - (b.question_order ?? 0),
     );
 
-    const qids = [...new Set(ansRows.map((a) => a.question_id as string))];
-
     const forXp = ansRows.map((a) => ({
       is_correct: a.is_correct as boolean,
     }));
@@ -118,13 +123,31 @@ export async function completeSession(
     );
 
     const sumDur =
-      ansRows.reduce((s, r) => s + (r.time_spent_seconds ?? 0), 0) ||
+      ansRows.reduce(
+        (sum, answer) =>
+          sum +
+          (answer.time_spent_seconds ?? 0) +
+          (answer.feedback_dwell_seconds ?? 0),
+        0,
+      ) ||
       parsed.data.durationSecondsFallback ||
       0;
 
     const answeredCount = ansRows.length;
     const correct = session.correct_answers ?? 0;
     const accuracy = answeredCount > 0 ? correct / answeredCount : 0;
+    const previousQuestionSeconds = Number(profile.average_question_seconds);
+    const observedQuestionSeconds =
+      answeredCount > 0
+        ? Math.min(600, Math.max(5, sumDur / answeredCount))
+        : 0;
+    const averageQuestionSeconds =
+      observedQuestionSeconds > 0
+        ? Number.isFinite(previousQuestionSeconds) &&
+          previousQuestionSeconds > 0
+          ? previousQuestionSeconds * 0.8 + observedQuestionSeconds * 0.2
+          : observedQuestionSeconds
+        : null;
 
     const { streak: newStreak } = nextStreakValues(
       profile.last_active_date as string | null,
@@ -134,7 +157,7 @@ export async function completeSession(
 
     const admin = createAdminClient();
     const [upSessRes, upProfRes] = await Promise.all([
-      supabase
+      admin
         .from("study_sessions")
         .update({
           is_completed: true,
@@ -151,12 +174,18 @@ export async function completeSession(
           current_streak: newStreak,
           longest_streak: newLongest,
           last_active_date: todayDateString(),
+          ...(averageQuestionSeconds != null
+            ? { average_question_seconds: averageQuestionSeconds }
+            : {}),
         })
         .eq("id", user.id),
     ]);
 
     if (upSessRes.error) {
-      console.error("[completeSession] study_sessions", upSessRes.error.message);
+      console.error(
+        "[completeSession] study_sessions",
+        upSessRes.error.message,
+      );
       return { ok: false, message: t("errors.closeSessionFailed") };
     }
     if (upProfRes.error) {
@@ -171,8 +200,6 @@ export async function completeSession(
     // a footer z insightami i tak pokazuje się tylko w trybie inteligentnym.
     // ═══════════════════════════════════════════════════════════
 
-    const sessionStartedAt =
-      (session.started_at as string | null) ?? new Date().toISOString();
     const postAnsRows = ansRows.map((a) => ({
       question_id: a.question_id as string,
       is_correct: Boolean(a.is_correct),
@@ -180,11 +207,17 @@ export async function completeSession(
       time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
       question_order: (a.question_order as number | null) ?? null,
       answered_at: (a.answered_at as string | null) ?? null,
+      retrievability_before: (a.retrievability_before as number | null) ?? null,
+      retrievability_after: (a.retrievability_after as number | null) ?? null,
     }));
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
-      supabase.from("profiles").select("xp, current_streak").eq("id", user.id).single(),
+      supabase
+        .from("profiles")
+        .select("xp, current_streak")
+        .eq("id", user.id)
+        .single(),
     ]);
 
     if (!summary) {
@@ -192,7 +225,9 @@ export async function completeSession(
     }
 
     summary.xpEarned = xpEarned;
-    summary.achievementUnlocked = isFirstSessionEver ? t("achievementFirstSession") : null;
+    summary.achievementUnlocked = isFirstSessionEver
+      ? t("achievementFirstSession")
+      : null;
     summary.previousStreakDays = profile.current_streak ?? 0;
 
     if (profAfter.data) {
@@ -210,17 +245,19 @@ export async function completeSession(
 
     const bgSessionId = session.id as string;
     const bgUserId = user.id;
-    const bgAvgSessionHour = profile.avg_session_hour as number | null | undefined;
+    const bgAvgSessionHour = profile.avg_session_hour as
+      number | null | undefined;
     const bgTotalQuestions = session.total_questions ?? answeredCount;
 
     after(async () => {
       try {
+        const bgAdmin = createAdminClient();
         // ANTARES najpierw — zapisuje session_insights/examReadiness do DB,
         // skąd klient (tryb inteligentny) dociąga je pollingiem. Liczymy tu,
         // bo to najcięższa część i nie ma prawa blokować ekranu podsumowania.
         if (postAnsRows.length > 0) {
           try {
-            const { data: topicRows, error: topicErr } = await supabase
+            const { data: topicRows, error: topicErr } = await bgAdmin
               .from("session_answers")
               .select("questions!inner(topic_id)")
               .eq("session_id", bgSessionId);
@@ -241,13 +278,21 @@ export async function completeSession(
             ];
 
             await runCompleteSessionPostAntares(
-              supabase,
+              bgAdmin,
               bgUserId,
               bgSessionId,
-              sessionStartedAt,
               affectedTopicIds,
               postAnsRows,
               answeredCount,
+              session.feedback_experiment_variant === "treatment",
+              {
+                engineVariant:
+                  session.engine_variant === "treatment"
+                    ? "treatment"
+                    : "shadow",
+                parameterSetId:
+                  (session.memory_parameter_set_id as string | null) ?? null,
+              },
             );
           } catch (err) {
             console.error("[completeSession] postAntares (bg)", err);
@@ -256,9 +301,8 @@ export async function completeSession(
 
         // Percentyl kohorty (readiness_*) — tylko na /statystyki, liczony po
         // odpowiedzi żeby nie wydłużać ekranu podsumowania.
-        await refreshReadinessPercentileCache(supabase, bgUserId);
+        await refreshReadinessPercentileCache(bgAdmin, bgUserId);
 
-        const bgAdmin = createAdminClient();
         const now = new Date();
         const currentHour =
           now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
@@ -285,13 +329,13 @@ export async function completeSession(
 
         const [{ count: thisWeekCount }, { count: lastWeekCount }] =
           await Promise.all([
-            supabase
+            bgAdmin
               .from("learning_events")
               .select("id", { count: "exact", head: true })
               .eq("user_id", bgUserId)
               .eq("event_type", "answer")
               .gte("created_at", sevenDaysAgoIso),
-            supabase
+            bgAdmin
               .from("learning_events")
               .select("id", { count: "exact", head: true })
               .eq("user_id", bgUserId)
@@ -314,7 +358,7 @@ export async function completeSession(
           .update({ learning_velocity: velocity })
           .eq("id", bgUserId);
 
-        await supabase.from("learning_events").insert({
+        await bgAdmin.from("learning_events").insert({
           user_id: bgUserId,
           event_type: "session_end",
           payload: {

@@ -15,6 +15,7 @@ export type SettingsProfile = {
   locale: AppLocale;
   /** ISO 8601 (TIMESTAMPTZ) lub null */
   exam_date: string | null;
+  daily_study_minutes: number;
   daily_goal: number;
   default_session_mode: KnnpSessionMode;
   default_question_count: number;

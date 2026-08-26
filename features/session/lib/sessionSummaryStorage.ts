@@ -63,6 +63,14 @@ export function mergeEnrichedSessionSummary(
   return {
     ...prev,
     previousAccuracy: next.previousAccuracy ?? prev.previousAccuracy,
+    previousTotalQuestions:
+      next.previousTotalQuestions !== undefined
+        ? next.previousTotalQuestions
+        : prev.previousTotalQuestions,
+    examReadinessBefore:
+      next.examReadinessBefore !== undefined
+        ? next.examReadinessBefore
+        : prev.examReadinessBefore,
     newXpTotal: next.newXpTotal ?? prev.newXpTotal,
     newStreak: next.newStreak ?? prev.newStreak,
     previousStreakDays: next.previousStreakDays ?? prev.previousStreakDays,
@@ -75,6 +83,7 @@ export function mergeEnrichedSessionSummary(
     dailyPlan: next.dailyPlan ?? prev.dailyPlan,
     strengthenedConcepts:
       next.strengthenedConcepts ?? prev.strengthenedConcepts,
+    answers: next.answers.length > 0 ? next.answers : prev.answers,
     topicId: prev.topicId ?? next.topicId,
   };
 }

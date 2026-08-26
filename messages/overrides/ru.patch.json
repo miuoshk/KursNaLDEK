@@ -242,7 +242,7 @@
     "summaryRecalculating": "Пересчитываю подсказки…",
     "summaryInsightsFailed": "Не удалось загрузить подсказки. Попробуйте позже.",
     "summaryLeeches": "«Пиявки» в этой сессии: {count} — стоит повторить отдельно.",
-    "summaryRetrievability": "Сила запоминания в сессии: +{percent}%",
+    "summaryRetrievability": "Сила запоминания: {percent}%",
     "summaryExamReadiness": "Готовность к экзамену",
     "summaryDailyRecommendation": "Рекомендация: ок. {count} вопросов в день",
     "modeClassic": "Классическое обучение",

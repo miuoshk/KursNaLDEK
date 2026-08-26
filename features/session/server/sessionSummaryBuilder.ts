@@ -5,13 +5,6 @@ import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSe
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
 
-const TRUNC = 80;
-
-function truncate(s: string, n: number) {
-  if (s.length <= n) return s;
-  return `${s.slice(0, n - 1)}…`;
-}
-
 function topicNameFromJoin(
   topics: { name: string } | { name: string }[] | null | undefined,
 ): string {
@@ -67,12 +60,12 @@ export async function buildSessionSummary(
       .maybeSingle(),
     supabase
       .from("profiles")
-      .select("xp, current_streak")
+      .select("xp, current_streak, exam_readiness_score")
       .eq("id", userId)
       .maybeSingle(),
     supabase
       .from("study_sessions")
-      .select("accuracy")
+      .select("accuracy, total_questions")
       .eq("user_id", userId)
       .eq("subject_id", subjId)
       .eq("is_completed", true)
@@ -100,7 +93,7 @@ export async function buildSessionSummary(
   const { data: qmeta } = await supabase
     .from("questions")
     .select(
-      "id, text, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
+      "id, text, explanation, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
     )
     .eq("topics.is_inbox", false)
     .in("id", qids.length ? qids : ["__none__"]);
@@ -115,6 +108,7 @@ export async function buildSessionSummary(
       q.id as string,
       {
         text: q.text as string,
+        explanation: (q.explanation as string | null) ?? "",
         correct: q.correct_option_id as string,
         options: q.options,
         topic: topicNameFromJoin(
@@ -146,7 +140,12 @@ export async function buildSessionSummary(
   const topicMap = new Map<string, { c: number; t: number }>();
   const conceptMap = new Map<
     string,
-    { label: string; attempts: number; correct: number }
+    {
+      label: string;
+      attempts: number;
+      correct: number;
+      questionIds: string[];
+    }
   >();
   const answers: SessionSummaryData["answers"] = [];
 
@@ -157,20 +156,25 @@ export async function buildSessionSummary(
     cur.t += 1;
     if (r.is_correct) cur.c += 1;
     topicMap.set(topicName, cur);
+    const questionId = r.question_id as string;
     for (const concept of meta?.concepts ?? []) {
       const conceptProgress = conceptMap.get(concept.id) ?? {
         label: concept.label,
         attempts: 0,
         correct: 0,
+        questionIds: [],
       };
       conceptProgress.attempts += 1;
       if (r.is_correct) conceptProgress.correct += 1;
+      if (!conceptProgress.questionIds.includes(questionId)) {
+        conceptProgress.questionIds.push(questionId);
+      }
       conceptMap.set(concept.id, conceptProgress);
     }
 
     answers.push({
-      questionId: r.question_id as string,
-      questionText: truncate(meta?.text ?? "", TRUNC),
+      questionId,
+      questionText: meta?.text ?? "",
       topicName,
       selectedOptionId: r.selected_option_id as string,
       correctOptionId: meta?.correct ?? "",
@@ -182,6 +186,7 @@ export async function buildSessionSummary(
       isCorrect: r.is_correct as boolean,
       confidence: r.confidence as Confidence | null,
       timeSpentSeconds: r.time_spent_seconds ?? 0,
+      explanation: meta?.explanation || undefined,
     });
   }
 
@@ -212,8 +217,7 @@ export async function buildSessionSummary(
         b.attempts - a.attempts ||
         b.correct - a.correct ||
         a.label.localeCompare(b.label, "pl"),
-    )
-    .slice(0, 6);
+    );
 
   const dbMode = session.mode as string;
   const mappedMode: SessionMode =
@@ -247,6 +251,12 @@ export async function buildSessionSummary(
       rows.map((r) => ({ is_correct: r.is_correct as boolean })),
     ),
     previousAccuracy: prev?.accuracy != null ? Number(prev.accuracy) : null,
+    previousTotalQuestions:
+      prev == null
+        ? null
+        : prev.total_questions != null
+          ? Number(prev.total_questions)
+          : null,
     answers,
     topicBreakdown,
     newXpTotal: profile?.xp ?? 0,
@@ -259,8 +269,14 @@ export async function buildSessionSummary(
     topicId,
     sessionInsights: sessionInsights ?? undefined,
     examReadiness: examReadiness ?? undefined,
+    examReadinessBefore: examReadiness
+      ? undefined
+      : typeof profile?.exam_readiness_score === "number"
+        ? profile.exam_readiness_score
+        : profile
+          ? null
+          : undefined,
     dailyPlan,
-    strengthenedConcepts:
-      strengthenedConcepts.length > 0 ? strengthenedConcepts : undefined,
+    strengthenedConcepts,
   };
 }

@@ -242,7 +242,7 @@
     "summaryRecalculating": "Перераховую підказки…",
     "summaryInsightsFailed": "Не вдалося завантажити підказки. Спробуйте пізніше.",
     "summaryLeeches": "«П'явиці» в цій сесії: {count} — варто повторити окремо.",
-    "summaryRetrievability": "Сила запам'ятовування в сесії: +{percent}%",
+    "summaryRetrievability": "Сила запам'ятовування: {percent}%",
     "summaryExamReadiness": "Готовність до іспиту",
     "summaryDailyRecommendation": "Рекомендація: бл. {count} питань на день",
     "modeClassic": "Класичне навчання",

@@ -21,6 +21,8 @@ import {
   type SourceFilterCounts,
 } from "@/features/session/lib/sourceFilter";
 import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
+import type { ExamReadinessSnapshot } from "@/features/session/summaryTypes";
+import { ExamReadinessCard } from "@/features/session/components/ExamReadinessCard";
 
 type Props = {
   subject: Subject;
@@ -32,6 +34,7 @@ type Props = {
   initialSessionCount: number;
   profileDefaultSource?: string | null;
   dailyPlan: DailyStudyPlan | null;
+  examReadiness?: ExamReadinessSnapshot | null;
 };
 
 export function SubjectDashboardClient({
@@ -44,6 +47,7 @@ export function SubjectDashboardClient({
   initialSessionCount,
   profileDefaultSource,
   dailyPlan,
+  examReadiness,
 }: Props) {
   const t = useTranslations("subjects");
   const enabled = isSourceFilterUiEnabled(subject.product);
@@ -78,6 +82,10 @@ export function SubjectDashboardClient({
 
       <div className="mt-8 space-y-8">
         <StatsRow stats={displayStats} />
+
+        {examReadiness ? (
+          <ExamReadinessCard readiness={examReadiness} />
+        ) : null}
 
         {enabled && sourceAccuracy ? (
           <SourceAccuracyCard product={subject.product} data={sourceAccuracy} />

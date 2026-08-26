@@ -8,7 +8,7 @@ import { SummaryActions } from "@/features/session/components/SummaryActions";
 import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerStrip";
 import { SummaryHero } from "@/features/session/components/SummaryHero";
 import { SummaryTopicBreakdown } from "@/features/session/components/SummaryTopicBreakdown";
-import { SummaryXpCard } from "@/features/session/components/SummaryXpCard";
+import { SummaryPositivesBar } from "@/features/session/components/SummaryPositivesBar";
 import {
   persistSessionSummaryToStorage,
   sessionSummaryStorageKey,
@@ -17,6 +17,7 @@ import {
 } from "@/features/session/lib/sessionSummaryStorage";
 import { logPerf, readSessionSummaryPerfT0 } from "@/features/session/lib/perfLog";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
+import { getSummaryVariant } from "@/features/session/lib/summaryVariant";
 
 const POLL_INTERVAL_MS = 400;
 const POLL_MAX_ATTEMPTS = 20;
@@ -165,17 +166,26 @@ export function SessionSummaryClient({
   ]);
 
   return (
-    <div className="mx-auto w-full max-w-4xl space-y-10 pb-12">
+    <div
+      className="mx-auto w-full max-w-4xl space-y-10 pb-12"
+      data-summary-variant={getSummaryVariant(summary)}
+      data-summary-n={summary.answers.length}
+      data-summary-accuracy={String(Math.round(summary.accuracy * 100))}
+    >
       <SummaryHero
         summary={summary}
         insightsLoading={insightsLoading}
         insightsFailed={insightsFailed}
         onInsightsRetry={() => void fetchInsights()}
+        primaryCta={<SummaryActions summary={summary} placement="primary" />}
       />
       <SummaryAnswerStrip summary={summary} />
       <SummaryTopicBreakdown summary={summary} />
-      <SummaryXpCard summary={summary} />
-      <SummaryActions summary={summary} />
+      <SummaryPositivesBar
+        summary={summary}
+        insightsLoading={insightsLoading}
+      />
+      <SummaryActions summary={summary} placement="footer" />
     </div>
   );
 }

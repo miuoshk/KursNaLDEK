@@ -51,6 +51,8 @@ export interface StrengthenedConcept {
   label: string;
   attempts: number;
   correct: number;
+  /** Pytania z tej sesji powiązane z pojęciem — do „Powtórz” bez nowego trybu. */
+  questionIds?: string[];
 }
 
 export interface SessionSummaryData {
@@ -66,6 +68,13 @@ export interface SessionSummaryData {
   xpEarned: number;
   longestStreak: number;
   previousAccuracy: number | null;
+  /** n poprzedniej ukończonej sesji z przedmiotu. L1: undefined. Brak poprzedniej: null. */
+  previousTotalQuestions?: number | null;
+  /**
+   * exam_readiness_score z profilu w momencie completeSession (przed after()).
+   * L1: undefined. Hard refresh po after(): undefined (delta niedostępna).
+   */
+  examReadinessBefore?: number | null;
   answers: {
     questionId: string;
     questionText: string;
@@ -77,6 +86,7 @@ export interface SessionSummaryData {
     isCorrect: boolean;
     confidence: Confidence | null;
     timeSpentSeconds: number;
+    explanation?: string;
   }[];
   topicBreakdown: {
     topicName: string;

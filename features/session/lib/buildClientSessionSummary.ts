@@ -2,13 +2,6 @@ import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
-const TRUNC = 80;
-
-function truncate(s: string, n: number) {
-  if (s.length <= n) return s;
-  return `${s.slice(0, n - 1)}…`;
-}
-
 function optionText(opts: { id: string; text: string }[], id: string) {
   return opts.find((o) => o.id === id)?.text ?? id;
 }
@@ -82,7 +75,7 @@ export function buildClientSessionSummary(
 
     summaryAnswers.push({
       questionId: a.questionId,
-      questionText: truncate(q?.text ?? "", TRUNC),
+      questionText: q?.text ?? "",
       topicName,
       selectedOptionId: a.selectedOptionId,
       correctOptionId: q?.correctOptionId ?? "",
@@ -91,6 +84,7 @@ export function buildClientSessionSummary(
       isCorrect: a.isCorrect,
       confidence: a.confidence as Confidence | null,
       timeSpentSeconds: a.timeSpentSeconds,
+      explanation: q?.explanation || undefined,
     });
   }
 

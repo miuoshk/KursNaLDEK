@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import {
   Clock,
-  CheckCircle2,
   Flame,
   Lightbulb,
   RotateCcw,
@@ -13,9 +12,16 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
+import {
+  canComparePreviousSession,
+  getSummaryVariant,
+  isFirstSubjectSession,
+  type SummaryVariant,
+} from "@/features/session/lib/summaryVariant";
 import { cn } from "@/lib/utils";
 
 const R = 52;
@@ -26,6 +32,7 @@ type Props = {
   insightsLoading?: boolean;
   insightsFailed?: boolean;
   onInsightsRetry?: () => void;
+  primaryCta?: ReactNode;
 };
 
 type SummaryTranslator = (
@@ -34,51 +41,45 @@ type SummaryTranslator = (
 ) => string;
 
 function pickHeadline(
+  variant: SummaryVariant,
   accuracy: number,
-  delta: number | null,
+  firstSubjectSession: boolean,
   t: SummaryTranslator,
 ): { title: string; subtitle: string } {
+  if (variant === "micro") {
+    return {
+      title: t("summaryVariantMicroTitle"),
+      subtitle: t("summaryVariantMicroSubtitle"),
+    };
+  }
+  if (variant === "weak") {
+    if (firstSubjectSession) {
+      return {
+        title: t("summaryVariantWeakFirstTitle"),
+        subtitle: t("summaryVariantWeakFirstSubtitle"),
+      };
+    }
+    return {
+      title: t("summaryVariantWeakTitle"),
+      subtitle: t("summaryVariantWeakSubtitle"),
+    };
+  }
   const pct = Math.round(accuracy * 100);
-
   if (pct === 100) {
     return {
-      title: t("summaryHeadlinePerfectTitle"),
-      subtitle: t("summaryHeadlinePerfectSubtitle"),
-    };
-  }
-  if (pct >= 90) {
-    return {
-      title: t("summaryHeadlineExcellentTitle"),
-      subtitle: t("summaryHeadlineExcellentSubtitle"),
-    };
-  }
-  if (delta != null && delta >= 15) {
-    return {
-      title: t("summaryHeadlineProgressTitle"),
-      subtitle: t("summaryHeadlineProgressSubtitle", { delta }),
+      title: t("summaryVariantGoodPerfectTitle"),
+      subtitle: t("summaryVariantGoodPerfectSubtitle"),
     };
   }
   if (pct >= 75) {
     return {
-      title: t("summaryHeadlineSolidTitle"),
-      subtitle: t("summaryHeadlineSolidSubtitle"),
-    };
-  }
-  if (pct >= 50) {
-    return {
-      title: t("summaryHeadlineGoodTitle"),
-      subtitle: t("summaryHeadlineGoodSubtitle"),
-    };
-  }
-  if (delta != null && delta <= -10) {
-    return {
-      title: t("summaryHeadlineHardTitle"),
-      subtitle: t("summaryHeadlineHardSubtitle"),
+      title: t("summaryVariantGoodSolidTitle"),
+      subtitle: t("summaryVariantGoodSolidSubtitle"),
     };
   }
   return {
-    title: t("summaryHeadlineKeepTitle"),
-    subtitle: t("summaryHeadlineKeepSubtitle"),
+    title: t("summaryVariantGoodTitle"),
+    subtitle: t("summaryVariantGoodSubtitle"),
   };
 }
 
@@ -97,7 +98,7 @@ function InsightRow({
   );
 }
 
-function SummaryInteligentnaFooter({
+function SummaryInsightsFooter({
   summary,
   loading,
   failed,
@@ -110,12 +111,18 @@ function SummaryInteligentnaFooter({
 }) {
   const t = useTranslations("session");
   const tCommon = useTranslations("common");
+  const variant = getSummaryVariant(summary);
   const insights = summary.sessionInsights;
-  const readiness = summary.examReadiness;
   const fatigueText =
     insights?.fatigueWarning === "fatigue_detected"
       ? t("fatigueSummary")
       : insights?.fatigueWarning;
+
+  if (variant === "micro") return null;
+
+  const retrievabilityGain = insights?.retrievabilityGain ?? 0;
+  const showRetrievability = Math.abs(retrievabilityGain) >= 0.01;
+  const retrievabilityPercent = Math.round(retrievabilityGain * 100);
 
   const tips = [
     insights?.calibrationTip,
@@ -123,22 +130,17 @@ function SummaryInteligentnaFooter({
     (insights?.leechesHit?.length ?? 0) > 0
       ? t("summaryLeeches", { count: insights!.leechesHit.length })
       : null,
-    !summary.dailyPlan && (insights?.retrievabilityGain ?? 0) > 0.01
-      ? t("summaryRetrievability", {
-          percent: Math.round((insights!.retrievabilityGain ?? 0) * 100),
-        })
-      : null,
   ].filter(Boolean) as string[];
 
   const showFooter =
     summary.mode === "inteligentna" &&
-    (loading || failed || readiness || tips.length > 0);
+    (loading || failed || showRetrievability || tips.length > 0);
 
   if (!showFooter) return null;
 
   return (
     <div className="mt-8 border-t border-white/[0.08] pt-6">
-      {loading && !readiness && tips.length === 0 ? (
+      {loading && !showRetrievability && tips.length === 0 ? (
         <div className="space-y-2">
           <p className="font-body text-body-xs text-muted">
             {t("summaryRecalculating")}
@@ -146,7 +148,7 @@ function SummaryInteligentnaFooter({
           <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
           <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
         </div>
-      ) : failed && !readiness && tips.length === 0 ? (
+      ) : failed && !showRetrievability && tips.length === 0 ? (
         <div>
           <p className="font-body text-body-sm text-secondary">
             {t("summaryInsightsFailed")}
@@ -162,7 +164,23 @@ function SummaryInteligentnaFooter({
           ) : null}
         </div>
       ) : (
-        <div className="grid gap-6 lg:grid-cols-[1fr,min(240px,100%)] lg:items-start">
+        <div className="space-y-4">
+          {showRetrievability ? (
+            <div>
+              <p className="flex items-center gap-2 font-body text-body-sm text-primary">
+                <TrendingUp className="size-4 shrink-0 text-brand-sage" aria-hidden />
+                {t("summaryRetrievability", {
+                  percent:
+                    retrievabilityPercent > 0
+                      ? `+${retrievabilityPercent}`
+                      : String(retrievabilityPercent),
+                })}
+              </p>
+              <p className="mt-1.5 font-body text-body-xs text-muted">
+                {t("summaryRetrievabilityCaption")}
+              </p>
+            </div>
+          ) : null}
           {tips.length > 0 ? (
             <ul className="space-y-3">
               {insights?.calibrationTip ? (
@@ -178,38 +196,7 @@ function SummaryInteligentnaFooter({
                   {t("summaryLeeches", { count: insights!.leechesHit.length })}
                 </InsightRow>
               ) : null}
-              {!summary.dailyPlan &&
-              (insights?.retrievabilityGain ?? 0) > 0.01 ? (
-                <InsightRow icon={TrendingUp}>
-                  {t("summaryRetrievability", {
-                    percent: Math.round(
-                      (insights!.retrievabilityGain ?? 0) * 100,
-                    ),
-                  })}
-                </InsightRow>
-              ) : null}
             </ul>
-          ) : (
-            <div />
-          )}
-
-          {readiness ? (
-            <div className="rounded-lg border border-brand-gold/20 bg-brand-gold/[0.04] p-4 lg:justify-self-end lg:w-full">
-              <p className="font-body text-body-xs uppercase tracking-widest text-brand-gold/80">
-                {t("summaryExamReadiness")}
-              </p>
-              <p className="mt-2 font-heading text-3xl font-bold text-brand-gold">
-                {Math.round(readiness.score)}%
-              </p>
-              <p className="mt-1 font-body text-body-sm text-secondary">
-                {readiness.verdict}
-              </p>
-              <p className="mt-3 font-body text-body-xs text-muted">
-                {t("summaryDailyRecommendation", {
-                  count: readiness.dailyRecommendation,
-                })}
-              </p>
-            </div>
           ) : null}
         </div>
       )}
@@ -222,11 +209,17 @@ export function SummaryHero({
   insightsLoading,
   insightsFailed,
   onInsightsRetry,
+  primaryCta,
 }: Props) {
   const t = useTranslations("session");
+  const variant = getSummaryVariant(summary);
+  const firstSubject = isFirstSubjectSession(summary);
+  const showCompare = canComparePreviousSession(summary);
   const prev = summary.previousAccuracy;
   const delta =
-    prev != null ? Math.round((summary.accuracy - prev) * 100) : null;
+    showCompare && prev != null
+      ? Math.round((summary.accuracy - prev) * 100)
+      : null;
   const improved = delta != null && delta > 0;
   const declined = delta != null && delta < 0;
   const answered = summary.answers.length;
@@ -236,41 +229,60 @@ export function SummaryHero({
     total: planned,
     questionsLabel: t("questionsShort"),
   });
-  const accuracyHeadline = pickHeadline(summary.accuracy, delta, t);
+  const headline = pickHeadline(variant, summary.accuracy, firstSubject, t);
   const dailyPlan = summary.dailyPlan;
-  const retentionGain = Math.max(
-    0,
-    Math.round((summary.sessionInsights?.retrievabilityGain ?? 0) * 100),
-  );
-  const title = dailyPlan
-    ? dailyPlan.sessionCompletion >= 1
-      ? t("summaryPlanCompletedTitle")
-      : t("summaryPlanProgressTitle")
-    : accuracyHeadline.title;
-  const subtitle = dailyPlan
-    ? retentionGain > 0
-      ? t("summaryPredictedRetentionGain", { percent: retentionGain })
-      : t("summaryTargetRetention", {
-          percent: Math.round(dailyPlan.targetRetention * 100),
-        })
-    : accuracyHeadline.subtitle;
-  const ringProgress = dailyPlan?.sessionCompletion ?? summary.accuracy;
+  const title = headline.title;
+  const subtitle = headline.subtitle;
+  const ringN = Math.max(answered, 1);
+  const ringCorrect = summary.correctAnswers;
+  const ringProgress = ringN > 0 ? ringCorrect / ringN : 0;
 
   return (
     <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-        <div className="min-w-0 flex-1">
-          <h1 className="font-heading text-heading-lg text-primary">{title}</h1>
-          <p className="mt-1.5 font-body text-body-md text-secondary">
-            {subtitle}
+      <div className="min-w-0">
+        <h1 className="font-heading text-heading-lg text-primary">{title}</h1>
+        <p className="mt-1.5 font-body text-body-md text-secondary">
+          {subtitle}
+        </p>
+        <p className="mt-4 font-body text-body-xs text-muted">
+          {summary.subjectName} · {sessionModeLabel(summary.mode, t)} ·{" "}
+          {questionsLine} · {formatSessionDuration(summary.durationSeconds)}
+          {dailyPlan
+            ? ` · ${t("summaryDailyPlanMinutes", {
+                completed: dailyPlan.completedMinutesToday,
+                target: dailyPlan.targetMinutes,
+              })}`
+            : null}
+        </p>
+        {showCompare && prev != null && delta != null ? (
+          <p className="mt-2 flex flex-wrap items-center gap-1 font-body text-body-xs text-secondary">
+            <span>{t("summaryPreviousSession")} </span>
+            <span>{Math.round(prev * 100)}%</span>
+            {delta !== 0 ? (
+              <span
+                className={cn(
+                  "inline-flex items-center gap-0.5",
+                  improved && "text-success",
+                  declined && "text-error",
+                )}
+              >
+                ({improved ? "+" : ""}
+                {delta} pp)
+                {improved ? (
+                  <TrendingUp className="size-3.5" aria-hidden />
+                ) : declined ? (
+                  <TrendingDown className="size-3.5" aria-hidden />
+                ) : null}
+              </span>
+            ) : null}
           </p>
-          <p className="mt-4 font-body text-body-xs text-muted">
-            {summary.subjectName} · {sessionModeLabel(summary.mode, t)} ·{" "}
-            {questionsLine} · {formatSessionDuration(summary.durationSeconds)}
-          </p>
-        </div>
+        ) : null}
+      </div>
 
-        <div className="flex flex-col items-center sm:flex-1">
+      {primaryCta ? <div className="mt-6">{primaryCta}</div> : null}
+
+      <div className="mt-8 flex flex-col gap-8 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-center">
           <div className="relative size-[120px]">
             <svg className="size-full -rotate-90" viewBox="0 0 120 120">
               <circle
@@ -296,119 +308,73 @@ export function SummaryHero({
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-body text-4xl text-brand-gold">
-                {Math.round(ringProgress * 100)}%
+              <span className="font-body text-xl font-medium text-brand-gold">
+                {t("summaryRingScore", { correct: ringCorrect, total: answered })}
               </span>
             </div>
           </div>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {dailyPlan
-              ? t("summaryPlanCompletion")
-              : t("summaryCorrectAnswers")}
+            {t("summaryCorrectAnswers")}
           </p>
-          <div className="mt-2 flex items-center gap-1 font-body text-body-xs">
-            {dailyPlan ? (
-              <span className="text-secondary">
-                {t("summaryAccuracySecondary", {
-                  percent: Math.round(summary.accuracy * 100),
-                })}
-              </span>
-            ) : prev == null ? (
-              <span className="text-muted">
-                {t("summaryFirstSessionSubject")}
-              </span>
-            ) : (
-              <>
-                <span className="text-secondary">
-                  {t("summaryPreviousSession")}{" "}
-                </span>
-                <span className="text-secondary">
-                  {Math.round(prev * 100)}%
-                </span>
-                {delta !== 0 && delta != null ? (
-                  <span
-                    className={cn(
-                      "inline-flex items-center gap-0.5 font-body",
-                      improved && "text-success",
-                      declined && "text-error",
-                      !improved && !declined && "text-muted",
-                    )}
-                  >
-                    ({improved ? "+" : ""}
-                    {delta}%)
-                    {improved ? (
-                      <TrendingUp className="size-3.5" aria-hidden />
-                    ) : declined ? (
-                      <TrendingDown className="size-3.5" aria-hidden />
-                    ) : null}
-                  </span>
-                ) : null}
-              </>
-            )}
-          </div>
         </div>
 
-        <ul className="flex flex-col gap-3 text-body-sm lg:w-[260px]">
-          {dailyPlan ? (
+        <ul className="flex flex-1 flex-wrap gap-x-6 gap-y-3 text-body-sm">
+          {summary.durationSeconds > 0 ? (
             <li className="flex items-center gap-2">
-              <CheckCircle2
-                className="size-4 shrink-0 text-brand-sage"
-                aria-hidden
-              />
+              <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
               <span className="font-body text-primary">
-                {t("summaryDailyPlanMinutes", {
-                  completed: dailyPlan.completedMinutesToday,
-                  target: dailyPlan.targetMinutes,
+                {t("summaryTime", {
+                  duration: formatSessionDuration(summary.durationSeconds),
                 })}
               </span>
             </li>
           ) : null}
-          <li className="flex items-center gap-2">
-            <Clock className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-body text-primary">
-              {t("summaryTime", {
-                duration: formatSessionDuration(summary.durationSeconds),
-              })}
-            </span>
-          </li>
-          <li className="flex items-center gap-2">
-            <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-body text-primary">
-              {t("summaryAvgPerQuestion", {
-                duration: formatSessionDuration(summary.avgTimePerQuestion),
-              })}
-            </span>
-          </li>
-          <li className="flex items-center gap-2">
-            <Flame
-              className={cn(
-                "size-4 shrink-0",
-                summary.longestStreak >= 5
-                  ? "text-brand-gold"
-                  : "text-secondary",
-              )}
-              aria-hidden
-            />
-            <span className="font-body text-primary">
-              {t("summaryLongestStreak", { count: summary.longestStreak })}
-            </span>
-          </li>
-          <li className="flex items-center gap-2">
-            <Sparkles className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-body text-primary">
-              {t("summaryNewQuestions", { count: summary.newQuestionsCount })}
-            </span>
-          </li>
-          <li className="flex items-center gap-2">
-            <RotateCcw className="size-4 shrink-0 text-secondary" aria-hidden />
-            <span className="font-body text-primary">
-              {t("summaryReviews", { count: summary.reviewCount })}
-            </span>
-          </li>
+          {summary.avgTimePerQuestion > 0 ? (
+            <li className="flex items-center gap-2">
+              <Timer className="size-4 shrink-0 text-secondary" aria-hidden />
+              <span className="font-body text-primary">
+                {t("summaryAvgPerQuestion", {
+                  duration: formatSessionDuration(summary.avgTimePerQuestion),
+                })}
+              </span>
+            </li>
+          ) : null}
+          {summary.longestStreak > 0 ? (
+            <li className="flex items-center gap-2">
+              <Flame
+                className={cn(
+                  "size-4 shrink-0",
+                  summary.longestStreak >= 5
+                    ? "text-brand-gold"
+                    : "text-secondary",
+                )}
+                aria-hidden
+              />
+              <span className="font-body text-primary">
+                {t("summaryLongestStreak", { count: summary.longestStreak })}
+              </span>
+            </li>
+          ) : null}
+          {summary.newQuestionsCount > 0 ? (
+            <li className="flex items-center gap-2">
+              <Sparkles className="size-4 shrink-0 text-secondary" aria-hidden />
+              <span className="font-body text-primary">
+                {t("summaryNewQuestions", { count: summary.newQuestionsCount })}
+              </span>
+            </li>
+          ) : null}
+          {summary.reviewCount > 0 ? (
+            <li className="flex items-center gap-2">
+              <RotateCcw className="size-4 shrink-0 text-secondary" aria-hidden />
+              <span className="font-body text-primary">
+                {t("summaryReviews", { count: summary.reviewCount })}
+              </span>
+            </li>
+          ) : null}
         </ul>
       </div>
 
-      <SummaryInteligentnaFooter
+      <SummaryInsightsFooter
         summary={summary}
         loading={insightsLoading}
         failed={insightsFailed}

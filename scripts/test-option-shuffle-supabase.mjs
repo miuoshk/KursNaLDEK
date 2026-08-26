@@ -158,6 +158,10 @@ const KNOWN_MUST_BLOCK = [
   "ana-trz-092",
   "HIST-02-001",
   "micro-exam-589",
+  "FARM-14-183",
+  "FARM-14-138",
+  "mju-zal-183",
+  "mju-zal-207",
 ];
 
 for (const id of KNOWN_MUST_BLOCK) {

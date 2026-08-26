@@ -28,6 +28,15 @@ const COMBO_OPTIONS: SessionOption[] = [
   { id: "e", text: "gardła" },
 ];
 
+/** FARM-14-183 — zgłoszenie: po shuffle litery w D/E nie zgadzały się z treścią. */
+const BARE_ODPOWIEDZI_OPTIONS: SessionOption[] = [
+  { id: "a", text: "Niklozamid" },
+  { id: "b", text: "Albendazol" },
+  { id: "c", text: "Pyrantel" },
+  { id: "d", text: "Odpowiedzi A i C" },
+  { id: "e", text: "Odpowiedzi B i C" },
+];
+
 describe("isCombinatorialOptionText", () => {
   it("wykrywa meta-opcje LDEK", () => {
     assert.equal(isCombinatorialOptionText("prawidłowe A i B"), true);
@@ -37,6 +46,12 @@ describe("isCombinatorialOptionText", () => {
     assert.equal(isCombinatorialOptionText("b, d oraz f poprawne"), true);
     assert.equal(isCombinatorialOptionText("a, c, f, g"), true);
     assert.equal(isCombinatorialOptionText("wszystkie z wymienionych"), true);
+    assert.equal(isCombinatorialOptionText("Odpowiedzi A i C"), true);
+    assert.equal(isCombinatorialOptionText("Odpowiedzi B i C"), true);
+    assert.equal(isCombinatorialOptionText("Odpowiedzi A i D"), true);
+    assert.equal(isCombinatorialOptionText("odpowiedzi A i B"), true);
+    assert.equal(isCombinatorialOptionText("odpowiedzi A, B i C"), true);
+    assert.equal(isCombinatorialOptionText("Odpowiedzi A i C są prawidłowe"), true);
   });
 
   it("nie flaguje zwykłej treści merytorycznej", () => {
@@ -84,6 +99,10 @@ describe("shouldKeepFixedOptionOrder", () => {
     assert.equal(shouldKeepFixedOptionOrder(COMBO_OPTIONS), true);
   });
 
+  it("blokuje shuffle przy gołym „Odpowiedzi A i C” bez słowa prawidłowe", () => {
+    assert.equal(shouldKeepFixedOptionOrder(BARE_ODPOWIEDZI_OPTIONS), true);
+  });
+
   it("blokuje shuffle przy odwołaniach w wyjaśnieniu", () => {
     assert.equal(
       shouldKeepFixedOptionOrder(PLAIN_OPTIONS, {
@@ -127,6 +146,18 @@ describe("orderSessionOptions", () => {
 
   it("nie tasuje pytań kombinatorycznych", () => {
     const ordered = orderSessionOptions(sessionA, "q-combo", COMBO_OPTIONS);
+    assert.deepEqual(
+      ordered.map((o) => o.id),
+      ["a", "b", "c", "d", "e"],
+    );
+  });
+
+  it("nie tasuje gołego „Odpowiedzi A i C” (FARM-14-183)", () => {
+    const ordered = orderSessionOptions(
+      sessionA,
+      "FARM-14-183",
+      BARE_ODPOWIEDZI_OPTIONS,
+    );
     assert.deepEqual(
       ordered.map((o) => o.id),
       ["a", "b", "c", "d", "e"],

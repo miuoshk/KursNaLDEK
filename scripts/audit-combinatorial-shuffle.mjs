@@ -47,21 +47,30 @@ function isShortStandaloneMeta(text) {
 }
 
 function hasLetterCombinationMeta(text) {
-  if (LETTER_RANGE.test(text)) return true;
-  if (/odpowiedzi?\s+[A-E]/i.test(text) && CORRECTNESS_WORD.test(text)) {
+  const t = text.trim();
+  if (LETTER_RANGE.test(t)) return true;
+  if (/odpowiedzi?\s+[A-E]/i.test(t) && CORRECTNESS_WORD.test(t)) {
     return true;
   }
-  if (/odpowiedzi\s+prawidłowe\s+to\s*:/i.test(text)) return true;
-  if (!OPTION_LETTER.test(text)) return false;
-  if (CORRECTNESS_WORD.test(text)) return true;
-  if (/tylko/i.test(text) && text.trim().length <= META_OPTION_MAX_LEN) {
+  if (/odpowiedzi\s+prawidłowe\s+to\s*:/i.test(t)) return true;
+  if (/^(?:poprawna|prawidłowa)\s+odpowiedź\s+[A-E]/i.test(t)) return true;
+  if (
+    t.length <= META_OPTION_MAX_LEN &&
+    /(?:odpowiedź|odpowiedzi)\s+[A-E]/i.test(t) &&
+    (LETTER_PAIR.test(t) || LETTER_COMMA_LIST.test(t))
+  ) {
     return true;
   }
-  if (LETTER_PAIR.test(text) || LETTER_COMMA_LIST.test(text)) {
+  if (!OPTION_LETTER.test(t)) return false;
+  if (CORRECTNESS_WORD.test(t)) return true;
+  if (/tylko/i.test(t) && text.trim().length <= META_OPTION_MAX_LEN) {
+    return true;
+  }
+  if (LETTER_PAIR.test(t) || LETTER_COMMA_LIST.test(t)) {
     return (
-      CORRECTNESS_WORD.test(text) ||
-      /tylko/i.test(text) ||
-      /wszystkie/i.test(text)
+      CORRECTNESS_WORD.test(t) ||
+      /tylko/i.test(t) ||
+      /wszystkie/i.test(t)
     );
   }
   return false;

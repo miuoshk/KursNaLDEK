@@ -65,7 +65,14 @@ function hasLetterCombinationMeta(text: string): boolean {
   if (/odpowiedzi?\s+[A-E]/i.test(t) && CORRECTNESS_WORD.test(t)) return true;
   if (/odpowiedzi\s+prawidłowe\s+to\s*:/i.test(t)) return true;
   if (/^(?:poprawna|prawidłowa)\s+odpowiedź\s+[A-E]/i.test(t)) return true;
-  if (/^odpowiedź\s+[A-E]\s+i\s+[A-E]/i.test(t)) return true;
+  // „Odpowiedzi A i C" / „odpowiedzi A, B i C" — bez słowa „prawidłowe"
+  if (
+    t.length <= META_OPTION_MAX_LEN &&
+    /(?:odpowiedź|odpowiedzi)\s+[A-E]/i.test(t) &&
+    (LETTER_PAIR.test(t) || LETTER_COMMA_LIST.test(t))
+  ) {
+    return true;
+  }
   if (/prawidłowa\s+odpowiedź\s+to\s*:/i.test(t)) return true;
   if (LOWERCASE_ID_META.test(t)) return true;
   if (t.length <= 30 && LOWERCASE_ID_LIST.test(t)) return true;

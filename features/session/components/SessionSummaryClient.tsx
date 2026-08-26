@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { loadSessionAntaresInsights } from "@/features/session/api/loadSessionAntaresInsights";
+import { loadSessionSummaryAction } from "@/features/session/api/loadSessionSummary";
 import { SummaryActions } from "@/features/session/components/SummaryActions";
 import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerStrip";
 import { SummaryHero } from "@/features/session/components/SummaryHero";
@@ -100,6 +101,21 @@ export function SessionSummaryClient({
   }, [summary.sessionId]);
 
   useEffect(() => {
+    let cancelled = false;
+    void loadSessionSummaryAction(initialSummary.sessionId).then((res) => {
+      if (cancelled || !res.ok) return;
+      setSummary((prev) => {
+        const next = mergeEnrichedSessionSummary(prev, res.summary);
+        persistSessionSummaryToStorage(prev.sessionId, next);
+        return next;
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [initialSummary.sessionId]);
+
+  useEffect(() => {
     if (summary.mode !== "inteligentna") return;
     if (hasAntaresData(summary)) {
       setInsightsLoading(false);
@@ -145,7 +161,7 @@ export function SessionSummaryClient({
 
   return (
     <div
-      className="mx-auto w-full max-w-4xl space-y-10 pb-12"
+      className="mx-auto w-full max-w-4xl space-y-8 pb-12 md:space-y-10"
       data-summary-variant={getSummaryVariant(summary)}
       data-summary-n={summary.answers.length}
       data-summary-accuracy={String(Math.round(summary.accuracy * 100))}

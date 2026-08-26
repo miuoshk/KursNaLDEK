@@ -2,14 +2,18 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   buildSessionStartHref,
   DEFAULT_SESSION_COUNT,
 } from "@/features/session/lib/sessionCount";
 import { persistRetryWrongIds } from "@/features/session/lib/retryWrongStorage";
-import { getSummaryVariant } from "@/features/session/lib/summaryVariant";
+import {
+  getSummaryVariant,
+  resolveSummaryFooterActions,
+  type SummaryFooterAction,
+} from "@/features/session/lib/summaryVariant";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +30,9 @@ function startIdsSession(
     retry: key,
   });
   if (summary.topicId) q.set("topic", summary.topicId);
+  if (summary.sourceFilter && summary.sourceFilter !== "all") {
+    q.set("src", summary.sourceFilter);
+  }
   router.push(`/sesja/new?${q.toString()}`);
 }
 
@@ -35,6 +42,37 @@ export function startConceptReviewSession(
   router: ReturnType<typeof useRouter>,
 ) {
   startIdsSession(questionIds, summary, router);
+}
+
+function sessionStartMode(summary: SessionSummaryData) {
+  return summary.mode === "osce_topic" ? "inteligentna" : summary.mode;
+}
+
+function nextSessionHref(summary: SessionSummaryData): string {
+  return buildSessionStartHref({
+    subject: summary.subjectId,
+    mode: sessionStartMode(summary),
+    count: Math.max(summary.totalQuestions, 1),
+    topic: summary.topicId,
+    src: summary.sourceFilter,
+  });
+}
+
+function finishSessionHref(
+  summary: SessionSummaryData,
+  answered: number,
+): string {
+  const count =
+    answered < summary.totalQuestions
+      ? summary.totalQuestions
+      : DEFAULT_SESSION_COUNT;
+  return buildSessionStartHref({
+    subject: summary.subjectId,
+    mode: sessionStartMode(summary),
+    count,
+    topic: summary.topicId,
+    src: summary.sourceFilter,
+  });
 }
 
 export function SummaryActions({
@@ -51,64 +89,78 @@ export function SummaryActions({
     .filter((a) => !a.isCorrect)
     .map((a) => a.questionId);
   const answered = summary.answers.length;
-  const finishCount =
-    answered < summary.totalQuestions
-      ? summary.totalQuestions
-      : DEFAULT_SESSION_COUNT;
-  const nextHref = buildSessionStartHref({
-    subject: summary.subjectId,
-    mode: summary.mode === "osce_topic" ? "inteligentna" : summary.mode,
-    count: finishCount,
-    topic: summary.topicId,
-  });
+  const finishHref = finishSessionHref(summary, answered);
+  const nextHref = nextSessionHref(summary);
 
   const handleRetryWrong = useCallback(() => {
     startIdsSession(wrongIds, summary, router);
   }, [wrongIds, summary, router]);
 
-  let kind: "finish" | "retry" | "next" = "next";
-  if (variant === "micro") {
-    kind = "finish";
-  } else if (wrongIds.length > 0) {
-    kind = "retry";
-  }
+  const labelFor = (kind: SummaryFooterAction, footer: boolean) => {
+    if (kind === "finish") return t("summaryFinishFullSession");
+    if (kind === "retry") {
+      return t("summaryRecommendedRetry", { count: wrongIds.length });
+    }
+    return footer ? t("summaryFooterNextSession") : t("summaryNextSession");
+  };
 
-  const label =
-    kind === "finish"
-      ? t("summaryFinishFullSession")
-      : kind === "retry"
-        ? t("summaryRecommendedRetry", { count: wrongIds.length })
-        : t("summaryNextSession");
-
-  const className = cn(
-    "inline-flex items-center justify-center rounded-btn bg-brand-gold font-body font-semibold text-brand-bg transition duration-200 ease-out hover:brightness-110",
-    placement === "primary" ? "px-8 py-4 text-body-md" : "px-6 py-3",
-  );
-
-  const control =
-    kind === "retry" ? (
-      <button type="button" onClick={handleRetryWrong} className={className}>
-        {label}
-      </button>
-    ) : (
-      <Link href={nextHref} className={className}>
+  const renderControl = (
+    kind: SummaryFooterAction,
+    weight: "primary" | "secondary",
+    footer: boolean,
+  ) => {
+    const className = cn(
+      "inline-flex items-center justify-center rounded-btn font-body font-semibold transition duration-200 ease-out",
+      weight === "primary" &&
+        "bg-brand-gold text-brand-bg hover:brightness-110",
+      weight === "secondary" &&
+        "border border-white/20 bg-transparent text-primary hover:bg-white/[0.05]",
+      placement === "primary"
+        ? "w-full px-8 py-4 text-body-md sm:w-auto"
+        : "w-full px-6 py-3 sm:w-auto",
+    );
+    const label = labelFor(kind, footer);
+    if (kind === "retry") {
+      return (
+        <button type="button" onClick={handleRetryWrong} className={className}>
+          {label}
+        </button>
+      );
+    }
+    const href = kind === "finish" ? finishHref : nextHref;
+    return (
+      <Link href={href} className={className}>
         {label}
       </Link>
     );
+  };
 
   if (placement === "primary") {
-    return <div className="flex justify-start">{control}</div>;
+    const { primary } = resolveSummaryFooterActions(variant, wrongIds.length);
+    return (
+      <div className="flex justify-start">
+        {renderControl(primary, "primary", false)}
+      </div>
+    );
+  }
+
+  const footer = resolveSummaryFooterActions(variant, wrongIds.length);
+  const items: ReactNode[] = [
+    renderControl(footer.primary, "primary", true),
+  ];
+  if (footer.secondary) {
+    items.push(renderControl(footer.secondary, "secondary", true));
   }
 
   return (
-    <div className="flex flex-col items-end gap-3">
-      <p className="font-body text-body-xs uppercase tracking-widest text-muted">
+    <div className="flex flex-col items-stretch gap-3 sm:items-end">
+      <p className="font-body text-body-xs uppercase tracking-widest text-muted sm:text-right">
         {t("summaryRecommendedNext")}
       </p>
-      {control}
+      {items}
       <Link
         href={`/przedmioty/${encodeURIComponent(summary.subjectId)}`}
-        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
+        className="font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary sm:text-right"
       >
         {t("backToSubject")}
       </Link>

@@ -24,6 +24,7 @@ import type {
   Confidence,
   SessionMode,
   SessionQuestion,
+  SourceFilter,
 } from "@/features/session/types";
 
 type SessionStudyViewProps = {
@@ -33,6 +34,7 @@ type SessionStudyViewProps = {
   subjectShortName: string;
   mode: SessionMode;
   topicId?: string;
+  sourceFilter?: SourceFilter;
   questions: SessionQuestion[];
   reserveQuestions?: SessionQuestion[];
   product?: string | null;
@@ -47,6 +49,7 @@ export function SessionStudyView({
   subjectShortName,
   mode,
   topicId,
+  sourceFilter,
   questions,
   reserveQuestions = [],
   product,
@@ -157,6 +160,7 @@ export function SessionStudyView({
       subjectShortName,
       mode,
       topicId,
+      sourceFilter,
       profileXp: profile?.xp ?? null,
       profileStreak: streak,
       adaptiveFeedbackEnabled,

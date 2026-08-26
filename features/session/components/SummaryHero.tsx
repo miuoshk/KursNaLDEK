@@ -19,8 +19,7 @@ import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
 import {
   canComparePreviousSession,
   getSummaryVariant,
-  isFirstSubjectSession,
-  type SummaryVariant,
+  pickVerdictMessageKeys,
 } from "@/features/session/lib/summaryVariant";
 import { cn } from "@/lib/utils";
 
@@ -41,45 +40,14 @@ type SummaryTranslator = (
 ) => string;
 
 function pickHeadline(
-  variant: SummaryVariant,
-  accuracy: number,
-  firstSubjectSession: boolean,
+  sessionId: string,
+  variant: ReturnType<typeof getSummaryVariant>,
   t: SummaryTranslator,
 ): { title: string; subtitle: string } {
-  if (variant === "micro") {
-    return {
-      title: t("summaryVariantMicroTitle"),
-      subtitle: t("summaryVariantMicroSubtitle"),
-    };
-  }
-  if (variant === "weak") {
-    if (firstSubjectSession) {
-      return {
-        title: t("summaryVariantWeakFirstTitle"),
-        subtitle: t("summaryVariantWeakFirstSubtitle"),
-      };
-    }
-    return {
-      title: t("summaryVariantWeakTitle"),
-      subtitle: t("summaryVariantWeakSubtitle"),
-    };
-  }
-  const pct = Math.round(accuracy * 100);
-  if (pct === 100) {
-    return {
-      title: t("summaryVariantGoodPerfectTitle"),
-      subtitle: t("summaryVariantGoodPerfectSubtitle"),
-    };
-  }
-  if (pct >= 75) {
-    return {
-      title: t("summaryVariantGoodSolidTitle"),
-      subtitle: t("summaryVariantGoodSolidSubtitle"),
-    };
-  }
+  const keys = pickVerdictMessageKeys(sessionId, variant);
   return {
-    title: t("summaryVariantGoodTitle"),
-    subtitle: t("summaryVariantGoodSubtitle"),
+    title: t(keys.titleKey),
+    subtitle: t(keys.subtitleKey),
   };
 }
 
@@ -213,7 +181,6 @@ export function SummaryHero({
 }: Props) {
   const t = useTranslations("session");
   const variant = getSummaryVariant(summary);
-  const firstSubject = isFirstSubjectSession(summary);
   const showCompare = canComparePreviousSession(summary);
   const prev = summary.previousAccuracy;
   const delta =
@@ -229,19 +196,24 @@ export function SummaryHero({
     total: planned,
     questionsLabel: t("questionsShort"),
   });
-  const headline = pickHeadline(variant, summary.accuracy, firstSubject, t);
+  const headline = pickHeadline(summary.sessionId, variant, (key) =>
+    t(key as never),
+  );
   const dailyPlan = summary.dailyPlan;
   const title = headline.title;
   const subtitle = headline.subtitle;
   const ringN = Math.max(answered, 1);
   const ringCorrect = summary.correctAnswers;
   const ringProgress = ringN > 0 ? ringCorrect / ringN : 0;
+  const ringPercent = answered > 0 ? Math.round((ringCorrect / answered) * 100) : 0;
 
   return (
-    <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-8">
+    <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-5 md:p-8">
       <div className="min-w-0">
-        <h1 className="font-heading text-heading-lg text-primary">{title}</h1>
-        <p className="mt-1.5 font-body text-body-md text-secondary">
+        <h1 className="font-heading text-[24px] leading-tight text-primary md:text-[30px]">
+          {title}
+        </h1>
+        <p className="mt-2 font-body text-[15px] leading-relaxed text-secondary md:text-[16px]">
           {subtitle}
         </p>
         <p className="mt-4 font-body text-body-xs text-muted">
@@ -308,13 +280,16 @@ export function SummaryHero({
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="font-body text-xl font-medium text-brand-gold">
-                {t("summaryRingScore", { correct: ringCorrect, total: answered })}
+              <span className="font-body text-[28px] font-medium leading-none text-brand-gold md:text-[32px]">
+                {t("summaryRingPercent", { percent: ringPercent })}
               </span>
             </div>
           </div>
           <p className="mt-2 font-body text-body-sm text-secondary">
-            {t("summaryCorrectAnswers")}
+            {t("summaryRingCaption", {
+              correct: ringCorrect,
+              total: answered,
+            })}
           </p>
         </div>
 

@@ -2,13 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { BrainCircuit } from "lucide-react";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import {
   isSummaryLayer2Ready,
   splitSessionConcepts,
 } from "@/features/session/lib/summaryVariant";
 import { startConceptReviewSession } from "@/features/session/components/SummaryActions";
+import { SummaryStatusMark } from "@/features/session/components/SummaryStatusMark";
 import { cn } from "@/lib/utils";
 
 function ConceptsSkeleton() {
@@ -56,10 +56,7 @@ export function SummaryTopicBreakdown({
                   key={concept.conceptId}
                   className="flex items-start gap-3 rounded-card bg-card p-4"
                 >
-                  <BrainCircuit
-                    className="mt-0.5 size-5 shrink-0 text-brand-sage"
-                    aria-hidden
-                  />
+                  <SummaryStatusMark status="correct" className="mt-0.5" />
                   <div>
                     <p className="font-body text-body-md font-medium text-primary">
                       {concept.label}
@@ -90,10 +87,7 @@ export function SummaryTopicBreakdown({
                     key={concept.conceptId}
                     className="flex items-start gap-3 rounded-card bg-card p-4"
                   >
-                    <BrainCircuit
-                      className="mt-0.5 size-5 shrink-0 text-brand-gold"
-                      aria-hidden
-                    />
+                    <SummaryStatusMark status="wrong" className="mt-0.5" />
                     <div className="min-w-0 flex-1">
                       <p className="font-body text-body-md font-medium text-primary">
                         {concept.label}

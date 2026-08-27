@@ -29,6 +29,12 @@ export const VIRTUAL_THEME_TOPIC_DEFINITIONS: VirtualThemeTopicDefinition[] = [
     displayOrder: 100,
   },
   {
+    contentSubjectId: "biofizyka",
+    themeLabel: "2026",
+    displayName: "2026",
+    displayOrder: 13,
+  },
+  {
     contentSubjectId: "anatomia",
     themeLabel: "2026",
     displayName: "2026",

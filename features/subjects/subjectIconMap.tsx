@@ -89,10 +89,6 @@ export const ldewSubjectIconById: Record<string, TablerIcon> = {
   "ldew-ortodoncja": IconBraces,
   "ldew-protetyka": IconCrown,
   "ldew-chirurgia-stomatologiczna": IconScissors,
-  "ldew-chirurgia-szczekowo-twarzowa": IconSkull,
-  "ldew-radiologia": IconPhotoScan,
-  "ldew-zdrowie-publiczne": IconBuildingHospital,
-  "ldew-orzecznictwo": IconGavel,
 };
 
 export function getSubjectIconComponent(

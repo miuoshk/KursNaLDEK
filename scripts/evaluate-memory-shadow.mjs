@@ -3,6 +3,9 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { loadEnvLocal } from "./lib/load-env-local.mjs";
+
+loadEnvLocal();
 
 const args = new Map();
 for (let index = 2; index < process.argv.length; index += 2) {

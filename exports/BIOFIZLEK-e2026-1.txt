@@ -1,0 +1,1107 @@
+ID: BIOFIZLEK-71
+NR_LOKALNY: 1
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 8
+TEMAT: Błędy pomiarowe
+PODTEMAT: graficzna prezentacja wyników
+PYTANIE: Na wykresie zależności dwóch wielkości ($y=f(x)$) można przedstawić punkty pomiarowe ($x_i$ i $y_i$) oraz ich błędy bezwzględne ($\Delta x_i$ i $\Delta y_i$) w postaci prostokątów błędów wokół punktów pomiarowych. Boki każdego z prostokątów błędów są odpowiednio równe:
+A: $2\Delta x_i$ i $2\Delta y_i$
+B: $\Delta x_i$ i $\Delta y_i$
+C: $\frac{\Delta x_i}{2}$ i $\frac{\Delta y_i}{2}$
+D: $\frac{\Delta x_i}{x_i}$ i $\frac{\Delta y_i}{y_i}$
+POPRAWNA: A
+WYJAŚNIENIE:
+Prostokąt błędu rysuje się tak, aby punkt pomiarowy $(x_i,y_i)$ leżał w jego **środku**, a niepewność odkładana jest w **obie strony**: od $x_i-\Delta x_i$ do $x_i+\Delta x_i$ oraz od $y_i-\Delta y_i$ do $y_i+\Delta y_i$. Bok poziomy ma zatem długość $2\Delta x_i$, a pionowy $2\Delta y_i$. Prosta dopasowana do danych powinna przechodzić przez wszystkie prostokąty. Iloraz $\Delta x_i/x_i$ to **błąd względny**, a nie bok prostokąta.
+---
+ID: BIOFIZLEK-72
+NR_LOKALNY: 2
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: przeciwwskazania do badania
+PYTANIE: W przypadku tomografii NMR (jądrowy rezonans magnetyczny) przeciwwskazaniem do badań jest:
+A: reakcja uczuleniowa na silne pole magnetyczne
+B: zmiany miażdżycowe w tętnicach
+C: nowotwór
+D: posiadanie metalowej protezy w ciele
+POPRAWNA: D
+WYJAŚNIENIE:
+Stałe pole o indukcji **1,5–3 T** działa siłą na elementy ferromagnetyczne: mogą się one przemieszczać, nagrzewać prądami wirowymi i uszkadzać tkanki, a dodatkowo dają rozległe **artefakty** obrazu. Bezwzględne przeciwwskazania to rozrusznik serca, klipsy naczyniowe, implant ślimakowy i opiłki metalu w gałce ocznej. Uczulenie na pole magnetyczne nie istnieje, a nowotwór i miażdżyca są **wskazaniami** do badania, nie przeciwwskazaniami.
+---
+ID: BIOFIZLEK-73
+NR_LOKALNY: 3
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: osłabianie ultradźwięków w tkankach
+PYTANIE: Wraz ze zwiększaniem się głębokości wnikania fal ultradźwiękowych w tkanki miękkie zmniejsza się amplituda drgań ultradźwięków. Efekt ten charakteryzuje współczynnik osłabiania ultradźwięków w tkankach, który zależy od zjawisk:
+A: rozpraszania i odbicia ultradźwięków w tkankach
+B: załamania i odbicia ultradźwięków w tkankach
+C: załamania i absorpcji ultradźwięków w tkankach
+D: rozpraszania i absorpcji ultradźwięków w tkankach
+POPRAWNA: D
+WYJAŚNIENIE:
+Osłabianie opisuje zależność $I=I_0e^{-\alpha x}$, gdzie $\alpha$ to **współczynnik osłabiania**. Składają się na niego **absorpcja** (zamiana energii akustycznej w ciepło, dominująca w tkankach miękkich) i **rozpraszanie** na niejednorodnościach mniejszych od długości fali. Odbicie i załamanie zachodzą na granicach dużych struktur i tworzą obraz, ale nie wchodzą do $\alpha$. Ponieważ $\alpha$ rośnie z częstotliwością, wyższe częstotliwości dają lepszą rozdzielczość kosztem głębokości.
+---
+ID: BIOFIZLEK-74
+NR_LOKALNY: 4
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: refrakcja i optyka oka
+PYTANIE: Wadę oka zwaną krótkowzrocznością koryguje się soczewkami rozpraszającymi. Jaka jest zdolność skupiająca takiej soczewki wyrażona w postaci wzoru, jeżeli $R$ oznacza refrakcję oka, a $c$ — odległość soczewki od oka?
+A: $\frac{-R}{1+cR}$
+B: $\frac{R}{1-cR}$
+C: $\frac{-R}{1-cR}$
+D: $\frac{R}{1+cR}$
+POPRAWNA: D
+WYJAŚNIENIE:
+Soczewka ma odwzorować nieskończoność w **punkcie dalekim** oka, leżącym w odległości $1/R$ od oka (dla krótkowzroczności $R<0$, punkt przed okiem). Soczewkę oddaloną o $c$ dzieli od tego punktu odcinek $1/R+c$, stąd $Z=\frac{1}{1/R+c}=\frac{R}{1+cR}$ — wartość ujemna, czyli soczewka **rozpraszająca**. Autor klucza wskazał $\frac{-R}{1-cR}$, co daje znak dodatni i przeczy konwencji znaku refrakcji przyjętej w pytaniu o oko dalekowzroczne.
+FLAGA: weryfikacja merytoryczna
+---
+ID: BIOFIZLEK-75
+NR_LOKALNY: 5
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: refrakcja i optyka oka
+PYTANIE: Dla oka dalekowzrocznego ($R$ – refrakcja oka) punkt daleki znajduje się w skończonej odległości:
+A: przed okiem, a $R>0$
+B: za okiem, a $R<0$
+C: przed okiem, a $R<0$
+D: za okiem, a $R>0$
+POPRAWNA: D
+WYJAŚNIENIE:
+Punkt daleki to punkt sprzężony z siatkówką przy **braku akomodacji**. W oku dalekowzrocznym układ optyczny jest za słaby względem długości gałki, więc na siatkówce ostro skupiają się jedynie promienie **zbieżne** — punkt daleki jest **pozorny** i leży za okiem. Odpowiada temu dodatnia refrakcja $R>0$ i korekcja soczewką **skupiającą**. W krótkowzroczności punkt daleki leży realnie przed okiem, a $R<0$; w oku miarowym $R=0$ i punkt daleki jest w nieskończoności.
+---
+ID: BIOFIZLEK-76
+NR_LOKALNY: 6
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: mikroskopia optyczna
+PYTANIE: Większą zdolność rozdzielczą mikroskopu można uzyskać poprzez:
+A: zastosowanie promieniowania o większej długości fali
+B: zwiększenie apertury numerycznej obiektywu
+C: zwiększenie powiększenia okularu
+D: zwiększenie natężenia oświetlenia preparatu
+POPRAWNA: B
+WYJAŚNIENIE:
+Granicę rozdzielczości opisuje wzór Abbego $d=\frac{0{,}61\lambda}{NA}$, gdzie $NA=n\sin\alpha$. Rozdzielczość rośnie (czyli $d$ maleje) przy **zwiększeniu apertury numerycznej**, np. dzięki **immersji olejowej** ($n\approx1{,}5$), albo przy **skróceniu** długości fali — nigdy przy jej wydłużeniu. Zwiększanie powiększenia okularu ponad granicę wyznaczoną przez $NA$ daje **powiększenie puste**: obraz jest większy, lecz bez nowych szczegółów. Jaśniejsze oświetlenie poprawia tylko kontrast.
+FLAGA: weryfikacja merytoryczna
+---
+ID: BIOFIZLEK-77
+NR_LOKALNY: 7
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 1
+TEMAT: Biospektroskopia
+PODTEMAT: absorpcja promieniowania
+PYTANIE: Prawo Lamberta-Beera opisuje zależność absorbancji promieniowania elektromagnetycznego przechodzącego przez roztwór. Absorbancja definiowana zgodnie z tym prawem jest wprost proporcjonalna do:
+A: stężenia substancji absorbującej oraz kąta padania światła
+B: stężenia substancji absorbującej oraz współczynnika ekstynkcji
+C: stężenia substancji absorbującej oraz natężenia światła padającego
+D: stężenia substancji absorbującej oraz długości fali
+POPRAWNA: B
+WYJAŚNIENIE:
+Prawo Lamberta-Beera: $A=\varepsilon cl$, przy czym $A=\log\frac{I_0}{I}$, $\varepsilon$ to **molowy współczynnik absorpcji (ekstynkcji)**, $c$ — stężenie, $l$ — grubość warstwy. Absorbancja rośnie więc liniowo ze stężeniem, ze współczynnikiem ekstynkcji i z drogą optyczną, co pozwala oznaczać stężenia w spektrofotometrii. Nie zależy natomiast od natężenia wiązki padającej ani od kąta padania; $\varepsilon$ zmienia się z długością fali, ale dla ustalonej $\lambda$ jest stałą substancji.
+---
+ID: BIOFIZLEK-78
+NR_LOKALNY: 8
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: oddziaływanie promieniowania ze skórą
+PYTANIE: Głębokości wnikania fali elektromagnetycznej z zakresu promieniowania widzialnego zielonego (VIS-G), nadfioletowego (UV) i podczerwonego (IR) w skórę i tkanki podskórne można uszeregować od największej do najmniejszej w następujący sposób:
+A: UV, VIS-G, IR
+B: IR, VIS-G, UV
+C: VIS-G, IR, UV
+D: UV, IR, VIS-G
+POPRAWNA: B
+WYJAŚNIENIE:
+W zakresie od UV do bliskiej podczerwieni głębokość wnikania **rośnie z długością fali**. **UV** jest silnie pochłaniany przez DNA, białka i melaninę już w naskórku (UVB ułamki mm, UVA do skóry właściwej). Światło **zielone** dociera na ok. 1 mm i jest silnie absorbowane przez hemoglobinę, a **IR-A** (ok. 1000 nm) sięga kilku–kilkunastu mm, do tkanki podskórnej. Stąd tzw. okno terapeutyczne laserów biostymulacyjnych obejmuje **600–1200 nm**.
+---
+ID: BIOFIZLEK-79
+NR_LOKALNY: 9
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: wiskozymetria
+PYTANIE: Zgodnie z wzorem Stokesa, siła lepkości działająca na kulkę o promieniu $r$, opadającą z prędkością $v$ w cieczy lepkiej jest:
+A: odwrotnie proporcjonalna do $v$ oraz do $r$
+B: wprost proporcjonalna do $v$ oraz do $r$
+C: wprost proporcjonalna do $v$, a odwrotnie proporcjonalna do $r$
+D: wprost proporcjonalna do $r$, a odwrotnie proporcjonalna do $v$
+POPRAWNA: B
+WYJAŚNIENIE:
+Wzór Stokesa: $F=6\pi\eta rv$ — siła oporu lepkiego jest **wprost proporcjonalna** do lepkości $\eta$, promienia kulki i jej prędkości. Obowiązuje dla opływu laminarnego kuli, czyli małych liczb Reynoldsa. Po zrównoważeniu ciężaru przez siłę wyporu i opór kulka opada ruchem **jednostajnym**, a z pomiaru czasu przelotu wyznacza się $\eta$ — na tej zasadzie działa **wiskozymetr Höpplera** (kulkowy), używany m.in. do oznaczania lepkości osocza i krwi.
+---
+ID: BIOFIZLEK-80
+NR_LOKALNY: 10
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: widmo fal elektromagnetycznych
+PYTANIE: Fala elektromagnetyczna z zakresu UV ma w porównaniu z falą elektromagnetyczną z zakresu IR:
+A: większą długość fali i mniejszą częstotliwość
+B: mniejszą długość fali i mniejszą częstotliwość
+C: większą długość fali i większą częstotliwość
+D: mniejszą długość fali i większą częstotliwość
+POPRAWNA: D
+WYJAŚNIENIE:
+Dla fali elektromagnetycznej $c=\lambda\nu$, więc długość fali i częstotliwość są **odwrotnie proporcjonalne**. Zakres **UV** to 100–400 nm, **IR** — od 780 nm do 1 mm, zatem UV ma krótszą falę, wyższą częstotliwość i zgodnie z $E=h\nu$ większą energię fotonu. Dlatego UV wywołuje reakcje **fotochemiczne** (dimery tyminy, rumień), a niskoenergetyczna IR głównie efekty **cieplne**, pobudzając drgania oscylacyjne cząsteczek.
+---
+ID: BIOFIZLEK-81
+NR_LOKALNY: 11
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: osmoza
+PYTANIE: Gdy pomiędzy dwa roztwory o różnym stężeniu wprowadzimy błonę półprzepuszczalną, nastąpi przenikanie rozpuszczalnika z roztworu o niższym stężeniu do roztworu o wyższym stężeniu. Skutkiem tego pojawia się ciśnienie osmotyczne działające na błonę w kierunku przeciwnym do przepływu rozpuszczalnika. Ciśnienie to określa prawo van't Hoffa, które wyrażamy wzorem ($c_m$ – stężenie molowe roztworu, $R$ – stała gazowa, $T$ – temperatura roztworu):
+A: $\pi=c_mRT$
+B: $\pi=\frac{c_m}{RT}$
+C: $\pi=\frac{RT}{c_m}$
+D: $\pi=c_m+RT$
+POPRAWNA: A
+WYJAŚNIENIE:
+Prawo van't Hoffa $\pi=c_mRT$ jest formalnie identyczne z równaniem stanu gazu doskonałego — cząsteczki substancji rozpuszczonej zachowują się jak gaz wypełniający objętość rozpuszczalnika. Dla elektrolitów wprowadza się **współczynnik van't Hoffa** $i$: $\pi=ic_mRT$. Ciśnienie osmotyczne to własność **koligatywna**: zależy od liczby cząstek, a nie ich rodzaju. Dla osocza wynosi ok. **7,5 atm** przy osmolalności ok. **290 mOsm/kg**.
+---
+ID: BIOFIZLEK-82
+NR_LOKALNY: 12
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: elektryczne właściwości błon
+PYTANIE: Potencjał błonowy (który definiuje się jako różnicę między potencjałami wewnątrz i na zewnątrz komórki) w spoczynku nosi nazwę potencjału spoczynkowego. Mechanizmy samoregulacji utrzymują potencjał spoczynkowy mięśni szkieletowych o wartościach rzędu:
+A: $\mu\mathrm{V}$
+B: $\mathrm{mV}$
+C: $\mathrm{nV}$
+D: $\mathrm{kV}$
+POPRAWNA: B
+WYJAŚNIENIE:
+Potencjał spoczynkowy włókna mięśnia szkieletowego wynosi ok. **-90 mV** (neuron ok. -70 mV), czyli rząd **miliwoltów**. Wynika z gradientów jonowych utrzymywanych przez **pompę Na⁺/K⁺-ATPazę** i z przewagi przepuszczalności błony dla K⁺; ilościowo opisuje go równanie **Goldmana-Hodgkina-Katza**, a dla pojedynczego jonu — równanie Nernsta. Wartości rzędu $\mu\mathrm{V}$ mają sygnały EEG mierzone z powierzchni ciała, a kilovolty w układach biologicznych nie występują.
+---
+ID: BIOFIZLEK-83
+NR_LOKALNY: 13
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: odbicie fal ultradźwiękowych
+PYTANIE: Jeżeli fala ultradźwiękowa przechodzi z ośrodka o impedancji akustycznej $Z_1$ do ośrodka o impedancji $Z_2$, to ilość energii, która ulegnie odbiciu od powierzchni granicznej pomiędzy obu ośrodkami (prostopadłej do kierunku rozchodzenia się fal) określa współczynnik odbicia $R$, równy:
+A: $\left(\frac{Z_1+Z_2}{Z_1-Z_2}\right)^2$
+B: $\frac{(Z_1-Z_2)^2}{Z_1+Z_2}$
+C: $\left(\frac{Z_1-Z_2}{Z_1+Z_2}\right)^2$
+D: $\frac{Z_1-Z_2}{Z_1+Z_2}$
+POPRAWNA: C
+WYJAŚNIENIE:
+Dla padania prostopadłego $R=\left(\frac{Z_1-Z_2}{Z_1+Z_2}\right)^2$; **kwadrat** sprawia, że wynik nie zależy od kolejności ośrodków i mieści się w przedziale 0–1. Gdy $Z_1=Z_2$, $R=0$ i fala przechodzi bez odbicia; im większy **skok impedancji**, tym silniejsze echo. Na granicy tkanka–powietrze odbija się niemal **100%** energii, dlatego konieczny jest **żel sprzęgający**, a granice tkanek miękkich odbijają ułamki procenta.
+---
+ID: BIOFIZLEK-84
+NR_LOKALNY: 14
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: hydrodynamika cieczy doskonałej
+PYTANIE: Prawo Bernoulliego wyraża zasadę zachowania energii cieczy płynącej bez tarcia. Stosować je można jedynie dla cieczy:
+A: nielepkich, nieściśliwych i płynących w elastycznym przewodzie
+B: nielepkich, nieściśliwych i płynących w sztywnym przewodzie
+C: lepkich, ściśliwych i płynących w sztywnym przewodzie
+D: lepkich, ściśliwych i płynących w elastycznym przewodzie
+POPRAWNA: B
+WYJAŚNIENIE:
+Równanie $p+\rho gh+\frac{\rho v^2}{2}=\mathrm{const}$ wyprowadza się z zasady zachowania energii dla cieczy **doskonałej**: nielepkiej (brak strat na tarcie wewnętrzne) i nieściśliwej, płynącej ustalonym strumieniem w **sztywnym** przewodzie — elastyczne ściany magazynowałyby energię w odkształceniu. Stąd wniosek stosowany w krążeniu: w przewężeniu rośnie prędkość, więc **maleje ciśnienie** statyczne (efekt Venturiego).
+---
+ID: BIOFIZLEK-85
+NR_LOKALNY: 15
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: przepływ laminarny
+PYTANIE: Zależność między strumieniem objętości cieczy a różnicą ciśnień powodującą przepływ określa prawo Hagena-Poiseuille'a. Prawo to stosuje się zakładając, że:
+A: ciecz jest nieściśliwa, przepływ jest laminarny a ściany są elastyczne
+B: ciecz jest ściśliwa, przepływ jest laminarny a ściany są sztywne
+C: ciecz jest ściśliwa, przepływ jest laminarny a ściany są elastyczne
+D: ciecz jest nieściśliwa, przepływ jest laminarny a ściany są sztywne
+POPRAWNA: D
+WYJAŚNIENIE:
+Prawo Hagena-Poiseuille'a: $Q=\frac{\pi r^4\Delta p}{8\eta l}$. Założenia: ciecz **nieściśliwa** i newtonowska, przepływ **laminarny** i ustalony, rura o stałym przekroju i **sztywnych** ścianach, warstwa przyścienna nieruchoma. Kluczowa jest zależność od $r^4$ — dwukrotne zwężenie naczynia zmniejsza przepływ **16-krotnie**, co tłumaczy wagę zmian średnicy tętniczek. Krew jest cieczą nienewtonowską, więc w krążeniu prawo obowiązuje tylko w przybliżeniu.
+---
+ID: BIOFIZLEK-86
+NR_LOKALNY: 16
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: fizjologia słuchu
+PYTANIE: Narząd Cortiego, będący właściwym receptorem słuchu, znajduje się w uchu wewnętrznym i jest odpowiedzialny za transdukcję bodźców mechanicznych w sygnały nerwowe. Za mechanizm ten odpowiedzialna jest:
+A: struktura komórek rzęsatych
+B: błona bębenkowa
+C: powierzchnia okienka owalnego
+D: struktura kanałów półkolistych
+POPRAWNA: A
+WYJAŚNIENIE:
+Transdukcja zachodzi w **komórkach rzęsatych** narządu Cortiego: ugięcie **stereocilii** względem błony pokrywającej otwiera mechanicznie bramkowane kanały jonowe, następuje napływ K⁺ z endolimfy, depolaryzacja i uwolnienie neuroprzekaźnika do włókien nerwu **VIII**. Błona bębenkowa i okienko owalne jedynie przenoszą i wzmacniają drgania mechaniczne (ok. **17-krotny** zysk ciśnienia), a kanały półkoliste należą do narządu **równowagi**.
+---
+ID: BIOFIZLEK-87
+NR_LOKALNY: 17
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: mikroskopia optyczna
+PYTANIE: Mikroskop służy do obserwacji obiektów niewidocznych dla oka (nieuzbrojonego). Obserwowany obraz w mikroskopie jest obrazem:
+A: pozornym, prostym, powiększonym
+B: rzeczywistym, odwróconym, powiększonym
+C: pozornym, odwróconym, powiększonym
+D: rzeczywistym, prostym, powiększonym
+POPRAWNA: C
+WYJAŚNIENIE:
+Obiektyw tworzy obraz **rzeczywisty, odwrócony i powiększony**, który powstaje wewnątrz ogniskowej okularu. Okular działa jak **lupa** i daje z niego obraz **pozorny** oraz dodatkowo powiększony, wciąż odwrócony względem preparatu. Obserwator widzi więc obraz pozorny, odwrócony i powiększony — dlatego preparat przesuwa się w kierunku przeciwnym do ruchu obrazu. Powiększenie całkowite to iloczyn powiększeń obiektywu i okularu.
+---
+ID: BIOFIZLEK-88
+NR_LOKALNY: 18
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 4
+TEMAT: Biomechanika (sprężystość, dźwignie)
+PODTEMAT: drgania i sprężystość
+PYTANIE: Ruch harmoniczny można opisać równaniem ($x$ – wychylenie, $t$ – czas, $A$ – amplituda drgań, $\omega$ – częstość drgań, $\varphi$ – przesunięcie fazowe):
+A: $x=A\cos(\varphi t+\omega)$
+B: $x=A\sin^2(\omega t+\varphi)$
+C: $x=A\cos(\omega t^2+\varphi)$
+D: $x=A\sin(\omega t+\varphi)$
+POPRAWNA: D
+WYJAŚNIENIE:
+Ruch harmoniczny prosty wynika z siły sprężystej $F=-kx$ i opisuje go $x=A\sin(\omega t+\varphi)$ (równoważnie z kosinusem, przy innej fazie). $A$ to **amplituda**, $\omega=2\pi f=\sqrt{k/m}$ — **częstość kołowa**, $\varphi$ — faza początkowa. Argument funkcji musi mieć wymiar kąta, więc czas występuje w **pierwszej potędze** i mnoży $\omega$; $\sin^2$ dawałby wyłącznie wartości nieujemne, a zamiana $\omega$ z $\varphi$ jest wymiarowo błędna.
+---
+ID: BIOFIZLEK-89
+NR_LOKALNY: 19
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 5
+TEMAT: Promieniowanie jonizujące, dozymetria
+PODTEMAT: oddziaływanie promieniowania z materią
+PYTANIE: LET, czyli liniowy współczynnik przenoszenia energii dla promieniowania jonizującego, to:
+A: parametr w radiobiologii zwyczajowo wyrażany w $\frac{\mu\mathrm{m}}{\mathrm{keV}}$
+B: parametr, który nie zależy od rodzaju promieniowania
+C: miara gęstości przekazywania energii do ośrodka, która decyduje o efektach chemicznych i biologicznych
+D: parametr tym mniejszy, im mniej przenikliwe jest promieniowanie
+POPRAWNA: C
+WYJAŚNIENIE:
+LET to energia przekazana ośrodkowi na **jednostkę drogi**, wyrażana w $\mathrm{keV/\mu m}$ (opcja A ma odwrócone jednostki). Wysokie LET — cząstki $\alpha$, protony, neutrony — oznacza **gęstą jonizację** wzdłuż toru, liczne podwójne pęknięcia DNA i wysoką skuteczność biologiczną (**RBE**), przy małej przenikliwości. Niskie LET (promieniowanie X, $\gamma$, $\beta$) daje jonizację rzadką i dużą przenikliwość, więc parametr silnie zależy od rodzaju promieniowania.
+---
+ID: BIOFIZLEK-90
+NR_LOKALNY: 20
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: hydrodynamika układu krążenia
+PYTANIE: Prawo ciągłości strumienia, które określa zachowanie się cieczy przy przepływach przez przewężenia lub rozszerzenia naczynia, stwierdza że:
+A: w połączonych równolegle naczyniach strumień objętości w danym przekroju naczynia jest jednakowy na całej długości połączonych naczyń
+B: w połączonych szeregowo naczyniach strumień objętości w danym przekroju naczynia jest jednakowy na całej długości połączonych naczyń
+C: w połączonych szeregowo naczyniach strumień objętości w danym przekroju naczynia jest zmienny na całej długości połączonych naczyń
+D: w połączonych równolegle naczyniach strumień objętości w danym przekroju naczynia jest zmienny na całej długości połączonych naczyń
+POPRAWNA: B
+WYJAŚNIENIE:
+Prawo ciągłości wynika z zachowania masy cieczy nieściśliwej: $Q=Sv=\mathrm{const}$, więc w naczyniach połączonych **szeregowo** strumień objętości jest jednakowy w każdym przekroju, mimo zmian prędkości. W przewężeniu maleje pole $S$, a rośnie prędkość $v$. W krążeniu sumaryczny przekrój **kapilar** jest największy, dlatego prędkość krwi jest tam najmniejsza (rzędu **0,5 mm/s**), co umożliwia wymianę gazów i metabolitów.
+---
+ID: BIOFIZLEK-91
+NR_LOKALNY: 21
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 4
+TEMAT: Biomechanika (sprężystość, dźwignie)
+PODTEMAT: dźwignie kostne
+PYTANIE: Zysk mechaniczny (inaczej przekładnia mechaniczna) dźwigni, jest to:
+A: iloraz długości ramienia działania (odległość od punktu przyłożenia siły do osi obrotu) do długości ramienia obciążenia (odległość od punktu przyłożenia obciążenia do osi obrotu)
+B: iloraz długości ramienia obciążenia do długości ramienia działania siły
+C: suma długości ramienia działania siły i ramienia obciążenia
+D: iloczyn długości ramienia działania siły i wartości siły przyłożonej do obciążenia
+POPRAWNA: A
+WYJAŚNIENIE:
+Z warunku równowagi momentów sił $F\cdot r_s=F_o\cdot r_o$ wynika **zysk mechaniczny** $ZM=\frac{r_s}{r_o}=\frac{F_o}{F}$. Gdy $ZM>1$, do zrównoważenia obciążenia wystarcza siła od niego mniejsza. W układzie ruchu człowieka przeważają dźwignie o **ZM<1** (np. staw łokciowy — przyczep bicepsa tuż przy osi obrotu): tracimy na sile, ale zyskujemy na **prędkości i zakresie** ruchu końca kończyny, co jest korzystne biomechanicznie.
+---
+ID: BIOFIZLEK-92
+NR_LOKALNY: 22
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: lepkość cieczy
+PYTANIE: Ciecz nienewtonowska charakteryzuje się:
+A: nieliniową zależnością naprężenia ścinającego od szybkości ścinania przy zmiennej lepkości
+B: nieliniową zależnością naprężenia ścinającego od szybkości ścinania przy stałej lepkości
+C: liniową zależnością naprężenia ścinającego od szybkości ścinania przy zmiennej lepkości
+D: liniową zależnością naprężenia ścinającego od szybkości ścinania przy stałej lepkości
+POPRAWNA: A
+WYJAŚNIENIE:
+Ciecz newtonowska spełnia $\tau=\eta\frac{dv}{dx}$: naprężenie ścinające rośnie **liniowo** z szybkością ścinania przy **stałej** lepkości (woda, osocze). W cieczy **nienewtonowskiej** zależność jest nieliniowa, a lepkość pozorna zmienia się z szybkością ścinania. **Krew** należy do cieczy rozrzedzanych ścinaniem: przy małych prędkościach erytrocyty tworzą **rulony** i lepkość rośnie, przy dużych — odkształcają się i lepkość maleje.
+---
+ID: BIOFIZLEK-93
+NR_LOKALNY: 23
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 9
+TEMAT: Tomografia komputerowa (CT)
+PODTEMAT: skala Hounsfielda
+PYTANIE: Skala Hounsfielda (jednostki skali Hounsfielda – HU) to ilościowa skala radiologiczna stosowana w tomografii komputerowej (CT) do określania gęstości radiologicznej tkanek i materiałów. Skala opiera się na pomiarze współczynnika osłabienia promieniowania rentgenowskiego przez różne struktury w ciele, w której -1000 jednostek HU określa gęstość radiologiczną:
+A: wody
+B: powietrza (próżni)
+C: kości
+D: tkanki tłuszczowej
+POPRAWNA: B
+WYJAŚNIENIE:
+Skalę definiuje wzór $HU=1000\cdot\frac{\mu_t-\mu_w}{\mu_w}$, znormalizowany do dwóch punktów: **woda = 0 HU** i **powietrze = -1000 HU** (osłabianie praktycznie zerowe, jak w próżni). Tkanka tłuszczowa ma ok. **-100 HU**, tkanki miękkie 20–70 HU, krew krzepnąca ok. 80 HU, a kość zbita **ponad +1000 HU**. Dobór odpowiednio wąskiego **okna** prezentacji pozwala różnicować tkanki miękkie mimo niewielkich różnic w osłabianiu wiązki.
+---
+ID: BIOFIZLEK-94
+NR_LOKALNY: 24
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: termodynamika
+PYTANIE: Wskaż, które z poniższych stwierdzeń najlepiej opisuje pierwszą zasadę termodynamiki:
+A: zmiana energii wewnętrznej układu jest równa sumie ciepła dostarczonego do układu i pracy wykonanej nad układem
+B: zmiana energii wewnętrznej układu jest równa różnicy między ciepłem oddanym przez układ a pracą wykonaną przez układ
+C: zmiana energii wewnętrznej układu zależy tylko od ilości ciepła dostarczonego do układu
+D: energia wewnętrzna układu nie może się zmieniać, niezależnie od procesów zachodzących w otoczeniu
+POPRAWNA: A
+WYJAŚNIENIE:
+I zasada termodynamiki to zasada **zachowania energii**: $\Delta U=Q+W$, gdzie $Q$ to ciepło dostarczone do układu, a $W$ — praca wykonana **nad** układem (w konwencji z pracą wykonaną przez układ zapisujemy $\Delta U=Q-W$). Energia wewnętrzna jest **funkcją stanu** — jej zmiana nie zależy od drogi przemiany, podczas gdy $Q$ i $W$ są funkcjami procesu. Organizm to układ otwarty: pobiera energię chemiczną, a oddaje ciepło i pracę mechaniczną.
+---
+ID: BIOFIZLEK-95
+NR_LOKALNY: 25
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: termoregulacja
+PYTANIE: Temperatura człowieka jest ważnym parametrem pomagającym określić stan pacjenta. Temperatura skóry jest wynikiem dynamicznej równowagi pomiędzy ciepłem uwalnianym w przemianach metabolicznych i dostarczanym do powłoki skórnej a ciepłem oddawanym do otoczenia. Człowiek zanurzony w lodowatej wodzie traci energię cieplną głównie na skutek:
+A: promieniowania
+B: przewodzenia i konwekcji
+C: parowania
+D: innego mechanizmu niż wymienione powyżej
+POPRAWNA: B
+WYJAŚNIENIE:
+W wodzie dominuje **przewodzenie** ciepła do warstwy przylegającej do skóry oraz **konwekcja** unosząca ogrzaną wodę. Przewodnictwo cieplne wody jest ok. **25 razy** większe niż powietrza, a jej pojemność cieplna ogromna, więc wychłodzenie następuje wielokrotnie szybciej niż w powietrzu o tej samej temperaturze. **Parowanie** pod wodą nie zachodzi, a **promieniowanie** (prawo Stefana-Boltzmanna), istotne w powietrzu w spoczynku, ma tu znaczenie marginalne.
+---
+ID: BIOFIZLEK-96
+NR_LOKALNY: 26
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: podstawy fizyki kwantowej
+PYTANIE: Pęd fotonu określamy wzorem ($h$ – stała Plancka, $\nu$ – częstotliwość promieniowania, $c$ – prędkość światła, $\lambda$ – długość fali promieniowania):
+A: $\frac{h\nu}{c}=\frac{h}{\lambda}$
+B: $\frac{h}{c}=\frac{\lambda}{\nu}$
+C: $\frac{hc}{\nu}=\frac{h}{\lambda}$
+D: $\frac{h\nu}{c}=\lambda$
+POPRAWNA: A
+WYJAŚNIENIE:
+Foton nie ma masy spoczynkowej, ale niesie pęd $p=\frac{E}{c}=\frac{h\nu}{c}=\frac{h}{\lambda}$, bo $E=h\nu$ oraz $c=\lambda\nu$. Zapis ten jest zgodny z relacją **de Broglie'a** $\lambda=h/p$ i stanowi podstawę opisu zjawiska **Comptona**, w którym foton rozprasza się na swobodnym elektronie, tracąc część energii i pędu, a także ciśnienia promieniowania. Pozostałe wyrażenia są niepoprawne **wymiarowo** — nie dają jednostki $\mathrm{kg\cdot m/s}$.
+---
+ID: BIOFIZLEK-97
+NR_LOKALNY: 27
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: cechy dźwięku
+PYTANIE: Dźwięk można opisać za pomocą cech fizycznych, do których nie zaliczamy:
+A: częstotliwości dźwięku
+B: natężenia dźwięku
+C: struktury widmowej
+D: wysokości dźwięku
+POPRAWNA: D
+WYJAŚNIENIE:
+Cechy **fizyczne** dźwięku to mierzalne parametry fali: **częstotliwość** (Hz), **natężenie** (W/m²) i **struktura widmowa**, czyli skład harmoniczny. **Wysokość** jest natomiast cechą **subiektywną** (psychoakustyczną) — wrażeniem odpowiadającym częstotliwości. Analogiczne pary tworzą głośność (fon) wobec natężenia oraz barwa wobec widma. Zależność wrażenia od bodźca ma charakter **logarytmiczny** i opisuje ją prawo Webera-Fechnera.
+---
+ID: BIOFIZLEK-98
+NR_LOKALNY: 28
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 5
+TEMAT: Promieniowanie jonizujące, dozymetria
+PODTEMAT: detekcja promieniowania
+PYTANIE: W liczniku Geigera-Müllera wykorzystuje się zjawisko zachodzące w gazie wypełniającym kondensator cylindryczny i nazywane zjawiskiem:
+A: jonizacji lawinowej
+B: termoemisji elektronów
+C: Comptona
+D: wyładowania ciągłego pomiędzy elektrodami kondensatora cylindrycznego
+POPRAWNA: A
+WYJAŚNIENIE:
+Napięcie między elektrodami jest tak wysokie, że elektron uwolniony przez promieniowanie rozpędza się i jonizuje kolejne atomy gazu — powstaje **jonizacja lawinowa** (lawina Townsenda) dająca impuls prądowy. Amplituda impulsu **nie zależy od energii** cząstki, więc licznik zlicza akty jonizacji, ale nie mierzy energii (robi to licznik proporcjonalny lub scyntylacyjny). Domieszka **gazu gaszącego** przerywa lawinę, zapobiegając wyładowaniu ciągłemu.
+---
+ID: BIOFIZLEK-99
+NR_LOKALNY: 29
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: optyka oka
+PYTANIE: Obraz, który powstaje na siatkówce oka ludzkiego, jest:
+A: rzeczywisty, pomniejszony, prosty
+B: rzeczywisty, pomniejszony, odwrócony
+C: urojony, pomniejszony, prosty
+D: rzeczywisty, powiększony, odwrócony
+POPRAWNA: B
+WYJAŚNIENIE:
+Układ optyczny oka działa jak soczewka **skupiająca** o zdolności ok. **60 D**, a obserwowany przedmiot leży dalej niż podwójna ogniskowa, więc na siatkówce powstaje obraz **rzeczywisty, pomniejszony i odwrócony**. Odwrócenie jest korygowane dopiero w korze wzrokowej. Obraz musi być rzeczywisty, bo powstaje na „ekranie" pobudzającym fotoreceptory; powiększenie wymagałoby przedmiotu bliższego niż $2f$, co w oku nie zachodzi.
+---
+ID: BIOFIZLEK-100
+NR_LOKALNY: 30
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 5
+TEMAT: Promieniowanie jonizujące, dozymetria
+PODTEMAT: oddziaływanie cząstek naładowanych z materią
+PYTANIE: W którym odcinku drogi naładowanych cząstek w materii obserwuje się maksymalny stopień jonizacji (widoczny na krzywej Bragga jako maksimum)?
+A: na początku drogi, gdy cząstka ma najwyższą prędkość
+B: w połowie drogi cząstki przez ośrodek
+C: w końcowym odcinku drogi, tuż przed zatrzymaniem cząstki
+D: po całkowitym zatrzymaniu cząstki
+POPRAWNA: C
+WYJAŚNIENIE:
+Zgodnie ze wzorem Bethego straty energii na jednostkę drogi rosną, gdy prędkość cząstki maleje ($\frac{dE}{dx}\sim\frac{1}{v^2}$), bo dłużej oddziałuje ona z elektronami ośrodka. Maksimum jonizacji — **pik Bragga** — przypada więc tuż **przed zatrzymaniem** cząstki. Zjawisko to wykorzystuje **terapia protonowa i jonowa**: dobierając energię wiązki, deponuje się dawkę w guzie, oszczędzając tkanki leżące za nim. Po zatrzymaniu cząstka nie jonizuje.
+---
+ID: BIOFIZLEK-101
+NR_LOKALNY: 31
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: promieniowanie cieplne
+PYTANIE: Ciało doskonale czarne emituje energię w postaci fal elektromagnetycznych, dla których zgodnie z prawem Wiena długość fali, przy której obserwowane jest maksimum emisji, jest:
+A: wprost proporcjonalna do bezwzględnej temperatury
+B: wprost proporcjonalna do czwartej potęgi bezwzględnej temperatury
+C: odwrotnie proporcjonalna do bezwzględnej temperatury
+D: niezależna od bezwzględnej temperatury
+POPRAWNA: C
+WYJAŚNIENIE:
+Prawo przesunięć Wiena: $\lambda_{max}=\frac{b}{T}$, gdzie $b\approx2{,}9\cdot10^{-3}\ \mathrm{m\cdot K}$ — maksimum emisji przesuwa się ku **krótszym** falom, gdy temperatura rośnie. Dla skóry o temperaturze ok. **300 K** wypada ono przy ok. **10 µm**, czyli w podczerwieni, co jest podstawą **termografii**. Do **czwartej potęgi** temperatury proporcjonalna jest natomiast całkowita moc emisji, zgodnie z prawem Stefana-Boltzmanna $P=\sigma ST^4$.
+---
+ID: BIOFIZLEK-102
+NR_LOKALNY: 32
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: polaryzacja światła
+PYTANIE: Kąt Brewstera jest kątem, przy którym światło odbite od powierzchni dielektryka jest całkowicie spolaryzowane. Spełnia on zależność $n=\operatorname{tg}(\varphi)$, gdzie $n$ jest współczynnikiem załamania dielektryka, a $\varphi$ jest kątem:
+A: pomiędzy kierunkami drgań pola elektrycznego i rozchodzenia się światła
+B: między promieniem odbitym a załamanym
+C: załamania światła
+D: padania światła na powierzchnię dielektryka
+POPRAWNA: D
+WYJAŚNIENIE:
+Kąt Brewstera to szczególny **kąt padania**, przy którym promień odbity jest całkowicie spolaryzowany liniowo, z drganiami **prostopadłymi** do płaszczyzny padania. Spełnia $\operatorname{tg}\varphi_B=n$, a promienie odbity i załamany tworzą wtedy kąt **90°**. Dla granicy powietrze–szkło ($n=1{,}5$) wynosi ok. **56°**. Zjawisko wykorzystują okulary polaryzacyjne tłumiące odblaski od wody i szyb oraz okienka Brewstera w rezonatorach laserowych.
+---
+ID: BIOFIZLEK-103
+NR_LOKALNY: 33
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: modele reologiczne
+PYTANIE: Model reologiczny, w którym element lepki (tłoczek z cieczą) połączony jest szeregowo z elementem sprężystym (sprężyna), nazwiemy modelem:
+A: Kelvina-Voighta
+B: Maxwella
+C: Hooke'a
+D: mięśni poprzecznie prążkowanych
+POPRAWNA: B
+WYJAŚNIENIE:
+W modelu **Maxwella** sprężyna (prawo Hooke'a) i tłumik są połączone **szeregowo**: naprężenia w obu elementach są równe, a odkształcenia się sumują. Model odtwarza **relaksację naprężeń** przy stałym odkształceniu oraz nieodwracalne płynięcie. Połączenie **równoległe** tych samych elementów to model **Kelvina-Voighta**, opisujący **pełzanie** i opóźnioną sprężystość. Tkanki takie jak ścięgna czy kość wymagają modeli złożonych z obu członów.
+---
+ID: BIOFIZLEK-104
+NR_LOKALNY: 34
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: techniki ultrasonograficzne
+PYTANIE: W której technice ultrasonograficznej jasność punktów na ekranie odpowiada sile odbitego sygnału ultradźwiękowego, natomiast położenie punktów przedstawiane jest jako funkcja czasu wzdłuż jednej wybranej linii skanowania, co umożliwia ocenę ruchu struktur w czasie?
+A: prezentacji D
+B: prezentacji M
+C: prezentacji A
+D: prezentacji B
+POPRAWNA: B
+WYJAŚNIENIE:
+W prezentacji **M** (motion) echa z **jednej** linii skanowania są kodowane jasnością i rozwijane w funkcji **czasu**, co daje zapis ruchu struktur o bardzo dobrej rozdzielczości czasowej. Jest podstawą oceny ruchomości zastawek i kurczliwości ścian serca. **Prezentacja A** to wykres amplitudy echa w funkcji głębokości, **prezentacja B** — dwuwymiarowy przekrój w skali szarości, a „prezentacja D" w klasycznym podziale nie występuje.
+---
+ID: BIOFIZLEK-105
+NR_LOKALNY: 35
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: efekt Dopplera w diagnostyce
+PYTANIE: Zjawisko Dopplera wykorzystywane w ultrasonograficznych metodach diagnostycznych pozwala obliczyć prędkość przepływu krwi przez naczynie krwionośne. Metoda ta polega na pomiarze:
+A: natężenia fali odbitej lub rozproszonej
+B: czasu opóźnienia powrotu fali odbitej lub rozproszonej
+C: zmiany częstotliwości fali odbitej lub rozproszonej względem fali padającej
+D: zmiany prędkości rozchodzenia się fali odbitej lub rozproszonej względem fali padającej
+POPRAWNA: C
+WYJAŚNIENIE:
+Zjawisko Dopplera polega na **zmianie częstotliwości** fali odbitej od poruszającego się reflektora (erytrocytów) względem fali padającej: $\Delta f=\frac{2f_0v\cos\alpha}{c}$. Z przesunięcia dopplerowskiego wyznacza się wartość i kierunek prędkości przepływu. Kluczowy jest **kąt** $\alpha$ między wiązką a osią naczynia — przy $90°$ sygnał zanika. Prędkość fali w tkankach jest stała (**ok. 1540 m/s**) i nie zmienia się wskutek ruchu krwi.
+---
+ID: BIOFIZLEK-106
+NR_LOKALNY: 36
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: refraktometria
+PYTANIE: Znając masę molową ($M$), gęstość ($\rho$) oraz współczynnik załamania światła ($n$) możemy obliczyć refrakcję molową ($R$), którą określa wzór:
+A: $\frac{n^2+1}{n^2-2}\cdot\frac{M}{\rho}$
+B: $\frac{n^2-1}{n^2+2}\cdot\frac{\rho}{M}$
+C: $\frac{n^2-2}{n^2+1}\cdot\frac{M}{\rho}$
+D: $\frac{n^2-1}{n^2+2}\cdot\frac{M}{\rho}$
+POPRAWNA: D
+WYJAŚNIENIE:
+Wzór **Lorentz-Lorenza**: $R=\frac{n^2-1}{n^2+2}\cdot\frac{M}{\rho}$, gdzie iloraz $M/\rho$ to **objętość molowa**. Refrakcja molowa jest miarą **polaryzowalności** cząsteczki, praktycznie niezależną od temperatury i ciśnienia, a przy tym **addytywną** względem atomów i wiązań — służy więc do identyfikacji związków i oceny czystości. Refraktometrem Abbego oznacza się też stężenia roztworów, np. białka w surowicy czy w moczu.
+---
+ID: BIOFIZLEK-107
+NR_LOKALNY: 37
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: przepływ burzliwy
+PYTANIE: Prędkość, przy której dochodzi do przejścia z przepływu laminarnego do burzliwego, nazywana jest prędkością krytyczną $v_k$ równą (gdzie: $\eta$ – lepkość cieczy; $d$ – średnica naczynia; $\rho$ – gęstość cieczy; $Re$ – krytyczna liczba Reynoldsa):
+A: $\frac{Re\,\rho}{\eta d}$
+B: $\frac{Re\,d}{\eta\rho}$
+C: $\frac{Re\,\eta}{\rho d^2}$
+D: $\frac{Re\,\eta}{\rho d}$
+POPRAWNA: D
+WYJAŚNIENIE:
+Liczba Reynoldsa to $Re=\frac{\rho v d}{\eta}$, więc po przekształceniu $v_k=\frac{Re\,\eta}{\rho d}$. Prędkość krytyczna **rośnie** z lepkością, a **maleje** z gęstością i średnicą naczynia; dla rur przyjmuje się $Re\approx2300$. Dlatego turbulencje pojawiają się najłatwiej w naczyniach o dużej średnicy (aorta) oraz przy **niedokrwistości**, gdy lepkość krwi spada — słychać je wtedy jako **szmer** naczyniowy lub sercowy.
+---
+ID: BIOFIZLEK-108
+NR_LOKALNY: 38
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: prąd elektryczny
+PYTANIE: W którym stwierdzeniu zawarty jest prawdziwy sens prawa Ohma?
+A: napięcie prądu między końcami przewodnika jest wprost proporcjonalne do jego natężenia
+B: opór przewodnika jest wprost proporcjonalny do napięcia na jego końcach, a odwrotnie proporcjonalny do natężenia płynącego w nim prądu
+C: natężenie prądu w przewodniku jest wprost proporcjonalne do napięcia na jego końcach, a odwrotnie proporcjonalne do jego oporu elektrycznego
+D: opór elektryczny przewodnika to stosunek napięcia na jego końcach do natężenia płynącego prądu
+POPRAWNA: C
+WYJAŚNIENIE:
+Prawo Ohma: $I=\frac{U}{R}$ — natężenie prądu jest **wprost proporcjonalne** do napięcia i **odwrotnie proporcjonalne** do oporu, a istotą prawa jest **stałość** ilorazu $U/I$ dla danego przewodnika. Odpowiedź D podaje jedynie **definicję** oporu, prawdziwą także dla elementów nieliniowych, więc nie oddaje treści prawa. Tkanki nie są przewodnikami ohmowymi — ich **impedancja** zależy od częstotliwości prądu i pojemności błon.
+---
+ID: BIOFIZLEK-109
+NR_LOKALNY: 39
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: opór naczyniowy
+PYTANIE: Jeżeli naczyniem jest kapilara o długości $l$ i promieniu przekroju poprzecznego $r$, to opór naczyniowy ($R$) kapilary można zapisać w postaci (gdzie $\eta$ – współczynnik lepkości cieczy przepływającej):
+A: $R=\frac{\eta l}{8\pi r^4}$
+B: $R=\frac{8\eta l}{\pi r^4}$
+C: $R=\frac{8\eta}{\pi r^4}$
+D: $R=\frac{8\eta l}{\pi r}$
+POPRAWNA: B
+WYJAŚNIENIE:
+Opór definiujemy jako $R=\frac{\Delta p}{Q}$; po podstawieniu prawa Hagena-Poiseuille'a $Q=\frac{\pi r^4\Delta p}{8\eta l}$ otrzymujemy $R=\frac{8\eta l}{\pi r^4}$. Opór rośnie z długością naczynia i lepkością krwi, ale przede wszystkim z **czwartą potęgą** odwrotności promienia — zwężenie naczynia o połowę zwiększa go **16-krotnie**. Dlatego głównym miejscem regulacji oporu obwodowego są **tętniczki**, aktywnie zmieniające średnicę.
+---
+ID: BIOFIZLEK-110
+NR_LOKALNY: 40
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: wytwarzanie ultradźwięków
+PYTANIE: Fale ultradźwiękowe w USG generowane i odbierane są z wykorzystaniem zjawiska piezoelektrycznego. Główną cechą prostego zjawiska piezoelektrycznego jest to, że:
+A: odkształcenie kryształu wymusza pojawienie się ładunków tego samego znaku na przeciwległych ściankach kryształu
+B: ogrzewanie kryształu powoduje pojawienie się ładunków przeciwnego znaku na przeciwległych ściankach kryształu
+C: odkształcenie kryształu wymusza pojawienie się ładunków przeciwnego znaku na przeciwległych ściankach kryształu
+D: po przyłożeniu do kryształu pola elektrycznego następuje odkształcenie kryształu
+POPRAWNA: C
+WYJAŚNIENIE:
+Zjawisko piezoelektryczne **proste**: odkształcenie kryształu (kwarc, ceramika PZT) przesuwa ładunki w sieci, więc na przeciwległych ścianach pojawiają się ładunki **przeciwnych znaków**, czyli napięcie — na tym opiera się **odbiór** echa. Opisane w opcji D zjawisko **odwrotne** służy do **generowania** ultradźwięków, a głowica wykorzystuje oba efekty naprzemiennie. Powstawanie ładunków przy ogrzewaniu to odrębne zjawisko **piroelektryczne**.
+---
+ID: BIOFIZLEK-111
+NR_LOKALNY: 41
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: natura fal elektromagnetycznych
+PYTANIE: Fale świetlne (VIS) i podczerwone (IR) rozchodzące się w różnych ośrodkach zaliczymy do fal:
+A: sprężystych i podłużnych
+B: sprężystych i poprzecznych
+C: elektromagnetycznych i podłużnych
+D: elektromagnetycznych i poprzecznych
+POPRAWNA: D
+WYJAŚNIENIE:
+Światło widzialne i podczerwień to fale **elektromagnetyczne**: rozchodzące się zaburzenia pól $\vec{E}$ i $\vec{B}$, wzajemnie prostopadłych i prostopadłych do kierunku rozchodzenia się — a więc fale **poprzeczne**. Nie wymagają ośrodka i biegną w próżni z prędkością $c$. Poprzeczność umożliwia **polaryzację**, niemożliwą dla fal podłużnych. Falami sprężystymi podłużnymi są natomiast dźwięk i ultradźwięki w tkankach miękkich.
+---
+ID: BIOFIZLEK-112
+NR_LOKALNY: 42
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: magnetyzacja próbki
+PYTANIE: Parametrem charakteryzującym reakcję próbki na zewnętrzne pole magnetyczne jest magnetyzacja próbki. Zewnętrzne pole magnetyczne powoduje, że dla próbki umieszczonej w tym polu wektor magnetyzacji:
+A: jest proporcjonalny do indukcji pola magnetycznego oraz liczby jąder w próbce
+B: maleje wraz ze zwiększeniem indukcji pola magnetycznego
+C: jest proporcjonalny do indukcji pola magnetycznego i nie zależy od liczby jąder w próbce
+D: jest odwrotnie proporcjonalny do liczby jąder w próbce oraz proporcjonalny do indukcji pola magnetycznego
+POPRAWNA: A
+WYJAŚNIENIE:
+W polu $B_0$ obsadzenia rozszczepionych poziomów energetycznych różnią się zgodnie z rozkładem **Boltzmanna**, a nadmiar spinów ustawionych zgodnie z polem rośnie wraz z indukcją. Magnetyzacja jest więc **wprost proporcjonalna** do $B_0$ oraz do **liczby jąder** w próbce (prawo Curie: $M\sim\frac{B_0}{T}$). Dlatego skanery o wyższym polu dają lepszy **stosunek sygnału do szumu**, a sygnał pochodzi głównie od licznych protonów wody.
+---
+ID: BIOFIZLEK-113
+NR_LOKALNY: 43
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: lampa rentgenowska
+PYTANIE: W medycynie szeroko wykorzystywane jest promieniowanie rentgenowskie powstające w lampie rentgenowskiej. Obwód niskiego napięcia w lampie rentgenowskiej ma na celu:
+A: rozpędzenie elektronów do dużej prędkości w kierunku od anody do katody
+B: zwiększenie emisji elektronów z powierzchni anody
+C: rozpędzenie elektronów do dużej prędkości w kierunku od katody do anody
+D: zwiększenie emisji elektronów z powierzchni katody
+POPRAWNA: D
+WYJAŚNIENIE:
+Obwód niskiego napięcia **żarzy katodę** (włókno wolframowe), wywołując **termoemisję** elektronów. Jego prąd decyduje o liczbie emitowanych elektronów, czyli o natężeniu wiązki (**mAs**) i dawce. Za rozpędzenie elektronów od **katody do anody** odpowiada obwód **wysokiego napięcia** (dziesiątki kV), który wyznacza maksymalną energię fotonów, czyli twardość promieniowania. Na anodzie powstaje promieniowanie hamowania i charakterystyczne.
+---
+ID: BIOFIZLEK-114
+NR_LOKALNY: 44
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: rozszczepienie poziomów energetycznych
+PYTANIE: Rozszczepienie energii jąder w zewnętrznym polu magnetycznym $B_0$ jest zjawiskiem, w którym różnica między poziomami energii jąder:
+A: jest proporcjonalna do $B_0$ i nosi nazwę efektu Tyndalla
+B: jest proporcjonalna do $B_0$ i nosi nazwę zjawiska Zeemana
+C: jest odwrotnie proporcjonalna do $B_0$ i nosi nazwę efektu Tyndalla
+D: nie zależy od $B_0$ i nosi nazwę zjawiska Zeemana
+POPRAWNA: B
+WYJAŚNIENIE:
+W polu $B_0$ poziomy energetyczne jąder o spinie $I\neq0$ rozszczepiają się — to jądrowe zjawisko **Zeemana**. Różnica energii $\Delta E=\gamma\hbar B_0=h\nu_L$ jest **wprost proporcjonalna** do indukcji pola, a odpowiadająca jej **częstotliwość Larmora** wynosi dla protonów ok. **42,58 MHz/T**. Dlatego impuls wzbudzający leży w zakresie **radiowym**. Efekt **Tyndalla** to rozpraszanie światła w koloidach i nie ma związku z NMR.
+---
+ID: BIOFIZLEK-115
+NR_LOKALNY: 45
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 8
+TEMAT: Błędy pomiarowe
+PODTEMAT: rodzaje błędów pomiarowych
+PYTANIE: Przyrządy pomiarowe przy dłuższym okresie stosowania mogą być przyczyną pojawienia się błędów, trudnych do wychwycenia. Błędy te, wynikające z braku kalibracji przyrządu, nazwiemy błędami:
+A: grubymi
+B: bezwzględnymi
+C: systematycznymi
+D: przypadkowymi
+POPRAWNA: C
+WYJAŚNIENIE:
+Brak kalibracji powoduje **błąd systematyczny**: obarcza on wszystkie pomiary odchyleniem o tym samym znaku i zbliżonej wartości, więc nie ujawnia się przy powtarzaniu serii ani nie znika przy uśrednianiu — obniża **dokładność** przy zachowanej precyzji. Usuwa się go przez wzorcowanie lub wprowadzenie poprawki. Błędy **przypadkowe** mają rozkład losowy i maleją z liczbą pomiarów, a **grube** to pomyłki obserwatora, których wyniki się odrzuca.
+---
+ID: BIOFIZLEK-116
+NR_LOKALNY: 46
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: prędkość fali ultradźwiękowej
+PYTANIE: Do obrazowania rozkładu tkanek miękkich oraz do badania szybkości przepływu krwi w naczyniach krwionośnych wykorzystywane są metody ultrasonograficzne. Prędkość fali ultradźwiękowej w tkankach miękkich jest:
+A: znacznie mniejsza niż w kościach
+B: znacznie mniejsza niż w powietrzu
+C: dużo większa niż w kościach
+D: taka sama jak w powietrzu
+POPRAWNA: A
+WYJAŚNIENIE:
+Prędkość fali rośnie ze sprężystością ośrodka: w tkankach miękkich wynosi średnio **1540 m/s**, w kości zbitej ok. **3500 m/s**, a w powietrzu tylko **330 m/s**. Jest więc znacznie mniejsza niż w kościach i kilkakrotnie większa niż w powietrzu. Aparat USG przelicza czas powrotu echa na głębokość przy założeniu stałej wartości 1540 m/s, dlatego kość i gaz zniekształcają obraz, dając **artefakty** i cień akustyczny.
+---
+ID: BIOFIZLEK-117
+NR_LOKALNY: 47
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 9
+TEMAT: Tomografia komputerowa (CT)
+PODTEMAT: rozdzielczość obrazu CT
+PYTANIE: O rozdzielczości w tomografii komputerowej decydują jednakowe, niewielkie elementy objętościowe, na które dzielona jest objętość badanej tkanki. Struktury te nazywamy:
+A: pikselami
+B: wokselami
+C: gradientami
+D: projekcjami
+POPRAWNA: B
+WYJAŚNIENIE:
+Badana objętość jest dzielona na elementarne bryły — **woksele** (volume elements), a współczynnik osłabiania w każdym z nich odtwarza się przez **rekonstrukcję** z wielu projekcji. Woksel odwzorowany na monitorze jako element obrazu dwuwymiarowego to **piksel**. Rozmiar woksela wraz z grubością warstwy decyduje o rozdzielczości przestrzennej i o artefakcie **częściowej objętości**. Projekcje to zbiory pomiarów, a gradienty pola należą do techniki MRI.
+---
+ID: BIOFIZLEK-118
+NR_LOKALNY: 48
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: definicja magnetyzacji
+PYTANIE: Wartość wektora magnetyzacji próbki w metodzie obrazowania NMR jest definiowana jako:
+A: wektorowy iloczyn momentów magnetycznych jąder w próbce pomnożony przez objętość próbki
+B: wektorowy iloczyn momentów magnetycznych jąder w próbce podzielony przez objętość próbki
+C: wektorowa suma momentów magnetycznych jąder w próbce podzielona przez objętość próbki
+D: wektorowa suma momentów magnetycznych jąder w próbce pomnożona przez objętość próbki
+POPRAWNA: C
+WYJAŚNIENIE:
+Magnetyzacja to **suma wektorowa** momentów magnetycznych jąder zawartych w próbce **podzielona przez jej objętość**, czyli gęstość momentu magnetycznego wyrażana w $\mathrm{A/m}$. Bez pola zewnętrznego momenty są zorientowane przypadkowo i suma wynosi zero; w polu $B_0$ pojawia się niewielki nadmiar spinów zgodnych z polem i **wypadkowy wektor** wzdłuż osi $z$. To on jest odchylany impulsem RF i daje mierzalny sygnał.
+---
+ID: BIOFIZLEK-119
+NR_LOKALNY: 49
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 5
+TEMAT: Promieniowanie jonizujące, dozymetria
+PODTEMAT: dawki i tło promieniowania
+PYTANIE: Organizmy żywe poddawane są działaniu różnych czynników jonizujących (promieniowanie kosmiczne, izotopy promieniotwórcze w otoczeniu i inne), powodujących uszkodzenia somatyczne i genetyczne w komórkach. Przeciętna roczna dawka skuteczna promieniowania jonizującego dla człowieka od tła wynosi (Sv – siwert, Gy – grej):
+A: $2{,}5\ \mathrm{mSv}$
+B: $0{,}25\ \mathrm{Sv}$
+C: $2{,}5\ \mathrm{mGy}$
+D: $2{,}5\ \mathrm{Gy}$
+POPRAWNA: A
+WYJAŚNIENIE:
+Średnia roczna dawka skuteczna od tła naturalnego wynosi ok. **2,4–2,5 mSv**; największy udział ma **radon**, dalej promieniowanie kosmiczne, ziemskie i izotopy w organizmie. Dawkę skuteczną wyraża się w **siwertach** — uwzględnia ona rodzaj promieniowania i wrażliwość narządów, podczas gdy **grej** to jednostka dawki pochłoniętej (energia na kilogram). Wartości rzędu **0,25 Sv** czy **2,5 Gy** odpowiadają ekspozycji wypadkowej lub radioterapii.
+---
+ID: BIOFIZLEK-120
+NR_LOKALNY: 50
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 1
+TEMAT: Biospektroskopia
+PODTEMAT: przejścia oscylacyjne i rotacyjne
+PYTANIE: W przypadku cząsteczek oprócz skwantowanych stanów elektronowych atomów wyróżnia się skwantowane stany oscylacyjne (drgania atomów tworzących cząsteczkę) i rotacyjne (obroty cząsteczki). Zmiana stanu oscylacyjnego cząsteczki następuje w wyniku absorpcji lub emisji promieniowania:
+A: widzialnego (VIS)
+B: ultrafioletowego w zakresie A (UVA)
+C: podczerwonego (IR)
+D: ultrafioletowego w zakresie B (UVB)
+POPRAWNA: C
+WYJAŚNIENIE:
+Odstępy między poziomami **oscylacyjnymi** odpowiadają energiom fotonów **podczerwieni** (ok. 0,01–0,5 eV), dlatego drgania cząsteczek bada spektroskopia **IR**, dająca charakterystyczny „odcisk palca" związku. Przejścia **rotacyjne** wymagają energii jeszcze mniejszych (mikrofale), a **elektronowe** — fotonów VIS i UV. Autor klucza wskazał UVB, ale promieniowanie o tak dużej energii wzbudza elektrony, a nie drgania atomów w cząsteczce.
+FLAGA: weryfikacja merytoryczna
+---
+ID: BIOFIZLEK-121
+NR_LOKALNY: 51
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: zasada działania lasera
+PYTANIE: Warunkiem koniecznym do działania lasera jest inwersja obsadzeń, polegająca na tym, że:
+A: jest to proces równowagi termodynamicznej, w którym liczba cząstek na poziomach energetycznych jest zgodna z rozkładem Boltzmanna
+B: jest to stan, w którym liczba cząstek o niższej energii jest większa niż liczba cząstek o wyższej energii
+C: jest to stan, w którym więcej cząstek znajduje się na wyższym poziomie energetycznym niż na niższym, co umożliwia emisję wymuszoną
+D: jest to proces, w którym cząstki przechodzą spontanicznie z wyższego poziomu energetycznego na niższy, emitując foton
+POPRAWNA: C
+WYJAŚNIENIE:
+Inwersja obsadzeń to stan **nierównowagowy**, w którym na wyższym poziomie energetycznym znajduje się **więcej** cząstek niż na niższym. Dzięki temu **emisja wymuszona** przeważa nad absorpcją i wiązka jest wzmacniana, dając światło spójne, monochromatyczne i skolimowane. W równowadze termodynamicznej rozkład **Boltzmanna** wymusza sytuację odwrotną, dlatego konieczne jest **pompowanie** układu trój- lub czteropoziomowego z poziomem **metastabilnym**.
+---
+ID: BIOFIZLEK-122
+NR_LOKALNY: 52
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 1
+TEMAT: Biospektroskopia
+PODTEMAT: luminescencja
+PYTANIE: Czas życia fosforescencji to czas, przez jaki trwa emisja światła przez substancję po jej wzbudzeniu, i wynosi w zależności od rodzaju związku:
+A: od milisekund do sekund, a nawet godzin
+B: około $10^{-8}$ sekundy
+C: znacznie mniej niż $10^{-8}$ sekundy
+D: $10^{-6}$ sekundy
+POPRAWNA: A
+WYJAŚNIENIE:
+Fosforescencja zachodzi z metastabilnego stanu **trypletowego**, a powrót do stanu podstawowego jest **wzbroniony** regułami wyboru, więc trwa długo: od **milisekund do sekund**, a nawet godzin. **Fluorescencja** przebiega ze stanu singletowego i zanika w czasie rzędu $10^{-8}$ s. Oba zjawiska poprzedza bezpromienista utrata części energii, dlatego światło emitowane ma **dłuższą falę** niż wzbudzające — to przesunięcie Stokesa.
+---
+ID: BIOFIZLEK-123
+NR_LOKALNY: 53
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 6
+TEMAT: Promieniowanie niejonizujące, lasery, RTG
+PODTEMAT: zastosowania laserów w medycynie
+PYTANIE: Irydotomia jest zabiegiem wykonywanym z zastosowaniem lasera w:
+A: stomatologii
+B: medycynie estetycznej
+C: okulistyce
+D: urologii
+POPRAWNA: C
+WYJAŚNIENIE:
+Irydotomia to wykonanie otworu w tęczówce (łac. *iris*) laserem **Nd:YAG**, stosowane w **okulistyce** w jaskrze z zamykającym się kątem przesączania: udrażnia przepływ cieczy wodnistej z komory tylnej do przedniej, przerywa blok źreniczny i obniża ciśnienie wewnątrzgałkowe. Inne zastosowania laserów w okulistyce to **fotokoagulacja** siatkówki laserem argonowym oraz korekcja wad wzroku metodą **LASIK** z laserem ekscymerowym.
+---
+ID: BIOFIZLEK-124
+NR_LOKALNY: 54
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: termoregulacja
+PYTANIE: Szybkość utraty ciepła z organizmu poprzez parowanie zależy m.in. od różnic:
+A: temperatur otaczających obiektów i skóry
+B: czwartych potęg ciśnień parcjalnych pary wodnej w powietrzu i przy powierzchni skóry
+C: ciśnień parcjalnych pary wodnej w powietrzu i przy powierzchni skóry
+D: czwartych potęg temperatur otaczających obiektów i skóry
+POPRAWNA: C
+WYJAŚNIENIE:
+Parowanie potu odbiera ciepło równe **ciepłu parowania** wody (ok. **2400 kJ/kg**), a jego szybkość zależy od **różnicy ciśnień parcjalnych** pary wodnej przy powierzchni skóry i w otaczającym powietrzu oraz od ruchu powietrza. Przy dużej wilgotności różnica maleje, pot spływa bez odparowania i rośnie ryzyko przegrzania. Od różnicy **czwartych potęg temperatur** zależy natomiast wymiana ciepła przez **promieniowanie** (prawo Stefana-Boltzmanna).
+---
+ID: BIOFIZLEK-125
+NR_LOKALNY: 55
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: załamanie światła
+PYTANIE: Gdy promienie światła przechodzą z ośrodka optycznie rzadszego, czyli o mniejszym współczynniku załamania światła, do ośrodka optycznie gęstszego, czyli o większym współczynniku załamania, kąt załamania jest:
+A: równy kątowi padania
+B: większy od kąta padania
+C: mniejszy od kąta padania
+D: mniejszy bądź równy kątowi padania
+POPRAWNA: C
+WYJAŚNIENIE:
+Prawo Snella: $n_1\sin\alpha=n_2\sin\beta$. Przy przejściu do ośrodka **optycznie gęstszego** ($n_2>n_1$) zachodzi $\sin\beta<\sin\alpha$, więc promień załamuje się **do normalnej** i kąt załamania jest mniejszy od kąta padania. Przy przejściu odwrotnym kąt rośnie i po przekroczeniu **kąta granicznego** następuje całkowite wewnętrzne odbicie, wykorzystywane w światłowodach endoskopów. Promień padający prostopadle kierunku nie zmienia.
+---
+ID: BIOFIZLEK-126
+NR_LOKALNY: 56
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 2
+TEMAT: Optyka cieczy (refrakcja, polaryzacja)
+PODTEMAT: mikroskopia optyczna
+PYTANIE: O możliwości zbierania światła przez mikroskop oraz zdolności tworzenia obrazu o jak największej ilości szczegółów decyduje apertura numeryczna (NA) obiektywu, która jest zdefiniowana następująco ($\alpha$ – kąt aperturowy; $n$ – współczynnik załamania ośrodka, w którym jest zanurzona czołowa soczewka obiektywu):
+A: $NA=n\cos(\alpha)$
+B: $NA=n\sin^2(\alpha)$
+C: $NA=n\cos^2(\alpha)$
+D: $NA=n\sin(\alpha)$
+POPRAWNA: D
+WYJAŚNIENIE:
+Apertura numeryczna: $NA=n\sin\alpha$, gdzie $\alpha$ to **połowa kąta rozwarcia** stożka promieni wpadających do obiektywu, a $n$ — współczynnik załamania ośrodka przed soczewką czołową. Ponieważ $\sin\alpha<1$, w powietrzu $NA<1$, natomiast **immersja olejowa** ($n\approx1{,}5$) podnosi ją do ok. **1,4**. Wraz z NA rośnie ilość zbieranego światła i maleje granica rozdzielczości, zgodnie ze wzorem $d=\frac{0{,}61\lambda}{NA}$.
+---
+ID: BIOFIZLEK-127
+NR_LOKALNY: 57
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: podstawy fizyki kwantowej
+PYTANIE: Zgodnie z mechaniką kwantową materia charakteryzuje się dualizmem korpuskularno-falowym, co oznacza, że każdej cząstce można przypisać tzw. falę de Broglie'a. Zgodnie z równaniem de Broglie'a długość fali $\lambda$ związanej z poruszającym się elektronem wynosi ($h$ – stała Plancka, $m$ – masa elektronu, $v$ – prędkość elektronu):
+A: $\lambda=\frac{h}{mv}$
+B: $\lambda=\frac{mv}{h}$
+C: $\lambda=\frac{h}{m^2v}$
+D: $\lambda=\frac{mv^2}{h}$
+POPRAWNA: A
+WYJAŚNIENIE:
+Fala materii de Broglie'a: $\lambda=\frac{h}{p}=\frac{h}{mv}$ — długość fali jest **odwrotnie proporcjonalna** do pędu, dlatego dla ciał makroskopowych jest niemierzalnie mała. Dla elektronu rozpędzonego napięciem rzędu kilkudziesięciu kV wynosi ułamki nanometra, czyli tysiące razy mniej niż dla światła widzialnego — stąd ogromna zdolność rozdzielcza **mikroskopu elektronowego**. Falowy charakter elektronów potwierdza ich **dyfrakcja** na sieci krystalicznej.
+---
+ID: BIOFIZLEK-128
+NR_LOKALNY: 58
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 3
+TEMAT: Bioreologia (lepkość, wiskozymetria)
+PODTEMAT: hydrodynamika cieczy doskonałej
+PYTANIE: Prędkość wypływu $v$ cieczy doskonałej pod wpływem siły ciężkości ($g$ – przyspieszenie ziemskie) z otworu znajdującego się na głębokości $h$ pod powierzchnią swobodną cieczy opisuje równanie:
+A: $v=2gh$
+B: $v=\sqrt{2gh}$
+C: $v=\sqrt{3gh}$
+D: $v=4gh$
+POPRAWNA: B
+WYJAŚNIENIE:
+Wzór **Torricellego** $v=\sqrt{2gh}$ wynika wprost z równania Bernoulliego: energia potencjalna słupa cieczy zamienia się w energię kinetyczną strugi, dokładnie tak jak przy swobodnym spadku z wysokości $h$. Prędkość zależy więc tylko od głębokości otworu, a **nie od gęstości** cieczy. Wyrażenia liniowe względem $h$ są błędne **wymiarowo**. Założenia: ciecz doskonała, otwór mały w stosunku do naczynia i stały poziom swobodny.
+---
+ID: BIOFIZLEK-129
+NR_LOKALNY: 59
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: elektryczne właściwości błon
+PYTANIE: Błona komórkowa wykazuje specyficzne właściwości elektryczne wynikające z jej budowy oraz obecności kanałów jonowych. W jej opisie uwzględnia się zarówno zjawisko rozdziału ładunków po obu stronach błony, jak i możliwość przepływu jonów przez wyspecjalizowane struktury białkowe. Zjawiska te mogą być analizowane przy użyciu uproszczonych modeli elektrycznych, w których stosowane są:
+A: tylko oporniki
+B: oporniki i solenoidy
+C: solenoidy i kondensatory
+D: kondensatory i oporniki
+POPRAWNA: D
+WYJAŚNIENIE:
+Dwuwarstwa lipidowa to cienki **dielektryk** rozdzielający przewodzące roztwory elektrolitów, więc zachowuje się jak **kondensator** o pojemności ok. **1 µF/cm²**. Kanały jonowe umożliwiają przepływ ładunku i odpowiadają **opornikom** połączonym z ogniwami o napięciach równych potencjałom Nernsta. Model **RC** wyjaśnia stałą czasową błony i bierne rozprzestrzenianie się potencjału. Solenoidy, czyli indukcyjność, nie mają w błonie odpowiednika.
+---
+ID: BIOFIZLEK-130
+NR_LOKALNY: 60
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 8
+TEMAT: Błędy pomiarowe
+PODTEMAT: statystyczne opracowanie pomiarów
+PYTANIE: Jednym z ważnych parametrów statystycznych, przybliżającym wartość mierzonej wielkości i obliczonym z szeregu pomiarowego, jest:
+A: średnia
+B: wariancja
+C: odchylenie standardowe
+D: błąd standardowy
+POPRAWNA: A
+WYJAŚNIENIE:
+Najlepszym przybliżeniem wartości mierzonej wielkości jest **średnia arytmetyczna** $\bar{x}=\frac{1}{n}\sum x_i$ — minimalizuje sumę kwadratów odchyleń i przy błędach czysto przypadkowych zmierza wraz ze wzrostem $n$ do wartości rzeczywistej. Pozostałe wymienione parametry opisują **rozrzut**: wariancja i odchylenie standardowe charakteryzują pojedynczy pomiar, a **błąd standardowy** — dokładność wyznaczenia samej średniej.
+---
+ID: BIOFIZLEK-131
+NR_LOKALNY: 61
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: parametry fal
+PYTANIE: Jako głównych parametrów charakteryzujących falę (elektromagnetyczną lub mechaniczną) używamy: długość, częstotliwość i prędkość fali. Z kolei energia przenoszona przez falę charakteryzowana jest przez natężenie fali. Wielkość tę definiujemy jako iloraz:
+A: energii fali do pola powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą fala przechodzi
+B: mocy fali do pola powierzchni prostopadłej do kierunku rozchodzenia się fali, przez którą fala przechodzi
+C: energii fali do pola powierzchni równoległej do kierunku rozchodzenia się fali, przez którą fala przechodzi
+D: mocy fali do pola powierzchni równoległej do kierunku rozchodzenia się fali, przez którą fala przechodzi
+POPRAWNA: B
+WYJAŚNIENIE:
+Natężenie fali to **moc** przenoszona przez jednostkę powierzchni ustawionej **prostopadle** do kierunku rozchodzenia się fali: $I=\frac{P}{S}$, w jednostkach $\mathrm{W/m^2}$. Sama energia odniesiona do powierzchni dałaby $\mathrm{J/m^2}$, czyli inną wielkość, a przez powierzchnię równoległą fala w ogóle by nie przechodziła. Natężenie jest proporcjonalne do **kwadratu amplitudy**, a dla dźwięku jego poziom wyraża się logarytmicznie w **decybelach**.
+---
+ID: BIOFIZLEK-132
+NR_LOKALNY: 62
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 8
+TEMAT: Błędy pomiarowe
+PODTEMAT: statystyczne opracowanie pomiarów
+PYTANIE: Po wykonaniu $n$ pomiarów mierzonej wielkości $X$ obliczamy parametry statystyczne charakteryzujące daną wielkość. Błąd standardowy, określający dokładność wyznaczenia średniej, obliczany jest z równania:
+A: $\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2}$
+B: $\sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2}$
+C: $\sqrt{\frac{1}{n(n-1)}\sum_{i=1}^{n}(x_i-\bar{x})^2}$
+D: $\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})$
+POPRAWNA: C
+WYJAŚNIENIE:
+Błąd standardowy średniej: $S_{\bar{x}}=\sqrt{\frac{1}{n(n-1)}\sum(x_i-\bar{x})^2}=\frac{s}{\sqrt{n}}$, gdzie $s$ to **odchylenie standardowe** pojedynczego pomiaru (wzór z opcji A). Maleje z **pierwiastkiem** liczby pomiarów, więc czterokrotny wzrost $n$ poprawia dokładność zaledwie dwukrotnie. Dzielnik $n-1$ to liczba **stopni swobody**, bo jeden zużyto na wyznaczenie średniej. Suma odchyleń bez podnoszenia do kwadratu jest zawsze równa zeru.
+---
+ID: BIOFIZLEK-133
+NR_LOKALNY: 63
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 8
+TEMAT: Błędy pomiarowe
+PODTEMAT: korelacja wyników
+PYTANIE: Współczynnik liniowej korelacji (współczynnik Pearsona) charakteryzuje zależność między dwiema badanymi zmiennymi. Gdy współczynnik ten jest większy od zera, to można stwierdzić, że funkcja zależności między badanymi zmiennymi jest:
+A: malejąca, a wartości współczynnika Pearsona mieszczą się w zakresie od -1 do 1
+B: rosnąca, a wartości współczynnika Pearsona mieszczą się w zakresie od 0 do 1
+C: malejąca, a wartości współczynnika Pearsona mieszczą się w zakresie od 0 do 1
+D: rosnąca, a wartości współczynnika Pearsona mieszczą się w zakresie od -1 do 1
+POPRAWNA: D
+WYJAŚNIENIE:
+Współczynnik Pearsona przyjmuje wartości od **-1 do 1** i mierzy siłę oraz kierunek zależności **liniowej**. Znak dodatni oznacza funkcję **rosnącą** — wzrostowi jednej zmiennej towarzyszy wzrost drugiej; znak ujemny funkcję malejącą, a $r=0$ brak korelacji liniowej. Zakres od 0 do 1 dotyczy $r^2$, czyli **współczynnika determinacji**. Korelacja nie dowodzi związku **przyczynowego** ani nie wykrywa zależności nieliniowych.
+---
+ID: BIOFIZLEK-134
+NR_LOKALNY: 64
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: budowa tomografu
+PYTANIE: W tomografii NMR wykorzystywane jest silne pole magnetyczne i pole elektromagnetyczne z zakresu radiowego. Generatorem silnego pola magnetycznego w tomografii NMR mogą być:
+A: uzwojenia, przez które przepływa stały prąd elektryczny
+B: ładunki elektryczne rozmieszczone na płytkach kondensatora
+C: cewki indukcyjne, przez które przepuszczane są sinusoidalne prądy zmienne o częstotliwości Larmora
+D: ładunki magnetyczne rozmieszczone odpowiednio wokół badanego pacjenta
+POPRAWNA: A
+WYJAŚNIENIE:
+Pole główne $B_0$ musi być **stałe w czasie** i bardzo jednorodne, dlatego wytwarzają je **uzwojenia zasilane prądem stałym** — w praktyce cewki **nadprzewodzące** chłodzone ciekłym helem, dające 1,5–3 T bez strat omowych. Cewki zasilane prądem zmiennym o **częstotliwości Larmora** pełnią inną rolę: nadają impulsy RF, a cewki gradientowe kodują położenie. Kondensator wytwarza pole elektryczne, a swobodne „ładunki magnetyczne" nie istnieją.
+---
+ID: BIOFIZLEK-135
+NR_LOKALNY: 65
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 11
+TEMAT: Inne
+PODTEMAT: drgania i rezonans
+PYTANIE: Zjawiskiem występującym w układach biologicznych, jak i w przyrządach wykorzystywanych do badań tych układów, jest rezonans elektryczny lub mechaniczny. W ogólnym przypadku rezonans polega na przekazie energii z jednego układu drgającego do drugiego:
+A: o jednakowej amplitudzie drgań dla częstotliwości wymuszającej niezależnej od struktury układu odbierającego energię
+B: o maksymalnej amplitudzie drgań dla częstotliwości wymuszającej określonej przez strukturę układu odbierającego energię
+C: o minimalnej amplitudzie drgań dla częstotliwości wymuszającej określonej przez strukturę układu przesyłającego energię
+D: z amplitudą drgań proporcjonalną do częstotliwości wymuszającej układu
+POPRAWNA: B
+WYJAŚNIENIE:
+Rezonans zachodzi, gdy częstotliwość wymuszająca jest zbliżona do **częstotliwości własnej** układu **odbierającego** energię, wyznaczonej przez jego strukturę (np. $f_0=\frac{1}{2\pi}\sqrt{\frac{k}{m}}$ dla oscylatora mechanicznego). Amplituda drgań osiąga wtedy **maksimum**, ograniczone jedynie **tłumieniem**, a przekaz energii jest najefektywniejszy. Zjawisko to leży u podstaw **NMR**, obwodów strojonych oraz rezonansowych drgań narządów przy wibracjach.
+---
+ID: BIOFIZLEK-136
+NR_LOKALNY: 66
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: czasy relaksacji
+PYTANIE: Parametry opisujące czasowe zmiany magnetyzacji w metodzie obrazowania NMR po zaburzeniu wektora magnetyzacji impulsem $\pi/2$, nazywane czasami relaksacji, odpowiadają:
+A: $T_1$ – czas relaksacji spin-spin, odpowiadający zmianom składowej podłużnej magnetyzacji, $T_2$ – czas relaksacji spin-sieć, odpowiadający zmianom składowej poprzecznej magnetyzacji
+B: $T_1$ – czas relaksacji spin-sieć, odpowiadający zmianom składowej poprzecznej magnetyzacji, $T_2$ – czas relaksacji spin-spin, odpowiadający zmianom składowej podłużnej magnetyzacji
+C: $T_1$ – czas relaksacji spin-sieć, odpowiadający zmianom składowej podłużnej magnetyzacji, $T_2$ – czas relaksacji spin-spin, odpowiadający zmianom składowej poprzecznej magnetyzacji
+D: $T_1$ – czas relaksacji spin-spin, odpowiadający zmianom składowej poprzecznej magnetyzacji, $T_2$ – czas relaksacji spin-sieć, odpowiadający zmianom składowej podłużnej magnetyzacji
+POPRAWNA: C
+WYJAŚNIENIE:
+**$T_1$** (relaksacja **spin-sieć**, podłużna) opisuje odbudowę składowej **podłużnej** $M_z$ dzięki oddawaniu energii do otoczenia. **$T_2$** (relaksacja **spin-spin**, poprzeczna) to zanik składowej **poprzecznej** $M_{xy}$ wskutek utraty spójności fazowej spinów, bez wymiany energii z siecią. Zawsze $T_2\leq T_1$: w tkankach $T_1$ ma setki milisekund, $T_2$ — dziesiątki. Dobór czasów **TR** i **TE** decyduje o obrazach T1- i T2-zależnych.
+---
+ID: BIOFIZLEK-137
+NR_LOKALNY: 67
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 9
+TEMAT: Tomografia komputerowa (CT)
+PODTEMAT: bezpieczeństwo badania CT
+PYTANIE: Aby otrzymać obraz wewnętrznej struktury pacjenta za pomocą tomografii komputerowej, należy brać pod uwagę ryzyko związane z potencjalnymi uszkodzeniami tkanek pacjenta. Czy w przypadku stosowania rentgenowskiej tomografii CAT (tomografia komputerowa osiowa) tkanki pacjenta poddane badaniom narażone są na potencjalne uszkodzenia?
+A: tak, ze względu na to, że stosowane w metodzie CAT silne pole magnetyczne jonizuje materię
+B: nie, ponieważ stosowane w metodzie pole elektromagnetyczne nie wnika do organizmu człowieka
+C: nie, ze względu na to, że w metodzie tej stosowane jest pole elektromagnetyczne z zakresu radiowego
+D: tak, ze względu na to, że stosowane jest pole elektromagnetyczne z zakresu jonizującego
+POPRAWNA: D
+WYJAŚNIENIE:
+W tomografii komputerowej stosuje się promieniowanie **rentgenowskie** — falę elektromagnetyczną o energii fotonów wystarczającej do **jonizacji**, więc tkanki są narażone na uszkodzenia, głównie o charakterze **stochastycznym** (ryzyko nowotworowe). Dawka z badania CT jamy brzusznej sięga **kilku–kilkunastu mSv**, wielokrotnie przewyższając zdjęcie klatki piersiowej. Pole magnetyczne i fale radiowe, niejonizujące, wykorzystuje natomiast **MRI**.
+---
+ID: BIOFIZLEK-138
+NR_LOKALNY: 68
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 7
+TEMAT: Bioakustyka, słuch, USG
+PODTEMAT: impedancja akustyczna
+PYTANIE: Jednym z ważnych parametrów w metodach ultrasonograficznych jest impedancja akustyczna. Parametr ten definiujemy jako:
+A: iloczyn prędkości rozchodzenia się fali ultradźwiękowej w danym ośrodku i gęstości ośrodka
+B: iloraz prędkości rozchodzenia się fali ultradźwiękowej w danym ośrodku i gęstości ośrodka
+C: sumę prędkości rozchodzenia się fali ultradźwiękowej w danym ośrodku i gęstości ośrodka
+D: różnicę prędkości rozchodzenia się fali ultradźwiękowej w danym ośrodku i gęstości ośrodka
+POPRAWNA: A
+WYJAŚNIENIE:
+Impedancja akustyczna to **iloczyn** gęstości ośrodka i prędkości fali: $Z=\rho c$, wyrażany w $\mathrm{kg/(m^2\cdot s)}$, czyli w **rayl**ach. Decyduje o odbiciu na granicy ośrodków: im większy **skok $Z$**, tym silniejsze echo. Tkanki miękkie mają $Z$ zbliżoną (ok. $1{,}5\cdot10^6$), więc ich granice dają słabe echa, natomiast powietrze ma impedancję tysiące razy mniejszą, a kość kilkakrotnie większą — stąd cień akustyczny i konieczność użycia żelu.
+---
+ID: BIOFIZLEK-139
+NR_LOKALNY: 69
+BATCH: e2026-1
+KIERUNEK: LEK
+TEMAT_NR: 10
+TEMAT: Obrazowanie rezonansu magnetycznego (MRI/NMR)
+PODTEMAT: czasy relaksacji
+PYTANIE: Po wzbudzeniu impulsem $\pi/2$ wektor magnetyzacji w metodzie obrazowania NMR powraca do początkowego ustawienia (zgodnie z wektorem pola $B$). Czas potrzebny na to, aby podłużna składowa wektora magnetyzacji wzrosła do 63% jej wartości maksymalnej, nazywamy czasem:
+A: relaksacji spin-spin $T_2$
+B: relaksacji spin-sieć $T_1$
+C: połowicznego zaniku $T_1$
+D: relaksacji spin-sieć $T_2$
+POPRAWNA: B
+WYJAŚNIENIE:
+Odbudowa składowej **podłużnej** magnetyzacji przebiega wykładniczo: $M_z=M_0(1-e^{-t/T_1})$. Po czasie $t=T_1$ nawias osiąga wartość $1-e^{-1}\approx0{,}63$, więc **$T_1$** — czas relaksacji **spin-sieć** — to czas odbudowy do **63%** wartości maksymalnej, przy oddaniu energii do otoczenia. **$T_2$** (spin-spin) opisuje zanik składowej **poprzecznej** do 37% wartości początkowej i jest zawsze krótszy lub równy $T_1$.
+---

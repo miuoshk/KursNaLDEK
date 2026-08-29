@@ -2,7 +2,7 @@
 """Konwersja FARSTO + FARLEK TXT → TXT fabryki + JSON/SQL farmakologii KNNP.
 
 Nie pisze SQL-a ręcznie: ten skrypt jest jedynym źródłem INSERT-ów.
-ID: FARM-NN-NNN (jak produkcja). tracks per kierunek. theme_label=2026.
+ID: FARM-NN-NNN (jak produkcja). tracks NULL — oba egzaminy na stomie (kafelek 2026 = 200).
 """
 from __future__ import annotations
 
@@ -102,10 +102,7 @@ EXPL_FIXES = {
     ),
 }
 
-TRACK_SQL = {
-    "stomatologia": "ARRAY['stomatologia']::TEXT[]",
-    "lekarski": "ARRAY['lekarski']::TEXT[]",
-}
+TRACK_SQL = "NULL::TEXT[]"
 
 
 def parse_source(raw: str, meta: dict) -> list[dict]:
@@ -236,7 +233,7 @@ def to_json_rows(items: list[dict]) -> list[dict]:
                 "batch_label": item["batch_label"],
                 "source_exam": item["source_exam"],
                 "theme_label": "2026",
-                "tracks": [item["track"]],
+                "tracks": None,
             }
         )
     return rows
@@ -255,14 +252,14 @@ def build_sql(items: list[dict]) -> str:
             f"   '{opts}'::jsonb,\n"
             f"   '{item['key']}',\n"
             f"   {expl},\n"
-            f"   '{sub}', '{item['id']}', '{item['batch_label']}',\n"
-            f"   '{sql_escape(item['source_exam'])}', {TRACK_SQL[item['track']]})"
+            f"              '{sub}', '{item['id']}', '{item['batch_label']}',\n"
+            f"   '{sql_escape(item['source_exam'])}', {TRACK_SQL})"
         )
     topic_list = ", ".join(f"'{t}'" for t in FARM_TOPICS)
     header = f"""-- ============================================================
 -- BATCH: e_farm_stoma_2026/1 + e_farm_lek_2026/1  ·  subject_id=farmakologia
 -- Źródło: FARSTO e2026-1 + FARLEK e2026-1, {len(items)} pytań
--- id = FARM-NN-NNN · tracks per kierunek · theme_label = 2026
+-- id = FARM-NN-NNN · tracks NULL (STOMA 2026 = 200) · theme_label = 2026
 -- Wygenerowane przez scripts/build-far-e2026-1.py (nie edytować ręcznie)
 -- ============================================================
 
@@ -350,7 +347,7 @@ def main() -> int:
         f"**SQL:** `{sql_path.relative_to(ROOT)}` · **TXT:** `{factory_path.relative_to(ROOT)}`",
         "",
         f"- pytań: **{len(items)}** (100 STOMA FARSTO-1873…1972 + 100 LEK FARLEK-1773…1872)",
-        "- `tracks`: STOMA=`stomatologia`, LEK=`lekarski` (przedmiot współdzielony)",
+        "- `tracks` NULL — FARSTO + FARLEK widoczne na stomie; kafelek 2026 = 200",
         "- `theme_label = 2026` → kafelek `farmakologia-THEME-2026`",
         "",
         "## Rozkład tematów",

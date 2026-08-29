@@ -4,6 +4,9 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { assertFsrsParameterFingerprint } from "./lib/fsrs-parameter-fingerprint.mjs";
+import { loadEnvLocal } from "./lib/load-env-local.mjs";
+
+loadEnvLocal();
 
 const apply = process.argv.includes("--apply");
 const fileArg = process.argv.slice(2).find((value) => !value.startsWith("--"));

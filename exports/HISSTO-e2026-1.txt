@@ -1,0 +1,986 @@
+ID: HISSTO-e2026-1-222
+NR_LOKALNY: 1
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 19
+TEMAT: Układ rozrodczy
+PODTEMAT: Cykl jajnikowy i miesiączkowy
+PYTANIE: W prawidłowym, 28-dniowym cyklu miesiączkowym owulacja następuje w:
+A: 7. dniu cyklu
+B: 10. dniu cyklu
+C: 14. dniu cyklu
+D: 21. dniu cyklu
+E: 26. dniu cyklu
+POPRAWNA: C
+WYJAŚNIENIE:
+**Owulacja** dzieli cykl na fazę **folikularną** (o zmiennej długości) i **lutealną** (stałą, ok. 14 dni). Wyzwala ją gwałtowny **pik LH**, poprzedzony szczytem **estradiolu** wydzielanego przez dojrzały **pęcherzyk Graafa**; do pęknięcia dochodzi ok. 36 h po piku. Powstałe **ciałko żółte** produkuje **progesteron**. Ponieważ faza lutealna jest stała, w cyklu 28-dniowym owulacja przypada na **14. dobę** — przy cyklach dłuższych wydłuża się wyłącznie faza folikularna.
+---
+ID: HISSTO-e2026-1-223
+NR_LOKALNY: 2
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 4
+TEMAT: Tkanka nabłonkowa
+PODTEMAT: Połączenia międzykomórkowe
+PYTANIE: Główną funkcją połączeń ścisłych (zonula occludens) jest:
+A: uszczelnianie przestrzeni międzykomórkowej i tworzenie bariery dyfuzyjnej
+B: mechaniczne wiązanie komórek przez filamenty pośrednie
+C: przekazywanie jonów i drobnych cząsteczek między cytoplazmami
+D: przytwierdzanie komórki do blaszki podstawnej
+E: kotwiczenie komórki we włóknach kolagenowych blaszki właściwej
+POPRAWNA: A
+WYJAŚNIENIE:
+**Klaudyny** i **okludyna** zbliżają zewnętrzne blaszki błon sąsiednich komórek, zamykając szczelinę międzykomórkową. Blokuje to transport **paracelularny** i wymusza drogę **transcelularną** — stąd bariery jelitowa, krew–mózg i krew–jądro. Drugą funkcją jest utrzymanie **polaryzacji**: białka domeny szczytowej nie mieszają się z podstawno-bocznymi. Wiązanie filamentów pośrednich to cecha **desmosomów**, a kontakt z blaszką podstawną — **hemidesmosomów**.
+---
+ID: HISSTO-e2026-1-224
+NR_LOKALNY: 3
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 13
+TEMAT: Układ odpornościowy i narządy limfatyczne
+PODTEMAT: Migdałki
+PYTANIE: Krypty migdałka podniebiennego i pokrywający je nabłonek charakteryzują się tym, że:
+A: nabłonek jest gęsto naciekany limfocytami i granulocytami
+B: nie zawierają żadnych elementów układu odpornościowego
+C: nabłonek jest silnie zrogowaciały
+D: są wyścielone nabłonkiem jednowarstwowym walcowatym z rąbkiem szczoteczkowym
+E: zawierają wyłącznie limfocyty T, bez grudek chłonnych
+POPRAWNA: A
+WYJAŚNIENIE:
+Krypty pokrywa **nabłonek wielowarstwowy płaski nierogowaciejący**, tak gęsto naciekany **limfocytami** i **granulocytami**, że granica z tkanką limfoidalną bywa nieczytelna — stąd nazwa **nabłonek limfoepitelialny (retikularny)**. Umożliwia to bezpośredni kontakt antygenów jamy ustnej z komórkami immunokompetentnymi. W blaszce właściwej leżą **grudki chłonne z ośrodkami rozmnażania** (limfocyty B), więc odpowiedź o samych limfocytach T jest błędna.
+---
+ID: HISSTO-e2026-1-225
+NR_LOKALNY: 4
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 12
+TEMAT: Krew i hemopoeza
+PODTEMAT: Granulocyty
+PYTANIE: Podstawową funkcją eozynofilów jest:
+A: eliminacja pasożytów wielokomórkowych i udział w reakcjach alergicznych
+B: fagocytoza bakterii ropotwórczych
+C: wydzielanie histaminy i heparyny
+D: produkcja przeciwciał
+E: prezentacja antygenu dziewiczym limfocytom T
+POPRAWNA: A
+WYJAŚNIENIE:
+Ziarnistości kwasochłonne zawierają **MBP (główne białko zasadowe)**, **ECP** i **peroksydazę eozynofilową** — cytotoksyczne dla **helmintów**, których wielkość uniemożliwia fagocytozę. Eozynofile modulują też reakcje alergiczne, rozkładając **histaminę** (histaminaza) i **leukotrieny**. Stanowią **2–4%** leukocytów; ich wzrost widać w inwazjach pasożytniczych i atopii. Fagocytoza bakterii to domena **neutrofilów**, a histamina i heparyna — **bazofilów**.
+---
+ID: HISSTO-e2026-1-226
+NR_LOKALNY: 5
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 18
+TEMAT: Gruczoły wewnątrzwydzielnicze
+PODTEMAT: Nadnercza
+PYTANIE: Hormonem wydzielanym przez warstwę kłębkowatą kory nadnerczy jest:
+A: aldosteron
+B: kortyzol
+C: dehydroepiandrosteron (DHEA)
+D: adrenalina
+E: kortykoliberyna (CRH)
+POPRAWNA: A
+WYJAŚNIENIE:
+Warstwa **kłębkowata** (najbardziej zewnętrzna) produkuje **mineralokortykoidy**, głównie **aldosteron**, regulowany przez układ **RAA** i stężenie potasu; zwiększa on resorpcję sodu i wydzielanie potasu w kanaliku dalszym. Warstwa **pasmowata** wydziela **kortyzol**, **siateczkowata** — androgeny nadnerczowe (**DHEA**), a **rdzeń** — **adrenalinę**. Mnemonik: GFR = Glomerulosa/Fasciculata/Reticularis → Salt, Sugar, Sex („im głębiej, tym słodziej i przyjemniej").
+---
+ID: HISSTO-e2026-1-227
+NR_LOKALNY: 6
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 18
+TEMAT: Gruczoły wewnątrzwydzielnicze
+PODTEMAT: Tarczyca — komórki C
+PYTANIE: Które stwierdzenie dotyczące kalcytoniny jest prawdziwe?
+A: jest głównym regulatorem gospodarki wapniowej u człowieka
+B: jest ważniejsza niż parathormon
+C: jest wydzielana przez komórki pęcherzykowe tarczycy
+D: nie wpływa na tkankę kostną
+E: ma mniejsze znaczenie niż parathormon i witamina D
+POPRAWNA: E
+WYJAŚNIENIE:
+**Kalcytonina** powstaje w **komórkach C (przypęcherzykowych)**, wywodzących się z grzebienia nerwowego, a nie w komórkach pęcherzykowych produkujących **T3/T4**. Hamuje **osteoklasty**, obniżając kalcemię, ale u człowieka jej rola jest **marginalna** — po tyreoidektomii ani w raku rdzeniastym (skrajnie wysoka kalcytonina) gospodarka wapniowa nie ulega zaburzeniu. Głównymi regulatorami pozostają **parathormon** i **kalcytriol**.
+---
+ID: HISSTO-e2026-1-228
+NR_LOKALNY: 7
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 20
+TEMAT: Oko i ucho - specjalne narządy zmysłów
+PODTEMAT: Ciecz wodnista
+PYTANIE: Ciecz wodnista przepływa w gałce ocznej:
+A: z komory tylnej przez źrenicę do komory przedniej i dalej do kąta tęczówkowo-rogówkowego
+B: z komory przedniej przez źrenicę do komory tylnej i dalej do ciała szklistego
+C: z ciała szklistego przez siatkówkę do naczyniówki
+D: z komory przedniej bezpośrednio do naczyń siatkówki
+E: z rogówki przez twardówkę do przestrzeni nadnaczyniówkowej
+POPRAWNA: A
+WYJAŚNIENIE:
+Ciecz wodnistą wytwarza **nabłonek wyrostków rzęskowych** do **komory tylnej**. Przez **źrenicę** trafia do **komory przedniej**, a odpływa w **kącie tęczówkowo-rogówkowym** przez **beleczkowanie** do **zatoki żylnej twardówki (kanał Schlemma)** i dalej do żył wodnistych. Odżywia beznaczyniowe **rogówkę** i **soczewkę** oraz utrzymuje ciśnienie wewnątrzgałkowe. Blok odpływu w kącie to mechanizm **jaskry**, a wymiana całej objętości cieczy zachodzi co ok. **90 minut**.
+---
+ID: HISSTO-e2026-1-229
+NR_LOKALNY: 8
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 20
+TEMAT: Oko i ucho - specjalne narządy zmysłów
+PODTEMAT: Ucho środkowe
+PYTANIE: Uszkodzenie mięśnia strzemiączkowego powoduje:
+A: nadwrażliwość na dźwięki (hiperakuzję)
+B: całkowitą głuchotę przewodzeniową
+C: zaburzenie wyrównywania ciśnień w uchu środkowym
+D: niedrożność trąbki słuchowej
+E: brak jakiegokolwiek wpływu na odbiór bodźców słuchowych
+POPRAWNA: A
+WYJAŚNIENIE:
+**Mięsień strzemiączkowy** (unerwiony przez **nerw twarzowy**) usztywnia strzemiączko w **odruchu strzemiączkowym**, tłumiąc przenoszenie głośnych dźwięków na okienko owalne. Jego porażenie znosi to zabezpieczenie — pojawia się **hiperakuzja**, typowa dla porażenia n. VII powyżej odejścia gałązki do mięśnia. Kosteczki pozostają ruchome, więc przewodzenie jest zachowane; ciśnienie wyrównuje **trąbka słuchowa** z mięśniem napinaczem podniebienia.
+---
+ID: HISSTO-e2026-1-230
+NR_LOKALNY: 9
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 18
+TEMAT: Gruczoły wewnątrzwydzielnicze
+PODTEMAT: Wyspy trzustkowe
+PYTANIE: Komórki B (beta) wysp trzustkowych:
+A: wydzielają glukagon
+B: leżą obwodowo w wyspie
+C: wydzielają insulinę
+D: wydzielają somatostatynę
+E: prawidłowe A i B
+POPRAWNA: C
+WYJAŚNIENIE:
+Komórki **B (beta)** stanowią **60–70%** wyspy, leżą **centralnie** i wydzielają **insulinę** oraz **amylinę**. Obwodowo rozmieszczone są komórki **A (alfa)** produkujące **glukagon** (ok. 20%), a między nimi komórki **D** z **somatostatyną** i komórki **PP**. Ziarnistości insuliny mają charakterystyczny **krystaliczny rdzeń z cynkiem**. Autoimmunologiczne zniszczenie komórek B leży u podłoża **cukrzycy typu 1**. Wyspy są silnie unaczynione i barwią się jaśniej niż otaczające pęcherzyki zewnątrzwydzielnicze.
+---
+ID: HISSTO-e2026-1-231
+NR_LOKALNY: 10
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Amelogeneza
+PYTANIE: Podczas wydzielania szkliwa ameloblasty przemieszczają się w kierunku:
+A: zębiny
+B: cementu korzeniowego
+C: brodawki zębowej
+D: nabłonka wewnętrznego narządu szkliwotwórczego
+E: nabłonka zewnętrznego narządu szkliwotwórczego
+POPRAWNA: E
+WYJAŚNIENIE:
+**Ameloblasty** różnicują się z **nabłonka wewnętrznego narządu szkliwotwórczego** i rozpoczynają wydzielanie na przyszłym **połączeniu szkliwno-zębinowym**, dopiero po pojawieniu się pierwszej warstwy **predentyny**. Odkładając macierz **przed sobą**, cofają się od zębiny **na zewnątrz**, ku **nabłonkowi zewnętrznemu** — dlatego szkliwo przyrasta odśrodkowo. Odontoblasty działają odwrotnie: wędrują do wnętrza, ku **miazdze**.
+---
+ID: HISSTO-e2026-1-232
+NR_LOKALNY: 11
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 22
+TEMAT: Embriologia ogólna i embriogeneza narządów
+PODTEMAT: Łuki gardłowe
+PYTANIE: Ogonowa część trzonu kości gnykowej powstaje z łuku gardłowego:
+A: I
+B: II
+C: III
+D: IV
+E: VI
+POPRAWNA: C
+WYJAŚNIENIE:
+Chrząstka **III łuku** (nerw **IX**, m. rylcowo-gardłowy) daje **rogi większe** i **dolną (ogonową) część trzonu** kości gnykowej. Z chrząstki **Reicherta** (II łuk, nerw **VII**) powstają **rogi mniejsze**, **górna część trzonu**, wyrostek rylcowaty, więzadło rylcowo-gnykowe i **strzemiączko**. Chrząstka **Meckela** (I łuk, nerw **V3**) tworzy młoteczek i kowadełko, a łuki **IV i VI** — chrząstki krtani. Kość gnykowa ma więc **podwójne pochodzenie**: część górna z II łuku, część dolna z III.
+---
+ID: HISSTO-e2026-1-233
+NR_LOKALNY: 12
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 11
+TEMAT: Układ krążenia
+PODTEMAT: Układ bodźcoprzewodzący serca
+PYTANIE: Ostatnim elementem układu bodźcoprzewodzącego serca są:
+A: kardiomiocyty robocze przedsionków
+B: węzeł przedsionkowo-komorowy
+C: węzeł zatokowo-przedsionkowy
+D: pęczek Hisa
+E: włókna Purkinjego
+POPRAWNA: E
+WYJAŚNIENIE:
+Kolejność: **węzeł zatokowo-przedsionkowy** (rozrusznik, ok. 70/min) → **węzeł przedsionkowo-komorowy** (opóźnienie AV) → **pęczek Hisa** → **odnogi** → **włókna Purkinjego**. Te ostatnie leżą podwsierdziowo, są to zmodyfikowane kardiomiocyty o dużej średnicy, ubogie w miofibryle i bogate w **glikogen**, z licznymi **koneksonami** — stąd najszybsze przewodzenie (**do 4 m/s**), zapewniające jednoczesny skurcz komór od koniuszka.
+---
+ID: HISSTO-e2026-1-234
+NR_LOKALNY: 13
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Ozębna
+PYTANIE: Włókna skośne ozębnej zapobiegają przede wszystkim:
+A: wtłaczaniu zęba w zębodół
+B: wysuwaniu zęba z zębodołu
+C: obracaniu zęba wokół osi długiej
+D: przemieszczaniu zęba w kierunku przedsionkowo-językowym
+E: resorpcji brzegu wyrostka zębodołowego
+POPRAWNA: A
+WYJAŚNIENIE:
+**Włókna skośne** to najliczniejsza grupa (ok. 2/3 ozębnej). Biegną od **cementu** skośnie ku górze, przyczepiając się do kości **bardziej dokoronowo**. Siła żucia działająca wzdłuż osi zęba napina je, zamieniając nacisk na **rozciąganie** — ząb jest zawieszony, a nie wciskany w zębodół. Wtłaczaniu przeciwdziałają więc włókna skośne, wysuwaniu — włókna **wierzchołkowe**, a rotacji — włókna **okrężne** i **międzyzębowe**.
+---
+ID: HISSTO-e2026-1-235
+NR_LOKALNY: 14
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Szkliwo — skład
+PYTANIE: Wskaż zdanie FAŁSZYWE dotyczące substancji organicznej szkliwa:
+A: tworzy delikatną siateczkę otaczającą kryształy hydroksyapatytu
+B: otacza zarówno pryzmaty szkliwne, jak i substancję międzypryzmatyczną
+C: otacza wyłącznie pryzmaty szkliwne
+D: enamelina jest jej składnikiem
+E: w szkliwie dojrzałym stanowi zaledwie kilka procent masy
+POPRAWNA: C
+WYJAŚNIENIE:
+Macierz organiczna tworzy **siateczkę** wokół kryształów **hydroksyapatytu** w **całym** szkliwie — obejmuje pryzmaty **i** substancję międzypryzmatyczną, więc twierdzenie o wyłącznie pryzmatach jest fałszywe. Głównymi białkami są **amelogeniny** (szkliwo niedojrzałe, ok. 90% białek) oraz **enameliny**, **ameloblastyna** i **tuftelina**. W czasie dojrzewania białka ulegają degradacji, a substancja organiczna spada do **ok. 1%**.
+---
+ID: HISSTO-e2026-1-236
+NR_LOKALNY: 15
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 22
+TEMAT: Embriologia ogólna i embriogeneza narządów
+PODTEMAT: Rozwój twarzy i nosa
+PYTANIE: Wyniosłości nosowe boczne, leżące bocznie od dołków nosowych, powstają bezpośrednio z:
+A: plakod usznych
+B: mezenchymalnych wałów tkankowych otaczających dołek nosowy
+C: pierwszego łuku gardłowego
+D: cewy nerwowej
+E: endodermy jelita przedniego
+POPRAWNA: B
+WYJAŚNIENIE:
+W **5. tygodniu** ektoderma wyniosłości czołowo-nosowej tworzy **plakody nosowe**, które zapadają się w **dołki nosowe**. Otaczające je **mezenchymalne wały** dzielą się na wyniosłości **przyśrodkowe** (od strony linii pośrodkowej) i **boczne** (od strony bocznej). Boczne dają **skrzydła nosa**, przyśrodkowe — **rynienkę podnosową**, przegrodę i **podniebienie pierwotne**. Plakody uszne dają pęcherzyk błędnikowy, nie nos.
+---
+ID: HISSTO-e2026-1-237
+NR_LOKALNY: 16
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 9
+TEMAT: Tkanka nerwowa i układ nerwowy
+PODTEMAT: Glej — astrocyty
+PYTANIE: Wskaż zdanie prawdziwe dotyczące astrocytów:
+A: astrocyty włókniste występują w istocie białej i mają długie, słabo rozgałęzione wypustki
+B: astrocyty włókniste występują w istocie szarej i mają krótkie wypustki
+C: astrocyty plazmatyczne występują w istocie białej
+D: astrocyty tworzą osłonkę mielinową w ośrodkowym układzie nerwowym
+E: astrocyty wywodzą się z monocytów krwi
+POPRAWNA: A
+WYJAŚNIENIE:
+**Astrocyty włókniste** leżą w **istocie białej**: mają nieliczne, **długie i słabo rozgałęzione** wypustki bogate w **GFAP**. **Astrocyty plazmatyczne** zajmują **istotę szarą** i mają liczne, **krótkie, silnie rozgałęzione** wypustki. Obie formy tworzą **stopki okołonaczyniowe** bariery krew–mózg, buforują **K+**, wychwytują **glutaminian** i tworzą bliznę glejową. Mielinę w OUN wytwarzają **oligodendrocyty**, a z monocytów pochodzi **mikroglej**.
+---
+ID: HISSTO-e2026-1-238
+NR_LOKALNY: 17
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 11
+TEMAT: Układ krążenia
+PODTEMAT: Układ bodźcoprzewodzący serca
+PYTANIE: Końcową część układu bodźcoprzewodzącego serca stanowią:
+A: węzeł zatokowo-przedsionkowy
+B: węzeł przedsionkowo-komorowy
+C: pęczek Hisa
+D: włókna Purkinjego
+E: kardiomiocyty robocze przedsionków
+POPRAWNA: D
+WYJAŚNIENIE:
+**Włókna Purkinjego** to ostatnie ogniwo przed kardiomiocytami roboczymi komór. Leżą **podwsierdziowo**, są szersze od zwykłych kardiomiocytów, mają **skąpe miofibryle** zepchnięte obwodowo i obfity **glikogen**, co daje im jasny obraz w H+E. Liczne **połączenia szczelinowe** zapewniają przewodzenie do **4 m/s** — najszybsze w sercu. Dzięki temu skurcz komór zaczyna się od **koniuszka** i przebiega synchronicznie ku podstawie.
+---
+ID: HISSTO-e2026-1-239
+NR_LOKALNY: 18
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 13
+TEMAT: Układ odpornościowy i narządy limfatyczne
+PODTEMAT: Migdałek podniebienny
+PYTANIE: Nabłonek pokrywający migdałek podniebienny:
+A: jest silnie rogowaciejący
+B: jest gęsto naciekany limfocytami i granulocytami
+C: zawiera liczne komórki Panetha
+D: zawiera liczne komórki Kulczyckiego (enteroendokrynne)
+E: jest nabłonkiem jednowarstwowym walcowatym
+POPRAWNA: B
+WYJAŚNIENIE:
+Migdałek podniebienny pokrywa **nabłonek wielowarstwowy płaski nierogowaciejący**, wpuklający się w **krypty**. Jest on masowo naciekany **limfocytami** i **granulocytami**, tworząc **nabłonek limfoepitelialny**, w którym granice komórek nabłonkowych stają się nieostre. Ułatwia to próbkowanie antygenów. Komórki **Panetha** i **Kulczyckiego** są elementami nabłonka **jelitowego**, nie migdałka; rogowacenie występuje w dziąśle i podniebieniu twardym.
+---
+ID: HISSTO-e2026-1-240
+NR_LOKALNY: 19
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 4
+TEMAT: Tkanka nabłonkowa
+PODTEMAT: Kompleks połączeniowy
+PYTANIE: Najbardziej apikalnie w kompleksie połączeń międzykomórkowych nabłonka leżą:
+A: desmosomy
+B: hemidesmosomy
+C: połączenia szczelinowe
+D: połączenia ścisłe
+E: prawidłowe A i B
+POPRAWNA: D
+WYJAŚNIENIE:
+Kolejność od szczytu komórki: **zonula occludens** (połączenie ścisłe) → **zonula adherens** (obwódka przylegania, filamenty **aktynowe**) → **macula adherens** (desmosom, filamenty **pośrednie**). Poniżej rozproszone są **połączenia szczelinowe**, a przy biegunie podstawnym **hemidesmosomy** łączące komórkę z **blaszką podstawną**. Apikalna lokalizacja połączeń ścisłych warunkuje ich rolę w uszczelnianiu i utrzymaniu **polaryzacji** nabłonka.
+---
+ID: HISSTO-e2026-1-241
+NR_LOKALNY: 20
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 11
+TEMAT: Układ krążenia
+PODTEMAT: Tętnice typu sprężystego
+PYTANIE: Włókna sprężyste w błonie środkowej aorty tworzą:
+A: blaszki kolagenowe
+B: blaszki sprężyste (okienkowate)
+C: kanaliki międzykomórkowe
+D: prążki mięśniowe
+E: siatkę retikulinową
+POPRAWNA: B
+WYJAŚNIENIE:
+W aorcie elastyna układa się w **koncentryczne blaszki sprężyste okienkowate** — u człowieka jest ich **40–70**, a między nimi leżą **miocyty gładkie** produkujące elastynę i kolagen. Otwory (okienka) umożliwiają dyfuzję substancji odżywczych. Blaszki rozciągają się w **skurczu** komór i sprężynują w **rozkurczu**, przekształcając przepływ pulsacyjny w ciągły — to **efekt Windkessel**. Ich degradacja sprzyja powstawaniu **tętniaka aorty**.
+---
+ID: HISSTO-e2026-1-242
+NR_LOKALNY: 21
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Brodawki języka
+PYTANIE: Cechą charakterystyczną brodawek nitkowatych języka jest:
+A: obecność licznych kubków smakowych
+B: całkowity brak unerwienia
+C: gruby, silnie rogowaciejący nabłonek
+D: otoczenie wałem i bruzdą okalającą
+E: obecność gruczołów surowiczych von Ebnera u podstawy
+POPRAWNA: C
+WYJAŚNIENIE:
+**Brodawki nitkowate** są najliczniejsze i pokrywają całą powierzchnię grzbietową języka do bruzdy granicznej. Jako jedyne **nie zawierają kubków smakowych** — pełnią funkcję **mechaniczną** (tarcie pokarmu, czucie dotyku) i mają **gruby nabłonek rogowaciejący**, nadający językowi szarawy odcień. Wał i bruzda okalająca cechują brodawki **okolone**, przy których leżą gruczoły **von Ebnera**. Unerwienie czuciowe zachowane (n. V3).
+---
+ID: HISSTO-e2026-1-243
+NR_LOKALNY: 22
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 20
+TEMAT: Oko i ucho - specjalne narządy zmysłów
+PODTEMAT: Powieka
+PYTANIE: W tarczce powieki znajdują się gruczoły:
+A: Meiboma
+B: Molla
+C: Zeissa
+D: Krausego
+E: Wolfringa
+POPRAWNA: A
+WYJAŚNIENIE:
+**Gruczoły tarczkowe (Meiboma)** to duże gruczoły **łojowe** typu holokrynowego, wbudowane w płytkę tarczki i uchodzące na wolnym brzegu powieki. Ich wydzielina tworzy **warstwę lipidową filmu łzowego**, hamując parowanie łez. Zatkanie przewodu daje **gradówkę**. Gruczoły **Zeissa** (łojowe rzęs) i **Molla** (apokrynowe potowe) leżą przy mieszkach rzęs — ich zapalenie to **jęczmień**; **Krausego** i **Wolfringa** to dodatkowe gruczoły łzowe.
+---
+ID: HISSTO-e2026-1-244
+NR_LOKALNY: 23
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 11
+TEMAT: Układ krążenia
+PODTEMAT: Mechanika ściany tętnic
+PYTANIE: Rozszerzanie się ściany aorty i dużych tętnic podczas skurczu komór jest możliwe dzięki:
+A: licznym blaszkom sprężystym w błonie środkowej
+B: zanikowi błony środkowej
+C: skurczowi miocytów gładkich błony środkowej
+D: spadkowi ciśnienia w świetle naczynia
+E: grubej, kolagenowej przydance
+POPRAWNA: A
+WYJAŚNIENIE:
+Wzrost ciśnienia w **skurczu** rozciąga **blaszki sprężyste** błony środkowej, magazynując energię; w **rozkurczu** ich sprężysty odrzut utrzymuje ciśnienie i ciągły przepływ obwodowy — **efekt Windkessel (powietrzni)**. Za odkształcalność odpowiada więc **elastyna**, a nie skurcz miocytów, który przeciwnie — zwęża naczynie. **Kolagen** przydanki pełni funkcję ograniczającą, chroniąc ścianę przed nadmiernym rozciągnięciem i pęknięciem.
+---
+ID: HISSTO-e2026-1-245
+NR_LOKALNY: 24
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Mineralizacja szkliwa
+PYTANIE: Świeżo wydzielone szkliwo pierwotne (niedojrzałe) zawiera około:
+A: 10% substancji nieorganicznej
+B: 30% substancji nieorganicznej
+C: 50% substancji nieorganicznej
+D: 70% substancji nieorganicznej
+E: 96% substancji nieorganicznej
+POPRAWNA: B
+WYJAŚNIENIE:
+Macierz wydzielana przez ameloblasty jest częściowo zmineralizowana już na starcie — zawiera **ok. 30%** substancji nieorganicznej, resztę stanowią **woda** i białka (głównie **amelogeniny**). Dopiero w fazie **dojrzewania** ameloblasty resorbują wodę i białka, a kryształy **hydroksyapatytu** rosną, aż mineralizacja osiąga **ok. 96%** masy — najwyższą w organizmie. Dlatego szkliwo dojrzałe jest **bezkomórkowe** i niezdolne do regeneracji.
+---
+ID: HISSTO-e2026-1-246
+NR_LOKALNY: 25
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Amelogeneza
+PYTANIE: W trakcie amelogenezy ameloblasty migrują w kierunku:
+A: zębiny
+B: nabłonka wewnętrznego narządu szkliwotwórczego
+C: nabłonka zewnętrznego narządu szkliwotwórczego
+D: cementu korzeniowego
+E: miazgi zęba
+POPRAWNA: C
+WYJAŚNIENIE:
+Ameloblast odkłada macierz **przed sobą** przez **wyrostek Tomesa**, więc oddala się od nowo powstałego szkliwa. Ponieważ start następuje na **granicy szkliwno-zębinowej**, ruch odbywa się **odśrodkowo** — od zębiny ku **nabłonkowi zewnętrznemu narządu szkliwotwórczego**. Odontoblasty wędrują lustrzanie, ku **miazdze**, zostawiając za sobą **wypustki Tomesa** w kanalikach. Rozejście obu populacji wyznacza **połączenie szkliwno-zębinowe**.
+---
+ID: HISSTO-e2026-1-247
+NR_LOKALNY: 26
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 15
+TEMAT: Układ oddechowy
+PODTEMAT: Nabłonek pęcherzyków płucnych
+PYTANIE: Wskaż zdanie FAŁSZYWE dotyczące pneumocytów typu I:
+A: stanowią około 40% komórek nabłonka pęcherzyków płucnych
+B: są płaskie i mają bardzo cienką cytoplazmę
+C: umożliwiają dyfuzję gazów przez barierę krew-powietrze
+D: zawierają ciałka blaszkowate magazynujące surfaktant
+E: wchodzą w skład ściany pęcherzyków płucnych
+POPRAWNA: D
+WYJAŚNIENIE:
+**Ciałka blaszkowate** z **surfaktantem** są cechą **pneumocytów typu II** (komórek ziarnistych), które stanowią ok. 60% liczby komórek, lecz pokrywają zaledwie kilka procent powierzchni i pełnią rolę komórek macierzystych nabłonka. **Pneumocyty typu I** to ok. **40%** komórek, ale wyściełają **95%** powierzchni: skrajnie spłaszczone, o cytoplazmie grubości ok. **0,2 µm**, tworzą wraz ze śródbłonkiem i wspólną błoną podstawną **barierę krew-powietrze**.
+---
+ID: HISSTO-e2026-1-248
+NR_LOKALNY: 27
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 18
+TEMAT: Gruczoły wewnątrzwydzielnicze
+PODTEMAT: Gospodarka wapniowo-fosforanowa
+PYTANIE: Wskaż zdanie prawdziwe dotyczące kalcytoniny:
+A: jest głównym hormonem regulującym gospodarkę wapniową człowieka
+B: jest ważniejsza niż parathormon
+C: ma mniejsze znaczenie niż witamina D i parathormon
+D: jest wytwarzana przez komórki pęcherzykowe tarczycy
+E: nasila resorpcję kości przez osteoklasty
+POPRAWNA: C
+WYJAŚNIENIE:
+Kalcytonina z **komórek C** hamuje **osteoklasty** (a nie je pobudza) i obniża kalcemię, ale u człowieka jest hormonem **pomocniczym**. Dowodem jest brak zaburzeń wapniowych zarówno po **tyreoidektomii**, jak i w **raku rdzeniastym tarczycy** z ekstremalnie wysokim jej stężeniem — służy tam wyłącznie jako **marker**. Oś regulacyjną tworzą **PTH** (mobilizacja wapnia z kości i resorpcja nerkowa) oraz **kalcytriol** (wchłanianie jelitowe).
+---
+ID: HISSTO-e2026-1-249
+NR_LOKALNY: 28
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 20
+TEMAT: Oko i ucho - specjalne narządy zmysłów
+PODTEMAT: Ciało rzęskowe
+PYTANIE: Zewnętrzna warstwa nabłonka pokrywającego wyrostki rzęskowe:
+A: jest silnie pigmentowana i stanowi przedłużenie nabłonka barwnikowego siatkówki
+B: nie ma żadnego związku z wytwarzaniem cieczy wodnistej
+C: tworzy zatokę żylną twardówki
+D: przechodzi we włókna nerwowe siatkówki
+E: jest nabłonkiem wielowarstwowym płaskim rogowaciejącym
+POPRAWNA: A
+WYJAŚNIENIE:
+Wyrostki rzęskowe pokrywa **dwuwarstwowy nabłonek** — pozostałość **kielicha ocznego**. Warstwa **zewnętrzna (przylegająca do zrębu)** jest silnie **barwnikowa** i kontynuuje **nabłonek barwnikowy siatkówki**; warstwa **wewnętrzna**, zwrócona do komory tylnej, jest **bezbarwnikowa** i odpowiada za czynne wydzielanie **cieczy wodnistej** (pompa Na+/K+, **anhydraza węglanowa** — cel farmakologiczny w jaskrze). Obie warstwy stykają się biegunami szczytowymi.
+---
+ID: HISSTO-e2026-1-250
+NR_LOKALNY: 29
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 15
+TEMAT: Układ oddechowy
+PODTEMAT: Makrofagi pęcherzykowe
+PYTANIE: Wskaż zdanie FAŁSZYWE dotyczące makrofagów płucnych:
+A: pochodzą z komórek prekursorowych szpiku kostnego
+B: różnicują się z pneumocytów typu II
+C: występują w przegrodach międzypęcherzykowych
+D: występują na powierzchni nabłonka oddechowego
+E: w przewlekłym zastoju żylnym gromadzą hemosyderynę
+POPRAWNA: B
+WYJAŚNIENIE:
+Makrofagi pęcherzykowe („komórki pyłowe") wywodzą się z **monocytów** krwi i prekursorów **szpikowych**, należąc do **układu fagocytów jednojądrzastych** — nie powstają z nabłonka. **Pneumocyty II** są komórkami macierzystymi wyłącznie dla **pneumocytów I**. Makrofagi wędrują po powierzchni nabłonka i w **przegrodach międzypęcherzykowych**; w zastoju żylnym pochłaniają erytrocyty i gromadzą **hemosyderynę** — to **komórki wad sercowych**.
+---
+ID: HISSTO-e2026-1-251
+NR_LOKALNY: 30
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Unerwienie zębiny i miazgi
+PYTANIE: Unerwienie zębiny pochodzi z:
+A: splotu pododontoblastycznego Raschkowa w miazdze
+B: ozębnej, przez otwór wierzchołkowy do cementu
+C: naczyń krwionośnych brodawki zębowej
+D: resztek nabłonkowych Malasseza
+E: zębina jest tkanką całkowicie nieunerwioną
+POPRAWNA: A
+WYJAŚNIENIE:
+Włókna czuciowe **nerwu trójdzielnego** wnikają przez otwór wierzchołkowy i tworzą tuż pod warstwą odontoblastów **splot Raschkowa (pododontoblastyczny)**. Odchodzące od niego bezmielinowe zakończenia wnikają do **kanalików zębinowych** wyłącznie w **zębinie przymiazgowej** (wewnętrzna 1/3). Ból ze stref głębszych tłumaczy **teoria hydrodynamiczna Brannstroma** — ruch płynu w kanalikach drażni te zakończenia (nadwrażliwość szyjek).
+---
+ID: HISSTO-e2026-1-252
+NR_LOKALNY: 31
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Podniebienie miękkie
+PYTANIE: Powierzchnia nosowa podniebienia miękkiego pokryta jest nabłonkiem:
+A: jednowarstwowym płaskim
+B: wielowarstwowym sześciennym
+C: wielorzędowym walcowatym migawkowym
+D: wielowarstwowym płaskim rogowaciejącym
+E: przejściowym
+POPRAWNA: C
+WYJAŚNIENIE:
+Podniebienie miękkie ma **dwie różne powierzchnie**. Od strony jamy ustnej pokrywa je **nabłonek wielowarstwowy płaski nierogowaciejący**, odporny na urazy mechaniczne żucia. Powierzchnia **nosowa** należy do dróg oddechowych, więc wyściela ją **nabłonek oddechowy** — wielorzędowy walcowaty **migawkowy z komórkami kubkowymi**, oczyszczający powietrze dzięki transportowi śluzowo-rzęskowemu. W okolicy brzegu wolnego następuje strefa przejściowa.
+---
+ID: HISSTO-e2026-1-253
+NR_LOKALNY: 32
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 5
+TEMAT: Tkanka łączna
+PODTEMAT: Komórki tkanki łącznej
+PYTANIE: Głównymi komórkami tkanki łącznej włóknistej są:
+A: fibroblasty
+B: makrofagi
+C: mastocyty
+D: plazmocyty
+E: adipocyty
+POPRAWNA: A
+WYJAŚNIENIE:
+**Fibroblast** to komórka **stała** i dominująca ilościowo — syntetyzuje **kolagen**, **elastynę**, **glikozaminoglikany** i **glikoproteiny**, czyli całą macierz zewnątrzkomórkową. Ma wrzecionowaty kształt, jasne jądro z wyraźnym jąderkiem i obfitą **szorstką siateczkę śródplazmatyczną**. Forma spoczynkowa to **fibrocyt**. Makrofagi, mastocyty i plazmocyty należą do komórek **napływowych** (obrona), a adipocyty dominują dopiero w tkance **tłuszczowej**.
+---
+ID: HISSTO-e2026-1-254
+NR_LOKALNY: 33
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 20
+TEMAT: Oko i ucho - specjalne narządy zmysłów
+PODTEMAT: Jama bębenkowa
+PYTANIE: Kosteczki słuchowe i okostna jamy bębenkowej pokryte są nabłonkiem:
+A: jednowarstwowym płaskim
+B: wielowarstwowym sześciennym
+C: wielorzędowym walcowatym urzęsionym
+D: wielowarstwowym płaskim rogowaciejącym
+E: przejściowym
+POPRAWNA: A
+WYJAŚNIENIE:
+Jamę bębenkową wyściela błona śluzowa z **nabłonkiem jednowarstwowym płaskim** — cienka warstwa minimalizuje masę i **bezwładność** układu przewodzącego drgania, co jest kluczowe dla ruchomości kosteczek. W okolicy ujścia **trąbki słuchowej** nabłonek przechodzi stopniowo w **wielorzędowy walcowaty migawkowy** (kontynuacja nabłonka nosogardła), umożliwiający oczyszczanie i wentylację ucha środkowego.
+---
+ID: HISSTO-e2026-1-255
+NR_LOKALNY: 34
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Podniebienie miękkie
+PYTANIE: Zrąb podniebienia miękkiego zbudowany jest głównie z:
+A: tkanki tłuszczowej
+B: tkanki mięśniowej poprzecznie prążkowanej
+C: chrząstki szklistej
+D: chrząstki sprężystej
+E: kości gąbczastej
+POPRAWNA: B
+WYJAŚNIENIE:
+W przeciwieństwie do podniebienia twardego, opartego na **kości**, podniebienie miękkie jest ruchomym fałdem zbudowanym z **mięśni poprzecznie prążkowanych** (dźwigacz i napinacz podniebienia miękkiego, podniebienno-gardłowy, podniebienno-językowy, języczka) osadzonych na **rozcięgnie podniebiennym**. Umożliwia to **zamykanie cieśni gardłowo-nosowej** przy połykaniu i mowie. Niewydolność tego mechanizmu daje **nosowanie otwarte**.
+---
+ID: HISSTO-e2026-1-256
+NR_LOKALNY: 35
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 2
+TEMAT: Cytoplazma
+PODTEMAT: Błona komórkowa
+PYTANIE: Cząsteczki cholesterolu w dwuwarstwie lipidowej błony komórkowej ułożone są:
+A: równolegle do cząsteczek fosfolipidów, prostopadle do powierzchni błony
+B: prostopadle do łańcuchów kwasów tłuszczowych fosfolipidów
+C: wyłącznie po zewnętrznej stronie błony, w obrębie glikokaliksu
+D: jako osobna, trzecia warstwa pod dwuwarstwą lipidową
+E: swobodnie w cytozolu, bez kontaktu z błoną
+POPRAWNA: A
+WYJAŚNIENIE:
+Cholesterol jest **amfipatyczny**: grupa **-OH** kontaktuje się z polarnymi główkami fosfolipidów, a sztywny układ **pierścieni sterolowych** z łańcuchem węglowodorowym wsuwa się między **kwasy tłuszczowe** — czyli **równolegle** do cząsteczek fosfolipidów i **prostopadle** do płaszczyzny błony. Działa jak **bufor płynności**: w temperaturze ciała usztywnia błonę, a w niskiej zapobiega krystalizacji. Jest też składnikiem **tratw lipidowych**.
+---
+ID: HISSTO-e2026-1-257
+NR_LOKALNY: 36
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 9
+TEMAT: Tkanka nerwowa i układ nerwowy
+PODTEMAT: Metabolizm neuronu
+PYTANIE: Podstawowym substratem energetycznym neuronów mózgu jest:
+A: sfingozyna
+B: glukoza
+C: glikolipidy
+D: fosfolipidy
+E: glicerol
+POPRAWNA: B
+WYJAŚNIENIE:
+Neurony pokrywają zapotrzebowanie energetyczne niemal wyłącznie z **glukozy**, transportowanej przez **GLUT3** (wysokie powinowactwo) niezależnie od **insuliny**. Mózg zużywa ok. **20%** tlenu i glukozy organizmu, mimo że stanowi 2% masy, a rezerwy **glikogenu** ma tylko w astrocytach — stąd błyskawiczna utrata przytomności w **hipoglikemii**. Dopiero po kilku dniach głodzenia paliwem zapasowym stają się **ciała ketonowe**. Kwasy tłuszczowe nie przechodzą efektywnie bariery krew-mózg.
+---
+ID: HISSTO-e2026-1-258
+NR_LOKALNY: 37
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Białka niekolagenowe zębiny
+PYTANIE: Wskaż zdanie FAŁSZYWE dotyczące fosforyn zębinowych:
+A: wiążą jony wapnia
+B: wpływają na strukturę kryształów hydroksyapatytu
+C: należą do niekolagenowych białek zębiny
+D: wchodzą w skład cząsteczki kolagenu
+E: ich niedobór prowadzi do wad rozwojowych tkanek zęba
+POPRAWNA: D
+WYJAŚNIENIE:
+**Fosforyna zębinowa (DPP)** to najobficiej występujące **niekolagenowe** białko zębiny, powstające z prekursora **DSPP**. Jest silnie **kwaśna** (mnóstwo reszt asparaginianowych i **fosfoseryny**), dzięki czemu wiąże **Ca2+** i przyłącza się do włókien kolagenowych, sterując **nukleacją** i wzrostem kryształów **hydroksyapatytu**. Nie jest jednak elementem cząsteczki kolagenu — działa obok niej. Mutacje **DSPP** dają **dentinogenesis imperfecta**.
+---
+ID: HISSTO-e2026-1-259
+NR_LOKALNY: 38
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Przyzębie - dziąsło
+PYTANIE: Ścisłe połączenie zęba z dziąsłem nosi nazwę:
+A: przyczepu nabłonkowego (nabłonek łączący)
+B: rowka dziąsłowego
+C: więzadła okrężnego
+D: przyczepu cementowego
+E: blaszki zbitej zębodołu
+POPRAWNA: A
+WYJAŚNIENIE:
+**Nabłonek łączący** przylega do szkliwa za pomocą **hemidesmosomów** i wewnętrznej **blaszki podstawnej**, tworząc **przyczep nabłonkowy** — biologiczne uszczelnienie oddzielające tkanki przyzębia od jamy ustnej. Jest niezrogowaciały, wysoce przepuszczalny (droga migracji **granulocytów** i płynu dziąsłowego) i szybko się odnawia. **Rowek dziąsłowy** to szczelina nad nim (fizjologicznie do **0,5-2 mm**); jego pogłębienie tworzy **kieszonkę** w periodontitis.
+---
+ID: HISSTO-e2026-1-260
+NR_LOKALNY: 39
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 4
+TEMAT: Tkanka nabłonkowa
+PODTEMAT: Błona podstawna
+PYTANIE: Blaszka siateczkowata (lamina reticularis) błony podstawnej zawiera przede wszystkim:
+A: agrekan
+B: fibronektynę i kolagen typu III
+C: elastynę
+D: prawidłowe A i C
+E: prawidłowe A, B i C
+POPRAWNA: B
+WYJAŚNIENIE:
+**Lamina reticularis** to najgłębsza warstwa błony podstawnej, wytwarzana przez **fibroblasty** tkanki łącznej (nie przez nabłonek). Budują ją **włókna siateczkowe** z **kolagenu typu III** oraz **fibronektyna**, spajające blaszkę podstawną z podłożem; kotwiczą je fibryle **kolagenu VII**. Powyżej leży **lamina densa** z **kolagenem IV**, **lamininą**, **entaktyną** i **perlekanem**. **Agrekan** jest typowy dla chrząstki, a elastyny w błonie podstawnej brak.
+---
+ID: HISSTO-e2026-1-261
+NR_LOKALNY: 40
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 5
+TEMAT: Tkanka łączna
+PODTEMAT: Glikozaminoglikany
+PYTANIE: Największym i najobficiej występującym glikozaminoglikanem w organizmie człowieka jest:
+A: siarczan chondroityny
+B: siarczan heparanu
+C: hialuronian (kwas hialuronowy)
+D: siarczan dermatanu
+E: siarczan keratanu
+POPRAWNA: C
+WYJAŚNIENIE:
+**Hialuronian** to jedyny GAG **niesiarczanowany**, niezwiązany kowalencyjnie z białkiem rdzeniowym i syntetyzowany nie w aparacie Golgiego, lecz przez **syntazy w błonie komórkowej**. Osiąga masę **milionów daltonów** i długość kilku mikrometrów. Silnie wiąże wodę, tworząc uwodniony żel odporny na ucisk; stanowi rusztowanie dla agregatów **agrekanu** w chrząstce. Obficie występuje w mazi stawowej, ciele szklistym i skórze właściwej.
+---
+ID: HISSTO-e2026-1-262
+NR_LOKALNY: 41
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 13
+TEMAT: Układ odpornościowy i narządy limfatyczne
+PODTEMAT: Limfocyty T
+PYTANIE: Podstawową funkcją limfocytów cytotoksycznych (Tc, CD8+) jest:
+A: niszczenie komórek zakażonych wirusami i komórek nowotworowych
+B: wytwarzanie przeciwciał
+C: prezentacja antygenu limfocytom pomocniczym
+D: fagocytoza bakterii zewnątrzkomórkowych
+E: wydzielanie histaminy i heparyny
+POPRAWNA: A
+WYJAŚNIENIE:
+Limfocyty **Tc (CD8+)** rozpoznają antygen prezentowany w **MHC klasy I**, obecnym na **wszystkich** komórkach jądrzastych — dlatego wykrywają zakażenie wirusowe i transformację nowotworową. Zabijają dwiema drogami: uwalniając **perforyny** (tworzą pory) i **granzymy** uruchamiające **kaspazy**, oraz przez **FasL**. Obie ścieżki kończą się **apoptozą**. Przeciwciała produkują **plazmocyty**, a pomoc immunologiczną świadczą limfocyty **Th (CD4+)**.
+---
+ID: HISSTO-e2026-1-263
+NR_LOKALNY: 42
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Podniebienie miękkie
+PYTANIE: Głównym składnikiem szkieletu (zrębu) podniebienia miękkiego jest:
+A: rozcięgno podniebienne - tkanka łączna włóknista zbita
+B: chrząstka szklista
+C: chrząstka sprężysta
+D: kość gąbczasta
+E: tkanka tłuszczowa
+POPRAWNA: A
+WYJAŚNIENIE:
+Podstawę podniebienia miękkiego stanowi **rozcięgno podniebienne** — płytka **tkanki łącznej włóknistej zbitej** o utkaniu regularnym, będąca ścięgnem **mięśnia napinacza podniebienia miękkiego**, przyczepiona do tylnego brzegu podniebienia twardego. Do niej przyczepiają się pozostałe mięśnie podniebienia. Chrząstka i kość tu nie występują — dzięki temu podniebienie miękkie jest **ruchome** i może odgradzać część nosową gardła.
+---
+ID: HISSTO-e2026-1-264
+NR_LOKALNY: 43
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 22
+TEMAT: Embriologia ogólna i embriogeneza narządów
+PODTEMAT: Wady rozwojowe twarzy
+PYTANIE: Błędna fuzja wyniosłości nosowych przyśrodkowych prowadzi do:
+A: atrezji przełyku
+B: rozszczepu podniebienia wtórnego
+C: rozszczepu wargi
+D: braku języka
+E: przetoki tchawiczo-przełykowej
+POPRAWNA: C
+WYJAŚNIENIE:
+Wyniosłości nosowe **przyśrodkowe** zlewają się ze sobą i z wyniosłościami **szczękowymi**, tworząc **segment międzyszczękowy**: rynienkę podnosową, przedszczękę z czterema siekaczami i **podniebienie pierwotne**. Zaburzenie tej fuzji daje **rozszczep wargi**, często z rozszczepem wyrostka zębodołowego. Rozszczep podniebienia **wtórnego** wynika z niezrośnięcia **płytek podniebiennych** wyniosłości szczękowych - to odrębny mechanizm i inny okres krytyczny.
+---
+ID: HISSTO-e2026-1-265
+NR_LOKALNY: 44
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 14
+TEMAT: Układ pokarmowy
+PODTEMAT: Wątroba - jednostki czynnościowe
+PYTANIE: Koncepcja gronka wątrobowego przedstawia:
+A: różnice w metabolizmie i zaopatrzeniu hepatocytów w tlen
+B: drogę odpływu żółci do przewodu żółciowego wspólnego
+C: unerwienie autonomiczne wątroby
+D: przebieg naczyń chłonnych wątroby
+E: rozmieszczenie komórek Browicza-Kupffera
+POPRAWNA: A
+WYJAŚNIENIE:
+**Gronko (acinus) Rappaporta** to romb między dwiema żyłami centralnymi, którego osią jest **triada wrotna**. Dzieli miąższ na **strefy 1-3** wg odległości od dopływu krwi. **Strefa 1** (okołowrotna) jest najlepiej utlenowana - dominuje tu **glukoneogeneza**, **beta-oksydacja** i synteza mocznika, i tu pierwsze uszkadza **wirusowe zapalenie**. **Strefa 3** (okołocentralna), uboga w tlen, prowadzi **glikolizę** i detoksykację (**cytochrom P450**) - jest najwrażliwsza na **niedokrwienie** i toksyny.
+---
+ID: HISSTO-e2026-1-266
+NR_LOKALNY: 45
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Amelogeneza
+PYTANIE: W kierunku jakiej struktury przemieszczają się ameloblasty podczas wydzielania szkliwa?
+A: brodawki zębowej
+B: zębiny
+C: nabłonka zewnętrznego narządu szkliwotwórczego
+D: nabłonka wewnętrznego narządu szkliwotwórczego
+E: cementu korzeniowego
+POPRAWNA: C
+WYJAŚNIENIE:
+Wydzielanie zaczyna się na **granicy szkliwno-zębinowej**, więc każda kolejna warstwa macierzy odsuwa ameloblast **na zewnątrz** - w stronę **nabłonka zewnętrznego narządu szkliwotwórczego**. Ślad tego ruchu widać jako **pryzmaty szkliwne** o przebiegu prostopadłym do powierzchni zębiny oraz **linie przyrostowe Retziusa**. Po zakończeniu amelogenezy ameloblasty tworzą **nabłonek zredukowany szkliwa**, z którego powstaje pierwotny **przyczep nabłonkowy**.
+---
+ID: HISSTO-e2026-1-267
+NR_LOKALNY: 46
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 5
+TEMAT: Tkanka łączna
+PODTEMAT: Tkanka łączna zbita
+PYTANIE: W tkance łącznej zbitej o utkaniu regularnym włókna kolagenowe są ułożone:
+A: losowo
+B: promieniście
+C: równolegle
+D: spiralnie
+E: w luźną siateczkę
+POPRAWNA: C
+WYJAŚNIENIE:
+W utkaniu **regularnym** grube pęczki **kolagenu typu I** biegną **równolegle**, zgodnie z kierunkiem działania siły - daje to ogromną wytrzymałość na rozciąganie w **jednej osi**. Między pęczkami leżą spłaszczone **fibrocyty (komórki ścięgnowe)** w charakterystycznych szeregach. Tak zbudowane są **ścięgna**, **więzadła** i **rozcięgna**. Utkanie **nieregularne** (skóra właściwa, torebki narządów) ma pęczki splecione wielokierunkowo - odporność na siły z każdej strony.
+---
+ID: HISSTO-e2026-1-268
+NR_LOKALNY: 47
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Zębina - odontoblasty
+PYTANIE: Wypustki odontoblastów biegnące w kanalikach zębinowych to:
+A: włókna Tomesa
+B: włókna Korffa
+C: włókna Sharpeya
+D: włókna siateczkowe
+E: włókna von Ebnera
+POPRAWNA: A
+WYJAŚNIENIE:
+**Wypustki (włókna) Tomesa** to przedłużenia cytoplazmy odontoblastów wypełniające **kanaliki zębinowe** na całej grubości zębiny. Ciała komórek pozostają na obwodzie **miazgi**, dlatego zębina jest tkanką **żywą**, zdolną do odkładania zębiny **wtórnej** i **reparacyjnej**. Ruch płynu wokół wypustek odpowiada za ból wg teorii **hydrodynamicznej**. Włókna **Korffa** to kolagen zębiny płaszczowej, a **Sharpeya** - włókna kotwiczące ozębną w cemencie i kości.
+---
+ID: HISSTO-e2026-1-269
+NR_LOKALNY: 48
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 5
+TEMAT: Tkanka łączna
+PODTEMAT: Komórki tkanki łącznej właściwej
+PYTANIE: Najliczniejszymi komórkami tkanki łącznej właściwej są:
+A: fibroblasty
+B: adipocyty
+C: makrofagi
+D: mastocyty
+E: plazmocyty
+POPRAWNA: A
+WYJAŚNIENIE:
+**Fibroblasty** to komórki **osiadłe**, wywodzące się z **mezenchymy**, stanowiące większość populacji komórkowej. Produkują wszystkie elementy macierzy: **kolagen**, **elastynę**, **glikozaminoglikany**, **proteoglikany** i **glikoproteiny adhezyjne**, a przez wydzielanie **kolagenaz** także ją przebudowują - kluczowe w **gojeniu ran**. Pozostałe wymienione komórki (makrofagi, mastocyty, plazmocyty) są **napływowe** i pojawiają się liczniej dopiero w stanie zapalnym.
+---
+ID: HISSTO-e2026-1-270
+NR_LOKALNY: 49
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 8
+TEMAT: Kości
+PODTEMAT: Macierz kostna
+PYTANIE: Białkiem niekolagenowym odpowiadającym za mineralizację kości jest:
+A: osteokalcyna
+B: elastyna
+C: fibronektyna
+D: prawidłowe A i B
+E: prawidłowe A, B i C
+POPRAWNA: A
+WYJAŚNIENIE:
+**Osteokalcyna (BGP)** jest najobficiej występującym niekolagenowym białkiem kości, wydzielanym przez **osteoblasty**. Zawiera reszty **kwasu gamma-karboksyglutaminowego** powstające przy udziale **witaminy K**, które wiążą **Ca2+** i **hydroksyapatyt**, regulując mineralizację. Jej stężenie w surowicy służy jako **marker obrotu kostnego**. **Elastyna** w kości nie występuje, a **fibronektyna** to białko adhezyjne bez roli mineralizacyjnej.
+---
+ID: HISSTO-e2026-1-271
+NR_LOKALNY: 50
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 13
+TEMAT: Układ odpornościowy i narządy limfatyczne
+PODTEMAT: Migdałki
+PYTANIE: Główną funkcją krypt migdałkowych jest:
+A: produkcja limfocytów T
+B: synteza RANKL
+C: magazynowanie limfy
+D: zwiększenie powierzchni kontaktu antygenów z tkanką limfoidalną
+E: produkcja śluzu
+POPRAWNA: D
+WYJAŚNIENIE:
+**Krypty** to głębokie wpuklenia nabłonka (w migdałku podniebiennym ok. **10-20**), które wielokrotnie zwiększają powierzchnię czynną narządu. Zatrzymany w nich materiał antygenowy z pokarmu i powietrza przenika przez **nabłonek limfoepitelialny** do **grudek chłonnych**, inicjując odpowiedź swoistą i produkcję **IgA**. Migdałki są narządami **obwodowymi** - limfocyty T dojrzewają w **grasicy**. Zaleganie złuszczonego nabłonka w kryptach daje **czopy migdałkowe**.
+---
+ID: HISSTO-e2026-1-272
+NR_LOKALNY: 51
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 12
+TEMAT: Krew i hemopoeza
+PODTEMAT: Granulocyty zasadochłonne
+PYTANIE: Wskaż zdanie prawdziwe dotyczące bazofilów:
+A: zawierają ziarnistości z histaminą i heparyną
+B: nie mają ziarnistości
+C: są najliczniejszymi granulocytami krwi
+D: nie uczestniczą w reakcjach nadwrażliwości typu I
+E: stanowią około 20% krążących leukocytów
+POPRAWNA: A
+WYJAŚNIENIE:
+**Bazofile** to najrzadsze leukocyty - poniżej **1%** wszystkich krwinek białych (najliczniejsze są **neutrofile**, 60-70%). Ich duże, ciemnofioletowe ziarnistości **metachromatyczne** przesłaniają dwupłatowe jądro i zawierają **histaminę**, **heparynę** oraz czynniki chemotaktyczne. Na powierzchni mają receptory **FcepsilonRI** dla **IgE**: związanie alergenu wyzwala degranulację, czyli reakcję **nadwrażliwości typu I**. Ich odpowiednikiem tkankowym są **mastocyty**.
+---
+ID: HISSTO-e2026-1-273
+NR_LOKALNY: 52
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 14
+TEMAT: Układ pokarmowy
+PODTEMAT: Trzustka zewnątrzwydzielnicza
+PYTANIE: Wskaż zdanie prawdziwe o inhibitorze trypsyny obecnym w ziarnistościach komórek zewnątrzwydzielniczych trzustki:
+A: zapobiega przedwczesnej aktywacji trypsyny wewnątrz trzustki
+B: jest aktywowany przez enterokinazę dwunastnicy
+C: aktywuje chymotrypsynogen
+D: odpowiada za wydzielanie jonów HCO3- przez komórki przewodzików
+E: rozkłada trypsynę w świetle dwunastnicy
+POPRAWNA: A
+WYJAŚNIENIE:
+Enzymy trzustkowe są magazynowane w **ziarnistościach zymogenowych** jako nieczynne **proenzymy**. Razem z nimi pakowany jest **inhibitor trypsyny (PSTI/SPINK1)**, który natychmiast blokuje śladowe ilości samoistnie powstałej **trypsyny** - to zabezpieczenie przed **autotrawieniem** narządu. Fizjologiczna aktywacja zachodzi dopiero w dwunastnicy: **enterokinaza** tnie trypsynogen, a powstała trypsyna aktywuje pozostałe zymogeny. Załamanie tej ochrony to mechanizm **ostrego zapalenia trzustki**.
+---
+ID: HISSTO-e2026-1-274
+NR_LOKALNY: 53
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 18
+TEMAT: Gruczoły wewnątrzwydzielnicze
+PODTEMAT: Przysadka - część gruczołowa
+PYTANIE: Hormonem przysadki wpływającym na wydzielanie hormonów tarczycy jest:
+A: TSH (tyreotropina)
+B: FSH (folikulotropina)
+C: ACTH (kortykotropina)
+D: LH (lutropina)
+E: GH (somatotropina)
+POPRAWNA: A
+WYJAŚNIENIE:
+**TSH** powstaje w **tyreotropach** części gruczołowej przysadki (komórki **zasadochłonne**), pod kontrolą podwzgórzowej **TRH**. Pobudza komórki pęcherzykowe do wychwytu jodu, syntezy **tyreoglobuliny** i endocytozy koloidu, zwiększając uwalnianie **T3/T4**; te zwrotnie hamują przysadkę - klasyczne **ujemne sprzężenie zwrotne osi HPT**. Przewlekła stymulacja TSH powoduje **przerost pęcherzyków** i wole. **FSH** i **LH** działają na gonady, **ACTH** na korę nadnerczy.
+---
+ID: HISSTO-e2026-1-275
+NR_LOKALNY: 54
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 14
+TEMAT: Układ pokarmowy
+PODTEMAT: Wątroba - strefy czynnościowe
+PYTANIE: Koncepcja gronka wątrobowego (acinus) opisuje:
+A: strefy miąższu różniące się zaopatrzeniem w tlen i profilem metabolicznym
+B: klasyczny zrazik sześciokątny z żyłą centralną w osi
+C: budowę dróg żółciowych zewnątrzwątrobowych
+D: rozmieszczenie komórek Ito magazynujących witaminę A
+E: przebieg naczyń chłonnych przestrzeni Dissego
+POPRAWNA: A
+WYJAŚNIENIE:
+**Gronko Rappaporta** ujmuje miąższ od strony **ukrwienia**, a nie odpływu żółci: osią jest **triada wrotna**, a wierzchołkami dwie **żyły centralne**. Wyróżnia **strefy 1-3** o malejącej prężności tlenu i odmiennym profilu enzymatycznym. Model tłumaczy typowe wzorce uszkodzeń: martwicę **okołocentralną (strefa 3)** w niedokrwieniu i zatruciu **paracetamolem** oraz zmiany **okołowrotne (strefa 1)** w wirusowym zapaleniu. Zrazik klasyczny opisuje natomiast odpływ krwi do żyły centralnej.
+---
+ID: HISSTO-e2026-1-276
+NR_LOKALNY: 55
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 2
+TEMAT: Cytoplazma
+PODTEMAT: Lipidy błonowe
+PYTANIE: Glikolipidy błony komórkowej komórek zwierzęcych zbudowane są z:
+A: ceramidu (sfingozyna + kwas tłuszczowy) połączonego z resztami cukrowymi
+B: glicerolu, dwóch kwasów tłuszczowych i reszty fosforanowej
+C: czterech pierścieni sterolowych z grupą hydroksylową
+D: łańcucha polipeptydowego z przyłączonym kwasem tłuszczowym
+E: wyłącznie reszt cukrowych połączonych wiązaniami glikozydowymi
+POPRAWNA: A
+WYJAŚNIENIE:
+Glikolipidy zwierzęce to **glikosfingolipidy**: część hydrofobową stanowi **ceramid** (**sfingozyna** + kwas tłuszczowy), a hydrofilową - łańcuch cukrowy. Przy jednej reszcie cukru powstaje **cerebrozyd**, przy oligosacharydzie z **kwasem sialowym** - **gangliozyd**. Występują wyłącznie w **zewnętrznej** warstwie błony, współtworząc **glikokaliks**, oznaczenia grup krwi i receptory. Glicerol z resztą fosforanową to **fosfolipid**, a pierścienie sterolowe - **cholesterol**.
+---
+ID: HISSTO-e2026-1-277
+NR_LOKALNY: 56
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Brodawki języka
+PYTANIE: Brodawki nitkowate języka charakteryzują się:
+A: silnym zrogowaceniem nabłonka
+B: obecnością licznych kubków smakowych
+C: czerwonym zabarwieniem wynikającym z prześwitywania naczyń
+D: obecnością wału i bruzdy okalającej
+E: obecnością gruczołów surowiczych u podstawy
+POPRAWNA: A
+WYJAŚNIENIE:
+Brodawki nitkowate mają stożkowaty kształt i **gruby nabłonek rogowaciejący**, skierowany szczytami ku tyłowi - działają jak szczotka ułatwiająca przesuwanie pokarmu i odbiór bodźców **dotykowych**. Brak w nich **kubków smakowych**. Ich białoszara barwa kontrastuje z **czerwonymi** brodawkami **grzybowatymi**, w których prześwitują naczynia. Nadmierne rogowacenie i przerost dają obraz **języka włochatego**; zanik - **wygładzenie języka** w niedokrwistościach.
+---
+ID: HISSTO-e2026-1-278
+NR_LOKALNY: 57
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Brodawki języka
+PYTANIE: Brodawki grzybowate języka:
+A: leżą pojedynczo na grzbiecie i brzegach języka, głównie na koniuszku, i zawierają kubki smakowe
+B: są całkowicie pozbawione kubków smakowych
+C: są otoczone wałem i głęboką bruzdą okalającą
+D: są pokryte grubym, silnie zrogowaciałym nabłonkiem
+E: są najliczniejszymi brodawkami języka
+POPRAWNA: A
+WYJAŚNIENIE:
+Brodawki grzybowate mają kształt **grzybka** o wąskiej podstawie i szerokim szczycie; leżą **pojedynczo** wśród brodawek nitkowatych, najgęściej na **koniuszku** i brzegach języka. Cienki, **nierogowaciejący** nabłonek i obfite unaczynienie blaszki właściwej nadają im **czerwoną** barwę widoczną gołym okiem. Na powierzchni górnej mają nieliczne **kubki smakowe**. Wał i bruzda okalająca cechują brodawki **okolone** (7-12 sztuk przed bruzdą graniczną).
+---
+ID: HISSTO-e2026-1-279
+NR_LOKALNY: 58
+BATCH: e2026-1
+KIERUNEK: STO
+TEMAT_NR: 21
+TEMAT: Rozwój zęba
+PODTEMAT: Błona śluzowa dziąsła
+PYTANIE: Bladoróżowe zabarwienie dziąsła przyczepionego wynika z:
+A: rogowacenia nabłonka i zbitej blaszki właściwej bez powierzchownych splotów naczyniowych
+B: obecności licznych melanocytów
+C: gęstej sieci naczyń włosowatych tuż pod nabłonkiem
+D: braku blaszki właściwej
+E: obecności obfitej tłuszczowej tkanki podśluzowej
+POPRAWNA: A
+WYJAŚNIENIE:
+Dziąsło przyczepione należy do błony śluzowej **żującej**: pokrywa je **nabłonek wielowarstwowy płaski rogowaciejący** lub parakeratotyczny, a blaszka właściwa jest **zbita**, bogata w kolagen i zrośnięta z okostną wyrostka zębodołowego (**mucoperiosteum**) - bez warstwy podśluzowej i bez powierzchownych splotów naczyniowych. Zrogowaciała warstwa rozprasza światło, dając barwę bladoróżową. Sąsiednia **śluzówka wyścielająca** jest cienka, nierogowaciejąca i wyraźnie **czerwona**.
+---

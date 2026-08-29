@@ -61,3 +61,24 @@ export async function requireAdminAccess() {
   }
   return ctx;
 }
+
+/** Lista UUID z `ROTA_OWNER_IDS` (przecinki / białe znaki). */
+export function parseRotaOwnerIds(raw: string | undefined = process.env.ROTA_OWNER_IDS): string[] {
+  return (raw ?? "")
+    .split(/[,\s]+/)
+    .map((id) => id.trim())
+    .filter(Boolean);
+}
+
+/**
+ * Panel CEM / operacje mapowania: admin + (gdy env ustawione) UUID z ROTA_OWNER_IDS.
+ * Pusta lista = jak reszta admina (każdy z rolą admin/moderator).
+ */
+export async function requireRotaOwner() {
+  const ctx = await requireAdminAccess();
+  const owners = parseRotaOwnerIds();
+  if (owners.length > 0 && !owners.includes(ctx.user.id)) {
+    throw new Error("Forbidden");
+  }
+  return ctx;
+}

@@ -2,8 +2,8 @@
 
 **SQL:** `exports/farmakologia-batch-2026-1.sql` · **TXT:** `exports/far-e2026-1-factory.txt`
 
-- pytań: **200** (100 STOMA FARSTO-1873…1972 + 100 LEK FARLEK-1773…1872)
-- `tracks`: STOMA=`stomatologia`, LEK=`lekarski` (przedmiot współdzielony)
+- pytań: **200** (100 FARSTO + 100 FARLEK), oba na stomie
+- `tracks` NULL — kafelek 2026 = **200**
 - `theme_label = 2026` → kafelek `farmakologia-THEME-2026`
 
 ## Rozkład tematów

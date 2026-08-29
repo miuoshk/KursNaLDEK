@@ -17,6 +17,7 @@ ON CONFLICT (id) DO UPDATE SET
   display_order = EXCLUDED.display_order;
 
 UPDATE public.questions
-   SET theme_label = '2026'
+   SET theme_label = '2026',
+       tracks = NULL
  WHERE batch_label IN ('e_farm_stoma_2026/1', 'e_farm_lek_2026/1')
    AND COALESCE(is_active, true) = true;

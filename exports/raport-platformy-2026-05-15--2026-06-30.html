@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kurs na LDEK — Raport platformy (15.05–30.06.2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #002A27;
+      --card: #1E3F44;
+      --card-alt: #1F4F5A;
+      --gold: #C9A84C;
+      --sage: #367368;
+      --text: #E8F0EF;
+      --muted: #8FA8A4;
+      --border: rgba(201, 168, 76, 0.15);
+      --radius-card: 14px;
+      --radius-btn: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    h2 {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin: 2.5rem 0 1rem;
+      color: var(--gold);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 1rem 1.1rem;
+    }
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--gold);
+    }
+    .kpi-value.green { color: #6BB89A; }
+    .kpi-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .card-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .card-sub { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+    .chart-box { position: relative; height: 260px; }
+    .chart-box.sm { height: 220px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+    th, td {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    td.num, th.num { text-align: right; }
+    tr:last-child td { border-bottom: none; }
+    .callout {
+      border-radius: var(--radius-card);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .callout.info { background: rgba(54, 115, 104, 0.25); border: 1px solid rgba(54, 115, 104, 0.5); }
+    .callout.warn { background: rgba(201, 168, 76, 0.12); border: 1px solid rgba(201, 168, 76, 0.35); }
+    .callout strong { display: block; margin-bottom: 0.35rem; color: var(--gold); }
+    .engagement-bar {
+      display: flex;
+      height: 28px;
+      border-radius: var(--radius-btn);
+      overflow: hidden;
+      margin: 0.75rem 0 1rem;
+    }
+    .engagement-bar span { display: block; height: 100%; }
+    .eng-green { background: var(--sage); width: 89.2%; }
+    .eng-blue { background: #4A7C8C; width: 3.2%; }
+    .eng-gray { background: #3A5552; width: 7.6%; }
+    .legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.35rem; vertical-align: middle; }
+    footer { margin-top: 3rem; font-size: 0.75rem; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Kurs na LDEK — Raport platformy</h1>
+    <p class="subtitle">Okres: 15 maja – 30 czerwca 2026 · Źródło: Supabase (produkcja)</p>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-value">658</div><div class="kpi-label">Użytkownicy</div></div>
+      <div class="kpi"><div class="kpi-value green">608</div><div class="kpi-label">Aktywni (92,4%)</div></div>
+      <div class="kpi"><div class="kpi-value green">477</div><div class="kpi-label">Płacący (72,5%)</div></div>
+      <div class="kpi"><div class="kpi-value">19 591 PLN</div><div class="kpi-label">Przychód brutto</div></div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-value">101 795</div><div class="kpi-label">Sesje nauki</div></div>
+      <div class="kpi"><div class="kpi-value">4,1 mln</div><div class="kpi-label">Odpowiedzi</div></div>
+      <div class="kpi"><div class="kpi-value">13 217 h</div><div class="kpi-label">Czas nauki</div></div>
+      <div class="kpi"><div class="kpi-value green">78,3%</div><div class="kpi-label">Średnia trafność</div></div>
+    </div>
+
+    <h2>Wzrost i aktywność</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Wzrost miesięczny</div>
+        <div class="card-sub">Sesje i godziny nauki · maj vs czerwiec</div>
+        <div class="chart-box"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Trend dzienny (wybrane dni)</div>
+        <div class="card-sub">Szczyt: 16.06 — 5 968 sesji</div>
+        <div class="chart-box sm"><canvas id="chartDaily"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Tryby nauki</div>
+        <div class="card-sub">Udział sesji w okresie</div>
+        <div class="chart-box sm"><canvas id="chartModes"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Dzień tygodnia</div>
+        <div class="card-sub">Sesje rozpoczęte (Europe/Warsaw)</div>
+        <div class="chart-box sm"><canvas id="chartDow"></canvas></div>
+      </div>
+    </div>
+
+    <h2>Segmenty użytkowników</h2>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th class="num">Konta</th>
+            <th class="num">Aktywni</th>
+            <th class="num">Sesje</th>
+            <th class="num">% płatnych</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 LEK</td><td class="num">324</td><td class="num">300</td><td class="num">65 050</td><td class="num">92,6%</td></tr>
+          <tr><td>1 STOMA</td><td class="num">117</td><td class="num">116</td><td class="num">23 642</td><td class="num">99,1%</td></tr>
+          <tr><td>2 STOMA</td><td class="num">135</td><td class="num">121</td><td class="num">6 212</td><td class="num">—</td></tr>
+          <tr><td>3 STOMA</td><td class="num">66</td><td class="num">59</td><td class="num">5 811</td><td class="num">87,9%</td></tr>
+          <tr><td>2 LEK</td><td class="num">13</td><td class="num">11</td><td class="num">1 079</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Top przedmioty</h2>
+    <div class="card">
+      <div class="card-sub">Według liczby sesji w okresie</div>
+      <div class="chart-box" style="height: 320px;"><canvas id="chartSubjects"></canvas></div>
+    </div>
+
+    <h2>Zaangażowanie</h2>
+    <div class="card">
+      <div class="card-title">Podział 658 zarejestrowanych użytkowników</div>
+      <div class="engagement-bar">
+        <span class="eng-green" title="Bardzo aktywni"></span>
+        <span class="eng-blue" title="Aktywni"></span>
+        <span class="eng-gray" title="Nigdy nie zaczęli"></span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--sage)"></i>Bardzo aktywni ≥5 sesji — 587 (89,2%)</span>
+        <span><i style="background:#4A7C8C"></i>Aktywni 1–4 sesje — 21 (3,2%)</span>
+        <span><i style="background:#3A5552"></i>Nigdy nie zaczęli — 50 (7,6%)</span>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-value">4 dni</div><div class="kpi-label">Mediana streaka</div></div>
+        <div class="kpi"><div class="kpi-value green">75,3%</div><div class="kpi-label">Gotowość ≥70%</div></div>
+        <div class="kpi"><div class="kpi-value">167,4</div><div class="kpi-label">Śr. sesji / aktywny</div></div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <strong>Kluczowe wnioski</strong>
+      Platforma w 47 dni osiągnęła 608 aktywnych użytkowników i ponad 4 mln odpowiedzi.
+      Czerwiec przyniósł 7,7× więcej sesji niż maj. Najwyższa aktywność: wtorki, godz. 21–22.
+      Konwersja na płatne: 72,5% (STOMA r.1: 99,1%).
+    </div>
+    <div class="callout warn">
+      <strong>Uwaga</strong>
+      27–30.06 widoczny gwałtowny spadek aktywności (56 sesji vs typowe 2–6 tys./dzień).
+    </div>
+
+    <footer>
+      Pełny raport tekstowy: raport-platformy-2026-05-15--2026-06-30.md · Wygenerowano z danych Supabase
+    </footer>
+  </div>
+
+  <script>
+    Chart.defaults.color = "#8FA8A4";
+    Chart.defaults.borderColor = "rgba(201,168,76,0.12)";
+    Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+    const gold = "#C9A84C";
+    const sage = "#367368";
+    const teal = "#4A7C8C";
+
+    new Chart(document.getElementById("chartMonthly"), {
+      type: "bar",
+      data: {
+        labels: ["Maj", "Czerwiec"],
+        datasets: [
+          { label: "Sesje", data: [11725, 90070], backgroundColor: gold, borderRadius: 6, yAxisID: "y" },
+          { label: "Godziny nauki", data: [1068.1, 12149.2], backgroundColor: sage, borderRadius: 6, yAxisID: "y1" },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom" } },
+        scales: {
+          y: { position: "left", grid: { color: "rgba(255,255,255,0.05)" } },
+          y1: { position: "right", grid: { drawOnChartArea: false } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById("chartDaily"), {
+      type: "line",
+      data: {
+        labels: ["17.05", "24.05", "31.05", "07.06", "14.06", "16.06", "23.06", "26.06"],
+        datasets: [{
+          label: "Sesje",
+          data: [126, 963, 1364, 2547, 5792, 5968, 5802, 1376],
+          borderColor: gold,
+          backgroundColor: "rgba(201,168,76,0.15)",
+          fill: true,
+          tension: 0.3,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { grid: { color: "rgba(255,255,255,0.05)" } } },
+      },
+    });
+
+    new Chart(document.getElementById("chartModes"), {
+      type: "doughnut",
+      data: {
+        labels: ["Nauka", "Egzamin", "OSCE"],
+        datasets: [{
+          data: [67394, 34316, 85],
+          backgroundColor: [sage, gold, teal],
+          borderWidth: 0,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom" } },
+      },
+    });
+
+    new Chart(document.getElementById("chartDow"), {
+      type: "bar",
+      data: {
+        labels: ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "Sb"],
+        datasets: [{
+          label: "Sesje",
+          data: [14641, 15371, 18830, 15084, 14503, 11070, 12296],
+          backgroundColor: sage,
+          borderRadius: 6,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { grid: { color: "rgba(255,255,255,0.05)" } } },
+      },
+    });
+
+    new Chart(document.getElementById("chartSubjects"), {
+      type: "bar",
+      data: {
+        labels: [
+          "Anatomia LEK r.1", "Histologia LEK r.1", "Anatomia STOMA r.1",
+          "Biofizyka LEK r.1", "Histologia STOMA r.1", "Patomorf. STOMA r.2",
+          "Prof. human. LEK r.1", "Farmakologia STOMA r.3",
+        ],
+        datasets: [{
+          label: "Sesje",
+          data: [29896, 19783, 12279, 11628, 7804, 5030, 4190, 3581],
+          backgroundColor: gold,
+          borderRadius: 4,
+        }],
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { grid: { color: "rgba(255,255,255,0.05)" } } },
+      },
+    });
+  </script>
+</body>
+</html>

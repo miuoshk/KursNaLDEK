@@ -1,0 +1,2090 @@
+[
+  {
+    "topic_id": "HIST-19",
+    "text": "W prawidłowym, 28-dniowym cyklu miesiączkowym owulacja następuje w:",
+    "options": [
+      {
+        "id": "a",
+        "text": "7. dniu cyklu"
+      },
+      {
+        "id": "b",
+        "text": "10. dniu cyklu"
+      },
+      {
+        "id": "c",
+        "text": "14. dniu cyklu"
+      },
+      {
+        "id": "d",
+        "text": "21. dniu cyklu"
+      },
+      {
+        "id": "e",
+        "text": "26. dniu cyklu"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Owulacja** dzieli cykl na fazę **folikularną** (o zmiennej długości) i **lutealną** (stałą, ok. 14 dni). Wyzwala ją gwałtowny **pik LH**, poprzedzony szczytem **estradiolu** wydzielanego przez dojrzały **pęcherzyk Graafa**; do pęknięcia dochodzi ok. 36 h po piku. Powstałe **ciałko żółte** produkuje **progesteron**. Ponieważ faza lutealna jest stała, w cyklu 28-dniowym owulacja przypada na **14. dobę** — przy cyklach dłuższych wydłuża się wyłącznie faza folikularna.",
+    "subtheme_label": "Cykl jajnikowy i miesiączkowy",
+    "source_code": "HISSTO-e2026-1-222",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-04",
+    "text": "Główną funkcją połączeń ścisłych (zonula occludens) jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "uszczelnianie przestrzeni międzykomórkowej i tworzenie bariery dyfuzyjnej"
+      },
+      {
+        "id": "b",
+        "text": "mechaniczne wiązanie komórek przez filamenty pośrednie"
+      },
+      {
+        "id": "c",
+        "text": "przekazywanie jonów i drobnych cząsteczek między cytoplazmami"
+      },
+      {
+        "id": "d",
+        "text": "przytwierdzanie komórki do blaszki podstawnej"
+      },
+      {
+        "id": "e",
+        "text": "kotwiczenie komórki we włóknach kolagenowych blaszki właściwej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Klaudyny** i **okludyna** zbliżają zewnętrzne blaszki błon sąsiednich komórek, zamykając szczelinę międzykomórkową. Blokuje to transport **paracelularny** i wymusza drogę **transcelularną** — stąd bariery jelitowa, krew–mózg i krew–jądro. Drugą funkcją jest utrzymanie **polaryzacji**: białka domeny szczytowej nie mieszają się z podstawno-bocznymi. Wiązanie filamentów pośrednich to cecha **desmosomów**, a kontakt z blaszką podstawną — **hemidesmosomów**.",
+    "subtheme_label": "Połączenia międzykomórkowe",
+    "source_code": "HISSTO-e2026-1-223",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Krypty migdałka podniebiennego i pokrywający je nabłonek charakteryzują się tym, że:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nabłonek jest gęsto naciekany limfocytami i granulocytami"
+      },
+      {
+        "id": "b",
+        "text": "nie zawierają żadnych elementów układu odpornościowego"
+      },
+      {
+        "id": "c",
+        "text": "nabłonek jest silnie zrogowaciały"
+      },
+      {
+        "id": "d",
+        "text": "są wyścielone nabłonkiem jednowarstwowym walcowatym z rąbkiem szczoteczkowym"
+      },
+      {
+        "id": "e",
+        "text": "zawierają wyłącznie limfocyty T, bez grudek chłonnych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Krypty pokrywa **nabłonek wielowarstwowy płaski nierogowaciejący**, tak gęsto naciekany **limfocytami** i **granulocytami**, że granica z tkanką limfoidalną bywa nieczytelna — stąd nazwa **nabłonek limfoepitelialny (retikularny)**. Umożliwia to bezpośredni kontakt antygenów jamy ustnej z komórkami immunokompetentnymi. W blaszce właściwej leżą **grudki chłonne z ośrodkami rozmnażania** (limfocyty B), więc odpowiedź o samych limfocytach T jest błędna.",
+    "subtheme_label": "Migdałki",
+    "source_code": "HISSTO-e2026-1-224",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Podstawową funkcją eozynofilów jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "eliminacja pasożytów wielokomórkowych i udział w reakcjach alergicznych"
+      },
+      {
+        "id": "b",
+        "text": "fagocytoza bakterii ropotwórczych"
+      },
+      {
+        "id": "c",
+        "text": "wydzielanie histaminy i heparyny"
+      },
+      {
+        "id": "d",
+        "text": "produkcja przeciwciał"
+      },
+      {
+        "id": "e",
+        "text": "prezentacja antygenu dziewiczym limfocytom T"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Ziarnistości kwasochłonne zawierają **MBP (główne białko zasadowe)**, **ECP** i **peroksydazę eozynofilową** — cytotoksyczne dla **helmintów**, których wielkość uniemożliwia fagocytozę. Eozynofile modulują też reakcje alergiczne, rozkładając **histaminę** (histaminaza) i **leukotrieny**. Stanowią **2–4%** leukocytów; ich wzrost widać w inwazjach pasożytniczych i atopii. Fagocytoza bakterii to domena **neutrofilów**, a histamina i heparyna — **bazofilów**.",
+    "subtheme_label": "Granulocyty",
+    "source_code": "HISSTO-e2026-1-225",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Hormonem wydzielanym przez warstwę kłębkowatą kory nadnerczy jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "aldosteron"
+      },
+      {
+        "id": "b",
+        "text": "kortyzol"
+      },
+      {
+        "id": "c",
+        "text": "dehydroepiandrosteron (DHEA)"
+      },
+      {
+        "id": "d",
+        "text": "adrenalina"
+      },
+      {
+        "id": "e",
+        "text": "kortykoliberyna (CRH)"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Warstwa **kłębkowata** (najbardziej zewnętrzna) produkuje **mineralokortykoidy**, głównie **aldosteron**, regulowany przez układ **RAA** i stężenie potasu; zwiększa on resorpcję sodu i wydzielanie potasu w kanaliku dalszym. Warstwa **pasmowata** wydziela **kortyzol**, **siateczkowata** — androgeny nadnerczowe (**DHEA**), a **rdzeń** — **adrenalinę**. Mnemonik: GFR = Glomerulosa/Fasciculata/Reticularis → Salt, Sugar, Sex („im głębiej, tym słodziej i przyjemniej”).",
+    "subtheme_label": "Nadnercza",
+    "source_code": "HISSTO-e2026-1-226",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Które stwierdzenie dotyczące kalcytoniny jest prawdziwe?",
+    "options": [
+      {
+        "id": "a",
+        "text": "jest głównym regulatorem gospodarki wapniowej u człowieka"
+      },
+      {
+        "id": "b",
+        "text": "jest ważniejsza niż parathormon"
+      },
+      {
+        "id": "c",
+        "text": "jest wydzielana przez komórki pęcherzykowe tarczycy"
+      },
+      {
+        "id": "d",
+        "text": "nie wpływa na tkankę kostną"
+      },
+      {
+        "id": "e",
+        "text": "ma mniejsze znaczenie niż parathormon i witamina D"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Kalcytonina** powstaje w **komórkach C (przypęcherzykowych)**, wywodzących się z grzebienia nerwowego, a nie w komórkach pęcherzykowych produkujących **T3/T4**. Hamuje **osteoklasty**, obniżając kalcemię, ale u człowieka jej rola jest **marginalna** — po tyreoidektomii ani w raku rdzeniastym (skrajnie wysoka kalcytonina) gospodarka wapniowa nie ulega zaburzeniu. Głównymi regulatorami pozostają **parathormon** i **kalcytriol**.",
+    "subtheme_label": "Tarczyca — komórki C",
+    "source_code": "HISSTO-e2026-1-227",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Ciecz wodnista przepływa w gałce ocznej:",
+    "options": [
+      {
+        "id": "a",
+        "text": "z komory tylnej przez źrenicę do komory przedniej i dalej do kąta tęczówkowo-rogówkowego"
+      },
+      {
+        "id": "b",
+        "text": "z komory przedniej przez źrenicę do komory tylnej i dalej do ciała szklistego"
+      },
+      {
+        "id": "c",
+        "text": "z ciała szklistego przez siatkówkę do naczyniówki"
+      },
+      {
+        "id": "d",
+        "text": "z komory przedniej bezpośrednio do naczyń siatkówki"
+      },
+      {
+        "id": "e",
+        "text": "z rogówki przez twardówkę do przestrzeni nadnaczyniówkowej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Ciecz wodnistą wytwarza **nabłonek wyrostków rzęskowych** do **komory tylnej**. Przez **źrenicę** trafia do **komory przedniej**, a odpływa w **kącie tęczówkowo-rogówkowym** przez **beleczkowanie** do **zatoki żylnej twardówki (kanał Schlemma)** i dalej do żył wodnistych. Odżywia beznaczyniowe **rogówkę** i **soczewkę** oraz utrzymuje ciśnienie wewnątrzgałkowe. Blok odpływu w kącie to mechanizm **jaskry**, a wymiana całej objętości cieczy zachodzi co ok. **90 minut**.",
+    "subtheme_label": "Ciecz wodnista",
+    "source_code": "HISSTO-e2026-1-228",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Uszkodzenie mięśnia strzemiączkowego powoduje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "nadwrażliwość na dźwięki (hiperakuzję)"
+      },
+      {
+        "id": "b",
+        "text": "całkowitą głuchotę przewodzeniową"
+      },
+      {
+        "id": "c",
+        "text": "zaburzenie wyrównywania ciśnień w uchu środkowym"
+      },
+      {
+        "id": "d",
+        "text": "niedrożność trąbki słuchowej"
+      },
+      {
+        "id": "e",
+        "text": "brak jakiegokolwiek wpływu na odbiór bodźców słuchowych"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Mięsień strzemiączkowy** (unerwiony przez **nerw twarzowy**) usztywnia strzemiączko w **odruchu strzemiączkowym**, tłumiąc przenoszenie głośnych dźwięków na okienko owalne. Jego porażenie znosi to zabezpieczenie — pojawia się **hiperakuzja**, typowa dla porażenia n. VII powyżej odejścia gałązki do mięśnia. Kosteczki pozostają ruchome, więc przewodzenie jest zachowane; ciśnienie wyrównuje **trąbka słuchowa** z mięśniem napinaczem podniebienia.",
+    "subtheme_label": "Ucho środkowe",
+    "source_code": "HISSTO-e2026-1-229",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Komórki B (beta) wysp trzustkowych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wydzielają glukagon"
+      },
+      {
+        "id": "b",
+        "text": "leżą obwodowo w wyspie"
+      },
+      {
+        "id": "c",
+        "text": "wydzielają insulinę"
+      },
+      {
+        "id": "d",
+        "text": "wydzielają somatostatynę"
+      },
+      {
+        "id": "e",
+        "text": "prawidłowe A i B"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Komórki **B (beta)** stanowią **60–70%** wyspy, leżą **centralnie** i wydzielają **insulinę** oraz **amylinę**. Obwodowo rozmieszczone są komórki **A (alfa)** produkujące **glukagon** (ok. 20%), a między nimi komórki **D** z **somatostatyną** i komórki **PP**. Ziarnistości insuliny mają charakterystyczny **krystaliczny rdzeń z cynkiem**. Autoimmunologiczne zniszczenie komórek B leży u podłoża **cukrzycy typu 1**. Wyspy są silnie unaczynione i barwią się jaśniej niż otaczające pęcherzyki zewnątrzwydzielnicze.",
+    "subtheme_label": "Wyspy trzustkowe",
+    "source_code": "HISSTO-e2026-1-230",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Podczas wydzielania szkliwa ameloblasty przemieszczają się w kierunku:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zębiny"
+      },
+      {
+        "id": "b",
+        "text": "cementu korzeniowego"
+      },
+      {
+        "id": "c",
+        "text": "brodawki zębowej"
+      },
+      {
+        "id": "d",
+        "text": "nabłonka wewnętrznego narządu szkliwotwórczego"
+      },
+      {
+        "id": "e",
+        "text": "nabłonka zewnętrznego narządu szkliwotwórczego"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "**Ameloblasty** różnicują się z **nabłonka wewnętrznego narządu szkliwotwórczego** i rozpoczynają wydzielanie na przyszłym **połączeniu szkliwno-zębinowym**, dopiero po pojawieniu się pierwszej warstwy **predentyny**. Odkładając macierz **przed sobą**, cofają się od zębiny **na zewnątrz**, ku **nabłonkowi zewnętrznemu** — dlatego szkliwo przyrasta odśrodkowo. Odontoblasty działają odwrotnie: wędrują do wnętrza, ku **miazdze**.",
+    "subtheme_label": "Amelogeneza",
+    "source_code": "HISSTO-e2026-1-231",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Ogonowa część trzonu kości gnykowej powstaje z łuku gardłowego:",
+    "options": [
+      {
+        "id": "a",
+        "text": "I"
+      },
+      {
+        "id": "b",
+        "text": "II"
+      },
+      {
+        "id": "c",
+        "text": "III"
+      },
+      {
+        "id": "d",
+        "text": "IV"
+      },
+      {
+        "id": "e",
+        "text": "VI"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Chrząstka **III łuku** (nerw **IX**, m. rylcowo-gardłowy) daje **rogi większe** i **dolną (ogonową) część trzonu** kości gnykowej. Z chrząstki **Reicherta** (II łuk, nerw **VII**) powstają **rogi mniejsze**, **górna część trzonu**, wyrostek rylcowaty, więzadło rylcowo-gnykowe i **strzemiączko**. Chrząstka **Meckela** (I łuk, nerw **V3**) tworzy młoteczek i kowadełko, a łuki **IV i VI** — chrząstki krtani. Kość gnykowa ma więc **podwójne pochodzenie**: część górna z II łuku, część dolna z III.",
+    "subtheme_label": "Łuki gardłowe",
+    "source_code": "HISSTO-e2026-1-232",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Ostatnim elementem układu bodźcoprzewodzącego serca są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "kardiomiocyty robocze przedsionków"
+      },
+      {
+        "id": "b",
+        "text": "węzeł przedsionkowo-komorowy"
+      },
+      {
+        "id": "c",
+        "text": "węzeł zatokowo-przedsionkowy"
+      },
+      {
+        "id": "d",
+        "text": "pęczek Hisa"
+      },
+      {
+        "id": "e",
+        "text": "włókna Purkinjego"
+      }
+    ],
+    "correct_option_id": "e",
+    "explanation": "Kolejność: **węzeł zatokowo-przedsionkowy** (rozrusznik, ok. 70/min) → **węzeł przedsionkowo-komorowy** (opóźnienie AV) → **pęczek Hisa** → **odnogi** → **włókna Purkinjego**. Te ostatnie leżą podwsierdziowo, są to zmodyfikowane kardiomiocyty o dużej średnicy, ubogie w miofibryle i bogate w **glikogen**, z licznymi **koneksonami** — stąd najszybsze przewodzenie (**do 4 m/s**), zapewniające jednoczesny skurcz komór od koniuszka.",
+    "subtheme_label": "Układ bodźcoprzewodzący serca",
+    "source_code": "HISSTO-e2026-1-233",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Włókna skośne ozębnej zapobiegają przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wtłaczaniu zęba w zębodół"
+      },
+      {
+        "id": "b",
+        "text": "wysuwaniu zęba z zębodołu"
+      },
+      {
+        "id": "c",
+        "text": "obracaniu zęba wokół osi długiej"
+      },
+      {
+        "id": "d",
+        "text": "przemieszczaniu zęba w kierunku przedsionkowo-językowym"
+      },
+      {
+        "id": "e",
+        "text": "resorpcji brzegu wyrostka zębodołowego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Włókna skośne** to najliczniejsza grupa (ok. 2/3 ozębnej). Biegną od **cementu** skośnie ku górze, przyczepiając się do kości **bardziej dokoronowo**. Siła żucia działająca wzdłuż osi zęba napina je, zamieniając nacisk na **rozciąganie** — ząb jest zawieszony, a nie wciskany w zębodół. Wtłaczaniu przeciwdziałają więc włókna skośne, wysuwaniu — włókna **wierzchołkowe**, a rotacji — włókna **okrężne** i **międzyzębowe**.",
+    "subtheme_label": "Ozębna",
+    "source_code": "HISSTO-e2026-1-234",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Wskaż zdanie FAŁSZYWE dotyczące substancji organicznej szkliwa:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tworzy delikatną siateczkę otaczającą kryształy hydroksyapatytu"
+      },
+      {
+        "id": "b",
+        "text": "otacza zarówno pryzmaty szkliwne, jak i substancję międzypryzmatyczną"
+      },
+      {
+        "id": "c",
+        "text": "otacza wyłącznie pryzmaty szkliwne"
+      },
+      {
+        "id": "d",
+        "text": "enamelina jest jej składnikiem"
+      },
+      {
+        "id": "e",
+        "text": "w szkliwie dojrzałym stanowi zaledwie kilka procent masy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Macierz organiczna tworzy **siateczkę** wokół kryształów **hydroksyapatytu** w **całym** szkliwie — obejmuje pryzmaty **i** substancję międzypryzmatyczną, więc twierdzenie o wyłącznie pryzmatach jest fałszywe. Głównymi białkami są **amelogeniny** (szkliwo niedojrzałe, ok. 90% białek) oraz **enameliny**, **ameloblastyna** i **tuftelina**. W czasie dojrzewania białka ulegają degradacji, a substancja organiczna spada do **ok. 1%**.",
+    "subtheme_label": "Szkliwo — skład",
+    "source_code": "HISSTO-e2026-1-235",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Wyniosłości nosowe boczne, leżące bocznie od dołków nosowych, powstają bezpośrednio z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "plakod usznych"
+      },
+      {
+        "id": "b",
+        "text": "mezenchymalnych wałów tkankowych otaczających dołek nosowy"
+      },
+      {
+        "id": "c",
+        "text": "pierwszego łuku gardłowego"
+      },
+      {
+        "id": "d",
+        "text": "cewy nerwowej"
+      },
+      {
+        "id": "e",
+        "text": "endodermy jelita przedniego"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W **5. tygodniu** ektoderma wyniosłości czołowo-nosowej tworzy **plakody nosowe**, które zapadają się w **dołki nosowe**. Otaczające je **mezenchymalne wały** dzielą się na wyniosłości **przyśrodkowe** (od strony linii pośrodkowej) i **boczne** (od strony bocznej). Boczne dają **skrzydła nosa**, przyśrodkowe — **rynienkę podnosową**, przegrodę i **podniebienie pierwotne**. Plakody uszne dają pęcherzyk błędnikowy, nie nos.",
+    "subtheme_label": "Rozwój twarzy i nosa",
+    "source_code": "HISSTO-e2026-1-236",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Wskaż zdanie prawdziwe dotyczące astrocytów:",
+    "options": [
+      {
+        "id": "a",
+        "text": "astrocyty włókniste występują w istocie białej i mają długie, słabo rozgałęzione wypustki"
+      },
+      {
+        "id": "b",
+        "text": "astrocyty włókniste występują w istocie szarej i mają krótkie wypustki"
+      },
+      {
+        "id": "c",
+        "text": "astrocyty plazmatyczne występują w istocie białej"
+      },
+      {
+        "id": "d",
+        "text": "astrocyty tworzą osłonkę mielinową w ośrodkowym układzie nerwowym"
+      },
+      {
+        "id": "e",
+        "text": "astrocyty wywodzą się z monocytów krwi"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Astrocyty włókniste** leżą w **istocie białej**: mają nieliczne, **długie i słabo rozgałęzione** wypustki bogate w **GFAP**. **Astrocyty plazmatyczne** zajmują **istotę szarą** i mają liczne, **krótkie, silnie rozgałęzione** wypustki. Obie formy tworzą **stopki okołonaczyniowe** bariery krew–mózg, buforują **K+**, wychwytują **glutaminian** i tworzą bliznę glejową. Mielinę w OUN wytwarzają **oligodendrocyty**, a z monocytów pochodzi **mikroglej**.",
+    "subtheme_label": "Glej — astrocyty",
+    "source_code": "HISSTO-e2026-1-237",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Końcową część układu bodźcoprzewodzącego serca stanowią:",
+    "options": [
+      {
+        "id": "a",
+        "text": "węzeł zatokowo-przedsionkowy"
+      },
+      {
+        "id": "b",
+        "text": "węzeł przedsionkowo-komorowy"
+      },
+      {
+        "id": "c",
+        "text": "pęczek Hisa"
+      },
+      {
+        "id": "d",
+        "text": "włókna Purkinjego"
+      },
+      {
+        "id": "e",
+        "text": "kardiomiocyty robocze przedsionków"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Włókna Purkinjego** to ostatnie ogniwo przed kardiomiocytami roboczymi komór. Leżą **podwsierdziowo**, są szersze od zwykłych kardiomiocytów, mają **skąpe miofibryle** zepchnięte obwodowo i obfity **glikogen**, co daje im jasny obraz w H+E. Liczne **połączenia szczelinowe** zapewniają przewodzenie do **4 m/s** — najszybsze w sercu. Dzięki temu skurcz komór zaczyna się od **koniuszka** i przebiega synchronicznie ku podstawie.",
+    "subtheme_label": "Układ bodźcoprzewodzący serca",
+    "source_code": "HISSTO-e2026-1-238",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Nabłonek pokrywający migdałek podniebienny:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jest silnie rogowaciejący"
+      },
+      {
+        "id": "b",
+        "text": "jest gęsto naciekany limfocytami i granulocytami"
+      },
+      {
+        "id": "c",
+        "text": "zawiera liczne komórki Panetha"
+      },
+      {
+        "id": "d",
+        "text": "zawiera liczne komórki Kulczyckiego (enteroendokrynne)"
+      },
+      {
+        "id": "e",
+        "text": "jest nabłonkiem jednowarstwowym walcowatym"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Migdałek podniebienny pokrywa **nabłonek wielowarstwowy płaski nierogowaciejący**, wpuklający się w **krypty**. Jest on masowo naciekany **limfocytami** i **granulocytami**, tworząc **nabłonek limfoepitelialny**, w którym granice komórek nabłonkowych stają się nieostre. Ułatwia to próbkowanie antygenów. Komórki **Panetha** i **Kulczyckiego** są elementami nabłonka **jelitowego**, nie migdałka; rogowacenie występuje w dziąśle i podniebieniu twardym.",
+    "subtheme_label": "Migdałek podniebienny",
+    "source_code": "HISSTO-e2026-1-239",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-04",
+    "text": "Najbardziej apikalnie w kompleksie połączeń międzykomórkowych nabłonka leżą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "desmosomy"
+      },
+      {
+        "id": "b",
+        "text": "hemidesmosomy"
+      },
+      {
+        "id": "c",
+        "text": "połączenia szczelinowe"
+      },
+      {
+        "id": "d",
+        "text": "połączenia ścisłe"
+      },
+      {
+        "id": "e",
+        "text": "prawidłowe A i B"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "Kolejność od szczytu komórki: **zonula occludens** (połączenie ścisłe) → **zonula adherens** (obwódka przylegania, filamenty **aktynowe**) → **macula adherens** (desmosom, filamenty **pośrednie**). Poniżej rozproszone są **połączenia szczelinowe**, a przy biegunie podstawnym **hemidesmosomy** łączące komórkę z **blaszką podstawną**. Apikalna lokalizacja połączeń ścisłych warunkuje ich rolę w uszczelnianiu i utrzymaniu **polaryzacji** nabłonka.",
+    "subtheme_label": "Kompleks połączeniowy",
+    "source_code": "HISSTO-e2026-1-240",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Włókna sprężyste w błonie środkowej aorty tworzą:",
+    "options": [
+      {
+        "id": "a",
+        "text": "blaszki kolagenowe"
+      },
+      {
+        "id": "b",
+        "text": "blaszki sprężyste (okienkowate)"
+      },
+      {
+        "id": "c",
+        "text": "kanaliki międzykomórkowe"
+      },
+      {
+        "id": "d",
+        "text": "prążki mięśniowe"
+      },
+      {
+        "id": "e",
+        "text": "siatkę retikulinową"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W aorcie elastyna układa się w **koncentryczne blaszki sprężyste okienkowate** — u człowieka jest ich **40–70**, a między nimi leżą **miocyty gładkie** produkujące elastynę i kolagen. Otwory (okienka) umożliwiają dyfuzję substancji odżywczych. Blaszki rozciągają się w **skurczu** komór i sprężynują w **rozkurczu**, przekształcając przepływ pulsacyjny w ciągły — to **efekt Windkessel**. Ich degradacja sprzyja powstawaniu **tętniaka aorty**.",
+    "subtheme_label": "Tętnice typu sprężystego",
+    "source_code": "HISSTO-e2026-1-241",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Cechą charakterystyczną brodawek nitkowatych języka jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "obecność licznych kubków smakowych"
+      },
+      {
+        "id": "b",
+        "text": "całkowity brak unerwienia"
+      },
+      {
+        "id": "c",
+        "text": "gruby, silnie rogowaciejący nabłonek"
+      },
+      {
+        "id": "d",
+        "text": "otoczenie wałem i bruzdą okalającą"
+      },
+      {
+        "id": "e",
+        "text": "obecność gruczołów surowiczych von Ebnera u podstawy"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Brodawki nitkowate** są najliczniejsze i pokrywają całą powierzchnię grzbietową języka do bruzdy granicznej. Jako jedyne **nie zawierają kubków smakowych** — pełnią funkcję **mechaniczną** (tarcie pokarmu, czucie dotyku) i mają **gruby nabłonek rogowaciejący**, nadający językowi szarawy odcień. Wał i bruzda okalająca cechują brodawki **okolone**, przy których leżą gruczoły **von Ebnera**. Unerwienie czuciowe zachowane (n. V3).",
+    "subtheme_label": "Brodawki języka",
+    "source_code": "HISSTO-e2026-1-242",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "W tarczce powieki znajdują się gruczoły:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Meiboma"
+      },
+      {
+        "id": "b",
+        "text": "Molla"
+      },
+      {
+        "id": "c",
+        "text": "Zeissa"
+      },
+      {
+        "id": "d",
+        "text": "Krausego"
+      },
+      {
+        "id": "e",
+        "text": "Wolfringa"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Gruczoły tarczkowe (Meiboma)** to duże gruczoły **łojowe** typu holokrynowego, wbudowane w płytkę tarczki i uchodzące na wolnym brzegu powieki. Ich wydzielina tworzy **warstwę lipidową filmu łzowego**, hamując parowanie łez. Zatkanie przewodu daje **gradówkę**. Gruczoły **Zeissa** (łojowe rzęs) i **Molla** (apokrynowe potowe) leżą przy mieszkach rzęs — ich zapalenie to **jęczmień**; **Krausego** i **Wolfringa** to dodatkowe gruczoły łzowe.",
+    "subtheme_label": "Powieka",
+    "source_code": "HISSTO-e2026-1-243",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-11",
+    "text": "Rozszerzanie się ściany aorty i dużych tętnic podczas skurczu komór jest możliwe dzięki:",
+    "options": [
+      {
+        "id": "a",
+        "text": "licznym blaszkom sprężystym w błonie środkowej"
+      },
+      {
+        "id": "b",
+        "text": "zanikowi błony środkowej"
+      },
+      {
+        "id": "c",
+        "text": "skurczowi miocytów gładkich błony środkowej"
+      },
+      {
+        "id": "d",
+        "text": "spadkowi ciśnienia w świetle naczynia"
+      },
+      {
+        "id": "e",
+        "text": "grubej, kolagenowej przydance"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wzrost ciśnienia w **skurczu** rozciąga **blaszki sprężyste** błony środkowej, magazynując energię; w **rozkurczu** ich sprężysty odrzut utrzymuje ciśnienie i ciągły przepływ obwodowy — **efekt Windkessel (powietrzni)**. Za odkształcalność odpowiada więc **elastyna**, a nie skurcz miocytów, który przeciwnie — zwęża naczynie. **Kolagen** przydanki pełni funkcję ograniczającą, chroniąc ścianę przed nadmiernym rozciągnięciem i pęknięciem.",
+    "subtheme_label": "Mechanika ściany tętnic",
+    "source_code": "HISSTO-e2026-1-244",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Świeżo wydzielone szkliwo pierwotne (niedojrzałe) zawiera około:",
+    "options": [
+      {
+        "id": "a",
+        "text": "10% substancji nieorganicznej"
+      },
+      {
+        "id": "b",
+        "text": "30% substancji nieorganicznej"
+      },
+      {
+        "id": "c",
+        "text": "50% substancji nieorganicznej"
+      },
+      {
+        "id": "d",
+        "text": "70% substancji nieorganicznej"
+      },
+      {
+        "id": "e",
+        "text": "96% substancji nieorganicznej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Macierz wydzielana przez ameloblasty jest częściowo zmineralizowana już na starcie — zawiera **ok. 30%** substancji nieorganicznej, resztę stanowią **woda** i białka (głównie **amelogeniny**). Dopiero w fazie **dojrzewania** ameloblasty resorbują wodę i białka, a kryształy **hydroksyapatytu** rosną, aż mineralizacja osiąga **ok. 96%** masy — najwyższą w organizmie. Dlatego szkliwo dojrzałe jest **bezkomórkowe** i niezdolne do regeneracji.",
+    "subtheme_label": "Mineralizacja szkliwa",
+    "source_code": "HISSTO-e2026-1-245",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "W trakcie amelogenezy ameloblasty migrują w kierunku:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zębiny"
+      },
+      {
+        "id": "b",
+        "text": "nabłonka wewnętrznego narządu szkliwotwórczego"
+      },
+      {
+        "id": "c",
+        "text": "nabłonka zewnętrznego narządu szkliwotwórczego"
+      },
+      {
+        "id": "d",
+        "text": "cementu korzeniowego"
+      },
+      {
+        "id": "e",
+        "text": "miazgi zęba"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Ameloblast odkłada macierz **przed sobą** przez **wyrostek Tomesa**, więc oddala się od nowo powstałego szkliwa. Ponieważ start następuje na **granicy szkliwno-zębinowej**, ruch odbywa się **odśrodkowo** — od zębiny ku **nabłonkowi zewnętrznemu narządu szkliwotwórczego**. Odontoblasty wędrują lustrzanie, ku **miazdze**, zostawiając za sobą **wypustki Tomesa** w kanalikach. Rozejście obu populacji wyznacza **połączenie szkliwno-zębinowe**.",
+    "subtheme_label": "Amelogeneza",
+    "source_code": "HISSTO-e2026-1-246",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie FAŁSZYWE dotyczące pneumocytów typu I:",
+    "options": [
+      {
+        "id": "a",
+        "text": "stanowią około 40% komórek nabłonka pęcherzyków płucnych"
+      },
+      {
+        "id": "b",
+        "text": "są płaskie i mają bardzo cienką cytoplazmę"
+      },
+      {
+        "id": "c",
+        "text": "umożliwiają dyfuzję gazów przez barierę krew-powietrze"
+      },
+      {
+        "id": "d",
+        "text": "zawierają ciałka blaszkowate magazynujące surfaktant"
+      },
+      {
+        "id": "e",
+        "text": "wchodzą w skład ściany pęcherzyków płucnych"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Ciałka blaszkowate** z **surfaktantem** są cechą **pneumocytów typu II** (komórek ziarnistych), które stanowią ok. 60% liczby komórek, lecz pokrywają zaledwie kilka procent powierzchni i pełnią rolę komórek macierzystych nabłonka. **Pneumocyty typu I** to ok. **40%** komórek, ale wyściełają **95%** powierzchni: skrajnie spłaszczone, o cytoplazmie grubości ok. **0,2 µm**, tworzą wraz ze śródbłonkiem i wspólną błoną podstawną **barierę krew-powietrze**.",
+    "subtheme_label": "Nabłonek pęcherzyków płucnych",
+    "source_code": "HISSTO-e2026-1-247",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Wskaż zdanie prawdziwe dotyczące kalcytoniny:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jest głównym hormonem regulującym gospodarkę wapniową człowieka"
+      },
+      {
+        "id": "b",
+        "text": "jest ważniejsza niż parathormon"
+      },
+      {
+        "id": "c",
+        "text": "ma mniejsze znaczenie niż witamina D i parathormon"
+      },
+      {
+        "id": "d",
+        "text": "jest wytwarzana przez komórki pęcherzykowe tarczycy"
+      },
+      {
+        "id": "e",
+        "text": "nasila resorpcję kości przez osteoklasty"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Kalcytonina z **komórek C** hamuje **osteoklasty** (a nie je pobudza) i obniża kalcemię, ale u człowieka jest hormonem **pomocniczym**. Dowodem jest brak zaburzeń wapniowych zarówno po **tyreoidektomii**, jak i w **raku rdzeniastym tarczycy** z ekstremalnie wysokim jej stężeniem — służy tam wyłącznie jako **marker**. Oś regulacyjną tworzą **PTH** (mobilizacja wapnia z kości i resorpcja nerkowa) oraz **kalcytriol** (wchłanianie jelitowe).",
+    "subtheme_label": "Gospodarka wapniowo-fosforanowa",
+    "source_code": "HISSTO-e2026-1-248",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Zewnętrzna warstwa nabłonka pokrywającego wyrostki rzęskowe:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jest silnie pigmentowana i stanowi przedłużenie nabłonka barwnikowego siatkówki"
+      },
+      {
+        "id": "b",
+        "text": "nie ma żadnego związku z wytwarzaniem cieczy wodnistej"
+      },
+      {
+        "id": "c",
+        "text": "tworzy zatokę żylną twardówki"
+      },
+      {
+        "id": "d",
+        "text": "przechodzi we włókna nerwowe siatkówki"
+      },
+      {
+        "id": "e",
+        "text": "jest nabłonkiem wielowarstwowym płaskim rogowaciejącym"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Wyrostki rzęskowe pokrywa **dwuwarstwowy nabłonek** — pozostałość **kielicha ocznego**. Warstwa **zewnętrzna (przylegająca do zrębu)** jest silnie **barwnikowa** i kontynuuje **nabłonek barwnikowy siatkówki**; warstwa **wewnętrzna**, zwrócona do komory tylnej, jest **bezbarwnikowa** i odpowiada za czynne wydzielanie **cieczy wodnistej** (pompa Na+/K+, **anhydraza węglanowa** — cel farmakologiczny w jaskrze). Obie warstwy stykają się biegunami szczytowymi.",
+    "subtheme_label": "Ciało rzęskowe",
+    "source_code": "HISSTO-e2026-1-249",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-15",
+    "text": "Wskaż zdanie FAŁSZYWE dotyczące makrofagów płucnych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "pochodzą z komórek prekursorowych szpiku kostnego"
+      },
+      {
+        "id": "b",
+        "text": "różnicują się z pneumocytów typu II"
+      },
+      {
+        "id": "c",
+        "text": "występują w przegrodach międzypęcherzykowych"
+      },
+      {
+        "id": "d",
+        "text": "występują na powierzchni nabłonka oddechowego"
+      },
+      {
+        "id": "e",
+        "text": "w przewlekłym zastoju żylnym gromadzą hemosyderynę"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Makrofagi pęcherzykowe („komórki pyłowe”) wywodzą się z **monocytów** krwi i prekursorów **szpikowych**, należąc do **układu fagocytów jednojądrzastych** — nie powstają z nabłonka. **Pneumocyty II** są komórkami macierzystymi wyłącznie dla **pneumocytów I**. Makrofagi wędrują po powierzchni nabłonka i w **przegrodach międzypęcherzykowych**; w zastoju żylnym pochłaniają erytrocyty i gromadzą **hemosyderynę** — to **komórki wad sercowych**.",
+    "subtheme_label": "Makrofagi pęcherzykowe",
+    "source_code": "HISSTO-e2026-1-250",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Unerwienie zębiny pochodzi z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "splotu pododontoblastycznego Raschkowa w miazdze"
+      },
+      {
+        "id": "b",
+        "text": "ozębnej, przez otwór wierzchołkowy do cementu"
+      },
+      {
+        "id": "c",
+        "text": "naczyń krwionośnych brodawki zębowej"
+      },
+      {
+        "id": "d",
+        "text": "resztek nabłonkowych Malasseza"
+      },
+      {
+        "id": "e",
+        "text": "zębina jest tkanką całkowicie nieunerwioną"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Włókna czuciowe **nerwu trójdzielnego** wnikają przez otwór wierzchołkowy i tworzą tuż pod warstwą odontoblastów **splot Raschkowa (pododontoblastyczny)**. Odchodzące od niego bezmielinowe zakończenia wnikają do **kanalików zębinowych** wyłącznie w **zębinie przymiazgowej** (wewnętrzna 1/3). Ból ze stref głębszych tłumaczy **teoria hydrodynamiczna Brannstroma** — ruch płynu w kanalikach drażni te zakończenia (nadwrażliwość szyjek).",
+    "subtheme_label": "Unerwienie zębiny i miazgi",
+    "source_code": "HISSTO-e2026-1-251",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Powierzchnia nosowa podniebienia miękkiego pokryta jest nabłonkiem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jednowarstwowym płaskim"
+      },
+      {
+        "id": "b",
+        "text": "wielowarstwowym sześciennym"
+      },
+      {
+        "id": "c",
+        "text": "wielorzędowym walcowatym migawkowym"
+      },
+      {
+        "id": "d",
+        "text": "wielowarstwowym płaskim rogowaciejącym"
+      },
+      {
+        "id": "e",
+        "text": "przejściowym"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Podniebienie miękkie ma **dwie różne powierzchnie**. Od strony jamy ustnej pokrywa je **nabłonek wielowarstwowy płaski nierogowaciejący**, odporny na urazy mechaniczne żucia. Powierzchnia **nosowa** należy do dróg oddechowych, więc wyściela ją **nabłonek oddechowy** — wielorzędowy walcowaty **migawkowy z komórkami kubkowymi**, oczyszczający powietrze dzięki transportowi śluzowo-rzęskowemu. W okolicy brzegu wolnego następuje strefa przejściowa.",
+    "subtheme_label": "Podniebienie miękkie",
+    "source_code": "HISSTO-e2026-1-252",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Głównymi komórkami tkanki łącznej włóknistej są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "fibroblasty"
+      },
+      {
+        "id": "b",
+        "text": "makrofagi"
+      },
+      {
+        "id": "c",
+        "text": "mastocyty"
+      },
+      {
+        "id": "d",
+        "text": "plazmocyty"
+      },
+      {
+        "id": "e",
+        "text": "adipocyty"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Fibroblast** to komórka **stała** i dominująca ilościowo — syntetyzuje **kolagen**, **elastynę**, **glikozaminoglikany** i **glikoproteiny**, czyli całą macierz zewnątrzkomórkową. Ma wrzecionowaty kształt, jasne jądro z wyraźnym jąderkiem i obfitą **szorstką siateczkę śródplazmatyczną**. Forma spoczynkowa to **fibrocyt**. Makrofagi, mastocyty i plazmocyty należą do komórek **napływowych** (obrona), a adipocyty dominują dopiero w tkance **tłuszczowej**.",
+    "subtheme_label": "Komórki tkanki łącznej",
+    "source_code": "HISSTO-e2026-1-253",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-20",
+    "text": "Kosteczki słuchowe i okostna jamy bębenkowej pokryte są nabłonkiem:",
+    "options": [
+      {
+        "id": "a",
+        "text": "jednowarstwowym płaskim"
+      },
+      {
+        "id": "b",
+        "text": "wielowarstwowym sześciennym"
+      },
+      {
+        "id": "c",
+        "text": "wielorzędowym walcowatym urzęsionym"
+      },
+      {
+        "id": "d",
+        "text": "wielowarstwowym płaskim rogowaciejącym"
+      },
+      {
+        "id": "e",
+        "text": "przejściowym"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Jamę bębenkową wyściela błona śluzowa z **nabłonkiem jednowarstwowym płaskim** — cienka warstwa minimalizuje masę i **bezwładność** układu przewodzącego drgania, co jest kluczowe dla ruchomości kosteczek. W okolicy ujścia **trąbki słuchowej** nabłonek przechodzi stopniowo w **wielorzędowy walcowaty migawkowy** (kontynuacja nabłonka nosogardła), umożliwiający oczyszczanie i wentylację ucha środkowego.",
+    "subtheme_label": "Jama bębenkowa",
+    "source_code": "HISSTO-e2026-1-254",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Zrąb podniebienia miękkiego zbudowany jest głównie z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "tkanki tłuszczowej"
+      },
+      {
+        "id": "b",
+        "text": "tkanki mięśniowej poprzecznie prążkowanej"
+      },
+      {
+        "id": "c",
+        "text": "chrząstki szklistej"
+      },
+      {
+        "id": "d",
+        "text": "chrząstki sprężystej"
+      },
+      {
+        "id": "e",
+        "text": "kości gąbczastej"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "W przeciwieństwie do podniebienia twardego, opartego na **kości**, podniebienie miękkie jest ruchomym fałdem zbudowanym z **mięśni poprzecznie prążkowanych** (dźwigacz i napinacz podniebienia miękkiego, podniebienno-gardłowy, podniebienno-językowy, języczka) osadzonych na **rozcięgnie podniebiennym**. Umożliwia to **zamykanie cieśni gardłowo-nosowej** przy połykaniu i mowie. Niewydolność tego mechanizmu daje **nosowanie otwarte**.",
+    "subtheme_label": "Podniebienie miękkie",
+    "source_code": "HISSTO-e2026-1-255",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-02",
+    "text": "Cząsteczki cholesterolu w dwuwarstwie lipidowej błony komórkowej ułożone są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "równolegle do cząsteczek fosfolipidów, prostopadle do powierzchni błony"
+      },
+      {
+        "id": "b",
+        "text": "prostopadle do łańcuchów kwasów tłuszczowych fosfolipidów"
+      },
+      {
+        "id": "c",
+        "text": "wyłącznie po zewnętrznej stronie błony, w obrębie glikokaliksu"
+      },
+      {
+        "id": "d",
+        "text": "jako osobna, trzecia warstwa pod dwuwarstwą lipidową"
+      },
+      {
+        "id": "e",
+        "text": "swobodnie w cytozolu, bez kontaktu z błoną"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Cholesterol jest **amfipatyczny**: grupa **-OH** kontaktuje się z polarnymi główkami fosfolipidów, a sztywny układ **pierścieni sterolowych** z łańcuchem węglowodorowym wsuwa się między **kwasy tłuszczowe** — czyli **równolegle** do cząsteczek fosfolipidów i **prostopadle** do płaszczyzny błony. Działa jak **bufor płynności**: w temperaturze ciała usztywnia błonę, a w niskiej zapobiega krystalizacji. Jest też składnikiem **tratw lipidowych**.",
+    "subtheme_label": "Błona komórkowa",
+    "source_code": "HISSTO-e2026-1-256",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-09",
+    "text": "Podstawowym substratem energetycznym neuronów mózgu jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "sfingozyna"
+      },
+      {
+        "id": "b",
+        "text": "glukoza"
+      },
+      {
+        "id": "c",
+        "text": "glikolipidy"
+      },
+      {
+        "id": "d",
+        "text": "fosfolipidy"
+      },
+      {
+        "id": "e",
+        "text": "glicerol"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "Neurony pokrywają zapotrzebowanie energetyczne niemal wyłącznie z **glukozy**, transportowanej przez **GLUT3** (wysokie powinowactwo) niezależnie od **insuliny**. Mózg zużywa ok. **20%** tlenu i glukozy organizmu, mimo że stanowi 2% masy, a rezerwy **glikogenu** ma tylko w astrocytach — stąd błyskawiczna utrata przytomności w **hipoglikemii**. Dopiero po kilku dniach głodzenia paliwem zapasowym stają się **ciała ketonowe**. Kwasy tłuszczowe nie przechodzą efektywnie bariery krew-mózg.",
+    "subtheme_label": "Metabolizm neuronu",
+    "source_code": "HISSTO-e2026-1-257",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Wskaż zdanie FAŁSZYWE dotyczące fosforyn zębinowych:",
+    "options": [
+      {
+        "id": "a",
+        "text": "wiążą jony wapnia"
+      },
+      {
+        "id": "b",
+        "text": "wpływają na strukturę kryształów hydroksyapatytu"
+      },
+      {
+        "id": "c",
+        "text": "należą do niekolagenowych białek zębiny"
+      },
+      {
+        "id": "d",
+        "text": "wchodzą w skład cząsteczki kolagenu"
+      },
+      {
+        "id": "e",
+        "text": "ich niedobór prowadzi do wad rozwojowych tkanek zęba"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Fosforyna zębinowa (DPP)** to najobficiej występujące **niekolagenowe** białko zębiny, powstające z prekursora **DSPP**. Jest silnie **kwaśna** (mnóstwo reszt asparaginianowych i **fosfoseryny**), dzięki czemu wiąże **Ca2+** i przyłącza się do włókien kolagenowych, sterując **nukleacją** i wzrostem kryształów **hydroksyapatytu**. Nie jest jednak elementem cząsteczki kolagenu — działa obok niej. Mutacje **DSPP** dają **dentinogenesis imperfecta**.",
+    "subtheme_label": "Białka niekolagenowe zębiny",
+    "source_code": "HISSTO-e2026-1-258",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Ścisłe połączenie zęba z dziąsłem nosi nazwę:",
+    "options": [
+      {
+        "id": "a",
+        "text": "przyczepu nabłonkowego (nabłonek łączący)"
+      },
+      {
+        "id": "b",
+        "text": "rowka dziąsłowego"
+      },
+      {
+        "id": "c",
+        "text": "więzadła okrężnego"
+      },
+      {
+        "id": "d",
+        "text": "przyczepu cementowego"
+      },
+      {
+        "id": "e",
+        "text": "blaszki zbitej zębodołu"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Nabłonek łączący** przylega do szkliwa za pomocą **hemidesmosomów** i wewnętrznej **blaszki podstawnej**, tworząc **przyczep nabłonkowy** — biologiczne uszczelnienie oddzielające tkanki przyzębia od jamy ustnej. Jest niezrogowaciały, wysoce przepuszczalny (droga migracji **granulocytów** i płynu dziąsłowego) i szybko się odnawia. **Rowek dziąsłowy** to szczelina nad nim (fizjologicznie do **0,5-2 mm**); jego pogłębienie tworzy **kieszonkę** w periodontitis.",
+    "subtheme_label": "Przyzębie - dziąsło",
+    "source_code": "HISSTO-e2026-1-259",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-04",
+    "text": "Blaszka siateczkowata (lamina reticularis) błony podstawnej zawiera przede wszystkim:",
+    "options": [
+      {
+        "id": "a",
+        "text": "agrekan"
+      },
+      {
+        "id": "b",
+        "text": "fibronektynę i kolagen typu III"
+      },
+      {
+        "id": "c",
+        "text": "elastynę"
+      },
+      {
+        "id": "d",
+        "text": "prawidłowe A i C"
+      },
+      {
+        "id": "e",
+        "text": "prawidłowe A, B i C"
+      }
+    ],
+    "correct_option_id": "b",
+    "explanation": "**Lamina reticularis** to najgłębsza warstwa błony podstawnej, wytwarzana przez **fibroblasty** tkanki łącznej (nie przez nabłonek). Budują ją **włókna siateczkowe** z **kolagenu typu III** oraz **fibronektyna**, spajające blaszkę podstawną z podłożem; kotwiczą je fibryle **kolagenu VII**. Powyżej leży **lamina densa** z **kolagenem IV**, **lamininą**, **entaktyną** i **perlekanem**. **Agrekan** jest typowy dla chrząstki, a elastyny w błonie podstawnej brak.",
+    "subtheme_label": "Błona podstawna",
+    "source_code": "HISSTO-e2026-1-260",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Największym i najobficiej występującym glikozaminoglikanem w organizmie człowieka jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "siarczan chondroityny"
+      },
+      {
+        "id": "b",
+        "text": "siarczan heparanu"
+      },
+      {
+        "id": "c",
+        "text": "hialuronian (kwas hialuronowy)"
+      },
+      {
+        "id": "d",
+        "text": "siarczan dermatanu"
+      },
+      {
+        "id": "e",
+        "text": "siarczan keratanu"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "**Hialuronian** to jedyny GAG **niesiarczanowany**, niezwiązany kowalencyjnie z białkiem rdzeniowym i syntetyzowany nie w aparacie Golgiego, lecz przez **syntazy w błonie komórkowej**. Osiąga masę **milionów daltonów** i długość kilku mikrometrów. Silnie wiąże wodę, tworząc uwodniony żel odporny na ucisk; stanowi rusztowanie dla agregatów **agrekanu** w chrząstce. Obficie występuje w mazi stawowej, ciele szklistym i skórze właściwej.",
+    "subtheme_label": "Glikozaminoglikany",
+    "source_code": "HISSTO-e2026-1-261",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Podstawową funkcją limfocytów cytotoksycznych (Tc, CD8+) jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "niszczenie komórek zakażonych wirusami i komórek nowotworowych"
+      },
+      {
+        "id": "b",
+        "text": "wytwarzanie przeciwciał"
+      },
+      {
+        "id": "c",
+        "text": "prezentacja antygenu limfocytom pomocniczym"
+      },
+      {
+        "id": "d",
+        "text": "fagocytoza bakterii zewnątrzkomórkowych"
+      },
+      {
+        "id": "e",
+        "text": "wydzielanie histaminy i heparyny"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Limfocyty **Tc (CD8+)** rozpoznają antygen prezentowany w **MHC klasy I**, obecnym na **wszystkich** komórkach jądrzastych — dlatego wykrywają zakażenie wirusowe i transformację nowotworową. Zabijają dwiema drogami: uwalniając **perforyny** (tworzą pory) i **granzymy** uruchamiające **kaspazy**, oraz przez **FasL**. Obie ścieżki kończą się **apoptozą**. Przeciwciała produkują **plazmocyty**, a pomoc immunologiczną świadczą limfocyty **Th (CD4+)**.",
+    "subtheme_label": "Limfocyty T",
+    "source_code": "HISSTO-e2026-1-262",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Głównym składnikiem szkieletu (zrębu) podniebienia miękkiego jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "rozcięgno podniebienne - tkanka łączna włóknista zbita"
+      },
+      {
+        "id": "b",
+        "text": "chrząstka szklista"
+      },
+      {
+        "id": "c",
+        "text": "chrząstka sprężysta"
+      },
+      {
+        "id": "d",
+        "text": "kość gąbczasta"
+      },
+      {
+        "id": "e",
+        "text": "tkanka tłuszczowa"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Podstawę podniebienia miękkiego stanowi **rozcięgno podniebienne** — płytka **tkanki łącznej włóknistej zbitej** o utkaniu regularnym, będąca ścięgnem **mięśnia napinacza podniebienia miękkiego**, przyczepiona do tylnego brzegu podniebienia twardego. Do niej przyczepiają się pozostałe mięśnie podniebienia. Chrząstka i kość tu nie występują — dzięki temu podniebienie miękkie jest **ruchome** i może odgradzać część nosową gardła.",
+    "subtheme_label": "Podniebienie miękkie",
+    "source_code": "HISSTO-e2026-1-263",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-22",
+    "text": "Błędna fuzja wyniosłości nosowych przyśrodkowych prowadzi do:",
+    "options": [
+      {
+        "id": "a",
+        "text": "atrezji przełyku"
+      },
+      {
+        "id": "b",
+        "text": "rozszczepu podniebienia wtórnego"
+      },
+      {
+        "id": "c",
+        "text": "rozszczepu wargi"
+      },
+      {
+        "id": "d",
+        "text": "braku języka"
+      },
+      {
+        "id": "e",
+        "text": "przetoki tchawiczo-przełykowej"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wyniosłości nosowe **przyśrodkowe** zlewają się ze sobą i z wyniosłościami **szczękowymi**, tworząc **segment międzyszczękowy**: rynienkę podnosową, przedszczękę z czterema siekaczami i **podniebienie pierwotne**. Zaburzenie tej fuzji daje **rozszczep wargi**, często z rozszczepem wyrostka zębodołowego. Rozszczep podniebienia **wtórnego** wynika z niezrośnięcia **płytek podniebiennych** wyniosłości szczękowych - to odrębny mechanizm i inny okres krytyczny.",
+    "subtheme_label": "Wady rozwojowe twarzy",
+    "source_code": "HISSTO-e2026-1-264",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Koncepcja gronka wątrobowego przedstawia:",
+    "options": [
+      {
+        "id": "a",
+        "text": "różnice w metabolizmie i zaopatrzeniu hepatocytów w tlen"
+      },
+      {
+        "id": "b",
+        "text": "drogę odpływu żółci do przewodu żółciowego wspólnego"
+      },
+      {
+        "id": "c",
+        "text": "unerwienie autonomiczne wątroby"
+      },
+      {
+        "id": "d",
+        "text": "przebieg naczyń chłonnych wątroby"
+      },
+      {
+        "id": "e",
+        "text": "rozmieszczenie komórek Browicza-Kupffera"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Gronko (acinus) Rappaporta** to romb między dwiema żyłami centralnymi, którego osią jest **triada wrotna**. Dzieli miąższ na **strefy 1-3** wg odległości od dopływu krwi. **Strefa 1** (okołowrotna) jest najlepiej utlenowana - dominuje tu **glukoneogeneza**, **beta-oksydacja** i synteza mocznika, i tu pierwsze uszkadza **wirusowe zapalenie**. **Strefa 3** (okołocentralna), uboga w tlen, prowadzi **glikolizę** i detoksykację (**cytochrom P450**) - jest najwrażliwsza na **niedokrwienie** i toksyny.",
+    "subtheme_label": "Wątroba - jednostki czynnościowe",
+    "source_code": "HISSTO-e2026-1-265",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "W kierunku jakiej struktury przemieszczają się ameloblasty podczas wydzielania szkliwa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "brodawki zębowej"
+      },
+      {
+        "id": "b",
+        "text": "zębiny"
+      },
+      {
+        "id": "c",
+        "text": "nabłonka zewnętrznego narządu szkliwotwórczego"
+      },
+      {
+        "id": "d",
+        "text": "nabłonka wewnętrznego narządu szkliwotwórczego"
+      },
+      {
+        "id": "e",
+        "text": "cementu korzeniowego"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "Wydzielanie zaczyna się na **granicy szkliwno-zębinowej**, więc każda kolejna warstwa macierzy odsuwa ameloblast **na zewnątrz** - w stronę **nabłonka zewnętrznego narządu szkliwotwórczego**. Ślad tego ruchu widać jako **pryzmaty szkliwne** o przebiegu prostopadłym do powierzchni zębiny oraz **linie przyrostowe Retziusa**. Po zakończeniu amelogenezy ameloblasty tworzą **nabłonek zredukowany szkliwa**, z którego powstaje pierwotny **przyczep nabłonkowy**.",
+    "subtheme_label": "Amelogeneza",
+    "source_code": "HISSTO-e2026-1-266",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "W tkance łącznej zbitej o utkaniu regularnym włókna kolagenowe są ułożone:",
+    "options": [
+      {
+        "id": "a",
+        "text": "losowo"
+      },
+      {
+        "id": "b",
+        "text": "promieniście"
+      },
+      {
+        "id": "c",
+        "text": "równolegle"
+      },
+      {
+        "id": "d",
+        "text": "spiralnie"
+      },
+      {
+        "id": "e",
+        "text": "w luźną siateczkę"
+      }
+    ],
+    "correct_option_id": "c",
+    "explanation": "W utkaniu **regularnym** grube pęczki **kolagenu typu I** biegną **równolegle**, zgodnie z kierunkiem działania siły - daje to ogromną wytrzymałość na rozciąganie w **jednej osi**. Między pęczkami leżą spłaszczone **fibrocyty (komórki ścięgnowe)** w charakterystycznych szeregach. Tak zbudowane są **ścięgna**, **więzadła** i **rozcięgna**. Utkanie **nieregularne** (skóra właściwa, torebki narządów) ma pęczki splecione wielokierunkowo - odporność na siły z każdej strony.",
+    "subtheme_label": "Tkanka łączna zbita",
+    "source_code": "HISSTO-e2026-1-267",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Wypustki odontoblastów biegnące w kanalikach zębinowych to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "włókna Tomesa"
+      },
+      {
+        "id": "b",
+        "text": "włókna Korffa"
+      },
+      {
+        "id": "c",
+        "text": "włókna Sharpeya"
+      },
+      {
+        "id": "d",
+        "text": "włókna siateczkowe"
+      },
+      {
+        "id": "e",
+        "text": "włókna von Ebnera"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Wypustki (włókna) Tomesa** to przedłużenia cytoplazmy odontoblastów wypełniające **kanaliki zębinowe** na całej grubości zębiny. Ciała komórek pozostają na obwodzie **miazgi**, dlatego zębina jest tkanką **żywą**, zdolną do odkładania zębiny **wtórnej** i **reparacyjnej**. Ruch płynu wokół wypustek odpowiada za ból wg teorii **hydrodynamicznej**. Włókna **Korffa** to kolagen zębiny płaszczowej, a **Sharpeya** - włókna kotwiczące ozębną w cemencie i kości.",
+    "subtheme_label": "Zębina - odontoblasty",
+    "source_code": "HISSTO-e2026-1-268",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-05",
+    "text": "Najliczniejszymi komórkami tkanki łącznej właściwej są:",
+    "options": [
+      {
+        "id": "a",
+        "text": "fibroblasty"
+      },
+      {
+        "id": "b",
+        "text": "adipocyty"
+      },
+      {
+        "id": "c",
+        "text": "makrofagi"
+      },
+      {
+        "id": "d",
+        "text": "mastocyty"
+      },
+      {
+        "id": "e",
+        "text": "plazmocyty"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Fibroblasty** to komórki **osiadłe**, wywodzące się z **mezenchymy**, stanowiące większość populacji komórkowej. Produkują wszystkie elementy macierzy: **kolagen**, **elastynę**, **glikozaminoglikany**, **proteoglikany** i **glikoproteiny adhezyjne**, a przez wydzielanie **kolagenaz** także ją przebudowują - kluczowe w **gojeniu ran**. Pozostałe wymienione komórki (makrofagi, mastocyty, plazmocyty) są **napływowe** i pojawiają się liczniej dopiero w stanie zapalnym.",
+    "subtheme_label": "Komórki tkanki łącznej właściwej",
+    "source_code": "HISSTO-e2026-1-269",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-08",
+    "text": "Białkiem niekolagenowym odpowiadającym za mineralizację kości jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "osteokalcyna"
+      },
+      {
+        "id": "b",
+        "text": "elastyna"
+      },
+      {
+        "id": "c",
+        "text": "fibronektyna"
+      },
+      {
+        "id": "d",
+        "text": "prawidłowe A i B"
+      },
+      {
+        "id": "e",
+        "text": "prawidłowe A, B i C"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Osteokalcyna (BGP)** jest najobficiej występującym niekolagenowym białkiem kości, wydzielanym przez **osteoblasty**. Zawiera reszty **kwasu gamma-karboksyglutaminowego** powstające przy udziale **witaminy K**, które wiążą **Ca2+** i **hydroksyapatyt**, regulując mineralizację. Jej stężenie w surowicy służy jako **marker obrotu kostnego**. **Elastyna** w kości nie występuje, a **fibronektyna** to białko adhezyjne bez roli mineralizacyjnej.",
+    "subtheme_label": "Macierz kostna",
+    "source_code": "HISSTO-e2026-1-270",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-13",
+    "text": "Główną funkcją krypt migdałkowych jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "produkcja limfocytów T"
+      },
+      {
+        "id": "b",
+        "text": "synteza RANKL"
+      },
+      {
+        "id": "c",
+        "text": "magazynowanie limfy"
+      },
+      {
+        "id": "d",
+        "text": "zwiększenie powierzchni kontaktu antygenów z tkanką limfoidalną"
+      },
+      {
+        "id": "e",
+        "text": "produkcja śluzu"
+      }
+    ],
+    "correct_option_id": "d",
+    "explanation": "**Krypty** to głębokie wpuklenia nabłonka (w migdałku podniebiennym ok. **10-20**), które wielokrotnie zwiększają powierzchnię czynną narządu. Zatrzymany w nich materiał antygenowy z pokarmu i powietrza przenika przez **nabłonek limfoepitelialny** do **grudek chłonnych**, inicjując odpowiedź swoistą i produkcję **IgA**. Migdałki są narządami **obwodowymi** - limfocyty T dojrzewają w **grasicy**. Zaleganie złuszczonego nabłonka w kryptach daje **czopy migdałkowe**.",
+    "subtheme_label": "Migdałki",
+    "source_code": "HISSTO-e2026-1-271",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-12",
+    "text": "Wskaż zdanie prawdziwe dotyczące bazofilów:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zawierają ziarnistości z histaminą i heparyną"
+      },
+      {
+        "id": "b",
+        "text": "nie mają ziarnistości"
+      },
+      {
+        "id": "c",
+        "text": "są najliczniejszymi granulocytami krwi"
+      },
+      {
+        "id": "d",
+        "text": "nie uczestniczą w reakcjach nadwrażliwości typu I"
+      },
+      {
+        "id": "e",
+        "text": "stanowią około 20% krążących leukocytów"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Bazofile** to najrzadsze leukocyty - poniżej **1%** wszystkich krwinek białych (najliczniejsze są **neutrofile**, 60-70%). Ich duże, ciemnofioletowe ziarnistości **metachromatyczne** przesłaniają dwupłatowe jądro i zawierają **histaminę**, **heparynę** oraz czynniki chemotaktyczne. Na powierzchni mają receptory **FcepsilonRI** dla **IgE**: związanie alergenu wyzwala degranulację, czyli reakcję **nadwrażliwości typu I**. Ich odpowiednikiem tkankowym są **mastocyty**.",
+    "subtheme_label": "Granulocyty zasadochłonne",
+    "source_code": "HISSTO-e2026-1-272",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Wskaż zdanie prawdziwe o inhibitorze trypsyny obecnym w ziarnistościach komórek zewnątrzwydzielniczych trzustki:",
+    "options": [
+      {
+        "id": "a",
+        "text": "zapobiega przedwczesnej aktywacji trypsyny wewnątrz trzustki"
+      },
+      {
+        "id": "b",
+        "text": "jest aktywowany przez enterokinazę dwunastnicy"
+      },
+      {
+        "id": "c",
+        "text": "aktywuje chymotrypsynogen"
+      },
+      {
+        "id": "d",
+        "text": "odpowiada za wydzielanie jonów HCO3- przez komórki przewodzików"
+      },
+      {
+        "id": "e",
+        "text": "rozkłada trypsynę w świetle dwunastnicy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Enzymy trzustkowe są magazynowane w **ziarnistościach zymogenowych** jako nieczynne **proenzymy**. Razem z nimi pakowany jest **inhibitor trypsyny (PSTI/SPINK1)**, który natychmiast blokuje śladowe ilości samoistnie powstałej **trypsyny** - to zabezpieczenie przed **autotrawieniem** narządu. Fizjologiczna aktywacja zachodzi dopiero w dwunastnicy: **enterokinaza** tnie trypsynogen, a powstała trypsyna aktywuje pozostałe zymogeny. Załamanie tej ochrony to mechanizm **ostrego zapalenia trzustki**.",
+    "subtheme_label": "Trzustka zewnątrzwydzielnicza",
+    "source_code": "HISSTO-e2026-1-273",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-18",
+    "text": "Hormonem przysadki wpływającym na wydzielanie hormonów tarczycy jest:",
+    "options": [
+      {
+        "id": "a",
+        "text": "TSH (tyreotropina)"
+      },
+      {
+        "id": "b",
+        "text": "FSH (folikulotropina)"
+      },
+      {
+        "id": "c",
+        "text": "ACTH (kortykotropina)"
+      },
+      {
+        "id": "d",
+        "text": "LH (lutropina)"
+      },
+      {
+        "id": "e",
+        "text": "GH (somatotropina)"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**TSH** powstaje w **tyreotropach** części gruczołowej przysadki (komórki **zasadochłonne**), pod kontrolą podwzgórzowej **TRH**. Pobudza komórki pęcherzykowe do wychwytu jodu, syntezy **tyreoglobuliny** i endocytozy koloidu, zwiększając uwalnianie **T3/T4**; te zwrotnie hamują przysadkę - klasyczne **ujemne sprzężenie zwrotne osi HPT**. Przewlekła stymulacja TSH powoduje **przerost pęcherzyków** i wole. **FSH** i **LH** działają na gonady, **ACTH** na korę nadnerczy.",
+    "subtheme_label": "Przysadka - część gruczołowa",
+    "source_code": "HISSTO-e2026-1-274",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-14",
+    "text": "Koncepcja gronka wątrobowego (acinus) opisuje:",
+    "options": [
+      {
+        "id": "a",
+        "text": "strefy miąższu różniące się zaopatrzeniem w tlen i profilem metabolicznym"
+      },
+      {
+        "id": "b",
+        "text": "klasyczny zrazik sześciokątny z żyłą centralną w osi"
+      },
+      {
+        "id": "c",
+        "text": "budowę dróg żółciowych zewnątrzwątrobowych"
+      },
+      {
+        "id": "d",
+        "text": "rozmieszczenie komórek Ito magazynujących witaminę A"
+      },
+      {
+        "id": "e",
+        "text": "przebieg naczyń chłonnych przestrzeni Dissego"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "**Gronko Rappaporta** ujmuje miąższ od strony **ukrwienia**, a nie odpływu żółci: osią jest **triada wrotna**, a wierzchołkami dwie **żyły centralne**. Wyróżnia **strefy 1-3** o malejącej prężności tlenu i odmiennym profilu enzymatycznym. Model tłumaczy typowe wzorce uszkodzeń: martwicę **okołocentralną (strefa 3)** w niedokrwieniu i zatruciu **paracetamolem** oraz zmiany **okołowrotne (strefa 1)** w wirusowym zapaleniu. Zrazik klasyczny opisuje natomiast odpływ krwi do żyły centralnej.",
+    "subtheme_label": "Wątroba - strefy czynnościowe",
+    "source_code": "HISSTO-e2026-1-275",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-02",
+    "text": "Glikolipidy błony komórkowej komórek zwierzęcych zbudowane są z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ceramidu (sfingozyna + kwas tłuszczowy) połączonego z resztami cukrowymi"
+      },
+      {
+        "id": "b",
+        "text": "glicerolu, dwóch kwasów tłuszczowych i reszty fosforanowej"
+      },
+      {
+        "id": "c",
+        "text": "czterech pierścieni sterolowych z grupą hydroksylową"
+      },
+      {
+        "id": "d",
+        "text": "łańcucha polipeptydowego z przyłączonym kwasem tłuszczowym"
+      },
+      {
+        "id": "e",
+        "text": "wyłącznie reszt cukrowych połączonych wiązaniami glikozydowymi"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Glikolipidy zwierzęce to **glikosfingolipidy**: część hydrofobową stanowi **ceramid** (**sfingozyna** + kwas tłuszczowy), a hydrofilową - łańcuch cukrowy. Przy jednej reszcie cukru powstaje **cerebrozyd**, przy oligosacharydzie z **kwasem sialowym** - **gangliozyd**. Występują wyłącznie w **zewnętrznej** warstwie błony, współtworząc **glikokaliks**, oznaczenia grup krwi i receptory. Glicerol z resztą fosforanową to **fosfolipid**, a pierścienie sterolowe - **cholesterol**.",
+    "subtheme_label": "Lipidy błonowe",
+    "source_code": "HISSTO-e2026-1-276",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Brodawki nitkowate języka charakteryzują się:",
+    "options": [
+      {
+        "id": "a",
+        "text": "silnym zrogowaceniem nabłonka"
+      },
+      {
+        "id": "b",
+        "text": "obecnością licznych kubków smakowych"
+      },
+      {
+        "id": "c",
+        "text": "czerwonym zabarwieniem wynikającym z prześwitywania naczyń"
+      },
+      {
+        "id": "d",
+        "text": "obecnością wału i bruzdy okalającej"
+      },
+      {
+        "id": "e",
+        "text": "obecnością gruczołów surowiczych u podstawy"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Brodawki nitkowate mają stożkowaty kształt i **gruby nabłonek rogowaciejący**, skierowany szczytami ku tyłowi - działają jak szczotka ułatwiająca przesuwanie pokarmu i odbiór bodźców **dotykowych**. Brak w nich **kubków smakowych**. Ich białoszara barwa kontrastuje z **czerwonymi** brodawkami **grzybowatymi**, w których prześwitują naczynia. Nadmierne rogowacenie i przerost dają obraz **języka włochatego**; zanik - **wygładzenie języka** w niedokrwistościach.",
+    "subtheme_label": "Brodawki języka",
+    "source_code": "HISSTO-e2026-1-277",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Brodawki grzybowate języka:",
+    "options": [
+      {
+        "id": "a",
+        "text": "leżą pojedynczo na grzbiecie i brzegach języka, głównie na koniuszku, i zawierają kubki smakowe"
+      },
+      {
+        "id": "b",
+        "text": "są całkowicie pozbawione kubków smakowych"
+      },
+      {
+        "id": "c",
+        "text": "są otoczone wałem i głęboką bruzdą okalającą"
+      },
+      {
+        "id": "d",
+        "text": "są pokryte grubym, silnie zrogowaciałym nabłonkiem"
+      },
+      {
+        "id": "e",
+        "text": "są najliczniejszymi brodawkami języka"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Brodawki grzybowate mają kształt **grzybka** o wąskiej podstawie i szerokim szczycie; leżą **pojedynczo** wśród brodawek nitkowatych, najgęściej na **koniuszku** i brzegach języka. Cienki, **nierogowaciejący** nabłonek i obfite unaczynienie blaszki właściwej nadają im **czerwoną** barwę widoczną gołym okiem. Na powierzchni górnej mają nieliczne **kubki smakowe**. Wał i bruzda okalająca cechują brodawki **okolone** (7-12 sztuk przed bruzdą graniczną).",
+    "subtheme_label": "Brodawki języka",
+    "source_code": "HISSTO-e2026-1-278",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  },
+  {
+    "topic_id": "HIST-21",
+    "text": "Bladoróżowe zabarwienie dziąsła przyczepionego wynika z:",
+    "options": [
+      {
+        "id": "a",
+        "text": "rogowacenia nabłonka i zbitej blaszki właściwej bez powierzchownych splotów naczyniowych"
+      },
+      {
+        "id": "b",
+        "text": "obecności licznych melanocytów"
+      },
+      {
+        "id": "c",
+        "text": "gęstej sieci naczyń włosowatych tuż pod nabłonkiem"
+      },
+      {
+        "id": "d",
+        "text": "braku blaszki właściwej"
+      },
+      {
+        "id": "e",
+        "text": "obecności obfitej tłuszczowej tkanki podśluzowej"
+      }
+    ],
+    "correct_option_id": "a",
+    "explanation": "Dziąsło przyczepione należy do błony śluzowej **żującej**: pokrywa je **nabłonek wielowarstwowy płaski rogowaciejący** lub parakeratotyczny, a blaszka właściwa jest **zbita**, bogata w kolagen i zrośnięta z okostną wyrostka zębodołowego (**mucoperiosteum**) - bez warstwy podśluzowej i bez powierzchownych splotów naczyniowych. Zrogowaciała warstwa rozprasza światło, dając barwę bladoróżową. Sąsiednia **śluzówka wyścielająca** jest cienka, nierogowaciejąca i wyraźnie **czerwona**.",
+    "subtheme_label": "Błona śluzowa dziąsła",
+    "source_code": "HISSTO-e2026-1-279",
+    "batch_label": "e_hist_stoma_2026/5",
+    "source_exam": "Egzamin histologia STOMA SUM 2026 (HISSTO e2026-1)",
+    "theme_label": "2026",
+    "tracks": [
+      "stomatologia"
+    ]
+  }
+]

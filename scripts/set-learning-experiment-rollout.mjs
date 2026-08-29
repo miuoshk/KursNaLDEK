@@ -2,6 +2,9 @@
 
 import { readFile } from "node:fs/promises";
 import { createClient } from "@supabase/supabase-js";
+import { loadEnvLocal } from "./lib/load-env-local.mjs";
+
+loadEnvLocal();
 
 const args = new Map();
 let apply = false;

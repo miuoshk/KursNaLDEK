@@ -1,0 +1,26 @@
+{
+  "experimentKey": "memory-v2-rollout",
+  "evaluatedAt": "2026-08-26T02:26:13.268Z",
+  "stage": "offline-replay",
+  "generatedAt": "2026-08-26T02:26:13.269Z",
+  "input": "/Users/miuoshk/Documents/Cursor/kursnaldek/exports/learning-replay-history.jsonl",
+  "v2Config": "/Users/miuoshk/Documents/Cursor/kursnaldek/exports/fsrs-parameters.json",
+  "parameterFingerprint": "571a6814c5a8a150589993a36c7f1546a96c5d3de1ee6de909ff9c97d51ea046",
+  "holdoutAfter": "2026-07-01T00:00:00.000Z",
+  "attempts": 2580239,
+  "scoredAttempts": 192039,
+  "control": {
+    "predictedAttempts": 117490,
+    "brierScore": 0.16178600197701007,
+    "logLoss": 1.189905030161267,
+    "averageScheduledDays": 20.520722353271992
+  },
+  "treatment": {
+    "predictedAttempts": 117490,
+    "brierScore": 0.16021868170303613,
+    "logLoss": 1.1768409545567053,
+    "averageScheduledDays": 4.474221382115092
+  },
+  "decision": "pass",
+  "violations": []
+}

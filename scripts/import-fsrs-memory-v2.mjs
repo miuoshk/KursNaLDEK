@@ -4,6 +4,9 @@ import { createReadStream } from "node:fs";
 import { resolve } from "node:path";
 import { createInterface } from "node:readline";
 import { createClient } from "@supabase/supabase-js";
+import { loadEnvLocal } from "./lib/load-env-local.mjs";
+
+loadEnvLocal();
 
 const apply = process.argv.includes("--apply");
 const inputArg = process.argv.slice(2).find((value) => !value.startsWith("--"));

@@ -67,24 +67,31 @@ const itemEntries = [];
 let activeKey = null;
 let activeReviews = [];
 let activeReviewTimes = [];
+let activeDeltas = [];
 let previousReviewAt = null;
 let reliableAttempts = 0;
 let cardCount = 0;
 let holdoutAttempts = 0;
+let skippedSameDayPrefixes = 0;
 
 function flushCard() {
   if (activeReviews.length >= 2) {
     cardCount += 1;
     for (let index = 1; index < activeReviews.length; index += 1) {
+      if (activeDeltas[index] <= 0) {
+        skippedSameDayPrefixes += 1;
+        continue;
+      }
       itemEntries.push({
         item: new FSRSBindingItem(activeReviews.slice(0, index + 1)),
         targetAt: activeReviewTimes[index].getTime(),
       });
+      reliableAttempts += 1;
     }
-    reliableAttempts += activeReviews.length - 1;
   }
   activeReviews = [];
   activeReviewTimes = [];
+  activeDeltas = [];
   previousReviewAt = null;
 }
 
@@ -127,6 +134,7 @@ for await (const rawLine of stream) {
         );
   activeReviews.push(new FSRSBindingReview(grade(row), deltaT));
   activeReviewTimes.push(reviewAt);
+  activeDeltas.push(deltaT);
   previousReviewAt = reviewAt;
 }
 flushCard();
@@ -150,7 +158,7 @@ const startedAt = new Date();
 const weights = await computeParameters(items, {
   enableShortTerm: true,
   numRelearningSteps: 1,
-  timeout: 600,
+  timeout: 3600,
   trainingConfig: {
     numEpochs: 5,
     batchSize: 512,
@@ -171,7 +179,7 @@ const weights = await computeParameters(items, {
 const evaluation = await evaluateWithTimeSeriesSplits(items, {
   enableShortTerm: true,
   numRelearningSteps: 1,
-  timeout: 600,
+  timeout: 3600,
 });
 
 const outputPath = resolve(outputArg);
@@ -188,6 +196,7 @@ const result = {
   sampleSize: reliableAttempts,
   cardCount,
   trainingItemCount: items.length,
+  skippedSameDayPrefixes,
   logLoss: evaluation.logLoss,
   rmseBins: evaluation.rmseBins,
   seed: 20260825,

@@ -12,6 +12,7 @@ import {
   FileDown,
   FileText,
   History,
+  Inbox,
   MessageSquare,
   ShieldCheck,
   Users,
@@ -44,6 +45,7 @@ const NAV_ITEMS: readonly NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: BarChart3 },
   { href: "/admin/pytania", label: "Pytania", icon: FileText },
   { href: "/admin/testy", label: "Testy DOCX", icon: FileDown },
+  { href: "/admin/cem/inbox", label: "Poczekalnia CEM", icon: Inbox },
   {
     href: "/admin/bledy",
     label: "Zgłoszenia błędów",

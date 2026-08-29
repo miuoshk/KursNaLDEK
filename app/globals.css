@@ -25,6 +25,26 @@
   --color-brand-sage: #367368;
   --color-brand-gold: #C9A84C;
 
+  /* ── pricing gate (wybór roku / pakietu) ── */
+  --color-gate-bg: #0B1D16;
+  --color-gate-surface: #112620;
+  --color-gate-surface-hi: #163026;
+  --color-gate-line: #24443A;
+  --color-gate-divider: #1B382E;
+  --color-gate-ink: #F3EFE3;
+  --color-gate-ink-dim: #A7BCAF;
+  --color-gate-ink-faint: #6E8579;
+  --color-gate-gold: #D9B45B;
+  --color-gate-gold-hi: #EED9A0;
+  --color-gate-gold-ink: #241A05;
+  --color-gate-gold-deep: #C9A245;
+  --color-gate-trial: #7FD6B4;
+  --color-gate-owned: #9BC98F;
+  --color-gate-paid: #CDB77E;
+  --color-gate-paid-border: #4A3F22;
+  --radius-gate: 18px;
+  --radius-gate-cta: 12px;
+
   /* ── status ── */
   --color-success: #4ADE80;
   --color-error: #F87171;

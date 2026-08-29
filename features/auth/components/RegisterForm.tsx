@@ -44,7 +44,8 @@ export function RegisterForm() {
   const [courseType, setCourseType] = useState<CourseType>("");
   const [currentTrack, setCurrentTrack] = useState<"" | "stomatologia" | "lekarski">("");
   const isBasicSciences = courseType === "knnp";
-  const isCoursePreparing = courseType === "ldek" || courseType === "ldew";
+  const isCoursePreparing = courseType === "ldek";
+  const isLdew = courseType === "ldew";
   const lekYear2Closed =
     currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 2);
   const lekYear3Closed =
@@ -162,6 +163,15 @@ export function RegisterForm() {
           <option value="ldew">{t("courseLdew")}</option>
         </select>
       </div>
+
+      {isLdew ? (
+        <p
+          className="rounded-btn border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.08)] px-4 py-3 font-body text-body-sm text-brand-gold"
+          role="status"
+        >
+          {t("courseLdewOpen")}
+        </p>
+      ) : null}
 
       {isCoursePreparing ? (
         <p

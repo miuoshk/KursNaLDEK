@@ -4,8 +4,10 @@ import {
   STUDY_OPTIONS,
   isFreeTestSelection,
   isRegistrationClosedForSelection,
+  isRegistrationOpenForProduct,
   normalizeTrack,
   normalizeYear,
+  productRequiresPurchase,
   selectionSchema,
 } from "@/features/access/lib/studyAccess";
 
@@ -62,5 +64,13 @@ describe("studyAccess rules", () => {
     assert.equal(isRegistrationClosedForSelection("lekarski", 1), false);
     assert.equal(isRegistrationClosedForSelection("stomatologia", 2), false);
     assert.equal(isRegistrationClosedForSelection("stomatologia", 3), false);
+  });
+
+  it("opens registration for knnp and ldew, keeps ldek closed", () => {
+    assert.equal(isRegistrationOpenForProduct("knnp"), true);
+    assert.equal(isRegistrationOpenForProduct("ldew"), true);
+    assert.equal(isRegistrationOpenForProduct("ldek"), false);
+    assert.equal(productRequiresPurchase("ldew"), true);
+    assert.equal(productRequiresPurchase("ldek"), false);
   });
 });

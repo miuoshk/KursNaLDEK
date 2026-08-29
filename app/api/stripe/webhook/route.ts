@@ -3,7 +3,15 @@ import { revalidateTag } from "next/cache";
 import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getStripeServerClient } from "@/lib/stripe/server";
-import { normalizeTrack, normalizeYear, trackSchema, yearSchema } from "@/features/access/lib/studyAccess";
+import {
+  normalizeProduct,
+  normalizeTrack,
+  normalizeYear,
+  trackSchema,
+  yearSchema,
+} from "@/features/access/lib/studyAccess";
+import { resolvePaidGrant } from "@/features/access/lib/mergePaidEntitlement";
+import { CONSUMER_CONSENT_ACCESS_DAYS } from "@/features/checkout/constants/consentText";
 import {
   isChargeFullyRefunded,
   resolveChargeEntitlement,
@@ -77,6 +85,7 @@ async function handleChargeFullyRefunded(charge: Stripe.Charge) {
     userId: resolved.userId,
     track: resolved.track,
     year: resolved.year,
+    product: resolved.product,
   });
   await syncProfileSubscriptionStatus(resolved.userId);
 }
@@ -102,23 +111,58 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 
   const track = normalizeTrack(parsedTrack.data);
   const year = normalizeYear(parsedYear.data);
+  const product = normalizeProduct(session.metadata?.product);
+  const offerKey = session.metadata?.offer_key?.trim() || null;
+  const purchasedDays = Number(session.metadata?.access_days);
+  const accessDaysInput =
+    Number.isFinite(purchasedDays) && purchasedDays > 0
+      ? purchasedDays
+      : CONSUMER_CONSENT_ACCESS_DAYS;
+
   const admin = createAdminClient();
-  const grantedAt = new Date().toISOString();
-  const subscriptionEndsAt = getEntitlementExpiresAt(grantedAt, "paid")?.toISOString() ?? null;
+  const { data: existing } = await admin
+    .from("user_year_entitlements")
+    .select("granted_at, access_days, offer_key")
+    .eq("user_id", userId)
+    .eq("product", product)
+    .eq("track", track)
+    .eq("year", year)
+    .eq("active", true)
+    .maybeSingle();
+
+  const grant = resolvePaidGrant({
+    now: new Date(),
+    purchasedAccessDays: accessDaysInput,
+    purchasedOfferKey: offerKey,
+    existing: existing
+      ? {
+          granted_at: existing.granted_at as string,
+          access_days: (existing.access_days as number | null) ?? null,
+          offer_key: (existing.offer_key as string | null) ?? null,
+        }
+      : null,
+  });
+
+  const grantedAt = grant.granted_at.toISOString();
+  const subscriptionEndsAt =
+    getEntitlementExpiresAt(grantedAt, "paid", grant.access_days)?.toISOString() ?? null;
 
   const { error: entitlementError } = await admin.from("user_year_entitlements").upsert(
     {
       user_id: userId,
+      product,
       track,
       year,
       access_type: "paid",
       active: true,
       granted_at: grantedAt,
+      offer_key: grant.offer_key,
+      access_days: grant.access_days,
       stripe_checkout_session_id: session.id,
       stripe_payment_intent_id:
         typeof session.payment_intent === "string" ? session.payment_intent : null,
     },
-    { onConflict: "user_id,track,year" },
+    { onConflict: "user_id,product,track,year" },
   );
 
   if (entitlementError) {
@@ -130,6 +174,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const { error: profileError } = await admin
     .from("profiles")
     .update({
+      current_product: product,
       current_track: track,
       current_year: year,
       stripe_customer_id: customerId,

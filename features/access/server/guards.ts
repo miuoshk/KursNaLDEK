@@ -3,10 +3,15 @@ import "server-only";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/getCurrentUser";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { hasAnyActiveEntitlement, hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
-import { isClinicalProduct } from "@/features/access/lib/studyAccess";
-import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
+import {
+  hasAnyActiveEntitlement,
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+} from "@/features/access/server/entitlements";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import { normalizeProduct, normalizeTrack } from "@/features/access/lib/studyAccess";
+import { loadCurrentSelectionAccess } from "@/features/access/server/currentAccess";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
@@ -22,7 +27,16 @@ export async function requireAnyEntitlementOrRedirect() {
   }
 
   const profile = await getProfileByUserId(user.id);
-  if (isClinicalProduct(normalizeProduct(profile?.current_product))) {
+  const product = normalizeProduct(profile?.current_product);
+  if (shouldBypassPurchaseGate(product, profile?.role)) {
+    return user;
+  }
+
+  if (usesDurationGate(product)) {
+    const hasProduct = await hasActiveEntitlementForProduct(user.id, product);
+    if (!hasProduct) {
+      redirect("/wybor-roku");
+    }
     return user;
   }
 
@@ -65,14 +79,22 @@ export async function hasAccessForSubjectSelection(
   }
 
   const normalizedProduct = normalizeProduct(product ?? undefined);
-  if (isClinicalProduct(normalizedProduct)) {
-    const profile = await getProfileByUserId(user.id);
-    return normalizeProduct(profile?.current_product) === normalizedProduct;
+  const profile = await getProfileByUserId(user.id);
+
+  if (usesDurationGate(normalizedProduct) || normalizedProduct === "ldek") {
+    if (normalizeProduct(profile?.current_product) !== normalizedProduct) {
+      return false;
+    }
+    if (shouldBypassPurchaseGate(normalizedProduct, profile?.role)) {
+      return true;
+    }
+    return hasActiveEntitlementForProduct(user.id, normalizedProduct);
   }
 
   return hasActiveEntitlementForSelection(
     user.id,
     track === "lekarski" ? "lekarski" : "stomatologia",
     year === 2 || year === 3 ? year : 1,
+    "knnp",
   );
 }

@@ -1,13 +1,16 @@
 import "server-only";
 
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import {
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+} from "@/features/access/server/entitlements";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import {
   normalizeProduct,
   normalizeTrack,
   normalizeYear,
-  isClinicalProduct,
-  type StudyProduct,
   type StudyTrack,
   type StudyYear,
 } from "@/features/access/lib/studyAccess";
@@ -24,11 +27,16 @@ export async function loadCurrentSelectionAccess(userId: string): Promise<Curren
   const year = normalizeYear(profile?.current_year);
   const product = normalizeProduct(profile?.current_product);
 
-  if (product === "ldew" || product === "ldek") {
-    return { track, year: 1, hasAccess: true };
+  if (shouldBypassPurchaseGate(product, profile?.role)) {
+    return { track, year: usesDurationGate(product) ? 1 : year, hasAccess: true };
   }
 
-  const hasAccess = await hasActiveEntitlementForSelection(userId, track, year);
+  if (usesDurationGate(product)) {
+    const hasAccess = await hasActiveEntitlementForProduct(userId, product);
+    return { track, year: 1, hasAccess };
+  }
+
+  const hasAccess = await hasActiveEntitlementForSelection(userId, track, year, "knnp");
 
   return {
     track,

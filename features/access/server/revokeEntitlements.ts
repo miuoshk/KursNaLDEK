@@ -6,7 +6,7 @@ import {
   filterValidEntitlements,
   type EntitlementRowForAccess,
 } from "@/features/access/lib/evaluateEntitlementAccess";
-import type { AccessType, StudyTrack, StudyYear } from "@/features/access/lib/studyAccess";
+import type { AccessType, StudyProduct, StudyTrack, StudyYear } from "@/features/access/lib/studyAccess";
 
 export async function revokeAllEntitlementsForUser(userId: string): Promise<void> {
   const admin = createAdminClient();
@@ -25,15 +25,22 @@ export async function revokeEntitlementForSelection(args: {
   userId: string;
   track: StudyTrack;
   year: StudyYear;
+  product?: StudyProduct;
 }): Promise<void> {
   const admin = createAdminClient();
-  const { error } = await admin
+  let query = admin
     .from("user_year_entitlements")
     .update({ active: false })
     .eq("user_id", args.userId)
     .eq("track", args.track)
     .eq("year", args.year)
     .eq("active", true);
+
+  if (args.product) {
+    query = query.eq("product", args.product);
+  }
+
+  const { error } = await query;
 
   if (error) {
     throw new Error(error.message);
@@ -44,7 +51,7 @@ export async function syncProfileSubscriptionStatus(userId: string): Promise<voi
   const admin = createAdminClient();
   const { data, error: readError } = await admin
     .from("user_year_entitlements")
-    .select("access_type, granted_at, active")
+    .select("access_type, granted_at, active, access_days")
     .eq("user_id", userId)
     .eq("active", true);
 
@@ -57,7 +64,9 @@ export async function syncProfileSubscriptionStatus(userId: string): Promise<voi
   ).filter((entry) => entry.access_type === "paid");
 
   const latestExpiry = paidEntitlements
-    .map((entry) => getEntitlementExpiresAt(entry.granted_at, entry.access_type as AccessType))
+    .map((entry) =>
+      getEntitlementExpiresAt(entry.granted_at, entry.access_type as AccessType, entry.access_days),
+    )
     .filter((date): date is Date => date !== null)
     .sort((a, b) => b.getTime() - a.getTime())[0];
 

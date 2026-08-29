@@ -3,9 +3,11 @@
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
-import { getStripePriceId } from "@/features/access/lib/stripePrices";
+import { getStripePriceIdForOffer } from "@/features/access/lib/stripePrices";
+import { resolveGateOfferById, KNNP_YEAR_OFFERS, type GateOffer } from "@/features/access/lib/gateCatalog";
 import {
   isFreeTestSelection,
   isRegistrationClosedForSelection,
@@ -37,21 +39,36 @@ async function getOriginFromHeaders() {
   return `${proto}://${host}`;
 }
 
-export async function createCheckoutSessionAction(formData: FormData) {
+function offerFromForm(formData: FormData): GateOffer | null {
+  const offerId = z.string().min(1).safeParse(formData.get("offerId"));
+  if (offerId.success) {
+    return resolveGateOfferById(offerId.data);
+  }
   const parsed = selectionSchema.safeParse({
     track: formData.get("track"),
     year: formData.get("year"),
   });
-  if (!parsed.success) {
+  if (!parsed.success) return null;
+  return (
+    KNNP_YEAR_OFFERS.find(
+      (offer) => offer.track === parsed.data.track && offer.year === parsed.data.year,
+    ) ?? null
+  );
+}
+
+export async function createCheckoutSessionAction(formData: FormData) {
+  const offer = offerFromForm(formData);
+  if (!offer) {
     redirect(checkoutErrorUrl("invalid-selection"));
   }
-
-  if (isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+  if (offer.kind === "year" && offer.isFreeTest) {
     redirect("/wybor-roku");
   }
-
-  if (isRegistrationClosedForSelection(parsed.data.track, parsed.data.year)) {
+  if (offer.kind === "year" && isRegistrationClosedForSelection(offer.track, offer.year)) {
     redirect(checkoutErrorUrl("registration-closed"));
+  }
+  if (offer.kind === "year" && isFreeTestSelection(offer.track, offer.year)) {
+    redirect("/wybor-roku");
   }
 
   const supabase = await createClient();
@@ -70,6 +87,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
   let checkoutUrl: string | null = null;
   let failureReason: CheckoutErrorReason | null = null;
+  const offerKey = offer.kind === "duration" ? offer.offerKey : "";
 
   try {
     if (!process.env.STRIPE_SECRET_KEY) {
@@ -79,7 +97,7 @@ export async function createCheckoutSessionAction(formData: FormData) {
 
     let priceId: string;
     try {
-      priceId = getStripePriceId(parsed.data.track, parsed.data.year);
+      priceId = getStripePriceIdForOffer(offer);
     } catch (priceError) {
       console.error("[createCheckoutSessionAction] price lookup failed", priceError);
       failureReason = "stripe-missing-price";
@@ -102,6 +120,15 @@ export async function createCheckoutSessionAction(formData: FormData) {
       throw profileResult.error;
     }
 
+    const metadata = {
+      user_id: user.id,
+      product: offer.product,
+      offer_key: offerKey,
+      track: offer.track,
+      year: String(offer.year),
+      access_days: String(offer.accessDays),
+    };
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
@@ -118,17 +145,9 @@ export async function createCheckoutSessionAction(formData: FormData) {
           message: buildStripeTermsAcceptanceMessage(origin, tCheckout),
         },
       },
-      metadata: {
-        user_id: user.id,
-        track: parsed.data.track,
-        year: String(parsed.data.year),
-      },
+      metadata,
       payment_intent_data: {
-        metadata: {
-          user_id: user.id,
-          track: parsed.data.track,
-          year: String(parsed.data.year),
-        },
+        metadata,
       },
     });
 

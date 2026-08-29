@@ -49,6 +49,15 @@ export function isClinicalProduct(product: StudyProduct): boolean {
   return product === "ldew" || product === "ldek";
 }
 
+/** LDEK kliniczny zostaje w preview (bez płatności). LDEW i KNNP wymagają entitlements. */
+export function productRequiresPurchase(product: StudyProduct): boolean {
+  return product === "knnp" || product === "ldew";
+}
+
+export function isRegistrationOpenForProduct(product: StudyProduct): boolean {
+  return product === "knnp" || product === "ldew";
+}
+
 export function isFreeTestSelection(track: StudyTrack, year: StudyYear): boolean {
   return track === "stomatologia" && year === 2;
 }

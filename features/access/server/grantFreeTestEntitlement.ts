@@ -13,12 +13,15 @@ export async function grantFreeTestEntitlement(args: {
   const { error } = await admin.from("user_year_entitlements").upsert(
     {
       user_id: args.userId,
+      product: "knnp",
       track: args.track,
       year: args.year,
       access_type: "free_test",
       active: true,
+      offer_key: null,
+      access_days: null,
     },
-    { onConflict: "user_id,track,year" },
+    { onConflict: "user_id,product,track,year" },
   );
 
   if (error) {

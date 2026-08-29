@@ -2,14 +2,18 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SettingsProfile } from "@/features/settings/types";
 import type { KnnpSessionMode } from "@/features/session/types";
 import { defaultLocale, isAppLocale } from "@/i18n/config";
-import { isClinicalProduct } from "@/features/access/lib/studyAccess";
 import {
   normalizeProduct,
   normalizeTrack,
   normalizeYear,
 } from "@/features/access/lib/studyAccess";
 import { getEntitlementExpiresAt } from "@/features/access/lib/entitlementExpiry";
-import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import {
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+} from "@/features/access/server/entitlements";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import { isProfileAdmin } from "@/lib/auth/profileAdmin";
 
 const DEFAULT_MODE: KnnpSessionMode = "inteligentna";
@@ -80,23 +84,28 @@ export async function loadSettings(
   const track = normalizeTrack(profile.current_track);
   const year = normalizeYear(profile.current_year);
   const hasAccess =
-    isClinicalProduct(profile.current_product) ||
-    (await hasActiveEntitlementForSelection(userId, track, year));
+    shouldBypassPurchaseGate(profile.current_product, profileRow?.role) ||
+    (usesDurationGate(profile.current_product)
+      ? await hasActiveEntitlementForProduct(userId, profile.current_product)
+      : await hasActiveEntitlementForSelection(userId, track, year, "knnp"));
   if (!hasAccess) {
     profile.subscription_status = "inactive";
   } else if (!profile.subscription_ends_at) {
-    const { data: entitlementRow } = await supabase
+    let entitlementQuery = supabase
       .from("user_year_entitlements")
-      .select("access_type, granted_at")
+      .select("access_type, granted_at, access_days")
       .eq("user_id", userId)
-      .eq("track", track)
-      .eq("year", year)
-      .eq("active", true)
-      .maybeSingle();
+      .eq("product", profile.current_product)
+      .eq("active", true);
+    if (!usesDurationGate(profile.current_product)) {
+      entitlementQuery = entitlementQuery.eq("track", track).eq("year", year);
+    }
+    const { data: entitlementRow } = await entitlementQuery.maybeSingle();
     if (entitlementRow?.granted_at) {
       const expiresAt = getEntitlementExpiresAt(
         entitlementRow.granted_at as string,
         entitlementRow.access_type as "free_test" | "paid",
+        entitlementRow.access_days as number | null,
       );
       profile.subscription_ends_at = expiresAt?.toISOString() ?? null;
     }

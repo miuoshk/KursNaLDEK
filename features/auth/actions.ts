@@ -256,7 +256,7 @@ export async function registerAction(
     };
   }
 
-  if (parsed.data.courseType !== "knnp") {
+  if (parsed.data.courseType === "ldek") {
     return {
       error: translateErrorKey(tErrors, "coursePreparing"),
       info: null,
@@ -273,9 +273,13 @@ export async function registerAction(
     return { error: translateErrorKey(tErrors, rateLimit.messageKey), info: null };
   }
 
-  const track = normalizeTrack(parsed.data.currentTrack);
-  const year = normalizeYear(parsed.data.currentYear);
-  if (isRegistrationClosedForSelection(track, year)) {
+  const track =
+    parsed.data.courseType === "ldew"
+      ? "stomatologia"
+      : normalizeTrack(parsed.data.currentTrack);
+  const year =
+    parsed.data.courseType === "ldew" ? 1 : normalizeYear(parsed.data.currentYear);
+  if (parsed.data.courseType === "knnp" && isRegistrationClosedForSelection(track, year)) {
     return {
       error: translateErrorKey(tErrors, "registrationClosedSelection"),
       info: null,

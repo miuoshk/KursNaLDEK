@@ -3,8 +3,13 @@ import "server-only";
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
-import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import {
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+} from "@/features/access/server/entitlements";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import {
   normalizeProduct,
   normalizeTrack,
@@ -33,7 +38,19 @@ export async function requireLearningAccessForSelection(
 
   const profile = await getProfileByUserId(userId);
   const product = normalizeProduct(profile?.current_product);
-  if (isClinicalProduct(product)) {
+  if (shouldBypassPurchaseGate(product, profile?.role)) {
+    return {
+      ok: true,
+      track: normalizeTrack(profile?.current_track ?? track),
+      year: isClinicalProduct(product) ? 1 : year,
+    };
+  }
+
+  if (usesDurationGate(product)) {
+    const allowed = await hasActiveEntitlementForProduct(userId, product);
+    if (!allowed) {
+      return { ok: false, message: await deniedMessage() };
+    }
     return {
       ok: true,
       track: normalizeTrack(profile?.current_track ?? track),
@@ -41,7 +58,7 @@ export async function requireLearningAccessForSelection(
     };
   }
 
-  const allowed = await hasActiveEntitlementForSelection(userId, track, year);
+  const allowed = await hasActiveEntitlementForSelection(userId, track, year, "knnp");
   if (!allowed) {
     return { ok: false, message: await deniedMessage() };
   }
@@ -54,12 +71,12 @@ export async function requireLearningAccessForProfile(
 ): Promise<LearningAccessGranted | LearningAccessDenied> {
   const profile = await getProfileByUserId(userId);
   const product = normalizeProduct(profile?.current_product);
-  if (isClinicalProduct(product)) {
-    return {
-      ok: true,
-      track: normalizeTrack(profile?.current_track),
-      year: 1,
-    };
+  if (shouldBypassPurchaseGate(product, profile?.role) || usesDurationGate(product)) {
+    return requireLearningAccessForSelection(
+      userId,
+      normalizeTrack(profile?.current_track),
+      isClinicalProduct(product) ? 1 : normalizeYear(profile?.current_year),
+    );
   }
   return requireLearningAccessForSelection(
     userId,
@@ -90,6 +107,15 @@ export async function requireLearningAccessForSubject(
   if (isClinicalProduct(subjectProduct)) {
     if (userProduct !== subjectProduct) {
       return { ok: false, message: await deniedMessage() };
+    }
+    if (
+      !shouldBypassPurchaseGate(subjectProduct, profile?.role) &&
+      usesDurationGate(subjectProduct)
+    ) {
+      const allowed = await hasActiveEntitlementForProduct(userId, subjectProduct);
+      if (!allowed) {
+        return { ok: false, message: await deniedMessage() };
+      }
     }
     return {
       ok: true,

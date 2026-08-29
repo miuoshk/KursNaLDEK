@@ -5,8 +5,14 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getStripeServerClient } from "@/lib/stripe/server";
 import { grantFreeTestEntitlement } from "@/features/access/server/grantFreeTestEntitlement";
-import { isFreeTestSelection, selectionSchema } from "@/features/access/lib/studyAccess";
-import { hasAnyActiveEntitlement } from "@/features/access/server/entitlements";
+import { resolveGateOfferById, KNNP_YEAR_OFFERS } from "@/features/access/lib/gateCatalog";
+import { isFreeTestSelection, isClinicalProduct, selectionSchema } from "@/features/access/lib/studyAccess";
+import {
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+  hasAnyActiveEntitlement,
+} from "@/features/access/server/entitlements";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
 import { isUserAccessRevoked } from "@/lib/auth/accessRevocation";
 import { ACCESS_REVOKED_QUERY } from "@/lib/auth/accountBan";
 
@@ -55,14 +61,28 @@ async function redirectIfAccessRevoked(userId: string) {
 }
 
 export async function activateFreeTestYearAction(formData: FormData) {
-  const parsed = selectionSchema.safeParse({
-    track: formData.get("track"),
-    year: formData.get("year"),
-  });
-  if (!parsed.success) {
+  const offerId = String(formData.get("offerId") ?? "");
+  const fromCatalog = offerId ? resolveGateOfferById(offerId) : null;
+  const yearOffer =
+    fromCatalog?.kind === "year"
+      ? fromCatalog
+      : (() => {
+          const parsed = selectionSchema.safeParse({
+            track: formData.get("track"),
+            year: formData.get("year"),
+          });
+          if (!parsed.success) return null;
+          return (
+            KNNP_YEAR_OFFERS.find(
+              (offer) => offer.track === parsed.data.track && offer.year === parsed.data.year,
+            ) ?? null
+          );
+        })();
+
+  if (!yearOffer) {
     redirect(errorRedirectUrl("invalid-selection"));
   }
-  if (!isFreeTestSelection(parsed.data.track, parsed.data.year)) {
+  if (!yearOffer.isFreeTest || !isFreeTestSelection(yearOffer.track, yearOffer.year)) {
     redirect(errorRedirectUrl("free-only-stoma2"));
   }
 
@@ -76,15 +96,16 @@ export async function activateFreeTestYearAction(formData: FormData) {
   try {
     await grantFreeTestEntitlement({
       userId: user.id,
-      track: parsed.data.track,
-      year: parsed.data.year,
+      track: yearOffer.track,
+      year: yearOffer.year,
     });
 
     const { error: profileError } = await supabase
       .from("profiles")
       .update({
-        current_track: parsed.data.track,
-        current_year: parsed.data.year,
+        current_product: "knnp",
+        current_track: yearOffer.track,
+        current_year: yearOffer.year,
       })
       .eq("id", user.id);
 
@@ -99,6 +120,52 @@ export async function activateFreeTestYearAction(formData: FormData) {
 
   if (failureReason) {
     redirect(errorRedirectUrl(failureReason));
+  }
+
+  redirect("/pulpit");
+}
+
+export async function enterOwnedGateAction(formData: FormData) {
+  const offer = resolveGateOfferById(String(formData.get("offerId") ?? ""));
+  if (!offer) {
+    redirect(errorRedirectUrl("invalid-selection"));
+  }
+
+  const { user, supabase } = await getUserOrNull();
+  if (!user) {
+    redirect("/login");
+  }
+  await redirectIfAccessRevoked(user.id);
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  const bypass = shouldBypassPurchaseGate(offer.product, profile?.role);
+  const allowed =
+    bypass ||
+    (offer.kind === "duration"
+      ? await hasActiveEntitlementForProduct(user.id, offer.product)
+      : await hasActiveEntitlementForSelection(user.id, offer.track, offer.year, "knnp"));
+
+  if (!allowed) {
+    redirect("/wybor-roku");
+  }
+
+  const { error: profileError } = await supabase
+    .from("profiles")
+    .update({
+      current_product: offer.product,
+      current_track: offer.track,
+      current_year: isClinicalProduct(offer.product) ? 1 : offer.year,
+    })
+    .eq("id", user.id);
+
+  if (profileError) {
+    console.error("[enterOwnedGateAction] profile update failed", profileError.message);
+    redirect(errorRedirectUrl("supabase-profile-update"));
   }
 
   redirect("/pulpit");

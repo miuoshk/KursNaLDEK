@@ -120,6 +120,7 @@
     "courseLdek": "LDEK (Lekarsko-Dentystyczny Egzamin Końcowy)",
     "courseLdew": "LDEW (Lekarsko-Dentystyczny Egzamin Weryfikacyjny)",
     "coursePreparing": "Ten kurs jest w przygotowaniu — wkrótce dostępny.",
+    "courseLdewOpen": "Po rejestracji wybierzesz pakiet dostępu (30, 180 lub 365 dni). Płatność jednorazowa, bez subskrypcji.",
     "track": "Kierunek",
     "trackPlaceholder": "Wybierz kierunek",
     "trackStomatologia": "Stomatologia",
@@ -1257,6 +1258,80 @@
     "paidDescription": "Dostęp płatny jednorazowo.",
     "badgeTest": "Testowy",
     "badgePaid": "Płatny",
+    "badgeOwned": "Aktywny",
+    "unlockCta": "Odblokuj dostęp",
+    "eyebrowLdek": "Kurs na LDEK · dostęp",
+    "eyebrowLdew": "Kurs na LDEW · dostęp",
+    "gateKierunekLdek": "LDEK",
+    "gateKierunekLdew": "LDEW",
+    "chooseDuration": "Wybierz okres dostępu",
+    "yearHeading": "Rok {year}",
+    "durationTitle": "{days} dni",
+    "featuredYourYear": "Twój rok",
+    "featuredRecommended": "Polecane",
+    "priceNoteKnnp": "jednorazowo · dostęp do egzaminu",
+    "priceNoteTrial": "pełny dostęp w okresie testowym",
+    "priceNoteDuration": "jednorazowo · {days} dni dostępu",
+    "ownedNote": "Dostęp opłacony — ważny do egzaminu.",
+    "ownedNoteDuration": "Dostęp opłacony — liczony od momentu zakupu.",
+    "trialAmount": "0 zł",
+    "trustStripe": "Płatności obsługuje Stripe",
+    "trustMethods": "BLIK · karta · Apple Pay · Google Pay",
+    "trustInstant": "Dostęp aktywny natychmiast po płatności",
+    "ledeKnnp": "<trial>Stomatologia rok 2</trial> to darmowy rok testowy. Pozostałe opcje to płatność jednorazowa, <nosub>bez subskrypcji</nosub>.",
+    "ledeDuration": "Pełny kurs nostryfikacyjny. Płatność jednorazowa, <nosub>bez subskrypcji</nosub>.",
+    "includes": {
+      "knnpStoma1": [
+        "Przedmioty 1. roku stomatologii",
+        "Sesje adaptacyjne i powtórki",
+        "Śledzenie postępów na bieżąco"
+      ],
+      "knnpStoma2": [
+        "Przedmioty 2. roku stomatologii",
+        "Pełny dostęp w okresie testowym",
+        "Te same narzędzia co w płatnym"
+      ],
+      "knnpStoma3": [
+        "Przedmioty 3. roku stomatologii",
+        "Sesje adaptacyjne i powtórki",
+        "Przygotowanie do kolejnego roku"
+      ],
+      "knnpLek1": [
+        "Przedmioty 1. roku lekarskiego",
+        "Sesje adaptacyjne i powtórki",
+        "Śledzenie postępów na bieżąco"
+      ],
+      "ldew30": [
+        "Pełny bank pytań LDEW",
+        "Powtórki i statystyki postępów",
+        "Sprint 30 dni do egzaminu"
+      ],
+      "ldew180": [
+        "Pełny bank pytań LDEW",
+        "Plan powtórek na semestr",
+        "Wszystkie przedmioty kliniczne"
+      ],
+      "ldew365": [
+        "Pełny bank pytań LDEW",
+        "Cały cykl przygotowań do egzaminu",
+        "Wszystkie przedmioty kliniczne"
+      ],
+      "ldek30": [
+        "Pełny bank pytań LDEK",
+        "Powtórki i statystyki postępów",
+        "Sprint 30 dni do egzaminu"
+      ],
+      "ldek180": [
+        "Pełny bank pytań LDEK",
+        "Plan powtórek na semestr",
+        "Wszystkie przedmioty kliniczne"
+      ],
+      "ldek365": [
+        "Pełny bank pytań LDEK",
+        "Cały cykl przygotowań do egzaminu",
+        "Wszystkie przedmioty kliniczne"
+      ]
+    },
     "registrationClosed": "Rejestracja zamknięta.",
     "noAccessTitle": "Brak dostępu",
     "chooseTrackYear": "Wybierz kierunek i rok",

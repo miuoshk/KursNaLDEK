@@ -7,15 +7,24 @@ export type EntitlementTiming = {
   access_type: AccessType;
   granted_at: string;
   active: boolean;
+  access_days?: number | null;
 };
 
-export function getPaidAccessDurationMs(): number {
-  return CONSUMER_CONSENT_ACCESS_DAYS * MS_PER_DAY;
+export function resolvePaidAccessDays(accessDays?: number | null): number {
+  if (typeof accessDays === "number" && Number.isFinite(accessDays) && accessDays > 0) {
+    return accessDays;
+  }
+  return CONSUMER_CONSENT_ACCESS_DAYS;
+}
+
+export function getPaidAccessDurationMs(accessDays?: number | null): number {
+  return resolvePaidAccessDays(accessDays) * MS_PER_DAY;
 }
 
 export function getEntitlementExpiresAt(
   grantedAt: string | Date,
   accessType: AccessType,
+  accessDays?: number | null,
 ): Date | null {
   if (accessType !== "paid") {
     return null;
@@ -24,7 +33,7 @@ export function getEntitlementExpiresAt(
   if (Number.isNaN(start.getTime())) {
     return null;
   }
-  return new Date(start.getTime() + getPaidAccessDurationMs());
+  return new Date(start.getTime() + getPaidAccessDurationMs(accessDays));
 }
 
 export function isEntitlementCurrentlyValid(
@@ -34,7 +43,7 @@ export function isEntitlementCurrentlyValid(
   if (!row.active) {
     return false;
   }
-  const expiresAt = getEntitlementExpiresAt(row.granted_at, row.access_type);
+  const expiresAt = getEntitlementExpiresAt(row.granted_at, row.access_type, row.access_days);
   if (!expiresAt) {
     return true;
   }

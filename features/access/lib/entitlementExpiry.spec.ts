@@ -38,6 +38,12 @@ describe("entitlementExpiry", () => {
     );
   });
 
+  it("uses access_days when provided", () => {
+    const grantedAt = new Date("2026-01-01T00:00:00.000Z");
+    const expiresAt = getEntitlementExpiresAt(grantedAt, "paid", 365);
+    assert.equal(expiresAt?.toISOString(), "2027-01-01T00:00:00.000Z");
+  });
+
   it("accepts paid entitlements within the window", () => {
     assert.equal(
       isEntitlementCurrentlyValid(

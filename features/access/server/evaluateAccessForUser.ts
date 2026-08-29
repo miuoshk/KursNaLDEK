@@ -1,10 +1,13 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   hasAnyValidEntitlement,
+  hasValidEntitlementForProduct,
   hasValidEntitlementForSelection,
   type EntitlementRowForAccess,
 } from "@/features/access/lib/evaluateEntitlementAccess";
-import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
+import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 
 export type UserAccessEvaluation = {
   revoked: boolean;
@@ -21,12 +24,12 @@ export async function evaluateAccessForUser(
   const [profileResult, entitlementsResult] = await Promise.all([
     supabase
       .from("profiles")
-      .select("access_revoked_at, current_track, current_year, current_product")
+      .select("access_revoked_at, current_track, current_year, current_product, role")
       .eq("id", userId)
       .maybeSingle(),
     supabase
       .from("user_year_entitlements")
-      .select("track, year, access_type, granted_at, active")
+      .select("track, year, access_type, granted_at, active, product, offer_key, access_days")
       .eq("user_id", userId)
       .eq("active", true),
   ]);
@@ -35,21 +38,21 @@ export async function evaluateAccessForUser(
   const year = normalizeYear(profileResult.data?.current_year);
   const product = normalizeProduct(profileResult.data?.current_product as string | null | undefined);
   const rows = (entitlementsResult.data ?? []) as EntitlementRowForAccess[];
+  const revoked = Boolean(profileResult.data?.access_revoked_at);
 
-  if (isClinicalProduct(product)) {
-    return {
-      revoked: Boolean(profileResult.data?.access_revoked_at),
-      hasAny: true,
-      hasCurrent: true,
-      track,
-      year,
-    };
+  if (shouldBypassPurchaseGate(product, profileResult.data?.role)) {
+    return { revoked, hasAny: true, hasCurrent: true, track, year };
+  }
+
+  if (usesDurationGate(product)) {
+    const has = hasValidEntitlementForProduct(rows, product);
+    return { revoked, hasAny: has, hasCurrent: has, track, year };
   }
 
   return {
-    revoked: Boolean(profileResult.data?.access_revoked_at),
-    hasAny: hasAnyValidEntitlement(rows),
-    hasCurrent: hasValidEntitlementForSelection(rows, track, year),
+    revoked,
+    hasAny: hasAnyValidEntitlement(rows.filter((row) => normalizeProduct(row.product) === "knnp")),
+    hasCurrent: hasValidEntitlementForSelection(rows, track, year, "knnp"),
     track,
     year,
   };

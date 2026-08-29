@@ -2,7 +2,7 @@ import "server-only";
 
 import type Stripe from "stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { normalizeTrack, normalizeYear, type StudyTrack, type StudyYear } from "@/features/access/lib/studyAccess";
+import { normalizeProduct, normalizeTrack, normalizeYear, type StudyProduct, type StudyTrack, type StudyYear } from "@/features/access/lib/studyAccess";
 
 /**
  * Lokalna replika danych płatności Stripe.
@@ -34,6 +34,7 @@ export type ResolvedChargeEntitlement = {
   userId: string;
   track: StudyTrack;
   year: StudyYear;
+  product: StudyProduct;
 };
 
 function chargeToRow(charge: Stripe.Charge): StripePaymentRow {
@@ -71,10 +72,12 @@ export async function resolveChargeEntitlement(
 ): Promise<ResolvedChargeEntitlement | null> {
   const row = chargeToRow(charge);
   if (row.user_id && row.track && row.year) {
+    const metadata = (charge.metadata ?? {}) as Record<string, string | undefined>;
     return {
       userId: row.user_id,
       track: normalizeTrack(row.track),
       year: normalizeYear(row.year),
+      product: normalizeProduct(metadata.product),
     };
   }
 
@@ -86,7 +89,7 @@ export async function resolveChargeEntitlement(
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("user_year_entitlements")
-    .select("user_id, track, year")
+    .select("user_id, track, year, product")
     .eq("stripe_payment_intent_id", paymentIntentId)
     .maybeSingle();
 
@@ -103,6 +106,7 @@ export async function resolveChargeEntitlement(
     userId: data.user_id as string,
     track: normalizeTrack(data.track as string),
     year: normalizeYear(data.year as number),
+    product: normalizeProduct(data.product as string | null | undefined),
   };
 }
 

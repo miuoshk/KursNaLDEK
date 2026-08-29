@@ -5,7 +5,12 @@ import { buildKnnpSubjectsList } from "@/features/subjects/server/buildKnnpSubje
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { getCachedProductCatalog } from "@/features/shared/server/knnpCatalogCache";
 import { getTrackShellsForContentSubject } from "@/features/session/server/sharedSubjects";
-import { hasActiveEntitlementForSelection } from "@/features/access/server/entitlements";
+import {
+  hasActiveEntitlementForProduct,
+  hasActiveEntitlementForSelection,
+} from "@/features/access/server/entitlements";
+import { shouldBypassPurchaseGate } from "@/features/access/lib/purchaseGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import { isClinicalProduct, normalizeProduct, normalizeTrack, normalizeYear, type StudyProduct } from "@/features/access/lib/studyAccess";
 
 export type ProfileForSubjects = {
@@ -72,9 +77,11 @@ export async function loadKnnpSubjectsData(): Promise<LoadKnnpSubjectsResult> {
       );
     }
 
-    const isSubscribed = isClinicalProduct(product)
+    const isSubscribed = shouldBypassPurchaseGate(product, profileRow?.role)
       ? true
-      : await hasActiveEntitlementForSelection(user.id, track, currentYear);
+      : usesDurationGate(product)
+        ? await hasActiveEntitlementForProduct(user.id, product)
+        : await hasActiveEntitlementForSelection(user.id, track, currentYear, "knnp");
 
     if (catalog.subjectRows.length === 0) {
       console.warn(

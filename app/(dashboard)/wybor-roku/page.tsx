@@ -2,14 +2,17 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
-import { STUDY_OPTIONS, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
+import { normalizeProduct, normalizeTrack, normalizeYear } from "@/features/access/lib/studyAccess";
 import { listActiveEntitlementsByUserId } from "@/features/access/server/entitlements";
 import {
   activateFreeTestYearAction,
   completeCheckoutActivationAction,
+  enterOwnedGateAction,
 } from "@/features/access/actions";
 import { createCheckoutSessionAction } from "@/features/checkout/actions";
-import { YearSelectionGrid } from "@/features/access/components/YearSelectionGrid";
+import { PricingGate } from "@/features/access/components/PricingGate";
+import { loadPricingGateModel } from "@/features/access/server/loadPricingGate";
+import { usesDurationGate } from "@/features/access/lib/gateCatalog";
 import { isUserAccessRevoked, ACCESS_REVOKED_MESSAGE } from "@/lib/auth/accessRevocation";
 
 type SearchParams = Promise<{
@@ -52,28 +55,21 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
     isUserAccessRevoked(user.id),
   ]);
 
+  const product = normalizeProduct(profile?.current_product);
   const selectedTrack = normalizeTrack(profile?.current_track);
   const selectedYear = normalizeYear(profile?.current_year);
-  const unlockedKeys = new Set(entitlements.map((entry) => `${entry.track}:${entry.year}`));
-
-  const optionsWithStatus = STUDY_OPTIONS.map((option) => {
-    const key = `${option.track}:${option.year}`;
-    return {
-      ...option,
-      isSelected: option.track === selectedTrack && option.year === selectedYear,
-      isUnlocked: unlockedKeys.has(key),
-      isRegistrationClosed: false,
-    };
+  const model = await loadPricingGateModel({
+    product,
+    selectedTrack,
+    selectedYear,
+    entitlements,
   });
 
-  const hasAnyEntitlement = entitlements.length > 0;
   const status = params.status;
   const showAccessRevoked = accessRevoked || params.revoked === "1";
   const reasonKey = params.reason ? ERROR_REASON_KEYS[params.reason] : null;
   const reasonLabel =
-    reasonKey != null
-      ? t(`errors.${reasonKey}` as Parameters<typeof t>[0])
-      : null;
+    reasonKey != null ? t(`errors.${reasonKey}` as Parameters<typeof t>[0]) : null;
 
   if (showAccessRevoked) {
     return (
@@ -86,63 +82,57 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
     );
   }
 
+  const lede = usesDurationGate(product)
+    ? t.rich("ledeDuration", {
+        nosub: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
+      })
+    : t.rich("ledeKnnp", {
+        trial: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
+        nosub: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
+      });
+
   return (
-    <div className="mx-auto w-full max-w-6xl">
-      <div className="mb-8">
-        <h1 className="font-heading text-3xl font-bold text-primary">{t("chooseTrackYear")}</h1>
-        <p className="mt-2 max-w-2xl font-body text-body-md text-secondary">
-          {t("chooseDescription")}
+    <div className="mx-auto w-full">
+      {status === "success" ? (
+        <p className="relative z-10 mb-4 rounded-btn border border-brand-sage/30 bg-brand-sage/10 px-4 py-2 font-body text-body-sm text-brand-sage">
+          {t("paymentSuccess")}
         </p>
-        {status === "success" ? (
-          <p className="mt-3 rounded-btn border border-brand-sage/30 bg-brand-sage/10 px-4 py-2 font-body text-body-sm text-brand-sage">
-            {t("paymentSuccess")}
-          </p>
-        ) : null}
-        {status === "cancel" ? (
-          <p className="mt-3 rounded-btn border border-white/20 bg-white/5 px-4 py-2 font-body text-body-sm text-secondary">
-            {t("paymentCancel")}
-          </p>
-        ) : null}
-        {status === "error" ? (
-          <div className="mt-3 space-y-1 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-2">
-            <p className="font-body text-body-sm text-[#F87171]">
-              {t("paymentError")}
+      ) : null}
+      {status === "cancel" ? (
+        <p className="relative z-10 mb-4 rounded-btn border border-white/20 bg-white/5 px-4 py-2 font-body text-body-sm text-secondary">
+          {t("paymentCancel")}
+        </p>
+      ) : null}
+      {status === "error" ? (
+        <div className="relative z-10 mb-4 space-y-1 rounded-btn border border-[#F87171]/30 bg-[#F87171]/10 px-4 py-2">
+          <p className="font-body text-body-sm text-[#F87171]">{t("paymentError")}</p>
+          {reasonLabel ? (
+            <p className="font-body text-body-xs text-[#F87171]/90">
+              {t("reasonPrefix", { reason: reasonLabel })}
             </p>
-            {reasonLabel ? (
-              <p className="font-body text-body-xs text-[#F87171]/90">
-                {t("reasonPrefix", { reason: reasonLabel })}
-              </p>
-            ) : null}
-            {params.reason ? (
-              <p className="font-body text-body-xs text-[#F87171]/70">
-                {t("codePrefix", { code: params.reason })}
-              </p>
-            ) : null}
-          </div>
-        ) : null}
-        {status === "pending" ? (
-          <p className="mt-3 rounded-btn border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 font-body text-body-sm text-brand-gold">
-            {t("paymentPending")}
-          </p>
-        ) : null}
-      </div>
-
-      <YearSelectionGrid
-        options={optionsWithStatus}
-        activateFreeAction={activateFreeTestYearAction}
-        checkoutAction={createCheckoutSessionAction}
-      />
-
-      {hasAnyEntitlement ? (
-        <div className="mt-8">
-          <a
-            href="/pulpit"
-            className="inline-flex rounded-btn bg-brand-gold px-5 py-2.5 font-body font-semibold text-brand-bg transition hover:brightness-110"
-          >
-            {t("goToDashboard")}
-          </a>
+          ) : null}
+          {params.reason ? (
+            <p className="font-body text-body-xs text-[#F87171]/70">
+              {t("codePrefix", { code: params.reason })}
+            </p>
+          ) : null}
         </div>
       ) : null}
+      {status === "pending" ? (
+        <p className="relative z-10 mb-4 rounded-btn border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 font-body text-body-sm text-brand-gold">
+          {t("paymentPending")}
+        </p>
+      ) : null}
+
+      <PricingGate
+        eyebrow={model.eyebrow}
+        title={model.title}
+        lede={lede}
+        cards={model.cards}
+        checkoutAction={createCheckoutSessionAction}
+        activateFreeAction={activateFreeTestYearAction}
+        enterOwnedAction={enterOwnedGateAction}
+      />
 
       {status === "success" || status === "pending" ? (
         <form action={completeCheckoutActivationAction} className="mt-4">

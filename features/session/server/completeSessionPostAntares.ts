@@ -23,6 +23,7 @@ import {
   normalizeTopicMasteryRow,
   TOPIC_MASTERY_CACHE_SELECT,
 } from "@/features/session/lib/antares/topicMasteryCacheDb";
+import { logPerf } from "@/features/session/lib/perfLog";
 type AnswerRow = {
   question_id: string;
   is_correct: boolean;
@@ -411,6 +412,10 @@ export async function runCompleteSessionPostAntares(
     );
     throw insightsErr;
   }
+  logPerf("completeSession after() session_insights written", {
+    sessionId,
+    affectedTopicCount: affectedTopicIds.length,
+  });
 
   // Percentyl kohorty (readiness_*) liczymy w tle (next/after) — wchodzi tylko
   // na /statystyki, nie do podsumowania, więc nie blokuje ekranu po sesji.

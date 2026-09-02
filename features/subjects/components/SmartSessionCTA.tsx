@@ -21,11 +21,6 @@ import {
 import { FEATURES } from "@/lib/featureFlags";
 import { isSourceFilterLive } from "@/lib/products";
 import { Toggle } from "@/features/shared/components/Toggle";
-import { Rycina } from "@/features/shared/components/Rycina";
-import {
-  SESSION_MODE_RYCINA,
-  subjectRycina,
-} from "@/features/shared/lib/rycinaCatalog";
 import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
 
 const PRESETS = SESSION_COUNT_PRESETS;
@@ -185,9 +180,6 @@ export function SmartSessionCTA({
     return `/sesja/new?${q.toString()}`;
   }, [subjectId, srcParam]);
 
-  const plate =
-    subjectRycina(subjectId)?.plate ?? SESSION_MODE_RYCINA.inteligentnaPlate;
-
   const smartMix = sessionMixCounts(smartCount, cemCount, ownCount, fillActive);
   const reviewMix = sessionMixCounts(
     reviewCount,
@@ -202,19 +194,7 @@ export function SmartSessionCTA({
         {t("startLearning")}
       </h2>
 
-      <div className="relative overflow-hidden rounded-card border border-brand-sage/20 bg-card p-5 sm:p-6">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 overflow-hidden rounded-card"
-        >
-          <Rycina
-            id={plate}
-            mask="edge-right"
-            fit="cover"
-            className="inset-0 opacity-[0.14]"
-          />
-        </div>
-        <div className="relative z-[1]">
+      <div className="rounded-card border border-brand-sage/20 bg-card p-5 sm:p-6">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1">
             <h3 className="font-heading text-heading-sm text-primary">
@@ -340,7 +320,6 @@ export function SmartSessionCTA({
               {t("startManualSession")}
             </Link>
           ) : null}
-        </div>
         </div>
       </div>
 

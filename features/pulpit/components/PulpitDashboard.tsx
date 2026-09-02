@@ -51,7 +51,8 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
         <Rycina
           id={DASHBOARD_RYCINA.pulpitPlate}
           mask="fade-y"
-          className="left-1/2 top-[-6%] aspect-square w-[min(820px,108%)] -translate-x-1/2 opacity-[0.08]"
+          fit="cover"
+          className="inset-0 opacity-[0.10]"
         />
       </div>
       <header className="relative z-[1] flex items-start justify-between gap-4">

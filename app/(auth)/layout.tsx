@@ -15,13 +15,8 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         <Rycina
           id="sec-session-trigeminal"
           priority
-          mask="edge-left"
-          className="hidden lg:block -left-[8vh] top-1/2 aspect-[0.8] h-[110vh] -translate-y-1/2 opacity-[0.28]"
-        />
-        <Rycina
-          id="anat-permanent-arch"
-          mask="edge-right"
-          className="hidden lg:block -bottom-[8vh] -right-[6vw] aspect-[1.4] h-[70vh] opacity-[0.26]"
+          mask="fade-y"
+          className="hidden lg:block left-1/2 top-1/2 aspect-[0.8] w-[110vw] -translate-x-1/2 -translate-y-1/2 opacity-[0.16]"
         />
         <Rycina
           id="sec-session-trigeminal"

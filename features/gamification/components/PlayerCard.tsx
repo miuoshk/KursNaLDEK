@@ -4,6 +4,8 @@ import { Clock, Flame, MessageSquare, Target } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { RankProgressBar } from "@/features/gamification/components/RankProgressBar";
 import { getCurrentRank } from "@/features/gamification/lib/ranks";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { rankRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import type { GamificationPayload } from "@/features/gamification/types";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { formatStreakI18n } from "@/lib/formatStreak";
@@ -50,7 +52,10 @@ export function PlayerCard({
           </div>
           <div className="min-w-0">
             <h2 className="font-heading text-heading-md text-primary">{displayName}</h2>
-            <p className={cn("mt-1 font-body text-body-md", rank.colorClass)}>{rankName}</p>
+            <p className={cn("mt-1 flex items-center gap-2 font-body text-body-md", rank.colorClass)}>
+              <RycinaEmblem id={rankRycinaId(rank.id)} size={22} className="text-current" />
+              {rankName}
+            </p>
             <div className="mt-4">
               <RankProgressBar xp={xp} />
             </div>

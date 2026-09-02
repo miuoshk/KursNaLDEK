@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { SESSION_MODE_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { getSloganPool } from "@/features/shared/lib/slogans";
 
 /** Jak długo pokazujemy jedno motto, zanim zaczniemy fade do następnego. */
@@ -38,23 +40,32 @@ export function SessionLoadingScreen() {
 
   return (
     <div
-      className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center"
+      className="relative flex h-full min-h-0 flex-1 flex-col items-center justify-center overflow-hidden px-6 text-center"
       role="status"
       aria-live="polite"
     >
-      <p className="font-body text-body-xs uppercase tracking-[0.25em] text-muted">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Rycina
+          id={SESSION_MODE_RYCINA.loadingPlate}
+          mask="fade-y"
+          fit="cover"
+          className="inset-0 opacity-[0.14]"
+          priority
+        />
+      </div>
+      <p className="relative z-[1] font-body text-body-xs uppercase tracking-[0.25em] text-muted">
         Przygotowuję sesję
       </p>
 
       <p
-        className={`mt-6 max-w-md font-heading text-2xl font-bold text-primary transition-opacity duration-500 ease-out md:text-3xl ${
+        className={`relative z-[1] mt-6 max-w-md font-heading text-2xl font-bold text-primary transition-opacity duration-500 ease-out md:text-3xl ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >
         {slogan}
       </p>
 
-      <div className="mt-8 flex items-center gap-2" aria-hidden>
+      <div className="relative z-[1] mt-8 flex items-center gap-2" aria-hidden>
         <span
           className="inline-block size-2.5 rounded-full bg-brand-gold animate-bounce-dot"
           style={{ animationDelay: "0ms" }}

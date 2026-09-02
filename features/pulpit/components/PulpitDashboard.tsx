@@ -9,6 +9,8 @@ import { PulpitQuickStart } from "@/features/pulpit/components/PulpitQuickStart"
 import { PulpitRecentSessions } from "@/features/pulpit/components/PulpitRecentSessions";
 import { PulpitTodayCards } from "@/features/pulpit/components/PulpitTodayCards";
 import { WeakPoints } from "@/features/pulpit/components/WeakPoints";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { DASHBOARD_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { getBcp47Locale } from "@/lib/i18n/bcp47Locale";
 import type { AppLocale } from "@/i18n/config";
 
@@ -43,9 +45,16 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="space-y-8"
+      className="relative space-y-8"
     >
-      <header className="flex items-start justify-between gap-4">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Rycina
+          id={DASHBOARD_RYCINA.pulpitPlate}
+          mask="fade-y"
+          className="left-1/2 top-[-6%] aspect-square w-[min(820px,108%)] -translate-x-1/2 opacity-[0.08]"
+        />
+      </div>
+      <header className="relative z-[1] flex items-start justify-between gap-4">
         <div>
           <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
             {t("welcome", { name: data.displayName })}

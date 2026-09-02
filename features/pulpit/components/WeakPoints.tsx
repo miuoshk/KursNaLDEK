@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Trophy } from "lucide-react";
+import { Trophy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { WeakPoint } from "@/features/pulpit/server/loadWeakPoints";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 function barColor(score: number): string {
@@ -86,7 +88,7 @@ function EmptyState({
   if (!hasAnySessions) {
     return (
       <div className="mt-4 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card py-12">
-        <BookOpen className="size-6 text-secondary" aria-hidden />
+        <RycinaEmblem id={emptyRycinaId("reviews")} size={48} className="text-secondary" />
         <p className="font-body text-sm text-secondary">
           {t("weakPointsEmpty")}
         </p>

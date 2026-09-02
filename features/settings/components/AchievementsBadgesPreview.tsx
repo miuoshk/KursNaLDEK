@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { AchievementMark } from "@/features/gamification/components/AchievementMark";
 import { achievementLucide } from "@/features/gamification/lib/achievementIcons";
 import { SettingsCard } from "@/features/settings/components/SettingsCard";
 import type { BadgePreviewItem } from "@/features/settings/server/loadAchievementPreview";
@@ -27,7 +28,12 @@ export async function AchievementsBadgesPreview({ items }: Props) {
               aria-hidden
             >
               {item.unlocked ? (
-                <Icon className="size-5" />
+                <AchievementMark
+                  achievementId={item.id}
+                  Fallback={Icon}
+                  size={20}
+                  className="text-brand-gold"
+                />
               ) : (
                 <Lock className="size-5" />
               )}

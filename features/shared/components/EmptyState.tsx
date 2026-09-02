@@ -1,15 +1,20 @@
+"use client";
+
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
 
 type EmptyStateProps = {
   icon: LucideIcon;
   title: string;
-  description: string;
+  description?: string;
   cta?: { href: string; label: string };
   className?: string;
   children?: ReactNode;
+  /** Atlas mark (currentColor). Replaces the Lucide icon when set. */
+  rycinaId?: string;
 };
 
 export function EmptyState({
@@ -19,6 +24,7 @@ export function EmptyState({
   cta,
   className,
   children,
+  rycinaId,
 }: EmptyStateProps) {
   return (
     <div
@@ -27,9 +33,15 @@ export function EmptyState({
         className,
       )}
     >
-      <Icon className="size-12 text-muted" aria-hidden />
+      {rycinaId ? (
+        <RycinaEmblem id={rycinaId} size={64} className="text-muted" />
+      ) : (
+        <Icon className="size-12 text-muted" aria-hidden />
+      )}
       <h2 className="mt-4 font-heading text-heading-sm text-secondary">{title}</h2>
-      <p className="mt-2 max-w-md font-body text-body-md text-muted">{description}</p>
+      {description ? (
+        <p className="mt-2 max-w-md font-body text-body-md text-muted">{description}</p>
+      ) : null}
       {cta ? (
         <Link
           href={cta.href}

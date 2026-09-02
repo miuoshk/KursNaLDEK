@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Bookmark, ArrowRight, Loader2 } from "lucide-react";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import type { SavedQuestionItem } from "@/features/saved/server/loadSavedQuestions";
 import { toggleBookmark } from "@/features/session/api/toggleBookmark";
 import { resolveCatalogSubjectId } from "@/features/session/lib/resolveCatalogSubjectId";
@@ -60,8 +62,8 @@ export function SavedQuestionsList({ items }: { items: SavedQuestionItem[] }) {
   if (rows.length === 0) {
     return (
       <div className="rounded-card border border-border bg-card p-8 text-center">
-        <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-brand-gold/10">
-          <Bookmark className="size-6 text-brand-gold" aria-hidden />
+        <div className="mx-auto flex size-16 items-center justify-center text-muted">
+          <RycinaEmblem id={emptyRycinaId("saved")} size={64} />
         </div>
         <h2 className="mt-4 font-heading text-xl font-bold text-primary">
           {t("emptyTitle")}

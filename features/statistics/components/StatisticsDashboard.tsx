@@ -4,6 +4,8 @@ import { BarChart3 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EmptyState } from "@/features/shared/components/EmptyState";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { DASHBOARD_RYCINA, emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { ActivityHeatmap } from "@/features/statistics/components/ActivityHeatmap";
 import { AccuracyTrendChart } from "@/features/statistics/components/AccuracyTrendChart";
 import { ExamCountdown } from "@/features/statistics/components/ExamCountdown";
@@ -37,6 +39,7 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
         </header>
         <EmptyState
           icon={BarChart3}
+          rycinaId={emptyRycinaId("stats")}
           title={t("empty.title")}
           description={t("empty.description")}
           cta={{ href: "/przedmioty", label: t("empty.cta") }}
@@ -52,8 +55,15 @@ export function StatisticsDashboard({ data }: { data: StatisticsPayload }) {
   };
 
   return (
-    <div className="space-y-8">
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div className="relative space-y-8">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Rycina
+          id={DASHBOARD_RYCINA.statsPlate}
+          mask="fade-y"
+          className="right-0 top-0 h-[280px] w-[min(360px,50%)] opacity-[0.10]"
+        />
+      </div>
+      <header className="relative z-[1] flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
             {t("page.title")}

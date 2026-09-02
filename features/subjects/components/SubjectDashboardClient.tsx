@@ -23,6 +23,9 @@ import {
 import type { DailyStudyPlan } from "@/features/session/lib/dailyPlan";
 import type { ExamReadinessSnapshot } from "@/features/session/summaryTypes";
 import { ExamReadinessCard } from "@/features/session/components/ExamReadinessCard";
+import { EmptyState } from "@/features/shared/components/EmptyState";
+import { emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
+import { BookOpen } from "lucide-react";
 
 type Props = {
   subject: Subject;
@@ -107,9 +110,11 @@ export function SubjectDashboardClient({
             dailyPlan={dailyPlan}
           />
         ) : (
-          <p className="font-body text-body-sm text-muted">
-            {t("noQuestionsInSubject")}
-          </p>
+          <EmptyState
+            icon={BookOpen}
+            rycinaId={emptyRycinaId("session")}
+            title={t("noQuestionsInSubject")}
+          />
         )}
         <TopicGrid
           topics={topics}

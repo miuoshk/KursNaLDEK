@@ -31,6 +31,9 @@ import {
 } from "@/features/session/lib/questionSourceBadge";
 import { SourceFilterBar } from "@/features/shared/components/SourceFilter";
 import { Toggle } from "@/features/shared/components/Toggle";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { SESSION_MODE_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { FEATURES } from "@/lib/featureFlags";
 import { isSourceFilterLive } from "@/lib/products";
 
@@ -200,7 +203,7 @@ export function TopicSessionConfigDialog({
   const catalogHref = buildHref(subjectId, topicId, "katalog", 5000, activeSource);
 
   const altCardClass =
-    "flex flex-col rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
+    "relative flex flex-col overflow-hidden rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -284,12 +287,22 @@ export function TopicSessionConfigDialog({
             <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-stretch">
               {/* Left column — Hero card */}
               <div className="lg:flex lg:flex-col">
-                <div className="relative flex flex-col rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4 lg:h-full">
-                  <span className="absolute -top-2 right-3 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
+                <div className="relative flex flex-col overflow-visible rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4 lg:h-full">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-card"
+                  >
+                    <Rycina
+                      id={SESSION_MODE_RYCINA.inteligentnaPlate}
+                      mask="fade-y"
+                      className="inset-y-0 right-0 w-[80%] opacity-[0.16]"
+                    />
+                  </div>
+                  <span className="absolute -top-2 right-3 z-10 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
                     {t("recommended")}
                   </span>
 
-                  <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-[10px] bg-brand-sage/25">
+                  <div className="relative z-[1] mb-2.5 flex h-9 w-9 items-center justify-center rounded-[10px] bg-brand-sage/25">
                     <Lightbulb className="size-5 text-success" aria-hidden />
                   </div>
 
@@ -347,7 +360,8 @@ export function TopicSessionConfigDialog({
                   <>
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-1">
                       <div className={altCardClass}>
-                        <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                        <ModeWatermark id={SESSION_MODE_RYCINA.przegladEmblem} />
+                        <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <FileText className="size-4 text-muted" aria-hidden />
                         </div>
                         <h4 className="font-heading text-body-md font-bold text-primary">
@@ -390,7 +404,8 @@ export function TopicSessionConfigDialog({
                       </div>
 
                       <Link href={catalogHref} className={altCardClass}>
-                        <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                        <ModeWatermark id={SESSION_MODE_RYCINA.katalogEmblem} />
+                        <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                           <LayoutGrid className="size-4 text-muted" aria-hidden />
                         </div>
                         <h4 className="font-heading text-body-md font-bold text-primary">
@@ -435,7 +450,8 @@ export function TopicSessionConfigDialog({
                 ) : (
                   <div className="grid grid-cols-1 gap-4 lg:flex lg:flex-1 lg:flex-col">
                     <div className={cn(altCardClass, "lg:flex-1")}>
-                      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                      <ModeWatermark id={SESSION_MODE_RYCINA.przegladEmblem} />
+                      <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
                       <h4 className="font-heading text-body-md font-bold text-primary">
@@ -478,7 +494,8 @@ export function TopicSessionConfigDialog({
                     </div>
 
                     <Link href={catalogHref} className={cn(altCardClass, "lg:flex-1")}>
-                      <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
+                      <ModeWatermark id={SESSION_MODE_RYCINA.katalogEmblem} />
+                      <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <LayoutGrid className="size-4 text-muted" aria-hidden />
                       </div>
                       <h4 className="font-heading text-body-md font-bold text-primary">
@@ -513,6 +530,14 @@ type CountPillsProps = {
   questionsShort: string;
   allQuestionsAriaLabel: string;
 };
+
+function ModeWatermark({ id }: { id: string }) {
+  return (
+    <span className="pointer-events-none absolute -right-1 -top-2 text-brand-sage">
+      <RycinaEmblem id={id} size={72} className="opacity-[0.18]" />
+    </span>
+  );
+}
 
 function CountPills({
   preset,

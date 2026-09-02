@@ -32,8 +32,10 @@ export default async function SesjaPage({ params }: PageProps) {
   }
 
   return (
-    <Suspense fallback={<SessionLoadingScreen />}>
-      <SessionPageClient sessionId={sessionId} />
-    </Suspense>
+    <div className="flex min-h-0 flex-1 flex-col">
+      <Suspense fallback={<SessionLoadingScreen />}>
+        <SessionPageClient sessionId={sessionId} />
+      </Suspense>
+    </div>
   );
 }

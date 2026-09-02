@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Lock } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import type { AchievementRow } from "@/features/gamification/types";
+import { AchievementMark } from "@/features/gamification/components/AchievementMark";
 import { achievementLucide } from "@/features/gamification/lib/achievementIcons";
 import type { AppLocale } from "@/i18n/config";
 
@@ -45,7 +46,12 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
         className="rounded-card border border-brand-gold/30 bg-card p-4"
       >
         <div className="flex justify-center">
-          <Icon className="size-8 text-brand-gold" aria-hidden />
+          <AchievementMark
+            achievementId={row.id}
+            Fallback={Icon}
+            size={32}
+            className="text-brand-gold"
+          />
         </div>
         <h3 className="mt-3 text-center font-body text-body-sm font-semibold text-white">
           {name}
@@ -76,9 +82,14 @@ export function AchievementCard({ row }: { row: AchievementRow }) {
 
   return (
     <div className="rounded-card border border-[rgba(255,255,255,0.06)] bg-card p-4">
-      <div className="flex justify-center">
-        <Icon className="size-8 text-secondary" aria-hidden />
-      </div>
+        <div className="flex justify-center">
+          <AchievementMark
+            achievementId={row.id}
+            Fallback={Icon}
+            size={32}
+            className="text-secondary"
+          />
+        </div>
       <h3 className="mt-3 text-center font-body text-body-sm font-semibold text-white/80">
         {name}
       </h3>

@@ -22,6 +22,8 @@ import {
   isFirstSubjectSession,
   pickVerdictMessageKeys,
 } from "@/features/session/lib/summaryVariant";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { SESSION_MODE_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 const R = 52;
@@ -189,8 +191,16 @@ export function SummaryHero({
   const ringPercent = answered > 0 ? Math.round((ringCorrect / answered) * 100) : 0;
 
   return (
-    <div className="rounded-card border-t-[3px] border-brand-gold bg-card p-5 md:p-8">
-      <div className="min-w-0">
+    <div className="relative overflow-hidden rounded-card border-t-[3px] border-brand-gold bg-card p-5 md:p-8">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Rycina
+          id={SESSION_MODE_RYCINA.summaryPlate}
+          mask="fade-y"
+          fit="cover"
+          className="inset-0 opacity-[0.14]"
+        />
+      </div>
+      <div className="relative z-[1] min-w-0">
         <h1 className="font-heading text-[24px] leading-tight text-primary md:text-[30px]">
           {title}
         </h1>
@@ -232,9 +242,9 @@ export function SummaryHero({
         ) : null}
       </div>
 
-      {primaryCta ? <div className="mt-6">{primaryCta}</div> : null}
+      {primaryCta ? <div className="relative z-[1] mt-6">{primaryCta}</div> : null}
 
-      <div className="mt-8 flex flex-col items-center gap-6">
+      <div className="relative z-[1] mt-8 flex flex-col items-center gap-6">
         <div className="flex flex-col items-center">
           <div className="relative size-[120px]">
             <svg className="size-full -rotate-90" viewBox="0 0 120 120">
@@ -330,12 +340,14 @@ export function SummaryHero({
         </ul>
       </div>
 
-      <SummaryInsightsFooter
-        summary={summary}
-        loading={insightsLoading}
-        failed={insightsFailed}
-        onRetry={onInsightsRetry}
-      />
+      <div className="relative z-[1]">
+        <SummaryInsightsFooter
+          summary={summary}
+          loading={insightsLoading}
+          failed={insightsFailed}
+          onRetry={onInsightsRetry}
+        />
+      </div>
     </div>
   );
 }

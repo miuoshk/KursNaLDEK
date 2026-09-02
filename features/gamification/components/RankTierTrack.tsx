@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { RANK_TIERS, getCurrentRank } from "@/features/gamification/lib/ranks";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { rankRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 export function RankTierTrack({ xp }: { xp: number }) {
@@ -28,7 +30,7 @@ export function RankTierTrack({ xp }: { xp: number }) {
               ) : null}
               <motion.div
                 className={cn(
-                  "relative z-[1] flex size-9 shrink-0 items-center justify-center rounded-full border-2 font-body text-body-xs",
+                  "relative z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border-2 font-body text-body-xs",
                   i < idx && "border-brand-gold bg-brand-gold/20 text-brand-gold",
                   i === idx &&
                     "border-brand-gold bg-brand-gold/30 text-brand-gold shadow-[0_0_12px_rgba(201,168,76,0.35)]",
@@ -37,7 +39,11 @@ export function RankTierTrack({ xp }: { xp: number }) {
                 animate={i === idx ? { scale: [1, 1.06, 1] } : {}}
                 transition={{ duration: 2, repeat: i === idx ? Infinity : 0, ease: "easeOut" }}
               >
-                {rankName.charAt(0)}
+                <RycinaEmblem
+                  id={rankRycinaId(r.id)}
+                  size={18}
+                  className={i > idx ? "text-muted" : "text-brand-gold"}
+                />
               </motion.div>
             </Fragment>
           );

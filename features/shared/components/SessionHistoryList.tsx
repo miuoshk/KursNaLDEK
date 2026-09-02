@@ -6,6 +6,8 @@ import { formatSessionDuration } from "@/features/session/lib/formatSessionDurat
 import { normalizeSessionMode } from "@/features/session/lib/sessionModeLabel";
 import type { SessionMode } from "@/features/session/types";
 import type { AppLocale } from "@/i18n/config";
+import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
+import { emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 export type SessionHistoryItem = {
@@ -79,7 +81,9 @@ export function SessionHistoryList({
 
   if (sessions.length === 0) {
     return (
-      <p className="rounded-card border border-border bg-card p-4 font-body text-body-sm text-secondary">
+      <p className="flex items-start gap-3 rounded-card border border-border bg-card p-4 font-body text-body-sm text-secondary">
+        <RycinaEmblem id={emptyRycinaId("session")} size={32} className="mt-0.5 text-muted" />
+        <span>
         {resolvedEmptyText}
         {emptyAction ? (
           <>
@@ -90,6 +94,7 @@ export function SessionHistoryList({
             !
           </>
         ) : null}
+        </span>
       </p>
     );
   }

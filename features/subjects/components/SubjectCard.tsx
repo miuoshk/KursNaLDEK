@@ -5,6 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { Clock, Lock } from "lucide-react";
 import type { SubjectWithProgress } from "@/features/subjects/types";
 import { SubjectIcon } from "@/features/subjects/components/SubjectIcon";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { subjectRycina } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 import { dzialForm } from "@/lib/pluralizePolish";
 
@@ -52,10 +54,23 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
   /** Tematy są, pytania jeszcze nie — można wejść i przeglądać siatkę tematów. */
   const structureReady = noActiveQuestions && subject.topic_count > 0;
   const isDisabled = locked || contentInPrep;
+  const plate = subjectRycina(subject.id)?.plate;
 
   const content = (
     <>
-      <div className="flex items-start justify-between gap-3">
+      {plate ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-card"
+        >
+          <Rycina
+            id={plate}
+            mask="edge-right"
+            className="inset-y-0 right-0 w-[72%] opacity-[0.18] transition-opacity duration-200 ease-out group-hover:opacity-[0.24]"
+          />
+        </div>
+      ) : null}
+      <div className="relative z-[1] flex items-start justify-between gap-3">
         <SubjectIcon
           iconName={subject.icon_name}
           subjectId={subject.id}
@@ -97,12 +112,12 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         )}
       </div>
 
-      <h2 className="mt-4 font-heading text-body-lg text-primary">
+      <h2 className="relative z-[1] mt-4 font-heading text-body-lg text-primary">
         {subject.name}
       </h2>
 
       {noActiveQuestions ? (
-        <p className="mt-2 font-body text-body-sm text-muted">
+        <p className="relative z-[1] mt-2 font-body text-body-sm text-muted">
           {contentInPrep
             ? t("comingSoonAvailable")
             : structureReady
@@ -113,7 +128,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
               : t("noActiveQuestions")}
         </p>
       ) : (
-          <p className="mt-2 font-body text-body-sm text-muted">
+          <p className="relative z-[1] mt-2 font-body text-body-sm text-muted">
             {tCommon("questionsCount", { count: subject.question_count })} · {subject.topic_count} {dzialForm(subject.topic_count)}
             {subject.due_reviews > 0 ? (
               <span className="text-brand-gold">
@@ -124,7 +139,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
         )}
 
       {!noActiveQuestions && (
-        <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/[0.06]">
+        <div className="relative z-[1] mt-4 h-1 overflow-hidden rounded-full bg-white/[0.06]">
           <div
             className="h-full rounded-full bg-brand-gold/80 transition-[width] duration-200"
             style={{ width: `${mastery}%` }}
@@ -134,7 +149,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
 
       <div
         className={cn(
-          "mt-4 flex items-center justify-between gap-2",
+          "relative z-[1] mt-4 flex items-center justify-between gap-2",
           noActiveQuestions && "mt-auto pt-4",
         )}
       >

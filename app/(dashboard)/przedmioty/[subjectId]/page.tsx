@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbSubjectSegment } from "@/features/subjects/components/BreadcrumbSubjectSegment";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectDashboardClient } from "@/features/subjects/components/SubjectDashboardClient";
+import { SubjectPageHeader } from "@/features/subjects/components/SubjectPageHeader";
 import { loadSubjectDashboard } from "@/features/subjects/server/loadSubjectDashboard";
 import { getPreferredSessionCount } from "@/features/session/lib/sessionCount";
 import { getProfileByUserId } from "@/lib/dashboard/cachedProfile";
@@ -66,9 +67,7 @@ export default async function SubjectDashboardPage({ params }: PageProps) {
   return (
     <div>
       <BreadcrumbSubjectSegment shortName={subject.short_name} />
-      <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
-        {subject.name}
-      </h1>
+      <SubjectPageHeader subjectId={subject.id} name={subject.name} />
 
       <SubjectDashboardClient
         subject={subject}

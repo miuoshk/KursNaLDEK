@@ -24,6 +24,8 @@ type RycinaProps = {
   mask?: RycinaMask;
   /** Hero: ładuj od razu. Reszta leniwie. */
   priority?: boolean;
+  /** `cover` wypełnia kontener; default `contain` nie przycina rysunku. */
+  fit?: "contain" | "cover";
 };
 
 const MASK_CLASS: Record<RycinaMask, string | undefined> = {
@@ -43,7 +45,14 @@ const MASK_CLASS: Record<RycinaMask, string | undefined> = {
  * Dekoracyjna rycina z atlasu (SVG z zaszytym kolorem gold/sage).
  * Zawsze `aria-hidden`, zawsze z maską, kolor kreski jest w pliku.
  */
-export function Rycina({ id, className, opacity, mask = "radial", priority = false }: RycinaProps) {
+export function Rycina({
+  id,
+  className,
+  opacity,
+  mask = "radial",
+  priority = false,
+  fit = "contain",
+}: RycinaProps) {
   return (
     <div
       aria-hidden="true"
@@ -57,7 +66,7 @@ export function Rycina({ id, className, opacity, mask = "radial", priority = fal
         unoptimized
         priority={priority}
         draggable={false}
-        className="object-contain"
+        className={fit === "cover" ? "object-cover" : "object-contain"}
       />
     </div>
   );

@@ -1,7 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Award } from "lucide-react";
 import { AchievementCard } from "@/features/gamification/components/AchievementCard";
+import { EmptyState } from "@/features/shared/components/EmptyState";
+import { emptyRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import type { AchievementRow } from "@/features/gamification/types";
 
 export function AchievementsGrid({ achievements }: { achievements: AchievementRow[] }) {
@@ -16,9 +19,12 @@ export function AchievementsGrid({ achievements }: { achievements: AchievementRo
         {t("achievements.unlockedCount", { unlocked, total })}
       </p>
       {achievements.length === 0 ? (
-        <p className="mt-6 font-body text-body-md text-secondary">
-          {t("achievements.empty")}
-        </p>
+        <EmptyState
+          icon={Award}
+          rycinaId={emptyRycinaId("achievements")}
+          title={t("achievements.empty")}
+          className="mt-6"
+        />
       ) : (
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {achievements.map((row) => (

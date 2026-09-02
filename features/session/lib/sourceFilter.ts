@@ -25,7 +25,7 @@ export function parseSourceFilterOrAll(value: unknown): SourceFilter {
 }
 
 /**
- * Silnik: OSCE i inne produkty bez źródeł referencyjnych zawsze dostają `all`,
+ * Silnik: produkty bez źródeł referencyjnych zawsze dostają `all`,
  * nawet gdy ktoś dopisze `?src=reference` do URL-a. Nie zwracamy pustej puli.
  */
 export function resolveEngineSourceFilter(

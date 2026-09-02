@@ -4,7 +4,6 @@ export const REFERENCE_SOURCES: Record<string, QuestionSourceValue[]> = {
   ldek: ["cem"],
   ldew: ["cem"],
   knnp: ["uczelnia", "cem"],
-  osce: [],
 };
 
 export const REFERENCE_LABEL: Record<string, string> = {

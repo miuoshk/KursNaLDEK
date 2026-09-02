@@ -3,8 +3,6 @@ import type { KnnpCatalogRows } from "@/features/shared/server/knnpCatalogCache"
 import { getTopicDisplaySubjectIds } from "@/features/session/server/sharedSubjects";
 import { isVirtualThemeTopicId } from "@/lib/content/virtualThemeTopics";
 
-const EXCLUDED_SHORT_NAMES = new Set(["OSCE"]);
-
 export function buildKnnpSubjectsList(
   catalog: KnnpCatalogRows,
   answeredPerSubject?: Map<string, number>,
@@ -28,12 +26,8 @@ export function buildKnnpSubjectsList(
     agg.set(sid, cur);
   }
 
-  const knnpRows = subjectRows.filter(
-    (row) => !EXCLUDED_SHORT_NAMES.has(row.short_name),
-  );
-
   let totalQuestionCount = 0;
-  const subjects: SubjectWithProgress[] = knnpRows.map((row) => {
+  const subjects: SubjectWithProgress[] = subjectRows.map((row) => {
     // Liczba pytań i działów: wyłącznie kanoniczne repozytorium treści (np. farmakologia).
     let questionCount = 0;
     let topicCount = 0;

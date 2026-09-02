@@ -30,7 +30,7 @@ function daysUntilExam(examDate: Date | null, now: Date): number | null {
  * false = trzymaj je na próbę generalną z arkusza.
  * true  = nie filtruj (rezerwa się nie uruchamia albo jest odblokowana).
  *
- * Dwa warunki nadrzędne (KNNP/OSCE i brak opublikowanego arkusza) są tu,
+ * Dwa warunki nadrzędne (brak egzaminów CEM i brak opublikowanego arkusza) są tu,
  * nie w composerze — inaczej studenci KNNP straciliby backfill CEM.
  */
 export function isCemReserveUnlocked(input: CemReserveUnlockInput): boolean {

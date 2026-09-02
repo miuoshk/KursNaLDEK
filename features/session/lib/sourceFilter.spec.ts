@@ -49,9 +49,9 @@ describe("filtr źródła", () => {
     assert.equal(parseSourceFilter("reference"), "reference");
   });
 
-  it("silnik: OSCE z ?src=reference zostaje all, nie pustą pulą", () => {
-    assert.equal(resolveEngineSourceFilter("reference", "osce"), "all");
-    assert.equal(resolveEngineSourceFilter("own", "osce"), "all");
+  it("produkt bez źródeł referencyjnych z ?src=reference zostaje all, nie pustą pulą", () => {
+    assert.equal(resolveEngineSourceFilter("reference", "unknown"), "all");
+    assert.equal(resolveEngineSourceFilter("own", "unknown"), "all");
     assert.equal(resolveEngineSourceFilter("reference", "knnp"), "reference");
     assert.equal(resolveEngineSourceFilter("own", "ldew"), "own");
     assert.equal(resolveEngineSourceFilter("reference", null), "all");

@@ -9,7 +9,7 @@ const CHUNK = 200;
 
 /**
  * Zawęża pulę ID do source = own albo source IN referenceSources(product).
- * OSCE (brak źródeł referencyjnych) i filtr `all` zwracają `ids` bez zapytania.
+ * Produkt bez źródeł referencyjnych i filtr `all` zwracają `ids` bez zapytania.
  */
 export async function restrictQuestionIdsBySource(
   supabase: SupabaseClient,

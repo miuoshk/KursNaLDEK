@@ -15,8 +15,7 @@ export function MarketingNav({ registrationOpen }: MarketingNavProps) {
 
   const links = [
     { href: "#jak-dziala", label: t("nav.how") },
-    { href: "#dla-kogo", label: t("nav.forWhom") },
-    { href: "#faq", label: t("nav.faq") },
+    { href: "#kursy", label: t("nav.courses") },
   ];
 
   return (

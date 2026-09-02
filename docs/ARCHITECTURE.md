@@ -9,7 +9,7 @@
 1. [Stack technologiczny](#1-stack-technologiczny)
 2. [Struktura folderów](#2-struktura-folderów)
 3. [Schema bazy danych](#3-schema-bazy-danych)
-4. [Moduły produktowe: KNNP i OSCE](#4-moduły-produktowe-knnp-i-osce)
+4. [Moduły produktowe](#4-moduły-produktowe)
 5. [ANTARES engine](#5-antares-engine)
 6. [Flow sesji nauki](#6-flow-sesji-nauki)
 7. [Gamifikacja: XP, streak, rangi](#7-gamifikacja-xp-streak-rangi)
@@ -58,18 +58,16 @@ Projekt stosuje **feature-folder pattern** — logika domenowa żyje w `features
 │   ├── (admin)/                # /admin, /admin/pytania, /admin/uzytkownicy, /admin/bledy
 │   ├── (dashboard)/            # Główny shell zalogowanego użytkownika
 │   │   ├── pulpit/             # Dashboard home
-│   │   ├── przedmioty/         # Lista przedmiotów KNNP + link do OSCE
+│   │   ├── przedmioty/         # Lista przedmiotów
 │   │   ├── sesja/[sessionId]/  # Aktywna sesja nauki + /podsumowanie
 │   │   ├── statystyki/         # Wykresy i statystyki
 │   │   ├── osiagniecia/        # Rangi, osiągnięcia, ranking
-│   │   ├── ustawienia/         # Profil, data egzaminu, powiadomienia
-│   │   └── osce/               # Atlas, stacje, symulacja OSCE
+│   │   └── ustawienia/         # Profil, data egzaminu, powiadomienia
 │   └── cennik/                 # Strona cenowa (Stripe)
 ├── features/                   # Moduły domenowe
 │   ├── admin/                  # Panel admina: metryki, pytania, użytkownicy
 │   ├── auth/                   # Login, rejestracja, logout, test mode
 │   ├── gamification/           # Rangi, osiągnięcia, XP, leaderboard
-│   ├── osce/                   # Stacje OSCE, symulacja, atlas OPG
 │   ├── pulpit/                 # Dashboard: hero stats, heatmapa, wykres postępu, słabe punkty, quick start
 │   ├── session/                # Sesje nauki, ANTARES, FSRS, podsumowania
 │   ├── settings/               # Ustawienia profilu
@@ -79,7 +77,6 @@ Projekt stosuje **feature-folder pattern** — logika domenowa żyje w `features
 ├── lib/                        # Współdzielone utility
 │   ├── supabase/               # client.ts, server.ts, admin.ts
 │   └── dashboard/              # cachedProfile, getDashboardYear, getDueReviewCount
-├── hooks/                      # Globalne hooki (usePinchZoom)
 ├── scripts/                    # Seedy SQL, migracje, shell scripts
 ├── proxy.ts                    # Next.js 16 auth proxy (odpowiednik middleware)
 ├── supabase-schema.sql         # Pełny schemat bazy (greenfield)
@@ -116,16 +113,13 @@ auth.users
        ├─ topic_mastery_cache (1:N)
        ├─ user_achievements (1:N)
        ├─ user_challenge_progress (1:N)
-       ├─ osce_simulations (1:N)
-       │    └─ osce_station_results (1:N)
        ├─ saved_questions (1:N)
        └─ question_discussions (1:N)
 
 subjects
   ├─ topics (1:N)
   │    └─ questions (1:N)
-  ├─ daily_challenges (1:N)
-  └─ osce_station_results (FK station_id)
+  └─ daily_challenges (1:N)
 
 achievements
   └─ user_achievements (1:N)
@@ -136,52 +130,38 @@ achievements
 | Tabela | Rola | Kluczowe kolumny |
 |--------|------|------------------|
 | `profiles` | Profil użytkownika | `current_product` (knnp/ldek), `xp`, `current_streak`, `rank_tier`, `exam_date`, `exam_readiness_score`, `learning_velocity` |
-| `subjects` | Przedmioty (KNNP) / stacje (OSCE) | `product` (knnp/osce), `year`, `track`, `exam_day` |
+| `subjects` | Przedmioty | `product` (knnp/ldek/ldew), `year`, `track` |
 | `topics` | Tematy w przedmiocie | `subject_id`, `question_count`, `knowledge_card` |
-| `questions` | Pytania | `topic_id`, `question_type` (single_choice, ordering, image_identify, conversion_drill), `options` (JSONB) |
+| `questions` | Pytania | `topic_id`, `question_type` (single_choice), `options` (JSONB) |
 | `user_question_progress` | Stan FSRS per pytanie per user | `stability`, `difficulty_rating`, `next_review`, `state`, `correct_streak`, `wrong_streak`, `is_leech` |
 | `study_sessions` | Sesje nauki | `mode`, `total_questions`, `correct_answers`, `xp_earned`, `session_insights` (JSONB) |
 | `session_answers` | Odpowiedzi w sesji | `is_correct`, `confidence`, `time_spent_seconds`, `is_first_exposure` |
 | `learning_events` | Zdarzenia ANTARES | `event_type`, `payload` (JSONB) |
 | `topic_mastery_cache` | Cache opanowania tematu | `mastery_score`, `avg_retrievability`, `trend`, `weakness_rank` |
-| `osce_simulations` | Symulacje OSCE | `exam_day`, `passed_overall`, `overall_percent` |
-| `osce_station_results` | Wyniki per stacja | `correct_count`, `total_questions`, `passed` |
 
 ---
 
-## 4. Moduły produktowe: KNNP i OSCE
+## 4. Moduły produktowe
 
-Oba moduły współdzielą tabelę `subjects`. Rozróżnienie odbywa się przez kolumnę **`product`**:
+Tabela `subjects` rozróżnia kursy kolumną **`product`** (`knnp`, `ldek`, `ldew`).
 
 ```sql
--- KNNP (nauki podstawowe)
 SELECT * FROM subjects WHERE product = 'knnp';
-
--- OSCE (egzamin praktyczny)
-SELECT * FROM subjects WHERE product = 'osce';
 ```
 
 ### KNNP — Kolokwium z Nauk Podstawowych
 
 - **Dane**: [`features/shared/server/knnpCatalogCache.ts`](../features/shared/server/knnpCatalogCache.ts) — cachowany katalog przedmiotów (z topic IDs) filtrowany po `track` i `year`
 - **Loader**: [`features/subjects/server/loadKnnpSubjects.ts`](../features/subjects/server/loadKnnpSubjects.ts) — buduje listę z mastery per przedmiot na bazie `user_question_progress` (FSRS state), pobiera `last_studied_at` z `study_sessions`, agreguje postęp ogólny roku (answered/mastered/reviewing)
-- **Builder**: [`features/subjects/server/buildKnnpSubjectsList.ts`](../features/subjects/server/buildKnnpSubjectsList.ts) — filtruje OSCE z siatki KNNP (OSCE ma osobną sekcję "Egzamin praktyczny"), mapuje mastery i last_studied_at per przedmiot
-- **UI**: [`app/(dashboard)/przedmioty/page.tsx`](../app/(dashboard)/przedmioty/page.tsx) — siatka kart z postępem, sekcja OverallProgress (postęp roku z segmentowanym progress barem), sekcja Egzamin praktyczny (link do OSCE)
+- **Builder**: [`features/subjects/server/buildKnnpSubjectsList.ts`](../features/subjects/server/buildKnnpSubjectsList.ts) — mapuje mastery i last_studied_at per przedmiot
+- **UI**: [`app/(dashboard)/przedmioty/page.tsx`](../app/(dashboard)/przedmioty/page.tsx) — siatka kart z postępem, sekcja OverallProgress (postęp roku z segmentowanym progress barem)
 - **Karty przedmiotów**: [`SubjectCard.tsx`](../features/subjects/components/SubjectCard.tsx) — stan "Wkrótce dostępne" dla przedmiotów bez pytań (ikona zegara, disabled), relative-time "Ostatnio: wczoraj" dla aktywnych
 - **Sesje**: standardowy flow `startSession` → `submitAnswer` → `completeSession`
 - **Tryby sesji**: `inteligentna` (ANTARES), `przeglad` (shuffle), `katalog` (browse)
 
-### OSCE — Objective Structured Clinical Examination
-
-- **Dane**: [`features/osce/server/loadOsceStations.ts`](../features/osce/server/loadOsceStations.ts) — stacje z `product = 'osce'`, pogrupowane po `exam_day`
-- **Typy pytań**: single_choice, ordering (drag & drop), image_identify (hotspoty), conversion_drill
-- **Symulacja**: [`features/osce/components/OSCESimulation.tsx`](../features/osce/components/OSCESimulation.tsx) — timer per stacja, próg zdawalności, zapis do `osce_simulations` + `osce_station_results`
-- **Atlas OPG**: [`features/osce/components/OPGAtlas.tsx`](../features/osce/components/OPGAtlas.tsx) — przeglądarka panoram
-- **Topic session**: [`features/osce/components/TopicSession.tsx`](../features/osce/components/TopicSession.tsx) — ćwiczenie tematu ze stacji, korzysta z `submitAnswer` / `completeSession`
-
 ### Profil i nawigacja
 
-`profiles.current_product` przechowuje wybrany moduł (`knnp` / `ldek`). Sidebar prowadzi do przedmiotów KNNP, a OSCE jest dostępne przez kartę „Egzamin praktyczny" na stronie przedmiotów oraz dedykowane trasy `/osce/*`.
+`profiles.current_product` przechowuje wybrany kurs (`knnp` / `ldek` / `ldew`). Sidebar prowadzi do przedmiotów bieżącego produktu.
 
 ---
 
@@ -401,8 +381,8 @@ RLS jest włączony na **wszystkich** tabelach. Zasada ogólna:
 
 | Wzorzec | Tabele |
 |---------|--------|
-| `auth.uid() = user_id` (SELECT/INSERT/UPDATE) | profiles, user_question_progress, study_sessions, learning_events, topic_mastery_cache, user_achievements, user_challenge_progress, osce_simulations, saved_questions |
-| Subquery przez parent (`session_id IN (SELECT id FROM study_sessions WHERE user_id = auth.uid())`) | session_answers, osce_station_results |
+| `auth.uid() = user_id` (SELECT/INSERT/UPDATE) | profiles, user_question_progress, study_sessions, learning_events, topic_mastery_cache, user_achievements, user_challenge_progress, saved_questions |
+| Subquery przez parent (`session_id IN (SELECT id FROM study_sessions WHERE user_id = auth.uid())`) | session_answers |
 | Publiczny SELECT dla authenticated | subjects, topics, questions, achievements, daily_challenges, question_discussions |
 | Admin override (`profiles.role = 'admin'`) | questions (ALL), profiles (SELECT all), study_sessions (SELECT all), error_reports |
 
@@ -443,7 +423,7 @@ git push origin main
 │                           KLIENT (React 19)                        │
 │                                                                     │
 │  ┌────────────┐  ┌──────────────┐  ┌────────────┐  ┌────────────┐ │
-│  │ SessionStudy│  │ OSCE Simul.  │  │ Gamification│  │ Dashboard  │ │
+│  │ SessionStudy│  │ Subjects     │  │ Gamification│  │ Dashboard  │ │
 │  │ View       │  │              │  │ UI          │  │ Widgets    │ │
 │  └─────┬──────┘  └──────┬───────┘  └─────┬──────┘  └─────┬──────┘ │
 │        │                │                 │               │        │
@@ -544,14 +524,6 @@ Klient                          Serwer                           Supabase
 6. Podsumowanie: XP, streak, rozbicie tematów, insights ANTARES
 7. Background: topic mastery cache, exam readiness score
 
-### UC-2: Symulacja OSCE
-
-1. Użytkownik wybiera dzień egzaminu (1 lub 2)
-2. System ładuje stacje z pytaniami, randomizuje tematy
-3. Każda stacja ma timer i próg zdawalności
-4. Typy pytań: MCQ, ordering (drag & drop), image identify (hotspoty), conversion drill
-5. Po zakończeniu: zapis do `osce_simulations` + `osce_station_results`, wynik procentowy per stacja
-
 ### UC-3: Przegląd powtórek
 
 1. Dashboard pokazuje liczbę pytań due (`getDueReviewCount` z `user_question_progress.next_review`)
@@ -619,7 +591,6 @@ Pulpit (/pulpit)
 Wybór przedmiotu (/przedmioty)
   │ Siatka kart: Biochemia, Anatomia, Mikrobiologia JU...
   │ Przedmioty bez pytań → "Wkrótce dostępne"
-  │ OSCE w osobnej sekcji "Egzamin praktyczny"
   ▼
 Pierwsza sesja (/sesja/new → /sesja/{uuid})
   │ Tryb inteligentna: ANTARES dobiera 10 pytań
@@ -644,7 +615,6 @@ Kolejne dni → nawyk
   ▼
 Przygotowanie do egzaminu
   │ exam_readiness_score rośnie
-  │ Symulacja OSCE: timer per stacja, próg zdawalności
   │ Statystyki: trend trafności, rozkład per przedmiot
 ```
 
@@ -656,7 +626,7 @@ Otwarcie aplikacji
   ├─ Sesja inteligentna (ANTARES: due reviews + nowe)
   ├─ Podsumowanie → XP, streak, insights
   ├─ Powrót na pulpit: cel dzienny 12/25
-  ├─ Ewentualnie: kolejna sesja lub OSCE
+  ├─ Ewentualnie: kolejna sesja
   └─ Zamknięcie → jutro kolejna powtórka
 ```
 
@@ -675,7 +645,7 @@ Aplikacja webowa do nauki na egzaminy stomatologiczne (LDEK). Studenci logują s
 │         PRZEGLĄDARKA STUDENTA       │
 │                                     │
 │  Pulpit → Przedmioty → Sesja nauki │
-│  Statystyki → Osiągnięcia → OSCE   │
+│  Statystyki → Osiągnięcia           │
 └──────────────┬──────────────────────┘
                │ internet
 ┌──────────────▼──────────────────────┐
@@ -705,7 +675,6 @@ Aplikacja webowa do nauki na egzaminy stomatologiczne (LDEK). Studenci logują s
 | **Streak** | Seria dni z rzędu, w których student był aktywny. Motywuje do codziennej nauki. |
 | **Ranga** | Poziom studenta (Praktykant → Asystent → Rezydent → Specjalista → Mistrz LDEK) oparty na zdobytych XP. |
 | **KNNP** | Kolokwium z Nauk Podstawowych — moduł z pytaniami testowymi z przedmiotów podstawowych. |
-| **OSCE** | Objective Structured Clinical Examination — moduł symulujący egzamin praktyczny ze stacjami klinicznymi. |
 | **Leech** | Pytanie, które student ciągle myli (≥3 błędy z rzędu). System oznacza je i częściej pokazuje. |
 
 ### Co widzi student
@@ -715,7 +684,6 @@ Aplikacja webowa do nauki na egzaminy stomatologiczne (LDEK). Studenci logują s
 3. **Sesja nauki** — pytania jedno po drugim, z wyjaśnieniami i oceną pewności siebie
 4. **Podsumowanie** — wynik sesji, zdobyte XP, rozbicie per temat
 5. **Statystyki** — wykresy trafności, aktywności, rozkład per przedmiot
-6. **OSCE** — symulacja egzaminu praktycznego z timerem
 
 ### Dane i bezpieczeństwo
 
@@ -752,14 +720,6 @@ Aplikacja webowa do nauki na egzaminy stomatologiczne (LDEK). Studenci logują s
 3. Wykres "Twój postęp" pokazuje jak zmienia się Twoja trafność w czasie
 4. "Słabe punkty" pokazują 5 tematów, które warto powtórzyć
 5. Na stronie przedmiotów widzisz postęp ogólny roku (np. 43/73 pytań, 59%)
-
-### UC-U4: "Chcę ćwiczyć na egzamin OSCE"
-
-1. Na stronie przedmiotów klikasz "Egzamin praktyczny" → OSCE
-2. Wybierasz dzień egzaminu (1 lub 2)
-3. Przechodzisz przez stacje z pytaniami — każda ma timer
-4. Typy pytań: test jednokrotnego wyboru, porządkowanie, identyfikacja na obrazie
-5. Po zakończeniu widzisz wynik per stacja i czy zdałeś
 
 ### UC-U5: "Chcę wiedzieć ile mi brakuje do następnej rangi"
 
@@ -799,12 +759,12 @@ VALUES (
   'pill',                        -- icon_name: nazwa ikony z lucide-react
   2,                             -- year: rok studiów (1, 2, 3...)
   'stomatologia',                -- track: kierunek (stomatologia / lekarski)
-  'knnp',                        -- product: moduł (knnp / osce)
+  'knnp',                        -- product: knnp / ldek / ldew
   12                             -- display_order: kolejność na liście
 );
 ```
 
-Dostępne ikony (`icon_name`): `book-open`, `bone`, `microscope`, `zap`, `flask-conical`, `dna`, `heart-pulse`, `bug`, `pill`, `activity`, `clipboard-check`, `scan`
+Dostępne ikony (`icon_name`): `book-open`, `bone`, `microscope`, `zap`, `flask-conical`, `dna`, `heart-pulse`, `bug`, `pill`, `activity`, `scan`
 
 ### 2. Dodawanie tematu (`topics`)
 
@@ -880,17 +840,6 @@ INSERT INTO questions (
 
 - Zawsze 5 opcji (a-e) — standard egzaminu LDEK
 - `correct_option_id` musi odpowiadać jednemu z `id` w tablicy options
-
-#### Typy pytań (OSCE)
-
-Oprócz `single_choice` (standard KNNP), OSCE wspiera:
-
-| `question_type` | Dodatkowe kolumny | Opis |
-|-----------------|-------------------|------|
-| `single_choice` | — | Standardowe pytanie MCQ |
-| `ordering` | `correct_order` (JSONB) | Uporządkuj elementy we właściwej kolejności |
-| `image_identify` | `image_url`, `hotspots` (JSONB) | Wskaż strukturę na obrazie |
-| `conversion_drill` | `drill_questions` (JSONB) | Przeliczanie jednostek / dawek |
 
 ### 4. Batch insert — wzorzec dla wielu pytań
 

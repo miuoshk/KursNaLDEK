@@ -1,0 +1,32 @@
+/* ============================================================
+   Ryciny — Kurs na LDEK. Wzorzec wstawienia (z zamówienia §0).
+   Tokeny kreski:  gold #CDB56E · sage #7FA697
+   Tła aplikacji:  --bg #002A27 · --card #0a2322
+   ============================================================ */
+
+/* Tło sekcji / karty — rycina wyłania się z tła, nigdy nie ma krawędzi */
+.plate{
+  position:absolute; pointer-events:none;
+  opacity:var(--plate-op,.3);
+  -webkit-mask-image:radial-gradient(closest-side,#000 40%,rgba(0,0,0,.45) 70%,transparent);
+          mask-image:radial-gradient(closest-side,#000 40%,rgba(0,0,0,.45) 70%,transparent);
+}
+.plate > svg,
+.plate > img{ width:100%; height:100%; object-fit:contain; }
+
+@media (max-width:640px){
+  .plate{
+    position:relative; inset:auto; width:100%; height:340px; --plate-op:.6;
+    -webkit-mask-image:linear-gradient(#0000,#000 18%,#000 80%,#0000);
+            mask-image:linear-gradient(#0000,#000 18%,#000 80%,#0000);
+  }
+}
+
+/* Emblemat — kolor z CSS. Działa TYLKO dla plików currentColor wstawionych inline. */
+.emblem{ color:var(--rycina-sage,#7FA697); width:48px; height:48px; }
+.emblem.is-gold{ color:#CDB56E; }
+
+/* Docelowe opacity wg przeznaczenia (z zamówienia) */
+.plate.is-behind-text { --plate-op:.32; }   /* 0.28–0.38 */
+.plate.is-figure      { --plate-op:.55; }   /* 0.50–0.65, mobile */
+.plate.is-card-bg     { --plate-op:.20; }   /* 0.16–0.28 */

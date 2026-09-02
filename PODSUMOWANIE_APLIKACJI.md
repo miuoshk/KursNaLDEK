@@ -33,7 +33,6 @@ Stan: maj 2026
 - Lista przedmiotów KNNP z postępem.
 - Agregacja postępu ogólnego na poziomie roku.
 - Obsługa przedmiotów bez pytań (stan „wkrótce dostępne”).
-- Przejście do modułu OSCE z poziomu przedmiotów.
 
 ### Sesje nauki
 
@@ -43,13 +42,6 @@ Stan: maj 2026
 - Widok podsumowania po sesji (`/sesja/[sessionId]/podsumowanie`).
 - Możliwość powtórzenia błędnych pytań.
 
-### OSCE
-
-- Osobny moduł OSCE (`/osce/*`).
-- Atlas OPG.
-- Trening tematów stacji.
-- Symulacje OSCE z timerem i wynikami.
-- Obsługa typów pytań OSCE (m.in. ordering, image identify, conversion drill).
 
 ### Statystyki i osiągnięcia
 
@@ -87,7 +79,7 @@ Stan: maj 2026
 - Zapisywane są sesje, odpowiedzi i eventy uczenia.
 - Utrzymywany jest per-user postęp pytań (`user_question_progress`).
 - Działa cache opanowania tematów (`topic_mastery_cache`) oraz metryki profilu.
-- Obecna jest struktura danych pod KNNP i OSCE w jednej bazie.
+- Obecna jest struktura danych pod KNNP, LDEK i LDEW w jednej bazie.
 - Dostępne są skrypty seedujące i migracje SQL.
 
 ## 6. Bezpieczeństwo i kontrola dostępu
@@ -110,7 +102,6 @@ Na ten moment aplikacja ma gotowy, działający fundament produkcyjny:
 
 - pełny onboarding użytkownika,
 - codzienny flow nauki i powtórek,
-- OSCE jako osobny moduł egzaminacyjny,
 - system postępu i motywacji (XP, streak, rangi, osiągnięcia),
 - backend i bezpieczeństwo oparte o Supabase + RLS.
 

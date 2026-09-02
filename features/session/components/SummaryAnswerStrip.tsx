@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle, ChevronDown, XCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
@@ -45,69 +45,12 @@ export function SummaryAnswerStrip({
     return answers.filter((a) => !a.isCorrect);
   }, [answers, wrongOnly]);
 
-  const scorePercent = Math.round(summary.accuracy * 100);
-  const passThreshold = 60;
-  const isPassed = scorePercent >= passThreshold;
-  const isOsceSession =
-    summary.mode === "osce_topic" || summary.mode.toLowerCase().includes("osce");
   const wrongCount = answers.filter((a) => !a.isCorrect).length;
-  const missingPercent = Math.max(0, passThreshold - scorePercent);
   const showWrongFilter =
     answers.length >= SUMMARY_WRONG_FILTER_MIN_N && wrongCount > 0;
 
   return (
     <section className="space-y-4">
-      {isOsceSession ? (
-        <div
-          className={cn(
-            "rounded-lg border p-3",
-            isPassed
-              ? "border-green-500/20 bg-green-500/10"
-              : "border-red-500/20 bg-red-500/10",
-          )}
-        >
-          <div className="flex items-start gap-2">
-            {isPassed ? (
-              <CheckCircle
-                className="mt-0.5 size-4 shrink-0 text-green-400"
-                aria-hidden
-              />
-            ) : (
-              <XCircle
-                className="mt-0.5 size-4 shrink-0 text-red-400"
-                aria-hidden
-              />
-            )}
-            <div>
-              <p
-                className={cn(
-                  "font-body text-sm font-bold",
-                  isPassed ? "text-green-400" : "text-red-400",
-                )}
-              >
-                {isPassed ? t("summaryOscePassed") : t("summaryOsceFailed")}
-              </p>
-              <p
-                className={cn(
-                  "mt-1 font-body text-xs",
-                  isPassed ? "text-green-400/60" : "text-red-400/60",
-                )}
-              >
-                {isPassed
-                  ? t("summaryOscePassedDetail", {
-                      score: scorePercent,
-                      threshold: passThreshold,
-                    })
-                  : t("summaryOsceFailedDetail", {
-                      score: scorePercent,
-                      missing: missingPercent,
-                    })}
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
       <h2 className="font-heading text-heading-sm text-primary">
         {t("summarySessionFlow")}
       </h2>

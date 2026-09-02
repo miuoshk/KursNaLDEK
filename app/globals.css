@@ -146,6 +146,49 @@ input[type="number"] { -moz-appearance: textfield; }
   html { scroll-behavior: auto; }
 }
 
+/* Ryciny (public/img/ryciny) — rycina wyłania się z tła, nigdy nie ma widocznej krawędzi */
+.rycina-mask-radial {
+  -webkit-mask-image: radial-gradient(closest-side, #000 40%, rgba(0, 0, 0, 0.45) 70%, transparent);
+  mask-image: radial-gradient(closest-side, #000 40%, rgba(0, 0, 0, 0.45) 70%, transparent);
+}
+.rycina-mask-fade-left {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 38%, #000 100%);
+  mask-image: linear-gradient(to right, transparent, #000 38%, #000 100%);
+}
+.rycina-mask-fade-right {
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 38%, #000 100%);
+  mask-image: linear-gradient(to left, transparent, #000 38%, #000 100%);
+}
+.rycina-mask-fade-y {
+  -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+}
+.rycina-mask-corner {
+  -webkit-mask-image: radial-gradient(farthest-corner at 100% 100%, #000 25%, rgba(0, 0, 0, 0.4) 60%, transparent 88%);
+  mask-image: radial-gradient(farthest-corner at 100% 100%, #000 25%, rgba(0, 0, 0, 0.4) 60%, transparent 88%);
+}
+/* Rycina dojechana do prawej/lewej krawędzi sekcji: zanika w stronę treści i miękko przy górze/dole. */
+.rycina-mask-edge-right {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 40%, #000 100%),
+    linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 40%, #000 100%),
+    linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  mask-composite: intersect;
+}
+.rycina-mask-edge-left {
+  -webkit-mask-image:
+    linear-gradient(to left, transparent, #000 40%, #000 100%),
+    linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to left, transparent, #000 40%, #000 100%),
+    linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  mask-composite: intersect;
+}
+
 /* KaTeX — dopasowanie do ciemnego UI */
 .katex {
   color: inherit;

@@ -253,7 +253,7 @@ async function fetchQuestionsMeta(
     // is_inbox = false bez bramki — poczekalnia nigdy nie wchodzi do silnika.
     // $source to filtr abstrakcyjny: all | reference | own.
     // reference → q.source IN referenceSources(product); own → q.source = 'own';
-    // all / OSCE → brak warunku (nie pusta pula).
+    // all / produkt bez źródeł → brak warunku (nie pusta pula).
     let query = supabase
       .from("questions")
       .select(select as "id, topic_id, topics!inner(is_inbox)")

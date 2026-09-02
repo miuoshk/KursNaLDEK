@@ -1,19 +1,24 @@
 import Link from "next/link";
+import type { ComponentType } from "react";
+import { IconDental } from "@tabler/icons-react";
 import {
   ArrowRight,
+  BadgeCheck,
   BookOpen,
   Check,
   CheckCircle2,
   Flame,
-  GraduationCap,
   RotateCcw,
+  Stethoscope,
   Target,
   Trophy,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
 import { HeroMotion } from "@/features/marketing/components/HeroMotion";
 import { MarketingNav } from "@/features/marketing/components/MarketingNav";
 import { Reveal } from "@/features/marketing/components/Reveal";
+import { Rycina } from "@/features/marketing/components/Rycina";
 
 type LandingContentProps = {
   registrationOpen: boolean;
@@ -33,6 +38,27 @@ function heatmapColor(level: number) {
   if (level === 3) return "border-brand-sage/30 bg-brand-sage";
   return "border-brand-gold/30 bg-brand-gold";
 }
+
+type CourseKey = "ldek" | "ldew" | "dentistry" | "medicine";
+
+const SESSION_ANSWERS = ["A", "B", "C", "D", "E"] as const;
+const SESSION_CORRECT = 1;
+/** Feedback po sesji: trafność w najsłabszych obszarach (mock). */
+const FEEDBACK_AREAS = [
+  { key: "feedbackArea1", value: "45%", tone: "gold" },
+  { key: "feedbackArea2", value: "58%", tone: "gold" },
+  { key: "feedbackArea3", value: "72%", tone: "sage" },
+] as const;
+
+type CourseIcon = ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" }>;
+
+/** Rycina wypełnia prawą część karty od góry do dołu i dotyka prawej krawędzi; aspect wg viewBox pliku. */
+const COURSES: { key: CourseKey; icon: CourseIcon; rycina: string; rycinaClass: string }[] = [
+  { key: "ldek", icon: BookOpen, rycina: "path-stoma-skull", rycinaClass: "aspect-[1.4]" },
+  { key: "ldew", icon: BadgeCheck, rycina: "anat-permanent-arch", rycinaClass: "aspect-[1.4]" },
+  { key: "dentistry", icon: IconDental, rycina: "anat-skull-lat", rycinaClass: "aspect-[1.17]" },
+  { key: "medicine", icon: Stethoscope, rycina: "path-lek-heart-lungs", rycinaClass: "aspect-[1.4]" },
+];
 
 export async function LandingContent({ registrationOpen }: LandingContentProps) {
   const t = await getTranslations("marketing");
@@ -56,13 +82,18 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
     },
   ];
 
-  const faqItems = [
-    [t("faq.items.accessQuestion"), t("faq.items.accessAnswer")],
-    [t("faq.items.universityQuestion"), t("faq.items.universityAnswer")],
-    [t("faq.items.adaptiveQuestion"), t("faq.items.adaptiveAnswer")],
-    [t("faq.items.mobileQuestion"), t("faq.items.mobileAnswer")],
-    [t("faq.items.paymentQuestion"), t("faq.items.paymentAnswer")],
-    [t("faq.items.trialQuestion"), t("faq.items.trialAnswer")],
+  const progressPoints = [
+    t("progress.points.activity"),
+    t("progress.points.mastery"),
+    t("progress.points.antares"),
+    t("progress.points.calibration"),
+    t("progress.points.readiness"),
+  ];
+
+  const masteryRows: [string, string][] = [
+    [t("progress.mock.surgery"), "82%"],
+    [t("progress.mock.endodontics"), "64%"],
+    [t("progress.mock.orthodontics"), "51%"],
   ];
 
   return (
@@ -92,8 +123,17 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-8 md:py-28 lg:px-12" aria-labelledby="product-heading">
-          <div className="mx-auto max-w-[1400px]">
+        <section
+          className="relative overflow-hidden px-5 py-20 sm:px-8 md:py-28 lg:px-12"
+          aria-labelledby="product-heading"
+        >
+          <Rycina
+            id="sec-progress-brain"
+            opacity={0.24}
+            mask="edge-right"
+            className="hidden md:block inset-y-0 right-0 aspect-[1.4] h-full"
+          />
+          <div className="relative mx-auto max-w-[1400px]">
             <Reveal className="max-w-2xl">
               <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
                 {t("product.eyebrow")}
@@ -173,16 +213,12 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                   <p className="font-body text-body-xs font-semibold uppercase tracking-widest text-secondary">
                     {t("product.mock.rank")}
                   </p>
-                  <span className="mt-8 font-heading text-2xl text-brand-gold">
-                    {t("product.mock.rankName")}
-                  </span>
+                  <span className="mt-8 font-heading text-2xl text-brand-gold">{t("product.mock.rankName")}</span>
                   <div className="mt-auto">
                     <div className="h-1 overflow-hidden rounded-full bg-white/10">
                       <div className="h-full w-[68%] rounded-full bg-brand-gold" />
                     </div>
-                    <p className="mt-3 font-body text-body-xs text-secondary">
-                      {t("product.mock.rankProgress")}
-                    </p>
+                    <p className="mt-3 font-body text-body-xs text-secondary">{t("product.mock.rankProgress")}</p>
                   </div>
                 </div>
               </Reveal>
@@ -192,10 +228,16 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
 
         <section
           id="jak-dziala"
-          className="scroll-mt-16 border-y border-border bg-sidebar/30 px-5 py-20 sm:px-8 md:py-28 lg:px-12"
+          className="relative scroll-mt-16 overflow-hidden border-y border-border bg-sidebar/30 px-5 py-20 sm:px-8 md:py-28 lg:px-12"
           aria-labelledby="session-heading"
         >
-          <div className="mx-auto max-w-[1400px]">
+          <Rycina
+            id="anat-vessels-head"
+            opacity={0.26}
+            mask="edge-right"
+            className="hidden lg:block inset-y-0 right-0 aspect-square h-full"
+          />
+          <div className="relative mx-auto max-w-[1400px]">
             <Reveal className="max-w-2xl">
               <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
                 {t("session.eyebrow")}
@@ -211,64 +253,140 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
               </p>
             </Reveal>
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              <Reveal>
-                <article className="h-full rounded-card border border-border bg-card p-6">
+            {/* 02 (pełne pytanie) jest najwyższe, więc zajmuje prawą kolumnę na dwa wiersze; 04 idzie na całą szerokość. */}
+            <div className="mt-12 grid gap-5 lg:grid-cols-2 lg:grid-rows-[auto_auto_auto]">
+              <Reveal className="lg:col-start-1 lg:row-start-1">
+                <article className="flex h-full flex-col rounded-card border border-border bg-card/90 p-6 backdrop-blur-sm">
                   <span className="font-heading text-3xl text-brand-gold">01</span>
-                  <h3 className="mt-8 font-heading text-2xl">{t("session.steps.chooseTitle")}</h3>
+                  <h3 className="mt-6 font-heading text-2xl">{t("session.steps.chooseTitle")}</h3>
                   <p className="mt-3 font-body text-body-sm leading-6 text-secondary">
                     {t("session.steps.chooseDescription")}
                   </p>
-                  <div className="mt-8 rounded-btn border border-brand-sage/25 bg-brand-sage/10 p-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-body text-body-sm font-semibold">{t("session.mock.smartSession")}</span>
-                      <span className="rounded-pill border border-brand-gold/30 px-2 py-0.5 font-body text-[10px] uppercase tracking-wide text-brand-gold">
-                        {t("session.mock.recommended")}
-                      </span>
+                  <div className="mt-auto space-y-2 pt-6">
+                    <div className="rounded-btn border border-brand-sage/25 bg-brand-sage/10 p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-body text-body-sm font-semibold">{t("session.mock.smartSession")}</span>
+                        <span className="rounded-pill border border-brand-gold/30 px-2 py-0.5 font-body text-[10px] uppercase tracking-wide text-brand-gold">
+                          {t("session.mock.recommended")}
+                        </span>
+                      </div>
+                      <p className="mt-2 font-body text-body-xs text-secondary">{t("session.mock.smartCaption")}</p>
                     </div>
-                    <p className="mt-2 font-body text-body-xs text-secondary">{t("session.mock.smartCaption")}</p>
+                    <div className="flex items-center justify-between rounded-btn border border-white/10 bg-white/[0.03] px-4 py-3 font-body text-body-sm text-secondary">
+                      <span>{t("session.mock.bySubject")}</span>
+                      <ArrowRight className="size-4 text-muted" aria-hidden="true" />
+                    </div>
+                    <div className="flex items-center justify-between rounded-btn border border-white/10 bg-white/[0.03] px-4 py-3 font-body text-body-sm text-secondary">
+                      <span>{t("session.mock.overdue")}</span>
+                      <span className="rounded-pill bg-brand-gold/15 px-2 py-0.5 font-body text-body-xs font-semibold text-brand-gold">8</span>
+                    </div>
                   </div>
                 </article>
               </Reveal>
 
-              <Reveal delay={0.07}>
-                <article className="h-full rounded-card border border-border bg-card p-6">
+              <Reveal delay={0.07} className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+                <article className="h-full rounded-card border border-border bg-card/90 p-6 backdrop-blur-sm">
                   <span className="font-heading text-3xl text-brand-gold">02</span>
-                  <h3 className="mt-8 font-heading text-2xl">{t("session.steps.answerTitle")}</h3>
+                  <h3 className="mt-6 font-heading text-2xl">{t("session.steps.answerTitle")}</h3>
                   <p className="mt-3 font-body text-body-sm leading-6 text-secondary">
                     {t("session.steps.answerDescription")}
                   </p>
-                  <div className="mt-8 space-y-2">
-                    <div className="rounded-btn border border-white/10 bg-white/[0.03] px-4 py-3 font-body text-body-sm text-secondary">
-                      A. {t("session.mock.answerA")}
+                  <div className="mt-6 rounded-card border border-white/[0.08] bg-background/45 p-4 sm:p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage">
+                        {t("session.mock.questionEyebrow")}
+                      </p>
+                      <span className="font-body text-[10px] text-muted">12 / 20</span>
                     </div>
-                    <div className="flex items-center justify-between rounded-btn border border-success/35 bg-success/[0.08] px-4 py-3 font-body text-body-sm text-success">
-                      <span>B. {t("session.mock.answerB")}</span>
-                      <CheckCircle2 className="size-4" aria-hidden="true" />
+                    <p className="mt-3 text-pretty font-heading text-lg leading-6 text-primary">
+                      {t("session.mock.question")}
+                    </p>
+                    <div className="mt-4 space-y-1.5">
+                      {SESSION_ANSWERS.map((letter, index) => {
+                        const correct = index === SESSION_CORRECT;
+                        return (
+                          <div
+                            key={letter}
+                            className={
+                              correct
+                                ? "flex items-center justify-between rounded-btn border border-success/40 bg-success/[0.08] px-3 py-2 font-body text-body-xs text-success sm:text-body-sm"
+                                : "rounded-btn border border-white/10 bg-white/[0.03] px-3 py-2 font-body text-body-xs text-secondary sm:text-body-sm"
+                            }
+                          >
+                            <span>
+                              {letter}. {t(`session.mock.answer${letter}`)}
+                            </span>
+                            {correct ? <CheckCircle2 className="size-4 shrink-0" aria-hidden="true" /> : null}
+                          </div>
+                        );
+                      })}
                     </div>
-                    <div className="rounded-btn border border-white/10 bg-white/[0.03] px-4 py-3 font-body text-body-sm text-secondary">
-                      C. {t("session.mock.answerC")}
+                    <div className="mt-3 rounded-btn border border-brand-sage/20 bg-brand-sage/[0.08] px-3 py-2.5">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-wider text-brand-sage">
+                        {t("hero.demo.explanationLabel")}
+                      </p>
+                      <DemoMarkdown className="mt-1">{t("session.mock.explanation")}</DemoMarkdown>
                     </div>
                   </div>
                 </article>
               </Reveal>
 
-              <Reveal delay={0.14}>
-                <article className="h-full rounded-card border border-border bg-card p-6">
+              <Reveal delay={0.14} className="lg:col-start-1 lg:row-start-2">
+                <article className="flex h-full flex-col rounded-card border border-border bg-card/90 p-6 backdrop-blur-sm">
                   <span className="font-heading text-3xl text-brand-gold">03</span>
-                  <h3 className="mt-8 font-heading text-2xl">{t("session.steps.rateTitle")}</h3>
+                  <h3 className="mt-6 font-heading text-2xl">{t("session.steps.rateTitle")}</h3>
                   <p className="mt-3 font-body text-body-sm leading-6 text-secondary">
                     {t("session.steps.rateDescription")}
                   </p>
-                  <div className="mt-8 space-y-2">
-                    <div className="rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 text-center font-body text-body-sm text-error">
-                      {t("session.mock.didNotKnow")}
+                  <div className="mt-auto space-y-2 pt-6">
+                    <div className="rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 text-center font-body text-body-sm text-success">
+                      {t("session.mock.knewForSure")}
                     </div>
                     <div className="rounded-btn border border-brand-gold/25 bg-brand-gold/[0.08] px-3 py-2.5 text-center font-body text-body-sm text-brand-gold">
                       {t("session.mock.knewSomewhat")}
                     </div>
-                    <div className="rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 text-center font-body text-body-sm text-success">
-                      {t("session.mock.knewForSure")}
+                    <div className="rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 text-center font-body text-body-sm text-error">
+                      {t("session.mock.didNotKnow")}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.21} className="lg:col-span-2 lg:row-start-3">
+                <article className="grid gap-6 rounded-card border border-border bg-card/90 p-6 backdrop-blur-sm lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                  <div>
+                    <span className="font-heading text-3xl text-brand-gold">04</span>
+                    <h3 className="mt-6 font-heading text-2xl">{t("session.steps.feedbackTitle")}</h3>
+                    <p className="mt-3 font-body text-body-sm leading-6 text-secondary">
+                      {t("session.steps.feedbackDescription")}
+                    </p>
+                  </div>
+                  <div className="rounded-card border border-white/[0.08] bg-background/45 p-4 sm:p-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-gold">
+                        {t("session.mock.feedbackTitle")}
+                      </p>
+                      <span className="font-body text-[10px] text-muted">{t("session.mock.feedbackScheduled")}</span>
+                    </div>
+                    <ul className="mt-4 space-y-3">
+                      {FEEDBACK_AREAS.map((area) => (
+                        <li key={area.key}>
+                          <div className="flex items-center justify-between gap-3 font-body text-body-xs sm:text-body-sm">
+                            <span className="text-primary">{t(`session.mock.${area.key}`)}</span>
+                            <span className={area.tone === "gold" ? "text-brand-gold" : "text-secondary"}>{area.value}</span>
+                          </div>
+                          <div className="mt-1.5 h-1 rounded-full bg-white/10">
+                            <div
+                              className={area.tone === "gold" ? "h-full rounded-full bg-brand-gold" : "h-full rounded-full bg-brand-sage"}
+                              style={{ width: area.value }}
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-4 flex items-center justify-between rounded-btn border border-brand-sage/20 bg-brand-sage/[0.08] px-3 py-2 font-body text-body-xs">
+                      <span className="text-secondary">{t("session.mock.feedbackCalibrationLabel")}</span>
+                      <span className="font-semibold text-brand-sage">{t("session.mock.feedbackCalibrationValue")}</span>
                     </div>
                   </div>
                 </article>
@@ -277,8 +395,17 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-8 md:py-28 lg:px-12" aria-labelledby="progress-heading">
-          <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <section
+          className="relative overflow-hidden px-5 py-20 sm:px-8 md:py-28 lg:px-12"
+          aria-labelledby="progress-heading"
+        >
+          <Rycina
+            id="sky-kalibra"
+            opacity={0.26}
+            mask="edge-left"
+            className="hidden lg:block inset-y-0 left-0 aspect-square h-full"
+          />
+          <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal>
               <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
                 {t("progress.eyebrow")}
@@ -293,14 +420,12 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                 {t("progress.description")}
               </p>
               <ul className="mt-8 space-y-4">
-                {[t("progress.points.activity"), t("progress.points.weaknesses"), t("progress.points.schedule")].map(
-                  (point) => (
-                    <li key={point} className="flex items-start gap-3 font-body text-body-sm leading-6 text-secondary">
-                      <Check className="mt-1 size-4 shrink-0 text-brand-gold" aria-hidden="true" />
-                      {point}
-                    </li>
-                  ),
-                )}
+                {progressPoints.map((point) => (
+                  <li key={point} className="flex items-start gap-3 font-body text-body-sm leading-6 text-secondary">
+                    <Check className="mt-1 size-4 shrink-0 text-brand-gold" aria-hidden="true" />
+                    {point}
+                  </li>
+                ))}
               </ul>
             </Reveal>
 
@@ -327,11 +452,7 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                   ))}
                 </div>
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {[
-                    [t("progress.mock.biochemistry"), "82%"],
-                    [t("progress.mock.physiology"), "64%"],
-                    [t("progress.mock.microbiology"), "51%"],
-                  ].map(([label, value], index) => (
+                  {masteryRows.map(([label, value], index) => (
                     <div key={label} className="rounded-btn border border-white/[0.08] bg-background/45 p-3">
                       <div className="flex items-center justify-between gap-2 font-body text-body-xs">
                         <span className="text-secondary">{label}</span>
@@ -352,91 +473,72 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
         </section>
 
         <section
-          id="dla-kogo"
+          id="kursy"
           className="scroll-mt-16 border-y border-border bg-sidebar/30 px-5 py-20 sm:px-8 md:py-28 lg:px-12"
-          aria-labelledby="paths-heading"
+          aria-labelledby="courses-heading"
         >
           <div className="mx-auto max-w-[1400px]">
             <Reveal className="max-w-2xl">
               <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
-                {t("paths.eyebrow")}
+                {t("courses.eyebrow")}
               </p>
               <h2
-                id="paths-heading"
+                id="courses-heading"
                 className="mt-3 text-balance font-heading text-[clamp(2rem,4.5vw,3.8rem)] leading-[1.08] tracking-[-0.025em]"
               >
-                {t("paths.title")}
+                {t("courses.title")}
               </h2>
-              <p className="mt-5 font-body text-base leading-7 text-secondary">{t("paths.description")}</p>
+              <p className="mt-5 font-body text-base leading-7 text-secondary">{t("courses.description")}</p>
             </Reveal>
 
             <div className="mt-12 grid gap-5 md:grid-cols-2">
-              <Reveal>
-                <article className="group relative overflow-hidden rounded-card border border-border bg-card p-7 transition-colors duration-200 ease-out hover:border-brand-sage/40">
-                  <GraduationCap className="size-8 text-brand-sage" aria-hidden="true" />
-                  <h3 className="mt-10 font-heading text-3xl">{t("paths.dentistry.title")}</h3>
-                  <p className="mt-3 max-w-lg font-body text-body-md leading-7 text-secondary">
-                    {t("paths.dentistry.description")}
-                  </p>
-                  <p className="mt-8 font-body text-body-xs font-semibold uppercase tracking-widest text-brand-gold">
-                    {t("paths.dentistry.scope")}
-                  </p>
-                </article>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <article className="group relative overflow-hidden rounded-card border border-border bg-card p-7 transition-colors duration-200 ease-out hover:border-brand-sage/40">
-                  <BookOpen className="size-8 text-brand-sage" aria-hidden="true" />
-                  <h3 className="mt-10 font-heading text-3xl">{t("paths.medicine.title")}</h3>
-                  <p className="mt-3 max-w-lg font-body text-body-md leading-7 text-secondary">
-                    {t("paths.medicine.description")}
-                  </p>
-                  <p className="mt-8 font-body text-body-xs font-semibold uppercase tracking-widest text-brand-gold">
-                    {t("paths.medicine.scope")}
-                  </p>
-                </article>
-              </Reveal>
+              {COURSES.map((course, index) => {
+                const Icon = course.icon;
+                return (
+                  <Reveal key={course.key} delay={index * 0.06}>
+                    <Link
+                      href={registrationHref}
+                      className="group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-card border border-border bg-card p-7 transition-colors duration-200 ease-out hover:border-brand-sage/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+                    >
+                      <Rycina
+                        id={course.rycina}
+                        mask="fade-left"
+                        className={`inset-y-0 right-0 h-full opacity-[0.3] transition-opacity duration-300 ease-out group-hover:opacity-[0.4] ${course.rycinaClass}`}
+                      />
+                      <div className="relative z-10 flex h-full flex-col">
+                        <Icon className="size-8 text-brand-sage" aria-hidden="true" />
+                        <h3 className="mt-10 font-heading text-3xl">{t(`courses.${course.key}.title`)}</h3>
+                        <p className="mt-3 max-w-md font-body text-body-md leading-7 text-secondary">
+                          {t(`courses.${course.key}.description`)}
+                        </p>
+                        <div className="mt-auto flex items-end justify-between gap-4 pt-8">
+                          <p className="font-body text-body-xs font-semibold uppercase tracking-widest text-brand-gold">
+                            {t(`courses.${course.key}.scope`)}
+                          </p>
+                          <ArrowRight
+                            className="size-5 shrink-0 text-secondary transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:text-primary"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+                    </Link>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
 
         <section
-          id="faq"
-          className="scroll-mt-16 border-y border-border bg-sidebar/30 px-5 py-20 sm:px-8 md:py-28 lg:px-12"
-          aria-labelledby="faq-heading"
+          className="relative overflow-hidden px-5 py-24 text-center sm:px-8 md:py-32 lg:px-12"
+          aria-labelledby="final-cta-heading"
         >
-          <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.75fr_1.25fr]">
-            <Reveal>
-              <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
-                {t("faq.eyebrow")}
-              </p>
-              <h2
-                id="faq-heading"
-                className="mt-3 text-balance font-heading text-[clamp(2rem,4.5vw,3.8rem)] leading-[1.08] tracking-[-0.025em]"
-              >
-                {t("faq.title")}
-              </h2>
-              <p className="mt-5 font-body text-base leading-7 text-secondary">{t("faq.description")}</p>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <div>
-                {faqItems.map(([question, answer]) => (
-                  <details key={question} className="group border-b border-border">
-                    <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 font-body text-body-md font-medium text-primary marker:content-none">
-                      {question}
-                      <span className="grid size-7 shrink-0 place-items-center rounded-full border border-border text-brand-gold transition-transform duration-200 ease-out group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <p className="max-w-2xl pb-5 pr-12 font-body text-body-sm leading-7 text-secondary">{answer}</p>
-                  </details>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="px-5 py-24 text-center sm:px-8 md:py-32 lg:px-12" aria-labelledby="final-cta-heading">
-          <Reveal className="mx-auto max-w-3xl">
+          <Rycina
+            id="sky-antares"
+            opacity={0.22}
+            className="left-1/2 top-1/2 aspect-[1.33] w-[min(120vw,1100px)] -translate-x-1/2 -translate-y-1/2"
+          />
+          <Reveal className="relative mx-auto max-w-3xl">
             <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
               {t("finalCta.eyebrow")}
             </p>
@@ -461,7 +563,7 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                 href="/login"
                 className="inline-flex min-h-11 items-center justify-center rounded-btn border border-white/15 px-7 py-3 font-body text-body-md font-semibold text-primary transition-colors duration-200 ease-out hover:bg-white/[0.05]"
               >
-                {t("actions.alreadyHaveAccount")}
+                {t("actions.login")}
               </Link>
             </div>
           </Reveal>

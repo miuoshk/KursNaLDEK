@@ -19,7 +19,6 @@ const modeLabelMap: Record<string, string> = {
   inteligentna: "Inteligentna",
   przeglad: "Przegląd",
   katalog: "Katalog",
-  osce_topic: "OSCE temat",
 };
 
 function modeLabel(mode: string) {

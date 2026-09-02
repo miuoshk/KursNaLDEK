@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Bookmark, ChevronRight, SmilePlus } from "lucide-react";
+import { Bookmark, ChevronRight } from "lucide-react";
 import { OverallProgress } from "@/features/subjects/components/OverallProgress";
 import { PrzedmiotyError } from "@/features/subjects/components/PrzedmiotyError";
 import { SubjectGrid } from "@/features/subjects/components/SubjectGrid";
@@ -48,7 +48,6 @@ export default async function PrzedmiotyPage() {
   }
 
   const { subjects, profile, totalQuestionCount, overallProgress, isSubscribed } = result;
-  const showOsceSection = false;
   const trackLabel =
     profile.track === "Lekarski"
       ? tAccess("trackLekarski")
@@ -108,42 +107,6 @@ export default async function PrzedmiotyPage() {
             aria-hidden
           />
         </Link>
-        ) : null}
-
-        {showOsceSection ? (
-          <section>
-            <h2 className="font-heading text-xl font-bold text-brand-gold">
-              {t("osceSectionTitle")}
-            </h2>
-            <p className="mt-1 font-body text-sm text-secondary">
-              {t("osceSectionSubtitle")}
-            </p>
-            <div className="mt-4">
-              <Link
-                href="/osce"
-                className="group flex w-full items-start gap-4 rounded-2xl border border-[#C9A84C]/30 bg-[#002A27] p-6 transition-all duration-200 ease-out hover:border-[#C9A84C]/50"
-              >
-                <SmilePlus
-                  className="h-8 w-8 shrink-0 text-[#C9A84C]"
-                  aria-hidden
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="font-body text-base text-primary">
-                    {t("osceCourseTitle")}
-                  </p>
-                  <p className="mt-3 inline-flex rounded-full bg-[#367368]/20 px-3 py-1 font-body text-xs text-[#367368]">
-                    {t("osceDaysBadge")}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </section>
-        ) : null}
-
-        {showOsceSection ? (
-          <h2 className="font-heading text-xl font-bold text-primary">
-            {t("basicSciences")}
-          </h2>
         ) : null}
 
         {subjects.length === 0 ? (

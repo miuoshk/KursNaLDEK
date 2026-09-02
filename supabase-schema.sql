@@ -456,7 +456,6 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
 -- Rok 2 (stoma-biochemia / stoma-fizjologia ukryte w UI — patrz catalogSubjectVisibility.ts)
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-patologia',    'Patomorfologia',            'Patologia',     'scan',           2, 'stomatologia', 'knnp', 7),
-  ('stoma-osce',         'OSCE',                      'OSCE',          'clipboard-check', 2, 'stomatologia', 'knnp', 8),
   ('stoma-biochemia',    'Biochemia',                 'Biochemia',     'flask-round',    2, 'stomatologia', 'knnp', 9),
   ('stoma-fizjologia',   'Fizjologia',                'Fizjologia',    'heart-pulse',    2, 'stomatologia', 'knnp', 10),
   ('stoma-mikrobio',     'Mikrobiologia',             'Mikrobiologia', 'bug',            2, 'stomatologia', 'knnp', 11),
@@ -488,57 +487,6 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
   ('lek-patofizjologia', 'Patofizjologia',            'Patofizjo.',    'activity',       3, 'lekarski', 'knnp', 9),
   ('lek-farmakologia',   'Farmakologia',              'Farmakologia',  'pill',           3, 'lekarski', 'knnp', 10),
   ('lek-mikrobio',       'Mikrobiologia',             'Mikrobiologia', 'bug',            3, 'lekarski', 'knnp', 11);
-
--- ============================================
--- OSCE: kolumny stacji (uruchom na istniejącej bazie)
--- ============================================
-ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_tasks JSONB;
-ALTER TABLE subjects ADD COLUMN IF NOT EXISTS exam_day INT;
-
--- ============================================
--- OSCE: symulacja egzaminu (osce_simulations + osce_station_results)
--- Pełna definicja także w scripts/osce-simulation-schema.sql (RLS)
--- ============================================
-CREATE TABLE IF NOT EXISTS osce_simulations (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
-  exam_day INT NOT NULL CHECK (exam_day IN (1, 2)),
-  started_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  completed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  passed_overall BOOLEAN NOT NULL,
-  overall_percent REAL NOT NULL,
-  station_count INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS osce_station_results (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  simulation_id UUID NOT NULL REFERENCES osce_simulations(id) ON DELETE CASCADE,
-  station_id TEXT NOT NULL REFERENCES subjects(id),
-  station_order INT NOT NULL,
-  correct_count INT NOT NULL,
-  total_questions INT NOT NULL,
-  percent REAL NOT NULL,
-  passed BOOLEAN NOT NULL,
-  duration_seconds INT NOT NULL DEFAULT 0,
-  UNIQUE (simulation_id, station_id)
-);
-
-ALTER TABLE osce_simulations ENABLE ROW LEVEL SECURITY;
-ALTER TABLE osce_station_results ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Users own osce_simulations SELECT"
-  ON osce_simulations FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users own osce_simulations INSERT"
-  ON osce_simulations FOR INSERT WITH CHECK (auth.uid() = user_id);
-
-CREATE POLICY "Users own osce_station_results SELECT"
-  ON osce_station_results FOR SELECT USING (
-    simulation_id IN (SELECT id FROM osce_simulations WHERE user_id = auth.uid())
-  );
-CREATE POLICY "Users own osce_station_results INSERT"
-  ON osce_station_results FOR INSERT WITH CHECK (
-    simulation_id IN (SELECT id FROM osce_simulations WHERE user_id = auth.uid())
-  );
 
 -- ============================================
 -- SAVED QUESTIONS (zakładki użytkownika)

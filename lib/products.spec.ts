@@ -83,13 +83,13 @@ function loadEnvLocal() {
 }
 
 describe("źródła referencyjne (TS)", () => {
-  it("osce: żadna nowa ścieżka się nie uruchamia", () => {
-    assert.deepEqual(referenceSources("osce"), []);
-    assert.equal(hasReferenceSources("osce"), false);
-    assert.equal(isSourceFilterLive("osce"), false);
-    assert.equal(hasCemExams("osce"), false);
-    assert.equal(isCemSourcePathEnabled("osce"), false);
-    assert.equal(isCemExamsPathEnabled("osce"), false);
+  it("produkt bez źródeł: żadna nowa ścieżka się nie uruchamia", () => {
+    assert.deepEqual(referenceSources("unknown"), []);
+    assert.equal(hasReferenceSources("unknown"), false);
+    assert.equal(isSourceFilterLive("unknown"), false);
+    assert.equal(hasCemExams("unknown"), false);
+    assert.equal(isCemSourcePathEnabled("unknown"), false);
+    assert.equal(isCemExamsPathEnabled("unknown"), false);
   });
 
   it("knnp: liczniki referencyjne się liczą, UI nie renderuje nic nowego", () => {
@@ -142,7 +142,7 @@ describe("parytet referenceSources() TS ↔ SQL", () => {
   });
 
   it("produkty z subjects (snapshot) zgadzają się z TS i SQL", () => {
-    const productsFromSubjectsSnapshot = ["knnp", "ldew", "osce"];
+    const productsFromSubjectsSnapshot = ["knnp", "ldew"];
     for (const product of productsFromSubjectsSnapshot) {
       assert.deepEqual(
         referenceSources(product),

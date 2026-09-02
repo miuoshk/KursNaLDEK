@@ -23,7 +23,6 @@ INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, dis
 -- Rok 2 (stoma-biochemia / stoma-fizjologia ukryte w UI — patrz catalogSubjectVisibility.ts)
 INSERT INTO subjects (id, name, short_name, icon_name, year, track, product, display_order) VALUES
   ('stoma-patologia',    'Patomorfologia',            'Patologia',     'scan',           2, 'stomatologia', 'knnp', 7),
-  ('stoma-osce',         'OSCE',                      'OSCE',          'clipboard-check', 2, 'stomatologia', 'knnp', 8),
   ('stoma-biochemia',    'Biochemia',                 'Biochemia',     'flask-2',        2, 'stomatologia', 'knnp', 9),
   ('stoma-fizjologia',   'Fizjologia',                'Fizjologia',    'heart-rate',     2, 'stomatologia', 'knnp', 10),
   ('stoma-mikrobio',     'Mikrobiologia',             'Mikrobiologia', 'bug',            2, 'stomatologia', 'knnp', 11),

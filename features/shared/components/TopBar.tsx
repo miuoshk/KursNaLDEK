@@ -176,14 +176,13 @@ export function TopBar() {
   const pathname = usePathname();
   const router = useRouter();
   const isMobile = useMobileViewport();
-  const mainRoutes = new Set(["/", "/pulpit", "/przedmioty", "/osce", "/statystyki", "/osiagniecia", "/ustawienia"]);
+  const mainRoutes = new Set(["/", "/pulpit", "/przedmioty", "/statystyki", "/osiagniecia", "/ustawienia"]);
   const showBack = !mainRoutes.has(pathname);
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const { year, currentProduct, secondSegment, thirdSegment } = useDashboardBreadcrumb();
   const { streak, initials, avatarEmoji } = useDashboardUser();
-  const tOsce = useTranslations("osce");
   const tNav = useTranslations("nav");
-  const pathFallback = mobilePageTitle(pathname, { nav: tNav, osce: tOsce });
+  const pathFallback = mobilePageTitle(pathname, { nav: tNav });
   const breadcrumbRoot = breadcrumbRootForProduct(currentProduct, year, tCommon);
   const mobileTitle =
     thirdSegment ?? secondSegment ?? pathFallback ?? breadcrumbRoot;

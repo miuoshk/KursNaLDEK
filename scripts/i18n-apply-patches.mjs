@@ -27,7 +27,6 @@ const PATCH_NAMESPACES = [
   "pulpit",
   "subjects",
   "session",
-  "osce",
   "saved",
   "access",
   "checkout",

@@ -1,35 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-} from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Clock3,
-  Flame,
-  RotateCcw,
-  Target,
-} from "lucide-react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Clock3, Flame, RotateCcw, Target } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
+import { Rycina } from "@/features/marketing/components/Rycina";
 
 type HeroMotionProps = {
   registrationOpen: boolean;
 };
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+const STAGE_MS = 5200;
+const STAGE_COUNT = 3;
+const GOAL_TOTAL = 20;
+const ANSWER_KEYS = ["answerA", "answerB", "answerC", "answerD", "answerE"] as const;
+const ANSWER_LETTERS = ["A", "B", "C", "D", "E"] as const;
+const CORRECT_ANSWER = 1;
+/** Rozkład 20 pytań dzisiejszej sesji na przedmioty (mock). */
+const PLAN_SUBJECTS = [
+  { key: "subjectSurgery", count: 6, width: "30%" },
+  { key: "subjectEndo", count: 8, width: "40%" },
+  { key: "subjectOrtho", count: 6, width: "30%" },
+] as const;
+const WEAK_AREAS = [
+  { key: "subjectOrtho", score: "2/4", width: "50%" },
+  { key: "subjectSurgery", score: "3/4", width: "75%" },
+] as const;
+/** Liczby na kartach „Cel dzienny” i „Seria” per etap demo — karty żyją razem z ekranem. */
+const GOAL_BY_STAGE = [12, 13, 20] as const;
+const STREAK_BY_STAGE = [12, 12, 13] as const;
 
 const copyContainer = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.08,
-    },
+    transition: { staggerChildren: 0.08, delayChildren: 0.08 },
   },
 };
 
@@ -42,22 +49,50 @@ const copyItem = {
   },
 };
 
+const stageVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: EASE_OUT, staggerChildren: 0.06, delayChildren: 0.04 },
+  },
+  exit: { opacity: 0, y: -6, transition: { duration: 0.2, ease: "easeIn" as const } },
+};
+
+const stageItem = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.32, ease: EASE_OUT } },
+};
+
 export function HeroMotion({ registrationOpen }: HeroMotionProps) {
   const t = useTranslations("marketing");
   const reducedMotion = useReducedMotion();
   const [stage, setStage] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const deviceRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(deviceRef, { amount: 0.35 });
+
+  const running = !reducedMotion && !hovered && !hidden && inView;
 
   useEffect(() => {
-    if (reducedMotion) return;
+    const onVisibility = () => setHidden(document.visibilityState === "hidden");
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
+  useEffect(() => {
+    if (!running) return;
     const interval = window.setInterval(() => {
-      setStage((current) => (current + 1) % 3);
-    }, 3600);
-
+      setStage((current) => (current + 1) % STAGE_COUNT);
+    }, STAGE_MS);
     return () => window.clearInterval(interval);
-  }, [reducedMotion]);
+  }, [running, stage]);
 
   const registrationHref = registrationOpen ? "/register" : "/login";
+  const goal = GOAL_BY_STAGE[stage];
+  const streak = STREAK_BY_STAGE[stage];
+  const goalDone = goal >= GOAL_TOTAL;
 
   return (
     <section
@@ -68,13 +103,21 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
         className="absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-brand-gold/35 to-transparent"
         aria-hidden="true"
       />
+
+      <Rycina
+        id="sec-session-trigeminal"
+        priority
+        mask="edge-right"
+        className="-right-[22%] top-0 aspect-[0.8] h-[72vh] opacity-[0.16] lg:-top-[18%] lg:right-0 lg:h-[136%] lg:opacity-[0.38]"
+      />
+      {/* Rycina wychodzi poza sekcję, więc zanikanie przy górnej i dolnej krawędzi robi nakładka z tła. */}
       <div
-        className="absolute left-[8%] top-28 size-64 rounded-full border border-brand-sage/[0.08] md:size-96"
         aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background via-background/70 to-transparent"
       />
       <div
-        className="absolute left-[calc(8%+3rem)] top-40 size-40 rounded-full border border-brand-gold/[0.07] md:size-64"
         aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/70 to-transparent"
       />
 
       <div className="relative mx-auto grid w-full max-w-[1400px] items-center gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
@@ -115,7 +158,7 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
             </a>
           </motion.div>
           <motion.div variants={copyItem} className="mt-9 flex items-center gap-3">
-            <CheckCircle2 className="size-4 text-brand-sage" aria-hidden="true" />
+            <CheckCircle2 className="size-4 shrink-0 text-brand-sage" aria-hidden="true" />
             <p className="font-body text-body-xs text-muted">{t("hero.productProof")}</p>
           </motion.div>
         </motion.div>
@@ -127,82 +170,12 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
           className="relative mx-auto w-full max-w-[720px]"
           aria-hidden="true"
         >
-          <svg
-            viewBox="0 0 720 560"
-            className="pointer-events-none absolute -inset-10 hidden size-[calc(100%+5rem)] overflow-visible md:block"
-            fill="none"
+          <div
+            ref={deviceRef}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className="relative overflow-hidden rounded-[20px] border border-brand-sage/25 bg-sidebar p-2 shadow-2xl"
           >
-            <motion.path
-              d="M78 112 C 190 28, 278 90, 354 170 S 560 302, 662 210"
-              stroke="var(--color-brand-sage)"
-              strokeOpacity="0.22"
-              strokeWidth="1"
-              strokeDasharray="5 7"
-              initial={reducedMotion ? { pathLength: 1 } : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.1, delay: 0.35, ease: EASE_OUT }}
-            />
-            <motion.path
-              d="M52 430 C 190 510, 300 448, 388 380 S 566 316, 690 450"
-              stroke="var(--color-brand-gold)"
-              strokeOpacity="0.18"
-              strokeWidth="1"
-              initial={reducedMotion ? { pathLength: 1 } : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.1, delay: 0.48, ease: EASE_OUT }}
-            />
-          </svg>
-
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0, y: reducedMotion ? 0 : [0, -3, 0] }}
-            transition={{
-              opacity: { duration: 0.35, delay: 0.55 },
-              x: { duration: 0.35, delay: 0.55, ease: EASE_OUT },
-              y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute -left-3 top-8 z-20 hidden w-40 rounded-card border border-border bg-card p-4 shadow-xl md:block xl:-left-14"
-          >
-            <div className="flex items-center gap-2">
-              <Target className="size-4 text-brand-gold" />
-              <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-secondary">
-                {t("hero.demo.dailyGoal")}
-              </span>
-            </div>
-            <p className="mt-3 font-heading text-2xl text-primary">15/20</p>
-            <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
-              <motion.div
-                className="h-full origin-left rounded-full bg-brand-gold"
-                initial={reducedMotion ? { scaleX: 0.75 } : { scaleX: 0 }}
-                animate={{ scaleX: 0.75 }}
-                transition={{ duration: 0.8, delay: 0.75, ease: EASE_OUT }}
-              />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0, y: reducedMotion ? 0 : [0, 3, 0] }}
-            transition={{
-              opacity: { duration: 0.35, delay: 0.68 },
-              x: { duration: 0.35, delay: 0.68, ease: EASE_OUT },
-              y: { duration: 6.2, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute -right-3 bottom-10 z-20 hidden w-44 rounded-card border border-border bg-card p-4 shadow-xl md:block xl:-right-12"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Flame className="size-4 text-brand-gold" />
-                <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-secondary">
-                  {t("hero.demo.streak")}
-                </span>
-              </div>
-              <span className="font-heading text-xl text-brand-gold">12</span>
-            </div>
-            <p className="mt-2 font-body text-[11px] leading-4 text-muted">{t("hero.demo.streakCaption")}</p>
-          </motion.div>
-
-          <div className="relative overflow-hidden rounded-[20px] border border-brand-sage/25 bg-sidebar p-2 shadow-2xl">
             <div className="rounded-[15px] border border-border bg-background">
               <div className="flex h-12 items-center justify-between border-b border-border px-4">
                 <div className="flex items-center gap-2">
@@ -210,116 +183,168 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
                   <span className="font-heading text-sm text-primary">Kurs na LDEK</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  {[0, 1, 2].map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      tabIndex={-1}
-                      onClick={() => setStage(item)}
-                      className="relative size-5"
-                      aria-label={t("hero.demo.stageLabel", { number: item + 1 })}
-                    >
-                      <span className="absolute inset-1.5 rounded-full bg-white/15" />
-                      {stage === item ? (
+                  {Array.from({ length: STAGE_COUNT }, (_, item) => {
+                    const active = stage === item;
+                    return (
+                      <button
+                        key={item}
+                        type="button"
+                        tabIndex={-1}
+                        onClick={() => setStage(item)}
+                        className="group relative flex h-5 items-center"
+                        aria-label={t("hero.demo.stageLabel", { number: item + 1 })}
+                      >
                         <motion.span
-                          layoutId="hero-demo-stage"
-                          className="absolute inset-1 rounded-full border border-brand-gold bg-brand-gold/20"
-                          transition={{ duration: 0.22, ease: EASE_OUT }}
-                        />
-                      ) : null}
-                    </button>
-                  ))}
+                          layout
+                          transition={{ duration: 0.28, ease: EASE_OUT }}
+                          className={
+                            active
+                              ? "relative h-1.5 w-7 overflow-hidden rounded-full bg-white/15"
+                              : "h-1.5 w-1.5 rounded-full bg-white/20 transition-colors group-hover:bg-white/40"
+                          }
+                        >
+                          {active ? (
+                            <motion.span
+                              key={`${item}-${running ? "run" : "hold"}`}
+                              className="absolute inset-y-0 left-0 w-full origin-left rounded-full bg-brand-gold"
+                              initial={{ scaleX: running ? 0 : 1 }}
+                              animate={{ scaleX: 1 }}
+                              transition={{ duration: running ? STAGE_MS / 1000 : 0, ease: "linear" }}
+                            />
+                          ) : null}
+                        </motion.span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              <div className="min-h-[390px] p-5 sm:min-h-[420px] sm:p-7">
+              {/* Od lg lewy padding robi miejsce pod pływającą kartę „Cel dzienny”. */}
+              <div className="min-h-[520px] p-5 sm:min-h-[540px] sm:p-7 lg:min-h-[600px] lg:pl-[5.5rem] xl:pl-16">
                 <AnimatePresence mode="wait" initial={false}>
                   {stage === 0 ? (
                     <motion.div
                       key="plan"
-                      initial={reducedMotion ? false : { opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={reducedMotion ? undefined : { opacity: 0, x: -10 }}
-                      transition={{ duration: 0.26, ease: EASE_OUT }}
+                      variants={stageVariants}
+                      initial={reducedMotion ? false : "hidden"}
+                      animate="visible"
+                      exit={reducedMotion ? undefined : "exit"}
                     >
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage">
+                      <motion.p
+                        variants={stageItem}
+                        className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage"
+                      >
                         {t("hero.demo.planEyebrow")}
-                      </p>
-                      <h2 className="mt-3 font-heading text-2xl text-primary sm:text-3xl">
+                      </motion.p>
+                      <motion.h2 variants={stageItem} className="mt-3 font-heading text-2xl text-primary sm:text-3xl">
                         {t("hero.demo.planTitle")}
-                      </h2>
-                      <p className="mt-2 font-body text-body-sm leading-6 text-secondary">
+                      </motion.h2>
+                      <motion.p variants={stageItem} className="mt-2 font-body text-body-sm leading-6 text-secondary">
                         {t("hero.demo.planDescription")}
-                      </p>
-                      <div className="mt-7 grid grid-cols-2 gap-3">
+                      </motion.p>
+                      <motion.div variants={stageItem} className="mt-7 grid grid-cols-2 gap-3">
                         <div className="rounded-card border border-border bg-card p-4">
                           <RotateCcw className="size-5 text-brand-gold" />
                           <p className="mt-5 font-heading text-3xl text-primary">8</p>
-                          <p className="mt-1 font-body text-body-xs text-secondary">
-                            {t("hero.demo.reviews")}
-                          </p>
+                          <p className="mt-1 font-body text-body-xs text-secondary">{t("hero.demo.reviews")}</p>
                         </div>
                         <div className="rounded-card border border-border bg-card p-4">
                           <Clock3 className="size-5 text-brand-sage" />
                           <p className="mt-5 font-heading text-3xl text-primary">18</p>
-                          <p className="mt-1 font-body text-body-xs text-secondary">
-                            {t("hero.demo.minutes")}
-                          </p>
+                          <p className="mt-1 font-body text-body-xs text-secondary">{t("hero.demo.minutes")}</p>
                         </div>
-                      </div>
-                      <div className="mt-5 flex items-center justify-center gap-2 rounded-btn bg-brand-gold px-5 py-3 font-body text-body-sm font-semibold text-brand-bg">
+                      </motion.div>
+                      <motion.div
+                        variants={stageItem}
+                        className="mt-4 rounded-card border border-border bg-card p-4"
+                      >
+                        <p className="font-body text-[10px] font-semibold uppercase tracking-wider text-secondary">
+                          {t("hero.demo.planSubjectsLabel")}
+                        </p>
+                        <ul className="mt-3 space-y-2.5">
+                          {PLAN_SUBJECTS.map((subject) => (
+                            <li key={subject.key}>
+                              <div className="flex items-center justify-between font-body text-body-xs">
+                                <span className="text-primary">{t(`hero.demo.${subject.key}`)}</span>
+                                <span className="text-secondary">{subject.count}</span>
+                              </div>
+                              <div className="mt-1 h-1 rounded-full bg-white/10">
+                                <motion.div
+                                  className="h-full rounded-full bg-brand-sage"
+                                  initial={reducedMotion ? false : { width: 0 }}
+                                  animate={{ width: subject.width }}
+                                  transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT }}
+                                />
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                      <motion.div
+                        variants={stageItem}
+                        className="mt-4 flex items-center justify-center gap-2 rounded-btn bg-brand-gold px-5 py-3 font-body text-body-sm font-semibold text-brand-bg"
+                      >
                         {t("hero.demo.start")}
                         <ArrowRight className="size-4" />
-                      </div>
+                      </motion.div>
+                      <motion.p
+                        variants={stageItem}
+                        className="mt-3 text-center font-body text-[11px] text-muted"
+                      >
+                        {t("hero.demo.lastSession")}
+                      </motion.p>
                     </motion.div>
                   ) : null}
 
                   {stage === 1 ? (
                     <motion.div
                       key="question"
-                      initial={reducedMotion ? false : { opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={reducedMotion ? undefined : { opacity: 0, x: -10 }}
-                      transition={{ duration: 0.26, ease: EASE_OUT }}
+                      variants={stageVariants}
+                      initial={reducedMotion ? false : "hidden"}
+                      animate="visible"
+                      exit={reducedMotion ? undefined : "exit"}
                     >
-                      <div className="flex items-center justify-between">
+                      <motion.div variants={stageItem} className="flex items-center justify-between">
                         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage">
                           {t("hero.demo.questionEyebrow")}
                         </p>
                         <span className="font-body text-[10px] text-muted">6 / 20</span>
-                      </div>
-                      <h2 className="mt-4 text-pretty font-heading text-xl leading-7 text-primary sm:text-2xl sm:leading-8">
+                      </motion.div>
+                      <motion.h2
+                        variants={stageItem}
+                        className="mt-3 text-pretty font-heading text-lg leading-6 text-primary sm:text-xl sm:leading-7"
+                      >
                         {t("hero.demo.question")}
-                      </h2>
-                      <div className="mt-6 space-y-2.5">
-                        <div className="rounded-btn border border-white/10 bg-white/[0.025] px-4 py-3 font-body text-body-sm text-secondary">
-                          A. {t("hero.demo.answerA")}
-                        </div>
-                        <motion.div
-                          initial={reducedMotion ? false : { borderColor: "rgba(255,255,255,.1)" }}
-                          animate={{ borderColor: "rgba(74,222,128,.45)" }}
-                          transition={{ duration: 0.3, delay: 0.22 }}
-                          className="flex items-center justify-between rounded-btn border bg-success/[0.08] px-4 py-3 font-body text-body-sm text-success"
-                        >
-                          <span>B. {t("hero.demo.answerB")}</span>
-                          <CheckCircle2 className="size-4" />
-                        </motion.div>
-                        <div className="rounded-btn border border-white/10 bg-white/[0.025] px-4 py-3 font-body text-body-sm text-secondary">
-                          C. {t("hero.demo.answerC")}
-                        </div>
+                      </motion.h2>
+                      <div className="mt-4 space-y-1.5">
+                        {ANSWER_KEYS.map((key, index) => {
+                          const correct = index === CORRECT_ANSWER;
+                          return (
+                            <motion.div
+                              key={key}
+                              variants={stageItem}
+                              className={
+                                correct
+                                  ? "flex items-center justify-between rounded-btn border border-success/45 bg-success/[0.08] px-3 py-2 font-body text-body-xs text-success sm:text-body-sm"
+                                  : "rounded-btn border border-white/10 bg-white/[0.025] px-3 py-2 font-body text-body-xs text-secondary sm:text-body-sm"
+                              }
+                            >
+                              <span>
+                                {ANSWER_LETTERS[index]}. {t(`hero.demo.${key}`)}
+                              </span>
+                              {correct ? <CheckCircle2 className="size-4 shrink-0" /> : null}
+                            </motion.div>
+                          );
+                        })}
                       </div>
                       <motion.div
-                        initial={reducedMotion ? false : { opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.42, ease: EASE_OUT }}
-                        className="mt-5 rounded-btn border border-brand-sage/20 bg-brand-sage/[0.08] px-4 py-3"
+                        variants={stageItem}
+                        className="mt-3 rounded-btn border border-brand-sage/20 bg-brand-sage/[0.08] px-3 py-2.5"
                       >
                         <p className="font-body text-[10px] font-semibold uppercase tracking-wider text-brand-sage">
                           {t("hero.demo.explanationLabel")}
                         </p>
-                        <p className="mt-1 font-body text-body-xs leading-5 text-secondary">
-                          {t("hero.demo.explanation")}
-                        </p>
+                        <DemoMarkdown className="mt-1">{t("hero.demo.explanation")}</DemoMarkdown>
                       </motion.div>
                     </motion.div>
                   ) : null}
@@ -327,16 +352,19 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
                   {stage === 2 ? (
                     <motion.div
                       key="summary"
-                      initial={reducedMotion ? false : { opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={reducedMotion ? undefined : { opacity: 0, x: -10 }}
-                      transition={{ duration: 0.26, ease: EASE_OUT }}
+                      variants={stageVariants}
+                      initial={reducedMotion ? false : "hidden"}
+                      animate="visible"
+                      exit={reducedMotion ? undefined : "exit"}
                       className="text-center"
                     >
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage">
+                      <motion.p
+                        variants={stageItem}
+                        className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-sage"
+                      >
                         {t("hero.demo.summaryEyebrow")}
-                      </p>
-                      <div className="relative mx-auto mt-5 size-32">
+                      </motion.p>
+                      <motion.div variants={stageItem} className="relative mx-auto mt-4 size-28">
                         <svg viewBox="0 0 120 120" className="size-full -rotate-90">
                           <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,.07)" strokeWidth="8" />
                           <motion.circle
@@ -351,7 +379,7 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
                             strokeDasharray="1"
                             initial={reducedMotion ? { strokeDashoffset: 0.15 } : { strokeDashoffset: 1 }}
                             animate={{ strokeDashoffset: 0.15 }}
-                            transition={{ duration: 0.85, ease: EASE_OUT }}
+                            transition={{ duration: 0.9, delay: 0.15, ease: EASE_OUT }}
                           />
                         </svg>
                         <span className="absolute inset-0 flex flex-col items-center justify-center">
@@ -360,25 +388,151 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
                             {t("hero.demo.accuracy")}
                           </span>
                         </span>
-                      </div>
-                      <h2 className="mt-5 font-heading text-2xl text-primary">{t("hero.demo.summaryTitle")}</h2>
-                      <div className="mt-6 grid grid-cols-2 gap-3 text-left">
-                        <div className="rounded-card border border-border bg-card p-4">
-                          <p className="font-heading text-2xl text-brand-gold">+120</p>
-                          <p className="mt-1 font-body text-body-xs text-secondary">XP</p>
+                      </motion.div>
+                      <motion.h2 variants={stageItem} className="mt-4 font-heading text-2xl text-primary">
+                        {t("hero.demo.summaryTitle")}
+                      </motion.h2>
+                      <motion.div variants={stageItem} className="mt-5 grid grid-cols-3 gap-2 text-left">
+                        <div className="rounded-card border border-border bg-card p-3">
+                          <p className="font-heading text-xl text-brand-gold">+120</p>
+                          <p className="mt-1 font-body text-[11px] text-secondary">XP</p>
                         </div>
-                        <div className="rounded-card border border-border bg-card p-4">
-                          <p className="font-heading text-2xl text-primary">6</p>
-                          <p className="mt-1 font-body text-body-xs text-secondary">
-                            {t("hero.demo.scheduled")}
-                          </p>
+                        <div className="rounded-card border border-border bg-card p-3">
+                          <p className="font-heading text-xl text-primary">17/20</p>
+                          <p className="mt-1 font-body text-[11px] text-secondary">{t("hero.demo.correct")}</p>
                         </div>
-                      </div>
+                        <div className="rounded-card border border-border bg-card p-3">
+                          <p className="font-heading text-xl text-primary">6</p>
+                          <p className="mt-1 font-body text-[11px] text-secondary">{t("hero.demo.scheduled")}</p>
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        variants={stageItem}
+                        className="mt-3 rounded-card border border-border bg-card p-4 text-left"
+                      >
+                        <p className="font-body text-[10px] font-semibold uppercase tracking-wider text-brand-gold">
+                          {t("hero.demo.summaryWeakLabel")}
+                        </p>
+                        <ul className="mt-3 space-y-2.5">
+                          {WEAK_AREAS.map((area) => (
+                            <li key={area.key}>
+                              <div className="flex items-center justify-between font-body text-body-xs">
+                                <span className="text-primary">{t(`hero.demo.${area.key}`)}</span>
+                                <span className="text-secondary">{area.score}</span>
+                              </div>
+                              <div className="mt-1 h-1 rounded-full bg-white/10">
+                                <motion.div
+                                  className="h-full rounded-full bg-brand-gold"
+                                  initial={reducedMotion ? false : { width: 0 }}
+                                  animate={{ width: area.width }}
+                                  transition={{ duration: 0.7, delay: 0.5, ease: EASE_OUT }}
+                                />
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-3 flex items-center gap-1.5 font-body text-[11px] text-muted">
+                          <Clock3 className="size-3.5" />
+                          {t("hero.demo.summaryNextReview")}
+                        </p>
+                      </motion.div>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>
               </div>
             </div>
+          </div>
+
+          {/* Do lg karty stoją pod ekranem w siatce; od lg `contents` zdejmuje siatkę i karty pływają obok ekranu. */}
+          <div className="mt-3 grid grid-cols-2 gap-3 lg:contents">
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0, y: reducedMotion ? 0 : [0, -3, 0] }}
+              transition={{
+                opacity: { duration: 0.35, delay: 0.55 },
+                x: { duration: 0.35, delay: 0.55, ease: EASE_OUT },
+                y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+              }}
+              className="rounded-card border border-border bg-card p-4 shadow-xl lg:absolute lg:-left-16 lg:top-10 lg:z-20 lg:w-40 xl:-left-24"
+            >
+              <div className="flex items-center gap-2">
+                <Target className="size-4 text-brand-gold" />
+                <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-secondary">
+                  {t("hero.demo.dailyGoal")}
+                </span>
+              </div>
+              <p className="mt-3 flex items-baseline font-heading text-2xl text-primary">
+                <span className="relative inline-grid overflow-hidden">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.span
+                      key={goal}
+                      initial={reducedMotion ? false : { y: 14, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={reducedMotion ? undefined : { y: -14, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: EASE_OUT }}
+                      className="tabular-nums"
+                    >
+                      {goal}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+                <span className="text-base text-secondary">/{GOAL_TOTAL}</span>
+              </p>
+              <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
+                <motion.div
+                  className="h-full origin-left rounded-full bg-brand-gold"
+                  initial={reducedMotion ? { scaleX: goal / GOAL_TOTAL } : { scaleX: 0 }}
+                  animate={{ scaleX: goal / GOAL_TOTAL }}
+                  transition={{ duration: 0.7, delay: reducedMotion ? 0 : 0.1, ease: EASE_OUT }}
+                />
+              </div>
+              <p className="mt-2 font-body text-[11px] leading-4 text-muted">
+                {goalDone ? t("hero.demo.goalDone") : t("hero.demo.goalLeft", { count: GOAL_TOTAL - goal })}
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0, y: reducedMotion ? 0 : [0, 3, 0] }}
+              transition={{
+                opacity: { duration: 0.35, delay: 0.68 },
+                x: { duration: 0.35, delay: 0.68, ease: EASE_OUT },
+                y: { duration: 6.2, repeat: Infinity, ease: "easeInOut" },
+              }}
+              className="rounded-card border border-border bg-card p-4 shadow-xl lg:absolute lg:-bottom-8 lg:right-6 lg:z-20 lg:w-44"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <motion.span
+                    animate={goalDone && !reducedMotion ? { scale: [1, 1.18, 1] } : { scale: 1 }}
+                    transition={{ duration: 0.5, ease: EASE_OUT }}
+                    className="inline-flex"
+                  >
+                    <Flame className="size-4 text-brand-gold" />
+                  </motion.span>
+                  <span className="font-body text-[10px] font-semibold uppercase tracking-wider text-secondary">
+                    {t("hero.demo.streak")}
+                  </span>
+                </div>
+                <span className="relative inline-grid overflow-hidden font-heading text-xl text-brand-gold">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.span
+                      key={streak}
+                      initial={reducedMotion ? false : { y: 12, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={reducedMotion ? undefined : { y: -12, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: EASE_OUT }}
+                      className="tabular-nums"
+                    >
+                      {streak}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </div>
+              <p className="mt-2 font-body text-[11px] leading-4 text-muted">
+                {goalDone ? t("hero.demo.streakExtended") : t("hero.demo.streakCaption")}
+              </p>
+            </motion.div>
           </div>
 
           <p className="sr-only">{t("hero.demo.accessibleDescription")}</p>

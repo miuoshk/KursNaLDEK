@@ -29,8 +29,6 @@ export function SidebarLink({
       ? pathname === "/pulpit" || pathname === "/pulpit/"
       : href === "/przedmioty"
         ? pathname === "/przedmioty" || pathname.startsWith("/przedmioty/")
-        : href === "/osce"
-          ? pathname === "/osce" || pathname.startsWith("/osce/")
         : href === "/statystyki"
           ? pathname === "/statystyki" || pathname.startsWith("/statystyki/")
           : href === "/osiagniecia"

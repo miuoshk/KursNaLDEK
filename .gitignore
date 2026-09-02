@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# duże zrzuty danych uczenia (setki MB, dane użytkowników) — nigdy do repo
+/exports/*.jsonl

@@ -1,7 +1,7 @@
 import type { StructuredExplanation } from "@/features/session/lib/structuredExplanation";
 
 export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
-export type SessionMode = KnnpSessionMode | "osce_topic";
+export type SessionMode = KnnpSessionMode;
 
 /** Filtr puli pytań — nie tryb nauki. `reference` rozwija się przez referenceSources(product). */
 export type SourceFilter = "all" | "reference" | "own";

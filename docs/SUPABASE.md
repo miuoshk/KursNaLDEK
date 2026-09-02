@@ -32,22 +32,17 @@ auth.users (Supabase Auth)
        ├── topic_mastery_cache (1:N)
        ├── user_achievements (1:N)
        ├── user_challenge_progress (1:N)
-       ├── osce_simulations (1:N)
-       │    └── osce_station_results (1:N)
        └── question_discussions (1:N)
 
-subjects ← [product: knnp/osce]
+subjects ← [product: knnp/ldek/ldew]
   ├── topics (1:N)
   │    └── questions (1:N)
   ├── daily_challenges (1:N)
-  ├── study_sessions (FK subject_id)
-  └── osce_station_results (FK subject_id)
+  └── study_sessions (FK subject_id)
 
 achievements
   └── user_achievements (1:N)
 
-opg_atlas_images
-  └── opg_structures (1:N, FK atlas_id)
 ```
 
 **Kierunek czytania**: `subjects` → `topics` → `questions` to hierarchia treści.
@@ -101,14 +96,11 @@ Tworzony automatycznie przez trigger `handle_new_user` po rejestracji.
 | `icon_name` | text | TAK | 'book-open' | Ikona Lucide |
 | `year` | int | NIE | — | Rok studiów (1-5) |
 | `track` | text | NIE | 'stomatologia' | 'stomatologia' / 'lekarski' |
-| `product` | text | NIE | 'knnp' | 'knnp' / 'osce' |
+| `product` | text | NIE | 'knnp' | 'knnp' / 'ldek' / 'ldew' |
 | `display_order` | int | TAK | 0 | Kolejność wyświetlania |
-| `exam_tasks` | jsonb | TAK | — | Opis zadań egzaminacyjnych (OSCE) |
-| `exam_day` | int | TAK | — | Dzień egzaminu (OSCE: 1 lub 2) |
 
 **Kluczowe filtry:**
 - KNNP (nauki podstawowe): `WHERE product = 'knnp' AND track = 'stomatologia' AND year = 1`
-- OSCE (egzamin praktyczny): `WHERE product = 'osce'`
 
 ---
 
@@ -141,8 +133,8 @@ To jest **najważniejsza tabela** z perspektywy tworzenia treści.
 | `source_code` | text | TAK | — | Kod źródłowy pytania |
 | `image_url` | text | TAK | — | URL obrazka |
 | `is_active` | bool | TAK | true | Czy pytanie jest aktywne |
-| `question_type` | text | TAK | 'single_choice' | Typ: 'single_choice', 'ordering', 'image_identify', 'conversion_drill', 'opg_identify' |
-| `timer_seconds` | int | TAK | — | Limit czasu (OSCE) |
+| `question_type` | text | TAK | 'single_choice' | Typ: 'single_choice' |
+| `timer_seconds` | int | TAK | — | Limit czasu |
 | `learning_outcome` | text | TAK | — | Efekt kształcenia |
 | `correct_order` | jsonb | TAK | — | Poprawna kolejność (ordering) |
 | `hotspots` | jsonb | TAK | — | Hotspoty (image_identify) |
@@ -238,11 +230,7 @@ Minimalna ilość opcji: 4. Opcja `"e"` jest opcjonalna.
 | `user_achievements` | Postęp osiągnięć per user | user_id, achievement_id, progress, unlocked |
 | `daily_challenges` | Wyzwania dzienne | subject_id, challenge_date, target_questions |
 | `user_challenge_progress` | Postęp wyzwań per user | user_id, challenge_id, completed |
-| `osce_simulations` | Symulacje OSCE | user_id, exam_day, total_score_percent, passed |
-| `osce_station_results` | Wyniki stacji OSCE | simulation_id, subject_id, score_percent, passed |
 | `question_discussions` | Dyskusje pod pytaniami | question_id, user_id, content, upvotes |
-| `opg_atlas_images` | Atlasy OPG (1 wiersz) | atlas_id, image_url |
-| `opg_structures` | Struktury na panoramie (30 wierszy) | atlas_id, structure_number, name_pl, pos_x_pct, pos_y_pct |
 
 ---
 
@@ -257,8 +245,6 @@ SUBJECTS (33 wiersze)
   ├── KNNP × lekarski (rok 1, 2, 3)
   │    Przykłady: Anatomia, Biofizyka, Biochemia, Histologia...
   │
-  └── OSCE (exam_day = 1 lub 2)
-       Stacje egzaminu praktycznego
 
 TOPICS (26 wierszy) — tematy w ramach przedmiotu
   │
@@ -385,7 +371,7 @@ INSERT INTO questions (id, topic_id, text, options, correct_option_id, explanati
 - [ ] `correct_option_id` — zgadza się z jednym z `id` w options
 - [ ] `explanation` — jest wypełnione, zawiera wyjaśnienie poprawnej odpowiedzi
 - [ ] `is_active` = `true`
-- [ ] `question_type` = `single_choice` (chyba że OSCE)
+- [ ] `question_type` = `single_choice`
 - [ ] Po dodaniu → zaktualizuj `question_count` w topics
 
 ---
@@ -633,11 +619,7 @@ RLS jest włączony na **wszystkich** tabelach. Podsumowanie reguł:
 | `learning_events` | own | own | own | — |
 | `topic_mastery_cache` | own | own | own | — |
 | `user_achievements` | own | own | own | — |
-| `osce_simulations` | own | own | own | — |
-| `osce_station_results` | own (via simulation) | own (via simulation) | — | — |
 | `question_discussions` | all authenticated | own | own | — |
-| `opg_atlas_images` | all authenticated | — | — | — |
-| `opg_structures` | all authenticated | — | — | — |
 
 **"own"** = `auth.uid() = user_id`
 **"own (via session/simulation)"** = subquery sprawdza czy parent należy do usera
@@ -671,8 +653,7 @@ Poza primary keys, kluczowe indexy:
 | `idx_le_user_time` | learning_events | (user_id, created_at DESC) | Historia zdarzeń |
 | `idx_tmc_weakness` | topic_mastery_cache | (user_id, mastery_score) | Ranking słabych tematów |
 | `idx_session_answers_session` | session_answers | session_id | Odpowiedzi z sesji |
-| `idx_subjects_product` | subjects | product | KNNP vs OSCE |
-| `idx_opg_atlas_number` | opg_structures | (atlas_id, structure_number) UNIQUE | Unikalność struktury w atlasie |
+| `idx_subjects_product` | subjects | product | Filtrowanie po produkcie |
 
 ---
 
@@ -686,11 +667,9 @@ Poza primary keys, kluczowe indexy:
 | questions | 95 | Pytania |
 | study_sessions | 40 | Sesje nauki |
 | subjects | 33 | Przedmioty |
-| opg_structures | 30 | Struktury OPG |
 | topics | 26 | Tematy |
 | achievements | 12 | Osiągnięcia |
 | profiles | 2 | Użytkownicy |
-| opg_atlas_images | 1 | Atlas OPG |
 | question_discussions | 1 | Dyskusje |
 
-Tabele z 0 wierszy: osce_station_results, topic_mastery_cache, daily_challenges, user_challenge_progress, user_achievements, osce_simulations.
+Tabele z 0 wierszy: topic_mastery_cache, daily_challenges, user_challenge_progress, user_achievements.

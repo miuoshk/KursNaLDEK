@@ -92,7 +92,7 @@ function compose(partial: Partial<Parameters<typeof composeSession>[0]>) {
 }
 
 describe("isCemReserveUnlocked", () => {
-  it("KNNP i OSCE: rezerwa martwa nawet przy opublikowanym arkuszu i niskim mastery", () => {
+  it("KNNP: rezerwa martwa nawet przy opublikowanym arkuszu i niskim mastery", () => {
     const lockedShape = {
       hasPublishedCemSession: true,
       source: "all" as const,
@@ -101,7 +101,6 @@ describe("isCemReserveUnlocked", () => {
       now,
     };
     assert.equal(isCemReserveUnlocked({ product: "knnp", ...lockedShape }), true);
-    assert.equal(isCemReserveUnlocked({ product: "osce", ...lockedShape }), true);
   });
 
   it("ldew bez opublikowanego arkusza: odblokowana (stan produkcji 2026-08-21)", () => {

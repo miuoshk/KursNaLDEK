@@ -25,7 +25,7 @@ function startIdsSession(
   const key = persistRetryWrongIds(questionIds);
   const q = new URLSearchParams({
     subject: summary.subjectId,
-    mode: summary.mode === "osce_topic" ? "inteligentna" : summary.mode,
+    mode: summary.mode,
     count: String(questionIds.length),
     retry: key,
   });
@@ -44,14 +44,10 @@ export function startConceptReviewSession(
   startIdsSession(questionIds, summary, router);
 }
 
-function sessionStartMode(summary: SessionSummaryData) {
-  return summary.mode === "osce_topic" ? "inteligentna" : summary.mode;
-}
-
 function nextSessionHref(summary: SessionSummaryData): string {
   return buildSessionStartHref({
     subject: summary.subjectId,
-    mode: sessionStartMode(summary),
+    mode: summary.mode,
     count: Math.max(summary.totalQuestions, 1),
     topic: summary.topicId,
     src: summary.sourceFilter,
@@ -68,7 +64,7 @@ function finishSessionHref(
       : DEFAULT_SESSION_COUNT;
   return buildSessionStartHref({
     subject: summary.subjectId,
-    mode: sessionStartMode(summary),
+    mode: summary.mode,
     count,
     topic: summary.topicId,
     src: summary.sourceFilter,

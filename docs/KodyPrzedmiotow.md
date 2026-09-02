@@ -83,7 +83,6 @@ Prefiks `id` pytania zaliczenia: `ana-zal-`. Kafelek **Zaliczenie końcowe** jes
 | `subjects.id`       | Nazwa                         | Skrót topików |
 |---------------------|-------------------------------|---------------|
 | `stoma-patologia`   | Patomorfologia                | —             |
-| `stoma-osce`        | OSCE                          | —             |
 | `stoma-biochemia`   | Biochemia                     | `BIO-`        | **Ukryte w UI** (`catalogSubjectVisibility.ts`) |
 | `stoma-fizjologia`  | Fizjologia                    | `PHYS-`       | **Ukryte w UI**; treść w `fizjologia` (shared) |
 | `stoma-mikrobio`    | Mikrobiologia                 | `MICRO-`      | Treść w `mikrobiologia` (shared) |
@@ -156,16 +155,14 @@ Topiki dla lekarskiego — do uzupełnienia przy pierwszym batchu (wzorzec jak `
 
 ## Pola opcjonalne pytań
 
-| Kolumna            | KNNP typowo | OSCE |
-|--------------------|------------|------|
-| `theme_label`      | lista per przedmiot (anatomia) | rzadko |
-| `subtheme_label`   | wolny tekst | rzadko |
-| `batch_label`      | np. `e_anat_2025/1` | — |
-| `learning_outcome` | kod efektu kształcenia | opcjonalnie |
-| `source_exam`      | np. „LDEK 2024" | — |
-| `source_code`      | kod w źródle | — |
-
-Typy OSCE (`ordering`, `image_identify`, …) — tylko `stoma-osce` / stacje OSCE; patrz `docs/ARCHITECTURE.md`.
+| Kolumna            | KNNP typowo |
+|--------------------|-------------|
+| `theme_label`      | lista per przedmiot (anatomia) |
+| `subtheme_label`   | wolny tekst |
+| `batch_label`      | np. `e_anat_2025/1` |
+| `learning_outcome` | kod efektu kształcenia |
+| `source_exam`      | np. „LDEK 2024" |
+| `source_code`      | kod w źródle |
 
 ---
 

@@ -7,7 +7,6 @@ const DASHBOARD_GUARDED_PREFIXES = [
   "/przedmioty",
   "/sesja",
   "/zapisane",
-  "/osce",
   "/statystyki",
   "/osiagniecia",
   "/dashboard",

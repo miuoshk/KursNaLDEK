@@ -42,6 +42,12 @@ const nextConfig: NextConfig = {
       static: 300,
     },
   },
+  async redirects() {
+    return [
+      { source: "/osce", destination: "/przedmioty", permanent: true },
+      { source: "/osce/:path*", destination: "/przedmioty", permanent: true },
+    ];
+  },
   async headers() {
     const securityHeaders = [
       { key: "X-Frame-Options", value: "DENY" },

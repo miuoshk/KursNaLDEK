@@ -15,7 +15,6 @@ const namespaces = [
   "pulpit",
   "subjects",
   "session",
-  "osce",
   "saved",
   "access",
   "checkout",

@@ -81,7 +81,7 @@ type SessionRow = {
   subject_id: string | null;
 };
 
-const TEST_MODES = new Set(["inteligentna", "przeglad", "osce_topic"]);
+const TEST_MODES = new Set(["inteligentna", "przeglad"]);
 
 function dateKey(d: Date): string {
   return d.toISOString().slice(0, 10);

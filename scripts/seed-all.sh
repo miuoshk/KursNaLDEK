@@ -22,14 +22,9 @@ psql "$DB_URL" -f scripts/seed-achievements.sql
 echo "▸ Admin setup..."
 psql "$DB_URL" -f scripts/admin-setup.sql
 
-echo "▸ OSCE schemas..."
-psql "$DB_URL" -f scripts/osce-simulation-schema.sql
-psql "$DB_URL" -f scripts/osce-topic-session-schema.sql
-
 echo "▸ Patches..."
 psql "$DB_URL" -f scripts/patch-profiles-step8.sql
 psql "$DB_URL" -f scripts/patch-session-step5.sql
-psql "$DB_URL" -f scripts/osce-exam-tasks-jsonb-migrate.sql
 
 echo "▸ Sync question counts..."
 psql "$DB_URL" -f scripts/sync-topic-question-counts.sql

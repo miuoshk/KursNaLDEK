@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, Clock3, Flame, RotateCcw, Target } from "luci
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
-import { Rycina } from "@/features/marketing/components/Rycina";
+import { Rycina } from "@/features/shared/components/Rycina";
 
 type HeroMotionProps = {
   registrationOpen: boolean;

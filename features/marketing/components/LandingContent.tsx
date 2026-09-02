@@ -18,7 +18,8 @@ import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
 import { HeroMotion } from "@/features/marketing/components/HeroMotion";
 import { MarketingNav } from "@/features/marketing/components/MarketingNav";
 import { Reveal } from "@/features/marketing/components/Reveal";
-import { Rycina } from "@/features/marketing/components/Rycina";
+import { Rycina } from "@/features/shared/components/Rycina";
+import { cn } from "@/lib/utils";
 
 type LandingContentProps = {
   registrationOpen: boolean;
@@ -59,6 +60,35 @@ const COURSES: { key: CourseKey; icon: CourseIcon; rycina: string; rycinaClass: 
   { key: "dentistry", icon: IconDental, rycina: "anat-skull-lat", rycinaClass: "aspect-[1.17]" },
   { key: "medicine", icon: Stethoscope, rycina: "path-lek-heart-lungs", rycinaClass: "aspect-[1.4]" },
 ];
+
+type MobileRycinaProps = {
+  id: string;
+  aspectClass: string;
+  /** Breakpoint, od którego pasek znika (na desktopie rycina siedzi na krawędzi sekcji). */
+  hideFrom: "md" | "lg";
+  className?: string;
+};
+
+/** Mobile: rycina jako pasek pod nagłówkiem sekcji, mockupy idą niżej bez tła. */
+function MobileRycina({ id, aspectClass, hideFrom, className }: MobileRycinaProps) {
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        "rycina-mask-fade-y relative mt-6 h-64 overflow-hidden",
+        hideFrom === "md" ? "md:hidden" : "lg:hidden",
+        className,
+      )}
+    >
+      <Rycina
+        id={id}
+        opacity={0.36}
+        mask="none"
+        className={cn("left-1/2 top-1/2 w-[112vw] -translate-x-1/2 -translate-y-1/2", aspectClass)}
+      />
+    </div>
+  );
+}
 
 export async function LandingContent({ registrationOpen }: LandingContentProps) {
   const t = await getTranslations("marketing");
@@ -148,6 +178,8 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                 {t("product.description")}
               </p>
             </Reveal>
+
+            <MobileRycina id="sec-progress-brain" aspectClass="aspect-[1.4]" hideFrom="md" />
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Reveal>
@@ -252,6 +284,8 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
                 {t("session.description")}
               </p>
             </Reveal>
+
+            <MobileRycina id="anat-vessels-head" aspectClass="aspect-square" hideFrom="lg" />
 
             {/* 02 (pełne pytanie) jest najwyższe, więc zajmuje prawą kolumnę na dwa wiersze; 04 idzie na całą szerokość. */}
             <div className="mt-12 grid gap-5 lg:grid-cols-2 lg:grid-rows-[auto_auto_auto]">
@@ -419,6 +453,7 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
               <p className="mt-5 max-w-xl font-body text-base leading-7 text-secondary">
                 {t("progress.description")}
               </p>
+              <MobileRycina id="sky-kalibra" aspectClass="aspect-square" hideFrom="lg" />
               <ul className="mt-8 space-y-4">
                 {progressPoints.map((point) => (
                   <li key={point} className="flex items-start gap-3 font-body text-body-sm leading-6 text-secondary">
@@ -535,8 +570,9 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
         >
           <Rycina
             id="sky-antares"
-            opacity={0.22}
-            className="left-1/2 top-1/2 aspect-[1.33] w-[min(120vw,1100px)] -translate-x-1/2 -translate-y-1/2"
+            opacity={0.24}
+            mask="fade-y"
+            className="inset-x-0 top-1/2 aspect-[1.33] w-full -translate-y-1/2"
           />
           <Reveal className="relative mx-auto max-w-3xl">
             <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
@@ -577,7 +613,7 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
           </p>
           <nav className="flex flex-wrap gap-x-6 gap-y-3" aria-label={t("footer.ariaLabel")}>
             <a
-              href="mailto:kontakt@kursnaldek.pl"
+              href="mailto:info@zenitlabs.pl"
               className="font-body text-body-xs text-muted transition-colors hover:text-secondary"
             >
               {t("footer.contact")}

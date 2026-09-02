@@ -378,8 +378,7 @@
     }
   },
   "auth": {
-    "email": "Эл. почта",
-    "fullNamePlaceholder": "Иван Иванов"
+    "email": "Эл. почта"
   },
   "common": {
     "appName": "Kurs na LDEK",

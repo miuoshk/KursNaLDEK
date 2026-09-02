@@ -9,6 +9,7 @@ import { initialAuthActionState } from "@/features/auth/types";
 import { isRegistrationClosedForSelection } from "@/features/access/lib/studyAccess";
 import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { RegisterLegalNotice } from "@/features/legal/components/RegisterLegalNotice";
+import { PERSON_NAME_MAX_LENGTH, PERSON_NAME_MIN_LENGTH } from "@/features/auth/constants";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
@@ -54,21 +55,43 @@ export function RegisterForm() {
   return (
     <form action={formAction} className="mt-6 space-y-4">
       <div>
-        <label htmlFor="fullName" className="mb-2 block font-body text-body-sm text-secondary">
-          {t("fullName")}
-        </label>
-        <input
-          id="fullName"
-          name="fullName"
-          type="text"
-          required
-          minLength={2}
-          maxLength={120}
-          autoComplete="name"
-          aria-required="true"
-          className={inputClassName}
-          placeholder={t("fullNamePlaceholder")}
-        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="firstName" className="mb-2 block font-body text-body-sm text-secondary">
+              {t("firstName")}
+            </label>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              required
+              minLength={PERSON_NAME_MIN_LENGTH}
+              maxLength={PERSON_NAME_MAX_LENGTH}
+              autoComplete="given-name"
+              aria-required="true"
+              className={inputClassName}
+              placeholder={t("firstNamePlaceholder")}
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName" className="mb-2 block font-body text-body-sm text-secondary">
+              {t("lastName")}
+            </label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              required
+              minLength={PERSON_NAME_MIN_LENGTH}
+              maxLength={PERSON_NAME_MAX_LENGTH}
+              autoComplete="family-name"
+              aria-required="true"
+              className={inputClassName}
+              placeholder={t("lastNamePlaceholder")}
+            />
+          </div>
+        </div>
+        <p className="mt-1.5 font-body text-body-xs text-muted">{t("nameHelper")}</p>
       </div>
 
       <EmojiInput

@@ -13,61 +13,13 @@ import {
   ACCOUNT_BLOCKED_MESSAGE_KEY,
   getClientIpFromHeaders,
 } from "@/lib/auth/accountBan";
-import { isValidEmoji } from "@/lib/emoji";
+import { registerSchema } from "@/features/auth/lib/registerSchema";
 import { assertAuthRateLimit, AUTH_RATE_LIMIT_MESSAGE_KEY } from "@/lib/security/rateLimit";
 
 const loginSchema = z.object({
   email: z.string().email("emailInvalid"),
   password: z.string().min(6, "passwordMinLength"),
 });
-
-const registerSchema = z
-  .object({
-    fullName: z.preprocess(
-      (value) => (typeof value === "string" ? value : ""),
-      z
-        .string()
-        .trim()
-        .min(2, "fullNameRequired")
-        .max(120, "fullNameTooLong"),
-    ),
-    nick: z
-      .string()
-      .trim()
-      .min(3, "nickMinLength")
-      .max(32, "nickMaxLength")
-      .regex(/^[A-Za-z0-9._-]+$/, "nickInvalidChars"),
-    email: z.string().email("emailInvalid"),
-    password: z.string().min(6, "passwordMinLength"),
-    confirmPassword: z.string().min(6, "confirmPasswordRequired"),
-    courseType: z
-      .string()
-      .refine((value): value is "knnp" | "ldek" | "ldew" => {
-        return value === "knnp" || value === "ldek" || value === "ldew";
-      }, { message: "courseRequired" }),
-    currentTrack: z.string().nullish(),
-    currentYear: z.preprocess(
-      (value) => (value === null || value === undefined || value === "" ? undefined : value),
-      z.coerce.number().int().optional(),
-    ),
-    avatarEmoji: z
-      .string()
-      .trim()
-      .refine(isValidEmoji, "avatarEmojiInvalid"),
-  })
-  .superRefine((data, ctx) => {
-    if (data.courseType !== "knnp") return;
-    if (data.currentTrack !== "stomatologia" && data.currentTrack !== "lekarski") {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "trackRequired", path: ["currentTrack"] });
-    }
-    if (data.currentYear === undefined || data.currentYear < 1 || data.currentYear > 3) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "studyYearRequired", path: ["currentYear"] });
-    }
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "passwordsMustMatch",
-    path: ["confirmPassword"],
-  });
 
 type ErrorTranslator = Awaited<ReturnType<typeof getTranslations<"errors">>>;
 
@@ -237,7 +189,9 @@ export async function registerAction(
   }
 
   const parsed = registerSchema.safeParse({
-    fullName: formData.get("fullName"),
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    acceptTerms: formData.get("acceptTerms"),
     nick: formData.get("nick"),
     email: formData.get("email"),
     password: formData.get("password"),
@@ -304,7 +258,10 @@ export async function registerAction(
     options: {
       emailRedirectTo: `${origin}/login`,
       data: {
-        full_name: parsed.data.fullName,
+        full_name: `${parsed.data.firstName} ${parsed.data.lastName}`,
+        first_name: parsed.data.firstName,
+        last_name: parsed.data.lastName,
+        terms_accepted_at: new Date().toISOString(),
         nick: parsed.data.nick,
         display_name: parsed.data.nick,
         current_product: parsed.data.courseType,

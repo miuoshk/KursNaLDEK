@@ -378,8 +378,7 @@
     }
   },
   "auth": {
-    "email": "Ел. пошта",
-    "fullNamePlaceholder": "Іван Іваненко"
+    "email": "Ел. пошта"
   },
   "common": {
     "appName": "Kurs na LDEK",

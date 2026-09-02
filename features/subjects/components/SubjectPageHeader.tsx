@@ -19,12 +19,13 @@ export function SubjectPageHeader({
       {art?.plate ? (
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 -top-6 h-40 overflow-hidden"
+          className="pointer-events-none absolute inset-x-0 -top-8 h-44 overflow-hidden md:h-52"
         >
           <Rycina
             id={art.plate}
-            mask="fade-y"
-            className="right-0 top-0 h-full w-[min(420px,70%)] opacity-[0.14]"
+            mask="edge-right"
+            fit="cover"
+            className="inset-0 opacity-[0.16]"
           />
         </div>
       ) : null}

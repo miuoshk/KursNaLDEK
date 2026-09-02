@@ -295,7 +295,8 @@ export function TopicSessionConfigDialog({
                     <Rycina
                       id={SESSION_MODE_RYCINA.inteligentnaPlate}
                       mask="fade-y"
-                      className="inset-y-0 right-0 w-[80%] opacity-[0.16]"
+                      fit="cover"
+                      className="inset-0 opacity-[0.16]"
                     />
                   </div>
                   <span className="absolute -top-2 right-3 z-10 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">

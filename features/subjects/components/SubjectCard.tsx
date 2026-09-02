@@ -66,7 +66,8 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
           <Rycina
             id={plate}
             mask="edge-right"
-            className="inset-y-0 right-0 w-[72%] opacity-[0.18] transition-opacity duration-200 ease-out group-hover:opacity-[0.24]"
+            fit="cover"
+            className="inset-0 opacity-[0.16] transition-opacity duration-200 ease-out group-hover:opacity-[0.22]"
           />
         </div>
       ) : null}
@@ -190,7 +191,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
     return (
       <div
         className={cn(
-          "group relative flex flex-col rounded-card border border-border bg-card p-5",
+          "group relative flex flex-col overflow-hidden rounded-card border border-border bg-card p-5",
           "pointer-events-none opacity-60",
         )}
       >
@@ -203,7 +204,7 @@ export function SubjectCard({ subject, locked }: SubjectCardProps) {
     <Link
       href={`/przedmioty/${subject.id}`}
       className={cn(
-        "group relative flex flex-col rounded-card border border-border bg-card p-5",
+        "group relative flex flex-col overflow-hidden rounded-card border border-border bg-card p-5",
         "cursor-pointer transition-all duration-200 ease-out",
         structureReady
           ? "hover:border-brand-gold/30"

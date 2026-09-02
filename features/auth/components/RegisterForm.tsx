@@ -53,7 +53,7 @@ export function RegisterForm() {
     currentTrack === "lekarski" && isRegistrationClosedForSelection("lekarski", 3);
 
   return (
-    <form action={formAction} className="mt-6 space-y-4">
+    <form action={formAction} className="space-y-4">
       <div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
@@ -91,7 +91,6 @@ export function RegisterForm() {
             />
           </div>
         </div>
-        <p className="mt-1.5 font-body text-body-xs text-muted">{t("nameHelper")}</p>
       </div>
 
       <EmojiInput

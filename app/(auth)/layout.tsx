@@ -3,35 +3,31 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Rycina } from "@/features/shared/components/Rycina";
-import { getSloganPool, pickSlogan } from "@/features/shared/lib/slogans";
 
 export const dynamic = "force-dynamic";
 
 export default async function AuthLayout({ children }: { children: ReactNode }) {
   const tAuth = await getTranslations("auth");
-  const tSlogans = await getTranslations("slogans");
-  const slogan = pickSlogan(getSloganPool(tSlogans, "auth"), tSlogans("default"));
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
-      {/* Ryciny przypięte do viewportu (formularz rejestracji jest dłuższy niż ekran). Desktop: krawędzie jak na landingu, mobile: jedna płyta za nagłówkiem. */}
       <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">
         <Rycina
-          id="auth-bg-skull"
+          id="sec-session-trigeminal"
           priority
           mask="edge-left"
-          className="hidden lg:block -left-[10vh] top-1/2 aspect-square h-[92vh] -translate-y-1/2 opacity-[0.22]"
+          className="hidden lg:block -left-[8vh] top-1/2 aspect-[0.8] h-[110vh] -translate-y-1/2 opacity-[0.28]"
         />
         <Rycina
-          id="auth-bg-jaw"
+          id="anat-permanent-arch"
           mask="edge-right"
-          className="hidden lg:block -bottom-[6vh] -right-[4vw] aspect-[1.4] h-[60vh] opacity-[0.2]"
+          className="hidden lg:block -bottom-[8vh] -right-[6vw] aspect-[1.4] h-[70vh] opacity-[0.26]"
         />
         <Rycina
-          id="auth-bg-skull"
+          id="sec-session-trigeminal"
           priority
           mask="fade-y"
-          className="-top-[38vw] left-1/2 aspect-square w-[150vw] -translate-x-1/2 opacity-[0.18] lg:hidden"
+          className="-top-[28vw] left-1/2 aspect-[0.8] w-[130vw] -translate-x-1/2 opacity-[0.2] lg:hidden"
         />
       </div>
 
@@ -49,12 +45,7 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
       </header>
 
       <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-14 pt-6 sm:pt-10">
-        <div className="w-full max-w-md">
-          <p className="mb-6 text-balance text-center font-heading text-heading-md text-primary">{slogan}</p>
-          <div className="rounded-card border border-border bg-card/90 p-6 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-8">
-            {children}
-          </div>
-        </div>
+        <div className="w-full max-w-md">{children}</div>
       </main>
     </div>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { AuthFrame } from "@/features/auth/components/AuthFrame";
 import { ResetPasswordForm } from "@/features/auth/components/ResetPasswordForm";
 import { createClient } from "@/lib/supabase/server";
 
@@ -14,9 +15,8 @@ export default async function ResetPasswordPage() {
 
   if (!user) {
     return (
-      <div>
-        <h1 className="font-heading text-heading-lg text-primary">{t("linkExpiredTitle")}</h1>
-        <p className="mt-4 font-body text-body-sm text-secondary">{t("linkExpiredBody")}</p>
+      <AuthFrame title={t("linkExpiredTitle")}>
+        <p className="font-body text-body-sm text-secondary">{t("linkExpiredBody")}</p>
         <p className="mt-6 text-center font-body text-body-sm text-secondary">
           <Link
             href="/forgot-password"
@@ -25,17 +25,16 @@ export default async function ResetPasswordPage() {
             {t("sendNewLink")}
           </Link>
         </p>
-      </div>
+      </AuthFrame>
     );
   }
 
   return (
-    <div>
-      <h1 className="font-heading text-heading-lg text-primary">{t("resetPasswordTitle")}</h1>
-      <p className="mt-3 font-body text-body-sm text-secondary">
+    <AuthFrame title={t("resetPasswordTitle")}>
+      <p className="mb-4 font-body text-body-sm text-secondary">
         {t("resetPasswordIntro", { email: user.email ?? "" })}
       </p>
       <ResetPasswordForm />
-    </div>
+    </AuthFrame>
   );
 }

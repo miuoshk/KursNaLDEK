@@ -37,7 +37,7 @@ export function ForgotPasswordForm() {
   );
 
   return (
-    <form action={formAction} className="mt-6 space-y-4">
+    <form action={formAction} className="space-y-4">
       <p className="font-body text-body-sm text-secondary">
         {t("forgotPasswordDescription")}
       </p>

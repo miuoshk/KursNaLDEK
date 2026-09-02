@@ -37,7 +37,7 @@ export function ResetPasswordForm() {
   );
 
   return (
-    <form action={formAction} className="mt-6 space-y-4">
+    <form action={formAction} className="space-y-4">
       <div>
         <label
           htmlFor="password"

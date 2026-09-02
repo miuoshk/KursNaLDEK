@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { AuthFrame } from "@/features/auth/components/AuthFrame";
 import { ForgotPasswordForm } from "@/features/auth/components/ForgotPasswordForm";
 
 export default async function ForgotPasswordPage() {
   const t = await getTranslations("auth");
 
   return (
-    <div>
-      <h1 className="font-heading text-heading-lg text-primary">{t("forgotPassword")}</h1>
+    <AuthFrame title={t("forgotPassword")}>
       <ForgotPasswordForm />
       <p className="mt-6 text-center font-body text-body-sm text-secondary">
         {t("rememberPassword")}{" "}
@@ -18,6 +18,6 @@ export default async function ForgotPasswordPage() {
           {t("backToLogin")}
         </Link>
       </p>
-    </div>
+    </AuthFrame>
   );
 }

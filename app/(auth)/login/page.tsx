@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { AuthFrame } from "@/features/auth/components/AuthFrame";
 import { LoginForm } from "@/features/auth/components/LoginForm";
 import { RegistrationCountdown } from "@/features/auth/components/RegistrationCountdown";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
@@ -29,13 +30,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         : null;
 
   return (
-    <div>
-      <h1 className="font-heading text-heading-lg text-primary">{tAuth("login")}</h1>
-
+    <AuthFrame title={tAuth("login")}>
       {accountBlocked ? (
         <div
           role="alert"
-          className="mt-4 rounded-btn border border-[#F87171]/40 bg-[#F87171]/10 px-4 py-3 font-body text-body-sm text-[#F87171]"
+          className="mb-4 rounded-btn border border-[#F87171]/40 bg-[#F87171]/10 px-4 py-3 font-body text-body-sm text-[#F87171]"
         >
           {tErrors("accountBlocked")}
         </div>
@@ -44,7 +43,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       {resetSuccess ? (
         <div
           role="status"
-          className="mt-4 rounded-btn border border-brand-gold/40 bg-brand-gold/10 px-4 py-3 font-body text-body-sm text-brand-gold"
+          className="mb-4 rounded-btn border border-brand-gold/40 bg-brand-gold/10 px-4 py-3 font-body text-body-sm text-brand-gold"
         >
           {tAuth("passwordChangedLogin")}
         </div>
@@ -53,7 +52,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       {authError ? (
         <div
           role="alert"
-          className="mt-4 rounded-btn border border-[#F87171]/40 bg-[#F87171]/10 px-4 py-3 font-body text-body-sm text-[#F87171]"
+          className="mb-4 rounded-btn border border-[#F87171]/40 bg-[#F87171]/10 px-4 py-3 font-body text-body-sm text-[#F87171]"
         >
           {authError}
         </div>
@@ -73,6 +72,6 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       ) : (
         <RegistrationCountdown />
       )}
-    </div>
+    </AuthFrame>
   );
 }

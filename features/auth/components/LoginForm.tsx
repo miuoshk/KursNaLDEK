@@ -36,7 +36,7 @@ export function LoginForm() {
   const [state, formAction] = useActionState(loginAction, initialAuthActionState);
 
   return (
-    <form action={formAction} className="mt-6 space-y-4">
+    <form action={formAction} className="space-y-4">
       <div>
         <label htmlFor="email" className="mb-2 block font-body text-body-sm text-secondary">
           {t("email")}

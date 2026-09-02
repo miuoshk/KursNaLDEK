@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { AuthFrame } from "@/features/auth/components/AuthFrame";
 import { RegisterForm } from "@/features/auth/components/RegisterForm";
 import { isRegistrationOpen } from "@/lib/registrationWindow";
 
@@ -12,8 +13,7 @@ export default async function RegisterPage() {
   const t = await getTranslations("auth");
 
   return (
-    <div>
-      <h1 className="font-heading text-heading-lg text-primary">{t("register")}</h1>
+    <AuthFrame title={t("register")}>
       <RegisterForm />
       <p className="mt-6 text-center font-body text-body-sm text-secondary">
         {t("hasAccount")}{" "}
@@ -24,6 +24,6 @@ export default async function RegisterPage() {
           {t("login")}
         </Link>
       </p>
-    </div>
+    </AuthFrame>
   );
 }

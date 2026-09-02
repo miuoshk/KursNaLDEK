@@ -1070,7 +1070,7 @@
     "badgeTest": "Testowy",
     "badgePaid": "Płatny",
     "badgeOwned": "Aktywny",
-    "unlockCta": "Odblokuj dostęp",
+    "unlockCta": "Uzyskaj dostęp",
     "eyebrowLdek": "Kurs na LDEK · dostęp",
     "eyebrowLdew": "Kurs na LDEW · dostęp",
     "gateKierunekLdek": "LDEK",
@@ -1080,69 +1080,15 @@
     "durationTitle": "{days} dni",
     "featuredYourYear": "Twój rok",
     "featuredRecommended": "Polecane",
-    "priceNoteKnnp": "jednorazowo · dostęp do egzaminu",
-    "priceNoteTrial": "pełny dostęp w okresie testowym",
-    "priceNoteDuration": "jednorazowo · {days} dni dostępu",
-    "ownedNote": "Dostęp opłacony — ważny do egzaminu.",
-    "ownedNoteDuration": "Dostęp opłacony — liczony od momentu zakupu.",
+    "priceNoteKnnp": "jednorazowo",
+    "priceNoteTrial": "rok testowy",
+    "priceNoteDuration": "jednorazowo · {days} dni",
     "trialAmount": "0 zł",
     "trustStripe": "Płatności obsługuje Stripe",
     "trustMethods": "BLIK · karta · Apple Pay · Google Pay",
     "trustInstant": "Dostęp aktywny natychmiast po płatności",
-    "ledeKnnp": "<trial>Stomatologia rok 2</trial> to darmowy rok testowy. Pozostałe opcje to płatność jednorazowa, <nosub>bez subskrypcji</nosub>.",
-    "ledeDuration": "Pełny kurs nostryfikacyjny. Płatność jednorazowa, <nosub>bez subskrypcji</nosub>.",
-    "includes": {
-      "knnpStoma1": [
-        "Przedmioty 1. roku stomatologii",
-        "Sesje adaptacyjne i powtórki",
-        "Śledzenie postępów na bieżąco"
-      ],
-      "knnpStoma2": [
-        "Przedmioty 2. roku stomatologii",
-        "Pełny dostęp w okresie testowym",
-        "Te same narzędzia co w płatnym"
-      ],
-      "knnpStoma3": [
-        "Przedmioty 3. roku stomatologii",
-        "Sesje adaptacyjne i powtórki",
-        "Przygotowanie do kolejnego roku"
-      ],
-      "knnpLek1": [
-        "Przedmioty 1. roku lekarskiego",
-        "Sesje adaptacyjne i powtórki",
-        "Śledzenie postępów na bieżąco"
-      ],
-      "ldew30": [
-        "Pełny bank pytań LDEW",
-        "Powtórki i statystyki postępów",
-        "Sprint 30 dni do egzaminu"
-      ],
-      "ldew180": [
-        "Pełny bank pytań LDEW",
-        "Plan powtórek na semestr",
-        "Wszystkie przedmioty kliniczne"
-      ],
-      "ldew365": [
-        "Pełny bank pytań LDEW",
-        "Cały cykl przygotowań do egzaminu",
-        "Wszystkie przedmioty kliniczne"
-      ],
-      "ldek30": [
-        "Pełny bank pytań LDEK",
-        "Powtórki i statystyki postępów",
-        "Sprint 30 dni do egzaminu"
-      ],
-      "ldek180": [
-        "Pełny bank pytań LDEK",
-        "Plan powtórek na semestr",
-        "Wszystkie przedmioty kliniczne"
-      ],
-      "ldek365": [
-        "Pełny bank pytań LDEK",
-        "Cały cykl przygotowań do egzaminu",
-        "Wszystkie przedmioty kliniczne"
-      ]
-    },
+    "ledeKnnp": "<trial>Rok 2 stomatologii</trial> jest otwarty bez opłaty. Pozostałe lata — jednorazowo, na czas dostępu.",
+    "ledeDuration": "Pełny kurs nostryfikacyjny. Jedna płatność, dostęp od razu.",
     "registrationClosed": "Rejestracja zamknięta.",
     "noAccessTitle": "Brak dostępu",
     "chooseTrackYear": "Wybierz kierunek i rok",
@@ -1167,6 +1113,20 @@
       "supabaseProfileUpdate": "Nie udało się zapisać wyboru roku w profilu.",
       "entitlementGrantFailed": "Nie udało się zapisać dostępu w bazie.",
       "unknown": "Nieznany błąd. Sprawdź logi serwera."
+    },
+    "remainingDays": "{count, plural, one {Został # dzień} few {Zostały # dni} many {Zostało # dni} other {Zostało # dni}}",
+    "pricePerDay": "{amount} / dzień",
+    "summaries": {
+      "knnpStoma1": "Przedmioty 1. roku stomatologii",
+      "knnpStoma2": "Rok testowy — przedmioty 2. roku",
+      "knnpStoma3": "Przedmioty 3. roku stomatologii",
+      "knnpLek1": "Przedmioty 1. roku lekarskiego",
+      "ldew30": "Sprint do egzaminu",
+      "ldew180": "Semestr przygotowań",
+      "ldew365": "Pełny cykl do egzaminu",
+      "ldek30": "Sprint do egzaminu",
+      "ldek180": "Semestr przygotowań",
+      "ldek365": "Pełny cykl do egzaminu"
     }
   },
   "marketing": {

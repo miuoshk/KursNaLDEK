@@ -2,6 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   getEntitlementExpiresAt,
+  getRemainingAccessDays,
   isEntitlementCurrentlyValid,
 } from "@/features/access/lib/entitlementExpiry";
 
@@ -42,6 +43,27 @@ describe("entitlementExpiry", () => {
     const grantedAt = new Date("2026-01-01T00:00:00.000Z");
     const expiresAt = getEntitlementExpiresAt(grantedAt, "paid", 365);
     assert.equal(expiresAt?.toISOString(), "2027-01-01T00:00:00.000Z");
+  });
+
+  it("counts remaining paid days", () => {
+    assert.equal(
+      getRemainingAccessDays(
+        {
+          access_type: "paid",
+          granted_at: "2026-01-01T00:00:00.000Z",
+          access_days: 45,
+        },
+        new Date("2026-01-10T00:00:00.000Z"),
+      ),
+      36,
+    );
+    assert.equal(
+      getRemainingAccessDays({
+        access_type: "free_test",
+        granted_at: "2026-01-01T00:00:00.000Z",
+      }),
+      null,
+    );
   });
 
   it("accepts paid entitlements within the window", () => {

@@ -49,3 +49,15 @@ export function isEntitlementCurrentlyValid(
   }
   return expiresAt.getTime() > now.getTime();
 }
+
+/** Dni do końca płatnego okna. `null` dla roku testowego (nie wygasa). */
+export function getRemainingAccessDays(
+  row: Pick<EntitlementTiming, "access_type" | "granted_at" | "access_days">,
+  now: Date = new Date(),
+): number | null {
+  const expiresAt = getEntitlementExpiresAt(row.granted_at, row.access_type, row.access_days);
+  if (!expiresAt) return null;
+  const ms = expiresAt.getTime() - now.getTime();
+  if (ms <= 0) return 0;
+  return Math.ceil(ms / MS_PER_DAY);
+}

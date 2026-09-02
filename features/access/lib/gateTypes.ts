@@ -7,9 +7,9 @@ export type GateCard = {
   state: GateCardState;
   featured?: boolean;
   featuredLabel?: string;
-  price?: { amount: string; note: string };
-  includes: string[];
-  ownedNote?: string;
+  summary: string;
+  price?: { amount: string; note: string; perDay?: string };
+  remainingDays?: number | null;
   stripePriceId?: string;
   href?: string;
   checkoutFields?: Record<string, string>;

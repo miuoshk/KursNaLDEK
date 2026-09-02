@@ -1,16 +1,25 @@
 import type { GateOffer } from "@/features/access/lib/gateCatalog";
 import type { GateCard, GateCardState } from "@/features/access/lib/gateTypes";
 import { resolveGateCardState } from "@/features/access/lib/gateTypes";
-import type { StudyProduct, StudyTrack, StudyYear } from "@/features/access/lib/studyAccess";
+import { getRemainingAccessDays } from "@/features/access/lib/entitlementExpiry";
+import type { AccessType, StudyProduct, StudyTrack, StudyYear } from "@/features/access/lib/studyAccess";
 
 export type GateEntitlementSlice = {
   product: StudyProduct;
   track: StudyTrack;
   year: StudyYear;
   offer_key: string | null;
+  access_type?: AccessType;
+  granted_at?: string;
+  access_days?: number | null;
 };
 
-export type GateAmountLookup = (offer: GateOffer) => string | undefined;
+export type OfferPriceQuote = {
+  amount?: string;
+  perDay?: string;
+};
+
+export type GateAmountLookup = (offer: GateOffer) => OfferPriceQuote | undefined;
 
 type MapYearCardsInput = {
   offers: Extract<GateOffer, { kind: "year" }>[];
@@ -19,13 +28,13 @@ type MapYearCardsInput = {
   selectedYear: StudyYear;
   kierunekLabel: (track: StudyTrack) => string;
   yearLabel: (year: StudyYear) => string;
-  includes: (key: Extract<GateOffer, { kind: "year" }>["includesKey"]) => string[];
+  summary: (key: Extract<GateOffer, { kind: "year" }>["includesKey"]) => string;
   featuredLabel: string;
   priceNotePaid: string;
   priceNoteTrial: string;
-  ownedNote: string;
   trialAmount: string;
   amountFor: GateAmountLookup;
+  now?: Date;
 };
 
 type MapDurationCardsInput = {
@@ -34,15 +43,27 @@ type MapDurationCardsInput = {
   product: StudyProduct;
   kierunek: string;
   durationLabel: (days: number) => string;
-  includes: (key: Extract<GateOffer, { kind: "duration" }>["includesKey"]) => string[];
+  summary: (key: Extract<GateOffer, { kind: "duration" }>["includesKey"]) => string;
   featuredLabel: string;
   priceNoteDuration: (days: number) => string;
-  ownedNote: string;
   amountFor: GateAmountLookup;
+  now?: Date;
 };
 
 function checkoutFields(offer: GateOffer): Record<string, string> {
   return { offerId: offer.id };
+}
+
+function remainingDaysFor(slice: GateEntitlementSlice | undefined, now?: Date): number | null | undefined {
+  if (!slice?.granted_at || !slice.access_type) return undefined;
+  return getRemainingAccessDays(
+    {
+      access_type: slice.access_type,
+      granted_at: slice.granted_at,
+      access_days: slice.access_days,
+    },
+    now,
+  );
 }
 
 export function mapYearGateCards(input: MapYearCardsInput): GateCard[] {
@@ -56,6 +77,9 @@ export function mapYearGateCards(input: MapYearCardsInput): GateCard[] {
     const isUnlocked = unlocked.has(`${offer.track}:${offer.year}`);
     const state = resolveGateCardState(offer.isFreeTest, isUnlocked);
     const featured = offer.track === input.selectedTrack && offer.year === input.selectedYear;
+    const entitlement = input.entitlements.find(
+      (entry) => entry.product === "knnp" && entry.track === offer.track && entry.year === offer.year,
+    );
     return buildCard({
       offer,
       state,
@@ -63,12 +87,12 @@ export function mapYearGateCards(input: MapYearCardsInput): GateCard[] {
       featuredLabel: input.featuredLabel,
       kierunek: input.kierunekLabel(offer.track),
       rok: input.yearLabel(offer.year),
-      includes: input.includes(offer.includesKey),
-      amount: input.amountFor(offer),
+      summary: input.summary(offer.includesKey),
+      quote: input.amountFor(offer),
       priceNotePaid: input.priceNotePaid,
       priceNoteTrial: input.priceNoteTrial,
-      ownedNote: input.ownedNote,
       trialAmount: input.trialAmount,
+      remainingDays: state === "owned" ? remainingDaysFor(entitlement, input.now) : undefined,
     });
   });
 }
@@ -93,12 +117,12 @@ export function mapDurationGateCards(input: MapDurationCardsInput): GateCard[] {
       featuredLabel: input.featuredLabel,
       kierunek: input.kierunek,
       rok: input.durationLabel(offer.accessDays),
-      includes: input.includes(offer.includesKey),
-      amount: input.amountFor(offer),
+      summary: input.summary(offer.includesKey),
+      quote: input.amountFor(offer),
       priceNotePaid: input.priceNoteDuration(offer.accessDays),
       priceNoteTrial: "",
-      ownedNote: input.ownedNote,
       trialAmount: "0 zł",
+      remainingDays: isUnlocked ? remainingDaysFor(owned, input.now) : undefined,
     });
   });
 }
@@ -110,12 +134,12 @@ function buildCard(args: {
   featuredLabel: string;
   kierunek: string;
   rok: string;
-  includes: string[];
-  amount: string | undefined;
+  summary: string;
+  quote: OfferPriceQuote | undefined;
   priceNotePaid: string;
   priceNoteTrial: string;
-  ownedNote: string;
   trialAmount: string;
+  remainingDays?: number | null;
 }): GateCard {
   const { offer, state } = args;
   const card: GateCard = {
@@ -125,15 +149,16 @@ function buildCard(args: {
     state,
     featured: args.featured || undefined,
     featuredLabel: args.featured ? args.featuredLabel : undefined,
-    includes: args.includes.slice(0, 3),
+    summary: args.summary,
     enterFields: checkoutFields(offer),
   };
 
   if (state === "locked") {
     card.checkoutFields = checkoutFields(offer);
     card.price = {
-      amount: args.amount ?? "—",
+      amount: args.quote?.amount ?? "—",
       note: args.priceNotePaid,
+      perDay: args.quote?.perDay,
     };
   } else if (state === "trial") {
     card.activateFields = checkoutFields(offer);
@@ -143,7 +168,7 @@ function buildCard(args: {
     };
     card.href = "/pulpit";
   } else {
-    card.ownedNote = args.ownedNote;
+    card.remainingDays = args.remainingDays;
     card.href = "/pulpit";
   }
 

@@ -10,6 +10,7 @@ import {
   type GateOffer,
 } from "@/features/access/lib/gateCatalog";
 import { mapDurationGateCards, mapYearGateCards } from "@/features/access/lib/mapGateCards";
+import { formatOfferAmount, formatPricePerDay } from "@/features/access/lib/formatOfferPrice";
 import type { GateCard } from "@/features/access/lib/gateTypes";
 import { peekStripePriceIdForOffer } from "@/features/access/lib/stripePrices";
 import {
@@ -24,10 +25,11 @@ import { getStripeServerClient } from "@/lib/stripe/server";
 export type PricingGateModel = {
   eyebrow: string;
   title: string;
+  layout: "years" | "durations";
   cards: GateCard[];
 };
 
-type IncludesKey = GateOffer["includesKey"];
+type SummaryKey = GateOffer["includesKey"];
 
 export async function loadPricingGateModel(args: {
   product: StudyProduct;
@@ -40,12 +42,9 @@ export async function loadPricingGateModel(args: {
   const offers = usesDurationGate(product)
     ? getDurationOffers(product === "ldek" ? "ldek" : "ldew")
     : KNNP_YEAR_OFFERS;
-  const amounts = await loadOfferAmounts(offers);
+  const quotes = await loadOfferQuotes(offers);
 
-  const includesFor = (key: IncludesKey): string[] => {
-    const raw = t.raw(`includes.${key}`);
-    return Array.isArray(raw) ? raw.filter((item): item is string => typeof item === "string") : [];
-  };
+  const summaryFor = (key: SummaryKey): string => t(`summaries.${key}` as Parameters<typeof t>[0]);
 
   if (usesDurationGate(product)) {
     const durationProduct = product === "ldek" ? "ldek" : "ldew";
@@ -55,16 +54,16 @@ export async function loadPricingGateModel(args: {
       product,
       kierunek: durationProduct === "ldek" ? t("gateKierunekLdek") : t("gateKierunekLdew"),
       durationLabel: (days) => t("durationTitle", { days }),
-      includes: includesFor,
+      summary: summaryFor,
       featuredLabel: t("featuredRecommended"),
       priceNoteDuration: (days) => t("priceNoteDuration", { days }),
-      ownedNote: t("ownedNoteDuration"),
-      amountFor: (offer) => amounts.get(offer.id),
+      amountFor: (offer) => quotes.get(offer.id),
     }).map(attachStripePriceId);
 
     return {
       eyebrow: durationProduct === "ldek" ? t("eyebrowLdek") : t("eyebrowLdew"),
       title: t("chooseDuration"),
+      layout: "durations",
       cards,
     };
   }
@@ -76,18 +75,18 @@ export async function loadPricingGateModel(args: {
     selectedYear: args.selectedYear,
     kierunekLabel: (track) => formatTrackLabel(track, t),
     yearLabel: (year) => t("yearHeading", { year }),
-    includes: includesFor,
+    summary: summaryFor,
     featuredLabel: t("featuredYourYear"),
     priceNotePaid: t("priceNoteKnnp"),
     priceNoteTrial: t("priceNoteTrial"),
-    ownedNote: t("ownedNote"),
     trialAmount: t("trialAmount"),
-    amountFor: (offer) => amounts.get(offer.id),
+    amountFor: (offer) => quotes.get(offer.id),
   }).map(attachStripePriceId);
 
   return {
     eyebrow: t("eyebrowLdek"),
     title: t("chooseTrackYear"),
+    layout: "years",
     cards,
   };
 }
@@ -101,17 +100,19 @@ function attachStripePriceId(card: GateCard): GateCard {
   return { ...card, stripePriceId: peekStripePriceIdForOffer(offer) };
 }
 
-async function loadOfferAmounts(offers: GateOffer[]): Promise<Map<string, string>> {
-  const amounts = new Map<string, string>();
+async function loadOfferQuotes(
+  offers: GateOffer[],
+): Promise<Map<string, { amount: string; perDay?: string }>> {
+  const quotes = new Map<string, { amount: string; perDay?: string }>();
   if (!process.env.STRIPE_SECRET_KEY) {
-    return amounts;
+    return quotes;
   }
 
   let stripe: ReturnType<typeof getStripeServerClient>;
   try {
     stripe = getStripeServerClient();
   } catch {
-    return amounts;
+    return quotes;
   }
 
   await Promise.all(
@@ -121,19 +122,19 @@ async function loadOfferAmounts(offers: GateOffer[]): Promise<Map<string, string
       try {
         const price = await stripe.prices.retrieve(priceId);
         if (price.unit_amount == null) return;
-        amounts.set(
-          offer.id,
-          new Intl.NumberFormat("pl-PL", {
-            style: "currency",
-            currency: (price.currency ?? "pln").toUpperCase(),
-            maximumFractionDigits: 0,
-          }).format(price.unit_amount / 100),
-        );
+        const currency = price.currency ?? "pln";
+        quotes.set(offer.id, {
+          amount: formatOfferAmount(price.unit_amount, currency),
+          perDay:
+            offer.kind === "duration"
+              ? formatPricePerDay(price.unit_amount, offer.accessDays, currency)
+              : undefined,
+        });
       } catch (error) {
         console.error("[loadPricingGate] stripe price retrieve failed", offer.id, error);
       }
     }),
   );
 
-  return amounts;
+  return quotes;
 }

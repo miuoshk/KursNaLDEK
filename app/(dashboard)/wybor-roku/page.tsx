@@ -84,11 +84,11 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
 
   const lede = usesDurationGate(product)
     ? t.rich("ledeDuration", {
-        nosub: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
+        nosub: (chunks) => <strong className="font-semibold text-primary">{chunks}</strong>,
       })
     : t.rich("ledeKnnp", {
-        trial: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
-        nosub: (chunks) => <strong className="font-semibold text-gate-ink">{chunks}</strong>,
+        trial: (chunks) => <strong className="font-semibold text-primary">{chunks}</strong>,
+        nosub: (chunks) => <strong className="font-semibold text-primary">{chunks}</strong>,
       });
 
   return (
@@ -127,6 +127,7 @@ export default async function WyborRokuPage(props: { searchParams: SearchParams 
       <PricingGate
         eyebrow={model.eyebrow}
         title={model.title}
+        layout={model.layout}
         lede={lede}
         cards={model.cards}
         checkoutAction={createCheckoutSessionAction}

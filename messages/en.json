@@ -724,7 +724,7 @@
     "badgeTest": "Trial",
     "badgePaid": "Paid",
     "badgeOwned": "Active",
-    "unlockCta": "Unlock access",
+    "unlockCta": "Get access",
     "eyebrowLdek": "Kurs na LDEK · access",
     "eyebrowLdew": "Kurs na LDEW · access",
     "gateKierunekLdek": "LDEK",
@@ -734,69 +734,15 @@
     "durationTitle": "{days} days",
     "featuredYourYear": "Your year",
     "featuredRecommended": "Recommended",
-    "priceNoteKnnp": "one-time · access until the exam",
-    "priceNoteTrial": "full access during the trial",
-    "priceNoteDuration": "one-time · {days} days of access",
-    "ownedNote": "Access paid — valid until the exam.",
-    "ownedNoteDuration": "Access paid — counted from purchase.",
+    "priceNoteKnnp": "one-time",
+    "priceNoteTrial": "trial year",
+    "priceNoteDuration": "one-time · {days} days",
     "trialAmount": "0 zł",
     "trustStripe": "Payments processed by Stripe",
     "trustMethods": "BLIK · card · Apple Pay · Google Pay",
     "trustInstant": "Access unlocks immediately after payment",
-    "ledeKnnp": "<trial>Dentistry year 2</trial> is a free trial year. Other options are a one-time payment, <nosub>no subscription</nosub>.",
-    "ledeDuration": "Full nostrification course. One-time payment, <nosub>no subscription</nosub>.",
-    "includes": {
-      "knnpStoma1": [
-        "Year 1 dentistry subjects",
-        "Adaptive sessions and reviews",
-        "Live progress tracking"
-      ],
-      "knnpStoma2": [
-        "Year 2 dentistry subjects",
-        "Full access during the trial",
-        "Same tools as the paid plan"
-      ],
-      "knnpStoma3": [
-        "Year 3 dentistry subjects",
-        "Adaptive sessions and reviews",
-        "Preparation for the next year"
-      ],
-      "knnpLek1": [
-        "Year 1 medicine subjects",
-        "Adaptive sessions and reviews",
-        "Live progress tracking"
-      ],
-      "ldew30": [
-        "Full LDEW question bank",
-        "Reviews and progress stats",
-        "30-day sprint to the exam"
-      ],
-      "ldew180": [
-        "Full LDEW question bank",
-        "Semester review plan",
-        "All clinical subjects"
-      ],
-      "ldew365": [
-        "Full LDEW question bank",
-        "Full exam-prep cycle",
-        "All clinical subjects"
-      ],
-      "ldek30": [
-        "Full LDEK question bank",
-        "Reviews and progress stats",
-        "30-day sprint to the exam"
-      ],
-      "ldek180": [
-        "Full LDEK question bank",
-        "Semester review plan",
-        "All clinical subjects"
-      ],
-      "ldek365": [
-        "Full LDEK question bank",
-        "Full exam-prep cycle",
-        "All clinical subjects"
-      ]
-    },
+    "ledeKnnp": "<trial>Dentistry year 2</trial> is open at no charge. Other years — one payment, for the access window.",
+    "ledeDuration": "Full nostrification course. One payment, access immediately.",
     "registrationClosed": "Registration closed.",
     "noAccessTitle": "No access",
     "chooseTrackYear": "Choose track and year",
@@ -821,6 +767,20 @@
       "supabaseProfileUpdate": "Could not save year selection in profile.",
       "entitlementGrantFailed": "Could not save access in database.",
       "unknown": "Unknown error. Check server logs."
+    },
+    "remainingDays": "{count, plural, one {# day left} other {# days left}}",
+    "pricePerDay": "{amount} / day",
+    "summaries": {
+      "knnpStoma1": "Year 1 dentistry subjects",
+      "knnpStoma2": "Trial year — year 2 subjects",
+      "knnpStoma3": "Year 3 dentistry subjects",
+      "knnpLek1": "Year 1 medicine subjects",
+      "ldew30": "Sprint to the exam",
+      "ldew180": "A semester of prep",
+      "ldew365": "Full cycle to the exam",
+      "ldek30": "Sprint to the exam",
+      "ldek180": "A semester of prep",
+      "ldek365": "Full cycle to the exam"
     }
   },
   "settings": {

@@ -17,19 +17,25 @@ describe("mapYearGateCards", () => {
   const cards = mapYearGateCards({
     offers: YEAR_OFFERS,
     entitlements: [
-      { product: "knnp", track: "stomatologia", year: 2, offer_key: null },
+      {
+        product: "knnp",
+        track: "stomatologia",
+        year: 2,
+        offer_key: null,
+        access_type: "free_test",
+        granted_at: "2026-01-01T00:00:00.000Z",
+      },
     ],
     selectedTrack: "stomatologia",
     selectedYear: 2,
     kierunekLabel: (track) => (track === "lekarski" ? "Lekarski" : "Stomatologia"),
     yearLabel: (year) => `Rok ${year}`,
-    includes: () => ["a", "b", "c"],
+    summary: () => "Przedmioty tego roku",
     featuredLabel: "Twój rok",
     priceNotePaid: "jednorazowo",
     priceNoteTrial: "testowy",
-    ownedNote: "opłacony",
     trialAmount: "0 zł",
-    amountFor: () => "297 zł",
+    amountFor: () => ({ amount: "297 zł" }),
   });
 
   it("renders four KNNP cards with correct states", () => {
@@ -41,13 +47,43 @@ describe("mapYearGateCards", () => {
     assert.equal(cards.find((card) => card.id === "knnp-lekarski-1")?.state, "locked");
   });
 
-  it("puts price on locked cards and ownedNote on owned", () => {
+  it("puts price on locked cards and remaining days only on paid owned", () => {
     const locked = cards.find((card) => card.id === "knnp-stomatologia-1");
     const owned = cards.find((card) => card.id === "knnp-stomatologia-2");
     assert.equal(locked?.price?.amount, "297 zł");
     assert.ok(locked?.checkoutFields?.offerId);
+    assert.equal(locked?.summary, "Przedmioty tego roku");
     assert.equal(owned?.price, undefined);
-    assert.equal(owned?.ownedNote, "opłacony");
+    assert.equal(owned?.remainingDays, null);
+  });
+
+  it("counts remaining paid days", () => {
+    const paid = mapYearGateCards({
+      offers: YEAR_OFFERS,
+      entitlements: [
+        {
+          product: "knnp",
+          track: "stomatologia",
+          year: 1,
+          offer_key: null,
+          access_type: "paid",
+          granted_at: "2026-01-01T00:00:00.000Z",
+          access_days: 45,
+        },
+      ],
+      selectedTrack: "stomatologia",
+      selectedYear: 1,
+      kierunekLabel: () => "Stomatologia",
+      yearLabel: (year) => `Rok ${year}`,
+      summary: () => "x",
+      featuredLabel: "Twój rok",
+      priceNotePaid: "jednorazowo",
+      priceNoteTrial: "testowy",
+      trialAmount: "0 zł",
+      amountFor: () => ({ amount: "297 zł" }),
+      now: new Date("2026-01-10T00:00:00.000Z"),
+    });
+    assert.equal(paid.find((card) => card.id === "knnp-stomatologia-1")?.remainingDays, 36);
   });
 });
 
@@ -59,35 +95,47 @@ describe("mapDurationGateCards", () => {
       product: "ldew",
       kierunek: "LDEW",
       durationLabel: (days) => `${days} dni`,
-      includes: () => ["a", "b", "c"],
+      summary: () => "Sprint",
       featuredLabel: "Polecane",
       priceNoteDuration: (days) => `${days} dni`,
-      ownedNote: "opłacony",
-      amountFor: (offer) => (offer.id === "ldew-365" ? "2 699 zł" : "299 zł"),
+      amountFor: (offer) =>
+        offer.id === "ldew-365"
+          ? { amount: "2 699 zł", perDay: "7,39 zł" }
+          : { amount: "299 zł", perDay: "9,97 zł" },
     });
     assert.equal(cards.length, 3);
     assert.equal(cards.every((card) => card.state === "locked"), true);
     assert.equal(cards.find((card) => card.id === "ldew-365")?.featured, true);
     assert.equal(cards.find((card) => card.id === "ldew-180")?.featured, undefined);
     assert.equal(cards.find((card) => card.id === "ldew-30")?.kierunek, "LDEW");
+    assert.equal(cards.find((card) => card.id === "ldew-30")?.price?.perDay, "9,97 zł");
   });
 
-  it("marks only the purchased duration as owned", () => {
+  it("marks only the purchased duration as owned and exposes remaining days", () => {
     const cards = mapDurationGateCards({
       offers: DURATION_OFFERS,
       entitlements: [
-        { product: "ldew", track: "stomatologia", year: 1, offer_key: "ldew-365" },
+        {
+          product: "ldew",
+          track: "stomatologia",
+          year: 1,
+          offer_key: "ldew-365",
+          access_type: "paid",
+          granted_at: "2026-01-01T00:00:00.000Z",
+          access_days: 365,
+        },
       ],
       product: "ldew",
       kierunek: "LDEW",
       durationLabel: (days) => `${days} dni`,
-      includes: () => ["a", "b", "c"],
+      summary: () => "Cykl",
       featuredLabel: "Polecane",
       priceNoteDuration: () => "nota",
-      ownedNote: "opłacony",
-      amountFor: () => "2 699 zł",
+      amountFor: () => ({ amount: "2 699 zł" }),
+      now: new Date("2026-01-31T00:00:00.000Z"),
     });
     assert.equal(cards.find((card) => card.id === "ldew-365")?.state, "owned");
+    assert.equal(cards.find((card) => card.id === "ldew-365")?.remainingDays, 335);
     assert.equal(cards.find((card) => card.id === "ldew-30")?.state, "locked");
     assert.equal(cards.find((card) => card.id === "ldew-180")?.state, "locked");
   });

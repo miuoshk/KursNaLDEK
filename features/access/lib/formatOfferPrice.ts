@@ -1,8 +1,10 @@
 export function formatOfferAmount(unitAmount: number, currency: string): string {
+  const hasGrosze = unitAmount % 100 !== 0;
   return new Intl.NumberFormat("pl-PL", {
     style: "currency",
     currency: currency.toUpperCase(),
-    maximumFractionDigits: 0,
+    minimumFractionDigits: hasGrosze ? 2 : 0,
+    maximumFractionDigits: hasGrosze ? 2 : 0,
   }).format(unitAmount / 100);
 }
 

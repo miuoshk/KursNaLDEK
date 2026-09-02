@@ -35,7 +35,7 @@ describe("mapYearGateCards", () => {
     priceNotePaid: "jednorazowo",
     priceNoteTrial: "testowy",
     trialAmount: "0 zł",
-    amountFor: () => ({ amount: "297 zł" }),
+    amountFor: () => ({ amount: "49,99 zł", perDay: "1,11 zł" }),
   });
 
   it("renders four KNNP cards with correct states", () => {
@@ -50,7 +50,8 @@ describe("mapYearGateCards", () => {
   it("puts price on locked cards and remaining days only on paid owned", () => {
     const locked = cards.find((card) => card.id === "knnp-stomatologia-1");
     const owned = cards.find((card) => card.id === "knnp-stomatologia-2");
-    assert.equal(locked?.price?.amount, "297 zł");
+    assert.equal(locked?.price?.amount, "49,99 zł");
+    assert.equal(locked?.price?.perDay, "1,11 zł");
     assert.ok(locked?.checkoutFields?.offerId);
     assert.equal(locked?.summary, "Przedmioty tego roku");
     assert.equal(owned?.price, undefined);

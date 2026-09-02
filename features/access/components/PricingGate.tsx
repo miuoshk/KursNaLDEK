@@ -30,12 +30,14 @@ export async function PricingGate({
   const groups = groupCards(cards, layout);
 
   return (
-    <div className="relative mx-auto w-full max-w-[1180px] overflow-hidden">
-      <Rycina
-        id="anat-trigeminal"
-        mask="fade-y"
-        className="left-1/2 top-[-8%] aspect-[0.86] w-[min(920px,110%)] -translate-x-1/2 opacity-[0.09]"
-      />
+    <div className="relative mx-auto w-full max-w-[1180px]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <Rycina
+          id="anat-trigeminal"
+          mask="fade-y"
+          className="left-1/2 top-[-8%] aspect-[0.86] w-[min(920px,110%)] -translate-x-1/2 opacity-[0.09]"
+        />
+      </div>
 
       <header className="relative mb-10">
         <p className="font-body text-body-xs font-semibold uppercase tracking-[0.2em] text-brand-sage">
@@ -58,8 +60,8 @@ export async function PricingGate({
             <div
               className={
                 layout === "durations"
-                  ? "grid grid-cols-1 gap-5 md:grid-cols-3"
-                  : "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                  ? "grid grid-cols-1 gap-5 pt-4 md:grid-cols-3"
+                  : "grid grid-cols-1 gap-5 pt-4 sm:grid-cols-2 lg:grid-cols-3"
               }
             >
               {group.cards.map((card) => (

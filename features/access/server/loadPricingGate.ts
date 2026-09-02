@@ -125,10 +125,7 @@ async function loadOfferQuotes(
         const currency = price.currency ?? "pln";
         quotes.set(offer.id, {
           amount: formatOfferAmount(price.unit_amount, currency),
-          perDay:
-            offer.kind === "duration"
-              ? formatPricePerDay(price.unit_amount, offer.accessDays, currency)
-              : undefined,
+          perDay: formatPricePerDay(price.unit_amount, offer.accessDays, currency),
         });
       } catch (error) {
         console.error("[loadPricingGate] stripe price retrieve failed", offer.id, error);

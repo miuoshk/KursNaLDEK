@@ -7,10 +7,15 @@ describe("formatOfferPrice", () => {
     assert.equal(formatOfferAmount(29900, "pln"), "299 zł");
   });
 
+  it("keeps grosze when the Stripe price is not a whole zloty", () => {
+    assert.equal(formatOfferAmount(4999, "pln"), "49,99 zł");
+  });
+
   it("formats per-day price for LDEW packages", () => {
     assert.equal(formatPricePerDay(29900, 30, "pln"), "9,97 zł");
     assert.equal(formatPricePerDay(149900, 180, "pln"), "8,33 zł");
     assert.equal(formatPricePerDay(269900, 365, "pln"), "7,39 zł");
+    assert.equal(formatPricePerDay(4999, 45, "pln"), "1,11 zł");
   });
 
   it("skips invalid day windows", () => {

@@ -22,7 +22,7 @@ export function PricingGateCard({ card, checkoutAction, activateFreeAction, ente
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col overflow-hidden rounded-card border bg-card p-6",
+        "relative flex h-full flex-col overflow-visible rounded-card border bg-card p-6",
         "transition-colors duration-200 ease-out",
         card.featured
           ? "border-brand-gold/45"
@@ -30,7 +30,7 @@ export function PricingGateCard({ card, checkoutAction, activateFreeAction, ente
       )}
     >
       {card.featured && card.featuredLabel ? (
-        <span className="absolute -top-[11px] left-1/2 z-10 -translate-x-1/2 rounded-pill bg-brand-gold px-3 py-0.5 font-body text-[11px] font-semibold tracking-wide text-brand-bg">
+        <span className="absolute -top-2.5 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-pill bg-brand-gold px-3 py-0.5 font-body text-[11px] font-semibold tracking-wide text-brand-bg">
           {card.featuredLabel}
         </span>
       ) : null}

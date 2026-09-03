@@ -15,12 +15,14 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         <Rycina
           id="sec-session-trigeminal"
           priority
+          ink="sage"
           mask="fade-y"
           className="hidden lg:block left-1/2 top-1/2 aspect-[0.8] w-[110vw] -translate-x-1/2 -translate-y-1/2 opacity-[0.16]"
         />
         <Rycina
           id="sec-session-trigeminal"
           priority
+          ink="sage"
           mask="fade-y"
           className="-top-[28vw] left-1/2 aspect-[0.8] w-[130vw] -translate-x-1/2 opacity-[0.2] lg:hidden"
         />

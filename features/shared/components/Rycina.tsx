@@ -26,7 +26,14 @@ type RycinaProps = {
   priority?: boolean;
   /** `cover` wypełnia kontener; default `contain` nie przycina rysunku. */
   fit?: "contain" | "cover";
+  /**
+   * `sage` nadpisuje kreskę z pliku na `#7FA697` (płyty pulpitu).
+   * Default zostawia gold/sage zaszyte w SVG.
+   */
+  ink?: "file" | "sage";
 };
+
+const RYCINA_SAGE = "#7FA697";
 
 const MASK_CLASS: Record<RycinaMask, string | undefined> = {
   radial: "rycina-mask-radial",
@@ -52,7 +59,32 @@ export function Rycina({
   mask = "radial",
   priority = false,
   fit = "contain",
+  ink = "file",
 }: RycinaProps) {
+  const src = `/img/ryciny/${id}.svg`;
+  const maskFit = fit === "cover" ? "cover" : "contain";
+
+  if (ink === "sage") {
+    return (
+      <div
+        aria-hidden="true"
+        className={cn("pointer-events-none absolute select-none", MASK_CLASS[mask], className)}
+        style={{
+          backgroundColor: RYCINA_SAGE,
+          opacity,
+          WebkitMaskImage: `url(${src})`,
+          maskImage: `url(${src})`,
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskPosition: "center",
+          maskPosition: "center",
+          WebkitMaskSize: maskFit,
+          maskSize: maskFit,
+        }}
+      />
+    );
+  }
+
   return (
     <div
       aria-hidden="true"
@@ -60,7 +92,7 @@ export function Rycina({
       style={opacity === undefined ? undefined : { opacity }}
     >
       <Image
-        src={`/img/ryciny/${id}.svg`}
+        src={src}
         alt=""
         fill
         unoptimized

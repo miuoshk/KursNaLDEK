@@ -169,7 +169,7 @@
     "nameInvalidChars": "First and last name may only contain letters, spaces, hyphens and apostrophes.",
     "namePlaceholderNotAllowed": "Enter your real first and last name — sample data is not accepted.",
     "termsRequired": "To create an account, accept the Terms and the Privacy Policy.",
-    "nickMinLength": "Nickname must be at least 3 characters.",
+    "nickMinLength": "Nickname must be at least 5 characters.",
     "nickMaxLength": "Nickname can be at most 32 characters.",
     "nickInvalidChars": "Nickname can only contain letters, numbers, and . _ -",
     "courseRequired": "Choose the course you're interested in.",

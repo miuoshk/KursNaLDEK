@@ -169,7 +169,7 @@
     "nameInvalidChars": "Imię i nazwisko mogą zawierać tylko litery, spację, myślnik i apostrof.",
     "namePlaceholderNotAllowed": "Podaj swoje prawdziwe imię i nazwisko — przykładowe dane nie są akceptowane.",
     "termsRequired": "Aby założyć konto, zaakceptuj Regulamin i Politykę prywatności.",
-    "nickMinLength": "Nick musi mieć co najmniej 3 znaki.",
+    "nickMinLength": "Nick musi mieć co najmniej 5 znaków.",
     "nickMaxLength": "Nick może mieć maksymalnie 32 znaki.",
     "nickInvalidChars": "Nick może zawierać tylko litery, cyfry oraz znaki . _ -",
     "courseRequired": "Wybierz interesujący Cię kurs.",

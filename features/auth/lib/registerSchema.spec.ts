@@ -60,6 +60,11 @@ describe("registerSchema", () => {
     assert.equal(isBannedFullName("Anna", "Nowak"), false);
   });
 
+  it("requires at least 5 characters for a new nick", () => {
+    assert.equal(firstIssue({ ...valid, nick: "abcd" }), "nickMinLength");
+    assert.equal(firstIssue({ ...valid, nick: "abcde" }), undefined);
+  });
+
   it("requires accepting terms", () => {
     assert.equal(firstIssue({ ...valid, acceptTerms: null }), "termsRequired");
     assert.equal(firstIssue({ ...valid, acceptTerms: "off" }), "termsRequired");

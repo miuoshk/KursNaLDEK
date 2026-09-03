@@ -10,6 +10,7 @@ import { isRegistrationClosedForSelection } from "@/features/access/lib/studyAcc
 import { EmojiInput } from "@/features/shared/components/EmojiInput";
 import { RegisterLegalNotice } from "@/features/legal/components/RegisterLegalNotice";
 import { PERSON_NAME_MAX_LENGTH, PERSON_NAME_MIN_LENGTH } from "@/features/auth/constants";
+import { NICK_MAX_LENGTH, NICK_MIN_LENGTH } from "@/features/auth/lib/nick";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
@@ -111,6 +112,8 @@ export function RegisterForm() {
           name="nick"
           type="text"
           required
+          minLength={NICK_MIN_LENGTH}
+          maxLength={NICK_MAX_LENGTH}
           autoComplete="nickname"
           className={inputClassName}
           placeholder={t("nickPlaceholder")}

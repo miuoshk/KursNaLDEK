@@ -6,6 +6,7 @@ import {
   PERSON_NAME_MIN_LENGTH,
   PERSON_NAME_PATTERN,
 } from "@/features/auth/constants";
+import { NICK_MAX_LENGTH, NICK_MIN_LENGTH, NICK_PATTERN } from "@/features/auth/lib/nick";
 
 /** Komunikaty błędów to klucze z `errors.*` — tłumaczone dopiero w server action. */
 function personNameSchema(requiredKey: string) {
@@ -30,9 +31,9 @@ export const registerSchema = z
     nick: z
       .string()
       .trim()
-      .min(3, "nickMinLength")
-      .max(32, "nickMaxLength")
-      .regex(/^[A-Za-z0-9._-]+$/, "nickInvalidChars"),
+      .min(NICK_MIN_LENGTH, "nickMinLength")
+      .max(NICK_MAX_LENGTH, "nickMaxLength")
+      .regex(NICK_PATTERN, "nickInvalidChars"),
     email: z.string().email("emailInvalid"),
     password: z.string().min(6, "passwordMinLength"),
     confirmPassword: z.string().min(6, "confirmPasswordRequired"),

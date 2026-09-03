@@ -6,6 +6,7 @@ import { z } from "zod";
 import { isClinicalProduct } from "@/features/access/lib/studyAccess";
 import { normalizeProduct, STUDY_PRODUCTS } from "@/features/access/lib/studyAccess";
 import { isValidEmoji } from "@/lib/emoji";
+import { isNickChangeAllowed, NICK_MAX_LENGTH, NICK_PATTERN } from "@/features/auth/lib/nick";
 import { isProfileAdmin } from "@/lib/auth/profileAdmin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -13,9 +14,9 @@ const schema = z.object({
   nick: z
     .string()
     .trim()
-    .min(3)
-    .max(32)
-    .regex(/^[A-Za-z0-9._-]+$/),
+    .min(1)
+    .max(NICK_MAX_LENGTH)
+    .regex(NICK_PATTERN),
   current_track: z.enum(["stomatologia", "lekarski"]),
   current_year: z.coerce.number().int().min(1).max(3),
   current_product: z.enum(STUDY_PRODUCTS).optional(),
@@ -47,9 +48,13 @@ export async function updateProfile(input: z.infer<typeof schema>): Promise<Upda
 
   const { data: existingProfile } = await supabase
     .from("profiles")
-    .select("role, current_product")
+    .select("role, current_product, nick")
     .eq("id", user.id)
     .maybeSingle();
+
+  if (!isNickChangeAllowed(existingProfile?.nick as string | null | undefined, parsed.data.nick)) {
+    return { ok: false, message: tErrors("nickMinLength") };
+  }
 
   const requestedProduct = parsed.data.current_product
     ? normalizeProduct(parsed.data.current_product)

@@ -12,8 +12,6 @@ import {
   getXpProgress,
 } from "@/features/gamification/lib/ranks";
 import { formatStreakI18n } from "@/lib/formatStreak";
-import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
-import { rankRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 const RING_R = 48;
@@ -242,12 +240,9 @@ function RankCard({
 
   return (
     <CardShell label={t("rank")} index={index}>
-      <div className="flex items-center gap-2">
-        <RycinaEmblem id={rankRycinaId(rank.id)} size={28} className="text-brand-gold" />
-        <p className="font-heading text-lg font-bold text-brand-gold">
-          {tGamification(`ranks.${rank.id}`)}
-        </p>
-      </div>
+      <p className="font-heading text-lg font-bold text-brand-gold">
+        {tGamification(`ranks.${rank.id}`)}
+      </p>
       <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10">
         <div
           className="h-full rounded-full bg-brand-gold transition-[width] duration-500 ease-out"

@@ -284,10 +284,10 @@ export function TopicSessionConfigDialog({
 
           {/* Body */}
           <div className="px-5 py-5 lg:px-7 lg:py-5">
-            <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-stretch">
               {/* Left column — Hero card */}
-              <div className="lg:flex lg:flex-col">
-                <div className="relative flex flex-col overflow-hidden rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
+              <div className="flex min-h-0 flex-col md:h-full">
+                <div className="relative flex h-full flex-col overflow-visible rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0 overflow-hidden rounded-card"
@@ -299,7 +299,7 @@ export function TopicSessionConfigDialog({
                       className="inset-0 opacity-[0.16]"
                     />
                   </div>
-                  <span className="absolute -top-2 right-3 z-10 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
+                  <span className="absolute -top-2 right-3 z-20 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
                     {t("recommended")}
                   </span>
 
@@ -338,12 +338,12 @@ export function TopicSessionConfigDialog({
                   {canStart ? (
                     <Link
                       href={smartHref}
-                      className="relative z-[1] mt-3.5 block w-full shrink-0 rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085]"
+                      className="relative z-[1] mt-3.5 block w-full shrink-0 rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] md:mt-auto"
                     >
                       {t("startSession")}
                     </Link>
                   ) : (
-                    <span className="relative z-[1] mt-3.5 block w-full shrink-0 cursor-not-allowed rounded-btn bg-brand-sage/40 py-2.5 text-center font-body text-body-sm font-semibold text-white/70">
+                    <span className="relative z-[1] mt-3.5 block w-full shrink-0 cursor-not-allowed rounded-btn bg-brand-sage/40 py-2.5 text-center font-body text-body-sm font-semibold text-white/70 md:mt-auto">
                       {t("noQuestionsForFilter")}
                     </span>
                   )}
@@ -351,7 +351,7 @@ export function TopicSessionConfigDialog({
               </div>
 
               {/* Right column (desktop) / below hero (mobile) */}
-              <div className="mt-5 flex flex-col gap-4 lg:mt-0">
+              <div className="flex h-full flex-col gap-4">
                 {/* Section label */}
                 <p className="mb-0 font-body text-body-xs uppercase tracking-normal text-muted">
                   {t("otherModes")}
@@ -359,7 +359,7 @@ export function TopicSessionConfigDialog({
 
                 {hasKnowledgeCard ? (
                   <>
-                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-1">
+                    <div className="grid flex-1 grid-cols-1 content-start gap-4">
                       <div className={altCardClass}>
                         <ModeWatermark id={SESSION_MODE_RYCINA.przegladEmblem} />
                         <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
@@ -449,7 +449,7 @@ export function TopicSessionConfigDialog({
                     </button>
                   </>
                 ) : (
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="grid flex-1 grid-cols-1 content-start gap-4">
                     <div className={altCardClass}>
                       <ModeWatermark id={SESSION_MODE_RYCINA.przegladEmblem} />
                       <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">

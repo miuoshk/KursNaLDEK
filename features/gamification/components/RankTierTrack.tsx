@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { RANK_TIERS, getCurrentRank } from "@/features/gamification/lib/ranks";
-import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
-import { rankRycinaId } from "@/features/shared/lib/rycinaCatalog";
 import { cn } from "@/lib/utils";
 
 export function RankTierTrack({ xp }: { xp: number }) {
@@ -39,11 +37,7 @@ export function RankTierTrack({ xp }: { xp: number }) {
                 animate={i === idx ? { scale: [1, 1.06, 1] } : {}}
                 transition={{ duration: 2, repeat: i === idx ? Infinity : 0, ease: "easeOut" }}
               >
-                <RycinaEmblem
-                  id={rankRycinaId(r.id)}
-                  size={18}
-                  className={i > idx ? "text-muted" : "text-brand-gold"}
-                />
+                {rankName.charAt(0)}
               </motion.div>
             </Fragment>
           );

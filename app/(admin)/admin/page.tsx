@@ -3,6 +3,7 @@ import { AdminCohortSubjectChart } from "@/features/admin/components/AdminCohort
 import { AdminLazyMount } from "@/features/admin/components/AdminLazyMount";
 import { AdminTrendChart } from "@/features/admin/components/AdminTrendChart";
 import { DashboardAnalyticsSections } from "@/features/admin/components/sections/DashboardAnalyticsSections";
+import { DashboardDeviceSection } from "@/features/admin/components/sections/DashboardDeviceSection";
 import { DashboardKpiSection } from "@/features/admin/components/sections/DashboardKpiSection";
 import { DashboardSegmentsSection } from "@/features/admin/components/sections/DashboardSegmentsSection";
 import { FinanceSection } from "@/features/admin/components/sections/FinanceSection";
@@ -35,6 +36,10 @@ export default function AdminDashboardPage() {
 
         <Suspense fallback={<SegmentsFallback />}>
           <DashboardSegmentsSection />
+        </Suspense>
+
+        <Suspense fallback={<DeviceFallback />}>
+          <DashboardDeviceSection />
         </Suspense>
 
         <Suspense fallback={<AnalyticsFallback />}>
@@ -91,6 +96,22 @@ function SegmentsFallback() {
         subtitle="Kierunek + rok studiów · %Total = zarejestrowani / rocznik (LEK 288, STOMA 120)"
       />
       <SectionSkeleton height="h-72" />
+    </section>
+  );
+}
+
+function DeviceFallback() {
+  return (
+    <section>
+      <SectionHeader
+        title="Urządzenia"
+        subtitle="Ruch zalogowanych użytkowników wg platformy (ostatnie 30 dni)"
+      />
+      <KpiRowSkeleton cols={4} />
+      <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-2">
+        <SectionSkeleton height="h-64" />
+        <SectionSkeleton height="h-64" />
+      </div>
     </section>
   );
 }

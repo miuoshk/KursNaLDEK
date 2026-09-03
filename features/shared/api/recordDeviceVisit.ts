@@ -1,22 +1,16 @@
 "use server";
 
-import { z } from "zod";
 import { warsawYmd } from "@/lib/datetime/warsawCalendar";
 import { createClient } from "@/lib/supabase/server";
 import {
-  DEVICE_CLASSES,
+  isDeviceClass,
   type DeviceClass,
 } from "@/features/shared/lib/classifyDevice";
-
-const schema = z.object({
-  deviceClass: z.enum(DEVICE_CLASSES),
-});
 
 export async function recordDeviceVisit(
   deviceClass: DeviceClass,
 ): Promise<boolean> {
-  const parsed = schema.safeParse({ deviceClass });
-  if (!parsed.success) return false;
+  if (!isDeviceClass(deviceClass)) return false;
 
   try {
     const supabase = await createClient();
@@ -29,7 +23,7 @@ export async function recordDeviceVisit(
       {
         user_id: user.id,
         visited_on: warsawYmd(new Date()),
-        device_class: parsed.data.deviceClass,
+        device_class: deviceClass,
         last_seen_at: new Date().toISOString(),
       },
       { onConflict: "user_id,visited_on,device_class" },

@@ -1,28 +1,18 @@
 import { loadAdminDeviceStats } from "@/features/admin/server/loadAdminDeviceStats";
-import {
-  AdminDeviceDonut,
-  DEVICE_ICON,
-  DEVICE_LABEL,
-} from "@/features/admin/components/AdminDeviceDonut";
+import { AdminDeviceDonut } from "@/features/admin/components/AdminDeviceDonut";
 import { AdminDeviceTrendChart } from "@/features/admin/components/AdminDeviceTrendChart";
 import { AdminKpiCard } from "@/features/admin/components/AdminKpiCard";
 import {
   ChartCard,
   SectionHeader,
 } from "@/features/admin/components/sections/AdminSectionsCommon";
+import {
+  DEVICE_ICON,
+  DEVICE_KPI_TONE,
+  DEVICE_LABEL,
+} from "@/features/admin/lib/deviceChartMeta";
 import { formatAdminCount } from "@/features/admin/lib/formatAdminMetric";
 import { DEVICE_CLASSES } from "@/features/shared/lib/classifyDevice";
-import type { DeviceClass } from "@/features/shared/lib/classifyDevice";
-
-const KPI_TONE: Record<DeviceClass, "gold" | "sage" | "neutral" | "warning"> = {
-  mac: "gold",
-  windows: "sage",
-  iphone: "gold",
-  android: "warning",
-  ipad: "sage",
-  android_tablet: "warning",
-  other: "neutral",
-};
 
 export async function DashboardDeviceSection() {
   const data = await loadAdminDeviceStats();
@@ -44,7 +34,7 @@ export async function DashboardDeviceSection() {
               value={slice?.uniqueUsers ?? 0}
               valueFormat="count"
               icon={Icon}
-              tone={KPI_TONE[deviceClass]}
+              tone={DEVICE_KPI_TONE[deviceClass]}
               hint={`${formatAdminCount(slice?.visitDays ?? 0)} dni aktywności`}
             />
           );

@@ -33,14 +33,22 @@ function markRecorded(deviceClass: string, day: string): void {
 /** Cichy ping klasy urządzenia raz na dzień (Europe/Warsaw) per przeglądarka. */
 export function DeviceVisitTracker() {
   useEffect(() => {
-    const deviceClass = classifyDevice(collectBrowserDeviceSignals());
-    const day = warsawYmd(new Date());
-    if (alreadyRecorded(deviceClass, day)) return;
-
     let cancelled = false;
-    void recordDeviceVisit(deviceClass).then((ok) => {
-      if (ok && !cancelled) markRecorded(deviceClass, day);
-    });
+    try {
+      const deviceClass = classifyDevice(collectBrowserDeviceSignals());
+      const day = warsawYmd(new Date());
+      if (alreadyRecorded(deviceClass, day)) return;
+
+      void recordDeviceVisit(deviceClass)
+        .then((ok) => {
+          if (ok && !cancelled) markRecorded(deviceClass, day);
+        })
+        .catch(() => {
+          // tracker nie może wyłożyć layoutu
+        });
+    } catch {
+      // ignore
+    }
     return () => {
       cancelled = true;
     };

@@ -13,8 +13,11 @@ import {
 import { statAxisTick, statTooltipProps } from "@/features/statistics/lib/chartTheme";
 import type { DeviceClass } from "@/features/shared/lib/classifyDevice";
 import { DEVICE_CLASSES } from "@/features/shared/lib/classifyDevice";
-import type { AdminDeviceTrendPoint } from "@/features/admin/server/loadAdminDeviceStats";
-import { DEVICE_COLOR, DEVICE_LABEL } from "@/features/admin/components/AdminDeviceDonut";
+import type { AdminDeviceTrendPoint } from "@/features/admin/lib/deviceStatsTypes";
+import {
+  DEVICE_COLOR,
+  DEVICE_LABEL,
+} from "@/features/admin/lib/deviceChartMeta";
 
 type AdminDeviceTrendChartProps = {
   data: AdminDeviceTrendPoint[];

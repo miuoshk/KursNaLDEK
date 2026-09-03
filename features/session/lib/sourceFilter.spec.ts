@@ -110,6 +110,7 @@ describe("filtr źródła", () => {
     assert.match(dialog, /classicLearning/);
     assert.match(dialog, /questionCatalog/);
     assert.doesNotMatch(dialog, /sourceSession|tryb źródła|SourceMode/);
+    assert.match(dialog, /SourceBankPills/);
     assert.match(cta, /SourceFilter|srcParam|source/);
   });
 });

@@ -12,9 +12,15 @@ import type {
 } from "@/features/subjects/server/loadSubjectDashboard";
 import type { SourceAccuracyBreakdown } from "@/features/session/lib/sourceAccuracy";
 import type { Subject } from "@/features/subjects/types";
+import { SourceBankPills } from "@/features/shared/components/SourceBankPills";
 import { SourceFilterBar } from "@/features/shared/components/SourceFilter";
 import { SourceAccuracyCard } from "@/features/shared/components/SourceAccuracyCard";
 import { useSubjectSourceFilter } from "@/features/shared/hooks/useSubjectSourceFilter";
+import {
+  sourceBankCemCount,
+  sourceBankOwnCount,
+  shouldShowSourceBankPills,
+} from "@/features/shared/lib/sourceBankPills";
 import {
   countForSource,
   isSourceFilterUiEnabled,
@@ -54,6 +60,7 @@ export function SubjectDashboardClient({
 }: Props) {
   const t = useTranslations("subjects");
   const enabled = isSourceFilterUiEnabled(subject.product);
+  const showBankPills = shouldShowSourceBankPills(subject.product);
   const { source, setSource } = useSubjectSourceFilter({
     product: subject.product,
     profileDefault: profileDefaultSource,
@@ -72,7 +79,15 @@ export function SubjectDashboardClient({
 
   return (
     <>
-      {enabled && sourceCounts ? (
+      {showBankPills ? (
+        <div className="mt-5">
+          <SourceBankPills
+            product={subject.product}
+            ownCount={sourceBankOwnCount(sourceCounts, stats.totalQuestions)}
+            cemCount={sourceBankCemCount(sourceCounts)}
+          />
+        </div>
+      ) : enabled && sourceCounts ? (
         <div className="mt-5">
           <SourceFilterBar
             product={subject.product}

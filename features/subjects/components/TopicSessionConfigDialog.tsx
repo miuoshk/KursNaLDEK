@@ -29,11 +29,13 @@ import {
   isThinCemPool,
   sessionMixCounts,
 } from "@/features/session/lib/questionSourceBadge";
+import { SourceBankPills } from "@/features/shared/components/SourceBankPills";
 import { SourceFilterBar } from "@/features/shared/components/SourceFilter";
 import { Toggle } from "@/features/shared/components/Toggle";
 import { Rycina } from "@/features/shared/components/Rycina";
 import { RycinaEmblem } from "@/features/shared/components/RycinaEmblem";
 import { SESSION_MODE_RYCINA } from "@/features/shared/lib/rycinaCatalog";
+import { shouldShowSourceBankPills } from "@/features/shared/lib/sourceBankPills";
 import { FEATURES } from "@/lib/featureFlags";
 import { isSourceFilterLive } from "@/lib/products";
 
@@ -240,7 +242,16 @@ export function TopicSessionConfigDialog({
             <p className="mt-0.5 font-body text-body-sm text-secondary">
               {t("chooseStudyMode")}
             </p>
-            {showSource && product && topicCounts ? (
+            {shouldShowSourceBankPills(product) ? (
+              <SourceBankPills
+                className="mt-3"
+                product={product}
+                ownCount={topicCounts?.own ?? totalQuestions}
+                cemCount={topicCounts?.reference ?? 0}
+                compact
+                showCaption={false}
+              />
+            ) : showSource && product && topicCounts ? (
               <SourceFilterBar
                 className="mt-3"
                 product={product}

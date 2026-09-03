@@ -203,7 +203,7 @@ export function TopicSessionConfigDialog({
   const catalogHref = buildHref(subjectId, topicId, "katalog", 5000, activeSource);
 
   const altCardClass =
-    "relative flex flex-col overflow-hidden rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
+    "relative flex flex-col rounded-card border border-border bg-card-hover p-4 transition-colors hover:border-brand-sage/25";
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -213,7 +213,7 @@ export function TopicSessionConfigDialog({
           className={cn(
             "fixed bottom-0 left-0 right-0 z-50 flex flex-col",
             "rounded-t-[20px] border border-b-0 border-border bg-card",
-            "max-h-[92vh] overflow-x-hidden",
+            "max-h-[92vh] overflow-x-hidden overflow-y-auto",
             "lg:bottom-auto lg:left-1/2 lg:right-auto lg:top-1/2",
             "lg:-translate-x-1/2 lg:-translate-y-1/2",
             "lg:w-[min(580px,90vw)] lg:max-h-[85vh]",
@@ -284,10 +284,10 @@ export function TopicSessionConfigDialog({
 
           {/* Body */}
           <div className="px-5 py-5 lg:px-7 lg:py-5">
-            <div className="lg:grid lg:grid-cols-2 lg:gap-4 lg:items-stretch">
+            <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-4">
               {/* Left column — Hero card */}
               <div className="lg:flex lg:flex-col">
-                <div className="relative flex flex-col overflow-visible rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4 lg:h-full">
+                <div className="relative flex flex-col overflow-hidden rounded-card border-[1.5px] border-brand-sage bg-brand-accent p-4">
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0 overflow-hidden rounded-card"
@@ -295,7 +295,8 @@ export function TopicSessionConfigDialog({
                     <Rycina
                       id={SESSION_MODE_RYCINA.inteligentnaPlate}
                       mask="fade-y"
-                      className="inset-y-0 right-0 w-[80%] opacity-[0.16]"
+                      fit="cover"
+                      className="inset-0 opacity-[0.16]"
                     />
                   </div>
                   <span className="absolute -top-2 right-3 z-10 rounded-pill bg-brand-gold px-2.5 py-0.5 font-body text-[10px] font-semibold text-brand-bg">
@@ -337,12 +338,12 @@ export function TopicSessionConfigDialog({
                   {canStart ? (
                     <Link
                       href={smartHref}
-                      className="mt-3.5 block w-full rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085] lg:mt-auto lg:pt-3.5"
+                      className="relative z-[1] mt-3.5 block w-full shrink-0 rounded-btn bg-brand-sage py-2.5 text-center font-body text-body-sm font-semibold text-white transition duration-200 ease-out hover:bg-[#4a9085]"
                     >
                       {t("startSession")}
                     </Link>
                   ) : (
-                    <span className="mt-3.5 block w-full cursor-not-allowed rounded-btn bg-brand-sage/40 py-2.5 text-center font-body text-body-sm font-semibold text-white/70 lg:mt-auto lg:pt-3.5">
+                    <span className="relative z-[1] mt-3.5 block w-full shrink-0 cursor-not-allowed rounded-btn bg-brand-sage/40 py-2.5 text-center font-body text-body-sm font-semibold text-white/70">
                       {t("noQuestionsForFilter")}
                     </span>
                   )}
@@ -392,7 +393,7 @@ export function TopicSessionConfigDialog({
                         <Link
                           href={reviewHref}
                           className={cn(
-                            "mt-2.5 inline-flex w-fit items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
+                            "relative z-[1] mt-3 inline-flex w-fit shrink-0 items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
                             canStart
                               ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
                               : "pointer-events-none cursor-not-allowed border-border text-muted",
@@ -448,16 +449,16 @@ export function TopicSessionConfigDialog({
                     </button>
                   </>
                 ) : (
-                  <div className="grid grid-cols-1 gap-4 lg:flex lg:flex-1 lg:flex-col">
-                    <div className={cn(altCardClass, "lg:flex-1")}>
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className={altCardClass}>
                       <ModeWatermark id={SESSION_MODE_RYCINA.przegladEmblem} />
                       <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <FileText className="size-4 text-muted" aria-hidden />
                       </div>
-                      <h4 className="font-heading text-body-md font-bold text-primary">
+                      <h4 className="relative z-[1] font-heading text-body-md font-bold text-primary">
                         {t("classicLearning")}
                       </h4>
-                      <p className="mt-1 font-body text-[11px] leading-snug text-muted">
+                      <p className="relative z-[1] mt-1 font-body text-[11px] leading-snug text-muted">
                         {t("classicLearningDesc")}
                       </p>
                       <CountPills
@@ -466,13 +467,13 @@ export function TopicSessionConfigDialog({
                         totalQuestions={poolTotal}
                         onPresetChange={setReviewPreset}
                         onCustomChange={setReviewCustom}
-                        className="mt-2.5 border-t border-white/[0.06] pt-2.5"
+                        className="relative z-[1] mt-2.5 border-t border-white/[0.06] pt-2.5"
                         compact
                         questionsShort={questionsShort}
                         allQuestionsAriaLabel={allQuestionsAriaLabel}
                       />
                       {thinCem && fillOwn ? (
-                        <p className="mt-2 font-body text-[11px] text-muted">
+                        <p className="relative z-[1] mt-2 font-body text-[11px] text-muted">
                           {tFilter("sessionMix", {
                             cem: reviewMix.cem,
                             own: reviewMix.own,
@@ -482,7 +483,7 @@ export function TopicSessionConfigDialog({
                       <Link
                         href={reviewHref}
                         className={cn(
-                          "mt-2.5 inline-flex w-fit items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
+                          "relative z-[1] mt-3 inline-flex w-fit shrink-0 items-center rounded-btn border px-3 py-1.5 font-body text-body-xs font-medium transition-colors",
                           canStart
                             ? "border-brand-sage/40 text-brand-sage hover:bg-brand-sage/10"
                             : "pointer-events-none cursor-not-allowed border-border text-muted",
@@ -493,7 +494,7 @@ export function TopicSessionConfigDialog({
                       </Link>
                     </div>
 
-                    <Link href={catalogHref} className={cn(altCardClass, "lg:flex-1")}>
+                    <Link href={catalogHref} className={altCardClass}>
                       <ModeWatermark id={SESSION_MODE_RYCINA.katalogEmblem} />
                       <div className="relative z-[1] mb-2 flex h-7 w-7 items-center justify-center rounded-btn bg-white/[0.04]">
                         <LayoutGrid className="size-4 text-muted" aria-hidden />

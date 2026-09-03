@@ -47,12 +47,15 @@ export function PulpitDashboard({ data }: { data: PulpitData }) {
       transition={{ duration: 0.3 }}
       className="relative space-y-8"
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[240px] overflow-hidden md:h-[300px]"
+      >
         <Rycina
           id={DASHBOARD_RYCINA.pulpitPlate}
           mask="fade-y"
           fit="cover"
-          className="inset-0 opacity-[0.10]"
+          className="inset-x-0 top-0 h-full w-full opacity-[0.10]"
         />
       </div>
       <header className="relative z-[1] flex items-start justify-between gap-4">

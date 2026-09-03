@@ -255,7 +255,7 @@ function ContinueCard({
           </p>
           <Link
             href={`/przedmioty/${lastSubjectId}`}
-            className="mt-auto inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 pt-6 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
+            className="mt-4 inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
           >
             {t("startSession")}
           </Link>
@@ -270,7 +270,7 @@ function ContinueCard({
           </p>
           <Link
             href="/przedmioty"
-            className="mt-auto inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 pt-6 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
+            className="mt-4 inline-flex w-full items-center justify-center rounded-xl border border-brand-gold/40 px-6 py-3 font-body font-semibold text-brand-gold transition-colors duration-200 ease-out hover:bg-brand-gold/10"
           >
             {t("browseSubjects")}
           </Link>

@@ -1,10 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import {
-  PLANNED_SOURCE_BANK_EXAMS,
-  shouldShowSourceBankPills,
-} from "@/features/shared/lib/sourceBankPills";
+import { shouldShowSourceBankPills } from "@/features/shared/lib/sourceBankPills";
 import { cn } from "@/lib/utils";
 
 type SourceBankPillsProps = {
@@ -13,7 +10,6 @@ type SourceBankPillsProps = {
   cemCount?: number;
   className?: string;
   compact?: boolean;
-  showCaption?: boolean;
 };
 
 export function SourceBankPills({
@@ -22,7 +18,6 @@ export function SourceBankPills({
   cemCount = 0,
   className,
   compact = false,
-  showCaption = true,
 }: SourceBankPillsProps) {
   const t = useTranslations("sourceFilter");
   const locale = useLocale();
@@ -55,21 +50,7 @@ export function SourceBankPills({
         >
           {t("cem")}
         </BankPill>
-        {PLANNED_SOURCE_BANK_EXAMS.map((exam) => (
-          <BankPill
-            key={exam.id}
-            compact={compact}
-            selected={false}
-            available={false}
-            locale={locale}
-          >
-            {t(exam.labelKey)}
-          </BankPill>
-        ))}
       </div>
-      {showCaption && !cemAvailable ? (
-        <p className="font-body text-body-xs text-muted">{t("banksSoon")}</p>
-      ) : null}
     </div>
   );
 }

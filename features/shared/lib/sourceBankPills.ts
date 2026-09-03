@@ -1,10 +1,6 @@
 import { hasCemExams } from "@/lib/products";
 import type { SourceFilterCounts } from "@/features/session/lib/sourceFilter";
 
-export const PLANNED_SOURCE_BANK_EXAMS = [
-  { id: "planned-wiosna-2026", labelKey: "examSpring2026" },
-] as const;
-
 export function shouldShowSourceBankPills(product?: string | null): boolean {
   return hasCemExams(product);
 }

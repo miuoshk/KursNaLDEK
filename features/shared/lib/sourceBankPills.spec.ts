@@ -4,7 +4,6 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  PLANNED_SOURCE_BANK_EXAMS,
   shouldShowSourceBankPills,
   sourceBankCemCount,
   sourceBankOwnCount,
@@ -33,11 +32,6 @@ describe("sourceBankPills", () => {
     );
   });
 
-  it("placeholder egzaminu nie udaje prawdziwego cem_session", () => {
-    assert.equal(PLANNED_SOURCE_BANK_EXAMS.length, 1);
-    assert.equal(PLANNED_SOURCE_BANK_EXAMS[0]?.id.startsWith("planned-"), true);
-  });
-
   it("dashboard i dialog montują pigułki przez hasCemExams, nie przez flagę CEM", () => {
     const dashboard = readFileSync(
       join(root, "features/subjects/components/SubjectDashboardClient.tsx"),
@@ -56,6 +50,7 @@ describe("sourceBankPills", () => {
     assert.match(dialog, /SourceBankPills/);
     assert.match(dialog, /shouldShowSourceBankPills/);
     assert.doesNotMatch(pills, /FEATURES\.cemSource/);
+    assert.doesNotMatch(pills, /banksSoon|examSpring2026|Wiosna 2026/);
     assert.doesNotMatch(dialog, /sourceSession|tryb źródła|SourceMode/);
   });
 });

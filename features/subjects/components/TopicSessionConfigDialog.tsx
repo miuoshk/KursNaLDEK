@@ -249,7 +249,6 @@ export function TopicSessionConfigDialog({
                 ownCount={topicCounts?.own ?? totalQuestions}
                 cemCount={topicCounts?.reference ?? 0}
                 compact
-                showCaption={false}
               />
             ) : showSource && product && topicCounts ? (
               <SourceFilterBar

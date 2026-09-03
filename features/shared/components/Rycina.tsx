@@ -103,3 +103,17 @@ export function Rycina({
     </div>
   );
 }
+
+/** Subtle full-width plate — same treatment as the pulpit globe. */
+export function DashboardPagePlate({ id }: { id: string }) {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0">
+      <Rycina
+        id={id}
+        mask="fade-y"
+        fit="contain"
+        className="left-1/2 top-0 aspect-square w-full -translate-x-1/2 opacity-[0.10]"
+      />
+    </div>
+  );
+}

@@ -2,6 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   achievementRycinaId,
+  DASHBOARD_RYCINA,
   emptyRycinaId,
   rankRycinaId,
   subjectRycina,
@@ -43,6 +44,12 @@ describe("rycinaCatalog", () => {
   it("maps empty-state kinds", () => {
     assert.equal(emptyRycinaId("saved"), "empty-saved");
     assert.equal(emptyRycinaId("stats"), "empty-stats");
+  });
+
+  it("maps dashboard plates from the delivered SVG set", () => {
+    assert.equal(DASHBOARD_RYCINA.statsPlate, "erythroxylon");
+    assert.equal(DASHBOARD_RYCINA.achievementsPlate, "miedzioryt-postacie-kontur");
+    assert.equal(DASHBOARD_RYCINA.settingsPlate, "armillar");
   });
 });
 

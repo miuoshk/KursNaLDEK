@@ -107,5 +107,7 @@ export const SESSION_MODE_RYCINA = {
 
 export const DASHBOARD_RYCINA = {
   pulpitPlate: "sky-kalibra",
-  statsPlate: "sec-progress-spine",
+  statsPlate: "erythroxylon",
+  achievementsPlate: "miedzioryt-postacie-kontur",
+  settingsPlate: "armillar",
 } as const;

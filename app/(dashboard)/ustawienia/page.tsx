@@ -11,6 +11,8 @@ import { SubscriptionSection } from "@/features/settings/components/Subscription
 import { loadAchievementPreview } from "@/features/settings/server/loadAchievementPreview";
 import { loadSettings } from "@/features/settings/server/loadSettings";
 import { LegalFooterLinks } from "@/features/legal/components/LegalFooterLinks";
+import { DashboardPagePlate } from "@/features/shared/components/Rycina";
+import { DASHBOARD_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function UstawieniaPage() {
@@ -28,9 +30,12 @@ export default async function UstawieniaPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <SettingsBreadcrumb />
-      <header>
+    <div className="relative mx-auto max-w-3xl space-y-6">
+      <DashboardPagePlate id={DASHBOARD_RYCINA.settingsPlate} />
+      <div className="relative z-[1]">
+        <SettingsBreadcrumb />
+      </div>
+      <header className="relative z-[1]">
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
           {t("page.title")}
         </h1>

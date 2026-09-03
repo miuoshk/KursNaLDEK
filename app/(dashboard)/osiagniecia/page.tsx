@@ -5,6 +5,8 @@ import { AchievementsGrid } from "@/features/gamification/components/Achievement
 import { LeaderboardTable } from "@/features/gamification/components/LeaderboardTable";
 import { DailyChallengeSection } from "@/features/gamification/components/DailyChallengeCard";
 import { loadGamification } from "@/features/gamification/server/loadGamification";
+import { DashboardPagePlate } from "@/features/shared/components/Rycina";
+import { DASHBOARD_RYCINA } from "@/features/shared/lib/rycinaCatalog";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -39,8 +41,9 @@ export default async function OsiagnieciaPage({
   const data = await loadGamification(supabase, user.id, period, scope);
 
   return (
-    <div className="space-y-8">
-      <header>
+    <div className="relative space-y-8">
+      <DashboardPagePlate id={DASHBOARD_RYCINA.achievementsPlate} />
+      <header className="relative z-[1]">
         <h1 className="font-heading text-2xl font-bold text-primary md:text-3xl">
           {t("page.title")}
         </h1>

@@ -4,6 +4,7 @@ import { useCallback, useRef } from "react";
 import type { MutableRefObject } from "react";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
 import {
+  questionHasTakeaway,
   selectFeedbackVariant,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
@@ -203,7 +204,9 @@ export function useSessionStudyFlow(
             question: currentQ,
             isCorrect,
             timeSpentSeconds: timeSpentQuestion.current,
-          }))
+            confidence,
+            hasTakeaway: questionHasTakeaway(currentQ),
+          }).variant)
         : "standard";
 
       const newAnswer: SessionAnswer = {

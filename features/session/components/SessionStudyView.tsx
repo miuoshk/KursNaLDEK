@@ -14,6 +14,7 @@ import { useSessionKeyboardShortcuts } from "@/features/session/hooks/useSession
 import { useSession } from "@/features/session/hooks/useSession";
 import { useSessionStudyFlow } from "@/features/session/hooks/useSessionStudyFlow";
 import {
+  questionHasTakeaway,
   selectFeedbackVariant,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
@@ -198,7 +199,9 @@ export function SessionStudyView({
             question: currentQuestion,
             isCorrect: optionId === currentQuestion.correctOptionId,
             timeSpentSeconds: timeSpentQuestion.current,
-          })
+            confidence: null,
+            hasTakeaway: questionHasTakeaway(currentQuestion),
+          }).variant
         : "standard";
       setFeedbackState({ questionId: currentQuestion.id, variant });
       feedbackShownAtRef.current = {

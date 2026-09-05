@@ -11,7 +11,8 @@ import {
 import { useTranslations } from "next-intl";
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
 import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
-import type { SessionQuestion } from "@/features/session/types";
+import type { Confidence, SessionQuestion } from "@/features/session/types";
+import { contrastToMarkdown } from "@/features/shared/lib/explanationBlocks";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +24,43 @@ type FeedbackPanelProps = {
   hideExplanation?: boolean;
   variant: FeedbackVariant;
   transferScheduled?: boolean;
+  confidence?: Confidence | null;
 };
+
+function trapAsBlockquote(trap: string): string {
+  return trap
+    .split("\n")
+    .map((line) => `> ${line}`)
+    .join("\n");
+}
+
+function DistractorReasons({
+  options,
+  distractors,
+  skipIds,
+}: {
+  options: SessionQuestion["options"];
+  distractors: Record<string, string> | undefined;
+  skipIds: ReadonlySet<string>;
+}) {
+  if (!distractors) return null;
+  const items = options.filter(
+    (option) => !skipIds.has(option.id) && Boolean(distractors[option.id]?.trim()),
+  );
+  if (items.length === 0) return null;
+  return (
+    <ul className="mt-3 space-y-3">
+      {items.map((option) => (
+        <li key={option.id}>
+          <p className="font-body text-body-sm text-secondary">
+            <em>{option.text}</em>
+          </p>
+          <div className="mt-1">{markdownBlock(distractors[option.id]!)}</div>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function FeedbackPanel({
   sessionId,
@@ -33,14 +70,38 @@ export function FeedbackPanel({
   hideExplanation = false,
   variant,
   transferScheduled = false,
+  confidence = null,
 }: FeedbackPanelProps) {
   const t = useTranslations("session");
   const tCommon = useTranslations("common");
-  const blocks = question.explanationBlocks;
-  const takeaway = blocks?.takeaway?.trim() || question.explanation;
-  const correctReason = blocks?.correctReason?.trim() || question.explanation;
+  const blocks = question.explanationBlocks ?? null;
+  const hasBlocks = blocks != null;
+  const takeaway = blocks?.takeaway?.trim() ?? "";
+  const correctReason = blocks?.correctReason?.trim() ?? "";
+  const trap = blocks?.trap?.trim() ?? "";
+  const distractors = blocks?.distractors;
+  const contrast = blocks?.contrast;
   const selectedDistractorReason =
-    blocks?.distractors?.[selectedOptionId]?.trim() || null;
+    distractors?.[selectedOptionId]?.trim() || null;
+  const hypercorrection = !isCorrect && confidence === "na_pewno";
+  const whyOthersOpen =
+    confidence === "troche" || confidence === "nie_wiedzialem";
+  const skipCorrect = new Set([question.correctOptionId]);
+  const skipCorrectAndSelected = new Set([
+    question.correctOptionId,
+    selectedOptionId,
+  ]);
+  const hasAnyDistractor = question.options.some(
+    (option) =>
+      option.id !== question.correctOptionId &&
+      Boolean(distractors?.[option.id]?.trim()),
+  );
+  const hasRemainingDistractors = question.options.some(
+    (option) =>
+      option.id !== question.correctOptionId &&
+      option.id !== selectedOptionId &&
+      Boolean(distractors?.[option.id]?.trim()),
+  );
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
     explanation: question.explanation,
@@ -66,7 +127,10 @@ export function FeedbackPanel({
   }).replace(/\s·\s*$/, "");
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-3xl space-y-4">
+    <div
+      className="mx-auto mt-8 w-full max-w-3xl space-y-4"
+      data-has-blocks={hasBlocks ? "true" : "false"}
+    >
       <div
         className={cn(
           "flex items-center gap-2 font-body text-body-lg font-semibold",
@@ -81,45 +145,52 @@ export function FeedbackPanel({
         {isCorrect ? t("correctAnswer") : t("incorrectAnswer")}
       </div>
       <p className="font-body text-body-sm text-secondary">{answerLine}</p>
+      {hypercorrection ? (
+        <p className="font-body text-body-sm font-medium text-gold">
+          {t("feedbackHypercorrection")}
+        </p>
+      ) : null}
 
-      {!hideExplanation ? (
+      {!hideExplanation && !hasBlocks ? (
         <div className="rounded-card bg-card p-5">
-          <div className="flex gap-3">
-            {variant === "concise" ? (
-              <Lightbulb
-                className="mt-0.5 size-5 shrink-0 text-gold"
-                aria-hidden
-              />
-            ) : null}
-            <div className="min-w-0 flex-1">
-              <h3 className="font-heading text-heading-sm text-primary">
-                {variant === "concise"
-                  ? t("feedbackRemember")
-                  : tCommon("explanation")}
-              </h3>
-              <div className="mt-3">
-                {markdownBlock(
-                  variant === "concise" ? takeaway : correctReason,
-                )}
-              </div>
-            </div>
-          </div>
+          <h3 className="font-heading text-heading-sm text-primary">
+            {tCommon("explanation")}
+          </h3>
+          <div className="mt-3">{markdownBlock(question.explanation)}</div>
+        </div>
+      ) : null}
 
-          {variant === "concise" && blocks?.correctReason ? (
-            <details className="group mt-4 border-t border-border pt-3">
-              <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
-                <ChevronDown
-                  className="size-4 transition-transform group-open:rotate-180"
+      {!hideExplanation && hasBlocks ? (
+        <div className="space-y-4">
+          {variant === "concise" && takeaway ? (
+            <div className="rounded-card bg-card p-5">
+              <div className="flex gap-3">
+                <Lightbulb
+                  className="mt-0.5 size-5 shrink-0 text-gold"
                   aria-hidden
                 />
-                {t("feedbackFullExplanation")}
-              </summary>
-              <div className="mt-3">{markdownBlock(blocks.correctReason)}</div>
-            </details>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-heading text-heading-sm text-primary">
+                    {t("feedbackPrinciple")}
+                  </h3>
+                  <div className="mt-3">{markdownBlock(takeaway)}</div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {(variant === "standard" || variant === "remedial") &&
+          correctReason ? (
+            <div className="rounded-card bg-card p-5">
+              <h3 className="font-heading text-heading-sm text-primary">
+                {tCommon("explanation")}
+              </h3>
+              <div className="mt-3">{markdownBlock(correctReason)}</div>
+            </div>
           ) : null}
 
           {variant === "remedial" && selectedDistractorReason ? (
-            <div className="mt-4 rounded-xl border border-error/20 bg-error/5 p-4">
+            <div className="rounded-xl border border-error/20 bg-error/5 p-4">
               <p className="font-body text-caption font-bold uppercase tracking-wide text-error">
                 {t("feedbackWhySelected")}
               </p>
@@ -129,8 +200,77 @@ export function FeedbackPanel({
             </div>
           ) : null}
 
+          {variant === "concise" && (correctReason || hasAnyDistractor) ? (
+            <details className="group rounded-card bg-card p-5">
+              <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
+                <ChevronDown
+                  className="size-4 transition-transform group-open:rotate-180"
+                  aria-hidden
+                />
+                {t("feedbackFullExplanation")}
+              </summary>
+              {correctReason ? (
+                <div className="mt-3">{markdownBlock(correctReason)}</div>
+              ) : null}
+              <DistractorReasons
+                options={question.options}
+                distractors={distractors}
+                skipIds={skipCorrect}
+              />
+            </details>
+          ) : null}
+
+          {variant === "standard" && hasAnyDistractor ? (
+            <details
+              className="group rounded-card bg-card p-5"
+              open={whyOthersOpen}
+            >
+              <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
+                <ChevronDown
+                  className="size-4 transition-transform group-open:rotate-180"
+                  aria-hidden
+                />
+                {t("feedbackWhyOthers")}
+              </summary>
+              <DistractorReasons
+                options={question.options}
+                distractors={distractors}
+                skipIds={skipCorrect}
+              />
+            </details>
+          ) : null}
+
+          {variant === "remedial" && hasRemainingDistractors ? (
+            <details className="group rounded-card bg-card p-5">
+              <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
+                <ChevronDown
+                  className="size-4 transition-transform group-open:rotate-180"
+                  aria-hidden
+                />
+                {t("feedbackWhyOthers")}
+              </summary>
+              <DistractorReasons
+                options={question.options}
+                distractors={distractors}
+                skipIds={skipCorrectAndSelected}
+              />
+            </details>
+          ) : null}
+
+          {contrast && contrast.length > 0 ? (
+            <div className="rounded-card bg-card p-5">
+              {markdownBlock(contrastToMarkdown(contrast))}
+            </div>
+          ) : null}
+
+          {trap ? (
+            <div className="rounded-card bg-card p-5">
+              {markdownBlock(trapAsBlockquote(trap))}
+            </div>
+          ) : null}
+
           {variant === "remedial" && question.knowledgeCard ? (
-            <div className="mt-4 flex gap-3 rounded-xl border border-gold/25 bg-gold/5 p-4">
+            <div className="flex gap-3 rounded-xl border border-gold/25 bg-gold/5 p-4">
               <BookOpen
                 className="mt-0.5 size-5 shrink-0 text-gold"
                 aria-hidden
@@ -147,7 +287,7 @@ export function FeedbackPanel({
           ) : null}
 
           {variant === "remedial" && transferScheduled ? (
-            <p className="mt-4 flex items-center gap-2 font-body text-body-sm font-medium text-sage">
+            <p className="flex items-center gap-2 font-body text-body-sm font-medium text-sage">
               <Repeat2 className="size-4 shrink-0" aria-hidden />
               {t("feedbackTransferScheduled")}
             </p>

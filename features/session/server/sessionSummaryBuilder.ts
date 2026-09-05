@@ -5,6 +5,7 @@ import { parseStoredSessionInsights } from "@/features/session/lib/parseStoredSe
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
 import { inferSessionTopicId } from "@/features/session/lib/inferSessionTopicId";
 import { parseSourceFilter } from "@/features/session/lib/sourceFilter";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 
 function topicNameFromJoin(
   topics: { name: string } | { name: string }[] | null | undefined,
@@ -111,11 +112,14 @@ export async function buildSessionSummary(
 
   if (!subject) return null;
   const qids = [...new Set(rows.map((r) => r.question_id as string))];
+  const hideExplanation = isExplanationHiddenForSubject(subjId);
 
   const { data: qmeta } = await supabase
     .from("questions")
     .select(
-      "id, text, explanation, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
+      hideExplanation
+        ? "id, text, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))"
+        : "id, text, explanation, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
     )
     .eq("topics.is_inbox", false)
     .in("id", qids.length ? qids : ["__none__"]);
@@ -130,7 +134,9 @@ export async function buildSessionSummary(
       q.id as string,
       {
         text: q.text as string,
-        explanation: (q.explanation as string | null) ?? "",
+        explanation: hideExplanation
+          ? ""
+          : ((q as { explanation?: string | null }).explanation ?? ""),
         correct: q.correct_option_id as string,
         options: q.options,
         topic: topicNameFromJoin(
@@ -208,7 +214,9 @@ export async function buildSessionSummary(
       isCorrect: r.is_correct as boolean,
       confidence: r.confidence as Confidence | null,
       timeSpentSeconds: r.time_spent_seconds ?? 0,
-      explanation: meta?.explanation || undefined,
+      explanation: hideExplanation
+        ? undefined
+        : meta?.explanation || undefined,
     });
   }
 

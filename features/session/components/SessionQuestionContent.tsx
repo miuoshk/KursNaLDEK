@@ -160,6 +160,7 @@ export function SessionQuestionContent({
               hideExplanation={hideExplanation}
               variant={feedbackVariant}
               transferScheduled={transferScheduled}
+              confidence={answeredMap?.[q.id]?.confidence ?? null}
             />
             <SessionQuestionActions
               questionId={q.id}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import type { SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
 export function useSession(
@@ -13,6 +13,7 @@ export function useSession(
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [isShowingFeedback, setIsShowingFeedback] = useState(false);
   const [answeredList, setAnsweredList] = useState<SessionAnswer[]>([]);
+  const selectedOptionIdRef = useRef<string | null>(null);
 
   const currentQuestion = questions[currentIndex] ?? null;
 
@@ -26,13 +27,29 @@ export function useSession(
   const answeredCount = Object.keys(answeredMap).length;
   const allAnswered = answeredCount >= questions.length;
 
+  const selectOption = useCallback(
+    (optionId: string) => {
+      if (isShowingFeedback || isCurrentAnswered || selectedOptionId) return;
+      selectedOptionIdRef.current = optionId;
+      setSelectedOptionId(optionId);
+    },
+    [isShowingFeedback, isCurrentAnswered, selectedOptionId],
+  );
+
+  const revealFeedback = useCallback(() => {
+    // Ref, not state: przegląd calls this in the same tick as selectOption.
+    if (isShowingFeedback || selectedOptionIdRef.current == null) return;
+    setIsShowingFeedback(true);
+  }, [isShowingFeedback]);
+
   const selectAndCheck = useCallback(
     (optionId: string) => {
-      if (isShowingFeedback || isCurrentAnswered) return;
+      if (isShowingFeedback || isCurrentAnswered || selectedOptionId) return;
+      selectedOptionIdRef.current = optionId;
       setSelectedOptionId(optionId);
       setIsShowingFeedback(true);
     },
-    [isShowingFeedback, isCurrentAnswered],
+    [isShowingFeedback, isCurrentAnswered, selectedOptionId],
   );
 
   const recordAnswer = useCallback((answer: SessionAnswer) => {
@@ -47,9 +64,11 @@ export function useSession(
       const existing = answeredMap[q.id];
       setCurrentIndex(idx);
       if (existing) {
+        selectedOptionIdRef.current = existing.selectedOptionId;
         setSelectedOptionId(existing.selectedOptionId);
         setIsShowingFeedback(true);
       } else {
+        selectedOptionIdRef.current = null;
         setSelectedOptionId(null);
         setIsShowingFeedback(false);
       }
@@ -79,7 +98,10 @@ export function useSession(
   );
 
   const isWaitingForConfidence =
-    isShowingFeedback && currentQuestion != null && !(currentQuestion.id in answeredMap);
+    selectedOptionId != null &&
+    !isShowingFeedback &&
+    currentQuestion != null &&
+    !(currentQuestion.id in answeredMap);
 
   return {
     sessionId,
@@ -95,6 +117,8 @@ export function useSession(
     isWaitingForConfidence,
     answeredCount,
     allAnswered,
+    selectOption,
+    revealFeedback,
     selectAndCheck,
     recordAnswer,
     goToNext,

@@ -32,6 +32,7 @@ const schema = z.object({
     .nullable()
     .optional(),
   feedbackDwellSeconds: z.number().min(0).max(3600).nullable().optional(),
+  confidenceLatencyMs: z.number().int().min(0).max(3_600_000).nullable().optional(),
   /** Ignorowane od event schema v2; pozostawione dla klientów z poprzedniego deployu. */
   skipFsrs: z.boolean().optional(),
 });
@@ -201,7 +202,7 @@ export async function submitAnswer(
     const { data: prevAns } = await supabase
       .from("session_answers")
       .select(
-        "id, selected_option_id, is_correct, confidence, time_spent_seconds, answered_at, is_first_exposure, fsrs_applied, fsrs_rating, rating_source, state_before, state_after, retrievability_before, retrievability_after, stability_before, stability_after, difficulty_before, difficulty_after, fsrs_snapshot_before, fsrs_snapshot_after, due_before, due_after, feedback_variant, feedback_dwell_seconds, processing_completed_at",
+        "id, selected_option_id, is_correct, confidence, time_spent_seconds, answered_at, is_first_exposure, fsrs_applied, fsrs_rating, rating_source, state_before, state_after, retrievability_before, retrievability_after, stability_before, stability_after, difficulty_before, difficulty_after, fsrs_snapshot_before, fsrs_snapshot_after, due_before, due_after, feedback_variant, feedback_dwell_seconds, confidence_latency_ms, processing_completed_at",
       )
       .eq("session_id", parsed.data.sessionId)
       .eq("question_id", parsed.data.questionId)
@@ -277,6 +278,7 @@ export async function submitAnswer(
       fsrs_rating: attemptRating.grade,
       feedback_variant: feedbackVariant,
       feedback_dwell_seconds: feedbackDwellSeconds,
+      confidence_latency_ms: parsed.data.confidenceLatencyMs ?? null,
     };
 
     let insertedAnswer: { id: string } = { id: String(prevAns?.id ?? "") };

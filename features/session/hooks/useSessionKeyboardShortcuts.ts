@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import type { Confidence, SessionQuestion } from "@/features/session/types";
+import { resolveSessionShortcut } from "@/features/session/lib/sessionKeyboardShortcut";
 import { orderSessionOptions } from "@/features/session/lib/sessionOptionOrder";
+import type { Confidence, SessionQuestion } from "@/features/session/types";
 
 type Args = {
   sessionId: string;
@@ -56,48 +57,37 @@ export function useSessionKeyboardShortcuts({
         return;
       }
 
-      if (e.key === "ArrowLeft" && currentIndex > 0) {
+      const action = resolveSessionShortcut(e.key, {
+        currentIndex,
+        total,
+        isShowingFeedback,
+        isCurrentAnswered,
+        isWaitingForConfidence,
+        isPrzeglad,
+        optionCount: displayOptions.length,
+      });
+
+      if (action.type === "none") return;
+
+      if (action.type === "previous") {
         e.preventDefault();
         onPrevious();
         return;
       }
-
-      if (isWaitingForConfidence && !isPrzeglad) {
-        if (e.key === "1") { e.preventDefault(); onConfidencePick("nie_wiedzialem"); return; }
-        if (e.key === "2") { e.preventDefault(); onConfidencePick("troche"); return; }
-        if (e.key === "3") { e.preventDefault(); onConfidencePick("na_pewno"); return; }
-        return;
-      }
-
-      if (e.key === "ArrowRight") {
-        if (currentIndex >= total - 1 && !(isShowingFeedback || isCurrentAnswered)) {
-          // Na ostatnim pytaniu bez odpowiedzi nie pomijamy — niech użytkownik wybierze albo zakończy świadomie.
-          return;
-        }
+      if (action.type === "next") {
         e.preventDefault();
         onNext();
         return;
       }
-
-      if (e.key === "Enter") {
-        if (isShowingFeedback || isCurrentAnswered) {
-          e.preventDefault();
-          onNext();
-          return;
-        }
+      if (action.type === "confidence") {
+        e.preventDefault();
+        onConfidencePick(action.confidence);
+        return;
       }
-
-      if (!isShowingFeedback && !isCurrentAnswered) {
-        if (!displayOptions.length) return;
-        const k = e.key;
-        if (k >= "1" && k <= "9") {
-          const idx = Number(k) - 1;
-          const opt = displayOptions[idx];
-          if (opt) {
-            e.preventDefault();
-            selectAndCheck(opt.id);
-          }
-        }
+      const opt = displayOptions[action.optionIndex];
+      if (opt) {
+        e.preventDefault();
+        selectAndCheck(opt.id);
       }
     }
     window.addEventListener("keydown", onKeyDown);

@@ -54,7 +54,7 @@ const KNNP_BY_KEY: Record<string, SubjectRycina> = {
   "prof-humanizm": { emblem: "subj-prof-humanizm", plate: "anat-hand" },
   immunologia: { emblem: "subj-immunologia", plate: "anat-thorax" },
   patofizjologia: { emblem: "subj-patofizjologia", plate: "anat-aorta" },
-  socjologia: { emblem: "subj-socjologia", plate: "scene-waiting" },
+  socjologia: { emblem: "subj-socjologia", plate: "scene-doctor" },
   "narzad-zucia": { emblem: "subj-narzad-zucia", plate: "anat-masseter" },
 };
 

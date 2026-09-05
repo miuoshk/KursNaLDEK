@@ -26,7 +26,7 @@ describe("rycinaCatalog", () => {
     assert.equal(subjectRycina("stoma-histologia")?.plate, "histo-plate-enamel");
     assert.equal(subjectRycina("lek-histologia")?.plate, "histo-plate-enamel");
     assert.equal(subjectRycina("stoma-chemia")?.plate, "pharma-aconitum");
-    assert.equal(subjectRycina("stoma-socjologia")?.plate, "scene-waiting");
+    assert.equal(subjectRycina("stoma-socjologia")?.plate, "scene-doctor");
     assert.equal(subjectRycina("stoma-narzad-zucia")?.plate, "anat-masseter");
     assert.equal(subjectRycina("lek-biologia-mol")?.plate, "anat-brain-sagittal");
   });

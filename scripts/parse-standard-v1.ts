@@ -19,10 +19,9 @@ import {
   type ParseInput,
 } from "./lib/parseStandardV1";
 import {
-  charDiffRatio,
-  normalizeInvariantText,
-  renderExplanationBlocksTs,
-} from "./lib/renderExplanationBlocks";
+  diffSectionInvariants,
+  summarizeSectionDiffs,
+} from "./lib/sectionInvariant";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const PAGE = 200;
@@ -100,6 +99,7 @@ function parseCli(argv: string[]) {
   let fromDb: string | undefined;
   let outFile = resolve(root, "scripts/out/standard-v1.jsonl");
   let reportFile = resolve(root, "scripts/out/standard-v1-report.md");
+  let csvFile = resolve(root, "scripts/out/chs-do-uzupelnienia.csv");
   let inFile: string | undefined;
   for (let index = 2; index < argv.length; index += 1) {
     const value = argv[index];
@@ -118,13 +118,18 @@ function parseCli(argv: string[]) {
       index += 1;
       continue;
     }
+    if (value === "--csv") {
+      csvFile = resolve(argv[index + 1] ?? csvFile);
+      index += 1;
+      continue;
+    }
     if (!value.startsWith("--") && !inFile) inFile = value;
   }
-  return { fromDb, outFile, reportFile, inFile };
+  return { fromDb, outFile, reportFile, csvFile, inFile };
 }
 
 async function main() {
-  const { fromDb, outFile, reportFile, inFile } = parseCli(process.argv);
+  const { fromDb, outFile, reportFile, csvFile, inFile } = parseCli(process.argv);
 
   if (!fromDb && !inFile) {
     console.error(
@@ -142,23 +147,13 @@ async function main() {
     input,
   }));
 
-  const invariantOver: { id: string; ratio: number }[] = [];
-  for (const { parsed, input } of results) {
-    if (!parsed.item) continue;
-    const rendered = renderExplanationBlocksTs(
-      parsed.item.blocks,
-      input.options,
-      input.correct_option_id,
-    );
-    const ratio = charDiffRatio(
-      normalizeInvariantText(input.explanation),
-      normalizeInvariantText(rendered),
-    );
-    if (ratio > 0.05) invariantOver.push({ id: parsed.id, ratio });
-  }
+  const sectionDiffs = results.flatMap(({ parsed, input }) =>
+    diffSectionInvariants(input, parsed),
+  );
+  const sectionInvariant = summarizeSectionDiffs(sectionDiffs);
 
   const parsedRows = results.map((row) => row.parsed);
-  const report = formatParseReport(parsedRows, { invariantOver });
+  const report = formatParseReport(parsedRows, { sectionInvariant });
   const seen = new Set<string>();
   const jsonl = parsedRows
     .filter((row) => {
@@ -169,15 +164,59 @@ async function main() {
     .map((row) => JSON.stringify(row.item))
     .join("\n");
 
+  const csvLines = ["id,brakujace,powod"];
+  const csvSeen = new Set<string>();
+  for (const { parsed, input } of results) {
+    if (csvSeen.has(parsed.id)) continue;
+    csvSeen.add(parsed.id);
+    const missing: string[] = [];
+    const reasons: string[] = [];
+    if (!parsed.accepted) {
+      reasons.push(`odrzucone:${parsed.flags.map((flag) => flag.code).join("+") || "unknown"}`);
+    }
+    const blocks = parsed.item?.blocks;
+    if (!blocks?.takeaway) missing.push("takeaway");
+    if (!blocks?.trap) missing.push("trap");
+    for (const option of input.options) {
+      if (option.id === input.correct_option_id) continue;
+      if (!blocks?.distractors?.[option.id]) {
+        missing.push(`distractor:${option.id}`);
+      }
+    }
+    for (const flag of parsed.flags) {
+      if (
+        flag.code === "distractor_unmatched" ||
+        flag.code === "takeaway_too_long" ||
+        flag.code === "too_long" ||
+        flag.code === "unparsed_remainder"
+      ) {
+        reasons.push(`${flag.code}: ${flag.detail}`);
+      }
+    }
+    if (missing.length === 0) continue;
+    if (reasons.length === 0) reasons.push("brak w źródle");
+    csvLines.push(
+      [parsed.id, missing.join("|"), reasons.join("; ")]
+        .map((cell) => `"${cell.replaceAll('"', '""')}"`)
+        .join(","),
+    );
+  }
+
   await mkdir(dirname(outFile), { recursive: true });
   await mkdir(dirname(reportFile), { recursive: true });
+  await mkdir(dirname(csvFile), { recursive: true });
   if (jsonl) await writeFile(outFile, `${jsonl}\n`, "utf8");
   else await writeFile(outFile, "", "utf8");
   await writeFile(reportFile, report, "utf8");
+  await writeFile(csvFile, `${csvLines.join("\n")}\n`, "utf8");
 
   const accepted = parsedRows.filter((row) => row.accepted).length;
+  const sectionTotal = Object.values(sectionInvariant).reduce(
+    (sum, ids) => sum + ids.length,
+    0,
+  );
   console.error(
-    `accepted ${accepted}/${parsedRows.length}; invariant>5% ${invariantOver.length}; out ${outFile}; report ${reportFile}`,
+    `accepted ${accepted}/${parsedRows.length}; section-diffs ${sectionTotal}; out ${outFile}; report ${reportFile}; csv ${csvFile}`,
   );
   process.stdout.write(report);
 }

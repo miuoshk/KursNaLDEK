@@ -62,3 +62,26 @@ export function levenshteinSimilarity(a: string, b: string): number {
 export function similarity(a: string, b: string): number {
   return Math.max(trigramSimilarity(a, b), levenshteinSimilarity(a, b));
 }
+
+/** Lists like „1, 2 i 3” / „1 oraz 4” after normalizeMatchText. */
+export const NUMERIC_LIST_RE =
+  /^[0-9]+([,\s]+(i|oraz)?[\s,]*[0-9]+)*$/;
+
+export function isNumericOptionList(text: string): boolean {
+  return NUMERIC_LIST_RE.test(normalizeMatchText(text));
+}
+
+export function numberSetFromText(text: string): number[] {
+  const seen = new Set<number>();
+  for (const match of normalizeMatchText(text).matchAll(/\d+/g)) {
+    seen.add(Number(match[0]));
+  }
+  return [...seen].sort((left, right) => left - right);
+}
+
+export function numberSetsEqual(left: string, right: string): boolean {
+  const a = numberSetFromText(left);
+  const b = numberSetFromText(right);
+  if (a.length === 0 || b.length === 0 || a.length !== b.length) return false;
+  return a.every((value, index) => value === b[index]);
+}

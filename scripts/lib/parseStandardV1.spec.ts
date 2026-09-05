@@ -9,7 +9,8 @@ import {
   normalizeInvariantText,
   renderExplanationBlocksTs,
 } from "./renderExplanationBlocks";
-import { similarity, normalizeMatchText } from "./textSimilarity";
+import { similarity, normalizeMatchText, isNumericOptionList } from "./textSimilarity";
+import { diffSectionInvariants } from "./sectionInvariant";
 
 const OPTIONS = [
   { id: "a", text: "implantologia i autotransplantacja" },
@@ -96,6 +97,28 @@ test("dystraktor bez dopasowania → flaga, reszta idzie", () => {
   );
 });
 
+test("tabela między werdyktem a Dlaczego → contrast, nie correctReason", () => {
+  const table = `| Cecha | A | B |
+|---|---|---|
+| jeden | x | y |`;
+  const result = sample({
+    explanation: `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia
+
+Sąsiedztwo anatomiczne.
+
+${table}
+
+**Dlaczego nie pozostałe?**
+
+- *implantologia i autotransplantacja* — nie.
+`,
+  });
+  assert.equal(result.accepted, true);
+  assert.equal(result.item?.blocks.correctReason.includes("|"), false);
+  assert.ok(result.item?.blocks.contrast);
+  assert.equal(result.item?.blocks.contrast?.[0][0], "Cecha");
+});
+
 test("tabela 3×3 → contrast; za duża → flaga i pominięcie", () => {
   const table = `| Cecha | A | B |
 |---|---|---|
@@ -168,6 +191,23 @@ test("similarity: identyczne po normalizacji ≥ 0.85", () => {
   );
 });
 
+test("listy numeryczne wykrywane po normalizacji", () => {
+  assert.equal(isNumericOptionList("1, 2 i 3"), true);
+  assert.equal(isNumericOptionList("1 oraz 4"), true);
+  assert.equal(isNumericOptionList("stwierdzenia 1, 2 i 3"), false);
+});
+
+test("inwariant per sekcja: pełny szablon bez różnic", () => {
+  const input = {
+    id: "chs-test-001",
+    explanation: FULL,
+    options: OPTIONS,
+    correct_option_id: "c",
+  };
+  const result = parseStandardV1(input);
+  assert.deepEqual(diffSectionInvariants(input, result), []);
+});
+
 test("inwariant: render ≈ oryginał po normalizacji", () => {
   const result = sample({ explanation: FULL });
   assert.ok(result.item);
@@ -181,6 +221,65 @@ test("inwariant: render ≈ oryginał po normalizacji", () => {
     normalizeInvariantText(rendered),
   );
   assert.ok(ratio <= 0.05, `ratio ${ratio}`);
+});
+
+test("chs-04-109: zbiór liczb, nie similarity — 1 i 2 ≠ 1, 2, 4 i 5", () => {
+  const options = [
+    { id: "a", text: "2, 3 i 4" },
+    { id: "b", text: "3 i 5" },
+    { id: "c", text: "2 i 4" },
+    { id: "d", text: "1, 2, 4 i 5" },
+    { id: "e", text: "1 i 2" },
+  ] as const;
+  const result = parseStandardV1({
+    id: "chs-04-109",
+    correct_option_id: "c",
+    options,
+    explanation: `**✅ Poprawna odpowiedź:** stwierdzenia 2 i 4
+
+Typy tej skazy różni ilość i jakość czynnika.
+
+**Dlaczego nie pozostałe?**
+
+- *1, 2, 4 i 5* — dokłada przewagę częstości typu drugiego.
+- *1 i 2* — dokłada przewagę częstości typu drugiego nad pierwszym.
+- *3 i 5* — łączy błędne dziedziczenie sprzężone z płcią.
+
+> 💡 **Haczyk:** trzy czwarte przypadków to typ pierwszy.
+`,
+  });
+  assert.equal(result.accepted, true);
+  assert.equal(result.item?.blocks.distractors?.d?.startsWith("dokłada przewagę"), true);
+  assert.equal(result.item?.blocks.distractors?.e?.startsWith("dokłada przewagę częstości typu drugiego nad"), true);
+  assert.equal(result.item?.blocks.distractors?.b?.startsWith("łączy błędne"), true);
+  assert.equal(result.item?.blocks.distractors?.a, undefined);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "distractor_unmatched"),
+    false,
+  );
+});
+
+test("elimination: jedna pozostała opcja i similarity ≥ 0.5", () => {
+  const result = sample({
+    explanation: `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia
+
+Powód.
+
+**Dlaczego nie pozostałe?**
+
+- *implantologia i autotransplantacja* — to poszerzenie zakresu.
+- *zaburzenia gnatyczne i ślinianki* — inny problem kliniczny.
+- *chirurgia głowy i szyi* — to nazwa specjalności, nie topografia.
+- *rekonstrukcja tkanek* — wskazuje na protetykę.
+`,
+  });
+  assert.equal(result.accepted, true);
+  assert.ok(result.item?.blocks.distractors?.a);
+  assert.ok(result.item?.blocks.distractors?.b);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "distractor_matched_by_elimination"),
+    true,
+  );
 });
 
 test("zbiorcze liczniki", () => {

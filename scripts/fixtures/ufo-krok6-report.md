@@ -1,9 +1,12 @@
-# parse-standard-v1 — ldew-chirurgia-stomatologiczna
+# parse-standard-v1 — poprawki numeryczne / elimination / inwariant per sekcja
 
-Źródło: prod, read-only `--from-db`. Wsad: branch `ufo-staging`
-(`slmeaosqkyqehcicwoja`). **Nie ruszane prod.**
+Źródło: prod, read-only `--from-db`. Wsad: rollback + apply na branchu
+`ufo-staging` (`slmeaosqkyqehcicwoja`). **Prod nietknięty.**
 
 Parser: `npx tsx scripts/parse-standard-v1.ts --from-db ldew-chirurgia-stomatologiczna`
+
+CSV dla fabryki: `scripts/out/chs-do-uzupelnienia.csv`
+(kopia w PR: `scripts/fixtures/chs-do-uzupelnienia.csv`)
 
 ## Zbiorczo
 
@@ -18,16 +21,23 @@ Parser: `npx tsx scripts/parse-standard-v1.ts --from-db ldew-chirurgia-stomatolo
 
 ### flagi
 
-- verdict_mismatch: 817 (głównie „stwierdzenia 1, 2 i 3” vs opcja „1, 2 i 3”; też odmiana: nacięcie/nacięciu)
+- verdict_mismatch: 817
 - too_long: 0
-- distractor_unmatched: 276 (brak ≥0.85 albo duplikat tej samej opcji)
-- contrast_too_big: 0 (60 tabel GFM weszło, wszystkie ≤ 3×4)
-- takeaway_too_long: 2 (zgodnie z audytem: 2 haczyki > 200)
+- distractor_unmatched: 276 (nadal; drugi przebieg nic nie odzyskał)
+- distractor_matched_by_elimination: **0**
+- contrast_too_big: 0
+- takeaway_too_long: 2
 - unparsed_remainder: 0
 
-### odrzucone (dlaczego)
+### elimination (odzyskane)
 
-- (brak) — każda pozycja poszła do JSONL
+0 pozycji. Dla 276 unmatched zostawało więcej niż jedna wolna opcja,
+albo jedyna wolna była listą numeryczną (reguła 1, bez elimination),
+albo similarity do niej było < 0.5.
+
+### odrzucone
+
+- (brak)
 
 ## pierwsze 30 flag (z 926 pozycji z flagą)
 
@@ -40,7 +50,7 @@ Parser: `npx tsx scripts/parse-standard-v1.ts --from-db ldew-chirurgia-stomatolo
 - chs-02-014 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
 - chs-02-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
 - chs-02-020 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
-- chs-02-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400; distractor_unmatched: 2, 3 i 4 (duplikat a)
+- chs-02-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400; distractor_unmatched: 2, 3 i 4
 - chs-02-026 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
 - chs-02-028 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
 - chs-02-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
@@ -62,44 +72,56 @@ Parser: `npx tsx scripts/parse-standard-v1.ts --from-db ldew-chirurgia-stomatolo
 - chs-04-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
 - chs-04-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
 
-## Inwariant render vs oryginał
+## Inwariant per sekcja
 
-Port `render_explanation_blocks` w TS **tylko w teście**
-(`scripts/lib/renderExplanationBlocks.ts`). Normalizacja: zdejmij emoji,
-Haczyk→Zasada, ujednolić białe znaki i separatory GFM.
+Port porównania w `scripts/lib/sectionInvariant.ts` (nie Levenshtein na całości).
 
-**1007 / 2349 (42.9%) powyżej 5% znaków.**
+| sekcja | różnice |
+| --- | ---: |
+| a) mechanizm / correctReason | **0** |
+| b) dystraktory (multiset minus unmatched) | **0** |
+| c) trap | **0** |
+| d) takeaway (poza 2× takeaway_too_long) | **0** |
+| e) contrast | **0** |
 
-To nie jest zgubiony akapit (`unparsed_remainder = 0`, `correctReason`
-kopiowane 1:1). Różnice biorą się z kontraktu renderu:
+17 tabel GFM siedziało między werdyktem a „Dlaczego nie pozostałe?” i
+wcześniej wpadało do `correctReason`. Inwariant to wykrył; parser teraz
+zostawia tabelę na `contrast` (np. `chs-02-007`).
 
-1. Werdykt z `options[correct_option_id].text`, nie z linii `**✅ Poprawna odpowiedź:** X` (817 parafraz „stwierdzenia …”).
-2. Kolejność dystraktorów wg `options[]`, nie wg kolejności w prozie.
-3. Oryginał często pomija 1–2 złe opcje — render też, ale w innej kolejności linie się rozjeżdżają (Levenshtein).
-4. GFM: `|---|` vs `| --- |`.
+## Staging (pkt 4)
 
-Parser nie gubi sekcji szablonu. 1007 to test sztywnego porównania znaków, nie utraty treści.
+`rollback_explanation_blocks` na wszystkich id chirurgii → 2349 `none`.
+`apply_explanation_blocks(..., 'parser', false)` w partiach po 50.
 
-## Apply na ufo-staging
+```
+SELECT q.blocks_status, count(*)
+FROM public.questions q
+JOIN public.topics t ON t.id = q.topic_id
+WHERE t.subject_id = 'ldew-chirurgia-stomatologiczna'
+GROUP BY 1;
+```
 
-Ta sama RPC `apply_explanation_blocks(..., 'parser', false)` co
-`apply-blocks.mjs --apply`, w partiach po 50 (47 chunków + 39 uzupełnionych
-po poprawce paginacji `.order('id')`).
+| blocks_status | count |
+| --- | ---: |
+| draft | 2349 |
 
-`SELECT blocks_status, count(*) … chirurgia` → **2349 draft**. Prod nietknięty.
+```
+SELECT id, blocks_status, blocks_source,
+       explanation_blocks->'distractors' AS distractors
+FROM public.questions WHERE id = 'chs-04-109';
+```
 
-## Screenshoty 390 px (branch ufo-staging, 2026-09-05)
+| | |
+| --- | --- |
+| id | chs-04-109 |
+| blocks_status | draft |
+| blocks_source | parser |
+| distractors.d | „1, 2, 4 i 5” — dokłada przewagę częstości typu drugiego… |
+| distractors.e | „1 i 2” — dokłada przewagę częstości typu drugiego nad pierwszym… |
+| distractors.b | „3 i 5” — łączy błędne dziedziczenie… |
+| distractors.a | (brak — w źródle nie ma linii dla „2, 3 i 4”) |
 
-Sesja `przeglad` ×10, FeedbackPanel (dziś: `correctReason`; KROK 7 jeszcze nie rusza panelu):
+Opcje: a=`2, 3 i 4` b=`3 i 5` c=`2 i 4` (klucz) d=`1, 2, 4 i 5` e=`1 i 2`.
+Bez similarity: `{1,2}` nie wchodzi na `{1,2,4,5}`.
 
-1. `scripts/fixtures/ufo-krok6-screenshots/ufo-krok6-04-session-q1-feedback.png` — Q1 poprawna
-2. `scripts/fixtures/ufo-krok6-screenshots/ufo-krok6-05-session-q2-feedback.png` — Q2 błędna
-3. `scripts/fixtures/ufo-krok6-screenshots/ufo-krok6-06-session-q3-feedback.png` — Q3 błędna (leukoplakia)
-
-Katalog (`mode=katalog`, Nauka, pełne `explanation`):
-
-4. `…/ufo-krok6-01-catalog-chs-01-001.png` — chs-01-001
-5. `…/ufo-krok6-02-catalog-chs-03-002.png` — chs-03-002
-6. `…/ufo-krok6-03-catalog-chs-12-010.png` — chs-12-010
-7. `…/ufo-krok6-07-catalog-contrast-chs-04-008.png` — tabela GFM 3×3 + Zasada
-8. `…/ufo-krok6-08-catalog-no-takeaway-chs-01-008.png` — Pułapka, bez takeaway
+Prod (ten sam SELECT na `unfcpipxraiyacyzqanh`): `with_blocks=0`, `draft=0`.

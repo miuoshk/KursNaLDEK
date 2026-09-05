@@ -1,16 +1,20 @@
 import { parseContrastGfm } from "../../features/shared/lib/explanationBlocks";
 import type { ExplanationBlocksV2 } from "../../features/shared/lib/explanationBlocks";
 import {
+  isNumericOptionList,
   normalizeMatchText,
+  numberSetsEqual,
   similarity,
 } from "./textSimilarity";
 
 export const MATCH_THRESHOLD = 0.85;
+export const ELIMINATION_THRESHOLD = 0.5;
 
 export type ParseFlagCode =
   | "verdict_mismatch"
   | "too_long"
   | "distractor_unmatched"
+  | "distractor_matched_by_elimination"
   | "contrast_too_big"
   | "takeaway_too_long"
   | "unparsed_remainder";
@@ -67,17 +71,31 @@ function isTableLine(line: string): boolean {
 function findBestOption(
   label: string,
   options: ParseInput["options"],
-): { id: string; score: number; text: string } | null {
+): { id: string; score: number; text: string; via: "numeric" | "similarity" } | null {
   const target = normalizeMatchText(label);
   if (!target) return null;
+  const numericHits: ParseInput["options"][number][] = [];
   let best: { id: string; score: number; text: string } | null = null;
   for (const option of options) {
+    if (isNumericOptionList(option.text)) {
+      if (numberSetsEqual(label, option.text)) numericHits.push(option);
+      continue;
+    }
     const score = similarity(target, normalizeMatchText(option.text));
     if (!best || score > best.score) {
       best = { id: option.id, score, text: option.text };
     }
   }
-  return best;
+  if (numericHits.length === 1) {
+    return {
+      id: numericHits[0].id,
+      score: 1,
+      text: numericHits[0].text,
+      via: "numeric",
+    };
+  }
+  if (numericHits.length > 1) return null;
+  return best ? { ...best, via: "similarity" } : null;
 }
 
 export function parseStandardV1(input: ParseInput): ParseResult {
@@ -141,6 +159,7 @@ export function parseStandardV1(input: ParseInput): ParseResult {
   const reasonLines: string[] = [];
   if (verdictIndex >= 0 && dlaczegoIndex > verdictIndex) {
     for (let index = verdictIndex + 1; index < dlaczegoIndex; index += 1) {
+      if (isTableLine(lines[index])) continue;
       reasonLines.push(lines[index]);
       mark(index);
     }
@@ -169,6 +188,8 @@ export function parseStandardV1(input: ParseInput): ParseResult {
 
   const distractors: Record<string, string> = {};
   const usedOptionIds = new Set<string>();
+  const pendingUnmatched: { label: string; sentence: string; detail: string }[] =
+    [];
   if (dlaczegoIndex >= 0) {
     for (let index = dlaczegoIndex + 1; index < lines.length; index += 1) {
       const trimmed = lines[index].trim();
@@ -182,20 +203,17 @@ export function parseStandardV1(input: ParseInput): ParseResult {
       const label = distMatch[1].trim();
       const sentence = distMatch[2].trim();
       const match = findBestOption(label, input.options);
-      if (
-        !match ||
-        match.score < MATCH_THRESHOLD ||
-        match.id === input.correct_option_id
-      ) {
-        flags.push({
-          code: "distractor_unmatched",
-          detail: label,
-        });
+      const numericOk = match?.via === "numeric";
+      const similarOk =
+        match?.via === "similarity" && match.score >= MATCH_THRESHOLD;
+      if (!match || (!numericOk && !similarOk) || match.id === input.correct_option_id) {
+        pendingUnmatched.push({ label, sentence, detail: label });
         continue;
       }
       if (usedOptionIds.has(match.id)) {
-        flags.push({
-          code: "distractor_unmatched",
+        pendingUnmatched.push({
+          label,
+          sentence,
           detail: `${label} (duplikat ${match.id})`,
         });
         continue;
@@ -203,6 +221,31 @@ export function parseStandardV1(input: ParseInput): ParseResult {
       usedOptionIds.add(match.id);
       distractors[match.id] = sentence;
     }
+  }
+
+  for (const item of pendingUnmatched) {
+    const remaining = input.options.filter(
+      (option) =>
+        option.id !== input.correct_option_id && !usedOptionIds.has(option.id),
+    );
+    if (remaining.length !== 1 || isNumericOptionList(remaining[0].text)) {
+      flags.push({ code: "distractor_unmatched", detail: item.detail });
+      continue;
+    }
+    const score = similarity(
+      normalizeMatchText(item.label),
+      normalizeMatchText(remaining[0].text),
+    );
+    if (score < ELIMINATION_THRESHOLD) {
+      flags.push({ code: "distractor_unmatched", detail: item.detail });
+      continue;
+    }
+    usedOptionIds.add(remaining[0].id);
+    distractors[remaining[0].id] = item.sentence;
+    flags.push({
+      code: "distractor_matched_by_elimination",
+      detail: `${item.label} → ${remaining[0].id} similarity=${score.toFixed(3)}`,
+    });
   }
 
   const tableLines: string[] = [];
@@ -360,7 +403,15 @@ export function summarizeParseResults(results: ParseResult[]) {
 
 export function formatParseReport(
   results: ParseResult[],
-  extras?: { invariantOver?: { id: string; ratio: number }[] },
+  extras?: {
+    sectionInvariant?: {
+      mechanism: string[];
+      distractors: string[];
+      trap: string[];
+      takeaway: string[];
+      contrast: string[];
+    };
+  },
 ): string {
   const summary = summarizeParseResults(results);
   const lines = [
@@ -376,15 +427,31 @@ export function formatParseReport(
     "## flagi (zbiorczo)",
     "",
   ];
+  const eliminationIds = results
+    .filter((row) =>
+      row.flags.some((flag) => flag.code === "distractor_matched_by_elimination"),
+    )
+    .map((row) => row.id);
   for (const code of [
     "verdict_mismatch",
     "too_long",
     "distractor_unmatched",
+    "distractor_matched_by_elimination",
     "contrast_too_big",
     "takeaway_too_long",
     "unparsed_remainder",
   ] as const) {
     lines.push(`- ${code}: ${summary.flagCounts.get(code) ?? 0}`);
+  }
+  lines.push(
+    "",
+    `## elimination (odzyskane): ${eliminationIds.length}`,
+    "",
+  );
+  if (eliminationIds.length === 0) {
+    lines.push("- (brak)");
+  } else {
+    for (const id of eliminationIds) lines.push(`- ${id}`);
   }
   lines.push("", "## odrzucone (dlaczego)", "");
   if (summary.rejectReasons.size === 0) {
@@ -402,18 +469,18 @@ export function formatParseReport(
     lines.push(`- ${row.id} ${row.accepted ? "wsad" : "odrzucone"} — ${codes}`);
   }
 
-  if (extras?.invariantOver) {
-    lines.push(
-      "",
-      `## inwariant render vs oryginał (>5%): ${extras.invariantOver.length}`,
-      "",
-    );
-    if (extras.invariantOver.length === 0) {
-      lines.push("- (brak)");
-    } else {
-      for (const row of extras.invariantOver.slice(0, 50)) {
-        lines.push(`- ${row.id}: ${(row.ratio * 100).toFixed(1)}%`);
-      }
+  if (extras?.sectionInvariant) {
+    const sections = extras.sectionInvariant;
+    lines.push("", "## inwariant per sekcja (różnice)", "");
+    for (const [name, ids] of [
+      ["a) mechanizm / correctReason", sections.mechanism],
+      ["b) dystraktory", sections.distractors],
+      ["c) trap", sections.trap],
+      ["d) takeaway", sections.takeaway],
+      ["e) contrast", sections.contrast],
+    ] as const) {
+      lines.push(`- ${name}: ${ids.length}`);
+      for (const id of ids.slice(0, 10)) lines.push(`  - ${id}`);
     }
   }
 

@@ -239,6 +239,9 @@ export function AdminQuestionEditor({
     }
 
     setIsSaving(true);
+    const blocksDirty =
+      JSON.stringify(state.explanationBlocks) !==
+      JSON.stringify(initial.explanationBlocks);
     const result = await updateQuestionFull({
       questionId: question.id,
       reportId,
@@ -249,7 +252,9 @@ export function AdminQuestionEditor({
       })),
       correctOptionId: state.correctOptionId,
       explanation: state.explanation,
-      explanationBlocks: state.explanationBlocks,
+      ...(blocksDirty
+        ? { explanationBlocks: state.explanationBlocks }
+        : {}),
       conceptIds: state.conceptIds,
       isActive: state.isActive,
       sourceExam: emptyToNull(state.sourceExam),
@@ -284,7 +289,7 @@ export function AdminQuestionEditor({
     startTransition(() => {
       onSaved?.();
     });
-  }, [state, question.id, reportId, onSaved]);
+  }, [state, initial, question.id, reportId, onSaved]);
 
   return (
     <div className="flex min-w-0 flex-col gap-4">
@@ -434,8 +439,15 @@ export function AdminQuestionEditor({
           <MarkdownExplanationEditor
             value={state.explanation}
             onChange={(explanation) => setState((p) => ({ ...p, explanation }))}
+            readOnly={state.explanationBlocks !== null}
+            hint={
+              state.explanationBlocks !== null
+                ? "generowane z bloków"
+                : undefined
+            }
           />
           <AdminStructuredExplanationFields
+            questionId={question.id}
             value={state.explanationBlocks}
             options={state.options}
             correctOptionId={state.correctOptionId}

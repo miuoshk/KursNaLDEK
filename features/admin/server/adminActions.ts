@@ -18,6 +18,11 @@ import {
   formatQuestionCopyWithReportText,
 } from "@/features/admin/lib/formatQuestionCopyText";
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
+import { buildQuestionUpdatePayload } from "@/features/admin/lib/questionUpdatePayload";
+import {
+  explanationBlocksSchema,
+  explanationBlocksValid,
+} from "@/features/shared/lib/explanationBlocks";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -120,49 +125,9 @@ export async function toggleQuestionActive(
   return { ok: true as const };
 }
 
-const editQuestionSchema = z.object({
-  questionId: z.string().min(1),
-  text: z.string().min(1).optional(),
-  explanation: z.string().optional(),
-});
-
-export async function editQuestion(raw: z.infer<typeof editQuestionSchema>) {
-  const parsed = editQuestionSchema.safeParse(raw);
-  if (!parsed.success)
-    return { ok: false as const, message: "Nieprawidłowe dane." };
-
-  const { supabase } = await requireAdmin();
-
-  const updates: Record<string, unknown> = {};
-  if (parsed.data.text) updates.text = parsed.data.text;
-  if (parsed.data.explanation) updates.explanation = parsed.data.explanation;
-
-  if (Object.keys(updates).length === 0) {
-    return { ok: false as const, message: "Brak zmian." };
-  }
-
-  const { error } = await supabase
-    .from("questions")
-    .update(updates)
-    .eq("id", parsed.data.questionId);
-
-  if (error) {
-    console.error("[editQuestion]", error.message);
-    return { ok: false as const, message: "Nie udało się edytować pytania." };
-  }
-
-  return { ok: true as const };
-}
-
 const optionSchema = z.object({
   id: z.string().min(1).max(8),
   text: z.string().min(1).max(2000),
-});
-
-const structuredExplanationSchema = z.object({
-  takeaway: z.string().max(2000),
-  correctReason: z.string().max(8000),
-  distractors: z.record(z.string().max(8), z.string().max(2000)),
 });
 
 const updateQuestionSchema = z.object({
@@ -172,7 +137,7 @@ const updateQuestionSchema = z.object({
   options: z.array(optionSchema).min(2).max(8),
   correctOptionId: z.string().min(1).max(8),
   explanation: z.string().max(8000),
-  explanationBlocks: structuredExplanationSchema.nullable(),
+  explanationBlocks: explanationBlocksSchema.nullable().optional(),
   conceptIds: z.array(z.string().uuid()).max(12),
   isActive: z.boolean(),
   sourceExam: z.string().max(120).nullable(),
@@ -202,12 +167,14 @@ function diffQuestion(
   compare("options", before.options, after.options, true);
   compare("correct_option_id", before.correctOptionId, after.correctOptionId);
   compare("explanation", before.explanation, after.explanation);
-  compare(
-    "explanation_blocks",
-    before.explanationBlocks,
-    after.explanationBlocks,
-    true,
-  );
+  if (after.explanationBlocks !== undefined) {
+    compare(
+      "explanation_blocks",
+      before.explanationBlocks,
+      after.explanationBlocks,
+      true,
+    );
+  }
   compare(
     "concept_ids",
     [...before.conceptIds].sort(),
@@ -253,6 +220,19 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     return {
       ok: false as const,
       message: "Poprawna odpowiedź musi wskazywać jedną z opcji.",
+    };
+  }
+  if (
+    parsed.data.explanationBlocks &&
+    !explanationBlocksValid(
+      parsed.data.explanationBlocks,
+      parsed.data.options,
+      parsed.data.correctOptionId,
+    )
+  ) {
+    return {
+      ok: false as const,
+      message: "Bloki wyjaśnienia nie spełniają kontraktu v2.",
     };
   }
 
@@ -321,23 +301,7 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
     };
   }
 
-  const fullUpdatePayload = {
-    text: parsed.data.text,
-    options: parsed.data.options,
-    correct_option_id: parsed.data.correctOptionId,
-    explanation: parsed.data.explanation,
-    explanation_blocks: parsed.data.explanationBlocks,
-    is_active: parsed.data.isActive,
-    source_exam: parsed.data.sourceExam,
-    source_code: parsed.data.sourceCode,
-    image_url: parsed.data.imageUrl,
-    topic_id: parsed.data.topicId,
-    theme_label: parsed.data.themeLabel,
-    subtheme_label: parsed.data.subthemeLabel,
-    batch_label: parsed.data.batchLabel,
-    learning_outcome: parsed.data.learningOutcome,
-    disable_option_shuffle: parsed.data.disableOptionShuffle,
-  };
+  const fullUpdatePayload = buildQuestionUpdatePayload(parsed.data);
 
   const { error: updateError } = await ctx.supabase
     .from("questions")
@@ -435,6 +399,50 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
   return {
     ok: true as const,
     changedFields: Object.keys(changes),
+  };
+}
+
+const previewBlocksSchema = z.object({
+  questionId: z.string().min(1),
+  blocks: explanationBlocksSchema,
+});
+
+export async function previewExplanationBlocks(raw: {
+  questionId: string;
+  blocks: unknown;
+}) {
+  const parsed = previewBlocksSchema.safeParse(raw);
+  if (!parsed.success) {
+    return {
+      ok: false as const,
+      markdown: "BŁĄD: bloki nie spełniają kontraktu v2",
+    };
+  }
+
+  try {
+    await requireAdminAccess();
+  } catch {
+    return { ok: false as const, markdown: "BŁĄD: brak uprawnień" };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("preview_explanation_blocks", {
+    blocks: parsed.data.blocks,
+    question_id: parsed.data.questionId,
+  });
+
+  if (error) {
+    console.error("[previewExplanationBlocks]", error.message);
+    return {
+      ok: false as const,
+      markdown: "BŁĄD: nie udało się wygenerować podglądu",
+    };
+  }
+
+  const markdown = typeof data === "string" ? data : "";
+  return {
+    ok: !markdown.startsWith("BŁĄD:") as boolean,
+    markdown,
   };
 }
 

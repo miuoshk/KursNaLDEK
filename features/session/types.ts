@@ -1,4 +1,4 @@
-import type { StructuredExplanation } from "@/features/session/lib/structuredExplanation";
+import type { ExplanationBlocksV2 } from "@/features/shared/lib/explanationBlocks";
 
 export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
 export type SessionMode = KnnpSessionMode;
@@ -25,7 +25,7 @@ export interface SessionQuestion {
   options: { id: string; text: string }[];
   correctOptionId: string;
   explanation: string;
-  explanationBlocks?: StructuredExplanation | null;
+  explanationBlocks?: ExplanationBlocksV2 | null;
   sourceCode: string | null;
   imageUrl?: string | null;
   topicName: string;

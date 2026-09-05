@@ -8,6 +8,10 @@ import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionProgressSquares } from "@/features/session/components/SessionProgressSquares";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
+import type {
+  FeedbackExpandSection,
+  PendingFeedbackEvent,
+} from "@/features/session/lib/feedbackTelemetry";
 import {
   feedbackVariants,
   questionVariants,
@@ -48,6 +52,11 @@ type SessionQuestionContentProps = {
   transferScheduled?: boolean;
   fatigueDetected?: boolean;
   onTakeBreak?: () => void;
+  onFeedbackShown?: (event: PendingFeedbackEvent) => void;
+  onFeedbackExpand?: (
+    questionId: string,
+    section: FeedbackExpandSection,
+  ) => void;
 };
 
 export function SessionQuestionContent({
@@ -76,6 +85,8 @@ export function SessionQuestionContent({
   transferScheduled,
   fatigueDetected = false,
   onTakeBreak,
+  onFeedbackShown,
+  onFeedbackExpand,
 }: SessionQuestionContentProps) {
   const t = useTranslations("session");
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
@@ -213,6 +224,8 @@ export function SessionQuestionContent({
               variant={feedbackVariant}
               transferScheduled={transferScheduled}
               confidence={answeredMap?.[q.id]?.confidence ?? null}
+              onFeedbackShown={onFeedbackShown}
+              onFeedbackExpand={onFeedbackExpand}
             />
             <SessionQuestionActions
               questionId={q.id}

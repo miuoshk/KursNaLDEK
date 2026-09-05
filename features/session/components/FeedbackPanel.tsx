@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, type SyntheticEvent } from "react";
 import {
   BookOpen,
   CheckCircle,
@@ -15,6 +16,11 @@ import type { Confidence, SessionQuestion } from "@/features/session/types";
 import { contrastToMarkdown } from "@/features/shared/lib/explanationBlocks";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { cn } from "@/lib/utils";
+import {
+  buildFeedbackShownEvent,
+  type FeedbackExpandSection,
+  type PendingFeedbackEvent,
+} from "@/features/session/lib/feedbackTelemetry";
 
 type FeedbackPanelProps = {
   sessionId: string;
@@ -25,6 +31,11 @@ type FeedbackPanelProps = {
   variant: FeedbackVariant;
   transferScheduled?: boolean;
   confidence?: Confidence | null;
+  onFeedbackShown?: (event: PendingFeedbackEvent) => void;
+  onFeedbackExpand?: (
+    questionId: string,
+    section: FeedbackExpandSection,
+  ) => void;
 };
 
 function trapAsBlockquote(trap: string): string {
@@ -71,6 +82,8 @@ export function FeedbackPanel({
   variant,
   transferScheduled = false,
   confidence = null,
+  onFeedbackShown,
+  onFeedbackExpand,
 }: FeedbackPanelProps) {
   const t = useTranslations("session");
   const tCommon = useTranslations("common");
@@ -125,6 +138,32 @@ export function FeedbackPanel({
     correct: correctLetter,
     topic: "",
   }).replace(/\s·\s*$/, "");
+
+  const shownInput = {
+    question,
+    selectedOptionId,
+    isCorrect,
+    hideExplanation,
+    variant,
+    transferScheduled,
+    confidence,
+  };
+  useEffect(() => {
+    if (!onFeedbackShown) return;
+    onFeedbackShown(buildFeedbackShownEvent(question.id, shownInput));
+  }, [question.id, variant, onFeedbackShown]);
+
+  const skipNextOpen = useRef(whyOthersOpen);
+  const handleToggle = (section: FeedbackExpandSection) =>
+    (event: SyntheticEvent<HTMLDetailsElement>) => {
+      if (skipNextOpen.current) {
+        skipNextOpen.current = false;
+        return;
+      }
+      if (event.currentTarget.open) {
+        onFeedbackExpand?.(question.id, section);
+      }
+    };
 
   return (
     <div
@@ -201,7 +240,10 @@ export function FeedbackPanel({
           ) : null}
 
           {variant === "concise" && (correctReason || hasAnyDistractor) ? (
-            <details className="group rounded-card bg-card p-5">
+            <details
+              className="group rounded-card bg-card p-5"
+              onToggle={handleToggle("full")}
+            >
               <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
                 <ChevronDown
                   className="size-4 transition-transform group-open:rotate-180"
@@ -224,6 +266,7 @@ export function FeedbackPanel({
             <details
               className="group rounded-card bg-card p-5"
               open={whyOthersOpen}
+              onToggle={handleToggle("distractors")}
             >
               <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
                 <ChevronDown
@@ -241,7 +284,10 @@ export function FeedbackPanel({
           ) : null}
 
           {variant === "remedial" && hasRemainingDistractors ? (
-            <details className="group rounded-card bg-card p-5">
+            <details
+              className="group rounded-card bg-card p-5"
+              onToggle={handleToggle("distractors")}
+            >
               <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
                 <ChevronDown
                   className="size-4 transition-transform group-open:rotate-180"

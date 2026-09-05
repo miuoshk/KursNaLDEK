@@ -1,0 +1,11 @@
+subject_id,question_id,option_id,option_text,n_selected,n_total,pct_of_answers,pct_of_wrong,recommendation
+ldew-chirurgia-stomatologiczna,chs-08-022,b,"zakażenia wszczepionych stawów wywołują w głównej mierze szczepy bytujące w jamie ustnej",1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-014,a,"rana przy dostępie przez błonę śluzową należy do ran czystych, więc osłona jest zbędna",1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-047,d,wydłużenie czasu potrzebnego na uzyskanie wyniku badania bakteriologicznego z antybiogramem,1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-052,a,"2, 4 i 5",1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-019,b,500 miligramów,1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-025,d,cefazoliny w dawce 1000 miligramów dożylnie bezpośrednio po ekstrakcji zęba,1,1,100.00,100.00,pisz
+ldew-chirurgia-stomatologiczna,chs-08-019,d,1500 miligramów,0,1,0.00,0.00,martwy dystraktor
+ldew-chirurgia-stomatologiczna,chs-08-014,d,"cukrzyca wpływa na gojenie rany, ale nie zalicza chorego do grupy pacjentów immunoniekompetentnych wymagających osłony",0,1,0.00,0.00,martwy dystraktor
+ldew-chirurgia-stomatologiczna,chs-08-019,a,250 miligramów,0,1,0.00,0.00,martwy dystraktor
+ldew-chirurgia-stomatologiczna,chs-08-022,a,związek bakteriemii pozabiegowej z zakażeniem wszczepionego stawu został naukowo potwierdzony,0,1,0.00,0.00,martwy dystraktor

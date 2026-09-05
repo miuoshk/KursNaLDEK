@@ -24,7 +24,7 @@ export async function recordFeedbackDwell(raw: z.infer<typeof schema>) {
   const { data: session } = await supabase
     .from("study_sessions")
     .select(
-      "id, user_id, subject_id, question_ids, reserve_question_ids, feedback_experiment_variant",
+      "id, user_id, subject_id, question_ids, reserve_question_ids",
     )
     .eq("id", parsed.data.sessionId)
     .maybeSingle();
@@ -38,9 +38,6 @@ export async function recordFeedbackDwell(raw: z.infer<typeof schema>) {
       !reserveQuestionIds.includes(parsed.data.questionId))
   ) {
     return { ok: false as const };
-  }
-  if (session.feedback_experiment_variant !== "treatment") {
-    return { ok: true as const };
   }
   const admin = createAdminClient();
 

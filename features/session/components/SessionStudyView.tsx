@@ -20,6 +20,7 @@ import {
 } from "@/features/session/lib/adaptiveFeedback";
 import { useDashboardData } from "@/features/shared/contexts/DashboardDataContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
+import { createFeedbackEventQueue } from "@/features/session/lib/feedbackTelemetry";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type {
   Confidence,
@@ -78,6 +79,26 @@ export function SessionStudyView({
     questionId: string;
     shownAt: number;
   } | null>(null);
+  const feedbackEventsRef = useRef(createFeedbackEventQueue());
+  const drainFeedbackEvents = useCallback(
+    () => feedbackEventsRef.current.drain(),
+    [],
+  );
+  const onFeedbackShown = useCallback(
+    (event: Parameters<typeof feedbackEventsRef.current.recordShown>[0]) => {
+      feedbackEventsRef.current.recordShown(event);
+    },
+    [],
+  );
+  const onFeedbackExpand = useCallback(
+    (
+      questionId: string,
+      section: Parameters<typeof feedbackEventsRef.current.recordExpand>[1],
+    ) => {
+      feedbackEventsRef.current.recordExpand(questionId, section);
+    },
+    [],
+  );
   const { profile } = useDashboardData();
   const { streak, showSessionTimer, showSessionTopics } = useDashboardUser();
 
@@ -170,6 +191,7 @@ export function SessionStudyView({
       profileStreak: streak,
       adaptiveFeedbackEnabled,
       planSnapshot,
+      drainFeedbackEvents,
     },
     timeSpentQuestion,
     sessionStart,
@@ -278,7 +300,6 @@ export function SessionStudyView({
   );
 
   const flushClassicFeedbackDwell = useCallback(() => {
-    if (!adaptiveFeedbackEnabled) return;
     const shown = feedbackShownAtRef.current;
     if (!shown) return;
     feedbackShownAtRef.current = null;
@@ -305,12 +326,7 @@ export function SessionStudyView({
       }
     })();
     trackPendingSave(feedbackSave);
-  }, [
-    adaptiveFeedbackEnabled,
-    feedbackState,
-    sessionId,
-    trackPendingSave,
-  ]);
+  }, [feedbackState, sessionId, trackPendingSave]);
 
   const wrappedNavigateNext = useCallback(() => {
     flushClassicFeedbackDwell();
@@ -425,6 +441,8 @@ export function SessionStudyView({
         transferScheduled={transferScheduled}
         fatigueDetected={fatigueDetected}
         onTakeBreak={() => setEndOpen(true)}
+        onFeedbackShown={onFeedbackShown}
+        onFeedbackExpand={onFeedbackExpand}
       />
     </div>
   );

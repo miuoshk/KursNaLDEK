@@ -40,7 +40,7 @@ const LDEW_BY_ID: Record<string, SubjectRycina> = {
 const KNNP_BY_KEY: Record<string, SubjectRycina> = {
   anatomia: { emblem: "subj-anatomia", plate: "anat-skull-lat" },
   angielski: { emblem: "subj-angielski", plate: "anat-tongue" },
-  histologia: { emblem: "subj-histologia", plate: "anat-kidney" },
+  histologia: { emblem: "subj-histologia", plate: "histo-plate-enamel" },
   biofizyka: { emblem: "subj-biofizyka", plate: "anat-eye" },
   biologia: { emblem: "subj-biologia", plate: "anat-hand" },
   "biologia-mol": { emblem: "subj-biologia-mol", plate: "anat-brain-sagittal" },

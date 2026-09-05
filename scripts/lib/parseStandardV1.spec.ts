@@ -1,0 +1,196 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import {
+  parseStandardV1,
+  summarizeParseResults,
+} from "./parseStandardV1";
+import {
+  charDiffRatio,
+  normalizeInvariantText,
+  renderExplanationBlocksTs,
+} from "./renderExplanationBlocks";
+import { similarity, normalizeMatchText } from "./textSimilarity";
+
+const OPTIONS = [
+  { id: "a", text: "implantologia i autotransplantacja" },
+  { id: "b", text: "rekonstrukcja poresekcyjna" },
+  {
+    id: "c",
+    text: "obecność narządów zmysłów oraz bliskość mózgowia",
+  },
+  { id: "d", text: "zaburzenia gnatyczne i ślinianki" },
+  { id: "e", text: "chirurgia głowy i szyi" },
+] as const;
+
+function sample(overrides: {
+  explanation: string;
+  correct?: string;
+  options?: typeof OPTIONS;
+}) {
+  return parseStandardV1({
+    id: "chs-test-001",
+    explanation: overrides.explanation,
+    options: overrides.options ?? OPTIONS,
+    correct_option_id: overrides.correct ?? "c",
+  });
+}
+
+const FULL = `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia
+
+Sąsiedztwo anatomiczne tłumaczy współpracę z laryngologią.
+
+**Dlaczego nie pozostałe?**
+
+- *implantologia i autotransplantacja* — to poszerzenie zakresu, nie topografia.
+- *rekonstrukcja poresekcyjna* — wskazuje na protetykę, nie na sąsiedztwo.
+
+> ⚠️ **Pułapka:** formalna przynależność specjalności.
+
+> 💡 **Haczyk:** decyduje to, co leży tuż obok pola.`;
+
+test("pełny szablon → wsad z trap i takeaway", () => {
+  const result = sample({ explanation: FULL });
+  assert.equal(result.accepted, true);
+  assert.equal(result.item?.blocks.correctReason.includes("Sąsiedztwo"), true);
+  assert.equal(result.item?.blocks.distractors?.a?.startsWith("to poszerzenie"), true);
+  assert.equal(result.item?.blocks.trap, "formalna przynależność specjalności.");
+  assert.equal(result.item?.blocks.takeaway, "decyduje to, co leży tuż obok pola.");
+  assert.deepEqual(result.item?.refs[0], "Standard 1.0 / legacy");
+  assert.equal(result.flags.length, 0);
+});
+
+test("werdykt niezgodny z kluczem → flaga, pozycja idzie", () => {
+  const result = sample({
+    explanation: FULL.replace(
+      "obecność narządów zmysłów oraz bliskość mózgowia",
+      "zupełnie inna opcja której nie ma",
+    ),
+  });
+  assert.equal(result.accepted, true);
+  assert.equal(result.flags.some((flag) => flag.code === "verdict_mismatch"), true);
+});
+
+test("correctReason > 900 → odrzut too_long", () => {
+  const long = "x".repeat(901);
+  const result = sample({
+    explanation: `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia\n\n${long}\n\n**Dlaczego nie pozostałe?**\n\n- *implantologia i autotransplantacja* — nie.\n`,
+  });
+  assert.equal(result.accepted, false);
+  assert.equal(result.flags.some((flag) => flag.code === "too_long"), true);
+  assert.equal(result.item, undefined);
+});
+
+test("dystraktor bez dopasowania → flaga, reszta idzie", () => {
+  const result = sample({
+    explanation: FULL.replace(
+      "*implantologia i autotransplantacja*",
+      "*tekst którego nie ma w opcjach wcale*",
+    ),
+  });
+  assert.equal(result.accepted, true);
+  assert.equal(result.item?.blocks.distractors?.a, undefined);
+  assert.ok(result.item?.blocks.distractors?.b);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "distractor_unmatched"),
+    true,
+  );
+});
+
+test("tabela 3×3 → contrast; za duża → flaga i pominięcie", () => {
+  const table = `| Cecha | A | B |
+|---|---|---|
+| jeden | x | y |
+| dwa | x | y |`;
+  const ok = sample({
+    explanation: `${FULL}\n\n${table}\n`,
+  });
+  assert.equal(ok.accepted, true);
+  assert.ok(ok.item?.blocks.contrast);
+  assert.equal(ok.item?.blocks.contrast?.[0].length, 3);
+
+  const big = `| A | B | C | D |
+|---|---|---|---|
+| 1 | 2 | 3 | 4 |`;
+  const bad = sample({
+    explanation: `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia
+
+Powód.
+
+**Dlaczego nie pozostałe?**
+
+- *implantologia i autotransplantacja* — nie.
+
+${big}
+`,
+  });
+  assert.equal(bad.accepted, true);
+  assert.equal(bad.item?.blocks.contrast, undefined);
+  assert.equal(
+    bad.flags.some((flag) => flag.code === "contrast_too_big"),
+    true,
+  );
+});
+
+test("takeaway > 200 → flaga, pole pominięte, pozycja idzie", () => {
+  const long = "s".repeat(201);
+  const result = sample({
+    explanation: FULL.replace(
+      "decyduje to, co leży tuż obok pola.",
+      long,
+    ),
+  });
+  assert.equal(result.accepted, true);
+  assert.equal(result.item?.blocks.takeaway, undefined);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "takeaway_too_long"),
+    true,
+  );
+});
+
+test("reszta poza szablonem → odrzut unparsed_remainder", () => {
+  const result = sample({
+    explanation: `${FULL}\n\nDodatkowe zdanie poza szablonem.\n`,
+  });
+  assert.equal(result.accepted, false);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "unparsed_remainder"),
+    true,
+  );
+  assert.equal(result.item, undefined);
+});
+
+test("similarity: identyczne po normalizacji ≥ 0.85", () => {
+  assert.ok(
+    similarity(
+      normalizeMatchText("Włókniak szkliwiakowy, wykrywany zwykle."),
+      normalizeMatchText("włókniak szkliwiakowy wykrywany zwykle"),
+    ) >= 0.85,
+  );
+});
+
+test("inwariant: render ≈ oryginał po normalizacji", () => {
+  const result = sample({ explanation: FULL });
+  assert.ok(result.item);
+  const rendered = renderExplanationBlocksTs(
+    result.item.blocks,
+    OPTIONS,
+    "c",
+  );
+  const ratio = charDiffRatio(
+    normalizeInvariantText(FULL),
+    normalizeInvariantText(rendered),
+  );
+  assert.ok(ratio <= 0.05, `ratio ${ratio}`);
+});
+
+test("zbiorcze liczniki", () => {
+  const summary = summarizeParseResults([
+    sample({ explanation: FULL }),
+    sample({
+      explanation: `${FULL}\n\nśmieć\n`,
+    }),
+  ]);
+  assert.equal(summary.total, 2);
+  assert.equal(summary.accepted, 1);
+  assert.equal(summary.rejected, 1);
+});

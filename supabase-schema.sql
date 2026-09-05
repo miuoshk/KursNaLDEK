@@ -158,6 +158,8 @@ CREATE TABLE topics (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+CREATE TYPE question_source AS ENUM ('own', 'cem', 'uczelnia');
+
 CREATE TABLE questions (
   id TEXT PRIMARY KEY,
   topic_id TEXT REFERENCES topics(id) ON DELETE CASCADE,
@@ -169,17 +171,56 @@ CREATE TABLE questions (
   source_code TEXT,
   image_url TEXT,
   is_active BOOLEAN DEFAULT true,
-  question_type TEXT NOT NULL DEFAULT 'single_choice',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  question_type TEXT DEFAULT 'single_choice',
   timer_seconds INTEGER,
-  correct_order JSONB,
   learning_outcome TEXT,
+  correct_order JSONB,
   hotspots JSONB,
   drill_questions JSONB,
   identify_mode TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
+  theme_label TEXT,
+  subtheme_label TEXT,
+  batch_label TEXT,
+  disable_option_shuffle BOOLEAN NOT NULL DEFAULT false,
+  tracks TEXT[],
+  source question_source NOT NULL DEFAULT 'own',
+  first_seen_session TEXT,
+  repeat_count SMALLINT NOT NULL DEFAULT 0,
+  explanation_status TEXT NOT NULL DEFAULT 'reviewed',
+  content_hash TEXT,
+  reserve_bucket SMALLINT,
+  explanation_blocks JSONB,
+  explanation_legacy TEXT,
+  blocks_status TEXT NOT NULL DEFAULT 'none',
+  blocks_source TEXT,
+  blocks_updated_at TIMESTAMPTZ,
+  CONSTRAINT questions_explanation_status_chk
+    CHECK (explanation_status IN ('missing', 'draft', 'reviewed')),
+  CONSTRAINT questions_source_coherence_chk
+    CHECK (source = 'cem' OR first_seen_session IS NULL),
+  CONSTRAINT questions_blocks_status_chk
+    CHECK (blocks_status IN ('none', 'draft', 'reviewed')),
+  CONSTRAINT questions_blocks_source_chk
+    CHECK (
+      blocks_source IS NULL
+      OR blocks_source IN ('parser', 'converter', 'writer', 'manual')
+    ),
+  CONSTRAINT questions_explanation_blocks_chk
+    CHECK (
+      explanation_blocks IS NULL
+      OR explanation_blocks_valid(
+        explanation_blocks,
+        options,
+        correct_option_id
+      )
+    )
 );
 
 CREATE INDEX idx_questions_topic ON questions(topic_id);
+CREATE INDEX questions_blocks_status_idx
+  ON questions (blocks_status)
+  WHERE blocks_status <> 'none';
 
 -- ============================================
 -- 3. USER PROGRESS & SPACED REPETITION

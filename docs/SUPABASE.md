@@ -113,7 +113,7 @@ Tworzony automatycznie przez trigger `handle_new_user` po rejestracji.
 | `name` | text | NIE | — | Nazwa tematu |
 | `display_order` | int | TAK | 0 | Kolejność |
 | `question_count` | int | TAK | 0 | Liczba pytań (cache) |
-| `knowledge_card` | jsonb | TAK | — | Fiszka wiedzy (markdown) |
+| `knowledge_card` | text | TAK | — | Fiszka wiedzy (markdown) |
 
 ---
 
@@ -140,6 +140,22 @@ To jest **najważniejsza tabela** z perspektywy tworzenia treści.
 | `hotspots` | jsonb | TAK | — | Hotspoty (image_identify) |
 | `drill_questions` | jsonb | TAK | — | Sub-pytania (conversion_drill) |
 | `identify_mode` | text | TAK | — | Tryb identyfikacji |
+| `theme_label` | text | TAK | — | Etykieta motywu |
+| `subtheme_label` | text | TAK | — | Etykieta podmotywu |
+| `batch_label` | text | TAK | — | Etykieta batcha |
+| `disable_option_shuffle` | bool | NIE | false | Blokada tasowania opcji |
+| `tracks` | text[] | TAK | — | Ścieżki (np. stoma / lek) |
+| `source` | enum `question_source` | NIE | `'own'` | `own` / `cem` / `uczelnia` |
+| `first_seen_session` | text | TAK | — | FK → cem_sessions.id (tylko CEM) |
+| `repeat_count` | smallint | NIE | 0 | Liczba powtórzeń w banku |
+| `explanation_status` | text | NIE | `'reviewed'` | `missing` / `draft` / `reviewed` |
+| `content_hash` | text | TAK | — | Hash treści |
+| `reserve_bucket` | smallint | TAK | — | Wiadro rezerwy |
+| `explanation_blocks` | jsonb | TAK | — | Bloki wyjaśnienia v2 (kontrakt UFO) |
+| `explanation_legacy` | text | TAK | — | Stara proza przy pierwszym zapisie bloków |
+| `blocks_status` | text | NIE | `'none'` | `none` / `draft` / `reviewed` |
+| `blocks_source` | text | TAK | — | `parser` / `converter` / `writer` / `manual` |
+| `blocks_updated_at` | timestamptz | TAK | — | Ostatni zapis bloków |
 
 #### Format `options` (JSONB):
 

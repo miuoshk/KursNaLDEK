@@ -14,8 +14,7 @@ import { useSessionKeyboardShortcuts } from "@/features/session/hooks/useSession
 import { useSession } from "@/features/session/hooks/useSession";
 import { useSessionStudyFlow } from "@/features/session/hooks/useSessionStudyFlow";
 import {
-  questionHasTakeaway,
-  selectFeedbackVariant,
+  resolveExperimentFeedbackVariant,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
 import { useDashboardData } from "@/features/shared/contexts/DashboardDataContext";
@@ -224,15 +223,13 @@ export function SessionStudyView({
       if (!currentQuestion) return;
       s.selectOption(optionId);
       if (isPrzeglad) {
-        const variant = adaptiveFeedbackEnabled
-          ? selectFeedbackVariant({
-              question: currentQuestion,
-              isCorrect: optionId === currentQuestion.correctOptionId,
-              timeSpentSeconds: timeSpentQuestion.current,
-              confidence: null,
-              hasTakeaway: questionHasTakeaway(currentQuestion),
-            }).variant
-          : "standard";
+        const variant = resolveExperimentFeedbackVariant({
+          treatment: adaptiveFeedbackEnabled,
+          question: currentQuestion,
+          isCorrect: optionId === currentQuestion.correctOptionId,
+          timeSpentSeconds: timeSpentQuestion.current,
+          confidence: null,
+        }).variant;
         setFeedbackState({ questionId: currentQuestion.id, variant });
         feedbackShownAtRef.current = {
           questionId: currentQuestion.id,
@@ -268,16 +265,14 @@ export function SessionStudyView({
             )
           : null;
       confidenceShownAtRef.current = null;
-      const variant = adaptiveFeedbackEnabled
-        ? selectFeedbackVariant({
-            question: currentQuestion,
-            isCorrect:
-              (s.selectedOptionId ?? "") === currentQuestion.correctOptionId,
-            timeSpentSeconds: timeSpentQuestion.current,
-            confidence: c,
-            hasTakeaway: questionHasTakeaway(currentQuestion),
-          }).variant
-        : "standard";
+      const variant = resolveExperimentFeedbackVariant({
+        treatment: adaptiveFeedbackEnabled,
+        question: currentQuestion,
+        isCorrect:
+          (s.selectedOptionId ?? "") === currentQuestion.correctOptionId,
+        timeSpentSeconds: timeSpentQuestion.current,
+        confidence: c,
+      }).variant;
       setFeedbackState({ questionId: currentQuestion.id, variant });
       s.revealFeedback();
       feedbackShownAtRef.current = {

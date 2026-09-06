@@ -1,22 +1,34 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
+import type { ExplanationBlocksV2 } from "@/features/shared/lib/explanationBlocks";
 import {
+  resolveExperimentFeedbackVariant,
   selectFeedbackVariant,
   type FeedbackVariantInput,
 } from "./adaptiveFeedback";
 
+const BLOCKS: ExplanationBlocksV2 = {
+  version: 2,
+  correctReason: "Mechanizm działania.",
+  takeaway: "Zasada do zapamiętania.",
+};
+
 function question(
   overrides: Partial<NonNullable<SessionQuestion["antares"]>> = {},
+  blocks: ExplanationBlocksV2 | null = null,
 ): SessionQuestion {
   return {
     id: "q-1",
     topicId: "t-1",
     text: "Pytanie",
-    options: [],
+    options: [
+      { id: "a", text: "A" },
+      { id: "b", text: "B" },
+    ],
     correctOptionId: "a",
     explanation: "",
-    explanationBlocks: null,
+    explanationBlocks: blocks,
     conceptIds: [],
     sourceCode: null,
     imageUrl: null,
@@ -206,6 +218,81 @@ test("brak antares: nie-stable, próg szybkości 25 s", () => {
       timeSpentSeconds: 26,
       confidence: null,
       hasTakeaway: true,
+    }).variant,
+    "standard",
+  );
+});
+
+test("treatment + brak bloków = standard, niezależnie od matrycy", () => {
+  const withoutBlocks = question();
+  assert.deepEqual(
+    resolveExperimentFeedbackVariant({
+      treatment: true,
+      question: withoutBlocks,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+    }),
+    { variant: "standard", hypercorrection: true },
+  );
+  assert.equal(
+    selectFeedbackVariant({
+      question: withoutBlocks,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+      hasTakeaway: false,
+    }).variant,
+    "remedial",
+  );
+});
+
+test("treatment + bloki = wynik selectFeedbackVariant", () => {
+  const withBlocks = question({}, BLOCKS);
+  const input = {
+    question: withBlocks,
+    isCorrect: false,
+    timeSpentSeconds: 8,
+    confidence: "na_pewno" as const,
+    hasTakeaway: true,
+  };
+  assert.deepEqual(
+    resolveExperimentFeedbackVariant({
+      treatment: true,
+      question: withBlocks,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+    }),
+    selectFeedbackVariant(input),
+  );
+  assert.equal(selectFeedbackVariant(input).variant, "remedial");
+  assert.deepEqual(
+    resolveExperimentFeedbackVariant({
+      treatment: true,
+      question: withBlocks,
+      isCorrect: true,
+      timeSpentSeconds: 10,
+      confidence: "na_pewno",
+    }),
+    selectFeedbackVariant({
+      question: withBlocks,
+      isCorrect: true,
+      timeSpentSeconds: 10,
+      confidence: "na_pewno",
+      hasTakeaway: true,
+    }),
+  );
+});
+
+test("control + bloki = standard", () => {
+  assert.equal(
+    resolveExperimentFeedbackVariant({
+      treatment: false,
+      question: question({}, BLOCKS),
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
     }).variant,
     "standard",
   );

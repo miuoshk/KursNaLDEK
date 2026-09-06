@@ -40,7 +40,7 @@ export function SummaryPositivesBar({
     showReadiness && typeof before === "number" ? after - before : null;
   const showPositiveDelta = readinessDelta != null && readinessDelta > 0;
 
-  if (!layer2) {
+  if (!layer2 && !showXp && insightsLoading) {
     return (
       <div className="flex flex-wrap gap-3" aria-hidden>
         <div className="h-10 w-36 animate-pulse rounded-pill bg-white/[0.06]" />

@@ -41,12 +41,11 @@ export function SummaryTopicBreakdown({
   const t = useTranslations("session");
   const router = useRouter();
   const layer2 = isSummaryLayer2Ready(summary);
+  const concepts = summary.strengthenedConcepts ?? [];
 
-  if (!layer2) {
+  if (!layer2 && concepts.length === 0 && summary.topicBreakdown.length === 0) {
     return <ConceptsSkeleton />;
   }
-
-  const concepts = summary.strengthenedConcepts ?? [];
   if (concepts.length > 0) {
     const { mastered, review } = splitSessionConcepts(concepts);
     return (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ContentCopyGuard } from "@/features/shared/components/ContentCopyGuard";
@@ -18,6 +18,14 @@ const dmSerifDisplay = DM_Serif_Display({
   variable: "--font-heading",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("common");

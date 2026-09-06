@@ -45,7 +45,7 @@ export function SessionBottomBar({
           animate={{ y: 0, opacity: 1 }}
           exit={reduceMotion ? { opacity: 0 } : { y: 12, opacity: 0 }}
           transition={reduceMotion ? { duration: 0 } : slideTransition}
-          className="border-t border-border bg-background/95 px-3 py-2 backdrop-blur-sm sm:px-4"
+          className="px-3 py-2 sm:px-4"
           data-session-bottom-bar={mode}
         >
           <div className="mx-auto w-full max-w-3xl">

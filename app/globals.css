@@ -106,6 +106,9 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   overscroll-behavior-x: none;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {

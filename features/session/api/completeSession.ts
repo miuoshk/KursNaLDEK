@@ -92,33 +92,30 @@ export async function completeSession(
     }
 
     if (session.is_completed) {
-      const summary = await buildSessionSummary(
+      let summary = await buildSessionSummary(
         supabase,
         parsed.data.sessionId,
         user.id,
       );
       span.mark("buildSessionSummary already-completed");
-      extra.ok = Boolean(summary);
       extra.alreadyCompleted = true;
-      span.end(extra);
       if (!summary) {
+        extra.ok = false;
+        span.end(extra);
         return { ok: false, message: t("errors.loadSummaryFailed") };
       }
       if (!summary.sessionInsights && !summary.examReadiness) {
-        const bgUserId = user.id;
-        const bgSessionId = session.id as string;
-        after(async () => {
-          try {
-            const bgAdmin = createAdminClient();
-            const { data: rows } = await bgAdmin
-              .from("session_answers")
-              .select(SESSION_ANSWER_ANTARES_SELECT)
-              .eq("session_id", bgSessionId);
-            const recovered = mapAnswerRowsForPostAntares(rows ?? []);
-            if (recovered.length === 0) return;
-            await computeAndStoreSessionInsights(bgAdmin, {
-              userId: bgUserId,
-              sessionId: bgSessionId,
+        try {
+          const recoverAdmin = createAdminClient();
+          const { data: rows } = await recoverAdmin
+            .from("session_answers")
+            .select(SESSION_ANSWER_ANTARES_SELECT)
+            .eq("session_id", session.id);
+          const recovered = mapAnswerRowsForPostAntares(rows ?? []);
+          if (recovered.length > 0) {
+            await computeAndStoreSessionInsights(recoverAdmin, {
+              userId: user.id,
+              sessionId: session.id as string,
               ansRows: recovered,
               answeredCount: recovered.length,
               adaptiveFeedbackEnabled:
@@ -128,11 +125,19 @@ export async function completeSession(
               parameterSetId:
                 (session.memory_parameter_set_id as string | null) ?? null,
             });
-          } catch (err) {
-            console.error("[completeSession] insights recovery", err);
+            summary =
+              (await buildSessionSummary(
+                supabase,
+                parsed.data.sessionId,
+                user.id,
+              )) ?? summary;
           }
-        });
+        } catch (err) {
+          console.error("[completeSession] insights recovery", err);
+        }
       }
+      extra.ok = true;
+      span.end(extra);
       return { ok: true, summary };
     }
 
@@ -259,14 +264,28 @@ export async function completeSession(
       return { ok: false, message: t("errors.updateProfileFailed") };
     }
 
-    // ═══════════════════════════════════════════════════════════
-    // ANTARES (mastery, sessionInsights, examReadiness) policzymy w tle
-    // (next/after) — nie blokuje ekranu podsumowania. Summary wraca bez
-    // insightów; klient dociąga je pollingiem (loadSessionAntaresInsights),
-    // a footer z insightami i tak pokazuje się tylko w trybie inteligentnym.
-    // ═══════════════════════════════════════════════════════════
-
     const postAnsRows = mapAnswerRowsForPostAntares(ansRows);
+    let insightsWritten = false;
+    if (postAnsRows.length > 0) {
+      try {
+        const written = await computeAndStoreSessionInsights(admin, {
+          userId: user.id,
+          sessionId: session.id as string,
+          ansRows: postAnsRows,
+          answeredCount,
+          adaptiveFeedbackEnabled:
+            session.feedback_experiment_variant === "treatment",
+          engineVariant:
+            session.engine_variant === "treatment" ? "treatment" : "shadow",
+          parameterSetId:
+            (session.memory_parameter_set_id as string | null) ?? null,
+        });
+        insightsWritten = written != null;
+      } catch (err) {
+        console.error("[completeSession] postAntares (sync)", err);
+      }
+      span.mark("postAntares sync");
+    }
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
@@ -331,7 +350,7 @@ export async function completeSession(
         // ANTARES najpierw — zapisuje session_insights/examReadiness do DB,
         // skąd klient (tryb inteligentny) dociąga je pollingiem. Liczymy tu,
         // bo to najcięższa część i nie ma prawa blokować ekranu podsumowania.
-        if (postAnsRows.length > 0) {
+        if (postAnsRows.length > 0 && !insightsWritten) {
           try {
             await computeAndStoreSessionInsights(bgAdmin, {
               userId: bgUserId,

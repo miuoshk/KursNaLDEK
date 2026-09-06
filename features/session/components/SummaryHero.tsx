@@ -93,6 +93,7 @@ function SummaryInsightsFooter({
   if (variant === "micro") return null;
 
   const tips = [
+    insights?.nextSessionFocus,
     insights?.calibrationTip,
     fatigueText,
     (insights?.leechesHit?.length ?? 0) > 0
@@ -133,6 +134,11 @@ function SummaryInsightsFooter({
         </div>
       ) : tips.length > 0 ? (
         <ul className="space-y-3">
+          {insights?.nextSessionFocus ? (
+            <InsightRow icon={Lightbulb}>
+              {insights.nextSessionFocus}
+            </InsightRow>
+          ) : null}
           {insights?.calibrationTip ? (
             <InsightRow icon={Lightbulb}>
               {insights.calibrationTip}

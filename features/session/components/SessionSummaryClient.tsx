@@ -154,11 +154,22 @@ export function SessionSummaryClient({
         return;
       }
 
-      if (attempts >= POLL_MAX_ATTEMPTS) {
+      if (attempts === 3 || attempts >= POLL_MAX_ATTEMPTS) {
         const recovered = await ensureSessionInsights(summary.sessionId);
         if (cancelled) return;
         if (applyInsights(recovered)) {
           logPerf("summary insights recovered", {
+            sessionId: summary.sessionId,
+            attempts,
+            timeout: attempts >= POLL_MAX_ATTEMPTS,
+            msFromSetInstantSummary: Date.now() - pollT0,
+          });
+          return;
+        }
+        if (attempts >= POLL_MAX_ATTEMPTS) {
+          setInsightsLoading(false);
+          setInsightsFailed(true);
+          logPerf("summary insights timeout", {
             sessionId: summary.sessionId,
             attempts,
             timeout: true,
@@ -166,15 +177,6 @@ export function SessionSummaryClient({
           });
           return;
         }
-        setInsightsLoading(false);
-        setInsightsFailed(true);
-        logPerf("summary insights timeout", {
-          sessionId: summary.sessionId,
-          attempts,
-          timeout: true,
-          msFromSetInstantSummary: Date.now() - pollT0,
-        });
-        return;
       }
 
       window.setTimeout(() => void poll(), POLL_INTERVAL_MS);

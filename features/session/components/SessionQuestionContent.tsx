@@ -282,9 +282,18 @@ export function SessionQuestionContent({
       <div
         ref={chromeRef}
         data-session-bottom-chrome
-        className="z-40 shrink-0 bg-background/95 backdrop-blur-sm max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 lg:sticky lg:bottom-0"
+        className="z-40 shrink-0 border-t border-border bg-background/95 backdrop-blur-sm max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 lg:sticky lg:bottom-0"
       >
-        <div className="border-t border-border px-2 py-1.5 sm:px-4 sm:py-3">
+        <SessionBottomBar
+          mode={barMode}
+          questionId={q.id}
+          submitting={submitting}
+          nextLabel={nextLabel}
+          onConfidencePick={onConfidencePick}
+          onNext={onNext}
+          onConfidenceBarShown={onConfidenceBarShown}
+        />
+        <div className="px-2 py-1.5 sm:px-4 sm:py-3">
           <div className="mx-auto flex max-w-3xl items-center gap-1 lg:hidden">
             <button
               type="button"
@@ -333,16 +342,6 @@ export function SessionQuestionContent({
             </button>
           </div>
         </div>
-
-        <SessionBottomBar
-          mode={barMode}
-          questionId={q.id}
-          submitting={submitting}
-          nextLabel={nextLabel}
-          onConfidencePick={onConfidencePick}
-          onNext={onNext}
-          onConfidenceBarShown={onConfidenceBarShown}
-        />
         <div className="h-[env(safe-area-inset-bottom)] lg:hidden" />
       </div>
     </div>

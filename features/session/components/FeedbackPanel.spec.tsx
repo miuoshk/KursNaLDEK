@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
+import { orderSessionOptions } from "@/features/session/lib/sessionOptionOrder";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 import type { ExplanationBlocksV2 } from "@/features/shared/lib/explanationBlocks";
 import { FeedbackPanel } from "./FeedbackPanel";
@@ -67,6 +68,7 @@ const BLOCKS_NO_TAKEAWAY: ExplanationBlocksV2 = {
 
 function baseQuestion(
   blocks: ExplanationBlocksV2 | null,
+  extras: Partial<SessionQuestion> = {},
 ): SessionQuestion {
   return {
     id: "q-fb",
@@ -87,6 +89,7 @@ function baseQuestion(
     topicName: "Temat",
     knowledgeCard: KNOWLEDGE,
     disableOptionShuffle: true,
+    ...extras,
   };
 }
 
@@ -97,15 +100,18 @@ function renderPanel(input: {
   selectedOptionId?: string;
   confidence?: Confidence | null;
   transferScheduled?: boolean;
+  sessionId?: string;
+  question?: SessionQuestion;
 }): string {
+  const question = input.question ?? baseQuestion(input.blocks);
   return renderToStaticMarkup(
     createElement(NextIntlClientProvider, {
       locale: "pl",
       messages: MESSAGES,
       timeZone: "Europe/Warsaw",
       children: createElement(FeedbackPanel, {
-        sessionId: "sess-snapshot",
-        question: baseQuestion(input.blocks),
+        sessionId: input.sessionId ?? "sess-snapshot",
+        question,
         selectedOptionId: input.selectedOptionId ?? (input.isCorrect ? "a" : "b"),
         isCorrect: input.isCorrect,
         variant: input.variant,
@@ -144,7 +150,6 @@ test("snapshot: concise × bloki pełne", () => {
   });
   const shot = snapshot(html);
   assert.match(shot, /hasBlocks=true/);
-  assert.match(shot, /Zasada/);
   assert.match(shot, /TAKEAWAY_TOKEN/);
   assert.match(shot, /TRAP_TOKEN/);
   assert.match(shot, /Pokaż pełne wyjaśnienie/);
@@ -155,10 +160,11 @@ test("snapshot: concise × bloki pełne", () => {
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
   assert.doesNotMatch(shot, /Twój wybór/);
   assert.doesNotMatch(shot, /Byłeś pewny/);
-  assert.equal(html.split("Zasada").length - 1, 1);
+  assert.doesNotMatch(shot, /Wyjaśnienie/);
+  assert.doesNotMatch(shot, /Twoja odpowiedź/);
+  assert.equal(html.split(TAKEAWAY).length - 1, 1);
   assertOrder(html, [
     "Poprawna odpowiedź!",
-    "Zasada",
     TAKEAWAY,
     "Pokaż pełne wyjaśnienie",
     MECHANISM,
@@ -213,7 +219,7 @@ test("snapshot: standard × bloki pełne", () => {
   const shot = snapshot(html);
   assert.match(shot, /hasBlocks=true/);
   assert.match(shot, /detailsOpen=true/);
-  assert.match(shot, /Wyjaśnienie/);
+  assert.doesNotMatch(shot, /Wyjaśnienie/);
   assert.match(shot, /MECHANISM_TOKEN/);
   assert.match(shot, /TRAP_TOKEN/);
   assert.match(shot, /Dlaczego nie pozostałe\?/);
@@ -221,19 +227,21 @@ test("snapshot: standard × bloki pełne", () => {
   assert.match(shot, /Opcja gamma błędna/);
   assert.match(shot, /Opcja delta błędna/);
   assert.match(shot, /CONTRAST_OSTRY/);
-  assert.match(shot, /Zasada/);
+  assert.match(shot, /TAKEAWAY_TOKEN/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
   assert.doesNotMatch(shot, /Twój wybór/);
+  assert.doesNotMatch(shot, /Twoja odpowiedź/);
+  assert.equal(html.split(TAKEAWAY).length - 1, 1);
   assertOrder(html, [
+    TAKEAWAY,
     MECHANISM,
     "Dlaczego nie pozostałe?",
     CONTRAST_A,
     TRAP,
-    TAKEAWAY,
   ]);
   assert.ok(
-    html.lastIndexOf("Zasada") > html.lastIndexOf(TRAP),
-    "Zasada jest ostatnią sekcją w standard",
+    html.indexOf(TAKEAWAY) < html.indexOf(MECHANISM),
+    "Zasada jest nagłówkiem panelu, nie stopką",
   );
 });
 
@@ -248,6 +256,7 @@ test("snapshot: standard × bloki bez takeaway", () => {
   assert.match(shot, /hasBlocks=true/);
   assert.match(shot, /detailsOpen=false/);
   assert.match(shot, /MECHANISM_TOKEN/);
+  assert.match(shot, /Wyjaśnienie/);
   assert.doesNotMatch(shot, /Zasada/);
   assert.doesNotMatch(shot, /TAKEAWAY_TOKEN/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
@@ -277,22 +286,28 @@ test("snapshot: remedial × bloki pełne", () => {
   assert.match(shot, /hasBlocks=true/);
   assert.match(shot, /detailsOpen=false/);
   assert.match(shot, /Niepoprawna odpowiedź/);
+  assert.match(shot, /Twoja odpowiedź: B · Poprawna: A/);
   assert.match(shot, /MECHANISM_TOKEN/);
   assert.match(shot, /Twój wybór/);
-  assert.match(shot, /B · Opcja beta myląca/);
+  assert.match(shot, /Opcja beta myląca/);
   assert.match(shot, /DIST_B_TOKEN/);
   assert.match(shot, /Dlaczego nie pozostałe\?/);
-  assert.match(shot, /C · Opcja gamma błędna/);
+  assert.match(shot, /Opcja gamma błędna/);
   assert.match(shot, /DIST_C_TOKEN/);
   assert.match(shot, /TRAP_TOKEN/);
   assert.match(shot, /CONTRAST_OSTRY/);
   assert.match(shot, /KNOWLEDGE_TOKEN/);
   assert.match(shot, /Za kilka pytań/);
-  assert.match(shot, /Zasada/);
+  assert.match(shot, /TAKEAWAY_TOKEN/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
   assert.doesNotMatch(shot, /Byłeś pewny/);
+  assert.doesNotMatch(shot, /Wyjaśnienie/);
+  assert.doesNotMatch(html, /<em>/);
+  assert.equal(html.split(TAKEAWAY).length - 1, 1);
   assertOrder(html, [
     "Niepoprawna odpowiedź",
+    "Twoja odpowiedź: B · Poprawna: A",
+    TAKEAWAY,
     MECHANISM,
     "Twój wybór",
     DIST_B,
@@ -302,11 +317,10 @@ test("snapshot: remedial × bloki pełne", () => {
     TRAP,
     KNOWLEDGE,
     "Za kilka pytań",
-    TAKEAWAY,
   ]);
   assert.ok(
-    html.lastIndexOf("Zasada") > html.lastIndexOf("Za kilka pytań"),
-    "Zasada jest ostatnią sekcją w remedial",
+    html.indexOf(TAKEAWAY) < html.indexOf(MECHANISM),
+    "Zasada jest nagłówkiem panelu w remedial",
   );
 });
 
@@ -321,6 +335,7 @@ test("snapshot: remedial × bloki bez takeaway", () => {
   assert.match(shot, /hasBlocks=true/);
   assert.match(shot, /MECHANISM_TOKEN/);
   assert.match(shot, /Twój wybór/);
+  assert.match(shot, /Wyjaśnienie/);
   assert.doesNotMatch(shot, /Zasada/);
   assert.doesNotMatch(shot, /TAKEAWAY_TOKEN/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
@@ -349,10 +364,11 @@ test("standard × błąd × experiment off: box Twój wybór zawsze", () => {
     confidence: "na_pewno",
   });
   assert.match(html, /Twój wybór/);
-  assert.match(html, /B · Opcja beta myląca/);
+  assert.match(html, /Opcja beta myląca/);
   assert.match(html, /DIST_B_TOKEN/);
   assert.match(html, /data-feedback-section="your-choice"/);
-  assert.doesNotMatch(html, /B · Opcja beta myląca[\s\S]*B · Opcja beta myląca/);
+  assert.match(html, /Twoja odpowiedź: B · Poprawna: A/);
+  assert.doesNotMatch(html, /Opcja beta myląca[\s\S]*Opcja beta myląca[\s\S]*Opcja beta myląca/);
 });
 
 test("snapshot: remedial × hypercorrection", () => {
@@ -368,6 +384,38 @@ test("snapshot: remedial × hypercorrection", () => {
   assertOrder(html, [
     "Niepoprawna odpowiedź",
     "Byłeś pewny — to pytanie wróci szybciej",
+    TAKEAWAY,
     MECHANISM,
   ]);
+});
+
+test("lista dystraktorów w sesji idzie po literze ekranowej", () => {
+  const sessionId = "sess-shuffle-order";
+  const question = baseQuestion(FULL_BLOCKS, {
+    disableOptionShuffle: false,
+    explanation: "Bez odwołań do liter opcji.",
+  });
+  const ordered = orderSessionOptions(sessionId, question.id, question.options, {
+    disableOptionShuffle: false,
+    explanation: question.explanation,
+  });
+  assert.notDeepEqual(
+    ordered.map((option) => option.id),
+    question.options.map((option) => option.id),
+    "ten seed musi przetasować opcje, inaczej test nic nie sprawdza",
+  );
+
+  const html = renderPanel({
+    variant: "standard",
+    blocks: FULL_BLOCKS,
+    isCorrect: true,
+    confidence: "troche",
+    sessionId,
+    question,
+  });
+  const remaining = ordered.filter((option) => option.id !== question.correctOptionId);
+  assertOrder(
+    html,
+    remaining.map((option) => option.text),
+  );
 });

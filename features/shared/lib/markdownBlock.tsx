@@ -17,13 +17,13 @@ const mdComponents = {
   table: ScrollableTable,
 } as const;
 
-export function markdownBlock(md: string) {
+export function markdownBlock(md: string, className?: string) {
   return (
     <div
       className={cn(
         "whitespace-pre-wrap font-body text-body-md leading-relaxed text-secondary",
         "[&_a]:text-brand-sage [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-brand-gold",
-        "[&_p]:mt-3 [&_p:first-child]:mt-0",
+        "[&_p+p]:mt-2",
         "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:whitespace-normal",
         "[&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:whitespace-normal",
         "[&_code]:rounded [&_code]:bg-white/10 [&_code]:px-1 [&_code]:font-body [&_code]:text-body-sm",
@@ -37,6 +37,7 @@ export function markdownBlock(md: string) {
         "[&_blockquote]:mt-3 [&_blockquote]:border-l-2 [&_blockquote]:border-brand-gold [&_blockquote]:bg-white/[0.04] [&_blockquote]:px-4 [&_blockquote]:py-3 [&_blockquote]:not-italic [&_blockquote]:text-secondary",
         "[&_blockquote_p]:mt-0",
         "[&_.katex-display]:my-3",
+        className,
       )}
     >
       <ReactMarkdown

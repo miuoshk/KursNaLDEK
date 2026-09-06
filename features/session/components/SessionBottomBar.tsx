@@ -12,7 +12,6 @@ type SessionBottomBarProps = {
   questionId: string;
   submitting?: boolean;
   nextLabel: string;
-  progressLabel?: string;
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onConfidenceBarShown?: (questionId: string) => void;
@@ -25,7 +24,6 @@ export function SessionBottomBar({
   questionId,
   submitting,
   nextLabel,
-  progressLabel,
   onConfidencePick,
   onNext,
   onConfidenceBarShown,
@@ -53,20 +51,15 @@ export function SessionBottomBar({
           <div className="mx-auto w-full max-w-3xl">
             {mode === "confidence" ? (
               <div className="flex min-h-14 flex-col justify-center gap-1.5">
-                <div className="flex items-center justify-between gap-3">
-                  {progressLabel ? (
-                    <p className="shrink-0 font-body text-body-xs tabular-nums text-secondary md:hidden">
-                      {progressLabel}
-                    </p>
-                  ) : null}
-                  <p className="min-w-0 flex-1 font-body text-body-xs text-secondary">
+                <div className="relative flex min-h-5 items-center justify-center">
+                  <p className="text-center font-body text-body-xs text-secondary">
                     {t("howSureAreYouShort")}
                   </p>
                   <button
                     type="button"
                     disabled={submitting}
                     onClick={() => onConfidencePick("troche")}
-                    className="shrink-0 font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 shrink-0 font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {t("skip")}
                   </button>
@@ -99,12 +92,7 @@ export function SessionBottomBar({
                 </div>
               </div>
             ) : (
-              <div className="flex min-h-14 items-center gap-3">
-                {progressLabel ? (
-                  <p className="shrink-0 font-body text-body-xs tabular-nums text-secondary md:hidden">
-                    {progressLabel}
-                  </p>
-                ) : null}
+              <div className="flex min-h-14 items-center">
                 <button
                   type="button"
                   onClick={onNext}

@@ -1,0 +1,996 @@
+# parse-standard-v1
+
+total: 2349
+accepted: 2349
+rejected: 0
+full (takeaway+trap): 484
+without takeaway: 568
+without trap: 1304
+
+## flagi (zbiorczo)
+
+- verdict_mismatch: 817
+- too_long: 0
+- distractor_unmatched: 276
+- distractor_matched_by_elimination: 0
+- contrast_too_big: 0
+- takeaway_too_long: 2
+- unparsed_remainder: 0
+
+## elimination (odzyskane): 0
+
+- (brak)
+
+## odrzucone (dlaczego)
+
+- (brak)
+
+## pierwsze 30 flag (z 926 pozycji z flagą)
+
+- chs-01-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-01-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-01-010 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-02-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-02-010 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-02-013 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-02-014 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-02-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-02-020 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-02-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400; distractor_unmatched: 2, 3 i 4
+- chs-02-026 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-02-028 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-02-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-02-032 wsad — distractor_unmatched: zajęcie dolnych dróg oddechowych następuje przy lepszej odporności chorego
+- chs-02-033 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-02-036 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-02-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-02-038 wsad — distractor_unmatched: maseczka FFP2 z maską chirurgiczną zakładana przed fartuchem jednorazowym; distractor_unmatched: rękawice jednorazowe zakładane przed okularami ochronnymi z przyłbicą; distractor_unmatched: fartuch jednorazowy zakładany przed dezynfekcją rąk
+- chs-02-039 wsad — distractor_unmatched: wirus wchłania się przez nieuszkodzoną skórę rąk
+- chs-02-040 wsad — verdict_mismatch: werdykt="nacięcie ropnia i usunięcie zęba przyczynowego oraz odroczenie augmentacji" klucz="nacięciu ropnia i usunięciu zęba przyczynowego oraz odroczeniu augmentacji"
+- chs-02-041 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-02-042 wsad — verdict_mismatch: werdykt="odsunięcie jej od pracy i 14-dniowa kwarantanna z oceną stanu zdrowia" klucz="odsunięciu jej od pracy i 14-dniowej kwarantannie z oceną stanu zdrowia"; distractor_unmatched: skierowaniu jej na 30-dniową kwarantannę
+- chs-03-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-03-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-03-006 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-03-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-03-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-04-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-04-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-04-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+
+## inwariant per sekcja (różnice)
+
+- a) mechanizm / correctReason: 0
+- b) dystraktory: 0
+- c) trap: 0
+- d) takeaway: 0
+- e) contrast: 0
+
+## wszystkie pozycje z flagą
+
+- chs-01-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-01-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-01-010 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-02-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-02-010 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-02-013 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-02-014 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-02-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-02-020 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-02-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400; distractor_unmatched: 2, 3 i 4
+- chs-02-026 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-02-028 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-02-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-02-032 wsad — distractor_unmatched: zajęcie dolnych dróg oddechowych następuje przy lepszej odporności chorego
+- chs-02-033 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-02-036 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-02-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-02-038 wsad — distractor_unmatched: maseczka FFP2 z maską chirurgiczną zakładana przed fartuchem jednorazowym; distractor_unmatched: rękawice jednorazowe zakładane przed okularami ochronnymi z przyłbicą; distractor_unmatched: fartuch jednorazowy zakładany przed dezynfekcją rąk
+- chs-02-039 wsad — distractor_unmatched: wirus wchłania się przez nieuszkodzoną skórę rąk
+- chs-02-040 wsad — verdict_mismatch: werdykt="nacięcie ropnia i usunięcie zęba przyczynowego oraz odroczenie augmentacji" klucz="nacięciu ropnia i usunięciu zęba przyczynowego oraz odroczeniu augmentacji"
+- chs-02-041 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-02-042 wsad — verdict_mismatch: werdykt="odsunięcie jej od pracy i 14-dniowa kwarantanna z oceną stanu zdrowia" klucz="odsunięciu jej od pracy i 14-dniowej kwarantannie z oceną stanu zdrowia"; distractor_unmatched: skierowaniu jej na 30-dniową kwarantannę
+- chs-03-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-03-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-03-006 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-03-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-03-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-04-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-04-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-04-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-04-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-04-017 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-04-018 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-04-021 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-04-026 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-04-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-04-031 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-04-036 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-04-038 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-04-039 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-04-044 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-04-048 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-04-049 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-04-050 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-04-052 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-04-058 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-04-060 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-04-062 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-04-063 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-04-066 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-04-071 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-04-076 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-04-079 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-04-082 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-04-085 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-04-087 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-04-088 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-04-094 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-04-098 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-04-099 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-04-103 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-04-108 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-04-109 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-04-113 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-04-115 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-04-119 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-04-120 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-04-122 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-04-123 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-04-132 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-04-133 wsad — verdict_mismatch: werdykt="utrzymanie dotychczasowego schematu bez podawania dawek dodatkowych" klucz="utrzymaniu dotychczasowego schematu bez podawania dawek dodatkowych"
+- chs-04-137 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-04-144 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-04-145 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-04-146 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-04-148 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-04-151 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-04-153 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-04-154 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-04-159 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-04-160 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-04-164 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-04-167 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-04-175 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-04-176 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-04-182 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-04-184 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-04-186 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-05-001 wsad — verdict_mismatch: werdykt="blokada napięciowo-zależnych kanałów sodowych neuronu czuciowego" klucz="blokady napięciowo-zależnych kanałów sodowych neuronu czuciowego"
+- chs-05-004 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-05-005 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-05-006 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-05-008 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-05-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-05-018 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-05-019 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-05-023 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-05-026 wsad — verdict_mismatch: werdykt="zmniejszenie dawki leku znieczulenia miejscowego o połowę" klucz="zmniejszeniu dawki leku znieczulenia miejscowego o połowę"
+- chs-05-027 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-05-028 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-05-036 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-05-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-05-041 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-05-043 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-05-051 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-05-052 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-05-055 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-05-056 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-05-057 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-05-061 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-05-062 wsad — distractor_unmatched: na poziomie powierzchni żujących dolnych trzonowców; distractor_unmatched: za tylnym brzegiem gałęzi żuchwy; distractor_unmatched: tuż przed ujściem przewodu ślinianki przyusznej
+- chs-05-064 wsad — distractor_unmatched: 20 °C dla artykainy oraz 30 °C dla pozostałych amidów; distractor_unmatched: 15 °C dla artykainy oraz 20 °C dla pozostałych amidów; distractor_unmatched: 37 °C dla artykainy oraz 30 °C dla pozostałych amidów
+- chs-05-065 wsad — distractor_unmatched: zranienie naczynia krwionośnego zagiętym czubkiem igły; distractor_unmatched: zdeponowanie leku w przestrzeni przygardłowej; distractor_unmatched: uszkodzenie nerwu językowego
+- chs-05-066 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-05-067 wsad — distractor_unmatched: natychmiastowe usunięcie odłamka kleszczykami przez ranę wkłucia; distractor_unmatched: obserwacja bez interwencji; distractor_unmatched: dokończenie planowanego zabiegu
+- chs-05-068 wsad — distractor_unmatched: anemizacja skóry twarzy jest powikłaniem trwałym; distractor_unmatched: martwica skóry brody powstaje po podaniu leku do żyły twarzowej; distractor_unmatched: martwica błony śluzowej dotyczy głównie policzka
+- chs-05-069 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-05-071 wsad — distractor_unmatched: przecięcie okostnej na całej długości płata
+- chs-05-072 wsad — distractor_unmatched: półkoliście, z podstawą skierowaną do sklepienia przedsionka
+- chs-05-074 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-05-075 wsad — distractor_unmatched: półkolisty kształt linii cięcia; distractor_unmatched: gorsze unaczynienie płata i dłuższe gojenie rany
+- chs-05-076 wsad — distractor_unmatched: cięcie trapezowate brzeżne Neumanna; distractor_unmatched: cięcie do gingiwektomii; distractor_unmatched: cięcie proste Mesfana
+- chs-05-077 wsad — distractor_unmatched: prostopadle do szwu podniebiennego; distractor_unmatched: po obu stronach tętnicy podniebiennej; distractor_unmatched: wzdłuż girlandy dziąsłowej zębów bocznych
+- chs-05-078 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-05-079 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-05-080 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-05-082 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-05-086 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-05-087 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-05-088 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-05-089 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-05-092 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-05-099 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-05-101 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-05-102 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-05-108 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-05-110 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-05-111 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-05-113 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-05-116 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-05-121 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-05-124 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-05-127 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-05-132 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-05-135 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-05-136 wsad — distractor_unmatched: faza zapalna, faza formowania kostniny, faza proliferacyjna, faza modelowania i przebudowy wewnętrznej; distractor_unmatched: faza proliferacyjna, faza zapalna, faza formowania kostniny, faza modelowania i przebudowy wewnętrznej
+- chs-05-138 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-05-142 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-05-151 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-05-153 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-05-156 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-05-157 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-05-158 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-05-159 wsad — distractor_unmatched: prostnica z wiertłem osiąga niższe prędkości obrotowe niż mikropiła
+- chs-05-160 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-05-163 wsad — verdict_mismatch: werdykt="część pracująca haka powinna być nieznacznie szersza od podstawy płata" klucz="część pracująca haka powinna być nieznacznie szersza od podstawy płata, aby pewnie go objąć"; distractor_unmatched: cięcie rozbieżne ku sklepieniu przedsionka zabezpiecza płat przed martwicą; distractor_unmatched: kość odsłania się w możliwie najmniejszym zakresie
+- chs-05-164 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-05-165 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-05-166 wsad — distractor_unmatched: zakończenie zabiegu i pozostawienie fragmentu korzenia; distractor_unmatched: wypełnienie powstałego ubytku kostnego biomateriałem
+- chs-05-168 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-05-170 wsad — distractor_unmatched: teoria filogenetyczna wywodzi zatrzymanie z dziedziczenia małych szczęk i dużych zębów
+- chs-05-172 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-05-175 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-05-177 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-05-184 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-05-186 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-05-188 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-05-190 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-05-194 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-05-195 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-06-001 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-06-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-06-004 wsad — distractor_unmatched: wygładzenie ostrych brzegów kości jeszcze przed oddzieleniem blaszki korowej od okostnej
+- chs-06-007 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-06-013 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-06-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-06-019 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-06-020 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-06-025 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-06-027 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-06-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-06-031 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-06-036 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-06-039 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-06-042 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-06-043 wsad — verdict_mismatch: werdykt="kąt żuchwy" klucz="kąta żuchwy"
+- chs-06-044 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-06-045 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-06-048 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-06-049 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-06-056 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-06-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-06-061 wsad — verdict_mismatch: werdykt="krwawienie pojawiające się po 2–3 godzinach od ekstrakcji to krwawienie reaktywne" klucz="Krwawienie pojawiające się po 2–3 godzinach od ekstrakcji nazywane jest krwawieniem reaktywnym." similarity=0.847
+- chs-06-062 wsad — distractor_unmatched: krwawienie pierwotne, reaktywne, wczesne, wtórne, powtórne (duplikat a)
+- chs-06-063 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-06-068 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-06-069 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-06-070 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-06-071 wsad — verdict_mismatch: werdykt="wiotki, niepełnowartościowy skrzep wystający z zębodołu i krwawiący całą powierzchnią" klucz="Jest wiotkim, niepełnowartościowym skrzepem wystającym z zębodołu i krwawiącym całą powierzchnią."
+- chs-06-073 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-06-079 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-06-084 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-06-087 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-06-089 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-06-092 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-06-094 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-06-096 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-06-098 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-06-100 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-06-107 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-06-110 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-06-111 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-06-112 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-06-117 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-06-120 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-06-121 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-06-122 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-06-127 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-06-134 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-06-136 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-06-138 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-06-140 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-06-149 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-06-151 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-06-152 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-06-155 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-06-160 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-06-161 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-06-168 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-06-170 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-06-172 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-07-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-07-005 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-07-013 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-07-014 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-07-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-07-020 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-07-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-07-022 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-07-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-07-033 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-07-034 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-07-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-07-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-07-042 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-07-047 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-07-050 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-07-055 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-07-056 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-07-059 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-07-065 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-07-066 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-07-067 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-07-068 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-07-074 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-07-077 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-07-079 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-07-081 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-07-082 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-07-088 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-07-091 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-07-093 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-07-096 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-07-103 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-07-109 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-07-110 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-07-111 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-07-114 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-08-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-08-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-08-005 wsad — distractor_unmatched: dawka dwukrotna obniża ryzyko selekcji szczepów opornych; distractor_unmatched: poszerza spektrum przeciwbakteryjne o gronkowce
+- chs-08-008 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-08-009 wsad — distractor_unmatched: podaniu antybiotyku w dawce dwukrotnie wyższej niż lecznicza; distractor_unmatched: obserwacji bez interwencji
+- chs-08-011 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-08-013 wsad — distractor_unmatched: zakażenia po zabiegach wewnątrzustnych wywołują najczęściej gronkowce
+- chs-08-014 wsad — distractor_unmatched: rana przy dostępie przez błonę śluzową należy do ran czystych; distractor_unmatched: osłonę należy prowadzić przez kilka dni po zabiegu
+- chs-08-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-08-016 wsad — distractor_unmatched: doustnie na 30 minut przed zabiegiem, a pozajelitowo na 60 minut przed zabiegiem
+- chs-08-018 wsad — verdict_mismatch: werdykt="wyłuszczenie niewielkiej torbieli kostnej w trzonie żuchwy" klucz="wyłuszczeniu niewielkiej torbieli kostnej w trzonie żuchwy"
+- chs-08-021 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-08-023 wsad — verdict_mismatch: werdykt="operacja tkanek miękkich prowadzona z dostępu zewnątrzustnego" klucz="operacji tkanek miękkich prowadzonej z dostępu zewnątrzustnego"
+- chs-08-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-08-025 wsad — verdict_mismatch: werdykt="klindamycyna w dawce 600 miligramów doustnie na 30–60 minut przed zabiegiem" klucz="klindamycyny w dawce 600 miligramów doustnie na 30–60 minut przed zabiegiem"
+- chs-08-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-08-029 wsad — verdict_mismatch: werdykt="stwierdzenia 1 oraz 4" klucz="1 i 4" similarity=0.190
+- chs-08-031 wsad — verdict_mismatch: werdykt="stwierdzenia 2 oraz 3" klucz="2 i 3" similarity=0.190
+- chs-08-032 wsad — verdict_mismatch: werdykt="reimplantacja zęba stałego wybitego w następstwie urazu" klucz="reimplantacji zęba stałego wybitego w następstwie urazu"
+- chs-08-034 wsad — verdict_mismatch: werdykt="stwierdzenia 3 oraz 5" klucz="3 i 5" similarity=0.190
+- chs-08-036 wsad — distractor_unmatched: antybiotyk samodzielnie eliminuje czynnik sprawczy; distractor_unmatched: sama cukrzyca nakazuje systemowe podanie antybiotyku
+- chs-08-042 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-08-043 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-08-044 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-08-049 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-08-050 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-08-052 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-08-063 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-08-065 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-08-066 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-08-068 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-08-076 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-08-077 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-08-078 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-08-081 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-09-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-09-005 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-09-007 wsad — distractor_unmatched: okres wysięku surowiczego, okres wysięku ropnego, okres zwyrodnienia śluzowego (duplikat a); distractor_unmatched: okres wysięku ropnego, okres wysięku surowiczego, okres zwyrodnienia śluzowego (duplikat a)
+- chs-09-008 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-09-010 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-09-012 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-09-014 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-09-020 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-09-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-09-026 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-09-028 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-09-029 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-09-033 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-09-035 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-09-044 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-09-047 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-09-050 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-09-055 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-09-056 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-09-057 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-09-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-09-061 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-09-063 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-09-067 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-09-068 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-09-071 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-09-074 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-09-078 wsad — verdict_mismatch: werdykt="cięcie soczewkowate, biegnące równolegle do łuku zębowego, z ominięciem topografii naczyń podniebiennych" klucz="soczewkowate, biegnące równolegle do łuku zębowego, z ominięciem topografii naczyń podniebiennych"; distractor_unmatched: liniowe, przekraczające linię pośrodkową; distractor_unmatched: promieniste, przecinające pęczek naczyniowy; distractor_unmatched: liniowe w sklepieniu przedsionka
+- chs-09-079 wsad — distractor_unmatched: obecność grubej warstwy podśluzowej w przednim odcinku; distractor_unmatched: przebieg naczyń podniebiennych wzdłuż linii szwu
+- chs-09-080 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-09-081 wsad — distractor_unmatched: ropień podśluzówkowy poprzedza podokostnowy; distractor_unmatched: w ropniu podokostnowym stwierdza się wyraźne chełbotanie
+- chs-09-082 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-09-083 wsad — distractor_unmatched: około 12 godzin; distractor_unmatched: 10–12 dni
+- chs-09-084 wsad — verdict_mismatch: werdykt="ropień dołu nadkłowego, szerzący się ku przyśrodkowemu kątowi oka" klucz="dołu nadkłowego, szerzącemu się ku przyśrodkowemu kątowi oka"; distractor_unmatched: przestrzeni policzkowej; distractor_unmatched: przestrzeni skrzydłowo-podniebiennej
+- chs-09-085 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-09-086 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-09-088 wsad — distractor_unmatched: tuż przy jej brzegu, w linii przyczepu żwacza; distractor_unmatched: około 6 cm poniżej jej brzegu, nad kością gnykową
+- chs-09-089 wsad — distractor_unmatched: przednia krawędź mięśnia żwacza; distractor_unmatched: poduszeczka tłuszczowa Bichata
+- chs-09-090 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-09-091 wsad — verdict_mismatch: werdykt="ropień przestrzeni skrzydłowo-żuchwowej, leżący przyśrodkowo od gałęzi żuchwy" klucz="przestrzeni skrzydłowo-żuchwowej, leżącemu przyśrodkowo od gałęzi żuchwy"; distractor_unmatched: okołomigdałkowemu; distractor_unmatched: przestrzeni podżuchwowej
+- chs-09-092 wsad — distractor_unmatched: zarośnięcie nozdrzy tylnych; distractor_unmatched: trwałe porażenie gałęzi brzeżnej nerwu twarzowego
+- chs-09-093 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-09-096 wsad — verdict_mismatch: werdykt="ropień przestrzeni skrzydłowo-podniebiennej, leżący za guzem szczęki" klucz="przestrzeni skrzydłowo-podniebiennej, leżącemu za guzem szczęki"; distractor_unmatched: dołu nadkłowego; distractor_unmatched: przestrzeni skrzydłowo-żuchwowej
+- chs-09-097 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-09-101 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-09-105 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-09-106 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-09-108 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-09-112 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-09-116 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-09-118 wsad — distractor_unmatched: gromadzenie się treści ropnej pod okostną; distractor_unmatched: szerzenie się treści ropnej kanałami Haversa oraz Volkmanna; distractor_unmatched: uwapnienie obrzeży żywej kości wokół martwaka
+- chs-09-119 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-09-120 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-09-126 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-09-128 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-09-131 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-09-134 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-09-136 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-09-137 wsad — distractor_unmatched: scyntygrafia trójfazowa układu kostnego; distractor_unmatched: powtórzenie pantomogramu po dwóch tygodniach; distractor_unmatched: fistulografia po wprowadzeniu środka kontrastującego
+- chs-09-138 wsad — distractor_unmatched: po upływie od 2 do 3 dni od rozpoczęcia choroby; distractor_unmatched: po upływie od 3 do 4 tygodni od rozpoczęcia choroby; distractor_unmatched: po upływie od 6 do 12 tygodni od rozpoczęcia choroby
+- chs-09-139 wsad — distractor_unmatched: uwidaczniają się po upływie około dwóch dni; distractor_unmatched: oddzielają się warstwą osteosklerotyczną w ciągu kilku dni; distractor_unmatched: ulegają samoistnej resorpcji
+- chs-09-140 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-09-141 wsad — verdict_mismatch: werdykt="zahamowanie wzrostu drobnoustrojów bezpośrednio w obrębie zainfekowanej jamy szpikowej" klucz="zahamowania wzrostu drobnoustrojów bezpośrednio w obrębie zainfekowanej jamy szpikowej"; distractor_unmatched: ułatwienia penetracji leku przeciwbakteryjnego; distractor_unmatched: poprawy ukrwienia przez zapobieganie wykrzepianiu krwi; distractor_unmatched: zapobiegania powstawaniu martwicy tkanki kostnej
+- chs-09-142 wsad — distractor_unmatched: niska czułość przy wysokiej swoistości; distractor_unmatched: swoistość wyższa niż rezonansu magnetycznego; distractor_unmatched: brak wyników fałszywie dodatnich
+- chs-09-143 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-09-144 wsad — distractor_unmatched: antybiotykoterapia i postawa wyczekująca; distractor_unmatched: resekcja odcinkowa żuchwy z jednoczasową rekonstrukcją; distractor_unmatched: sauceryzacja ograniczona do przedsionkowej blaszki zbitej
+- chs-09-145 wsad — distractor_unmatched: zespolenie odłamów minipłytkami pozostawionymi na stałe; distractor_unmatched: odstąpienie od wprowadzenia drenów
+- chs-09-146 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-09-147 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-09-148 wsad — distractor_unmatched: utrzymywanie się stałego stężenia leku przez kilka tygodni; distractor_unmatched: pewna skuteczność wobec bakterii beztlenowych; distractor_unmatched: działanie hemostatyczne wynikające z samej gentamycyny
+- chs-09-149 wsad — distractor_unmatched: tomografia jest czulsza w wykrywaniu obrzęku szpiku; distractor_unmatched: rezonans wymaga krótszego czasu badania; distractor_unmatched: środki kontrastujące do tomografii zawierają gadolin
+- chs-09-150 wsad — distractor_unmatched: liczenie się z nawrotem opisywanym nawet po dziesięciu latach
+- chs-09-151 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-09-152 wsad — distractor_unmatched: sauceryzacja wymaga dostępu zewnątrzustnego; distractor_unmatched: sauceryzacja jest zabiegiem rozleglejszym
+- chs-09-153 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-09-154 wsad — distractor_unmatched: termin ten wyodrębnia obecnie osobny rodzaj zapalenia kości
+- chs-09-156 wsad — verdict_mismatch: werdykt="zastosowanie antybiotyku o szerokim spektrum działania, na przykład ceftriaksonu lub imipenemu" klucz="zastosowania antybiotyku o szerokim spektrum działania, na przykład ceftriaksonu lub imipenemu"; distractor_unmatched: rozważenie leczenia chirurgicznego z wycięciem zmiany; distractor_unmatched: zakończenie antybiotykoterapii i przejście do samej fizykoterapii; distractor_unmatched: zamiana penicyliny na linkozamid
+- chs-09-157 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-09-158 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-09-159 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-09-160 wsad — verdict_mismatch: werdykt="dożylna penicylina G przez około sześć tygodni, a potem leczenie doustne przez sześć do dwunastu miesięcy" klucz="dożylną penicylinę G przez około sześć tygodni, a potem leczenie doustne przez sześć do dwunastu miesięcy"; distractor_unmatched: doustna amoksycylina, a potem dożylna penicylina G; distractor_unmatched: dożylna penicylina G przez sześć miesięcy; distractor_unmatched: dożylna klindamycyna przez dwa tygodnie bez fazy doustnej
+- chs-09-161 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-09-162 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-09-163 wsad — distractor_unmatched: kwasooporność wynika z otoczki wielocukrowej; distractor_unmatched: beztlenowce wytwarzające przetrwalniki; distractor_unmatched: prątki atypowe jako odmiana prątka gruźlicy
+- chs-09-164 wsad — distractor_unmatched: dziesięciokrotnie częściej w żuchwie, w okolicy wyrostka kłykciowego; distractor_unmatched: czterokrotnie częściej w szczęce niż w żuchwie; distractor_unmatched: z jednakową częstością w obu szczękach
+- chs-09-165 wsad — distractor_unmatched: niedożywienie i wyniszczenie; distractor_unmatched: radioterapia okolicy głowy i szyi; distractor_unmatched: cukrzyca oraz choroby wątroby
+- chs-09-166 wsad — distractor_unmatched: dekortykacja usuwająca tkanki martwicze; distractor_unmatched: tlenoterapia hiperbaryczna z antybiotykoterapią; distractor_unmatched: wieloletnia kontrola ambulatoryjna
+- chs-09-167 wsad — distractor_unmatched: ropowica dna jamy ustnej; distractor_unmatched: ropień przestrzeni żwaczowej; distractor_unmatched: przerzut raka płaskonabłonkowego
+- chs-09-168 wsad — distractor_unmatched: nasila odczyn eozynofilowy i uwyraźnia druzy; distractor_unmatched: nie zmienia obrazu mikroskopowego; distractor_unmatched: naciek z komórek olbrzymich typu Langhansa
+- chs-09-169 wsad — distractor_unmatched: brak dolegliwości właściwy postaci ropnej; distractor_unmatched: wypływ ziaren promieniczych spotykany w guzie promieniczym; distractor_unmatched: niewyraźne granice i nieruchomość właściwe postaci ropnej
+- chs-09-170 wsad — distractor_unmatched: doszczętne usunięcie zawiązków wraz z resekcją brzeżną wyrostka; distractor_unmatched: wymiana antybiotyku bez interwencji w obrębie zawiązków; distractor_unmatched: zamknięcie przetoki płatem śluzówkowo-okostnowym
+- chs-09-171 wsad — distractor_unmatched: samo unieruchomienie międzyszczękowe; distractor_unmatched: wznowienie penicyliny i odroczenie o kolejny rok; distractor_unmatched: wióry kości gąbczastej bez osłony antybiotykowej
+- chs-09-172 wsad — distractor_unmatched: są typowym obrazem wygojenia i odpowiadają sklerotyzacji kości; distractor_unmatched: wskazują na zezłośliwienie ogniska zapalnego
+- chs-09-173 wsad — distractor_unmatched: tkanka kostna jako pierwsza; distractor_unmatched: tkanka podskórna, następnie tkanka kostna
+- chs-09-174 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-09-175 wsad — distractor_unmatched: komórka olbrzymia na obwodzie, limfocyty w części centralnej; distractor_unmatched: gęsta sieć naczyń włosowatych odżywiających komórki nabłonkowate; distractor_unmatched: komórki nabłonkowate wywodzą się z nabłonka błony śluzowej
+- chs-09-176 wsad — distractor_unmatched: wyciąć cały węzeł i przesłać go w formalinie; distractor_unmatched: naciąć węzeł i pozostawić sączek; distractor_unmatched: poprzestać na trzykrotnym badaniu plwociny
+- chs-09-177 wsad — distractor_unmatched: skrócenie terapii do dwóch tygodni; distractor_unmatched: brak przenikania pojedynczego leku do tkanki kostnej; distractor_unmatched: rozkładanie leków przez lipidową ścianę komórkową
+- chs-09-178 wsad — verdict_mismatch: werdykt="postać śródkostna, w której prątek wnika przez kieszonkę dziąsłową, kanał korzeniowy albo zębodół" klucz="śródkostna, w której prątek wnika przez kieszonkę dziąsłową, kanał korzeniowy albo zębodół"; distractor_unmatched: obwodowa, z owrzodzeniem i płytkim ubytkiem kości; distractor_unmatched: rozlana, z zakażeniem drogą krwionośną; distractor_unmatched: okołostawowa, w wyrostku kłykciowym
+- chs-09-179 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-09-180 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-09-181 wsad — distractor_unmatched: szerokie nacięcie z sączkiem skraca gojenie; distractor_unmatched: nacięcie konieczne, bo leki nie docierają do ropnia; distractor_unmatched: sposób opróżnienia nie wpływa na bliznę
+- chs-09-182 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-09-183 wsad — distractor_unmatched: odczyn węzłowy towarzyszący postaci wtórnej; distractor_unmatched: brak prątków w wykwitach; distractor_unmatched: powstawanie wykwitów w wyniku nadkażenia
+- chs-09-184 wsad — distractor_unmatched: popierwotna jako zakażenie poza płucami; distractor_unmatched: pierwotna jako reaktywacja ogniska po latach; distractor_unmatched: pierwotna szerząca się krwiopochodnie
+- chs-09-185 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-09-186 wsad — distractor_unmatched: odczyt po upływie 48–72 godzin; distractor_unmatched: ocena nacieku w miejscu wstrzyknięcia
+- chs-09-188 wsad — distractor_unmatched: dodatni wynik jako warunek konieczny; distractor_unmatched: przerwanie izolacji po pierwszym ujemnym rozmazie; distractor_unmatched: izolacja przez całe leczenie
+- chs-09-189 wsad — distractor_unmatched: trwa 2–3 miesiące z trzema albo czterema lekami; distractor_unmatched: poprzedza fazę intensywną; distractor_unmatched: podawanie jednego leku
+- chs-09-190 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-09-191 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-09-192 wsad — distractor_unmatched: zastępuje leczenie przeciwprątkowe; distractor_unmatched: przeciwwskazane do czasu uzyskania pełnej wrażliwości prątków; distractor_unmatched: możliwe dopiero przy obniżonych parametrach oddechowych
+- chs-09-193 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-09-194 wsad — verdict_mismatch: werdykt="reakcja organizmu wyleczonego, jakby zetknął się z krętkiem po raz pierwszy" klucz="to reakcja organizmu wyleczonego, jakby zetknął się z krętkiem po raz pierwszy"; distractor_unmatched: ponowna inwazja krętków u chorego, który nie został wyleczony; distractor_unmatched: ponowne namnożenie krętków z pobudzeniem syntezy przeciwciał
+- chs-09-195 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-09-197 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-09-198 wsad — distractor_unmatched: przezłożyskowe zakażenie dopiero po 16. tygodniu ciąży; distractor_unmatched: samoistne wygojenie owrzodzenia pierwotnego; distractor_unmatched: niedojrzałość układu odpornościowego płodu
+- chs-09-199 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-09-206 wsad — verdict_mismatch: werdykt="penicylina benzatynowa domięśniowo jednorazowo w dawce 2,4 mln jednostek" klucz="penicylinę benzatynową domięśniowo jednorazowo w dawce 2,4 mln jednostek"
+- chs-09-207 wsad — verdict_mismatch: werdykt="przeprowadzenie terapii odczulającej i leczenie penicyliną" klucz="przeprowadzenia terapii odczulającej i leczenia penicyliną"
+- chs-09-208 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-09-209 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-10-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-10-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-10-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-10-006 wsad — verdict_mismatch: werdykt="ortokeratotyczna torbiel zębopochodna nie jest wariantem torbieli rogowaciejącej, rogowacieje torem ortokeratozy i nie należy do zespołu Gorlina-Goltza" klucz="OOC nie jest wariantem OKC, rogowacieje torem ortokeratozy i nie należy do zespołu Gorlina-Goltza." similarity=0.710
+- chs-10-013 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-10-016 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-10-017 wsad — distractor_unmatched: torbiel resztkowa — rak śluzowo-naskórkowy; zębopochodna torbiel gruczołowa — rak pierwotny wewnątrzkostny
+- chs-10-018 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-11-002 wsad — takeaway_too_long: 201 znaków
+- chs-11-006 wsad — distractor_unmatched: ścianę boczną, następnie przyśrodkową, a na końcu przednią i tylną
+- chs-11-010 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-11-013 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-11-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-11-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-11-018 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-11-019 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-11-022 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-11-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-11-025 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-11-027 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-11-029 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-12-006 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-12-007 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-12-012 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-12-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-12-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-12-017 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-12-018 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-12-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-12-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-12-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-12-028 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-12-031 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-12-032 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-12-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-12-042 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-12-043 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-12-045 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-12-053 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-12-054 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-12-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-12-060 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-12-061 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-12-065 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-12-068 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-12-071 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-12-073 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-12-076 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-12-080 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-12-083 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-12-085 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-12-094 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-12-095 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-12-096 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545; takeaway_too_long: 201 znaków
+- chs-12-100 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-12-101 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-12-106 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-12-107 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-12-108 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-12-110 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-12-113 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-12-118 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-12-119 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-12-120 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-12-121 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-12-123 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-12-125 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-12-132 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-12-140 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-12-143 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-12-147 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-12-150 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-12-154 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-13-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-13-005 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-13-007 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-13-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-13-009 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-13-011 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-13-012 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-13-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-13-026 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-13-027 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-13-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-13-036 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-13-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-13-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-13-047 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-13-049 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-13-055 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-13-056 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-13-057 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-13-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-13-059 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-13-067 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-13-071 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-13-074 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-13-075 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-13-076 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-13-080 wsad — verdict_mismatch: werdykt="perforacje rozpoznane wcześnie, o długości do 1,5 centymetra, z minimalnymi objawami zakażenia" klucz="rozpoznane wcześnie, o długości do 1,5 centymetra, z minimalnymi objawami zakażenia"
+- chs-13-084 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-13-086 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-13-089 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-13-091 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-13-092 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-13-096 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-13-098 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-13-099 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-13-100 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-13-108 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-13-114 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-13-117 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-13-118 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-13-122 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-13-123 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-13-124 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-13-131 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-13-139 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-13-141 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-13-144 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-13-145 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-13-148 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-13-150 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-13-151 wsad — distractor_unmatched: najgęstsze w organizmie zakończenia bólowe w nabłonku rogówki; distractor_unmatched: błona Bowmana jako bariera zatrzymująca błahe urazy; distractor_unmatched: ciała obce metaliczne wymagające usunięcia
+- chs-13-153 wsad — distractor_unmatched: podanie błękitu metylenowego; distractor_unmatched: wykonanie sialografii; distractor_unmatched: oznaczenie amylazy ślinowej
+- chs-13-154 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-13-155 wsad — distractor_unmatched: nerw uszny wielki; distractor_unmatched: nerw pośredni; distractor_unmatched: nerw skalisty większy
+- chs-13-156 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-13-157 wsad — distractor_unmatched: ponowne usunięcie obwódki z rdzy po 24 lub 48 godzinach; distractor_unmatched: gojenie abrazji najdłużej w ciągu 48 godzin; distractor_unmatched: krople z antybiotykiem cztery lub pięć razy dziennie
+- chs-13-158 wsad — distractor_unmatched: przerwanie odcinka na żwaczu wymagające podwiązania kikuta; distractor_unmatched: podwiązanie prowadzące do przerostu miąższu; distractor_unmatched: odtworzenie ubytku przewodu przeszczepem nerwu łydkowego
+- chs-13-159 wsad — distractor_unmatched: usunięcie ciała obcego przed transportem; distractor_unmatched: wkroplenie środka znieczulającego do worka spojówkowego; distractor_unmatched: poruszenie ciałem obcym w celu oceny głębokości rany
+- chs-13-160 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-13-161 wsad — distractor_unmatched: chirurgiczne odbarczenie oczodołu z usunięciem krwiaka; distractor_unmatched: wkroplenie midriatyku i pozycja półleżąca
+- chs-13-162 wsad — distractor_unmatched: skórna przetoka ślinowa; distractor_unmatched: ropień przestrzeni przyuszniczo-żwaczowej; distractor_unmatched: krwiak organizujący się w bliznę
+- chs-13-163 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-13-164 wsad — distractor_unmatched: pilny zabieg odbarczający w początkowym okresie; distractor_unmatched: midriatyki przyspieszające akomodację; distractor_unmatched: acetazolamid w kroplach, a mannitol doustnie
+- chs-13-165 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-13-166 wsad — distractor_unmatched: błona Bowmana jako błona podstawna śródbłonka; distractor_unmatched: odzyskiwanie przezierności przez warstwę właściwą po bliznowaceniu; distractor_unmatched: komórki macierzyste nabłonka w blaszce sitowej
+- chs-13-167 wsad — distractor_unmatched: utrata komórek macierzystych w palisadach Vogta
+- chs-13-168 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-13-169 wsad — distractor_unmatched: największa grubość twardówki w rąbku rogówki; distractor_unmatched: stłuczenie w mechanizmie contra coup dotyczące obwodu siatkówki; distractor_unmatched: podwichnięta soczewka poprawiająca ostrość widzenia
+- chs-13-170 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-13-172 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-13-174 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-13-176 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-13-184 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-13-185 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-13-187 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-13-193 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-13-196 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-13-197 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-13-201 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-13-203 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-14-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-14-004 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-14-009 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-14-014 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-14-015 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-14-019 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-14-020 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-14-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-14-024 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-14-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-14-033 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-14-035 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-14-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-14-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-14-042 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-14-043 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-14-046 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-14-048 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-14-050 wsad — verdict_mismatch: werdykt="ewakuacja krwiaka przegrody, repozycja na sali operacyjnej w ciągu tygodnia, tamponada na 2–4 dni, szynowanie zewnętrzne przez 7–14 dni" klucz="ewakuację krwiaka przegrody, repozycję na sali operacyjnej w ciągu tygodnia, tamponadę na 2–4 dni, szynowanie zewnętrzne przez 7–14 dni"
+- chs-14-051 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-14-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-14-062 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-14-068 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-14-069 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-14-071 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-14-074 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-14-077 wsad — distractor_unmatched: repozycja zęba kleszczami przed znieczuleniem miejscowym; distractor_unmatched: repozycja kości zębodołu przed odprowadzeniem zęba; distractor_unmatched: oczyszczenie okolicy urazu przed repozycją zęba
+- chs-14-079 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-14-083 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-14-086 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-14-089 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-14-091 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-14-092 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-14-095 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-14-101 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-14-102 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-14-103 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-14-106 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-14-108 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-14-114 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-14-121 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-14-124 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-14-125 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-14-128 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-14-129 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-14-138 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-14-139 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-14-143 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-14-145 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-14-146 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-14-147 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-14-149 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-14-152 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-14-159 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-14-162 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-14-163 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-14-166 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-14-167 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-14-171 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-14-174 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-14-175 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-14-180 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-14-184 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-15-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-15-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-15-010 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-15-014 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-15-016 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-15-019 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-15-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-15-023 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-15-024 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-15-025 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-15-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-15-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-15-039 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-15-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-15-043 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-15-044 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-15-047 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-15-050 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-15-056 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-15-059 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-15-060 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-15-062 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-15-064 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-15-069 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-15-072 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-15-077 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-15-078 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-15-079 wsad — distractor_unmatched: zawartość istoty gąbczastej i zbitej jest w głowie i w szyjce zbliżona
+- chs-15-080 wsad — distractor_unmatched: siły ściskające działają w części zębodołowej żuchwy, a rozciągające na jej dolnym brzegu; distractor_unmatched: największe naprężenia skręcające powstają w okolicy kąta żuchwy
+- chs-15-081 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-15-083 wsad — distractor_unmatched: dolnego brzegu żuchwy na wysokości zębów trzonowych
+- chs-15-086 wsad — distractor_unmatched: beta-2-transferyna występuje także w wydzielinie błony śluzowej nosa
+- chs-15-088 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-15-089 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-15-090 wsad — distractor_unmatched: utrwalony po zakończeniu wzrostu i niezmienny mimo utraty zębów
+- chs-15-091 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-15-092 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-15-097 wsad — verdict_mismatch: werdykt="złamanie trzonu żuchwy w odcinku uzębionym bez rany błony śluzowej" klucz="trzonu żuchwy w odcinku uzębionym bez rany błony śluzowej"
+- chs-15-099 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-15-101 wsad — verdict_mismatch: werdykt="zgryz otwarty z podparciem na ostatnich zębach, bez przesunięcia linii pośrodkowej" klucz="zgryzu otwartego z podparciem na ostatnich zębach, bez przesunięcia linii pośrodkowej"
+- chs-15-102 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-15-103 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-15-106 wsad — verdict_mismatch: werdykt="złamanie prawego wyrostka dziobiastego w mechanizmie urazu bezpośredniego" klucz="prawego wyrostka dziobiastego w mechanizmie urazu bezpośredniego"
+- chs-15-107 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-15-109 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-15-110 wsad — verdict_mismatch: werdykt="zdjęcie potyliczno-czołowe według Clementschitscha" klucz="potyliczno-czołowe według Clementschitscha"
+- chs-15-112 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-15-113 wsad — verdict_mismatch: werdykt="wysokość złamania, przemieszczenie odłamów oraz zwichnięcie w stawie skroniowo-żuchwowym" klucz="wysokości złamania, przemieszczeniu odłamów oraz zwichnięciu w stawie skroniowo-żuchwowym"
+- chs-15-116 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-15-119 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-15-120 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-15-128 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-15-130 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-15-132 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-15-133 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-15-138 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-15-140 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-15-141 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-15-145 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-15-149 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-15-151 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-15-155 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-15-156 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-15-161 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-15-167 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-15-168 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-15-172 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-15-174 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-15-181 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-15-182 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-15-185 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-15-188 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-15-189 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-15-191 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-15-196 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-15-200 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-15-201 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-15-203 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-16-003 wsad — verdict_mismatch: werdykt="jednostronna kraniosynostoza wieńcowa" klucz="jednostronnej kraniosynostozie wieńcowej"
+- chs-16-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-16-006 wsad — verdict_mismatch: werdykt="deformacja czołowa średniego stopnia" klucz="deformacji czołowej średniego stopnia"
+- chs-16-007 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-16-008 wsad — verdict_mismatch: werdykt="rozkład zwężeń i uwypukleń w obrębie sklepienia" klucz="rozkładzie zwężeń i uwypukleń w obrębie sklepienia"
+- chs-16-009 wsad — verdict_mismatch: werdykt="lewy szew węgłowy" klucz="lewego szwu węgłowego" similarity=0.619
+- chs-16-015 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-16-016 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-16-018 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-16-019 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-16-021 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-16-022 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-16-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-16-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-16-031 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-16-036 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-16-038 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-16-044 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-16-048 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-16-053 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-16-054 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-16-055 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-16-057 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-17-003 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-17-007 wsad — distractor_unmatched: wady III klasy występują częściej niż wady II klasy i częściej są operowane (duplikat a)
+- chs-17-008 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-17-011 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-17-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-17-016 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-17-019 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-17-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-17-031 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-17-033 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-17-034 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-17-036 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-17-037 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-17-040 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-17-045 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-17-049 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-17-050 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-17-052 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-17-059 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-17-061 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-17-066 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-17-069 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-17-070 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-18-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-18-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-18-010 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-18-011 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-18-013 wsad — verdict_mismatch: werdykt="1 milimetra na dobę" klucz="1 milimetra" similarity=0.750
+- chs-18-017 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-18-019 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-18-021 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-18-025 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-18-029 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-18-030 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-19-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-19-008 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-19-011 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-19-012 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-19-013 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-19-014 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-19-020 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-19-021 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-19-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-19-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-19-030 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-19-032 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-19-033 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-19-039 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-19-040 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-19-045 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-19-046 wsad — distractor_unmatched: ciąg rozpoczynający się od obrzęku i krwotocznego wysięku; distractor_unmatched: ciąg rozpoczynający się od reakcji zapalnej błony maziowej; distractor_unmatched: ciąg kończący się przerostem i zwłóknieniem błony maziowej
+- chs-19-047 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-19-049 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-19-055 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-19-057 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-19-058 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-19-059 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-19-060 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-19-061 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-19-063 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-19-064 wsad — distractor_unmatched: dodatni wynik badania przesądza o rozpoznaniu, ponieważ przeciwciało to jest swoiste dla reumatoidalnego zapalenia stawów; distractor_unmatched: ujemny wynik badania pozwala wykluczyć reumatoidalne zapalenie stawów; distractor_unmatched: wysokie miano czynnika reumatoidalnego zapowiada łagodniejszy przebieg
+- chs-19-076 wsad — distractor_unmatched: nadżerki wyprzedzają o kilka tygodni pierwsze dolegliwości; distractor_unmatched: dodatni czynnik reumatoidalny i dodatnie przeciwciała przeciwjądrowe; distractor_unmatched: przebieg podstępny i symetryczny
+- chs-19-077 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-19-080 wsad — distractor_unmatched: opalizujący płyn z igiełkowatymi kryształami
+- chs-19-081 wsad — distractor_unmatched: zmiana bolesna i chłodniejsza od otoczenia; distractor_unmatched: zmiany wtórne w miejscach kolejnych ukąszeń, większe od pierwotnej; distractor_unmatched: uogólnione powiększenie węzłów chłonnych
+- chs-19-082 wsad — distractor_unmatched: wyprzedzają rumień wędrujący; distractor_unmatched: stale narastający ból bez remisji i bez nawrotów; distractor_unmatched: nie obejmują stawu skroniowo-żuchwowego
+- chs-19-084 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-19-087 wsad — distractor_unmatched: pierwotny zespół Sjögrena; distractor_unmatched: toczeń rumieniowaty układowy
+- chs-19-088 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-19-089 wsad — distractor_unmatched: ograniczenie rozpoznania do zaburzeń wewnątrzstawowych
+- chs-19-090 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-19-091 wsad — distractor_unmatched: prawdziwy proces nowotworowy o nieograniczonym wzroście; distractor_unmatched: wzrost przez kostnienie śródchrzęstne hamowany przez przerost; distractor_unmatched: dobrze poznana przyczyna w postaci przeciążenia stawu
+- chs-19-092 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-19-093 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-19-097 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-19-101 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-19-102 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 4" klucz="2, 3 i 4" similarity=0.483
+- chs-19-105 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-19-110 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-20-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-20-004 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-20-006 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-20-009 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-20-011 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-20-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-20-019 wsad — verdict_mismatch: werdykt="skrócenie tylnej wysokości szczęki z deformacją typu ptasiej twarzy i stromymi płaszczyznami zgryzu" klucz="skrócenia tylnej wysokości szczęki z deformacją typu ptasiej twarzy i stromymi płaszczyznami zgryzu"; distractor_unmatched: przechylenie płaszczyzny zgryzu przy zachowanej wysokości tylnego odcinka szczęki
+- chs-20-021 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-20-026 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-20-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-20-029 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 4 i 5" klucz="2, 4 i 5" similarity=0.483
+- chs-20-034 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-20-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-20-047 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-20-049 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-20-050 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-20-051 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-20-053 wsad — verdict_mismatch: werdykt="otwarcie stawu skroniowo-żuchwowego w celu usunięcia uszkodzonego krążka" klucz="otwarciu stawu skroniowo-żuchwowego w celu usunięcia uszkodzonego krążka"
+- chs-20-057 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-20-058 wsad — verdict_mismatch: werdykt="rozdęcie jamy stawowej, przerwanie zrostów i wypłukanie produktów rozpadu" klucz="rozdęciu jamy stawowej, przerwaniu zrostów i wypłukaniu produktów rozpadu"
+- chs-20-061 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-20-064 wsad — verdict_mismatch: werdykt="ostra perforacja krążka stawowego" klucz="ostrej perforacji krążka stawowego"
+- chs-20-065 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-20-066 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-20-067 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-20-068 wsad — verdict_mismatch: werdykt="zwiększona przepuszczalność naczyń, po której pojawia się obrzęk okołonerwowy" klucz="zwiększonej przepuszczalności naczyń, po której pojawia się obrzęk okołonerwowy"
+- chs-20-074 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-20-075 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-20-076 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-20-085 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 5" klucz="3 i 5" similarity=0.400
+- chs-20-086 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-20-092 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-20-093 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-20-096 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-20-099 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-20-102 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-21-001 wsad — distractor_unmatched: zwiększenie elastyczności blizny, poprawa ukrwienia tkanek oraz stymulacja czucia; distractor_unmatched: odprowadzenie limfy w stronę węzłów chłonnych szyi; distractor_unmatched: przyspieszenie zrostu kostnego oraz zwiększenie stabilności wprowadzanych wszczepów
+- chs-21-002 wsad — distractor_unmatched: podstawa nad węzłami nadobojczykowymi z maksymalnym napięciem taśmy; distractor_unmatched: podstawa w obrębie mięśnia żwacza i paski ku węzłom nadobojczykowym; distractor_unmatched: aplikacja bezpośrednio przed manualnym drenażem limfatycznym
+- chs-21-003 wsad — distractor_unmatched: manipulacja polega na oddaleniu powierzchni stawowych i biernym prowadzeniu żuchwy; distractor_unmatched: mobilizacje zwiększają ciśnienie wewnątrz stawu
+- chs-21-004 wsad — distractor_unmatched: skrócenie mięśnia do pozycji wyjściowej i start od pierwotnej bariery; distractor_unmatched: utrzymanie rozciągnięcia bez zmiany i skurcz z większą siłą; distractor_unmatched: maksymalne odwiedzenie żuchwy ze schłodzeniem mięśnia sprayem
+- chs-21-005 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-21-006 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-21-007 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-21-008 wsad — distractor_unmatched: wprowadzanie cienkich igieł w określonych punktach w obrębie mięśni żucia; distractor_unmatched: efekt przeciwbólowy i poprawa krążenia w okolicznych tkankach
+- chs-21-009 wsad — distractor_unmatched: z dużą siłą i w wolnym tempie; distractor_unmatched: ograniczenie zabiegu do okolicy poddanej zabiegowi; distractor_unmatched: dopiero po ustąpieniu obrzęku pozabiegowego
+- chs-21-010 wsad — distractor_unmatched: poprawa aktywności mięśni osłabionych
+- chs-21-011 wsad — distractor_unmatched: ograniczenie się do fizykoterapii; distractor_unmatched: zastąpienie diagnostyki narządu żucia badaniem ruchomości szyi
+- chs-21-012 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-21-013 wsad — distractor_unmatched: hiloterapia przez kilkanaście minut, a kompresy żelowe przez kilka dób; distractor_unmatched: spray w bezpośrednim kontakcie z mięśniem; distractor_unmatched: ciepłe okłady przeciw obrzękowi limfatycznemu
+- chs-22-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-22-002 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-22-005 wsad — verdict_mismatch: werdykt="wygojenie rany, zakończenie leczenia uzupełniającego i ustabilizowanie podłoża" klucz="wygojeniu rany, zakończeniu leczenia uzupełniającego i ustabilizowaniu podłoża"
+- chs-22-006 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-22-008 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-22-009 wsad — verdict_mismatch: werdykt="suchość, obrzmienie, rozpulchnienie i zaczerwienienie błony śluzowej" klucz="suchością, obrzmieniem, rozpulchnieniem i zaczerwienieniem błony śluzowej"
+- chs-22-011 wsad — verdict_mismatch: werdykt="czas dzielący operację od rozpoczęcia terapii protetycznej" klucz="czasie dzielącym operację od rozpoczęcia terapii protetycznej"
+- chs-22-013 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-22-014 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-22-019 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-22-020 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-23-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-23-007 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-23-010 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-23-011 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 3" klucz="1, 2 i 3" similarity=0.483
+- chs-23-015 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-24-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-24-006 wsad — verdict_mismatch: werdykt="stwierdzenia 3 i 4" klucz="3 i 4" similarity=0.400
+- chs-24-007 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-24-008 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3 i 5" klucz="2, 3 i 5" similarity=0.483
+- chs-24-009 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-24-019 wsad — verdict_mismatch: werdykt="stwierdzenia 4 i 5" klucz="4 i 5" similarity=0.400
+- chs-24-020 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-24-024 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-24-025 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-24-029 wsad — verdict_mismatch: werdykt="bioresorbowalność wprowadzonego preparatu" klucz="bioresorbowalności wprowadzonego preparatu"
+- chs-24-032 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-24-034 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 4 i 5" klucz="1, 2, 4 i 5" similarity=0.545
+- chs-24-035 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 5" klucz="1, 3 i 5" similarity=0.483
+- chs-24-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-24-041 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-24-043 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-24-047 wsad — verdict_mismatch: werdykt="stwierdzenia 3, 4 i 5" klucz="3, 4 i 5" similarity=0.483
+- chs-24-048 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545
+- chs-24-051 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-24-052 wsad — distractor_unmatched: podokostnowe odwarstwienie brzegu oczodołu z cięć ukrytych w skórze owłosionej
+- chs-24-053 wsad — distractor_unmatched: zszycie przednich brzegów mięśnia, potem odpreparowanie skóry, na końcu usunięcie tłuszczu; distractor_unmatched: odpreparowanie skóry w warstwie podokostnowej
+- chs-24-054 wsad — distractor_unmatched: usunięcie całej przegrody kostnej i chrzęstnej
+- chs-24-056 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3 i 4" klucz="1, 3 i 4" similarity=0.483
+- chs-25-001 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 2" klucz="1 i 2" similarity=0.400
+- chs-25-002 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 4 i 5" klucz="1, 4 i 5" similarity=0.483
+- chs-25-006 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 4" klucz="1, 2, 3 i 4" similarity=0.545
+- chs-25-009 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 3" klucz="1 i 3" similarity=0.400
+- chs-25-013 wsad — verdict_mismatch: werdykt="stwierdzenia 2, 3, 4 i 5" klucz="2, 3, 4 i 5" similarity=0.545
+- chs-25-016 wsad — verdict_mismatch: werdykt="skreślenie błędnego wpisu wraz z datą skreślenia, danymi osoby skreślającej i przyczyną błędu" klucz="skreśleniu błędnego wpisu wraz z datą skreślenia, danymi osoby skreślającej i przyczyną błędu"
+- chs-25-017 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 4" klucz="1 i 4" similarity=0.400
+- chs-25-019 wsad — verdict_mismatch: werdykt="odmowa udostępnienia, bo za życia pacjenta jego rodzinie bez upoważnienia takie żądanie nie przysługuje" klucz="odmawia udostępnienia, bo za życia pacjenta jego rodzinie bez upoważnienia takie żądanie nie przysługuje"
+- chs-25-022 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 3" klucz="2 i 3" similarity=0.400
+- chs-25-023 wsad — verdict_mismatch: werdykt="zakład ubezpieczeń, który występuje o udostępnienie dokumentacji medycznej prowadzonej dla pacjenta" klucz="zakładu ubezpieczeń, który występuje o udostępnienie dokumentacji medycznej prowadzonej dla pacjenta"
+- chs-25-025 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 5" klucz="2 i 5" similarity=0.400
+- chs-25-026 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 4" klucz="1, 2 i 4" similarity=0.483
+- chs-25-028 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 3, 4 i 5" klucz="1, 3, 4 i 5" similarity=0.545
+- chs-25-036 wsad — verdict_mismatch: werdykt="stwierdzenia 1 i 5" klucz="1 i 5" similarity=0.400
+- chs-25-037 wsad — verdict_mismatch: werdykt="stwierdzenia 2 i 4" klucz="2 i 4" similarity=0.400
+- chs-25-038 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2 i 5" klucz="1, 2 i 5" similarity=0.483
+- chs-25-041 wsad — verdict_mismatch: werdykt="stwierdzenia 1, 2, 3 i 5" klucz="1, 2, 3 i 5" similarity=0.545

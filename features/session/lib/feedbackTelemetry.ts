@@ -1,4 +1,7 @@
-import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
+import {
+  questionHasNormalizedBlocks,
+  type FeedbackVariant,
+} from "@/features/session/lib/adaptiveFeedback";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 
 export type FeedbackExpandSection = "full" | "distractors";
@@ -105,7 +108,7 @@ export function buildFeedbackShownEvent(
     questionId,
     payload: {
       variant: input.variant,
-      hasBlocks: input.question.explanationBlocks != null,
+      hasBlocks: questionHasNormalizedBlocks(input.question),
       hypercorrection,
       elements: listFeedbackElements(input),
     },

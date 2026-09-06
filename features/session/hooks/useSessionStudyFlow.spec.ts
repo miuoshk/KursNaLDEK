@@ -1,7 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import {
+  persistSessionFeedbackVariant,
+  resolveExperimentFeedbackVariant,
+  selectFeedbackVariant,
+} from "@/features/session/lib/adaptiveFeedback";
 import { sessionStudyPhase } from "@/features/session/lib/sessionStudyPhase";
-import type { SessionAnswer, SessionMode } from "@/features/session/types";
+import type {
+  SessionAnswer,
+  SessionMode,
+  SessionQuestion,
+} from "@/features/session/types";
+import type { ExplanationBlocksV2 } from "@/features/shared/lib/explanationBlocks";
 
 type FakeSession = {
   selectedOptionId: string | null;
@@ -122,4 +132,96 @@ test("przegląd nigdy nie wchodzi w awaiting_confidence", () => {
   assert.equal(phase("przeglad", s), "choose");
   s.revealFeedback();
   assert.equal(phase("przeglad", s), "feedback");
+});
+
+const FLOW_BLOCKS: ExplanationBlocksV2 = {
+  version: 2,
+  correctReason: "Mechanizm działania.",
+  takeaway: "Zasada do zapamiętania.",
+};
+
+function flowQuestion(blocks: ExplanationBlocksV2 | null): SessionQuestion {
+  return {
+    id: "q-flow",
+    topicId: "t-1",
+    text: "Pytanie",
+    options: [
+      { id: "a", text: "A" },
+      { id: "b", text: "B" },
+    ],
+    correctOptionId: "a",
+    explanation: "proza",
+    explanationBlocks: blocks,
+    conceptIds: [],
+    sourceCode: null,
+    imageUrl: null,
+    topicName: "Temat",
+    disableOptionShuffle: false,
+    antares: {
+      isNew: false,
+      retrievability: 0.9,
+      fsrsDifficulty: 5,
+      isLeech: false,
+      priorAccuracy: 0.9,
+      avgTimeSeconds: 30,
+      topicMastery: 0.8,
+    },
+  };
+}
+
+test("treatment + brak bloków = standard, nawet gdy matryca dałaby remedial", () => {
+  const question = flowQuestion(null);
+  assert.equal(
+    persistSessionFeedbackVariant({
+      treatment: true,
+      question,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+      clientVariant: "remedial",
+    }),
+    "standard",
+  );
+  assert.equal(
+    resolveExperimentFeedbackVariant({
+      treatment: true,
+      question,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+    }).variant,
+    "standard",
+  );
+});
+
+test("treatment + bloki = wynik selectFeedbackVariant", () => {
+  const question = flowQuestion(FLOW_BLOCKS);
+  const selected = selectFeedbackVariant({
+    question,
+    isCorrect: false,
+    timeSpentSeconds: 8,
+    confidence: "na_pewno",
+    hasTakeaway: true,
+  });
+  assert.equal(selected.variant, "remedial");
+  assert.deepEqual(
+    resolveExperimentFeedbackVariant({
+      treatment: true,
+      question,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+    }),
+    selected,
+  );
+  assert.equal(
+    persistSessionFeedbackVariant({
+      treatment: true,
+      question,
+      isCorrect: false,
+      timeSpentSeconds: 8,
+      confidence: "na_pewno",
+    }),
+    selected.variant,
+  );
 });

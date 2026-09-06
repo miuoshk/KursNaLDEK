@@ -18,6 +18,7 @@ import {
 import { loadMemoryParameterSetById } from "@/features/session/server/loadMemorySchedulerConfig";
 import { persistShadowMemoryV2 } from "@/features/session/server/persistShadowMemoryV2";
 import { createPerfSpan } from "@/features/session/lib/perfLog";
+import { hasNormalizedExplanationBlocks } from "@/features/session/lib/adaptiveFeedback";
 import { headers } from "next/headers";
 
 const schema = z.object({
@@ -162,7 +163,7 @@ export async function submitAnswer(
 
     const { data: questionRow, error: questionError } = await supabase
       .from("questions")
-      .select("correct_option_id, topic_id")
+      .select("correct_option_id, topic_id, explanation_blocks, options")
       .eq("id", parsed.data.questionId)
       .maybeSingle();
 
@@ -239,9 +240,23 @@ export async function submitAnswer(
     const admin = createAdminClient();
     const feedbackTreatment =
       session.feedback_experiment_variant === "treatment";
-    const feedbackVariant = feedbackTreatment
-      ? (parsed.data.feedbackVariant ?? "standard")
-      : "standard";
+    const optionIds = Array.isArray(questionRow.options)
+      ? (questionRow.options as { id?: unknown }[])
+          .map((option) => option?.id)
+          .filter((id): id is string => typeof id === "string")
+      : [];
+    const hasBlocks = hasNormalizedExplanationBlocks(
+      questionRow.explanation_blocks,
+      {
+        questionId: parsed.data.questionId,
+        optionIds,
+        correctOptionId: questionRow.correct_option_id as string,
+      },
+    );
+    const feedbackVariant =
+      feedbackTreatment && hasBlocks
+        ? (parsed.data.feedbackVariant ?? "standard")
+        : "standard";
     const feedbackDwellSeconds = feedbackTreatment
       ? (parsed.data.feedbackDwellSeconds ?? null)
       : null;

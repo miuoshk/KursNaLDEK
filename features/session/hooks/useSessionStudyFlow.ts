@@ -4,8 +4,7 @@ import { useCallback, useRef } from "react";
 import type { MutableRefObject } from "react";
 import { buildClientSessionSummary } from "@/features/session/lib/buildClientSessionSummary";
 import {
-  questionHasTakeaway,
-  selectFeedbackVariant,
+  persistSessionFeedbackVariant,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
@@ -204,16 +203,14 @@ export function useSessionStudyFlow(
       if (!optionId) return;
       const currentQ = s.currentQuestion;
       const isCorrect = optionId === currentQ.correctOptionId;
-      const feedbackVariant = adaptiveFeedbackEnabled
-        ? (feedbackVariantOverride ??
-          selectFeedbackVariant({
-            question: currentQ,
-            isCorrect,
-            timeSpentSeconds: timeSpentQuestion.current,
-            confidence,
-            hasTakeaway: questionHasTakeaway(currentQ),
-          }).variant)
-        : "standard";
+      const feedbackVariant = persistSessionFeedbackVariant({
+        treatment: adaptiveFeedbackEnabled,
+        question: currentQ,
+        isCorrect,
+        timeSpentSeconds: timeSpentQuestion.current,
+        confidence,
+        clientVariant: feedbackVariantOverride,
+      });
 
       const newAnswer: SessionAnswer = {
         questionId: currentQ.id,

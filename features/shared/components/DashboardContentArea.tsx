@@ -16,7 +16,7 @@ export function DashboardContentArea({ children }: { children: ReactNode }) {
         className={cn(
           "min-h-0 min-w-0 flex-1 bg-background",
           !isSessionStudy &&
-            "overflow-x-hidden overflow-y-auto overscroll-x-none p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:p-6 lg:p-8",
+            "overflow-x-hidden overflow-y-auto overscroll-x-none p-5 pb-[max(2rem,calc(env(safe-area-inset-bottom)+1.5rem))] md:p-6 md:pb-[max(2rem,calc(env(safe-area-inset-bottom)+1.5rem))] lg:p-8",
           isSessionStudy && "flex min-h-0 flex-1 flex-col overflow-hidden p-0",
         )}
       >

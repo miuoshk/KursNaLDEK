@@ -44,7 +44,10 @@ export function SessionTopBar({
   const mobileTitle = selectedTopicName ?? subjectName;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background px-3 py-2 sm:px-6 sm:py-3">
+    <header
+      data-session-topbar
+      className="sticky top-0 z-30 border-b border-border bg-background px-3 py-2 sm:px-6 sm:py-3"
+    >
       <div className="flex items-center gap-2 sm:hidden">
         <p
           className="min-w-0 flex-1 truncate font-body text-body-sm font-medium text-brand-gold"

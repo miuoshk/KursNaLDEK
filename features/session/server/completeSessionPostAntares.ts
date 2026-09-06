@@ -35,6 +35,89 @@ type AnswerRow = {
   retrievability_after: number | null;
 };
 
+export type PostAntaresAnswerRow = AnswerRow;
+
+export const SESSION_ANSWER_ANTARES_SELECT =
+  "question_id, is_correct, question_order, time_spent_seconds, confidence, answered_at, retrievability_before, retrievability_after";
+
+export function mapAnswerRowsForPostAntares(
+  rows: Array<{
+    question_id: unknown;
+    is_correct: unknown;
+    confidence?: unknown;
+    time_spent_seconds?: unknown;
+    question_order?: unknown;
+    answered_at?: unknown;
+    retrievability_before?: unknown;
+    retrievability_after?: unknown;
+  }>,
+): AnswerRow[] {
+  return rows.map((a) => ({
+    question_id: a.question_id as string,
+    is_correct: Boolean(a.is_correct),
+    confidence: (a.confidence as string | null) ?? null,
+    time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
+    question_order: (a.question_order as number | null) ?? null,
+    answered_at: (a.answered_at as string | null) ?? null,
+    retrievability_before: (a.retrievability_before as number | null) ?? null,
+    retrievability_after: (a.retrievability_after as number | null) ?? null,
+  }));
+}
+
+export async function loadTopicIdsForQuestions(
+  supabase: SupabaseClient,
+  questionIds: string[],
+): Promise<string[]> {
+  const ids = [...new Set(questionIds.filter(Boolean))];
+  if (ids.length === 0) return [];
+  const { data, error } = await supabase
+    .from("questions")
+    .select("topic_id")
+    .in("id", ids);
+  if (error) {
+    console.error("[loadTopicIdsForQuestions]", error);
+    return [];
+  }
+  return [
+    ...new Set(
+      (data ?? [])
+        .map((row) => (row.topic_id as string | null) ?? null)
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+}
+
+export async function computeAndStoreSessionInsights(
+  supabase: SupabaseClient,
+  input: {
+    userId: string;
+    sessionId: string;
+    ansRows: AnswerRow[];
+    answeredCount: number;
+    adaptiveFeedbackEnabled: boolean;
+    engineVariant: "shadow" | "treatment";
+    parameterSetId: string | null;
+  },
+): Promise<PostAntaresResult | null> {
+  const topicIds = await loadTopicIdsForQuestions(
+    supabase,
+    input.ansRows.map((row) => row.question_id),
+  );
+  return runCompleteSessionPostAntares(
+    supabase,
+    input.userId,
+    input.sessionId,
+    topicIds,
+    input.ansRows,
+    input.answeredCount,
+    input.adaptiveFeedbackEnabled,
+    {
+      engineVariant: input.engineVariant,
+      parameterSetId: input.parameterSetId,
+    },
+  );
+}
+
 function rowToRInput(row: {
   stability: unknown;
   difficulty_rating: unknown;
@@ -175,10 +258,14 @@ export async function runCompleteSessionPostAntares(
     memory.engineVariant === "treatment"
       ? await loadMemoryParameterSetById(admin, memory.parameterSetId)
       : undefined;
-  await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {
-    engineVariant: memory.engineVariant,
-    schedulerSettings,
-  });
+  try {
+    await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {
+      engineVariant: memory.engineVariant,
+      schedulerSettings,
+    });
+  } catch (err) {
+    console.error("[postAntares] recalculateTopicMastery", err);
+  }
 
   const masteryAfter = await fetchMasteryMap(
     supabase,
@@ -297,108 +384,117 @@ export async function runCompleteSessionPostAntares(
 
   const sessionInsights = serializeInsights(insights);
 
-  const { data: allCache } = await supabase
-    .from("topic_mastery_cache")
-    .select(TOPIC_MASTERY_CACHE_SELECT)
-    .eq("user_id", userId);
+  let examReadiness: PostAntaresResult["examReadiness"] | null = null;
+  let questionsAnsweredTotal: number | null = null;
+  let examScore: number | null = null;
 
-  const cacheTopicIds = (allCache ?? []).map((r) => r.topic_id as string);
-  let topicMeta: { id: string; name: string; subject_id: string }[] = [];
-  if (cacheTopicIds.length > 0) {
-    const { data } = await supabase
-      .from("topics")
-      .select("id, name, subject_id")
-      .eq("is_inbox", false)
-      .in("id", cacheTopicIds);
-    topicMeta = (data ?? []) as {
-      id: string;
-      name: string;
-      subject_id: string;
-    }[];
-  }
+  try {
+    const { data: allCache } = await supabase
+      .from("topic_mastery_cache")
+      .select(TOPIC_MASTERY_CACHE_SELECT)
+      .eq("user_id", userId);
 
-  const metaByT = new Map(
-    topicMeta.map((t) => [
-      t.id as string,
-      { name: t.name as string, subject_id: t.subject_id as string },
-    ]),
-  );
+    const cacheTopicIds = (allCache ?? []).map((r) => r.topic_id as string);
+    let topicMeta: { id: string; name: string; subject_id: string }[] = [];
+    if (cacheTopicIds.length > 0) {
+      const { data } = await supabase
+        .from("topics")
+        .select("id, name, subject_id")
+        .eq("is_inbox", false)
+        .in("id", cacheTopicIds);
+      topicMeta = (data ?? []) as {
+        id: string;
+        name: string;
+        subject_id: string;
+      }[];
+    }
 
-  const topicStates: TopicKnowledgeState[] = (allCache ?? []).map((raw) => {
-    const r = normalizeTopicMasteryRow(raw as Record<string, unknown>);
-    const tid = r.topic_id;
-    const meta = metaByT.get(tid);
-    const trend = r.trend;
-    const tr: TopicKnowledgeState["trend"] =
-      trend === "improving" || trend === "declining" || trend === "stable"
-        ? trend
-        : "stable";
-    return {
-      topicId: tid,
-      subjectId: meta?.subject_id ?? "",
-      topicName: meta?.name ?? tid,
-      totalQuestions: r.total_questions,
-      seenQuestions: r.seen,
-      coverageRatio: r.coverage,
-      accuracy: r.accuracy,
-      avgRetrievability: r.avg_retrievability,
-      masteryScore: r.mastery_score,
-      weaknessRank: r.weakness_rank ?? 999,
-      trend: tr,
-      questionsLast7d: r.questions_last_7d,
-      accuracyLast7d: r.accuracy_last_7d,
-      leechCount: r.leech_count,
+    const metaByT = new Map(
+      topicMeta.map((t) => [
+        t.id as string,
+        { name: t.name as string, subject_id: t.subject_id as string },
+      ]),
+    );
+
+    const topicStates: TopicKnowledgeState[] = (allCache ?? []).map((raw) => {
+      const r = normalizeTopicMasteryRow(raw as Record<string, unknown>);
+      const tid = r.topic_id;
+      const meta = metaByT.get(tid);
+      const trend = r.trend;
+      const tr: TopicKnowledgeState["trend"] =
+        trend === "improving" || trend === "declining" || trend === "stable"
+          ? trend
+          : "stable";
+      return {
+        topicId: tid,
+        subjectId: meta?.subject_id ?? "",
+        topicName: meta?.name ?? tid,
+        totalQuestions: r.total_questions,
+        seenQuestions: r.seen,
+        coverageRatio: r.coverage,
+        accuracy: r.accuracy,
+        avgRetrievability: r.avg_retrievability,
+        masteryScore: r.mastery_score,
+        weaknessRank: r.weakness_rank ?? 999,
+        trend: tr,
+        questionsLast7d: r.questions_last_7d,
+        accuracyLast7d: r.accuracy_last_7d,
+        leechCount: r.leech_count,
+      };
+    });
+
+    const { data: prof } = await supabase
+      .from("profiles")
+      .select("exam_date, questions_answered_total")
+      .eq("id", userId)
+      .maybeSingle();
+
+    const { data: completedSessions } = await supabase
+      .from("study_sessions")
+      .select("completed_at")
+      .eq("user_id", userId)
+      .not("completed_at", "is", null);
+
+    const daysActive = new Set(
+      (completedSessions ?? []).map((s) =>
+        new Date(s.completed_at as string).toISOString().slice(0, 10),
+      ),
+    ).size;
+
+    const examDateRaw = prof?.exam_date as string | null | undefined;
+    const examDate = examDateRaw ? new Date(examDateRaw) : null;
+
+    const prevAnswered = Number(prof?.questions_answered_total ?? 0);
+    questionsAnsweredTotal = prevAnswered + answeredCount;
+
+    const exam = calculateExamReadiness({
+      topicStates,
+      examDate,
+      questionsAnsweredTotal,
+      daysActive: Math.max(1, daysActive),
+      sessionAccuracy: sessionInsights.accuracy,
+    });
+
+    examScore = exam.score;
+    examReadiness = {
+      score: exam.score,
+      verdict: exam.verdict,
+      weakestTopics: exam.weakestTopics,
+      estimatedReadyDate: exam.estimatedReadyDate
+        ? exam.estimatedReadyDate.toISOString()
+        : null,
+      dailyRecommendation: exam.dailyRecommendation,
     };
-  });
-
-  const { data: prof } = await supabase
-    .from("profiles")
-    .select("exam_date, questions_answered_total")
-    .eq("id", userId)
-    .maybeSingle();
-
-  const { data: completedSessions } = await supabase
-    .from("study_sessions")
-    .select("completed_at")
-    .eq("user_id", userId)
-    .not("completed_at", "is", null);
-
-  const daysActive = new Set(
-    (completedSessions ?? []).map((s) =>
-      new Date(s.completed_at as string).toISOString().slice(0, 10),
-    ),
-  ).size;
-
-  const examDateRaw = prof?.exam_date as string | null | undefined;
-  const examDate = examDateRaw ? new Date(examDateRaw) : null;
-
-  const prevAnswered = Number(prof?.questions_answered_total ?? 0);
-  const questionsAnsweredTotal = prevAnswered + answeredCount;
-
-  const exam = calculateExamReadiness({
-    topicStates,
-    examDate,
-    questionsAnsweredTotal,
-    daysActive: Math.max(1, daysActive),
-    sessionAccuracy: sessionInsights.accuracy,
-  });
-
-  const examReadiness = {
-    score: exam.score,
-    verdict: exam.verdict,
-    weakestTopics: exam.weakestTopics,
-    estimatedReadyDate: exam.estimatedReadyDate
-      ? exam.estimatedReadyDate.toISOString()
-      : null,
-    dailyRecommendation: exam.dailyRecommendation,
-  };
+  } catch (err) {
+    console.error("[postAntares] examReadiness", err);
+  }
 
   const { error: insightsErr } = await admin
     .from("study_sessions")
     .update({
       session_insights: {
         ...sessionInsights,
-        examReadiness,
+        ...(examReadiness ? { examReadiness } : {}),
       } as unknown as Record<string, unknown>,
     })
     .eq("id", sessionId)
@@ -417,24 +513,32 @@ export async function runCompleteSessionPostAntares(
     affectedTopicCount: affectedTopicIds.length,
   });
 
-  // Percentyl kohorty (readiness_*) liczymy w tle (next/after) — wchodzi tylko
-  // na /statystyki, nie do podsumowania, więc nie blokuje ekranu po sesji.
-  const { error: profileErr } = await admin
-    .from("profiles")
-    .update({
-      exam_readiness_score: exam.score,
-      questions_answered_total: questionsAnsweredTotal,
-    })
-    .eq("id", userId);
+  if (examReadiness && examScore != null && questionsAnsweredTotal != null) {
+    const { error: profileErr } = await admin
+      .from("profiles")
+      .update({
+        exam_readiness_score: examScore,
+        questions_answered_total: questionsAnsweredTotal,
+      })
+      .eq("id", userId);
 
-  if (profileErr) {
-    console.error(
-      "[postAntares] profile update",
-      profileErr.message,
-      profileErr,
-    );
-    throw profileErr;
+    if (profileErr) {
+      console.error(
+        "[postAntares] profile update",
+        profileErr.message,
+        profileErr,
+      );
+    }
   }
 
-  return { sessionInsights, examReadiness };
+  return {
+    sessionInsights,
+    examReadiness: examReadiness ?? {
+      score: 0,
+      verdict: "",
+      weakestTopics: [],
+      estimatedReadyDate: null,
+      dailyRecommendation: 25,
+    },
+  };
 }

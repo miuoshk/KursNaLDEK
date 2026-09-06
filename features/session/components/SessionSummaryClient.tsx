@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { loadSessionAntaresInsights } from "@/features/session/api/loadSessionAntaresInsights";
+import { ensureSessionInsights } from "@/features/session/api/ensureSessionInsights";
 import { loadSessionSummaryAction } from "@/features/session/api/loadSessionSummary";
 import { SummaryActions } from "@/features/session/components/SummaryActions";
 import { SummaryAnswerStrip } from "@/features/session/components/SummaryAnswerStrip";
@@ -21,7 +22,7 @@ import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { getSummaryVariant } from "@/features/session/lib/summaryVariant";
 
 const POLL_INTERVAL_MS = 400;
-const POLL_MAX_ATTEMPTS = 20;
+const POLL_MAX_ATTEMPTS = 45;
 
 function hasAntaresData(summary: SessionSummaryData): boolean {
   return Boolean(summary.sessionInsights || summary.examReadiness);
@@ -62,7 +63,7 @@ export function SessionSummaryClient({
   const fetchInsights = useCallback(async () => {
     setInsightsLoading(true);
     setInsightsFailed(false);
-    const res = await loadSessionAntaresInsights(summary.sessionId);
+    const res = await ensureSessionInsights(summary.sessionId);
     if (applyInsights(res)) return true;
     setInsightsLoading(false);
     setInsightsFailed(true);
@@ -154,6 +155,17 @@ export function SessionSummaryClient({
       }
 
       if (attempts >= POLL_MAX_ATTEMPTS) {
+        const recovered = await ensureSessionInsights(summary.sessionId);
+        if (cancelled) return;
+        if (applyInsights(recovered)) {
+          logPerf("summary insights recovered", {
+            sessionId: summary.sessionId,
+            attempts,
+            timeout: true,
+            msFromSetInstantSummary: Date.now() - pollT0,
+          });
+          return;
+        }
         setInsightsLoading(false);
         setInsightsFailed(true);
         logPerf("summary insights timeout", {
@@ -183,7 +195,7 @@ export function SessionSummaryClient({
 
   return (
     <div
-      className="mx-auto w-full max-w-4xl space-y-8 pb-12 md:space-y-10"
+      className="mx-auto w-full max-w-4xl space-y-8 pb-24 md:space-y-10 md:pb-12"
       data-summary-variant={getSummaryVariant(summary)}
       data-summary-n={summary.answers.length}
       data-summary-accuracy={String(Math.round(summary.accuracy * 100))}

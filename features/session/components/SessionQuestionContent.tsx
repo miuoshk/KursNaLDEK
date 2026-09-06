@@ -285,7 +285,6 @@ export function SessionQuestionContent({
           questionId={q.id}
           submitting={submitting}
           nextLabel={nextLabel}
-          progressLabel={`${currentIndex + 1} / ${total}`}
           onConfidencePick={onConfidencePick}
           onNext={onNext}
           onConfidenceBarShown={onConfidenceBarShown}

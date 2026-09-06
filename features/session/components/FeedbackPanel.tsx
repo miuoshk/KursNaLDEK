@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
+import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 import { contrastToMarkdown } from "@/features/shared/lib/explanationBlocks";
@@ -40,13 +41,6 @@ type FeedbackPanelProps = {
   ) => void;
 };
 
-function trapAsBlockquote(trap: string): string {
-  return trap
-    .split("\n")
-    .map((line) => `> ${line}`)
-    .join("\n");
-}
-
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-gold">
@@ -58,48 +52,66 @@ function SectionLabel({ children }: { children: ReactNode }) {
 function FeedbackSection({
   label,
   children,
-  compact = false,
-  takeaway = false,
   testId,
 }: {
   label: string;
   children: ReactNode;
-  compact?: boolean;
-  takeaway?: boolean;
   testId?: string;
 }) {
   return (
     <section
       data-feedback-section={testId ?? label}
-      className={cn(
-        compact ? "px-5 py-3" : "px-5 py-5",
-        takeaway && "border-l-2 border-brand-gold",
-      )}
+      className="px-5 py-5"
     >
       <SectionLabel>{label}</SectionLabel>
-      <div className={cn("mt-2", takeaway && "font-body text-body-md")}>
-        {children}
-      </div>
+      <div className="mt-2">{children}</div>
     </section>
   );
 }
 
-function optionScreenLine(
-  sessionId: string,
-  question: SessionQuestion,
-  option: SessionQuestion["options"][number],
-): string {
-  const letter = sessionOptionLetter(
-    sessionId,
-    question.id,
-    question.options,
-    option.id,
-    {
-      disableOptionShuffle: question.disableOptionShuffle,
-      explanation: question.explanation,
-    },
+function OptionLetterPill({
+  letter,
+  tone = "neutral",
+}: {
+  letter: string;
+  tone?: "neutral" | "wrong";
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex size-5 shrink-0 items-center justify-center rounded-full border font-body text-[10px] font-semibold",
+        tone === "wrong"
+          ? "border-error bg-error text-brand-bg"
+          : "border-border bg-background text-secondary",
+      )}
+    >
+      {letter}
+    </span>
   );
-  return `${letter} · ${option.text}`;
+}
+
+function OptionReasonBlock({
+  letter,
+  optionText,
+  reason,
+  tone = "neutral",
+}: {
+  letter: string;
+  optionText: string;
+  reason: string;
+  tone?: "neutral" | "wrong";
+}) {
+  return (
+    <div>
+      <p className="flex items-start gap-2 font-body text-body-sm text-secondary">
+        <OptionLetterPill letter={letter} tone={tone} />
+        <span className="min-w-0 flex-1">{optionText}</span>
+      </p>
+      <div className="mt-1">
+        {markdownBlock(reason, "text-primary [&_p]:text-primary")}
+      </div>
+    </div>
+  );
 }
 
 function DistractorReasons({
@@ -113,19 +125,38 @@ function DistractorReasons({
   distractors: Record<string, string> | undefined;
   skipIds: ReadonlySet<string>;
 }) {
-  if (!distractors) return null;
-  const items = question.options.filter(
-    (option) => !skipIds.has(option.id) && Boolean(distractors[option.id]?.trim()),
+  const displayOptions = useSessionOptionOrder(
+    sessionId,
+    question.id,
+    question.options,
+    {
+      disableOptionShuffle: question.disableOptionShuffle,
+      explanation: question.explanation,
+    },
   );
+  if (!distractors) return null;
+  const items = displayOptions.flatMap((option, index) => {
+    if (skipIds.has(option.id)) return [];
+    const reason = distractors[option.id]?.trim();
+    if (!reason) return [];
+    return [
+      {
+        option,
+        letter: String.fromCharCode(65 + index),
+        reason,
+      },
+    ];
+  });
   if (items.length === 0) return null;
   return (
     <ul className="mt-3 space-y-3">
-      {items.map((option) => (
-        <li key={option.id}>
-          <p className="font-body text-body-sm text-secondary">
-            <em>{optionScreenLine(sessionId, question, option)}</em>
-          </p>
-          <div className="mt-1">{markdownBlock(distractors[option.id]!)}</div>
+      {items.map((item) => (
+        <li key={item.option.id}>
+          <OptionReasonBlock
+            letter={item.letter}
+            optionText={item.option.text}
+            reason={item.reason}
+          />
         </li>
       ))}
     </ul>
@@ -185,8 +216,7 @@ export function FeedbackPanel({
           ? hasAnyDistractor
           : hasRemainingDistractors
         : hasRemainingDistractors;
-  const showTakeawayHeader = variant === "concise" && Boolean(takeaway);
-  const showTakeawayFooter = Boolean(takeaway) && !showTakeawayHeader;
+  const showTakeawayHeader = Boolean(takeaway);
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
     explanation: question.explanation,
@@ -243,10 +273,12 @@ export function FeedbackPanel({
         label={t("feedbackYourChoice")}
         testId="your-choice"
       >
-        <p className="font-body text-body-sm text-secondary">
-          <em>{optionScreenLine(sessionId, question, selectedOption)}</em>
-        </p>
-        <div className="mt-2">{markdownBlock(selectedDistractorReason!)}</div>
+        <OptionReasonBlock
+          letter={yourLetter}
+          optionText={selectedOption.text}
+          reason={selectedDistractorReason!}
+          tone="wrong"
+        />
       </FeedbackSection>
     ) : null;
 
@@ -309,8 +341,7 @@ export function FeedbackPanel({
     Boolean(contrast && contrast.length > 0) ||
     Boolean(trap) ||
     (variant === "remedial" && Boolean(question.knowledgeCard)) ||
-    (variant === "remedial" && transferScheduled) ||
-    showTakeawayFooter;
+    (variant === "remedial" && transferScheduled);
 
   return (
     <div
@@ -331,7 +362,9 @@ export function FeedbackPanel({
         )}
         {isCorrect ? t("correctAnswer") : t("incorrectAnswer")}
       </div>
-      <p className="mt-2 font-body text-body-sm text-secondary">{answerLine}</p>
+      {!isCorrect ? (
+        <p className="mt-2 font-body text-body-sm text-secondary">{answerLine}</p>
+      ) : null}
       {hypercorrection ? (
         <p className="mt-2 font-body text-body-sm font-medium text-gold">
           {t("feedbackHypercorrection")}
@@ -350,20 +383,28 @@ export function FeedbackPanel({
       {!hideExplanation && hasBlocks && hasCardSections ? (
         <div className="mt-4 divide-y divide-border overflow-hidden rounded-card bg-card">
           {showTakeawayHeader ? (
-            <FeedbackSection
-              label={t("feedbackPrinciple")}
-              takeaway
-              testId="takeaway-header"
-            >
-              {markdownBlock(takeaway)}
-            </FeedbackSection>
+            <section className="px-5 py-5" data-feedback-section="takeaway-header">
+              {markdownBlock(
+                takeaway,
+                "font-heading text-heading-sm text-primary [&_p]:m-0 [&_p]:font-heading [&_p]:text-heading-sm [&_p]:text-primary",
+              )}
+            </section>
           ) : null}
 
           {(variant === "standard" || variant === "remedial") &&
           correctReason ? (
-            <FeedbackSection label={tCommon("explanation")} testId="explanation">
-              {markdownBlock(correctReason)}
-            </FeedbackSection>
+            showTakeawayHeader ? (
+              <section className="px-5 py-5" data-feedback-section="explanation">
+                {markdownBlock(correctReason)}
+              </section>
+            ) : (
+              <FeedbackSection
+                label={tCommon("explanation")}
+                testId="explanation"
+              >
+                {markdownBlock(correctReason)}
+              </FeedbackSection>
+            )
           ) : null}
 
           {yourChoiceBlock}
@@ -378,13 +419,12 @@ export function FeedbackPanel({
           ) : null}
 
           {trap ? (
-            <FeedbackSection
-              label={t("feedbackTrap")}
-              compact
-              testId="trap"
-            >
-              {markdownBlock(trapAsBlockquote(trap))}
-            </FeedbackSection>
+            <section className="px-5 py-5" data-feedback-section="trap">
+              <div className="border-l-2 border-brand-gold py-0 pl-3">
+                <SectionLabel>{t("feedbackTrap")}</SectionLabel>
+                <div className="mt-2">{markdownBlock(trap)}</div>
+              </div>
+            </section>
           ) : null}
 
           {variant === "remedial" && question.knowledgeCard ? (
@@ -410,16 +450,6 @@ export function FeedbackPanel({
               <Repeat2 className="size-4 shrink-0" aria-hidden />
               {t("feedbackTransferScheduled")}
             </p>
-          ) : null}
-
-          {showTakeawayFooter ? (
-            <FeedbackSection
-              label={t("feedbackPrinciple")}
-              takeaway
-              testId="takeaway-footer"
-            >
-              {markdownBlock(takeaway)}
-            </FeedbackSection>
           ) : null}
         </div>
       ) : null}

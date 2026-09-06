@@ -242,10 +242,6 @@ export function SessionStudyView({
         });
         return;
       }
-      confidenceShownAtRef.current = {
-        questionId: currentQuestion.id,
-        shownAt: Date.now(),
-      };
     },
     [s, sw, isPrzeglad, handleSubmitWithConfidence, adaptiveFeedbackEnabled],
   );
@@ -353,6 +349,14 @@ export function SessionStudyView({
     [wrappedConfidencePick],
   );
 
+  const onConfidenceBarShown = useCallback((questionId: string) => {
+    // KROK 8: latency od pojawienia belki, nie od kliknięcia opcji.
+    confidenceShownAtRef.current = {
+      questionId,
+      shownAt: Date.now(),
+    };
+  }, []);
+
   useSessionKeyboardShortcuts({
     sessionId,
     currentQuestion: s.currentQuestion,
@@ -427,6 +431,7 @@ export function SessionStudyView({
         onJumpTo={wrappedJumpTo}
         onSelectOption={handleSelectOption}
         onConfidencePick={(c) => void wrappedConfidencePick(c)}
+        onConfidenceBarShown={onConfidenceBarShown}
         onNext={wrappedNavigateNext}
         onPrevious={wrappedPrevious}
         showTopicName={showSessionTopics}

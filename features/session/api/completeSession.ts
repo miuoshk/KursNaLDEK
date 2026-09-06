@@ -3,7 +3,6 @@
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
-import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { requireLearningAccessForSubject } from "@/features/access/server/requireLearningAccess";
@@ -13,43 +12,26 @@ import {
   nextStreakValues,
   todayDateString,
 } from "@/features/session/server/sessionStreak";
-import { runCompleteSessionPostAntares } from "@/features/session/server/completeSessionPostAntares";
+import {
+  SESSION_ANSWER_ANTARES_SELECT,
+  computeAndStoreSessionInsights,
+  mapAnswerRowsForPostAntares,
+} from "@/features/session/server/completeSessionPostAntares";
 import { refreshReadinessPercentileCache } from "@/features/statistics/server/refreshReadinessPercentileCache";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { createPerfSpan, logPerf, vercelRuntimeMeta } from "@/features/session/lib/perfLog";
+import { parseCompleteSessionPayload } from "@/features/session/lib/parseCompleteSessionPayload";
 import { headers } from "next/headers";
-
-const feedbackEventSchema = z.discriminatedUnion("eventType", [
-  z.object({
-    eventType: z.literal("feedback_shown"),
-    questionId: z.string().min(1),
-    payload: z.object({
-      variant: z.enum(["concise", "standard", "remedial"]),
-      hasBlocks: z.boolean(),
-      hypercorrection: z.boolean(),
-      elements: z.array(z.string().min(1)).max(20),
-    }),
-  }),
-  z.object({
-    eventType: z.literal("feedback_expand"),
-    questionId: z.string().min(1),
-    payload: z.object({
-      section: z.enum(["full", "distractors"]),
-    }),
-  }),
-]);
-
-const schema = z.object({
-  sessionId: z.string().uuid(),
-  durationSecondsFallback: z.number().int().min(0).optional(),
-  feedbackEvents: z.array(feedbackEventSchema).max(200).optional(),
-});
 
 export type CompleteSessionResult =
   { ok: true; summary: SessionSummaryData } | { ok: false; message: string };
 
 export async function completeSession(
-  raw: z.infer<typeof schema>,
+  raw: {
+    sessionId: string;
+    durationSecondsFallback?: number;
+    feedbackEvents?: unknown;
+  },
 ): Promise<CompleteSessionResult> {
   const span = createPerfSpan("completeSession HTTP");
   const extra: Record<string, unknown> = { sessionId: raw.sessionId };
@@ -61,8 +43,8 @@ export async function completeSession(
 
   const t = await getTranslations("session");
   span.mark("getTranslations");
-  const parsed = schema.safeParse(raw);
-  if (!parsed.success) {
+  const parsed = parseCompleteSessionPayload(raw);
+  if (!parsed.ok) {
     extra.ok = false;
     span.end(extra);
     return { ok: false, message: t("errors.invalidData") };
@@ -121,6 +103,35 @@ export async function completeSession(
       span.end(extra);
       if (!summary) {
         return { ok: false, message: t("errors.loadSummaryFailed") };
+      }
+      if (!summary.sessionInsights && !summary.examReadiness) {
+        const bgUserId = user.id;
+        const bgSessionId = session.id as string;
+        after(async () => {
+          try {
+            const bgAdmin = createAdminClient();
+            const { data: rows } = await bgAdmin
+              .from("session_answers")
+              .select(SESSION_ANSWER_ANTARES_SELECT)
+              .eq("session_id", bgSessionId);
+            const recovered = mapAnswerRowsForPostAntares(rows ?? []);
+            if (recovered.length === 0) return;
+            await computeAndStoreSessionInsights(bgAdmin, {
+              userId: bgUserId,
+              sessionId: bgSessionId,
+              ansRows: recovered,
+              answeredCount: recovered.length,
+              adaptiveFeedbackEnabled:
+                session.feedback_experiment_variant === "treatment",
+              engineVariant:
+                session.engine_variant === "treatment" ? "treatment" : "shadow",
+              parameterSetId:
+                (session.memory_parameter_set_id as string | null) ?? null,
+            });
+          } catch (err) {
+            console.error("[completeSession] insights recovery", err);
+          }
+        });
       }
       return { ok: true, summary };
     }
@@ -255,16 +266,7 @@ export async function completeSession(
     // a footer z insightami i tak pokazuje się tylko w trybie inteligentnym.
     // ═══════════════════════════════════════════════════════════
 
-    const postAnsRows = ansRows.map((a) => ({
-      question_id: a.question_id as string,
-      is_correct: Boolean(a.is_correct),
-      confidence: (a.confidence as string | null) ?? null,
-      time_spent_seconds: (a.time_spent_seconds as number | null) ?? null,
-      question_order: (a.question_order as number | null) ?? null,
-      answered_at: (a.answered_at as string | null) ?? null,
-      retrievability_before: (a.retrievability_before as number | null) ?? null,
-      retrievability_after: (a.retrievability_after as number | null) ?? null,
-    }));
+    const postAnsRows = mapAnswerRowsForPostAntares(ansRows);
 
     const [summary, profAfter] = await Promise.all([
       buildSessionSummary(supabase, parsed.data.sessionId, user.id),
@@ -331,44 +333,18 @@ export async function completeSession(
         // bo to najcięższa część i nie ma prawa blokować ekranu podsumowania.
         if (postAnsRows.length > 0) {
           try {
-            const { data: topicRows, error: topicErr } = await bgAdmin
-              .from("session_answers")
-              .select("questions!inner(topic_id)")
-              .eq("session_id", bgSessionId);
-            afterSpan.mark("affectedTopics firstQuery");
-
-            if (topicErr) throw topicErr;
-
-            const affectedTopicIds = [
-              ...new Set(
-                (topicRows ?? [])
-                  .map((r) => {
-                    const q = r.questions as unknown as {
-                      topic_id: string;
-                    } | null;
-                    return q?.topic_id;
-                  })
-                  .filter((id): id is string => Boolean(id)),
-              ),
-            ];
-
-            await runCompleteSessionPostAntares(
-              bgAdmin,
-              bgUserId,
-              bgSessionId,
-              affectedTopicIds,
-              postAnsRows,
+            await computeAndStoreSessionInsights(bgAdmin, {
+              userId: bgUserId,
+              sessionId: bgSessionId,
+              ansRows: postAnsRows,
               answeredCount,
-              session.feedback_experiment_variant === "treatment",
-              {
-                engineVariant:
-                  session.engine_variant === "treatment"
-                    ? "treatment"
-                    : "shadow",
-                parameterSetId:
-                  (session.memory_parameter_set_id as string | null) ?? null,
-              },
-            );
+              adaptiveFeedbackEnabled:
+                session.feedback_experiment_variant === "treatment",
+              engineVariant:
+                session.engine_variant === "treatment" ? "treatment" : "shadow",
+              parameterSetId:
+                (session.memory_parameter_set_id as string | null) ?? null,
+            });
             afterSpan.mark("postAntares until session_insights");
           } catch (err) {
             console.error("[completeSession] postAntares (bg)", err);

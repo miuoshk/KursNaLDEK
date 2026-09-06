@@ -171,6 +171,7 @@ export function FeedbackPanel({
       data-has-blocks={hasBlocks ? "true" : "false"}
     >
       <div
+        data-session-verdict
         className={cn(
           "flex items-center gap-2 font-body text-body-lg font-semibold",
           isCorrect ? "text-success" : "text-error",

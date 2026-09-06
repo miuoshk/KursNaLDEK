@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 import {
   buildFeedbackShownEvent,
   type FeedbackExpandSection,
-  type PendingFeedbackEvent,
+  type FeedbackShownEvent,
 } from "@/features/session/lib/feedbackTelemetry";
 
 type FeedbackPanelProps = {
@@ -31,7 +31,7 @@ type FeedbackPanelProps = {
   variant: FeedbackVariant;
   transferScheduled?: boolean;
   confidence?: Confidence | null;
-  onFeedbackShown?: (event: PendingFeedbackEvent) => void;
+  onFeedbackShown?: (event: FeedbackShownEvent) => void;
   onFeedbackExpand?: (
     questionId: string,
     section: FeedbackExpandSection,

@@ -88,7 +88,11 @@ test("queue: shown raz na pytanie, expand wiele razy, drain opróżnia", () => {
   const first = q.drain();
   assert.equal(first.length, 3);
   assert.equal(first[0]?.eventType, "feedback_shown");
-  assert.equal(first[1]?.payload.section, "full");
+  assert.equal(first[1]?.eventType, "feedback_expand");
+  assert.equal(
+    first[1]?.eventType === "feedback_expand" ? first[1].payload.section : null,
+    "full",
+  );
   assert.equal(q.drain().length, 0);
 });
 

@@ -44,3 +44,4 @@ next-env.d.ts
 
 # duże zrzuty danych uczenia (setki MB, dane użytkowników) — nigdy do repo
 /exports/*.jsonl
+/scripts/out/

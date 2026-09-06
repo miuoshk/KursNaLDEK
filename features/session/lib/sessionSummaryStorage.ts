@@ -82,7 +82,9 @@ export function mergeEnrichedSessionSummary(
     examReadiness: next.examReadiness ?? prev.examReadiness,
     dailyPlan: next.dailyPlan ?? prev.dailyPlan,
     strengthenedConcepts:
-      next.strengthenedConcepts ?? prev.strengthenedConcepts,
+      next.strengthenedConcepts && next.strengthenedConcepts.length > 0
+        ? next.strengthenedConcepts
+        : prev.strengthenedConcepts,
     answers: next.answers.length > 0 ? next.answers : prev.answers,
     topicId: prev.topicId ?? next.topicId,
     sourceFilter: next.sourceFilter ?? prev.sourceFilter,

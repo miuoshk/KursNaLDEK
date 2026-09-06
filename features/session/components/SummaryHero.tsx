@@ -16,7 +16,7 @@ import type { ReactNode } from "react";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
-import { focusTopicFromBreakdown } from "@/features/session/lib/sessionSummaryTips";
+import { pickSummaryFocus } from "@/features/session/lib/sessionSummaryTips";
 import {
   canComparePreviousSession,
   getSummaryVariant,
@@ -83,15 +83,25 @@ function SummaryInsightsFooter({
     insights?.fatigueWarning === "fatigue_detected"
       ? t("fatigueSummary")
       : insights?.fatigueWarning;
-  const localFocus = focusTopicFromBreakdown(summary.topicBreakdown);
+  const focus = pickSummaryFocus({
+    concepts: summary.strengthenedConcepts,
+    topicBreakdown: summary.topicBreakdown,
+    nextSessionFocus: insights?.nextSessionFocus,
+  });
   const focusText =
-    insights?.nextSessionFocus ??
-    (localFocus
-      ? t(localFocus.weak ? "summaryFocusTopic" : "summaryHoldTopic", {
-          topic: localFocus.topic,
-          percent: localFocus.percent,
+    focus?.kind === "concept"
+      ? t(focus.hint.weak ? "summaryFocusConcept" : "summaryHoldConcept", {
+          concept: focus.hint.concept,
+          percent: focus.hint.percent,
         })
-      : null);
+      : focus?.kind === "topic-server"
+        ? focus.text
+        : focus?.kind === "topic-local"
+          ? t(focus.hint.weak ? "summaryFocusTopic" : "summaryHoldTopic", {
+              topic: focus.hint.topic,
+              percent: focus.hint.percent,
+            })
+          : null;
 
   if (variant === "micro") return null;
 
@@ -104,7 +114,7 @@ function SummaryInsightsFooter({
       : null,
   ].filter(Boolean) as string[];
 
-  if (summary.mode !== "inteligentna" || tips.length === 0) return null;
+  if (tips.length === 0) return null;
 
   return (
     <div className="mt-8 border-t border-white/[0.08] pt-6">

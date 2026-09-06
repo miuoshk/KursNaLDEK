@@ -19,8 +19,18 @@ export type QuestionRow = {
   cemSessionLabel?: string | null;
   cemQuestionNumber?: number | null;
   question_concepts?:
-    | { concept_id: string; relation?: string; weight?: number }[]
-    | { concept_id: string; relation?: string; weight?: number }
+    | {
+        concept_id: string;
+        relation?: string;
+        weight?: number;
+        concepts?: { name: string } | { name: string }[] | null;
+      }[]
+    | {
+        concept_id: string;
+        relation?: string;
+        weight?: number;
+        concepts?: { name: string } | { name: string }[] | null;
+      }
     | null;
   topics:
     | { name: string; knowledge_card?: string | null }
@@ -40,6 +50,19 @@ function topicKnowledgeCard(topics: QuestionRow["topics"]): string | null {
   return topics.knowledge_card ?? null;
 }
 
+function conceptLabel(
+  concepts:
+    | { name: string }
+    | { name: string }[]
+    | null
+    | undefined,
+  fallbackId: string,
+): string {
+  if (!concepts) return fallbackId;
+  if (Array.isArray(concepts)) return concepts[0]?.name ?? fallbackId;
+  return concepts.name ?? fallbackId;
+}
+
 export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
   const raw = row.options;
   const options = Array.isArray(raw)
@@ -56,6 +79,13 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
   const primaryConcepts = conceptLinks.filter(
     (entry) => entry.relation === "primary",
   );
+  const mappedConcepts = (primaryConcepts.length > 0
+    ? primaryConcepts
+    : conceptLinks
+  ).map((entry) => ({
+    id: entry.concept_id,
+    label: conceptLabel(entry.concepts, entry.concept_id),
+  }));
 
   return {
     id: row.id,
@@ -73,10 +103,8 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     topicName: topicLabel(row.topics),
     knowledgeCard: topicKnowledgeCard(row.topics),
     topicId: row.topic_id ?? undefined,
-    conceptIds: (primaryConcepts.length > 0
-      ? primaryConcepts
-      : conceptLinks
-    ).map((entry) => entry.concept_id),
+    conceptIds: mappedConcepts.map((entry) => entry.id),
+    concepts: mappedConcepts,
     disableOptionShuffle: row.disable_option_shuffle === true,
     source: row.source ?? undefined,
     repeatCount: row.repeat_count ?? undefined,

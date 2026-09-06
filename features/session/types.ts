@@ -35,6 +35,8 @@ export interface SessionQuestion {
   topicId?: string;
   /** Kontrolowany słownik pojęć używany do transferu i remediacji. */
   conceptIds?: string[];
+  /** Nazwane pojęcia z sesji — do natychmiastowego podsumowania, bez czekania na L2. */
+  concepts?: { id: string; label: string }[];
   /** Metadane ANTARES per user; tylko tryb inteligentna. */
   antares?: SessionQuestionMeta;
   /** Ręczny zakaz shuffle opcji (admin) lub wykryta kombinatoryka — opcje w stałej kolejności. */

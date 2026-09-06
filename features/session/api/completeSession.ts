@@ -67,7 +67,7 @@ export async function completeSession(
     const { data: session, error: se } = await supabase
       .from("study_sessions")
       .select(
-        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed, feedback_experiment_variant, engine_variant, memory_parameter_set_id",
+        "id, user_id, subject_id, total_questions, correct_answers, duration_seconds, is_completed, mode, feedback_experiment_variant, engine_variant, memory_parameter_set_id",
       )
       .eq("id", parsed.data.sessionId)
       .eq("user_id", user.id)
@@ -265,8 +265,11 @@ export async function completeSession(
     }
 
     const postAnsRows = mapAnswerRowsForPostAntares(ansRows);
+    const sessionMode = session.mode as string;
+    const needsSyncTips =
+      sessionMode === "inteligentna" || sessionMode === "nauka";
     let insightsWritten = false;
-    if (postAnsRows.length > 0) {
+    if (postAnsRows.length > 0 && needsSyncTips) {
       try {
         const written = await computeAndStoreSessionInsights(admin, {
           userId: user.id,
@@ -279,12 +282,13 @@ export async function completeSession(
             session.engine_variant === "treatment" ? "treatment" : "shadow",
           parameterSetId:
             (session.memory_parameter_set_id as string | null) ?? null,
+          phase: "tips",
         });
         insightsWritten = written != null;
       } catch (err) {
-        console.error("[completeSession] postAntares (sync)", err);
+        console.error("[completeSession] postAntares (tips)", err);
       }
-      span.mark("postAntares sync");
+      span.mark("postAntares tips");
     }
 
     const [summary, profAfter] = await Promise.all([
@@ -342,15 +346,15 @@ export async function completeSession(
         httpReturnAt,
         deltaFromHttpReturnMs: afterStartAt - httpReturnAt,
         httpReturnWasUnset: httpReturnAt === 0,
+        tipsWrittenInRequest: insightsWritten,
         ...vercelRuntimeMeta(),
       });
       const afterSpan = createPerfSpan("completeSession after()");
       try {
         const bgAdmin = createAdminClient();
-        // ANTARES najpierw — zapisuje session_insights/examReadiness do DB,
-        // skąd klient (tryb inteligentny) dociąga je pollingiem. Liczymy tu,
-        // bo to najcięższa część i nie ma prawa blokować ekranu podsumowania.
-        if (postAnsRows.length > 0 && !insightsWritten) {
+        // Mastery + exam — ciężkie, nie blokują HTTP. Wskazówki (tips)
+        // zapisaliśmy w requestcie; tu dociągamy resztę albo odzyskujemy całość.
+        if (postAnsRows.length > 0) {
           try {
             await computeAndStoreSessionInsights(bgAdmin, {
               userId: bgUserId,
@@ -363,8 +367,9 @@ export async function completeSession(
                 session.engine_variant === "treatment" ? "treatment" : "shadow",
               parameterSetId:
                 (session.memory_parameter_set_id as string | null) ?? null,
+              phase: "full",
             });
-            afterSpan.mark("postAntares until session_insights");
+            afterSpan.mark("postAntares mastery+exam");
           } catch (err) {
             console.error("[completeSession] postAntares (bg)", err);
           }

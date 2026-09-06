@@ -87,6 +87,8 @@ export async function loadTopicIdsForQuestions(
   ];
 }
 
+export type PostAntaresPhase = "tips" | "full";
+
 export async function computeAndStoreSessionInsights(
   supabase: SupabaseClient,
   input: {
@@ -97,6 +99,8 @@ export async function computeAndStoreSessionInsights(
     adaptiveFeedbackEnabled: boolean;
     engineVariant: "shadow" | "treatment";
     parameterSetId: string | null;
+    /** `tips` = tylko nextSessionFocus/kalibracja. `full` = + mastery + exam. */
+    phase?: PostAntaresPhase;
   },
 ): Promise<PostAntaresResult | null> {
   const topicIds = await loadTopicIdsForQuestions(
@@ -115,6 +119,7 @@ export async function computeAndStoreSessionInsights(
       engineVariant: input.engineVariant,
       parameterSetId: input.parameterSetId,
     },
+    input.phase ?? "full",
   );
 }
 
@@ -240,6 +245,7 @@ export async function runCompleteSessionPostAntares(
     engineVariant: "shadow" | "treatment";
     parameterSetId: string | null;
   },
+  phase: PostAntaresPhase = "full",
 ): Promise<PostAntaresResult | null> {
   if (ansRows.length === 0) {
     return null;
@@ -391,6 +397,19 @@ export async function runCompleteSessionPostAntares(
     affectedTopicCount: affectedTopicIds.length,
     phase: "tips",
   });
+
+  if (phase === "tips") {
+    return {
+      sessionInsights,
+      examReadiness: {
+        score: 0,
+        verdict: "",
+        weakestTopics: [],
+        estimatedReadyDate: null,
+        dailyRecommendation: 25,
+      },
+    };
+  }
 
   try {
     await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {

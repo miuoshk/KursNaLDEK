@@ -40,7 +40,7 @@ export function FeedbackPanel({
   const takeaway = blocks?.takeaway?.trim() || question.explanation;
   const correctReason = blocks?.correctReason?.trim() || question.explanation;
   const selectedDistractorReason =
-    blocks?.distractors[selectedOptionId]?.trim() || null;
+    blocks?.distractors?.[selectedOptionId]?.trim() || null;
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
     explanation: question.explanation,

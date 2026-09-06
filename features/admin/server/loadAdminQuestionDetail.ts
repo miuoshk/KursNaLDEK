@@ -1,9 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 import {
-  normalizeStructuredExplanation,
-  type StructuredExplanation,
-} from "@/features/session/lib/structuredExplanation";
+  normalizeExplanationBlocks,
+  type ExplanationBlocksV2,
+} from "@/features/shared/lib/explanationBlocks";
 
 export type AdminQuestionOption = {
   id: string;
@@ -21,7 +21,7 @@ export type AdminQuestionDetail = {
   options: AdminQuestionOption[];
   correctOptionId: string;
   explanation: string;
-  explanationBlocks: StructuredExplanation | null;
+  explanationBlocks: ExplanationBlocksV2 | null;
   conceptIds: string[];
   sourceExam: string | null;
   sourceCode: string | null;
@@ -93,6 +93,8 @@ export async function loadAdminQuestionDetail(
   const conceptIds = (
     Array.isArray(conceptLinks) ? conceptLinks : [conceptLinks]
   ).map((link) => link.concept_id);
+  const options = normalizeOptions(data.options);
+  const correctOptionId = (data.correct_option_id as string) ?? "";
 
   return {
     id: data.id as string,
@@ -102,10 +104,14 @@ export async function loadAdminQuestionDetail(
     subjectName: subjectName ?? null,
     questionType: (data.question_type as string | null) ?? null,
     text: (data.text as string) ?? "",
-    options: normalizeOptions(data.options),
-    correctOptionId: (data.correct_option_id as string) ?? "",
+    options,
+    correctOptionId,
     explanation: (data.explanation as string) ?? "",
-    explanationBlocks: normalizeStructuredExplanation(data.explanation_blocks),
+    explanationBlocks: normalizeExplanationBlocks(data.explanation_blocks, {
+      questionId: data.id as string,
+      optionIds: options.map((option) => option.id),
+      correctOptionId,
+    }),
     conceptIds,
     sourceExam: (data.source_exam as string | null) ?? null,
     sourceCode: (data.source_code as string | null) ?? null,

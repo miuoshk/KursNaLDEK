@@ -13,6 +13,7 @@ type Props = {
   rows?: number;
   label?: string;
   hint?: string;
+  readOnly?: boolean;
 };
 
 function wrapSelection(
@@ -63,6 +64,7 @@ export function MarkdownExplanationEditor({
   rows = 8,
   label = "Wyjaśnienie",
   hint = "Markdown: **pogrubienie**, *kursywa*, listy (- …). Podgląd jak w sesji nauki.",
+  readOnly = false,
 }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const hintId = useId();
@@ -96,43 +98,45 @@ export function MarkdownExplanationEditor({
           {label}
         </span>
         <div className="flex flex-wrap items-center gap-1">
-          <div
-            className="flex items-center gap-0.5 rounded-btn border border-border bg-background/60 p-0.5"
-            role="toolbar"
-            aria-label="Formatowanie markdown"
-          >
-            <button
-              type="button"
-              className={toolbarBtn}
-              title="Pogrubienie (**tekst**)"
-              aria-label="Pogrubienie"
-              onClick={() =>
-                applyEdit((el) => wrapSelection(el, "**", "**", "tekst"))
-              }
+          {!readOnly ? (
+            <div
+              className="flex items-center gap-0.5 rounded-btn border border-border bg-background/60 p-0.5"
+              role="toolbar"
+              aria-label="Formatowanie markdown"
             >
-              <Bold className="size-4" aria-hidden />
-            </button>
-            <button
-              type="button"
-              className={toolbarBtn}
-              title="Kursywa (*tekst*)"
-              aria-label="Kursywa"
-              onClick={() =>
-                applyEdit((el) => wrapSelection(el, "*", "*", "tekst"))
-              }
-            >
-              <Italic className="size-4" aria-hidden />
-            </button>
-            <button
-              type="button"
-              className={toolbarBtn}
-              title="Lista (- element)"
-              aria-label="Lista punktowana"
-              onClick={() => applyEdit((el) => prefixLines(el, "- "))}
-            >
-              <List className="size-4" aria-hidden />
-            </button>
-          </div>
+              <button
+                type="button"
+                className={toolbarBtn}
+                title="Pogrubienie (**tekst**)"
+                aria-label="Pogrubienie"
+                onClick={() =>
+                  applyEdit((el) => wrapSelection(el, "**", "**", "tekst"))
+                }
+              >
+                <Bold className="size-4" aria-hidden />
+              </button>
+              <button
+                type="button"
+                className={toolbarBtn}
+                title="Kursywa (*tekst*)"
+                aria-label="Kursywa"
+                onClick={() =>
+                  applyEdit((el) => wrapSelection(el, "*", "*", "tekst"))
+                }
+              >
+                <Italic className="size-4" aria-hidden />
+              </button>
+              <button
+                type="button"
+                className={toolbarBtn}
+                title="Lista (- element)"
+                aria-label="Lista punktowana"
+                onClick={() => applyEdit((el) => prefixLines(el, "- "))}
+              >
+                <List className="size-4" aria-hidden />
+              </button>
+            </div>
+          ) : null}
 
           <div className="flex items-center gap-0.5 rounded-btn border border-border bg-background/60 p-0.5">
             {(
@@ -176,12 +180,14 @@ export function MarkdownExplanationEditor({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             rows={rows}
+            readOnly={readOnly}
             aria-describedby={hintId}
             spellCheck
             className={cn(
               "min-h-[12rem] w-full resize-y rounded-btn border border-border bg-background px-3 py-2",
               "font-mono text-body-sm leading-relaxed text-primary placeholder:text-muted",
               "focus:border-brand-sage focus:outline-none",
+              readOnly && "cursor-default opacity-80",
             )}
             placeholder="Treść wyjaśnienia…"
           />

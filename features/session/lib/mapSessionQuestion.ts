@@ -1,5 +1,5 @@
 import type { SessionQuestion } from "@/features/session/types";
-import { normalizeStructuredExplanation } from "@/features/session/lib/structuredExplanation";
+import { normalizeExplanationBlocks } from "@/features/shared/lib/explanationBlocks";
 
 export type QuestionRow = {
   id: string;
@@ -63,7 +63,11 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     options,
     correctOptionId: row.correct_option_id,
     explanation: row.explanation,
-    explanationBlocks: normalizeStructuredExplanation(row.explanation_blocks),
+    explanationBlocks: normalizeExplanationBlocks(row.explanation_blocks, {
+      questionId: row.id,
+      optionIds: options.map((option) => option.id),
+      correctOptionId: row.correct_option_id,
+    }),
     sourceCode: row.source_code,
     imageUrl: row.image_url ?? null,
     topicName: topicLabel(row.topics),

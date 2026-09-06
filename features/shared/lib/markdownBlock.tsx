@@ -34,6 +34,8 @@ export function markdownBlock(md: string) {
         "[&_td]:border [&_td]:border-white/[0.12] [&_td]:px-3 [&_td]:py-2",
         "[&_tr:hover]:bg-white/[0.02]",
         "[&_del]:text-muted [&_del]:line-through",
+        "[&_blockquote]:mt-3 [&_blockquote]:border-l-2 [&_blockquote]:border-brand-gold [&_blockquote]:bg-white/[0.04] [&_blockquote]:px-4 [&_blockquote]:py-3 [&_blockquote]:not-italic [&_blockquote]:text-secondary",
+        "[&_blockquote_p]:mt-0",
         "[&_.katex-display]:my-3",
       )}
     >

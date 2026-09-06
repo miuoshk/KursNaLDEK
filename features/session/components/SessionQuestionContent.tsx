@@ -222,7 +222,7 @@ export function SessionQuestionContent({
             variants={feedbackVariants}
             initial="hidden"
             animate="visible"
-            className="mx-auto w-full max-w-3xl"
+            className="mx-auto w-full max-w-3xl md:max-w-[72ch]"
           >
             <FeedbackPanel
               sessionId={sessionId}
@@ -269,7 +269,7 @@ export function SessionQuestionContent({
             ) : null}
           </motion.div>
         ) : (
-          <div className="mx-auto mt-8 w-full max-w-3xl">
+          <div className="mx-auto mt-8 w-full max-w-3xl md:max-w-[72ch]">
             <SessionQuestionActions
               questionId={q.id}
               questionText={q.text}
@@ -289,38 +289,13 @@ export function SessionQuestionContent({
           questionId={q.id}
           submitting={submitting}
           nextLabel={nextLabel}
+          progressLabel={`${currentIndex + 1} / ${total}`}
           onConfidencePick={onConfidencePick}
           onNext={onNext}
           onConfidenceBarShown={onConfidenceBarShown}
         />
-        <div className="px-2 py-1.5 sm:px-4 sm:py-3">
-          <div className="mx-auto flex max-w-3xl items-center gap-1 lg:hidden">
-            <button
-              type="button"
-              disabled={currentIndex <= 0}
-              onClick={onPrevious}
-              className={cn(navBtnClass, "size-11")}
-              aria-label={t("previous")}
-            >
-              <ChevronLeft className="size-5" aria-hidden />
-            </button>
-            {showSquares ? (
-              <div className="min-w-0 flex-1">
-                <SessionProgressSquares
-                  questions={questions!}
-                  answeredMap={answeredMap!}
-                  currentIndex={currentIndex}
-                  onJumpTo={onJumpTo}
-                />
-              </div>
-            ) : (
-              <p className="min-w-0 flex-1 text-center font-body text-body-xs tabular-nums text-secondary">
-                {currentIndex + 1}/{total}
-              </p>
-            )}
-          </div>
-
-          <div className="mx-auto hidden max-w-3xl lg:block">
+        <div className="hidden px-2 py-1.5 sm:px-4 sm:py-3 md:block">
+          <div className="mx-auto max-w-3xl">
             {showSquares ? (
               <div className="mb-2">
                 <SessionProgressSquares

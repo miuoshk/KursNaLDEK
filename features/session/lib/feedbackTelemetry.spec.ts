@@ -50,7 +50,7 @@ test("concise z blokami: takeaway + full, bez od razu otwartego werdyktu w eleme
   ]);
 });
 
-test("standard + pewny błąd: hypercorrection i distractors", () => {
+test("standard + pewny błąd: hypercorrection, Twój wybór i distractors", () => {
   const elements = listFeedbackElements({
     question: question(BLOCKS),
     selectedOptionId: "b",
@@ -60,7 +60,10 @@ test("standard + pewny błąd: hypercorrection i distractors", () => {
   });
   assert.ok(elements.includes("hypercorrection"));
   assert.ok(elements.includes("correctReason"));
+  assert.ok(elements.includes("selectedDistractor"));
   assert.ok(elements.includes("distractors"));
+  assert.ok(elements.includes("takeaway"));
+  assert.equal(elements.at(-1), "takeaway");
 });
 
 test("bez bloków: legacy, nie takeaway", () => {

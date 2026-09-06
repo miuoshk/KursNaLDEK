@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   EXPLANATION_BLOCKS_LIMITS,
   contrastToGfm,
+  contrastToMarkdown,
   explanationBlocksTextAllowed,
   explanationBlocksValid,
   normalizeExplanationBlocks,
@@ -219,4 +220,5 @@ test("GFM kontrast: parse ↔ serialize", () => {
   assert.match(gfm, /\| --- \|/);
   assert.deepEqual(parseContrastGfm(gfm), rows);
   assert.equal(parseContrastGfm("   "), undefined);
+  assert.equal(contrastToMarkdown(rows), gfm);
 });

@@ -1,6 +1,7 @@
 import { computeSessionXp } from "@/features/session/server/computeSessionXp";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import type { Confidence, SessionAnswer, SessionMode, SessionQuestion, SourceFilter } from "@/features/session/types";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 
 function optionText(opts: { id: string; text: string }[], id: string) {
   return opts.find((o) => o.id === id)?.text ?? id;
@@ -86,7 +87,9 @@ export function buildClientSessionSummary(
       isCorrect: a.isCorrect,
       confidence: a.confidence as Confidence | null,
       timeSpentSeconds: a.timeSpentSeconds,
-      explanation: q?.explanation || undefined,
+      explanation: isExplanationHiddenForSubject(subjectId)
+        ? undefined
+        : q?.explanation || undefined,
     });
   }
 

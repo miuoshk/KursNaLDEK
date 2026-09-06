@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
+import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
 import {
   SUMMARY_WRONG_FILTER_MIN_N,
   summaryQuestionSnippet,
@@ -108,7 +109,8 @@ export function SummaryAnswerStrip({
                       </p>
                     </>
                   )}
-                  {a.explanation ? (
+                  {a.explanation &&
+                  !isExplanationHiddenForSubject(summary.subjectId) ? (
                     <div>
                       <p className="font-body text-body-xs font-medium uppercase tracking-widest text-muted">
                         {tCommon("explanation")}

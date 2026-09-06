@@ -228,3 +228,8 @@ export function contrastToGfm(rows: string[][]): string {
   const sep = `| ${Array.from({ length: width }, () => "---").join(" | ")} |`;
   return [fmt(rows[0]), sep, ...rows.slice(1).map(fmt)].join("\n");
 }
+
+/** GFM table for `markdownBlock` in FeedbackPanel. */
+export function contrastToMarkdown(rows: string[][]): string {
+  return contrastToGfm(rows);
+}

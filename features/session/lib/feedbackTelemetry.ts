@@ -80,7 +80,7 @@ export function listFeedbackElements(input: {
   if ((variant === "standard" || variant === "remedial") && correctReason) {
     elements.push("correctReason");
   }
-  if (variant === "remedial" && selectedDistractorReason) {
+  if (!isCorrect && selectedDistractorReason) {
     elements.push("selectedDistractor");
   }
   if (variant === "concise" && (correctReason || hasAnyDistractor)) {
@@ -96,6 +96,9 @@ export function listFeedbackElements(input: {
     elements.push("remediation");
   }
   if (variant === "remedial" && transferScheduled) elements.push("transfer");
+  if ((variant === "standard" || variant === "remedial") && takeaway) {
+    elements.push("takeaway");
+  }
   return elements;
 }
 

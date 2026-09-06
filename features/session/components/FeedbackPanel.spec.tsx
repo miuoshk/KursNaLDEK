@@ -18,6 +18,9 @@ const MESSAGES = {
     feedbackFullExplanation: "Pokaż pełne wyjaśnienie",
     feedbackWhyOthers: "Dlaczego nie pozostałe?",
     feedbackWhySelected: "Dlaczego ten wybór był mylący",
+    feedbackYourChoice: "Twój wybór",
+    feedbackTrap: "Pułapka",
+    feedbackContrast: "Kontrast",
     feedbackHypercorrection: "Byłeś pewny — to pytanie wróci szybciej",
     feedbackRemediation: "Krótka remediacja",
     feedbackTransferScheduled:
@@ -150,8 +153,9 @@ test("snapshot: concise × bloki pełne", () => {
   assert.match(shot, /DIST_B_TOKEN/);
   assert.match(shot, /CONTRAST_OSTRY/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
-  assert.doesNotMatch(shot, /Dlaczego ten wybór był mylący/);
+  assert.doesNotMatch(shot, /Twój wybór/);
   assert.doesNotMatch(shot, /Byłeś pewny/);
+  assert.equal(html.split("Zasada").length - 1, 1);
   assertOrder(html, [
     "Poprawna odpowiedź!",
     "Zasada",
@@ -161,6 +165,10 @@ test("snapshot: concise × bloki pełne", () => {
     CONTRAST_A,
     TRAP,
   ]);
+  assert.ok(
+    html.lastIndexOf(TAKEAWAY) < html.indexOf("Pokaż pełne wyjaśnienie"),
+    "w concise Zasada tylko jako nagłówek, bez duplikatu na dole",
+  );
 });
 
 test("snapshot: concise × bloki bez takeaway", () => {
@@ -213,10 +221,20 @@ test("snapshot: standard × bloki pełne", () => {
   assert.match(shot, /Opcja gamma błędna/);
   assert.match(shot, /Opcja delta błędna/);
   assert.match(shot, /CONTRAST_OSTRY/);
-  assert.doesNotMatch(shot, /Zasada/);
+  assert.match(shot, /Zasada/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
-  assert.doesNotMatch(shot, /Dlaczego ten wybór był mylący/);
-  assertOrder(html, [MECHANISM, "Dlaczego nie pozostałe?", CONTRAST_A, TRAP]);
+  assert.doesNotMatch(shot, /Twój wybór/);
+  assertOrder(html, [
+    MECHANISM,
+    "Dlaczego nie pozostałe?",
+    CONTRAST_A,
+    TRAP,
+    TAKEAWAY,
+  ]);
+  assert.ok(
+    html.lastIndexOf("Zasada") > html.lastIndexOf(TRAP),
+    "Zasada jest ostatnią sekcją w standard",
+  );
 });
 
 test("snapshot: standard × bloki bez takeaway", () => {
@@ -260,21 +278,23 @@ test("snapshot: remedial × bloki pełne", () => {
   assert.match(shot, /detailsOpen=false/);
   assert.match(shot, /Niepoprawna odpowiedź/);
   assert.match(shot, /MECHANISM_TOKEN/);
-  assert.match(shot, /Dlaczego ten wybór był mylący/);
+  assert.match(shot, /Twój wybór/);
+  assert.match(shot, /B · Opcja beta myląca/);
   assert.match(shot, /DIST_B_TOKEN/);
   assert.match(shot, /Dlaczego nie pozostałe\?/);
-  assert.match(shot, /Opcja gamma błędna/);
+  assert.match(shot, /C · Opcja gamma błędna/);
   assert.match(shot, /DIST_C_TOKEN/);
   assert.match(shot, /TRAP_TOKEN/);
   assert.match(shot, /CONTRAST_OSTRY/);
   assert.match(shot, /KNOWLEDGE_TOKEN/);
   assert.match(shot, /Za kilka pytań/);
+  assert.match(shot, /Zasada/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
   assert.doesNotMatch(shot, /Byłeś pewny/);
   assertOrder(html, [
     "Niepoprawna odpowiedź",
     MECHANISM,
-    "Dlaczego ten wybór był mylący",
+    "Twój wybór",
     DIST_B,
     "Dlaczego nie pozostałe?",
     DIST_C,
@@ -282,7 +302,12 @@ test("snapshot: remedial × bloki pełne", () => {
     TRAP,
     KNOWLEDGE,
     "Za kilka pytań",
+    TAKEAWAY,
   ]);
+  assert.ok(
+    html.lastIndexOf("Zasada") > html.lastIndexOf("Za kilka pytań"),
+    "Zasada jest ostatnią sekcją w remedial",
+  );
 });
 
 test("snapshot: remedial × bloki bez takeaway", () => {
@@ -295,7 +320,7 @@ test("snapshot: remedial × bloki bez takeaway", () => {
   const shot = snapshot(html);
   assert.match(shot, /hasBlocks=true/);
   assert.match(shot, /MECHANISM_TOKEN/);
-  assert.match(shot, /Dlaczego ten wybór był mylący/);
+  assert.match(shot, /Twój wybór/);
   assert.doesNotMatch(shot, /Zasada/);
   assert.doesNotMatch(shot, /TAKEAWAY_TOKEN/);
   assert.doesNotMatch(shot, /LEGACY_EXPLANATION_PROSE/);
@@ -313,6 +338,21 @@ test("snapshot: remedial × brak bloków", () => {
   assert.match(shot, /LEGACY_EXPLANATION_PROSE/);
   assert.doesNotMatch(shot, /Dlaczego ten wybór był mylący/);
   assert.doesNotMatch(shot, /MECHANISM_TOKEN/);
+});
+
+test("standard × błąd × experiment off: box Twój wybór zawsze", () => {
+  const html = renderPanel({
+    variant: "standard",
+    blocks: FULL_BLOCKS,
+    isCorrect: false,
+    selectedOptionId: "b",
+    confidence: "na_pewno",
+  });
+  assert.match(html, /Twój wybór/);
+  assert.match(html, /B · Opcja beta myląca/);
+  assert.match(html, /DIST_B_TOKEN/);
+  assert.match(html, /data-feedback-section="your-choice"/);
+  assert.doesNotMatch(html, /B · Opcja beta myląca[\s\S]*B · Opcja beta myląca/);
 });
 
 test("snapshot: remedial × hypercorrection", () => {

@@ -12,6 +12,7 @@ type SessionBottomBarProps = {
   questionId: string;
   submitting?: boolean;
   nextLabel: string;
+  progressLabel?: string;
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onConfidenceBarShown?: (questionId: string) => void;
@@ -24,6 +25,7 @@ export function SessionBottomBar({
   questionId,
   submitting,
   nextLabel,
+  progressLabel,
   onConfidencePick,
   onNext,
   onConfidenceBarShown,
@@ -52,7 +54,12 @@ export function SessionBottomBar({
             {mode === "confidence" ? (
               <div className="flex min-h-14 flex-col justify-center gap-1.5">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-body text-body-xs text-secondary">
+                  {progressLabel ? (
+                    <p className="shrink-0 font-body text-body-xs tabular-nums text-secondary md:hidden">
+                      {progressLabel}
+                    </p>
+                  ) : null}
+                  <p className="min-w-0 flex-1 font-body text-body-xs text-secondary">
                     {t("howSureAreYouShort")}
                   </p>
                   <button
@@ -92,7 +99,12 @@ export function SessionBottomBar({
                 </div>
               </div>
             ) : (
-              <div className="flex min-h-14 items-center">
+              <div className="flex min-h-14 items-center gap-3">
+                {progressLabel ? (
+                  <p className="shrink-0 font-body text-body-xs tabular-nums text-secondary md:hidden">
+                    {progressLabel}
+                  </p>
+                ) : null}
                 <button
                   type="button"
                   onClick={onNext}

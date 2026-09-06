@@ -138,13 +138,65 @@ export function SessionQuestionContent({
                 q={q}
                 selectedOptionId={selectedOptionId}
                 isShowingFeedback={isShowingFeedback || isCurrentAnswered}
+                optionsLocked={
+                  selectedOptionId != null ||
+                  isShowingFeedback ||
+                  isCurrentAnswered
+                }
                 onSelectOption={onSelectOption}
               />
             </QuestionCard>
           </motion.div>
         </AnimatePresence>
 
-        {isShowingFeedback ? (
+        {showConfidenceBar ? (
+          <div className="mx-auto mt-8 w-full max-w-3xl">
+            <SessionQuestionActions
+              questionId={q.id}
+              questionText={q.text}
+              subjectId={subjectId}
+            />
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <p className="font-body text-body-xs text-secondary">
+                {t("howSureAreYou")}
+              </p>
+              <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => onConfidencePick("nie_wiedzialem")}
+                  className="flex-1 rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                >
+                  {t("didNotKnow")}
+                </button>
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => onConfidencePick("troche")}
+                  className="flex-1 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                >
+                  {submitting ? t("saving") : t("knewSomewhat")}
+                </button>
+                <button
+                  type="button"
+                  disabled={submitting}
+                  onClick={() => onConfidencePick("na_pewno")}
+                  className="flex-1 rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
+                >
+                  {t("knewForSure")}
+                </button>
+              </div>
+              <button
+                type="button"
+                disabled={submitting}
+                onClick={() => onConfidencePick("troche")}
+                className="font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {t("skipRating")}
+              </button>
+            </div>
+          </div>
+        ) : isShowingFeedback ? (
           <motion.div
             key={`fb-${q.id}`}
             variants={feedbackVariants}
@@ -167,48 +219,6 @@ export function SessionQuestionContent({
               questionText={q.text}
               subjectId={subjectId}
             />
-
-            {showConfidenceBar ? (
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <p className="font-body text-body-xs text-secondary">
-                  {t("howWellKnown")}
-                </p>
-                <div className="flex w-full flex-col gap-2 sm:flex-row sm:justify-center">
-                  <button
-                    type="button"
-                    disabled={submitting}
-                    onClick={() => onConfidencePick("nie_wiedzialem")}
-                    className="flex-1 rounded-btn border border-error/20 bg-error/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-error transition hover:border-error/40 hover:bg-error/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
-                  >
-                    {t("didNotKnow")}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={submitting}
-                    onClick={() => onConfidencePick("troche")}
-                    className="flex-1 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
-                  >
-                    {submitting ? t("saving") : t("knewSomewhat")}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={submitting}
-                    onClick={() => onConfidencePick("na_pewno")}
-                    className="flex-1 rounded-btn border border-success/20 bg-success/[0.08] px-3 py-2.5 font-body text-body-xs font-medium text-success transition hover:border-success/40 hover:bg-success/[0.15] disabled:cursor-not-allowed disabled:opacity-50 sm:text-body-sm"
-                  >
-                    {t("knewForSure")}
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  disabled={submitting}
-                  onClick={() => onConfidencePick("troche")}
-                  className="font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {t("skipRating")}
-                </button>
-              </div>
-            ) : null}
 
             {fatigueDetected ? (
               <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-gold/25 bg-brand-gold/[0.06] p-4">

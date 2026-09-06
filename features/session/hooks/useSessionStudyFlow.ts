@@ -181,11 +181,13 @@ export function useSessionStudyFlow(
         optionIdOverride,
         feedbackDwellSeconds = null,
         feedbackVariant: feedbackVariantOverride,
+        confidenceLatencyMs = null,
       }: {
         advance?: boolean;
         optionIdOverride?: string;
         feedbackDwellSeconds?: number | null;
         feedbackVariant?: FeedbackVariant;
+        confidenceLatencyMs?: number | null;
       } = {},
     ) => {
       if (!s.currentQuestion || s.isCurrentAnswered) return;
@@ -228,6 +230,7 @@ export function useSessionStudyFlow(
         questionOrder: s.currentIndex,
         feedbackVariant,
         feedbackDwellSeconds,
+        confidenceLatencyMs,
       }).then((res) => {
         if (!res.ok)
           setSaveToast("Nie udało się zapisać odpowiedzi. Spróbuj ponownie.");

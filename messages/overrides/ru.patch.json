@@ -150,6 +150,7 @@
     "correctAnswer": "Правильный ответ!",
     "incorrectAnswer": "Неправильный ответ",
     "howWellKnown": "Насколько хорошо вы знали ответ?",
+    "howSureAreYou": "Насколько вы уверены в этом ответе?",
     "didNotKnow": "Не знал(а)",
     "knewSomewhat": "Знал(а) частично",
     "knewForSure": "Знал(а) наверняка",

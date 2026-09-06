@@ -15,6 +15,7 @@ type SessionQuestionOptionsProps = {
   q: SessionQuestion;
   selectedOptionId: string | null;
   isShowingFeedback: boolean;
+  optionsLocked?: boolean;
   onSelectOption: (id: string) => void;
 };
 
@@ -23,6 +24,7 @@ export function SessionQuestionOptions({
   q,
   selectedOptionId,
   isShowingFeedback,
+  optionsLocked = false,
   onSelectOption,
 }: SessionQuestionOptionsProps) {
   const displayOptions = useSessionOptionOrder(sessionId, q.id, q.options, {
@@ -67,7 +69,7 @@ export function SessionQuestionOptions({
                 letter={letter}
                 text={opt.text}
                 state={state}
-                disabled={isShowingFeedback}
+                disabled={optionsLocked || isShowingFeedback}
                 onSelect={() => onSelectOption(opt.id)}
               />
             </motion.div>

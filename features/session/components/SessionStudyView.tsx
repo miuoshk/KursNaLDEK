@@ -74,6 +74,10 @@ export function SessionStudyView({
     questionId: string;
     shownAt: number;
   } | null>(null);
+  const confidenceShownAtRef = useRef<{
+    questionId: string;
+    shownAt: number;
+  } | null>(null);
   const { profile } = useDashboardData();
   const { streak, showSessionTimer, showSessionTopics } = useDashboardUser();
 
@@ -190,31 +194,39 @@ export function SessionStudyView({
 
   const handleSelectOption = useCallback(
     (optionId: string) => {
-      if (s.isCurrentAnswered || s.isShowingFeedback) return;
+      if (s.isCurrentAnswered || s.isShowingFeedback || s.selectedOptionId) {
+        return;
+      }
       timeSpentQuestion.current = sw.pauseAndGetSeconds();
       const currentQuestion = s.currentQuestion;
       if (!currentQuestion) return;
-      const variant = adaptiveFeedbackEnabled
-        ? selectFeedbackVariant({
-            question: currentQuestion,
-            isCorrect: optionId === currentQuestion.correctOptionId,
-            timeSpentSeconds: timeSpentQuestion.current,
-            confidence: null,
-            hasTakeaway: questionHasTakeaway(currentQuestion),
-          }).variant
-        : "standard";
-      setFeedbackState({ questionId: currentQuestion.id, variant });
-      feedbackShownAtRef.current = {
-        questionId: currentQuestion.id,
-        shownAt: Date.now(),
-      };
-      s.selectAndCheck(optionId);
+      s.selectOption(optionId);
       if (isPrzeglad) {
+        const variant = adaptiveFeedbackEnabled
+          ? selectFeedbackVariant({
+              question: currentQuestion,
+              isCorrect: optionId === currentQuestion.correctOptionId,
+              timeSpentSeconds: timeSpentQuestion.current,
+              confidence: null,
+              hasTakeaway: questionHasTakeaway(currentQuestion),
+            }).variant
+          : "standard";
+        setFeedbackState({ questionId: currentQuestion.id, variant });
+        feedbackShownAtRef.current = {
+          questionId: currentQuestion.id,
+          shownAt: Date.now(),
+        };
+        s.revealFeedback();
         handleSubmitWithConfidence(null, {
           optionIdOverride: optionId,
           feedbackVariant: variant,
         });
+        return;
       }
+      confidenceShownAtRef.current = {
+        questionId: currentQuestion.id,
+        shownAt: Date.now(),
+      };
     },
     [s, sw, isPrzeglad, handleSubmitWithConfidence, adaptiveFeedbackEnabled],
   );
@@ -222,28 +234,51 @@ export function SessionStudyView({
   const wrappedConfidencePick = useCallback(
     async (c: Confidence) => {
       if (submitting) return;
+      const currentQuestion = s.currentQuestion;
+      if (!currentQuestion || s.isCurrentAnswered) return;
       setSubmitting(true);
-      const shown = feedbackShownAtRef.current;
-      const dwellSeconds =
-        shown && shown.questionId === s.currentQuestion?.id
-          ? Math.min(3600, Math.max(0, (Date.now() - shown.shownAt) / 1000))
+      const confidenceShown = confidenceShownAtRef.current;
+      const confidenceLatencyMs =
+        confidenceShown && confidenceShown.questionId === currentQuestion.id
+          ? Math.min(
+              3_600_000,
+              Math.max(0, Date.now() - confidenceShown.shownAt),
+            )
           : null;
-      feedbackShownAtRef.current = null;
+      confidenceShownAtRef.current = null;
+      const variant = adaptiveFeedbackEnabled
+        ? selectFeedbackVariant({
+            question: currentQuestion,
+            isCorrect:
+              (s.selectedOptionId ?? "") === currentQuestion.correctOptionId,
+            timeSpentSeconds: timeSpentQuestion.current,
+            confidence: c,
+            hasTakeaway: questionHasTakeaway(currentQuestion),
+          }).variant
+        : "standard";
+      setFeedbackState({ questionId: currentQuestion.id, variant });
+      s.revealFeedback();
+      feedbackShownAtRef.current = {
+        questionId: currentQuestion.id,
+        shownAt: Date.now(),
+      };
       await handleSubmitWithConfidence(c, {
-        advance: true,
-        feedbackDwellSeconds: dwellSeconds,
-        feedbackVariant:
-          feedbackState?.questionId === s.currentQuestion?.id
-            ? feedbackState.variant
-            : undefined,
+        advance: false,
+        feedbackVariant: variant,
+        confidenceLatencyMs,
       });
       setSubmitting(false);
     },
-    [handleSubmitWithConfidence, submitting, s.currentQuestion, feedbackState],
+    [
+      adaptiveFeedbackEnabled,
+      handleSubmitWithConfidence,
+      s,
+      submitting,
+    ],
   );
 
   const flushClassicFeedbackDwell = useCallback(() => {
-    if (!isPrzeglad || !adaptiveFeedbackEnabled) return;
+    if (!adaptiveFeedbackEnabled) return;
     const shown = feedbackShownAtRef.current;
     if (!shown) return;
     feedbackShownAtRef.current = null;
@@ -273,7 +308,6 @@ export function SessionStudyView({
   }, [
     adaptiveFeedbackEnabled,
     feedbackState,
-    isPrzeglad,
     sessionId,
     trackPendingSave,
   ]);

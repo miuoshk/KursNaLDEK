@@ -19,9 +19,30 @@ import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { createPerfSpan, logPerf, vercelRuntimeMeta } from "@/features/session/lib/perfLog";
 import { headers } from "next/headers";
 
+const feedbackEventSchema = z.discriminatedUnion("eventType", [
+  z.object({
+    eventType: z.literal("feedback_shown"),
+    questionId: z.string().min(1),
+    payload: z.object({
+      variant: z.enum(["concise", "standard", "remedial"]),
+      hasBlocks: z.boolean(),
+      hypercorrection: z.boolean(),
+      elements: z.array(z.string().min(1)).max(20),
+    }),
+  }),
+  z.object({
+    eventType: z.literal("feedback_expand"),
+    questionId: z.string().min(1),
+    payload: z.object({
+      section: z.enum(["full", "distractors"]),
+    }),
+  }),
+]);
+
 const schema = z.object({
   sessionId: z.string().uuid(),
   durationSecondsFallback: z.number().int().min(0).optional(),
+  feedbackEvents: z.array(feedbackEventSchema).max(200).optional(),
 });
 
 export type CompleteSessionResult =
@@ -283,6 +304,8 @@ export async function completeSession(
 
     const bgSessionId = session.id as string;
     const bgUserId = user.id;
+    const bgSubjectId = session.subject_id as string | null;
+    const bgFeedbackEvents = parsed.data.feedbackEvents ?? [];
     const bgAvgSessionHour = profile.avg_session_hour as
       number | null | undefined;
     const bgTotalQuestions = session.total_questions ?? answeredCount;
@@ -411,17 +434,49 @@ export async function completeSession(
           .update({ learning_velocity: velocity })
           .eq("id", bgUserId);
 
-        await bgAdmin.from("learning_events").insert({
-          user_id: bgUserId,
-          event_type: "session_end",
-          payload: {
-            session_id: bgSessionId,
-            accuracy,
-            duration_seconds: sumDur,
-            total_questions: bgTotalQuestions,
-            correct_answers: correct,
+        const feedbackRows =
+          bgFeedbackEvents.length === 0
+            ? []
+            : await (async () => {
+                const qids = [
+                  ...new Set(bgFeedbackEvents.map((event) => event.questionId)),
+                ];
+                const { data: topicRows } = await bgAdmin
+                  .from("questions")
+                  .select("id, topic_id")
+                  .in("id", qids);
+                const topicByQ = new Map(
+                  (topicRows ?? []).map((row) => [
+                    row.id as string,
+                    (row.topic_id as string | null) ?? null,
+                  ]),
+                );
+                return bgFeedbackEvents.map((event) => ({
+                  user_id: bgUserId,
+                  event_type: event.eventType,
+                  event_schema_version: 2,
+                  session_id: bgSessionId,
+                  question_id: event.questionId,
+                  subject_id: bgSubjectId,
+                  topic_id: topicByQ.get(event.questionId) ?? null,
+                  payload: event.payload,
+                }));
+              })();
+
+        await bgAdmin.from("learning_events").insert([
+          ...feedbackRows,
+          {
+            user_id: bgUserId,
+            event_type: "session_end",
+            payload: {
+              session_id: bgSessionId,
+              accuracy,
+              duration_seconds: sumDur,
+              total_questions: bgTotalQuestions,
+              correct_answers: correct,
+            },
           },
-        });
+        ]);
         afterSpan.end({ sessionId: bgSessionId, ok: true });
       } catch (err) {
         afterSpan.end({ sessionId: bgSessionId, ok: false });

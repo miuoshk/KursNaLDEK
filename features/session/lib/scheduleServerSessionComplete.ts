@@ -1,4 +1,5 @@
 import { completeSession } from "@/features/session/api/completeSession";
+import type { PendingFeedbackEvent } from "@/features/session/lib/feedbackTelemetry";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 
@@ -12,9 +13,14 @@ export function scheduleServerSessionComplete(
   sessionStartMs: number,
   onEnrich?: (summary: SessionSummaryData) => void,
   clientTopicId?: string,
+  feedbackEvents: PendingFeedbackEvent[] = [],
 ): void {
   const dur = Math.floor((Date.now() - sessionStartMs) / 1000);
-  void completeSession({ sessionId, durationSecondsFallback: dur })
+  void completeSession({
+    sessionId,
+    durationSecondsFallback: dur,
+    feedbackEvents,
+  })
     .then((comp) => {
       if (comp.ok) {
         const summary = {

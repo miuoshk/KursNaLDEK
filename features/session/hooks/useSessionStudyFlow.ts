@@ -9,6 +9,7 @@ import {
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
 import { parseDailyPlanProgress } from "@/features/session/lib/parseDailyPlanProgress";
+import type { PendingFeedbackEvent } from "@/features/session/lib/feedbackTelemetry";
 import { scheduleServerSessionComplete } from "@/features/session/lib/scheduleServerSessionComplete";
 import { persistSessionSummaryToStorage } from "@/features/session/lib/sessionSummaryStorage";
 import { markSessionSummaryPerfT0, logPerf } from "@/features/session/lib/perfLog";
@@ -59,6 +60,7 @@ type FlowMeta = {
   profileStreak: number;
   adaptiveFeedbackEnabled?: boolean;
   planSnapshot?: unknown;
+  drainFeedbackEvents?: () => PendingFeedbackEvent[];
 };
 
 export function useSessionStudyFlow(
@@ -86,6 +88,7 @@ export function useSessionStudyFlow(
     profileStreak,
     adaptiveFeedbackEnabled = false,
     planSnapshot,
+    drainFeedbackEvents,
   } = meta;
 
   const finishingRef = useRef(false);
@@ -122,10 +125,11 @@ export function useSessionStudyFlow(
           sessionStart.current,
           undefined,
           summary.topicId,
+          drainFeedbackEvents?.() ?? [],
         );
       })();
     },
-    [sessionId, sessionStart, onComplete],
+    [sessionId, sessionStart, onComplete, drainFeedbackEvents],
   );
 
   const buildSummary = useCallback(

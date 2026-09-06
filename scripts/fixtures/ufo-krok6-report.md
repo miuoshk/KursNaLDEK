@@ -1,9 +1,12 @@
 # parse-standard-v1 — poprawki numeryczne / elimination / inwariant per sekcja
 
-Źródło: prod, read-only `--from-db`. Wsad: rollback + apply na branchu
-`ufo-staging` (`slmeaosqkyqehcicwoja`). **Prod nietknięty.**
+Ponowny przebieg 2026-09-06. Źródło: `explanation_legacy` na branchu
+`ufo-staging` (`slmeaosqkyqehcicwoja`) — po wcześniejszym apply `explanation`
+to już render bloków. Wsad: rollback + apply na tym samym branchu.
+**Prod nietknięty** (`unfcpipxraiyacyzqanh`: chirurgia `blocks_status=none` × 2349).
 
-Parser: `npx tsx scripts/parse-standard-v1.ts --from-db ldew-chirurgia-stomatologiczna`
+Parser: `npx tsx scripts/parse-standard-v1.ts scripts/out/legacy-input.jsonl`
+(to samo co `--from-db` na oryginalnym Standard 1.0).
 
 CSV dla fabryki: `scripts/out/chs-do-uzupelnienia.csv`
 (kopia w PR: `scripts/fixtures/chs-do-uzupelnienia.csv`)
@@ -26,7 +29,7 @@ CSV dla fabryki: `scripts/out/chs-do-uzupelnienia.csv`
 - distractor_unmatched: 276 (nadal; drugi przebieg nic nie odzyskał)
 - distractor_matched_by_elimination: **0**
 - contrast_too_big: 0
-- takeaway_too_long: 2
+- takeaway_too_long: 2 (`chs-11-002`, `chs-12-096`)
 - unparsed_remainder: 0
 
 ### elimination (odzyskane)
@@ -90,8 +93,10 @@ zostawia tabelę na `contrast` (np. `chs-02-007`).
 
 ## Staging (pkt 4)
 
-`rollback_explanation_blocks` na wszystkich id chirurgii → 2349 `none`.
-`apply_explanation_blocks(..., 'parser', false)` w partiach po 50.
+Te same RPC co `rollback-blocks.mjs` / `apply-blocks.mjs`. REST skryptów
+nie poszedł (w `.env.staging` brak `service_role`); wywołanie jako
+`postgres`. Rollback: 2349 restored, 0 skipped → `none`. Apply: 47 × ≤50
+→ **2349 applied, 0 rejected**. SELECT-y: `scripts/fixtures/ufo-krok6-parser-fix-selects.md`.
 
 ```
 SELECT q.blocks_status, count(*)

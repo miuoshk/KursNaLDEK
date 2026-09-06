@@ -259,6 +259,42 @@ Typy tej skazy różni ilość i jakość czynnika.
   );
 });
 
+test("elimination nie dotyczy list numerycznych — tylko zbiór liczb", () => {
+  const options = [
+    { id: "a", text: "1 i 2" },
+    { id: "b", text: "3 i 4" },
+    { id: "c", text: "2 i 4" },
+    { id: "d", text: "1, 2, 4 i 5" },
+    { id: "e", text: "same słowa bez liczb" },
+  ] as const;
+  const result = parseStandardV1({
+    id: "chs-numeric-elim",
+    correct_option_id: "c",
+    options,
+    explanation: `**✅ Poprawna odpowiedź:** 2 i 4
+
+Powód.
+
+**Dlaczego nie pozostałe?**
+
+- *1, 2, 4 i 5* — zestaw czterech.
+- *1 i 2* — tylko dwa pierwsze.
+- *niepasujący opis* — nie trafia w e.
+`,
+  });
+  assert.equal(result.item?.blocks.distractors?.d, "zestaw czterech.");
+  assert.equal(result.item?.blocks.distractors?.a, "tylko dwa pierwsze.");
+  assert.equal(result.item?.blocks.distractors?.e, undefined);
+  assert.equal(
+    result.flags.some((flag) => flag.code === "distractor_matched_by_elimination"),
+    false,
+  );
+  assert.equal(
+    result.flags.some((flag) => flag.code === "distractor_unmatched"),
+    true,
+  );
+});
+
 test("elimination: jedna pozostała opcja i similarity ≥ 0.5", () => {
   const result = sample({
     explanation: `**✅ Poprawna odpowiedź:** obecność narządów zmysłów oraz bliskość mózgowia

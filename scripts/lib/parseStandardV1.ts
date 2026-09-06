@@ -76,11 +76,13 @@ function findBestOption(
   if (!target) return null;
   const numericHits: ParseInput["options"][number][] = [];
   let best: { id: string; score: number; text: string } | null = null;
+  const labelIsNumeric = isNumericOptionList(label);
   for (const option of options) {
     if (isNumericOptionList(option.text)) {
       if (numberSetsEqual(label, option.text)) numericHits.push(option);
       continue;
     }
+    if (labelIsNumeric) continue;
     const score = similarity(target, normalizeMatchText(option.text));
     if (!best || score > best.score) {
       best = { id: option.id, score, text: option.text };
@@ -94,7 +96,7 @@ function findBestOption(
       via: "numeric",
     };
   }
-  if (numericHits.length > 1) return null;
+  if (numericHits.length > 1 || labelIsNumeric) return null;
   return best ? { ...best, via: "similarity" } : null;
 }
 
@@ -228,7 +230,11 @@ export function parseStandardV1(input: ParseInput): ParseResult {
       (option) =>
         option.id !== input.correct_option_id && !usedOptionIds.has(option.id),
     );
-    if (remaining.length !== 1 || isNumericOptionList(remaining[0].text)) {
+    if (
+      remaining.length !== 1 ||
+      isNumericOptionList(remaining[0].text) ||
+      isNumericOptionList(item.label)
+    ) {
       flags.push({ code: "distractor_unmatched", detail: item.detail });
       continue;
     }

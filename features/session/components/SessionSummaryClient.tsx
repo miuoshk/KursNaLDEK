@@ -104,16 +104,29 @@ export function SessionSummaryClient({
 
   useEffect(() => {
     let cancelled = false;
-    void loadSessionSummaryAction(initialSummary.sessionId).then((res) => {
-      if (cancelled || !res.ok) return;
-      setSummary((prev) => {
-        const next = mergeEnrichedSessionSummary(prev, res.summary);
-        persistSessionSummaryToStorage(prev.sessionId, next);
-        return next;
-      });
-    });
+    let attempts = 0;
+    let timeoutId: number | undefined;
+
+    const tick = async () => {
+      const res = await loadSessionSummaryAction(initialSummary.sessionId);
+      if (cancelled) return;
+      if (res.ok) {
+        setSummary((prev) => {
+          const next = mergeEnrichedSessionSummary(prev, res.summary);
+          persistSessionSummaryToStorage(prev.sessionId, next);
+          return next;
+        });
+        return;
+      }
+      attempts += 1;
+      if (attempts >= POLL_MAX_ATTEMPTS) return;
+      timeoutId = window.setTimeout(() => void tick(), POLL_INTERVAL_MS);
+    };
+
+    void tick();
     return () => {
       cancelled = true;
+      if (timeoutId != null) window.clearTimeout(timeoutId);
     };
   }, [initialSummary.sessionId]);
 

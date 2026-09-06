@@ -31,6 +31,25 @@ test("transfer używa pojęcia głównego zamiast szerokiego fallbacku tematu", 
   );
 
   assert.deepEqual(question.conceptIds, ["specific-concept"]);
+  assert.deepEqual(question.concepts, [
+    { id: "specific-concept", label: "specific-concept" },
+  ]);
+});
+
+test("mapuje nazwę pojęcia z joinu concepts(name)", () => {
+  const question = mapRowToSessionQuestion(
+    row([
+      {
+        concept_id: "concept-1",
+        relation: "primary",
+        weight: 1,
+        concepts: { name: "prehabilitacja" },
+      },
+    ]),
+  );
+  assert.deepEqual(question.concepts, [
+    { id: "concept-1", label: "prehabilitacja" },
+  ]);
 });
 
 test("pytanie bez pojęcia szczegółowego zachowuje bootstrap tematu", () => {

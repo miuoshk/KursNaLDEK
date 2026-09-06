@@ -239,6 +239,8 @@
     "summaryInsightsFailed": "Не вдалося завантажити підказки. Спробуйте пізніше.",
     "summaryFocusTopic": "Зосередься на: {topic} ({percent}%)",
     "summaryHoldTopic": "Найслабша тема цієї сесії: {topic} ({percent}%)",
+    "summaryFocusConcept": "Зосередься на понятті: {concept} ({percent}%)",
+    "summaryHoldConcept": "Найслабше поняття цієї сесії: {concept} ({percent}%)",
     "summaryLeeches": "«П'явиці» в цій сесії: {count} — варто повторити окремо.",
     "summaryRetrievability": "Сила запам'ятовування: {percent}%",
     "summaryExamReadiness": "Готовність до іспиту",

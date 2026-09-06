@@ -66,6 +66,15 @@ export function buildClientSessionSummary(
   const xpEarned = computeSessionXp(forXp, questions.length);
 
   const topicMap = new Map<string, { c: number; t: number }>();
+  const conceptMap = new Map<
+    string,
+    {
+      label: string;
+      attempts: number;
+      correct: number;
+      questionIds: string[];
+    }
+  >();
   const summaryAnswers: SessionSummaryData["answers"] = [];
 
   for (const a of answers) {
@@ -75,6 +84,20 @@ export function buildClientSessionSummary(
     cur.t += 1;
     if (a.isCorrect) cur.c += 1;
     topicMap.set(topicName, cur);
+    for (const concept of q?.concepts ?? []) {
+      const conceptProgress = conceptMap.get(concept.id) ?? {
+        label: concept.label,
+        attempts: 0,
+        correct: 0,
+        questionIds: [],
+      };
+      conceptProgress.attempts += 1;
+      if (a.isCorrect) conceptProgress.correct += 1;
+      if (!conceptProgress.questionIds.includes(a.questionId)) {
+        conceptProgress.questionIds.push(a.questionId);
+      }
+      conceptMap.set(concept.id, conceptProgress);
+    }
 
     summaryAnswers.push({
       questionId: a.questionId,
@@ -101,6 +124,14 @@ export function buildClientSessionSummary(
       accuracy: v.t > 0 ? v.c / v.t : 0,
     }))
     .sort((x, y) => x.accuracy - y.accuracy);
+  const strengthenedConcepts = [...conceptMap.entries()]
+    .map(([conceptId, value]) => ({ conceptId, ...value }))
+    .sort(
+      (a, b) =>
+        b.attempts - a.attempts ||
+        b.correct - a.correct ||
+        a.label.localeCompare(b.label, "pl"),
+    );
 
   const baseXp = profileXp ?? 0;
 
@@ -119,6 +150,7 @@ export function buildClientSessionSummary(
     previousAccuracy: null,
     answers: summaryAnswers,
     topicBreakdown,
+    strengthenedConcepts,
     newXpTotal: baseXp + xpEarned,
     newStreak: profileStreak,
     previousStreakDays: null,

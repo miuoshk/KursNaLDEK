@@ -546,6 +546,8 @@
     "summaryInsightsFailed": "Could not load insights. Try again in a moment.",
     "summaryFocusTopic": "Focus on: {topic} ({percent}%)",
     "summaryHoldTopic": "Weakest topic this session: {topic} ({percent}%)",
+    "summaryFocusConcept": "Focus on the concept: {concept} ({percent}%)",
+    "summaryHoldConcept": "Weakest concept this session: {concept} ({percent}%)",
     "summaryLeeches": "Leeches in this session: {count} — worth reviewing separately.",
     "summaryRetrievability": "Retrieval strength: {percent}%",
     "summaryExamReadiness": "Exam readiness",

@@ -16,6 +16,7 @@ import type { ReactNode } from "react";
 import type { SessionSummaryData } from "@/features/session/summaryTypes";
 import { formatSessionDuration } from "@/features/session/lib/formatSessionDuration";
 import { sessionModeLabel } from "@/features/session/lib/sessionModeLabel";
+import { focusTopicFromBreakdown } from "@/features/session/lib/sessionSummaryTips";
 import {
   canComparePreviousSession,
   getSummaryVariant,
@@ -72,28 +73,30 @@ function InsightRow({
 
 function SummaryInsightsFooter({
   summary,
-  loading,
-  failed,
-  onRetry,
 }: {
   summary: SessionSummaryData;
-  loading?: boolean;
-  failed?: boolean;
-  onRetry?: () => void;
 }) {
   const t = useTranslations("session");
-  const tCommon = useTranslations("common");
   const variant = getSummaryVariant(summary);
   const insights = summary.sessionInsights;
   const fatigueText =
     insights?.fatigueWarning === "fatigue_detected"
       ? t("fatigueSummary")
       : insights?.fatigueWarning;
+  const localFocus = focusTopicFromBreakdown(summary.topicBreakdown);
+  const focusText =
+    insights?.nextSessionFocus ??
+    (localFocus
+      ? t(localFocus.weak ? "summaryFocusTopic" : "summaryHoldTopic", {
+          topic: localFocus.topic,
+          percent: localFocus.percent,
+        })
+      : null);
 
   if (variant === "micro") return null;
 
   const tips = [
-    insights?.nextSessionFocus,
+    focusText,
     insights?.calibrationTip,
     fatigueText,
     (insights?.leechesHit?.length ?? 0) > 0
@@ -101,68 +104,34 @@ function SummaryInsightsFooter({
       : null,
   ].filter(Boolean) as string[];
 
-  const showFooter =
-    summary.mode === "inteligentna" &&
-    (loading || failed || tips.length > 0);
-
-  if (!showFooter) return null;
+  if (summary.mode !== "inteligentna" || tips.length === 0) return null;
 
   return (
     <div className="mt-8 border-t border-white/[0.08] pt-6">
-      {loading && tips.length === 0 ? (
-        <div className="space-y-2">
-          <p className="font-body text-body-xs text-muted">
-            {t("summaryRecalculating")}
-          </p>
-          <div className="h-4 w-3/4 animate-pulse rounded bg-white/[0.06]" />
-          <div className="h-4 w-1/2 animate-pulse rounded bg-white/[0.06]" />
-        </div>
-      ) : failed && tips.length === 0 ? (
-        <div>
-          <p className="font-body text-body-sm text-secondary">
-            {t("summaryInsightsFailed")}
-          </p>
-          {onRetry ? (
-            <button
-              type="button"
-              onClick={onRetry}
-              className="mt-3 rounded-button bg-brand-sage px-4 py-2 font-body text-body-sm text-primary transition-opacity hover:opacity-90"
-            >
-              {tCommon("refresh")}
-            </button>
-          ) : null}
-        </div>
-      ) : tips.length > 0 ? (
-        <ul className="space-y-3">
-          {insights?.nextSessionFocus ? (
-            <InsightRow icon={Lightbulb}>
-              {insights.nextSessionFocus}
-            </InsightRow>
-          ) : null}
-          {insights?.calibrationTip ? (
-            <InsightRow icon={Lightbulb}>
-              {insights.calibrationTip}
-            </InsightRow>
-          ) : null}
-          {fatigueText ? (
-            <InsightRow icon={Lightbulb}>{fatigueText}</InsightRow>
-          ) : null}
-          {(insights?.leechesHit?.length ?? 0) > 0 ? (
-            <InsightRow icon={RotateCcw}>
-              {t("summaryLeeches", { count: insights!.leechesHit.length })}
-            </InsightRow>
-          ) : null}
-        </ul>
-      ) : null}
+      <ul className="space-y-3">
+        {focusText ? (
+          <InsightRow icon={Lightbulb}>{focusText}</InsightRow>
+        ) : null}
+        {insights?.calibrationTip ? (
+          <InsightRow icon={Lightbulb}>
+            {insights.calibrationTip}
+          </InsightRow>
+        ) : null}
+        {fatigueText ? (
+          <InsightRow icon={Lightbulb}>{fatigueText}</InsightRow>
+        ) : null}
+        {(insights?.leechesHit?.length ?? 0) > 0 ? (
+          <InsightRow icon={RotateCcw}>
+            {t("summaryLeeches", { count: insights!.leechesHit.length })}
+          </InsightRow>
+        ) : null}
+      </ul>
     </div>
   );
 }
 
 export function SummaryHero({
   summary,
-  insightsLoading,
-  insightsFailed,
-  onInsightsRetry,
   primaryCta,
 }: Props) {
   const t = useTranslations("session");
@@ -347,12 +316,7 @@ export function SummaryHero({
       </div>
 
       <div className="relative z-[1]">
-        <SummaryInsightsFooter
-          summary={summary}
-          loading={insightsLoading}
-          failed={insightsFailed}
-          onRetry={onInsightsRetry}
-        />
+        <SummaryInsightsFooter summary={summary} />
       </div>
     </div>
   );

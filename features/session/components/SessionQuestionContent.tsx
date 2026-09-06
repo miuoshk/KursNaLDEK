@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, Coffee } from "lucide-react";
+import { ChevronLeft, ChevronRight, Coffee } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionBottomBar } from "@/features/session/components/SessionBottomBar";
@@ -205,11 +205,7 @@ export function SessionQuestionContent({
                 q={q}
                 selectedOptionId={selectedOptionId}
                 isShowingFeedback={isShowingFeedback || isCurrentAnswered}
-                optionsLocked={
-                  selectedOptionId != null ||
-                  isShowingFeedback ||
-                  isCurrentAnswered
-                }
+                optionsLocked={isShowingFeedback || isCurrentAnswered}
                 onSelectOption={onSelectOption}
               />
             </QuestionCard>
@@ -295,9 +291,18 @@ export function SessionQuestionContent({
           onConfidenceBarShown={onConfidenceBarShown}
         />
         <div className="hidden px-2 py-1.5 sm:px-4 sm:py-3 md:block">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto flex max-w-3xl items-center gap-1">
+            <button
+              type="button"
+              disabled={currentIndex <= 0}
+              onClick={onPrevious}
+              className={cn(navBtnClass, "size-11")}
+              aria-label={t("previous")}
+            >
+              <ChevronLeft className="size-5" aria-hidden />
+            </button>
             {showSquares ? (
-              <div className="mb-2">
+              <div className="min-w-0 flex-1">
                 <SessionProgressSquares
                   questions={questions!}
                   answeredMap={answeredMap!}
@@ -305,15 +310,25 @@ export function SessionQuestionContent({
                   onJumpTo={onJumpTo}
                 />
               </div>
-            ) : null}
+            ) : (
+              <p className="min-w-0 flex-1 text-center font-body text-body-xs tabular-nums text-secondary">
+                {currentIndex + 1}/{total}
+              </p>
+            )}
             <button
               type="button"
-              disabled={currentIndex <= 0}
-              onClick={onPrevious}
-              className={cn(navBtnClass, "gap-1.5 px-4 py-2.5 text-body-sm")}
+              disabled={isLast}
+              onClick={() => {
+                if (!isLast && onJumpTo) {
+                  onJumpTo(currentIndex + 1);
+                  return;
+                }
+                onNext();
+              }}
+              className={cn(navBtnClass, "size-11")}
+              aria-label={t("next")}
             >
-              <ChevronLeft className="size-4 shrink-0" aria-hidden />
-              {t("previous")}
+              <ChevronRight className="size-5" aria-hidden />
             </button>
           </div>
         </div>

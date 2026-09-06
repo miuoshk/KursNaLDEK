@@ -472,6 +472,8 @@
     "summaryQuestionsOf": "{answered} з {total} {questionsLabel}",
     "summaryRecalculating": "Перераховую підказки…",
     "summaryInsightsFailed": "Не вдалося завантажити підказки. Спробуйте пізніше.",
+    "summaryFocusTopic": "Зосередься на: {topic} ({percent}%)",
+    "summaryHoldTopic": "Найслабша тема цієї сесії: {topic} ({percent}%)",
     "summaryLeeches": "«П'явиці» в цій сесії: {count} — варто повторити окремо.",
     "summaryRetrievability": "Сила запам'ятовування: {percent}%",
     "summaryExamReadiness": "Готовність до іспиту",

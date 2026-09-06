@@ -28,10 +28,10 @@ function createFakeSession(): FakeSession {
     isShowingFeedback: false,
     answers: [],
     selectOption(id) {
-      if (s.isShowingFeedback || s.answers.length > 0 || s.selectedOptionId) {
+      if (s.isShowingFeedback || s.answers.length > 0) {
         return;
       }
-      s.selectedOptionId = id;
+      s.selectedOptionId = s.selectedOptionId === id ? null : id;
     },
     revealFeedback() {
       if (s.isShowingFeedback || s.selectedOptionId == null) return;
@@ -91,6 +91,21 @@ test("inteligentna: choose → pasek pewności → werdykt; submit z pewnością
     advance: false,
     confidenceLatencyMs: 840,
   });
+});
+
+test("inteligentna: klik innej podmienia wybór, klik tej samej odznacza", () => {
+  const s = createFakeSession();
+  s.selectOption("a");
+  assert.equal(s.selectedOptionId, "a");
+  assert.equal(phase("inteligentna", s), "awaiting_confidence");
+
+  s.selectOption("c");
+  assert.equal(s.selectedOptionId, "c");
+  assert.equal(phase("inteligentna", s), "awaiting_confidence");
+
+  s.selectOption("c");
+  assert.equal(s.selectedOptionId, null);
+  assert.equal(phase("inteligentna", s), "choose");
 });
 
 test("inteligentna: Pomiń ocenę wysyła troche, nie null", () => {

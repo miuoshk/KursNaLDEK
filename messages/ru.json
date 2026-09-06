@@ -472,6 +472,8 @@
     "summaryQuestionsOf": "{answered} из {total} {questionsLabel}",
     "summaryRecalculating": "Пересчитываю подсказки…",
     "summaryInsightsFailed": "Не удалось загрузить подсказки. Попробуйте позже.",
+    "summaryFocusTopic": "Сфокусируйся на: {topic} ({percent}%)",
+    "summaryHoldTopic": "Самая слабая тема этой сессии: {topic} ({percent}%)",
     "summaryLeeches": "«Пиявки» в этой сессии: {count} — стоит повторить отдельно.",
     "summaryRetrievability": "Сила запоминания: {percent}%",
     "summaryExamReadiness": "Готовность к экзамену",

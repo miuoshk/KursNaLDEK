@@ -215,10 +215,15 @@ export function SessionStudyView({
 
   const handleSelectOption = useCallback(
     (optionId: string) => {
-      if (s.isCurrentAnswered || s.isShowingFeedback || s.selectedOptionId) {
+      if (s.isCurrentAnswered || s.isShowingFeedback) {
         return;
       }
-      timeSpentQuestion.current = sw.pauseAndGetSeconds();
+      if (isPrzeglad && s.selectedOptionId) {
+        return;
+      }
+      if (!s.selectedOptionId) {
+        timeSpentQuestion.current = sw.pauseAndGetSeconds();
+      }
       const currentQuestion = s.currentQuestion;
       if (!currentQuestion) return;
       s.selectOption(optionId);

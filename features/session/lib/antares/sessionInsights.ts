@@ -135,10 +135,13 @@ export function generateSessionInsights(
         worstTid = tid;
       }
     }
-    if (worstTid !== null && worstAcc < 0.6) {
+    if (worstTid !== null) {
       const name = topicNamesById?.get(worstTid) ?? worstTid;
       const pct = Math.round(worstAcc * 100);
-      nextSessionFocus = `Skup się na: ${name} (${pct}%)`;
+      nextSessionFocus =
+        worstAcc < 0.6
+          ? `Skup się na: ${name} (${pct}%)`
+          : `Najsłabszy temat tej sesji: ${name} (${pct}%)`;
     }
   }
 

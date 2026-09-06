@@ -890,6 +890,8 @@
     "summaryQuestionsOf": "{answered} z {total} {questionsLabel}",
     "summaryRecalculating": "Przeliczam wskazówki…",
     "summaryInsightsFailed": "Nie udało się wczytać wskazówek. Spróbuj ponownie za chwilę.",
+    "summaryFocusTopic": "Skup się na: {topic} ({percent}%)",
+    "summaryHoldTopic": "Najsłabszy temat tej sesji: {topic} ({percent}%)",
     "summaryLeeches": "Pijawki w tej sesji: {count} — warto powtórzyć je osobno.",
     "summaryRetrievability": "Siła zapamiętania: {percent}%",
     "summaryExamReadiness": "Gotowość egzaminacyjna",

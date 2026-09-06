@@ -13,12 +13,14 @@ export type FeedbackShownPayload = {
   elements: string[];
 };
 
+export type FeedbackShownEvent = {
+  eventType: "feedback_shown";
+  questionId: string;
+  payload: FeedbackShownPayload;
+};
+
 export type PendingFeedbackEvent =
-  | {
-      eventType: "feedback_shown";
-      questionId: string;
-      payload: FeedbackShownPayload;
-    }
+  | FeedbackShownEvent
   | {
       eventType: "feedback_expand";
       questionId: string;
@@ -100,7 +102,7 @@ export function listFeedbackElements(input: {
 export function buildFeedbackShownEvent(
   questionId: string,
   input: Parameters<typeof listFeedbackElements>[0],
-): PendingFeedbackEvent {
+): FeedbackShownEvent {
   const hypercorrection =
     !input.isCorrect && input.confidence === "na_pewno";
   return {
@@ -130,7 +132,7 @@ export function createFeedbackEventQueue() {
   const shown = new Set<string>();
 
   return {
-    recordShown(event: Extract<PendingFeedbackEvent, { eventType: "feedback_shown" }>) {
+    recordShown(event: FeedbackShownEvent) {
       if (shown.has(event.questionId)) return;
       shown.add(event.questionId);
       events.push(event);

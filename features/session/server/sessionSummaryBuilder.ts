@@ -117,9 +117,7 @@ export async function buildSessionSummary(
   const { data: qmeta } = await supabase
     .from("questions")
     .select(
-      hideExplanation
-        ? "id, text, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))"
-        : "id, text, explanation, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
+      "id, text, explanation, correct_option_id, options, topic_id, topics!inner ( name ), question_concepts(concept_id, relation, concepts(name))",
     )
     .eq("topics.is_inbox", false)
     .in("id", qids.length ? qids : ["__none__"]);

@@ -10,7 +10,7 @@ import { SessionQuestionOptions } from "@/features/session/components/SessionQue
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
 import type {
   FeedbackExpandSection,
-  PendingFeedbackEvent,
+  FeedbackShownEvent,
 } from "@/features/session/lib/feedbackTelemetry";
 import {
   feedbackVariants,
@@ -52,7 +52,7 @@ type SessionQuestionContentProps = {
   transferScheduled?: boolean;
   fatigueDetected?: boolean;
   onTakeBreak?: () => void;
-  onFeedbackShown?: (event: PendingFeedbackEvent) => void;
+  onFeedbackShown?: (event: FeedbackShownEvent) => void;
   onFeedbackExpand?: (
     questionId: string,
     section: FeedbackExpandSection,

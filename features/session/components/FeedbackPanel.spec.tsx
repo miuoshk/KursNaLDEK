@@ -96,10 +96,11 @@ function renderPanel(input: {
   transferScheduled?: boolean;
 }): string {
   return renderToStaticMarkup(
-    createElement(
-      NextIntlClientProvider,
-      { locale: "pl", messages: MESSAGES, timeZone: "Europe/Warsaw" },
-      createElement(FeedbackPanel, {
+    createElement(NextIntlClientProvider, {
+      locale: "pl",
+      messages: MESSAGES,
+      timeZone: "Europe/Warsaw",
+      children: createElement(FeedbackPanel, {
         sessionId: "sess-snapshot",
         question: baseQuestion(input.blocks),
         selectedOptionId: input.selectedOptionId ?? (input.isCorrect ? "a" : "b"),
@@ -108,7 +109,7 @@ function renderPanel(input: {
         confidence: input.confidence ?? null,
         transferScheduled: input.transferScheduled ?? input.variant === "remedial",
       }),
-    ),
+    }),
   );
 }
 

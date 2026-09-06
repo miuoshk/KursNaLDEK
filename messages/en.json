@@ -544,6 +544,8 @@
     "summaryQuestionsOf": "{answered} of {total} {questionsLabel}",
     "summaryRecalculating": "Recalculating insights…",
     "summaryInsightsFailed": "Could not load insights. Try again in a moment.",
+    "summaryFocusTopic": "Focus on: {topic} ({percent}%)",
+    "summaryHoldTopic": "Weakest topic this session: {topic} ({percent}%)",
     "summaryLeeches": "Leeches in this session: {count} — worth reviewing separately.",
     "summaryRetrievability": "Retrieval strength: {percent}%",
     "summaryExamReadiness": "Exam readiness",

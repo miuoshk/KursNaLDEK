@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useRef, useState } from "react";
+import { nextSelectedOptionId } from "@/features/session/lib/sessionOptionSelect";
 import type { SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 
 export function useSession(
@@ -29,11 +30,12 @@ export function useSession(
 
   const selectOption = useCallback(
     (optionId: string) => {
-      if (isShowingFeedback || isCurrentAnswered || selectedOptionId) return;
-      selectedOptionIdRef.current = optionId;
-      setSelectedOptionId(optionId);
+      if (isShowingFeedback || isCurrentAnswered) return;
+      const next = nextSelectedOptionId(selectedOptionIdRef.current, optionId);
+      selectedOptionIdRef.current = next;
+      setSelectedOptionId(next);
     },
-    [isShowingFeedback, isCurrentAnswered, selectedOptionId],
+    [isShowingFeedback, isCurrentAnswered],
   );
 
   const revealFeedback = useCallback(() => {

@@ -225,8 +225,8 @@ export type PostAntaresResult = {
 };
 
 /**
- * Po zamknięciu sesji: przelicza cache tematów, insighty, gotowość egzaminacyjną,
- * zapisuje JSON insightów i aktualizuje profil.
+ * Po zamknięciu sesji: najpierw zapisuje wskazówki (żeby podsumowanie nie czekało
+ * na mastery/exam), potem przelicza cache tematów i gotowość egzaminacyjną.
  */
 export async function runCompleteSessionPostAntares(
   supabase: SupabaseClient,
@@ -258,20 +258,6 @@ export async function runCompleteSessionPostAntares(
     memory.engineVariant === "treatment"
       ? await loadMemoryParameterSetById(admin, memory.parameterSetId)
       : undefined;
-  try {
-    await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {
-      engineVariant: memory.engineVariant,
-      schedulerSettings,
-    });
-  } catch (err) {
-    console.error("[postAntares] recalculateTopicMastery", err);
-  }
-
-  const masteryAfter = await fetchMasteryMap(
-    supabase,
-    userId,
-    affectedTopicIds,
-  );
 
   const qids = [...new Set(ansRows.map((a) => a.question_id as string))];
 
@@ -374,7 +360,7 @@ export async function runCompleteSessionPostAntares(
     sessionAnswerData,
     calibration,
     masteryBefore,
-    masteryAfter,
+    masteryBefore,
     newLeechQuestionIds,
     topicNamesById,
   );
@@ -383,6 +369,51 @@ export async function runCompleteSessionPostAntares(
   }
 
   const sessionInsights = serializeInsights(insights);
+
+  const { error: tipsWriteErr } = await admin
+    .from("study_sessions")
+    .update({
+      session_insights: sessionInsights as unknown as Record<string, unknown>,
+    })
+    .eq("id", sessionId)
+    .eq("user_id", userId);
+
+  if (tipsWriteErr) {
+    console.error(
+      "[postAntares] session_insights tips write",
+      tipsWriteErr.message,
+      tipsWriteErr,
+    );
+    throw tipsWriteErr;
+  }
+  logPerf("completeSession after() session_insights written", {
+    sessionId,
+    affectedTopicCount: affectedTopicIds.length,
+    phase: "tips",
+  });
+
+  try {
+    await recalculateTopicMastery(admin, userId, affectedTopicIds, viewerTrack, {
+      engineVariant: memory.engineVariant,
+      schedulerSettings,
+    });
+  } catch (err) {
+    console.error("[postAntares] recalculateTopicMastery", err);
+  }
+
+  const masteryAfter = await fetchMasteryMap(
+    supabase,
+    userId,
+    affectedTopicIds,
+  );
+  const masteryTopicIds = new Set([
+    ...masteryBefore.keys(),
+    ...masteryAfter.keys(),
+  ]);
+  sessionInsights.masteryDelta = [...masteryTopicIds].map((tid) => ({
+    topicId: tid,
+    delta: (masteryAfter.get(tid) ?? 0) - (masteryBefore.get(tid) ?? 0),
+  }));
 
   let examReadiness: PostAntaresResult["examReadiness"] | null = null;
   let questionsAnsweredTotal: number | null = null;
@@ -502,16 +533,17 @@ export async function runCompleteSessionPostAntares(
 
   if (insightsErr) {
     console.error(
-      "[postAntares] session_insights update",
+      "[postAntares] session_insights exam merge",
       insightsErr.message,
       insightsErr,
     );
-    throw insightsErr;
+  } else {
+    logPerf("completeSession after() session_insights written", {
+      sessionId,
+      affectedTopicCount: affectedTopicIds.length,
+      phase: "exam",
+    });
   }
-  logPerf("completeSession after() session_insights written", {
-    sessionId,
-    affectedTopicCount: affectedTopicIds.length,
-  });
 
   if (examReadiness && examScore != null && questionsAnsweredTotal != null) {
     const { error: profileErr } = await admin

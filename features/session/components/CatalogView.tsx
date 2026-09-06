@@ -26,6 +26,7 @@ import { QuestionTextContent } from "@/features/shared/components/QuestionTextCo
 import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { QuestionSourceBadge } from "@/features/shared/components/QuestionSourceBadge";
 import { isExplanationHiddenForSubject } from "@/lib/content/subjectExplanationPolicy";
+import { useHorizontalCarousel } from "@/features/session/hooks/useHorizontalCarousel";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { useTouchEdgeNavigation } from "@/features/session/hooks/useTouchEdgeNavigation";
 import { scrollChildIntoCenter } from "@/features/session/lib/scrollChildIntoCenter";
@@ -306,7 +307,11 @@ export function CatalogView({
     (optionId: string) => {
       if (!q || mode !== "egzamin") return;
       setSelectedByQ((prev) => {
-        if (prev[q.id] === optionId) return prev;
+        if (prev[q.id] === optionId) {
+          const next = { ...prev };
+          delete next[q.id];
+          return next;
+        }
         return { ...prev, [q.id]: optionId };
       });
     },
@@ -480,8 +485,7 @@ export function CatalogView({
                     const showAsCorrect = isRevealed && isCorrect;
                     const showAsWrong =
                       mode === "egzamin" && isSelected && !isCorrect;
-                    const interactive =
-                      mode === "egzamin" && !selectedOptionId;
+                      const interactive = mode === "egzamin";
 
                     const commonClass = cn(
                       "flex w-full items-start gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm transition-colors duration-200",
@@ -680,24 +684,27 @@ function CatalogBottomNav({
   mode: CatalogMode;
 }) {
   const t = useTranslations("session");
-  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const activeRef = useRef<HTMLButtonElement | null>(null);
+  const { ref: scrollerRef, overflows, fade } = useHorizontalCarousel(
+    questionIndexes.length,
+  );
 
   useEffect(() => {
+    if (!overflows) return;
     const scroller = scrollerRef.current;
     const active = activeRef.current;
     if (!scroller || !active) return;
     scrollChildIntoCenter(scroller, active);
-  }, [currentIndex]);
+  }, [currentIndex, overflows, scrollerRef]);
 
   if (questionIndexes.length <= 1) return null;
 
   return (
-    <div className="min-w-0 shrink-0 border-t border-border bg-card/40 pb-[max(0px,env(safe-area-inset-bottom))]">
+    <div className="relative min-w-0 shrink-0 border-t border-border bg-card/40 pb-[max(0px,env(safe-area-inset-bottom))]">
       <div
         ref={scrollerRef}
-        data-horizontal-scroll
-        className="flex w-full min-w-0 max-w-full flex-nowrap gap-1.5 overflow-x-scroll overflow-y-hidden overscroll-x-contain px-3 py-2.5 touch-pan-x [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
+        data-horizontal-scroll={overflows ? "true" : undefined}
+        className="flex w-full min-w-0 max-w-full flex-nowrap gap-1.5 overflow-x-auto overflow-y-hidden overscroll-x-contain px-3 py-2.5 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {questionIndexes.map((qIdx, i) => {
           const item = questions[qIdx];
@@ -732,6 +739,18 @@ function CatalogBottomNav({
           );
         })}
       </div>
+      {fade.left ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background to-transparent"
+        />
+      ) : null}
+      {fade.right ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-background to-transparent"
+        />
+      ) : null}
     </div>
   );
 }

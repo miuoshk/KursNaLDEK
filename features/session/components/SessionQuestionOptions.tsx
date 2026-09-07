@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { AnswerOption } from "@/features/session/components/AnswerOption";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import {
@@ -27,10 +29,18 @@ export function SessionQuestionOptions({
   optionsLocked = false,
   onSelectOption,
 }: SessionQuestionOptionsProps) {
+  const t = useTranslations("session");
+  const [expandedMuted, setExpandedMuted] = useState<Record<string, boolean>>(
+    {},
+  );
   const displayOptions = useSessionOptionOrder(sessionId, q.id, q.options, {
     disableOptionShuffle: q.disableOptionShuffle,
     explanation: q.explanation,
   });
+
+  useEffect(() => {
+    setExpandedMuted({});
+  }, [q.id]);
 
   return (
     <motion.div
@@ -38,6 +48,8 @@ export function SessionQuestionOptions({
       initial="hidden"
       animate="visible"
       className="space-y-3 overflow-visible"
+      role={isShowingFeedback ? undefined : "radiogroup"}
+      aria-label={t("answerOptionsAria")}
     >
       {displayOptions.map((opt, i) => {
         const letter = String.fromCharCode(65 + i);
@@ -53,6 +65,21 @@ export function SessionQuestionOptions({
           opt.id === selectedOptionId &&
           selectedOptionId !== q.correctOptionId;
         const isAnimating = showPulse || showShake;
+        const isMutedWrong = isShowingFeedback && state === "muted";
+        const expanded = expandedMuted[opt.id] === true;
+        const collapsed = isMutedWrong && !expanded;
+        const statusLabel =
+          state === "correct"
+            ? t("optionStatusCorrect")
+            : state === "wrong"
+              ? t("optionStatusYours")
+              : undefined;
+        const ariaLabel = [
+          t("optionLetterAria", { letter, text: opt.text }),
+          statusLabel,
+        ]
+          .filter(Boolean)
+          .join(" — ");
 
         return (
           <motion.div key={opt.id} variants={optionVariants} className="overflow-visible">
@@ -70,7 +97,20 @@ export function SessionQuestionOptions({
                 text={opt.text}
                 state={state}
                 disabled={optionsLocked || isShowingFeedback}
-                onSelect={() => onSelectOption(opt.id)}
+                collapsed={collapsed}
+                expanded={isMutedWrong ? expanded : undefined}
+                statusLabel={statusLabel}
+                ariaLabel={ariaLabel}
+                onSelect={() => {
+                  if (isMutedWrong) {
+                    setExpandedMuted((prev) => ({
+                      ...prev,
+                      [opt.id]: !prev[opt.id],
+                    }));
+                    return;
+                  }
+                  onSelectOption(opt.id);
+                }}
               />
             </motion.div>
           </motion.div>

@@ -161,6 +161,7 @@ export function SessionQuestionContent({
         "[data-session-verdict]",
       );
       const header = document.querySelector<HTMLElement>("[data-session-topbar]");
+      verdict?.focus({ preventScroll: true });
       scrollSessionScroller(
         scroller,
         verdict,
@@ -168,9 +169,13 @@ export function SessionQuestionContent({
       );
       return;
     }
+    const stem = scroller.querySelector<HTMLElement>(
+      "[data-session-question-stem]",
+    );
     const card = scroller.querySelector<HTMLElement>(
       "[data-session-question-card]",
     );
+    stem?.focus({ preventScroll: true });
     scrollSessionScroller(scroller, card, 0);
   }, [q.id, isShowingFeedback]);
 
@@ -232,11 +237,6 @@ export function SessionQuestionContent({
               onFeedbackShown={onFeedbackShown}
               onFeedbackExpand={onFeedbackExpand}
             />
-            <SessionQuestionActions
-              questionId={q.id}
-              questionText={q.text}
-              subjectId={subjectId}
-            />
 
             {fatigueDetected ? (
               <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-gold/25 bg-brand-gold/[0.06] p-4">
@@ -264,15 +264,7 @@ export function SessionQuestionContent({
               </div>
             ) : null}
           </motion.div>
-        ) : (
-          <div className="mx-auto mt-8 w-full max-w-3xl md:max-w-[72ch]">
-            <SessionQuestionActions
-              questionId={q.id}
-              questionText={q.text}
-              subjectId={subjectId}
-            />
-          </div>
-        )}
+        ) : null}
       </div>
 
       <div
@@ -288,6 +280,16 @@ export function SessionQuestionContent({
           onConfidencePick={onConfidencePick}
           onNext={onNext}
           onConfidenceBarShown={onConfidenceBarShown}
+          helperActions={
+            barMode === "next" ? (
+              <SessionQuestionActions
+                questionId={q.id}
+                questionText={q.text}
+                subjectId={subjectId}
+                variant="icons"
+              />
+            ) : null
+          }
         />
         <div className="hidden px-2 py-1.5 sm:px-4 sm:py-3 md:block">
           <div className="mx-auto flex max-w-3xl items-center gap-1">

@@ -1,14 +1,66 @@
 "use client";
 
+import { useState } from "react";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { SessionProgressSquares } from "@/features/session/components/SessionProgressSquares";
+import type { SessionAnswer, SessionMode, SessionQuestion } from "@/features/session/types";
 import { cn } from "@/lib/utils";
-import type { SessionMode } from "@/features/session/types";
 
 function formatClock(totalSeconds: number) {
   const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
   return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
+function SessionMobileProgress({
+  current,
+  total,
+  questions,
+  answeredMap,
+  onJumpTo,
+}: {
+  current: number;
+  total: number;
+  questions?: SessionQuestion[];
+  answeredMap?: Record<string, SessionAnswer>;
+  onJumpTo?: (idx: number) => void;
+}) {
+  const t = useTranslations("session");
+  const [open, setOpen] = useState(false);
+  const canExpand = Boolean(questions?.length && answeredMap);
+
+  return (
+    <div className="relative shrink-0">
+      <button
+        type="button"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-btn px-2 font-body text-body-sm tabular-nums text-secondary"
+        aria-expanded={canExpand ? open : undefined}
+        aria-controls={canExpand ? "session-mobile-progress-map" : undefined}
+        onClick={() => {
+          if (canExpand) setOpen((prev) => !prev);
+        }}
+      >
+        {t("progressCollapsed", { current: current + 1, total })}
+      </button>
+      {canExpand && open ? (
+        <div
+          id="session-mobile-progress-map"
+          className="absolute right-0 top-full z-40 mt-1 w-[min(100vw-1.5rem,24rem)] rounded-card border border-border bg-card p-2 shadow-lg"
+        >
+          <SessionProgressSquares
+            questions={questions!}
+            answeredMap={answeredMap!}
+            currentIndex={current}
+            onJumpTo={(idx) => {
+              onJumpTo?.(idx);
+              setOpen(false);
+            }}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 type SessionTopBarProps = {
@@ -22,6 +74,9 @@ type SessionTopBarProps = {
   selectedTopicName?: string;
   /** Unikalne nazwy tematów w bieżącej sesji (gdy włączone w ustawieniach). */
   sessionTopicNames?: string[];
+  questions?: SessionQuestion[];
+  answeredMap?: Record<string, SessionAnswer>;
+  onJumpTo?: (idx: number) => void;
   onEnd: () => void;
 };
 
@@ -33,6 +88,9 @@ export function SessionTopBar({
   examElapsedSeconds,
   selectedTopicName,
   sessionTopicNames,
+  questions,
+  answeredMap,
+  onJumpTo,
   onEnd,
 }: SessionTopBarProps) {
   const t = useTranslations("session");
@@ -50,7 +108,7 @@ export function SessionTopBar({
     >
       <div className="flex items-center gap-2 sm:hidden">
         <p
-          className="min-w-0 flex-1 truncate font-body text-body-sm font-medium text-brand-gold"
+          className="min-w-0 flex-1 truncate font-body text-body-sm font-medium text-secondary"
           title={mobileTitle}
         >
           {mobileTitle}
@@ -63,14 +121,18 @@ export function SessionTopBar({
             {formatClock(examElapsedSeconds)}
           </p>
         ) : null}
-        <p className="shrink-0 font-body text-body-sm tabular-nums text-secondary">
-          {current + 1}/{total}
-        </p>
+        <SessionMobileProgress
+          current={current}
+          total={total}
+          questions={questions}
+          answeredMap={answeredMap}
+          onJumpTo={onJumpTo}
+        />
         <button
           type="button"
           onClick={onEnd}
           className={cn(
-            "inline-flex size-9 shrink-0 items-center justify-center rounded-btn text-muted transition-colors duration-200 ease-out",
+            "inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors duration-200 ease-out",
             "hover:text-error",
           )}
           aria-label={t("endSession")}
@@ -81,7 +143,7 @@ export function SessionTopBar({
 
       <div className="hidden sm:block">
         {selectedTopicName ? (
-          <p className="mb-2 font-body text-body-sm font-medium text-brand-gold">
+          <p className="mb-2 font-body text-body-sm font-medium text-secondary">
             {t("topicLabel", { name: selectedTopicName })}
           </p>
         ) : null}
@@ -104,7 +166,7 @@ export function SessionTopBar({
             </p>
             <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-white/[0.08]">
               <div
-                className="h-full rounded-full bg-brand-gold transition-[width] duration-[400ms] ease-out"
+                className="h-full rounded-full bg-white/30 transition-[width] duration-[400ms] ease-out"
                 style={{ width: `${pct}%` }}
               />
             </div>
@@ -123,7 +185,7 @@ export function SessionTopBar({
             type="button"
             onClick={onEnd}
             className={cn(
-              "ml-auto inline-flex shrink-0 items-center gap-1 font-body text-body-sm text-muted transition-colors duration-200 ease-out",
+              "ml-auto inline-flex min-h-11 shrink-0 items-center gap-1 px-2 font-body text-body-sm text-secondary transition-colors duration-200 ease-out",
               "hover:text-error",
             )}
           >

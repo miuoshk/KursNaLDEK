@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { Confidence } from "@/features/session/types";
@@ -15,6 +15,7 @@ type SessionBottomBarProps = {
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onConfidenceBarShown?: (questionId: string) => void;
+  helperActions?: ReactNode;
 };
 
 const slideTransition = { duration: 0.15, ease: "easeOut" as const };
@@ -27,6 +28,7 @@ export function SessionBottomBar({
   onConfidencePick,
   onNext,
   onConfidenceBarShown,
+  helperActions,
 }: SessionBottomBarProps) {
   const t = useTranslations("session");
   const reduceMotion = useReducedMotion();
@@ -59,7 +61,7 @@ export function SessionBottomBar({
                     type="button"
                     disabled={submitting}
                     onClick={() => onConfidencePick("troche")}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 shrink-0 font-body text-body-xs text-muted transition-colors hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
+                    className="absolute right-0 top-1/2 inline-flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center font-body text-body-xs text-secondary transition-colors hover:text-primary disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {t("skip")}
                   </button>
@@ -77,7 +79,7 @@ export function SessionBottomBar({
                     type="button"
                     disabled={submitting}
                     onClick={() => onConfidencePick("troche")}
-                    className="min-h-11 rounded-btn border border-brand-gold/20 bg-brand-gold/[0.08] px-2 font-body text-body-xs font-medium text-brand-gold transition hover:border-brand-gold/40 hover:bg-brand-gold/[0.15] disabled:cursor-not-allowed disabled:opacity-50"
+                    className="min-h-11 rounded-btn border border-brand-sage/20 bg-brand-sage/[0.08] px-2 font-body text-body-xs font-medium text-brand-sage transition hover:border-brand-sage/40 hover:bg-brand-sage/[0.15] disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {submitting ? t("saving") : t("knewSomewhatShort")}
                   </button>
@@ -92,7 +94,7 @@ export function SessionBottomBar({
                 </div>
               </div>
             ) : (
-              <div className="flex min-h-14 items-center">
+              <div className="flex min-h-14 flex-col justify-center gap-1">
                 <button
                   type="button"
                   onClick={onNext}
@@ -103,6 +105,7 @@ export function SessionBottomBar({
                 >
                   {nextLabel}
                 </button>
+                {helperActions}
               </div>
             )}
           </div>

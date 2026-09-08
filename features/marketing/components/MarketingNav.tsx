@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 
 type MarketingNavProps = {
   registrationOpen: boolean;
@@ -24,8 +25,13 @@ export function MarketingNav({ registrationOpen }: MarketingNavProps) {
         className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12"
         aria-label={t("nav.ariaLabel")}
       >
-        <Link href="/" className="font-heading text-lg text-primary" onClick={() => setOpen(false)}>
-          Kurs na <span className="text-brand-gold">LDEK</span>
+        <Link
+          href="/"
+          className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
+          onClick={() => setOpen(false)}
+          aria-label="Kurs na LDEK"
+        >
+          <BrandMark className="size-8 text-brand-gold" />
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">

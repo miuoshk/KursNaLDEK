@@ -1,6 +1,18 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
+import { isZenitLabsHost } from "@/lib/hosts";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (isZenitLabsHost((await headers()).get("host"))) {
+    return [
+      {
+        url: "https://zenitlabs.pl",
+        changeFrequency: "monthly",
+        priority: 1,
+      },
+    ];
+  }
+
   const baseUrl = "https://kursnaldek.pl";
 
   return [

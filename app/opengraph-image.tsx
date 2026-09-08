@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt = "Kurs na LDEK — nauka, która dostosowuje się do Ciebie";
@@ -7,7 +9,10 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const mark = await readFile(join(process.cwd(), "public/img/brand/apple-touch-icon.png"));
+  const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
+
   return new ImageResponse(
     <div
       style={{
@@ -22,15 +27,7 @@ export default function OpenGraphImage() {
         fontFamily: "serif",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          fontSize: 28,
-        }}
-      >
-        Kurs na <span style={{ color: "#C9A84C", marginLeft: 8 }}>LDEK</span>
-      </div>
+      <img src={markSrc} width={72} height={72} alt="" />
       <div style={{ display: "flex", flexDirection: "column", maxWidth: 900 }}>
         <div style={{ width: 84, height: 4, background: "#C9A84C", marginBottom: 32 }} />
         <div style={{ fontSize: 72, lineHeight: 1.06, letterSpacing: "-2px" }}>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurs na LDEK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #0F2E1F;
+    --gold: #C9A84C;
+    --gold-light: #E8D49A;
+    --cream: #F5F0E8;
+    --night: #0B0E14;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #000;
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* LOADER */
+  #loader {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: var(--night);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.6s;
+  }
+  #loader.hide { opacity: 0; pointer-events: none; }
+  #loader .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 24px;
+  }
+  #loader .bar {
+    width: 200px; height: 2px;
+    background: rgba(255,255,255,0.08); border-radius: 2px;
+  }
+  #loader .fill {
+    height: 100%; width: 0%;
+    background: var(--gold); border-radius: 2px;
+    transition: width 0.1s;
+  }
+  #loader .pct {
+    margin-top: 10px; font-size: 0.6rem;
+    color: rgba(255,255,255,0.25); letter-spacing: 0.1em;
+  }
+
+  /* SCROLL */
+  #scroll-wrap { position: relative; height: 300vh; }
+
+  #viewport {
+    position: sticky; top: 0;
+    width: 100vw; height: 100vh;
+    overflow: hidden; background: #000;
+  }
+
+  /* TWO STACKED IMAGES for smooth swapping */
+  .frame-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* OVERLAYS */
+  .ov {
+    position: absolute; z-index: 10;
+    text-align: center; opacity: 0;
+    pointer-events: none;
+  }
+
+  /* "Kurs do celu" — beginning, dental office */
+  .ov-opener { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; }
+  .ov-opener h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.05;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.7), 0 0 80px rgba(201,168,76,0.2);
+  }
+
+  /* Mid text */
+  .ov-mid { top: 12%; left: 50%; transform: translateX(-50%); width: 90%; }
+  .ov-mid h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 3.8rem);
+    font-weight: 700; color: #fff; line-height: 1.08;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.7);
+  }
+  .ov-mid .sub {
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+    color: rgba(255,255,255,0.6); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 0.5rem;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+  }
+
+  /* "Zaczyna się tutaj" — end, student room */
+  .ov-here { top: 8%; left: 50%; transform: translateX(-50%); width: 85%; }
+  .ov-here h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.15;
+    text-shadow: 0 2px 30px rgba(201,168,76,0.25);
+  }
+
+  /* Stats */
+  .ov-stats {
+    bottom: 18%; left: 50%; transform: translateX(-50%);
+    display: flex; gap: clamp(20px, 5vw, 50px);
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    font-weight: 700; color: var(--gold);
+  }
+  .stat .lbl {
+    font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+    color: var(--cream); opacity: 0.4;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px;
+  }
+
+  /* CTA */
+  .ov-cta { bottom: 7%; left: 50%; transform: translateX(-50%); }
+  .ov-cta a {
+    display: inline-block;
+    padding: clamp(12px,1.5vw,16px) clamp(30px,4vw,52px);
+    background: rgba(15,46,31,0.85);
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: clamp(0.75rem,1vw,0.9rem);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid var(--gold);
+    backdrop-filter: blur(8px); transition: all 0.3s;
+  }
+  .ov-cta a:hover { background: var(--gold); color: var(--forest); }
+
+  /* Scroll hint */
+  .ov-scroll {
+    bottom: 4%; left: 50%; transform: translateX(-50%);
+    animation: bob 2.5s infinite ease-in-out;
+  }
+  .ov-scroll span {
+    font-size: 0.55rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    display: block; margin-bottom: 5px;
+  }
+  .ov-scroll .chev {
+    width: 14px; height: 14px;
+    border-right: 2px solid rgba(255,255,255,0.2);
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    transform: rotate(45deg); margin: 0 auto;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* Vignettes */
+  .vig {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 5; opacity: 0;
+  }
+  .vig-top { background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 40%); }
+  .vig-bot { background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 40%); }
+
+  /* POST HERO */
+  .post-hero {
+    position: relative; z-index: 50;
+    background: var(--forest); border-top: 2px solid var(--gold);
+    padding: 100px 30px; text-align: center;
+  }
+  .post-hero h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: var(--gold); margin-bottom: 1rem;
+  }
+  .post-hero p { color: var(--cream); opacity: 0.5; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="logo">Kurs na LDEK</div>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <div class="pct" id="pct">0%</div>
+</div>
+
+<div id="scroll-wrap">
+  <div id="viewport">
+
+    <!-- Frame image -->
+    <img class="frame-layer" id="frame-img" src="" alt="">
+
+    <!-- Vignettes -->
+    <div class="vig vig-top" id="vig-top"></div>
+    <div class="vig vig-bot" id="vig-bot"></div>
+
+    <!-- TEXT: "Kurs do celu" — first frames, dental office -->
+    <div class="ov ov-opener" id="ov-opener">
+      <h1>Kurs do celu</h1>
+    </div>
+
+    <!-- TEXT: Mid transition -->
+    <div class="ov ov-mid" id="ov-mid">
+      <h2>Od gabinetu<br>do pierwszego kroku</h2>
+      <div class="sub">Lekarsko-Dentystyczny Egzamin Końcowy</div>
+    </div>
+
+    <!-- TEXT: "Zaczyna się tutaj" — end, computer -->
+    <div class="ov ov-here" id="ov-here">
+      <h2>Zaczyna się tutaj</h2>
+    </div>
+
+    <!-- Stats -->
+    <div class="ov ov-stats" id="ov-stats">
+      <div class="stat"><div class="num">790 000+</div><div class="lbl">odpowiedzi</div></div>
+      <div class="stat"><div class="num">99,2%</div><div class="lbl">zdawalność</div></div>
+      <div class="stat"><div class="num">444</div><div class="lbl">studentów</div></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="ov ov-cta" id="ov-cta"><a href="#start">Zacznij za darmo</a></div>
+
+    <!-- Scroll hint -->
+    <div class="ov ov-scroll" id="ov-scroll" style="opacity:1">
+      <span>Scrolluj</span><div class="chev"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="post-hero" id="start">
+  <h3>Dalsza część strony kursnaldek.pl</h3>
+  <p>Features, testimoniale, pricing, FAQ...</p>
+</div>
+
+<script>
+// =============================================
+// SCROLL VIDEO — reversed frames, smooth playback
+// =============================================
+
+var frameImg = document.getElementById('frame-img');
+var fill = document.getElementById('fill');
+var pctEl = document.getElementById('pct');
+var loader = document.getElementById('loader');
+var wrap = document.getElementById('scroll-wrap');
+
+var allSrcs = [];
+var total = 0;
+var loaded = 0;
+var running = false;
+
+function fp(n) {
+  return 'frames/kursnaldek_frame_' + String(n).padStart(3, '0') + '.webp';
+}
+
+// ─── STEP 1: detect frames ───
+(function detect() {
+  pctEl.textContent = 'Szukam klatek...';
+  var i = 1;
+  var misses = 0;
+  var found = [];
+
+  function next() {
+    var img = new Image();
+    img.onload = function() {
+      found.push(fp(i));
+      misses = 0;
+      i++;
+      next();
+    };
+    img.onerror = function() {
+      misses++;
+      if (misses > 3) {
+        // ★ REVERSE the array so film plays forward ★
+        allSrcs = found;
+        total = found.length;
+        console.log('Klatki: ' + total + ' (reversed)');
+        if (total > 0) preload();
+        else pctEl.textContent = 'Brak klatek!';
+      } else {
+        i++;
+        next();
+      }
+    };
+    img.src = fp(i);
+  }
+  next();
+})();
+
+// ─── STEP 2: preload ALL frames before starting ───
+// (fixes choppiness — everything cached in RAM)
+function preload() {
+  var idx = 0;
+
+  function loadOne() {
+    if (idx >= total) {
+      // ALL loaded — start
+      if (!running) go();
+      return;
+    }
+    var cur = idx++;
+    var img = new Image();
+    img.onload = function() {
+      loaded++;
+      var p = Math.round((loaded / total) * 100);
+      fill.style.width = p + '%';
+      pctEl.textContent = p + '% (' + loaded + '/' + total + ')';
+
+      // Start early at 50% (rest loads in background)
+      if (loaded >= Math.floor(total * 0.5) && !running) go();
+      loadOne();
+    };
+    img.onerror = function() {
+      loaded++;
+      loadOne();
+    };
+    img.src = allSrcs[cur];
+  }
+
+  // 8 concurrent loaders for speed
+  for (var c = 0; c < 8; c++) loadOne();
+}
+
+// ─── STEP 3: start ───
+function go() {
+  running = true;
+  loader.classList.add('hide');
+  frameImg.src = allSrcs[0];
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
+// ─── STEP 4: smooth scroll handler with rAF ───
+var lastIdx = -1;
+var scrollTicking = false;
+
+function handleScroll() {
+  if (!scrollTicking) {
+    requestAnimationFrame(onFrame);
+    scrollTicking = true;
+  }
+}
+
+function onFrame() {
+  scrollTicking = false;
+
+  var maxScroll = wrap.scrollHeight - window.innerHeight;
+  if (maxScroll <= 0) return;
+  var p = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+
+  // ─── SWAP FRAME ───
+  var idx = Math.round(p * (total - 1));
+  if (idx !== lastIdx && idx >= 0 && idx < total) {
+    frameImg.src = allSrcs[idx];
+    lastIdx = idx;
+  }
+
+  // ─── TEXT OVERLAYS ───
+  // "Kurs do celu" — first 10% (dental office)
+  ov('ov-opener', p, 0.01, 0.05, 0.08, 0.14);
+
+  // "Od gabinetu..." — middle transition
+  ov('ov-mid',    p, 0.35, 0.42, 0.52, 0.58);
+
+  // "Zaczyna się tutaj" — student room
+  ov('ov-here',   p, 0.78, 0.84, 0.92, 0.96);
+
+  // Stats
+  ov('ov-stats',  p, 0.85, 0.91, 0.97, 1.00);
+
+  // CTA
+  ov('ov-cta',    p, 0.91, 0.96, 1.00, 1.00);
+  document.getElementById('ov-cta').style.pointerEvents = p > 0.91 ? 'auto' : 'none';
+
+  // Scroll hint
+  ov('ov-scroll', p, 0.00, 0.00, 0.03, 0.08);
+
+  // ─── VIGNETTES ───
+  vig('vig-top', p, 0.30, 0.38, 0.58, 0.62, 0.7);
+  vig('vig-bot', p, 0.78, 0.84, 1.00, 1.00, 0.9);
+}
+
+function c01(v) { return Math.max(0, Math.min(1, v)); }
+
+function ov(id, p, a, b, c, d) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var fi = c01((p - a) / ((b - a) || 0.001));
+  var fo = c01((p - c) / ((d - c) || 0.001));
+  var o = Math.max(0, Math.min(fi, 1 - fo));
+  el.style.opacity = o;
+  var y = (1 - fi) * 15;
+  // Opener is centered vertically too
+  if (id === 'ov-opener') {
+    el.style.transform = 'translate(-50%, -50%) translateY(' + y + 'px)';
+  } else {
+    el.style.transform = 'translateX(-50%) translateY(' + y + 'px)';
+  }
+}
+
+function vig(id, p, a, b, c, d, mx) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var fi = c01((p - a) / ((b - a) || 0.001));
+  var fo = c01((p - c) / ((d - c) || 0.001));
+  el.style.opacity = Math.max(0, Math.min(fi, 1 - fo)) * mx;
+}
+</script>
+</body>
+</html>

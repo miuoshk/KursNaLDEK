@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 import { cn } from "@/lib/utils";
 import { useAdminSidebarStore } from "@/features/admin/stores/adminSidebarStore";
 import { useMobileViewport } from "@/features/shared/hooks/useMobileViewport";
@@ -169,9 +170,9 @@ function AdminSidebarPanel({
             className="flex min-w-0 items-center gap-2 transition-opacity hover:opacity-80"
             title="Panel admina"
           >
-            <ShieldCheck className="size-4 shrink-0 text-brand-gold" aria-hidden />
+            <BrandMark className="size-6 text-brand-gold" />
             <span className="font-heading text-[15px] text-brand-gold">
-              Kurs na LDEK
+              Admin
             </span>
           </Link>
         )}

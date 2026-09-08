@@ -14,8 +14,9 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
-import { cn } from "@/lib/utils";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
+import { cn } from "@/lib/utils";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
 import { useDashboardUser } from "@/features/shared/contexts/DashboardUserContext";
 import { getSloganPool, pickSlogan } from "@/features/shared/lib/slogans";
@@ -60,25 +61,38 @@ export function SidebarPanel({
   );
   const streakLabel = formatStreakI18n(tCommon, streak);
 
+  const appName = appNameForProduct(currentProduct, tCommon);
+
   return (
     <aside
       aria-label={tNav("sidebarAriaLabel")}
       className={cn(
-        "flex h-full min-h-0 shrink-0 flex-col border-r border-border bg-sidebar transition-[width] duration-200 ease-out",
+        "relative flex h-full min-h-0 shrink-0 flex-col overflow-hidden border-r border-border bg-sidebar transition-[width] duration-200 ease-out",
         collapsed ? "w-16" : "w-[260px]",
         className,
       )}
     >
+      {(!collapsed || mobile) ? (
+        <BrandMark
+          className="pointer-events-none absolute left-1/2 top-[58%] w-[13.5rem] -translate-x-1/2 -translate-y-1/2 text-brand-gold opacity-[0.07]"
+        />
+      ) : null}
+
       <div
         className={cn(
-          "flex h-14 shrink-0 items-center border-b border-border",
+          "relative z-10 flex h-14 shrink-0 items-center border-b border-border",
           collapsed && !mobile ? "justify-end px-2" : "justify-between px-3",
         )}
       >
         {(!collapsed || mobile) && (
-          <p className="font-heading text-[16px] text-brand-gold">
-            {appNameForProduct(currentProduct, tCommon)}
-          </p>
+          <Link
+            href="/pulpit"
+            prefetch={false}
+            className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
+            aria-label={appName}
+          >
+            <BrandMark className="size-8 text-brand-gold" />
+          </Link>
         )}
         {mobile ? (
           <button
@@ -115,7 +129,7 @@ export function SidebarPanel({
 
       <div
         className={cn(
-          "flex shrink-0 items-center gap-2 border-b border-border px-4 py-4",
+          "relative z-10 flex shrink-0 items-center gap-2 border-b border-border px-4 py-4",
           collapsed && !mobile && "flex-col px-2",
         )}
       >
@@ -160,7 +174,7 @@ export function SidebarPanel({
         </div>
       </div>
 
-      <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-4" aria-label={tNav("mainNavAriaLabel")}>
+      <nav className="relative z-10 flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-4" aria-label={tNav("mainNavAriaLabel")}>
         <SidebarLink
           href="/pulpit"
           label={tNav("dashboard")}
@@ -185,7 +199,7 @@ export function SidebarPanel({
       </nav>
 
       {(!collapsed || mobile) && (
-        <p className="shrink-0 px-4 pb-6 font-body text-body-xs italic text-muted">
+        <p className="relative z-10 shrink-0 px-4 pb-6 font-body text-body-xs italic text-muted">
           {slogan}
         </p>
       )}

@@ -98,7 +98,7 @@ Różnica schema vs migracja: schema **nie zna** kolumny i constraintu. **Na pro
 
 - Kolumny `explanation_legacy` **nie ma** na prod (`information_schema.columns` dla `questions` — pełna lista w A.3).
 - Osobnej historii wersji samego wyjaśnienia **nie ma**.
-- Jest tabela audytu edycji admina: `question_edits` (521 wierszy na prod). Definicja: `scripts/2026-05-18-question-edits-audit.sql:4-12` — `question_id`, `editor_id`, `editor_role`, `report_id`, `changes jsonb`, `created_at`. Wpis powstaje w `updateQuestionFull` (`features/admin/server/adminActions.ts:420-432`). Komentarz w kodzie: update nie jest cofany, gdy insert audytu padnie.
+- Jest tabela audytu edycji admina: `question_edits` (521 wierszy; źródło: prod, 2026-09-05, `list_tables`). Definicja: `scripts/2026-05-18-question-edits-audit.sql:4-12` — `question_id`, `editor_id`, `editor_role`, `report_id`, `changes jsonb`, `created_at`. Wpis powstaje w `updateQuestionFull` (`features/admin/server/adminActions.ts:420-432`). Komentarz w kodzie: update nie jest cofany, gdy insert audytu padnie.
 - `editQuestion` (`adminActions.ts:129-154`) zapisuje `explanation` **bez** wpisu do `question_edits`. `rg` nie znajduje żadnego wywołania `editQuestion(` poza definicją.
 
 ### A.3 Kolumny `questions` na prod
@@ -146,9 +146,16 @@ Różnica schema vs migracja: schema **nie zna** kolumny i constraintu. **Na pro
 
 **`topic_id`:** tak, FK → `topics.id`, nullable.
 
-**`concept_id`:** nie ma kolumny na `questions`. Relacja przez `question_concepts` (20 703 wiersze).
+**`concept_id`:** nie ma kolumny na `questions`. Relacja przez `question_concepts` (20 703 wiersze; źródło: prod, 2026-09-05, `list_tables`).
 
-**Status / publikacja:** `is_active` (nullable, default true); `explanation_status` IN (`missing`, `draft`, `reviewed`) — constraint `questions_explanation_status_chk`; na prod **wszystkie 18 856 = `reviewed`**; `reserve_bucket`; `tracks`; `source` + `first_seen_session` (FK → `cem_sessions`, coherence: `source='cem'` albo `first_seen_session IS NULL`).
+**Status / publikacja:** `is_active` (nullable, default true); `explanation_status` IN (`missing`, `draft`, `reviewed`) — constraint `questions_explanation_status_chk`. źródło: prod, 2026-09-05:
+
+```
+SELECT explanation_status, COUNT(*) FROM questions GROUP BY 1;
+reviewed | 18856
+```
+
+`reserve_bucket`; `tracks`; `source` + `first_seen_session` (FK → `cem_sessions`, coherence: `source='cem'` albo `first_seen_session IS NULL`).
 
 ### A.4 `topics.knowledge_card`
 
@@ -351,21 +358,44 @@ Zapytania jak w briefie (emoji: `LIKE '%✅%' OR LIKE '%⚠%' OR LIKE '%💡%' O
 | KaTeX `\$` | 198 |
 | „według skryptu / w materiale / zgodnie z podręcznikiem” | 12 |
 
-**GROUP BY subject_id** dla dwóch pierwszych: **wszystkie przedmioty 0 / 0**.
+**GROUP BY subject_id** — ten sam regex briefu (`\b` = backspace w POSIX PG, nie granica słowa). źródło: prod, 2026-09-05:
+
+| subject_id | letter_refs | markdown_headings |
+|---|---:|---:|
+| anatomia | 0 | 0 |
+| biofizyka | 0 | 0 |
+| farmakologia | 0 | 0 |
+| fizjologia | 0 | 0 |
+| histologia | 0 | 0 |
+| ldew-chirurgia-stomatologiczna | 0 | 0 |
+| ldew-choroby-sluzowki | 0 | 0 |
+| ldew-endodoncja | 0 | 0 |
+| ldew-ortodoncja | 0 | 0 |
+| ldew-periodontologia | 0 | 0 |
+| ldew-protetyka | 0 | 0 |
+| ldew-stomatologia-dziecieca | 0 | 0 |
+| ldew-stomatologia-zachowawcza | 0 | 0 |
+| lek-prof-humanizm | 0 | 0 |
+| mikrobiologia | 0 | 0 |
+| stoma-angielski | 0 | 0 |
+| stoma-biochemia | 0 | 0 |
+| stoma-mikrobio-ju | 0 | 0 |
+| stoma-narzad-zucia | 0 | 0 |
+| stoma-patologia | 0 | 0 |
+| stoma-socjologia | 0 | 0 |
+| stoma-zakazne | 0 | 0 |
 
 Uwaga faktograficzna: 2349 wierszy zaczyna się od `**✅ Poprawna odpowiedź:**` (B.4) — regex z briefu na „odpowiedź A” ich nie łapie, bo nie ma litery opcji po słowie.
 
 ### B.4 Format STANDARD-WYJAŚNIEŃ 1.0
 
-`count(*) FILTER (WHERE explanation ~ '^\*\*✅ Poprawna odpowiedź:\*\*')` = **2349**.
+źródło: prod, 2026-09-05. `count(*) FILTER (WHERE explanation ~ '^\*\*✅ Poprawna odpowiedź:\*\*')` = **2349**.
 
 Wszystkie 2349 to `ldew-chirurgia-stomatologiczna` (100% tego przedmiotu). Przykład `chs-12-010`:
 
 ```
 **✅ Poprawna odpowiedź:** włókniak szkliwiakowy, wykrywany zwykle u pacjentów młodocianych
 ```
-
-To są kandydaci do parsowania regexem, nie LLM-em.
 
 ### B.5 Liczba opcji / klucz poza a–e
 
@@ -404,12 +434,12 @@ Dwa 6-opcjowe: `micro-exam-322`, `micro-exam-323` — mają id `f`, klucz nadal 
 | `features/admin/server/loadAdminQuestions.ts:105,133-139,179-187` | `explanation` | admin lista / szukaj `ilike` | nie (snippet) | nie |
 | `features/admin/components/AdminQuestionEditor.tsx:340,435-445,774` | oba (podgląd tylko `explanation`) | admin | tak (proza) | nie |
 | `features/admin/components/MarkdownExplanationEditor.tsx:198` | `explanation` | admin edytor | tak | nie |
-| `features/admin/components/AdminStructuredExplanationFields.tsx` | `explanation_blocks` | admin zapis bloków | nie (textarea) | nie |
+| `features/admin/components/AdminStructuredExplanationFields.tsx:16-105` | `explanation_blocks` | admin zapis bloków | nie (textarea) | nie |
 | `features/admin/server/generateTestExport.ts:158,178,233` | `explanation` | admin eksport Word | docx (plain/runs) | nie |
 | `features/admin/lib/testExport/buildDocuments.ts:525` | `explanation` | admin eksport Word | nie (runs) | nie |
 | `features/admin/lib/formatQuestionCopyText.ts:46` | `explanation` | schowek / zgłoszenie | plaintext | nie |
 | `features/notifications/server/loadReportNotifications.ts:87` | `explanation` | powiadomienie o zgłoszeniu (SELECT) | — | nie |
-| `features/notifications/components/ReportNotificationItem.tsx` | załadowane, **nie renderowane** | powiadomienie | — | — |
+| `features/notifications/components/ReportNotificationItem.tsx:57-76` | załadowane w C.1 wyżej, **nie renderowane** | powiadomienie | — | — |
 
 Świadomie poza tabelą (nie czytają pola z bazy): `ReportErrorDialog` (kategoria), `LandingContent` / `HeroMotion` / `DemoMarkdown` (i18n), `messages/*.json`.
 
@@ -441,7 +471,7 @@ Po sesji: `SummaryAnswerStrip.tsx:111-117` — tylko `a.explanation`, nie bloki.
 | powiadomienie o zgłoszeniu | SELECT tak, UI **nie pokazuje** explanation (`ReportNotificationItem.tsx:57-76`) | nie |
 
 **e) Indeks wyszukiwarki.**  
-`pg_indexes` na `questions`: brak indeksu na `explanation`, brak `pg_trgm`, brak FTS/GIN na treści. Admin szuka `ilike` (`loadAdminQuestions.ts:133-139`).
+źródło: prod, 2026-09-05 (`pg_indexes` WHERE `tablename='questions'`). Indeksy: `idx_questions_batch_label`, `idx_questions_learning_outcome`, `idx_questions_subtheme_label`, `idx_questions_theme_label`, `idx_questions_topic`, `idx_questions_tracks` (GIN na `tracks`), `idx_questions_type`, `questions_content_hash_idx`, `questions_pkey`, `questions_topic_source_active_idx`. **Żaden nie jest na `explanation`.** Brak `pg_trgm` / FTS. Admin szuka `ilike` (`loadAdminQuestions.ts:133-139`).
 
 ### C.3 `subjectExplanationPolicy`
 
@@ -497,29 +527,48 @@ Dla `stoma-angielski` proza i tak jest pusta, więc wyciek UI dziś nic nie poka
 
 **Nie.** Skill `/Users/miuoshk/.codex/skills/ldek-eksport/scripts/to_sql.py` (nie ma kopii w repo):
 
-Wariant LDEW (`:145-149`):
+Wariant LDEW — `to_sql.py:145-149`:
 
-```
-ON CONFLICT (id) DO UPDATE SET
-  text              = EXCLUDED.text,
-  options           = EXCLUDED.options,
-  correct_option_id = EXCLUDED.correct_option_id,
-  explanation       = EXCLUDED.explanation;
+```145:149:/Users/miuoshk/.codex/skills/ldek-eksport/scripts/to_sql.py
+        lines.append("ON CONFLICT (id) DO UPDATE SET")
+        lines.append("  text              = EXCLUDED.text,")
+        lines.append("  options           = EXCLUDED.options,")
+        lines.append("  correct_option_id = EXCLUDED.correct_option_id,")
+        lines.append("  explanation       = EXCLUDED.explanation;")
 ```
 
-Wariant KNNP (`:238-243`) — analogicznie `question_text` / `explanation`; komentarz: `is_active` celowo nie jest nadpisywane. **`explanation_blocks` nie ma w SET**, więc Postgres nie rusza kolumny.
+Wariant KNNP — `to_sql.py:238-243`:
+
+```238:243:/Users/miuoshk/.codex/skills/ldek-eksport/scripts/to_sql.py
+        lines.append("ON CONFLICT (id) DO UPDATE SET")
+        lines.append("  question_text     = EXCLUDED.question_text,")
+        lines.append("  options           = EXCLUDED.options,")
+        lines.append("  correct_option_id = EXCLUDED.correct_option_id,")
+        lines.append("  explanation       = EXCLUDED.explanation;")
+        lines.append("  -- uwaga: is_active celowo NIE jest nadpisywane")
+```
+
+W obu SET **nie ma** `explanation_blocks`. Postgres aktualizuje tylko wymienione kolumny — `explanation_blocks` zostaje.
 
 Ostatni wygenerowany SQL **w repo** (`exports/anatomia-batch-lek-2026-1.sql:616-623`, generator `scripts/build-anatlek-e2026-1.py`) w ogóle **nie ma** `ON CONFLICT` — sam INSERT. Też nie wyzeruje bloków.
 
 ### D.3 Funkcje / triggery na `questions`
 
-Na prod jeden trigger user-defined:
+źródło: prod, 2026-09-05
 
-| nazwa | co robi |
+```
+SELECT tgname, pg_get_triggerdef(t.oid)
+FROM pg_trigger t JOIN pg_class c ON c.oid = t.tgrelid
+WHERE c.relname = 'questions' AND NOT tgisinternal;
+```
+
+| tgname | pg_get_triggerdef |
 |---|---|
-| `questions_refresh_topic_count` | AFTER INSERT/UPDATE/DELETE → `trg_questions_refresh_topic_count()` przelicza `topics.question_count` przy zmianie `topic_id` / `is_active` / insert/delete. **Nie dotyka explanation.** Źródło: `scripts/2026-05-21-questions-topic-count-trigger.sql:26-59` |
+| `questions_refresh_topic_count` | `CREATE TRIGGER questions_refresh_topic_count AFTER INSERT OR DELETE OR UPDATE ON public.questions FOR EACH ROW EXECUTE FUNCTION trg_questions_refresh_topic_count()` |
 
-Powiązane funkcje (`pg_proc`): `refresh_topic_question_count(text)`, `active_question_count_by_topic`, `apply_user_question_review`, `due_review_question_ids`, `record_feedback_consumption`, `finalize_learning_answer`, `record_concept_attempt`. Żadna nie renderuje `blocks → explanation`.
+Definicja funkcji: `scripts/2026-05-21-questions-topic-count-trigger.sql:26-59` — przelicza `topics.question_count`. **Nie dotyka explanation.**
+
+`pg_proc` (public, te nazwy istnieją): `active_question_count_by_topic`, `apply_user_question_review`, `due_review_question_ids`, `finalize_learning_answer`, `record_concept_attempt`, `record_feedback_consumption`, `refresh_topic_question_count`, `trg_questions_refresh_topic_count`. Żadna nie renderuje `blocks → explanation`.
 
 ### D.4 Admin: jedna transakcja? Podgląd?
 
@@ -567,7 +616,7 @@ Landing używa osobnego `DemoMarkdown.tsx` (`remark-gfm`, **bez** KaTeX) — nie
 
 ### E.3 Platformy
 
-Jedna: Next.js web. Brak Expo / RN / Capacitor / `manifest.webmanifest` / service workera (`app/layout.tsx`, `next.config.ts`). Nie ma `apple-mobile-web-app`. To responsywna strona (viewport mobilny w CSS), nie PWA z osobnym rendererem. Test formatu = jeden renderer web.
+Jedna: Next.js web. `rg` `expo|react-native|capacitor|@capacitor` w `package.json`: 0 (fałszywy hit: skrypt `learning:export`). Brak `manifest.webmanifest` / service workera (`app/layout.tsx:22-51`, `next.config.ts:27-89`). `rg` `apple-mobile-web-app` w `app/`: 0. Jeden renderer web.
 
 ### E.4 Screenshoty 390×844
 
@@ -644,10 +693,10 @@ Wejścia:
 | `isCorrect` | porównanie `selectedOptionId === correctOptionId` | po kliknięciu opcji | `SessionStudyView.tsx:198-199`; `useSessionStudyFlow.ts:199` |
 | `timeSpentSeconds` | stoper pytania `useQuestionStopwatch` | w momencie wyboru opcji (pause) | `SessionStudyView.tsx:193` |
 | `antares.isLeech` | `user_question_progress.is_leech` | przy starcie sesji (przed odpowiedzią) | `fetchSessionQuestionMeta.ts:156`; `buildAntaresInteligentnaSession.ts:646` |
-| `antares.isNew` | brak / zerowa historia karty | start sesji | `questionMeta.ts` |
-| `antares.retrievability` | FSRS przed próbą | start sesji | `fetchSessionQuestionMeta` / composer |
-| `antares.priorAccuracy` | `times_correct / times_answered` | start sesji | meta |
-| `antares.avgTimeSeconds` | `user_question_progress.avg_time_seconds` | start sesji | meta |
+| `antares.isNew` | `defaultQuestionMeta` ustawia `isNew: true`; composer nadpisuje | start sesji | `features/session/lib/antares/questionMeta.ts:9`; `buildAntaresInteligentnaSession.ts:655,718,757` |
+| `antares.retrievability` | FSRS przed próbą, pole `retrievability` w `buildQuestionMeta` | start sesji | `features/session/lib/antares/questionMeta.ts:17,29` |
+| `antares.priorAccuracy` | `timesCorrect / timesAnswered` albo `null` | start sesji | `features/session/lib/antares/questionMeta.ts:26-33` |
+| `antares.avgTimeSeconds` | `input.avgTimeSeconds` ← `user_question_progress.avg_time_seconds` | start sesji | `features/session/lib/antares/questionMeta.ts:23,34` |
 
 Stałe `0.8`, `0.75`, `0.85`, `10`, fallback `25` — **w kodzie** `adaptiveFeedback.ts:19-24`. Nie ma wiersza konfiguracji. Zmiana = deploy. Eksperyment `adaptive-feedback-v1` włącza **użycie** funkcji, nie progi.
 
@@ -655,7 +704,7 @@ Gdy eksperyment jest off, wariant jest twardo `"standard"` (`SessionStudyView.ts
 
 ### F.2 Eksperymenty
 
-Tabele na prod: `learning_experiment_configs` (3), `learning_experiment_assignments` (0), `learning_experiment_rollouts` (0).
+Tabele, źródło: prod, 2026-09-05 (`list_tables` + `SELECT * FROM learning_experiment_configs`): `learning_experiment_configs` 3 wiersze, `learning_experiment_assignments` 0, `learning_experiment_rollouts` 0.
 
 | experiment_key | active | rollout_percent | scheduler_version |
 |---|---|---:|---|
@@ -676,18 +725,51 @@ Zapis: nie osobna akcja — `submitAnswer` (`features/session/api/submitAnswer.t
 
 **b)** `session_answers.confidence` — `text`, wartości Zoda: `"nie_wiedzialem" | "troche" | "na_pewno" | null` (`submitAnswer.ts:27`). Classic wymusza `null` (`:197-198`).
 
-**c)** Mapowanie FSRS — `features/session/lib/memory/scheduler.ts:127-156`:
+**c)** Mapowanie FSRS — cytat z kodu, `features/session/lib/memory/scheduler.ts:127-156`:
 
-| poprawność × samoocena | rating |
+```127:156:features/session/lib/memory/scheduler.ts
+export function confidenceToRating(
+  isCorrect: boolean,
+  confidence: Confidence,
+): Grade {
+  if (!isCorrect) return Rating.Again;
+  switch (confidence) {
+    case "nie_wiedzialem":
+      return Rating.Hard;
+    case "troche":
+      return Rating.Good;
+    case "na_pewno":
+      return Rating.Easy;
+  }
+}
+
+export function classifyAttemptRating(
+  isCorrect: boolean,
+  confidence: Confidence | null,
+): AttemptRating {
+  if (confidence == null) {
+    return {
+      grade: isCorrect ? Rating.Good : Rating.Again,
+      source: "observed",
+    };
+  }
+  return {
+    grade: confidenceToRating(isCorrect, confidence),
+    source: "explicit",
+  };
+}
+```
+
+| poprawność × samoocena | rating (z cytatu) |
 |---|---|
-| błędna × cokolwiek (w tym „na pewno”) | **Again** |
-| poprawna × „nie wiedziałem” | **Hard** |
-| poprawna × „trochę” | **Good** |
-| poprawna × „na pewno” | **Easy** |
-| poprawna × `null` | **Good** (`source: "observed"`) |
-| błędna × `null` | **Again** (`source: "observed"`) |
+| błędna × cokolwiek (w tym `"na_pewno"`) | `Rating.Again` (`:131`) |
+| poprawna × `"nie_wiedzialem"` | `Rating.Hard` (`:133-134`) |
+| poprawna × `"troche"` | `Rating.Good` (`:135-136`) |
+| poprawna × `"na_pewno"` | `Rating.Easy` (`:137-138`) |
+| poprawna × `null` | `Rating.Good`, `source: "observed"` (`:146-150`) |
+| błędna × `null` | `Rating.Again`, `source: "observed"` (`:146-150`) |
 
-Potwierdzone testem `scheduler.spec.ts:11-28`.
+Test: `scheduler.spec.ts:11-28`.
 
 **d)** Kolejność w inteligentnej: klik opcji → od razu werdykt + FeedbackPanel (`useSession.ts:29-34,81-82`) → pasek samooceny → dopiero klik pewności woła `submitAnswer` + FSRS (`SessionStudyView.ts:219-236`, `submitAnswer.ts:237,317-330`). FSRS **po** samoocenie, nie przed. Werdykt **przed** samooceną.  
 W przeglądzie: submit natychmiast z `confidence=null` (`SessionStudyView.ts:209-213`).
@@ -700,7 +782,7 @@ W przeglądzie: submit natychmiast z `confidence=null` (`SessionStudyView.ts:209
 | intelligent | 251596 | **0** |
 | classic | 276514 | 189410 |
 
-W inteligentnej NULL nie występuje. W classic ~68,5% NULL (reszta to starsze / niespójne wiersze — **NIEZWERYFIKOWANE**, skąd 87k classic z wypełnioną pewnością; obecny kod classic zeruje confidence).
+W inteligentnej NULL nie występuje. W classic 189410/276514 NULL (iloczyn z tabeli powyżej; źródło: prod, 2026-09-05). Skąd 87204 classic z niepustą pewnością — **NIEZWERYFIKOWANE** (obecny kod classic zeruje confidence, `submitAnswer.ts:197-198`).
 
 **f)** Żeby zebrać pewność **przed** werdyktem: odwrócić `selectAndCheck` vs `handleSubmitWithConfidence` w `SessionStudyView.tsx:190-214` i `useSession.ts:29-34` — najpierw zapisać wybór bez `isShowingFeedback`, pokazać pasek z `:170`, a FeedbackPanel montować dopiero po `onConfidencePick`. `submitAnswer` już dostaje pewność razem z odpowiedzią; FSRS zostaje w jednym requeście. Dotyka też skrótów klawiszowych (`useSessionKeyboardShortcuts.ts:65`) i dwell (`feedbackShownAtRef` dziś startuje przy pokazaniu werdyktu, `:204-207`).
 
@@ -721,7 +803,9 @@ Na prod adaptive-feedback jest **wyłączony**, więc wariant jest zawsze `"stan
 
 ## G. TELEMETRIA
 
-### G.1 `session_answers` (prod)
+### G.1 `session_answers`
+
+źródło: prod, 2026-09-05 (`information_schema.columns`)
 
 | kolumna | typ | null | uwagi |
 |---|---|---|---|
@@ -739,7 +823,12 @@ Na prod adaptive-feedback jest **wyłączony**, więc wariant jest zawsze `"stan
 | `fsrs_applied` | boolean | NO | |
 | `scheduler_version` | text | YES | |
 | `fsrs_rating` | smallint | YES | |
-| `state_*` / `retrievability_*` / `stability_*` / `difficulty_*` / `fsrs_snapshot_*` / `due_*` | … | YES | FSRS |
+| `state_before` / `state_after` | text | YES | FSRS |
+| `retrievability_before` / `retrievability_after` | real | YES | FSRS |
+| `stability_before` / `stability_after` | real | YES | FSRS |
+| `difficulty_before` / `difficulty_after` | real | YES | FSRS |
+| `fsrs_snapshot_before` / `fsrs_snapshot_after` | jsonb | YES | FSRS |
+| `due_before` / `due_after` | timestamptz | YES | FSRS |
 | `processing_completed_at` / `processing_result` | … | YES | |
 | `memory_fallback` | boolean | NO | |
 | `feedback_variant` | text | YES | wariant feedbacku |
@@ -780,9 +869,9 @@ Top 20 to anatomia. Litera ekranowa po shuffle **nie** jest zapisana — tylko i
 
 ### G.3 Interakcje z feedbackiem
 
-- otwarcie accordionu „Pokaż pełne wyjaśnienie”: **nic**
-- scroll: **nic**
-- czas na panelu: kolumna + RPC `record_feedback_consumption` istnieją; zapis tylko w treatment. Na prod 30 dni: `feedback_dwell_seconds IS NOT NULL` = **0**. Dla obecnego produkcji: praktycznie **nic**.
+- otwarcie accordionu: `<details>` w `FeedbackPanel.tsx:109-118` — brak `onToggle` / analytics. `rg` `analytics|track\(` w `features/session`: 0. **nic**
+- scroll: **nic** (`rg` scroll+feedback w session: brak loggera)
+- czas na panelu: kolumna + RPC `record_feedback_consumption`; zapis tylko w treatment (`recordFeedbackDwell.ts:42-44`). źródło: prod, 2026-09-05, 30 dni: `feedback_dwell_seconds IS NOT NULL` = **0**.
 
 ### G.4 Wolumen dzienny (30 dni)
 
@@ -846,8 +935,7 @@ CI (`.github/workflows/security.yml`): `npm ci` + `npm run audit:check`. **`npm 
 
 ### H.4 Staging
 
-Nie. Jeden projekt prod, zero branchy Supabase, brak `supabase/` w repo.  
-Żeby mieć bezpieczny batch 50: osobny projekt/branch Supabase z kopią (albo anonimizowanym subsetem) `questions` + `topics` + auth do admina, albo lokalny Supabase od zera (dziś go nie ma). Sam kod Next wystarczy podpiąć `SUPABASE_URL` w `.env.local`. Tego środowiska teraz nie ma.
+Nie. Jeden projekt prod, zero branchy Supabase, brak `supabase/` w repo. Tego środowiska teraz nie ma.
 
 ---
 
@@ -877,6 +965,7 @@ Nie. Jeden projekt prod, zero branchy Supabase, brak `supabase/` w repo.
 6. Czy wolno ruszyć `adaptive-feedback-v1` na 5/25% **zanim** bloki są pełne, czy najpierw pokrycie, potem dawkowanie? Dziś silnik dawkowania jest ślepy, bo nie ma bloków **i** jest wyłączony.
 7. 9849 pytań bez odpowiedzi przez 90 dni — migrujemy je w tej samej turze, czy świadomie na końcu?
 8. Admin przy zapisie pustych bloków ma pisać NULL, `{}`, czy odmawiać — to decyzja produktowa, nie techniczna; obecne zachowanie (NULL) zniszczy wsad przy „popraw tylko literówkę w stemie”, jeśli formularz zresetuje bloki.
+9. Bezpieczny batch 50: osobny projekt/branch Supabase z kopią (albo anonimizowanym subsetem) `questions` + `topics` + auth do admina, albo lokalny Supabase od zera. Sam kod Next wystarczy podpiąć `SUPABASE_URL` w `.env.local`. (przeniesione z H.4)
 
 ---
 

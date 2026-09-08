@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 import { Rycina } from "@/features/shared/components/Rycina";
 
 export const dynamic = "force-dynamic";
@@ -29,8 +30,12 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
       </div>
 
       <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link href="/" className="font-heading text-lg text-primary">
-          Kurs na <span className="text-brand-gold">LDEK</span>
+        <Link
+          href="/"
+          className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
+          aria-label="Kurs na LDEK"
+        >
+          <BrandMark className="size-8 text-brand-gold" />
         </Link>
         <Link
           href="/"

@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { headers } from "next/headers";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ContentCopyGuard } from "@/features/shared/components/ContentCopyGuard";
 import { IntlProvider } from "@/features/shared/components/IntlProvider";
+import { isZenitLabsHost } from "@/lib/hosts";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -28,6 +30,18 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
+  if (isZenitLabsHost((await headers()).get("host"))) {
+    return {
+      icons: {
+        icon: [
+          { url: "/studio/favicon.svg", type: "image/svg+xml" },
+          { url: "/studio/favicon.ico", sizes: "48x48" },
+        ],
+        apple: "/studio/apple-touch-icon.png",
+      },
+    };
+  }
+
   const t = await getTranslations("common");
   return {
     title: {
@@ -36,6 +50,13 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     applicationName: t("appName"),
     description: t("metadataDescription"),
+    icons: {
+      icon: [
+        { url: "/img/brand/icon.svg", type: "image/svg+xml" },
+        { url: "/img/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+      ],
+      apple: "/img/brand/apple-touch-icon.png",
+    },
   };
 }
 

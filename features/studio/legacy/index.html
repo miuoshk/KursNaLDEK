@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta charset="UTF-8">
+<meta name="description" content="Zenit Labs — platforma edukacyjna przygotowująca do LDEK. Baza pytań, AI, spaced repetition. 97% studentów stomatologii ŚUM. Zacznij za darmo.">
+<meta name="keywords" content="LDEK, przygotowanie do LDEK, egzamin stomatologiczny, platforma edukacyjna, stomatologia, pytania LDEK">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Zenit Labs">
+<link rel="canonical" href="https://zenitlabs.pl">
+
+<!-- Open Graph (jak ktoś wrzuci link na FB/LinkedIn) -->
+<meta property="og:title" content="Zenit Labs — Przygotowanie do LDEK">
+<meta property="og:description" content="Platforma edukacyjna dla studentów stomatologii. AI, spaced repetition, 10 000+ pytań LDEK.">
+<meta property="og:url" content="https://zenitlabs.pl">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://zenitlabs.pl/og-image.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenit Labs - Kształcimy kompetentne kadry dla polskiej stomatologii</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#CBAE5D;
+  --bg:#000216;
+  --bg2:#131B2E;
+  --prussian:#364E85;
+  --lilia:#8F93C5;
+  --white:#fff;
+  --text:#C8CEDF;
+  --muted:#8F93C5;
+  --border:rgba(54,78,133,.25);
+  --card:rgba(19,27,46,.85);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── Subtle ambient ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 10%,rgba(19,27,46,.8),transparent 65%),
+    radial-gradient(ellipse 40% 35% at 85% 90%,rgba(54,78,133,.15),transparent 60%);
+}
+
+/* ════ NAV ════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:64px;padding:0 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,2,22,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(54,78,133,.12);
+}
+.logo{display:flex;align-items:center;gap:0;text-decoration:none}
+.logo-text{
+  font-family:'DM Serif Display',serif;
+  font-size:18px;letter-spacing:.04em;color:var(--gold);
+}
+.logo-img{height:34px;width:auto;display:block}
+
+/* ── Hero logo ── */
+.hero-logo-wrap{margin-bottom:44px}
+.hero-logo{height:64px;width:auto;display:block;
+  filter:drop-shadow(0 0 18px rgba(203,174,93,.18));
+}
+.nav-right{display:flex;gap:40px;align-items:center}
+.nav-right a{
+  font-size:13px;font-weight:500;color:var(--muted);
+  text-decoration:none;letter-spacing:.02em;transition:color .2s;
+}
+.nav-right a:hover{color:var(--white)}
+.nav-right .cta-link{
+  color:var(--gold);border:1px solid rgba(203,174,93,.3);
+  padding:8px 20px;border-radius:3px;transition:all .2s;font-weight:600;
+}
+.nav-right .cta-link:hover{background:rgba(203,174,93,.07);border-color:rgba(203,174,93,.6)}
+
+/* ════ HERO ════ */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;z-index:1;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+/* grid overlay — only on left side */
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:
+    linear-gradient(rgba(54,78,133,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(54,78,133,.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 70% 80% at 25% 50%,black,transparent);
+}
+/* left content column */
+.hero-content{
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 64px 96px;
+  position:relative;z-index:2;
+}
+/* right image column */
+.hero-img-wrap {
+  background-color: #000216;  /* ← dodaj tę linię */
+  position: relative;
+  overflow: hidden;
+}
+.hero-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  display:block;
+  filter:saturate(.7) brightness(.65);
+}
+/* gradient: solid navy on left, fades to transparent on right */
+.hero-img-wrap::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(
+    to right,
+    rgba(0,2,22,1)   0%,
+    rgba(0,2,22,1)   5%,
+    rgba(0,2,22,.95) 25%,
+    rgba(0,2,22,.7)  45%,
+    rgba(0,2,22,.3)  70%,
+    rgba(0,2,22,0)   100%
+  );
+}
+/* top-to-bottom vignette too */
+.hero-img-wrap::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,2,22,.6) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0,2,22,.7) 100%
+  );
+}
+
+.hero-kicker{
+  font-size:11px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--prussian);margin-bottom:32px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-kicker::before{content:'';display:block;width:32px;height:1px;background:var(--prussian)}
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(42px,5.5vw,80px);
+  font-weight:400;line-height:1.05;
+  color:var(--white);
+  margin-bottom:28px;
+}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-desc{
+  font-size:17px;font-weight:300;color:var(--muted);
+  max-width:480px;line-height:1.7;margin-bottom:44px;
+}
+.hero-bottom{
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  margin-bottom:36px;
+}
+/* EEC badge — premium */
+.hero-eec{
+  display:inline-flex;align-items:center;gap:18px;
+  padding:18px 24px;
+  border:1px solid rgba(203,174,93,.45);
+  border-radius:3px;
+  background:rgba(0,2,22,.75);
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 28px rgba(203,174,93,.08),inset 0 1px 0 rgba(203,174,93,.1);
+  position:relative;overflow:hidden;
+  max-width:440px;
+}
+.hero-eec::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(203,174,93,.5),transparent);
+}
+.hero-eec-trophy{font-size:28px;flex-shrink:0;line-height:1}
+.hero-eec-divider{
+  width:1px;height:40px;background:rgba(203,174,93,.2);flex-shrink:0;
+}
+.hero-eec-text{
+  display:flex;flex-direction:column;gap:3px;
+}
+.hero-eec-top{
+  font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(203,174,93,.65);
+}
+.hero-eec-main{
+  font-family:'DM Serif Display',serif;
+  font-size:20px;color:var(--gold);line-height:1.1;letter-spacing:.02em;
+}
+.hero-eec-bottom{
+  font-size:11px;font-weight:400;color:var(--muted);letter-spacing:.01em;line-height:1.4;
+}
+.btn-gold{
+  display:inline-block;
+  font-family:'DM Serif Display',serif;
+  font-size:17px;font-weight:400;letter-spacing:.03em;
+  text-decoration:none;padding:14px 36px;
+  background:var(--gold);color:var(--bg);border-radius:3px;
+  transition:all .25s;
+}
+.btn-gold:hover{background:#DCC87A;box-shadow:0 6px 24px rgba(203,174,93,.25)}
+.btn-ghost{
+  display:inline-block;
+  font-family:'DM Serif Display',serif;
+  font-size:17px;font-weight:400;letter-spacing:.03em;
+  text-decoration:none;padding:14px 36px;
+  background:transparent;color:var(--white);
+  border:1px solid rgba(255,255,255,.12);border-radius:3px;
+  transition:all .25s;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.03)}
+
+/* ════ NUMBERS BAR ════ */
+.numbers-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--border);
+  position:relative;z-index:1;
+}
+.nb-item{
+  padding:48px 48px 40px;
+  border-right:1px solid var(--border);
+  position:relative;
+}
+.nb-item:last-child{border-right:none}
+.nb-n{
+  font-family:'DM Serif Display',serif;
+  font-size:48px;color:var(--gold);line-height:1;margin-bottom:8px;
+}
+.nb-l{
+  font-size:12px;font-weight:500;color:var(--muted);
+  letter-spacing:.04em;line-height:1.5;
+}
+
+/* ════ SECTIONS ════ */
+.section{
+  padding:120px 64px;
+  max-width:1280px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.section.full{max-width:none;padding-left:0;padding-right:0}
+.s-kicker{
+  font-size:10px;font-weight:700;letter-spacing:.38em;text-transform:uppercase;
+  color:var(--prussian);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.s-kicker::before{content:'';display:block;width:24px;height:1px;background:var(--prussian)}
+.s-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(32px,3.5vw,52px);
+  font-weight:400;color:var(--white);
+  line-height:1.15;margin-bottom:20px;
+}
+.s-title em{color:var(--gold);font-style:normal}
+.s-body{
+  font-size:17px;font-weight:300;color:var(--muted);
+  line-height:1.75;max-width:600px;
+}
+
+div.rule{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);position:relative;z-index:1}
+
+/* ════ PROBLEM ════ */
+.problem-layout{
+  display:grid;grid-template-columns:5fr 4fr;gap:96px;align-items:start;
+}
+.problem-text .s-body{max-width:100%;margin-bottom:40px}
+.pull-quote{
+  border-left:2px solid var(--prussian);
+  padding:20px 0 20px 28px;margin-top:40px;
+}
+.pull-quote p{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;font-style:italic;color:var(--lilia);line-height:1.5;
+}
+.stat-stack{display:flex;flex-direction:column;gap:2px;padding-top:80px}
+.stat-card{
+  padding:32px 28px;background:var(--card);
+  border:1px solid var(--border);
+  border-radius:2px;
+}
+.stat-card .sn{
+  font-family:'DM Serif Display',serif;font-size:52px;color:var(--gold);line-height:1;margin-bottom:8px;
+}
+.stat-card .sl{font-size:13px;color:var(--muted);line-height:1.5}
+.stat-card .ss{font-size:10px;color:rgba(143,147,197,.4);margin-top:8px;font-style:italic}
+
+/* ════ PRODUCT ════ */
+.product-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;margin-bottom:80px;
+}
+/* Mock UI preview */
+.ui-preview{
+  border-radius:8px;overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  position:relative;
+}
+.ui-preview::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(54,78,133,.2),transparent);
+  pointer-events:none;z-index:1;
+}
+.ui-bar{
+  height:36px;background:rgba(0,2,22,.8);
+  display:flex;align-items:center;padding:0 16px;gap:6px;
+  border-bottom:1px solid rgba(54,78,133,.2);
+}
+.ui-dot{width:8px;height:8px;border-radius:50%;background:rgba(143,147,197,.15)}
+.ui-url{
+  flex:1;text-align:center;font-size:10px;color:rgba(143,147,197,.35);letter-spacing:.04em;
+}
+.ui-body{padding:28px 24px}
+.ui-q-label{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--prussian);margin-bottom:12px}
+.ui-q{font-size:15px;color:var(--white);line-height:1.6;margin-bottom:20px;font-weight:400}
+.ui-choices{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.ui-choice{
+  padding:10px 14px;border-radius:4px;font-size:13px;color:var(--muted);
+  border:1px solid rgba(54,78,133,.2);background:rgba(19,27,46,.4);cursor:pointer;
+  transition:all .2s;
+}
+.ui-choice.correct{border-color:rgba(54,78,133,.6);background:rgba(54,78,133,.15);color:var(--white)}
+.ui-expl{
+  padding:16px;border-radius:4px;
+  background:rgba(54,78,133,.08);border:1px solid rgba(54,78,133,.2);
+}
+.ui-expl-label{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.ui-expl p{font-size:12px;color:var(--muted);line-height:1.6}
+.ui-progress{
+  display:flex;justify-content:space-between;align-items:center;margin-top:20px;
+  padding-top:16px;border-top:1px solid rgba(54,78,133,.15);
+}
+.ui-xp{font-size:11px;color:var(--gold);font-weight:600}
+.ui-streak{font-size:11px;color:var(--muted)}
+
+/* Features grid */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.feature{
+  padding:44px 40px;background:var(--bg);
+  transition:background .2s;
+}
+.feature:hover{background:var(--bg2)}
+.f-num{
+  font-family:'DM Serif Display',serif;font-size:13px;color:rgba(203,174,93,.3);
+  margin-bottom:20px;letter-spacing:.1em;
+}
+.f-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--white);margin-bottom:12px;line-height:1.25}
+.f-body{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ════ DEPLOYMENT ════ */
+.deploy-layout{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.deploy-text .s-body{max-width:100%}
+.deploy-result{
+  padding-top:80px;
+}
+.result-item{
+  display:flex;gap:24px;padding:28px 0;
+  border-bottom:1px solid var(--border);
+  align-items:flex-start;
+}
+.result-item:first-child{border-top:1px solid var(--border)}
+.ri-n{
+  font-family:'DM Serif Display',serif;font-size:38px;color:var(--gold);
+  line-height:1;min-width:100px;flex-shrink:0;
+}
+.ri-t{font-size:15px;font-weight:500;color:var(--white);margin-bottom:4px}
+.ri-d{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ════ METHOD ════ */
+.method-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.ms-item{
+  padding:56px 40px;background:var(--bg);
+  transition:background .25s;
+  position:relative;
+}
+.ms-item:hover{background:var(--bg2)}
+.ms-item::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:transparent;transition:background .25s;
+}
+.ms-item:hover::after{background:linear-gradient(90deg,transparent,rgba(203,174,93,.3),transparent)}
+.ms-step{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--prussian);margin-bottom:16px}
+.ms-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--white);margin-bottom:12px;line-height:1.3}
+.ms-body{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ════ MISSION ════ */
+.mission-full{
+  padding:120px 64px;
+  background:linear-gradient(180deg,var(--bg),rgba(19,27,46,.4),var(--bg));
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  text-align:center;position:relative;z-index:1;
+}
+.mission-full::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(54,78,133,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(54,78,133,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.mission-full blockquote{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(28px,4vw,52px);
+  font-style:italic;color:var(--white);
+  line-height:1.25;max-width:900px;margin:0 auto 24px;
+  position:relative;z-index:1;
+}
+.mission-full blockquote em{color:var(--gold);font-style:normal}
+.mission-attr{font-size:13px;color:var(--muted);letter-spacing:.08em;position:relative;z-index:1}
+
+/* ════ CONTACT ════ */
+.contact-section{
+  padding:120px 64px;
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;
+  position:relative;z-index:1;
+}
+.contact-text .s-title{margin-bottom:16px}
+.contact-text .s-body{margin-bottom:40px;max-width:100%}
+.contact-links{display:flex;flex-direction:column;gap:16px}
+.contact-link{
+  display:flex;align-items:center;gap:16px;
+  text-decoration:none;padding:20px 24px;
+  border:1px solid var(--border);border-radius:4px;
+  background:var(--card);transition:all .25s;
+  color:var(--white);
+}
+.contact-link:hover{border-color:rgba(203,174,93,.3);background:rgba(19,27,46,.95)}
+.cl-icon{font-size:18px;flex-shrink:0}
+.cl-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.cl-val{font-size:15px;color:var(--white)}
+
+/* ════ FOOTER ════ */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:1;
+}
+.footer-logo{
+  font-family:'DM Serif Display',serif;font-size:16px;color:var(--gold);
+  letter-spacing:.04em;text-decoration:none;
+}
+.footer-links{display:flex;gap:28px}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(143,147,197,.35)}
+
+/* hero-below — only visible on mobile */
+.hero-below{display:none}
+
+/* ════ ANIMATIONS ════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner-anim{animation:fadeUp 1s cubic-bezier(.16,1,.3,1)}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:960px){
+  nav,footer{padding-left:20px;padding-right:20px}
+  .nav-right a:not(.cta-link){display:none}
+
+  /* ── HERO: split 55/45 jak desktop ── */
+  .hero{
+    grid-template-columns:55% 45%;
+    min-height:auto;
+    border-bottom:none;
+  }
+  .hero-content{
+    padding:84px 12px 32px 20px;
+    justify-content:flex-start;
+  }
+  .hero-logo-wrap{display:none}
+  .hero-desc{display:none}
+  .hero-bottom{display:none}
+
+  .hero h1{
+    font-size:clamp(26px,7.5vw,38px);
+    margin-bottom:24px;
+  }
+  .hero-kicker{font-size:9px;margin-bottom:14px}
+
+  /* Foto — przytnij żeby pasowało do treści */
+  .hero-img-wrap{
+    max-height:520px;
+    overflow:hidden;
+  }
+
+  /* Badge większy */
+  .hero-eec{
+    padding:12px 14px;gap:10px;max-width:100%;flex-wrap:nowrap;
+  }
+  .hero-eec-trophy{font-size:22px}
+  .hero-eec-divider{height:32px}
+  .hero-eec-main{font-size:16px}
+  .hero-eec-top{font-size:7px;letter-spacing:.12em}
+  .hero-eec-bottom{font-size:10px}
+
+  /* ── Pod hero: opis + CTA full width ── */
+  .hero-below{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    padding:32px 20px 48px;
+    border-bottom:1px solid var(--border);
+  }
+  .hero-desc-mobile{
+    font-size:15px;font-weight:300;color:var(--muted);line-height:1.7;
+  }
+  .hero-cta-row{display:flex;flex-direction:column;gap:12px}
+  .hero-cta-row .btn-gold,
+  .hero-cta-row .btn-ghost{
+    display:block;width:100%;text-align:center;padding:14px 20px;font-size:16px;
+  }
+
+  /* ── Reszta strony ── */
+  .numbers-bar{grid-template-columns:repeat(2,1fr)}
+  .section{padding:64px 20px}
+  .problem-layout,.product-intro,.deploy-layout,.contact-section{grid-template-columns:1fr;gap:48px}
+  .stat-stack{padding-top:0}
+  .deploy-result{padding-top:0}
+  .features-grid,.method-strip{grid-template-columns:1fr}
+  .mission-full{padding:80px 20px}
+  .contact-section{padding:80px 20px}
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <img src="logo.png" alt="Zenit Labs" class="logo-img">
+  </a>
+  <div class="nav-right">
+    <a href="#problem">Problem</a>
+    <a href="#produkt">Produkt</a>
+    <a href="#wdrozenie">Wdrożenie</a>
+    <a href="#kontakt" class="cta-link">Kontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- LEFT: text -->
+  <div class="hero-content hero-inner-anim">
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="Zenit Labs" class="hero-logo">
+    </div>
+    <div class="hero-kicker">Zenit Labs</div>
+    <h1>Kształtujemy<br>przyszłość<br>polskiej <em>stomatologii.</em></h1>
+    <p class="hero-desc">
+      Budujemy platformę edukacyjną, która zmienia sposób przygotowania do LDEK — Lekarsko-Dentystycznego Egzaminu Końcowego. Nie kolejne powtórzenie pytań. Realne zrozumienie.
+    </p>
+    <div class="hero-bottom">
+      <a href="#produkt" class="btn-gold">Zobacz produkt</a>
+      <a href="#kontakt" class="btn-ghost">Skontaktuj się</a>
+    </div>
+    <div class="hero-eec">
+      <span class="hero-eec-trophy">🏆</span>
+      <div class="hero-eec-divider"></div>
+      <div class="hero-eec-text">
+        <span class="hero-eec-top">EEC Startup Challenge 2026 · <br>Europejski Kongres Ekonomiczny</span>
+        <span class="hero-eec-main">Półfinalista</span>
+        <span class="hero-eec-bottom">Grono 80 najlepszych startupów w Polsce</span>
+      </div>
+    </div>
+  </div>
+  <!-- RIGHT: photo -->
+  <div class="hero-img-wrap">
+    <img src="photo.jpeg" alt="Stomatologia">
+  </div>
+</section>
+
+<!-- HERO MOBILE BELOW (opis + CTA) -->
+<div class="hero-below">
+  <p class="hero-desc-mobile">
+    Budujemy platformę edukacyjną, która zmienia sposób przygotowania do LDEK — Lekarsko-Dentystycznego Egzaminu Końcowego. Nie kolejne powtórzenie pytań. Realne zrozumienie.
+  </p>
+  <div class="hero-cta-row">
+    <a href="#produkt" class="btn-gold">Zobacz produkt</a>
+    <a href="#kontakt" class="btn-ghost">Skontaktuj się</a>
+  </div>
+</div>
+
+
+<!-- NUMBERS BAR -->
+<div class="numbers-bar">
+  <div class="nb-item">
+    <div class="nb-n">444</div>
+    <div class="nb-l">aktywnych użytkowników</div>
+  </div>
+  <div class="nb-item">
+    <div class="nb-n">790k+</div>
+    <div class="nb-l">odpowiedzi udzielonych</div>
+  </div>
+  <div class="nb-item">
+    <div class="nb-n">97%</div>
+    <div class="nb-l">I i II roku stomatologii ŚUM<br>korzysta z platformy</div>
+  </div>
+  <div class="nb-item">
+    <div class="nb-n">9k h</div>
+    <div class="nb-l">czasu nauki<br>na platformie</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="rule"></div>
+<section class="section" id="problem">
+  <div class="problem-layout">
+    <div class="problem-text">
+      <div class="s-kicker">Problem</div>
+      <h2 class="s-title">Stomatologia jest<br>pomijana przez <em>EdTech.</em></h2>
+      <p class="s-body">
+        Studenci stomatologii przygotowują się do LDEK w warunkach chaosu. Główni gracze na rynku edukacji medycznej wywodzą się z rynku lekarskiego. Stomatologię dorzucili jako dodatek. Treści są przestarzałe, moduły stomatologiczne nie są aktywnie rozwijane.
+      </p>
+      <p class="s-body" style="margin-top:20px">
+        Tymczasem dotychczasowa metoda - rozwiązywanie jawnej bazy pytań - przestaje działać. Egzamin ewoluuje. Pasywne wkuwanie nie buduje kompetencji klinicznych ani pewności na sali egzaminacyjnej.
+      </p>
+      <div class="pull-quote">
+        <p>„Duzi gracze uczą zapamiętywania pytań. My kształcimy stomatologów, którzy rozumieją to, co robią."</p>
+      </div>
+    </div>
+    <div class="stat-stack">
+      <div class="stat-card">
+        <div class="sn">77%</div>
+        <div class="sl">studentów medycyny deklaruje trudności psychiczne związane z nauką</div>
+        <div class="ss">Fundacja Polki w Medycynie, 2025, n=726</div>
+      </div>
+      <div class="stat-card" style="margin-top:2px">
+        <div class="sn">93%</div>
+        <div class="sl">deklaruje silny stres egzaminacyjny</div>
+        <div class="ss">Fundacja Polki w Medycynie, 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<div class="rule"></div>
+<div class="method-strip">
+  <div class="ms-item">
+    <div class="ms-step">Metoda 01</div>
+    <div class="ms-title">Active Recall</div>
+    <p class="ms-body">Student rozwiązuje problemy zamiast biernie czytać. To buduje realne zrozumienie i pewność na egzaminie - nie tylko zapamiętanie odpowiedzi A, B lub C.</p>
+  </div>
+  <div class="ms-item">
+    <div class="ms-step">Metoda 02</div>
+    <div class="ms-title">Spaced Repetition</div>
+    <p class="ms-body">Algorytm planuje powtórki za studenta. Pytania wracają w idealnym momencie - zanim wiedza zdąży wyparować. Koniec z uczeniem się od zera przed każdym terminem.</p>
+  </div>
+  <div class="ms-item">
+    <div class="ms-step">Metoda 03</div>
+    <div class="ms-title">Pareto 80/20</div>
+    <p class="ms-body">Najpierw zagadnienia o najwyższej częstotliwości na egzaminie. Lepszy wynik w krótszym czasie - bez marnowania godzin na tematy marginalne.</p>
+  </div>
+  <div class="ms-item">
+    <div class="ms-step">Metoda 04</div>
+    <div class="ms-title">ADHD-friendly UX</div>
+    <p class="ms-body">Minimalne rozproszenia, jasna hierarchia, schematy zamiast ścian tekstu. Projektowane pod zmęczony, obciążony umysł - bo tak wygląda student w trakcie sesji.</p>
+  </div>
+</div>
+
+<!-- PRODUCT -->
+<div class="rule"></div>
+<section class="section" id="produkt">
+  <div class="product-intro">
+    <div>
+      <div class="s-kicker">Produkt</div>
+      <h2 class="s-title">Valkyria -<br>platforma przygotowująca<br>do <em>egzaminów.</em></h2>
+      <p class="s-body">
+        Aplikacja webowa, która łączy bazę pytań egzaminacyjnych z silnikiem wyjaśnień opartym o literaturę medyczną - konsultowanych z wykładowcami. Każda odpowiedź ma uzasadnienie w schemacie przyczynowo-skutkowym, nie tylko wskazanie poprawnej litery.
+      </p>
+      <p class="s-body" style="margin-top:20px">
+        Gamifikacja - XP, streaki, leaderboard rocznika, tryb 1v1 - sprawia, że nauka staje się regularna. Nie z obowiązku. Przez nawyk.
+      </p>
+    </div>
+
+    <!-- Mock UI -->
+    <div class="ui-preview">
+      <div class="ui-bar">
+        <div class="ui-dot"></div><div class="ui-dot"></div><div class="ui-dot"></div>
+        <div class="ui-url">valkyria.web.app</div>
+      </div>
+      <div class="ui-body">
+        <div class="ui-q-label">Biochemia kliniczna · Pytanie 4 / 10</div>
+        <div class="ui-q">Głównym bodźcem dla wydzielania CCK jest obecność w dwunastnicy:</div>
+        <div class="ui-choices">
+          <div class="ui-choice">A. węglowodanów prostych</div>
+          <div class="ui-choice correct">B. kwasów tłuszczowych i peptydów ✓</div>
+          <div class="ui-choice">C. kwaśnej treści żołądkowej</div>
+          <div class="ui-choice">D. wody i elektrolitów</div>
+        </div>
+        <div class="ui-expl">
+          <div class="ui-expl-label">Wyjaśnienie mechanizmu</div>
+          <p>CCK wydzielana przez komórki I dwunastnicy w odpowiedzi na kwasy tłuszczowe i aminokwasy → stymulacja trzustki (enzymy) + pęcherzyka żółciowego. Sekretyna ← pH &lt;4,5 → wodorowęglany.</p>
+        </div>
+        <div class="ui-progress">
+          <span class="ui-xp">+15 XP</span>
+          <span class="ui-streak">🔥 Seria: 8 dni</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features-grid">
+    <div class="feature">
+      <div class="f-num">01</div>
+      <div class="f-title">Baza pytań LDEK</div>
+      <p class="f-body">Ponad 10 000 pytań z pełnym zakresem egzaminu. Każde opracowane z uwzględnieniem źródeł literaturowych i skonsultowane z wykładowcami akademickimi. Bez błędów merytorycznych.</p>
+    </div>
+    <div class="feature">
+      <div class="f-num">02</div>
+      <div class="f-title">Silnik wyjaśnień ANTARES</div>
+      <p class="f-body">Wyjaśnienia w schemacie przyczynowo-skutkowym. Student rozumie, dlaczego odpowiedź jest poprawna - a nie tylko którą literę zaznaczyć. To różnica między zdaniem a zrozumieniem.</p>
+    </div>
+    <div class="feature">
+      <div class="f-num">03</div>
+      <div class="f-title">Analityka postępów</div>
+      <p class="f-body">Dashboard pokazuje accuracy per przedmiot, tempo nauki i obszary wymagające uwagi. Student wie dokładnie, gdzie są braki - i koncentruje czas tam, gdzie to ma sens.</p>
+    </div>
+    <div class="feature">
+      <div class="f-num">04</div>
+      <div class="f-title">Spaced Repetition</div>
+      <p class="f-body">Algorytm oparty o krzywe zapominania Ebbinghausa. Platforma planuje powtórki automatycznie - student dostaje właściwe pytanie w właściwym momencie, bez żadnego planowania.</p>
+    </div>
+    <div class="feature">
+      <div class="f-num">05</div>
+      <div class="f-title">Tryb 1v1 i gamifikacja</div>
+      <p class="f-body">Rywalizacja z innymi studentami, leaderboard rocznika, XP i streaki. Mechaniki gry sprawdzają się w edukacji - regularność i zaangażowanie rosną, gdy jest powód, by wracać.</p>
+    </div>
+    <div class="feature">
+      <div class="f-num">06</div>
+      <div class="f-title">Jakość dystraktorów</div>
+      <p class="f-body">Każdy błędny wariant odpowiedzi jest skonstruowany z konkretną logiką - zbliżone do prawdy, ale rozróżnialne dla kogoś, kto naprawdę rozumie mechanizm. Bez banalnych pułapek.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOYMENT -->
+<div class="rule"></div>
+<section class="section" id="wdrozenie">
+  <div class="deploy-layout">
+    <div class="deploy-text">
+      <div class="s-kicker">Wdrożenie</div>
+      <h2 class="s-title">Wdrożone na<br><em>Śląskim Uniwersytecie<br>Medycznym.</em></h2>
+      <p class="s-body">
+        Pilotaż uruchomiliśmy na Śląskim Uniwersytecie Medycznym. Bez kampanii reklamowych, bez zewnętrznego budżetu marketingowego. Dystrybucja oparta wyłącznie na modelu ambasadorskim - studenci dla studentów.
+      </p>
+      <p class="s-body" style="margin-top:20px">
+        Wyniki przerosły oczekiwania. 97% pierwszego roku i 99% drugiego roku kierunku lekarsko-dentystycznego aktywnie korzysta z platformy. Metoda działa. Skalujemy ją na cały rynek LDEK.
+      </p>
+      <p class="s-body" style="margin-top:20px">
+        We wrześniu 2026 uruchamiamy <strong style="color:var(--white)">Kurs na LDEK</strong> - dedykowaną platformę przygotowującą do sesji jesiennej LDEK, dostępną ogólnopolsko.
+      </p>
+    </div>
+    <div class="deploy-result">
+      <div class="result-item">
+        <div class="ri-n">444</div>
+        <div>
+          <div class="ri-t">Aktywnych użytkowników</div>
+          <div class="ri-d">W tym 236 płatnych subskrypcji przez Stripe</div>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="ri-n">790k</div>
+        <div>
+          <div class="ri-t">Odpowiedzi przetworzonych</div>
+          <div class="ri-d">28 500 ukończonych testów, ok. 9 000 godzin nauki</div>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="ri-n">97%</div>
+        <div>
+          <div class="ri-t">Penetracja I i II roku stomatologii</div>
+          <div class="ri-d">Zero złotych wydanych na reklamy</div>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="ri-n">M1</div>
+        <div>
+          <div class="ri-t">Break-even w pierwszym miesiącu</div>
+          <div class="ri-d">Koszt uruchomienia pilotażu: 3 100 PLN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION QUOTE -->
+<div class="mission-full">
+  <blockquote>
+    „Budujemy narzędzie,<br>którego sami <em>potrzebujemy.</em>"
+  </blockquote>
+  <p class="mission-attr">Zenit Labs · 2026</p>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-text">
+    <div class="s-kicker">Kontakt</div>
+    <h2 class="s-title">Porozmawiajmy.</h2>
+    <p class="s-body">
+      Jesteśmy otwarci na współpracę z uczelniami medycznymi, partnerami merytorycznymi oraz inwestorami zainteresowanymi rynkiem edukacji medycznej w Polsce.
+    </p>
+    <div style="margin-top:36px">
+      <a href="#kontakt" class="btn-gold">Napisz do nas</a>
+    </div>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:info@zenitlabs.pl" class="contact-link">
+      <span class="cl-icon">✉</span>
+      <div>
+        <div class="cl-label">Email</div>
+        <div class="cl-val">info@zenitlabs.pl</div>
+      </div>
+    </a>
+    <a href="https://zenitlabs.pl" target="_blank" class="contact-link">
+      <span class="cl-icon">↗</span>
+      <div>
+        <div class="cl-label">Strona</div>
+        <div class="cl-val">www.zenitlabs.pl</div>
+      </d

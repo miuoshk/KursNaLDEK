@@ -21,11 +21,11 @@ function isEditableTarget(target: EventTarget | null): boolean {
 /**
  * Blokuje kopiowanie / wycinanie / wklejanie treści platformy,
  * w tym natywne menu „Kopiuj” po zaznaczeniu na telefonie.
- * Panel `/admin` i pola formularzy zostają odblokowane.
+ * Panel `/admin`, wizytówka `/studio` i pola formularzy zostają odblokowane.
  */
 export function ContentCopyGuard() {
   const pathname = usePathname() ?? "";
-  const disabled = pathname.startsWith("/admin");
+  const disabled = pathname.startsWith("/admin") || pathname.startsWith("/studio");
 
   useLayoutEffect(() => {
     if (disabled) {

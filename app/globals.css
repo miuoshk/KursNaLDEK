@@ -193,6 +193,101 @@ input[type="number"] { -moz-appearance: textfield; }
   mask-composite: intersect;
 }
 
+/* Wizytówka studia — paleta brandbooka Zenit Labs */
+html:has(.studio-shell),
+body:has(.studio-shell) {
+  background-color: #000216;
+}
+
+.studio-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background-color: #000216;
+  color: #8F93C5;
+}
+
+.studio-shell ::selection {
+  background: rgba(203, 174, 93, 0.32);
+  color: #000216;
+}
+
+.studio-shell :focus-visible {
+  outline: 2px solid #cbae5d;
+  outline-offset: 3px;
+}
+
+.studio-orb {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.studio-orb-indigo {
+  position: absolute;
+  top: -32%;
+  left: 50%;
+  width: min(90vw, 64rem);
+  height: min(70vw, 48rem);
+  translate: -50% 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(63, 22, 87, 0.38) 0%,
+    rgba(54, 78, 133, 0.1) 46%,
+    transparent 72%
+  );
+}
+
+.studio-orb-prussian {
+  position: absolute;
+  top: 22%;
+  left: -10%;
+  width: min(52vw, 36rem);
+  height: min(52vw, 36rem);
+  background: radial-gradient(
+    circle at center,
+    rgba(19, 27, 46, 0.9) 0%,
+    rgba(54, 78, 133, 0.16) 50%,
+    transparent 72%
+  );
+}
+
+.studio-orb-gold {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  width: min(28vw, 22rem);
+  height: min(28vw, 22rem);
+  background: radial-gradient(
+    circle at center,
+    rgba(203, 174, 93, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+@keyframes studio-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.studio-rise {
+  animation: studio-rise 0.85s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-rise {
+    animation: none;
+  }
+}
+
 /* KaTeX — dopasowanie do ciemnego UI */
 .katex {
   color: inherit;

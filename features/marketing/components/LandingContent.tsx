@@ -18,6 +18,7 @@ import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
 import { HeroMotion } from "@/features/marketing/components/HeroMotion";
 import { MarketingNav } from "@/features/marketing/components/MarketingNav";
 import { Reveal } from "@/features/marketing/components/Reveal";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 import { Rycina } from "@/features/shared/components/Rycina";
 import { cn } from "@/lib/utils";
 
@@ -608,8 +609,8 @@ export async function LandingContent({ registrationOpen }: LandingContentProps) 
 
       <footer className="border-t border-border bg-sidebar/35 px-5 py-8 sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-heading text-base text-secondary">
-            Kurs na <span className="text-brand-gold">LDEK</span>
+          <p className="flex items-center">
+            <BrandMark className="size-8 text-brand-gold" title="Kurs na LDEK" />
           </p>
           <nav className="flex flex-wrap gap-x-6 gap-y-3" aria-label={t("footer.ariaLabel")}>
             <a

@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, Clock3, Flame, RotateCcw, Target } from "luci
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { DemoMarkdown } from "@/features/marketing/components/DemoMarkdown";
+import { BrandMark } from "@/features/shared/components/BrandMark";
 import { Rycina } from "@/features/shared/components/Rycina";
 
 type HeroMotionProps = {
@@ -179,8 +180,7 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
             <div className="rounded-[15px] border border-border bg-background">
               <div className="flex h-12 items-center justify-between border-b border-border px-4">
                 <div className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-brand-gold" />
-                  <span className="font-heading text-sm text-primary">Kurs na LDEK</span>
+                  <BrandMark className="size-5 text-brand-gold" />
                 </div>
                 <div className="flex items-center gap-1.5">
                   {Array.from({ length: STAGE_COUNT }, (_, item) => {

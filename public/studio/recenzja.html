@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zenit Labs — innowacje w stomatologii i MedEdTech</title>
+  <meta name="description" content="Zenit Labs. Oprogramowanie dla stomatologii i edukacji medycznej. Kurs na LDEK, silnik wyjaśnień ANTARES, półfinalista EEC Startup Challenge 2026. info@zenitlabs.pl" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #000216;
+      --royal: #131B2E;
+      --lily: #8F93C5;
+      --ink: #F3EFE3;
+      --gold: #CBAE5D;
+      --prussian: #364E85;
+      --stack: #6A73A8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: "DM Sans", sans-serif;
+      background: var(--navy);
+      color: var(--lily);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--ink); }
+    a.gold { color: var(--gold); }
+    a.gold:hover { color: var(--ink); }
+
+    .shell { position: relative; isolation: isolate; min-height: 100dvh; }
+    .orb { pointer-events: none; position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .orb-indigo {
+      position: absolute; top: -32%; left: 50%; width: min(90vw, 64rem); height: min(70vw, 48rem);
+      translate: -50% 0;
+      background: radial-gradient(ellipse at center, rgba(63, 22, 87, 0.38) 0%, rgba(54, 78, 133, 0.1) 46%, transparent 72%);
+    }
+    .orb-prussian {
+      position: absolute; top: 22%; left: -10%; width: min(52vw, 36rem); height: min(52vw, 36rem);
+      background: radial-gradient(circle at center, rgba(19, 27, 46, 0.9) 0%, rgba(54, 78, 133, 0.16) 50%, transparent 72%);
+    }
+    .orb-gold {
+      position: absolute; top: 8%; right: 8%; width: min(28vw, 22rem); height: min(28vw, 22rem);
+      background: radial-gradient(circle at center, rgba(203, 174, 93, 0.05) 0%, transparent 70%);
+    }
+    .page { position: relative; z-index: 1; }
+
+    .wrap { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; }
+    @media (min-width: 640px) { .wrap { width: min(1180px, calc(100% - 5rem)); } }
+
+    header .bar {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 4rem;
+    }
+    @media (min-width: 640px) { header .bar { height: 5rem; } }
+    .brand { display: flex; align-items: center; gap: 0.65rem; color: var(--ink); }
+    .brand svg { width: 1.25rem; height: 1.25rem; display: block; }
+    .brand span { font-size: 0.95rem; font-weight: 500; letter-spacing: -0.02em; }
+    nav { display: flex; gap: 1.75rem; }
+    nav a { font-size: 0.8rem; color: var(--lily); }
+    nav a:hover { color: var(--ink); }
+
+    .hero {
+      display: flex; align-items: center;
+      min-height: calc(100dvh - 5rem);
+    }
+    .hero-inner { padding: 2.5rem 0 6rem; }
+    .award { margin: 0; font-size: 0.8rem; color: var(--gold); }
+    h1 {
+      margin: 2.5rem 0 0;
+      font-size: clamp(2rem, 5.4vw, 4.7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.042em;
+      color: var(--ink);
+    }
+    h1 span { display: block; }
+    .lead {
+      margin: 2.5rem 0 0;
+      max-width: 38rem;
+      font-size: 1.12rem;
+      line-height: 1.75;
+    }
+    .cta { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
+    .cta a { font-size: 0.95rem; }
+
+    section { scroll-margin-top: 5rem; }
+    .band { background: var(--royal); }
+    .block { padding: 6rem 0; }
+    @media (min-width: 640px) { .block { padding: 8rem 0; } }
+
+    .label { margin: 0; font-size: 0.8rem; color: var(--lily); }
+    h2 {
+      margin: 1.5rem 0 0;
+      font-size: clamp(1.85rem, 4vw, 3.15rem);
+      font-weight: 300;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      max-width: 20ch;
+    }
+    h2.tight { max-width: 18ch; }
+    h2.gold { color: var(--gold); }
+    h2.plain { margin: 0; max-width: none; font-size: 0.8rem; font-weight: 400; color: var(--lily); letter-spacing: 0; }
+    .prose { margin-top: 2.5rem; max-width: 40rem; }
+    .prose p { margin: 0 0 1.25rem; font-size: 1.05rem; line-height: 1.75; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .grid3 { margin-top: 3.5rem; display: grid; gap: 3rem; }
+    @media (min-width: 768px) { .grid3 { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+    .grid3 h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .grid3 p { margin: 1rem 0 0; font-size: 0.98rem; line-height: 1.7; }
+
+    .split {
+      display: grid; gap: 2.5rem; align-items: end;
+    }
+    @media (min-width: 1024px) {
+      .split { grid-template-columns: 1.1fr 0.9fr; }
+    }
+    .stack { margin: 2.5rem 0 0; max-width: 40rem; font-size: 0.78rem; line-height: 1.5; color: var(--stack); }
+    .mail {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+    }
+    .note { margin: 1.25rem 0 0; max-width: 28rem; font-size: 1rem; line-height: 1.7; }
+
+    footer .bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 2rem 0;
+    }
+    footer p, footer a { margin: 0; font-size: 0.72rem; color: var(--prussian); }
+    footer a:hover { color: var(--gold); }
+
+    ::selection { background: rgba(203, 174, 93, 0.32); color: var(--navy); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="orb" aria-hidden="true">
+      <div class="orb-indigo"></div>
+      <div class="orb-prussian"></div>
+      <div class="orb-gold"></div>
+    </div>
+
+    <div class="page">
+      <header>
+        <div class="wrap bar">
+          <a class="brand" href="#top" aria-label="Zenit Labs">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 878.74 878.74" aria-hidden="true">
+              <path transform="matrix(1,0,0,-1,404.3098,378.9968)" d="M0 0V-34.096C0-44.699-3.012-55.06-8.614-64.036L-109.639-225.784C-117.591-238.494-118.013-253.976-110.723-267.049-105.482-276.567-97.048-283.314-87.109-286.266-86.808-286.386-86.928-286.808-87.169-286.808H-285.061C-285.302-286.808-285.423-286.567-285.302-286.386L-128.073-49.578-105.663-15.783-90.301 7.289-42.771 78.856C-42.651 79.037-42.41 78.976-42.35 78.796Z" fill="#CBAE5D"/>
+              <path transform="matrix(1,0,0,-1,759.4913,665.8047)" d="M0 0H-197.892C-198.133 0-198.253 .422-197.952 .542-188.012 3.494-179.579 10.241-174.338 19.759-167.049 32.831-167.47 48.314-175.422 61.024L-276.446 222.772C-282.049 231.748-285.061 242.109-285.061 252.712V286.808L-285.001 286.929-242.711 365.604C-242.651 365.784-242.41 365.845-242.29 365.664L-194.759 294.097 .241 .422C.361 .241 .241 0 0 0" fill="#CBAE5D"/>
+              <path transform="matrix(1,0,0,-1,543.7281,609.5095)" d="M0 0-61.459 98.345C-103.405 107.212-114.052 35.567-163.315 65.926L-206.051 .264C-208.935-4.137-209.166-9.526-206.661-14.141-204.172-18.772-199.541-21.525-194.283-21.525H-11.933C-6.741-21.525-2.143-18.822 .363-14.289 2.884-9.74 2.736-4.401 0 0" fill="#CBAE5D"/>
+              <path transform="matrix(1,0,0,-1,479.6117,251.93451)" d="M0 0C0-21.539-17.461-38.999-38.999-38.999-60.538-38.999-77.999-21.539-77.999 0-77.999 21.539-60.538 38.999-38.999 38.999-17.461 38.999 0 21.539 0 0" fill="#CBAE5D"/>
+            </svg>
+            <span>Zenit Labs</span>
+          </a>
+          <nav>
+            <a href="#studio">Studio</a>
+            <a href="#praca">Praca</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="wrap hero-inner">
+            <p class="award">Półfinalista EEC Startup Challenge 2026</p>
+            <h1>
+              <span>Innowacje w stomatologii</span>
+              <span>i MedEdTech.</span>
+            </h1>
+            <p class="lead">Robimy oprogramowanie dla studentów stomatologii i lekarzy dentystów. Studio powstało wokół jednej dziedziny: jak się jej uczyć i jak z niej korzystać w zawodzie. Pierwszy produkt to Kurs na LDEK.</p>
+            <div class="cta">
+              <a class="gold" href="mailto:info@zenitlabs.pl">info@zenitlabs.pl</a>
+              <a href="#praca">Praca</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="studio">
+          <div class="wrap block">
+            <p class="label">Studio</p>
+            <h2>Oprogramowanie dla stomatologii i edukacji medycznej.</h2>
+            <div class="prose">
+              <p>Zenit Labs jest studiem produktowym. Siedzi w nim zespół, który zna LDEK od strony nauki: przedmioty, język pytań i to, jak wygląda wieczór przed terminem.</p>
+              <p>Chirurgia, protetyka, periodontologia, farmakologia przy fotelu — każda z tych rzeczy ma własny rytm. Pytania, wyjaśnienia i powtórki muszą to unieść. Dlatego silnik, baza i logika powtórek są u nas.</p>
+              <p>Pracujemy nad kolejnymi narzędziami w tej samej dziedzinie. Kurs na LDEK jest pierwszym, które wyszło do ludzi i ma dziś płacących użytkowników.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="band">
+          <div class="wrap block">
+            <h2 class="tight">Czym się zajmujemy</h2>
+            <div class="grid3">
+              <div>
+                <h3>Innowacje</h3>
+                <p>Szukamy sposobów, żeby nauka stomatologii szła bliżej tego, jak zapamiętuje się decyzje kliniczne. W Kursie na LDEK widać to w wyjaśnieniach ANTARES i w powtórkach liczonych przez FSRS.</p>
+              </div>
+              <div>
+                <h3>Rozwiązania</h3>
+                <p>Projektujemy gotowe produkty: od układu ekranu po konto i płatność. Jeden zespół prowadzi Kurs na LDEK od pierwszego pytania do rozliczenia w Stripe.</p>
+              </div>
+              <div>
+                <h3>MedEdTech</h3>
+                <p>Technologia edukacyjna pisana dla stomatologii. Egzamin, przedmiot, wyjaśnienie i powtórka mówią tym samym językiem od początku do końca.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap block">
+            <p class="label">Dla kogo</p>
+            <h2>Kto z tego korzysta.</h2>
+            <div class="grid3">
+              <div>
+                <h3>Studenci stomatologii</h3>
+                <p>Osoby, które uczą się do LDEK i chcą przechodzić pytania z wyjaśnieniem, a potem wracać do tego, co jeszcze siada.</p>
+              </div>
+              <div>
+                <h3>Lekarze dentyści</h3>
+                <p>Ci, którzy wracają do materiału po dyplomie albo porządkują wiedzę przed kolejnym egzaminem.</p>
+              </div>
+              <div>
+                <h3>Zespoły z pomysłem</h3>
+                <p>Ludzie, którzy chcą zbudować kolejne narzędzie w stomatologii albo MedEdTech. Wtedy piszecie na maila i opowiadacie, o co chodzi.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="praca" class="band">
+          <div class="wrap block">
+            <p class="label">Praca</p>
+            <h2>Kurs na LDEK</h2>
+            <div class="prose">
+              <p>Platforma do nauki do Lekarsko-Dentystycznego Egzaminu Końcowego. Student wchodzi w sesję, rozwiązuje pytania i po odpowiedzi dostaje wyjaśnienie.</p>
+            </div>
+            <div class="grid3">
+              <div>
+                <h3>ANTARES</h3>
+                <p>Nasz silnik wyjaśnień. Układa uzasadnienie tak, żeby dało się z niego wrócić do tematu: dlaczego ta odpowiedź, skąd ta decyzja, co z tym zrobić przy następnym podobnym pytaniu.</p>
+              </div>
+              <div>
+                <h3>Powtórki</h3>
+                <p>Odstępy liczy FSRS. System pamięta, które pytanie wraca za wcześnie, a które można odłożyć. Nauka idzie za pamięcią, kalendarzem.</p>
+              </div>
+              <div>
+                <h3>Produkt</h3>
+                <p>Konta, płatności, katalog pytań i sesja są częścią jednego systemu. Z platformy korzystają dziś płacący użytkownicy.</p>
+              </div>
+            </div>
+            <p style="margin: 3.5rem 0 0;">
+              <a class="gold" href="https://kursnaldek.pl">kursnaldek.pl</a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap block split">
+            <div>
+              <p class="label">EEC</p>
+              <h2 class="gold">
+                Półfinalista<br />
+                EEC Startup Challenge<br />
+                2026
+              </h2>
+            </div>
+            <div class="prose" style="margin-top: 0; max-width: 28rem;">
+              <p>EEC Startup Challenge to ścieżka startupowa Europejskiego Kongresu Gospodarczego w Katowicach. W 2026 trafiliśmy do półfinału z Kursem na LDEK.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="band">
+          <div class="wrap block">
+            <p class="label">Od środka</p>
+            <h2 class="tight">Jak to zbudowaliśmy.</h2>
+            <div class="prose">
+              <p>Kurs na LDEK napisaliśmy w Next.js i TypeScript. Dane leżą w Supabase, na Postgresie, z RLS. Płatności idą przez Stripe, hosting przez Vercel.</p>
+              <p>ANTARES i logika powtórek FSRS są częścią tego samego kodu. Schemat bazy też. Jak coś zmienia się w kursie, zmienia się u nas.</p>
+            </div>
+            <p class="stack">Next.js 16, React 19, TypeScript, Tailwind, Supabase z Postgresem i RLS, Stripe, Vercel.</p>
+          </div>
+        </section>
+
+        <section id="kontakt">
+          <div class="wrap block">
+            <h2 class="plain">Kontakt</h2>
+            <a class="gold mail" href="mailto:info@zenitlabs.pl">info@zenitlabs.pl</a>
+            <p class="note">Odpisuje ktoś z zespołu. W sprawie kursu, współpracy albo zwykłego pytania.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="wrap bar">
+          <p>© 2026 Zenit Labs</p>
+          <a href="mailto:info@zenitlabs.pl">info@zenitlabs.pl</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

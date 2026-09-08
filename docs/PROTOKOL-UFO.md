@@ -540,7 +540,9 @@ klikalności.
    eksperyment nie ma z czym porównać.
 3. Widok public.distractor_stats_90d (materialized, odświeżany raz
    dziennie przez pg_cron albo skrypt): question_id, option_id,
-   n_selected, pct_of_answers, pct_of_wrong, n_total. Z session_answers
+   n_selected, pct_of_answers, pct_of_wrong, n_total,
+   n_first_attempt, pct_of_wrong_first (pierwsza odpowiedź user×pytanie).
+   Z session_answers
    po selected_option_id (G.1, G.2). Skrypt
    scripts/export-distractor-stats.mjs [--subject X] → CSV dla fabryki
    z progami: ≥15% błędnych = 'pisz', 3–15% = 'opcjonalnie', <3% =

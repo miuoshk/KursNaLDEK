@@ -1,5 +1,18 @@
 export type SessionBottomBarMode = "hidden" | "confidence" | "next";
 
+export function resolveSessionNextLabel(input: {
+  isLast: boolean;
+  allAnswered: boolean;
+  canEndPrzeglad: boolean;
+  continueLabel: string;
+  summaryLabel: string;
+}): string {
+  if (input.isLast || input.allAnswered || input.canEndPrzeglad) {
+    return input.summaryLabel;
+  }
+  return input.continueLabel;
+}
+
 export function resolveSessionBottomBarMode(input: {
   isPrzeglad: boolean;
   isWaitingForConfidence: boolean;

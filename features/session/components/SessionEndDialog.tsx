@@ -49,7 +49,7 @@ export function SessionEndDialog({
             <button
               type="button"
               onClick={onConfirm}
-              className="rounded-btn bg-brand-gold px-4 py-2 font-body text-body-sm font-semibold text-brand-bg"
+              className="rounded-btn border border-border px-4 py-2 font-body text-body-sm font-semibold text-secondary hover:text-primary"
             >
               {t("endSessionConfirmButton")}
             </button>

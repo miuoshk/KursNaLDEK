@@ -16,6 +16,7 @@ import type {
 } from "@/features/session/lib/feedbackTelemetry";
 import {
   resolveSessionBottomBarMode,
+  resolveSessionNextLabel,
   scrollSessionScroller,
 } from "@/features/session/lib/sessionBottomBar";
 import {
@@ -114,8 +115,13 @@ export function SessionQuestionContent({
     barMode !== "confidence" &&
     (isLast ? allAnswered || isShowingFeedback || canEndPrzeglad : true);
 
-  const nextLabel =
-    allAnswered || canEndPrzeglad ? t("endSession") : t("continue");
+  const nextLabel = resolveSessionNextLabel({
+    isLast,
+    allAnswered,
+    canEndPrzeglad,
+    continueLabel: t("continue"),
+    summaryLabel: t("viewSummary"),
+  });
 
   const showSquares =
     questions != null && answeredMap != null && questions.length > 0;
@@ -161,6 +167,7 @@ export function SessionQuestionContent({
         "[data-session-verdict]",
       );
       const header = document.querySelector<HTMLElement>("[data-session-topbar]");
+      verdict?.focus({ preventScroll: true });
       scrollSessionScroller(
         scroller,
         verdict,
@@ -168,9 +175,13 @@ export function SessionQuestionContent({
       );
       return;
     }
+    const stem = scroller.querySelector<HTMLElement>(
+      "[data-session-question-stem]",
+    );
     const card = scroller.querySelector<HTMLElement>(
       "[data-session-question-card]",
     );
+    stem?.focus({ preventScroll: true });
     scrollSessionScroller(scroller, card, 0);
   }, [q.id, isShowingFeedback]);
 
@@ -232,16 +243,10 @@ export function SessionQuestionContent({
               onFeedbackShown={onFeedbackShown}
               onFeedbackExpand={onFeedbackExpand}
             />
-            <SessionQuestionActions
-              questionId={q.id}
-              questionText={q.text}
-              subjectId={subjectId}
-            />
-
             {fatigueDetected ? (
-              <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-gold/25 bg-brand-gold/[0.06] p-4">
+              <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-sage/25 bg-brand-sage/[0.06] p-4">
                 <Coffee
-                  className="mt-0.5 size-5 shrink-0 text-brand-gold"
+                  className="mt-0.5 size-5 shrink-0 text-secondary"
                   aria-hidden
                 />
                 <div className="min-w-0 flex-1">
@@ -255,7 +260,7 @@ export function SessionQuestionContent({
                     <button
                       type="button"
                       onClick={onTakeBreak}
-                      className="mt-3 rounded-btn border border-brand-gold/30 px-3 py-2 font-body text-body-xs font-semibold text-brand-gold transition-colors hover:bg-brand-gold/10"
+                      className="mt-3 rounded-btn border border-border px-3 py-2 font-body text-body-xs font-semibold text-secondary transition-colors hover:bg-white/5"
                     >
                       {t("fatigueTakeBreak")}
                     </button>
@@ -264,15 +269,7 @@ export function SessionQuestionContent({
               </div>
             ) : null}
           </motion.div>
-        ) : (
-          <div className="mx-auto mt-8 w-full max-w-3xl md:max-w-[72ch]">
-            <SessionQuestionActions
-              questionId={q.id}
-              questionText={q.text}
-              subjectId={subjectId}
-            />
-          </div>
-        )}
+        ) : null}
       </div>
 
       <div
@@ -288,6 +285,16 @@ export function SessionQuestionContent({
           onConfidencePick={onConfidencePick}
           onNext={onNext}
           onConfidenceBarShown={onConfidenceBarShown}
+          helperActions={
+            barMode === "next" ? (
+              <SessionQuestionActions
+                questionId={q.id}
+                questionText={q.text}
+                subjectId={subjectId}
+                variant="icons"
+              />
+            ) : null
+          }
         />
         <div className="hidden px-2 py-1.5 sm:px-4 sm:py-3 md:block">
           <div className="mx-auto flex max-w-3xl items-center gap-1">

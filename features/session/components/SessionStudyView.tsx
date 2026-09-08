@@ -417,6 +417,9 @@ export function SessionStudyView({
         examElapsedSeconds={showSessionTimer ? timerSec : null}
         selectedTopicName={selectedTopicName}
         sessionTopicNames={sessionTopicNames}
+        questions={s.questions}
+        answeredMap={s.answeredMap}
+        onJumpTo={wrappedJumpTo}
         onEnd={() => setEndOpen(true)}
       />
       <SessionQuestionContent

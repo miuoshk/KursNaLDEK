@@ -41,9 +41,20 @@ type FeedbackPanelProps = {
   ) => void;
 };
 
-function SectionLabel({ children }: { children: ReactNode }) {
+function SectionLabel({
+  children,
+  tone = "secondary",
+}: {
+  children: ReactNode;
+  tone?: "secondary" | "gold";
+}) {
   return (
-    <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-gold">
+    <p
+      className={cn(
+        "font-body text-[13px] font-semibold md:text-[14px]",
+        tone === "gold" ? "text-brand-gold" : "text-secondary",
+      )}
+    >
       {children}
     </p>
   );
@@ -53,17 +64,19 @@ function FeedbackSection({
   label,
   children,
   testId,
+  labelTone = "secondary",
 }: {
   label: string;
   children: ReactNode;
   testId?: string;
+  labelTone?: "secondary" | "gold";
 }) {
   return (
     <section
       data-feedback-section={testId ?? label}
       className="px-5 py-5"
     >
-      <SectionLabel>{label}</SectionLabel>
+      <SectionLabel tone={labelTone}>{label}</SectionLabel>
       <div className="mt-2">{children}</div>
     </section>
   );
@@ -177,6 +190,7 @@ export function FeedbackPanel({
 }: FeedbackPanelProps) {
   const t = useTranslations("session");
   const tCommon = useTranslations("common");
+  const verdictRef = useRef<HTMLDivElement>(null);
   const blocks = question.explanationBlocks ?? null;
   const hasBlocks = blocks != null;
   const takeaway = blocks?.takeaway?.trim() ?? "";
@@ -255,6 +269,10 @@ export function FeedbackPanel({
     onFeedbackShown(buildFeedbackShownEvent(question.id, shownInput));
   }, [question.id, variant, onFeedbackShown]);
 
+  useEffect(() => {
+    verdictRef.current?.focus({ preventScroll: true });
+  }, [question.id]);
+
   const skipNextOpen = useRef(whyOthersOpen);
   const handleToggle = (section: FeedbackExpandSection) =>
     (event: SyntheticEvent<HTMLDetailsElement>) => {
@@ -290,9 +308,9 @@ export function FeedbackPanel({
         onToggle={handleToggle("distractors")}
         data-feedback-section="why-others"
       >
-        <summary className="flex cursor-pointer list-none items-center gap-2">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2">
           <ChevronDown
-            className="size-4 shrink-0 text-brand-gold transition-transform group-open:rotate-180"
+            className="size-4 shrink-0 text-secondary transition-transform group-open:rotate-180"
             aria-hidden
           />
           <SectionLabel>{t("feedbackWhyOthers")}</SectionLabel>
@@ -313,7 +331,7 @@ export function FeedbackPanel({
         onToggle={handleToggle("full")}
         data-feedback-section="full"
       >
-        <summary className="flex cursor-pointer list-none items-center gap-2 font-body text-body-sm font-semibold text-sage">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-body text-[13px] font-semibold text-secondary md:text-[14px]">
           <ChevronDown
             className="size-4 transition-transform group-open:rotate-180"
             aria-hidden
@@ -332,9 +350,25 @@ export function FeedbackPanel({
       </details>
     ) : null;
 
+  const mechanismBlock =
+    (variant === "standard" || variant === "remedial") && correctReason ? (
+      showTakeawayHeader ? (
+        <section className="px-5 py-5" data-feedback-section="explanation">
+          {markdownBlock(correctReason)}
+        </section>
+      ) : (
+        <FeedbackSection
+          label={tCommon("explanation")}
+          testId="explanation"
+        >
+          {markdownBlock(correctReason)}
+        </FeedbackSection>
+      )
+    ) : null;
+
   const hasCardSections =
     showTakeawayHeader ||
-    ((variant === "standard" || variant === "remedial") && correctReason) ||
+    mechanismBlock != null ||
     showYourChoice ||
     remainingAccordion != null ||
     conciseAccordion != null ||
@@ -349,9 +383,12 @@ export function FeedbackPanel({
       data-has-blocks={hasBlocks ? "true" : "false"}
     >
       <div
+        ref={verdictRef}
+        tabIndex={-1}
         data-session-verdict
+        aria-live="polite"
         className={cn(
-          "flex items-center gap-2 font-body text-body-lg font-semibold",
+          "flex items-center gap-2 font-body text-body-lg font-semibold outline-none",
           isCorrect ? "text-success" : "text-error",
         )}
       >
@@ -366,7 +403,7 @@ export function FeedbackPanel({
         <p className="mt-2 font-body text-body-sm text-secondary">{answerLine}</p>
       ) : null}
       {hypercorrection ? (
-        <p className="mt-2 font-body text-body-sm font-medium text-gold">
+        <p className="mt-2 font-body text-body-sm font-medium text-secondary">
           {t("feedbackHypercorrection")}
         </p>
       ) : null}
@@ -383,31 +420,18 @@ export function FeedbackPanel({
       {!hideExplanation && hasBlocks && hasCardSections ? (
         <div className="mt-4 divide-y divide-border overflow-hidden rounded-card bg-card">
           {showTakeawayHeader ? (
-            <section className="px-5 py-5" data-feedback-section="takeaway-header">
-              {markdownBlock(
-                takeaway,
-                "font-heading text-heading-sm text-primary [&_p]:m-0 [&_p]:font-heading [&_p]:text-heading-sm [&_p]:text-primary",
-              )}
-            </section>
-          ) : null}
-
-          {(variant === "standard" || variant === "remedial") &&
-          correctReason ? (
-            showTakeawayHeader ? (
-              <section className="px-5 py-5" data-feedback-section="explanation">
-                {markdownBlock(correctReason)}
-              </section>
-            ) : (
-              <FeedbackSection
-                label={tCommon("explanation")}
-                testId="explanation"
-              >
-                {markdownBlock(correctReason)}
-              </FeedbackSection>
-            )
+            <FeedbackSection
+              label={t("feedbackPrinciple")}
+              testId="takeaway-header"
+              labelTone="gold"
+            >
+              {markdownBlock(takeaway, "text-primary [&_p]:text-primary")}
+            </FeedbackSection>
           ) : null}
 
           {yourChoiceBlock}
+
+          {mechanismBlock}
 
           {conciseAccordion}
           {remainingAccordion}
@@ -430,7 +454,7 @@ export function FeedbackPanel({
           {variant === "remedial" && question.knowledgeCard ? (
             <section className="flex gap-3 px-5 py-5" data-feedback-section="remediation">
               <BookOpen
-                className="mt-0.5 size-5 shrink-0 text-gold"
+                className="mt-0.5 size-5 shrink-0 text-secondary"
                 aria-hidden
               />
               <div>
@@ -444,7 +468,7 @@ export function FeedbackPanel({
 
           {variant === "remedial" && transferScheduled ? (
             <p
-              className="flex items-center gap-2 px-5 py-5 font-body text-body-sm font-medium text-sage"
+              className="flex items-center gap-2 px-5 py-5 font-body text-body-sm font-medium text-brand-sage"
               data-feedback-section="transfer"
             >
               <Repeat2 className="size-4 shrink-0" aria-hidden />

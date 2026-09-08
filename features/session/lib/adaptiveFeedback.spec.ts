@@ -298,6 +298,36 @@ test("control + bloki = standard", () => {
   );
 });
 
+test("tabela wynik × pewność → wariant (szybka stabilna + takeaway)", () => {
+  const table: Array<{
+    isCorrect: boolean;
+    confidence: Confidence | null;
+    variant: "concise" | "standard" | "remedial";
+  }> = [
+    { isCorrect: true, confidence: "na_pewno", variant: "concise" },
+    { isCorrect: true, confidence: "troche", variant: "standard" },
+    { isCorrect: true, confidence: "nie_wiedzialem", variant: "standard" },
+    { isCorrect: true, confidence: null, variant: "concise" },
+    { isCorrect: false, confidence: "na_pewno", variant: "remedial" },
+    { isCorrect: false, confidence: "troche", variant: "remedial" },
+    { isCorrect: false, confidence: "nie_wiedzialem", variant: "remedial" },
+    { isCorrect: false, confidence: null, variant: "remedial" },
+  ];
+
+  for (const row of table) {
+    assert.equal(
+      select({
+        isCorrect: row.isCorrect,
+        timeSpentSeconds: 20,
+        confidence: row.confidence,
+        hasTakeaway: true,
+      }).variant,
+      row.variant,
+      `${row.isCorrect ? "correct" : "wrong"} × ${String(row.confidence)}`,
+    );
+  }
+});
+
 test("każdy wariant × każda pewność", () => {
   const expected: Record<
     "concise" | "standard" | "remedial",

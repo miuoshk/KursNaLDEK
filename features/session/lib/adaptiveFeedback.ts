@@ -99,6 +99,13 @@ export function selectFeedbackVariant(
     return { variant: "remedial", hypercorrection };
   }
 
+  if (
+    input.confidence === "nie_wiedzialem" ||
+    input.confidence === "troche"
+  ) {
+    return { variant: "standard", hypercorrection };
+  }
+
   const personalFastThreshold =
     meta?.avgTimeSeconds != null
       ? Math.max(10, meta.avgTimeSeconds * 0.85)

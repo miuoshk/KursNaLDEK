@@ -5,7 +5,8 @@
  *   node scripts/export-distractor-stats.mjs --subject ldew-chirurgia-stomatologiczna
  *   node scripts/export-distractor-stats.mjs --subject X --refresh --out exports/x.csv
  *
- * Progi (pct_of_wrong): ≥15% pisz, 3–15% opcjonalnie, <3% martwy dystraktor.
+ * Progi (pct_of_wrong / pct_of_wrong_first): ≥15% pisz, 3–15% opcjonalnie, <3% martwy.
+ * CSV ma obie wersje: wszystkie próby i pierwsza próba user×pytanie.
  * Wymaga: NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
  */
 
@@ -81,7 +82,7 @@ async function fetchAllStats(supabase) {
     const { data, error } = await supabase
       .from("distractor_stats_90d")
       .select(
-        "question_id, option_id, n_selected, n_total, pct_of_answers, pct_of_wrong",
+        "question_id, option_id, n_selected, n_total, pct_of_answers, pct_of_wrong, n_first_attempt, pct_of_wrong_first",
       )
       .order("question_id", { ascending: true })
       .order("option_id", { ascending: true })
@@ -129,8 +130,14 @@ export async function buildDistractorRows(supabase, subjectId) {
       n_total: row.n_total,
       pct_of_answers: row.pct_of_answers,
       pct_of_wrong: row.pct_of_wrong,
+      n_first_attempt: row.n_first_attempt,
+      pct_of_wrong_first: row.pct_of_wrong_first,
       recommendation: classifyDistractorRecommendation(
         row.pct_of_wrong,
+        isCorrect,
+      ),
+      recommendation_first: classifyDistractorRecommendation(
+        row.pct_of_wrong_first,
         isCorrect,
       ),
     });
@@ -154,7 +161,10 @@ function toCsv(rows) {
     "n_total",
     "pct_of_answers",
     "pct_of_wrong",
+    "n_first_attempt",
+    "pct_of_wrong_first",
     "recommendation",
+    "recommendation_first",
   ];
   return [
     header.join(","),

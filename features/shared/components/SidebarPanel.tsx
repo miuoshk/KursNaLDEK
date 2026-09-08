@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
-import { BrandMark } from "@/features/shared/components/BrandMark";
+import { BrandLogo, BrandMark } from "@/features/shared/components/BrandMark";
 import { SidebarLink } from "@/features/shared/components/SidebarLink";
 import { cn } from "@/lib/utils";
 import { useDashboardBreadcrumb } from "@/features/shared/contexts/DashboardBreadcrumbContext";
@@ -91,7 +91,7 @@ export function SidebarPanel({
             className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
             aria-label={appName}
           >
-            <BrandMark className="size-8 text-brand-gold" />
+            <BrandLogo markClassName="size-7" wordmarkClassName="text-[1rem]" />
           </Link>
         )}
         {mobile ? (

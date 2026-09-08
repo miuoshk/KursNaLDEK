@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { BrandMark } from "@/features/shared/components/BrandMark";
+import { BrandLogo } from "@/features/shared/components/BrandMark";
 import { Rycina } from "@/features/shared/components/Rycina";
 
 export const dynamic = "force-dynamic";
@@ -29,22 +29,24 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         />
       </div>
 
-      <header className="relative z-10 mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link
-          href="/"
-          className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
-          aria-label="Kurs na LDEK"
-        >
-          <BrandMark className="size-8 text-brand-gold" />
-        </Link>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
-        >
-          <ArrowLeft className="size-4" aria-hidden="true" />
-          {tAuth("backToHome")}
-        </Link>
-      </header>
+      <div className="relative z-10 px-5 sm:px-8 lg:px-12">
+        <header className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between">
+          <Link
+            href="/"
+            className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
+            aria-label="Kurs na LDEK"
+          >
+            <BrandLogo />
+          </Link>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 font-body text-body-sm text-secondary transition-colors duration-200 ease-out hover:text-primary"
+          >
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            {tAuth("backToHome")}
+          </Link>
+        </header>
+      </div>
 
       <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-14 pt-6 sm:pt-10">
         <div className="w-full max-w-md">{children}</div>

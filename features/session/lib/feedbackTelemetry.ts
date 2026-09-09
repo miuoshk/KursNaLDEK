@@ -2,7 +2,10 @@ import {
   questionHasNormalizedBlocks,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
-import { isStatementSetBlocks } from "@/features/shared/lib/explanationBlocks";
+import {
+  isSbaBlocks,
+  isStatementSetBlocks,
+} from "@/features/shared/lib/explanationBlocks";
 import { computeStatementSetDiff, trueStatementIds } from "@/features/shared/lib/statementSet";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 
@@ -55,7 +58,7 @@ export function listFeedbackElements(input: {
   const takeaway = blocks?.takeaway?.trim() ?? "";
   const correctReason = blocks?.correctReason?.trim() ?? "";
   const trap = blocks?.trap?.trim() ?? "";
-  const distractors = statementSet ? undefined : blocks?.distractors;
+  const distractors = isSbaBlocks(blocks) ? blocks.distractors : undefined;
   const contrast = blocks?.contrast;
   const selectedOption = question.options.find(
     (option) => option.id === selectedOptionId,

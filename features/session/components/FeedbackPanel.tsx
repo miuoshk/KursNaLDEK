@@ -15,6 +15,7 @@ import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 import {
   contrastToMarkdown,
+  isSbaBlocks,
   isStatementSetBlocks,
 } from "@/features/shared/lib/explanationBlocks";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
@@ -217,7 +218,7 @@ export function FeedbackPanel({
   const takeaway = blocks?.takeaway?.trim() ?? "";
   const correctReason = blocks?.correctReason?.trim() ?? "";
   const trap = blocks?.trap?.trim() ?? "";
-  const distractors = statementSet ? undefined : blocks?.distractors;
+  const distractors = isSbaBlocks(blocks) ? blocks.distractors : undefined;
   const contrast = blocks?.contrast;
   const selectedOption = selectedOptionId
     ? question.options.find((option) => option.id === selectedOptionId)

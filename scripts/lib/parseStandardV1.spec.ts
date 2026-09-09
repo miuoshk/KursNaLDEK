@@ -1,9 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { isSbaBlocks } from "../../features/shared/lib/explanationBlocks";
 import {
   parseStandardV1,
   summarizeParseResults,
+  type ParseResult,
 } from "./parseStandardV1";
+
+function sba(result: ParseResult) {
+  assert.ok(result.item);
+  assert.ok(isSbaBlocks(result.item.blocks));
+  return result.item.blocks;
+}
 import {
   charDiffRatio,
   normalizeInvariantText,
@@ -52,10 +60,10 @@ Sąsiedztwo anatomiczne tłumaczy współpracę z laryngologią.
 test("pełny szablon → wsad z trap i takeaway", () => {
   const result = sample({ explanation: FULL });
   assert.equal(result.accepted, true);
-  assert.equal(result.item?.blocks.correctReason.includes("Sąsiedztwo"), true);
-  assert.equal(result.item?.blocks.distractors?.a?.startsWith("to poszerzenie"), true);
-  assert.equal(result.item?.blocks.trap, "formalna przynależność specjalności.");
-  assert.equal(result.item?.blocks.takeaway, "decyduje to, co leży tuż obok pola.");
+  assert.equal(sba(result).correctReason.includes("Sąsiedztwo"), true);
+  assert.equal(sba(result).distractors?.a?.startsWith("to poszerzenie"), true);
+  assert.equal(sba(result).trap, "formalna przynależność specjalności.");
+  assert.equal(sba(result).takeaway, "decyduje to, co leży tuż obok pola.");
   assert.deepEqual(result.item?.refs[0], "Standard 1.0 / legacy");
   assert.equal(result.flags.length, 0);
 });
@@ -89,8 +97,8 @@ test("dystraktor bez dopasowania → flaga, reszta idzie", () => {
     ),
   });
   assert.equal(result.accepted, true);
-  assert.equal(result.item?.blocks.distractors?.a, undefined);
-  assert.ok(result.item?.blocks.distractors?.b);
+  assert.equal(sba(result).distractors?.a, undefined);
+  assert.ok(sba(result).distractors?.b);
   assert.equal(
     result.flags.some((flag) => flag.code === "distractor_unmatched"),
     true,
@@ -114,9 +122,9 @@ ${table}
 `,
   });
   assert.equal(result.accepted, true);
-  assert.equal(result.item?.blocks.correctReason.includes("|"), false);
-  assert.ok(result.item?.blocks.contrast);
-  assert.equal(result.item?.blocks.contrast?.[0][0], "Cecha");
+  assert.equal(sba(result).correctReason.includes("|"), false);
+  assert.ok(sba(result).contrast);
+  assert.equal(sba(result).contrast?.[0][0], "Cecha");
 });
 
 test("tabela 3×3 → contrast; za duża → flaga i pominięcie", () => {
@@ -163,7 +171,7 @@ test("takeaway > 200 → flaga, pole pominięte, pozycja idzie", () => {
     ),
   });
   assert.equal(result.accepted, true);
-  assert.equal(result.item?.blocks.takeaway, undefined);
+  assert.equal(sba(result).takeaway, undefined);
   assert.equal(
     result.flags.some((flag) => flag.code === "takeaway_too_long"),
     true,
@@ -249,10 +257,10 @@ Typy tej skazy różni ilość i jakość czynnika.
 `,
   });
   assert.equal(result.accepted, true);
-  assert.equal(result.item?.blocks.distractors?.d?.startsWith("dokłada przewagę"), true);
-  assert.equal(result.item?.blocks.distractors?.e?.startsWith("dokłada przewagę częstości typu drugiego nad"), true);
-  assert.equal(result.item?.blocks.distractors?.b?.startsWith("łączy błędne"), true);
-  assert.equal(result.item?.blocks.distractors?.a, undefined);
+  assert.equal(sba(result).distractors?.d?.startsWith("dokłada przewagę"), true);
+  assert.equal(sba(result).distractors?.e?.startsWith("dokłada przewagę częstości typu drugiego nad"), true);
+  assert.equal(sba(result).distractors?.b?.startsWith("łączy błędne"), true);
+  assert.equal(sba(result).distractors?.a, undefined);
   assert.equal(
     result.flags.some((flag) => flag.code === "distractor_unmatched"),
     false,
@@ -282,9 +290,9 @@ Powód.
 - *niepasujący opis* — nie trafia w e.
 `,
   });
-  assert.equal(result.item?.blocks.distractors?.d, "zestaw czterech.");
-  assert.equal(result.item?.blocks.distractors?.a, "tylko dwa pierwsze.");
-  assert.equal(result.item?.blocks.distractors?.e, undefined);
+  assert.equal(sba(result).distractors?.d, "zestaw czterech.");
+  assert.equal(sba(result).distractors?.a, "tylko dwa pierwsze.");
+  assert.equal(sba(result).distractors?.e, undefined);
   assert.equal(
     result.flags.some((flag) => flag.code === "distractor_matched_by_elimination"),
     false,
@@ -310,8 +318,8 @@ Powód.
 `,
   });
   assert.equal(result.accepted, true);
-  assert.ok(result.item?.blocks.distractors?.a);
-  assert.ok(result.item?.blocks.distractors?.b);
+  assert.ok(sba(result).distractors?.a);
+  assert.ok(sba(result).distractors?.b);
   assert.equal(
     result.flags.some((flag) => flag.code === "distractor_matched_by_elimination"),
     true,

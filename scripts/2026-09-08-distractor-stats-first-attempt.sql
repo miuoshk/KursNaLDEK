@@ -2,6 +2,8 @@
 -- Powtórki po przeczytaniu wyjaśnienia zawyżają pct_of_wrong.
 -- n_first_attempt / pct_of_wrong_first: min(answered_at) per user_id, question_id.
 --
+-- Po APPLY odpal: SELECT public.refresh_distractor_stats_90d();
+-- Porównanie: scripts/distractor-stats-first-vs-all.sql
 -- DOWN: odtwórz scripts/2026-09-05-ufo-telemetry-views.sql (sam widok).
 
 DROP MATERIALIZED VIEW IF EXISTS public.distractor_stats_90d;

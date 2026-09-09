@@ -180,7 +180,7 @@ export function HeroMotion({ registrationOpen }: HeroMotionProps) {
             <div className="rounded-[15px] border border-border bg-background">
               <div className="flex h-12 items-center justify-between border-b border-border px-4">
                 <div className="flex items-center gap-2">
-                  <BrandMark className="size-5 text-brand-gold" />
+                  <BrandMark className="h-5 w-auto text-brand-gold" />
                 </div>
                 <div className="flex items-center gap-1.5">
                   {Array.from({ length: STAGE_COUNT }, (_, item) => {

@@ -170,7 +170,7 @@ function AdminSidebarPanel({
             className="flex min-w-0 items-center gap-2 transition-opacity hover:opacity-80"
             title="Panel admina"
           >
-            <BrandMark className="size-6 text-brand-gold" />
+            <BrandMark className="h-6 w-auto text-brand-gold" />
             <span className="font-heading text-[15px] text-brand-gold">
               Admin
             </span>

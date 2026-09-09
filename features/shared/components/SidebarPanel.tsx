@@ -91,7 +91,7 @@ export function SidebarPanel({
             className="flex items-center transition-opacity duration-200 ease-out hover:opacity-80"
             aria-label={appName}
           >
-            <BrandLogo markClassName="size-7" wordmarkClassName="text-[1rem]" />
+            <BrandLogo markClassName="h-7 w-auto" wordmarkClassName="text-[1rem]" />
           </Link>
         )}
         {mobile ? (

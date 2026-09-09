@@ -2,18 +2,33 @@
 
 import { useEffect, useRef, useState } from "react";
 import { previewExplanationBlocks } from "@/features/admin/server/adminActions";
+import { AdminStatementSetFields } from "@/features/admin/components/AdminStatementSetFields";
+import {
+  buildSbaBlocks,
+  buildStatementSetBlocks,
+  emptyStatementDraft,
+  explanationKindFromBlocks,
+  optionStatementsFromBlocks,
+  statementsFromBlocks,
+  type AdminStatementDraft,
+  type ExplanationKind,
+} from "@/features/admin/lib/explanationBlocksForm";
 import type { AdminQuestionOption } from "@/features/admin/server/loadAdminQuestionDetail";
 import {
   EXPLANATION_BLOCKS_LIMITS,
   contrastToGfm,
+  explanationBlocksIssueMessage,
   parseContrastGfm,
+  type ExplanationBlocksIssue,
   type ExplanationBlocksV2,
 } from "@/features/shared/lib/explanationBlocks";
+import { renderExplanationBlocks } from "@/features/shared/lib/renderExplanationBlocks";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 
 type Props = {
   questionId: string;
   value: ExplanationBlocksV2 | null;
+  issue?: ExplanationBlocksIssue | null;
   options: AdminQuestionOption[];
   correctOptionId: string;
   onChange: (value: ExplanationBlocksV2 | null) => void;
@@ -40,30 +55,52 @@ function CharCount({ value, limit }: { value: string; limit: number }) {
 export function AdminStructuredExplanationFields({
   questionId,
   value,
+  issue,
   options,
   correctOptionId,
   onChange,
 }: Props) {
+  const [kind, setKind] = useState<ExplanationKind>(
+    explanationKindFromBlocks(value),
+  );
   const [takeaway, setTakeaway] = useState(value?.takeaway ?? "");
   const [correctReason, setCorrectReason] = useState(
-    value?.correctReason ?? "",
+    value && "correctReason" in value ? (value.correctReason ?? "") : "",
   );
   const [trap, setTrap] = useState(value?.trap ?? "");
   const [distractors, setDistractors] = useState<Record<string, string>>(
-    value?.distractors ?? {},
+    value && "distractors" in value ? (value.distractors ?? {}) : {},
   );
   const [contrastText, setContrastText] = useState(
     value?.contrast ? contrastToGfm(value.contrast) : "",
   );
+  const [statements, setStatements] = useState<AdminStatementDraft[]>(() =>
+    statementsFromBlocks(value),
+  );
+  const [optionStatements, setOptionStatements] = useState<
+    Record<string, string[]>
+  >(() => optionStatementsFromBlocks(value, options.map((option) => option.id)));
   const [preview, setPreview] = useState("");
   const contrastTextRef = useRef(contrastText);
   contrastTextRef.current = contrastText;
 
   useEffect(() => {
+    setKind(explanationKindFromBlocks(value));
     setTakeaway(value?.takeaway ?? "");
-    setCorrectReason(value?.correctReason ?? "");
+    setCorrectReason(
+      value && "correctReason" in value ? (value.correctReason ?? "") : "",
+    );
     setTrap(value?.trap ?? "");
-    setDistractors(value?.distractors ?? {});
+    setDistractors(
+      value && "distractors" in value ? (value.distractors ?? {}) : {},
+    );
+    setStatements(statementsFromBlocks(value));
+    setOptionStatements(
+      optionStatementsFromBlocks(
+        value,
+        options.map((option) => option.id),
+      ),
+    );
     if (value == null) {
       setContrastText("");
       return;
@@ -73,36 +110,77 @@ export function AdminStructuredExplanationFields({
     if (JSON.stringify(incoming ?? null) !== JSON.stringify(parsed ?? null)) {
       setContrastText(incoming ? contrastToGfm(incoming) : "");
     }
-  }, [value]);
+  }, [value, options]);
 
-  function emit(next: {
+  function emitSba(next: {
     takeaway: string;
     correctReason: string;
     trap: string;
     distractors: Record<string, string>;
     contrastText: string;
   }) {
-    const blocks: ExplanationBlocksV2 = {
-      version: 2,
-      correctReason: next.correctReason,
-    };
-    if (next.takeaway.trim()) blocks.takeaway = next.takeaway;
-    if (next.trap.trim()) blocks.trap = next.trap;
+    onChange(
+      buildSbaBlocks({
+        ...next,
+        options,
+        correctOptionId,
+      }),
+    );
+  }
 
-    const nextDistractors: Record<string, string> = {};
-    for (const option of options) {
-      if (option.id === correctOptionId) continue;
-      const reason = next.distractors[option.id] ?? "";
-      if (reason.trim()) nextDistractors[option.id] = reason;
+  function emitSet(next: {
+    takeaway: string;
+    trap: string;
+    contrastText: string;
+    statements: AdminStatementDraft[];
+    optionStatements: Record<string, string[]>;
+  }) {
+    onChange(
+      buildStatementSetBlocks({
+        ...next,
+        options,
+      }),
+    );
+  }
+
+  function handleKindChange(nextKind: ExplanationKind) {
+    if (nextKind === kind) return;
+    if (value != null) {
+      const ok = window.confirm(
+        "Zmiana rodzaju wyjaśnienia nie przenosi treści SBA i zestawienia. Kontynuować?",
+      );
+      if (!ok) return;
     }
-    if (Object.keys(nextDistractors).length > 0) {
-      blocks.distractors = nextDistractors;
+    setKind(nextKind);
+    if (nextKind === "statement_set") {
+      const nextStatements = [
+        emptyStatementDraft([]),
+        emptyStatementDraft([{ id: "s1" }]),
+      ];
+      const nextMap = optionStatementsFromBlocks(
+        null,
+        options.map((option) => option.id),
+      );
+      setStatements(nextStatements);
+      setOptionStatements(nextMap);
+      setDistractors({});
+      emitSet({
+        takeaway,
+        trap,
+        contrastText,
+        statements: nextStatements,
+        optionStatements: nextMap,
+      });
+      return;
     }
-
-    const contrast = parseContrastGfm(next.contrastText);
-    if (contrast) blocks.contrast = contrast;
-
-    onChange(blocks);
+    setStatements(statementsFromBlocks(null));
+    emitSba({
+      takeaway,
+      correctReason: correctReason || " ",
+      trap,
+      distractors: {},
+      contrastText,
+    });
   }
 
   function handleClear() {
@@ -122,17 +200,22 @@ export function AdminStructuredExplanationFields({
       return;
     }
 
+    const local = renderExplanationBlocks(value, options, correctOptionId);
+    setPreview(local);
+
     const handle = window.setTimeout(() => {
       void previewExplanationBlocks({
         questionId,
         blocks: value,
       }).then((result) => {
-        setPreview(result.markdown);
+        if (result.ok && result.markdown.trim()) {
+          setPreview(result.markdown);
+        }
       });
     }, 500);
 
     return () => window.clearTimeout(handle);
-  }, [value, questionId]);
+  }, [value, questionId, options, correctOptionId]);
 
   const otherOptions = options.filter(
     (option) => option.id !== correctOptionId,
@@ -160,6 +243,40 @@ export function AdminStructuredExplanationFields({
         </button>
       </div>
 
+      {issue ? (
+        <p className="rounded-btn border border-error/40 bg-error/10 px-3 py-2 font-body text-body-sm text-error">
+          {explanationBlocksIssueMessage(issue, questionId)}
+        </p>
+      ) : null}
+
+      <div
+        className="flex gap-1 rounded-btn border border-border p-0.5"
+        role="tablist"
+        aria-label="Rodzaj wyjaśnienia"
+      >
+        {(
+          [
+            { id: "sba" as const, label: "Jednokrotny wybór" },
+            { id: "statement_set" as const, label: "Zestawienie" },
+          ] as const
+        ).map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={kind === tab.id}
+            onClick={() => handleKindChange(tab.id)}
+            className={
+              kind === tab.id
+                ? "rounded-btn bg-brand-gold/15 px-3 py-1.5 font-body text-body-xs text-brand-gold"
+                : "rounded-btn px-3 py-1.5 font-body text-body-xs text-secondary hover:text-primary"
+            }
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
       <label className="flex flex-col gap-1">
         <span className="flex items-center justify-between gap-2">
           <span className="font-body text-body-xs text-muted">Zasada</span>
@@ -174,88 +291,120 @@ export function AdminStructuredExplanationFields({
           onChange={(event) => {
             const next = event.target.value;
             setTakeaway(next);
-            emit({
-              takeaway: next,
-              correctReason,
-              trap,
-              distractors,
-              contrastText,
-            });
+            if (kind === "statement_set") {
+              emitSet({
+                takeaway: next,
+                trap,
+                contrastText,
+                statements,
+                optionStatements,
+              });
+            } else {
+              emitSba({
+                takeaway: next,
+                correctReason,
+                trap,
+                distractors,
+                contrastText,
+              });
+            }
           }}
           placeholder="Jedna zasada do odtworzenia na egzaminie."
           className={inputClass}
         />
       </label>
 
-      <label className="flex flex-col gap-1">
-        <span className="flex items-center justify-between gap-2">
-          <span className="font-body text-body-xs text-muted">
-            Mechanizm (obowiązkowe)
-          </span>
-          <CharCount
-            value={correctReason}
-            limit={EXPLANATION_BLOCKS_LIMITS.correctReason}
-          />
-        </span>
-        <textarea
-          rows={4}
-          value={correctReason}
-          onChange={(event) => {
-            const next = event.target.value;
-            setCorrectReason(next);
-            emit({
+      {kind === "sba" ? (
+        <>
+          <label className="flex flex-col gap-1">
+            <span className="flex items-center justify-between gap-2">
+              <span className="font-body text-body-xs text-muted">
+                Mechanizm (obowiązkowe)
+              </span>
+              <CharCount
+                value={correctReason}
+                limit={EXPLANATION_BLOCKS_LIMITS.correctReason}
+              />
+            </span>
+            <textarea
+              rows={4}
+              value={correctReason}
+              onChange={(event) => {
+                const next = event.target.value;
+                setCorrectReason(next);
+                emitSba({
+                  takeaway,
+                  correctReason: next,
+                  trap,
+                  distractors,
+                  contrastText,
+                });
+              }}
+              placeholder="Dlaczego poprawna odpowiedź jest poprawna."
+              className={inputClass}
+            />
+          </label>
+
+          <div className="space-y-2">
+            <p className="font-body text-body-xs text-muted">
+              Dlaczego nie pozostałe
+            </p>
+            {otherOptions.map((option) => {
+              const field = distractors[option.id] ?? "";
+              return (
+                <label key={option.id} className="flex flex-col gap-1">
+                  <span className="flex items-start justify-between gap-2">
+                    <span className="font-body text-body-xs text-secondary">
+                      {option.text.trim() || "(pusta opcja)"}
+                    </span>
+                    <CharCount
+                      value={field}
+                      limit={EXPLANATION_BLOCKS_LIMITS.distractor}
+                    />
+                  </span>
+                  <textarea
+                    rows={2}
+                    value={field}
+                    onChange={(event) => {
+                      const nextDistractors = {
+                        ...distractors,
+                        [option.id]: event.target.value,
+                      };
+                      setDistractors(nextDistractors);
+                      emitSba({
+                        takeaway,
+                        correctReason,
+                        trap,
+                        distractors: nextDistractors,
+                        contrastText,
+                      });
+                    }}
+                    className={inputClass}
+                  />
+                </label>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <AdminStatementSetFields
+          options={options}
+          correctOptionId={correctOptionId}
+          statements={statements}
+          optionStatements={optionStatements}
+          onChange={(nextStatements, nextMap) => {
+            setStatements(nextStatements);
+            setOptionStatements(nextMap);
+            emitSet({
               takeaway,
-              correctReason: next,
               trap,
-              distractors,
               contrastText,
+              statements: nextStatements,
+              optionStatements: nextMap,
             });
           }}
-          placeholder="Dlaczego poprawna odpowiedź jest poprawna."
-          className={inputClass}
         />
-      </label>
-
-      <div className="space-y-2">
-        <p className="font-body text-body-xs text-muted">
-          Dlaczego nie pozostałe
-        </p>
-        {otherOptions.map((option) => {
-          const field = distractors[option.id] ?? "";
-          return (
-            <label key={option.id} className="flex flex-col gap-1">
-              <span className="flex items-start justify-between gap-2">
-                <span className="font-body text-body-xs text-secondary">
-                  {option.text.trim() || "(pusta opcja)"}
-                </span>
-                <CharCount
-                  value={field}
-                  limit={EXPLANATION_BLOCKS_LIMITS.distractor}
-                />
-              </span>
-              <textarea
-                rows={2}
-                value={field}
-                onChange={(event) => {
-                  const nextDistractors = {
-                    ...distractors,
-                    [option.id]: event.target.value,
-                  };
-                  setDistractors(nextDistractors);
-                  emit({
-                    takeaway,
-                    correctReason,
-                    trap,
-                    distractors: nextDistractors,
-                    contrastText,
-                  });
-                }}
-                className={inputClass}
-              />
-            </label>
-          );
-        })}
-      </div>
+      )}
 
       <label className="flex flex-col gap-1">
         <span className="flex items-center justify-between gap-2">
@@ -268,15 +417,25 @@ export function AdminStructuredExplanationFields({
           onChange={(event) => {
             const next = event.target.value;
             setTrap(next);
-            emit({
-              takeaway,
-              correctReason,
-              trap: next,
-              distractors,
-              contrastText,
-            });
+            if (kind === "statement_set") {
+              emitSet({
+                takeaway,
+                trap: next,
+                contrastText,
+                statements,
+                optionStatements,
+              });
+            } else {
+              emitSba({
+                takeaway,
+                correctReason,
+                trap: next,
+                distractors,
+                contrastText,
+              });
+            }
           }}
-          placeholder="Co najczęściej myli zdającego."
+          placeholder="Co zrobić, żeby nie pomylić."
           className={inputClass}
         />
       </label>
@@ -298,13 +457,23 @@ export function AdminStructuredExplanationFields({
           onChange={(event) => {
             const next = event.target.value;
             setContrastText(next);
-            emit({
-              takeaway,
-              correctReason,
-              trap,
-              distractors,
-              contrastText: next,
-            });
+            if (kind === "statement_set") {
+              emitSet({
+                takeaway,
+                trap,
+                contrastText: next,
+                statements,
+                optionStatements,
+              });
+            } else {
+              emitSba({
+                takeaway,
+                correctReason,
+                trap,
+                distractors,
+                contrastText: next,
+              });
+            }
           }}
           placeholder={
             "| cecha | ostre | przewlekłe |\n| --- | --- | --- |\n| czas | dni | miesiące |"

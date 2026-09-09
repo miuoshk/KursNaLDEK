@@ -3,11 +3,12 @@
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { TopBar } from "@/features/shared/components/TopBar";
+import { isSessionStudyPath } from "@/features/shared/lib/isSessionStudyPath";
 import { cn } from "@/lib/utils";
 
 export function DashboardContentArea({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isSessionStudy = /^\/sesja\/[^/]+$/.test(pathname ?? "");
+  const isSessionStudy = isSessionStudyPath(pathname);
 
   return (
     <div className="flex min-h-0 min-w-0 flex-1 flex-col">

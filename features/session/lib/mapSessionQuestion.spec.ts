@@ -52,6 +52,33 @@ test("mapuje nazwę pojęcia z joinu concepts(name)", () => {
   ]);
 });
 
+test("sprzeczne bloki nie trafiają do studenta jako korekta", () => {
+  const question = mapRowToSessionQuestion({
+    id: "q-bad",
+    text: "Treść",
+    options: [
+      { id: "a", text: "1" },
+      { id: "b", text: "1 i 2" },
+    ],
+    correct_option_id: "a",
+    explanation: "Proza z kombinacjami A–E",
+    explanation_blocks: {
+      version: 2,
+      questionType: "statement_set",
+      statements: [
+        { id: "s1", text: "Pierwsze", isTrue: true, rationale: "Tak." },
+        { id: "s2", text: "Drugie", isTrue: false, rationale: "Nie." },
+      ],
+      optionStatements: { a: ["s1", "s2"], b: ["s1"] },
+    },
+    source_code: null,
+    topics: { name: "Temat" },
+  });
+  assert.equal(question.explanationBlocksStatus, "invalid");
+  assert.equal(question.explanationBlocksIssue?.code, "key_mismatch");
+  assert.equal(question.explanationBlocks, null);
+});
+
 test("pytanie bez pojęcia szczegółowego zachowuje bootstrap tematu", () => {
   const question = mapRowToSessionQuestion(
     row([{ concept_id: "topic-concept", relation: "primary", weight: 1 }]),

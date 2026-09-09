@@ -26,7 +26,7 @@ export type ParseFlag = {
 
 export type ParseInput = {
   id: string;
-  explanation: string;
+  explanation?: string;
   options: readonly { id: string; text: string }[];
   correct_option_id: string;
 };
@@ -102,7 +102,7 @@ function findBestOption(
 
 export function parseStandardV1(input: ParseInput): ParseResult {
   const flags: ParseFlag[] = [];
-  const lines = input.explanation.replace(/\r\n/g, "\n").split("\n");
+  const lines = (input.explanation ?? "").replace(/\r\n/g, "\n").split("\n");
   const consumed = new Array<boolean>(lines.length).fill(false);
 
   const mark = (index: number) => {
@@ -345,7 +345,7 @@ export function parseStandardV1(input: ParseInput): ParseResult {
       accepted: false,
       flags,
       verdictText,
-      originalExplanation: input.explanation,
+      originalExplanation: input.explanation ?? "",
     };
   }
 
@@ -372,7 +372,7 @@ export function parseStandardV1(input: ParseInput): ParseResult {
       refs,
     },
     verdictText,
-    originalExplanation: input.explanation,
+    originalExplanation: input.explanation ?? "",
   };
 }
 

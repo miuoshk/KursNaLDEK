@@ -1,13 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight, Coffee } from "lucide-react";
+import { ChevronDown, Coffee } from "lucide-react";
 import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { QuestionCard } from "@/features/session/components/QuestionCard";
 import { SessionBottomBar } from "@/features/session/components/SessionBottomBar";
-import { SessionProgressSquares } from "@/features/session/components/SessionProgressSquares";
 import { SessionQuestionOptions } from "@/features/session/components/SessionQuestionOptions";
 import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
 import type {
@@ -18,7 +17,10 @@ import {
   resolveSessionBottomBarMode,
   resolveSessionNextLabel,
   scrollSessionScroller,
+  sessionOverlayChromePadding,
 } from "@/features/session/lib/sessionBottomBar";
+import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
+import { isLongSessionQuestion } from "@/features/session/lib/sessionQuestionCollapse";
 import {
   feedbackVariants,
   questionVariants,
@@ -79,9 +81,7 @@ export function SessionQuestionContent({
   allAnswered,
   isPrzeglad,
   submitting,
-  questions,
   answeredMap,
-  onJumpTo,
   onSelectOption,
   onConfidencePick,
   onNext,
@@ -98,12 +98,29 @@ export function SessionQuestionContent({
   onFeedbackExpand,
 }: SessionQuestionContentProps) {
   const t = useTranslations("session");
+  const reduceMotion = useReducedMotion();
   const hideExplanation = isExplanationHiddenForSubject(subjectId);
   const isCorrect =
     selectedOptionId != null && selectedOptionId === q.correctOptionId;
   const isLast = currentIndex >= total - 1;
   const scrollerRef = useRef<HTMLDivElement>(null);
   const chromeRef = useRef<HTMLDivElement>(null);
+  const [questionOpen, setQuestionOpen] = useState(true);
+  const canCollapseQuestion = isShowingFeedback && isLongSessionQuestion(q);
+  const orderCtx = {
+    disableOptionShuffle: q.disableOptionShuffle,
+    explanation: q.explanation,
+  };
+  const selectedLetter = selectedOptionId
+    ? sessionOptionLetter(sessionId, q.id, q.options, selectedOptionId, orderCtx)
+    : "";
+  const correctLetter = sessionOptionLetter(
+    sessionId,
+    q.id,
+    q.options,
+    q.correctOptionId,
+    orderCtx,
+  );
 
   const barMode = resolveSessionBottomBarMode({
     isPrzeglad,
@@ -123,9 +140,6 @@ export function SessionQuestionContent({
     summaryLabel: t("viewSummary"),
   });
 
-  const showSquares =
-    questions != null && answeredMap != null && questions.length > 0;
-
   const canGoPrevious = currentIndex > 0;
 
   useTouchEdgeNavigation({
@@ -141,10 +155,10 @@ export function SessionQuestionContent({
     if (!chrome || !scroller) return;
 
     const apply = () => {
-      const desktop = window.matchMedia("(min-width: 1024px)").matches;
+      const overlay = !window.matchMedia("(min-width: 1024px)").matches;
       scroller.style.setProperty(
         "--session-bottom-chrome",
-        desktop ? "0px" : `${chrome.offsetHeight + 8}px`,
+        sessionOverlayChromePadding(chrome.offsetHeight, overlay),
       );
     };
 
@@ -158,6 +172,10 @@ export function SessionQuestionContent({
       mq.removeEventListener("change", apply);
     };
   }, [barMode]);
+
+  useEffect(() => {
+    setQuestionOpen(true);
+  }, [q.id]);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -185,50 +203,78 @@ export function SessionQuestionContent({
     scrollSessionScroller(scroller, card, 0);
   }, [q.id, isShowingFeedback]);
 
-  const navBtnClass = cn(
-    "inline-flex shrink-0 items-center justify-center rounded-btn border border-border font-body font-medium text-secondary transition-colors",
-    "hover:border-brand-sage/40 hover:bg-white/5 hover:text-primary",
-    "disabled:pointer-events-none disabled:opacity-30",
-  );
-
   return (
     <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
       <div
         ref={scrollerRef}
         data-session-scroller
-        className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pb-[var(--session-bottom-chrome,1.5rem)] pt-4 touch-pan-y sm:px-8 sm:pt-6 lg:pb-6"
+        className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pb-[var(--session-bottom-chrome,1.5rem)] pt-4 touch-pan-y sm:px-8 sm:pt-5 lg:pb-6"
       >
         <AnimatePresence mode="wait">
           <motion.div
             key={q.id}
-            variants={questionVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
+            variants={reduceMotion ? undefined : questionVariants}
+            initial={reduceMotion ? false : "enter"}
+            animate={reduceMotion ? undefined : "center"}
+            exit={reduceMotion ? undefined : "exit"}
           >
-            <QuestionCard
-              question={q}
-              showTopicName={showTopicName}
-              product={product}
-            >
-              <SessionQuestionOptions
-                sessionId={sessionId}
-                q={q}
-                selectedOptionId={selectedOptionId}
-                isShowingFeedback={isShowingFeedback || isCurrentAnswered}
-                optionsLocked={isShowingFeedback || isCurrentAnswered}
-                onSelectOption={onSelectOption}
-              />
-            </QuestionCard>
+            {canCollapseQuestion ? (
+              <div className="mx-auto w-full max-w-3xl md:max-w-[72ch]">
+                <button
+                  type="button"
+                  aria-expanded={questionOpen}
+                  aria-controls="session-question-body"
+                  onClick={() => setQuestionOpen((open) => !open)}
+                  className="flex min-h-11 w-full items-center gap-2 rounded-btn px-1 py-1 text-left"
+                >
+                  <ChevronDown
+                    className={cn(
+                      "size-4 shrink-0 text-secondary motion-reduce:transition-none transition-transform",
+                      questionOpen && "rotate-180",
+                    )}
+                    aria-hidden
+                  />
+                  <span className="font-body text-[13px] font-semibold text-secondary md:text-[14px]">
+                    {t("questionAndAnswers")}
+                  </span>
+                </button>
+                {questionOpen ? null : (
+                  <p className="mt-1 px-1 font-body text-body-sm text-secondary">
+                    {t("questionAndAnswersSummary", {
+                      selected: selectedLetter,
+                      correct: correctLetter,
+                    })}
+                  </p>
+                )}
+              </div>
+            ) : null}
+            {canCollapseQuestion && !questionOpen ? null : (
+              <div id="session-question-body">
+                <QuestionCard
+                  question={q}
+                  showTopicName={showTopicName}
+                  product={product}
+                >
+                  <SessionQuestionOptions
+                    sessionId={sessionId}
+                    q={q}
+                    selectedOptionId={selectedOptionId}
+                    isShowingFeedback={isShowingFeedback || isCurrentAnswered}
+                    optionsLocked={isShowingFeedback || isCurrentAnswered}
+                    onSelectOption={onSelectOption}
+                  />
+                </QuestionCard>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 
         {isShowingFeedback ? (
           <motion.div
             key={`fb-${q.id}`}
-            variants={feedbackVariants}
-            initial="hidden"
-            animate="visible"
+            variants={reduceMotion ? undefined : feedbackVariants}
+            initial={reduceMotion ? false : "hidden"}
+            animate={reduceMotion ? undefined : "visible"}
             className="mx-auto w-full max-w-3xl md:max-w-[72ch]"
           >
             <FeedbackPanel
@@ -244,7 +290,7 @@ export function SessionQuestionContent({
               onFeedbackExpand={onFeedbackExpand}
             />
             {fatigueDetected ? (
-              <div className="mt-6 flex items-start gap-3 rounded-card border border-brand-sage/25 bg-brand-sage/[0.06] p-4">
+              <div className="mt-5 flex items-start gap-3 rounded-card border border-brand-sage/25 bg-brand-sage/[0.06] p-4">
                 <Coffee
                   className="mt-0.5 size-5 shrink-0 text-secondary"
                   aria-hidden
@@ -270,73 +316,35 @@ export function SessionQuestionContent({
             ) : null}
           </motion.div>
         ) : null}
+
+        <div className="mx-auto mt-5 w-full max-w-3xl border-t border-border pt-2 md:max-w-[72ch]">
+          <SessionQuestionActions
+            questionId={q.id}
+            questionText={q.text}
+            subjectId={subjectId}
+            variant="icons"
+          />
+        </div>
       </div>
 
       <div
         ref={chromeRef}
         data-session-bottom-chrome
-        className="z-40 shrink-0 border-t border-border bg-background/95 backdrop-blur-sm max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 lg:sticky lg:bottom-0"
+        className={cn(
+          "z-40 shrink-0 border-t border-border bg-background/95 backdrop-blur-sm max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 lg:sticky lg:bottom-0",
+          barMode === "hidden" && "pointer-events-none max-lg:border-transparent",
+        )}
       >
-        <SessionBottomBar
-          mode={barMode}
-          questionId={q.id}
-          submitting={submitting}
-          nextLabel={nextLabel}
-          onConfidencePick={onConfidencePick}
-          onNext={onNext}
-          onConfidenceBarShown={onConfidenceBarShown}
-          helperActions={
-            barMode === "next" ? (
-              <SessionQuestionActions
-                questionId={q.id}
-                questionText={q.text}
-                subjectId={subjectId}
-                variant="icons"
-              />
-            ) : null
-          }
-        />
-        <div className="hidden px-2 py-1.5 sm:px-4 sm:py-3 md:block">
-          <div className="mx-auto flex max-w-3xl items-center gap-1">
-            <button
-              type="button"
-              disabled={currentIndex <= 0}
-              onClick={onPrevious}
-              className={cn(navBtnClass, "size-11")}
-              aria-label={t("previous")}
-            >
-              <ChevronLeft className="size-5" aria-hidden />
-            </button>
-            {showSquares ? (
-              <div className="min-w-0 flex-1">
-                <SessionProgressSquares
-                  questions={questions!}
-                  answeredMap={answeredMap!}
-                  currentIndex={currentIndex}
-                  onJumpTo={onJumpTo}
-                />
-              </div>
-            ) : (
-              <p className="min-w-0 flex-1 text-center font-body text-body-xs tabular-nums text-secondary">
-                {currentIndex + 1}/{total}
-              </p>
-            )}
-            <button
-              type="button"
-              disabled={isLast}
-              onClick={() => {
-                if (!isLast && onJumpTo) {
-                  onJumpTo(currentIndex + 1);
-                  return;
-                }
-                onNext();
-              }}
-              className={cn(navBtnClass, "size-11")}
-              aria-label={t("next")}
-            >
-              <ChevronRight className="size-5" aria-hidden />
-            </button>
-          </div>
+        <div className={barMode === "hidden" ? "pointer-events-none" : "pointer-events-auto"}>
+          <SessionBottomBar
+            mode={barMode}
+            questionId={q.id}
+            submitting={submitting}
+            nextLabel={nextLabel}
+            onConfidencePick={onConfidencePick}
+            onNext={onNext}
+            onConfidenceBarShown={onConfidenceBarShown}
+          />
         </div>
         <div className="h-[env(safe-area-inset-bottom)] lg:hidden" />
       </div>

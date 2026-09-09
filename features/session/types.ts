@@ -1,4 +1,8 @@
-import type { ExplanationBlocksV2 } from "@/features/shared/lib/explanationBlocks";
+import type {
+  ExplanationBlocksIssue,
+  ExplanationBlocksStatus,
+  ExplanationBlocksV2,
+} from "@/features/shared/lib/explanationBlocks";
 
 export type KnnpSessionMode = "inteligentna" | "przeglad" | "katalog";
 export type SessionMode = KnnpSessionMode;
@@ -26,6 +30,10 @@ export interface SessionQuestion {
   correctOptionId: string;
   explanation: string;
   explanationBlocks?: ExplanationBlocksV2 | null;
+  /** Wynik inspect: student widzi tylko none/legacy/sba/statement_set. */
+  explanationBlocksStatus?: ExplanationBlocksStatus;
+  /** Diagnostyka redakcyjna — nie renderować studentowi. */
+  explanationBlocksIssue?: ExplanationBlocksIssue | null;
   sourceCode: string | null;
   imageUrl?: string | null;
   topicName: string;

@@ -1,5 +1,5 @@
 import type { SessionQuestion } from "@/features/session/types";
-import { normalizeExplanationBlocks } from "@/features/shared/lib/explanationBlocks";
+import { inspectExplanationBlocks } from "@/features/shared/lib/explanationBlocks";
 
 export type QuestionRow = {
   id: string;
@@ -87,17 +87,21 @@ export function mapRowToSessionQuestion(row: QuestionRow): SessionQuestion {
     label: conceptLabel(entry.concepts, entry.concept_id),
   }));
 
+  const inspected = inspectExplanationBlocks(row.explanation_blocks, {
+    questionId: row.id,
+    optionIds: options.map((option) => option.id),
+    correctOptionId: row.correct_option_id,
+  });
+
   return {
     id: row.id,
     text: row.text,
     options,
     correctOptionId: row.correct_option_id,
     explanation: row.explanation,
-    explanationBlocks: normalizeExplanationBlocks(row.explanation_blocks, {
-      questionId: row.id,
-      optionIds: options.map((option) => option.id),
-      correctOptionId: row.correct_option_id,
-    }),
+    explanationBlocks: inspected.blocks,
+    explanationBlocksStatus: inspected.status,
+    explanationBlocksIssue: inspected.issue,
     sourceCode: row.source_code,
     imageUrl: row.image_url ?? null,
     topicName: topicLabel(row.topics),

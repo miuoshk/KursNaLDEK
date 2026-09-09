@@ -1,6 +1,10 @@
 import { z } from "zod";
+import {
+  statementSetConsistencyIssue,
+  type StatementSetBlocks,
+} from "@/features/shared/lib/statementSet";
 
-/** Limity identyczne z `public.explanation_blocks_valid` (KROK 1). */
+/** Limity identyczne z `public.explanation_blocks_valid` (KROK 1 + zestawienia). */
 export const EXPLANATION_BLOCKS_LIMITS = {
   correctReason: 900,
   takeaway: 200,
@@ -9,6 +13,11 @@ export const EXPLANATION_BLOCKS_LIMITS = {
   contrastCell: 80,
   contrastRows: 5,
   contrastCols: 3,
+  statementId: 40,
+  statementText: 200,
+  statementRationale: 350,
+  statementCorrection: 200,
+  statements: 8,
 } as const;
 
 const OPTION_LETTER_RE = /(odpowied[źz]|opcj[aięe]|wariant)\s*[A-F]\b/;
@@ -48,8 +57,9 @@ const contrastSchema = z
     "contrast shape",
   );
 
-export const explanationBlocksSchema = z.strictObject({
+export const explanationBlocksSbaSchema = z.strictObject({
   version: z.literal(2),
+  questionType: z.literal("single_best_answer").optional(),
   correctReason: limitedText(EXPLANATION_BLOCKS_LIMITS.correctReason),
   takeaway: limitedText(EXPLANATION_BLOCKS_LIMITS.takeaway).optional(),
   distractors: z
@@ -59,13 +69,134 @@ export const explanationBlocksSchema = z.strictObject({
   contrast: contrastSchema.optional(),
 });
 
-export type ExplanationBlocksV2 = z.infer<typeof explanationBlocksSchema>;
+const statementIdSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .max(EXPLANATION_BLOCKS_LIMITS.statementId)
+  .regex(/^[a-z0-9][a-z0-9_-]*$/i, "statement id");
+
+export const explanationStatementSchema = z
+  .strictObject({
+    id: statementIdSchema,
+    number: z.number().int().min(1).max(20).optional(),
+    text: limitedText(EXPLANATION_BLOCKS_LIMITS.statementText),
+    isTrue: z.boolean(),
+    rationale: limitedText(EXPLANATION_BLOCKS_LIMITS.statementRationale),
+    correction: limitedText(EXPLANATION_BLOCKS_LIMITS.statementCorrection).optional(),
+  })
+  .superRefine((statement, ctx) => {
+    if (statement.isTrue && statement.correction) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["correction"],
+        message: "true statement cannot have correction",
+      });
+    }
+  });
+
+export const explanationBlocksStatementSetSchema = z
+  .strictObject({
+    version: z.literal(2),
+    questionType: z.literal("statement_set"),
+    takeaway: limitedText(EXPLANATION_BLOCKS_LIMITS.takeaway).optional(),
+    correctReason: limitedText(EXPLANATION_BLOCKS_LIMITS.correctReason).optional(),
+    statements: z
+      .array(explanationStatementSchema)
+      .min(2)
+      .max(EXPLANATION_BLOCKS_LIMITS.statements),
+    optionStatements: z.record(z.string(), z.array(statementIdSchema).min(1)),
+    trap: limitedText(EXPLANATION_BLOCKS_LIMITS.trap).optional(),
+    contrast: contrastSchema.optional(),
+  })
+  .superRefine((blocks, ctx) => {
+    const numbers = blocks.statements
+      .map((statement) => statement.number)
+      .filter((value): value is number => value != null);
+    if (new Set(numbers).size !== numbers.length) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["statements"],
+        message: "duplicate_number",
+      });
+    }
+  });
+
+export const explanationBlocksSchema = z.union([
+  explanationBlocksSbaSchema,
+  explanationBlocksStatementSetSchema,
+]);
+
+export type ExplanationBlocksSba = z.infer<typeof explanationBlocksSbaSchema>;
+export type ExplanationBlocksStatementSet = z.infer<
+  typeof explanationBlocksStatementSetSchema
+>;
+export type ExplanationBlocksV2 =
+  | ExplanationBlocksSba
+  | ExplanationBlocksStatementSet;
+
+export function isStatementSetBlocks(
+  blocks: ExplanationBlocksV2 | null | undefined,
+): blocks is ExplanationBlocksStatementSet {
+  return blocks?.questionType === "statement_set";
+}
+
+export type ExplanationBlocksStatus =
+  | "none"
+  | "legacy"
+  | "sba"
+  | "statement_set"
+  | "invalid";
+
+export type ExplanationBlocksIssueCode =
+  | "not_an_object"
+  | "schema"
+  | "invalid_distractor_key"
+  | "missing_option_mapping"
+  | "unknown_option"
+  | "unknown_statement"
+  | "duplicate_statement"
+  | "duplicate_number"
+  | "empty_mapping"
+  | "no_matching_option"
+  | "multiple_matching_options"
+  | "key_mismatch";
+
+export type ExplanationBlocksIssue = {
+  code: ExplanationBlocksIssueCode;
+  detail: string;
+};
+
+export type ExplanationBlocksInspection =
+  | { status: "none"; blocks: null; issue: null }
+  | { status: "legacy"; blocks: null; issue: null }
+  | { status: "sba"; blocks: ExplanationBlocksSba; issue: null }
+  | {
+      status: "statement_set";
+      blocks: ExplanationBlocksStatementSet;
+      issue: null;
+    }
+  | {
+      status: "invalid";
+      blocks: null;
+      issue: ExplanationBlocksIssue;
+      /** Oczyszczony szkic do redakcji — nigdy nie podawać studentowi. */
+      draft?: ExplanationBlocksV2;
+    };
 
 export type NormalizeExplanationBlocksMeta = {
   questionId?: string;
   optionIds?: readonly string[];
   correctOptionId?: string;
 };
+
+export function explanationBlocksIssueMessage(
+  issue: ExplanationBlocksIssue,
+  questionId?: string,
+): string {
+  const prefix = questionId ? `${questionId}: ` : "";
+  return `${prefix}${issue.code} — ${issue.detail}`;
+}
 
 function optionIdsFrom(options: unknown): string[] {
   if (!Array.isArray(options)) return [];
@@ -76,14 +207,38 @@ function optionIdsFrom(options: unknown): string[] {
   });
 }
 
+function looksLikeStatementSet(input: Record<string, unknown>): boolean {
+  return (
+    input.questionType === "statement_set" ||
+    Array.isArray(input.statements) ||
+    (input.optionStatements != null &&
+      typeof input.optionStatements === "object" &&
+      !Array.isArray(input.optionStatements))
+  );
+}
+
 function distractorKeysAllowed(
-  blocks: ExplanationBlocksV2,
+  blocks: ExplanationBlocksSba,
   optionIds: readonly string[],
   correctOptionId: string,
 ): boolean {
   if (!blocks.distractors) return true;
   return Object.keys(blocks.distractors).every(
     (key) => key !== correctOptionId && optionIds.includes(key),
+  );
+}
+
+function statementSetKeysAllowed(
+  blocks: ExplanationBlocksStatementSet,
+  optionIds: readonly string[],
+  correctOptionId: string,
+): boolean {
+  return (
+    statementSetConsistencyIssue(
+      blocks as StatementSetBlocks,
+      optionIds,
+      correctOptionId,
+    ) == null
   );
 }
 
@@ -95,38 +250,124 @@ export function explanationBlocksValid(
 ): boolean {
   const parsed = explanationBlocksSchema.safeParse(blocks);
   if (!parsed.success) return false;
-  return distractorKeysAllowed(
-    parsed.data,
-    optionIdsFrom(options),
-    correctOptionId,
-  );
+  const optionIds = optionIdsFrom(options);
+  if (parsed.data.questionType === "statement_set") {
+    return statementSetKeysAllowed(parsed.data, optionIds, correctOptionId);
+  }
+  return distractorKeysAllowed(parsed.data, optionIds, correctOptionId);
 }
 
 function warnInvalidBlocks(
   questionId: string | undefined,
-  detail: unknown,
+  issue: ExplanationBlocksIssue,
 ): void {
   console.warn(
-    "[normalizeExplanationBlocks] invalid blocks",
+    "[inspectExplanationBlocks] invalid blocks",
     questionId ?? "unknown",
-    detail,
+    issue.code,
+    issue.detail,
   );
+}
+
+function looksLikeAttemptedV2(input: Record<string, unknown>): boolean {
+  return (
+    input.version === 2 ||
+    input.questionType === "single_best_answer" ||
+    input.questionType === "statement_set" ||
+    looksLikeStatementSet(input) ||
+    typeof input.correctReason === "string" ||
+    (input.distractors != null && typeof input.distractors === "object")
+  );
+}
+
+function issueFromSchema(
+  issues: readonly { path: (string | number)[]; message: string }[],
+): ExplanationBlocksIssue {
+  const first = issues[0];
+  const path = first?.path?.length ? first.path.join(".") : "blocks";
+  const message = first?.message ?? "invalid schema";
+  if (message === "duplicate_number") {
+    return { code: "duplicate_number", detail: path };
+  }
+  return { code: "schema", detail: `${path}: ${message}` };
+}
+
+function inspectNone(): ExplanationBlocksInspection {
+  return { status: "none", blocks: null, issue: null };
+}
+
+function inspectLegacy(): ExplanationBlocksInspection {
+  return { status: "legacy", blocks: null, issue: null };
+}
+
+function inspectInvalid(
+  issue: ExplanationBlocksIssue,
+  meta?: NormalizeExplanationBlocksMeta,
+): ExplanationBlocksInspection {
+  warnInvalidBlocks(meta?.questionId, issue);
+  return { status: "invalid", blocks: null, issue };
+}
+
+export function inspectExplanationBlocks(
+  value: unknown,
+  meta?: NormalizeExplanationBlocksMeta,
+): ExplanationBlocksInspection {
+  if (value == null) return inspectNone();
+  if (typeof value !== "object" || Array.isArray(value)) {
+    return inspectInvalid(
+      { code: "not_an_object", detail: "explanation_blocks is not an object" },
+      meta,
+    );
+  }
+
+  const input = value as Record<string, unknown>;
+  if (looksLikeStatementSet(input)) {
+    return inspectStatementSetBlocks(input, meta);
+  }
+
+  if (input.version === 1) return inspectLegacy();
+  if (!looksLikeAttemptedV2(input)) return inspectLegacy();
+
+  return inspectSbaBlocks(input, meta);
 }
 
 export function normalizeExplanationBlocks(
   value: unknown,
   meta?: NormalizeExplanationBlocksMeta,
 ): ExplanationBlocksV2 | null {
-  if (value == null) return null;
-  if (typeof value !== "object" || Array.isArray(value)) {
-    warnInvalidBlocks(meta?.questionId, "not an object");
-    return null;
-  }
+  const inspected = inspectExplanationBlocks(value, meta);
+  return inspected.blocks;
+}
 
-  const input = value as Record<string, unknown>;
+function cleanOptionalText(
+  value: unknown,
+): string | unknown | undefined {
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed ? trimmed : undefined;
+  }
+  return value === undefined ? undefined : value;
+}
+
+function cleanContrast(value: unknown): unknown {
+  if (!Array.isArray(value)) return undefined;
+  return value.map((row) =>
+    Array.isArray(row)
+      ? row.map((cell) => (typeof cell === "string" ? cell.trim() : cell))
+      : row,
+  );
+}
+
+function inspectSbaBlocks(
+  input: Record<string, unknown>,
+  meta?: NormalizeExplanationBlocksMeta,
+): ExplanationBlocksInspection {
   const cleaned: Record<string, unknown> = {};
 
   if ("version" in input) cleaned.version = input.version;
+  if (input.questionType === "single_best_answer") {
+    cleaned.questionType = input.questionType;
+  }
 
   if (typeof input.correctReason === "string") {
     cleaned.correctReason = input.correctReason.trim();
@@ -134,19 +375,10 @@ export function normalizeExplanationBlocks(
     cleaned.correctReason = input.correctReason;
   }
 
-  if (typeof input.takeaway === "string") {
-    const takeaway = input.takeaway.trim();
-    if (takeaway) cleaned.takeaway = takeaway;
-  } else if (input.takeaway !== undefined) {
-    cleaned.takeaway = input.takeaway;
-  }
-
-  if (typeof input.trap === "string") {
-    const trap = input.trap.trim();
-    if (trap) cleaned.trap = trap;
-  } else if (input.trap !== undefined) {
-    cleaned.trap = input.trap;
-  }
+  const takeaway = cleanOptionalText(input.takeaway);
+  if (takeaway !== undefined) cleaned.takeaway = takeaway;
+  const trap = cleanOptionalText(input.trap);
+  if (trap !== undefined) cleaned.trap = trap;
 
   if (
     input.distractors &&
@@ -166,18 +398,12 @@ export function normalizeExplanationBlocks(
     }
   }
 
-  if (Array.isArray(input.contrast)) {
-    cleaned.contrast = input.contrast.map((row) =>
-      Array.isArray(row)
-        ? row.map((cell) => (typeof cell === "string" ? cell.trim() : cell))
-        : row,
-    );
-  }
+  const contrast = cleanContrast(input.contrast);
+  if (contrast !== undefined) cleaned.contrast = contrast;
 
-  const parsed = explanationBlocksSchema.safeParse(cleaned);
+  const parsed = explanationBlocksSbaSchema.safeParse(cleaned);
   if (!parsed.success) {
-    warnInvalidBlocks(meta?.questionId, parsed.error.issues);
-    return null;
+    return inspectInvalid(issueFromSchema(parsed.error.issues), meta);
   }
 
   if (meta?.optionIds && meta.correctOptionId) {
@@ -188,12 +414,112 @@ export function normalizeExplanationBlocks(
         meta.correctOptionId,
       )
     ) {
-      warnInvalidBlocks(meta.questionId, "invalid distractor key");
-      return null;
+      const issue: ExplanationBlocksIssue = {
+        code: "invalid_distractor_key",
+        detail: "distractor key is the correct option or is not an option id",
+      };
+      warnInvalidBlocks(meta.questionId, issue);
+      return {
+        status: "invalid",
+        blocks: null,
+        issue,
+        draft: parsed.data,
+      };
     }
   }
 
-  return parsed.data;
+  return { status: "sba", blocks: parsed.data, issue: null };
+}
+
+function inspectStatementSetBlocks(
+  input: Record<string, unknown>,
+  meta?: NormalizeExplanationBlocksMeta,
+): ExplanationBlocksInspection {
+  const cleaned: Record<string, unknown> = {
+    version: input.version,
+    questionType: "statement_set",
+  };
+
+  const takeaway = cleanOptionalText(input.takeaway);
+  if (takeaway !== undefined) cleaned.takeaway = takeaway;
+  const reason = cleanOptionalText(input.correctReason);
+  if (reason !== undefined) cleaned.correctReason = reason;
+  const trap = cleanOptionalText(input.trap);
+  if (trap !== undefined) cleaned.trap = trap;
+
+  if (Array.isArray(input.statements)) {
+    cleaned.statements = input.statements.map((entry) => {
+      if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+        return entry;
+      }
+      const row = entry as Record<string, unknown>;
+      const next: Record<string, unknown> = {
+        id: typeof row.id === "string" ? row.id.trim() : row.id,
+        text: typeof row.text === "string" ? row.text.trim() : row.text,
+        isTrue: row.isTrue,
+        rationale:
+          typeof row.rationale === "string" ? row.rationale.trim() : row.rationale,
+      };
+      if (typeof row.number === "number") next.number = row.number;
+      if (typeof row.correction === "string") {
+        const correction = row.correction.trim();
+        if (correction) next.correction = correction;
+      } else if (row.correction !== undefined) {
+        next.correction = row.correction;
+      }
+      return next;
+    });
+  }
+
+  if (
+    input.optionStatements &&
+    typeof input.optionStatements === "object" &&
+    !Array.isArray(input.optionStatements)
+  ) {
+    const mapped: Record<string, string[]> = {};
+    for (const [key, ids] of Object.entries(
+      input.optionStatements as Record<string, unknown>,
+    )) {
+      if (!Array.isArray(ids)) continue;
+      mapped[key.toLowerCase()] = ids.flatMap((id) =>
+        typeof id === "string" && id.trim() ? [id.trim()] : [],
+      );
+    }
+    cleaned.optionStatements = mapped;
+  }
+
+  const contrast = cleanContrast(input.contrast);
+  if (contrast !== undefined) cleaned.contrast = contrast;
+
+  const parsed = explanationBlocksStatementSetSchema.safeParse(cleaned);
+  if (!parsed.success) {
+    return inspectInvalid(issueFromSchema(parsed.error.issues), meta);
+  }
+
+  if (meta?.optionIds && meta.correctOptionId) {
+    const issue = statementSetConsistencyIssue(
+      parsed.data,
+      meta.optionIds,
+      meta.correctOptionId,
+    );
+    if (issue) {
+      warnInvalidBlocks(meta?.questionId, {
+        code: issue,
+        detail: `statement_set consistency failed: ${issue}`,
+      });
+      return {
+        status: "invalid",
+        blocks: null,
+        issue: {
+          code: issue,
+          detail: `statement_set consistency failed: ${issue}`,
+        },
+        draft: parsed.data,
+      };
+    }
+  }
+
+  return { status: "statement_set", blocks: parsed.data, issue: null };
 }
 
 const GFM_SEPARATOR_RE = /^\|?[\s:|-]+$/;

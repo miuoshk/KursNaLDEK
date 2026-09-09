@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  isSessionTargetOffscreen,
   resolveSessionBottomBarMode,
   resolveSessionNextLabel,
+  sessionOverlayChromePadding,
 } from "@/features/session/lib/sessionBottomBar";
 
 test("ukryta przed wyborem opcji", () => {
@@ -77,5 +79,23 @@ test("ostatnie pytanie i pełna sesja → Zobacz podsumowanie", () => {
       summaryLabel: "Zobacz podsumowanie",
     }),
     "Dalej",
+  );
+});
+
+test("padding overlay stopki liczy wysokość i odstęp, na pulpicie 0", () => {
+  assert.equal(sessionOverlayChromePadding(72, true), "84px");
+  assert.equal(sessionOverlayChromePadding(0, true), "12px");
+  assert.equal(sessionOverlayChromePadding(96, false), "0px");
+});
+
+test("werdykt poza ekranem tylko gdy początek wyniku nie jest widoczny", () => {
+  const scroller = { top: 80, bottom: 700 };
+  assert.equal(
+    isSessionTargetOffscreen(scroller, { top: 820 }, 64),
+    true,
+  );
+  assert.equal(
+    isSessionTargetOffscreen(scroller, { top: 160 }, 64),
+    false,
   );
 });

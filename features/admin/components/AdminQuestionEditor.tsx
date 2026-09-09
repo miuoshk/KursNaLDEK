@@ -449,6 +449,7 @@ export function AdminQuestionEditor({
           <AdminStructuredExplanationFields
             questionId={question.id}
             value={state.explanationBlocks}
+            issue={question.explanationBlocksIssue}
             options={state.options}
             correctOptionId={state.correctOptionId}
             onChange={(explanationBlocks) =>

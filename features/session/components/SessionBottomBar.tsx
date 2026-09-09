@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, type ReactNode } from "react";
+import { useLayoutEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { Confidence } from "@/features/session/types";
@@ -15,7 +15,6 @@ type SessionBottomBarProps = {
   onConfidencePick: (c: Confidence) => void;
   onNext: () => void;
   onConfidenceBarShown?: (questionId: string) => void;
-  helperActions?: ReactNode;
 };
 
 const slideTransition = { duration: 0.15, ease: "easeOut" as const };
@@ -28,7 +27,6 @@ export function SessionBottomBar({
   onConfidencePick,
   onNext,
   onConfidenceBarShown,
-  helperActions,
 }: SessionBottomBarProps) {
   const t = useTranslations("session");
   const reduceMotion = useReducedMotion();
@@ -94,7 +92,7 @@ export function SessionBottomBar({
                 </div>
               </div>
             ) : (
-              <div className="flex min-h-14 flex-col justify-center gap-1">
+              <div className="flex min-h-11 items-center">
                 <button
                   type="button"
                   onClick={onNext}
@@ -105,7 +103,6 @@ export function SessionBottomBar({
                 >
                   {nextLabel}
                 </button>
-                {helperActions}
               </div>
             )}
           </div>

@@ -20,6 +20,7 @@ import {
   X,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { FeedbackPanel } from "@/features/session/components/FeedbackPanel";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
 import { SessionQuestionActions } from "@/features/shared/components/QuestionFooterActions";
 import { QuestionTextContent } from "@/features/shared/components/QuestionTextContent";
@@ -473,7 +474,7 @@ export function CatalogView({
                 ) : null}
                 <QuestionTextContent
                   text={q.text}
-                  className="mt-3 text-body-md md:text-body-lg"
+                  className="mt-3 text-[16px] leading-[1.6] md:text-[17px]"
                   renderSegment={(segment) => highlightText(segment, searchValue)}
                 />
 
@@ -488,14 +489,14 @@ export function CatalogView({
                       const interactive = mode === "egzamin";
 
                     const commonClass = cn(
-                      "flex w-full items-start gap-3 rounded-btn border px-4 py-3 text-left font-body text-body-sm transition-colors duration-200",
+                      "flex w-full items-start gap-3 rounded-btn border px-4 py-3 text-left font-body text-[16px] leading-[1.6] text-primary transition-colors duration-200 md:text-[17px]",
                       showAsCorrect
-                        ? "border-success/30 bg-success/[0.08] text-success"
+                        ? "border-success bg-success/15"
                         : showAsWrong
-                          ? "border-error/40 bg-error/[0.08] text-error"
-                          : "border-border bg-background/50 text-secondary",
+                          ? "border-error bg-error/15"
+                          : "border-border bg-background/50",
                       interactive &&
-                        "cursor-pointer hover:border-brand-gold/40 hover:text-primary",
+                        "cursor-pointer hover:border-brand-gold/40",
                     );
 
                     const badgeClass = cn(
@@ -507,6 +508,11 @@ export function CatalogView({
                           : "border-border bg-background/70 text-muted",
                     );
 
+                    const statusLabel = showAsCorrect
+                      ? t("optionStatusCorrect")
+                      : showAsWrong
+                        ? t("optionStatusYours")
+                        : null;
                     const content = (
                       <>
                         <span className={badgeClass}>{letter}</span>
@@ -515,18 +521,23 @@ export function CatalogView({
                             text={opt.text}
                             renderTextSegment={(segment) => highlightText(segment, searchValue)}
                           />
+                          <span
+                            className={cn(
+                              "mt-2 flex min-h-5 items-center gap-1.5 font-body text-body-xs font-semibold",
+                              !statusLabel && "invisible",
+                              statusLabel &&
+                                (showAsCorrect ? "text-success" : "text-error"),
+                            )}
+                            aria-hidden={!statusLabel}
+                          >
+                            {showAsWrong ? (
+                              <X className="size-3.5 shrink-0" aria-hidden />
+                            ) : (
+                              <Check className="size-3.5 shrink-0" aria-hidden />
+                            )}
+                            {statusLabel}
+                          </span>
                         </span>
-                        {showAsCorrect ? (
-                          <Check
-                            className="size-4 shrink-0 text-success"
-                            aria-hidden
-                          />
-                        ) : showAsWrong ? (
-                          <X
-                            className="size-4 shrink-0 text-error"
-                            aria-hidden
-                          />
-                        ) : null}
                       </>
                     );
 
@@ -537,6 +548,11 @@ export function CatalogView({
                           type="button"
                           onClick={() => selectOption(opt.id)}
                           className={commonClass}
+                          aria-label={
+                            statusLabel
+                              ? `${letter}: ${opt.text} — ${statusLabel}`
+                              : undefined
+                          }
                         >
                           {content}
                         </button>
@@ -567,8 +583,10 @@ export function CatalogView({
 
               {!hideExplanation ? (
                 <CatalogExplanationPanel
-                  className="mt-6 lg:hidden"
-                  explanation={q.explanation}
+                  className="mt-6"
+                  sessionId={sessionId}
+                  question={q}
+                  selectedOptionId={selectedOptionId}
                   revealed={isRevealed}
                 />
               ) : null}
@@ -583,15 +601,6 @@ export function CatalogView({
             </div>
           )}
         </div>
-
-        {!hideExplanation ? (
-          <aside className="hidden min-h-0 w-full max-w-md shrink-0 overflow-y-auto border-l border-border bg-card p-6 lg:block xl:p-8">
-            <CatalogExplanationPanel
-              explanation={q.explanation}
-              revealed={isRevealed}
-            />
-          </aside>
-        ) : null}
       </div>
 
       <CatalogBottomNav
@@ -725,13 +734,14 @@ function CatalogBottomNav({
               aria-current={isActive ? "true" : undefined}
               className={cn(
                 "inline-flex size-9 shrink-0 items-center justify-center rounded-btn border font-body text-body-xs transition-colors",
-                isActive
-                  ? "border-brand-gold bg-brand-gold text-brand-bg font-semibold shadow-[0_0_0_2px_rgba(201,168,76,0.18)]"
-                  : isCorrect
-                    ? "border-success/40 bg-success/10 text-success hover:brightness-110"
-                    : isWrong
-                      ? "border-error/40 bg-error/10 text-error hover:brightness-110"
-                      : "border-border bg-card text-secondary hover:border-brand-gold/40 hover:text-primary",
+                isCorrect && "border-success/40 bg-success/10 text-success",
+                isWrong && "border-error/40 bg-error/10 text-error",
+                !isCorrect &&
+                  !isWrong &&
+                  "border-border bg-card text-secondary hover:border-brand-gold/40 hover:text-primary",
+                isActive &&
+                  "ring-2 ring-brand-gold/80 ring-offset-1 ring-offset-background",
+                isActive && !isCorrect && !isWrong && "border-brand-gold bg-brand-gold text-brand-bg font-semibold",
               )}
             >
               {i + 1}
@@ -756,25 +766,45 @@ function CatalogBottomNav({
 }
 
 function CatalogExplanationPanel({
-  explanation,
+  sessionId,
+  question,
+  selectedOptionId,
   revealed,
   className,
 }: {
-  explanation: string;
+  sessionId: string;
+  question: SessionQuestion;
+  selectedOptionId?: string;
   revealed: boolean;
   className?: string;
 }) {
   const t = useTranslations("session");
+  const hasBlocks = question.explanationBlocks != null;
+  const isCorrect =
+    selectedOptionId != null && selectedOptionId === question.correctOptionId;
 
   return (
     <section className={className}>
-      <h3 className="font-heading text-xl font-bold text-primary">{t("catalogExplanation")}</h3>
       {revealed ? (
-        <div className="mt-3 rounded-card border border-border bg-card p-4 sm:p-5">
-          {markdownBlock(explanation)}
-        </div>
+        hasBlocks ? (
+          <FeedbackPanel
+            sessionId={sessionId}
+            question={question}
+            selectedOptionId={selectedOptionId ?? null}
+            isCorrect={selectedOptionId == null ? true : isCorrect}
+            showResult={selectedOptionId != null}
+            variant="standard"
+          />
+        ) : question.explanation.trim() ? (
+          <div className="rounded-card border border-border bg-card p-4 sm:p-5">
+            <h3 className="font-heading text-heading-sm text-primary">
+              {t("catalogExplanation")}
+            </h3>
+            <div className="mt-3">{markdownBlock(question.explanation)}</div>
+          </div>
+        ) : null
       ) : (
-        <div className="mt-3 flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
+        <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border bg-background/40 p-6 text-center">
           <Sparkles className="size-6 text-muted" aria-hidden />
           <p className="font-body text-body-sm text-muted">
             {t("catalogExplanationHidden")}

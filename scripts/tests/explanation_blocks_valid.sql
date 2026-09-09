@@ -104,6 +104,63 @@ fixtures AS (
           "correctReason": "Mechanizm.",
           "contrast": [["a", "b", "c", "d"]]
         }'::jsonb
+      ),
+      (
+        '13_statement_set_valid',
+        true,
+        '{
+          "version": 2,
+          "questionType": "statement_set",
+          "statements": [
+            {"id":"s1","text":"Stwierdzenie pierwsze","isTrue":true,"rationale":"Tak."},
+            {"id":"s2","text":"Stwierdzenie drugie","isTrue":false,"rationale":"Nie."}
+          ],
+          "optionStatements": {
+            "a":["s1","s2"],
+            "b":["s1"],
+            "c":["s2"],
+            "d":["s1","s2"],
+            "e":["s2"]
+          }
+        }'::jsonb
+      ),
+      (
+        '14_statement_set_key_mismatch',
+        false,
+        '{
+          "version": 2,
+          "questionType": "statement_set",
+          "statements": [
+            {"id":"s1","text":"Stwierdzenie pierwsze","isTrue":true,"rationale":"Tak."},
+            {"id":"s2","text":"Stwierdzenie drugie","isTrue":false,"rationale":"Nie."}
+          ],
+          "optionStatements": {
+            "a":["s1"],
+            "b":["s1","s2"],
+            "c":["s2"],
+            "d":["s1","s2"],
+            "e":["s2"]
+          }
+        }'::jsonb
+      ),
+      (
+        '15_statement_set_duplicate_number',
+        false,
+        '{
+          "version": 2,
+          "questionType": "statement_set",
+          "statements": [
+            {"id":"s1","number":1,"text":"Stwierdzenie pierwsze","isTrue":true,"rationale":"Tak."},
+            {"id":"s2","number":1,"text":"Stwierdzenie drugie","isTrue":false,"rationale":"Nie."}
+          ],
+          "optionStatements": {
+            "a":["s1","s2"],
+            "b":["s1"],
+            "c":["s2"],
+            "d":["s1","s2"],
+            "e":["s2"]
+          }
+        }'::jsonb
       )
   ) AS t(name, expected, blocks)
 )

@@ -13,8 +13,13 @@ import type { FeedbackVariant } from "@/features/session/lib/adaptiveFeedback";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
 import { sessionOptionLetter } from "@/features/session/lib/sessionOptionOrder";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
-import { contrastToMarkdown } from "@/features/shared/lib/explanationBlocks";
+import {
+  contrastToMarkdown,
+  isStatementSetBlocks,
+} from "@/features/shared/lib/explanationBlocks";
 import { markdownBlock } from "@/features/shared/lib/markdownBlock";
+import { StatementSetFeedback } from "@/features/session/components/StatementSetFeedback";
+import { RichTextContent } from "@/features/shared/components/RichTextContent";
 import { cn } from "@/lib/utils";
 import {
   buildFeedbackShownEvent,
@@ -25,12 +30,16 @@ import {
 export const SESSION_READING_COLUMN =
   "mx-auto w-full max-w-3xl md:max-w-[72ch]";
 
+const UFO_PROSE =
+  "text-[16px] leading-[1.6] text-primary md:text-[17px] [&_p]:my-0 [&_p]:text-[16px] [&_p]:leading-[1.6] [&_p]:text-primary md:[&_p]:text-[17px] [&_p+_p]:mt-2";
+
 type FeedbackPanelProps = {
   sessionId: string;
   question: SessionQuestion;
-  selectedOptionId: string;
+  selectedOptionId: string | null;
   isCorrect: boolean;
   hideExplanation?: boolean;
+  showResult?: boolean;
   variant: FeedbackVariant;
   transferScheduled?: boolean;
   confidence?: Confidence | null;
@@ -74,7 +83,7 @@ function FeedbackSection({
   return (
     <section
       data-feedback-section={testId ?? label}
-      className="px-5 py-5"
+      className="px-4 py-3 sm:px-5"
     >
       <SectionLabel tone={labelTone}>{label}</SectionLabel>
       <div className="mt-2">{children}</div>
@@ -111,18 +120,20 @@ function OptionReasonBlock({
 }: {
   letter: string;
   optionText: string;
-  reason: string;
+  reason?: string | null;
   tone?: "neutral" | "wrong";
 }) {
   return (
     <div>
-      <p className="flex items-start gap-2 font-body text-body-sm text-secondary">
+      <p className="flex items-start gap-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
         <OptionLetterPill letter={letter} tone={tone} />
-        <span className="min-w-0 flex-1">{optionText}</span>
+        <span className="min-w-0 flex-1">
+          <RichTextContent text={optionText} className="text-primary" />
+        </span>
       </p>
-      <div className="mt-1">
-        {markdownBlock(reason, "text-primary [&_p]:text-primary")}
-      </div>
+      {reason ? (
+        <div className="mt-1">{markdownBlock(reason, UFO_PROSE)}</div>
+      ) : null}
     </div>
   );
 }
@@ -182,6 +193,7 @@ export function FeedbackPanel({
   selectedOptionId,
   isCorrect,
   hideExplanation = false,
+  showResult = true,
   variant,
   transferScheduled = false,
   confidence = null,
@@ -192,56 +204,59 @@ export function FeedbackPanel({
   const tCommon = useTranslations("common");
   const verdictRef = useRef<HTMLDivElement>(null);
   const blocks = question.explanationBlocks ?? null;
-  const hasBlocks = blocks != null;
+  const blocksStatus =
+    question.explanationBlocksStatus ??
+    (blocks
+      ? isStatementSetBlocks(blocks)
+        ? "statement_set"
+        : "sba"
+      : "legacy");
+  const blocksInvalid = blocksStatus === "invalid";
+  const hasBlocks = blocks != null && !blocksInvalid;
+  const statementSet = isStatementSetBlocks(blocks) ? blocks : null;
   const takeaway = blocks?.takeaway?.trim() ?? "";
   const correctReason = blocks?.correctReason?.trim() ?? "";
   const trap = blocks?.trap?.trim() ?? "";
-  const distractors = blocks?.distractors;
+  const distractors = statementSet ? undefined : blocks?.distractors;
   const contrast = blocks?.contrast;
-  const selectedOption = question.options.find((o) => o.id === selectedOptionId);
-  const selectedDistractorReason =
-    distractors?.[selectedOptionId]?.trim() || null;
-  const showYourChoice = !isCorrect && Boolean(selectedDistractorReason);
-  const hypercorrection = !isCorrect && confidence === "na_pewno";
-  const whyOthersOpen =
-    confidence === "troche" || confidence === "nie_wiedzialem";
-  const skipCorrect = new Set([question.correctOptionId]);
-  const skipCorrectAndSelected = new Set([
-    question.correctOptionId,
-    selectedOptionId,
-  ]);
-  const remainingSkipIds = isCorrect ? skipCorrect : skipCorrectAndSelected;
-  const hasAnyDistractor = question.options.some(
-    (option) =>
-      option.id !== question.correctOptionId &&
-      Boolean(distractors?.[option.id]?.trim()),
+  const selectedOption = selectedOptionId
+    ? question.options.find((option) => option.id === selectedOptionId)
+    : undefined;
+  const correctOption = question.options.find(
+    (option) => option.id === question.correctOptionId,
   );
+  const selectedDistractorReason = selectedOptionId
+    ? distractors?.[selectedOptionId]?.trim() || null
+    : null;
+  const showYourChoice = !isCorrect && selectedOption != null;
+  const hypercorrection = !isCorrect && confidence === "na_pewno";
+  const skipCorrect = new Set([question.correctOptionId]);
+  const skipCorrectAndSelected = new Set(
+    selectedOptionId
+      ? [question.correctOptionId, selectedOptionId]
+      : [question.correctOptionId],
+  );
+  const remainingSkipIds = isCorrect ? skipCorrect : skipCorrectAndSelected;
   const hasRemainingDistractors = question.options.some(
     (option) =>
       option.id !== question.correctOptionId &&
       option.id !== selectedOptionId &&
       Boolean(distractors?.[option.id]?.trim()),
   );
-  const showRemainingAccordion =
-    variant === "concise"
-      ? Boolean(correctReason || hasRemainingDistractors || hasAnyDistractor)
-      : variant === "standard"
-        ? isCorrect
-          ? hasAnyDistractor
-          : hasRemainingDistractors
-        : hasRemainingDistractors;
   const showTakeawayHeader = Boolean(takeaway);
   const orderCtx = {
     disableOptionShuffle: question.disableOptionShuffle,
     explanation: question.explanation,
   };
-  const yourLetter = sessionOptionLetter(
-    sessionId,
-    question.id,
-    question.options,
-    selectedOptionId,
-    orderCtx,
-  );
+  const yourLetter = selectedOptionId
+    ? sessionOptionLetter(
+        sessionId,
+        question.id,
+        question.options,
+        selectedOptionId,
+        orderCtx,
+      )
+    : "";
   const correctLetter = sessionOptionLetter(
     sessionId,
     question.id,
@@ -249,15 +264,10 @@ export function FeedbackPanel({
     question.correctOptionId,
     orderCtx,
   );
-  const answerLine = t("summaryYourAnswer", {
-    selected: yourLetter,
-    correct: correctLetter,
-    topic: "",
-  }).replace(/\s·\s*$/, "");
 
   const shownInput = {
     question,
-    selectedOptionId,
+    selectedOptionId: selectedOptionId ?? question.correctOptionId,
     isCorrect,
     hideExplanation,
     variant,
@@ -273,7 +283,7 @@ export function FeedbackPanel({
     verdictRef.current?.focus({ preventScroll: true });
   }, [question.id]);
 
-  const skipNextOpen = useRef(whyOthersOpen);
+  const skipNextOpen = useRef(false);
   const handleToggle = (section: FeedbackExpandSection) =>
     (event: SyntheticEvent<HTMLDetailsElement>) => {
       if (skipNextOpen.current) {
@@ -294,84 +304,45 @@ export function FeedbackPanel({
         <OptionReasonBlock
           letter={yourLetter}
           optionText={selectedOption.text}
-          reason={selectedDistractorReason!}
+          reason={selectedDistractorReason}
           tone="wrong"
         />
       </FeedbackSection>
     ) : null;
 
-  const remainingAccordion =
-    showRemainingAccordion && variant !== "concise" ? (
-      <details
-        className="group px-5 py-5"
-        open={variant === "standard" ? whyOthersOpen : false}
-        onToggle={handleToggle("distractors")}
-        data-feedback-section="why-others"
-      >
-        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2">
-          <ChevronDown
-            className="size-4 shrink-0 text-secondary transition-transform group-open:rotate-180"
-            aria-hidden
-          />
-          <SectionLabel>{t("feedbackWhyOthers")}</SectionLabel>
-        </summary>
-        <DistractorReasons
-          sessionId={sessionId}
-          question={question}
-          distractors={distractors}
-          skipIds={remainingSkipIds}
+  const remainingAccordion = hasRemainingDistractors ? (
+    <details
+      className="group px-4 py-3 sm:px-5"
+      onToggle={handleToggle("distractors")}
+      data-feedback-section="why-others"
+    >
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-btn marker:content-none [&::-webkit-details-marker]:hidden">
+        <ChevronDown
+          className="size-4 shrink-0 text-secondary motion-reduce:transition-none transition-transform group-open:rotate-180"
+          aria-hidden
         />
-      </details>
-    ) : null;
+        <SectionLabel>{t("feedbackRemaining")}</SectionLabel>
+      </summary>
+      <DistractorReasons
+        sessionId={sessionId}
+        question={question}
+        distractors={distractors}
+        skipIds={remainingSkipIds}
+      />
+    </details>
+  ) : null;
 
-  const conciseAccordion =
-    variant === "concise" && showRemainingAccordion ? (
-      <details
-        className="group px-5 py-5"
-        onToggle={handleToggle("full")}
-        data-feedback-section="full"
-      >
-        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-body text-[13px] font-semibold text-secondary md:text-[14px]">
-          <ChevronDown
-            className="size-4 transition-transform group-open:rotate-180"
-            aria-hidden
-          />
-          {t("feedbackFullExplanation")}
-        </summary>
-        {correctReason ? (
-          <div className="mt-3">{markdownBlock(correctReason)}</div>
-        ) : null}
-        <DistractorReasons
-          sessionId={sessionId}
-          question={question}
-          distractors={distractors}
-          skipIds={remainingSkipIds}
-        />
-      </details>
-    ) : null;
-
-  const mechanismBlock =
-    (variant === "standard" || variant === "remedial") && correctReason ? (
-      showTakeawayHeader ? (
-        <section className="px-5 py-5" data-feedback-section="explanation">
-          {markdownBlock(correctReason)}
-        </section>
-      ) : (
-        <FeedbackSection
-          label={tCommon("explanation")}
-          testId="explanation"
-        >
-          {markdownBlock(correctReason)}
-        </FeedbackSection>
-      )
-    ) : null;
+  const mechanismBlock = correctReason ? (
+    <FeedbackSection label={tCommon("explanation")} testId="explanation">
+      {markdownBlock(correctReason, UFO_PROSE)}
+    </FeedbackSection>
+  ) : null;
 
   const hasCardSections =
     showTakeawayHeader ||
     mechanismBlock != null ||
     showYourChoice ||
     remainingAccordion != null ||
-    conciseAccordion != null ||
     Boolean(contrast && contrast.length > 0) ||
     Boolean(trap) ||
     (variant === "remedial" && Boolean(question.knowledgeCard)) ||
@@ -379,45 +350,79 @@ export function FeedbackPanel({
 
   return (
     <div
-      className={cn(SESSION_READING_COLUMN, "mt-8")}
+      className={cn(SESSION_READING_COLUMN, "mt-5")}
       data-has-blocks={hasBlocks ? "true" : "false"}
     >
-      <div
-        ref={verdictRef}
-        tabIndex={-1}
-        data-session-verdict
-        aria-live="polite"
-        className={cn(
-          "flex items-center gap-2 font-body text-body-lg font-semibold outline-none",
-          isCorrect ? "text-success" : "text-error",
-        )}
-      >
-        {isCorrect ? (
-          <CheckCircle className="size-6 shrink-0" aria-hidden />
-        ) : (
-          <XCircle className="size-6 shrink-0" aria-hidden />
-        )}
-        {isCorrect ? t("correctAnswer") : t("incorrectAnswer")}
+      <div ref={verdictRef} tabIndex={-1} data-session-verdict className="outline-none">
+        {showResult ? (
+          <div
+            aria-live="polite"
+            className={cn(
+              "flex items-center gap-2 font-body text-[16px] font-semibold leading-[1.6] md:text-[17px]",
+              isCorrect ? "text-success" : "text-error",
+            )}
+          >
+            {isCorrect ? (
+              <CheckCircle className="size-6 shrink-0" aria-hidden />
+            ) : (
+              <XCircle className="size-6 shrink-0" aria-hidden />
+            )}
+            {isCorrect ? t("correctAnswer") : t("incorrectAnswer")}
+          </div>
+        ) : null}
+        {!statementSet && correctOption ? (
+          <div
+            data-feedback-section="correct-answer"
+            className={showResult ? "mt-3" : undefined}
+          >
+            <SectionLabel>{t("feedbackCorrectOption")}</SectionLabel>
+            <p className="mt-1.5 flex items-start gap-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
+              <OptionLetterPill letter={correctLetter} />
+              <span className="min-w-0 flex-1">
+                <RichTextContent
+                  text={correctOption.text}
+                  className="text-primary"
+                />
+              </span>
+            </p>
+          </div>
+        ) : null}
+        {hypercorrection ? (
+          <p className="mt-2 font-body text-body-sm font-medium text-secondary">
+            {t("feedbackHypercorrection")}
+          </p>
+        ) : null}
       </div>
-      {!isCorrect ? (
-        <p className="mt-2 font-body text-body-sm text-secondary">{answerLine}</p>
-      ) : null}
-      {hypercorrection ? (
-        <p className="mt-2 font-body text-body-sm font-medium text-secondary">
-          {t("feedbackHypercorrection")}
-        </p>
-      ) : null}
 
-      {!hideExplanation && !hasBlocks ? (
-        <div className="mt-4 rounded-card bg-card p-5">
-          <h3 className="font-heading text-heading-sm text-primary">
-            {tCommon("explanation")}
-          </h3>
-          <div className="mt-3">{markdownBlock(question.explanation)}</div>
+      {!hideExplanation && blocksInvalid ? (
+        <div className="mt-4 rounded-card bg-card p-4">
+          <p className="font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
+            {t("feedbackUnavailable")}
+          </p>
         </div>
       ) : null}
 
-      {!hideExplanation && hasBlocks && hasCardSections ? (
+      {!hideExplanation &&
+      !hasBlocks &&
+      !blocksInvalid &&
+      question.explanation.trim() ? (
+        <div className="mt-4 rounded-card bg-card p-4">
+          <h3 className="font-heading text-heading-sm text-primary">
+            {tCommon("explanation")}
+          </h3>
+          <div className="mt-3">{markdownBlock(question.explanation, UFO_PROSE)}</div>
+        </div>
+      ) : null}
+
+      {!hideExplanation && statementSet ? (
+        <StatementSetFeedback
+          blocks={statementSet}
+          selectedOptionId={selectedOptionId}
+          isCorrect={isCorrect}
+        />
+      ) : null}
+
+      {!hideExplanation && hasBlocks && !statementSet && hasCardSections ? (
         <div className="mt-4 divide-y divide-border overflow-hidden rounded-card bg-card">
           {showTakeawayHeader ? (
             <FeedbackSection
@@ -425,7 +430,7 @@ export function FeedbackPanel({
               testId="takeaway-header"
               labelTone="gold"
             >
-              {markdownBlock(takeaway, "text-primary [&_p]:text-primary")}
+              {markdownBlock(takeaway, UFO_PROSE)}
             </FeedbackSection>
           ) : null}
 
@@ -433,26 +438,25 @@ export function FeedbackPanel({
 
           {mechanismBlock}
 
-          {conciseAccordion}
           {remainingAccordion}
 
           {contrast && contrast.length > 0 ? (
             <FeedbackSection label={t("feedbackContrast")} testId="contrast">
-              {markdownBlock(contrastToMarkdown(contrast))}
+              {markdownBlock(contrastToMarkdown(contrast), UFO_PROSE)}
             </FeedbackSection>
           ) : null}
 
           {trap ? (
-            <section className="px-5 py-5" data-feedback-section="trap">
+            <section className="px-4 py-3 sm:px-5" data-feedback-section="trap">
               <div className="border-l-2 border-brand-gold py-0 pl-3">
-                <SectionLabel>{t("feedbackTrap")}</SectionLabel>
-                <div className="mt-2">{markdownBlock(trap)}</div>
+                <SectionLabel>{t("feedbackConfusion")}</SectionLabel>
+                <div className="mt-2">{markdownBlock(trap, UFO_PROSE)}</div>
               </div>
             </section>
           ) : null}
 
           {variant === "remedial" && question.knowledgeCard ? (
-            <section className="flex gap-3 px-5 py-5" data-feedback-section="remediation">
+            <section className="flex gap-3 px-4 py-3 sm:px-5" data-feedback-section="remediation">
               <BookOpen
                 className="mt-0.5 size-5 shrink-0 text-secondary"
                 aria-hidden
@@ -460,7 +464,7 @@ export function FeedbackPanel({
               <div>
                 <SectionLabel>{t("feedbackRemediation")}</SectionLabel>
                 <div className="mt-2">
-                  {markdownBlock(question.knowledgeCard)}
+                  {markdownBlock(question.knowledgeCard, UFO_PROSE)}
                 </div>
               </div>
             </section>
@@ -468,7 +472,7 @@ export function FeedbackPanel({
 
           {variant === "remedial" && transferScheduled ? (
             <p
-              className="flex items-center gap-2 px-5 py-5 font-body text-body-sm font-medium text-brand-sage"
+              className="flex items-center gap-2 px-4 py-3 font-body text-body-sm font-medium text-brand-sage sm:px-5"
               data-feedback-section="transfer"
             >
               <Repeat2 className="size-4 shrink-0" aria-hidden />

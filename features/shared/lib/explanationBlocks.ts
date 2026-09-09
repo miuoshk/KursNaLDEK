@@ -141,6 +141,12 @@ export function isStatementSetBlocks(
   return blocks?.questionType === "statement_set";
 }
 
+export function isSbaBlocks(
+  blocks: ExplanationBlocksV2 | null | undefined,
+): blocks is ExplanationBlocksSba {
+  return blocks != null && blocks.questionType !== "statement_set";
+}
+
 export type ExplanationBlocksStatus =
   | "none"
   | "legacy"
@@ -281,10 +287,12 @@ function looksLikeAttemptedV2(input: Record<string, unknown>): boolean {
 }
 
 function issueFromSchema(
-  issues: readonly { path: (string | number)[]; message: string }[],
+  issues: readonly { path: PropertyKey[]; message: string }[],
 ): ExplanationBlocksIssue {
   const first = issues[0];
-  const path = first?.path?.length ? first.path.join(".") : "blocks";
+  const path = first?.path?.length
+    ? first.path.map((part) => String(part)).join(".")
+    : "blocks";
   const message = first?.message ?? "invalid schema";
   if (message === "duplicate_number") {
     return { code: "duplicate_number", detail: path };

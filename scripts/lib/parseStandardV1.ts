@@ -1,5 +1,8 @@
 import { parseContrastGfm } from "../../features/shared/lib/explanationBlocks";
-import type { ExplanationBlocksV2 } from "../../features/shared/lib/explanationBlocks";
+import type {
+  ExplanationBlocksSba,
+  ExplanationBlocksV2,
+} from "../../features/shared/lib/explanationBlocks";
 import {
   isNumericOptionList,
   normalizeMatchText,
@@ -349,7 +352,7 @@ export function parseStandardV1(input: ParseInput): ParseResult {
     };
   }
 
-  const blocks: ExplanationBlocksV2 = {
+  const blocks: ExplanationBlocksSba = {
     version: 2,
     correctReason,
   };

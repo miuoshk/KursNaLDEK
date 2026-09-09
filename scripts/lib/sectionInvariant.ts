@@ -1,4 +1,7 @@
-import { parseContrastGfm } from "../../features/shared/lib/explanationBlocks";
+import {
+  isSbaBlocks,
+  parseContrastGfm,
+} from "../../features/shared/lib/explanationBlocks";
 import type { ParseInput, ParseResult } from "./parseStandardV1";
 import { stripEmojiForInvariant } from "./renderExplanationBlocks";
 
@@ -142,8 +145,9 @@ export function diffSectionInvariants(
   result: ParseResult,
 ): SectionDiff[] {
   if (!result.accepted || !result.item) return [];
-  const legacy = extractLegacySections(input.explanation);
+  const legacy = extractLegacySections(input.explanation ?? "");
   const blocks = result.item.blocks;
+  if (!isSbaBlocks(blocks)) return [];
   const diffs: SectionDiff[] = [];
 
   if (normalizeWs(legacy.correctReason) !== normalizeWs(blocks.correctReason)) {

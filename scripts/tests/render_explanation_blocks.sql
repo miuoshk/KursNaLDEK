@@ -134,6 +134,41 @@ Klucz to ostatnia opcja.
 
 - *Alfa* — Pierwsza odpada.
 - *Epsilon* — Przedostatnia odpada.$exp$
+      ),
+      (
+        '07_statement_set',
+        'b',
+        '{
+          "version": 2,
+          "questionType": "statement_set",
+          "takeaway": "Oceń każde stwierdzenie.",
+          "statements": [
+            {"id":"s1","number":1,"text":"Pierwsze jest prawdziwe","isTrue":true,"rationale":"Tak."},
+            {"id":"s2","number":2,"text":"Drugie jest falszywe","isTrue":false,"rationale":"Nie.","correction":"Poprawiona tresc."}
+          ],
+          "optionStatements": {
+            "a":["s1","s2"],
+            "b":["s1"],
+            "c":["s2"],
+            "d":["s1","s2"],
+            "e":["s2"]
+          },
+          "trap": "Nie bierz litery opcji za numer."
+        }'::jsonb,
+        $exp$**Poprawna odpowiedź:** Beta
+
+> **Zasada:** Oceń każde stwierdzenie.
+
+**Stwierdzenia**
+
+1. Pierwsze jest prawdziwe — Prawda
+Tak.
+
+2. Drugie jest falszywe — Fałsz
+Nie.
+Poprawiona tresc.
+
+> **Pułapka:** Nie bierz litery opcji za numer.$exp$
       )
   ) AS t(name, correct_id, blocks, expected)
 )

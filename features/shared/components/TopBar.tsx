@@ -237,6 +237,7 @@ export function TopBar() {
               "hover:bg-white/[0.04] hover:text-primary active:scale-[0.98]",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-gold)]",
             )}
+            data-nav-menu-trigger
             aria-label={tCommon("openMenu")}
           >
             <Menu className="size-5" aria-hidden />

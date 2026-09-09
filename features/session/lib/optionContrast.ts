@@ -35,15 +35,21 @@ function mix(fg: string, bg: string, alpha: number): string {
 }
 
 const CARD = "#0a2322";
+const BACKGROUND = "#002A27";
 const PRIMARY = "#E8E0D0";
 const SECONDARY = "#8B9E8B";
 const SUCCESS = "#4ADE80";
 const ERROR = "#F87171";
+const GOLD = "#C9A84C";
 
 export const SESSION_CONTRAST = {
   neutralTile: contrastRatio(PRIMARY, CARD),
   keyTile: contrastRatio(PRIMARY, mix(SUCCESS, CARD, 0.15)),
   wrongTile: contrastRatio(PRIMARY, mix(ERROR, CARD, 0.15)),
-  collapsedTile: contrastRatio(SECONDARY, CARD),
+  collapsedTile: contrastRatio(PRIMARY, CARD),
   panelSecondary: contrastRatio(SECONDARY, CARD),
+  primaryOnBackground: contrastRatio(PRIMARY, BACKGROUND),
+  goldOnCard: contrastRatio(GOLD, CARD),
+  successOnBackground: contrastRatio(SUCCESS, BACKGROUND),
+  errorOnBackground: contrastRatio(ERROR, BACKGROUND),
 } as const;

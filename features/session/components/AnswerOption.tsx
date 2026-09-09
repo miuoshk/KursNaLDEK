@@ -44,7 +44,7 @@ export function AnswerOption({
       disabled={disabled && state !== "muted"}
       onClick={onSelect}
       className={cn(
-        "flex w-full text-left transition-all duration-200 ease-out",
+        "flex w-full text-left transition-colors duration-200 ease-out",
         collapsed
           ? "min-h-11 items-center gap-3 rounded-card border border-border bg-card px-3"
           : "items-start gap-4 rounded-card border p-4",
@@ -72,30 +72,30 @@ export function AnswerOption({
         {letter}
       </span>
       {collapsed ? (
-        <span className="min-w-0 flex-1 truncate font-body text-body-sm text-secondary">
+        <span className="min-w-0 flex-1 truncate font-body text-[16px] leading-[1.6] text-primary">
           {text}
         </span>
       ) : (
         <span className="min-w-0 flex-1">
           <RichTextContent
             text={text}
-            className="break-words font-body text-body-md text-primary"
+            className="break-words font-body text-[16px] leading-[1.6] text-primary md:text-[17px]"
           />
-          {showStatus ? (
-            <span
-              className={cn(
-                "mt-2 flex items-center gap-1.5 font-body text-body-xs font-semibold",
-                state === "correct" ? "text-success" : "text-error",
-              )}
-            >
-              {state === "correct" ? (
-                <Check className="size-3.5 shrink-0" aria-hidden />
-              ) : (
-                <X className="size-3.5 shrink-0" aria-hidden />
-              )}
-              {statusLabel}
-            </span>
-          ) : null}
+          <span
+            className={cn(
+              "mt-2 flex min-h-5 items-center gap-1.5 font-body text-body-xs font-semibold",
+              !showStatus && "invisible",
+              showStatus && (state === "correct" ? "text-success" : "text-error"),
+            )}
+            aria-hidden={!showStatus}
+          >
+            {showStatus && state === "wrong" ? (
+              <X className="size-3.5 shrink-0" aria-hidden />
+            ) : (
+              <Check className="size-3.5 shrink-0" aria-hidden />
+            )}
+            {showStatus ? statusLabel : null}
+          </span>
         </span>
       )}
     </button>

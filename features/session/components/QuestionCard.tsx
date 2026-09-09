@@ -60,10 +60,10 @@ export function QuestionCard({
       >
         <QuestionTextContent
           text={question.text}
-          className="mt-6 text-body-md md:text-body-lg"
+          className="mt-4 text-[16px] leading-[1.6] md:text-[17px]"
         />
       </div>
-      <div className="mt-6 flex flex-col gap-3 overflow-visible py-1">{children}</div>
+      <div className="mt-5 flex flex-col gap-3 overflow-visible py-1">{children}</div>
     </div>
   );
 }

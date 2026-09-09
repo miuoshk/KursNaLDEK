@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useHorizontalCarousel } from "@/features/session/hooks/useHorizontalCarousel";
 import type { SessionAnswer, SessionQuestion } from "@/features/session/types";
 import { scrollChildIntoCenter } from "@/features/session/lib/scrollChildIntoCenter";
+import { sessionProgressSquareClass } from "@/features/session/lib/sessionProgressSquare";
 import { cn } from "@/lib/utils";
 
 type SessionProgressSquaresProps = {
@@ -68,6 +69,7 @@ export function SessionProgressSquares({
           if (isCorrect) ariaLabel += t("progressSquareCorrect");
           else if (isWrong) ariaLabel += t("progressSquareWrong");
           else ariaLabel += t("progressSquareUnanswered");
+          if (isCurrent) ariaLabel += t("progressSquareCurrent");
 
           return (
             <Component
@@ -79,16 +81,12 @@ export function SessionProgressSquares({
               onClick={clickable ? () => onJumpTo!(idx) : undefined}
               aria-label={ariaLabel}
               aria-current={isCurrent ? "true" : undefined}
-              className={cn(
-                "flex size-11 shrink-0 items-center justify-center rounded-sm border font-body text-[11px] font-medium transition-colors",
-                clickable && "cursor-pointer hover:brightness-110",
-                isCorrect && "border-success/40 bg-success text-white",
-                isWrong && "border-error/40 bg-error text-white",
-                !isAnswered &&
-                  "border-white/15 bg-white/[0.04] text-secondary hover:text-primary",
-                isCurrent &&
-                  "bg-white/15 text-primary ring-2 ring-white/30 ring-offset-1 ring-offset-background",
-              )}
+              className={sessionProgressSquareClass({
+                isCurrent,
+                isCorrect,
+                isWrong,
+                clickable,
+              })}
               role="listitem"
             >
               {idx + 1}

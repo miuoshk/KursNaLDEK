@@ -1,56 +1,9 @@
-import { contrastToGfm } from "../../features/shared/lib/explanationBlocks";
-import type { ExplanationBlocksV2 } from "../../features/shared/lib/explanationBlocks";
+import { renderExplanationBlocks } from "../../features/shared/lib/renderExplanationBlocks";
 
-type Option = { id: string; text: string };
+export { renderExplanationBlocks };
 
-/**
- * Port of `public.render_explanation_blocks` for the KROK 6 invariant test only.
- * Do not use this in the app or in apply/rollback.
- */
-export function renderExplanationBlocksTs(
-  blocks: ExplanationBlocksV2,
-  options: readonly Option[],
-  correctOptionId: string,
-): string {
-  const sections: string[] = [];
-  const verdict = options.find((option) => option.id === correctOptionId)?.text
-    ?.trim();
-  if (verdict) sections.push(`**Poprawna odpowiedź:** ${verdict}`);
-
-  const reason = blocks.correctReason.trim();
-  if (reason) sections.push(reason);
-
-  const distractorLines: string[] = [];
-  for (const option of options) {
-    if (option.id === correctOptionId) continue;
-    const optText = option.text.trim();
-    const dist = blocks.distractors?.[option.id]?.trim();
-    if (!optText || !dist) continue;
-    distractorLines.push(`- *${optText}* — ${dist}`);
-  }
-  if (distractorLines.length > 0) {
-    sections.push(
-      `**Dlaczego nie pozostałe?**\n\n${distractorLines.join("\n")}`,
-    );
-  }
-
-  if (blocks.contrast && blocks.contrast.length > 0) {
-    sections.push(contrastToGfm(blocks.contrast));
-  }
-
-  const trap = blocks.trap?.trim();
-  if (trap) sections.push(`> **Pułapka:** ${trap}`);
-
-  const takeaway = blocks.takeaway?.trim();
-  if (takeaway) sections.push(`> **Zasada:** ${takeaway}`);
-
-  const joined = sections.join("\n\n");
-  return joined
-    .split("\n")
-    .map((line) => line.replace(/[ \t]+$/g, ""))
-    .join("\n")
-    .replace(/\n+$/g, "");
-}
+/** @deprecated Użyj renderExplanationBlocks — ten alias zostaje dla testów KROK 6. */
+export const renderExplanationBlocksTs = renderExplanationBlocks;
 
 export function stripEmojiForInvariant(text: string): string {
   let out = "";

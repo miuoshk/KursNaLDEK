@@ -35,7 +35,7 @@ function question(blocks: ExplanationBlocksV2 | null): SessionQuestion {
   };
 }
 
-test("concise z blokami: takeaway + full, bez od razu otwartego werdyktu w elements poza verdict", () => {
+test("concise z blokami: takeaway + wyjaśnienie + pozostałe", () => {
   const elements = listFeedbackElements({
     question: question(BLOCKS),
     selectedOptionId: "a",
@@ -45,7 +45,8 @@ test("concise z blokami: takeaway + full, bez od razu otwartego werdyktu w eleme
   assert.deepEqual(elements, [
     "verdict",
     "takeaway",
-    "full",
+    "correctReason",
+    "distractors",
     "trap",
   ]);
 });

@@ -2,6 +2,8 @@ import {
   questionHasNormalizedBlocks,
   type FeedbackVariant,
 } from "@/features/session/lib/adaptiveFeedback";
+import { isStatementSetBlocks } from "@/features/shared/lib/explanationBlocks";
+import { computeStatementSetDiff, trueStatementIds } from "@/features/shared/lib/statementSet";
 import type { Confidence, SessionQuestion } from "@/features/session/types";
 
 export type FeedbackExpandSection = "full" | "distractors";
@@ -49,19 +51,16 @@ export function listFeedbackElements(input: {
   } = input;
   const blocks = question.explanationBlocks ?? null;
   const hasBlocks = blocks != null;
+  const statementSet = isStatementSetBlocks(blocks) ? blocks : null;
   const takeaway = blocks?.takeaway?.trim() ?? "";
   const correctReason = blocks?.correctReason?.trim() ?? "";
   const trap = blocks?.trap?.trim() ?? "";
-  const distractors = blocks?.distractors;
+  const distractors = statementSet ? undefined : blocks?.distractors;
   const contrast = blocks?.contrast;
-  const selectedDistractorReason =
-    distractors?.[selectedOptionId]?.trim() || null;
-  const hypercorrection = !isCorrect && confidence === "na_pewno";
-  const hasAnyDistractor = question.options.some(
-    (option) =>
-      option.id !== question.correctOptionId &&
-      Boolean(distractors?.[option.id]?.trim()),
+  const selectedOption = question.options.find(
+    (option) => option.id === selectedOptionId,
   );
+  const hypercorrection = !isCorrect && confidence === "na_pewno";
   const hasRemainingDistractors = question.options.some(
     (option) =>
       option.id !== question.correctOptionId &&
@@ -77,17 +76,24 @@ export function listFeedbackElements(input: {
     return elements;
   }
   if (takeaway) elements.push("takeaway");
-  if (!isCorrect && selectedDistractorReason) {
+  if (statementSet) {
+    elements.push("statementSets");
+    const selectedIds = statementSet.optionStatements[selectedOptionId] ?? [];
+    const diff = computeStatementSetDiff(
+      selectedIds,
+      trueStatementIds(statementSet.statements),
+    );
+    if (!isCorrect && (diff.add.length > 0 || diff.remove.length > 0)) {
+      elements.push("setDiff");
+    }
+    elements.push("statements");
+  } else if (!isCorrect && selectedOption) {
     elements.push("selectedDistractor");
   }
-  if ((variant === "standard" || variant === "remedial") && correctReason) {
+  if (!statementSet && correctReason) {
     elements.push("correctReason");
   }
-  if (variant === "concise" && (correctReason || hasAnyDistractor)) {
-    elements.push("full");
-  }
-  if (variant === "standard" && hasAnyDistractor) elements.push("distractors");
-  if (variant === "remedial" && hasRemainingDistractors) {
+  if (!statementSet && hasRemainingDistractors) {
     elements.push("distractors");
   }
   if (contrast && contrast.length > 0) elements.push("contrast");

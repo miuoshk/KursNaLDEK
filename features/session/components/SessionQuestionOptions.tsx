@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { AnswerOption } from "@/features/session/components/AnswerOption";
 import { useSessionOptionOrder } from "@/features/session/hooks/useSessionOptionOrder";
@@ -30,6 +30,7 @@ export function SessionQuestionOptions({
   onSelectOption,
 }: SessionQuestionOptionsProps) {
   const t = useTranslations("session");
+  const reduceMotion = useReducedMotion();
   const [expandedMuted, setExpandedMuted] = useState<Record<string, boolean>>(
     {},
   );
@@ -44,9 +45,9 @@ export function SessionQuestionOptions({
 
   return (
     <motion.div
-      variants={optionsContainerVariants}
-      initial="hidden"
-      animate="visible"
+      variants={reduceMotion ? undefined : optionsContainerVariants}
+      initial={reduceMotion ? false : "hidden"}
+      animate={reduceMotion ? undefined : "visible"}
       className="space-y-3 overflow-visible"
       role="radiogroup"
       aria-label={t("answerOptionsAria")}
@@ -79,14 +80,26 @@ export function SessionQuestionOptions({
           .join(" — ");
 
         return (
-          <motion.div key={opt.id} variants={optionVariants} className="overflow-visible">
+          <motion.div key={opt.id} variants={reduceMotion ? undefined : optionVariants} className="overflow-visible">
             <motion.div
               className={isAnimating ? "relative z-10 overflow-visible" : "overflow-visible"}
               animate={
-                showPulse ? { scale: [1, 1.02, 1] } : showShake ? { x: [0, -4, 4, -2, 0] } : {}
+                reduceMotion
+                  ? {}
+                  : showPulse
+                    ? { scale: [1, 1.02, 1] }
+                    : showShake
+                      ? { x: [0, -4, 4, -2, 0] }
+                      : {}
               }
               transition={
-                showPulse ? { duration: 0.3 } : showShake ? { duration: 0.4 } : { duration: 0 }
+                reduceMotion
+                  ? { duration: 0 }
+                  : showPulse
+                    ? { duration: 0.3 }
+                    : showShake
+                      ? { duration: 0.4 }
+                      : { duration: 0 }
               }
             >
               <AnswerOption

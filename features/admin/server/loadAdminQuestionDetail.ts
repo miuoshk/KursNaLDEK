@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 import {
-  normalizeExplanationBlocks,
+  inspectExplanationBlocks,
+  type ExplanationBlocksIssue,
   type ExplanationBlocksV2,
 } from "@/features/shared/lib/explanationBlocks";
 
@@ -22,6 +23,7 @@ export type AdminQuestionDetail = {
   correctOptionId: string;
   explanation: string;
   explanationBlocks: ExplanationBlocksV2 | null;
+  explanationBlocksIssue?: ExplanationBlocksIssue | null;
   conceptIds: string[];
   sourceExam: string | null;
   sourceCode: string | null;
@@ -95,6 +97,11 @@ export async function loadAdminQuestionDetail(
   ).map((link) => link.concept_id);
   const options = normalizeOptions(data.options);
   const correctOptionId = (data.correct_option_id as string) ?? "";
+  const inspected = inspectExplanationBlocks(data.explanation_blocks, {
+    questionId: data.id as string,
+    optionIds: options.map((option) => option.id),
+    correctOptionId,
+  });
 
   return {
     id: data.id as string,
@@ -107,11 +114,10 @@ export async function loadAdminQuestionDetail(
     options,
     correctOptionId,
     explanation: (data.explanation as string) ?? "",
-    explanationBlocks: normalizeExplanationBlocks(data.explanation_blocks, {
-      questionId: data.id as string,
-      optionIds: options.map((option) => option.id),
-      correctOptionId,
-    }),
+    explanationBlocks:
+      inspected.blocks ??
+      (inspected.status === "invalid" ? inspected.draft ?? null : null),
+    explanationBlocksIssue: inspected.issue,
     conceptIds,
     sourceExam: (data.source_exam as string | null) ?? null,
     sourceCode: (data.source_code as string | null) ?? null,

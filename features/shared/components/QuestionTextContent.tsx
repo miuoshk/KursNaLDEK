@@ -27,7 +27,7 @@ function ListColumn({
   renderSegment?: (segment: string) => ReactNode;
 }) {
   return (
-    <ul className="space-y-2 font-body text-body-sm leading-relaxed text-primary md:text-body-md">
+    <ul className="space-y-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
       {items.map((item) => (
         <li key={item.marker} className="flex gap-2">
           <span className="shrink-0 font-medium tabular-nums text-brand-gold">{item.marker}</span>
@@ -57,7 +57,7 @@ export function QuestionTextContent({
   return (
     <div className={cn("min-w-0 break-words font-body leading-relaxed text-primary", className)}>
       {parsed.intro ? (
-        <p className="whitespace-pre-wrap text-body-md md:text-body-lg">
+        <p className="whitespace-pre-wrap text-[16px] leading-[1.6] md:text-[17px]">
           {renderSegment(parsed.intro, render)}
         </p>
       ) : null}
@@ -71,7 +71,7 @@ export function QuestionTextContent({
         <ListColumn items={parsed.right} renderSegment={render} />
       </div>
       {parsed.footer ? (
-        <p className="mt-4 whitespace-pre-wrap text-body-md md:text-body-lg">
+        <p className="mt-4 whitespace-pre-wrap text-[16px] leading-[1.6] md:text-[17px]">
           {renderSegment(parsed.footer, render)}
         </p>
       ) : null}

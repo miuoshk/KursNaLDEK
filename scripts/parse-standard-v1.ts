@@ -17,7 +17,12 @@ import {
   formatParseReport,
   parseStandardV1,
   type ParseInput,
+  type ParseResult,
 } from "./lib/parseStandardV1";
+import {
+  isStructuredStatementSetInput,
+  parseStatementSetV1,
+} from "./lib/parseStatementSetV1";
 import {
   diffSectionInvariants,
   summarizeSectionDiffs,
@@ -26,6 +31,27 @@ import {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const PAGE = 200;
 
+function parseExplanationInput(input: ParseInput): ParseResult {
+  if (isStructuredStatementSetInput(input)) {
+    const parsed = parseStatementSetV1(input);
+    return {
+      id: parsed.id,
+      accepted: parsed.accepted,
+      flags: parsed.flags.map((flag) => ({
+        code:
+          flag.code === "prose_not_allowed"
+            ? "unparsed_remainder"
+            : "unparsed_remainder",
+        detail: `${flag.code}: ${flag.detail}`,
+      })),
+      item: parsed.item,
+      verdictText: null,
+      originalExplanation: input.explanation ?? "",
+    };
+  }
+  return parseStandardV1(input);
+}
+
 function parseJsonlInputs(text: string): ParseInput[] {
   const rows: ParseInput[] = [];
   for (const [lineIndex, raw] of text.split(/\r?\n/).entries()) {
@@ -33,8 +59,14 @@ function parseJsonlInputs(text: string): ParseInput[] {
     if (!line || line.startsWith("#")) continue;
     try {
       const row = JSON.parse(line) as ParseInput;
-      if (!row.id || !row.explanation || !row.correct_option_id) {
-        throw new Error("brak id / explanation / correct_option_id");
+      if (!row.id || !row.correct_option_id) {
+        throw new Error("brak id / correct_option_id");
+      }
+      if (
+        !row.explanation &&
+        !isStructuredStatementSetInput(row)
+      ) {
+        throw new Error("brak explanation albo ustrukturyzowanego zestawienia");
       }
       rows.push(row);
     } catch (error) {
@@ -143,12 +175,14 @@ async function main() {
     : parseJsonlInputs(await readFile(resolve(inFile!), "utf8"));
 
   const results = inputs.map((input) => ({
-    parsed: parseStandardV1(input),
+    parsed: parseExplanationInput(input),
     input,
   }));
 
   const sectionDiffs = results.flatMap(({ parsed, input }) =>
-    diffSectionInvariants(input, parsed),
+    isStructuredStatementSetInput(input)
+      ? []
+      : diffSectionInvariants(input, parsed),
   );
   const sectionInvariant = summarizeSectionDiffs(sectionDiffs);
 
@@ -177,10 +211,14 @@ async function main() {
     const blocks = parsed.item?.blocks;
     if (!blocks?.takeaway) missing.push("takeaway");
     if (!blocks?.trap) missing.push("trap");
-    for (const option of input.options) {
-      if (option.id === input.correct_option_id) continue;
-      if (!blocks?.distractors?.[option.id]) {
-        missing.push(`distractor:${option.id}`);
+    const distractors =
+      blocks && "distractors" in blocks ? blocks.distractors : undefined;
+    if (blocks?.questionType !== "statement_set") {
+      for (const option of input.options) {
+        if (option.id === input.correct_option_id) continue;
+        if (!distractors?.[option.id]) {
+          missing.push(`distractor:${option.id}`);
+        }
       }
     }
     for (const flag of parsed.flags) {

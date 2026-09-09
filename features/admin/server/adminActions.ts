@@ -20,9 +20,12 @@ import {
 import { formatAdminTopicName } from "@/features/admin/lib/formatAdminTopicName";
 import { buildQuestionUpdatePayload } from "@/features/admin/lib/questionUpdatePayload";
 import {
+  explanationBlocksIssueMessage,
   explanationBlocksSchema,
   explanationBlocksValid,
+  inspectExplanationBlocks,
 } from "@/features/shared/lib/explanationBlocks";
+import { renderExplanationBlocks } from "@/features/shared/lib/renderExplanationBlocks";
 
 async function requireAdmin() {
   const access = await requireAdminAccess();
@@ -222,18 +225,30 @@ export async function updateQuestionFull(raw: UpdateQuestionInput) {
       message: "Poprawna odpowiedź musi wskazywać jedną z opcji.",
     };
   }
-  if (
-    parsed.data.explanationBlocks &&
-    !explanationBlocksValid(
-      parsed.data.explanationBlocks,
-      parsed.data.options,
-      parsed.data.correctOptionId,
-    )
-  ) {
-    return {
-      ok: false as const,
-      message: "Bloki wyjaśnienia nie spełniają kontraktu v2.",
-    };
+  if (parsed.data.explanationBlocks) {
+    const inspected = inspectExplanationBlocks(parsed.data.explanationBlocks, {
+      questionId: parsed.data.questionId,
+      optionIds: parsed.data.options.map((option) => option.id),
+      correctOptionId: parsed.data.correctOptionId,
+    });
+    if (
+      inspected.status === "invalid" ||
+      !explanationBlocksValid(
+        parsed.data.explanationBlocks,
+        parsed.data.options,
+        parsed.data.correctOptionId,
+      )
+    ) {
+      return {
+        ok: false as const,
+        message: inspected.issue
+          ? explanationBlocksIssueMessage(
+              inspected.issue,
+              parsed.data.questionId,
+            )
+          : "Bloki wyjaśnienia nie spełniają kontraktu v2.",
+      };
+    }
   }
 
   let ctx;
@@ -431,18 +446,29 @@ export async function previewExplanationBlocks(raw: {
     question_id: parsed.data.questionId,
   });
 
-  if (error) {
+  if (!error) {
+    const markdown = typeof data === "string" ? data : "";
+    if (markdown && !markdown.startsWith("BŁĄD:")) {
+      return { ok: true as const, markdown };
+    }
+  } else {
     console.error("[previewExplanationBlocks]", error.message);
+  }
+
+  const question = await loadAdminQuestionDetail(parsed.data.questionId);
+  if (!question) {
     return {
       ok: false as const,
       markdown: "BŁĄD: nie udało się wygenerować podglądu",
     };
   }
-
-  const markdown = typeof data === "string" ? data : "";
   return {
-    ok: !markdown.startsWith("BŁĄD:") as boolean,
-    markdown,
+    ok: true as const,
+    markdown: renderExplanationBlocks(
+      parsed.data.blocks,
+      question.options,
+      question.correctOptionId,
+    ),
   };
 }
 

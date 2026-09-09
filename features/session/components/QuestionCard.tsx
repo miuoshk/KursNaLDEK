@@ -53,10 +53,16 @@ export function QuestionCard({
           />
         </div>
       ) : null}
-      <QuestionTextContent
-        text={question.text}
-        className="mt-6 text-body-md md:text-body-lg"
-      />
+      <div
+        data-session-question-stem
+        tabIndex={-1}
+        className="outline-none"
+      >
+        <QuestionTextContent
+          text={question.text}
+          className="mt-6 text-body-md md:text-body-lg"
+        />
+      </div>
       <div className="mt-6 flex flex-col gap-3 overflow-visible py-1">{children}</div>
     </div>
   );

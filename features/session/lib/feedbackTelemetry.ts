@@ -76,12 +76,12 @@ export function listFeedbackElements(input: {
     elements.push("legacy");
     return elements;
   }
-  if (variant === "concise" && takeaway) elements.push("takeaway");
-  if ((variant === "standard" || variant === "remedial") && correctReason) {
-    elements.push("correctReason");
-  }
+  if (takeaway) elements.push("takeaway");
   if (!isCorrect && selectedDistractorReason) {
     elements.push("selectedDistractor");
+  }
+  if ((variant === "standard" || variant === "remedial") && correctReason) {
+    elements.push("correctReason");
   }
   if (variant === "concise" && (correctReason || hasAnyDistractor)) {
     elements.push("full");
@@ -96,9 +96,6 @@ export function listFeedbackElements(input: {
     elements.push("remediation");
   }
   if (variant === "remedial" && transferScheduled) elements.push("transfer");
-  if ((variant === "standard" || variant === "remedial") && takeaway) {
-    elements.push("takeaway");
-  }
   return elements;
 }
 

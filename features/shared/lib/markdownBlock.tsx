@@ -1,6 +1,16 @@
-import type { ComponentPropsWithoutRef } from "react";
+import {
+  Children,
+  isValidElement,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+import { Check, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { remarkPlugins, rehypePlugins } from "@/features/shared/lib/markdownPlugins";
+import {
+  markdownHasStatementVerdicts,
+  parseStatementVerdictLead,
+} from "@/features/shared/lib/statementVerdict";
 import { cn } from "@/lib/utils";
 
 function ScrollableTable({ children, ...props }: ComponentPropsWithoutRef<"table">) {
@@ -13,17 +23,61 @@ function ScrollableTable({ children, ...props }: ComponentPropsWithoutRef<"table
   );
 }
 
+function collectText(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(collectText).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return collectText(node.props.children);
+  }
+  return "";
+}
+
+function StatementParagraph({
+  children,
+  ...props
+}: ComponentPropsWithoutRef<"p">) {
+  const childArray = Children.toArray(children);
+  const first = childArray[0];
+  if (isValidElement<{ children?: ReactNode }>(first) && first.type === "strong") {
+    const parsed = parseStatementVerdictLead(collectText(first.props.children));
+    if (parsed) {
+      return (
+        <p {...props} className="flex items-start gap-2">
+          {parsed.ok ? (
+            <Check className="mt-0.5 size-4 shrink-0 text-success" aria-hidden />
+          ) : (
+            <X className="mt-0.5 size-4 shrink-0 text-error" aria-hidden />
+          )}
+          <span>
+            <strong>
+              {parsed.n}) {parsed.statement} —{" "}
+              <span className={parsed.ok ? "text-success" : "text-error"}>
+                {parsed.verdict}.
+              </span>
+            </strong>
+            {childArray.slice(1)}
+          </span>
+        </p>
+      );
+    }
+  }
+  return <p {...props}>{children}</p>;
+}
+
 const mdComponents = {
   table: ScrollableTable,
+  p: StatementParagraph,
 } as const;
 
 export function markdownBlock(md: string, className?: string) {
+  const statementSpacing = markdownHasStatementVerdicts(md);
   return (
     <div
       className={cn(
-        "whitespace-pre-wrap font-body text-body-md leading-relaxed text-secondary",
+        "whitespace-normal font-body text-body-md leading-relaxed text-secondary",
+        "[&_p]:whitespace-pre-wrap",
         "[&_a]:text-brand-sage [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-brand-gold",
-        "[&_p+p]:mt-2",
+        statementSpacing ? "[&_p+p]:mt-3" : "[&_p+p]:mt-2",
         "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:whitespace-normal",
         "[&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:whitespace-normal",
         "[&_code]:rounded [&_code]:bg-white/10 [&_code]:px-1 [&_code]:font-body [&_code]:text-body-sm",

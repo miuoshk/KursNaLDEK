@@ -16,13 +16,17 @@ const MESSAGES = {
     incorrectAnswer: "Niepoprawna odpowiedź",
     summaryYourAnswer: "Twoja odpowiedź: {selected} · Poprawna: {correct} · {topic}",
     feedbackPrinciple: "Zasada",
+    feedbackRemember: "Zapamiętaj",
     feedbackFullExplanation: "Pokaż pełne wyjaśnienie",
     feedbackWhyOthers: "Dlaczego nie pozostałe?",
     feedbackWhySelected: "Dlaczego ten wybór był mylący",
     feedbackYourChoice: "Twój wybór",
     feedbackTrap: "Pułapka",
     feedbackContrast: "Kontrast",
-    feedbackHypercorrection: "Byłeś pewny — to pytanie wróci szybciej",
+    feedbackHypercorrection:
+      "Błąd przy wysokiej pewności — to pytanie wróci wkrótce.",
+    optionStatusCorrect: "Poprawna",
+    optionStatusYours: "Twoja odpowiedź",
     feedbackRemediation: "Krótka remediacja",
     feedbackTransferScheduled:
       "Za kilka pytań sprawdzimy to pojęcie w innym kontekście.",
@@ -308,9 +312,9 @@ test("snapshot: remedial × bloki pełne", () => {
     "Niepoprawna odpowiedź",
     "Twoja odpowiedź: B · Poprawna: A",
     TAKEAWAY,
-    MECHANISM,
     "Twój wybór",
     DIST_B,
+    MECHANISM,
     "Dlaczego nie pozostałe?",
     DIST_C,
     CONTRAST_A,
@@ -368,6 +372,7 @@ test("standard × błąd × experiment off: box Twój wybór zawsze", () => {
   assert.match(html, /DIST_B_TOKEN/);
   assert.match(html, /data-feedback-section="your-choice"/);
   assert.match(html, /Twoja odpowiedź: B · Poprawna: A/);
+  assertOrder(html, [TAKEAWAY, "Twój wybór", DIST_B, MECHANISM]);
   assert.doesNotMatch(html, /Opcja beta myląca[\s\S]*Opcja beta myląca[\s\S]*Opcja beta myląca/);
 });
 
@@ -380,11 +385,29 @@ test("snapshot: remedial × hypercorrection", () => {
     confidence: "na_pewno",
   });
   const shot = snapshot(html);
-  assert.match(shot, /Byłeś pewny — to pytanie wróci szybciej/);
+  assert.match(shot, /Błąd przy wysokiej pewności — to pytanie wróci wkrótce/);
   assertOrder(html, [
     "Niepoprawna odpowiedź",
-    "Byłeś pewny — to pytanie wróci szybciej",
+    "Błąd przy wysokiej pewności — to pytanie wróci wkrótce.",
     TAKEAWAY,
+    "Twój wybór",
+    MECHANISM,
+  ]);
+});
+
+test("concise × błąd: Twój wybór pod Zasadą, przed akordeonem", () => {
+  const html = renderPanel({
+    variant: "concise",
+    blocks: FULL_BLOCKS,
+    isCorrect: false,
+    selectedOptionId: "b",
+  });
+  assertOrder(html, [
+    "Niepoprawna odpowiedź",
+    TAKEAWAY,
+    "Twój wybór",
+    DIST_B,
+    "Pokaż pełne wyjaśnienie",
     MECHANISM,
   ]);
 });

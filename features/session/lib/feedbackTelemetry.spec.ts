@@ -63,7 +63,12 @@ test("standard + pewny błąd: hypercorrection, Twój wybór i distractors", () 
   assert.ok(elements.includes("selectedDistractor"));
   assert.ok(elements.includes("distractors"));
   assert.ok(elements.includes("takeaway"));
-  assert.equal(elements.at(-1), "takeaway");
+  assert.ok(
+    elements.indexOf("takeaway") < elements.indexOf("selectedDistractor"),
+  );
+  assert.ok(
+    elements.indexOf("selectedDistractor") < elements.indexOf("correctReason"),
+  );
 });
 
 test("bez bloków: legacy, nie takeaway", () => {

@@ -80,14 +80,14 @@ export function SessionProgressSquares({
               aria-label={ariaLabel}
               aria-current={isCurrent ? "true" : undefined}
               className={cn(
-                "flex size-6 shrink-0 items-center justify-center rounded-sm border font-body text-[10px] font-medium transition-colors",
+                "flex size-11 shrink-0 items-center justify-center rounded-sm border font-body text-[11px] font-medium transition-colors",
                 clickable && "cursor-pointer hover:brightness-110",
                 isCorrect && "border-success/40 bg-success text-white",
                 isWrong && "border-error/40 bg-error text-white",
                 !isAnswered &&
-                  "border-white/15 bg-white/[0.04] text-muted hover:text-secondary",
+                  "border-white/15 bg-white/[0.04] text-secondary hover:text-primary",
                 isCurrent &&
-                  "ring-2 ring-brand-gold ring-offset-1 ring-offset-background",
+                  "bg-white/15 text-primary ring-2 ring-white/30 ring-offset-1 ring-offset-background",
               )}
               role="listitem"
             >

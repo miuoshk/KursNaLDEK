@@ -33,7 +33,6 @@ export function AnswerOption({
 }: AnswerOptionProps) {
   const showStatus =
     Boolean(statusLabel) && (state === "correct" || state === "wrong");
-  const snug = state === "default" || state === "selected";
 
   return (
     <button
@@ -45,8 +44,7 @@ export function AnswerOption({
       disabled={disabled && state !== "muted"}
       onClick={onSelect}
       className={cn(
-        "flex max-w-full text-left transition-colors duration-200 ease-out",
-        snug ? "w-max" : "w-full",
+        "flex w-full text-left transition-colors duration-200 ease-out",
         collapsed
           ? "min-h-11 items-center gap-3 rounded-card border border-border bg-card px-3"
           : "items-start gap-4 rounded-card border p-4",
@@ -78,7 +76,7 @@ export function AnswerOption({
           {text}
         </span>
       ) : (
-        <span className={cn("min-w-0", !snug && "flex-1")}>
+        <span className="min-w-0 flex-1">
           <RichTextContent
             text={text}
             className="break-words font-body text-[16px] leading-[1.6] text-primary md:text-[17px]"

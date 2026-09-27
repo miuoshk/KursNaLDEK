@@ -115,7 +115,7 @@ type SessionTopBarProps = {
 export function SessionTopBar({
   subjectName,
   current,
-  total,
+  total: _total,
   mode: _mode,
   examElapsedSeconds,
   selectedTopicName,
@@ -130,7 +130,6 @@ export function SessionTopBar({
   const narrow = useNarrowViewport();
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
   const toggleSidebar = useSidebarStore((s) => s.toggle);
-  const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
   const topicsLine =
     sessionTopicNames && sessionTopicNames.length > 0
       ? sessionTopicNames.join(" · ")
@@ -144,63 +143,55 @@ export function SessionTopBar({
   return (
     <header
       data-session-topbar
-      className="sticky top-0 z-30 shrink-0 border-b border-border bg-background px-2 py-1 sm:px-4"
+      className="sticky top-0 z-30 shrink-0 border-b border-border bg-background px-2 py-1.5 sm:px-4"
     >
-      <div className="flex flex-wrap items-center gap-1">
-        <button
-          type="button"
-          data-nav-menu-trigger
-          onClick={() => {
-            if (narrow) setMobileOpen(true);
-            else toggleSidebar();
-          }}
-          className="inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.04] hover:text-primary"
-          aria-label={tCommon("openMenu")}
-        >
-          <Menu className="size-5" aria-hidden />
-        </button>
-        <SessionTopicName title={title} titleFull={titleFull} />
-        {examElapsedSeconds !== null ? (
-          <p
-            className="hidden shrink-0 font-body text-body-sm tabular-nums text-primary min-[15rem]:block"
-            aria-label={t("sessionTimeAria")}
+      <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1">
+          <button
+            type="button"
+            data-nav-menu-trigger
+            onClick={() => {
+              if (narrow) setMobileOpen(true);
+              else toggleSidebar();
+            }}
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.04] hover:text-primary"
+            aria-label={tCommon("openMenu")}
           >
-            {formatClock(examElapsedSeconds)}
-          </p>
-        ) : null}
-        <p className="shrink-0 px-1 font-body text-body-sm tabular-nums text-secondary">
-          {t("progressCollapsed", { current: current + 1, total })}
-        </p>
-        <button
-          type="button"
-          onClick={onEnd}
-          className={cn(
-            "inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors duration-200 ease-out",
-            "hover:text-error",
-          )}
-          aria-label={t("endSession")}
-        >
-          <X className="size-4" aria-hidden />
-        </button>
-      </div>
-      {questions && answeredMap ? (
-        <div className="mt-1">
-          <SessionProgressSquares
-            questions={questions}
-            answeredMap={answeredMap}
-            currentIndex={current}
-            onJumpTo={onJumpTo}
-          />
+            <Menu className="size-5" aria-hidden />
+          </button>
+          {narrow ? null : <SessionTopicName title={title} titleFull={titleFull} />}
         </div>
-      ) : null}
-      <div
-        className="mt-1 h-[2px] w-full overflow-hidden rounded-full bg-white/[0.08]"
-        aria-hidden
-      >
-        <div
-          className="h-full rounded-full bg-white/30 motion-reduce:transition-none transition-[width] duration-[400ms] ease-out"
-          style={{ width: `${pct}%` }}
-        />
+        <div className="max-w-[min(70vw,36rem)] justify-self-center">
+          {questions && answeredMap ? (
+            <SessionProgressSquares
+              questions={questions}
+              answeredMap={answeredMap}
+              currentIndex={current}
+              onJumpTo={onJumpTo}
+            />
+          ) : null}
+        </div>
+        <div className="flex items-center justify-end">
+          {!narrow && examElapsedSeconds !== null ? (
+            <p
+              className="shrink-0 px-2 font-body text-body-sm tabular-nums text-primary"
+              aria-label={t("sessionTimeAria")}
+            >
+              {formatClock(examElapsedSeconds)}
+            </p>
+          ) : null}
+          <button
+            type="button"
+            onClick={onEnd}
+            className={cn(
+              "inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors duration-200 ease-out",
+              "hover:text-error",
+            )}
+            aria-label={t("endSession")}
+          >
+            <X className="size-4" aria-hidden />
+          </button>
+        </div>
       </div>
     </header>
   );

@@ -46,7 +46,7 @@ export function SessionProgressSquares({
       <div
         ref={scrollRef}
         className={cn(
-          "flex max-w-full flex-nowrap gap-1 px-1 py-1",
+          "flex w-max max-w-full flex-nowrap items-center gap-1.5 px-1 py-0.5",
           overflows
             ? "overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             : "justify-center overflow-x-auto overflow-y-hidden",

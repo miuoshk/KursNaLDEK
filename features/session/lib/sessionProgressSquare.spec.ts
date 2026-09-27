@@ -8,8 +8,8 @@ test("bieżące pytanie zachowuje wynik i obrys pozycji", () => {
     isCorrect: true,
     isWrong: false,
   });
-  assert.match(currentCorrect, /bg-success/);
-  assert.match(currentCorrect, /ring-2/);
+  assert.match(currentCorrect, /bg-success\/15/);
+  assert.match(currentCorrect, /ring-brand-gold/);
   assert.doesNotMatch(currentCorrect, /bg-white\/15/);
 
   const currentWrong = sessionProgressSquareClass({
@@ -17,8 +17,8 @@ test("bieżące pytanie zachowuje wynik i obrys pozycji", () => {
     isCorrect: false,
     isWrong: true,
   });
-  assert.match(currentWrong, /bg-error/);
-  assert.match(currentWrong, /ring-2/);
+  assert.match(currentWrong, /bg-error\/15/);
+  assert.match(currentWrong, /ring-brand-gold/);
   assert.doesNotMatch(currentWrong, /bg-white\/15/);
 });
 
@@ -28,8 +28,8 @@ test("nieodpowiedziane bieżące ma obrys bez koloru wyniku", () => {
     isCorrect: false,
     isWrong: false,
   });
-  assert.match(currentOpen, /bg-white\/15/);
-  assert.match(currentOpen, /ring-2/);
+  assert.match(currentOpen, /ring-brand-gold/);
+  assert.match(currentOpen, /rounded-full/);
   assert.doesNotMatch(currentOpen, /bg-success/);
   assert.doesNotMatch(currentOpen, /bg-error/);
 });

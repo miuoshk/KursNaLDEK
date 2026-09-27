@@ -33,6 +33,7 @@ export function AnswerOption({
 }: AnswerOptionProps) {
   const showStatus =
     Boolean(statusLabel) && (state === "correct" || state === "wrong");
+  const snug = state === "default" || state === "selected";
 
   return (
     <button
@@ -44,7 +45,8 @@ export function AnswerOption({
       disabled={disabled && state !== "muted"}
       onClick={onSelect}
       className={cn(
-        "flex w-full text-left transition-colors duration-200 ease-out",
+        "flex max-w-full text-left transition-colors duration-200 ease-out",
+        snug ? "w-max" : "w-full",
         collapsed
           ? "min-h-11 items-center gap-3 rounded-card border border-border bg-card px-3"
           : "items-start gap-4 rounded-card border p-4",
@@ -76,26 +78,26 @@ export function AnswerOption({
           {text}
         </span>
       ) : (
-        <span className="min-w-0 flex-1">
+        <span className={cn("min-w-0", !snug && "flex-1")}>
           <RichTextContent
             text={text}
             className="break-words font-body text-[16px] leading-[1.6] text-primary md:text-[17px]"
           />
-          <span
-            className={cn(
-              "mt-2 flex min-h-5 items-center gap-1.5 font-body text-body-xs font-semibold",
-              !showStatus && "invisible",
-              showStatus && (state === "correct" ? "text-success" : "text-error"),
-            )}
-            aria-hidden={!showStatus}
-          >
-            {showStatus && state === "wrong" ? (
-              <X className="size-3.5 shrink-0" aria-hidden />
-            ) : (
-              <Check className="size-3.5 shrink-0" aria-hidden />
-            )}
-            {showStatus ? statusLabel : null}
-          </span>
+          {showStatus ? (
+            <span
+              className={cn(
+                "mt-2 flex min-h-5 items-center gap-1.5 font-body text-body-xs font-semibold",
+                state === "correct" ? "text-success" : "text-error",
+              )}
+            >
+              {state === "wrong" ? (
+                <X className="size-3.5 shrink-0" aria-hidden />
+              ) : (
+                <Check className="size-3.5 shrink-0" aria-hidden />
+              )}
+              {statusLabel}
+            </span>
+          ) : null}
         </span>
       )}
     </button>

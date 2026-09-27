@@ -81,7 +81,7 @@ export function markdownBlock(md: string, className?: string) {
         "[&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:whitespace-normal",
         "[&_ol]:mt-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:whitespace-normal",
         "[&_code]:rounded [&_code]:bg-white/10 [&_code]:px-1 [&_code]:font-body [&_code]:text-body-sm",
-        "[&_strong]:font-semibold [&_strong]:text-primary",
+        "[&_strong]:font-bold [&_strong]:text-primary",
         "[&_h2]:mt-6 [&_h2]:font-heading [&_h2]:text-heading-sm [&_h2]:text-primary",
         "[&_h3]:mt-4 [&_h3]:font-heading [&_h3]:text-body-lg [&_h3]:text-primary",
         "[&_th]:border [&_th]:border-white/[0.12] [&_th]:bg-white/[0.04] [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:font-semibold [&_th]:text-primary",

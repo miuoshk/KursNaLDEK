@@ -233,6 +233,7 @@ export function SessionTopBar({
   const tCommon = useTranslations("common");
   const narrow = useNarrowViewport();
   const setMobileOpen = useSidebarStore((s) => s.setMobileOpen);
+  const toggleSidebar = useSidebarStore((s) => s.toggle);
   const pct = total > 0 ? Math.min(100, ((current + 1) / total) * 100) : 0;
   const topicsLine =
     sessionTopicNames && sessionTopicNames.length > 0
@@ -247,20 +248,21 @@ export function SessionTopBar({
   return (
     <header
       data-session-topbar
-      className="sticky top-0 z-30 border-b border-border bg-background px-2 py-1 sm:px-4"
+      className="sticky top-0 z-30 shrink-0 border-b border-border bg-background px-2 py-1 sm:px-4"
     >
       <div className="flex flex-wrap items-center gap-1">
-        {narrow ? (
-          <button
-            type="button"
-            data-nav-menu-trigger
-            onClick={() => setMobileOpen(true)}
-            className="inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.04] hover:text-primary"
-            aria-label={tCommon("openMenu")}
-          >
-            <Menu className="size-5" aria-hidden />
-          </button>
-        ) : null}
+        <button
+          type="button"
+          data-nav-menu-trigger
+          onClick={() => {
+            if (narrow) setMobileOpen(true);
+            else toggleSidebar();
+          }}
+          className="inline-flex size-11 shrink-0 items-center justify-center rounded-btn text-secondary transition-colors hover:bg-white/[0.04] hover:text-primary"
+          aria-label={tCommon("openMenu")}
+        >
+          <Menu className="size-5" aria-hidden />
+        </button>
         <SessionTopicName title={title} titleFull={titleFull} />
         {examElapsedSeconds !== null ? (
           <p

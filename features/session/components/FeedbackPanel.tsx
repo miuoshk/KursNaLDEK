@@ -113,6 +113,25 @@ function OptionLetterPill({
   );
 }
 
+function OptionLead({
+  letter,
+  tone = "neutral",
+  children,
+}: {
+  letter: string;
+  tone?: "neutral" | "wrong";
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
+      <span className="flex h-[1.6em] shrink-0 items-center">
+        <OptionLetterPill letter={letter} tone={tone} />
+      </span>
+      <span className="min-w-0 flex-1">{children}</span>
+    </div>
+  );
+}
+
 function OptionReasonBlock({
   letter,
   optionText,
@@ -126,12 +145,9 @@ function OptionReasonBlock({
 }) {
   return (
     <div>
-      <p className="flex items-start gap-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
-        <OptionLetterPill letter={letter} tone={tone} />
-        <span className="min-w-0 flex-1">
-          <RichTextContent text={optionText} className="text-primary" />
-        </span>
-      </p>
+      <OptionLead letter={letter} tone={tone}>
+        <RichTextContent text={optionText} className="text-primary" />
+      </OptionLead>
       {reason ? (
         <div className="mt-1">{markdownBlock(reason, UFO_PROSE)}</div>
       ) : null}
@@ -377,15 +393,14 @@ export function FeedbackPanel({
             className={showResult ? "mt-3" : undefined}
           >
             <SectionLabel>{t("feedbackCorrectOption")}</SectionLabel>
-            <p className="mt-1.5 flex items-start gap-2 font-body text-[16px] leading-[1.6] text-primary md:text-[17px]">
-              <OptionLetterPill letter={correctLetter} />
-              <span className="min-w-0 flex-1">
+            <div className="mt-1.5">
+              <OptionLead letter={correctLetter}>
                 <RichTextContent
                   text={correctOption.text}
                   className="text-primary"
                 />
-              </span>
-            </p>
+              </OptionLead>
+            </div>
           </div>
         ) : null}
         {hypercorrection ? (

@@ -13,7 +13,11 @@ Cel: Claude / parser wrzuca bloki na **ufo-staging**, nie na produkcję.
 
 Klucz `service_role` jest w Dashboardze brancha (Settings → API) i w lokalnym `.env.staging`. **Nie wklejaj kluczy do czatu ani do tego pliku.**
 
-Migracja `ufo_statement_set` jest na tym branchu (version `20260909232259`). Status brancha `MIGRATIONS_FAILED` pochodzi z utworzenia preview 2026-09-05 (brak `supabase/migrations` w repo — branching nie wgrał schematu z prod). Schemat UFO jest dołożony ręcznie. **Nie rób rebase/reset** — zniszczy seed. Nie aplikuj `scripts/20260909033000_ufo_statement_set.sql` na prod.
+Migracja `ufo_statement_set` jest na tym branchu (version `20260909232259`). `render_explanation_blocks` i `explanation_blocks_valid` już znają `statement_set` — **nie aplikuj SQL ponownie**. Produkcja (`unfcpipxraiyacyzqanh`) tych funkcji nie ma; nie wgrywaj ich tam.
+
+Status brancha `MIGRATIONS_FAILED` pochodzi z utworzenia preview 2026-09-05 (brak `supabase/migrations` w repo — branching nie wgrał schematu z prod). Schemat UFO jest dołożony ręcznie. **Nie rób rebase/reset** — zniszczy seed.
+
+**Potwierdzenie zapisu 2026-09-10 (ten dokument):** `apply_explanation_blocks(..., 'parser', false)` na `ufo-ss-probe-20260910b` → `applied`, odczyt `explanation_blocks.questionType = statement_set`, trigger zapisał `explanation` z takeaway `PROBE-SS-20260910-T2` (md5 `37af0db67f905338e2b6ce44fee8d3a5`). Sprzeczny klucz (`optionStatements` `{a:[s1,s2], b:[s1]}` przy `correct_option_id=a`) → `rejected` / `invalid_blocks`; takeaway został `PROBE-SS-20260910-T2`. SBA `ufo-sba-probe-20260910b` → `applied`, walidator `true`.
 
 ## Kontrakt wsadu
 
@@ -203,4 +207,13 @@ node scripts/apply-blocks.mjs scripts/out/statement-set-v1.jsonl \
 
 Rollback: `node scripts/rollback-blocks.mjs --from-report scripts/out/apply-….md` (też tylko staging).
 
-Sonda testowa (treść TEST UFO, temat `CHS-01`): `ufo-ss-ok-20260910`, `ufo-sba-ok-20260910`. Można nadpisać kolejnym apply. Nie ruszaj prod (`unfcpipxraiyacyzqanh`).
+Sondy TEST UFO, temat `CHS-01` (można nadpisać kolejnym apply):
+
+| id | typ | potwierdzenie |
+| --- | --- | --- |
+| `ufo-ss-ok-20260910` | statement_set | pierwszy apply, nadal `valid` |
+| `ufo-sba-ok-20260910` | SBA | pierwszy apply, nadal `valid` |
+| `ufo-ss-probe-20260910b` | statement_set | świeży zapis + odrzut sprzecznego klucza |
+| `ufo-sba-probe-20260910b` | SBA | świeży zapis, `valid` |
+
+Nie ruszaj prod (`unfcpipxraiyacyzqanh`).

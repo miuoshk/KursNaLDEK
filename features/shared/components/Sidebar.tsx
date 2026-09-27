@@ -84,7 +84,7 @@ export function Sidebar() {
     );
   }
 
-  const collapsed = narrow || (isActiveSession ? true : collapsedFromStore);
+  const collapsed = narrow || collapsedFromStore;
 
   return (
     <div className="flex shrink-0">

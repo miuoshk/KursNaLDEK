@@ -15,110 +15,6 @@ function formatClock(totalSeconds: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-function SessionProgressMenu({
-  current,
-  total,
-  questions,
-  answeredMap,
-  onJumpTo,
-}: {
-  current: number;
-  total: number;
-  questions?: SessionQuestion[];
-  answeredMap?: Record<string, SessionAnswer>;
-  onJumpTo?: (idx: number) => void;
-}) {
-  const t = useTranslations("session");
-  const tCommon = useTranslations("common");
-  const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const mapId = useId();
-  const canExpand = Boolean(questions?.length && answeredMap);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setOpen(false);
-        triggerRef.current?.focus();
-      }
-    };
-    const onPointer = (event: MouseEvent | PointerEvent) => {
-      const target = event.target as Node | null;
-      if (!target) return;
-      if (panelRef.current?.contains(target) || triggerRef.current?.contains(target)) {
-        return;
-      }
-      setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    document.addEventListener("pointerdown", onPointer);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.removeEventListener("pointerdown", onPointer);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    const currentTile = panelRef.current?.querySelector<HTMLElement>(
-      "[aria-current='true']",
-    );
-    currentTile?.focus();
-  }, [open]);
-
-  return (
-    <div className="relative shrink-0">
-      <button
-        ref={triggerRef}
-        type="button"
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-btn px-2 font-body text-body-sm tabular-nums text-secondary"
-        aria-expanded={canExpand ? open : undefined}
-        aria-haspopup={canExpand ? "dialog" : undefined}
-        aria-controls={canExpand ? mapId : undefined}
-        aria-label={t("questionProgress", { current: current + 1, total })}
-        onClick={() => {
-          if (canExpand) setOpen((prev) => !prev);
-        }}
-      >
-        {t("progressCollapsed", { current: current + 1, total })}
-      </button>
-      {canExpand && open ? (
-        <div
-          ref={panelRef}
-          id={mapId}
-          role="dialog"
-          aria-label={t("progressMapAria")}
-          className="absolute right-0 top-full z-40 mt-1 w-[min(100vw-1.5rem,24rem)] rounded-card border border-border bg-card p-2 shadow-lg"
-        >
-          <SessionProgressSquares
-            questions={questions!}
-            answeredMap={answeredMap!}
-            currentIndex={current}
-            onJumpTo={(idx) => {
-              onJumpTo?.(idx);
-              setOpen(false);
-              triggerRef.current?.focus();
-            }}
-          />
-          <button
-            type="button"
-            className="mt-1 inline-flex min-h-11 w-full items-center justify-center rounded-btn font-body text-body-xs text-secondary hover:text-primary"
-            onClick={() => {
-              setOpen(false);
-              triggerRef.current?.focus();
-            }}
-          >
-            {tCommon("close")}
-          </button>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
 function SessionTopicName({
   title,
   titleFull,
@@ -272,13 +168,9 @@ export function SessionTopBar({
             {formatClock(examElapsedSeconds)}
           </p>
         ) : null}
-        <SessionProgressMenu
-          current={current}
-          total={total}
-          questions={questions}
-          answeredMap={answeredMap}
-          onJumpTo={onJumpTo}
-        />
+        <p className="shrink-0 px-1 font-body text-body-sm tabular-nums text-secondary">
+          {t("progressCollapsed", { current: current + 1, total })}
+        </p>
         <button
           type="button"
           onClick={onEnd}
@@ -291,6 +183,16 @@ export function SessionTopBar({
           <X className="size-4" aria-hidden />
         </button>
       </div>
+      {questions && answeredMap ? (
+        <div className="mt-1">
+          <SessionProgressSquares
+            questions={questions}
+            answeredMap={answeredMap}
+            currentIndex={current}
+            onJumpTo={onJumpTo}
+          />
+        </div>
+      ) : null}
       <div
         className="mt-1 h-[2px] w-full overflow-hidden rounded-full bg-white/[0.08]"
         aria-hidden
